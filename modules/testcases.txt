@@ -1,0 +1,32 @@
+Interesting testcases for getTimestampRegexp():
+
+[
+  "en",
+  "H:i, j F Y",
+  "Boring"
+],
+[
+  "ar",
+  "H:i، j xg Y",
+  "xg specifier"
+],
+[
+  "pt-br",
+  "H\"h\"i\"min\" \"de\" j \"de\" F \"de\" Y",
+  "Escaped text (quotes)"
+],
+[
+  "pt",
+  "H\\hi\\m\\i\\n \\d\\e j \\d\\e F \\d\\e Y",
+  "Escaped text (backslashes)"
+],
+[
+  "ja",
+  "Y年n月j日 (D) H:i"
+  "Unescaped text (non-ASCII)"
+],
+[
+  "th",
+  "H:i, j F xkY",
+  "xkY specifier"
+]
