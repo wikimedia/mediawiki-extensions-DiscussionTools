@@ -26,6 +26,9 @@
 		"DiscussionToolsHooks": "includes/DiscussionToolsHooks.php"
 	},
 	"Hooks": {
+		"BeforePageDisplay": [
+			"DiscussionToolsHooks::onBeforePageDisplay"
+		]
 	},
 	"type": "other"
 }
