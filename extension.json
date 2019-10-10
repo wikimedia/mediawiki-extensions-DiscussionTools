@@ -1,0 +1,25 @@
+{
+	"name": "DiscussionTools",
+	"license-name": "MIT",
+	"version": "0.0.0",
+	"namemsg": "discussiontools",
+	"descriptionmsg": "discussiontools-desc",
+	"manifest_version": 1,
+	"MessagesDirs": {
+		"DiscussionTools": [ "i18n" ]
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "DiscussionTools/modules"
+	},
+	"ResourceModules": {
+	},
+	"QUnitTestModule": {
+	},
+	"AutoloadClasses": {
+		"DiscussionToolsHooks": "includes/DiscussionToolsHooks.php"
+	},
+	"Hooks": {
+	},
+	"type": "other"
+}
