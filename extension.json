@@ -21,15 +21,13 @@
 	"ResourceModules": {
 		"ext.discussionTools.init": {
 			"packageFiles": [
-				"demo.js",
+				"dt.init.js",
 				"parser.js",
-				"highlighter.js",
 				{
 					"name": "data.json",
 					"callback": "DiscussionToolsHooks::getLocalData"
 				}
 			],
-			"styles": "highlighter.css",
 			"dependencies": [
 				"mediawiki.util",
 				"mediawiki.Uri",
