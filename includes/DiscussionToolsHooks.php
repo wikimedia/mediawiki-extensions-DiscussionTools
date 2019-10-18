@@ -55,29 +55,40 @@ class DiscussionToolsHooks {
 
 		// ApiQuerySiteinfo
 		$data['localTimezone'] = $config->get( 'Localtimezone' );
-		// This changes magically with DST
-		$data['localTimezoneOffset'] = (int)$config->get( 'LocalTZoffset' );
 
 		$data['specialContributionsName'] = SpecialPageFactory::getLocalNameFor( 'Contributions' );
 
-		// TODO: This should only include abbreviations for $wgLocaltimezone, but timezones can have
-		// multiple abbreviations (non-DST and DST) and we can't get them easily? For example CET and
-		// CEST for 'Europe/Warsaw'.
-		$data['timezones'] = array_map( function ( $tzMsg ) {
-			// MWTimestamp::getTimezoneMessage()
-			// Parser::pstPass2()
-			// Messages used here: 'timezone-utc' and so on
-			$key = 'timezone-' . strtolower( trim( $tzMsg ) );
-			$msg = wfMessage( $key )->inContentLanguage();
-			// TODO: This probably causes a similar issue to https://phabricator.wikimedia.org/T221294,
-			// but we *must* check the message existence in the database, because the messages are not
-			// actually defined by MediaWiki core for any timezone other than UTC...
-			if ( $msg->exists() ) {
-				return $msg->text();
+		$localTimezone = $config->get( 'Localtimezone' );
+		// Return only timezone abbreviations for the local timezone (there will often be two, for
+		// non-DST and DST timestamps, and sometimes more due to historical data, but that's okay).
+		$timezoneAbbrs = array_keys( array_filter(
+			timezone_abbreviations_list(),
+			function ( $timezones ) use ( $localTimezone ) {
+				foreach ( $timezones as $tz ) {
+					if ( $tz['timezone_id'] === $localTimezone ) {
+						return true;
+					}
+				}
+				return false;
 			}
-
-			return strtoupper( $tzMsg );
-		}, array_keys( timezone_abbreviations_list() ) );
+		) );
+		$data['timezones'] = array_combine(
+			array_map( function ( $tzMsg ) {
+				// MWTimestamp::getTimezoneMessage()
+				// Parser::pstPass2()
+				// Messages used here: 'timezone-utc' and so on
+				$key = 'timezone-' . strtolower( trim( $tzMsg ) );
+				$msg = wfMessage( $key )->inContentLanguage();
+				// TODO: This probably causes a similar issue to https://phabricator.wikimedia.org/T221294,
+				// but we *must* check the message existence in the database, because the messages are not
+				// actually defined by MediaWiki core for any timezone other than UTC...
+				if ( $msg->exists() ) {
+					return $msg->text();
+				}
+				return strtoupper( $tzMsg );
+			}, $timezoneAbbrs ),
+			array_map( 'strtoupper', $timezoneAbbrs )
+		);
 
 		// Messages in content language
 		$messagesKeys = array_merge(

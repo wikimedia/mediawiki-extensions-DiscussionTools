@@ -23,12 +23,14 @@
 			"packageFiles": [
 				"dt.init.js",
 				"parser.js",
+				"lib/moment-timezone/moment-timezone-with-data-1970-2030.js",
 				{
 					"name": "data.json",
 					"callback": "DiscussionToolsHooks::getLocalData"
 				}
 			],
 			"dependencies": [
+				"moment",
 				"mediawiki.util",
 				"mediawiki.Uri",
 				"mediawiki.Title",

@@ -15,7 +15,8 @@ module.exports = function ( grunt ) {
 			},
 			all: [
 				'*.{js,json}',
-				'modules/**/*.{js,json}'
+				'modules/**/*.{js,json}',
+				'!modules/lib/**'
 			]
 		},
 		stylelint: {
