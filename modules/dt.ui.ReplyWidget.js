@@ -60,9 +60,11 @@ mw.dt.ui.ReplyWidget.prototype.onKeyDown = function ( e ) {
 mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 	var widget = this;
 
-	this.comment.parsoidCommentPromise.then( function ( parsoidComment ) {
-		var html,
-			newParsoidList = mw.dt.modifier.addListAtComment( parsoidComment );
+	this.comment.parsoidPromise.then( function ( parsoidData ) {
+		var root, summary,
+			comment = parsoidData.comment,
+			pageData = parsoidData.pageData,
+			newParsoidList = mw.dt.modifier.addListAtComment( comment );
 
 		widget.textWidget.getValue().split( '\n' ).forEach( function ( line, i, arr ) {
 			var lineItem = mw.dt.modifier.addListItem( newParsoidList );
@@ -72,12 +74,30 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 			lineItem.appendChild( mw.dt.modifier.createWikitextNode( line ) );
 		} );
 
-		// TODO: We need an ArticleTargetSaver that is separate from
-		// Target logic.
-		html = ve.init.mw.Target.prototype.getHtml(
-			parsoidComment.range.endContainer.ownerDocument
-		);
-		// eslint-disable-next-line
-		console.log( html );
+		root = comment;
+		while ( root && root.type !== 'heading' ) {
+			root = root.parent;
+		}
+
+		// TODO: i18n
+		summary = '/* ' + root.range.toString() + ' */ Reply';
+
+		mw.libs.ve.targetSaver.deflateDoc( parsoidData.doc ).then( function ( html ) {
+			mw.libs.ve.targetSaver.postHtml(
+				html,
+				null,
+				{
+					page: pageData.pageName,
+					oldId: pageData.oldId,
+					summary: summary,
+					baseTimeStamp: pageData.baseTimeStamp,
+					startTimeStamp: pageData.startTimeStamp,
+					etag: pageData.etag,
+					token: pageData.token
+				}
+			).then( function () {
+				location.reload();
+			} );
+		} );
 	} );
 };
