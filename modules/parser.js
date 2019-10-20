@@ -6,16 +6,41 @@ var
 	data = require( './data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
+/**
+ * Utilities for detecting and parsing components of discussion pages: signatures, timestamps,
+ * comments and threads.
+ *
+ * @class mw.dt.parser
+ */
+
+/**
+ * Get text of localisation messages in content language.
+ *
+ * @private
+ * @param {string[]} messages
+ * @return {string[]}
+ */
 function getMessages( messages ) {
 	return messages.map( function ( code ) {
 		return data.contLangMessages[ code ];
 	} );
 }
 
-// This only supports format characters that are used by the default date format in any of
-// MediaWiki's languages, namely: D, d, F, G, H, i, j, l, M, n, Y, xg, xkY (and escape characters),
-// and only dates when MediaWiki existed, let's say 2000 onwards (Thai dates before 1941 are
-// complicated).
+/**
+ * Get a regexp that matches timestamps generated using the given date format.
+ *
+ * This only supports format characters that are used by the default date format in any of
+ * MediaWiki's languages, namely: D, d, F, G, H, i, j, l, M, n, Y, xg, xkY (and escape characters),
+ * and only dates when MediaWiki existed, let's say 2000 onwards (Thai dates before 1941 are
+ * complicated).
+ *
+ * @private
+ * @param {string} format Date format, as used by MediaWiki
+ * @param {string} digits Regular expression matching a single localised digit, e.g. `[0-9]`
+ * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
+ *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
+ * @return {string} Regular expression
+ */
 function getTimestampRegexp( format, digits, tzAbbrs ) {
 	var s, p, num, code, endQuote, tzRegexp, regexp;
 
@@ -137,6 +162,19 @@ function getTimestampRegexp( format, digits, tzAbbrs ) {
 	return regexp;
 }
 
+/**
+ * Get a function that parses timestamps generated using the given date format, based on the result
+ * of matching the regexp returned by #getTimestampRegexp.
+ *
+ * @param {string} format Date format, as used by MediaWiki
+ * @param {string} digits Localised digits from 0 to 9, e.g. `0123456789`
+ * @param {string} localTimezone Local timezone IANA name, e.g. `America/New_York`
+ * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
+ *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
+ * @return {Function} Parser function
+ * @return {Array} return.match Regexp match data
+ * @return {Object} return.return Moment object
+ */
 function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
 	var p, code, endQuote, matchingGroups = [];
 	for ( p = 0; p < format.length; p++ ) {
@@ -295,6 +333,14 @@ function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
 	};
 }
 
+/**
+ * Get a regexp that matches timestamps in the local date format.
+ *
+ * This calls #getTimestampRegexp with predefined data for the current wiki.
+ *
+ * @private
+ * @return {string} Regular expression
+ */
 function getLocalTimestampRegexp() {
 	var
 		df = data.dateFormat,
@@ -303,6 +349,17 @@ function getLocalTimestampRegexp() {
 	return dfRegexp;
 }
 
+/**
+ * Get a function that parses timestamps in the local date format, based on the result
+ * of matching the regexp returned by #getLocalTimestampRegexp.
+ *
+ * This calls #getTimestampParser with predefined data for the current wiki.
+ *
+ * @private
+ * @return {Function} Parser function
+ * @return {Array} return.match Regexp match data
+ * @return {Date} return.return
+ */
 function getLocalTimestampParser() {
 	var
 		df = data.dateFormat,
@@ -311,6 +368,15 @@ function getLocalTimestampParser() {
 	return parseFunction;
 }
 
+/**
+ * Find all timestamps within a DOM subtree.
+ *
+ * @param {Node} rootNode Node to search
+ * @return {Array[]} Results. Each result is a two-element array.
+ * @return {Text} return.0 Text node containing the timestamp
+ * @return {Array} return.1 Regexp match data, which specifies the location of the match, and which
+ *   can be parsed using #getLocalTimestampParser
+ */
 function findTimestamps( rootNode ) {
 	var
 		matches = [],
@@ -330,6 +396,13 @@ function findTimestamps( rootNode ) {
 	return matches;
 }
 
+/**
+ * Get the MediaWiki page title from an URI.
+ *
+ * @private
+ * @param {string} uri
+ * @return {string|null} Page title, or null if this isn't a link to a page
+ */
 function getPageTitleFromUri( uri ) {
 	var articlePathRegexp, match;
 
@@ -348,6 +421,21 @@ function getPageTitleFromUri( uri ) {
 	return null;
 }
 
+/**
+ * Find a user signature preceding a timestamp.
+ *
+ * The signature includes the timestamp node.
+ *
+ * A signature must contain at least one link to the user's userpage, discussion page or
+ * contributions (and may contain other links). The link may be nested in other elements.
+ *
+ * @private
+ * @param {Text} timestampNode Text node
+ * @return {Array} Result, a two-element array
+ * @return {Node[]} return.0 Sibling nodes comprising the signature (with `timestampNode`
+ *   as the last element)
+ * @return {string|null} return.1 Username, null for unsigned comments
+ */
 function findSignature( timestampNode ) {
 	var
 		node = timestampNode,
@@ -425,6 +513,16 @@ function findSignature( timestampNode ) {
 	return [ sigNodes, sigUsername ];
 }
 
+/**
+ * Get the indent level of a node, relative to its ancestor node.
+ *
+ * The indent level is the number of lists inside of which it is nested.
+ *
+ * @private
+ * @param {Node} node
+ * @param {Node} rootNode Node to stop counting at
+ * @return {number}
+ */
 function getIndentLevel( node, rootNode ) {
 	var indent = 0;
 	while ( ( node = node.parentNode ) ) {
@@ -438,6 +536,17 @@ function getIndentLevel( node, rootNode ) {
 	return indent;
 }
 
+/**
+ * Return the next leaf node in the tree order that is not an empty or whitespace-only text node.
+ *
+ * In other words, this returns a Text node with content other than whitespace, or an Element node
+ * with no children, that follows the given node in the HTML source.
+ *
+ * @private
+ * @param {Node} node Node to start searching at. If it isn't a leaf node, its children are ignored.
+ * @param {Node} rootNode Node to stop searching at
+ * @return {Node|null}
+ */
 function nextInterestingLeafNode( node, rootNode ) {
 	var treeWalker = rootNode.ownerDocument.createTreeWalker(
 		rootNode,
@@ -463,6 +572,51 @@ function nextInterestingLeafNode( node, rootNode ) {
 	return treeWalker.currentNode;
 }
 
+/**
+ * Get all discussion comments (and headings) within a DOM subtree.
+ *
+ * This returns a flat list, use #groupThreads to associate replies to original messages and get a
+ * tree structure starting at section headings.
+ *
+ * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here, the wikitext
+ * syntax is just for illustration):
+ *
+ *     == A ==
+ *     B. ~~~~
+ *     : C.
+ *     : C. ~~~~
+ *     :: D. ~~~~
+ *     ::: E. ~~~~
+ *     ::: F. ~~~~
+ *     : G. ~~~~
+ *     H. ~~~~
+ *     : I. ~~~~
+ *
+ * This function would return a structure like:
+ *
+ *     [
+ *       { type: 'heading', level: 0, range: (h2: A)        },
+ *       { type: 'comment', level: 1, range: (p: B)         },
+ *       { type: 'comment', level: 2, range: (li: C, li: C) },
+ *       { type: 'comment', level: 3, range: (li: D)        },
+ *       { type: 'comment', level: 4, range: (li: E)        },
+ *       { type: 'comment', level: 4, range: (li: F)        },
+ *       { type: 'comment', level: 2, range: (li: G)        },
+ *       { type: 'comment', level: 1, range: (p: H)         },
+ *       { type: 'comment', level: 2, range: (li: I)        }
+ *     ]
+ *
+ * @param {Node} rootNode
+ * @return {Object[]} Results. Each result is an object.
+ * @return {string} return.type `heading` or `comment`
+ * @return {Range} return.range The extent of the comment, including the signature and timestamp.
+ *   Comments can start or end in the middle of a DOM node.
+ * @return {number} return.level Indentation level of the comment. Headings are `0`, comments start
+ *   at `1`.
+ * @return {Object} [return.timestamp] Timestamp (Moment object), undefined for headings
+ * @return {string|null} [return.author] Comment author's username, null for unsigned comments,
+ *   undefined for headings
+ */
 function getComments( rootNode ) {
 	var
 		dfParser = getLocalTimestampParser(),
@@ -521,6 +675,53 @@ function getComments( rootNode ) {
 	return comments;
 }
 
+/**
+ * Group discussion comments into threads and associate replies to original messages.
+ *
+ * Each thread must begin with a heading. Original messages in the thread are treated as replies to
+ * its heading. Other replies are associated based on the order and indentation level.
+ *
+ * Note that the objects in `comments` are extended in-place with the additional data.
+ *
+ * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here, the wikitext
+ * syntax is just for illustration):
+ *
+ *     == A ==
+ *     B. ~~~~
+ *     : C.
+ *     : C. ~~~~
+ *     :: D. ~~~~
+ *     ::: E. ~~~~
+ *     ::: F. ~~~~
+ *     : G. ~~~~
+ *     H. ~~~~
+ *     : I. ~~~~
+ *
+ * This function would return a structure like:
+ *
+ *     [
+ *       { type: 'heading', level: 0, range: (h2: A), replies: [
+ *         { type: 'comment', level: 1, range: (p: B), replies: [
+ *           { type: 'comment', level: 2, range: (li: C, li: C), replies: [
+ *             { type: 'comment', level: 3, range: (li: D), replies: [
+ *               { type: 'comment', level: 4, range: (li: E), replies: [] },
+ *               { type: 'comment', level: 4, range: (li: F), replies: [] },
+ *             ] },
+ *           ] },
+ *           { type: 'comment', level: 2, range: (li: G), replies: [] },
+ *         ] },
+ *         { type: 'comment', level: 1, range: (p: H), replies: [
+ *           { type: 'comment', level: 2, range: (li: I), replies: [] },
+ *         ] },
+ *       ] },
+ *     ]
+ *
+ * @param {Object} comments Result of #getComments
+ * @return {Object[]} Tree structure of comments, using the same objects as `comments`. Top-level
+ *   items are the headings. The following properties are added:
+ * @return {Object[]} return.replies Comment objects which are replies to this comment
+ * @return {Object|null} return.parent Comment object which this is a reply to (null for headings)
+ */
 function groupThreads( comments ) {
 	var
 		threads = [],
@@ -561,6 +762,14 @@ function groupThreads( comments ) {
 	return threads;
 }
 
+/**
+ * Get the list of authors involved in a comment and its replies.
+ *
+ * You probably want to pass a thread root here (a heading).
+ *
+ * @param {Object} comment Comment object, as returned by #groupThreads
+ * @return {Object} Object with comment author usernames as keys
+ */
 function getAuthors( comment ) {
 	var authors = {};
 	if ( comment.author ) {
