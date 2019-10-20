@@ -6,21 +6,12 @@ var
 	data = require( './data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
-function getMessages( msg ) {
-	return msg.map( function ( code ) {
+function getMessages( messages ) {
+	return messages.map( function ( code ) {
 		return data.contLangMessages[ code ];
 	} );
 }
 
-function regexpGroup( regexp ) {
-	return '(' + regexp + ')';
-}
-
-function regexpAlternateGroup( array ) {
-	return '(' + array.map( mw.util.escapeRegExp ).join( '|' ) + ')';
-}
-
-// Language::sprintfDate
 // This only supports format characters that are used by the default date format in any of
 // MediaWiki's languages, namely: D, d, F, G, H, i, j, l, M, n, Y, xg, xkY (and escape characters),
 // and only dates when MediaWiki existed, let's say 2000 onwards (Thai dates before 1941 are
@@ -28,8 +19,16 @@ function regexpAlternateGroup( array ) {
 function getTimestampRegexp( format, digits, tzAbbrs ) {
 	var s, p, num, code, endQuote, tzRegexp, regexp;
 
-	s = '';
+	function regexpGroup( regexp ) {
+		return '(' + regexp + ')';
+	}
 
+	function regexpAlternateGroup( array ) {
+		return '(' + array.map( mw.util.escapeRegExp ).join( '|' ) + ')';
+	}
+
+	s = '';
+	// Adapted from Language::sprintfDate()
 	for ( p = 0; p < format.length; p++ ) {
 		num = false;
 		code = format[ p ];
@@ -314,24 +313,27 @@ function getLocalTimestampParser() {
 
 function findTimestamps( rootNode ) {
 	var
-		nodes = [],
+		matches = [],
 		treeWalker = rootNode.ownerDocument.createTreeWalker( rootNode, NodeFilter.SHOW_TEXT, null, false ),
 		dateRegexp = getLocalTimestampRegexp(),
 		node, match;
 
 	while ( ( node = treeWalker.nextNode() ) ) {
-		// TODO Multiple matches per node?
+		// Technically, there could be multiple matches in a single text node. However, the ultimate
+		// point of this is to find the signatures which precede the timestamps, and any later
+		// timestamps in the text node can't be directly preceded by a signature (as we require them to
+		// have links), so we only concern ourselves with the first match.
 		if ( ( match = node.nodeValue.match( dateRegexp ) ) ) {
-			nodes.push( [ node, match ] );
+			matches.push( [ node, match ] );
 		}
 	}
-	return nodes;
+	return matches;
 }
 
-function getPageTitleFromHref( href ) {
-	var uri, articlePathRegexp, match;
+function getPageTitleFromUri( uri ) {
+	var articlePathRegexp, match;
 
-	uri = new mw.Uri( href );
+	uri = new mw.Uri( uri );
 	articlePathRegexp = new RegExp(
 		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
 			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
@@ -380,7 +382,7 @@ function findSignature( timestampNode ) {
 		// eslint-disable-next-line no-loop-func
 		if ( links.some( function ( link ) {
 			var username, title, mwTitle;
-			title = getPageTitleFromHref( link.href );
+			title = getPageTitleFromUri( link.href );
 			if ( !title ) {
 				return false;
 			}
@@ -516,7 +518,6 @@ function getComments( rootNode ) {
 		}
 	}
 
-	// return threads;
 	return comments;
 }
 
