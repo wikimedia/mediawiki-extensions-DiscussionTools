@@ -100,9 +100,9 @@ function getTimestampRegexp( format, digits ) {
 			case '\\':
 				// Backslash escaping
 				if ( p < format.length - 1 ) {
-					s += format[ ++p ];
+					s += mw.util.escapeRegExp( format[ ++p ] );
 				} else {
-					s += '\\';
+					s += mw.util.escapeRegExp( '\\' );
 				}
 				break;
 			case '"':
@@ -113,7 +113,7 @@ function getTimestampRegexp( format, digits ) {
 						// No terminating quote, assume literal "
 						s += '"';
 					} else {
-						s += format.substr( p + 1, endQuote - p - 1 );
+						s += mw.util.escapeRegExp( format.substr( p + 1, endQuote - p - 1 ) );
 						p = endQuote;
 					}
 				} else {
@@ -122,7 +122,7 @@ function getTimestampRegexp( format, digits ) {
 				}
 				break;
 			default:
-				s += format[ p ];
+				s += mw.util.escapeRegExp( format[ p ] );
 		}
 		if ( num !== false ) {
 			s += regexpGroup( digits + '{' + num + '}' );

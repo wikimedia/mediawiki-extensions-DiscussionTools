@@ -23,6 +23,11 @@ Interesting testcases for getTimestampRegexp():
 [
   "ja",
   "Y年n月j日 (D) H:i"
+  "Unescaped regexp special characters"
+],
+[
+  "fr",
+  "j F Y à H:i",
   "Unescaped text (non-ASCII)"
 ],
 [
