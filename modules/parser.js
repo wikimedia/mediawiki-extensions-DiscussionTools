@@ -451,7 +451,7 @@ function getComments( rootNode ) {
 
 	nextTimestamp = 0;
 	while ( ( node = treeWalker.nextNode() ) ) {
-		if ( node.tagName && node.tagName.match( /h[1-6]/i ) ) {
+		if ( node.tagName && node.tagName.match( /^h[1-6]$/i ) ) {
 			range = rootNode.ownerDocument.createRange();
 			range.selectNodeContents( node );
 			curComment = {
