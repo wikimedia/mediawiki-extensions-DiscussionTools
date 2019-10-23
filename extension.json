@@ -19,9 +19,8 @@
 		"remoteExtPath": "DiscussionTools/modules"
 	},
 	"ResourceModules": {
-		"ext.discussionTools.init": {
+		"ext.discussionTools.parser": {
 			"packageFiles": [
-				"dt.init.js",
 				"parser.js",
 				"lib/moment-timezone/moment-timezone-with-data-1970-2030.js",
 				{
@@ -33,8 +32,16 @@
 				"moment",
 				"mediawiki.util",
 				"mediawiki.Uri",
-				"mediawiki.Title",
-				"mediawiki.api"
+				"mediawiki.Title"
+			]
+		},
+		"ext.discussionTools.init": {
+			"packageFiles": [
+				"dt.init.js"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"ext.discussionTools.parser"
 			]
 		}
 	},

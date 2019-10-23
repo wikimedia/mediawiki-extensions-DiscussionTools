@@ -8,7 +8,7 @@ var comments, threads,
 mw.dt = {
 	init: {},
 	ui: {},
-	parser: require( './parser.js' )
+	parser: require( 'ext.discussionTools.parser' )
 };
 
 function setupComment( comment ) {
