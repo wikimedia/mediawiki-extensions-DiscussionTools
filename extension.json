@@ -46,6 +46,21 @@
 		}
 	},
 	"QUnitTestModule": {
+		"localBasePath": "tests/qunit",
+		"remoteExtPath": "DiscussionTools/tests/qunit",
+		"packageFiles": [
+			"index.js",
+			"utils.js",
+			{
+				"name": "data-en.json",
+				"callback": "DiscussionToolsHooks::getLocalData",
+				"callbackParam": "en"
+			},
+			"parser.test.js"
+		],
+		"dependencies": [
+			"ext.discussionTools.parser"
+		]
 	},
 	"AutoloadClasses": {
 		"DiscussionToolsHooks": "includes/DiscussionToolsHooks.php"

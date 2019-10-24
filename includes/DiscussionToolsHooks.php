@@ -41,9 +41,12 @@ class DiscussionToolsHooks {
 	 *
 	 * @return array
 	 */
-	public static function getLocalData() {
-		$lang = MediaWikiServices::getInstance()->getContentLanguage();
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+	public static function getLocalData( ResourceLoaderContext $context, Config $config, $langCode = null ) {
+		if ( $langCode ) {
+			$lang = Language::factory( $langCode );
+		} else {
+			$lang = MediaWikiServices::getInstance()->getContentLanguage();
+		}
 
 		$data = [];
 
@@ -73,12 +76,12 @@ class DiscussionToolsHooks {
 			}
 		) );
 		$data['timezones'] = array_combine(
-			array_map( function ( $tzMsg ) {
+			array_map( function ( $tzMsg ) use ( $lang ) {
 				// MWTimestamp::getTimezoneMessage()
 				// Parser::pstPass2()
 				// Messages used here: 'timezone-utc' and so on
 				$key = 'timezone-' . strtolower( trim( $tzMsg ) );
-				$msg = wfMessage( $key )->inContentLanguage();
+				$msg = wfMessage( $key )->inLanguage( $lang );
 				// TODO: This probably causes a similar issue to https://phabricator.wikimedia.org/T221294,
 				// but we *must* check the message existence in the database, because the messages are not
 				// actually defined by MediaWiki core for any timezone other than UTC...
@@ -100,8 +103,8 @@ class DiscussionToolsHooks {
 		);
 		$data['contLangMessages'] = array_combine(
 			$messagesKeys,
-			array_map( function ( $key ) {
-				return wfMessage( $key )->inContentLanguage()->text();
+			array_map( function ( $key ) use ( $lang ) {
+				return wfMessage( $key )->inLanguage( $lang )->text();
 			}, $messagesKeys )
 		);
 

@@ -785,6 +785,7 @@ function getAuthors( comment ) {
 module.exports = {
 	findTimestamps: findTimestamps,
 	getLocalTimestampParser: getLocalTimestampParser,
+	getTimestampRegexp: getTimestampRegexp,
 	getComments: getComments,
 	groupThreads: groupThreads,
 	findSignature: findSignature,
