@@ -1,0 +1,52 @@
+/* stylelint-disable color-named */
+
+.detected-timestamp {
+	border: 2px solid forestgreen;
+	padding: 1px;
+	border-radius: 6px;
+	margin: -3px;
+}
+
+.detected-signature {
+	border: 3px solid blue;
+	border-bottom-left-radius: 6px;
+	border-top-left-radius: 6px;
+	border-right: 0;
+	margin: -3px;
+	margin-right: 0;
+}
+
+.detected-signature + .detected-timestamp {
+	border-left: 0;
+	padding-left: 0;
+	margin-left: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.detected-timestamp:hover:after {
+	content: ' ' attr( title );
+}
+
+.detected-comment {
+	position: absolute;
+	opacity: 0.2;
+	pointer-events: none;
+}
+
+.detected-comment:nth-child( 2n ) {
+	background: lightpink;
+}
+
+.detected-comment:nth-child( 2n + 1 ) {
+	background: skyblue;
+}
+
+.detected-comment-relationship {
+	position: absolute;
+	box-sizing: border-box;
+	border-left: 3px solid red;
+	border-bottom: 3px solid red;
+	box-shadow: -5px 10px 6px 0 white;
+	border-bottom-left-radius: 8px;
+}

@@ -61,6 +61,10 @@ function traverseNode( parent ) {
 	} );
 }
 
-comments = mw.dt.parser.getComments( document.getElementById( 'mw-content-text' ) );
-threads = mw.dt.parser.groupThreads( comments );
-threads.forEach( traverseNode );
+if ( new mw.Uri().query.dtdebug ) {
+	mw.loader.load( 'ext.discussionTools.debug' );
+} else {
+	comments = mw.dt.parser.getComments( document.getElementById( 'mw-content-text' ) );
+	threads = mw.dt.parser.groupThreads( comments );
+	threads.forEach( traverseNode );
+}

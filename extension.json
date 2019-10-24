@@ -40,7 +40,17 @@
 				"dt.init.js"
 			],
 			"dependencies": [
-				"mediawiki.api",
+				"mediawiki.Uri",
+				"ext.discussionTools.parser"
+			]
+		},
+		"ext.discussionTools.debug": {
+			"packageFiles": [
+				"dt.debug.js",
+				"highlighter.js"
+			],
+			"styles": "highlighter.css",
+			"dependencies": [
 				"ext.discussionTools.parser"
 			]
 		}
