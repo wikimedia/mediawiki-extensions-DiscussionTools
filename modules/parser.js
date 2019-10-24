@@ -505,13 +505,14 @@ function findSignature( timestampNode ) {
 				mwTitle.getMainText().split( '/' )[ 0 ] === data.specialContributionsName
 			) {
 				username = mwTitle.getMainText().split( '/' )[ 1 ];
+				// Users may link to their contributions with non-standard name
+				username = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, username ).getMainText();
 			}
 			if ( !username ) {
 				return false;
 			}
 			if ( mw.util.isIPv6Address( username ) ) {
-				// Canonicalize links
-				// Bot-generated links "Preceding unsigned comment added by" are wrong
+				// Bot-generated links "Preceding unsigned comment added by" have non-standard case
 				username = username.toUpperCase();
 			}
 
