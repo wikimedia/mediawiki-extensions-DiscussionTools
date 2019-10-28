@@ -25,7 +25,7 @@
 				"lib/moment-timezone/moment-timezone-with-data-1970-2030.js",
 				{
 					"name": "data.json",
-					"callback": "DiscussionToolsHooks::getLocalData"
+					"callback": "DiscussionToolsData::getLocalData"
 				}
 			],
 			"dependencies": [
@@ -63,7 +63,7 @@
 			"utils.js",
 			{
 				"name": "data-en.json",
-				"callback": "DiscussionToolsHooks::getLocalData",
+				"callback": "DiscussionToolsData::getLocalData",
 				"callbackParam": "en"
 			},
 			"parser.test.js"
@@ -73,6 +73,7 @@
 		]
 	},
 	"AutoloadClasses": {
+		"DiscussionToolsData": "includes/DiscussionToolsData.php",
 		"DiscussionToolsHooks": "includes/DiscussionToolsHooks.php"
 	},
 	"Hooks": {
