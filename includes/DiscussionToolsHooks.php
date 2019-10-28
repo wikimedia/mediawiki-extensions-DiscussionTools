@@ -8,6 +8,21 @@
  */
 
 class DiscussionToolsHooks {
+
+	public static function onRegistration() {
+		global $wgLocaltimezone;
+		// If $wgLocaltimezone isn't hard-coded, it is evaluated from the system
+		// timezone. On some systems this isn't guaranteed to be static, for example
+		// on Debian, GMT can get converted to UTC, instead of Europe/London.
+		//
+		// Timestamp parsing assumes that the timezone never changes.
+		//
+		// HACK: Do not run this test on CI as $wgLocaltimezone is not configured.
+		if ( !$wgLocaltimezone && !getenv( 'ZUUL_PROJECT' ) ) {
+			throw new \ConfigException( 'DiscussionTools requires $wgLocaltimezone to be set' );
+		}
+	}
+
 	/**
 	 * Adds DiscussionTools JS to the output.
 	 *
