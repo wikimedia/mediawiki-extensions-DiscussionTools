@@ -1,8 +1,4 @@
 {
-	"globals": {
-		"require": "readonly",
-		"module": "readonly"
-	},
 	"rules": {
 		"no-implicit-globals": "off"
 	}
