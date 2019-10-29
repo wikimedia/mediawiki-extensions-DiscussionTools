@@ -34,7 +34,6 @@ function getMessages( messages ) {
  * and only dates when MediaWiki existed, let's say 2000 onwards (Thai dates before 1941 are
  * complicated).
  *
- * @private
  * @param {string} format Date format, as used by MediaWiki
  * @param {string} digits Regular expression matching a single localised digit, e.g. `[0-9]`
  * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
@@ -167,7 +166,7 @@ function getTimestampRegexp( format, digits, tzAbbrs ) {
  * of matching the regexp returned by #getTimestampRegexp.
  *
  * @param {string} format Date format, as used by MediaWiki
- * @param {string} digits Localised digits from 0 to 9, e.g. `0123456789`
+ * @param {string|null} digits Localised digits from 0 to 9, e.g. `0123456789`
  * @param {string} localTimezone Local timezone IANA name, e.g. `America/New_York`
  * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
@@ -810,6 +809,7 @@ module.exports = {
 	findTimestamps: findTimestamps,
 	getLocalTimestampParser: getLocalTimestampParser,
 	getTimestampRegexp: getTimestampRegexp,
+	getTimestampParser: getTimestampParser,
 	getComments: getComments,
 	groupThreads: groupThreads,
 	findSignature: findSignature,

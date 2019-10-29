@@ -1,3 +1,4 @@
+/* global moment */
 var
 	utils = require( './utils.js' ),
 	parser = require( 'ext.discussionTools.parser' );
@@ -51,6 +52,96 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 		assert.strictEqual(
 			parser.getTimestampRegexp( cases[ i ].format, '\\d', { UTC: 'UTC' } ),
 			cases[ i ].expected,
+			cases[ i ].message
+		);
+	}
+} );
+
+QUnit.test( '#getTimestampParser', function ( assert ) {
+	var i, cases, expectedDate, tsParser;
+
+	utils.overrideParserData( require( './data-en.json' ) );
+
+	expectedDate = moment( '2011-02-03T04:05:00+00:00' );
+
+	cases = [
+		{
+			format: 'Y n j D H i',
+			data: [ null, '2011', '2', '3', 'unused', '04', '05', 'UTC' ],
+			message: 'Date is parsed'
+		},
+		{
+			format: 'xkY xg d "asdf" G i',
+			data: [ null, '2554', 'February', '03', '4', '05', 'UTC' ],
+			message: 'Date is parsed'
+		},
+		{
+			format: 'H i n j Y',
+			data: [ null, '04', '05', '2', '3', '2011', 'UTC' ],
+			message: 'Date is parsed'
+		}
+	];
+
+	for ( i = 0; i < cases.length; i++ ) {
+		tsParser = parser.getTimestampParser( cases[ i ].format, null, 'UTC', { UTC: 'UTC' } );
+
+		assert.ok(
+			tsParser( cases[ i ].data ).isSame( expectedDate ),
+			cases[ i ].message
+		);
+	}
+} );
+
+QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
+	var i, cases, format, timezone, timezoneAbbrs, regexp, tsParser, date;
+
+	utils.overrideParserData( require( './data-en.json' ) );
+
+	format = 'H:i, j M Y';
+	timezone = 'Europe/Warsaw';
+	timezoneAbbrs = {
+		CET: 'CET',
+		CEST: 'CEST'
+	};
+	regexp = parser.getTimestampRegexp( format, '\\d', timezoneAbbrs );
+	tsParser = parser.getTimestampParser( format, null, timezone, timezoneAbbrs );
+
+	cases = [
+		{
+			sample: '01:30, 28 Oct 2018 (CEST)',
+			expected: moment( '2018-10-28T01:30:00+02:00' ),
+			expectedUtc: moment( '2018-10-27T23:30:00Z' ),
+			message: 'Before DST change (not ambiguous)'
+		},
+		{
+			sample: '02:30, 28 Oct 2018 (CEST)',
+			expected: moment( '2018-10-28T02:30:00+02:00' ),
+			expectedUtc: moment( '2018-10-28T00:30:00Z' ),
+			message: 'Before DST change (ambiguous)'
+		},
+		// At 03:00, time goes back by 1 hour
+		{
+			sample: '02:30, 28 Oct 2018 (CET)',
+			expected: moment( '2018-10-28T02:30:00+01:00' ),
+			expectedUtc: moment( '2018-10-28T01:30:00Z' ),
+			message: 'After DST change (ambiguous)'
+		},
+		{
+			sample: '03:30, 28 Oct 2018 (CET)',
+			expected: moment( '2018-10-28T03:30:00+01:00' ),
+			expectedUtc: moment( '2018-10-28T02:30:00Z' ),
+			message: 'After DST change (not ambiguous)'
+		}
+	];
+
+	for ( i = 0; i < cases.length; i++ ) {
+		date = tsParser( cases[ i ].sample.match( regexp ) );
+		assert.ok(
+			date.isSame( cases[ i ].expected ),
+			cases[ i ].message
+		);
+		assert.ok(
+			date.isSame( cases[ i ].expectedUtc ),
 			cases[ i ].message
 		);
 	}
