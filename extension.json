@@ -14,6 +14,7 @@
 	"MessagesDirs": {
 		"DiscussionTools": [ "i18n" ]
 	},
+	"callback": "DiscussionToolsHooks::onRegistration",
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "DiscussionTools/modules"
