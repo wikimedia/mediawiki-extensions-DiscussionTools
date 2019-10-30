@@ -55,3 +55,59 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 		);
 	}
 } );
+
+QUnit.test( 'Integration tests', function ( assert ) {
+	var i, j, cases, comments, threads, fixture;
+
+	cases = [
+		{
+			name: 'plwiki oldparser',
+			dom: mw.template.get( 'test.DiscussionTools', 'oldparser/pl-55171451.html' ).render(),
+			expected: require( './pages/oldparser/pl-55171451.json' ),
+			config: require( './data/plwiki-config.json' ),
+			data: require( './data/plwiki-data.json' )
+		},
+		{
+			name: 'plwiki parsoid',
+			dom: mw.template.get( 'test.DiscussionTools', 'parsoid/pl-55171451.html' ).render(),
+			expected: require( './pages/parsoid/pl-55171451.json' ),
+			config: require( './data/plwiki-config.json' ),
+			data: require( './data/plwiki-data.json' )
+		},
+		{
+			name: 'enwiki oldparser',
+			dom: mw.template.get( 'test.DiscussionTools', 'oldparser/en-913983958.html' ).render(),
+			expected: require( './pages/oldparser/en-913983958.json' ),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		},
+		{
+			name: 'enwiki parsoid',
+			dom: mw.template.get( 'test.DiscussionTools', 'parsoid/en-913983958.html' ).render(),
+			expected: require( './pages/parsoid/en-913983958.json' ),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		}
+	];
+
+	fixture = document.getElementById( 'qunit-fixture' );
+
+	for ( i = 0; i < cases.length; i++ ) {
+		$( fixture ).empty().append( cases[ i ].dom );
+		utils.overrideMwConfig( cases[ i ].config );
+		utils.overrideParserData( cases[ i ].data );
+
+		comments = parser.getComments( fixture );
+		threads = parser.groupThreads( comments );
+
+		for ( j = 0; j < threads.length; j++ ) {
+			utils.serializeComments( threads[ j ], fixture );
+
+			assert.deepEqual(
+				JSON.parse( JSON.stringify( threads[ j ] ) ),
+				cases[ i ].expected[ j ],
+				cases[ i ].name + ' section ' + j
+			);
+		}
+	}
+} );
