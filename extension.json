@@ -45,6 +45,7 @@
 			"packageFiles": [
 				"dt.init.js"
 			],
+			"styles": "dt.init.less",
 			"dependencies": [
 				"mediawiki.Uri",
 				"ext.discussionTools.parser",
