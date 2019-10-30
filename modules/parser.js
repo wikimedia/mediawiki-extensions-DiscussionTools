@@ -500,6 +500,9 @@ function findSignature( timestampNode ) {
 				mwTitle.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user_talk
 			) {
 				username = mwTitle.getMainText();
+				if ( username.indexOf( '/' ) !== -1 ) {
+					return false;
+				}
 			} else if (
 				mwTitle.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).special &&
 				mwTitle.getMainText().split( '/' )[ 0 ] === data.specialContributionsName
