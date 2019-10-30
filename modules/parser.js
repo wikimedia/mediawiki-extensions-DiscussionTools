@@ -369,6 +369,21 @@ function getLocalTimestampParser() {
 }
 
 /**
+ * Callback for document.createTreeWalker that will skip over nodes where we don't want to detect
+ * comments (or section headings).
+ *
+ * @param {Node} node
+ * @return {number} Appropriate NodeFilter constant
+ */
+function acceptOnlyNodesAllowingComments( node ) {
+	// The table of contents has a heading that gets erroneously detected as a section
+	if ( node.id === 'toc' ) {
+		return NodeFilter.FILTER_REJECT;
+	}
+	return NodeFilter.FILTER_ACCEPT;
+}
+
+/**
  * Find all timestamps within a DOM subtree.
  *
  * @param {Node} rootNode Node to search
@@ -380,7 +395,12 @@ function getLocalTimestampParser() {
 function findTimestamps( rootNode ) {
 	var
 		matches = [],
-		treeWalker = rootNode.ownerDocument.createTreeWalker( rootNode, NodeFilter.SHOW_TEXT, null, false ),
+		treeWalker = rootNode.ownerDocument.createTreeWalker(
+			rootNode,
+			NodeFilter.SHOW_TEXT,
+			acceptOnlyNodesAllowingComments,
+			false
+		),
 		dateRegexp = getLocalTimestampRegexp(),
 		node, match;
 
@@ -630,7 +650,7 @@ function getComments( rootNode ) {
 		rootNode,
 		// eslint-disable-next-line no-bitwise
 		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
-		null,
+		acceptOnlyNodesAllowingComments,
 		false
 	);
 
