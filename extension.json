@@ -44,7 +44,13 @@
 		},
 		"ext.discussionTools.controller": {
 			"packageFiles": [
-				"controller.js"
+				"controller.js",
+				{
+					"name": "config.json",
+					"config": {
+						"useVisualEditor": "DiscussionToolsUseVisualEditor"
+					}
+				}
 			],
 			"dependencies": [
 				"rangefix",
@@ -92,11 +98,37 @@
 			],
 			"dependencies": [
 				"ext.discussionTools.controller",
+				"mediawiki.widgets.AbandonEditDialog"
+			]
+		},
+		"ext.discussionTools.ReplyWidgetPlain": {
+			"packageFiles": [
+				"dt.ui.ReplyWidgetPlain.js"
+			],
+			"dependencies": [
+				"ext.discussionTools.ReplyWidget",
 				"oojs-ui-core",
 				"mediawiki.editfont.styles",
 				"mediawiki.user",
-				"mediawiki.jqueryMsg",
-				"mediawiki.widgets.AbandonEditDialog"
+				"mediawiki.jqueryMsg"
+			]
+		},
+		"ext.discussionTools.ReplyWidgetVisual": {
+			"packageFiles": [
+				"dt.ui.ReplyWidgetVisual.js",
+				"CommentTarget.js",
+				"CommentTargetWidget.js"
+			],
+			"styles": [
+				"CommentTargetWidget.less"
+			],
+			"dependencies": [
+				"ext.discussionTools.ReplyWidget",
+				"ext.visualEditor.mwcore",
+				"ext.visualEditor.mwwikitext",
+				"ext.visualEditor.core.desktop",
+				"ext.visualEditor.desktopTarget",
+				"ext.visualEditor.mwextensions.desktop"
 			]
 		}
 	},
@@ -139,6 +171,12 @@
 		"BeforePageDisplay": [
 			"DiscussionToolsHooks::onBeforePageDisplay"
 		]
+	},
+	"config": {
+		"DiscussionToolsUseVisualEditor": {
+			"value": false,
+			"description": "Use VisualEditor for editing replies (both visual and wikitext)."
+		}
 	},
 	"type": "other"
 }

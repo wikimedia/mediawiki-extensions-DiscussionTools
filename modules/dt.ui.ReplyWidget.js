@@ -23,15 +23,7 @@ function ReplyWidget( comment, config ) {
 	contextNode = modifier.closest( this.comment.range.endContainer, 'dl, ul, ol' );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 
-	this.textWidget = new OO.ui.MultilineTextInputWidget( $.extend( {
-		rows: 3,
-		autosize: true,
-		// The following classes can be used here:
-		// * mw-editfont-monospace
-		// * mw-editfont-sans-serif
-		// * mw-editfont-serif
-		classes: [ 'mw-editfont-' + mw.user.options.get( 'editfont' ) ]
-	}, config.input ) );
+	this.replyBodyWidget = this.createReplyBodyWidget( config.input );
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
 		label: mw.msg( 'discussiontools-replywidget-reply' )
@@ -52,13 +44,10 @@ function ReplyWidget( comment, config ) {
 	this.api = new mw.Api();
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
 
-	// this.getTargetWidget().target.getSurface().getModel().getDocument().connect( this, { transact: this.onInputChangeThrottled } );
-	this.textWidget.connect( this, { change: this.onInputChangeThrottled } );
-
 	// Initialization
 	this.$element.addClass( 'dt-ui-replyWidget' ).append(
 		this.$preview,
-		this.textWidget.$element,
+		this.replyBodyWidget.$element,
 		$( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
 			$( '<div>' ).addClass( 'dt-ui-replyWidget-terms' ).append(
 				mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
@@ -97,6 +86,28 @@ OO.inheritClass( ReplyWidget, OO.ui.Widget );
 
 /* Methods */
 
+ReplyWidget.prototype.createReplyBodyWidget = null;
+
+ReplyWidget.prototype.focus = null;
+
+ReplyWidget.prototype.clear = null;
+
+ReplyWidget.prototype.insertNewNodes = null;
+
+ReplyWidget.prototype.getValue = null;
+
+ReplyWidget.prototype.isEmpty = null;
+
+ReplyWidget.prototype.setPending = function ( pending ) {
+	if ( pending ) {
+		this.replyButton.setDisabled( true );
+		this.cancelButton.setDisabled( true );
+	} else {
+		this.replyButton.setDisabled( false );
+		this.cancelButton.setDisabled( false );
+	}
+};
+
 ReplyWidget.prototype.setup = function () {
 	this.bindBeforeUnloadHandler();
 };
@@ -118,25 +129,14 @@ ReplyWidget.prototype.teardown = function ( confirm ) {
 	promise.then( function () {
 		widget.unbindBeforeUnloadHandler();
 		widget.clear();
+		widget.$preview.empty();
 		widget.emit( 'teardown' );
 	} );
-};
-
-ReplyWidget.prototype.focus = function () {
-	this.textWidget.focus();
-};
-
-ReplyWidget.prototype.clear = function () {
-	this.textWidget.setValue( '' );
 };
 
 ReplyWidget.prototype.onKeyDown = function ( e ) {
 	if ( e.which === OO.ui.Keys.ESCAPE ) {
 		this.emit( 'teardown' );
-		return false;
-	}
-	if ( e.which === OO.ui.Keys.ENTER && ( e.ctrlKey || e.metaKey ) ) {
-		this.onReplyClick();
 		return false;
 	}
 };
@@ -149,19 +149,21 @@ ReplyWidget.prototype.onInputChange = function () {
 			ul: '*',
 			ol: '#'
 		}[ this.context ];
-		// surface = this.getTargetWidget().target.getSurface();
+
+	if ( this.mode !== 'source' ) {
+		return;
+	}
 
 	if ( this.previewRequest ) {
 		this.previewRequest.abort();
 		this.previewRequest = null;
 	}
 
-	// wikitext = surface.getDom();
-	wikitext = this.textWidget.getValue();
+	wikitext = this.getValue();
 	if ( !wikitext.trim() ) {
 		parsePromise = $.Deferred().resolve( '' ).promise();
 	} else {
-		wikitext = controller.autoSign( wikitext );
+		wikitext = controller.autoSignWikitext( wikitext );
 		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.5;">~~~~</span>';
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
 		this.previewRequest = parsePromise = this.api.parse( wikitext, { pst: true } );
@@ -211,18 +213,11 @@ ReplyWidget.prototype.onBeforeUnload = function ( e ) {
 	}
 };
 
-ReplyWidget.prototype.isEmpty = function () {
-	return !this.textWidget.getValue().trim();
-};
-
 ReplyWidget.prototype.onReplyClick = function () {
 	var repliedTo,
 		widget = this;
 
-	this.textWidget.pushPending();
-	this.textWidget.setDisabled( true );
-	this.replyButton.setDisabled( true );
-	this.cancelButton.setDisabled( true );
+	this.setPending( true );
 
 	this.comment.parsoidPromise.then( function ( parsoidData ) {
 		repliedTo = parsoidData.comment.id;
@@ -251,10 +246,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 		widget.teardown();
 		// TODO: Tell controller to teardown all other open widgets
 	} ).always( function () {
-		widget.textWidget.popPending();
-		widget.textWidget.setDisabled( false );
-		widget.replyButton.setDisabled( false );
-		widget.cancelButton.setDisabled( false );
+		widget.setPending( false );
 	} );
 };
 
