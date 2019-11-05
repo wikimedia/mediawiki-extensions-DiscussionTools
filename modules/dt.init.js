@@ -1,5 +1,5 @@
 var pageComments, pageThreads, parsoidPromise, parsoidComments, parsoidDoc,
-	widgetPromise = mw.loader.using( 'oojs-ui-core' );
+	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' );
 
 /**
  * @class mw.discussionTools
@@ -22,6 +22,7 @@ function setupComment( comment ) {
 
 	$tsNode.after(
 		' ',
+		// TODO: i18n
 		$( '<a>' ).text( 'Reply' ).on( 'click', function () {
 			var newList, newListItem,
 				$link = $( this );
@@ -30,43 +31,26 @@ function setupComment( comment ) {
 
 			newList = mw.dt.modifier.addListAtComment( comment );
 			newListItem = mw.dt.modifier.addListItem( newList );
+			// TODO: i18n
 			$( newListItem ).text( 'Loading...' );
 
-			widgetPromise.then( function () {
-				var replyWidget = new OO.ui.MultilineTextInputWidget( {
-						value: 'Reply to ' + comment.author
-					} ),
-					replyButton = new OO.ui.ButtonWidget( {
-						flags: [ 'primary', 'progressive' ],
-						label: 'Reply'
-					} );
+			replyWidgetPromise.then( function () {
+				var replyWidget = new mw.dt.ui.ReplyWidget(
+					comment,
+					parsoidDoc,
+					{
+						// TODO: Remove placeholder
+						doc: '<p>Reply to ' + comment.author + '</p>',
+						defaultMode: 'source'
+					}
+				);
 
-				replyButton.on( 'click', function () {
-					comment.parsoidCommentPromise.then( function ( parsoidComment ) {
-						var html,
-							newParsoidList = mw.dt.modifier.addListAtComment( parsoidComment );
-
-						replyWidget.getValue().split( '\n' ).forEach( function ( line, i, arr ) {
-							var lineItem = mw.dt.modifier.addListItem( newParsoidList );
-							if ( i === arr.length - 1 && line.trim().slice( -4 ) !== '~~~~' ) {
-								line += ' ~~~~';
-							}
-							lineItem.appendChild( mw.dt.modifier.createWikitextNode( line ) );
-						} );
-
-						// TODO: We need an ArticleTargetSaver that is separate from
-						// Target logic.
-						html = ve.init.mw.Target.prototype.getHtml(
-							parsoidComment.range.endContainer.ownerDocument
-						);
-						// eslint-disable-next-line
-						console.log( html );
-					} );
+				replyWidget.on( 'cancel', function () {
+					$link.show();
+					replyWidget.$element.hide();
 				} );
 
-				$( newListItem ).empty().append(
-					replyWidget.$element, replyButton.$element
-				);
+				$( newListItem ).empty().append( replyWidget.$element );
 				replyWidget.focus();
 			} );
 		} )
@@ -102,8 +86,9 @@ if ( new mw.Uri().query.dtdebug ) {
 				oldId: mw.config.get( 'wgRevisionId' )
 			}
 		).then( function ( response ) {
+			var data = response.visualeditor;
 			// TODO: error handling
-			parsoidDoc = ve.createDocumentFromHtml( response.visualeditor.content );
+			parsoidDoc = ve.createDocumentFromHtml( data.content );
 			parsoidComments = mw.dt.parser.getComments( parsoidDoc.body );
 
 			// getThreads build the tree structure, currently only
