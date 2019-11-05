@@ -36,13 +36,19 @@
 				"mediawiki.Title"
 			]
 		},
+		"ext.discussionTools.modifier": {
+			"packageFiles": [
+				"modifier.js"
+			]
+		},
 		"ext.discussionTools.init": {
 			"packageFiles": [
 				"dt.init.js"
 			],
 			"dependencies": [
 				"mediawiki.Uri",
-				"ext.discussionTools.parser"
+				"ext.discussionTools.parser",
+				"ext.discussionTools.modifier"
 			]
 		},
 		"ext.discussionTools.debug": {
