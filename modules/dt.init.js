@@ -8,7 +8,8 @@ var comments, threads,
 mw.dt = {
 	init: {},
 	ui: {},
-	parser: require( 'ext.discussionTools.parser' )
+	parser: require( 'ext.discussionTools.parser' ),
+	modifier: require( 'ext.discussionTools.modifier' )
 };
 
 function setupComment( comment ) {
@@ -22,32 +23,20 @@ function setupComment( comment ) {
 	$tsNode.after(
 		' ',
 		$( '<a>' ).text( 'Reply' ).on( 'click', function () {
-			var lastReply, $list, $listItem, $newItem,
+			var newList, newListItem,
 				$link = $( this );
 
 			$link.hide();
 
-			if ( comment.replies.length ) {
-				lastReply = comment.replies[ comment.replies.length - 1 ];
-				$listItem = $( lastReply.range.endContainer ).closest( 'li, dd' );
-				$list = $listItem.closest( 'dl, ul, ol' );
-			} else {
-				$listItem = $tsNode.closest( 'li, dd' );
-				$list = $listItem.closest( 'dl, ul, ol' );
-				if ( $list.length ) {
-					$list = $( document.createElement( $list.prop( 'tagName' ) ) ).appendTo( $listItem );
-				} else {
-					$list = $( '<dl>' ).insertAfter( $tsNode.closest( 'p' ) );
-				}
-			}
-			$newItem = $( document.createElement( $listItem.prop( 'tagName' ) || 'dd' ) );
-			$list.append( $newItem.text( 'Loading...' ) );
+			newList = mw.dt.modifier.addListAtComment( comment );
+			newListItem = mw.dt.modifier.addListItem( newList );
+			$( newListItem ).text( 'Loading...' );
 
 			widgetPromise.then( function () {
 				var replyWidget = new OO.ui.MultilineTextInputWidget( {
 					value: 'Reply to ' + comment.author
 				} );
-				$newItem.empty().append( replyWidget.$element );
+				$( newListItem ).empty().append( replyWidget.$element );
 				replyWidget.focus();
 			} );
 		} )
