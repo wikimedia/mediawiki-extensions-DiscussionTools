@@ -60,6 +60,12 @@ function addListAtComment( comment ) {
 
 function addListItem( list ) {
 	var listItem = document.createElement( list.nodeName.toLowerCase() === 'dl' ? 'dd' : 'li' );
+
+	// HACK: Setting data-parsoid removes the whitespace after the list item,
+	// which makes nested lists work.
+	// This is undocumented behaviour and probably very fragile.
+	listItem.setAttribute( 'data-parsoid', '{}' );
+
 	list.appendChild( listItem );
 	return listItem;
 }
