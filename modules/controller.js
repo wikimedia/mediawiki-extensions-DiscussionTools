@@ -1,8 +1,22 @@
 'use strict';
 
-var $pageContainer,
+var $pageContainer, pageComments, pageThreads,
 	scrollPadding = { top: 10, bottom: 10 },
 	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' );
+
+function getReplyIndex( comment ) {
+	var commentIndex = pageComments.indexOf( comment );
+
+	function countReplies( c ) {
+		var count = c.replies.length;
+		c.replies.forEach( function ( r ) {
+			count += countReplies( r );
+		} );
+		return count;
+	}
+
+	return commentIndex + countReplies( comment ) + 1;
+}
 
 function setupComment( comment ) {
 	var $replyLink, widgetPromise, newList, newListItem,
@@ -18,7 +32,11 @@ function setupComment( comment ) {
 		// TODO: i18n
 		.text( 'Reply' )
 		.on( 'click', function () {
-			var $link = $( this );
+			var $link = $( this ),
+				userCommentsBeforeReply = pageComments.slice( 0, getReplyIndex( comment ) )
+					.filter( function ( c ) {
+						return c.author === mw.user.getName();
+					} ).length;
 
 			$link.hide();
 			// TODO: Allow users to use multiple reply widgets simlutaneously
@@ -33,7 +51,7 @@ function setupComment( comment ) {
 				$( newListItem ).text( 'Loading...' );
 				widgetPromise = replyWidgetPromise.then( function () {
 					var replyWidget = new mw.dt.ui.ReplyWidget(
-						comment,
+						comment, userCommentsBeforeReply,
 						{
 							// TODO: Remove placeholder
 							doc: '<p>Reply to ' + comment.author + '</p>',
@@ -110,21 +128,58 @@ function postReply( widget, parsoidData ) {
 	} );
 }
 
-function init( $container ) {
-	var pageComments, pageThreads, parsoidPromise, parsoidComments, parsoidDoc,
+function highlight( comment ) {
+	var padding = 5,
+		containerRect = RangeFix.getBoundingClientRect( $pageContainer[ 0 ] ),
+		rect = RangeFix.getBoundingClientRect( comment.range ),
+		$highlight = $( '<div>' ).addClass( 'dt-init-highlight' );
+
+	$highlight.css( {
+		top: rect.top - containerRect.top - padding,
+		left: rect.left - containerRect.left - padding,
+		width: rect.width + ( padding * 2 ),
+		height: rect.height + ( padding * 2 )
+	} );
+
+	setTimeout( function () {
+		$highlight.addClass( 'dt-init-highlight-fade' );
+		setTimeout( function () {
+			$highlight.remove();
+		}, 500 );
+	}, 500 );
+
+	$pageContainer.prepend( $highlight );
+}
+
+function init( $container, state ) {
+	var parsoidPromise, parsoidComments, parsoidDoc,
 		parsoidPageData = {
 			pageName: mw.config.get( 'wgRelevantPageName' ),
 			oldId: mw.config.get( 'wgRevisionId' ),
 			token: mw.user.tokens.get( 'csrfToken' )
 		};
 
+	state = state || {};
 	$pageContainer = $container;
 	pageComments = mw.dt.parser.getComments( $pageContainer[ 0 ] );
 	pageThreads = mw.dt.parser.groupThreads( pageComments );
 	pageThreads.forEach( traverseNode );
 
+	$pageContainer.addClass( 'dt-init-done' );
+	$pageContainer.removeClass( 'dt-init-replylink-open' );
+
 	// For debugging
 	mw.dt.pageThreads = pageThreads;
+
+	if ( state.userCommentsBeforeReply ) {
+		highlight(
+			pageComments.filter( function ( comment ) {
+				// TODO: Find anon comments?
+				return comment.author === mw.user.getName();
+			} )[ state.userCommentsBeforeReply ]
+		);
+		state.userCommentsBeforeReply = null;
+	}
 
 	parsoidPromise = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
 		return mw.libs.ve.targetLoader.requestPageData(

@@ -5,13 +5,15 @@
  * @extends OO.ui.Widget
  * @constructor
  * @param {Object} comment Parsed comment object
+ * @param {number} userCommentsBeforeReply User comments before this reply
  * @param {Object} [config] Configuration options
  */
-mw.dt.ui.ReplyWidget = function ( comment, config ) {
+mw.dt.ui.ReplyWidget = function ( comment, userCommentsBeforeReply, config ) {
 	// Parent constructor
 	mw.dt.ui.ReplyWidget.super.call( this, config );
 
 	this.comment = comment;
+	this.userCommentsBeforeReply = userCommentsBeforeReply;
 
 	this.textWidget = new OO.ui.MultilineTextInputWidget( $.extend( {
 		rows: 3,
@@ -63,7 +65,27 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 
 	this.comment.parsoidPromise.then( function ( parsoidData ) {
 		return mw.dt.controller.postReply( widget, parsoidData );
-	} ).then( function () {
-		location.reload();
+	} ).then( function ( data ) {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		var $container = $( '#mw-content-text' );
+
+		// Update page state
+		$container.html( data.content );
+		mw.config.set( {
+			wgCurRevisionId: data.newrevid,
+			wgRevisionId: data.newrevid
+		} );
+		mw.config.set( data.jsconfigvars );
+		mw.loader.load( data.modules );
+		// TODO update categories, lastmodified
+		// (see ve.init.mw.DesktopArticleTarget.prototype.replacePageContent)
+
+		// Re-initialize
+		mw.dt.controller.init( $container, {
+			userCommentsBeforeReply: widget.userCommentsBeforeReply
+		} );
+		mw.hook( 'wikipage.content' ).fire( $container );
+
+		// TODO: Tell controller to teardown all previous widgets
 	} );
 };
