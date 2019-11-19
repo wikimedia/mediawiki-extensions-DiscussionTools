@@ -85,6 +85,7 @@
 				"dt.ui.ReplyWidget.less"
 			],
 			"messages": [
+				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
 				"discussiontools-replywidget-reply"
 			],
@@ -92,7 +93,8 @@
 				"ext.discussionTools.controller",
 				"oojs-ui-core",
 				"mediawiki.editfont.styles",
-				"mediawiki.user"
+				"mediawiki.user",
+				"mediawiki.jqueryMsg"
 			]
 		}
 	},

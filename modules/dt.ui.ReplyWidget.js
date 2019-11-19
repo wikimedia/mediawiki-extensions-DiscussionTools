@@ -10,6 +10,8 @@ var controller = require( 'ext.discussionTools.controller' );
  * @param {Object} [config] Configuration options
  */
 function ReplyWidget( comment, config ) {
+	var returnTo;
+
 	// Parent constructor
 	ReplyWidget.super.call( this, config );
 
@@ -46,6 +48,25 @@ function ReplyWidget( comment, config ) {
 			this.replyButton.$element
 		)
 	);
+
+	if ( mw.user.isAnon() ) {
+		returnTo = {
+			returntoquery: encodeURIComponent( window.location.search ),
+			returnto: mw.config.get( 'wgPageName' )
+		};
+		this.$element.prepend(
+			new OO.ui.MessageWidget( {
+				classes: [ 'dt-ui-replyWidget-anonWarning' ],
+				type: 'warning',
+				label: mw.message( 'discussiontools-replywidget-anon-warning' )
+					.params( [
+						mw.util.getUrl( 'Special:Userlogin', returnTo ),
+						mw.util.getUrl( 'Special:Userlogin/signup', returnTo )
+					] )
+					.parseDom()
+			} ).$element
+		);
+	}
 }
 
 /* Inheritance */

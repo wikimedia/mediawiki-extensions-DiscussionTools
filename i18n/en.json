@@ -6,6 +6,7 @@
 	"discussiontools-defaultsummary-reply": "Reply",
 	"discussiontools-desc": "Tools to enhance discussion pages.",
 	"discussiontools-replylink": "Reply",
+	"discussiontools-replywidget-anon-warning": "<strong>You are not logged in.</strong> To receive attribution with your name instead of your IP address, you can [$1 log in] or [$2 create an account].",
 	"discussiontools-replywidget-cancel": "Cancel",
 	"discussiontools-replywidget-loading": "Loading…",
 	"discussiontools-replywidget-reply": "Reply"
