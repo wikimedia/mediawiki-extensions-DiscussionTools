@@ -1,4 +1,5 @@
-var controller = require( 'ext.discussionTools.controller' );
+var controller = require( 'ext.discussionTools.controller' ),
+	modifier = require( 'ext.discussionTools.modifier' );
 
 /**
  * DiscussionTools ReplyWidget class
@@ -8,14 +9,19 @@ var controller = require( 'ext.discussionTools.controller' );
  * @constructor
  * @param {Object} comment Parsed comment object
  * @param {Object} [config] Configuration options
+ * @param {Object} [config.input] Configuration options for the comment input widget
  */
 function ReplyWidget( comment, config ) {
-	var returnTo;
+	var returnTo, contextNode;
+
+	config = config || {};
 
 	// Parent constructor
 	ReplyWidget.super.call( this, config );
 
 	this.comment = comment;
+	contextNode = modifier.closest( this.comment.range.endContainer, 'dl, ul, ol' );
+	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 
 	this.textWidget = new OO.ui.MultilineTextInputWidget( $.extend( {
 		rows: 3,
@@ -25,7 +31,7 @@ function ReplyWidget( comment, config ) {
 		// * mw-editfont-sans-serif
 		// * mw-editfont-serif
 		classes: [ 'mw-editfont-' + mw.user.options.get( 'editfont' ) ]
-	}, config ) );
+	}, config.input ) );
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
 		label: mw.msg( 'discussiontools-replywidget-reply' )
@@ -35,13 +41,22 @@ function ReplyWidget( comment, config ) {
 		label: mw.msg( 'discussiontools-replywidget-cancel' )
 	} );
 
+	this.$preview = $( '<div>' ).addClass( 'dt-ui-replyWidget-preview' );
+
 	// Events
 	this.replyButton.connect( this, { click: 'onReplyClick' } );
 	this.cancelButton.connect( this, { click: [ 'emit', 'cancel' ] } );
 	this.$element.on( 'keydown', this.onKeyDown.bind( this ) );
 
+	this.api = new mw.Api();
+	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
+
+	// this.getTargetWidget().target.getSurface().getModel().getDocument().connect( this, { transact: this.onInputChangeThrottled } );
+	this.textWidget.connect( this, { change: this.onInputChangeThrottled } );
+
 	// Initialization
 	this.$element.addClass( 'dt-ui-replyWidget' ).append(
+		this.$preview,
 		this.textWidget.$element,
 		$( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
 			$( '<div>' ).addClass( 'dt-ui-replyWidget-terms' ).append(
@@ -70,6 +85,9 @@ function ReplyWidget( comment, config ) {
 			} ).$element
 		);
 	}
+
+	// Init preview?
+	this.onInputChangeThrottled();
 }
 
 /* Inheritance */
@@ -91,6 +109,44 @@ ReplyWidget.prototype.onKeyDown = function ( e ) {
 		this.onReplyClick();
 		return false;
 	}
+};
+
+ReplyWidget.prototype.onInputChange = function () {
+	var wikitext, parsePromise,
+		widget = this,
+		indent = {
+			dl: ':',
+			ul: '*',
+			ol: '#'
+		}[ this.context ];
+		// surface = this.getTargetWidget().target.getSurface();
+
+	if ( this.previewRequest ) {
+		this.previewRequest.abort();
+		this.previewRequest = null;
+	}
+
+	// wikitext = surface.getDom();
+	wikitext = this.textWidget.getValue();
+	if ( !wikitext.trim() ) {
+		parsePromise = $.Deferred().resolve( '' ).promise();
+	} else {
+		wikitext = controller.autoSign( wikitext );
+		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.5;">~~~~</span>';
+		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
+		this.previewRequest = parsePromise = this.api.parse( wikitext, { pst: true } );
+	}
+	// TODO: Add list context
+
+	parsePromise.then( function ( html ) {
+		var heightAfter,
+			heightBefore = widget.$preview.outerHeight( true );
+		widget.$preview.html( html );
+		heightAfter = widget.$preview.outerHeight( true );
+
+		// TODO: IE11?
+		window.scrollBy( 0, heightAfter - heightBefore );
+	} );
 };
 
 ReplyWidget.prototype.onReplyClick = function () {

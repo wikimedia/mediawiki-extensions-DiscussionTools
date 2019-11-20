@@ -80,6 +80,7 @@ function createWikitextNode( wt ) {
 }
 
 module.exports = {
+	closest: closest,
 	addListAtComment: addListAtComment,
 	addListItem: addListItem,
 	createWikitextNode: createWikitextNode
