@@ -1,6 +1,7 @@
 'use strict';
 
 var $pageContainer,
+	scrollPadding = { top: 10, bottom: 10 },
 	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' );
 
 function setupComment( comment ) {
@@ -55,6 +56,7 @@ function setupComment( comment ) {
 			}
 			widgetPromise.then( function ( replyWidget ) {
 				$( newListItem ).show();
+				replyWidget.scrollElementIntoView( { padding: scrollPadding } );
 				replyWidget.focus();
 			} );
 		} );
