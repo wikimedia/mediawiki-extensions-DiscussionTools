@@ -60,6 +60,19 @@
 			"dependencies": [
 				"ext.discussionTools.parser"
 			]
+		},
+		"ext.discussionTools.ReplyWidget": {
+			"scripts": [
+				"dt.ui.ReplyWidget.js"
+			],
+			"messages": [],
+			"dependencies": [
+				"ext.visualEditor.mwcore",
+				"ext.visualEditor.mwwikitext",
+				"ext.visualEditor.core.desktop",
+				"ext.visualEditor.desktopTarget",
+				"ext.visualEditor.mwextensions.desktop"
+			]
 		}
 	},
 	"QUnitTestModule": {
