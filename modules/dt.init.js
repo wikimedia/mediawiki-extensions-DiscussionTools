@@ -1,5 +1,7 @@
 var pageComments, pageThreads, parsoidPromise, parsoidComments, parsoidDoc,
-	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' );
+	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' ),
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$pageContainer = $( '#mw-content-text' );
 
 /**
  * @class mw.discussionTools
@@ -13,48 +15,64 @@ mw.dt = {
 };
 
 function setupComment( comment ) {
-	var $tsNode = $( comment.range.endContainer );
+	var $replyLink, widgetPromise, newList, newListItem,
+		$tsNode = $( comment.range.endContainer );
 
 	// Is it possible to have a heading nested in a thread?
 	if ( comment.type !== 'comment' ) {
 		return;
 	}
 
-	$tsNode.after(
-		' ',
+	$replyLink = $( '<a>' )
+		.addClass( 'dt-init-replylink' )
 		// TODO: i18n
-		$( '<a>' ).text( 'Reply' ).on( 'click', function () {
-			var newList, newListItem,
-				$link = $( this );
+		.text( 'Reply' )
+		.on( 'click', function () {
+			var $link = $( this );
 
 			$link.hide();
+			// TODO: Allow users to use multiple reply widgets simlutaneously
+			// Currently as all widgets share the same Parsoid doc, this could
+			// cause problems.
+			$pageContainer.addClass( 'dt-init-replylink-open' );
 
-			newList = mw.dt.modifier.addListAtComment( comment );
-			newListItem = mw.dt.modifier.addListItem( newList );
-			// TODO: i18n
-			$( newListItem ).text( 'Loading...' );
+			if ( !widgetPromise ) {
+				newList = mw.dt.modifier.addListAtComment( comment );
+				newListItem = mw.dt.modifier.addListItem( newList );
+				// TODO: i18n
+				$( newListItem ).text( 'Loading...' );
+				widgetPromise = replyWidgetPromise.then( function () {
+					var replyWidget = new mw.dt.ui.ReplyWidget(
+						comment,
+						parsoidDoc,
+						{
+							// TODO: Remove placeholder
+							doc: '<p>Reply to ' + comment.author + '</p>',
+							defaultMode: 'source'
+						}
+					);
 
-			replyWidgetPromise.then( function () {
-				var replyWidget = new mw.dt.ui.ReplyWidget(
-					comment,
-					parsoidDoc,
-					{
-						// TODO: Remove placeholder
-						doc: '<p>Reply to ' + comment.author + '</p>',
-						defaultMode: 'source'
-					}
-				);
+					replyWidget.on( 'cancel', function () {
+						$link.show();
+						$pageContainer.removeClass( 'dt-init-replylink-open' );
+						$( newListItem ).hide();
+					} );
 
-				replyWidget.on( 'cancel', function () {
+					$( newListItem ).empty().append( replyWidget.$element );
+					return replyWidget;
+				}, function () {
 					$link.show();
-					replyWidget.$element.hide();
+					$pageContainer.removeClass( 'dt-init-replylink-open' );
 				} );
+			}
 
-				$( newListItem ).empty().append( replyWidget.$element );
+			widgetPromise.then( function ( replyWidget ) {
+				$( newListItem ).show();
 				replyWidget.focus();
 			} );
-		} )
-	);
+		} );
+
+	$tsNode.after( $replyLink );
 }
 
 function traverseNode( parent ) {
@@ -67,7 +85,7 @@ function traverseNode( parent ) {
 if ( new mw.Uri().query.dtdebug ) {
 	mw.loader.load( 'ext.discussionTools.debug' );
 } else {
-	pageComments = mw.dt.parser.getComments( document.getElementById( 'mw-content-text' ) );
+	pageComments = mw.dt.parser.getComments( $pageContainer[ 0 ] );
 	pageThreads = mw.dt.parser.groupThreads( pageComments );
 	pageThreads.forEach( traverseNode );
 
