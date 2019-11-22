@@ -13,7 +13,10 @@ mw.dt.ui.ReplyWidget = function ( comment, config ) {
 
 	this.comment = comment;
 
-	this.textWidget = new OO.ui.MultilineTextInputWidget( config );
+	this.textWidget = new OO.ui.MultilineTextInputWidget( $.extend( {
+		rows: 3,
+		autosize: true
+	}, config ) );
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
 		label: 'Reply'

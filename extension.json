@@ -72,6 +72,9 @@
 			"scripts": [
 				"dt.ui.ReplyWidget.js"
 			],
+			"styles": [
+				"dt.ui.ReplyWidget.less"
+			],
 			"messages": [],
 			"dependencies": [
 				"oojs-ui-core"
