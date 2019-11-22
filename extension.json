@@ -41,6 +41,11 @@
 				"modifier.js"
 			]
 		},
+		"ext.discussionTools.controller": {
+			"packageFiles": [
+				"controller.js"
+			]
+		},
 		"ext.discussionTools.init": {
 			"packageFiles": [
 				"dt.init.js"
@@ -49,7 +54,8 @@
 			"dependencies": [
 				"mediawiki.Uri",
 				"ext.discussionTools.parser",
-				"ext.discussionTools.modifier"
+				"ext.discussionTools.modifier",
+				"ext.discussionTools.controller"
 			]
 		},
 		"ext.discussionTools.debug": {
