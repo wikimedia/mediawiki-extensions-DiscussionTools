@@ -74,11 +74,7 @@
 			],
 			"messages": [],
 			"dependencies": [
-				"ext.visualEditor.mwcore",
-				"ext.visualEditor.mwwikitext",
-				"ext.visualEditor.core.desktop",
-				"ext.visualEditor.desktopTarget",
-				"ext.visualEditor.mwextensions.desktop"
+				"oojs-ui-core"
 			]
 		}
 	},
