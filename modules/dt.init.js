@@ -1,7 +1,12 @@
 var pageComments, pageThreads, parsoidPromise, parsoidComments, parsoidDoc,
 	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' ),
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$pageContainer = $( '#mw-content-text' );
+	$pageContainer = $( '#mw-content-text' ),
+	parsoidPageData = {
+		pageName: mw.config.get( 'wgRelevantPageName' ),
+		oldId: mw.config.get( 'wgRevisionId' ),
+		token: mw.user.tokens.get( 'csrfToken' )
+	};
 
 /**
  * @class mw.discussionTools
@@ -92,22 +97,18 @@ if ( new mw.Uri().query.dtdebug ) {
 	// For debugging
 	mw.dt.pageThreads = pageThreads;
 
-	parsoidPromise = mw.loader.using( [
-		'ext.visualEditor.targetLoader',
-		// TODO: We are loading ext.visualEditor.base just for ve.createDocumentFromHTML
-		'ext.visualEditor.base',
-		// TODO: Loading mw.Target class for save testing
-		'ext.visualEditor.mediawiki'
-	] ).then( function () {
+	parsoidPromise = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
 		return mw.libs.ve.targetLoader.requestPageData(
-			'visual', mw.config.get( 'wgRelevantPageName' ), {
-				oldId: mw.config.get( 'wgRevisionId' )
-			}
+			'visual', parsoidPageData.pageName, { oldId: parsoidPageData.oldId }
 		).then( function ( response ) {
 			var data = response.visualeditor;
 			// TODO: error handling
 			parsoidDoc = ve.createDocumentFromHtml( data.content );
 			parsoidComments = mw.dt.parser.getComments( parsoidDoc.body );
+
+			parsoidPageData.baseTimeStamp = data.basetimestamp;
+			parsoidPageData.startTimeStamp = data.startimestamp;
+			parsoidPageData.etag = data.etag;
 
 			// getThreads build the tree structure, currently only
 			// used to set 'replies'
@@ -118,8 +119,12 @@ if ( new mw.Uri().query.dtdebug ) {
 	// Map PHP comments to Parsoid comments.
 	// TODO: Handle when these don't align
 	pageComments.forEach( function ( comment, i ) {
-		comment.parsoidCommentPromise = parsoidPromise.then( function () {
-			return parsoidComments[ i ];
+		comment.parsoidPromise = parsoidPromise.then( function () {
+			return {
+				comment: parsoidComments[ i ],
+				doc: parsoidDoc,
+				pageData: parsoidPageData
+			};
 		} );
 	} );
 }
