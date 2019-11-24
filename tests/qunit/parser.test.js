@@ -200,5 +200,8 @@ QUnit.test( 'Integration tests', function ( assert ) {
 				cases[ i ].name + ' section ' + j
 			);
 		}
+
+		// Uncomment this to get updated content for the the JSON files, for copy/paste:
+		// console.log( JSON.stringify( threads, null, 2 ) );
 	}
 } );
