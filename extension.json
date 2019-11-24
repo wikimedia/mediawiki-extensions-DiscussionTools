@@ -77,6 +77,7 @@
 			],
 			"messages": [],
 			"dependencies": [
+				"ext.discussionTools.init",
 				"oojs-ui-core"
 			]
 		}
