@@ -1,22 +1,8 @@
 'use strict';
 
-var $pageContainer, pageComments, pageThreads,
+var $pageContainer,
 	scrollPadding = { top: 10, bottom: 10 },
 	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' );
-
-function getReplyIndex( comment ) {
-	var commentIndex = pageComments.indexOf( comment );
-
-	function countReplies( c ) {
-		var count = c.replies.length;
-		c.replies.forEach( function ( r ) {
-			count += countReplies( r );
-		} );
-		return count;
-	}
-
-	return commentIndex + countReplies( comment ) + 1;
-}
 
 function setupComment( comment ) {
 	var $replyLink, widgetPromise, newList, newListItem,
@@ -31,11 +17,7 @@ function setupComment( comment ) {
 		.addClass( 'dt-init-replylink' )
 		.text( mw.msg( 'discussiontools-replylink' ) )
 		.on( 'click', function () {
-			var $link = $( this ),
-				userCommentsBeforeReply = pageComments.slice( 0, getReplyIndex( comment ) )
-					.filter( function ( c ) {
-						return c.author === mw.user.getName();
-					} ).length;
+			var $link = $( this );
 
 			$link.addClass( 'dt-init-replylink-active' );
 			// TODO: Allow users to use multiple reply widgets simlutaneously
@@ -49,7 +31,7 @@ function setupComment( comment ) {
 				$( newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 				widgetPromise = replyWidgetPromise.then( function () {
 					var replyWidget = new mw.dt.ui.ReplyWidget(
-						comment, userCommentsBeforeReply
+						comment
 						// For VE version:
 						// { defaultMode: 'source' }
 					);
@@ -145,8 +127,20 @@ function highlight( comment ) {
 	$pageContainer.prepend( $highlight );
 }
 
+function commentsById( comments ) {
+	var byId = {};
+	comments.forEach( function ( comment ) {
+		byId[ comment.id ] = comment;
+	} );
+	return byId;
+}
+
 function init( $container, state ) {
-	var parsoidPromise, parsoidComments, parsoidDoc,
+	var
+		parsoidPromise, parsoidDoc,
+		parsoidComments, parsoidCommentsById,
+		pageComments, pageThreads, pageCommentsById,
+		repliedToComment,
 		parsoidPageData = {
 			pageName: mw.config.get( 'wgRelevantPageName' ),
 			oldId: mw.config.get( 'wgRevisionId' ),
@@ -157,6 +151,8 @@ function init( $container, state ) {
 	$pageContainer = $container;
 	pageComments = mw.dt.parser.getComments( $pageContainer[ 0 ] );
 	pageThreads = mw.dt.parser.groupThreads( pageComments );
+	pageCommentsById = commentsById( pageComments );
+
 	pageThreads.forEach( traverseNode );
 
 	$pageContainer.addClass( 'dt-init-done' );
@@ -165,14 +161,10 @@ function init( $container, state ) {
 	// For debugging
 	mw.dt.pageThreads = pageThreads;
 
-	if ( state.userCommentsBeforeReply ) {
-		highlight(
-			pageComments.filter( function ( comment ) {
-				// TODO: Find anon comments?
-				return comment.author === mw.user.getName();
-			} )[ state.userCommentsBeforeReply ]
-		);
-		state.userCommentsBeforeReply = null;
+	if ( state.repliedTo ) {
+		// Find the comment we replied to, then highlight the last reply
+		repliedToComment = pageCommentsById[ state.repliedTo ];
+		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 	}
 
 	parsoidPromise = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
@@ -191,15 +183,18 @@ function init( $container, state ) {
 			// getThreads build the tree structure, currently only
 			// used to set 'replies'
 			mw.dt.parser.groupThreads( parsoidComments );
+			parsoidCommentsById = commentsById( parsoidComments );
 		} );
 	} );
 
 	// Map PHP comments to Parsoid comments.
-	// TODO: Handle when these don't align
-	pageComments.forEach( function ( comment, i ) {
+	pageComments.forEach( function ( comment ) {
 		comment.parsoidPromise = parsoidPromise.then( function () {
+			if ( !parsoidCommentsById[ comment.id ] ) {
+				throw new Error( 'Could not find comment in Parsoid HTML' );
+			}
 			return {
-				comment: parsoidComments[ i ],
+				comment: parsoidCommentsById[ comment.id ],
 				doc: parsoidDoc,
 				pageData: parsoidPageData
 			};

@@ -742,6 +742,8 @@ function getComments( rootNode ) {
  * @param {Object} comments Result of #getComments
  * @return {Object[]} Tree structure of comments, using the same objects as `comments`. Top-level
  *   items are the headings. The following properties are added:
+ * @return {string} return.id Unique ID (within the page) for this comment, intended to be used to
+ *   find this comment in other revisions of the same page
  * @return {Object[]} return.replies Comment objects which are replies to this comment
  * @return {Object|null} return.parent Comment object which this is a reply to (null for headings)
  */
@@ -749,11 +751,38 @@ function groupThreads( comments ) {
 	var
 		threads = [],
 		replies = [],
-		i, comment;
+		commentsById = {},
+		i, comment, id, number;
 
 	for ( i = 0; i < comments.length; i++ ) {
 		comment = comments[ i ];
+
+		if ( comment.level === 0 ) {
+			// We don't need ids for section headings right now, but we might in the future
+			// e.g. if we allow replying directly to sections (adding top-level comments)
+			id = null;
+		} else {
+			// username+timestamp
+			id = [
+				comment.author || '',
+				comment.timestamp.toISOString()
+			].join( '|' );
+
+			// If there would be multiple comments with the same ID (i.e. the user left multiple comments
+			// in one edit, or within a minute), append sequential numbers
+			number = 0;
+			while ( commentsById[ id + '|' + number ] ) {
+				number++;
+			}
+			id = id + '|' + number;
+		}
+
+		if ( id ) {
+			commentsById[ id ] = comment;
+		}
+
 		// This modifies the original objects in `comments`!
+		comment.id = id;
 		comment.replies = [];
 		comment.parent = null;
 

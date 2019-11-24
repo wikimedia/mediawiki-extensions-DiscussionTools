@@ -5,15 +5,13 @@
  * @extends OO.ui.Widget
  * @constructor
  * @param {Object} comment Parsed comment object
- * @param {number} userCommentsBeforeReply User comments before this reply
  * @param {Object} [config] Configuration options
  */
-mw.dt.ui.ReplyWidget = function ( comment, userCommentsBeforeReply, config ) {
+mw.dt.ui.ReplyWidget = function ( comment, config ) {
 	// Parent constructor
 	mw.dt.ui.ReplyWidget.super.call( this, config );
 
 	this.comment = comment;
-	this.userCommentsBeforeReply = userCommentsBeforeReply;
 
 	this.textWidget = new OO.ui.MultilineTextInputWidget( $.extend( {
 		rows: 3,
@@ -70,12 +68,14 @@ mw.dt.ui.ReplyWidget.prototype.onKeyDown = function ( e ) {
 };
 
 mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
-	var widget = this;
+	var repliedTo,
+		widget = this;
 
 	this.textWidget.pushPending();
 	this.textWidget.setDisabled( true );
 
 	this.comment.parsoidPromise.then( function ( parsoidData ) {
+		repliedTo = parsoidData.comment.id;
 		return mw.dt.controller.postReply( widget, parsoidData );
 	} ).then( function ( data ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -94,7 +94,7 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 
 		// Re-initialize
 		mw.dt.controller.init( $container, {
-			userCommentsBeforeReply: widget.userCommentsBeforeReply
+			repliedTo: repliedTo
 		} );
 		mw.hook( 'wikipage.content' ).fire( $container );
 
