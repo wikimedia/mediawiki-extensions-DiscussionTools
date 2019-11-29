@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mansil"
+			"Mansil",
+			"Hamilton Abreu"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
-	"discussiontools-desc": "Ferramentas para melhorar as páginas de discussão."
+	"discussiontools-desc": "Ferramentas para melhorar páginas de discussão."
 }
