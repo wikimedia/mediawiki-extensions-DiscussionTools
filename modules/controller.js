@@ -20,7 +20,7 @@ function setupComment( comment ) {
 		.on( 'click', function () {
 			var $link = $( this );
 
-			$link.hide();
+			$link.addClass( 'dt-init-replylink-active' );
 			// TODO: Allow users to use multiple reply widgets simlutaneously
 			// Currently as all widgets share the same Parsoid doc, this could
 			// cause problems.
@@ -42,7 +42,7 @@ function setupComment( comment ) {
 					);
 
 					replyWidget.on( 'cancel', function () {
-						$link.show();
+						$link.removeClass( 'dt-init-replylink-active' );
 						$pageContainer.removeClass( 'dt-init-replylink-open' );
 						$( newListItem ).hide();
 					} );
@@ -50,7 +50,7 @@ function setupComment( comment ) {
 					$( newListItem ).empty().append( replyWidget.$element );
 					return replyWidget;
 				}, function () {
-					$link.show();
+					$link.removeClass( 'dt-init-replylink-active' );
 					$pageContainer.removeClass( 'dt-init-replylink-open' );
 				} );
 			}
