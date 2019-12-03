@@ -52,6 +52,7 @@
 			],
 			"styles": "dt.init.less",
 			"dependencies": [
+				"rangefix",
 				"mediawiki.Uri",
 				"ext.discussionTools.parser",
 				"ext.discussionTools.modifier",

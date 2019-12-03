@@ -8,6 +8,7 @@
 		"OO": "readonly",
 		"ve": "readonly",
 		"require": "readonly",
-		"module": "readonly"
+		"module": "readonly",
+		"RangeFix": "readonly"
 	}
 }
