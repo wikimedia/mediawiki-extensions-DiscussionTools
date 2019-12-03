@@ -79,7 +79,9 @@
 			"messages": [],
 			"dependencies": [
 				"ext.discussionTools.init",
-				"oojs-ui-core"
+				"oojs-ui-core",
+				"mediawiki.editfont.styles",
+				"mediawiki.user"
 			]
 		}
 	},

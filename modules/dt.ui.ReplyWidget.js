@@ -17,7 +17,12 @@ mw.dt.ui.ReplyWidget = function ( comment, userCommentsBeforeReply, config ) {
 
 	this.textWidget = new OO.ui.MultilineTextInputWidget( $.extend( {
 		rows: 3,
-		autosize: true
+		autosize: true,
+		// The following classes can be used here:
+		// * mw-editfont-monospace
+		// * mw-editfont-sans-serif
+		// * mw-editfont-serif
+		classes: [ 'mw-editfont-' + mw.user.options.get( 'editfont' ) ]
 	}, config ) );
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
