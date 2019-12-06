@@ -63,6 +63,10 @@ mw.dt.ui.ReplyWidget.prototype.onKeyDown = function ( e ) {
 		this.emit( 'cancel' );
 		return false;
 	}
+	if ( e.which === OO.ui.Keys.ENTER && ( e.ctrlKey || e.metaKey ) ) {
+		this.onReplyClick();
+		return false;
+	}
 };
 
 mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
