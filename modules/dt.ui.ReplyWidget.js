@@ -72,6 +72,9 @@ mw.dt.ui.ReplyWidget.prototype.onKeyDown = function ( e ) {
 mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 	var widget = this;
 
+	this.textWidget.pushPending();
+	this.textWidget.setDisabled( true );
+
 	this.comment.parsoidPromise.then( function ( parsoidData ) {
 		return mw.dt.controller.postReply( widget, parsoidData );
 	} ).then( function ( data ) {
@@ -96,5 +99,8 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 		mw.hook( 'wikipage.content' ).fire( $container );
 
 		// TODO: Tell controller to teardown all previous widgets
+	} ).always( function () {
+		widget.textWidget.popPending();
+		widget.textWidget.setDisabled( false );
 	} );
 };
