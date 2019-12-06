@@ -29,8 +29,7 @@ function setupComment( comment ) {
 
 	$replyLink = $( '<a>' )
 		.addClass( 'dt-init-replylink' )
-		// TODO: i18n
-		.text( 'Reply' )
+		.text( mw.msg( 'discussiontools-replylink' ) )
 		.on( 'click', function () {
 			var $link = $( this ),
 				userCommentsBeforeReply = pageComments.slice( 0, getReplyIndex( comment ) )
@@ -47,16 +46,12 @@ function setupComment( comment ) {
 			if ( !widgetPromise ) {
 				newList = mw.dt.modifier.addListAtComment( comment );
 				newListItem = mw.dt.modifier.addListItem( newList );
-				// TODO: i18n
-				$( newListItem ).text( 'Loading...' );
+				$( newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 				widgetPromise = replyWidgetPromise.then( function () {
 					var replyWidget = new mw.dt.ui.ReplyWidget(
-						comment, userCommentsBeforeReply,
-						{
-							// TODO: Remove placeholder
-							doc: '<p>Reply to ' + comment.author + '</p>',
-							defaultMode: 'source'
-						}
+						comment, userCommentsBeforeReply
+						// For VE version:
+						// { defaultMode: 'source' }
 					);
 
 					replyWidget.on( 'cancel', function () {
@@ -108,8 +103,7 @@ function postReply( widget, parsoidData ) {
 		root = root.parent;
 	}
 
-	// TODO: i18n
-	summary = '/* ' + root.range.toString() + ' */ Reply';
+	summary = '/* ' + root.range.toString() + ' */ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
 
 	return mw.libs.ve.targetSaver.deflateDoc( parsoidData.doc ).then( function ( html ) {
 		return mw.libs.ve.targetSaver.postHtml(

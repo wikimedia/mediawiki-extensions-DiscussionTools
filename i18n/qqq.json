@@ -1,5 +1,10 @@
 {
 	"@metadata": [],
 	"discussiontools": "The name of the extension",
-	"discussiontools-desc": "{{desc|name=DiscussionTools|url=}}"
+	"discussiontools-defaultsummary-reply": "Default edit summary for a reply",
+	"discussiontools-desc": "{{desc|name=DiscussionTools|url=}}",
+	"discussiontools-replylink": "Label for the reply link added after each comment",
+	"discussiontools-replywidget-cancel": "Label for the cancel button in the reply widget",
+	"discussiontools-replywidget-loading": "Message shown while the reply widget is loading",
+	"discussiontools-replywidget-reply": "Label for the button to submit a reply in the reply widget"
 }

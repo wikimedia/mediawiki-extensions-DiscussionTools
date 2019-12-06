@@ -26,11 +26,11 @@ mw.dt.ui.ReplyWidget = function ( comment, userCommentsBeforeReply, config ) {
 	}, config ) );
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
-		label: 'Reply'
+		label: mw.msg( 'discussiontools-replywidget-reply' )
 	} );
 	this.cancelButton = new OO.ui.ButtonWidget( {
 		flags: [ 'destructive' ],
-		label: 'Cancel'
+		label: mw.msg( 'discussiontools-replywidget-cancel' )
 	} );
 
 	// Events
