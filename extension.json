@@ -44,6 +44,11 @@
 		"ext.discussionTools.controller": {
 			"packageFiles": [
 				"controller.js"
+			],
+			"messages": [
+				"discussiontools-defaultsummary-reply",
+				"discussiontools-replylink",
+				"discussiontools-replywidget-loading"
 			]
 		},
 		"ext.discussionTools.init": {
@@ -76,7 +81,10 @@
 			"styles": [
 				"dt.ui.ReplyWidget.less"
 			],
-			"messages": [],
+			"messages": [
+				"discussiontools-replywidget-cancel",
+				"discussiontools-replywidget-reply"
+			],
 			"dependencies": [
 				"ext.discussionTools.init",
 				"oojs-ui-core",

@@ -3,5 +3,10 @@
 		"authors": []
 	},
 	"discussiontools": "Discussion tools",
-	"discussiontools-desc": "Tools to enhance discussion pages."
+	"discussiontools-defaultsummary-reply": "Reply",
+	"discussiontools-desc": "Tools to enhance discussion pages.",
+	"discussiontools-replylink": "Reply",
+	"discussiontools-replywidget-cancel": "Cancel",
+	"discussiontools-replywidget-loading": "Loading…",
+	"discussiontools-replywidget-reply": "Reply"
 }
