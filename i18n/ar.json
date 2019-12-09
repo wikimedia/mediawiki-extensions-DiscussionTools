@@ -5,5 +5,10 @@
 		]
 	},
 	"discussiontools": "أدوات المناقشة",
-	"discussiontools-desc": "أدوات لتحسين صفحات المناقشة."
+	"discussiontools-defaultsummary-reply": "رد",
+	"discussiontools-desc": "أدوات لتحسين صفحات المناقشة.",
+	"discussiontools-replylink": "رد",
+	"discussiontools-replywidget-cancel": "إلغاء",
+	"discussiontools-replywidget-loading": "جارٍ التحميل...",
+	"discussiontools-replywidget-reply": "رد"
 }

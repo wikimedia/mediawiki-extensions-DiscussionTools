@@ -4,5 +4,10 @@
 			"WikiPhoenix"
 		]
 	},
-	"discussiontools": "Diskussionsverktyg"
+	"discussiontools": "Diskussionsverktyg",
+	"discussiontools-defaultsummary-reply": "Svara",
+	"discussiontools-replylink": "Svara",
+	"discussiontools-replywidget-cancel": "Avbryt",
+	"discussiontools-replywidget-loading": "Läser in…",
+	"discussiontools-replywidget-reply": "Svara"
 }

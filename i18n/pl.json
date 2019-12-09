@@ -5,5 +5,10 @@
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
-	"discussiontools-desc": "Narzędzia rozszerzające strony dyskusji."
+	"discussiontools-defaultsummary-reply": "Odpowiedz",
+	"discussiontools-desc": "Narzędzia rozszerzające strony dyskusji.",
+	"discussiontools-replylink": "Odpowiedz",
+	"discussiontools-replywidget-cancel": "Anuluj",
+	"discussiontools-replywidget-loading": "Ładowanie…",
+	"discussiontools-replywidget-reply": "Odpowiedz"
 }

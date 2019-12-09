@@ -5,5 +5,10 @@
 		]
 	},
 	"discussiontools": "Tartışma araçları",
-	"discussiontools-desc": "Tartışma sayfalarını geliştirmek için araçlar."
+	"discussiontools-defaultsummary-reply": "Yanıtla",
+	"discussiontools-desc": "Tartışma sayfalarını geliştirmek için araçlar.",
+	"discussiontools-replylink": "Yanıtla",
+	"discussiontools-replywidget-cancel": "İptal",
+	"discussiontools-replywidget-loading": "Yükleniyor...",
+	"discussiontools-replywidget-reply": "Yanıtla"
 }
