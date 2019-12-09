@@ -33,7 +33,11 @@ class DiscussionToolsHooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) {
 		$title = $output->getTitle();
+		$actionName = Action::getActionName( $output->getContext() );
 		if (
+			// Don't show on edit pages
+			$actionName !== 'edit' &&
+			$actionName !== 'submit' &&
 			// Only wikitext pages (e.g. not Flow boards)
 			$title->getContentModel() === CONTENT_MODEL_WIKITEXT &&
 			$title->isTalkPage()
