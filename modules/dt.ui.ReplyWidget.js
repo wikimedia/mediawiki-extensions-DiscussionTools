@@ -74,6 +74,8 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 
 	this.textWidget.pushPending();
 	this.textWidget.setDisabled( true );
+	this.replyButton.setDisabled( true );
+	this.cancelButton.setDisabled( true );
 
 	this.comment.parsoidPromise.then( function ( parsoidData ) {
 		return mw.dt.controller.postReply( widget, parsoidData );
@@ -102,5 +104,7 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 	} ).always( function () {
 		widget.textWidget.popPending();
 		widget.textWidget.setDisabled( false );
+		widget.replyButton.setDisabled( false );
+		widget.cancelButton.setDisabled( false );
 	} );
 };
