@@ -44,6 +44,9 @@ function ReplyWidget( comment, config ) {
 	this.$element.addClass( 'dt-ui-replyWidget' ).append(
 		this.textWidget.$element,
 		$( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
+			$( '<div>' ).addClass( 'dt-ui-replyWidget-terms' ).append(
+				mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
+			),
 			this.cancelButton.$element,
 			this.replyButton.$element
 		)

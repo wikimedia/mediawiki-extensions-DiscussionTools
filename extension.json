@@ -87,7 +87,8 @@
 			"messages": [
 				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
-				"discussiontools-replywidget-reply"
+				"discussiontools-replywidget-reply",
+				"discussiontools-replywidget-terms-click"
 			],
 			"dependencies": [
 				"ext.discussionTools.controller",
