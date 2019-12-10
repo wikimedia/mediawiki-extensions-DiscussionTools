@@ -1,15 +1,17 @@
+var controller = require( 'ext.discussionTools.controller' );
+
 /**
  * DiscussionTools ReplyWidget class
  *
- * @class
+ * @class mw.dt.ReplyWidget
  * @extends OO.ui.Widget
  * @constructor
  * @param {Object} comment Parsed comment object
  * @param {Object} [config] Configuration options
  */
-mw.dt.ui.ReplyWidget = function ( comment, config ) {
+function ReplyWidget( comment, config ) {
 	// Parent constructor
-	mw.dt.ui.ReplyWidget.super.call( this, config );
+	ReplyWidget.super.call( this, config );
 
 	this.comment = comment;
 
@@ -44,19 +46,19 @@ mw.dt.ui.ReplyWidget = function ( comment, config ) {
 			this.replyButton.$element
 		)
 	);
-};
+}
 
 /* Inheritance */
 
-OO.inheritClass( mw.dt.ui.ReplyWidget, OO.ui.Widget );
+OO.inheritClass( ReplyWidget, OO.ui.Widget );
 
 /* Methods */
 
-mw.dt.ui.ReplyWidget.prototype.focus = function () {
+ReplyWidget.prototype.focus = function () {
 	this.textWidget.focus();
 };
 
-mw.dt.ui.ReplyWidget.prototype.onKeyDown = function ( e ) {
+ReplyWidget.prototype.onKeyDown = function ( e ) {
 	if ( e.which === OO.ui.Keys.ESCAPE ) {
 		this.emit( 'cancel' );
 		return false;
@@ -67,7 +69,7 @@ mw.dt.ui.ReplyWidget.prototype.onKeyDown = function ( e ) {
 	}
 };
 
-mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
+ReplyWidget.prototype.onReplyClick = function () {
 	var repliedTo,
 		widget = this;
 
@@ -78,7 +80,7 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 
 	this.comment.parsoidPromise.then( function ( parsoidData ) {
 		repliedTo = parsoidData.comment.id;
-		return mw.dt.controller.postReply( widget, parsoidData );
+		return controller.postReply( widget, parsoidData );
 	} ).then( function ( data ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $container = $( '#mw-content-text' );
@@ -95,7 +97,7 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 		// (see ve.init.mw.DesktopArticleTarget.prototype.replacePageContent)
 
 		// Re-initialize
-		mw.dt.controller.init( $container, {
+		controller.init( $container, {
 			repliedTo: repliedTo
 		} );
 		mw.hook( 'wikipage.content' ).fire( $container );
@@ -108,3 +110,5 @@ mw.dt.ui.ReplyWidget.prototype.onReplyClick = function () {
 		widget.cancelButton.setDisabled( false );
 	} );
 };
+
+module.exports = ReplyWidget;

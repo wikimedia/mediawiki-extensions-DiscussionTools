@@ -45,6 +45,11 @@
 			"packageFiles": [
 				"controller.js"
 			],
+			"dependencies": [
+				"rangefix",
+				"ext.discussionTools.parser",
+				"ext.discussionTools.modifier"
+			],
 			"messages": [
 				"discussiontools-defaultsummary-reply",
 				"discussiontools-replylink",
@@ -57,10 +62,7 @@
 			],
 			"styles": "dt.init.less",
 			"dependencies": [
-				"rangefix",
 				"mediawiki.Uri",
-				"ext.discussionTools.parser",
-				"ext.discussionTools.modifier",
 				"ext.discussionTools.controller"
 			]
 		},
@@ -75,7 +77,7 @@
 			]
 		},
 		"ext.discussionTools.ReplyWidget": {
-			"scripts": [
+			"packageFiles": [
 				"dt.ui.ReplyWidget.js"
 			],
 			"styles": [
@@ -86,7 +88,7 @@
 				"discussiontools-replywidget-reply"
 			],
 			"dependencies": [
-				"ext.discussionTools.init",
+				"ext.discussionTools.controller",
 				"oojs-ui-core",
 				"mediawiki.editfont.styles",
 				"mediawiki.user"

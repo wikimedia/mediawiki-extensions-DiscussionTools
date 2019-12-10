@@ -1,6 +1,9 @@
 'use strict';
 
-var $pageContainer,
+var
+	parser = require( 'ext.discussionTools.parser' ),
+	modifier = require( 'ext.discussionTools.modifier' ),
+	$pageContainer,
 	scrollPadding = { top: 10, bottom: 10 },
 	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' );
 
@@ -26,15 +29,17 @@ function setupComment( comment ) {
 			$pageContainer.addClass( 'dt-init-replylink-open' );
 
 			if ( !widgetPromise ) {
-				newList = mw.dt.modifier.addListAtComment( comment );
-				newListItem = mw.dt.modifier.addListItem( newList );
+				newList = modifier.addListAtComment( comment );
+				newListItem = modifier.addListItem( newList );
 				$( newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 				widgetPromise = replyWidgetPromise.then( function () {
-					var replyWidget = new mw.dt.ui.ReplyWidget(
-						comment
-						// For VE version:
-						// { defaultMode: 'source' }
-					);
+					var
+						ReplyWidget = require( 'ext.discussionTools.ReplyWidget' ),
+						replyWidget = new ReplyWidget(
+							comment
+							// For VE version:
+							// { defaultMode: 'source' }
+						);
 
 					replyWidget.on( 'cancel', function () {
 						$link.removeClass( 'dt-init-replylink-active' );
@@ -70,14 +75,14 @@ function postReply( widget, parsoidData ) {
 	var root, summary,
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData,
-		newParsoidList = mw.dt.modifier.addListAtComment( comment );
+		newParsoidList = modifier.addListAtComment( comment );
 
 	widget.textWidget.getValue().split( '\n' ).forEach( function ( line, i, arr ) {
-		var lineItem = mw.dt.modifier.addListItem( newParsoidList );
+		var lineItem = modifier.addListItem( newParsoidList );
 		if ( i === arr.length - 1 && line.trim().slice( -4 ) !== '~~~~' ) {
 			line += ' ~~~~';
 		}
-		lineItem.appendChild( mw.dt.modifier.createWikitextNode( line ) );
+		lineItem.appendChild( modifier.createWikitextNode( line ) );
 	} );
 
 	root = comment;
@@ -149,8 +154,8 @@ function init( $container, state ) {
 
 	state = state || {};
 	$pageContainer = $container;
-	pageComments = mw.dt.parser.getComments( $pageContainer[ 0 ] );
-	pageThreads = mw.dt.parser.groupThreads( pageComments );
+	pageComments = parser.getComments( $pageContainer[ 0 ] );
+	pageThreads = parser.groupThreads( pageComments );
 	pageCommentsById = commentsById( pageComments );
 
 	pageThreads.forEach( traverseNode );
@@ -174,7 +179,7 @@ function init( $container, state ) {
 			var data = response.visualeditor;
 			// TODO: error handling
 			parsoidDoc = ve.createDocumentFromHtml( data.content );
-			parsoidComments = mw.dt.parser.getComments( parsoidDoc.body );
+			parsoidComments = parser.getComments( parsoidDoc.body );
 
 			parsoidPageData.baseTimeStamp = data.basetimestamp;
 			parsoidPageData.startTimeStamp = data.startimestamp;
@@ -182,7 +187,7 @@ function init( $container, state ) {
 
 			// getThreads build the tree structure, currently only
 			// used to set 'replies'
-			mw.dt.parser.groupThreads( parsoidComments );
+			parser.groupThreads( parsoidComments );
 			parsoidCommentsById = commentsById( parsoidComments );
 		} );
 	} );
