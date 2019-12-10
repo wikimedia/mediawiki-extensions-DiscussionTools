@@ -225,6 +225,7 @@
 		]
 	},
 	"AutoloadClasses": {
+		"DiscussionToolsCommentParser": "includes/DiscussionToolsCommentParser.php",
 		"DiscussionToolsData": "includes/DiscussionToolsData.php",
 		"DiscussionToolsHooks": "includes/DiscussionToolsHooks.php"
 	},
