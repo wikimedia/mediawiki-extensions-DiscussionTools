@@ -95,7 +95,8 @@
 				"oojs-ui-core",
 				"mediawiki.editfont.styles",
 				"mediawiki.user",
-				"mediawiki.jqueryMsg"
+				"mediawiki.jqueryMsg",
+				"mediawiki.widgets.AbandonEditDialog"
 			]
 		}
 	},
