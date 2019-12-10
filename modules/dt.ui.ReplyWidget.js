@@ -45,8 +45,9 @@ function ReplyWidget( comment, config ) {
 
 	// Events
 	this.replyButton.connect( this, { click: 'onReplyClick' } );
-	this.cancelButton.connect( this, { click: [ 'emit', 'cancel' ] } );
+	this.cancelButton.connect( this, { click: 'teardown' } );
 	this.$element.on( 'keydown', this.onKeyDown.bind( this ) );
+	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 
 	this.api = new mw.Api();
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
@@ -95,6 +96,16 @@ function ReplyWidget( comment, config ) {
 OO.inheritClass( ReplyWidget, OO.ui.Widget );
 
 /* Methods */
+
+ReplyWidget.prototype.setup = function () {
+	this.bindBeforeUnloadHandler();
+};
+
+ReplyWidget.prototype.teardown = function () {
+	// TODO: OOUI prompt if !empty
+	this.unbindBeforeUnloadHandler();
+	this.emit( 'teardown' );
+};
 
 ReplyWidget.prototype.focus = function () {
 	this.textWidget.focus();
@@ -149,6 +160,42 @@ ReplyWidget.prototype.onInputChange = function () {
 	} );
 };
 
+/**
+ * Bind the beforeunload handler, if needed and if not already bound.
+ *
+ * @private
+ */
+ReplyWidget.prototype.bindBeforeUnloadHandler = function () {
+	$( window ).on( 'beforeunload', this.beforeUnloadHandler );
+};
+
+/**
+ * Unbind the beforeunload handler if it is bound.
+ *
+ * @private
+ */
+ReplyWidget.prototype.unbindBeforeUnloadHandler = function () {
+	$( window ).off( 'beforeunload', this.beforeUnloadHandler );
+};
+
+/**
+ * Respond to beforeunload event.
+ *
+ * @private
+ * @param {jQuery.Event} e Event
+ * @return {string|undefined}
+ */
+ReplyWidget.prototype.onBeforeUnload = function ( e ) {
+	if ( !this.isEmpty() ) {
+		e.preventDefault();
+		return '';
+	}
+};
+
+ReplyWidget.prototype.isEmpty = function () {
+	return !this.textWidget.getValue().trim();
+};
+
 ReplyWidget.prototype.onReplyClick = function () {
 	var repliedTo,
 		widget = this;
@@ -182,7 +229,8 @@ ReplyWidget.prototype.onReplyClick = function () {
 		} );
 		mw.hook( 'wikipage.content' ).fire( $container );
 
-		// TODO: Tell controller to teardown all previous widgets
+		widget.teardown();
+		// TODO: Tell controller to teardown all other open widgets
 	} ).always( function () {
 		widget.textWidget.popPending();
 		widget.textWidget.setDisabled( false );
