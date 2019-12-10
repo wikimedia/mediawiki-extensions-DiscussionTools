@@ -122,7 +122,8 @@
 			"packageFiles": [
 				"dt.ui.ReplyWidgetVisual.js",
 				"CommentTarget.js",
-				"CommentTargetWidget.js"
+				"CommentTargetWidget.js",
+				"dt.ui.UsernameCompletion.js"
 			],
 			"styles": [
 				"CommentTargetWidget.less"

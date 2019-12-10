@@ -31,15 +31,15 @@ function sanitizeWikitextLinebreaks( wikitext ) {
 		.replace( /\n+/g, '\n' );
 }
 
-function traverseNode( parent ) {
+function traverseNode( parent, thread ) {
 	// Loads later to avoid circular dependency
 	var CommentController = require( './CommentController.js' );
 	parent.replies.forEach( function ( comment ) {
 		if ( comment.type === 'comment' ) {
 			// eslint-disable-next-line no-new
-			new CommentController( $pageContainer, comment );
+			new CommentController( $pageContainer, comment, thread );
 		}
-		traverseNode( comment );
+		traverseNode( comment, thread );
 	} );
 }
 
@@ -250,7 +250,9 @@ function init( $container, state ) {
 	pageThreads = parser.groupThreads( pageComments );
 	pageCommentsById = commentsById( pageComments );
 
-	pageThreads.forEach( traverseNode );
+	pageThreads.forEach( function ( thread ) {
+		traverseNode( thread, thread );
+	} );
 
 	$pageContainer.addClass( 'dt-init-done' );
 	$pageContainer.removeClass( 'dt-init-replylink-open' );

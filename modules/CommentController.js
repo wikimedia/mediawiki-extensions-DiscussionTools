@@ -1,6 +1,7 @@
 var
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
+	parser = require( './parser.js' ),
 	logger = require( './logger.js' ),
 	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
@@ -15,9 +16,10 @@ if ( useVisual ) {
 	mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
 }
 
-function CommentController( $pageContainer, comment ) {
+function CommentController( $pageContainer, comment, thread ) {
 	this.$pageContainer = $pageContainer;
 	this.comment = comment;
+	this.thread = thread;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
 
@@ -189,7 +191,11 @@ CommentController.prototype.createReplyWidget = function ( parsoidData, visual )
 	var commentController = this;
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
-		commentController.replyWidget = new ReplyWidget( commentController, parsoidData );
+		commentController.replyWidget = new ReplyWidget( commentController, parsoidData, {
+			input: {
+				authors: parser.getAuthors( commentController.thread )
+			}
+		} );
 		commentController.replyWidget.connect( commentController, { teardown: 'teardown' } );
 	} );
 };

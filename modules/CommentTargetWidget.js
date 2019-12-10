@@ -22,6 +22,8 @@ function CommentTargetWidget( config ) {
 		]
 	}, config );
 
+	this.authors = config.authors;
+
 	// Parent constructor
 	CommentTargetWidget.super.call( this, config );
 
@@ -59,6 +61,9 @@ CommentTargetWidget.prototype.setDocument = function ( docOrHtml ) {
 	// Remove MW specific classes as the widget is already inside the content area
 	this.getSurface().getView().$element.removeClass( 'mw-body-content' );
 	this.getSurface().$placeholder.removeClass( 'mw-body-content' );
+
+	// HACK
+	this.getSurface().authors = this.authors;
 };
 
 module.exports = CommentTargetWidget;
