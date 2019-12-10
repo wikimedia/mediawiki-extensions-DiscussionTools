@@ -5,5 +5,10 @@
 		]
 	},
 	"discussiontools": "Разговорни алатки",
-	"discussiontools-desc": "Алатки за подобрување на разговорните страници."
+	"discussiontools-defaultsummary-reply": "Одговор",
+	"discussiontools-desc": "Алатки за подобрување на разговорните страници.",
+	"discussiontools-replylink": "Одговори",
+	"discussiontools-replywidget-cancel": "Откажи",
+	"discussiontools-replywidget-loading": "Вчитувам…",
+	"discussiontools-replywidget-reply": "Одговори"
 }

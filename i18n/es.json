@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Canaan9801"
+			"Canaan9801",
+			"Ihojose"
 		]
 	},
 	"discussiontools": "Herramientas de discusión.",
-	"discussiontools-desc": "Herramientas para mejorar páginas de discusión."
+	"discussiontools-defaultsummary-reply": "Responder",
+	"discussiontools-desc": "Herramientas para mejorar páginas de discusión.",
+	"discussiontools-replylink": "Responder",
+	"discussiontools-replywidget-cancel": "Cancelar",
+	"discussiontools-replywidget-loading": "Cargando...",
+	"discussiontools-replywidget-reply": "Responder"
 }
