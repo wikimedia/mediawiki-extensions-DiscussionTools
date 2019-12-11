@@ -34,6 +34,9 @@ ReplyWidgetVisual.prototype.getValue = function () {
 };
 
 ReplyWidgetVisual.prototype.clear = function () {
+	// Parent method
+	ReplyWidgetVisual.super.prototype.clear.apply( this, arguments );
+
 	this.replyBodyWidget.clear();
 };
 

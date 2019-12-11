@@ -43,6 +43,9 @@ ReplyWidgetPlain.prototype.focus = function () {
 };
 
 ReplyWidgetPlain.prototype.clear = function () {
+	// Parent method
+	ReplyWidgetPlain.super.prototype.clear.apply( this, arguments );
+
 	this.replyBodyWidget.setValue( '' );
 };
 
