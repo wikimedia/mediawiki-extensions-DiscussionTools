@@ -5,5 +5,10 @@
 		]
 	},
 	"discussiontools": "Ferramientes d'alderique",
-	"discussiontools-desc": "Ferramientes pa enantar les páxines d'alderique."
+	"discussiontools-defaultsummary-reply": "Contestar",
+	"discussiontools-desc": "Ferramientes pa enantar les páxines d'alderique.",
+	"discussiontools-replylink": "Contestar",
+	"discussiontools-replywidget-cancel": "Encaboxar",
+	"discussiontools-replywidget-loading": "Cargando...",
+	"discussiontools-replywidget-reply": "Contestar"
 }

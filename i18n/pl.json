@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rail"
+			"Rail",
+			"Matma Rex"
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
-	"discussiontools-defaultsummary-reply": "Odpowiedz",
+	"discussiontools-defaultsummary-reply": "Odpowiedź",
 	"discussiontools-desc": "Narzędzia rozszerzające strony dyskusji.",
 	"discussiontools-replylink": "Odpowiedz",
 	"discussiontools-replywidget-cancel": "Anuluj",

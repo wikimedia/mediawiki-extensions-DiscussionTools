@@ -5,5 +5,10 @@
 		]
 	},
 	"discussiontools": "Diskusjonsverktøy",
-	"discussiontools-desc": "Verktøy for å forbedre diskusjonssider."
+	"discussiontools-defaultsummary-reply": "Svar",
+	"discussiontools-desc": "Verktøy for å forbedre diskusjonssider.",
+	"discussiontools-replylink": "Svar",
+	"discussiontools-replywidget-cancel": "Avbryt",
+	"discussiontools-replywidget-loading": "Laster …",
+	"discussiontools-replywidget-reply": "Svar"
 }
