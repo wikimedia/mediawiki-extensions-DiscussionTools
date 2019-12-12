@@ -71,17 +71,23 @@ function traverseNode( parent ) {
 	} );
 }
 
+function autoSign( wikitext ) {
+	wikitext = wikitext.trim();
+	if ( wikitext.slice( -4 ) !== '~~~~' ) {
+		wikitext += ' ~~~~';
+	}
+	return wikitext;
+}
+
 function postReply( widget, parsoidData ) {
 	var root, summary,
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData,
-		newParsoidList = modifier.addListAtComment( comment );
+		newParsoidList = modifier.addListAtComment( comment ),
+		wikitext = autoSign( widget.textWidget.getValue() );
 
-	widget.textWidget.getValue().split( '\n' ).forEach( function ( line, i, arr ) {
+	wikitext.split( '\n' ).forEach( function ( line ) {
 		var lineItem = modifier.addListItem( newParsoidList );
-		if ( i === arr.length - 1 && line.trim().slice( -4 ) !== '~~~~' ) {
-			line += ' ~~~~';
-		}
 		lineItem.appendChild( modifier.createWikitextNode( line ) );
 	} );
 
@@ -209,5 +215,6 @@ function init( $container, state ) {
 
 module.exports = {
 	init: init,
-	postReply: postReply
+	postReply: postReply,
+	autoSign: autoSign
 };
