@@ -41,7 +41,7 @@ function setupComment( comment ) {
 							// { defaultMode: 'source' }
 						);
 
-					replyWidget.on( 'cancel', function () {
+					replyWidget.on( 'teardown', function () {
 						$link.removeClass( 'dt-init-replylink-active' );
 						$pageContainer.removeClass( 'dt-init-replylink-open' );
 						$( newListItem ).hide();
@@ -56,6 +56,7 @@ function setupComment( comment ) {
 			}
 			widgetPromise.then( function ( replyWidget ) {
 				$( newListItem ).show();
+				replyWidget.setup();
 				replyWidget.scrollElementIntoView( { padding: scrollPadding } );
 				replyWidget.focus();
 			} );
