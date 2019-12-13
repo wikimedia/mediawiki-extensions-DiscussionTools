@@ -45,7 +45,7 @@ function ReplyWidget( comment, config ) {
 
 	// Events
 	this.replyButton.connect( this, { click: 'onReplyClick' } );
-	this.cancelButton.connect( this, { click: 'teardown' } );
+	this.cancelButton.connect( this, { click: [ 'teardown', true ] } );
 	this.$element.on( 'keydown', this.onKeyDown.bind( this ) );
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 
@@ -101,10 +101,25 @@ ReplyWidget.prototype.setup = function () {
 	this.bindBeforeUnloadHandler();
 };
 
-ReplyWidget.prototype.teardown = function () {
-	// TODO: OOUI prompt if !empty
-	this.unbindBeforeUnloadHandler();
-	this.emit( 'teardown' );
+ReplyWidget.prototype.teardown = function ( confirm ) {
+	var promise,
+		widget = this;
+	if ( confirm && !this.isEmpty() ) {
+		// TODO: Override messages in dialog to be more ReplyWidget specific
+		promise = OO.ui.getWindowManager().openWindow( 'abandonedit' )
+			.closed.then( function ( data ) {
+				if ( !( data && data.action === 'discard' ) ) {
+					return $.Deferred().reject().promise();
+				}
+			} );
+	} else {
+		promise = $.Deferred().resolve().promise();
+	}
+	promise.then( function () {
+		widget.unbindBeforeUnloadHandler();
+		widget.clear();
+		widget.emit( 'teardown' );
+	} );
 };
 
 ReplyWidget.prototype.focus = function () {
@@ -238,5 +253,9 @@ ReplyWidget.prototype.onReplyClick = function () {
 		widget.cancelButton.setDisabled( false );
 	} );
 };
+
+/* Window registration */
+
+OO.ui.getWindowManager().addWindows( [ new mw.widgets.AbandonEditDialog() ] );
 
 module.exports = ReplyWidget;
