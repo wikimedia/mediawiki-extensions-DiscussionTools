@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Matma Rex"
+			"Matma Rex",
+			"Amire80"
 		]
 	},
-	"discussiontools": "The name of the extension",
-	"discussiontools-defaultsummary-reply": "Default edit summary for a reply",
+	"discussiontools": "The name of the extension.",
+	"discussiontools-defaultsummary-reply": "Default edit summary for a reply.",
 	"discussiontools-desc": "{{desc|name=DiscussionTools|url=}}",
-	"discussiontools-replylink": "Label for the reply link added after each comment",
+	"discussiontools-replylink": "Label for the reply link added after each comment.",
 	"discussiontools-replywidget-anon-warning": "Warning message to be displayed when anonymous user starts writing a new topic or reply.\n* $1 is a URL to log in.\n* $2 is a URL to register an account.",
 	"discussiontools-replywidget-cancel": "Label for the cancel button in the reply widget",
 	"discussiontools-replywidget-loading": "Message shown while the reply widget is loading",

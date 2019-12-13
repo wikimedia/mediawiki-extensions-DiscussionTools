@@ -5,5 +5,10 @@
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
-	"discussiontools-desc": "Ferramentas para aprimorar as páginas de discussão."
+	"discussiontools-defaultsummary-reply": "Responder",
+	"discussiontools-desc": "Ferramentas para aprimorar as páginas de discussão.",
+	"discussiontools-replylink": "Responder",
+	"discussiontools-replywidget-cancel": "Cancelar",
+	"discussiontools-replywidget-loading": "Carregando…",
+	"discussiontools-replywidget-reply": "Responder"
 }

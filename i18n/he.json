@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"discussiontools": "כלי שיחה",
+	"discussiontools-defaultsummary-reply": "תשובה",
+	"discussiontools-desc": "כלים להרחבת דפי שיחה.",
+	"discussiontools-replylink": "להשיב",
+	"discussiontools-replywidget-cancel": "ביטול",
+	"discussiontools-replywidget-loading": "טעינה...",
+	"discussiontools-replywidget-reply": "להשיב"
+}
