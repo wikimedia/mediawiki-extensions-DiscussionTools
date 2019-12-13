@@ -104,10 +104,10 @@ function postReply( widget, parsoidData ) {
 			null,
 			{
 				page: pageData.pageName,
-				oldId: pageData.oldId,
+				oldid: pageData.oldId,
 				summary: summary,
-				baseTimeStamp: pageData.baseTimeStamp,
-				startTimeStamp: pageData.startTimeStamp,
+				basetimestamp: pageData.baseTimeStamp,
+				starttimestamp: pageData.startTimeStamp,
 				etag: pageData.etag,
 				token: pageData.token
 			}
@@ -188,7 +188,7 @@ function init( $container, state ) {
 			parsoidComments = parser.getComments( parsoidDoc.body );
 
 			parsoidPageData.baseTimeStamp = data.basetimestamp;
-			parsoidPageData.startTimeStamp = data.startimestamp;
+			parsoidPageData.startTimeStamp = data.starttimestamp;
 			parsoidPageData.etag = data.etag;
 
 			// getThreads build the tree structure, currently only
