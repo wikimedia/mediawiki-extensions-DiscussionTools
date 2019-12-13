@@ -126,6 +126,10 @@ ReplyWidget.prototype.focus = function () {
 	this.textWidget.focus();
 };
 
+ReplyWidget.prototype.clear = function () {
+	this.textWidget.setValue( '' );
+};
+
 ReplyWidget.prototype.onKeyDown = function ( e ) {
 	if ( e.which === OO.ui.Keys.ESCAPE ) {
 		this.emit( 'cancel' );
