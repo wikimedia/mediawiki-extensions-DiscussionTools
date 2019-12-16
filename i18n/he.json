@@ -8,7 +8,9 @@
 	"discussiontools-defaultsummary-reply": "תשובה",
 	"discussiontools-desc": "כלים להרחבת דפי שיחה.",
 	"discussiontools-replylink": "להשיב",
+	"discussiontools-replywidget-anon-warning": "<strong>לא נכנסת לחשבון.</strong> כדי לקבל ייחוס עם שמך ולא עם כתובת ה־IP שלך, אפשר [$1 להיכנס] או [$2 ליצור חשבון].",
 	"discussiontools-replywidget-cancel": "ביטול",
 	"discussiontools-replywidget-loading": "טעינה...",
-	"discussiontools-replywidget-reply": "להשיב"
+	"discussiontools-replywidget-reply": "להשיב",
+	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של הוויקי הזה."
 }

@@ -8,7 +8,9 @@
 	"discussiontools-defaultsummary-reply": "Yanıtla",
 	"discussiontools-desc": "Tartışma sayfalarını geliştirmek için araçlar.",
 	"discussiontools-replylink": "Yanıtla",
+	"discussiontools-replywidget-anon-warning": "<strong>Giriş yapmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 giriş yapın] veya [$2 bir hesap oluşturabilirsiniz].",
 	"discussiontools-replywidget-cancel": "İptal",
 	"discussiontools-replywidget-loading": "Yükleniyor...",
-	"discussiontools-replywidget-reply": "Yanıtla"
+	"discussiontools-replywidget-reply": "Yanıtla",
+	"discussiontools-replywidget-terms-click": "\"$1\" düğmesini tıklayarak, bu wiki için kullanım koşullarını kabul etmiş olursunuz."
 }

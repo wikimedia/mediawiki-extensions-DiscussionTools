@@ -10,5 +10,6 @@
 	"discussiontools-replylink": "Responder",
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-loading": "Carregando…",
-	"discussiontools-replywidget-reply": "Responder"
+	"discussiontools-replywidget-reply": "Responder",
+	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki."
 }

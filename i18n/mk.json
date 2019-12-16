@@ -8,7 +8,9 @@
 	"discussiontools-defaultsummary-reply": "Одговор",
 	"discussiontools-desc": "Алатки за подобрување на разговорните страници.",
 	"discussiontools-replylink": "Одговори",
+	"discussiontools-replywidget-anon-warning": "<strong>Не сте најавени.</strong> За да бидете наведени како уредник по име наместо по IP-адреса, [$1 најавете се] или [$2 направете сметка].",
 	"discussiontools-replywidget-cancel": "Откажи",
 	"discussiontools-replywidget-loading": "Вчитувам…",
-	"discussiontools-replywidget-reply": "Одговори"
+	"discussiontools-replywidget-reply": "Одговори",
+	"discussiontools-replywidget-terms-click": "Стискајќи на „$1“ се согласувате со условите на употреба на ова вики."
 }

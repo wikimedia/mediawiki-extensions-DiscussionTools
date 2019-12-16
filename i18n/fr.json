@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Verdy p"
+			"Verdy p",
+			"Thibaut120094"
 		]
 	},
 	"discussiontools": "Outils de discussion",
@@ -10,5 +11,6 @@
 	"discussiontools-replylink": "Répondre",
 	"discussiontools-replywidget-cancel": "Annuler",
 	"discussiontools-replywidget-loading": "Chargement en cours...",
-	"discussiontools-replywidget-reply": "Répondre"
+	"discussiontools-replywidget-reply": "Répondre",
+	"discussiontools-replywidget-terms-click": "En cliquant sur « $1 », vous acceptez les conditions d’utilisation de ce wiki."
 }

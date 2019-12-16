@@ -8,7 +8,9 @@
 	"discussiontools-defaultsummary-reply": "Svar",
 	"discussiontools-desc": "Verktøy for å forbedre diskusjonssider.",
 	"discussiontools-replylink": "Svar",
+	"discussiontools-replywidget-anon-warning": "<strong>Du er ikke innlogget.</strong> For å bli kreditert med navnet ditt i stedet for IP-adressa di kan du [$1 logge inn] eller [$2 opprette en konto].",
 	"discussiontools-replywidget-cancel": "Avbryt",
 	"discussiontools-replywidget-loading": "Laster …",
-	"discussiontools-replywidget-reply": "Svar"
+	"discussiontools-replywidget-reply": "Svar",
+	"discussiontools-replywidget-terms-click": "Ved å trykke på «$1» samtykker du i bruksvilkårene til denne wikien."
 }
