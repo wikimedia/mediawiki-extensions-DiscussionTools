@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elroy"
+			"Elroy",
+			"Dedalus"
 		]
 	},
-	"discussiontools": "Overleghulpmiddelen"
+	"discussiontools": "Overleghulpmiddelen",
+	"discussiontools-replylink": "Reageer"
 }
