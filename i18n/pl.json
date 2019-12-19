@@ -9,6 +9,7 @@
 	"discussiontools-defaultsummary-reply": "Odpowiedź",
 	"discussiontools-desc": "Narzędzia rozszerzające strony dyskusji.",
 	"discussiontools-replylink": "Odpowiedz",
+	"discussiontools-replywidget-anon-warning": "<strong>Nie jesteś zalogowany</strong>. Aby być podanym imiennie jako autor zamiast numeru IP, możesz [$1 zalogować się] albo [$2 utworzyć konto].",
 	"discussiontools-replywidget-cancel": "Anuluj",
 	"discussiontools-replywidget-loading": "Ładowanie…",
 	"discussiontools-replywidget-reply": "Odpowiedz"
