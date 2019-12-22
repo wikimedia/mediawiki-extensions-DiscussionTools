@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Amire80"
+			"Amire80",
+			"Tacsipacsi"
 		]
 	},
-	"discussiontools": "The name of the extension.",
+	"discussiontools": "{{name}}",
 	"discussiontools-defaultsummary-reply": "Default edit summary for a reply.\n\n'''Note that this is a noun (''a reply''), not a verb (''to reply''). Alternatively you can use a paste tense verb if that's more natural in your language.'''",
-	"discussiontools-desc": "{{desc|name=DiscussionTools|url=}}",
+	"discussiontools-desc": "{{desc\n| name = DiscussionTools\n| url = https://www.mediawiki.org/wiki/Extension:DiscussionTools\n}}",
 	"discussiontools-replylink": "Label for the reply link added after each comment.",
 	"discussiontools-replywidget-anon-warning": "Warning message to be displayed when anonymous user starts writing a new topic or reply.\n* $1 is a URL to log in.\n* $2 is a URL to register an account.",
 	"discussiontools-replywidget-cancel": "Label for the cancel button in the reply widget",

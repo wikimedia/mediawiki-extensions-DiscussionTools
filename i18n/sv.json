@@ -7,7 +7,9 @@
 	"discussiontools": "Diskussionsverktyg",
 	"discussiontools-defaultsummary-reply": "Svara",
 	"discussiontools-replylink": "Svara",
+	"discussiontools-replywidget-anon-warning": "<strong>Du är inte inloggad.</strong> För att få erkännande med ditt namn istället för din IP-adress kan du [$1 logga in] eller [$2 skapa ett konto].",
 	"discussiontools-replywidget-cancel": "Avbryt",
 	"discussiontools-replywidget-loading": "Läser in…",
-	"discussiontools-replywidget-reply": "Svara"
+	"discussiontools-replywidget-reply": "Svara",
+	"discussiontools-replywidget-terms-click": "Genom att klicka på \"$1\" godkänner du användarvillkoren för denna wiki."
 }
