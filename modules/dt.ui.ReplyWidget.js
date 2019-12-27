@@ -164,7 +164,10 @@ ReplyWidget.prototype.onInputChange = function () {
 		wikitext = controller.autoSign( wikitext );
 		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.5;">~~~~</span>';
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
-		this.previewRequest = parsePromise = this.api.parse( wikitext, { pst: true } );
+		this.previewRequest = parsePromise = this.api.parse( wikitext, {
+			pst: true,
+			title: mw.config.get( 'wgPageName' )
+		} );
 	}
 	// TODO: Add list context
 
