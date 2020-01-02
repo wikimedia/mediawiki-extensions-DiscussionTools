@@ -159,23 +159,32 @@ ReplyWidget.prototype.onInputChange = function () {
 	// wikitext = surface.getDom();
 	wikitext = this.textWidget.getValue();
 	if ( !wikitext.trim() ) {
-		parsePromise = $.Deferred().resolve( '' ).promise();
+		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
 		wikitext = controller.autoSign( wikitext );
 		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.5;">~~~~</span>';
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
-		this.previewRequest = parsePromise = this.api.parse( wikitext, {
+		this.previewRequest = parsePromise = this.api.post( {
+			formatversion: 2,
+			action: 'parse',
+			text: wikitext,
 			pst: true,
+			prop: [ 'text', 'modules' ],
 			title: mw.config.get( 'wgPageName' )
 		} );
 	}
 	// TODO: Add list context
 
-	parsePromise.then( function ( html ) {
+	parsePromise.then( function ( response ) {
 		var heightAfter,
 			heightBefore = widget.$preview.outerHeight( true );
-		widget.$preview.html( html );
+		widget.$preview.html( response ? response.parse.text : '' );
 		heightAfter = widget.$preview.outerHeight( true );
+
+		if ( response ) {
+			mw.loader.load( response.parse.modulestyles );
+			mw.loader.load( response.parse.modules );
+		}
 
 		// TODO: IE11?
 		window.scrollBy( 0, heightAfter - heightBefore );
