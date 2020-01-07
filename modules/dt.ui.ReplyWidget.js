@@ -132,7 +132,7 @@ ReplyWidget.prototype.clear = function () {
 
 ReplyWidget.prototype.onKeyDown = function ( e ) {
 	if ( e.which === OO.ui.Keys.ESCAPE ) {
-		this.emit( 'cancel' );
+		this.emit( 'teardown' );
 		return false;
 	}
 	if ( e.which === OO.ui.Keys.ENTER && ( e.ctrlKey || e.metaKey ) ) {
