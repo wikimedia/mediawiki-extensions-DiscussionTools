@@ -243,7 +243,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 		// (see ve.init.mw.DesktopArticleTarget.prototype.replacePageContent)
 
 		// Re-initialize
-		controller.init( $container, {
+		controller.init( $container.find( '.mw-parser-output' ), {
 			repliedTo: repliedTo
 		} );
 		mw.hook( 'wikipage.content' ).fire( $container );

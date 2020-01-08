@@ -10,11 +10,13 @@ if ( new mw.Uri().query.dtdebug ) {
 	mw.loader.load( 'ext.discussionTools.debug' );
 } else {
 	mw.hook( 'wikipage.content' ).add( function ( $container ) {
-		// Don't re-run if we already handled this element
-		if ( $container.closest( '.dt-init-done' ).length === 0 ) {
-			$container.find( '#mw-content-text' ).addBack( '#mw-content-text' ).each( function () {
-				controller.init( $( this ) );
-			} );
-		}
+		$container.find( '.mw-parser-output' ).each( function () {
+			var $node = $( this );
+			// Don't re-run if we already handled this element
+			// eslint-disable-next-line no-jquery/no-class-state
+			if ( !$node.hasClass( 'dt-init-done' ) ) {
+				controller.init( $node );
+			}
+		} );
 	} );
 }
