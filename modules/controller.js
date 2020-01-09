@@ -5,7 +5,10 @@ var
 	modifier = require( 'ext.discussionTools.modifier' ),
 	$pageContainer,
 	scrollPadding = { top: 10, bottom: 10 },
-	replyWidgetPromise = mw.loader.using( 'ext.discussionTools.ReplyWidget' );
+	config = require( './config.json' ),
+	replyWidgetPromise = config.useVisualEditor ?
+		mw.loader.using( 'ext.discussionTools.ReplyWidgetVisual' ) :
+		mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
 
 function setupComment( comment ) {
 	var $replyLink, widgetPromise, newList, newListItem,
@@ -34,11 +37,11 @@ function setupComment( comment ) {
 				$( newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 				widgetPromise = replyWidgetPromise.then( function () {
 					var
-						ReplyWidget = require( 'ext.discussionTools.ReplyWidget' ),
+						ReplyWidget = config.useVisualEditor ?
+							require( 'ext.discussionTools.ReplyWidgetVisual' ) :
+							require( 'ext.discussionTools.ReplyWidgetPlain' ),
 						replyWidget = new ReplyWidget(
 							comment
-							// For VE version:
-							// { defaultMode: 'source' }
 						);
 
 					replyWidget.on( 'teardown', function () {
@@ -72,7 +75,7 @@ function traverseNode( parent ) {
 	} );
 }
 
-function autoSign( wikitext ) {
+function autoSignWikitext( wikitext ) {
 	wikitext = wikitext.trim();
 	if ( wikitext.slice( -4 ) !== '~~~~' ) {
 		wikitext += ' ~~~~';
@@ -84,13 +87,9 @@ function postReply( widget, parsoidData ) {
 	var root, summary,
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData,
-		newParsoidList = modifier.addListAtComment( comment ),
-		wikitext = autoSign( widget.textWidget.getValue() );
+		newParsoidList = modifier.addListAtComment( comment );
 
-	wikitext.split( '\n' ).forEach( function ( line ) {
-		var lineItem = modifier.addListItem( newParsoidList );
-		lineItem.appendChild( modifier.createWikitextNode( line ) );
-	} );
+	widget.insertNewNodes( newParsoidList );
 
 	root = comment;
 	while ( root && root.type !== 'heading' ) {
@@ -217,5 +216,5 @@ function init( $container, state ) {
 module.exports = {
 	init: init,
 	postReply: postReply,
-	autoSign: autoSign
+	autoSignWikitext: autoSignWikitext
 };
