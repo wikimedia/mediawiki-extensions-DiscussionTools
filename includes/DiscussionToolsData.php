@@ -16,9 +16,14 @@ class DiscussionToolsData {
 	 * We need all of this data *in content language*. Some of it is already available in JS, but only
 	 * in client language, so it's useless for us (e.g. digit transform table, month name messages).
 	 *
+	 * @param ResourceLoaderContext $context
+	 * @param Config $config
+	 * @param string|null $langCode
 	 * @return array
 	 */
-	public static function getLocalData( ResourceLoaderContext $context, Config $config, $langCode = null ) {
+	public static function getLocalData(
+		ResourceLoaderContext $context, Config $config, $langCode = null
+	) {
 		if ( $langCode ) {
 			$lang = Language::factory( $langCode );
 		} else {

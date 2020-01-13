@@ -6,7 +6,7 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
-class DiscussionToolsManageForeignResources extends Maintenance {
+class ManageForeignResources extends Maintenance {
 	public function execute() {
 		$frm = new ForeignResourceManager(
 			__DIR__ . '/../modules/lib/foreign-resources.yaml',
@@ -16,5 +16,5 @@ class DiscussionToolsManageForeignResources extends Maintenance {
 	}
 }
 
-$maintClass = DiscussionToolsManageForeignResources::class;
+$maintClass = ManageForeignResources::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
