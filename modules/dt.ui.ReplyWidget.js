@@ -37,7 +37,7 @@ function ReplyWidget( comment, config ) {
 
 	// Events
 	this.replyButton.connect( this, { click: 'onReplyClick' } );
-	this.cancelButton.connect( this, { click: [ 'teardown', true ] } );
+	this.cancelButton.connect( this, { click: 'tryTeardown' } );
 	this.$element.on( 'keydown', this.onKeyDown.bind( this ) );
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 
@@ -112,10 +112,11 @@ ReplyWidget.prototype.setup = function () {
 	this.bindBeforeUnloadHandler();
 };
 
-ReplyWidget.prototype.teardown = function ( confirm ) {
+ReplyWidget.prototype.tryTeardown = function () {
 	var promise,
 		widget = this;
-	if ( confirm && !this.isEmpty() ) {
+
+	if ( !this.isEmpty() ) {
 		// TODO: Override messages in dialog to be more ReplyWidget specific
 		promise = OO.ui.getWindowManager().openWindow( 'abandonedit' )
 			.closed.then( function ( data ) {
@@ -127,16 +128,20 @@ ReplyWidget.prototype.teardown = function ( confirm ) {
 		promise = $.Deferred().resolve().promise();
 	}
 	promise.then( function () {
-		widget.unbindBeforeUnloadHandler();
-		widget.clear();
-		widget.$preview.empty();
-		widget.emit( 'teardown' );
+		widget.teardown();
 	} );
+};
+
+ReplyWidget.prototype.teardown = function () {
+	this.unbindBeforeUnloadHandler();
+	this.clear();
+	this.$preview.empty();
+	this.emit( 'teardown' );
 };
 
 ReplyWidget.prototype.onKeyDown = function ( e ) {
 	if ( e.which === OO.ui.Keys.ESCAPE ) {
-		this.emit( 'teardown' );
+		this.tryTeardown();
 		return false;
 	}
 };
