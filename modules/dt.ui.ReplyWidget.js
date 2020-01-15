@@ -243,6 +243,9 @@ ReplyWidget.prototype.onReplyClick = function () {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $container = $( '#mw-content-text' );
 
+		widget.teardown();
+		// TODO: Tell controller to teardown all other open widgets
+
 		// Update page state
 		$container.html( data.content );
 		mw.config.set( {
@@ -259,9 +262,6 @@ ReplyWidget.prototype.onReplyClick = function () {
 			repliedTo: repliedTo
 		} );
 		mw.hook( 'wikipage.content' ).fire( $container );
-
-		widget.teardown();
-		// TODO: Tell controller to teardown all other open widgets
 	} ).always( function () {
 		widget.setPending( false );
 	} );
