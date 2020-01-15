@@ -117,7 +117,7 @@ function postReply( widget, parsoidData ) {
 
 function highlight( comment ) {
 	var padding = 5,
-		containerRect = RangeFix.getBoundingClientRect( $pageContainer[ 0 ] ),
+		containerRect = $pageContainer[ 0 ].getBoundingClientRect(),
 		rect = RangeFix.getBoundingClientRect( comment.range ),
 		$highlight = $( '<div>' ).addClass( 'dt-init-highlight' );
 
