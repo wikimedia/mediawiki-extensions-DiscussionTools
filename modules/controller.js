@@ -117,7 +117,9 @@ function postReply( widget, parsoidData ) {
 
 function highlight( comment ) {
 	var padding = 5,
-		containerRect = $pageContainer[ 0 ].getBoundingClientRect(),
+		// $container must be position:relative/absolute
+		$container = OO.ui.getDefaultOverlay(),
+		containerRect = $container[ 0 ].getBoundingClientRect(),
 		rect = RangeFix.getBoundingClientRect( comment.range ),
 		$highlight = $( '<div>' ).addClass( 'dt-init-highlight' );
 
@@ -135,7 +137,7 @@ function highlight( comment ) {
 		}, 500 );
 	}, 500 );
 
-	$pageContainer.prepend( $highlight );
+	$container.prepend( $highlight );
 }
 
 function commentsById( comments ) {
