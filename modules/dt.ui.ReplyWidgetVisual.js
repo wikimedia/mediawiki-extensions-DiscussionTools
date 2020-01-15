@@ -76,18 +76,19 @@ ReplyWidgetVisual.prototype.setPending = function ( pending ) {
 	}
 };
 
-ReplyWidgetVisual.prototype.insertNewNodes = function ( parentNode ) {
-	var wikitext, newParsoidItem,
+ReplyWidgetVisual.prototype.insertNewNodes = function ( newParsoidItem ) {
+	var wikitext,
 		surface = this.replyBodyWidget.getSurface();
 
 	if ( surface.getMode() === 'source' ) {
 		wikitext = controller.autoSignWikitext( this.getValue() );
-		wikitext.split( '\n' ).forEach( function ( line ) {
-			var lineItem = modifier.addListItem( parentNode );
-			lineItem.appendChild( modifier.createWikitextNode( line ) );
+		wikitext.split( '\n' ).forEach( function ( line, i ) {
+			if ( i > 0 ) {
+				newParsoidItem = modifier.addSiblingListItem( newParsoidItem );
+			}
+			newParsoidItem.appendChild( modifier.createWikitextNode( line ) );
 		} );
 	} else {
-		newParsoidItem = modifier.addListItem( parentNode );
 		// TODO: Support multi-line comments in visual mode
 		newParsoidItem.innerHTML = surface.getHtml();
 		newParsoidItem.children[ 0 ].appendChild( modifier.createWikitextNode( ' ~~~~' ) );

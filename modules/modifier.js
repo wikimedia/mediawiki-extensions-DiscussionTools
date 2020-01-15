@@ -30,43 +30,133 @@ function closest( el, selector ) {
 	return null;
 }
 
-function addListAtComment( comment ) {
-	var list, listType, lastReply, listItem, endNodeInAncestor,
-		tsNode = comment.range.endContainer;
-
-	if ( comment.replies.length ) {
-		lastReply = comment.replies[ comment.replies.length - 1 ];
-		list = closest( lastReply.range.endContainer, 'dl, ul, ol' );
-	} else {
-		listItem = closest( tsNode, 'li, dd' );
-		if ( listItem ) {
-			listType = closest( listItem, 'dl, ul, ol' ).tagName;
-			list = document.createElement( listType );
-			listItem.appendChild( list );
-		} else {
-			endNodeInAncestor = comment.range.endContainer;
-			while ( endNodeInAncestor.parentNode !== comment.range.commonAncestorContainer ) {
-				endNodeInAncestor = endNodeInAncestor.parentNode;
-			}
-			list = document.createElement( 'dl' );
-			comment.range.commonAncestorContainer.insertBefore(
-				list,
-				endNodeInAncestor.nextSibling
-			);
-		}
-	}
-	return list;
-}
-
-function addListItem( list ) {
-	var listItem = document.createElement( list.nodeName.toLowerCase() === 'dl' ? 'dd' : 'li' );
-
+function whitespaceParsoidHack( listItem ) {
 	// HACK: Setting data-parsoid removes the whitespace after the list item,
 	// which makes nested lists work.
 	// This is undocumented behaviour and probably very fragile.
 	listItem.setAttribute( 'data-parsoid', '{}' );
+}
 
-	list.appendChild( listItem );
+/**
+ * Given a comment, add a list item to its document's DOM tree, inside of which a reply to said
+ * comment can be added.
+ *
+ * The DOM tree is suitably rearranged to ensure correct indentation level of the reply (wrapper
+ * nodes are added, and other nodes may be moved around).
+ *
+ * @param {Object} comment Comment data returned by parser#groupThreads
+ * @return {HTMLElement}
+ */
+function addListItem( comment ) {
+	var
+		currComment, currLevel, desiredLevel,
+		target, parent, listType, itemType, list, item, newNode,
+		listTypeMap = {
+			li: 'ul',
+			dd: 'dl'
+		};
+
+	// 1. Start at given comment
+	// 2. Skip past all comments with level greater than the given
+	//    (or in other words, all replies, and replies to replies, and so on)
+	// 3. Add comment with level of the given comment plus 1
+
+	currComment = comment;
+	while ( currComment.replies.length ) {
+		currComment = currComment.replies[ currComment.replies.length - 1 ];
+	}
+
+	desiredLevel = comment.level + 1;
+	currLevel = currComment.level;
+	target = currComment.range.endContainer;
+	// HACK
+	if ( target.nextSibling && target.nextSibling.classList.contains( 'dt-init-replylink' ) ) {
+		target = target.nextSibling;
+	}
+
+	// endContainer is probably a text node, and it may also be wrapped in some formatting.
+	// First, we need to find a block-level parent that we can mess with.
+	// If we can't find a surrounding list item or paragraph (e.g. maybe we're inside a table cell
+	// or something), take the parent node and hope for the best.
+	parent = closest( target, 'li, dd, p' ) || target.parentNode;
+	while ( target.parentNode !== parent ) {
+		target = target.parentNode;
+	}
+	// parent is a list item or paragraph (hopefully)
+	// target is an inline node within it
+
+	if ( currLevel < desiredLevel ) {
+		// Insert more lists after the target to increase nesting.
+
+		// If we can't insert a list directly inside this element, insert after it.
+		// TODO Improve this check
+		if ( parent.tagName.toLowerCase() === 'p' ) {
+			parent = parent.parentNode;
+			target = target.parentNode;
+		}
+
+		// Decide on tag names for lists and items
+		itemType = parent.tagName.toLowerCase();
+		itemType = listTypeMap[ itemType ] ? itemType : 'dd';
+		listType = listTypeMap[ itemType ];
+
+		// Insert required number of wrappers
+		while ( currLevel < desiredLevel ) {
+			list = target.ownerDocument.createElement( listType );
+			item = target.ownerDocument.createElement( itemType );
+			whitespaceParsoidHack( item );
+
+			parent.insertBefore( list, target.nextSibling );
+			list.appendChild( item );
+
+			target = item;
+			parent = list;
+			currLevel++;
+		}
+	} else if ( currLevel >= desiredLevel ) {
+		// Split the ancestor nodes after the target to decrease nesting.
+
+		do {
+			// If target is the last child of its parent, no need to split it
+			if ( target.nextSibling ) {
+				// Create new identical node after the parent
+				newNode = parent.cloneNode( false );
+				parent.parentNode.insertBefore( newNode, parent.nextSibling );
+
+				// Move nodes following target to the new node
+				while ( target.nextSibling ) {
+					newNode.appendChild( target.nextSibling );
+				}
+			}
+
+			target = parent;
+			parent = parent.parentNode;
+
+			// Decrease nesting level if we escaped outside of a list
+			if ( listTypeMap[ target.tagName.toLowerCase() ] ) {
+				currLevel--;
+			}
+		} while ( currLevel >= desiredLevel );
+
+		// parent is now a list, target is a list item
+		item = target.ownerDocument.createElement( target.tagName );
+		whitespaceParsoidHack( item );
+		parent.insertBefore( item, target.nextSibling );
+	}
+
+	return item;
+}
+
+/**
+ * Add another list item after the given one.
+ *
+ * @param {HTMLElement} previousItem
+ * @return {HTMLElement}
+ */
+function addSiblingListItem( previousItem ) {
+	var listItem = previousItem.ownerDocument.createElement( previousItem.nodeName.toLowerCase() );
+	whitespaceParsoidHack( listItem );
+	previousItem.parentNode.insertBefore( listItem, previousItem.nextSibling );
 	return listItem;
 }
 
@@ -81,7 +171,7 @@ function createWikitextNode( wt ) {
 
 module.exports = {
 	closest: closest,
-	addListAtComment: addListAtComment,
 	addListItem: addListItem,
+	addSiblingListItem: addSiblingListItem,
 	createWikitextNode: createWikitextNode
 };

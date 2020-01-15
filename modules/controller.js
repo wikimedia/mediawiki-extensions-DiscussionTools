@@ -11,7 +11,7 @@ var
 		mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
 
 function setupComment( comment ) {
-	var $replyLink, widgetPromise, newList, newListItem,
+	var $replyLink, widgetPromise, newListItem,
 		$tsNode = $( comment.range.endContainer );
 
 	// Is it possible to have a heading nested in a thread?
@@ -32,8 +32,7 @@ function setupComment( comment ) {
 			$pageContainer.addClass( 'dt-init-replylink-open' );
 
 			if ( !widgetPromise ) {
-				newList = modifier.addListAtComment( comment );
-				newListItem = modifier.addListItem( newList );
+				newListItem = modifier.addListItem( comment );
 				$( newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 				widgetPromise = replyWidgetPromise.then( function () {
 					var
@@ -87,9 +86,9 @@ function postReply( widget, parsoidData ) {
 	var root, summary,
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData,
-		newParsoidList = modifier.addListAtComment( comment );
+		newParsoidItem = modifier.addListItem( comment );
 
-	widget.insertNewNodes( newParsoidList );
+	widget.insertNewNodes( newParsoidItem );
 
 	root = comment;
 	while ( root && root.type !== 'heading' ) {

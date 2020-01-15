@@ -75,11 +75,13 @@ ReplyWidgetPlain.prototype.setPending = function ( pending ) {
 	}
 };
 
-ReplyWidgetPlain.prototype.insertNewNodes = function ( parentNode ) {
+ReplyWidgetPlain.prototype.insertNewNodes = function ( newParsoidItem ) {
 	var wikitext = controller.autoSignWikitext( this.getValue() );
-	wikitext.split( '\n' ).forEach( function ( line ) {
-		var lineItem = modifier.addListItem( parentNode );
-		lineItem.appendChild( modifier.createWikitextNode( line ) );
+	wikitext.split( '\n' ).forEach( function ( line, i ) {
+		if ( i > 0 ) {
+			newParsoidItem = modifier.addSiblingListItem( newParsoidItem );
+		}
+		newParsoidItem.appendChild( modifier.createWikitextNode( line ) );
 	} );
 };
 

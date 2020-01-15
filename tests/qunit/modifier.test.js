@@ -36,6 +36,20 @@ QUnit.test( '#addListItem', function ( assert ) {
 			expected: mw.template.get( 'test.DiscussionTools', 'parsoid/en-913983958-modified.html' ).render(),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
+		},
+		{
+			name: 'Must split a list to reply to one of the comments',
+			dom: mw.template.get( 'test.DiscussionTools', 'other/split-list.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'other/split-list-modified.html' ).render(),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		},
+		{
+			name: 'Must split a list to reply to one of the comments (version 2)',
+			dom: mw.template.get( 'test.DiscussionTools', 'other/split-list2.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'other/split-list2-modified.html' ).render(),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
 		}
 	];
 
@@ -59,7 +73,7 @@ QUnit.test( '#addListItem', function ( assert ) {
 			if ( comments[ j ].type === 'heading' ) {
 				continue;
 			}
-			node = modifier.addListItem( modifier.addListAtComment( comments[ j ] ) );
+			node = modifier.addListItem( comments[ j ] );
 			node.textContent = 'Reply to ' + comments[ j ].id;
 		}
 
@@ -67,12 +81,6 @@ QUnit.test( '#addListItem', function ( assert ) {
 		// console.log( fixture.innerHTML );
 
 		actualHtml = fixture.innerHTML.trim();
-
-		// FIXME: The modifier occasionally generates DOM that is invalid HTML, e.g. <dl> nested inside
-		// <p>. This causes the strings to not match. Parse the HTML again to get a consistent result.
-		// Ideally, the modifier would not do that…
-		fixture.innerHTML = actualHtml;
-		actualHtml = fixture.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,
