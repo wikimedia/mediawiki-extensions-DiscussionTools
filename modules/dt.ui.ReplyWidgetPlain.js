@@ -29,6 +29,8 @@ OO.inheritClass( ReplyWidgetPlain, require( 'ext.discussionTools.ReplyWidget' ) 
 ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
 	return new OO.ui.MultilineTextInputWidget( $.extend( {
 		rows: 3,
+		// TODO: Fix upstream to support a value meaning no max limit (e.g. Infinity)
+		maxRows: 999,
 		autosize: true,
 		// The following classes can be used here:
 		// * mw-editfont-monospace
