@@ -7000,22 +7000,10 @@
         "author": "Vchimpanzee",
         "range": [
           "0/754/0/0/0",
-          "0/758/6/29"
-        ],
-        "level": 1,
-        "id": "Vchimpanzee|2019-07-15T20:20:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
-        "timestamp": "2019-07-20T17:49:00.000Z",
-        "author": "Vchimpanzee",
-        "range": [
-          "0/758/7/0/0",
           "0/758/14/29"
         ],
         "level": 1,
-        "id": "Vchimpanzee|2019-07-20T17:49:00.000Z|0",
+        "id": "Vchimpanzee|2019-07-15T20:20:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -8165,22 +8153,10 @@
                     "author": "Drbogdan",
                     "range": [
                       "0/896/2/6/0/6/0/0/0",
-                      "0/896/2/6/0/6/0/11/27"
-                    ],
-                    "level": 4,
-                    "id": "Drbogdan|2019-07-27T17:51:00.000Z|0",
-                    "replies": []
-                  },
-                  {
-                    "type": "comment",
-                    "timestamp": "2019-07-27T21:12:00.000Z",
-                    "author": "Drbogdan",
-                    "range": [
-                      "0/896/2/6/0/6/0/12/0",
                       "0/896/2/6/0/6/0/17/27"
                     ],
                     "level": 4,
-                    "id": "Drbogdan|2019-07-27T21:12:00.000Z|0",
+                    "id": "Drbogdan|2019-07-27T17:51:00.000Z|0",
                     "replies": [
                       {
                         "type": "comment",
@@ -8199,22 +8175,10 @@
                             "author": "Drbogdan",
                             "range": [
                               "0/896/2/6/0/6/0/18/0/6/0/0/0",
-                              "0/896/2/6/0/6/0/18/0/6/0/11/27"
-                            ],
-                            "level": 6,
-                            "id": "Drbogdan|2019-07-27T18:13:00.000Z|0",
-                            "replies": []
-                          },
-                          {
-                            "type": "comment",
-                            "timestamp": "2019-07-27T21:12:00.000Z",
-                            "author": "Drbogdan",
-                            "range": [
-                              "0/896/2/6/0/6/0/18/0/6/0/12/0",
                               "0/896/2/6/0/6/0/18/0/6/0/17/27"
                             ],
                             "level": 6,
-                            "id": "Drbogdan|2019-07-27T21:12:00.000Z|1",
+                            "id": "Drbogdan|2019-07-27T18:13:00.000Z|0",
                             "replies": []
                           },
                           {
@@ -8306,22 +8270,10 @@
         "author": "DuncanHill",
         "range": [
           "0/900/0",
-          "0/900/4/27"
-        ],
-        "level": 1,
-        "id": "DuncanHill|2019-07-28T23:01:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
-        "timestamp": "2019-07-28T23:01:00.000Z",
-        "author": "DuncanHill",
-        "range": [
-          "0/900/5/0",
           "0/900/8/27"
         ],
         "level": 1,
-        "id": "DuncanHill|2019-07-28T23:01:00.000Z|1",
+        "id": "DuncanHill|2019-07-28T23:01:00.000Z|0",
         "replies": []
       }
     ]
@@ -11653,22 +11605,10 @@
         "author": "CambridgeBayWeather",
         "range": [
           "0/1288/0",
-          "0/1288/20/27"
-        ],
-        "level": 1,
-        "id": "CambridgeBayWeather|2019-08-09T11:32:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
-        "timestamp": "2019-08-09T11:34:00.000Z",
-        "author": "CambridgeBayWeather",
-        "range": [
-          "0/1288/21/0",
           "0/1288/28/27"
         ],
         "level": 1,
-        "id": "CambridgeBayWeather|2019-08-09T11:34:00.000Z|0",
+        "id": "CambridgeBayWeather|2019-08-09T11:32:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -11825,22 +11765,10 @@
         "author": "GrahamHardy",
         "range": [
           "0/1304/0",
-          "0/1304/8/28"
-        ],
-        "level": 1,
-        "id": "GrahamHardy|2019-08-09T04:59:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
-        "timestamp": "2019-08-10T00:00:00.000Z",
-        "author": "GrahamHardy",
-        "range": [
-          "0/1304/9/0",
           "0/1304/16/29"
         ],
         "level": 1,
-        "id": "GrahamHardy|2019-08-10T00:00:00.000Z|0",
+        "id": "GrahamHardy|2019-08-09T04:59:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -13958,22 +13886,10 @@
       },
       {
         "type": "comment",
-        "timestamp": "2019-08-15T08:17:00.000Z",
-        "author": null,
-        "range": [
-          "0/1501/0",
-          "0/1501/1/303"
-        ],
-        "level": 1,
-        "id": "|2019-08-15T08:17:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
         "timestamp": "2019-08-17T07:51:00.000Z",
         "author": "5.43.96.116",
         "range": [
-          "0/1501/2/0",
+          "0/1501/0",
           "0/1501/5/29"
         ],
         "level": 1,

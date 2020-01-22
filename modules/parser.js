@@ -682,6 +682,31 @@ function getComments( rootNode ) {
 				console.log( 'Comment starts and ends with different indentation', startNode, node );
 			}
 
+			// Avoid generating multiple comments when there is more than one signature on a single "line".
+			// Often this is done when someone edits their comment later and wants to add a note about that.
+			// (Or when another person corrects a typo, or strikes out a comment, etc.) Multiple comments
+			// within one paragraph/listitem result in a confusing double "Reply" button, and we also have
+			// no way to indicate which one you're replying to (this might matter in the future for
+			// notifications or something).
+			if (
+				nextTimestamp > 0 &&
+				timestamps[ nextTimestamp ][ 0 ].parentNode === timestamps[ nextTimestamp - 1 ][ 0 ].parentNode
+			) {
+				// Merge this with the previous comment.
+				// (As a result, the comment's timestamp node is in the middle of it, this should be okay?)
+				curComment.range.setEnd( node, match.index + match[ 0 ].length );
+				curComment.level = Math.min( Math.min( startLevel, endLevel ), curComment.level );
+				// Use previous comment's author and timestamp, unless it has no author, in which case it's
+				// probably not a real comment, but just a false match due to a copypasted timestamp.
+				if ( !curComment.author ) {
+					curComment.timestamp = dfParser( match );
+					curComment.author = findSignature( node )[ 1 ];
+				}
+
+				nextTimestamp++;
+				continue;
+			}
+
 			curComment = {
 				type: 'comment',
 				timestamp: dfParser( match ),
