@@ -97,21 +97,18 @@ function postReply( widget, parsoidData ) {
 
 	summary = '/* ' + root.range.toString() + ' */ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
 
-	return mw.libs.ve.targetSaver.deflateDoc( parsoidData.doc ).then( function ( html ) {
-		return mw.libs.ve.targetSaver.postHtml(
-			html,
-			null,
-			{
-				page: pageData.pageName,
-				oldid: pageData.oldId,
-				summary: summary,
-				basetimestamp: pageData.baseTimeStamp,
-				starttimestamp: pageData.startTimeStamp,
-				etag: pageData.etag,
-				token: pageData.token
-			}
-		);
-	} );
+	return mw.libs.ve.targetSaver.saveDoc(
+		parsoidData.doc,
+		{
+			page: pageData.pageName,
+			oldid: pageData.oldId,
+			summary: summary,
+			basetimestamp: pageData.baseTimeStamp,
+			starttimestamp: pageData.startTimeStamp,
+			etag: pageData.etag,
+			token: pageData.token
+		}
+	);
 }
 
 function highlight( comment ) {
