@@ -106,7 +106,8 @@ function postReply( widget, parsoidData ) {
 			basetimestamp: pageData.baseTimeStamp,
 			starttimestamp: pageData.startTimeStamp,
 			etag: pageData.etag,
-			token: pageData.token
+			token: pageData.token,
+			tags: [ 'discussiontools', 'discussiontools-reply' ]
 		}
 	);
 }

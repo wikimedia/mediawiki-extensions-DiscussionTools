@@ -182,7 +182,10 @@
 	"Hooks": {
 		"BeforePageDisplay": [
 			"DiscussionToolsHooks::onBeforePageDisplay"
-		]
+		],
+		"ListDefinedTags": "DiscussionToolsHooks::onListDefinedTags",
+		"ChangeTagsListActive": "DiscussionToolsHooks::onListDefinedTags",
+		"ChangeTagsAllowedAdd": "DiscussionToolsHooks::onListDefinedTags"
 	},
 	"config": {
 		"DiscussionToolsUseVisualEditor": {

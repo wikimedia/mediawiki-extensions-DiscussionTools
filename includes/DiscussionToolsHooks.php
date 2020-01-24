@@ -49,4 +49,18 @@ class DiscussionToolsHooks {
 			] );
 		}
 	}
+
+	/**
+	 * Implements the ListDefinedTags, ChangeTagsListActive, and
+	 * ChangeTagsAllowedAdd hooks, to populate core Special:Tags with the change
+	 * tags in use by VisualEditor.
+	 *
+	 * @param array &$tags Available change tags.
+	 */
+	public static function onListDefinedTags( &$tags ) {
+		$tags[] = 'discussiontools';
+		$tags[] = 'discussiontools-reply';
+		$tags[] = 'discussiontools-edit';
+		$tags[] = 'discussiontools-newsection';
+	}
 }

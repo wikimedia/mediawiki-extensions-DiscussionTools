@@ -10,5 +10,14 @@
 	"discussiontools-replywidget-cancel": "Cancel",
 	"discussiontools-replywidget-loading": "Loading…",
 	"discussiontools-replywidget-reply": "Reply",
-	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki."
+	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki.",
+	"tag-discussiontools": "DiscussionTools edit",
+	"tag-discussiontools-description": "Edit made using DiscussionTools",
+	"tag-discussiontools-edit": "edited comment",
+	"tag-discussiontools-edit-description": "User edited an existing comment",
+	"tag-discussiontools-newsection": "added section",
+	"tag-discussiontools-newsection-description": "User added a new section to the page",
+	"tag-discussiontools-reply": "replied",
+	"tag-discussiontools-reply-description": "User replied to an existing comment"
+
 }
