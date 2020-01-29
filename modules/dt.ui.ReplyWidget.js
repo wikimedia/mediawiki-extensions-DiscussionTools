@@ -90,13 +90,17 @@ ReplyWidget.prototype.createReplyBodyWidget = null;
 
 ReplyWidget.prototype.focus = null;
 
-ReplyWidget.prototype.clear = null;
-
 ReplyWidget.prototype.insertNewNodes = null;
 
 ReplyWidget.prototype.getValue = null;
 
 ReplyWidget.prototype.isEmpty = null;
+
+ReplyWidget.prototype.clear = function () {
+	if ( this.errorMessage ) {
+		this.errorMessage.$element.remove();
+	}
+};
 
 ReplyWidget.prototype.setPending = function ( pending ) {
 	if ( pending ) {
@@ -234,6 +238,10 @@ ReplyWidget.prototype.onReplyClick = function () {
 	var repliedTo,
 		widget = this;
 
+	if ( this.errorMessage ) {
+		this.errorMessage.$element.remove();
+	}
+
 	this.setPending( true );
 
 	this.comment.parsoidPromise.then( function ( parsoidData ) {
@@ -262,6 +270,12 @@ ReplyWidget.prototype.onReplyClick = function () {
 			repliedTo: repliedTo
 		} );
 		mw.hook( 'wikipage.content' ).fire( $container );
+	}, function ( code, data ) {
+		widget.errorMessage = new OO.ui.MessageWidget( {
+			type: 'error',
+			label: ( new mw.Api() ).getErrorMessage( data )
+		} );
+		widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
 	} ).always( function () {
 		widget.setPending( false );
 	} );
