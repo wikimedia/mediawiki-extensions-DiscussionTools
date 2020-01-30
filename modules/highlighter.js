@@ -32,6 +32,17 @@ function markSignature( sigNodes ) {
 	}
 }
 
+function fixFakeFirstHeadingRect( rect, comment ) {
+	// If the page has comments before the first section heading, they are connected to a "fake"
+	// heading with an empty range. Visualize the page title as the heading for that section.
+	var node;
+	if ( rect.x === 0 && rect.y === 0 && comment.type === 'heading' ) {
+		node = document.getElementsByClassName( 'firstHeading' )[ 0 ];
+		return node.getBoundingClientRect();
+	}
+	return rect;
+}
+
 function markComment( comment ) {
 	var
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -43,6 +54,8 @@ function markComment( comment ) {
 		scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft,
 		parentRect, i;
 
+	rect = fixFakeFirstHeadingRect( rect, comment );
+
 	marker.className = 'detected-comment';
 	marker.style.top = ( rect.top + scrollTop ) + 'px';
 	marker.style.height = ( rect.height ) + 'px';
@@ -52,6 +65,7 @@ function markComment( comment ) {
 
 	if ( comment.parent ) {
 		parentRect = comment.parent.range.getBoundingClientRect();
+		parentRect = fixFakeFirstHeadingRect( parentRect, comment.parent );
 		if ( comment.parent.level === 0 ) {
 			// Twiddle so that it looks nice
 			parentRect = $.extend( {}, parentRect );

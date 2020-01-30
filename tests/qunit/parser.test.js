@@ -178,6 +178,13 @@ QUnit.test( 'Integration tests', function ( assert ) {
 			expected: require( './pages/parsoid/en-913983958.json' ),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
+		},
+		{
+			name: 'No heading',
+			dom: mw.template.get( 'test.DiscussionTools', 'other/no-heading.html' ).render(),
+			expected: require( './other/no-heading.json' ),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
 		}
 	];
 

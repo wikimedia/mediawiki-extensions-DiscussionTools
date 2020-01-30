@@ -547,14 +547,16 @@ function findSignature( timestampNode ) {
  * @return {number}
  */
 function getIndentLevel( node, rootNode ) {
-	var indent = 0;
-	while ( ( node = node.parentNode ) ) {
+	var indent = 0, tagName;
+	while ( node ) {
 		if ( node === rootNode ) {
 			break;
 		}
-		if ( node.tagName.toLowerCase() === 'li' || node.tagName.toLowerCase() === 'dl' ) {
+		tagName = node.tagName && node.tagName.toLowerCase();
+		if ( tagName === 'li' || tagName === 'dl' ) {
 			indent++;
 		}
+		node = node.parentNode;
 	}
 	return indent;
 }
@@ -577,7 +579,8 @@ function nextInterestingLeafNode( node, rootNode ) {
 		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
 		function ( n ) {
 			// Ignore this node and its descendants
-			if ( n === node || n.parentNode === node ) {
+			// (unless it's the root node, this is a special case for "fakeHeading" handling)
+			if ( node !== rootNode && ( n === node || n.parentNode === node ) ) {
 				return NodeFilter.FILTER_REJECT;
 			}
 			if ( n.nodeType === Node.TEXT_NODE && n.textContent.trim() !== '' ) {
@@ -645,7 +648,7 @@ function getComments( rootNode ) {
 		dfParser = getLocalTimestampParser(),
 		comments = [],
 		timestamps, nextTimestamp, treeWalker,
-		node, range, curComment, startNode, match, startLevel, endLevel;
+		node, range, fakeHeading, curComment, startNode, match, startLevel, endLevel;
 
 	timestamps = findTimestamps( rootNode );
 
@@ -656,6 +659,18 @@ function getComments( rootNode ) {
 		acceptOnlyNodesAllowingComments,
 		false
 	);
+
+	// Placeholder heading in case there are comments in the 0th section
+	range = rootNode.ownerDocument.createRange();
+	range.setStart( rootNode, 0 );
+	range.setEnd( rootNode, 0 );
+	fakeHeading = {
+		type: 'heading',
+		range: range,
+		level: 0
+	};
+
+	curComment = fakeHeading;
 
 	nextTimestamp = 0;
 	while ( ( node = treeWalker.nextNode() ) ) {
@@ -718,6 +733,12 @@ function getComments( rootNode ) {
 			comments.push( curComment );
 			nextTimestamp++;
 		}
+	}
+
+	// Insert the fake placeholder heading if there are any comments in the 0th section
+	// (before the first real heading)
+	if ( comments.length && comments[ 0 ].type !== 'heading' ) {
+		comments.unshift( fakeHeading );
 	}
 
 	return comments;

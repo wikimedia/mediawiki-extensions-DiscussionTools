@@ -151,6 +151,7 @@
 			"pages/parsoid/en-913983958.json",
 			"pages/oldparser/pl-55171451.json",
 			"pages/parsoid/pl-55171451.json",
+			"other/no-heading.json",
 			"modifier.test.js",
 			"parser.test.js"
 		],
@@ -163,6 +164,7 @@
 			"oldparser/pl-55171451-modified.html": "pages/oldparser/pl-55171451-modified.html",
 			"parsoid/pl-55171451.html": "pages/parsoid/pl-55171451.html",
 			"parsoid/pl-55171451-modified.html": "pages/parsoid/pl-55171451-modified.html",
+			"other/no-heading.html": "other/no-heading.html",
 			"other/split-list.html": "other/split-list.html",
 			"other/split-list-modified.html": "other/split-list-modified.html",
 			"other/split-list2.html": "other/split-list2.html",

@@ -1,0 +1,25 @@
+[
+  {
+    "type": "heading",
+    "range": [
+      "0",
+      "0"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2020-01-22T23:19:00.000Z",
+        "author": "Matma Rex",
+        "range": [
+          "0/1/0",
+          "0/1/2/29"
+        ],
+        "level": 1,
+        "id": "Matma Rex|2020-01-22T23:19:00.000Z|0",
+        "replies": []
+      }
+    ]
+  }
+]
