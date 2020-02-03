@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mglaser"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Antworten",
+	"discussiontools-replylink": "Antworten",
+	"discussiontools-replywidget-cancel": "Abbrechen",
+	"discussiontools-replywidget-loading": "Lade …",
+	"discussiontools-replywidget-reply": "Antworten"
+}
