@@ -3,23 +3,58 @@
 		max-width: none;
 	}
 
-	&-actions {
-		margin-top: 0.5em;
+	&-actionsWrapper {
 		display: flex;
+		margin-top: 0.5em;
+	}
+
+	&-actions {
+		margin-left: 3em;
+		white-space: nowrap;
 	}
 
 	&-terms {
 		flex-grow: 1;
-		margin-right: 1em;
 		font-size: 0.75em;
 		color: #54595d;
 	}
 
 	&-preview {
-		margin-left: -1.6em;
+		background: #f6f6f6;
+		padding: 0.5em 1em;
+
+		&:empty {
+			display: none;
+		}
+
+		&:before {
+			content: attr( data-label );
+			color: #808080;
+		}
+
+		> .mw-parser-output {
+			margin-left: -1.6em;
+		}
 	}
 
-	.oo-ui-messageWidget {
+	&-anonWarning {
+		display: flex;
+		align-items: center;
+		margin-top: 1em;
 		margin-bottom: 0.5em;
+
+		&.oo-ui-messageWidget-block {
+			padding: 8px 12px;
+
+			> .oo-ui-iconElement-icon {
+				background-position: center center;
+				transform: scale( 1.5 );
+			}
+		}
+
+		> .oo-ui-labelElement-label {
+			flex-grow: 1;
+			margin-left: 2.5em;
+		}
 	}
 }

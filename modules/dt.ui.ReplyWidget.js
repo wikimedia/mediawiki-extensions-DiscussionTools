@@ -30,10 +30,20 @@ function ReplyWidget( comment, config ) {
 	} );
 	this.cancelButton = new OO.ui.ButtonWidget( {
 		flags: [ 'destructive' ],
-		label: mw.msg( 'discussiontools-replywidget-cancel' )
+		label: mw.msg( 'discussiontools-replywidget-cancel' ),
+		framed: false
 	} );
 
-	this.$preview = $( '<div>' ).addClass( 'dt-ui-replyWidget-preview' );
+	this.$preview = $( '<div>' ).addClass( 'dt-ui-replyWidget-preview' ).attr( 'data-label', mw.msg( 'discussiontools-replywidget-preview' ) );
+	this.$actionsWrapper = $( '<div>' ).addClass( 'dt-ui-replyWidget-actionsWrapper' );
+	this.$actions = $( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
+		this.cancelButton.$element,
+		this.replyButton.$element
+	);
+	this.$terms = $( '<div>' ).addClass( 'dt-ui-replyWidget-terms' ).append(
+		mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
+	);
+	this.$actionsWrapper.append( this.$terms, this.$actions );
 
 	// Events
 	this.replyButton.connect( this, { click: 'onReplyClick' } );
@@ -46,15 +56,9 @@ function ReplyWidget( comment, config ) {
 
 	// Initialization
 	this.$element.addClass( 'dt-ui-replyWidget' ).append(
-		this.$preview,
 		this.replyBodyWidget.$element,
-		$( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
-			$( '<div>' ).addClass( 'dt-ui-replyWidget-terms' ).append(
-				mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
-			),
-			this.cancelButton.$element,
-			this.replyButton.$element
-		)
+		this.$preview,
+		this.$actionsWrapper
 	);
 
 	if ( mw.user.isAnon() ) {
@@ -62,18 +66,19 @@ function ReplyWidget( comment, config ) {
 			returntoquery: encodeURIComponent( window.location.search ),
 			returnto: mw.config.get( 'wgPageName' )
 		};
-		this.$element.prepend(
-			new OO.ui.MessageWidget( {
-				classes: [ 'dt-ui-replyWidget-anonWarning' ],
-				type: 'warning',
-				label: mw.message( 'discussiontools-replywidget-anon-warning' )
-					.params( [
-						mw.util.getUrl( 'Special:Userlogin', returnTo ),
-						mw.util.getUrl( 'Special:Userlogin/signup', returnTo )
-					] )
-					.parseDom()
-			} ).$element
-		);
+		this.anonWarning = new OO.ui.MessageWidget( {
+			classes: [ 'dt-ui-replyWidget-anonWarning' ],
+			type: 'warning',
+			label: mw.message( 'discussiontools-replywidget-anon-warning' )
+				.params( [
+					mw.util.getUrl( 'Special:Userlogin', returnTo ),
+					mw.util.getUrl( 'Special:Userlogin/signup', returnTo )
+				] )
+				.parseDom()
+		} );
+		this.anonWarning.$element.append( this.$actions );
+		this.$element.append( this.anonWarning.$element, this.$terms );
+		this.$actionsWrapper.detach();
 	}
 
 	// Init preview?
@@ -187,18 +192,12 @@ ReplyWidget.prototype.onInputChange = function () {
 	// TODO: Add list context
 
 	parsePromise.then( function ( response ) {
-		var heightAfter,
-			heightBefore = widget.$preview.outerHeight( true );
 		widget.$preview.html( response ? response.parse.text : '' );
-		heightAfter = widget.$preview.outerHeight( true );
 
 		if ( response ) {
 			mw.loader.load( response.parse.modulestyles );
 			mw.loader.load( response.parse.modules );
 		}
-
-		// TODO: IE11?
-		window.scrollBy( 0, heightAfter - heightBefore );
 	} );
 };
 

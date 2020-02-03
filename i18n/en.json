@@ -9,6 +9,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>You are not logged in.</strong> To receive attribution with your name instead of your IP address, you can [$1 log in] or [$2 create an account].",
 	"discussiontools-replywidget-cancel": "Cancel",
 	"discussiontools-replywidget-loading": "Loading…",
+	"discussiontools-replywidget-preview": "Preview",
 	"discussiontools-replywidget-reply": "Reply",
 	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki.",
 	"tag-discussiontools": "DiscussionTools edit",

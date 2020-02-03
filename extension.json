@@ -93,6 +93,7 @@
 			"messages": [
 				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
+				"discussiontools-replywidget-preview",
 				"discussiontools-replywidget-reply",
 				"discussiontools-replywidget-terms-click"
 			],
