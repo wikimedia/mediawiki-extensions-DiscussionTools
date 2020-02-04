@@ -32,17 +32,25 @@ class DiscussionToolsHooks {
 	 * @param Skin $skin The skin that's going to build the UI.
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) {
+		global $wgDiscussionToolsEnable;
 		$title = $output->getTitle();
 		$actionName = Action::getActionName( $output->getContext() );
+		$req = $output->getRequest();
+
 		if (
 			// Don't show on edit pages
 			$actionName !== 'edit' &&
 			$actionName !== 'submit' &&
 			// Only wikitext pages (e.g. not Flow boards)
 			$title->getContentModel() === CONTENT_MODEL_WIKITEXT &&
-			$title->isTalkPage()
-			// TODO: Allow non talk pages to be treated as talk pages
-			// using a magic word.
+			(
+				// Query parameter to load on any wikitext page for testing
+				$req->getVal( 'dtenable' ) ||
+				// If configured, load on all talk pages
+				( $wgDiscussionToolsEnable && $title->isTalkPage() )
+				// TODO: Allow non talk pages to be treated as talk pages
+				// using a magic word.
+			)
 		) {
 			$output->addModules( [
 				'ext.discussionTools.init'
