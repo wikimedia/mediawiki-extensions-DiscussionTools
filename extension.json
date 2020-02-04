@@ -188,6 +188,10 @@
 		"ChangeTagsAllowedAdd": "DiscussionToolsHooks::onListDefinedTags"
 	},
 	"config": {
+		"DiscussionToolsEnable": {
+			"value": true,
+			"description": "Enable DiscussionTools on talk pages."
+		},
 		"DiscussionToolsUseVisualEditor": {
 			"value": false,
 			"description": "Use VisualEditor for editing replies (both visual and wikitext)."
