@@ -12,5 +12,13 @@
 	"discussiontools-replywidget-cancel": "İptal",
 	"discussiontools-replywidget-loading": "Yükleniyor...",
 	"discussiontools-replywidget-reply": "Yanıtla",
-	"discussiontools-replywidget-terms-click": "\"$1\" düğmesini tıklayarak, bu wiki için kullanım koşullarını kabul etmiş olursunuz."
+	"discussiontools-replywidget-terms-click": "\"$1\" düğmesini tıklayarak, bu wiki için kullanım koşullarını kabul etmiş olursunuz.",
+	"tag-discussiontools": "DiscussionTools düzenlemesi",
+	"tag-discussiontools-description": "DiscussionTools kullanılarak yapılan düzenleme",
+	"tag-discussiontools-edit": "düzenlenmiş yorum",
+	"tag-discussiontools-edit-description": "Kullanıcı mevcut bir yorumu düzenledi",
+	"tag-discussiontools-newsection": "bölüm eklendi",
+	"tag-discussiontools-newsection-description": "Kullanıcı sayfaya yeni bir bölüm ekledi",
+	"tag-discussiontools-reply": "yanıtlandı",
+	"tag-discussiontools-reply-description": "Kullanıcı mevcut bir yorumu yanıtladı"
 }

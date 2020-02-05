@@ -12,5 +12,13 @@
 	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-loading": "載入中…",
 	"discussiontools-replywidget-reply": "回覆",
-	"discussiontools-replywidget-terms-click": "依據點擊「$1」，代表您同意此 wiki 的使用條款。"
+	"discussiontools-replywidget-terms-click": "依據點擊「$1」，代表您同意此 wiki 的使用條款。",
+	"tag-discussiontools": "討論工具編輯",
+	"tag-discussiontools-description": "使用討論工具進行編輯",
+	"tag-discussiontools-edit": "已編輯評論",
+	"tag-discussiontools-edit-description": "使用者對現有的評論做出編輯",
+	"tag-discussiontools-newsection": "已新增段落",
+	"tag-discussiontools-newsection-description": "使用者對頁面新增一個段落",
+	"tag-discussiontools-reply": "已回覆",
+	"tag-discussiontools-reply-description": "使用者對現有的評論做出回覆"
 }
