@@ -67,8 +67,12 @@ class DiscussionToolsHooks {
 	 */
 	public static function onListDefinedTags( &$tags ) {
 		$tags[] = 'discussiontools';
+		// Features:
 		$tags[] = 'discussiontools-reply';
 		$tags[] = 'discussiontools-edit';
 		$tags[] = 'discussiontools-newsection';
+		// Input methods:
+		$tags[] = 'discussiontools-source';
+		$tags[] = 'discussiontools-visual';
 	}
 }

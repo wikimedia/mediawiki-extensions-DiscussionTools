@@ -14,10 +14,14 @@
 	"tag-discussiontools": "DiscussionTools edit",
 	"tag-discussiontools-description": "Edit made using DiscussionTools",
 	"tag-discussiontools-edit": "edited comment",
-	"tag-discussiontools-edit-description": "User edited an existing comment",
-	"tag-discussiontools-newsection": "added section",
-	"tag-discussiontools-newsection-description": "User added a new section to the page",
+	"tag-discussiontools-edit-description": "User edited an existing comment with DiscussionTools",
+	"tag-discussiontools-newtopic": "added topic",
+	"tag-discussiontools-newtopic-description": "User added a new topic to the page with DiscussionTools",
 	"tag-discussiontools-reply": "replied",
-	"tag-discussiontools-reply-description": "User replied to an existing comment"
+	"tag-discussiontools-reply-description": "User replied to an existing comment with DiscussionTools",
+	"tag-discussiontools-source": "DiscussionTools: source",
+	"tag-discussiontools-source-description": "DiscussionTools was in source mode",
+	"tag-discussiontools-visual": "DiscussionTools: visual",
+	"tag-discussiontools-visual-description": "DiscussionTools was in VisualEditor mode"
 
 }

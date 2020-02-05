@@ -108,7 +108,8 @@ function postReply( widget, parsoidData ) {
 			starttimestamp: pageData.startTimeStamp,
 			etag: pageData.etag,
 			token: pageData.token,
-			tags: [ 'discussiontools', 'discussiontools-reply' ]
+			// This appears redundant currently, but as editing / new-topics get added, we'll expand it
+			tags: [ 'discussiontools', 'discussiontools-reply', 'discussiontools-' + widget.mode ]
 		}
 	);
 }
