@@ -32,6 +32,14 @@ function markSignature( sigNodes ) {
 	}
 }
 
+function getBoundingRect( comment ) {
+	// Convert our plain-object range to a Range object
+	var nativeRange = document.createRange();
+	nativeRange.setStart( comment.range.startContainer, comment.range.startOffset );
+	nativeRange.setEnd( comment.range.endContainer, comment.range.endOffset );
+	return nativeRange.getBoundingClientRect();
+}
+
 function fixFakeFirstHeadingRect( rect, comment ) {
 	// If the page has comments before the first section heading, they are connected to a "fake"
 	// heading with an empty range. Visualize the page title as the heading for that section.
@@ -47,7 +55,7 @@ function markComment( comment ) {
 	var
 		// eslint-disable-next-line no-jquery/no-global-selector
 		rtl = $( 'html' ).attr( 'dir' ) === 'rtl',
-		rect = comment.range.getBoundingClientRect(),
+		rect = getBoundingRect( comment ),
 		marker = document.createElement( 'div' ),
 		marker2 = document.createElement( 'div' ),
 		scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
@@ -64,7 +72,7 @@ function markComment( comment ) {
 	document.body.appendChild( marker );
 
 	if ( comment.parent ) {
-		parentRect = comment.parent.range.getBoundingClientRect();
+		parentRect = getBoundingRect( comment.parent );
 		parentRect = fixFakeFirstHeadingRect( parentRect, comment.parent );
 		if ( comment.parent.level === 0 ) {
 			// Twiddle so that it looks nice

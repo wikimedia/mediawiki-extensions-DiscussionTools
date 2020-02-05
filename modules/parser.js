@@ -635,8 +635,10 @@ function nextInterestingLeafNode( node, rootNode ) {
  * @param {Node} rootNode
  * @return {Object[]} Results. Each result is an object.
  * @return {string} return.type `heading` or `comment`
- * @return {Range} return.range The extent of the comment, including the signature and timestamp.
- *   Comments can start or end in the middle of a DOM node.
+ * @return {Object} return.range Object describing the extent of the comment, including the
+ *   signature and timestamp. It has the same properties as a Range object: `startContainer`,
+ *   `startOffset`, `endContainer`, `endOffset` (we don't use a real Range because they change
+ *   magically when the DOM structure changes).
  * @return {number} return.level Indentation level of the comment. Headings are `0`, comments start
  *   at `1`.
  * @return {Object} [return.timestamp] Timestamp (Moment object), undefined for headings
@@ -661,9 +663,12 @@ function getComments( rootNode ) {
 	);
 
 	// Placeholder heading in case there are comments in the 0th section
-	range = rootNode.ownerDocument.createRange();
-	range.setStart( rootNode, 0 );
-	range.setEnd( rootNode, 0 );
+	range = {
+		startContainer: rootNode,
+		startOffset: 0,
+		endContainer: rootNode,
+		endOffset: 0
+	};
 	fakeHeading = {
 		type: 'heading',
 		range: range,
@@ -675,8 +680,12 @@ function getComments( rootNode ) {
 	nextTimestamp = 0;
 	while ( ( node = treeWalker.nextNode() ) ) {
 		if ( node.tagName && node.tagName.match( /^h[1-6]$/i ) ) {
-			range = rootNode.ownerDocument.createRange();
-			range.selectNodeContents( node );
+			range = {
+				startContainer: node,
+				startOffset: 0,
+				endContainer: node,
+				endOffset: node.childNodes.length
+			};
 			curComment = {
 				type: 'heading',
 				range: range,
@@ -686,10 +695,13 @@ function getComments( rootNode ) {
 		} else if ( timestamps[ nextTimestamp ] && node === timestamps[ nextTimestamp ][ 0 ] ) {
 			// Everything from last comment up to here is the next comment
 			startNode = nextInterestingLeafNode( curComment.range.endContainer, rootNode );
-			range = rootNode.ownerDocument.createRange();
-			range.setStartBefore( startNode );
 			match = timestamps[ nextTimestamp ][ 1 ];
-			range.setEnd( node, match.index + match[ 0 ].length );
+			range = {
+				startContainer: startNode.parentNode,
+				startOffset: Array.prototype.indexOf.call( startNode.parentNode.childNodes, startNode ),
+				endContainer: node,
+				endOffset: match.index + match[ 0 ].length
+			};
 
 			startLevel = getIndentLevel( startNode, rootNode ) + 1;
 			endLevel = getIndentLevel( node, rootNode ) + 1;
@@ -709,7 +721,8 @@ function getComments( rootNode ) {
 			) {
 				// Merge this with the previous comment.
 				// (As a result, the comment's timestamp node is in the middle of it, this should be okay?)
-				curComment.range.setEnd( node, match.index + match[ 0 ].length );
+				curComment.range.endContainer = node;
+				curComment.range.endOffset = match.index + match[ 0 ].length;
 				curComment.level = Math.min( Math.min( startLevel, endLevel ), curComment.level );
 				// Use previous comment's author and timestamp, unless it has no author, in which case it's
 				// probably not a real comment, but just a false match due to a copypasted timestamp.

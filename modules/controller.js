@@ -95,7 +95,8 @@ function postReply( widget, parsoidData ) {
 		root = root.parent;
 	}
 
-	summary = '/* ' + root.range.toString() + ' */ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
+	summary = '/* ' + root.range.startContainer.innerText + ' */ ' +
+		mw.msg( 'discussiontools-defaultsummary-reply' );
 
 	return mw.libs.ve.targetSaver.saveDoc(
 		parsoidData.doc,
@@ -117,8 +118,13 @@ function highlight( comment ) {
 		// $container must be position:relative/absolute
 		$container = OO.ui.getDefaultOverlay(),
 		containerRect = $container[ 0 ].getBoundingClientRect(),
-		rect = RangeFix.getBoundingClientRect( comment.range ),
+		nativeRange, rect,
 		$highlight = $( '<div>' ).addClass( 'dt-init-highlight' );
+
+	nativeRange = document.createRange();
+	nativeRange.setStart( comment.range.startContainer, comment.range.startOffset );
+	nativeRange.setEnd( comment.range.endContainer, comment.range.endOffset );
+	rect = RangeFix.getBoundingClientRect( nativeRange );
 
 	$highlight.css( {
 		top: rect.top - containerRect.top - padding,
