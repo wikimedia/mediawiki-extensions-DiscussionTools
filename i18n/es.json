@@ -11,5 +11,11 @@
 	"discussiontools-replylink": "Responder",
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-loading": "Cargando...",
-	"discussiontools-replywidget-reply": "Responder"
+	"discussiontools-replywidget-reply": "Responder",
+	"tag-discussiontools-edit": "comentario editado",
+	"tag-discussiontools-edit-description": "El usuario editó un comentario existente",
+	"tag-discussiontools-newsection": "Sección agregada",
+	"tag-discussiontools-newsection-description": "El usuario agregó una nueva sección a la página",
+	"tag-discussiontools-reply": "respondido",
+	"tag-discussiontools-reply-description": "El usuario respondió a un comentario existente"
 }

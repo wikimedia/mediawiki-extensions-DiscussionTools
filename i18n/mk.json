@@ -12,5 +12,13 @@
 	"discussiontools-replywidget-cancel": "Откажи",
 	"discussiontools-replywidget-loading": "Вчитувам…",
 	"discussiontools-replywidget-reply": "Одговори",
-	"discussiontools-replywidget-terms-click": "Стискајќи на „$1“ се согласувате со условите на употреба на ова вики."
+	"discussiontools-replywidget-terms-click": "Стискајќи на „$1“ се согласувате со условите на употреба на ова вики.",
+	"tag-discussiontools": "Уредување со Разговорни алатки",
+	"tag-discussiontools-description": "Уредување направено со Разговорни алатки",
+	"tag-discussiontools-edit": "изменет коментар",
+	"tag-discussiontools-edit-description": "Корисникот изменил постоечки коментар",
+	"tag-discussiontools-newsection": "додаден поднаслов",
+	"tag-discussiontools-newsection-description": "Крисникот додал нов поднаслов во страницата",
+	"tag-discussiontools-reply": "одговорил",
+	"tag-discussiontools-reply-description": "Корисникот одговорил на постоечки коментар"
 }
