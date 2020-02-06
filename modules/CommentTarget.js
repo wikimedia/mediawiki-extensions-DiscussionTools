@@ -42,9 +42,30 @@ CommentTarget.static.toolbarGroups = [
 	// Mention?
 ];
 
-// Allow pasting links
 CommentTarget.static.importRules = ve.copy( CommentTarget.static.importRules );
-CommentTarget.static.importRules.external.blacklist[ 'link/mwExternal' ] = false;
+
+CommentTarget.static.importRules.external.conversions = ve.extendObject(
+	{},
+	CommentTarget.static.importRules.external.conversions,
+	{
+		mwHeading: 'paragraph'
+	}
+);
+
+CommentTarget.static.importRules.external.blacklist = ve.extendObject(
+	{},
+	CommentTarget.static.importRules.external.blacklist,
+	{
+		// Annotations
+		// Allow pasting external links
+		'link/mwExternal': false,
+		// Strip all table structure
+		mwTable: true,
+		tableSection: true,
+		tableRow: true,
+		tableCell: true
+	}
+);
 
 // TODO Add edit switcher actionGroup
 

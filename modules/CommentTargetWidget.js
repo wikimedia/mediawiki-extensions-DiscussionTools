@@ -9,9 +9,21 @@ var CommentTarget = require( './CommentTarget.js' );
  * @constructor
  * @param {Object} [config] Configuration options
  */
-function CommentTargetWidget() {
+function CommentTargetWidget( config ) {
+	config = $.extend( {}, {
+		excludeCommands: [
+			'heading1',
+			'heading2',
+			'heading3',
+			'heading4',
+			'heading5',
+			'heading6',
+			'insertTable'
+		]
+	}, config );
+
 	// Parent constructor
-	CommentTargetWidget.super.apply( this, arguments );
+	CommentTargetWidget.super.call( this, config );
 
 	// Initialization
 	this.$element.addClass( 'dt-ui-targetWidget' );
