@@ -9,6 +9,17 @@
 
 class DiscussionToolsHooks {
 
+	private static $tags = [
+		'discussiontools',
+		// Features:
+		'discussiontools-reply',
+		'discussiontools-edit',
+		'discussiontools-newtopic',
+		// Input methods:
+		'discussiontools-source',
+		'discussiontools-visual',
+	];
+
 	public static function onRegistration() {
 		global $wgLocaltimezone;
 		// If $wgLocaltimezone isn't hard-coded, it is evaluated from the system
@@ -59,20 +70,37 @@ class DiscussionToolsHooks {
 	}
 
 	/**
-	 * Implements the ListDefinedTags, ChangeTagsListActive, and
-	 * ChangeTagsAllowedAdd hooks, to populate core Special:Tags with the change
-	 * tags in use by VisualEditor.
+	 * Implements the ListDefinedTags and ChangeTagsListActive hooks, to
+	 * populate core Special:Tags with the change tags in use by DiscussionTools.
 	 *
 	 * @param array &$tags Available change tags.
 	 */
 	public static function onListDefinedTags( &$tags ) {
-		$tags[] = 'discussiontools';
-		// Features:
-		$tags[] = 'discussiontools-reply';
-		$tags[] = 'discussiontools-edit';
-		$tags[] = 'discussiontools-newsection';
-		// Input methods:
-		$tags[] = 'discussiontools-source';
-		$tags[] = 'discussiontools-visual';
+		$tags = array_merge( $tags, static::$tags );
+	}
+
+	/**
+	 * Implements the RecentChange_save hook, to add a whitelisted set of changetags
+	 * to edits.
+	 *
+	 * @param RecentChange $recentChange
+	 * @return bool
+	 */
+	public static function onRecentChangeSave( RecentChange $recentChange ) {
+		// only apply to api edits, since there's no case where discussiontools
+		// should be using the form-submit method.
+		if ( !defined( 'MW_API' ) ) {
+			return true;
+		}
+		$request = RequestContext::getMain()->getRequest();
+		$tags = explode( ',', $request->getVal( 'dttags' ) );
+
+		$tags = array_values( array_intersect( $tags, static::$tags ) );
+
+		if ( $tags ) {
+			$recentChange->addTags( $tags );
+		}
+
+		return true;
 	}
 }

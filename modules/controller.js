@@ -109,7 +109,7 @@ function postReply( widget, parsoidData ) {
 			etag: pageData.etag,
 			token: pageData.token,
 			// This appears redundant currently, but as editing / new-topics get added, we'll expand it
-			tags: [ 'discussiontools', 'discussiontools-reply', 'discussiontools-' + widget.mode ]
+			dttags: [ 'discussiontools', 'discussiontools-reply', 'discussiontools-' + widget.mode ].join( ',' )
 		}
 	);
 }
