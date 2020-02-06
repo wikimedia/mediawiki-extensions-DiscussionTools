@@ -3,10 +3,25 @@
 		border: 0;
 	}
 
-	.ve-init-mw-target-surface .ve-ce-documentNode,
-	.ve-init-mw-target-surface .ve-ui-surface-placeholder {
-		min-height: 10em;
-		padding: 6px 8px;
-		box-sizing: border-box;
+	.ve-init-mw-target-surface {
+		.ve-ce-documentNode,
+		.ve-ui-surface-placeholder {
+			min-height: 10em;
+			box-sizing: border-box;
+		}
+
+		&.ve-ui-surface-source {
+			.ve-ce-documentNode,
+			.ve-ui-surface-placeholder {
+				padding: 6px 8px;
+			}
+		}
+
+		&.ve-ui-surface-visual {
+			.ve-ce-documentNode,
+			.ve-ui-surface-placeholder {
+				padding: 0 8px;
+			}
+		}
 	}
 }
