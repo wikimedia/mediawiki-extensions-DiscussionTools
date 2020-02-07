@@ -16,9 +16,13 @@
 	"tag-discussiontools": "Уредување со Разговорни алатки",
 	"tag-discussiontools-description": "Уредување направено со Разговорни алатки",
 	"tag-discussiontools-edit": "изменет коментар",
-	"tag-discussiontools-edit-description": "Корисникот изменил постоечки коментар",
-	"tag-discussiontools-newsection": "додаден поднаслов",
-	"tag-discussiontools-newsection-description": "Крисникот додал нов поднаслов во страницата",
+	"tag-discussiontools-edit-description": "Корисникот изменил постоечки коментар со Разговорни алатки",
+	"tag-discussiontools-newtopic": "додадена тема",
+	"tag-discussiontools-newtopic-description": "Корисникот додал тема во страницата со Разговорни алатки",
 	"tag-discussiontools-reply": "одговорил",
-	"tag-discussiontools-reply-description": "Корисникот одговорил на постоечки коментар"
+	"tag-discussiontools-reply-description": "Корисникот одговорил на постоечки коментар со Разговорни алатки",
+	"tag-discussiontools-source": "Разговорни алатки: изворно",
+	"tag-discussiontools-source-description": "Разговорните алатки беа во изворен режим",
+	"tag-discussiontools-visual": "Разговорни алатки: нагледно",
+	"tag-discussiontools-visual-description": "Разговорни алатки беше во нагледен режим"
 }

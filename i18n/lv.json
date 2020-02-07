@@ -8,5 +8,7 @@
 	"discussiontools-replylink": "Atbildēt",
 	"discussiontools-replywidget-cancel": "Atcelt",
 	"discussiontools-replywidget-loading": "Ielādē…",
-	"discussiontools-replywidget-reply": "Atbildēt"
+	"discussiontools-replywidget-reply": "Atbildēt",
+	"tag-discussiontools-edit": "laboja komentāru",
+	"tag-discussiontools-reply": "atbildēja"
 }

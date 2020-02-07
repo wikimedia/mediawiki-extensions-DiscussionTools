@@ -16,9 +16,13 @@
 	"tag-discussiontools": "討論工具編輯",
 	"tag-discussiontools-description": "使用討論工具進行編輯",
 	"tag-discussiontools-edit": "已編輯評論",
-	"tag-discussiontools-edit-description": "使用者對現有的評論做出編輯",
-	"tag-discussiontools-newsection": "已新增段落",
-	"tag-discussiontools-newsection-description": "使用者對頁面新增一個段落",
+	"tag-discussiontools-edit-description": "使用者以討論工具對現有的評論做出編輯",
+	"tag-discussiontools-newtopic": "新增話題",
+	"tag-discussiontools-newtopic-description": "使用者以討論工具對頁新增一個話題",
 	"tag-discussiontools-reply": "已回覆",
-	"tag-discussiontools-reply-description": "使用者對現有的評論做出回覆"
+	"tag-discussiontools-reply-description": "使用者以討論工具對現有的評論做出回覆",
+	"tag-discussiontools-source": "討論工具：來源",
+	"tag-discussiontools-source-description": "討論工具處於來源模式",
+	"tag-discussiontools-visual": "討論工具：視覺化",
+	"tag-discussiontools-visual-description": "討論工具處於視覺化編輯器模式"
 }
