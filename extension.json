@@ -185,7 +185,7 @@
 		],
 		"ListDefinedTags": "DiscussionToolsHooks::onListDefinedTags",
 		"ChangeTagsListActive": "DiscussionToolsHooks::onListDefinedTags",
-		"ChangeTagsAllowedAdd": "DiscussionToolsHooks::onListDefinedTags"
+		"RecentChange_save": "DiscussionToolsHooks::onRecentChangeSave"
 	},
 	"config": {
 		"DiscussionToolsEnable": {
