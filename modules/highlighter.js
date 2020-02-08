@@ -1,6 +1,8 @@
 'use strict';
 
-var parser = require( 'ext.discussionTools.parser' );
+var
+	parser = require( 'ext.discussionTools.parser' ),
+	initialOffset, indentWidth;
 
 function markTimestamp( node, match ) {
 	var
@@ -51,6 +53,27 @@ function fixFakeFirstHeadingRect( rect, comment ) {
 	return rect;
 }
 
+function calculateSizes() {
+	var $content, rect, $test, rtl;
+
+	if ( initialOffset !== undefined ) {
+		return;
+	}
+
+	// eslint-disable-next-line no-jquery/no-global-selector
+	rtl = $( 'html' ).attr( 'dir' ) === 'rtl';
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$content = $( '#mw-content-text' );
+	$test = $( '<dd>' ).appendTo( $( '<dl>' ).appendTo( $content ) );
+	rect = $content[ 0 ].getBoundingClientRect();
+
+	initialOffset = rtl ? document.body.scrollWidth - rect.left - rect.width : rect.left;
+	indentWidth = parseFloat( $test.css( rtl ? 'margin-right' : 'margin-left' ) ) +
+		parseFloat( $test.parent().css( rtl ? 'margin-right' : 'margin-left' ) );
+
+	$test.parent().remove();
+}
+
 function markComment( comment ) {
 	var
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -71,6 +94,8 @@ function markComment( comment ) {
 	marker.style.width = ( rect.width ) + 'px';
 	document.body.appendChild( marker );
 
+	calculateSizes();
+
 	if ( comment.parent ) {
 		parentRect = getBoundingRect( comment.parent );
 		parentRect = fixFakeFirstHeadingRect( parentRect, comment.parent );
@@ -78,22 +103,17 @@ function markComment( comment ) {
 			// Twiddle so that it looks nice
 			parentRect = $.extend( {}, parentRect );
 			parentRect.height -= 10;
-			if ( rtl ) {
-				parentRect.width += 20;
-			} else {
-				parentRect.left -= 20;
-			}
 		}
 
 		marker2.className = 'detected-comment-ruler';
 		marker2.style.top = ( parentRect.top + parentRect.height + scrollTop ) + 'px';
 		marker2.style.height = ( rect.top - ( parentRect.top + parentRect.height ) + 10 ) + 'px';
 		if ( rtl ) {
-			marker2.style.left = ( rect.left + rect.width + scrollLeft ) + 'px';
-			marker2.style.width = ( 10 ) + 'px';
+			marker2.style.right = ( initialOffset - indentWidth / 2 + comment.parent.level * indentWidth ) + 'px';
+			marker2.style.width = ( ( comment.level - comment.parent.level ) * indentWidth - indentWidth / 2 ) + 'px';
 		} else {
-			marker2.style.left = ( parentRect.left + 10 + scrollLeft ) + 'px';
-			marker2.style.width = ( rect.left - ( parentRect.left + 10 ) ) + 'px';
+			marker2.style.left = ( initialOffset - indentWidth / 2 + comment.parent.level * indentWidth ) + 'px';
+			marker2.style.width = ( ( comment.level - comment.parent.level ) * indentWidth - indentWidth / 2 ) + 'px';
 		}
 		document.body.appendChild( marker2 );
 	}
