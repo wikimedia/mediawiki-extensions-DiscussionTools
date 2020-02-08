@@ -85,7 +85,7 @@ function markComment( comment ) {
 			}
 		}
 
-		marker2.className = 'detected-comment-relationship';
+		marker2.className = 'detected-comment-ruler';
 		marker2.style.top = ( parentRect.top + parentRect.height + scrollTop ) + 'px';
 		marker2.style.height = ( rect.top - ( parentRect.top + parentRect.height ) + 10 ) + 'px';
 		if ( rtl ) {
@@ -110,7 +110,7 @@ function markThreads( threads ) {
 	}
 	// Reverse order so that box-shadows look right
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( 'body' ).append( $( '.detected-comment-relationship' ).get().reverse() );
+	$( 'body' ).append( $( '.detected-comment-ruler' ).get().reverse() );
 }
 
 module.exports = {
