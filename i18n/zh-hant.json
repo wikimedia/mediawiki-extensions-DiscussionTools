@@ -11,6 +11,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>您尚未登入。</strong>要收到使用您的名稱的署名而非 IP 位址，您可以[$1 登入]或[$2 建立一個帳號]。",
 	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-loading": "載入中…",
+	"discussiontools-replywidget-preview": "預覽",
 	"discussiontools-replywidget-reply": "回覆",
 	"discussiontools-replywidget-terms-click": "依據點擊「$1」，代表您同意此 wiki 的使用條款。",
 	"tag-discussiontools": "討論工具編輯",

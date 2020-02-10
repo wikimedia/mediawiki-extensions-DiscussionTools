@@ -11,12 +11,19 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Giriş yapmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 giriş yapın] veya [$2 bir hesap oluşturabilirsiniz].",
 	"discussiontools-replywidget-cancel": "İptal",
 	"discussiontools-replywidget-loading": "Yükleniyor...",
+	"discussiontools-replywidget-preview": "Önizleme",
 	"discussiontools-replywidget-reply": "Yanıtla",
 	"discussiontools-replywidget-terms-click": "\"$1\" düğmesini tıklayarak, bu wiki için kullanım koşullarını kabul etmiş olursunuz.",
 	"tag-discussiontools": "DiscussionTools düzenlemesi",
 	"tag-discussiontools-description": "DiscussionTools kullanılarak yapılan düzenleme",
 	"tag-discussiontools-edit": "düzenlenmiş yorum",
-	"tag-discussiontools-edit-description": "Kullanıcı mevcut bir yorumu düzenledi",
+	"tag-discussiontools-edit-description": "Kullanıcı DiscussionTools ile mevcut bir yorumu düzenledi",
+	"tag-discussiontools-newtopic": "eklenen konu",
+	"tag-discussiontools-newtopic-description": "Kullanıcı, DiscussionTools ile sayfaya yeni bir konu ekledi",
 	"tag-discussiontools-reply": "yanıtlandı",
-	"tag-discussiontools-reply-description": "Kullanıcı mevcut bir yorumu yanıtladı"
+	"tag-discussiontools-reply-description": "Kullanıcı DiscussionTools ile mevcut bir yorumu yanıtladı",
+	"tag-discussiontools-source": "DiscussionTools: kaynak",
+	"tag-discussiontools-source-description": "DiscussionTools kaynak modundaydı",
+	"tag-discussiontools-visual": "DiscussionTools: görsel",
+	"tag-discussiontools-visual-description": "DiscussionTools Görsel Düzenleyici modundaydı"
 }

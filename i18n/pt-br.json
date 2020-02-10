@@ -13,8 +13,16 @@
 	"discussiontools-replywidget-loading": "Carregando…",
 	"discussiontools-replywidget-reply": "Responder",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
+	"tag-discussiontools": "Edição do DiscussionTools",
+	"tag-discussiontools-description": "Edição feita usando DiscussionTools",
 	"tag-discussiontools-edit": "comentário editado",
-	"tag-discussiontools-edit-description": "O usuário editou um comentário existente",
+	"tag-discussiontools-edit-description": "O usuário editou um comentário existente com DiscussionTools",
+	"tag-discussiontools-newtopic": "tópico adicionado",
+	"tag-discussiontools-newtopic-description": "O usuário adicionou um novo tópico à página com DiscussionTools",
 	"tag-discussiontools-reply": "respondido",
-	"tag-discussiontools-reply-description": "O usuário respondeu a um comentário existente"
+	"tag-discussiontools-reply-description": "O usuário respondeu a um comentário existente com DiscussionTools",
+	"tag-discussiontools-source": "DiscussionTools: fonte",
+	"tag-discussiontools-source-description": "DiscussionTools estava no modo de fonte",
+	"tag-discussiontools-visual": "DiscussionTools: visual",
+	"tag-discussiontools-visual-description": "DiscussionTools estava no modo Editor visual"
 }

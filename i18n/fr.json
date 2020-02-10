@@ -4,7 +4,9 @@
 			"Verdy p",
 			"Thibaut120094",
 			"Gomoko",
-			"Choodyam"
+			"Choodyam",
+			"Derugon",
+			"Pamputt"
 		]
 	},
 	"discussiontools": "Outils de discussion",
@@ -14,6 +16,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Vous n’êtes pas connecté(e).</strong> Pour que vos modifications soient attribuées à votre nom d’utilisateur plutôt qu’à votre adresse IP, vous pouvez [$1 vous connecter] ou [$2 créer un compte].",
 	"discussiontools-replywidget-cancel": "Annuler",
 	"discussiontools-replywidget-loading": "Chargement en cours...",
+	"discussiontools-replywidget-preview": "Aperçu",
 	"discussiontools-replywidget-reply": "Répondre",
 	"discussiontools-replywidget-terms-click": "En cliquant sur « $1 », vous acceptez les conditions d’utilisation de ce wiki.",
 	"tag-discussiontools": "modification DiscussionTools",
@@ -24,8 +27,8 @@
 	"tag-discussiontools-newtopic-description": "L’utilisateur a ajouté un nouveau sujet à la page avec DiscussionTools",
 	"tag-discussiontools-reply": "répondu",
 	"tag-discussiontools-reply-description": "L’utilisateur a répondu à un commentaire existant avec DiscussionTools",
-	"tag-discussiontools-source": "DiscussionTools: source",
+	"tag-discussiontools-source": "DiscussionTools : source",
 	"tag-discussiontools-source-description": "DiscussionTools était en mode source",
-	"tag-discussiontools-visual": "DiscussionTools: visuel",
+	"tag-discussiontools-visual": "DiscussionTools : visuel",
 	"tag-discussiontools-visual-description": "DiscussionTools était en mode VisualEditor"
 }

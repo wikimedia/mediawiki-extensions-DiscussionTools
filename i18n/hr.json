@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bugoslav"
+			"Bugoslav",
+			"Neptune, the Mystic"
 		]
 	},
-	"discussiontools-replywidget-loading": "Učitava se…"
+	"discussiontools-replywidget-loading": "Učitava se…",
+	"discussiontools-replywidget-preview": "Pregled",
+	"tag-discussiontools-edit": "uređen komentar",
+	"tag-discussiontools-newtopic": "dodana tema"
 }

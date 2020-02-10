@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"discussiontools": "أدوات المناقشة",
@@ -11,6 +12,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>لم تقم بتسجيل الدخول،</strong> لتلقي الإسناد باسمك بدلا من عنوان الآيلي الخاص بك؛ يمكنك [$1 تسجيل الدخول] أو [$2 إنشاء حساب].",
 	"discussiontools-replywidget-cancel": "إلغاء",
 	"discussiontools-replywidget-loading": "جارٍ التحميل...",
+	"discussiontools-replywidget-preview": "معاينة",
 	"discussiontools-replywidget-reply": "رد",
 	"discussiontools-replywidget-terms-click": "بالنقر على \"$1\"، فإنك توافق على شروط الاستخدام لهذا الويكي."
 }

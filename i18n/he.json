@@ -11,6 +11,19 @@
 	"discussiontools-replywidget-anon-warning": "<strong>לא נכנסת לחשבון.</strong> כדי לקבל ייחוס עם שמך ולא עם כתובת ה־IP שלך, אפשר [$1 להיכנס] או [$2 ליצור חשבון].",
 	"discussiontools-replywidget-cancel": "ביטול",
 	"discussiontools-replywidget-loading": "טעינה...",
+	"discussiontools-replywidget-preview": "תצוגה מקדימה",
 	"discussiontools-replywidget-reply": "להשיב",
-	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של הוויקי הזה."
+	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של הוויקי הזה.",
+	"tag-discussiontools": "עריכה של כלי דיון",
+	"tag-discussiontools-description": "עריכה שנעשתה באמצעות כלי דיון",
+	"tag-discussiontools-edit": "נערכה תגובה",
+	"tag-discussiontools-edit-description": "משתמש ערך תגובה קיימת באמצעות כלי דיון",
+	"tag-discussiontools-newtopic": "נוסף נושא",
+	"tag-discussiontools-newtopic-description": "משתמש הוסיף נושא חדש לדף באמצעות כלי דיון",
+	"tag-discussiontools-reply": "השיב",
+	"tag-discussiontools-reply-description": "משתמש השיב להערה קיימת באמצעות כלי דיון",
+	"tag-discussiontools-source": "כלי דיון: קוד מקור",
+	"tag-discussiontools-source-description": "כלי דיון היו במצב קוד מקור",
+	"tag-discussiontools-visual": "כלי דיון: חזותי",
+	"tag-discussiontools-visual-description": "כלי דיון היו במצב עורך חזותי"
 }

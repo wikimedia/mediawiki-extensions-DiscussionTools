@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mglaser"
+			"Mglaser",
+			"Killarnee"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Antworten",
 	"discussiontools-replylink": "Antworten",
 	"discussiontools-replywidget-cancel": "Abbrechen",
 	"discussiontools-replywidget-loading": "Lade …",
-	"discussiontools-replywidget-reply": "Antworten"
+	"discussiontools-replywidget-preview": "Vorschau",
+	"discussiontools-replywidget-reply": "Antworten",
+	"tag-discussiontools-newtopic": "Hinzugefügtes Thema"
 }
