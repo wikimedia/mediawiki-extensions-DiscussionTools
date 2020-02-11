@@ -2,9 +2,24 @@
 	"@metadata": {
 		"authors": [
 			"Elroy",
-			"Dedalus"
+			"Dedalus",
+			"Mainframe98"
 		]
 	},
 	"discussiontools": "Overleghulpmiddelen",
-	"discussiontools-replylink": "Antwoorden"
+	"discussiontools-defaultsummary-reply": "Antwoorden",
+	"discussiontools-desc": "Hulpmiddelen om overlegpagina's te verbeteren",
+	"discussiontools-replylink": "Antwoorden",
+	"discussiontools-replywidget-anon-warning": "<strong>U bent niet aangemeld.</strong> Om naamsvermelding met uw naam te krijgen in plaats van uw IP-adres, kunt u [$1 zich aanmelden] of [$2 een account aanmaken].",
+	"discussiontools-replywidget-cancel": "Annuleren",
+	"discussiontools-replywidget-loading": "Bezig met laden...",
+	"discussiontools-replywidget-preview": "Voorvertoning",
+	"discussiontools-replywidget-reply": "Antwoorden",
+	"discussiontools-replywidget-terms-click": "Door op \"$1\" te klikken, gaat u akkoord met de gebruiksvoorwaarden van deze wiki.",
+	"tag-discussiontools": "DiscussionTools bewerking",
+	"tag-discussiontools-description": "Bewerking gemaakt met DiscussionTools",
+	"tag-discussiontools-newtopic": "onderwerp toegevoegd",
+	"tag-discussiontools-newtopic-description": "De gebruiker heeft een nieuw onderwerp aan de pagina toegevoegd met DiscussionTools",
+	"tag-discussiontools-reply": "beantwoord",
+	"tag-discussiontools-reply-description": "De gebruiker heeft op een bestaand bericht geantwoord met DiscussionTools"
 }

@@ -4,11 +4,26 @@
 			"Papuass"
 		]
 	},
+	"discussiontools": "Diskusiju rīki",
 	"discussiontools-defaultsummary-reply": "Atbilde",
+	"discussiontools-desc": "Rīki diskusiju lapu uzlabošanai",
 	"discussiontools-replylink": "Atbildēt",
+	"discussiontools-replywidget-anon-warning": "<strong>Tu neesi pieslēdzies.</strong> Lai tavs devums tiktu piesaistīts tavam vārdam, nevis tavai IP adresei, tu vari [$1 pieslēgties] vai [$2 izveidot kontu].",
 	"discussiontools-replywidget-cancel": "Atcelt",
 	"discussiontools-replywidget-loading": "Ielādē…",
+	"discussiontools-replywidget-preview": "Priekšskatījums",
 	"discussiontools-replywidget-reply": "Atbildēt",
+	"discussiontools-replywidget-terms-click": "Klikšķinot uz \"$1\", tu piekrīti šīs vikivietnes izmantošanas noteikumiem.",
+	"tag-discussiontools": "Diskusiju rīku labojums",
+	"tag-discussiontools-description": "Labojums veikts ar diskusiju rīkiem",
 	"tag-discussiontools-edit": "laboja komentāru",
-	"tag-discussiontools-reply": "atbildēja"
+	"tag-discussiontools-edit-description": "Dalībnieks laboja esošu komentāru ar diskusiju rīkiem",
+	"tag-discussiontools-newtopic": "pievienota tēma",
+	"tag-discussiontools-newtopic-description": "Dalībnieks lapai pievienoja jaunu tēmu ar diskusiju rīkiem",
+	"tag-discussiontools-reply": "atbildēja",
+	"tag-discussiontools-reply-description": "Dalībnieks atbildēja uz esošu komentāru ar diskusiju rīkiem",
+	"tag-discussiontools-source": "Diskusiju rīki: vikikods",
+	"tag-discussiontools-source-description": "Diskusiju rīki bija vikikoda režīmā",
+	"tag-discussiontools-visual": "Diskusiju rīki: vizuāli",
+	"tag-discussiontools-visual-description": "Diskusiju rīki bija vizuālā redaktora režīmā"
 }

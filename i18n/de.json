@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Mglaser",
-			"Killarnee"
+			"Killarnee",
+			"1233qwer1234qwer4"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Antworten",
+	"discussiontools-defaultsummary-reply": "Antwort",
 	"discussiontools-replylink": "Antworten",
 	"discussiontools-replywidget-cancel": "Abbrechen",
 	"discussiontools-replywidget-loading": "Lade …",
