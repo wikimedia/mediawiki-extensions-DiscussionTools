@@ -42,7 +42,7 @@
 	background: skyblue;
 }
 
-.detected-comment-relationship {
+.detected-comment-ruler {
 	position: absolute;
 	box-sizing: border-box;
 	border-left: 3px solid red;
