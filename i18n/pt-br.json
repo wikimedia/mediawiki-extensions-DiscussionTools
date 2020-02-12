@@ -11,6 +11,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Você não entrou</strong>. Para receber a atribuição com o seu nome em vez do seu endereço IP, você pode [$1 entrar] ou [$2 criar uma conta].",
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-loading": "Carregando…",
+	"discussiontools-replywidget-preview": "Pré-visualizar",
 	"discussiontools-replywidget-reply": "Responder",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"tag-discussiontools": "Edição do DiscussionTools",
