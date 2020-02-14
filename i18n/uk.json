@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"discussiontools": "Інструменти обговорення",
+	"discussiontools-defaultsummary-reply": "Відповідь",
+	"discussiontools-desc": "Інструменти для покращення сторінок обговорення.",
+	"discussiontools-replylink": "Відповісти",
+	"discussiontools-replywidget-anon-warning": "<strong>Ви не увійшли в систему.</strong> Щоб мати змогу підписуватися власним іменем замість своєї IP-адреси, Вам треба або [$1 увійти в систему], або [$2 зареєструватися].",
+	"discussiontools-replywidget-cancel": "Скасувати",
+	"discussiontools-replywidget-loading": "Завантаження…",
+	"discussiontools-replywidget-preview": "Попередній перегляд",
+	"discussiontools-replywidget-reply": "Відповісти",
+	"discussiontools-replywidget-terms-click": "Натискаючи «$1», Ви погоджуєтесь із умовами використання цієї вікі.",
+	"tag-discussiontools": "Редагування через DiscussionTools",
+	"tag-discussiontools-description": "Редагування зроблене через DiscussionTools",
+	"tag-discussiontools-edit": "відредаговано коментар",
+	"tag-discussiontools-edit-description": "Користувач відредагував один із уже наявних коментарів через DiscussionTools",
+	"tag-discussiontools-newtopic": "додано тему",
+	"tag-discussiontools-newtopic-description": "Користувач створив на сторінці нову тему через DiscussionTools",
+	"tag-discussiontools-reply": "відповідь",
+	"tag-discussiontools-reply-description": "Користувач відповів на один із уже наявних коментарів через DiscussionTools",
+	"tag-discussiontools-source": "DiscussionTools: код",
+	"tag-discussiontools-source-description": "DiscussionTools було використано в режимі редагування вікірозмітки",
+	"tag-discussiontools-visual": "DiscussionTools: візуальний",
+	"tag-discussiontools-visual-description": "DiscussionTools було використано в режимі візуального редактора"
+}
