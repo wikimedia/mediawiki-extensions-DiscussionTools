@@ -233,9 +233,16 @@ ReplyWidget.prototype.onBeforeUnload = function ( e ) {
 	}
 };
 
+ReplyWidget.prototype.getParsoidCommentData = function () {
+	return controller.getParsoidCommentData(
+		mw.config.get( 'wgRelevantPageName' ),
+		mw.config.get( 'wgRevisionId' ),
+		this.comment.id
+	);
+};
+
 ReplyWidget.prototype.onReplyClick = function () {
-	var repliedTo,
-		widget = this;
+	var widget = this;
 
 	if ( this.errorMessage ) {
 		this.errorMessage.$element.remove();
@@ -243,8 +250,8 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 	this.setPending( true );
 
-	this.comment.parsoidPromise.then( function ( parsoidData ) {
-		repliedTo = parsoidData.comment.id;
+	// We must get a new copy of the document every time, otherwise any unsaved replies will pile up
+	this.getParsoidCommentData().then( function ( parsoidData ) {
 		return controller.postReply( widget, parsoidData );
 	} ).then( function ( data ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -266,7 +273,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 		// Re-initialize
 		controller.init( $container.find( '.mw-parser-output' ), {
-			repliedTo: repliedTo
+			repliedTo: widget.comment.id
 		} );
 		mw.hook( 'wikipage.content' ).fire( $container );
 	}, function ( code, data ) {
