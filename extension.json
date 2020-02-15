@@ -58,6 +58,7 @@
 				"ext.discussionTools.modifier"
 			],
 			"messages": [
+				"discussiontools-error-comment-disappeared",
 				"discussiontools-defaultsummary-reply",
 				"discussiontools-replylink",
 				"discussiontools-replywidget-loading"
