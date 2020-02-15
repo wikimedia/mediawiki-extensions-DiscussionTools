@@ -255,7 +255,7 @@ function init( $container, state ) {
 	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
 	getPageData(
 		mw.config.get( 'wgRelevantPageName' ),
-		mw.config.get( 'wgRevisionId' )
+		mw.config.get( 'wgCurRevisionId' )
 	);
 }
 

@@ -236,7 +236,7 @@ ReplyWidget.prototype.onBeforeUnload = function ( e ) {
 ReplyWidget.prototype.getParsoidCommentData = function () {
 	return controller.getParsoidCommentData(
 		mw.config.get( 'wgRelevantPageName' ),
-		mw.config.get( 'wgRevisionId' ),
+		mw.config.get( 'wgCurRevisionId' ),
 		this.comment.id
 	);
 };
