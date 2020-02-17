@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"FinlandMan"
+			"FinlandMan",
+			"Pxos"
 		]
 	},
-	"tag-discussiontools-newtopic": "Lisätty aihe"
+	"tag-discussiontools-newtopic": "aihe lisätty"
 }
