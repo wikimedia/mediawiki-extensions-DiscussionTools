@@ -50,6 +50,11 @@ class DiscussionToolsHooks {
 		$title = $output->getTitle();
 		$actionName = Action::getActionName( $output->getContext() );
 		$req = $output->getRequest();
+		$user = $skin->getUser();
+		$enabled = $dtConfig->get( 'DiscussionToolsEnable' ) && (
+			!$dtConfig->get( 'DiscussionToolsBeta' ) ||
+			$user->getOption( 'discussiontools-betaenable' )
+		);
 
 		if (
 			// Don't show on edit pages
@@ -61,7 +66,7 @@ class DiscussionToolsHooks {
 				// Query parameter to load on any wikitext page for testing
 				$req->getVal( 'dtenable' ) ||
 				// If configured, load on all talk pages
-				( $dtConfig->get( 'DiscussionToolsEnable' ) && $title->isTalkPage() )
+				( $enabled && $title->isTalkPage() )
 				// TODO: Allow non talk pages to be treated as talk pages
 				// using a magic word.
 			)
@@ -69,6 +74,40 @@ class DiscussionToolsHooks {
 			$output->addModules( [
 				'ext.discussionTools.init'
 			] );
+		}
+	}
+
+	/**
+	 * Handler for the GetBetaPreferences hook, to add and hide user beta preferences as configured
+	 *
+	 * @param User $user The user object
+	 * @param array &$preferences Their preferences object
+	 */
+	public static function onGetBetaPreferences( User $user, array &$preferences ) {
+		$coreConfig = RequestContext::getMain()->getConfig();
+		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
+
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'discussiontools' );
+
+		if (
+			$dtConfig->get( 'DiscussionToolsEnable' ) &&
+			$dtConfig->get( 'DiscussionToolsBeta' )
+		) {
+			$preferences['discussiontools-betaenable'] = [
+				'version' => '1.0',
+				'label-message' => 'discussiontools-preference-label',
+				'desc-message' => 'discussiontools-preference-description',
+				'screenshot' => [
+					'ltr' => "$iconpath/betafeatures-icon-DiscussionTools-ltr.svg",
+					'rtl' => "$iconpath/betafeatures-icon-DiscussionTools-rtl.svg",
+				],
+				'info-message' => 'discussiontools-preference-info-link',
+				'discussion-message' => 'discussiontools-preference-discussion-link',
+				'requirements' => [
+					'javascript' => true
+				]
+			];
 		}
 	}
 
