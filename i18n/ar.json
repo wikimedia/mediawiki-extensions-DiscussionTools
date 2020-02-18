@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"ديفيد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Dyolf77 (WMF)"
 		]
 	},
 	"discussiontools": "أدوات المناقشة",
@@ -13,6 +14,6 @@
 	"discussiontools-replywidget-cancel": "إلغاء",
 	"discussiontools-replywidget-loading": "جارٍ التحميل...",
 	"discussiontools-replywidget-preview": "معاينة",
-	"discussiontools-replywidget-reply": "رد",
+	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-terms-click": "بالنقر على \"$1\"، فإنك توافق على شروط الاستخدام لهذا الويكي."
 }
