@@ -41,7 +41,8 @@ class DiscussionToolsData {
 		// ApiQuerySiteinfo
 		$data['localTimezone'] = $config->get( 'Localtimezone' );
 
-		$data['specialContributionsName'] = SpecialPageFactory::getLocalNameFor( 'Contributions' );
+		$data['specialContributionsName'] = MediaWikiServices::getInstance()
+			->getSpecialPageFactory()->getLocalNameFor( 'Contributions' );
 
 		$localTimezone = $config->get( 'Localtimezone' );
 		// Return only timezone abbreviations for the local timezone (there will often be two, for
