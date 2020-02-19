@@ -178,7 +178,7 @@ ReplyWidget.prototype.onInputChange = function () {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
 		wikitext = controller.autoSignWikitext( wikitext );
-		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.5;">~~~~</span>';
+		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.6;">~~~~</span>';
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
 		this.previewRequest = parsePromise = this.api.post( {
 			formatversion: 2,
