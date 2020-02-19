@@ -1,10 +1,32 @@
 <?php
 
-$IP = getenv( 'MW_INSTALL_PATH' );
-if ( $IP === false ) {
-	$IP = __DIR__ . '/../../..';
+namespace MediaWiki\Extension\DiscussionTools\Maintenance;
+
+use ForeignResourceManager;
+use Maintenance;
+
+// Security: Disable all stream wrappers and reenable individually as needed
+foreach ( stream_get_wrappers() as $wrapper ) {
+	stream_wrapper_unregister( $wrapper );
 }
-require_once "$IP/maintenance/Maintenance.php";
+// Needed by the Guzzle library for some reason
+stream_wrapper_restore( 'php' );
+// Needed by ForeignResourceManager to unpack TAR files
+stream_wrapper_restore( 'phar' );
+
+stream_wrapper_restore( 'file' );
+$basePath = getenv( 'MW_INSTALL_PATH' );
+if ( $basePath ) {
+	if ( !is_dir( $basePath )
+		|| strpos( $basePath, '.' ) !== false
+		|| strpos( $basePath, '~' ) !== false
+	) {
+		die( "Bad MediaWiki install path: $basePath\n" );
+	}
+} else {
+	$basePath = __DIR__ . '/../../..';
+}
+require_once "$basePath/maintenance/Maintenance.php";
 
 class ManageForeignResources extends Maintenance {
 
@@ -23,4 +45,11 @@ class ManageForeignResources extends Maintenance {
 }
 
 $maintClass = ManageForeignResources::class;
+
+$doMaintenancePath = RUN_MAINTENANCE_IF_MAIN;
+if ( !( file_exists( $doMaintenancePath ) &&
+	realpath( $doMaintenancePath ) === realpath( "$basePath/maintenance/doMaintenance.php" ) ) ) {
+	die( "Bad maintenance script location: $basePath\n" );
+}
+
 require_once RUN_MAINTENANCE_IF_MAIN;
