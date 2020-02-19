@@ -55,6 +55,13 @@ ReplyWidgetPlain.prototype.isEmpty = function () {
 	return !this.replyBodyWidget.getValue().trim();
 };
 
+ReplyWidgetPlain.prototype.setup = function () {
+	// Parent method
+	ReplyWidgetPlain.super.prototype.setup.call( this );
+
+	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
+};
+
 ReplyWidgetPlain.prototype.onKeyDown = function ( e ) {
 	// Parent method
 	ReplyWidgetPlain.super.prototype.onKeyDown.call( this, e );

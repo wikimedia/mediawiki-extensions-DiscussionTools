@@ -54,7 +54,8 @@ ReplyWidgetVisual.prototype.setup = function () {
 	this.mode = this.replyBodyWidget.target.getSurface().getMode();
 
 	// Events
-	this.replyBodyWidget.target.getSurface().getModel().getDocument().connect( this, { transact: this.onInputChangeThrottled } );
+	this.replyBodyWidget.target.getSurface().getModel().getDocument().connect( this, { transact: this.onInputChangeThrottled } )
+		.once( 'transact', this.onFirstTransaction.bind( this ) );
 	this.replyBodyWidget.target.getSurface().connect( this, { submit: 'onReplyClick' } );
 };
 

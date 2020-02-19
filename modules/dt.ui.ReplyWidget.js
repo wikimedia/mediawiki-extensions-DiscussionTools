@@ -1,5 +1,6 @@
 var controller = require( 'ext.discussionTools.controller' ),
-	modifier = require( 'ext.discussionTools.modifier' );
+	modifier = require( 'ext.discussionTools.modifier' ),
+	logger = require( 'ext.discussionTools.logger' );
 
 /**
  * DiscussionTools ReplyWidget class
@@ -132,9 +133,19 @@ ReplyWidget.prototype.tryTeardown = function () {
 				if ( !( data && data.action === 'discard' ) ) {
 					return $.Deferred().reject().promise();
 				}
+				logger( {
+					action: 'abort',
+					mechanism: 'cancel',
+					type: 'abandon'
+				} );
 			} );
 	} else {
 		promise = $.Deferred().resolve().promise();
+		logger( {
+			action: 'abort',
+			mechanism: 'cancel',
+			type: 'nochange'
+		} );
 	}
 	promise.then( function () {
 		widget.teardown();
@@ -201,6 +212,10 @@ ReplyWidget.prototype.onInputChange = function () {
 	} );
 };
 
+ReplyWidget.prototype.onFirstTransaction = function () {
+	logger( { action: 'firstChange' } );
+};
+
 /**
  * Bind the beforeunload handler, if needed and if not already bound.
  *
@@ -250,8 +265,12 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 	this.setPending( true );
 
+	logger( { action: 'saveIntent' } );
+
 	// We must get a new copy of the document every time, otherwise any unsaved replies will pile up
 	this.getParsoidCommentData().then( function ( parsoidData ) {
+		logger( { action: 'saveAttempt' } );
+
 		return controller.postReply( widget, parsoidData );
 	} ).catch( function ( code, data ) {
 		// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
@@ -300,12 +319,45 @@ ReplyWidget.prototype.onReplyClick = function () {
 			repliedTo: widget.comment.id
 		} );
 		mw.hook( 'wikipage.content' ).fire( $container );
+
+		logger( {
+			action: 'saveSuccess',
+			// eslint-disable-next-line camelcase
+			revision_id: data.newrevid
+		} );
 	}, function ( code, data ) {
+		var typeMap = {
+			// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
+			editconflict: 'editConflict',
+			wasdeleted: 'editPageDeleted',
+			abusefilter: 'extensionAbuseFilter',
+			'abusefilter-disallowed': 'extensionAbuseFilter',
+			captcha: 'extensionCaptcha',
+			spamprotectiontext: 'extensionSpamBlacklist',
+			titleblacklist: 'extensionTitleBlacklist',
+			'titleblacklist-forbidden-edit': 'extensionTitleBlacklist',
+			badtoken: 'userBadToken',
+			newuser: 'userNewUser',
+			spamblacklist: 'extensionSpamBlacklist',
+			empty: 'responseEmpty',
+			unknown: 'responseUnknown',
+			pagedeleted: 'editPageDeleted'
+		};
+
 		widget.errorMessage = new OO.ui.MessageWidget( {
 			type: 'error',
 			label: widget.api.getErrorMessage( data )
 		} );
 		widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
+
+		if ( data.edit && data.edit.captcha ) {
+			code = 'captcha';
+		}
+		logger( {
+			action: 'saveFailure',
+			message: code,
+			type: typeMap[ code ] || 'responseUnknown'
+		} );
 	} ).always( function () {
 		widget.setPending( false );
 	} );

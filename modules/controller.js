@@ -3,6 +3,7 @@
 var
 	parser = require( 'ext.discussionTools.parser' ),
 	modifier = require( 'ext.discussionTools.modifier' ),
+	logger = require( 'ext.discussionTools.logger' ),
 	pageDataCache = {},
 	$pageContainer,
 	scrollPadding = { top: 10, bottom: 10 },
@@ -25,6 +26,16 @@ function setupComment( comment ) {
 		.text( mw.msg( 'discussiontools-replylink' ) )
 		.on( 'click', function () {
 			var $link = $( this );
+
+			logger( {
+				action: 'init',
+				type: 'page',
+				mechanism: 'click',
+				// TODO: when we have actual visual mode, this needs to do better at
+				// working out which will be used:
+				// eslint-disable-next-line camelcase
+				editor_interface: config.useVisualEditor ? 'wikitext-2017' : 'wikitext'
+			} );
 
 			$link.addClass( 'dt-init-replylink-active' );
 			// TODO: Allow users to use multiple reply widgets simlutaneously
@@ -55,6 +66,11 @@ function setupComment( comment ) {
 				}, function () {
 					$link.removeClass( 'dt-init-replylink-active' );
 					$pageContainer.removeClass( 'dt-init-replylink-open' );
+
+					logger( {
+						action: 'abort',
+						type: 'preinit'
+					} );
 				} );
 			}
 			widgetPromise.then( function ( replyWidget ) {
@@ -62,6 +78,9 @@ function setupComment( comment ) {
 				replyWidget.setup();
 				replyWidget.scrollElementIntoView( { padding: scrollPadding } );
 				replyWidget.focus();
+
+				logger( { action: 'ready' } );
+				logger( { action: 'loaded' } );
 			} );
 		} );
 

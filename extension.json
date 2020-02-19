@@ -55,13 +55,22 @@
 			"dependencies": [
 				"rangefix",
 				"ext.discussionTools.parser",
-				"ext.discussionTools.modifier"
+				"ext.discussionTools.modifier",
+				"ext.discussionTools.logger"
 			],
 			"messages": [
 				"discussiontools-error-comment-disappeared",
 				"discussiontools-defaultsummary-reply",
 				"discussiontools-replylink",
 				"discussiontools-replywidget-loading"
+			]
+		},
+		"ext.discussionTools.logger": {
+			"packageFiles": [
+				"logger.js"
+			],
+			"dependencies": [
+				"mediawiki.util"
 			]
 		},
 		"ext.discussionTools.init": {
@@ -100,6 +109,7 @@
 			],
 			"dependencies": [
 				"ext.discussionTools.controller",
+				"ext.discussionTools.logger",
 				"mediawiki.widgets.AbandonEditDialog"
 			]
 		},
