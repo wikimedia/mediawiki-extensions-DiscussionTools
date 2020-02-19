@@ -12,6 +12,15 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Nem vagy bejelentkezve.</strong> Ha azt szeretnéd, hogy a nevedhez kapcsolódjon a szerkesztés az IP-címed helyett, [$1 jelentkezz be] vagy [$2 regisztrálj].",
 	"discussiontools-replywidget-cancel": "Mégse",
 	"discussiontools-replywidget-loading": "Betöltés…",
+	"discussiontools-replywidget-preview": "Előnézet",
 	"discussiontools-replywidget-reply": "Válasz",
-	"discussiontools-replywidget-terms-click": "A „$1” gombra kattintással elfogadod ezen wiki felhasználási feltételeit."
+	"discussiontools-replywidget-terms-click": "A „$1” gombra kattintással elfogadod ezen wiki felhasználási feltételeit.",
+	"tag-discussiontools": "DiscussionTools-szerkesztés",
+	"tag-discussiontools-description": "A DiscussionToolszal végzett szerkesztés",
+	"tag-discussiontools-edit": "hozzászólás szerkesztése",
+	"tag-discussiontools-edit-description": "A felhasználó egy meglévő hozzászólást szerkesztett a DiscussionToolszal",
+	"tag-discussiontools-newtopic": "új téma",
+	"tag-discussiontools-newtopic-description": "A felhasználó új témát indított a DiscussionToolszal",
+	"tag-discussiontools-reply": "válasz",
+	"tag-discussiontools-reply-description": "A felhasználó egy meglévő hozzászólásra válaszolt a DiscussionToolszal"
 }
