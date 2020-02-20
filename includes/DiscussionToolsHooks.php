@@ -7,6 +7,8 @@
  * @license MIT
  */
 
+use MediaWiki\MediaWikiServices;
+
 class DiscussionToolsHooks {
 
 	private static $tags = [
@@ -21,7 +23,7 @@ class DiscussionToolsHooks {
 	];
 
 	public static function onRegistration() {
-		global $wgLocaltimezone;
+		$coreConfig = RequestContext::getMain()->getConfig();
 		// If $wgLocaltimezone isn't hard-coded, it is evaluated from the system
 		// timezone. On some systems this isn't guaranteed to be static, for example
 		// on Debian, GMT can get converted to UTC, instead of Europe/London.
@@ -29,7 +31,7 @@ class DiscussionToolsHooks {
 		// Timestamp parsing assumes that the timezone never changes.
 		//
 		// HACK: Do not run this test on CI as $wgLocaltimezone is not configured.
-		if ( !$wgLocaltimezone && !getenv( 'ZUUL_PROJECT' ) ) {
+		if ( !$coreConfig->get( 'Localtimezone' ) && !getenv( 'ZUUL_PROJECT' ) ) {
 			throw new \ConfigException( 'DiscussionTools requires $wgLocaltimezone to be set' );
 		}
 	}
@@ -43,7 +45,8 @@ class DiscussionToolsHooks {
 	 * @param Skin $skin The skin that's going to build the UI.
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) {
-		global $wgDiscussionToolsEnable;
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'discussiontools' );
 		$title = $output->getTitle();
 		$actionName = Action::getActionName( $output->getContext() );
 		$req = $output->getRequest();
@@ -58,7 +61,7 @@ class DiscussionToolsHooks {
 				// Query parameter to load on any wikitext page for testing
 				$req->getVal( 'dtenable' ) ||
 				// If configured, load on all talk pages
-				( $wgDiscussionToolsEnable && $title->isTalkPage() )
+				( $dtConfig->get( 'DiscussionToolsEnable' ) && $title->isTalkPage() )
 				// TODO: Allow non talk pages to be treated as talk pages
 				// using a magic word.
 			)

@@ -198,5 +198,8 @@
 			"description": "Use VisualEditor for editing replies (both visual and wikitext)."
 		}
 	},
+	"ConfigRegistry": {
+		"discussiontools": "GlobalVarConfig::newInstance"
+	},
 	"type": "other"
 }
