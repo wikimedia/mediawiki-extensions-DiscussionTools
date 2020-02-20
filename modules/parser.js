@@ -670,6 +670,7 @@ function getComments( rootNode ) {
 		endOffset: 0
 	};
 	fakeHeading = {
+		placeholderHeading: true,
 		type: 'heading',
 		range: range,
 		level: 0

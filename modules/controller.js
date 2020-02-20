@@ -83,7 +83,7 @@ function autoSignWikitext( wikitext ) {
 }
 
 function postReply( widget, parsoidData ) {
-	var root, summary,
+	var root, summaryPrefix, summary,
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData,
 		newParsoidItem = modifier.addListItem( comment );
@@ -94,9 +94,14 @@ function postReply( widget, parsoidData ) {
 	while ( root && root.type !== 'heading' ) {
 		root = root.parent;
 	}
+	if ( root.placeholderHeading ) {
+		// This comment is in 0th section, there's no section title for the edit summary
+		summaryPrefix = '';
+	} else {
+		summaryPrefix = '/* ' + root.range.startContainer.innerText + ' */ ';
+	}
 
-	summary = '/* ' + root.range.startContainer.innerText + ' */ ' +
-		mw.msg( 'discussiontools-defaultsummary-reply' );
+	summary = summaryPrefix + mw.msg( 'discussiontools-defaultsummary-reply' );
 
 	return mw.libs.ve.targetSaver.saveDoc(
 		parsoidData.doc,
