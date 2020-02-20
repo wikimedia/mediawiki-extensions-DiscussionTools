@@ -12,5 +12,7 @@
 	"discussiontools-replywidget-loading": "Lade …",
 	"discussiontools-replywidget-preview": "Vorschau",
 	"discussiontools-replywidget-reply": "Antworten",
-	"tag-discussiontools-newtopic": "Hinzugefügtes Thema"
+	"tag-discussiontools-edit": "bearbeiteter Kommentar",
+	"tag-discussiontools-newtopic": "Hinzugefügtes Thema",
+	"tag-discussiontools-reply": "beantwortet"
 }
