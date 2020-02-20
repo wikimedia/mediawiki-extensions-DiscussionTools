@@ -1471,25 +1471,13 @@
     "replies": [
       {
         "type": "comment",
-        "timestamp": "2018-10-18T19:03:00.000Z",
-        "author": null,
-        "range": [
-          "31/2/0/0/0",
-          "31/2/0/0/0/46"
-        ],
-        "level": 2,
-        "id": "|2018-10-18T19:03:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
         "timestamp": "2018-10-19T01:41:00.000Z",
         "author": "Demkoff",
         "range": [
-          "31/4/0",
+          "31/2/0/0/0",
           "31/6/0/10/26"
         ],
-        "level": 1,
+        "level": 2,
         "id": "Demkoff|2018-10-19T01:41:00.000Z|0",
         "replies": []
       }
