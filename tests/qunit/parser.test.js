@@ -153,36 +153,36 @@ QUnit.test( 'Integration tests', function ( assert ) {
 	cases = [
 		{
 			name: 'plwiki oldparser',
-			dom: mw.template.get( 'test.DiscussionTools', 'oldparser/pl-55171451.html' ).render(),
-			expected: require( './pages/oldparser/pl-55171451.json' ),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-oldparser/pl-big-oldparser.html' ).render(),
+			expected: require( './cases/pl-big-oldparser/pl-big-oldparser.json' ),
 			config: require( './data/plwiki-config.json' ),
 			data: require( './data/plwiki-data.json' )
 		},
 		{
 			name: 'plwiki parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'parsoid/pl-55171451.html' ).render(),
-			expected: require( './pages/parsoid/pl-55171451.json' ),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-parsoid/pl-big-parsoid.html' ).render(),
+			expected: require( './cases/pl-big-parsoid/pl-big-parsoid.json' ),
 			config: require( './data/plwiki-config.json' ),
 			data: require( './data/plwiki-data.json' )
 		},
 		{
 			name: 'enwiki oldparser',
-			dom: mw.template.get( 'test.DiscussionTools', 'oldparser/en-913983958.html' ).render(),
-			expected: require( './pages/oldparser/en-913983958.json' ),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-oldparser/en-big-oldparser.html' ).render(),
+			expected: require( './cases/en-big-oldparser/en-big-oldparser.json' ),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
 		},
 		{
 			name: 'enwiki parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'parsoid/en-913983958.html' ).render(),
-			expected: require( './pages/parsoid/en-913983958.json' ),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-parsoid/en-big-parsoid.html' ).render(),
+			expected: require( './cases/en-big-parsoid/en-big-parsoid.json' ),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
 		},
 		{
 			name: 'No heading',
-			dom: mw.template.get( 'test.DiscussionTools', 'other/no-heading.html' ).render(),
-			expected: require( './other/no-heading.json' ),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/no-heading/no-heading.html' ).render(),
+			expected: require( './cases/no-heading/no-heading.json' ),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
 		}
