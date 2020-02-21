@@ -184,6 +184,7 @@
 		"BeforePageDisplay": [
 			"DiscussionToolsHooks::onBeforePageDisplay"
 		],
+		"GetBetaFeaturePreferences": "DiscussionToolsHooks::onGetBetaPreferences",
 		"ListDefinedTags": "DiscussionToolsHooks::onListDefinedTags",
 		"ChangeTagsListActive": "DiscussionToolsHooks::onListDefinedTags",
 		"RecentChange_save": "DiscussionToolsHooks::onRecentChangeSave"
@@ -192,6 +193,10 @@
 		"DiscussionToolsEnable": {
 			"value": true,
 			"description": "Enable DiscussionTools on talk pages."
+		},
+		"DiscussionToolsBeta": {
+			"value": false,
+			"description": "Make DiscussionTools a BetaFeature."
 		},
 		"DiscussionToolsUseVisualEditor": {
 			"value": false,
