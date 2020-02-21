@@ -1,8 +1,30 @@
 {
 	"@metadata": {
 		"authors": [
-			"铁桶"
+			"铁桶",
+			"VulpesVulpes825"
 		]
 	},
-	"tag-discussiontools-reply-description": "用户回复了一条现有评论"
+	"discussiontools": "讨论工具",
+	"discussiontools-defaultsummary-reply": "回复",
+	"discussiontools-desc": "增强讨论页面的工具",
+	"discussiontools-replylink": "回复",
+	"discussiontools-replywidget-anon-warning": "<strong>您尚未登录。</strong>要收到带您名字而不是您IP地址的署名，您可以[$1 登录]或[$2 注册一个账户]。",
+	"discussiontools-replywidget-cancel": "取消",
+	"discussiontools-replywidget-loading": "正在载入…",
+	"discussiontools-replywidget-preview": "预览",
+	"discussiontools-replywidget-reply": "回复",
+	"discussiontools-replywidget-terms-click": "点击“$1”，即表示您认同本wiki的使用条款。",
+	"tag-discussiontools": "讨论工具编辑",
+	"tag-discussiontools-description": "使用讨论工具进行编辑",
+	"tag-discussiontools-edit": "编辑评论",
+	"tag-discussiontools-edit-description": "用户使用讨论工具编辑了现有评论",
+	"tag-discussiontools-newtopic": "新增话题",
+	"tag-discussiontools-newtopic-description": "用户使用讨论工具在页面新增了话题",
+	"tag-discussiontools-reply": "回复",
+	"tag-discussiontools-reply-description": "用户使用讨论工具回复了现有评论",
+	"tag-discussiontools-source": "讨论工具：源代码",
+	"tag-discussiontools-source-description": "讨论工具处于源代码模式",
+	"tag-discussiontools-visual": "讨论工具：可视化",
+	"tag-discussiontools-visual-description": "讨论工具处于可视化编辑模式"
 }
