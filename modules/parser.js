@@ -650,7 +650,7 @@ function getComments( rootNode ) {
 		dfParser = getLocalTimestampParser(),
 		comments = [],
 		timestamps, nextTimestamp, treeWalker,
-		node, range, fakeHeading, curComment, startNode, match, startLevel, endLevel;
+		node, range, fakeHeading, curComment, author, startNode, match, startLevel, endLevel;
 
 	timestamps = findTimestamps( rootNode );
 
@@ -694,6 +694,15 @@ function getComments( rootNode ) {
 			};
 			comments.push( curComment );
 		} else if ( timestamps[ nextTimestamp ] && node === timestamps[ nextTimestamp ][ 0 ] ) {
+			author = findSignature( node )[ 1 ];
+
+			if ( !author ) {
+				// Ignore timestamps for which we couldn't find a signature. It's probably not a real
+				// comment, but just a false match due to a copypasted timestamp.
+				nextTimestamp++;
+				continue;
+			}
+
 			// Everything from last comment up to here is the next comment
 			startNode = nextInterestingLeafNode( curComment.range.endContainer, rootNode );
 			match = timestamps[ nextTimestamp ][ 1 ];
@@ -717,20 +726,14 @@ function getComments( rootNode ) {
 			// no way to indicate which one you're replying to (this might matter in the future for
 			// notifications or something).
 			if (
-				nextTimestamp > 0 &&
-				timestamps[ nextTimestamp ][ 0 ].parentNode === timestamps[ nextTimestamp - 1 ][ 0 ].parentNode
+				curComment.type === 'comment' &&
+				node.parentNode === curComment.range.endContainer.parentNode
 			) {
-				// Merge this with the previous comment.
+				// Merge this with the previous comment. Use that comment's author and timestamp.
 				// (As a result, the comment's timestamp node is in the middle of it, this should be okay?)
 				curComment.range.endContainer = node;
 				curComment.range.endOffset = match.index + match[ 0 ].length;
 				curComment.level = Math.min( Math.min( startLevel, endLevel ), curComment.level );
-				// Use previous comment's author and timestamp, unless it has no author, in which case it's
-				// probably not a real comment, but just a false match due to a copypasted timestamp.
-				if ( !curComment.author ) {
-					curComment.timestamp = dfParser( match );
-					curComment.author = findSignature( node )[ 1 ];
-				}
 
 				nextTimestamp++;
 				continue;
@@ -739,7 +742,7 @@ function getComments( rootNode ) {
 			curComment = {
 				type: 'comment',
 				timestamp: dfParser( match ),
-				author: findSignature( node )[ 1 ],
+				author: author,
 				range: range,
 				// Should this use the indent level of `startNode` or `node`?
 				level: Math.min( startLevel, endLevel )

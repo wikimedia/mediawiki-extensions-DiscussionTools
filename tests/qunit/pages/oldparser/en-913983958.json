@@ -205,22 +205,10 @@
             "replies": [
               {
                 "type": "comment",
-                "timestamp": "2019-06-28T10:49:00.000Z",
-                "author": null,
-                "range": [
-                  "0/20/0/9/0/0",
-                  "0/20/0/9/2/3/0/26"
-                ],
-                "level": 3,
-                "id": "|2019-06-28T10:49:00.000Z|0",
-                "replies": []
-              },
-              {
-                "type": "comment",
                 "timestamp": "2019-06-28T11:09:00.000Z",
                 "author": "PrimeHunter",
                 "range": [
-                  "0/20/0/9/2/4",
+                  "0/20/0/9/0/0",
                   "0/20/0/9/2/6/0/8/27"
                 ],
                 "level": 3,
@@ -378,20 +366,7 @@
     ],
     "level": 0,
     "id": null,
-    "replies": [
-      {
-        "type": "comment",
-        "timestamp": "2019-07-01T21:22:00.000Z",
-        "author": null,
-        "range": [
-          "0/45/0/1/0",
-          "0/46/0/26"
-        ],
-        "level": 1,
-        "id": "|2019-07-01T21:22:00.000Z|0",
-        "replies": []
-      }
-    ]
+    "replies": []
   },
   {
     "type": "heading",
@@ -4021,20 +3996,7 @@
     ],
     "level": 0,
     "id": null,
-    "replies": [
-      {
-        "type": "comment",
-        "timestamp": "2019-07-08T20:12:00.000Z",
-        "author": null,
-        "range": [
-          "0/393/0/1/0",
-          "0/394/0/26"
-        ],
-        "level": 1,
-        "id": "|2019-07-08T20:12:00.000Z|0",
-        "replies": []
-      }
-    ]
+    "replies": []
   },
   {
     "type": "heading",
@@ -5899,22 +5861,10 @@
     "replies": [
       {
         "type": "comment",
-        "timestamp": "2019-07-14T21:34:00.000Z",
-        "author": null,
-        "range": [
-          "0/590/0",
-          "0/591/3/0/26"
-        ],
-        "level": 1,
-        "id": "|2019-07-14T21:34:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
         "timestamp": "2019-07-14T21:59:00.000Z",
         "author": "Xaosflux",
         "range": [
-          "0/591/4",
+          "0/590/0",
           "0/593/0/7/26"
         ],
         "level": 1,
@@ -5941,20 +5891,7 @@
                 ],
                 "level": 4,
                 "id": "Modulus12|2019-07-14T22:51:00.000Z|0",
-                "replies": [
-                  {
-                    "type": "comment",
-                    "timestamp": "2019-07-15T14:49:00.000Z",
-                    "author": null,
-                    "range": [
-                      "0/597/0/0/0/5/0/7/0/0",
-                      "0/597/0/0/0/5/0/7/0/3/0/26"
-                    ],
-                    "level": 5,
-                    "id": "|2019-07-15T14:49:00.000Z|0",
-                    "replies": []
-                  }
-                ]
+                "replies": []
               }
             ]
           }
@@ -6173,22 +6110,10 @@
     "replies": [
       {
         "type": "comment",
-        "timestamp": "2019-07-15T15:29:00.000Z",
-        "author": null,
-        "range": [
-          "0/650/0/1/0",
-          "0/651/0/27"
-        ],
-        "level": 1,
-        "id": "|2019-07-15T15:29:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
         "timestamp": "2019-07-15T21:43:00.000Z",
         "author": "Nyttend",
         "range": [
-          "0/652/0",
+          "0/650/0/1/0",
           "0/652/4/27"
         ],
         "level": 1,
@@ -7103,20 +7028,7 @@
     ],
     "level": 0,
     "id": null,
-    "replies": [
-      {
-        "type": "comment",
-        "timestamp": "2019-07-22T13:07:00.000Z",
-        "author": null,
-        "range": [
-          "0/770/0/1/0",
-          "0/771/0/27"
-        ],
-        "level": 1,
-        "id": "|2019-07-22T13:07:00.000Z|0",
-        "replies": []
-      }
-    ]
+    "replies": []
   },
   {
     "type": "heading",
@@ -8104,20 +8016,7 @@
                         ],
                         "level": 5,
                         "id": "Xaosflux|2019-07-27T16:43:00.000Z|0",
-                        "replies": [
-                          {
-                            "type": "comment",
-                            "timestamp": "2019-07-27T17:17:00.000Z",
-                            "author": null,
-                            "range": [
-                              "0/896/0/8/0/12/0/5/0/10/0/0/0",
-                              "0/896/0/8/0/12/0/5/0/10/0/7/284"
-                            ],
-                            "level": 6,
-                            "id": "|2019-07-27T17:17:00.000Z|0",
-                            "replies": []
-                          }
-                        ]
+                        "replies": []
                       }
                     ]
                   }
@@ -8130,7 +8029,7 @@
             "timestamp": "2019-07-27T17:21:00.000Z",
             "author": "Xaosflux",
             "range": [
-              "0/896/2/0/0",
+              "0/896/0/8/0/12/0/5/0/10/0/0/0",
               "0/896/2/5/26"
             ],
             "level": 2,
@@ -8486,61 +8385,48 @@
     "replies": [
       {
         "type": "comment",
-        "timestamp": "2019-07-29T10:25:00.000Z",
-        "author": null,
+        "timestamp": "2019-07-29T10:29:00.000Z",
+        "author": "Andrybak",
         "range": [
           "0/929/0",
-          "0/934/8/28"
+          "0/936/0/7/27"
         ],
         "level": 1,
-        "id": "|2019-07-29T10:25:00.000Z|0",
+        "id": "Andrybak|2019-07-29T10:29:00.000Z|0",
         "replies": [
           {
             "type": "comment",
-            "timestamp": "2019-07-29T10:29:00.000Z",
-            "author": "Andrybak",
+            "timestamp": "2019-07-29T10:37:00.000Z",
+            "author": "Monniasza",
             "range": [
-              "0/936/0/0/0",
-              "0/936/0/7/27"
+              "0/936/0/8/0/0",
+              "0/936/0/8/0/4/27"
             ],
-            "level": 2,
-            "id": "Andrybak|2019-07-29T10:29:00.000Z|0",
+            "level": 3,
+            "id": "Monniasza|2019-07-29T10:37:00.000Z|0",
             "replies": [
               {
                 "type": "comment",
-                "timestamp": "2019-07-29T10:37:00.000Z",
-                "author": "Monniasza",
+                "timestamp": "2019-07-29T10:43:00.000Z",
+                "author": "John of Reading",
                 "range": [
-                  "0/936/0/8/0/0",
-                  "0/936/0/8/0/4/27"
+                  "0/936/0/8/0/5/0/0",
+                  "0/936/0/8/0/5/0/10/27"
                 ],
-                "level": 3,
-                "id": "Monniasza|2019-07-29T10:37:00.000Z|0",
+                "level": 4,
+                "id": "John of Reading|2019-07-29T10:43:00.000Z|0",
                 "replies": [
                   {
                     "type": "comment",
-                    "timestamp": "2019-07-29T10:43:00.000Z",
-                    "author": "John of Reading",
+                    "timestamp": "2019-07-29T13:10:00.000Z",
+                    "author": "PrimeHunter",
                     "range": [
-                      "0/936/0/8/0/5/0/0",
-                      "0/936/0/8/0/5/0/10/27"
+                      "0/936/0/8/0/5/0/11/0/0",
+                      "0/936/0/8/0/5/0/11/0/4/27"
                     ],
-                    "level": 4,
-                    "id": "John of Reading|2019-07-29T10:43:00.000Z|0",
-                    "replies": [
-                      {
-                        "type": "comment",
-                        "timestamp": "2019-07-29T13:10:00.000Z",
-                        "author": "PrimeHunter",
-                        "range": [
-                          "0/936/0/8/0/5/0/11/0/0",
-                          "0/936/0/8/0/5/0/11/0/4/27"
-                        ],
-                        "level": 5,
-                        "id": "PrimeHunter|2019-07-29T13:10:00.000Z|0",
-                        "replies": []
-                      }
-                    ]
+                    "level": 5,
+                    "id": "PrimeHunter|2019-07-29T13:10:00.000Z|0",
+                    "replies": []
                   }
                 ]
               }
@@ -8558,20 +8444,7 @@
     ],
     "level": 0,
     "id": null,
-    "replies": [
-      {
-        "type": "comment",
-        "timestamp": "2019-07-29T21:42:00.000Z",
-        "author": null,
-        "range": [
-          "0/940/0/1/0",
-          "0/941/0/27"
-        ],
-        "level": 1,
-        "id": "|2019-07-29T21:42:00.000Z|0",
-        "replies": []
-      }
-    ]
+    "replies": []
   },
   {
     "type": "heading",
@@ -10693,20 +10566,7 @@
     ],
     "level": 0,
     "id": null,
-    "replies": [
-      {
-        "type": "comment",
-        "timestamp": "2019-08-05T13:24:00.000Z",
-        "author": null,
-        "range": [
-          "0/1170/0/1/0",
-          "0/1171/0/28"
-        ],
-        "level": 1,
-        "id": "|2019-08-05T13:24:00.000Z|0",
-        "replies": []
-      }
-    ]
+    "replies": []
   },
   {
     "type": "heading",
@@ -12498,20 +12358,7 @@
     ],
     "level": 0,
     "id": null,
-    "replies": [
-      {
-        "type": "comment",
-        "timestamp": "2019-08-12T18:19:00.000Z",
-        "author": null,
-        "range": [
-          "0/1388/0/1/0",
-          "0/1389/0/29"
-        ],
-        "level": 1,
-        "id": "|2019-08-12T18:19:00.000Z|0",
-        "replies": []
-      }
-    ]
+    "replies": []
   },
   {
     "type": "heading",
@@ -13279,18 +13126,6 @@
         ],
         "level": 1,
         "id": "Wugapodes|2019-08-27T22:44:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
-        "timestamp": "2019-07-30T05:28:00.000Z",
-        "author": null,
-        "range": [
-          "0/1485/2/0/0/0",
-          "0/1485/6/2/126"
-        ],
-        "level": 1,
-        "id": "|2019-07-30T05:28:00.000Z|0",
         "replies": []
       }
     ]
@@ -14590,20 +14425,7 @@
     ],
     "level": 0,
     "id": null,
-    "replies": [
-      {
-        "type": "comment",
-        "timestamp": "2019-08-19T15:20:00.000Z",
-        "author": null,
-        "range": [
-          "0/1586/0/1/0",
-          "0/1587/0/29"
-        ],
-        "level": 1,
-        "id": "|2019-08-19T15:20:00.000Z|0",
-        "replies": []
-      }
-    ]
+    "replies": []
   },
   {
     "type": "heading",
