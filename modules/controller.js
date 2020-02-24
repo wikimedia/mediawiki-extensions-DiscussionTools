@@ -112,7 +112,8 @@ function postReply( widget, parsoidData ) {
 			basetimestamp: pageData.baseTimeStamp,
 			starttimestamp: pageData.startTimeStamp,
 			etag: pageData.etag,
-			token: pageData.token,
+			assert: mw.user.isAnon() ? 'anon' : 'user',
+			assertuser: mw.user.getName() || undefined,
 			// This appears redundant currently, but as editing / new-topics get added, we'll expand it
 			dttags: [ 'discussiontools', 'discussiontools-reply', 'discussiontools-' + widget.mode ].join( ',' )
 		}
@@ -165,8 +166,7 @@ function init( $container, state ) {
 		repliedToComment,
 		parsoidPageData = {
 			pageName: mw.config.get( 'wgRelevantPageName' ),
-			oldId: mw.config.get( 'wgRevisionId' ),
-			token: mw.user.tokens.get( 'csrfToken' )
+			oldId: mw.config.get( 'wgRevisionId' )
 		};
 
 	state = state || {};
