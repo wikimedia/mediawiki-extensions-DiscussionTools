@@ -5,8 +5,10 @@ var
 
 QUnit.module( 'mw.dt.modifier', utils.newEnvironment() );
 
-QUnit.test( '#addListItem', function ( assert ) {
-	var i, j, cases, actualHtml, expectedHtml, comments, node, fixture;
+QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
+	var i, j, cases,
+		actualHtml, expectedHtml, reverseActualHtml, reverseExpectedHtml,
+		comments, nodes, node, fixture;
 
 	cases = [
 		{
@@ -63,18 +65,22 @@ QUnit.test( '#addListItem', function ( assert ) {
 		expectedHtml = fixture.innerHTML;
 
 		$( fixture ).empty().append( cases[ i ].dom.clone() );
+		reverseExpectedHtml = fixture.innerHTML;
+
 		comments = parser.getComments( fixture );
 		parser.groupThreads( comments );
 
 		// Add a reply to every comment. Note that this inserts *all* of the replies, unlike the real
 		// thing, which only deals with one at a time. This isn't ideal but resetting everything after
 		// every reply would be super slow.
+		nodes = [];
 		for ( j = 0; j < comments.length; j++ ) {
 			if ( comments[ j ].type === 'heading' ) {
 				continue;
 			}
 			node = modifier.addListItem( comments[ j ] );
 			node.textContent = 'Reply to ' + comments[ j ].id;
+			nodes.push( node );
 		}
 
 		// Uncomment this to get updated content for the the "modified HTML" files, for copy/paste:
@@ -86,6 +92,18 @@ QUnit.test( '#addListItem', function ( assert ) {
 			actualHtml,
 			expectedHtml,
 			cases[ i ].name
+		);
+
+		// Now discard the replies and verify we get the original document back.
+		for ( j = 0; j < nodes.length; j++ ) {
+			modifier.removeListItem( nodes[ j ] );
+		}
+
+		reverseActualHtml = fixture.innerHTML;
+		assert.strictEqual(
+			reverseActualHtml,
+			reverseExpectedHtml,
+			cases[ i ].name + ' (discard replies)'
 		);
 	}
 } );

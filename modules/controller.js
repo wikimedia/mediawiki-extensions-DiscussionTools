@@ -44,8 +44,6 @@ function setupComment( comment ) {
 			$pageContainer.addClass( 'dt-init-replylink-open' );
 
 			if ( !widgetPromise ) {
-				newListItem = modifier.addListItem( comment );
-				$( newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 				widgetPromise = replyWidgetPromise.then( function () {
 					var
 						ReplyWidget = config.useVisualEditor ?
@@ -58,10 +56,10 @@ function setupComment( comment ) {
 					replyWidget.on( 'teardown', function () {
 						$link.removeClass( 'dt-init-replylink-active' );
 						$pageContainer.removeClass( 'dt-init-replylink-open' );
-						$( newListItem ).hide();
+						modifier.removeListItem( newListItem );
+						newListItem = null;
 					} );
 
-					$( newListItem ).empty().append( replyWidget.$element );
 					return replyWidget;
 				}, function () {
 					$link.removeClass( 'dt-init-replylink-active' );
@@ -72,9 +70,18 @@ function setupComment( comment ) {
 						type: 'preinit'
 					} );
 				} );
+
+				// On first load, add a placeholder list item
+				newListItem = modifier.addListItem( comment );
+				$( newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 			}
+
 			widgetPromise.then( function ( replyWidget ) {
-				$( newListItem ).show();
+				if ( !newListItem ) {
+					// On subsequent loads, there's no list item yet, so create one now
+					newListItem = modifier.addListItem( comment );
+				}
+				$( newListItem ).empty().append( replyWidget.$element );
 				replyWidget.setup();
 				replyWidget.scrollElementIntoView( { padding: scrollPadding } );
 				replyWidget.focus();

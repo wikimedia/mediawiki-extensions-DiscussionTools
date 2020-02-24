@@ -103,7 +103,9 @@ function addListItem( comment ) {
 		// Insert required number of wrappers
 		while ( currLevel < desiredLevel ) {
 			list = target.ownerDocument.createElement( listType );
+			list.discussionToolsModified = 'new';
 			item = target.ownerDocument.createElement( itemType );
+			item.discussionToolsModified = 'new';
 			whitespaceParsoidHack( item );
 
 			parent.insertBefore( list, target.nextSibling );
@@ -121,6 +123,7 @@ function addListItem( comment ) {
 			if ( target.nextSibling ) {
 				// Create new identical node after the parent
 				newNode = parent.cloneNode( false );
+				parent.discussionToolsModified = 'split';
 				parent.parentNode.insertBefore( newNode, parent.nextSibling );
 
 				// Move nodes following target to the new node
@@ -140,11 +143,51 @@ function addListItem( comment ) {
 
 		// parent is now a list, target is a list item
 		item = target.ownerDocument.createElement( target.tagName );
+		item.discussionToolsModified = 'new';
 		whitespaceParsoidHack( item );
 		parent.insertBefore( item, target.nextSibling );
 	}
 
 	return item;
+}
+
+/**
+ * Undo the effects of #addListItem, also removing or merging any affected parent nodes.
+ *
+ * @param {HTMLElement} node
+ */
+function removeListItem( node ) {
+	var nextNode;
+
+	while ( node && node.discussionToolsModified ) {
+		if ( node.discussionToolsModified === 'new' ) {
+			nextNode = node.previousSibling || node.parentNode;
+
+			// Remove this node
+			delete node.discussionToolsModified;
+			node.parentNode.removeChild( node );
+
+		} else if ( node.discussionToolsModified === 'split' ) {
+			// Children might be split too, if so, descend into them afterwards
+			if ( node.lastChild && node.lastChild.discussionToolsModified === 'split' ) {
+				node.discussionToolsModified = 'done';
+				nextNode = node.lastChild;
+			} else {
+				delete node.discussionToolsModified;
+				nextNode = node.parentNode;
+			}
+			// Merge the following sibling node back into this one
+			while ( node.nextSibling.firstChild ) {
+				node.appendChild( node.nextSibling.firstChild );
+			}
+			node.parentNode.removeChild( node.nextSibling );
+
+		} else {
+			nextNode = node.parentNode;
+		}
+
+		node = nextNode;
+	}
 }
 
 /**
@@ -172,6 +215,7 @@ function createWikitextNode( wt ) {
 module.exports = {
 	closest: closest,
 	addListItem: addListItem,
+	removeListItem: removeListItem,
 	addSiblingListItem: addSiblingListItem,
 	createWikitextNode: createWikitextNode
 };
