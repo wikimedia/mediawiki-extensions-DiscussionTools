@@ -3,6 +3,7 @@
 var
 	parser = require( 'ext.discussionTools.parser' ),
 	modifier = require( 'ext.discussionTools.modifier' ),
+	pageDataCache = {},
 	$pageContainer,
 	scrollPadding = { top: 10, bottom: 10 },
 	config = require( './config.json' ),
@@ -158,16 +159,79 @@ function commentsById( comments ) {
 	return byId;
 }
 
+/**
+ * Get the Parsoid document HTML and metadata needed to edit this page from the API.
+ *
+ * This method caches responses. If you call it again with the same parameters, you'll get the exact
+ * same Promise object, and no API request will be made.
+ *
+ * @param {string} pageName Page title
+ * @param {number} oldId Revision ID
+ * @return {jQuery.Promise}
+ */
+function getPageData( pageName, oldId ) {
+	pageDataCache[ pageName ] = pageDataCache[ pageName ] || {};
+	if ( pageDataCache[ pageName ][ oldId ] ) {
+		return pageDataCache[ pageName ][ oldId ];
+	}
+	pageDataCache[ pageName ][ oldId ] = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
+		return mw.libs.ve.targetLoader.requestPageData(
+			'visual', pageName, { oldId: oldId }
+		);
+	}, function () {
+		// Clear on failure
+		pageDataCache[ pageName ][ oldId ] = null;
+	} );
+	return pageDataCache[ pageName ][ oldId ];
+}
+
+/**
+ * Get the Parsoid document DOM, parse comments and threads, and find a specific comment in it.
+ *
+ * @param {string} pageName Page title
+ * @param {number} oldId Revision ID
+ * @param {string} commentId Comment ID, from a comment parsed in the local document
+ * @return {jQuery.Promise}
+ */
+function getParsoidCommentData( pageName, oldId, commentId ) {
+	var parsoidPageData, parsoidDoc, parsoidComments, parsoidCommentsById;
+
+	return getPageData( pageName, oldId )
+		.then( function ( response ) {
+			var data = response.visualeditor;
+			// TODO: error handling
+			parsoidDoc = ve.createDocumentFromHtml( data.content );
+			parsoidComments = parser.getComments( parsoidDoc.body );
+
+			parsoidPageData = {
+				pageName: pageName,
+				oldId: oldId
+			};
+			parsoidPageData.baseTimeStamp = data.basetimestamp;
+			parsoidPageData.startTimeStamp = data.starttimestamp;
+			parsoidPageData.etag = data.etag;
+
+			// getThreads build the tree structure, currently only
+			// used to set 'replies'
+			parser.groupThreads( parsoidComments );
+			parsoidCommentsById = commentsById( parsoidComments );
+
+			if ( !parsoidCommentsById[ commentId ] ) {
+				throw new Error( 'Could not find comment in Parsoid HTML' );
+			}
+
+			return {
+				comment: parsoidCommentsById[ commentId ],
+				doc: parsoidDoc,
+				pageData: parsoidPageData
+			};
+		} );
+}
+
 function init( $container, state ) {
 	var
-		parsoidPromise, parsoidDoc,
-		parsoidComments, parsoidCommentsById,
 		pageComments, pageThreads, pageCommentsById,
-		repliedToComment,
-		parsoidPageData = {
-			pageName: mw.config.get( 'wgRelevantPageName' ),
-			oldId: mw.config.get( 'wgRevisionId' )
-		};
+		repliedToComment;
 
 	state = state || {};
 	$pageContainer = $container;
@@ -189,43 +253,17 @@ function init( $container, state ) {
 		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 	}
 
-	parsoidPromise = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
-		return mw.libs.ve.targetLoader.requestPageData(
-			'visual', parsoidPageData.pageName, { oldId: parsoidPageData.oldId }
-		).then( function ( response ) {
-			var data = response.visualeditor;
-			// TODO: error handling
-			parsoidDoc = ve.createDocumentFromHtml( data.content );
-			parsoidComments = parser.getComments( parsoidDoc.body );
-
-			parsoidPageData.baseTimeStamp = data.basetimestamp;
-			parsoidPageData.startTimeStamp = data.starttimestamp;
-			parsoidPageData.etag = data.etag;
-
-			// getThreads build the tree structure, currently only
-			// used to set 'replies'
-			parser.groupThreads( parsoidComments );
-			parsoidCommentsById = commentsById( parsoidComments );
-		} );
-	} );
-
-	// Map PHP comments to Parsoid comments.
-	pageComments.forEach( function ( comment ) {
-		comment.parsoidPromise = parsoidPromise.then( function () {
-			if ( !parsoidCommentsById[ comment.id ] ) {
-				throw new Error( 'Could not find comment in Parsoid HTML' );
-			}
-			return {
-				comment: parsoidCommentsById[ comment.id ],
-				doc: parsoidDoc,
-				pageData: parsoidPageData
-			};
-		} );
-	} );
+	// Preload the Parsoid document.
+	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
+	getPageData(
+		mw.config.get( 'wgRelevantPageName' ),
+		mw.config.get( 'wgRevisionId' )
+	);
 }
 
 module.exports = {
 	init: init,
+	getParsoidCommentData: getParsoidCommentData,
 	postReply: postReply,
 	autoSignWikitext: autoSignWikitext
 };
