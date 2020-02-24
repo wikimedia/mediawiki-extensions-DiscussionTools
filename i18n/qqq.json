@@ -21,7 +21,7 @@
 	"discussiontools-replywidget-reply": "Label for the button to submit a reply in the reply widget",
 	"discussiontools-replywidget-terms-click": "Terms of use for posting a reply.\n\n* $1 is the label of the button to be clicked, e.g. {{msg-mw|discussiontools-replywidget-reply}}.",
 	"discussiontools-error-comment-disappeared": "Error message.",
-	"tag-discussiontools": "Short description of the discussiontools tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-description}}",
+	"tag-discussiontools": "{{ignored}}Short description of the discussiontools tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-description}}",
 	"tag-discussiontools-description": "Long description of the discussiontools tag ({{msg-mw|Tag-discussiontools}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools}}",
 	"tag-discussiontools-edit": "Short description of the discussiontools-edit tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit to an existing comment made using DiscussionTools.\n\nThis message is always shown directly after {{msg-mw|tag-discussiontools}} and a comma.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-edit-description}}\n* {{Related|tag-discussiontools}}",
 	"tag-discussiontools-edit-description": "Long description of the discussiontools-edit tag ({{msg-mw|Tag-discussiontools-edit}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-edit}}\n* {{Related|tag-discussiontools-description}}",
