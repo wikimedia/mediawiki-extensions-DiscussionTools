@@ -19,5 +19,9 @@ ar-nbsp-timezone:
 https://ar.wikipedia.org/wiki/ويكيبيديا:إخفاء_أرقام_الآي_بي?oldid=46583196&action=render
 https://ar.wikipedia.org/api/rest_v1/page/html/ويكيبيديا%3Aإخفاء_أرقام_الآي_بي/46583196
 
+fr-unsigned:
+https://fr.wikipedia.org/w/index.php?title=Discussion:Le_Monde&oldid=170426593&action=render
+https://fr.wikipedia.org/api/rest_v1/page/html/Discussion%3ALe_Monde/170426593
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.
