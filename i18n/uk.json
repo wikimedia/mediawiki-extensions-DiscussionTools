@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piramidion"
+			"Piramidion",
+			"Alexander Yukal"
 		]
 	},
 	"discussiontools": "Інструменти обговорення",
 	"discussiontools-defaultsummary-reply": "Відповідь",
 	"discussiontools-desc": "Інструменти для покращення сторінок обговорення.",
+	"discussiontools-preference-label": "Інструменти обговорення",
 	"discussiontools-replylink": "Відповісти",
 	"discussiontools-replywidget-anon-warning": "<strong>Ви не увійшли в систему.</strong> Щоб мати змогу підписуватися власним іменем замість своєї IP-адреси, Вам треба або [$1 увійти в систему], або [$2 зареєструватися].",
 	"discussiontools-replywidget-cancel": "Скасувати",

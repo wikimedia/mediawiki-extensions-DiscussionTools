@@ -7,6 +7,8 @@
 	"discussiontools": "Разговорни алатки",
 	"discussiontools-defaultsummary-reply": "Одговор",
 	"discussiontools-desc": "Алатки за подобрување на разговорните страници.",
+	"discussiontools-preference-label": "Разговорни алатки",
+	"discussiontools-preference-description": "Овозможи нов работек тек за [//www.mediawiki.org/wiki/Talk_pages_project/replying одговарање на поединечни коментари] на разговорни страници.\n\nИмајте на ум дека со време ќе се додаваат нови алатки за разговорни страници.\n\nПодновите за можностите ќе се објавуваат на [//www.mediawiki.org/wiki/Talk_pages_project/Updates страницата за поднови за разговорни страници].",
 	"discussiontools-replylink": "Одговори",
 	"discussiontools-replywidget-anon-warning": "<strong>Не сте најавени.</strong> За да бидете наведени како уредник по име наместо по IP-адреса, [$1 најавете се] или [$2 направете сметка].",
 	"discussiontools-replywidget-cancel": "Откажи",

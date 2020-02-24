@@ -8,6 +8,8 @@
 	"discussiontools": "討論工具",
 	"discussiontools-defaultsummary-reply": "回覆",
 	"discussiontools-desc": "提升討論頁面的工具",
+	"discussiontools-preference-label": "討論工具",
+	"discussiontools-preference-description": "輸入用於在討論頁[//www.mediawiki.org/wiki/Talk_pages_project/replying 回覆指定評論]的新工作流程。\n\n請注意隨著時間改變，將會添加用於與討論頁互動的新工具。\n\n有關這些功能的更新，將會發布在[//www.mediawiki.org/wiki/Talk_pages_project/Updates 討論頁專案的更新頁面]。",
 	"discussiontools-replylink": "回覆",
 	"discussiontools-replywidget-anon-warning": "<strong>您尚未登入。</strong>要收到使用您的名稱的署名而非 IP 位址，您可以[$1 登入]或[$2 建立一個帳號]。",
 	"discussiontools-replywidget-cancel": "取消",

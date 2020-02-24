@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Huji"
+		]
+	},
+	"discussiontools": "ابزارهای گفتگو",
+	"discussiontools-defaultsummary-reply": "پاسخ",
+	"discussiontools-desc": "ابزارهایی برای بهبود صفحه‌های بحث",
+	"discussiontools-replylink": "پاسخ",
+	"discussiontools-replywidget-anon-warning": "<strong>شما به سامانه وارد نشده‌اید.</strong> برای این که نوشته‌تان به نام خودتان ثبت شود و نشانی آی‌پی‌تان کنارش نمایش نیابد می‌توانید [$1 به سامانه وارد شوید] یا [$2 حساب بسازید].",
+	"discussiontools-replywidget-cancel": "لغو",
+	"discussiontools-replywidget-loading": "در حال بارگیری...",
+	"discussiontools-replywidget-preview": "پیش‌نمایش",
+	"discussiontools-replywidget-reply": "پاسخ",
+	"discussiontools-replywidget-terms-click": "با کلیک کردن روی «$1» شما می‌پذیرید که از شرایط استفادهٔ این ویکی پیروی کنید.",
+	"tag-discussiontools": "ویرایش با ابزارهای گفتگو",
+	"tag-discussiontools-description": "ویرایش توسط ابزارهای گفتگو",
+	"tag-discussiontools-edit": "ویرایش پاسخ",
+	"tag-discussiontools-edit-description": "کاربر با استفاده از ابزارهای گفتگو یک پاسخ را ویرایش کرد",
+	"tag-discussiontools-newtopic": "افزودن موضوع",
+	"tag-discussiontools-newtopic-description": "کاربر با کمک ابزارهای گفتگو موضوعی جدید را افزود",
+	"tag-discussiontools-reply": "پاسخ دادن",
+	"tag-discussiontools-reply-description": "کاربر با استفاده از ابزارهای گفتگو به یک نظر قبلی پاسخ داد",
+	"tag-discussiontools-source": "ابزارهای گفتگو: مبدأ",
+	"tag-discussiontools-source-description": "ابزارهای گفتگو در حالت ویرایش مبدأ بود",
+	"tag-discussiontools-visual": "ابزارهای گفتگو: دیداری",
+	"tag-discussiontools-visual-description": "ابزارهای گفتگو در حالت ویرایشگر دیداری بود"
+}

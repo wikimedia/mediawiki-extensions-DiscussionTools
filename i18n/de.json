@@ -6,13 +6,28 @@
 			"1233qwer1234qwer4"
 		]
 	},
+	"discussiontools": "Diskussions-Werkzeuge",
 	"discussiontools-defaultsummary-reply": "Antwort",
+	"discussiontools-desc": "Werkzeuge zur Verbesserung der Diskussionsseiten.",
+	"discussiontools-preference-label": "Diskussions-Werkzeuge",
+	"discussiontools-preference-description": "Aktiviere einen neuen Workflow [//www.mediawiki.org/wiki/Talk_pages_project/replying zur Beantwortung spezifischer Kommentare] auf den Diskussionsseiten.\n\nBitte beachte, dass mit der Zeit neue Werkzeuge für die Interaktion mit den Diskussionsseiten hinzukommen werden.\n\nAktualisierungen über diese Funktionen werden auf der Seite [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page] veröffentlicht.",
 	"discussiontools-replylink": "Antworten",
+	"discussiontools-replywidget-anon-warning": "<strong>Du bist nicht angemeldet.</strong> Um eine Zuordnung mit deinem Namen anstatt deiner IP-Adresse zu erhalten, kannst du dich [$1 anmelden] oder [$2 ein Benutzerkonto erstellen].",
 	"discussiontools-replywidget-cancel": "Abbrechen",
 	"discussiontools-replywidget-loading": "Lade …",
 	"discussiontools-replywidget-preview": "Vorschau",
 	"discussiontools-replywidget-reply": "Antworten",
+	"discussiontools-replywidget-terms-click": "Durch Klicken auf \"$1\" stimmst du den Nutzungsbedingungen für dieses Wiki zu.",
+	"tag-discussiontools": "Bearbeitung durch Diskussions-Werkzeuge",
+	"tag-discussiontools-description": "Bearbeitung durch Diskussions-Werkzeuge",
 	"tag-discussiontools-edit": "bearbeiteter Kommentar",
+	"tag-discussiontools-edit-description": "Benutzer hat einen vorhandenen Kommentar mit den Diskussions-Werkzeugen bearbeitet",
 	"tag-discussiontools-newtopic": "Hinzugefügtes Thema",
-	"tag-discussiontools-reply": "beantwortet"
+	"tag-discussiontools-newtopic-description": "Benutzer hat ein neues Thema zur Seite mit den Diskussions-Werkzeugen erstellt",
+	"tag-discussiontools-reply": "beantwortet",
+	"tag-discussiontools-reply-description": "Benutzer hat auf einen vorhandenen Kommentar mit den  Diskussions-Werkzeugen geantwortet",
+	"tag-discussiontools-source": "Diskussions-Werkzeuge: Quelltext",
+	"tag-discussiontools-source-description": "Diskussions-Werkzeugen waren im Quelltext-Modus",
+	"tag-discussiontools-visual": "Diskussions-Werkzeuge: VisualEditor",
+	"tag-discussiontools-visual-description": "Diskussions-Werkzeuge waren im VisualEditor-Modus"
 }

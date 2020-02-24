@@ -6,11 +6,13 @@
 		]
 	},
 	"discussiontools-desc": "वार्तालाप पृष्ठहरू बढाउनका लागि प्रयाेग गरिने उपकरणहरू",
+	"discussiontools-preference-label": "छलफल उपकरण",
 	"discussiontools-replywidget-preview": "पूर्वावलोकन",
 	"tag-discussiontools": "छलफल उपकरणहरू समपादन",
 	"tag-discussiontools-description": "छलफल उपकरण प्रयाेग गरि गरिएका सम्पादन",
 	"tag-discussiontools-edit": "टिप्पणी सम्पादन गर्ने",
 	"tag-discussiontools-newtopic": "विषय थपियाे",
 	"tag-discussiontools-reply": "उत्तर दिइयो",
-	"tag-discussiontools-source": "छलफल उपकरणः स्रोत"
+	"tag-discussiontools-source": "छलफल उपकरणः स्रोत",
+	"tag-discussiontools-visual": "छलफल उपकरण: दृश्य"
 }
