@@ -253,6 +253,30 @@ ReplyWidget.prototype.onReplyClick = function () {
 	// We must get a new copy of the document every time, otherwise any unsaved replies will pile up
 	this.getParsoidCommentData().then( function ( parsoidData ) {
 		return controller.postReply( widget, parsoidData );
+	} ).catch( function ( code, data ) {
+		// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
+		// comment has been deleted from the page, or if retry also fails for some other reason, the
+		// error is handled as normal below.
+		if ( code === 'editconflict' ) {
+			return widget.api.get( {
+				action: 'query',
+				prop: 'revisions',
+				rvprop: 'ids',
+				rvlimit: 1,
+				titles: mw.config.get( 'wgRelevantPageName' ),
+				formatversion: 2
+			} ).then( function ( resp ) {
+				var latestRevId = resp.query.pages[ 0 ].revisions[ 0 ].revid;
+				mw.config.set( {
+					wgCurRevisionId: latestRevId,
+					wgRevisionId: latestRevId
+				} );
+				return widget.getParsoidCommentData().then( function ( parsoidData ) {
+					return controller.postReply( widget, parsoidData );
+				} );
+			} );
+		}
+		return $.Deferred().reject( code, data ).promise();
 	} ).then( function ( data ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $container = $( '#mw-content-text' );
@@ -279,7 +303,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 	}, function ( code, data ) {
 		widget.errorMessage = new OO.ui.MessageWidget( {
 			type: 'error',
-			label: ( new mw.Api() ).getErrorMessage( data )
+			label: widget.api.getErrorMessage( data )
 		} );
 		widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
 	} ).always( function () {

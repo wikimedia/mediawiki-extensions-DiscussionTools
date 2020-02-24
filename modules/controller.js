@@ -217,7 +217,10 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 			parsoidCommentsById = commentsById( parsoidComments );
 
 			if ( !parsoidCommentsById[ commentId ] ) {
-				throw new Error( 'Could not find comment in Parsoid HTML' );
+				return $.Deferred().reject( 'comment-disappeared', { errors: [ {
+					code: 'comment-disappeared',
+					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
+				} ] } ).promise();
 			}
 
 			return {

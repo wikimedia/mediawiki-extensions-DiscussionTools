@@ -16,6 +16,7 @@
 	"discussiontools-replywidget-preview": "Preview",
 	"discussiontools-replywidget-reply": "Reply",
 	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki.",
+	"discussiontools-error-comment-disappeared": "Could not find the comment you're replying to on the page. It might have been deleted or moved to another page. Please reload the page and try again.",
 	"tag-discussiontools": "DiscussionTools edit",
 	"tag-discussiontools-description": "Edit made using DiscussionTools",
 	"tag-discussiontools-edit": "edited comment",
