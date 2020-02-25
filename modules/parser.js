@@ -156,7 +156,8 @@ function getTimestampRegexp( format, digits, tzAbbrs ) {
 
 	tzRegexp = regexpAlternateGroup( Object.keys( tzAbbrs ) );
 	// Hardcoded parentheses and space like in Parser::pstPass2
-	regexp = s + ' \\(' + tzRegexp + '\\)';
+	// Ignore some invisible Unicode characters that often sneak in into copypasted timestamps (T245784)
+	regexp = s + '[\\u200E\\u200F]? [\\u200E\\u200F]?\\(' + tzRegexp + '\\)';
 
 	return regexp;
 }
