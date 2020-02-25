@@ -6,6 +6,7 @@
 	},
 	"discussiontools": "Diskussionsverktyg",
 	"discussiontools-defaultsummary-reply": "Svara",
+	"discussiontools-preference-label": "Diskussionsverktyg",
 	"discussiontools-replylink": "Svara",
 	"discussiontools-replywidget-anon-warning": "<strong>Du är inte inloggad.</strong> För att få erkännande med ditt namn istället för din IP-adress kan du [$1 logga in] eller [$2 skapa ett konto].",
 	"discussiontools-replywidget-cancel": "Avbryt",

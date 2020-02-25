@@ -3,7 +3,8 @@
 		"authors": [
 			"Matma Rex",
 			"Amire80",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Robby"
 		]
 	},
 	"discussiontools": "{{name}}",
@@ -29,7 +30,7 @@
 	"tag-discussiontools-newtopic-description": "Long description of the discussiontools-newtopic tag ({{msg-mw|Tag-discussiontools-newtopic}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-newtopic}}\n* {{Related|tag-discussiontools-description}}",
 	"tag-discussiontools-reply": "Short description of the discussiontools-reply tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools to reply to an existing comment.\n\nThis message is always shown directly after {{msg-mw|tag-discussiontools}} and a comma.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-reply-description}}\n* {{Related|tag-discussiontools}}",
 	"tag-discussiontools-reply-description": "Long description of the discussiontools-reply tag ({{msg-mw|Tag-discussiontools-reply}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-reply}}\n* {{Related|tag-discussiontools-description}}",
-	"tag-discussiontools-source": "Short description of the discussiontools-source tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools in source mode.\n\nThis message is always shown directly after {{msg-mw|tag-discussiontools-reply}} etc. and a comma.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-source-description}}\n* {{Related|tag-discussiontools}}",
+	"tag-discussiontools-source": "Short description of the discussiontools-source tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools in source mode.\n\nThis message is always shown directly after {{msg-mw|tag-discussiontools-reply}} etc. and a comma.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-source-description}}\n* {{Related|tag-discussiontools}}\n\n{{Identical|Source}}",
 	"tag-discussiontools-source-description": "Long description of the discussiontools-source tag ({{msg-mw|Tag-discussiontools-source}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-source}}\n* {{Related|tag-discussiontools}}",
 	"tag-discussiontools-visual": "Short description of the discussiontools-visual tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools in visual mode.\n\nThis message is always shown directly after {{msg-mw|tag-discussiontools-reply}} etc. and a comma.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-visual-description}}\n* {{Related|tag-discussiontools}}",
 	"tag-discussiontools-visual-description": "Long description of the discussiontools-visual tag ({{msg-mw|Tag-discussiontools-visual}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-visual}}\n* {{Related|tag-discussiontools}}"

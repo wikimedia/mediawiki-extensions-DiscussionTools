@@ -6,9 +6,15 @@
 	},
 	"discussiontools": "토론 도구",
 	"discussiontools-defaultsummary-reply": "답변",
+	"discussiontools-preference-label": "토론 도구",
 	"discussiontools-replylink": "답변",
 	"discussiontools-replywidget-cancel": "취소",
 	"discussiontools-replywidget-loading": "불러오는 중...",
 	"discussiontools-replywidget-preview": "미리 보기",
-	"discussiontools-replywidget-reply": "답변"
+	"discussiontools-replywidget-reply": "답변",
+	"tag-discussiontools-edit": "댓글 편집",
+	"tag-discussiontools-newtopic": "주제 추가",
+	"tag-discussiontools-reply": "답변",
+	"tag-discussiontools-source": "원본",
+	"tag-discussiontools-visual": "시각"
 }

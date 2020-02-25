@@ -1,18 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"BadDog"
+			"BadDog",
+			"Zoranzoki21"
 		]
 	},
 	"discussiontools-preference-label": "Алатке за дискутовање",
 	"discussiontools-replywidget-preview": "Преглед",
-	"tag-discussiontools": "измена алаткама за дискутовање",
 	"tag-discussiontools-description": "Измене направљене алаткама за дискутовање",
-	"tag-discussiontools-edit": "измењен коментар",
-	"tag-discussiontools-newtopic": "додата тема",
-	"tag-discussiontools-reply": "одговорено",
-	"tag-discussiontools-source": "Алатке за дискутовање: изворно",
+	"tag-discussiontools-edit": "Измењен коментар",
+	"tag-discussiontools-newtopic": "Додата тема",
+	"tag-discussiontools-reply": "Одговор",
+	"tag-discussiontools-source": "Извор",
 	"tag-discussiontools-source-description": "Алатке за дискутовање биле су део уређивача изворног кода.",
-	"tag-discussiontools-visual": "Алатке за дискутовање: визуелно",
+	"tag-discussiontools-visual": "Визуелно",
 	"tag-discussiontools-visual-description": "Алатке за дискутовање биле су део визуелног уређивача."
 }

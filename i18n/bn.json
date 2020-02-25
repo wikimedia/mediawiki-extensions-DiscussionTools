@@ -6,5 +6,14 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "প্রত্যুত্তর",
-	"discussiontools-replywidget-preview": "প্রাকদর্শন"
+	"discussiontools-replylink": "উত্তর দিন",
+	"discussiontools-replywidget-cancel": "বাতিল",
+	"discussiontools-replywidget-loading": "লোড করা হচ্ছে…",
+	"discussiontools-replywidget-preview": "প্রাকদর্শন",
+	"discussiontools-replywidget-reply": "উত্তর দিন",
+	"tag-discussiontools-edit": "মন্তব্য সম্পাদনা",
+	"tag-discussiontools-newtopic": "প্রসঙ্গ যোগ করুন",
+	"tag-discussiontools-reply": "উত্তর",
+	"tag-discussiontools-source": "উৎস",
+	"tag-discussiontools-visual": "দৃশ্যমান"
 }

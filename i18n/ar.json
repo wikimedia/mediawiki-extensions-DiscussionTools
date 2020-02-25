@@ -6,15 +6,27 @@
 			"Dyolf77 (WMF)"
 		]
 	},
-	"discussiontools": "أدوات المناقشة",
-	"discussiontools-defaultsummary-reply": "رد",
-	"discussiontools-desc": "أدوات لتحسين صفحات المناقشة.",
+	"discussiontools": "أدوات النقاش",
+	"discussiontools-defaultsummary-reply": "ردّ",
+	"discussiontools-desc": "أدوات لتحسين صفحات النقاش.",
 	"discussiontools-preference-label": "أدوات النقاش",
+	"discussiontools-preference-description": "تفعيل مسار عمل جديد للـ[//www.mediawiki.org/wiki/Talk_pages_project/replying ردّ على تعليقات محدّدة] على صفحات النقاش.\n\nرجاءً، ليكن في علمكم أنه مع الوقت ستتم إضافة أدوات جديدة للتعامل مع صفحات النقاش.\n\nسيتم نشر تحديثات حول هذه الميزات على [//www.mediawiki.org/wiki/Talk_pages_project/Updates صفحات نقاش صفحة أخبار المشروع].",
 	"discussiontools-replylink": "رد",
 	"discussiontools-replywidget-anon-warning": "<strong>لم تقم بتسجيل الدخول،</strong> لتلقي الإسناد باسمك بدلا من عنوان الآيلي الخاص بك؛ يمكنك [$1 تسجيل الدخول] أو [$2 إنشاء حساب].",
 	"discussiontools-replywidget-cancel": "إلغاء",
 	"discussiontools-replywidget-loading": "جارٍ التحميل...",
 	"discussiontools-replywidget-preview": "معاينة",
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
-	"discussiontools-replywidget-terms-click": "بالنقر على \"$1\"، فإنك توافق على شروط الاستخدام لهذا الويكي."
+	"discussiontools-replywidget-terms-click": "بالنقر على \"$1\"، فإنك توافق على شروط الاستخدام لهذا الويكي.",
+	"tag-discussiontools-description": "تعديل تم عن طريق أدوات_النقاش",
+	"tag-discussiontools-edit": "تعليق معدّل",
+	"tag-discussiontools-edit-description": "عدّل مستخدمون تعليقا موجودا، عبر أدوات_النقاش",
+	"tag-discussiontools-newtopic": "موضوع مضاف",
+	"tag-discussiontools-newtopic-description": "أضاف مستخدمون موضوعا جديدا في الصفحة عبر أدوات_النقاش",
+	"tag-discussiontools-reply": "تم الردّ",
+	"tag-discussiontools-reply-description": "ردّ مستخدمون على تغليق موجود عبر أدوات_النقاش",
+	"tag-discussiontools-source": "أدوات_النقاش: مصدر",
+	"tag-discussiontools-source-description": "كانت أدوات_النقاش في وضعية المصدر",
+	"tag-discussiontools-visual": "أدوات_النقاش: مرئي",
+	"tag-discussiontools-visual-description": "كانت أدوات_النقاش في وضعية المحرر المرئي"
 }
