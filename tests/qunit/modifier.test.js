@@ -11,43 +11,43 @@ QUnit.test( '#addListItem', function ( assert ) {
 	cases = [
 		{
 			name: 'plwiki oldparser',
-			dom: mw.template.get( 'test.DiscussionTools', 'oldparser/pl-55171451.html' ).render(),
-			expected: mw.template.get( 'test.DiscussionTools', 'oldparser/pl-55171451-modified.html' ).render(),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-oldparser/pl-big-oldparser.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-oldparser/pl-big-oldparser-modified.html' ).render(),
 			config: require( './data/plwiki-config.json' ),
 			data: require( './data/plwiki-data.json' )
 		},
 		{
 			name: 'plwiki parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'parsoid/pl-55171451.html' ).render(),
-			expected: mw.template.get( 'test.DiscussionTools', 'parsoid/pl-55171451-modified.html' ).render(),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-parsoid/pl-big-parsoid.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-parsoid/pl-big-parsoid-modified.html' ).render(),
 			config: require( './data/plwiki-config.json' ),
 			data: require( './data/plwiki-data.json' )
 		},
 		{
 			name: 'enwiki oldparser',
-			dom: mw.template.get( 'test.DiscussionTools', 'oldparser/en-913983958.html' ).render(),
-			expected: mw.template.get( 'test.DiscussionTools', 'oldparser/en-913983958-modified.html' ).render(),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-oldparser/en-big-oldparser.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/en-big-oldparser/en-big-oldparser-modified.html' ).render(),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
 		},
 		{
 			name: 'enwiki parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'parsoid/en-913983958.html' ).render(),
-			expected: mw.template.get( 'test.DiscussionTools', 'parsoid/en-913983958-modified.html' ).render(),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-parsoid/en-big-parsoid.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/en-big-parsoid/en-big-parsoid-modified.html' ).render(),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
 		},
 		{
 			name: 'Must split a list to reply to one of the comments',
-			dom: mw.template.get( 'test.DiscussionTools', 'other/split-list.html' ).render(),
-			expected: mw.template.get( 'test.DiscussionTools', 'other/split-list-modified.html' ).render(),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/split-list/split-list.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/split-list/split-list-modified.html' ).render(),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
 		},
 		{
 			name: 'Must split a list to reply to one of the comments (version 2)',
-			dom: mw.template.get( 'test.DiscussionTools', 'other/split-list2.html' ).render(),
-			expected: mw.template.get( 'test.DiscussionTools', 'other/split-list2-modified.html' ).render(),
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/split-list2/split-list2.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/split-list2/split-list2-modified.html' ).render(),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
 		}
