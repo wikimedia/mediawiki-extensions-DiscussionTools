@@ -1,7 +1,7 @@
 'use strict';
 
 var
-	parser = require( 'ext.discussionTools.parser' ),
+	parser = require( 'ext.discussionTools.init' ).parser,
 	initialOffset, indentWidth;
 
 function markTimestamp( node, match ) {

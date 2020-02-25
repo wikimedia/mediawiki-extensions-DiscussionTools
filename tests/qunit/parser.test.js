@@ -1,7 +1,7 @@
 /* global moment */
 var
 	utils = require( './utils.js' ),
-	parser = require( 'ext.discussionTools.parser' );
+	parser = require( 'ext.discussionTools.init' ).parser;
 
 QUnit.module( 'mw.dt.parser', utils.newEnvironment() );
 

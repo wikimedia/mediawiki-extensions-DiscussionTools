@@ -1,6 +1,6 @@
-var controller = require( 'ext.discussionTools.controller' ),
-	modifier = require( 'ext.discussionTools.modifier' ),
-	logger = require( 'ext.discussionTools.logger' );
+var controller = require( 'ext.discussionTools.init' ).controller,
+	modifier = require( 'ext.discussionTools.init' ).modifier,
+	logger = require( 'ext.discussionTools.init' ).logger;
 
 /**
  * DiscussionTools ReplyWidget class

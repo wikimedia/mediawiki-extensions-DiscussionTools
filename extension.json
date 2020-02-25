@@ -21,50 +21,40 @@
 		"remoteExtPath": "DiscussionTools/modules"
 	},
 	"ResourceModules": {
-		"ext.discussionTools.parser": {
+		"ext.discussionTools.init": {
 			"packageFiles": [
-				"parser.js",
-				"lib/moment-timezone/moment-timezone-with-data-1970-2030.js",
-				{
-					"name": "data.json",
-					"callback": "DiscussionToolsData::getLocalData"
-				}
-			],
-			"dependencies": [
-				"moment",
-				"mediawiki.util",
-				"mediawiki.Uri",
-				"mediawiki.Title"
-			]
-		},
-		"ext.discussionTools.modifier": {
-			"packageFiles": [
-				"modifier.js"
-			]
-		},
-		"ext.discussionTools.controller": {
-			"packageFiles": [
+				"dt.init.js",
 				"controller.js",
 				{
-					"name": "contLangMessages.json",
+					"name": "controller/contLangMessages.json",
 					"callback": "DiscussionToolsData::getContentLanguageMessages",
 					"callbackParam": [
 						"discussiontools-defaultsummary-reply"
 					]
 				},
 				{
-					"name": "config.json",
+					"name": "controller/config.json",
 					"config": {
 						"useVisualEditor": "DiscussionToolsUseVisualEditor"
 					}
+				},
+				"logger.js",
+				"modifier.js",
+				"parser.js",
+				"lib/moment-timezone/moment-timezone-with-data-1970-2030.js",
+				{
+					"name": "parser/data.json",
+					"callback": "DiscussionToolsData::getLocalData"
 				}
 			],
+			"styles": "dt.init.less",
 			"dependencies": [
+				"moment",
 				"rangefix",
 				"oojs-ui-windows",
-				"ext.discussionTools.parser",
-				"ext.discussionTools.modifier",
-				"ext.discussionTools.logger",
+				"mediawiki.Title",
+				"mediawiki.Uri",
+				"mediawiki.util",
 				"ext.visualEditor.core.utils",
 				"ext.visualEditor.core.utils.parsing"
 			],
@@ -76,24 +66,6 @@
 				"discussiontools-replywidget-loading"
 			]
 		},
-		"ext.discussionTools.logger": {
-			"packageFiles": [
-				"logger.js"
-			],
-			"dependencies": [
-				"mediawiki.util"
-			]
-		},
-		"ext.discussionTools.init": {
-			"packageFiles": [
-				"dt.init.js"
-			],
-			"styles": "dt.init.less",
-			"dependencies": [
-				"mediawiki.Uri",
-				"ext.discussionTools.controller"
-			]
-		},
 		"ext.discussionTools.debug": {
 			"packageFiles": [
 				"dt.debug.js",
@@ -101,7 +73,7 @@
 			],
 			"styles": "highlighter.css",
 			"dependencies": [
-				"ext.discussionTools.parser"
+				"ext.discussionTools.init"
 			]
 		},
 		"ext.discussionTools.ReplyWidget": {
@@ -120,8 +92,7 @@
 				"discussiontools-replywidget-terms-click"
 			],
 			"dependencies": [
-				"ext.discussionTools.controller",
-				"ext.discussionTools.logger",
+				"ext.discussionTools.init",
 				"mediawiki.widgets.AbandonEditDialog"
 			]
 		},
@@ -211,8 +182,7 @@
 			"cases/signatures-funny/signatures-funny-reply.html"
 		],
 		"dependencies": [
-			"ext.discussionTools.modifier",
-			"ext.discussionTools.parser"
+			"ext.discussionTools.init"
 		]
 	},
 	"AutoloadClasses": {

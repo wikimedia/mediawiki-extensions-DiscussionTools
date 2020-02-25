@@ -11,7 +11,7 @@ module.exports = {};
 module.exports.newEnvironment = function () {
 	var originalParserData = $.extend(
 		{},
-		mw.loader.moduleRegistry[ 'ext.discussionTools.parser' ].packageExports[ 'data.json' ]
+		mw.loader.moduleRegistry[ 'ext.discussionTools.init' ].packageExports[ 'parser/data.json' ]
 	);
 
 	return QUnit.newMwEnvironment( {
@@ -29,7 +29,7 @@ module.exports.newEnvironment = function () {
  */
 module.exports.overrideParserData = function ( data ) {
 	$.extend(
-		mw.loader.moduleRegistry[ 'ext.discussionTools.parser' ].packageExports[ 'data.json' ],
+		mw.loader.moduleRegistry[ 'ext.discussionTools.init' ].packageExports[ 'parser/data.json' ],
 		data
 	);
 };

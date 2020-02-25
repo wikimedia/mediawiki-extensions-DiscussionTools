@@ -1,4 +1,4 @@
-var controller = require( 'ext.discussionTools.controller' );
+var controller = require( './controller.js' );
 
 /**
  * @class mw.dt
@@ -20,3 +20,10 @@ if ( new mw.Uri().query.dtdebug ) {
 		} );
 	} );
 }
+
+module.exports = {
+	controller: require( './controller.js' ),
+	parser: require( './parser.js' ),
+	modifier: require( './modifier.js' ),
+	logger: require( './logger.js' )
+};

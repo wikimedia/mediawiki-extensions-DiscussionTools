@@ -1,5 +1,5 @@
 var
-	parser = require( 'ext.discussionTools.parser' ),
+	parser = require( 'ext.discussionTools.init' ).parser,
 	highlighter = require( './highlighter.js' ),
 	timestamps, comments, threads, i, node, match, signature, emptySignature;
 

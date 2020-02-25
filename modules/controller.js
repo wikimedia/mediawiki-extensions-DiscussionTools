@@ -1,18 +1,18 @@
 'use strict';
 
 var
-	parser = require( 'ext.discussionTools.parser' ),
-	modifier = require( 'ext.discussionTools.modifier' ),
-	logger = require( 'ext.discussionTools.logger' ),
+	parser = require( './parser.js' ),
+	modifier = require( './modifier.js' ),
+	logger = require( './logger.js' ),
 	pageDataCache = {},
 	$pageContainer,
 	scrollPadding = { top: 10, bottom: 10 },
-	config = require( './config.json' ),
+	config = require( './controller/config.json' ),
 	replyWidgetPromise = config.useVisualEditor ?
 		mw.loader.using( 'ext.discussionTools.ReplyWidgetVisual' ) :
 		mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
 
-mw.messages.set( require( './contLangMessages.json' ) );
+mw.messages.set( require( './controller/contLangMessages.json' ) );
 
 function setupComment( comment ) {
 	var $replyLinkButtons, $replyLink, parsoidPromise, widgetPromise, newListItem;

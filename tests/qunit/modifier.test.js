@@ -1,7 +1,7 @@
 var
 	utils = require( './utils.js' ),
-	parser = require( 'ext.discussionTools.parser' ),
-	modifier = require( 'ext.discussionTools.modifier' );
+	parser = require( 'ext.discussionTools.init' ).parser,
+	modifier = require( 'ext.discussionTools.init' ).modifier;
 
 QUnit.module( 'mw.dt.modifier', utils.newEnvironment() );
 
