@@ -13,6 +13,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>You are not logged in.</strong> To receive attribution with your name instead of your IP address, you can [$1 log in] or [$2 create an account].",
 	"discussiontools-replywidget-cancel": "Cancel",
 	"discussiontools-replywidget-loading": "Loading…",
+	"discussiontools-replywidget-placeholder-reply": "Reply to {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Preview",
 	"discussiontools-replywidget-reply": "Reply",
 	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki.",
@@ -29,5 +30,4 @@
 	"tag-discussiontools-source-description": "DiscussionTools was in source mode",
 	"tag-discussiontools-visual": "Visual",
 	"tag-discussiontools-visual-description": "DiscussionTools was in VisualEditor mode"
-
 }

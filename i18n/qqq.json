@@ -18,6 +18,7 @@
 	"discussiontools-replywidget-anon-warning": "Warning message to be displayed when anonymous user starts writing a new topic or reply.\n* $1 is a URL to log in.\n* $2 is a URL to register an account.",
 	"discussiontools-replywidget-cancel": "Label for the cancel button in the reply widget",
 	"discussiontools-replywidget-loading": "Message shown while the reply widget is loading",
+	"discussiontools-replywidget-placeholder-reply": "Placeholder describing who is being replied to",
 	"discussiontools-replywidget-preview": "Label for the preview area of the reply widget",
 	"discussiontools-replywidget-reply": "Label for the button to submit a reply in the reply widget",
 	"discussiontools-replywidget-terms-click": "Terms of use for posting a reply.\n\n* $1 is the label of the button to be clicked, e.g. {{msg-mw|discussiontools-replywidget-reply}}.",
