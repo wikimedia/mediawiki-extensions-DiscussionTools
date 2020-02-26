@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"YaronSh"
 		]
 	},
 	"discussiontools": "כלי שיחה",
@@ -17,14 +18,14 @@
 	"discussiontools-replywidget-reply": "להגיב",
 	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של הוויקי הזה.",
 	"tag-discussiontools-description": "עריכה שנעשתה באמצעות כלי שיחה",
-	"tag-discussiontools-edit": "נערכה תגובה",
+	"tag-discussiontools-edit": "נערכה הערה",
 	"tag-discussiontools-edit-description": "משתמש ערך תגובה קיימת באמצעות כלי שיחה",
 	"tag-discussiontools-newtopic": "נוסף נושא",
 	"tag-discussiontools-newtopic-description": "משתמש הוסיף נושא חדש לדף באמצעות כלי שיחה",
 	"tag-discussiontools-reply": "תגובה",
 	"tag-discussiontools-reply-description": "משתמש הגיב להערה קיימת באמצעות כלי שיחה",
-	"tag-discussiontools-source": "כלי שיחה: קוד מקור",
+	"tag-discussiontools-source": "קוד מקור",
 	"tag-discussiontools-source-description": "כלי שיחה היו במצב קוד מקור",
-	"tag-discussiontools-visual": "כלי שיחה: חזותי",
+	"tag-discussiontools-visual": "חזותי",
 	"tag-discussiontools-visual-description": "כלי שיחה היו במצב עורך חזותי"
 }

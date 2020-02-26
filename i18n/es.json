@@ -3,19 +3,22 @@
 		"authors": [
 			"Canaan9801",
 			"Ihojose",
-			"Fitoschido"
+			"Fitoschido",
+			"Hasley"
 		]
 	},
 	"discussiontools": "Herramientas de discusión.",
 	"discussiontools-defaultsummary-reply": "Responder",
 	"discussiontools-desc": "Herramientas para mejorar páginas de discusión.",
+	"discussiontools-preference-label": "Herramientas de discusión",
 	"discussiontools-replylink": "Responder",
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-loading": "Cargando...",
 	"discussiontools-replywidget-preview": "Previsualización",
 	"discussiontools-replywidget-reply": "Responder",
-	"tag-discussiontools-edit": "comentario editado",
-	"tag-discussiontools-edit-description": "El usuario editó un comentario existente",
-	"tag-discussiontools-reply": "respondido",
-	"tag-discussiontools-reply-description": "El usuario respondió a un comentario existente"
+	"tag-discussiontools-description": "Edición hecha con DiscussionTools",
+	"tag-discussiontools-edit": "Editar comentario",
+	"tag-discussiontools-edit-description": "El usuario editó un comentario existente con DiscussionTools",
+	"tag-discussiontools-reply": "Respuesta",
+	"tag-discussiontools-reply-description": "El usuario respondió a un comentario existente con DiscussionTools"
 }
