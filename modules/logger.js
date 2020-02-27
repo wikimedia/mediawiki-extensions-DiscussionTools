@@ -47,7 +47,7 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 				user_editcount: mw.config.get( 'wgUserEditCount', 0 ),
 				mw_version: mw.config.get( 'wgVersion' ),
 				platform: 'desktop',
-				integration: 'page',
+				integration: 'discussiontools',
 				page_token: user.getPageviewToken(),
 				session_token: user.sessionId(),
 				version: 1
