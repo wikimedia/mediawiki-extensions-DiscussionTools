@@ -51,6 +51,7 @@ function ReplyWidget( comment, config ) {
 	this.cancelButton.connect( this, { click: 'tryTeardown' } );
 	this.$element.on( 'keydown', this.onKeyDown.bind( this ) );
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
+	this.unloadHandler = this.onUnload.bind( this );
 
 	this.api = new mw.Api();
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
@@ -223,6 +224,7 @@ ReplyWidget.prototype.onFirstTransaction = function () {
  */
 ReplyWidget.prototype.bindBeforeUnloadHandler = function () {
 	$( window ).on( 'beforeunload', this.beforeUnloadHandler );
+	$( window ).on( 'unload', this.unloadHandler );
 };
 
 /**
@@ -232,6 +234,7 @@ ReplyWidget.prototype.bindBeforeUnloadHandler = function () {
  */
 ReplyWidget.prototype.unbindBeforeUnloadHandler = function () {
 	$( window ).off( 'beforeunload', this.beforeUnloadHandler );
+	$( window ).off( 'unload', this.unloadHandler );
 };
 
 /**
@@ -246,6 +249,20 @@ ReplyWidget.prototype.onBeforeUnload = function ( e ) {
 		e.preventDefault();
 		return '';
 	}
+};
+
+/**
+ * Respond to unload event.
+ *
+ * @private
+ * @param {jQuery.Event} e Event
+ */
+ReplyWidget.prototype.onUnload = function () {
+	logger( {
+		action: 'abort',
+		type: this.isEmpty() ? 'nochange' : 'abandon',
+		mechanism: 'navigate'
+	} );
 };
 
 ReplyWidget.prototype.getParsoidCommentData = function () {
