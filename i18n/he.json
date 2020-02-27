@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"YaronSh"
+			"YaronSh",
+			"IKhitron"
 		]
 	},
 	"discussiontools": "כלי שיחה",
@@ -17,6 +18,7 @@
 	"discussiontools-replywidget-preview": "תצוגה מקדימה",
 	"discussiontools-replywidget-reply": "להגיב",
 	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של הוויקי הזה.",
+	"discussiontools-error-comment-disappeared": "לא היה אפשר למצוא את ההערה שניסית להשיב עליה בדף. אולי היא נמחקה או הועברה לדף אחר. נא לרענן את הדף ולנסות שוב.",
 	"tag-discussiontools-description": "עריכה שנעשתה באמצעות כלי שיחה",
 	"tag-discussiontools-edit": "נערכה הערה",
 	"tag-discussiontools-edit-description": "משתמש ערך תגובה קיימת באמצעות כלי שיחה",

@@ -11,6 +11,18 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Du er ikke innlogget.</strong> For å bli kreditert med navnet ditt i stedet for IP-adressa di kan du [$1 logge inn] eller [$2 opprette en konto].",
 	"discussiontools-replywidget-cancel": "Avbryt",
 	"discussiontools-replywidget-loading": "Laster …",
+	"discussiontools-replywidget-preview": "Forhåndsvis",
 	"discussiontools-replywidget-reply": "Svar",
-	"discussiontools-replywidget-terms-click": "Ved å trykke på «$1» samtykker du i bruksvilkårene til denne wikien."
+	"discussiontools-replywidget-terms-click": "Ved å trykke på «$1» samtykker du i bruksvilkårene til denne wikien.",
+	"tag-discussiontools-description": "Redigering gjort med DiscussionTools",
+	"tag-discussiontools-edit": "redigerte kommentar",
+	"tag-discussiontools-edit-description": "Bruker redigerte en eksisterende kommentar med DiscussionTools",
+	"tag-discussiontools-newtopic": "la til emne",
+	"tag-discussiontools-newtopic-description": "Brukeren la til et nytt emne til siden med DiscussionTools",
+	"tag-discussiontools-reply": "svarte",
+	"tag-discussiontools-reply-description": "Brukeren svarte på en eksisterende kommentar med DiscussionTools",
+	"tag-discussiontools-source": "DiscussionTools: kilde",
+	"tag-discussiontools-source-description": "DiscussionTools var i kildemodus",
+	"tag-discussiontools-visual": "DiscussionTools: visuell",
+	"tag-discussiontools-visual-description": "DiscussionTools var i modus for visuell redigering"
 }
