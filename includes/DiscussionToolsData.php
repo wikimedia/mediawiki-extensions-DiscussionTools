@@ -78,11 +78,11 @@ class DiscussionToolsData {
 
 		// Messages in content language
 		$messagesKeys = array_merge(
-			Language::$mWeekdayMsgs,
-			Language::$mWeekdayAbbrevMsgs,
-			Language::$mMonthMsgs,
-			Language::$mMonthGenMsgs,
-			Language::$mMonthAbbrevMsgs
+			Language::WEEKDAY_MESSAGES,
+			Language::WEEKDAY_ABBREVIATED_MESSAGES,
+			Language::MONTH_MESSAGES,
+			Language::MONTH_GENITIVE_MESSAGES,
+			Language::MONTH_ABBREVIATED_MESSAGES
 		);
 		$data['contLangMessages'] = array_combine(
 			$messagesKeys,
