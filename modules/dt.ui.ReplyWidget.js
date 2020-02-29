@@ -83,8 +83,8 @@ function ReplyWidget( comment, config ) {
 		this.$actionsWrapper.detach();
 	}
 
-	// Init preview?
-	this.onInputChangeThrottled();
+	// Init preview and button state
+	this.onInputChange();
 }
 
 /* Inheritance */
@@ -175,6 +175,8 @@ ReplyWidget.prototype.onInputChange = function () {
 			ul: '*',
 			ol: '#'
 		}[ this.context ];
+
+	this.replyButton.setDisabled( this.isEmpty() );
 
 	if ( this.mode !== 'source' ) {
 		return;
