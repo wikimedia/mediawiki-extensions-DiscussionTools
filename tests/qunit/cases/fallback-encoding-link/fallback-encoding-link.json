@@ -1,0 +1,74 @@
+[
+  {
+    "type": "heading",
+    "range": [
+      "0/1/0",
+      "0/1/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2009-06-25T10:46:00.000Z",
+        "author": "Akela",
+        "range": [
+          "0/3/0/0",
+          "0/4/5/31"
+        ],
+        "level": 1,
+        "id": "Akela|2009-06-25T10:46:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2009-06-25T11:01:00.000Z",
+            "author": "Hunyadym",
+            "range": [
+              "0/6/0/0",
+              "0/6/0/4/31"
+            ],
+            "level": 2,
+            "id": "Hunyadym|2009-06-25T11:01:00.000Z|0",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "type": "comment",
+        "timestamp": "2009-06-25T11:04:00.000Z",
+        "author": "Hunyadym",
+        "range": [
+          "0/8/0",
+          "0/8/6/31"
+        ],
+        "level": 1,
+        "id": "Hunyadym|2009-06-25T11:04:00.000Z|0",
+        "replies": []
+      },
+      {
+        "type": "comment",
+        "timestamp": "2009-06-25T11:07:00.000Z",
+        "author": "Hunyadym",
+        "range": [
+          "0/9/0",
+          "0/9/4/31"
+        ],
+        "level": 1,
+        "id": "Hunyadym|2009-06-25T11:07:00.000Z|0",
+        "replies": []
+      },
+      {
+        "type": "comment",
+        "timestamp": "2009-06-25T14:35:00.000Z",
+        "author": "Akela",
+        "range": [
+          "0/10/0",
+          "0/10/4/31"
+        ],
+        "level": 1,
+        "id": "Akela|2009-06-25T14:35:00.000Z|0",
+        "replies": []
+      }
+    ]
+  }
+]

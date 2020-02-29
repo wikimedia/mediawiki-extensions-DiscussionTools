@@ -192,6 +192,13 @@ QUnit.test( 'Integration tests', function ( assert ) {
 			expected: require( './cases/lrm-signature/lrm-signature.json' ),
 			config: require( './data/nlwiki-config.json' ),
 			data: require( './data/nlwiki-data.json' )
+		},
+		{
+			name: 'Link using fallback 8-bit encoding (invalid UTF-8)',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/fallback-encoding-link/fallback-encoding-link.html' ).render(),
+			expected: require( './cases/fallback-encoding-link/fallback-encoding-link.json' ),
+			config: require( './data/huwiki-config.json' ),
+			data: require( './data/huwiki-data.json' )
 		}
 	];
 

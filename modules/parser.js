@@ -426,7 +426,12 @@ function findTimestamps( rootNode ) {
 function getPageTitleFromUri( uri ) {
 	var articlePathRegexp, match;
 
-	uri = new mw.Uri( uri );
+	try {
+		uri = new mw.Uri( uri );
+	} catch ( err ) {
+		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+		return null;
+	}
 	articlePathRegexp = new RegExp(
 		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
 			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
