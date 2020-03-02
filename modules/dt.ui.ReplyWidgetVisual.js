@@ -50,17 +50,22 @@ ReplyWidgetVisual.prototype.isEmpty = function () {
 };
 
 ReplyWidgetVisual.prototype.setup = function () {
+	var surface;
+
 	// Parent method
 	ReplyWidgetVisual.super.prototype.setup.call( this );
 
 	this.replyBodyWidget.setDocument( '<p></p>' );
 
-	this.mode = this.replyBodyWidget.target.getSurface().getMode();
+	surface = this.replyBodyWidget.target.getSurface();
+
+	this.mode = surface.getMode();
 
 	// Events
-	this.replyBodyWidget.target.getSurface().getModel().getDocument().connect( this, { transact: this.onInputChangeThrottled } )
+	surface.getModel().getDocument()
+		.connect( this, { transact: this.onInputChangeThrottled } )
 		.once( 'transact', this.onFirstTransaction.bind( this ) );
-	this.replyBodyWidget.target.getSurface().connect( this, { submit: 'onReplyClick' } );
+	surface.connect( this, { submit: 'onReplyClick' } );
 };
 
 ReplyWidgetVisual.prototype.focus = function () {
