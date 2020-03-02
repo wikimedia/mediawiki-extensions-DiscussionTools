@@ -226,7 +226,7 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 		.then( function ( response ) {
 			var data = response.visualeditor;
 			// TODO: error handling
-			parsoidDoc = ve.createDocumentFromHtml( data.content );
+			parsoidDoc = ve.parseXhtml( data.content );
 			parsoidComments = parser.getComments( parsoidDoc.body );
 
 			parsoidPageData = {
