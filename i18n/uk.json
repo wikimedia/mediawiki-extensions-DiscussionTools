@@ -9,6 +9,7 @@
 	"discussiontools-defaultsummary-reply": "Відповідь",
 	"discussiontools-desc": "Інструменти для покращення сторінок обговорення.",
 	"discussiontools-preference-label": "Інструменти обговорення",
+	"discussiontools-preference-description": "Увімкнути новий спосіб [//www.mediawiki.org/wiki/Talk_pages_project/replying відповідати на окремі коментарі] на сторінках обговорень.\n\nБудь ласка, зверніть увагу, що з часом додаватимуться нові інструменти для взаємодії зі сторінками обговорень.\n\nНовини, пов'язані з цими функціями, публікуватимуться на [//www.mediawiki.org/wiki/Talk_pages_project/Updates сторінці новин проекту покращень сторінок обговорення].",
 	"discussiontools-replylink": "Відповісти",
 	"discussiontools-replywidget-anon-warning": "<strong>Ви не увійшли в систему.</strong> Щоб мати змогу підписуватися власним іменем замість своєї IP-адреси, Вам треба або [$1 увійти в систему], або [$2 зареєструватися].",
 	"discussiontools-replywidget-cancel": "Скасувати",
@@ -16,6 +17,7 @@
 	"discussiontools-replywidget-preview": "Попередній перегляд",
 	"discussiontools-replywidget-reply": "Відповісти",
 	"discussiontools-replywidget-terms-click": "Натискаючи «$1», Ви погоджуєтесь із умовами використання цієї вікі.",
+	"discussiontools-error-comment-disappeared": "Не вдалося знайти коментар, на який Ви відповідаєте на цій сторінці. Можливо, його звідси вилучили або перенесли на якусь іншу сторінку. Будь ласка, перезавантажте сторінку і спробуйте ще раз.",
 	"tag-discussiontools-description": "Редагування зроблене через DiscussionTools",
 	"tag-discussiontools-edit": "відредаговано коментар",
 	"tag-discussiontools-edit-description": "Користувач відредагував один із уже наявних коментарів через DiscussionTools",
@@ -23,8 +25,8 @@
 	"tag-discussiontools-newtopic-description": "Користувач створив на сторінці нову тему через DiscussionTools",
 	"tag-discussiontools-reply": "відповідь",
 	"tag-discussiontools-reply-description": "Користувач відповів на один із уже наявних коментарів через DiscussionTools",
-	"tag-discussiontools-source": "DiscussionTools: код",
+	"tag-discussiontools-source": "вікірозмітка",
 	"tag-discussiontools-source-description": "DiscussionTools було використано в режимі редагування вікірозмітки",
-	"tag-discussiontools-visual": "DiscussionTools: візуальний",
+	"tag-discussiontools-visual": "візуально",
 	"tag-discussiontools-visual-description": "DiscussionTools було використано в режимі візуального редактора"
 }
