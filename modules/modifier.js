@@ -12,7 +12,7 @@
 function closest( el, selector ) {
 	var matches;
 
-	el = el.nodeType === Node.ELEMENT_NODE ? el : el.parentElement;
+	el = el.nodeType === Node.ELEMENT_NODE ? el : el.parentNode;
 
 	if ( Element.prototype.closest ) {
 		return el.closest( selector );
@@ -25,7 +25,7 @@ function closest( el, selector ) {
 		if ( matches.call( el, selector ) ) {
 			return el;
 		}
-		el = el.parentElement || el.parentNode;
+		el = el.parentNode;
 	} while ( el !== null && el.nodeType === 1 );
 	return null;
 }
