@@ -37,6 +37,41 @@ function whitespaceParsoidHack( listItem ) {
 	listItem.setAttribute( 'data-parsoid', '{}' );
 }
 
+function isTalkpageListNode( node ) {
+	var tag = node.tagName ? node.tagName.toLowerCase() : '';
+	return tag === 'dl' || tag === 'ul';
+}
+
+/**
+ * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
+ * the comment.
+ *
+ * @param {Object} comment Comment data returned by parser#groupThreads
+ * @param {HTMLElement} linkNode Reply link
+ */
+function addReplyLink( comment, linkNode ) {
+	var target = comment.range.endContainer;
+
+	// Skip to the end of the "paragraph".
+	// Actually doing this by paragraph would require us to know how the text is laid out, and
+	// would be more difficult and probably slower. Instead skip over anything that isn't a list
+	// node, which should have the same effect on discussion pages.
+	while ( target.nextSibling && !isTalkpageListNode( target.nextSibling ) ) {
+		target = target.nextSibling;
+	}
+
+	// Insert the link before trailing whitespace.
+	// In the MediaWiki parser output, <ul>/<dl> nodes are preceded by a newline. Normally it isn't
+	// visible on the page. But if we insert an inline element (the reply link) after it, it becomes
+	// meaningful and gets rendered, which results in additional spacing before some reply links.
+	// Split the text node, so that we can insert the link before the trailing whitespace.
+	if ( target.nodeType === Node.TEXT_NODE ) {
+		target.splitText( target.textContent.match( /\s*$/ ).index );
+	}
+
+	target.parentNode.insertBefore( linkNode, target.nextSibling );
+}
+
 /**
  * Given a comment, add a list item to its document's DOM tree, inside of which a reply to said
  * comment can be added.
@@ -69,12 +104,16 @@ function addListItem( comment ) {
 	desiredLevel = comment.level + 1;
 	currLevel = currComment.level;
 	target = currComment.range.endContainer;
-	// HACK
-	if ( target.nextSibling && target.nextSibling.classList.contains( 'dt-init-replylink' ) ) {
+
+	// Skip to the end of the "paragraph".
+	// Actually doing this by paragraph would require us to know how the text is laid out, and
+	// would be more difficult and probably slower. Instead skip over anything that isn't a list
+	// node, which should have the same effect on discussion pages.
+	while ( target.nextSibling && !isTalkpageListNode( target.nextSibling ) ) {
 		target = target.nextSibling;
 	}
 
-	// endContainer is probably a text node, and it may also be wrapped in some formatting.
+	// target is a text node or an inline element at the end of a "paragraph" (not necessarily paragraph node).
 	// First, we need to find a block-level parent that we can mess with.
 	// If we can't find a surrounding list item or paragraph (e.g. maybe we're inside a table cell
 	// or something), take the parent node and hope for the best.
@@ -214,6 +253,7 @@ function createWikitextNode( wt ) {
 
 module.exports = {
 	closest: closest,
+	addReplyLink: addReplyLink,
 	addListItem: addListItem,
 	removeListItem: removeListItem,
 	addSiblingListItem: addSiblingListItem,

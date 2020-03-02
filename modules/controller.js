@@ -13,8 +13,7 @@ var
 		mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
 
 function setupComment( comment ) {
-	var $replyLink, widgetPromise, newListItem,
-		$tsNode = $( comment.range.endContainer );
+	var $replyLink, widgetPromise, newListItem;
 
 	// Is it possible to have a heading nested in a thread?
 	if ( comment.type !== 'comment' ) {
@@ -91,7 +90,7 @@ function setupComment( comment ) {
 			} );
 		} );
 
-	$tsNode.after( $replyLink );
+	modifier.addReplyLink( comment, $replyLink[ 0 ] );
 }
 
 function traverseNode( parent ) {

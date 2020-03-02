@@ -176,10 +176,12 @@
 		"templates": [
 			"cases/en-big-oldparser/en-big-oldparser.html",
 			"cases/en-big-oldparser/en-big-oldparser-modified.html",
+			"cases/en-big-oldparser/en-big-oldparser-reply.html",
 			"cases/en-big-parsoid/en-big-parsoid.html",
 			"cases/en-big-parsoid/en-big-parsoid-modified.html",
 			"cases/pl-big-oldparser/pl-big-oldparser.html",
 			"cases/pl-big-oldparser/pl-big-oldparser-modified.html",
+			"cases/pl-big-oldparser/pl-big-oldparser-reply.html",
 			"cases/pl-big-parsoid/pl-big-parsoid.html",
 			"cases/pl-big-parsoid/pl-big-parsoid-modified.html",
 			"cases/no-heading/no-heading.html",
@@ -188,7 +190,10 @@
 			"cases/split-list/split-list.html",
 			"cases/split-list/split-list-modified.html",
 			"cases/split-list2/split-list2.html",
-			"cases/split-list2/split-list2-modified.html"
+			"cases/split-list2/split-list2-modified.html",
+			"cases/signatures-funny/signatures-funny.html",
+			"cases/signatures-funny/signatures-funny-modified.html",
+			"cases/signatures-funny/signatures-funny-reply.html"
 		],
 		"dependencies": [
 			"ext.discussionTools.modifier",

@@ -52,6 +52,13 @@ QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
 			expected: mw.template.get( 'test.DiscussionTools', 'cases/split-list2/split-list2-modified.html' ).render(),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
+		},
+		{
+			name: 'Signatures in funny places',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/signatures-funny/signatures-funny.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/signatures-funny/signatures-funny-modified.html' ).render(),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
 		}
 	];
 
@@ -104,6 +111,71 @@ QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
 			reverseActualHtml,
 			reverseExpectedHtml,
 			cases[ i ].name + ' (discard replies)'
+		);
+	}
+} );
+
+QUnit.test( '#addReplyLink', function ( assert ) {
+	var i, j, cases, actualHtml, expectedHtml, comments, linkNode, fixture;
+
+	cases = [
+		{
+			name: 'plwiki oldparser',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-oldparser/pl-big-oldparser.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-oldparser/pl-big-oldparser-reply.html' ).render(),
+			config: require( './data/plwiki-config.json' ),
+			data: require( './data/plwiki-data.json' )
+		},
+		{
+			name: 'enwiki oldparser',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-oldparser/en-big-oldparser.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/en-big-oldparser/en-big-oldparser-reply.html' ).render(),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		},
+		{
+			name: 'Signatures in funny places',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/signatures-funny/signatures-funny.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/signatures-funny/signatures-funny-reply.html' ).render(),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		}
+	];
+
+	fixture = document.getElementById( 'qunit-fixture' );
+
+	for ( i = 0; i < cases.length; i++ ) {
+		utils.overrideMwConfig( cases[ i ].config );
+		utils.overrideParserData( cases[ i ].data );
+
+		$( fixture ).empty().append( cases[ i ].expected );
+		expectedHtml = fixture.innerHTML;
+
+		$( fixture ).empty().append( cases[ i ].dom.clone() );
+
+		comments = parser.getComments( fixture );
+		parser.groupThreads( comments );
+
+		// Add a reply link to every comment.
+		for ( j = 0; j < comments.length; j++ ) {
+			if ( comments[ j ].type === 'heading' ) {
+				continue;
+			}
+			linkNode = document.createElement( 'a' );
+			linkNode.textContent = 'Reply';
+			linkNode.href = '#';
+			modifier.addReplyLink( comments[ j ], linkNode );
+		}
+
+		// Uncomment this to get updated content for the the "reply HTML" files, for copy/paste:
+		// console.log( fixture.innerHTML );
+
+		actualHtml = fixture.innerHTML.trim();
+
+		assert.strictEqual(
+			actualHtml,
+			expectedHtml,
+			cases[ i ].name
 		);
 	}
 } );
