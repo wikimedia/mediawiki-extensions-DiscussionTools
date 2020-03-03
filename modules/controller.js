@@ -143,7 +143,32 @@ function postReply( widget, parsoidData ) {
 			// This appears redundant currently, but as editing / new-topics get added, we'll expand it
 			dttags: [ 'discussiontools', 'discussiontools-reply', 'discussiontools-' + widget.mode ].join( ',' )
 		}
-	);
+	).catch( function ( code, data ) {
+		// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
+		// comment has been deleted from the page, or if retry also fails for some other reason, the
+		// error is handled as normal below.
+		if ( code === 'editconflict' ) {
+			return widget.api.get( {
+				action: 'query',
+				prop: 'revisions',
+				rvprop: 'ids',
+				rvlimit: 1,
+				titles: mw.config.get( 'wgRelevantPageName' ),
+				formatversion: 2
+			} ).then( function ( resp ) {
+				var latestRevId = resp.query.pages[ 0 ].revisions[ 0 ].revid;
+				mw.config.set( {
+					wgCurRevisionId: latestRevId,
+					wgRevisionId: latestRevId
+				} );
+				// eslint-disable-next-line no-use-before-define
+				return getParsoidCommentData( widget.comment.id ).then( function ( parsoidData ) {
+					return postReply( widget, parsoidData );
+				} );
+			} );
+		}
+		return $.Deferred().reject( code, data ).promise();
+	} );
 }
 
 function highlight( comment ) {
