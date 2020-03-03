@@ -271,14 +271,6 @@ ReplyWidget.prototype.onUnload = function () {
 	} );
 };
 
-ReplyWidget.prototype.getParsoidCommentData = function () {
-	return controller.getParsoidCommentData(
-		mw.config.get( 'wgRelevantPageName' ),
-		mw.config.get( 'wgCurRevisionId' ),
-		this.comment.id
-	);
-};
-
 ReplyWidget.prototype.onReplyClick = function () {
 	var widget = this;
 
@@ -291,7 +283,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 	logger( { action: 'saveIntent' } );
 
 	// We must get a new copy of the document every time, otherwise any unsaved replies will pile up
-	this.getParsoidCommentData().then( function ( parsoidData ) {
+	controller.getParsoidCommentData( this.comment.id ).then( function ( parsoidData ) {
 		logger( { action: 'saveAttempt' } );
 
 		return controller.postReply( widget, parsoidData );
@@ -313,7 +305,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 					wgCurRevisionId: latestRevId,
 					wgRevisionId: latestRevId
 				} );
-				return widget.getParsoidCommentData().then( function ( parsoidData ) {
+				return controller.getParsoidCommentData( widget.comment.id ).then( function ( parsoidData ) {
 					return controller.postReply( widget, parsoidData );
 				} );
 			} );

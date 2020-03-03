@@ -213,13 +213,13 @@ function getPageData( pageName, oldId ) {
 /**
  * Get the Parsoid document DOM, parse comments and threads, and find a specific comment in it.
  *
- * @param {string} pageName Page title
- * @param {number} oldId Revision ID
  * @param {string} commentId Comment ID, from a comment parsed in the local document
  * @return {jQuery.Promise}
  */
-function getParsoidCommentData( pageName, oldId, commentId ) {
-	var parsoidPageData, parsoidDoc, parsoidComments, parsoidCommentsById;
+function getParsoidCommentData( commentId ) {
+	var parsoidPageData, parsoidDoc, parsoidComments, parsoidCommentsById,
+		pageName = mw.config.get( 'wgRelevantPageName' ),
+		oldId = mw.config.get( 'wgCurRevisionId' );
 
 	return getPageData( pageName, oldId )
 		.then( function ( response ) {
@@ -230,11 +230,11 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 
 			parsoidPageData = {
 				pageName: pageName,
-				oldId: oldId
+				oldId: oldId,
+				baseTimeStamp: data.basetimestamp,
+				startTimeStamp: data.starttimestamp,
+				etag: data.etag
 			};
-			parsoidPageData.baseTimeStamp = data.basetimestamp;
-			parsoidPageData.startTimeStamp = data.starttimestamp;
-			parsoidPageData.etag = data.etag;
 
 			// getThreads build the tree structure, currently only
 			// used to set 'replies'
