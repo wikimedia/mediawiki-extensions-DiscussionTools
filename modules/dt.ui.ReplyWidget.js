@@ -13,7 +13,7 @@ var controller = require( 'ext.discussionTools.controller' ),
  * @param {Object} [config.input] Configuration options for the comment input widget
  */
 function ReplyWidget( comment, config ) {
-	var returnTo, contextNode;
+	var returnTo, contextNode, inputConfig;
 
 	config = config || {};
 
@@ -24,7 +24,11 @@ function ReplyWidget( comment, config ) {
 	contextNode = modifier.closest( this.comment.range.endContainer, 'dl, ul, ol' );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 
-	this.replyBodyWidget = this.createReplyBodyWidget( config.input );
+	inputConfig = $.extend(
+		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ) },
+		config.input
+	);
+	this.replyBodyWidget = this.createReplyBodyWidget( inputConfig );
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
 		label: mw.msg( 'discussiontools-replywidget-reply' )
