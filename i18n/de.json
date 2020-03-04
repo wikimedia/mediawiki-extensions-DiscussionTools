@@ -15,6 +15,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Du bist nicht angemeldet.</strong> Um eine Zuordnung mit deinem Namen anstatt deiner IP-Adresse zu erhalten, kannst du dich [$1 anmelden] oder [$2 ein Benutzerkonto erstellen].",
 	"discussiontools-replywidget-cancel": "Abbrechen",
 	"discussiontools-replywidget-loading": "Lade …",
+	"discussiontools-replywidget-placeholder-reply": "Antwort an {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Vorschau",
 	"discussiontools-replywidget-reply": "Antworten",
 	"discussiontools-replywidget-terms-click": "Durch Klicken auf \"$1\" stimmst du den Nutzungsbedingungen für dieses Wiki zu.",
