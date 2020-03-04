@@ -20,6 +20,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Vous n’êtes pas connecté(e).</strong> Pour que vos modifications soient attribuées à votre nom d’utilisateur plutôt qu’à votre adresse IP, vous pouvez [$1 vous connecter] ou [$2 créer un compte].",
 	"discussiontools-replywidget-cancel": "Annuler",
 	"discussiontools-replywidget-loading": "Chargement en cours...",
+	"discussiontools-replywidget-placeholder-reply": "Répondre à {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Aperçu",
 	"discussiontools-replywidget-reply": "Répondre",
 	"discussiontools-replywidget-terms-click": "En cliquant sur « $1 », vous acceptez les conditions d’utilisation de ce wiki.",
