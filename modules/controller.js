@@ -214,12 +214,13 @@ function getLatestRevId( pageName ) {
 }
 
 function save( widget, parsoidData ) {
-	var root, summaryPrefix, summary, promise,
+	var root, summaryPrefix, summary, postPromise, savePromise,
 		mode = widget.getMode(),
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData;
 
-	promise = postReply( widget, parsoidData );
+	// Update the Parsoid DOM
+	postPromise = postReply( widget, parsoidData );
 
 	root = comment;
 	while ( root && root.type !== 'heading' ) {
@@ -234,38 +235,60 @@ function save( widget, parsoidData ) {
 
 	summary = summaryPrefix + mw.msg( 'discussiontools-defaultsummary-reply' );
 
-	return promise.then( function () {
-		return mw.libs.ve.targetSaver.saveDoc(
-			parsoidData.doc,
-			{
-				page: pageData.pageName,
-				oldid: pageData.oldId,
-				summary: summary,
-				baserevid: pageData.oldId,
-				starttimestamp: pageData.startTimeStamp,
-				etag: pageData.etag,
-				assert: mw.user.isAnon() ? 'anon' : 'user',
-				assertuser: mw.user.getName() || undefined,
-				dttags: [
-					'discussiontools',
-					'discussiontools-reply',
-					'discussiontools-' + mode
-				].join( ',' )
-			}
-		);
-	} ).catch( function ( code, data ) {
-		// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
-		// comment has been deleted from the page, or if retry also fails for some other reason, the
-		// error is handled as normal below.
-		if ( code === 'editconflict' ) {
-			return getLatestRevId( pageData.pageName ).then( function ( latestRevId ) {
-				// eslint-disable-next-line no-use-before-define
-				return getParsoidCommentData( pageData.pageName, latestRevId, comment.id ).then( function ( parsoidData ) {
-					return save( widget, parsoidData );
-				} );
-			} );
+	return $.when( widget.checkboxesPromise, postPromise ).then( function ( checkboxes ) {
+		var data = {
+			page: pageData.pageName,
+			oldid: pageData.oldId,
+			summary: summary,
+			baserevid: pageData.oldId,
+			starttimestamp: pageData.startTimeStamp,
+			etag: pageData.etag,
+			assert: mw.user.isAnon() ? 'anon' : 'user',
+			assertuser: mw.user.getName() || undefined,
+			dttags: [
+				'discussiontools',
+				'discussiontools-reply',
+				'discussiontools-' + mode
+			].join( ',' )
+		};
+
+		if ( checkboxes.checkboxesByName.wpWatchthis ) {
+			data.watchlist = checkboxes.checkboxesByName.wpWatchthis.isSelected() ?
+				'watch' :
+				'unwatch';
 		}
-		return $.Deferred().reject( code, data ).promise();
+
+		savePromise = mw.libs.ve.targetSaver.saveDoc(
+			parsoidData.doc,
+			data
+		).catch( function ( code, data ) {
+			// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
+			// comment has been deleted from the page, or if retry also fails for some other reason, the
+			// error is handled as normal below.
+			if ( code === 'editconflict' ) {
+				return getLatestRevId( pageData.pageName ).then( function ( latestRevId ) {
+					// eslint-disable-next-line no-use-before-define
+					return getParsoidCommentData( pageData.pageName, latestRevId, comment.id ).then( function ( parsoidData ) {
+						return save( widget, parsoidData );
+					} );
+				} );
+			}
+			return $.Deferred().reject( code, data ).promise();
+		} );
+		savePromise.then( function () {
+			var watch;
+			// Update watch link to match 'watch checkbox' in save dialog.
+			// User logged in if module loaded.
+			if ( mw.loader.getState( 'mediawiki.page.watch.ajax' ) === 'ready' ) {
+				watch = require( 'mediawiki.page.watch.ajax' );
+				watch.updateWatchLink(
+					// eslint-disable-next-line no-jquery/no-global-selector
+					$( '#ca-watch a, #ca-unwatch a' ),
+					data.watchlist === 'watch' ? 'unwatch' : 'watch'
+				);
+			}
+		} );
+		return savePromise;
 	} );
 }
 
@@ -312,6 +335,9 @@ function commentsById( comments ) {
  *
  * This method caches responses. If you call it again with the same parameters, you'll get the exact
  * same Promise object, and no API request will be made.
+ *
+ * TODO: Resolve the naming conflict between this raw "pageData" from the API, and the
+ * plain object "pageData" that gets attached to parsoidData.
  *
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
@@ -447,6 +473,27 @@ function getParsoidTranscludedCommentData( commentId ) {
 	return promise;
 }
 
+function getCheckboxesPromise( pageData ) {
+	return getPageData(
+		pageData.pageName,
+		pageData.oldId
+	).then( function ( response ) {
+		var data = response.visualeditor,
+			checkboxesDef = {};
+
+		mw.messages.set( data.checkboxesMessages );
+
+		// Only show the watch checkbox for now
+		if ( 'wpWatchthis' in data.checkboxesDef ) {
+			checkboxesDef.wpWatchthis = data.checkboxesDef.wpWatchthis;
+		}
+		// targetLoader was loaded by getPageData
+		return mw.libs.ve.targetLoader.createCheckboxFields( checkboxesDef );
+		// TODO: createCheckboxField doesn't make links in the label open in a new
+		// window as that method currently lives in ve.utils
+	} );
+}
+
 function init( $container, state ) {
 	var
 		pageComments, pageThreads, pageCommentsById,
@@ -483,6 +530,7 @@ function init( $container, state ) {
 module.exports = {
 	init: init,
 	getParsoidCommentData: getParsoidCommentData,
+	getCheckboxesPromise: getCheckboxesPromise,
 	save: save,
 	autoSignWikitext: autoSignWikitext,
 	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks

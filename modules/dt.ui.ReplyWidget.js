@@ -13,7 +13,8 @@ var controller = require( 'ext.discussionTools.init' ).controller,
  * @param {Object} [config.input] Configuration options for the comment input widget
  */
 function ReplyWidget( parsoidData, config ) {
-	var returnTo, contextNode, inputConfig;
+	var returnTo, contextNode, inputConfig,
+		widget = this;
 
 	config = config || {};
 
@@ -105,6 +106,17 @@ function ReplyWidget( parsoidData, config ) {
 		this.$element.append( this.anonWarning.$element, this.$footer );
 		this.$actionsWrapper.detach();
 	}
+
+	this.checkboxesPromise = controller.getCheckboxesPromise( this.pageData );
+	this.checkboxesPromise.then( function ( checkboxes ) {
+		if ( checkboxes.checkboxFields ) {
+			widget.$checkboxes = $( '<div>' ).addClass( 'dt-ui-replyWidget-checkboxes' );
+			checkboxes.checkboxFields.forEach( function ( field ) {
+				widget.$checkboxes.append( field.$element );
+			} );
+			widget.$actions.prepend( widget.$checkboxes );
+		}
+	} );
 
 	// Init preview and button state
 	this.onInputChange();
