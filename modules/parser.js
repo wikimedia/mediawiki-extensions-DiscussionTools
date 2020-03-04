@@ -457,8 +457,8 @@ function getPageTitleFromUri( uri ) {
  * @private
  * @param {Text} timestampNode Text node
  * @return {Array} Result, a two-element array
- * @return {Node[]} return.0 Sibling nodes comprising the signature (with `timestampNode`
- *   as the last element)
+ * @return {Node[]} return.0 Sibling nodes comprising the signature, in reverse order (with
+ *   `timestampNode` as the first element)
  * @return {string|null} return.1 Username, null for unsigned comments
  */
 function findSignature( timestampNode ) {
@@ -645,18 +645,22 @@ function nextInterestingLeafNode( node, rootNode ) {
  *   signature and timestamp. It has the same properties as a Range object: `startContainer`,
  *   `startOffset`, `endContainer`, `endOffset` (we don't use a real Range because they change
  *   magically when the DOM structure changes).
+ * @return {Object[]} [return.signatureRanges] Objects describing the extent of signatures (plus
+ *   timestamps) for this comment. There is always at least one signature, but there may be
+ *   multiple. The author and timestamp of the comment is determined from the first signature.
+ *   The last node in every signature range is the text node containing the timestamp.
  * @return {number} return.level Indentation level of the comment. Headings are `0`, comments start
  *   at `1`.
  * @return {Object} [return.timestamp] Timestamp (Moment object), undefined for headings
- * @return {string|null} [return.author] Comment author's username, null for unsigned comments,
- *   undefined for headings
+ * @return {string} [return.author] Comment author's username, undefined for headings
  */
 function getComments( rootNode ) {
 	var
 		dfParser = getLocalTimestampParser(),
 		comments = [],
 		timestamps, nextTimestamp, treeWalker,
-		node, range, fakeHeading, curComment, author, startNode, match, startLevel, endLevel;
+		node, range, fakeHeading, curComment,
+		foundSignature, firstSigNode, sigRange, author, startNode, match, startLevel, endLevel;
 
 	timestamps = findTimestamps( rootNode );
 
@@ -700,7 +704,9 @@ function getComments( rootNode ) {
 			};
 			comments.push( curComment );
 		} else if ( timestamps[ nextTimestamp ] && node === timestamps[ nextTimestamp ][ 0 ] ) {
-			author = findSignature( node )[ 1 ];
+			foundSignature = findSignature( node );
+			author = foundSignature[ 1 ];
+			firstSigNode = foundSignature[ 0 ][ foundSignature[ 0 ].length - 1 ];
 
 			if ( !author ) {
 				// Ignore timestamps for which we couldn't find a signature. It's probably not a real
@@ -715,6 +721,12 @@ function getComments( rootNode ) {
 			range = {
 				startContainer: startNode.parentNode,
 				startOffset: Array.prototype.indexOf.call( startNode.parentNode.childNodes, startNode ),
+				endContainer: node,
+				endOffset: match.index + match[ 0 ].length
+			};
+			sigRange = {
+				startContainer: firstSigNode.parentNode,
+				startOffset: Array.prototype.indexOf.call( firstSigNode.parentNode.childNodes, firstSigNode ),
 				endContainer: node,
 				endOffset: match.index + match[ 0 ].length
 			};
@@ -736,9 +748,9 @@ function getComments( rootNode ) {
 				node.parentNode === curComment.range.endContainer.parentNode
 			) {
 				// Merge this with the previous comment. Use that comment's author and timestamp.
-				// (As a result, the comment's timestamp node is in the middle of it, this should be okay?)
-				curComment.range.endContainer = node;
-				curComment.range.endOffset = match.index + match[ 0 ].length;
+				curComment.range.endContainer = range.endContainer;
+				curComment.range.endOffset = range.endOffset;
+				curComment.signatureRanges.push( sigRange );
 				curComment.level = Math.min( Math.min( startLevel, endLevel ), curComment.level );
 
 				nextTimestamp++;
@@ -750,6 +762,7 @@ function getComments( rootNode ) {
 				timestamp: dfParser( match ),
 				author: author,
 				range: range,
+				signatureRanges: [ sigRange ],
 				// Should this use the indent level of `startNode` or `node`?
 				level: Math.min( startLevel, endLevel )
 			};
