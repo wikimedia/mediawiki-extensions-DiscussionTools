@@ -251,6 +251,13 @@ function getParsoidCommentData( commentId ) {
 			var data = response.visualeditor;
 			// TODO: error handling
 			parsoidDoc = ve.parseXhtml( data.content );
+			// Mirror VE's ve.init.mw.Target.prototype.fixBase behavior:
+			ve.fixBase( parsoidDoc, document, ve.resolveUrl(
+				// Don't replace $1 with the page name, because that'll break if
+				// the page name contains a slash
+				mw.config.get( 'wgArticlePath' ).replace( '$1', '' ),
+				document
+			) );
 			parsoidComments = parser.getComments( parsoidDoc.body );
 
 			parsoidPageData = {
