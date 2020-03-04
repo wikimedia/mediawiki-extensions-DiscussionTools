@@ -120,8 +120,29 @@ function autoSignWikitext( wikitext ) {
 function postReply( widget, parsoidData ) {
 	var wikitext,
 		comment = parsoidData.comment,
-		newParsoidItem = modifier.addListItem( comment );
+		transcludedFrom, transcludedErrMsg, mwTitle, newParsoidItem;
 
+	transcludedFrom = parser.getTranscludedFrom( comment );
+	if ( transcludedFrom ) {
+		mwTitle = transcludedFrom === true ? null : mw.Title.newFromText( transcludedFrom );
+
+		// If this refers to a template rather than a subpage, we never want to edit it
+		if ( mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template ) {
+			// TODO: Post the reply to the target page instead
+			transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded-title',
+				mwTitle.getPrefixedText() ).parse();
+		} else {
+			transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded' ).parse();
+		}
+
+		// TODO: This should be shown immediately, rather than after trying to post
+		return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
+			code: 'comment-is-transcluded',
+			html: transcludedErrMsg
+		} ] } ).promise();
+	}
+
+	newParsoidItem = modifier.addListItem( comment );
 	if ( widget.getMode() === 'source' ) {
 		wikitext = widget.getValue();
 		wikitext = autoSignWikitext( wikitext );

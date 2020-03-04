@@ -62,6 +62,8 @@
 			],
 			"messages": [
 				"discussiontools-error-comment-disappeared",
+				"discussiontools-error-comment-is-transcluded",
+				"discussiontools-error-comment-is-transcluded-title",
 				"discussiontools-defaultsummary-reply",
 				"discussiontools-replylink",
 				"discussiontools-replywidget-loading"
@@ -168,6 +170,8 @@
 			"data/plwiki-data.json",
 			"cases/en-big-oldparser/en-big-oldparser.json",
 			"cases/en-big-parsoid/en-big-parsoid.json",
+			"cases/en-big-parsoid/en-big-parsoid-transcludedFrom.json",
+			"cases/en-bigafd-parsoid/en-bigafd-parsoid-transcludedFrom.json",
 			"cases/pl-big-oldparser/pl-big-oldparser.json",
 			"cases/pl-big-parsoid/pl-big-parsoid.json",
 			"cases/no-heading/no-heading.json",
@@ -182,6 +186,7 @@
 			"cases/en-big-oldparser/en-big-oldparser-reply.html",
 			"cases/en-big-parsoid/en-big-parsoid.html",
 			"cases/en-big-parsoid/en-big-parsoid-modified.html",
+			"cases/en-bigafd-parsoid/en-bigafd-parsoid.html",
 			"cases/pl-big-oldparser/pl-big-oldparser.html",
 			"cases/pl-big-oldparser/pl-big-oldparser-modified.html",
 			"cases/pl-big-oldparser/pl-big-oldparser-reply.html",

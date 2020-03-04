@@ -90,7 +90,7 @@ QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
 			nodes.push( node );
 		}
 
-		// Uncomment this to get updated content for the the "modified HTML" files, for copy/paste:
+		// Uncomment this to get updated content for the "modified HTML" files, for copy/paste:
 		// console.log( fixture.innerHTML );
 
 		actualHtml = fixture.innerHTML.trim();
@@ -167,7 +167,7 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 			modifier.addReplyLink( comments[ j ], linkNode );
 		}
 
-		// Uncomment this to get updated content for the the "reply HTML" files, for copy/paste:
+		// Uncomment this to get updated content for the "reply HTML" files, for copy/paste:
 		// console.log( fixture.innerHTML );
 
 		actualHtml = fixture.innerHTML.trim();

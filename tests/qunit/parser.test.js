@@ -147,7 +147,7 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 	}
 } );
 
-QUnit.test( 'Integration tests', function ( assert ) {
+QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 	var i, j, cases, comments, threads, fixture;
 
 	cases = [
@@ -222,7 +222,55 @@ QUnit.test( 'Integration tests', function ( assert ) {
 			);
 		}
 
-		// Uncomment this to get updated content for the the JSON files, for copy/paste:
+		// Uncomment this to get updated content for the JSON files, for copy/paste:
 		// console.log( JSON.stringify( threads, null, 2 ) );
+	}
+} );
+
+QUnit.test( '#getTranscludedFrom', function ( assert ) {
+	var i, j, cases, comments, transcludedFrom, fixture;
+
+	cases = [
+		{
+			name: 'enwiki parsoid',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-parsoid/en-big-parsoid.html' ).render(),
+			expected: require( './cases/en-big-parsoid/en-big-parsoid-transcludedFrom.json' ),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		},
+		{
+			name: 'enwiki parsoid AFD',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-bigafd-parsoid/en-bigafd-parsoid.html' ).render(),
+			expected: require( './cases/en-bigafd-parsoid/en-bigafd-parsoid-transcludedFrom.json' ),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		}
+	];
+
+	fixture = document.getElementById( 'qunit-fixture' );
+
+	for ( i = 0; i < cases.length; i++ ) {
+		$( fixture ).empty().append( cases[ i ].dom );
+		utils.overrideMwConfig( cases[ i ].config );
+		utils.overrideParserData( cases[ i ].data );
+
+		comments = parser.getComments( fixture );
+		parser.groupThreads( comments );
+
+		transcludedFrom = {};
+		for ( j = 0; j < comments.length; j++ ) {
+			if ( comments[ j ].id ) {
+				transcludedFrom[ comments[ j ].id ] = parser.getTranscludedFrom( comments[ j ] );
+			}
+		}
+
+		assert.deepEqual(
+			transcludedFrom,
+			cases[ i ].expected,
+			cases[ i ].name
+		);
+
+		// Uncomment this to get updated content for the JSON files, for copy/paste:
+		// console.log( JSON.stringify( transcludedFrom, null, 2 ) );
 	}
 } );

@@ -916,6 +916,79 @@ function getAuthors( comment ) {
 	return authors;
 }
 
+/**
+ * Get the name of the page from which this comment is transcluded (if any).
+ *
+ * @param {Object} comment Comment object, as returned by #groupThreads
+ * @return {string|boolean} `false` if this comment is not transcluded. A string if it's transcluded
+ *   from a single page. `true` if it's transcluded, but we can't determine the source.
+ */
+function getTranscludedFrom( comment ) {
+	var node, about, dataMw;
+
+	// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}), that *does not* mean
+	// the comment is transcluded. We only want to consider comments to be transcluded if the wrapper
+	// element (usually <li> or <p>) is marked as part of a transclusion.
+	// TODO: This seems to work fine but I'm having a hard time explaining why it is correct...
+	node = comment.range.endContainer;
+
+	// Find the node containing information about the transclusion:
+	// 1. Find the closest ancestor with an 'about' attribute
+	// 2. Find the main node of the about-group (first sibling with the same 'about' attribute)
+	// 3. If this is an mw:Transclusion node, return it; otherwise, go to step 1
+	while ( node ) {
+		// 1.
+		if (
+			node.nodeType === Node.ELEMENT_NODE &&
+			node.getAttribute( 'about' ) &&
+			/^#mwt\d+$/.test( node.getAttribute( 'about' ) )
+		) {
+			about = node.getAttribute( 'about' );
+
+			// 2.
+			while (
+				node.previousSibling &&
+				node.previousSibling.nodeType === Node.ELEMENT_NODE &&
+				node.previousSibling.getAttribute( 'about' ) === about
+			) {
+				node = node.previousSibling;
+			}
+
+			// 3.
+			if (
+				node.getAttribute( 'typeof' ) &&
+				node.getAttribute( 'typeof' ).split( ' ' ).indexOf( 'mw:Transclusion' ) !== -1
+			) {
+				break;
+			}
+		}
+
+		node = node.parentNode;
+	}
+
+	if ( !node ) {
+		// No mw:Transclusion node found, this comment is not transcluded
+		return false;
+	}
+
+	dataMw = JSON.parse( node.getAttribute( 'data-mw' ) );
+
+	// Only return a page name if this is a simple single-template transclusion.
+	if (
+		dataMw.parts &&
+		dataMw.parts.length === 1 &&
+		dataMw.parts[ 0 ].template &&
+		dataMw.parts[ 0 ].template.target.href
+	) {
+		// Slice off the './' prefix
+		return dataMw.parts[ 0 ].template.target.href.slice( 2 );
+	}
+
+	// Multi-template transclusion, or a parser function call, or template-affected wikitext outside
+	// of a template call, or a mix of the above
+	return true;
+}
+
 module.exports = {
 	findTimestamps: findTimestamps,
 	getLocalTimestampParser: getLocalTimestampParser,
@@ -924,5 +997,6 @@ module.exports = {
 	getComments: getComments,
 	groupThreads: groupThreads,
 	findSignature: findSignature,
-	getAuthors: getAuthors
+	getAuthors: getAuthors,
+	getTranscludedFrom: getTranscludedFrom
 };
