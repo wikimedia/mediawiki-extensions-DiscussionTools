@@ -25,9 +25,9 @@
 	"tag-discussiontools-newtopic": "Add topic",
 	"tag-discussiontools-newtopic-description": "User added a new topic to the page with DiscussionTools",
 	"tag-discussiontools-reply": "Reply",
-	"tag-discussiontools-reply-description": "User replied to an existing comment with DiscussionTools",
+	"tag-discussiontools-reply-description": "User replied to a comment with DiscussionTools",
 	"tag-discussiontools-source": "Source",
 	"tag-discussiontools-source-description": "DiscussionTools was in source mode",
 	"tag-discussiontools-visual": "Visual",
-	"tag-discussiontools-visual-description": "DiscussionTools was in VisualEditor mode"
+	"tag-discussiontools-visual-description": "DiscussionTools was in visual mode"
 }
