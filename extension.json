@@ -56,7 +56,9 @@
 				"rangefix",
 				"ext.discussionTools.parser",
 				"ext.discussionTools.modifier",
-				"ext.discussionTools.logger"
+				"ext.discussionTools.logger",
+				"ext.visualEditor.core.utils",
+				"ext.visualEditor.core.utils.parsing"
 			],
 			"messages": [
 				"discussiontools-error-comment-disappeared",
