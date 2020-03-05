@@ -26,6 +26,16 @@ function setupComment( comment ) {
 		.on( 'click', function () {
 			var $link = $( this );
 
+			// TODO: Allow users to use multiple reply widgets simultaneously.
+			// Currently submitting a reply from one widget would also destroy the other ones.
+			// eslint-disable-next-line no-jquery/no-class-state
+			if ( $pageContainer.hasClass( 'dt-init-replylink-open' ) ) {
+				// Support: IE 11
+				// On other browsers, the link is made unclickable using 'pointer-events' in CSS
+				return;
+			}
+			$pageContainer.addClass( 'dt-init-replylink-open' );
+
 			logger( {
 				action: 'init',
 				type: 'page',
@@ -37,10 +47,6 @@ function setupComment( comment ) {
 			} );
 
 			$link.addClass( 'dt-init-replylink-active' );
-			// TODO: Allow users to use multiple reply widgets simlutaneously
-			// Currently as all widgets share the same Parsoid doc, this could
-			// cause problems.
-			$pageContainer.addClass( 'dt-init-replylink-open' );
 
 			if ( !widgetPromise ) {
 				widgetPromise = replyWidgetPromise.then( function () {
