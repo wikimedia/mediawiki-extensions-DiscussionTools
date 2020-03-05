@@ -8,6 +8,7 @@
 	"discussiontools-replylink": "Rispondi",
 	"discussiontools-replywidget-cancel": "Annulla",
 	"discussiontools-replywidget-loading": "Caricamento…",
+	"discussiontools-replywidget-placeholder-reply": "Rispondi a {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Rispondi",
 	"tag-discussiontools-edit": "Modifica commento",
 	"tag-discussiontools-newtopic": "Aggiungi argomento",

@@ -16,7 +16,7 @@
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} adlı kullanıcıyı yanıtlayın",
 	"discussiontools-replywidget-preview": "Önizleme",
 	"discussiontools-replywidget-reply": "Yanıtla",
-	"discussiontools-replywidget-terms-click": "\"$1\" düğmesini tıklayarak, bu wiki için kullanım koşullarını kabul etmiş olursunuz.",
+	"discussiontools-replywidget-terms-click": "\"$1\" düğmesini tıklayarak, bu viki için kullanım koşullarını kabul etmiş olursunuz.",
 	"discussiontools-error-comment-disappeared": "Sayfada yanıtladığınız yorum bulunamadı. Silinmiş veya başka bir sayfaya taşınmış olabilir. Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.",
 	"tag-discussiontools-description": "DiscussionTools kullanılarak yapılan düzenleme",
 	"tag-discussiontools-edit": "Yorumu düzenle",

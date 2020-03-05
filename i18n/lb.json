@@ -8,6 +8,7 @@
 	"discussiontools-replylink": "Äntweren",
 	"discussiontools-replywidget-cancel": "Ofbriechen",
 	"discussiontools-replywidget-loading": "Lueden...",
+	"discussiontools-replywidget-placeholder-reply": "Äntwert fir {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Kucken ouni ofzespäicheren",
 	"discussiontools-replywidget-reply": "Äntweren",
 	"tag-discussiontools-edit": "Bemierkung änneren",
