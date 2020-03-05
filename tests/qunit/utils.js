@@ -98,6 +98,14 @@ module.exports.serializeComments = function ( parent, root ) {
 		getOffsetPath( root, parent.range.startContainer, parent.range.startOffset ).join( '/' ),
 		getOffsetPath( root, parent.range.endContainer, parent.range.endOffset ).join( '/' )
 	];
+	if ( parent.signatureRanges ) {
+		parent.signatureRanges = parent.signatureRanges.map( function ( range ) {
+			return [
+				getOffsetPath( root, range.startContainer, range.startOffset ).join( '/' ),
+				getOffsetPath( root, range.endContainer, range.endOffset ).join( '/' )
+			];
+		} );
+	}
 
 	parent.replies.forEach( function ( comment ) {
 		module.exports.serializeComments( comment, root );
