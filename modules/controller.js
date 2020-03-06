@@ -13,19 +13,21 @@ var
 		mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
 
 function setupComment( comment ) {
-	var $replyLink, widgetPromise, newListItem;
+	var $replyLinkButtons, $replyLink, widgetPromise, newListItem;
 
 	// Is it possible to have a heading nested in a thread?
 	if ( comment.type !== 'comment' ) {
 		return;
 	}
 
+	$replyLinkButtons = $( '<span>' )
+		.addClass( 'dt-init-replylink-buttons' );
+
+	// Reply
 	$replyLink = $( '<a>' )
-		.addClass( 'dt-init-replylink' )
+		.addClass( 'dt-init-replylink-reply' )
 		.text( mw.msg( 'discussiontools-replylink' ) )
 		.on( 'click', function () {
-			var $link = $( this );
-
 			// TODO: Allow users to use multiple reply widgets simultaneously.
 			// Currently submitting a reply from one widget would also destroy the other ones.
 			// eslint-disable-next-line no-jquery/no-class-state
@@ -46,7 +48,7 @@ function setupComment( comment ) {
 				editor_interface: config.useVisualEditor ? 'wikitext-2017' : 'wikitext'
 			} );
 
-			$link.addClass( 'dt-init-replylink-active' );
+			$replyLinkButtons.addClass( 'dt-init-replylink-active' );
 
 			if ( !widgetPromise ) {
 				widgetPromise = replyWidgetPromise.then( function () {
@@ -59,7 +61,7 @@ function setupComment( comment ) {
 						);
 
 					replyWidget.on( 'teardown', function () {
-						$link.removeClass( 'dt-init-replylink-active' );
+						$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
 						$pageContainer.removeClass( 'dt-init-replylink-open' );
 						modifier.removeListItem( newListItem );
 						newListItem = null;
@@ -67,7 +69,7 @@ function setupComment( comment ) {
 
 					return replyWidget;
 				}, function () {
-					$link.removeClass( 'dt-init-replylink-active' );
+					$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
 					$pageContainer.removeClass( 'dt-init-replylink-open' );
 
 					logger( {
@@ -96,7 +98,8 @@ function setupComment( comment ) {
 			} );
 		} );
 
-	modifier.addReplyLink( comment, $replyLink[ 0 ] );
+	$replyLinkButtons.append( $replyLink );
+	modifier.addReplyLink( comment, $replyLinkButtons[ 0 ] );
 }
 
 function traverseNode( parent ) {
