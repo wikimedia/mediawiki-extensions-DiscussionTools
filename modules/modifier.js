@@ -2,31 +2,19 @@
 'use strict';
 
 /**
- * Adapted from MDN polyfill (CC0)
- * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+ * Find closest ancestor element using one of the given tag names.
  *
- * @param {HTMLElement} el
- * @param {string} selector
+ * @param {Node} el
+ * @param {string[]} tagNames
  * @return {HTMLElement|null}
  */
-function closest( el, selector ) {
-	var matches;
-
-	el = el.nodeType === Node.ELEMENT_NODE ? el : el.parentNode;
-
-	if ( Element.prototype.closest ) {
-		return el.closest( selector );
-	}
-
-	matches = Element.prototype.matches ||
-		Element.prototype.msMatchesSelector ||
-		Element.prototype.webkitMatchesSelector;
+function closestElement( el, tagNames ) {
 	do {
-		if ( matches.call( el, selector ) ) {
+		if ( el.nodeType === Node.ELEMENT_NODE && tagNames.indexOf( el.tagName.toLowerCase() ) !== -1 ) {
 			return el;
 		}
 		el = el.parentNode;
-	} while ( el !== null && el.nodeType === 1 );
+	} while ( el );
 	return null;
 }
 
@@ -117,7 +105,7 @@ function addListItem( comment ) {
 	// First, we need to find a block-level parent that we can mess with.
 	// If we can't find a surrounding list item or paragraph (e.g. maybe we're inside a table cell
 	// or something), take the parent node and hope for the best.
-	parent = closest( target, 'li, dd, p' ) || target.parentNode;
+	parent = closestElement( target, [ 'li', 'dd', 'p' ] ) || target.parentNode;
 	while ( target.parentNode !== parent ) {
 		target = target.parentNode;
 	}
@@ -252,7 +240,7 @@ function createWikitextNode( wt ) {
 }
 
 module.exports = {
-	closest: closest,
+	closestElement: closestElement,
 	addReplyLink: addReplyLink,
 	addListItem: addListItem,
 	removeListItem: removeListItem,
