@@ -1,6 +1,3 @@
-var controller = require( 'ext.discussionTools.controller' ),
-	modifier = require( 'ext.discussionTools.modifier' );
-
 /**
  * DiscussionTools ReplyWidgetPlain class
  *
@@ -83,16 +80,6 @@ ReplyWidgetPlain.prototype.setPending = function ( pending ) {
 		this.replyBodyWidget.popPending();
 		this.replyBodyWidget.setDisabled( false );
 	}
-};
-
-ReplyWidgetPlain.prototype.insertNewNodes = function ( newParsoidItem ) {
-	var wikitext = controller.autoSignWikitext( this.getValue() );
-	wikitext.split( '\n' ).forEach( function ( line, i ) {
-		if ( i > 0 ) {
-			newParsoidItem = modifier.addSiblingListItem( newParsoidItem );
-		}
-		newParsoidItem.appendChild( modifier.createWikitextNode( line ) );
-	} );
 };
 
 ReplyWidgetPlain.prototype.getValue = function () {

@@ -1,6 +1,4 @@
 var
-	controller = require( 'ext.discussionTools.controller' ),
-	modifier = require( 'ext.discussionTools.modifier' ),
 	CommentTargetWidget = require( './CommentTargetWidget.js' );
 
 /**
@@ -30,8 +28,14 @@ ReplyWidgetVisual.prototype.createReplyBodyWidget = function ( config ) {
 };
 
 ReplyWidgetVisual.prototype.getValue = function () {
-	return this.replyBodyWidget.target.getSurface().getModel().getDom();
+	if ( this.getMode() === 'source' ) {
+		return this.replyBodyWidget.target.getSurface().getModel().getDom();
+	} else {
+		return this.replyBodyWidget.target.getSurface().getHtml();
+	}
 };
+
+// TODO: Implement getMode to get current mode from surface
 
 ReplyWidgetVisual.prototype.clear = function () {
 	// Parent method
@@ -77,25 +81,6 @@ ReplyWidgetVisual.prototype.setPending = function ( pending ) {
 	} else {
 		// this.replyBodyWidget.popPending();
 		this.replyBodyWidget.setReadOnly( false );
-	}
-};
-
-ReplyWidgetVisual.prototype.insertNewNodes = function ( newParsoidItem ) {
-	var wikitext,
-		surface = this.replyBodyWidget.getSurface();
-
-	if ( surface.getMode() === 'source' ) {
-		wikitext = controller.autoSignWikitext( this.getValue() );
-		wikitext.split( '\n' ).forEach( function ( line, i ) {
-			if ( i > 0 ) {
-				newParsoidItem = modifier.addSiblingListItem( newParsoidItem );
-			}
-			newParsoidItem.appendChild( modifier.createWikitextNode( line ) );
-		} );
-	} else {
-		// TODO: Support multi-line comments in visual mode
-		newParsoidItem.innerHTML = surface.getHtml();
-		newParsoidItem.children[ 0 ].appendChild( modifier.createWikitextNode( ' ~~~~' ) );
 	}
 };
 

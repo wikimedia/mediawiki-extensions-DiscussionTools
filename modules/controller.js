@@ -115,12 +115,35 @@ function autoSignWikitext( wikitext ) {
 }
 
 function postReply( widget, parsoidData ) {
-	var root, summaryPrefix, summary,
+	var wikitext,
 		comment = parsoidData.comment,
-		pageData = parsoidData.pageData,
 		newParsoidItem = modifier.addListItem( comment );
 
-	widget.insertNewNodes( newParsoidItem );
+	if ( widget.getMode() === 'source' ) {
+		wikitext = widget.getValue();
+		wikitext = autoSignWikitext( wikitext );
+		wikitext.split( '\n' ).forEach( function ( line, i ) {
+			if ( i > 0 ) {
+				newParsoidItem = modifier.addSiblingListItem( newParsoidItem );
+			}
+			newParsoidItem.appendChild( modifier.createWikitextNode( line ) );
+		} );
+	} else {
+		// TODO: Support multi-line comments in visual mode
+		newParsoidItem.innerHTML = widget.getValue();
+		newParsoidItem.children[ 0 ].appendChild( modifier.createWikitextNode( ' ~~~~' ) );
+	}
+
+	return $.Deferred().resolve().promise();
+}
+
+function save( widget, parsoidData ) {
+	var root, summaryPrefix, summary, promise,
+		mode = widget.getMode(),
+		comment = parsoidData.comment,
+		pageData = parsoidData.pageData;
+
+	promise = postReply( widget, parsoidData );
 
 	root = comment;
 	while ( root && root.type !== 'heading' ) {
@@ -135,21 +158,26 @@ function postReply( widget, parsoidData ) {
 
 	summary = summaryPrefix + mw.msg( 'discussiontools-defaultsummary-reply' );
 
-	return mw.libs.ve.targetSaver.saveDoc(
-		parsoidData.doc,
-		{
-			page: pageData.pageName,
-			oldid: pageData.oldId,
-			summary: summary,
-			basetimestamp: pageData.baseTimeStamp,
-			starttimestamp: pageData.startTimeStamp,
-			etag: pageData.etag,
-			assert: mw.user.isAnon() ? 'anon' : 'user',
-			assertuser: mw.user.getName() || undefined,
-			// This appears redundant currently, but as editing / new-topics get added, we'll expand it
-			dttags: [ 'discussiontools', 'discussiontools-reply', 'discussiontools-' + widget.mode ].join( ',' )
-		}
-	).catch( function ( code, data ) {
+	return promise.then( function () {
+		return mw.libs.ve.targetSaver.saveDoc(
+			parsoidData.doc,
+			{
+				page: pageData.pageName,
+				oldid: pageData.oldId,
+				summary: summary,
+				basetimestamp: pageData.baseTimeStamp,
+				starttimestamp: pageData.startTimeStamp,
+				etag: pageData.etag,
+				assert: mw.user.isAnon() ? 'anon' : 'user',
+				assertuser: mw.user.getName() || undefined,
+				dttags: [
+					'discussiontools',
+					'discussiontools-reply',
+					'discussiontools-' + mode
+				].join( ',' )
+			}
+		);
+	} ).catch( function ( code, data ) {
 		// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
 		// comment has been deleted from the page, or if retry also fails for some other reason, the
 		// error is handled as normal below.
@@ -168,8 +196,8 @@ function postReply( widget, parsoidData ) {
 					wgRevisionId: latestRevId
 				} );
 				// eslint-disable-next-line no-use-before-define
-				return getParsoidCommentData( widget.comment.id ).then( function ( parsoidData ) {
-					return postReply( widget, parsoidData );
+				return getParsoidCommentData( comment.id ).then( function ( parsoidData ) {
+					return save( widget, parsoidData );
 				} );
 			} );
 		}
@@ -330,6 +358,6 @@ function init( $container, state ) {
 module.exports = {
 	init: init,
 	getParsoidCommentData: getParsoidCommentData,
-	postReply: postReply,
+	save: save,
 	autoSignWikitext: autoSignWikitext
 };

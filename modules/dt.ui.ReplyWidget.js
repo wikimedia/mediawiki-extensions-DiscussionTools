@@ -101,11 +101,13 @@ ReplyWidget.prototype.createReplyBodyWidget = null;
 
 ReplyWidget.prototype.focus = null;
 
-ReplyWidget.prototype.insertNewNodes = null;
-
 ReplyWidget.prototype.getValue = null;
 
 ReplyWidget.prototype.isEmpty = null;
+
+ReplyWidget.prototype.getMode = function () {
+	return this.mode;
+};
 
 ReplyWidget.prototype.clear = function () {
 	if ( this.errorMessage ) {
@@ -285,8 +287,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 	// We must get a new copy of the document every time, otherwise any unsaved replies will pile up
 	controller.getParsoidCommentData( this.comment.id ).then( function ( parsoidData ) {
 		logger( { action: 'saveAttempt' } );
-
-		return controller.postReply( widget, parsoidData );
+		return controller.save( widget, parsoidData );
 	} ).then( function ( data ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $container = $( '#mw-content-text' );
