@@ -26,9 +26,9 @@
 	"tag-discussiontools-newtopic": "נוסף נושא",
 	"tag-discussiontools-newtopic-description": "משתמש הוסיף נושא חדש לדף באמצעות כלי שיחה",
 	"tag-discussiontools-reply": "תגובה",
-	"tag-discussiontools-reply-description": "משתמש הגיב להערה קיימת באמצעות כלי שיחה",
+	"tag-discussiontools-reply-description": "משתמש הגיב להערה באמצעות כלי שיחה",
 	"tag-discussiontools-source": "קוד מקור",
 	"tag-discussiontools-source-description": "כלי שיחה היו במצב קוד מקור",
 	"tag-discussiontools-visual": "חזותי",
-	"tag-discussiontools-visual-description": "כלי שיחה היו במצב עורך חזותי"
+	"tag-discussiontools-visual-description": "כלי שיחה היו במצב חזותי"
 }

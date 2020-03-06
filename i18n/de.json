@@ -26,9 +26,9 @@
 	"tag-discussiontools-newtopic": "Thema hinzufügen",
 	"tag-discussiontools-newtopic-description": "Benutzer hat ein neues Thema zur Seite mit den Diskussions-Werkzeugen erstellt",
 	"tag-discussiontools-reply": "Antworten",
-	"tag-discussiontools-reply-description": "Benutzer hat auf einen vorhandenen Kommentar mit den  Diskussions-Werkzeugen geantwortet",
+	"tag-discussiontools-reply-description": "Benutzer hat auf einen Kommentar mit den Diskussions-Werkzeugen geantwortet",
 	"tag-discussiontools-source": "Quelltext",
 	"tag-discussiontools-source-description": "Diskussions-Werkzeugen waren im Quelltext-Modus",
 	"tag-discussiontools-visual": "VisualEditor",
-	"tag-discussiontools-visual-description": "Diskussions-Werkzeuge waren im VisualEditor-Modus"
+	"tag-discussiontools-visual-description": "Diskussions-Werkzeuge waren im Visual-Modus"
 }

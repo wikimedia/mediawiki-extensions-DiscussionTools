@@ -25,9 +25,9 @@
 	"tag-discussiontools-newtopic": "新增話題",
 	"tag-discussiontools-newtopic-description": "使用者以討論工具對頁新增一個話題",
 	"tag-discussiontools-reply": "回覆",
-	"tag-discussiontools-reply-description": "使用者以討論工具對現有的評論做出回覆",
+	"tag-discussiontools-reply-description": "使用者以討論工具對一項評論做出回覆",
 	"tag-discussiontools-source": "來源",
 	"tag-discussiontools-source-description": "討論工具處於來源模式",
 	"tag-discussiontools-visual": "視覺化",
-	"tag-discussiontools-visual-description": "討論工具處於視覺化編輯器模式"
+	"tag-discussiontools-visual-description": "討論工具處於視覺化模式"
 }

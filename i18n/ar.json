@@ -15,6 +15,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>لم تقم بتسجيل الدخول،</strong> لتلقي الإسناد باسمك بدلا من عنوان الآيلي الخاص بك؛ يمكنك [$1 تسجيل الدخول] أو [$2 إنشاء حساب].",
 	"discussiontools-replywidget-cancel": "إلغاء",
 	"discussiontools-replywidget-loading": "جارٍ التحميل...",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|قم|قومي}} بالردّ على {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "معاينة",
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-terms-click": "بالنقر على \"$1\"، فإنك {{GENDER:|توافق|توافقين}} على شروط الاستخدام لهذا الويكي.",
