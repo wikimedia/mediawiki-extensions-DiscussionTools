@@ -456,12 +456,13 @@ function getPageTitleFromUri( uri ) {
  *
  * @private
  * @param {Text} timestampNode Text node
+ * @param {Node} [until] Node to stop searching at
  * @return {Array} Result, a two-element array
  * @return {Node[]} return.0 Sibling nodes comprising the signature, in reverse order (with
  *   `timestampNode` as the first element)
  * @return {string|null} return.1 Username, null for unsigned comments
  */
-function findSignature( timestampNode ) {
+function findSignature( timestampNode, until ) {
 	var
 		node = timestampNode,
 		sigNodes = [ node ],
@@ -469,7 +470,7 @@ function findSignature( timestampNode ) {
 		length = 0,
 		lastLinkNode = timestampNode,
 		links, nodes;
-	while ( ( node = node.previousSibling ) && length < data.signatureScanLimit ) {
+	while ( ( node = node.previousSibling ) && length < data.signatureScanLimit && node !== until ) {
 		sigNodes.push( node );
 		length += ( node.textContent || '' ).length;
 		if ( !node.tagName ) {
@@ -704,7 +705,7 @@ function getComments( rootNode ) {
 			};
 			comments.push( curComment );
 		} else if ( timestamps[ nextTimestamp ] && node === timestamps[ nextTimestamp ][ 0 ] ) {
-			foundSignature = findSignature( node );
+			foundSignature = findSignature( node, curComment.range.endContainer );
 			author = foundSignature[ 1 ];
 			firstSigNode = foundSignature[ 0 ][ foundSignature[ 0 ].length - 1 ];
 

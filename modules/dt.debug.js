@@ -9,6 +9,7 @@ threads = parser.groupThreads( comments );
 
 highlighter.markThreads( threads );
 
+// TODO: Use comment.signatureRanges to mark up signatures/timestamps
 for ( i = 0; i < timestamps.length; i++ ) {
 	node = timestamps[ i ][ 0 ];
 	match = timestamps[ i ][ 1 ];
