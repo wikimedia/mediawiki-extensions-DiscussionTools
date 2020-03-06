@@ -118,23 +118,47 @@ function autoSignWikitext( wikitext ) {
 }
 
 function postReply( widget, parsoidData ) {
-	var wikitext,
-		comment = parsoidData.comment,
-		newParsoidItem = modifier.addListItem( comment );
+	var wikitext, doc, container, newParsoidItem,
+		comment = parsoidData.comment;
+
+	doc = comment.range.endContainer.ownerDocument;
+	container = doc.createElement( 'div' );
 
 	if ( widget.getMode() === 'source' ) {
+		// Convert wikitext to comment DOM
 		wikitext = widget.getValue();
+		// Use autoSign to avoid double signing
 		wikitext = autoSignWikitext( wikitext );
-		wikitext.split( '\n' ).forEach( function ( line, i ) {
-			if ( i > 0 ) {
-				newParsoidItem = modifier.addSiblingListItem( newParsoidItem );
-			}
-			newParsoidItem.appendChild( modifier.createWikitextNode( line ) );
+		wikitext.split( '\n' ).forEach( function ( line ) {
+			var p = doc.createElement( 'p' );
+			p.appendChild( modifier.createWikitextNode( line ) );
+			container.appendChild( p );
 		} );
 	} else {
-		// TODO: Support multi-line comments in visual mode
-		newParsoidItem.innerHTML = widget.getValue();
-		newParsoidItem.children[ 0 ].appendChild( modifier.createWikitextNode( ' ~~~~' ) );
+		container.innerHTML = widget.getValue();
+		// If the last node isn't a paragraph (e.g. it's a list), then
+		// add another paragraph to contain the signature.
+		if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
+			container.appendChild( doc.createElement( 'p' ) );
+		}
+		// Sign the last line
+		// TODO: Check if the user tried to sign in visual mode by typing wikitext?
+		// TODO: When we implement posting new topics, the leading space will create an indent-pre
+		container.lastChild.appendChild( modifier.createWikitextNode( ' ~~~~' ) );
+	}
+
+	// Transfer comment DOM to Parsoid DOM
+	// Wrap every root node of the document in a new list item (dd/li).
+	// In wikitext mode every root node is a paragraph.
+	// In visual mode the editor takes care of preventing problematic nodes
+	// like <table> or <h2> from ever occuring in the comment.
+	while ( container.children.length ) {
+		if ( !newParsoidItem ) {
+			newParsoidItem = modifier.addListItem( comment );
+		} else {
+			newParsoidItem = modifier.addSiblingListItem( newParsoidItem );
+		}
+		newParsoidItem.appendChild( container.firstChild );
 	}
 
 	return $.Deferred().resolve().promise();
