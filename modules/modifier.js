@@ -1,22 +1,8 @@
 /* global $:off */
 'use strict';
 
-/**
- * Find closest ancestor element using one of the given tag names.
- *
- * @param {Node} el
- * @param {string[]} tagNames
- * @return {HTMLElement|null}
- */
-function closestElement( el, tagNames ) {
-	do {
-		if ( el.nodeType === Node.ELEMENT_NODE && tagNames.indexOf( el.tagName.toLowerCase() ) !== -1 ) {
-			return el;
-		}
-		el = el.parentNode;
-	} while ( el );
-	return null;
-}
+var
+	utils = require( './utils.js' );
 
 function whitespaceParsoidHack( listItem ) {
 	// HACK: Setting data-parsoid removes the whitespace after the list item,
@@ -105,7 +91,7 @@ function addListItem( comment ) {
 	// First, we need to find a block-level parent that we can mess with.
 	// If we can't find a surrounding list item or paragraph (e.g. maybe we're inside a table cell
 	// or something), take the parent node and hope for the best.
-	parent = closestElement( target, [ 'li', 'dd', 'p' ] ) || target.parentNode;
+	parent = utils.closestElement( target, [ 'li', 'dd', 'p' ] ) || target.parentNode;
 	while ( target.parentNode !== parent ) {
 		target = target.parentNode;
 	}
@@ -240,7 +226,6 @@ function createWikitextNode( wt ) {
 }
 
 module.exports = {
-	closestElement: closestElement,
 	addReplyLink: addReplyLink,
 	addListItem: addListItem,
 	removeListItem: removeListItem,

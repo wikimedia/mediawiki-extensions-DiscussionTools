@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 'use strict';
 
-// DiscussionToolsHooks::getLocalData()
 var
+	utils = require( './utils.js' ),
+	// DiscussionToolsHooks::getLocalData()
 	data = require( './parser/data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
@@ -746,7 +747,8 @@ function getComments( rootNode ) {
 			// notifications or something).
 			if (
 				curComment.type === 'comment' &&
-				node.parentNode === curComment.range.endContainer.parentNode
+				( utils.closestElement( node, [ 'li', 'dd', 'p' ] ) || node.parentNode ) ===
+					( utils.closestElement( curComment.range.endContainer, [ 'li', 'dd', 'p' ] ) || curComment.range.endContainer.parentNode )
 			) {
 				// Merge this with the previous comment. Use that comment's author and timestamp.
 				curComment.range.endContainer = range.endContainer;

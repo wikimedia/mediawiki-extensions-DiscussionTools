@@ -19424,34 +19424,20 @@
         "author": "JoeHebda",
         "range": [
           "176/2/0/0/0",
-          "176/2/2/6/27"
+          "176/2/14/26"
         ],
         "signatureRanges": [
           [
             "176/2/2/3",
             "176/2/2/6/27"
-          ]
-        ],
-        "level": 1,
-        "id": "JoeHebda|2019-07-19T02:46:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
-        "timestamp": "2019-07-08T13:06:00.000Z",
-        "author": "JoeHebda",
-        "range": [
-          "176/2/5",
-          "176/2/14/26"
-        ],
-        "signatureRanges": [
+          ],
           [
             "176/2/11",
             "176/2/14/26"
           ]
         ],
         "level": 1,
-        "id": "JoeHebda|2019-07-08T13:06:00.000Z|0",
+        "id": "JoeHebda|2019-07-19T02:46:00.000Z|0",
         "replies": [
           {
             "type": "comment",

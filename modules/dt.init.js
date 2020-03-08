@@ -25,5 +25,6 @@ module.exports = {
 	controller: require( './controller.js' ),
 	parser: require( './parser.js' ),
 	modifier: require( './modifier.js' ),
+	utils: require( './utils.js' ),
 	logger: require( './logger.js' )
 };

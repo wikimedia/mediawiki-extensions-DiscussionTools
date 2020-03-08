@@ -1,5 +1,5 @@
 var controller = require( 'ext.discussionTools.init' ).controller,
-	modifier = require( 'ext.discussionTools.init' ).modifier,
+	utils = require( 'ext.discussionTools.init' ).utils,
 	logger = require( 'ext.discussionTools.init' ).logger;
 
 /**
@@ -21,7 +21,7 @@ function ReplyWidget( comment, config ) {
 	ReplyWidget.super.call( this, config );
 
 	this.comment = comment;
-	contextNode = modifier.closestElement( this.comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
+	contextNode = utils.closestElement( this.comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 
 	inputConfig = $.extend(
