@@ -13,7 +13,7 @@ var
 		mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
 
 function setupComment( comment ) {
-	var $replyLinkButtons, $replyLink, widgetPromise, newListItem;
+	var $replyLinkButtons, $replyLink, parsoidPromise, widgetPromise, newListItem;
 
 	// Is it possible to have a heading nested in a thread?
 	if ( comment.type !== 'comment' ) {
@@ -51,31 +51,43 @@ function setupComment( comment ) {
 			$replyLinkButtons.addClass( 'dt-init-replylink-active' );
 
 			if ( !widgetPromise ) {
-				widgetPromise = replyWidgetPromise.then( function () {
-					var
-						ReplyWidget = config.useVisualEditor ?
-							require( 'ext.discussionTools.ReplyWidgetVisual' ) :
-							require( 'ext.discussionTools.ReplyWidgetPlain' ),
-						replyWidget = new ReplyWidget(
-							comment
-						);
+				// eslint-disable-next-line no-use-before-define
+				parsoidPromise = getParsoidCommentData( comment.id );
 
-					replyWidget.on( 'teardown', function () {
-						$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
-						$pageContainer.removeClass( 'dt-init-replylink-open' );
-						modifier.removeListItem( newListItem );
-						newListItem = null;
+				widgetPromise = parsoidPromise.then( function () {
+					return replyWidgetPromise.then( function () {
+						var
+							ReplyWidget = config.useVisualEditor ?
+								require( 'ext.discussionTools.ReplyWidgetVisual' ) :
+								require( 'ext.discussionTools.ReplyWidgetPlain' ),
+							replyWidget = new ReplyWidget(
+								comment
+							);
+
+						replyWidget.on( 'teardown', function () {
+							$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
+							$pageContainer.removeClass( 'dt-init-replylink-open' );
+							modifier.removeListItem( newListItem );
+							newListItem = null;
+						} );
+
+						return replyWidget;
 					} );
-
-					return replyWidget;
-				}, function () {
+				}, function ( code, data ) {
 					$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
 					$pageContainer.removeClass( 'dt-init-replylink-open' );
+
+					OO.ui.alert(
+						( new mw.Api() ).getErrorMessage( data ),
+						{ size: 'medium' }
+					);
 
 					logger( {
 						action: 'abort',
 						type: 'preinit'
 					} );
+
+					widgetPromise = null;
 				} );
 
 				// On first load, add a placeholder list item
@@ -288,7 +300,6 @@ function getParsoidCommentData( commentId ) {
 			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle;
 
 			data = response.visualeditor;
-			// TODO: error handling
 			parsoidDoc = ve.parseXhtml( data.content );
 			// Mirror VE's ve.init.mw.Target.prototype.fixBase behavior:
 			ve.fixBase( parsoidDoc, document, ve.resolveUrl(

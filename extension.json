@@ -54,6 +54,7 @@
 			],
 			"dependencies": [
 				"rangefix",
+				"oojs-ui-windows",
 				"ext.discussionTools.parser",
 				"ext.discussionTools.modifier",
 				"ext.discussionTools.logger",
