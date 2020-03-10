@@ -8,7 +8,7 @@ mw.dt = {};
 
 if ( new mw.Uri().query.dtdebug ) {
 	mw.loader.load( 'ext.discussionTools.debug' );
-} else {
+} else if ( mw.config.get( 'wgIsProbablyEditable' ) ) {
 	mw.hook( 'wikipage.content' ).add( function ( $container ) {
 		$container.find( '.mw-parser-output' ).each( function () {
 			var $node = $( this );
