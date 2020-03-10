@@ -97,4 +97,23 @@ class DiscussionToolsData {
 
 		return $data;
 	}
+
+	/**
+	 * Return messages in content language, for use in a ResourceLoader module.
+	 *
+	 * @param ResourceLoaderContext $context
+	 * @param Config $config
+	 * @param array $messagesKeys
+	 * @return array
+	 */
+	public static function getContentLanguageMessages(
+		ResourceLoaderContext $context, Config $config, $messagesKeys = []
+	) {
+		return array_combine(
+			$messagesKeys,
+			array_map( function ( $key ) {
+				return wfMessage( $key )->inContentLanguage()->text();
+			}, $messagesKeys )
+		);
+	}
 }

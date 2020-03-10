@@ -12,6 +12,8 @@ var
 		mw.loader.using( 'ext.discussionTools.ReplyWidgetVisual' ) :
 		mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
 
+mw.messages.set( require( './contLangMessages.json' ) );
+
 function setupComment( comment ) {
 	var $replyLinkButtons, $replyLink, parsoidPromise, widgetPromise, newListItem;
 

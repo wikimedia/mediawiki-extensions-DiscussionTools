@@ -46,6 +46,13 @@
 			"packageFiles": [
 				"controller.js",
 				{
+					"name": "contLangMessages.json",
+					"callback": "DiscussionToolsData::getContentLanguageMessages",
+					"callbackParam": [
+						"discussiontools-defaultsummary-reply"
+					]
+				},
+				{
 					"name": "config.json",
 					"config": {
 						"useVisualEditor": "DiscussionToolsUseVisualEditor"
@@ -65,7 +72,6 @@
 				"discussiontools-error-comment-disappeared",
 				"discussiontools-error-comment-is-transcluded",
 				"discussiontools-error-comment-is-transcluded-title",
-				"discussiontools-defaultsummary-reply",
 				"discussiontools-replylink",
 				"discussiontools-replywidget-loading"
 			]
