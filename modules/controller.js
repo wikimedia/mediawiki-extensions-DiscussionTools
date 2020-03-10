@@ -120,29 +120,8 @@ function autoSignWikitext( wikitext ) {
 function postReply( widget, parsoidData ) {
 	var wikitext,
 		comment = parsoidData.comment,
-		transcludedFrom, transcludedErrMsg, mwTitle, newParsoidItem;
+		newParsoidItem = modifier.addListItem( comment );
 
-	transcludedFrom = parser.getTranscludedFrom( comment );
-	if ( transcludedFrom ) {
-		mwTitle = transcludedFrom === true ? null : mw.Title.newFromText( transcludedFrom );
-
-		// If this refers to a template rather than a subpage, we never want to edit it
-		if ( mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template ) {
-			// TODO: Post the reply to the target page instead
-			transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded-title',
-				mwTitle.getPrefixedText() ).parse();
-		} else {
-			transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded' ).parse();
-		}
-
-		// TODO: This should be shown immediately, rather than after trying to post
-		return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
-			code: 'comment-is-transcluded',
-			html: transcludedErrMsg
-		} ] } ).promise();
-	}
-
-	newParsoidItem = modifier.addListItem( comment );
 	if ( widget.getMode() === 'source' ) {
 		wikitext = widget.getValue();
 		wikitext = autoSignWikitext( wikitext );
@@ -306,7 +285,9 @@ function getParsoidCommentData( commentId ) {
 
 	return getPageData( pageName, oldId )
 		.then( function ( response ) {
-			var data = response.visualeditor;
+			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle;
+
+			data = response.visualeditor;
 			// TODO: error handling
 			parsoidDoc = ve.parseXhtml( data.content );
 			// Mirror VE's ve.init.mw.Target.prototype.fixBase behavior:
@@ -326,15 +307,35 @@ function getParsoidCommentData( commentId ) {
 				etag: data.etag
 			};
 
-			// getThreads build the tree structure, currently only
-			// used to set 'replies'
+			// getThreads builds the tree structure, currently only
+			// used to set 'replies' and 'id'
 			parser.groupThreads( parsoidComments );
 			parsoidCommentsById = commentsById( parsoidComments );
+			comment = parsoidCommentsById[ commentId ];
 
-			if ( !parsoidCommentsById[ commentId ] ) {
+			if ( !comment ) {
 				return $.Deferred().reject( 'comment-disappeared', { errors: [ {
 					code: 'comment-disappeared',
 					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
+				} ] } ).promise();
+			}
+
+			transcludedFrom = parser.getTranscludedFrom( comment );
+			if ( transcludedFrom ) {
+				mwTitle = transcludedFrom === true ? null : mw.Title.newFromText( transcludedFrom );
+
+				// If this refers to a template rather than a subpage, we never want to edit it
+				if ( mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template ) {
+					// TODO: Post the reply to the target page instead
+					transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded-title',
+						mwTitle.getPrefixedText() ).parse();
+				} else {
+					transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded' ).parse();
+				}
+
+				return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
+					code: 'comment-is-transcluded',
+					html: transcludedErrMsg
 				} ] } ).promise();
 			}
 
