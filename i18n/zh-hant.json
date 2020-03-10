@@ -19,6 +19,8 @@
 	"discussiontools-replywidget-reply": "回覆",
 	"discussiontools-replywidget-terms-click": "點擊「$1」，代表您同意此Wiki的使用條款。",
 	"discussiontools-error-comment-disappeared": "無法在頁面上找出您回覆的評論，這有可能是已被刪除或是移動到別的頁面。請重新載入頁面並再次嘗試。",
+	"discussiontools-error-comment-is-transcluded": "此評論無法回覆給使用此工具，請嘗試改用完整頁面編輯器。",
+	"discussiontools-error-comment-is-transcluded-title": "此評論還無法在此回覆，因為是從別的頁面所載入。請前往[[$1]]回覆。",
 	"tag-discussiontools-description": "使用討論工具進行編輯",
 	"tag-discussiontools-edit": "編輯評論",
 	"tag-discussiontools-edit-description": "使用者以討論工具對現有的評論做出編輯",

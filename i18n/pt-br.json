@@ -19,6 +19,8 @@
 	"discussiontools-replywidget-reply": "Responder",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário ao qual você está respondendo na página. Pode ter sido excluído ou movido para outra página. Por favor, recarregue a página e tente de novo.",
+	"discussiontools-error-comment-is-transcluded": "Não é possível responder a este comentário usando esta ferramenta. Por favor, tente usar o editor de página inteira.",
+	"discussiontools-error-comment-is-transcluded-title": "Este comentário não pode ser respondido aqui (ainda), porque ele é carregado de outra página. Por favor, vá para [[$1]] para responder.",
 	"tag-discussiontools-description": "Edição feita usando DiscussionTools",
 	"tag-discussiontools-edit": "Editar comentário",
 	"tag-discussiontools-edit-description": "O usuário editou um comentário existente com DiscussionTools",

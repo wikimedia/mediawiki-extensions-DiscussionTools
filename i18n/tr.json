@@ -18,6 +18,8 @@
 	"discussiontools-replywidget-reply": "Yanıtla",
 	"discussiontools-replywidget-terms-click": "\"$1\" düğmesini tıklayarak, bu viki için kullanım koşullarını kabul etmiş olursunuz.",
 	"discussiontools-error-comment-disappeared": "Sayfada yanıtladığınız yorum bulunamadı. Silinmiş veya başka bir sayfaya taşınmış olabilir. Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.",
+	"discussiontools-error-comment-is-transcluded": "Bu yorum bu araç kullanılarak yanıtlanamaz. Lütfen bunun yerine tam sayfa düzenleyicisini kullanmayı deneyin.",
+	"discussiontools-error-comment-is-transcluded-title": "Bu yorum başka bir sayfadan yüklendiği için burada (henüz) yanıtlanamıyor. Lütfen yanıtlamak için [[$1]] adresine gidin.",
 	"tag-discussiontools-description": "DiscussionTools kullanılarak yapılan düzenleme",
 	"tag-discussiontools-edit": "Yorumu düzenle",
 	"tag-discussiontools-edit-description": "Kullanıcı DiscussionTools ile mevcut bir yorumu düzenledi",
