@@ -19,6 +19,8 @@
 	"discussiontools-replywidget-reply": "Відповісти",
 	"discussiontools-replywidget-terms-click": "Натискаючи «$1», Ви погоджуєтесь із умовами використання цієї вікі.",
 	"discussiontools-error-comment-disappeared": "Не вдалося знайти коментар, на який Ви відповідаєте на цій сторінці. Можливо, його звідси вилучили або перенесли на якусь іншу сторінку. Будь ласка, перезавантажте сторінку і спробуйте ще раз.",
+	"discussiontools-error-comment-is-transcluded": "На цей коментар неможливо відповісти за допомогою цього інструмента. Будь ласка, спробуйте натомість скористатися звичайним редактором сторінки.",
+	"discussiontools-error-comment-is-transcluded-title": "На цей коментар не можна відповісти тут (наразі), оскільки його завантажено з іншої сторінки. Будь ласка, перейдіть на [[$1]], щоб відповісти на нього.",
 	"tag-discussiontools-description": "Редагування зроблене через DiscussionTools",
 	"tag-discussiontools-edit": "відредаговано коментар",
 	"tag-discussiontools-edit-description": "Користувач відредагував один із уже наявних коментарів через DiscussionTools",

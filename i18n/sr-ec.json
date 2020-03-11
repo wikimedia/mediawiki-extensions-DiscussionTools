@@ -7,6 +7,8 @@
 	},
 	"discussiontools-preference-label": "Алатке за дискутовање",
 	"discussiontools-replywidget-preview": "Преглед",
+	"discussiontools-error-comment-is-transcluded": "Не може се одговорити на коментар помоћу ове алатке. Покушајте то помоћу уређивача целе странице.",
+	"discussiontools-error-comment-is-transcluded-title": "Овде се (још) не може одговорити на коментар, јер је учитан са друге странице. Идите на [[$1]] да бисте одговорили на њега.",
 	"tag-discussiontools-description": "Измене направљене алаткама за дискутовање",
 	"tag-discussiontools-edit": "Измењен коментар",
 	"tag-discussiontools-newtopic": "Додата тема",

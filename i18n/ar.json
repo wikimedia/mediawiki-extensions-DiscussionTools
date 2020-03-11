@@ -20,6 +20,8 @@
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-terms-click": "بالنقر على \"$1\"، فإنك {{GENDER:|توافق|توافقين}} على شروط الاستخدام لهذا الويكي.",
 	"discussiontools-error-comment-disappeared": "لا نستطيع العثور على التعليق الذي {{GENDER:|تريد|تريدين}} الردّ عليه في الصفحة. من المرجّح أنه قد حذف أو تم نقله إلى صفحة أخرى. رجاءً {{GENDER:|أعد|أعيدي}} تحميل الصفحة ثم {{GENDER:|كرّر|كرّري}} المحاولة.",
+	"discussiontools-error-comment-is-transcluded": "لا يمكن استعمال هذه الأداة للرد على هذا التعليق. عوضا عن ذلك، من فضلك {{GENDER:|حاول|حاولي}} استخدام المحرر الكامل للصفحة.",
+	"discussiontools-error-comment-is-transcluded-title": "لا يمكن (حاليا) الرد هنا على هذا التعليق، لأنه تم تحميله من صفحة أخرى. من فضلك {{GENDER:|انتقل|انتقلي}} إلى [[$1]] للرد.",
 	"tag-discussiontools-description": "تعديل تم عن طريق أدوات_النقاش",
 	"tag-discussiontools-edit": "{{GENDER:|عدّل|عدّلي}} تعليقا",
 	"tag-discussiontools-edit-description": "عدّل مستخدمون تعليقا موجودا، عبر أدوات_النقاش",
