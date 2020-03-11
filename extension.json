@@ -213,9 +213,7 @@
 		"DiscussionToolsHooks": "includes/DiscussionToolsHooks.php"
 	},
 	"Hooks": {
-		"BeforePageDisplay": [
-			"DiscussionToolsHooks::onBeforePageDisplay"
-		],
+		"BeforePageDisplay": "DiscussionToolsHooks::onBeforePageDisplay",
 		"GetBetaFeaturePreferences": "DiscussionToolsHooks::onGetBetaPreferences",
 		"ListDefinedTags": "DiscussionToolsHooks::onListDefinedTags",
 		"ChangeTagsListActive": "DiscussionToolsHooks::onListDefinedTags",
