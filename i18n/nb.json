@@ -18,6 +18,8 @@
 	"discussiontools-replywidget-reply": "Svar",
 	"discussiontools-replywidget-terms-click": "Ved å trykke på «$1» samtykker du i bruksvilkårene til denne wikien.",
 	"discussiontools-error-comment-disappeared": "Kunne ikke finne kommentaren du svarer på på siden. Den kan ha blitt slettet eller flyttet til en annen side. Last siden på nytt og prøv igjen.",
+	"discussiontools-error-comment-is-transcluded": "Det er ikke mulig å svare på denne kommentaren med dette verktøyet. Prøv vanlig redigeringsmodus i stedet.",
+	"discussiontools-error-comment-is-transcluded-title": "Det er ennå ikke mulig å svare på denne kommentaren her, fordi den lastes inn fra en annen side. Gå til [[$1]] for å svare på den.",
 	"tag-discussiontools-description": "Redigering gjort med DiscussionTools",
 	"tag-discussiontools-edit": "redigerte kommentar",
 	"tag-discussiontools-edit-description": "Bruker redigerte en eksisterende kommentar med DiscussionTools",
