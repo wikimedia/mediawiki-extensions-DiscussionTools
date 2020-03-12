@@ -90,7 +90,8 @@
 				"discussiontools-replywidget-placeholder-reply",
 				"discussiontools-replywidget-preview",
 				"discussiontools-replywidget-reply",
-				"discussiontools-replywidget-terms-click"
+				"discussiontools-replywidget-terms-click",
+				"discussiontools-replywidget-transcluded"
 			],
 			"dependencies": [
 				"ext.discussionTools.init",

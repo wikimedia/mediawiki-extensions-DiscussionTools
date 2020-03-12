@@ -61,17 +61,15 @@ function setupComment( comment ) {
 
 			if ( !widgetPromise ) {
 				// eslint-disable-next-line no-use-before-define
-				parsoidPromise = getParsoidCommentData( comment.id );
+				parsoidPromise = getParsoidTranscludedCommentData( comment.id );
 
-				widgetPromise = parsoidPromise.then( function () {
+				widgetPromise = parsoidPromise.then( function ( parsoidData ) {
 					return replyWidgetPromise.then( function () {
 						var
 							ReplyWidget = config.useVisualEditor ?
 								require( 'ext.discussionTools.ReplyWidgetVisual' ) :
 								require( 'ext.discussionTools.ReplyWidgetPlain' ),
-							replyWidget = new ReplyWidget(
-								comment
-							);
+							replyWidget = new ReplyWidget( parsoidData );
 
 						replyWidget.on( 'teardown', teardown );
 
@@ -181,6 +179,25 @@ function postReply( widget, parsoidData ) {
 	return $.Deferred().resolve().promise();
 }
 
+/**
+ * Get the latest revision ID of the page.
+ *
+ * @param {string} pageName
+ * @return {jQuery.Promise}
+ */
+function getLatestRevId( pageName ) {
+	return ( new mw.Api() ).get( {
+		action: 'query',
+		prop: 'revisions',
+		rvprop: 'ids',
+		rvlimit: 1,
+		titles: pageName,
+		formatversion: 2
+	} ).then( function ( resp ) {
+		return resp.query.pages[ 0 ].revisions[ 0 ].revid;
+	} );
+}
+
 function save( widget, parsoidData ) {
 	var root, summaryPrefix, summary, promise,
 		mode = widget.getMode(),
@@ -226,21 +243,9 @@ function save( widget, parsoidData ) {
 		// comment has been deleted from the page, or if retry also fails for some other reason, the
 		// error is handled as normal below.
 		if ( code === 'editconflict' ) {
-			return widget.api.get( {
-				action: 'query',
-				prop: 'revisions',
-				rvprop: 'ids',
-				rvlimit: 1,
-				titles: mw.config.get( 'wgRelevantPageName' ),
-				formatversion: 2
-			} ).then( function ( resp ) {
-				var latestRevId = resp.query.pages[ 0 ].revisions[ 0 ].revid;
-				mw.config.set( {
-					wgCurRevisionId: latestRevId,
-					wgRevisionId: latestRevId
-				} );
+			return getLatestRevId( pageData.pageName ).then( function ( latestRevId ) {
 				// eslint-disable-next-line no-use-before-define
-				return getParsoidCommentData( comment.id ).then( function ( parsoidData ) {
+				return getParsoidCommentData( pageData.pageName, latestRevId, comment.id ).then( function ( parsoidData ) {
 					return save( widget, parsoidData );
 				} );
 			} );
@@ -316,17 +321,17 @@ function getPageData( pageName, oldId ) {
 /**
  * Get the Parsoid document DOM, parse comments and threads, and find a specific comment in it.
  *
- * @param {string} commentId Comment ID, from a comment parsed in the local document
+ * @param {string} pageName Page title
+ * @param {number} oldId Revision ID
+ * @param {string} commentId Comment ID
  * @return {jQuery.Promise}
  */
-function getParsoidCommentData( commentId ) {
-	var parsoidPageData, parsoidDoc, parsoidComments, parsoidCommentsById,
-		pageName = mw.config.get( 'wgRelevantPageName' ),
-		oldId = mw.config.get( 'wgCurRevisionId' );
+function getParsoidCommentData( pageName, oldId, commentId ) {
+	var parsoidPageData, parsoidDoc, parsoidComments, parsoidCommentsById;
 
 	return getPageData( pageName, oldId )
 		.then( function ( response ) {
-			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle;
+			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle, follow;
 
 			data = response.visualeditor;
 			parsoidDoc = ve.parseXhtml( data.content );
@@ -362,10 +367,10 @@ function getParsoidCommentData( commentId ) {
 			transcludedFrom = parser.getTranscludedFrom( comment );
 			if ( transcludedFrom ) {
 				mwTitle = transcludedFrom === true ? null : mw.Title.newFromText( transcludedFrom );
-
 				// If this refers to a template rather than a subpage, we never want to edit it
-				if ( mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template ) {
-					// TODO: Post the reply to the target page instead
+				follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
+
+				if ( follow ) {
 					transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded-title',
 						mwTitle.getPrefixedText() ).parse();
 				} else {
@@ -373,6 +378,10 @@ function getParsoidCommentData( commentId ) {
 				}
 
 				return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
+					data: {
+						transcludedFrom: transcludedFrom,
+						follow: follow
+					},
 					code: 'comment-is-transcluded',
 					html: transcludedErrMsg
 				} ] } ).promise();
@@ -384,6 +393,41 @@ function getParsoidCommentData( commentId ) {
 				pageData: parsoidPageData
 			};
 		} );
+}
+
+/**
+ * Like #getParsoidCommentData, but assumes the comment was found on the current page,
+ * and then follows transclusions to determine the source page where it is written.
+ *
+ * @param {string} commentId Comment ID, from a comment parsed in the local document
+ * @return {jQuery.Promise}
+ */
+function getParsoidTranscludedCommentData( commentId ) {
+	var promise,
+		pageName = mw.config.get( 'wgRelevantPageName' ),
+		oldId = mw.config.get( 'wgCurRevisionId' );
+
+	function followTransclusion( recursionLimit, code, data ) {
+		var errorData;
+		if ( recursionLimit > 0 && code === 'comment-is-transcluded' ) {
+			errorData = data.errors[ 0 ].data;
+			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
+				return getLatestRevId( errorData.transcludedFrom ).then( function ( latestRevId ) {
+					// Fetch the transcluded page, until we cross the recursion limit
+					return getParsoidCommentData( errorData.transcludedFrom, latestRevId, commentId )
+						.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
+				} );
+			}
+		}
+		return $.Deferred().reject( code, data );
+	}
+
+	// Arbitrary limit of 10 steps, which should be more than anyone could ever need
+	// (there are reasonable use cases for at least 2)
+	promise = getParsoidCommentData( pageName, oldId, commentId )
+		.catch( followTransclusion.bind( null, 10 ) );
+
+	return promise;
 }
 
 function init( $container, state ) {

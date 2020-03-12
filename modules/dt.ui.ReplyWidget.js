@@ -8,11 +8,11 @@ var controller = require( 'ext.discussionTools.init' ).controller,
  * @class mw.dt.ReplyWidget
  * @extends OO.ui.Widget
  * @constructor
- * @param {Object} comment Parsed comment object
+ * @param {Object} parsoidData Result from controller#getParsoidCommentData
  * @param {Object} [config] Configuration options
  * @param {Object} [config.input] Configuration options for the comment input widget
  */
-function ReplyWidget( comment, config ) {
+function ReplyWidget( parsoidData, config ) {
 	var returnTo, contextNode, inputConfig;
 
 	config = config || {};
@@ -21,12 +21,13 @@ function ReplyWidget( comment, config ) {
 	ReplyWidget.super.call( this, config );
 
 	this.pending = false;
-	this.comment = comment;
+	this.comment = parsoidData.comment;
+	this.pageData = parsoidData.pageData;
 	contextNode = utils.closestElement( this.comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 
 	inputConfig = $.extend(
-		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ) },
+		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', this.comment.author ) },
 		config.input
 	);
 	this.replyBodyWidget = this.createReplyBodyWidget( inputConfig );
@@ -46,10 +47,16 @@ function ReplyWidget( comment, config ) {
 		this.cancelButton.$element,
 		this.replyButton.$element
 	);
-	this.$terms = $( '<div>' ).addClass( 'dt-ui-replyWidget-terms' ).append(
+	this.$footer = $( '<div>' ).addClass( 'dt-ui-replyWidget-footer' );
+	if ( this.pageData.pageName !== mw.config.get( 'wgRelevantPageName' ) ) {
+		this.$footer.append( $( '<p>' ).append(
+			mw.message( 'discussiontools-replywidget-transcluded', this.pageData.pageName ).parseDom()
+		) );
+	}
+	this.$footer.append( $( '<p>' ).append(
 		mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
-	);
-	this.$actionsWrapper.append( this.$terms, this.$actions );
+	) );
+	this.$actionsWrapper.append( this.$footer, this.$actions );
 
 	// Events
 	this.replyButton.connect( this, { click: 'onReplyClick' } );
@@ -84,7 +91,7 @@ function ReplyWidget( comment, config ) {
 				.parseDom()
 		} );
 		this.anonWarning.$element.append( this.$actions );
-		this.$element.append( this.anonWarning.$element, this.$terms );
+		this.$element.append( this.anonWarning.$element, this.$footer );
 		this.$actionsWrapper.detach();
 	}
 
@@ -291,39 +298,81 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 	logger( { action: 'saveIntent' } );
 
+	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
+
 	// We must get a new copy of the document every time, otherwise any unsaved replies will pile up
-	controller.getParsoidCommentData( this.comment.id ).then( function ( parsoidData ) {
+	controller.getParsoidCommentData( this.pageData.pageName, this.pageData.oldId, this.comment.id ).then( function ( parsoidData ) {
 		logger( { action: 'saveAttempt' } );
 		return controller.save( widget, parsoidData );
 	} ).then( function ( data ) {
-		// eslint-disable-next-line no-jquery/no-global-selector
-		var $container = $( '#mw-content-text' );
+		var
+			pageUpdated = $.Deferred(),
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$container = $( '#mw-content-text' );
 
 		widget.teardown();
 		// TODO: Tell controller to teardown all other open widgets
 
 		// Update page state
-		$container.html( data.content );
-		mw.config.set( {
-			wgCurRevisionId: data.newrevid,
-			wgRevisionId: data.newrevid
-		} );
-		mw.config.set( data.jsconfigvars );
-		mw.loader.load( data.modules );
-		// TODO update categories, lastmodified
-		// (see ve.init.mw.DesktopArticleTarget.prototype.replacePageContent)
+		if ( widget.pageData.pageName === mw.config.get( 'wgRelevantPageName' ) ) {
+			// We can use the result from the VisualEditor API
+			$container.html( data.content );
+			mw.config.set( {
+				wgCurRevisionId: data.newrevid,
+				wgRevisionId: data.newrevid
+			} );
+			mw.config.set( data.jsconfigvars );
+			// Note: VE API merges 'modules' and 'modulestyles'
+			mw.loader.load( data.modules );
+			// TODO update categories, displaytitle, lastmodified
+			// (see ve.init.mw.DesktopArticleTarget.prototype.replacePageContent)
 
-		// Re-initialize
-		controller.init( $container.find( '.mw-parser-output' ), {
-			repliedTo: widget.comment.id
-		} );
-		mw.hook( 'wikipage.content' ).fire( $container );
+			pageUpdated.resolve();
 
-		logger( {
-			action: 'saveSuccess',
-			// eslint-disable-next-line camelcase
-			revision_id: data.newrevid
+		} else {
+			// We saved to another page, we must purge and then fetch the current page
+			widget.api.post( {
+				action: 'purge',
+				titles: mw.config.get( 'wgRelevantPageName' )
+			} ).then( function () {
+				return widget.api.get( {
+					formatversion: 2,
+					action: 'parse',
+					prop: [ 'text', 'modules', 'jsconfigvars' ],
+					page: mw.config.get( 'wgRelevantPageName' )
+				} );
+			} ).then( function ( parseResp ) {
+				$container.html( parseResp.parse.text );
+				mw.config.set( parseResp.parse.jsconfigvars );
+				mw.loader.load( parseResp.parse.modulestyles );
+				mw.loader.load( parseResp.parse.modules );
+				// TODO update categories, displaytitle, lastmodified
+				// We may not be able to use prop=displaytitle without making changes in the action=parse API,
+				// VE API has some confusing code that changes the HTML escaping on it before returning???
+
+				pageUpdated.resolve();
+
+			} ).catch( function () {
+				// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
+				// explain this problem. Redirect to the page where the user can at least see their reply…
+				window.location = mw.util.getUrl( widget.pageData.pageName );
+			} );
+		}
+
+		pageUpdated.then( function () {
+			// Re-initialize
+			controller.init( $container.find( '.mw-parser-output' ), {
+				repliedTo: widget.comment.id
+			} );
+			mw.hook( 'wikipage.content' ).fire( $container );
+
+			logger( {
+				action: 'saveSuccess',
+				// eslint-disable-next-line camelcase
+				revision_id: data.newrevid
+			} );
 		} );
+
 	}, function ( code, data ) {
 		var typeMap = {
 			// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
