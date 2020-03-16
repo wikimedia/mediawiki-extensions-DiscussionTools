@@ -7,6 +7,11 @@
 	},
 	"discussiontools-replywidget-loading": "Učitava se…",
 	"discussiontools-replywidget-preview": "Pregled",
+	"discussiontools-error-comment-disappeared": "Ne možemo pronaći komentar na koji odgovarate na stranici. Vjerojatno je izbrisan ili premješten na drugu stranicu. Molimo Vas da ponovno učitate stranicu i pokušate ponovno.",
+	"discussiontools-error-comment-is-transcluded": "Ne možete odgovoriti na ovaj komentar koristeći se ovim alatom. Molimo, pokušajte umjesto toga odgovoriti koristeći se uređivačem cijele stranice.",
+	"discussiontools-error-comment-is-transcluded-title": "Ovdje (još) ne možete odgovoriti na ovaj komentar jer je učitan s druge stranice. Molimo, idite na [[$1]] kako biste odgovorili na njega.",
 	"tag-discussiontools-edit": "Uredi komentar",
-	"tag-discussiontools-newtopic": "Dodaj temu"
+	"tag-discussiontools-newtopic": "Dodaj temu",
+	"tag-discussiontools-reply": "Odgovor",
+	"tag-discussiontools-source": "Izvor"
 }
