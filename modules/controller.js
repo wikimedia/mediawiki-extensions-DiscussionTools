@@ -52,6 +52,13 @@ function setupComment( comment ) {
 
 			$replyLinkButtons.addClass( 'dt-init-replylink-active' );
 
+			function teardown() {
+				$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
+				$pageContainer.removeClass( 'dt-init-replylink-open' );
+				modifier.removeListItem( newListItem );
+				newListItem = null;
+			}
+
 			if ( !widgetPromise ) {
 				// eslint-disable-next-line no-use-before-define
 				parsoidPromise = getParsoidCommentData( comment.id );
@@ -66,18 +73,12 @@ function setupComment( comment ) {
 								comment
 							);
 
-						replyWidget.on( 'teardown', function () {
-							$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
-							$pageContainer.removeClass( 'dt-init-replylink-open' );
-							modifier.removeListItem( newListItem );
-							newListItem = null;
-						} );
+						replyWidget.on( 'teardown', teardown );
 
 						return replyWidget;
 					} );
 				}, function ( code, data ) {
-					$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
-					$pageContainer.removeClass( 'dt-init-replylink-open' );
+					teardown();
 
 					OO.ui.alert(
 						( new mw.Api() ).getErrorMessage( data ),
@@ -90,6 +91,8 @@ function setupComment( comment ) {
 					} );
 
 					widgetPromise = null;
+
+					return $.Deferred().reject();
 				} );
 
 				// On first load, add a placeholder list item
