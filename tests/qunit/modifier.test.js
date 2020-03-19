@@ -1,9 +1,9 @@
 var
-	utils = require( './utils.js' ),
+	testUtils = require( './testUtils.js' ),
 	parser = require( 'ext.discussionTools.init' ).parser,
 	modifier = require( 'ext.discussionTools.init' ).modifier;
 
-QUnit.module( 'mw.dt.modifier', utils.newEnvironment() );
+QUnit.module( 'mw.dt.modifier', testUtils.newEnvironment() );
 
 QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
 	var i, j, cases,
@@ -65,8 +65,8 @@ QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
 	fixture = document.getElementById( 'qunit-fixture' );
 
 	for ( i = 0; i < cases.length; i++ ) {
-		utils.overrideMwConfig( cases[ i ].config );
-		utils.overrideParserData( cases[ i ].data );
+		testUtils.overrideMwConfig( cases[ i ].config );
+		testUtils.overrideParserData( cases[ i ].data );
 
 		$( fixture ).empty().append( cases[ i ].expected );
 		expectedHtml = fixture.innerHTML;
@@ -145,8 +145,8 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 	fixture = document.getElementById( 'qunit-fixture' );
 
 	for ( i = 0; i < cases.length; i++ ) {
-		utils.overrideMwConfig( cases[ i ].config );
-		utils.overrideParserData( cases[ i ].data );
+		testUtils.overrideMwConfig( cases[ i ].config );
+		testUtils.overrideParserData( cases[ i ].data );
 
 		$( fixture ).empty().append( cases[ i ].expected );
 		expectedHtml = fixture.innerHTML;

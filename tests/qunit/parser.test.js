@@ -1,14 +1,14 @@
 /* global moment */
 var
-	utils = require( './utils.js' ),
+	testUtils = require( './testUtils.js' ),
 	parser = require( 'ext.discussionTools.init' ).parser;
 
-QUnit.module( 'mw.dt.parser', utils.newEnvironment() );
+QUnit.module( 'mw.dt.parser', testUtils.newEnvironment() );
 
 QUnit.test( '#getTimestampRegexp', function ( assert ) {
 	var i, cases;
 
-	utils.overrideParserData( require( './data-en.json' ) );
+	testUtils.overrideParserData( require( './data-en.json' ) );
 
 	cases = [
 		{
@@ -60,7 +60,7 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 QUnit.test( '#getTimestampParser', function ( assert ) {
 	var i, cases, expectedDate, tsParser;
 
-	utils.overrideParserData( require( './data-en.json' ) );
+	testUtils.overrideParserData( require( './data-en.json' ) );
 
 	expectedDate = moment( '2011-02-03T04:05:00+00:00' );
 
@@ -95,7 +95,7 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 	var i, cases, format, timezone, timezoneAbbrs, regexp, tsParser, date;
 
-	utils.overrideParserData( require( './data-en.json' ) );
+	testUtils.overrideParserData( require( './data-en.json' ) );
 
 	format = 'H:i, j M Y';
 	timezone = 'Europe/Warsaw';
@@ -206,14 +206,14 @@ QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 
 	for ( i = 0; i < cases.length; i++ ) {
 		$( fixture ).empty().append( cases[ i ].dom );
-		utils.overrideMwConfig( cases[ i ].config );
-		utils.overrideParserData( cases[ i ].data );
+		testUtils.overrideMwConfig( cases[ i ].config );
+		testUtils.overrideParserData( cases[ i ].data );
 
 		comments = parser.getComments( fixture );
 		threads = parser.groupThreads( comments );
 
 		for ( j = 0; j < threads.length; j++ ) {
-			utils.serializeComments( threads[ j ], fixture );
+			testUtils.serializeComments( threads[ j ], fixture );
 
 			assert.deepEqual(
 				JSON.parse( JSON.stringify( threads[ j ] ) ),
@@ -251,8 +251,8 @@ QUnit.test( '#getTranscludedFrom', function ( assert ) {
 
 	for ( i = 0; i < cases.length; i++ ) {
 		$( fixture ).empty().append( cases[ i ].dom );
-		utils.overrideMwConfig( cases[ i ].config );
-		utils.overrideParserData( cases[ i ].data );
+		testUtils.overrideMwConfig( cases[ i ].config );
+		testUtils.overrideParserData( cases[ i ].data );
 
 		comments = parser.getComments( fixture );
 		parser.groupThreads( comments );

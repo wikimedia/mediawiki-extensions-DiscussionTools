@@ -134,7 +134,7 @@
 		"remoteExtPath": "DiscussionTools/tests/qunit",
 		"packageFiles": [
 			"index.js",
-			"utils.js",
+			"testUtils.js",
 			{
 				"name": "data-en.json",
 				"callback": "DiscussionToolsData::getLocalData",
