@@ -205,7 +205,7 @@ ReplyWidget.prototype.onInputChange = function () {
 			action: 'parse',
 			text: wikitext,
 			pst: true,
-			prop: [ 'text', 'modules' ],
+			prop: [ 'text', 'modules', 'jsconfigvars' ],
 			title: mw.config.get( 'wgPageName' )
 		} );
 	}
@@ -215,6 +215,7 @@ ReplyWidget.prototype.onInputChange = function () {
 		widget.$preview.html( response ? response.parse.text : '' );
 
 		if ( response ) {
+			mw.config.set( response.parse.jsconfigvars );
 			mw.loader.load( response.parse.modulestyles );
 			mw.loader.load( response.parse.modules );
 		}
