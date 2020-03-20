@@ -20,6 +20,7 @@ function ReplyWidget( comment, config ) {
 	// Parent constructor
 	ReplyWidget.super.call( this, config );
 
+	this.pending = false;
 	this.comment = comment;
 	contextNode = utils.closestElement( this.comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
@@ -116,6 +117,7 @@ ReplyWidget.prototype.clear = function () {
 };
 
 ReplyWidget.prototype.setPending = function ( pending ) {
+	this.pending = pending;
 	if ( pending ) {
 		this.replyButton.setDisabled( true );
 		this.cancelButton.setDisabled( true );
@@ -276,6 +278,10 @@ ReplyWidget.prototype.onUnload = function () {
 
 ReplyWidget.prototype.onReplyClick = function () {
 	var widget = this;
+
+	if ( this.pending || this.isEmpty() ) {
+		return;
+	}
 
 	if ( this.errorMessage ) {
 		this.errorMessage.$element.remove();
