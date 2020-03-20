@@ -8,6 +8,10 @@
 	"discussiontools-preference-label": "Инструменты обсуждения",
 	"discussiontools-preference-description": "Включить новый рабочий процесс для [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] на страницах обсуждения.\n\nПожалуйста обратите внимание, что со временембудут добавлены новые инструменты для взаимодействия со страницами обсуждения.\n\nОбновления об этих функциях будут размещены на [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
 	"discussiontools-replywidget-preview": "Предпросмотр",
+	"discussiontools-error-comment-is-transcluded": "На этот комментарий нельзя ответить с помощью этого инструмента. Пожалуйста, попробуйте использовать полный редактор страниц.",
+	"discussiontools-error-comment-is-transcluded-title": "На этот комментарий (пока) нельзя ответить, потому что он загружен с другой страницы. Пожалуйста, перейдите на [[$1]], чтобы ответить на него.",
 	"tag-discussiontools-edit": "отредактировал-а комментарий",
-	"tag-discussiontools-reply": "ответил-а"
+	"tag-discussiontools-reply": "ответил-а",
+	"tag-discussiontools-reply-description": "Пользователь ответил на комментарий с помощью DiscussionTools",
+	"tag-discussiontools-visual-description": "DiscussionTools было в визуальном режиме"
 }

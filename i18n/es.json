@@ -14,6 +14,7 @@
 	"discussiontools-replylink": "Responder",
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-loading": "Cargando...",
+	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Previsualización",
 	"discussiontools-replywidget-reply": "Responder",
 	"tag-discussiontools-description": "Edición hecha con DiscussionTools",
