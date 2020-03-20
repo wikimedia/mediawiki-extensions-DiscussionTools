@@ -209,7 +209,7 @@ function save( widget, parsoidData ) {
 				page: pageData.pageName,
 				oldid: pageData.oldId,
 				summary: summary,
-				basetimestamp: pageData.baseTimeStamp,
+				baserevid: pageData.oldId,
 				starttimestamp: pageData.startTimeStamp,
 				etag: pageData.etag,
 				assert: mw.user.isAnon() ? 'anon' : 'user',
@@ -342,7 +342,6 @@ function getParsoidCommentData( commentId ) {
 			parsoidPageData = {
 				pageName: pageName,
 				oldId: oldId,
-				baseTimeStamp: data.basetimestamp,
 				startTimeStamp: data.starttimestamp,
 				etag: data.etag
 			};
