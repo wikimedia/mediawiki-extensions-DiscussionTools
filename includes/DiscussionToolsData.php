@@ -116,4 +116,23 @@ class DiscussionToolsData {
 			}, $messagesKeys )
 		);
 	}
+
+	/**
+	 * Add optional dependencies to a ResourceLoader module definition depending on loaded extensions.
+	 *
+	 * @param array $info
+	 * @return ResourceLoaderModule
+	 */
+	public static function addOptionalDependencies( array $info ) {
+		$extensionRegistry = ExtensionRegistry::getInstance();
+
+		foreach ( $info['optionalDependencies'] as $ext => $deps ) {
+			if ( $extensionRegistry->isLoaded( $ext ) ) {
+				$info['dependencies'] = array_merge( $info['dependencies'], (array)$deps );
+			}
+		}
+
+		$class = $info['class'] ?? ResourceLoaderFileModule::class;
+		return new $class( $info );
+	}
 }

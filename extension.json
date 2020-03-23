@@ -97,7 +97,11 @@
 			"dependencies": [
 				"ext.discussionTools.init",
 				"mediawiki.widgets.AbandonEditDialog"
-			]
+			],
+			"optionalDependencies": {
+				"ConfirmEdit": "ext.confirmEdit.CaptchaInputWidget"
+			},
+			"factory": "DiscussionToolsData::addOptionalDependencies"
 		},
 		"ext.discussionTools.ReplyWidgetPlain": {
 			"packageFiles": [

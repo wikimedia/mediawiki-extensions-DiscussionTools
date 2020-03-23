@@ -40,7 +40,9 @@
 		padding: 0.5em 1em;
 
 		&:empty {
-			display: none;
+			height: 0;
+			padding: 0;
+			overflow: hidden;
 		}
 
 		&:before {
@@ -53,15 +55,14 @@
 		}
 	}
 
-	.oo-ui-messageWidget {
+	.oo-ui-messageWidget,
+	.dt-ui-replyWidget-preview {
 		margin-bottom: 0.5em;
 	}
 
 	&-anonWarning {
 		display: flex;
 		align-items: center;
-		margin-top: 1em;
-		margin-bottom: 0.5em;
 
 		&.oo-ui-messageWidget-block {
 			padding: 8px 12px;

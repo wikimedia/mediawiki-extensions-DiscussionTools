@@ -243,6 +243,8 @@ function save( widget, parsoidData ) {
 			baserevid: pageData.oldId,
 			starttimestamp: pageData.startTimeStamp,
 			etag: pageData.etag,
+			captchaid: widget.captchaInput && widget.captchaInput.getCaptchaId(),
+			captchaword: widget.captchaInput && widget.captchaInput.getCaptchaWord(),
 			assert: mw.user.isAnon() ? 'anon' : 'user',
 			assertuser: mw.user.getName() || undefined,
 			dttags: [
