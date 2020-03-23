@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"ئارام بکر"
+		]
+	},
+	"discussiontools": "ئامرازەکانی وتووێژ",
+	"discussiontools-defaultsummary-reply": "وەڵامدانەوە",
+	"discussiontools-desc": "ئامرازەکان بۆ چارەسەرکردنی پەڕەکانی وتووێژ",
+	"discussiontools-preference-label": "ئامرازەکانی وتووێژ",
+	"discussiontools-replylink": "وەڵامدانەوە",
+	"discussiontools-replywidget-anon-warning": "<strong>تۆ نەچوویتە ژوورەوە.</strong> بۆ ئەوەی دەستکارییەکەت بدرێتە پاڵ ناوەکەت لەجیاتی ناونیشانی ئای-پییەکەت، دەتوانیت یان [$1 بچیتە ژوورەوە] یانیش [$2 ھەژمارێک دروست بکەیت].",
+	"discussiontools-replywidget-cancel": "ھەڵوەشاندنەوە",
+	"discussiontools-replywidget-loading": "بارکردن...",
+	"discussiontools-replywidget-placeholder-reply": "وەڵام بۆ {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "پێشبینین",
+	"discussiontools-replywidget-reply": "وەڵامدانەوە",
+	"discussiontools-replywidget-terms-click": "بە کرتەکردن لەسەر «$1»، تۆ ملکەچی مەرجەکانی بەکارھێنانی ئەم ویکییە دەبیت.",
+	"discussiontools-error-comment-is-transcluded": "لەڕێگەی بەکارھێنانی ئەم ئامرازەوە ناتواندرێت وەڵامی ئەم لێدوانە بدرێتەوە. تکایە بەجێگەی ئەمە ھەوڵی بەکارھێنانی دەستکاریکەرێکی تەواو بدە.",
+	"tag-discussiontools-description": "دەستکاری لەڕێگەی بەکارھێنانی ئامرازەکانی وتووێژەوە کرا",
+	"tag-discussiontools-edit": "دەستکاریی لێدوان بکە",
+	"tag-discussiontools-newtopic": "زیادکردنی بابەت",
+	"tag-discussiontools-reply": "وەڵامدانەوە",
+	"tag-discussiontools-reply-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە وەڵامی لێدوانێکی دایەوە",
+	"tag-discussiontools-source": "سەرچاوە",
+	"tag-discussiontools-visual": "دیداری"
+}
