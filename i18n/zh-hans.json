@@ -3,7 +3,8 @@
 		"authors": [
 			"铁桶",
 			"VulpesVulpes825",
-			"阿pp"
+			"阿pp",
+			"Ps2049"
 		]
 	},
 	"discussiontools": "讨论工具",
@@ -20,12 +21,12 @@
 	"tag-discussiontools-description": "使用讨论工具进行编辑",
 	"tag-discussiontools-edit": "编辑评论",
 	"tag-discussiontools-edit-description": "用户使用讨论工具编辑了现有评论",
-	"tag-discussiontools-newtopic": "新增话题",
+	"tag-discussiontools-newtopic": "添加话题",
 	"tag-discussiontools-newtopic-description": "用户使用讨论工具在页面新增了话题",
 	"tag-discussiontools-reply": "回复",
-	"tag-discussiontools-reply-description": "用户使用讨论工具回复了现有评论",
-	"tag-discussiontools-source": "讨论工具：源代码",
+	"tag-discussiontools-reply-description": "用户使用讨论工具回复了一个评论",
+	"tag-discussiontools-source": "源代码",
 	"tag-discussiontools-source-description": "讨论工具处于源代码模式",
-	"tag-discussiontools-visual": "讨论工具：可视化",
-	"tag-discussiontools-visual-description": "讨论工具处于可视化编辑模式"
+	"tag-discussiontools-visual": "可视化",
+	"tag-discussiontools-visual-description": "讨论工具处于可视化模式"
 }
