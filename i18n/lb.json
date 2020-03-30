@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Soued031"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Äntweren",
-	"discussiontools-preference-label": "Diskussiouns-Geschir",
+	"discussiontools-preference-label": "Diskussiouns-Geschier",
 	"discussiontools-replylink": "Äntweren",
 	"discussiontools-replywidget-cancel": "Ofbriechen",
 	"discussiontools-replywidget-loading": "Lueden...",
