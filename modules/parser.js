@@ -924,7 +924,8 @@ function getAuthors( comment ) {
  *
  * @param {Object} comment Comment object, as returned by #groupThreads
  * @return {string|boolean} `false` if this comment is not transcluded. A string if it's transcluded
- *   from a single page. `true` if it's transcluded, but we can't determine the source.
+ *   from a single page (the page title, in text form with spaces). `true` if it's transcluded, but
+ *   we can't determine the source.
  */
 function getTranscludedFrom( comment ) {
 	var node, about, dataMw;
@@ -983,8 +984,8 @@ function getTranscludedFrom( comment ) {
 		dataMw.parts[ 0 ].template &&
 		dataMw.parts[ 0 ].template.target.href
 	) {
-		// Slice off the './' prefix
-		return dataMw.parts[ 0 ].template.target.href.slice( 2 );
+		// Slice off the './' prefix and convert to text form (underscores to spaces, URL-decoded)
+		return mw.libs.ve.normalizeParsoidResourceName( dataMw.parts[ 0 ].template.target.href );
 	}
 
 	// Multi-template transclusion, or a parser function call, or template-affected wikitext outside
