@@ -260,7 +260,12 @@ function save( widget, parsoidData ) {
 
 		savePromise = mw.libs.ve.targetSaver.saveDoc(
 			parsoidData.doc,
-			data
+			data,
+			{
+				// No timeout. Huge talk pages take a long time to save, and falsely reporting an error can
+				// result in duplicate messages when the user retries. (T249071)
+				api: new mw.Api( { ajax: { timeout: 0 } } )
+			}
 		).catch( function ( code, data ) {
 			// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
 			// comment has been deleted from the page, or if retry also fails for some other reason, the
