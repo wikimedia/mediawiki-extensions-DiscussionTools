@@ -180,6 +180,20 @@ QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 			data: require( './data/enwiki-data.json' )
 		},
 		{
+			name: 'arwiki no-paragraph oldparser',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html' ).render(),
+			expected: require( './cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.json' ),
+			config: require( './data/arwiki-config.json' ),
+			data: require( './data/arwiki-data.json' )
+		},
+		{
+			name: 'arwiki no-paragraph parsoid',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.html' ).render(),
+			expected: require( './cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.json' ),
+			config: require( './data/arwiki-config.json' ),
+			data: require( './data/arwiki-data.json' )
+		},
+		{
 			name: 'No heading',
 			dom: mw.template.get( 'test.DiscussionTools', 'cases/no-heading/no-heading.html' ).render(),
 			expected: require( './cases/no-heading/no-heading.json' ),

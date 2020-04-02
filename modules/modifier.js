@@ -11,11 +11,6 @@ function whitespaceParsoidHack( listItem ) {
 	listItem.setAttribute( 'data-parsoid', '{}' );
 }
 
-function isTalkpageListNode( node ) {
-	var tag = node.tagName ? node.tagName.toLowerCase() : '';
-	return tag === 'dl' || tag === 'ul';
-}
-
 /**
  * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
  * the comment.
@@ -26,11 +21,9 @@ function isTalkpageListNode( node ) {
 function addReplyLink( comment, linkNode ) {
 	var target = comment.range.endContainer;
 
-	// Skip to the end of the "paragraph".
-	// Actually doing this by paragraph would require us to know how the text is laid out, and
-	// would be more difficult and probably slower. Instead skip over anything that isn't a list
-	// node, which should have the same effect on discussion pages.
-	while ( target.nextSibling && !isTalkpageListNode( target.nextSibling ) ) {
+	// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
+	// avoiding that would be more difficult and slower.
+	while ( target.nextSibling && !ve.isBlockElement( target.nextSibling ) ) {
 		target = target.nextSibling;
 	}
 
@@ -79,11 +72,9 @@ function addListItem( comment ) {
 	currLevel = currComment.level;
 	target = currComment.range.endContainer;
 
-	// Skip to the end of the "paragraph".
-	// Actually doing this by paragraph would require us to know how the text is laid out, and
-	// would be more difficult and probably slower. Instead skip over anything that isn't a list
-	// node, which should have the same effect on discussion pages.
-	while ( target.nextSibling && !isTalkpageListNode( target.nextSibling ) ) {
+	// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
+	// avoiding that would be more difficult and slower.
+	while ( target.nextSibling && !ve.isBlockElement( target.nextSibling ) ) {
 		target = target.nextSibling;
 	}
 

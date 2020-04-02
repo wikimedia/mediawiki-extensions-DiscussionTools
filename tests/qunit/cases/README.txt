@@ -11,5 +11,9 @@ https://en.wikipedia.org/api/rest_v1/page/html/Wikipedia%3AVillage_pump_(technic
 en-bigafd:
 https://en.wikipedia.org/api/rest_v1/page/html/Wikipedia%3AArticles_for_deletion%2FLog%2F2020_March_7
 
+ar-no-paragraph:
+https://ar.wikipedia.org/w/index.php?action=render&title=نقاش_المستخدم:Khaled&oldid=45576943
+https://ar.wikipedia.org/api/rest_v1/page/html/نقاش_المستخدم%3AKhaled/45576943
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.

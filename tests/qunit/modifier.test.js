@@ -40,6 +40,20 @@ QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
 			data: require( './data/enwiki-data.json' )
 		},
 		{
+			name: 'arwiki no-paragraph oldparser',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser-modified.html' ).render(),
+			config: require( './data/arwiki-config.json' ),
+			data: require( './data/arwiki-data.json' )
+		},
+		{
+			name: 'arwiki no-paragraph parsoid',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid-modified.html' ).render(),
+			config: require( './data/arwiki-config.json' ),
+			data: require( './data/arwiki-data.json' )
+		},
+		{
 			name: 'Must split a list to reply to one of the comments',
 			dom: mw.template.get( 'test.DiscussionTools', 'cases/split-list/split-list.html' ).render(),
 			expected: mw.template.get( 'test.DiscussionTools', 'cases/split-list/split-list-modified.html' ).render(),
@@ -132,6 +146,13 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 			expected: mw.template.get( 'test.DiscussionTools', 'cases/en-big-oldparser/en-big-oldparser-reply.html' ).render(),
 			config: require( './data/enwiki-config.json' ),
 			data: require( './data/enwiki-data.json' )
+		},
+		{
+			name: 'arwiki no-paragraph oldparser',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser-reply.html' ).render(),
+			config: require( './data/arwiki-config.json' ),
+			data: require( './data/arwiki-data.json' )
 		},
 		{
 			name: 'Signatures in funny places',
