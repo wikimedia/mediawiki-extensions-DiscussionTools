@@ -11,8 +11,6 @@ function ReplyWidgetPlain( comment, config ) {
 	// Parent constructor
 	ReplyWidgetPlain.super.call( this, comment, config );
 
-	this.mode = 'source';
-
 	// Events
 	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );
 }
@@ -50,6 +48,10 @@ ReplyWidgetPlain.prototype.clear = function () {
 
 ReplyWidgetPlain.prototype.isEmpty = function () {
 	return !this.replyBodyWidget.getValue().trim();
+};
+
+ReplyWidgetPlain.prototype.getMode = function () {
+	return 'source';
 };
 
 ReplyWidgetPlain.prototype.setup = function () {

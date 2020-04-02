@@ -113,9 +113,7 @@ ReplyWidget.prototype.getValue = null;
 
 ReplyWidget.prototype.isEmpty = null;
 
-ReplyWidget.prototype.getMode = function () {
-	return this.mode;
-};
+ReplyWidget.prototype.getMode = null;
 
 ReplyWidget.prototype.clear = function () {
 	if ( this.errorMessage ) {
@@ -193,7 +191,7 @@ ReplyWidget.prototype.onInputChange = function () {
 
 	this.replyButton.setDisabled( this.isEmpty() );
 
-	if ( this.mode !== 'source' ) {
+	if ( this.getMode() !== 'source' ) {
 		return;
 	}
 

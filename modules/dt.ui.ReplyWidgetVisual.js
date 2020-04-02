@@ -13,6 +13,9 @@ var
 function ReplyWidgetVisual( comment, config ) {
 	// Parent constructor
 	ReplyWidgetVisual.super.call( this, comment, config );
+
+	// TODO: Use user preference
+	this.defaultMode = 'source';
 }
 
 /* Inheritance */
@@ -23,7 +26,7 @@ OO.inheritClass( ReplyWidgetVisual, require( 'ext.discussionTools.ReplyWidget' )
 
 ReplyWidgetVisual.prototype.createReplyBodyWidget = function ( config ) {
 	return new CommentTargetWidget( $.extend( {
-		defaultMode: 'source'
+		defaultMode: this.defaultMode
 	}, config ) );
 };
 
@@ -49,6 +52,12 @@ ReplyWidgetVisual.prototype.isEmpty = function () {
 	return !surface || !surface.getModel().hasBeenModified();
 };
 
+ReplyWidgetVisual.prototype.getMode = function () {
+	return this.replyBodyWidget.target.getSurface() ?
+		this.replyBodyWidget.target.getSurface().getMode() :
+		this.defaultMode;
+};
+
 ReplyWidgetVisual.prototype.setup = function () {
 	var surface;
 
@@ -58,8 +67,6 @@ ReplyWidgetVisual.prototype.setup = function () {
 	this.replyBodyWidget.setDocument( '<p></p>' );
 
 	surface = this.replyBodyWidget.target.getSurface();
-
-	this.mode = surface.getMode();
 
 	// Events
 	surface.getModel().getDocument()
