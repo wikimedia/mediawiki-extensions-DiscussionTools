@@ -66,9 +66,12 @@ class DiscussionToolsHooks {
 				// Query parameter to load on any wikitext page for testing
 				$req->getVal( 'dtenable' ) ||
 				// If configured, load on all talk pages
-				( $enabled && $title->isTalkPage() )
-				// TODO: Allow non talk pages to be treated as talk pages
-				// using a magic word.
+				( $enabled && (
+					$title->isTalkPage() ||
+					// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
+					$output->showNewSectionLink()
+					// TODO: Consider not loading if forceHideNewSectionLink is true.
+				) )
 			)
 		) {
 			$output->addModules( [
