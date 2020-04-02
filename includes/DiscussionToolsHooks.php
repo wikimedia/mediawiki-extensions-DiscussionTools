@@ -45,8 +45,9 @@ class DiscussionToolsHooks {
 	 * @param Skin $skin The skin that's going to build the UI.
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) {
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
+		$coreConfig = RequestContext::getMain()->getConfig();
+		$services = MediaWikiServices::getInstance();
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 		$title = $output->getTitle();
 		$actionName = Action::getActionName( $output->getContext() );
 		$req = $output->getRequest();
@@ -64,9 +65,10 @@ class DiscussionToolsHooks {
 			(
 				// Query parameter to load on any wikitext page for testing
 				$req->getVal( 'dtenable' ) ||
-				// If configured, load on all talk pages
+				// If configured, load on all pages that probably have discussions
 				( $enabled && (
-					$title->isTalkPage() ||
+					// `wantSignatures` includes talk pages
+					$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
 					// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
 					$output->showNewSectionLink()
 					// TODO: Consider not loading if forceHideNewSectionLink is true.
