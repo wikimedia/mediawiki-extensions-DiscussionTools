@@ -3,23 +3,31 @@
 		"authors": [
 			"Elroy",
 			"Dedalus",
-			"Mainframe98"
+			"Mainframe98",
+			"Encycloon"
 		]
 	},
 	"discussiontools": "Overleghulpmiddelen",
-	"discussiontools-defaultsummary-reply": "Antwoorden",
+	"discussiontools-defaultsummary-reply": "Reactie",
 	"discussiontools-desc": "Hulpmiddelen om overlegpagina's te verbeteren",
-	"discussiontools-replylink": "Antwoorden",
+	"discussiontools-preference-label": "Overleghulpmiddelen",
+	"discussiontools-replylink": "Reageer",
 	"discussiontools-replywidget-anon-warning": "<strong>U bent niet aangemeld.</strong> Om naamsvermelding met uw naam te krijgen in plaats van uw IP-adres, kunt u [$1 zich aanmelden] of [$2 een account aanmaken].",
 	"discussiontools-replywidget-cancel": "Annuleren",
 	"discussiontools-replywidget-loading": "Bezig met laden...",
+	"discussiontools-replywidget-placeholder-reply": "Reactie op {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Voorvertoning",
-	"discussiontools-replywidget-reply": "Antwoorden",
+	"discussiontools-replywidget-reply": "Reageren",
 	"discussiontools-replywidget-terms-click": "Door op \"$1\" te klikken, gaat u akkoord met de gebruiksvoorwaarden van deze wiki.",
+	"discussiontools-error-comment-disappeared": "Bericht om op te reageren niet gevonden; mogelijk werd het verwijderd of verplaatst. Ververs de pagina en probeer het opnieuw.",
 	"tag-discussiontools-description": "Bewerking gemaakt met DiscussionTools",
-	"tag-discussiontools-edit": "reactie bewerkt",
-	"tag-discussiontools-newtopic": "onderwerp toegevoegd",
+	"tag-discussiontools-edit": "Reactie bewerkt",
+	"tag-discussiontools-newtopic": "Onderwerp toegevoegd",
 	"tag-discussiontools-newtopic-description": "De gebruiker heeft een nieuw onderwerp aan de pagina toegevoegd met DiscussionTools",
-	"tag-discussiontools-reply": "beantwoord",
-	"tag-discussiontools-reply-description": "De gebruiker heeft op een bestaand bericht geantwoord met DiscussionTools"
+	"tag-discussiontools-reply": "gereageerd",
+	"tag-discussiontools-reply-description": "De gebruiker heeft op een bericht gereageerd met DiscussionTools",
+	"tag-discussiontools-source": "Brontekst",
+	"tag-discussiontools-source-description": "DiscussionTools werd in de brontekstmodus gebruikt",
+	"tag-discussiontools-visual": "Visuele tekstverwerker",
+	"tag-discussiontools-visual-description": "DiscussionTools werd in de visuele modus gebruikt"
 }
