@@ -335,6 +335,8 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 
 			data = response.visualeditor;
 			parsoidDoc = ve.parseXhtml( data.content );
+			// Remove section wrappers, they interfere with transclusion handling
+			mw.libs.ve.unwrapParsoidSections( parsoidDoc.body );
 			// Mirror VE's ve.init.mw.Target.prototype.fixBase behavior:
 			ve.fixBase( parsoidDoc, document, ve.resolveUrl(
 				// Don't replace $1 with the page name, because that'll break if

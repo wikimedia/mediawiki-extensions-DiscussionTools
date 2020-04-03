@@ -232,6 +232,13 @@ QUnit.test( '#getTranscludedFrom', function ( assert ) {
 
 	cases = [
 		{
+			name: 'transclusions',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/transclusions/transclusions.html' ).render(),
+			expected: require( './cases/transclusions/transclusions-transcludedFrom.json' ),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		},
+		{
 			name: 'enwiki parsoid',
 			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-parsoid/en-big-parsoid.html' ).render(),
 			expected: require( './cases/en-big-parsoid/en-big-parsoid-transcludedFrom.json' ),
@@ -251,6 +258,8 @@ QUnit.test( '#getTranscludedFrom', function ( assert ) {
 
 	for ( i = 0; i < cases.length; i++ ) {
 		$( fixture ).empty().append( cases[ i ].dom );
+		mw.libs.ve.unwrapParsoidSections( fixture );
+
 		testUtils.overrideMwConfig( cases[ i ].config );
 		testUtils.overrideParserData( cases[ i ].data );
 
