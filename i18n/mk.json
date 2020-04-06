@@ -17,6 +17,7 @@
 	"discussiontools-replywidget-preview": "Преглед",
 	"discussiontools-replywidget-reply": "Одговори",
 	"discussiontools-replywidget-terms-click": "Стискајќи на „$1“ се согласувате со условите на употреба на ова вики.",
+	"discussiontools-replywidget-transcluded": "Вашиот коментар ќе биде зачуван во [[$1]].",
 	"discussiontools-error-comment-disappeared": "Не можев да го пронајдам коментарот на кој одговарате на страницата. Можеби е избришана или преместена на друга страница. Превчитајте ја страницата и обидете се повторно.",
 	"discussiontools-error-comment-is-transcluded": "Не може да се одговири на коментарот со помош на оваа алатка. Обидете се со уредникот на целата страница.",
 	"discussiontools-error-comment-is-transcluded-title": "Овде (сè уште) не може да се одговара на коментаров, бидејќи истиот е вчитан од друга страница. Појдете на [[$1]] за да одговорите на него.",

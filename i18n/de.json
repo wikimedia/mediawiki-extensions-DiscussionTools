@@ -19,6 +19,7 @@
 	"discussiontools-replywidget-preview": "Vorschau",
 	"discussiontools-replywidget-reply": "Antworten",
 	"discussiontools-replywidget-terms-click": "Durch Klicken auf \"$1\" stimmst du den Nutzungsbedingungen für dieses Wiki zu.",
+	"discussiontools-replywidget-transcluded": "Dein Kommentar wird auf [[$1]] gespeichert.",
 	"discussiontools-error-comment-disappeared": "Konnte den Kommentar, auf den du antwortesz, nicht auf der Seite finden. Er könnte gelöscht oder auf eine andere Seite verschoben worden sein. Bitte lade die Seite neu und versuche es erneut.",
 	"discussiontools-error-comment-is-transcluded": "Dieser Kommentar kann mit diesem Tool nicht beantwortet werden. Bitte versuche stattdessen die ganze Seite zu bearbeiten.",
 	"discussiontools-error-comment-is-transcluded-title": "Dieser Kommentar kann hier (noch) nicht beantwortet werden, da er von einer anderen Seite geladen wird. Bitte gehe auf [[$1]], um darauf zu antworten.",
