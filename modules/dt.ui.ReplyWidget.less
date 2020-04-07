@@ -1,4 +1,6 @@
 .dt-ui-replyWidget {
+	margin-bottom: 1em;
+
 	> .oo-ui-textInputWidget {
 		max-width: none;
 
@@ -22,8 +24,14 @@
 		font-size: 0.75em;
 		color: #54595d;
 
-		> p:first-child {
-			margin-top: 0;
+		> p {
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 

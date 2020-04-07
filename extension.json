@@ -29,7 +29,8 @@
 					"name": "controller/contLangMessages.json",
 					"callback": "DiscussionToolsData::getContentLanguageMessages",
 					"callbackParam": [
-						"discussiontools-defaultsummary-reply"
+						"discussiontools-defaultsummary-reply",
+						"discussiontools-replywidget-feedback-link"
 					]
 				},
 				{
@@ -86,6 +87,7 @@
 			"messages": [
 				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
+				"discussiontools-replywidget-feedback",
 				"discussiontools-replywidget-placeholder-reply",
 				"discussiontools-replywidget-preview",
 				"discussiontools-replywidget-reply",

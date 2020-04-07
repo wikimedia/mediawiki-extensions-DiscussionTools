@@ -53,9 +53,20 @@ function ReplyWidget( parsoidData, config ) {
 			mw.message( 'discussiontools-replywidget-transcluded', this.pageData.pageName ).parseDom()
 		) );
 	}
-	this.$footer.append( $( '<p>' ).append(
-		mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
-	) );
+	this.$footer.append(
+		$( '<p>' ).append(
+			mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
+		),
+		$( '<p>' ).append(
+			$( '<a>' )
+				.attr( {
+					href: mw.msg( 'discussiontools-replywidget-feedback-link' ),
+					target: '_blank',
+					rel: 'noopener'
+				} )
+				.text( mw.msg( 'discussiontools-replywidget-feedback' ) )
+		)
+	);
 	this.$actionsWrapper.append( this.$footer, this.$actions );
 
 	// Events

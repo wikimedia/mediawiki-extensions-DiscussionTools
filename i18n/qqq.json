@@ -17,6 +17,8 @@
 	"discussiontools-replylink": "Label for the reply link added after each comment.",
 	"discussiontools-replywidget-anon-warning": "Warning message to be displayed when anonymous user starts writing a new topic or reply.\n* $1 is a URL to log in.\n* $2 is a URL to register an account.",
 	"discussiontools-replywidget-cancel": "Label for the cancel button in the reply widget",
+	"discussiontools-replywidget-feedback": "Label for link to share feedback about the reply widget",
+	"discussiontools-replywidget-feedback-link": "{{optional|Link to a page where users can share feedback about the reply widget. Defaults to a page on MediaWiki.org.}}",
 	"discussiontools-replywidget-loading": "Message shown while the reply widget is loading",
 	"discussiontools-replywidget-placeholder-reply": "Placeholder describing who is being replied to.\n\nParameters:\n* $1 – username of the person who wrote the previous comment",
 	"discussiontools-replywidget-preview": "Label for the preview area of the reply widget",
