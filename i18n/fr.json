@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Verdy p",
-			"Thibaut120094",
-			"Gomoko",
 			"Choodyam",
 			"Derugon",
-			"Pamputt",
 			"Eneelk",
-			"Framawiki"
+			"Framawiki",
+			"Gomoko",
+			"Pamputt",
+			"Thibaut120094",
+			"Verdy p"
 		]
 	},
 	"discussiontools": "Outils de discussion",
@@ -24,6 +24,7 @@
 	"discussiontools-replywidget-preview": "Aperçu",
 	"discussiontools-replywidget-reply": "Répondre",
 	"discussiontools-replywidget-terms-click": "En cliquant sur « $1 », vous acceptez les conditions d’utilisation de ce wiki.",
+	"discussiontools-replywidget-transcluded": "Votre commentaire sera enregistré dans [[$1]].",
 	"discussiontools-error-comment-disappeared": "Impossible de trouver le commentaire auquel vous répondez sur cette page. Il a peut-être été supprimé ou déplacé sur une autre page. Veuillez rafraîchir la page et réessayer.",
 	"discussiontools-error-comment-is-transcluded": "Cet outil ne permet pas de répondre à ce commentaire. Veuillez utiliser l’éditeur de page complet à la place.",
 	"discussiontools-error-comment-is-transcluded-title": "Impossible de répondre à ce commentaire ici (pour l’instant) car il est chargé depuis une autre page. Veuillez vous rendre sur [[$1]] pour y répondre.",
