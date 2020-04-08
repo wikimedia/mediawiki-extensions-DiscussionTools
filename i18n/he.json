@@ -19,6 +19,7 @@
 	"discussiontools-replywidget-preview": "תצוגה מקדימה",
 	"discussiontools-replywidget-reply": "להגיב",
 	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של הוויקי הזה.",
+	"discussiontools-replywidget-transcluded": "התגובה שלך תישמר בדף [[$1]].",
 	"discussiontools-error-comment-disappeared": "לא היה אפשר למצוא את ההערה שניסית להשיב עליה בדף. אולי היא נמחקה או הועברה לדף אחר. נא לרענן את הדף ולנסות שוב.",
 	"discussiontools-error-comment-is-transcluded": "לא ניתן להשיב להערה הזאת באמצעות הכלי הזה. נא לנסות להשתמש בעורך הדף השלם במקום זאת.",
 	"discussiontools-error-comment-is-transcluded-title": "לא ניתן להשיב להערה הזאת כאן (בינתיים), כי זה נטען מדף אחר. נא ללכת לדף [[$1]] כדי להשיב.",
