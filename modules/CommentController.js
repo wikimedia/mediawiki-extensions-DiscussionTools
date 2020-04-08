@@ -396,6 +396,15 @@ CommentController.prototype.switchToVisual = function () {
 		commentController = this;
 
 	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext ).trim();
+
+	// Replace wikitext signatures with a special marker recognized by DtDmMWSignatureNode
+	// to render them as signature nodes in visual mode.
+	wikitext = wikitext.replace(
+		// Replace ~~~~ (four tildes), but not ~~~~~ (five tildes)
+		/([^~]|^)~~~~([^~]|$)/g,
+		'$1<span data-dtsignatureforswitching="1"></span>$2'
+	);
+
 	if ( wikitext ) {
 		wikitext = wikitext.split( '\n' ).map( function ( line ) {
 			return ':' + line;

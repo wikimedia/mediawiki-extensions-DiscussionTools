@@ -1,3 +1,6 @@
+var
+	registries = require( './dt.ui.registries.js' );
+
 /**
  * DiscussionTools-specific target, inheriting from the stand-alone target
  *
@@ -72,6 +75,8 @@ CommentTarget.prototype.attachToolbar = function () {
 
 CommentTarget.prototype.getSurfaceConfig = function ( config ) {
 	return CommentTarget.super.prototype.getSurfaceConfig.call( this, ve.extendObject( {
+		commandRegistry: registries.commandRegistry,
+		sequenceRegistry: registries.sequenceRegistry,
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$overlayContainer: $( '#content' )
 	}, config ) );
