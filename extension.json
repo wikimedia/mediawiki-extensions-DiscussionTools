@@ -162,6 +162,7 @@
 			"cases/lrm-signature/lrm-signature.json",
 			"cases/fallback-encoding-link/fallback-encoding-link.json",
 			"modifier.test.js",
+			"controller.test.js",
 			"parser.test.js"
 		],
 		"templates": [

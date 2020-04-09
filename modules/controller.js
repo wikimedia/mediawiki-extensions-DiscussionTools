@@ -125,8 +125,17 @@ function traverseNode( parent ) {
 }
 
 function autoSignWikitext( wikitext ) {
+	var matches;
 	wikitext = wikitext.trim();
-	if ( wikitext.slice( -4 ) !== '~~~~' ) {
+	if ( ( matches = wikitext.match( /~{3,5}$/ ) ) ) {
+		// Sig detected, check it has the correct number of tildes
+		if ( matches[ 0 ].length !== 4 ) {
+			wikitext = wikitext.slice( 0, -matches[ 0 ].length ) + '~~~~';
+		}
+		// Otherwise 4 tilde signature is left alone,
+		// with any adjacent characters
+	} else {
+		// No sig, append space and sig
 		wikitext += ' ~~~~';
 	}
 	return wikitext;
