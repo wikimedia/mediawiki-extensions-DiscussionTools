@@ -12,14 +12,17 @@
 	"discussiontools-desc": "Herramientas para mejorar páginas de discusión.",
 	"discussiontools-preference-label": "Herramientas de discusión",
 	"discussiontools-replylink": "Responder",
+	"discussiontools-replywidget-anon-warning": "<strong>No has iniciado sesión.</strong> Para recibir atribución con tu nombre en lugar de tu dirección IP, puedes [$1 iniciar sesión] o [$2 crear una cuenta].",
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-loading": "Cargando...",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Previsualización",
 	"discussiontools-replywidget-reply": "Responder",
+	"discussiontools-replywidget-terms-click": "Al pulsar en «$1» aceptas los términos de uso de este wiki.",
 	"tag-discussiontools-description": "Edición hecha con DiscussionTools",
 	"tag-discussiontools-edit": "Editar comentario",
 	"tag-discussiontools-edit-description": "El usuario editó un comentario existente con DiscussionTools",
+	"tag-discussiontools-newtopic": "Añadir tema",
 	"tag-discussiontools-reply": "Respuesta",
-	"tag-discussiontools-reply-description": "El usuario respondió a un comentario existente con DiscussionTools"
+	"tag-discussiontools-reply-description": "El usuario respondió a un comentario con DiscussionTools"
 }
