@@ -141,6 +141,12 @@ function autoSignWikitext( wikitext ) {
 	return wikitext;
 }
 
+function sanitizeWikitextLinebreaks( wikitext ) {
+	return wikitext
+		.replace( /\r/g, '\n' )
+		.replace( /\n+/g, '\n' );
+}
+
 function postReply( widget, parsoidData ) {
 	var wikitext, doc, container, newParsoidItem,
 		comment = parsoidData.comment;
@@ -152,7 +158,7 @@ function postReply( widget, parsoidData ) {
 		// Convert wikitext to comment DOM
 		wikitext = widget.getValue();
 		// Use autoSign to avoid double signing
-		wikitext = autoSignWikitext( wikitext );
+		wikitext = sanitizeWikitextLinebreaks( autoSignWikitext( wikitext ) );
 		wikitext.split( '\n' ).forEach( function ( line ) {
 			var p = doc.createElement( 'p' );
 			p.appendChild( modifier.createWikitextNode( line ) );
@@ -478,5 +484,6 @@ module.exports = {
 	init: init,
 	getParsoidCommentData: getParsoidCommentData,
 	save: save,
-	autoSignWikitext: autoSignWikitext
+	autoSignWikitext: autoSignWikitext,
+	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks
 };

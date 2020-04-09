@@ -65,3 +65,47 @@ QUnit.test( 'autoSignWikitext', function ( assert ) {
 		);
 	} );
 } );
+
+QUnit.test( 'sanitizeWikitextLinebreaks', function ( assert ) {
+	var cases;
+
+	cases = [
+		{
+			msg: 'Two linebreaks',
+			wikitext: 'Foo\n\nbar\n\nbaz',
+			expected: 'Foo\nbar\nbaz'
+		},
+		{
+			wikitext: 'Foo\n\nbar\n\nbaz',
+			expected: 'Foo\nbar\nbaz'
+		},
+		{
+			msg: 'Three linebreaks',
+			wikitext: 'Foo\n\nbar\n\nbaz',
+			expected: 'Foo\nbar\nbaz'
+		},
+		{
+			msg: 'R+N linebreaks',
+			wikitext: 'Foo\r\nbar\r\nbaz',
+			expected: 'Foo\nbar\nbaz'
+		},
+		{
+			msg: 'Two R+N linebreaks',
+			wikitext: 'Foo\r\n\r\nbar\r\n\r\nbaz',
+			expected: 'Foo\nbar\nbaz'
+		},
+		{
+			msg: 'R linebreaks',
+			wikitext: 'Foo\rbar\rbaz',
+			expected: 'Foo\nbar\nbaz'
+		}
+	];
+
+	cases.forEach( function ( caseItem ) {
+		assert.strictEqual(
+			controller.sanitizeWikitextLinebreaks( caseItem.wikitext ),
+			caseItem.expected,
+			caseItem.msg
+		);
+	} );
+} );

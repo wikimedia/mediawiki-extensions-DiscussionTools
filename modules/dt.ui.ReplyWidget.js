@@ -204,7 +204,9 @@ ReplyWidget.prototype.onInputChange = function () {
 	if ( !wikitext.trim() ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
-		wikitext = controller.autoSignWikitext( wikitext );
+		wikitext = controller.sanitizeWikitextLinebreaks(
+			controller.autoSignWikitext( wikitext )
+		);
 		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.6;">~~~~</span>';
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
 		this.previewRequest = parsePromise = this.api.post( {
