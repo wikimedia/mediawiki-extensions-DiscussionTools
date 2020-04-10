@@ -4,6 +4,7 @@ var
 	parser = require( './parser.js' ),
 	modifier = require( './modifier.js' ),
 	logger = require( './logger.js' ),
+	storage = mw.storage.session,
 	pageDataCache = {},
 	$pageContainer,
 	scrollPadding = { top: 10, bottom: 10 },
@@ -115,6 +116,10 @@ function setupComment( comment ) {
 
 	$replyLinkButtons.append( $replyLink );
 	modifier.addReplyLink( comment, $replyLinkButtons[ 0 ] );
+
+	if ( storage.get( 'reply/' + comment.id + '/body' ) ) {
+		$replyLink.trigger( 'click' );
+	}
 }
 
 function traverseNode( parent ) {

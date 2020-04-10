@@ -58,6 +58,10 @@ ReplyWidgetVisual.prototype.getMode = function () {
 		this.defaultMode;
 };
 
+ReplyWidgetVisual.prototype.initAutoSave = function () {
+	// TODO: Implement
+};
+
 ReplyWidgetVisual.prototype.setup = function () {
 	var surface;
 
