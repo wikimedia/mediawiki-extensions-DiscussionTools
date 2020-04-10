@@ -2,16 +2,35 @@
 	"@metadata": {
 		"authors": [
 			"Bugoslav",
+			"MaGa",
 			"Neptune, the Mystic"
 		]
 	},
+	"discussiontools": "Alati za raspravu",
+	"discussiontools-defaultsummary-reply": "Odgovor",
+	"discussiontools-desc": "Alati za poboljšanje stranica za razgovor.",
+	"discussiontools-preference-label": "Alati za raspravu",
+	"discussiontools-replylink": "Odgovori",
+	"discussiontools-replywidget-anon-warning": "<strong>Niste prijavljeni.</strong> Da biste doprinosili pod suradničkim imenom umjesto IP adresom, možete se [$1 prijaviti] ili [$2 stvoriti račun].",
+	"discussiontools-replywidget-cancel": "Odustani",
 	"discussiontools-replywidget-loading": "Učitava se…",
+	"discussiontools-replywidget-placeholder-reply": "Odgovor suradniku/ci {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Pregled",
+	"discussiontools-replywidget-reply": "Odgovori",
+	"discussiontools-replywidget-terms-click": "Klikom na \"$1\", slažete se s uvjetima uporabe na ovom wikiju.",
+	"discussiontools-replywidget-transcluded": "Vaš će komentar biti spremljen na [[$1]].",
 	"discussiontools-error-comment-disappeared": "Ne možemo pronaći komentar na koji odgovarate na stranici. Vjerojatno je izbrisan ili premješten na drugu stranicu. Molimo Vas da ponovno učitate stranicu i pokušate ponovno.",
 	"discussiontools-error-comment-is-transcluded": "Ne možete odgovoriti na ovaj komentar koristeći se ovim alatom. Molimo, pokušajte umjesto toga odgovoriti koristeći se uređivačem cijele stranice.",
 	"discussiontools-error-comment-is-transcluded-title": "Ovdje (još) ne možete odgovoriti na ovaj komentar jer je učitan s druge stranice. Molimo, idite na [[$1]] kako biste odgovorili na njega.",
+	"tag-discussiontools-description": "Uređivanje uz pomoć alata za raspravu",
 	"tag-discussiontools-edit": "Uredi komentar",
+	"tag-discussiontools-edit-description": "Suradnik je uredio postojeći komentar s alatom za rasprave",
 	"tag-discussiontools-newtopic": "Dodaj temu",
+	"tag-discussiontools-newtopic-description": "Suradnik je dodao novu temu na stranicu s alatom za rasprave",
 	"tag-discussiontools-reply": "Odgovor",
-	"tag-discussiontools-source": "Izvor"
+	"tag-discussiontools-reply-description": "Suradnik je odgovorio na komentar s alatom za rasprave",
+	"tag-discussiontools-source": "Izvor",
+	"tag-discussiontools-source-description": "Alat za raspravu bio je u načinu uređivanja kôda",
+	"tag-discussiontools-visual": "Vizualno",
+	"tag-discussiontools-visual-description": "Alat za raspravu bio je u vizualnom načinu uređivanja"
 }
