@@ -18,7 +18,8 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 	var // Schema class is provided by ext.eventLogging
 		Schema = mw.eventLog.Schema,
 		user = mw.user,
-		sampleRate = mw.config.get( 'wgWMESchemaEditAttemptStepSamplingRate' ),
+		sampleRate = mw.config.get( 'wgDTSchemaEditAttemptStepSamplingRate' ) ||
+			mw.config.get( 'wgWMESchemaEditAttemptStepSamplingRate' ),
 		actionPrefixMap = {
 			firstChange: 'first_change',
 			saveIntent: 'save_intent',
@@ -180,7 +181,10 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 		} else {
 			schemaEditAttemptStep.log(
 				data,
-				mw.config.get( 'wgWMESchemaEditAttemptStepOversample' ) ? 1 : sampleRate
+				(
+					mw.config.get( 'wgDTSchemaEditAttemptStepOversample' ) ||
+					mw.config.get( 'wgWMESchemaEditAttemptStepOversample' )
+				) ? 1 : sampleRate
 			);
 		}
 	} );

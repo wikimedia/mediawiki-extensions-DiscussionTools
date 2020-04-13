@@ -203,6 +203,7 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": "DiscussionToolsHooks::onBeforePageDisplay",
+		"ResourceLoaderGetConfigVars": "DiscussionToolsHooks::onResourceLoaderGetConfigVars",
 		"GetBetaFeaturePreferences": "DiscussionToolsHooks::onGetBetaPreferences",
 		"ListDefinedTags": "DiscussionToolsHooks::onListDefinedTags",
 		"ChangeTagsListActive": "DiscussionToolsHooks::onListDefinedTags",
@@ -220,6 +221,14 @@
 		"DiscussionToolsUseVisualEditor": {
 			"value": false,
 			"description": "Use VisualEditor for editing replies (both visual and wikitext)."
+		},
+		"DTSchemaEditAttemptStepSamplingRate": {
+			"value": false,
+			"description": "Rate at which to sample sessions for instrumentation; overrides WikimediaEvents rate if set"
+		},
+		"DTSchemaEditAttemptStepOversample": {
+			"value": false,
+			"description": "Oversample EditAttemptStep logging; distinct from rate tuning, as it'll flag the events as being oversampled"
 		}
 	},
 	"ConfigRegistry": {

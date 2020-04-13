@@ -81,6 +81,23 @@ class DiscussionToolsHooks {
 	}
 
 	/**
+	 * Set static (not request-specific) JS configuration variables
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ResourceLoaderGetConfigVars
+	 * @param array &$vars Array of variables to be added into the output of the startup module
+	 * @param string $skinName Current skin name to restrict config variables to a certain skin
+	 */
+	public static function onResourceLoaderGetConfigVars( &$vars, $skinName ) {
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'discussiontools' );
+
+		$vars['wgDTSchemaEditAttemptStepSamplingRate'] =
+			$dtConfig->get( 'DTSchemaEditAttemptStepSamplingRate' );
+		$vars['wgDTSchemaEditAttemptStepOversample'] =
+			$dtConfig->get( 'DTSchemaEditAttemptStepOversample' );
+	}
+
+	/**
 	 * Handler for the GetBetaPreferences hook, to add and hide user beta preferences as configured
 	 *
 	 * @param User $user The user object
