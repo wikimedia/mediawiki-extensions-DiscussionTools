@@ -57,9 +57,8 @@ class DiscussionToolsHooks {
 		);
 
 		if (
-			// Don't show on edit pages
-			$actionName !== 'edit' &&
-			$actionName !== 'submit' &&
+			// Don't show on edit pages, history, etc.
+			$actionName === 'view' &&
 			// Only wikitext pages (e.g. not Flow boards)
 			$title->getContentModel() === CONTENT_MODEL_WIKITEXT &&
 			(
