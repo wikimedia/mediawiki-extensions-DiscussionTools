@@ -77,6 +77,15 @@ class DiscussionToolsHooks {
 				'ext.discussionTools.init'
 			] );
 		}
+
+		if ( $actionName === 'edit' && $req->getVal( 'dtlinterror' ) ) {
+			// TODO: Should we copy this module from the Linter extension?
+			$output->addJsConfigVars( [
+				'wgLinterErrorLocation' =>
+					array_map( 'intval', explode( '-', $req->getVal( 'dtlinterror' ), 2 ) ),
+			] );
+			$output->addModules( 'ext.linter.edit' );
+		}
 	}
 
 	/**
