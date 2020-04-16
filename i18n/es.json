@@ -4,7 +4,8 @@
 			"Canaan9801",
 			"Fitoschido",
 			"Hasley",
-			"Ihojose"
+			"Ihojose",
+			"Juenti el toju"
 		]
 	},
 	"discussiontools": "Herramientas de discusión.",
@@ -14,6 +15,7 @@
 	"discussiontools-replylink": "Responder",
 	"discussiontools-replywidget-anon-warning": "<strong>No has iniciado sesión.</strong> Para recibir atribución con tu nombre en lugar de tu dirección IP, puedes [$1 iniciar sesión] o [$2 crear una cuenta].",
 	"discussiontools-replywidget-cancel": "Cancelar",
+	"discussiontools-replywidget-feedback": "Deja tus comentarios acerca de esta característica",
 	"discussiontools-replywidget-loading": "Cargando...",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Previsualización",

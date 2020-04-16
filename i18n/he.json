@@ -14,6 +14,7 @@
 	"discussiontools-replylink": "להגיב",
 	"discussiontools-replywidget-anon-warning": "<strong>לא נכנסת לחשבון.</strong> כדי לקבל ייחוס עם שמך ולא עם כתובת ה־IP שלך, אפשר [$1 להיכנס] או [$2 ליצור חשבון].",
 	"discussiontools-replywidget-cancel": "ביטול",
+	"discussiontools-replywidget-feedback": "שתפו איתנו משוב על התכונה הזאת",
 	"discussiontools-replywidget-loading": "טעינה...",
 	"discussiontools-replywidget-placeholder-reply": "תשובה ל{{GRAMMAR:תחילית|{{BIDI:$1}}}}",
 	"discussiontools-replywidget-preview": "תצוגה מקדימה",

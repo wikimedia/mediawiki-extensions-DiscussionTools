@@ -13,6 +13,7 @@
 	"discussiontools-replylink": "回覆",
 	"discussiontools-replywidget-anon-warning": "<strong>您尚未登入。</strong>要收到使用您的名稱的署名而非 IP 位址，您可以[$1 登入]或[$2 建立一個帳號]。",
 	"discussiontools-replywidget-cancel": "取消",
+	"discussiontools-replywidget-feedback": "分享有關此功能的意見回饋",
 	"discussiontools-replywidget-loading": "載入中…",
 	"discussiontools-replywidget-placeholder-reply": "回覆給{{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "預覽",

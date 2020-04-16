@@ -12,6 +12,7 @@
 	"discussiontools-replylink": "Yanıtla",
 	"discussiontools-replywidget-anon-warning": "<strong>Giriş yapmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 giriş yapın] veya [$2 bir hesap oluşturabilirsiniz].",
 	"discussiontools-replywidget-cancel": "İptal",
+	"discussiontools-replywidget-feedback": "Bu özellik hakkında geri bildirim paylaşın",
 	"discussiontools-replywidget-loading": "Yükleniyor...",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} adlı kullanıcıyı yanıtlayın",
 	"discussiontools-replywidget-preview": "Önizleme",
