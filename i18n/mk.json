@@ -12,6 +12,7 @@
 	"discussiontools-replylink": "Одговори",
 	"discussiontools-replywidget-anon-warning": "<strong>Не сте најавени.</strong> За да бидете наведени како уредник по име наместо по IP-адреса, [$1 најавете се] или [$2 направете сметка].",
 	"discussiontools-replywidget-cancel": "Откажи",
+	"discussiontools-replywidget-feedback": "Дајте мислење за оваа можност",
 	"discussiontools-replywidget-loading": "Вчитувам…",
 	"discussiontools-replywidget-placeholder-reply": "Одговор на {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Преглед",
