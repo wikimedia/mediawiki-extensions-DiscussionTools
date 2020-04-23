@@ -5,10 +5,12 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "প্রত্যুত্তর",
+	"discussiontools": "আলোচনা সরঞ্জাম",
+	"discussiontools-defaultsummary-reply": "উত্তর",
 	"discussiontools-replylink": "উত্তর দিন",
 	"discussiontools-replywidget-cancel": "বাতিল",
 	"discussiontools-replywidget-loading": "লোড করা হচ্ছে…",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} কে উত্তর দিন",
 	"discussiontools-replywidget-preview": "প্রাকদর্শন",
 	"discussiontools-replywidget-reply": "উত্তর দিন",
 	"tag-discussiontools-edit": "মন্তব্য সম্পাদনা",
