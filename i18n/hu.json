@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bencemac",
 			"Misibacsi",
 			"Tacsipacsi"
 		]
@@ -9,14 +10,17 @@
 	"discussiontools-defaultsummary-reply": "Válasz",
 	"discussiontools-desc": "Eszközök a vitalapok fejlesztésére.",
 	"discussiontools-preference-label": "Vitalapi eszközök",
+	"discussiontools-preference-description": "Új mód [//www.mediawiki.org/wiki/Talk_pages_project/replying konkrét vitalapi hozzászólásokra való válaszolásra].\n\nMegjegyzés: idővel újabb vitalapi interakciót segítő eszközök kerülnek majd hozzáadásra.\n\nEzen funkciók újdonságairól a [//www.mediawiki.org/wiki/Talk_pages_project/Updates Talk pages projekt frissítéseket tartalmazó lapján] informálódhatsz.",
 	"discussiontools-replylink": "Válasz",
 	"discussiontools-replywidget-anon-warning": "<strong>Nem vagy bejelentkezve.</strong> Ha azt szeretnéd, hogy a nevedhez kapcsolódjon a szerkesztés az IP-címed helyett, [$1 jelentkezz be] vagy [$2 regisztrálj].",
 	"discussiontools-replywidget-cancel": "Mégse",
+	"discussiontools-replywidget-feedback": "Visszajelzés küldése erről a szoftverről",
 	"discussiontools-replywidget-loading": "Betöltés…",
 	"discussiontools-replywidget-placeholder-reply": "Válasz neki: {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Előnézet",
 	"discussiontools-replywidget-reply": "Válasz",
 	"discussiontools-replywidget-terms-click": "A „$1” gombra kattintással elfogadod ezen wiki felhasználási feltételeit.",
+	"discussiontools-replywidget-transcluded": "Hozzászólásod a(z) [[$1]] lapon lesz elmentve.",
 	"discussiontools-error-comment-disappeared": "Nem sikerült megtalálni a lapon azt a hozzászólást, amire éppen válaszolsz. Lehet, hogy törölték vagy áthelyezték egy másik lapra. Töltsd újra a lapot, és próbáld újra.",
 	"discussiontools-error-comment-is-transcluded": "Erre a hozzászólásra nem lehet válaszolni ezzel az eszközzel. Próbáld a teljes lapot szerkeszteni.",
 	"discussiontools-error-comment-is-transcluded-title": "Erre a hozzászólásra (egyelőre) nem lehet itt válaszolni, mert egy másik lapról van betöltve. Menj a(z) [[$1]] lapra a válaszoláshoz.",
