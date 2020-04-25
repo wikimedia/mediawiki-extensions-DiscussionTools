@@ -68,6 +68,13 @@ QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
 			data: require( './data/enwiki-data.json' )
 		},
 		{
+			name: 'Reply inserted inside/outside various wrapper elements',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/wrappers/wrappers.html' ).render(),
+			expected: mw.template.get( 'test.DiscussionTools', 'cases/wrappers/wrappers-modified.html' ).render(),
+			config: require( './data/enwiki-config.json' ),
+			data: require( './data/enwiki-data.json' )
+		},
+		{
 			name: 'Signatures in funny places',
 			dom: mw.template.get( 'test.DiscussionTools', 'cases/signatures-funny/signatures-funny.html' ).render(),
 			expected: mw.template.get( 'test.DiscussionTools', 'cases/signatures-funny/signatures-funny-modified.html' ).render(),
