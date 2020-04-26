@@ -350,7 +350,10 @@ function getPageData( pageName, oldId ) {
 	}
 	pageDataCache[ pageName ][ oldId ] = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
 		return mw.libs.ve.targetLoader.requestPageData(
-			'visual', pageName, { oldId: oldId }
+			'visual', pageName, {
+				oldId: oldId,
+				lint: true
+			}
 		);
 	}, function () {
 		// Clear on failure
@@ -372,7 +375,8 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 
 	return getPageData( pageName, oldId )
 		.then( function ( response ) {
-			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle, follow;
+			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle, follow,
+				lintErrors, lintLocation, lintType;
 
 			data = response.visualeditor;
 			parsoidDoc = ve.parseXhtml( data.content );
@@ -428,6 +432,27 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 					code: 'comment-is-transcluded',
 					html: transcludedErrMsg
 				} ] } ).promise();
+			}
+
+			if ( response.visualeditor.lint ) {
+				// Only lint errors that break editing, namely 'fostered'
+				lintErrors = response.visualeditor.lint.filter( function ( item ) {
+					return item.type === 'fostered';
+				} );
+
+				if ( lintErrors.length ) {
+					// This only reports the first error
+					lintLocation = lintErrors[ 0 ].dsr.slice( 0, 2 ).join( '-' );
+					lintType = lintErrors[ 0 ].type;
+
+					return $.Deferred().reject( 'lint', { errors: [ {
+						code: 'lint',
+						html: mw.message( 'discussiontools-error-lint',
+							'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Lint_errors/' + lintType,
+							'https://www.mediawiki.org/wiki/Special:MyLanguage/Help_talk:Lint_errors/' + lintType,
+							mw.util.getUrl( pageName, { action: 'edit', dtlinterror: lintLocation } ) ).parse()
+					} ] } ).promise();
+				}
 			}
 
 			return {
