@@ -502,6 +502,9 @@ function findSignature( timestampNode, until ) {
 				return false;
 			}
 			mwTitle = mw.Title.newFromText( title );
+			if ( !mwTitle ) {
+				return false;
+			}
 			if (
 				mwTitle.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user ||
 				mwTitle.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user_talk
