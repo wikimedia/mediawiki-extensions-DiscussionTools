@@ -1,5 +1,4 @@
-var
-	CommentTargetWidget = require( './CommentTargetWidget.js' );
+var CommentTargetWidget = require( './CommentTargetWidget.js' );
 
 /**
  * DiscussionTools ReplyWidgetVisual class
@@ -7,12 +6,13 @@ var
  * @class mw.dt.ReplyWidgetVisual
  * @extends mw.dt.ReplyWidget
  * @constructor
- * @param {Object} comment Parsed comment object
+ * @param {Object} commentController
+ * @param {Object} parsoidData
  * @param {Object} [config] Configuration options
  */
-function ReplyWidgetVisual( comment, config ) {
+function ReplyWidgetVisual() {
 	// Parent constructor
-	ReplyWidgetVisual.super.call( this, comment, config );
+	ReplyWidgetVisual.super.apply( this, arguments );
 
 	// TODO: Use user preference
 	this.defaultMode = 'source';

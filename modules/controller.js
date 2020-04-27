@@ -10,141 +10,65 @@ var
 	$pageContainer,
 	scrollPadding = { top: 10, bottom: 10 },
 	config = require( './controller/config.json' ),
-	replyWidgetPromise = config.useVisualEditor ?
-		mw.loader.using( 'ext.discussionTools.ReplyWidgetVisual' ) :
-		mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
+	// TODO: Remember last editor used
+	useVisual = config.useVisualEditor;
+
+// Start loading reply widget code
+if ( useVisual ) {
+	mw.loader.using( 'ext.discussionTools.ReplyWidgetVisual' );
+} else {
+	mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
+}
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
 
-function setupComment( comment ) {
-	var $replyLinkButtons, $replyLink, parsoidPromise, widgetPromise, newListItem;
+// TODO: Move to separate file
+function CommentController( comment ) {
+	this.comment = comment;
+	this.newListItem = null;
+	this.replyWidgetPromise = null;
 
-	// Is it possible to have a heading nested in a thread?
-	if ( comment.type !== 'comment' ) {
-		return;
-	}
-
-	$replyLinkButtons = $( '<span>' )
+	this.$replyLinkButtons = $( '<span>' )
 		.addClass( 'dt-init-replylink-buttons' );
 
 	// Reply
-	$replyLink = $( '<a>' )
+	this.$replyLink = $( '<a>' )
 		.addClass( 'dt-init-replylink-reply' )
 		.text( mw.msg( 'discussiontools-replylink' ) )
 		.attr( {
 			role: 'button',
 			tabindex: '0'
 		} )
-		.on( 'click keypress', function ( e ) {
-			if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
-				// Only handle keypresses on the "Enter" or "Space" keys
-				return;
-			}
-			e.preventDefault();
-			// TODO: Allow users to use multiple reply widgets simultaneously.
-			// Currently submitting a reply from one widget would also destroy the other ones.
-			// eslint-disable-next-line no-jquery/no-class-state
-			if ( $pageContainer.hasClass( 'dt-init-replylink-open' ) ) {
-				// Support: IE 11
-				// On other browsers, the link is made unclickable using 'pointer-events' in CSS
-				return;
-			}
-			$pageContainer.addClass( 'dt-init-replylink-open' );
-			// eslint-disable-next-line no-jquery/no-global-selector
-			$( '.dt-init-replylink-reply' ).attr( {
-				tabindex: '-1'
-			} );
+		.on( 'click keypress', this.onReplyLinkClick.bind( this ) );
 
-			logger( {
-				action: 'init',
-				type: 'page',
-				mechanism: 'click',
-				// TODO: when we have actual visual mode, this needs to do better at
-				// working out which will be used:
-				// eslint-disable-next-line camelcase
-				editor_interface: config.useVisualEditor ? 'wikitext-2017' : 'wikitext'
-			} );
-
-			$replyLinkButtons.addClass( 'dt-init-replylink-active' );
-
-			function teardown() {
-				$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
-				$pageContainer.removeClass( 'dt-init-replylink-open' );
-				// eslint-disable-next-line no-jquery/no-global-selector
-				$( '.dt-init-replylink-reply' ).attr( {
-					tabindex: '0'
-				} );
-				modifier.removeListItem( newListItem );
-				newListItem = null;
-				$replyLink.trigger( 'focus' );
-			}
-
-			if ( !widgetPromise ) {
-				// eslint-disable-next-line no-use-before-define
-				parsoidPromise = getParsoidTranscludedCommentData( comment.id );
-
-				widgetPromise = parsoidPromise.then( function ( parsoidData ) {
-					return replyWidgetPromise.then( function () {
-						var
-							ReplyWidget = config.useVisualEditor ?
-								require( 'ext.discussionTools.ReplyWidgetVisual' ) :
-								require( 'ext.discussionTools.ReplyWidgetPlain' ),
-							replyWidget = new ReplyWidget( parsoidData );
-
-						replyWidget.on( 'teardown', teardown );
-
-						return replyWidget;
-					} );
-				}, function ( code, data ) {
-					teardown();
-
-					OO.ui.alert(
-						( new mw.Api() ).getErrorMessage( data ),
-						{ size: 'medium' }
-					);
-
-					logger( {
-						action: 'abort',
-						type: 'preinit'
-					} );
-
-					widgetPromise = null;
-
-					return $.Deferred().reject();
-				} );
-
-				// On first load, add a placeholder list item
-				newListItem = modifier.addListItem( comment );
-				$( newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
-			}
-
-			widgetPromise.then( function ( replyWidget ) {
-				if ( !newListItem ) {
-					// On subsequent loads, there's no list item yet, so create one now
-					newListItem = modifier.addListItem( comment );
-				}
-				$( newListItem ).empty().append( replyWidget.$element );
-				replyWidget.setup();
-				replyWidget.scrollElementIntoView( { padding: scrollPadding } );
-				replyWidget.focus();
-
-				logger( { action: 'ready' } );
-				logger( { action: 'loaded' } );
-			} );
-		} );
-
-	$replyLinkButtons.append( $replyLink );
-	modifier.addReplyLink( comment, $replyLinkButtons[ 0 ] );
+	this.$replyLinkButtons.append( this.$replyLink );
+	modifier.addReplyLink( comment, this.$replyLinkButtons[ 0 ] );
 
 	if ( storage.get( 'reply/' + comment.id + '/body' ) ) {
-		$replyLink.trigger( 'click' );
+		this.setup();
 	}
 }
 
-function traverseNode( parent ) {
-	parent.replies.forEach( function ( comment ) {
-		setupComment( comment );
-		traverseNode( comment );
+OO.initClass( CommentController );
+
+/* CommentController private utilites */
+
+/**
+ * Get the latest revision ID of the page.
+ *
+ * @param {string} pageName
+ * @return {jQuery.Promise}
+ */
+function getLatestRevId( pageName ) {
+	return ( new mw.Api() ).get( {
+		action: 'query',
+		prop: 'revisions',
+		rvprop: 'ids',
+		rvlimit: 1,
+		titles: pageName,
+		formatversion: 2
+	} ).then( function ( resp ) {
+		return resp.query.pages[ 0 ].revisions[ 0 ].revid;
 	} );
 }
 
@@ -171,16 +95,137 @@ function sanitizeWikitextLinebreaks( wikitext ) {
 		.replace( /\n+/g, '\n' );
 }
 
-function postReply( widget, parsoidData ) {
+/* Methods */
+
+CommentController.prototype.onReplyLinkClick = function ( e ) {
+	if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
+		// Only handle keypresses on the "Enter" or "Space" keys
+		return;
+	}
+	e.preventDefault();
+	this.setup();
+};
+
+CommentController.prototype.setup = function () {
+	var parsoidPromise,
+		commentController = this;
+
+	// TODO: Allow users to use multiple reply widgets simultaneously.
+	// Currently submitting a reply from one widget would also destroy the other ones.
+	// eslint-disable-next-line no-jquery/no-class-state
+	if ( $pageContainer.hasClass( 'dt-init-replylink-open' ) ) {
+		// Support: IE 11
+		// On other browsers, the link is made unclickable using 'pointer-events' in CSS
+		return;
+	}
+	$pageContainer.addClass( 'dt-init-replylink-open' );
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '.dt-init-replylink-reply' ).attr( {
+		tabindex: '-1'
+	} );
+
+	logger( {
+		action: 'init',
+		type: 'page',
+		mechanism: 'click',
+		// TODO: when we have actual visual mode, this needs to do better at
+		// working out which will be used:
+		// eslint-disable-next-line camelcase
+		editor_interface: useVisual ? 'wikitext-2017' : 'wikitext'
+	} );
+
+	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
+
+	if ( !this.replyWidgetPromise ) {
+		// eslint-disable-next-line no-use-before-define
+		parsoidPromise = getParsoidTranscludedCommentData( this.comment.id );
+
+		this.replyWidgetPromise = parsoidPromise.then( function ( parsoidData ) {
+			return commentController.createReplyWidget( parsoidData );
+		}, function ( code, data ) {
+			commentController.teardown();
+
+			OO.ui.alert(
+				( new mw.Api() ).getErrorMessage( data ),
+				{ size: 'medium' }
+			);
+
+			logger( {
+				action: 'abort',
+				type: 'preinit'
+			} );
+
+			commentController.replyWidgetPromise = null;
+
+			return $.Deferred().reject();
+		} );
+
+		// On first load, add a placeholder list item
+		commentController.newListItem = modifier.addListItem( commentController.comment );
+		$( commentController.newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
+	}
+
+	commentController.replyWidgetPromise.then( this.setupReplyWidget.bind( this ) );
+};
+
+CommentController.prototype.getReplyWidgetClass = function ( visual ) {
+	var moduleName;
+
+	if ( visual === undefined ) {
+		visual = useVisual;
+	}
+
+	moduleName = visual ? 'ext.discussionTools.ReplyWidgetVisual' : 'ext.discussionTools.ReplyWidgetPlain';
+	return mw.loader.using( moduleName ).then( function () {
+		return require( moduleName );
+	} );
+};
+
+CommentController.prototype.createReplyWidget = function ( parsoidData, visual ) {
+	var commentController = this;
+
+	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
+		commentController.replyWidget = new ReplyWidget( commentController, parsoidData );
+		commentController.replyWidget.connect( commentController, { teardown: 'teardown' } );
+	} );
+};
+
+CommentController.prototype.setupReplyWidget = function () {
+	if ( !this.newListItem ) {
+		// On subsequent loads, there's no list item yet, so create one now
+		this.newListItem = modifier.addListItem( this.comment );
+	}
+	$( this.newListItem ).empty().append( this.replyWidget.$element );
+	this.replyWidget.setup();
+	this.replyWidget.scrollElementIntoView( { padding: scrollPadding } );
+	this.replyWidget.focus();
+
+	logger( { action: 'ready' } );
+	logger( { action: 'loaded' } );
+};
+
+CommentController.prototype.teardown = function () {
+	this.$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
+	$pageContainer.removeClass( 'dt-init-replylink-open' );
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '.dt-init-replylink-reply' ).attr( {
+		tabindex: '0'
+	} );
+	modifier.removeListItem( this.newListItem );
+	this.newListItem = null;
+	this.$replyLink.trigger( 'focus' );
+};
+
+CommentController.prototype.postReply = function ( parsoidData ) {
 	var wikitext, doc, container, newParsoidItem,
 		comment = parsoidData.comment;
 
 	doc = comment.range.endContainer.ownerDocument;
 	container = doc.createElement( 'div' );
 
-	if ( widget.getMode() === 'source' ) {
+	if ( this.replyWidget.getMode() === 'source' ) {
 		// Convert wikitext to comment DOM
-		wikitext = widget.getValue();
+		wikitext = this.replyWidget.getValue();
 		// Use autoSign to avoid double signing
 		wikitext = sanitizeWikitextLinebreaks( autoSignWikitext( wikitext ) );
 		wikitext.split( '\n' ).forEach( function ( line ) {
@@ -189,7 +234,7 @@ function postReply( widget, parsoidData ) {
 			container.appendChild( p );
 		} );
 	} else {
-		container.innerHTML = widget.getValue();
+		container.innerHTML = this.replyWidget.getValue();
 		// If the last node isn't a paragraph (e.g. it's a list), then
 		// add another paragraph to contain the signature.
 		if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
@@ -216,35 +261,17 @@ function postReply( widget, parsoidData ) {
 	}
 
 	return $.Deferred().resolve().promise();
-}
+};
 
-/**
- * Get the latest revision ID of the page.
- *
- * @param {string} pageName
- * @return {jQuery.Promise}
- */
-function getLatestRevId( pageName ) {
-	return ( new mw.Api() ).get( {
-		action: 'query',
-		prop: 'revisions',
-		rvprop: 'ids',
-		rvlimit: 1,
-		titles: pageName,
-		formatversion: 2
-	} ).then( function ( resp ) {
-		return resp.query.pages[ 0 ].revisions[ 0 ].revid;
-	} );
-}
-
-function save( widget, parsoidData ) {
+CommentController.prototype.save = function ( parsoidData ) {
 	var root, summaryPrefix, summary, postPromise, savePromise,
-		mode = widget.getMode(),
+		mode = this.replyWidget.getMode(),
 		comment = parsoidData.comment,
-		pageData = parsoidData.pageData;
+		pageData = parsoidData.pageData,
+		commentController = this;
 
 	// Update the Parsoid DOM
-	postPromise = postReply( widget, parsoidData );
+	postPromise = this.postReply( parsoidData );
 
 	root = comment;
 	while ( root && root.type !== 'heading' ) {
@@ -259,24 +286,28 @@ function save( widget, parsoidData ) {
 
 	summary = summaryPrefix + mw.msg( 'discussiontools-defaultsummary-reply' );
 
-	return $.when( widget.checkboxesPromise, postPromise ).then( function ( checkboxes ) {
-		var data = {
-			page: pageData.pageName,
-			oldid: pageData.oldId,
-			summary: summary,
-			baserevid: pageData.oldId,
-			starttimestamp: pageData.startTimeStamp,
-			etag: pageData.etag,
-			captchaid: widget.captchaInput && widget.captchaInput.getCaptchaId(),
-			captchaword: widget.captchaInput && widget.captchaInput.getCaptchaWord(),
-			assert: mw.user.isAnon() ? 'anon' : 'user',
-			assertuser: mw.user.getName() || undefined,
-			dttags: [
-				'discussiontools',
-				'discussiontools-reply',
-				'discussiontools-' + mode
-			].join( ',' )
-		};
+	return $.when( this.replyWidget.checkboxesPromise, postPromise ).then( function ( checkboxes ) {
+		var captchaInput = commentController.replyWidget.captchaInput,
+			data = {
+				page: pageData.pageName,
+				oldid: pageData.oldId,
+				summary: summary,
+				baserevid: pageData.oldId,
+				starttimestamp: pageData.startTimeStamp,
+				etag: pageData.etag,
+				assert: mw.user.isAnon() ? 'anon' : 'user',
+				assertuser: mw.user.getName() || undefined,
+				dttags: [
+					'discussiontools',
+					'discussiontools-reply',
+					'discussiontools-' + mode
+				].join( ',' )
+			};
+
+		if ( captchaInput ) {
+			data.captchaid = captchaInput.getCaptchaId();
+			data.captchaword = captchaInput.getCaptchaWord();
+		}
 
 		if ( checkboxes.checkboxesByName.wpWatchthis ) {
 			data.watchlist = checkboxes.checkboxesByName.wpWatchthis.isSelected() ?
@@ -300,7 +331,7 @@ function save( widget, parsoidData ) {
 				return getLatestRevId( pageData.pageName ).then( function ( latestRevId ) {
 					// eslint-disable-next-line no-use-before-define
 					return getParsoidCommentData( pageData.pageName, latestRevId, comment.id ).then( function ( parsoidData ) {
-						return save( widget, parsoidData );
+						return commentController.save( parsoidData );
 					} );
 				} );
 			}
@@ -320,6 +351,19 @@ function save( widget, parsoidData ) {
 			}
 		} );
 		return savePromise;
+	} );
+};
+
+/* Controller */
+
+function traverseNode( parent ) {
+	// var CommentController = require( './CommentController.js' );
+	parent.replies.forEach( function ( comment ) {
+		if ( comment.type === 'comment' ) {
+			// eslint-disable-next-line no-new
+			new CommentController( comment );
+		}
+		traverseNode( comment );
 	} );
 }
 
@@ -591,7 +635,6 @@ module.exports = {
 	init: init,
 	getParsoidCommentData: getParsoidCommentData,
 	getCheckboxesPromise: getCheckboxesPromise,
-	save: save,
 	autoSignWikitext: autoSignWikitext,
 	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks
 };

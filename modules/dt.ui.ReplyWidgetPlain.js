@@ -4,12 +4,13 @@
  * @class mw.dt.ReplyWidgetPlain
  * @extends mw.dt.ReplyWidget
  * @constructor
- * @param {Object} comment Parsed comment object
+ * @param {Object} commentController
+ * @param {Object} parsoidData
  * @param {Object} [config] Configuration options
  */
-function ReplyWidgetPlain( comment, config ) {
+function ReplyWidgetPlain() {
 	// Parent constructor
-	ReplyWidgetPlain.super.call( this, comment, config );
+	ReplyWidgetPlain.super.apply( this, arguments );
 
 	// Events
 	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );

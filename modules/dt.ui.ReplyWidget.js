@@ -8,13 +8,16 @@ var controller = require( 'ext.discussionTools.init' ).controller,
  * @class mw.dt.ReplyWidget
  * @extends OO.ui.Widget
  * @constructor
+ * @param {CommentController} commentController Comment controller
  * @param {Object} parsoidData Result from controller#getParsoidCommentData
  * @param {Object} [config] Configuration options
  * @param {Object} [config.input] Configuration options for the comment input widget
  */
-function ReplyWidget( parsoidData, config ) {
+function ReplyWidget( commentController, parsoidData, config ) {
 	var returnTo, contextNode, inputConfig,
-		widget = this;
+		widget = this,
+		pageData = parsoidData.pageData,
+		comment = parsoidData.comment;
 
 	config = config || {};
 
@@ -22,15 +25,15 @@ function ReplyWidget( parsoidData, config ) {
 	ReplyWidget.super.call( this, config );
 
 	this.pending = false;
-	this.comment = parsoidData.comment;
-	this.pageData = parsoidData.pageData;
-	contextNode = utils.closestElement( this.comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
+	this.commentController = commentController;
+	this.parsoidData = parsoidData;
+	contextNode = utils.closestElement( comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 	// TODO: Should storagePrefix include pageName?
-	this.storagePrefix = 'reply/' + this.comment.id;
+	this.storagePrefix = 'reply/' + comment.id;
 
 	inputConfig = $.extend(
-		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', this.comment.author ) },
+		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ) },
 		config.input
 	);
 	this.replyBodyWidget = this.createReplyBodyWidget( inputConfig );
@@ -51,9 +54,9 @@ function ReplyWidget( parsoidData, config ) {
 		this.replyButton.$element
 	);
 	this.$footer = $( '<div>' ).addClass( 'dt-ui-replyWidget-footer' );
-	if ( this.pageData.pageName !== mw.config.get( 'wgRelevantPageName' ) ) {
+	if ( pageData.pageName !== mw.config.get( 'wgRelevantPageName' ) ) {
 		this.$footer.append( $( '<p>' ).append(
-			mw.message( 'discussiontools-replywidget-transcluded', this.pageData.pageName ).parseDom()
+			mw.message( 'discussiontools-replywidget-transcluded', pageData.pageName ).parseDom()
 		) );
 	}
 	this.$footer.append(
@@ -109,7 +112,7 @@ function ReplyWidget( parsoidData, config ) {
 		this.$actionsWrapper.detach();
 	}
 
-	this.checkboxesPromise = controller.getCheckboxesPromise( this.pageData );
+	this.checkboxesPromise = controller.getCheckboxesPromise( this.parsoidData.pageData );
 	this.checkboxesPromise.then( function ( checkboxes ) {
 		if ( checkboxes.checkboxFields ) {
 			widget.$checkboxes = $( '<div>' ).addClass( 'dt-ui-replyWidget-checkboxes' );
@@ -313,7 +316,9 @@ ReplyWidget.prototype.onUnload = function () {
 };
 
 ReplyWidget.prototype.onReplyClick = function () {
-	var widget = this;
+	var widget = this,
+		pageData = this.parsoidData.pageData,
+		comment = this.parsoidData.comment;
 
 	if ( this.pending || this.isEmpty() ) {
 		return;
@@ -330,9 +335,14 @@ ReplyWidget.prototype.onReplyClick = function () {
 	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
 
 	// We must get a new copy of the document every time, otherwise any unsaved replies will pile up
-	controller.getParsoidCommentData( this.pageData.pageName, this.pageData.oldId, this.comment.id ).then( function ( parsoidData ) {
+	// TODO: Move most of this logic to the CommentController
+	controller.getParsoidCommentData(
+		pageData.pageName,
+		pageData.oldId,
+		comment.id
+	).then( function ( parsoidData ) {
 		logger( { action: 'saveAttempt' } );
-		return controller.save( widget, parsoidData );
+		return widget.commentController.save( parsoidData );
 	} ).then( function ( data ) {
 		var
 			pageUpdated = $.Deferred(),
@@ -343,7 +353,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 		// TODO: Tell controller to teardown all other open widgets
 
 		// Update page state
-		if ( widget.pageData.pageName === mw.config.get( 'wgRelevantPageName' ) ) {
+		if ( pageData.pageName === mw.config.get( 'wgRelevantPageName' ) ) {
 			// We can use the result from the VisualEditor API
 			$container.html( data.content );
 			mw.config.set( {
@@ -384,14 +394,14 @@ ReplyWidget.prototype.onReplyClick = function () {
 			} ).catch( function () {
 				// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
 				// explain this problem. Redirect to the page where the user can at least see their reply…
-				window.location = mw.util.getUrl( widget.pageData.pageName );
+				window.location = mw.util.getUrl( pageData.pageName );
 			} );
 		}
 
 		pageUpdated.then( function () {
 			// Re-initialize
 			controller.init( $container.find( '.mw-parser-output' ), {
-				repliedTo: widget.comment.id
+				repliedTo: comment.id
 			} );
 			mw.hook( 'wikipage.content' ).fire( $container );
 
