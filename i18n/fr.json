@@ -29,6 +29,7 @@
 	"discussiontools-error-comment-disappeared": "Impossible de trouver le commentaire auquel vous répondez sur cette page. Il a peut-être été supprimé ou déplacé sur une autre page. Veuillez rafraîchir la page et réessayer.",
 	"discussiontools-error-comment-is-transcluded": "Cet outil ne permet pas de répondre à ce commentaire. Veuillez utiliser l’éditeur de page complet à la place.",
 	"discussiontools-error-comment-is-transcluded-title": "Impossible de répondre à ce commentaire ici (pour l’instant) car il est chargé depuis une autre page. Veuillez vous rendre sur [[$1]] pour y répondre.",
+	"discussiontools-error-lint": "On ne peut pas répondre aux commentaires sur cette page du fait d’une erreur dans le wikitexte. Vous pouvez en savoir plus sur cette erreur en [$1 lisant la documentation], demander de l’aide en [$2 publiant ici] ou corriger l’erreur en [$3 ouvrant l’éditeur de la page complète].",
 	"tag-discussiontools-description": "Modification faite en utilisant DiscussionTools",
 	"tag-discussiontools-edit": "Modifier le commentaire",
 	"tag-discussiontools-edit-description": "L’utilisateur a modifié un commentaire existant avec DiscussionTools",

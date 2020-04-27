@@ -3,6 +3,7 @@
 		"authors": [
 			"Ps2049",
 			"VulpesVulpes825",
+			"邢家朋",
 			"铁桶",
 			"阿pp"
 		]
@@ -21,6 +22,7 @@
 	"discussiontools-replywidget-reply": "回复",
 	"discussiontools-replywidget-terms-click": "点击“$1”，即表示您认同本wiki的使用条款。",
 	"discussiontools-replywidget-transcluded": "您的评论将会保存在[[$1]]。",
+	"discussiontools-error-lint": "由于wikitext中的错误，本页面上的评论将无法被回复。您可以通过[$1阅读文档]以了解这个错误，通过[$2在这里发帖]寻求帮助，也可以通过通过[$3打开整页编辑器]修复这个错误。",
 	"tag-discussiontools-description": "使用讨论工具进行编辑",
 	"tag-discussiontools-edit": "编辑评论",
 	"tag-discussiontools-edit-description": "用户使用讨论工具编辑了现有评论",
