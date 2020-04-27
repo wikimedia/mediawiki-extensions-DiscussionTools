@@ -11,7 +11,7 @@ function CommentTarget( config ) {
 
 	// Parent constructor
 	CommentTarget.super.call( this, ve.extendObject( {
-		toolbarConfig: { actions: true, $overlay: true, position: 'bottom' }
+		toolbarConfig: { actions: true, $overlay: true, position: 'top' }
 	}, config ) );
 }
 
@@ -28,12 +28,8 @@ CommentTarget.static.modes = [ 'visual', 'source' ];
 CommentTarget.static.toolbarGroups = [
 	{
 		name: 'style',
-		type: 'list',
-		icon: 'textStyle',
 		title: OO.ui.deferMsg( 'visualeditor-toolbar-style-tooltip' ),
-		include: [ { group: 'textStyle' }, 'language', 'clear' ],
-		forceExpand: [ 'bold', 'italic' ],
-		demote: [ 'strikethrough', 'code', 'underline', 'language', 'big', 'small', 'clear' ]
+		include: [ 'bold', 'italic', 'moreTextStyle' ]
 	},
 	{
 		name: 'link',
@@ -67,10 +63,8 @@ CommentTarget.static.importRules.external.blacklist = ve.extendObject(
 	}
 );
 
-// TODO Add edit switcher actionGroup
-
 CommentTarget.prototype.attachToolbar = function () {
-	this.$element.append( this.getToolbar().$element );
+	this.$element.parent().parent().prepend( this.getToolbar().$element );
 };
 
 /* Registration */
