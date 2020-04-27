@@ -207,3 +207,53 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		);
 	}
 } );
+
+QUnit.test( '#unwrapList', function ( assert ) {
+	var cases;
+
+	cases = [
+		{
+			name: 'empty',
+			html: '<dl><dd></dd></dl>',
+			expected: ''
+		},
+		{
+			name: 'single item',
+			html: '<dl><dd>Foo</dd></dl>',
+			expected: '<p>Foo</p>'
+		},
+		{
+			name: 'single block item',
+			html: '<dl><dd><pre>Foo</pre></dd></dl>',
+			expected: '<pre>Foo</pre>'
+		},
+		{
+			name: 'mixed inline and block',
+			html: '<dl><dd>Foo <pre>Bar</pre> Baz</dd></dl>',
+			expected: '<p>Foo </p><pre>Bar</pre><p> Baz</p>'
+		},
+		{
+			name: 'multiple items',
+			html: '<dl><dd>Foo</dd><dd>Bar</dd></dl>',
+			expected: '<p>Foo</p><p>Bar</p>'
+		},
+		{
+			name: 'nested list',
+			html: '<dl><dd>Foo<dl><dd>Bar</dd></dl></dd></dl>',
+			expected: '<p>Foo</p><dl><dd>Bar</dd></dl>'
+		}
+	];
+
+	cases.forEach( function ( caseItem ) {
+		var container = document.createElement( 'div' );
+
+		container.innerHTML = caseItem.html;
+		modifier.unwrapList( container.firstChild );
+
+		assert.strictEqual(
+			container.innerHTML.trim(),
+			caseItem.expected,
+			caseItem.name
+		);
+	} );
+} );

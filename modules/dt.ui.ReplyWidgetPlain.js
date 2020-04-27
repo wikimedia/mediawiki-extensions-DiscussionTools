@@ -14,6 +14,8 @@ function ReplyWidgetPlain() {
 
 	// Events
 	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );
+
+	this.$element.addClass( 'dt-ui-replyWidget-plain' );
 }
 
 /* Inheritance */
@@ -38,13 +40,15 @@ ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
 
 ReplyWidgetPlain.prototype.focus = function () {
 	this.replyBodyWidget.focus();
+
+	return this;
 };
 
 ReplyWidgetPlain.prototype.clear = function () {
 	// Parent method
 	ReplyWidgetPlain.super.prototype.clear.apply( this, arguments );
 
-	this.replyBodyWidget.setValue( '' );
+	this.setValue( '' );
 };
 
 ReplyWidgetPlain.prototype.isEmpty = function () {
@@ -79,6 +83,15 @@ ReplyWidgetPlain.prototype.setup = function () {
 	ReplyWidgetPlain.super.prototype.setup.call( this );
 
 	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
+
+	return this;
+};
+
+ReplyWidgetPlain.prototype.teardown = function () {
+	this.replyBodyWidget.off( 'change' );
+
+	// Parent method
+	return ReplyWidgetPlain.super.prototype.teardown.call( this );
 };
 
 ReplyWidgetPlain.prototype.onKeyDown = function ( e ) {
@@ -106,6 +119,11 @@ ReplyWidgetPlain.prototype.setPending = function ( pending ) {
 
 ReplyWidgetPlain.prototype.getValue = function () {
 	return this.replyBodyWidget.getValue();
+};
+
+ReplyWidgetPlain.prototype.setValue = function ( value ) {
+	this.replyBodyWidget.setValue( value );
+	return this;
 };
 
 module.exports = ReplyWidgetPlain;

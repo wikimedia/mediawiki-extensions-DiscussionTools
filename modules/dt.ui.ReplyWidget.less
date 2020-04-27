@@ -1,5 +1,7 @@
 .dt-ui-replyWidget {
 	margin-bottom: 1em;
+	position: relative;
+	clear: both;
 
 	> .oo-ui-textInputWidget {
 		max-width: none;
@@ -18,6 +20,17 @@
 		> .oo-ui-toolbar-actions {
 			display: none;
 		}
+	}
+
+	&-modeTabs {
+		box-shadow: none;
+		height: 3em;
+	}
+
+	&-ve .dt-ui-replyWidget-modeTabs {
+		position: absolute;
+		z-index: 2;
+		top: 0;
 	}
 
 	&-actionsWrapper {

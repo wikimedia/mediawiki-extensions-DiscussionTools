@@ -47,6 +47,25 @@ function ReplyWidget( commentController, parsoidData, config ) {
 		framed: false
 	} );
 
+	this.modeTabSelect = new OO.ui.TabSelectWidget( {
+		classes: [ 'dt-ui-replyWidget-modeTabs' ],
+		items: [
+			new OO.ui.TabOptionWidget( {
+				label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
+				data: 'visual'
+			} ),
+			new OO.ui.TabOptionWidget( {
+				label: mw.msg( 'discussiontools-replywidget-mode-source' ),
+				data: 'source'
+			} )
+		],
+		framed: false
+	} );
+
+	this.modeTabSelect.connect( this, {
+		choose: 'onModeTabSelectChoose'
+	} );
+
 	this.$preview = $( '<div>' ).addClass( 'dt-ui-replyWidget-preview' ).attr( 'data-label', mw.msg( 'discussiontools-replywidget-preview' ) );
 	this.$actionsWrapper = $( '<div>' ).addClass( 'dt-ui-replyWidget-actionsWrapper' );
 	this.$actions = $( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
@@ -87,6 +106,7 @@ function ReplyWidget( commentController, parsoidData, config ) {
 
 	// Initialization
 	this.$element.addClass( 'dt-ui-replyWidget' ).append(
+		this.modeTabSelect.$element,
 		this.replyBodyWidget.$element,
 		this.$preview,
 		this.$actionsWrapper
@@ -124,9 +144,6 @@ function ReplyWidget( commentController, parsoidData, config ) {
 	} );
 
 	this.initAutoSave();
-
-	// Init preview and button state
-	this.onInputChange();
 }
 
 /* Inheritance */
@@ -137,9 +154,26 @@ OO.inheritClass( ReplyWidget, OO.ui.Widget );
 
 ReplyWidget.prototype.createReplyBodyWidget = null;
 
+/**
+ * Focus the widget
+ *
+ * @method
+ * @chainable
+ * @return {ReplyWidget}
+ */
 ReplyWidget.prototype.focus = null;
 
 ReplyWidget.prototype.getValue = null;
+
+/**
+ * Set the reply widget's value
+ *
+ * @method
+ * @chainable
+ * @param {Mixed} value Value
+ * @return {ReplyWidget}
+ */
+ReplyWidget.prototype.setValue = null;
 
 ReplyWidget.prototype.isEmpty = null;
 
@@ -164,10 +198,48 @@ ReplyWidget.prototype.setPending = function ( pending ) {
 	}
 };
 
-ReplyWidget.prototype.setup = function () {
-	this.bindBeforeUnloadHandler();
+ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
+	var promise,
+		widget = this;
+	this.setPending( true );
+	this.modeTabSelect.setDisabled( true );
+	switch ( option.getData() ) {
+		case 'source':
+			promise = this.commentController.switchToWikitext();
+			break;
+		case 'visual':
+			promise = this.commentController.switchToVisual();
+			break;
+	}
+	promise.then( null, function () {
+		// Switch failed, restore previous tab selection
+		widget.modeTabSelect.selectItemByData( option.getData() === 'source' ? 'visual' : 'source' );
+	} ).always( function () {
+		widget.setPending( false );
+		widget.modeTabSelect.setDisabled( false );
+	} );
 };
 
+/**
+ * Setup the widget
+ *
+ * @chainable
+ * @return {ReplyWidget}
+ */
+ReplyWidget.prototype.setup = function () {
+	this.bindBeforeUnloadHandler();
+	this.modeTabSelect.selectItemByData( this.getMode() );
+	// Init preview and button state
+	this.onInputChange();
+	return this;
+};
+
+/**
+ * Try to teardown the widget, prompting the user if unsaved changes will be lost.
+ *
+ * @chainable
+ * @return {ReplyWidget}
+ */
 ReplyWidget.prototype.tryTeardown = function () {
 	var promise,
 		widget = this;
@@ -196,13 +268,21 @@ ReplyWidget.prototype.tryTeardown = function () {
 	promise.then( function () {
 		widget.teardown();
 	} );
+	return this;
 };
 
+/**
+ * Teardown the widget
+ *
+ * @chainable
+ * @return {ReplyWidget}
+ */
 ReplyWidget.prototype.teardown = function () {
 	this.unbindBeforeUnloadHandler();
 	this.clear();
 	this.$preview.empty();
 	this.emit( 'teardown' );
+	return this;
 };
 
 ReplyWidget.prototype.onKeyDown = function ( e ) {

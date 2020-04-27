@@ -91,6 +91,8 @@
 				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
 				"discussiontools-replywidget-feedback",
+				"discussiontools-replywidget-mode-source",
+				"discussiontools-replywidget-mode-visual",
 				"discussiontools-replywidget-placeholder-reply",
 				"discussiontools-replywidget-preview",
 				"discussiontools-replywidget-reply",
@@ -98,6 +100,7 @@
 				"discussiontools-replywidget-transcluded"
 			],
 			"dependencies": [
+				"oojs-ui-widgets",
 				"ext.discussionTools.init",
 				"mediawiki.widgets.AbandonEditDialog"
 			],
@@ -112,7 +115,6 @@
 			],
 			"dependencies": [
 				"ext.discussionTools.ReplyWidget",
-				"oojs-ui-core",
 				"mediawiki.editfont.styles",
 				"mediawiki.user",
 				"mediawiki.jqueryMsg"
