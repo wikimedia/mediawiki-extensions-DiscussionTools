@@ -4,6 +4,7 @@ var
 	parser = require( './parser.js' ),
 	modifier = require( './modifier.js' ),
 	logger = require( './logger.js' ),
+	utils = require( './utils.js' ),
 	storage = mw.storage.session,
 	pageDataCache = {},
 	$pageContainer,
@@ -305,9 +306,7 @@ function highlight( comment ) {
 		nativeRange, rect,
 		$highlight = $( '<div>' ).addClass( 'dt-init-highlight' );
 
-	nativeRange = document.createRange();
-	nativeRange.setStart( comment.range.startContainer, comment.range.startOffset );
-	nativeRange.setEnd( comment.range.endContainer, comment.range.endOffset );
+	nativeRange = utils.getNativeRange( comment );
 	rect = RangeFix.getBoundingClientRect( nativeRange );
 
 	$highlight.css( {

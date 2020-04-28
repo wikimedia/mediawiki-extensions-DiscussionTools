@@ -2,6 +2,7 @@
 
 var
 	parser = require( 'ext.discussionTools.init' ).parser,
+	utils = require( 'ext.discussionTools.init' ).utils,
 	initialOffset, indentWidth;
 
 function markTimestamp( node, match ) {
@@ -35,11 +36,7 @@ function markSignature( sigNodes ) {
 }
 
 function getBoundingRect( comment ) {
-	// Convert our plain-object range to a Range object
-	var nativeRange = document.createRange();
-	nativeRange.setStart( comment.range.startContainer, comment.range.startOffset );
-	nativeRange.setEnd( comment.range.endContainer, comment.range.endOffset );
-	return nativeRange.getBoundingClientRect();
+	return utils.getNativeRange( comment ).getBoundingClientRect();
 }
 
 function fixFakeFirstHeadingRect( rect, comment ) {
