@@ -57,6 +57,7 @@
 				"mediawiki.Title",
 				"mediawiki.Uri",
 				"mediawiki.util",
+				"mediawiki.storage",
 				"ext.visualEditor.core.utils.parsing"
 			],
 			"messages": [

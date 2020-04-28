@@ -26,6 +26,8 @@ function ReplyWidget( parsoidData, config ) {
 	this.pageData = parsoidData.pageData;
 	contextNode = utils.closestElement( this.comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
+	// TODO: Should storagePrefix include pageName?
+	this.storagePrefix = 'reply/' + this.comment.id;
 
 	inputConfig = $.extend(
 		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', this.comment.author ) },
@@ -118,6 +120,8 @@ function ReplyWidget( parsoidData, config ) {
 		}
 	} );
 
+	this.initAutoSave();
+
 	// Init preview and button state
 	this.onInputChange();
 }
@@ -137,6 +141,8 @@ ReplyWidget.prototype.getValue = null;
 ReplyWidget.prototype.isEmpty = null;
 
 ReplyWidget.prototype.getMode = null;
+
+ReplyWidget.prototype.initAutoSave = null;
 
 ReplyWidget.prototype.clear = function () {
 	if ( this.errorMessage ) {

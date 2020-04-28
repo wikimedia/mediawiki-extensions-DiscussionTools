@@ -27,7 +27,7 @@ ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
 		// TODO: Fix upstream to support a value meaning no max limit (e.g. Infinity)
 		maxRows: 999,
 		autosize: true,
-		// The following classes can be used here:
+		// The following classes are used here:
 		// * mw-editfont-monospace
 		// * mw-editfont-sans-serif
 		// * mw-editfont-serif
@@ -52,6 +52,25 @@ ReplyWidgetPlain.prototype.isEmpty = function () {
 
 ReplyWidgetPlain.prototype.getMode = function () {
 	return 'source';
+};
+
+ReplyWidgetPlain.prototype.initAutoSave = function () {
+	var body;
+	this.storage = mw.storage.session;
+	this.storage.set( this.storagePrefix + '/class', 'ReplyWidgetPlain' );
+	if ( ( body = this.storage.get( this.storagePrefix + '/body' ) ) ) {
+		this.replyBodyWidget.setValue( body );
+	}
+};
+
+ReplyWidgetPlain.prototype.onInputChange = function () {
+	var wikitext;
+
+	// Parent method
+	ReplyWidgetPlain.super.prototype.onInputChange.apply( this, arguments );
+
+	wikitext = this.getValue();
+	this.storage.set( this.storagePrefix + '/body', wikitext );
 };
 
 ReplyWidgetPlain.prototype.setup = function () {
