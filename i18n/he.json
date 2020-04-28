@@ -3,6 +3,7 @@
 		"authors": [
 			"Amire80",
 			"IKhitron",
+			"Steeve815",
 			"YaronSh"
 		]
 	},
@@ -24,6 +25,7 @@
 	"discussiontools-error-comment-disappeared": "לא היה אפשר למצוא את ההערה שניסית להשיב עליה בדף. אולי היא נמחקה או הועברה לדף אחר. נא לרענן את הדף ולנסות שוב.",
 	"discussiontools-error-comment-is-transcluded": "לא ניתן להשיב להערה הזאת באמצעות הכלי הזה. נא לנסות להשתמש בעורך הדף השלם במקום זאת.",
 	"discussiontools-error-comment-is-transcluded-title": "לא ניתן להשיב להערה הזאת כאן (בינתיים), כי זה נטען מדף אחר. נא ללכת לדף [[$1]] כדי להשיב.",
+	"discussiontools-error-lint": "לא ניתן להגיב לתגובות בדף הזה בשל שגיאה בקוד הוויקי. ניתן ללמוד על שגיאה זו על־ידי [$1 קריאת התיעוד], בקשת עזרה על־ידי [$2 פרסום בקשה כאן] או לתקן את השגיאה על־ידי [$3 פתיחת הדף כולו במצב עריכה].",
 	"tag-discussiontools-description": "עריכה שנעשתה באמצעות כלי שיחה",
 	"tag-discussiontools-edit": "נערכה הערה",
 	"tag-discussiontools-edit-description": "משתמש ערך תגובה קיימת באמצעות כלי שיחה",
