@@ -26,7 +26,7 @@
 	"discussiontools-replywidget-terms-click": "Terms of use for posting a reply.\n\n* $1 is the label of the button to be clicked, e.g. {{msg-mw|discussiontools-replywidget-reply}}.",
 	"discussiontools-replywidget-transcluded": "Message explaining that the comment will be saved on a different page than the one you're viewing right now (because it was transcluded from it). Parameter: $1 – page name",
 	"discussiontools-error-comment-disappeared": "Error message.",
-	"discussiontools-error-comment-is-transcluded": "Error message.",
+	"discussiontools-error-comment-is-transcluded": "Error message. Parameter: $1 – text of the 'Edit'/'Edit source' tab",
 	"discussiontools-error-comment-is-transcluded-title": "Error message. Parameter: $1 – page name",
 	"discussiontools-error-lint": "Error message. Parameters:\n* $1 – URL to documentation on mediawiki.org\n* $2 – URL to talk page on mediawiki.org\n* $3 – URL to the editor (action=edit)",
 	"tag-discussiontools": "{{ignored}}Short description of the discussiontools tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-description}}",

@@ -440,10 +440,16 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 				follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
 
 				if ( follow ) {
-					transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded-title',
-						mwTitle.getPrefixedText() ).parse();
+					transcludedErrMsg = mw.message(
+						'discussiontools-error-comment-is-transcluded-title',
+						mwTitle.getPrefixedText()
+					).parse();
 				} else {
-					transcludedErrMsg = mw.message( 'discussiontools-error-comment-is-transcluded' ).parse();
+					transcludedErrMsg = mw.message(
+						'discussiontools-error-comment-is-transcluded',
+						// eslint-disable-next-line no-jquery/no-global-selector
+						$( '#ca-edit' ).text()
+					).parse();
 				}
 
 				return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
