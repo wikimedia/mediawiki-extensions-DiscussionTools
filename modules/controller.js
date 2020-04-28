@@ -31,7 +31,16 @@ function setupComment( comment ) {
 	$replyLink = $( '<a>' )
 		.addClass( 'dt-init-replylink-reply' )
 		.text( mw.msg( 'discussiontools-replylink' ) )
-		.on( 'click', function () {
+		.attr( {
+			role: 'button',
+			tabindex: '0'
+		} )
+		.on( 'click keypress', function ( e ) {
+			if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
+				// Only handle keypresses on the "Enter" or "Space" keys
+				return;
+			}
+			e.preventDefault();
 			// TODO: Allow users to use multiple reply widgets simultaneously.
 			// Currently submitting a reply from one widget would also destroy the other ones.
 			// eslint-disable-next-line no-jquery/no-class-state
@@ -41,6 +50,10 @@ function setupComment( comment ) {
 				return;
 			}
 			$pageContainer.addClass( 'dt-init-replylink-open' );
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$( '.dt-init-replylink-reply' ).attr( {
+				tabindex: '-1'
+			} );
 
 			logger( {
 				action: 'init',
@@ -57,8 +70,13 @@ function setupComment( comment ) {
 			function teardown() {
 				$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
 				$pageContainer.removeClass( 'dt-init-replylink-open' );
+				// eslint-disable-next-line no-jquery/no-global-selector
+				$( '.dt-init-replylink-reply' ).attr( {
+					tabindex: '0'
+				} );
 				modifier.removeListItem( newListItem );
 				newListItem = null;
+				$replyLink.trigger( 'focus' );
 			}
 
 			if ( !widgetPromise ) {
