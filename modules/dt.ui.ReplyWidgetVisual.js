@@ -49,7 +49,7 @@ ReplyWidgetVisual.prototype.clear = function () {
 
 ReplyWidgetVisual.prototype.isEmpty = function () {
 	var surface = this.replyBodyWidget.target.getSurface();
-	return !surface || !surface.getModel().hasBeenModified();
+	return !( surface && surface.getModel().getDocument().data.hasContent() );
 };
 
 ReplyWidgetVisual.prototype.getMode = function () {
