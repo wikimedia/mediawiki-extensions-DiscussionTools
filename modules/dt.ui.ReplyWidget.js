@@ -421,15 +421,39 @@ ReplyWidget.prototype.onReplyClick = function () {
 			pagedeleted: 'editPageDeleted'
 		};
 
-		widget.errorMessage = new OO.ui.MessageWidget( {
-			type: 'error',
-			label: widget.api.getErrorMessage( data )
-		} );
-		widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
-
-		if ( data.edit && data.edit.captcha ) {
-			code = 'captcha';
+		if ( widget.captchaMessage ) {
+			widget.captchaMessage.$element.detach();
 		}
+		widget.captchaInput = undefined;
+
+		if ( OO.getProp( data, 'visualeditoredit', 'edit', 'captcha' ) ) {
+			code = 'captcha';
+
+			widget.captchaInput = new mw.libs.confirmEdit.CaptchaInputWidget(
+				OO.getProp( data, 'visualeditoredit', 'edit', 'captcha' )
+			);
+			// Save when pressing 'Enter' in captcha field as it is single line.
+			widget.captchaInput.on( 'enter', function () {
+				widget.onReplyClick();
+			} );
+
+			widget.captchaMessage = new OO.ui.MessageWidget( {
+				type: 'notice',
+				label: widget.captchaInput.$element
+			} );
+			widget.captchaMessage.$element.insertAfter( widget.$preview );
+
+			widget.captchaInput.focus();
+			widget.captchaInput.scrollElementIntoView();
+
+		} else {
+			widget.errorMessage = new OO.ui.MessageWidget( {
+				type: 'error',
+				label: widget.api.getErrorMessage( data )
+			} );
+			widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
+		}
+
 		logger( {
 			action: 'saveFailure',
 			message: code,
