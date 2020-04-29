@@ -18,6 +18,8 @@ if ( defaultVisual ) {
 }
 
 function CommentController( $pageContainer, comment, thread ) {
+	var mode;
+
 	this.$pageContainer = $pageContainer;
 	this.comment = comment;
 	this.thread = thread;
@@ -40,8 +42,9 @@ function CommentController( $pageContainer, comment, thread ) {
 	this.$replyLinkButtons.append( this.$replyLink );
 	modifier.addReplyLink( comment, this.$replyLinkButtons[ 0 ] );
 
-	if ( storage.get( 'reply/' + comment.id + '/body' ) ) {
-		this.setup();
+	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
+		mode = storage.get( 'reply/' + comment.id + '/mode' );
+		this.setup( mode );
 	}
 }
 
@@ -114,9 +117,18 @@ CommentController.prototype.onReplyLinkClick = function ( e ) {
 	this.setup();
 };
 
-CommentController.prototype.setup = function () {
+/**
+ * Create and setup the reply widget
+ *
+ * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
+ */
+CommentController.prototype.setup = function ( mode ) {
 	var parsoidPromise,
 		commentController = this;
+
+	if ( mode === undefined ) {
+		mode = defaultVisual ? 'visual' : 'source';
+	}
 
 	// TODO: Allow users to use multiple reply widgets simultaneously.
 	// Currently submitting a reply from one widget would also destroy the other ones.
@@ -142,7 +154,7 @@ CommentController.prototype.setup = function () {
 		mechanism: 'click',
 		// TODO: Use 'wikitext-2017' when config.enable2017Wikitext is set
 		// eslint-disable-next-line camelcase
-		editor_interface: defaultVisual ? 'visual' : 'wikitext'
+		editor_interface: mode === 'visual' ? 'visual' : 'wikitext'
 	} );
 
 	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
@@ -151,7 +163,7 @@ CommentController.prototype.setup = function () {
 		parsoidPromise = getParsoidTranscludedCommentData( this.comment.id );
 
 		this.replyWidgetPromise = parsoidPromise.then( function ( parsoidData ) {
-			return commentController.createReplyWidget( parsoidData );
+			return commentController.createReplyWidget( parsoidData, mode === 'visual' );
 		}, function ( code, data ) {
 			commentController.teardown();
 
@@ -182,7 +194,7 @@ CommentController.prototype.setup = function () {
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
-		commentController.setupReplyWidget( replyWidget, true );
+		commentController.setupReplyWidget( replyWidget, null, true );
 
 		logger( { action: 'ready' } );
 		logger( { action: 'loaded' } );
@@ -215,10 +227,10 @@ CommentController.prototype.createReplyWidget = function ( parsoidData, visual )
 	} );
 };
 
-CommentController.prototype.setupReplyWidget = function ( replyWidget, scrollIntoView ) {
+CommentController.prototype.setupReplyWidget = function ( replyWidget, initialValue, scrollIntoView ) {
 	replyWidget.connect( this, { teardown: 'teardown' } );
 
-	replyWidget.setup();
+	replyWidget.setup( initialValue );
 	if ( scrollIntoView ) {
 		replyWidget.scrollElementIntoView( { padding: scrollPadding } );
 	}
@@ -406,8 +418,7 @@ CommentController.prototype.switchToWikitext = function () {
 		oldWidget.disconnect( commentController );
 		oldWidget.teardown();
 
-		replyWidget.setValue( controller.sanitizeWikitextLinebreaks( wikitext ) );
-		commentController.setupReplyWidget( replyWidget );
+		commentController.setupReplyWidget( replyWidget, controller.sanitizeWikitextLinebreaks( wikitext ) );
 	} );
 };
 
@@ -454,8 +465,7 @@ CommentController.prototype.switchToVisual = function () {
 			modifier.unwrapList( doc.body.children[ 0 ] );
 		}
 
-		replyWidget.setValue( doc );
-		commentController.setupReplyWidget( replyWidget );
+		commentController.setupReplyWidget( replyWidget, doc );
 	} );
 };
 

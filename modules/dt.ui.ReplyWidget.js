@@ -32,6 +32,7 @@ function ReplyWidget( commentController, parsoidData, config ) {
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 	// TODO: Should storagePrefix include pageName?
 	this.storagePrefix = 'reply/' + comment.id;
+	this.storage = mw.storage.session;
 
 	inputConfig = $.extend(
 		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ) },
@@ -146,8 +147,6 @@ function ReplyWidget( commentController, parsoidData, config ) {
 			widget.$actions.prepend( widget.$checkboxes );
 		}
 	} );
-
-	this.initAutoSave();
 }
 
 /* Inheritance */
@@ -169,21 +168,9 @@ ReplyWidget.prototype.focus = null;
 
 ReplyWidget.prototype.getValue = null;
 
-/**
- * Set the reply widget's value
- *
- * @method
- * @chainable
- * @param {Mixed} value Value
- * @return {ReplyWidget}
- */
-ReplyWidget.prototype.setValue = null;
-
 ReplyWidget.prototype.isEmpty = null;
 
 ReplyWidget.prototype.getMode = null;
-
-ReplyWidget.prototype.initAutoSave = null;
 
 ReplyWidget.prototype.clear = function () {
 	if ( this.errorMessage ) {
@@ -199,6 +186,7 @@ ReplyWidget.prototype.setPending = function ( pending ) {
 	} else {
 		this.replyButton.setDisabled( false );
 		this.cancelButton.setDisabled( false );
+		this.updateButtons();
 	}
 };
 
@@ -238,6 +226,7 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 /**
  * Setup the widget
  *
+ * @param {Mixed} initialValue Initial value
  * @chainable
  * @return {ReplyWidget}
  */
@@ -247,9 +236,15 @@ ReplyWidget.prototype.setup = function () {
 		this.modeTabSelect.selectItemByData( this.getMode() );
 		this.saveEditMode( this.getMode() );
 	}
+
+	return this;
+};
+
+ReplyWidget.prototype.afterSetup = function () {
 	// Init preview and button state
 	this.onInputChange();
-	return this;
+	// Autosave
+	this.storage.set( this.storagePrefix + '/mode', this.getMode() );
 };
 
 /**
@@ -298,6 +293,8 @@ ReplyWidget.prototype.tryTeardown = function () {
 ReplyWidget.prototype.teardown = function () {
 	this.unbindBeforeUnloadHandler();
 	this.clear();
+	this.storage.remove( this.storagePrefix + '/mode' );
+	this.storage.remove( this.storagePrefix + '/saveable' );
 	this.$preview.empty();
 	this.emit( 'teardown' );
 	return this;
@@ -319,7 +316,8 @@ ReplyWidget.prototype.onInputChange = function () {
 			ol: '#'
 		}[ this.context ];
 
-	this.replyButton.setDisabled( this.isEmpty() );
+	this.updateButtons();
+	this.storage.set( this.storagePrefix + '/saveable', this.isEmpty() ? '' : '1' );
 
 	if ( this.getMode() !== 'source' ) {
 		return;
@@ -359,6 +357,10 @@ ReplyWidget.prototype.onInputChange = function () {
 			mw.loader.load( response.parse.modules );
 		}
 	} );
+};
+
+ReplyWidget.prototype.updateButtons = function () {
+	this.replyButton.setDisabled( this.isEmpty() );
 };
 
 ReplyWidget.prototype.onFirstTransaction = function () {

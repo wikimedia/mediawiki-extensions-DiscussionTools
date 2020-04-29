@@ -44,17 +44,6 @@ ReplyWidgetVisual.prototype.getValue = function () {
 	}
 };
 
-ReplyWidgetVisual.prototype.setValue = function ( value ) {
-	var target = this.replyBodyWidget.target;
-	if ( target && target.getSurface() ) {
-		target.setDocument( value );
-	} else {
-		// #setup hasn't been called yet, just save the value for when it is
-		this.initialValue = value;
-	}
-	return this;
-};
-
 ReplyWidgetVisual.prototype.clear = function () {
 	// Parent method
 	ReplyWidgetVisual.super.prototype.clear.apply( this, arguments );
@@ -73,13 +62,28 @@ ReplyWidgetVisual.prototype.getMode = function () {
 		this.defaultMode;
 };
 
-ReplyWidgetVisual.prototype.initAutoSave = function () {
-	// TODO: Implement
-};
+ReplyWidgetVisual.prototype.setup = function ( initialValue ) {
+	var htmlOrDoc,
+		widget = this,
+		target = this.replyBodyWidget.target;
 
-ReplyWidgetVisual.prototype.setup = function () {
-	this.replyBodyWidget.setDocument( this.initialValue || '<p></p>' );
-	this.initialValue = null;
+	if ( this.storage.get( this.storagePrefix + '/saveable' ) ) {
+		htmlOrDoc = this.storage.get( this.storagePrefix + '/ve-dochtml' );
+		target.recovered = true;
+	} else {
+		htmlOrDoc = initialValue || '<p></p>';
+	}
+
+	target.originalHtml = htmlOrDoc instanceof HTMLDocument ? ve.properInnerHtml( htmlOrDoc.body ) : htmlOrDoc;
+	target.fromEditedState = !!initialValue;
+
+	this.replyBodyWidget.setDocument( htmlOrDoc );
+
+	target.once( 'surfaceReady', function () {
+		target.getSurface().getModel().setAutosaveDocId( widget.storagePrefix );
+		target.initAutosave();
+		widget.afterSetup();
+	} );
 
 	// Parent method
 	ReplyWidgetVisual.super.prototype.setup.call( this );
@@ -97,6 +101,8 @@ ReplyWidgetVisual.prototype.setup = function () {
 ReplyWidgetVisual.prototype.teardown = function () {
 	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
+	// TODO: Just teardown the whole target?
+	this.replyBodyWidget.target.clearDocState();
 
 	// Parent method
 	return ReplyWidgetVisual.super.prototype.teardown.call( this );
