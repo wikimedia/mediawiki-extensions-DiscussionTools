@@ -5,12 +5,13 @@ var
 	logger = require( './logger.js' ),
 	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
-	config = require( './controller/config.json' ),
+	config = require( './config.json' ),
 	// TODO: Remember last editor used
-	useVisual = config.useVisualEditor || ( new mw.Uri() ).query.dtvisual;
+	defaultVisual = false,
+	enableVisual = config.enableVisual || ( new mw.Uri() ).query.dtvisual;
 
 // Start loading reply widget code
-if ( useVisual ) {
+if ( defaultVisual && enableVisual ) {
 	mw.loader.using( 'ext.discussionTools.ReplyWidgetVisual' );
 } else {
 	mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
@@ -135,10 +136,9 @@ CommentController.prototype.setup = function () {
 		action: 'init',
 		type: 'page',
 		mechanism: 'click',
-		// TODO: when we have actual visual mode, this needs to do better at
-		// working out which will be used:
+		// TODO: Use 'wikitext-2017' when config.enable2017Wikitext is set
 		// eslint-disable-next-line camelcase
-		editor_interface: useVisual ? 'wikitext-2017' : 'wikitext'
+		editor_interface: defaultVisual ? 'visual' : 'wikitext'
 	} );
 
 	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
@@ -189,7 +189,7 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	var moduleName;
 
 	if ( visual === undefined ) {
-		visual = useVisual;
+		visual = defaultVisual;
 	}
 
 	moduleName = visual ? 'ext.discussionTools.ReplyWidgetVisual' : 'ext.discussionTools.ReplyWidgetPlain';
@@ -203,6 +203,7 @@ CommentController.prototype.createReplyWidget = function ( parsoidData, visual )
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
 		return new ReplyWidget( commentController, parsoidData, {
+			switchable: enableVisual,
 			input: {
 				authors: parser.getAuthors( commentController.thread )
 			}

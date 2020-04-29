@@ -34,9 +34,10 @@
 					]
 				},
 				{
-					"name": "controller/config.json",
+					"name": "config.json",
 					"config": {
-						"useVisualEditor": "DiscussionToolsUseVisualEditor"
+						"enableVisual": "DiscussionToolsEnableVisual",
+						"enable2017Wikitext": "DiscussionToolsEnable2017Wikitext"
 					}
 				},
 				"CommentController.js",
@@ -233,9 +234,13 @@
 			"value": false,
 			"description": "Make DiscussionTools a BetaFeature."
 		},
-		"DiscussionToolsUseVisualEditor": {
+		"DiscussionToolsEnableVisual": {
 			"value": false,
-			"description": "Use VisualEditor for editing replies (both visual and wikitext)."
+			"description": "Enable a visual mode for replies."
+		},
+		"DiscussionToolsEnable2017Wikitext": {
+			"value": false,
+			"description": "Enable the 2017 wikitext editor for wikitext replies (not yet supported)."
 		},
 		"DTSchemaEditAttemptStepSamplingRate": {
 			"value": false,
