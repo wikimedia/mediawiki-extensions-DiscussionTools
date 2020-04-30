@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Dr03ramos",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Jhonnatanricardo"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
@@ -21,8 +22,9 @@
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-replywidget-transcluded": "Seu comentário será salvo em [[$1]].",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário ao qual você está respondendo na página. Pode ter sido excluído ou movido para outra página. Por favor, recarregue a página e tente de novo.",
-	"discussiontools-error-comment-is-transcluded": "Não é possível responder a este comentário usando esta ferramenta. Por favor, tente usar o editor de página inteira.",
+	"discussiontools-error-comment-is-transcluded": "O link \"{{int:discussiontools-replylink}}\" não pode ser usado para responder a este comentário. Para responder, por favor, utilize o editor de página inteira clicando em \"$1\"",
 	"discussiontools-error-comment-is-transcluded-title": "Este comentário não pode ser respondido aqui (ainda), porque ele é carregado de outra página. Por favor, vá para [[$1]] para responder.",
+	"discussiontools-error-lint": "Comentários nesta página não podem ser respondidos por conta de um erro no wikitext. Você pode apresnder sobre este erro [$1 lendo a documentação], solicitando ajuda [$2 postando aqui] ou corrigindo o problema [$3 abrindo o editor de página inteira].",
 	"tag-discussiontools-description": "Edição feita usando DiscussionTools",
 	"tag-discussiontools-edit": "Editar comentário",
 	"tag-discussiontools-edit-description": "O usuário editou um comentário existente com DiscussionTools",
