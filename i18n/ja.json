@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rootflag"
+			"Rootflag",
+			"Shirayuki"
 		]
 	},
-	"discussiontools-replywidget-preview": "プレビュー"
+	"discussiontools-defaultsummary-reply": "返信",
+	"discussiontools-replylink": "返信",
+	"discussiontools-replywidget-cancel": "キャンセル",
+	"discussiontools-replywidget-loading": "読み込み中…",
+	"discussiontools-replywidget-preview": "プレビュー",
+	"discussiontools-replywidget-reply": "返信",
+	"discussiontools-replywidget-terms-click": "「$1」をクリックすると、このウィキの利用規約に同意したと見なされます。",
+	"tag-discussiontools-reply": "返信"
 }
