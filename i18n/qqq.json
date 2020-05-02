@@ -23,6 +23,7 @@
 	"discussiontools-replywidget-placeholder-reply": "Placeholder describing who is being replied to.\n\nParameters:\n* $1 – username of the person who wrote the previous comment",
 	"discussiontools-replywidget-preview": "Label for the preview area of the reply widget",
 	"discussiontools-replywidget-reply": "Label for the button to submit a reply in the reply widget",
+	"discussiontools-replywidget-reply-link": "{{optional|Used by {{msg-mw|Tag-discussiontools-reply}} as a link to a page where users learn about the feature. Defaults to a page on MediaWiki.org.}}",
 	"discussiontools-replywidget-terms-click": "Terms of use for posting a reply.\n\n* $1 is the label of the button to be clicked, e.g. {{msg-mw|discussiontools-replywidget-reply}}.",
 	"discussiontools-replywidget-transcluded": "Message explaining that the comment will be saved on a different page than the one you're viewing right now (because it was transcluded from it). Parameter: $1 – page name",
 	"discussiontools-error-comment-disappeared": "Error message.",
