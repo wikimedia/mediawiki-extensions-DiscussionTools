@@ -67,6 +67,13 @@ CommentTarget.prototype.attachToolbar = function () {
 	this.$element.parent().parent().prepend( this.getToolbar().$element );
 };
 
+CommentTarget.prototype.getSurfaceConfig = function ( config ) {
+	return CommentTarget.super.prototype.getSurfaceConfig.call( this, ve.extendObject( {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$overlayContainer: $( '#content' )
+	}, config ) );
+};
+
 /* Registration */
 
 ve.init.mw.targetFactory.register( CommentTarget );
