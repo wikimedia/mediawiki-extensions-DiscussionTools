@@ -30,7 +30,7 @@
 	"tag-discussiontools-edit-description": "O usuário editou um comentário existente com DiscussionTools",
 	"tag-discussiontools-newtopic": "Adicionar tópico",
 	"tag-discussiontools-newtopic-description": "O usuário adicionou um novo tópico à página com DiscussionTools",
-	"tag-discussiontools-reply": "Responder",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Responder]",
 	"tag-discussiontools-reply-description": "O usuário respondeu a um comentário com DiscussionTools",
 	"tag-discussiontools-source": "Fonte",
 	"tag-discussiontools-source-description": "DiscussionTools estava no modo de fonte",

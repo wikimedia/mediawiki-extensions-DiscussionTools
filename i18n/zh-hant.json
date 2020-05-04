@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
+			"Streetdeck",
 			"Xiplus"
 		]
 	},
@@ -29,7 +30,7 @@
 	"tag-discussiontools-edit-description": "使用者以討論工具對現有的評論做出編輯",
 	"tag-discussiontools-newtopic": "新增話題",
 	"tag-discussiontools-newtopic-description": "使用者以討論工具對頁新增一個話題",
-	"tag-discussiontools-reply": "回覆",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 回覆]",
 	"tag-discussiontools-reply-description": "使用者以討論工具對一項評論做出回覆",
 	"tag-discussiontools-source": "來源",
 	"tag-discussiontools-source-description": "討論工具處於來源模式",

@@ -28,7 +28,7 @@
 	"tag-discussiontools-edit-description": "Kullanıcı DiscussionTools ile mevcut bir yorumu düzenledi",
 	"tag-discussiontools-newtopic": "eklenen konu",
 	"tag-discussiontools-newtopic-description": "Kullanıcı, DiscussionTools ile sayfaya yeni bir konu ekledi",
-	"tag-discussiontools-reply": "Yanıtla",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Yanıtla]",
 	"tag-discussiontools-reply-description": "Kullanıcı DiscussionTools ile bir yorumu yanıtladı",
 	"tag-discussiontools-source": "Kaynak",
 	"tag-discussiontools-source-description": "DiscussionTools kaynak modundaydı",

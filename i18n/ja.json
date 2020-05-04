@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Omotecho",
 			"Rootflag",
 			"Shirayuki"
 		]
@@ -12,5 +13,5 @@
 	"discussiontools-replywidget-preview": "プレビュー",
 	"discussiontools-replywidget-reply": "返信",
 	"discussiontools-replywidget-terms-click": "「$1」をクリックすると、このウィキの利用規約に同意したと見なされます。",
-	"tag-discussiontools-reply": "返信"
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 返信]"
 }

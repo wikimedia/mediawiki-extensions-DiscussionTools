@@ -16,5 +16,5 @@
 	"discussiontools-replywidget-reply": "Rispondi",
 	"tag-discussiontools-edit": "Modifica commento",
 	"tag-discussiontools-newtopic": "Aggiungi argomento",
-	"tag-discussiontools-reply": "Rispondi"
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Rispondi]"
 }
