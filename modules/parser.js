@@ -418,17 +418,17 @@ function findTimestamps( rootNode ) {
 }
 
 /**
- * Get the MediaWiki page title from an URI.
+ * Get a MediaWiki page title from a URL.
  *
  * @private
- * @param {string} uri
- * @return {string|null} Page title, or null if this isn't a link to a page
+ * @param {string} url
+ * @return {mw.Title|null} Page title, or null if this isn't a link to a page
  */
-function getPageTitleFromUri( uri ) {
+function getTitleFromUrl( url ) {
 	var articlePathRegexp, match;
 
 	try {
-		uri = new mw.Uri( uri );
+		url = new mw.Uri( url );
 	} catch ( err ) {
 		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
 		return null;
@@ -438,11 +438,11 @@ function getPageTitleFromUri( uri ) {
 			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
 	);
 
-	if ( ( match = uri.path.match( articlePathRegexp ) ) ) {
-		return decodeURIComponent( match[ 1 ] );
+	if ( ( match = url.path.match( articlePathRegexp ) ) ) {
+		return mw.Title.newFromText( decodeURIComponent( match[ 1 ] ) );
 	}
-	if ( uri.query.title ) {
-		return uri.query.title;
+	if ( url.query.title ) {
+		return mw.Title.newFromText( url.query.title );
 	}
 	return null;
 }
@@ -496,28 +496,24 @@ function findSignature( timestampNode, until ) {
 		// "TonyTheTiger (T / C / WP:FOUR / WP:CHICAGO / WP:WAWARD)"
 		// eslint-disable-next-line no-loop-func
 		if ( links.some( function ( link ) {
-			var username, title, mwTitle;
-			title = getPageTitleFromUri( link.href );
+			var username, title;
+			title = getTitleFromUrl( link.href );
 			if ( !title ) {
 				return false;
 			}
-			mwTitle = mw.Title.newFromText( title );
-			if ( !mwTitle ) {
-				return false;
-			}
 			if (
-				mwTitle.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user ||
-				mwTitle.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user_talk
+				title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user ||
+				title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user_talk
 			) {
-				username = mwTitle.getMainText();
+				username = title.getMainText();
 				if ( username.indexOf( '/' ) !== -1 ) {
 					return false;
 				}
 			} else if (
-				mwTitle.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).special &&
-				mwTitle.getMainText().split( '/' )[ 0 ] === data.specialContributionsName
+				title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).special &&
+				title.getMainText().split( '/' )[ 0 ] === data.specialContributionsName
 			) {
-				username = mwTitle.getMainText().split( '/' )[ 1 ];
+				username = title.getMainText().split( '/' )[ 1 ];
 				// Users may link to their contributions with non-standard name
 				username = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, username ).getMainText();
 			}
