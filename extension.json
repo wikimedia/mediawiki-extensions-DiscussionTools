@@ -39,6 +39,7 @@
 						"useVisualEditor": "DiscussionToolsUseVisualEditor"
 					}
 				},
+				"CommentController.js",
 				"logger.js",
 				"modifier.js",
 				"utils.js",
