@@ -910,16 +910,28 @@ function groupThreads( comments ) {
  * @param {Object} comment Comment object, as returned by #groupThreads
  * @return {Object} Object with comment author usernames as keys
  */
+
+/**
+ * Get the list of authors involved in a comment and its replies.
+ *
+ * You probably want to pass a thread root here (a heading).
+ *
+ * @param {Object} comment Comment object, as returned by #groupThreads
+ * @return {string[]} Author usernames
+ */
 function getAuthors( comment ) {
 	var authors = {};
-	if ( comment.author ) {
-		authors[ comment.author ] = true;
+	function getAuthorSet( comment ) {
+		if ( comment.author ) {
+			authors[ comment.author ] = true;
+		}
+		// Get the set of authors in the same format from each reply
+		comment.replies.map( getAuthorSet );
 	}
-	// Get the set of authors in the same format from each reply, and merge them all
-	authors = comment.replies.map( getAuthors ).reduce( function ( a, b ) {
-		return $.extend( a, b );
-	}, authors );
-	return authors;
+
+	getAuthorSet( comment );
+
+	return Object.keys( authors ).sort();
 }
 
 /**
