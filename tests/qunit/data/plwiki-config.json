@@ -1,4 +1,5 @@
 {
+  "wgContentLang": "pl",
   "wgArticlePath": "/wiki/$1",
   "wgNamespaceIds": {
     "media": -2,

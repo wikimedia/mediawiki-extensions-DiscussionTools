@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -14,6 +15,50 @@ class DiscussionToolsCommentParserTest extends MediaWikiTestCase {
 			true
 		);
 		return $json;
+	}
+
+	private static function getOffsetPath( $ancestor, $node, $nodeOffset ) {
+		$path = [ $nodeOffset ];
+		while ( $node !== $ancestor ) {
+			if ( !$node->parentNode ) {
+				throw new Error( 'Not a descendant' );
+			}
+			array_unshift( $path, DiscussionToolsCommentParser::childIndexOf( $node ) );
+			$node = $node->parentNode;
+		}
+		return implode( '/', $path );
+	}
+
+	private static function simplify( $parent ) {
+		unset( $parent['range'] );
+		unset( $parent['signatureRanges'] );
+		foreach ( $parent['replies'] as $i => $reply ) {
+			$parent['replies'][$i] = self::simplify( $reply );
+		}
+		return $parent;
+	}
+
+	private static function serializeComments( &$parent, $root ) {
+		unset( $parent->parent );
+
+		// Can't serialize the DOM nodes involved in the range,
+		// instead use their offsets within their parent nodes
+		$parent->range = [
+			self::getOffsetPath( $root, $parent->range->startContainer, $parent->range->startOffset ),
+			self::getOffsetPath( $root, $parent->range->endContainer, $parent->range->endOffset )
+		];
+		if ( isset( $parent->signatureRanges ) ) {
+			$parent->signatureRanges = array_map( function ( $range ) use ( $root ) {
+				return [
+					self::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
+					self::getOffsetPath( $root, $range->endContainer, $range->endOffset )
+				];
+			}, $parent->signatureRanges );
+		}
+
+		foreach ( $parent->replies as $reply ) {
+			self::serializeComments( $reply, $root );
+		}
 	}
 
 	/**
@@ -119,6 +164,87 @@ class DiscussionToolsCommentParserTest extends MediaWikiTestCase {
 				],
 				'expected' => [ 'Alice', 'Bob', 'Eve' ]
 			]
+		];
+	}
+
+	/**
+	 * @dataProvider provideComments
+	 * @covers ::getComments
+	 * @covers ::groupThreads
+	 */
+	public function testGetComments( $name, $dom, $expected, $config, $data ) {
+		$dom = file_get_contents( __DIR__ . '/../qunit/' . $dom );
+		$expected = self::getJson( $expected );
+		$config = self::getJson( $config );
+		$data = self::getJson( $data );
+
+		// Remove all but the body tags from full Parsoid docs
+		if ( strpos( $dom, '<body' ) !== false ) {
+			preg_match( '`<body[^>]*>(.*)</body>`s', $dom, $match );
+			$dom = $match[1];
+		}
+
+		$this->setMwGlobals( $config );
+		$this->setMwGlobals( [
+			'wgArticlePath' => $config['wgArticlePath'],
+			'wgNamespaceAliases' => $config['wgNamespaceIds'],
+			'wgLocaltimezone' => $data['localTimezone']
+		] );
+		$this->setUserLang( $config['wgContentLang'] );
+		$this->setContentLang( $config['wgContentLang'] );
+
+		$services = MediaWikiServices::getInstance();
+		$parserOrig = new DiscussionToolsCommentParser(
+			$services->getContentLanguage(),
+			$services->getMainConfig(),
+			$data
+		);
+		$parser = TestingAccessWrapper::newFromObject( $parserOrig );
+
+		$doc = new DOMDocument();
+		$doc->loadHTML( '<?xml encoding="utf-8" ?>' . $dom, LIBXML_NOERROR );
+		$container = $doc->documentElement->childNodes[0];
+
+		$comments = $parserOrig->getComments( $container );
+		$threads = $parserOrig->groupThreads( $comments );
+
+		$processedThreads = [];
+
+		foreach ( $threads as $i => $thread ) {
+			self::serializeComments( $thread, $container );
+			$thread = json_decode( json_encode( $thread ), true );
+			// Ignore ranges for now
+			$thread = self::simplify( $thread );
+			$expected[$i] = self::simplify( $expected[$i] );
+			$processedThreads[] = $thread;
+			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
+		}
+	}
+
+	public function provideComments() {
+		return [
+			// passes with ranges
+			self::getJson( './cases/comments.json' )[0],
+			// passes without ranges
+			self::getJson( './cases/comments.json' )[1],
+			// passes without ranges but very slow
+			// self::getJson( './cases/comments.json' )[2],
+			// passes without ranges but very slow
+			// self::getJson( './cases/comments.json' )[3],
+			// passes with ranges
+			self::getJson( './cases/comments.json' )[4],
+			// passes without ranges
+			self::getJson( './cases/comments.json' )[5],
+			// passes without ranges
+			self::getJson( './cases/comments.json' )[6],
+			// passes without ranges
+			self::getJson( './cases/comments.json' )[7],
+			// passes with ranges
+			self::getJson( './cases/comments.json' )[8],
+			// passes with ranges
+			self::getJson( './cases/comments.json' )[9],
+			// passes with ranges
+			self::getJson( './cases/comments.json' )[10]
 		];
 	}
 }
