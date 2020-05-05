@@ -15,5 +15,9 @@ ar-no-paragraph:
 https://ar.wikipedia.org/w/index.php?action=render&title=نقاش_المستخدم:Khaled&oldid=45576943
 https://ar.wikipedia.org/api/rest_v1/page/html/نقاش_المستخدم%3AKhaled/45576943
 
+ar-nbsp-timezone:
+https://ar.wikipedia.org/wiki/ويكيبيديا:إخفاء_أرقام_الآي_بي?oldid=46583196&action=render
+https://ar.wikipedia.org/api/rest_v1/page/html/ويكيبيديا%3Aإخفاء_أرقام_الآي_بي/46583196
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.
