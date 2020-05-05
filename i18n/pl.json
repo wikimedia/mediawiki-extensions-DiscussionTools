@@ -13,6 +13,7 @@
 	"discussiontools-replylink": "Odpowiedz",
 	"discussiontools-replywidget-anon-warning": "<strong>Nie jesteś zalogowany</strong>. Aby być podanym imiennie jako autor zamiast numeru IP, możesz [$1 zalogować się] albo [$2 utworzyć konto].",
 	"discussiontools-replywidget-cancel": "Anuluj",
+	"discussiontools-replywidget-feedback": "Prześlij opinię na temat tego oprogramowania",
 	"discussiontools-replywidget-loading": "Ładowanie…",
 	"discussiontools-replywidget-placeholder-reply": "Odpowiedz na komentarz {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Podgląd",

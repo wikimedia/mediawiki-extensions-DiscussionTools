@@ -5,5 +5,6 @@
 		]
 	},
 	"discussiontools": "Struminde de le 'ngazzaminde",
-	"discussiontools-desc": "Struminde pe migliorà le pàggene de le 'ngazzaminde."
+	"discussiontools-desc": "Struminde pe migliorà le pàggene de le 'ngazzaminde.",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respunne]"
 }
