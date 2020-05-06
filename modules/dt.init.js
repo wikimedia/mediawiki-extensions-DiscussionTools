@@ -26,5 +26,6 @@ module.exports = {
 	parser: require( './parser.js' ),
 	modifier: require( './modifier.js' ),
 	utils: require( './utils.js' ),
-	logger: require( './logger.js' )
+	logger: require( './logger.js' ),
+	config: require( './config.json' )
 };

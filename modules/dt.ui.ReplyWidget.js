@@ -12,6 +12,7 @@ var controller = require( 'ext.discussionTools.init' ).controller,
  * @param {Object} parsoidData Result from controller#getParsoidCommentData
  * @param {Object} [config] Configuration options
  * @param {Object} [config.input] Configuration options for the comment input widget
+ * @param {boolean} [config.switchable] Widget can switch modes (visual/source)
  */
 function ReplyWidget( commentController, parsoidData, config ) {
 	var returnTo, contextNode, inputConfig,
@@ -106,11 +107,14 @@ function ReplyWidget( commentController, parsoidData, config ) {
 
 	// Initialization
 	this.$element.addClass( 'dt-ui-replyWidget' ).append(
-		this.modeTabSelect.$element,
 		this.replyBodyWidget.$element,
 		this.$preview,
 		this.$actionsWrapper
 	);
+
+	if ( config.switchable ) {
+		this.$element.prepend( this.modeTabSelect.$element );
+	}
 
 	if ( mw.user.isAnon() ) {
 		returnTo = {

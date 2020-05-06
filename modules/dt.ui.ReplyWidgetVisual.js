@@ -16,7 +16,7 @@ function ReplyWidgetVisual() {
 	// Parent constructor
 	ReplyWidgetVisual.super.apply( this, arguments );
 
-	// TODO: Use user preference
+	// TODO: Support 2017 wikitext editor
 	this.defaultMode = 'visual';
 	this.initialValue = null;
 
