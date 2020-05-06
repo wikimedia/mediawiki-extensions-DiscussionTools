@@ -20,6 +20,8 @@
 	"discussiontools-replywidget-feedback": "Label for link to share feedback about the reply widget",
 	"discussiontools-replywidget-feedback-link": "{{optional|Link to a page where users can share feedback about the reply widget. Defaults to a page on MediaWiki.org.}}",
 	"discussiontools-replywidget-loading": "Message shown while the reply widget is loading",
+	"discussiontools-replywidget-mode-source": "Label for source mode (wikitext) editor",
+	"discussiontools-replywidget-mode-visual": "Label for visual mode edtior",
 	"discussiontools-replywidget-placeholder-reply": "Placeholder describing who is being replied to.\n\nParameters:\n* $1 – username of the person who wrote the previous comment",
 	"discussiontools-replywidget-preview": "Label for the preview area of the reply widget",
 	"discussiontools-replywidget-reply": "Label for the button to submit a reply in the reply widget",
