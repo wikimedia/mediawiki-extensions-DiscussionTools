@@ -7,7 +7,7 @@ var
 	scrollPadding = { top: 10, bottom: 10 },
 	config = require( './controller/config.json' ),
 	// TODO: Remember last editor used
-	useVisual = config.useVisualEditor;
+	useVisual = config.useVisualEditor || ( new mw.Uri() ).query.dtvisual;
 
 // Start loading reply widget code
 if ( useVisual ) {
