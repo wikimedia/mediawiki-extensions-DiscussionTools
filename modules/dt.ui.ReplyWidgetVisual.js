@@ -130,4 +130,10 @@ ReplyWidgetVisual.prototype.setPending = function ( pending ) {
 	}
 };
 
+ve.trackSubscribe( 'activity.', function ( topic, data ) {
+	mw.track( 'dt.schemaVisualEditorFeatureUse', ve.extendObject( data, {
+		feature: topic.split( '.' )[ 1 ]
+	} ) );
+} );
+
 module.exports = ReplyWidgetVisual;
