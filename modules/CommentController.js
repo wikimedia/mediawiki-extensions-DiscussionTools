@@ -171,7 +171,18 @@ CommentController.prototype.setup = function () {
 		$( commentController.newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 	}
 
-	commentController.replyWidgetPromise.then( this.setupReplyWidget.bind( this ) );
+	commentController.replyWidgetPromise.then( function ( replyWidget ) {
+		if ( !commentController.newListItem ) {
+			// On subsequent loads, there's no list item yet, so create one now
+			commentController.newListItem = modifier.addListItem( commentController.comment );
+		}
+		$( commentController.newListItem ).empty().append( replyWidget.$element );
+
+		commentController.setupReplyWidget( replyWidget, true );
+
+		logger( { action: 'ready' } );
+		logger( { action: 'loaded' } );
+	} );
 };
 
 CommentController.prototype.getReplyWidgetClass = function ( visual ) {
@@ -191,27 +202,24 @@ CommentController.prototype.createReplyWidget = function ( parsoidData, visual )
 	var commentController = this;
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
-		commentController.replyWidget = new ReplyWidget( commentController, parsoidData, {
+		return new ReplyWidget( commentController, parsoidData, {
 			input: {
 				authors: parser.getAuthors( commentController.thread )
 			}
 		} );
-		commentController.replyWidget.connect( commentController, { teardown: 'teardown' } );
 	} );
 };
 
-CommentController.prototype.setupReplyWidget = function () {
-	if ( !this.newListItem ) {
-		// On subsequent loads, there's no list item yet, so create one now
-		this.newListItem = modifier.addListItem( this.comment );
-	}
-	$( this.newListItem ).empty().append( this.replyWidget.$element );
-	this.replyWidget.setup();
-	this.replyWidget.scrollElementIntoView( { padding: scrollPadding } );
-	this.replyWidget.focus();
+CommentController.prototype.setupReplyWidget = function ( replyWidget, scrollIntoView ) {
+	replyWidget.connect( this, { teardown: 'teardown' } );
 
-	logger( { action: 'ready' } );
-	logger( { action: 'loaded' } );
+	replyWidget.setup();
+	if ( scrollIntoView ) {
+		replyWidget.scrollElementIntoView( { padding: scrollPadding } );
+	}
+	replyWidget.focus();
+
+	this.replyWidget = replyWidget;
 };
 
 CommentController.prototype.teardown = function () {
@@ -360,6 +368,84 @@ CommentController.prototype.save = function ( parsoidData ) {
 			}
 		} );
 		return savePromise;
+	} );
+};
+
+CommentController.prototype.switchToWikitext = function () {
+	var wikitextPromise,
+		oldWidget = this.replyWidget,
+		pageData = oldWidget.parsoidData.pageData,
+		target = oldWidget.replyBodyWidget.target,
+		commentController = this;
+
+	wikitextPromise = target.getWikitextFragment(
+		target.getSurface().getModel().getDocument(),
+		{
+			page: pageData.pageName,
+			baserevid: pageData.oldId,
+			etag: pageData.etag
+		}
+	);
+	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, false );
+
+	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
+		// Swap out the DOM nodes
+		oldWidget.$element.replaceWith( replyWidget.$element );
+
+		// Teardown the old widget
+		oldWidget.disconnect( commentController );
+		oldWidget.teardown();
+
+		replyWidget.setValue( controller.sanitizeWikitextLinebreaks( wikitext ) );
+		commentController.setupReplyWidget( replyWidget );
+	} );
+};
+
+CommentController.prototype.switchToVisual = function () {
+	var parsePromise,
+		oldWidget = this.replyWidget,
+		wikitext = oldWidget.getValue(),
+		pageData = oldWidget.parsoidData.pageData,
+		commentController = this;
+
+	wikitext = controller.sanitizeWikitextLinebreaks( wikitext ).trim();
+	if ( wikitext ) {
+		wikitext = wikitext.split( '\n' ).map( function ( line ) {
+			return ':' + line;
+		} ).join( '\n' );
+
+		// Based on ve.init.mw.Target#parseWikitextFragment
+		parsePromise = ( new mw.Api() ).post( {
+			action: 'visualeditor',
+			paction: 'parsefragment',
+			page: pageData.pageName,
+			wikitext: wikitext
+		} ).then( function ( response ) {
+			return response && response.visualeditor.content;
+		} );
+	} else {
+		parsePromise = $.Deferred().resolve( '' ).promise();
+	}
+	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, true );
+
+	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
+		var doc;
+
+		// Swap out the DOM nodes
+		oldWidget.$element.replaceWith( replyWidget.$element );
+
+		// Teardown the old widget
+		oldWidget.disconnect( commentController );
+		oldWidget.teardown();
+
+		if ( html ) {
+			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
+			// Unindent list
+			modifier.unwrapList( doc.body.children[ 0 ] );
+		}
+
+		replyWidget.setValue( doc );
+		commentController.setupReplyWidget( replyWidget );
 	} );
 };
 

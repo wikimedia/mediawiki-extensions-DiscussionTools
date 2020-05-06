@@ -17,7 +17,17 @@ function ReplyWidgetVisual() {
 	ReplyWidgetVisual.super.apply( this, arguments );
 
 	// TODO: Use user preference
-	this.defaultMode = 'source';
+	this.defaultMode = 'visual';
+	this.initialValue = null;
+
+	// Events
+	this.replyBodyWidget.connect( this, {
+		change: 'onInputChangeThrottled',
+		submit: 'onReplyClick'
+	} );
+
+	// TODO: Rename this widget to VE, as it isn't just visual mode
+	this.$element.addClass( 'dt-ui-replyWidget-ve' );
 }
 
 /* Inheritance */
@@ -40,7 +50,16 @@ ReplyWidgetVisual.prototype.getValue = function () {
 	}
 };
 
-// TODO: Implement getMode to get current mode from surface
+ReplyWidgetVisual.prototype.setValue = function ( value ) {
+	var target = this.replyBodyWidget.target;
+	if ( target && target.getSurface() ) {
+		target.setDocument( value );
+	} else {
+		// #setup hasn't been called yet, just save the value for when it is
+		this.initialValue = value;
+	}
+	return this;
+};
 
 ReplyWidgetVisual.prototype.clear = function () {
 	// Parent method
@@ -65,20 +84,22 @@ ReplyWidgetVisual.prototype.initAutoSave = function () {
 };
 
 ReplyWidgetVisual.prototype.setup = function () {
-	var surface;
+	this.replyBodyWidget.setDocument( this.initialValue || '<p></p>' );
+	this.initialValue = null;
 
 	// Parent method
 	ReplyWidgetVisual.super.prototype.setup.call( this );
 
-	this.replyBodyWidget.setDocument( '<p></p>' );
+	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
 
-	surface = this.replyBodyWidget.target.getSurface();
+	return this;
+};
 
-	// Events
-	surface.getModel().getDocument()
-		.connect( this, { transact: this.onInputChangeThrottled } )
-		.once( 'transact', this.onFirstTransaction.bind( this ) );
-	surface.connect( this, { submit: 'onReplyClick' } );
+ReplyWidgetVisual.prototype.teardown = function () {
+	this.replyBodyWidget.off( 'change' );
+
+	// Parent method
+	return ReplyWidgetVisual.super.prototype.teardown.call( this );
 };
 
 ReplyWidgetVisual.prototype.focus = function () {
@@ -87,17 +108,18 @@ ReplyWidgetVisual.prototype.focus = function () {
 		targetWidget.getSurface().getModel().selectLastContentOffset();
 		targetWidget.focus();
 	} );
+
+	return this;
 };
 
 ReplyWidgetVisual.prototype.setPending = function ( pending ) {
 	ReplyWidgetVisual.super.prototype.setPending.call( this, pending );
 
 	if ( pending ) {
-		// TODO
-		// this.replyBodyWidget.pushPending();
+		this.replyBodyWidget.pushPending();
 		this.replyBodyWidget.setReadOnly( true );
 	} else {
-		// this.replyBodyWidget.popPending();
+		this.replyBodyWidget.popPending();
 		this.replyBodyWidget.setReadOnly( false );
 	}
 };

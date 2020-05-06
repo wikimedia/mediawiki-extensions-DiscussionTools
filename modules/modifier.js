@@ -195,6 +195,47 @@ function removeListItem( node ) {
 }
 
 /**
+ * Unwrap a top level list, converting list item text to paragraphs
+ *
+ * Assumes that the list is the only child of it's parent.
+ *
+ * @param {HTMLElement} list List element (dl/ol/ul)
+ */
+function unwrapList( list ) {
+	var p,
+		doc = list.ownerDocument,
+		container = list.parentNode;
+
+	container.removeChild( list );
+	while ( list.firstChild ) {
+		if ( list.firstChild.nodeType === Node.ELEMENT_NODE ) {
+			// Move <dd> contents to <p>
+			p = doc.createElement( 'p' );
+			while ( list.firstChild.firstChild ) {
+				// If contents is a block element, place outside the paragraph
+				// and start a new paragraph after
+				if ( ve.isBlockElement( list.firstChild.firstChild ) ) {
+					if ( p.firstChild ) {
+						container.appendChild( p );
+					}
+					container.appendChild( list.firstChild.firstChild );
+					p = doc.createElement( 'p' );
+				} else {
+					p.appendChild( list.firstChild.firstChild );
+				}
+			}
+			if ( p.firstChild ) {
+				container.appendChild( p );
+			}
+			list.removeChild( list.firstChild );
+		} else {
+			// Text node / comment node, probably empty
+			container.appendChild( list.firstChild );
+		}
+	}
+}
+
+/**
  * Add another list item after the given one.
  *
  * @param {HTMLElement} previousItem
@@ -221,5 +262,6 @@ module.exports = {
 	addListItem: addListItem,
 	removeListItem: removeListItem,
 	addSiblingListItem: addSiblingListItem,
+	unwrapList: unwrapList,
 	createWikitextNode: createWikitextNode
 };
