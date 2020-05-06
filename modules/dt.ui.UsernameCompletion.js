@@ -15,11 +15,22 @@
  * @param {ve.ui.Surface} surface Surface to act on
  */
 function MWUsernameCompletionAction( surface ) {
+	var action = this;
+
 	// Parent constructor
 	MWUsernameCompletionAction.super.call( this, surface );
 
 	this.api = new mw.Api();
 	this.searchedPrefixes = {};
+	this.localUsers = [];
+	this.ipUsers = [];
+	this.surface.authors.forEach( function ( user ) {
+		if ( mw.util.isIPAddress( user ) ) {
+			action.ipUsers.push( user );
+		} else {
+			action.localUsers.push( user );
+		}
+	} );
 	this.remoteUsers = [];
 }
 
@@ -68,7 +79,8 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			var suggestions = response.query.allusers.map( function ( user ) {
 				return user.name;
 			} ).filter( function ( username ) {
-				return action.surface.authors.indexOf( username ) === -1 &&
+				// API doesn't return IPs
+				return action.localUsers.indexOf( username ) === -1 &&
 					action.remoteUsers.indexOf( username ) === -1;
 			} );
 
@@ -83,7 +95,12 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 		// By concatenating on-thread authors and remote-fetched authors, both
 		// sorted alphabetically, we'll get our suggestion popup sorted so all
 		// on-thread matches come first.
-		this.filterSuggestionsForInput( this.surface.authors.concat( this.remoteUsers ), input )
+		this.filterSuggestionsForInput(
+			this.localUsers
+				.concat( this.remoteUsers )
+				.concat( this.ipUsers ),
+			input
+		)
 	).promise();
 };
 
