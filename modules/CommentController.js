@@ -6,12 +6,12 @@ var
 	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
 	config = require( './config.json' ),
-	// TODO: Remember last editor used
-	defaultVisual = false,
-	enableVisual = config.enableVisual || ( new mw.Uri() ).query.dtvisual;
+	enableVisual = config.enableVisual || ( new mw.Uri() ).query.dtvisual,
+	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
+	defaultVisual = enableVisual && defaultEditMode === 'visual';
 
 // Start loading reply widget code
-if ( defaultVisual && enableVisual ) {
+if ( defaultVisual ) {
 	mw.loader.using( 'ext.discussionTools.ReplyWidgetVisual' );
 } else {
 	mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );

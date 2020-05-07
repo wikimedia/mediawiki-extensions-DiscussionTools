@@ -17,6 +17,7 @@ use RecentChange;
 use RequestContext;
 use Skin;
 use User;
+use VisualEditorHooks;
 
 class Hooks {
 
@@ -86,6 +87,21 @@ class Hooks {
 			$output->addModules( [
 				'ext.discussionTools.init'
 			] );
+
+			$editor = $user->getOption( 'discussiontools-editmode' );
+			// User has no preferred editor yet
+			// If the user has a preferred editor, this will be evaluated in the client
+			if ( !$editor ) {
+				// Check which editor we would use for articles
+				// VE pref is 'visualeditor'/'wikitext'. Here we describe the mode,
+				// not the editor, so 'visual'/'source'
+				$editor = VisualEditorHooks::getPreferredEditor( $user, $req ) === 'visualeditor' ?
+					'visual' : 'source';
+				$output->addJsConfigVars(
+					'wgDiscussionToolsFallbackEditMode',
+					$editor
+				);
+			}
 		}
 
 		if ( $actionName === 'edit' && $req->getVal( 'dtlinterror' ) ) {
@@ -113,6 +129,22 @@ class Hooks {
 			$dtConfig->get( 'DTSchemaEditAttemptStepSamplingRate' );
 		$vars['wgDTSchemaEditAttemptStepOversample'] =
 			$dtConfig->get( 'DTSchemaEditAttemptStepOversample' );
+	}
+
+	/**
+	 * Handler for the GetPreferences hook, to add and hide user preferences as configured
+	 *
+	 * @param User $user The user object
+	 * @param array &$preferences Their preferences object
+	 */
+	public static function onGetPreferences( User $user, array &$preferences ) {
+		$api = [ 'type' => 'api' ];
+		$preferences['discussiontools-editmode'] = [
+			'type' => 'api',
+			'validation-callback' => function ( $value ) {
+				return in_array( $value, [ '', 'source', 'visual' ], true );
+			},
+		];
 	}
 
 	/**
