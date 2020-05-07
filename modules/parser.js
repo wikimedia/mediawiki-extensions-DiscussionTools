@@ -403,15 +403,46 @@ function findTimestamps( rootNode ) {
 			false
 		),
 		dateRegexp = getLocalTimestampRegexp(),
-		node, match;
+		node, startNode, nodeText, match;
 
 	while ( ( node = treeWalker.nextNode() ) ) {
+		startNode = node;
+		nodeText = '';
+
+		while ( node ) {
+			nodeText += node.nodeValue;
+
+			// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
+			// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
+			// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
+			// this, we must piece together the text, so that our regexp can match those timestamps.
+			if (
+				node.nextSibling &&
+				node.nextSibling.nodeType === Node.ELEMENT_NODE &&
+				node.nextSibling.getAttribute( 'typeof' ) === 'mw:Entity'
+			) {
+				nodeText += node.nextSibling.firstChild.nodeValue;
+
+				// If the entity is followed by more text, do this again
+				if (
+					node.nextSibling.nextSibling &&
+					node.nextSibling.nextSibling.nodeType === Node.TEXT_NODE
+				) {
+					node = node.nextSibling.nextSibling;
+				} else {
+					node = null;
+				}
+			} else {
+				node = null;
+			}
+		}
+
 		// Technically, there could be multiple matches in a single text node. However, the ultimate
 		// point of this is to find the signatures which precede the timestamps, and any later
 		// timestamps in the text node can't be directly preceded by a signature (as we require them to
 		// have links), so we only concern ourselves with the first match.
-		if ( ( match = node.nodeValue.match( dateRegexp ) ) ) {
-			matches.push( [ node, match ] );
+		if ( ( match = nodeText.match( dateRegexp ) ) ) {
+			matches.push( [ startNode, match ] );
 		}
 	}
 	return matches;

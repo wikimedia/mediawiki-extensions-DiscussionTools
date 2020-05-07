@@ -194,6 +194,20 @@ QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 			data: require( './data/arwiki-data.json' )
 		},
 		{
+			name: 'arwiki nbsp-timezone oldparser',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-nbsp-timezone-oldparser/ar-nbsp-timezone-oldparser.html' ).render(),
+			expected: require( './cases/ar-nbsp-timezone-oldparser/ar-nbsp-timezone-oldparser.json' ),
+			config: require( './data/arwiki-config.json' ),
+			data: require( './data/arwiki-data.json' )
+		},
+		{
+			name: 'arwiki nbsp-timezone parsoid',
+			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-nbsp-timezone-parsoid/ar-nbsp-timezone-parsoid.html' ).render(),
+			expected: require( './cases/ar-nbsp-timezone-parsoid/ar-nbsp-timezone-parsoid.json' ),
+			config: require( './data/arwiki-config.json' ),
+			data: require( './data/arwiki-data.json' )
+		},
+		{
 			name: 'No heading',
 			dom: mw.template.get( 'test.DiscussionTools', 'cases/no-heading/no-heading.html' ).render(),
 			expected: require( './cases/no-heading/no-heading.json' ),
