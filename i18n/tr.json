@@ -14,6 +14,8 @@
 	"discussiontools-replywidget-cancel": "İptal",
 	"discussiontools-replywidget-feedback": "Bu özellik hakkında geri bildirim paylaşın",
 	"discussiontools-replywidget-loading": "Yükleniyor...",
+	"discussiontools-replywidget-mode-source": "Kaynak",
+	"discussiontools-replywidget-mode-visual": "Görsel",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} adlı kullanıcıyı yanıtlayın",
 	"discussiontools-replywidget-preview": "Önizleme",
 	"discussiontools-replywidget-reply": "Yanıtla",

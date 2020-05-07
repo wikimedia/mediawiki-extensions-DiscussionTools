@@ -16,6 +16,8 @@
 	"discussiontools-replywidget-cancel": "Abbrechen",
 	"discussiontools-replywidget-feedback": "Rückmeldungen über diese Funktion hinterlassen",
 	"discussiontools-replywidget-loading": "Lade …",
+	"discussiontools-replywidget-mode-source": "Quelltext",
+	"discussiontools-replywidget-mode-visual": "VisualEditor",
 	"discussiontools-replywidget-placeholder-reply": "Antwort an {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Vorschau",
 	"discussiontools-replywidget-reply": "Antworten",

@@ -14,6 +14,8 @@
 	"discussiontools-replywidget-cancel": "Откажи",
 	"discussiontools-replywidget-feedback": "Дајте мислење за оваа можност",
 	"discussiontools-replywidget-loading": "Вчитувам…",
+	"discussiontools-replywidget-mode-source": "Изворно",
+	"discussiontools-replywidget-mode-visual": "Нагледно",
 	"discussiontools-replywidget-placeholder-reply": "Одговор на {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Преглед",
 	"discussiontools-replywidget-reply": "Одговори",

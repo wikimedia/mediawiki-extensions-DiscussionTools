@@ -16,6 +16,8 @@
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-feedback": "Compartilhe comentários sobre esse recurso",
 	"discussiontools-replywidget-loading": "Carregando…",
+	"discussiontools-replywidget-mode-source": "Fonte",
+	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Pré-visualizar",
 	"discussiontools-replywidget-reply": "Responder",

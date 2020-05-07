@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Canaan9801",
+			"Ed g2s",
 			"Fitoschido",
 			"Hasley",
 			"Ihojose",
@@ -25,6 +26,6 @@
 	"tag-discussiontools-edit": "Editar comentario",
 	"tag-discussiontools-edit-description": "El usuario editó un comentario existente con DiscussionTools",
 	"tag-discussiontools-newtopic": "Añadir tema",
-	"tag-discussiontools-reply": "Respuesta",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respuesta]",
 	"tag-discussiontools-reply-description": "El usuario respondió a un comentario con DiscussionTools"
 }
