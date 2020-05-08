@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Sakretsu"
+			"Sakretsu",
+			"Scompo"
 		]
 	},
 	"discussiontools": "Strumenti di discussione",
@@ -12,6 +13,7 @@
 	"discussiontools-replylink": "Rispondi",
 	"discussiontools-replywidget-cancel": "Annulla",
 	"discussiontools-replywidget-loading": "Caricamento…",
+	"discussiontools-replywidget-mode-visual": "Visuale",
 	"discussiontools-replywidget-placeholder-reply": "Rispondi a {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Rispondi",
 	"tag-discussiontools-edit": "Modifica commento",

@@ -15,6 +15,8 @@
 	"discussiontools-replywidget-cancel": "Anuluj",
 	"discussiontools-replywidget-feedback": "Prześlij opinię na temat tego oprogramowania",
 	"discussiontools-replywidget-loading": "Ładowanie…",
+	"discussiontools-replywidget-mode-source": "Kod źródłowy",
+	"discussiontools-replywidget-mode-visual": "Wizualnie",
 	"discussiontools-replywidget-placeholder-reply": "Odpowiedz na komentarz {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Podgląd",
 	"discussiontools-replywidget-reply": "Odpowiedz",

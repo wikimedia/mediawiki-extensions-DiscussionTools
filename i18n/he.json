@@ -17,6 +17,8 @@
 	"discussiontools-replywidget-cancel": "ביטול",
 	"discussiontools-replywidget-feedback": "שתפו איתנו משוב על התכונה הזאת",
 	"discussiontools-replywidget-loading": "טעינה...",
+	"discussiontools-replywidget-mode-source": "קוד מקור",
+	"discussiontools-replywidget-mode-visual": "חזותי",
 	"discussiontools-replywidget-placeholder-reply": "תשובה ל{{GRAMMAR:תחילית|{{BIDI:$1}}}}",
 	"discussiontools-replywidget-preview": "תצוגה מקדימה",
 	"discussiontools-replywidget-reply": "להגיב",
