@@ -90,6 +90,9 @@ ReplyWidgetPlain.prototype.setup = function () {
 ReplyWidgetPlain.prototype.teardown = function () {
 	this.replyBodyWidget.off( 'change' );
 
+	this.storage.remove( this.storagePrefix + '/class' );
+	this.storage.remove( this.storagePrefix + '/body' );
+
 	// Parent method
 	return ReplyWidgetPlain.super.prototype.teardown.call( this );
 };
