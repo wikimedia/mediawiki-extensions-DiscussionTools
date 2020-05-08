@@ -591,7 +591,7 @@ function getIndentLevel( node, rootNode ) {
 			break;
 		}
 		tagName = node.tagName && node.tagName.toLowerCase();
-		if ( tagName === 'li' || tagName === 'dl' ) {
+		if ( tagName === 'li' || tagName === 'dd' ) {
 			indent++;
 		}
 		node = node.parentNode;
