@@ -131,6 +131,10 @@ CommentController.prototype.setup = function () {
 	$( '.dt-init-replylink-reply' ).attr( {
 		tabindex: '-1'
 	} );
+	// Suppress page takeover behavior for VE editing so that our unload
+	// handler can warn of data loss.
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '#ca-edit, #ca-ve-edit, .mw-editsection a, #ca-addsection' ).off( '.ve-target' );
 
 	logger( {
 		action: 'init',
@@ -230,6 +234,11 @@ CommentController.prototype.teardown = function () {
 	$( '.dt-init-replylink-reply' ).attr( {
 		tabindex: '0'
 	} );
+	// We deliberately mangled edit links earlier so VE can't steal our page;
+	// have it redo setup to fix those.
+	if ( mw.libs.ve && mw.libs.ve.setupEditLinks ) {
+		mw.libs.ve.setupEditLinks();
+	}
 	modifier.removeListItem( this.newListItem );
 	this.newListItem = null;
 	this.$replyLink.trigger( 'focus' );
