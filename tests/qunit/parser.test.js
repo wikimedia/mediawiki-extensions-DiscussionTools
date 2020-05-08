@@ -6,253 +6,89 @@ var
 QUnit.module( 'mw.dt.parser', testUtils.newEnvironment() );
 
 QUnit.test( '#getTimestampRegexp', function ( assert ) {
-	var i, cases;
+	var cases = require( './cases/timestamp-regex.json' );
 
 	testUtils.overrideParserData( require( './data-en.json' ) );
 
-	cases = [
-		{
-			format: 'H:i, j F Y',
-			expected: '(\\d{2}):(\\d{2}), (\\d{1,2}) (January|February|March|April|May|June|July|August|September|October|November|December) (\\d{4})[\\u200E\\u200F]? [\\u200E\\u200F]?\\((UTC)\\)',
-			message: '(en) Boring'
-		},
-		{
-			format: 'H:i، j xg Y',
-			expected: '(\\d{2}):(\\d{2})، (\\d{1,2}) (January|February|March|April|May|June|July|August|September|October|November|December) (\\d{4})[\\u200E\\u200F]? [\\u200E\\u200F]?\\((UTC)\\)',
-			message: '(ar) "xg" specifier'
-		},
-		{
-			format: 'H:i, j F xkY',
-			expected: '(\\d{2}):(\\d{2}), (\\d{1,2}) (January|February|March|April|May|June|July|August|September|October|November|December) (\\d{4})[\\u200E\\u200F]? [\\u200E\\u200F]?\\((UTC)\\)',
-			message: '(th) "xkY" specifier'
-		},
-		{
-			format: 'H"h"i"min" "de" j "de" F "de" Y',
-			expected: '(\\d{2})h(\\d{2})min de (\\d{1,2}) de (January|February|March|April|May|June|July|August|September|October|November|December) de (\\d{4})[\\u200E\\u200F]? [\\u200E\\u200F]?\\((UTC)\\)',
-			message: '(pt) Escaped text (quotes)'
-		},
-		{
-			format: 'H\\hi\\m\\i\\n \\d\\e j \\d\\e F \\d\\e Y',
-			expected: '(\\d{2})h(\\d{2})min de (\\d{1,2}) de (January|February|March|April|May|June|July|August|September|October|November|December) de (\\d{4})[\\u200E\\u200F]? [\\u200E\\u200F]?\\((UTC)\\)',
-			message: '(pt) Escaped text (backslashes)'
-		},
-		{
-			format: 'j F Y à H:i',
-			expected: '(\\d{1,2}) (January|February|March|April|May|June|July|August|September|October|November|December) (\\d{4}) à (\\d{2}):(\\d{2})[\\u200E\\u200F]? [\\u200E\\u200F]?\\((UTC)\\)',
-			message: '(fr) Unescaped text (non-ASCII)'
-		},
-		{
-			format: 'Y年n月j日 (D) H:i',
-			expected: '(\\d{4})年(\\d{1,2})月(\\d{1,2})日 \\((Sun|Mon|Tue|Wed|Thu|Fri|Sat)\\) (\\d{2}):(\\d{2})[\\u200E\\u200F]? [\\u200E\\u200F]?\\((UTC)\\)',
-			message: '(ja) Unescaped regexp special characters'
-		}
-	];
-
-	for ( i = 0; i < cases.length; i++ ) {
+	cases.forEach( function ( caseItem ) {
 		assert.strictEqual(
-			parser.getTimestampRegexp( cases[ i ].format, '\\d', { UTC: 'UTC' } ),
-			cases[ i ].expected,
-			cases[ i ].message
+			parser.getTimestampRegexp( caseItem.format, '\\d', { UTC: 'UTC' } ),
+			caseItem.expected,
+			caseItem.message
 		);
-	}
+	} );
 } );
 
 QUnit.test( '#getTimestampParser', function ( assert ) {
-	var i, cases, expectedDate, tsParser;
+	var cases = require( './cases/timestamp-parser.json' );
 
 	testUtils.overrideParserData( require( './data-en.json' ) );
 
-	expectedDate = moment( '2011-02-03T04:05:00+00:00' );
-
-	cases = [
-		{
-			format: 'Y n j D H i',
-			data: [ null, '2011', '2', '3', 'unused', '04', '05', 'UTC' ],
-			message: 'Date is parsed'
-		},
-		{
-			format: 'xkY xg d "asdf" G i',
-			data: [ null, '2554', 'February', '03', '4', '05', 'UTC' ],
-			message: 'Date is parsed'
-		},
-		{
-			format: 'H i n j Y',
-			data: [ null, '04', '05', '2', '3', '2011', 'UTC' ],
-			message: 'Date is parsed'
-		}
-	];
-
-	for ( i = 0; i < cases.length; i++ ) {
-		tsParser = parser.getTimestampParser( cases[ i ].format, null, 'UTC', { UTC: 'UTC' } );
+	cases.forEach( function ( caseItem ) {
+		var tsParser = parser.getTimestampParser( caseItem.format, null, 'UTC', { UTC: 'UTC' } ),
+			expectedDate = moment( caseItem.expected );
 
 		assert.ok(
-			tsParser( cases[ i ].data ).isSame( expectedDate ),
-			cases[ i ].message
+			tsParser( caseItem.data ).isSame( expectedDate ),
+			caseItem.message
 		);
-	}
+	} );
 } );
 
 QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
-	var i, cases, format, timezone, timezoneAbbrs, regexp, tsParser, date;
+	var cases = require( './cases/timestamp-parser-dst.json' );
 
 	testUtils.overrideParserData( require( './data-en.json' ) );
 
-	format = 'H:i, j M Y';
-	timezone = 'Europe/Warsaw';
-	timezoneAbbrs = {
-		CET: 'CET',
-		CEST: 'CEST'
-	};
-	regexp = parser.getTimestampRegexp( format, '\\d', timezoneAbbrs );
-	tsParser = parser.getTimestampParser( format, null, timezone, timezoneAbbrs );
+	cases.forEach( function ( caseItem ) {
+		var regexp = parser.getTimestampRegexp( caseItem.format, '\\d', caseItem.timezoneAbbrs ),
+			tsParser = parser.getTimestampParser( caseItem.format, null, caseItem.timezone, caseItem.timezoneAbbrs ),
+			date = tsParser( caseItem.sample.match( regexp ) );
 
-	cases = [
-		{
-			sample: '01:30, 28 Oct 2018 (CEST)',
-			expected: moment( '2018-10-28T01:30:00+02:00' ),
-			expectedUtc: moment( '2018-10-27T23:30:00Z' ),
-			message: 'Before DST change (not ambiguous)'
-		},
-		{
-			sample: '02:30, 28 Oct 2018 (CEST)',
-			expected: moment( '2018-10-28T02:30:00+02:00' ),
-			expectedUtc: moment( '2018-10-28T00:30:00Z' ),
-			message: 'Before DST change (ambiguous)'
-		},
-		// At 03:00, time goes back by 1 hour
-		{
-			sample: '02:30, 28 Oct 2018 (CET)',
-			expected: moment( '2018-10-28T02:30:00+01:00' ),
-			expectedUtc: moment( '2018-10-28T01:30:00Z' ),
-			message: 'After DST change (ambiguous)'
-		},
-		{
-			sample: '03:30, 28 Oct 2018 (CET)',
-			expected: moment( '2018-10-28T03:30:00+01:00' ),
-			expectedUtc: moment( '2018-10-28T02:30:00Z' ),
-			message: 'After DST change (not ambiguous)'
-		}
-	];
-
-	for ( i = 0; i < cases.length; i++ ) {
-		date = tsParser( cases[ i ].sample.match( regexp ) );
 		assert.ok(
-			date.isSame( cases[ i ].expected ),
-			cases[ i ].message
+			date.isSame( caseItem.expected ),
+			caseItem.message
 		);
 		assert.ok(
-			date.isSame( cases[ i ].expectedUtc ),
-			cases[ i ].message
+			date.isSame( caseItem.expectedUtc ),
+			caseItem.message
 		);
-	}
+	} );
 } );
 
 QUnit.test( '#getComments/#groupThreads', function ( assert ) {
-	var i, j, cases, comments, threads, fixture;
-
-	cases = [
-		{
-			name: 'plwiki oldparser',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-oldparser/pl-big-oldparser.html' ).render(),
-			expected: require( './cases/pl-big-oldparser/pl-big-oldparser.json' ),
-			config: require( './data/plwiki-config.json' ),
-			data: require( './data/plwiki-data.json' )
-		},
-		{
-			name: 'plwiki parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/pl-big-parsoid/pl-big-parsoid.html' ).render(),
-			expected: require( './cases/pl-big-parsoid/pl-big-parsoid.json' ),
-			config: require( './data/plwiki-config.json' ),
-			data: require( './data/plwiki-data.json' )
-		},
-		{
-			name: 'enwiki oldparser',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-oldparser/en-big-oldparser.html' ).render(),
-			expected: require( './cases/en-big-oldparser/en-big-oldparser.json' ),
-			config: require( './data/enwiki-config.json' ),
-			data: require( './data/enwiki-data.json' )
-		},
-		{
-			name: 'enwiki parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-parsoid/en-big-parsoid.html' ).render(),
-			expected: require( './cases/en-big-parsoid/en-big-parsoid.json' ),
-			config: require( './data/enwiki-config.json' ),
-			data: require( './data/enwiki-data.json' )
-		},
-		{
-			name: 'arwiki no-paragraph oldparser',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html' ).render(),
-			expected: require( './cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.json' ),
-			config: require( './data/arwiki-config.json' ),
-			data: require( './data/arwiki-data.json' )
-		},
-		{
-			name: 'arwiki no-paragraph parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.html' ).render(),
-			expected: require( './cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.json' ),
-			config: require( './data/arwiki-config.json' ),
-			data: require( './data/arwiki-data.json' )
-		},
-		{
-			name: 'arwiki nbsp-timezone oldparser',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-nbsp-timezone-oldparser/ar-nbsp-timezone-oldparser.html' ).render(),
-			expected: require( './cases/ar-nbsp-timezone-oldparser/ar-nbsp-timezone-oldparser.json' ),
-			config: require( './data/arwiki-config.json' ),
-			data: require( './data/arwiki-data.json' )
-		},
-		{
-			name: 'arwiki nbsp-timezone parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/ar-nbsp-timezone-parsoid/ar-nbsp-timezone-parsoid.html' ).render(),
-			expected: require( './cases/ar-nbsp-timezone-parsoid/ar-nbsp-timezone-parsoid.json' ),
-			config: require( './data/arwiki-config.json' ),
-			data: require( './data/arwiki-data.json' )
-		},
-		{
-			name: 'No heading',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/no-heading/no-heading.html' ).render(),
-			expected: require( './cases/no-heading/no-heading.json' ),
-			config: require( './data/enwiki-config.json' ),
-			data: require( './data/enwiki-data.json' )
-		},
-		{
-			name: 'Manually added signature with LRM',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/lrm-signature/lrm-signature.html' ).render(),
-			expected: require( './cases/lrm-signature/lrm-signature.json' ),
-			config: require( './data/nlwiki-config.json' ),
-			data: require( './data/nlwiki-data.json' )
-		},
-		{
-			name: 'Link using fallback 8-bit encoding (invalid UTF-8)',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/fallback-encoding-link/fallback-encoding-link.html' ).render(),
-			expected: require( './cases/fallback-encoding-link/fallback-encoding-link.json' ),
-			config: require( './data/huwiki-config.json' ),
-			data: require( './data/huwiki-data.json' )
-		}
-	];
+	var fixture,
+		cases = require( './cases/comments.json' );
 
 	fixture = document.getElementById( 'qunit-fixture' );
 
-	for ( i = 0; i < cases.length; i++ ) {
-		$( fixture ).empty().append( cases[ i ].dom );
-		testUtils.overrideMwConfig( cases[ i ].config );
-		testUtils.overrideParserData( cases[ i ].data );
+	cases.forEach( function ( caseItem ) {
+		var comments, threads,
+			dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+			expected = require( caseItem.expected ),
+			config = require( caseItem.config ),
+			data = require( caseItem.data );
+
+		$( fixture ).empty().append( dom );
+		testUtils.overrideMwConfig( config );
+		testUtils.overrideParserData( data );
 
 		comments = parser.getComments( fixture );
 		threads = parser.groupThreads( comments );
 
-		for ( j = 0; j < threads.length; j++ ) {
-			testUtils.serializeComments( threads[ j ], fixture );
+		threads.forEach( function ( thread, i ) {
+			testUtils.serializeComments( thread, fixture );
 
 			assert.deepEqual(
-				JSON.parse( JSON.stringify( threads[ j ] ) ),
-				cases[ i ].expected[ j ],
-				cases[ i ].name + ' section ' + j
+				JSON.parse( JSON.stringify( thread ) ),
+				expected[ i ],
+				caseItem.name + ' section ' + i
 			);
-		}
+		} );
 
 		// Uncomment this to get updated content for the JSON files, for copy/paste:
 		// console.log( JSON.stringify( threads, null, 2 ) );
-	}
+	} );
 } );
 
 QUnit.test( '#getTranscludedFrom', function ( assert ) {
