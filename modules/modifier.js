@@ -4,6 +4,11 @@
 var
 	utils = require( './utils.js' );
 
+/**
+ * Add an attribute to a list item to remove pre-whitespace in Parsoid
+ *
+ * @param {HTMLElement} listItem List item element
+ */
 function whitespaceParsoidHack( listItem ) {
 	// HACK: Setting data-parsoid removes the whitespace after the list item,
 	// which makes nested lists work.
@@ -51,7 +56,7 @@ function addReplyLink( comment, linkNode ) {
  */
 function addListItem( comment ) {
 	var
-		currComment, currLevel, desiredLevel,
+		curComment, curLevel, desiredLevel,
 		target, parent, listType, itemType, list, item, newNode,
 		listTypeMap = {
 			li: 'ul',
@@ -63,14 +68,14 @@ function addListItem( comment ) {
 	//    (or in other words, all replies, and replies to replies, and so on)
 	// 3. Add comment with level of the given comment plus 1
 
-	currComment = comment;
-	while ( currComment.replies.length ) {
-		currComment = currComment.replies[ currComment.replies.length - 1 ];
+	curComment = comment;
+	while ( curComment.replies.length ) {
+		curComment = curComment.replies[ curComment.replies.length - 1 ];
 	}
 
 	desiredLevel = comment.level + 1;
-	currLevel = currComment.level;
-	target = currComment.range.endContainer;
+	curLevel = curComment.level;
+	target = curComment.range.endContainer;
 
 	// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 	// avoiding that would be more difficult and slower.
@@ -89,7 +94,7 @@ function addListItem( comment ) {
 	// parent is a list item or paragraph (hopefully)
 	// target is an inline node within it
 
-	if ( currLevel < desiredLevel ) {
+	if ( curLevel < desiredLevel ) {
 		// Insert more lists after the target to increase nesting.
 
 		// If we can't insert a list directly inside this element, insert after it.
@@ -105,7 +110,7 @@ function addListItem( comment ) {
 		listType = listTypeMap[ itemType ];
 
 		// Insert required number of wrappers
-		while ( currLevel < desiredLevel ) {
+		while ( curLevel < desiredLevel ) {
 			list = target.ownerDocument.createElement( listType );
 			list.discussionToolsModified = 'new';
 			item = target.ownerDocument.createElement( itemType );
@@ -117,9 +122,9 @@ function addListItem( comment ) {
 
 			target = item;
 			parent = list;
-			currLevel++;
+			curLevel++;
 		}
-	} else if ( currLevel >= desiredLevel ) {
+	} else if ( curLevel >= desiredLevel ) {
 		// Split the ancestor nodes after the target to decrease nesting.
 
 		do {
@@ -141,9 +146,9 @@ function addListItem( comment ) {
 
 			// Decrease nesting level if we escaped outside of a list
 			if ( listTypeMap[ target.tagName.toLowerCase() ] ) {
-				currLevel--;
+				curLevel--;
 			}
-		} while ( currLevel >= desiredLevel );
+		} while ( curLevel >= desiredLevel );
 
 		// parent is now a list, target is a list item
 		item = target.ownerDocument.createElement( target.tagName );
@@ -242,7 +247,7 @@ function unwrapList( list ) {
  * @return {HTMLElement}
  */
 function addSiblingListItem( previousItem ) {
-	var listItem = previousItem.ownerDocument.createElement( previousItem.nodeName.toLowerCase() );
+	var listItem = previousItem.ownerDocument.createElement( previousItem.tagName.toLowerCase() );
 	whitespaceParsoidHack( listItem );
 	previousItem.parentNode.insertBefore( listItem, previousItem.nextSibling );
 	return listItem;
