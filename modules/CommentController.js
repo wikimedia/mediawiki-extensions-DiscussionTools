@@ -156,7 +156,7 @@ CommentController.prototype.setup = function () {
 			commentController.teardown();
 
 			OO.ui.alert(
-				( new mw.Api() ).getErrorMessage( data ),
+				code instanceof Error ? code.toString() : ( new mw.Api() ).getErrorMessage( data ),
 				{ size: 'medium' }
 			);
 

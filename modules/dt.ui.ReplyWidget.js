@@ -543,7 +543,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 		} else {
 			widget.errorMessage = new OO.ui.MessageWidget( {
 				type: 'error',
-				label: widget.api.getErrorMessage( data )
+				label: code instanceof Error ? code.toString() : widget.api.getErrorMessage( data )
 			} );
 			widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
 		}
