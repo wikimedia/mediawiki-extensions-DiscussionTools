@@ -51,9 +51,9 @@ class DiscussionToolsCommentParser {
 	 *
 	 * @param DOMNode $el
 	 * @param string[] $tagNames
-	 * @return DOMNode|null
+	 * @return DOMElement|null
 	 */
-	private static function closestElement( DOMNode $el, array $tagNames ) : ?DOMNode {
+	private static function closestElement( DOMNode $el, array $tagNames ) : ?DOMElement {
 		do {
 			if (
 				$el->nodeType === XML_ELEMENT_NODE &&
@@ -168,10 +168,10 @@ class DiscussionToolsCommentParser {
 	 * with no children, that follows the given node.
 	 *
 	 * @param DOMNode $node Node to start searching at. This node's children are ignored.
-	 * @param DOMNode $rootNode Node to stop searching at (ancestor of $startNode not to break out of)
+	 * @param DOMElement $rootNode Node to stop searching at
 	 * @return DOMNode|null
 	 */
-	private function nextInterestingLeafNode( DOMNode $node, DOMNode $rootNode ) : ?DOMNode {
+	private function nextInterestingLeafNode( DOMNode $node, DOMElement $rootNode ) : ?DOMNode {
 		$n = $node;
 		do {
 			if ( $n->firstChild && ( $node === $rootNode || $n !== $node ) ) {
@@ -552,10 +552,10 @@ class DiscussionToolsCommentParser {
 	 * The indent level is the number of lists inside of which it is nested.
 	 *
 	 * @param DOMNode $node
-	 * @param DOMNode $rootNode
+	 * @param DOMElement $rootNode
 	 * @return int
 	 */
-	private function getIndentLevel( DOMNode $node, DOMNode $rootNode ) : int {
+	private function getIndentLevel( DOMNode $node, DOMElement $rootNode ) : int {
 		$indent = 0;
 		while ( $node ) {
 			if ( $node === $rootNode ) {
@@ -671,10 +671,10 @@ class DiscussionToolsCommentParser {
 	/**
 	 * Find all timestamps within a DOM subtree.
 	 *
-	 * @param DOMNode $rootNode
+	 * @param DOMElement $rootNode
 	 * @return array Array of [node, matchData] pairs
 	 */
-	public function findTimestamps( DOMNode $rootNode ) : array {
+	public function findTimestamps( DOMElement $rootNode ) : array {
 		$xpath = new DOMXPath( $rootNode->ownerDocument );
 		$textNodes = $xpath->query( '//text()', $rootNode );
 		$matches = [];
@@ -764,10 +764,10 @@ class DiscussionToolsCommentParser {
 	 * - 'author' (string|null): Comment author's username, null for unsigned comments.
 	 *                           Not set for headings.
 	 *
-	 * @param DOMNode $rootNode
+	 * @param DOMElement $rootNode
 	 * @return stdClass[] Results. Each result is an object.
 	 */
-	public function getComments( DOMNode $rootNode ) : array {
+	public function getComments( DOMElement $rootNode ) : array {
 		$timestamps = $this->findTimestamps( $rootNode );
 
 		$xpath = new DOMXPath( $rootNode->ownerDocument );

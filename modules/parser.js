@@ -387,7 +387,7 @@ function acceptOnlyNodesAllowingComments( node ) {
 /**
  * Find all timestamps within a DOM subtree.
  *
- * @param {Node} rootNode Node to search
+ * @param {HTMLElement} rootNode Node to search
  * @return {Array[]} Results. Each result is a two-element array.
  * @return {Text} return.0 Text node containing the timestamp
  * @return {Array} return.1 Regexp match data, which specifies the location of the match, and which
@@ -581,7 +581,7 @@ function findSignature( timestampNode, until ) {
  *
  * @private
  * @param {Node} node
- * @param {Node} rootNode Node to stop counting at
+ * @param {HTMLElement} rootNode Node to stop counting at
  * @return {number}
  */
 function getIndentLevel( node, rootNode ) {
@@ -607,7 +607,7 @@ function getIndentLevel( node, rootNode ) {
  *
  * @private
  * @param {Node} node Node to start searching at. If it isn't a leaf node, its children are ignored.
- * @param {Node} rootNode Node to stop searching at
+ * @param {HTMLElement} rootNode Node to stop searching at
  * @return {Node|null}
  */
 function nextInterestingLeafNode( node, rootNode ) {
@@ -670,7 +670,7 @@ function nextInterestingLeafNode( node, rootNode ) {
  *       { type: 'comment', level: 2, range: (li: I)        }
  *     ]
  *
- * @param {Node} rootNode
+ * @param {HTMLElement} rootNode
  * @return {Object[]} Results. Each result is an object.
  * @return {string} return.type `heading` or `comment`
  * @return {Object} return.range Object describing the extent of the comment, including the
