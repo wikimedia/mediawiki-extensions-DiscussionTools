@@ -4,6 +4,7 @@
 			"Canaan9801",
 			"Ed g2s",
 			"Fitoschido",
+			"Geryescalier",
 			"Hasley",
 			"Ihojose",
 			"Juenti el toju"
@@ -18,6 +19,8 @@
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-feedback": "Deja tus comentarios acerca de esta característica",
 	"discussiontools-replywidget-loading": "Cargando...",
+	"discussiontools-replywidget-mode-source": "Fuente",
+	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Previsualización",
 	"discussiontools-replywidget-reply": "Responder",
@@ -26,6 +29,6 @@
 	"tag-discussiontools-edit": "Editar comentario",
 	"tag-discussiontools-edit-description": "El usuario editó un comentario existente con DiscussionTools",
 	"tag-discussiontools-newtopic": "Añadir tema",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respuesta]",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Responder]",
 	"tag-discussiontools-reply-description": "El usuario respondió a un comentario con DiscussionTools"
 }
