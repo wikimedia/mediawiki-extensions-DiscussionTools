@@ -1,21 +1,11 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
 use Wikimedia\TestingAccessWrapper;
 
 /**
  * @coversDefaultClass DiscussionToolsCommentParser
  */
-class DiscussionToolsCommentParserTest extends MediaWikiTestCase {
-
-	private static function getJson( $relativePath ) {
-		$json = json_decode(
-			// TODO: Move cases out of /qunit
-			file_get_contents( __DIR__ . '/../qunit/' . $relativePath ),
-			true
-		);
-		return $json;
-	}
+class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 
 	private static function getOffsetPath( $ancestor, $node, $nodeOffset ) {
 		$path = [ $nodeOffset ];
@@ -173,36 +163,17 @@ class DiscussionToolsCommentParserTest extends MediaWikiTestCase {
 	 * @covers ::groupThreads
 	 */
 	public function testGetComments( $name, $dom, $expected, $config, $data ) {
-		$dom = file_get_contents( __DIR__ . '/../qunit/' . $dom );
+		$dom = self::getHtml( $dom );
 		$expected = self::getJson( $expected );
 		$config = self::getJson( $config );
 		$data = self::getJson( $data );
 
-		// Remove all but the body tags from full Parsoid docs
-		if ( strpos( $dom, '<body' ) !== false ) {
-			preg_match( '`<body[^>]*>(.*)</body>`s', $dom, $match );
-			$dom = $match[1];
-		}
+		$this->setupEnv( $config, $data );
+		$parserOrig = self::createParser( $data );
 
-		$this->setMwGlobals( $config );
-		$this->setMwGlobals( [
-			'wgArticlePath' => $config['wgArticlePath'],
-			'wgNamespaceAliases' => $config['wgNamespaceIds'],
-			'wgLocaltimezone' => $data['localTimezone']
-		] );
-		$this->setUserLang( $config['wgContentLang'] );
-		$this->setContentLang( $config['wgContentLang'] );
-
-		$services = MediaWikiServices::getInstance();
-		$parserOrig = new DiscussionToolsCommentParser(
-			$services->getContentLanguage(),
-			$services->getMainConfig(),
-			$data
-		);
 		$parser = TestingAccessWrapper::newFromObject( $parserOrig );
 
-		$doc = new DOMDocument();
-		$doc->loadHTML( '<?xml encoding="utf-8" ?>' . $dom, LIBXML_NOERROR );
+		$doc = self::createDocument( $dom );
 		$container = $doc->documentElement->childNodes[0];
 
 		$comments = $parserOrig->getComments( $container );

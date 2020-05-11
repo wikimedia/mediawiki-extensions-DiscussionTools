@@ -229,6 +229,9 @@
 		"DiscussionToolsData": "includes/DiscussionToolsData.php",
 		"DiscussionToolsHooks": "includes/DiscussionToolsHooks.php"
 	},
+	"TestAutoloadClasses": {
+		"DiscussionToolsTestCase": "tests/phpunit/DiscussionToolsTestCase.php"
+	},
 	"Hooks": {
 		"BeforePageDisplay": "DiscussionToolsHooks::onBeforePageDisplay",
 		"ResourceLoaderGetConfigVars": "DiscussionToolsHooks::onResourceLoaderGetConfigVars",
