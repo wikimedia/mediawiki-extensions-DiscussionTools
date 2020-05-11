@@ -36,12 +36,12 @@ function getMessages( messages ) {
  * complicated).
  *
  * @param {string} format Date format, as used by MediaWiki
- * @param {string} digits Regular expression matching a single localised digit, e.g. `[0-9]`
+ * @param {string} digitsRegexp Regular expression matching a single localised digit, e.g. `[0-9]`
  * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
  * @return {string} Regular expression
  */
-function getTimestampRegexp( format, digits, tzAbbrs ) {
+function getTimestampRegexp( format, digitsRegexp, tzAbbrs ) {
 	var s, p, num, code, endQuote, tzRegexp, regexp;
 
 	function regexpGroup( regexp ) {
@@ -151,13 +151,13 @@ function getTimestampRegexp( format, digits, tzAbbrs ) {
 				s += mw.util.escapeRegExp( format[ p ] );
 		}
 		if ( num !== false ) {
-			s += regexpGroup( digits + '{' + num + '}' );
+			s += regexpGroup( digitsRegexp + '{' + num + '}' );
 		}
 	}
 
 	tzRegexp = regexpAlternateGroup( Object.keys( tzAbbrs ) );
 	// Hardcoded parentheses and space like in Parser::pstPass2
-	// Ignore some invisible Unicode characters that often sneak in into copypasted timestamps (T245784)
+	// Ignore some invisible Unicode characters that often sneak into copypasted timestamps (T245784)
 	regexp = s + '[\\u200E\\u200F]? [\\u200E\\u200F]?\\(' + tzRegexp + '\\)';
 
 	return regexp;
@@ -302,7 +302,7 @@ function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
 			}
 		}
 		// The last matching group is the timezone abbreviation
-		tzAbbr = tzAbbrs[ match[ i + 1 ] ];
+		tzAbbr = tzAbbrs[ match[ match.length - 1 ] ];
 
 		// Most of the time, the timezone abbreviation is not necessary to parse the date, since we
 		// can assume all times are in the wiki's local timezone.
