@@ -45,7 +45,6 @@ class DiscussionToolsHooks {
 	 * @param Skin $skin The skin that's going to build the UI.
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) {
-		$coreConfig = RequestContext::getMain()->getConfig();
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 		$title = $output->getTitle();
