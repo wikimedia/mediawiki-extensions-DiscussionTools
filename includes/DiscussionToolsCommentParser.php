@@ -53,7 +53,7 @@ class DiscussionToolsCommentParser {
 	 * @param string[] $tagNames
 	 * @return DOMElement|null
 	 */
-	private static function closestElement( DOMNode $el, array $tagNames ) : ?DOMElement {
+	public static function closestElement( DOMNode $el, array $tagNames ) : ?DOMElement {
 		do {
 			if (
 				$el->nodeType === XML_ELEMENT_NODE &&
