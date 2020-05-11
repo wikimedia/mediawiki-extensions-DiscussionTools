@@ -47,26 +47,6 @@ class DiscussionToolsCommentParser {
 	}
 
 	/**
-	 * Find closest ancestor element using one of the given tag names.
-	 *
-	 * @param DOMNode $el
-	 * @param string[] $tagNames
-	 * @return DOMElement|null
-	 */
-	public static function closestElement( DOMNode $el, array $tagNames ) : ?DOMElement {
-		do {
-			if (
-				$el->nodeType === XML_ELEMENT_NODE &&
-				in_array( strtolower( $el->nodeName ), $tagNames )
-			) {
-				return $el;
-			}
-			$el = $el->parentNode;
-		} while ( $el );
-		return null;
-	}
-
-	/**
 	 * Build the timezone abbreviations map for the local timezone.
 	 * @return array Associative array mapping localized timezone abbreviations to IANA abbreviations
 	 */
@@ -104,34 +84,6 @@ class DiscussionToolsCommentParser {
 	}
 
 	/**
-	 * Check whether a DOMNode contains (is an ancestor of) another DOMNode
-	 * @param DOMNode $ancestor
-	 * @param DOMNode $descendant
-	 * @return bool
-	 */
-	private function contains( DOMNode $ancestor, DOMNode $descendant ) : bool {
-		// TODO can we use DOMNode->compareDocumentPosition() here maybe?
-		$node = $descendant;
-		while ( $node && $node !== $ancestor ) {
-			$node = $node->parentNode;
-		}
-		return $node === $ancestor;
-	}
-
-	/**
-	 * Get the index of $child in its parent
-	 * @param DOMNode $child
-	 * @return int
-	 */
-	public static function childIndexOf( DOMNode $child ) : int {
-		$i = 0;
-		while ( ( $child = $child->previousSibling ) ) {
-			$i++;
-		}
-		return $i;
-	}
-
-	/**
 	 * Get a MediaWiki page title from a URL
 	 * @param string $url
 	 * @return Title|null
@@ -162,17 +114,6 @@ class DiscussionToolsCommentParser {
 	}
 
 	/**
-	 * Trim ASCII whitespace, as defined in the HTML spec.
-	 *
-	 * @param string $str
-	 * @return string
-	 */
-	private function htmlTrim( $str ) {
-		// https://infra.spec.whatwg.org/#ascii-whitespace
-		return trim( $str, "\t\n\f\r " );
-	}
-
-	/**
 	 * Return the next leaf node in the tree order that is not an empty or whitespace-only text node.
 	 *
 	 * In other words, this returns a text node with content other than whitespace, or an element node
@@ -198,8 +139,14 @@ class DiscussionToolsCommentParser {
 
 			if (
 				$n && (
-					( $n->nodeType === XML_TEXT_NODE && $this->htmlTrim( $n->nodeValue ) !== '' ) ||
-					( $n->nodeType === XML_CDATA_SECTION_NODE && $this->htmlTrim( $n->nodeValue ) !== '' ) ||
+					(
+						$n->nodeType === XML_TEXT_NODE &&
+						DiscussionToolsCommentUtils::htmlTrim( $n->nodeValue ) !== ''
+					) ||
+					(
+						$n->nodeType === XML_CDATA_SECTION_NODE &&
+						DiscussionToolsCommentUtils::htmlTrim( $n->nodeValue ) !== ''
+					) ||
 					( $n->nodeType === XML_ELEMENT_NODE && !$n->firstChild )
 				)
 			) {
@@ -807,7 +754,7 @@ class DiscussionToolsCommentParser {
 		$nextTimestamp = 0;
 		foreach ( $allNodes as $node ) {
 			// Skip nodes inside <div id="toc">
-			if ( $tocNode && $this->contains( $tocNode, $node ) ) {
+			if ( $tocNode && DiscussionToolsCommentUtils::contains( $tocNode, $node ) ) {
 				continue;
 			}
 
@@ -841,13 +788,13 @@ class DiscussionToolsCommentParser {
 				$match = $timestamps[$nextTimestamp][1];
 				$range = (object)[
 					'startContainer' => $startNode->parentNode,
-					'startOffset' => self::childIndexOf( $startNode ),
+					'startOffset' => DiscussionToolsCommentUtils::childIndexOf( $startNode ),
 					'endContainer' => $node,
 					'endOffset' => $match[0][1] + strlen( $match[0][0] )
 				];
 				$sigRange = (object)[
 					'startContainer' => $firstSigNode->parentNode,
-					'startOffset' => self::childIndexOf( $firstSigNode ),
+					'startOffset' => DiscussionToolsCommentUtils::childIndexOf( $firstSigNode ),
 					'endContainer' => $node,
 					'endOffset' => $match[0][1] + strlen( $match[0][0] )
 				];
@@ -866,10 +813,15 @@ class DiscussionToolsCommentParser {
 				// notifications or something).
 				if (
 					$curComment->type === 'comment' &&
-					( self::closestElement( $node, [ 'li', 'dd', 'p' ] ) ?? $node->parentNode ) ===
 					(
-						self::closestElement( $curComment->range->endContainer, [ 'li', 'dd', 'p' ] ) ??
-						$curComment->range->endContainer->parentNode
+						DiscussionToolsCommentUtils::closestElement(
+							$node, [ 'li', 'dd', 'p' ]
+						) ?? $node->parentNode
+					) ===
+					(
+						DiscussionToolsCommentUtils::closestElement(
+							$curComment->range->endContainer, [ 'li', 'dd', 'p' ]
+						) ?? $curComment->range->endContainer->parentNode
 					)
 				) {
 					// Merge this with the previous comment. Use that comment's author and timestamp.

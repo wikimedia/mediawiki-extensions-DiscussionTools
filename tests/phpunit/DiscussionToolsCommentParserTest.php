@@ -61,7 +61,7 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 			if ( !$node->parentNode ) {
 				throw new Error( 'Not a descendant' );
 			}
-			array_unshift( $path, DiscussionToolsCommentParser::childIndexOf( $node ) );
+			array_unshift( $path, DiscussionToolsCommentUtils::childIndexOf( $node ) );
 			$node = $node->parentNode;
 		}
 		return implode( '/', $path );

@@ -600,17 +600,6 @@ function getIndentLevel( node, rootNode ) {
 }
 
 /**
- * Trim ASCII whitespace, as defined in the HTML spec.
- *
- * @param {string} str
- * @return {string}
- */
-function htmlTrim( str ) {
-	// https://infra.spec.whatwg.org/#ascii-whitespace
-	return str.replace( /^[\t\n\f\r ]+/, '' ).replace( /[\t\n\f\r ]+$/, '' );
-}
-
-/**
  * Return the next leaf node in the tree order that is not an empty or whitespace-only text node.
  *
  * In other words, this returns a Text node with content other than whitespace, or an Element node
@@ -633,8 +622,8 @@ function nextInterestingLeafNode( node, rootNode ) {
 				return NodeFilter.FILTER_REJECT;
 			}
 			if (
-				( n.nodeType === Node.TEXT_NODE && htmlTrim( n.textContent ) !== '' ) ||
-				( n.nodeType === Node.CDATA_SECTION_NODE && htmlTrim( n.textContent ) !== '' ) ||
+				( n.nodeType === Node.TEXT_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
+				( n.nodeType === Node.CDATA_SECTION_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
 				( n.nodeType === Node.ELEMENT_NODE && !n.firstChild )
 			) {
 				return NodeFilter.FILTER_ACCEPT;

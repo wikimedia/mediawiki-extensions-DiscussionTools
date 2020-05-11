@@ -18,21 +18,36 @@ function getNativeRange( comment ) {
 /**
  * Find closest ancestor element using one of the given tag names.
  *
- * @param {Node} el
+ * @param {Node} node
  * @param {string[]} tagNames
  * @return {HTMLElement|null}
  */
-function closestElement( el, tagNames ) {
+function closestElement( node, tagNames ) {
 	do {
-		if ( el.nodeType === Node.ELEMENT_NODE && tagNames.indexOf( el.tagName.toLowerCase() ) !== -1 ) {
-			return el;
+		if (
+			node.nodeType === Node.ELEMENT_NODE &&
+			tagNames.indexOf( node.tagName.toLowerCase() ) !== -1
+		) {
+			return node;
 		}
-		el = el.parentNode;
-	} while ( el );
+		node = node.parentNode;
+	} while ( node );
 	return null;
+}
+
+/**
+ * Trim ASCII whitespace, as defined in the HTML spec.
+ *
+ * @param {string} str
+ * @return {string}
+ */
+function htmlTrim( str ) {
+	// https://infra.spec.whatwg.org/#ascii-whitespace
+	return str.replace( /^[\t\n\f\r ]+/, '' ).replace( /[\t\n\f\r ]+$/, '' );
 }
 
 module.exports = {
 	getNativeRange: getNativeRange,
-	closestElement: closestElement
+	closestElement: closestElement,
+	htmlTrim: htmlTrim
 };

@@ -116,8 +116,7 @@ class DiscussionToolsCommentModifier {
 		// First, we need to find a block-level parent that we can mess with.
 		// If we can't find a surrounding list item or paragraph (e.g. maybe we're inside a table cell
 		// or something), take the parent node and hope for the best.
-		// TODO: Move this to Utils
-		$parent = DiscussionToolsCommentParser::closestElement( $target, [ 'li', 'dd', 'p' ] ) ??
+		$parent = DiscussionToolsCommentUtils::closestElement( $target, [ 'li', 'dd', 'p' ] ) ??
 			$target->parentNode;
 		while ( $target->parentNode !== $parent ) {
 			$target = $target->parentNode;
