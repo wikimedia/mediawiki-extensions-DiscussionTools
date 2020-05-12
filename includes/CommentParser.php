@@ -296,7 +296,7 @@ class CommentParser {
 							$p = $endQuote;
 						}
 					} else {
-						# Quote at end of string, assume literal "
+						// Quote at end of string, assume literal "
 						$s .= '"';
 					}
 					break;
@@ -733,8 +733,13 @@ class CommentParser {
 	 * - 'range' (array): The extent of the comment, including the signature and timestamp.
 	 *                    Comments can start or end in the middle of a DOM node.
 	 *                    Keys: 'startContainer', 'startOffset', 'endContainer' and 'endOffset'
+	 * - 'signatureRanges' (array): The extents of the comment's signatures (plus timestamps).
+	 *                              There is always at least one signature, but there may be multiple.
+	 *                              The author and timestamp of the comment is determined from the
+	 *                              first signature. The last node in every signature range is the
+	 *                              text node containing the timestamp.
 	 * - 'level' (int): Indentation level of the comment. Headings are 0, comments start at 1.
-	 * - 'timestamp' (string): Timestamp (TODO in what format?). Not set for headings.
+	 * - 'timestamp' (string): ISO 8601 timestamp in UTC (ending in 'Z'). Not set for headings.
 	 * - 'author' (string|null): Comment author's username, null for unsigned comments.
 	 *                           Not set for headings.
 	 *
@@ -851,7 +856,8 @@ class CommentParser {
 
 				$curComment = (object)[
 					'type' => 'comment',
-					// Almost DateTimeInterface::RFC3339_EXTENDED
+					// ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
+					// of '+00:00', like Date#toISOString in JavaScript.
 					'timestamp' => $dfParser( $match )->format( 'Y-m-d\TH:i:s.v\Z' ),
 					'author' => $author,
 					'range' => $range,
@@ -943,6 +949,7 @@ class CommentParser {
 				}
 				$id = "$id|$number";
 			}
+
 			if ( $id !== null ) {
 				$commentsById[$id] = $comment;
 			}
@@ -975,8 +982,7 @@ class CommentParser {
 
 			$replies[ $comment->level ] = $comment;
 			// Cut off more deeply nested replies
-			// TODO look up if there's a more convenient function to truncate arrays
-			array_splice( $replies, $comment->level + 1, count( $replies ) - $comment->level - 1 );
+			array_splice( $replies, $comment->level + 1 );
 		}
 
 		return $threads;

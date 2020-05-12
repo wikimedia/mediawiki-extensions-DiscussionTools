@@ -545,7 +545,7 @@ function findSignature( timestampNode, until ) {
 				title.getMainText().split( '/' )[ 0 ] === data.specialContributionsName
 			) {
 				username = title.getMainText().split( '/' )[ 1 ];
-				// Users may link to their contributions with non-standard name
+				// Normalize the username: users may link to their contributions with an unnormalized name
 				username = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, username ).getMainText();
 			}
 			if ( !username ) {
@@ -556,7 +556,7 @@ function findSignature( timestampNode, until ) {
 				username = username.toUpperCase();
 			}
 
-			// Check that every link points to the same user
+			// Accept the first link to the user namespace, then only accept links to that user
 			if ( !sigUsername ) {
 				sigUsername = username;
 			}
@@ -912,32 +912,23 @@ function groupThreads( comments ) {
 		}
 
 		if ( comment.level === 0 ) {
-			// new root (thread)
+			// New root (thread)
 			threads.push( comment );
 		} else if ( replies[ comment.level - 1 ] ) {
-			// add as a reply to closest less nested comment
-			replies[ comment.level - 1 ].replies.push( comment );
+			// Add as a reply to the closest less-nested comment
 			comment.parent = replies[ comment.level - 1 ];
+			comment.parent.replies.push( comment );
 		} else {
 			console.log( 'Comment could not be connected to a thread', comment.range );
 		}
 
 		replies[ comment.level ] = comment;
-		// cut off more deeply nested replies
+		// Cut off more deeply nested replies
 		replies.length = comment.level + 1;
 	}
 
 	return threads;
 }
-
-/**
- * Get the list of authors involved in a comment and its replies.
- *
- * You probably want to pass a thread root here (a heading).
- *
- * @param {Object} comment Comment object, as returned by #groupThreads
- * @return {Object} Object with comment author usernames as keys
- */
 
 /**
  * Get the list of authors involved in a comment and its replies.
