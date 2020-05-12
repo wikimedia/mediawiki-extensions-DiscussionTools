@@ -47,7 +47,7 @@ function CommentController( $pageContainer, comment, thread ) {
 
 OO.initClass( CommentController );
 
-/* CommentController private utilites */
+/* CommentController private utilities */
 
 /**
  * Get the latest revision ID of the page.
@@ -278,7 +278,7 @@ CommentController.prototype.postReply = function ( parsoidData ) {
 	// Wrap every root node of the document in a new list item (dd/li).
 	// In wikitext mode every root node is a paragraph.
 	// In visual mode the editor takes care of preventing problematic nodes
-	// like <table> or <h2> from ever occuring in the comment.
+	// like <table> or <h2> from ever occurring in the comment.
 	while ( container.children.length ) {
 		if ( !newParsoidItem ) {
 			newParsoidItem = modifier.addListItem( comment );
@@ -450,7 +450,7 @@ CommentController.prototype.switchToVisual = function () {
 
 		if ( html ) {
 			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
-			// Unindent list
+			// Unwrap list
 			modifier.unwrapList( doc.body.children[ 0 ] );
 		}
 

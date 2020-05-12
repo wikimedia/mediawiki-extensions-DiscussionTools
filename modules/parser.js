@@ -156,8 +156,8 @@ function getTimestampRegexp( format, digitsRegexp, tzAbbrs ) {
 	}
 
 	tzRegexp = regexpAlternateGroup( Object.keys( tzAbbrs ) );
-	// Hardcoded parentheses and space like in Parser::pstPass2
-	// Ignore some invisible Unicode characters that often sneak into copypasted timestamps (T245784)
+	// Hard-coded parentheses and space like in Parser::pstPass2
+	// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T245784)
 	regexp = s + '[\\u200E\\u200F]? [\\u200E\\u200F]?\\(' + tzRegexp + '\\)';
 
 	return regexp;
@@ -773,7 +773,7 @@ function getComments( rootNode ) {
 			// Avoid generating multiple comments when there is more than one signature on a single "line".
 			// Often this is done when someone edits their comment later and wants to add a note about that.
 			// (Or when another person corrects a typo, or strikes out a comment, etc.) Multiple comments
-			// within one paragraph/listitem result in a confusing double "Reply" button, and we also have
+			// within one paragraph/list-item result in a confusing double "Reply" button, and we also have
 			// no way to indicate which one you're replying to (this might matter in the future for
 			// notifications or something).
 			if (

@@ -63,7 +63,7 @@ class CommentParser {
 
 	/**
 	 * Build the timezone abbreviations map for the local timezone.
-	 * @return array Associative array mapping localized timezone abbreviations to IANA abbreviations
+	 * @return array Associative array mapping localised timezone abbreviations to IANA abbreviations
 	 */
 	private function computeTimezoneAbbrs() : array {
 		// Return only timezone abbreviations for the local timezone (there will often be two, for
@@ -202,9 +202,9 @@ class CommentParser {
 	 * complicated).
 	 *
 	 * @param string $format Date format
-	 * @param string $digitsRegexp Regular expression matching a single localized digit, e.g. '[0-9]'
-	 * @param array $tzAbbrs Associative array mapping localized timezone abbreviations to
-	 *   IANA abbrevations, for the local timezone, e.g. [ 'EDT' => 'EDT', 'EST' => 'EST' ]
+	 * @param string $digitsRegexp Regular expression matching a single localised digit, e.g. '[0-9]'
+	 * @param array $tzAbbrs Associative array mapping localised timezone abbreviations to
+	 *   IANA abbreviations, for the local timezone, e.g. [ 'EDT' => 'EDT', 'EST' => 'EST' ]
 	 * @return string Regular expression
 	 */
 	private function getTimestampRegexp(
@@ -310,8 +310,8 @@ class CommentParser {
 
 		$tzRegexp = self::regexpAlternateGroup( array_keys( $tzAbbrs ) );
 
-		// Hardcoded parentheses and space like in Parser::pstPass2
-		// Ignore some invisible Unicode characters that often sneak into copypasted timestamps (T245784)
+		// Hard-coded parentheses and space like in Parser::pstPass2
+		// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T245784)
 		// \uNNNN syntax can only be used from PHP 7.3
 		return '/' . $s . '[\\x{200E}\\x{200F}]? [\\x{200E}\\x{200F}]?\\(' . $tzRegexp . '\\)/u';
 	}
@@ -828,7 +828,7 @@ class CommentParser {
 				// Avoid generating multiple comments when there is more than one signature on a single "line".
 				// Often this is done when someone edits their comment later and wants to add a note about that.
 				// (Or when another person corrects a typo, or strikes out a comment, etc.) Multiple comments
-				// within one paragraph/listitem result in a confusing double "Reply" button, and we also have
+				// within one paragraph/list-item result in a confusing double "Reply" button, and we also have
 				// no way to indicate which one you're replying to (this might matter in the future for
 				// notifications or something).
 				if (

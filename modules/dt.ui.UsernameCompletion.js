@@ -100,7 +100,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 				// Show no remote users if no input provided
 				.concat( capitalizedInput ? this.remoteUsers : [] ),
 			// TODO: Consider showing IP users
-			// * Change link to Special:Contributions/<ip> (localized)
+			// * Change link to Special:Contributions/<ip> (localised)
 			// * Let users know that mentioning an IP will not create a notification?
 			// .concat( this.ipUsers )
 			input
