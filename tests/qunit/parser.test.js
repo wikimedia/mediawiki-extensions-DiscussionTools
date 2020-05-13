@@ -64,12 +64,19 @@ QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 
 	cases.forEach( function ( caseItem ) {
 		var comments, threads,
-			dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+			$dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data );
 
-		$( fixture ).empty().append( dom );
+		// Remove all but the body tags from full Parsoid docs
+		if ( $dom.filter( 'section' ).length ) {
+			$dom = $( '<div>' )
+				.append( $dom.filter( 'section' ) )
+				.append( $dom.filter( 'base' ) );
+		}
+
+		$( fixture ).empty().append( $dom );
 		testUtils.overrideMwConfig( config );
 		testUtils.overrideParserData( data );
 

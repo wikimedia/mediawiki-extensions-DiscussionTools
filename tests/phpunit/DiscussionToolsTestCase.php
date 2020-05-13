@@ -48,7 +48,7 @@ class DiscussionToolsTestCase extends MediaWikiTestCase {
 		// Remove all but the body tags from full Parsoid docs
 		if ( strpos( $html, '<body' ) !== false ) {
 			preg_match( '`<body[^>]*>(.*)</body>`s', $html, $match );
-			$html = $match[1];
+			$html = "<div>$match[1]</div>";
 		}
 
 		return $html;
