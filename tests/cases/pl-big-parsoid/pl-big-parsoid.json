@@ -146,6 +146,9 @@
                   }
                 ]
               }
+            ],
+            "warnings": [
+              "Comment skips indentation level"
             ]
           }
         ]
@@ -1438,7 +1441,10 @@
                 ],
                 "level": 4,
                 "id": "Matrek|2018-10-07T16:04:00.000Z|0",
-                "replies": []
+                "replies": [],
+                "warnings": [
+                  "Comment skips indentation level"
+                ]
               },
               {
                 "type": "comment",
@@ -2127,7 +2133,10 @@
         ],
         "level": 2,
         "id": "Demkoff|2018-10-19T01:41:00.000Z|0",
-        "replies": []
+        "replies": [],
+        "warnings": [
+          "Comment skips indentation level"
+        ]
       }
     ]
   },
@@ -3064,6 +3073,9 @@
           ]
         ],
         "level": 1,
+        "warnings": [
+          "Comment starts and ends with different indentation"
+        ],
         "id": "WTM|2018-10-26T17:17:00.000Z|0",
         "replies": []
       }
@@ -3391,6 +3403,9 @@
           ]
         ],
         "level": 1,
+        "warnings": [
+          "Comment starts and ends with different indentation"
+        ],
         "id": "Pbk|2018-10-24T15:14:00.000Z|0",
         "replies": [
           {
@@ -3409,7 +3424,10 @@
             ],
             "level": 3,
             "id": "Smyrwa|2018-10-30T14:58:00.000Z|0",
-            "replies": []
+            "replies": [],
+            "warnings": [
+              "Comment skips indentation level"
+            ]
           },
           {
             "type": "comment",
@@ -3501,7 +3519,10 @@
             ],
             "level": 3,
             "id": "Smyrwa|2018-10-30T14:58:00.000Z|2",
-            "replies": []
+            "replies": [],
+            "warnings": [
+              "Comment skips indentation level"
+            ]
           }
         ]
       }

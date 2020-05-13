@@ -475,14 +475,18 @@ class CommentParser {
 				}
 				if ( $altDate->format( 'T' ) === $tzAbbr ) {
 					$date = $altDate;
+					$discussionToolsWarning = 'Timestamp has timezone abbreviation for the wrong time';
+				} else {
+					$discussionToolsWarning = 'Ambiguous time at DST switchover was parsed';
 				}
-				// else: neither DST nor non-DST gives us the expected timezone
-				// TODO log a warning in this case?
 			}
 
 			// Now set the timezone back to UTC for formatting
 			$date->setTimezone( new DateTimeZone( 'UTC' ) );
 			$date = DateTimeImmutable::createFromMutable( $date );
+			if ( isset( $discussionToolsWarning ) ) {
+				$date->discussionToolsWarning = $discussionToolsWarning;
+			}
 
 			return $date;
 		};
@@ -792,6 +796,7 @@ class CommentParser {
 				];
 				$comments[] = $curComment;
 			} elseif ( isset( $timestamps[$nextTimestamp] ) && $node === $timestamps[$nextTimestamp][0] ) {
+				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $curComment->range->endContainer );
 				$author = $foundSignature[1];
 				$firstSigNode = end( $foundSignature[0] );
@@ -822,7 +827,7 @@ class CommentParser {
 				$startLevel = $this->getIndentLevel( $startNode, $rootNode ) + 1;
 				$endLevel = $this->getIndentLevel( $node, $rootNode ) + 1;
 				if ( $startLevel !== $endLevel ) {
-					// TODO warn: 'Comment starts and ends with different indentation'
+					$warnings[] = 'Comment starts and ends with different indentation';
 				}
 
 				// Avoid generating multiple comments when there is more than one signature on a single "line".
@@ -854,17 +859,25 @@ class CommentParser {
 					continue;
 				}
 
+				$dateTime = $dfParser( $match );
+				if ( isset( $dateTime->discussionToolsWarning ) ) {
+					$warnings[] = $dateTime->discussionToolsWarning;
+				}
+
 				$curComment = (object)[
 					'type' => 'comment',
 					// ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
 					// of '+00:00', like Date#toISOString in JavaScript.
-					'timestamp' => $dfParser( $match )->format( 'Y-m-d\TH:i:s.v\Z' ),
+					'timestamp' => $dateTime->format( 'Y-m-d\TH:i:s.v\Z' ),
 					'author' => $author,
 					'range' => $range,
 					'signatureRanges' => [ $sigRange ],
 					// Should this use the indent level of $startNode or $node?
 					'level' => min( $startLevel, $endLevel )
 				];
+				if ( $warnings ) {
+					$curComment->warnings = $warnings;
+				}
 				$comments[] = $curComment;
 				$nextTimestamp++;
 			}
@@ -962,7 +975,7 @@ class CommentParser {
 			if ( count( $replies ) < $comment->level ) {
 				// Someone skipped an indentation level (or several). Pretend that the previous reply
 				// covers multiple indentation levels, so that following comments get connected to it.
-				// TODO warn: 'Comment skips indentation level'
+				$comment->warnings[] = 'Comment skips indentation level';
 				while ( count( $replies ) < $comment->level ) {
 					// FIXME this will clone the reply, not just set a reference
 					$replies[] = end( $replies );
@@ -977,7 +990,7 @@ class CommentParser {
 				$comment->parent = $replies[ $comment->level - 1 ];
 				$comment->parent->replies[] = $comment;
 			} else {
-				// TODO warn: 'Comment could not be connected to a thread'
+				$comment->warnings[] = 'Comment could not be connected to a thread';
 			}
 
 			$replies[ $comment->level ] = $comment;

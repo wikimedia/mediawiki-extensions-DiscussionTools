@@ -80,7 +80,7 @@ function markComment( comment ) {
 		marker2 = document.createElement( 'div' ),
 		scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
 		scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft,
-		parentRect, i;
+		parentRect, i, markerWarnings;
 
 	rect = fixFakeFirstHeadingRect( rect, comment );
 
@@ -89,6 +89,14 @@ function markComment( comment ) {
 	marker.style.height = ( rect.height ) + 'px';
 	marker.style.left = ( rect.left + scrollLeft ) + 'px';
 	marker.style.width = ( rect.width ) + 'px';
+
+	if ( comment.warnings ) {
+		markerWarnings = marker.cloneNode( false );
+		markerWarnings.className = 'detected-comment-warnings';
+		markerWarnings.innerText = comment.warnings.join( '\n' );
+		document.body.appendChild( markerWarnings );
+	}
+
 	document.body.appendChild( marker );
 
 	calculateSizes();

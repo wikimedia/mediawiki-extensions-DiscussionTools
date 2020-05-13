@@ -24,6 +24,9 @@
           ]
         ],
         "level": 1,
+        "warnings": [
+          "Comment starts and ends with different indentation"
+        ],
         "id": "Abdeldjalil09|2020-02-20T21:53:00.000Z|0",
         "replies": [
           {
@@ -2406,7 +2409,10 @@
             ],
             "level": 3,
             "id": "محمد أحمد عبد الفتاح|2020-04-02T13:25:00.000Z|0",
-            "replies": []
+            "replies": [],
+            "warnings": [
+              "Comment skips indentation level"
+            ]
           },
           {
             "type": "comment",
