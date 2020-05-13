@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Object＊tofu",
 			"Omotecho",
 			"Rootflag",
 			"Shirayuki"
@@ -10,6 +11,7 @@
 	"discussiontools-replylink": "返信",
 	"discussiontools-replywidget-cancel": "キャンセル",
 	"discussiontools-replywidget-loading": "読み込み中…",
+	"discussiontools-replywidget-mode-source": "起点",
 	"discussiontools-replywidget-mode-visual": "ビジュアル",
 	"discussiontools-replywidget-preview": "プレビュー",
 	"discussiontools-replywidget-reply": "返信",
