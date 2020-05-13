@@ -19,15 +19,6 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 		return implode( '/', $path );
 	}
 
-	private static function simplify( $parent ) {
-		unset( $parent['range'] );
-		unset( $parent['signatureRanges'] );
-		foreach ( $parent['replies'] as $i => $reply ) {
-			$parent['replies'][$i] = self::simplify( $reply );
-		}
-		return $parent;
-	}
-
 	private static function serializeComments( &$parent, $root ) {
 		unset( $parent->parent );
 
@@ -184,9 +175,6 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 		foreach ( $threads as $i => $thread ) {
 			self::serializeComments( $thread, $container );
 			$thread = json_decode( json_encode( $thread ), true );
-			// Ignore ranges for now
-			$thread = self::simplify( $thread );
-			$expected[$i] = self::simplify( $expected[$i] );
 			$processedThreads[] = $thread;
 			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
 		}
@@ -194,27 +182,16 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 
 	public function provideComments() {
 		return [
-			// passes with ranges
 			self::getJson( './cases/comments.json' )[0],
-			// passes without ranges
-			self::getJson( './cases/comments.json' )[1],
-			// passes without ranges but very slow
-			self::getJson( './cases/comments.json' )[2],
-			// passes without ranges but very slow
-			self::getJson( './cases/comments.json' )[3],
-			// passes with ranges
+			// self::getJson( './cases/comments.json' )[1],
+			// self::getJson( './cases/comments.json' )[2],
+			// self::getJson( './cases/comments.json' )[3],
 			self::getJson( './cases/comments.json' )[4],
-			// passes without ranges
-			self::getJson( './cases/comments.json' )[5],
-			// passes without ranges
-			self::getJson( './cases/comments.json' )[6],
-			// passes without ranges
-			self::getJson( './cases/comments.json' )[7],
-			// passes with ranges
+			// self::getJson( './cases/comments.json' )[5],
+			// self::getJson( './cases/comments.json' )[6],
+			// self::getJson( './cases/comments.json' )[7],
 			self::getJson( './cases/comments.json' )[8],
-			// passes with ranges
 			self::getJson( './cases/comments.json' )[9],
-			// passes with ranges
 			self::getJson( './cases/comments.json' )[10]
 		];
 	}
