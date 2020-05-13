@@ -162,6 +162,17 @@ class DiscussionToolsCommentParser {
 	}
 
 	/**
+	 * Trim ASCII whitespace, as defined in the HTML spec.
+	 *
+	 * @param string $str
+	 * @return string
+	 */
+	private function htmlTrim( $str ) {
+		// https://infra.spec.whatwg.org/#ascii-whitespace
+		return trim( $str, "\t\n\f\r " );
+	}
+
+	/**
 	 * Return the next leaf node in the tree order that is not an empty or whitespace-only text node.
 	 *
 	 * In other words, this returns a text node with content other than whitespace, or an element node
@@ -187,7 +198,7 @@ class DiscussionToolsCommentParser {
 
 			if (
 				$n && (
-					( $n->nodeType === XML_TEXT_NODE && trim( $n->nodeValue ) !== '' ) ||
+					( $n->nodeType === XML_TEXT_NODE && $this->htmlTrim( $n->nodeValue ) !== '' ) ||
 					( $n->nodeType === XML_ELEMENT_NODE && !$n->firstChild )
 				)
 			) {

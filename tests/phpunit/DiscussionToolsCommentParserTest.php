@@ -188,8 +188,8 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 			// self::getJson( './cases/comments.json' )[3],
 			self::getJson( './cases/comments.json' )[4],
 			self::getJson( './cases/comments.json' )[5],
-			// self::getJson( './cases/comments.json' )[6],
-			// self::getJson( './cases/comments.json' )[7],
+			self::getJson( './cases/comments.json' )[6],
+			self::getJson( './cases/comments.json' )[7],
 			self::getJson( './cases/comments.json' )[8],
 			self::getJson( './cases/comments.json' )[9],
 			self::getJson( './cases/comments.json' )[10]
