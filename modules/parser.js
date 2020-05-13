@@ -634,6 +634,7 @@ function nextInterestingLeafNode( node, rootNode ) {
 			}
 			if (
 				( n.nodeType === Node.TEXT_NODE && htmlTrim( n.textContent ) !== '' ) ||
+				( n.nodeType === Node.CDATA_SECTION_NODE && htmlTrim( n.textContent ) !== '' ) ||
 				( n.nodeType === Node.ELEMENT_NODE && !n.firstChild )
 			) {
 				return NodeFilter.FILTER_ACCEPT;

@@ -199,6 +199,7 @@ class DiscussionToolsCommentParser {
 			if (
 				$n && (
 					( $n->nodeType === XML_TEXT_NODE && $this->htmlTrim( $n->nodeValue ) !== '' ) ||
+					( $n->nodeType === XML_CDATA_SECTION_NODE && $this->htmlTrim( $n->nodeValue ) !== '' ) ||
 					( $n->nodeType === XML_ELEMENT_NODE && !$n->firstChild )
 				)
 			) {
