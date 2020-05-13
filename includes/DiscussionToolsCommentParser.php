@@ -124,13 +124,11 @@ class DiscussionToolsCommentParser {
 	 * @return int
 	 */
 	public static function childIndexOf( DOMNode $child ) : int {
-		$parent = $child->parentNode;
-		for ( $i = 0; $i < $parent->childNodes->length; $i++ ) {
-			if ( $parent->childNodes->item( $i ) === $child ) {
-				return $i;
-			}
+		$i = 0;
+		while ( ( $child = $child->previousSibling ) ) {
+			$i++;
 		}
-		throw new MWException( 'Node was not inside its parent, this should never happen' );
+		return $i;
 	}
 
 	/**

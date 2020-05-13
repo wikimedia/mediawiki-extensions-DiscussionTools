@@ -199,9 +199,9 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 			// passes without ranges
 			self::getJson( './cases/comments.json' )[1],
 			// passes without ranges but very slow
-			// self::getJson( './cases/comments.json' )[2],
+			self::getJson( './cases/comments.json' )[2],
 			// passes without ranges but very slow
-			// self::getJson( './cases/comments.json' )[3],
+			self::getJson( './cases/comments.json' )[3],
 			// passes with ranges
 			self::getJson( './cases/comments.json' )[4],
 			// passes without ranges
