@@ -7,7 +7,55 @@ use Wikimedia\TestingAccessWrapper;
  */
 class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 
-	private static function getOffsetPath( $ancestor, $node, $nodeOffset ) {
+	/**
+	 * Convert UTF-8 byte offsets to UTF-16 code unit offsets.
+	 *
+	 * @param DOMElement $ancestor
+	 * @param DOMNode $node
+	 * @param int $nodeOffset
+	 * @return int
+	 */
+	private static function getOffsetPath( DOMElement $ancestor, DOMNode $node, $nodeOffset ) {
+		if ( $node->nodeType === XML_TEXT_NODE ) {
+			$startNode = $node;
+			$nodeText = '';
+
+			while ( $node ) {
+				$nodeText .= $node->nodeValue;
+
+				// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
+				// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
+				// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
+				// this, we must piece together the text, so that our regexp can match those timestamps.
+				if (
+					$node->nextSibling &&
+					$node->nextSibling->nodeType === XML_ELEMENT_NODE &&
+					$node->nextSibling->getAttribute( 'typeof' ) === 'mw:Entity'
+				) {
+					$nodeText .= $node->nextSibling->firstChild->nodeValue;
+
+					// If the entity is followed by more text, do this again
+					if (
+						$node->nextSibling->nextSibling &&
+						$node->nextSibling->nextSibling->nodeType === XML_TEXT_NODE
+					) {
+						$node = $node->nextSibling->nextSibling;
+					} else {
+						$node = null;
+					}
+				} else {
+					$node = null;
+				}
+			}
+
+			$str = substr( $nodeText, 0, $nodeOffset );
+			// Count characters that require two code units to encode in UTF-16
+			$count = preg_match_all( '/[\x{010000}-\x{10FFFF}]/u', $str );
+			$nodeOffset = mb_strlen( $str ) + $count;
+
+			$node = $startNode;
+		}
+
 		$path = [ $nodeOffset ];
 		while ( $node !== $ancestor ) {
 			if ( !$node->parentNode ) {
@@ -181,18 +229,6 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 	}
 
 	public function provideComments() {
-		return [
-			self::getJson( './cases/comments.json' )[0],
-			self::getJson( './cases/comments.json' )[1],
-			// self::getJson( './cases/comments.json' )[2],
-			// self::getJson( './cases/comments.json' )[3],
-			self::getJson( './cases/comments.json' )[4],
-			self::getJson( './cases/comments.json' )[5],
-			self::getJson( './cases/comments.json' )[6],
-			self::getJson( './cases/comments.json' )[7],
-			self::getJson( './cases/comments.json' )[8],
-			self::getJson( './cases/comments.json' )[9],
-			self::getJson( './cases/comments.json' )[10]
-		];
+		return self::getJson( './cases/comments.json' );
 	}
 }

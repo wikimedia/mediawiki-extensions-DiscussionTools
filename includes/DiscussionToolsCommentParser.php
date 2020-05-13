@@ -843,13 +843,13 @@ class DiscussionToolsCommentParser {
 					'startContainer' => $startNode->parentNode,
 					'startOffset' => self::childIndexOf( $startNode ),
 					'endContainer' => $node,
-					'endOffset' => $match[0][1] + mb_strlen( $match[0][0] )
+					'endOffset' => $match[0][1] + strlen( $match[0][0] )
 				];
 				$sigRange = (object)[
 					'startContainer' => $firstSigNode->parentNode,
 					'startOffset' => self::childIndexOf( $firstSigNode ),
 					'endContainer' => $node,
-					'endOffset' => $match[0][1] + mb_strlen( $match[0][0] )
+					'endOffset' => $match[0][1] + strlen( $match[0][0] )
 				];
 
 				$startLevel = $this->getIndentLevel( $startNode, $rootNode ) + 1;
