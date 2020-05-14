@@ -15,7 +15,7 @@
 	"MessagesDirs": {
 		"DiscussionTools": [ "i18n" ]
 	},
-	"callback": "DiscussionToolsHooks::onRegistration",
+	"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onRegistration",
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "DiscussionTools/modules"
@@ -27,7 +27,7 @@
 				"controller.js",
 				{
 					"name": "controller/contLangMessages.json",
-					"callback": "DiscussionToolsData::getContentLanguageMessages",
+					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getContentLanguageMessages",
 					"callbackParam": [
 						"discussiontools-defaultsummary-reply",
 						"discussiontools-replywidget-feedback-link"
@@ -48,7 +48,7 @@
 				"lib/moment-timezone/moment-timezone-with-data-1970-2030.js",
 				{
 					"name": "parser/data.json",
-					"callback": "DiscussionToolsData::getLocalData"
+					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getLocalData"
 				}
 			],
 			"styles": "dt.init.less",
@@ -108,7 +108,7 @@
 			"optionalDependencies": {
 				"ConfirmEdit": "ext.confirmEdit.CaptchaInputWidget"
 			},
-			"factory": "DiscussionToolsData::addOptionalDependencies"
+			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\Data::addOptionalDependencies"
 		},
 		"ext.discussionTools.ReplyWidgetPlain": {
 			"packageFiles": [
@@ -149,7 +149,7 @@
 			"testUtils.js",
 			{
 				"name": "data-en.json",
-				"callback": "DiscussionToolsData::getLocalData",
+				"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getLocalData",
 				"callbackParam": "en"
 			},
 			"data/arwiki-config.json",
@@ -224,23 +224,19 @@
 			"ext.discussionTools.init"
 		]
 	},
-	"AutoloadClasses": {
-		"DiscussionToolsCommentModifier": "includes/DiscussionToolsCommentModifier.php",
-		"DiscussionToolsCommentParser": "includes/DiscussionToolsCommentParser.php",
-		"DiscussionToolsCommentUtils": "includes/DiscussionToolsCommentUtils.php",
-		"DiscussionToolsData": "includes/DiscussionToolsData.php",
-		"DiscussionToolsHooks": "includes/DiscussionToolsHooks.php"
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\DiscussionTools\\": "includes/"
 	},
-	"TestAutoloadClasses": {
-		"DiscussionToolsTestCase": "tests/phpunit/DiscussionToolsTestCase.php"
+	"TestAutoloadNamespaces": {
+		"MediaWiki\\Extension\\DiscussionTools\\Tests\\": "tests/phpunit/"
 	},
 	"Hooks": {
-		"BeforePageDisplay": "DiscussionToolsHooks::onBeforePageDisplay",
-		"ResourceLoaderGetConfigVars": "DiscussionToolsHooks::onResourceLoaderGetConfigVars",
-		"GetBetaFeaturePreferences": "DiscussionToolsHooks::onGetBetaPreferences",
-		"ListDefinedTags": "DiscussionToolsHooks::onListDefinedTags",
-		"ChangeTagsListActive": "DiscussionToolsHooks::onListDefinedTags",
-		"RecentChange_save": "DiscussionToolsHooks::onRecentChangeSave"
+		"BeforePageDisplay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onBeforePageDisplay",
+		"ResourceLoaderGetConfigVars": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onResourceLoaderGetConfigVars",
+		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onGetBetaPreferences",
+		"ListDefinedTags": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onListDefinedTags",
+		"ChangeTagsListActive": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onListDefinedTags",
+		"RecentChange_save": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onRecentChangeSave"
 	},
 	"config": {
 		"DiscussionToolsEnable": {

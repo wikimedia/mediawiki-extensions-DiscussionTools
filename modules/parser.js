@@ -3,7 +3,7 @@
 
 var
 	utils = require( './utils.js' ),
-	// DiscussionToolsHooks::getLocalData()
+	// Hooks::getLocalData()
 	data = require( './parser/data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 

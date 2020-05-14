@@ -7,9 +7,16 @@
  * @license MIT
  */
 
-use MediaWiki\MediaWikiServices;
+namespace MediaWiki\Extension\DiscussionTools;
 
-class DiscussionToolsData {
+use Config;
+use ExtensionRegistry;
+use Language;
+use MediaWiki\MediaWikiServices;
+use ResourceLoaderContext;
+use ResourceLoaderFileModule;
+
+class Data {
 	/**
 	 * Part of the 'ext.discussionTools.init' module.
 	 *

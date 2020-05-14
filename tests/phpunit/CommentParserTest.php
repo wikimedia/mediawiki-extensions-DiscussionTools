@@ -1,11 +1,20 @@
 <?php
 
+namespace MediaWiki\Extension\DiscussionTools\Tests;
+
+use DateTimeImmutable;
+use DOMElement;
+use DOMNode;
+use MediaWiki\Extension\DiscussionTools\CommentParser;
+use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass DiscussionToolsCommentParser
+ * @coversDefaultClass MediaWiki\Extension\DiscussionTools\CommentParser
+ *
+ * @group DiscussionTools
  */
-class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
+class CommentParserTest extends CommentTestCase {
 
 	/**
 	 * Convert UTF-8 byte offsets to UTF-16 code unit offsets.
@@ -61,7 +70,7 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 			if ( !$node->parentNode ) {
 				throw new Error( 'Not a descendant' );
 			}
-			array_unshift( $path, DiscussionToolsCommentUtils::childIndexOf( $node ) );
+			array_unshift( $path, CommentUtils::childIndexOf( $node ) );
 			$node = $node->parentNode;
 		}
 		return implode( '/', $path );
@@ -96,7 +105,7 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 	 */
 	public function testGetTimestampRegexp( $format, $expected, $message ) {
 		$parser = TestingAccessWrapper::newFromObject(
-			DiscussionToolsCommentParser::newFromGlobalState()
+			CommentParser::newFromGlobalState()
 		);
 
 		// HACK: Fix differences between JS & PHP regexes
@@ -119,7 +128,7 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 	 */
 	public function testGetTimestampParser( $format, $data, $expected, $message ) {
 		$parser = TestingAccessWrapper::newFromObject(
-			DiscussionToolsCommentParser::newFromGlobalState()
+			CommentParser::newFromGlobalState()
 		);
 
 		$expected = new DateTimeImmutable( $expected );
@@ -140,7 +149,7 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 		$sample, $expected, $expectedUtc, $format, $timezone, $timezoneAbbrs, $message
 	) {
 		$parser = TestingAccessWrapper::newFromObject(
-			DiscussionToolsCommentParser::newFromGlobalState()
+			CommentParser::newFromGlobalState()
 		);
 
 		$regexp = $parser->getTimestampRegexp( $format, '\\d', $timezoneAbbrs );
@@ -165,7 +174,7 @@ class DiscussionToolsCommentParserTest extends DiscussionToolsTestCase {
 	 * @covers ::getAuthors
 	 */
 	public function testGetAuthors( $thread, $expected ) {
-		$parser = DiscussionToolsCommentParser::newFromGlobalState();
+		$parser = CommentParser::newFromGlobalState();
 
 		self::assertEquals( $expected, $parser->getAuthors( $thread ) );
 	}

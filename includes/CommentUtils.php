@@ -1,6 +1,11 @@
 <?php
 
-class DiscussionToolsCommentUtils {
+namespace MediaWiki\Extension\DiscussionTools;
+
+use DOMElement;
+use DOMNode;
+
+class CommentUtils {
 	private function __construct() {
 	}
 

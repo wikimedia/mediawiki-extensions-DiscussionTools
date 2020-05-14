@@ -1,9 +1,15 @@
 <?php
 
+namespace MediaWiki\Extension\DiscussionTools\Tests;
+
+use MediaWiki\Extension\DiscussionTools\CommentModifier;
+
 /**
- * @coversDefaultClass DiscussionToolsCommentModifier
+ * @coversDefaultClass MediaWiki\Extension\DiscussionTools\CommentModifier
+ *
+ * @group DiscussionTools
  */
-class DiscussionToolsCommentModifierTest extends DiscussionToolsTestCase {
+class CommentModifierTest extends CommentTestCase {
 
 	/**
 	 * @dataProvider provideAddListItem
@@ -30,7 +36,7 @@ class DiscussionToolsCommentModifierTest extends DiscussionToolsTestCase {
 			if ( $comment->type === 'heading' ) {
 				continue;
 			}
-			$node = DiscussionToolsCommentModifier::addListItem( $comment );
+			$node = CommentModifier::addListItem( $comment );
 			$node->textContent = 'Reply to ' . $comment->id;
 			$nodes[] = $node;
 		}
@@ -83,7 +89,7 @@ class DiscussionToolsCommentModifierTest extends DiscussionToolsTestCase {
 			$linkNode = $doc->createElement( 'a' );
 			$linkNode->nodeValue = 'Reply';
 			$linkNode->setAttribute( 'href', '#' );
-			DiscussionToolsCommentModifier::addReplyLink( $comment, $linkNode );
+			CommentModifier::addReplyLink( $comment, $linkNode );
 		}
 
 		$expectedDoc = self::createDocument( $expected );
@@ -103,7 +109,7 @@ class DiscussionToolsCommentModifierTest extends DiscussionToolsTestCase {
 		$doc = self::createDocument( '<div>' . $html . '</div>' );
 		$expectedDoc = self::createDocument( '<div>' . $expected . '</div>' );
 
-		DiscussionToolsCommentModifier::unwrapList( $doc->getElementsByTagName( 'dl' )[0] );
+		CommentModifier::unwrapList( $doc->getElementsByTagName( 'dl' )[0] );
 
 		self::assertEquals( $expectedDoc->documentElement, $doc->documentElement );
 	}

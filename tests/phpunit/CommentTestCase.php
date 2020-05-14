@@ -1,11 +1,13 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
+namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-/**
- * @coversDefaultClass DiscussionToolsCommentModifier
- */
-class DiscussionToolsTestCase extends MediaWikiTestCase {
+use DOMDocument;
+use MediaWiki\Extension\DiscussionTools\CommentParser;
+use MediaWiki\MediaWikiServices;
+use MediaWikiTestCase;
+
+abstract class CommentTestCase extends MediaWikiTestCase {
 
 	/**
 	 * Create a DOMDocument from a string
@@ -58,11 +60,11 @@ class DiscussionToolsTestCase extends MediaWikiTestCase {
 	 * Create a comment pareser
 	 *
 	 * @param array $data
-	 * @return DiscussionToolsCommentParser
+	 * @return CommentParser
 	 */
-	protected static function createParser( array $data ) : DiscussionToolsCommentParser {
+	protected static function createParser( array $data ) : CommentParser {
 		$services = MediaWikiServices::getInstance();
-		return new DiscussionToolsCommentParser(
+		return new CommentParser(
 			$services->getContentLanguage(),
 			$services->getMainConfig(),
 			$data

@@ -7,9 +7,17 @@
  * @license MIT
  */
 
-use MediaWiki\MediaWikiServices;
+namespace MediaWiki\Extension\DiscussionTools;
 
-class DiscussionToolsHooks {
+use Action;
+use ConfigException;
+use MediaWiki\MediaWikiServices;
+use OutputPage;
+use RecentChange;
+use RequestContext;
+use Skin;
+
+class Hooks {
 
 	private static $tags = [
 		'discussiontools',
@@ -32,7 +40,7 @@ class DiscussionToolsHooks {
 		//
 		// HACK: Do not run this test on CI as $wgLocaltimezone is not configured.
 		if ( !$coreConfig->get( 'Localtimezone' ) && !getenv( 'ZUUL_PROJECT' ) ) {
-			throw new \ConfigException( 'DiscussionTools requires $wgLocaltimezone to be set' );
+			throw new ConfigException( 'DiscussionTools requires $wgLocaltimezone to be set' );
 		}
 	}
 

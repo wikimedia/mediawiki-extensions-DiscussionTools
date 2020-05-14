@@ -1,16 +1,29 @@
 <?php
 
+namespace MediaWiki\Extension\DiscussionTools;
+
+use Config;
+use DateInterval;
+use DateTime;
+use DateTimeImmutable;
+use DateTimeZone;
+use DOMElement;
+use DOMNode;
+use DOMText;
+use DOMXPath;
+use IP;
+use Language;
 use MediaWiki\MediaWikiServices;
+use Title;
 
 // TODO maybe make a class for ranges?
 // TODO make a class for comments
-// TODO use namespaces
 // TODO clean up static vs non-static
 
 // TODO consider rewriting as single traversal, without XPath
 // TODO consider making timestamp parsing not a returned function
 
-class DiscussionToolsCommentParser {
+class CommentParser {
 	private const SIGNATURE_SCAN_LIMIT = 100;
 
 	/**
@@ -39,7 +52,7 @@ class DiscussionToolsCommentParser {
 		$this->timezoneAbbrs = $this->computeTimezoneAbbrs();
 	}
 
-	public static function newFromGlobalState() : DiscussionToolsCommentParser {
+	public static function newFromGlobalState() : CommentParser {
 		return new static(
 			MediaWikiServices::getInstance()->getContentLanguage(),
 			MediaWikiServices::getInstance()->getMainConfig()
@@ -141,11 +154,11 @@ class DiscussionToolsCommentParser {
 				$n && (
 					(
 						$n->nodeType === XML_TEXT_NODE &&
-						DiscussionToolsCommentUtils::htmlTrim( $n->nodeValue ) !== ''
+						CommentUtils::htmlTrim( $n->nodeValue ) !== ''
 					) ||
 					(
 						$n->nodeType === XML_CDATA_SECTION_NODE &&
-						DiscussionToolsCommentUtils::htmlTrim( $n->nodeValue ) !== ''
+						CommentUtils::htmlTrim( $n->nodeValue ) !== ''
 					) ||
 					( $n->nodeType === XML_ELEMENT_NODE && !$n->firstChild )
 				)
@@ -754,7 +767,7 @@ class DiscussionToolsCommentParser {
 		$nextTimestamp = 0;
 		foreach ( $allNodes as $node ) {
 			// Skip nodes inside <div id="toc">
-			if ( $tocNode && DiscussionToolsCommentUtils::contains( $tocNode, $node ) ) {
+			if ( $tocNode && CommentUtils::contains( $tocNode, $node ) ) {
 				continue;
 			}
 
@@ -788,13 +801,13 @@ class DiscussionToolsCommentParser {
 				$match = $timestamps[$nextTimestamp][1];
 				$range = (object)[
 					'startContainer' => $startNode->parentNode,
-					'startOffset' => DiscussionToolsCommentUtils::childIndexOf( $startNode ),
+					'startOffset' => CommentUtils::childIndexOf( $startNode ),
 					'endContainer' => $node,
 					'endOffset' => $match[0][1] + strlen( $match[0][0] )
 				];
 				$sigRange = (object)[
 					'startContainer' => $firstSigNode->parentNode,
-					'startOffset' => DiscussionToolsCommentUtils::childIndexOf( $firstSigNode ),
+					'startOffset' => CommentUtils::childIndexOf( $firstSigNode ),
 					'endContainer' => $node,
 					'endOffset' => $match[0][1] + strlen( $match[0][0] )
 				];
@@ -814,12 +827,12 @@ class DiscussionToolsCommentParser {
 				if (
 					$curComment->type === 'comment' &&
 					(
-						DiscussionToolsCommentUtils::closestElement(
+						CommentUtils::closestElement(
 							$node, [ 'li', 'dd', 'p' ]
 						) ?? $node->parentNode
 					) ===
 					(
-						DiscussionToolsCommentUtils::closestElement(
+						CommentUtils::closestElement(
 							$curComment->range->endContainer, [ 'li', 'dd', 'p' ]
 						) ?? $curComment->range->endContainer->parentNode
 					)
