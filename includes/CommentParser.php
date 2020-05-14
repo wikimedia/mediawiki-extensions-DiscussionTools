@@ -14,6 +14,7 @@ use DOMXPath;
 use IP;
 use Language;
 use MediaWiki\MediaWikiServices;
+use stdClass;
 use Title;
 
 // TODO maybe make a class for ranges?
@@ -558,7 +559,7 @@ class CommentParser {
 	 * @param DOMNode|null $until Node to stop searching at
 	 * @return array [ nodes, username ]
 	 */
-	private function findSignature( DOMText $timestampNode, DOMNode $until = null ) : array {
+	private function findSignature( DOMText $timestampNode, ?DOMNode $until = null ) : array {
 		$node = $timestampNode;
 		$sigNodes = [ $node ];
 		$sigUsername = null;
@@ -988,7 +989,7 @@ class CommentParser {
 	 * @param stdClass $comment Comment object, as returned by #groupThreads
 	 * @return string[] Author usernames
 	 */
-	public function getAuthors( $comment ) {
+	public function getAuthors( stdClass $comment ) : array {
 		$authors = [];
 		$getAuthorSet = function ( $comment ) use ( &$authors, &$getAuthorSet ) {
 			if ( $comment->author ?? false ) {
@@ -1012,7 +1013,7 @@ class CommentParser {
 	 *   from a single page (the page title, in text form with spaces). `true` if it's transcluded, but
 	 *   we can't determine the source.
 	 */
-	public function getTranscludedFrom( $comment ) {
+	public function getTranscludedFrom( stdClass $comment ) {
 		// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}), that *does not* mean
 		// the comment is transcluded. We only want to consider comments to be transcluded if the wrapper
 		// element (usually <li> or <p>) is marked as part of a transclusion.

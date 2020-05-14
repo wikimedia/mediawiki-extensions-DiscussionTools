@@ -7,6 +7,7 @@ use DOMElement;
 use DOMNode;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
+use stdClass;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -22,9 +23,11 @@ class CommentParserTest extends CommentTestCase {
 	 * @param DOMElement $ancestor
 	 * @param DOMNode $node
 	 * @param int $nodeOffset
-	 * @return int
+	 * @return string
 	 */
-	private static function getOffsetPath( DOMElement $ancestor, DOMNode $node, $nodeOffset ) {
+	private static function getOffsetPath(
+		DOMElement $ancestor, DOMNode $node, int $nodeOffset
+	) : string {
 		if ( $node->nodeType === XML_TEXT_NODE ) {
 			$startNode = $node;
 			$nodeText = '';
@@ -76,7 +79,7 @@ class CommentParserTest extends CommentTestCase {
 		return implode( '/', $path );
 	}
 
-	private static function serializeComments( &$parent, $root ) {
+	private static function serializeComments( stdClass &$parent, DOMElement $root ) : void {
 		unset( $parent->parent );
 
 		// Can't serialize the DOM nodes involved in the range,
@@ -103,7 +106,9 @@ class CommentParserTest extends CommentTestCase {
 	 * @dataProvider provideTimestampRegexps
 	 * @covers ::getTimestampRegexp
 	 */
-	public function testGetTimestampRegexp( $format, $expected, $message ) {
+	public function testGetTimestampRegexp(
+		string $format, string $expected, string $message
+	) : void {
 		$parser = TestingAccessWrapper::newFromObject(
 			CommentParser::newFromGlobalState()
 		);
@@ -118,7 +123,7 @@ class CommentParserTest extends CommentTestCase {
 		self::assertSame( $expected, $result, $message );
 	}
 
-	public function provideTimestampRegexps() {
+	public function provideTimestampRegexps() : array {
 		return self::getJson( './cases/timestamp-regex.json' );
 	}
 
@@ -126,7 +131,9 @@ class CommentParserTest extends CommentTestCase {
 	 * @dataProvider provideTimestampParser
 	 * @covers ::getTimestampParser
 	 */
-	public function testGetTimestampParser( $format, $data, $expected, $message ) {
+	public function testGetTimestampParser(
+		string $format, array $data, string $expected, string $message
+	) : void {
 		$parser = TestingAccessWrapper::newFromObject(
 			CommentParser::newFromGlobalState()
 		);
@@ -137,7 +144,7 @@ class CommentParserTest extends CommentTestCase {
 		self::assertEquals( $expected, $tsParser( $data ), $message );
 	}
 
-	public function provideTimestampParser() {
+	public function provideTimestampParser() : array {
 		return self::getJson( './cases/timestamp-parser.json' );
 	}
 
@@ -146,8 +153,9 @@ class CommentParserTest extends CommentTestCase {
 	 * @covers ::getTimestampParser
 	 */
 	public function testGetTimestampParserDST(
-		$sample, $expected, $expectedUtc, $format, $timezone, $timezoneAbbrs, $message
-	) {
+		string $sample, string $expected, string $expectedUtc, string $format,
+		string $timezone, array $timezoneAbbrs, string $message
+	) : void {
 		$parser = TestingAccessWrapper::newFromObject(
 			CommentParser::newFromGlobalState()
 		);
@@ -165,7 +173,7 @@ class CommentParserTest extends CommentTestCase {
 		self::assertEquals( $expectedUtc, $date, $message );
 	}
 
-	public function provideTimestampParserDST() {
+	public function provideTimestampParserDST() : array {
 		return self::getJson( './cases/timestamp-parser-dst.json' );
 	}
 
@@ -173,13 +181,13 @@ class CommentParserTest extends CommentTestCase {
 	 * @dataProvider provideAuthors
 	 * @covers ::getAuthors
 	 */
-	public function testGetAuthors( $thread, $expected ) {
+	public function testGetAuthors( stdClass $thread, array $expected ) : void {
 		$parser = CommentParser::newFromGlobalState();
 
 		self::assertEquals( $expected, $parser->getAuthors( $thread ) );
 	}
 
-	public function provideAuthors() {
+	public function provideAuthors() : array {
 		return [
 			[
 				'thread' => (object)[
@@ -210,7 +218,9 @@ class CommentParserTest extends CommentTestCase {
 	 * @covers ::getComments
 	 * @covers ::groupThreads
 	 */
-	public function testGetComments( $name, $dom, $expected, $config, $data ) {
+	public function testGetComments(
+		string $name, string $dom, string $expected, string $config, string $data
+	) : void {
 		$dom = self::getHtml( $dom );
 		$expected = self::getJson( $expected );
 		$config = self::getJson( $config );
@@ -237,7 +247,7 @@ class CommentParserTest extends CommentTestCase {
 		}
 	}
 
-	public function provideComments() {
+	public function provideComments() : array {
 		return self::getJson( './cases/comments.json' );
 	}
 }

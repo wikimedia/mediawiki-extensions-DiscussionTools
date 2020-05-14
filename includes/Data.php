@@ -15,6 +15,7 @@ use Language;
 use MediaWiki\MediaWikiServices;
 use ResourceLoaderContext;
 use ResourceLoaderFileModule;
+use ResourceLoaderModule;
 
 class Data {
 	/**
@@ -30,7 +31,7 @@ class Data {
 	 */
 	public static function getLocalData(
 		ResourceLoaderContext $context, Config $config, $langCode = null
-	) {
+	) : array {
 		if ( $langCode ) {
 			$lang = Language::factory( $langCode );
 		} else {
@@ -115,7 +116,7 @@ class Data {
 	 */
 	public static function getContentLanguageMessages(
 		ResourceLoaderContext $context, Config $config, $messagesKeys = []
-	) {
+	) : array {
 		return array_combine(
 			$messagesKeys,
 			array_map( function ( $key ) {
@@ -130,7 +131,7 @@ class Data {
 	 * @param array $info
 	 * @return ResourceLoaderModule
 	 */
-	public static function addOptionalDependencies( array $info ) {
+	public static function addOptionalDependencies( array $info ) : ResourceLoaderModule {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 
 		foreach ( $info['optionalDependencies'] as $ext => $deps ) {

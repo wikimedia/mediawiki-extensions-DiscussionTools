@@ -30,7 +30,7 @@ class Hooks {
 		'discussiontools-visual',
 	];
 
-	public static function onRegistration() {
+	public static function onRegistration() : void {
 		$coreConfig = RequestContext::getMain()->getConfig();
 		// If $wgLocaltimezone isn't hard-coded, it is evaluated from the system
 		// timezone. On some systems this isn't guaranteed to be static, for example
@@ -52,7 +52,7 @@ class Hooks {
 	 * @param OutputPage $output The page view.
 	 * @param Skin $skin The skin that's going to build the UI.
 	 */
-	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) {
+	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) : void {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 		$title = $output->getTitle();
@@ -104,7 +104,7 @@ class Hooks {
 	 * @param array &$vars Array of variables to be added into the output of the startup module
 	 * @param string $skinName Current skin name to restrict config variables to a certain skin
 	 */
-	public static function onResourceLoaderGetConfigVars( &$vars, $skinName ) {
+	public static function onResourceLoaderGetConfigVars( array &$vars, string $skinName ) : void {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'discussiontools' );
 
@@ -120,7 +120,7 @@ class Hooks {
 	 * @param User $user The user object
 	 * @param array &$preferences Their preferences object
 	 */
-	public static function onGetBetaPreferences( User $user, array &$preferences ) {
+	public static function onGetBetaPreferences( User $user, array &$preferences ) : void {
 		$coreConfig = RequestContext::getMain()->getConfig();
 		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
 
@@ -154,7 +154,7 @@ class Hooks {
 	 *
 	 * @param array &$tags Available change tags.
 	 */
-	public static function onListDefinedTags( &$tags ) {
+	public static function onListDefinedTags( array &$tags ) : void {
 		$tags = array_merge( $tags, static::$tags );
 	}
 
@@ -165,7 +165,7 @@ class Hooks {
 	 * @param RecentChange $recentChange
 	 * @return bool
 	 */
-	public static function onRecentChangeSave( RecentChange $recentChange ) {
+	public static function onRecentChangeSave( RecentChange $recentChange ) : bool {
 		// only apply to api edits, since there's no case where discussiontools
 		// should be using the form-submit method.
 		if ( !defined( 'MW_API' ) ) {

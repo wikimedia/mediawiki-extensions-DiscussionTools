@@ -16,7 +16,9 @@ class CommentModifierTest extends CommentTestCase {
 	 * @covers ::addListItem
 	 * @covers ::removeListItem
 	 */
-	public function testAddListItem( $name, $dom, $expected, $config, $data ) {
+	public function testAddListItem(
+		string $name, string $dom, string $expected, string $config, string $data
+	) : void {
 		$dom = self::getHtml( $dom );
 		$expected = self::getHtml( $expected );
 		$config = self::getJson( $config );
@@ -46,7 +48,7 @@ class CommentModifierTest extends CommentTestCase {
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
 	}
 
-	public function provideAddListItem() {
+	public function provideAddListItem() : array {
 		$modified = self::getJson( './cases/modified.json' );
 		return [
 			$modified[0],
@@ -67,7 +69,9 @@ class CommentModifierTest extends CommentTestCase {
 	 * @dataProvider provideAddReplyLink
 	 * @covers ::addReplyLink
 	 */
-	public function testAddReplyLink( $name, $dom, $expected, $config, $data ) {
+	public function testAddReplyLink(
+		string $name, string $dom, string $expected, string $config, string $data
+	) : void {
 		$dom = self::getHtml( $dom );
 		$expected = self::getHtml( $expected );
 		$config = self::getJson( $config );
@@ -97,7 +101,7 @@ class CommentModifierTest extends CommentTestCase {
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
 	}
 
-	public function provideAddReplyLink() {
+	public function provideAddReplyLink() : array {
 		return self::getJson( './cases/reply.json' );
 	}
 
@@ -105,7 +109,7 @@ class CommentModifierTest extends CommentTestCase {
 	 * @dataProvider provideUnwrapList
 	 * @covers ::unwrapList
 	 */
-	public function testUnwrapList( $name, $html, $expected ) {
+	public function testUnwrapList( string $name, string $html, string $expected ) : void {
 		$doc = self::createDocument( '<div>' . $html . '</div>' );
 		$expectedDoc = self::createDocument( '<div>' . $expected . '</div>' );
 
@@ -114,7 +118,7 @@ class CommentModifierTest extends CommentTestCase {
 		self::assertEquals( $expectedDoc->documentElement, $doc->documentElement );
 	}
 
-	public function provideUnwrapList() {
+	public function provideUnwrapList() : array {
 		return self::getJson( './cases/unwrap.json' );
 	}
 }

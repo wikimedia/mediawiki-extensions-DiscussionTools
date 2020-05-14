@@ -242,7 +242,7 @@ class CommentModifier {
 	 *
 	 * @param DOMElement $list List element (dl/ol/ul)
 	 */
-	public static function unwrapList( $list ) : void {
+	public static function unwrapList( DOMElement $list ) : void {
 		$doc = $list->ownerDocument;
 		$container = $list->parentNode;
 
@@ -281,7 +281,7 @@ class CommentModifier {
 	 * @param DOMElement $previousItem
 	 * @return DOMElement
 	 */
-	public static function addSiblingListItem( $previousItem ) : DOMElement {
+	public static function addSiblingListItem( DOMElement $previousItem ) : DOMElement {
 		$listItem = $previousItem->ownerDocument->createElement( $previousItem->tagName->toLowerCase() );
 		self::whitespaceParsoidHack( $listItem );
 		$previousItem->parentNode->insertBefore( $listItem, $previousItem->nextSibling );
