@@ -495,7 +495,7 @@ class CommentParser {
 	 * @return string Regular expression
 	 */
 	public function getLocalTimestampRegexp() : string {
-		return self::getTimestampRegexp(
+		return $this->getTimestampRegexp(
 			$this->dateFormat,
 			$this->digitsRegexp,
 			$this->timezoneAbbrs
@@ -651,7 +651,7 @@ class CommentParser {
 		$xpath = new DOMXPath( $rootNode->ownerDocument );
 		$textNodes = $xpath->query( '//text()', $rootNode );
 		$matches = [];
-		$timestampRegex = self::getLocalTimestampRegexp();
+		$timestampRegex = $this->getLocalTimestampRegexp();
 		foreach ( $textNodes as $node ) {
 			$startNode = $node;
 			$nodeText = '';
