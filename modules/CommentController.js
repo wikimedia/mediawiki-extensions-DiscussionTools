@@ -258,7 +258,7 @@ CommentController.prototype.postReply = function ( parsoidData ) {
 		wikitext = controller.sanitizeWikitextLinebreaks( controller.autoSignWikitext( wikitext ) );
 		wikitext.split( '\n' ).forEach( function ( line ) {
 			var p = doc.createElement( 'p' );
-			p.appendChild( modifier.createWikitextNode( line ) );
+			p.appendChild( modifier.createWikitextNode( doc, line ) );
 			container.appendChild( p );
 		} );
 	} else {
@@ -271,7 +271,7 @@ CommentController.prototype.postReply = function ( parsoidData ) {
 		// Sign the last line
 		// TODO: Check if the user tried to sign in visual mode by typing wikitext?
 		// TODO: When we implement posting new topics, the leading space will create an indent-pre
-		container.lastChild.appendChild( modifier.createWikitextNode( ' ~~~~' ) );
+		container.lastChild.appendChild( modifier.createWikitextNode( doc, ' ~~~~' ) );
 	}
 
 	// Transfer comment DOM to Parsoid DOM
