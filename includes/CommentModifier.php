@@ -88,7 +88,7 @@ class CommentModifier {
 	 * The DOM tree is suitably rearranged to ensure correct indentation level of the reply (wrapper
 	 * nodes are added, and other nodes may be moved around).
 	 *
-	 * @param stObject $comment Comment data returned by parser#groupThreads
+	 * @param stdClass $comment Comment data returned by parser#groupThreads
 	 * @return DOMElement
 	 */
 	public static function addListItem( stdClass $comment ) : DOMElement {
