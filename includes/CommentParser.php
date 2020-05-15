@@ -14,6 +14,7 @@ use DOMXPath;
 use IP;
 use Language;
 use MediaWiki\MediaWikiServices;
+use MWException;
 use stdClass;
 use Title;
 
