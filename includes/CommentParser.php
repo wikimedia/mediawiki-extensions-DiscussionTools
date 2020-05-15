@@ -324,7 +324,7 @@ class CommentParser {
 	 * @param string $localTimezone Local timezone IANA name, e.g. `America/New_York`
 	 * @param array $tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
 	 *   for the local timezone, e.g. [ 'EDT' => 'EDT', 'EST' => 'EST' ]
-	 * @return function Parser function
+	 * @return callable Parser function
 	 */
 	private function getTimestampParser(
 		string $format, ?string $digits, string $localTimezone, array $tzAbbrs
@@ -508,7 +508,7 @@ class CommentParser {
 	 *
 	 * This calls getTimestampParser() with predefined data for the current wiki.
 	 *
-	 * @return function Parser function
+	 * @return callable Parser function
 	 */
 	private function getLocalTimestampParser() : callable {
 		return $this->getTimestampParser(
