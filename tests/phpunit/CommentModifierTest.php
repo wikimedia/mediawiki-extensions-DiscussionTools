@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
 
 /**
- * @coversDefaultClass MediaWiki\Extension\DiscussionTools\CommentModifier
+ * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentModifier
  *
  * @group DiscussionTools
  */

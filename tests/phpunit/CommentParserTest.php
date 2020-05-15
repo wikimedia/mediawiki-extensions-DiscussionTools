@@ -11,7 +11,7 @@ use stdClass;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass MediaWiki\Extension\DiscussionTools\CommentParser
+ * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentParser
  *
  * @group DiscussionTools
  */
