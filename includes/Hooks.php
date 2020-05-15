@@ -16,6 +16,7 @@ use OutputPage;
 use RecentChange;
 use RequestContext;
 use Skin;
+use User;
 
 class Hooks {
 
