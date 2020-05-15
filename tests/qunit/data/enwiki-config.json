@@ -1,6 +1,8 @@
 {
   "wgContentLang": "en",
   "wgArticlePath": "/wiki/$1",
+  "wgMetaNamespace": "Wikipedia",
+  "wgMetaNamespaceTalk": "Wikipedia_talk",
   "wgNamespaceIds": {
     "media": -2,
     "special": -1,

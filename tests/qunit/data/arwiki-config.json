@@ -1,6 +1,8 @@
 {
   "wgContentLang": "ar",
   "wgArticlePath": "/wiki/$1",
+  "wgMetaNamespace": "ويكيبيديا",
+  "wgMetaNamespaceTalk": "نقاش_ويكيبيديا",
   "wgTranslateNumerals": false,
   "wgNamespaceIds": {
     "ميديا": -2,

@@ -99,58 +99,41 @@ QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 } );
 
 QUnit.test( '#getTranscludedFrom', function ( assert ) {
-	var i, j, cases, comments, transcludedFrom, fixture;
-
-	cases = [
-		{
-			name: 'transclusions',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/transclusions/transclusions.html' ).render(),
-			expected: require( './cases/transclusions/transclusions-transcludedFrom.json' ),
-			config: require( './data/enwiki-config.json' ),
-			data: require( './data/enwiki-data.json' )
-		},
-		{
-			name: 'enwiki parsoid',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-big-parsoid/en-big-parsoid.html' ).render(),
-			expected: require( './cases/en-big-parsoid/en-big-parsoid-transcludedFrom.json' ),
-			config: require( './data/enwiki-config.json' ),
-			data: require( './data/enwiki-data.json' )
-		},
-		{
-			name: 'enwiki parsoid AFD',
-			dom: mw.template.get( 'test.DiscussionTools', 'cases/en-bigafd-parsoid/en-bigafd-parsoid.html' ).render(),
-			expected: require( './cases/en-bigafd-parsoid/en-bigafd-parsoid-transcludedFrom.json' ),
-			config: require( './data/enwiki-config.json' ),
-			data: require( './data/enwiki-data.json' )
-		}
-	];
+	var fixture,
+		cases = require( './cases/transcluded.json' );
 
 	fixture = document.getElementById( 'qunit-fixture' );
 
-	for ( i = 0; i < cases.length; i++ ) {
-		$( fixture ).empty().append( cases[ i ].dom );
+	cases.forEach( function ( caseItem ) {
+		var comments, transcludedFrom,
+			$dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+			expected = require( caseItem.expected ),
+			config = require( caseItem.config ),
+			data = require( caseItem.data );
+
+		$( fixture ).empty().append( $dom );
 		mw.libs.ve.unwrapParsoidSections( fixture );
 
-		testUtils.overrideMwConfig( cases[ i ].config );
-		testUtils.overrideParserData( cases[ i ].data );
+		testUtils.overrideMwConfig( config );
+		testUtils.overrideParserData( data );
 
 		comments = parser.getComments( fixture );
 		parser.groupThreads( comments );
 
 		transcludedFrom = {};
-		for ( j = 0; j < comments.length; j++ ) {
-			if ( comments[ j ].id ) {
-				transcludedFrom[ comments[ j ].id ] = parser.getTranscludedFrom( comments[ j ] );
+		comments.forEach( function ( comment ) {
+			if ( comment.id ) {
+				transcludedFrom[ comment.id ] = parser.getTranscludedFrom( comment );
 			}
-		}
+		} );
 
 		assert.deepEqual(
 			transcludedFrom,
-			cases[ i ].expected,
-			cases[ i ].name
+			expected,
+			caseItem.name
 		);
 
 		// Uncomment this to get updated content for the JSON files, for copy/paste:
 		// console.log( JSON.stringify( transcludedFrom, null, 2 ) );
-	}
+	} );
 } );

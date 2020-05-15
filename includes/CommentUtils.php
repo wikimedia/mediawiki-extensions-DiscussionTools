@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMElement;
 use DOMNode;
+use DOMXPath;
 
 class CommentUtils {
 	private function __construct() {
@@ -70,4 +71,31 @@ class CommentUtils {
 		return trim( $str, "\t\n\f\r " );
 	}
 
+	/**
+	 * Unwrap Parsoid sections
+	 *
+	 * @param DOMElement $element Parent element, e.g. document body
+	 * @param string|null $keepSection Section to keep
+	 */
+	public static function unwrapParsoidSections(
+		DOMElement $element, string $keepSection = null
+	) : void {
+		$xpath = new DOMXPath( $element->ownerDocument );
+		$sections = $xpath->query( '//section[@data-mw-section-id]', $element );
+		foreach ( $sections as $section ) {
+			$parent = $section->parentNode;
+			$sectionId = $section->getAttribute( 'data-mw-section-id' );
+			// Copy section ID to first child (should be a heading)
+			if ( $sectionId !== '' && intval( $sectionId ) > 0 ) {
+				$section->firstChild->setAttribute( 'data-mw-section-id', $sectionId );
+			}
+			if ( $keepSection !== null && $sectionId === $keepSection ) {
+				return;
+			}
+			while ( $section->firstChild ) {
+				$parent->insertBefore( $section->firstChild, $section );
+			}
+			$parent->removeChild( $section );
+		}
+	}
 }

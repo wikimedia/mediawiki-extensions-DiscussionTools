@@ -163,6 +163,7 @@
 			"data/plwiki-config.json",
 			"data/plwiki-data.json",
 			"cases/comments.json",
+			"cases/transcluded.json",
 			"cases/modified.json",
 			"cases/reply.json",
 			"cases/unwrap.json",

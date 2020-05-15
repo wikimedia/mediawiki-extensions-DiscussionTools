@@ -1046,7 +1046,7 @@ class CommentParser {
 				// 3.
 				if (
 					$node->getAttribute( 'typeof' ) &&
-					inArray( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ) )
+					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ) )
 				) {
 					break;
 				}
@@ -1069,8 +1069,8 @@ class CommentParser {
 			$dataMw['parts'][0]['template'] &&
 			$dataMw['parts'][0]['template']['target']['href']
 		) {
-			// TODO: Slice off the './' prefix and convert to text form (underscores to spaces, URL-decoded)
-			return $dataMw['parts'][0]['template']['target']['href'];
+			$title = self::getTitleFromUrl( $dataMw['parts'][0]['template']['target']['href'] );
+			return $title->getPrefixedText();
 		}
 
 		// Multi-template transclusion, or a parser function call, or template-affected wikitext outside

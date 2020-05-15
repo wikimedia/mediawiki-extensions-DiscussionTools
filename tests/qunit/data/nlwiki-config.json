@@ -1,6 +1,8 @@
 {
   "wgContentLang": "nl",
   "wgArticlePath": "/wiki/$1",
+  "wgMetaNamespace": "Wikipedia",
+  "wgMetaNamespaceTalk": "Overleg_Wikipedia",
   "wgNamespaceIds": {
     "media": -2,
     "speciaal": -1,

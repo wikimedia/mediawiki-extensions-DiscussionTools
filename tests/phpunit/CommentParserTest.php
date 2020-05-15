@@ -227,15 +227,13 @@ class CommentParserTest extends CommentTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
-		$parserOrig = self::createParser( $data );
-
-		$parser = TestingAccessWrapper::newFromObject( $parserOrig );
+		$parser = self::createParser( $data );
 
 		$doc = self::createDocument( $dom );
 		$container = $doc->documentElement->childNodes[0];
 
-		$comments = $parserOrig->getComments( $container );
-		$threads = $parserOrig->groupThreads( $comments );
+		$comments = $parser->getComments( $container );
+		$threads = $parser->groupThreads( $comments );
 
 		$processedThreads = [];
 
@@ -250,4 +248,48 @@ class CommentParserTest extends CommentTestCase {
 	public function provideComments() : array {
 		return self::getJson( './cases/comments.json' );
 	}
+
+	/**
+	 * @dataProvider provideTranscludedFrom
+	 * @covers ::getComments
+	 * @covers ::groupThreads
+	 */
+	public function testGetTranscludedFrom(
+		string $name, string $dom, string $expected, string $config, string $data
+	) : void {
+		$dom = self::getHtml( $dom );
+		$expected = self::getJson( $expected );
+		$config = self::getJson( $config );
+		$data = self::getJson( $data );
+
+		$this->setupEnv( $config, $data );
+		$parser = self::createParser( $data );
+
+		$doc = self::createDocument( $dom );
+		$container = $doc->documentElement->childNodes[0];
+
+		CommentUtils::unwrapParsoidSections( $doc->documentElement );
+
+		$comments = $parser->getComments( $container );
+		$threads = $parser->groupThreads( $comments );
+
+		$transcludedFrom = [];
+		foreach ( $comments as $comment ) {
+			if ( $comment->id ) {
+				$transcludedFrom[ $comment->id ] =
+					$parser->getTranscludedFrom( $comment );
+			}
+		}
+
+		self::assertEquals(
+			$expected,
+			$transcludedFrom,
+			$name
+		);
+	}
+
+	public function provideTranscludedFrom() : array {
+		return self::getJson( './cases/transcluded.json' );
+	}
+
 }
