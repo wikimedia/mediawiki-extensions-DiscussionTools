@@ -14,7 +14,6 @@ class CommentModifierTest extends CommentTestCase {
 	/**
 	 * @dataProvider provideAddListItem
 	 * @covers ::addListItem
-	 * @covers ::removeListItem
 	 */
 	public function testAddListItem(
 		string $name, string $dom, string $expected, string $config, string $data
@@ -46,6 +45,8 @@ class CommentModifierTest extends CommentTestCase {
 		$expectedDoc = self::createDocument( $expected );
 
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
+
+		// removeAddedListItem is not implemented on the server
 	}
 
 	public function provideAddListItem() : array {

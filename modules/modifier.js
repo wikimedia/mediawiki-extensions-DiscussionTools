@@ -165,7 +165,7 @@ function addListItem( comment ) {
  *
  * @param {HTMLElement} node
  */
-function removeListItem( node ) {
+function removeAddedListItem( node ) {
 	var nextNode;
 
 	while ( node && node.discussionToolsModified ) {
@@ -265,7 +265,7 @@ function createWikitextNode( doc, wt ) {
 module.exports = {
 	addReplyLink: addReplyLink,
 	addListItem: addListItem,
-	removeListItem: removeListItem,
+	removeAddedListItem: removeAddedListItem,
 	addSiblingListItem: addSiblingListItem,
 	unwrapList: unwrapList,
 	createWikitextNode: createWikitextNode

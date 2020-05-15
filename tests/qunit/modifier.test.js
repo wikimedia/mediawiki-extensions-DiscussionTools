@@ -5,7 +5,7 @@ var
 
 QUnit.module( 'mw.dt.modifier', testUtils.newEnvironment() );
 
-QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
+QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 	var cases = require( './cases/modified.json' ),
 		fixture = document.getElementById( 'qunit-fixture' );
 
@@ -55,7 +55,7 @@ QUnit.test( '#addListItem/#removeListItem', function ( assert ) {
 
 		// Now discard the replies and verify we get the original document back.
 		for ( i = 0; i < nodes.length; i++ ) {
-			modifier.removeListItem( nodes[ i ] );
+			modifier.removeAddedListItem( nodes[ i ] );
 		}
 
 		reverseActualHtml = fixture.innerHTML;

@@ -239,7 +239,7 @@ CommentController.prototype.teardown = function () {
 	if ( mw.libs.ve && mw.libs.ve.setupEditLinks ) {
 		mw.libs.ve.setupEditLinks();
 	}
-	modifier.removeListItem( this.newListItem );
+	modifier.removeAddedListItem( this.newListItem );
 	this.newListItem = null;
 	this.$replyLink.trigger( 'focus' );
 };

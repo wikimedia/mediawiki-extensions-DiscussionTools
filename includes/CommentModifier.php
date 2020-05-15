@@ -149,9 +149,11 @@ class CommentModifier {
 			// Insert required number of wrappers
 			while ( $curLevel < $desiredLevel ) {
 				$list = $target->ownerDocument->createElement( $listType );
-				$list->discussionToolsModified = 'new';
+				// Setting modified would only be needed for removeAddedListItem,
+				// which isn't needed on the server
+				// $list->setAttribute( 'dt-modified', 'new' );
 				$item = $target->ownerDocument->createElement( $itemType );
-				$item->discussionToolsModified = 'new';
+				// $item->setAttribute( 'dt-modified', 'new' );
 				self::whitespaceParsoidHack( $item );
 
 				$parent->insertBefore( $list, $target->nextSibling );
@@ -169,7 +171,7 @@ class CommentModifier {
 				if ( $target->nextSibling ) {
 					// Create new identical node after the parent
 					$newNode = $parent->cloneNode( false );
-					$parent->discussionToolsModified = 'split';
+					// $parent->setAttribute( 'dt-modified', 'split' );
 					$parent->parentNode->insertBefore( $newNode, $parent->nextSibling );
 
 					// Move nodes following target to the new node
@@ -189,7 +191,7 @@ class CommentModifier {
 
 			// parent is now a list, target is a list item
 			$item = $target->ownerDocument->createElement( $target->tagName );
-			$item->discussionToolsModified = 'new';
+			// $item->setAttribute( 'dt-modified', 'new' );
 			self::whitespaceParsoidHack( $item );
 			$parent->insertBefore( $item, $target->nextSibling );
 		}
@@ -197,44 +199,7 @@ class CommentModifier {
 		return $item;
 	}
 
-	/**
-	 * Undo the effects of #addListItem, also removing or merging any affected parent nodes.
-	 *
-	 * @param DOMElement $node
-	 */
-	public static function removeListItem( DOMElement $node ) : void {
-		$nextNode = null;
-
-		while ( $node && $node->discussionToolsModified ) {
-			if ( $node->discussionToolsModified === 'new' ) {
-				$nextNode = $node->previousSibling ?? $node->parentNode;
-
-				// Remove this node
-				unset( $node->discussionToolsModified );
-				$node->parentNode->removeChild( $node );
-
-			} elseif ( $node->discussionToolsModified === 'split' ) {
-				// Children might be split too, if so, descend into them afterwards
-				if ( $node->lastChild && $node->lastChild->discussionToolsModified === 'split' ) {
-					$node->discussionToolsModified = 'done';
-					$nextNode = $node->lastChild;
-				} else {
-					unset( $node->discussionToolsModified );
-					$nextNode = $node->parentNode;
-				}
-				// Merge the following sibling node back into this one
-				while ( $node->nextSibling->firstChild ) {
-					$node->appendChild( $node->nextSibling->firstChild );
-				}
-				$node->parentNode->removeChild( $node->nextSibling );
-
-			} else {
-				$nextNode = $node->parentNode;
-			}
-
-			$node = $nextNode;
-		}
-	}
+	// removeAddedListItem is only needed in the client
 
 	/**
 	 * Unwrap a top level list, converting list item text to paragraphs
