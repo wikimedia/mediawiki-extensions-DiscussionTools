@@ -20,12 +20,6 @@ function ReplyWidgetVisual() {
 	this.defaultMode = 'visual';
 	this.initialValue = null;
 
-	// Events
-	this.replyBodyWidget.connect( this, {
-		change: 'onInputChangeThrottled',
-		submit: 'onReplyClick'
-	} );
-
 	// TODO: Rename this widget to VE, as it isn't just visual mode
 	this.$element.addClass( 'dt-ui-replyWidget-ve' );
 }
@@ -90,12 +84,18 @@ ReplyWidgetVisual.prototype.setup = function () {
 	// Parent method
 	ReplyWidgetVisual.super.prototype.setup.call( this );
 
+	// Events
+	this.replyBodyWidget.connect( this, {
+		change: 'onInputChangeThrottled',
+		submit: 'onReplyClick'
+	} );
 	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
 
 	return this;
 };
 
 ReplyWidgetVisual.prototype.teardown = function () {
+	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
 
 	// Parent method

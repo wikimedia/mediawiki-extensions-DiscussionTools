@@ -12,9 +12,6 @@ function ReplyWidgetPlain() {
 	// Parent constructor
 	ReplyWidgetPlain.super.apply( this, arguments );
 
-	// Events
-	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );
-
 	this.$element.addClass( 'dt-ui-replyWidget-plain' );
 }
 
@@ -82,12 +79,15 @@ ReplyWidgetPlain.prototype.setup = function () {
 	// Parent method
 	ReplyWidgetPlain.super.prototype.setup.call( this );
 
+	// Events
+	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );
 	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
 
 	return this;
 };
 
 ReplyWidgetPlain.prototype.teardown = function () {
+	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
 
 	this.storage.remove( this.storagePrefix + '/class' );
