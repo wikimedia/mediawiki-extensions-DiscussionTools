@@ -19,5 +19,12 @@
 		"expected": "../cases/en-bigafd-parsoid/en-bigafd-parsoid-transcludedFrom.json",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "parsoid-sections",
+		"dom": "cases/parsoid-sections/parsoid-sections.html",
+		"expected": "../cases/parsoid-sections/parsoid-sections-transcludedFrom.json",
+		"config": "../data/nlwiki-config.json",
+		"data": "../data/nlwiki-data.json"
 	}
 ]
