@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMDocument;
 use DOMElement;
 use DOMNode;
 use stdClass;
@@ -290,11 +291,13 @@ class CommentModifier {
 
 	/**
 	 * Create an element that will convert to the provided wikitext
+	 *
+	 * @param DOMDocument $doc Document
 	 * @param string $wt Wikitext
 	 * @return DOMElement Element
 	 */
-	public static function createWikitextNode( string $wt ) : DOMElement {
-		$span = $document->createElement( 'span' );
+	public static function createWikitextNode( DOMDocument $doc, string $wt ) : DOMElement {
+		$span = $doc->createElement( 'span' );
 
 		$span->setAttribute( 'typeof', 'mw:Transclusion' );
 		$span->setAttribute( 'data-mw', json_encode( [ 'parts' => [ $wt ] ] ) );

@@ -253,8 +253,8 @@ function addSiblingListItem( previousItem ) {
 	return listItem;
 }
 
-function createWikitextNode( wt ) {
-	var span = document.createElement( 'span' );
+function createWikitextNode( doc, wt ) {
+	var span = doc.createElement( 'span' );
 
 	span.setAttribute( 'typeof', 'mw:Transclusion' );
 	span.setAttribute( 'data-mw', JSON.stringify( { parts: [ wt ] } ) );
