@@ -8,6 +8,8 @@
 	"discussiontools-replylink": "Svar",
 	"discussiontools-replywidget-cancel": "Annullér",
 	"discussiontools-replywidget-loading": "Indlæser…",
+	"discussiontools-replywidget-mode-source": "Kilde",
+	"discussiontools-replywidget-mode-visual": "Visuelt",
 	"discussiontools-replywidget-reply": "Svar",
 	"tag-discussiontools-source": "Kilde"
 }
