@@ -50,7 +50,7 @@ class CommentModifierTest extends CommentTestCase {
 	}
 
 	public function provideAddListItem() : array {
-		$modified = self::getJson( './cases/modified.json' );
+		$modified = self::getJson( '../cases/modified.json' );
 		return [
 			$modified[0],
 			$modified[1],
@@ -103,7 +103,7 @@ class CommentModifierTest extends CommentTestCase {
 	}
 
 	public function provideAddReplyLink() : array {
-		return self::getJson( './cases/reply.json' );
+		return self::getJson( '../cases/reply.json' );
 	}
 
 	/**
@@ -120,6 +120,6 @@ class CommentModifierTest extends CommentTestCase {
 	}
 
 	public function provideUnwrapList() : array {
-		return self::getJson( './cases/unwrap.json' );
+		return self::getJson( '../cases/unwrap.json' );
 	}
 }

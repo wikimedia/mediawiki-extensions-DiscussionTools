@@ -1,0 +1,79 @@
+[
+	{
+		"name": "plwiki oldparser",
+		"dom": "cases/pl-big-oldparser/pl-big-oldparser.html",
+		"expected": "../cases/pl-big-oldparser/pl-big-oldparser.json",
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
+	},
+	{
+		"name": "plwiki parsoid",
+		"dom": "cases/pl-big-parsoid/pl-big-parsoid.html",
+		"expected": "../cases/pl-big-parsoid/pl-big-parsoid.json",
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
+	},
+	{
+		"name": "enwiki oldparser",
+		"dom": "cases/en-big-oldparser/en-big-oldparser.html",
+		"expected": "../cases/en-big-oldparser/en-big-oldparser.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "enwiki parsoid",
+		"dom": "cases/en-big-parsoid/en-big-parsoid.html",
+		"expected": "../cases/en-big-parsoid/en-big-parsoid.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "arwiki no-paragraph oldparser",
+		"dom": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html",
+		"expected": "../cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.json",
+		"config": "../data/arwiki-config.json",
+		"data": "../data/arwiki-data.json"
+	},
+	{
+		"name": "arwiki no-paragraph parsoid",
+		"dom": "cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.html",
+		"expected": "../cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.json",
+		"config": "../data/arwiki-config.json",
+		"data": "../data/arwiki-data.json"
+	},
+	{
+		"name": "arwiki nbsp-timezone oldparser",
+		"dom": "cases/ar-nbsp-timezone-oldparser/ar-nbsp-timezone-oldparser.html",
+		"expected": "../cases/ar-nbsp-timezone-oldparser/ar-nbsp-timezone-oldparser.json",
+		"config": "../data/arwiki-config.json",
+		"data": "../data/arwiki-data.json"
+	},
+	{
+		"name": "arwiki nbsp-timezone parsoid",
+		"dom": "cases/ar-nbsp-timezone-parsoid/ar-nbsp-timezone-parsoid.html",
+		"expected": "../cases/ar-nbsp-timezone-parsoid/ar-nbsp-timezone-parsoid.json",
+		"config": "../data/arwiki-config.json",
+		"data": "../data/arwiki-data.json"
+	},
+	{
+		"name": "No heading",
+		"dom": "cases/no-heading/no-heading.html",
+		"expected": "../cases/no-heading/no-heading.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Manually added signature with LRM",
+		"dom": "cases/lrm-signature/lrm-signature.html",
+		"expected": "../cases/lrm-signature/lrm-signature.json",
+		"config": "../data/nlwiki-config.json",
+		"data": "../data/nlwiki-data.json"
+	},
+	{
+		"name": "Link using fallback 8-bit encoding (invalid UTF-8)",
+		"dom": "cases/fallback-encoding-link/fallback-encoding-link.html",
+		"expected": "../cases/fallback-encoding-link/fallback-encoding-link.json",
+		"config": "../data/huwiki-config.json",
+		"data": "../data/huwiki-data.json"
+	}
+]

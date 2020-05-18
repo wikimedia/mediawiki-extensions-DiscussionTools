@@ -124,7 +124,7 @@ class CommentParserTest extends CommentTestCase {
 	}
 
 	public function provideTimestampRegexps() : array {
-		return self::getJson( './cases/timestamp-regex.json' );
+		return self::getJson( '../cases/timestamp-regex.json' );
 	}
 
 	/**
@@ -145,7 +145,7 @@ class CommentParserTest extends CommentTestCase {
 	}
 
 	public function provideTimestampParser() : array {
-		return self::getJson( './cases/timestamp-parser.json' );
+		return self::getJson( '../cases/timestamp-parser.json' );
 	}
 
 	/**
@@ -174,7 +174,7 @@ class CommentParserTest extends CommentTestCase {
 	}
 
 	public function provideTimestampParserDST() : array {
-		return self::getJson( './cases/timestamp-parser-dst.json' );
+		return self::getJson( '../cases/timestamp-parser-dst.json' );
 	}
 
 	/**
@@ -246,7 +246,7 @@ class CommentParserTest extends CommentTestCase {
 	}
 
 	public function provideComments() : array {
-		return self::getJson( './cases/comments.json' );
+		return self::getJson( '../cases/comments.json' );
 	}
 
 	/**
@@ -289,7 +289,7 @@ class CommentParserTest extends CommentTestCase {
 	}
 
 	public function provideTranscludedFrom() : array {
-		return self::getJson( './cases/transcluded.json' );
+		return self::getJson( '../cases/transcluded.json' );
 	}
 
 }

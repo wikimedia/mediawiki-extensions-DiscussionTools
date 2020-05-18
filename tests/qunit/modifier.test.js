@@ -6,7 +6,7 @@ var
 QUnit.module( 'mw.dt.modifier', testUtils.newEnvironment() );
 
 QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
-	var cases = require( './cases/modified.json' ),
+	var cases = require( '../cases/modified.json' ),
 		fixture = document.getElementById( 'qunit-fixture' );
 
 	cases.forEach( function ( caseItem ) {
@@ -68,7 +68,7 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 } );
 
 QUnit.test( '#addReplyLink', function ( assert ) {
-	var cases = require( './cases/reply.json' ),
+	var cases = require( '../cases/reply.json' ),
 		fixture = document.getElementById( 'qunit-fixture' );
 
 	cases.forEach( function ( caseItem ) {
@@ -115,7 +115,7 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 } );
 
 QUnit.test( '#unwrapList', function ( assert ) {
-	var cases = require( './cases/unwrap.json' );
+	var cases = require( '../cases/unwrap.json' );
 
 	cases.forEach( function ( caseItem ) {
 		var container = document.createElement( 'div' );

@@ -6,9 +6,9 @@ var
 QUnit.module( 'mw.dt.parser', testUtils.newEnvironment() );
 
 QUnit.test( '#getTimestampRegexp', function ( assert ) {
-	var cases = require( './cases/timestamp-regex.json' );
+	var cases = require( '../cases/timestamp-regex.json' );
 
-	testUtils.overrideParserData( require( './data-en.json' ) );
+	testUtils.overrideParserData( require( '../data-en.json' ) );
 
 	cases.forEach( function ( caseItem ) {
 		assert.strictEqual(
@@ -20,9 +20,9 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 } );
 
 QUnit.test( '#getTimestampParser', function ( assert ) {
-	var cases = require( './cases/timestamp-parser.json' );
+	var cases = require( '../cases/timestamp-parser.json' );
 
-	testUtils.overrideParserData( require( './data-en.json' ) );
+	testUtils.overrideParserData( require( '../data-en.json' ) );
 
 	cases.forEach( function ( caseItem ) {
 		var tsParser = parser.getTimestampParser( caseItem.format, null, 'UTC', { UTC: 'UTC' } ),
@@ -36,9 +36,9 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 } );
 
 QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
-	var cases = require( './cases/timestamp-parser-dst.json' );
+	var cases = require( '../cases/timestamp-parser-dst.json' );
 
-	testUtils.overrideParserData( require( './data-en.json' ) );
+	testUtils.overrideParserData( require( '../data-en.json' ) );
 
 	cases.forEach( function ( caseItem ) {
 		var regexp = parser.getTimestampRegexp( caseItem.format, '\\d', caseItem.timezoneAbbrs ),
@@ -58,7 +58,7 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 
 QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 	var fixture,
-		cases = require( './cases/comments.json' );
+		cases = require( '../cases/comments.json' );
 
 	fixture = document.getElementById( 'qunit-fixture' );
 
@@ -100,7 +100,7 @@ QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 
 QUnit.test( '#getTranscludedFrom', function ( assert ) {
 	var fixture,
-		cases = require( './cases/transcluded.json' );
+		cases = require( '../cases/transcluded.json' );
 
 	fixture = document.getElementById( 'qunit-fixture' );
 

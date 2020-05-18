@@ -3,70 +3,70 @@
 		"name": "plwiki oldparser",
 		"dom": "cases/pl-big-oldparser/pl-big-oldparser.html",
 		"expected": "cases/pl-big-oldparser/pl-big-oldparser-modified.html",
-		"config": "./data/plwiki-config.json",
-		"data": "./data/plwiki-data.json"
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
 	},
 	{
 		"name": "plwiki parsoid",
 		"dom": "cases/pl-big-parsoid/pl-big-parsoid.html",
 		"expected": "cases/pl-big-parsoid/pl-big-parsoid-modified.html",
-		"config": "./data/plwiki-config.json",
-		"data": "./data/plwiki-data.json"
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
 	},
 	{
 		"name": "enwiki oldparser",
 		"dom": "cases/en-big-oldparser/en-big-oldparser.html",
 		"expected": "cases/en-big-oldparser/en-big-oldparser-modified.html",
-		"config": "./data/enwiki-config.json",
-		"data": "./data/enwiki-data.json"
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	},
 	{
 		"name": "enwiki parsoid",
 		"dom": "cases/en-big-parsoid/en-big-parsoid.html",
 		"expected": "cases/en-big-parsoid/en-big-parsoid-modified.html",
-		"config": "./data/enwiki-config.json",
-		"data": "./data/enwiki-data.json"
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	},
 	{
 		"name": "arwiki no-paragraph oldparser",
 		"dom": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html",
 		"expected": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser-modified.html",
-		"config": "./data/arwiki-config.json",
-		"data": "./data/arwiki-data.json"
+		"config": "../data/arwiki-config.json",
+		"data": "../data/arwiki-data.json"
 	},
 	{
 		"name": "arwiki no-paragraph parsoid",
 		"dom": "cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.html",
 		"expected": "cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid-modified.html",
-		"config": "./data/arwiki-config.json",
-		"data": "./data/arwiki-data.json"
+		"config": "../data/arwiki-config.json",
+		"data": "../data/arwiki-data.json"
 	},
 	{
 		"name": "Must split a list to reply to one of the comments",
 		"dom": "cases/split-list/split-list.html",
 		"expected": "cases/split-list/split-list-modified.html",
-		"config": "./data/enwiki-config.json",
-		"data": "./data/enwiki-data.json"
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	},
 	{
 		"name": "Must split a list to reply to one of the comments (version 2)",
 		"dom": "cases/split-list2/split-list2.html",
 		"expected": "cases/split-list2/split-list2-modified.html",
-		"config": "./data/enwiki-config.json",
-		"data": "./data/enwiki-data.json"
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	},
 	{
 		"name": "Reply inserted inside/outside various wrapper elements",
 		"dom": "cases/wrappers/wrappers.html",
 		"expected": "cases/wrappers/wrappers-modified.html",
-		"config": "./data/enwiki-config.json",
-		"data": "./data/enwiki-data.json"
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	},
 	{
 		"name": "Signatures in funny places",
 		"dom": "cases/signatures-funny/signatures-funny.html",
 		"expected": "cases/signatures-funny/signatures-funny-modified.html",
-		"config": "./data/enwiki-config.json",
-		"data": "./data/enwiki-data.json"
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	}
 ]

@@ -30,8 +30,7 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	 */
 	protected static function getJson( string $relativePath ) : array {
 		$json = json_decode(
-			// TODO: Move cases out of /qunit
-			file_get_contents( __DIR__ . '/../qunit/' . $relativePath ),
+			file_get_contents( __DIR__ . '/' . $relativePath ),
 			true
 		);
 		return $json;
@@ -44,8 +43,7 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	 * @return string
 	 */
 	protected static function getHtml( string $relativePath ) : string {
-		// TODO: Move cases out of /qunit
-		$html = file_get_contents( __DIR__ . '/../qunit/' . $relativePath );
+		$html = file_get_contents( __DIR__ . '/../' . $relativePath );
 
 		// Remove all but the body tags from full Parsoid docs
 		if ( strpos( $html, '<body' ) !== false ) {

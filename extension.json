@@ -142,11 +142,11 @@
 		}
 	},
 	"QUnitTestModule": {
-		"localBasePath": "tests/qunit",
-		"remoteExtPath": "DiscussionTools/tests/qunit",
+		"localBasePath": "tests",
+		"remoteExtPath": "DiscussionTools/tests",
 		"packageFiles": [
-			"index.js",
-			"testUtils.js",
+			"qunit/index.js",
+			"qunit/testUtils.js",
 			{
 				"name": "data-en.json",
 				"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getLocalData",
@@ -184,9 +184,9 @@
 			"cases/no-heading/no-heading.json",
 			"cases/lrm-signature/lrm-signature.json",
 			"cases/fallback-encoding-link/fallback-encoding-link.json",
-			"modifier.test.js",
-			"controller.test.js",
-			"parser.test.js"
+			"qunit/modifier.test.js",
+			"qunit/controller.test.js",
+			"qunit/parser.test.js"
 		],
 		"templates": [
 			"cases/en-big-oldparser/en-big-oldparser.html",
