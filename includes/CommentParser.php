@@ -70,7 +70,7 @@ class CommentParser {
 		// non-DST and DST timestamps, and sometimes more due to historical data, but that's okay).
 		$timezoneAbbrs = array_keys( array_filter(
 			DateTimeZone::listAbbreviations(),
-			function ( $timezones ) {
+			function ( array $timezones ) {
 				foreach ( $timezones as $tz ) {
 					if ( $tz['timezone_id'] === $this->localTimezone ) {
 						return true;
@@ -80,7 +80,7 @@ class CommentParser {
 			}
 		) );
 		return array_combine(
-			array_map( function ( $tzMsg ) {
+			array_map( function ( string $tzMsg ) {
 				// MWTimestamp::getTimezoneMessage()
 				// Parser::pstPass2()
 				// Messages used here: 'timezone-utc' and so on
@@ -176,7 +176,7 @@ class CommentParser {
 	 * @return string Regular expression
 	 */
 	private static function regexpAlternateGroup( array $values ) : string {
-		return '(' . implode( '|', array_map( function ( $x ) {
+		return '(' . implode( '|', array_map( function ( string $x ) {
 			return preg_quote( $x, '/' );
 		}, $values ) ) . ')';
 	}
@@ -186,7 +186,7 @@ class CommentParser {
 	 * @return string[] Message values
 	 */
 	private function getMessages( array $messageKeys ) : array {
-		return array_map( function ( $key ) {
+		return array_map( function ( string $key ) {
 			return isset( $this->data['contLangMessages'][$key] ) ?
 				$this->data['contLangMessages'][$key] :
 				wfMessage( $key )->inLanguage( $this->language )->text();
@@ -336,7 +336,7 @@ class CommentParser {
 			}
 			return preg_replace_callback(
 				'/[' . $digits . ']/',
-				function ( $m ) use ( $digits ) {
+				function ( array $m ) use ( $digits ) {
 					return strpos( $digits, $m[0] );
 				},
 				$text
@@ -397,7 +397,7 @@ class CommentParser {
 		) {
 			if ( is_array( $match[0] ) ) {
 				// Strip PREG_OFFSET_CAPTURE data
-				$match = array_map( function ( $tuple ) {
+				$match = array_map( function ( array $tuple ) {
 					return $tuple[0];
 				}, $match );
 			}
@@ -992,7 +992,7 @@ class CommentParser {
 	 */
 	public function getAuthors( stdClass $comment ) : array {
 		$authors = [];
-		$getAuthorSet = function ( $comment ) use ( &$authors, &$getAuthorSet ) {
+		$getAuthorSet = function ( stdClass $comment ) use ( &$authors, &$getAuthorSet ) {
 			if ( $comment->author ?? false ) {
 				$authors[ $comment->author ] = true;
 			}

@@ -30,7 +30,7 @@ class Data {
 	 * @return array
 	 */
 	public static function getLocalData(
-		ResourceLoaderContext $context, Config $config, $langCode = null
+		ResourceLoaderContext $context, Config $config, string $langCode = null
 	) : array {
 		if ( $langCode ) {
 			$lang = Language::factory( $langCode );
@@ -57,7 +57,7 @@ class Data {
 		// non-DST and DST timestamps, and sometimes more due to historical data, but that's okay).
 		$timezoneAbbrs = array_keys( array_filter(
 			timezone_abbreviations_list(),
-			function ( $timezones ) use ( $localTimezone ) {
+			function ( array $timezones ) use ( $localTimezone ) {
 				foreach ( $timezones as $tz ) {
 					if ( $tz['timezone_id'] === $localTimezone ) {
 						return true;
@@ -67,7 +67,7 @@ class Data {
 			}
 		) );
 		$data['timezones'] = array_combine(
-			array_map( function ( $tzMsg ) use ( $lang ) {
+			array_map( function ( string $tzMsg ) use ( $lang ) {
 				// MWTimestamp::getTimezoneMessage()
 				// Parser::pstPass2()
 				// Messages used here: 'timezone-utc' and so on
@@ -115,7 +115,7 @@ class Data {
 	 * @return array
 	 */
 	public static function getContentLanguageMessages(
-		ResourceLoaderContext $context, Config $config, $messagesKeys = []
+		ResourceLoaderContext $context, Config $config, array $messagesKeys = []
 	) : array {
 		return array_combine(
 			$messagesKeys,
