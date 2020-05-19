@@ -26,12 +26,13 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	 * Get parsed JSON from path
 	 *
 	 * @param string $relativePath
+	 * @param bool $assoc See json_decode()
 	 * @return array
 	 */
-	protected static function getJson( string $relativePath ) : array {
+	protected static function getJson( string $relativePath, bool $assoc = true ) : array {
 		$json = json_decode(
 			file_get_contents( __DIR__ . '/' . $relativePath ),
-			true
+			$assoc
 		);
 		return $json;
 	}

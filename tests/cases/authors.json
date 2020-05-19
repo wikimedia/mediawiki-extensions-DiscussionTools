@@ -1,0 +1,26 @@
+[
+	{
+		"thread": {
+			"replies": [
+				{
+					"author": "Eve",
+					"replies": []
+				},
+				{
+					"author": "Bob",
+					"replies": [
+						{
+							"author": "Alice",
+							"replies": []
+						}
+					]
+				}
+			]
+		},
+		"expected": [
+			"Alice",
+			"Bob",
+			"Eve"
+		]
+	}
+]

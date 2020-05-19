@@ -188,29 +188,10 @@ class CommentParserTest extends CommentTestCase {
 	}
 
 	public function provideAuthors() : array {
-		return [
-			[
-				'thread' => (object)[
-					'replies' => [
-						(object)[
-							'author' => 'Eve',
-							'replies' => []
-						],
-						(object)[
-							'author' => 'Bob',
-							'replies' => [
-								(object)[
-									'author' => 'Alice',
-									'replies' => []
-								]
-							]
-						]
-
-					]
-				],
-				'expected' => [ 'Alice', 'Bob', 'Eve' ]
-			]
-		];
+		return array_map( function ( $caseItem ) {
+			// PHPUnit requires associative arrays, not stdClass objects
+			return (array)$caseItem;
+		}, self::getJson( '../cases/authors.json', false ) );
 	}
 
 	/**

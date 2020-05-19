@@ -162,6 +162,7 @@
 			"data/nlwiki-data.json",
 			"data/plwiki-config.json",
 			"data/plwiki-data.json",
+			"cases/authors.json",
 			"cases/comments.json",
 			"cases/transcluded.json",
 			"cases/modified.json",
