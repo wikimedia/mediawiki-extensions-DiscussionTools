@@ -3,7 +3,8 @@
 		"authors": [
 			"Alexander Yukal",
 			"Movses",
-			"Piramidion"
+			"Piramidion",
+			"Ата"
 		]
 	},
 	"discussiontools": "Інструменти обговорення",
@@ -16,6 +17,8 @@
 	"discussiontools-replywidget-cancel": "Скасувати",
 	"discussiontools-replywidget-feedback": "Залишити відгук про цю функцію",
 	"discussiontools-replywidget-loading": "Завантаження…",
+	"discussiontools-replywidget-mode-source": "Вікітекст",
+	"discussiontools-replywidget-mode-visual": "Візуальний",
 	"discussiontools-replywidget-placeholder-reply": "Відповідь на коментар {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Попередній перегляд",
 	"discussiontools-replywidget-reply": "Відповісти",
