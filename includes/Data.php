@@ -10,6 +10,7 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use Config;
+use DateTimeZone;
 use ExtensionRegistry;
 use Language;
 use MediaWiki\MediaWikiServices;
@@ -24,18 +25,18 @@ class Data {
 	 * We need all of this data *in content language*. Some of it is already available in JS, but only
 	 * in client language, so it's useless for us (e.g. digit transform table, month name messages).
 	 *
-	 * @param ResourceLoaderContext $context
+	 * @param ResourceLoaderContext|null $context
 	 * @param Config $config
-	 * @param string|null $langCode
+	 * @param string|Language|null $lang
 	 * @return array
 	 */
 	public static function getLocalData(
-		ResourceLoaderContext $context, Config $config, string $langCode = null
+		?ResourceLoaderContext $context, Config $config, $lang = null
 	) : array {
-		if ( $langCode ) {
-			$lang = Language::factory( $langCode );
-		} else {
+		if ( !$lang ) {
 			$lang = MediaWikiServices::getInstance()->getContentLanguage();
+		} elseif ( !( $lang instanceof Language ) ) {
+			$lang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( $lang );
 		}
 
 		$data = [];
@@ -44,7 +45,9 @@ class Data {
 
 		// TODO: We probably shouldn't assume that each digit can be represented by a single BMP
 		// codepoint in every language (although it seems to be true right now).
-		$data['digits'] = $lang->formatNum( '0123456789', true );
+		$data['digits'] = $config->get( 'TranslateNumerals' ) ?
+			$lang->formatNum( '0123456789', true ) :
+			null;
 
 		// ApiQuerySiteinfo
 		$data['localTimezone'] = $config->get( 'Localtimezone' );
@@ -56,7 +59,7 @@ class Data {
 		// Return only timezone abbreviations for the local timezone (there will often be two, for
 		// non-DST and DST timestamps, and sometimes more due to historical data, but that's okay).
 		$timezoneAbbrs = array_keys( array_filter(
-			timezone_abbreviations_list(),
+			DateTimeZone::listAbbreviations(),
 			function ( array $timezones ) use ( $localTimezone ) {
 				foreach ( $timezones as $tz ) {
 					if ( $tz['timezone_id'] === $localTimezone ) {

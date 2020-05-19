@@ -36,65 +36,23 @@ class CommentParser {
 	public function __construct( Language $language, Config $config, array $data = [] ) {
 		$this->language = $language;
 		$this->config = $config;
-		$this->dateFormat = $this->language->getDateFormatString(
-			'both',
-			$this->language->dateFormat( false )
-		);
-		// TODO: We probably shouldn't assume that each digit can be represented by a single BMP
-		// codepoint in every language (although it seems to be true right now).
-		$this->digits = $this->config->get( 'TranslateNumerals' ) ?
-			$this->language->formatNum( '0123456789', true ) :
-			null;
-		$this->digitsRegexp = $this->config->get( 'TranslateNumerals' ) ?
-			'[' . $this->language->formatNum( '0123456789', true ) . ']' :
-			'\\d';
-		// TODO: Instead of passing data used for mocking, mock the methods that fetch the data.
-		$this->data = $data;
-		$this->localTimezone = $this->config->get( 'Localtimezone' );
-		$this->timezoneAbbrs = $this->computeTimezoneAbbrs();
+
+		if ( !$data ) {
+			// TODO: Instead of passing data used for mocking, mock the methods that fetch the data.
+			$data = Data::getLocalData( null, $config, $language );
+		}
+
+		$this->dateFormat = $data['dateFormat'];
+		$this->digits = $data['digits'];
+		$this->contLangMessages = $data['contLangMessages'];
+		$this->localTimezone = $data['localTimezone'];
+		$this->timezones = $data['timezones'];
 	}
 
 	public static function newFromGlobalState() : CommentParser {
 		return new static(
 			MediaWikiServices::getInstance()->getContentLanguage(),
 			MediaWikiServices::getInstance()->getMainConfig()
-		);
-	}
-
-	/**
-	 * Build the timezone abbreviations map for the local timezone.
-	 * @return array Associative array mapping localised timezone abbreviations to IANA abbreviations
-	 */
-	private function computeTimezoneAbbrs() : array {
-		// Return only timezone abbreviations for the local timezone (there will often be two, for
-		// non-DST and DST timestamps, and sometimes more due to historical data, but that's okay).
-		$timezoneAbbrs = array_keys( array_filter(
-			DateTimeZone::listAbbreviations(),
-			function ( array $timezones ) {
-				foreach ( $timezones as $tz ) {
-					if ( $tz['timezone_id'] === $this->localTimezone ) {
-						return true;
-					}
-				}
-				return false;
-			}
-		) );
-		return array_combine(
-			array_map( function ( string $tzMsg ) {
-				// MWTimestamp::getTimezoneMessage()
-				// Parser::pstPass2()
-				// Messages used here: 'timezone-utc' and so on
-				$key = 'timezone-' . strtolower( trim( $tzMsg ) );
-				$msg = wfMessage( $key )->inLanguage( $this->language );
-				// TODO: This probably causes a similar issue to https://phabricator.wikimedia.org/T221294,
-				// but we *must* check the message existence in the database, because the messages are not
-				// actually defined by MediaWiki core for any timezone other than UTC...
-				if ( $msg->exists() ) {
-					return $this->getMessages( [ $key ] )[0];
-				}
-				return strtoupper( $tzMsg );
-			}, $timezoneAbbrs ),
-			array_map( 'strtoupper', $timezoneAbbrs )
 		);
 	}
 
@@ -187,9 +145,7 @@ class CommentParser {
 	 */
 	private function getMessages( array $messageKeys ) : array {
 		return array_map( function ( string $key ) {
-			return isset( $this->data['contLangMessages'][$key] ) ?
-				$this->data['contLangMessages'][$key] :
-				wfMessage( $key )->inLanguage( $this->language )->text();
+			return $this->contLangMessages[$key];
 		}, $messageKeys );
 	}
 
@@ -502,8 +458,8 @@ class CommentParser {
 	public function getLocalTimestampRegexp() : string {
 		return $this->getTimestampRegexp(
 			$this->dateFormat,
-			$this->digitsRegexp,
-			$this->timezoneAbbrs
+			$this->digits ? "[$this->digits]" : '\\d',
+			$this->timezones
 		);
 	}
 
@@ -520,7 +476,7 @@ class CommentParser {
 			$this->dateFormat,
 			$this->digits,
 			$this->localTimezone,
-			$this->timezoneAbbrs
+			$this->timezones
 		);
 	}
 

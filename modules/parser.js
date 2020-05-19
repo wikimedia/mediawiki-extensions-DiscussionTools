@@ -342,11 +342,11 @@ function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
  * @return {string} Regular expression
  */
 function getLocalTimestampRegexp() {
-	var
-		df = data.dateFormat,
-		digitsRegexp = mw.config.get( 'wgTranslateNumerals' ) ? '[' + data.digits + ']' : '\\d',
-		dfRegexp = getTimestampRegexp( df, digitsRegexp, data.timezones );
-	return dfRegexp;
+	return getTimestampRegexp(
+		data.dateFormat,
+		data.digits ? '[' + data.digits + ']' : '\\d',
+		data.timezones
+	);
 }
 
 /**
@@ -361,11 +361,12 @@ function getLocalTimestampRegexp() {
  * @return {Date} return.return
  */
 function getLocalTimestampParser() {
-	var
-		df = data.dateFormat,
-		digits = mw.config.get( 'wgTranslateNumerals' ) ? data.digits : null,
-		parseFunction = getTimestampParser( df, digits, data.localTimezone, data.timezones );
-	return parseFunction;
+	return getTimestampParser(
+		data.dateFormat,
+		data.digits,
+		data.localTimezone,
+		data.timezones
+	);
 }
 
 /**
