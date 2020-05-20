@@ -33,6 +33,8 @@ function ReplyWidget( commentController, parsoidData, config ) {
 	// TODO: Should storagePrefix include pageName?
 	this.storagePrefix = 'reply/' + comment.id;
 	this.storage = mw.storage.session;
+	// eslint-disable-next-line no-jquery/no-global-selector
+	this.contentDir = $( '#mw-content-text' ).css( 'direction' );
 
 	inputConfig = $.extend(
 		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ) },
@@ -49,7 +51,11 @@ function ReplyWidget( commentController, parsoidData, config ) {
 		framed: false
 	} );
 
-	this.$preview = $( '<div>' ).addClass( 'dt-ui-replyWidget-preview' ).attr( 'data-label', mw.msg( 'discussiontools-replywidget-preview' ) );
+	this.$preview = $( '<div>' )
+		.addClass( 'dt-ui-replyWidget-preview' )
+		.attr( 'data-label', mw.msg( 'discussiontools-replywidget-preview' ) )
+		// Set preview direction to content direction
+		.attr( 'dir', this.contentDir );
 	this.$actionsWrapper = $( '<div>' ).addClass( 'dt-ui-replyWidget-actionsWrapper' );
 	this.$actions = $( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
 		this.cancelButton.$element,
@@ -93,6 +99,8 @@ function ReplyWidget( commentController, parsoidData, config ) {
 		this.$preview,
 		this.$actionsWrapper
 	);
+	// Set direction to interface direction
+	this.$element.attr( 'dir', $( document.body ).css( 'direction' ) );
 
 	if ( config.switchable ) {
 		this.modeTabSelect = new OO.ui.TabSelectWidget( {
