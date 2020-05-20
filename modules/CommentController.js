@@ -271,7 +271,7 @@ CommentController.prototype.postReply = function ( parsoidData ) {
 		// Sign the last line
 		// TODO: Check if the user tried to sign in visual mode by typing wikitext?
 		// TODO: When we implement posting new topics, the leading space will create an indent-pre
-		container.lastChild.appendChild( modifier.createWikitextNode( doc, ' ~~~~' ) );
+		container.lastChild.appendChild( modifier.createWikitextNode( doc, mw.msg( 'discussiontools-signature-prefix' ) + '~~~~' ) );
 	}
 
 	// Transfer comment DOM to Parsoid DOM

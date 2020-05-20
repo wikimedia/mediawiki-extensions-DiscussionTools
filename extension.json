@@ -30,7 +30,8 @@
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getContentLanguageMessages",
 					"callbackParam": [
 						"discussiontools-defaultsummary-reply",
-						"discussiontools-replywidget-feedback-link"
+						"discussiontools-replywidget-feedback-link",
+						"discussiontools-signature-prefix"
 					]
 				},
 				{

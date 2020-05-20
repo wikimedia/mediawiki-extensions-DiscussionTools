@@ -14,6 +14,12 @@ QUnit.test( 'autoSignWikitext', function ( assert ) {
 			expected: 'Foo bar ~~~~'
 		},
 		{
+			msg: 'Custom prefix',
+			wikitext: 'Foo bar',
+			prefix: ' --',
+			expected: 'Foo bar --~~~~'
+		},
+		{
 			msg: 'Whitespace',
 			wikitext: ' \t Foo bar \t ',
 			expected: 'Foo bar ~~~~'
@@ -58,11 +64,16 @@ QUnit.test( 'autoSignWikitext', function ( assert ) {
 	];
 
 	cases.forEach( function ( caseItem ) {
+		var oldPrefix = mw.msg( 'discussiontools-signature-prefix' );
+		if ( caseItem.prefix ) {
+			mw.messages.set( { 'discussiontools-signature-prefix': caseItem.prefix } );
+		}
 		assert.strictEqual(
 			controller.autoSignWikitext( caseItem.wikitext ),
 			caseItem.expected,
 			caseItem.msg
 		);
+		mw.messages.set( { 'discussiontools-signature-prefix': oldPrefix } );
 	} );
 } );
 

@@ -19,8 +19,8 @@ function autoSignWikitext( wikitext ) {
 		// Otherwise 4 tilde signature is left alone,
 		// with any adjacent characters
 	} else {
-		// No sig, append space and sig
-		wikitext += ' ~~~~';
+		// No sig, append separator and sig
+		wikitext += mw.msg( 'discussiontools-signature-prefix' ) + '~~~~';
 	}
 	return wikitext;
 }
