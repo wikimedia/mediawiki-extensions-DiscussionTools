@@ -53,10 +53,12 @@ CommentTargetWidget.prototype.createTarget = function () {
  * @inheritdoc
  */
 CommentTargetWidget.prototype.setDocument = function ( docOrHtml ) {
-	docOrHtml = typeof docOrHtml === 'string' ? this.target.parseDocument( docOrHtml ) : docOrHtml;
+	var doc = typeof docOrHtml === 'string' ? this.target.parseDocument( docOrHtml ) : docOrHtml,
+		// TODO: This could be upstreamed:
+		dmDoc = this.target.constructor.static.createModelFromDom( doc, this.target.getDefaultMode() );
 
 	// Parent method
-	CommentTargetWidget.super.prototype.setDocument.call( this, docOrHtml );
+	CommentTargetWidget.super.prototype.setDocument.call( this, dmDoc );
 
 	// Remove MW specific classes as the widget is already inside the content area
 	this.getSurface().getView().$element.removeClass( 'mw-body-content' );
