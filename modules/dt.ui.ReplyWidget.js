@@ -320,7 +320,19 @@ ReplyWidget.prototype.onKeyDown = function ( e ) {
 };
 
 ReplyWidget.prototype.onInputChange = function () {
-	var wikitext, parsePromise,
+	this.updateButtons();
+	this.storage.set( this.storagePrefix + '/saveable', this.isEmpty() ? '' : '1' );
+	this.preparePreview( this.getValue() );
+};
+
+/**
+ * Update the interface with the preview of the given wikitext.
+ *
+ * @param {string} wikitext
+ * @return {jQuery.Promise} Promise resolved when we're done
+ */
+ReplyWidget.prototype.preparePreview = function ( wikitext ) {
+	var parsePromise,
 		widget = this,
 		indent = {
 			dl: ':',
@@ -328,19 +340,20 @@ ReplyWidget.prototype.onInputChange = function () {
 			ol: '#'
 		}[ this.context ];
 
-	this.updateButtons();
-	this.storage.set( this.storagePrefix + '/saveable', this.isEmpty() ? '' : '1' );
-
 	if ( this.getMode() !== 'source' ) {
-		return;
+		return $.Deferred().resolve().promise();
 	}
+
+	if ( this.previewWikitext === wikitext ) {
+		return $.Deferred().resolve().promise();
+	}
+	this.previewWikitext = wikitext;
 
 	if ( this.previewRequest ) {
 		this.previewRequest.abort();
 		this.previewRequest = null;
 	}
 
-	wikitext = this.getValue();
 	if ( !wikitext.trim() ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
@@ -360,7 +373,7 @@ ReplyWidget.prototype.onInputChange = function () {
 	}
 	// TODO: Add list context
 
-	parsePromise.then( function ( response ) {
+	return parsePromise.then( function ( response ) {
 		widget.$preview.html( response ? response.parse.text : '' );
 
 		if ( response ) {

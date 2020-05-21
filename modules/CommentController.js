@@ -398,6 +398,7 @@ CommentController.prototype.switchToWikitext = function () {
 		oldWidget = this.replyWidget,
 		pageData = oldWidget.parsoidData.pageData,
 		target = oldWidget.replyBodyWidget.target,
+		previewDeferred = $.Deferred(),
 		commentController = this;
 
 	wikitextPromise = target.getWikitextFragment(
@@ -411,14 +412,23 @@ CommentController.prototype.switchToWikitext = function () {
 	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, false );
 
 	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
-		// Swap out the DOM nodes
-		oldWidget.$element.replaceWith( replyWidget.$element );
+		wikitext = controller.sanitizeWikitextLinebreaks( wikitext );
 
-		// Teardown the old widget
-		oldWidget.disconnect( commentController );
-		oldWidget.teardown();
+		// To prevent the "Reply" / "Cancel" buttons from shifting when the preview loads,
+		// wait for the preview (but no longer than 500 ms) before swithing the editors.
+		replyWidget.preparePreview( wikitext ).then( previewDeferred.resolve );
+		setTimeout( previewDeferred.resolve, 500 );
 
-		commentController.setupReplyWidget( replyWidget, controller.sanitizeWikitextLinebreaks( wikitext ) );
+		return previewDeferred.then( function () {
+			// Swap out the DOM nodes
+			oldWidget.$element.replaceWith( replyWidget.$element );
+
+			// Teardown the old widget
+			oldWidget.disconnect( commentController );
+			oldWidget.teardown();
+
+			commentController.setupReplyWidget( replyWidget, wikitext );
+		} );
 	} );
 };
 
