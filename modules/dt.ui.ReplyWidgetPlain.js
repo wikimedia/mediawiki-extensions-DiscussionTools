@@ -45,7 +45,7 @@ ReplyWidgetPlain.prototype.clear = function () {
 	// Parent method
 	ReplyWidgetPlain.super.prototype.clear.apply( this, arguments );
 
-	this.setValue( '' );
+	this.replyBodyWidget.setValue( '' );
 };
 
 ReplyWidgetPlain.prototype.isEmpty = function () {
@@ -54,15 +54,6 @@ ReplyWidgetPlain.prototype.isEmpty = function () {
 
 ReplyWidgetPlain.prototype.getMode = function () {
 	return 'source';
-};
-
-ReplyWidgetPlain.prototype.initAutoSave = function () {
-	var body;
-	this.storage = mw.storage.session;
-	this.storage.set( this.storagePrefix + '/class', 'ReplyWidgetPlain' );
-	if ( ( body = this.storage.get( this.storagePrefix + '/body' ) ) ) {
-		this.replyBodyWidget.setValue( body );
-	}
 };
 
 ReplyWidgetPlain.prototype.onInputChange = function () {
@@ -75,13 +66,19 @@ ReplyWidgetPlain.prototype.onInputChange = function () {
 	this.storage.set( this.storagePrefix + '/body', wikitext );
 };
 
-ReplyWidgetPlain.prototype.setup = function () {
+ReplyWidgetPlain.prototype.setup = function ( initialValue ) {
+	var autosaveValue = this.storage.get( this.storagePrefix + '/body' );
+
 	// Parent method
 	ReplyWidgetPlain.super.prototype.setup.call( this );
 
 	// Events
 	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );
 	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
+
+	this.replyBodyWidget.setValue( initialValue || autosaveValue );
+
+	this.afterSetup();
 
 	return this;
 };
@@ -90,7 +87,6 @@ ReplyWidgetPlain.prototype.teardown = function () {
 	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
 
-	this.storage.remove( this.storagePrefix + '/class' );
 	this.storage.remove( this.storagePrefix + '/body' );
 
 	// Parent method
@@ -122,11 +118,6 @@ ReplyWidgetPlain.prototype.setPending = function ( pending ) {
 
 ReplyWidgetPlain.prototype.getValue = function () {
 	return this.replyBodyWidget.getValue();
-};
-
-ReplyWidgetPlain.prototype.setValue = function ( value ) {
-	this.replyBodyWidget.setValue( value );
-	return this;
 };
 
 module.exports = ReplyWidgetPlain;

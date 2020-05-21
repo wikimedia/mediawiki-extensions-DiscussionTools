@@ -250,12 +250,13 @@ function init( $container, state ) {
 	pageThreads = parser.groupThreads( pageComments );
 	pageCommentsById = commentsById( pageComments );
 
+	$pageContainer.removeClass( 'dt-init-replylink-open' );
+
 	pageThreads.forEach( function ( thread ) {
 		traverseNode( thread, thread );
 	} );
 
 	$pageContainer.addClass( 'dt-init-done' );
-	$pageContainer.removeClass( 'dt-init-replylink-open' );
 
 	// For debugging
 	mw.dt.pageThreads = pageThreads;
