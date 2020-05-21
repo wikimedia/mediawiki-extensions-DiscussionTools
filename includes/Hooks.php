@@ -57,13 +57,14 @@ class Hooks {
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) : void {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		$optionsLookup = $services->getUserOptionsLookup();
 		$title = $output->getTitle();
 		$actionName = Action::getActionName( $output->getContext() );
 		$req = $output->getRequest();
 		$user = $skin->getUser();
 		$enabled = $dtConfig->get( 'DiscussionToolsEnable' ) && (
 			!$dtConfig->get( 'DiscussionToolsBeta' ) ||
-			$user->getOption( 'discussiontools-betaenable' )
+			$optionsLookup->getOption( $user, 'discussiontools-betaenable' )
 		);
 
 		if (
@@ -88,7 +89,7 @@ class Hooks {
 				'ext.discussionTools.init'
 			] );
 
-			$editor = $user->getOption( 'discussiontools-editmode' );
+			$editor = $optionsLookup->getOption( $user, 'discussiontools-editmode' );
 			// User has no preferred editor yet
 			// If the user has a preferred editor, this will be evaluated in the client
 			if ( !$editor ) {
