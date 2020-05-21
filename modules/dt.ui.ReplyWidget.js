@@ -209,6 +209,10 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 		mode = option.getData(),
 		widget = this;
 
+	if ( mode === this.getMode() ) {
+		return;
+	}
+
 	this.setPending( true );
 	this.modeTabSelect.setDisabled( true );
 	switch ( mode ) {
