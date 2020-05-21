@@ -48,25 +48,6 @@ function ReplyWidget( commentController, parsoidData, config ) {
 		framed: false
 	} );
 
-	this.modeTabSelect = new OO.ui.TabSelectWidget( {
-		classes: [ 'dt-ui-replyWidget-modeTabs' ],
-		items: [
-			new OO.ui.TabOptionWidget( {
-				label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
-				data: 'visual'
-			} ),
-			new OO.ui.TabOptionWidget( {
-				label: mw.msg( 'discussiontools-replywidget-mode-source' ),
-				data: 'source'
-			} )
-		],
-		framed: false
-	} );
-
-	this.modeTabSelect.connect( this, {
-		choose: 'onModeTabSelectChoose'
-	} );
-
 	this.$preview = $( '<div>' ).addClass( 'dt-ui-replyWidget-preview' ).attr( 'data-label', mw.msg( 'discussiontools-replywidget-preview' ) );
 	this.$actionsWrapper = $( '<div>' ).addClass( 'dt-ui-replyWidget-actionsWrapper' );
 	this.$actions = $( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
@@ -113,6 +94,25 @@ function ReplyWidget( commentController, parsoidData, config ) {
 	);
 
 	if ( config.switchable ) {
+		this.modeTabSelect = new OO.ui.TabSelectWidget( {
+			classes: [ 'dt-ui-replyWidget-modeTabs' ],
+			items: [
+				new OO.ui.TabOptionWidget( {
+					label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
+					data: 'visual'
+				} ),
+				new OO.ui.TabOptionWidget( {
+					label: mw.msg( 'discussiontools-replywidget-mode-source' ),
+					data: 'source'
+				} )
+			],
+			framed: false
+		} );
+
+		this.modeTabSelect.connect( this, {
+			choose: 'onModeTabSelectChoose'
+		} );
+
 		this.$element.prepend( this.modeTabSelect.$element );
 	}
 
@@ -202,12 +202,20 @@ ReplyWidget.prototype.setPending = function ( pending ) {
 	}
 };
 
+ReplyWidget.prototype.saveEditMode = function ( mode ) {
+	this.api.saveOption( 'discussiontools-editmode', mode ).then( function () {
+		mw.user.options.set( 'discussiontools-editmode', mode );
+	} );
+};
+
 ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 	var promise,
+		mode = option.getData(),
 		widget = this;
+
 	this.setPending( true );
 	this.modeTabSelect.setDisabled( true );
-	switch ( option.getData() ) {
+	switch ( mode ) {
 		case 'source':
 			promise = this.commentController.switchToWikitext();
 			break;
@@ -215,9 +223,12 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 			promise = this.commentController.switchToVisual();
 			break;
 	}
+	// TODO: We rely on #setup to call #saveEditMode, so when we have 2017WTE
+	// we will need to save the new preference here as switching will not
+	// reload the editor.
 	promise.then( null, function () {
 		// Switch failed, restore previous tab selection
-		widget.modeTabSelect.selectItemByData( option.getData() === 'source' ? 'visual' : 'source' );
+		widget.modeTabSelect.selectItemByData( mode === 'source' ? 'visual' : 'source' );
 	} ).always( function () {
 		widget.setPending( false );
 		widget.modeTabSelect.setDisabled( false );
@@ -232,7 +243,10 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
  */
 ReplyWidget.prototype.setup = function () {
 	this.bindBeforeUnloadHandler();
-	this.modeTabSelect.selectItemByData( this.getMode() );
+	if ( this.modeTabSelect ) {
+		this.modeTabSelect.selectItemByData( this.getMode() );
+		this.saveEditMode( this.getMode() );
+	}
 	// Init preview and button state
 	this.onInputChange();
 	return this;
