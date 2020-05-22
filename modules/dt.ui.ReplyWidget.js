@@ -118,6 +118,9 @@ function ReplyWidget( commentController, parsoidData, config ) {
 			framed: false
 		} );
 
+		// Initialize to avoid flicker when switching mode
+		this.modeTabSelect.selectItemByData( this.getMode() );
+
 		this.modeTabSelect.connect( this, {
 			choose: 'onModeTabSelectChoose'
 		} );

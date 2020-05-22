@@ -13,12 +13,12 @@ require( './dt.ui.UsernameCompletion.js' );
  * @param {Object} [config] Configuration options
  */
 function ReplyWidgetVisual() {
-	// Parent constructor
-	ReplyWidgetVisual.super.apply( this, arguments );
-
 	// TODO: Support 2017 wikitext editor
 	this.defaultMode = 'visual';
 	this.initialValue = null;
+
+	// Parent constructor
+	ReplyWidgetVisual.super.apply( this, arguments );
 
 	// TODO: Rename this widget to VE, as it isn't just visual mode
 	this.$element.addClass( 'dt-ui-replyWidget-ve' );
