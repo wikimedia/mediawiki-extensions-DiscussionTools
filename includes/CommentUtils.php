@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 use DOMElement;
 use DOMNode;
 use DOMXPath;
-use stdClass;
 
 class CommentUtils {
 	private function __construct() {
@@ -119,11 +118,11 @@ class CommentUtils {
 	/**
 	 * Get a node (if any) that contains the given comment, and nothing else.
 	 *
-	 * @param stdClass $comment Comment data returned by parser#groupThreads
+	 * @param CommentItem $comment Comment data returned by parser#groupThreads
 	 * @return DOMElement|null
 	 */
-	public static function getFullyCoveredWrapper( $comment ) {
-		$ancestor = $comment->range->commonAncestorContainer;
+	public static function getFullyCoveredWrapper( CommentItem $comment ) : ?DOMElement {
+		$ancestor = $comment->getRange()->commonAncestorContainer;
 
 		$isIgnored = function ( $node ) {
 			// Ignore empty text nodes
@@ -149,7 +148,7 @@ class CommentUtils {
 		$startMatches = false;
 		$node = $ancestor;
 		while ( $node ) {
-			if ( $comment->range->startContainer === $node && $comment->range->startOffset === 0 ) {
+			if ( $comment->getRange()->startContainer === $node && $comment->getRange()->startOffset === 0 ) {
 				$startMatches = true;
 				break;
 			}
@@ -164,7 +163,7 @@ class CommentUtils {
 				// PHP bug: childNodes can be null for comment nodes
 				// (it should always be a DOMNodeList, even if the node can't have children)
 				( $node->childNodes ? $node->childNodes->length : 0 );
-			if ( $comment->range->endContainer === $node && $comment->range->endOffset === $length ) {
+			if ( $comment->getRange()->endContainer === $node && $comment->getRange()->endOffset === $length ) {
 				$endMatches = true;
 				break;
 			}

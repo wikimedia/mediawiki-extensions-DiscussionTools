@@ -1,7 +1,14 @@
 'use strict';
+/* global $:off */
+
+/**
+ * @external ThreadItem
+ */
 
 var
 	utils = require( './utils.js' ),
+	CommentItem = require( './CommentItem.js' ),
+	HeadingItem = require( './HeadingItem.js' ),
 	// Hooks::getLocalData()
 	data = require( './parser/data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
@@ -682,7 +689,7 @@ function nextInterestingLeafNode( node, rootNode ) {
  *     ]
  *
  * @param {HTMLElement} rootNode
- * @return {Object[]} Results. Each result is an object.
+ * @return {ThreadItem[]} Results. Each result is an object.
  * @return {string} return.type `heading` or `comment`
  * @return {Object} return.range Object describing the extent of the comment, including the
  *   signature and timestamp. It has the same properties as a Range object: `startContainer`,
@@ -722,12 +729,7 @@ function getComments( rootNode ) {
 		endContainer: rootNode,
 		endOffset: 0
 	};
-	fakeHeading = {
-		placeholderHeading: true,
-		type: 'heading',
-		range: range,
-		level: 0
-	};
+	fakeHeading = new HeadingItem( range, true );
 
 	curComment = fakeHeading;
 
@@ -740,11 +742,7 @@ function getComments( rootNode ) {
 				endContainer: node,
 				endOffset: node.childNodes.length
 			};
-			curComment = {
-				type: 'heading',
-				range: range,
-				level: 0
-			};
+			curComment = new HeadingItem( range );
 			comments.push( curComment );
 		} else if ( timestamps[ nextTimestamp ] && node === timestamps[ nextTimestamp ][ 0 ] ) {
 			warnings = [];
@@ -789,7 +787,7 @@ function getComments( rootNode ) {
 			// no way to indicate which one you're replying to (this might matter in the future for
 			// notifications or something).
 			if (
-				curComment.type === 'comment' &&
+				curComment instanceof CommentItem &&
 				( utils.closestElement( node, [ 'li', 'dd', 'p' ] ) || node.parentNode ) ===
 					( utils.closestElement( curComment.range.endContainer, [ 'li', 'dd', 'p' ] ) || curComment.range.endContainer.parentNode )
 			) {
@@ -808,15 +806,14 @@ function getComments( rootNode ) {
 				warnings.push( dateTime.discussionToolsWarning );
 			}
 
-			curComment = {
-				type: 'comment',
-				timestamp: dateTime,
-				author: author,
-				range: range,
-				signatureRanges: [ sigRange ],
+			curComment = new CommentItem(
 				// Should this use the indent level of `startNode` or `node`?
-				level: Math.min( startLevel, endLevel )
-			};
+				Math.min( startLevel, endLevel ),
+				range,
+				[ sigRange ],
+				dateTime,
+				author
+			);
 			if ( warnings.length ) {
 				curComment.warnings = warnings;
 			}
@@ -827,7 +824,7 @@ function getComments( rootNode ) {
 
 	// Insert the fake placeholder heading if there are any comments in the 0th section
 	// (before the first real heading)
-	if ( comments.length && comments[ 0 ].type !== 'heading' ) {
+	if ( comments.length && !( comments[ 0 ] instanceof HeadingItem ) ) {
 		comments.unshift( fakeHeading );
 	}
 
@@ -875,8 +872,8 @@ function getComments( rootNode ) {
  *       ] },
  *     ]
  *
- * @param {Object} comments Result of #getComments
- * @return {Object[]} Tree structure of comments, using the same objects as `comments`. Top-level
+ * @param {ThreadItem} comments Result of #getComments
+ * @return {HeadingItem[]} Tree structure of comments, using the same objects as `comments`. Top-level
  *   items are the headings. The following properties are added:
  * @return {string} return.id Unique ID (within the page) for this comment, intended to be used to
  *   find this comment in other revisions of the same page
@@ -893,7 +890,7 @@ function groupThreads( comments ) {
 	for ( i = 0; i < comments.length; i++ ) {
 		comment = comments[ i ];
 
-		if ( comment.level === 0 ) {
+		if ( comment instanceof HeadingItem ) {
 			// We don't need ids for section headings right now, but we might in the future
 			// e.g. if we allow replying directly to sections (adding top-level comments)
 			id = null;
@@ -919,8 +916,6 @@ function groupThreads( comments ) {
 
 		// This modifies the original objects in `comments`!
 		comment.id = id;
-		comment.replies = [];
-		comment.parent = null;
 
 		if ( replies.length < comment.level ) {
 			// Someone skipped an indentation level (or several). Pretend that the previous reply
@@ -932,7 +927,7 @@ function groupThreads( comments ) {
 			}
 		}
 
-		if ( comment.level === 0 ) {
+		if ( comment instanceof HeadingItem ) {
 			// New root (thread)
 			threads.push( comment );
 		} else if ( replies[ comment.level - 1 ] ) {
@@ -955,22 +950,18 @@ function groupThreads( comments ) {
 /**
  * Get the list of authors involved in a comment and its replies.
  *
- * You probably want to pass a thread root here (a heading).
- *
- * @param {Object} comment Comment object, as returned by #groupThreads
+ * @param {HeadingItem} heading Comment object, as returned by #groupThreads
  * @return {string[]} Author usernames
  */
-function getAuthors( comment ) {
+function getAuthors( heading ) {
 	var authors = {};
 	function getAuthorSet( comment ) {
-		if ( comment.author ) {
-			authors[ comment.author ] = true;
-		}
+		authors[ comment.author ] = true;
 		// Get the set of authors in the same format from each reply
 		comment.replies.map( getAuthorSet );
 	}
 
-	getAuthorSet( comment );
+	heading.replies.map( getAuthorSet );
 
 	return Object.keys( authors ).sort();
 }
@@ -978,7 +969,7 @@ function getAuthors( comment ) {
 /**
  * Get the name of the page from which this comment is transcluded (if any).
  *
- * @param {Object} comment Comment object, as returned by #groupThreads
+ * @param {CommentItem} comment Comment object, as returned by #groupThreads
  * @return {string|boolean} `false` if this comment is not transcluded. A string if it's transcluded
  *   from a single page (the page title, in text form with spaces). `true` if it's transcluded, but
  *   we can't determine the source.

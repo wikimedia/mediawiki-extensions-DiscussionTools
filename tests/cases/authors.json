@@ -1,15 +1,19 @@
 [
 	{
 		"thread": {
+			"type": "heading",
 			"replies": [
 				{
+					"type": "comment",
 					"author": "Eve",
 					"replies": []
 				},
 				{
+					"type": "comment",
 					"author": "Bob",
 					"replies": [
 						{
+							"type": "comment",
 							"author": "Alice",
 							"replies": []
 						}

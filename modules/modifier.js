@@ -1,5 +1,9 @@
-/* global $:off */
 'use strict';
+/* global $:off */
+
+/**
+ * @external CommentItem
+ */
 
 var
 	utils = require( './utils.js' );
@@ -20,7 +24,7 @@ function whitespaceParsoidHack( listItem ) {
  * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
  * the comment.
  *
- * @param {Object} comment Comment data returned by parser#groupThreads
+ * @param {CommentItem} comment Comment data returned by parser#groupThreads
  * @param {HTMLElement} linkNode Reply link
  */
 function addReplyLink( comment, linkNode ) {
@@ -51,7 +55,7 @@ function addReplyLink( comment, linkNode ) {
  * The DOM tree is suitably rearranged to ensure correct indentation level of the reply (wrapper
  * nodes are added, and other nodes may be moved around).
  *
- * @param {Object} comment Comment data returned by parser#groupThreads
+ * @param {CommentItem} comment Comment data returned by parser#groupThreads
  * @return {HTMLElement}
  */
 function addListItem( comment ) {
