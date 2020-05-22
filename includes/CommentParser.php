@@ -18,7 +18,6 @@ use MWException;
 use stdClass;
 use Title;
 
-// TODO maybe make a class for ranges?
 // TODO make a class for comments
 // TODO clean up static vs non-static
 
@@ -690,18 +689,17 @@ class CommentParser {
 	 *
 	 * The elements of the array are stdClass objects with the following fields:
 	 * - 'type' (string): 'heading' or 'comment'
-	 * - 'range' (array): The extent of the comment, including the signature and timestamp.
-	 *                    Comments can start or end in the middle of a DOM node.
-	 *                    Keys: 'startContainer', 'startOffset', 'endContainer' and 'endOffset'
-	 * - 'signatureRanges' (array): The extents of the comment's signatures (plus timestamps).
-	 *                              There is always at least one signature, but there may be multiple.
-	 *                              The author and timestamp of the comment is determined from the
-	 *                              first signature. The last node in every signature range is the
-	 *                              text node containing the timestamp.
+	 * - 'range' (ImmutableRange): The extent of the comment, including the signature and timestamp.
+	 *           Comments can start or end in the middle of a DOM node.
+	 * - 'signatureRanges' (ImmutableRange): The extents of the comment's signatures (plus timestamps).
+	 *                     There is always at least one signature, but there may be multiple.
+	 *                     The author and timestamp of the comment is determined from the
+	 *                     first signature. The last node in every signature range is the
+	 *                     text node containing the timestamp.
 	 * - 'level' (int): Indentation level of the comment. Headings are 0, comments start at 1.
 	 * - 'timestamp' (string): ISO 8601 timestamp in UTC (ending in 'Z'). Not set for headings.
 	 * - 'author' (string|null): Comment author's username, null for unsigned comments.
-	 *                           Not set for headings.
+	 *            Not set for headings.
 	 *
 	 * @param DOMElement $rootNode
 	 * @return stdClass[] Results. Each result is an object.
@@ -716,12 +714,7 @@ class CommentParser {
 		$dfParser = $this->getLocalTimestampParser();
 
 		// Placeholder heading in case there are comments in the 0th section
-		$range = (object)[
-			'startContainer' => $rootNode,
-			'startOffset' => 0,
-			'endContainer' => $rootNode,
-			'endOffset' => 0
-		];
+		$range = new ImmutableRange( $rootNode, 0, $rootNode, 0 );
 		$fakeHeading = (object)[
 			'placeholderHeading' => true,
 			'type' => 'heading',
@@ -739,12 +732,7 @@ class CommentParser {
 			}
 
 			if ( $node->nodeType === XML_ELEMENT_NODE && preg_match( '/^h[1-6]$/i', $node->nodeName ) ) {
-				$range = (object)[
-					'startContainer' => $node,
-					'startOffset' => 0,
-					'endContainer' => $node,
-					'endOffset' => $node->childNodes->length
-				];
+				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
 				$curComment = (object)[
 					'type' => 'heading',
 					'range' => $range,
@@ -767,18 +755,18 @@ class CommentParser {
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curComment->range->endContainer, $rootNode );
 				$match = $timestamps[$nextTimestamp][1];
-				$range = (object)[
-					'startContainer' => $startNode->parentNode,
-					'startOffset' => CommentUtils::childIndexOf( $startNode ),
-					'endContainer' => $node,
-					'endOffset' => $match[0][1] + strlen( $match[0][0] )
-				];
-				$sigRange = (object)[
-					'startContainer' => $firstSigNode->parentNode,
-					'startOffset' => CommentUtils::childIndexOf( $firstSigNode ),
-					'endContainer' => $node,
-					'endOffset' => $match[0][1] + strlen( $match[0][0] )
-				];
+				$range = new ImmutableRange(
+					$startNode->parentNode,
+					CommentUtils::childIndexOf( $startNode ),
+					$node,
+					$match[0][1] + strlen( $match[0][0] )
+				);
+				$sigRange = new ImmutableRange(
+					$firstSigNode->parentNode,
+					CommentUtils::childIndexOf( $firstSigNode ),
+					$node,
+					$match[0][1] + strlen( $match[0][0] )
+				);
 
 				$startLevel = $this->getIndentLevel( $startNode, $rootNode ) + 1;
 				$endLevel = $this->getIndentLevel( $node, $rootNode ) + 1;
@@ -806,8 +794,7 @@ class CommentParser {
 					)
 				) {
 					// Merge this with the previous comment. Use that comment's author and timestamp.
-					$curComment->range->endContainer = $range->endContainer;
-					$curComment->range->endOffset = $range->endOffset;
+					$curComment->range = $curComment->range->setEnd( $range->endContainer, $range->endOffset );
 					$curComment->signatureRanges[] = $sigRange;
 					$curComment->level = min( min( $startLevel, $endLevel ), $curComment->level );
 

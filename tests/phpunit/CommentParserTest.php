@@ -7,6 +7,7 @@ use DOMElement;
 use DOMNode;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
+use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use stdClass;
 use Wikimedia\TestingAccessWrapper;
 
@@ -89,7 +90,7 @@ class CommentParserTest extends CommentTestCase {
 			self::getOffsetPath( $root, $parent->range->endContainer, $parent->range->endOffset )
 		];
 		if ( isset( $parent->signatureRanges ) ) {
-			$parent->signatureRanges = array_map( function ( $range ) use ( $root ) {
+			$parent->signatureRanges = array_map( function ( ImmutableRange $range ) use ( $root ) {
 				return [
 					self::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
 					self::getOffsetPath( $root, $range->endContainer, $range->endOffset )
