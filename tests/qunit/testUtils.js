@@ -1,3 +1,6 @@
+var
+	utils = require( 'ext.discussionTools.init' ).utils;
+
 module.exports = {};
 
 /* eslint-disable qunit/no-commented-tests */
@@ -47,18 +50,6 @@ module.exports.overrideMwConfig = function ( config ) {
 };
 
 /**
- * Get the index of a node in its parentNode's childNode list
- *
- * @copyright 2011-2019 VisualEditor Team and others; see http://ve.mit-license.org
- *
- * @param {Node} node The node
- * @return {number} Index in parentNode's childNode list
- */
-function parentIndex( node ) {
-	return Array.prototype.indexOf.call( node.parentNode.childNodes, node );
-}
-
-/**
  * Get the offset path from ancestor to offset in descendant
  *
  * @copyright 2011-2019 VisualEditor Team and others; see http://ve.mit-license.org
@@ -76,7 +67,7 @@ function getOffsetPath( ancestor, node, nodeOffset ) {
 			console.log( node, 'is not a descendant of', ancestor );
 			throw new Error( 'Not a descendant' );
 		}
-		path.unshift( parentIndex( node ) );
+		path.unshift( utils.childIndexOf( node ) );
 		node = node.parentNode;
 	}
 	return path;

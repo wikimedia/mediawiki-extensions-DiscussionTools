@@ -754,13 +754,13 @@ function getComments( rootNode ) {
 			match = timestamps[ nextTimestamp ][ 1 ];
 			range = {
 				startContainer: startNode.parentNode,
-				startOffset: Array.prototype.indexOf.call( startNode.parentNode.childNodes, startNode ),
+				startOffset: utils.childIndexOf( startNode ),
 				endContainer: node,
 				endOffset: match.index + match[ 0 ].length
 			};
 			sigRange = {
 				startContainer: firstSigNode.parentNode,
-				startOffset: Array.prototype.indexOf.call( firstSigNode.parentNode.childNodes, firstSigNode ),
+				startOffset: utils.childIndexOf( firstSigNode ),
 				endContainer: node,
 				endOffset: match.index + match[ 0 ].length
 			};
