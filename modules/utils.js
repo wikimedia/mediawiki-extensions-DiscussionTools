@@ -16,6 +16,20 @@ function getNativeRange( comment ) {
 }
 
 /**
+ * Get the index of a node in its parentNode's childNode list
+ *
+ * @param {Node} child
+ * @return {number} Index in parentNode's childNode list
+ */
+function childIndexOf( child ) {
+	var i = 0;
+	while ( ( child = child.previousSibling ) ) {
+		i++;
+	}
+	return i;
+}
+
+/**
  * Find closest ancestor element using one of the given tag names.
  *
  * @param {Node} node
@@ -48,6 +62,7 @@ function htmlTrim( str ) {
 
 module.exports = {
 	getNativeRange: getNativeRange,
+	childIndexOf: childIndexOf,
 	closestElement: closestElement,
 	htmlTrim: htmlTrim
 };
