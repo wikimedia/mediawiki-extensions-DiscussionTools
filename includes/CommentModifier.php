@@ -83,6 +83,74 @@ class CommentModifier {
 	}
 
 	/**
+	 * Get a node (if any) that contains the given comment, and nothing else.
+	 *
+	 * @param stdClass $comment Comment data returned by parser#groupThreads
+	 * @return DOMElement|null
+	 */
+	private static function getFullyCoveredWrapper( $comment ) {
+		$ancestor = $comment->range->commonAncestorContainer;
+
+		$isIgnored = function ( $node ) {
+			// Ignore empty text nodes
+			return $node->nodeType === XML_TEXT_NODE && CommentUtils::htmlTrim( $node->nodeValue ) === '';
+		};
+
+		$firstNonemptyChild = function ( $node ) use ( $isIgnored ) {
+			$node = $node->firstChild;
+			while ( $node && $isIgnored( $node ) ) {
+				$node = $node->nextSibling;
+			}
+			return $node;
+		};
+
+		$lastNonemptyChild = function ( $node ) use ( $isIgnored ) {
+			$node = $node->lastChild;
+			while ( $node && $isIgnored( $node ) ) {
+				$node = $node->previousSibling;
+			}
+			return $node;
+		};
+
+		$startMatches = false;
+		$node = $ancestor;
+		while ( $node ) {
+			if ( $comment->range->startContainer === $node && $comment->range->startOffset === 0 ) {
+				$startMatches = true;
+				break;
+			}
+			$node = $firstNonemptyChild( $node );
+		}
+
+		$endMatches = false;
+		$node = $ancestor;
+		while ( $node ) {
+			$length = ( $node->nodeType === XML_TEXT_NODE ) ?
+				strlen( rtrim( $node->nodeValue, "\t\n\f\r " ) ) :
+				// PHP bug: childNodes can be null for comment nodes
+				// (it should always be a DOMNodeList, even if the node can't have children)
+				( $node->childNodes ? $node->childNodes->length : 0 );
+			if ( $comment->range->endContainer === $node && $comment->range->endOffset === $length ) {
+				$endMatches = true;
+				break;
+			}
+			$node = $lastNonemptyChild( $node );
+		}
+
+		if ( $startMatches && $endMatches ) {
+			// If this is the only child, go up one more level
+			while (
+				$ancestor->parentNode &&
+				$firstNonemptyChild( $ancestor->parentNode ) === $lastNonemptyChild( $ancestor->parentNode )
+			) {
+				$ancestor = $ancestor->parentNode;
+			}
+			return $ancestor;
+		}
+		return null;
+	}
+
+	/**
 	 * Given a comment, add a list item to its document's DOM tree, inside of which a reply to said
 	 * comment can be added.
 	 *
@@ -134,7 +202,17 @@ class CommentModifier {
 		if ( $curLevel < $desiredLevel ) {
 			// Insert more lists after the target to increase nesting.
 
+			// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
+			// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
+			// as some kind of a fancy frame, which are often used for barnstars and announcements.
+			if ( $curLevel === 1 && ( $wrapper = self::getFullyCoveredWrapper( $curComment ) ) ) {
+				$target = $wrapper;
+				$parent = $target->parentNode;
+			}
+
 			// If we can't insert a list directly inside this element, insert after it.
+			// The wrapper check above handles most cases, but this special case is still needed for comments
+			// consisting of multiple paragraphs with no fancy frames.
 			// TODO Improve this check
 			if ( strtolower( $parent->tagName ) === 'p' || strtolower( $parent->tagName ) === 'pre' ) {
 				$parent = $parent->parentNode;
