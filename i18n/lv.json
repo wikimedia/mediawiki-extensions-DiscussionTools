@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ed g2s",
 			"Papuass"
 		]
 	},
@@ -20,10 +21,10 @@
 	"tag-discussiontools-edit-description": "Dalībnieks laboja esošu komentāru ar diskusiju rīkiem",
 	"tag-discussiontools-newtopic": "pievienota tēma",
 	"tag-discussiontools-newtopic-description": "Dalībnieks lapai pievienoja jaunu tēmu ar diskusiju rīkiem",
-	"tag-discussiontools-reply": "atbildēja",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Atbildēja]",
 	"tag-discussiontools-reply-description": "Dalībnieks atbildēja uz esošu komentāru ar diskusiju rīkiem",
-	"tag-discussiontools-source": "Diskusiju rīki: vikikods",
+	"tag-discussiontools-source": "Vikikods",
 	"tag-discussiontools-source-description": "Diskusiju rīki bija vikikoda režīmā",
-	"tag-discussiontools-visual": "Diskusiju rīki: vizuāli",
+	"tag-discussiontools-visual": "Vizuāli",
 	"tag-discussiontools-visual-description": "Diskusiju rīki bija vizuālā redaktora režīmā"
 }

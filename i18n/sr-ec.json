@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
+			"Ed g2s",
 			"Zoranzoki21"
 		]
 	},
@@ -18,6 +19,8 @@
 	"discussiontools-replywidget-feedback": "Повратне информације",
 	"discussiontools-replywidget-feedback-link": "https://mediawiki.org/wiki/Talk:Talk_pages_project/replying",
 	"discussiontools-replywidget-loading": "Учитавање…",
+	"discussiontools-replywidget-mode-source": "Извор",
+	"discussiontools-replywidget-mode-visual": "Визуелно",
 	"discussiontools-replywidget-placeholder-reply": "Одговор кориснику {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Преглед",
 	"discussiontools-replywidget-reply": "Одговори",

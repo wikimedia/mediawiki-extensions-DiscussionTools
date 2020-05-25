@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ed g2s",
 			"FarsiNevis",
 			"Huji"
 		]
@@ -21,10 +22,10 @@
 	"tag-discussiontools-edit-description": "کاربر با استفاده از ابزارهای گفتگو یک پاسخ را ویرایش کرد",
 	"tag-discussiontools-newtopic": "افزودن موضوع",
 	"tag-discussiontools-newtopic-description": "کاربر با کمک ابزارهای گفتگو موضوعی جدید را افزود",
-	"tag-discussiontools-reply": "پاسخ دادن",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} پاسخ دادن]",
 	"tag-discussiontools-reply-description": "کاربر با استفاده از ابزارهای گفتگو به یک نظر قبلی پاسخ داد",
-	"tag-discussiontools-source": "ابزارهای گفتگو: مبدأ",
+	"tag-discussiontools-source": "مبدأ",
 	"tag-discussiontools-source-description": "ابزارهای گفتگو در حالت ویرایش مبدأ بود",
-	"tag-discussiontools-visual": "ابزارهای گفتگو: دیداری",
+	"tag-discussiontools-visual": "دیداری",
 	"tag-discussiontools-visual-description": "ابزارهای گفتگو در حالت ویرایشگر دیداری بود"
 }

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"DChan (WMF)"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "回答",
+	"discussiontools-replylink": "答",
+	"discussiontools-replywidget-cancel": "取消",
+	"discussiontools-replywidget-loading": "載入緊…",
+	"discussiontools-replywidget-mode-source": "源碼編輯",
+	"discussiontools-replywidget-mode-visual": "即見編輯",
+	"discussiontools-replywidget-placeholder-reply": "答{{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "預覽",
+	"discussiontools-replywidget-reply": "答",
+	"tag-discussiontools-edit": "改註解",
+	"tag-discussiontools-newtopic": "加主題",
+	"tag-discussiontools-source": "源碼編輯",
+	"tag-discussiontools-visual": "即見編輯"
+}

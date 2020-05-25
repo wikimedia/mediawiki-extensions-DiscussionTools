@@ -7,7 +7,8 @@
 			"Geryescalier",
 			"Hasley",
 			"Ihojose",
-			"Juenti el toju"
+			"Juenti el toju",
+			"MarcoAurelio"
 		]
 	},
 	"discussiontools": "Herramientas de discusión.",
@@ -25,10 +26,15 @@
 	"discussiontools-replywidget-preview": "Previsualización",
 	"discussiontools-replywidget-reply": "Responder",
 	"discussiontools-replywidget-terms-click": "Al pulsar en «$1» aceptas los términos de uso de este wiki.",
+	"discussiontools-replywidget-transcluded": "Tu comentario será publicado en [[$1]].",
+	"discussiontools-error-comment-disappeared": "No se ha podido encontrar el comentario al que tratas de responder. Puede haber sido borrado o movido a otra página. Por favor recarga la página e inténtalo de nuevo.",
 	"tag-discussiontools-description": "Edición hecha con DiscussionTools",
 	"tag-discussiontools-edit": "Editar comentario",
 	"tag-discussiontools-edit-description": "El usuario editó un comentario existente con DiscussionTools",
 	"tag-discussiontools-newtopic": "Añadir tema",
+	"tag-discussiontools-newtopic-description": "Nuevo tema añadido a la página usando DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Responder]",
-	"tag-discussiontools-reply-description": "El usuario respondió a un comentario con DiscussionTools"
+	"tag-discussiontools-reply-description": "El usuario respondió a un comentario con DiscussionTools",
+	"tag-discussiontools-source": "Fuente",
+	"tag-discussiontools-visual": "Visual"
 }

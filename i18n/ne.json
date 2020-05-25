@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ed g2s",
 			"पर्वत सुबेदी",
 			"हिमाल सुबेदी"
 		]
@@ -11,7 +12,7 @@
 	"tag-discussiontools-description": "छलफल उपकरण प्रयाेग गरि गरिएका सम्पादन",
 	"tag-discussiontools-edit": "टिप्पणी सम्पादन गर्ने",
 	"tag-discussiontools-newtopic": "विषय थपियाे",
-	"tag-discussiontools-reply": "उत्तर दिइयो",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} उत्तर दिइयो]",
 	"tag-discussiontools-source": "स्रोत",
 	"tag-discussiontools-visual": "दृश्य"
 }
