@@ -50,20 +50,7 @@ class CommentModifierTest extends CommentTestCase {
 	}
 
 	public function provideAddListItem() : array {
-		$modified = self::getJson( '../cases/modified.json' );
-		return [
-			$modified[0],
-			$modified[1],
-			$modified[2],
-			$modified[3],
-			$modified[4],
-			// TODO: Fix strange escaping discrepancy inside data-mw
-			// $modified[5],
-			$modified[6],
-			$modified[7],
-			$modified[8],
-			$modified[9],
-		];
+		return self::getJson( '../cases/modified.json' );
 	}
 
 	/**
