@@ -3,6 +3,7 @@ var
 	modifier = require( './modifier.js' ),
 	parser = require( './parser.js' ),
 	logger = require( './logger.js' ),
+	utils = require( './utils.js' ),
 	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
 	config = require( './config.json' ),
@@ -257,7 +258,7 @@ CommentController.prototype.teardown = function () {
 };
 
 CommentController.prototype.postReply = function ( parsoidData ) {
-	var wikitext, doc, container, newParsoidItem,
+	var wikitext, doc, container, newParsoidItem, childNodeList,
 		comment = parsoidData.comment;
 
 	doc = comment.range.endContainer.ownerDocument;
@@ -275,6 +276,17 @@ CommentController.prototype.postReply = function ( parsoidData ) {
 		} );
 	} else {
 		container.innerHTML = this.replyWidget.getValue();
+		// Remove empty lines
+		// This should really be anything that serializes to empty string in wikitext,
+		// (e.g. <h2></h2>) but this will catch most cases
+		// Create a non-live child node list, so we don't have to worry about it changing
+		// as nodes are removed.
+		childNodeList = Array.prototype.slice.call( container.childNodes );
+		childNodeList.forEach( function ( node ) {
+			if ( node.nodeName.toLowerCase() === 'p' && !utils.htmlTrim( node.innerHTML ) ) {
+				container.removeChild( node );
+			}
+		} );
 		// If the last node isn't a paragraph (e.g. it's a list), then
 		// add another paragraph to contain the signature.
 		if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
