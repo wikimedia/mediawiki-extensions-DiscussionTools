@@ -97,11 +97,12 @@ class CommentModifierTest extends CommentTestCase {
 	 * @dataProvider provideUnwrapList
 	 * @covers ::unwrapList
 	 */
-	public function testUnwrapList( string $name, string $html, string $expected ) : void {
+	public function testUnwrapList( string $name, string $html, int $index, string $expected ) : void {
 		$doc = self::createDocument( '<div>' . $html . '</div>' );
 		$expectedDoc = self::createDocument( '<div>' . $expected . '</div>' );
+		$container = $doc->documentElement->childNodes[0]->childNodes[0];
 
-		CommentModifier::unwrapList( $doc->getElementsByTagName( 'dl' )[0] );
+		CommentModifier::unwrapList( $container->childNodes[$index] );
 
 		self::assertEquals( $expectedDoc->documentElement, $doc->documentElement );
 	}

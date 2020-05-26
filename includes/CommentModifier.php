@@ -214,15 +214,20 @@ class CommentModifier {
 	/**
 	 * Unwrap a top level list, converting list item text to paragraphs
 	 *
-	 * Assumes that the list is the only child of it's parent.
+	 * Assumes that the list has a parent node.
 	 *
 	 * @param DOMElement $list List element (dl/ol/ul)
 	 */
 	public static function unwrapList( DOMElement $list ) : void {
 		$doc = $list->ownerDocument;
 		$container = $list->parentNode;
+		$referenceNode = $list;
 
-		$container->removeChild( $list );
+		// If the whole list is a template return it unmodified (T253150)
+		if ( CommentUtils::getTranscludedFromElement( $list ) ) {
+			return;
+		}
+
 		while ( $list->firstChild ) {
 			if ( $list->firstChild->nodeType === XML_ELEMENT_NODE ) {
 				// Move <dd> contents to <p>
@@ -232,23 +237,28 @@ class CommentModifier {
 					// and start a new paragraph after
 					if ( self::isBlockElement( $list->firstChild->firstChild ) ) {
 						if ( $p->firstChild ) {
-							$container->appendChild( $p );
+							$container->insertBefore( $p, $referenceNode->nextSibling );
+							$referenceNode = $p;
 						}
-						$container->appendChild( $list->firstChild->firstChild );
+						$container->insertBefore( $list->firstChild->firstChild, $referenceNode->nextSibling );
+						$referenceNode = $list->firstChild->firstChild;
 						$p = $doc->createElement( 'p' );
 					} else {
 						$p->appendChild( $list->firstChild->firstChild );
 					}
 				}
 				if ( $p->firstChild ) {
-					$container->appendChild( $p );
+					$container->insertBefore( $p, $referenceNode->nextSibling );
+					$referenceNode = $p;
 				}
 				$list->removeChild( $list->firstChild );
 			} else {
 				// Text node / comment node, probably empty
-				$container->appendChild( $list->firstChild );
+				$container->insertBefore( $list->firstChild, $referenceNode->nextSibling );
+				$referenceNode = $list->firstChild;
 			}
 		}
+		$container->removeChild( $list );
 	}
 
 	/**

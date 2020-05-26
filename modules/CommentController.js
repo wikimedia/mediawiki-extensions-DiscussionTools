@@ -473,7 +473,7 @@ CommentController.prototype.switchToVisual = function () {
 	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, true );
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
-		var doc;
+		var doc, bodyChildren;
 
 		// Swap out the DOM nodes
 		oldWidget.$element.replaceWith( replyWidget.$element );
@@ -484,8 +484,14 @@ CommentController.prototype.switchToVisual = function () {
 
 		if ( html ) {
 			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
-			// Unwrap list
-			modifier.unwrapList( doc.body.children[ 0 ] );
+			bodyChildren = Array.prototype.slice.call( doc.body.childNodes );
+			// There may be multiple lists when some lines are template generated
+			bodyChildren.forEach( function ( child ) {
+				if ( child.nodeType === Node.ELEMENT_NODE ) {
+					// Unwrap list
+					modifier.unwrapList( child );
+				}
+			} );
 		}
 
 		commentController.setupReplyWidget( replyWidget, doc );
