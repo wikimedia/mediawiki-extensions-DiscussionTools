@@ -512,19 +512,29 @@ class CommentParser {
 	 * contributions (and may contain other links). The link may be nested in other elements.
 	 *
 	 * This function returns a two-element array. The first element is an array of sibling nodes
-	 * comprising the signature, with $timestampNode as the last element. The second element
-	 * is the username (null for unsigned comments).
+	 * comprising the signature, in reverse order (with $timestampNode or its parent node as the last
+	 * element). The second element is the username (null for unsigned comments).
 	 *
 	 * @param DOMText $timestampNode Text node
 	 * @param DOMNode|null $until Node to stop searching at
 	 * @return array [ nodes, username ]
 	 */
 	private function findSignature( DOMText $timestampNode, ?DOMNode $until = null ) : array {
+		// Support timestamps being linked to the diff introducing the comment:
+		// if the timestamp node is the only child of a link node, use the link node instead
+		if (
+			!$timestampNode->previousSibling && !$timestampNode->nextSibling &&
+			strtolower( $timestampNode->parentNode->nodeName ) === 'a'
+		) {
+			$timestampNode = $timestampNode->parentNode;
+		}
+
 		$node = $timestampNode;
 		$sigNodes = [ $node ];
 		$sigUsername = null;
 		$length = 0;
 		$lastLinkNode = $timestampNode;
+
 		while (
 			( $node = $node->previousSibling ) && $length < self::SIGNATURE_SCAN_LIMIT && $node !== $until
 		) {
@@ -694,8 +704,8 @@ class CommentParser {
 	 * - 'signatureRanges' (ImmutableRange): The extents of the comment's signatures (plus timestamps).
 	 *                     There is always at least one signature, but there may be multiple.
 	 *                     The author and timestamp of the comment is determined from the
-	 *                     first signature. The last node in every signature range is the
-	 *                     text node containing the timestamp.
+	 *                     first signature. The last node in every signature range is
+	 *                     a node containing the timestamp.
 	 * - 'level' (int): Indentation level of the comment. Headings are 0, comments start at 1.
 	 * - 'timestamp' (string): ISO 8601 timestamp in UTC (ending in 'Z'). Not set for headings.
 	 * - 'author' (string|null): Comment author's username, null for unsigned comments.
@@ -744,6 +754,7 @@ class CommentParser {
 				$foundSignature = $this->findSignature( $node, $curComment->range->endContainer );
 				$author = $foundSignature[1];
 				$firstSigNode = end( $foundSignature[0] );
+				$lastSigNode = $foundSignature[0][0];
 
 				if ( !$author ) {
 					// Ignore timestamps for which we couldn't find a signature. It's probably not a real
@@ -755,17 +766,20 @@ class CommentParser {
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curComment->range->endContainer, $rootNode );
 				$match = $timestamps[$nextTimestamp][1];
+				$offset = $lastSigNode === $node ?
+					$match[0][1] + strlen( $match[0][0] ) :
+					CommentUtils::childIndexOf( $lastSigNode ) + 1;
 				$range = new ImmutableRange(
 					$startNode->parentNode,
 					CommentUtils::childIndexOf( $startNode ),
-					$node,
-					$match[0][1] + strlen( $match[0][0] )
+					$lastSigNode === $node ? $node : $lastSigNode->parentNode,
+					$offset
 				);
 				$sigRange = new ImmutableRange(
 					$firstSigNode->parentNode,
 					CommentUtils::childIndexOf( $firstSigNode ),
-					$node,
-					$match[0][1] + strlen( $match[0][0] )
+					$lastSigNode === $node ? $node : $lastSigNode->parentNode,
+					$offset
 				);
 
 				$startLevel = $this->getIndentLevel( $startNode, $rootNode ) + 1;
