@@ -45,76 +45,6 @@ function addReplyLink( comment, linkNode ) {
 }
 
 /**
- * Get a node (if any) that contains the given comment, and nothing else.
- *
- * @param {Object} comment Comment data returned by parser#groupThreads
- * @return {HTMLElement|null}
- */
-function getFullyCoveredWrapper( comment ) {
-	var nativeRange, ancestor, node, startMatches, endMatches, length;
-
-	nativeRange = utils.getNativeRange( comment );
-	ancestor = nativeRange.commonAncestorContainer;
-
-	function isIgnored( node ) {
-		// Ignore empty text nodes, and our own reply buttons
-		return ( node.nodeType === Node.TEXT_NODE && utils.htmlTrim( node.textContent ) === '' ) ||
-			( node.className && node.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 );
-	}
-
-	function firstNonemptyChild( node ) {
-		node = node.firstChild;
-		while ( node && isIgnored( node ) ) {
-			node = node.nextSibling;
-		}
-		return node;
-	}
-
-	function lastNonemptyChild( node ) {
-		node = node.lastChild;
-		while ( node && isIgnored( node ) ) {
-			node = node.previousSibling;
-		}
-		return node;
-	}
-
-	startMatches = false;
-	node = ancestor;
-	while ( node ) {
-		if ( comment.range.startContainer === node && comment.range.startOffset === 0 ) {
-			startMatches = true;
-			break;
-		}
-		node = firstNonemptyChild( node );
-	}
-
-	endMatches = false;
-	node = ancestor;
-	while ( node ) {
-		length = node.nodeType === Node.TEXT_NODE ?
-			node.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
-			node.childNodes.length;
-		if ( comment.range.endContainer === node && comment.range.endOffset === length ) {
-			endMatches = true;
-			break;
-		}
-		node = lastNonemptyChild( node );
-	}
-
-	if ( startMatches && endMatches ) {
-		// If this is the only child, go up one more level
-		while (
-			ancestor.parentNode &&
-			firstNonemptyChild( ancestor.parentNode ) === lastNonemptyChild( ancestor.parentNode )
-		) {
-			ancestor = ancestor.parentNode;
-		}
-		return ancestor;
-	}
-	return null;
-}
-
-/**
  * Given a comment, add a list item to its document's DOM tree, inside of which a reply to said
  * comment can be added.
  *
@@ -170,7 +100,7 @@ function addListItem( comment ) {
 		// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
 		// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
 		// as some kind of a fancy frame, which are often used for barnstars and announcements.
-		if ( curLevel === 1 && ( wrapper = getFullyCoveredWrapper( curComment ) ) ) {
+		if ( curLevel === 1 && ( wrapper = utils.getFullyCoveredWrapper( curComment ) ) ) {
 			target = wrapper;
 			parent = target.parentNode;
 		}

@@ -72,6 +72,74 @@ class CommentUtils {
 	}
 
 	/**
+	 * Get a node (if any) that contains the given comment, and nothing else.
+	 *
+	 * @param stdClass $comment Comment data returned by parser#groupThreads
+	 * @return DOMElement|null
+	 */
+	public static function getFullyCoveredWrapper( $comment ) {
+		$ancestor = $comment->range->commonAncestorContainer;
+
+		$isIgnored = function ( $node ) {
+			// Ignore empty text nodes
+			return $node->nodeType === XML_TEXT_NODE && CommentUtils::htmlTrim( $node->nodeValue ) === '';
+		};
+
+		$firstNonemptyChild = function ( $node ) use ( $isIgnored ) {
+			$node = $node->firstChild;
+			while ( $node && $isIgnored( $node ) ) {
+				$node = $node->nextSibling;
+			}
+			return $node;
+		};
+
+		$lastNonemptyChild = function ( $node ) use ( $isIgnored ) {
+			$node = $node->lastChild;
+			while ( $node && $isIgnored( $node ) ) {
+				$node = $node->previousSibling;
+			}
+			return $node;
+		};
+
+		$startMatches = false;
+		$node = $ancestor;
+		while ( $node ) {
+			if ( $comment->range->startContainer === $node && $comment->range->startOffset === 0 ) {
+				$startMatches = true;
+				break;
+			}
+			$node = $firstNonemptyChild( $node );
+		}
+
+		$endMatches = false;
+		$node = $ancestor;
+		while ( $node ) {
+			$length = ( $node->nodeType === XML_TEXT_NODE ) ?
+				strlen( rtrim( $node->nodeValue, "\t\n\f\r " ) ) :
+				// PHP bug: childNodes can be null for comment nodes
+				// (it should always be a DOMNodeList, even if the node can't have children)
+				( $node->childNodes ? $node->childNodes->length : 0 );
+			if ( $comment->range->endContainer === $node && $comment->range->endOffset === $length ) {
+				$endMatches = true;
+				break;
+			}
+			$node = $lastNonemptyChild( $node );
+		}
+
+		if ( $startMatches && $endMatches ) {
+			// If this is the only child, go up one more level
+			while (
+				$ancestor->parentNode &&
+				$firstNonemptyChild( $ancestor->parentNode ) === $lastNonemptyChild( $ancestor->parentNode )
+			) {
+				$ancestor = $ancestor->parentNode;
+			}
+			return $ancestor;
+		}
+		return null;
+	}
+
+	/**
 	 * Unwrap Parsoid sections
 	 *
 	 * @param DOMElement $element Parent element, e.g. document body
