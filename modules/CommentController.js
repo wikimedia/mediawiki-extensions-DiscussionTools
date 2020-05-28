@@ -128,7 +128,8 @@ CommentController.prototype.setup = function ( mode ) {
 		commentController = this;
 
 	if ( mode === undefined ) {
-		mode = defaultVisual ? 'visual' : 'source';
+		mode = ( enableVisual && mw.user.options.get( 'discussiontools-editmode' ) ) ||
+			( defaultVisual ? 'visual' : 'source' );
 	}
 
 	// TODO: Allow users to use multiple reply widgets simultaneously.
