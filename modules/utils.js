@@ -59,6 +59,50 @@ function closestElement( node, tagNames ) {
 }
 
 /**
+ * Find the transclusion node which rendered the current node, if it exists.
+ *
+ * 1. Find the closest ancestor with an 'about' attribute
+ * 2. Find the main node of the about-group (first sibling with the same 'about' attribute)
+ * 3. If this is an mw:Transclusion node, return it; otherwise, go to step 1
+ *
+ * @param {Node} node
+ * @return {HTMLElement|null} Translcusion node, null if not found
+ */
+function getTranscludedFromElement( node ) {
+	var about;
+	while ( node ) {
+		// 1.
+		if (
+			node.nodeType === Node.ELEMENT_NODE &&
+			node.getAttribute( 'about' ) &&
+			/^#mwt\d+$/.test( node.getAttribute( 'about' ) )
+		) {
+			about = node.getAttribute( 'about' );
+
+			// 2.
+			while (
+				node.previousSibling &&
+				node.previousSibling.nodeType === Node.ELEMENT_NODE &&
+				node.previousSibling.getAttribute( 'about' ) === about
+			) {
+				node = node.previousSibling;
+			}
+
+			// 3.
+			if (
+				node.getAttribute( 'typeof' ) &&
+				node.getAttribute( 'typeof' ).split( ' ' ).indexOf( 'mw:Transclusion' ) !== -1
+			) {
+				break;
+			}
+		}
+
+		node = node.parentNode;
+	}
+	return node;
+}
+
+/**
  * Trim ASCII whitespace, as defined in the HTML spec.
  *
  * @param {string} str
@@ -144,5 +188,6 @@ module.exports = {
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
 	getFullyCoveredWrapper: getFullyCoveredWrapper,
+	getTranscludedFromElement: getTranscludedFromElement,
 	htmlTrim: htmlTrim
 };

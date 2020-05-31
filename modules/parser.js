@@ -984,48 +984,16 @@ function getAuthors( comment ) {
  *   we can't determine the source.
  */
 function getTranscludedFrom( comment ) {
-	var node, about, dataMw;
+	var node, dataMw;
 
 	// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}, or a
 	// non-substituted signature template), that *does not* mean the comment is transcluded.
 	// We only want to consider comments to be transcluded if the wrapper element (usually
 	// <li> or <p>) is marked as part of a transclusion. If we can't find a wrapper, using
 	// endContainer should avoid false negatives (although may have false positives).
-	node = utils.getFullyCoveredWrapper( comment ) || comment.range.endContainer;
-
-	// Find the node containing information about the transclusion:
-	// 1. Find the closest ancestor with an 'about' attribute
-	// 2. Find the main node of the about-group (first sibling with the same 'about' attribute)
-	// 3. If this is an mw:Transclusion node, return it; otherwise, go to step 1
-	while ( node ) {
-		// 1.
-		if (
-			node.nodeType === Node.ELEMENT_NODE &&
-			node.getAttribute( 'about' ) &&
-			/^#mwt\d+$/.test( node.getAttribute( 'about' ) )
-		) {
-			about = node.getAttribute( 'about' );
-
-			// 2.
-			while (
-				node.previousSibling &&
-				node.previousSibling.nodeType === Node.ELEMENT_NODE &&
-				node.previousSibling.getAttribute( 'about' ) === about
-			) {
-				node = node.previousSibling;
-			}
-
-			// 3.
-			if (
-				node.getAttribute( 'typeof' ) &&
-				node.getAttribute( 'typeof' ).split( ' ' ).indexOf( 'mw:Transclusion' ) !== -1
-			) {
-				break;
-			}
-		}
-
-		node = node.parentNode;
-	}
+	node = utils.getTranscludedFromElement(
+		utils.getFullyCoveredWrapper( comment ) || comment.range.endContainer
+	);
 
 	if ( !node ) {
 		// No mw:Transclusion node found, this comment is not transcluded

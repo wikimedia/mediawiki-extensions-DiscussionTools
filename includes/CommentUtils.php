@@ -61,6 +61,49 @@ class CommentUtils {
 	}
 
 	/**
+	 * Find the transclusion node which rendered the current node, if it exists.
+	 *
+	 * 1. Find the closest ancestor with an 'about' attribute
+	 * 2. Find the main node of the about-group (first sibling with the same 'about' attribute)
+	 * 3. If this is an mw:Transclusion node, return it; otherwise, go to step 1
+	 *
+	 * @param DOMNode $node
+	 * @return DOMElement|null Translcusion node, null if not found
+	 */
+	public static function getTranscludedFromElement( DOMNode $node ) : ?DOMElement {
+		while ( $node ) {
+			// 1.
+			if (
+				$node->nodeType === XML_ELEMENT_NODE &&
+				$node->getAttribute( 'about' ) &&
+				preg_match( '/^#mwt\d+$/', $node->getAttribute( 'about' ) )
+			) {
+				$about = $node->getAttribute( 'about' );
+
+				// 2.
+				while (
+					$node->previousSibling &&
+					$node->previousSibling->nodeType === XML_ELEMENT_NODE &&
+					$node->previousSibling->getAttribute( 'about' ) === $about
+				) {
+					$node = $node->previousSibling;
+				}
+
+				// 3.
+				if (
+					$node->getAttribute( 'typeof' ) &&
+					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ) )
+				) {
+					break;
+				}
+			}
+
+			$node = $node->parentNode;
+		}
+		return $node;
+	}
+
+	/**
 	 * Trim ASCII whitespace, as defined in the HTML spec.
 	 *
 	 * @param string $str
