@@ -363,6 +363,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 		wikitext = controller.sanitizeWikitextLinebreaks(
 			controller.autoSignWikitext( wikitext )
 		);
+		// Drop opacity of signature in preview to make message body preview clearer.
 		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.6;">~~~~</span>';
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
 		this.previewRequest = parsePromise = this.api.post( {
