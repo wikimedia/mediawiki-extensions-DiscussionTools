@@ -69,9 +69,80 @@ function htmlTrim( str ) {
 	return str.replace( /^[\t\n\f\r ]+/, '' ).replace( /[\t\n\f\r ]+$/, '' );
 }
 
+/**
+ * Get a node (if any) that contains the given comment, and nothing else.
+ *
+ * @param {Object} comment Comment data returned by parser#groupThreads
+ * @return {HTMLElement|null}
+ */
+function getFullyCoveredWrapper( comment ) {
+	var nativeRange, ancestor, node, startMatches, endMatches, length;
+
+	nativeRange = getNativeRange( comment );
+	ancestor = nativeRange.commonAncestorContainer;
+
+	function isIgnored( node ) {
+		// Ignore empty text nodes, and our own reply buttons
+		return ( node.nodeType === Node.TEXT_NODE && htmlTrim( node.textContent ) === '' ) ||
+			( node.className && node.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 );
+	}
+
+	function firstNonemptyChild( node ) {
+		node = node.firstChild;
+		while ( node && isIgnored( node ) ) {
+			node = node.nextSibling;
+		}
+		return node;
+	}
+
+	function lastNonemptyChild( node ) {
+		node = node.lastChild;
+		while ( node && isIgnored( node ) ) {
+			node = node.previousSibling;
+		}
+		return node;
+	}
+
+	startMatches = false;
+	node = ancestor;
+	while ( node ) {
+		if ( comment.range.startContainer === node && comment.range.startOffset === 0 ) {
+			startMatches = true;
+			break;
+		}
+		node = firstNonemptyChild( node );
+	}
+
+	endMatches = false;
+	node = ancestor;
+	while ( node ) {
+		length = node.nodeType === Node.TEXT_NODE ?
+			node.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
+			node.childNodes.length;
+		if ( comment.range.endContainer === node && comment.range.endOffset === length ) {
+			endMatches = true;
+			break;
+		}
+		node = lastNonemptyChild( node );
+	}
+
+	if ( startMatches && endMatches ) {
+		// If this is the only child, go up one more level
+		while (
+			ancestor.parentNode &&
+			firstNonemptyChild( ancestor.parentNode ) === lastNonemptyChild( ancestor.parentNode )
+		) {
+			ancestor = ancestor.parentNode;
+		}
+		return ancestor;
+	}
+	return null;
+}
+
 module.exports = {
 	getNativeRange: getNativeRange,
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
+	getFullyCoveredWrapper: getFullyCoveredWrapper,
 	htmlTrim: htmlTrim
 };

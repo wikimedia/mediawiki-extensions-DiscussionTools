@@ -977,11 +977,12 @@ class CommentParser {
 	 *   we can't determine the source.
 	 */
 	public function getTranscludedFrom( stdClass $comment ) {
-		// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}), that *does not* mean
-		// the comment is transcluded. We only want to consider comments to be transcluded if the wrapper
-		// element (usually <li> or <p>) is marked as part of a transclusion.
-		// TODO: This seems to work fine but I'm having a hard time explaining why it is correct...
-		$node = $comment->range->endContainer;
+		// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}, or a
+		// non-substituted signature template), that *does not* mean the comment is transcluded.
+		// We only want to consider comments to be transcluded if the wrapper element (usually
+		// <li> or <p>) is marked as part of a transclusion. If we can't find a wrapper, using
+		// endContainer should avoid false negatives (although may have false positives).
+		$node = CommentUtils::getFullyCoveredWrapper( $comment ) ?: $comment->range->endContainer;
 
 		// Find the node containing information about the transclusion:
 		// 1. Find the closest ancestor with an 'about' attribute
