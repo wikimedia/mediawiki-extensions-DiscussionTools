@@ -1,0 +1,1987 @@
+[
+  {
+    "type": "heading",
+    "range": [
+      "1/4/0",
+      "1/4/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2017-10-09T12:39:00.000Z",
+        "author": "2A02:8109:8900:5C14:C953:3DDA:E3FB:3542",
+        "range": [
+          "1/6/0",
+          "1/9/1/8"
+        ],
+        "signatureRanges": [
+          [
+            "1/9/1/3",
+            "1/9/1/8"
+          ]
+        ],
+        "level": 1,
+        "id": "2A02:8109:8900:5C14:C953:3DDA:E3FB:3542|2017-10-09T12:39:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2017-10-09T15:16:00.000Z",
+            "author": "Chicraz",
+            "range": [
+              "1/11/0/0",
+              "1/11/0/8/31"
+            ],
+            "signatureRanges": [
+              [
+                "1/11/0/5",
+                "1/11/0/8/31"
+              ]
+            ],
+            "level": 2,
+            "id": "Chicraz|2017-10-09T15:16:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2017-10-09T19:11:00.000Z",
+            "author": "2A02:8109:8900:5C14:C953:3DDA:E3FB:3542",
+            "range": [
+              "1/13/0/0",
+              "1/13/0/3/8"
+            ],
+            "signatureRanges": [
+              [
+                "1/13/0/3/3",
+                "1/13/0/3/8"
+              ]
+            ],
+            "level": 2,
+            "id": "2A02:8109:8900:5C14:C953:3DDA:E3FB:3542|2017-10-09T19:11:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2017-10-10T08:04:00.000Z",
+                "author": "Chicraz",
+                "range": [
+                  "1/15/0/0/0/0",
+                  "1/15/0/0/0/4/32"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/15/0/0/0/1",
+                    "1/15/0/0/0/4/32"
+                  ]
+                ],
+                "level": 3,
+                "id": "Chicraz|2017-10-10T08:04:00.000Z|0",
+                "replies": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/17/0",
+      "1/17/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2014-10-06T10:29:00.000Z",
+        "author": "20 century boy",
+        "range": [
+          "1/19/0",
+          "1/22/0/4/31"
+        ],
+        "signatureRanges": [
+          [
+            "1/22/0/1",
+            "1/22/0/4/31"
+          ]
+        ],
+        "level": 1,
+        "warnings": [
+          "Comment starts and ends with different indentation"
+        ],
+        "id": "20 century boy|2014-10-06T10:29:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/24/0",
+      "1/24/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/29/0",
+      "1/29/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2009-04-24T07:27:00.000Z",
+        "author": "Bokken",
+        "range": [
+          "1/31/0",
+          "1/33/0/4/29"
+        ],
+        "signatureRanges": [
+          [
+            "1/33/0/1",
+            "1/33/0/4/29"
+          ]
+        ],
+        "level": 1,
+        "warnings": [
+          "Comment starts and ends with different indentation"
+        ],
+        "id": "Bokken|2009-04-24T07:27:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/35/0",
+      "1/35/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/50/0",
+      "1/50/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/85/0",
+      "1/85/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/94/0",
+      "1/94/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/98/0",
+      "1/98/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2006-08-04T17:49:00.000Z",
+        "author": "Apokrif",
+        "range": [
+          "1/100/0",
+          "1/100/4/27"
+        ],
+        "signatureRanges": [
+          [
+            "1/100/3",
+            "1/100/4/27"
+          ]
+        ],
+        "level": 1,
+        "id": "Apokrif|2006-08-04T17:49:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2006-08-07T13:53:00.000Z",
+            "author": "Mhon",
+            "range": [
+              "1/102/0/0",
+              "1/102/0/4/27"
+            ],
+            "signatureRanges": [
+              [
+                "1/102/0/1",
+                "1/102/0/4/27"
+              ]
+            ],
+            "level": 2,
+            "id": "Mhon|2006-08-07T13:53:00.000Z|0",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/104/0",
+      "1/104/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2006-08-14T10:03:00.000Z",
+        "author": "Mhon",
+        "range": [
+          "1/106/0",
+          "1/106/12/28"
+        ],
+        "signatureRanges": [
+          [
+            "1/106/9",
+            "1/106/12/28"
+          ]
+        ],
+        "level": 1,
+        "id": "Mhon|2006-08-14T10:03:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2006-08-15T00:28:00.000Z",
+            "author": "Digging.holes",
+            "range": [
+              "1/108/0",
+              "1/108/2/6/30"
+            ],
+            "signatureRanges": [
+              [
+                "1/108/2/3",
+                "1/108/2/6/30"
+              ]
+            ],
+            "level": 2,
+            "id": "Digging.holes|2006-08-15T00:28:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2006-08-15T11:24:00.000Z",
+                "author": "Mhon",
+                "range": [
+                  "1/108/2/7/0",
+                  "1/108/2/7/2/4/28"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/108/2/7/2/1",
+                    "1/108/2/7/2/4/28"
+                  ]
+                ],
+                "level": 3,
+                "id": "Mhon|2006-08-15T11:24:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2006-08-25T21:19:00.000Z",
+                    "author": "Spedona",
+                    "range": [
+                      "1/108/2/7/2/5/0/0",
+                      "1/108/2/7/2/5/0/4/28"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "1/108/2/7/2/5/0/3",
+                        "1/108/2/7/2/5/0/4/28"
+                      ]
+                    ],
+                    "level": 4,
+                    "id": "Spedona|2006-08-25T21:19:00.000Z|0",
+                    "replies": [
+                      {
+                        "type": "comment",
+                        "timestamp": "2006-08-25T22:39:00.000Z",
+                        "author": "Digging.holes",
+                        "range": [
+                          "1/108/2/7/2/5/0/5/0/0",
+                          "1/108/2/7/2/5/0/5/0/4/30"
+                        ],
+                        "signatureRanges": [
+                          [
+                            "1/108/2/7/2/5/0/5/0/1",
+                            "1/108/2/7/2/5/0/5/0/4/30"
+                          ]
+                        ],
+                        "level": 5,
+                        "id": "Digging.holes|2006-08-25T22:39:00.000Z|0",
+                        "replies": [
+                          {
+                            "type": "comment",
+                            "timestamp": "2006-08-26T07:12:00.000Z",
+                            "author": "Spedona",
+                            "range": [
+                              "1/108/2/7/2/5/0/5/0/5/0/0",
+                              "1/108/2/7/2/5/0/5/0/5/0/4/28"
+                            ],
+                            "signatureRanges": [
+                              [
+                                "1/108/2/7/2/5/0/5/0/5/0/3",
+                                "1/108/2/7/2/5/0/5/0/5/0/4/28"
+                              ]
+                            ],
+                            "level": 6,
+                            "id": "Spedona|2006-08-26T07:12:00.000Z|0",
+                            "replies": [
+                              {
+                                "type": "comment",
+                                "timestamp": "2006-08-26T17:28:00.000Z",
+                                "author": "Digging.holes",
+                                "range": [
+                                  "1/108/2/7/2/5/0/5/0/5/0/5/0/0",
+                                  "1/108/2/7/2/5/0/5/0/5/0/5/0/6/30"
+                                ],
+                                "signatureRanges": [
+                                  [
+                                    "1/108/2/7/2/5/0/5/0/5/0/5/0/3",
+                                    "1/108/2/7/2/5/0/5/0/5/0/5/0/6/30"
+                                  ]
+                                ],
+                                "level": 7,
+                                "id": "Digging.holes|2006-08-26T17:28:00.000Z|0",
+                                "replies": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/117/0",
+      "1/117/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/123/0",
+      "1/123/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2007-02-01T09:43:00.000Z",
+        "author": "David.Monniaux",
+        "range": [
+          "1/125/0",
+          "1/125/2/29"
+        ],
+        "signatureRanges": [
+          [
+            "1/125/1",
+            "1/125/2/29"
+          ]
+        ],
+        "level": 1,
+        "id": "David.Monniaux|2007-02-01T09:43:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/127/0",
+      "1/127/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/131/0",
+      "1/131/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2008-01-07T06:27:00.000Z",
+        "author": "140.122.97.4",
+        "range": [
+          "1/133/0",
+          "1/141/12/30"
+        ],
+        "signatureRanges": [
+          [
+            "1/141/9",
+            "1/141/12/30"
+          ]
+        ],
+        "level": 1,
+        "id": "140.122.97.4|2008-01-07T06:27:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/143/0",
+      "1/143/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/149/0",
+      "1/149/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2008-09-02T11:36:00.000Z",
+        "author": "LPLT",
+        "range": [
+          "1/151/0/0",
+          "1/151/7/32"
+        ],
+        "signatureRanges": [
+          [
+            "1/151/4",
+            "1/151/7/32"
+          ]
+        ],
+        "level": 1,
+        "id": "LPLT|2008-09-02T11:36:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2008-09-03T10:45:00.000Z",
+            "author": "Ahbon?",
+            "range": [
+              "1/153/0/0",
+              "1/153/2/10/33"
+            ],
+            "signatureRanges": [
+              [
+                "1/153/2/7",
+                "1/153/2/10/33"
+              ]
+            ],
+            "level": 2,
+            "id": "Ahbon?|2008-09-03T10:45:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2008-09-03T11:04:00.000Z",
+                "author": "LPLT",
+                "range": [
+                  "1/153/2/11/0/0",
+                  "1/153/2/11/0/10/32"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/153/2/11/0/7",
+                    "1/153/2/11/0/10/32"
+                  ]
+                ],
+                "level": 3,
+                "id": "LPLT|2008-09-03T11:04:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2008-09-03T16:32:00.000Z",
+                    "author": "Ahbon?",
+                    "range": [
+                      "1/153/2/11/0/11/0/0",
+                      "1/153/2/11/0/11/6/8/33"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "1/153/2/11/0/11/6/5",
+                        "1/153/2/11/0/11/6/8/33"
+                      ]
+                    ],
+                    "level": 4,
+                    "id": "Ahbon?|2008-09-03T16:32:00.000Z|0",
+                    "replies": [
+                      {
+                        "type": "comment",
+                        "timestamp": "2008-09-03T16:43:00.000Z",
+                        "author": "LPLT",
+                        "range": [
+                          "1/153/2/11/0/11/6/9/0/0",
+                          "1/153/2/11/0/11/6/9/0/12/32"
+                        ],
+                        "signatureRanges": [
+                          [
+                            "1/153/2/11/0/11/6/9/0/9",
+                            "1/153/2/11/0/11/6/9/0/12/32"
+                          ]
+                        ],
+                        "level": 5,
+                        "id": "LPLT|2008-09-03T16:43:00.000Z|0",
+                        "replies": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "comment",
+        "timestamp": "2008-09-03T16:46:00.000Z",
+        "author": "Cchantep",
+        "range": [
+          "1/155/1/0/0",
+          "1/157/6/33"
+        ],
+        "signatureRanges": [
+          [
+            "1/157/3",
+            "1/157/6/33"
+          ]
+        ],
+        "level": 1,
+        "id": "Cchantep|2008-09-03T16:46:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/159/0",
+      "1/159/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2009-03-22T18:08:00.000Z",
+        "author": "LPLT",
+        "range": [
+          "1/161/0",
+          "1/161/6/27"
+        ],
+        "signatureRanges": [
+          [
+            "1/161/3",
+            "1/161/6/27"
+          ]
+        ],
+        "level": 1,
+        "id": "LPLT|2009-03-22T18:08:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2009-03-30T15:40:00.000Z",
+            "author": "LPLT",
+            "range": [
+              "1/163/0/0",
+              "1/163/0/4/28"
+            ],
+            "signatureRanges": [
+              [
+                "1/163/0/1",
+                "1/163/0/4/28"
+              ]
+            ],
+            "level": 2,
+            "id": "LPLT|2009-03-30T15:40:00.000Z|0",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/165/0",
+      "1/165/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2009-04-02T07:55:00.000Z",
+        "author": "LPLT",
+        "range": [
+          "1/167/0",
+          "1/167/10/28"
+        ],
+        "signatureRanges": [
+          [
+            "1/167/7",
+            "1/167/10/28"
+          ]
+        ],
+        "level": 1,
+        "id": "LPLT|2009-04-02T07:55:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2009-04-03T09:11:00.000Z",
+            "author": "Bokken",
+            "range": [
+              "1/169/0/0",
+              "1/169/0/4/28"
+            ],
+            "signatureRanges": [
+              [
+                "1/169/0/1",
+                "1/169/0/4/28"
+              ]
+            ],
+            "level": 2,
+            "id": "Bokken|2009-04-03T09:11:00.000Z|0",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "type": "comment",
+        "timestamp": "2009-04-03T20:10:00.000Z",
+        "author": "Gegejv",
+        "range": [
+          "1/171/0",
+          "1/173/4/29"
+        ],
+        "signatureRanges": [
+          [
+            "1/173/1",
+            "1/173/4/29"
+          ]
+        ],
+        "level": 1,
+        "id": "Gegejv|2009-04-03T20:10:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2009-04-04T12:14:00.000Z",
+            "author": "Mogador",
+            "range": [
+              "1/175/0/0",
+              "1/175/0/4/28"
+            ],
+            "signatureRanges": [
+              [
+                "1/175/0/1",
+                "1/175/0/4/28"
+              ]
+            ],
+            "level": 2,
+            "id": "Mogador|2009-04-04T12:14:00.000Z|0",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/177/0",
+      "1/177/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2009-04-22T11:05:00.000Z",
+        "author": "Pixeltoo",
+        "range": [
+          "1/179/0",
+          "1/179/4/29"
+        ],
+        "signatureRanges": [
+          [
+            "1/179/1",
+            "1/179/4/29"
+          ]
+        ],
+        "level": 1,
+        "id": "Pixeltoo|2009-04-22T11:05:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/185/0",
+      "1/185/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/189/0",
+      "1/189/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2010-01-02T12:01:00.000Z",
+        "author": "Arkanosis",
+        "range": [
+          "1/191/0",
+          "1/193/4/29"
+        ],
+        "signatureRanges": [
+          [
+            "1/193/1",
+            "1/193/4/29"
+          ]
+        ],
+        "level": 1,
+        "id": "Arkanosis|2010-01-02T12:01:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2010-01-02T13:18:00.000Z",
+            "author": "Bokken",
+            "range": [
+              "1/195/0/0",
+              "1/195/0/4/29"
+            ],
+            "signatureRanges": [
+              [
+                "1/195/0/1",
+                "1/195/0/4/29"
+              ]
+            ],
+            "level": 2,
+            "id": "Bokken|2010-01-02T13:18:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2011-02-26T14:23:00.000Z",
+                "author": "Alastair",
+                "range": [
+                  "1/195/0/5/0/0",
+                  "1/195/0/5/0/6/31"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/195/0/5/0/3",
+                    "1/195/0/5/0/6/31"
+                  ]
+                ],
+                "level": 3,
+                "id": "Alastair|2011-02-26T14:23:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2011-02-28T09:33:00.000Z",
+                    "author": "Azoee",
+                    "range": [
+                      "1/195/0/5/0/7/0/0",
+                      "1/195/0/5/0/7/0/4/31"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "1/195/0/5/0/7/0/1",
+                        "1/195/0/5/0/7/0/4/31"
+                      ]
+                    ],
+                    "level": 4,
+                    "id": "Azoee|2011-02-28T09:33:00.000Z|0",
+                    "replies": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/197/0",
+      "1/197/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2010-07-07T14:56:00.000Z",
+        "author": "DocteurCosmos",
+        "range": [
+          "1/199/0",
+          "1/199/14/31"
+        ],
+        "signatureRanges": [
+          [
+            "1/199/11",
+            "1/199/14/31"
+          ]
+        ],
+        "level": 1,
+        "id": "DocteurCosmos|2010-07-07T14:56:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2010-07-07T14:58:00.000Z",
+            "author": "LPLT",
+            "range": [
+              "1/201/0/0",
+              "1/201/0/4/30"
+            ],
+            "signatureRanges": [
+              [
+                "1/201/0/1",
+                "1/201/0/4/30"
+              ]
+            ],
+            "level": 2,
+            "id": "LPLT|2010-07-07T14:58:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2010-07-08T13:52:00.000Z",
+                "author": "DocteurCosmos",
+                "range": [
+                  "1/201/0/5/0/0",
+                  "1/201/0/5/0/6/31"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/201/0/5/0/3",
+                    "1/201/0/5/0/6/31"
+                  ]
+                ],
+                "level": 3,
+                "id": "DocteurCosmos|2010-07-08T13:52:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2010-07-08T14:11:00.000Z",
+                    "author": "LPLT",
+                    "range": [
+                      "1/201/0/5/0/7/0/0",
+                      "1/201/0/5/0/7/0/4/30"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "1/201/0/5/0/7/0/1",
+                        "1/201/0/5/0/7/0/4/30"
+                      ]
+                    ],
+                    "level": 4,
+                    "id": "LPLT|2010-07-08T14:11:00.000Z|0",
+                    "replies": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "comment",
+        "timestamp": "2010-12-16T21:56:00.000Z",
+        "author": "Polofrfr",
+        "range": [
+          "1/203/0",
+          "1/205/4/32"
+        ],
+        "signatureRanges": [
+          [
+            "1/205/1",
+            "1/205/4/32"
+          ]
+        ],
+        "level": 1,
+        "id": "Polofrfr|2010-12-16T21:56:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/207/0",
+      "1/207/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2011-04-07T18:56:00.000Z",
+        "author": "Azoee",
+        "range": [
+          "1/209/0",
+          "1/212/0/4/29"
+        ],
+        "signatureRanges": [
+          [
+            "1/212/0/1",
+            "1/212/0/4/29"
+          ]
+        ],
+        "level": 1,
+        "warnings": [
+          "Comment starts and ends with different indentation"
+        ],
+        "id": "Azoee|2011-04-07T18:56:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2011-04-08T15:52:00.000Z",
+            "author": "Bibliorock",
+            "range": [
+              "1/212/0/5/0/0",
+              "1/212/0/5/0/4/29"
+            ],
+            "signatureRanges": [
+              [
+                "1/212/0/5/0/1",
+                "1/212/0/5/0/4/29"
+              ]
+            ],
+            "level": 3,
+            "id": "Bibliorock|2011-04-08T15:52:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2011-04-09T09:46:00.000Z",
+                "author": "Azoee",
+                "range": [
+                  "1/212/0/5/0/5/0/0",
+                  "1/212/0/5/0/5/0/4/29"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/212/0/5/0/5/0/1",
+                    "1/212/0/5/0/5/0/4/29"
+                  ]
+                ],
+                "level": 4,
+                "id": "Azoee|2011-04-09T09:46:00.000Z|0",
+                "replies": []
+              }
+            ],
+            "warnings": [
+              "Comment skips indentation level"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/214/0",
+      "1/214/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2012-03-11T09:51:00.000Z",
+        "author": "Jules78120",
+        "range": [
+          "1/216/0",
+          "1/218/2/6/27"
+        ],
+        "signatureRanges": [
+          [
+            "1/218/2/3",
+            "1/218/2/6/27"
+          ]
+        ],
+        "level": 1,
+        "warnings": [
+          "Comment starts and ends with different indentation"
+        ],
+        "id": "Jules78120|2012-03-11T09:51:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/220/0",
+      "1/220/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2014-05-16T21:30:00.000Z",
+        "author": "Pcouderc",
+        "range": [
+          "1/222/0",
+          "1/223/4/28"
+        ],
+        "signatureRanges": [
+          [
+            "1/223/1",
+            "1/223/4/28"
+          ]
+        ],
+        "level": 1,
+        "id": "Pcouderc|2014-05-16T21:30:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/225/0",
+      "1/225/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2013-03-03T21:02:00.000Z",
+        "author": "LPLT",
+        "range": [
+          "1/227/0",
+          "1/227/6/26"
+        ],
+        "signatureRanges": [
+          [
+            "1/227/3",
+            "1/227/6/26"
+          ]
+        ],
+        "level": 1,
+        "id": "LPLT|2013-03-03T21:02:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2013-03-03T21:07:00.000Z",
+            "author": "LPLT",
+            "range": [
+              "1/229/0/0",
+              "1/229/0/6/26"
+            ],
+            "signatureRanges": [
+              [
+                "1/229/0/3",
+                "1/229/0/6/26"
+              ]
+            ],
+            "level": 2,
+            "id": "LPLT|2013-03-03T21:07:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2013-03-03T21:08:00.000Z",
+                "author": "Jules78120",
+                "range": [
+                  "1/229/0/7/0/0",
+                  "1/229/0/7/0/6/26"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/229/0/7/0/3",
+                    "1/229/0/7/0/6/26"
+                  ]
+                ],
+                "level": 3,
+                "id": "Jules78120|2013-03-03T21:08:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2013-03-04T06:32:00.000Z",
+                    "author": "Jmex",
+                    "range": [
+                      "1/229/0/7/0/7/0/0",
+                      "1/229/0/7/0/7/0/4/26"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "1/229/0/7/0/7/0/1",
+                        "1/229/0/7/0/7/0/4/26"
+                      ]
+                    ],
+                    "level": 4,
+                    "id": "Jmex|2013-03-04T06:32:00.000Z|0",
+                    "replies": [
+                      {
+                        "type": "comment",
+                        "timestamp": "2013-03-04T13:11:00.000Z",
+                        "author": "Azoee",
+                        "range": [
+                          "1/229/0/7/0/7/0/5/0/0",
+                          "1/229/0/7/0/7/0/5/0/14/27"
+                        ],
+                        "signatureRanges": [
+                          [
+                            "1/229/0/7/0/7/0/5/0/11",
+                            "1/229/0/7/0/7/0/5/0/14/27"
+                          ]
+                        ],
+                        "level": 5,
+                        "id": "Azoee|2013-03-04T13:11:00.000Z|0",
+                        "replies": [
+                          {
+                            "type": "comment",
+                            "timestamp": "2013-03-04T16:38:00.000Z",
+                            "author": "LPLT",
+                            "range": [
+                              "1/229/0/7/0/7/0/5/0/15/0/0",
+                              "1/229/0/7/0/7/0/5/0/15/0/4/26"
+                            ],
+                            "signatureRanges": [
+                              [
+                                "1/229/0/7/0/7/0/5/0/15/0/1",
+                                "1/229/0/7/0/7/0/5/0/15/0/4/26"
+                              ]
+                            ],
+                            "level": 6,
+                            "id": "LPLT|2013-03-04T16:38:00.000Z|0",
+                            "replies": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "comment",
+        "timestamp": "2013-03-27T23:28:00.000Z",
+        "author": "Quadrige",
+        "range": [
+          "1/231/0",
+          "1/231/4/28"
+        ],
+        "signatureRanges": [
+          [
+            "1/231/1",
+            "1/231/4/28"
+          ]
+        ],
+        "level": 1,
+        "id": "Quadrige|2013-03-27T23:28:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/233/0",
+      "1/233/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2013-03-28T09:28:00.000Z",
+        "author": "CaptainHaddock",
+        "range": [
+          "1/235/0",
+          "1/236/13/27"
+        ],
+        "signatureRanges": [
+          [
+            "1/236/10",
+            "1/236/13/27"
+          ]
+        ],
+        "level": 1,
+        "id": "CaptainHaddock|2013-03-28T09:28:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2013-03-28T10:14:00.000Z",
+            "author": "Quadrige",
+            "range": [
+              "1/238/0/0",
+              "1/238/0/4/28"
+            ],
+            "signatureRanges": [
+              [
+                "1/238/0/1",
+                "1/238/0/4/28"
+              ]
+            ],
+            "level": 2,
+            "id": "Quadrige|2013-03-28T10:14:00.000Z|0",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/240/0",
+      "1/240/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2013-11-14T23:19:00.000Z",
+        "author": "Laurent Verset",
+        "range": [
+          "1/242/0",
+          "1/244/4/32"
+        ],
+        "signatureRanges": [
+          [
+            "1/244/1",
+            "1/244/4/32"
+          ]
+        ],
+        "level": 1,
+        "id": "Laurent Verset|2013-11-14T23:19:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2013-11-15T21:13:00.000Z",
+            "author": "Laurent Verset",
+            "range": [
+              "1/246/0/0",
+              "1/246/0/7/0/1/0/12/32"
+            ],
+            "signatureRanges": [
+              [
+                "1/246/0/7/0/1/0/9",
+                "1/246/0/7/0/1/0/12/32"
+              ]
+            ],
+            "level": 2,
+            "warnings": [
+              "Comment starts and ends with different indentation"
+            ],
+            "id": "Laurent Verset|2013-11-15T21:13:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2013-11-15T20:19:00.000Z",
+                "author": "Gyrostat",
+                "range": [
+                  "1/246/0/7/2/0",
+                  "1/246/0/7/2/8/31"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/246/0/7/2/5",
+                    "1/246/0/7/2/8/31"
+                  ]
+                ],
+                "level": 3,
+                "id": "Gyrostat|2013-11-15T20:19:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2013-11-15T21:37:00.000Z",
+                    "author": "Gyrostat",
+                    "range": [
+                      "1/246/0/7/2/9/0/0/0/0",
+                      "1/246/0/7/2/9/0/0/0/4/31"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "1/246/0/7/2/9/0/0/0/1",
+                        "1/246/0/7/2/9/0/0/0/4/31"
+                      ]
+                    ],
+                    "level": 5,
+                    "id": "Gyrostat|2013-11-15T21:37:00.000Z|0",
+                    "replies": [],
+                    "warnings": [
+                      "Comment skips indentation level"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/248/0",
+      "1/248/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2014-10-13T10:11:00.000Z",
+        "author": "Azoee",
+        "range": [
+          "1/250/0",
+          "1/251/16/31"
+        ],
+        "signatureRanges": [
+          [
+            "1/251/13",
+            "1/251/16/31"
+          ]
+        ],
+        "level": 1,
+        "id": "Azoee|2014-10-13T10:11:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/253/0",
+      "1/253/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2015-01-11T10:32:00.000Z",
+        "author": "2A01:E35:8AE2:3E10:40F5:EB62:596A:89DB",
+        "range": [
+          "1/255/0",
+          "1/256/5/31"
+        ],
+        "signatureRanges": [
+          [
+            "1/256/2",
+            "1/256/5/31"
+          ]
+        ],
+        "level": 1,
+        "id": "2A01:E35:8AE2:3E10:40F5:EB62:596A:89DB|2015-01-11T10:32:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2015-01-12T20:47:00.000Z",
+            "author": "Celette",
+            "range": [
+              "1/258/0/0",
+              "1/258/0/6/31"
+            ],
+            "signatureRanges": [
+              [
+                "1/258/0/3",
+                "1/258/0/6/31"
+              ]
+            ],
+            "level": 2,
+            "id": "Celette|2015-01-12T20:47:00.000Z|0",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/260/0",
+      "1/260/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2014-09-25T06:08:00.000Z",
+        "author": "Hégésippe Cormier",
+        "range": [
+          "1/262/0",
+          "1/262/22/46"
+        ],
+        "signatureRanges": [
+          [
+            "1/262/19",
+            "1/262/22/46"
+          ]
+        ],
+        "level": 1,
+        "id": "Hégésippe Cormier|2014-09-25T06:08:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2014-10-01T23:05:00.000Z",
+            "author": "Notron",
+            "range": [
+              "1/264/0/0",
+              "1/264/0/24/31"
+            ],
+            "signatureRanges": [
+              [
+                "1/264/0/21",
+                "1/264/0/24/31"
+              ]
+            ],
+            "level": 2,
+            "id": "Notron|2014-10-01T23:05:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2014-10-02T07:32:00.000Z",
+                "author": "Azoee",
+                "range": [
+                  "1/264/0/25/0/0",
+                  "1/264/0/25/0/12/30"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/264/0/25/0/9",
+                    "1/264/0/25/0/12/30"
+                  ]
+                ],
+                "level": 3,
+                "id": "Azoee|2014-10-02T07:32:00.000Z|0",
+                "replies": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/266/0",
+      "1/266/1"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2016-03-31T09:06:00.000Z",
+        "author": "Schlum",
+        "range": [
+          "1/268/0/0",
+          "1/270/3/28"
+        ],
+        "signatureRanges": [
+          [
+            "1/270/0",
+            "1/270/3/28"
+          ]
+        ],
+        "level": 1,
+        "id": "Schlum|2016-03-31T09:06:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2016-03-31T16:43:00.000Z",
+            "author": "Krosian2B",
+            "range": [
+              "1/272/0/0",
+              "1/272/0/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "1/272/0/4",
+                "1/272/0/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "Krosian2B|2016-03-31T16:43:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2016-03-31T21:24:00.000Z",
+            "author": "Daxipedia",
+            "range": [
+              "1/272/2/0",
+              "1/272/2/11/29"
+            ],
+            "signatureRanges": [
+              [
+                "1/272/2/8",
+                "1/272/2/11/29"
+              ]
+            ],
+            "level": 2,
+            "id": "Daxipedia|2016-03-31T21:24:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2016-04-01T07:41:00.000Z",
+            "author": "Apipo1907",
+            "range": [
+              "1/272/4/0",
+              "1/272/4/11/28"
+            ],
+            "signatureRanges": [
+              [
+                "1/272/4/8",
+                "1/272/4/11/28"
+              ]
+            ],
+            "level": 2,
+            "id": "Apipo1907|2016-04-01T07:41:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2016-04-04T15:30:00.000Z",
+            "author": "Jmex",
+            "range": [
+              "1/272/6/0",
+              "1/272/6/7/28"
+            ],
+            "signatureRanges": [
+              [
+                "1/272/6/4",
+                "1/272/6/7/28"
+              ]
+            ],
+            "level": 2,
+            "id": "Jmex|2016-04-04T15:30:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2016-04-11T04:00:00.000Z",
+            "author": "Nouill",
+            "range": [
+              "1/272/8/0",
+              "1/272/8/5/29"
+            ],
+            "signatureRanges": [
+              [
+                "1/272/8/4",
+                "1/272/8/5/29"
+              ]
+            ],
+            "level": 2,
+            "id": "Nouill|2016-04-11T04:00:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2016-04-14T06:30:00.000Z",
+            "author": "L'amateur d'aéroplanes",
+            "range": [
+              "1/272/10/0",
+              "1/272/10/7/30"
+            ],
+            "signatureRanges": [
+              [
+                "1/272/10/4",
+                "1/272/10/7/30"
+              ]
+            ],
+            "level": 2,
+            "id": "L'amateur d'aéroplanes|2016-04-14T06:30:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2016-04-17T06:58:00.000Z",
+                "author": "Nouill",
+                "range": [
+                  "1/274/0/0/0/0",
+                  "1/274/0/0/0/2/29"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/274/0/0/0/1",
+                    "1/274/0/0/0/2/29"
+                  ]
+                ],
+                "level": 3,
+                "id": "Nouill|2016-04-17T06:58:00.000Z|0",
+                "replies": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/276/0",
+      "1/276/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2018-03-20T23:32:00.000Z",
+        "author": "InternetArchiveBot",
+        "range": [
+          "1/278/0",
+          "1/284/4/27"
+        ],
+        "signatureRanges": [
+          [
+            "1/284/1",
+            "1/284/4/27"
+          ]
+        ],
+        "level": 1,
+        "id": "InternetArchiveBot|2018-03-20T23:32:00.000Z|0",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/286/0",
+      "1/286/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/291/0",
+      "1/291/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": []
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/295/0",
+      "1/295/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2020-02-19T17:08:00.000Z",
+        "author": "J'en passe et des meilleurs",
+        "range": [
+          "1/297/0",
+          "1/297/8/31"
+        ],
+        "signatureRanges": [
+          [
+            "1/297/5",
+            "1/297/8/31"
+          ]
+        ],
+        "level": 1,
+        "id": "J'en passe et des meilleurs|2020-02-19T17:08:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2020-02-22T12:29:00.000Z",
+            "author": "Salsero35",
+            "range": [
+              "1/299/0/0",
+              "1/299/0/7/30"
+            ],
+            "signatureRanges": [
+              [
+                "1/299/0/5",
+                "1/299/0/7/30"
+              ]
+            ],
+            "level": 2,
+            "id": "Salsero35|2020-02-22T12:29:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2020-02-22T13:56:00.000Z",
+                "author": "Baldurar",
+                "range": [
+                  "1/299/0/8/0/0",
+                  "1/299/0/8/0/8/31"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/299/0/8/0/5",
+                    "1/299/0/8/0/8/31"
+                  ]
+                ],
+                "level": 3,
+                "id": "Baldurar|2020-02-22T13:56:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2020-02-24T08:26:00.000Z",
+                    "author": "J'en passe et des meilleurs",
+                    "range": [
+                      "1/299/0/8/0/9/0/0",
+                      "1/299/0/8/0/9/0/4/31"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "1/299/0/8/0/9/0/1",
+                        "1/299/0/8/0/9/0/4/31"
+                      ]
+                    ],
+                    "level": 4,
+                    "id": "J'en passe et des meilleurs|2020-02-24T08:26:00.000Z|0",
+                    "replies": [
+                      {
+                        "type": "comment",
+                        "timestamp": "2020-03-05T21:30:00.000Z",
+                        "author": "Apollofox",
+                        "range": [
+                          "1/299/0/8/0/9/0/5/0/0",
+                          "1/299/0/8/0/9/0/5/0/4/27"
+                        ],
+                        "signatureRanges": [
+                          [
+                            "1/299/0/8/0/9/0/5/0/1",
+                            "1/299/0/8/0/9/0/5/0/4/27"
+                          ]
+                        ],
+                        "level": 5,
+                        "id": "Apollofox|2020-03-05T21:30:00.000Z|0",
+                        "replies": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "range": [
+      "1/301/0",
+      "1/301/2"
+    ],
+    "level": 0,
+    "id": null,
+    "replies": [
+      {
+        "type": "comment",
+        "timestamp": "2020-05-01T13:09:00.000Z",
+        "author": "Marvoir",
+        "range": [
+          "1/303/0",
+          "1/303/8/27"
+        ],
+        "signatureRanges": [
+          [
+            "1/303/5",
+            "1/303/8/27"
+          ]
+        ],
+        "level": 1,
+        "id": "Marvoir|2020-05-01T13:09:00.000Z|0",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2020-05-01T14:18:00.000Z",
+            "author": "Salsero35",
+            "range": [
+              "1/305/0/0",
+              "1/305/0/3/26"
+            ],
+            "signatureRanges": [
+              [
+                "1/305/0/1",
+                "1/305/0/3/26"
+              ]
+            ],
+            "level": 2,
+            "id": "Salsero35|2020-05-01T14:18:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2020-05-01T15:27:00.000Z",
+                "author": "Marvoir",
+                "range": [
+                  "1/305/0/4/0/0",
+                  "1/305/0/4/0/4/27"
+                ],
+                "signatureRanges": [
+                  [
+                    "1/305/0/4/0/1",
+                    "1/305/0/4/0/4/27"
+                  ]
+                ],
+                "level": 3,
+                "id": "Marvoir|2020-05-01T15:27:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2020-05-01T17:50:00.000Z",
+                    "author": "Marvoir",
+                    "range": [
+                      "1/305/0/4/0/5/0/0/0",
+                      "1/305/0/4/0/5/0/5/27"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "1/305/0/4/0/5/0/2",
+                        "1/305/0/4/0/5/0/5/27"
+                      ]
+                    ],
+                    "level": 4,
+                    "id": "Marvoir|2020-05-01T17:50:00.000Z|0",
+                    "replies": [
+                      {
+                        "type": "comment",
+                        "timestamp": "2020-05-04T07:13:00.000Z",
+                        "author": "J'en passe et des meilleurs",
+                        "range": [
+                          "1/305/0/4/0/5/0/6/0/0",
+                          "1/305/0/4/0/5/0/6/0/8/27"
+                        ],
+                        "signatureRanges": [
+                          [
+                            "1/305/0/4/0/5/0/6/0/1",
+                            "1/305/0/4/0/5/0/6/0/4/27"
+                          ],
+                          [
+                            "1/305/0/4/0/5/0/6/0/5",
+                            "1/305/0/4/0/5/0/6/0/8/27"
+                          ]
+                        ],
+                        "level": 5,
+                        "id": "J'en passe et des meilleurs|2020-05-04T07:13:00.000Z|0",
+                        "replies": [
+                          {
+                            "type": "comment",
+                            "timestamp": "2020-05-04T12:52:00.000Z",
+                            "author": "Touam",
+                            "range": [
+                              "1/305/0/4/0/5/0/6/0/9/0/0",
+                              "1/305/0/4/0/5/0/6/0/9/0/6/27"
+                            ],
+                            "signatureRanges": [
+                              [
+                                "1/305/0/4/0/5/0/6/0/9/0/3",
+                                "1/305/0/4/0/5/0/6/0/9/0/6/27"
+                              ]
+                            ],
+                            "level": 6,
+                            "id": "Touam|2020-05-04T12:52:00.000Z|0",
+                            "replies": [
+                              {
+                                "type": "comment",
+                                "timestamp": "2020-05-04T12:56:00.000Z",
+                                "author": "J'en passe et des meilleurs",
+                                "range": [
+                                  "1/305/0/4/0/5/0/6/0/9/0/7/0/0",
+                                  "1/305/0/4/0/5/0/6/0/9/0/7/0/11/27"
+                                ],
+                                "signatureRanges": [
+                                  [
+                                    "1/305/0/4/0/5/0/6/0/9/0/7/0/3",
+                                    "1/305/0/4/0/5/0/6/0/9/0/7/0/6/27"
+                                  ],
+                                  [
+                                    "1/305/0/4/0/5/0/6/0/9/0/7/0/8",
+                                    "1/305/0/4/0/5/0/6/0/9/0/7/0/11/27"
+                                  ]
+                                ],
+                                "level": 7,
+                                "id": "J'en passe et des meilleurs|2020-05-04T12:56:00.000Z|0",
+                                "replies": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -21,6 +21,13 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "frwiki unsigned AFD",
+		"dom": "cases/fr-unsigned-parsoid/fr-unsigned-parsoid.html",
+		"expected": "../cases/fr-unsigned-parsoid/fr-unsigned-parsoid-transcludedFrom.json",
+		"config": "../data/frwiki-config.json",
+		"data": "../data/frwiki-data.json"
+	},
+	{
 		"name": "parsoid-sections",
 		"dom": "cases/parsoid-sections/parsoid-sections.html",
 		"expected": "../cases/parsoid-sections/parsoid-sections-transcludedFrom.json",

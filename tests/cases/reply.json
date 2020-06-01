@@ -21,6 +21,13 @@
 		"data": "../data/arwiki-data.json"
 	},
 	{
+		"name": "frwiki unsigned oldparser",
+		"dom": "cases/fr-unsigned-oldparser/fr-unsigned-oldparser.html",
+		"expected": "cases/fr-unsigned-oldparser/fr-unsigned-oldparser-reply.html",
+		"config": "../data/frwiki-config.json",
+		"data": "../data/frwiki-data.json"
+	},
+	{
 		"name": "Signatures in funny places",
 		"dom": "cases/signatures-funny/signatures-funny.html",
 		"expected": "cases/signatures-funny/signatures-funny-reply.html",
