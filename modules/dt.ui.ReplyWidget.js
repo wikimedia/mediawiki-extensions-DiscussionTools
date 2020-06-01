@@ -47,6 +47,14 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	// eslint-disable-next-line no-jquery/no-global-selector
 	this.contentDir = $( '#mw-content-text' ).css( 'direction' );
 	this.hideNewCommentsWarning = false;
+	// Floating position for scroll back buttons: 'top', 'bottom', or null
+	this.floating = null;
+	// Copied from ve.init.Platform.static.isIos
+	this.isIos = /ipad|iphone|ipod/i.test( navigator.userAgent );
+
+	this.$window = $( this.getElementWindow() );
+	this.onWindowScrollThrottled = OO.ui.throttle( this.onWindowScroll.bind( this ), 100 );
+	this.onViewportChangeThrottled = OO.ui.throttle( this.onViewportChange.bind( this ), 100 );
 
 	var inputConfig = $.extend(
 		{
@@ -200,6 +208,28 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	);
 	this.$actionsWrapper.append( this.$footer, this.$actions );
 
+	this.viewportScrollContainer = OO.ui.Element.static.getClosestScrollableContainer( document.body );
+	this.scrollBackTopButton = new OO.ui.ButtonWidget( {
+		classes: [ 'ext-discussiontools-ui-replyWidget-scrollback-top' ],
+		icon: 'collapse',
+		label: mw.msg(
+			this.isNewTopic ?
+				'discussiontools-replywidget-return-to-newtopic' :
+				'discussiontools-replywidget-return-to-reply'
+		),
+		flags: [ 'progressive' ]
+	} );
+	this.scrollBackBottomButton = new OO.ui.ButtonWidget( {
+		classes: [ 'ext-discussiontools-ui-replyWidget-scrollback-bottom' ],
+		icon: 'expand',
+		label: mw.msg(
+			this.isNewTopic ?
+				'discussiontools-replywidget-return-to-newtopic' :
+				'discussiontools-replywidget-return-to-reply'
+		),
+		flags: [ 'progressive' ]
+	} );
+
 	// Events
 	this.replyButton.connect( this, { click: 'onReplyClick' } );
 	this.cancelButton.connect( this, { click: 'tryTeardown' } );
@@ -213,6 +243,8 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	if ( this.isNewTopic ) {
 		this.commentController.sectionTitle.$input.on( 'keydown', this.onKeyDown.bind( this, false ) );
 	}
+	this.scrollBackTopButton.connect( this, { click: 'onScrollBackButtonClick' } );
+	this.scrollBackBottomButton.connect( this, { click: 'onScrollBackButtonClick' } );
 
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
 
@@ -223,7 +255,9 @@ function ReplyWidget( commentController, commentDetails, config ) {
 		this.$preview,
 		this.advancedToggle.$element,
 		this.advanced.$element,
-		this.$actionsWrapper
+		this.$actionsWrapper,
+		this.scrollBackTopButton.$element,
+		this.scrollBackBottomButton.$element
 	);
 	// Set direction to interface direction
 	this.$element.attr( 'dir', $( document.body ).css( 'direction' ) );
@@ -362,6 +396,41 @@ ReplyWidget.prototype.clearStorage = function () {
 	this.storage.remove( this.storagePrefix + '/formToken' );
 
 	this.emit( 'clearStorage' );
+};
+
+/**
+ * Handle window scroll events
+ */
+ReplyWidget.prototype.onWindowScroll = function () {
+	var rect = this.$element[ 0 ].getBoundingClientRect();
+	var viewportHeight = window.visualViewport ? visualViewport.height : this.viewportScrollContainer.clientHeight;
+	var floating = rect.bottom < 0 ? 'top' :
+		( rect.top > viewportHeight ? 'bottom' : null );
+
+	if ( floating !== this.floating ) {
+		this.floating = floating;
+		// Always remove classes as we have switched directly from top to bottom with a fast scroll
+		this.$element
+			.removeClass( 'ext-discussiontools-ui-replyWidget-floating-top ext-discussiontools-ui-replyWidget-floating-bottom' );
+
+		if ( this.floating ) {
+			// The following classes are used here:
+			// * ext-discussiontools-ui-replyWidget-floating-top
+			// * ext-discussiontools-ui-replyWidget-floating-bottom
+			this.$element.addClass( 'ext-discussiontools-ui-replyWidget-floating-' + this.floating );
+		}
+	}
+};
+
+/**
+ * Handle events which change the visualViewport (scroll/resize)
+ */
+ReplyWidget.prototype.onViewportChange = function () {
+	if ( this.floating ) {
+		var isKeyboardOpen = visualViewport.height < this.viewportScrollContainer.clientHeight;
+		this.scrollBackBottomButton.toggle( !isKeyboardOpen );
+		this.scrollBackTopButton.toggle( !isKeyboardOpen );
+	}
 };
 
 ReplyWidget.prototype.setPending = function ( pending ) {
@@ -554,6 +623,12 @@ ReplyWidget.prototype.setup = function ( data ) {
 
 	mw.hook( 'wikipage.watchlistChange' ).add( this.onWatchToggleHandler );
 
+	// TODO: Use ve.addPassiveEventListener
+	this.$window.on( 'scroll', this.onWindowScrollThrottled );
+	if ( this.isIos && window.visualViewport ) {
+		$( visualViewport ).on( 'scroll resize', this.onViewportChangeThrottled );
+	}
+
 	return this;
 };
 
@@ -639,6 +714,10 @@ ReplyWidget.prototype.teardown = function ( mode ) {
 		this.modeTabSelect.blur();
 	}
 	this.unbindBeforeUnloadHandler();
+	this.$window.off( 'scroll', this.onWindowScrollThrottled );
+	if ( this.isIos && window.visualViewport ) {
+		$( visualViewport ).off( 'scroll resize', this.onViewportChangeThrottled );
+	}
 	mw.hook( 'wikipage.watchlistChange' ).remove( this.onWatchToggleHandler );
 
 	this.clear( mode === 'refresh' );
@@ -1006,6 +1085,13 @@ ReplyWidget.prototype.onReplyClick = function () {
 	} ).always( function () {
 		widget.setPending( false );
 	} );
+};
+
+/**
+ * Handle click events on one of the scroll back buttons
+ */
+ReplyWidget.prototype.onScrollBackButtonClick = function () {
+	this.commentController.showAndFocus();
 };
 
 module.exports = ReplyWidget;
