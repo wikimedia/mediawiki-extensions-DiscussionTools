@@ -491,17 +491,27 @@ function getTitleFromUrl( url ) {
  * @param {Node} [until] Node to stop searching at
  * @return {Array} Result, a two-element array
  * @return {Node[]} return.0 Sibling nodes comprising the signature, in reverse order (with
- *   `timestampNode` as the first element)
+ *   `timestampNode` or its parent node as the first element)
  * @return {string|null} return.1 Username, null for unsigned comments
  */
 function findSignature( timestampNode, until ) {
-	var
-		node = timestampNode,
-		sigNodes = [ node ],
-		sigUsername = null,
-		length = 0,
-		lastLinkNode = timestampNode,
-		links, nodes;
+	var node, sigNodes, sigUsername, length, lastLinkNode, links, nodes;
+
+	// Support timestamps being linked to the diff introducing the comment:
+	// if the timestamp node is the only child of a link node, use the link node instead
+	if (
+		!timestampNode.previousSibling && !timestampNode.nextSibling &&
+		timestampNode.parentNode.nodeName.toLowerCase() === 'a'
+	) {
+		timestampNode = timestampNode.parentNode;
+	}
+
+	node = timestampNode;
+	sigNodes = [ node ];
+	sigUsername = null;
+	length = 0;
+	lastLinkNode = timestampNode;
+
 	while ( ( node = node.previousSibling ) && length < data.signatureScanLimit && node !== until ) {
 		sigNodes.push( node );
 		length += ( node.textContent || '' ).length;
@@ -681,7 +691,7 @@ function nextInterestingLeafNode( node, rootNode ) {
  * @return {Object[]} [return.signatureRanges] Objects describing the extent of signatures (plus
  *   timestamps) for this comment. There is always at least one signature, but there may be
  *   multiple. The author and timestamp of the comment is determined from the first signature.
- *   The last node in every signature range is the text node containing the timestamp.
+ *   The last node in every signature range is a node containing the timestamp.
  * @return {number} return.level Indentation level of the comment. Headings are `0`, comments start
  *   at `1`.
  * @return {Object} [return.timestamp] Timestamp (Moment object), undefined for headings
@@ -693,7 +703,7 @@ function getComments( rootNode ) {
 		comments = [],
 		timestamps, nextTimestamp, treeWalker,
 		node, range, fakeHeading, curComment,
-		foundSignature, firstSigNode, sigRange, author, startNode, match, startLevel, endLevel, dateTime, warnings;
+		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, match, startLevel, endLevel, dateTime, warnings;
 
 	timestamps = findTimestamps( rootNode );
 
@@ -741,6 +751,7 @@ function getComments( rootNode ) {
 			foundSignature = findSignature( node, curComment.range.endContainer );
 			author = foundSignature[ 1 ];
 			firstSigNode = foundSignature[ 0 ][ foundSignature[ 0 ].length - 1 ];
+			lastSigNode = foundSignature[ 0 ][ 0 ];
 
 			if ( !author ) {
 				// Ignore timestamps for which we couldn't find a signature. It's probably not a real
@@ -755,14 +766,14 @@ function getComments( rootNode ) {
 			range = {
 				startContainer: startNode.parentNode,
 				startOffset: utils.childIndexOf( startNode ),
-				endContainer: node,
-				endOffset: match.index + match[ 0 ].length
+				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
+				endOffset: lastSigNode === node ? match.index + match[ 0 ].length : utils.childIndexOf( lastSigNode ) + 1
 			};
 			sigRange = {
 				startContainer: firstSigNode.parentNode,
 				startOffset: utils.childIndexOf( firstSigNode ),
-				endContainer: node,
-				endOffset: match.index + match[ 0 ].length
+				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
+				endOffset: lastSigNode === node ? match.index + match[ 0 ].length : utils.childIndexOf( lastSigNode ) + 1
 			};
 
 			startLevel = getIndentLevel( startNode, rootNode ) + 1;
