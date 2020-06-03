@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Action;
 use ConfigException;
+use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use RecentChange;
@@ -105,13 +106,8 @@ class Hooks {
 			}
 		}
 
-		if ( $actionName === 'edit' && $req->getVal( 'dtlinterror' ) ) {
-			// TODO: Should we copy this module from the Linter extension?
-			$output->addJsConfigVars( [
-				'wgLinterErrorLocation' =>
-					array_map( 'intval', explode( '-', $req->getVal( 'dtlinterror' ), 2 ) ),
-			] );
-			$output->addModules( 'ext.linter.edit' );
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Linter' ) ) {
+			$output->addJsConfigVars( 'wgDiscussionToolsUseLinter', true );
 		}
 	}
 
