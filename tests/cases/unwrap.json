@@ -42,6 +42,12 @@
 		"expected": "<p>Foo</p><p>Bar</p>"
 	},
 	{
+		"name": "multiple items with whitespace",
+		"html": "<dl>\n<dd>Foo</dd>\n<dd>Bar</dd>\n</dl>",
+		"index": 0,
+		"expected": "\n<p>Foo</p>\n<p>Bar</p>\n"
+	},
+	{
 		"name": "nested list",
 		"html": "<dl><dd>Foo<dl><dd>Bar</dd></dl></dd></dl>",
 		"index": 0,

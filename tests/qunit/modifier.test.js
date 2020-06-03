@@ -124,7 +124,7 @@ QUnit.test( '#unwrapList', function ( assert ) {
 		modifier.unwrapList( container.childNodes[ caseItem.index || 0 ] );
 
 		assert.strictEqual(
-			container.innerHTML.trim(),
+			container.innerHTML,
 			caseItem.expected,
 			caseItem.name
 		);

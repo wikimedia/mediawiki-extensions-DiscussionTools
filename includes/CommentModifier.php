@@ -237,25 +237,29 @@ class CommentModifier {
 					// and start a new paragraph after
 					if ( self::isBlockElement( $list->firstChild->firstChild ) ) {
 						if ( $p->firstChild ) {
-							$container->insertBefore( $p, $referenceNode->nextSibling );
+							$insertBefore = $referenceNode->nextSibling;
 							$referenceNode = $p;
+							$container->insertBefore( $p, $insertBefore );
 						}
-						$container->insertBefore( $list->firstChild->firstChild, $referenceNode->nextSibling );
+						$insertBefore = $referenceNode->nextSibling;
 						$referenceNode = $list->firstChild->firstChild;
+						$container->insertBefore( $list->firstChild->firstChild, $insertBefore );
 						$p = $doc->createElement( 'p' );
 					} else {
 						$p->appendChild( $list->firstChild->firstChild );
 					}
 				}
 				if ( $p->firstChild ) {
-					$container->insertBefore( $p, $referenceNode->nextSibling );
+					$insertBefore = $referenceNode->nextSibling;
 					$referenceNode = $p;
+					$container->insertBefore( $p, $insertBefore );
 				}
 				$list->removeChild( $list->firstChild );
 			} else {
 				// Text node / comment node, probably empty
-				$container->insertBefore( $list->firstChild, $referenceNode->nextSibling );
+				$insertBefore = $referenceNode->nextSibling;
 				$referenceNode = $list->firstChild;
+				$container->insertBefore( $list->firstChild, $insertBefore );
 			}
 		}
 		$container->removeChild( $list );
