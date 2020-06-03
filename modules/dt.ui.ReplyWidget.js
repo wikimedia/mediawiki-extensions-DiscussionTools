@@ -90,7 +90,7 @@ function ReplyWidget( commentController, parsoidData, config ) {
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 	this.unloadHandler = this.onUnload.bind( this );
 
-	this.api = new mw.Api();
+	this.api = new mw.Api( { formatversion: 2 } );
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
 
 	// Initialization
@@ -367,7 +367,6 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.6;">~~~~</span>';
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
 		this.previewRequest = parsePromise = this.api.post( {
-			formatversion: 2,
 			action: 'parse',
 			text: wikitext,
 			pst: true,
