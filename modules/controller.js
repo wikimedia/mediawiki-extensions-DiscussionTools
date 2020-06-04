@@ -1,6 +1,7 @@
 'use strict';
 
 var
+	api = new mw.Api( { formatversion: 2 } ),
 	$pageContainer,
 	parser = require( './parser.js' ),
 	utils = require( './utils.js' ),
@@ -93,17 +94,32 @@ function commentsById( comments ) {
  * @return {jQuery.Promise}
  */
 function getPageData( pageName, oldId ) {
+	var lintPromise;
 	pageDataCache[ pageName ] = pageDataCache[ pageName ] || {};
 	if ( pageDataCache[ pageName ][ oldId ] ) {
 		return pageDataCache[ pageName ][ oldId ];
 	}
+	if ( mw.config.get( 'wgDiscussionToolsUseLinter' ) ) {
+		lintPromise = api.get( {
+			action: 'query',
+			list: 'linterrors',
+			lntcategories: 'fostered',
+			lntlimit: 1,
+			lntpageid: mw.config.get( 'wgArticleId' )
+		} ).then( function ( response ) {
+			return OO.getProp( response, 'query', 'linterrors' ) || [];
+		} );
+	} else {
+		lintPromise = $.Deferred().resolve( [] ).promise();
+	}
 	pageDataCache[ pageName ][ oldId ] = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
-		return mw.libs.ve.targetLoader.requestPageData(
-			'visual', pageName, {
-				oldId: oldId,
-				lint: true
-			}
+		var pageDataPromise = mw.libs.ve.targetLoader.requestPageData(
+			'visual', pageName, { oldId: oldId }
 		);
+		return $.when( lintPromise, pageDataPromise ).then( function ( linterrors, pageData ) {
+			pageData.linterrors = linterrors;
+			return pageData;
+		} );
 	}, function () {
 		// Clear on failure
 		pageDataCache[ pageName ][ oldId ] = null;
@@ -125,7 +141,8 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 	return getPageData( pageName, oldId )
 		.then( function ( response ) {
 			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle, follow,
-				lintErrors, lintLocation, lintType;
+				lintType,
+				lintErrors = response.linterrors;
 
 			data = response.visualeditor;
 			parsoidDoc = ve.parseXhtml( data.content );
@@ -189,25 +206,17 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 				} ] } ).promise();
 			}
 
-			if ( response.visualeditor.lint ) {
-				// Only lint errors that break editing, namely 'fostered'
-				lintErrors = response.visualeditor.lint.filter( function ( item ) {
-					return item.type === 'fostered';
-				} );
+			if ( lintErrors.length ) {
+				// We currently only request the first error
+				lintType = lintErrors[ 0 ].category;
 
-				if ( lintErrors.length ) {
-					// This only reports the first error
-					lintLocation = lintErrors[ 0 ].dsr.slice( 0, 2 ).join( '-' );
-					lintType = lintErrors[ 0 ].type;
-
-					return $.Deferred().reject( 'lint', { errors: [ {
-						code: 'lint',
-						html: mw.message( 'discussiontools-error-lint',
-							'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Lint_errors/' + lintType,
-							'https://www.mediawiki.org/wiki/Special:MyLanguage/Help_talk:Lint_errors/' + lintType,
-							mw.util.getUrl( pageName, { action: 'edit', dtlinterror: lintLocation } ) ).parse()
-					} ] } ).promise();
-				}
+				return $.Deferred().reject( 'lint', { errors: [ {
+					code: 'lint',
+					html: mw.message( 'discussiontools-error-lint',
+						'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Lint_errors/' + lintType,
+						'https://www.mediawiki.org/wiki/Special:MyLanguage/Help_talk:Lint_errors/' + lintType,
+						mw.util.getUrl( pageName, { action: 'edit', lintid: lintErrors[ 0 ].lintId } ) ).parse()
+				} ] } ).promise();
 			}
 
 			return {
