@@ -99,19 +99,17 @@ function getPageData( pageName, oldId ) {
 	if ( pageDataCache[ pageName ][ oldId ] ) {
 		return pageDataCache[ pageName ][ oldId ];
 	}
-	if ( mw.config.get( 'wgDiscussionToolsUseLinter' ) ) {
-		lintPromise = api.get( {
-			action: 'query',
-			list: 'linterrors',
-			lntcategories: 'fostered',
-			lntlimit: 1,
-			lntpageid: mw.config.get( 'wgArticleId' )
-		} ).then( function ( response ) {
-			return OO.getProp( response, 'query', 'linterrors' ) || [];
-		} );
-	} else {
-		lintPromise = $.Deferred().resolve( [] ).promise();
-	}
+
+	lintPromise = api.get( {
+		action: 'query',
+		list: 'linterrors',
+		lntcategories: 'fostered',
+		lntlimit: 1,
+		lntpageid: mw.config.get( 'wgArticleId' )
+	} ).then( function ( response ) {
+		return OO.getProp( response, 'query', 'linterrors' ) || [];
+	} );
+
 	pageDataCache[ pageName ][ oldId ] = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
 		var pageDataPromise = mw.libs.ve.targetLoader.requestPageData(
 			'visual', pageName, { oldId: oldId }

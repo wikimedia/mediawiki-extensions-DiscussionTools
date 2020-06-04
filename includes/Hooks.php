@@ -11,7 +11,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Action;
 use ConfigException;
-use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use RecentChange;
@@ -104,10 +103,6 @@ class Hooks {
 					$editor
 				);
 			}
-		}
-
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'Linter' ) ) {
-			$output->addJsConfigVars( 'wgDiscussionToolsUseLinter', true );
 		}
 	}
 
