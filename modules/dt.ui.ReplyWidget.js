@@ -150,12 +150,24 @@ function ReplyWidget( commentController, parsoidData, config ) {
 
 	this.checkboxesPromise = controller.getCheckboxesPromise( this.parsoidData.pageData );
 	this.checkboxesPromise.then( function ( checkboxes ) {
+		var name;
+		function trackCheckbox( name ) {
+			mw.track( 'dt.schemaVisualEditorFeatureUse', {
+				feature: 'dtReply',
+				action: 'checkbox-' + name
+			} );
+		}
 		if ( checkboxes.checkboxFields ) {
 			widget.$checkboxes = $( '<div>' ).addClass( 'dt-ui-replyWidget-checkboxes' );
 			checkboxes.checkboxFields.forEach( function ( field ) {
 				widget.$checkboxes.append( field.$element );
 			} );
 			widget.$actions.prepend( widget.$checkboxes );
+
+			// bind logging:
+			for ( name in checkboxes.checkboxesByName ) {
+				checkboxes.checkboxesByName[ name ].$element.off( '.dtReply' ).on( 'click.dtReply', trackCheckbox.bind( this, name ) );
+			}
 		}
 	} );
 }
@@ -235,6 +247,12 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 	} ).always( function () {
 		widget.setPending( false );
 		widget.modeTabSelect.setDisabled( false );
+	} );
+
+	mw.track( 'dt.schemaVisualEditorFeatureUse', {
+		feature: 'editor-switch',
+		// TODO: Log as `source-nwe-desktop` when enable2017Wikitext is set
+		action: mode + '-desktop'
 	} );
 };
 

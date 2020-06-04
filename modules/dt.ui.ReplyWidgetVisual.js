@@ -83,6 +83,9 @@ ReplyWidgetVisual.prototype.setup = function ( initialValue ) {
 		target.getSurface().getModel().setAutosaveDocId( widget.storagePrefix );
 		target.initAutosave();
 		widget.afterSetup();
+
+		// This needs to bind after surfaceReady so any initial population doesn't trigger it early:
+		widget.replyBodyWidget.once( 'change', widget.onFirstTransaction.bind( widget ) );
 	} );
 
 	// Parent method
@@ -93,7 +96,6 @@ ReplyWidgetVisual.prototype.setup = function ( initialValue ) {
 		change: 'onInputChangeThrottled',
 		submit: 'onReplyClick'
 	} );
-	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
 
 	return this;
 };
