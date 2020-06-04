@@ -25,9 +25,6 @@ use Title;
 class CommentParser {
 	private const SIGNATURE_SCAN_LIMIT = 100;
 
-	/** @var Language */
-	private $language;
-
 	/** @var Config */
 	private $config;
 
@@ -44,7 +41,6 @@ class CommentParser {
 	 * @param array $data
 	 */
 	public function __construct( Language $language, Config $config, array $data = [] ) {
-		$this->language = $language;
 		$this->config = $config;
 
 		if ( !$data ) {
@@ -104,9 +100,9 @@ class CommentParser {
 	 *
 	 * @param DOMNode $node Node to start searching at. This node's children are ignored.
 	 * @param DOMElement $rootNode Node to stop searching at
-	 * @return DOMNode|null
+	 * @return DOMNode
 	 */
-	private function nextInterestingLeafNode( DOMNode $node, DOMElement $rootNode ) : ?DOMNode {
+	private function nextInterestingLeafNode( DOMNode $node, DOMElement $rootNode ) : DOMNode {
 		$n = $node;
 		do {
 			if ( $n->firstChild && ( $node === $rootNode || $n !== $node ) ) {
@@ -136,7 +132,7 @@ class CommentParser {
 				return $n;
 			}
 		} while ( $n && $n !== $rootNode );
-		return null;
+		throw new MWException( 'nextInterestingLeafNode not found' );
 	}
 
 	/**
@@ -552,21 +548,19 @@ class CommentParser {
 		) {
 			$sigNodes[] = $node;
 			$length += $node->textContent ? strlen( $node->textContent ) : 0;
-			if ( $node->nodeType === XML_TEXT_NODE ) {
-				// FIXME use proper constant, or proper isText check
+			if ( !( $node instanceof DOMElement ) ) {
 				continue;
 			}
 
 			$links = [];
 			if ( strtolower( $node->nodeName ) === 'a' ) {
 				$links = [ $node ];
-			} elseif ( $node->nodeType === XML_ELEMENT_NODE ) {
+			} else {
 				// Handle links nested in formatting elements.
 				// Helpful accidental feature: users whose signature is not detected in full (due to
 				// text formatting) can just wrap it in a <span> to fix that.
 				// "Ten Pound Hammer • (What did I screw up now?)"
 				// "« Saper // dyskusja »"
-				// @phan-suppress-next-line PhanUndeclaredMethod
 				$links = $node->getElementsByTagName( 'a' );
 			}
 			if ( !count( $links ) ) {
@@ -576,7 +570,6 @@ class CommentParser {
 			// Find the earliest link that links to the user's user page
 			foreach ( $links as $link ) {
 				$username = null;
-				// @phan-suppress-next-line PhanUndeclaredMethod
 				$title = $this->getTitleFromUrl( $link->getAttribute( 'href' ) );
 				if ( !$title ) {
 					continue;
@@ -776,7 +769,6 @@ class CommentParser {
 					CommentUtils::childIndexOf( $lastSigNode ) + 1;
 				$range = new ImmutableRange(
 					$startNode->parentNode,
-					// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 					CommentUtils::childIndexOf( $startNode ),
 					$lastSigNode === $node ? $node : $lastSigNode->parentNode,
 					$offset
@@ -788,7 +780,6 @@ class CommentParser {
 					$offset
 				);
 
-				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 				$startLevel = $this->getIndentLevel( $startNode, $rootNode ) + 1;
 				$endLevel = $this->getIndentLevel( $node, $rootNode ) + 1;
 				if ( $startLevel !== $endLevel ) {
@@ -1015,7 +1006,8 @@ class CommentParser {
 		$dataMw = json_decode( $node->getAttribute( 'data-mw' ), true );
 
 		// Only return a page name if this is a simple single-template transclusion.
-		if ( $dataMw &&
+		if (
+			is_array( $dataMw ) &&
 			$dataMw['parts'] &&
 			count( $dataMw['parts'] ) === 1 &&
 			$dataMw['parts'][0]['template'] &&
