@@ -74,9 +74,11 @@ ReplyWidgetPlain.prototype.setup = function ( initialValue ) {
 
 	// Events
 	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );
-	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
 
 	this.replyBodyWidget.setValue( initialValue || autosaveValue );
+
+	// needs to bind after the initial setValue:
+	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
 
 	this.afterSetup();
 
