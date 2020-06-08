@@ -53,6 +53,17 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 				session_token: user.sessionId(),
 				version: 1
 			}
+		),
+		schemaVisualEditorFeatureUse = new Schema(
+			'VisualEditorFeatureUse',
+			sampleRate,
+			// defaults:
+			{
+				user_id: user.getId(),
+				user_editcount: mw.config.get( 'wgUserEditCount', 0 ),
+				platform: 'desktop',
+				integration: 'discussiontools'
+			}
 		);
 		/* eslint-enable camelcase */
 
@@ -186,6 +197,30 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 					mw.config.get( 'wgWMESchemaEditAttemptStepOversample' )
 				) ? 1 : sampleRate
 			);
+		}
+	} );
+
+	mw.trackSubscribe( 'dt.schemaVisualEditorFeatureUse', function ( topic, data ) {
+		var event;
+
+		// eslint-disable-next-line camelcase
+		session.editor_interface = data.editor_interface || session.editor_interface;
+
+		event = {
+			feature: data.feature,
+			action: data.action,
+			editingSessionId: session.editing_session_id,
+			// eslint-disable-next-line camelcase
+			editor_interface: session.editor_interface
+		};
+
+		if ( trackdebug ) {
+			log( topic, event );
+		} else {
+			schemaVisualEditorFeatureUse.log( event, (
+				mw.config.get( 'wgDTSchemaEditAttemptStepOversample' ) ||
+				mw.config.get( 'wgWMESchemaEditAttemptStepOversample' )
+			) ? 1 : sampleRate );
 		}
 	} );
 } );
