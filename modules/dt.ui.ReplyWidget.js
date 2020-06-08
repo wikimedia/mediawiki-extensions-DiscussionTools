@@ -252,7 +252,7 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 	mw.track( 'dt.schemaVisualEditorFeatureUse', {
 		feature: 'editor-switch',
 		// TODO: Log as `source-nwe-desktop` when enable2017Wikitext is set
-		action: ( mode === 'visual' ? 'visualeditor' : 'wikitext' ) + '-desktop'
+		action: ( mode === 'visual' ? 'visual' : 'source' ) + '-desktop'
 	} );
 };
 
