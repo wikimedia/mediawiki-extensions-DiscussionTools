@@ -222,5 +222,10 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 				mw.config.get( 'wgWMESchemaEditAttemptStepOversample' )
 			) ? 1 : sampleRate );
 		}
+
+		if ( data.feature === 'editor-switch' ) {
+			// eslint-disable-next-line camelcase
+			session.editor_interface = session.editor_interface === 'visualeditor' ? 'wikitext' : 'visualeditor';
+		}
 	} );
 } );

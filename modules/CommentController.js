@@ -156,7 +156,7 @@ CommentController.prototype.setup = function ( mode ) {
 		mechanism: 'click',
 		// TODO: Use 'wikitext-2017' when config.enable2017Wikitext is set
 		// eslint-disable-next-line camelcase
-		editor_interface: mode === 'visual' ? 'visual' : 'wikitext'
+		editor_interface: mode === 'visual' ? 'visualeditor' : 'wikitext'
 	} );
 
 	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
