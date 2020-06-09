@@ -40,7 +40,11 @@ function CommentController( $pageContainer, comment, thread ) {
 		} )
 		.on( 'click keypress', this.onReplyLinkClick.bind( this ) );
 
-	this.$replyLinkButtons.append( this.$replyLink );
+	this.$replyLinkButtons.append(
+		$( '<span>' ).addClass( 'dt-init-replylink-bracket' ).text( '[' ),
+		this.$replyLink,
+		$( '<span>' ).addClass( 'dt-init-replylink-bracket' ).text( ']' )
+	);
 	modifier.addReplyLink( comment, this.$replyLinkButtons[ 0 ] );
 
 	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {

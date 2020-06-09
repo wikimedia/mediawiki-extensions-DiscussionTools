@@ -9,7 +9,7 @@
 	"discussiontools-preference-description": "Enable a new workflow for [https://www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] on talk pages.\n\nPlease note that over time new tools for interacting with talk pages will be added.\n\nUpdates about these features will be posted on the [https://www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
 	"discussiontools-preference-info-link": "https:\/\/mediawiki.org\/wiki\/Special:MyLanguage\/Talk_pages_project",
 	"discussiontools-preference-discussion-link": "https:\/\/mediawiki.org\/wiki\/Talk:Talk_pages_project",
-	"discussiontools-replylink": "Reply",
+	"discussiontools-replylink": "reply",
 	"discussiontools-replywidget-anon-warning": "<strong>You are not logged in.</strong> To receive attribution with your name instead of your IP address, you can [$1 log in] or [$2 create an account].",
 	"discussiontools-replywidget-cancel": "Cancel",
 	"discussiontools-replywidget-feedback": "Share feedback about this feature",
