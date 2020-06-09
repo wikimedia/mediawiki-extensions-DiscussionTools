@@ -18,7 +18,8 @@ function CommentTargetWidget( config ) {
 			'heading4',
 			'heading5',
 			'heading6',
-			'insertTable'
+			'insertTable',
+			'transclusionFromSequence' // T253667
 		]
 	}, config );
 
