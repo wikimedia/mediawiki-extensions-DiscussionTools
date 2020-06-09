@@ -1,4 +1,5 @@
 var
+	api = new mw.Api( { formatversion: 2 } ),
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
 	parser = require( './parser.js' ),
@@ -60,13 +61,12 @@ OO.initClass( CommentController );
  * @return {jQuery.Promise}
  */
 function getLatestRevId( pageName ) {
-	return ( new mw.Api() ).get( {
+	return api.get( {
 		action: 'query',
 		prop: 'revisions',
 		rvprop: 'ids',
 		rvlimit: 1,
-		titles: pageName,
-		formatversion: 2
+		titles: pageName
 	} ).then( function ( resp ) {
 		return resp.query.pages[ 0 ].revisions[ 0 ].revid;
 	} );
@@ -170,7 +170,7 @@ CommentController.prototype.setup = function ( mode ) {
 			commentController.teardown();
 
 			OO.ui.alert(
-				code instanceof Error ? code.toString() : ( new mw.Api() ).getErrorMessage( data ),
+				code instanceof Error ? code.toString() : api.getErrorMessage( data ),
 				{ size: 'medium' }
 			);
 
@@ -374,7 +374,7 @@ CommentController.prototype.save = function ( parsoidData ) {
 			{
 				// No timeout. Huge talk pages take a long time to save, and falsely reporting an error can
 				// result in duplicate messages when the user retries. (T249071)
-				api: new mw.Api( { ajax: { timeout: 0 } } )
+				api: new mw.Api( { ajax: { timeout: 0 }, formatversion: 2 } )
 			}
 		).catch( function ( code, data ) {
 			// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
@@ -459,7 +459,7 @@ CommentController.prototype.switchToVisual = function () {
 		} ).join( '\n' );
 
 		// Based on ve.init.mw.Target#parseWikitextFragment
-		parsePromise = ( new mw.Api() ).post( {
+		parsePromise = api.post( {
 			action: 'visualeditor',
 			paction: 'parsefragment',
 			page: pageData.pageName,
