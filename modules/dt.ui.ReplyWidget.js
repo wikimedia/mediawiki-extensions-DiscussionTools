@@ -3,6 +3,10 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 	logger = require( 'ext.discussionTools.init' ).logger;
 
 /**
+ * @external CommentController
+ */
+
+/**
  * DiscussionTools ReplyWidget class
  *
  * @class mw.dt.ReplyWidget

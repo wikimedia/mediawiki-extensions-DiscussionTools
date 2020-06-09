@@ -4,6 +4,7 @@ var trackdebug = !!mw.util.getParamValue( 'trackdebug' );
 
 /**
  * Logs an event to http://meta.wikimedia.org/wiki/Schema:EditAttemptStep
+ *
  * @instance
  * @param {Object} data
  */
