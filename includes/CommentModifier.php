@@ -46,6 +46,7 @@ class CommentModifier {
 	 */
 	private static function isBlockElement( DOMNode $node ) : bool {
 		return $node->nodeType === XML_ELEMENT_NODE &&
+			// @phan-suppress-next-line PhanUndeclaredProperty
 			in_array( strtolower( $node->tagName ), self::$blockElementTypes );
 	}
 
@@ -131,6 +132,7 @@ class CommentModifier {
 		// parent is a list item or paragraph (hopefully)
 		// target is an inline node within it
 
+		$item = null;
 		if ( $curLevel < $desiredLevel ) {
 			// Insert more lists after the target to increase nesting.
 
@@ -206,6 +208,10 @@ class CommentModifier {
 			$parent->insertBefore( $item, $target->nextSibling );
 		}
 
+		if ( $item === null ) {
+			throw new \LogicException( __METHOD__ . ' no item found' );
+		}
+
 		return $item;
 	}
 
@@ -272,7 +278,7 @@ class CommentModifier {
 	 * @return DOMElement
 	 */
 	public static function addSiblingListItem( DOMElement $previousItem ) : DOMElement {
-		$listItem = $previousItem->ownerDocument->createElement( $previousItem->tagName->toLowerCase() );
+		$listItem = $previousItem->ownerDocument->createElement( strtolower( $previousItem->tagName ) );
 		self::whitespaceParsoidHack( $listItem );
 		$previousItem->parentNode->insertBefore( $listItem, $previousItem->nextSibling );
 		return $listItem;

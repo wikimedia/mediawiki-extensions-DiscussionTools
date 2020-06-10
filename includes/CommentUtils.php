@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use DOMElement;
 use DOMNode;
 use DOMXPath;
+use stdClass;
 
 class CommentUtils {
 	private function __construct() {
@@ -69,6 +70,7 @@ class CommentUtils {
 	 *
 	 * @param DOMNode $node
 	 * @return DOMElement|null Translcusion node, null if not found
+	 * @suppress PhanUndeclaredMethod
 	 */
 	public static function getTranscludedFromElement( DOMNode $node ) : ?DOMElement {
 		while ( $node ) {

@@ -3,6 +3,8 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMNode;
+use Error;
+use Exception;
 
 /**
  * ImmutableRange has a similar API to the DOM Range class.
@@ -39,6 +41,7 @@ class ImmutableRange {
 		} while ( ( $b = $b->parentNode ) );
 
 		$node = null;
+		// @phan-suppress-next-line PhanRedundantConditionInLoop
 		while ( $ancestorsA && $ancestorsB && end( $ancestorsA ) === end( $ancestorsB ) ) {
 			$node = end( $ancestorsA );
 			array_pop( $ancestorsA );
