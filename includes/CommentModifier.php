@@ -278,7 +278,7 @@ class CommentModifier {
 	 * @return DOMElement
 	 */
 	public static function addSiblingListItem( DOMElement $previousItem ) : DOMElement {
-		$listItem = $previousItem->ownerDocument->createElement( strtolower( $previousItem->tagName ) );
+		$listItem = $previousItem->ownerDocument->createElement( $previousItem->tagName );
 		self::whitespaceParsoidHack( $listItem );
 		$previousItem->parentNode->insertBefore( $listItem, $previousItem->nextSibling );
 		return $listItem;

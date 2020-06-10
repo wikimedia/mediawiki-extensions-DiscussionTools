@@ -271,7 +271,7 @@ function unwrapList( list ) {
  * @return {HTMLElement}
  */
 function addSiblingListItem( previousItem ) {
-	var listItem = previousItem.ownerDocument.createElement( previousItem.tagName.toLowerCase() );
+	var listItem = previousItem.ownerDocument.createElement( previousItem.tagName );
 	whitespaceParsoidHack( listItem );
 	previousItem.parentNode.insertBefore( listItem, previousItem.nextSibling );
 	return listItem;
