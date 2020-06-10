@@ -184,7 +184,7 @@ class Hooks {
 	}
 
 	/**
-	 * Implements the RecentChange_save hook, to add a whitelisted set of changetags
+	 * Implements the RecentChange_save hook, to add an allowed set of changetags
 	 * to edits.
 	 *
 	 * @param RecentChange $recentChange
