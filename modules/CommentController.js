@@ -1,5 +1,5 @@
 var
-	api = new mw.Api( { formatversion: 2 } ),
+	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
 	parser = require( './parser.js' ),
@@ -374,7 +374,7 @@ CommentController.prototype.save = function ( parsoidData ) {
 			{
 				// No timeout. Huge talk pages take a long time to save, and falsely reporting an error can
 				// result in duplicate messages when the user retries. (T249071)
-				api: new mw.Api( { ajax: { timeout: 0 }, formatversion: 2 } )
+				api: new mw.Api( { ajax: { timeout: 0 }, parameters: { formatversion: 2 } } )
 			}
 		).catch( function ( code, data ) {
 			// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent

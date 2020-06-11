@@ -20,7 +20,7 @@ function MWUsernameCompletionAction( surface ) {
 	// Parent constructor
 	MWUsernameCompletionAction.super.call( this, surface );
 
-	this.api = new mw.Api( { formatversion: 2 } );
+	this.api = new mw.Api( { parameters: { formatversion: 2 } } );
 	this.searchedPrefixes = {};
 	this.localUsers = [];
 	this.ipUsers = [];

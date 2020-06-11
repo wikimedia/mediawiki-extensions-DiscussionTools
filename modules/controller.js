@@ -1,7 +1,7 @@
 'use strict';
 
 var
-	api = new mw.Api( { formatversion: 2 } ),
+	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	$pageContainer,
 	parser = require( './parser.js' ),
 	utils = require( './utils.js' ),

@@ -94,7 +94,7 @@ function ReplyWidget( commentController, parsoidData, config ) {
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 	this.unloadHandler = this.onUnload.bind( this );
 
-	this.api = new mw.Api( { formatversion: 2 } );
+	this.api = new mw.Api( { parameters: { formatversion: 2 } } );
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
 
 	// Initialization
@@ -525,7 +525,6 @@ ReplyWidget.prototype.onReplyClick = function () {
 				titles: mw.config.get( 'wgRelevantPageName' )
 			} ).then( function () {
 				return widget.api.get( {
-					formatversion: 2,
 					action: 'parse',
 					prop: [ 'text', 'modules', 'jsconfigvars' ],
 					page: mw.config.get( 'wgRelevantPageName' )
