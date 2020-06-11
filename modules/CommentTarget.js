@@ -34,8 +34,11 @@ CommentTarget.static.toolbarGroups = [
 	{
 		name: 'link',
 		include: [ 'link' ]
+	},
+	{
+		name: 'other',
+		include: [ 'usernameCompletion' ]
 	}
-	// Mention?
 ];
 
 CommentTarget.static.importRules = ve.copy( CommentTarget.static.importRules );

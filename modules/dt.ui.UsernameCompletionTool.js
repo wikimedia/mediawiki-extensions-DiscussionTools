@@ -1,0 +1,14 @@
+function MWUsernameCompletionTool() {
+	// Parent constructor
+	MWUsernameCompletionTool.super.apply( this, arguments );
+}
+
+OO.inheritClass( MWUsernameCompletionTool, ve.ui.Tool );
+
+// Static
+MWUsernameCompletionTool.static.commandName = 'insertAndOpenMWUsernameCompletions';
+MWUsernameCompletionTool.static.name = 'usernameCompletion';
+MWUsernameCompletionTool.static.icon = 'userAvatar'; // TODO: should be 'userAdd';
+MWUsernameCompletionTool.static.title = OO.ui.deferMsg( 'discussiontools-replywidget-mention-tool-title' );
+
+ve.ui.toolFactory.register( MWUsernameCompletionTool );
