@@ -61,15 +61,16 @@ function highlight( comment ) {
 		width: rect.width + ( padding * 2 ),
 		height: rect.height + ( padding * 2 )
 	} );
-
-	setTimeout( function () {
-		$highlight.addClass( 'dt-init-highlight-fade' );
-		setTimeout( function () {
-			$highlight.remove();
-		}, 500 );
-	}, 500 );
-
 	$container.prepend( $highlight );
+
+	OO.ui.Element.static.scrollIntoView( $highlight[ 0 ], { padding: { top: 10, bottom: 10 } } ).then( function () {
+		setTimeout( function () {
+			$highlight.addClass( 'dt-init-highlight-fade' );
+			setTimeout( function () {
+				$highlight.remove();
+			}, 500 );
+		}, 500 );
+	} );
 }
 
 function commentsById( comments ) {
