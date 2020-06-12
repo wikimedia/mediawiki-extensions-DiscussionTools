@@ -490,6 +490,8 @@ CommentController.prototype.switchToVisual = function () {
 
 		if ( html ) {
 			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
+			// Remove RESTBase IDs (T253584)
+			mw.libs.ve.stripRestbaseIds( doc );
 			bodyChildren = Array.prototype.slice.call( doc.body.childNodes );
 			// There may be multiple lists when some lines are template generated
 			bodyChildren.forEach( function ( child ) {
