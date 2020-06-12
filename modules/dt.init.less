@@ -1,9 +1,24 @@
 .dt-init-replylink-buttons {
 	user-select: none;
-	margin-left: 0.25em;
+	margin-left: 0.5em;
 
-	.dt-init-replylink-reply {
-		cursor: pointer;
+	.dt-init-replylink {
+		&-reply {
+			cursor: pointer;
+		}
+
+		// Similar to mw-editsection-bracket
+		&-bracket {
+			color: #54595d;
+
+			&:first-of-type {
+				margin-right: 0.25em;
+			}
+
+			&:not( :first-of-type ) {
+				margin-left: 0.25em;
+			}
+		}
 	}
 
 	&.dt-init-replylink-active {
