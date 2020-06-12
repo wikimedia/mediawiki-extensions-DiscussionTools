@@ -245,7 +245,7 @@ CommentController.prototype.setupReplyWidget = function ( replyWidget, initialVa
 	this.replyWidget = replyWidget;
 };
 
-CommentController.prototype.teardown = function () {
+CommentController.prototype.teardown = function ( abandoned ) {
 	this.$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
 	this.$pageContainer.removeClass( 'dt-init-replylink-open' );
 	// eslint-disable-next-line no-jquery/no-global-selector
@@ -259,7 +259,9 @@ CommentController.prototype.teardown = function () {
 	}
 	modifier.removeAddedListItem( this.newListItem );
 	this.newListItem = null;
-	this.$replyLink.trigger( 'focus' );
+	if ( abandoned ) {
+		this.$replyLink.trigger( 'focus' );
+	}
 };
 
 CommentController.prototype.postReply = function ( parsoidData ) {

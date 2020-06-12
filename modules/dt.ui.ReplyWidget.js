@@ -316,7 +316,7 @@ ReplyWidget.prototype.tryTeardown = function () {
 		} );
 	}
 	promise.then( function () {
-		widget.teardown();
+		widget.teardown( true );
 	} );
 	return this;
 };
@@ -324,16 +324,17 @@ ReplyWidget.prototype.tryTeardown = function () {
 /**
  * Teardown the widget
  *
+ * @param {boolean} [abandoned] Widget was torn down after a reply was abandoned
  * @chainable
  * @return {ReplyWidget}
  */
-ReplyWidget.prototype.teardown = function () {
+ReplyWidget.prototype.teardown = function ( abandoned ) {
 	this.unbindBeforeUnloadHandler();
 	this.clear();
 	this.storage.remove( this.storagePrefix + '/mode' );
 	this.storage.remove( this.storagePrefix + '/saveable' );
 	this.$preview.empty();
-	this.emit( 'teardown' );
+	this.emit( 'teardown', abandoned );
 	return this;
 };
 
