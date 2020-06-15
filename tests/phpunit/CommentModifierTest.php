@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
 
 /**
@@ -34,12 +35,11 @@ class CommentModifierTest extends CommentTestCase {
 
 		$nodes = [];
 		foreach ( $comments as $comment ) {
-			if ( $comment->type === 'heading' ) {
-				continue;
+			if ( $comment instanceof CommentItem ) {
+				$node = CommentModifier::addListItem( $comment );
+				$node->textContent = 'Reply to ' . $comment->getId();
+				$nodes[] = $node;
 			}
-			$node = CommentModifier::addListItem( $comment );
-			$node->textContent = 'Reply to ' . $comment->id;
-			$nodes[] = $node;
 		}
 
 		$expectedDoc = self::createDocument( $expected );
@@ -75,13 +75,12 @@ class CommentModifierTest extends CommentTestCase {
 		$parser->groupThreads( $comments );
 
 		foreach ( $comments as $comment ) {
-			if ( $comment->type === 'heading' ) {
-				continue;
+			if ( $comment instanceof CommentItem ) {
+				$linkNode = $doc->createElement( 'a' );
+				$linkNode->nodeValue = 'Reply';
+				$linkNode->setAttribute( 'href', '#' );
+				CommentModifier::addReplyLink( $comment, $linkNode );
 			}
-			$linkNode = $doc->createElement( 'a' );
-			$linkNode->nodeValue = 'Reply';
-			$linkNode->setAttribute( 'href', '#' );
-			CommentModifier::addReplyLink( $comment, $linkNode );
 		}
 
 		$expectedDoc = self::createDocument( $expected );

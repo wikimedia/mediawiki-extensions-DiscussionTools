@@ -15,10 +15,8 @@ use IP;
 use Language;
 use MediaWiki\MediaWikiServices;
 use MWException;
-use stdClass;
 use Title;
 
-// TODO make a class for comments
 // TODO clean up static vs non-static
 
 // TODO consider rewriting as single traversal, without XPath
@@ -713,7 +711,7 @@ class CommentParser {
 	 *       [ 'type' => 'comment', 'level' => 2, 'range' => (li: I)        }
 	 *     ]
 	 *
-	 * The elements of the array are stdClass objects with the following fields:
+	 * The elements of the array are ThreadItem objects with the following fields:
 	 * - 'type' (string): 'heading' or 'comment'
 	 * - 'range' (ImmutableRange): The extent of the comment, including the signature and timestamp.
 	 *           Comments can start or end in the middle of a DOM node.
@@ -728,7 +726,7 @@ class CommentParser {
 	 *            Not set for headings.
 	 *
 	 * @param DOMElement $rootNode
-	 * @return stdClass[] Results. Each result is an object.
+	 * @return ThreadItem[] Thread items
 	 */
 	public function getComments( DOMElement $rootNode ) : array {
 		$timestamps = $this->findTimestamps( $rootNode );
@@ -741,12 +739,7 @@ class CommentParser {
 
 		// Placeholder heading in case there are comments in the 0th section
 		$range = new ImmutableRange( $rootNode, 0, $rootNode, 0 );
-		$fakeHeading = (object)[
-			'placeholderHeading' => true,
-			'type' => 'heading',
-			'range' => $range,
-			'level' => 0
-		];
+		$fakeHeading = new HeadingItem( $range, true );
 
 		$curComment = $fakeHeading;
 
@@ -759,15 +752,11 @@ class CommentParser {
 
 			if ( $node->nodeType === XML_ELEMENT_NODE && preg_match( '/^h[1-6]$/i', $node->nodeName ) ) {
 				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
-				$curComment = (object)[
-					'type' => 'heading',
-					'range' => $range,
-					'level' => 0
-				];
+				$curComment = new HeadingItem( $range );
 				$comments[] = $curComment;
 			} elseif ( isset( $timestamps[$nextTimestamp] ) && $node === $timestamps[$nextTimestamp][0] ) {
 				$warnings = [];
-				$foundSignature = $this->findSignature( $node, $curComment->range->endContainer );
+				$foundSignature = $this->findSignature( $node, $curComment->getRange()->endContainer );
 				$author = $foundSignature[1];
 				$firstSigNode = end( $foundSignature[0] );
 				$lastSigNode = $foundSignature[0][0];
@@ -780,7 +769,7 @@ class CommentParser {
 				}
 
 				// Everything from the last comment up to here is the next comment
-				$startNode = $this->nextInterestingLeafNode( $curComment->range->endContainer, $rootNode );
+				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer, $rootNode );
 				$match = $timestamps[$nextTimestamp][1];
 				$offset = $lastSigNode === $node ?
 					$match[0][1] + strlen( $match[0][0] ) :
@@ -813,7 +802,7 @@ class CommentParser {
 				// no way to indicate which one you're replying to (this might matter in the future for
 				// notifications or something).
 				if (
-					$curComment->type === 'comment' &&
+					$curComment instanceof CommentItem &&
 					(
 						CommentUtils::closestElement(
 							$node, [ 'li', 'dd', 'p' ]
@@ -821,14 +810,16 @@ class CommentParser {
 					) ===
 					(
 						CommentUtils::closestElement(
-							$curComment->range->endContainer, [ 'li', 'dd', 'p' ]
-						) ?? $curComment->range->endContainer->parentNode
+							$curComment->getRange()->endContainer, [ 'li', 'dd', 'p' ]
+						) ?? $curComment->getRange()->endContainer->parentNode
 					)
 				) {
 					// Merge this with the previous comment. Use that comment's author and timestamp.
-					$curComment->range = $curComment->range->setEnd( $range->endContainer, $range->endOffset );
-					$curComment->signatureRanges[] = $sigRange;
-					$curComment->level = min( min( $startLevel, $endLevel ), $curComment->level );
+					$curComment->setRange(
+						$curComment->getRange()->setEnd( $range->endContainer, $range->endOffset )
+					);
+					$curComment->addSignatureRange( $sigRange );
+					$curComment->setLevel( min( min( $startLevel, $endLevel ), $curComment->getLevel() ) );
 
 					$nextTimestamp++;
 					continue;
@@ -839,19 +830,18 @@ class CommentParser {
 					$warnings[] = $dateTime->discussionToolsWarning;
 				}
 
-				$curComment = (object)[
-					'type' => 'comment',
+				$curComment = new CommentItem(
+					// Should this use the indent level of $startNode or $node?
+					min( $startLevel, $endLevel ),
+					$range,
+					[ $sigRange ],
 					// ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
 					// of '+00:00', like Date#toISOString in JavaScript.
-					'timestamp' => $dateTime->format( 'Y-m-d\TH:i:s.v\Z' ),
-					'author' => $author,
-					'range' => $range,
-					'signatureRanges' => [ $sigRange ],
-					// Should this use the indent level of $startNode or $node?
-					'level' => min( $startLevel, $endLevel )
-				];
+					$dateTime->format( 'Y-m-d\TH:i:s.v\Z' ),
+					$author
+				);
 				if ( $warnings ) {
-					$curComment->warnings = $warnings;
+					$curComment->addWarnings( $warnings );
 				}
 				$comments[] = $curComment;
 				$nextTimestamp++;
@@ -860,7 +850,7 @@ class CommentParser {
 
 		// Insert the fake placeholder heading if there are any comments in the 0th section
 		// (before the first real heading)
-		if ( count( $comments ) && $comments[ 0 ]->type !== 'heading' ) {
+		if ( count( $comments ) && !( $comments[ 0 ] instanceof HeadingItem ) ) {
 			array_unshift( $comments, $fakeHeading );
 		}
 
@@ -908,9 +898,9 @@ class CommentParser {
 	 *       ] ],
 	 *     ]
 	 *
-	 * @param stdClass[] &$comments Result of #getComments, will be modified to add more properties
-	 * @return stdClass[] Tree structure of comments, using the same objects as `comments`. Top-level
-	 *   items are the headings. The following properties are added:
+	 * @param ThreadItem[] &$comments Result of #getComments, will be modified to add more properties
+	 * @return HeadingItem[] Tree structure of comments, using the same objects as `comments`.
+	 *   Top-level items are the headings. The following properties are added:
 	 *   - id: Unique ID (within the page) for this comment, intended to be used to
 	 *         find this comment in other revisions of the same page
 	 *   - replies: Comment objects which are replies to this comment
@@ -922,12 +912,12 @@ class CommentParser {
 		$commentsById = [];
 
 		foreach ( $comments as &$comment ) {
-			if ( $comment->level === 0 ) {
+			if ( $comment instanceof HeadingItem ) {
 				// We don't need ids for section headings right now, but we might in the future
 				// e.g. if we allow replying directly to sections (adding top-level comments)
 				$id = null;
-			} else {
-				$id = ( $comment->author ?? '' ) . '|' . $comment->timestamp;
+			} elseif ( $comment instanceof CommentItem ) {
+				$id = ( $comment->getAuthor() ?? '' ) . '|' . $comment->getTimestamp();
 
 				// If there would be multiple comments with the same ID (i.e. the user left multiple comments
 				// in one edit, or within a minute), append sequential numbers
@@ -936,6 +926,8 @@ class CommentParser {
 					$number++;
 				}
 				$id = "$id|$number";
+			} else {
+				throw new MWException( 'Unknown ThreadItem type' );
 			}
 
 			if ( $id !== null ) {
@@ -943,34 +935,32 @@ class CommentParser {
 			}
 
 			// This modifies the original objects in $comments!
-			$comment->id = $id;
-			$comment->replies = [];
-			$comment->parent = null;
+			$comment->setId( $id );
 
-			if ( count( $replies ) < $comment->level ) {
+			if ( count( $replies ) < $comment->getLevel() ) {
 				// Someone skipped an indentation level (or several). Pretend that the previous reply
 				// covers multiple indentation levels, so that following comments get connected to it.
-				$comment->warnings[] = 'Comment skips indentation level';
-				while ( count( $replies ) < $comment->level ) {
+				$comment->addWarning( 'Comment skips indentation level' );
+				while ( count( $replies ) < $comment->getLevel() ) {
 					// FIXME this will clone the reply, not just set a reference
 					$replies[] = end( $replies );
 				}
 			}
 
-			if ( $comment->level === 0 ) {
+			if ( $comment instanceof HeadingItem ) {
 				// New root (thread)
 				$threads[] = $comment;
-			} elseif ( isset( $replies[ $comment->level - 1 ] ) ) {
+			} elseif ( isset( $replies[ $comment->getLevel() - 1 ] ) ) {
 				// Add as a reply to the closest less-nested comment
-				$comment->parent = $replies[ $comment->level - 1 ];
-				$comment->parent->replies[] = $comment;
+				$comment->setParent( $replies[ $comment->getLevel() - 1 ] );
+				$comment->getParent()->addReply( $comment );
 			} else {
-				$comment->warnings[] = 'Comment could not be connected to a thread';
+				$comment->addWarning( 'Comment could not be connected to a thread' );
 			}
 
-			$replies[ $comment->level ] = $comment;
+			$replies[ $comment->getLevel() ] = $comment;
 			// Cut off more deeply nested replies
-			array_splice( $replies, $comment->level + 1 );
+			array_splice( $replies, $comment->getLevel() + 1 );
 		}
 
 		return $threads;
@@ -979,22 +969,21 @@ class CommentParser {
 	/**
 	 * Get the list of authors involved in a comment and its replies.
 	 *
-	 * You probably want to pass a thread root here (a heading).
-	 *
-	 * @param stdClass $comment Comment object, as returned by #groupThreads
+	 * @param HeadingItem $heading Heading object, as returned by #groupThreads
 	 * @return string[] Author usernames
 	 */
-	public function getAuthors( stdClass $comment ) : array {
+	public function getAuthors( HeadingItem $heading ) : array {
 		$authors = [];
-		$getAuthorSet = function ( stdClass $comment ) use ( &$authors, &$getAuthorSet ) {
-			if ( $comment->author ?? false ) {
-				$authors[ $comment->author ] = true;
+		$getAuthorSet = function ( CommentItem $comment ) use ( &$authors, &$getAuthorSet ) {
+			$author = $comment->getAuthor();
+			if ( $author ) {
+				$authors[ $author ] = true;
 			}
 			// Get the set of authors in the same format from each reply
-			array_map( $getAuthorSet, $comment->replies );
+			array_map( $getAuthorSet, $comment->getReplies() );
 		};
 
-		$getAuthorSet( $comment );
+		array_map( $getAuthorSet, $heading->getReplies() );
 
 		ksort( $authors );
 		return array_keys( $authors );
@@ -1003,19 +992,19 @@ class CommentParser {
 	/**
 	 * Get the name of the page from which this comment is transcluded (if any).
 	 *
-	 * @param stdClass $comment Comment object, as returned by #groupThreads
+	 * @param CommentItem $comment Comment object, as returned by #groupThreads
 	 * @return string|bool `false` if this comment is not transcluded. A string if it's transcluded
 	 *   from a single page (the page title, in text form with spaces). `true` if it's transcluded, but
 	 *   we can't determine the source.
 	 */
-	public function getTranscludedFrom( stdClass $comment ) {
+	public function getTranscludedFrom( CommentItem $comment ) {
 		// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}, or a
 		// non-substituted signature template), that *does not* mean the comment is transcluded.
 		// We only want to consider comments to be transcluded if the wrapper element (usually
 		// <li> or <p>) is marked as part of a transclusion. If we can't find a wrapper, using
 		// endContainer should avoid false negatives (although may have false positives).
 		$node = CommentUtils::getTranscludedFromElement(
-			CommentUtils::getFullyCoveredWrapper( $comment ) ?: $comment->range->endContainer
+			CommentUtils::getFullyCoveredWrapper( $comment ) ?: $comment->getRange()->endContainer
 		);
 
 		if ( !$node ) {

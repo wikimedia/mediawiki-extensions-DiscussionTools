@@ -5,9 +5,12 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 use DateTimeImmutable;
 use DOMElement;
 use DOMNode;
+use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
+use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
+use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use stdClass;
 use Wikimedia\TestingAccessWrapper;
 
@@ -80,27 +83,45 @@ class CommentParserTest extends CommentTestCase {
 		return implode( '/', $path );
 	}
 
-	private static function serializeComments( stdClass &$parent, DOMElement $root ) : void {
-		unset( $parent->parent );
+	private static function serializeComments( ThreadItem &$threadItem, DOMElement $root ) : stdClass {
+		$serialized = new stdClass();
+
+		$serialized->type = $threadItem->getType();
+		$serialized->level = $threadItem->getLevel();
 
 		// Can't serialize the DOM nodes involved in the range,
 		// instead use their offsets within their parent nodes
-		$parent->range = [
-			self::getOffsetPath( $root, $parent->range->startContainer, $parent->range->startOffset ),
-			self::getOffsetPath( $root, $parent->range->endContainer, $parent->range->endOffset )
+		$range = $threadItem->getRange();
+		$serialized->id = $threadItem->getId();
+		$serialized->range = [
+			self::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
+			self::getOffsetPath( $root, $range->endContainer, $range->endOffset )
 		];
-		if ( isset( $parent->signatureRanges ) ) {
-			$parent->signatureRanges = array_map( function ( ImmutableRange $range ) use ( $root ) {
+		$serialized->replies = [];
+		foreach ( $threadItem->getReplies() as $reply ) {
+			$serialized->replies[] = self::serializeComments( $reply, $root );
+		}
+
+		if ( $threadItem instanceof CommentItem ) {
+			$serialized->signatureRanges = array_map( function ( ImmutableRange $range ) use ( $root ) {
 				return [
 					self::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
 					self::getOffsetPath( $root, $range->endContainer, $range->endOffset )
 				];
-			}, $parent->signatureRanges );
+			}, $threadItem->getSignatureRanges() );
+			$serialized->timestamp = $threadItem->getTimestamp();
+			$serialized->author = $threadItem->getAuthor();
+			$warnings = $threadItem->getWarnings();
+			if ( count( $warnings ) ) {
+				$serialized->warnings = $threadItem->getWarnings();
+			}
 		}
 
-		foreach ( $parent->replies as $reply ) {
-			self::serializeComments( $reply, $root );
+		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
+			$serialized->placeholderHeading = $threadItem->isPlaceholderHeading();
 		}
+
+		return $serialized;
 	}
 
 	/**
@@ -182,17 +203,32 @@ class CommentParserTest extends CommentTestCase {
 	 * @dataProvider provideAuthors
 	 * @covers ::getAuthors
 	 */
-	public function testGetAuthors( stdClass $thread, array $expected ) : void {
+	public function testGetAuthors( array $thread, array $expected ) : void {
 		$parser = CommentParser::newFromGlobalState();
+		$doc = $this->createDocument( '' );
+		$node = $doc->createElement( 'div' );
+		$range = new ImmutableRange( $node, 0, $node, 0 );
 
-		self::assertEquals( $expected, $parser->getAuthors( $thread ) );
+		$makeThreadItem = function ( array $arr ) use ( &$makeThreadItem, $range ) : ThreadItem {
+			if ( $arr['type'] === 'comment' ) {
+				$item = new CommentItem( 1, $range );
+				$item->setAuthor( $arr['author'] );
+			} else {
+				$item = new HeadingItem( $range );
+			}
+			foreach ( $arr['replies'] as $reply ) {
+				$item->addReply( $makeThreadItem( $reply ) );
+			}
+			return $item;
+		};
+
+		$threadItem = $makeThreadItem( $thread );
+
+		self::assertEquals( $expected, $parser->getAuthors( $threadItem ) );
 	}
 
 	public function provideAuthors() : array {
-		return array_map( function ( $caseItem ) {
-			// PHPUnit requires associative arrays, not stdClass objects
-			return (array)$caseItem;
-		}, self::getJson( '../cases/authors.json', false ) );
+		return self::getJson( '../cases/authors.json' );
 	}
 
 	/**
@@ -220,7 +256,7 @@ class CommentParserTest extends CommentTestCase {
 		$processedThreads = [];
 
 		foreach ( $threads as $i => $thread ) {
-			self::serializeComments( $thread, $container );
+			$thread = self::serializeComments( $thread, $container );
 			$thread = json_decode( json_encode( $thread ), true );
 			$processedThreads[] = $thread;
 			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
@@ -258,8 +294,8 @@ class CommentParserTest extends CommentTestCase {
 
 		$transcludedFrom = [];
 		foreach ( $comments as $comment ) {
-			if ( $comment->id ) {
-				$transcludedFrom[ $comment->id ] =
+			if ( $comment instanceof CommentItem ) {
+				$transcludedFrom[ $comment->getId() ] =
 					$parser->getTranscludedFrom( $comment );
 			}
 		}

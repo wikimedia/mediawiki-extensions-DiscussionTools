@@ -47,6 +47,9 @@
 				"modifier.js",
 				"utils.js",
 				"parser.js",
+				"ThreadItem.js",
+				"CommentItem.js",
+				"HeadingItem.js",
 				"lib/moment-timezone/moment-timezone-with-data-1970-2030.js",
 				{
 					"name": "parser/data.json",

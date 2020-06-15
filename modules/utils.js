@@ -1,4 +1,5 @@
 'use strict';
+/* global $:off */
 
 /**
  * Return a native Range object corresponding to our comment's range.

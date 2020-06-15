@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 use DOMDocument;
 use DOMElement;
 use DOMNode;
-use stdClass;
 
 class CommentModifier {
 
@@ -54,11 +53,11 @@ class CommentModifier {
 	 * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
 	 * the comment.
 	 *
-	 * @param stdClass $comment Comment data returned by parser#groupThreads
+	 * @param CommentItem $comment Comment data returned by parser#groupThreads
 	 * @param DOMElement $linkNode Reply link
 	 */
-	public static function addReplyLink( stdClass $comment, DOMElement $linkNode ) : void {
-		$target = $comment->range->endContainer;
+	public static function addReplyLink( CommentItem $comment, DOMElement $linkNode ) : void {
+		$target = $comment->getRange()->endContainer;
 
 		// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 		// avoiding that would be more difficult and slower.
@@ -90,10 +89,10 @@ class CommentModifier {
 	 * The DOM tree is suitably rearranged to ensure correct indentation level of the reply (wrapper
 	 * nodes are added, and other nodes may be moved around).
 	 *
-	 * @param stdClass $comment Comment data returned by parser#groupThreads
+	 * @param CommentItem $comment Comment data returned by parser#groupThreads
 	 * @return DOMElement
 	 */
-	public static function addListItem( stdClass $comment ) : DOMElement {
+	public static function addListItem( CommentItem $comment ) : DOMElement {
 		$listTypeMap = [
 			'li' => 'ul',
 			'dd' => 'dl'
@@ -105,13 +104,14 @@ class CommentModifier {
 		// 3. Add comment with level of the given comment plus 1
 
 		$curComment = $comment;
-		while ( count( $curComment->replies ) ) {
-			$curComment = end( $curComment->replies );
+		while ( count( $curComment->getReplies() ) ) {
+			$replies = $curComment->getReplies();
+			$curComment = end( $replies );
 		}
 
-		$desiredLevel = $comment->level + 1;
-		$curLevel = $curComment->level;
-		$target = $curComment->range->endContainer;
+		$desiredLevel = $comment->getLevel() + 1;
+		$curLevel = $curComment->getLevel();
+		$target = $curComment->getRange()->endContainer;
 
 		// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 		// avoiding that would be more difficult and slower.
