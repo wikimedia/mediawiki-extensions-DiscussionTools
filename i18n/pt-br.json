@@ -11,7 +11,7 @@
 	"discussiontools-desc": "Ferramentas para aprimorar as páginas de discussão.",
 	"discussiontools-preference-label": "Ferramentas de discussão",
 	"discussiontools-preference-description": "Ative um novo workflow [//www.mediawiki.org/wiki/Talk_pages_project/replying respondendo a comentários específicos] na página de discussão.\n\nObserve que, com o tempo, novas ferramentas para interagir com as páginas de discussão serão adicionadas.\n\nAs atualizações sobre esses recursos serão publicadas na [//www.mediawiki.org/wiki/Talk_pages_project/Updates discussão da página de atualizações do projeto].",
-	"discussiontools-replylink": "Responder",
+	"discussiontools-replylink": "responder",
 	"discussiontools-replywidget-anon-warning": "<strong>Você não entrou</strong>. Para receber a atribuição com o seu nome em vez do seu endereço IP, você pode [$1 entrar] ou [$2 criar uma conta].",
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-feedback": "Compartilhe comentários sobre esse recurso",

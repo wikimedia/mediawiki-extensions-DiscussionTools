@@ -10,7 +10,7 @@
 	"discussiontools-defaultsummary-reply": "Rispondi",
 	"discussiontools-preference-label": "Strumenti di discussione",
 	"discussiontools-preference-description": "Abilita una nuova sequenza operativa per [//www.mediawiki.org/wiki/Talk_pages_project/replying rispondere a specifici commenti] sulle pagine di discussione.\n\nNota bene che nuovi strumenti di interazione sulle pagine di discussione saranno aggiunti nel tempo.\n\nGli aggiornamenti di queste funzionalità saranno riportati sulla [//www.mediawiki.org/wiki/Talk_pages_project/Updates pagina di aggiornamento del relativo progetto].",
-	"discussiontools-replylink": "Rispondi",
+	"discussiontools-replylink": "rispondi",
 	"discussiontools-replywidget-cancel": "Annulla",
 	"discussiontools-replywidget-loading": "Caricamento…",
 	"discussiontools-replywidget-mode-visual": "Visuale",
