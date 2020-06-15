@@ -42,6 +42,9 @@ OO.inheritClass( MWUsernameCompletionAction, ve.ui.CompletionAction );
 
 MWUsernameCompletionAction.static.name = 'mwUsernameCompletion';
 
+MWUsernameCompletionAction.static.methods = OO.copy( MWUsernameCompletionAction.static.methods );
+MWUsernameCompletionAction.static.methods.push( 'insertAndOpen' );
+
 /* Methods */
 
 MWUsernameCompletionAction.prototype.open = function () {
@@ -60,6 +63,12 @@ MWUsernameCompletionAction.prototype.open = function () {
 		return false;
 	}
 
+	return MWUsernameCompletionAction.super.prototype.open.apply( this, arguments );
+};
+
+MWUsernameCompletionAction.prototype.insertAndOpen = function () {
+	this.surface.getModel().getFragment().insertContent( '@' ).collapseToEnd().select();
+	// Skip precedingCharacter check in #open as we know the user intention
 	return MWUsernameCompletionAction.super.prototype.open.apply( this, arguments );
 };
 
@@ -139,15 +148,21 @@ ve.ui.actionFactory.register( MWUsernameCompletionAction );
 
 ve.ui.commandRegistry.register(
 	new ve.ui.Command(
-		'showMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'open',
+		'openMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'open',
+		{ supportedSelections: [ 'linear' ] }
+	)
+);
+ve.ui.commandRegistry.register(
+	new ve.ui.Command(
+		'insertAndOpenMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'insertAndOpen',
 		{ supportedSelections: [ 'linear' ] }
 	)
 );
 ve.ui.sequenceRegistry.register(
-	new ve.ui.Sequence( 'autocompleteMWUsernames', 'showMWUsernameCompletions', '@', 0, false, false, true )
+	new ve.ui.Sequence( 'autocompleteMWUsernames', 'openMWUsernameCompletions', '@', 0, false, false, true )
 );
 ve.ui.wikitextSequenceRegistry.register(
-	new ve.ui.Sequence( 'autocompleteMWUsernamesWikitext', 'showMWUsernameCompletions', '@', 0, false, false, true )
+	new ve.ui.Sequence( 'autocompleteMWUsernamesWikitext', 'openMWUsernameCompletions', '@', 0, false, false, true )
 );
 
 module.exports = MWUsernameCompletionAction;

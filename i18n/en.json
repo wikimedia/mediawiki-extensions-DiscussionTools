@@ -15,6 +15,7 @@
 	"discussiontools-replywidget-feedback": "Share feedback about this feature",
 	"discussiontools-replywidget-feedback-link": "https:\/\/mediawiki.org\/wiki\/Talk:Talk_pages_project\/replying",
 	"discussiontools-replywidget-loading": "Loading…",
+	"discussiontools-replywidget-mention-tool-title": "Mention a user",
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Reply to {{BIDI:$1}}",

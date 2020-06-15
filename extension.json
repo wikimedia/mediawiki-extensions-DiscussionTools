@@ -97,6 +97,7 @@
 				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
 				"discussiontools-replywidget-feedback",
+				"discussiontools-replywidget-mention-tool-title",
 				"discussiontools-replywidget-mode-source",
 				"discussiontools-replywidget-mode-visual",
 				"discussiontools-replywidget-placeholder-reply",
@@ -131,7 +132,8 @@
 				"dt.ui.ReplyWidgetVisual.js",
 				"CommentTarget.js",
 				"CommentTargetWidget.js",
-				"dt.ui.UsernameCompletion.js"
+				"dt.ui.UsernameCompletionAction.js",
+				"dt.ui.UsernameCompletionTool.js"
 			],
 			"styles": [
 				"CommentTargetWidget.less"
