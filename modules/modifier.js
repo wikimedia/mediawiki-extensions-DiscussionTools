@@ -138,7 +138,7 @@ function addListItem( comment ) {
 			parent = list;
 			curLevel++;
 		}
-	} else if ( curLevel >= desiredLevel ) {
+	} else {
 		// Split the ancestor nodes after the target to decrease nesting.
 
 		do {

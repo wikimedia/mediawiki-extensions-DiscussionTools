@@ -522,7 +522,7 @@ function findSignature( timestampNode, until ) {
 	while ( ( node = node.previousSibling ) && length < data.signatureScanLimit && node !== until ) {
 		sigNodes.push( node );
 		length += ( node.textContent || '' ).length;
-		if ( !node.tagName ) {
+		if ( node.nodeType !== Node.ELEMENT_NODE ) {
 			continue;
 		}
 		links = [];
@@ -625,7 +625,7 @@ function getIndentLevel( node, rootNode ) {
  * @private
  * @param {Node} node Node to start searching at. If it isn't a leaf node, its children are ignored.
  * @param {HTMLElement} rootNode Node to stop searching at
- * @return {Node|null}
+ * @return {Node}
  */
 function nextInterestingLeafNode( node, rootNode ) {
 	var treeWalker = rootNode.ownerDocument.createTreeWalker(
@@ -651,6 +651,9 @@ function nextInterestingLeafNode( node, rootNode ) {
 	);
 	treeWalker.currentNode = node;
 	treeWalker.nextNode();
+	if ( !treeWalker.currentNode ) {
+		throw new Error( 'nextInterestingLeafNode not found' );
+	}
 	return treeWalker.currentNode;
 }
 
@@ -995,6 +998,7 @@ function getTranscludedFrom( comment ) {
 
 	// Only return a page name if this is a simple single-template transclusion.
 	if (
+		dataMw &&
 		dataMw.parts &&
 		dataMw.parts.length === 1 &&
 		dataMw.parts[ 0 ].template &&

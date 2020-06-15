@@ -69,13 +69,12 @@ class CommentUtils {
 	 *
 	 * @param DOMNode $node
 	 * @return DOMElement|null Translcusion node, null if not found
-	 * @suppress PhanUndeclaredMethod
 	 */
 	public static function getTranscludedFromElement( DOMNode $node ) : ?DOMElement {
 		while ( $node ) {
 			// 1.
 			if (
-				$node->nodeType === XML_ELEMENT_NODE &&
+				$node instanceof DOMElement &&
 				$node->getAttribute( 'about' ) &&
 				preg_match( '/^#mwt\d+$/', $node->getAttribute( 'about' ) )
 			) {
@@ -83,11 +82,11 @@ class CommentUtils {
 
 				// 2.
 				while (
-					$node->previousSibling &&
-					$node->previousSibling->nodeType === XML_ELEMENT_NODE &&
-					$node->previousSibling->getAttribute( 'about' ) === $about
+					( $previousSibling = $node->previousSibling ) &&
+					$previousSibling instanceof DOMElement &&
+					$previousSibling->getAttribute( 'about' ) === $about
 				) {
-					$node = $node->previousSibling;
+					$node = $previousSibling;
 				}
 
 				// 3.

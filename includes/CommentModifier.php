@@ -44,8 +44,7 @@ class CommentModifier {
 	 * @return bool Node is a block element
 	 */
 	private static function isBlockElement( DOMNode $node ) : bool {
-		return $node->nodeType === XML_ELEMENT_NODE &&
-			// @phan-suppress-next-line PhanUndeclaredProperty
+		return $node instanceof DOMElement &&
 			in_array( strtolower( $node->tagName ), self::$blockElementTypes );
 	}
 
@@ -175,7 +174,7 @@ class CommentModifier {
 				$parent = $list;
 				$curLevel++;
 			}
-		} elseif ( $curLevel >= $desiredLevel ) {
+		} else {
 			// Split the ancestor nodes after the target to decrease nesting.
 
 			do {

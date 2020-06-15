@@ -41,8 +41,7 @@ class ImmutableRange {
 		} while ( ( $b = $b->parentNode ) );
 
 		$node = null;
-		// @phan-suppress-next-line PhanRedundantConditionInLoop
-		while ( $ancestorsA && $ancestorsB && end( $ancestorsA ) === end( $ancestorsB ) ) {
+		while ( end( $ancestorsA ) && end( $ancestorsA ) === end( $ancestorsB ) ) {
 			$node = end( $ancestorsA );
 			array_pop( $ancestorsA );
 			array_pop( $ancestorsB );
