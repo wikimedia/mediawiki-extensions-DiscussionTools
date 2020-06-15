@@ -248,7 +248,7 @@ class CommentParserTest extends CommentTestCase {
 		$parser = self::createParser( $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->documentElement->childNodes[0];
+		$container = $doc->documentElement->firstChild;
 
 		$comments = $parser->getComments( $container );
 		$threads = $parser->groupThreads( $comments );
@@ -285,7 +285,7 @@ class CommentParserTest extends CommentTestCase {
 		$parser = self::createParser( $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->documentElement->childNodes[0];
+		$container = $doc->documentElement->firstChild;
 
 		CommentUtils::unwrapParsoidSections( $doc->documentElement );
 
