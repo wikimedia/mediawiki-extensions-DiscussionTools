@@ -105,7 +105,7 @@ function getPageData( pageName, oldId ) {
 		list: 'linterrors',
 		lntcategories: 'fostered',
 		lntlimit: 1,
-		lntpageid: mw.config.get( 'wgArticleId' )
+		lnttitle: pageName
 	} ).then( function ( response ) {
 		return OO.getProp( response, 'query', 'linterrors' ) || [];
 	} );
