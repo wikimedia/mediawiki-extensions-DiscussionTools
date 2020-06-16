@@ -62,16 +62,27 @@ ThreadItem.prototype.getAuthorsBelow = function () {
  *   we can't determine the source.
  */
 ThreadItem.prototype.getTranscludedFrom = function () {
-	var node, dataMw;
+	var coveredNodes, i, node, dataMw;
 
-	// If some template is used within the item (e.g. {{ping|…}} or {{tl|…}}, or a
-	// non-substituted signature template), that *does not* mean the item is transcluded.
-	// We only want to consider item to be transcluded if the wrapper element (usually
-	// <li> or <p>) is marked as part of a transclusion. If we can't find a wrapper, using
-	// endContainer should avoid false negatives (although may have false positives).
-	node = utils.getTranscludedFromElement(
-		utils.getFullyCoveredWrapper( this ) || this.range.endContainer
-	);
+	// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}, or a
+	// non-substituted signature template), that *does not* mean the comment is transcluded.
+	// We only want to consider comments to be transcluded if all wrapper elements (usually
+	// <li> or <p>) are marked as part of a single transclusion.
+
+	// If we can't find "exact" wrappers, using only the end container works out well
+	// (because the main purpose of this method is to decide on which page we should post
+	// replies to the given comment, and they'll go after the comment).
+
+	coveredNodes = utils.getFullyCoveredSiblings( this ) ||
+		[ this.range.endContainer ];
+
+	node = utils.getTranscludedFromElement( coveredNodes[ 0 ] );
+	for ( i = 1; i < coveredNodes.length; i++ ) {
+		if ( node !== utils.getTranscludedFromElement( coveredNodes[ i ] ) ) {
+			// Comment is only partially transcluded, that should be fine
+			return false;
+		}
+	}
 
 	if ( !node ) {
 		// No mw:Transclusion node found, this item is not transcluded

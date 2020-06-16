@@ -27,7 +27,7 @@ class CommentUtils {
 	}
 
 	/**
-	 * Check whether a DOMNode contains (is an ancestor of) another DOMNode
+	 * Check whether a DOMNode contains (is an ancestor of) another DOMNode (or is the same node)
 	 *
 	 * @param DOMNode $ancestor
 	 * @param DOMNode $descendant
@@ -117,13 +117,46 @@ class CommentUtils {
 	}
 
 	/**
-	 * Get a node (if any) that contains the given item, and nothing else.
+	 * Get an array of sibling nodes that contain parts of the given thread item.
 	 *
 	 * @param ThreadItem $item Thread item
-	 * @return DOMElement|null
+	 * @return DOMElement[]
 	 */
-	public static function getFullyCoveredWrapper( ThreadItem $item ) : ?DOMElement {
-		$ancestor = $item->getRange()->commonAncestorContainer;
+	private static function getCoveredSiblings( ThreadItem $item ) : array {
+		$range = $item->getRange();
+		$ancestor = $range->commonAncestorContainer;
+
+		if ( $ancestor === $range->startContainer || $ancestor === $range->endContainer ) {
+			return [ $ancestor ];
+		}
+
+		// Convert to array early because apparently DOMNodeList acts like a linked list
+		// and accessing items by index is slow
+		$siblings = iterator_to_array( $ancestor->childNodes );
+		$start = 0;
+		$end = count( $siblings ) - 1;
+
+		// Find first of the siblings that contains the item
+		while ( !self::contains( $siblings[ $start ], $range->startContainer ) ) {
+			$start++;
+		}
+
+		// Find last of the siblings that contains the item
+		while ( !self::contains( $siblings[ $end ], $range->endContainer ) ) {
+			$end--;
+		}
+
+		return array_slice( $siblings, $start, $end - $start + 1 );
+	}
+
+	/**
+	 * Get the nodes (if any) that contain the given thread item, and nothing else.
+	 *
+	 * @param ThreadItem $item Thread item
+	 * @return DOMElement[]|null
+	 */
+	public static function getFullyCoveredSiblings( ThreadItem $item ) : ?array {
+		$siblings = self::getCoveredSiblings( $item );
 
 		$isIgnored = function ( $node ) {
 			// Ignore empty text nodes
@@ -147,7 +180,7 @@ class CommentUtils {
 		};
 
 		$startMatches = false;
-		$node = $ancestor;
+		$node = $siblings[ 0 ];
 		while ( $node ) {
 			if ( $item->getRange()->startContainer === $node && $item->getRange()->startOffset === 0 ) {
 				$startMatches = true;
@@ -157,7 +190,7 @@ class CommentUtils {
 		}
 
 		$endMatches = false;
-		$node = $ancestor;
+		$node = end( $siblings );
 		while ( $node ) {
 			$length = ( $node->nodeType === XML_TEXT_NODE ) ?
 				strlen( rtrim( $node->nodeValue, "\t\n\f\r " ) ) :
@@ -172,14 +205,15 @@ class CommentUtils {
 		}
 
 		if ( $startMatches && $endMatches ) {
-			// If this is the only child, go up one more level
+			// If these are all of the children (or the only child), go up one more level
 			while (
-				$ancestor->parentNode &&
-				$firstNonemptyChild( $ancestor->parentNode ) === $lastNonemptyChild( $ancestor->parentNode )
+				( $parent = $siblings[ 0 ]->parentNode ) &&
+				$firstNonemptyChild( $parent ) === $siblings[ 0 ] &&
+				$lastNonemptyChild( $parent ) === end( $siblings )
 			) {
-				$ancestor = $ancestor->parentNode;
+				$siblings = [ $parent ];
 			}
-			return $ancestor;
+			return $siblings;
 		}
 		return null;
 	}
