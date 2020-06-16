@@ -27,7 +27,7 @@ class CommentModifierTest extends CommentTestCase {
 		$this->setupEnv( $config, $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->documentElement->firstChild;
+		$container = $doc->getElementsByTagName( 'body' )->item( 0 )->firstChild;
 
 		$parser = self::createParser( $data );
 		$comments = $parser->getComments( $container );
@@ -68,7 +68,7 @@ class CommentModifierTest extends CommentTestCase {
 		$this->setupEnv( $config, $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->documentElement->firstChild;
+		$container = $doc->getElementsByTagName( 'body' )->item( 0 )->firstChild;
 
 		$parser = self::createParser( $data );
 		$comments = $parser->getComments( $container );
@@ -99,7 +99,7 @@ class CommentModifierTest extends CommentTestCase {
 	public function testUnwrapList( string $name, string $html, int $index, string $expected ) : void {
 		$doc = self::createDocument( '<div>' . $html . '</div>' );
 		$expectedDoc = self::createDocument( '<div>' . $expected . '</div>' );
-		$container = $doc->documentElement->firstChild->firstChild;
+		$container = $doc->getElementsByTagName( 'body' )->item( 0 )->firstChild;
 
 		CommentModifier::unwrapList( $container->childNodes[$index] );
 

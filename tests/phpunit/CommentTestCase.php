@@ -6,6 +6,7 @@ use DOMDocument;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 
 abstract class CommentTestCase extends MediaWikiTestCase {
 
@@ -16,9 +17,8 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	 * @return DOMDocument
 	 */
 	protected static function createDocument( string $html ) : DOMDocument {
-		$doc = new DOMDocument();
+		$doc = DOMUtils::parseHTML( $html );
 		$doc->preserveWhiteSpace = false;
-		$doc->loadHTML( '<?xml encoding="utf-8" ?>' . $html, LIBXML_NOERROR );
 		return $doc;
 	}
 

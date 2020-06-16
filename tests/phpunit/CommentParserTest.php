@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 use DateTimeImmutable;
 use DOMElement;
 use DOMNode;
+use Error;
 use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
@@ -248,15 +249,15 @@ class CommentParserTest extends CommentTestCase {
 		$parser = self::createParser( $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->documentElement->firstChild;
+		$body = $doc->getElementsByTagName( 'body' )->item( 0 );
 
-		$comments = $parser->getComments( $container );
+		$comments = $parser->getComments( $body );
 		$threads = $parser->groupThreads( $comments );
 
 		$processedThreads = [];
 
 		foreach ( $threads as $i => $thread ) {
-			$thread = self::serializeComments( $thread, $container );
+			$thread = self::serializeComments( $thread, $body );
 			$thread = json_decode( json_encode( $thread ), true );
 			$processedThreads[] = $thread;
 			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
@@ -285,9 +286,9 @@ class CommentParserTest extends CommentTestCase {
 		$parser = self::createParser( $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->documentElement->firstChild;
+		$container = $doc->getElementsByTagName( 'body' )->item( 0 )->firstChild;
 
-		CommentUtils::unwrapParsoidSections( $doc->documentElement );
+		CommentUtils::unwrapParsoidSections( $container );
 
 		$comments = $parser->getComments( $container );
 		$threads = $parser->groupThreads( $comments );
