@@ -10,7 +10,7 @@
 	"discussiontools-desc": "Narzędzia ułatwiające korzystanie ze stron dyskusji.",
 	"discussiontools-preference-label": "Narzędzia dyskusji",
 	"discussiontools-preference-description": "Włącz nowy sposób [//www.mediawiki.org/wiki/Talk_pages_project/replying odpowiadania na poszczególne komentarze] na stronach dyskusji.\n\nZ biegiem czasu będą dodawane nowe narzędzia ułatwiające korzystanie ze stron dyskusji.\n\nAktualności na temat tych funkcji będą zamieszczane na [//www.mediawiki.org/wiki/Talk_pages_project/Updates stronie projektu usprawniania stron dyskusji].",
-	"discussiontools-replylink": "Odpowiedz",
+	"discussiontools-replylink": "odpowiedz",
 	"discussiontools-replywidget-anon-warning": "<strong>Nie jesteś zalogowany</strong>. Aby być podanym imiennie jako autor zamiast numeru IP, możesz [$1 zalogować się] albo [$2 utworzyć konto].",
 	"discussiontools-replywidget-cancel": "Anuluj",
 	"discussiontools-replywidget-feedback": "Prześlij opinię na temat tego oprogramowania",
