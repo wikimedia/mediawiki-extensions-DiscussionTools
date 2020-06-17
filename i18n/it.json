@@ -13,6 +13,7 @@
 	"discussiontools-replylink": "rispondi",
 	"discussiontools-replywidget-cancel": "Annulla",
 	"discussiontools-replywidget-loading": "Caricamento…",
+	"discussiontools-replywidget-mention-tool-title": "Menziona un utente",
 	"discussiontools-replywidget-mode-visual": "Visuale",
 	"discussiontools-replywidget-placeholder-reply": "Rispondi a {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Rispondi",

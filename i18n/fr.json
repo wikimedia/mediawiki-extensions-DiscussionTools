@@ -22,6 +22,7 @@
 	"discussiontools-replywidget-cancel": "Annuler",
 	"discussiontools-replywidget-feedback": "Partager un avis sur cette fonctionnalité",
 	"discussiontools-replywidget-loading": "Chargement en cours...",
+	"discussiontools-replywidget-mention-tool-title": "Mentionner un utilisateur",
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Visuel",
 	"discussiontools-replywidget-placeholder-reply": "Répondre à {{BIDI:$1}}",
