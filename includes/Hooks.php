@@ -33,7 +33,8 @@ class Hooks {
 	];
 
 	public static function onRegistration() : void {
-		$coreConfig = RequestContext::getMain()->getConfig();
+		// Use globals instead of Config. Accessing it so early blows up unrelated extensions (T255704).
+		global $wgLocaltimezone;
 		// If $wgLocaltimezone isn't hard-coded, it is evaluated from the system
 		// timezone. On some systems this isn't guaranteed to be static, for example
 		// on Debian, GMT can get converted to UTC, instead of Europe/London.
@@ -41,7 +42,7 @@ class Hooks {
 		// Timestamp parsing assumes that the timezone never changes.
 		//
 		// HACK: Do not run this test on CI as $wgLocaltimezone is not configured.
-		if ( !$coreConfig->get( 'Localtimezone' ) && !getenv( 'ZUUL_PROJECT' ) ) {
+		if ( !$wgLocaltimezone && !getenv( 'ZUUL_PROJECT' ) ) {
 			throw new ConfigException( 'DiscussionTools requires $wgLocaltimezone to be set' );
 		}
 	}
