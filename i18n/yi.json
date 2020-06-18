@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"פוילישער"
+		]
+	},
+	"discussiontools": "שמועס־געצייג",
+	"discussiontools-defaultsummary-reply": "ענטפֿער",
+	"discussiontools-desc": "געצייג צו פֿארבעסערן בלעטער.",
+	"discussiontools-preference-label": "שמועס־ווערקצייג",
+	"discussiontools-replylink": "ענטפֿער",
+	"discussiontools-replywidget-cancel": "אַנולירן",
+	"discussiontools-replywidget-loading": "לאָדנדיק…",
+	"discussiontools-replywidget-mention-tool-title": "דערמאנען א באניצער",
+	"discussiontools-replywidget-mode-source": "מקור",
+	"discussiontools-replywidget-mode-visual": "וויזועל",
+	"discussiontools-replywidget-placeholder-reply": "ענטפֿער צו  {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "פֿאראויסקוק",
+	"discussiontools-replywidget-reply": "ענטפֿער",
+	"tag-discussiontools-description": "רעדאקטירונג געמאכט דורך שמועס־געצייג",
+	"tag-discussiontools-edit": "רעדאקטירן הערה",
+	"tag-discussiontools-newtopic": "צושטעלן טעמע",
+	"tag-discussiontools-source": "מקור",
+	"tag-discussiontools-visual": "וויזועל"
+}

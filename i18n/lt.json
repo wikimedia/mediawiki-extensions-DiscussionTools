@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Tomasdd"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Atsakyti",
 	"discussiontools-preference-label": "Diskusijų įrankiai",
-	"discussiontools-replylink": "Atsakyti",
+	"discussiontools-replylink": "atsakyti",
 	"discussiontools-replywidget-cancel": "Atšaukti",
 	"discussiontools-replywidget-loading": "Kraunasi...",
 	"discussiontools-replywidget-reply": "Atsakyti"
