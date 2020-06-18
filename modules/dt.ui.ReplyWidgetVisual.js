@@ -1,7 +1,7 @@
-var CommentTargetWidget = require( './CommentTargetWidget.js' );
+var CommentTargetWidget = require( './dt-ve/CommentTargetWidget.js' );
 
-require( './dt.ui.UsernameCompletionAction.js' );
-require( './dt.ui.UsernameCompletionTool.js' );
+require( './dt-ve/dt.ui.UsernameCompletionAction.js' );
+require( './dt-ve/dt.ui.UsernameCompletionTool.js' );
 
 /**
  * DiscussionTools ReplyWidgetVisual class

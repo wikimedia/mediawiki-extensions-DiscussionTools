@@ -130,13 +130,13 @@
 		"ext.discussionTools.ReplyWidgetVisual": {
 			"packageFiles": [
 				"dt.ui.ReplyWidgetVisual.js",
-				"CommentTarget.js",
-				"CommentTargetWidget.js",
-				"dt.ui.UsernameCompletionAction.js",
-				"dt.ui.UsernameCompletionTool.js"
+				"dt-ve/CommentTarget.js",
+				"dt-ve/CommentTargetWidget.js",
+				"dt-ve/dt.ui.UsernameCompletionAction.js",
+				"dt-ve/dt.ui.UsernameCompletionTool.js"
 			],
 			"styles": [
-				"CommentTargetWidget.less"
+				"dt-ve/CommentTargetWidget.less"
 			],
 			"dependencies": [
 				"ext.discussionTools.ReplyWidget",
