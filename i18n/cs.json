@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martin Urbanec",
+			"Matěj Suchánek"
+		]
+	},
+	"discussiontools": "Diskusní nástroje",
+	"discussiontools-defaultsummary-reply": "Odpověď",
+	"discussiontools-desc": "Nástroje vylepšující diskusní stránky.",
+	"discussiontools-preference-label": "Diskusní nástroje",
+	"discussiontools-replylink": "odpovědět",
+	"discussiontools-replywidget-anon-warning": "<strong>Nejste momentálně přihlášeni.</strong> Aby byl váš příspěvek přiřazen vašemu jménu a ne vaší IP adrese, [$1 přihlaste se] nebo si [$2 vytvořte uživatelský účet].",
+	"discussiontools-replywidget-cancel": "Zrušit",
+	"discussiontools-replywidget-feedback": "Poslat názor na tuto funkci",
+	"discussiontools-replywidget-loading": "Načítám…",
+	"discussiontools-replywidget-mention-tool-title": "Zmínit uživatele",
+	"discussiontools-replywidget-mode-source": "Editor zdroje",
+	"discussiontools-replywidget-mode-visual": "Vizuální editor",
+	"discussiontools-replywidget-placeholder-reply": "Odpovědět {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Náhled",
+	"discussiontools-replywidget-reply": "Odpovědět",
+	"discussiontools-replywidget-terms-click": "Kliknutím na „$1“ souhlasíte s podmínkami užití této wiki.",
+	"discussiontools-replywidget-transcluded": "Váš komentář bude uložen na stránce [[$1]].",
+	"discussiontools-error-comment-disappeared": "Nemůžeme nalézt komentář, na který odpovídáte. Možná byl smazán, nebo přesunut na jinou stránku. Prosím, aktualizujte stránku a zkuste to znovu.",
+	"discussiontools-error-comment-is-transcluded": "Odkaz \"{{int:discussiontools-replylink}}\" nemůže být použit k odpovědi na tento komentář. Abyste odpověděli, použijte editor celé stránky kliknutím na \"$1\".",
+	"tag-discussiontools-description": "Editace provedená skrz diskusní nástroje",
+	"tag-discussiontools-edit": "Editace komentáře",
+	"tag-discussiontools-newtopic": "Přidání tématu",
+	"tag-discussiontools-newtopic-description": "Uživatel přidal nové téma s použitím diskusních nástrojů",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odpověď]",
+	"tag-discussiontools-reply-description": "Uživatel odpověděl na komentář s použitím Diskusních nástrojů",
+	"tag-discussiontools-source": "Zdrojový kód",
+	"tag-discussiontools-source-description": "Diskusní nástroje byly ve zdrojovém módu",
+	"tag-discussiontools-visual": "Vizuální",
+	"tag-discussiontools-visual-description": "Diskusní nástroje byly ve vizuálním módu"
+}

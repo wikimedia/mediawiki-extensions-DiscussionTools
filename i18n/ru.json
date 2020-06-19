@@ -6,6 +6,7 @@
 			"Ed g2s",
 			"Iniquity",
 			"Kareyac",
+			"Okras",
 			"Pacha Tchernof"
 		]
 	},
@@ -13,7 +14,9 @@
 	"discussiontools-defaultsummary-reply": "Ответить",
 	"discussiontools-preference-label": "Инструменты обсуждения",
 	"discussiontools-preference-description": "Включить новый рабочий процесс для [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] на страницах обсуждения.\n\nПожалуйста обратите внимание, что со временембудут добавлены новые инструменты для взаимодействия со страницами обсуждения.\n\nОбновления об этих функциях будут размещены на [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
+	"discussiontools-replywidget-cancel": "Отмена",
 	"discussiontools-replywidget-loading": "Загрузка…",
+	"discussiontools-replywidget-mention-tool-title": "Упомянуть участника",
 	"discussiontools-replywidget-mode-source": "Источник",
 	"discussiontools-replywidget-mode-visual": "Визуальный",
 	"discussiontools-replywidget-placeholder-reply": "Ответить {{BIDI:$1}}",
