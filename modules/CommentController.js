@@ -415,19 +415,12 @@ CommentController.prototype.save = function ( parsoidData ) {
 CommentController.prototype.switchToWikitext = function () {
 	var wikitextPromise,
 		oldWidget = this.replyWidget,
-		pageData = oldWidget.parsoidData.pageData,
 		target = oldWidget.replyBodyWidget.target,
 		previewDeferred = $.Deferred(),
 		commentController = this;
 
-	wikitextPromise = target.getWikitextFragment(
-		target.getSurface().getModel().getDocument(),
-		{
-			page: pageData.pageName,
-			baserevid: pageData.oldId,
-			etag: pageData.etag
-		}
-	);
+	// TODO: We may need to pass oldid/etag when editing is supported
+	wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
 	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, false );
 
 	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
