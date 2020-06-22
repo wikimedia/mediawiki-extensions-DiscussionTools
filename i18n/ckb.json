@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cwtiyar",
 			"Ed g2s",
 			"ئارام بکر"
 		]
@@ -14,6 +15,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>تۆ نەچوویتە ژوورەوە.</strong> بۆ ئەوەی دەستکارییەکەت بدرێتە پاڵ ناوەکەت لەجیاتی ناونیشانی ئای-پییەکەت، دەتوانیت یان [$1 بچیتە ژوورەوە] یانیش [$2 ھەژمارێک دروست بکەیت].",
 	"discussiontools-replywidget-cancel": "ھەڵوەشاندنەوە",
 	"discussiontools-replywidget-loading": "بارکردن...",
+	"discussiontools-replywidget-mention-tool-title": "بانگکردنی بەکارھێنەرێک",
 	"discussiontools-replywidget-placeholder-reply": "وەڵام بۆ {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "پێشبینین",
 	"discussiontools-replywidget-reply": "وەڵامدانەوە",
