@@ -49,8 +49,7 @@ MWUsernameCompletionAction.static.methods.push( 'insertAndOpen' );
 
 MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 	this.surface.getModel().getFragment().insertContent( '@' ).collapseToEnd().select();
-	// Skip precedingCharacter check in #open as we know the user intention
-	return MWUsernameCompletionAction.super.prototype.open.apply( this, arguments );
+	return this.open();
 };
 
 MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
