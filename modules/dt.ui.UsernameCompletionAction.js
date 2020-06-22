@@ -47,25 +47,6 @@ MWUsernameCompletionAction.static.methods.push( 'insertAndOpen' );
 
 /* Methods */
 
-MWUsernameCompletionAction.prototype.open = function () {
-	var surfaceModel = this.surface.getModel(),
-		data = surfaceModel.getDocument().data,
-		offset = surfaceModel.getSelection().getRange(),
-		// The character before the @:
-		precedingCharacterOffset = new ve.Range(
-			offset.from - MWUsernameCompletionAction.static.triggerLength - 1,
-			offset.from - MWUsernameCompletionAction.static.triggerLength
-		),
-		precedingCharacter = data.getText( false, precedingCharacterOffset );
-
-	// This is fundamentally "don't trigger on email addresses"
-	if ( precedingCharacter && !precedingCharacter.match( /\s/ ) ) {
-		return false;
-	}
-
-	return MWUsernameCompletionAction.super.prototype.open.apply( this, arguments );
-};
-
 MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 	this.surface.getModel().getFragment().insertContent( '@' ).collapseToEnd().select();
 	// Skip precedingCharacter check in #open as we know the user intention
