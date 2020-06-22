@@ -462,7 +462,8 @@ CommentController.prototype.switchToVisual = function () {
 			action: 'visualeditor',
 			paction: 'parsefragment',
 			page: pageData.pageName,
-			wikitext: wikitext
+			wikitext: wikitext,
+			pst: true
 		} ).then( function ( response ) {
 			return response && response.visualeditor.content;
 		} );
