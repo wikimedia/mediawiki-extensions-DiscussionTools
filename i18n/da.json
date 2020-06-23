@@ -8,8 +8,11 @@
 	"discussiontools-replylink": "svar",
 	"discussiontools-replywidget-cancel": "Annullér",
 	"discussiontools-replywidget-loading": "Indlæser…",
+	"discussiontools-replywidget-mention-tool-title": "Nævn en bruger",
 	"discussiontools-replywidget-mode-source": "Kilde",
 	"discussiontools-replywidget-mode-visual": "Visuelt",
 	"discussiontools-replywidget-reply": "Svar",
+	"tag-discussiontools-edit": "Redigér kommentar",
+	"tag-discussiontools-newtopic": "Tilføj emne",
 	"tag-discussiontools-source": "Kilde"
 }
