@@ -549,11 +549,17 @@ ReplyWidget.prototype.onReplyClick = function () {
 		}
 
 		pageUpdated.then( function () {
-			// Re-initialize
-			controller.init( $container.find( '.mw-parser-output' ), {
-				repliedTo: comment.id
-			} );
+			// Re-initialize and highlight the new reply.
+			mw.dt.initState.repliedTo = comment.id;
+
+			// We need our init code to run after everyone else's handlers for this hook,
+			// so that all changes to the page layout have been completed (e.g. collapsible elements),
+			// and we can measure things and display the highlight in the right place.
+			mw.hook( 'wikipage.content' ).remove( mw.dt.init );
 			mw.hook( 'wikipage.content' ).fire( $container );
+			// The hooks have "memory" so calling add() after fire() actually fires the handler,
+			// and calling add() before fire() would actually fire it twice.
+			mw.hook( 'wikipage.content' ).add( mw.dt.init );
 
 			logger( {
 				action: 'saveSuccess',
