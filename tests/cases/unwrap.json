@@ -52,5 +52,17 @@
 		"html": "<dl><dd>Foo<dl><dd>Bar</dd></dl></dd></dl>",
 		"index": 0,
 		"expected": "<p>Foo</p><dl><dd>Bar</dd></dl>"
+	},
+	{
+		"name": "non-list element",
+		"html": "<div><span>Foo</span></div>",
+		"index": 0,
+		"expected": "<div><span>Foo</span></div>"
+	},
+	{
+		"name": "text node",
+		"html": "Foo",
+		"index": 0,
+		"expected": "Foo"
 	}
 ]

@@ -218,13 +218,24 @@ function removeAddedListItem( node ) {
  *
  * Assumes that the list has a parent node.
  *
- * @param {HTMLElement} list List element (dl/ol/ul)
+ * @param {Node} list DOM node, will be wrapepd if it is a list element (dl/ol/ul)
  */
 function unwrapList( list ) {
 	var p, insertBefore,
 		doc = list.ownerDocument,
 		container = list.parentNode,
 		referenceNode = list;
+
+	if ( !(
+		list.nodeType === Node.ELEMENT_NODE && (
+			list.tagName.toLowerCase() === 'dl' ||
+			list.tagName.toLowerCase() === 'ol' ||
+			list.tagName.toLowerCase() === 'ul'
+		)
+	) ) {
+		// Not a list, leave alone (e.g. auto-generated ref block)
+		return;
+	}
 
 	// If the whole list is a template return it unmodified (T253150)
 	if ( utils.getTranscludedFromElement( list ) ) {

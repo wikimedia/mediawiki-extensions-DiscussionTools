@@ -221,12 +221,23 @@ class CommentModifier {
 	 *
 	 * Assumes that the list has a parent node.
 	 *
-	 * @param DOMElement $list List element (dl/ol/ul)
+	 * @param DOMnode $list DOM node, will be wrapepd if it is a list element (dl/ol/ul)
 	 */
-	public static function unwrapList( DOMElement $list ) : void {
+	public static function unwrapList( DOMnode $list ) : void {
 		$doc = $list->ownerDocument;
 		$container = $list->parentNode;
 		$referenceNode = $list;
+
+		if ( !(
+			$list instanceof DOMElement && (
+				strtolower( $list->tagName ) === 'dl' ||
+				strtolower( $list->tagName ) === 'ol' ||
+				strtolower( $list->tagName ) === 'ul'
+			)
+		) ) {
+			// Not a list, leave alone (e.g. auto-generated ref block)
+			return;
+		}
 
 		// If the whole list is a template return it unmodified (T253150)
 		if ( CommentUtils::getTranscludedFromElement( $list ) ) {
