@@ -10,13 +10,17 @@ var
 	config = require( './config.json' ),
 	enableVisual = config.enableVisual || ( new mw.Uri() ).query.dtvisual,
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
-	defaultVisual = enableVisual && defaultEditMode === 'visual';
+	defaultVisual = enableVisual && defaultEditMode === 'visual',
+	conf = mw.config.get( 'wgVisualEditorConfig' ),
+	visualModules = [ 'ext.discussionTools.ReplyWidgetVisual' ]
+		.concat( conf.pluginModules.filter( mw.loader.getState ) ),
+	plainModules = [ 'ext.discussionTools.ReplyWidgetPlain' ];
 
 // Start loading reply widget code
 if ( defaultVisual ) {
-	mw.loader.using( 'ext.discussionTools.ReplyWidgetVisual' );
+	mw.loader.using( visualModules );
 } else {
-	mw.loader.using( 'ext.discussionTools.ReplyWidgetPlain' );
+	mw.loader.using( plainModules );
 }
 
 function CommentController( $pageContainer, comment, thread ) {
@@ -208,15 +212,12 @@ CommentController.prototype.setup = function ( mode ) {
 };
 
 CommentController.prototype.getReplyWidgetClass = function ( visual ) {
-	var moduleName;
-
 	if ( visual === undefined ) {
 		visual = defaultVisual;
 	}
 
-	moduleName = visual ? 'ext.discussionTools.ReplyWidgetVisual' : 'ext.discussionTools.ReplyWidgetPlain';
-	return mw.loader.using( moduleName ).then( function () {
-		return require( moduleName );
+	return mw.loader.using( visual ? visualModules : plainModules ).then( function () {
+		return require( visual ? 'ext.discussionTools.ReplyWidgetVisual' : 'ext.discussionTools.ReplyWidgetPlain' );
 	} );
 };
 
