@@ -474,19 +474,52 @@ CommentController.prototype.switchToVisual = function () {
 	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, true );
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
-		var doc, bodyChildren;
-
-		// Swap out the DOM nodes
-		oldWidget.$element.replaceWith( replyWidget.$element );
-
-		// Teardown the old widget
-		oldWidget.disconnect( commentController );
-		oldWidget.teardown();
+		var doc, bodyChildren, type, $msg,
+			unsupportedSelectors = {
+				// Tables are almost always multi-line
+				table: 'table',
+				// Headings are converted to plain text before we can detect them:
+				// `:==h2==` -> `<p>==h2==</p>`
+				// heading: 'h1, h2, h3, h4, h5, h6',
+				// Templates can be multiline
+				template: '[typeof*="mw:Transclusion"]',
+				// Extensions (includes references) can be multiline, could be supported later (T251633)
+				extension: '[typeof*="mw:Extension"]'
+				// Images are probably fine unless a multi-line caption was used (rare)
+				// image: 'figure, figure-inline'
+			};
 
 		if ( html ) {
 			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
 			// Remove RESTBase IDs (T253584)
 			mw.libs.ve.stripRestbaseIds( doc );
+			for ( type in unsupportedSelectors ) {
+				if ( doc.querySelector( unsupportedSelectors[ type ] ) ) {
+					$msg = $( '<div>' ).html(
+						mw.message(
+							'discussiontools-error-noswitchtove',
+							// The following messages are used here:
+							// * discussiontools-error-noswitchtove-extension
+							// * discussiontools-error-noswitchtove-table
+							// * discussiontools-error-noswitchtove-template
+							mw.msg( 'discussiontools-error-noswitchtove-' + type )
+						).parse()
+					);
+					$msg.find( 'a' ).attr( {
+						target: '_blank',
+						rel: 'noopener'
+					} );
+					OO.ui.alert(
+						$msg.contents(),
+						{
+							title: mw.msg( 'discussiontools-error-noswitchtove-title' ),
+							size: 'medium'
+						}
+					);
+					return $.Deferred().reject().promise();
+				}
+			}
+			// Check for tables, headings, images, templates
 			bodyChildren = Array.prototype.slice.call( doc.body.childNodes );
 			// There may be multiple lists when some lines are template generated
 			bodyChildren.forEach( function ( child ) {
@@ -496,6 +529,13 @@ CommentController.prototype.switchToVisual = function () {
 				}
 			} );
 		}
+
+		// Swap out the DOM nodes
+		oldWidget.$element.replaceWith( replyWidget.$element );
+
+		// Teardown the old widget
+		oldWidget.disconnect( commentController );
+		oldWidget.teardown();
 
 		commentController.setupReplyWidget( replyWidget, doc );
 	} );
