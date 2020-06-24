@@ -252,7 +252,6 @@ function init( $container, state ) {
 		pageComments, pageThreads, pageCommentsById,
 		repliedToComment;
 
-	state = state || {};
 	$pageContainer = $container;
 	pageComments = parser.getComments( $pageContainer[ 0 ] );
 	pageThreads = parser.groupThreads( pageComments );
@@ -263,8 +262,6 @@ function init( $container, state ) {
 	pageThreads.forEach( function ( thread ) {
 		traverseNode( thread, thread );
 	} );
-
-	$pageContainer.addClass( 'dt-init-done' );
 
 	// For debugging
 	mw.dt.pageThreads = pageThreads;

@@ -6,19 +6,21 @@ var controller = require( './controller.js' );
  */
 mw.dt = {};
 
+mw.dt.initState = {};
+mw.dt.init = function ( $container ) {
+	if ( $container.is( '#mw-content-text' ) || $container.find( '#mw-content-text' ).length ) {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		controller.init( $( '#mw-content-text' ), mw.dt.initState );
+		// Reset for next init
+		mw.dt.initState = {};
+	}
+};
+
 if ( new mw.Uri().query.dtdebug ) {
 	mw.loader.load( 'ext.discussionTools.debug' );
 } else if ( mw.config.get( 'wgIsProbablyEditable' ) ) {
-	mw.hook( 'wikipage.content' ).add( function ( $container ) {
-		$container.find( '.mw-parser-output' ).each( function () {
-			var $node = $( this );
-			// Don't re-run if we already handled this element
-			// eslint-disable-next-line no-jquery/no-class-state
-			if ( !$node.hasClass( 'dt-init-done' ) ) {
-				controller.init( $node );
-			}
-		} );
-	} );
+	// Don't use an anonymous function, because ReplyWidget needs to be able to remove this handler
+	mw.hook( 'wikipage.content' ).add( mw.dt.init );
 }
 
 module.exports = {
