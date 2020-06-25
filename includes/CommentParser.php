@@ -693,30 +693,16 @@ class CommentParser {
 	 * This function would return a structure like:
 	 *
 	 *     [
-	 *       [ 'type' => 'heading', 'level' => 0, 'range' => (h2: A)        },
-	 *       [ 'type' => 'comment', 'level' => 1, 'range' => (p: B)         },
-	 *       [ 'type' => 'comment', 'level' => 2, 'range' => (li: C, li: C) },
-	 *       [ 'type' => 'comment', 'level' => 3, 'range' => (li: D)        },
-	 *       [ 'type' => 'comment', 'level' => 4, 'range' => (li: E)        },
-	 *       [ 'type' => 'comment', 'level' => 4, 'range' => (li: F)        },
-	 *       [ 'type' => 'comment', 'level' => 2, 'range' => (li: G)        },
-	 *       [ 'type' => 'comment', 'level' => 1, 'range' => (p: H)         },
-	 *       [ 'type' => 'comment', 'level' => 2, 'range' => (li: I)        }
+	 *       HeadingItem( { level: 0, range: (h2: A)        } ),
+	 *       CommentItem( { level: 1, range: (p: B)         } ),
+	 *       CommentItem( { level: 2, range: (li: C, li: C) } ),
+	 *       CommentItem( { level: 3, range: (li: D)        } ),
+	 *       CommentItem( { level: 4, range: (li: E)        } ),
+	 *       CommentItem( { level: 4, range: (li: F)        } ),
+	 *       CommentItem( { level: 2, range: (li: G)        } ),
+	 *       CommentItem( { level: 1, range: (p: H)         } ),
+	 *       CommentItem( { level: 2, range: (li: I)        } )
 	 *     ]
-	 *
-	 * The elements of the array are ThreadItem objects with the following fields:
-	 * - 'type' (string): 'heading' or 'comment'
-	 * - 'range' (ImmutableRange): The extent of the comment, including the signature and timestamp.
-	 *           Comments can start or end in the middle of a DOM node.
-	 * - 'signatureRanges' (ImmutableRange): The extents of the comment's signatures (plus timestamps).
-	 *                     There is always at least one signature, but there may be multiple.
-	 *                     The author and timestamp of the comment is determined from the
-	 *                     first signature. The last node in every signature range is
-	 *                     a node containing the timestamp.
-	 * - 'level' (int): Indentation level of the comment. Headings are 0, comments start at 1.
-	 * - 'timestamp' (string): ISO 8601 timestamp in UTC (ending in 'Z'). Not set for headings.
-	 * - 'author' (string|null): Comment author's username, null for unsigned comments.
-	 *            Not set for headings.
 	 *
 	 * @param DOMElement $rootNode
 	 * @return ThreadItem[] Thread items
@@ -873,29 +859,24 @@ class CommentParser {
 	 * This function would return a structure like:
 	 *
 	 *     [
-	 *       [ 'type' => 'heading', 'level' => 0, 'range' => (h2: A), 'replies' => [
-	 *         [ 'type' => 'comment', 'level' => 1, 'range' => (p: B), 'replies' => [
-	 *           [ 'type' => 'comment', 'level' => 2, 'range' => (li: C, li: C), 'replies' => [
-	 *             [ 'type' => 'comment', 'level' => 3, 'range' => (li: D), 'replies' => [
-	 *               [ 'type' => 'comment', 'level' => 4, 'range' => (li: E), 'replies' => [] ],
-	 *               [ 'type' => 'comment', 'level' => 4, 'range' => (li: F), 'replies': [] ],
-	 *             ] ],
-	 *           ] ],
-	 *           [ 'type' => 'comment', 'level' => 2, 'range' => (li: G), 'replies' => [] ],
-	 *         ] ],
-	 *         [ 'type' => 'comment', 'level' => 1, 'range' => (p: H), 'replies' => [
-	 *           [ 'type' => 'comment', 'level' => 2, 'range' => (li: I), 'replies' => [] ],
-	 *         ] ],
-	 *       ] ],
+	 *       HeadingItem( { level: 0, range: (h2: A), replies: [
+	 *         CommentItem( { level: 1, range: (p: B), replies: [
+	 *           CommentItem( { level: 2, range: (li: C, li: C), replies: [
+	 *             CommentItem( { level: 3, range: (li: D), replies: [
+	 *               CommentItem( { level: 4, range: (li: E), replies: [] },
+	 *               CommentItem( { level: 4, range: (li: F), replies: [] },
+	 *             ] },
+	 *           ] },
+	 *           CommentItem( { level: 2, range: (li: G), replies: [] },
+	 *         ] },
+	 *         CommentItem( { level: 1, range: (p: H), replies: [
+	 *           CommentItem( { level: 2, range: (li: I), replies: [] },
+	 *         ] },
+	 *       ] } )
 	 *     ]
 	 *
 	 * @param ThreadItem[] &$comments Result of #getComments, will be modified to add more properties
-	 * @return HeadingItem[] Tree structure of comments, using the same objects as `comments`.
-	 *   Top-level items are the headings. The following properties are added:
-	 *   - id: Unique ID (within the page) for this comment, intended to be used to
-	 *         find this comment in other revisions of the same page
-	 *   - replies: Comment objects which are replies to this comment
-	 *   - parent: Comment object which this is a reply to (null for headings)
+	 * @return HeadingItem[] Tree structure of comments, top-level items are the headings.
 	 */
 	public function groupThreads( array &$comments ) : array {
 		$threads = [];

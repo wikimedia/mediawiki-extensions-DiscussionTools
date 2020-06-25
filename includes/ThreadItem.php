@@ -2,6 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+/**
+ * A thread item, either a heading or a comment
+ */
 abstract class ThreadItem {
 	private $type;
 	private $range;
@@ -11,9 +14,10 @@ abstract class ThreadItem {
 	private $replies = [];
 
 	/**
-	 * @param string $type
-	 * @param int $level
-	 * @param ImmutableRange $range
+	 * @param string $type `heading` or `comment`
+	 * @param int $level Item level in the thread tree
+	 * @param ImmutableRange $range Object describing the extent of the comment, including the
+	 *  signature and timestamp.
 	 */
 	public function __construct(
 		string $type, int $level, ImmutableRange $range
@@ -52,7 +56,7 @@ abstract class ThreadItem {
 	}
 
 	/**
-	 * @return CommentItem[] Thread item replies
+	 * @return CommentItem[] Replies to this thread item
 	 */
 	public function getReplies() : array {
 		return $this->replies;

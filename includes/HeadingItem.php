@@ -7,7 +7,7 @@ class HeadingItem extends ThreadItem {
 
 	/**
 	 * @param ImmutableRange $range
-	 * @param bool $placeholderHeading
+	 * @param bool $placeholderHeading Item doesn't correspond to a real heading (e.g. 0th section)
 	 */
 	public function __construct(
 		ImmutableRange $range, bool $placeholderHeading = false
