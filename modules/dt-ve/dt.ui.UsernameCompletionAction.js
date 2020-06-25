@@ -48,6 +48,13 @@ MWUsernameCompletionAction.static.methods.push( 'insertAndOpen' );
 /* Methods */
 
 MWUsernameCompletionAction.prototype.insertAndOpen = function () {
+	// This is opening a window in a slightly weird way, so the normal logging
+	// doesn't catch it. This assumes that the only way to get here is from
+	// the tool. If we add other paths, we'd need to change the logging.
+	ve.track(
+		'activity.' + this.constructor.static.name,
+		{ action: 'window-open-from-tool' }
+	);
 	this.surface.getModel().getFragment().insertContent( '@' ).collapseToEnd().select();
 	return this.open();
 };
