@@ -177,6 +177,8 @@
 			"cases/modified.json",
 			"cases/reply.json",
 			"cases/unwrap.json",
+			"cases/auto-sign-wikitext.json",
+			"cases/sanitize-wikitext-linebreaks.json",
 			"cases/timestamp-regex.json",
 			"cases/timestamp-parser.json",
 			"cases/timestamp-parser-dst.json",
@@ -199,7 +201,6 @@
 			"cases/fallback-encoding-link/fallback-encoding-link.json",
 			"cases/parsoid-sections/parsoid-sections-transcludedFrom.json",
 			"qunit/modifier.test.js",
-			"qunit/controller.test.js",
 			"qunit/parser.test.js"
 		],
 		"templates": [

@@ -50,6 +50,40 @@ class CommentModifier {
 	}
 
 	/**
+	 * Auto-sign a wikitext string
+	 *
+	 * @param string $wikitext Wikitext
+	 * @return string
+	 */
+	public static function autoSignWikitext( string $wikitext ) : string {
+		$wikitext = trim( $wikitext );
+		if ( preg_match( '/~{3,5}$/', $wikitext, $matches ) ) {
+			// Sig detected, check it has the correct number of tildes
+			if ( strlen( $matches[ 0 ] ) !== 4 ) {
+				$wikitext = substr( $wikitext, 0, -strlen( $matches[ 0 ] ) ) . '~~~~';
+			}
+			// Otherwise 4 tilde signature is left alone,
+			// with any adjacent characters
+		} else {
+			// No sig, append separator and sig
+			$wikitext .= wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+		}
+		return $wikitext;
+	}
+
+	/**
+	 * Remove extra linebreaks from a wikitext string
+	 *
+	 * @param string $wikitext Wikitext
+	 * @return string
+	 */
+	public static function sanitizeWikitextLinebreaks( string $wikitext ) : string {
+		$wikitext = preg_replace( "/\r/", "\n", $wikitext );
+		$wikitext = preg_replace( "/\n+/", "\n", $wikitext );
+		return $wikitext;
+	}
+
+	/**
 	 * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
 	 * the comment.
 	 *
@@ -343,6 +377,13 @@ class CommentModifier {
 	public static function addWikitextReply( $comment, $wikitext ) {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = $doc->createElement( 'div' );
+
+		// Use autoSign to avoid double signing
+		$wikitext = self::sanitizeWikitextLinebreaks(
+			self::autoSignWikitext(
+				$wikitext
+			)
+		);
 
 		$lines = explode( "\n", $wikitext );
 		foreach ( $lines as $line ) {

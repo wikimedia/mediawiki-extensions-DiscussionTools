@@ -21,6 +21,41 @@ function whitespaceParsoidHack( listItem ) {
 }
 
 /**
+ * Auto-sign a wikitext string
+ *
+ * @param {string} wikitext Wikitext
+ * @return {string}
+ */
+function autoSignWikitext( wikitext ) {
+	var matches;
+	wikitext = wikitext.trim();
+	if ( ( matches = wikitext.match( /~{3,5}$/ ) ) ) {
+		// Sig detected, check it has the correct number of tildes
+		if ( matches[ 0 ].length !== 4 ) {
+			wikitext = wikitext.slice( 0, -matches[ 0 ].length ) + '~~~~';
+		}
+		// Otherwise 4 tilde signature is left alone,
+		// with any adjacent characters
+	} else {
+		// No sig, append separator and sig
+		wikitext += mw.msg( 'discussiontools-signature-prefix' ) + '~~~~';
+	}
+	return wikitext;
+}
+
+/**
+ * Remove extra linebreaks from a wikitext string
+ *
+ * @param {string} wikitext Wikitext
+ * @return {string}
+ */
+function sanitizeWikitextLinebreaks( wikitext ) {
+	return wikitext
+		.replace( /\r/g, '\n' )
+		.replace( /\n+/g, '\n' );
+}
+
+/**
  * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
  * the comment.
  *
@@ -334,6 +369,14 @@ function addReply( comment, container ) {
 function addWikitextReply( comment, wikitext ) {
 	var doc = comment.range.endContainer.ownerDocument,
 		container = doc.createElement( 'div' );
+
+	// Use autoSign to avoid double signing
+	wikitext = sanitizeWikitextLinebreaks(
+		autoSignWikitext(
+			wikitext
+		)
+	);
+
 	wikitext.split( '\n' ).forEach( function ( line ) {
 		var p = doc.createElement( 'p' );
 		p.appendChild( createWikitextNode( doc, line ) );
@@ -385,5 +428,7 @@ module.exports = {
 	unwrapList: unwrapList,
 	createWikitextNode: createWikitextNode,
 	addWikitextReply: addWikitextReply,
-	addHtmlReply: addHtmlReply
+	addHtmlReply: addHtmlReply,
+	autoSignWikitext: autoSignWikitext,
+	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks
 };

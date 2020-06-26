@@ -110,4 +110,44 @@ class CommentModifierTest extends CommentTestCase {
 	public function provideUnwrapList() : array {
 		return self::getJson( '../cases/unwrap.json' );
 	}
+
+	/**
+	 * @dataProvider provideAutoSignWikitext
+	 * @covers ::autoSignWikitext
+	 */
+	public function testAutoSignWikitext(
+		string $msg, string $wikitext, string $expected, ?string $prefix = null
+	) : void {
+		if ( $prefix !== null ) {
+			// TODO: Work out how to mock messages
+			self::assertTrue( true );
+			return;
+		}
+
+		self::assertEquals(
+			$expected,
+			CommentModifier::autoSignWikitext( $wikitext ),
+			$msg
+		);
+	}
+
+	public function provideAutoSignWikitext() : array {
+		return self::getJson( '../cases/auto-sign-wikitext.json' );
+	}
+
+	/**
+	 * @dataProvider provideSanitizeWikitextLinebreaks
+	 * @covers ::autoSignWikitext
+	 */
+	public function testSanitizeWikitextLinebreaks( string $msg, string $wikitext, string $expected ) : void {
+		self::assertEquals(
+			$expected,
+			CommentModifier::sanitizeWikitextLinebreaks( $wikitext ),
+			$msg
+		);
+	}
+
+	public function provideSanitizeWikitextLinebreaks() : array {
+		return self::getJson( '../cases/sanitize-wikitext-linebreaks.json' );
+	}
 }

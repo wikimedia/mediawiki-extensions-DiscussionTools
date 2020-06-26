@@ -265,16 +265,8 @@ CommentController.prototype.teardown = function ( abandoned ) {
 };
 
 CommentController.prototype.postReply = function ( comment ) {
-	var wikitext;
-
 	if ( this.replyWidget.getMode() === 'source' ) {
-		// Use autoSign to avoid double signing
-		wikitext = controller.sanitizeWikitextLinebreaks(
-			controller.autoSignWikitext(
-				this.replyWidget.getValue()
-			)
-		);
-		modifier.addWikitextReply( comment, wikitext );
+		modifier.addWikitextReply( comment, this.replyWidget.getValue() );
 	} else {
 		modifier.addHtmlReply( comment, this.replyWidget.getValue() );
 	}
@@ -382,7 +374,7 @@ CommentController.prototype.switchToWikitext = function () {
 	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, false );
 
 	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
-		wikitext = controller.sanitizeWikitextLinebreaks( wikitext );
+		wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
 
 		// To prevent the "Reply" / "Cancel" buttons from shifting when the preview loads,
 		// wait for the preview (but no longer than 500 ms) before swithing the editors.
@@ -409,7 +401,7 @@ CommentController.prototype.switchToVisual = function () {
 		pageData = oldWidget.parsoidData.pageData,
 		commentController = this;
 
-	wikitext = controller.sanitizeWikitextLinebreaks( wikitext ).trim();
+	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext ).trim();
 	if ( wikitext ) {
 		wikitext = wikitext.split( '\n' ).map( function ( line ) {
 			return ':' + line;

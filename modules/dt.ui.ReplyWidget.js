@@ -1,4 +1,5 @@
 var controller = require( 'ext.discussionTools.init' ).controller,
+	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	logger = require( 'ext.discussionTools.init' ).logger;
 
@@ -383,8 +384,8 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	if ( !wikitext.trim() ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
-		wikitext = controller.sanitizeWikitextLinebreaks(
-			controller.autoSignWikitext( wikitext )
+		wikitext = modifier.sanitizeWikitextLinebreaks(
+			modifier.autoSignWikitext( wikitext )
 		);
 		// Drop opacity of signature in preview to make message body preview clearer.
 		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.6;">~~~~</span>';
