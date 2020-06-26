@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentModifier
@@ -97,13 +98,13 @@ class CommentModifierTest extends CommentTestCase {
 	 * @covers ::unwrapList
 	 */
 	public function testUnwrapList( string $name, string $html, int $index, string $expected ) : void {
-		$doc = self::createDocument( '<div>' . $html . '</div>' );
-		$expectedDoc = self::createDocument( '<div>' . $expected . '</div>' );
-		$container = $doc->getElementsByTagName( 'body' )->item( 0 )->firstChild;
+		$doc = self::createDocument( '' );
+		$container = $doc->createElement( 'div' );
 
+		DOMCompat::setInnerHTML( $container, $html );
 		CommentModifier::unwrapList( $container->childNodes[$index] );
 
-		self::assertEquals( $expectedDoc->documentElement, $doc->documentElement );
+		self::assertEquals( $expected, DOMCompat::getInnerHTML( $container ) );
 	}
 
 	public function provideUnwrapList() : array {
