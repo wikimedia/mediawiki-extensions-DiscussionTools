@@ -146,10 +146,10 @@ ve.ui.commandRegistry.register(
 	)
 );
 ve.ui.sequenceRegistry.register(
-	new ve.ui.Sequence( 'autocompleteMWUsernames', 'openMWUsernameCompletions', '@', 0, false, false, true )
+	new ve.ui.Sequence( 'autocompleteMWUsernames', 'openMWUsernameCompletions', '@', 0, false, false, true, true )
 );
 ve.ui.wikitextSequenceRegistry.register(
-	new ve.ui.Sequence( 'autocompleteMWUsernamesWikitext', 'openMWUsernameCompletions', '@', 0, false, false, true )
+	new ve.ui.Sequence( 'autocompleteMWUsernamesWikitext', 'openMWUsernameCompletions', '@', 0, false, false, true, true )
 );
 
 module.exports = MWUsernameCompletionAction;
