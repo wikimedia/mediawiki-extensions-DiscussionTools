@@ -132,7 +132,9 @@
 				"dt-ve/CommentTarget.js",
 				"dt-ve/CommentTargetWidget.js",
 				"dt-ve/dt.ui.UsernameCompletionAction.js",
-				"dt-ve/dt.ui.UsernameCompletionTool.js"
+				"dt-ve/dt.ui.UsernameCompletionTool.js",
+				"dt-ve/dt.dm.PingNode.js",
+				"dt-ve/dt.ce.PingNode.js"
 			],
 			"styles": [
 				"dt-ve/CommentTargetWidget.less"

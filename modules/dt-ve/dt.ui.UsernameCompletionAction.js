@@ -111,16 +111,19 @@ MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range )
 	var fragment,
 		// TODO: Allow output customisation (T250332)
 		prefix = '@',
-		title = mw.Title.newFromText( word, mw.config.get( 'wgNamespaceIds' ).user ),
-		annotation = ve.dm.MWInternalLinkAnnotation.static.newFromTitle( title );
+		title = mw.Title.newFromText( word, mw.config.get( 'wgNamespaceIds' ).user );
+
 	if ( this.surface.getMode() === 'source' ) {
 		// TODO: this should be configurable per-wiki so that e.g. custom templates can be used
 		word = prefix + '[[' + title.getPrefixedText() + '|' + word + ']]';
 		return MWUsernameCompletionAction.super.prototype.insertCompletion.call( this, word, range );
 	}
-	fragment = MWUsernameCompletionAction.super.prototype.insertCompletion.apply( this, arguments )
-		.annotateContent( 'clear', 'link' ).annotateContent( 'clear', 'link/mwInternal' )
-		.annotateContent( 'set', annotation );
+
+	fragment = this.surface.getModel().getLinearFragment( range );
+	fragment.removeContent().insertContent( [
+		{ type: 'mwPing', attributes: { user: word } },
+		{ type: '/mwPing' }
+	] );
 
 	fragment.collapseToStart().insertContent( '@' );
 

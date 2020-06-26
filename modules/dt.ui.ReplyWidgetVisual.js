@@ -2,6 +2,8 @@ var CommentTargetWidget = require( './dt-ve/CommentTargetWidget.js' );
 
 require( './dt-ve/dt.ui.UsernameCompletionAction.js' );
 require( './dt-ve/dt.ui.UsernameCompletionTool.js' );
+require( './dt-ve/dt.dm.PingNode.js' );
+require( './dt-ve/dt.ce.PingNode.js' );
 
 /**
  * DiscussionTools ReplyWidgetVisual class
