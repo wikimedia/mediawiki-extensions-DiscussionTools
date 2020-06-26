@@ -265,45 +265,58 @@ CommentController.prototype.teardown = function ( abandoned ) {
 	}
 };
 
-CommentController.prototype.postReply = function ( parsoidData ) {
-	var wikitext, doc, container, newParsoidItem, childNodeList,
-		comment = parsoidData.comment;
+CommentController.prototype.createCommentContainerFromWikitext = function ( doc, wikitext ) {
+	var container = doc.createElement( 'div' );
+	wikitext.split( '\n' ).forEach( function ( line ) {
+		var p = doc.createElement( 'p' );
+		p.appendChild( modifier.createWikitextNode( doc, line ) );
+		container.appendChild( p );
+	} );
+	return container;
+};
 
-	doc = comment.range.endContainer.ownerDocument;
-	container = doc.createElement( 'div' );
+CommentController.prototype.createCommentContainerFromHtml = function ( doc, html ) {
+	var childNodeList,
+		container = doc.createElement( 'div' );
+
+	container.innerHTML = html;
+	// Remove empty lines
+	// This should really be anything that serializes to empty string in wikitext,
+	// (e.g. <h2></h2>) but this will catch most cases
+	// Create a non-live child node list, so we don't have to worry about it changing
+	// as nodes are removed.
+	childNodeList = Array.prototype.slice.call( container.childNodes );
+	childNodeList.forEach( function ( node ) {
+		if ( node.nodeName.toLowerCase() === 'p' && !utils.htmlTrim( node.innerHTML ) ) {
+			container.removeChild( node );
+		}
+	} );
+	// If the last node isn't a paragraph (e.g. it's a list), then
+	// add another paragraph to contain the signature.
+	if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
+		container.appendChild( doc.createElement( 'p' ) );
+	}
+	// Sign the last line
+	// TODO: Check if the user tried to sign in visual mode by typing wikitext?
+	// TODO: When we implement posting new topics, the leading space will create an indent-pre
+	container.lastChild.appendChild( modifier.createWikitextNode( doc, mw.msg( 'discussiontools-signature-prefix' ) + '~~~~' ) );
+	return container;
+};
+
+CommentController.prototype.postReply = function ( comment ) {
+	var container, newParsoidItem, wikitext,
+		doc = comment.range.endContainer.ownerDocument;
 
 	if ( this.replyWidget.getMode() === 'source' ) {
-		// Convert wikitext to comment DOM
-		wikitext = this.replyWidget.getValue();
 		// Use autoSign to avoid double signing
-		wikitext = controller.sanitizeWikitextLinebreaks( controller.autoSignWikitext( wikitext ) );
-		wikitext.split( '\n' ).forEach( function ( line ) {
-			var p = doc.createElement( 'p' );
-			p.appendChild( modifier.createWikitextNode( doc, line ) );
-			container.appendChild( p );
-		} );
+		wikitext = controller.sanitizeWikitextLinebreaks(
+			controller.autoSignWikitext(
+				this.replyWidget.getValue()
+			)
+		);
+		container = this.createCommentContainerFromWikitext( doc, wikitext );
 	} else {
-		container.innerHTML = this.replyWidget.getValue();
-		// Remove empty lines
-		// This should really be anything that serializes to empty string in wikitext,
-		// (e.g. <h2></h2>) but this will catch most cases
-		// Create a non-live child node list, so we don't have to worry about it changing
-		// as nodes are removed.
-		childNodeList = Array.prototype.slice.call( container.childNodes );
-		childNodeList.forEach( function ( node ) {
-			if ( node.nodeName.toLowerCase() === 'p' && !utils.htmlTrim( node.innerHTML ) ) {
-				container.removeChild( node );
-			}
-		} );
-		// If the last node isn't a paragraph (e.g. it's a list), then
-		// add another paragraph to contain the signature.
-		if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
-			container.appendChild( doc.createElement( 'p' ) );
-		}
-		// Sign the last line
-		// TODO: Check if the user tried to sign in visual mode by typing wikitext?
-		// TODO: When we implement posting new topics, the leading space will create an indent-pre
-		container.lastChild.appendChild( modifier.createWikitextNode( doc, mw.msg( 'discussiontools-signature-prefix' ) + '~~~~' ) );
+		container = this.createCommentContainerFromHtml( doc, this.replyWidget.getValue() );
 	}
 
 	// Transfer comment DOM to Parsoid DOM
@@ -319,19 +332,17 @@ CommentController.prototype.postReply = function ( parsoidData ) {
 		}
 		newParsoidItem.appendChild( container.firstChild );
 	}
-
-	return $.Deferred().resolve().promise();
 };
 
 CommentController.prototype.save = function ( parsoidData ) {
-	var root, summaryPrefix, summary, postPromise, savePromise,
+	var root, summaryPrefix, summary, savePromise,
 		mode = this.replyWidget.getMode(),
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData,
 		commentController = this;
 
 	// Update the Parsoid DOM
-	postPromise = this.postReply( parsoidData );
+	this.postReply( parsoidData.comment );
 
 	root = comment;
 	while ( root && root.type !== 'heading' ) {
@@ -346,7 +357,7 @@ CommentController.prototype.save = function ( parsoidData ) {
 
 	summary = summaryPrefix + mw.msg( 'discussiontools-defaultsummary-reply' );
 
-	return $.when( this.replyWidget.checkboxesPromise, postPromise ).then( function ( checkboxes ) {
+	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
 		var captchaInput = commentController.replyWidget.captchaInput,
 			data = {
 				page: pageData.pageName,
