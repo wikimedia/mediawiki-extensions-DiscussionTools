@@ -304,7 +304,7 @@ CommentController.prototype.createCommentContainerFromHtml = function ( doc, htm
 };
 
 CommentController.prototype.postReply = function ( comment ) {
-	var container, newParsoidItem, wikitext,
+	var container, wikitext,
 		doc = comment.range.endContainer.ownerDocument;
 
 	if ( this.replyWidget.getMode() === 'source' ) {
@@ -319,19 +319,7 @@ CommentController.prototype.postReply = function ( comment ) {
 		container = this.createCommentContainerFromHtml( doc, this.replyWidget.getValue() );
 	}
 
-	// Transfer comment DOM to Parsoid DOM
-	// Wrap every root node of the document in a new list item (dd/li).
-	// In wikitext mode every root node is a paragraph.
-	// In visual mode the editor takes care of preventing problematic nodes
-	// like <table> or <h2> from ever occurring in the comment.
-	while ( container.children.length ) {
-		if ( !newParsoidItem ) {
-			newParsoidItem = modifier.addListItem( comment );
-		} else {
-			newParsoidItem = modifier.addSiblingListItem( newParsoidItem );
-		}
-		newParsoidItem.appendChild( container.firstChild );
-	}
+	modifier.addReply( comment, container );
 };
 
 CommentController.prototype.save = function ( parsoidData ) {

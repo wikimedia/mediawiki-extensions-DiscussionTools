@@ -292,6 +292,30 @@ function addSiblingListItem( previousItem ) {
 	return listItem;
 }
 
+/**
+ * Add a reply to a specific comment
+ *
+ * @param {CommentItem} comment Comment being replied to
+ * @param {HTMLElement} container Container of comment DOM nodes
+ */
+function addReply( comment, container ) {
+	var newParsoidItem;
+
+	// Transfer comment DOM to Parsoid DOM
+	// Wrap every root node of the document in a new list item (dd/li).
+	// In wikitext mode every root node is a paragraph.
+	// In visual mode the editor takes care of preventing problematic nodes
+	// like <table> or <h2> from ever occurring in the comment.
+	while ( container.childNodes.length ) {
+		if ( !newParsoidItem ) {
+			newParsoidItem = addListItem( comment );
+		} else {
+			newParsoidItem = addSiblingListItem( newParsoidItem );
+		}
+		newParsoidItem.appendChild( container.firstChild );
+	}
+}
+
 function createWikitextNode( doc, wt ) {
 	var span = doc.createElement( 'span' );
 
@@ -303,6 +327,7 @@ function createWikitextNode( doc, wt ) {
 
 module.exports = {
 	addReplyLink: addReplyLink,
+	addReply: addReply,
 	addListItem: addListItem,
 	removeAddedListItem: removeAddedListItem,
 	addSiblingListItem: addSiblingListItem,
