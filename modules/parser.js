@@ -178,9 +178,7 @@ function getTimestampRegexp( format, digitsRegexp, tzAbbrs ) {
  * @param {string} localTimezone Local timezone IANA name, e.g. `America/New_York`
  * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
- * @return {Function} Parser function
- * @return {Array} return.match Regexp match data
- * @return {Object} return.return Moment object
+ * @return {TimestampParser} Timestamp parser function
  */
 function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
 	var p, code, endQuote, matchingGroups = [];
@@ -243,6 +241,16 @@ function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
 		);
 	}
 
+	/**
+	 * @typedef {function(Array):moment} TimestampParser
+	 */
+
+	/**
+	 * Timestamp parser
+	 *
+	 * @param {Array} match RegExp match data
+	 * @return {moment} Moment date object
+	 */
 	return function timestampParser( match ) {
 		var
 			year = 0,
@@ -363,9 +371,7 @@ function getLocalTimestampRegexp() {
  * This calls #getTimestampParser with predefined data for the current wiki.
  *
  * @private
- * @return {Function} Parser function
- * @return {Array} return.match Regexp match data
- * @return {Date} return.return
+ * @return {TimestampParser} Timestamp parser function
  */
 function getLocalTimestampParser() {
 	return getTimestampParser(
@@ -395,10 +401,10 @@ function acceptOnlyNodesAllowingComments( node ) {
  * Find all timestamps within a DOM subtree.
  *
  * @param {HTMLElement} rootNode Node to search
- * @return {Array[]} Results. Each result is a two-element array.
- * @return {Text} return.0 Text node containing the timestamp
- * @return {Array} return.1 Regexp match data, which specifies the location of the match, and which
- *   can be parsed using #getLocalTimestampParser
+ * @return {[Text, Array]} Results. Each result is a tuple containing:
+ *  - Text node containing the timestamp
+ *  - Regexp match data, which specifies the location of the match, and which
+ *    can be parsed using #getLocalTimestampParser
  */
 function findTimestamps( rootNode ) {
 	var
@@ -496,10 +502,10 @@ function getTitleFromUrl( url ) {
  * @private
  * @param {Text} timestampNode Text node
  * @param {Node} [until] Node to stop searching at
- * @return {Array} Result, a two-element array
- * @return {Node[]} return.0 Sibling nodes comprising the signature, in reverse order (with
+ * @return {[Node[], string|null]} Result, a tuple contaning:
+ *  - Sibling nodes comprising the signature, in reverse order (with
  *   `timestampNode` or its parent node as the first element)
- * @return {string|null} return.1 Username, null for unsigned comments
+ *  - Username, null for unsigned comments
  */
 function findSignature( timestampNode, until ) {
 	var node, sigNodes, sigUsername, length, lastLinkNode, links, nodes;
@@ -680,32 +686,19 @@ function nextInterestingLeafNode( node, rootNode ) {
  * This function would return a structure like:
  *
  *     [
- *       { type: 'heading', level: 0, range: (h2: A)        },
- *       { type: 'comment', level: 1, range: (p: B)         },
- *       { type: 'comment', level: 2, range: (li: C, li: C) },
- *       { type: 'comment', level: 3, range: (li: D)        },
- *       { type: 'comment', level: 4, range: (li: E)        },
- *       { type: 'comment', level: 4, range: (li: F)        },
- *       { type: 'comment', level: 2, range: (li: G)        },
- *       { type: 'comment', level: 1, range: (p: H)         },
- *       { type: 'comment', level: 2, range: (li: I)        }
+ *       HeadingItem( { level: 0, range: (h2: A)        } ),
+ *       CommentItem( { level: 1, range: (p: B)         } ),
+ *       CommentItem( { level: 2, range: (li: C, li: C) } ),
+ *       CommentItem( { level: 3, range: (li: D)        } ),
+ *       CommentItem( { level: 4, range: (li: E)        } ),
+ *       CommentItem( { level: 4, range: (li: F)        } ),
+ *       CommentItem( { level: 2, range: (li: G)        } ),
+ *       CommentItem( { level: 1, range: (p: H)         } ),
+ *       CommentItem( { level: 2, range: (li: I)        } )
  *     ]
  *
  * @param {HTMLElement} rootNode
- * @return {ThreadItem[]} Results. Each result is an object.
- * @return {string} return.type `heading` or `comment`
- * @return {Object} return.range Object describing the extent of the comment, including the
- *   signature and timestamp. It has the same properties as a Range object: `startContainer`,
- *   `startOffset`, `endContainer`, `endOffset` (we don't use a real Range because they change
- *   magically when the DOM structure changes).
- * @return {Object[]} [return.signatureRanges] Objects describing the extent of signatures (plus
- *   timestamps) for this comment. There is always at least one signature, but there may be
- *   multiple. The author and timestamp of the comment is determined from the first signature.
- *   The last node in every signature range is a node containing the timestamp.
- * @return {number} return.level Indentation level of the comment. Headings are `0`, comments start
- *   at `1`.
- * @return {Object} [return.timestamp] Timestamp (Moment object), undefined for headings
- * @return {string} [return.author] Comment author's username, undefined for headings
+ * @return {ThreadItem[]} Thread items
  */
 function getComments( rootNode ) {
 	var
@@ -859,29 +852,24 @@ function getComments( rootNode ) {
  * This function would return a structure like:
  *
  *     [
- *       { type: 'heading', level: 0, range: (h2: A), replies: [
- *         { type: 'comment', level: 1, range: (p: B), replies: [
- *           { type: 'comment', level: 2, range: (li: C, li: C), replies: [
- *             { type: 'comment', level: 3, range: (li: D), replies: [
- *               { type: 'comment', level: 4, range: (li: E), replies: [] },
- *               { type: 'comment', level: 4, range: (li: F), replies: [] },
+ *       HeadingItem( { level: 0, range: (h2: A), replies: [
+ *         CommentItem( { level: 1, range: (p: B), replies: [
+ *           CommentItem( { level: 2, range: (li: C, li: C), replies: [
+ *             CommentItem( { level: 3, range: (li: D), replies: [
+ *               CommentItem( { level: 4, range: (li: E), replies: [] },
+ *               CommentItem( { level: 4, range: (li: F), replies: [] },
  *             ] },
  *           ] },
- *           { type: 'comment', level: 2, range: (li: G), replies: [] },
+ *           CommentItem( { level: 2, range: (li: G), replies: [] },
  *         ] },
- *         { type: 'comment', level: 1, range: (p: H), replies: [
- *           { type: 'comment', level: 2, range: (li: I), replies: [] },
+ *         CommentItem( { level: 1, range: (p: H), replies: [
+ *           CommentItem( { level: 2, range: (li: I), replies: [] },
  *         ] },
- *       ] },
+ *       ] } )
  *     ]
  *
- * @param {ThreadItem} comments Result of #getComments
- * @return {HeadingItem[]} Tree structure of comments, using the same objects as `comments`. Top-level
- *   items are the headings. The following properties are added:
- * @return {string} return.id Unique ID (within the page) for this comment, intended to be used to
- *   find this comment in other revisions of the same page
- * @return {Object[]} return.replies Comment objects which are replies to this comment
- * @return {Object|null} return.parent Comment object which this is a reply to (null for headings)
+ * @param {ThreadItem[]} comments Result of #getComments
+ * @return {HeadingItem[]} Tree structure of comments, top-level items are the headings.
  */
 function groupThreads( comments ) {
 	var
