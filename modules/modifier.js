@@ -292,6 +292,15 @@ function addSiblingListItem( previousItem ) {
 	return listItem;
 }
 
+function createWikitextNode( doc, wt ) {
+	var span = doc.createElement( 'span' );
+
+	span.setAttribute( 'typeof', 'mw:Transclusion' );
+	span.setAttribute( 'data-mw', JSON.stringify( { parts: [ wt ] } ) );
+
+	return span;
+}
+
 /**
  * Add a reply to a specific comment
  *
@@ -316,21 +325,65 @@ function addReply( comment, container ) {
 	}
 }
 
-function createWikitextNode( doc, wt ) {
-	var span = doc.createElement( 'span' );
+/**
+ * Create a container of comment DOM nodes from wikitext
+ *
+ * @param {CommentItem} comment Comment being replied to
+ * @param {string} wikitext Wikitext
+ */
+function addWikitextReply( comment, wikitext ) {
+	var doc = comment.range.endContainer.ownerDocument,
+		container = doc.createElement( 'div' );
+	wikitext.split( '\n' ).forEach( function ( line ) {
+		var p = doc.createElement( 'p' );
+		p.appendChild( createWikitextNode( doc, line ) );
+		container.appendChild( p );
+	} );
+	addReply( comment, container );
+}
 
-	span.setAttribute( 'typeof', 'mw:Transclusion' );
-	span.setAttribute( 'data-mw', JSON.stringify( { parts: [ wt ] } ) );
+/**
+ * Create a container of comment DOM nodes from HTML
+ *
+ * @param {CommentItem} comment Comment being replied to
+ * @param {string} html HTML
+ */
+function addHtmlReply( comment, html ) {
+	var doc = comment.range.endContainer.ownerDocument,
+		childNodeList,
+		container = doc.createElement( 'div' );
 
-	return span;
+	container.innerHTML = html;
+	// Remove empty lines
+	// This should really be anything that serializes to empty string in wikitext,
+	// (e.g. <h2></h2>) but this will catch most cases
+	// Create a non-live child node list, so we don't have to worry about it changing
+	// as nodes are removed.
+	childNodeList = Array.prototype.slice.call( container.childNodes );
+	childNodeList.forEach( function ( node ) {
+		if ( node.nodeName.toLowerCase() === 'p' && !utils.htmlTrim( node.innerHTML ) ) {
+			container.removeChild( node );
+		}
+	} );
+	// If the last node isn't a paragraph (e.g. it's a list), then
+	// add another paragraph to contain the signature.
+	if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
+		container.appendChild( doc.createElement( 'p' ) );
+	}
+	// Sign the last line
+	// TODO: Check if the user tried to sign in visual mode by typing wikitext?
+	// TODO: When we implement posting new topics, the leading space will create an indent-pre
+	container.lastChild.appendChild( createWikitextNode( doc, mw.msg( 'discussiontools-signature-prefix' ) + '~~~~' ) );
+	addReply( comment, container );
 }
 
 module.exports = {
 	addReplyLink: addReplyLink,
-	addReply: addReply,
 	addListItem: addListItem,
 	removeAddedListItem: removeAddedListItem,
 	addSiblingListItem: addSiblingListItem,
 	unwrapList: unwrapList,
-	createWikitextNode: createWikitextNode
+	createWikitextNode: createWikitextNode,
+	addWikitextReply: addWikitextReply,
+	addHtmlReply: addHtmlReply
 };

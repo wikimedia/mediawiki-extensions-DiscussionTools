@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use DOMDocument;
 use DOMElement;
 use DOMNode;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentModifier {
 
@@ -295,6 +296,22 @@ class CommentModifier {
 	}
 
 	/**
+	 * Create an element that will convert to the provided wikitext
+	 *
+	 * @param DOMDocument $doc Document
+	 * @param string $wt Wikitext
+	 * @return DOMElement Element
+	 */
+	public static function createWikitextNode( DOMDocument $doc, string $wt ) : DOMElement {
+		$span = $doc->createElement( 'span' );
+
+		$span->setAttribute( 'typeof', 'mw:Transclusion' );
+		$span->setAttribute( 'data-mw', json_encode( [ 'parts' => [ $wt ] ] ) );
+
+		return $span;
+	}
+
+	/**
 	 * Add a reply to a specific comment
 	 *
 	 * @param CommentItem $comment Comment being replied to
@@ -318,18 +335,64 @@ class CommentModifier {
 	}
 
 	/**
-	 * Create an element that will convert to the provided wikitext
+	 * Create a container of comment DOM nodes from wikitext
 	 *
-	 * @param DOMDocument $doc Document
-	 * @param string $wt Wikitext
-	 * @return DOMElement Element
+	 * @param CommentItem $comment Comment being replied to
+	 * @param string $wikitext Wikitext
 	 */
-	public static function createWikitextNode( DOMDocument $doc, string $wt ) : DOMElement {
-		$span = $doc->createElement( 'span' );
+	public static function addWikitextReply( $comment, $wikitext ) {
+		$doc = $comment->getRange()->endContainer->ownerDocument;
+		$container = $doc->createElement( 'div' );
 
-		$span->setAttribute( 'typeof', 'mw:Transclusion' );
-		$span->setAttribute( 'data-mw', json_encode( [ 'parts' => [ $wt ] ] ) );
-
-		return $span;
+		$lines = explode( "\n", $wikitext );
+		foreach ( $lines as $line ) {
+			$p = $doc->createElement( 'p' );
+			$p->appendChild( self::createWikitextNode( $doc, $line ) );
+			$container->appendChild( $p );
+		}
+		self::addReply( $comment, $container );
 	}
+
+	/**
+	 * Create a container of comment DOM nodes from HTML
+	 *
+	 * @param CommentItem $comment Comment being replied to
+	 * @param string $html HTML
+	 */
+	public static function addHtmlReply( $comment, $html ) {
+		$doc = $comment->getRange()->endContainer->ownerDocument;
+		$container = $doc->createElement( 'div' );
+
+		DOMCompat::setInnerHTML( $container, $html );
+		// Remove empty lines
+		// This should really be anything that serializes to empty string in wikitext,
+		// (e.g. <h2></h2>) but this will catch most cases
+		// Create a non-live child node list, so we don't have to worry about it changing
+		// as nodes are removed.
+		$childNodeList = iterator_to_array( $container->childNodes );
+		foreach ( $childNodeList as $node ) {
+			if (
+				strtolower( $node->nodeName ) === 'p' &&
+				CommentUtils::htmlTrim( DOMCompat::getInnerHTML( $node ) ) === ''
+			) {
+				$container->removeChild( $node );
+			}
+		}
+		// If the last node isn't a paragraph (e.g. it's a list), then
+		// add another paragraph to contain the signature.
+		if ( strtolower( $container->lastChild->nodeName ) !== 'p' ) {
+			$container->appendChild( $doc->createElement( 'p' ) );
+		}
+		// Sign the last line
+		// TODO: Check if the user tried to sign in visual mode by typing wikitext?
+		// TODO: When we implement posting new topics, the leading space will create an indent-pre
+		$container->lastChild->appendChild(
+			self::createWikitextNode(
+				$doc,
+				wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~'
+			)
+		);
+		self::addReply( $comment, $container );
+	}
+
 }
