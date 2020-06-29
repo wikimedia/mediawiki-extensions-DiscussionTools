@@ -2,6 +2,7 @@ var ThreadItem = require( './ThreadItem.js' );
 
 /**
  * @external moment
+ * @external HeadingItem
  */
 
 /**
@@ -40,5 +41,16 @@ function CommentItem( level, range, signatureRanges, timestamp, author ) {
 }
 
 OO.inheritClass( CommentItem, ThreadItem );
+
+/**
+ * @return {HeadingItem} Closest ancestor which is a HeadingItem
+ */
+CommentItem.prototype.getHeading = function () {
+	var parent = this;
+	while ( parent && parent.type !== 'heading' ) {
+		parent = parent.parent;
+	}
+	return parent;
+};
 
 module.exports = CommentItem;

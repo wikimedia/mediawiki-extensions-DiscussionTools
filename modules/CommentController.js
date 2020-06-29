@@ -273,7 +273,7 @@ CommentController.prototype.postReply = function ( comment ) {
 };
 
 CommentController.prototype.save = function ( parsoidData ) {
-	var root, summaryPrefix, summary, savePromise,
+	var heading, summaryPrefix, summary, savePromise,
 		mode = this.replyWidget.getMode(),
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData,
@@ -282,15 +282,12 @@ CommentController.prototype.save = function ( parsoidData ) {
 	// Update the Parsoid DOM
 	this.postReply( parsoidData.comment );
 
-	root = comment;
-	while ( root && root.type !== 'heading' ) {
-		root = root.parent;
-	}
-	if ( root.placeholderHeading ) {
+	heading = comment.getHeading();
+	if ( heading.placeholderHeading ) {
 		// This comment is in 0th section, there's no section title for the edit summary
 		summaryPrefix = '';
 	} else {
-		summaryPrefix = '/* ' + root.range.startContainer.innerText + ' */ ';
+		summaryPrefix = '/* ' + heading.range.startContainer.innerText + ' */ ';
 	}
 
 	summary = summaryPrefix + mw.msg( 'discussiontools-defaultsummary-reply' );
