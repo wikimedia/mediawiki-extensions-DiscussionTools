@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geraki"
+			"Geraki",
+			"Norhorn"
 		]
 	},
 	"discussiontools": "Εργαλεία συζήτησης",
@@ -13,7 +14,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Δεν έχετε συνδεθεί.</strong> Για να λάβετε απόδοση πατρότητας με το όνομά σας αντί για τη διεύθυνση IP, μπορείτε να [$1 συνδεθείτε] ή να [$2 δημιουργήσετε έναν λογαριασμό].",
 	"discussiontools-replywidget-cancel": "Ακύρωση",
 	"discussiontools-replywidget-loading": "Φόρτωση…",
-	"discussiontools-replywidget-mention-tool-title": "Αναφορά ενός χρήστη",
+	"discussiontools-replywidget-mention-tool-title": "Μνημονεύστε έναν χρήστη",
 	"discussiontools-replywidget-placeholder-reply": "Απάντηση σε {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Προεπισκόπηση",
 	"discussiontools-replywidget-reply": "Απάντηση",
