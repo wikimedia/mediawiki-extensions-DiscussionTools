@@ -255,51 +255,34 @@ CommentController.prototype.teardown = function ( abandoned ) {
 	}
 };
 
-CommentController.prototype.postReply = function ( comment ) {
-	if ( this.replyWidget.getMode() === 'source' ) {
-		modifier.addWikitextReply( comment, this.replyWidget.getValue() );
-	} else {
-		modifier.addHtmlReply( comment, this.replyWidget.getValue() );
-	}
-};
-
 CommentController.prototype.save = function ( parsoidData ) {
-	var heading, summaryPrefix, summary, savePromise,
-		mode = this.replyWidget.getMode(),
+	var savePromise,
 		comment = parsoidData.comment,
 		pageData = parsoidData.pageData,
+		replyWidget = this.replyWidget,
 		commentController = this;
-
-	// Update the Parsoid DOM
-	this.postReply( parsoidData.comment );
-
-	heading = comment.getHeading();
-	if ( heading.placeholderHeading ) {
-		// This comment is in 0th section, there's no section title for the edit summary
-		summaryPrefix = '';
-	} else {
-		summaryPrefix = '/* ' + heading.range.startContainer.innerText + ' */ ';
-	}
-
-	summary = summaryPrefix + mw.msg( 'discussiontools-defaultsummary-reply' );
 
 	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
 		var captchaInput = commentController.replyWidget.captchaInput,
 			data = {
+				action: 'discussiontoolsedit',
+				paction: 'addcomment',
 				page: pageData.pageName,
-				oldid: pageData.oldId,
-				summary: summary,
-				baserevid: pageData.oldId,
-				starttimestamp: pageData.startTimeStamp,
-				etag: pageData.etag,
+				commentid: comment.id,
 				assert: mw.user.isAnon() ? 'anon' : 'user',
 				assertuser: mw.user.getName() || undefined,
 				dttags: [
 					'discussiontools',
 					'discussiontools-reply',
-					'discussiontools-' + mode
+					'discussiontools-' + replyWidget.getMode()
 				].join( ',' )
 			};
+
+		if ( replyWidget.getMode() === 'source' ) {
+			data.wikitext = replyWidget.getValue();
+		} else {
+			data.html = replyWidget.getValue();
+		}
 
 		if ( captchaInput ) {
 			data.captchaid = captchaInput.getCaptchaId();
@@ -312,8 +295,7 @@ CommentController.prototype.save = function ( parsoidData ) {
 				'unwatch';
 		}
 
-		savePromise = mw.libs.ve.targetSaver.saveDoc(
-			parsoidData.doc,
+		savePromise = mw.libs.ve.targetSaver.postContent(
 			data,
 			{
 				// No timeout. Huge talk pages take a long time to save, and falsely reporting an error can
@@ -321,15 +303,9 @@ CommentController.prototype.save = function ( parsoidData ) {
 				api: new mw.Api( { ajax: { timeout: 0 }, parameters: { formatversion: 2 } } )
 			}
 		).catch( function ( code, data ) {
-			// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
-			// comment has been deleted from the page, or if retry also fails for some other reason, the
-			// error is handled as normal below.
+			// Try again if there's an edit conflict. The latest revision will be fetched on the server.
 			if ( code === 'editconflict' ) {
-				return getLatestRevId( pageData.pageName ).then( function ( latestRevId ) {
-					return controller.getParsoidCommentData( pageData.pageName, latestRevId, comment.id ).then( function ( parsoidData ) {
-						return commentController.save( parsoidData );
-					} );
-				} );
+				return commentController.save( parsoidData );
 			}
 			return $.Deferred().reject( code, data ).promise();
 		} );

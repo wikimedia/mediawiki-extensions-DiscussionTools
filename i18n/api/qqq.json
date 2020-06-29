@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apierror-discussiontools-commentid-notfound": "{{doc-apierror}}\n\nParameters:\n* $1 - Comment ID",
+	"apihelp-discussiontoolsedit-summary": "{{doc-apihelp-summary|discussiontoolsedit}}",
+	"apihelp-discussiontoolsedit-param-commentid": "{{doc-apihelp-summary|discussiontoolsedit|commentid}}",
+	"apihelp-discussiontoolsedit-param-html": "{{doc-apihelp-summary|discussiontoolsedit|html}}",
+	"apihelp-discussiontoolsedit-param-wikitext": "{{doc-apihelp-summary|discussiontoolsedit|wikitext}}"
+}
