@@ -271,7 +271,7 @@
 			"description": "Make DiscussionTools a BetaFeature."
 		},
 		"DiscussionToolsEnableVisual": {
-			"value": false,
+			"value": true,
 			"description": "Enable a visual mode for replies."
 		},
 		"DiscussionToolsEnable2017Wikitext": {
