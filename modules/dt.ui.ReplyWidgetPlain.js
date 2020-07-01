@@ -5,7 +5,9 @@
  * @extends mw.dt.ReplyWidget
  * @constructor
  * @param {Object} commentController
- * @param {Object} parsoidData
+ * @param {string} commentId
+ * @param {string} pageName
+ * @param {number} oldId
  * @param {Object} [config] Configuration options
  */
 function ReplyWidgetPlain() {

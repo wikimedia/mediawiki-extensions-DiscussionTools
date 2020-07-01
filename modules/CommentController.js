@@ -76,13 +76,13 @@ function getLatestRevId( pageName ) {
 }
 
 /**
- * Like #getParsoidCommentData, but assumes the comment was found on the current page,
+ * Like #checkCommentOnPage, but assumes the comment was found on the current page,
  * and then follows transclusions to determine the source page where it is written.
  *
- * @param {string} commentId Comment ID, from a comment parsed in the local document
- * @return {jQuery.Promise}
+ * @param {string} commentId Comment ID
+ * @return {jQuery.Promise} Promise which resolves with pageName+oldId, or rejects with an error
  */
-function getParsoidTranscludedCommentData( commentId ) {
+function getTranscludedFromSource( commentId ) {
 	var promise,
 		pageName = mw.config.get( 'wgRelevantPageName' ),
 		oldId = mw.config.get( 'wgCurRevisionId' );
@@ -94,7 +94,7 @@ function getParsoidTranscludedCommentData( commentId ) {
 			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
 				return getLatestRevId( errorData.transcludedFrom ).then( function ( latestRevId ) {
 					// Fetch the transcluded page, until we cross the recursion limit
-					return controller.getParsoidCommentData( errorData.transcludedFrom, latestRevId, commentId )
+					return controller.checkCommentOnPage( errorData.transcludedFrom, latestRevId, commentId )
 						.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
 				} );
 			}
@@ -104,7 +104,7 @@ function getParsoidTranscludedCommentData( commentId ) {
 
 	// Arbitrary limit of 10 steps, which should be more than anyone could ever need
 	// (there are reasonable use cases for at least 2)
-	promise = controller.getParsoidCommentData( pageName, oldId, commentId )
+	promise = controller.checkCommentOnPage( pageName, oldId, commentId )
 		.catch( followTransclusion.bind( null, 10 ) );
 
 	return promise;
@@ -127,7 +127,7 @@ CommentController.prototype.onReplyLinkClick = function ( e ) {
  * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
  */
 CommentController.prototype.setup = function ( mode ) {
-	var parsoidPromise,
+	var comment = this.comment,
 		commentController = this;
 
 	if ( mode === undefined ) {
@@ -165,10 +165,8 @@ CommentController.prototype.setup = function ( mode ) {
 	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
 
 	if ( !this.replyWidgetPromise ) {
-		parsoidPromise = getParsoidTranscludedCommentData( this.comment.id );
-
-		this.replyWidgetPromise = parsoidPromise.then( function ( parsoidData ) {
-			return commentController.createReplyWidget( parsoidData, mode === 'visual' );
+		this.replyWidgetPromise = getTranscludedFromSource( comment.id ).then( function ( pageData ) {
+			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, mode === 'visual' );
 		}, function ( code, data ) {
 			commentController.teardown();
 
@@ -188,14 +186,14 @@ CommentController.prototype.setup = function ( mode ) {
 		} );
 
 		// On first load, add a placeholder list item
-		commentController.newListItem = modifier.addListItem( commentController.comment );
+		commentController.newListItem = modifier.addListItem( comment );
 		$( commentController.newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 	}
 
 	commentController.replyWidgetPromise.then( function ( replyWidget ) {
 		if ( !commentController.newListItem ) {
 			// On subsequent loads, there's no list item yet, so create one now
-			commentController.newListItem = modifier.addListItem( commentController.comment );
+			commentController.newListItem = modifier.addListItem( comment );
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
@@ -216,11 +214,11 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	} );
 };
 
-CommentController.prototype.createReplyWidget = function ( parsoidData, visual ) {
+CommentController.prototype.createReplyWidget = function ( comment, pageName, oldId, visual ) {
 	var commentController = this;
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
-		return new ReplyWidget( commentController, parsoidData );
+		return new ReplyWidget( commentController, comment, pageName, oldId );
 	} );
 };
 
@@ -255,10 +253,8 @@ CommentController.prototype.teardown = function ( abandoned ) {
 	}
 };
 
-CommentController.prototype.save = function ( parsoidData ) {
+CommentController.prototype.save = function ( comment, pageName ) {
 	var savePromise,
-		comment = parsoidData.comment,
-		pageData = parsoidData.pageData,
 		replyWidget = this.replyWidget,
 		commentController = this;
 
@@ -267,7 +263,7 @@ CommentController.prototype.save = function ( parsoidData ) {
 			data = {
 				action: 'discussiontoolsedit',
 				paction: 'addcomment',
-				page: pageData.pageName,
+				page: pageName,
 				commentid: comment.id,
 				assert: mw.user.isAnon() ? 'anon' : 'user',
 				assertuser: mw.user.getName() || undefined,
@@ -305,7 +301,7 @@ CommentController.prototype.save = function ( parsoidData ) {
 		).catch( function ( code, data ) {
 			// Try again if there's an edit conflict. The latest revision will be fetched on the server.
 			if ( code === 'editconflict' ) {
-				return commentController.save( parsoidData );
+				return commentController.save( comment, pageName );
 			}
 			return $.Deferred().reject( code, data ).promise();
 		} );
@@ -335,7 +331,7 @@ CommentController.prototype.switchToWikitext = function () {
 
 	// TODO: We may need to pass oldid/etag when editing is supported
 	wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
-	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, false );
+	this.replyWidgetPromise = this.createReplyWidget( oldWidget.comment, oldWidget.pageName, oldWidget.oldId, false );
 
 	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
 		wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
@@ -362,7 +358,6 @@ CommentController.prototype.switchToVisual = function () {
 	var parsePromise,
 		oldWidget = this.replyWidget,
 		wikitext = oldWidget.getValue(),
-		pageData = oldWidget.parsoidData.pageData,
 		commentController = this;
 
 	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
@@ -384,7 +379,7 @@ CommentController.prototype.switchToVisual = function () {
 		parsePromise = api.post( {
 			action: 'visualeditor',
 			paction: 'parsefragment',
-			page: pageData.pageName,
+			page: oldWidget.pageName,
 			wikitext: wikitext,
 			pst: true
 		} ).then( function ( response ) {
@@ -393,7 +388,7 @@ CommentController.prototype.switchToVisual = function () {
 	} else {
 		parsePromise = $.Deferred().resolve( '' ).promise();
 	}
-	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, true );
+	this.replyWidgetPromise = this.createReplyWidget( oldWidget.comment, oldWidget.pageName, oldWidget.oldId, true );
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
 		var doc, bodyChildren, type, $msg,
