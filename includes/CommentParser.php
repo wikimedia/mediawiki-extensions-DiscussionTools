@@ -70,7 +70,7 @@ class CommentParser {
 	private function getTitleFromUrl( string $url ) : ?Title {
 		// TODO: Set the correct base in the document?
 		if ( strpos( $url, './' ) === 0 ) {
-			$url = 'https://local/wiki/' . substr( $url, 2 );
+			$url = 'https://local' . str_replace( '$1', substr( $url, 2 ), $this->config->get( 'ArticlePath' ) );
 		} elseif ( strpos( $url, '://' ) === false ) {
 			$url = 'https://local' . $url;
 		}
