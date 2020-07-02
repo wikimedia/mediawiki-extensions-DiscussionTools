@@ -348,27 +348,29 @@ ReplyWidget.prototype.onKeyDown = function ( e ) {
 ReplyWidget.prototype.onInputChange = function () {
 	this.updateButtons();
 	this.storage.set( this.storagePrefix + '/saveable', this.isEmpty() ? '' : '1' );
-	this.preparePreview( this.getValue() );
+	this.preparePreview();
 };
 
 /**
  * Update the interface with the preview of the given wikitext.
  *
- * @param {string} wikitext
+ * @param {string} [wikitext] Wikitext to preview, defaults to current value
  * @return {jQuery.Promise} Promise resolved when we're done
  */
 ReplyWidget.prototype.preparePreview = function ( wikitext ) {
-	var parsePromise,
-		widget = this,
-		indent = {
-			dl: ':',
-			ul: '*',
-			ol: '#'
-		}[ this.context ];
+	var parsePromise, widget, indent;
 
 	if ( this.getMode() !== 'source' ) {
 		return $.Deferred().resolve().promise();
 	}
+
+	widget = this;
+	indent = {
+		dl: ':',
+		ul: '*',
+		ol: '#'
+	}[ this.context ];
+	wikitext = wikitext || this.getValue();
 
 	if ( this.previewWikitext === wikitext ) {
 		return $.Deferred().resolve().promise();
