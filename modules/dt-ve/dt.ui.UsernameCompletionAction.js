@@ -60,18 +60,19 @@ MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 };
 
 MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
-	var capitalizedInput = input.length > 0 && input[ 0 ].toUpperCase() + input.slice( 1 ),
+	var apiPromise,
+		capitalizedInput = input.length > 0 && input[ 0 ].toUpperCase() + input.slice( 1 ),
 		action = this;
 
 	this.api.abort(); // Abort all unfinished API requests
 	if ( capitalizedInput && !this.searchedPrefixes[ capitalizedInput ] ) {
-		this.api.get( {
+		apiPromise = this.api.get( {
 			action: 'query',
 			list: 'allusers',
 			// Prefix of list=allusers is case sensitive, and users are stored in the DB capitalized, so:
 			auprefix: capitalizedInput,
 			aulimit: this.limit
-		} ).done( function ( response ) {
+		} ).then( function ( response ) {
 			var suggestions = response.query.allusers.map( function ( user ) {
 				return user.name;
 			} ).filter( function ( username ) {
@@ -85,23 +86,25 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 
 			action.searchedPrefixes[ capitalizedInput ] = true;
 		} );
+	} else {
+		apiPromise = ve.createDeferred().resolve().promise();
 	}
 
-	return ve.createDeferred().resolve(
+	return apiPromise.then( function () {
 		// By concatenating on-thread authors and remote-fetched authors, both
 		// sorted alphabetically, we'll get our suggestion popup sorted so all
 		// on-thread matches come first.
-		this.filterSuggestionsForInput(
-			this.localUsers
+		return action.filterSuggestionsForInput(
+			action.localUsers
 				// Show no remote users if no input provided
-				.concat( capitalizedInput ? this.remoteUsers : [] ),
+				.concat( capitalizedInput ? action.remoteUsers : [] ),
 			// TODO: Consider showing IP users
 			// * Change link to Special:Contributions/<ip> (localised)
 			// * Let users know that mentioning an IP will not create a notification?
 			// .concat( this.ipUsers )
 			input
-		)
-	).promise();
+		);
+	} );
 };
 
 MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range ) {
