@@ -291,7 +291,7 @@ class CommentParserTest extends CommentTestCase {
 		CommentUtils::unwrapParsoidSections( $container );
 
 		$comments = $parser->getComments( $container );
-		$threads = $parser->groupThreads( $comments );
+		$parser->groupThreads( $comments );
 
 		$transcludedFrom = [];
 		foreach ( $comments as $comment ) {
