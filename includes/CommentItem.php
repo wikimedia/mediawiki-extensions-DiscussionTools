@@ -2,6 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use MWException;
+
 class CommentItem extends ThreadItem {
 	private $signatureRanges;
 	private $timestamp;
@@ -56,6 +58,20 @@ class CommentItem extends ThreadItem {
 	 */
 	public function getParent() : ThreadItem {
 		return $this->parent;
+	}
+
+	/**
+	 * @return HeadingItem Closest ancestor which is a HeadingItem
+	 */
+	public function getHeading() : HeadingItem {
+		$parent = $this;
+		while ( $parent instanceof CommentItem ) {
+			$parent = $parent->getParent();
+		}
+		if ( !( $parent instanceof HeadingItem ) ) {
+			throw new MWException( 'heading parent not found' );
+		}
+		return $parent;
 	}
 
 	/**
