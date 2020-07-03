@@ -295,6 +295,29 @@ class CommentModifier {
 	}
 
 	/**
+	 * Add a reply to a specific comment
+	 *
+	 * @param CommentItem $comment Comment being replied to
+	 * @param DOMElement $container Container of comment DOM nodes
+	 */
+	public static function addReply( CommentItem $comment, DOMElement $container ) {
+		$newParsoidItem = null;
+		// Transfer comment DOM to Parsoid DOM
+		// Wrap every root node of the document in a new list item (dd/li).
+		// In wikitext mode every root node is a paragraph.
+		// In visual mode the editor takes care of preventing problematic nodes
+		// like <table> or <h2> from ever occurring in the comment.
+		while ( $container->childNodes->length ) {
+			if ( !$newParsoidItem ) {
+				$newParsoidItem = self::addListItem( $comment );
+			} else {
+				$newParsoidItem = self::addSiblingListItem( $newParsoidItem );
+			}
+			$newParsoidItem->appendChild( $container->firstChild );
+		}
+	}
+
+	/**
 	 * Create an element that will convert to the provided wikitext
 	 *
 	 * @param DOMDocument $doc Document
