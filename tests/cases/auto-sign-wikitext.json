@@ -1,0 +1,53 @@
+[
+	{
+		"msg": "Simple message",
+		"wikitext": "Foo bar",
+		"expected": "Foo bar ~~~~"
+	},
+	{
+		"msg": "Custom prefix",
+		"wikitext": "Foo bar",
+		"expected": "Foo bar --~~~~",
+		"prefix": " --"
+	},
+	{
+		"msg": "Whitespace",
+		"wikitext": " \t Foo bar \t ",
+		"expected": "Foo bar ~~~~"
+	},
+	{
+		"msg": "Already signed",
+		"wikitext": "Foo bar ~~~~",
+		"expected": "Foo bar ~~~~"
+	},
+	{
+		"msg": "Already signed multi-line",
+		"wikitext": "Foo\n\nbar\n\n~~~~",
+		"expected": "Foo\n\nbar\n\n~~~~"
+	},
+	{
+		"msg": "Already signed with hyphens",
+		"wikitext": "Foo bar --~~~~",
+		"expected": "Foo bar --~~~~"
+	},
+	{
+		"msg": "Already signed without space",
+		"wikitext": "Foo bar~~~~",
+		"expected": "Foo bar~~~~"
+	},
+	{
+		"msg": "Signed with 5 tildes",
+		"wikitext": "Foo bar ~~~~~",
+		"expected": "Foo bar ~~~~"
+	},
+	{
+		"msg": "Signed with 3 tildes",
+		"wikitext": "Foo bar ~~~",
+		"expected": "Foo bar ~~~~"
+	},
+	{
+		"msg": "Signed with 3 tildes and prefix",
+		"wikitext": "Foo bar --~~~",
+		"expected": "Foo bar --~~~~"
+	}
+]

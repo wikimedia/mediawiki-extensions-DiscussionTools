@@ -130,3 +130,32 @@ QUnit.test( '#unwrapList', function ( assert ) {
 		);
 	} );
 } );
+
+QUnit.test( 'autoSignWikitext', function ( assert ) {
+	var cases = require( '../cases/auto-sign-wikitext.json' );
+
+	cases.forEach( function ( caseItem ) {
+		var oldPrefix = mw.msg( 'discussiontools-signature-prefix' );
+		if ( caseItem.prefix ) {
+			mw.messages.set( { 'discussiontools-signature-prefix': caseItem.prefix } );
+		}
+		assert.strictEqual(
+			modifier.autoSignWikitext( caseItem.wikitext ),
+			caseItem.expected,
+			caseItem.msg
+		);
+		mw.messages.set( { 'discussiontools-signature-prefix': oldPrefix } );
+	} );
+} );
+
+QUnit.test( 'sanitizeWikitextLinebreaks', function ( assert ) {
+	var cases = require( '../cases/sanitize-wikitext-linebreaks.json' );
+
+	cases.forEach( function ( caseItem ) {
+		assert.strictEqual(
+			modifier.sanitizeWikitextLinebreaks( caseItem.wikitext ),
+			caseItem.expected,
+			caseItem.msg
+		);
+	} );
+} );

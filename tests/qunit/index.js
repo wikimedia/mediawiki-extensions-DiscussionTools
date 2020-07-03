@@ -3,4 +3,3 @@ QUnit.dump.maxDepth = 999;
 
 require( './parser.test.js' );
 require( './modifier.test.js' );
-require( './controller.test.js' );

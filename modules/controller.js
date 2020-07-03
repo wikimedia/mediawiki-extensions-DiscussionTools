@@ -9,29 +9,6 @@ var
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
 
-function autoSignWikitext( wikitext ) {
-	var matches;
-	wikitext = wikitext.trim();
-	if ( ( matches = wikitext.match( /~{3,5}$/ ) ) ) {
-		// Sig detected, check it has the correct number of tildes
-		if ( matches[ 0 ].length !== 4 ) {
-			wikitext = wikitext.slice( 0, -matches[ 0 ].length ) + '~~~~';
-		}
-		// Otherwise 4 tilde signature is left alone,
-		// with any adjacent characters
-	} else {
-		// No sig, append separator and sig
-		wikitext += mw.msg( 'discussiontools-signature-prefix' ) + '~~~~';
-	}
-	return wikitext;
-}
-
-function sanitizeWikitextLinebreaks( wikitext ) {
-	return wikitext
-		.replace( /\r/g, '\n' )
-		.replace( /\n+/g, '\n' );
-}
-
 function traverseNode( parent, thread ) {
 	// Loads later to avoid circular dependency
 	var CommentController = require( './CommentController.js' );
@@ -283,7 +260,5 @@ function init( $container, state ) {
 module.exports = {
 	init: init,
 	getParsoidCommentData: getParsoidCommentData,
-	getCheckboxesPromise: getCheckboxesPromise,
-	autoSignWikitext: autoSignWikitext,
-	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks
+	getCheckboxesPromise: getCheckboxesPromise
 };
