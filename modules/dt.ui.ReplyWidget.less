@@ -12,7 +12,6 @@
 	}
 
 	.ve-ui-targetToolbar > .oo-ui-toolbar-bar {
-		text-align: right;
 		background: none;
 		box-shadow: none;
 		border: 0;
@@ -34,12 +33,18 @@
 	&-modeTabs {
 		box-shadow: none;
 		height: 3em;
+		text-align: right;
+
+		.oo-ui-tabOptionWidget:last-child {
+			margin-right: 2px;
+		}
 	}
 
 	&-ve .dt-ui-replyWidget-modeTabs {
 		position: absolute;
 		z-index: 2;
 		top: 0;
+		right: 0;
 	}
 
 	&-actionsWrapper {
