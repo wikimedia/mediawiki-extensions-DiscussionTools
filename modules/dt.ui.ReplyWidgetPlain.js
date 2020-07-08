@@ -47,10 +47,12 @@ ReplyWidgetPlain.prototype.focus = function () {
 };
 
 ReplyWidgetPlain.prototype.clear = function () {
+	this.replyBodyWidget.setValue( '' );
+
+	this.storage.remove( this.storagePrefix + '/body' );
+
 	// Parent method
 	ReplyWidgetPlain.super.prototype.clear.apply( this, arguments );
-
-	this.replyBodyWidget.setValue( '' );
 };
 
 ReplyWidgetPlain.prototype.isEmpty = function () {
@@ -93,8 +95,6 @@ ReplyWidgetPlain.prototype.setup = function ( initialValue ) {
 ReplyWidgetPlain.prototype.teardown = function () {
 	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
-
-	this.storage.remove( this.storagePrefix + '/body' );
 
 	// Parent method
 	return ReplyWidgetPlain.super.prototype.teardown.call( this );

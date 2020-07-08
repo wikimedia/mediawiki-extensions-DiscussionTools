@@ -210,6 +210,9 @@ ReplyWidget.prototype.clear = function () {
 	if ( this.errorMessage ) {
 		this.errorMessage.$element.remove();
 	}
+	this.$preview.empty();
+	this.storage.remove( this.storagePrefix + '/mode' );
+	this.storage.remove( this.storagePrefix + '/saveable' );
 };
 
 ReplyWidget.prototype.setPending = function ( pending ) {
@@ -337,9 +340,6 @@ ReplyWidget.prototype.tryTeardown = function () {
 ReplyWidget.prototype.teardown = function ( abandoned ) {
 	this.unbindBeforeUnloadHandler();
 	this.clear();
-	this.storage.remove( this.storagePrefix + '/mode' );
-	this.storage.remove( this.storagePrefix + '/saveable' );
-	this.$preview.empty();
 	this.emit( 'teardown', abandoned );
 	return this;
 };

@@ -53,10 +53,12 @@ ReplyWidgetVisual.prototype.getValue = function () {
 };
 
 ReplyWidgetVisual.prototype.clear = function () {
+	this.replyBodyWidget.clear();
+
+	this.replyBodyWidget.target.clearDocState();
+
 	// Parent method
 	ReplyWidgetVisual.super.prototype.clear.apply( this, arguments );
-
-	this.replyBodyWidget.clear();
 };
 
 ReplyWidgetVisual.prototype.isEmpty = function () {
@@ -111,8 +113,6 @@ ReplyWidgetVisual.prototype.setup = function ( initialValue ) {
 ReplyWidgetVisual.prototype.teardown = function () {
 	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
-	// TODO: Just teardown the whole target?
-	this.replyBodyWidget.target.clearDocState();
 
 	// Parent method
 	return ReplyWidgetVisual.super.prototype.teardown.call( this );
