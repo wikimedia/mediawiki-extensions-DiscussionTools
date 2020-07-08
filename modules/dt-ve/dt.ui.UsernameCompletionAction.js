@@ -107,6 +107,14 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 	} );
 };
 
+MWUsernameCompletionAction.prototype.getHeaderLabel = function ( input, suggestions ) {
+	var $query;
+	if ( suggestions === undefined ) {
+		$query = $( '<span>' ).text( input );
+		return mw.message( 'discussiontools-replywidget-mention-tool-header', $query ).parseDom();
+	}
+};
+
 MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range ) {
 	var fragment,
 		// TODO: Allow output customisation (T250332)
