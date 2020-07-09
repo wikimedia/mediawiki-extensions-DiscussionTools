@@ -296,8 +296,7 @@ ReplyWidget.prototype.tryTeardown = function () {
 		widget = this;
 
 	if ( !this.isEmpty() ) {
-		// TODO: Override messages in dialog to be more ReplyWidget specific
-		promise = OO.ui.getWindowManager().openWindow( 'abandonedit' )
+		promise = OO.ui.getWindowManager().openWindow( 'abandoncomment' )
 			.closed.then( function ( data ) {
 				if ( !( data && data.action === 'discard' ) ) {
 					return $.Deferred().reject().promise();
@@ -635,6 +634,24 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 /* Window registration */
 
-OO.ui.getWindowManager().addWindows( [ new mw.widgets.AbandonEditDialog() ] );
+function AbandonCommentDialog() {
+	// Parent constructor
+	AbandonCommentDialog.super.apply( this, arguments );
+}
+
+/* Inheritance */
+
+OO.inheritClass( AbandonCommentDialog, mw.widgets.AbandonEditDialog );
+
+AbandonCommentDialog.static.name = 'abandoncomment';
+AbandonCommentDialog.static.message = OO.ui.deferMsg( 'discussiontools-replywidget-abandon' );
+AbandonCommentDialog.static.actions = OO.copy( AbandonCommentDialog.static.actions );
+AbandonCommentDialog.static.actions[ 0 ].label =
+	OO.ui.deferMsg( 'discussiontools-replywidget-abandon-discard' );
+
+AbandonCommentDialog.static.actions[ 1 ].label =
+	OO.ui.deferMsg( 'discussiontools-replywidget-abandon-keep' );
+
+OO.ui.getWindowManager().addWindows( [ new AbandonCommentDialog() ] );
 
 module.exports = ReplyWidget;

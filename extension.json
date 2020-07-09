@@ -94,6 +94,9 @@
 				"dt.ui.ReplyWidget.less"
 			],
 			"messages": [
+				"discussiontools-replywidget-abandon",
+				"discussiontools-replywidget-abandon-discard",
+				"discussiontools-replywidget-abandon-keep",
 				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
 				"discussiontools-replywidget-feedback",
