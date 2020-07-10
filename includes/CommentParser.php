@@ -10,7 +10,6 @@ use DateTimeZone;
 use DOMElement;
 use DOMNode;
 use DOMText;
-use DOMXPath;
 use IP;
 use Language;
 use MediaWiki\MediaWikiServices;
@@ -18,8 +17,6 @@ use MWException;
 use Title;
 
 // TODO clean up static vs non-static
-
-// TODO consider rewriting as single traversal, without XPath
 // TODO consider making timestamp parsing not a returned function
 
 class CommentParser {
@@ -635,18 +632,13 @@ class CommentParser {
 	}
 
 	/**
-	 * Find all timestamps within a DOM subtree.
+	 * Find a timestamps in a given text node
 	 *
-	 * @param DOMElement $rootNode
-	 * @return array Array of [node, matchData] pairs
+	 * @param DOMText $node Text node
+	 * @param string $timestampRegex Timestamp regex
+	 * @return array|null Match data
 	 */
-	public function findTimestamps( DOMElement $rootNode ) : array {
-		$xpath = new DOMXPath( $rootNode->ownerDocument );
-		$textNodes = $xpath->query( '//text()', $rootNode );
-		$matches = [];
-		$timestampRegex = $this->getLocalTimestampRegexp();
-		foreach ( $textNodes as $node ) {
-			$startNode = $node;
+	public function findTimestamp( DOMText $node, string $timestampRegex ) : ?array {
 			$nodeText = '';
 
 			while ( $node ) {
@@ -657,18 +649,18 @@ class CommentParser {
 				// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
 				// this, we must piece together the text, so that our regexp can match those timestamps.
 				if (
-					$node->nextSibling &&
-					$node->nextSibling->nodeType === XML_ELEMENT_NODE &&
-					$node->nextSibling->getAttribute( 'typeof' ) === 'mw:Entity'
+				( $nextSibling = $node->nextSibling ) &&
+				$nextSibling instanceof DOMElement &&
+				$nextSibling->getAttribute( 'typeof' ) === 'mw:Entity'
 				) {
-					$nodeText .= $node->nextSibling->firstChild->nodeValue;
+				$nodeText .= $nextSibling->firstChild->nodeValue;
 
 					// If the entity is followed by more text, do this again
 					if (
-						$node->nextSibling->nextSibling &&
-						$node->nextSibling->nextSibling->nodeType === XML_TEXT_NODE
+					$nextSibling->nextSibling &&
+					$nextSibling->nextSibling instanceof DOMText
 					) {
-						$node = $node->nextSibling->nextSibling;
+					$node = $nextSibling->nextSibling;
 					} else {
 						$node = null;
 					}
@@ -680,10 +672,9 @@ class CommentParser {
 			$matchData = null;
 			// Allows us to mimic match.index in #getComments
 			if ( preg_match( $timestampRegex, $nodeText, $matchData, PREG_OFFSET_CAPTURE ) ) {
-				$matches[] = [ $startNode, $matchData ];
+			return $matchData;
 			}
-		}
-		return $matches;
+		return null;
 	}
 
 	/**
@@ -724,8 +715,7 @@ class CommentParser {
 	 * @return ThreadItem[] Thread items
 	 */
 	public function getComments( DOMElement $rootNode ) : array {
-		$timestamps = $this->findTimestamps( $rootNode );
-
+		$timestampRegex = $this->getLocalTimestampRegexp();
 		$comments = [];
 		$dfParser = $this->getLocalTimestampParser();
 
@@ -735,21 +725,17 @@ class CommentParser {
 
 		$curComment = $fakeHeading;
 
-		$nextTimestamp = 0;
 		$treeWalker = new TreeWalker(
 			$rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
 			[ self::class, 'acceptOnlyNodesAllowingComments' ]
 		);
 		while ( $node = $treeWalker->nextNode() ) {
-			if ( $node->nodeType === XML_ELEMENT_NODE && preg_match( '/^h[1-6]$/i', $node->nodeName ) ) {
+			if ( $node instanceof DOMElement && preg_match( '/^h[1-6]$/i', $node->tagName ) ) {
 				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
 				$curComment = new HeadingItem( $range );
 				$comments[] = $curComment;
-			} elseif (
-				$node instanceof DOMText &&
-				isset( $timestamps[$nextTimestamp] ) && $node === $timestamps[$nextTimestamp][0]
-			) {
+			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegex ) ) ) {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $curComment->getRange()->endContainer );
 				$author = $foundSignature[1];
@@ -759,13 +745,11 @@ class CommentParser {
 				if ( !$author ) {
 					// Ignore timestamps for which we couldn't find a signature. It's probably not a real
 					// comment, but just a false match due to a copypasted timestamp.
-					$nextTimestamp++;
 					continue;
 				}
 
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer, $rootNode );
-				$match = $timestamps[$nextTimestamp][1];
 				$offset = $lastSigNode === $node ?
 					$match[0][1] + strlen( $match[0][0] ) :
 					CommentUtils::childIndexOf( $lastSigNode ) + 1;
@@ -814,7 +798,6 @@ class CommentParser {
 					$curComment->addSignatureRange( $sigRange );
 					$curComment->setLevel( min( min( $startLevel, $endLevel ), $curComment->getLevel() ) );
 
-					$nextTimestamp++;
 					continue;
 				}
 
@@ -837,7 +820,6 @@ class CommentParser {
 					$curComment->addWarnings( $warnings );
 				}
 				$comments[] = $curComment;
-				$nextTimestamp++;
 			}
 		}
 

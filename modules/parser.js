@@ -398,67 +398,48 @@ function acceptOnlyNodesAllowingComments( node ) {
 }
 
 /**
- * Find all timestamps within a DOM subtree.
+ * Find a timestamps in a given text node
  *
- * @param {HTMLElement} rootNode Node to search
- * @return {[Text, Array]} Results. Each result is a tuple containing:
- *  - Text node containing the timestamp
- *  - Regexp match data, which specifies the location of the match, and which
- *    can be parsed using #getLocalTimestampParser
+ * @param {Text} node Text node
+ * @param {string} timestampRegex Timestamp regex
+ * @return {Array} Regexp match data, which specifies the location of the match,
+ *  and which can be parsed using #getLocalTimestampParser
  */
-function findTimestamps( rootNode ) {
-	var
-		matches = [],
-		treeWalker = rootNode.ownerDocument.createTreeWalker(
-			rootNode,
-			NodeFilter.SHOW_TEXT,
-			acceptOnlyNodesAllowingComments,
-			false
-		),
-		dateRegexp = getLocalTimestampRegexp(),
-		node, startNode, nodeText, match;
+function findTimestamp( node, timestampRegex ) {
+	var nodeText = '';
+	while ( node ) {
+		nodeText += node.nodeValue;
 
-	while ( ( node = treeWalker.nextNode() ) ) {
-		startNode = node;
-		nodeText = '';
+		// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
+		// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
+		// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
+		// this, we must piece together the text, so that our regexp can match those timestamps.
+		if (
+			node.nextSibling &&
+			node.nextSibling.nodeType === Node.ELEMENT_NODE &&
+			node.nextSibling.getAttribute( 'typeof' ) === 'mw:Entity'
+		) {
+			nodeText += node.nextSibling.firstChild.nodeValue;
 
-		while ( node ) {
-			nodeText += node.nodeValue;
-
-			// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
-			// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
-			// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
-			// this, we must piece together the text, so that our regexp can match those timestamps.
+			// If the entity is followed by more text, do this again
 			if (
-				node.nextSibling &&
-				node.nextSibling.nodeType === Node.ELEMENT_NODE &&
-				node.nextSibling.getAttribute( 'typeof' ) === 'mw:Entity'
+				node.nextSibling.nextSibling &&
+				node.nextSibling.nextSibling.nodeType === Node.TEXT_NODE
 			) {
-				nodeText += node.nextSibling.firstChild.nodeValue;
-
-				// If the entity is followed by more text, do this again
-				if (
-					node.nextSibling.nextSibling &&
-					node.nextSibling.nextSibling.nodeType === Node.TEXT_NODE
-				) {
-					node = node.nextSibling.nextSibling;
-				} else {
-					node = null;
-				}
+				node = node.nextSibling.nextSibling;
 			} else {
 				node = null;
 			}
-		}
-
-		// Technically, there could be multiple matches in a single text node. However, the ultimate
-		// point of this is to find the signatures which precede the timestamps, and any later
-		// timestamps in the text node can't be directly preceded by a signature (as we require them to
-		// have links), so we only concern ourselves with the first match.
-		if ( ( match = nodeText.match( dateRegexp ) ) ) {
-			matches.push( [ startNode, match ] );
+		} else {
+			node = null;
 		}
 	}
-	return matches;
+
+	// Technically, there could be multiple matches in a single text node. However, the ultimate
+	// point of this is to find the signatures which precede the timestamps, and any later
+	// timestamps in the text node can't be directly preceded by a signature (as we require them to
+	// have links), so we only concern ourselves with the first match.
+	return nodeText.match( timestampRegex );
 }
 
 /**
@@ -703,12 +684,11 @@ function nextInterestingLeafNode( node, rootNode ) {
 function getComments( rootNode ) {
 	var
 		dfParser = getLocalTimestampParser(),
+		timestampRegex = getLocalTimestampRegexp(),
 		comments = [],
-		timestamps, nextTimestamp, treeWalker,
+		treeWalker,
 		node, range, fakeHeading, curComment,
 		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, match, startLevel, endLevel, dateTime, warnings;
-
-	timestamps = findTimestamps( rootNode );
 
 	treeWalker = rootNode.ownerDocument.createTreeWalker(
 		rootNode,
@@ -729,7 +709,6 @@ function getComments( rootNode ) {
 
 	curComment = fakeHeading;
 
-	nextTimestamp = 0;
 	while ( ( node = treeWalker.nextNode() ) ) {
 		if ( node.tagName && node.tagName.match( /^h[1-6]$/i ) ) {
 			range = {
@@ -740,7 +719,7 @@ function getComments( rootNode ) {
 			};
 			curComment = new HeadingItem( range );
 			comments.push( curComment );
-		} else if ( timestamps[ nextTimestamp ] && node === timestamps[ nextTimestamp ][ 0 ] ) {
+		} else if ( node.nodeType === Node.TEXT_NODE && ( match = findTimestamp( node, timestampRegex ) ) ) {
 			warnings = [];
 			foundSignature = findSignature( node, curComment.range.endContainer );
 			author = foundSignature[ 1 ];
@@ -750,13 +729,11 @@ function getComments( rootNode ) {
 			if ( !author ) {
 				// Ignore timestamps for which we couldn't find a signature. It's probably not a real
 				// comment, but just a false match due to a copypasted timestamp.
-				nextTimestamp++;
 				continue;
 			}
 
 			// Everything from last comment up to here is the next comment
 			startNode = nextInterestingLeafNode( curComment.range.endContainer, rootNode );
-			match = timestamps[ nextTimestamp ][ 1 ];
 			range = {
 				startContainer: startNode.parentNode,
 				startOffset: utils.childIndexOf( startNode ),
@@ -792,8 +769,6 @@ function getComments( rootNode ) {
 				curComment.range.endOffset = range.endOffset;
 				curComment.signatureRanges.push( sigRange );
 				curComment.level = Math.min( Math.min( startLevel, endLevel ), curComment.level );
-
-				nextTimestamp++;
 				continue;
 			}
 
@@ -814,7 +789,6 @@ function getComments( rootNode ) {
 				curComment.warnings = warnings;
 			}
 			comments.push( curComment );
-			nextTimestamp++;
 		}
 	}
 
@@ -1002,7 +976,6 @@ function getTranscludedFrom( comment ) {
 }
 
 module.exports = {
-	findTimestamps: findTimestamps,
 	getLocalTimestampParser: getLocalTimestampParser,
 	getTimestampRegexp: getTimestampRegexp,
 	getTimestampParser: getTimestampParser,
@@ -1010,5 +983,8 @@ module.exports = {
 	groupThreads: groupThreads,
 	findSignature: findSignature,
 	getAuthors: getAuthors,
-	getTranscludedFrom: getTranscludedFrom
+	getTranscludedFrom: getTranscludedFrom,
+	// Only used by dtdebug
+	findTimestamp: findTimestamp,
+	getLocalTimestampRegexp: getLocalTimestampRegexp
 };

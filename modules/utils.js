@@ -13,7 +13,7 @@ function getNativeRange( comment ) {
 		nativeRange = doc.createRange();
 	nativeRange.setStart( comment.range.startContainer, comment.range.startOffset );
 	// HACK: When the offset is outside the container, assume this is because of
-	// the 'mw:Entity' hack in parser#findTimestamps and adjust accordingly.
+	// the 'mw:Entity' hack in parser#findTimestamp and adjust accordingly.
 	// TODO: The parser should produce valid ranges!
 	endContainer = comment.range.endContainer;
 	endOffset = comment.range.endOffset;

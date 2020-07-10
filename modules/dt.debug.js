@@ -1,18 +1,22 @@
 var
 	parser = require( 'ext.discussionTools.init' ).parser,
 	highlighter = require( './highlighter.js' ),
-	timestamps, comments, threads, i, node, match, signature, emptySignature;
-
-timestamps = parser.findTimestamps( document.getElementById( 'mw-content-text' ) );
-comments = parser.getComments( document.getElementById( 'mw-content-text' ) );
-threads = parser.groupThreads( comments );
+	comments = parser.getComments( document.getElementById( 'mw-content-text' ) ),
+	threads = parser.groupThreads( comments ),
+	timestampRegex = parser.getLocalTimestampRegexp();
 
 highlighter.markThreads( threads );
 
 // TODO: Use comment.signatureRanges to mark up signatures/timestamps
-for ( i = 0; i < timestamps.length; i++ ) {
-	node = timestamps[ i ][ 0 ];
-	match = timestamps[ i ][ 1 ];
+comments.forEach( function ( comment ) {
+	var signature, emptySignature, node, match;
+
+	if ( comment.type !== 'comment' ) {
+		return;
+	}
+
+	node = comment.range.endContainer;
+	match = parser.findTimestamp( node, timestampRegex );
 	signature = parser.findSignature( node )[ 0 ];
 	emptySignature = signature.length === 1 && signature[ 0 ] === node;
 	// Note that additional content may follow the timestamp (e.g. in some voting formats), but we
@@ -22,4 +26,4 @@ for ( i = 0; i < timestamps.length; i++ ) {
 	if ( !emptySignature ) {
 		highlighter.markSignature( signature );
 	}
-}
+} );
