@@ -17,7 +17,6 @@ var controller = require( 'ext.discussionTools.init' ).controller,
  * @param {Object} parsoidData Result from controller#getParsoidCommentData
  * @param {Object} [config] Configuration options
  * @param {Object} [config.input] Configuration options for the comment input widget
- * @param {boolean} [config.switchable] Widget can switch modes (visual/source)
  */
 function ReplyWidget( commentController, parsoidData, config ) {
 	var returnTo, contextNode, inputConfig,
@@ -55,6 +54,23 @@ function ReplyWidget( commentController, parsoidData, config ) {
 		label: mw.msg( 'discussiontools-replywidget-cancel' ),
 		framed: false
 	} );
+
+	this.modeTabSelect = new OO.ui.TabSelectWidget( {
+		classes: [ 'dt-ui-replyWidget-modeTabs' ],
+		items: [
+			new OO.ui.TabOptionWidget( {
+				label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
+				data: 'visual'
+			} ),
+			new OO.ui.TabOptionWidget( {
+				label: mw.msg( 'discussiontools-replywidget-mode-source' ),
+				data: 'source'
+			} )
+		],
+		framed: false
+	} );
+	// Initialize to avoid flicker when switching mode
+	this.modeTabSelect.selectItemByData( this.getMode() );
 
 	this.$preview = $( '<div>' )
 		.addClass( 'dt-ui-replyWidget-preview' )
@@ -94,44 +110,22 @@ function ReplyWidget( commentController, parsoidData, config ) {
 	this.$element.on( 'keydown', this.onKeyDown.bind( this ) );
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 	this.unloadHandler = this.onUnload.bind( this );
+	this.modeTabSelect.connect( this, {
+		choose: 'onModeTabSelectChoose'
+	} );
 
 	this.api = new mw.Api( { parameters: { formatversion: 2 } } );
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
 
 	// Initialization
 	this.$element.addClass( 'dt-ui-replyWidget' ).append(
+		this.modeTabSelect.$element,
 		this.replyBodyWidget.$element,
 		this.$preview,
 		this.$actionsWrapper
 	);
 	// Set direction to interface direction
 	this.$element.attr( 'dir', $( document.body ).css( 'direction' ) );
-
-	if ( config.switchable ) {
-		this.modeTabSelect = new OO.ui.TabSelectWidget( {
-			classes: [ 'dt-ui-replyWidget-modeTabs' ],
-			items: [
-				new OO.ui.TabOptionWidget( {
-					label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
-					data: 'visual'
-				} ),
-				new OO.ui.TabOptionWidget( {
-					label: mw.msg( 'discussiontools-replywidget-mode-source' ),
-					data: 'source'
-				} )
-			],
-			framed: false
-		} );
-
-		// Initialize to avoid flicker when switching mode
-		this.modeTabSelect.selectItemByData( this.getMode() );
-
-		this.modeTabSelect.connect( this, {
-			choose: 'onModeTabSelectChoose'
-		} );
-
-		this.$element.prepend( this.modeTabSelect.$element );
-	}
 
 	if ( mw.user.isAnon() ) {
 		returnTo = {

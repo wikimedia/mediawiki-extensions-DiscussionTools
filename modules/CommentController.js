@@ -6,10 +6,8 @@ var
 	logger = require( './logger.js' ),
 	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
-	config = require( './config.json' ),
-	enableVisual = config.enableVisual || ( new mw.Uri() ).query.dtvisual,
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
-	defaultVisual = enableVisual && defaultEditMode === 'visual',
+	defaultVisual = defaultEditMode === 'visual',
 	conf = mw.config.get( 'wgVisualEditorConfig' ),
 	visualModules = [ 'ext.discussionTools.ReplyWidgetVisual' ]
 		.concat( conf.pluginModules.filter( mw.loader.getState ) ),
@@ -135,7 +133,7 @@ CommentController.prototype.setup = function ( mode ) {
 		commentController = this;
 
 	if ( mode === undefined ) {
-		mode = ( enableVisual && mw.user.options.get( 'discussiontools-editmode' ) ) ||
+		mode = mw.user.options.get( 'discussiontools-editmode' ) ||
 			( defaultVisual ? 'visual' : 'source' );
 	}
 
@@ -225,7 +223,6 @@ CommentController.prototype.createReplyWidget = function ( parsoidData, visual )
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
 		return new ReplyWidget( commentController, parsoidData, {
-			switchable: enableVisual,
 			input: {
 				authors: parser.getAuthors( commentController.thread )
 			}

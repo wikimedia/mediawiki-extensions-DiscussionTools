@@ -38,7 +38,6 @@
 				{
 					"name": "config.json",
 					"config": {
-						"enableVisual": "DiscussionToolsEnableVisual",
 						"enable2017Wikitext": "DiscussionToolsEnable2017Wikitext"
 					}
 				},
@@ -270,10 +269,6 @@
 		"DiscussionToolsBeta": {
 			"value": false,
 			"description": "Make DiscussionTools a BetaFeature."
-		},
-		"DiscussionToolsEnableVisual": {
-			"value": true,
-			"description": "Enable a visual mode for replies."
 		},
 		"DiscussionToolsEnable2017Wikitext": {
 			"value": false,
