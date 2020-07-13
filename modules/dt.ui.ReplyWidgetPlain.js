@@ -22,7 +22,7 @@ OO.inheritClass( ReplyWidgetPlain, require( 'ext.discussionTools.ReplyWidget' ) 
 /* Methods */
 
 ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
-	return new OO.ui.MultilineTextInputWidget( $.extend( {
+	var textInput = new OO.ui.MultilineTextInputWidget( $.extend( {
 		rows: 3,
 		// TODO: Fix upstream to support a value meaning no max limit (e.g. Infinity)
 		maxRows: 999,
@@ -33,6 +33,9 @@ ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
 		// * mw-editfont-serif
 		classes: [ 'mw-editfont-' + mw.user.options.get( 'editfont' ) ]
 	}, config ) );
+	// Fix jquery.ime position (T255191)
+	textInput.$input.addClass( 'ime-position-inside' );
+	return textInput;
 };
 
 ReplyWidgetPlain.prototype.focus = function () {
