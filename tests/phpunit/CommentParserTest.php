@@ -286,7 +286,7 @@ class CommentParserTest extends CommentTestCase {
 		$parser = self::createParser( $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->getElementsByTagName( 'body' )->item( 0 )->firstChild;
+		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
 
 		CommentUtils::unwrapParsoidSections( $container );
 
