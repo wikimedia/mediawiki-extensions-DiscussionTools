@@ -103,21 +103,16 @@ class CommentParser {
 	 * @return DOMNode
 	 */
 	private function nextInterestingLeafNode( DOMNode $node, DOMElement $rootNode ) : DOMNode {
-		$n = $node;
-		do {
-			if ( $n->firstChild && ( $node === $rootNode || $n !== $node ) ) {
-				$n = $n->firstChild;
-			} elseif ( $n->nextSibling ) {
-				$n = $n->nextSibling;
-			} else {
-				while ( $n && $n !== $rootNode && !$n->nextSibling ) {
-					$n = $n->parentNode;
+		$treeWalker = new TreeWalker(
+			$rootNode,
+			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
+			function ( $n ) use ( $node, $rootNode ) {
+				// Ignore this node and its descendants
+				// (unless it's the root node, this is a special case for "fakeHeading" handling)
+				if ( $node !== $rootNode && ( $n === $node || $n->parentNode === $node ) ) {
+					return NodeFilter::FILTER_REJECT;
 				}
-				$n = $n->nextSibling;
-			}
-
-			if (
-				$n && (
+				if (
 					(
 						$n->nodeType === XML_TEXT_NODE &&
 						CommentUtils::htmlTrim( $n->nodeValue ) !== ''
@@ -127,12 +122,18 @@ class CommentParser {
 						CommentUtils::htmlTrim( $n->nodeValue ) !== ''
 					) ||
 					( $n->nodeType === XML_ELEMENT_NODE && !$n->firstChild )
-				)
-			) {
-				return $n;
+				) {
+					return NodeFilter::FILTER_ACCEPT;
+				}
+				return NodeFilter::FILTER_SKIP;
 			}
-		} while ( $n && $n !== $rootNode );
-		throw new MWException( 'nextInterestingLeafNode not found' );
+		);
+		$treeWalker->currentNode = $node;
+		$treeWalker->nextNode();
+		if ( !$treeWalker->currentNode ) {
+			throw new MWException( 'nextInterestingLeafNode not found' );
+		}
+		return $treeWalker->currentNode;
 	}
 
 	/**
@@ -619,6 +620,21 @@ class CommentParser {
 	}
 
 	/**
+	 * Callback for TreeWalker that will skip over nodes where we don't want to detect
+	 * comments (or section headings).
+	 *
+	 * @param DOMNode $node
+	 * @return int Appropriate NodeFilter constant
+	 */
+	public static function acceptOnlyNodesAllowingComments( DOMNode $node ) {
+		// The table of contents has a heading that gets erroneously detected as a section
+		if ( $node instanceof DOMElement && $node->getAttribute( 'id' ) === 'toc' ) {
+			return NodeFilter::FILTER_REJECT;
+		}
+		return NodeFilter::FILTER_ACCEPT;
+	}
+
+	/**
 	 * Find all timestamps within a DOM subtree.
 	 *
 	 * @param DOMElement $rootNode
@@ -710,9 +726,6 @@ class CommentParser {
 	public function getComments( DOMElement $rootNode ) : array {
 		$timestamps = $this->findTimestamps( $rootNode );
 
-		$xpath = new DOMXPath( $rootNode->ownerDocument );
-		$allNodes = $xpath->query( '//text()|//node()', $rootNode );
-		$tocNode = $rootNode->ownerDocument->getElementById( 'toc' );
 		$comments = [];
 		$dfParser = $this->getLocalTimestampParser();
 
@@ -723,17 +736,20 @@ class CommentParser {
 		$curComment = $fakeHeading;
 
 		$nextTimestamp = 0;
-		foreach ( $allNodes as $node ) {
-			// Skip nodes inside <div id="toc">
-			if ( $tocNode && CommentUtils::contains( $tocNode, $node ) ) {
-				continue;
-			}
-
+		$treeWalker = new TreeWalker(
+			$rootNode,
+			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
+			[ self::class, 'acceptOnlyNodesAllowingComments' ]
+		);
+		while ( $node = $treeWalker->nextNode() ) {
 			if ( $node->nodeType === XML_ELEMENT_NODE && preg_match( '/^h[1-6]$/i', $node->nodeName ) ) {
 				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
 				$curComment = new HeadingItem( $range );
 				$comments[] = $curComment;
-			} elseif ( isset( $timestamps[$nextTimestamp] ) && $node === $timestamps[$nextTimestamp][0] ) {
+			} elseif (
+				$node instanceof DOMText &&
+				isset( $timestamps[$nextTimestamp] ) && $node === $timestamps[$nextTimestamp][0]
+			) {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $curComment->getRange()->endContainer );
 				$author = $foundSignature[1];
