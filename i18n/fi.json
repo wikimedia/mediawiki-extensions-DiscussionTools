@@ -3,8 +3,11 @@
 		"authors": [
 			"FinlandMan",
 			"Nike",
-			"Pxos"
+			"Pxos",
+			"Pyscowicz"
 		]
 	},
-	"tag-discussiontools-newtopic": "Aihe lisätty"
+	"discussiontools-replywidget-cancel": "Peruuta",
+	"tag-discussiontools-newtopic": "Aihe lisätty",
+	"tag-discussiontools-source": "Lähde"
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Rail"
+			"Rail",
+			"Woytecr"
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
@@ -15,6 +16,7 @@
 	"discussiontools-replywidget-cancel": "Anuluj",
 	"discussiontools-replywidget-feedback": "Prześlij opinię na temat tego oprogramowania",
 	"discussiontools-replywidget-loading": "Ładowanie…",
+	"discussiontools-replywidget-mention-tool-title": "Wywołaj użytkownika",
 	"discussiontools-replywidget-mode-source": "Kod źródłowy",
 	"discussiontools-replywidget-mode-visual": "Wizualnie",
 	"discussiontools-replywidget-placeholder-reply": "Odpowiedz na komentarz {{BIDI:$1}}",

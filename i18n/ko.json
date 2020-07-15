@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ed g2s",
+			"MemphisA5",
 			"Ykhwong"
 		]
 	},
@@ -11,8 +12,10 @@
 	"discussiontools-replylink": "답변",
 	"discussiontools-replywidget-cancel": "취소",
 	"discussiontools-replywidget-loading": "불러오는 중...",
+	"discussiontools-replywidget-mention-tool-title": "사용자 언급하기",
 	"discussiontools-replywidget-mode-source": "원본",
 	"discussiontools-replywidget-mode-visual": "시각",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}에게 답장",
 	"discussiontools-replywidget-preview": "미리 보기",
 	"discussiontools-replywidget-reply": "답변",
 	"tag-discussiontools-edit": "댓글 편집",
