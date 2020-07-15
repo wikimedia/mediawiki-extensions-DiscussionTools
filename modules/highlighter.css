@@ -3,17 +3,16 @@
 
 .detected-timestamp {
 	border: 2px solid forestgreen;
-	padding: 1px;
 	border-radius: 6px;
-	margin: -3px;
+	margin: -2px;
 }
 
 .detected-signature {
-	border: 3px solid blue;
+	border: 2px solid blue;
 	border-bottom-left-radius: 6px;
 	border-top-left-radius: 6px;
 	border-right: 0;
-	margin: -3px;
+	margin: -2px;
 	margin-right: 0;
 }
 
