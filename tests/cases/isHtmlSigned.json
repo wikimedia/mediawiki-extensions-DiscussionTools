@@ -1,0 +1,37 @@
+[
+	{
+		"msg": "Simple message",
+		"html": "<p>Foo bar</p>",
+		"expected": false
+	},
+	{
+		"msg": "Literal tildes",
+		"html": "<p>Foo ~~~~</p>",
+		"expected": false
+	},
+	{
+		"msg": "Signature node",
+		"html": "<p>Foo bar <span typeof=\"mw:Transclusion\" data-mw=\"{&quot;parts&quot;:[&quot;~~~~&quot;]}\"></span></p>",
+		"expected": true
+	},
+	{
+		"msg": "Signature node with trailing whitespace",
+		"html": "<p>Foo bar <span typeof=\"mw:Transclusion\" data-mw=\"{&quot;parts&quot;:[&quot;~~~~&quot;]}\"></span> </p>",
+		"expected": true
+	},
+	{
+		"msg": "Signature node (with some junk from switching)",
+		"html": "<p>Foo bar <span typeof=\"mw:Transclusion\" data-mw=\"{&quot;parts&quot;:[&quot;~~~~&quot;]}\" data-dtsignatureforswitching=\"1\" data-parsoid=\"{&quot;stx&quot;:&quot;html&quot;,&quot;dsr&quot;:[9,55,39,7]}\"></span></p>",
+		"expected": true
+	},
+	{
+		"msg": "Signature node (not at the end)",
+		"html": "<p>(Foo bar <span typeof=\"mw:Transclusion\" data-mw=\"{&quot;parts&quot;:[&quot;~~~~&quot;]}\"></span>)</p>",
+		"expected": false
+	},
+	{
+		"msg": "Signature node (not at the end, multiline)",
+		"html": "<p>Foo bar <span typeof=\"mw:Transclusion\" data-mw=\"{&quot;parts&quot;:[&quot;~~~~&quot;]}\"></span></p><p>Baz</p>",
+		"expected": false
+	}
+]

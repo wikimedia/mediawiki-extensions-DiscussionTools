@@ -395,7 +395,7 @@ CommentController.prototype.switchToVisual = function () {
 		pageData = oldWidget.parsoidData.pageData,
 		commentController = this;
 
-	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext ).trim();
+	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
 
 	// Replace wikitext signatures with a special marker recognized by DtDmMWSignatureNode
 	// to render them as signature nodes in visual mode.

@@ -380,11 +380,12 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	if ( !wikitext.trim() ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
-		wikitext = modifier.sanitizeWikitextLinebreaks(
-			modifier.autoSignWikitext( wikitext )
-		);
-		// Drop opacity of signature in preview to make message body preview clearer.
-		wikitext = wikitext.slice( 0, -4 ) + '<span style="opacity: 0.6;">~~~~</span>';
+		wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
+		if ( !modifier.isWikitextSigned( wikitext ) ) {
+			// Add signature.
+			// Drop opacity of signature in preview to make message body preview clearer.
+			wikitext = wikitext + '<span style="opacity: 0.6;">' + mw.msg( 'discussiontools-signature-prefix' ) + '~~~~</span>';
+		}
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
 		this.previewRequest = parsePromise = this.api.post( {
 			action: 'parse',

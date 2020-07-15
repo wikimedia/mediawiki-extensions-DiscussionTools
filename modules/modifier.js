@@ -21,36 +21,13 @@ function whitespaceParsoidHack( listItem ) {
 }
 
 /**
- * Auto-sign a wikitext string
- *
- * @param {string} wikitext Wikitext
- * @return {string}
- */
-function autoSignWikitext( wikitext ) {
-	var matches;
-	wikitext = wikitext.trim();
-	if ( ( matches = wikitext.match( /~{3,5}$/ ) ) ) {
-		// Sig detected, check it has the correct number of tildes
-		if ( matches[ 0 ].length !== 4 ) {
-			wikitext = wikitext.slice( 0, -matches[ 0 ].length ) + '~~~~';
-		}
-		// Otherwise 4 tilde signature is left alone,
-		// with any adjacent characters
-	} else {
-		// No sig, append separator and sig
-		wikitext += mw.msg( 'discussiontools-signature-prefix' ) + '~~~~';
-	}
-	return wikitext;
-}
-
-/**
  * Remove extra linebreaks from a wikitext string
  *
  * @param {string} wikitext Wikitext
  * @return {string}
  */
 function sanitizeWikitextLinebreaks( wikitext ) {
-	return wikitext
+	return utils.htmlTrim( wikitext )
 		.replace( /\r/g, '\n' )
 		.replace( /\n+/g, '\n' );
 }
@@ -337,6 +314,71 @@ function createWikitextNode( doc, wt ) {
 }
 
 /**
+ * Check whether wikitext contains a user signature.
+ *
+ * @param {string} wikitext
+ * @return {boolean}
+ */
+function isWikitextSigned( wikitext ) {
+	wikitext = utils.htmlTrim( wikitext );
+	// Contains ~~~~ (four tildes), but not ~~~~~ (five tildes), at the end.
+	return /([^~]|^)~~~~$/.test( wikitext );
+}
+
+/**
+ * Check whether HTML node contains a user signature.
+ *
+ * @param {HTMLElement} container
+ * @return {boolean}
+ */
+function isHtmlSigned( container ) {
+	var matches, lastSig, node;
+	// Good enough?…
+	matches = container.querySelectorAll( 'span[typeof="mw:Transclusion"][data-mw*="~~~~"]' );
+	if ( matches.length === 0 ) {
+		return false;
+	}
+	lastSig = matches[ matches.length - 1 ];
+	// Signature must be at the end of the comment - there must be no sibling following this node, or its parents
+	node = lastSig;
+	while ( node ) {
+		// Skip over whitespace nodes
+		while (
+			node.nextSibling &&
+			node.nextSibling.nodeType === Node.TEXT_NODE &&
+			utils.htmlTrim( node.nextSibling.textContent ) === ''
+		) {
+			node = node.nextSibling;
+		}
+		if ( node.nextSibling ) {
+			return false;
+		}
+		node = node.parentNode;
+	}
+	return true;
+}
+
+/**
+ * Append a user signature to the comment in the container.
+ *
+ * @param {HTMLElement} container
+ */
+function appendSignature( container ) {
+	var doc = container.ownerDocument;
+
+	// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
+	// add another paragraph to contain the signature.
+	if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
+		container.appendChild( doc.createElement( 'p' ) );
+	}
+	// Sign the last line
+	// TODO: When we implement posting new topics, the leading space will create an indent-pre
+	container.lastChild.appendChild(
+		createWikitextNode( doc, mw.msg( 'discussiontools-signature-prefix' ) + '~~~~' )
+	);
+}
+
+/**
  * Add a reply to a specific comment
  *
  * @param {CommentItem} comment Comment being replied to
@@ -370,18 +412,18 @@ function addWikitextReply( comment, wikitext ) {
 	var doc = comment.range.endContainer.ownerDocument,
 		container = doc.createElement( 'div' );
 
-	// Use autoSign to avoid double signing
-	wikitext = sanitizeWikitextLinebreaks(
-		autoSignWikitext(
-			wikitext
-		)
-	);
+	wikitext = sanitizeWikitextLinebreaks( wikitext );
 
 	wikitext.split( '\n' ).forEach( function ( line ) {
 		var p = doc.createElement( 'p' );
 		p.appendChild( createWikitextNode( doc, line ) );
 		container.appendChild( p );
 	} );
+
+	if ( !isWikitextSigned( wikitext ) ) {
+		appendSignature( container );
+	}
+
 	addReply( comment, container );
 }
 
@@ -408,15 +450,11 @@ function addHtmlReply( comment, html ) {
 			container.removeChild( node );
 		}
 	} );
-	// If the last node isn't a paragraph (e.g. it's a list), then
-	// add another paragraph to contain the signature.
-	if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
-		container.appendChild( doc.createElement( 'p' ) );
+
+	if ( !isHtmlSigned( container ) ) {
+		appendSignature( container );
 	}
-	// Sign the last line
-	// TODO: Check if the user tried to sign in visual mode by typing wikitext?
-	// TODO: When we implement posting new topics, the leading space will create an indent-pre
-	container.lastChild.appendChild( createWikitextNode( doc, mw.msg( 'discussiontools-signature-prefix' ) + '~~~~' ) );
+
 	addReply( comment, container );
 }
 
@@ -429,6 +467,7 @@ module.exports = {
 	createWikitextNode: createWikitextNode,
 	addWikitextReply: addWikitextReply,
 	addHtmlReply: addHtmlReply,
-	autoSignWikitext: autoSignWikitext,
+	isWikitextSigned: isWikitextSigned,
+	isHtmlSigned: isHtmlSigned,
 	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks
 };

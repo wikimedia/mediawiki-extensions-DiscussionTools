@@ -1,0 +1,52 @@
+[
+	{
+		"msg": "Simple message",
+		"wikitext": "Foo bar",
+		"expected": false
+	},
+	{
+		"msg": "Already signed",
+		"wikitext": "Foo bar ~~~~",
+		"expected": true
+	},
+	{
+		"msg": "Already signed with trailing whitespace",
+		"wikitext": "Foo bar ~~~~ \n",
+		"expected": true
+	},
+	{
+		"msg": "Already signed (not at the end)",
+		"wikitext": "(Foo bar ~~~~)",
+		"expected": false
+	},
+	{
+		"msg": "Not signed, literal tildes",
+		"wikitext": "Hello, I'm <nowiki>~~~~</nowiki>",
+		"expected": false
+	},
+	{
+		"msg": "Already signed multi-line",
+		"wikitext": "Foo\n\nbar\n\n~~~~",
+		"expected": true
+	},
+	{
+		"msg": "Already signed with hyphens",
+		"wikitext": "Foo bar --~~~~",
+		"expected": true
+	},
+	{
+		"msg": "Already signed without space",
+		"wikitext": "Foo bar~~~~",
+		"expected": true
+	},
+	{
+		"msg": "Signed with 5 tildes",
+		"wikitext": "Foo bar ~~~~~",
+		"expected": false
+	},
+	{
+		"msg": "Signed with 3 tildes",
+		"wikitext": "Foo bar ~~~",
+		"expected": false
+	}
+]
