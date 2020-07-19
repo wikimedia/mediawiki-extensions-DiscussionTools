@@ -1,3 +1,7 @@
+/**
+ * @external CommentItem
+ */
+
 var
 	utils = require( 'ext.discussionTools.init' ).utils;
 
@@ -76,7 +80,7 @@ function getOffsetPath( ancestor, node, nodeOffset ) {
 /**
  * Massage comment data to make it serializable as JSON.
  *
- * @param {Object} parent Comment returned by parser#groupThreads; modified in-place
+ * @param {CommentItem} parent Comment item; modified in-place
  * @param {Node} root Ancestor node of all comments
  */
 module.exports.serializeComments = function ( parent, root ) {

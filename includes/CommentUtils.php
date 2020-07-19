@@ -117,7 +117,7 @@ class CommentUtils {
 	/**
 	 * Get a node (if any) that contains the given comment, and nothing else.
 	 *
-	 * @param CommentItem $comment Comment data returned by parser#groupThreads
+	 * @param CommentItem $comment Comment item
 	 * @return DOMElement|null
 	 */
 	public static function getFullyCoveredWrapper( CommentItem $comment ) : ?DOMElement {

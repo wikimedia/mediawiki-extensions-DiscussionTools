@@ -59,7 +59,7 @@ function sanitizeWikitextLinebreaks( wikitext ) {
  * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
  * the comment.
  *
- * @param {CommentItem} comment Comment data returned by parser#groupThreads
+ * @param {CommentItem} comment Comment item
  * @param {HTMLElement} linkNode Reply link
  */
 function addReplyLink( comment, linkNode ) {
@@ -90,7 +90,7 @@ function addReplyLink( comment, linkNode ) {
  * The DOM tree is suitably rearranged to ensure correct indentation level of the reply (wrapper
  * nodes are added, and other nodes may be moved around).
  *
- * @param {CommentItem} comment Comment data returned by parser#groupThreads
+ * @param {CommentItem} comment Comment item
  * @return {HTMLElement}
  */
 function addListItem( comment ) {
