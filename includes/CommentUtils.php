@@ -5,6 +5,8 @@ namespace MediaWiki\Extension\DiscussionTools;
 use DOMElement;
 use DOMNode;
 use DOMXPath;
+use MediaWiki\MediaWikiServices;
+use Title;
 
 class CommentUtils {
 	private function __construct() {
@@ -115,13 +117,13 @@ class CommentUtils {
 	}
 
 	/**
-	 * Get a node (if any) that contains the given comment, and nothing else.
+	 * Get a node (if any) that contains the given item, and nothing else.
 	 *
-	 * @param CommentItem $comment Comment item
+	 * @param ThreadItem $item Thread item
 	 * @return DOMElement|null
 	 */
-	public static function getFullyCoveredWrapper( CommentItem $comment ) : ?DOMElement {
-		$ancestor = $comment->getRange()->commonAncestorContainer;
+	public static function getFullyCoveredWrapper( ThreadItem $item ) : ?DOMElement {
+		$ancestor = $item->getRange()->commonAncestorContainer;
 
 		$isIgnored = function ( $node ) {
 			// Ignore empty text nodes
@@ -147,7 +149,7 @@ class CommentUtils {
 		$startMatches = false;
 		$node = $ancestor;
 		while ( $node ) {
-			if ( $comment->getRange()->startContainer === $node && $comment->getRange()->startOffset === 0 ) {
+			if ( $item->getRange()->startContainer === $node && $item->getRange()->startOffset === 0 ) {
 				$startMatches = true;
 				break;
 			}
@@ -162,7 +164,7 @@ class CommentUtils {
 				// PHP bug: childNodes can be null for comment nodes
 				// (it should always be a DOMNodeList, even if the node can't have children)
 				( $node->childNodes ? $node->childNodes->length : 0 );
-			if ( $comment->getRange()->endContainer === $node && $comment->getRange()->endOffset === $length ) {
+			if ( $item->getRange()->endContainer === $node && $item->getRange()->endOffset === $length ) {
 				$endMatches = true;
 				break;
 			}
@@ -209,4 +211,37 @@ class CommentUtils {
 			$parent->removeChild( $section );
 		}
 	}
+
+	/**
+	 * Get a MediaWiki page title from a URL
+	 *
+	 * @param string $url
+	 * @return Title|null
+	 */
+	public static function getTitleFromUrl( string $url ) : ?Title {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		// TODO: Set the correct base in the document?
+		if ( strpos( $url, './' ) === 0 ) {
+			$url = 'https://local' . str_replace( '$1', substr( $url, 2 ), $config->get( 'ArticlePath' ) );
+		} elseif ( strpos( $url, '://' ) === false ) {
+			$url = 'https://local' . $url;
+		}
+		$bits = wfParseUrl( $url );
+		$query = wfCgiToArray( $bits['query'] ?? '' );
+		if ( isset( $query['title'] ) ) {
+			return Title::newFromText( $query['title'] );
+		}
+
+		$articlePathRegexp = '/' . str_replace(
+			preg_quote( '$1', '/' ),
+			'(.*)',
+			preg_quote( $config->get( 'ArticlePath' ), '/' )
+		) . '/';
+		$matches = null;
+		if ( preg_match( $articlePathRegexp, $url, $matches ) ) {
+			return Title::newFromText( urldecode( $matches[1] ) );
+		}
+		return null;
+	}
+
 }

@@ -153,7 +153,7 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 				} ] } ).promise();
 			}
 
-			transcludedFrom = parser.getTranscludedFrom( comment );
+			transcludedFrom = comment.getTranscludedFrom();
 			if ( transcludedFrom ) {
 				mwTitle = transcludedFrom === true ? null : mw.Title.newFromText( transcludedFrom );
 				// If this refers to a template rather than a subpage, we never want to edit it

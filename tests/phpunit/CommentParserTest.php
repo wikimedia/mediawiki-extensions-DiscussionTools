@@ -236,47 +236,4 @@ class CommentParserTest extends CommentTestCase {
 		return self::getJson( '../cases/comments.json' );
 	}
 
-	/**
-	 * @dataProvider provideTranscludedFrom
-	 * @covers ::getTranscludedFrom
-	 * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils::unwrapParsoidSections
-	 */
-	public function testGetTranscludedFrom(
-		string $name, string $dom, string $expected, string $config, string $data
-	) : void {
-		$dom = self::getHtml( $dom );
-		$expected = self::getJson( $expected );
-		$config = self::getJson( $config );
-		$data = self::getJson( $data );
-
-		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $data );
-
-		$doc = self::createDocument( $dom );
-		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-
-		CommentUtils::unwrapParsoidSections( $container );
-
-		$comments = $parser->getComments( $container );
-		$parser->groupThreads( $comments );
-
-		$transcludedFrom = [];
-		foreach ( $comments as $comment ) {
-			if ( $comment instanceof CommentItem ) {
-				$transcludedFrom[ $comment->getId() ] =
-					$parser->getTranscludedFrom( $comment );
-			}
-		}
-
-		self::assertEquals(
-			$expected,
-			$transcludedFrom,
-			$name
-		);
-	}
-
-	public function provideTranscludedFrom() : array {
-		return self::getJson( '../cases/transcluded.json' );
-	}
-
 }
