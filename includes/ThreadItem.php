@@ -28,6 +28,30 @@ abstract class ThreadItem {
 	}
 
 	/**
+	 * Get the list of authors in the comment tree below this thread item.
+	 *
+	 * Usually called on a HeadingItem to find all authors in a thread.
+	 *
+	 * @return string[] Author usernames
+	 */
+	public function getAuthorsBelow() : array {
+		$authors = [];
+		$getAuthorSet = function ( CommentItem $comment ) use ( &$authors, &$getAuthorSet ) {
+			$author = $comment->getAuthor();
+			if ( $author ) {
+				$authors[ $author ] = true;
+			}
+			// Get the set of authors in the same format from each reply
+			array_map( $getAuthorSet, $comment->getReplies() );
+		};
+
+		array_map( $getAuthorSet, $this->getReplies() );
+
+		ksort( $authors );
+		return array_keys( $authors );
+	}
+
+	/**
 	 * @return string Thread item type
 	 */
 	public function getType() : string {

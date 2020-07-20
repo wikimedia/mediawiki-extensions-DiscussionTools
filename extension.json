@@ -200,7 +200,8 @@
 			"cases/fallback-encoding-link/fallback-encoding-link.json",
 			"cases/parsoid-sections/parsoid-sections-transcludedFrom.json",
 			"qunit/modifier.test.js",
-			"qunit/parser.test.js"
+			"qunit/parser.test.js",
+			"qunit/ThreadItem.test.js"
 		],
 		"templates": [
 			"cases/en-big-oldparser/en-big-oldparser.html",

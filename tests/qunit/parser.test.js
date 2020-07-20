@@ -137,15 +137,3 @@ QUnit.test( '#getTranscludedFrom', function ( assert ) {
 		// console.log( JSON.stringify( transcludedFrom, null, 2 ) );
 	} );
 } );
-
-QUnit.test( '#getAuthors', function ( assert ) {
-	var cases = require( '../cases/authors.json' );
-
-	cases.forEach( function ( caseItem ) {
-		var authors = parser.getAuthors( caseItem.thread );
-		assert.deepEqual(
-			authors,
-			caseItem.expected
-		);
-	} );
-} );

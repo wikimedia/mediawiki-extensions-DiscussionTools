@@ -41,7 +41,10 @@ function ReplyWidget( commentController, parsoidData, config ) {
 	this.contentDir = $( '#mw-content-text' ).css( 'direction' );
 
 	inputConfig = $.extend(
-		{ placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ) },
+		{
+			placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ),
+			authors: comment.getHeading().getAuthorsBelow()
+		},
 		config.input
 	);
 	this.replyBodyWidget = this.createReplyBodyWidget( inputConfig );
