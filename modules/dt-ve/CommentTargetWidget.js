@@ -19,7 +19,8 @@ function CommentTargetWidget( config ) {
 			'heading5',
 			'heading6',
 			'insertTable',
-			'transclusionFromSequence' // T253667
+			'transclusionFromSequence', // T253667
+			'blockquoteWrap' // T258194
 		]
 	}, config );
 
