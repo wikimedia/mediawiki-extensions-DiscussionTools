@@ -937,29 +937,6 @@ class CommentParser {
 	}
 
 	/**
-	 * Get the list of authors involved in a comment and its replies.
-	 *
-	 * @param HeadingItem $heading Heading item
-	 * @return string[] Author usernames
-	 */
-	public function getAuthors( HeadingItem $heading ) : array {
-		$authors = [];
-		$getAuthorSet = function ( CommentItem $comment ) use ( &$authors, &$getAuthorSet ) {
-			$author = $comment->getAuthor();
-			if ( $author ) {
-				$authors[ $author ] = true;
-			}
-			// Get the set of authors in the same format from each reply
-			array_map( $getAuthorSet, $comment->getReplies() );
-		};
-
-		array_map( $getAuthorSet, $heading->getReplies() );
-
-		ksort( $authors );
-		return array_keys( $authors );
-	}
-
-	/**
 	 * Get the name of the page from which this comment is transcluded (if any).
 	 *
 	 * @param CommentItem $comment Comment item

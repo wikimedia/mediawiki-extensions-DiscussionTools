@@ -9,15 +9,15 @@ var
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
 
-function traverseNode( parent, thread ) {
+function traverseNode( parent ) {
 	// Loads later to avoid circular dependency
 	var CommentController = require( './CommentController.js' );
 	parent.replies.forEach( function ( comment ) {
 		if ( comment.type === 'comment' ) {
 			// eslint-disable-next-line no-new
-			new CommentController( $pageContainer, comment, thread );
+			new CommentController( $pageContainer, comment );
 		}
-		traverseNode( comment, thread );
+		traverseNode( comment );
 	} );
 }
 
@@ -236,9 +236,7 @@ function init( $container, state ) {
 
 	$pageContainer.removeClass( 'dt-init-replylink-open' );
 
-	pageThreads.forEach( function ( thread ) {
-		traverseNode( thread, thread );
-	} );
+	pageThreads.forEach( traverseNode );
 
 	// For debugging
 	mw.dt.pageThreads = pageThreads;

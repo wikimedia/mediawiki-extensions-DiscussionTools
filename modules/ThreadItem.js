@@ -32,4 +32,24 @@ function ThreadItem( type, level, range ) {
 
 OO.initClass( ThreadItem );
 
+/**
+ * Get the list of authors in the comment tree below this thread item.
+ *
+ * Usually called on a HeadingItem to find all authors in a thread.
+ *
+ * @return {string[]} Author usernames
+ */
+ThreadItem.prototype.getAuthorsBelow = function () {
+	var authors = {};
+	function getAuthorSet( comment ) {
+		authors[ comment.author ] = true;
+		// Get the set of authors in the same format from each reply
+		comment.replies.map( getAuthorSet );
+	}
+
+	this.replies.map( getAuthorSet );
+
+	return Object.keys( authors ).sort();
+};
+
 module.exports = ThreadItem;

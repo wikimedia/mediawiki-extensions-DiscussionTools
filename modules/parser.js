@@ -913,25 +913,6 @@ function groupThreads( comments ) {
 }
 
 /**
- * Get the list of authors involved in a comment and its replies.
- *
- * @param {HeadingItem} heading Heading item
- * @return {string[]} Author usernames
- */
-function getAuthors( heading ) {
-	var authors = {};
-	function getAuthorSet( comment ) {
-		authors[ comment.author ] = true;
-		// Get the set of authors in the same format from each reply
-		comment.replies.map( getAuthorSet );
-	}
-
-	heading.replies.map( getAuthorSet );
-
-	return Object.keys( authors ).sort();
-}
-
-/**
  * Get the name of the page from which this comment is transcluded (if any).
  *
  * @param {CommentItem} comment Comment item
@@ -982,7 +963,6 @@ module.exports = {
 	getComments: getComments,
 	groupThreads: groupThreads,
 	findSignature: findSignature,
-	getAuthors: getAuthors,
 	getTranscludedFrom: getTranscludedFrom,
 	// Only used by dtdebug
 	findTimestamp: findTimestamp,

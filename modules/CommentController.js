@@ -2,7 +2,6 @@ var
 	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
-	parser = require( './parser.js' ),
 	logger = require( './logger.js' ),
 	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
@@ -20,12 +19,11 @@ if ( defaultVisual ) {
 	mw.loader.using( plainModules );
 }
 
-function CommentController( $pageContainer, comment, thread ) {
+function CommentController( $pageContainer, comment ) {
 	var mode;
 
 	this.$pageContainer = $pageContainer;
 	this.comment = comment;
-	this.thread = thread;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
 
@@ -222,11 +220,7 @@ CommentController.prototype.createReplyWidget = function ( parsoidData, visual )
 	var commentController = this;
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
-		return new ReplyWidget( commentController, parsoidData, {
-			input: {
-				authors: parser.getAuthors( commentController.thread )
-			}
-		} );
+		return new ReplyWidget( commentController, parsoidData );
 	} );
 };
 

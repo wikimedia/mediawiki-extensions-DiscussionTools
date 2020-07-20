@@ -201,38 +201,6 @@ class CommentParserTest extends CommentTestCase {
 	}
 
 	/**
-	 * @dataProvider provideAuthors
-	 * @covers ::getAuthors
-	 */
-	public function testGetAuthors( array $thread, array $expected ) : void {
-		$parser = CommentParser::newFromGlobalState();
-		$doc = $this->createDocument( '' );
-		$node = $doc->createElement( 'div' );
-		$range = new ImmutableRange( $node, 0, $node, 0 );
-
-		$makeThreadItem = function ( array $arr ) use ( &$makeThreadItem, $range ) : ThreadItem {
-			if ( $arr['type'] === 'comment' ) {
-				$item = new CommentItem( 1, $range );
-				$item->setAuthor( $arr['author'] );
-			} else {
-				$item = new HeadingItem( $range );
-			}
-			foreach ( $arr['replies'] as $reply ) {
-				$item->addReply( $makeThreadItem( $reply ) );
-			}
-			return $item;
-		};
-
-		$threadItem = $makeThreadItem( $thread );
-
-		self::assertEquals( $expected, $parser->getAuthors( $threadItem ) );
-	}
-
-	public function provideAuthors() : array {
-		return self::getJson( '../cases/authors.json' );
-	}
-
-	/**
 	 * @dataProvider provideComments
 	 * @covers ::getComments
 	 * @covers ::groupThreads
