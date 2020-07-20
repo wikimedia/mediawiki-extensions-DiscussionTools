@@ -1,12 +1,13 @@
 /* global moment */
 var
 	testUtils = require( './testUtils.js' ),
-	parser = require( 'ext.discussionTools.init' ).parser;
+	Parser = require( 'ext.discussionTools.init' ).Parser;
 
-QUnit.module( 'mw.dt.parser', testUtils.newEnvironment() );
+QUnit.module( 'mw.dt.Parser', testUtils.newEnvironment() );
 
 QUnit.test( '#getTimestampRegexp', function ( assert ) {
-	var cases = require( '../cases/timestamp-regex.json' );
+	var cases = require( '../cases/timestamp-regex.json' ),
+		parser = new Parser( document.createElement( 'div' ) );
 
 	testUtils.overrideParserData( require( '../data-en.json' ) );
 
@@ -20,7 +21,8 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 } );
 
 QUnit.test( '#getTimestampParser', function ( assert ) {
-	var cases = require( '../cases/timestamp-parser.json' );
+	var cases = require( '../cases/timestamp-parser.json' ),
+		parser = new Parser( document.createElement( 'div' ) );
 
 	testUtils.overrideParserData( require( '../data-en.json' ) );
 
@@ -36,7 +38,8 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 } );
 
 QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
-	var cases = require( '../cases/timestamp-parser-dst.json' );
+	var cases = require( '../cases/timestamp-parser-dst.json' ),
+		parser = new Parser( document.createElement( 'div' ) );
 
 	testUtils.overrideParserData( require( '../data-en.json' ) );
 
@@ -56,14 +59,14 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 	} );
 } );
 
-QUnit.test( '#getComments/#groupThreads', function ( assert ) {
+QUnit.test( '#getThreads', function ( assert ) {
 	var fixture,
 		cases = require( '../cases/comments.json' );
 
 	fixture = document.getElementById( 'qunit-fixture' );
 
 	cases.forEach( function ( caseItem ) {
-		var comments, threads,
+		var threads, parser,
 			$dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
@@ -80,8 +83,8 @@ QUnit.test( '#getComments/#groupThreads', function ( assert ) {
 		testUtils.overrideMwConfig( config );
 		testUtils.overrideParserData( data );
 
-		comments = parser.getComments( fixture );
-		threads = parser.groupThreads( comments );
+		parser = new Parser( fixture );
+		threads = parser.getThreads();
 
 		threads.forEach( function ( thread, i ) {
 			testUtils.serializeComments( thread, fixture );

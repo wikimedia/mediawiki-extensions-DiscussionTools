@@ -22,6 +22,18 @@ use Title;
 class CommentParser {
 	private const SIGNATURE_SCAN_LIMIT = 100;
 
+	/** @var DOMElement */
+	private $rootNode;
+
+	/** @var ThreadItem[] */
+	private $threadItems;
+	/** @var CommentItem[] */
+	private $commentItems;
+	/** @var CommentItem[] */
+	private $commentsById;
+	/** @var HeadingItem[] */
+	private $threads;
+
 	/** @var Config */
 	private $config;
 
@@ -33,11 +45,13 @@ class CommentParser {
 	private $timezones;
 
 	/**
+	 * @param DomElement $rootNode Root node of content to parse
 	 * @param Language $language Content language
 	 * @param Config $config
 	 * @param array $data
 	 */
-	public function __construct( Language $language, Config $config, array $data = [] ) {
+	public function __construct( DOMElement $rootNode, Language $language, Config $config, array $data = [] ) {
+		$this->rootNode = $rootNode;
 		$this->config = $config;
 
 		if ( !$data ) {
@@ -52,8 +66,13 @@ class CommentParser {
 		$this->timezones = $data['timezones'];
 	}
 
-	public static function newFromGlobalState() : CommentParser {
+	/**
+	 * @param DomElement $rootNode Root node
+	 * @return CommentParser
+	 */
+	public static function newFromGlobalState( DOMElement $rootNode ) : CommentParser {
 		return new static(
+			$rootNode,
 			MediaWikiServices::getInstance()->getContentLanguage(),
 			MediaWikiServices::getInstance()->getMainConfig()
 		);
@@ -66,10 +85,10 @@ class CommentParser {
 	 * with no children, that follows the given node.
 	 *
 	 * @param DOMNode $node Node to start searching at. This node's children are ignored.
-	 * @param DOMElement $rootNode Node to stop searching at
 	 * @return DOMNode
 	 */
-	private function nextInterestingLeafNode( DOMNode $node, DOMElement $rootNode ) : DOMNode {
+	private function nextInterestingLeafNode( DOMNode $node ) : DOMNode {
+		$rootNode = $this->rootNode;
 		$treeWalker = new TreeWalker(
 			$rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
@@ -461,13 +480,12 @@ class CommentParser {
 	 * The indent level is the number of lists inside of which it is nested.
 	 *
 	 * @param DOMNode $node
-	 * @param DOMElement $rootNode
 	 * @return int
 	 */
-	private function getIndentLevel( DOMNode $node, DOMElement $rootNode ) : int {
+	private function getIndentLevel( DOMNode $node ) : int {
 		$indent = 0;
 		while ( $node ) {
-			if ( $node === $rootNode ) {
+			if ( $node === $this->rootNode ) {
 				break;
 			}
 			$nodeName = strtolower( $node->nodeName );
@@ -650,8 +668,7 @@ class CommentParser {
 	/**
 	 * Get all discussion comments (and headings) within a DOM subtree.
 	 *
-	 * This returns a flat list, use groupThreads() to associate replies to original messages and
-	 * get a tree structure starting at section headings.
+	 * This returns a flat list, use getThreads() to get a tree structure starting at section headings.
 	 *
 	 * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here,
 	 * the wikitext syntax is just for illustration):
@@ -681,22 +698,54 @@ class CommentParser {
 	 *       CommentItem( { level: 2, range: (li: I)        } )
 	 *     ]
 	 *
-	 * @param DOMElement $rootNode
 	 * @return ThreadItem[] Thread items
 	 */
-	public function getComments( DOMElement $rootNode ) : array {
+	public function getThreadItems() : array {
+		if ( !$this->threadItems ) {
+			$this->buildThreads();
+		}
+		return $this->threadItems;
+	}
+
+	/**
+	 * Same as getFlatThreadItems, but only returns the CommentItems
+	 *
+	 * @return CommentItem[] Comment items
+	 */
+	public function getCommentItems() : array {
+		if ( !$this->commentItems ) {
+			$this->buildThreads();
+		}
+		return $this->commentItems;
+	}
+
+	/**
+	 * Find a CommentItem by its ID
+	 *
+	 * @param string $id Comment ID
+	 * @return CommentItem|null Comment item, null if not found
+	 */
+	public function findCommentById( string $id ) : ?CommentItem {
+		if ( !$this->commentsById ) {
+			$this->buildThreads();
+		}
+		return $this->commentsById[$id] ?? null;
+	}
+
+	private function buildThreadItems() : void {
 		$timestampRegex = $this->getLocalTimestampRegexp();
-		$comments = [];
+		$commentItems = [];
+		$threadItems = [];
 		$dfParser = $this->getLocalTimestampParser();
 
 		// Placeholder heading in case there are comments in the 0th section
-		$range = new ImmutableRange( $rootNode, 0, $rootNode, 0 );
+		$range = new ImmutableRange( $this->rootNode, 0, $this->rootNode, 0 );
 		$fakeHeading = new HeadingItem( $range, true );
 
 		$curComment = $fakeHeading;
 
 		$treeWalker = new TreeWalker(
-			$rootNode,
+			$this->rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
 			[ self::class, 'acceptOnlyNodesAllowingComments' ]
 		);
@@ -704,7 +753,7 @@ class CommentParser {
 			if ( $node instanceof DOMElement && preg_match( '/^h[1-6]$/i', $node->tagName ) ) {
 				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
 				$curComment = new HeadingItem( $range );
-				$comments[] = $curComment;
+				$threadItems[] = $curComment;
 			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegex ) ) ) {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $curComment->getRange()->endContainer );
@@ -719,7 +768,7 @@ class CommentParser {
 				}
 
 				// Everything from the last comment up to here is the next comment
-				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer, $rootNode );
+				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer );
 				$offset = $lastSigNode === $node ?
 					$match[0][1] + strlen( $match[0][0] ) :
 					CommentUtils::childIndexOf( $lastSigNode ) + 1;
@@ -736,8 +785,8 @@ class CommentParser {
 					$offset
 				);
 
-				$startLevel = $this->getIndentLevel( $startNode, $rootNode ) + 1;
-				$endLevel = $this->getIndentLevel( $node, $rootNode ) + 1;
+				$startLevel = $this->getIndentLevel( $startNode ) + 1;
+				$endLevel = $this->getIndentLevel( $node ) + 1;
 				if ( $startLevel !== $endLevel ) {
 					$warnings[] = 'Comment starts and ends with different indentation';
 				}
@@ -789,17 +838,19 @@ class CommentParser {
 				if ( $warnings ) {
 					$curComment->addWarnings( $warnings );
 				}
-				$comments[] = $curComment;
+				$commentItems[] = $curComment;
+				$threadItems[] = $curComment;
 			}
 		}
 
 		// Insert the fake placeholder heading if there are any comments in the 0th section
 		// (before the first real heading)
-		if ( count( $comments ) && !( $comments[ 0 ] instanceof HeadingItem ) ) {
-			array_unshift( $comments, $fakeHeading );
+		if ( count( $threadItems ) && !( $threadItems[ 0 ] instanceof HeadingItem ) ) {
+			array_unshift( $threadItems, $fakeHeading );
 		}
 
-		return $comments;
+		$this->commentItems = $commentItems;
+		$this->threadItems = $threadItems;
 	}
 
 	/**
@@ -843,66 +894,72 @@ class CommentParser {
 	 *       ] } )
 	 *     ]
 	 *
-	 * @param ThreadItem[] &$comments Result of #getComments, will be modified to add more properties
 	 * @return HeadingItem[] Tree structure of comments, top-level items are the headings.
 	 */
-	public function groupThreads( array &$comments ) : array {
+	public function getThreads() : array {
+		if ( !$this->threads ) {
+			$this->buildThreads();
+		}
+		return $this->threads;
+	}
+
+	private function buildThreads() : void {
+		if ( !$this->threadItems ) {
+			$this->buildThreadItems();
+		}
+
 		$threads = [];
 		$replies = [];
-		$commentsById = [];
+		$this->commentsById = [];
 
-		foreach ( $comments as &$comment ) {
-			if ( $comment instanceof HeadingItem ) {
+		foreach ( $this->threadItems as &$threadItem ) {
+			if ( $threadItem instanceof HeadingItem ) {
 				// We don't need ids for section headings right now, but we might in the future
 				// e.g. if we allow replying directly to sections (adding top-level comments)
 				$id = null;
-			} elseif ( $comment instanceof CommentItem ) {
-				$id = ( $comment->getAuthor() ?? '' ) . '|' . $comment->getTimestamp();
+			} elseif ( $threadItem instanceof CommentItem ) {
+				$id = ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
 
 				// If there would be multiple comments with the same ID (i.e. the user left multiple comments
 				// in one edit, or within a minute), append sequential numbers
 				$number = 0;
-				while ( isset( $commentsById["$id|$number"] ) ) {
+				while ( isset( $this->commentsById["$id|$number"] ) ) {
 					$number++;
 				}
 				$id = "$id|$number";
+				$this->commentsById[$id] = $threadItem;
+				// This modifies the original objects in $comments!
+				$threadItem->setId( $id );
 			} else {
 				throw new MWException( 'Unknown ThreadItem type' );
 			}
 
-			if ( $id !== null ) {
-				$commentsById[$id] = $comment;
-			}
-
-			// This modifies the original objects in $comments!
-			$comment->setId( $id );
-
-			if ( count( $replies ) < $comment->getLevel() ) {
+			if ( count( $replies ) < $threadItem->getLevel() ) {
 				// Someone skipped an indentation level (or several). Pretend that the previous reply
 				// covers multiple indentation levels, so that following comments get connected to it.
-				$comment->addWarning( 'Comment skips indentation level' );
-				while ( count( $replies ) < $comment->getLevel() ) {
+				$threadItem->addWarning( 'Comment skips indentation level' );
+				while ( count( $replies ) < $threadItem->getLevel() ) {
 					// FIXME this will clone the reply, not just set a reference
 					$replies[] = end( $replies );
 				}
 			}
 
-			if ( $comment instanceof HeadingItem ) {
+			if ( $threadItem instanceof HeadingItem ) {
 				// New root (thread)
-				$threads[] = $comment;
-			} elseif ( isset( $replies[ $comment->getLevel() - 1 ] ) ) {
+				$threads[] = $threadItem;
+			} elseif ( isset( $replies[ $threadItem->getLevel() - 1 ] ) ) {
 				// Add as a reply to the closest less-nested comment
-				$comment->setParent( $replies[ $comment->getLevel() - 1 ] );
-				$comment->getParent()->addReply( $comment );
+				$threadItem->setParent( $replies[ $threadItem->getLevel() - 1 ] );
+				$threadItem->getParent()->addReply( $threadItem );
 			} else {
-				$comment->addWarning( 'Comment could not be connected to a thread' );
+				$threadItem->addWarning( 'Comment could not be connected to a thread' );
 			}
 
-			$replies[ $comment->getLevel() ] = $comment;
+			$replies[ $threadItem->getLevel() ] = $threadItem;
 			// Cut off more deeply nested replies
-			array_splice( $replies, $comment->getLevel() + 1 );
+			array_splice( $replies, $threadItem->getLevel() + 1 );
 		}
 
-		return $threads;
+		$this->threads = $threads;
 	}
 }

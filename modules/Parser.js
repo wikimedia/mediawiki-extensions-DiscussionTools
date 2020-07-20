@@ -17,8 +17,18 @@ var
  * Utilities for detecting and parsing components of discussion pages: signatures, timestamps,
  * comments and threads.
  *
- * @class mw.dt.parser
+ * @class mw.dt.Parser
  */
+
+function Parser( rootNode ) {
+	this.rootNode = rootNode;
+	this.threadItems = null;
+	this.commentItems = null;
+	this.commentsById = null;
+	this.threads = null;
+}
+
+OO.initClass( Parser );
 
 /**
  * Get text of localisation messages in content language.
@@ -41,13 +51,14 @@ function getMessages( messages ) {
  * and only dates when MediaWiki existed, let's say 2000 onwards (Thai dates before 1941 are
  * complicated).
  *
+ * @private
  * @param {string} format Date format, as used by MediaWiki
  * @param {string} digitsRegexp Regular expression matching a single localised digit, e.g. `[0-9]`
  * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
  * @return {string} Regular expression
  */
-function getTimestampRegexp( format, digitsRegexp, tzAbbrs ) {
+Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs ) {
 	var s, p, num, code, endQuote, tzRegexp, regexp;
 
 	function regexpGroup( regexp ) {
@@ -167,12 +178,13 @@ function getTimestampRegexp( format, digitsRegexp, tzAbbrs ) {
 	regexp = s + '[\\u200E\\u200F]? [\\u200E\\u200F]?\\(' + tzRegexp + '\\)';
 
 	return regexp;
-}
+};
 
 /**
  * Get a function that parses timestamps generated using the given date format, based on the result
  * of matching the regexp returned by #getTimestampRegexp.
  *
+ * @private
  * @param {string} format Date format, as used by MediaWiki
  * @param {string|null} digits Localised digits from 0 to 9, e.g. `0123456789`
  * @param {string} localTimezone Local timezone IANA name, e.g. `America/New_York`
@@ -180,7 +192,7 @@ function getTimestampRegexp( format, digitsRegexp, tzAbbrs ) {
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
  * @return {TimestampParser} Timestamp parser function
  */
-function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
+Parser.prototype.getTimestampParser = function ( format, digits, localTimezone, tzAbbrs ) {
 	var p, code, endQuote, matchingGroups = [];
 	for ( p = 0; p < format.length; p++ ) {
 		code = format[ p ];
@@ -346,7 +358,7 @@ function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
 
 		return date;
 	};
-}
+};
 
 /**
  * Get a regexp that matches timestamps in the local date format.
@@ -356,13 +368,13 @@ function getTimestampParser( format, digits, localTimezone, tzAbbrs ) {
  * @private
  * @return {string} Regular expression
  */
-function getLocalTimestampRegexp() {
-	return getTimestampRegexp(
+Parser.prototype.getLocalTimestampRegexp = function () {
+	return this.getTimestampRegexp(
 		data.dateFormat,
 		data.digits ? '[' + data.digits + ']' : '\\d',
 		data.timezones
 	);
-}
+};
 
 /**
  * Get a function that parses timestamps in the local date format, based on the result
@@ -373,14 +385,14 @@ function getLocalTimestampRegexp() {
  * @private
  * @return {TimestampParser} Timestamp parser function
  */
-function getLocalTimestampParser() {
-	return getTimestampParser(
+Parser.prototype.getLocalTimestampParser = function () {
+	return this.getTimestampParser(
 		data.dateFormat,
 		data.digits,
 		data.localTimezone,
 		data.timezones
 	);
-}
+};
 
 /**
  * Callback for document.createTreeWalker that will skip over nodes where we don't want to detect
@@ -400,12 +412,13 @@ function acceptOnlyNodesAllowingComments( node ) {
 /**
  * Find a timestamps in a given text node
  *
+ * @private
  * @param {Text} node Text node
  * @param {string} timestampRegex Timestamp regex
  * @return {Array} Regexp match data, which specifies the location of the match,
  *  and which can be parsed using #getLocalTimestampParser
  */
-function findTimestamp( node, timestampRegex ) {
+Parser.prototype.findTimestamp = function ( node, timestampRegex ) {
 	var nodeText = '';
 	while ( node ) {
 		nodeText += node.nodeValue;
@@ -440,7 +453,7 @@ function findTimestamp( node, timestampRegex ) {
 	// timestamps in the text node can't be directly preceded by a signature (as we require them to
 	// have links), so we only concern ourselves with the first match.
 	return nodeText.match( timestampRegex );
-}
+};
 
 /**
  * Get a MediaWiki page title from a URL.
@@ -488,7 +501,7 @@ function getTitleFromUrl( url ) {
  *   `timestampNode` or its parent node as the first element)
  *  - Username, null for unsigned comments
  */
-function findSignature( timestampNode, until ) {
+Parser.prototype.findSignature = function ( timestampNode, until ) {
 	var node, sigNodes, sigUsername, length, lastLinkNode, links, nodes;
 
 	// Support timestamps being linked to the diff introducing the comment:
@@ -576,7 +589,7 @@ function findSignature( timestampNode, until ) {
 		sigNodes.pop();
 	}
 	return [ sigNodes, sigUsername ];
-}
+};
 
 /**
  * Get the indent level of a node, relative to its ancestor node.
@@ -585,13 +598,12 @@ function findSignature( timestampNode, until ) {
  *
  * @private
  * @param {Node} node
- * @param {HTMLElement} rootNode Node to stop counting at
  * @return {number}
  */
-function getIndentLevel( node, rootNode ) {
+Parser.prototype.getIndentLevel = function ( node ) {
 	var indent = 0, tagName;
 	while ( node ) {
-		if ( node === rootNode ) {
+		if ( node === this.rootNode ) {
 			break;
 		}
 		tagName = node.tagName && node.tagName.toLowerCase();
@@ -601,7 +613,7 @@ function getIndentLevel( node, rootNode ) {
 		node = node.parentNode;
 	}
 	return indent;
-}
+};
 
 /**
  * Return the next leaf node in the tree order that is not an empty or whitespace-only text node.
@@ -611,11 +623,13 @@ function getIndentLevel( node, rootNode ) {
  *
  * @private
  * @param {Node} node Node to start searching at. If it isn't a leaf node, its children are ignored.
- * @param {HTMLElement} rootNode Node to stop searching at
  * @return {Node}
  */
-function nextInterestingLeafNode( node, rootNode ) {
-	var treeWalker = rootNode.ownerDocument.createTreeWalker(
+Parser.prototype.nextInterestingLeafNode = function ( node ) {
+	var treeWalker,
+		rootNode = this.rootNode;
+
+	treeWalker = rootNode.ownerDocument.createTreeWalker(
 		rootNode,
 		// eslint-disable-next-line no-bitwise
 		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
@@ -642,13 +656,12 @@ function nextInterestingLeafNode( node, rootNode ) {
 		throw new Error( 'nextInterestingLeafNode not found' );
 	}
 	return treeWalker.currentNode;
-}
+};
 
 /**
  * Get all discussion comments (and headings) within a DOM subtree.
  *
- * This returns a flat list, use #groupThreads to associate replies to original messages and get a
- * tree structure starting at section headings.
+ * This returns a flat list, use #getThreads to get a tree structure starting at section headings.
  *
  * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here, the wikitext
  * syntax is just for illustration):
@@ -681,17 +694,50 @@ function nextInterestingLeafNode( node, rootNode ) {
  * @param {HTMLElement} rootNode
  * @return {ThreadItem[]} Thread items
  */
-function getComments( rootNode ) {
+Parser.prototype.getThreadItems = function () {
+	if ( !this.threadItems ) {
+		this.buildThreads();
+	}
+	return this.threadItems;
+};
+
+/**
+ * Same as getFlatThreadItems, but only returns the CommentItems
+ *
+ * @return {CommentItem[]} Comment items
+ */
+Parser.prototype.getCommentItems = function () {
+	if ( !this.commentItems ) {
+		this.buildThreads();
+	}
+	return this.commentItems;
+};
+
+/**
+ * Find a CommentItem by its ID
+ *
+ * @param {string} id Comment ID
+ * @return {CommentItem|null} Comment item, null if not found
+ */
+Parser.prototype.findCommentById = function ( id ) {
+	if ( !this.commentsById ) {
+		this.buildThreads();
+	}
+	return this.commentsById[ id ] || null;
+};
+
+Parser.prototype.buildThreadItems = function () {
 	var
-		dfParser = getLocalTimestampParser(),
-		timestampRegex = getLocalTimestampRegexp(),
-		comments = [],
+		dfParser = this.getLocalTimestampParser(),
+		timestampRegex = this.getLocalTimestampRegexp(),
+		commentItems = [],
+		threadItems = [],
 		treeWalker,
 		node, range, fakeHeading, curComment,
 		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, match, startLevel, endLevel, dateTime, warnings;
 
-	treeWalker = rootNode.ownerDocument.createTreeWalker(
-		rootNode,
+	treeWalker = this.rootNode.ownerDocument.createTreeWalker(
+		this.rootNode,
 		// eslint-disable-next-line no-bitwise
 		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
 		acceptOnlyNodesAllowingComments,
@@ -700,9 +746,9 @@ function getComments( rootNode ) {
 
 	// Placeholder heading in case there are comments in the 0th section
 	range = {
-		startContainer: rootNode,
+		startContainer: this.rootNode,
 		startOffset: 0,
-		endContainer: rootNode,
+		endContainer: this.rootNode,
 		endOffset: 0
 	};
 	fakeHeading = new HeadingItem( range, true );
@@ -718,10 +764,10 @@ function getComments( rootNode ) {
 				endOffset: node.childNodes.length
 			};
 			curComment = new HeadingItem( range );
-			comments.push( curComment );
-		} else if ( node.nodeType === Node.TEXT_NODE && ( match = findTimestamp( node, timestampRegex ) ) ) {
+			threadItems.push( curComment );
+		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegex ) ) ) {
 			warnings = [];
-			foundSignature = findSignature( node, curComment.range.endContainer );
+			foundSignature = this.findSignature( node, curComment.range.endContainer );
 			author = foundSignature[ 1 ];
 			firstSigNode = foundSignature[ 0 ][ foundSignature[ 0 ].length - 1 ];
 			lastSigNode = foundSignature[ 0 ][ 0 ];
@@ -733,7 +779,7 @@ function getComments( rootNode ) {
 			}
 
 			// Everything from last comment up to here is the next comment
-			startNode = nextInterestingLeafNode( curComment.range.endContainer, rootNode );
+			startNode = this.nextInterestingLeafNode( curComment.range.endContainer );
 			range = {
 				startContainer: startNode.parentNode,
 				startOffset: utils.childIndexOf( startNode ),
@@ -747,8 +793,8 @@ function getComments( rootNode ) {
 				endOffset: lastSigNode === node ? match.index + match[ 0 ].length : utils.childIndexOf( lastSigNode ) + 1
 			};
 
-			startLevel = getIndentLevel( startNode, rootNode ) + 1;
-			endLevel = getIndentLevel( node, rootNode ) + 1;
+			startLevel = this.getIndentLevel( startNode ) + 1;
+			endLevel = this.getIndentLevel( node ) + 1;
 			if ( startLevel !== endLevel ) {
 				warnings.push( 'Comment starts and ends with different indentation' );
 			}
@@ -788,18 +834,20 @@ function getComments( rootNode ) {
 			if ( warnings.length ) {
 				curComment.warnings = warnings;
 			}
-			comments.push( curComment );
+			commentItems.push( curComment );
+			threadItems.push( curComment );
 		}
 	}
 
 	// Insert the fake placeholder heading if there are any comments in the 0th section
 	// (before the first real heading)
-	if ( comments.length && !( comments[ 0 ] instanceof HeadingItem ) ) {
-		comments.unshift( fakeHeading );
+	if ( threadItems.length && !( threadItems[ 0 ] instanceof HeadingItem ) ) {
+		threadItems.unshift( fakeHeading );
 	}
 
-	return comments;
-}
+	this.commentItems = commentItems;
+	this.threadItems = threadItems;
+};
 
 /**
  * Group discussion comments into threads and associate replies to original messages.
@@ -842,84 +890,80 @@ function getComments( rootNode ) {
  *       ] } )
  *     ]
  *
- * @param {ThreadItem[]} comments Result of #getComments
  * @return {HeadingItem[]} Tree structure of comments, top-level items are the headings.
  */
-function groupThreads( comments ) {
+Parser.prototype.getThreads = function () {
+	if ( !this.threads ) {
+		this.buildThreads();
+	}
+	return this.threads;
+};
+
+Parser.prototype.buildThreads = function () {
 	var
 		threads = [],
 		replies = [],
-		commentsById = {},
-		i, comment, id, number;
+		i, threadItem, id, number;
 
-	for ( i = 0; i < comments.length; i++ ) {
-		comment = comments[ i ];
+	if ( !this.threadItems ) {
+		this.buildThreadItems();
+	}
 
-		if ( comment instanceof HeadingItem ) {
+	this.commentsById = {};
+	for ( i = 0; i < this.threadItems.length; i++ ) {
+		threadItem = this.threadItems[ i ];
+
+		if ( threadItem instanceof HeadingItem ) {
 			// We don't need ids for section headings right now, but we might in the future
 			// e.g. if we allow replying directly to sections (adding top-level comments)
 			id = null;
 		} else {
 			// username+timestamp
 			id = [
-				comment.author || '',
-				comment.timestamp.toISOString()
+				threadItem.author || '',
+				threadItem.timestamp.toISOString()
 			].join( '|' );
 
 			// If there would be multiple comments with the same ID (i.e. the user left multiple comments
 			// in one edit, or within a minute), append sequential numbers
 			number = 0;
-			while ( commentsById[ id + '|' + number ] ) {
+			while ( this.commentsById[ id + '|' + number ] ) {
 				number++;
 			}
 			id = id + '|' + number;
+			this.commentsById[ id ] = threadItem;
+			// This modifies the original objects in `comments`!
+			threadItem.id = id;
 		}
 
-		if ( id ) {
-			commentsById[ id ] = comment;
-		}
-
-		// This modifies the original objects in `comments`!
-		comment.id = id;
-
-		if ( replies.length < comment.level ) {
+		if ( replies.length < threadItem.level ) {
 			// Someone skipped an indentation level (or several). Pretend that the previous reply
 			// covers multiple indentation levels, so that following comments get connected to it.
-			comment.warnings = comment.warnings || [];
-			comment.warnings.push( 'Comment skips indentation level' );
-			while ( replies.length < comment.level ) {
+			threadItem.warnings = threadItem.warnings || [];
+			threadItem.warnings.push( 'Comment skips indentation level' );
+			while ( replies.length < threadItem.level ) {
 				replies[ replies.length ] = replies[ replies.length - 1 ];
 			}
 		}
 
-		if ( comment instanceof HeadingItem ) {
+		if ( threadItem instanceof HeadingItem ) {
 			// New root (thread)
-			threads.push( comment );
-		} else if ( replies[ comment.level - 1 ] ) {
+			threads.push( threadItem );
+		} else if ( replies[ threadItem.level - 1 ] ) {
 			// Add as a reply to the closest less-nested comment
-			comment.parent = replies[ comment.level - 1 ];
-			comment.parent.replies.push( comment );
+			threadItem.parent = replies[ threadItem.level - 1 ];
+			threadItem.parent.replies.push( threadItem );
 		} else {
-			comment.warnings = comment.warnings || [];
-			comment.warnings.push( 'Comment could not be connected to a thread' );
+			threadItem.warnings = threadItem.warnings || [];
+			threadItem.warnings.push( 'Comment could not be connected to a thread' );
 		}
 
-		replies[ comment.level ] = comment;
+		replies[ threadItem.level ] = threadItem;
 		// Cut off more deeply nested replies
-		replies.length = comment.level + 1;
+		replies.length = threadItem.level + 1;
 	}
 
-	return threads;
-}
-
-module.exports = {
-	getLocalTimestampParser: getLocalTimestampParser,
-	getTimestampRegexp: getTimestampRegexp,
-	getTimestampParser: getTimestampParser,
-	getComments: getComments,
-	groupThreads: groupThreads,
-	findSignature: findSignature,
-	// Only used by dtdebug
-	findTimestamp: findTimestamp,
-	getLocalTimestampRegexp: getLocalTimestampRegexp
+	this.threads = threads;
 };
+
+module.exports = Parser;
