@@ -3,7 +3,8 @@
 		"authors": [
 			"Ed g2s",
 			"MemphisA5",
-			"Ykhwong"
+			"Ykhwong",
+			"밝은소년"
 		]
 	},
 	"discussiontools": "토론 도구",
@@ -19,9 +20,15 @@
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}에게 답장",
 	"discussiontools-replywidget-preview": "미리 보기",
 	"discussiontools-replywidget-reply": "답변",
+	"tag-discussiontools-description": "토론 도구를 사용한 편집",
 	"tag-discussiontools-edit": "댓글 편집",
+	"tag-discussiontools-edit-description": "토론 도구를 사용해 이미 존재하는 댓글을 수정한 편집",
 	"tag-discussiontools-newtopic": "주제 추가",
+	"tag-discussiontools-newtopic-description": "토론 도구를 사용해 새 주제를 추가한 편집",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 답변]",
+	"tag-discussiontools-reply-description": "토론 도구를 사용해 답변을 한 편집",
 	"tag-discussiontools-source": "원본",
-	"tag-discussiontools-visual": "시각"
+	"tag-discussiontools-source-description": "원본 모드에서의 토론 도구 사용",
+	"tag-discussiontools-visual": "시각",
+	"tag-discussiontools-visual-description": "시각 모드에서의 토론 도구 사용"
 }

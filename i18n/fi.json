@@ -2,12 +2,25 @@
 	"@metadata": {
 		"authors": [
 			"FinlandMan",
+			"Majavah",
 			"Nike",
 			"Pxos",
 			"Pyscowicz"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Vastaus",
+	"discussiontools-replylink": "vastaa",
+	"discussiontools-replywidget-anon-warning": "Et ole kirjautunut sisään. Saadaksesi muokkauksen omiin nimiisi IP-osoitteen sijaan, [$1 kirjaudu sisään] tai [$2 luo tunnus].",
 	"discussiontools-replywidget-cancel": "Peruuta",
+	"discussiontools-replywidget-feedback": "Anna palautetta tästä ominaisuudesta",
+	"discussiontools-replywidget-loading": "Ladataan...",
+	"discussiontools-replywidget-mention-tool-title": "Mainitse käyttäjä",
+	"discussiontools-replywidget-mode-source": "Wikiteksti",
+	"discussiontools-replywidget-mode-visual": "Visuaalinen",
+	"discussiontools-replywidget-preview": "Esikatsele",
+	"discussiontools-replywidget-reply": "Vastaa",
 	"tag-discussiontools-newtopic": "Aihe lisätty",
-	"tag-discussiontools-source": "Lähde"
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vastaus]",
+	"tag-discussiontools-source": "Lähde",
+	"tag-discussiontools-visual": "Visuaalinen"
 }
