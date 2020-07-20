@@ -915,7 +915,7 @@ function groupThreads( comments ) {
 /**
  * Get the list of authors involved in a comment and its replies.
  *
- * @param {HeadingItem} heading Comment object, as returned by #groupThreads
+ * @param {HeadingItem} heading Heading item
  * @return {string[]} Author usernames
  */
 function getAuthors( heading ) {
@@ -934,7 +934,7 @@ function getAuthors( heading ) {
 /**
  * Get the name of the page from which this comment is transcluded (if any).
  *
- * @param {CommentItem} comment Comment object, as returned by #groupThreads
+ * @param {CommentItem} comment Comment item
  * @return {string|boolean} `false` if this comment is not transcluded. A string if it's transcluded
  *   from a single page (the page title, in text form with spaces). `true` if it's transcluded, but
  *   we can't determine the source.

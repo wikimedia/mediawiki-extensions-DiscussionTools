@@ -2,6 +2,10 @@
 /* global $:off */
 
 /**
+ * @external CommentItem
+ */
+
+/**
  * Return a native Range object corresponding to our comment's range.
  *
  * @param {Object} comment
@@ -117,7 +121,7 @@ function htmlTrim( str ) {
 /**
  * Get a node (if any) that contains the given comment, and nothing else.
  *
- * @param {Object} comment Comment data returned by parser#groupThreads
+ * @param {CommentItem} comment Comment item
  * @return {HTMLElement|null}
  */
 function getFullyCoveredWrapper( comment ) {

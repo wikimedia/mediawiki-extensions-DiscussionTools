@@ -270,8 +270,7 @@ class CommentParserTest extends CommentTestCase {
 
 	/**
 	 * @dataProvider provideTranscludedFrom
-	 * @covers ::getComments
-	 * @covers ::groupThreads
+	 * @covers ::getTranscludedFrom
 	 * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils::unwrapParsoidSections
 	 */
 	public function testGetTranscludedFrom(
