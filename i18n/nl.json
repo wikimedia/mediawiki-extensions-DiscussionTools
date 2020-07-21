@@ -7,6 +7,7 @@
 			"Elroy",
 			"Encycloon",
 			"Mainframe98",
+			"Mar(c)",
 			"PonkoSasuke"
 		]
 	},
@@ -17,6 +18,7 @@
 	"discussiontools-replylink": "Reageer",
 	"discussiontools-replywidget-anon-warning": "<strong>U bent niet aangemeld.</strong> Om naamsvermelding met uw naam te krijgen in plaats van uw IP-adres, kunt u [$1 zich aanmelden] of [$2 een account aanmaken].",
 	"discussiontools-replywidget-cancel": "Annuleren",
+	"discussiontools-replywidget-feedback": "Geef feedback over deze functie",
 	"discussiontools-replywidget-loading": "Bezig met laden...",
 	"discussiontools-replywidget-placeholder-reply": "Reactie op {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Voorvertoning",
