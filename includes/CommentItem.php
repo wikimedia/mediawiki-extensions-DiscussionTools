@@ -33,6 +33,13 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
+	 * @return string Comment ID. Unlike ThreadItem::getID this is never null.
+	 */
+	public function getId() : string {
+		return $this->id;
+	}
+
+	/**
 	 * @return ImmutableRange[] Comment signature ranges
 	 */
 	public function getSignatureRanges() : array {

@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
@@ -30,17 +29,14 @@ class CommentModifierTest extends CommentTestCase {
 		$doc = self::createDocument( $dom );
 		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
 
-		$parser = self::createParser( $data );
-		$comments = $parser->getComments( $container );
-		$parser->groupThreads( $comments );
+		$parser = self::createParser( $container, $data );
+		$comments = $parser->getCommentItems();
 
 		$nodes = [];
 		foreach ( $comments as $comment ) {
-			if ( $comment instanceof CommentItem ) {
-				$node = CommentModifier::addListItem( $comment );
-				$node->textContent = 'Reply to ' . $comment->getId();
-				$nodes[] = $node;
-			}
+			$node = CommentModifier::addListItem( $comment );
+			$node->textContent = 'Reply to ' . $comment->getId();
+			$nodes[] = $node;
 		}
 
 		$expectedDoc = self::createDocument( $expected );
@@ -71,17 +67,14 @@ class CommentModifierTest extends CommentTestCase {
 		$doc = self::createDocument( $dom );
 		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
 
-		$parser = self::createParser( $data );
-		$comments = $parser->getComments( $container );
-		$parser->groupThreads( $comments );
+		$parser = self::createParser( $container, $data );
+		$comments = $parser->getCommentItems();
 
 		foreach ( $comments as $comment ) {
-			if ( $comment instanceof CommentItem ) {
-				$linkNode = $doc->createElement( 'a' );
-				$linkNode->nodeValue = 'Reply';
-				$linkNode->setAttribute( 'href', '#' );
-				CommentModifier::addReplyLink( $comment, $linkNode );
-			}
+			$linkNode = $doc->createElement( 'a' );
+			$linkNode->nodeValue = 'Reply';
+			$linkNode->setAttribute( 'href', '#' );
+			CommentModifier::addReplyLink( $comment, $linkNode );
 		}
 
 		$expectedDoc = self::createDocument( $expected );

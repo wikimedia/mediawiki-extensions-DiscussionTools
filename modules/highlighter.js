@@ -1,11 +1,10 @@
 'use strict';
 
 var
-	parser = require( 'ext.discussionTools.init' ).parser,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	initialOffset, indentWidth;
 
-function markTimestamp( node, match ) {
+function markTimestamp( parser, node, match ) {
 	var
 		dfParser = parser.getLocalTimestampParser(),
 		newNode, wrapper, date;

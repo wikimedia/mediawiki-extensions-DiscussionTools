@@ -3,7 +3,7 @@
 var
 	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	$pageContainer,
-	parser = require( './parser.js' ),
+	Parser = require( './Parser.js' ),
 	utils = require( './utils.js' ),
 	pageDataCache = {};
 
@@ -48,14 +48,6 @@ function highlight( comment ) {
 			}, 500 );
 		}, 500 );
 	} );
-}
-
-function commentsById( comments ) {
-	var byId = {};
-	comments.forEach( function ( comment ) {
-		byId[ comment.id ] = comment;
-	} );
-	return byId;
 }
 
 /**
@@ -112,12 +104,12 @@ function getPageData( pageName, oldId ) {
  * @return {jQuery.Promise}
  */
 function getParsoidCommentData( pageName, oldId, commentId ) {
-	var parsoidPageData, parsoidDoc, parsoidComments, parsoidCommentsById;
+	var parsoidPageData, parsoidDoc;
 
 	return getPageData( pageName, oldId )
 		.then( function ( response ) {
 			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle, follow,
-				lintType,
+				lintType, parser,
 				lintErrors = response.linterrors;
 
 			data = response.visualeditor;
@@ -131,7 +123,6 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 				mw.config.get( 'wgArticlePath' ).replace( '$1', '' ),
 				document
 			) );
-			parsoidComments = parser.getComments( parsoidDoc.body );
 
 			parsoidPageData = {
 				pageName: pageName,
@@ -140,11 +131,8 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 				etag: data.etag
 			};
 
-			// getThreads builds the tree structure, currently only
-			// used to set 'replies' and 'id'
-			parser.groupThreads( parsoidComments );
-			parsoidCommentsById = commentsById( parsoidComments );
-			comment = parsoidCommentsById[ commentId ];
+			parser = new Parser( parsoidDoc.body );
+			comment = parser.findCommentById( commentId );
 
 			if ( !comment ) {
 				return $.Deferred().reject( 'comment-disappeared', { errors: [ {
@@ -196,7 +184,7 @@ function getParsoidCommentData( pageName, oldId, commentId ) {
 			}
 
 			return {
-				comment: parsoidCommentsById[ commentId ],
+				comment: comment,
 				doc: parsoidDoc,
 				pageData: parsoidPageData
 			};
@@ -225,14 +213,13 @@ function getCheckboxesPromise( pageData ) {
 }
 
 function init( $container, state ) {
-	var
-		pageComments, pageThreads, pageCommentsById,
+	var parser,
+		pageThreads,
 		repliedToComment;
 
 	$pageContainer = $container;
-	pageComments = parser.getComments( $pageContainer[ 0 ] );
-	pageThreads = parser.groupThreads( pageComments );
-	pageCommentsById = commentsById( pageComments );
+	parser = new Parser( $pageContainer[ 0 ] );
+	pageThreads = parser.getThreads();
 
 	$pageContainer.removeClass( 'dt-init-replylink-open' );
 
@@ -243,7 +230,7 @@ function init( $container, state ) {
 
 	if ( state.repliedTo ) {
 		// Find the comment we replied to, then highlight the last reply
-		repliedToComment = pageCommentsById[ state.repliedTo ];
+		repliedToComment = parser.findCommentById( state.repliedTo );
 		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 	}
 

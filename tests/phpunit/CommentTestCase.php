@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use DOMDocument;
+use DOMElement;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
@@ -58,12 +59,14 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	/**
 	 * Create a comment pareser
 	 *
+	 * @param DOMElement $rootNode
 	 * @param array $data
 	 * @return CommentParser
 	 */
-	protected static function createParser( array $data ) : CommentParser {
+	protected static function createParser( DOMElement $rootNode, array $data ) : CommentParser {
 		$services = MediaWikiServices::getInstance();
 		return new CommentParser(
+			$rootNode,
 			$services->getContentLanguage(),
 			$services->getMainConfig(),
 			$data

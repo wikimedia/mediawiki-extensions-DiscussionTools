@@ -59,21 +59,18 @@ class ThreadItemTest extends CommentTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $data );
 
 		$doc = self::createDocument( $dom );
 		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
 
 		CommentUtils::unwrapParsoidSections( $container );
 
-		$comments = $parser->getComments( $container );
-		$parser->groupThreads( $comments );
+		$parser = self::createParser( $container, $data );
+		$comments = $parser->getCommentItems();
 
 		$transcludedFrom = [];
 		foreach ( $comments as $comment ) {
-			if ( $comment instanceof CommentItem ) {
-				$transcludedFrom[ $comment->getId() ] = $comment->getTranscludedFrom();
-			}
+			$transcludedFrom[ $comment->getId() ] = $comment->getTranscludedFrom();
 		}
 
 		self::assertEquals(

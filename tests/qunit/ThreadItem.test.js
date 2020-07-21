@@ -1,6 +1,6 @@
 var
 	testUtils = require( './testUtils.js' ),
-	parser = require( 'ext.discussionTools.init' ).parser,
+	Parser = require( 'ext.discussionTools.init' ).Parser,
 	CommentItem = require( 'ext.discussionTools.init' ).CommentItem,
 	HeadingItem = require( 'ext.discussionTools.init' ).HeadingItem;
 
@@ -39,7 +39,7 @@ QUnit.test( '#getTranscludedFrom', function ( assert ) {
 	fixture = document.getElementById( 'qunit-fixture' );
 
 	cases.forEach( function ( caseItem ) {
-		var comments, transcludedFrom,
+		var comments, transcludedFrom, parser,
 			$dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
@@ -51,14 +51,12 @@ QUnit.test( '#getTranscludedFrom', function ( assert ) {
 		testUtils.overrideMwConfig( config );
 		testUtils.overrideParserData( data );
 
-		comments = parser.getComments( fixture );
-		parser.groupThreads( comments );
+		parser = new Parser( fixture );
+		comments = parser.getCommentItems();
 
 		transcludedFrom = {};
 		comments.forEach( function ( comment ) {
-			if ( comment.id ) {
-				transcludedFrom[ comment.id ] = comment.getTranscludedFrom();
-			}
+			transcludedFrom[ comment.id ] = comment.getTranscludedFrom();
 		} );
 
 		assert.deepEqual(

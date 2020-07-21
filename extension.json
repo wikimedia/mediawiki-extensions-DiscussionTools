@@ -45,7 +45,7 @@
 				"logger.js",
 				"modifier.js",
 				"utils.js",
-				"parser.js",
+				"Parser.js",
 				"ThreadItem.js",
 				"CommentItem.js",
 				"HeadingItem.js",

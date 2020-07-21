@@ -1,6 +1,6 @@
 var
 	testUtils = require( './testUtils.js' ),
-	parser = require( 'ext.discussionTools.init' ).parser,
+	Parser = require( 'ext.discussionTools.init' ).Parser,
 	modifier = require( 'ext.discussionTools.init' ).modifier;
 
 QUnit.module( 'mw.dt.modifier', testUtils.newEnvironment() );
@@ -11,7 +11,7 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 
 	cases.forEach( function ( caseItem ) {
 		var actualHtml, expectedHtml, reverseActualHtml, reverseExpectedHtml,
-			i, comments, nodes, node,
+			i, comments, nodes, node, parser,
 			dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
 			config = require( caseItem.config ),
@@ -26,17 +26,14 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		$( fixture ).empty().append( dom.clone() );
 		reverseExpectedHtml = fixture.innerHTML;
 
-		comments = parser.getComments( fixture );
-		parser.groupThreads( comments );
+		parser = new Parser( fixture );
+		comments = parser.getCommentItems();
 
 		// Add a reply to every comment. Note that this inserts *all* of the replies, unlike the real
 		// thing, which only deals with one at a time. This isn't ideal but resetting everything after
 		// every reply would be super slow.
 		nodes = [];
 		for ( i = 0; i < comments.length; i++ ) {
-			if ( comments[ i ].type === 'heading' ) {
-				continue;
-			}
 			node = modifier.addListItem( comments[ i ] );
 			node.textContent = 'Reply to ' + comments[ i ].id;
 			nodes.push( node );
@@ -73,7 +70,7 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 
 	cases.forEach( function ( caseItem ) {
 		var actualHtml, expectedHtml,
-			i, comments, linkNode,
+			i, comments, linkNode, parser,
 			dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
 			config = require( caseItem.config ),
@@ -87,14 +84,11 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 
 		$( fixture ).empty().append( dom.clone() );
 
-		comments = parser.getComments( fixture );
-		parser.groupThreads( comments );
+		parser = new Parser( fixture );
+		comments = parser.getCommentItems();
 
 		// Add a reply link to every comment.
 		for ( i = 0; i < comments.length; i++ ) {
-			if ( comments[ i ].type === 'heading' ) {
-				continue;
-			}
 			linkNode = document.createElement( 'a' );
 			linkNode.textContent = 'Reply';
 			linkNode.href = '#';

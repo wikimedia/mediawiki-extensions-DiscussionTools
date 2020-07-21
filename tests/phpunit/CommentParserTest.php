@@ -133,7 +133,7 @@ class CommentParserTest extends CommentTestCase {
 		string $format, string $expected, string $message
 	) : void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState()
+			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
 		);
 
 		// HACK: Fix differences between JS & PHP regexes
@@ -158,7 +158,7 @@ class CommentParserTest extends CommentTestCase {
 		string $format, array $data, string $expected, string $message
 	) : void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState()
+			CommentParser::newFromGlobalState( new DOMELement( 'div' ) )
 		);
 
 		$expected = new DateTimeImmutable( $expected );
@@ -180,7 +180,7 @@ class CommentParserTest extends CommentTestCase {
 		string $timezone, array $timezoneAbbrs, string $message
 	) : void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState()
+			CommentParser::newFromGlobalState( new DOMELement( 'div' ) )
 		);
 
 		$regexp = $parser->getTimestampRegexp( $format, '\\d', $timezoneAbbrs );
@@ -202,10 +202,9 @@ class CommentParserTest extends CommentTestCase {
 
 	/**
 	 * @dataProvider provideComments
-	 * @covers ::getComments
-	 * @covers ::groupThreads
+	 * @covers ::getThreads
 	 */
-	public function testGetComments(
+	public function testGetThreads(
 		string $name, string $dom, string $expected, string $config, string $data
 	) : void {
 		$dom = self::getHtml( $dom );
@@ -213,14 +212,12 @@ class CommentParserTest extends CommentTestCase {
 		$config = self::getJson( $config );
 		$data = self::getJson( $data );
 
-		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $data );
-
 		$doc = self::createDocument( $dom );
 		$body = $doc->getElementsByTagName( 'body' )->item( 0 );
 
-		$comments = $parser->getComments( $body );
-		$threads = $parser->groupThreads( $comments );
+		$this->setupEnv( $config, $data );
+		$parser = self::createParser( $body, $data );
+		$threads = $parser->getThreads();
 
 		$processedThreads = [];
 

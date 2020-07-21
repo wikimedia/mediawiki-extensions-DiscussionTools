@@ -6,12 +6,12 @@ namespace MediaWiki\Extension\DiscussionTools;
  * A thread item, either a heading or a comment
  */
 abstract class ThreadItem {
-	private $type;
-	private $range;
-	private $level;
+	protected $type;
+	protected $range;
+	protected $level;
 
-	private $id = null;
-	private $replies = [];
+	protected $id = null;
+	protected $replies = [];
 
 	/**
 	 * @param string $type `heading` or `comment`

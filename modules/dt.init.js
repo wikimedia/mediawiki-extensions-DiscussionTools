@@ -25,7 +25,7 @@ if ( new mw.Uri().query.dtdebug ) {
 
 module.exports = {
 	controller: require( './controller.js' ),
-	parser: require( './parser.js' ),
+	Parser: require( './Parser.js' ),
 	modifier: require( './modifier.js' ),
 	ThreadItem: require( './ThreadItem.js' ),
 	HeadingItem: require( './HeadingItem.js' ),
