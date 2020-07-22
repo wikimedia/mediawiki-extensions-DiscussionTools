@@ -4,7 +4,6 @@ var
 	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	$pageContainer,
 	Parser = require( './Parser.js' ),
-	utils = require( './utils.js' ),
 	pageDataCache = {};
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
@@ -26,11 +25,8 @@ function highlight( comment ) {
 		// $container must be position:relative/absolute
 		$container = OO.ui.getDefaultOverlay(),
 		containerRect = $container[ 0 ].getBoundingClientRect(),
-		nativeRange, rect,
+		rect = RangeFix.getBoundingClientRect( comment.getNativeRange() ),
 		$highlight = $( '<div>' ).addClass( 'dt-init-highlight' );
-
-	nativeRange = utils.getNativeRange( comment );
-	rect = RangeFix.getBoundingClientRect( nativeRange );
 
 	$highlight.css( {
 		top: rect.top - containerRect.top - padding,

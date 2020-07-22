@@ -6,30 +6,6 @@
  */
 
 /**
- * Return a native Range object corresponding to our comment's range.
- *
- * @param {Object} comment
- * @return {Range}
- */
-function getNativeRange( comment ) {
-	var endContainer, endOffset,
-		doc = comment.range.startContainer.ownerDocument,
-		nativeRange = doc.createRange();
-	nativeRange.setStart( comment.range.startContainer, comment.range.startOffset );
-	// HACK: When the offset is outside the container, assume this is because of
-	// the 'mw:Entity' hack in parser#findTimestamp and adjust accordingly.
-	// TODO: The parser should produce valid ranges!
-	endContainer = comment.range.endContainer;
-	endOffset = comment.range.endOffset;
-	while ( endOffset > ( endContainer.length || endContainer.childNodes.length ) ) {
-		endOffset -= ( endContainer.length || endContainer.childNodes.length );
-		endContainer = endContainer.nextSibling;
-	}
-	nativeRange.setEnd( endContainer, endOffset );
-	return nativeRange;
-}
-
-/**
  * Get the index of a node in its parentNode's childNode list
  *
  * @param {Node} child
@@ -127,7 +103,7 @@ function htmlTrim( str ) {
 function getCoveredSiblings( item ) {
 	var range, ancestor, siblings, start, end;
 
-	range = getNativeRange( item );
+	range = item.getNativeRange();
 	ancestor = range.commonAncestorContainer;
 
 	if ( ancestor === range.startContainer || ancestor === range.endContainer ) {
@@ -222,7 +198,6 @@ function getFullyCoveredSiblings( item ) {
 }
 
 module.exports = {
-	getNativeRange: getNativeRange,
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
 	getFullyCoveredSiblings: getFullyCoveredSiblings,
