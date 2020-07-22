@@ -2,7 +2,7 @@
 /* global $:off */
 
 /**
- * @external CommentItem
+ * @external ThreadItem
  */
 
 /**
@@ -119,16 +119,48 @@ function htmlTrim( str ) {
 }
 
 /**
- * Get a node (if any) that contains the given comment, and nothing else.
+ * Get an array of sibling nodes that contain parts of the given thread item.
  *
- * @param {CommentItem} comment Comment item
- * @return {HTMLElement|null}
+ * @param {ThreadItem} item Thread item
+ * @return {HTMLElement[]}
  */
-function getFullyCoveredWrapper( comment ) {
-	var nativeRange, ancestor, node, startMatches, endMatches, length;
+function getCoveredSiblings( item ) {
+	var range, ancestor, siblings, start, end;
 
-	nativeRange = getNativeRange( comment );
-	ancestor = nativeRange.commonAncestorContainer;
+	range = getNativeRange( item );
+	ancestor = range.commonAncestorContainer;
+
+	if ( ancestor === range.startContainer || ancestor === range.endContainer ) {
+		return [ ancestor ];
+	}
+
+	siblings = ancestor.childNodes;
+	start = 0;
+	end = siblings.length - 1;
+
+	// Find first of the siblings that contains the item
+	while ( !siblings[ start ].contains( range.startContainer ) ) {
+		start++;
+	}
+
+	// Find last of the siblings that contains the item
+	while ( !siblings[ end ].contains( range.endContainer ) ) {
+		end--;
+	}
+
+	return Array.prototype.slice.call( siblings, start, end + 1 );
+}
+
+/**
+ * Get the nodes (if any) that contain the given thread item, and nothing else.
+ *
+ * @param {ThreadItem} item Thread item
+ * @return {HTMLElement[]|null}
+ */
+function getFullyCoveredSiblings( item ) {
+	var siblings, node, startMatches, endMatches, length, parent;
+
+	siblings = getCoveredSiblings( item );
 
 	function isIgnored( node ) {
 		// Ignore empty text nodes, and our own reply buttons
@@ -153,9 +185,9 @@ function getFullyCoveredWrapper( comment ) {
 	}
 
 	startMatches = false;
-	node = ancestor;
+	node = siblings[ 0 ];
 	while ( node ) {
-		if ( comment.range.startContainer === node && comment.range.startOffset === 0 ) {
+		if ( item.range.startContainer === node && item.range.startOffset === 0 ) {
 			startMatches = true;
 			break;
 		}
@@ -163,12 +195,12 @@ function getFullyCoveredWrapper( comment ) {
 	}
 
 	endMatches = false;
-	node = ancestor;
+	node = siblings[ siblings.length - 1 ];
 	while ( node ) {
 		length = node.nodeType === Node.TEXT_NODE ?
 			node.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
 			node.childNodes.length;
-		if ( comment.range.endContainer === node && comment.range.endOffset === length ) {
+		if ( item.range.endContainer === node && item.range.endOffset === length ) {
 			endMatches = true;
 			break;
 		}
@@ -176,14 +208,15 @@ function getFullyCoveredWrapper( comment ) {
 	}
 
 	if ( startMatches && endMatches ) {
-		// If this is the only child, go up one more level
+		// If these are all of the children (or the only child), go up one more level
 		while (
-			ancestor.parentNode &&
-			firstNonemptyChild( ancestor.parentNode ) === lastNonemptyChild( ancestor.parentNode )
+			( parent = siblings[ 0 ].parentNode ) &&
+			firstNonemptyChild( parent ) === siblings[ 0 ] &&
+			lastNonemptyChild( parent ) === siblings[ siblings.length - 1 ]
 		) {
-			ancestor = ancestor.parentNode;
+			siblings = [ parent ];
 		}
-		return ancestor;
+		return siblings;
 	}
 	return null;
 }
@@ -192,7 +225,7 @@ module.exports = {
 	getNativeRange: getNativeRange,
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
-	getFullyCoveredWrapper: getFullyCoveredWrapper,
+	getFullyCoveredSiblings: getFullyCoveredSiblings,
 	getTranscludedFromElement: getTranscludedFromElement,
 	htmlTrim: htmlTrim
 };

@@ -73,7 +73,7 @@ function addReplyLink( comment, linkNode ) {
 function addListItem( comment ) {
 	var
 		curComment, curLevel, desiredLevel,
-		target, parent, wrapper, listType, itemType, list, item, newNode,
+		target, parent, covered, listType, itemType, list, item, newNode,
 		listTypeMap = {
 			li: 'ul',
 			dd: 'dl'
@@ -116,15 +116,14 @@ function addListItem( comment ) {
 		// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
 		// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
 		// as some kind of a fancy frame, which are often used for barnstars and announcements.
-		if ( curLevel === 1 && ( wrapper = utils.getFullyCoveredWrapper( curComment ) ) ) {
-			target = wrapper;
+		covered = utils.getFullyCoveredSiblings( curComment );
+		if ( curLevel === 1 && covered ) {
+			target = covered[ covered.length - 1 ];
 			parent = target.parentNode;
 		}
 
 		// If we can't insert a list directly inside this element, insert after it.
-		// The wrapper check above handles most cases, but this special case is still needed for comments
-		// consisting of multiple paragraphs with no fancy frames.
-		// TODO Improve this check
+		// TODO Figure out if this is still needed, the wrapper check above should handle all cases
 		if ( parent.tagName.toLowerCase() === 'p' || parent.tagName.toLowerCase() === 'pre' ) {
 			parent = parent.parentNode;
 			target = target.parentNode;

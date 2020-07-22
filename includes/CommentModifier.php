@@ -153,15 +153,14 @@ class CommentModifier {
 			// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
 			// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
 			// as some kind of a fancy frame, which are often used for barnstars and announcements.
-			if ( $curLevel === 1 && ( $wrapper = CommentUtils::getFullyCoveredWrapper( $curComment ) ) ) {
-				$target = $wrapper;
+			$covered = CommentUtils::getFullyCoveredSiblings( $curComment );
+			if ( $curLevel === 1 && $covered ) {
+				$target = end( $covered );
 				$parent = $target->parentNode;
 			}
 
 			// If we can't insert a list directly inside this element, insert after it.
-			// The wrapper check above handles most cases, but this special case is still needed for comments
-			// consisting of multiple paragraphs with no fancy frames.
-			// TODO Improve this check
+			// TODO Figure out if this is still needed, the wrapper check above should handle all cases
 			if ( strtolower( $parent->tagName ) === 'p' || strtolower( $parent->tagName ) === 'pre' ) {
 				$parent = $parent->parentNode;
 				$target = $target->parentNode;
