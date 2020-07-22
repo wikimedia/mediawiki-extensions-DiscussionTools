@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use DOMDocument;
 use DOMElement;
 use DOMNode;
+use DOMXPath;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentModifier {
@@ -50,34 +51,13 @@ class CommentModifier {
 	}
 
 	/**
-	 * Auto-sign a wikitext string
-	 *
-	 * @param string $wikitext Wikitext
-	 * @return string
-	 */
-	public static function autoSignWikitext( string $wikitext ) : string {
-		$wikitext = trim( $wikitext );
-		if ( preg_match( '/~{3,5}$/', $wikitext, $matches ) ) {
-			// Sig detected, check it has the correct number of tildes
-			if ( strlen( $matches[ 0 ] ) !== 4 ) {
-				$wikitext = substr( $wikitext, 0, -strlen( $matches[ 0 ] ) ) . '~~~~';
-			}
-			// Otherwise 4 tilde signature is left alone,
-			// with any adjacent characters
-		} else {
-			// No sig, append separator and sig
-			$wikitext .= wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
-		}
-		return $wikitext;
-	}
-
-	/**
 	 * Remove extra linebreaks from a wikitext string
 	 *
 	 * @param string $wikitext Wikitext
 	 * @return string
 	 */
 	public static function sanitizeWikitextLinebreaks( string $wikitext ) : string {
+		$wikitext = CommentUtils::htmlTrim( $wikitext );
 		$wikitext = preg_replace( "/\r/", "\n", $wikitext );
 		$wikitext = preg_replace( "/\n+/", "\n", $wikitext );
 		return $wikitext;
@@ -346,6 +326,74 @@ class CommentModifier {
 	}
 
 	/**
+	 * Check whether wikitext contains a user signature.
+	 *
+	 * @param string $wikitext
+	 * @return bool
+	 */
+	public static function isWikitextSigned( string $wikitext ) : bool {
+		$wikitext = CommentUtils::htmlTrim( $wikitext );
+		// Contains ~~~~ (four tildes), but not ~~~~~ (five tildes), at the end.
+		return (bool)preg_match( '/([^~]|^)~~~~$/', $wikitext );
+	}
+
+	/**
+	 * Check whether HTML node contains a user signature.
+	 *
+	 * @param DOMElement $container
+	 * @return bool
+	 */
+	public static function isHtmlSigned( DOMElement $container ) : bool {
+		$xpath = new DOMXPath( $container->ownerDocument );
+		// Good enough?…
+		$matches = $xpath->query( './/span[@typeof="mw:Transclusion"][contains(@data-mw,"~~~~")]', $container );
+		if ( $matches->length === 0 ) {
+			return false;
+		}
+		$lastSig = $matches->item( $matches->length - 1 );
+		// Signature must be at the end of the comment - there must be no sibling following this node, or its parents
+		$node = $lastSig;
+		while ( $node ) {
+			// Skip over whitespace nodes
+			while (
+				$node->nextSibling &&
+				$node->nextSibling->nodeType === XML_TEXT_NODE &&
+				CommentUtils::htmlTrim( $node->nextSibling->nodeValue ) === ''
+			) {
+				$node = $node->nextSibling;
+			}
+			if ( $node->nextSibling ) {
+				return false;
+			}
+			$node = $node->parentNode;
+		}
+		return true;
+	}
+
+	/**
+	 * Append a user signature to the comment in the container.
+	 *
+	 * @param DOMElement $container
+	 */
+	private static function appendSignature( DOMElement $container ) : void {
+		$doc = $container->ownerDocument;
+
+		// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
+		// add another paragraph to contain the signature.
+		if ( strtolower( $container->lastChild->nodeName ) !== 'p' ) {
+			$container->appendChild( $doc->createElement( 'p' ) );
+		}
+		// Sign the last line
+		// TODO: When we implement posting new topics, the leading space will create an indent-pre
+		$container->lastChild->appendChild(
+			self::createWikitextNode(
+				$doc,
+				wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~'
+			)
+		);
+	}
+
+	/**
 	 * Add a reply to a specific comment
 	 *
 	 * @param CommentItem $comment Comment being replied to
@@ -378,12 +426,7 @@ class CommentModifier {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = $doc->createElement( 'div' );
 
-		// Use autoSign to avoid double signing
-		$wikitext = self::sanitizeWikitextLinebreaks(
-			self::autoSignWikitext(
-				$wikitext
-			)
-		);
+		$wikitext = self::sanitizeWikitextLinebreaks( $wikitext );
 
 		$lines = explode( "\n", $wikitext );
 		foreach ( $lines as $line ) {
@@ -391,6 +434,11 @@ class CommentModifier {
 			$p->appendChild( self::createWikitextNode( $doc, $line ) );
 			$container->appendChild( $p );
 		}
+
+		if ( !self::isWikitextSigned( $wikitext ) ) {
+			self::appendSignature( $container );
+		}
+
 		self::addReply( $comment, $container );
 	}
 
@@ -419,20 +467,11 @@ class CommentModifier {
 				$container->removeChild( $node );
 			}
 		}
-		// If the last node isn't a paragraph (e.g. it's a list), then
-		// add another paragraph to contain the signature.
-		if ( strtolower( $container->lastChild->nodeName ) !== 'p' ) {
-			$container->appendChild( $doc->createElement( 'p' ) );
+
+		if ( !self::isHtmlSigned( $container ) ) {
+			self::appendSignature( $container );
 		}
-		// Sign the last line
-		// TODO: Check if the user tried to sign in visual mode by typing wikitext?
-		// TODO: When we implement posting new topics, the leading space will create an indent-pre
-		$container->lastChild->appendChild(
-			self::createWikitextNode(
-				$doc,
-				wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~'
-			)
-		);
+
 		self::addReply( $comment, $container );
 	}
 

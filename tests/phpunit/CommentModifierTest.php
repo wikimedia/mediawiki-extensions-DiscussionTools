@@ -105,32 +105,48 @@ class CommentModifierTest extends CommentTestCase {
 	}
 
 	/**
-	 * @dataProvider provideAutoSignWikitext
-	 * @covers ::autoSignWikitext
+	 * @dataProvider provideIsWikitextSigned
+	 * @covers ::isWikitextSigned
 	 */
-	public function testAutoSignWikitext(
-		string $msg, string $wikitext, string $expected, ?string $prefix = null
+	public function testIsWikitextSigned(
+		string $msg, string $wikitext, bool $expected
 	) : void {
-		if ( $prefix !== null ) {
-			// TODO: Work out how to mock messages
-			self::assertTrue( true );
-			return;
-		}
-
 		self::assertEquals(
 			$expected,
-			CommentModifier::autoSignWikitext( $wikitext ),
+			CommentModifier::isWikitextSigned( $wikitext ),
 			$msg
 		);
 	}
 
-	public function provideAutoSignWikitext() : array {
-		return self::getJson( '../cases/auto-sign-wikitext.json' );
+	public function provideIsWikitextSigned() : array {
+		return self::getJson( '../cases/isWikitextSigned.json' );
+	}
+
+	/**
+	 * @dataProvider provideIsHtmlSigned
+	 * @covers ::isHtmlSigned
+	 */
+	public function testIsHtmlSigned(
+		string $msg, string $html, bool $expected
+	) : void {
+		$doc = self::createDocument( '' );
+		$container = $doc->createElement( 'div' );
+		DOMCompat::setInnerHTML( $container, $html );
+
+		self::assertEquals(
+			$expected,
+			CommentModifier::isHtmlSigned( $container ),
+			$msg
+		);
+	}
+
+	public function provideIsHtmlSigned() : array {
+		return self::getJson( '../cases/isHtmlSigned.json' );
 	}
 
 	/**
 	 * @dataProvider provideSanitizeWikitextLinebreaks
-	 * @covers ::autoSignWikitext
+	 * @covers ::sanitizeWikitextLinebreaks
 	 */
 	public function testSanitizeWikitextLinebreaks( string $msg, string $wikitext, string $expected ) : void {
 		self::assertEquals(

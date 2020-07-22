@@ -125,20 +125,30 @@ QUnit.test( '#unwrapList', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'autoSignWikitext', function ( assert ) {
-	var cases = require( '../cases/auto-sign-wikitext.json' );
+QUnit.test( 'isWikitextSigned', function ( assert ) {
+	var cases = require( '../cases/isWikitextSigned.json' );
 
 	cases.forEach( function ( caseItem ) {
-		var oldPrefix = mw.msg( 'discussiontools-signature-prefix' );
-		if ( caseItem.prefix ) {
-			mw.messages.set( { 'discussiontools-signature-prefix': caseItem.prefix } );
-		}
 		assert.strictEqual(
-			modifier.autoSignWikitext( caseItem.wikitext ),
+			modifier.isWikitextSigned( caseItem.wikitext ),
 			caseItem.expected,
 			caseItem.msg
 		);
-		mw.messages.set( { 'discussiontools-signature-prefix': oldPrefix } );
+	} );
+} );
+
+QUnit.test( 'isHtmlSigned', function ( assert ) {
+	var cases = require( '../cases/isHtmlSigned.json' );
+
+	cases.forEach( function ( caseItem ) {
+		var container = document.createElement( 'div' );
+		container.innerHTML = caseItem.html;
+
+		assert.strictEqual(
+			modifier.isHtmlSigned( container ),
+			caseItem.expected,
+			caseItem.msg
+		);
 	} );
 } );
 
