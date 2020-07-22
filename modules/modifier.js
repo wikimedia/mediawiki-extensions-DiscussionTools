@@ -44,7 +44,7 @@ function addReplyLink( comment, linkNode ) {
 
 	// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 	// avoiding that would be more difficult and slower.
-	while ( target.nextSibling && !ve.isBlockElement( target.nextSibling ) ) {
+	while ( target.nextSibling && !( target.nextSibling instanceof HTMLElement && ve.isBlockElement( target.nextSibling ) ) ) {
 		target = target.nextSibling;
 	}
 
@@ -95,7 +95,7 @@ function addListItem( comment ) {
 
 	// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 	// avoiding that would be more difficult and slower.
-	while ( target.nextSibling && !ve.isBlockElement( target.nextSibling ) ) {
+	while ( target.nextSibling && !( target.nextSibling instanceof HTMLElement && ve.isBlockElement( target.nextSibling ) ) ) {
 		target = target.nextSibling;
 	}
 
@@ -127,6 +127,12 @@ function addListItem( comment ) {
 		if ( parent.tagName.toLowerCase() === 'p' || parent.tagName.toLowerCase() === 'pre' ) {
 			parent = parent.parentNode;
 			target = target.parentNode;
+		}
+
+		// Parsoid puts HTML comments which appear at the end of the line in wikitext outside the paragraph,
+		// but we usually shouldn't insert replies between the paragraph and such comments. (T257651)
+		if ( target.nextSibling && target.nextSibling instanceof Comment ) {
+			target = target.nextSibling;
 		}
 
 		// Decide on tag names for lists and items
@@ -260,7 +266,7 @@ function unwrapList( list ) {
 			while ( list.firstChild.firstChild ) {
 				// If contents is a block element, place outside the paragraph
 				// and start a new paragraph after
-				if ( ve.isBlockElement( list.firstChild.firstChild ) ) {
+				if ( list.firstChild.firstChild instanceof HTMLElement && ve.isBlockElement( list.firstChild.firstChild ) ) {
 					if ( p.firstChild ) {
 						insertBefore = referenceNode.nextSibling;
 						referenceNode = p;
