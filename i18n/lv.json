@@ -9,6 +9,8 @@
 	"discussiontools-defaultsummary-reply": "Atbilde",
 	"discussiontools-desc": "Rīki diskusiju lapu uzlabošanai",
 	"discussiontools-replylink": "Atbildēt",
+	"discussiontools-replywidget-abandon-discard": "Atmest komentāru",
+	"discussiontools-replywidget-abandon-keep": "Turpināt rakstīt",
 	"discussiontools-replywidget-anon-warning": "<strong>Tu neesi pieslēdzies.</strong> Lai tavs devums tiktu piesaistīts tavam vārdam, nevis tavai IP adresei, tu vari [$1 pieslēgties] vai [$2 izveidot kontu].",
 	"discussiontools-replywidget-cancel": "Atcelt",
 	"discussiontools-replywidget-loading": "Ielādē…",

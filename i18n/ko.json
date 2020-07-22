@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDY",
 			"Ed g2s",
 			"MemphisA5",
 			"Ykhwong",
@@ -12,6 +13,8 @@
 	"discussiontools-desc": "토론 페이지를 향상시키는 도구입니다.",
 	"discussiontools-preference-label": "토론 도구",
 	"discussiontools-replylink": "답변",
+	"discussiontools-replywidget-abandon": "지금 작성하고 있는 답글을 정말 버리시겠습니까?",
+	"discussiontools-replywidget-abandon-discard": "답글 버리기",
 	"discussiontools-replywidget-abandon-keep": "쓰기 계속",
 	"discussiontools-replywidget-cancel": "취소",
 	"discussiontools-replywidget-loading": "불러오는 중...",
