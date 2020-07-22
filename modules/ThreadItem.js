@@ -124,4 +124,6 @@ ThreadItem.prototype.getNativeRange = function () {
 	return nativeRange;
 };
 
+// TODO: Implement getHTML/getText if required
+
 module.exports = ThreadItem;

@@ -53,4 +53,6 @@ CommentItem.prototype.getHeading = function () {
 	return parent;
 };
 
+// TODO: Implement getBodyRange/getBodyHTML/getBodyText/getMentions if required
+
 module.exports = CommentItem;

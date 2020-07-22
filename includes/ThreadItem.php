@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMNode;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * A thread item, either a heading or a comment
@@ -109,6 +110,28 @@ abstract class ThreadItem {
 	}
 
 	/**
+	 * Get the HTML of this thread item
+	 *
+	 * @return string HTML
+	 */
+	public function getHTML() : string {
+		$fragment = $this->getRange()->cloneContents();
+		$container = $fragment->ownerDocument->createElement( 'div' );
+		$container->appendChild( $fragment );
+		return DOMCompat::getInnerHTML( $container );
+	}
+
+	/**
+	 * Get the text of this thread item
+	 *
+	 * @return string Text
+	 */
+	public function getText() : string {
+		$fragment = $this->getRange()->cloneContents();
+		return $fragment->textContent;
+	}
+
+	/**
 	 * @return string Thread item type
 	 */
 	public function getType() : string {
@@ -123,7 +146,7 @@ abstract class ThreadItem {
 	}
 
 	/**
-	 * @return ImmutableRange Thread item range
+	 * @return ImmutableRange Range of the entire thread item
 	 */
 	public function getRange() : ImmutableRange {
 		return $this->range;
