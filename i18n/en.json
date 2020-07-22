@@ -25,6 +25,8 @@
 	"discussiontools-replywidget-preview": "Preview",
 	"discussiontools-replywidget-reply": "Reply",
 	"discussiontools-replywidget-reply-link": "https:\/\/mediawiki.org\/wiki\/Special:MyLanguage\/Talk_pages_project\/replying",
+	"discussiontools-replywidget-signature-title": "Signature markup detected",
+	"discussiontools-replywidget-signature-body": "$1 has been transformed into your signature. To undo this, type $2. Note: typing $1 to sign your comments using this tool is not required; it will add your signature automatically.",
 	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki.",
 	"discussiontools-replywidget-transcluded": "Your comment will be saved at [[$1]].",
 	"discussiontools-signature-prefix": "&#32;",

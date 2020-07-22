@@ -139,6 +139,10 @@
 				"dt.ui.ReplyWidgetVisual.js",
 				"dt-ve/CommentTarget.js",
 				"dt-ve/CommentTargetWidget.js",
+				"dt-ve/dt.dm.MWSignatureNode.js",
+				"dt-ve/dt.ce.MWSignatureNode.js",
+				"dt-ve/dt.ui.MWSignatureContextItem.js",
+				"dt-ve/dt.ui.registries.js",
 				"dt-ve/dt.ui.UsernameCompletionAction.js",
 				"dt-ve/dt.ui.UsernameCompletionTool.js",
 				"dt-ve/dt.dm.PingNode.js",
@@ -147,9 +151,14 @@
 			"styles": [
 				"dt-ve/CommentTargetWidget.less"
 			],
+			"messages": [
+				"discussiontools-replywidget-signature-title",
+				"discussiontools-replywidget-signature-body"
+			],
 			"dependencies": [
 				"ext.discussionTools.ReplyWidget",
 				"ext.visualEditor.mwcore",
+				"ext.visualEditor.mwsignature",
 				"ext.visualEditor.mwwikitext",
 				"ext.visualEditor.core.desktop",
 				"ext.visualEditor.desktopTarget",

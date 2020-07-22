@@ -1,5 +1,8 @@
 var CommentTargetWidget = require( './dt-ve/CommentTargetWidget.js' );
 
+require( './dt-ve/dt.ui.MWSignatureContextItem.js' );
+require( './dt-ve/dt.dm.MWSignatureNode.js' );
+require( './dt-ve/dt.ce.MWSignatureNode.js' );
 require( './dt-ve/dt.ui.UsernameCompletionAction.js' );
 require( './dt-ve/dt.ui.UsernameCompletionTool.js' );
 require( './dt-ve/dt.dm.PingNode.js' );
