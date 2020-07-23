@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMComment;
 use DOMDocument;
 use DOMElement;
 use DOMNode;
@@ -164,6 +165,12 @@ class CommentModifier {
 			if ( strtolower( $parent->tagName ) === 'p' || strtolower( $parent->tagName ) === 'pre' ) {
 				$parent = $parent->parentNode;
 				$target = $target->parentNode;
+			}
+
+			// Parsoid puts HTML comments which appear at the end of the line in wikitext outside the paragraph,
+			// but we usually shouldn't insert replies between the paragraph and such comments. (T257651)
+			if ( $target->nextSibling && $target->nextSibling instanceof DOMComment ) {
+				$target = $target->nextSibling;
 			}
 
 			// Decide on tag names for lists and items

@@ -258,7 +258,9 @@
 			"cases/wrappers/wrappers-modified.html",
 			"cases/signatures-funny/signatures-funny.html",
 			"cases/signatures-funny/signatures-funny-modified.html",
-			"cases/signatures-funny/signatures-funny-reply.html"
+			"cases/signatures-funny/signatures-funny-reply.html",
+			"cases/signatures-comments/signatures-comments.html",
+			"cases/signatures-comments/signatures-comments-modified.html"
 		],
 		"dependencies": [
 			"ext.discussionTools.init"

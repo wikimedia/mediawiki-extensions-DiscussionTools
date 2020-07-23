@@ -68,5 +68,12 @@
 		"expected": "cases/signatures-funny/signatures-funny-modified.html",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "HTML comments after signatures",
+		"dom": "cases/signatures-comments/signatures-comments.html",
+		"expected": "cases/signatures-comments/signatures-comments-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	}
 ]
