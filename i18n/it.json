@@ -28,6 +28,8 @@
 	"discussiontools-error-comment-is-transcluded": "Il link \"{{int:discussiontools-replylink}}\" non può essere usato per rispondere a questo commento. Clicca su \"$1\" per rispondere con l'editor di testo dell'intera pagina.",
 	"discussiontools-error-comment-is-transcluded-title": "Il link \"{{int:discussiontools-replylink}}\" non può essere usato per rispondere a questo commento perché è caricato da un'altra pagina. Per rispondere, visita [[$1]].",
 	"discussiontools-error-lint": "Non è possibile rispondere ai commenti su questa pagina per via di un errore nel wikitesto. Puoi [$1 leggere la documentazione] per informarti su questo errore, chiedere aiuto [$2 qui] o [$3 aprire l'editor di testo dell'intera pagina] per effettuare la correzione.",
+	"discussiontools-error-noswitchtove-table": "sintassi tabella",
+	"discussiontools-error-noswitchtove-template": "sintassi template",
 	"tag-discussiontools-description": "Modifica effettuata usando DiscussionTools",
 	"tag-discussiontools-edit": "Modifica commento",
 	"tag-discussiontools-edit-description": "L'utente ha modificato un commento esistente con DiscussionTools",
