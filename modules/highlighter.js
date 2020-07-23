@@ -1,8 +1,6 @@
 'use strict';
 
-var
-	utils = require( 'ext.discussionTools.init' ).utils,
-	initialOffset, indentWidth;
+var initialOffset, indentWidth;
 
 function markTimestamp( parser, node, match ) {
 	var
@@ -32,10 +30,6 @@ function markSignature( sigNodes ) {
 	while ( sigNodes.length ) {
 		wrapper.appendChild( sigNodes.pop() );
 	}
-}
-
-function getBoundingRect( comment ) {
-	return utils.getNativeRange( comment ).getBoundingClientRect();
 }
 
 function fixFakeFirstHeadingRect( rect, comment ) {
@@ -74,7 +68,7 @@ function markComment( comment ) {
 	var
 		// eslint-disable-next-line no-jquery/no-global-selector
 		rtl = $( 'html' ).attr( 'dir' ) === 'rtl',
-		rect = getBoundingRect( comment ),
+		rect = comment.getNativeRange().getBoundingClientRect(),
 		marker = document.createElement( 'div' ),
 		marker2 = document.createElement( 'div' ),
 		scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
@@ -101,7 +95,7 @@ function markComment( comment ) {
 	calculateSizes();
 
 	if ( comment.parent ) {
-		parentRect = getBoundingRect( comment.parent );
+		parentRect = comment.parent.getNativeRange().getBoundingClientRect();
 		parentRect = fixFakeFirstHeadingRect( parentRect, comment.parent );
 		if ( comment.parent.level === 0 ) {
 			// Twiddle so that it looks nice
