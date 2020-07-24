@@ -66,6 +66,9 @@ CommentTargetWidget.prototype.setDocument = function ( docOrHtml ) {
 	this.getSurface().getView().$element.removeClass( 'mw-body-content' );
 	this.getSurface().$placeholder.removeClass( 'mw-body-content' );
 
+	// Fix jquery.ime position (T255191)
+	this.getSurface().getView().getDocument().getDocumentNode().$element.addClass( 'ime-position-inside' );
+
 	// HACK
 	this.getSurface().authors = this.authors;
 };
