@@ -31,7 +31,7 @@
 	"discussiontools-replywidget-preview": "معاينة",
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-signature-title": "تم العثور على علامة توقيع",
-	"discussiontools-replywidget-signature-body": "تم تغيير $1 إلى توقيعك. لإلغاء هذا، {{GENDER:|اكتب|كتبي}} $2. ملاحظة: كتابة $1 للتوقيع على تعليقك غير ضروري مع هذه الأداة، إذ ستقوم هذه الأخيرة بإضافة توقيعك آليا.",
+	"discussiontools-replywidget-signature-body": "تم تغيير $1 إلى توقيعك. لإلغاء ذلك، {{GENDER:|اضغط|اضغطي}} على $2. ملاحظة: كتابة $1 للتوقيع على تعليقك غير ضروري مع هذه الأداة، إذ ستقوم هذه الأخيرة بإضافة توقيعك آليا.",
 	"discussiontools-replywidget-terms-click": "بالنقر على \"$1\"، فإنك {{GENDER:|توافق|توافقين}} على شروط الاستخدام لهذا الويكي.",
 	"discussiontools-replywidget-transcluded": "سيتم حفظ تعليقك في [[$1]].",
 	"discussiontools-error-comment-disappeared": "لا نستطيع العثور على التعليق الذي {{GENDER:|تريد|تريدين}} الردّ عليه في الصفحة. من المرجّح أنه قد حذف أو تم نقله إلى صفحة أخرى. رجاءً {{GENDER:|أعد|أعيدي}} تحميل الصفحة ثم {{GENDER:|كرّر|كرّري}} المحاولة.",

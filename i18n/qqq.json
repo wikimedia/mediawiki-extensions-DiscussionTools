@@ -39,7 +39,7 @@
 	"discussiontools-error-comment-is-transcluded": "Error message. Parameter: $1 – text of the 'Edit'/'Edit source' tab",
 	"discussiontools-error-comment-is-transcluded-title": "Error message. Parameter: $1 – page name",
 	"discussiontools-error-lint": "Error message. Parameters:\n* $1 – URL to documentation on mediawiki.org\n* $2 – URL to talk page on mediawiki.org\n* $3 – URL to the editor (action=edit)",
-	"discussiontools-error-noswitchtove": "Error message.\n\nParameters:\n* $1 – type of syntax detected, one of:\n** {{msg-mw|discussiontools-error-noswitchtove-extension}}\n** {{msg-mw|discussiontools-error-noswitchtove-table}}\n** {{msg-mw|discussiontools-error-noswitchtove-template}}\n** {{msg-mw|discussiontools-error-noswitchtove-title}}",
+	"discussiontools-error-noswitchtove": "Error message.\n\nParameters:\n* $1 – type of syntax detected, one of:\n** {{msg-mw|discussiontools-error-noswitchtove-extension}}\n** {{msg-mw|discussiontools-error-noswitchtove-table}}\n** {{msg-mw|discussiontools-error-noswitchtove-template}}",
 	"discussiontools-error-noswitchtove-extension": "Type of syntax detected, used as a parameter in {{msg-mw|discussiontools-error-noswitchtove}}.",
 	"discussiontools-error-noswitchtove-table": "Type of syntax detected, used as a parameter in {{msg-mw|discussiontools-error-noswitchtove}}.",
 	"discussiontools-error-noswitchtove-template": "Type of syntax detected, used as a parameter in {{msg-mw|discussiontools-error-noswitchtove}}.",

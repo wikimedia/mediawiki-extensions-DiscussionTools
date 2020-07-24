@@ -26,7 +26,7 @@
 	"discussiontools-replywidget-preview": "Vorschau",
 	"discussiontools-replywidget-reply": "Antworten",
 	"discussiontools-replywidget-signature-title": "Unterschriften-Syntax erkannt",
-	"discussiontools-replywidget-signature-body": "$1 wurde in deine Unterschrift umgewandelt. Um dies rückgängig zu machen, drücke $2. Hinweis: Die Eingabe von $1 zum Unterschreiben deiner Kommentare mit diesem Werkzeug ist nicht erforderlich; deine Unterschrift wird automatisch hinzugefügt.",
+	"discussiontools-replywidget-signature-body": "$1 wurde in deine Unterschrift umgewandelt. Um dies rückgängig zu machen, drücke $2. Beachte, dass du mit diesem Werkzeug keine Kommentare unterschreiben musst. Deine Unterschrift wird automatisch hinzugefügt.",
 	"discussiontools-replywidget-terms-click": "Durch Klicken auf \"$1\" stimmst du den Nutzungsbedingungen für dieses Wiki zu.",
 	"discussiontools-replywidget-transcluded": "Dein Kommentar wird auf [[$1]] gespeichert.",
 	"discussiontools-error-comment-disappeared": "Konnte den Kommentar, auf den du antwortesz, nicht auf der Seite finden. Er könnte gelöscht oder auf eine andere Seite verschoben worden sein. Bitte lade die Seite neu und versuche es erneut.",
