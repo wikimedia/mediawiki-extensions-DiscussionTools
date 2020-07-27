@@ -592,11 +592,11 @@ ReplyWidget.prototype.onReplyClick = function () {
 		}
 		widget.captchaInput = undefined;
 
-		if ( OO.getProp( data, 'visualeditoredit', 'edit', 'captcha' ) ) {
+		if ( OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' ) ) {
 			code = 'captcha';
 
 			widget.captchaInput = new mw.libs.confirmEdit.CaptchaInputWidget(
-				OO.getProp( data, 'visualeditoredit', 'edit', 'captcha' )
+				OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' )
 			);
 			// Save when pressing 'Enter' in captcha field as it is single line.
 			widget.captchaInput.on( 'enter', function () {
