@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ps2049",
+			"Shuiwater",
 			"VulpesVulpes825",
 			"列维劳德",
 			"沈澄心",
@@ -16,6 +17,7 @@
 	"discussiontools-preference-label": "讨论工具",
 	"discussiontools-preference-description": "启用一个新的工作流程，用于[https://www.mediawiki.org/wiki/Talk_pages_project/replying 回复讨论页上的特定评论] 。\n\n请注意，随着时间的推移，将增加新的讨论页互动工具。\n\n有关这些功能的更新将在[https://www.mediawiki.org/wiki/Talk_pages_project/Updates 讨论页项目的更新页面]上公布。",
 	"discussiontools-replylink": "回复",
+	"discussiontools-replywidget-abandon": "您确定要放弃您正在写的评论吗?",
 	"discussiontools-replywidget-abandon-discard": "放弃评论",
 	"discussiontools-replywidget-abandon-keep": "继续编写",
 	"discussiontools-replywidget-anon-warning": "<strong>您尚未登录。</strong>要收到带您名字而不是您IP地址的署名，您可以[$1 登录]或[$2 注册一个账户]。",
@@ -34,6 +36,7 @@
 	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\"的链接无法回复此评论。要回复，请点击 \"$1\"，使用全页编辑器进行回复。",
 	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\"的链接无法回复此评论，因为它是从另一个页面加载而来。如要回复，请前往：[[$1]]。",
 	"discussiontools-error-lint": "由于wikitext中的错误，本页面上的评论将无法被回复。您可以通过[$1阅读文档]以了解这个错误，通过[$2在这里发帖]寻求帮助，也可以通过通过[$3打开全页编辑器]修复这个错误。",
+	"discussiontools-error-noswitchtove-table": "表的语法",
 	"tag-discussiontools-description": "使用讨论工具进行编辑",
 	"tag-discussiontools-edit": "编辑评论",
 	"tag-discussiontools-edit-description": "用户使用讨论工具编辑了现有评论",

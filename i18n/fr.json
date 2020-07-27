@@ -33,7 +33,7 @@
 	"discussiontools-replywidget-preview": "Aperçu",
 	"discussiontools-replywidget-reply": "Répondre",
 	"discussiontools-replywidget-signature-title": "Balise de signature détectée",
-	"discussiontools-replywidget-signature-body": "$1 a été transformé dans votre signature. Pour annuler cela, tapez $2. Note: taper $1 pour signer vos commentaires en utilisant cet outil n’est pas obligatoire ; cela ajoutera automatiquement votre signature.",
+	"discussiontools-replywidget-signature-body": "$1 a été transformé dans votre signature. Pour annuler cela, tapez $2. Notez que vous n’avez pas besoin de signer vos commentaires avec cet outil. Votre signature sera ajoutée automatiquement.",
 	"discussiontools-replywidget-terms-click": "En cliquant sur « $1 », vous acceptez les conditions d’utilisation de ce wiki.",
 	"discussiontools-replywidget-transcluded": "Votre commentaire sera enregistré dans [[$1]].",
 	"discussiontools-error-comment-disappeared": "Impossible de trouver le commentaire auquel vous répondez sur cette page. Il a peut-être été supprimé ou déplacé sur une autre page. Veuillez rafraîchir la page et réessayer.",

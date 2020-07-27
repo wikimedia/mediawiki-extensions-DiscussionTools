@@ -27,7 +27,7 @@
 	"discussiontools-replywidget-preview": "תצוגה מקדימה",
 	"discussiontools-replywidget-reply": "להגיב",
 	"discussiontools-replywidget-signature-title": "זוהה קוד של חתימה",
-	"discussiontools-replywidget-signature-body": "הקוד $1 הומר לחתימה שלך. כדי לבטל את זה, יש ללחוץ $2. לתשומת ליבך: אין צורך להקליד $1 כדי לחתום בעת שימוש בכלי הזה; הוא יוסיף את החתימה שלך באופן אוטומטי.",
+	"discussiontools-replywidget-signature-body": "הקוד $1 הומר לחתימה שלך. כדי לבטל את זה, יש ללחוץ $2. נא לשים לב לכך שאין צורך לחתום על הודעות עם הכלי הזה. החתימה שלך תתווסף באופן אוטומטי.",
 	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של הוויקי הזה.",
 	"discussiontools-replywidget-transcluded": "התגובה שלך תישמר בדף [[$1]].",
 	"discussiontools-error-comment-disappeared": "לא היה אפשר למצוא את ההערה שניסית להשיב עליה בדף. אולי היא נמחקה או הועברה לדף אחר. נא לרענן את הדף ולנסות שוב.",

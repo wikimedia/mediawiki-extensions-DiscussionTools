@@ -24,7 +24,7 @@
 	"discussiontools-replywidget-preview": "Önizleme",
 	"discussiontools-replywidget-reply": "Yanıtla",
 	"discussiontools-replywidget-signature-title": "İmza işaretlemesi tespit edildi",
-	"discussiontools-replywidget-signature-body": "$1 sizin imzanıza dönüştü. Bunu geri almak için $2 yazın. Not: Bu aracı kullanarak yorumlarınızı imzalamak için $1 yazmak gerekli değildir;  imzanızı otomatik olarak ekler.",
+	"discussiontools-replywidget-signature-body": "$1 sizin imzanıza dönüştü. Bunu geri almak için $2 yazın. Bu araçla yorum imzalamanıza gerek olmadığını unutmayın. İmzanız otomatik olarak eklenecektir.",
 	"discussiontools-replywidget-terms-click": "\"$1\" düğmesini tıklayarak, bu viki için kullanım koşullarını kabul etmiş olursunuz.",
 	"discussiontools-replywidget-transcluded": "Yorumunuz [[$1]] sayfasında kaydedilecek.",
 	"discussiontools-error-comment-disappeared": "Sayfada yanıtladığınız yorum bulunamadı. Silinmiş veya başka bir sayfaya taşınmış olabilir. Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.",
