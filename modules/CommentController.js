@@ -303,6 +303,13 @@ CommentController.prototype.save = function ( comment, pageName ) {
 			if ( code === 'editconflict' ) {
 				return commentController.save( comment, pageName );
 			}
+			// Better user-facing error message
+			if ( code === 'discussiontools-commentid-notfound' ) {
+				return $.Deferred().reject( 'discussiontools-commentid-notfound', { errors: [ {
+					code: 'discussiontools-commentid-notfound',
+					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
+				} ] } ).promise();
+			}
 			return $.Deferred().reject( code, data ).promise();
 		} );
 		savePromise.then( function () {
