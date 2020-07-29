@@ -56,6 +56,13 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "Replies to comments with mixed indentation",
+		"dom": "cases/mixed-indentation/mixed-indentation.html",
+		"expected": "cases/mixed-indentation/mixed-indentation-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Reply inserted inside/outside various wrapper elements",
 		"dom": "cases/wrappers/wrappers.html",
 		"expected": "cases/wrappers/wrappers-modified.html",
