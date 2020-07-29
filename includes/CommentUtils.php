@@ -117,6 +117,30 @@ class CommentUtils {
 	}
 
 	/**
+	 * Get the indent level of $node, relative to $rootNode.
+	 *
+	 * The indent level is the number of lists inside of which it is nested.
+	 *
+	 * @param DOMNode $node
+	 * @param DOMNode $rootNode
+	 * @return int
+	 */
+	public static function getIndentLevel( DOMNode $node, DOMNode $rootNode ) : int {
+		$indent = 0;
+		while ( $node ) {
+			if ( $node === $rootNode ) {
+				break;
+			}
+			$nodeName = strtolower( $node->nodeName );
+			if ( $nodeName === 'li' || $nodeName === 'dd' ) {
+				$indent++;
+			}
+			$node = $node->parentNode;
+		}
+		return $indent;
+	}
+
+	/**
 	 * Get an array of sibling nodes that contain parts of the given thread item.
 	 *
 	 * @param ThreadItem $item Thread item

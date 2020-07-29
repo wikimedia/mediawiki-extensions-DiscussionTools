@@ -475,29 +475,6 @@ class CommentParser {
 	}
 
 	/**
-	 * Get the indent level of $node, relative to $rootNode.
-	 *
-	 * The indent level is the number of lists inside of which it is nested.
-	 *
-	 * @param DOMNode $node
-	 * @return int
-	 */
-	private function getIndentLevel( DOMNode $node ) : int {
-		$indent = 0;
-		while ( $node ) {
-			if ( $node === $this->rootNode ) {
-				break;
-			}
-			$nodeName = strtolower( $node->nodeName );
-			if ( $nodeName === 'li' || $nodeName === 'dd' ) {
-				$indent++;
-			}
-			$node = $node->parentNode;
-		}
-		return $indent;
-	}
-
-	/**
 	 * Find a user signature preceding a timestamp.
 	 *
 	 * The signature includes the timestamp node.
@@ -741,6 +718,7 @@ class CommentParser {
 		// Placeholder heading in case there are comments in the 0th section
 		$range = new ImmutableRange( $this->rootNode, 0, $this->rootNode, 0 );
 		$fakeHeading = new HeadingItem( $range, true );
+		$fakeHeading->setRootNode( $this->rootNode );
 
 		$curComment = $fakeHeading;
 
@@ -753,6 +731,7 @@ class CommentParser {
 			if ( $node instanceof DOMElement && preg_match( '/^h[1-6]$/i', $node->tagName ) ) {
 				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
 				$curComment = new HeadingItem( $range );
+				$curComment->setRootNode( $this->rootNode );
 				$threadItems[] = $curComment;
 			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegex ) ) ) {
 				$warnings = [];
@@ -785,8 +764,8 @@ class CommentParser {
 					$offset
 				);
 
-				$startLevel = $this->getIndentLevel( $startNode ) + 1;
-				$endLevel = $this->getIndentLevel( $node ) + 1;
+				$startLevel = CommentUtils::getIndentLevel( $startNode, $this->rootNode ) + 1;
+				$endLevel = CommentUtils::getIndentLevel( $node, $this->rootNode ) + 1;
 				if ( $startLevel !== $endLevel ) {
 					$warnings[] = 'Comment starts and ends with different indentation';
 				}
@@ -835,6 +814,7 @@ class CommentParser {
 					$dateTime->format( 'Y-m-d\TH:i:s.v\Z' ),
 					$author
 				);
+				$curComment->setRootNode( $this->rootNode );
 				if ( $warnings ) {
 					$curComment->addWarnings( $warnings );
 				}
