@@ -15,9 +15,7 @@ require( './dt-ve/dt.ce.PingNode.js' );
  * @extends mw.dt.ReplyWidget
  * @constructor
  * @param {Object} commentController
- * @param {string} commentId
- * @param {string} pageName
- * @param {number} oldId
+ * @param {Object} parsoidData
  * @param {Object} [config] Configuration options
  */
 function ReplyWidgetVisual() {

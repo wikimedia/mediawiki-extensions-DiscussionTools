@@ -47,17 +47,20 @@ function highlight( comment ) {
 }
 
 /**
- * Get various pieces of page metadata.
+ * Get the Parsoid document HTML and metadata needed to edit this page from the API.
  *
  * This method caches responses. If you call it again with the same parameters, you'll get the exact
  * same Promise object, and no API request will be made.
+ *
+ * TODO: Resolve the naming conflict between this raw "pageData" from the API, and the
+ * plain object "pageData" that gets attached to parsoidData.
  *
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
  * @return {jQuery.Promise}
  */
 function getPageData( pageName, oldId ) {
-	var lintPromise, transcludedFromPromise, veMetadataPromise;
+	var lintPromise;
 	pageDataCache[ pageName ] = pageDataCache[ pageName ] || {};
 	if ( pageDataCache[ pageName ][ oldId ] ) {
 		return pageDataCache[ pageName ][ oldId ];
@@ -73,65 +76,70 @@ function getPageData( pageName, oldId ) {
 		return OO.getProp( response, 'query', 'linterrors' ) || [];
 	} );
 
-	transcludedFromPromise = api.get( {
-		action: 'discussiontools',
-		paction: 'transcludedfrom',
-		page: pageName,
-		oldid: oldId
-	} ).then( function ( response ) {
-		return OO.getProp( response, 'discussiontools' ) || [];
-	} );
-
-	veMetadataPromise = api.get( {
-		action: 'visualeditor',
-		paction: 'metadata',
-		page: pageName
-	} ).then( function ( response ) {
-		return OO.getProp( response, 'visualeditor' ) || [];
-	} );
-
-	pageDataCache[ pageName ][ oldId ] = $.when( lintPromise, transcludedFromPromise, veMetadataPromise )
-		.then( function ( linterrors, transcludedfrom, metadata ) {
-			return {
-				linterrors: linterrors,
-				transcludedfrom: transcludedfrom,
-				metadata: metadata
-			};
-		}, function () {
-			// Clear on failure
-			pageDataCache[ pageName ][ oldId ] = null;
+	pageDataCache[ pageName ][ oldId ] = mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
+		var pageDataPromise = mw.libs.ve.targetLoader.requestPageData(
+			'visual', pageName, { oldId: oldId }
+		);
+		return $.when( lintPromise, pageDataPromise ).then( function ( linterrors, pageData ) {
+			pageData.linterrors = linterrors;
+			return pageData;
 		} );
+	}, function () {
+		// Clear on failure
+		pageDataCache[ pageName ][ oldId ] = null;
+	} );
 	return pageDataCache[ pageName ][ oldId ];
 }
 
 /**
- * Check if a given comment on a page can be replied to
+ * Get the Parsoid document DOM, parse comments and threads, and find a specific comment in it.
  *
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
  * @param {string} commentId Comment ID
- * @return {jQuery.Promise} Resolves with the pageName+oldId if the comment appears on the page.
- *  Rejects with error data if the comment is transcluded, or there are lint errors on the page.
+ * @return {jQuery.Promise}
  */
-function checkCommentOnPage( pageName, oldId, commentId ) {
+function getParsoidCommentData( pageName, oldId, commentId ) {
+	var parsoidPageData, parsoidDoc;
+
 	return getPageData( pageName, oldId )
 		.then( function ( response ) {
-			var isTranscludedFrom, transcludedErrMsg, mwTitle, follow,
-				lintType,
-				lintErrors = response.linterrors,
-				transcludedFrom = response.transcludedfrom;
+			var data, comment, transcludedFrom, transcludedErrMsg, mwTitle, follow,
+				lintType, parser,
+				lintErrors = response.linterrors;
 
-			// We no longer check if the comment exists on the page, is this an issue?
-			// if ( !comment ) {
-			//  return $.Deferred().reject( 'comment-disappeared', { errors: [ {
-			//   code: 'comment-disappeared',
-			//   html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
-			//  } ] } ).promise();
-			// }
+			data = response.visualeditor;
+			parsoidDoc = ve.parseXhtml( data.content );
+			// Remove section wrappers, they interfere with transclusion handling
+			mw.libs.ve.unwrapParsoidSections( parsoidDoc.body );
+			// Mirror VE's ve.init.mw.Target.prototype.fixBase behavior:
+			ve.fixBase( parsoidDoc, document, ve.resolveUrl(
+				// Don't replace $1 with the page name, because that'll break if
+				// the page name contains a slash
+				mw.config.get( 'wgArticlePath' ).replace( '$1', '' ),
+				document
+			) );
 
-			isTranscludedFrom = transcludedFrom[ commentId ];
-			if ( isTranscludedFrom ) {
-				mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
+			parsoidPageData = {
+				pageName: pageName,
+				oldId: oldId,
+				startTimeStamp: data.starttimestamp,
+				etag: data.etag
+			};
+
+			parser = new Parser( parsoidDoc.body );
+			comment = parser.findCommentById( commentId );
+
+			if ( !comment ) {
+				return $.Deferred().reject( 'comment-disappeared', { errors: [ {
+					code: 'comment-disappeared',
+					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
+				} ] } ).promise();
+			}
+
+			transcludedFrom = comment.getTranscludedFrom();
+			if ( transcludedFrom ) {
+				mwTitle = transcludedFrom === true ? null : mw.Title.newFromText( transcludedFrom );
 				// If this refers to a template rather than a subpage, we never want to edit it
 				follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
 
@@ -150,7 +158,7 @@ function checkCommentOnPage( pageName, oldId, commentId ) {
 
 				return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
 					data: {
-						transcludedFrom: isTranscludedFrom,
+						transcludedFrom: transcludedFrom,
 						follow: follow
 					},
 					code: 'comment-is-transcluded',
@@ -172,18 +180,19 @@ function checkCommentOnPage( pageName, oldId, commentId ) {
 			}
 
 			return {
-				pageName: pageName,
-				oldId: oldId
+				comment: comment,
+				doc: parsoidDoc,
+				pageData: parsoidPageData
 			};
 		} );
 }
 
-function getCheckboxesPromise( pageName, oldId ) {
+function getCheckboxesPromise( pageData ) {
 	return getPageData(
-		pageName,
-		oldId
-	).then( function ( pageData ) {
-		var data = pageData.metadata,
+		pageData.pageName,
+		pageData.oldId
+	).then( function ( response ) {
+		var data = response.visualeditor,
 			checkboxesDef = {};
 
 		mw.messages.set( data.checkboxesMessages );
@@ -221,7 +230,7 @@ function init( $container, state ) {
 		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 	}
 
-	// Preload page metadata.
+	// Preload the Parsoid document.
 	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
 	getPageData(
 		mw.config.get( 'wgRelevantPageName' ),
@@ -231,6 +240,6 @@ function init( $container, state ) {
 
 module.exports = {
 	init: init,
-	checkCommentOnPage: checkCommentOnPage,
+	getParsoidCommentData: getParsoidCommentData,
 	getCheckboxesPromise: getCheckboxesPromise
 };

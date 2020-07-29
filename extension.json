@@ -14,10 +14,7 @@
 		}
 	},
 	"MessagesDirs": {
-		"DiscussionTools": [
-			"i18n",
-			"i18n/api"
-		]
+		"DiscussionTools": [ "i18n" ]
 	},
 	"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onRegistration",
 	"ResourceFileModulePaths": {
@@ -274,10 +271,6 @@
 	},
 	"TestAutoloadNamespaces": {
 		"MediaWiki\\Extension\\DiscussionTools\\Tests\\": "tests/phpunit/"
-	},
-	"APIModules": {
-		"discussiontools": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionTools",
-		"discussiontoolsedit": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
 	},
 	"Hooks": {
 		"BeforePageDisplay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onBeforePageDisplay",
