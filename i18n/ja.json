@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Linuxmetel",
+			"Marine-Blue",
 			"Object＊tofu",
 			"Omotecho",
 			"Rootflag",
@@ -41,12 +42,13 @@
 	"discussiontools-error-noswitchtove-title": "ビジュアルモード無効化",
 	"tag-discussiontools-description": "議論ツールを使って編集",
 	"tag-discussiontools-edit": "コメントを編集",
+	"tag-discussiontools-edit-description": "議論ツールを使ってコメントを編集",
 	"tag-discussiontools-newtopic": "話題追加",
-	"tag-discussiontools-newtopic-description": "利用者が議論ツールを使ってページに新しいトピックを追加しました",
+	"tag-discussiontools-newtopic-description": "議論ツールを使ってページに新しいトピックを追加",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 返信]",
-	"tag-discussiontools-reply-description": "利用者が議論ツールを使ってコメントに返信しました",
+	"tag-discussiontools-reply-description": "議論ツールを使ってコメントに返信",
 	"tag-discussiontools-source": "ソース",
 	"tag-discussiontools-source-description": "議論ツールがソースモードになっていました",
 	"tag-discussiontools-visual": "ビジュアル",
-	"tag-discussiontools-visual-description": "議論ツールがビジュアルモードになっていました"
+	"tag-discussiontools-visual-description": "議論ツールをビジュアルモードで使用"
 }

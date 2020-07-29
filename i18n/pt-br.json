@@ -26,7 +26,7 @@
 	"discussiontools-replywidget-preview": "Pré-visualizar",
 	"discussiontools-replywidget-reply": "Responder",
 	"discussiontools-replywidget-signature-title": "Marcação de assinatura detectada",
-	"discussiontools-replywidget-signature-body": "$1 foi transformado em sua assinatura. Para desfazer isso, digite $2. Nota: não é necessário digitar $1 para assinar seus comentários usando esta ferramenta; adicionará sua assinatura automaticamente.",
+	"discussiontools-replywidget-signature-body": "$1 foi transformado em sua assinatura. Para desfazer isso, digite $2. Observe que você não precisa assinar comentários com esta ferramenta. Sua assinatura será adicionada automaticamente.",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-replywidget-transcluded": "Seu comentário será salvo em [[$1]].",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário ao qual você está respondendo na página. Pode ter sido excluído ou movido para outra página. Por favor, recarregue a página e tente de novo.",

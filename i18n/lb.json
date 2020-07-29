@@ -17,6 +17,7 @@
 	"discussiontools-replywidget-placeholder-reply": "Äntwert fir {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Kucken ouni ofzespäicheren",
 	"discussiontools-replywidget-reply": "Äntweren",
+	"discussiontools-error-noswitchtove-extension": "Erweiderungs- oder Referenzsyntax",
 	"discussiontools-error-noswitchtove-title": "Visuelle Modus desaktivéiert",
 	"tag-discussiontools-edit": "Bemierkung änneren",
 	"tag-discussiontools-newtopic": "Thema dobäisetzen",
