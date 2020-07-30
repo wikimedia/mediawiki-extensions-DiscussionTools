@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "找不到評論 ID：$1",
+	"apihelp-discussiontools-param-oldid": "要使用的修訂編號（預設爲最新版本）。",
+	"apihelp-discussiontools-summary": "回傳詮釋資料需要初始化討論工具。",
+	"apihelp-discussiontoolsedit-summary": "編輯摘要。",
+	"apihelp-discussiontoolsedit-param-commentid": "評論 ID",
+	"apihelp-discussiontoolsedit-param-wikitext": "Wiki 語法"
+}

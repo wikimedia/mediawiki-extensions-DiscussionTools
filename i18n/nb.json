@@ -25,7 +25,7 @@
 	"discussiontools-replywidget-preview": "Forhåndsvis",
 	"discussiontools-replywidget-reply": "Svar",
 	"discussiontools-replywidget-signature-title": "Signaturformatering oppdaget",
-	"discussiontools-replywidget-signature-body": "$1 har blitt gjort om til signaturen din. For å unngå dette, skriv $2. Merk: Det er ikke nødvendig å skrive $1 for å signere kommentarene sine med dette verktøyet; det blir lagt til automatisk.",
+	"discussiontools-replywidget-signature-body": "$1 har blitt gjort om til signaturen din. For å unngå dette, skriv $2. Merk at du ikke trenger å signere kommentarer med dette verktøyet. Signaturen din blir lagt til automatisk.",
 	"discussiontools-replywidget-terms-click": "Ved å trykke på «$1» samtykker du i bruksvilkårene til denne wikien.",
 	"discussiontools-replywidget-transcluded": "Kommentaren din blir lagret på [[$1]].",
 	"discussiontools-error-comment-disappeared": "Kunne ikke finne kommentaren du svarer på på siden. Den kan ha blitt slettet eller flyttet til en annen side. Last siden på nytt og prøv igjen.",

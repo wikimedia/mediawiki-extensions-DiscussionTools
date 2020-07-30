@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apierror-discussiontools-commentid-notfound": "Kommentar-ID nicht gefunden: $1",
+	"apihelp-discussiontools-param-oldid": "Die zu verwendende Versionsnummer (Standardwert ist die letzte Version).",
+	"apihelp-discussiontools-summary": "Gibt Metadaten zurück, die zur Initialisierung der Diskussionswerkzeuge erforderlich sind.",
+	"apihelp-discussiontoolsedit-summary": "Bearbeitungszusammenfassung.",
+	"apihelp-discussiontoolsedit-param-commentid": "Kommentar-ID.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
+}

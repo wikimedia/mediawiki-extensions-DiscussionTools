@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dyolf77 (WMF)"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "معرّف التعليق غير موجود: $1",
+	"apihelp-discussiontools-param-oldid": "رقم المراجعة للاستخدام (الافتراض إلى المراجعة الأخيره).",
+	"apihelp-discussiontools-summary": "إرجاع البيانات الوصفية المطلوبة لتهيئة أدوات المناقشة.",
+	"apihelp-discussiontoolsedit-summary": "ملخص التعديل.",
+	"apihelp-discussiontoolsedit-param-commentid": "معرّف التعليق.",
+	"apihelp-discussiontoolsedit-param-wikitext": "نص الويكي"
+}
