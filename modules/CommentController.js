@@ -433,6 +433,11 @@ CommentController.prototype.switchToVisual = function () {
 							size: 'medium'
 						}
 					);
+					mw.track( 'dt.schemaVisualEditorFeatureUse', {
+						feature: 'editor-switch',
+						action: 'dialog-prevent-' + type + '-show'
+					} );
+
 					return $.Deferred().reject().promise();
 				}
 			}
