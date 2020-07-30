@@ -23,7 +23,7 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		$( fixture ).empty().append( expected );
 		expectedHtml = fixture.innerHTML;
 
-		$( fixture ).empty().append( dom.clone() );
+		$( fixture ).empty().append( dom );
 		reverseExpectedHtml = fixture.innerHTML;
 
 		parser = new Parser( fixture );
@@ -42,7 +42,7 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		// Uncomment this to get updated content for the "modified HTML" files, for copy/paste:
 		// console.log( fixture.innerHTML );
 
-		actualHtml = fixture.innerHTML.trim();
+		actualHtml = fixture.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,
@@ -82,7 +82,7 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		$( fixture ).empty().append( expected );
 		expectedHtml = fixture.innerHTML;
 
-		$( fixture ).empty().append( dom.clone() );
+		$( fixture ).empty().append( dom );
 
 		parser = new Parser( fixture );
 		comments = parser.getCommentItems();
@@ -98,7 +98,7 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		// Uncomment this to get updated content for the "reply HTML" files, for copy/paste:
 		// console.log( fixture.innerHTML );
 
-		actualHtml = fixture.innerHTML.trim();
+		actualHtml = fixture.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,
