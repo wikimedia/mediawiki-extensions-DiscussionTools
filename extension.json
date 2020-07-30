@@ -257,6 +257,8 @@
 			"cases/split-list/split-list-modified.html",
 			"cases/split-list2/split-list2.html",
 			"cases/split-list2/split-list2-modified.html",
+			"cases/mixed-indentation/mixed-indentation.html",
+			"cases/mixed-indentation/mixed-indentation-modified.html",
 			"cases/wrappers/wrappers.html",
 			"cases/wrappers/wrappers-modified.html",
 			"cases/signatures-funny/signatures-funny.html",
