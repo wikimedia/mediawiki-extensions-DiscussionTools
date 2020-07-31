@@ -30,34 +30,44 @@
 		}
 	}
 
+	&-headerWrapper {
+		display: flex;
+		// Allow wrapping when the space is very narrow (mode switcher above toolbar)
+		flex-wrap: wrap-reverse;
+	}
+
 	&-modeTabs {
 		box-shadow: none;
 		height: 3em;
 		text-align: right;
+		// Stretch to all available space
+		flex-grow: 1;
 
 		.oo-ui-tabOptionWidget:last-child {
 			margin-right: 2px;
 		}
 	}
 
-	&-ve .dt-ui-replyWidget-modeTabs {
-		position: absolute;
-		z-index: 2;
-		top: 0;
-		right: 0;
-	}
-
 	&-actionsWrapper {
-		display: flex;
 		margin-top: 0.5em;
+		display: flex;
+		// Allow wrapping when the space is very narrow (buttons above the footer text)
+		flex-wrap: wrap-reverse;
+		// When wrapping, align actions to the right
+		justify-content: flex-end;
 	}
 
 	&-actions {
+		// Add spacing before the footer when wrapping
+		margin-bottom: 0.5em;
 		margin-left: 3em;
 		white-space: nowrap;
 	}
 
 	&-footer {
+		// Preferred width; if there isn't enough space, this wraps under the actions
+		flex-basis: 20em;
+		// Stretch to all available space
 		flex-grow: 1;
 		font-size: 0.75em;
 		color: #54595d;
