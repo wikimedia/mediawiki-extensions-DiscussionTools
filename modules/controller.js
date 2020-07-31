@@ -121,14 +121,6 @@ function checkCommentOnPage( pageName, oldId, commentId ) {
 				lintErrors = response.linterrors,
 				transcludedFrom = response.transcludedfrom;
 
-			// We no longer check if the comment exists on the page, is this an issue?
-			// if ( !comment ) {
-			//  return $.Deferred().reject( 'comment-disappeared', { errors: [ {
-			//   code: 'comment-disappeared',
-			//   html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
-			//  } ] } ).promise();
-			// }
-
 			isTranscludedFrom = transcludedFrom[ commentId ];
 			if ( isTranscludedFrom ) {
 				mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
