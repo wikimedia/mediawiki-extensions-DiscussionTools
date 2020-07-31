@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Wladek92"
 		]
 	},
+	"apierror-discussiontools-commentid-notfound": "ID du commentaire non trouvé : $1",
+	"apihelp-discussiontools-param-oldid": "Le numéro de révision à utiliser (par défaut, la dernière révision).",
+	"apihelp-discussiontools-summary": "Renvoie les métadonnées nécessaires pour initialiser les outils de discussion.",
 	"apihelp-discussiontoolsedit-summary": "Résumé de la modification.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID de commentaire.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikicode"
 }
