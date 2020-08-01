@@ -35,6 +35,7 @@
 					"callbackParam": [
 						"discussiontools-defaultsummary-reply",
 						"discussiontools-replywidget-feedback-link",
+						"discussiontools-replywidget-mention-prefix",
 						"discussiontools-signature-prefix"
 					]
 				},
