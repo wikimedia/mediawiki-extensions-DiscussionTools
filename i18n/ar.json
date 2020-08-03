@@ -38,7 +38,7 @@
 	"discussiontools-error-comment-is-transcluded": "لا يمكن استعمال هذه الأداة للرد على هذا التعليق. عوضا عن ذلك، للردّ، من فضلك {{GENDER:|استخدم|استخدمي}} المحرر الكامل للصفحة عبر الضغط على \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "\nلا يمكن استخدام \"{{int:discussiontools-replylink}}\" للرد على هذا التعليق لأنه تم تحميله من صفحة أخرى. من فضلك {{GENDER:|انتقل|انتقلي}} إلى هنا: [[$1]].",
 	"discussiontools-error-lint": "لا يمكن الردّ على التعليقات في هذه الصفحة لوجود خلل ما في نص الويكي. يمكنكم معرفة المزيد حول هذا الخلل عبر [$1 قراءة التوثيق] أو طلب المساعدة [$2 هنا] أو إصلاح الخطأ عبر [$3 فتح صفحة التعديل كاملة].",
-	"discussiontools-error-noswitchtove": "عذرا، التحويل إلى المحرر المرئي غير متاح بسبب العثور على <b>$1</b> ضمن التعليق الذي تمت كتابته، [https://mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations تعلّم المزيد].",
+	"discussiontools-error-noswitchtove": "عذرا، التحويل إلى المحرر المرئي غير متاح بسبب العثور على <b>$1</b> ضمن التعليق الذي تمت كتابته، [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations تعلّم المزيد].",
 	"discussiontools-error-noswitchtove-extension": "امتداد أو صيغة المرجع",
 	"discussiontools-error-noswitchtove-table": "صيغة الجدول",
 	"discussiontools-error-noswitchtove-template": "صيغة القالب",

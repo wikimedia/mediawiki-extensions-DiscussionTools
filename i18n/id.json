@@ -4,5 +4,6 @@
 			"Sonic Speedy"
 		]
 	},
+	"discussiontools-error-noswitchtove": "Maaf, beralih ke mode visual dinonaktifkan karena <b>$1</b> terdeteksi dalam komentar yang Anda tulis.  [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Pelajari lebih lanjut].",
 	"discussiontools-error-noswitchtove-template": "Sintaks templat"
 }

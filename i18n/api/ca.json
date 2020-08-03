@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mguix"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "Comment ID not found: $1",
+	"apihelp-discussiontools-param-oldid": "The revision number to use (defaults to latest revision).",
+	"apihelp-discussiontools-summary": "Returns metadata required to initialize the discussion tools.",
+	"apihelp-discussiontoolsedit-summary": "Edit summary.",
+	"apihelp-discussiontoolsedit-param-commentid": "Comment ID.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
+}

@@ -7,11 +7,12 @@
 			"Iniquity",
 			"Kareyac",
 			"Okras",
-			"Pacha Tchernof"
+			"Pacha Tchernof",
+			"Sunpriat"
 		]
 	},
 	"discussiontools": "Инструменты обсуждения",
-	"discussiontools-defaultsummary-reply": "Ответить",
+	"discussiontools-defaultsummary-reply": "Ответ",
 	"discussiontools-preference-label": "Инструменты обсуждения",
 	"discussiontools-preference-description": "Включить новый рабочий процесс для [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] на страницах обсуждения.\n\nПожалуйста обратите внимание, что со временембудут добавлены новые инструменты для взаимодействия со страницами обсуждения.\n\nОбновления об этих функциях будут размещены на [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
 	"discussiontools-replywidget-cancel": "Отмена",
@@ -31,7 +32,7 @@
 	"tag-discussiontools-edit-description": "Пользователь отредактировал существующий комментарий с помощью DiscussionTools",
 	"tag-discussiontools-newtopic": "Добавить тему",
 	"tag-discussiontools-newtopic-description": "Пользователь добавил новую тему на страницу с помощью DiscussionTools",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} ответил-а]",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Ответ]",
 	"tag-discussiontools-reply-description": "Пользователь ответил на комментарий с помощью DiscussionTools",
 	"tag-discussiontools-source": "Источник",
 	"tag-discussiontools-visual-description": "DiscussionTools было в визуальном режиме"

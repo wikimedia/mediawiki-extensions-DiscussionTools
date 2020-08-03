@@ -40,7 +40,7 @@
 	"discussiontools-error-comment-is-transcluded": "Le lien « {{int:discussiontools-replylink}} » ne peut pas être utilisé pour répondre à ce commentaire. Pour répondre, veuillez utiliser l’éditeur de page complète en cliquant sur « $1 ».",
 	"discussiontools-error-comment-is-transcluded-title": "Le lien « {{int:discussiontools-replylink}} » ne peut pas être utilisé pour répondre à ce commentaire, parce qu’il est chargé depuis une autre page. Pour répondre, veuillez aller ici : [[$1]].",
 	"discussiontools-error-lint": "On ne peut pas répondre aux commentaires sur cette page du fait d’une erreur dans le wikitexte. Vous pouvez en savoir plus sur cette erreur en [$1 lisant la documentation], demander de l’aide en [$2 publiant ici] ou corriger l’erreur en [$3 ouvrant l’éditeur de la page complète].",
-	"discussiontools-error-noswitchtove": "Désolé, basculer en mode visuel est désactivé parce que <b>$1</b> a été détecté pendant que vous écriviez. [https://mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations En savoir plus].",
+	"discussiontools-error-noswitchtove": "Désolé, basculer en mode visuel est désactivé parce que <b>$1</b> a été détecté dans votre commentaire [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations En savoir plus].",
 	"discussiontools-error-noswitchtove-extension": "syntaxe d’extension ou de référence",
 	"discussiontools-error-noswitchtove-table": "syntaxe de tableau",
 	"discussiontools-error-noswitchtove-template": "syntaxe de modèle",

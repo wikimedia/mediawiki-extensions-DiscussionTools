@@ -35,7 +35,7 @@
 	"discussiontools-replywidget-terms-click": "「$1」をクリックすると、このウィキの利用規約に同意したと見なされます。",
 	"discussiontools-replywidget-transcluded": "あなたのコメントは[[$1]]で保存されます。",
 	"discussiontools-error-comment-disappeared": "あなたが返信しようとしているコメントがページで検出できませんでした。そのコメントは削除されたか、別のページに移動・転記された可能性があります。ページを再読み込みしてから再度お試しください。",
-	"discussiontools-error-noswitchtove": "申し訳ありません。あなたが書いたコメントから<b>$1</b>が検出されたため、ビジュアルモードへ切り替えることはできません。[https://mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations 詳しくはこちら]。",
+	"discussiontools-error-noswitchtove": "申し訳ありません。あなたが書いたコメントから<b>$1</b>が検出されたため、ビジュアルモードへ切り替えることはできません。[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations 詳しくはこちら]。",
 	"discussiontools-error-noswitchtove-extension": "拡張機能または参照の構文",
 	"discussiontools-error-noswitchtove-table": "テーブルの構文",
 	"discussiontools-error-noswitchtove-template": "テンプレート構文",

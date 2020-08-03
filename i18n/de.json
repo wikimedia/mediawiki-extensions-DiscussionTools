@@ -33,7 +33,7 @@
 	"discussiontools-error-comment-is-transcluded": "Der Link „{{int:discussiontools-replylink}}“ kann nicht verwendet werden, um auf diesen Kommentar zu antworten. Um zu antworten, benutze bitte den Ganzseiten-Editor, indem du auf „$1“ klickst.",
 	"discussiontools-error-comment-is-transcluded-title": "Der Link „{{int:discussiontools-replylink}}“ kann nicht verwendet werden, um auf den Kommentar zu antworten, da er von einer anderen Seite geladen wird. Um zu antworten, gehe bitte auf [[$1]].",
 	"discussiontools-error-lint": "Auf Kommentare auf dieser Seite kann wegen eines Fehlers im Wikitext nicht geantwortet werden. Du kannst dich über diesen Fehler informieren, indem du [$1 die Dokumentation liest], um Hilfe bittest, indem du [$2 hier schreibst] oder den Fehler behebst, indem du [$3 den Ganzseiten-Editor öffnest].",
-	"discussiontools-error-noswitchtove": "Entschuldigung, das Umschalten in den visuellen Modus ist deaktiviert, weil <b>$1</b> im Kommentar, den du geschrieben hast, erkannt wurde. [https://mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Weitere Informationen].",
+	"discussiontools-error-noswitchtove": "Entschuldigung, das Umschalten in den visuellen Modus ist deaktiviert, weil <b>$1</b> im Kommentar, den du geschrieben hast, erkannt wurde. [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Weitere Informationen].",
 	"discussiontools-error-noswitchtove-extension": "Erweiterung oder Einzelnachweis-Syntax",
 	"discussiontools-error-noswitchtove-table": "Tabellensyntax",
 	"discussiontools-error-noswitchtove-template": "Vorlagensyntax",
