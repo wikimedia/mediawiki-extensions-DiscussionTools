@@ -26,7 +26,7 @@
 	"discussiontools-replywidget-preview": "Podgląd",
 	"discussiontools-replywidget-reply": "Odpowiedz",
 	"discussiontools-replywidget-signature-title": "Wykryto składnię podpisu",
-	"discussiontools-replywidget-signature-body": "Wikikod $1 został zamieniony na Twój podpis. Aby to wycofać, wciśnij $2. W tym narzędziu nie musisz wpisywać $2, aby podpisać swój komentarz; podpis zostanie dodany automatycznie.",
+	"discussiontools-replywidget-signature-body": "Wikikod $1 został zamieniony na Twój podpis. Aby to wycofać, wciśnij $2. Korzystając z tego narzędzia nie musisz pamiętać o ręcznym wstawianiu podpisu. Twój podpis zostanie dodany automatycznie.",
 	"discussiontools-replywidget-terms-click": "Wciskając przycisk \"$1\", zgadzasz się na warunki użytkowania tej wiki.",
 	"discussiontools-replywidget-transcluded": "Twój komentarz zostanie zapisany na stronie [[$1]].",
 	"discussiontools-error-comment-disappeared": "Nie udało się odnaleźć na tej stronie komentarza, na który odpowiadasz. Mógł zostać usunięty lub przeniesiony na inną stronę. Przeładuj stronę i spróbuj ponownie.",
