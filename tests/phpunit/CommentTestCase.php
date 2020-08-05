@@ -7,6 +7,7 @@ use DOMElement;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 abstract class CommentTestCase extends MediaWikiTestCase {
@@ -39,6 +40,19 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	}
 
 	/**
+	 * Write JSON to path
+	 *
+	 * @param string $relativePath
+	 * @param array $data
+	 */
+	protected static function overwriteJsonFile( string $relativePath, array $data ) : void {
+		$json = json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+		// 2 spaces instead of 4
+		$json = preg_replace( '/^( +)\1/m', '$1', $json );
+		file_put_contents( __DIR__ . '/' . $relativePath, $json . "\n" );
+	}
+
+	/**
 	 * Get HTML from path
 	 *
 	 * @param string $relativePath
@@ -49,11 +63,39 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 
 		// Remove all but the body tags from full Parsoid docs
 		if ( strpos( $html, '<body' ) !== false ) {
-			preg_match( '`<body[^>]*>(.*)</body>`s', $html, $match );
-			$html = "<div>$match[1]</div>";
+			preg_match( '`(<body[^>]*>)(.*)(</body>)`s', $html, $match );
+			$html = "<div>$match[2]</div>";
 		}
 
 		return $html;
+	}
+
+	/**
+	 * Write HTML to path
+	 *
+	 * @param string $relPath
+	 * @param DOMDocument $doc
+	 * @param string $origRelPath
+	 */
+	protected static function overwriteHtmlFile( string $relPath, DOMDocument $doc, string $origRelPath ) : void {
+		// Do not use $doc->saveHtml(), it outputs an awful soup of HTML entities for documents with
+		// non-ASCII characters
+		$html = file_get_contents( __DIR__ . '/../' . $origRelativePath );
+
+		// Replace the body tag only in full Parsoid docs
+		if ( strpos( $html, '<body' ) !== false ) {
+			$innerHtml = DOMCompat::getInnerHTML( $doc->getElementsByTagName( 'body' )->item( 0 )->firstChild );
+			$html = preg_replace(
+				'`(<body[^>]*>)(.*)(</body>)`s',
+				// Quote \ and $ in the replacement text
+				'$1' . strtr( $innerHtml, [ '\\' => '\\\\', '$' => '\\$' ] ) . '$3',
+				$html
+			);
+		} else {
+			$html = DOMCompat::getInnerHTML( $doc->getElementsByTagName( 'body' )->item( 0 ) );
+		}
+
+		file_put_contents( __DIR__ . '/../' . $relativePath, $html );
 	}
 
 	/**

@@ -108,10 +108,10 @@
           ]
         ],
         "level": 1,
+        "id": "20 century boy|2014-10-06T10:29:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "20 century boy|2014-10-06T10:29:00.000Z|0",
         "replies": []
       }
     ]
@@ -150,10 +150,10 @@
           ]
         ],
         "level": 1,
+        "id": "Bokken|2009-04-24T07:27:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "Bokken|2009-04-24T07:27:00.000Z|0",
         "replies": []
       }
     ]
@@ -986,10 +986,10 @@
           ]
         ],
         "level": 1,
+        "id": "Azoee|2011-04-07T18:56:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "Azoee|2011-04-07T18:56:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -1007,6 +1007,9 @@
             ],
             "level": 3,
             "id": "Bibliorock|2011-04-08T15:52:00.000Z|0",
+            "warnings": [
+              "Comment skips indentation level"
+            ],
             "replies": [
               {
                 "type": "comment",
@@ -1026,9 +1029,6 @@
                 "id": "Azoee|2011-04-09T09:46:00.000Z|0",
                 "replies": []
               }
-            ],
-            "warnings": [
-              "Comment skips indentation level"
             ]
           }
         ]
@@ -1059,10 +1059,10 @@
           ]
         ],
         "level": 1,
+        "id": "Jules78120|2012-03-11T09:51:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "Jules78120|2012-03-11T09:51:00.000Z|0",
         "replies": []
       }
     ]
@@ -1327,10 +1327,10 @@
               ]
             ],
             "level": 2,
+            "id": "Laurent Verset|2013-11-15T21:13:00.000Z|0",
             "warnings": [
               "Comment starts and ends with different indentation"
             ],
-            "id": "Laurent Verset|2013-11-15T21:13:00.000Z|0",
             "replies": [
               {
                 "type": "comment",
@@ -1365,10 +1365,10 @@
                     ],
                     "level": 5,
                     "id": "Gyrostat|2013-11-15T21:37:00.000Z|0",
-                    "replies": [],
                     "warnings": [
                       "Comment skips indentation level"
-                    ]
+                    ],
+                    "replies": []
                   }
                 ]
               }

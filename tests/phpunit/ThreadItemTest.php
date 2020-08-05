@@ -54,6 +54,7 @@ class ThreadItemTest extends CommentTestCase {
 		string $name, string $dom, string $expected, string $config, string $data
 	) : void {
 		$dom = self::getHtml( $dom );
+		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
 		$config = self::getJson( $config );
 		$data = self::getJson( $data );
@@ -78,6 +79,9 @@ class ThreadItemTest extends CommentTestCase {
 			$transcludedFrom,
 			$name
 		);
+
+		// Uncomment this to write updated content to the JSON files:
+		// self::overwriteJsonFile( $expectedPath, $transcludedFrom );
 	}
 
 	public function provideTranscludedFrom() : array {

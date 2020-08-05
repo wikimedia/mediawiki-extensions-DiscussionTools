@@ -87,21 +87,24 @@ class CommentParserTest extends CommentTestCase {
 	private static function serializeComments( ThreadItem &$threadItem, DOMElement $root ) : stdClass {
 		$serialized = new stdClass();
 
+		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
+			$serialized->placeholderHeading = $threadItem->isPlaceholderHeading();
+		}
+
 		$serialized->type = $threadItem->getType();
-		$serialized->level = $threadItem->getLevel();
+
+		if ( $threadItem instanceof CommentItem ) {
+			$serialized->timestamp = $threadItem->getTimestamp();
+			$serialized->author = $threadItem->getAuthor();
+		}
 
 		// Can't serialize the DOM nodes involved in the range,
 		// instead use their offsets within their parent nodes
 		$range = $threadItem->getRange();
-		$serialized->id = $threadItem->getId();
 		$serialized->range = [
 			self::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
 			self::getOffsetPath( $root, $range->endContainer, $range->endOffset )
 		];
-		$serialized->replies = [];
-		foreach ( $threadItem->getReplies() as $reply ) {
-			$serialized->replies[] = self::serializeComments( $reply, $root );
-		}
 
 		if ( $threadItem instanceof CommentItem ) {
 			$serialized->signatureRanges = array_map( function ( ImmutableRange $range ) use ( $root ) {
@@ -110,16 +113,21 @@ class CommentParserTest extends CommentTestCase {
 					self::getOffsetPath( $root, $range->endContainer, $range->endOffset )
 				];
 			}, $threadItem->getSignatureRanges() );
-			$serialized->timestamp = $threadItem->getTimestamp();
-			$serialized->author = $threadItem->getAuthor();
+		}
+
+		$serialized->level = $threadItem->getLevel();
+		$serialized->id = $threadItem->getId();
+
+		if ( $threadItem instanceof CommentItem ) {
 			$warnings = $threadItem->getWarnings();
 			if ( count( $warnings ) ) {
 				$serialized->warnings = $threadItem->getWarnings();
 			}
 		}
 
-		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
-			$serialized->placeholderHeading = $threadItem->isPlaceholderHeading();
+		$serialized->replies = [];
+		foreach ( $threadItem->getReplies() as $reply ) {
+			$serialized->replies[] = self::serializeComments( $reply, $root );
 		}
 
 		return $serialized;
@@ -208,6 +216,7 @@ class CommentParserTest extends CommentTestCase {
 		string $name, string $dom, string $expected, string $config, string $data
 	) : void {
 		$dom = self::getHtml( $dom );
+		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
 		$config = self::getJson( $config );
 		$data = self::getJson( $data );
@@ -227,6 +236,9 @@ class CommentParserTest extends CommentTestCase {
 			$processedThreads[] = $thread;
 			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
 		}
+
+		// Uncomment this to write updated content to the JSON files:
+		// self::overwriteJsonFile( $expectedPath, $processedThreads );
 	}
 
 	public function provideComments() : array {

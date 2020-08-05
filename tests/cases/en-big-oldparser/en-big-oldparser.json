@@ -110,10 +110,10 @@
         ],
         "level": 2,
         "id": "Otr500|2019-06-24T16:09:00.000Z|0",
-        "replies": [],
         "warnings": [
           "Comment skips indentation level"
-        ]
+        ],
+        "replies": []
       },
       {
         "type": "comment",
@@ -305,10 +305,10 @@
                   ]
                 ],
                 "level": 3,
+                "id": "PrimeHunter|2019-06-28T11:09:00.000Z|0",
                 "warnings": [
                   "Comment starts and ends with different indentation"
                 ],
-                "id": "PrimeHunter|2019-06-28T11:09:00.000Z|0",
                 "replies": [
                   {
                     "type": "comment",
@@ -326,10 +326,10 @@
                     ],
                     "level": 5,
                     "id": "Jotamar|2019-07-01T13:48:00.000Z|0",
-                    "replies": [],
                     "warnings": [
                       "Comment skips indentation level"
-                    ]
+                    ],
+                    "replies": []
                   }
                 ]
               }
@@ -1177,10 +1177,10 @@
               ]
             ],
             "level": 2,
+            "id": "Nyttend|2019-06-26T10:53:00.000Z|0",
             "warnings": [
               "Comment starts and ends with different indentation"
             ],
-            "id": "Nyttend|2019-06-26T10:53:00.000Z|0",
             "replies": []
           },
           {
@@ -1695,6 +1695,9 @@
                         ],
                         "level": 6,
                         "id": "Sluzzelin|2019-06-27T22:26:00.000Z|0",
+                        "warnings": [
+                          "Comment skips indentation level"
+                        ],
                         "replies": [
                           {
                             "type": "comment",
@@ -1752,9 +1755,6 @@
                               }
                             ]
                           }
-                        ],
-                        "warnings": [
-                          "Comment skips indentation level"
                         ]
                       }
                     ]
@@ -1809,10 +1809,10 @@
           ]
         ],
         "level": 1,
+        "id": "Xaosflux|2019-06-27T14:57:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "Xaosflux|2019-06-27T14:57:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -1830,6 +1830,9 @@
             ],
             "level": 3,
             "id": "Nthep|2019-06-27T15:10:00.000Z|0",
+            "warnings": [
+              "Comment skips indentation level"
+            ],
             "replies": [
               {
                 "type": "comment",
@@ -1849,9 +1852,6 @@
                 "id": "Isarra|2019-07-01T15:55:00.000Z|0",
                 "replies": []
               }
-            ],
-            "warnings": [
-              "Comment skips indentation level"
             ]
           }
         ]
@@ -4016,10 +4016,10 @@
           ]
         ],
         "level": 1,
+        "id": "QEDK|2019-07-06T09:00:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "QEDK|2019-07-06T09:00:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -4037,6 +4037,9 @@
             ],
             "level": 4,
             "id": "QEDK|2019-07-06T09:05:00.000Z|0",
+            "warnings": [
+              "Comment skips indentation level"
+            ],
             "replies": [
               {
                 "type": "comment",
@@ -4056,9 +4059,6 @@
                 "id": "QEDK|2019-07-06T09:25:00.000Z|0",
                 "replies": []
               }
-            ],
-            "warnings": [
-              "Comment skips indentation level"
             ]
           }
         ]
@@ -4203,10 +4203,10 @@
         ],
         "level": 2,
         "id": "Oshwah|2019-06-14T13:25:00.000Z|0",
-        "replies": [],
         "warnings": [
           "Comment skips indentation level"
-        ]
+        ],
+        "replies": []
       },
       {
         "type": "comment",
@@ -4567,6 +4567,9 @@
         ],
         "level": 2,
         "id": "Xaosflux|2019-06-14T13:24:00.000Z|0",
+        "warnings": [
+          "Comment skips indentation level"
+        ],
         "replies": [
           {
             "type": "comment",
@@ -4623,9 +4626,6 @@
               }
             ]
           }
-        ],
-        "warnings": [
-          "Comment skips indentation level"
         ]
       },
       {
@@ -6239,10 +6239,10 @@
               ]
             ],
             "level": 2,
+            "id": "Cnbrb|2019-07-10T00:26:00.000Z|0",
             "warnings": [
               "Comment starts and ends with different indentation"
             ],
-            "id": "Cnbrb|2019-07-10T00:26:00.000Z|0",
             "replies": []
           }
         ]
@@ -8328,10 +8328,10 @@
           ]
         ],
         "level": 1,
+        "id": "Xaosflux|2019-07-14T21:59:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "Xaosflux|2019-07-14T21:59:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -8349,6 +8349,9 @@
             ],
             "level": 3,
             "id": "Nyttend|2019-07-14T22:39:00.000Z|0",
+            "warnings": [
+              "Comment skips indentation level"
+            ],
             "replies": [
               {
                 "type": "comment",
@@ -8368,9 +8371,6 @@
                 "id": "Modulus12|2019-07-14T22:51:00.000Z|0",
                 "replies": []
               }
-            ],
-            "warnings": [
-              "Comment skips indentation level"
             ]
           }
         ]
@@ -9188,10 +9188,10 @@
                                 ],
                                 "level": 8,
                                 "id": "Cmglee|2019-07-18T17:07:00.000Z|0",
-                                "replies": [],
                                 "warnings": [
                                   "Comment skips indentation level"
-                                ]
+                                ],
+                                "replies": []
                               },
                               {
                                 "type": "comment",
@@ -10107,10 +10107,10 @@
                       ]
                     ],
                     "level": 4,
+                    "id": "Trappist the monk|2019-07-22T15:20:00.000Z|0",
                     "warnings": [
                       "Comment starts and ends with different indentation"
                     ],
-                    "id": "Trappist the monk|2019-07-22T15:20:00.000Z|0",
                     "replies": [
                       {
                         "type": "comment",
@@ -10128,6 +10128,9 @@
                         ],
                         "level": 6,
                         "id": "Xaosflux|2019-07-22T15:32:00.000Z|0",
+                        "warnings": [
+                          "Comment skips indentation level"
+                        ],
                         "replies": [
                           {
                             "type": "comment",
@@ -10147,9 +10150,6 @@
                             "id": "Trappist the monk|2019-07-22T16:11:00.000Z|0",
                             "replies": []
                           }
-                        ],
-                        "warnings": [
-                          "Comment skips indentation level"
                         ]
                       }
                     ]
@@ -10663,6 +10663,9 @@
             ],
             "level": 4,
             "id": "DannyS712|2019-06-28T15:44:00.000Z|0",
+            "warnings": [
+              "Comment skips indentation level"
+            ],
             "replies": [
               {
                 "type": "comment",
@@ -10739,9 +10742,6 @@
                   }
                 ]
               }
-            ],
-            "warnings": [
-              "Comment skips indentation level"
             ]
           },
           {
@@ -11361,10 +11361,10 @@
               ]
             ],
             "level": 2,
+            "id": "Xaosflux|2019-07-27T17:21:00.000Z|0",
             "warnings": [
               "Comment starts and ends with different indentation"
             ],
-            "id": "Xaosflux|2019-07-27T17:21:00.000Z|0",
             "replies": [
               {
                 "type": "comment",
@@ -11879,10 +11879,10 @@
           ]
         ],
         "level": 1,
+        "id": "Andrybak|2019-07-29T10:29:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "Andrybak|2019-07-29T10:29:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -11900,6 +11900,9 @@
             ],
             "level": 3,
             "id": "Monniasza|2019-07-29T10:37:00.000Z|0",
+            "warnings": [
+              "Comment skips indentation level"
+            ],
             "replies": [
               {
                 "type": "comment",
@@ -11938,9 +11941,6 @@
                   }
                 ]
               }
-            ],
-            "warnings": [
-              "Comment skips indentation level"
             ]
           }
         ]
@@ -12589,10 +12589,10 @@
           ]
         ],
         "level": 1,
+        "id": "StarryGrandma|2019-07-30T15:50:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "StarryGrandma|2019-07-30T15:50:00.000Z|0",
         "replies": []
       },
       {
@@ -12610,10 +12610,10 @@
           ]
         ],
         "level": 1,
+        "id": "MusikAnimal|2019-07-31T19:13:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "MusikAnimal|2019-07-31T19:13:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -12631,10 +12631,10 @@
             ],
             "level": 3,
             "id": "PrimeHunter|2019-07-31T19:45:00.000Z|0",
-            "replies": [],
             "warnings": [
               "Comment skips indentation level"
-            ]
+            ],
+            "replies": []
           },
           {
             "type": "comment",
@@ -13275,10 +13275,10 @@
                                         ],
                                         "level": 10,
                                         "id": "SharabSalam|2019-07-23T01:14:00.000Z|0",
-                                        "replies": [],
                                         "warnings": [
                                           "Comment skips indentation level"
-                                        ]
+                                        ],
+                                        "replies": []
                                       },
                                       {
                                         "type": "comment",
@@ -15358,10 +15358,10 @@
           ]
         ],
         "level": 1,
+        "id": "Nyttend backup|2019-08-05T16:34:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "Nyttend backup|2019-08-05T16:34:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -15379,10 +15379,10 @@
             ],
             "level": 6,
             "id": "Xaosflux|2019-08-05T16:37:00.000Z|0",
-            "replies": [],
             "warnings": [
               "Comment skips indentation level"
-            ]
+            ],
+            "replies": []
           }
         ]
       }
@@ -16761,10 +16761,10 @@
           ]
         ],
         "level": 1,
+        "id": "Snaevar|2019-08-09T20:23:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "Snaevar|2019-08-09T20:23:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -16782,10 +16782,10 @@
             ],
             "level": 3,
             "id": "Xaosflux|2019-08-10T04:51:00.000Z|0",
-            "replies": [],
             "warnings": [
               "Comment skips indentation level"
-            ]
+            ],
+            "replies": []
           }
         ]
       }
@@ -18582,10 +18582,10 @@
         ],
         "level": 2,
         "id": "Wugapodes|2019-07-30T05:28:00.000Z|0",
-        "replies": [],
         "warnings": [
           "Comment skips indentation level"
-        ]
+        ],
+        "replies": []
       },
       {
         "type": "comment",
@@ -18730,10 +18730,10 @@
                 ],
                 "level": 5,
                 "id": "קיפודנחש|2019-07-30T19:25:00.000Z|0",
-                "replies": [],
                 "warnings": [
                   "Comment skips indentation level"
-                ]
+                ],
+                "replies": []
               }
             ]
           },
@@ -18752,10 +18752,10 @@
               ]
             ],
             "level": 2,
+            "id": "Rhododendrites|2019-07-30T18:42:00.000Z|0",
             "warnings": [
               "Comment starts and ends with different indentation"
             ],
-            "id": "Rhododendrites|2019-07-30T18:42:00.000Z|0",
             "replies": []
           },
           {
@@ -19712,10 +19712,10 @@
                 ],
                 "level": 4,
                 "id": "JoeHebda|2019-07-19T02:50:00.000Z|0",
-                "replies": [],
                 "warnings": [
                   "Comment skips indentation level"
-                ]
+                ],
+                "replies": []
               }
             ]
           }
@@ -19782,10 +19782,10 @@
                 ],
                 "level": 4,
                 "id": "JoeHebda|2019-07-19T02:53:00.000Z|0",
-                "replies": [],
                 "warnings": [
                   "Comment skips indentation level"
-                ]
+                ],
+                "replies": []
               }
             ]
           }
@@ -19895,6 +19895,9 @@
         ],
         "level": 2,
         "id": "JoeHebda|2019-07-11T14:03:00.000Z|0",
+        "warnings": [
+          "Comment skips indentation level"
+        ],
         "replies": [
           {
             "type": "comment",
@@ -19950,9 +19953,6 @@
             "id": "MusikAnimal (WMF)|2019-07-11T23:53:00.000Z|2",
             "replies": []
           }
-        ],
-        "warnings": [
-          "Comment skips indentation level"
         ]
       }
     ]
@@ -19982,6 +19982,9 @@
         ],
         "level": 2,
         "id": "JoeHebda|2019-07-14T10:19:00.000Z|0",
+        "warnings": [
+          "Comment skips indentation level"
+        ],
         "replies": [
           {
             "type": "comment",
@@ -20039,9 +20042,6 @@
               }
             ]
           }
-        ],
-        "warnings": [
-          "Comment skips indentation level"
         ]
       }
     ]
@@ -20071,6 +20071,9 @@
         ],
         "level": 2,
         "id": "JoeHebda|2019-07-17T13:19:00.000Z|0",
+        "warnings": [
+          "Comment skips indentation level"
+        ],
         "replies": [
           {
             "type": "comment",
@@ -20090,9 +20093,6 @@
             "id": "MusikAnimal (WMF)|2019-07-17T14:38:00.000Z|0",
             "replies": []
           }
-        ],
-        "warnings": [
-          "Comment skips indentation level"
         ]
       }
     ]
@@ -20121,10 +20121,10 @@
           ]
         ],
         "level": 1,
+        "id": "JoeHebda|2019-07-19T03:12:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "JoeHebda|2019-07-19T03:12:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -20730,10 +20730,10 @@
           ]
         ],
         "level": 1,
+        "id": "PrimeHunter|2019-08-15T12:03:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "PrimeHunter|2019-08-15T12:03:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -20751,10 +20751,10 @@
             ],
             "level": 3,
             "id": "PrimeHunter|2019-08-15T12:15:00.000Z|0",
-            "replies": [],
             "warnings": [
               "Comment skips indentation level"
-            ]
+            ],
+            "replies": []
           },
           {
             "type": "comment",
@@ -20810,10 +20810,10 @@
           ]
         ],
         "level": 1,
+        "id": "PrimeHunter|2019-08-15T16:41:00.000Z|0",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
-        "id": "PrimeHunter|2019-08-15T16:41:00.000Z|0",
         "replies": [
           {
             "type": "comment",
@@ -20831,10 +20831,10 @@
             ],
             "level": 6,
             "id": "Whatamidoing (WMF)|2019-08-20T20:24:00.000Z|0",
-            "replies": [],
             "warnings": [
               "Comment skips indentation level"
-            ]
+            ],
+            "replies": []
           }
         ]
       }
@@ -21019,10 +21019,10 @@
                         ],
                         "level": 6,
                         "id": "Guy Macon|2019-08-16T13:47:00.000Z|0",
-                        "replies": [],
                         "warnings": [
                           "Comment skips indentation level"
-                        ]
+                        ],
+                        "replies": []
                       }
                     ]
                   }
@@ -21063,6 +21063,9 @@
                 ],
                 "level": 7,
                 "id": "Xaosflux|2019-08-16T14:03:00.000Z|0",
+                "warnings": [
+                  "Comment skips indentation level"
+                ],
                 "replies": [
                   {
                     "type": "comment",
@@ -21082,9 +21085,6 @@
                     "id": "Guy Macon|2019-08-16T14:28:00.000Z|0",
                     "replies": []
                   }
-                ],
-                "warnings": [
-                  "Comment skips indentation level"
                 ]
               }
             ]
@@ -22054,10 +22054,10 @@
             ],
             "level": 3,
             "id": "Headbomb|2019-08-22T16:38:00.000Z|0",
-            "replies": [],
             "warnings": [
               "Comment skips indentation level"
-            ]
+            ],
+            "replies": []
           }
         ]
       },

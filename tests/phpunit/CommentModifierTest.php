@@ -19,7 +19,9 @@ class CommentModifierTest extends CommentTestCase {
 	public function testAddListItem(
 		string $name, string $dom, string $expected, string $config, string $data
 	) : void {
+		$origPath = $dom;
 		$dom = self::getHtml( $dom );
+		$expectedPath = $expected;
 		$expected = self::getHtml( $expected );
 		$config = self::getJson( $config );
 		$data = self::getJson( $data );
@@ -41,6 +43,9 @@ class CommentModifierTest extends CommentTestCase {
 
 		$expectedDoc = self::createDocument( $expected );
 
+		// Uncomment this to write updated content to the "modified HTML" files:
+		// self::overwriteHtmlFile( $expectedPath, $doc, $origPath );
+
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
 
 		// removeAddedListItem is not implemented on the server
@@ -57,7 +62,9 @@ class CommentModifierTest extends CommentTestCase {
 	public function testAddReplyLink(
 		string $name, string $dom, string $expected, string $config, string $data
 	) : void {
+		$origPath = $dom;
 		$dom = self::getHtml( $dom );
+		$expectedPath = $expected;
 		$expected = self::getHtml( $expected );
 		$config = self::getJson( $config );
 		$data = self::getJson( $data );
@@ -78,6 +85,9 @@ class CommentModifierTest extends CommentTestCase {
 		}
 
 		$expectedDoc = self::createDocument( $expected );
+
+		// Uncomment this to write updated content to the "reply HTML" files:
+		// self::overwriteHtmlFile( $expectedPath, $doc, $origPath );
 
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
 	}
