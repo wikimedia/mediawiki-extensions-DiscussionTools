@@ -380,7 +380,7 @@ class CommentModifier {
 	 *
 	 * @param DOMElement $container
 	 */
-	private static function appendSignature( DOMElement $container ) : void {
+	public static function appendSignature( DOMElement $container ) : void {
 		$doc = $container->ownerDocument;
 
 		// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then

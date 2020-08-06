@@ -39,6 +39,62 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		}
 
 		switch ( $params['paction'] ) {
+			case 'addtopic':
+
+				$this->requireAtLeastOneParameter( $params, 'sectiontitle' );
+				$this->requireOnlyOneParameter( $params, 'wikitext', 'html' );
+
+				$wikitext = $params['wikitext'];
+				$html = $params['html'];
+
+				if ( $wikitext !== null ) {
+					$wikitext = trim( $wikitext );
+					if ( !CommentModifier::isWikitextSigned( $wikitext ) ) {
+						$wikitext .=
+							$this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+					}
+				} else {
+					$doc = DOMUtils::parseHTML( $html );
+					$container = $doc->getElementsByTagName( 'body' )->item( 0 );
+					'@phan-var DOMElement $container';
+					if ( !CommentModifier::isHtmlSigned( $container ) ) {
+						CommentModifier::appendSignature( $container );
+					}
+					$html = DOMCompat::getInnerHTML( $container );
+					$wikitext = $this->transformHTML( $title, $html )[ 'body' ];
+				}
+
+				// As section=new this is append only so we don't need to
+				// worry about edit-conflict params such as oldid/baserevid/etag.
+				// Edit summary is also automatically generated when section=new
+				$api = new ApiMain(
+					new DerivativeRequest(
+						$this->getRequest(),
+						[
+							'action' => 'visualeditoredit',
+							'paction' => 'save',
+							'page' => $params['page'],
+							'token' => $params['token'],
+							'wikitext' => $wikitext,
+							'section' => 'new',
+							'sectiontitle' => $params['sectiontitle'],
+							'starttimestamp' => wfTimestampNow(),
+							'watchlist' => $params['watchlist'],
+							'captchaid' => $params['captchaid'],
+							'captchaword' => $params['captchaword']
+						],
+						/* was posted? */ true
+					),
+					/* enable write? */ true
+				);
+
+				$api->execute();
+
+				$data = $api->getResult()->getResultData();
+				$result = $data['visualeditoredit'];
+
+				break;
+
 			case 'addcomment':
 				// Fetch the latest revision
 				$requestedRevision = $this->getLatestRevision( $title );
@@ -152,6 +208,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				ParamValidator::PARAM_REQUIRED => true,
 				ParamValidator::PARAM_TYPE => [
 					'addcomment',
+					'addtopic',
 				],
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-paction',
 			],
@@ -170,6 +227,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			'html' => [
 				ParamValidator::PARAM_TYPE => 'text',
 				ParamValidator::PARAM_DEFAULT => null,
+			],
+			'sectiontitle' => [
+				ParamValidator::PARAM_TYPE => 'text',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-sectiontitle',
 			],
 			'watchlist' => [
 				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-watchlist',
