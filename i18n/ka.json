@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mehman97"
+		]
+	},
+	"discussiontools": "განხილვის ხელსაწყოები",
+	"discussiontools-defaultsummary-reply": "უპასუხე",
+	"discussiontools-desc": "განხილვის გვერდების გასაუმჯობესებელი ხელსაწყოები.",
+	"discussiontools-preference-label": "განხილვის ხელსაწყოები",
+	"discussiontools-preference-description": "ჩართეთ ახალი სამუშაო პროცესი, როდესაც [https://www.mediawiki.org/wiki/Talk_pages_project/replying პასუხობთ გარკვეულ კომენტარებს] განხილვის გვერდებზე.\n\nგთხოვთ გაითვალისწინოთ, რომ დროთა განმავლობაში დაემატება ახალი ხელსაწყოები განხილვის გვერდებთან ურთიერთმიმართებისთვის.\n\nამ ფუნქციების შესახებ სიახლეები გამოქვეყნდება [https://www.mediawiki.org/wiki/Talk_pages_project/Updates განხილვის გვერდების პროექტის გვერდზე].",
+	"discussiontools-replylink": "უპასუხე",
+	"discussiontools-replywidget-abandon": "დარწმუნებული ხართ, რომ გსურთ უარი თქვათ დაწერილ კომენტარზე?",
+	"discussiontools-replywidget-abandon-discard": "კომენტარის გაუქმება",
+	"discussiontools-replywidget-abandon-keep": "წერის გაგრძელება",
+	"discussiontools-replywidget-anon-warning": "<strong>თქვენ არ ხართ შესული სისტემაში.</strong> თქვენი მომხმარებლის სახელის გამოჩენისთვის, ნაცვლად აიპი მისამართისა, თქვენ შეგიძლიათ [$1 შეხვიდეთ სისტემაში] ან [$2 შექმნათ ანგარიში].",
+	"discussiontools-replywidget-cancel": "გაუქმება",
+	"discussiontools-replywidget-feedback": "გაგვიზიარეთ თქვენი ხედვა ამ ფუნქციის შესახებ",
+	"discussiontools-replywidget-loading": "იტვირთება...",
+	"discussiontools-replywidget-mention-tool-title": "მომხმარებლის აღნიშვნა",
+	"discussiontools-replywidget-mode-source": "წყარო",
+	"discussiontools-replywidget-mode-visual": "ვიზუალური",
+	"discussiontools-replywidget-placeholder-reply": "უპასუხე {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "წინასწარი გადახედვა",
+	"discussiontools-replywidget-reply": "უპასუხე",
+	"discussiontools-replywidget-signature-title": "აღმოჩენილია ხელმოწერის აღნიშვნა",
+	"tag-discussiontools-newtopic": "თემის დამატება",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} უპასუხე]"
+}
