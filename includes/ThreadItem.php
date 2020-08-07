@@ -93,7 +93,8 @@ abstract class ThreadItem {
 			$dataMw['parts'] &&
 			count( $dataMw['parts'] ) === 1 &&
 			$dataMw['parts'][0]['template'] &&
-			$dataMw['parts'][0]['template']['target']['href']
+			// 'href' will be unset if this is a parser function rather than a template
+			isset( $dataMw['parts'][0]['template']['target']['href'] )
 		) {
 			$title = CommentUtils::getTitleFromUrl( $dataMw['parts'][0]['template']['target']['href'] );
 			return $title->getPrefixedText();
