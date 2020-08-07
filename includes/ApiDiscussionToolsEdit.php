@@ -9,6 +9,7 @@ use DerivativeRequest;
 use DOMElement;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsEdit extends ApiBase {
@@ -87,7 +88,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'page' => $params['page'],
 							'token' => $params['token'],
 							'oldid' => $oldid,
-							'html' => $doc->saveHtml(),
+							'html' => DOMCompat::getOuterHTML( $doc->documentElement ),
 							'summary' => $summary,
 							'baserevid' => $revision->getId(),
 							'starttimestamp' => wfTimestampNow(),
