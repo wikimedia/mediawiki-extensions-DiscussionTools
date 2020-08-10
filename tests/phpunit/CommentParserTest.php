@@ -234,11 +234,14 @@ class CommentParserTest extends CommentTestCase {
 			$thread = self::serializeComments( $thread, $body );
 			$thread = json_decode( json_encode( $thread ), true );
 			$processedThreads[] = $thread;
-			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
 		}
 
 		// Uncomment this to write updated content to the JSON files:
 		// self::overwriteJsonFile( $expectedPath, $processedThreads );
+
+		foreach ( $threads as $i => $thread ) {
+			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
+		}
 	}
 
 	public function provideComments() : array {
