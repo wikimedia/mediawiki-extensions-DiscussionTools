@@ -92,7 +92,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'summary' => $summary,
 							'baserevid' => $revision->getId(),
 							'starttimestamp' => wfTimestampNow(),
-							'basetimestamp' => $revision->getTimestamp(),
 							'etag' => $headers['etag'],
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
