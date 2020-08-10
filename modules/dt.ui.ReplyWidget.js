@@ -78,6 +78,12 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	// Initialize to avoid flicker when switching mode
 	this.modeTabSelect.selectItemByData( this.getMode() );
 
+	this.$headerWrapper = $( '<div>' ).addClass( 'dt-ui-replyWidget-headerWrapper' );
+	this.$headerWrapper.append(
+		// (visual mode toolbar magically appears here)
+		this.modeTabSelect.$element
+	);
+
 	this.$preview = $( '<div>' )
 		.addClass( 'dt-ui-replyWidget-preview' )
 		.attr( 'data-label', mw.msg( 'discussiontools-replywidget-preview' ) )
@@ -125,7 +131,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 
 	// Initialization
 	this.$element.addClass( 'dt-ui-replyWidget' ).append(
-		this.modeTabSelect.$element,
+		this.$headerWrapper,
 		this.replyBodyWidget.$element,
 		this.$preview,
 		this.$actionsWrapper
