@@ -72,8 +72,8 @@ function addReplyLink( comment, linkNode ) {
  */
 function addListItem( comment ) {
 	var
-		curComment, curLevel, desiredLevel,
-		target, parent, covered, listType, itemType, list, item, newNode,
+		curComment, curLevel, desiredLevel, itemType, listType,
+		target, parent, covered, list, item, newNode,
 		listTypeMap = {
 			li: 'ul',
 			dd: 'dl'
@@ -88,6 +88,11 @@ function addListItem( comment ) {
 	while ( curComment.replies.length ) {
 		curComment = curComment.replies[ curComment.replies.length - 1 ];
 	}
+
+	// Tag names for lists and items we're going to insert
+	// TODO Add an option to prefer bulleted lists (ul/li)
+	itemType = 'dd';
+	listType = listTypeMap[ itemType ];
 
 	desiredLevel = comment.level + 1;
 	curLevel = curComment.level;
@@ -135,11 +140,6 @@ function addListItem( comment ) {
 			target = target.nextSibling;
 		}
 
-		// Decide on tag names for lists and items
-		itemType = parent.tagName.toLowerCase();
-		itemType = listTypeMap[ itemType ] ? itemType : 'dd';
-		listType = listTypeMap[ itemType ];
-
 		// Insert required number of wrappers
 		while ( curLevel < desiredLevel ) {
 			list = target.ownerDocument.createElement( listType );
@@ -182,10 +182,41 @@ function addListItem( comment ) {
 		} while ( curLevel >= desiredLevel );
 
 		// parent is now a list, target is a list item
-		item = target.ownerDocument.createElement( target.tagName );
-		item.discussionToolsModified = 'new';
-		whitespaceParsoidHack( item );
-		parent.insertBefore( item, target.nextSibling );
+		if ( itemType === target.tagName.toLowerCase() ) {
+			item = target.ownerDocument.createElement( itemType );
+			item.discussionToolsModified = 'new';
+			whitespaceParsoidHack( item );
+			parent.insertBefore( item, target.nextSibling );
+
+		} else {
+			// This is the wrong type of list, split it one more time
+
+			// If target is the last child of its parent, no need to split it
+			if ( target.nextSibling ) {
+				// Create new identical node after the parent
+				newNode = parent.cloneNode( false );
+				parent.discussionToolsModified = 'split';
+				parent.parentNode.insertBefore( newNode, parent.nextSibling );
+
+				// Move nodes following target to the new node
+				while ( target.nextSibling ) {
+					newNode.appendChild( target.nextSibling );
+				}
+			}
+
+			target = parent;
+			parent = parent.parentNode;
+
+			// Insert a list of the right type in the middle
+			list = target.ownerDocument.createElement( listType );
+			list.discussionToolsModified = 'new';
+			item = target.ownerDocument.createElement( itemType );
+			item.discussionToolsModified = 'new';
+			whitespaceParsoidHack( item );
+
+			parent.insertBefore( list, target.nextSibling );
+			list.appendChild( item );
+		}
 	}
 
 	return item;

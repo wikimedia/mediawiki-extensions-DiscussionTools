@@ -124,6 +124,11 @@ class CommentModifier {
 			$curComment = end( $replies );
 		}
 
+		// Tag names for lists and items we're going to insert
+		// TODO Add an option to prefer bulleted lists (ul/li)
+		$itemType = 'dd';
+		$listType = $listTypeMap[ $itemType ];
+
 		$desiredLevel = $comment->getLevel() + 1;
 		$curLevel = $curComment->getLevel();
 		$target = $curComment->getRange()->endContainer;
@@ -173,11 +178,6 @@ class CommentModifier {
 				$target = $target->nextSibling;
 			}
 
-			// Decide on tag names for lists and items
-			$itemType = strtolower( $parent->tagName );
-			$itemType = isset( $listTypeMap[ $itemType ] ) ? $itemType : 'dd';
-			$listType = $listTypeMap[ $itemType ];
-
 			// Insert required number of wrappers
 			while ( $curLevel < $desiredLevel ) {
 				$list = $target->ownerDocument->createElement( $listType );
@@ -222,10 +222,43 @@ class CommentModifier {
 			} while ( $curLevel >= $desiredLevel );
 
 			// parent is now a list, target is a list item
-			$item = $target->ownerDocument->createElement( $target->tagName );
-			// $item->setAttribute( 'dt-modified', 'new' );
-			self::whitespaceParsoidHack( $item );
-			$parent->insertBefore( $item, $target->nextSibling );
+			if ( $itemType === strtolower( $target->tagName ) ) {
+				$item = $target->ownerDocument->createElement( $itemType );
+				// $item->setAttribute( 'dt-modified', 'new' );
+				self::whitespaceParsoidHack( $item );
+				$parent->insertBefore( $item, $target->nextSibling );
+
+			} else {
+				// This is the wrong type of list, split it one more time
+
+				// If target is the last child of its parent, no need to split it
+				if ( $target->nextSibling ) {
+					// Create new identical node after the parent
+					$newNode = $parent->cloneNode( false );
+					// $parent->setAttribute( 'dt-modified', 'split' );
+					$parent->parentNode->insertBefore( $newNode, $parent->nextSibling );
+
+					// Move nodes following target to the new node
+					while ( $target->nextSibling ) {
+						$newNode->appendChild( $target->nextSibling );
+					}
+				}
+
+				$target = $parent;
+				$parent = $parent->parentNode;
+
+				// Insert a list of the right type in the middle
+				$list = $target->ownerDocument->createElement( $listType );
+				// Setting modified would only be needed for removeAddedListItem,
+				// which isn't needed on the server
+				// $list->setAttribute( 'dt-modified', 'new' );
+				$item = $target->ownerDocument->createElement( $itemType );
+				// $item->setAttribute( 'dt-modified', 'new' );
+				self::whitespaceParsoidHack( $item );
+
+				$parent->insertBefore( $list, $target->nextSibling );
+				$list->appendChild( $item );
+			}
 		}
 
 		if ( $item === null ) {
