@@ -299,10 +299,6 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				api: new mw.Api( { ajax: { timeout: 0 }, parameters: { formatversion: 2 } } )
 			}
 		).catch( function ( code, data ) {
-			// Try again if there's an edit conflict. The latest revision will be fetched on the server.
-			if ( code === 'editconflict' ) {
-				return commentController.save( comment, pageName );
-			}
 			// Better user-facing error message
 			if ( code === 'discussiontools-commentid-notfound' ) {
 				return $.Deferred().reject( 'discussiontools-commentid-notfound', { errors: [ {
