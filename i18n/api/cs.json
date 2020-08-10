@@ -5,7 +5,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID komentáře nebylo nalezeno: $1",
-	"apihelp-discussiontools-param-oldid": "Číslo revize, které se má použít (výchozí: poslední revize stránky).",
+	"apihelp-discussiontools-param-oldid": "Číslo revize, které má být použito (výchozí je poslední revize stránky).",
 	"apihelp-discussiontools-summary": "Vrací metadata potřebná k inicializaci Diskusních nástrojů.",
 	"apihelp-discussiontoolsedit-summary": "Shrnutí editace.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID komentáře.",

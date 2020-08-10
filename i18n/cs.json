@@ -8,14 +8,14 @@
 		]
 	},
 	"discussiontools": "Diskusní nástroje",
-	"discussiontools-defaultsummary-reply": "Odpověď",
+	"discussiontools-defaultsummary-reply": "odpověď",
 	"discussiontools-desc": "Nástroje vylepšující diskusní stránky.",
 	"discussiontools-preference-label": "Diskusní nástroje",
 	"discussiontools-preference-description": "Nové Diskusní nástroje umožňují jednoduše [https://www.mediawiki.org/wiki/Talk_pages_project/replying odpovídat na konkrétní komentáře] na diskusních stránkách.\n\nProsíme, uvědomte si, že v průběhu času budou přidávány nové funkce pro interakci s diskusními stránkami.\n\nAktualizace těchto funkcí budou zveřejněny na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates stránce s aktualizacemi projektu Diskusní stránky].",
 	"discussiontools-replylink": "odpovědět",
-	"discussiontools-replywidget-abandon": "Jste si jisti, že chcete zahodit vámi psaný komentář?",
+	"discussiontools-replywidget-abandon": "Jste si {{GENDER:|jist|jista|jisti}}, že chcete zahodit vámi psaný komentář?",
 	"discussiontools-replywidget-abandon-discard": "Zahodit komentář",
-	"discussiontools-replywidget-abandon-keep": "Pokračovat ve psaní",
+	"discussiontools-replywidget-abandon-keep": "Pokračovat v psaní",
 	"discussiontools-replywidget-anon-warning": "<strong>Momentálně nejste přihlášeni.</strong> Aby byl váš příspěvek přiřazen vašemu jménu a ne vaší IP adrese, [$1 přihlaste se] nebo si [$2 vytvořte uživatelský účet].",
 	"discussiontools-replywidget-cancel": "Zrušit",
 	"discussiontools-replywidget-feedback": "Odeslat zpětnou vazbu k této funkci",
@@ -46,8 +46,8 @@
 	"tag-discussiontools-newtopic-description": "Uživatel přidal nové téma pomocí Diskusních nástrojů",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odpověď]",
 	"tag-discussiontools-reply-description": "Uživatel odpověděl na komentář pomocí Diskusních nástrojů",
-	"tag-discussiontools-source": "Zdrojový kód",
-	"tag-discussiontools-source-description": "Diskusní nástroje byly ve zdrojovém režimu",
+	"tag-discussiontools-source": "editor zdrojového kódu",
+	"tag-discussiontools-source-description": "Editace byla uložena pomocí Diskusních nástrojů v editoru zdrojového kódu",
 	"tag-discussiontools-visual": "Vizuální editor",
-	"tag-discussiontools-visual-description": "Diskusní nástroje byly ve vizuálním režimu"
+	"tag-discussiontools-visual-description": "Editace byla uložena pomocí Diskusních nástrojů ve Vizuálním editoru"
 }

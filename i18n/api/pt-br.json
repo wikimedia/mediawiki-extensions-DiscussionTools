@@ -8,5 +8,6 @@
 	"apihelp-discussiontools-param-oldid": "O número de revisão para utilizar (a última revisão por padrão).",
 	"apihelp-discussiontools-summary": "Retorna os metadados necessários para inicializar as ferramentas de discussão.",
 	"apihelp-discussiontoolsedit-summary": "Sumário de edição.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID do comentário.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikitexto"
 }

@@ -10,6 +10,8 @@
 	},
 	"discussiontools-defaultsummary-reply": "Vastaus",
 	"discussiontools-replylink": "vastaa",
+	"discussiontools-replywidget-abandon": "Oletko varma, että haluat hylätä kommentin, jota olet kirjoittamassa?",
+	"discussiontools-replywidget-abandon-discard": "Hylkää kommentti",
 	"discussiontools-replywidget-abandon-keep": "Jatka kirjoittamista",
 	"discussiontools-replywidget-anon-warning": "Et ole kirjautunut sisään. Saadaksesi muokkauksen omiin nimiisi IP-osoitteen sijaan, [$1 kirjaudu sisään] tai [$2 luo tunnus].",
 	"discussiontools-replywidget-cancel": "Peruuta",
@@ -21,9 +23,10 @@
 	"discussiontools-replywidget-placeholder-reply": "Vastaa käyttäjälle {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Esikatsele",
 	"discussiontools-replywidget-reply": "Vastaa",
+	"discussiontools-replywidget-signature-title": "Allekirjoituksen koodi tunnistettu",
 	"tag-discussiontools-edit": "Kommenttia muokattu",
 	"tag-discussiontools-newtopic": "Aihe lisätty",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vastaus]",
-	"tag-discussiontools-source": "Lähde",
+	"tag-discussiontools-source": "Lähdekoodi",
 	"tag-discussiontools-visual": "Visuaalinen"
 }

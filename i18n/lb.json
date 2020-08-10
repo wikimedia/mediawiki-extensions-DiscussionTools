@@ -18,6 +18,8 @@
 	"discussiontools-replywidget-preview": "Kucken ouni ofzespäicheren",
 	"discussiontools-replywidget-reply": "Äntweren",
 	"discussiontools-error-noswitchtove-extension": "Erweiderungs- oder Referenzsyntax",
+	"discussiontools-error-noswitchtove-table": "Syntax vun der Tabell",
+	"discussiontools-error-noswitchtove-template": "Syntax vun der Schabloun",
 	"discussiontools-error-noswitchtove-title": "Visuelle Modus desaktivéiert",
 	"tag-discussiontools-edit": "Bemierkung änneren",
 	"tag-discussiontools-newtopic": "Thema dobäisetzen",

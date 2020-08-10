@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehman97"
+			"Mehman97",
+			"Გიო ოქრო"
 		]
 	},
 	"discussiontools": "განხილვის ხელსაწყოები",
@@ -17,10 +18,10 @@
 	"discussiontools-replywidget-cancel": "გაუქმება",
 	"discussiontools-replywidget-feedback": "გაგვიზიარეთ თქვენი ხედვა ამ ფუნქციის შესახებ",
 	"discussiontools-replywidget-loading": "იტვირთება...",
-	"discussiontools-replywidget-mention-tool-title": "მომხმარებლის აღნიშვნა",
+	"discussiontools-replywidget-mention-tool-title": "მომხმარებლის მონიშვნა",
 	"discussiontools-replywidget-mode-source": "წყარო",
 	"discussiontools-replywidget-mode-visual": "ვიზუალური",
-	"discussiontools-replywidget-placeholder-reply": "უპასუხე {{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "უპასუხე {{BIDI:$1}}-ს",
 	"discussiontools-replywidget-preview": "წინასწარი გადახედვა",
 	"discussiontools-replywidget-reply": "უპასუხე",
 	"discussiontools-replywidget-signature-title": "აღმოჩენილია ხელმოწერის აღნიშვნა",
