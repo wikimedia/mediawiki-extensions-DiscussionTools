@@ -95,7 +95,6 @@ function addListItem( comment ) {
 	listType = listTypeMap[ itemType ];
 
 	desiredLevel = comment.level + 1;
-	curLevel = curComment.level;
 	target = curComment.range.endContainer;
 
 	// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
@@ -114,6 +113,10 @@ function addListItem( comment ) {
 	}
 	// parent is a list item or paragraph (hopefully)
 	// target is an inline node within it
+
+	// Instead of just using curComment.level, consider indentation of lists within the
+	// comment (T252702)
+	curLevel = utils.getIndentLevel( target, curComment.rootNode ) + 1;
 
 	if ( curLevel < desiredLevel ) {
 		// Insert more lists after the target to increase nesting.

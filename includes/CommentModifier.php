@@ -130,7 +130,6 @@ class CommentModifier {
 		$listType = $listTypeMap[ $itemType ];
 
 		$desiredLevel = $comment->getLevel() + 1;
-		$curLevel = $curComment->getLevel();
 		$target = $curComment->getRange()->endContainer;
 
 		// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
@@ -151,6 +150,10 @@ class CommentModifier {
 		}
 		// parent is a list item or paragraph (hopefully)
 		// target is an inline node within it
+
+		// Instead of just using $curComment->getLevel(), consider indentation of lists within the
+		// comment (T252702)
+		$curLevel = CommentUtils::getIndentLevel( $target, $curComment->getRootNode() ) + 1;
 
 		$item = null;
 		if ( $curLevel < $desiredLevel ) {

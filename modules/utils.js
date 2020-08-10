@@ -95,6 +95,31 @@ function htmlTrim( str ) {
 }
 
 /**
+ * Get the indent level of the node, relative to rootNode.
+ *
+ * The indent level is the number of lists inside of which it is nested.
+ *
+ * @private
+ * @param {Node} node
+ * @param {Node} rootNode
+ * @return {number}
+ */
+function getIndentLevel( node, rootNode ) {
+	var indent = 0, tagName;
+	while ( node ) {
+		if ( node === rootNode ) {
+			break;
+		}
+		tagName = node.tagName && node.tagName.toLowerCase();
+		if ( tagName === 'li' || tagName === 'dd' ) {
+			indent++;
+		}
+		node = node.parentNode;
+	}
+	return indent;
+}
+
+/**
  * Get an array of sibling nodes that contain parts of the given thread item.
  *
  * @param {ThreadItem} item Thread item
@@ -200,6 +225,7 @@ function getFullyCoveredSiblings( item ) {
 module.exports = {
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
+	getIndentLevel: getIndentLevel,
 	getFullyCoveredSiblings: getFullyCoveredSiblings,
 	getTranscludedFromElement: getTranscludedFromElement,
 	htmlTrim: htmlTrim

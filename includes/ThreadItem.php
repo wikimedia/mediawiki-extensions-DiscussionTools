@@ -2,12 +2,15 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMNode;
+
 /**
  * A thread item, either a heading or a comment
  */
 abstract class ThreadItem {
 	protected $type;
 	protected $range;
+	protected $rootNode;
 	protected $level;
 
 	protected $id = null;
@@ -127,6 +130,13 @@ abstract class ThreadItem {
 	}
 
 	/**
+	 * @return DOMNode Root node (level is relative to this node)
+	 */
+	public function getRootNode() : DOMNode {
+		return $this->rootNode;
+	}
+
+	/**
 	 * @return string|null Thread ID
 	 */
 	public function getId() : ?string {
@@ -152,6 +162,13 @@ abstract class ThreadItem {
 	 */
 	public function setRange( ImmutableRange $range ) : void {
 		$this->range = $range;
+	}
+
+	/**
+	 * @param DOMNode $rootNode Root node (level is relative to this node)
+	 */
+	public function setRootNode( DOMNode $rootNode ) : void {
+		$this->rootNode = $rootNode;
 	}
 
 	/**

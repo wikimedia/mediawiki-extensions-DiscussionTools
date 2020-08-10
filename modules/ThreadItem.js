@@ -30,6 +30,8 @@ function ThreadItem( type, level, range ) {
 	 * @member {CommentItem[]} Replies to this thread item
 	 */
 	this.replies = [];
+
+	this.rootNode = null;
 }
 
 OO.initClass( ThreadItem );

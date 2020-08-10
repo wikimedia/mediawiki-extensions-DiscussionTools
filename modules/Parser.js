@@ -592,30 +592,6 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 };
 
 /**
- * Get the indent level of a node, relative to its ancestor node.
- *
- * The indent level is the number of lists inside of which it is nested.
- *
- * @private
- * @param {Node} node
- * @return {number}
- */
-Parser.prototype.getIndentLevel = function ( node ) {
-	var indent = 0, tagName;
-	while ( node ) {
-		if ( node === this.rootNode ) {
-			break;
-		}
-		tagName = node.tagName && node.tagName.toLowerCase();
-		if ( tagName === 'li' || tagName === 'dd' ) {
-			indent++;
-		}
-		node = node.parentNode;
-	}
-	return indent;
-};
-
-/**
  * Return the next leaf node in the tree order that is not an empty or whitespace-only text node.
  *
  * In other words, this returns a Text node with content other than whitespace, or an Element node
@@ -752,6 +728,7 @@ Parser.prototype.buildThreadItems = function () {
 		endOffset: 0
 	};
 	fakeHeading = new HeadingItem( range, true );
+	fakeHeading.rootNode = this.rootNode;
 
 	curComment = fakeHeading;
 
@@ -764,6 +741,7 @@ Parser.prototype.buildThreadItems = function () {
 				endOffset: node.childNodes.length
 			};
 			curComment = new HeadingItem( range );
+			curComment.rootNode = this.rootNode;
 			threadItems.push( curComment );
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegex ) ) ) {
 			warnings = [];
@@ -793,8 +771,8 @@ Parser.prototype.buildThreadItems = function () {
 				endOffset: lastSigNode === node ? match.index + match[ 0 ].length : utils.childIndexOf( lastSigNode ) + 1
 			};
 
-			startLevel = this.getIndentLevel( startNode ) + 1;
-			endLevel = this.getIndentLevel( node ) + 1;
+			startLevel = utils.getIndentLevel( startNode, this.rootNode ) + 1;
+			endLevel = utils.getIndentLevel( node, this.rootNode ) + 1;
 			if ( startLevel !== endLevel ) {
 				warnings.push( 'Comment starts and ends with different indentation' );
 			}
@@ -831,6 +809,7 @@ Parser.prototype.buildThreadItems = function () {
 				dateTime,
 				author
 			);
+			curComment.rootNode = this.rootNode;
 			if ( warnings.length ) {
 				curComment.warnings = warnings;
 			}
