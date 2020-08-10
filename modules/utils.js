@@ -20,6 +20,22 @@ function childIndexOf( child ) {
 }
 
 /**
+ * Check whether a Node contains (is an ancestor of) another Node (or is the same node)
+ *
+ * @param {Node} ancestor
+ * @param {Node} descendant
+ * @return {boolean}
+ */
+function contains( ancestor, descendant ) {
+	// Support: IE 11
+	// Node#contains is only supported on HTMLElement nodes. Otherwise we could just use
+	// `ancestor.contains( descendant )`.
+	return ancestor === descendant ||
+		// eslint-disable-next-line no-bitwise
+		ancestor.compareDocumentPosition( descendant ) & Node.DOCUMENT_POSITION_CONTAINED_BY;
+}
+
+/**
  * Find closest ancestor element using one of the given tag names.
  *
  * @param {Node} node
@@ -140,12 +156,12 @@ function getCoveredSiblings( item ) {
 	end = siblings.length - 1;
 
 	// Find first of the siblings that contains the item
-	while ( !siblings[ start ].contains( range.startContainer ) ) {
+	while ( !contains( siblings[ start ], range.startContainer ) ) {
 		start++;
 	}
 
 	// Find last of the siblings that contains the item
-	while ( !siblings[ end ].contains( range.endContainer ) ) {
+	while ( !contains( siblings[ end ], range.endContainer ) ) {
 		end--;
 	}
 
