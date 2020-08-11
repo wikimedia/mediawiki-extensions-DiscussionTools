@@ -74,14 +74,14 @@ class ThreadItemTest extends CommentTestCase {
 			$transcludedFrom[ $comment->getId() ] = $comment->getTranscludedFrom();
 		}
 
+		// Uncomment this to write updated content to the JSON files:
+		// self::overwriteJsonFile( $expectedPath, $transcludedFrom );
+
 		self::assertEquals(
 			$expected,
 			$transcludedFrom,
 			$name
 		);
-
-		// Uncomment this to write updated content to the JSON files:
-		// self::overwriteJsonFile( $expectedPath, $transcludedFrom );
 	}
 
 	public function provideTranscludedFrom() : array {

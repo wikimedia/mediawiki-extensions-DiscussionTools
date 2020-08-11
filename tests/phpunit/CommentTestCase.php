@@ -80,7 +80,7 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	protected static function overwriteHtmlFile( string $relPath, DOMDocument $doc, string $origRelPath ) : void {
 		// Do not use $doc->saveHtml(), it outputs an awful soup of HTML entities for documents with
 		// non-ASCII characters
-		$html = file_get_contents( __DIR__ . '/../' . $origRelativePath );
+		$html = file_get_contents( __DIR__ . '/../' . $origRelPath );
 
 		// Replace the body tag only in full Parsoid docs
 		if ( strpos( $html, '<body' ) !== false ) {
@@ -95,7 +95,7 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 			$html = DOMCompat::getInnerHTML( $doc->getElementsByTagName( 'body' )->item( 0 ) );
 		}
 
-		file_put_contents( __DIR__ . '/../' . $relativePath, $html );
+		file_put_contents( __DIR__ . '/../' . $relPath, $html );
 	}
 
 	/**
