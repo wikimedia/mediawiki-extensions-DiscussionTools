@@ -1470,58 +1470,53 @@
         "author": "Hégésippe Cormier",
         "range": [
           "0/30/2/0",
-          "0/30/2/24/46"
+          "0/30/2/26/44"
         ],
         "signatureRanges": [
           [
             "0/30/2/20",
-            "0/30/2/24/46"
+            "0/30/2/26/44"
           ]
         ],
         "level": 1,
         "id": "Hégésippe Cormier|2014-09-25T06:08:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
-        "timestamp": "2014-10-01T23:05:00.000Z",
-        "author": "Notron",
-        "range": [
-          "0/30/2/25/0",
-          "0/30/4/0/24/31"
-        ],
-        "signatureRanges": [
-          [
-            "0/30/4/0/21",
-            "0/30/4/0/24/31"
-          ]
-        ],
-        "level": 1,
-        "id": "Notron|2014-10-01T23:05:00.000Z|0",
-        "warnings": [
-          "Comment starts and ends with different indentation"
-        ],
         "replies": [
           {
             "type": "comment",
-            "timestamp": "2014-10-02T07:32:00.000Z",
-            "author": "Azoee",
+            "timestamp": "2014-10-01T23:05:00.000Z",
+            "author": "Notron",
             "range": [
-              "0/30/4/0/25/0/0",
-              "0/30/4/0/25/0/13/30"
+              "0/30/4/0/0",
+              "0/30/4/0/24/31"
             ],
             "signatureRanges": [
               [
-                "0/30/4/0/25/0/10",
-                "0/30/4/0/25/0/13/30"
+                "0/30/4/0/21",
+                "0/30/4/0/24/31"
               ]
             ],
-            "level": 3,
-            "id": "Azoee|2014-10-02T07:32:00.000Z|0",
-            "warnings": [
-              "Comment skips indentation level"
-            ],
-            "replies": []
+            "level": 2,
+            "id": "Notron|2014-10-01T23:05:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2014-10-02T07:32:00.000Z",
+                "author": "Azoee",
+                "range": [
+                  "0/30/4/0/25/0/0",
+                  "0/30/4/0/25/0/13/30"
+                ],
+                "signatureRanges": [
+                  [
+                    "0/30/4/0/25/0/10",
+                    "0/30/4/0/25/0/13/30"
+                  ]
+                ],
+                "level": 3,
+                "id": "Azoee|2014-10-02T07:32:00.000Z|0",
+                "replies": []
+              }
+            ]
           }
         ]
       }
