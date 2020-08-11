@@ -19,6 +19,7 @@
 	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-feedback": "分享有關此功能的意見回饋",
 	"discussiontools-replywidget-loading": "載入中…",
+	"discussiontools-replywidget-mention-tool-header": "找到使用者：$1",
 	"discussiontools-replywidget-mention-tool-title": "提及一位使用者",
 	"discussiontools-replywidget-mode-source": "原始碼",
 	"discussiontools-replywidget-mode-visual": "視覺化",

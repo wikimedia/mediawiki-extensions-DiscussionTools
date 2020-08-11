@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Incelemeelemani"
 		]
 	},
 	"discussiontools": "Tartışma araçları",
@@ -17,6 +18,7 @@
 	"discussiontools-replywidget-cancel": "İptal",
 	"discussiontools-replywidget-feedback": "Bu özellik hakkında geri bildirim paylaşın",
 	"discussiontools-replywidget-loading": "Yükleniyor...",
+	"discussiontools-replywidget-mention-tool-header": "Kullanıcıyı bul: $1",
 	"discussiontools-replywidget-mention-tool-title": "Bir kullanıcıdan bahsedin",
 	"discussiontools-replywidget-mode-source": "Kaynak",
 	"discussiontools-replywidget-mode-visual": "Görsel",
