@@ -732,6 +732,7 @@ class CommentParser {
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
 			[ self::class, 'acceptOnlyNodesAllowingComments' ]
 		);
+		$lastSigNode = null;
 		while ( $node = $treeWalker->nextNode() ) {
 			if ( $node instanceof DOMElement && preg_match( '/^h[1-6]$/i', $node->tagName ) ) {
 				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
@@ -740,7 +741,7 @@ class CommentParser {
 				$threadItems[] = $curComment;
 			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegex ) ) ) {
 				$warnings = [];
-				$foundSignature = $this->findSignature( $node, $curComment->getRange()->endContainer );
+				$foundSignature = $this->findSignature( $node, $lastSigNode );
 				$author = $foundSignature[1];
 				$firstSigNode = end( $foundSignature[0] );
 				$lastSigNode = $foundSignature[0][0];
@@ -751,23 +752,45 @@ class CommentParser {
 					continue;
 				}
 
-				// Everything from the last comment up to here is the next comment
-				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer );
 				$lastSigNodeOffset = $lastSigNode === $node ?
 					$match[0][1] + strlen( $match[0][0] ) - $match['offset'] :
 					CommentUtils::childIndexOf( $lastSigNode ) + 1;
-				$range = new ImmutableRange(
-					$startNode->parentNode,
-					CommentUtils::childIndexOf( $startNode ),
-					$lastSigNode === $node ? $node : $lastSigNode->parentNode,
-					$lastSigNodeOffset
-				);
 				$sigRange = new ImmutableRange(
 					$firstSigNode->parentNode,
 					CommentUtils::childIndexOf( $firstSigNode ),
 					$lastSigNode === $node ? $node : $lastSigNode->parentNode,
 					$lastSigNodeOffset
 				);
+
+				// Everything from the last comment up to here is the next comment
+				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer );
+				$endNode = $lastSigNode;
+				// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
+				// avoiding that would be more difficult and slower.
+				while ( $endNode->nextSibling && !CommentUtils::isBlockElement( $endNode->nextSibling ) ) {
+					$endNode = $endNode->nextSibling;
+				}
+
+				if ( $endNode === $lastSigNode ) {
+					$range = new ImmutableRange(
+						$startNode->parentNode,
+						CommentUtils::childIndexOf( $startNode ),
+						$sigRange->endContainer,
+						$sigRange->endOffset
+					);
+				} else {
+					$length = ( $endNode->nodeType === XML_TEXT_NODE ) ?
+						strlen( rtrim( $endNode->nodeValue, "\t\n\f\r " ) ) :
+						// PHP bug: childNodes can be null for comment nodes
+						// (it should always be a DOMNodeList, even if the node can't have children)
+						( $endNode->childNodes ? $endNode->childNodes->length : 0 );
+					$range = new ImmutableRange(
+						$startNode->parentNode,
+						CommentUtils::childIndexOf( $startNode ),
+						$endNode,
+						$length
+					);
+				}
 
 				$startLevel = CommentUtils::getIndentLevel( $startNode, $this->rootNode ) + 1;
 				$endLevel = CommentUtils::getIndentLevel( $node, $this->rootNode ) + 1;
@@ -805,10 +828,20 @@ class CommentParser {
 					)
 				) {
 					// Merge this with the previous comment. Use that comment's author and timestamp.
+					$curComment->addSignatureRange( $sigRange );
+
+					if (
+						$curComment->getRange()->endContainer === $range->endContainer &&
+						$curComment->getRange()->endOffset <= $range->endOffset
+					) {
+						// We've already skipped over this signature, and the $range and $level are messed up,
+						// because that causes $startNode to be after $endNode
+						continue;
+					}
+
 					$curComment->setRange(
 						$curComment->getRange()->setEnd( $range->endContainer, $range->endOffset )
 					);
-					$curComment->addSignatureRange( $sigRange );
 					$curComment->setLevel( min( $level, $curComment->getLevel() ) );
 
 					continue;

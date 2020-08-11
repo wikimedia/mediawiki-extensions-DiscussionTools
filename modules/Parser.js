@@ -719,7 +719,7 @@ Parser.prototype.buildThreadItems = function () {
 		threadItems = [],
 		treeWalker,
 		node, range, fakeHeading, curComment,
-		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode,
+		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, endNode, length,
 		match, lastSigNodeOffset, startLevel, endLevel, level, dateTime, warnings;
 
 	treeWalker = this.rootNode.ownerDocument.createTreeWalker(
@@ -755,7 +755,7 @@ Parser.prototype.buildThreadItems = function () {
 			threadItems.push( curComment );
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegex ) ) ) {
 			warnings = [];
-			foundSignature = this.findSignature( node, curComment.range.endContainer );
+			foundSignature = this.findSignature( node, lastSigNode );
 			author = foundSignature[ 1 ];
 			firstSigNode = foundSignature[ 0 ][ foundSignature[ 0 ].length - 1 ];
 			lastSigNode = foundSignature[ 0 ][ 0 ];
@@ -766,23 +766,43 @@ Parser.prototype.buildThreadItems = function () {
 				continue;
 			}
 
-			// Everything from the last comment up to here is the next comment
-			startNode = this.nextInterestingLeafNode( curComment.range.endContainer );
 			lastSigNodeOffset = lastSigNode === node ?
 				match.index + match[ 0 ].length - match.offset :
 				utils.childIndexOf( lastSigNode ) + 1;
-			range = {
-				startContainer: startNode.parentNode,
-				startOffset: utils.childIndexOf( startNode ),
-				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
-				endOffset: lastSigNodeOffset
-			};
 			sigRange = {
 				startContainer: firstSigNode.parentNode,
 				startOffset: utils.childIndexOf( firstSigNode ),
 				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
 				endOffset: lastSigNodeOffset
 			};
+
+			// Everything from the last comment up to here is the next comment
+			startNode = this.nextInterestingLeafNode( curComment.range.endContainer );
+			endNode = lastSigNode;
+			// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
+			// avoiding that would be more difficult and slower.
+			while ( endNode.nextSibling && !( endNode.nextSibling instanceof HTMLElement && ve.isBlockElement( endNode.nextSibling ) ) ) {
+				endNode = endNode.nextSibling;
+			}
+
+			if ( endNode === lastSigNode ) {
+				range = {
+					startContainer: startNode.parentNode,
+					startOffset: utils.childIndexOf( startNode ),
+					endContainer: sigRange.endContainer,
+					endOffset: sigRange.endOffset
+				};
+			} else {
+				length = endNode.nodeType === Node.TEXT_NODE ?
+					endNode.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
+					endNode.childNodes.length;
+				range = {
+					startContainer: startNode.parentNode,
+					startOffset: utils.childIndexOf( startNode ),
+					endContainer: endNode,
+					endOffset: length
+				};
+			}
 
 			startLevel = utils.getIndentLevel( startNode, this.rootNode ) + 1;
 			endLevel = utils.getIndentLevel( node, this.rootNode ) + 1;
@@ -809,9 +829,19 @@ Parser.prototype.buildThreadItems = function () {
 					( utils.closestElement( curComment.range.endContainer, [ 'li', 'dd', 'p' ] ) || curComment.range.endContainer.parentNode )
 			) {
 				// Merge this with the previous comment. Use that comment's author and timestamp.
+				curComment.signatureRanges.push( sigRange );
+
+				if (
+					curComment.range.endContainer === range.endContainer &&
+					curComment.range.endOffset <= range.endOffset
+				) {
+					// We've already skipped over this signature, and the `range` and `level` are messed up,
+					// because that causes `startNode` to be after `endNode`
+					continue;
+				}
+
 				curComment.range.endContainer = range.endContainer;
 				curComment.range.endOffset = range.endOffset;
-				curComment.signatureRanges.push( sigRange );
 				curComment.level = Math.min( level, curComment.level );
 
 				continue;

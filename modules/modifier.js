@@ -42,12 +42,6 @@ function sanitizeWikitextLinebreaks( wikitext ) {
 function addReplyLink( comment, linkNode ) {
 	var target = comment.range.endContainer;
 
-	// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
-	// avoiding that would be more difficult and slower.
-	while ( target.nextSibling && !( target.nextSibling instanceof HTMLElement && ve.isBlockElement( target.nextSibling ) ) ) {
-		target = target.nextSibling;
-	}
-
 	// Insert the link before trailing whitespace.
 	// In the MediaWiki parser output, <ul>/<dl> nodes are preceded by a newline. Normally it isn't
 	// visible on the page. But if we insert an inline element (the reply link) after it, it becomes
@@ -96,12 +90,6 @@ function addListItem( comment ) {
 
 	desiredLevel = comment.level + 1;
 	target = curComment.range.endContainer;
-
-	// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
-	// avoiding that would be more difficult and slower.
-	while ( target.nextSibling && !( target.nextSibling instanceof HTMLElement && ve.isBlockElement( target.nextSibling ) ) ) {
-		target = target.nextSibling;
-	}
 
 	// target is a text node or an inline element at the end of a "paragraph" (not necessarily paragraph node).
 	// First, we need to find a block-level parent that we can mess with.

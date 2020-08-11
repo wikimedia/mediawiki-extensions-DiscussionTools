@@ -12,6 +12,31 @@ class CommentUtils {
 	private function __construct() {
 	}
 
+	private static $blockElementTypes = [
+		'div', 'p',
+		// Tables
+		'table', 'tbody', 'thead', 'tfoot', 'caption', 'th', 'tr', 'td',
+		// Lists
+		'ul', 'ol', 'li', 'dl', 'dt', 'dd',
+		// HTML5 heading content
+		'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hgroup',
+		// HTML5 sectioning content
+		'article', 'aside', 'body', 'nav', 'section', 'footer', 'header', 'figure',
+		'figcaption', 'fieldset', 'details', 'blockquote',
+		// Other
+		'hr', 'button', 'canvas', 'center', 'col', 'colgroup', 'embed',
+		'map', 'object', 'pre', 'progress', 'video'
+	];
+
+	/**
+	 * @param DOMNode $node Node
+	 * @return bool Node is a block element
+	 */
+	public static function isBlockElement( DOMNode $node ) : bool {
+		return $node instanceof DOMElement &&
+			in_array( strtolower( $node->tagName ), self::$blockElementTypes );
+	}
+
 	/**
 	 * Get the index of $child in its parent
 	 *
