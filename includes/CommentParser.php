@@ -604,41 +604,41 @@ class CommentParser {
 	 * @return array|null Match data
 	 */
 	public function findTimestamp( DOMText $node, string $timestampRegex ) : ?array {
-			$nodeText = '';
+		$nodeText = '';
 
-			while ( $node ) {
-				$nodeText .= $node->nodeValue;
+		while ( $node ) {
+			$nodeText .= $node->nodeValue;
 
-				// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
-				// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
-				// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
-				// this, we must piece together the text, so that our regexp can match those timestamps.
-				if (
+			// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
+			// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
+			// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
+			// this, we must piece together the text, so that our regexp can match those timestamps.
+			if (
 				( $nextSibling = $node->nextSibling ) &&
 				$nextSibling instanceof DOMElement &&
 				$nextSibling->getAttribute( 'typeof' ) === 'mw:Entity'
-				) {
+			) {
 				$nodeText .= $nextSibling->firstChild->nodeValue;
 
-					// If the entity is followed by more text, do this again
-					if (
+				// If the entity is followed by more text, do this again
+				if (
 					$nextSibling->nextSibling &&
 					$nextSibling->nextSibling instanceof DOMText
-					) {
+				) {
 					$node = $nextSibling->nextSibling;
-					} else {
-						$node = null;
-					}
 				} else {
 					$node = null;
 				}
+			} else {
+				$node = null;
 			}
+		}
 
-			$matchData = null;
-			// Allows us to mimic match.index in #getComments
-			if ( preg_match( $timestampRegex, $nodeText, $matchData, PREG_OFFSET_CAPTURE ) ) {
+		$matchData = null;
+		// Allows us to mimic match.index in #getComments
+		if ( preg_match( $timestampRegex, $nodeText, $matchData, PREG_OFFSET_CAPTURE ) ) {
 			return $matchData;
-			}
+		}
 		return null;
 	}
 
