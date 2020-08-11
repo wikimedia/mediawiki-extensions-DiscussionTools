@@ -89,5 +89,12 @@
 		"expected": "../cases/fallback-encoding-link/fallback-encoding-link.json",
 		"config": "../data/huwiki-config.json",
 		"data": "../data/huwiki-data.json"
+	},
+	{
+		"name": "Signatures in funny places",
+		"dom": "cases/signatures-funny/signatures-funny.html",
+		"expected": "../cases/signatures-funny/signatures-funny.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	}
 ]

@@ -223,6 +223,7 @@
 			"cases/lrm-signature/lrm-signature.json",
 			"cases/fallback-encoding-link/fallback-encoding-link.json",
 			"cases/parsoid-sections/parsoid-sections-transcludedFrom.json",
+			"cases/signatures-funny/signatures-funny.json",
 			"qunit/modifier.test.js",
 			"qunit/parser.test.js",
 			"qunit/ThreadItem.test.js"
