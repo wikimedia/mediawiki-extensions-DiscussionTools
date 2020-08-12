@@ -101,6 +101,8 @@ function getPageData( pageName, oldId ) {
 		}, function () {
 			// Clear on failure
 			pageDataCache[ pageName ][ oldId ] = null;
+			// Let caller handle the error
+			return $.Deferred().rejectWith( this, arguments );
 		} );
 	return pageDataCache[ pageName ][ oldId ];
 }
