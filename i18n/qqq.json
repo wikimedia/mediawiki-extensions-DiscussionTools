@@ -23,7 +23,7 @@
 	"discussiontools-replywidget-feedback": "Label for link to share feedback about the reply widget",
 	"discussiontools-replywidget-feedback-link": "{{optional|Link to a page where users can share feedback about the reply widget. Defaults to a page on MediaWiki.org.}}",
 	"discussiontools-replywidget-loading": "Message shown while the reply widget is loading",
-	"discussiontools-replywidget-mention-tool-header": "Header of user mention tool results.\n\nParameters:\n* $1 – username search query",
+	"discussiontools-replywidget-mention-tool-header": "Header of search results when searching for a user to mention.\n\nParameters:\n* $1 – search query for the username. Note that this is not a full username, and '''can't''' be used with <code><nowiki>{{GENDER:}}</nowiki></code>.",
 	"discussiontools-replywidget-mention-tool-title": "Title text for the user mention tool.",
 	"discussiontools-replywidget-mode-source": "Label for source mode (wikitext) editor",
 	"discussiontools-replywidget-mode-visual": "Label for visual mode editor",

@@ -20,6 +20,7 @@
 	"discussiontools-replywidget-cancel": "취소",
 	"discussiontools-replywidget-feedback": "이 기능에 대한 피드백 나누기",
 	"discussiontools-replywidget-loading": "불러오는 중...",
+	"discussiontools-replywidget-mention-tool-header": "사용자 찾기: $1",
 	"discussiontools-replywidget-mention-tool-title": "사용자 언급하기",
 	"discussiontools-replywidget-mode-source": "원본",
 	"discussiontools-replywidget-mode-visual": "시각",
