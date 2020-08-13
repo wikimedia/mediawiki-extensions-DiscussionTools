@@ -4,6 +4,7 @@ var
 	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	$pageContainer,
 	Parser = require( './Parser.js' ),
+	logger = require( './logger.js' ),
 	pageDataCache = {};
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
@@ -221,8 +222,94 @@ function init( $container, state ) {
 	);
 }
 
+function update( data, comment, pageName, replyWidget ) {
+	var watch,
+		pageUpdated = $.Deferred();
+
+	replyWidget.teardown();
+	// TODO: Tell controller to teardown all other open widgets
+
+	// Update page state
+	if ( pageName === mw.config.get( 'wgRelevantPageName' ) ) {
+		// We can use the result from the VisualEditor API
+		$pageContainer.html( data.content );
+		mw.config.set( {
+			wgCurRevisionId: data.newrevid,
+			wgRevisionId: data.newrevid
+		} );
+		mw.config.set( data.jsconfigvars );
+		// Note: VE API merges 'modules' and 'modulestyles'
+		mw.loader.load( data.modules );
+		// TODO update categories, displaytitle, lastmodified
+		// (see ve.init.mw.DesktopArticleTarget.prototype.replacePageContent)
+
+		pageUpdated.resolve();
+
+	} else {
+		// We saved to another page, we must purge and then fetch the current page
+		api.post( {
+			action: 'purge',
+			titles: mw.config.get( 'wgRelevantPageName' )
+		} ).then( function () {
+			return api.get( {
+				action: 'parse',
+				prop: [ 'text', 'modules', 'jsconfigvars' ],
+				page: mw.config.get( 'wgRelevantPageName' )
+			} );
+		} ).then( function ( parseResp ) {
+			$pageContainer.html( parseResp.parse.text );
+			mw.config.set( parseResp.parse.jsconfigvars );
+			mw.loader.load( parseResp.parse.modulestyles );
+			mw.loader.load( parseResp.parse.modules );
+			// TODO update categories, displaytitle, lastmodified
+			// We may not be able to use prop=displaytitle without making changes in the action=parse API,
+			// VE API has some confusing code that changes the HTML escaping on it before returning???
+
+			pageUpdated.resolve();
+
+		} ).catch( function () {
+			// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
+			// explain this problem. Redirect to the page where the user can at least see their reply…
+			window.location = mw.util.getUrl( pageName );
+		} );
+	}
+
+	// Update watch link to match 'watch checkbox' in save dialog.
+	// User logged in if module loaded.
+	if ( mw.loader.getState( 'mediawiki.page.watch.ajax' ) === 'ready' ) {
+		watch = require( 'mediawiki.page.watch.ajax' );
+		watch.updateWatchLink(
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$( '#ca-watch a, #ca-unwatch a' ),
+			data.watchlist === 'watch' ? 'unwatch' : 'watch'
+		);
+	}
+
+	pageUpdated.then( function () {
+		// Re-initialize and highlight the new reply.
+		mw.dt.initState.repliedTo = comment.id;
+
+		// We need our init code to run after everyone else's handlers for this hook,
+		// so that all changes to the page layout have been completed (e.g. collapsible elements),
+		// and we can measure things and display the highlight in the right place.
+		mw.hook( 'wikipage.content' ).remove( mw.dt.init );
+		mw.hook( 'wikipage.content' ).fire( $pageContainer );
+		// The hooks have "memory" so calling add() after fire() actually fires the handler,
+		// and calling add() before fire() would actually fire it twice.
+		mw.hook( 'wikipage.content' ).add( mw.dt.init );
+
+		logger( {
+			action: 'saveSuccess',
+			// eslint-disable-next-line camelcase
+			revision_id: data.newrevid
+		} );
+	} );
+
+}
+
 module.exports = {
 	init: init,
+	update: update,
 	checkCommentOnPage: checkCommentOnPage,
 	getCheckboxesPromise: getCheckboxesPromise
 };

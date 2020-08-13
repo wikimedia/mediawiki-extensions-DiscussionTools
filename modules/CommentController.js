@@ -254,8 +254,7 @@ CommentController.prototype.teardown = function ( abandoned ) {
 };
 
 CommentController.prototype.save = function ( comment, pageName ) {
-	var savePromise,
-		replyWidget = this.replyWidget,
+	var replyWidget = this.replyWidget,
 		commentController = this;
 
 	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
@@ -291,7 +290,7 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				'unwatch';
 		}
 
-		savePromise = mw.libs.ve.targetSaver.postContent(
+		return mw.libs.ve.targetSaver.postContent(
 			data,
 			{
 				// No timeout. Huge talk pages take a long time to save, and falsely reporting an error can
@@ -307,21 +306,9 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				} ] } ).promise();
 			}
 			return $.Deferred().reject( code, data ).promise();
+		} ).then( function ( data ) {
+			controller.update( data, comment, pageName, replyWidget );
 		} );
-		savePromise.then( function () {
-			var watch;
-			// Update watch link to match 'watch checkbox' in save dialog.
-			// User logged in if module loaded.
-			if ( mw.loader.getState( 'mediawiki.page.watch.ajax' ) === 'ready' ) {
-				watch = require( 'mediawiki.page.watch.ajax' );
-				watch.updateWatchLink(
-					// eslint-disable-next-line no-jquery/no-global-selector
-					$( '#ca-watch a, #ca-unwatch a' ),
-					data.watchlist === 'watch' ? 'unwatch' : 'watch'
-				);
-			}
-		} );
-		return savePromise;
 	} );
 };
 
