@@ -76,13 +76,13 @@ function getLatestRevId( pageName ) {
 }
 
 /**
- * Like #checkCommentOnPage, but assumes the comment was found on the current page,
+ * Like #getParsoidCommentData, but assumes the comment was found on the current page,
  * and then follows transclusions to determine the source page where it is written.
  *
- * @param {string} commentId Comment ID
- * @return {jQuery.Promise} Promise which resolves with pageName+oldId, or rejects with an error
+ * @param {string} commentId Comment ID, from a comment parsed in the local document
+ * @return {jQuery.Promise}
  */
-function getTranscludedFromSource( commentId ) {
+function getParsoidTranscludedCommentData( commentId ) {
 	var promise,
 		pageName = mw.config.get( 'wgRelevantPageName' ),
 		oldId = mw.config.get( 'wgCurRevisionId' );
@@ -94,7 +94,7 @@ function getTranscludedFromSource( commentId ) {
 			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
 				return getLatestRevId( errorData.transcludedFrom ).then( function ( latestRevId ) {
 					// Fetch the transcluded page, until we cross the recursion limit
-					return controller.checkCommentOnPage( errorData.transcludedFrom, latestRevId, commentId )
+					return controller.getParsoidCommentData( errorData.transcludedFrom, latestRevId, commentId )
 						.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
 				} );
 			}
@@ -104,7 +104,7 @@ function getTranscludedFromSource( commentId ) {
 
 	// Arbitrary limit of 10 steps, which should be more than anyone could ever need
 	// (there are reasonable use cases for at least 2)
-	promise = controller.checkCommentOnPage( pageName, oldId, commentId )
+	promise = controller.getParsoidCommentData( pageName, oldId, commentId )
 		.catch( followTransclusion.bind( null, 10 ) );
 
 	return promise;
@@ -127,7 +127,7 @@ CommentController.prototype.onReplyLinkClick = function ( e ) {
  * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
  */
 CommentController.prototype.setup = function ( mode ) {
-	var comment = this.comment,
+	var parsoidPromise,
 		commentController = this;
 
 	if ( mode === undefined ) {
@@ -165,8 +165,10 @@ CommentController.prototype.setup = function ( mode ) {
 	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
 
 	if ( !this.replyWidgetPromise ) {
-		this.replyWidgetPromise = getTranscludedFromSource( comment.id ).then( function ( pageData ) {
-			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, mode === 'visual' );
+		parsoidPromise = getParsoidTranscludedCommentData( this.comment.id );
+
+		this.replyWidgetPromise = parsoidPromise.then( function ( parsoidData ) {
+			return commentController.createReplyWidget( parsoidData, mode === 'visual' );
 		}, function ( code, data ) {
 			commentController.teardown();
 
@@ -186,14 +188,14 @@ CommentController.prototype.setup = function ( mode ) {
 		} );
 
 		// On first load, add a placeholder list item
-		commentController.newListItem = modifier.addListItem( comment );
+		commentController.newListItem = modifier.addListItem( commentController.comment );
 		$( commentController.newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
 	}
 
 	commentController.replyWidgetPromise.then( function ( replyWidget ) {
 		if ( !commentController.newListItem ) {
 			// On subsequent loads, there's no list item yet, so create one now
-			commentController.newListItem = modifier.addListItem( comment );
+			commentController.newListItem = modifier.addListItem( commentController.comment );
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
@@ -214,11 +216,11 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	} );
 };
 
-CommentController.prototype.createReplyWidget = function ( comment, pageName, oldId, visual ) {
+CommentController.prototype.createReplyWidget = function ( parsoidData, visual ) {
 	var commentController = this;
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
-		return new ReplyWidget( commentController, comment, pageName, oldId );
+		return new ReplyWidget( commentController, parsoidData );
 	} );
 };
 
@@ -253,32 +255,51 @@ CommentController.prototype.teardown = function ( abandoned ) {
 	}
 };
 
-CommentController.prototype.save = function ( comment, pageName ) {
-	var savePromise,
-		replyWidget = this.replyWidget,
+CommentController.prototype.postReply = function ( comment ) {
+	if ( this.replyWidget.getMode() === 'source' ) {
+		modifier.addWikitextReply( comment, this.replyWidget.getValue() );
+	} else {
+		modifier.addHtmlReply( comment, this.replyWidget.getValue() );
+	}
+};
+
+CommentController.prototype.save = function ( parsoidData ) {
+	var heading, summaryPrefix, summary, savePromise,
+		mode = this.replyWidget.getMode(),
+		comment = parsoidData.comment,
+		pageData = parsoidData.pageData,
 		commentController = this;
+
+	// Update the Parsoid DOM
+	this.postReply( parsoidData.comment );
+
+	heading = comment.getHeading();
+	if ( heading.placeholderHeading ) {
+		// This comment is in 0th section, there's no section title for the edit summary
+		summaryPrefix = '';
+	} else {
+		summaryPrefix = '/* ' + heading.range.startContainer.innerText + ' */ ';
+	}
+
+	summary = summaryPrefix + mw.msg( 'discussiontools-defaultsummary-reply' );
 
 	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
 		var captchaInput = commentController.replyWidget.captchaInput,
 			data = {
-				action: 'discussiontoolsedit',
-				paction: 'addcomment',
-				page: pageName,
-				commentid: comment.id,
+				page: pageData.pageName,
+				oldid: pageData.oldId,
+				summary: summary,
+				baserevid: pageData.oldId,
+				starttimestamp: pageData.startTimeStamp,
+				etag: pageData.etag,
 				assert: mw.user.isAnon() ? 'anon' : 'user',
 				assertuser: mw.user.getName() || undefined,
 				dttags: [
 					'discussiontools',
 					'discussiontools-reply',
-					'discussiontools-' + replyWidget.getMode()
+					'discussiontools-' + mode
 				].join( ',' )
 			};
-
-		if ( replyWidget.getMode() === 'source' ) {
-			data.wikitext = replyWidget.getValue();
-		} else {
-			data.html = replyWidget.getValue();
-		}
 
 		if ( captchaInput ) {
 			data.captchaid = captchaInput.getCaptchaId();
@@ -291,7 +312,8 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				'unwatch';
 		}
 
-		savePromise = mw.libs.ve.targetSaver.postContent(
+		savePromise = mw.libs.ve.targetSaver.saveDoc(
+			parsoidData.doc,
 			data,
 			{
 				// No timeout. Huge talk pages take a long time to save, and falsely reporting an error can
@@ -299,12 +321,15 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				api: new mw.Api( { ajax: { timeout: 0 }, parameters: { formatversion: 2 } } )
 			}
 		).catch( function ( code, data ) {
-			// Better user-facing error message
-			if ( code === 'discussiontools-commentid-notfound' ) {
-				return $.Deferred().reject( 'discussiontools-commentid-notfound', { errors: [ {
-					code: 'discussiontools-commentid-notfound',
-					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
-				} ] } ).promise();
+			// Handle edit conflicts. Load the latest revision of the page, then try again. If the parent
+			// comment has been deleted from the page, or if retry also fails for some other reason, the
+			// error is handled as normal below.
+			if ( code === 'editconflict' ) {
+				return getLatestRevId( pageData.pageName ).then( function ( latestRevId ) {
+					return controller.getParsoidCommentData( pageData.pageName, latestRevId, comment.id ).then( function ( parsoidData ) {
+						return commentController.save( parsoidData );
+					} );
+				} );
 			}
 			return $.Deferred().reject( code, data ).promise();
 		} );
@@ -334,7 +359,7 @@ CommentController.prototype.switchToWikitext = function () {
 
 	// TODO: We may need to pass oldid/etag when editing is supported
 	wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
-	this.replyWidgetPromise = this.createReplyWidget( oldWidget.comment, oldWidget.pageName, oldWidget.oldId, false );
+	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, false );
 
 	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
 		wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
@@ -361,6 +386,7 @@ CommentController.prototype.switchToVisual = function () {
 	var parsePromise,
 		oldWidget = this.replyWidget,
 		wikitext = oldWidget.getValue(),
+		pageData = oldWidget.parsoidData.pageData,
 		commentController = this;
 
 	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
@@ -382,7 +408,7 @@ CommentController.prototype.switchToVisual = function () {
 		parsePromise = api.post( {
 			action: 'visualeditor',
 			paction: 'parsefragment',
-			page: oldWidget.pageName,
+			page: pageData.pageName,
 			wikitext: wikitext,
 			pst: true
 		} ).then( function ( response ) {
@@ -391,7 +417,7 @@ CommentController.prototype.switchToVisual = function () {
 	} else {
 		parsePromise = $.Deferred().resolve( '' ).promise();
 	}
-	this.replyWidgetPromise = this.createReplyWidget( oldWidget.comment, oldWidget.pageName, oldWidget.oldId, true );
+	this.replyWidgetPromise = this.createReplyWidget( oldWidget.parsoidData, true );
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
 		var doc, bodyChildren, type, $msg,

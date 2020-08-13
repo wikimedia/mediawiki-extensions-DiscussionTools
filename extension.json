@@ -278,10 +278,6 @@
 	"TestAutoloadNamespaces": {
 		"MediaWiki\\Extension\\DiscussionTools\\Tests\\": "tests/phpunit/"
 	},
-	"APIModules": {
-		"discussiontools": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionTools",
-		"discussiontoolsedit": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
-	},
 	"Hooks": {
 		"BeforePageDisplay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onBeforePageDisplay",
 		"ResourceLoaderGetConfigVars": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onResourceLoaderGetConfigVars",

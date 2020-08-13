@@ -5,7 +5,6 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 
 /**
  * @external CommentController
- * @external CommentItem
  */
 
 /**
@@ -15,15 +14,15 @@ var controller = require( 'ext.discussionTools.init' ).controller,
  * @extends OO.ui.Widget
  * @constructor
  * @param {CommentController} commentController Comment controller
- * @param {CommentItem} comment Comment item
- * @param {string} pageName Page name the reply is being saved to
- * @param {number} oldId Revision ID of page at time of editing
+ * @param {Object} parsoidData Result from controller#getParsoidCommentData
  * @param {Object} [config] Configuration options
  * @param {Object} [config.input] Configuration options for the comment input widget
  */
-function ReplyWidget( commentController, comment, pageName, oldId, config ) {
+function ReplyWidget( commentController, parsoidData, config ) {
 	var returnTo, contextNode, inputConfig,
-		widget = this;
+		widget = this,
+		pageData = parsoidData.pageData,
+		comment = parsoidData.comment;
 
 	config = config || {};
 
@@ -32,9 +31,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 
 	this.pending = false;
 	this.commentController = commentController;
-	this.comment = comment;
-	this.pageName = pageName;
-	this.oldId = oldId;
+	this.parsoidData = parsoidData;
 	contextNode = utils.closestElement( comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 	// TODO: Should storagePrefix include pageName?
@@ -95,9 +92,9 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 		this.replyButton.$element
 	);
 	this.$footer = $( '<div>' ).addClass( 'dt-ui-replyWidget-footer' );
-	if ( this.pageName !== mw.config.get( 'wgRelevantPageName' ) ) {
+	if ( pageData.pageName !== mw.config.get( 'wgRelevantPageName' ) ) {
 		this.$footer.append( $( '<p>' ).append(
-			mw.message( 'discussiontools-replywidget-transcluded', this.pageName ).parseDom()
+			mw.message( 'discussiontools-replywidget-transcluded', pageData.pageName ).parseDom()
 		) );
 	}
 	this.$footer.append(
@@ -159,7 +156,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 		this.$actionsWrapper.detach();
 	}
 
-	this.checkboxesPromise = controller.getCheckboxesPromise( this.pageName, this.oldId );
+	this.checkboxesPromise = controller.getCheckboxesPromise( this.parsoidData.pageData );
 	this.checkboxesPromise.then( function ( checkboxes ) {
 		var name;
 		function trackCheckbox( name ) {
@@ -403,7 +400,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 			text: wikitext,
 			pst: true,
 			prop: [ 'text', 'modules', 'jsconfigvars' ],
-			title: this.pageName
+			title: mw.config.get( 'wgPageName' )
 		} );
 	}
 	// TODO: Add list context
@@ -477,8 +474,8 @@ ReplyWidget.prototype.onUnload = function () {
 
 ReplyWidget.prototype.onReplyClick = function () {
 	var widget = this,
-		pageName = this.pageName,
-		comment = this.comment;
+		pageData = this.parsoidData.pageData,
+		comment = this.parsoidData.comment;
 
 	if ( this.pending || this.isEmpty() ) {
 		return;
@@ -493,8 +490,17 @@ ReplyWidget.prototype.onReplyClick = function () {
 	logger( { action: 'saveIntent' } );
 
 	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
-	logger( { action: 'saveAttempt' } );
-	return widget.commentController.save( comment, pageName ).then( function ( data ) {
+
+	// We must get a new copy of the document every time, otherwise any unsaved replies will pile up
+	// TODO: Move most of this logic to the CommentController
+	controller.getParsoidCommentData(
+		pageData.pageName,
+		pageData.oldId,
+		comment.id
+	).then( function ( parsoidData ) {
+		logger( { action: 'saveAttempt' } );
+		return widget.commentController.save( parsoidData );
+	} ).then( function ( data ) {
 		var
 			pageUpdated = $.Deferred(),
 			// eslint-disable-next-line no-jquery/no-global-selector
@@ -504,7 +510,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 		// TODO: Tell controller to teardown all other open widgets
 
 		// Update page state
-		if ( pageName === mw.config.get( 'wgRelevantPageName' ) ) {
+		if ( pageData.pageName === mw.config.get( 'wgRelevantPageName' ) ) {
 			// We can use the result from the VisualEditor API
 			$container.html( data.content );
 			mw.config.set( {
@@ -544,7 +550,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 			} ).catch( function () {
 				// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
 				// explain this problem. Redirect to the page where the user can at least see their reply…
-				window.location = mw.util.getUrl( pageName );
+				window.location = mw.util.getUrl( pageData.pageName );
 			} );
 		}
 
@@ -592,11 +598,11 @@ ReplyWidget.prototype.onReplyClick = function () {
 		}
 		widget.captchaInput = undefined;
 
-		if ( OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' ) ) {
+		if ( OO.getProp( data, 'visualeditoredit', 'edit', 'captcha' ) ) {
 			code = 'captcha';
 
 			widget.captchaInput = new mw.libs.confirmEdit.CaptchaInputWidget(
-				OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' )
+				OO.getProp( data, 'visualeditoredit', 'edit', 'captcha' )
 			);
 			// Save when pressing 'Enter' in captcha field as it is single line.
 			widget.captchaInput.on( 'enter', function () {

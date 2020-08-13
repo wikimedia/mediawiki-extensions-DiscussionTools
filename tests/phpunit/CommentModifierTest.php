@@ -46,7 +46,6 @@ class CommentModifierTest extends CommentTestCase {
 		// Uncomment this to write updated content to the "modified HTML" files:
 		// self::overwriteHtmlFile( $expectedPath, $doc, $origPath );
 
-		// saveHtml is not dirty-diff safe, but for testing it is probably faster than DOMCompat::getOuterHTML
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
 
 		// removeAddedListItem is not implemented on the server
@@ -90,7 +89,6 @@ class CommentModifierTest extends CommentTestCase {
 		// Uncomment this to write updated content to the "reply HTML" files:
 		// self::overwriteHtmlFile( $expectedPath, $doc, $origPath );
 
-		// saveHtml is not dirty-diff safe, but for testing it is probably faster than DOMCompat::getOuterHTML
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
 	}
 
