@@ -6,7 +6,7 @@
 		]
 	},
 	"discussiontools": "განხილვის ხელსაწყოები",
-	"discussiontools-defaultsummary-reply": "უპასუხე",
+	"discussiontools-defaultsummary-reply": "პასუხი",
 	"discussiontools-desc": "განხილვის გვერდების გასაუმჯობესებელი ხელსაწყოები.",
 	"discussiontools-preference-label": "განხილვის ხელსაწყოები",
 	"discussiontools-preference-description": "ჩართეთ ახალი სამუშაო პროცესი, როდესაც [https://www.mediawiki.org/wiki/Talk_pages_project/replying პასუხობთ გარკვეულ კომენტარებს] განხილვის გვერდებზე.\n\nგთხოვთ გაითვალისწინოთ, რომ დროთა განმავლობაში დაემატება ახალი ხელსაწყოები განხილვის გვერდებთან ურთიერთმიმართებისთვის.\n\nამ ფუნქციების შესახებ სიახლეები გამოქვეყნდება [https://www.mediawiki.org/wiki/Talk_pages_project/Updates განხილვის გვერდების პროექტის გვერდზე].",

@@ -9,6 +9,6 @@
 	"apihelp-discussiontools-summary": "{{doc-apihelp-summary|discussiontools}}",
 	"apihelp-discussiontoolsedit-summary": "{{doc-apihelp-summary|discussiontoolsedit}}",
 	"apihelp-discussiontoolsedit-param-commentid": "{{doc-apihelp-param|discussiontoolsedit|commentid}}",
-	"apihelp-discussiontoolsedit-param-html": "{{doc-apihelp-param|discussiontoolsedit|html}}",
+	"apihelp-discussiontoolsedit-param-html": "{{optional}}\n{{doc-apihelp-param|discussiontoolsedit|html}}",
 	"apihelp-discussiontoolsedit-param-wikitext": "{{doc-apihelp-param|discussiontoolsedit|wikitext}}"
 }
