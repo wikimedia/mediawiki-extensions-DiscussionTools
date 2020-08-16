@@ -117,8 +117,7 @@ MWUsernameCompletionAction.prototype.getHeaderLabel = function ( input, suggesti
 
 MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range ) {
 	var fragment,
-		// TODO: Allow output customisation (T250332)
-		prefix = '@',
+		prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
 		title = mw.Title.newFromText( word, mw.config.get( 'wgNamespaceIds' ).user );
 
 	if ( this.surface.getMode() === 'source' ) {
@@ -133,7 +132,7 @@ MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range )
 		{ type: '/mwPing' }
 	] );
 
-	fragment.collapseToStart().insertContent( '@' );
+	fragment.collapseToStart().insertContent( prefix );
 
 	return fragment;
 };
