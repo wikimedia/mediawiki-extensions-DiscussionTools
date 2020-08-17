@@ -15,9 +15,7 @@ require( './dt-ve/dt.ce.PingNode.js' );
  * @extends mw.dt.ReplyWidget
  * @constructor
  * @param {Object} commentController
- * @param {string} commentId
- * @param {string} pageName
- * @param {number} oldId
+ * @param {Object} parsoidData
  * @param {Object} [config] Configuration options
  */
 function ReplyWidgetVisual() {
@@ -53,12 +51,10 @@ ReplyWidgetVisual.prototype.getValue = function () {
 };
 
 ReplyWidgetVisual.prototype.clear = function () {
-	this.replyBodyWidget.clear();
-
-	this.replyBodyWidget.target.clearDocState();
-
 	// Parent method
 	ReplyWidgetVisual.super.prototype.clear.apply( this, arguments );
+
+	this.replyBodyWidget.clear();
 };
 
 ReplyWidgetVisual.prototype.isEmpty = function () {
@@ -113,6 +109,8 @@ ReplyWidgetVisual.prototype.setup = function ( initialValue ) {
 ReplyWidgetVisual.prototype.teardown = function () {
 	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
+	// TODO: Just teardown the whole target?
+	this.replyBodyWidget.target.clearDocState();
 
 	// Parent method
 	return ReplyWidgetVisual.super.prototype.teardown.call( this );
