@@ -62,6 +62,8 @@ MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 	var apiPromise,
 		capitalizedInput = input.length > 0 && input[ 0 ].toUpperCase() + input.slice( 1 ),
+		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, input ),
+		validatedInput = title ? input : '',
 		action = this;
 
 	this.api.abort(); // Abort all unfinished API requests
@@ -102,7 +104,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			// * Change link to Special:Contributions/<ip> (localised)
 			// * Let users know that mentioning an IP will not create a notification?
 			// .concat( this.ipUsers )
-			input
+			validatedInput
 		);
 	} );
 };
