@@ -343,6 +343,7 @@ function addSiblingListItem( previousItem ) {
 	return listItem;
 }
 
+// TODO: No longer used in the client
 function createWikitextNode( doc, wt ) {
 	var span = doc.createElement( 'span' );
 
@@ -420,6 +421,8 @@ function appendSignature( container ) {
 /**
  * Add a reply to a specific comment
  *
+ * TODO: No longer used in the client
+ *
  * @param {CommentItem} comment Comment being replied to
  * @param {HTMLElement} container Container of comment DOM nodes
  */
@@ -443,6 +446,8 @@ function addReply( comment, container ) {
 
 /**
  * Create a container of comment DOM nodes from wikitext
+ *
+ * TODO: No longer used in the client
  *
  * @param {CommentItem} comment Comment being replied to
  * @param {string} wikitext Wikitext
@@ -468,6 +473,8 @@ function addWikitextReply( comment, wikitext ) {
 
 /**
  * Create a container of comment DOM nodes from HTML
+ *
+ * TODO: No longer used in the client
  *
  * @param {CommentItem} comment Comment being replied to
  * @param {string} html HTML
