@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"ToprakM"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "Yorum kimliği bulunamadı: $1",
+	"apihelp-discussiontools-param-oldid": "Kullanılacak revizyon numarası (en son revizyon varsayılanları).",
+	"apihelp-discussiontools-summary": "Tartışma araçlarını başlatmak için gereken metadata'ları döndürür.",
+	"apihelp-discussiontoolsedit-summary": "Değişiklik özeti.",
+	"apihelp-discussiontoolsedit-param-commentid": "Yorum kimliği.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Vikimetin"
+}
