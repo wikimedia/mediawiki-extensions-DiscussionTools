@@ -7,6 +7,7 @@ use ApiMain;
 use ApiParsoidTrait;
 use DerivativeRequest;
 use DOMElement;
+use MediaWiki\Logger\LoggerFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -21,6 +22,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	 */
 	public function __construct( ApiMain $main, string $name ) {
 		parent::__construct( $main, $name );
+		$this->setLogger( LoggerFactory::getInstance( 'DiscussionTools' ) );
 	}
 
 	/**
@@ -39,12 +41,37 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		switch ( $params['paction'] ) {
 			case 'addcomment':
 				// Fetch the latest revision
-				$revision = $this->getLatestRevision( $title );
-				$oldid = $revision->getId();
-				$response = $this->requestRestbasePageHtml( $revision );
-				$headers = $response['headers'];
+				$requestedRevision = $this->getLatestRevision( $title );
+				$response = $this->requestRestbasePageHtml( $requestedRevision );
 
+				$headers = $response['headers'];
 				$doc = DOMUtils::parseHTML( $response['body'] );
+
+				// Don't trust RESTBase to always give us the revision we requested,
+				// instead get the revision ID from the document and use that.
+				// Ported from ve.init.mw.ArticleTarget.prototype.parseMetadata
+				$docRevId = null;
+				$aboutDoc = $doc->documentElement->getAttribute( 'about' );
+
+				if ( $aboutDoc ) {
+					preg_match( '/revision\\/([0-9]+)$/', $aboutDoc, $docRevIdMatches );
+					if ( $docRevIdMatches ) {
+						$docRevId = (int)$docRevIdMatches[ 1 ];
+					}
+				}
+
+				if ( !$docRevId ) {
+					$this->dieWithError( 'apierror-visualeditor-docserver', 'docserver' );
+				}
+
+				if ( $docRevId !== $requestedRevision->getId() ) {
+					// TODO: If this never triggers, consider removing the check.
+					$this->getLogger()->warning(
+						"Requested revision {$requestedRevision->getId()} " .
+						"but received {$docRevId}."
+					);
+				}
+
 				$container = $doc->getElementsByTagName( 'body' )->item( 0 );
 				'@phan-var DOMElement $container';
 
@@ -87,10 +114,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'paction' => 'save',
 							'page' => $params['page'],
 							'token' => $params['token'],
-							'oldid' => $oldid,
+							'oldid' => $docRevId,
 							'html' => DOMCompat::getOuterHTML( $doc->documentElement ),
 							'summary' => $summary,
-							'baserevid' => $revision->getId(),
+							'baserevid' => $docRevId,
 							'starttimestamp' => wfTimestampNow(),
 							'etag' => $headers['etag'],
 							'watchlist' => $params['watchlist'],
