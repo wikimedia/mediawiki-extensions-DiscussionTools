@@ -34,43 +34,10 @@ class CommentParserTest extends CommentTestCase {
 		DOMElement $ancestor, DOMNode $node, int $nodeOffset
 	) : string {
 		if ( $node->nodeType === XML_TEXT_NODE ) {
-			$startNode = $node;
-			$nodeText = '';
-
-			while ( $node ) {
-				$nodeText .= $node->nodeValue;
-
-				// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
-				// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
-				// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
-				// this, we must piece together the text, so that our regexp can match those timestamps.
-				if (
-					$node->nextSibling &&
-					$node->nextSibling->nodeType === XML_ELEMENT_NODE &&
-					$node->nextSibling->getAttribute( 'typeof' ) === 'mw:Entity'
-				) {
-					$nodeText .= $node->nextSibling->firstChild->nodeValue;
-
-					// If the entity is followed by more text, do this again
-					if (
-						$node->nextSibling->nextSibling &&
-						$node->nextSibling->nextSibling->nodeType === XML_TEXT_NODE
-					) {
-						$node = $node->nextSibling->nextSibling;
-					} else {
-						$node = null;
-					}
-				} else {
-					$node = null;
-				}
-			}
-
-			$str = substr( $nodeText, 0, $nodeOffset );
+			$str = substr( $node->nodeValue, 0, $nodeOffset );
 			// Count characters that require two code units to encode in UTF-16
 			$count = preg_match_all( '/[\x{010000}-\x{10FFFF}]/u', $str );
 			$nodeOffset = mb_strlen( $str ) + $count;
-
-			$node = $startNode;
 		}
 
 		$path = [ $nodeOffset ];

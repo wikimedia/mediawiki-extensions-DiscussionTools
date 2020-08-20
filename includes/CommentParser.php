@@ -346,6 +346,7 @@ class CommentParser {
 		) {
 			if ( is_array( $match[0] ) ) {
 				// Strip PREG_OFFSET_CAPTURE data
+				unset( $match['offset'] );
 				$match = array_map( function ( array $tuple ) {
 					return $tuple[0];
 				}, $match );
@@ -605,27 +606,30 @@ class CommentParser {
 	 */
 	public function findTimestamp( DOMText $node, string $timestampRegex ) : ?array {
 		$nodeText = '';
+		$offset = 0;
 
 		while ( $node ) {
-			$nodeText .= $node->nodeValue;
+			$nodeText = $node->nodeValue . $nodeText;
 
 			// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
 			// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
 			// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
 			// this, we must piece together the text, so that our regexp can match those timestamps.
 			if (
-				( $nextSibling = $node->nextSibling ) &&
-				$nextSibling instanceof DOMElement &&
-				$nextSibling->getAttribute( 'typeof' ) === 'mw:Entity'
+				( $previousSibling = $node->previousSibling ) &&
+				$previousSibling instanceof DOMElement &&
+				$previousSibling->getAttribute( 'typeof' ) === 'mw:Entity'
 			) {
-				$nodeText .= $nextSibling->firstChild->nodeValue;
+				$nodeText = $previousSibling->firstChild->nodeValue . $nodeText;
+				$offset += strlen( $previousSibling->firstChild->nodeValue );
 
-				// If the entity is followed by more text, do this again
+				// If the entity is preceded by more text, do this again
 				if (
-					$nextSibling->nextSibling &&
-					$nextSibling->nextSibling instanceof DOMText
+					$previousSibling->previousSibling &&
+					$previousSibling->previousSibling instanceof DOMText
 				) {
-					$node = $nextSibling->nextSibling;
+					$offset += strlen( $previousSibling->previousSibling->nodeValue );
+					$node = $previousSibling->previousSibling;
 				} else {
 					$node = null;
 				}
@@ -637,6 +641,7 @@ class CommentParser {
 		$matchData = null;
 		// Allows us to mimic match.index in #getComments
 		if ( preg_match( $timestampRegex, $nodeText, $matchData, PREG_OFFSET_CAPTURE ) ) {
+			$matchData['offset'] = $offset;
 			return $matchData;
 		}
 		return null;
@@ -749,7 +754,7 @@ class CommentParser {
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer );
 				$offset = $lastSigNode === $node ?
-					$match[0][1] + strlen( $match[0][0] ) :
+					$match[0][1] + strlen( $match[0][0] ) - $match['offset'] :
 					CommentUtils::childIndexOf( $lastSigNode ) + 1;
 				$range = new ImmutableRange(
 					$startNode->parentNode,

@@ -419,27 +419,31 @@ function acceptOnlyNodesAllowingComments( node ) {
  *  and which can be parsed using #getLocalTimestampParser
  */
 Parser.prototype.findTimestamp = function ( node, timestampRegex ) {
-	var nodeText = '';
+	var matchData,
+		nodeText = '',
+		offset = 0;
 	while ( node ) {
-		nodeText += node.nodeValue;
+		nodeText = node.nodeValue + nodeText;
 
 		// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
 		// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
 		// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
 		// this, we must piece together the text, so that our regexp can match those timestamps.
 		if (
-			node.nextSibling &&
-			node.nextSibling.nodeType === Node.ELEMENT_NODE &&
-			node.nextSibling.getAttribute( 'typeof' ) === 'mw:Entity'
+			node.previousSibling &&
+			node.previousSibling.nodeType === Node.ELEMENT_NODE &&
+			node.previousSibling.getAttribute( 'typeof' ) === 'mw:Entity'
 		) {
-			nodeText += node.nextSibling.firstChild.nodeValue;
+			nodeText = node.previousSibling.firstChild.nodeValue + nodeText;
+			offset += node.previousSibling.firstChild.nodeValue.length;
 
 			// If the entity is followed by more text, do this again
 			if (
-				node.nextSibling.nextSibling &&
-				node.nextSibling.nextSibling.nodeType === Node.TEXT_NODE
+				node.previousSibling.previousSibling &&
+				node.previousSibling.previousSibling.nodeType === Node.TEXT_NODE
 			) {
-				node = node.nextSibling.nextSibling;
+				offset += node.previousSibling.previousSibling.nodeValue.length;
+				node = node.previousSibling.previousSibling;
 			} else {
 				node = null;
 			}
@@ -452,7 +456,12 @@ Parser.prototype.findTimestamp = function ( node, timestampRegex ) {
 	// point of this is to find the signatures which precede the timestamps, and any later
 	// timestamps in the text node can't be directly preceded by a signature (as we require them to
 	// have links), so we only concern ourselves with the first match.
-	return nodeText.match( timestampRegex );
+	matchData = nodeText.match( timestampRegex );
+	if ( matchData ) {
+		matchData.offset = offset;
+		return matchData;
+	}
+	return null;
 };
 
 /**
@@ -710,7 +719,7 @@ Parser.prototype.buildThreadItems = function () {
 		threadItems = [],
 		treeWalker,
 		node, range, fakeHeading, curComment,
-		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, match, startLevel, endLevel, dateTime, warnings;
+		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, match, offset, startLevel, endLevel, dateTime, warnings;
 
 	treeWalker = this.rootNode.ownerDocument.createTreeWalker(
 		this.rootNode,
@@ -756,19 +765,22 @@ Parser.prototype.buildThreadItems = function () {
 				continue;
 			}
 
-			// Everything from last comment up to here is the next comment
+			// Everything from the last comment up to here is the next comment
 			startNode = this.nextInterestingLeafNode( curComment.range.endContainer );
+			offset = lastSigNode === node ?
+				match.index + match[ 0 ].length - match.offset :
+				utils.childIndexOf( lastSigNode ) + 1;
 			range = {
 				startContainer: startNode.parentNode,
 				startOffset: utils.childIndexOf( startNode ),
 				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
-				endOffset: lastSigNode === node ? match.index + match[ 0 ].length : utils.childIndexOf( lastSigNode ) + 1
+				endOffset: offset
 			};
 			sigRange = {
 				startContainer: firstSigNode.parentNode,
 				startOffset: utils.childIndexOf( firstSigNode ),
 				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
-				endOffset: lastSigNode === node ? match.index + match[ 0 ].length : utils.childIndexOf( lastSigNode ) + 1
+				endOffset: offset
 			};
 
 			startLevel = utils.getIndentLevel( startNode, this.rootNode ) + 1;
