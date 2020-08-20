@@ -719,7 +719,8 @@ Parser.prototype.buildThreadItems = function () {
 		threadItems = [],
 		treeWalker,
 		node, range, fakeHeading, curComment,
-		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, match, offset, startLevel, endLevel, dateTime, warnings;
+		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode,
+		match, lastSigNodeOffset, startLevel, endLevel, level, dateTime, warnings;
 
 	treeWalker = this.rootNode.ownerDocument.createTreeWalker(
 		this.rootNode,
@@ -767,26 +768,33 @@ Parser.prototype.buildThreadItems = function () {
 
 			// Everything from the last comment up to here is the next comment
 			startNode = this.nextInterestingLeafNode( curComment.range.endContainer );
-			offset = lastSigNode === node ?
+			lastSigNodeOffset = lastSigNode === node ?
 				match.index + match[ 0 ].length - match.offset :
 				utils.childIndexOf( lastSigNode ) + 1;
 			range = {
 				startContainer: startNode.parentNode,
 				startOffset: utils.childIndexOf( startNode ),
 				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
-				endOffset: offset
+				endOffset: lastSigNodeOffset
 			};
 			sigRange = {
 				startContainer: firstSigNode.parentNode,
 				startOffset: utils.childIndexOf( firstSigNode ),
 				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
-				endOffset: offset
+				endOffset: lastSigNodeOffset
 			};
 
 			startLevel = utils.getIndentLevel( startNode, this.rootNode ) + 1;
 			endLevel = utils.getIndentLevel( node, this.rootNode ) + 1;
 			if ( startLevel !== endLevel ) {
 				warnings.push( 'Comment starts and ends with different indentation' );
+			}
+			// Should this use the indent level of `startNode` or `node`?
+			level = Math.min( startLevel, endLevel );
+
+			dateTime = dfParser( match );
+			if ( dateTime.discussionToolsWarning ) {
+				warnings.push( dateTime.discussionToolsWarning );
 			}
 
 			// Avoid generating multiple comments when there is more than one signature on a single "line".
@@ -804,18 +812,13 @@ Parser.prototype.buildThreadItems = function () {
 				curComment.range.endContainer = range.endContainer;
 				curComment.range.endOffset = range.endOffset;
 				curComment.signatureRanges.push( sigRange );
-				curComment.level = Math.min( Math.min( startLevel, endLevel ), curComment.level );
+				curComment.level = Math.min( level, curComment.level );
+
 				continue;
 			}
 
-			dateTime = dfParser( match );
-			if ( dateTime.discussionToolsWarning ) {
-				warnings.push( dateTime.discussionToolsWarning );
-			}
-
 			curComment = new CommentItem(
-				// Should this use the indent level of `startNode` or `node`?
-				Math.min( startLevel, endLevel ),
+				level,
 				range,
 				[ sigRange ],
 				dateTime,

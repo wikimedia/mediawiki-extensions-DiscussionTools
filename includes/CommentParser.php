@@ -753,20 +753,20 @@ class CommentParser {
 
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer );
-				$offset = $lastSigNode === $node ?
+				$lastSigNodeOffset = $lastSigNode === $node ?
 					$match[0][1] + strlen( $match[0][0] ) - $match['offset'] :
 					CommentUtils::childIndexOf( $lastSigNode ) + 1;
 				$range = new ImmutableRange(
 					$startNode->parentNode,
 					CommentUtils::childIndexOf( $startNode ),
 					$lastSigNode === $node ? $node : $lastSigNode->parentNode,
-					$offset
+					$lastSigNodeOffset
 				);
 				$sigRange = new ImmutableRange(
 					$firstSigNode->parentNode,
 					CommentUtils::childIndexOf( $firstSigNode ),
 					$lastSigNode === $node ? $node : $lastSigNode->parentNode,
-					$offset
+					$lastSigNodeOffset
 				);
 
 				$startLevel = CommentUtils::getIndentLevel( $startNode, $this->rootNode ) + 1;
@@ -774,6 +774,16 @@ class CommentParser {
 				if ( $startLevel !== $endLevel ) {
 					$warnings[] = 'Comment starts and ends with different indentation';
 				}
+				// Should this use the indent level of $startNode or $node?
+				$level = min( $startLevel, $endLevel );
+
+				$dateTime = $dfParser( $match );
+				if ( isset( $dateTime->discussionToolsWarning ) ) {
+					$warnings[] = $dateTime->discussionToolsWarning;
+				}
+				// ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
+				// of '+00:00', like Date#toISOString in JavaScript.
+				$dateTimeStr = $dateTime->format( 'Y-m-d\TH:i:s.v\Z' );
 
 				// Avoid generating multiple comments when there is more than one signature on a single "line".
 				// Often this is done when someone edits their comment later and wants to add a note about that.
@@ -799,24 +809,16 @@ class CommentParser {
 						$curComment->getRange()->setEnd( $range->endContainer, $range->endOffset )
 					);
 					$curComment->addSignatureRange( $sigRange );
-					$curComment->setLevel( min( min( $startLevel, $endLevel ), $curComment->getLevel() ) );
+					$curComment->setLevel( min( $level, $curComment->getLevel() ) );
 
 					continue;
 				}
 
-				$dateTime = $dfParser( $match );
-				if ( isset( $dateTime->discussionToolsWarning ) ) {
-					$warnings[] = $dateTime->discussionToolsWarning;
-				}
-
 				$curComment = new CommentItem(
-					// Should this use the indent level of $startNode or $node?
-					min( $startLevel, $endLevel ),
+					$level,
 					$range,
 					[ $sigRange ],
-					// ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
-					// of '+00:00', like Date#toISOString in JavaScript.
-					$dateTime->format( 'Y-m-d\TH:i:s.v\Z' ),
+					$dateTimeStr,
 					$author
 				);
 				$curComment->setRootNode( $this->rootNode );
