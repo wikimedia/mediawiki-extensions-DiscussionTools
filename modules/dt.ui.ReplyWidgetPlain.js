@@ -115,19 +115,6 @@ ReplyWidgetPlain.prototype.onKeyDown = function ( e ) {
 	}
 };
 
-ReplyWidgetPlain.prototype.setPending = function ( pending ) {
-	// Parent method
-	ReplyWidgetPlain.super.prototype.setPending.call( this, pending );
-
-	if ( pending ) {
-		this.replyBodyWidget.pushPending();
-		this.replyBodyWidget.setDisabled( true );
-	} else {
-		this.replyBodyWidget.popPending();
-		this.replyBodyWidget.setDisabled( false );
-	}
-};
-
 ReplyWidgetPlain.prototype.getValue = function () {
 	return this.replyBodyWidget.getValue();
 };

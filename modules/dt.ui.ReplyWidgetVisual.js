@@ -133,18 +133,6 @@ ReplyWidgetVisual.prototype.focus = function () {
 	return this;
 };
 
-ReplyWidgetVisual.prototype.setPending = function ( pending ) {
-	ReplyWidgetVisual.super.prototype.setPending.call( this, pending );
-
-	if ( pending ) {
-		this.replyBodyWidget.pushPending();
-		this.replyBodyWidget.setReadOnly( true );
-	} else {
-		this.replyBodyWidget.popPending();
-		this.replyBodyWidget.setReadOnly( false );
-	}
-};
-
 ve.trackSubscribe( 'activity.', function ( topic, data ) {
 	mw.track( 'dt.schemaVisualEditorFeatureUse', ve.extendObject( data, {
 		feature: topic.split( '.' )[ 1 ]

@@ -220,9 +220,13 @@ ReplyWidget.prototype.setPending = function ( pending ) {
 	if ( pending ) {
 		this.replyButton.setDisabled( true );
 		this.cancelButton.setDisabled( true );
+		this.replyBodyWidget.setReadOnly( true );
+		this.replyBodyWidget.pushPending();
 	} else {
 		this.replyButton.setDisabled( false );
 		this.cancelButton.setDisabled( false );
+		this.replyBodyWidget.setReadOnly( false );
+		this.replyBodyWidget.popPending();
 		this.updateButtons();
 	}
 };
