@@ -1,7 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ainali",
+			"Larske",
 			"Lejonel",
+			"LittleGun",
 			"WikiPhoenix"
 		]
 	},
@@ -16,11 +19,11 @@
 	"discussiontools-replywidget-abandon-keep": "Fortsätt skriva",
 	"discussiontools-replywidget-anon-warning": "<strong>Du är inte inloggad.</strong> För att få erkännande med ditt namn istället för din IP-adress kan du [$1 logga in] eller [$2 skapa ett konto].",
 	"discussiontools-replywidget-cancel": "Avbryt",
-	"discussiontools-replywidget-feedback": "Dela återkoppling om denna funktion",
+	"discussiontools-replywidget-feedback": "Ge återkoppling på denna funktion",
 	"discussiontools-replywidget-loading": "Läser in…",
 	"discussiontools-replywidget-mention-tool-header": "Hitta användare: $1",
 	"discussiontools-replywidget-mention-tool-title": "Nämn en användare",
-	"discussiontools-replywidget-mode-source": "Källa",
+	"discussiontools-replywidget-mode-source": "Wikitext",
 	"discussiontools-replywidget-mode-visual": "Visuell",
 	"discussiontools-replywidget-placeholder-reply": "Svara på {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Förhandsgranska",
