@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Object＊tofu"
+			"Object＊tofu",
+			"Omotecho"
 		]
 	},
+	"apierror-discussiontools-commentid-notfound": "Comment ID が見つかりません：$1",
+	"apihelp-discussiontools-param-oldid": "使用する版番号 (既定では最新版)。",
+	"apihelp-discussiontools-summary": "議論用ツールの初期化に必要なメタデータを返します。",
+	"apihelp-discussiontoolsedit-summary": "編集の要約",
+	"apihelp-discussiontoolsedit-param-commentid": "Comment ID。",
 	"apihelp-discussiontoolsedit-param-wikitext": "ウィキテキスト"
 }
