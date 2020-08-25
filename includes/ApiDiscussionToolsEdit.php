@@ -148,7 +148,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-watchlist',
 			],
 			'captchaid' => [
-				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-captchaword',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-captchaid',
 			],
 			'captchaword' => [
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-captchaword',
