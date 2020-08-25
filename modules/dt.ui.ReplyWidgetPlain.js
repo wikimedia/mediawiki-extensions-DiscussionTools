@@ -1,14 +1,19 @@
 /**
+ * @external CommentController
+ * @external CommentItem
+ */
+
+/**
  * DiscussionTools ReplyWidgetPlain class
  *
  * @class mw.dt.ReplyWidgetPlain
  * @extends mw.dt.ReplyWidget
  * @constructor
- * @param {Object} commentController
- * @param {string} commentId
+ * @param {CommentController} commentController
+ * @param {CommentItem} comment
  * @param {string} pageName
  * @param {number} oldId
- * @param {Object} [config] Configuration options
+ * @param {Object} [config]
  */
 function ReplyWidgetPlain() {
 	// Parent constructor

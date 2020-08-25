@@ -9,16 +9,21 @@ require( './dt-ve/dt.dm.PingNode.js' );
 require( './dt-ve/dt.ce.PingNode.js' );
 
 /**
+ * @external CommentController
+ * @external CommentItem
+ */
+
+/**
  * DiscussionTools ReplyWidgetVisual class
  *
  * @class mw.dt.ReplyWidgetVisual
  * @extends mw.dt.ReplyWidget
  * @constructor
- * @param {Object} commentController
- * @param {string} commentId
+ * @param {CommentController} commentController
+ * @param {CommentItem} comment
  * @param {string} pageName
  * @param {number} oldId
- * @param {Object} [config] Configuration options
+ * @param {Object} [config]
  */
 function ReplyWidgetVisual() {
 	// TODO: Support 2017 wikitext editor
