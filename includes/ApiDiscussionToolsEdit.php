@@ -76,6 +76,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'page' => $params['page'],
 							'token' => $params['token'],
 							'wikitext' => $wikitext,
+							// A default is provided automatically by the Edit API
+							// for new sections when the summary is empty.
+							'summary' => $params['summary'],
 							'section' => 'new',
 							'sectiontitle' => $params['sectiontitle'],
 							'starttimestamp' => wfTimestampNow(),
@@ -152,15 +155,19 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					CommentModifier::addHtmlReply( $comment, $params['html'] );
 				}
 
-				$heading = $comment->getHeading();
-				if ( $heading->isPlaceholderHeading() ) {
-					// This comment is in 0th section, there's no section title for the edit summary
-					$summaryPrefix = '';
+				if ( isset( $params['summary'] ) ) {
+					$summary = $params['summary'];
 				} else {
-					$summaryPrefix = '/* ' . $heading->getRange()->startContainer->textContent . ' */ ';
+					$heading = $comment->getHeading();
+					if ( $heading->isPlaceholderHeading() ) {
+						// This comment is in 0th section, there's no section title for the edit summary
+						$summaryPrefix = '';
+					} else {
+						$summaryPrefix = '/* ' . $heading->getRange()->startContainer->textContent . ' */ ';
+					}
+					$summary = $summaryPrefix .
+						$this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
 				}
-				$summary = $summaryPrefix .
-					$this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
 
 				$api = new ApiMain(
 					new DerivativeRequest(
@@ -227,6 +234,11 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			'html' => [
 				ParamValidator::PARAM_TYPE => 'text',
 				ParamValidator::PARAM_DEFAULT => null,
+			],
+			'summary' => [
+				ParamValidator::PARAM_TYPE => 'text',
+				ParamValidator::PARAM_DEFAULT => null,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-summary',
 			],
 			'sectiontitle' => [
 				ParamValidator::PARAM_TYPE => 'text',

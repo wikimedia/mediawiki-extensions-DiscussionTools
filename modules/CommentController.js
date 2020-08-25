@@ -166,7 +166,7 @@ CommentController.prototype.setup = function ( mode ) {
 
 	if ( !this.replyWidgetPromise ) {
 		this.replyWidgetPromise = getTranscludedFromSource( comment.id ).then( function ( pageData ) {
-			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, mode === 'visual' );
+			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, {}, mode === 'visual' );
 		}, function ( code, data ) {
 			commentController.teardown();
 
@@ -214,11 +214,11 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	} );
 };
 
-CommentController.prototype.createReplyWidget = function ( comment, pageName, oldId, visual ) {
+CommentController.prototype.createReplyWidget = function ( comment, pageName, oldId, config, visual ) {
 	var commentController = this;
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
-		return new ReplyWidget( commentController, comment, pageName, oldId );
+		return new ReplyWidget( commentController, comment, pageName, oldId, config );
 	} );
 };
 
@@ -264,6 +264,7 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				paction: 'addcomment',
 				page: pageName,
 				commentid: comment.id,
+				summary: replyWidget.getEditSummary(),
 				assert: mw.user.isAnon() ? 'anon' : 'user',
 				assertuser: mw.user.getName() || undefined,
 				dttags: [
@@ -327,7 +328,16 @@ CommentController.prototype.switchToWikitext = function () {
 
 	// TODO: We may need to pass oldid/etag when editing is supported
 	wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
-	this.replyWidgetPromise = this.createReplyWidget( oldWidget.comment, oldWidget.pageName, oldWidget.oldId, false );
+	this.replyWidgetPromise = this.createReplyWidget(
+		oldWidget.comment,
+		oldWidget.pageName,
+		oldWidget.oldId,
+		{
+			showAdvanced: oldWidget.showAdvanced,
+			editSummary: oldWidget.getEditSummary()
+		},
+		false
+	);
 
 	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
 		wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
@@ -384,7 +394,16 @@ CommentController.prototype.switchToVisual = function () {
 	} else {
 		parsePromise = $.Deferred().resolve( '' ).promise();
 	}
-	this.replyWidgetPromise = this.createReplyWidget( oldWidget.comment, oldWidget.pageName, oldWidget.oldId, true );
+	this.replyWidgetPromise = this.createReplyWidget(
+		oldWidget.comment,
+		oldWidget.pageName,
+		oldWidget.oldId,
+		{
+			showAdvanced: oldWidget.showAdvanced,
+			editSummary: oldWidget.getEditSummary()
+		},
+		true
+	);
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
 		var doc, bodyChildren, type, $msg,
