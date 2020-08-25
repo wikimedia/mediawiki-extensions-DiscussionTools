@@ -26,31 +26,6 @@ class CommentModifier {
 		$listItem->setAttribute( 'data-parsoid', '{}' );
 	}
 
-	private static $blockElementTypes = [
-		'div', 'p',
-		// Tables
-		'table', 'tbody', 'thead', 'tfoot', 'caption', 'th', 'tr', 'td',
-		// Lists
-		'ul', 'ol', 'li', 'dl', 'dt', 'dd',
-		// HTML5 heading content
-		'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hgroup',
-		// HTML5 sectioning content
-		'article', 'aside', 'body', 'nav', 'section', 'footer', 'header', 'figure',
-		'figcaption', 'fieldset', 'details', 'blockquote',
-		// Other
-		'hr', 'button', 'canvas', 'center', 'col', 'colgroup', 'embed',
-		'map', 'object', 'pre', 'progress', 'video'
-	];
-
-	/**
-	 * @param DOMNode $node Node
-	 * @return bool Node is a block element
-	 */
-	private static function isBlockElement( DOMNode $node ) : bool {
-		return $node instanceof DOMElement &&
-			in_array( strtolower( $node->tagName ), self::$blockElementTypes );
-	}
-
 	/**
 	 * Remove extra linebreaks from a wikitext string
 	 *
@@ -73,12 +48,6 @@ class CommentModifier {
 	 */
 	public static function addReplyLink( CommentItem $comment, DOMElement $linkNode ) : void {
 		$target = $comment->getRange()->endContainer;
-
-		// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
-		// avoiding that would be more difficult and slower.
-		while ( $target->nextSibling && !self::isBlockElement( $target->nextSibling ) ) {
-			$target = $target->nextSibling;
-		}
 
 		// Insert the link before trailing whitespace.
 		// In the MediaWiki parser output, <ul>/<dl> nodes are preceded by a newline. Normally it isn't
@@ -131,12 +100,6 @@ class CommentModifier {
 
 		$desiredLevel = $comment->getLevel() + 1;
 		$target = $curComment->getRange()->endContainer;
-
-		// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
-		// avoiding that would be more difficult and slower.
-		while ( $target->nextSibling && !self::isBlockElement( $target->nextSibling ) ) {
-			$target = $target->nextSibling;
-		}
 
 		// target is a text node or an inline element at the end of a "paragraph"
 		// (not necessarily paragraph node).
@@ -308,7 +271,7 @@ class CommentModifier {
 				while ( $list->firstChild->firstChild ) {
 					// If contents is a block element, place outside the paragraph
 					// and start a new paragraph after
-					if ( self::isBlockElement( $list->firstChild->firstChild ) ) {
+					if ( CommentUtils::isBlockElement( $list->firstChild->firstChild ) ) {
 						if ( $p->firstChild ) {
 							$insertBefore = $referenceNode->nextSibling;
 							$referenceNode = $p;

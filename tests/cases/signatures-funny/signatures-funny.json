@@ -153,7 +153,7 @@
             "author": "Matma Rex",
             "range": [
               "9/4/0",
-              "9/4/2/29"
+              "9/4/4/1"
             ],
             "signatureRanges": [
               [
@@ -163,28 +163,25 @@
             ],
             "level": 2,
             "id": "Matma Rex|2020-01-25T08:37:00.000Z|0",
-            "replies": []
-          },
-          {
-            "type": "comment",
-            "timestamp": "2020-01-25T08:38:00.000Z",
-            "author": "Matma Rex",
-            "range": [
-              "9/4/3/0",
-              "9/4/5/0/2/29"
-            ],
-            "signatureRanges": [
-              [
-                "9/4/5/0/1",
-                "9/4/5/0/2/29"
-              ]
-            ],
-            "level": 2,
-            "id": "Matma Rex|2020-01-25T08:38:00.000Z|0",
-            "warnings": [
-              "Comment starts and ends with different indentation"
-            ],
             "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2020-01-25T08:38:00.000Z",
+                "author": "Matma Rex",
+                "range": [
+                  "9/4/5/0/0",
+                  "9/4/5/0/2/29"
+                ],
+                "signatureRanges": [
+                  [
+                    "9/4/5/0/1",
+                    "9/4/5/0/2/29"
+                  ]
+                ],
+                "level": 3,
+                "id": "Matma Rex|2020-01-25T08:38:00.000Z|0",
+                "replies": []
+              },
               {
                 "type": "comment",
                 "timestamp": "2020-01-25T08:38:00.000Z",
