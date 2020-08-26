@@ -163,26 +163,26 @@ function getFullyCoveredSiblings( item ) {
 
 	siblings = getCoveredSiblings( item );
 
-	function isIgnored( node ) {
+	function isIgnored( n ) {
 		// Ignore empty text nodes, and our own reply buttons
-		return ( node.nodeType === Node.TEXT_NODE && htmlTrim( node.textContent ) === '' ) ||
-			( node.className && node.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 );
+		return ( n.nodeType === Node.TEXT_NODE && htmlTrim( n.textContent ) === '' ) ||
+			( n.className && n.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 );
 	}
 
-	function firstNonemptyChild( node ) {
-		node = node.firstChild;
-		while ( node && isIgnored( node ) ) {
-			node = node.nextSibling;
+	function firstNonemptyChild( n ) {
+		n = n.firstChild;
+		while ( n && isIgnored( n ) ) {
+			n = n.nextSibling;
 		}
-		return node;
+		return n;
 	}
 
-	function lastNonemptyChild( node ) {
-		node = node.lastChild;
-		while ( node && isIgnored( node ) ) {
-			node = node.previousSibling;
+	function lastNonemptyChild( n ) {
+		n = n.lastChild;
+		while ( n && isIgnored( n ) ) {
+			n = n.previousSibling;
 		}
-		return node;
+		return n;
 	}
 
 	startMatches = false;

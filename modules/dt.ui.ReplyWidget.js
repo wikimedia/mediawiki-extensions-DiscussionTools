@@ -162,10 +162,10 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.checkboxesPromise = controller.getCheckboxesPromise( this.pageName, this.oldId );
 	this.checkboxesPromise.then( function ( checkboxes ) {
 		var name;
-		function trackCheckbox( name ) {
+		function trackCheckbox( n ) {
 			mw.track( 'dt.schemaVisualEditorFeatureUse', {
 				feature: 'dtReply',
-				action: 'checkbox-' + name
+				action: 'checkbox-' + n
 			} );
 		}
 		if ( checkboxes.checkboxFields ) {

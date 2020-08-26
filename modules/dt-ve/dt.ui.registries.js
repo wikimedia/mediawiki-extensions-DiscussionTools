@@ -8,7 +8,7 @@ function importRegistry( parent, child ) {
 		child.register( parent.registry[ name ] );
 	}
 	// Copy any new items when they're added
-	parent.on( 'register', function ( name, data ) {
+	parent.on( 'register', function ( n, data ) {
 		child.register( data );
 	} );
 }

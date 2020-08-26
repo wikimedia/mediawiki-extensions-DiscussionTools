@@ -4,7 +4,7 @@ var ThreadItem = require( './ThreadItem.js' );
  * A heading item
  *
  * @class HeadingItem
- * @extends {ThreadItem}
+ * @extends ThreadItem
  * @constructor
  * @param {Object} range
  * @param {boolean} [placeholderHeading] Item doesn't correspond to a real heading (e.g. 0th section)

@@ -61,8 +61,8 @@ function getMessages( messages ) {
 Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs ) {
 	var s, p, num, code, endQuote, tzRegexp, regexp;
 
-	function regexpGroup( regexp ) {
-		return '(' + regexp + ')';
+	function regexpGroup( r ) {
+		return '(' + r + ')';
 	}
 
 	function regexpAlternateGroup( array ) {
@@ -271,13 +271,13 @@ Parser.prototype.getTimestampParser = function ( format, digits, localTimezone, 
 			hour = 0,
 			minute = 0,
 			tzAbbr,
-			i, code, text,
+			i, code2, text,
 			date;
 		for ( i = 0; i < matchingGroups.length; i++ ) {
-			code = matchingGroups[ i ];
+			code2 = matchingGroups[ i ];
 			text = match[ i + 1 ];
 
-			switch ( code ) {
+			switch ( code2 ) {
 				case 'xg':
 					monthIdx = getMessages( [
 						'january-gen', 'february-gen', 'march-gen', 'april-gen', 'may-gen', 'june-gen',
@@ -505,10 +505,10 @@ function getTitleFromUrl( url ) {
  * @private
  * @param {Text} timestampNode Text node
  * @param {Node} [until] Node to stop searching at
- * @return {[Node[], string|null]} Result, a tuple contaning:
- *  - Sibling nodes comprising the signature, in reverse order (with
+ * @return {Array} Result, a tuple contaning:
+ *  - {Node[]} Sibling nodes comprising the signature, in reverse order (with
  *   `timestampNode` or its parent node as the first element)
- *  - Username, null for unsigned comments
+ *  - {string|null} Username, null for unsigned comments
  */
 Parser.prototype.findSignature = function ( timestampNode, until ) {
 	var node, sigNodes, sigUsername, length, lastLinkNode, links, nodes;

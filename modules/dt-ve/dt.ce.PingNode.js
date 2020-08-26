@@ -14,7 +14,7 @@
  *
  * @class
  * @extends ve.ce.LeafNode
- * @mixins ve.ce.FocusableNode
+ * @mixes ve.ce.FocusableNode
  *
  * @constructor
  * @param {DmMWPingNode} model Model to observe

@@ -9,7 +9,7 @@ var ThreadItem = require( './ThreadItem.js' );
  * A comment item
  *
  * @class CommentItem
- * @extends {ThreadItem}
+ * @extends ThreadItem
  * @constructor
  * @param {number} level
  * @param {Object} range
