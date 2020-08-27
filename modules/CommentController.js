@@ -297,7 +297,7 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				// result in duplicate messages when the user retries. (T249071)
 				api: new mw.Api( { ajax: { timeout: 0 }, parameters: { formatversion: 2 } } )
 			}
-		).catch( function ( code, data ) {
+		).catch( function ( code, responseData ) {
 			// Better user-facing error message
 			if ( code === 'discussiontools-commentid-notfound' ) {
 				return $.Deferred().reject( 'discussiontools-commentid-notfound', { errors: [ {
@@ -305,9 +305,9 @@ CommentController.prototype.save = function ( comment, pageName ) {
 					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
 				} ] } ).promise();
 			}
-			return $.Deferred().reject( code, data ).promise();
-		} ).then( function ( data ) {
-			controller.update( data, comment, pageName, replyWidget );
+			return $.Deferred().reject( code, responseData ).promise();
+		} ).then( function ( responseData ) {
+			controller.update( responseData, comment, pageName, replyWidget );
 		} );
 	} );
 };
