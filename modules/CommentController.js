@@ -307,6 +307,8 @@ CommentController.prototype.save = function ( comment, pageName ) {
 			}
 			return $.Deferred().reject( code, responseData ).promise();
 		} ).then( function ( responseData ) {
+			// Pass through watchlist state.
+			responseData.watchlist = data.watchlist;
 			controller.update( responseData, comment, pageName, replyWidget );
 		} );
 	} );
