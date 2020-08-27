@@ -22,7 +22,7 @@
 	"discussiontools-replywidget-loading": "Načítám…",
 	"discussiontools-replywidget-mention-tool-header": "Najít uživatele: $1",
 	"discussiontools-replywidget-mention-tool-title": "Zmínit uživatele",
-	"discussiontools-replywidget-mode-source": "Editor zdroje",
+	"discussiontools-replywidget-mode-source": "Editor zdrojového kódu",
 	"discussiontools-replywidget-mode-visual": "Vizuální editor",
 	"discussiontools-replywidget-placeholder-reply": "Odpovědět uživateli {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Náhled",
