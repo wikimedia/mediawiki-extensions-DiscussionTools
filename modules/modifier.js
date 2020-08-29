@@ -111,7 +111,15 @@ function addListItem( comment ) {
 	// comment (T252702)
 	curLevel = utils.getIndentLevel( target, curComment.rootNode ) + 1;
 
-	if ( curLevel < desiredLevel ) {
+	if ( desiredLevel === 1 ) {
+		// Special handling for top-level comments
+		item = target.ownerDocument.createElement( 'div' );
+		item.discussionToolsModified = 'new';
+		parent.insertBefore( item, target.nextSibling );
+		// TODO: We should not insert a <div>, instead we need a function that returns parent and target,
+		// so that we can insert nodes in this place in other code
+
+	} else if ( curLevel < desiredLevel ) {
 		// Insert more lists after the target to increase nesting.
 
 		// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.

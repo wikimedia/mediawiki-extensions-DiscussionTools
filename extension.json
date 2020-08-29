@@ -37,6 +37,7 @@
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getContentLanguageMessages",
 					"callbackParam": [
 						"discussiontools-defaultsummary-reply",
+						"newsectionsummary",
 						"discussiontools-replywidget-feedback-link",
 						"discussiontools-replywidget-mention-prefix",
 						"discussiontools-signature-prefix"
@@ -50,6 +51,7 @@
 					}
 				},
 				"CommentController.js",
+				"NewTopicController.js",
 				"logger.js",
 				"modifier.js",
 				"utils.js",
@@ -62,6 +64,9 @@
 					"name": "parser/data.json",
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getLocalData"
 				}
+			],
+			"styles": [
+				"dt.ui.NewTopicController.less"
 			],
 			"dependencies": [
 				"moment",
@@ -78,6 +83,7 @@
 			],
 			"messages": [
 				"discussiontools-postedit-confirmation-published",
+				"discussiontools-postedit-confirmation-topicadded",
 				"discussiontools-error-comment-conflict",
 				"discussiontools-error-comment-disappeared",
 				"discussiontools-error-comment-not-saved",
@@ -89,6 +95,8 @@
 				"discussiontools-error-noswitchtove-table",
 				"discussiontools-error-noswitchtove-template",
 				"discussiontools-error-noswitchtove-title",
+				"discussiontools-newtopic-placeholder-title",
+				"discussiontools-newtopic-missing-title",
 				"discussiontools-replylink",
 				"discussiontools-replywidget-loading"
 			]
@@ -122,6 +130,8 @@
 				"discussiontools-replywidget-mention-tool-title",
 				"discussiontools-replywidget-mode-source",
 				"discussiontools-replywidget-mode-visual",
+				"discussiontools-replywidget-newtopic",
+				"discussiontools-replywidget-placeholder-newtopic",
 				"discussiontools-replywidget-placeholder-reply",
 				"discussiontools-replywidget-preview",
 				"discussiontools-replywidget-reply",

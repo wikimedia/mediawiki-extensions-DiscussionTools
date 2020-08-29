@@ -2,6 +2,7 @@
 
 var
 	$pageContainer,
+	newTopicController,
 	$overlay,
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
@@ -226,9 +227,12 @@ function getCheckboxesPromise( pageName, oldId ) {
 function init( $container, state ) {
 	var parser, pageThreads,
 		repliedToComment,
+		$addSectionTab,
 		i, hash, comment, commentNodes, newId,
+		pageExists = !!mw.config.get( 'wgRelevantArticleId' ),
 		// Loads later to avoid circular dependency
 		CommentController = require( './CommentController.js' ),
+		NewTopicController = require( './NewTopicController.js' ),
 		threadItemsById = {},
 		threadItems = [];
 
@@ -272,16 +276,36 @@ function init( $container, state ) {
 		}
 	}
 
+	if ( newTopicController ) {
+		// Stop the torn down controller from re-appearing
+		newTopicController.$replyLink.off( 'click keypress', newTopicController.onReplyLinkClickHandler );
+	}
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$addSectionTab = $( '#ca-addsection' );
+	// TODO If the page doesn't exist yet, we'll need to handle the interface differently,
+	// for now just don't enable the tool there
+	if ( $addSectionTab.length && pageExists ) {
+		// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
+		$addSectionTab.off( '.ve-target' );
+		newTopicController = new NewTopicController( $pageContainer, $addSectionTab.find( 'a' ) );
+	}
+
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
-	if ( state.repliedTo ) {
+	if ( state.repliedTo === 'new' ) {
+		highlight( pageThreads[ pageThreads.length - 1 ] );
+		highlight( pageThreads[ pageThreads.length - 1 ].replies[ 0 ] );
+
+		mw.hook( 'postEdit' ).fire( {
+			message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
+		} );
+
+	} else if ( state.repliedTo ) {
 		// Find the comment we replied to, then highlight the last reply
 		repliedToComment = threadItemsById[ state.repliedTo ];
 		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
-	}
 
-	if ( state.repliedTo ) {
 		mw.hook( 'postEdit' ).fire( {
 			message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
 		} );

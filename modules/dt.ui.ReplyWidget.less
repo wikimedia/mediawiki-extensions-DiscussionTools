@@ -99,8 +99,14 @@
 			color: #808080;
 		}
 
-		> .mw-parser-output {
+		.dt-ui-replyWidget:not( .dt-ui-replyWidget-newTopic ) & > .mw-parser-output {
 			margin-left: -1.6em;
+		}
+
+		> .mw-parser-output > h2:first-child {
+			// Remove excess spacing above section title for preview
+			padding-top: 0;
+			margin-top: 0.25em;
 		}
 	}
 

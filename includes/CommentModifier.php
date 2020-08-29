@@ -8,6 +8,7 @@ use DOMElement;
 use DOMNode;
 use DOMText;
 use DOMXPath;
+use MWException;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentModifier {
@@ -74,10 +75,10 @@ class CommentModifier {
 	 * The DOM tree is suitably rearranged to ensure correct indentation level of the reply (wrapper
 	 * nodes are added, and other nodes may be moved around).
 	 *
-	 * @param CommentItem $comment
+	 * @param ThreadItem $comment
 	 * @return DOMElement
 	 */
-	public static function addListItem( CommentItem $comment ) : DOMElement {
+	public static function addListItem( ThreadItem $comment ) : DOMElement {
 		$listTypeMap = [
 			'li' => 'ul',
 			'dd' => 'dl'
@@ -120,7 +121,12 @@ class CommentModifier {
 		$curLevel = CommentUtils::getIndentLevel( $target, $curComment->getRootNode() ) + 1;
 
 		$item = null;
-		if ( $curLevel < $desiredLevel ) {
+		if ( $desiredLevel === 1 ) {
+			// Special handling for top-level comments
+			// We use section=new API for adding them in PHP, so this should never happen
+			throw new MWException( "Can't add a top-level comment" );
+
+		} elseif ( $curLevel < $desiredLevel ) {
 			// Insert more lists after the target to increase nesting.
 
 			// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
@@ -484,10 +490,10 @@ class CommentModifier {
 	/**
 	 * Add a reply to a specific comment
 	 *
-	 * @param CommentItem $comment Comment being replied to
+	 * @param ThreadItem $comment Comment being replied to
 	 * @param DOMElement $container Container of comment DOM nodes
 	 */
-	public static function addReply( CommentItem $comment, DOMElement $container ) {
+	public static function addReply( ThreadItem $comment, DOMElement $container ) {
 		$newParsoidItem = null;
 		// Transfer comment DOM to Parsoid DOM
 		// Wrap every root node of the document in a new list item (dd/li).

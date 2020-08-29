@@ -33,6 +33,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.pending = false;
 	this.commentController = commentController;
 	this.comment = comment;
+	this.isNewTopic = !!comment.isNewTopic;
 	this.pageName = pageName;
 	this.oldId = oldId;
 	contextNode = utils.closestElement( comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
@@ -45,22 +46,26 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 
 	inputConfig = $.extend(
 		{
-			placeholder: mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ),
+			placeholder: this.isNewTopic ?
+				mw.msg( 'discussiontools-replywidget-placeholder-newtopic' ) :
+				mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ),
 			authors: comment.getHeading().getAuthorsBelow()
 		},
 		config.input
 	);
 	this.replyBodyWidget = this.createReplyBodyWidget( inputConfig );
+	this.replyButtonLabel = this.isNewTopic ?
+		mw.msg( 'discussiontools-replywidget-newtopic' ) :
+		mw.msg( 'discussiontools-replywidget-reply' );
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
-		label: mw.msg( 'discussiontools-replywidget-reply' ),
-		title: mw.msg( 'discussiontools-replywidget-reply' ) + ' ' +
+		label: this.replyButtonLabel,
+		title: this.replyButtonLabel + ' ' +
 			// TODO: Use VE keyboard shortcut generating code
 			( $.client.profile().platform === 'mac' ?
 				'⌘⏎' :
 				mw.msg( 'visualeditor-key-ctrl' ) + '+' + mw.msg( 'visualeditor-key-enter' )
 			)
-
 	} );
 	this.cancelButton = new OO.ui.ButtonWidget( {
 		flags: [ 'destructive' ],
@@ -143,7 +148,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	}
 	this.$footer.append(
 		$( '<p>' ).addClass( 'plainlinks' ).append(
-			mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
+			mw.message( 'discussiontools-replywidget-terms-click', this.replyButtonLabel ).parseDom()
 		),
 		$( '<p>' ).append(
 			$( '<a>' )
@@ -169,6 +174,9 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.advancedToggle.connect( this, { click: 'onAdvancedToggleClick' } );
 	this.editSummaryInput.connect( this, { change: 'onEditSummaryChange' } );
 	this.editSummaryInput.$input.on( 'keydown', this.onKeyDown.bind( this, false ) );
+	if ( this.isNewTopic ) {
+		this.commentController.sectionTitle.$input.on( 'keydown', this.onKeyDown.bind( this, false ) );
+	}
 
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
 
@@ -183,6 +191,9 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	);
 	// Set direction to interface direction
 	this.$element.attr( 'dir', $( document.body ).css( 'direction' ) );
+	if ( this.isNewTopic ) {
+		this.$element.addClass( 'dt-ui-replyWidget-newTopic' );
+	}
 
 	if ( mw.user.isAnon() ) {
 		returnTo = {
@@ -261,7 +272,13 @@ ReplyWidget.prototype.clear = function () {
 	if ( this.errorMessage ) {
 		this.errorMessage.$element.remove();
 	}
+	if ( this.isNewTopic ) {
+		this.commentController.sectionTitleField.setWarnings( [] );
+		this.warnedAboutMissingTitle = false;
+	}
 	this.$preview.empty();
+	this.previewWikitext = null;
+	this.previewTitle = null;
 	this.toggleAdvanced( false );
 
 	this.storage.remove( this.storagePrefix + '/mode' );
@@ -293,7 +310,9 @@ ReplyWidget.prototype.saveEditMode = function ( mode ) {
 };
 
 ReplyWidget.prototype.onAdvancedToggleClick = function () {
-	var showAdvanced = !this.showAdvanced;
+	var
+		summary, selectFromIndex, titleText, defaultReplyTrail, endCommentIndex,
+		showAdvanced = !this.showAdvanced;
 	mw.track( 'dt.schemaVisualEditorFeatureUse', {
 		feature: 'dtReply',
 		action: 'advanced-' + ( showAdvanced ? 'show' : 'hide' )
@@ -302,28 +321,39 @@ ReplyWidget.prototype.onAdvancedToggleClick = function () {
 		mw.user.options.set( 'discussiontools-showadvanced', +showAdvanced );
 	} );
 	this.toggleAdvanced( showAdvanced );
-};
 
-ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
-	var summary, defaultReplyTrail, endCommentIndex;
-	this.showAdvanced = showAdvanced === undefined ? !this.showAdvanced : showAdvanced;
-	this.advanced.toggle( !!this.showAdvanced );
-	this.advancedToggle.setIndicator( this.showAdvanced ? 'up' : 'down' );
-	if ( this.showAdvanced ) {
+	if ( showAdvanced ) {
 		summary = this.editSummaryInput.getValue();
-		// Same as summary.endsWith( defaultReplyTrail )
-		defaultReplyTrail = '*/ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
-		endCommentIndex = summary.indexOf( defaultReplyTrail );
-		if ( endCommentIndex + defaultReplyTrail.length === summary.length ) {
-			// Select the default 'Reply' summary if still present
-			this.editSummaryInput.selectRange( endCommentIndex + 3, summary.length );
+
+		// If the current summary has not been edited yet, select the text following the autocomment to
+		// make it easier to change. Otherwise, move cursor to end.
+		selectFromIndex = summary.length;
+		if ( this.isNewTopic ) {
+			titleText = this.commentController.sectionTitle.getValue();
+			if ( summary === this.commentController.generateSummary( titleText ) ) {
+				selectFromIndex = titleText.length + '/* '.length + ' */ '.length;
+			}
 		} else {
-			this.editSummaryInput.moveCursorToEnd();
+			// Same as summary.endsWith( defaultReplyTrail )
+			defaultReplyTrail = '*/ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
+			endCommentIndex = summary.indexOf( defaultReplyTrail );
+			if ( endCommentIndex + defaultReplyTrail.length === summary.length ) {
+				selectFromIndex = endCommentIndex + 3;
+			}
 		}
+
+		this.editSummaryInput.selectRange( selectFromIndex, summary.length );
 		this.editSummaryInput.focus();
 	} else {
 		this.focus();
 	}
+};
+
+ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
+	this.showAdvanced = showAdvanced === undefined ? !this.showAdvanced : showAdvanced;
+	this.advanced.toggle( !!this.showAdvanced );
+	this.advancedToggle.setIndicator( this.showAdvanced ? 'up' : 'down' );
+
 	this.storeEditSummary();
 	this.storage.set( this.storagePrefix + '/showAdvanced', this.showAdvanced ? '1' : '' );
 };
@@ -402,9 +432,15 @@ ReplyWidget.prototype.setup = function ( data ) {
 	summary = this.storage.get( this.storagePrefix + '/summary' ) || data.editSummary;
 
 	if ( !summary ) {
-		title = this.comment.getHeading().getLinkableTitle();
-		summary = ( title ? '/* ' + title + ' */ ' : '' ) +
-			mw.msg( 'discussiontools-defaultsummary-reply' );
+		if ( this.isNewTopic ) {
+			// Edit summary is filled in when the user inputs the topic title,
+			// in NewTopicController#onSectionTitleChange
+			summary = '';
+		} else {
+			title = this.comment.getHeading().getLinkableTitle();
+			summary = ( title ? '/* ' + title + ' */ ' : '' ) +
+				mw.msg( 'discussiontools-defaultsummary-reply' );
+		}
 	}
 
 	this.toggleAdvanced(
@@ -414,6 +450,10 @@ ReplyWidget.prototype.setup = function ( data ) {
 	);
 
 	this.editSummaryInput.setValue( summary );
+
+	if ( this.isNewTopic ) {
+		this.commentController.sectionTitle.connect( this, { change: 'onInputChangeThrottled' } );
+	}
 
 	return this;
 };
@@ -435,7 +475,7 @@ ReplyWidget.prototype.tryTeardown = function () {
 	var promise,
 		widget = this;
 
-	if ( !this.isEmpty() ) {
+	if ( !this.isEmpty() || ( this.isNewTopic && this.commentController.sectionTitle.getValue() ) ) {
 		promise = OO.ui.getWindowManager().openWindow( 'abandoncomment' )
 			.closed.then( function ( data ) {
 				if ( !( data && data.action === 'discard' ) ) {
@@ -469,6 +509,9 @@ ReplyWidget.prototype.tryTeardown = function () {
  * @return {ReplyWidget}
  */
 ReplyWidget.prototype.teardown = function ( abandoned ) {
+	if ( this.isNewTopic ) {
+		this.commentController.sectionTitle.disconnect( this );
+	}
 	this.unbindBeforeUnloadHandler();
 	this.clear();
 	this.emit( 'teardown', abandoned );
@@ -502,7 +545,7 @@ ReplyWidget.prototype.onInputChange = function () {
  * @return {jQuery.Promise} Promise resolved when we're done
  */
 ReplyWidget.prototype.preparePreview = function ( wikitext ) {
-	var parsePromise, widget, indent;
+	var parsePromise, widget, title, indent;
 
 	if ( this.getMode() !== 'source' ) {
 		return $.Deferred().resolve().promise();
@@ -518,11 +561,13 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	// }[ this.context ];
 	indent = ':';
 	wikitext = wikitext || this.getValue();
+	title = this.isNewTopic && this.commentController.sectionTitle.getValue();
 
-	if ( this.previewWikitext === wikitext ) {
+	if ( this.previewWikitext === wikitext && this.previewTitle === title ) {
 		return $.Deferred().resolve().promise();
 	}
 	this.previewWikitext = wikitext;
+	this.previewTitle = title;
 
 	if ( this.previewRequest ) {
 		this.previewRequest.abort();
@@ -532,17 +577,22 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	if ( !wikitext.trim() ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
-		wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
+		wikitext = this.commentController.doCrazyIndentReplacements( wikitext, indent );
+
 		if ( !modifier.isWikitextSigned( wikitext ) ) {
 			// Add signature.
 			// Drop opacity of signature in preview to make message body preview clearer.
 			wikitext = wikitext + '<span style="opacity: 0.6;">' + mw.msg( 'discussiontools-signature-prefix' ) + '~~~~</span>';
 		}
-		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
+		if ( title ) {
+			wikitext = '== ' + title + ' ==\n' + wikitext;
+		}
 		this.previewRequest = parsePromise = controller.getApi().post( {
 			action: 'parse',
 			text: wikitext,
 			pst: true,
+			preview: true,
+			disableeditsection: true,
 			prop: [ 'text', 'modules', 'jsconfigvars' ],
 			title: this.pageName
 		} );
@@ -623,6 +673,25 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 	if ( this.pending || this.isEmpty() ) {
 		return;
+	}
+
+	if ( this.isNewTopic ) {
+		if ( !this.commentController.sectionTitle.getValue() ) {
+			// Show warning about missing title
+			this.commentController.sectionTitleField.setWarnings( [
+				mw.msg( 'discussiontools-newtopic-missing-title' )
+			] );
+			this.commentController.sectionTitle.focus();
+
+			// Prevent submitting once, then allow if the warning was already shown
+			if ( !this.warnedAboutMissingTitle ) {
+				this.warnedAboutMissingTitle = true;
+				return;
+			}
+		} else {
+			this.commentController.sectionTitleField.setWarnings( [] );
+			this.warnedAboutMissingTitle = false;
+		}
 	}
 
 	if ( this.errorMessage ) {

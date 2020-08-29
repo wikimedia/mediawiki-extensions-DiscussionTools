@@ -1,3 +1,7 @@
+/**
+ * @external ThreadItem
+ */
+
 var
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
@@ -25,9 +29,10 @@ function CommentController( $pageContainer, $replyLink, comment ) {
 	this.comment = comment;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
+	this.onReplyLinkClickHandler = this.onReplyLinkClick.bind( this );
 
 	// Reply
-	this.$replyLink = $replyLink.on( 'click keypress', this.onReplyLinkClick.bind( this ) );
+	this.$replyLink = $replyLink.on( 'click keypress', this.onReplyLinkClickHandler );
 	this.$replyLinkButtons = $replyLink.closest( '.dt-init-replylink-buttons' );
 
 	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
@@ -65,7 +70,7 @@ function getLatestRevId( pageName ) {
  * @param {string} commentId Comment ID
  * @return {jQuery.Promise} Promise which resolves with pageName+oldId, or rejects with an error
  */
-function getTranscludedFromSource( commentId ) {
+CommentController.prototype.getTranscludedFromSource = function ( commentId ) {
 	var promise,
 		pageName = mw.config.get( 'wgRelevantPageName' ),
 		oldId = mw.config.get( 'wgCurRevisionId' );
@@ -91,13 +96,21 @@ function getTranscludedFromSource( commentId ) {
 		.catch( followTransclusion.bind( null, 10 ) );
 
 	return promise;
-}
+};
 
 /* Methods */
 
 CommentController.prototype.onReplyLinkClick = function ( e ) {
 	if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
 		// Only handle keypresses on the "Enter" or "Space" keys
+		return;
+	}
+	// TODO: Allow users to use multiple reply widgets simultaneously.
+	// Currently submitting a reply from one widget would also destroy the other ones.
+	// eslint-disable-next-line no-jquery/no-class-state
+	if ( this.$pageContainer.hasClass( 'dt-init-replylink-open' ) ) {
+		// Support: IE 11
+		// On other browsers, the link is made unclickable using 'pointer-events' in CSS
 		return;
 	}
 	e.preventDefault();
@@ -118,14 +131,6 @@ CommentController.prototype.setup = function ( mode ) {
 			( defaultVisual ? 'visual' : 'source' );
 	}
 
-	// TODO: Allow users to use multiple reply widgets simultaneously.
-	// Currently submitting a reply from one widget would also destroy the other ones.
-	// eslint-disable-next-line no-jquery/no-class-state
-	if ( this.$pageContainer.hasClass( 'dt-init-replylink-open' ) ) {
-		// Support: IE 11
-		// On other browsers, the link is made unclickable using 'pointer-events' in CSS
-		return;
-	}
 	this.$pageContainer.addClass( 'dt-init-replylink-open' );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '.dt-init-replylink-reply' ).attr( {
@@ -148,7 +153,7 @@ CommentController.prototype.setup = function ( mode ) {
 	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
 
 	if ( !this.replyWidgetPromise ) {
-		this.replyWidgetPromise = getTranscludedFromSource( comment.id ).then( function ( pageData ) {
+		this.replyWidgetPromise = this.getTranscludedFromSource( comment.id ).then( function ( pageData ) {
 			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, {}, mode === 'visual' );
 		}, function ( code, data ) {
 			commentController.teardown();
@@ -180,7 +185,11 @@ CommentController.prototype.setup = function ( mode ) {
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
-		commentController.setupReplyWidget( replyWidget, {}, true );
+		commentController.setupReplyWidget( replyWidget );
+
+		// Show and focus the widget
+		replyWidget.scrollElementIntoView( { padding: scrollPadding } );
+		commentController.focus();
 
 		logger( { action: 'ready' } );
 		logger( { action: 'loaded' } );
@@ -205,16 +214,19 @@ CommentController.prototype.createReplyWidget = function ( comment, pageName, ol
 	} );
 };
 
-CommentController.prototype.setupReplyWidget = function ( replyWidget, data, scrollIntoView ) {
+CommentController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 	replyWidget.connect( this, { teardown: 'teardown' } );
 
 	replyWidget.setup( data );
-	if ( scrollIntoView ) {
-		replyWidget.scrollElementIntoView( { padding: scrollPadding } );
-	}
-	replyWidget.focus();
 
 	this.replyWidget = replyWidget;
+};
+
+/**
+ * Focus the first input field inside the controller.
+ */
+CommentController.prototype.focus = function () {
+	this.replyWidget.focus();
 };
 
 CommentController.prototype.teardown = function ( abandoned ) {
@@ -228,6 +240,9 @@ CommentController.prototype.teardown = function ( abandoned ) {
 	// have it redo setup to fix those.
 	if ( mw.libs.ve && mw.libs.ve.setupEditLinks ) {
 		mw.libs.ve.setupEditLinks();
+		// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#ca-addsection' ).off( '.ve-target' );
 	}
 	modifier.removeAddedListItem( this.newListItem );
 	this.newListItem = null;
@@ -236,48 +251,66 @@ CommentController.prototype.teardown = function ( abandoned ) {
 	}
 };
 
+/**
+ * Get the parameters of the API query that can be used to post this comment.
+ *
+ * @param {ThreadItem} comment Parent comment
+ * @param {string} pageName Title of the page to post on
+ * @param {Object} checkboxes Value of the promise returned by controller#getCheckboxesPromise
+ * @return {Object}
+ */
+CommentController.prototype.getApiQuery = function ( comment, pageName, checkboxes ) {
+	var captchaInput, replyWidget, data;
+
+	replyWidget = this.replyWidget;
+
+	data = {
+		action: 'discussiontoolsedit',
+		paction: 'addcomment',
+		page: pageName,
+		commentid: comment.id,
+		summary: replyWidget.getEditSummary(),
+		assert: mw.user.isAnon() ? 'anon' : 'user',
+		assertuser: mw.user.getName() || undefined,
+		uselang: mw.config.get( 'wgUserLanguage' ),
+		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
+		// a page view with reply links forced with ?dtenable=1 or otherwise
+		dtenable: '1',
+		dttags: [
+			'discussiontools',
+			'discussiontools-reply',
+			'discussiontools-' + replyWidget.getMode()
+		].join( ',' )
+	};
+
+	if ( replyWidget.getMode() === 'source' ) {
+		data.wikitext = replyWidget.getValue();
+	} else {
+		data.html = replyWidget.getValue();
+	}
+
+	captchaInput = replyWidget.captchaInput;
+	if ( captchaInput ) {
+		data.captchaid = captchaInput.getCaptchaId();
+		data.captchaword = captchaInput.getCaptchaWord();
+	}
+
+	if ( checkboxes.checkboxesByName.wpWatchthis ) {
+		data.watchlist = checkboxes.checkboxesByName.wpWatchthis.isSelected() ?
+			'watch' :
+			'unwatch';
+	}
+
+	return data;
+};
+
 CommentController.prototype.save = function ( comment, pageName ) {
 	var replyWidget = this.replyWidget,
 		commentController = this;
 
 	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
 		var defaults, noTimeoutApi,
-			captchaInput = commentController.replyWidget.captchaInput,
-			data = {
-				action: 'discussiontoolsedit',
-				paction: 'addcomment',
-				page: pageName,
-				commentid: comment.id,
-				summary: replyWidget.getEditSummary(),
-				assert: mw.user.isAnon() ? 'anon' : 'user',
-				assertuser: mw.user.getName() || undefined,
-				uselang: mw.config.get( 'wgUserLanguage' ),
-				// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
-				// a page view with reply links forced with ?dtenable=1 or otherwise
-				dtenable: '1',
-				dttags: [
-					'discussiontools',
-					'discussiontools-reply',
-					'discussiontools-' + replyWidget.getMode()
-				].join( ',' )
-			};
-
-		if ( replyWidget.getMode() === 'source' ) {
-			data.wikitext = replyWidget.getValue();
-		} else {
-			data.html = replyWidget.getValue();
-		}
-
-		if ( captchaInput ) {
-			data.captchaid = captchaInput.getCaptchaId();
-			data.captchaword = captchaInput.getCaptchaWord();
-		}
-
-		if ( checkboxes.checkboxesByName.wpWatchthis ) {
-			data.watchlist = checkboxes.checkboxesByName.wpWatchthis.isSelected() ?
-				'watch' :
-				'unwatch';
-		}
+			data = commentController.getApiQuery( comment, pageName, checkboxes );
 
 		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
 		// could result in duplicate messages if the user retries. (T249071)
@@ -328,8 +361,6 @@ CommentController.prototype.switchToWikitext = function () {
 	);
 
 	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
-		wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
-
 		// To prevent the "Reply" / "Cancel" buttons from shifting when the preview loads,
 		// wait for the preview (but no longer than 500 ms) before swithing the editors.
 		replyWidget.preparePreview( wikitext ).then( previewDeferred.resolve );
@@ -348,8 +379,68 @@ CommentController.prototype.switchToWikitext = function () {
 				showAdvanced: oldShowAdvanced,
 				editSummary: oldEditSummary
 			} );
+
+			// Focus the editor
+			replyWidget.focus();
 		} );
 	} );
+};
+
+/**
+ * Remove empty lines and add indent characters to convert the paragraphs in given wikitext to
+ * definition list items, as customary in discussions.
+ *
+ * @param {string} wikitext
+ * @param {string} indent Indent character, ':' or '*'
+ * @return {string}
+ */
+CommentController.prototype.doCrazyIndentReplacements = function ( wikitext, indent ) {
+	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
+
+	wikitext = wikitext.split( '\n' ).map( function ( line ) {
+		return indent + line;
+	} ).join( '\n' );
+
+	return wikitext;
+};
+
+/**
+ * Turn definition list items, customary in discussions, back into normal paragraphs, suitable for
+ * the editing interface.
+ *
+ * @param {Node} rootNode Node potentially containing definition lists (modified in-place)
+ */
+CommentController.prototype.undoCrazyIndentReplacements = function ( rootNode ) {
+	var children = Array.prototype.slice.call( rootNode.childNodes );
+	// There may be multiple lists when some lines are template generated
+	children.forEach( function ( child ) {
+		if ( child.nodeType === Node.ELEMENT_NODE ) {
+			// Unwrap list
+			modifier.unwrapList( child );
+		}
+	} );
+};
+
+/**
+ * Get the list of selectors that match nodes that can't be inserted in the comment. (We disallow
+ * things that generate wikitext syntax that may conflict with list item syntax.)
+ *
+ * @return {Object} Map of type used for error messages (string) to CSS selector (string)
+ */
+CommentController.prototype.getUnsupportedNodeSelectors = function () {
+	return {
+		// Tables are almost always multi-line
+		table: 'table',
+		// Headings are converted to plain text before we can detect them:
+		// `:==h2==` -> `<p>==h2==</p>`
+		// heading: 'h1, h2, h3, h4, h5, h6',
+		// Templates can be multiline
+		template: '[typeof*="mw:Transclusion"]',
+		// Extensions (includes references) can be multiline, could be supported later (T251633)
+		extension: '[typeof*="mw:Extension"]'
+		// Images are probably fine unless a multi-line caption was used (rare)
+		// image: 'figure, figure-inline'
+	};
 };
 
 CommentController.prototype.switchToVisual = function () {
@@ -360,8 +451,6 @@ CommentController.prototype.switchToVisual = function () {
 		wikitext = oldWidget.getValue(),
 		commentController = this;
 
-	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
-
 	// Replace wikitext signatures with a special marker recognized by DtDmMWSignatureNode
 	// to render them as signature nodes in visual mode.
 	wikitext = wikitext.replace(
@@ -371,9 +460,7 @@ CommentController.prototype.switchToVisual = function () {
 	);
 
 	if ( wikitext ) {
-		wikitext = wikitext.split( '\n' ).map( function ( line ) {
-			return ':' + line;
-		} ).join( '\n' );
+		wikitext = this.doCrazyIndentReplacements( wikitext, ':' );
 
 		// Based on ve.init.mw.Target#parseWikitextFragment
 		parsePromise = controller.getApi().post( {
@@ -397,25 +484,14 @@ CommentController.prototype.switchToVisual = function () {
 	);
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
-		var doc, bodyChildren, type, $msg,
-			unsupportedSelectors = {
-				// Tables are almost always multi-line
-				table: 'table',
-				// Headings are converted to plain text before we can detect them:
-				// `:==h2==` -> `<p>==h2==</p>`
-				// heading: 'h1, h2, h3, h4, h5, h6',
-				// Templates can be multiline
-				template: '[typeof*="mw:Transclusion"]',
-				// Extensions (includes references) can be multiline, could be supported later (T251633)
-				extension: '[typeof*="mw:Extension"]'
-				// Images are probably fine unless a multi-line caption was used (rare)
-				// image: 'figure, figure-inline'
-			};
+		var doc, type, $msg,
+			unsupportedSelectors = commentController.getUnsupportedNodeSelectors();
 
 		if ( html ) {
 			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
 			// Remove RESTBase IDs (T253584)
 			mw.libs.ve.stripRestbaseIds( doc );
+			// Check for tables, headings, images, templates
 			for ( type in unsupportedSelectors ) {
 				if ( doc.querySelector( unsupportedSelectors[ type ] ) ) {
 					$msg = $( '<div>' ).html(
@@ -447,15 +523,7 @@ CommentController.prototype.switchToVisual = function () {
 					return $.Deferred().reject().promise();
 				}
 			}
-			// Check for tables, headings, images, templates
-			bodyChildren = Array.prototype.slice.call( doc.body.childNodes );
-			// There may be multiple lists when some lines are template generated
-			bodyChildren.forEach( function ( child ) {
-				if ( child.nodeType === Node.ELEMENT_NODE ) {
-					// Unwrap list
-					modifier.unwrapList( child );
-				}
-			} );
+			commentController.undoCrazyIndentReplacements( doc.body );
 		}
 
 		// Swap out the DOM nodes
@@ -470,6 +538,9 @@ CommentController.prototype.switchToVisual = function () {
 			showAdvanced: oldShowAdvanced,
 			editSummary: oldEditSummary
 		} );
+
+		// Focus the editor
+		replyWidget.focus();
 	} );
 };
 
