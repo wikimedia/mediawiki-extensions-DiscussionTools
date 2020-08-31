@@ -8,6 +8,10 @@ en-big:
 https://en.wikipedia.org/w/index.php?action=render&title=Wikipedia:Village_pump_(technical)/Archive_175&oldid=913983958
 https://en.wikipedia.org/api/rest_v1/page/html/Wikipedia%3AVillage_pump_(technical)%2FArchive_175/913983958
 
+ckb-big:
+https://ckb.wikipedia.org/w/index.php?title=ویکیپیدیا:دیوەخان_(پێشنیارەکان)&oldid=638545&action=render
+https://ckb.wikipedia.org/api/rest_v1/page/html/ویکیپیدیا%3Aدیوەخان_(پێشنیارەکان)/638545
+
 en-bigafd:
 https://en.wikipedia.org/api/rest_v1/page/html/Wikipedia%3AArticles_for_deletion%2FLog%2F2020_March_7
 

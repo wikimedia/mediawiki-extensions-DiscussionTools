@@ -28,6 +28,20 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "ckbwiki oldparser",
+		"dom": "cases/ckb-big-oldparser/ckb-big-oldparser.html",
+		"expected": "../cases/ckb-big-oldparser/ckb-big-oldparser.json",
+		"config": "../data/ckbwiki-config.json",
+		"data": "../data/ckbwiki-data.json"
+	},
+	{
+		"name": "ckbwiki parsoid",
+		"dom": "cases/ckb-big-parsoid/ckb-big-parsoid.html",
+		"expected": "../cases/ckb-big-parsoid/ckb-big-parsoid.json",
+		"config": "../data/ckbwiki-config.json",
+		"data": "../data/ckbwiki-data.json"
+	},
+	{
 		"name": "arwiki no-paragraph oldparser",
 		"dom": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html",
 		"expected": "../cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.json",
