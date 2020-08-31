@@ -270,23 +270,23 @@ class CommentParser {
 	 * of matching the regexp returned by getTimestampRegexp()
 	 *
 	 * @param string $format Date format, as used by MediaWiki
-	 * @param string|null $digits Localised digits from 0 to 9, e.g. `0123456789`
+	 * @param array|null $digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
 	 * @param string $localTimezone Local timezone IANA name, e.g. `America/New_York`
 	 * @param array $tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
 	 *   for the local timezone, e.g. [ 'EDT' => 'EDT', 'EST' => 'EST' ]
 	 * @return callable Parser function
 	 */
 	private function getTimestampParser(
-		string $format, ?string $digits, string $localTimezone, array $tzAbbrs
+		string $format, ?array $digits, string $localTimezone, array $tzAbbrs
 	) : callable {
 		$untransformDigits = function ( string $text ) use ( $digits ) {
 			if ( !$digits ) {
 				return $text;
 			}
 			return preg_replace_callback(
-				'/[' . $digits . ']/',
+				'/[' . implode( '', $digits ) . ']/u',
 				function ( array $m ) use ( $digits ) {
-					return (string)strpos( $digits, $m[0] );
+					return (string)array_search( $m[0], $digits );
 				},
 				$text
 			);
@@ -453,7 +453,7 @@ class CommentParser {
 	public function getLocalTimestampRegexp() : string {
 		return $this->getTimestampRegexp(
 			$this->dateFormat,
-			$this->digits ? "[$this->digits]" : '\\d',
+			$this->digits ? '[' . implode( '', $this->digits ) . ']' : '\\d',
 			$this->timezones
 		);
 	}
