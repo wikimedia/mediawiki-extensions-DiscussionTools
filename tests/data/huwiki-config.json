@@ -1,8 +1,6 @@
 {
-  "wgContentLang": "hu",
+  "wgContentLanguage": "hu",
   "wgArticlePath": "/wiki/$1",
-  "wgMetaNamespace": "Wikipédia",
-  "wgMetaNamespaceTalk": "Wikipédia-vita",
   "wgNamespaceIds": {
     "média": -2,
     "speciális": -1,
