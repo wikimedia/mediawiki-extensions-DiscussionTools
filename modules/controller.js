@@ -276,14 +276,16 @@ function update( data, comment, pageName, replyWidget ) {
 		} );
 	}
 
-	// Update watch link to match 'watch checkbox' in save dialog.
 	// User logged in if module loaded.
 	if ( mw.loader.getState( 'mediawiki.page.watch.ajax' ) === 'ready' ) {
 		watch = require( 'mediawiki.page.watch.ajax' );
+
 		watch.updateWatchLink(
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$( '#ca-watch a, #ca-unwatch a' ),
-			data.watchlist === 'watch' ? 'unwatch' : 'watch'
+			data.watched ? 'unwatch' : 'watch',
+			'idle',
+			data.watchlistexpiry
 		);
 	}
 
