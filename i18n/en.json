@@ -32,6 +32,7 @@
 	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki.",
 	"discussiontools-replywidget-transcluded": "Your comment will be saved at [[$1]].",
 	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-error-comment-conflict": "Your comment could not be saved, because someone else commented at the same time as you. Please try again, or reload the page to view the latest comments.",
 	"discussiontools-error-comment-disappeared": "Could not find the comment you're replying to on the page. It might have been deleted or moved to another page. Please reload the page and try again.",
 	"discussiontools-error-comment-is-transcluded": "The \"{{int:discussiontools-replylink}}\" link cannot be used to reply to this comment. To reply, please use the full page editor by clicking \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "The \"{{int:discussiontools-replylink}}\" link cannot be used to reply to this comment because it is loaded from another page. To reply, please go here: [[$1]].",
