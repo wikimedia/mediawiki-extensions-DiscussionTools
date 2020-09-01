@@ -43,10 +43,8 @@ class Data {
 
 		$data['dateFormat'] = $lang->getDateFormatString( 'both', $lang->dateFormat( false ) );
 
-		// TODO: We probably shouldn't assume that each digit can be represented by a single BMP
-		// codepoint in every language (although it seems to be true right now).
 		$data['digits'] = $config->get( 'TranslateNumerals' ) ?
-			$lang->formatNum( '0123456789', true ) :
+			preg_split( '//u', $lang->formatNum( '0123456789', true ), -1, PREG_SPLIT_NO_EMPTY ) :
 			null;
 
 		// ApiQuerySiteinfo
