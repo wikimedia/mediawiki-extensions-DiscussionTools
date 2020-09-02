@@ -186,7 +186,7 @@ Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs )
  *
  * @private
  * @param {string} format Date format, as used by MediaWiki
- * @param {string|null} digits Localised digits from 0 to 9, e.g. `0123456789`
+ * @param {array|null} digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
  * @param {string} localTimezone Local timezone IANA name, e.g. `America/New_York`
  * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
@@ -246,7 +246,7 @@ Parser.prototype.getTimestampParser = function ( format, digits, localTimezone, 
 			return text;
 		}
 		return text.replace(
-			new RegExp( '[' + digits + ']', 'g' ),
+			new RegExp( '[' + digits.join( '' ) + ']', 'g' ),
 			function ( m ) {
 				return digits.indexOf( m );
 			}
@@ -371,7 +371,7 @@ Parser.prototype.getTimestampParser = function ( format, digits, localTimezone, 
 Parser.prototype.getLocalTimestampRegexp = function () {
 	return this.getTimestampRegexp(
 		data.dateFormat,
-		data.digits ? '[' + data.digits + ']' : '\\d',
+		data.digits ? '[' + data.digits.join( '' ) + ']' : '\\d',
 		data.timezones
 	);
 };
