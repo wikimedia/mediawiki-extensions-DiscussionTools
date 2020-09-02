@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "Komentāra ID nav atrasts: $1",
+	"apihelp-discussiontoolsedit-summary": "Izmaiņu kopsavilkums.",
+	"apihelp-discussiontoolsedit-param-commentid": "Komentāra ID",
+	"apihelp-discussiontoolsedit-param-wikitext": "Vikiteksts"
+}
