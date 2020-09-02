@@ -298,7 +298,13 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				api: new mw.Api( { ajax: { timeout: 0 }, parameters: { formatversion: 2 } } )
 			}
 		).catch( function ( code, responseData ) {
-			// Better user-facing error message
+			// Better user-facing error messages
+			if ( code === 'editconflict' ) {
+				return $.Deferred().reject( 'editconflict', { errors: [ {
+					code: 'editconflict',
+					html: mw.message( 'discussiontools-error-comment-conflict' ).parse()
+				} ] } ).promise();
+			}
 			if ( code === 'discussiontools-commentid-notfound' ) {
 				return $.Deferred().reject( 'discussiontools-commentid-notfound', { errors: [ {
 					code: 'discussiontools-commentid-notfound',
