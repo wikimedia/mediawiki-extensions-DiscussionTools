@@ -35,12 +35,13 @@ OO.initClass( Parser );
  * Get text of localisation messages in content language.
  *
  * @private
- * @param {string[]} messages
- * @return {string[]}
+ * @param {string} contLangVariant Content language variant
+ * @param {string[]} messages Message keys
+ * @return {string[]} Message values
  */
-function getMessages( messages ) {
+function getMessages( contLangVariant, messages ) {
 	return messages.map( function ( code ) {
-		return data.contLangMessages[ code ];
+		return data.contLangMessages[ contLangVariant ][ code ];
 	} );
 }
 
@@ -53,13 +54,14 @@ function getMessages( messages ) {
  * complicated).
  *
  * @private
+ * @param {string} contLangVariant Content language variant
  * @param {string} format Date format, as used by MediaWiki
  * @param {string} digitsRegexp Regular expression matching a single localised digit, e.g. `[0-9]`
  * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
  * @return {string} Regular expression
  */
-Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs ) {
+Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digitsRegexp, tzAbbrs ) {
 	var s, p, num, code, endQuote, tzRegexp, regexp;
 
 	function regexpGroup( r ) {
@@ -87,7 +89,7 @@ Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs )
 				s += 'x';
 				break;
 			case 'xg':
-				s += regexpAlternateGroup( getMessages( [
+				s += regexpAlternateGroup( getMessages( contLangVariant, [
 					'january-gen', 'february-gen', 'march-gen', 'april-gen', 'may-gen', 'june-gen',
 					'july-gen', 'august-gen', 'september-gen', 'october-gen', 'november-gen',
 					'december-gen'
@@ -97,7 +99,7 @@ Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs )
 				num = '2';
 				break;
 			case 'D':
-				s += regexpAlternateGroup( getMessages( [
+				s += regexpAlternateGroup( getMessages( contLangVariant, [
 					'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'
 				] ) );
 				break;
@@ -105,20 +107,20 @@ Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs )
 				num = '1,2';
 				break;
 			case 'l':
-				s += regexpAlternateGroup( getMessages( [
+				s += regexpAlternateGroup( getMessages( contLangVariant, [
 					'sunday', 'monday', 'tuesday', 'wednesday', 'thursday',
 					'friday', 'saturday'
 				] ) );
 				break;
 			case 'F':
-				s += regexpAlternateGroup( getMessages( [
+				s += regexpAlternateGroup( getMessages( contLangVariant, [
 					'january', 'february', 'march', 'april', 'may_long', 'june',
 					'july', 'august', 'september', 'october', 'november',
 					'december'
 				] ) );
 				break;
 			case 'M':
-				s += regexpAlternateGroup( getMessages( [
+				s += regexpAlternateGroup( getMessages( contLangVariant, [
 					'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
 					'sep', 'oct', 'nov', 'dec'
 				] ) );
@@ -186,6 +188,7 @@ Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs )
  * of matching the regexp returned by #getTimestampRegexp.
  *
  * @private
+ * @param {string} contLangVariant Content language variant
  * @param {string} format Date format, as used by MediaWiki
  * @param {string[]|null} digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
  * @param {string} localTimezone Local timezone IANA name, e.g. `America/New_York`
@@ -193,7 +196,7 @@ Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs )
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
  * @return {TimestampParser} Timestamp parser function
  */
-Parser.prototype.getTimestampParser = function ( format, digits, localTimezone, tzAbbrs ) {
+Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits, localTimezone, tzAbbrs ) {
 	var p, code, endQuote, matchingGroups = [];
 	for ( p = 0; p < format.length; p++ ) {
 		code = format[ p ];
@@ -280,7 +283,7 @@ Parser.prototype.getTimestampParser = function ( format, digits, localTimezone, 
 
 			switch ( code2 ) {
 				case 'xg':
-					monthIdx = getMessages( [
+					monthIdx = getMessages( contLangVariant, [
 						'january-gen', 'february-gen', 'march-gen', 'april-gen', 'may-gen', 'june-gen',
 						'july-gen', 'august-gen', 'september-gen', 'october-gen', 'november-gen',
 						'december-gen'
@@ -295,14 +298,14 @@ Parser.prototype.getTimestampParser = function ( format, digits, localTimezone, 
 					// Day of the week - unused
 					break;
 				case 'F':
-					monthIdx = getMessages( [
+					monthIdx = getMessages( contLangVariant, [
 						'january', 'february', 'march', 'april', 'may_long', 'june',
 						'july', 'august', 'september', 'october', 'november',
 						'december'
 					] ).indexOf( text );
 					break;
 				case 'M':
-					monthIdx = getMessages( [
+					monthIdx = getMessages( contLangVariant, [
 						'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
 						'sep', 'oct', 'nov', 'dec'
 					] ).indexOf( text );
@@ -362,37 +365,45 @@ Parser.prototype.getTimestampParser = function ( format, digits, localTimezone, 
 };
 
 /**
- * Get a regexp that matches timestamps in the local date format.
+ * Get a regexp that matches timestamps in the local date format, for each language variant.
  *
  * This calls #getTimestampRegexp with predefined data for the current wiki.
  *
  * @private
- * @return {string} Regular expression
+ * @return {string[]} Regular expressions
  */
-Parser.prototype.getLocalTimestampRegexp = function () {
-	return this.getTimestampRegexp(
-		data.dateFormat,
-		data.digits ? '[' + data.digits.join( '' ) + ']' : '\\d',
-		data.timezones
-	);
+Parser.prototype.getLocalTimestampRegexps = function () {
+	var parser = this;
+	return Object.keys( data.dateFormat ).map( function ( contLangVariant ) {
+		return parser.getTimestampRegexp(
+			contLangVariant,
+			data.dateFormat[ contLangVariant ],
+			'[' + data.digits[ contLangVariant ].join( '' ) + ']',
+			data.timezones[ contLangVariant ]
+		);
+	} );
 };
 
 /**
- * Get a function that parses timestamps in the local date format, based on the result
- * of matching the regexp returned by #getLocalTimestampRegexp.
+ * Get a function that parses timestamps in the local date format, for each language variant,
+ * based on the result of matching the regexps returned by #getLocalTimestampRegexps.
  *
  * This calls #getTimestampParser with predefined data for the current wiki.
  *
  * @private
- * @return {TimestampParser} Timestamp parser function
+ * @return {TimestampParser[]} Timestamp parser functions
  */
-Parser.prototype.getLocalTimestampParser = function () {
-	return this.getTimestampParser(
-		data.dateFormat,
-		data.digits,
-		data.localTimezone,
-		data.timezones
-	);
+Parser.prototype.getLocalTimestampParsers = function () {
+	var parser = this;
+	return Object.keys( data.dateFormat ).map( function ( contLangVariant ) {
+		return parser.getTimestampParser(
+			contLangVariant,
+			data.dateFormat[ contLangVariant ],
+			data.digits[ contLangVariant ],
+			data.localTimezone,
+			data.timezones[ contLangVariant ]
+		);
+	} );
 };
 
 /**
@@ -411,16 +422,19 @@ function acceptOnlyNodesAllowingComments( node ) {
 }
 
 /**
- * Find a timestamps in a given text node
+ * Find a timestamp in a given text node
  *
  * @private
  * @param {Text} node Text node
- * @param {string} timestampRegex Timestamp regex
- * @return {Array} Regexp match data, which specifies the location of the match,
- *  and which can be parsed using #getLocalTimestampParser
+ * @param {string[]} timestampRegexps Timestamp regexps
+ * @return {Object|null} Object with the following keys:
+ *   - {number} offset Length of extra text preceding the node that was used for matching
+ *   - {number} parserIndex Which of the regexps matched
+ *   - {Array} matchData Regexp match data, which specifies the location of the match,
+ *     and which can be parsed using #getLocalTimestampParsers
  */
-Parser.prototype.findTimestamp = function ( node, timestampRegex ) {
-	var matchData,
+Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
+	var matchData, i,
 		nodeText = '',
 		offset = 0;
 	while ( node ) {
@@ -453,14 +467,19 @@ Parser.prototype.findTimestamp = function ( node, timestampRegex ) {
 		}
 	}
 
-	// Technically, there could be multiple matches in a single text node. However, the ultimate
-	// point of this is to find the signatures which precede the timestamps, and any later
-	// timestamps in the text node can't be directly preceded by a signature (as we require them to
-	// have links), so we only concern ourselves with the first match.
-	matchData = nodeText.match( timestampRegex );
-	if ( matchData ) {
-		matchData.offset = offset;
-		return matchData;
+	for ( i = 0; i < timestampRegexps.length; i++ ) {
+		// Technically, there could be multiple matches in a single text node. However, the ultimate
+		// point of this is to find the signatures which precede the timestamps, and any later
+		// timestamps in the text node can't be directly preceded by a signature (as we require them to
+		// have links), so we only concern ourselves with the first match.
+		matchData = nodeText.match( timestampRegexps[ i ] );
+		if ( matchData ) {
+			return {
+				matchData: matchData,
+				offset: offset,
+				parserIndex: i
+			};
+		}
 	}
 	return null;
 };
@@ -714,8 +733,8 @@ Parser.prototype.findCommentById = function ( id ) {
 
 Parser.prototype.buildThreadItems = function () {
 	var
-		dfParser = this.getLocalTimestampParser(),
-		timestampRegex = this.getLocalTimestampRegexp(),
+		dfParsers = this.getLocalTimestampParsers(),
+		timestampRegexps = this.getLocalTimestampRegexps(),
 		commentItems = [],
 		threadItems = [],
 		treeWalker,
@@ -754,7 +773,7 @@ Parser.prototype.buildThreadItems = function () {
 			curComment = new HeadingItem( range );
 			curComment.rootNode = this.rootNode;
 			threadItems.push( curComment );
-		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegex ) ) ) {
+		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegexps ) ) ) {
 			warnings = [];
 			foundSignature = this.findSignature( node, lastSigNode );
 			author = foundSignature[ 1 ];
@@ -768,7 +787,7 @@ Parser.prototype.buildThreadItems = function () {
 			}
 
 			lastSigNodeOffset = lastSigNode === node ?
-				match.index + match[ 0 ].length - match.offset :
+				match.matchData.index + match.matchData[ 0 ].length - match.offset :
 				utils.childIndexOf( lastSigNode ) + 1;
 			sigRange = {
 				startContainer: firstSigNode.parentNode,
@@ -813,7 +832,7 @@ Parser.prototype.buildThreadItems = function () {
 			// Should this use the indent level of `startNode` or `node`?
 			level = Math.min( startLevel, endLevel );
 
-			dateTime = dfParser( match );
+			dateTime = dfParsers[ match.parserIndex ]( match.matchData );
 			if ( dateTime.discussionToolsWarning ) {
 				warnings.push( dateTime.discussionToolsWarning );
 			}

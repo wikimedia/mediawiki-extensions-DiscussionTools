@@ -117,7 +117,7 @@ class CommentParserTest extends CommentTestCase {
 		$expected = str_replace( ':', '\:', $expected );
 		$expected = '/' . $expected . '/u';
 
-		$result = $parser->getTimestampRegexp( $format, '\\d', [ 'UTC' => 'UTC' ] );
+		$result = $parser->getTimestampRegexp( 'en', $format, '\\d', [ 'UTC' => 'UTC' ] );
 		self::assertSame( $expected, $result, $message );
 	}
 
@@ -138,7 +138,7 @@ class CommentParserTest extends CommentTestCase {
 
 		$expected = new DateTimeImmutable( $expected );
 
-		$tsParser = $parser->getTimestampParser( $format, null, 'UTC', [ 'UTC' => 'UTC' ] );
+		$tsParser = $parser->getTimestampParser( 'en', $format, null, 'UTC', [ 'UTC' => 'UTC' ] );
 		self::assertEquals( $expected, $tsParser( $data ), $message );
 	}
 
@@ -158,8 +158,8 @@ class CommentParserTest extends CommentTestCase {
 			CommentParser::newFromGlobalState( new DOMELement( 'div' ) )
 		);
 
-		$regexp = $parser->getTimestampRegexp( $format, '\\d', $timezoneAbbrs );
-		$tsParser = $parser->getTimestampParser( $format, null, $timezone, $timezoneAbbrs );
+		$regexp = $parser->getTimestampRegexp( 'en', $format, '\\d', $timezoneAbbrs );
+		$tsParser = $parser->getTimestampParser( 'en', $format, null, $timezone, $timezoneAbbrs );
 
 		$expected = new DateTimeImmutable( $expected );
 		$expectedUtc = new DateTimeImmutable( $expectedUtc );

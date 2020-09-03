@@ -13,7 +13,7 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 
 	cases.forEach( function ( caseItem ) {
 		assert.strictEqual(
-			parser.getTimestampRegexp( caseItem.format, '\\d', { UTC: 'UTC' } ),
+			parser.getTimestampRegexp( 'en', caseItem.format, '\\d', { UTC: 'UTC' } ),
 			caseItem.expected,
 			caseItem.message
 		);
@@ -27,7 +27,7 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 	testUtils.overrideParserData( require( '../data-en.json' ) );
 
 	cases.forEach( function ( caseItem ) {
-		var tsParser = parser.getTimestampParser( caseItem.format, null, 'UTC', { UTC: 'UTC' } ),
+		var tsParser = parser.getTimestampParser( 'en', caseItem.format, null, 'UTC', { UTC: 'UTC' } ),
 			expectedDate = moment( caseItem.expected );
 
 		assert.ok(
@@ -44,8 +44,8 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 	testUtils.overrideParserData( require( '../data-en.json' ) );
 
 	cases.forEach( function ( caseItem ) {
-		var regexp = parser.getTimestampRegexp( caseItem.format, '\\d', caseItem.timezoneAbbrs ),
-			tsParser = parser.getTimestampParser( caseItem.format, null, caseItem.timezone, caseItem.timezoneAbbrs ),
+		var regexp = parser.getTimestampRegexp( 'en', caseItem.format, '\\d', caseItem.timezoneAbbrs ),
+			tsParser = parser.getTimestampParser( 'en', caseItem.format, null, caseItem.timezone, caseItem.timezoneAbbrs ),
 			date = tsParser( caseItem.sample.match( regexp ) );
 
 		assert.ok(
