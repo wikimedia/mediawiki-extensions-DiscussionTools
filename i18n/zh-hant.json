@@ -30,6 +30,7 @@
 	"discussiontools-replywidget-signature-body": "$1 已轉換成您的簽名。若要取消這樣做，請輸入 $2。請注意使用此工具時，您不需要在評論上簽名，您的簽名會被自動添加。",
 	"discussiontools-replywidget-terms-click": "點擊「$1」，代表您同意此Wiki的使用條款。",
 	"discussiontools-replywidget-transcluded": "您的評論會儲存在[[$1]]。",
+	"discussiontools-error-comment-conflict": "因為有其他人跟您在同一時間發表評論，所以您的評論無法儲存。請重新嘗試，或是重新載入頁面來查看最新的評論。",
 	"discussiontools-error-comment-disappeared": "無法在頁面上找出您回覆的評論，這有可能是已被刪除或是移動到別的頁面。請重新載入頁面並再次嘗試。",
 	"discussiontools-error-comment-is-transcluded": "「{{int:discussiontools-replylink}}」連結不能夠拿來回覆此評論。若想要回覆，請透過點擊「$1」來使用全頁面編輯器。",
 	"discussiontools-error-comment-is-transcluded-title": "「{{int:discussiontools-replylink}}」連結不能夠拿來回覆此評論，因為這是從別的頁面所載入。若想要回覆，請前往：[[$1]]。",

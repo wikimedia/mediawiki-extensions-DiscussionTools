@@ -35,6 +35,7 @@
 	"discussiontools-replywidget-signature-body": "تم تغيير $1 إلى توقيعك. لإلغاء ذلك، {{GENDER:|اضغط|اضغطي}} على $2. ملاحظة: لا حاجة للتوقيع على تعليقك مع هذه الأداة. توقيعك سيضاف تلقائيا.",
 	"discussiontools-replywidget-terms-click": "بالنقر على \"$1\"، فإنك {{GENDER:|توافق|توافقين}} على شروط الاستخدام لهذا الويكي.",
 	"discussiontools-replywidget-transcluded": "سيتم حفظ تعليقك في [[$1]].",
+	"discussiontools-error-comment-conflict": "لا يمكن حفظ تعديلك، لأن شخصا آخر قام بالتعليق في الوقت نفسه. من فضلك {{GENDER:|حاول|حاولي}} مرّة أخرى، أو {{GENDER:|أعد|أعيدي}} تحميل الصفحة لمشاهدة آخر التعليقات.",
 	"discussiontools-error-comment-disappeared": "لا نستطيع العثور على التعليق الذي {{GENDER:|تريد|تريدين}} الردّ عليه في الصفحة. من المرجّح أنه قد حذف أو تم نقله إلى صفحة أخرى. رجاءً {{GENDER:|أعد|أعيدي}} تحميل الصفحة ثم {{GENDER:|كرّر|كرّري}} المحاولة.",
 	"discussiontools-error-comment-is-transcluded": "لا يمكن استعمال هذه الأداة للرد على هذا التعليق. عوضا عن ذلك، للردّ، من فضلك {{GENDER:|استخدم|استخدمي}} المحرر الكامل للصفحة عبر الضغط على \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "\nلا يمكن استخدام \"{{int:discussiontools-replylink}}\" للرد على هذا التعليق لأنه تم تحميله من صفحة أخرى. من فضلك {{GENDER:|انتقل|انتقلي}} إلى هنا: [[$1]].",

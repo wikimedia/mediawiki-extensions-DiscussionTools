@@ -31,6 +31,7 @@
 	"discussiontools-replywidget-signature-body": "$1 wurde in deine Unterschrift umgewandelt. Um dies rückgängig zu machen, drücke $2. Beachte, dass du mit diesem Werkzeug keine Kommentare unterschreiben musst. Deine Unterschrift wird automatisch hinzugefügt.",
 	"discussiontools-replywidget-terms-click": "Durch Klicken auf „$1“ stimmst du den Nutzungsbedingungen für dieses Wiki zu.",
 	"discussiontools-replywidget-transcluded": "Dein Kommentar wird auf [[$1]] gespeichert.",
+	"discussiontools-error-comment-conflict": "Dein Kommentar konnte nicht gespeichert werden, weil jemand anderes zur gleichen Zeit wie du kommentiertest. Bitte versuche es erneut oder lade die Seite neu, um die neuesten Kommentare zu sehen.",
 	"discussiontools-error-comment-disappeared": "Konnte den Kommentar, auf den du antwortesz, nicht auf der Seite finden. Er könnte gelöscht oder auf eine andere Seite verschoben worden sein. Bitte lade die Seite neu und versuche es erneut.",
 	"discussiontools-error-comment-is-transcluded": "Der Link „{{int:discussiontools-replylink}}“ kann nicht verwendet werden, um auf diesen Kommentar zu antworten. Um zu antworten, benutze bitte den Ganzseiten-Editor, indem du auf „$1“ klickst.",
 	"discussiontools-error-comment-is-transcluded-title": "Der Link „{{int:discussiontools-replylink}}“ kann nicht verwendet werden, um auf den Kommentar zu antworten, da er von einer anderen Seite geladen wird. Um zu antworten, gehe bitte auf [[$1]].",
