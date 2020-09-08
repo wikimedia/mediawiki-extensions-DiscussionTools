@@ -511,7 +511,7 @@ class CommentParser {
 			( $node = $node->previousSibling ) && $length < self::SIGNATURE_SCAN_LIMIT && $node !== $until
 		) {
 			$sigNodes[] = $node;
-			$length += $node->textContent ? strlen( $node->textContent ) : 0;
+			$length += $node->textContent ? mb_strlen( $node->textContent ) : 0;
 			if ( !( $node instanceof DOMElement ) ) {
 				continue;
 			}

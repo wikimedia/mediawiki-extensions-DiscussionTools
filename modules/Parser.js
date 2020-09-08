@@ -7,6 +7,7 @@
 
 var
 	utils = require( './utils.js' ),
+	codePointLength = require( 'mediawiki.String' ).codePointLength,
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
 	// Hooks::getLocalData()
@@ -530,7 +531,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 
 	while ( ( node = node.previousSibling ) && length < data.signatureScanLimit && node !== until ) {
 		sigNodes.push( node );
-		length += ( node.textContent || '' ).length;
+		length += node.textContent ? codePointLength( node.textContent ) : 0;
 		if ( node.nodeType !== Node.ELEMENT_NODE ) {
 			continue;
 		}
