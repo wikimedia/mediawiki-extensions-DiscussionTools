@@ -32,7 +32,7 @@
 	"discussiontools-error-comment-is-transcluded": "L'enllaç \"{{int:discussiontools-replylink}}\" no pot emprar-se per respondre aquest comentari. Per respondre'l, empreu el sistema d'edició habitual a través de la pestanya o enllaç de secció superior \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "L'enllaç \"{{int:discussiontools-replylink}}\" no pot emprar-se per respondre aquest comentari atès que s'ha carregat a partir de les dades d'una altra pàgina. Si voleu respondre, podreu fer-ho clicant aquí: [[$1]].",
 	"discussiontools-error-lint": "Els comentaris i intervencions en aquesta pàgina no es poden respondre atès un error al codi del text. Podeu llegir més sobre aquest error [$1 llegint-ne la documentació], demanant ajuda [$2 aquí] o esmenant-ne l'error [$3 fent clic a l'editor de codi tradicional] si en teniu prou coneixement.",
-	"discussiontools-error-noswitchtove": "Ens sap greu, però el canvi a l'editor visual s'ha desactivat perquè hem detectat  <b>$1</b en el comentari que heu escrit. [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Llegiu-ne més].",
+	"discussiontools-error-noswitchtove": "Ens sap greu, però el canvi a l'editor visual s'ha desactivat perquè hem detectat  <b>$1</b> en el comentari que heu escrit. [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Llegiu-ne més].",
 	"discussiontools-error-noswitchtove-extension": "Extensió o sintaxi de referència",
 	"discussiontools-error-noswitchtove-table": "Sintaxi de taula",
 	"discussiontools-error-noswitchtove-template": "Sintaxi de plantilla",

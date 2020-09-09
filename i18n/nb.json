@@ -29,6 +29,7 @@
 	"discussiontools-replywidget-signature-body": "$1 har blitt gjort om til signaturen din. For å unngå dette, skriv $2. Merk at du ikke trenger å signere kommentarer med dette verktøyet. Signaturen din blir lagt til automatisk.",
 	"discussiontools-replywidget-terms-click": "Ved å trykke på «$1» samtykker du i bruksvilkårene til denne wikien.",
 	"discussiontools-replywidget-transcluded": "Kommentaren din blir lagret på [[$1]].",
+	"discussiontools-error-comment-conflict": "Kommentaren din kunne ikke lagret, kanskje fordi noen andre kommenterte samtidig som du gjorde det. Prøv igjen eller last siden på nytt for å vise de siste kommentarene.",
 	"discussiontools-error-comment-disappeared": "Kunne ikke finne kommentaren du svarer på på siden. Den kan ha blitt slettet eller flyttet til en annen side. Last siden på nytt og prøv igjen.",
 	"discussiontools-error-comment-is-transcluded": "Lenka «{{int:discussiontools-replylink}}» kan ikke brukes til å svare på denne kommentaren. Bruk den vanlige redigeringsmodusen for å svare ved å trykke på «$1».",
 	"discussiontools-error-comment-is-transcluded-title": "Lenka «{{int:discussiontools-replylink}}» kan ikke brukes til å svare på denne kommentaren fordi den er lastet inn fra en annen side. Gå til [[$1]] for å svare.",
