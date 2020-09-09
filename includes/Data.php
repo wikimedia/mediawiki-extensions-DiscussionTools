@@ -44,7 +44,7 @@ class Data {
 		$data['dateFormat'] = $lang->getDateFormatString( 'both', $lang->dateFormat( false ) );
 
 		$data['digits'] = $config->get( 'TranslateNumerals' ) ?
-			preg_split( '//u', $lang->formatNum( '0123456789', true ), -1, PREG_SPLIT_NO_EMPTY ) :
+			preg_split( '//u', $lang->formatNumNoSeparators( '0123456789' ), -1, PREG_SPLIT_NO_EMPTY ) :
 			null;
 
 		// ApiQuerySiteinfo
