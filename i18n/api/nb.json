@@ -7,7 +7,7 @@
 	"apierror-discussiontools-commentid-notfound": "Kommentar-ID ikke funnet: $1",
 	"apihelp-discussiontools-param-oldid": "Revisjonstallet som skal brukes (standard er siste revisjon).",
 	"apihelp-discussiontools-summary": "Returnerer metadata som kreves for å initialisere diskusjonsverktøyene.",
-	"apihelp-discussiontoolsedit-summary": "Redigeringsforklaring.",
+	"apihelp-discussiontoolsedit-summary": "Post en beskjed på en diskusjonsside.",
 	"apihelp-discussiontoolsedit-param-commentid": "Kommentar-ID.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikitekst"
 }

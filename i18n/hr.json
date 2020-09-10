@@ -29,6 +29,7 @@
 	"discussiontools-replywidget-signature-body": "$1 je preoblikovan u Vaš potpis. Kako biste poništili ovo, utipkajte $2. Molimo Vas, primijetite kako ne postoji potreba da potpisujete Vaše komentare rabeći ovo oruđe. Vaš će potpis biti dodan automatski.",
 	"discussiontools-replywidget-terms-click": "Klikom na \"$1\", slažete se s uvjetima uporabe na ovom wikiju.",
 	"discussiontools-replywidget-transcluded": "Vaš će komentar biti spremljen na [[$1]].",
+	"discussiontools-error-comment-conflict": "Vaš komentar nije bilo moguće spremiti jer je netko drugi komentirao/uređivao u isto vrijeme kad i Vi. Molimo Vas, pokušajte opet ponovo ili učitajte stranicu kako biste vidjeli zadnje komentare.",
 	"discussiontools-error-comment-disappeared": "Ne možemo pronaći komentar na koji odgovarate na stranici. Vjerojatno je izbrisan ili premješten na drugu stranicu. Molimo Vas da ponovno učitate stranicu i pokušate ponovno.",
 	"discussiontools-error-comment-is-transcluded": "Ne možete odgovoriti na ovaj komentar koristeći se ovim alatom. Molimo, pokušajte umjesto toga odgovoriti koristeći se uređivačem cijele stranice.",
 	"discussiontools-error-comment-is-transcluded-title": "Ovdje (još) ne možete odgovoriti na ovaj komentar jer je učitan s druge stranice. Molimo, idite na [[$1]] kako biste odgovorili na njega.",
