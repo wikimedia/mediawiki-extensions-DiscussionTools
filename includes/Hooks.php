@@ -48,6 +48,50 @@ class Hooks {
 	}
 
 	/**
+	 * Check if the tool is available on a given page
+	 *
+	 * @param OutputPage $output
+	 * @return bool
+	 */
+	private static function isAvailable( OutputPage $output ) : bool {
+		// Don't show on edit pages, history, etc.
+		if ( Action::getActionName( $output->getContext() ) !== 'view' ) {
+			return false;
+		}
+
+		$title = $output->getTitle();
+		// Only wikitext pages (e.g. not Flow boards)
+		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
+			return false;
+		}
+
+		// Query parameter override to load on any wikitext page for testing
+		if ( $output->getRequest()->getVal( 'dtenable' ) ) {
+			return true;
+		}
+
+		$user = $output->getUser();
+		$services = MediaWikiServices::getInstance();
+		$optionsLookup = $services->getUserOptionsLookup();
+
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		$userEnabled = $dtConfig->get( 'DiscussionToolsEnable' ) && (
+			!$dtConfig->get( 'DiscussionToolsBeta' ) ||
+			$optionsLookup->getOption( $user, 'discussiontools-betaenable' )
+		);
+
+		// Finally check the user has the tool enabled and that the page
+		// supports discussions.
+		return $userEnabled && (
+			// `wantSignatures` includes talk pages
+			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
+			// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
+			$output->showNewSectionLink()
+			// TODO: Consider not loading if forceHideNewSectionLink is true.
+		);
+	}
+
+	/**
 	 * Adds DiscussionTools JS to the output.
 	 *
 	 * This is attached to the MediaWiki 'BeforePageDisplay' hook.
@@ -56,40 +100,15 @@ class Hooks {
 	 * @param Skin $skin The skin that's going to build the UI.
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) : void {
-		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-		$optionsLookup = $services->getUserOptionsLookup();
-		$title = $output->getTitle();
-		$actionName = Action::getActionName( $output->getContext() );
-		$req = $output->getRequest();
-		$user = $skin->getUser();
-		$enabled = $dtConfig->get( 'DiscussionToolsEnable' ) && (
-			!$dtConfig->get( 'DiscussionToolsBeta' ) ||
-			$optionsLookup->getOption( $user, 'discussiontools-betaenable' )
-		);
-
-		if (
-			// Don't show on edit pages, history, etc.
-			$actionName === 'view' &&
-			// Only wikitext pages (e.g. not Flow boards)
-			$title->getContentModel() === CONTENT_MODEL_WIKITEXT &&
-			(
-				// Query parameter to load on any wikitext page for testing
-				$req->getVal( 'dtenable' ) ||
-				// If configured, load on all pages that probably have discussions
-				( $enabled && (
-					// `wantSignatures` includes talk pages
-					$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
-					// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
-					$output->showNewSectionLink()
-					// TODO: Consider not loading if forceHideNewSectionLink is true.
-				) )
-			)
-		) {
+		if ( self::isAvailable( $output ) ) {
 			$output->addModules( [
 				'ext.discussionTools.init'
 			] );
 
+			$services = MediaWikiServices::getInstance();
+			$optionsLookup = $services->getUserOptionsLookup();
+			$req = $output->getRequest();
+			$user = $output->getUser();
 			$editor = $optionsLookup->getOption( $user, 'discussiontools-editmode' );
 			// User has no preferred editor yet
 			// If the user has a preferred editor, this will be evaluated in the client
