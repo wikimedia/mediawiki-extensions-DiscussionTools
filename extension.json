@@ -302,7 +302,8 @@
 		"RecentChange_save": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onRecentChangeSave"
 	},
 	"DefaultUserOptions": {
-		"discussiontools-editmode": ""
+		"discussiontools-editmode": "",
+		"discussiontools-replytool": 1
 	},
 	"config": {
 		"DiscussionToolsEnable": {
