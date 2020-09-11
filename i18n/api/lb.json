@@ -5,7 +5,6 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID vun der Bemierkung net fonnt: $1",
-	"apihelp-discussiontoolsedit-summary": "Resumé vun der Ännerung.",
 	"apihelp-discussiontoolsedit-param-commentid": "Bemierkung ID.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
 }

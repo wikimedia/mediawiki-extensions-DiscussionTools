@@ -5,7 +5,6 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Kommentars-ID inte funnen: $1",
-	"apihelp-discussiontoolsedit-summary": "Redigeringssammanfattning.",
 	"apihelp-discussiontoolsedit-param-commentid": "Kommentars-ID.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
 }
