@@ -6,6 +6,7 @@ use DOMComment;
 use DOMDocument;
 use DOMElement;
 use DOMNode;
+use DOMText;
 use DOMXPath;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
@@ -140,8 +141,21 @@ class CommentModifier {
 
 			// Parsoid puts HTML comments which appear at the end of the line in wikitext outside the paragraph,
 			// but we usually shouldn't insert replies between the paragraph and such comments. (T257651)
-			if ( $target->nextSibling && $target->nextSibling instanceof DOMComment ) {
-				$target = $target->nextSibling;
+			// Skip over comments and whitespace, but only update target when skipping past comments.
+			$pointer = $target;
+			while (
+				$pointer->nextSibling && (
+					$pointer->nextSibling instanceof DOMComment ||
+					(
+						$pointer->nextSibling instanceof DOMText &&
+						CommentUtils::htmlTrim( $pointer->nextSibling->nodeValue ) === ''
+					)
+				)
+			) {
+				$pointer = $pointer->nextSibling;
+				if ( $pointer instanceof DOMComment ) {
+					$target = $pointer;
+				}
 			}
 
 			// Insert required number of wrappers

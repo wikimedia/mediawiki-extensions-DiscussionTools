@@ -67,7 +67,7 @@ function addReplyLink( comment, linkNode ) {
 function addListItem( comment ) {
 	var
 		curComment, curLevel, desiredLevel, itemType, listType,
-		target, parent, covered, list, item, newNode,
+		target, pointer, parent, covered, list, item, newNode,
 		listTypeMap = {
 			li: 'ul',
 			dd: 'dl'
@@ -132,8 +132,21 @@ function addListItem( comment ) {
 
 		// Parsoid puts HTML comments which appear at the end of the line in wikitext outside the paragraph,
 		// but we usually shouldn't insert replies between the paragraph and such comments. (T257651)
-		if ( target.nextSibling && target.nextSibling instanceof Comment ) {
-			target = target.nextSibling;
+		// Skip over comments and whitespace, but only update target when skipping past comments.
+		pointer = target;
+		while (
+			pointer.nextSibling && (
+				pointer.nextSibling.nodeType === Node.COMMENT_NODE ||
+				(
+					pointer.nextSibling.nodeType === Node.TEXT_NODE &&
+					utils.htmlTrim( pointer.nextSibling.textContent ) === ''
+				)
+			)
+		) {
+			pointer = pointer.nextSibling;
+			if ( pointer.nodeType === Node.COMMENT_NODE ) {
+				target = pointer;
+			}
 		}
 
 		// Insert required number of wrappers
