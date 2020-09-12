@@ -75,9 +75,10 @@ class Hooks {
 		$optionsLookup = $services->getUserOptionsLookup();
 
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		$isBeta = $dtConfig->get( 'DiscussionToolsBeta' );
 		$userEnabled = $dtConfig->get( 'DiscussionToolsEnable' ) && (
-			!$dtConfig->get( 'DiscussionToolsBeta' ) ||
-			$optionsLookup->getOption( $user, 'discussiontools-betaenable' )
+			( $isBeta && $optionsLookup->getOption( $user, 'discussiontools-betaenable' ) ) ||
+			( !$isBeta && $optionsLookup->getOption( $user, 'discussiontools-replytool' ) )
 		);
 
 		// Finally check the user has the tool enabled and that the page
@@ -150,6 +151,21 @@ class Hooks {
 	 * @param array &$preferences Their preferences object
 	 */
 	public static function onGetPreferences( User $user, array &$preferences ) {
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'discussiontools' );
+
+		if (
+			$dtConfig->get( 'DiscussionToolsEnable' ) &&
+			!$dtConfig->get( 'DiscussionToolsBeta' )
+		) {
+			$preferences['discussiontools-replytool'] = [
+				'type' => 'toggle',
+				'label-message' => 'discussiontools-preference-replytool',
+				'help-message' => 'discussiontools-preference-replytool-help',
+				'section' => 'editing/discussion',
+			];
+		}
+
 		$api = [ 'type' => 'api' ];
 		$preferences['discussiontools-editmode'] = [
 			'type' => 'api',
