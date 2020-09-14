@@ -11,6 +11,8 @@
 	"discussiontools-desc": "Narzędzia ułatwiające korzystanie ze stron dyskusji.",
 	"discussiontools-preference-label": "Narzędzia dyskusji",
 	"discussiontools-preference-description": "Włącz nowy sposób [//www.mediawiki.org/wiki/Talk_pages_project/replying odpowiadania na poszczególne komentarze] na stronach dyskusji.\n\nZ biegiem czasu będą dodawane nowe narzędzia ułatwiające korzystanie ze stron dyskusji.\n\nAktualności na temat tych funkcji będą zamieszczane na [//www.mediawiki.org/wiki/Talk_pages_project/Updates stronie projektu usprawniania stron dyskusji].",
+	"discussiontools-preference-replytool": "Włącz szybkie odpowiedzi",
+	"discussiontools-preference-replytool-help": "Wyświetlony zostanie ci link umożliwiający odpowiadanie na komentarze na stronach dyskusji przy użyciu tylko jednego kliknięcia. Możesz dowiedzieć się więcej na temat tej funkcji, czytając jej [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary podsumowanie].",
 	"discussiontools-replylink": "odpowiedz",
 	"discussiontools-replywidget-abandon": "Czy na pewno chcesz odrzucić ten komentarz?",
 	"discussiontools-replywidget-abandon-discard": "Odrzuć komentarz",

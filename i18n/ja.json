@@ -8,7 +8,8 @@
 			"Rootflag",
 			"Shirayuki",
 			"Siglite3",
-			"Tmv"
+			"Tmv",
+			"Yusuke1109"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -20,6 +21,7 @@
 	"discussiontools-replywidget-abandon": "編集中のコメントを本当に破棄しますか？",
 	"discussiontools-replywidget-abandon-discard": "コメントを破棄する",
 	"discussiontools-replywidget-abandon-keep": "編集を続行",
+	"discussiontools-replywidget-advanced": "詳細",
 	"discussiontools-replywidget-anon-warning": "<strong>あなたはログインしていません。</strong>IPアドレスではなく自分の名前が帰属として表示されるようにするには、[$1 ログイン]または[$2 アカウントを作成]してください。",
 	"discussiontools-replywidget-cancel": "キャンセル",
 	"discussiontools-replywidget-feedback": "この機能についてのフィードバックを共有する",

@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"NGC 54",
 			"Turbojet"
 		]
 	},
+	"discussiontools-replywidget-advanced": "Avansat",
 	"discussiontools-error-comment-is-transcluded": "Acest comentariu nu poate fi inserat în acest mod de lucru. Încercați prin editorul sursei paginii."
 }

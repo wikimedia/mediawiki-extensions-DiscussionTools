@@ -12,6 +12,7 @@
 	"discussiontools-preference-label": "Strumenti di discussione",
 	"discussiontools-preference-description": "Abilita una nuova sequenza operativa per [//www.mediawiki.org/wiki/Talk_pages_project/replying rispondere a specifici commenti] sulle pagine di discussione.\n\nNota bene che nuovi strumenti di interazione sulle pagine di discussione saranno aggiunti nel tempo.\n\nGli aggiornamenti di queste funzionalità saranno riportati sulla [//www.mediawiki.org/wiki/Talk_pages_project/Updates pagina di aggiornamento del relativo progetto].",
 	"discussiontools-replylink": "rispondi",
+	"discussiontools-replywidget-advanced": "Avanzate",
 	"discussiontools-replywidget-anon-warning": "<strong>Non hai effettuato l'accesso.</strong> Per ricevere l'attribuzione con il tuo nome, anziché con l'indirizzo IP, puoi [$1 accedere] o [$2 creare un'utenza].",
 	"discussiontools-replywidget-cancel": "Annulla",
 	"discussiontools-replywidget-feedback": "Commenta questa funzionalità",
