@@ -277,6 +277,10 @@ ReplyWidget.prototype.saveEditMode = function ( mode ) {
 };
 
 ReplyWidget.prototype.onAdvancedToggleClick = function () {
+	mw.track( 'dt.schemaVisualEditorFeatureUse', {
+		feature: 'dtReply',
+		action: 'advanced-' + ( this.showAdvanced ? 'hide' : 'show' )
+	} );
 	this.toggleAdvanced();
 };
 
