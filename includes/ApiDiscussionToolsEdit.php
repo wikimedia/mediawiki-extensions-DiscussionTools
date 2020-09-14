@@ -236,12 +236,12 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				ParamValidator::PARAM_DEFAULT => null,
 			],
 			'summary' => [
-				ParamValidator::PARAM_TYPE => 'text',
+				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_DEFAULT => null,
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-summary',
 			],
 			'sectiontitle' => [
-				ParamValidator::PARAM_TYPE => 'text',
+				ParamValidator::PARAM_TYPE => 'string',
 				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-sectiontitle',
 			],
 			'watchlist' => [
