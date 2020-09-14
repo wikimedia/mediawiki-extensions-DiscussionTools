@@ -187,7 +187,7 @@ Parser.prototype.getTimestampRegexp = function ( format, digitsRegexp, tzAbbrs )
  *
  * @private
  * @param {string} format Date format, as used by MediaWiki
- * @param {array|null} digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
+ * @param {string[]|null} digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
  * @param {string} localTimezone Local timezone IANA name, e.g. `America/New_York`
  * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
