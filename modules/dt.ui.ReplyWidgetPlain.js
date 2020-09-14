@@ -105,16 +105,6 @@ ReplyWidgetPlain.prototype.teardown = function () {
 	return ReplyWidgetPlain.super.prototype.teardown.call( this );
 };
 
-ReplyWidgetPlain.prototype.onKeyDown = function ( e ) {
-	// Parent method
-	ReplyWidgetPlain.super.prototype.onKeyDown.call( this, e );
-
-	if ( e.which === OO.ui.Keys.ENTER && ( e.ctrlKey || e.metaKey ) ) {
-		this.onReplyClick();
-		return false;
-	}
-};
-
 ReplyWidgetPlain.prototype.getValue = function () {
 	return this.replyBodyWidget.getValue();
 };

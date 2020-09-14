@@ -107,6 +107,7 @@
 				"discussiontools-replywidget-abandon",
 				"discussiontools-replywidget-abandon-discard",
 				"discussiontools-replywidget-abandon-keep",
+				"discussiontools-replywidget-advanced",
 				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
 				"discussiontools-replywidget-feedback",
@@ -117,13 +118,16 @@
 				"discussiontools-replywidget-placeholder-reply",
 				"discussiontools-replywidget-preview",
 				"discussiontools-replywidget-reply",
+				"discussiontools-replywidget-summary",
 				"discussiontools-replywidget-terms-click",
 				"discussiontools-replywidget-transcluded"
 			],
 			"dependencies": [
 				"oojs-ui-widgets",
+				"oojs-ui.styles.indicators",
 				"ext.discussionTools.init",
-				"mediawiki.widgets.AbandonEditDialog"
+				"mediawiki.widgets.AbandonEditDialog",
+				"mediawiki.widgets.visibleLengthLimit"
 			],
 			"optionalDependencies": {
 				"ConfirmEdit": "ext.confirmEdit.CaptchaInputWidget"

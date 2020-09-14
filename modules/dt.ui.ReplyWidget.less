@@ -103,18 +103,17 @@
 		}
 	}
 
-	.oo-ui-messageWidget,
-	.dt-ui-replyWidget-preview {
-		margin-bottom: 0.5em;
+	// anonWarning & advanced box
+	> .oo-ui-messageWidget-block {
+		padding: 8px 12px;
 	}
 
 	&-anonWarning {
+		margin-bottom: 0.5em;
 		display: flex;
 		align-items: center;
 
 		&.oo-ui-messageWidget-block {
-			padding: 8px 12px;
-
 			> .oo-ui-iconElement-icon {
 				background-position: center center;
 				transform: scale( 1.5 );
@@ -128,9 +127,28 @@
 		}
 	}
 
+	&-editSummaryField.oo-ui-labelElement {
+		margin-top: 0;
+	}
+
+	&-editSummary {
+		max-width: none;
+	}
+
+	&-advanced.oo-ui-element-hidden + .dt-ui-replyWidget-anonWarning {
+		// Removing spacing between message widgets when the first is hidden
+		margin-top: 0;
+	}
+
+	&-advancedToggle {
+		font-size: 0.75em;
+
+		.oo-ui-indicatorElement-indicator {
+			min-width: auto;
+		}
+	}
+
 	&-checkboxes {
-		display: inline-block;
-		vertical-align: middle;
-		margin-right: 1.5em;
+		float: right;
 	}
 }
