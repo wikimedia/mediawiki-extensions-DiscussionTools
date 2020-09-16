@@ -12,6 +12,8 @@
 	"discussiontools-desc": "כלים להרחבת דפי שיחה.",
 	"discussiontools-preference-label": "כלי שיחה",
 	"discussiontools-preference-description": "להפעיל תהליך עבודה חדש ל[https:////www.mediawiki.org/wiki/Talk_pages_project/replying שליחת תשובות לתגובות מסוימות בדפי שיחה].\n\nנא לשים לב לכך שככל שעובר הזמן, יתווספו כלים חדשים לשימוש בדפי שיחה.\n\nעדכונים על האפשרויות האלו יישלחו ל[https://www.mediawiki.org/wiki/Talk_pages_project/Updates דף העדכונים בנושא דפי שיחה].",
+	"discussiontools-preference-replytool": "הפעלת תשובה מהירה",
+	"discussiontools-preference-replytool-help": "זה יראה לך קישור לתשובה להערות בדפי שיחה בלחיצה אחת. אפשר לקבל מידע נוסף על האפשרות הזאת באמצעות קריאת [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary תקציר על האפשרות].",
 	"discussiontools-replylink": "להגיב",
 	"discussiontools-replywidget-abandon": "האם {{GENDER:|אתה|את}} באמת רוצה לזרוק את התגובה {{GENDER:|שאתה כותב|שאת כותבת}}?",
 	"discussiontools-replywidget-abandon-discard": "לזרוק את התגובה",
