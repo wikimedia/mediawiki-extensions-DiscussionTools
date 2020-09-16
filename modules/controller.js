@@ -81,10 +81,11 @@ function getPageData( pageName, oldId ) {
 			page: pageName,
 			oldid: oldId
 		} ).then( function ( response ) {
-			return OO.getProp( response, 'discussiontools' ) || [];
+			return OO.getProp( response, 'discussiontools' ) || {};
 		} );
 	} else {
-		lintPromise = transcludedFromPromise = $.Deferred().resolve( [] ).promise();
+		lintPromise = $.Deferred().resolve( [] ).promise();
+		transcludedFromPromise = $.Deferred().resolve( {} ).promise();
 	}
 
 	veMetadataPromise = api.get( {
