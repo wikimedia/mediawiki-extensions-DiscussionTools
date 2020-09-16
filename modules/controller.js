@@ -64,24 +64,28 @@ function getPageData( pageName, oldId ) {
 		return pageDataCache[ pageName ][ oldId ];
 	}
 
-	lintPromise = api.get( {
-		action: 'query',
-		list: 'linterrors',
-		lntcategories: 'fostered',
-		lntlimit: 1,
-		lnttitle: pageName
-	} ).then( function ( response ) {
-		return OO.getProp( response, 'query', 'linterrors' ) || [];
-	} );
+	if ( oldId ) {
+		lintPromise = api.get( {
+			action: 'query',
+			list: 'linterrors',
+			lntcategories: 'fostered',
+			lntlimit: 1,
+			lnttitle: pageName
+		} ).then( function ( response ) {
+			return OO.getProp( response, 'query', 'linterrors' ) || [];
+		} );
 
-	transcludedFromPromise = api.get( {
-		action: 'discussiontools',
-		paction: 'transcludedfrom',
-		page: pageName,
-		oldid: oldId
-	} ).then( function ( response ) {
-		return OO.getProp( response, 'discussiontools' ) || [];
-	} );
+		transcludedFromPromise = api.get( {
+			action: 'discussiontools',
+			paction: 'transcludedfrom',
+			page: pageName,
+			oldid: oldId
+		} ).then( function ( response ) {
+			return OO.getProp( response, 'discussiontools' ) || [];
+		} );
+	} else {
+		lintPromise = transcludedFromPromise = $.Deferred().resolve( [] ).promise();
+	}
 
 	veMetadataPromise = api.get( {
 		action: 'visualeditor',
