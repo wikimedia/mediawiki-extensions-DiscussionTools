@@ -27,5 +27,11 @@ fr-unsigned:
 https://fr.wikipedia.org/w/index.php?title=Discussion:Le_Monde&oldid=170426593&action=render
 https://fr.wikipedia.org/api/rest_v1/page/html/Discussion%3ALe_Monde/170426593
 
+sr-ec:
+https://sr.wikipedia.org/w/index.php?title=Википедија:Трг/Архива/Техника/35&variant=sr-ec&action=render
+
+sr-el:
+https://sr.wikipedia.org/w/index.php?title=Википедија:Трг/Архива/Техника/35&variant=sr-el&action=render
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.
