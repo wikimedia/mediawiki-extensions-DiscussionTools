@@ -311,6 +311,74 @@ class ImmutableRange {
 	}
 
 	/**
+	 * Inserts a new Node into at the start of the Range.
+	 *
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 *
+	 * @see https://dom.spec.whatwg.org/#dom-range-insertnode
+	 *
+	 * @param DOMNode $node The Node to be inserted.
+	 * @return void
+	 */
+	public function insertNode( DOMNode $node ) : void {
+		if ( ( $this->mStartContainer instanceof DOMProcessingInstruction
+				|| $this->mStartContainer instanceof DOMComment )
+			|| ( $this->mStartContainer instanceof DOMText
+				&& $this->mStartContainer->parentNode === null )
+		) {
+			throw new Error();
+		}
+
+		$referenceNode = null;
+
+		if ( $this->mStartContainer instanceof DOMText ) {
+			$referenceNode = $this->mStartContainer;
+		} else {
+			$referenceNode = $this
+				->mStartContainer
+				->childNodes
+				->item( $this->mStartOffset );
+		}
+
+		$parent = !$referenceNode
+			? $this->mStartContainer
+			: $referenceNode->parentNode;
+		// TODO: Restore this validation check?
+		// $parent->ensurePreinsertionValidity( $node, $referenceNode );
+
+		if ( $this->mStartContainer instanceof DOMText ) {
+			$referenceNode = $this->mStartContainer->splitText( $this->mStartOffset );
+		}
+
+		if ( $node === $referenceNode ) {
+			$referenceNode = $referenceNode->nextSibling;
+		}
+
+		if ( $node->parentNode ) {
+			$node->parentNode->removeChild( $node );
+		}
+
+		$newOffset = !$referenceNode
+			? $parent->childNodes->length
+			: CommentUtils::childIndexOf( $referenceNode );
+		$newOffset += $node instanceof DOMDocumentFragment
+			? $node->childNodes->length
+			: 1;
+
+		// TODO: Restore this validation check?
+		// $parent->preinsertNode( $node, $referenceNode );
+		//
+		// This should just be
+		//  $parent->insertBefore( $node, $referenceNode );
+		// but the second argument is optional, not nullable
+		if ( $referenceNode ) {
+			$parent->insertBefore( $node, $referenceNode );
+		} else {
+			$parent->insertBefore( $node );
+		}
+	}
+
+	/**
 	 * Compares the position of two boundary points.
 	 *
 	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)

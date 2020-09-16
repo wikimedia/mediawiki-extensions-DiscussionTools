@@ -25,6 +25,9 @@
 		"remoteExtPath": "DiscussionTools/modules"
 	},
 	"ResourceModules": {
+		"ext.discussionTools.init.styles": {
+			"styles": "dt.init.less"
+		},
 		"ext.discussionTools.init": {
 			"packageFiles": [
 				"dt.init.js",
@@ -59,7 +62,6 @@
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getLocalData"
 				}
 			],
-			"styles": "dt.init.less",
 			"dependencies": [
 				"moment",
 				"rangefix",
@@ -308,6 +310,7 @@
 		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onGetBetaPreferences",
 		"GetPreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onGetPreferences",
 		"ListDefinedTags": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onListDefinedTags",
+		"OutputPageBeforeHTML": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onOutputPageBeforeHTML",
 		"ChangeTagsListActive": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onListDefinedTags",
 		"RecentChange_save": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onRecentChangeSave"
 	},
