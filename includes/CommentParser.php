@@ -37,9 +37,12 @@ class CommentParser {
 	/** @var Config */
 	private $config;
 
+	/** @var Language */
+	private $language;
+
 	private $dateFormat;
 	private $digits;
-	/** @var string[] */
+	/** @var string[][] */
 	private $contLangMessages;
 	private $localTimezone;
 	private $timezones;
@@ -53,6 +56,7 @@ class CommentParser {
 	public function __construct( DOMElement $rootNode, Language $language, Config $config, array $data = [] ) {
 		$this->rootNode = $rootNode;
 		$this->config = $config;
+		$this->language = $language;
 
 		if ( !$data ) {
 			// TODO: Instead of passing data used for mocking, mock the methods that fetch the data.
@@ -133,13 +137,16 @@ class CommentParser {
 	}
 
 	/**
-	 * @param string[] $messageKeys Message keys
+	 * Get text of localisation messages in content language.
+	 *
+	 * @param string $contLangVariant Content language variant
+	 * @param string[] $messages Message keys
 	 * @return string[] Message values
 	 */
-	private function getMessages( array $messageKeys ) : array {
-		return array_map( function ( string $key ) {
-			return $this->contLangMessages[$key];
-		}, $messageKeys );
+	private function getMessages( string $contLangVariant, array $messages ) : array {
+		return array_map( function ( string $key ) use ( $contLangVariant ) {
+			return $this->contLangMessages[$contLangVariant][$key];
+		}, $messages );
 	}
 
 	/**
@@ -150,6 +157,7 @@ class CommentParser {
 	 * and only dates when MediaWiki existed, let's say 2000 onwards (Thai dates before 1941 are
 	 * complicated).
 	 *
+	 * @param string $contLangVariant Content language variant
 	 * @param string $format Date format
 	 * @param string $digitsRegexp Regular expression matching a single localised digit, e.g. '[0-9]'
 	 * @param array $tzAbbrs Associative array mapping localised timezone abbreviations to
@@ -157,7 +165,7 @@ class CommentParser {
 	 * @return string Regular expression
 	 */
 	private function getTimestampRegexp(
-		string $format, string $digitsRegexp, array $tzAbbrs
+		string $contLangVariant, string $format, string $digitsRegexp, array $tzAbbrs
 	) : string {
 		$formatLength = strlen( $format );
 		$s = '';
@@ -178,7 +186,7 @@ class CommentParser {
 					break;
 				case 'xg':
 					$s .= self::regexpAlternateGroup(
-						$this->getMessages( Language::MONTH_GENITIVE_MESSAGES )
+						$this->getMessages( $contLangVariant, Language::MONTH_GENITIVE_MESSAGES )
 					);
 					break;
 				case 'd':
@@ -186,7 +194,7 @@ class CommentParser {
 					break;
 				case 'D':
 					$s .= self::regexpAlternateGroup(
-						$this->getMessages( Language::WEEKDAY_ABBREVIATED_MESSAGES )
+						$this->getMessages( $contLangVariant, Language::WEEKDAY_ABBREVIATED_MESSAGES )
 					);
 					break;
 				case 'j':
@@ -194,17 +202,17 @@ class CommentParser {
 					break;
 				case 'l':
 					$s .= self::regexpAlternateGroup(
-						$this->getMessages( Language::WEEKDAY_MESSAGES )
+						$this->getMessages( $contLangVariant, Language::WEEKDAY_MESSAGES )
 					);
 					break;
 				case 'F':
 					$s .= self::regexpAlternateGroup(
-						$this->getMessages( Language::MONTH_MESSAGES )
+						$this->getMessages( $contLangVariant, Language::MONTH_MESSAGES )
 					);
 					break;
 				case 'M':
 					$s .= self::regexpAlternateGroup(
-						$this->getMessages( Language::MONTH_ABBREVIATED_MESSAGES )
+						$this->getMessages( $contLangVariant, Language::MONTH_ABBREVIATED_MESSAGES )
 					);
 					break;
 				case 'n':
@@ -269,6 +277,7 @@ class CommentParser {
 	 * Get a function that parses timestamps generated using the given date format, based on the result
 	 * of matching the regexp returned by getTimestampRegexp()
 	 *
+	 * @param string $contLangVariant Content language variant
 	 * @param string $format Date format, as used by MediaWiki
 	 * @param string[]|null $digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
 	 * @param string $localTimezone Local timezone IANA name, e.g. `America/New_York`
@@ -277,7 +286,7 @@ class CommentParser {
 	 * @return callable Parser function
 	 */
 	private function getTimestampParser(
-		string $format, ?array $digits, string $localTimezone, array $tzAbbrs
+		string $contLangVariant, string $format, ?array $digits, string $localTimezone, array $tzAbbrs
 	) : callable {
 		$untransformDigits = function ( string $text ) use ( $digits ) {
 			if ( !$digits ) {
@@ -342,7 +351,7 @@ class CommentParser {
 		}
 
 		return function ( array $match ) use (
-			$matchingGroups, $untransformDigits, $localTimezone, $tzAbbrs
+			$matchingGroups, $untransformDigits, $localTimezone, $tzAbbrs, $contLangVariant
 		) {
 			if ( is_array( $match[0] ) ) {
 				// Strip PREG_OFFSET_CAPTURE data
@@ -360,7 +369,10 @@ class CommentParser {
 				$text = $match[$i + 1];
 				switch ( $code ) {
 					case 'xg':
-						$monthIdx = array_search( $text, $this->getMessages( Language::MONTH_GENITIVE_MESSAGES ) );
+						$monthIdx = array_search(
+							$text,
+							$this->getMessages( $contLangVariant, Language::MONTH_GENITIVE_MESSAGES )
+						);
 						break;
 					case 'd':
 					case 'j':
@@ -371,10 +383,16 @@ class CommentParser {
 						// Day of the week - unused
 						break;
 					case 'F':
-						$monthIdx = array_search( $text, $this->getMessages( Language::MONTH_MESSAGES ) );
+						$monthIdx = array_search(
+							$text,
+							$this->getMessages( $contLangVariant, Language::MONTH_MESSAGES )
+						);
 						break;
 					case 'M':
-						$monthIdx = array_search( $text, $this->getMessages( Language::MONTH_ABBREVIATED_MESSAGES ) );
+						$monthIdx = array_search(
+							$text,
+							$this->getMessages( $contLangVariant, Language::MONTH_ABBREVIATED_MESSAGES )
+						);
 						break;
 					case 'n':
 						$monthIdx = intval( $untransformDigits( $text ) ) - 1;
@@ -444,35 +462,41 @@ class CommentParser {
 	}
 
 	/**
-	 * Get a regular expression that matches timestamps in the local date format.
+	 * Get a regexp that matches timestamps in the local date format, for each language variant.
 	 *
 	 * This calls getTimestampRegexp() with predefined data for the current wiki.
 	 *
-	 * @return string Regular expression
+	 * @return string[] Regular expressions
 	 */
-	public function getLocalTimestampRegexp() : string {
-		return $this->getTimestampRegexp(
-			$this->dateFormat,
-			$this->digits ? '[' . implode( '', $this->digits ) . ']' : '\\d',
-			$this->timezones
-		);
+	public function getLocalTimestampRegexps() : array {
+		return array_map( function ( $contLangVariant ) {
+			return $this->getTimestampRegexp(
+				$contLangVariant,
+				$this->dateFormat[$contLangVariant],
+				'[' . implode( '', $this->digits[$contLangVariant] ) . ']',
+				$this->timezones[$contLangVariant]
+			);
+		}, $this->language->getVariants() );
 	}
 
 	/**
-	 * Get a function that parses timestamps in the local date format, based on the result
-	 * of matching the regexp returned by getLocalTimestampRegexp().
+	 * Get a function that parses timestamps in the local date format, for each language variant,
+	 * based on the result of matching the regexp returned by getLocalTimestampRegexp().
 	 *
 	 * This calls getTimestampParser() with predefined data for the current wiki.
 	 *
-	 * @return callable Parser function
+	 * @return callable[] Parser functions
 	 */
-	private function getLocalTimestampParser() : callable {
-		return $this->getTimestampParser(
-			$this->dateFormat,
-			$this->digits,
-			$this->localTimezone,
-			$this->timezones
-		);
+	private function getLocalTimestampParsers() : array {
+		return array_map( function ( $contLangVariant ) {
+			return $this->getTimestampParser(
+				$contLangVariant,
+				$this->dateFormat[$contLangVariant],
+				$this->digits[$contLangVariant],
+				$this->localTimezone,
+				$this->timezones[$contLangVariant]
+			);
+		}, $this->language->getVariants() );
 	}
 
 	/**
@@ -601,10 +625,14 @@ class CommentParser {
 	 * Find a timestamps in a given text node
 	 *
 	 * @param DOMText $node Text node
-	 * @param string $timestampRegex Timestamp regex
-	 * @return array|null Match data
+	 * @param string[] $timestampRegexps Timestamp regexps
+	 * @return array|null Array with the following keys:
+	 *   - int 'offset' Length of extra text preceding the node that was used for matching
+	 *   - int 'parserIndex' Which of the regexps matched
+	 *   - array 'matchData' Regexp match data, which specifies the location of the match,
+	 *     and which can be parsed using getLocalTimestampParsers()
 	 */
-	public function findTimestamp( DOMText $node, string $timestampRegex ) : ?array {
+	public function findTimestamp( DOMText $node, array $timestampRegexps ) : ?array {
 		$nodeText = '';
 		$offset = 0;
 
@@ -638,11 +666,16 @@ class CommentParser {
 			}
 		}
 
-		$matchData = null;
-		// Allows us to mimic match.index in #getComments
-		if ( preg_match( $timestampRegex, $nodeText, $matchData, PREG_OFFSET_CAPTURE ) ) {
-			$matchData['offset'] = $offset;
-			return $matchData;
+		foreach ( $timestampRegexps as $i => $timestampRegexp ) {
+			$matchData = null;
+			// Allows us to mimic match.index in #getComments
+			if ( preg_match( $timestampRegexp, $nodeText, $matchData, PREG_OFFSET_CAPTURE ) ) {
+				return [
+					'matchData' => $matchData,
+					'offset' => $offset,
+					'parserIndex' => $i,
+				];
+			}
 		}
 		return null;
 	}
@@ -715,10 +748,10 @@ class CommentParser {
 	}
 
 	private function buildThreadItems() : void {
-		$timestampRegex = $this->getLocalTimestampRegexp();
+		$timestampRegexps = $this->getLocalTimestampRegexps();
 		$commentItems = [];
 		$threadItems = [];
-		$dfParser = $this->getLocalTimestampParser();
+		$dfParsers = $this->getLocalTimestampParsers();
 
 		// Placeholder heading in case there are comments in the 0th section
 		$range = new ImmutableRange( $this->rootNode, 0, $this->rootNode, 0 );
@@ -739,7 +772,7 @@ class CommentParser {
 				$curComment = new HeadingItem( $range );
 				$curComment->setRootNode( $this->rootNode );
 				$threadItems[] = $curComment;
-			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegex ) ) ) {
+			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $lastSigNode );
 				$author = $foundSignature[1];
@@ -753,7 +786,7 @@ class CommentParser {
 				}
 
 				$lastSigNodeOffset = $lastSigNode === $node ?
-					$match[0][1] + strlen( $match[0][0] ) - $match['offset'] :
+					$match['matchData'][0][1] + strlen( $match['matchData'][0][0] ) - $match['offset'] :
 					CommentUtils::childIndexOf( $lastSigNode ) + 1;
 				$sigRange = new ImmutableRange(
 					$firstSigNode->parentNode,
@@ -800,7 +833,7 @@ class CommentParser {
 				// Should this use the indent level of $startNode or $node?
 				$level = min( $startLevel, $endLevel );
 
-				$dateTime = $dfParser( $match );
+				$dateTime = $dfParsers[ $match['parserIndex'] ]( $match['matchData'] );
 				if ( isset( $dateTime->discussionToolsWarning ) ) {
 					$warnings[] = $dateTime->discussionToolsWarning;
 				}
