@@ -17,6 +17,15 @@ class HeadingItem extends ThreadItem {
 	}
 
 	/**
+	 * @return array JSON-serializable array
+	 */
+	public function jsonSerialize() : array {
+		return array_merge( parent::jsonSerialize(), [
+			'placeholderHeading' => $this->placeholderHeading,
+		] );
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function isPlaceholderHeading() : bool {

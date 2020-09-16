@@ -3,12 +3,13 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMNode;
+use JsonSerializable;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * A thread item, either a heading or a comment
  */
-abstract class ThreadItem {
+abstract class ThreadItem implements JsonSerializable {
 	protected $type;
 	protected $range;
 	protected $rootNode;
@@ -29,6 +30,20 @@ abstract class ThreadItem {
 		$this->type = $type;
 		$this->level = $level;
 		$this->range = $range;
+	}
+
+	/**
+	 * @return array JSON-serializable array
+	 */
+	public function jsonSerialize() : array {
+		return [
+			'type' => $this->type,
+			'level' => $this->level,
+			'id' => $this->id,
+			'replies' => array_map( function ( CommentItem $comment ) {
+				return $comment->getId();
+			}, $this->replies )
+		];
 	}
 
 	/**

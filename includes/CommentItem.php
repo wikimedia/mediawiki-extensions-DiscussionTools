@@ -36,6 +36,16 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
+	 * @return array JSON-serializable array
+	 */
+	public function jsonSerialize() : array {
+		return array_merge( parent::jsonSerialize(), [
+			'timestamp' => $this->timestamp,
+			'author' => $this->author,
+		] );
+	}
+
+	/**
 	 * Get the HTML of this comment's body
 	 *
 	 * @return string HTML
