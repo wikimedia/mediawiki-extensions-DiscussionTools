@@ -302,17 +302,18 @@ class CommentUtils {
 	 * @return Title|null
 	 */
 	public static function getTitleFromUrl( string $url ) : ?Title {
+		$bits = parse_url( $url );
+		$query = wfCgiToArray( $bits['query'] ?? '' );
+		if ( isset( $query['title'] ) ) {
+			return Title::newFromText( $query['title'] );
+		}
+
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		// TODO: Set the correct base in the document?
 		if ( strpos( $url, './' ) === 0 ) {
 			$url = 'https://local' . str_replace( '$1', substr( $url, 2 ), $config->get( 'ArticlePath' ) );
 		} elseif ( strpos( $url, '://' ) === false ) {
 			$url = 'https://local' . $url;
-		}
-		$bits = wfParseUrl( $url );
-		$query = wfCgiToArray( $bits['query'] ?? '' );
-		if ( isset( $query['title'] ) ) {
-			return Title::newFromText( $query['title'] );
 		}
 
 		$articlePathRegexp = '/' . str_replace(

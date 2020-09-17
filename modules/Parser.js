@@ -500,17 +500,18 @@ function getTitleFromUrl( url ) {
 		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
 		return null;
 	}
+	if ( url.query.title ) {
+		return mw.Title.newFromText( url.query.title );
+	}
+
 	articlePathRegexp = new RegExp(
 		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
 			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
 	);
-
 	if ( ( match = url.path.match( articlePathRegexp ) ) ) {
 		return mw.Title.newFromText( decodeURIComponent( match[ 1 ] ) );
 	}
-	if ( url.query.title ) {
-		return mw.Title.newFromText( url.query.title );
-	}
+
 	return null;
 }
 
