@@ -304,18 +304,13 @@ ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
 };
 
 ReplyWidget.prototype.onEditSummaryChange = function () {
-	var summary = this.getEditSummary();
-	if ( summary === undefined ) {
-		this.storage.remove( this.storagePrefix + '/summary' );
-	} else {
-		this.storage.set( this.storagePrefix + '/summary', this.getEditSummary() );
-	}
+	this.storage.set( this.storagePrefix + '/summary', this.getEditSummary() );
 	// After first subsequent edit, reset this so auto-select no longer happens
 	this.summaryPrefixLength = null;
 };
 
 ReplyWidget.prototype.getEditSummary = function () {
-	return this.showAdvanced ? this.editSummaryInput.getValue() : undefined;
+	return this.editSummaryInput.getValue();
 };
 
 ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
