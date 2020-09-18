@@ -450,7 +450,7 @@ CommentController.prototype.switchToVisual = function () {
 					);
 					mw.track( 'dt.schemaVisualEditorFeatureUse', {
 						feature: 'editor-switch',
-						action: 'dialog-prevent-' + type + '-show'
+						action: 'dialog-prevent-show'
 					} );
 
 					return $.Deferred().reject().promise();
