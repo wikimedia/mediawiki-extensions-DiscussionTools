@@ -2,7 +2,12 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMComment;
+use DOMDocumentFragment;
+use DOMDocumentType;
 use DOMNode;
+use DOMProcessingInstruction;
+use DOMText;
 use Error;
 use Exception;
 
@@ -48,6 +53,20 @@ class ImmutableRange {
 		}
 		if ( !$node ) {
 			throw new Error( 'Nodes are not in the same document' );
+		}
+
+		return $node;
+	}
+
+	/**
+	 * Get the root ancestor of a node
+	 *
+	 * @param DOMNode $node Node
+	 * @return DOMNode
+	 */
+	private static function getRootNode( DOMNode $node ) : DOMNode {
+		while ( $node->parentNode ) {
+			$node = $node->parentNode;
 		}
 
 		return $node;
@@ -120,6 +139,256 @@ class ImmutableRange {
 		return new self(
 			$this->mStartContainer, $this->mStartOffset, $endNode, $endOffset
 		);
+	}
+
+	/**
+	 * Returns true if only a portion of the Node is contained within the Range.
+	 *
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 * @see https://dom.spec.whatwg.org/#partially-contained
+	 *
+	 * @param DOMNode $node The Node to check against.
+	 * @return bool
+	 */
+	private function isPartiallyContainedNode( DOMNode $node ) : bool {
+		$isAncestorOfStart = CommentUtils::contains( $node, $this->mStartContainer );
+		$isAncestorOfEnd = CommentUtils::contains( $node, $this->mEndContainer );
+
+		return ( $isAncestorOfStart && !$isAncestorOfEnd )
+			|| ( !$isAncestorOfStart && $isAncestorOfEnd );
+	}
+
+	/**
+	 * Returns true if the entire Node is within the Range, otherwise false.
+	 *
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 * @see https://dom.spec.whatwg.org/#contained
+	 *
+	 * @param DOMNode $node The Node to check against.
+	 * @return bool
+	 */
+	private function isFullyContainedNode( DOMNode $node ) : bool {
+		$startBP = [ $this->mStartContainer, $this->mStartOffset ];
+		$endBP = [ $this->mEndContainer, $this->mEndOffset ];
+		$root = self::getRootNode( $this->mStartContainer );
+
+		return self::getRootNode( $node ) === $root
+			&& $this->computePosition( [ $node, 0 ], $startBP ) === 'after'
+			&& $this->computePosition(
+				[ $node, strlen( $node->nodeValue ) ],
+				$endBP
+			) === 'before';
+	}
+
+	/**
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 * @see https://dom.spec.whatwg.org/#dom-range-clonecontents
+	 *
+	 * @return DOMDocumentFragment
+	 */
+	public function cloneContents() : DOMDocumentFragment {
+		$ownerDocument = $this->mStartContainer->ownerDocument;
+		$fragment = $ownerDocument->createDocumentFragment();
+
+		if ( $this->mStartContainer === $this->mEndContainer
+			&& $this->mStartOffset === $this->mEndOffset
+		) {
+			return $fragment;
+		}
+
+		$originalStartContainer = $this->mStartContainer;
+		$originalStartOffset = $this->mStartOffset;
+		$originalEndContainer = $this->mEndContainer;
+		$originalEndOffset = $this->mEndOffset;
+
+		if ( $originalStartContainer === $originalEndContainer
+			&& ( $originalStartContainer instanceof DOMText
+				|| $originalStartContainer instanceof DOMProcessingInstruction
+				|| $originalStartContainer instanceof DOMComment )
+		) {
+			$clone = $originalStartContainer->cloneNode();
+			$clone->nodeValue = substr(
+				$originalStartContainer->nodeValue,
+				$originalStartOffset,
+				$originalEndOffset - $originalStartOffset
+			);
+			$fragment->appendChild( $clone );
+
+			return $fragment;
+		}
+
+		$commonAncestor = self::findCommonAncestorContainer(
+			$originalStartContainer,
+			$originalEndContainer
+		);
+		$firstPartiallyContainedChild = null;
+
+		if ( !CommentUtils::contains( $originalStartContainer, $originalEndContainer ) ) {
+			foreach ( $commonAncestor->childNodes as $node ) {
+				if ( $this->isPartiallyContainedNode( $node ) ) {
+					$firstPartiallyContainedChild = $node;
+					break;
+				}
+			}
+		}
+
+		$lastPartiallyContainedChild = null;
+
+		if ( !CommentUtils::contains( $originalEndContainer, $originalStartContainer ) ) {
+			$childNodes = iterator_to_array( $commonAncestor->childNodes );
+
+			foreach ( array_reverse( $childNodes ) as $node ) {
+				if ( $this->isPartiallyContainedNode( $node ) ) {
+					$lastPartiallyContainedChild = $node;
+					break;
+				}
+			}
+		}
+
+		$containedChildren = [];
+
+		foreach ( $commonAncestor->childNodes as $child ) {
+			if ( $this->isFullyContainedNode( $child ) ) {
+				if ( $child instanceof DOMDocumentType ) {
+					throw new Error();
+				}
+
+				$containedChildren[] = $child;
+			}
+		}
+
+		if ( $firstPartiallyContainedChild instanceof DOMText
+			|| $firstPartiallyContainedChild instanceof DOMProcessingInstruction
+			|| $firstPartiallyContainedChild instanceof DOMComment
+		) {
+			$clone = $originalStartContainer->cloneNode();
+			$clone->nodeValue = substr(
+				$originalStartContainer->nodeValue,
+				$originalStartOffset,
+				strlen( $originalStartContainer->nodeValue ) - $originalStartOffset
+			);
+			$fragment->appendChild( $clone );
+		} elseif ( $firstPartiallyContainedChild ) {
+			$clone = $firstPartiallyContainedChild->cloneNode();
+			$fragment->appendChild( $clone );
+			$subrange = new self(
+				$originalStartContainer, $originalStartOffset,
+				$firstPartiallyContainedChild,
+				strlen( $firstPartiallyContainedChild->nodeValue )
+			);
+			$subfragment = $subrange->cloneContents();
+			$clone->appendChild( $subfragment );
+		}
+
+		foreach ( $containedChildren as $child ) {
+			$clone = $child->cloneNode( true );
+			$fragment->appendChild( $clone );
+		}
+
+		if ( $lastPartiallyContainedChild instanceof DOMText
+			|| $lastPartiallyContainedChild instanceof DOMProcessingInstruction
+			|| $lastPartiallyContainedChild instanceof DOMComment
+		) {
+			$clone = $originalEndContainer->cloneNode();
+			$clone->nodeValue = substr(
+				$originalEndContainer->nodeValue,
+				0,
+				$originalEndOffset
+			);
+			$fragment->appendChild( $clone );
+		} elseif ( $lastPartiallyContainedChild ) {
+			$clone = $lastPartiallyContainedChild->cloneNode();
+			$fragment->appendChild( $clone );
+			$subrange = new self(
+				$lastPartiallyContainedChild, 0,
+				$originalEndContainer, $originalEndOffset
+			);
+			$subfragment = $subrange->cloneContents();
+			$clone->appendChild( $subfragment );
+		}
+
+		return $fragment;
+	}
+
+	/**
+	 * Compares the position of two boundary points.
+	 *
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 * @internal
+	 *
+	 * @see https://dom.spec.whatwg.org/#concept-range-bp-position
+	 *
+	 * @param mixed[] $boundaryPointA An array containing a Node and an offset within that Node representing a boundary.
+	 * @param mixed[] $boundaryPointB An array containing a Node and an offset within that Node representing a boundary.
+	 * @return string Returns before, equal, or after based on the position of the first boundary relative to the second
+	 *                boundary.
+	 */
+	private function computePosition(
+		array $boundaryPointA,
+		array $boundaryPointB
+	) : string {
+		if ( $boundaryPointA[0] === $boundaryPointB[0] ) {
+			if ( $boundaryPointA[1] === $boundaryPointB[1] ) {
+				return 'equal';
+			} elseif ( $boundaryPointA[1] < $boundaryPointB[1] ) {
+				return 'before';
+			} else {
+				return 'after';
+			}
+		}
+
+		$tw = new TreeWalker(
+			self::getRootNode( $boundaryPointB[0] ),
+			NodeFilter::SHOW_ALL,
+			function ( $node ) use ( $boundaryPointA ) {
+				if ( $node === $boundaryPointA[0] ) {
+					return NodeFilter::FILTER_ACCEPT;
+				}
+
+				return NodeFilter::FILTER_SKIP;
+			}
+		);
+		$tw->currentNode = $boundaryPointB[0];
+
+		$AFollowsB = $tw->nextNode();
+
+		if ( $AFollowsB ) {
+			switch ( $this->computePosition( $boundaryPointB, $boundaryPointA ) ) {
+				case 'after':
+					return 'before';
+				case 'before':
+					return 'after';
+			}
+		}
+
+		$ancestor = $boundaryPointB[0]->parentNode;
+
+		while ( $ancestor ) {
+			if ( $ancestor === $boundaryPointA[0] ) {
+				break;
+			}
+
+			$ancestor = $ancestor->parentNode;
+		}
+
+		if ( $ancestor ) {
+			$child = $boundaryPointB[0];
+			$childNodes = iterator_to_array( $boundaryPointA[0]->childNodes );
+
+			while ( $child ) {
+				if ( in_array( $child, $childNodes, true ) ) {
+					break;
+				}
+
+				$child = $child->parentNode;
+			}
+
+			if ( CommentUtils::childIndexOf( $child ) < $boundaryPointA[1] ) {
+				return 'after';
+			}
+		}
+
+		return 'before';
 	}
 
 }
