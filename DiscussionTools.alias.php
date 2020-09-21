@@ -13,6 +13,7 @@ $specialPageAliases['en'] = [
 	'TopicSubscriptions' => [ 'TopicSubscriptions' ],
 	'FindComment' => [ 'FindComment' ],
 	'GoToComment' => [ 'GoToComment' ],
+	'DiscussionToolsDebug' => [ 'DiscussionToolsDebug' ],
 ];
 
 /** Czech (čeština) */

@@ -35,6 +35,9 @@
 				"mobile"
 			]
 		},
+		"ext.discussionTools.debug.styles": {
+			"styles": "dt.debug.less"
+		},
 		"ext.discussionTools.init": {
 			"packageFiles": [
 				"dt.init.js",
@@ -396,6 +399,13 @@
 			"class": "\\MediaWiki\\Extension\\DiscussionTools\\SpecialGoToComment",
 			"services": [
 				"DiscussionTools.ThreadItemStore"
+			]
+		},
+		"DiscussionToolsDebug": {
+			"class": "\\MediaWiki\\Extension\\DiscussionTools\\SpecialDiscussionToolsDebug",
+			"services": [
+				"ParserOutputAccess",
+				"DiscussionTools.CommentParser"
 			]
 		}
 	},
