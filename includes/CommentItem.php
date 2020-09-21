@@ -2,7 +2,10 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMXPath;
 use MWException;
+use Title;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentItem extends ThreadItem {
 	private $signatureRanges;
@@ -33,6 +36,48 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
+	 * Get the HTML of this comment's body
+	 *
+	 * @return string HTML
+	 */
+	public function getBodyHTML() : string {
+		$fragment = $this->getBodyRange()->cloneContents();
+		$container = $fragment->ownerDocument->createElement( 'div' );
+		$container->appendChild( $fragment );
+		return DOMCompat::getInnerHTML( $container );
+	}
+
+	/**
+	 * Get the text of this comment's body
+	 *
+	 * @return string Text
+	 */
+	public function getBodyText() : string {
+		$fragment = $this->getBodyRange()->cloneContents();
+		return $fragment->textContent;
+	}
+
+	/**
+	 * Get a list of all users mentioned
+	 *
+	 * @return Title[] Title objects for mentioned user pages
+	 */
+	public function getMentions() : array {
+		$fragment = $this->getBodyRange()->cloneContents();
+		$xPath = new DOMXPath( $fragment->ownerDocument );
+		$links = $xPath->query( './/a', $fragment );
+		$users = [];
+		foreach ( $links as $link ) {
+			$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) );
+			if ( $title && $title->getNamespace() === NS_USER ) {
+				// TODO: Consider returning User objects
+				$users[] = $title;
+			}
+		}
+		return array_unique( $users );
+	}
+
+	/**
 	 * @return string Comment ID. Unlike ThreadItem::getID this is never null.
 	 */
 	public function getId() : string {
@@ -44,6 +89,16 @@ class CommentItem extends ThreadItem {
 	 */
 	public function getSignatureRanges() : array {
 		return $this->signatureRanges;
+	}
+
+	/**
+	 * @return ImmutableRange Range of the thread item's "body"
+	 */
+	public function getBodyRange() : ImmutableRange {
+		// Exclude last signature from body
+		$signatureRanges = $this->getSignatureRanges();
+		$lastSignature = end( $signatureRanges );
+		return $this->getRange()->setEnd( $lastSignature->startContainer, $lastSignature->startOffset );
 	}
 
 	/**
