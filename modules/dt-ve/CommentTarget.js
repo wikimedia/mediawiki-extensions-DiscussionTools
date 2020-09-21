@@ -74,9 +74,11 @@ CommentTarget.prototype.attachToolbar = function () {
 };
 
 CommentTarget.prototype.getSurfaceConfig = function ( config ) {
+	config = ve.extendObject( { mode: this.defaultMode }, config );
 	return CommentTarget.super.prototype.getSurfaceConfig.call( this, ve.extendObject( {
-		commandRegistry: registries.commandRegistry,
-		sequenceRegistry: registries.sequenceRegistry,
+		commandRegistry: config.mode === 'source' ? registries.wikitextCommandRegistry : registries.commandRegistry,
+		sequenceRegistry: config.mode === 'source' ? registries.wikitextSequenceRegistry : registries.sequenceRegistry,
+		dataTransferHandlerFactory: config.mode === 'source' ? ve.ui.wikitextDataTransferHandlerFactory : ve.ui.dataTransferHandlerFactory,
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$overlayContainer: $( '#content' )
 	}, config ) );

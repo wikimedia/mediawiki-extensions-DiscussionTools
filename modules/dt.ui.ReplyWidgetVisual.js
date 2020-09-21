@@ -25,9 +25,8 @@ require( './dt-ve/dt.ce.PingNode.js' );
  * @param {number} oldId
  * @param {Object} [config]
  */
-function ReplyWidgetVisual() {
-	// TODO: Support 2017 wikitext editor
-	this.defaultMode = 'visual';
+function ReplyWidgetVisual( commentController, comment, pageName, oldId, config ) {
+	this.defaultMode = config.mode;
 
 	// Parent constructor
 	ReplyWidgetVisual.super.apply( this, arguments );
@@ -87,7 +86,7 @@ ReplyWidgetVisual.prototype.setup = function ( data ) {
 		htmlOrDoc = this.storage.get( this.storagePrefix + '/ve-dochtml' );
 		target.recovered = true;
 	} else {
-		htmlOrDoc = data.value || '<p></p>';
+		htmlOrDoc = data.value || ( this.getMode() === 'visual' ? '<p></p>' : '' );
 	}
 
 	target.originalHtml = htmlOrDoc instanceof HTMLDocument ? ve.properInnerHtml( htmlOrDoc.body ) : htmlOrDoc;

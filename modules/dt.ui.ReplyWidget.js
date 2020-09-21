@@ -562,7 +562,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	//   ol: '#'
 	// }[ this.context ];
 	indent = ':';
-	wikitext = wikitext || this.getValue();
+	wikitext = wikitext !== undefined ? wikitext : this.getValue();
 	title = this.isNewTopic && this.commentController.sectionTitle.getValue();
 
 	if ( this.previewWikitext === wikitext && this.previewTitle === title ) {

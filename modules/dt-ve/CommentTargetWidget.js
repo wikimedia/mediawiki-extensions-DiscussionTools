@@ -58,9 +58,12 @@ CommentTargetWidget.prototype.createTarget = function () {
  * @inheritdoc
  */
 CommentTargetWidget.prototype.setDocument = function ( docOrHtml ) {
-	var doc = typeof docOrHtml === 'string' ? this.target.parseDocument( docOrHtml ) : docOrHtml,
+	var mode = this.target.getDefaultMode(),
+		doc = ( mode === 'visual' && typeof docOrHtml === 'string' ) ?
+			this.target.parseDocument( docOrHtml ) :
+			docOrHtml,
 		// TODO: This could be upstreamed:
-		dmDoc = this.target.constructor.static.createModelFromDom( doc, this.target.getDefaultMode() );
+		dmDoc = this.target.constructor.static.createModelFromDom( doc, mode );
 
 	// Parent method
 	CommentTargetWidget.super.prototype.setDocument.call( this, dmDoc );

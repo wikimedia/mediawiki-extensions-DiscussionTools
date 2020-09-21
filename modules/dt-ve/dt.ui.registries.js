@@ -1,4 +1,5 @@
-var commandRegistry, sequenceRegistry;
+var commandRegistry, sequenceRegistry,
+	wikitextCommandRegistry, wikitextSequenceRegistry;
 
 // Adapted from ve.ui.MWWikitextDataTransferHandlerFactory
 function importRegistry( parent, child ) {
@@ -20,10 +21,18 @@ importRegistry( ve.ui.commandRegistry, commandRegistry );
 sequenceRegistry = new ve.ui.SequenceRegistry();
 importRegistry( ve.ui.sequenceRegistry, sequenceRegistry );
 
+wikitextCommandRegistry = new ve.ui.CommandRegistry();
+importRegistry( ve.ui.wikitextCommandRegistry, wikitextCommandRegistry );
+wikitextSequenceRegistry = new ve.ui.SequenceRegistry();
+importRegistry( ve.ui.wikitextSequenceRegistry, wikitextSequenceRegistry );
+
 // Disable find-and-replace (T263570)
 commandRegistry.unregister( 'findAndReplace' );
 commandRegistry.unregister( 'findNext' );
 commandRegistry.unregister( 'findPrevious' );
+wikitextCommandRegistry.unregister( 'findAndReplace' );
+wikitextCommandRegistry.unregister( 'findNext' );
+wikitextCommandRegistry.unregister( 'findPrevious' );
 
 // Command to insert signature node. Unlike normal VisualEditor, we want to select
 // the node (collapseToEnd=false), because we want to show its context menu.
@@ -49,6 +58,8 @@ sequenceRegistry.register(
 	new ve.ui.Sequence( 'dtWikitextSignature', 'dtMwSignature', '~~~~', 4 )
 );
 
+// TODO: Show a warning when typing ~~~~ in wikitext mode?
+
 // Show wikitext warnings for disabled sequences (disabled via excludeCommand):
 
 // insertTable
@@ -72,5 +83,7 @@ sequenceRegistry.register(
 
 module.exports = {
 	commandRegistry: commandRegistry,
-	sequenceRegistry: sequenceRegistry
+	sequenceRegistry: sequenceRegistry,
+	wikitextCommandRegistry: wikitextCommandRegistry,
+	wikitextSequenceRegistry: wikitextSequenceRegistry
 };

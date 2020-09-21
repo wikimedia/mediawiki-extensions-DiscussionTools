@@ -4,7 +4,8 @@
  * @copyright 2011-2019 VisualEditor Team and others; see http://ve.mit-license.org
  */
 
-var controller = require( 'ext.discussionTools.init' ).controller;
+var openCommand, insertAndOpenCommand, sequence,
+	controller = require( 'ext.discussionTools.init' ).controller;
 
 /**
  * MWUsernameCompletionAction action.
@@ -156,23 +157,20 @@ MWUsernameCompletionAction.prototype.shouldAbandon = function ( input ) {
 
 ve.ui.actionFactory.register( MWUsernameCompletionAction );
 
-ve.ui.commandRegistry.register(
-	new ve.ui.Command(
-		'openMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'open',
-		{ supportedSelections: [ 'linear' ] }
-	)
+openCommand = new ve.ui.Command(
+	'openMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'open',
+	{ supportedSelections: [ 'linear' ] }
 );
-ve.ui.commandRegistry.register(
-	new ve.ui.Command(
-		'insertAndOpenMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'insertAndOpen',
-		{ supportedSelections: [ 'linear' ] }
-	)
+insertAndOpenCommand = new ve.ui.Command(
+	'insertAndOpenMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'insertAndOpen',
+	{ supportedSelections: [ 'linear' ] }
 );
-ve.ui.sequenceRegistry.register(
-	new ve.ui.Sequence( 'autocompleteMWUsernames', 'openMWUsernameCompletions', '@', 0 )
-);
-ve.ui.wikitextSequenceRegistry.register(
-	new ve.ui.Sequence( 'autocompleteMWUsernamesWikitext', 'openMWUsernameCompletions', '@', 0 )
-);
+sequence = new ve.ui.Sequence( 'autocompleteMWUsernames', 'openMWUsernameCompletions', '@', 0 );
+ve.ui.commandRegistry.register( openCommand );
+ve.ui.commandRegistry.register( insertAndOpenCommand );
+ve.ui.wikitextCommandRegistry.register( openCommand );
+ve.ui.wikitextCommandRegistry.register( insertAndOpenCommand );
+ve.ui.sequenceRegistry.register( sequence );
+ve.ui.wikitextSequenceRegistry.register( sequence );
 
 module.exports = MWUsernameCompletionAction;

@@ -8,15 +8,17 @@ var
 	logger = require( './logger.js' ),
 	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
+	dtConf = require( './config.json' ),
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
+	enable2017Wikitext = dtConf.enable2017Wikitext,
 	conf = mw.config.get( 'wgVisualEditorConfig' ),
 	visualModules = [ 'ext.discussionTools.ReplyWidgetVisual' ]
 		.concat( conf.pluginModules.filter( mw.loader.getState ) ),
 	plainModules = [ 'ext.discussionTools.ReplyWidgetPlain' ];
 
 // Start loading reply widget code
-if ( defaultVisual ) {
+if ( defaultVisual || enable2017Wikitext ) {
 	mw.loader.using( visualModules );
 } else {
 	mw.loader.using( plainModules );
@@ -152,9 +154,9 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		action: 'init',
 		type: this.constructor.static.initType || 'page',
 		mechanism: 'click',
-		// TODO: Use 'wikitext-2017' when config.enable2017Wikitext is set
 		// eslint-disable-next-line camelcase
-		editor_interface: mode === 'visual' ? 'visualeditor' : 'wikitext'
+		editor_interface: mode === 'visual' ? 'visualeditor' :
+			( enable2017Wikitext ? 'wikitext-2017' : 'wikitext' )
 	} );
 
 	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
@@ -208,6 +210,9 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 		visual = defaultVisual;
 	}
 
+	// If 2017WTE mode is enabled, always use ReplyWidgetVisual.
+	visual = visual || enable2017Wikitext;
+
 	return mw.loader.using( visual ? visualModules : plainModules ).then( function () {
 		return require( visual ? 'ext.discussionTools.ReplyWidgetVisual' : 'ext.discussionTools.ReplyWidgetPlain' );
 	} );
@@ -215,6 +220,10 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 
 CommentController.prototype.createReplyWidget = function ( comment, pageName, oldId, config, visual ) {
 	var commentController = this;
+
+	if ( enable2017Wikitext ) {
+		config.mode = visual ? 'visual' : 'source';
+	}
 
 	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
 		return new ReplyWidget( commentController, comment, pageName, oldId, config );
@@ -369,7 +378,7 @@ CommentController.prototype.switchToWikitext = function () {
 		oldWidget.comment,
 		oldWidget.pageName,
 		oldWidget.oldId,
-		{},
+		{ mode: 'source' },
 		false
 	);
 
@@ -492,7 +501,7 @@ CommentController.prototype.switchToVisual = function () {
 		oldWidget.comment,
 		oldWidget.pageName,
 		oldWidget.oldId,
-		{},
+		{ mode: 'visual' },
 		true
 	);
 
