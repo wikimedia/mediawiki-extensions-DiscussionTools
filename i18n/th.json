@@ -1,8 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geonuch"
+			"Geonuch",
+			"Patsagorn Y."
 		]
 	},
-	"discussiontools-replywidget-preview": "ดูตัวอย่าง"
+	"discussiontools-defaultsummary-reply": "ตอบกลับ",
+	"discussiontools-desc": "เครื่องมือปรับปรุงประสิทธิภาพในหน้าอภิปราย",
+	"discussiontools-preference-label": "เครื่องมือช่วยเหลือการอภิปราย",
+	"discussiontools-preference-replytool": "เปิดใช้การตอบกลับอย่างรวดเร็ว",
+	"discussiontools-replylink": "ตอบกลับ",
+	"discussiontools-replywidget-abandon": "แน่ใจหรือไม่ว่าต้องการยกเลิกการตอบกลับนี้?",
+	"discussiontools-replywidget-abandon-discard": "ยกเลิกความเห็น",
+	"discussiontools-replywidget-abandon-keep": "เขียนต่อ",
+	"discussiontools-replywidget-advanced": "ขั้นสูง",
+	"discussiontools-replywidget-cancel": "ยกเลิก",
+	"discussiontools-replywidget-loading": "กำลังโหลด...",
+	"discussiontools-replywidget-mention-tool-header": "ค้นหาผู้ใช้: $1",
+	"discussiontools-replywidget-mention-tool-title": "กล่าวถึงผู้ใช้",
+	"discussiontools-replywidget-mode-source": "ต้นฉบับ",
+	"discussiontools-replywidget-mode-visual": "เห็นภาพ",
+	"discussiontools-replywidget-placeholder-reply": "กำลังตอบกลับ $1",
+	"discussiontools-replywidget-preview": "ดูตัวอย่าง",
+	"discussiontools-replywidget-reply": "ตอบกลับ",
+	"discussiontools-replywidget-signature-title": "ตรวจพบรูปแบบของการเพิ่มลายเซ็น",
+	"discussiontools-replywidget-summary": "ความย่อการแสดงความเห็น",
+	"discussiontools-replywidget-transcluded": "ความเห็นของคุณจะถูกบันทึกไว้ที่ [[$1]]",
+	"discussiontools-error-noswitchtove-table": "รูปแบบของตาราง",
+	"discussiontools-error-noswitchtove-template": "รูปแบบของแม่แบบ",
+	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
+	"tag-discussiontools-edit": "แก้ไชความเห็น",
+	"tag-discussiontools-newtopic": "เพิ่มหัวข้อ",
+	"tag-discussiontools-source": "ต้นฉบับ",
+	"tag-discussiontools-visual": "เห็นภาพ"
 }

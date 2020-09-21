@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fitoschido",
 			"Xavier Dengra"
 		]
 	},
@@ -15,7 +16,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>No esteu registrat amb un compte d'usuari.</strong> Per tal d'assignar-vos un nom d'usuari en comptes de la vostra adreça IP, podeu o bé [$1 log in] o bé [$2 create an account].",
 	"discussiontools-replywidget-cancel": "Cancel·la",
 	"discussiontools-replywidget-feedback": "Compartiu la vostra opinió sobre aquest giny",
-	"discussiontools-replywidget-loading": "Carregant...",
+	"discussiontools-replywidget-loading": "S’està carregant…",
 	"discussiontools-replywidget-mention-tool-header": "Cerca l'usuari: $1",
 	"discussiontools-replywidget-mention-tool-title": "Menciona un usuari",
 	"discussiontools-replywidget-mode-source": "codi",
@@ -30,12 +31,12 @@
 	"discussiontools-error-comment-conflict": "El vostre comentari no s'ha pogut desar perquè algú altre ha comentat alhora. Si us plau, proveu-ho novament o refresqueu la pàgina per veure les darreres intervencions.",
 	"discussiontools-error-comment-disappeared": "No s'ha pogut trobar el comentari que provàveu de respondre. Possiblement hagi estat esborrat o traslladat a una altra pàgina. Si us plau, refresqueu la pàgina i proveu-ho un altre cop.",
 	"discussiontools-error-comment-is-transcluded": "L'enllaç \"{{int:discussiontools-replylink}}\" no pot emprar-se per respondre aquest comentari. Per respondre'l, empreu el sistema d'edició habitual a través de la pestanya o enllaç de secció superior \"$1\".",
-	"discussiontools-error-comment-is-transcluded-title": "L'enllaç \"{{int:discussiontools-replylink}}\" no pot emprar-se per respondre aquest comentari atès que s'ha carregat a partir de les dades d'una altra pàgina. Si voleu respondre, podreu fer-ho clicant aquí: [[$1]].",
+	"discussiontools-error-comment-is-transcluded-title": "L’enllaç «{{int:discussiontools-replylink}}» no pot emprar-se per a respondre aquest comentari atès que s’ha carregat a partir de les dades d’una altra pàgina. Si voleu respondre, podreu fer-ho clicant aquí: [[$1]].",
 	"discussiontools-error-lint": "Els comentaris i intervencions en aquesta pàgina no es poden respondre atès un error al codi del text. Podeu llegir més sobre aquest error [$1 llegint-ne la documentació], demanant ajuda [$2 aquí] o esmenant-ne l'error [$3 fent clic a l'editor de codi tradicional] si en teniu prou coneixement.",
 	"discussiontools-error-noswitchtove": "Ens sap greu, però el canvi a l'editor visual s'ha desactivat perquè hem detectat  <b>$1</b> en el comentari que heu escrit. [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Llegiu-ne més].",
-	"discussiontools-error-noswitchtove-extension": "Extensió o sintaxi de referència",
-	"discussiontools-error-noswitchtove-table": "Sintaxi de taula",
-	"discussiontools-error-noswitchtove-template": "Sintaxi de plantilla",
+	"discussiontools-error-noswitchtove-extension": "sintaxi de l’extensió o la referència",
+	"discussiontools-error-noswitchtove-table": "sintaxi de la taula",
+	"discussiontools-error-noswitchtove-template": "sintaxi de la plantilla",
 	"discussiontools-error-noswitchtove-title": "Editor visual desactivat",
 	"tag-discussiontools-description": "Edició realitzada a través de DiscussionTools",
 	"tag-discussiontools-edit": "Edita la intervenció",
