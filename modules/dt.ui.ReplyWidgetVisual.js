@@ -126,8 +126,11 @@ ReplyWidgetVisual.prototype.teardown = function () {
 ReplyWidgetVisual.prototype.focus = function () {
 	var targetWidget = this.replyBodyWidget;
 	setTimeout( function () {
-		targetWidget.getSurface().getModel().selectLastContentOffset();
-		targetWidget.focus();
+		// Check surface still exists after timeout
+		if ( targetWidget.getSurface() ) {
+			targetWidget.getSurface().getModel().selectLastContentOffset();
+			targetWidget.focus();
+		}
 	} );
 
 	return this;
