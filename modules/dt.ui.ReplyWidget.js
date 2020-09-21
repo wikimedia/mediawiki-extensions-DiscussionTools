@@ -243,11 +243,19 @@ ReplyWidget.prototype.isEmpty = null;
 
 ReplyWidget.prototype.getMode = null;
 
+/**
+ * Restore the widget to its original state
+ *
+ * Clear any widget values, reset UI states, and clear
+ * any auto-save values.
+ */
 ReplyWidget.prototype.clear = function () {
 	if ( this.errorMessage ) {
 		this.errorMessage.$element.remove();
 	}
 	this.$preview.empty();
+	this.toggleAdvanced( false );
+
 	this.storage.remove( this.storagePrefix + '/mode' );
 	this.storage.remove( this.storagePrefix + '/saveable' );
 	this.storage.remove( this.storagePrefix + '/summary' );
