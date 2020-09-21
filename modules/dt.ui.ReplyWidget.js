@@ -299,14 +299,18 @@ ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
 	} else {
 		this.focus();
 	}
-	this.onEditSummaryChange();
+	this.storeEditSummary();
 	this.storage.set( this.storagePrefix + '/showAdvanced', this.showAdvanced ? '1' : '' );
 };
 
 ReplyWidget.prototype.onEditSummaryChange = function () {
-	this.storage.set( this.storagePrefix + '/summary', this.getEditSummary() );
+	this.storeEditSummary();
 	// After first subsequent edit, reset this so auto-select no longer happens
 	this.summaryPrefixLength = null;
+};
+
+ReplyWidget.prototype.storeEditSummary = function () {
+	this.storage.set( this.storagePrefix + '/summary', this.getEditSummary() );
 };
 
 ReplyWidget.prototype.getEditSummary = function () {
