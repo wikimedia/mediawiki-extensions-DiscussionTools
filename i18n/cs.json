@@ -40,7 +40,7 @@
 	"discussiontools-error-comment-is-transcluded": "Odkaz „{{int:discussiontools-replylink}}“ nemůže být použit k odpovědi na tento komentář. Abyste odpověděli, použijte editor celé stránky kliknutím na „$1“.",
 	"discussiontools-error-comment-is-transcluded-title": "Odkaz „{{int:discussiontools-replylink}}“ nemůže být použit k odpovědi na tento komentář, protože je načten z jiné stránky. Abyste odpověděli, klikněte zde: [[$1]].",
 	"discussiontools-error-lint": "Kvůli chybě ve wikitextu nelze odpovědět na komentáře na této stránce. Více informací o této chybě naleznete v [$1 dokumentaci], o pomoc můžete požádat [$2 zde] a napravit chybu můžete [$3 otevřením editoru celé stránky].",
-	"discussiontools-error-noswitchtove": "Omlouváme se, ale přepnutí do Vizuálního editoru se nezdařilo, protože ve vašem komentáři byla detekována <b>$1</b>. [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Více informací].",
+	"discussiontools-error-noswitchtove": "Omlouváme se, ale přepnutí do Vizuálního editoru se nezdařilo, protože ve vašem komentáři byla detekována <b>$1</b>. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Více informací].",
 	"discussiontools-error-noswitchtove-extension": "syntax rozšíření nebo reference",
 	"discussiontools-error-noswitchtove-table": "syntax tabulky",
 	"discussiontools-error-noswitchtove-template": "syntax šablony",

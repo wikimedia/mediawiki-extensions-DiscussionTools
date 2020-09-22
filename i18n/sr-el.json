@@ -29,7 +29,7 @@
 	"discussiontools-error-comment-is-transcluded": "Nije moguće odgovoriti na ovaj komentar vezom „{{int:discussiontools-replylink}}”. Pokušajte to pomoću uređivača cele stranice klikom na dugme „$1”.",
 	"discussiontools-error-comment-is-transcluded-title": "Nije moguće odgovoriti na ovaj komentar vezom „{{int:discussiontools-replylink}}”, jer je učitana s druge stranice. Idite na stranicu [[$1]] da biste odgovorili na njega.",
 	"discussiontools-error-lint": "Zbog greške u vikitekstu, nije moguće odgovoriti na komentare na ovoj stranici. [$1 Pročitajte dokumentaciju] za više informacija, potražite pomoć [$2 ovde] ili popravite grešku tako što ćete [$3 otvoriti uređivač cele stranice].",
-	"discussiontools-error-noswitchtove": "Ne možete da se prebacite na vizuelni režim, jer je <b>$1</b> u komentaru koji ste napisali.\n[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Detaljnije].",
+	"discussiontools-error-noswitchtove": "Ne možete da se prebacite na vizuelni režim, jer je <b>$1</b> u komentaru koji ste napisali.\n[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Detaljnije].",
 	"discussiontools-error-noswitchtove-extension": "pronađena referenca ili neka druga oznaka",
 	"discussiontools-error-noswitchtove-table": "pronađena tabela",
 	"discussiontools-error-noswitchtove-template": "pronađen šablon",

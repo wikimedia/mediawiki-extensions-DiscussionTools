@@ -31,7 +31,7 @@
 	"discussiontools-error-comment-is-transcluded": "Liên kết “{{int:discussiontools-replylink}}” không thể dùng để trả lời cho bình luận này. Để trả lời, vui lòng dùng bộ sửa đổi trang đầy đủ bằng cách nhấn vào “$1”.",
 	"discussiontools-error-comment-is-transcluded-title": "Liên kết “{{int:discussiontools-replylink}}” không thể dùng để trả lời cho bình luận này vì nó được tải từ trang khác. Để trả lời, vui lòng đến: [[$1]].",
 	"discussiontools-error-lint": "Bình luận tại trang này không thể được trả lời vì có lỗi trong mã wiki. Bạn có thể tìm hiểu thêm về lỗi này bằng cách [$1 đọc tài liệu hướng dẫn sử dụng], nhờ giúp đỡ bằng cách [$2 đăng tại đây] hoặc sửa lỗi bằng cách [$3 mở bộ sửa đổi trang đầy đủ].",
-	"discussiontools-error-noswitchtove": "Rất tiếc, chuyển đổi sang chế độ trực quan bị tắt vì <b>$1</b> được tìm thấy trong bình luận bạn đã viết [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Tìm hiểu thêm].",
+	"discussiontools-error-noswitchtove": "Rất tiếc, chuyển đổi sang chế độ trực quan bị tắt vì <b>$1</b> được tìm thấy trong bình luận bạn đã viết [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Tìm hiểu thêm].",
 	"discussiontools-error-noswitchtove-extension": "cú pháp mở rộng hoặc chú thích",
 	"discussiontools-error-noswitchtove-table": "cú pháp tạo bảng",
 	"discussiontools-error-noswitchtove-template": "cú pháp bản mẫu",

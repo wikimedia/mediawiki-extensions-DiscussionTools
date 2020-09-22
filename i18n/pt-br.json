@@ -39,7 +39,7 @@
 	"discussiontools-error-comment-is-transcluded": "O link \"{{int:discussiontools-replylink}}\" não pode ser usado para responder a este comentário. Para responder, por favor, utilize o editor de página inteira clicando em \"$1\"",
 	"discussiontools-error-comment-is-transcluded-title": "Este comentário não pode ser respondido aqui (ainda), porque ele é carregado de outra página. Por favor, vá para [[$1]] para responder.",
 	"discussiontools-error-lint": "Comentários nesta página não podem ser respondidos por conta de um erro no wikitexto. Você pode aprender sobre este erro [$1 lendo a documentação], solicitando ajuda [$2 postando aqui] ou corrigindo o problema [$3 abrindo o editor de página inteira].",
-	"discussiontools-error-noswitchtove": "Desculpe, a mudança para o modo visual está desativada porque <b>$1</b> foi detectado no comentário que você escreveu.[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Saber mais].",
+	"discussiontools-error-noswitchtove": "Desculpe, a mudança para o modo visual está desativada porque <b>$1</b> foi detectado no comentário que você escreveu.[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Saber mais].",
 	"discussiontools-error-noswitchtove-extension": "extensão ou sintaxe de referência",
 	"discussiontools-error-noswitchtove-table": "sintaxe da tabela",
 	"discussiontools-error-noswitchtove-template": "sintaxe da predefinição",

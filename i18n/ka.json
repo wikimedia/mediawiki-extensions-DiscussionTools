@@ -33,7 +33,7 @@
 	"discussiontools-error-comment-is-transcluded": "„პასუხის“ ბმულს ვერ გამოიყენებთ ამ კომენტარზე საპასუხოდ. ამისათვის,  გთხოვთ, გამოიყენოთ გვერდის სტანდარტული რედაქტორი „$1“-ზე დაწკაპებით.",
 	"discussiontools-error-comment-is-transcluded-title": "„პასუხის“ ბმულს ვერ გამოიყენებთ ამ კომენტარზე საპასუხოდ, რადგან იგი ჩატვირთეთ სხვა გვერდიდან. პასუხის გასაცემად, გთხოვთ, გადადით აქ: [[$1]].",
 	"discussiontools-error-lint": "ამ გვერდზე არსებულ კომენტარებზე შეუძლებელლია პასუხის გაცემა ვიკიტექსტის შეცდომის გამო. ამ შეცდომის გასაგებად შეგიძლიათ [$1 ამ ინფორმაციის წაკითხვა], დახმარების თხოვნა [$2 აქ] ან მისი გასწორება [$3 სტანდარტული რედაქტორის გახსნით].",
-	"discussiontools-error-noswitchtove": "სამწუხაროდ, ვიზუალურ რედაქტირებაზე გადაყვანა ვერ მოხერხდა, რადგან <b>$1</b> აღმოჩნდა თქვენს დაწერილ კომენტარში. [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations გაიგეთ მეტი].",
+	"discussiontools-error-noswitchtove": "სამწუხაროდ, ვიზუალურ რედაქტირებაზე გადაყვანა ვერ მოხერხდა, რადგან <b>$1</b> აღმოჩნდა თქვენს დაწერილ კომენტარში. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations გაიგეთ მეტი].",
 	"discussiontools-error-noswitchtove-extension": "გაფართოება ან სქოლიოს სინტაქსი",
 	"discussiontools-error-noswitchtove-table": "ცხრილის სინტაქსი",
 	"discussiontools-error-noswitchtove-template": "თარგის სინტაქსი",

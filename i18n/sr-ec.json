@@ -39,7 +39,7 @@
 	"discussiontools-error-comment-is-transcluded": "Није могуће одговорити на овај коментар везом „{{int:discussiontools-replylink}}”. Покушајте то помоћу уређивача целе странице кликом на дугме „$1”.",
 	"discussiontools-error-comment-is-transcluded-title": "Није могуће одговорити на овај коментар везом „{{int:discussiontools-replylink}}”, јер је учитана с друге странице. Идите на страницу [[$1]] да бисте одговорили на њега.",
 	"discussiontools-error-lint": "Због грешке у викитексту, није могуће одговорити на коментаре на овој страници. [$1 Прочитајте документацију] за више информација, потражите помоћ [$2 овде] или поправите грешку тако што ћете [$3 отворити уређивач целе странице].",
-	"discussiontools-error-noswitchtove": "Не можете да се пребаците на визуелни режим, јер је <b>$1</b> у коментару који сте написали.\n[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Детаљније].",
+	"discussiontools-error-noswitchtove": "Не можете да се пребаците на визуелни режим, јер је <b>$1</b> у коментару који сте написали.\n[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Детаљније].",
 	"discussiontools-error-noswitchtove-extension": "пронађена референца или нека друга ознака",
 	"discussiontools-error-noswitchtove-table": "пронађена табела",
 	"discussiontools-error-noswitchtove-template": "пронађен шаблон",

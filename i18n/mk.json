@@ -37,7 +37,7 @@
 	"discussiontools-error-comment-is-transcluded": "Врската „{{int:discussiontools-replylink}}“ не може да се употреби за одговор на коментаров. За да одговорите, послужете се со целостраничниот уредник стискајќи на „$1“.",
 	"discussiontools-error-comment-is-transcluded-title": "Врската „{{int:discussiontools-replylink}}“ не може да се употреби за одговор на коментаров бидејќи е вчитан од друга страница. За да одговорите, појдете на [[$1]].",
 	"discussiontools-error-lint": "Не може да се одговара на коментарите на страницава поради грешка во викитекстот. Повеќе за грешката можете да дознаете [$1 читајќи ја документацијата], да побарате помош [$2 овде] или пак да ја исправите [$3 отворајќи го целостраничниот уредник].",
-	"discussiontools-error-noswitchtove": "За жал, префрлањето на нагледен режим е оневозможено бидејќи пронајдов <b>$1</b> во коментарот што го напишавте. [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Дознајте повеќе].",
+	"discussiontools-error-noswitchtove": "За жал, префрлањето на нагледен режим е оневозможено бидејќи пронајдов <b>$1</b> во коментарот што го напишавте. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Дознајте повеќе].",
 	"discussiontools-error-noswitchtove-extension": "синтакса за додаток или навод",
 	"discussiontools-error-noswitchtove-table": "синтакса за табела",
 	"discussiontools-error-noswitchtove-template": "синтакса за предлошка",

@@ -51,7 +51,7 @@
 	"discussiontools-error-comment-is-transcluded": "「{{int:discussiontools-replylink}}」を使ってこのコメントに返信することはできません。「$1」を押して、ページ全体の編集機能をご利用ください。",
 	"discussiontools-error-comment-is-transcluded-title": "「{{int:discussiontools-replylink}}」リンクを使ってこのコメントに返信できません。他のページから読み込まれているからです。返信するには次へ移動してください：[[$1]]。",
 	"discussiontools-error-lint": "このページのコメントには返信できません。ウィキ文のエラーが原因です。このエラーの詳細は[$1 説明文書に書いてあります]。支援を受けるには[$2 こちらに投稿する]か、ウィキ文のエラー修正は[$3 ページ編集機能を開きます]。",
-	"discussiontools-error-noswitchtove": "申し訳ありません。あなたが書いたコメントから<b>$1</b>が検出されたため、ビジュアルモードへ切り替えることはできません。[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations 詳しくはこちら]。",
+	"discussiontools-error-noswitchtove": "申し訳ありません。あなたが書いたコメントから<b>$1</b>が検出されたため、ビジュアルモードへ切り替えることはできません。[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations 詳しくはこちら]。",
 	"discussiontools-error-noswitchtove-extension": "拡張機能または参照の構文",
 	"discussiontools-error-noswitchtove-table": "テーブルの構文",
 	"discussiontools-error-noswitchtove-template": "テンプレート構文",

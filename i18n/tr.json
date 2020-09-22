@@ -39,7 +39,7 @@
 	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" bağlantısı bu yorumu yanıtlamak için kullanılamaz. Yanıtlamak için lütfen \"$1\" tıklayarak tam sayfa düzenleyicisini kullanın.",
 	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" bağlantısı, başka bir sayfadan yüklendiği için bu yoruma yanıt vermek için kullanılamaz. Yanıtlamak için lütfen buraya gidin: [[$1]].",
 	"discussiontools-error-lint": "Vikimetin dosyasındaki bir hata nedeniyle bu sayfadaki yorumlara yanıt verilemiyor. Bu hatayla ilgili [$1 belgeyi okuyarak] öğrenebilir, [$2 burada göndererek] yardım isteyebilir veya [$3 tam sayfa düzenleyicisini açarak] hatayı düzeltebilirsiniz.",
-	"discussiontools-error-noswitchtove": "Maalesef, yazdığınız yorumda <b>$1</b> tespit edildiğinden görsel moda geçiş devre dışı bırakıldı. [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools/Reply_tool_visual_mode_limitations Daha fazla bilgi].",
+	"discussiontools-error-noswitchtove": "Maalesef, yazdığınız yorumda <b>$1</b> tespit edildiğinden görsel moda geçiş devre dışı bırakıldı. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Daha fazla bilgi].",
 	"discussiontools-error-noswitchtove-extension": "uzantı veya kaynak sözdizimi",
 	"discussiontools-error-noswitchtove-table": "tablo sözdizimi",
 	"discussiontools-error-noswitchtove-template": "şablon sözdizimi",

@@ -5,10 +5,14 @@
 			"Majavah",
 			"Nike",
 			"Pxos",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Stryn"
 		]
 	},
+	"discussiontools": "Keskustelutyökalut",
 	"discussiontools-defaultsummary-reply": "Vastaus",
+	"discussiontools-desc": "Työkalut keskustelusivujen parantamiseksi.",
+	"discussiontools-preference-label": "Keskustelutyökalut",
 	"discussiontools-replylink": "vastaa",
 	"discussiontools-replywidget-abandon": "Oletko varma, että haluat hylätä kommentin, jota olet kirjoittamassa?",
 	"discussiontools-replywidget-abandon-discard": "Hylkää kommentti",
@@ -17,6 +21,8 @@
 	"discussiontools-replywidget-cancel": "Peruuta",
 	"discussiontools-replywidget-feedback": "Anna palautetta tästä ominaisuudesta",
 	"discussiontools-replywidget-loading": "Ladataan...",
+	"discussiontools-replywidget-mention-prefix": "@",
+	"discussiontools-replywidget-mention-tool-header": "Etsi käyttäjä: $1",
 	"discussiontools-replywidget-mention-tool-title": "Mainitse käyttäjä",
 	"discussiontools-replywidget-mode-source": "Wikiteksti",
 	"discussiontools-replywidget-mode-visual": "Visuaalinen",
@@ -24,6 +30,7 @@
 	"discussiontools-replywidget-preview": "Esikatsele",
 	"discussiontools-replywidget-reply": "Vastaa",
 	"discussiontools-replywidget-signature-title": "Allekirjoituksen koodi tunnistettu",
+	"discussiontools-replywidget-summary": "Kommentin yhteenveto",
 	"tag-discussiontools-edit": "Kommenttia muokattu",
 	"tag-discussiontools-newtopic": "Aihe lisätty",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vastaus]",
