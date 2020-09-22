@@ -29,8 +29,8 @@ class CommentParser {
 	private $threadItems;
 	/** @var CommentItem[] */
 	private $commentItems;
-	/** @var CommentItem[] */
-	private $commentsById;
+	/** @var ThreadItem[] */
+	private $threadItemsById;
 	/** @var HeadingItem[] */
 	private $threads;
 
@@ -738,16 +738,16 @@ class CommentParser {
 	}
 
 	/**
-	 * Find a CommentItem by its ID
+	 * Find a ThreadItem by its ID
 	 *
-	 * @param string $id Comment ID
-	 * @return CommentItem|null Comment item, null if not found
+	 * @param string $id ID
+	 * @return ThreadItem|null Thread item, null if not found
 	 */
-	public function findCommentById( string $id ) : ?CommentItem {
-		if ( !$this->commentsById ) {
+	public function findCommentById( string $id ) : ?ThreadItem {
+		if ( !$this->threadItemsById ) {
 			$this->buildThreads();
 		}
-		return $this->commentsById[$id] ?? null;
+		return $this->threadItemsById[$id] ?? null;
 	}
 
 	private function buildThreadItems() : void {
@@ -960,23 +960,56 @@ class CommentParser {
 	}
 
 	/**
+	 * Given a heading node, return the node on which the ID attribute is set.
+	 *
+	 * @param DOMElement $heading Heading node (`<h1>`-`<h6>`)
+	 * @return DOMElement Headline node (same as the heading node, or one of its children)
+	 */
+	private function getHeadlineNode( DOMElement $heading ) {
+		// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
+		if (
+			( $node = $heading->firstChild ) &&
+			$node instanceof DOMElement &&
+			$node->getAttribute( 'class' ) === 'mw-headline'
+		) {
+			// Old parser, without fallback ID element
+			return $node;
+		} elseif (
+			$heading->firstChild &&
+			( $node = $heading->firstChild->nextSibling ) &&
+			$node instanceof DOMElement &&
+			$node->getAttribute( 'class' ) === 'mw-headline'
+		) {
+			// Old parser, with a fallback ID element before the headline
+			return $node;
+		} else {
+			// Parsoid (the heading node itself carries the ID)
+			return $heading;
+		}
+	}
+
+	/**
 	 * Given a thread item, return an identifier for it that is unique within the page.
 	 *
 	 * @param ThreadItem $threadItem
 	 * @return string|null
 	 */
 	private function computeId( ThreadItem $threadItem ) : ?string {
-		if ( $threadItem instanceof HeadingItem ) {
-			// We don't need ids for section headings right now, but we might in the future
-			// e.g. if we allow replying directly to sections (adding top-level comments)
-			$id = null;
+		$id = null;
+
+		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
+			// The range points to the root note, using it like below results in silly values
+			$id = 'h|';
+		} elseif ( $threadItem instanceof HeadingItem ) {
+			$headline = $this->getHeadlineNode( $threadItem->getRange()->startContainer );
+			$id = 'h|' . ( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
-			$id = ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
+			$id = 'c|' . ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
 
 			// If there would be multiple comments with the same ID (i.e. the user left multiple comments
 			// in one edit, or within a minute), append sequential numbers
 			$number = 0;
-			while ( isset( $this->commentsById["$id|$number"] ) ) {
+			while ( isset( $this->threadItemsById["$id|$number"] ) ) {
 				$number++;
 			}
 			$id = "$id|$number";
@@ -1005,18 +1038,18 @@ class CommentParser {
 
 		$threads = [];
 		$replies = [];
-		$this->commentsById = [];
+		$this->threadItemsById = [];
 
 		foreach ( $this->threadItems as $threadItem ) {
 			$id = $this->computeId( $threadItem );
-			if ( $id && $threadItem instanceof CommentItem ) {
-				$this->commentsById[$id] = $threadItem;
+			if ( $id ) {
+				$this->threadItemsById[$id] = $threadItem;
 			}
 			$threadItem->setId( $id );
 			$legacyId = $this->computeLegacyId( $threadItem );
 			$threadItem->setLegacyId( $legacyId );
-			if ( $legacyId && $threadItem instanceof CommentItem ) {
-				$this->commentsById[$legacyId] = $threadItem;
+			if ( $legacyId ) {
+				$this->threadItemsById[$legacyId] = $threadItem;
 			}
 
 			if ( count( $replies ) < $threadItem->getLevel() ) {

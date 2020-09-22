@@ -143,7 +143,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				$parser = CommentParser::newFromGlobalState( $container );
 
 				$comment = $parser->findCommentById( $commentId );
-				if ( !$comment ) {
+				if ( !$comment || !( $comment instanceof CommentItem ) ) {
 					$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
 					return;
 				}

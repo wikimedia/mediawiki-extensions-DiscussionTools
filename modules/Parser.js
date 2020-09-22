@@ -25,7 +25,7 @@ function Parser( rootNode ) {
 	this.rootNode = rootNode;
 	this.threadItems = null;
 	this.commentItems = null;
-	this.commentsById = null;
+	this.threadItemsById = null;
 	this.threads = null;
 }
 
@@ -721,16 +721,16 @@ Parser.prototype.getCommentItems = function () {
 };
 
 /**
- * Find a CommentItem by its ID
+ * Find a ThreadItem by its ID
  *
- * @param {string} id Comment ID
- * @return {CommentItem|null} Comment item, null if not found
+ * @param {string} id ID
+ * @return {ThreadItem|null} Thread item, null if not found
  */
 Parser.prototype.findCommentById = function ( id ) {
-	if ( !this.commentsById ) {
+	if ( !this.threadItemsById ) {
 		this.buildThreads();
 	}
-	return this.commentsById[ id ] || null;
+	return this.threadItemsById[ id ] || null;
 };
 
 Parser.prototype.buildThreadItems = function () {
@@ -946,32 +946,58 @@ Parser.prototype.getThreads = function () {
 };
 
 /**
+ * Given a heading node, return the node on which the ID attribute is set.
+ *
+ * @param {HTMLElement} heading Heading node (`<h1>`-`<h6>`)
+ * @return {HTMLElement} Headline node (same as the heading node, or one of its children)
+ */
+Parser.prototype.getHeadlineNode = function ( heading ) {
+	// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
+	if (
+		heading.firstChild &&
+		heading.firstChild.className === 'mw-headline'
+	) {
+		// Old parser, without fallback ID element
+		return heading.firstChild;
+	} else if (
+		heading.firstChild && heading.firstChild.nextSibling &&
+		heading.firstChild.nextSibling.className === 'mw-headline'
+	) {
+		// Old parser, with a fallback ID element before the headline
+		return heading.firstChild.nextSibling;
+	} else {
+		// Parsoid (the heading node itself carries the ID)
+		return heading;
+	}
+};
+
+/**
  * Given a thread item, return an identifier for it that is unique within the page.
  *
  * @param {ThreadItem} threadItem
  * @return {string|null}
  */
 Parser.prototype.computeId = function ( threadItem ) {
-	var id, number;
+	var id, number, headline;
 
-	if ( threadItem instanceof HeadingItem ) {
-		// We don't need ids for section headings right now, but we might in the future
-		// e.g. if we allow replying directly to sections (adding top-level comments)
-		id = null;
-	} else {
-		// username+timestamp
-		id = [
-			threadItem.author || '',
-			threadItem.timestamp.toISOString()
-		].join( '|' );
+	if ( threadItem instanceof HeadingItem && threadItem.placeholderHeading ) {
+		// The range points to the root note, using it like below results in silly values
+		id = 'h|';
+	} else if ( threadItem instanceof HeadingItem ) {
+		headline = this.getHeadlineNode( threadItem.range.startContainer );
+		id = 'h|' + ( headline.getAttribute( 'id' ) || '' );
+	} else if ( threadItem instanceof CommentItem ) {
+		id = 'c|' + ( threadItem.author || '' ) + '|' + threadItem.timestamp.toISOString();
 
 		// If there would be multiple comments with the same ID (i.e. the user left multiple comments
 		// in one edit, or within a minute), append sequential numbers
 		number = 0;
-		while ( this.commentsById[ id + '|' + number ] ) {
+		while ( this.threadItemsById[ id + '|' + number ] ) {
 			number++;
 		}
 		id = id + '|' + number;
+	} else {
+		throw new Error( 'Unknown ThreadItem type' );
 	}
 
 	return id;
@@ -987,13 +1013,13 @@ Parser.prototype.buildThreads = function () {
 		this.buildThreadItems();
 	}
 
-	this.commentsById = {};
+	this.threadItemsById = {};
 	for ( i = 0; i < this.threadItems.length; i++ ) {
 		threadItem = this.threadItems[ i ];
 
 		id = this.computeId( threadItem );
-		if ( id && threadItem instanceof CommentItem ) {
-			this.commentsById[ id ] = threadItem;
+		if ( id ) {
+			this.threadItemsById[ id ] = threadItem;
 		}
 		threadItem.id = id;
 
