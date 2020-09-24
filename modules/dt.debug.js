@@ -4,7 +4,7 @@ var
 	parser = new Parser( document.getElementById( 'mw-content-text' ) ),
 	comments = parser.getCommentItems(),
 	threads = parser.getThreads(),
-	timestampRegex = parser.getLocalTimestampRegexp();
+	timestampRegexps = parser.getLocalTimestampRegexps();
 
 highlighter.markThreads( threads );
 
@@ -13,7 +13,10 @@ comments.forEach( function ( comment ) {
 	var signature, emptySignature, node, match;
 
 	node = comment.range.endContainer;
-	match = parser.findTimestamp( node, timestampRegex );
+	match = parser.findTimestamp( node, timestampRegexps );
+	if ( !match ) {
+		return;
+	}
 	signature = parser.findSignature( node )[ 0 ];
 	emptySignature = signature.length === 1 && signature[ 0 ] === node;
 	// Note that additional content may follow the timestamp (e.g. in some voting formats), but we
