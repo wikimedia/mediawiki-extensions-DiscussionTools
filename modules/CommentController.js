@@ -197,7 +197,7 @@ CommentController.prototype.setup = function ( mode ) {
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
-		commentController.setupReplyWidget( replyWidget, null, true );
+		commentController.setupReplyWidget( replyWidget, {}, true );
 
 		logger( { action: 'ready' } );
 		logger( { action: 'loaded' } );
@@ -222,10 +222,10 @@ CommentController.prototype.createReplyWidget = function ( comment, pageName, ol
 	} );
 };
 
-CommentController.prototype.setupReplyWidget = function ( replyWidget, initialValue, scrollIntoView ) {
+CommentController.prototype.setupReplyWidget = function ( replyWidget, data, scrollIntoView ) {
 	replyWidget.connect( this, { teardown: 'teardown' } );
 
-	replyWidget.setup( initialValue );
+	replyWidget.setup( data );
 	if ( scrollIntoView ) {
 		replyWidget.scrollElementIntoView( { padding: scrollPadding } );
 	}
@@ -323,6 +323,8 @@ CommentController.prototype.switchToWikitext = function () {
 	var wikitextPromise,
 		oldWidget = this.replyWidget,
 		target = oldWidget.replyBodyWidget.target,
+		oldShowAdvanced = oldWidget.showAdvanced,
+		oldEditSummary = oldWidget.getEditSummary(),
 		previewDeferred = $.Deferred(),
 		commentController = this;
 
@@ -332,10 +334,7 @@ CommentController.prototype.switchToWikitext = function () {
 		oldWidget.comment,
 		oldWidget.pageName,
 		oldWidget.oldId,
-		{
-			showAdvanced: oldWidget.showAdvanced,
-			editSummary: oldWidget.getEditSummary()
-		},
+		{},
 		false
 	);
 
@@ -355,7 +354,11 @@ CommentController.prototype.switchToWikitext = function () {
 			oldWidget.disconnect( commentController );
 			oldWidget.teardown();
 
-			commentController.setupReplyWidget( replyWidget, wikitext );
+			commentController.setupReplyWidget( replyWidget, {
+				value: wikitext,
+				showAdvanced: oldShowAdvanced,
+				editSummary: oldEditSummary
+			} );
 		} );
 	} );
 };
@@ -363,6 +366,8 @@ CommentController.prototype.switchToWikitext = function () {
 CommentController.prototype.switchToVisual = function () {
 	var parsePromise,
 		oldWidget = this.replyWidget,
+		oldShowAdvanced = oldWidget.showAdvanced,
+		oldEditSummary = oldWidget.getEditSummary(),
 		wikitext = oldWidget.getValue(),
 		commentController = this;
 
@@ -398,10 +403,7 @@ CommentController.prototype.switchToVisual = function () {
 		oldWidget.comment,
 		oldWidget.pageName,
 		oldWidget.oldId,
-		{
-			showAdvanced: oldWidget.showAdvanced,
-			editSummary: oldWidget.getEditSummary()
-		},
+		{},
 		true
 	);
 
@@ -474,7 +476,11 @@ CommentController.prototype.switchToVisual = function () {
 		oldWidget.disconnect( commentController );
 		oldWidget.teardown();
 
-		commentController.setupReplyWidget( replyWidget, doc );
+		commentController.setupReplyWidget( replyWidget, {
+			value: doc,
+			showAdvanced: oldShowAdvanced,
+			editSummary: oldEditSummary
+		} );
 	} );
 };
 

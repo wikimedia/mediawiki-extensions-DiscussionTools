@@ -20,7 +20,6 @@ var controller = require( 'ext.discussionTools.init' ).controller,
  * @param {number} oldId Revision ID of page at time of editing
  * @param {Object} [config] Configuration options
  * @param {Object} [config.input] Configuration options for the comment input widget
- * @param {Object} [config.editSummary] Initial edit summary
  */
 function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	var returnTo, contextNode, inputConfig,
@@ -34,8 +33,6 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.pending = false;
 	this.commentController = commentController;
 	this.comment = comment;
-	this.initialEditSummary = config.editSummary;
-	this.initialShowAdvanced = !!config.showAdvanced;
 	this.summaryPrefixLength = null;
 	this.pageName = pageName;
 	this.oldId = oldId;
@@ -365,12 +362,17 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 /**
  * Setup the widget
  *
- * @param {Mixed} initialValue Initial value
+ * @param {Object} [data] Initial data
+ * @param {Mixed} [data.value] Initial value
+ * @param {string} [data.showAdvanced] Whether the "Advanced" menu is initially visible
+ * @param {string} [data.editSummary] Initial edit summary
  * @chainable
  * @return {ReplyWidget}
  */
-ReplyWidget.prototype.setup = function () {
+ReplyWidget.prototype.setup = function ( data ) {
 	var heading, summary, summaryPrefixLength;
+
+	data = data || {};
 
 	this.bindBeforeUnloadHandler();
 	if ( this.modeTabSelect ) {
@@ -378,7 +380,7 @@ ReplyWidget.prototype.setup = function () {
 		this.saveEditMode( this.getMode() );
 	}
 
-	summary = this.storage.get( this.storagePrefix + '/summary' ) || this.initialEditSummary;
+	summary = this.storage.get( this.storagePrefix + '/summary' ) || data.editSummary;
 
 	if ( !summary ) {
 		heading = this.comment.getHeading();
@@ -392,7 +394,7 @@ ReplyWidget.prototype.setup = function () {
 		summary += mw.msg( 'discussiontools-defaultsummary-reply' );
 	}
 
-	this.toggleAdvanced( !!this.storage.get( this.storagePrefix + '/showAdvanced' ) || this.initialShowAdvanced );
+	this.toggleAdvanced( !!this.storage.get( this.storagePrefix + '/showAdvanced' ) || !!data.showAdvanced );
 
 	this.editSummaryInput.setValue( summary );
 	// Store after change event handler is triggered
