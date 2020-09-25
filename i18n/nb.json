@@ -38,7 +38,7 @@
 	"discussiontools-error-comment-is-transcluded": "Lenka «{{int:discussiontools-replylink}}» kan ikke brukes til å svare på denne kommentaren. Bruk den vanlige redigeringsmodusen for å svare ved å trykke på «$1».",
 	"discussiontools-error-comment-is-transcluded-title": "Lenka «{{int:discussiontools-replylink}}» kan ikke brukes til å svare på denne kommentaren fordi den er lastet inn fra en annen side. Gå til [[$1]] for å svare.",
 	"discussiontools-error-lint": "Det er ikke mulig å svare på kommentarer på denne siden på grunn av en feil i wikiteksten. Du kan lære om denne feilen ved å [$1 lese dokumentasjonen], eller be om hjelp ved å [$2 skrive her] eller fikse feilen ved å [$3 åpne vanlig redigeringsmodus].",
-	"discussiontools-error-noswitchtove": "Beklager, bytting til visuell modus virker ikke, fordi <b>$1</b> ble oppdaget i kommentaren du skrev inn. [https://www.mediawiki.org/wiki/Special:MyLanguage/DiscussionTools/Reply_tool_visual_mode_limitations Lær mer].",
+	"discussiontools-error-noswitchtove": "Beklager, bytting til visuell modus virker ikke, fordi <b>$1</b> ble oppdaget i kommentaren du skrev inn. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Lær mer].",
 	"discussiontools-error-noswitchtove-extension": "utvidelses- eller referansesyntaks",
 	"discussiontools-error-noswitchtove-table": "tabellsyntaks",
 	"discussiontools-error-noswitchtove-template": "malsyntaks",
