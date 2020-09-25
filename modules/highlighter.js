@@ -4,18 +4,18 @@ var initialOffset, indentWidth;
 
 function markTimestamp( parser, node, match ) {
 	var
-		dfParser = parser.getLocalTimestampParser(),
+		dfParsers = parser.getLocalTimestampParsers(),
 		newNode, wrapper, date;
 
-	newNode = node.splitText( match.index );
-	newNode.splitText( match[ 0 ].length );
+	newNode = node.splitText( match.matchData.index );
+	newNode.splitText( match.matchData[ 0 ].length );
 
 	wrapper = document.createElement( 'span' );
 	wrapper.className = 'detected-timestamp';
 	// We might need to actually port all the date formatting code from MediaWiki's PHP code
 	// if we want to support displaying dates in all the formats available in user preferences
 	// (which include formats in several non-Gregorian calendars).
-	date = dfParser( match );
+	date = dfParsers[ match.parserIndex ]( match.matchData );
 	wrapper.title = date.format() + ' / ' + date.fromNow();
 	wrapper.appendChild( newNode );
 	node.parentNode.insertBefore( wrapper, node.nextSibling );
