@@ -28,7 +28,6 @@ require( './dt-ve/dt.ce.PingNode.js' );
 function ReplyWidgetVisual() {
 	// TODO: Support 2017 wikitext editor
 	this.defaultMode = 'visual';
-	this.initialValue = null;
 
 	// Parent constructor
 	ReplyWidgetVisual.super.apply( this, arguments );
@@ -77,20 +76,22 @@ ReplyWidgetVisual.prototype.getMode = function () {
 		this.defaultMode;
 };
 
-ReplyWidgetVisual.prototype.setup = function ( initialValue ) {
+ReplyWidgetVisual.prototype.setup = function ( data ) {
 	var htmlOrDoc,
 		widget = this,
 		target = this.replyBodyWidget.target;
+
+	data = data || {};
 
 	if ( this.storage.get( this.storagePrefix + '/saveable' ) ) {
 		htmlOrDoc = this.storage.get( this.storagePrefix + '/ve-dochtml' );
 		target.recovered = true;
 	} else {
-		htmlOrDoc = initialValue || '<p></p>';
+		htmlOrDoc = data.value || '<p></p>';
 	}
 
 	target.originalHtml = htmlOrDoc instanceof HTMLDocument ? ve.properInnerHtml( htmlOrDoc.body ) : htmlOrDoc;
-	target.fromEditedState = !!initialValue;
+	target.fromEditedState = !!data.value;
 
 	this.replyBodyWidget.setDocument( htmlOrDoc );
 
@@ -104,7 +105,7 @@ ReplyWidgetVisual.prototype.setup = function ( initialValue ) {
 	} );
 
 	// Parent method
-	ReplyWidgetVisual.super.prototype.setup.call( this );
+	ReplyWidgetVisual.super.prototype.setup.apply( this, arguments );
 
 	// Events
 	this.replyBodyWidget.connect( this, {

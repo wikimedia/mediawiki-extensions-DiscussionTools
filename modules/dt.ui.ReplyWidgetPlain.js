@@ -78,16 +78,18 @@ ReplyWidgetPlain.prototype.onInputChange = function () {
 	this.storage.set( this.storagePrefix + '/body', wikitext );
 };
 
-ReplyWidgetPlain.prototype.setup = function ( initialValue ) {
+ReplyWidgetPlain.prototype.setup = function ( data ) {
 	var autosaveValue = this.storage.get( this.storagePrefix + '/body' );
 
+	data = data || {};
+
 	// Parent method
-	ReplyWidgetPlain.super.prototype.setup.call( this );
+	ReplyWidgetPlain.super.prototype.setup.apply( this, arguments );
 
 	// Events
 	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );
 
-	this.replyBodyWidget.setValue( initialValue || autosaveValue );
+	this.replyBodyWidget.setValue( data.value || autosaveValue );
 
 	// needs to bind after the initial setValue:
 	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
