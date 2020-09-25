@@ -20,6 +20,11 @@ importRegistry( ve.ui.commandRegistry, commandRegistry );
 sequenceRegistry = new ve.ui.SequenceRegistry();
 importRegistry( ve.ui.sequenceRegistry, sequenceRegistry );
 
+// Disable find-and-replace (T263570)
+commandRegistry.unregister( 'findAndReplace' );
+commandRegistry.unregister( 'findNext' );
+commandRegistry.unregister( 'findPrevious' );
+
 // Command to insert signature node. Unlike normal VisualEditor, we want to select
 // the node (collapseToEnd=false), because we want to show its context menu.
 commandRegistry.unregister( 'mwSignature' );
