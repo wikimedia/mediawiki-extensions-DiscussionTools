@@ -139,7 +139,10 @@ function addListItem( comment ) {
 				pointer.nextSibling.nodeType === Node.COMMENT_NODE ||
 				(
 					pointer.nextSibling.nodeType === Node.TEXT_NODE &&
-					utils.htmlTrim( pointer.nextSibling.textContent ) === ''
+					utils.htmlTrim( pointer.nextSibling.textContent ) === '' &&
+					// If more that two lines of whitespace are detected, the following HTML
+					// comments are not considered to be part of the reply (T264026)
+					!/(\r?\n){2,}/.test( pointer.nextSibling.textContent )
 				)
 			)
 		) {

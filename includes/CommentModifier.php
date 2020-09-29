@@ -148,7 +148,10 @@ class CommentModifier {
 					$pointer->nextSibling instanceof DOMComment ||
 					(
 						$pointer->nextSibling instanceof DOMText &&
-						CommentUtils::htmlTrim( $pointer->nextSibling->nodeValue ) === ''
+						CommentUtils::htmlTrim( $pointer->nextSibling->nodeValue ) === '' &&
+						// If more that two lines of whitespace are detected, the following HTML
+						// comments are not considered to be part of the reply (T264026)
+						!preg_match( '/(\r?\n){2,}/', $pointer->nextSibling->nodeValue )
 					)
 				)
 			) {
