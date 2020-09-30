@@ -570,10 +570,11 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 		if ( !links.length ) {
 			continue;
 		}
+		// Find the closest link before timestamp that links to the user's user page.
 		// Use .some() rather than .every() to permit vanity links
 		// "TonyTheTiger (T / C / WP:FOUR / WP:CHICAGO / WP:WAWARD)"
 		// eslint-disable-next-line no-loop-func
-		if ( links.some( function ( link ) {
+		if ( links.reverse().some( function ( link ) {
 			var username, title;
 			title = getTitleFromUrl( link.href );
 			if ( !title ) {

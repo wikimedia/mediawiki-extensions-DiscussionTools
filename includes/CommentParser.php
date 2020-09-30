@@ -553,14 +553,14 @@ class CommentParser {
 				// text formatting) can just wrap it in a <span> to fix that.
 				// "Ten Pound Hammer • (What did I screw up now?)"
 				// "« Saper // dyskusja »"
-				$links = $node->getElementsByTagName( 'a' );
+				$links = iterator_to_array( $node->getElementsByTagName( 'a' ) );
 			}
 			if ( !count( $links ) ) {
 				continue;
 			}
 
-			// Find the earliest link that links to the user's user page
-			foreach ( $links as $link ) {
+			// Find the closest link before timestamp that links to the user's user page.
+			foreach ( array_reverse( $links ) as $link ) {
 				$username = null;
 				$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) );
 				if ( !$title ) {
