@@ -1125,7 +1125,7 @@
             "timestamp": "2019-06-29T19:54:00.000Z",
             "author": "Suffusion of Yellow",
             "range": [
-              "0/86/0/0/0",
+              "0/86/1/0",
               "0/88/6/27"
             ],
             "signatureRanges": [
@@ -3070,7 +3070,7 @@
         "timestamp": "2019-06-29T19:54:00.000Z",
         "author": "Suffusion of Yellow",
         "range": [
-          "0/86/0/0/0",
+          "0/86/1/0",
           "0/88/6/27"
         ],
         "signatureRanges": [
@@ -14027,7 +14027,7 @@
         "timestamp": "2019-07-15T20:20:00.000Z",
         "author": "Vchimpanzee",
         "range": [
-          "0/754/0/0/0",
+          "0/754/1",
           "0/758/14/29"
         ],
         "signatureRanges": [
@@ -18378,7 +18378,7 @@
                 "timestamp": "2019-07-24T12:07:00.000Z",
                 "author": "Nardog",
                 "range": [
-                  "0/1023/2/6/2/0/0/0",
+                  "0/1023/2/6/2/2/0",
                   "0/1023/2/6/2/7/27"
                 ],
                 "signatureRanges": [
@@ -20491,7 +20491,7 @@
         "timestamp": "2019-08-04T21:42:00.000Z",
         "author": "Rfassbind",
         "range": [
-          "0/1192/0/0/0",
+          "0/1192/1",
           "0/1192/7/27"
         ],
         "signatureRanges": [
@@ -25501,7 +25501,7 @@
         "timestamp": "2019-08-17T07:41:00.000Z",
         "author": "5.43.96.116",
         "range": [
-          "0/1500/0/0/0",
+          "0/1500/2/0",
           "0/1500/9/29"
         ],
         "signatureRanges": [
