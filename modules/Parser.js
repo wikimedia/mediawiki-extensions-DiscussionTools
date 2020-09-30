@@ -625,7 +625,8 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
  * Return the next leaf node in the tree order that is not an empty or whitespace-only text node.
  *
  * In other words, this returns a Text node with content other than whitespace, or an Element node
- * with no children, that follows the given node in the HTML source.
+ * with no children, such as `<img>` or `<hr>` (with the exception of `<br>`), that follows the
+ * given node in the HTML source.
  *
  * @private
  * @param {Node} node Node to start searching at. If it isn't a leaf node, its children are ignored.
@@ -648,7 +649,7 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 			if (
 				( n.nodeType === Node.TEXT_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
 				( n.nodeType === Node.CDATA_SECTION_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
-				( n.nodeType === Node.ELEMENT_NODE && !n.firstChild )
+				( n.nodeType === Node.ELEMENT_NODE && !n.firstChild && n.nodeName.toLowerCase() !== 'br' )
 			) {
 				return NodeFilter.FILTER_ACCEPT;
 			}

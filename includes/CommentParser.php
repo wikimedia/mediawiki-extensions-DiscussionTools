@@ -86,7 +86,8 @@ class CommentParser {
 	 * Return the next leaf node in the tree order that is not an empty or whitespace-only text node.
 	 *
 	 * In other words, this returns a text node with content other than whitespace, or an element node
-	 * with no children, that follows the given node.
+	 * with no children, such as `<img>` or `<hr>` (with the exception of `<br>`), that follows the
+	 * given node in the HTML source.
 	 *
 	 * @param DOMNode $node Node to start searching at. This node's children are ignored.
 	 * @return DOMNode
@@ -111,7 +112,10 @@ class CommentParser {
 						$n->nodeType === XML_CDATA_SECTION_NODE &&
 						CommentUtils::htmlTrim( $n->nodeValue ) !== ''
 					) ||
-					( $n->nodeType === XML_ELEMENT_NODE && !$n->firstChild )
+					(
+						$n->nodeType === XML_ELEMENT_NODE &&
+						!$n->firstChild && strtolower( $n->nodeName ) !== 'br'
+					)
 				) {
 					return NodeFilter::FILTER_ACCEPT;
 				}
