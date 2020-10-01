@@ -28,7 +28,7 @@ class ThreadItemTest extends CommentTestCase {
 				$item = new CommentItem( 1, $range );
 				$item->setAuthor( $arr['author'] );
 			} else {
-				$item = new HeadingItem( $range );
+				$item = new HeadingItem( $range, 2 );
 			}
 			foreach ( $arr['replies'] as $reply ) {
 				$item->addReply( $makeThreadItem( $reply ) );

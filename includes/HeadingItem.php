@@ -4,15 +4,18 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 class HeadingItem extends ThreadItem {
 	private $placeholderHeading = false;
+	private $headingLevel;
 
 	/**
 	 * @param ImmutableRange $range
+	 * @param int $headingLevel Heading level (1-6)
 	 * @param bool $placeholderHeading Item doesn't correspond to a real heading (e.g. 0th section)
 	 */
 	public function __construct(
-		ImmutableRange $range, bool $placeholderHeading = false
+		ImmutableRange $range, int $headingLevel, bool $placeholderHeading = false
 	) {
 		parent::__construct( 'heading', 0, $range );
+		$this->headingLevel = $headingLevel;
 		$this->placeholderHeading = $placeholderHeading;
 	}
 
@@ -21,8 +24,23 @@ class HeadingItem extends ThreadItem {
 	 */
 	public function jsonSerialize() : array {
 		return array_merge( parent::jsonSerialize(), [
+			'headingLevel' => $this->headingLevel,
 			'placeholderHeading' => $this->placeholderHeading,
 		] );
+	}
+
+	/**
+	 * @return int Heading level (1-6)
+	 */
+	public function getHeadingLevel() : int {
+		return $this->headingLevel;
+	}
+
+	/**
+	 * @param int $headingLevel Heading level (1-6)
+	 */
+	public function setHeadingLevel( int $headingLevel ) : void {
+		$this->headingLevel = $headingLevel;
 	}
 
 	/**

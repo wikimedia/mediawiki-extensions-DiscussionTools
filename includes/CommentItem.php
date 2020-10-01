@@ -13,8 +13,6 @@ class CommentItem extends ThreadItem {
 	private $author;
 	private $warnings = [];
 
-	private $parent;
-
 	/**
 	 * @param int $level
 	 * @param ImmutableRange $range
@@ -119,13 +117,6 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * @return ThreadItem Parent thread item
-	 */
-	public function getParent() : ThreadItem {
-		return $this->parent;
-	}
-
-	/**
 	 * @return HeadingItem Closest ancestor which is a HeadingItem
 	 */
 	public function getHeading() : HeadingItem {
@@ -172,13 +163,6 @@ class CommentItem extends ThreadItem {
 	 */
 	public function setAuthor( ?string $author ) : void {
 		$this->author = $author;
-	}
-
-	/**
-	 * @param ThreadItem $parent Parent thread item
-	 */
-	public function setParent( ThreadItem $parent ) {
-		$this->parent = $parent;
 	}
 
 	/**
