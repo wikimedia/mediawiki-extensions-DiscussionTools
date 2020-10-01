@@ -978,7 +978,7 @@ Parser.prototype.getHeadlineNode = function ( heading ) {
  * @return {string|null}
  */
 Parser.prototype.computeId = function ( threadItem ) {
-	var id, number, headline;
+	var id, number, headline, threadItemParent;
 
 	if ( threadItem instanceof HeadingItem && threadItem.placeholderHeading ) {
 		// The range points to the root note, using it like below results in silly values
@@ -988,16 +988,30 @@ Parser.prototype.computeId = function ( threadItem ) {
 		id = 'h|' + ( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItem instanceof CommentItem ) {
 		id = 'c|' + ( threadItem.author || '' ) + '|' + threadItem.timestamp.toISOString();
+	} else {
+		throw new Error( 'Unknown ThreadItem type' );
+	}
 
-		// If there would be multiple comments with the same ID (i.e. the user left multiple comments
-		// in one edit, or within a minute), append sequential numbers
-		number = 0;
+	// If there would be multiple comments with the same ID (i.e. the user left multiple comments
+	// in one edit, or within a minute), append sequential numbers
+	threadItemParent = threadItem.parent;
+	if ( threadItemParent instanceof HeadingItem && !threadItemParent.placeholderHeading ) {
+		headline = this.getHeadlineNode( threadItemParent.range.startContainer );
+		id += '|' + ( headline.getAttribute( 'id' ) || '' );
+	} else if ( threadItemParent instanceof CommentItem ) {
+		id += '|' + ( threadItemParent.author || '' ) + '|' + threadItemParent.timestamp.toISOString();
+	}
+
+	if ( this.threadItemsById[ id ] ) {
+		// Well, that's tough
+		threadItem.warnings = threadItem.warnings || [];
+		threadItem.warnings.push( 'Duplicate comment ID' );
+		// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
+		number = 1;
 		while ( this.threadItemsById[ id + '|' + number ] ) {
 			number++;
 		}
 		id = id + '|' + number;
-	} else {
-		throw new Error( 'Unknown ThreadItem type' );
 	}
 
 	return id;
@@ -1016,12 +1030,6 @@ Parser.prototype.buildThreads = function () {
 	this.threadItemsById = {};
 	for ( i = 0; i < this.threadItems.length; i++ ) {
 		threadItem = this.threadItems[ i ];
-
-		id = this.computeId( threadItem );
-		if ( id ) {
-			this.threadItemsById[ id ] = threadItem;
-		}
-		threadItem.id = id;
 
 		if ( replies.length < threadItem.level ) {
 			// Someone skipped an indentation level (or several). Pretend that the previous reply
@@ -1058,6 +1066,13 @@ Parser.prototype.buildThreads = function () {
 		replies[ threadItem.level ] = threadItem;
 		// Cut off more deeply nested replies
 		replies.length = threadItem.level + 1;
+
+		// Set the IDs used to refer to comments and headings.
+		id = this.computeId( threadItem );
+		if ( id ) {
+			this.threadItemsById[ id ] = threadItem;
+		}
+		threadItem.id = id;
 	}
 
 	this.threads = threads;
