@@ -370,7 +370,7 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
  * @return {ReplyWidget}
  */
 ReplyWidget.prototype.setup = function ( data ) {
-	var heading, summary, summaryPrefixLength;
+	var heading, headingNode, summary, summaryPrefixLength;
 
 	data = data || {};
 
@@ -388,7 +388,10 @@ ReplyWidget.prototype.setup = function ( data ) {
 			// This comment is in 0th section, there's no section title for the edit summary
 			summary = '';
 		} else {
-			summary = '/* ' + heading.range.startContainer.querySelector( '.mw-headline' ).innerText + ' */ ';
+			headingNode = heading.range.startContainer.querySelector( '.mw-headline' ).cloneNode( true );
+			// Remove mw-headline-number. T264561
+			$( headingNode ).find( '.mw-headline-number' ).remove();
+			summary = '/* ' + headingNode.innerText.trim() + ' */ ';
 		}
 		summaryPrefixLength = summary.length;
 		summary += mw.msg( 'discussiontools-defaultsummary-reply' );
