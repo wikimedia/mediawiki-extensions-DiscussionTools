@@ -1591,7 +1591,7 @@
         "timestamp": "2018-03-25T13:44:00.000Z",
         "author": "Miljan Simonović",
         "range": [
-          "0/140",
+          "0/142/0/0",
           "0/142/5/30"
         ],
         "signatureRanges": [
@@ -1778,28 +1778,25 @@
         ],
         "level": 1,
         "id": "Ivan VA|2018-03-20T21:13:00.000Z|0",
-        "replies": []
-      },
-      {
-        "type": "comment",
-        "timestamp": "2018-03-20T21:17:00.000Z",
-        "author": "Acamicamacaraca",
-        "range": [
-          "0/158",
-          "0/160/0/5/28"
-        ],
-        "signatureRanges": [
-          [
-            "0/160/0/2",
-            "0/160/0/5/28"
-          ]
-        ],
-        "level": 1,
-        "id": "Acamicamacaraca|2018-03-20T21:17:00.000Z|0",
-        "warnings": [
-          "Comment starts and ends with different indentation"
-        ],
         "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2018-03-20T21:17:00.000Z",
+            "author": "Acamicamacaraca",
+            "range": [
+              "0/160/0/0/0",
+              "0/160/0/5/28"
+            ],
+            "signatureRanges": [
+              [
+                "0/160/0/2",
+                "0/160/0/5/28"
+              ]
+            ],
+            "level": 2,
+            "id": "Acamicamacaraca|2018-03-20T21:17:00.000Z|0",
+            "replies": []
+          },
           {
             "type": "comment",
             "timestamp": "2018-03-20T21:26:00.000Z",
@@ -4055,7 +4052,7 @@
         "timestamp": "2018-07-03T15:08:00.000Z",
         "author": "Zoranzoki21",
         "range": [
-          "0/426",
+          "0/428/0/0",
           "0/428/5/27"
         ],
         "signatureRanges": [
@@ -4401,7 +4398,7 @@
         "timestamp": "2018-07-21T01:14:00.000Z",
         "author": "Miljan Simonović",
         "range": [
-          "0/457",
+          "0/459/0",
           "0/459/10/29"
         ],
         "signatureRanges": [
@@ -5479,7 +5476,7 @@
         "timestamp": "2018-07-31T10:05:00.000Z",
         "author": "Acamicamacaraca",
         "range": [
-          "0/545",
+          "0/547/0/0",
           "0/547/7/28"
         ],
         "signatureRanges": [
