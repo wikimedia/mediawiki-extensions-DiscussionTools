@@ -33,7 +33,6 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.pending = false;
 	this.commentController = commentController;
 	this.comment = comment;
-	this.summaryPrefixLength = null;
 	this.pageName = pageName;
 	this.oldId = oldId;
 	contextNode = utils.closestElement( comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
@@ -290,13 +289,18 @@ ReplyWidget.prototype.onAdvancedToggleClick = function () {
 };
 
 ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
+	var summary, defaultReplyTrail, endCommentIndex;
 	this.showAdvanced = showAdvanced === undefined ? !this.showAdvanced : showAdvanced;
 	this.advanced.toggle( !!this.showAdvanced );
 	this.advancedToggle.setIndicator( this.showAdvanced ? 'up' : 'down' );
 	if ( this.showAdvanced ) {
-		// Select the default summary "Reply", but not the section prefix
-		if ( this.summaryPrefixLength !== null ) {
-			this.editSummaryInput.selectRange( this.summaryPrefixLength, this.editSummaryInput.getValue().length );
+		summary = this.editSummaryInput.getValue();
+		// Same as summary.endsWith( defaultReplyTrail )
+		defaultReplyTrail = '*/ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
+		endCommentIndex = summary.indexOf( defaultReplyTrail );
+		if ( endCommentIndex + defaultReplyTrail.length === summary.length ) {
+			// Select the default 'Reply' summary if still present
+			this.editSummaryInput.selectRange( endCommentIndex + 3, summary.length );
 		} else {
 			this.editSummaryInput.moveCursorToEnd();
 		}
@@ -310,8 +314,6 @@ ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
 
 ReplyWidget.prototype.onEditSummaryChange = function () {
 	this.storeEditSummary();
-	// After first subsequent edit, reset this so auto-select no longer happens
-	this.summaryPrefixLength = null;
 };
 
 ReplyWidget.prototype.storeEditSummary = function () {
@@ -370,7 +372,7 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
  * @return {ReplyWidget}
  */
 ReplyWidget.prototype.setup = function ( data ) {
-	var heading, headingNode, summary, summaryPrefixLength;
+	var heading, headingNode, summary;
 
 	data = data || {};
 
@@ -393,15 +395,12 @@ ReplyWidget.prototype.setup = function ( data ) {
 			$( headingNode ).find( '.mw-headline-number' ).remove();
 			summary = '/* ' + headingNode.innerText.trim() + ' */ ';
 		}
-		summaryPrefixLength = summary.length;
 		summary += mw.msg( 'discussiontools-defaultsummary-reply' );
 	}
 
 	this.toggleAdvanced( !!this.storage.get( this.storagePrefix + '/showAdvanced' ) || !!data.showAdvanced );
 
 	this.editSummaryInput.setValue( summary );
-	// Store after change event handler is triggered
-	this.summaryPrefixLength = summaryPrefixLength;
 
 	return this;
 };
