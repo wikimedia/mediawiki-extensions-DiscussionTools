@@ -54,7 +54,7 @@ class CommentParserTest extends CommentTestCase {
 	private static function serializeComments( ThreadItem &$threadItem, DOMElement $root ) : stdClass {
 		$serialized = new stdClass();
 
-		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
+		if ( $threadItem instanceof HeadingItem ) {
 			$serialized->placeholderHeading = $threadItem->isPlaceholderHeading();
 		}
 
@@ -89,10 +89,7 @@ class CommentParserTest extends CommentTestCase {
 		$serialized->id = $threadItem->getId();
 
 		if ( $threadItem instanceof CommentItem ) {
-			$warnings = $threadItem->getWarnings();
-			if ( count( $warnings ) ) {
-				$serialized->warnings = $threadItem->getWarnings();
-			}
+			$serialized->warnings = $threadItem->getWarnings();
 		}
 
 		$serialized->replies = [];

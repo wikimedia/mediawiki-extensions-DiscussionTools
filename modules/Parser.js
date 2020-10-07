@@ -1015,7 +1015,6 @@ Parser.prototype.computeId = function ( threadItem ) {
 
 	if ( this.threadItemsById[ id ] ) {
 		// Well, that's tough
-		threadItem.warnings = threadItem.warnings || [];
 		threadItem.warnings.push( 'Duplicate comment ID' );
 		// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
 		number = 1;
@@ -1045,7 +1044,6 @@ Parser.prototype.buildThreads = function () {
 		if ( replies.length < threadItem.level ) {
 			// Someone skipped an indentation level (or several). Pretend that the previous reply
 			// covers multiple indentation levels, so that following comments get connected to it.
-			threadItem.warnings = threadItem.warnings || [];
 			threadItem.warnings.push( 'Comment skips indentation level' );
 			while ( replies.length < threadItem.level ) {
 				replies[ replies.length ] = replies[ replies.length - 1 ];
@@ -1070,7 +1068,6 @@ Parser.prototype.buildThreads = function () {
 			threadItem.parent = replies[ threadItem.level - 1 ];
 			threadItem.parent.replies.push( threadItem );
 		} else {
-			threadItem.warnings = threadItem.warnings || [];
 			threadItem.warnings.push( 'Comment could not be connected to a thread' );
 		}
 

@@ -1,5 +1,6 @@
 [
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/1/0",
@@ -25,6 +26,7 @@
         ],
         "level": 1,
         "id": "c|Akela|2009-06-25T10:46:00.000Z|Katona_infobox_sablon_formátuma",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -42,6 +44,7 @@
             ],
             "level": 2,
             "id": "c|Hunyadym|2009-06-25T11:01:00.000Z|Akela|2009-06-25T10:46:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -62,6 +65,7 @@
         ],
         "level": 1,
         "id": "c|Hunyadym|2009-06-25T11:04:00.000Z|Katona_infobox_sablon_formátuma",
+        "warnings": [],
         "replies": []
       },
       {
@@ -80,6 +84,7 @@
         ],
         "level": 1,
         "id": "c|Hunyadym|2009-06-25T11:07:00.000Z|Katona_infobox_sablon_formátuma",
+        "warnings": [],
         "replies": []
       },
       {
@@ -98,6 +103,7 @@
         ],
         "level": 1,
         "id": "c|Akela|2009-06-25T14:35:00.000Z|Katona_infobox_sablon_formátuma",
+        "warnings": [],
         "replies": []
       }
     ]

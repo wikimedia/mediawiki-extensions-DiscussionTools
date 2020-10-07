@@ -31,8 +31,7 @@ function CommentItem( level, range, signatureRanges, timestamp, author ) {
 	/**
 	 * @member {string[]} Comment warnings
 	 */
-	// TODO: Should probably initialise, but our tests assert it is unset
-	// this.warnings = [];
+	this.warnings = [];
 
 	/**
 	 * @member {ThreadItem} Parent thread item

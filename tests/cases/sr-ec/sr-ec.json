@@ -1,5 +1,6 @@
 [
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/4/0",
@@ -25,6 +26,7 @@
         ],
         "level": 1,
         "id": "c|Alexzr88|2018-01-15T13:11:00.000Z|Грб_Зрењанина",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -42,6 +44,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-01-15T13:17:00.000Z|Alexzr88|2018-01-15T13:11:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -59,6 +62,7 @@
                 ],
                 "level": 3,
                 "id": "c|Zoranzoki21|2018-02-15T17:00:00.000Z|Srdjan m|2018-01-15T13:17:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -68,6 +72,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/10/0",
@@ -93,6 +98,7 @@
         ],
         "level": 1,
         "id": "c|Acamicamacaraca|2018-01-29T19:52:00.000Z|Наслов_за_референце",
+        "warnings": [],
         "replies": []
       },
       {
@@ -111,6 +117,7 @@
         ],
         "level": 1,
         "id": "c|Acamicamacaraca|2018-01-30T09:54:00.000Z|Наслов_за_референце",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -128,6 +135,7 @@
             ],
             "level": 2,
             "id": "c|Miljan Simonović|2018-01-30T13:34:00.000Z|Acamicamacaraca|2018-01-30T09:54:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -145,6 +153,7 @@
                 ],
                 "level": 3,
                 "id": "c|Acamicamacaraca|2018-01-30T20:02:00.000Z|Miljan Simonović|2018-01-30T13:34:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -162,6 +171,7 @@
                     ],
                     "level": 4,
                     "id": "c|Acamicamacaraca|2018-02-12T20:13:00.000Z|Acamicamacaraca|2018-01-30T20:02:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -173,6 +183,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/17/0",
@@ -198,11 +209,13 @@
         ],
         "level": 1,
         "id": "c|Тајга|2018-01-31T23:52:00.000Z|Војна_јединица",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/21/0",
@@ -228,6 +241,7 @@
         ],
         "level": 1,
         "id": "c|Др Нешо 2|2018-02-02T04:04:00.000Z|Европска_унија",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -245,6 +259,7 @@
             ],
             "level": 2,
             "id": "c|Acamicamacaraca|2018-02-02T10:08:00.000Z|Др Нешо 2|2018-02-02T04:04:00.000Z",
+            "warnings": [],
             "replies": []
           },
           {
@@ -263,6 +278,7 @@
             ],
             "level": 2,
             "id": "c|Acamicamacaraca|2018-02-02T10:19:00.000Z|Др Нешо 2|2018-02-02T04:04:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -270,6 +286,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/27/0",
@@ -295,6 +312,7 @@
         ],
         "level": 1,
         "id": "c|PetarM|2018-02-11T07:01:00.000Z|Шаблон_\"напомене\"",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -312,6 +330,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-02-11T14:56:00.000Z|PetarM|2018-02-11T07:01:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -332,6 +351,7 @@
         ],
         "level": 1,
         "id": "c|PetarM|2018-02-11T16:58:00.000Z|Шаблон_\"напомене\"",
+        "warnings": [],
         "replies": []
       },
       {
@@ -350,11 +370,13 @@
         ],
         "level": 1,
         "id": "c|Ранко Николић|2018-02-11T17:32:00.000Z|Шаблон_\"напомене\"",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/36/0",
@@ -380,6 +402,7 @@
         ],
         "level": 1,
         "id": "c|Тајга|2018-02-11T14:51:00.000Z|Хестил_Србија",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -397,6 +420,7 @@
             ],
             "level": 2,
             "id": "c|НиколаБ|2018-02-11T15:49:00.000Z|Тајга|2018-02-11T14:51:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -414,6 +438,7 @@
                 ],
                 "level": 3,
                 "id": "c|Miljan Simonović|2018-02-11T21:24:00.000Z|НиколаБ|2018-02-11T15:49:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -431,6 +456,7 @@
                     ],
                     "level": 4,
                     "id": "c|НиколаБ|2018-02-12T17:33:00.000Z|Miljan Simonović|2018-02-11T21:24:00.000Z",
+                    "warnings": [],
                     "replies": [
                       {
                         "type": "comment",
@@ -448,6 +474,7 @@
                         ],
                         "level": 5,
                         "id": "c|Miljan Simonović|2018-02-12T18:31:00.000Z|НиколаБ|2018-02-12T17:33:00.000Z",
+                        "warnings": [],
                         "replies": [
                           {
                             "type": "comment",
@@ -465,6 +492,7 @@
                             ],
                             "level": 6,
                             "id": "c|НиколаБ|2018-02-12T18:47:00.000Z|Miljan Simonović|2018-02-12T18:31:00.000Z",
+                            "warnings": [],
                             "replies": []
                           }
                         ]
@@ -491,6 +519,7 @@
             ],
             "level": 2,
             "id": "c|Тајга|2018-02-13T23:14:00.000Z|Тајга|2018-02-11T14:51:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -508,6 +537,7 @@
                 ],
                 "level": 3,
                 "id": "c|Тајга|2018-02-17T14:55:00.000Z|Тајга|2018-02-13T23:14:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -525,6 +555,7 @@
                     ],
                     "level": 4,
                     "id": "c|Ранко Николић|2018-02-17T16:09:00.000Z|Тајга|2018-02-17T14:55:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -536,6 +567,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/42/0",
@@ -561,11 +593,13 @@
         ],
         "level": 1,
         "id": "c|Acamicamacaraca|2018-02-12T20:13:00.000Z|Преводи",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/46/0",
@@ -591,6 +625,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-02-21T15:10:00.000Z|Шаблон:PORT.rs-person",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -608,6 +643,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-02-21T15:31:00.000Z|Soundwaweserb|2018-02-21T15:10:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -625,6 +661,7 @@
                 ],
                 "level": 3,
                 "id": "c|Soundwaweserb|2018-02-21T15:37:00.000Z|Zoranzoki21|2018-02-21T15:31:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -642,6 +679,7 @@
                     ],
                     "level": 4,
                     "id": "c|Zoranzoki21|2018-02-21T15:51:00.000Z|Soundwaweserb|2018-02-21T15:37:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -653,6 +691,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/52/0",
@@ -678,6 +717,7 @@
         ],
         "level": 1,
         "id": "c|Ivan VA|2018-02-24T21:58:00.000Z|Interfejs_na_ijekavici_(i_ekavici)?",
+        "warnings": [],
         "replies": []
       },
       {
@@ -696,6 +736,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-02-24T22:13:00.000Z|Interfejs_na_ijekavici_(i_ekavici)?",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -713,6 +754,7 @@
             ],
             "level": 2,
             "id": "c|Ivan VA|2018-02-24T22:21:00.000Z|НиколаБ|2018-02-24T22:13:00.000Z",
+            "warnings": [],
             "replies": []
           },
           {
@@ -731,6 +773,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-02-24T22:24:00.000Z|НиколаБ|2018-02-24T22:13:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -748,6 +791,7 @@
                 ],
                 "level": 3,
                 "id": "c|Ivan VA|2018-02-24T22:27:00.000Z|Srdjan m|2018-02-24T22:24:00.000Z",
+                "warnings": [],
                 "replies": []
               },
               {
@@ -766,6 +810,7 @@
                 ],
                 "level": 3,
                 "id": "c|Ivan VA|2018-02-24T22:30:00.000Z|Srdjan m|2018-02-24T22:24:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -783,6 +828,7 @@
                     ],
                     "level": 4,
                     "id": "c|Srdjan m|2018-02-24T22:43:00.000Z|Ivan VA|2018-02-24T22:30:00.000Z",
+                    "warnings": [],
                     "replies": [
                       {
                         "type": "comment",
@@ -800,6 +846,7 @@
                         ],
                         "level": 5,
                         "id": "c|Ivan VA|2018-02-24T22:53:00.000Z|Srdjan m|2018-02-24T22:43:00.000Z",
+                        "warnings": [],
                         "replies": [
                           {
                             "type": "comment",
@@ -817,6 +864,7 @@
                             ],
                             "level": 6,
                             "id": "c|Acamicamacaraca|2018-02-24T23:01:00.000Z|Ivan VA|2018-02-24T22:53:00.000Z",
+                            "warnings": [],
                             "replies": []
                           }
                         ]
@@ -845,6 +893,7 @@
         ],
         "level": 1,
         "id": "c|Ранко Николић|2018-02-25T03:43:00.000Z|Interfejs_na_ijekavici_(i_ekavici)?",
+        "warnings": [],
         "replies": []
       },
       {
@@ -863,6 +912,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-02-25T11:50:00.000Z|Interfejs_na_ijekavici_(i_ekavici)?",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -880,6 +930,7 @@
             ],
             "level": 2,
             "id": "c|Ivan VA|2018-02-25T12:52:00.000Z|Miljan Simonović|2018-02-25T11:50:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -900,6 +951,7 @@
         ],
         "level": 1,
         "id": "c|Zoranzoki21|2018-02-25T13:33:00.000Z|Interfejs_na_ijekavici_(i_ekavici)?",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -917,6 +969,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-02-25T15:19:00.000Z|Zoranzoki21|2018-02-25T13:33:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -934,6 +987,7 @@
                 ],
                 "level": 3,
                 "id": "c|Zoranzoki21|2018-02-25T16:03:00.000Z|Srdjan m|2018-02-25T15:19:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -956,6 +1010,7 @@
         ],
         "level": 1,
         "id": "c|Srdjan m|2018-02-27T12:20:00.000Z|Interfejs_na_ijekavici_(i_ekavici)?",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -973,6 +1028,7 @@
             ],
             "level": 2,
             "id": "c|Acamicamacaraca|2018-02-27T18:17:00.000Z|Srdjan m|2018-02-27T12:20:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -993,11 +1049,13 @@
         ],
         "level": 1,
         "id": "c|Djordjes|2018-03-14T09:49:00.000Z|Interfejs_na_ijekavici_(i_ekavici)?",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/80/0",
@@ -1023,11 +1081,13 @@
         ],
         "level": 1,
         "id": "c|Keegan (WMF)|2018-02-27T00:24:00.000Z|Global_preferences_available_for_testing",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/84/0",
@@ -1053,6 +1113,7 @@
         ],
         "level": 1,
         "id": "c|Mr. Vols|2018-03-03T12:17:00.000Z|Кутијица_за_књижевнике",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1071,11 +1132,13 @@
         ],
         "level": 1,
         "id": "c|Milicevic01|2018-03-03T12:24:00.000Z|Кутијица_за_књижевнике",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/89/0",
@@ -1087,6 +1150,7 @@
     "replies": []
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/107/0",
@@ -1112,6 +1176,7 @@
         ],
         "level": 1,
         "id": "c|Keegan (WMF)|2018-03-12T21:09:00.000Z|Notification_from_edit_summary",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1130,6 +1195,7 @@
         ],
         "level": 1,
         "id": "c|Zoranzoki21|2018-03-16T06:03:00.000Z|Notification_from_edit_summary",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -1147,6 +1213,7 @@
             ],
             "level": 2,
             "id": "c|Dungodung|2018-03-16T08:01:00.000Z|Zoranzoki21|2018-03-16T06:03:00.000Z",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1165,6 +1232,7 @@
             ],
             "level": 2,
             "id": "c|Vux33|2018-03-16T08:55:00.000Z|Zoranzoki21|2018-03-16T06:03:00.000Z",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1183,6 +1251,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-03-16T10:09:00.000Z|Zoranzoki21|2018-03-16T06:03:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -1190,6 +1259,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/119/0",
@@ -1215,11 +1285,13 @@
         ],
         "level": 1,
         "id": "c|Filipović Zoran|2018-03-17T13:32:00.000Z|EditCounterOptIn.js",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/125/0",
@@ -1245,9 +1317,11 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-03-18T14:15:00.000Z|HotCat",
+        "warnings": [],
         "replies": []
       },
       {
+        "placeholderHeading": false,
         "type": "heading",
         "range": [
           "0/130/0",
@@ -1294,6 +1368,7 @@
             ],
             "level": 2,
             "id": "c|Acamicamacaraca|2018-03-18T19:32:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1312,6 +1387,7 @@
             ],
             "level": 2,
             "id": "c|НиколаБ|2018-03-18T21:04:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1330,6 +1406,7 @@
             ],
             "level": 2,
             "id": "c|Soundwaweserb|2018-03-18T21:06:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1348,6 +1425,7 @@
             ],
             "level": 2,
             "id": "c|Жељко Тодоровић|2018-03-18T23:08:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1366,6 +1444,7 @@
             ],
             "level": 2,
             "id": "c|Др Нешо 2|2018-03-19T00:50:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1384,6 +1463,7 @@
             ],
             "level": 2,
             "id": "c|Ivan VA|2018-03-19T01:36:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1402,6 +1482,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-03-19T10:47:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1420,6 +1501,7 @@
             ],
             "level": 2,
             "id": "c|MareBG|2018-03-19T10:50:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1438,6 +1520,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-03-19T11:07:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1456,6 +1539,7 @@
             ],
             "level": 2,
             "id": "c|Lotom|2018-03-21T16:28:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           },
           {
@@ -1474,11 +1558,13 @@
             ],
             "level": 2,
             "id": "c|Filipović Zoran|2018-03-21T20:59:00.000Z|Гласови",
+            "warnings": [],
             "replies": []
           }
         ]
       },
       {
+        "placeholderHeading": false,
         "type": "heading",
         "range": [
           "0/134/0",
@@ -1504,6 +1590,7 @@
             ],
             "level": 1,
             "id": "c|Miljan Simonović|2018-03-18T23:35:00.000Z|Коментари",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -1521,6 +1608,7 @@
                 ],
                 "level": 2,
                 "id": "c|Жељко Тодоровић|2018-03-19T00:02:00.000Z|Miljan Simonović|2018-03-18T23:35:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -1538,6 +1626,7 @@
                     ],
                     "level": 3,
                     "id": "c|Miljan Simonović|2018-03-19T00:14:00.000Z|Жељко Тодоровић|2018-03-19T00:02:00.000Z",
+                    "warnings": [],
                     "replies": [
                       {
                         "type": "comment",
@@ -1555,6 +1644,7 @@
                         ],
                         "level": 4,
                         "id": "c|Kolega2357|2018-03-19T00:20:00.000Z|Miljan Simonović|2018-03-19T00:14:00.000Z",
+                        "warnings": [],
                         "replies": [
                           {
                             "type": "comment",
@@ -1572,6 +1662,7 @@
                             ],
                             "level": 5,
                             "id": "c|Miljan Simonović|2018-03-19T10:37:00.000Z|Kolega2357|2018-03-19T00:20:00.000Z",
+                            "warnings": [],
                             "replies": [
                               {
                                 "type": "comment",
@@ -1589,6 +1680,7 @@
                                 ],
                                 "level": 6,
                                 "id": "c|Acamicamacaraca|2018-03-19T13:01:00.000Z|Miljan Simonović|2018-03-19T10:37:00.000Z",
+                                "warnings": [],
                                 "replies": []
                               }
                             ]
@@ -1617,6 +1709,7 @@
             ],
             "level": 1,
             "id": "c|Miljan Simonović|2018-03-25T13:44:00.000Z|Коментари",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -1634,6 +1727,7 @@
                 ],
                 "level": 2,
                 "id": "c|Srdjan m|2018-03-25T17:29:00.000Z|Miljan Simonović|2018-03-25T13:44:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -1651,6 +1745,7 @@
                     ],
                     "level": 3,
                     "id": "c|Miljan Simonović|2018-03-25T18:28:00.000Z|Srdjan m|2018-03-25T17:29:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -1662,6 +1757,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/130/0",
@@ -1708,6 +1804,7 @@
         ],
         "level": 2,
         "id": "c|Acamicamacaraca|2018-03-18T19:32:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1726,6 +1823,7 @@
         ],
         "level": 2,
         "id": "c|НиколаБ|2018-03-18T21:04:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1744,6 +1842,7 @@
         ],
         "level": 2,
         "id": "c|Soundwaweserb|2018-03-18T21:06:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1762,6 +1861,7 @@
         ],
         "level": 2,
         "id": "c|Жељко Тодоровић|2018-03-18T23:08:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1780,6 +1880,7 @@
         ],
         "level": 2,
         "id": "c|Др Нешо 2|2018-03-19T00:50:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1798,6 +1899,7 @@
         ],
         "level": 2,
         "id": "c|Ivan VA|2018-03-19T01:36:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1816,6 +1918,7 @@
         ],
         "level": 2,
         "id": "c|Zoranzoki21|2018-03-19T10:47:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1834,6 +1937,7 @@
         ],
         "level": 2,
         "id": "c|MareBG|2018-03-19T10:50:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1852,6 +1956,7 @@
         ],
         "level": 2,
         "id": "c|Srdjan m|2018-03-19T11:07:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1870,6 +1975,7 @@
         ],
         "level": 2,
         "id": "c|Lotom|2018-03-21T16:28:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       },
       {
@@ -1888,11 +1994,13 @@
         ],
         "level": 2,
         "id": "c|Filipović Zoran|2018-03-21T20:59:00.000Z|Гласови",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/134/0",
@@ -1918,6 +2026,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-03-18T23:35:00.000Z|Коментари",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -1935,6 +2044,7 @@
             ],
             "level": 2,
             "id": "c|Жељко Тодоровић|2018-03-19T00:02:00.000Z|Miljan Simonović|2018-03-18T23:35:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -1952,6 +2062,7 @@
                 ],
                 "level": 3,
                 "id": "c|Miljan Simonović|2018-03-19T00:14:00.000Z|Жељко Тодоровић|2018-03-19T00:02:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -1969,6 +2080,7 @@
                     ],
                     "level": 4,
                     "id": "c|Kolega2357|2018-03-19T00:20:00.000Z|Miljan Simonović|2018-03-19T00:14:00.000Z",
+                    "warnings": [],
                     "replies": [
                       {
                         "type": "comment",
@@ -1986,6 +2098,7 @@
                         ],
                         "level": 5,
                         "id": "c|Miljan Simonović|2018-03-19T10:37:00.000Z|Kolega2357|2018-03-19T00:20:00.000Z",
+                        "warnings": [],
                         "replies": [
                           {
                             "type": "comment",
@@ -2003,6 +2116,7 @@
                             ],
                             "level": 6,
                             "id": "c|Acamicamacaraca|2018-03-19T13:01:00.000Z|Miljan Simonović|2018-03-19T10:37:00.000Z",
+                            "warnings": [],
                             "replies": []
                           }
                         ]
@@ -2031,6 +2145,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-03-25T13:44:00.000Z|Коментари",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2048,6 +2163,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-03-25T17:29:00.000Z|Miljan Simonović|2018-03-25T13:44:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -2065,6 +2181,7 @@
                 ],
                 "level": 3,
                 "id": "c|Miljan Simonović|2018-03-25T18:28:00.000Z|Srdjan m|2018-03-25T17:29:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -2074,6 +2191,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/146/0",
@@ -2099,6 +2217,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-03-20T18:52:00.000Z|Скорашње_измене",
+        "warnings": [],
         "replies": []
       },
       {
@@ -2117,6 +2236,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-03-20T19:06:00.000Z|Скорашње_измене",
+        "warnings": [],
         "replies": []
       },
       {
@@ -2135,6 +2255,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-03-20T19:08:00.000Z|Скорашње_измене",
+        "warnings": [],
         "replies": []
       },
       {
@@ -2153,6 +2274,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-03-20T19:11:00.000Z|Скорашње_измене",
+        "warnings": [],
         "replies": []
       },
       {
@@ -2171,6 +2293,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-03-20T19:14:00.000Z|Скорашње_измене",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2188,6 +2311,7 @@
             ],
             "level": 2,
             "id": "c|НиколаБ|2018-03-20T19:28:00.000Z|Soundwaweserb|2018-03-20T19:14:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2208,6 +2332,7 @@
         ],
         "level": 1,
         "id": "c|Ivan VA|2018-03-20T21:13:00.000Z|Скорашње_измене",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2225,6 +2350,7 @@
             ],
             "level": 2,
             "id": "c|Acamicamacaraca|2018-03-20T21:17:00.000Z|Ivan VA|2018-03-20T21:13:00.000Z",
+            "warnings": [],
             "replies": []
           },
           {
@@ -2243,6 +2369,7 @@
             ],
             "level": 2,
             "id": "c|Acamicamacaraca|2018-03-20T21:26:00.000Z|Ivan VA|2018-03-20T21:13:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -2260,6 +2387,7 @@
                 ],
                 "level": 3,
                 "id": "c|Ivan VA|2018-03-20T21:28:00.000Z|Acamicamacaraca|2018-03-20T21:26:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -2277,6 +2405,7 @@
                     ],
                     "level": 4,
                     "id": "c|Dungodung|2018-03-20T21:35:00.000Z|Ivan VA|2018-03-20T21:28:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -2288,6 +2417,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/164/0",
@@ -2313,11 +2443,13 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-03-21T21:58:00.000Z|Грешка",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/168/0",
@@ -2343,6 +2475,7 @@
         ],
         "level": 1,
         "id": "c|TJones (WMF)|2018-03-22T15:38:00.000Z|Промене_у_претрази_на_српском",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2360,6 +2493,7 @@
             ],
             "level": 2,
             "id": "c|TJones (WMF)|2018-04-20T12:38:00.000Z|TJones (WMF)|2018-03-22T15:38:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2367,6 +2501,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/176/0",
@@ -2392,11 +2527,13 @@
         ],
         "level": 1,
         "id": "c|Lea Lacroix (WMDE)|2018-03-27T08:55:00.000Z|We_need_your_feedback_to_improve_Lua_functions",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/180/0",
@@ -2422,6 +2559,7 @@
         ],
         "level": 1,
         "id": "c|Acamicamacaraca|2018-04-02T22:29:00.000Z|Нова_верзија_Медијавикија?",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2439,6 +2577,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-04-03T21:56:00.000Z|Acamicamacaraca|2018-04-02T22:29:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2446,6 +2585,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/186/0",
@@ -2471,6 +2611,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-04-09T18:27:00.000Z|Римски_амфитеатар_у_Пловдиву",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2488,6 +2629,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-04-11T04:54:00.000Z|Soundwaweserb|2018-04-09T18:27:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2495,6 +2637,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/192/0",
@@ -2520,6 +2663,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-04-13T01:59:00.000Z|Версајски_дворац",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2537,6 +2681,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-04-13T09:30:00.000Z|Soundwaweserb|2018-04-13T01:59:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2544,6 +2689,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/198/0",
@@ -2569,6 +2715,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-04-14T16:48:00.000Z|Андреј_Аршавин",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2586,6 +2733,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-04-17T08:06:00.000Z|Soundwaweserb|2018-04-14T16:48:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2593,6 +2741,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/204/0",
@@ -2618,6 +2767,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-04-16T22:47:00.000Z|Дуранкулак",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2635,6 +2785,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-04-17T08:23:00.000Z|Soundwaweserb|2018-04-16T22:47:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2642,6 +2793,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/212/0",
@@ -2667,6 +2819,7 @@
         ],
         "level": 1,
         "id": "c|MareBG|2018-04-17T12:43:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2684,6 +2837,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-04-17T13:22:00.000Z|MareBG|2018-04-17T12:43:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2704,6 +2858,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-04-17T17:45:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": []
       },
       {
@@ -2722,6 +2877,7 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-17T17:50:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2739,6 +2895,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-04-17T18:33:00.000Z|BokicaK|2018-04-17T17:50:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2759,6 +2916,7 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-17T18:40:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2776,6 +2934,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-04-17T19:31:00.000Z|BokicaK|2018-04-17T18:40:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2796,6 +2955,7 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-17T18:48:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2813,6 +2973,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-04-17T19:31:00.000Z|BokicaK|2018-04-17T18:48:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2833,6 +2994,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-04-17T18:56:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2850,6 +3012,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-04-17T19:31:00.000Z|НиколаБ|2018-04-17T18:56:00.000Z",
+            "warnings": [],
             "replies": []
           },
           {
@@ -2868,6 +3031,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-04-17T20:32:00.000Z|НиколаБ|2018-04-17T18:56:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2888,6 +3052,7 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-17T19:33:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2905,6 +3070,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-04-17T20:32:00.000Z|BokicaK|2018-04-17T19:33:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -2925,6 +3091,7 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-17T18:58:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2942,6 +3109,7 @@
             ],
             "level": 2,
             "id": "c|НиколаБ|2018-04-17T19:26:00.000Z|BokicaK|2018-04-17T18:58:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -2959,6 +3127,7 @@
                 ],
                 "level": 3,
                 "id": "c|BokicaK|2018-04-17T19:28:00.000Z|НиколаБ|2018-04-17T19:26:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -2981,6 +3150,7 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-04-17T19:32:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -2998,6 +3168,7 @@
             ],
             "level": 2,
             "id": "c|BokicaK|2018-04-17T19:34:00.000Z|Obsuser|2018-04-17T19:32:00.000Z",
+            "warnings": [],
             "replies": []
           },
           {
@@ -3016,6 +3187,7 @@
             ],
             "level": 2,
             "id": "c|BokicaK|2018-04-17T19:43:00.000Z|Obsuser|2018-04-17T19:32:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -3033,6 +3205,7 @@
                 ],
                 "level": 3,
                 "id": "c|НиколаБ|2018-04-17T19:53:00.000Z|BokicaK|2018-04-17T19:43:00.000Z",
+                "warnings": [],
                 "replies": []
               },
               {
@@ -3051,6 +3224,7 @@
                 ],
                 "level": 3,
                 "id": "c|НиколаБ|2018-04-17T19:54:00.000Z|BokicaK|2018-04-17T19:43:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -3073,6 +3247,7 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-04-17T20:32:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": []
       },
       {
@@ -3091,6 +3266,7 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-17T20:37:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3108,6 +3284,7 @@
             ],
             "level": 2,
             "id": "c|НиколаБ|2018-04-17T20:43:00.000Z|BokicaK|2018-04-17T20:37:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -3125,6 +3302,7 @@
                 ],
                 "level": 3,
                 "id": "c|BokicaK|2018-04-17T20:47:00.000Z|НиколаБ|2018-04-17T20:43:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -3142,6 +3320,7 @@
                     ],
                     "level": 4,
                     "id": "c|Obsuser|2018-04-17T21:13:00.000Z|BokicaK|2018-04-17T20:47:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -3166,6 +3345,7 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-04-17T21:13:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": []
       },
       {
@@ -3184,6 +3364,7 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-18T02:40:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3201,6 +3382,7 @@
             ],
             "level": 2,
             "id": "c|BokicaK|2018-04-18T03:36:00.000Z|BokicaK|2018-04-18T02:40:00.000Z",
+            "warnings": [],
             "replies": []
           },
           {
@@ -3219,6 +3401,7 @@
             ],
             "level": 2,
             "id": "c|BokicaK|2018-04-18T03:38:00.000Z|BokicaK|2018-04-18T02:40:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -3236,6 +3419,7 @@
                 ],
                 "level": 3,
                 "id": "c|Obsuser|2018-04-18T03:57:00.000Z|BokicaK|2018-04-18T03:38:00.000Z",
+                "warnings": [],
                 "replies": []
               },
               {
@@ -3254,6 +3438,7 @@
                 ],
                 "level": 3,
                 "id": "c|Obsuser|2018-04-18T04:21:00.000Z|BokicaK|2018-04-18T03:38:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -3276,6 +3461,7 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-18T05:44:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3293,6 +3479,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-04-18T10:02:00.000Z|BokicaK|2018-04-18T05:44:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -3313,11 +3500,13 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-04-18T23:27:00.000Z|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/283/0",
@@ -3343,11 +3532,13 @@
         ],
         "level": 1,
         "id": "c|CKoerner (WMF)|2018-04-24T21:38:00.000Z|Time_to_bring_embedded_maps_(‘mapframe’)_to_most_Wikipedias",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/288/0",
@@ -3373,6 +3564,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-04-28T22:06:00.000Z|Кутијица",
+        "warnings": [],
         "replies": []
       },
       {
@@ -3391,11 +3583,13 @@
         ],
         "level": 1,
         "id": "c|MareBG|2018-04-28T22:17:00.000Z|Кутијица",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/293/0",
@@ -3407,6 +3601,7 @@
     "replies": []
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/297/0",
@@ -3432,6 +3627,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-05-06T16:05:00.000Z|Фудбалска_репрезентација_Украјине",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3449,6 +3645,7 @@
             ],
             "level": 2,
             "id": "c|Miljan Simonović|2018-05-06T16:31:00.000Z|Soundwaweserb|2018-05-06T16:05:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -3456,6 +3653,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/303/0",
@@ -3481,6 +3679,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-05-08T15:19:00.000Z|Грешка_у_кутијици",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3498,6 +3697,7 @@
             ],
             "level": 2,
             "id": "c|Acamicamacaraca|2018-05-08T15:32:00.000Z|Soundwaweserb|2018-05-08T15:19:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -3505,6 +3705,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/309/0",
@@ -3530,6 +3731,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-05-08T16:28:00.000Z|Дугме_уреди",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3547,6 +3749,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-05-08T17:28:00.000Z|НиколаБ|2018-05-08T16:28:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -3564,6 +3767,7 @@
                 ],
                 "level": 3,
                 "id": "c|НиколаБ|2018-05-08T17:38:00.000Z|Zoranzoki21|2018-05-08T17:28:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -3573,6 +3777,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/315/0",
@@ -3598,6 +3803,7 @@
         ],
         "level": 1,
         "id": "c|BuhaM|2018-05-11T06:50:00.000Z|Наводници",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3615,6 +3821,7 @@
             ],
             "level": 2,
             "id": "c|BuhaM|2018-05-11T06:51:00.000Z|BuhaM|2018-05-11T06:50:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -3632,6 +3839,7 @@
                 ],
                 "level": 3,
                 "id": "c|Srdjan m|2018-05-11T07:29:00.000Z|BuhaM|2018-05-11T06:51:00.000Z",
+                "warnings": [],
                 "replies": []
               },
               {
@@ -3650,6 +3858,7 @@
                 ],
                 "level": 3,
                 "id": "c|Dungodung|2018-05-11T21:43:00.000Z|BuhaM|2018-05-11T06:51:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -3667,6 +3876,7 @@
                     ],
                     "level": 4,
                     "id": "c|BuhaM|2018-05-15T12:24:00.000Z|Dungodung|2018-05-11T21:43:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -3678,6 +3888,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/328/0",
@@ -3703,6 +3914,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-05-12T10:06:00.000Z|Грешка_у_кутијици_2",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3730,6 +3942,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/334/0",
@@ -3755,6 +3968,7 @@
         ],
         "level": 1,
         "id": "c|Ookuninusi|2018-05-12T12:59:00.000Z|Проблем_са_шаблоном",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3772,6 +3986,7 @@
             ],
             "level": 2,
             "id": "c|BokicaK|2018-05-13T02:08:00.000Z|Ookuninusi|2018-05-12T12:59:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -3779,6 +3994,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/340/0",
@@ -3804,6 +4020,7 @@
         ],
         "level": 1,
         "id": "c|Alexzr88|2018-05-17T22:43:00.000Z|Општине_и_градови_у_Румунији",
+        "warnings": [],
         "replies": []
       },
       {
@@ -3822,11 +4039,13 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-05-19T02:13:00.000Z|Општине_и_градови_у_Румунији",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/345/0",
@@ -3852,11 +4071,13 @@
         ],
         "level": 1,
         "id": "c|Trizek (WMF)|2018-06-07T13:14:00.000Z|Improvements_coming_soon_on_Watchlists",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/349/0",
@@ -3882,6 +4103,7 @@
         ],
         "level": 1,
         "id": "c|Zoranzoki21|2018-06-11T20:01:00.000Z|Приказивање_броја_0_у_наслову",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -3899,6 +4121,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-06-12T07:00:00.000Z|Zoranzoki21|2018-06-11T20:01:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -3906,6 +4129,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/355/0",
@@ -3931,11 +4155,13 @@
         ],
         "level": 1,
         "id": "c|CKoerner (WMF)|2018-06-12T20:58:00.000Z|Update_on_page_issues_on_mobile_web",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/360/0",
@@ -3961,11 +4187,13 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-06-22T07:08:00.000Z|Прикажи/сакриј",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/365/0",
@@ -3991,11 +4219,13 @@
         ],
         "level": 1,
         "id": "c|Intermedichbo|2018-06-22T14:07:00.000Z|Ko_to_eksperimentiše_sa_softverom",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/369/0",
@@ -4021,6 +4251,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-06-26T17:43:00.000Z|Историја_измена",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4038,6 +4269,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-06-26T17:49:00.000Z|Miljan Simonović|2018-06-26T17:43:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -4055,6 +4287,7 @@
                 ],
                 "level": 3,
                 "id": "c|Zoranzoki21|2018-06-26T17:52:00.000Z|Zoranzoki21|2018-06-26T17:49:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -4064,6 +4297,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/375/0",
@@ -4089,6 +4323,7 @@
         ],
         "level": 1,
         "id": "c|Whatamidoing (WMF)|2018-06-26T21:44:00.000Z|ХТМЛ_грешке",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4106,6 +4341,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-06-27T07:47:00.000Z|Whatamidoing (WMF)|2018-06-26T21:44:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -4123,6 +4359,7 @@
                 ],
                 "level": 3,
                 "id": "c|Whatamidoing (WMF)|2018-06-28T07:01:00.000Z|Zoranzoki21|2018-06-27T07:47:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -4145,11 +4382,13 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-07-09T11:51:00.000Z|ХТМЛ_грешке",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/389/0",
@@ -4175,6 +4414,7 @@
         ],
         "level": 1,
         "id": "c|Intermedichbo|2018-06-28T07:05:00.000Z|Опет_хаос_у_програму",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4192,6 +4432,7 @@
             ],
             "level": 2,
             "id": "c|Srdjan m|2018-06-28T07:14:00.000Z|Intermedichbo|2018-06-28T07:05:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4212,6 +4453,7 @@
         ],
         "level": 1,
         "id": "c|Intermedichbo|2018-06-28T07:27:00.000Z|Опет_хаос_у_програму",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4229,6 +4471,7 @@
             ],
             "level": 2,
             "id": "c|Intermedichbo|2018-06-28T08:07:00.000Z|Intermedichbo|2018-06-28T07:27:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4249,6 +4492,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-06-28T09:59:00.000Z|Опет_хаос_у_програму",
+        "warnings": [],
         "replies": []
       },
       {
@@ -4267,6 +4511,7 @@
         ],
         "level": 1,
         "id": "c|Zoranzoki21|2018-06-28T17:42:00.000Z|Опет_хаос_у_програму",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4284,6 +4529,7 @@
             ],
             "level": 2,
             "id": "c|Intermedichbo|2018-06-29T10:38:00.000Z|Zoranzoki21|2018-06-28T17:42:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4291,6 +4537,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/404/0",
@@ -4316,6 +4563,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-06-29T10:13:00.000Z|Патролирање",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4333,6 +4581,7 @@
             ],
             "level": 2,
             "id": "c|НиколаБ|2018-06-29T11:45:00.000Z|Miljan Simonović|2018-06-29T10:13:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4353,6 +4602,7 @@
         ],
         "level": 1,
         "id": "c|Тајга|2018-06-29T20:59:00.000Z|Патролирање",
+        "warnings": [],
         "replies": []
       },
       {
@@ -4371,6 +4621,7 @@
         ],
         "level": 1,
         "id": "c|Kolega2357|2018-06-30T02:04:00.000Z|Патролирање",
+        "warnings": [],
         "replies": []
       },
       {
@@ -4389,6 +4640,7 @@
         ],
         "level": 1,
         "id": "c|Srdjan m|2018-06-30T06:58:00.000Z|Патролирање",
+        "warnings": [],
         "replies": []
       },
       {
@@ -4407,11 +4659,13 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-07-01T13:39:00.000Z|Патролирање",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/415/0",
@@ -4437,11 +4691,13 @@
         ],
         "level": 1,
         "id": "c|Elitre (WMF)|2018-07-02T14:38:00.000Z|Tidy_to_RemexHtml",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/420/0",
@@ -4467,6 +4723,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-07-03T09:02:00.000Z|Нови_ред",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4484,6 +4741,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-07-03T14:54:00.000Z|Miljan Simonović|2018-07-03T09:02:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -4501,6 +4759,7 @@
                 ],
                 "level": 3,
                 "id": "c|Zoranzoki21|2018-07-03T14:59:00.000Z|Zoranzoki21|2018-07-03T14:54:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -4523,6 +4782,7 @@
         ],
         "level": 1,
         "id": "c|Zoranzoki21|2018-07-03T15:08:00.000Z|Нови_ред",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4540,6 +4800,7 @@
             ],
             "level": 2,
             "id": "c|Dungodung|2018-07-03T21:24:00.000Z|Zoranzoki21|2018-07-03T15:08:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4547,6 +4808,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/432/0",
@@ -4572,11 +4834,13 @@
         ],
         "level": 1,
         "id": "c|Tgr|2018-07-09T10:50:00.000Z|Consultation_on_the_creation_of_a_separate_user_group_for_editing_sitewide_CSS/JS",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/436/0",
@@ -4602,6 +4866,7 @@
         ],
         "level": 1,
         "id": "c|Acamicamacaraca|2018-07-09T19:09:00.000Z|ORES",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4619,6 +4884,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-07-10T22:43:00.000Z|Acamicamacaraca|2018-07-09T19:09:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4626,6 +4892,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/442/0",
@@ -4651,6 +4918,7 @@
         ],
         "level": 1,
         "id": "c|Жељко Тодоровић|2018-07-10T19:10:00.000Z|Вратити_превод_картица",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4668,6 +4936,7 @@
             ],
             "level": 2,
             "id": "c|Жељко Тодоровић|2018-07-10T19:16:00.000Z|Жељко Тодоровић|2018-07-10T19:10:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -4685,6 +4954,7 @@
                 ],
                 "level": 3,
                 "id": "c|Miljan Simonović|2018-07-10T20:30:00.000Z|Жељко Тодоровић|2018-07-10T19:16:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -4702,6 +4972,7 @@
                     ],
                     "level": 4,
                     "id": "c|Obsuser|2018-07-10T22:28:00.000Z|Miljan Simonović|2018-07-10T20:30:00.000Z",
+                    "warnings": [],
                     "replies": [
                       {
                         "type": "comment",
@@ -4719,6 +4990,7 @@
                         ],
                         "level": 5,
                         "id": "c|Dungodung|2018-07-10T22:47:00.000Z|Obsuser|2018-07-10T22:28:00.000Z",
+                        "warnings": [],
                         "replies": []
                       },
                       {
@@ -4737,6 +5009,7 @@
                         ],
                         "level": 5,
                         "id": "c|Dungodung|2018-07-10T22:55:00.000Z|Obsuser|2018-07-10T22:28:00.000Z",
+                        "warnings": [],
                         "replies": []
                       }
                     ]
@@ -4763,6 +5036,7 @@
         ],
         "level": 1,
         "id": "c|Жељко Тодоровић|2018-07-10T23:47:00.000Z|Вратити_превод_картица",
+        "warnings": [],
         "replies": []
       },
       {
@@ -4781,6 +5055,7 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-07-11T05:55:00.000Z|Вратити_превод_картица",
+        "warnings": [],
         "replies": []
       },
       {
@@ -4799,6 +5074,7 @@
         ],
         "level": 1,
         "id": "c|MareBG|2018-07-11T11:32:00.000Z|Вратити_превод_картица",
+        "warnings": [],
         "replies": []
       },
       {
@@ -4817,6 +5093,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-07-11T14:52:00.000Z|Вратити_превод_картица",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4834,6 +5111,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-07-12T18:25:00.000Z|НиколаБ|2018-07-11T14:52:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4854,6 +5132,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-07-16T18:50:00.000Z|Вратити_превод_картица",
+        "warnings": [],
         "replies": []
       },
       {
@@ -4872,6 +5151,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-07-21T01:14:00.000Z|Вратити_превод_картица",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4889,6 +5169,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-07-21T14:00:00.000Z|Miljan Simonović|2018-07-21T01:14:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4909,11 +5190,13 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-07-21T11:38:00.000Z|Вратити_превод_картица",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/465/0",
@@ -4939,6 +5222,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-07-10T21:31:00.000Z|Шаблон:Инфокутија_Функционер",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -4956,6 +5240,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-07-10T22:42:00.000Z|Miljan Simonović|2018-07-10T21:31:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -4976,11 +5261,13 @@
         ],
         "level": 1,
         "id": "c|BokicaK|2018-07-21T02:09:00.000Z|Шаблон:Инфокутија_Функционер",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/473/0",
@@ -5006,6 +5293,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-07-15T21:57:00.000Z|Сјајни_чланци",
+        "warnings": [],
         "replies": []
       },
       {
@@ -5024,6 +5312,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-07-16T16:24:00.000Z|Сјајни_чланци",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5041,6 +5330,7 @@
             ],
             "level": 2,
             "id": "c|Ранко Николић|2018-07-16T16:42:00.000Z|Soundwaweserb|2018-07-16T16:24:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -5058,6 +5348,7 @@
                 ],
                 "level": 3,
                 "id": "c|Soundwaweserb|2018-07-16T16:49:00.000Z|Ранко Николић|2018-07-16T16:42:00.000Z",
+                "warnings": [],
                 "replies": []
               },
               {
@@ -5076,6 +5367,7 @@
                 ],
                 "level": 3,
                 "id": "c|Ранко Николић|2018-07-16T16:57:00.000Z|Ранко Николић|2018-07-16T16:42:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -5093,6 +5385,7 @@
                     ],
                     "level": 4,
                     "id": "c|Soundwaweserb|2018-07-16T17:04:00.000Z|Ранко Николић|2018-07-16T16:57:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -5117,6 +5410,7 @@
         ],
         "level": 1,
         "id": "c|Ivan VA|2018-07-16T17:15:00.000Z|Сјајни_чланци",
+        "warnings": [],
         "replies": []
       },
       {
@@ -5135,6 +5429,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-07-16T17:19:00.000Z|Сјајни_чланци",
+        "warnings": [],
         "replies": []
       },
       {
@@ -5153,6 +5448,7 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-07-16T17:20:00.000Z|Сјајни_чланци",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5170,6 +5466,7 @@
             ],
             "level": 2,
             "id": "c|Soundwaweserb|2018-07-16T17:22:00.000Z|Obsuser|2018-07-16T17:20:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -5187,6 +5484,7 @@
                 ],
                 "level": 3,
                 "id": "c|Obsuser|2018-07-16T17:26:00.000Z|Soundwaweserb|2018-07-16T17:22:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -5204,6 +5502,7 @@
                     ],
                     "level": 4,
                     "id": "c|НиколаБ|2018-07-16T17:27:00.000Z|Obsuser|2018-07-16T17:26:00.000Z",
+                    "warnings": [],
                     "replies": [
                       {
                         "type": "comment",
@@ -5225,6 +5524,7 @@
                         ],
                         "level": 5,
                         "id": "c|Soundwaweserb|2018-07-16T17:30:00.000Z|НиколаБ|2018-07-16T17:27:00.000Z",
+                        "warnings": [],
                         "replies": [
                           {
                             "type": "comment",
@@ -5242,6 +5542,7 @@
                             ],
                             "level": 6,
                             "id": "c|Obsuser|2018-07-16T17:35:00.000Z|Soundwaweserb|2018-07-16T17:30:00.000Z",
+                            "warnings": [],
                             "replies": []
                           }
                         ]
@@ -5270,6 +5571,7 @@
         ],
         "level": 1,
         "id": "c|Soundwaweserb|2018-07-16T17:49:00.000Z|Сјајни_чланци",
+        "warnings": [],
         "replies": []
       },
       {
@@ -5288,6 +5590,7 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-07-16T18:29:00.000Z|Сјајни_чланци",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5305,6 +5608,7 @@
             ],
             "level": 2,
             "id": "c|Soundwaweserb|2018-07-16T18:46:00.000Z|Obsuser|2018-07-16T18:29:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -5322,6 +5626,7 @@
                 ],
                 "level": 3,
                 "id": "c|Miljan Simonović|2018-07-16T18:48:00.000Z|Soundwaweserb|2018-07-16T18:46:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -5339,6 +5644,7 @@
                     ],
                     "level": 4,
                     "id": "c|Soundwaweserb|2018-07-16T18:52:00.000Z|Miljan Simonović|2018-07-16T18:48:00.000Z",
+                    "warnings": [],
                     "replies": []
                   }
                 ]
@@ -5350,6 +5656,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/493/0",
@@ -5375,6 +5682,7 @@
         ],
         "level": 1,
         "id": "c|MareBG|2018-07-18T12:53:00.000Z|(Не)патролиране_измене",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5392,6 +5700,7 @@
             ],
             "level": 2,
             "id": "c|Miljan Simonović|2018-07-18T13:03:00.000Z|MareBG|2018-07-18T12:53:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -5412,6 +5721,7 @@
         ],
         "level": 1,
         "id": "c|MareBG|2018-07-18T13:45:00.000Z|(Не)патролиране_измене",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5429,6 +5739,7 @@
             ],
             "level": 2,
             "id": "c|Miljan Simonović|2018-07-18T13:51:00.000Z|MareBG|2018-07-18T13:45:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -5449,6 +5760,7 @@
         ],
         "level": 1,
         "id": "c|MareBG|2018-07-18T13:54:00.000Z|(Не)патролиране_измене",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5466,6 +5778,7 @@
             ],
             "level": 2,
             "id": "c|Miljan Simonović|2018-07-18T14:15:00.000Z|MareBG|2018-07-18T13:54:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -5486,11 +5799,13 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-07-18T20:16:00.000Z|(Не)патролиране_измене",
+        "warnings": [],
         "replies": []
       }
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/509/0",
@@ -5516,6 +5831,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-07-21T00:59:00.000Z|Пречице",
+        "warnings": [],
         "replies": []
       },
       {
@@ -5534,6 +5850,7 @@
         ],
         "level": 1,
         "id": "c|Kolega2357|2018-07-30T01:35:00.000Z|Пречице",
+        "warnings": [],
         "replies": []
       },
       {
@@ -5552,6 +5869,7 @@
         ],
         "level": 1,
         "id": "c|Obsuser|2018-07-30T05:09:00.000Z|Пречице",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5569,6 +5887,7 @@
             ],
             "level": 2,
             "id": "c|Miljan Simonović|2018-07-30T07:31:00.000Z|Obsuser|2018-07-30T05:09:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -5589,6 +5908,7 @@
         ],
         "level": 1,
         "id": "c|Kolega2357|2018-07-30T09:29:00.000Z|Пречице",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5606,6 +5926,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-07-30T09:34:00.000Z|Kolega2357|2018-07-30T09:29:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -5626,6 +5947,7 @@
         ],
         "level": 1,
         "id": "c|Kolega2357|2018-07-30T09:36:00.000Z|Пречице",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5643,6 +5965,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-07-30T09:50:00.000Z|Kolega2357|2018-07-30T09:36:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -5663,6 +5986,7 @@
         ],
         "level": 1,
         "id": "c|Kolega2357|2018-07-30T09:52:00.000Z|Пречице",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5680,6 +6004,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-07-30T10:30:00.000Z|Kolega2357|2018-07-30T09:52:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -5687,6 +6012,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/529/0",
@@ -5712,6 +6038,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-07-28T21:31:00.000Z|Страница_за_разговор",
+        "warnings": [],
         "replies": []
       },
       {
@@ -5730,6 +6057,7 @@
         ],
         "level": 1,
         "id": "c|Kolega2357|2018-07-29T00:10:00.000Z|Страница_за_разговор",
+        "warnings": [],
         "replies": []
       },
       {
@@ -5748,6 +6076,7 @@
         ],
         "level": 1,
         "id": "c|Zoranzoki21|2018-07-29T01:26:00.000Z|Страница_за_разговор",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5765,6 +6094,7 @@
             ],
             "level": 2,
             "id": "c|Miljan Simonović|2018-07-29T01:40:00.000Z|Zoranzoki21|2018-07-29T01:26:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -5782,6 +6112,7 @@
                 ],
                 "level": 3,
                 "id": "c|Zoranzoki21|2018-07-29T02:41:00.000Z|Miljan Simonović|2018-07-29T01:40:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -5799,6 +6130,7 @@
                     ],
                     "level": 4,
                     "id": "c|Kolega2357|2018-07-30T09:34:00.000Z|Zoranzoki21|2018-07-29T02:41:00.000Z",
+                    "warnings": [],
                     "replies": [
                       {
                         "type": "comment",
@@ -5816,6 +6148,7 @@
                         ],
                         "level": 5,
                         "id": "c|Acamicamacaraca|2018-07-30T11:47:00.000Z|Kolega2357|2018-07-30T09:34:00.000Z",
+                        "warnings": [],
                         "replies": []
                       }
                     ]
@@ -5842,6 +6175,7 @@
         ],
         "level": 1,
         "id": "c|Miljan Simonović|2018-07-30T13:43:00.000Z|Страница_за_разговор",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5859,6 +6193,7 @@
             ],
             "level": 2,
             "id": "c|Acamicamacaraca|2018-07-30T14:23:00.000Z|Miljan Simonović|2018-07-30T13:43:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -5876,6 +6211,7 @@
                 ],
                 "level": 3,
                 "id": "c|Acamicamacaraca|2018-07-30T18:42:00.000Z|Acamicamacaraca|2018-07-30T14:23:00.000Z",
+                "warnings": [],
                 "replies": [
                   {
                     "type": "comment",
@@ -5893,6 +6229,7 @@
                     ],
                     "level": 4,
                     "id": "c|Miljan Simonović|2018-07-30T21:35:00.000Z|Acamicamacaraca|2018-07-30T18:42:00.000Z",
+                    "warnings": [],
                     "replies": [
                       {
                         "type": "comment",
@@ -5910,6 +6247,7 @@
                         ],
                         "level": 5,
                         "id": "c|Dungodung|2018-07-30T21:51:00.000Z|Miljan Simonović|2018-07-30T21:35:00.000Z",
+                        "warnings": [],
                         "replies": [
                           {
                             "type": "comment",
@@ -5927,6 +6265,7 @@
                             ],
                             "level": 6,
                             "id": "c|Acamicamacaraca|2018-07-31T09:11:00.000Z|Dungodung|2018-07-30T21:51:00.000Z",
+                            "warnings": [],
                             "replies": []
                           }
                         ]
@@ -5955,6 +6294,7 @@
         ],
         "level": 1,
         "id": "c|Acamicamacaraca|2018-07-31T10:05:00.000Z|Страница_за_разговор",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -5972,6 +6312,7 @@
             ],
             "level": 2,
             "id": "c|Dungodung|2018-07-31T21:58:00.000Z|Acamicamacaraca|2018-07-31T10:05:00.000Z",
+            "warnings": [],
             "replies": [
               {
                 "type": "comment",
@@ -5989,6 +6330,7 @@
                 ],
                 "level": 3,
                 "id": "c|Miljan Simonović|2018-07-31T22:06:00.000Z|Dungodung|2018-07-31T21:58:00.000Z",
+                "warnings": [],
                 "replies": []
               }
             ]
@@ -5998,6 +6340,7 @@
     ]
   },
   {
+    "placeholderHeading": false,
     "type": "heading",
     "range": [
       "0/551/0",
@@ -6023,6 +6366,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-07-29T21:44:00.000Z|Џиџа_за_svg",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -6040,6 +6384,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-07-29T21:46:00.000Z|НиколаБ|2018-07-29T21:44:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -6060,6 +6405,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-07-29T21:51:00.000Z|Џиџа_за_svg",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -6077,6 +6423,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-07-29T21:53:00.000Z|НиколаБ|2018-07-29T21:51:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -6097,6 +6444,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-07-29T21:56:00.000Z|Џиџа_за_svg",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -6114,6 +6462,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-07-29T22:00:00.000Z|НиколаБ|2018-07-29T21:56:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -6134,6 +6483,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-07-29T22:03:00.000Z|Џиџа_за_svg",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -6151,6 +6501,7 @@
             ],
             "level": 2,
             "id": "c|Zoranzoki21|2018-07-29T22:10:00.000Z|НиколаБ|2018-07-29T22:03:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
@@ -6175,6 +6526,7 @@
         ],
         "level": 1,
         "id": "c|НиколаБ|2018-07-29T22:18:00.000Z|Џиџа_за_svg",
+        "warnings": [],
         "replies": [
           {
             "type": "comment",
@@ -6192,6 +6544,7 @@
             ],
             "level": 2,
             "id": "c|Obsuser|2018-07-30T05:07:00.000Z|НиколаБ|2018-07-29T22:18:00.000Z",
+            "warnings": [],
             "replies": []
           }
         ]
