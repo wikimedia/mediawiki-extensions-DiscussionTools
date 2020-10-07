@@ -978,7 +978,7 @@ Parser.prototype.getHeadlineNode = function ( heading ) {
  * @return {string|null}
  */
 Parser.prototype.computeId = function ( threadItem ) {
-	var id, number, headline, threadItemParent;
+	var id, number, headline, threadItemParent, timestamp;
 
 	if ( threadItem instanceof HeadingItem && threadItem.placeholderHeading ) {
 		// The range points to the root note, using it like below results in silly values
@@ -1000,6 +1000,17 @@ Parser.prototype.computeId = function ( threadItem ) {
 		id += '|' + ( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItemParent instanceof CommentItem ) {
 		id += '|' + ( threadItemParent.author || '' ) + '|' + threadItemParent.timestamp.toISOString();
+	}
+
+	if ( threadItem instanceof HeadingItem ) {
+		// To avoid old threads re-appearing on popular pages when someone uses a vague title
+		// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
+		// include the oldest timestamp in the thread (i.e. date the thread was started) in the
+		// heading ID.
+		timestamp = this.getThreadStartTimestamp( threadItem );
+		if ( timestamp ) {
+			id += '|' + timestamp.toISOString();
+		}
 	}
 
 	if ( this.threadItemsById[ id ] ) {
@@ -1066,16 +1077,47 @@ Parser.prototype.buildThreads = function () {
 		replies[ threadItem.level ] = threadItem;
 		// Cut off more deeply nested replies
 		replies.length = threadItem.level + 1;
+	}
+
+	this.threads = threads;
+
+	for ( i = 0; i < this.threadItems.length; i++ ) {
+		threadItem = this.threadItems[ i ];
 
 		// Set the IDs used to refer to comments and headings.
+		// This has to be a separate pass because we don't have the list of replies before
+		// this point.
 		id = this.computeId( threadItem );
 		if ( id ) {
 			this.threadItemsById[ id ] = threadItem;
 		}
 		threadItem.id = id;
 	}
+};
 
-	this.threads = threads;
+/**
+ * @param {ThreadItem} threadItem
+ * @return {moment|null}
+ */
+Parser.prototype.getThreadStartTimestamp = function ( threadItem ) {
+	var i, comment, timestampInReplies,
+		timestamp = null;
+	if ( threadItem instanceof CommentItem ) {
+		timestamp = threadItem.timestamp;
+	}
+	// Check all replies. This can't just use the first comment because threads are often summarized
+	// at the top when the discussion is closed.
+	for ( i = 0; i < threadItem.replies.length; i++ ) {
+		comment = threadItem.replies[ i ];
+		// Don't include sub-threads to avoid changing the ID when threads are "merged".
+		if ( comment instanceof CommentItem ) {
+			timestampInReplies = this.getThreadStartTimestamp( comment );
+			if ( !timestamp || timestampInReplies.isBefore( timestamp ) ) {
+				timestamp = timestampInReplies;
+			}
+		}
+	}
+	return timestamp;
 };
 
 module.exports = Parser;

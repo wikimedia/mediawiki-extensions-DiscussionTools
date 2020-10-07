@@ -1019,6 +1019,17 @@ class CommentParser {
 			$id .= '|' . ( $threadItemParent->getAuthor() ?? '' ) . '|' . $threadItemParent->getTimestamp();
 		}
 
+		if ( $threadItem instanceof HeadingItem ) {
+			// To avoid old threads re-appearing on popular pages when someone uses a vague title
+			// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
+			// include the oldest timestamp in the thread (i.e. date the thread was started) in the
+			// heading ID.
+			$timestamp = $this->getThreadStartTimestamp( $threadItem );
+			if ( $timestamp ) {
+				$id .= '|' . $timestamp;
+			}
+		}
+
 		if ( isset( $this->threadItemsById[$id] ) ) {
 			// Well, that's tough
 			$threadItem->addWarning( 'Duplicate comment ID' );
@@ -1087,8 +1098,14 @@ class CommentParser {
 			$replies[ $threadItem->getLevel() ] = $threadItem;
 			// Cut off more deeply nested replies
 			array_splice( $replies, $threadItem->getLevel() + 1 );
+		}
 
+		$this->threads = $threads;
+
+		foreach ( $this->threadItems as $threadItem ) {
 			// Set the IDs used to refer to comments and headings.
+			// This has to be a separate pass because we don't have the list of replies before
+			// this point.
 			$id = $this->computeId( $threadItem );
 			if ( $id ) {
 				$this->threadItemsById[$id] = $threadItem;
@@ -1100,7 +1117,28 @@ class CommentParser {
 				$this->threadItemsById[$legacyId] = $threadItem;
 			}
 		}
+	}
 
-		$this->threads = $threads;
+	/**
+	 * @param ThreadItem $threadItem
+	 * @return string|null
+	 */
+	private function getThreadStartTimestamp( ThreadItem $threadItem ) {
+		$timestamp = null;
+		if ( $threadItem instanceof CommentItem ) {
+			$timestamp = $threadItem->getTimestamp();
+		}
+		// Check all replies. This can't just use the first comment because threads are often summarized
+		// at the top when the discussion is closed.
+		foreach ( $threadItem->getReplies() as $comment ) {
+			// Don't include sub-threads to avoid changing the ID when threads are "merged".
+			if ( $comment instanceof CommentItem ) {
+				$timestampInReplies = $this->getThreadStartTimestamp( $comment );
+				if ( !$timestamp || $timestampInReplies < $timestamp ) {
+					$timestamp = $timestampInReplies;
+				}
+			}
+		}
+		return $timestamp;
 	}
 }
