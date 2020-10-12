@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Guycn2"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "מזהה תגובה לא נמצא: $1",
 	"apihelp-discussiontools-param-oldid": "באיזה מספר גרסה להשתמש (ברירת המחדל היא הגרסה האחרונה).",
-	"apihelp-discussiontools-summary": "מחזירה מטא־נתונים דרושים בשביל לאתחל את כלי השיחה.",
+	"apihelp-discussiontools-summary": "מחזירה מטא־נתונים דרושים כדי לאתחל את כלי השיחה.",
 	"apihelp-discussiontoolsedit-summary": "שליחת הודעה בדף שיחה.",
 	"apihelp-discussiontoolsedit-param-commentid": "מזהה תגובה.",
 	"apihelp-discussiontoolsedit-param-wikitext": "קוד ויקי"

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ата"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "ID коментаря не знайдено: $1",
+	"apihelp-discussiontools-param-oldid": "Номер версії (за замовчуванням — остання версія)."
+}
