@@ -102,6 +102,9 @@ class Hooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) : void {
 		if ( self::isAvailable( $output ) ) {
+			$output->addModuleStyles( [
+				'ext.discussionTools.init.styles'
+			] );
 			$output->addModules( [
 				'ext.discussionTools.init'
 			] );
@@ -142,6 +145,35 @@ class Hooks {
 			$dtConfig->get( 'DTSchemaEditAttemptStepSamplingRate' );
 		$vars['wgDTSchemaEditAttemptStepOversample'] =
 			$dtConfig->get( 'DTSchemaEditAttemptStepOversample' );
+	}
+
+	/**
+	 * OutputPageBeforeHTML hook handler
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageBeforeHTML
+	 *
+	 * @param OutputPage $output The OutputPage object to which wikitext is added
+	 * @param string &$text The HTML to be wrapped inside the #mw-content-text element
+	 * @return bool
+	 */
+	public static function onOutputPageBeforeHTML( OutputPage $output, string &$text ) : bool {
+		// TODO: This is based on the current user, is there an issue with caching?
+		if ( !self::isAvailable( $output ) ) {
+			return true;
+		}
+
+		$formatter = new CommentFormatter( $text );
+
+		$start = microtime( true );
+
+		$formatter->addReplyLinks();
+		$text = $formatter->getText();
+
+		$duration = microtime( true ) - $start;
+
+		$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
+		$stats->timing( 'discussiontools.addReplyLinks', $duration * 1000 );
+
+		return true;
 	}
 
 	/**

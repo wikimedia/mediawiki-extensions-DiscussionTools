@@ -3,23 +3,11 @@
 var
 	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	$pageContainer,
-	Parser = require( './Parser.js' ),
+	ThreadItem = require( './ThreadItem.js' ),
 	logger = require( './logger.js' ),
 	pageDataCache = {};
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
-
-function traverseNode( parent ) {
-	// Loads later to avoid circular dependency
-	var CommentController = require( './CommentController.js' );
-	parent.replies.forEach( function ( comment ) {
-		if ( comment.type === 'comment' ) {
-			// eslint-disable-next-line no-new
-			new CommentController( $pageContainer, comment );
-		}
-		traverseNode( comment );
-	} );
-}
 
 function highlight( comment ) {
 	var padding = 5,
@@ -200,24 +188,40 @@ function getCheckboxesPromise( pageName, oldId ) {
 }
 
 function init( $container, state ) {
-	var parser,
-		pageThreads,
-		repliedToComment;
+	var pageThreads,
+		repliedToComment,
+		i, hash, comment, commentNodes,
+		// Loads later to avoid circular dependency
+		CommentController = require( './CommentController.js' ),
+		pageCommentsById = {};
 
 	$pageContainer = $container;
-	parser = new Parser( $pageContainer[ 0 ] );
-	pageThreads = parser.getThreads();
 
-	$pageContainer.removeClass( 'dt-init-replylink-open' );
+	pageThreads = [];
+	commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
 
-	pageThreads.forEach( traverseNode );
+	// Iterate over commentNodes backwards so replies are always deserialized before their parents.
+	for ( i = commentNodes.length - 1; i >= 0; i-- ) {
+		hash = JSON.parse( commentNodes[ i ].getAttribute( 'data-mw-comment' ) );
+		comment = ThreadItem.static.newFromJSON( hash, pageCommentsById, commentNodes[ i ] );
 
-	// For debugging
+		if ( comment.type === 'comment' ) {
+			pageCommentsById[ comment.id ] = comment;
+
+			// eslint-disable-next-line no-new
+			new CommentController( $pageContainer, $( commentNodes[ i ] ), comment );
+		} else {
+			// Use unshift as we are in a backwards loop
+			pageThreads.unshift( comment );
+		}
+	}
+
+	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
 	if ( state.repliedTo ) {
 		// Find the comment we replied to, then highlight the last reply
-		repliedToComment = parser.findCommentById( state.repliedTo );
+		repliedToComment = pageCommentsById[ state.repliedTo ];
 		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 	}
 

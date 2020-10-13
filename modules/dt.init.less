@@ -6,6 +6,10 @@
 	// https://bugs.chromium.org/p/chromium/issues/detail?id=1116214
 	display: inline-flex;
 
+	.client-nojs & {
+		display: none;
+	}
+
 	.dt-init-replylink {
 		&-reply {
 			cursor: pointer;

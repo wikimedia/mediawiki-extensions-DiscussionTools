@@ -19,7 +19,7 @@ if ( defaultVisual ) {
 	mw.loader.using( plainModules );
 }
 
-function CommentController( $pageContainer, comment ) {
+function CommentController( $pageContainer, $replyLink, comment ) {
 	var mode;
 
 	this.$pageContainer = $pageContainer;
@@ -27,25 +27,9 @@ function CommentController( $pageContainer, comment ) {
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
 
-	this.$replyLinkButtons = $( '<span>' )
-		.addClass( 'dt-init-replylink-buttons' );
-
 	// Reply
-	this.$replyLink = $( '<a>' )
-		.addClass( 'dt-init-replylink-reply' )
-		.text( mw.msg( 'discussiontools-replylink' ) )
-		.attr( {
-			role: 'button',
-			tabindex: '0'
-		} )
-		.on( 'click keypress', this.onReplyLinkClick.bind( this ) );
-
-	this.$replyLinkButtons.append(
-		$( '<span>' ).addClass( 'dt-init-replylink-bracket' ).text( '[' ),
-		this.$replyLink,
-		$( '<span>' ).addClass( 'dt-init-replylink-bracket' ).text( ']' )
-	);
-	modifier.addReplyLink( comment, this.$replyLinkButtons[ 0 ] );
+	this.$replyLink = $replyLink.on( 'click keypress', this.onReplyLinkClick.bind( this ) );
+	this.$replyLinkButtons = $replyLink.closest( '.dt-init-replylink-buttons' );
 
 	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
 		mode = storage.get( 'reply/' + comment.id + '/mode' );
