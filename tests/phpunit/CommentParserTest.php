@@ -133,7 +133,7 @@ class CommentParserTest extends CommentTestCase {
 		string $format, array $data, string $expected, string $message
 	) : void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new DOMELement( 'div' ) )
+			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
 		);
 
 		$expected = new DateTimeImmutable( $expected );
@@ -155,7 +155,7 @@ class CommentParserTest extends CommentTestCase {
 		string $timezone, array $timezoneAbbrs, string $message
 	) : void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new DOMELement( 'div' ) )
+			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
 		);
 
 		$regexp = $parser->getTimestampRegexp( 'en', $format, '\\d', $timezoneAbbrs );

@@ -99,7 +99,7 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Create a comment pareser
+	 * Create a comment parser
 	 *
 	 * @param DOMElement $rootNode
 	 * @param array $data
