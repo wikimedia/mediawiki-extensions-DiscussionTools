@@ -72,18 +72,14 @@ class Data {
 			->getSpecialPageFactory()->getLocalNameFor( 'Contributions' );
 
 		$localTimezone = $config->get( 'Localtimezone' );
-		// Return only timezone abbreviations for the local timezone (there will often be two, for
+		// Return all timezone abbreviations for the local timezone (there will often be two, for
 		// non-DST and DST timestamps, and sometimes more due to historical data, but that's okay).
-		$timezoneAbbrs = array_keys( array_filter(
-			DateTimeZone::listAbbreviations(),
-			function ( array $timezones ) use ( $localTimezone ) {
-				foreach ( $timezones as $tz ) {
-					if ( $tz['timezone_id'] === $localTimezone ) {
-						return true;
-					}
-				}
-				return false;
-			}
+		// Avoid DateTimeZone::listAbbreviations(), it returns some half-baked list that is different
+		// from the timezone data used by everything else in PHP.
+		$timezoneAbbrs = array_values( array_unique(
+			array_map( function ( $transition ) {
+				return $transition['abbr'];
+			}, ( new DateTimeZone( $localTimezone ) )->getTransitions() )
 		) );
 
 		$data['timezones'] = [];
