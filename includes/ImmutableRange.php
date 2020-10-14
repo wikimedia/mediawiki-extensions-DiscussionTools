@@ -358,13 +358,6 @@ class ImmutableRange {
 			$node->parentNode->removeChild( $node );
 		}
 
-		$newOffset = !$referenceNode
-			? $parent->childNodes->length
-			: CommentUtils::childIndexOf( $referenceNode );
-		$newOffset += $node instanceof DOMDocumentFragment
-			? $node->childNodes->length
-			: 1;
-
 		// TODO: Restore this validation check?
 		// $parent->preinsertNode( $node, $referenceNode );
 		//
