@@ -968,7 +968,7 @@ class CommentParser {
 		$replies = [];
 		$this->commentsById = [];
 
-		foreach ( $this->threadItems as &$threadItem ) {
+		foreach ( $this->threadItems as $threadItem ) {
 			if ( $threadItem instanceof HeadingItem ) {
 				// We don't need ids for section headings right now, but we might in the future
 				// e.g. if we allow replying directly to sections (adding top-level comments)
