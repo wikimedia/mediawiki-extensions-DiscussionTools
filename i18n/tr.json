@@ -5,6 +5,7 @@
 			"Incelemeelemani",
 			"MuratTheTurkish",
 			"Sezgin İbiş",
+			"ToprakM",
 			"Vito Genovese"
 		]
 	},
@@ -28,12 +29,12 @@
 	"discussiontools-replywidget-mention-tool-title": "Bir kullanıcıdan bahsedin",
 	"discussiontools-replywidget-mode-source": "Kaynak",
 	"discussiontools-replywidget-mode-visual": "Görsel",
-	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} adlı kullanıcıyı yanıtlayın",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} adlı kullanıcıya yanıt verin",
 	"discussiontools-replywidget-preview": "Önizleme",
 	"discussiontools-replywidget-reply": "Yanıtla",
 	"discussiontools-replywidget-signature-title": "İmza işaretlemesi tespit edildi",
 	"discussiontools-replywidget-signature-body": "$1 sizin imzanıza dönüştü. Bunu geri almak için $2 yazın. Bu araçla yorum imzalamanıza gerek olmadığını unutmayın. İmzanız otomatik olarak eklenecektir.",
-	"discussiontools-replywidget-summary": "Yorum özeti",
+	"discussiontools-replywidget-summary": "Yanıt özeti",
 	"discussiontools-replywidget-terms-click": "\"$1\" düğmesine tıklayarak, bu vikinin kullanım şartlarını kabul etmiş olursunuz.",
 	"discussiontools-replywidget-transcluded": "Yorumunuz [[$1]] sayfasında kaydedilecek.",
 	"discussiontools-error-comment-conflict": "Sizinle aynı anda başka biri yorum yaptığı için yorumunuz kaydedilemedi. Lütfen tekrar deneyin veya en son yorumları görüntülemek için sayfayı yeniden yükleyin.",
