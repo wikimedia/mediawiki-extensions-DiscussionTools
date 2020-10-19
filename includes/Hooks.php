@@ -76,9 +76,11 @@ class Hooks {
 
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 		$isBeta = $dtConfig->get( 'DiscussionToolsBeta' );
-		$userEnabled = $dtConfig->get( 'DiscussionToolsEnable' ) && (
-			( $isBeta && $optionsLookup->getOption( $user, 'discussiontools-betaenable' ) ) ||
-			( !$isBeta && $optionsLookup->getOption( $user, 'discussiontools-replytool' ) )
+		$userEnabled = $output->getRequest()->getCookie( 'discussiontools-tempenable' ) || (
+			$dtConfig->get( 'DiscussionToolsEnable' ) && (
+				( $isBeta && $optionsLookup->getOption( $user, 'discussiontools-betaenable' ) ) ||
+				( !$isBeta && $optionsLookup->getOption( $user, 'discussiontools-replytool' ) )
+			)
 		);
 
 		// Finally check the user has the tool enabled and that the page

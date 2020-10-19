@@ -45,6 +45,7 @@
 				{
 					"name": "config.json",
 					"config": {
+						"enable": "DiscussionToolsEnable",
 						"enable2017Wikitext": "DiscussionToolsEnable2017Wikitext"
 					}
 				},
@@ -71,6 +72,7 @@
 				"mediawiki.util",
 				"mediawiki.storage",
 				"mediawiki.String",
+				"mediawiki.cookie",
 				"ext.visualEditor.core.utils.parsing"
 			],
 			"messages": [

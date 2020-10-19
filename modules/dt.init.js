@@ -1,4 +1,6 @@
-var controller = require( './controller.js' );
+var controller = require( './controller.js' ),
+	config = require( './config.json' ),
+	uri = new mw.Uri();
 
 /**
  * @class mw.dt
@@ -16,15 +18,22 @@ mw.dt.init = function ( $container ) {
 	}
 };
 
-if ( new mw.Uri().query.dtdebug ) {
+if ( uri.query.dtdebug ) {
 	mw.loader.load( 'ext.discussionTools.debug' );
 } else if ( mw.config.get( 'wgIsProbablyEditable' ) ) {
 	// Don't use an anonymous function, because ReplyWidget needs to be able to remove this handler
 	mw.hook( 'wikipage.content' ).add( mw.dt.init );
 }
 
+// If the tool is not enabled on this wiki, then the user
+// is using a local hack to load this code. Set a cookie
+// so reply links are added on the server.
+if ( !config.enable && !uri.query.dtenable ) {
+	mw.cookie.set( 'discussiontools-tempenable', 1 );
+}
+
 module.exports = {
-	controller: require( './controller.js' ),
+	controller: controller,
 	Parser: require( './Parser.js' ),
 	modifier: require( './modifier.js' ),
 	ThreadItem: require( './ThreadItem.js' ),
@@ -32,5 +41,5 @@ module.exports = {
 	CommentItem: require( './CommentItem.js' ),
 	utils: require( './utils.js' ),
 	logger: require( './logger.js' ),
-	config: require( './config.json' )
+	config: config
 };
