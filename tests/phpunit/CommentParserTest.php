@@ -203,8 +203,10 @@ class CommentParserTest extends CommentTestCase {
 			$processedThreads[] = $thread;
 		}
 
-		// Uncomment this to write updated content to the JSON files:
-		// self::overwriteJsonFile( $expectedPath, $processedThreads );
+		// Optionally write updated content to the JSON files
+		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
+			self::overwriteJsonFile( $expectedPath, $processedThreads );
+		}
 
 		foreach ( $threads as $i => $thread ) {
 			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
