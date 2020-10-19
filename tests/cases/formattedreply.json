@@ -1,0 +1,37 @@
+[
+	{
+		"name": "plwiki oldparser",
+		"dom": "cases/pl-big-oldparser/pl-big-oldparser.html",
+		"expected": "cases/pl-big-oldparser/pl-big-oldparser-formattedreply.html",
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
+	},
+	{
+		"name": "enwiki oldparser",
+		"dom": "cases/en-big-oldparser/en-big-oldparser.html",
+		"expected": "cases/en-big-oldparser/en-big-oldparser-formattedreply.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "arwiki no-paragraph oldparser",
+		"dom": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html",
+		"expected": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser-formattedreply.html",
+		"config": "../data/arwiki-config.json",
+		"data": "../data/arwiki-data.json"
+	},
+	{
+		"name": "frwiki unsigned oldparser",
+		"dom": "cases/fr-unsigned-oldparser/fr-unsigned-oldparser.html",
+		"expected": "cases/fr-unsigned-oldparser/fr-unsigned-oldparser-formattedreply.html",
+		"config": "../data/frwiki-config.json",
+		"data": "../data/frwiki-data.json"
+	},
+	{
+		"name": "Signatures in funny places",
+		"dom": "cases/signatures-funny/signatures-funny.html",
+		"expected": "cases/signatures-funny/signatures-funny-formattedreply.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	}
+]
