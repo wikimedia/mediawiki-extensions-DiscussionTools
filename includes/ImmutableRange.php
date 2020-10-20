@@ -435,14 +435,9 @@ class ImmutableRange {
 		$tw->currentNode = $boundaryPointB[0];
 
 		$AFollowsB = $tw->nextNode();
-
 		if ( $AFollowsB ) {
-			switch ( $this->computePosition( $boundaryPointB, $boundaryPointA ) ) {
-				case 'after':
-					return 'before';
-				case 'before':
-					return 'after';
-			}
+			// Swap variables
+			[ $boundaryPointB, $boundaryPointA ] = [ $boundaryPointA, $boundaryPointB ];
 		}
 
 		$ancestor = $boundaryPointB[0]->parentNode;
@@ -467,11 +462,11 @@ class ImmutableRange {
 			}
 
 			if ( CommentUtils::childIndexOf( $child ) < $boundaryPointA[1] ) {
-				return 'after';
+				return $AFollowsB ? 'before' : 'after';
 			}
 		}
 
-		return 'before';
+		return $AFollowsB ? 'after' : 'before';
 	}
 
 }
