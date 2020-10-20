@@ -24,8 +24,10 @@ class DataTest extends CommentTestCase {
 
 		$data = Data::getLocalData( null, $conf, $langCode );
 
-		// Uncomment this to write updated content to the JSON files:
-		// self::overwriteJsonFile( $expectedPath, $data );
+		// Optionally write updated content to the JSON files
+		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
+			self::overwriteJsonFile( $expectedPath, $data );
+		}
 
 		self::assertEquals( $expectedData, $data );
 	}

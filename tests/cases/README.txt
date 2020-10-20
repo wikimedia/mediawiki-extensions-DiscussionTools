@@ -1,4 +1,10 @@
-The HTML files were saved from:
+To update the expected outputs, run the PHP tests with the environment variable
+"DISCUSSIONTOOLS_OVERWRITE_TESTS" set to any value, e.g.:
+
+     DISCUSSIONTOOLS_OVERWRITE_TESTS=1 php tests/phpunit/phpunit.php extensions/DiscussionTools/tests/phpunit/
+
+
+The input HTML files were saved from:
 
 pl-big:
 https://pl.wikipedia.org/w/index.php?action=render&title=Wikipedia:Kawiarenka/Artyku%C5%82y_dyskusja/Archiwum/2018-pa%C5%BAdziernik&oldid=55171451
