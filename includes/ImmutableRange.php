@@ -434,10 +434,9 @@ class ImmutableRange {
 
 		if ( $ancestor ) {
 			$child = $boundaryPointB[0];
-			$childNodes = iterator_to_array( $boundaryPointA[0]->childNodes );
 
 			while ( $child ) {
-				if ( in_array( $child, $childNodes, true ) ) {
+				if ( $child->parentNode === $boundaryPointA[0] ) {
 					break;
 				}
 
