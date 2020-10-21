@@ -56,6 +56,10 @@ class ApiDiscussionTools extends ApiBase {
 					// the client can just assume it if the key is missing
 					if ( $from !== false ) {
 						$transcludedFrom[ $comment->getId() ] = $from;
+						$legacyId = $comment->getLegacyId();
+						if ( $legacyId ) {
+							$transcludedFrom[ $legacyId ] = $from;
+						}
 					}
 				}
 

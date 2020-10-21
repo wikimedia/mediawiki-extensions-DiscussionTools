@@ -8,6 +8,10 @@ use HtmlFormatter\HtmlFormatter;
 class CommentFormatter extends HtmlFormatter {
 
 	public function addReplyLinks() {
+		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
+		// and when doing so, ensure that frontend code can handle both the old and new outputs.
+		// See controller#init in JS.
+
 		$doc = $this->getDoc();
 		$container = $doc->documentElement->firstChild;
 		if ( !( $container instanceof DOMElement ) ) {

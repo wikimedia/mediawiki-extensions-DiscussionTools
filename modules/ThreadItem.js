@@ -1,3 +1,4 @@
+/* global moment */
 /**
  * @external CommentItem
  */
@@ -46,6 +47,10 @@ OO.initClass( ThreadItem );
  * @throws {Error} Unknown ThreadItem type
  */
 ThreadItem.static.newFromJSON = function ( json, commentsById, placeholderNode ) {
+	// The page can be served from the HTTP cache (Varnish), and the JSON may be generated
+	// by an older version of our PHP code. Code below must be able to handle that.
+	// See ThreadItem::jsonSerialize() in PHP.
+
 	var CommentItem, HeadingItem, item, idEscaped,
 		hash = typeof json === 'string' ? JSON.parse( json ) : json;
 	switch ( hash.type ) {
@@ -56,7 +61,7 @@ ThreadItem.static.newFromJSON = function ( json, commentsById, placeholderNode )
 				hash.level,
 				hash.range,
 				hash.signatureRanges,
-				hash.timestamp,
+				moment( hash.timestamp ),
 				hash.author
 			);
 			item.id = hash.id;

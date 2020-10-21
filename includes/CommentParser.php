@@ -959,6 +959,45 @@ class CommentParser {
 		return $this->threads;
 	}
 
+	/**
+	 * Given a thread item, return an identifier for it that is unique within the page.
+	 *
+	 * @param ThreadItem $threadItem
+	 * @return string|null
+	 */
+	private function computeId( ThreadItem $threadItem ) : ?string {
+		if ( $threadItem instanceof HeadingItem ) {
+			// We don't need ids for section headings right now, but we might in the future
+			// e.g. if we allow replying directly to sections (adding top-level comments)
+			$id = null;
+		} elseif ( $threadItem instanceof CommentItem ) {
+			$id = ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
+
+			// If there would be multiple comments with the same ID (i.e. the user left multiple comments
+			// in one edit, or within a minute), append sequential numbers
+			$number = 0;
+			while ( isset( $this->commentsById["$id|$number"] ) ) {
+				$number++;
+			}
+			$id = "$id|$number";
+		} else {
+			throw new MWException( 'Unknown ThreadItem type' );
+		}
+
+		return $id;
+	}
+
+	/**
+	 * Given a thread item, return an identifier for it like computeId(), generated according to an
+	 * older algorithm, so that we can still match IDs from cached data.
+	 *
+	 * @param ThreadItem $threadItem
+	 * @return string|null
+	 */
+	private function computeLegacyId( ThreadItem $threadItem ) : ?string {
+		return null;
+	}
+
 	private function buildThreads() : void {
 		if ( !$this->threadItems ) {
 			$this->buildThreadItems();
@@ -969,24 +1008,15 @@ class CommentParser {
 		$this->commentsById = [];
 
 		foreach ( $this->threadItems as $threadItem ) {
-			if ( $threadItem instanceof HeadingItem ) {
-				// We don't need ids for section headings right now, but we might in the future
-				// e.g. if we allow replying directly to sections (adding top-level comments)
-				$id = null;
-			} elseif ( $threadItem instanceof CommentItem ) {
-				$id = ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
-
-				// If there would be multiple comments with the same ID (i.e. the user left multiple comments
-				// in one edit, or within a minute), append sequential numbers
-				$number = 0;
-				while ( isset( $this->commentsById["$id|$number"] ) ) {
-					$number++;
-				}
-				$id = "$id|$number";
+			$id = $this->computeId( $threadItem );
+			if ( $id && $threadItem instanceof CommentItem ) {
 				$this->commentsById[$id] = $threadItem;
-				$threadItem->setId( $id );
-			} else {
-				throw new MWException( 'Unknown ThreadItem type' );
+			}
+			$threadItem->setId( $id );
+			$legacyId = $this->computeLegacyId( $threadItem );
+			$threadItem->setLegacyId( $legacyId );
+			if ( $legacyId && $threadItem instanceof CommentItem ) {
+				$this->commentsById[$legacyId] = $threadItem;
 			}
 
 			if ( count( $replies ) < $threadItem->getLevel() ) {

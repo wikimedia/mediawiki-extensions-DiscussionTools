@@ -3,6 +3,7 @@
 var
 	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	$pageContainer,
+	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
 	logger = require( './logger.js' ),
 	pageDataCache = {};
@@ -188,26 +189,30 @@ function getCheckboxesPromise( pageName, oldId ) {
 }
 
 function init( $container, state ) {
-	var pageThreads,
+	var parser, pageThreads,
 		repliedToComment,
-		i, hash, comment, commentNodes,
+		i, hash, comment, commentNodes, id, newId,
 		// Loads later to avoid circular dependency
 		CommentController = require( './CommentController.js' ),
-		pageCommentsById = {};
+		threadItemsById = {};
 
 	$pageContainer = $container;
+	parser = new Parser( $pageContainer[ 0 ] );
 
 	pageThreads = [];
 	commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
 
+	// The page can be served from the HTTP cache (Varnish), containing data-mw-comment generated
+	// by an older version of our PHP code. Code below must be able to handle that.
+	// See CommentFormatter::addReplyLinks() in PHP.
+
 	// Iterate over commentNodes backwards so replies are always deserialized before their parents.
 	for ( i = commentNodes.length - 1; i >= 0; i-- ) {
 		hash = JSON.parse( commentNodes[ i ].getAttribute( 'data-mw-comment' ) );
-		comment = ThreadItem.static.newFromJSON( hash, pageCommentsById, commentNodes[ i ] );
+		comment = ThreadItem.static.newFromJSON( hash, threadItemsById, commentNodes[ i ] );
+		threadItemsById[ comment.id ] = comment;
 
 		if ( comment.type === 'comment' ) {
-			pageCommentsById[ comment.id ] = comment;
-
 			// eslint-disable-next-line no-new
 			new CommentController( $pageContainer, $( commentNodes[ i ] ), comment );
 		} else {
@@ -216,12 +221,24 @@ function init( $container, state ) {
 		}
 	}
 
+	// Recalculate legacy IDs
+	parser.threadItemsById = {};
+	for ( id in threadItemsById ) {
+		comment = threadItemsById[ id ];
+		newId = parser.computeId( comment );
+		if ( newId !== id ) {
+			comment.id = newId;
+			parser.threadItemsById[ newId ] = comment;
+			threadItemsById[ newId ] = comment;
+		}
+	}
+
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
 	if ( state.repliedTo ) {
 		// Find the comment we replied to, then highlight the last reply
-		repliedToComment = pageCommentsById[ state.repliedTo ];
+		repliedToComment = threadItemsById[ state.repliedTo ];
 		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 	}
 

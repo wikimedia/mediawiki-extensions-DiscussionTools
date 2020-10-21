@@ -945,11 +945,43 @@ Parser.prototype.getThreads = function () {
 	return this.threads;
 };
 
+/**
+ * Given a thread item, return an identifier for it that is unique within the page.
+ *
+ * @param {ThreadItem} threadItem
+ * @return {string|null}
+ */
+Parser.prototype.computeId = function ( threadItem ) {
+	var id, number;
+
+	if ( threadItem instanceof HeadingItem ) {
+		// We don't need ids for section headings right now, but we might in the future
+		// e.g. if we allow replying directly to sections (adding top-level comments)
+		id = null;
+	} else {
+		// username+timestamp
+		id = [
+			threadItem.author || '',
+			threadItem.timestamp.toISOString()
+		].join( '|' );
+
+		// If there would be multiple comments with the same ID (i.e. the user left multiple comments
+		// in one edit, or within a minute), append sequential numbers
+		number = 0;
+		while ( this.commentsById[ id + '|' + number ] ) {
+			number++;
+		}
+		id = id + '|' + number;
+	}
+
+	return id;
+};
+
 Parser.prototype.buildThreads = function () {
 	var
 		threads = [],
 		replies = [],
-		i, threadItem, id, number;
+		i, threadItem, id;
 
 	if ( !this.threadItems ) {
 		this.buildThreadItems();
@@ -959,27 +991,11 @@ Parser.prototype.buildThreads = function () {
 	for ( i = 0; i < this.threadItems.length; i++ ) {
 		threadItem = this.threadItems[ i ];
 
-		if ( threadItem instanceof HeadingItem ) {
-			// We don't need ids for section headings right now, but we might in the future
-			// e.g. if we allow replying directly to sections (adding top-level comments)
-			id = null;
-		} else {
-			// username+timestamp
-			id = [
-				threadItem.author || '',
-				threadItem.timestamp.toISOString()
-			].join( '|' );
-
-			// If there would be multiple comments with the same ID (i.e. the user left multiple comments
-			// in one edit, or within a minute), append sequential numbers
-			number = 0;
-			while ( this.commentsById[ id + '|' + number ] ) {
-				number++;
-			}
-			id = id + '|' + number;
+		id = this.computeId( threadItem );
+		if ( id && threadItem instanceof CommentItem ) {
 			this.commentsById[ id ] = threadItem;
-			threadItem.id = id;
 		}
+		threadItem.id = id;
 
 		if ( replies.length < threadItem.level ) {
 			// Someone skipped an indentation level (or several). Pretend that the previous reply
