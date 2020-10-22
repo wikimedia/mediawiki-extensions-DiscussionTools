@@ -16,6 +16,7 @@ abstract class ThreadItem implements JsonSerializable {
 	protected $level;
 
 	protected $id = null;
+	protected $legacyId = null;
 	protected $replies = [];
 
 	/**
@@ -36,6 +37,10 @@ abstract class ThreadItem implements JsonSerializable {
 	 * @return array JSON-serializable array
 	 */
 	public function jsonSerialize() : array {
+		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
+		// and when doing so, ensure that frontend code can handle both the old and new outputs.
+		// See ThreadItem.static.newFromJSON in JS.
+
 		return [
 			'type' => $this->type,
 			'level' => $this->level,
@@ -182,6 +187,13 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
+	 * @return string|null Thread ID, according to an older algorithm
+	 */
+	public function getLegacyId() : ?string {
+		return $this->legacyId;
+	}
+
+	/**
 	 * @return CommentItem[] Replies to this thread item
 	 */
 	public function getReplies() : array {
@@ -214,6 +226,13 @@ abstract class ThreadItem implements JsonSerializable {
 	 */
 	public function setId( ?string $id ) : void {
 		$this->id = $id;
+	}
+
+	/**
+	 * @param string|null $id Thread ID
+	 */
+	public function setLegacyId( ?string $id ) : void {
+		$this->legacyId = $id;
 	}
 
 	/**
