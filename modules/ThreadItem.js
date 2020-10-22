@@ -11,7 +11,7 @@ var utils = require( './utils.js' );
  * @class ThreadItem
  * @constructor
  * @param {string} type `heading` or `comment`
- * @param {number} level Item level in the thread tree
+ * @param {number} level Indentation level
  * @param {Object} range Object describing the extent of the comment, including the
  *  signature and timestamp. It has the same properties as a Range object: `startContainer`,
  *  `startOffset`, `endContainer`, `endOffset` (we don't use a real Range because they change
@@ -64,12 +64,12 @@ ThreadItem.static.newFromJSON = function ( json, commentsById, placeholderNode )
 				moment( hash.timestamp ),
 				hash.author
 			);
-			item.id = hash.id;
 			break;
 		case 'heading':
 			HeadingItem = require( './HeadingItem.js' );
 			item = new HeadingItem(
 				hash.range,
+				hash.headingLevel,
 				hash.placeholderHeading
 			);
 			break;
@@ -77,7 +77,9 @@ ThreadItem.static.newFromJSON = function ( json, commentsById, placeholderNode )
 			throw new Error( 'Unknown ThreadItem type ' + hash.name );
 	}
 
-	if ( item.id ) {
+	item.id = hash.id;
+
+	if ( hash.type === 'comment' ) {
 		idEscaped = $.escapeSelector( item.id );
 		item.range = {
 			startContainer: document.querySelector( '[data-mw-comment-start="' + idEscaped + '"]' ),

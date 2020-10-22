@@ -5,6 +5,7 @@
       "0/4/0",
       "0/4/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Грб_Зрењанина",
     "replies": [
@@ -72,6 +73,7 @@
       "0/10/0",
       "0/10/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Наслов_за_референце",
     "replies": [
@@ -176,6 +178,7 @@
       "0/17/0",
       "0/17/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Војна_јединица",
     "replies": [
@@ -205,6 +208,7 @@
       "0/21/0",
       "0/21/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Европска_унија",
     "replies": [
@@ -271,6 +275,7 @@
       "0/27/0",
       "0/27/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Шаблон_\"напомене\"",
     "replies": [
@@ -355,6 +360,7 @@
       "0/36/0",
       "0/36/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Хестил_Србија",
     "replies": [
@@ -535,6 +541,7 @@
       "0/42/0",
       "0/42/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Преводи",
     "replies": [
@@ -564,6 +571,7 @@
       "0/46/0",
       "0/46/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Шаблон:PORT.rs-person",
     "replies": [
@@ -650,6 +658,7 @@
       "0/52/0",
       "0/52/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Interfejs_na_ijekavici_(i_ekavici)?",
     "replies": [
@@ -994,6 +1003,7 @@
       "0/80/0",
       "0/80/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Global_preferences_available_for_testing",
     "replies": [
@@ -1023,6 +1033,7 @@
       "0/84/0",
       "0/84/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Кутијица_за_књижевнике",
     "replies": [
@@ -1070,6 +1081,7 @@
       "0/89/0",
       "0/89/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|NOTICE:_EducationProgram_extension_is_being_deprecated",
     "replies": []
@@ -1080,6 +1092,7 @@
       "0/107/0",
       "0/107/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Notification_from_edit_summary",
     "replies": [
@@ -1182,6 +1195,7 @@
       "0/119/0",
       "0/119/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|EditCounterOptIn.js",
     "replies": [
@@ -1211,6 +1225,7 @@
       "0/125/0",
       "0/125/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|HotCat",
     "replies": [
@@ -1231,6 +1246,418 @@
         "level": 1,
         "id": "c|Miljan Simonović|2018-03-18T14:15:00.000Z|0",
         "replies": []
+      },
+      {
+        "type": "heading",
+        "range": [
+          "0/130/0",
+          "0/130/2"
+        ],
+        "headingLevel": 3,
+        "level": 0,
+        "id": "h|Гласови",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2018-03-18T14:15:00.000Z",
+            "author": "Miljan Simonović",
+            "range": [
+              "0/132/0/0",
+              "0/132/0/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/0/4",
+                "0/132/0/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Miljan Simonović|2018-03-18T14:15:00.000Z|1",
+            "warnings": [
+              "Comment skips indentation level"
+            ],
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-18T19:32:00.000Z",
+            "author": "Acamicamacaraca",
+            "range": [
+              "0/132/2/0",
+              "0/132/2/7/28"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/2/4",
+                "0/132/2/7/28"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Acamicamacaraca|2018-03-18T19:32:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-18T21:04:00.000Z",
+            "author": "НиколаБ",
+            "range": [
+              "0/132/4/0",
+              "0/132/4/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/4/4",
+                "0/132/4/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|НиколаБ|2018-03-18T21:04:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-18T21:06:00.000Z",
+            "author": "Soundwaweserb",
+            "range": [
+              "0/132/6/0",
+              "0/132/6/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/6/4",
+                "0/132/6/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Soundwaweserb|2018-03-18T21:06:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-18T23:08:00.000Z",
+            "author": "Жељко Тодоровић",
+            "range": [
+              "0/132/8/0",
+              "0/132/8/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/8/4",
+                "0/132/8/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Жељко Тодоровић|2018-03-18T23:08:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-19T00:50:00.000Z",
+            "author": "Др Нешо 2",
+            "range": [
+              "0/132/10/0",
+              "0/132/10/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/10/4",
+                "0/132/10/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Др Нешо 2|2018-03-19T00:50:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-19T01:36:00.000Z",
+            "author": "Ivan VA",
+            "range": [
+              "0/132/12/0",
+              "0/132/12/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/12/4",
+                "0/132/12/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Ivan VA|2018-03-19T01:36:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-19T10:47:00.000Z",
+            "author": "Zoranzoki21",
+            "range": [
+              "0/132/14/0",
+              "0/132/14/7/28"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/14/4",
+                "0/132/14/7/28"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Zoranzoki21|2018-03-19T10:47:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-19T10:50:00.000Z",
+            "author": "MareBG",
+            "range": [
+              "0/132/16/0",
+              "0/132/16/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/16/4",
+                "0/132/16/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|MareBG|2018-03-19T10:50:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-19T11:07:00.000Z",
+            "author": "Srdjan m",
+            "range": [
+              "0/132/18/0",
+              "0/132/18/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/18/4",
+                "0/132/18/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Srdjan m|2018-03-19T11:07:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-21T16:28:00.000Z",
+            "author": "Lotom",
+            "range": [
+              "0/132/20/0",
+              "0/132/20/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/20/4",
+                "0/132/20/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Lotom|2018-03-21T16:28:00.000Z|0",
+            "replies": []
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-21T20:59:00.000Z",
+            "author": "Filipović Zoran",
+            "range": [
+              "0/132/22/0",
+              "0/132/22/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/132/22/4",
+                "0/132/22/7/29"
+              ]
+            ],
+            "level": 2,
+            "id": "c|Filipović Zoran|2018-03-21T20:59:00.000Z|0",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "range": [
+          "0/134/0",
+          "0/134/2"
+        ],
+        "headingLevel": 3,
+        "level": 0,
+        "id": "h|Коментари",
+        "replies": [
+          {
+            "type": "comment",
+            "timestamp": "2018-03-18T23:35:00.000Z",
+            "author": "Miljan Simonović",
+            "range": [
+              "0/136/0/0",
+              "0/136/7/29"
+            ],
+            "signatureRanges": [
+              [
+                "0/136/4",
+                "0/136/7/29"
+              ]
+            ],
+            "level": 1,
+            "id": "c|Miljan Simonović|2018-03-18T23:35:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2018-03-19T00:02:00.000Z",
+                "author": "Жељко Тодоровић",
+                "range": [
+                  "0/138/0/0",
+                  "0/138/0/4/29"
+                ],
+                "signatureRanges": [
+                  [
+                    "0/138/0/1",
+                    "0/138/0/4/29"
+                  ]
+                ],
+                "level": 2,
+                "id": "c|Жељко Тодоровић|2018-03-19T00:02:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2018-03-19T00:14:00.000Z",
+                    "author": "Miljan Simonović",
+                    "range": [
+                      "0/138/0/5/0/0",
+                      "0/138/0/5/0/4/29"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "0/138/0/5/0/1",
+                        "0/138/0/5/0/4/29"
+                      ]
+                    ],
+                    "level": 3,
+                    "id": "c|Miljan Simonović|2018-03-19T00:14:00.000Z|0",
+                    "replies": [
+                      {
+                        "type": "comment",
+                        "timestamp": "2018-03-19T00:20:00.000Z",
+                        "author": "Kolega2357",
+                        "range": [
+                          "0/138/0/5/0/5/0/0",
+                          "0/138/0/5/0/5/0/4/29"
+                        ],
+                        "signatureRanges": [
+                          [
+                            "0/138/0/5/0/5/0/1",
+                            "0/138/0/5/0/5/0/4/29"
+                          ]
+                        ],
+                        "level": 4,
+                        "id": "c|Kolega2357|2018-03-19T00:20:00.000Z|0",
+                        "replies": [
+                          {
+                            "type": "comment",
+                            "timestamp": "2018-03-19T10:37:00.000Z",
+                            "author": "Miljan Simonović",
+                            "range": [
+                              "0/138/0/5/0/5/0/5/0/0",
+                              "0/138/0/5/0/5/0/5/0/4/29"
+                            ],
+                            "signatureRanges": [
+                              [
+                                "0/138/0/5/0/5/0/5/0/1",
+                                "0/138/0/5/0/5/0/5/0/4/29"
+                              ]
+                            ],
+                            "level": 5,
+                            "id": "c|Miljan Simonović|2018-03-19T10:37:00.000Z|0",
+                            "replies": [
+                              {
+                                "type": "comment",
+                                "timestamp": "2018-03-19T13:01:00.000Z",
+                                "author": "Acamicamacaraca",
+                                "range": [
+                                  "0/138/0/5/0/5/0/5/0/5/0/0",
+                                  "0/138/0/5/0/5/0/5/0/5/0/4/28"
+                                ],
+                                "signatureRanges": [
+                                  [
+                                    "0/138/0/5/0/5/0/5/0/5/0/1",
+                                    "0/138/0/5/0/5/0/5/0/5/0/4/28"
+                                  ]
+                                ],
+                                "level": 6,
+                                "id": "c|Acamicamacaraca|2018-03-19T13:01:00.000Z|0",
+                                "replies": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "comment",
+            "timestamp": "2018-03-25T13:44:00.000Z",
+            "author": "Miljan Simonović",
+            "range": [
+              "0/142/0/0",
+              "0/142/5/30"
+            ],
+            "signatureRanges": [
+              [
+                "0/142/2",
+                "0/142/5/30"
+              ]
+            ],
+            "level": 1,
+            "id": "c|Miljan Simonović|2018-03-25T13:44:00.000Z|0",
+            "replies": [
+              {
+                "type": "comment",
+                "timestamp": "2018-03-25T17:29:00.000Z",
+                "author": "Srdjan m",
+                "range": [
+                  "0/144/0/0/0",
+                  "0/144/0/9/30"
+                ],
+                "signatureRanges": [
+                  [
+                    "0/144/0/6",
+                    "0/144/0/9/30"
+                  ]
+                ],
+                "level": 2,
+                "id": "c|Srdjan m|2018-03-25T17:29:00.000Z|0",
+                "replies": [
+                  {
+                    "type": "comment",
+                    "timestamp": "2018-03-25T18:28:00.000Z",
+                    "author": "Miljan Simonović",
+                    "range": [
+                      "0/144/0/10/0/0",
+                      "0/144/0/10/0/7/30"
+                    ],
+                    "signatureRanges": [
+                      [
+                        "0/144/0/10/0/4",
+                        "0/144/0/10/0/7/30"
+                      ]
+                    ],
+                    "level": 3,
+                    "id": "c|Miljan Simonović|2018-03-25T18:28:00.000Z|0",
+                    "replies": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1240,6 +1667,7 @@
       "0/130/0",
       "0/130/2"
     ],
+    "headingLevel": 3,
     "level": 0,
     "id": "h|Гласови",
     "replies": [
@@ -1470,6 +1898,7 @@
       "0/134/0",
       "0/134/2"
     ],
+    "headingLevel": 3,
     "level": 0,
     "id": "h|Коментари",
     "replies": [
@@ -1650,6 +2079,7 @@
       "0/146/0",
       "0/146/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Скорашње_измене",
     "replies": [
@@ -1863,6 +2293,7 @@
       "0/164/0",
       "0/164/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Грешка",
     "replies": [
@@ -1892,6 +2323,7 @@
       "0/168/0",
       "0/168/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Промене_у_претрази_на_српском",
     "replies": [
@@ -1940,6 +2372,7 @@
       "0/176/0",
       "0/176/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|We_need_your_feedback_to_improve_Lua_functions",
     "replies": [
@@ -1969,6 +2402,7 @@
       "0/180/0",
       "0/180/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Нова_верзија_Медијавикија?",
     "replies": [
@@ -2017,6 +2451,7 @@
       "0/186/0",
       "0/186/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Римски_амфитеатар_у_Пловдиву",
     "replies": [
@@ -2065,6 +2500,7 @@
       "0/192/0",
       "0/192/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Версајски_дворац",
     "replies": [
@@ -2113,6 +2549,7 @@
       "0/198/0",
       "0/198/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Андреј_Аршавин",
     "replies": [
@@ -2161,6 +2598,7 @@
       "0/204/0",
       "0/204/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Дуранкулак",
     "replies": [
@@ -2209,6 +2647,7 @@
       "0/212/0",
       "0/212/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Грешка_у_изразу:_непознати_интерпункцијски_карактер",
     "replies": [
@@ -2884,6 +3323,7 @@
       "0/283/0",
       "0/283/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Time_to_bring_embedded_maps_(‘mapframe’)_to_most_Wikipedias",
     "replies": [
@@ -2913,6 +3353,7 @@
       "0/288/0",
       "0/288/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Кутијица",
     "replies": [
@@ -2960,6 +3401,7 @@
       "0/293/0",
       "0/293/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Wikitext_highlighting_out_of_beta",
     "replies": []
@@ -2970,6 +3412,7 @@
       "0/297/0",
       "0/297/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Фудбалска_репрезентација_Украјине",
     "replies": [
@@ -3018,6 +3461,7 @@
       "0/303/0",
       "0/303/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Грешка_у_кутијици",
     "replies": [
@@ -3066,6 +3510,7 @@
       "0/309/0",
       "0/309/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Дугме_уреди",
     "replies": [
@@ -3133,6 +3578,7 @@
       "0/315/0",
       "0/315/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Наводници",
     "replies": [
@@ -3237,6 +3683,7 @@
       "0/328/0",
       "0/328/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Грешка_у_кутијици_2",
     "replies": [
@@ -3288,6 +3735,7 @@
       "0/334/0",
       "0/334/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Проблем_са_шаблоном",
     "replies": [
@@ -3336,6 +3784,7 @@
       "0/340/0",
       "0/340/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Општине_и_градови_у_Румунији",
     "replies": [
@@ -3383,6 +3832,7 @@
       "0/345/0",
       "0/345/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Improvements_coming_soon_on_Watchlists",
     "replies": [
@@ -3412,6 +3862,7 @@
       "0/349/0",
       "0/349/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Приказивање_броја_0_у_наслову",
     "replies": [
@@ -3460,6 +3911,7 @@
       "0/355/0",
       "0/355/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Update_on_page_issues_on_mobile_web",
     "replies": [
@@ -3489,6 +3941,7 @@
       "0/360/0",
       "0/360/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Прикажи/сакриј",
     "replies": [
@@ -3518,6 +3971,7 @@
       "0/365/0",
       "0/365/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Ko_to_eksperimentiše_sa_softverom",
     "replies": [
@@ -3547,6 +4001,7 @@
       "0/369/0",
       "0/369/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Историја_измена",
     "replies": [
@@ -3614,6 +4069,7 @@
       "0/375/0",
       "0/375/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|ХТМЛ_грешке",
     "replies": [
@@ -3699,6 +4155,7 @@
       "0/389/0",
       "0/389/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Опет_хаос_у_програму",
     "replies": [
@@ -3839,6 +4296,7 @@
       "0/404/0",
       "0/404/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Патролирање",
     "replies": [
@@ -3959,6 +4417,7 @@
       "0/415/0",
       "0/415/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Tidy_to_RemexHtml",
     "replies": [
@@ -3988,6 +4447,7 @@
       "0/420/0",
       "0/420/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Нови_ред",
     "replies": [
@@ -4092,6 +4552,7 @@
       "0/432/0",
       "0/432/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Consultation_on_the_creation_of_a_separate_user_group_for_editing_sitewide_CSS/JS",
     "replies": [
@@ -4121,6 +4582,7 @@
       "0/436/0",
       "0/436/1"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|ORES",
     "replies": [
@@ -4169,6 +4631,7 @@
       "0/442/0",
       "0/442/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Вратити_превод_картица",
     "replies": [
@@ -4456,6 +4919,7 @@
       "0/465/0",
       "0/465/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Шаблон:Инфокутија_Функционер",
     "replies": [
@@ -4522,6 +4986,7 @@
       "0/473/0",
       "0/473/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Сјајни_чланци",
     "replies": [
@@ -4890,6 +5355,7 @@
       "0/493/0",
       "0/493/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|(Не)патролиране_измене",
     "replies": [
@@ -5030,6 +5496,7 @@
       "0/509/0",
       "0/509/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Пречице",
     "replies": [
@@ -5225,6 +5692,7 @@
       "0/529/0",
       "0/529/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Страница_за_разговор",
     "replies": [
@@ -5535,6 +6003,7 @@
       "0/551/0",
       "0/551/2"
     ],
+    "headingLevel": 2,
     "level": 0,
     "id": "h|Џиџа_за_svg",
     "replies": [

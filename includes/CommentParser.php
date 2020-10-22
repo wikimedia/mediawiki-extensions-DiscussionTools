@@ -758,7 +758,7 @@ class CommentParser {
 
 		// Placeholder heading in case there are comments in the 0th section
 		$range = new ImmutableRange( $this->rootNode, 0, $this->rootNode, 0 );
-		$fakeHeading = new HeadingItem( $range, true );
+		$fakeHeading = new HeadingItem( $range, 99, true );
 		$fakeHeading->setRootNode( $this->rootNode );
 
 		$curComment = $fakeHeading;
@@ -770,9 +770,9 @@ class CommentParser {
 		);
 		$lastSigNode = null;
 		while ( $node = $treeWalker->nextNode() ) {
-			if ( $node instanceof DOMElement && preg_match( '/^h[1-6]$/i', $node->tagName ) ) {
+			if ( $node instanceof DOMElement && preg_match( '/^h([1-6])$/i', $node->tagName, $match ) ) {
 				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
-				$curComment = new HeadingItem( $range );
+				$curComment = new HeadingItem( $range, (int)( $match[ 1 ] ) );
 				$curComment->setRootNode( $this->rootNode );
 				$threadItems[] = $curComment;
 			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
@@ -1064,6 +1064,16 @@ class CommentParser {
 			if ( $threadItem instanceof HeadingItem ) {
 				// New root (thread)
 				$threads[] = $threadItem;
+				// Attach as a sub-thread to preceding higher-level heading.
+				// Any replies will appear in the tree twice, under the main-thread and the sub-thread.
+				$maybeParent = count( $threads ) > 1 ? $threads[ count( $threads ) - 2 ] : null;
+				while ( $maybeParent && $maybeParent->getHeadingLevel() >= $threadItem->getHeadingLevel() ) {
+					$maybeParent = $maybeParent->getParent();
+				}
+				if ( $maybeParent ) {
+					$threadItem->setParent( $maybeParent );
+					$maybeParent->addReply( $threadItem );
+				}
 			} elseif ( isset( $replies[ $threadItem->getLevel() - 1 ] ) ) {
 				// Add as a reply to the closest less-nested comment
 				$threadItem->setParent( $replies[ $threadItem->getLevel() - 1 ] );

@@ -82,6 +82,9 @@ class CommentParserTest extends CommentTestCase {
 			}, $threadItem->getSignatureRanges() );
 		}
 
+		if ( $threadItem instanceof HeadingItem ) {
+			$serialized->headingLevel = $threadItem->getHeadingLevel();
+		}
 		$serialized->level = $threadItem->getLevel();
 		$serialized->id = $threadItem->getId();
 

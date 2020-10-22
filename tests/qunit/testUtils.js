@@ -84,6 +84,11 @@ function getOffsetPath( ancestor, node, nodeOffset ) {
  * @param {Node} root Ancestor node of all comments
  */
 module.exports.serializeComments = function ( parent, root ) {
+	if ( !parent.range.startContainer ) {
+		// Already done as part of a different thread
+		return;
+	}
+
 	// Can't serialize circular structures to JSON
 	delete parent.parent;
 

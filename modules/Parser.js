@@ -759,20 +759,20 @@ Parser.prototype.buildThreadItems = function () {
 		endContainer: this.rootNode,
 		endOffset: 0
 	};
-	fakeHeading = new HeadingItem( range, true );
+	fakeHeading = new HeadingItem( range, 99, true );
 	fakeHeading.rootNode = this.rootNode;
 
 	curComment = fakeHeading;
 
 	while ( ( node = treeWalker.nextNode() ) ) {
-		if ( node.tagName && node.tagName.match( /^h[1-6]$/i ) ) {
+		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
 			range = {
 				startContainer: node,
 				startOffset: 0,
 				endContainer: node,
 				endOffset: node.childNodes.length
 			};
-			curComment = new HeadingItem( range );
+			curComment = new HeadingItem( range, +match[ 1 ] );
 			curComment.rootNode = this.rootNode;
 			threadItems.push( curComment );
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegexps ) ) ) {
@@ -1007,7 +1007,7 @@ Parser.prototype.buildThreads = function () {
 	var
 		threads = [],
 		replies = [],
-		i, threadItem, id;
+		i, threadItem, id, maybeParent;
 
 	if ( !this.threadItems ) {
 		this.buildThreadItems();
@@ -1036,6 +1036,16 @@ Parser.prototype.buildThreads = function () {
 		if ( threadItem instanceof HeadingItem ) {
 			// New root (thread)
 			threads.push( threadItem );
+			// Attach as a sub-thread to preceding higher-level heading.
+			// Any replies will appear in the tree twice, under the main-thread and the sub-thread.
+			maybeParent = threads.length > 1 ? threads[ threads.length - 2 ] : null;
+			while ( maybeParent && maybeParent.headingLevel >= threadItem.headingLevel ) {
+				maybeParent = maybeParent.parent;
+			}
+			if ( maybeParent ) {
+				threadItem.parent = maybeParent;
+				maybeParent.replies.push( threadItem );
+			}
 		} else if ( replies[ threadItem.level - 1 ] ) {
 			// Add as a reply to the closest less-nested comment
 			threadItem.parent = replies[ threadItem.level - 1 ];

@@ -14,6 +14,7 @@ abstract class ThreadItem implements JsonSerializable {
 	protected $range;
 	protected $rootNode;
 	protected $level;
+	protected $parent;
 
 	protected $id = null;
 	protected $legacyId = null;
@@ -21,7 +22,7 @@ abstract class ThreadItem implements JsonSerializable {
 
 	/**
 	 * @param string $type `heading` or `comment`
-	 * @param int $level Item level in the thread tree
+	 * @param int $level Indentation level
 	 * @param ImmutableRange $range Object describing the extent of the comment, including the
 	 *  signature and timestamp.
 	 */
@@ -45,7 +46,7 @@ abstract class ThreadItem implements JsonSerializable {
 			'type' => $this->type,
 			'level' => $this->level,
 			'id' => $this->id,
-			'replies' => array_map( function ( CommentItem $comment ) {
+			'replies' => array_map( function ( ThreadItem $comment ) {
 				return $comment->getId();
 			}, $this->replies )
 		];
@@ -60,10 +61,12 @@ abstract class ThreadItem implements JsonSerializable {
 	 */
 	public function getAuthorsBelow() : array {
 		$authors = [];
-		$getAuthorSet = function ( CommentItem $comment ) use ( &$authors, &$getAuthorSet ) {
-			$author = $comment->getAuthor();
-			if ( $author ) {
-				$authors[ $author ] = true;
+		$getAuthorSet = function ( ThreadItem $comment ) use ( &$authors, &$getAuthorSet ) {
+			if ( $comment instanceof CommentItem ) {
+				$author = $comment->getAuthor();
+				if ( $author ) {
+					$authors[ $author ] = true;
+				}
 			}
 			// Get the set of authors in the same format from each reply
 			array_map( $getAuthorSet, $comment->getReplies() );
@@ -159,10 +162,17 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @return int Thread item level
+	 * @return int Indentation level
 	 */
 	public function getLevel() : int {
 		return $this->level;
+	}
+
+	/**
+	 * @return ThreadItem|null Parent thread item
+	 */
+	public function getParent() : ?ThreadItem {
+		return $this->parent;
 	}
 
 	/**
@@ -194,17 +204,24 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @return CommentItem[] Replies to this thread item
+	 * @return ThreadItem[] Replies to this thread item
 	 */
 	public function getReplies() : array {
 		return $this->replies;
 	}
 
 	/**
-	 * @param int $level Thread item level
+	 * @param int $level Indentation level
 	 */
 	public function setLevel( int $level ) : void {
 		$this->level = $level;
+	}
+
+	/**
+	 * @param ThreadItem $parent Parent thread item
+	 */
+	public function setParent( ThreadItem $parent ) {
+		$this->parent = $parent;
 	}
 
 	/**
@@ -236,9 +253,9 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @param CommentItem $reply Reply comment
+	 * @param ThreadItem $reply Reply comment
 	 */
-	public function addReply( CommentItem $reply ) : void {
+	public function addReply( ThreadItem $reply ) : void {
 		$this->replies[] = $reply;
 	}
 }
