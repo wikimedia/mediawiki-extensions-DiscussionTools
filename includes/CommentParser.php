@@ -1052,7 +1052,25 @@ class CommentParser {
 	 * @return string|null
 	 */
 	private function computeLegacyId( ThreadItem $threadItem ) : ?string {
-		return null;
+		if ( $threadItem instanceof HeadingItem ) {
+			// We don't need ids for section headings right now, but we might in the future
+			// e.g. if we allow replying directly to sections (adding top-level comments)
+			$id = null;
+		} elseif ( $threadItem instanceof CommentItem ) {
+			$id = ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
+
+			// If there would be multiple comments with the same ID (i.e. the user left multiple comments
+			// in one edit, or within a minute), append sequential numbers
+			$number = 0;
+			while ( isset( $this->threadItemsById["$id|$number"] ) ) {
+				$number++;
+			}
+			$id = "$id|$number";
+		} else {
+			throw new MWException( 'Unknown ThreadItem type' );
+		}
+
+		return $id;
 	}
 
 	private function buildThreads() : void {
