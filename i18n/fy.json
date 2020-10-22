@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"PiefPafPier"
+		]
+	},
+	"tag-discussiontools-description": "Bewurking makke mei it DiskusjeArk",
+	"tag-discussiontools-edit": "Reäksjebewurking",
+	"tag-discussiontools-newtopic": "Nij mêd",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Antwurd]",
+	"tag-discussiontools-source": "Boarne",
+	"tag-discussiontools-visual": "Fisueel"
+}
