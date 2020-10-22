@@ -24,7 +24,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Stok|2018-09-29T06:23:00.000Z|0",
+        "id": "c|Stok|2018-09-29T06:23:00.000Z|Kalendarium",
         "replies": [
           {
             "type": "comment",
@@ -41,7 +41,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Cybularny|2018-09-29T07:06:00.000Z|0",
+            "id": "c|Cybularny|2018-09-29T07:06:00.000Z|Stok|2018-09-29T06:23:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -58,7 +58,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Zwiadowca21|2018-10-01T18:20:00.000Z|0",
+                "id": "c|Zwiadowca21|2018-10-01T18:20:00.000Z|Cybularny|2018-09-29T07:06:00.000Z",
                 "replies": []
               }
             ]
@@ -92,7 +92,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Wostr|2018-09-30T01:22:00.000Z|0",
+        "id": "c|Wostr|2018-09-30T01:22:00.000Z|Zmiany_interwiki_w_Wikidanych",
         "replies": [
           {
             "type": "comment",
@@ -109,7 +109,7 @@
               ]
             ],
             "level": 3,
-            "id": "c|Eurohunter|2018-09-30T07:43:00.000Z|0",
+            "id": "c|Eurohunter|2018-09-30T07:43:00.000Z|Wostr|2018-09-30T01:22:00.000Z",
             "warnings": [
               "Comment skips indentation level"
             ],
@@ -129,7 +129,7 @@
                   ]
                 ],
                 "level": 4,
-                "id": "c|Eurohunter|2018-09-30T07:52:00.000Z|0",
+                "id": "c|Eurohunter|2018-09-30T07:52:00.000Z|Eurohunter|2018-09-30T07:43:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -146,7 +146,7 @@
                       ]
                     ],
                     "level": 5,
-                    "id": "c|Eurohunter|2018-09-30T07:55:00.000Z|0",
+                    "id": "c|Eurohunter|2018-09-30T07:55:00.000Z|Eurohunter|2018-09-30T07:52:00.000Z",
                     "replies": []
                   }
                 ]
@@ -174,7 +174,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|WTM|2018-09-30T10:42:00.000Z|0",
+        "id": "c|WTM|2018-09-30T10:42:00.000Z|Zmiany_interwiki_w_Wikidanych",
         "replies": [
           {
             "type": "comment",
@@ -191,7 +191,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Eurohunter|2018-09-30T11:09:00.000Z|0",
+            "id": "c|Eurohunter|2018-09-30T11:09:00.000Z|WTM|2018-09-30T10:42:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -208,7 +208,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Yashaa|2018-09-30T16:32:00.000Z|0",
+                "id": "c|Yashaa|2018-09-30T16:32:00.000Z|Eurohunter|2018-09-30T11:09:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -225,7 +225,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Eurohunter|2018-09-30T21:24:00.000Z|0",
+                    "id": "c|Eurohunter|2018-09-30T21:24:00.000Z|Yashaa|2018-09-30T16:32:00.000Z",
                     "replies": [
                       {
                         "type": "comment",
@@ -242,7 +242,7 @@
                           ]
                         ],
                         "level": 5,
-                        "id": "c|Yashaa|2018-10-01T10:18:00.000Z|0",
+                        "id": "c|Yashaa|2018-10-01T10:18:00.000Z|Eurohunter|2018-09-30T21:24:00.000Z",
                         "replies": []
                       }
                     ]
@@ -268,7 +268,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|WTM|2018-09-30T22:17:00.000Z|0",
+        "id": "c|WTM|2018-09-30T22:17:00.000Z|Zmiany_interwiki_w_Wikidanych",
         "replies": [
           {
             "type": "comment",
@@ -285,7 +285,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Panek|2018-10-01T06:39:00.000Z|0",
+            "id": "c|Panek|2018-10-01T06:39:00.000Z|WTM|2018-09-30T22:17:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -302,7 +302,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Panek|2018-10-01T09:52:00.000Z|0",
+                "id": "c|Panek|2018-10-01T09:52:00.000Z|Panek|2018-10-01T06:39:00.000Z",
                 "replies": []
               }
             ]
@@ -322,7 +322,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Barcival|2018-10-01T20:23:00.000Z|0",
+            "id": "c|Barcival|2018-10-01T20:23:00.000Z|WTM|2018-09-30T22:17:00.000Z",
             "replies": []
           }
         ]
@@ -354,7 +354,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Zwiadowca21|2018-10-01T13:54:00.000Z|0",
+        "id": "c|Zwiadowca21|2018-10-01T13:54:00.000Z|Hymn_Polski_a_Mazurek_Dąbrowskiego",
         "replies": []
       },
       {
@@ -372,7 +372,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Piolodiusz|2018-10-01T17:32:00.000Z|0",
+        "id": "c|Piolodiusz|2018-10-01T17:32:00.000Z|Hymn_Polski_a_Mazurek_Dąbrowskiego",
         "replies": [
           {
             "type": "comment",
@@ -389,7 +389,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Eurohunter|2018-10-02T16:02:00.000Z|0",
+            "id": "c|Eurohunter|2018-10-02T16:02:00.000Z|Piolodiusz|2018-10-01T17:32:00.000Z",
             "replies": []
           }
         ]
@@ -421,7 +421,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|MOs810|2018-10-03T12:51:00.000Z|0",
+        "id": "c|MOs810|2018-10-03T12:51:00.000Z|Elx",
         "replies": [
           {
             "type": "comment",
@@ -438,7 +438,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Teukros|2018-10-03T13:16:00.000Z|0",
+            "id": "c|Teukros|2018-10-03T13:16:00.000Z|MOs810|2018-10-03T12:51:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -455,7 +455,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|MOs810|2018-10-03T13:59:00.000Z|0",
+                "id": "c|MOs810|2018-10-03T13:59:00.000Z|Teukros|2018-10-03T13:16:00.000Z",
                 "replies": []
               }
             ]
@@ -475,7 +475,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Aotearoa|2018-10-03T17:27:00.000Z|0",
+            "id": "c|Aotearoa|2018-10-03T17:27:00.000Z|MOs810|2018-10-03T12:51:00.000Z",
             "replies": []
           }
         ]
@@ -507,7 +507,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|GregX21|2018-10-04T17:49:00.000Z|0",
+        "id": "c|GregX21|2018-10-04T17:49:00.000Z|Mozilla_a_Mozilla_Foundation",
         "replies": [
           {
             "type": "comment",
@@ -524,7 +524,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Piolodiusz|2018-10-05T15:32:00.000Z|0",
+            "id": "c|Piolodiusz|2018-10-05T15:32:00.000Z|GregX21|2018-10-04T17:49:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -541,7 +541,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|GregX21|2018-10-06T07:05:00.000Z|0",
+                "id": "c|GregX21|2018-10-06T07:05:00.000Z|Piolodiusz|2018-10-05T15:32:00.000Z",
                 "replies": []
               }
             ]
@@ -561,7 +561,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Witia|2018-10-06T12:12:00.000Z|0",
+            "id": "c|Witia|2018-10-06T12:12:00.000Z|GregX21|2018-10-04T17:49:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -578,7 +578,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|GregX21|2018-10-06T16:18:00.000Z|0",
+                "id": "c|GregX21|2018-10-06T16:18:00.000Z|Witia|2018-10-06T12:12:00.000Z",
                 "replies": []
               }
             ]
@@ -612,7 +612,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|MOs810|2018-07-29T10:14:00.000Z|0",
+        "id": "c|MOs810|2018-07-29T10:14:00.000Z|Autoencyklopedyczność_kościołów_-_propozycja_głosowania",
         "replies": [
           {
             "type": "comment",
@@ -629,7 +629,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Gdarin|2018-07-29T10:31:00.000Z|0",
+            "id": "c|Gdarin|2018-07-29T10:31:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": []
           },
           {
@@ -647,7 +647,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Teukros|2018-07-29T10:34:00.000Z|0",
+            "id": "c|Teukros|2018-07-29T10:34:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": []
           },
           {
@@ -665,7 +665,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Kenraiz|2018-07-29T11:27:00.000Z|0",
+            "id": "c|Kenraiz|2018-07-29T11:27:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -682,7 +682,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Gruzin|2018-07-29T11:34:00.000Z|0",
+                "id": "c|Gruzin|2018-07-29T11:34:00.000Z|Kenraiz|2018-07-29T11:27:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -699,7 +699,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Anagram16|2018-07-29T12:55:00.000Z|0",
+                    "id": "c|Anagram16|2018-07-29T12:55:00.000Z|Gruzin|2018-07-29T11:34:00.000Z",
                     "replies": []
                   }
                 ]
@@ -721,7 +721,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Adamt|2018-07-29T11:52:00.000Z|0",
+            "id": "c|Adamt|2018-07-29T11:52:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": []
           },
           {
@@ -739,7 +739,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Anagram16|2018-07-29T12:12:00.000Z|0",
+            "id": "c|Anagram16|2018-07-29T12:12:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": []
           },
           {
@@ -757,7 +757,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Hoa binh|2018-07-29T13:37:00.000Z|0",
+            "id": "c|Hoa binh|2018-07-29T13:37:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -774,7 +774,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Anagram16|2018-07-29T13:45:00.000Z|0",
+                "id": "c|Anagram16|2018-07-29T13:45:00.000Z|Hoa binh|2018-07-29T13:37:00.000Z",
                 "replies": []
               },
               {
@@ -792,7 +792,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Gruzin|2018-07-29T16:11:00.000Z|0",
+                "id": "c|Gruzin|2018-07-29T16:11:00.000Z|Hoa binh|2018-07-29T13:37:00.000Z",
                 "replies": []
               }
             ]
@@ -812,7 +812,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Zetpe0202|2018-07-30T17:54:00.000Z|0",
+            "id": "c|Zetpe0202|2018-07-30T17:54:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -829,7 +829,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Gruzin|2018-07-30T18:47:00.000Z|0",
+                "id": "c|Gruzin|2018-07-30T18:47:00.000Z|Zetpe0202|2018-07-30T17:54:00.000Z",
                 "replies": []
               }
             ]
@@ -849,7 +849,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|John Belushi|2018-07-30T19:08:00.000Z|0",
+            "id": "c|John Belushi|2018-07-30T19:08:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": []
           },
           {
@@ -867,7 +867,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Gruzin|2018-07-30T19:30:00.000Z|0",
+            "id": "c|Gruzin|2018-07-30T19:30:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": []
           },
           {
@@ -885,7 +885,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|MOs810|2018-07-31T08:26:00.000Z|0",
+            "id": "c|MOs810|2018-07-31T08:26:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -902,7 +902,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|John Belushi|2018-07-31T08:36:00.000Z|0",
+                "id": "c|John Belushi|2018-07-31T08:36:00.000Z|MOs810|2018-07-31T08:26:00.000Z",
                 "replies": []
               },
               {
@@ -920,7 +920,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Gruzin|2018-07-31T14:56:00.000Z|0",
+                "id": "c|Gruzin|2018-07-31T14:56:00.000Z|MOs810|2018-07-31T08:26:00.000Z",
                 "replies": []
               },
               {
@@ -938,7 +938,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Teukros|2018-07-31T15:21:00.000Z|0",
+                "id": "c|Teukros|2018-07-31T15:21:00.000Z|MOs810|2018-07-31T08:26:00.000Z",
                 "replies": []
               },
               {
@@ -956,7 +956,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Malarz pl|2018-07-31T16:44:00.000Z|0",
+                "id": "c|Malarz pl|2018-07-31T16:44:00.000Z|MOs810|2018-07-31T08:26:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -973,7 +973,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Zala|2018-07-31T17:50:00.000Z|0",
+                    "id": "c|Zala|2018-07-31T17:50:00.000Z|Malarz pl|2018-07-31T16:44:00.000Z",
                     "replies": []
                   }
                 ]
@@ -993,7 +993,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Adamt|2018-07-31T22:05:00.000Z|0",
+                "id": "c|Adamt|2018-07-31T22:05:00.000Z|MOs810|2018-07-31T08:26:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -1010,7 +1010,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|John Belushi|2018-08-01T18:20:00.000Z|0",
+                    "id": "c|John Belushi|2018-08-01T18:20:00.000Z|Adamt|2018-07-31T22:05:00.000Z",
                     "replies": []
                   }
                 ]
@@ -1032,7 +1032,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|KamilK7|2018-08-06T14:08:00.000Z|0",
+            "id": "c|KamilK7|2018-08-06T14:08:00.000Z|MOs810|2018-07-29T10:14:00.000Z",
             "replies": []
           }
         ]
@@ -1056,7 +1056,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Cz ja|2018-08-13T22:43:00.000Z|0",
+        "id": "c|Cz ja|2018-08-13T22:43:00.000Z|Autoencyklopedyczność_kościołów_-_propozycja_głosowania",
         "replies": [
           {
             "type": "comment",
@@ -1073,7 +1073,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Malarz pl|2018-08-14T07:07:00.000Z|0",
+            "id": "c|Malarz pl|2018-08-14T07:07:00.000Z|Cz ja|2018-08-13T22:43:00.000Z",
             "replies": []
           }
         ]
@@ -1093,7 +1093,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|BasileusAutokratorPL|2018-08-31T15:59:00.000Z|0",
+        "id": "c|BasileusAutokratorPL|2018-08-31T15:59:00.000Z|Autoencyklopedyczność_kościołów_-_propozycja_głosowania",
         "replies": [
           {
             "type": "comment",
@@ -1110,7 +1110,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ciacho5|2018-09-08T16:10:00.000Z|0",
+            "id": "c|Ciacho5|2018-09-08T16:10:00.000Z|BasileusAutokratorPL|2018-08-31T15:59:00.000Z",
             "replies": []
           }
         ]
@@ -1130,7 +1130,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|BasileusAutokratorPL|2018-09-09T15:15:00.000Z|0",
+        "id": "c|BasileusAutokratorPL|2018-09-09T15:15:00.000Z|Autoencyklopedyczność_kościołów_-_propozycja_głosowania",
         "replies": [
           {
             "type": "comment",
@@ -1147,7 +1147,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Alan ffm|2018-10-08T09:34:00.000Z|0",
+            "id": "c|Alan ffm|2018-10-08T09:34:00.000Z|BasileusAutokratorPL|2018-09-09T15:15:00.000Z",
             "replies": []
           }
         ]
@@ -1179,7 +1179,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Wostr|2018-10-09T20:26:00.000Z|0",
+        "id": "c|Wostr|2018-10-09T20:26:00.000Z|Zbrodnie_oddziałów_Ludowej_Straży_Bezpieczeństwa",
         "replies": [
           {
             "type": "comment",
@@ -1196,7 +1196,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Kriis bis|2018-10-11T12:15:00.000Z|0",
+            "id": "c|Kriis bis|2018-10-11T12:15:00.000Z|Wostr|2018-10-09T20:26:00.000Z",
             "replies": []
           }
         ]
@@ -1228,7 +1228,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Ciacho5|2018-10-10T19:51:00.000Z|0",
+        "id": "c|Ciacho5|2018-10-10T19:51:00.000Z|Sekcja_Literatura",
         "replies": [
           {
             "type": "comment",
@@ -1245,7 +1245,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Piotr967|2018-10-10T21:52:00.000Z|0",
+            "id": "c|Piotr967|2018-10-10T21:52:00.000Z|Ciacho5|2018-10-10T19:51:00.000Z",
             "replies": []
           },
           {
@@ -1263,7 +1263,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ciacho5|2018-10-11T08:12:00.000Z|0",
+            "id": "c|Ciacho5|2018-10-11T08:12:00.000Z|Ciacho5|2018-10-10T19:51:00.000Z",
             "replies": []
           },
           {
@@ -1281,7 +1281,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Henryk Tannhäuser|2018-10-11T12:44:00.000Z|0",
+            "id": "c|Henryk Tannhäuser|2018-10-11T12:44:00.000Z|Ciacho5|2018-10-10T19:51:00.000Z",
             "replies": []
           }
         ]
@@ -1313,7 +1313,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|WTM|2018-10-11T20:46:00.000Z|0",
+        "id": "c|WTM|2018-10-11T20:46:00.000Z|Jerzy_Mrozowicki",
         "replies": [
           {
             "type": "comment",
@@ -1330,7 +1330,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Kriis bis|2018-10-12T07:11:00.000Z|0",
+            "id": "c|Kriis bis|2018-10-12T07:11:00.000Z|WTM|2018-10-11T20:46:00.000Z",
             "replies": []
           }
         ]
@@ -1362,7 +1362,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Jacek555|2018-10-06T12:50:00.000Z|0",
+        "id": "c|Jacek555|2018-10-06T12:50:00.000Z|„Cyklon_B”_czy_„cyklon_B”?",
         "replies": [
           {
             "type": "comment",
@@ -1379,7 +1379,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Vinsinna|2018-10-06T16:35:00.000Z|0",
+            "id": "c|Vinsinna|2018-10-06T16:35:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": []
           },
           {
@@ -1397,7 +1397,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Wostr|2018-10-06T17:18:00.000Z|0",
+            "id": "c|Wostr|2018-10-06T17:18:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": []
           },
           {
@@ -1415,7 +1415,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Matrek|2018-10-06T17:36:00.000Z|0",
+            "id": "c|Matrek|2018-10-06T17:36:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": []
           },
           {
@@ -1433,7 +1433,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Dreamcatcher25|2018-10-07T08:20:00.000Z|0",
+            "id": "c|Dreamcatcher25|2018-10-07T08:20:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -1450,7 +1450,7 @@
                   ]
                 ],
                 "level": 4,
-                "id": "c|Matrek|2018-10-07T16:04:00.000Z|0",
+                "id": "c|Matrek|2018-10-07T16:04:00.000Z|Dreamcatcher25|2018-10-07T08:20:00.000Z",
                 "warnings": [
                   "Comment skips indentation level"
                 ],
@@ -1471,7 +1471,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Wostr|2018-10-07T11:43:00.000Z|0",
+                "id": "c|Wostr|2018-10-07T11:43:00.000Z|Dreamcatcher25|2018-10-07T08:20:00.000Z",
                 "replies": []
               }
             ]
@@ -1491,7 +1491,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Wostr|2018-10-07T16:27:00.000Z|0",
+            "id": "c|Wostr|2018-10-07T16:27:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -1512,7 +1512,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Matrek|2018-10-07T16:34:00.000Z|0",
+                "id": "c|Matrek|2018-10-07T16:34:00.000Z|Wostr|2018-10-07T16:27:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -1529,7 +1529,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Wostr|2018-10-07T16:53:00.000Z|0",
+                    "id": "c|Wostr|2018-10-07T16:53:00.000Z|Matrek|2018-10-07T16:34:00.000Z",
                     "replies": [
                       {
                         "type": "comment",
@@ -1546,7 +1546,7 @@
                           ]
                         ],
                         "level": 5,
-                        "id": "c|Vinsinna|2018-10-07T18:49:00.000Z|0",
+                        "id": "c|Vinsinna|2018-10-07T18:49:00.000Z|Wostr|2018-10-07T16:53:00.000Z",
                         "replies": []
                       }
                     ]
@@ -1568,7 +1568,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Jacek555|2018-10-08T16:33:00.000Z|0",
+                "id": "c|Jacek555|2018-10-08T16:33:00.000Z|Wostr|2018-10-07T16:27:00.000Z",
                 "replies": []
               }
             ]
@@ -1588,7 +1588,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Gruzin|2018-10-07T16:32:00.000Z|0",
+            "id": "c|Gruzin|2018-10-07T16:32:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": []
           },
           {
@@ -1606,7 +1606,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Lesław Zimny|2018-10-07T18:00:00.000Z|0",
+            "id": "c|Lesław Zimny|2018-10-07T18:00:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -1623,7 +1623,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Alan ffm|2018-10-08T08:01:00.000Z|0",
+                "id": "c|Alan ffm|2018-10-08T08:01:00.000Z|Lesław Zimny|2018-10-07T18:00:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -1640,7 +1640,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Jacek555|2018-10-08T16:33:00.000Z|1",
+                    "id": "c|Jacek555|2018-10-08T16:33:00.000Z|Alan ffm|2018-10-08T08:01:00.000Z",
                     "replies": []
                   }
                 ]
@@ -1662,7 +1662,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Jacek555|2018-10-08T16:33:00.000Z|2",
+            "id": "c|Jacek555|2018-10-08T16:33:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": []
           },
           {
@@ -1680,7 +1680,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Wostr|2018-10-16T17:40:00.000Z|0",
+            "id": "c|Wostr|2018-10-16T17:40:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": []
           },
           {
@@ -1698,7 +1698,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Jacek555|2018-10-16T17:53:00.000Z|0",
+            "id": "c|Jacek555|2018-10-16T17:53:00.000Z|Jacek555|2018-10-06T12:50:00.000Z",
             "replies": []
           }
         ]
@@ -1730,7 +1730,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Pawelmhm|2018-10-16T10:55:00.000Z|0",
+        "id": "c|Pawelmhm|2018-10-16T10:55:00.000Z|Przypisy_do_ebooków._Co_z_numerami_stron?",
         "replies": [
           {
             "type": "comment",
@@ -1747,7 +1747,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ironupiwada|2018-10-16T11:30:00.000Z|0",
+            "id": "c|Ironupiwada|2018-10-16T11:30:00.000Z|Pawelmhm|2018-10-16T10:55:00.000Z",
             "replies": []
           },
           {
@@ -1765,7 +1765,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Pawelmhm|2018-10-16T12:01:00.000Z|0",
+            "id": "c|Pawelmhm|2018-10-16T12:01:00.000Z|Pawelmhm|2018-10-16T10:55:00.000Z",
             "replies": []
           },
           {
@@ -1783,7 +1783,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Tomasz Raburski|2018-10-16T12:14:00.000Z|0",
+            "id": "c|Tomasz Raburski|2018-10-16T12:14:00.000Z|Pawelmhm|2018-10-16T10:55:00.000Z",
             "replies": []
           },
           {
@@ -1801,7 +1801,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ciacho5|2018-10-16T13:48:00.000Z|0",
+            "id": "c|Ciacho5|2018-10-16T13:48:00.000Z|Pawelmhm|2018-10-16T10:55:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -1818,7 +1818,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Ironupiwada|2018-10-16T14:57:00.000Z|0",
+                "id": "c|Ironupiwada|2018-10-16T14:57:00.000Z|Ciacho5|2018-10-16T13:48:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -1835,7 +1835,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Ciacho5|2018-10-17T06:56:00.000Z|0",
+                    "id": "c|Ciacho5|2018-10-17T06:56:00.000Z|Ironupiwada|2018-10-16T14:57:00.000Z",
                     "replies": []
                   }
                 ]
@@ -1871,7 +1871,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Gżdacz|2018-10-17T06:39:00.000Z|0",
+        "id": "c|Gżdacz|2018-10-17T06:39:00.000Z|Nazewnictwo_planetoid",
         "replies": [
           {
             "type": "comment",
@@ -1888,7 +1888,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Michał Rosa|2018-10-17T07:16:00.000Z|0",
+            "id": "c|Michał Rosa|2018-10-17T07:16:00.000Z|Gżdacz|2018-10-17T06:39:00.000Z",
             "replies": []
           }
         ]
@@ -1920,7 +1920,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Piotr967|2018-10-11T17:25:00.000Z|0",
+        "id": "c|Piotr967|2018-10-11T17:25:00.000Z|Czy_ten_szablon_powinien_istnieć?",
         "replies": [
           {
             "type": "comment",
@@ -1937,7 +1937,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Bobek321|2018-10-12T11:17:00.000Z|0",
+            "id": "c|Bobek321|2018-10-12T11:17:00.000Z|Piotr967|2018-10-11T17:25:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -1954,7 +1954,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Piotr967|2018-10-12T18:22:00.000Z|0",
+                "id": "c|Piotr967|2018-10-12T18:22:00.000Z|Bobek321|2018-10-12T11:17:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -1971,7 +1971,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Kenraiz|2018-10-12T18:51:00.000Z|0",
+                    "id": "c|Kenraiz|2018-10-12T18:51:00.000Z|Piotr967|2018-10-12T18:22:00.000Z",
                     "replies": []
                   }
                 ]
@@ -1993,7 +1993,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ented|2018-10-15T22:47:00.000Z|0",
+            "id": "c|Ented|2018-10-15T22:47:00.000Z|Piotr967|2018-10-11T17:25:00.000Z",
             "replies": []
           },
           {
@@ -2011,7 +2011,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Bobek321|2018-10-17T19:08:00.000Z|0",
+            "id": "c|Bobek321|2018-10-17T19:08:00.000Z|Piotr967|2018-10-11T17:25:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -2028,7 +2028,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Piotr967|2018-10-17T19:25:00.000Z|0",
+                "id": "c|Piotr967|2018-10-17T19:25:00.000Z|Bobek321|2018-10-17T19:08:00.000Z",
                 "replies": []
               }
             ]
@@ -2048,7 +2048,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Malarz pl|2018-10-17T19:49:00.000Z|0",
+            "id": "c|Malarz pl|2018-10-17T19:49:00.000Z|Piotr967|2018-10-11T17:25:00.000Z",
             "replies": []
           }
         ]
@@ -2080,7 +2080,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Pawelmhm|2018-10-18T10:29:00.000Z|0",
+        "id": "c|Pawelmhm|2018-10-18T10:29:00.000Z|Pytanie_dotyczące_artykułów_o_czasopismach._Czy_ta_sama_nazwa_czasopisma_wydawanego_w_różnych_okresach_czasowych_zasługuje_na_to_samo_hasło?",
         "replies": [
           {
             "type": "comment",
@@ -2097,7 +2097,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Tomasz Raburski|2018-10-18T11:05:00.000Z|0",
+            "id": "c|Tomasz Raburski|2018-10-18T11:05:00.000Z|Pawelmhm|2018-10-18T10:29:00.000Z",
             "replies": []
           },
           {
@@ -2115,7 +2115,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ciacho5|2018-10-18T12:04:00.000Z|0",
+            "id": "c|Ciacho5|2018-10-18T12:04:00.000Z|Pawelmhm|2018-10-18T10:29:00.000Z",
             "replies": []
           }
         ]
@@ -2147,7 +2147,7 @@
           ]
         ],
         "level": 2,
-        "id": "c|Demkoff|2018-10-19T01:41:00.000Z|0",
+        "id": "c|Demkoff|2018-10-19T01:41:00.000Z|Tło_w_komórce",
         "warnings": [
           "Comment skips indentation level"
         ],
@@ -2180,7 +2180,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Paweł Ziemian|2018-10-02T20:26:00.000Z|0",
+        "id": "c|Paweł Ziemian|2018-10-02T20:26:00.000Z|Ułamki",
         "replies": [
           {
             "type": "comment",
@@ -2197,7 +2197,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Matma Rex|2018-10-02T22:16:00.000Z|0",
+            "id": "c|Matma Rex|2018-10-02T22:16:00.000Z|Paweł Ziemian|2018-10-02T20:26:00.000Z",
             "replies": []
           }
         ]
@@ -2217,7 +2217,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Ashaio|2018-10-19T12:09:00.000Z|0",
+        "id": "c|Ashaio|2018-10-19T12:09:00.000Z|Ułamki",
         "replies": [
           {
             "type": "comment",
@@ -2234,7 +2234,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Paweł Ziemian|2018-10-19T20:23:00.000Z|0",
+            "id": "c|Paweł Ziemian|2018-10-19T20:23:00.000Z|Ashaio|2018-10-19T12:09:00.000Z",
             "replies": []
           }
         ]
@@ -2266,7 +2266,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Vinsinna|2018-10-18T13:45:00.000Z|0",
+        "id": "c|Vinsinna|2018-10-18T13:45:00.000Z|\"To_źródło_nie_zostało_użyte_do_napisania_tych_treści\"",
         "replies": [
           {
             "type": "comment",
@@ -2283,7 +2283,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Kenraiz|2018-10-18T15:07:00.000Z|0",
+            "id": "c|Kenraiz|2018-10-18T15:07:00.000Z|Vinsinna|2018-10-18T13:45:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -2300,7 +2300,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Vinsinna|2018-10-18T17:12:00.000Z|0",
+                "id": "c|Vinsinna|2018-10-18T17:12:00.000Z|Kenraiz|2018-10-18T15:07:00.000Z",
                 "replies": []
               }
             ]
@@ -2320,7 +2320,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|WTM|2018-10-18T15:24:00.000Z|0",
+            "id": "c|WTM|2018-10-18T15:24:00.000Z|Vinsinna|2018-10-18T13:45:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -2337,7 +2337,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Vinsinna|2018-10-18T17:11:00.000Z|0",
+                "id": "c|Vinsinna|2018-10-18T17:11:00.000Z|WTM|2018-10-18T15:24:00.000Z",
                 "replies": []
               }
             ]
@@ -2357,7 +2357,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ented|2018-10-18T18:39:00.000Z|0",
+            "id": "c|Ented|2018-10-18T18:39:00.000Z|Vinsinna|2018-10-18T13:45:00.000Z",
             "replies": []
           },
           {
@@ -2375,7 +2375,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Kenraiz|2018-10-18T18:45:00.000Z|0",
+            "id": "c|Kenraiz|2018-10-18T18:45:00.000Z|Vinsinna|2018-10-18T13:45:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -2392,7 +2392,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Vinsinna|2018-10-19T19:10:00.000Z|0",
+                "id": "c|Vinsinna|2018-10-19T19:10:00.000Z|Kenraiz|2018-10-18T18:45:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -2409,7 +2409,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Kenraiz|2018-10-19T19:21:00.000Z|0",
+                    "id": "c|Kenraiz|2018-10-19T19:21:00.000Z|Vinsinna|2018-10-19T19:10:00.000Z",
                     "replies": []
                   },
                   {
@@ -2427,7 +2427,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Vinsinna|2018-10-21T12:40:00.000Z|0",
+                    "id": "c|Vinsinna|2018-10-21T12:40:00.000Z|Vinsinna|2018-10-19T19:10:00.000Z",
                     "replies": []
                   }
                 ]
@@ -2463,7 +2463,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Czyz1|2018-10-21T12:45:00.000Z|0",
+        "id": "c|Czyz1|2018-10-21T12:45:00.000Z|Tytuł_filmu",
         "replies": [
           {
             "type": "comment",
@@ -2480,7 +2480,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Teukros|2018-10-21T17:12:00.000Z|0",
+            "id": "c|Teukros|2018-10-21T17:12:00.000Z|Czyz1|2018-10-21T12:45:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -2497,7 +2497,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Czyz1|2018-10-21T19:09:00.000Z|0",
+                "id": "c|Czyz1|2018-10-21T19:09:00.000Z|Teukros|2018-10-21T17:12:00.000Z",
                 "replies": []
               }
             ]
@@ -2517,7 +2517,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Mike210381|2018-10-21T19:25:00.000Z|0",
+            "id": "c|Mike210381|2018-10-21T19:25:00.000Z|Czyz1|2018-10-21T12:45:00.000Z",
             "replies": []
           },
           {
@@ -2535,7 +2535,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Aotearoa|2018-10-22T15:26:00.000Z|0",
+            "id": "c|Aotearoa|2018-10-22T15:26:00.000Z|Czyz1|2018-10-21T12:45:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -2552,7 +2552,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Czyz1|2018-10-23T10:29:00.000Z|0",
+                "id": "c|Czyz1|2018-10-23T10:29:00.000Z|Aotearoa|2018-10-22T15:26:00.000Z",
                 "replies": []
               }
             ]
@@ -2572,7 +2572,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Eurohunter|2018-10-23T16:44:00.000Z|0",
+            "id": "c|Eurohunter|2018-10-23T16:44:00.000Z|Czyz1|2018-10-21T12:45:00.000Z",
             "replies": []
           }
         ]
@@ -2604,7 +2604,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Stok|2018-10-23T19:16:00.000Z|0",
+        "id": "c|Stok|2018-10-23T19:16:00.000Z|Osiedla",
         "replies": []
       }
     ]
@@ -2634,7 +2634,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Eurohunter|2018-10-23T21:59:00.000Z|0",
+        "id": "c|Eurohunter|2018-10-23T21:59:00.000Z|Pokolenie_Z",
         "replies": []
       }
     ]
@@ -2664,7 +2664,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Agrezt|2018-10-25T07:59:00.000Z|0",
+        "id": "c|Agrezt|2018-10-25T07:59:00.000Z|Zofia_Więcławówna_-_korekta_umiejscowienia_grafiki",
         "replies": [
           {
             "type": "comment",
@@ -2681,7 +2681,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ciacho5|2018-10-25T08:15:00.000Z|0",
+            "id": "c|Ciacho5|2018-10-25T08:15:00.000Z|Agrezt|2018-10-25T07:59:00.000Z",
             "replies": []
           }
         ]
@@ -2713,7 +2713,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Andrzej1993|2018-10-14T19:29:00.000Z|0",
+        "id": "c|Andrzej1993|2018-10-14T19:29:00.000Z|Bitwa_pod_Brunete",
         "replies": [
           {
             "type": "comment",
@@ -2730,7 +2730,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|KamilK7|2018-10-25T12:59:00.000Z|0",
+            "id": "c|KamilK7|2018-10-25T12:59:00.000Z|Andrzej1993|2018-10-14T19:29:00.000Z",
             "replies": []
           }
         ]
@@ -2762,7 +2762,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Karol Szapsza|2018-10-25T20:40:00.000Z|0",
+        "id": "c|Karol Szapsza|2018-10-25T20:40:00.000Z|Podwójne_nazwiska_w_infoboksach",
         "replies": []
       }
     ]
@@ -2792,7 +2792,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Piotr967|2018-10-23T16:01:00.000Z|0",
+        "id": "c|Piotr967|2018-10-23T16:01:00.000Z|Facebook_jako_źródło",
         "replies": [
           {
             "type": "comment",
@@ -2809,7 +2809,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Eurohunter|2018-10-23T16:43:00.000Z|0",
+            "id": "c|Eurohunter|2018-10-23T16:43:00.000Z|Piotr967|2018-10-23T16:01:00.000Z",
             "replies": []
           },
           {
@@ -2827,7 +2827,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Tokyotown8|2018-10-23T16:46:00.000Z|0",
+            "id": "c|Tokyotown8|2018-10-23T16:46:00.000Z|Piotr967|2018-10-23T16:01:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -2844,7 +2844,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Piotr967|2018-10-23T16:52:00.000Z|0",
+                "id": "c|Piotr967|2018-10-23T16:52:00.000Z|Tokyotown8|2018-10-23T16:46:00.000Z",
                 "replies": [
                   {
                     "type": "comment",
@@ -2861,7 +2861,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Tokyotown8|2018-10-23T17:16:00.000Z|0",
+                    "id": "c|Tokyotown8|2018-10-23T17:16:00.000Z|Piotr967|2018-10-23T16:52:00.000Z",
                     "replies": []
                   },
                   {
@@ -2879,7 +2879,7 @@
                       ]
                     ],
                     "level": 4,
-                    "id": "c|Mpn|2018-10-23T17:40:00.000Z|0",
+                    "id": "c|Mpn|2018-10-23T17:40:00.000Z|Piotr967|2018-10-23T16:52:00.000Z",
                     "replies": [
                       {
                         "type": "comment",
@@ -2896,7 +2896,7 @@
                           ]
                         ],
                         "level": 5,
-                        "id": "c|Szoltys|2018-10-23T17:44:00.000Z|0",
+                        "id": "c|Szoltys|2018-10-23T17:44:00.000Z|Mpn|2018-10-23T17:40:00.000Z",
                         "replies": []
                       }
                     ]
@@ -2920,7 +2920,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|109.233.47.132|2018-10-23T17:56:00.000Z|0",
+            "id": "c|109.233.47.132|2018-10-23T17:56:00.000Z|Piotr967|2018-10-23T16:01:00.000Z",
             "replies": []
           },
           {
@@ -2938,7 +2938,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Panek|2018-10-23T20:50:00.000Z|0",
+            "id": "c|Panek|2018-10-23T20:50:00.000Z|Piotr967|2018-10-23T16:01:00.000Z",
             "replies": []
           },
           {
@@ -2956,7 +2956,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Kenraiz|2018-10-23T21:36:00.000Z|0",
+            "id": "c|Kenraiz|2018-10-23T21:36:00.000Z|Piotr967|2018-10-23T16:01:00.000Z",
             "replies": []
           },
           {
@@ -2974,7 +2974,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|KamilK7|2018-10-25T12:09:00.000Z|0",
+            "id": "c|KamilK7|2018-10-25T12:09:00.000Z|Piotr967|2018-10-23T16:01:00.000Z",
             "replies": []
           }
         ]
@@ -2994,7 +2994,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|BasileusAutokratorPL|2018-10-25T17:14:00.000Z|0",
+        "id": "c|BasileusAutokratorPL|2018-10-25T17:14:00.000Z|Facebook_jako_źródło",
         "replies": [
           {
             "type": "comment",
@@ -3011,7 +3011,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Żyrafał|2018-10-25T18:43:00.000Z|0",
+            "id": "c|Żyrafał|2018-10-25T18:43:00.000Z|BasileusAutokratorPL|2018-10-25T17:14:00.000Z",
             "replies": []
           },
           {
@@ -3029,7 +3029,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Piolodiusz|2018-10-26T05:36:00.000Z|0",
+            "id": "c|Piolodiusz|2018-10-26T05:36:00.000Z|BasileusAutokratorPL|2018-10-25T17:14:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -3046,7 +3046,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Żyrafał|2018-10-26T16:09:00.000Z|0",
+                "id": "c|Żyrafał|2018-10-26T16:09:00.000Z|Piolodiusz|2018-10-26T05:36:00.000Z",
                 "replies": []
               }
             ]
@@ -3066,7 +3066,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Michalwadas|2018-10-26T16:13:00.000Z|0",
+            "id": "c|Michalwadas|2018-10-26T16:13:00.000Z|BasileusAutokratorPL|2018-10-25T17:14:00.000Z",
             "replies": []
           }
         ]
@@ -3098,7 +3098,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|WTM|2018-10-26T17:17:00.000Z|0",
+        "id": "c|WTM|2018-10-26T17:17:00.000Z|Wyśrodkowanie_tekstu",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
@@ -3131,7 +3131,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|BasileusAutokratorPL|2018-10-26T17:07:00.000Z|0",
+        "id": "c|BasileusAutokratorPL|2018-10-26T17:07:00.000Z|Reprezentacja_Polski_w_piłce_nożnej_mężczyzn",
         "replies": [
           {
             "type": "comment",
@@ -3148,7 +3148,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ciacho5|2018-10-26T17:27:00.000Z|0",
+            "id": "c|Ciacho5|2018-10-26T17:27:00.000Z|BasileusAutokratorPL|2018-10-26T17:07:00.000Z",
             "replies": []
           },
           {
@@ -3166,7 +3166,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Mitrovitz|2018-10-26T20:19:00.000Z|0",
+            "id": "c|Mitrovitz|2018-10-26T20:19:00.000Z|BasileusAutokratorPL|2018-10-26T17:07:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -3183,7 +3183,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Vinsinna|2018-10-26T21:21:00.000Z|0",
+                "id": "c|Vinsinna|2018-10-26T21:21:00.000Z|Mitrovitz|2018-10-26T20:19:00.000Z",
                 "replies": []
               }
             ]
@@ -3207,7 +3207,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Piotr967|2018-10-26T22:01:00.000Z|0",
+            "id": "c|Piotr967|2018-10-26T22:01:00.000Z|BasileusAutokratorPL|2018-10-26T17:07:00.000Z",
             "replies": []
           },
           {
@@ -3225,7 +3225,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ented|2018-10-26T22:10:00.000Z|0",
+            "id": "c|Ented|2018-10-26T22:10:00.000Z|BasileusAutokratorPL|2018-10-26T17:07:00.000Z",
             "replies": []
           }
         ]
@@ -3257,7 +3257,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Wiktoryn|2018-10-20T18:23:00.000Z|0",
+        "id": "c|Wiktoryn|2018-10-20T18:23:00.000Z|Ikonki_w_infoboksach",
         "replies": [
           {
             "type": "comment",
@@ -3274,7 +3274,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Malarz pl|2018-10-28T17:53:00.000Z|0",
+            "id": "c|Malarz pl|2018-10-28T17:53:00.000Z|Wiktoryn|2018-10-20T18:23:00.000Z",
             "replies": []
           },
           {
@@ -3292,7 +3292,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Elfhelm|2018-10-28T18:50:00.000Z|0",
+            "id": "c|Elfhelm|2018-10-28T18:50:00.000Z|Wiktoryn|2018-10-20T18:23:00.000Z",
             "replies": []
           }
         ]
@@ -3324,7 +3324,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Arvedui89|2018-10-29T08:12:00.000Z|0",
+        "id": "c|Arvedui89|2018-10-29T08:12:00.000Z|{{Tenisista_infobox}}",
         "replies": [
           {
             "type": "comment",
@@ -3341,7 +3341,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Ciacho5|2018-10-29T10:20:00.000Z|0",
+            "id": "c|Ciacho5|2018-10-29T10:20:00.000Z|Arvedui89|2018-10-29T08:12:00.000Z",
             "replies": []
           },
           {
@@ -3359,7 +3359,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Malarz pl|2018-10-29T10:49:00.000Z|0",
+            "id": "c|Malarz pl|2018-10-29T10:49:00.000Z|Arvedui89|2018-10-29T08:12:00.000Z",
             "replies": []
           }
         ]
@@ -3391,7 +3391,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Smyrwa|2018-10-24T01:36:00.000Z|0",
+        "id": "c|Smyrwa|2018-10-24T01:36:00.000Z|Encyklopedyczność_biogramów_harcerskich",
         "replies": [
           {
             "type": "comment",
@@ -3408,7 +3408,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Gżdacz|2018-10-24T06:35:00.000Z|0",
+            "id": "c|Gżdacz|2018-10-24T06:35:00.000Z|Smyrwa|2018-10-24T01:36:00.000Z",
             "replies": []
           }
         ]
@@ -3432,7 +3432,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Pbk|2018-10-24T15:14:00.000Z|0",
+        "id": "c|Pbk|2018-10-24T15:14:00.000Z|Encyklopedyczność_biogramów_harcerskich",
         "warnings": [
           "Comment starts and ends with different indentation"
         ],
@@ -3452,7 +3452,7 @@
               ]
             ],
             "level": 3,
-            "id": "c|Smyrwa|2018-10-30T14:58:00.000Z|0",
+            "id": "c|Smyrwa|2018-10-30T14:58:00.000Z|Pbk|2018-10-24T15:14:00.000Z",
             "warnings": [
               "Comment skips indentation level"
             ],
@@ -3473,7 +3473,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Andrzei111|2018-10-25T10:50:00.000Z|0",
+            "id": "c|Andrzei111|2018-10-25T10:50:00.000Z|Pbk|2018-10-24T15:14:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -3490,7 +3490,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Smyrwa|2018-10-30T14:58:00.000Z|1",
+                "id": "c|Smyrwa|2018-10-30T14:58:00.000Z|Andrzei111|2018-10-25T10:50:00.000Z",
                 "replies": []
               }
             ]
@@ -3510,7 +3510,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Felis domestica|2018-10-25T10:59:00.000Z|0",
+            "id": "c|Felis domestica|2018-10-25T10:59:00.000Z|Pbk|2018-10-24T15:14:00.000Z",
             "replies": []
           }
         ]
@@ -3530,7 +3530,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|BasileusAutokratorPL|2018-10-25T20:03:00.000Z|0",
+        "id": "c|BasileusAutokratorPL|2018-10-25T20:03:00.000Z|Encyklopedyczność_biogramów_harcerskich",
         "replies": [
           {
             "type": "comment",
@@ -3547,7 +3547,7 @@
               ]
             ],
             "level": 3,
-            "id": "c|Smyrwa|2018-10-30T14:58:00.000Z|2",
+            "id": "c|Smyrwa|2018-10-30T14:58:00.000Z|BasileusAutokratorPL|2018-10-25T20:03:00.000Z",
             "warnings": [
               "Comment skips indentation level"
             ],
@@ -3582,7 +3582,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Ciacho5|2018-10-31T13:57:00.000Z|0",
+        "id": "c|Ciacho5|2018-10-31T13:57:00.000Z|Szablon?_do_zrobienia?",
         "replies": [
           {
             "type": "comment",
@@ -3599,7 +3599,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Malarz pl|2018-10-31T14:55:00.000Z|0",
+            "id": "c|Malarz pl|2018-10-31T14:55:00.000Z|Ciacho5|2018-10-31T13:57:00.000Z",
             "replies": []
           }
         ]

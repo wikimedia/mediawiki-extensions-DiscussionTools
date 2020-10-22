@@ -1005,16 +1005,29 @@ class CommentParser {
 			$id = 'h|' . ( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
 			$id = 'c|' . ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
+		} else {
+			throw new MWException( 'Unknown ThreadItem type' );
+		}
 
-			// If there would be multiple comments with the same ID (i.e. the user left multiple comments
-			// in one edit, or within a minute), append sequential numbers
-			$number = 0;
+		// If there would be multiple comments with the same ID (i.e. the user left multiple comments
+		// in one edit, or within a minute), add the parent ID to disambiguate them.
+		$threadItemParent = $threadItem->getParent();
+		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
+			$headline = $this->getHeadlineNode( $threadItemParent->getRange()->startContainer );
+			$id .= '|' . ( $headline->getAttribute( 'id' ) ?? '' );
+		} elseif ( $threadItemParent instanceof CommentItem ) {
+			$id .= '|' . ( $threadItemParent->getAuthor() ?? '' ) . '|' . $threadItemParent->getTimestamp();
+		}
+
+		if ( isset( $this->threadItemsById[$id] ) ) {
+			// Well, that's tough
+			$threadItem->addWarning( 'Duplicate comment ID' );
+			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
+			$number = 1;
 			while ( isset( $this->threadItemsById["$id|$number"] ) ) {
 				$number++;
 			}
 			$id = "$id|$number";
-		} else {
-			throw new MWException( 'Unknown ThreadItem type' );
 		}
 
 		return $id;
@@ -1041,17 +1054,6 @@ class CommentParser {
 		$this->threadItemsById = [];
 
 		foreach ( $this->threadItems as $threadItem ) {
-			$id = $this->computeId( $threadItem );
-			if ( $id ) {
-				$this->threadItemsById[$id] = $threadItem;
-			}
-			$threadItem->setId( $id );
-			$legacyId = $this->computeLegacyId( $threadItem );
-			$threadItem->setLegacyId( $legacyId );
-			if ( $legacyId ) {
-				$this->threadItemsById[$legacyId] = $threadItem;
-			}
-
 			if ( count( $replies ) < $threadItem->getLevel() ) {
 				// Someone skipped an indentation level (or several). Pretend that the previous reply
 				// covers multiple indentation levels, so that following comments get connected to it.
@@ -1085,6 +1087,18 @@ class CommentParser {
 			$replies[ $threadItem->getLevel() ] = $threadItem;
 			// Cut off more deeply nested replies
 			array_splice( $replies, $threadItem->getLevel() + 1 );
+
+			// Set the IDs used to refer to comments and headings.
+			$id = $this->computeId( $threadItem );
+			if ( $id ) {
+				$this->threadItemsById[$id] = $threadItem;
+			}
+			$threadItem->setId( $id );
+			$legacyId = $this->computeLegacyId( $threadItem );
+			$threadItem->setLegacyId( $legacyId );
+			if ( $legacyId ) {
+				$this->threadItemsById[$legacyId] = $threadItem;
+			}
 		}
 
 		$this->threads = $threads;

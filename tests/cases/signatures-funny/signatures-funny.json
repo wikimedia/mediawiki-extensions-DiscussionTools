@@ -28,7 +28,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Matma Rex|2020-01-25T08:31:00.000Z|0",
+        "id": "c|Matma Rex|2020-01-25T08:31:00.000Z|multi_signatures",
         "replies": [
           {
             "type": "comment",
@@ -45,7 +45,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Matma Rex|2020-01-25T08:32:00.000Z|0",
+            "id": "c|Matma Rex|2020-01-25T08:32:00.000Z|Matma Rex|2020-01-25T08:31:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -66,7 +66,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Matma Rex|2020-01-25T08:33:00.000Z|0",
+                "id": "c|Matma Rex|2020-01-25T08:33:00.000Z|Matma Rex|2020-01-25T08:32:00.000Z",
                 "replies": []
               }
             ]
@@ -88,7 +88,7 @@
           ]
         ],
         "level": 1,
-        "id": "c|Matma Rex|2020-01-25T08:34:00.000Z|0",
+        "id": "c|Matma Rex|2020-01-25T08:34:00.000Z|multi_signatures",
         "replies": []
       },
       {
@@ -106,7 +106,10 @@
           ]
         ],
         "level": 1,
-        "id": "c|Matma Rex|2020-01-25T08:34:00.000Z|1",
+        "id": "c|Matma Rex|2020-01-25T08:34:00.000Z|multi_signatures|1",
+        "warnings": [
+          "Duplicate comment ID"
+        ],
         "replies": [
           {
             "type": "comment",
@@ -127,7 +130,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Matma Rex|2020-01-25T08:35:00.000Z|0",
+            "id": "c|Matma Rex|2020-01-25T08:35:00.000Z|Matma Rex|2020-01-25T08:34:00.000Z",
             "replies": []
           },
           {
@@ -145,7 +148,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Matma Rex|2020-01-25T08:36:00.000Z|0",
+            "id": "c|Matma Rex|2020-01-25T08:36:00.000Z|Matma Rex|2020-01-25T08:34:00.000Z",
             "replies": []
           },
           {
@@ -163,7 +166,7 @@
               ]
             ],
             "level": 2,
-            "id": "c|Matma Rex|2020-01-25T08:37:00.000Z|0",
+            "id": "c|Matma Rex|2020-01-25T08:37:00.000Z|Matma Rex|2020-01-25T08:34:00.000Z",
             "replies": [
               {
                 "type": "comment",
@@ -180,7 +183,7 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Matma Rex|2020-01-25T08:38:00.000Z|0",
+                "id": "c|Matma Rex|2020-01-25T08:38:00.000Z|Matma Rex|2020-01-25T08:37:00.000Z",
                 "replies": []
               },
               {
@@ -198,7 +201,10 @@
                   ]
                 ],
                 "level": 3,
-                "id": "c|Matma Rex|2020-01-25T08:38:00.000Z|1",
+                "id": "c|Matma Rex|2020-01-25T08:38:00.000Z|Matma Rex|2020-01-25T08:37:00.000Z|1",
+                "warnings": [
+                  "Duplicate comment ID"
+                ],
                 "replies": []
               }
             ]
