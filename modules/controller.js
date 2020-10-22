@@ -281,6 +281,9 @@ function update( data, comment, pageName, replyWidget ) {
 		} ).then( function () {
 			return api.get( {
 				action: 'parse',
+				// HACK: 'useskin' triggers a different code path that runs our OutputPageBeforeHTML hook,
+				// adding our reply links in the HTML (T266195)
+				useskin: mw.config.get( 'skin' ),
 				prop: [ 'text', 'modules', 'jsconfigvars' ],
 				page: mw.config.get( 'wgRelevantPageName' )
 			} );
