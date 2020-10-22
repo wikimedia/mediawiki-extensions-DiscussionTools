@@ -52,14 +52,10 @@ class ApiDiscussionTools extends ApiBase {
 				$transcludedFrom = [];
 				foreach ( $comments as $comment ) {
 					$from = $comment->getTranscludedFrom();
-					// 'false' is the most likely result, so don't bother sending it,
-					// the client can just assume it if the key is missing
-					if ( $from !== false ) {
-						$transcludedFrom[ $comment->getId() ] = $from;
-						$legacyId = $comment->getLegacyId();
-						if ( $legacyId ) {
-							$transcludedFrom[ $legacyId ] = $from;
-						}
+					$transcludedFrom[ $comment->getId() ] = $from;
+					$legacyId = $comment->getLegacyId();
+					if ( $legacyId ) {
+						$transcludedFrom[ $legacyId ] = $from;
 					}
 				}
 
