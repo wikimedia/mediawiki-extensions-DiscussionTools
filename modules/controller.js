@@ -254,6 +254,10 @@ function update( data, comment, pageName, replyWidget ) {
 	var watch,
 		pageUpdated = $.Deferred();
 
+	// We posted a new comment, clear the cache, because wgCurRevisionId will not change if we posted
+	// to a transcluded page (T266275)
+	pageDataCache[ mw.config.get( 'wgRelevantPageName' ) ][ mw.config.get( 'wgCurRevisionId' ) ] = null;
+
 	replyWidget.teardown();
 	// TODO: Tell controller to teardown all other open widgets
 
