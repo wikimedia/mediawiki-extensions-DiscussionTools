@@ -978,7 +978,6 @@ Parser.prototype.buildThreads = function () {
 			}
 			id = id + '|' + number;
 			this.commentsById[ id ] = threadItem;
-			// This modifies the original objects in `comments`!
 			threadItem.id = id;
 		}
 

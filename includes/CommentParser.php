@@ -984,7 +984,6 @@ class CommentParser {
 				}
 				$id = "$id|$number";
 				$this->commentsById[$id] = $threadItem;
-				// This modifies the original objects in $comments!
 				$threadItem->setId( $id );
 			} else {
 				throw new MWException( 'Unknown ThreadItem type' );
@@ -995,7 +994,6 @@ class CommentParser {
 				// covers multiple indentation levels, so that following comments get connected to it.
 				$threadItem->addWarning( 'Comment skips indentation level' );
 				while ( count( $replies ) < $threadItem->getLevel() ) {
-					// FIXME this will clone the reply, not just set a reference
 					$replies[] = end( $replies );
 				}
 			}
