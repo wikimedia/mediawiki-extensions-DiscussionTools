@@ -30,8 +30,8 @@ class CommentFormatter extends HtmlFormatter {
 				$threadItem->setRange( new ImmutableRange( $node, 0, $node, 0 ) );
 			}
 
-			$id = $threadItem->getId();
-			if ( $id ) {
+			if ( $threadItem instanceof CommentItem ) {
+				$id = $threadItem->getId();
 				$range = $threadItem->getRange();
 				$startMarker = $doc->createElement( 'span' );
 				$startMarker->setAttribute( 'data-mw-comment-start', $id );

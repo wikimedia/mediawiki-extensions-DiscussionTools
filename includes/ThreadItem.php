@@ -180,9 +180,9 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @return string|null Thread ID
+	 * @return string Thread ID
 	 */
-	public function getId() : ?string {
+	public function getId() : string {
 		return $this->id;
 	}
 
