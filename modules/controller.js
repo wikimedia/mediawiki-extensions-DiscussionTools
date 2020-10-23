@@ -10,7 +10,12 @@ var
 mw.messages.set( require( './controller/contLangMessages.json' ) );
 
 function getApi() {
-	return new mw.Api( { parameters: { formatversion: 2 } } );
+	return new mw.Api( {
+		parameters: {
+			formatversion: 2,
+			uselang: mw.config.get( 'wgUserLanguage' )
+		}
+	} );
 }
 
 function highlight( comment ) {
