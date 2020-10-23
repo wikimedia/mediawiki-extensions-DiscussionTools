@@ -1,5 +1,4 @@
 var
-	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
 	logger = require( './logger.js' ),
@@ -48,7 +47,7 @@ OO.initClass( CommentController );
  * @return {jQuery.Promise}
  */
 function getLatestRevId( pageName ) {
-	return api.get( {
+	return controller.getApi().get( {
 		action: 'query',
 		prop: 'revisions',
 		rvprop: 'ids',
@@ -155,7 +154,7 @@ CommentController.prototype.setup = function ( mode ) {
 			commentController.teardown();
 
 			OO.ui.alert(
-				code instanceof Error ? code.toString() : api.getErrorMessage( data ),
+				code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
 				{ size: 'medium' }
 			);
 
@@ -242,7 +241,8 @@ CommentController.prototype.save = function ( comment, pageName ) {
 		commentController = this;
 
 	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
-		var captchaInput = commentController.replyWidget.captchaInput,
+		var defaults, noTimeoutApi,
+			captchaInput = commentController.replyWidget.captchaInput,
 			data = {
 				action: 'discussiontoolsedit',
 				paction: 'addcomment',
@@ -251,6 +251,7 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				summary: replyWidget.getEditSummary(),
 				assert: mw.user.isAnon() ? 'anon' : 'user',
 				assertuser: mw.user.getName() || undefined,
+				uselang: mw.config.get( 'wgUserLanguage' ),
 				dttags: [
 					'discussiontools',
 					'discussiontools-reply',
@@ -275,13 +276,14 @@ CommentController.prototype.save = function ( comment, pageName ) {
 				'unwatch';
 		}
 
+		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
+		// could result in duplicate messages if the user retries. (T249071)
+		defaults = OO.copy( controller.getApi().defaults );
+		defaults.timeout = 0;
+		noTimeoutApi = new mw.Api( defaults );
+
 		return mw.libs.ve.targetSaver.postContent(
-			data,
-			{
-				// No timeout. Huge talk pages take a long time to save, and falsely reporting an error can
-				// result in duplicate messages when the user retries. (T249071)
-				api: new mw.Api( { ajax: { timeout: 0 }, parameters: { formatversion: 2 } } )
-			}
+			data, { api: noTimeoutApi }
 		).catch( function ( code, responseData ) {
 			// Better user-facing error messages
 			if ( code === 'editconflict' ) {
@@ -371,7 +373,7 @@ CommentController.prototype.switchToVisual = function () {
 		} ).join( '\n' );
 
 		// Based on ve.init.mw.Target#parseWikitextFragment
-		parsePromise = api.post( {
+		parsePromise = controller.getApi().post( {
 			action: 'visualeditor',
 			paction: 'parsefragment',
 			page: oldWidget.pageName,

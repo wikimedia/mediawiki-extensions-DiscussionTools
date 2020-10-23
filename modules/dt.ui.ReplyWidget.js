@@ -157,7 +157,6 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.editSummaryInput.connect( this, { change: 'onEditSummaryChange' } );
 	this.editSummaryInput.$input.on( 'keydown', this.onKeyDown.bind( this, false ) );
 
-	this.api = new mw.Api( { parameters: { formatversion: 2 } } );
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
 
 	// Initialization
@@ -275,7 +274,7 @@ ReplyWidget.prototype.setPending = function ( pending ) {
 };
 
 ReplyWidget.prototype.saveEditMode = function ( mode ) {
-	this.api.saveOption( 'discussiontools-editmode', mode ).then( function () {
+	controller.getApi().saveOption( 'discussiontools-editmode', mode ).then( function () {
 		mw.user.options.set( 'discussiontools-editmode', mode );
 	} );
 };
@@ -523,7 +522,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 			wikitext = wikitext + '<span style="opacity: 0.6;">' + mw.msg( 'discussiontools-signature-prefix' ) + '~~~~</span>';
 		}
 		wikitext = indent + wikitext.replace( /\n/g, '\n' + indent );
-		this.previewRequest = parsePromise = this.api.post( {
+		this.previewRequest = parsePromise = controller.getApi().post( {
 			action: 'parse',
 			text: wikitext,
 			pst: true,

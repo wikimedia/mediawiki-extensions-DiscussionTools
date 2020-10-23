@@ -1,7 +1,6 @@
 'use strict';
 
 var
-	api = new mw.Api( { parameters: { formatversion: 2 } } ),
 	$pageContainer,
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
@@ -9,6 +8,10 @@ var
 	pageDataCache = {};
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
+
+function getApi() {
+	return new mw.Api( { parameters: { formatversion: 2 } } );
+}
 
 function highlight( comment ) {
 	var padding = 5,
@@ -47,7 +50,9 @@ function highlight( comment ) {
  * @return {jQuery.Promise}
  */
 function getPageData( pageName, oldId ) {
-	var lintPromise, transcludedFromPromise, veMetadataPromise;
+	var lintPromise, transcludedFromPromise, veMetadataPromise,
+		api = getApi();
+
 	pageDataCache[ pageName ] = pageDataCache[ pageName ] || {};
 	if ( pageDataCache[ pageName ][ oldId ] ) {
 		return pageDataCache[ pageName ][ oldId ];
@@ -252,6 +257,7 @@ function init( $container, state ) {
 
 function update( data, comment, pageName, replyWidget ) {
 	var watch,
+		api = getApi(),
 		pageUpdated = $.Deferred();
 
 	// We posted a new comment, clear the cache, because wgCurRevisionId will not change if we posted
@@ -288,6 +294,7 @@ function update( data, comment, pageName, replyWidget ) {
 				// HACK: 'useskin' triggers a different code path that runs our OutputPageBeforeHTML hook,
 				// adding our reply links in the HTML (T266195)
 				useskin: mw.config.get( 'skin' ),
+				uselang: mw.config.get( 'wgUserLanguage' ),
 				prop: [ 'text', 'modules', 'jsconfigvars' ],
 				page: mw.config.get( 'wgRelevantPageName' )
 			} );
@@ -348,5 +355,6 @@ module.exports = {
 	init: init,
 	update: update,
 	checkCommentOnPage: checkCommentOnPage,
-	getCheckboxesPromise: getCheckboxesPromise
+	getCheckboxesPromise: getCheckboxesPromise,
+	getApi: getApi
 };

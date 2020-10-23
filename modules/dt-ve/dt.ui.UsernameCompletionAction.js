@@ -4,6 +4,8 @@
  * @copyright 2011-2019 VisualEditor Team and others; see http://ve.mit-license.org
  */
 
+var controller = require( 'ext.discussionTools.init' ).controller;
+
 /**
  * MWUsernameCompletionAction action.
  *
@@ -20,7 +22,8 @@ function MWUsernameCompletionAction( surface ) {
 	// Parent constructor
 	MWUsernameCompletionAction.super.call( this, surface );
 
-	this.api = new mw.Api( { parameters: { formatversion: 2 } } );
+	// Shared API object so previous requests can be aborted
+	this.api = controller.getApi();
 	this.searchedPrefixes = {};
 	this.localUsers = [];
 	this.ipUsers = [];
