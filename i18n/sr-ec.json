@@ -11,7 +11,7 @@
 	"discussiontools-defaultsummary-reply": "одговор",
 	"discussiontools-desc": "Алатке за олакшавање комуникације на страницама за разговор.",
 	"discussiontools-preference-label": "Алатке за разговор",
-	"discussiontools-preference-description": "Омогућите нови ток рада за [https://www.mediawiki.org/wiki/Talk_pages_project/replying одговарање на одређене коментаре] на страницама за разговор.\n\nИмајте на уму да ће се с временом додати нове алатке за комуницирање на страницама за разговор.\n\nНовости о тим функцијама биће објављене  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates овде].",
+	"discussiontools-preference-description": "Омогућава нови начин [https://www.mediawiki.org/wiki/Talk_pages_project/replying одговарања на коментаре] на страницама за разговор.\n\nИмајте на уму да ће се с временом увести још нових алатки за комуницирање на страницама за разговор.\n\nНовости о тим новим алаткама биће објављене  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates овде].",
 	"discussiontools-preference-replytool": "Омогућавање брзог одговарања",
 	"discussiontools-replylink": "одговори",
 	"discussiontools-replywidget-abandon": "Желите ли заиста да одбаците коментар који сте започели писати?",
