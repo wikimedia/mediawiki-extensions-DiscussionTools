@@ -4,7 +4,8 @@
 			"Ahmad252",
 			"Ed g2s",
 			"FarsiNevis",
-			"Huji"
+			"Huji",
+			"Jeeputer"
 		]
 	},
 	"discussiontools": "ابزارهای گفت‌وگو",
@@ -13,6 +14,7 @@
 	"discussiontools-preference-label": "ابزارهای گفت‌وگو",
 	"discussiontools-preference-replytool": "فعال‌سازی پاسخ‌گویی سریع",
 	"discussiontools-replylink": "پاسخ",
+	"discussiontools-replywidget-abandon-discard": "چشم‌پوشی از نظر",
 	"discussiontools-replywidget-abandon-keep": "ادامه نگارش",
 	"discussiontools-replywidget-advanced": "پیشرفته",
 	"discussiontools-replywidget-anon-warning": "<strong>شما به سامانه وارد نشده‌اید.</strong> برای این که نوشته‌تان به نام خودتان ثبت شود و نشانی آی‌پی‌تان کنارش نمایش نیابد می‌توانید [$1 به سامانه وارد شوید] یا [$2 حساب بسازید].",
@@ -26,9 +28,13 @@
 	"discussiontools-replywidget-placeholder-reply": "پاسخ به {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "پیش‌نمایش",
 	"discussiontools-replywidget-reply": "پاسخ",
+	"discussiontools-replywidget-signature-title": "نشانه‌گذاری امضا شناسایی شد",
+	"discussiontools-replywidget-signature-body": "$1 به امضای شما تبدیل شد. برای برگرداندن این عمل، $2 را تایپ کنید. دقت کنید که در زمان استفاده از این ابزار نیازی به امضا کردن نظرات ندارید. امضای شما به‌طور خودکار اضافه خواهد شد.",
 	"discussiontools-replywidget-summary": "خلاصه ویرایش نظر",
 	"discussiontools-replywidget-terms-click": "با کلیک کردن روی «$1» شما می‌پذیرید که از شرایط استفادهٔ این ویکی پیروی کنید.",
 	"discussiontools-replywidget-transcluded": "نظر شما در [[$1]] ذخیره خواهد شد.",
+	"discussiontools-error-comment-conflict": "نظر شما نمی‌تواند ذخیره شود؛ چون شخص دیگر همزمان با شما نظری فرستاده است. لطفاً دوباره تلاش کنید یا برای مشاهدهٔ آخرین نظرها، صفحه را تازه‌سازی کنید.",
+	"discussiontools-error-comment-disappeared": "نظری که شما در حال پاسخ به آن بودید در صفحه یافت نشد. آن نظر ممکن است حذف شده یا به صفحهٔ دیگری منتقل شده باشد. لطفاً صفحه را تازه‌سازی کرده و دوباره تلاش کنید.",
 	"discussiontools-error-noswitchtove-title": "حالت دیداری غیرفعال است",
 	"tag-discussiontools-description": "ویرایش توسط ابزارهای گفتگو",
 	"tag-discussiontools-edit": "ویرایش نظر",

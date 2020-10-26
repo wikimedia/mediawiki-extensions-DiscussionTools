@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeeputer"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "شناسه نظر یافت نشد: $1",
+	"apihelp-discussiontools-param-oldid": "شماره ویرایش برای استفاده (آخرین ویرایش به‌عنوان پیش‌فرض)",
+	"apihelp-discussiontoolsedit-summary": "فرستادن یک نظر در یک صفحهٔ بحث.",
+	"apihelp-discussiontoolsedit-param-commentid": "شناسه نظر.",
+	"apihelp-discussiontoolsedit-param-wikitext": "ویکی‌متن"
+}
