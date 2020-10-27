@@ -129,7 +129,14 @@ function checkCommentOnPage( pageName, oldId, commentId ) {
 				transcludedFrom = response.transcludedfrom;
 
 			isTranscludedFrom = transcludedFrom[ commentId ];
-			if ( isTranscludedFrom ) {
+			if ( isTranscludedFrom === undefined ) {
+				// The comment wasn't found when generating the "transcludedfrom" data,
+				// so we don't know where the reply should be posted. Just give up.
+				return $.Deferred().reject( 'discussiontools-commentid-notfound-transcludedfrom', { errors: [ {
+					code: 'discussiontools-commentid-notfound-transcludedfrom',
+					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
+				} ] } ).promise();
+			} else if ( isTranscludedFrom ) {
 				mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
 				// If this refers to a template rather than a subpage, we never want to edit it
 				follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
