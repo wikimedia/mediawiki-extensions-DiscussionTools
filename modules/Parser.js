@@ -740,7 +740,7 @@ Parser.prototype.buildThreadItems = function () {
 		commentItems = [],
 		threadItems = [],
 		treeWalker,
-		node, range, fakeHeading, curComment,
+		node, range, fakeHeading, curComment, headingNodeAndOffset, headingNode, startOffset,
 		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, endNode, length,
 		match, lastSigNodeOffset, startLevel, endLevel, level, dateTime, warnings;
 
@@ -766,11 +766,14 @@ Parser.prototype.buildThreadItems = function () {
 
 	while ( ( node = treeWalker.nextNode() ) ) {
 		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
+			headingNodeAndOffset = this.getHeadlineNodeAndOffset( node );
+			headingNode = headingNodeAndOffset.node;
+			startOffset = headingNodeAndOffset.offset;
 			range = {
-				startContainer: node,
-				startOffset: 0,
-				endContainer: node,
-				endOffset: node.childNodes.length
+				startContainer: headingNode,
+				startOffset: startOffset,
+				endContainer: headingNode,
+				endOffset: headingNode.childNodes.length
 			};
 			curComment = new HeadingItem( range, +match[ 1 ] );
 			curComment.rootNode = this.rootNode;
@@ -948,27 +951,36 @@ Parser.prototype.getThreads = function () {
 /**
  * Given a heading node, return the node on which the ID attribute is set.
  *
+ * Also returns the offset within that node where the heading text starts.
+ *
  * @param {HTMLElement} heading Heading node (`<h1>`-`<h6>`)
- * @return {HTMLElement} Headline node (same as the heading node, or one of its children)
+ * @return {Array} Array containing a 'node' (HTMLElement) and offset (number)
  */
-Parser.prototype.getHeadlineNode = function ( heading ) {
+Parser.prototype.getHeadlineNodeAndOffset = function ( heading ) {
 	// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
-	if (
-		heading.firstChild &&
-		heading.firstChild.className === 'mw-headline'
-	) {
-		// Old parser, without fallback ID element
-		return heading.firstChild;
-	} else if (
-		heading.firstChild && heading.firstChild.nextSibling &&
-		heading.firstChild.nextSibling.className === 'mw-headline'
-	) {
-		// Old parser, with a fallback ID element before the headline
-		return heading.firstChild.nextSibling;
-	} else {
-		// Parsoid (the heading node itself carries the ID)
-		return heading;
+	var headline = heading,
+		offset = 0;
+
+	if ( headline.getAttribute( 'data-mw-comment-start' ) ) {
+		headline = headline.parentNode;
 	}
+
+	if ( !headline.getAttribute( 'id' ) ) {
+		// PHP HTML: Find the child with .mw-headline
+		headline = headline.querySelector( '.mw-headline' );
+		if ( headline ) {
+			if ( headline.querySelector( '.mw-headline-number' ) ) {
+				offset = 1;
+			}
+		} else {
+			headline = heading;
+		}
+	}
+
+	return {
+		node: headline,
+		offset: offset
+	};
 };
 
 /**
@@ -984,7 +996,7 @@ Parser.prototype.computeId = function ( threadItem ) {
 		// The range points to the root note, using it like below results in silly values
 		id = 'h|';
 	} else if ( threadItem instanceof HeadingItem ) {
-		headline = this.getHeadlineNode( threadItem.range.startContainer );
+		headline = this.getHeadlineNodeAndOffset( threadItem.range.startContainer ).node;
 		id = 'h|' + ( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItem instanceof CommentItem ) {
 		id = 'c|' + ( threadItem.author || '' ) + '|' + threadItem.timestamp.toISOString();
@@ -996,7 +1008,7 @@ Parser.prototype.computeId = function ( threadItem ) {
 	// in one edit, or within a minute), append sequential numbers
 	threadItemParent = threadItem.parent;
 	if ( threadItemParent instanceof HeadingItem && !threadItemParent.placeholderHeading ) {
-		headline = this.getHeadlineNode( threadItemParent.range.startContainer );
+		headline = this.getHeadlineNodeAndOffset( threadItemParent.range.startContainer ).node;
 		id += '|' + ( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItemParent instanceof CommentItem ) {
 		id += '|' + ( threadItemParent.author || '' ) + '|' + threadItemParent.timestamp.toISOString();

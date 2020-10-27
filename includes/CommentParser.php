@@ -771,7 +771,12 @@ class CommentParser {
 		$lastSigNode = null;
 		while ( $node = $treeWalker->nextNode() ) {
 			if ( $node instanceof DOMElement && preg_match( '/^h([1-6])$/i', $node->tagName, $match ) ) {
-				$range = new ImmutableRange( $node, 0, $node, $node->childNodes->length );
+				$headingNodeAndOffset = $this->getHeadlineNodeAndOffset( $node );
+				$headingNode = $headingNodeAndOffset['node'];
+				$startOffset = $headingNodeAndOffset['offset'];
+				$range = new ImmutableRange(
+					$headingNode, $startOffset, $headingNode, $headingNode->childNodes->length
+				);
 				$curComment = new HeadingItem( $range, (int)( $match[ 1 ] ) );
 				$curComment->setRootNode( $this->rootNode );
 				$threadItems[] = $curComment;
@@ -962,30 +967,45 @@ class CommentParser {
 	/**
 	 * Given a heading node, return the node on which the ID attribute is set.
 	 *
+	 * Also returns the offset within that node where the heading text starts.
+	 *
 	 * @param DOMElement $heading Heading node (`<h1>`-`<h6>`)
-	 * @return DOMElement Headline node (same as the heading node, or one of its children)
+	 * @return array Array containing a 'node' (DOMElement) and offset (int)
 	 */
-	private function getHeadlineNode( DOMElement $heading ) {
+	private function getHeadlineNodeAndOffset( DOMElement $heading ) : array {
 		// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
-		if (
-			( $node = $heading->firstChild ) &&
-			$node instanceof DOMElement &&
-			$node->getAttribute( 'class' ) === 'mw-headline'
-		) {
-			// Old parser, without fallback ID element
-			return $node;
-		} elseif (
-			$heading->firstChild &&
-			( $node = $heading->firstChild->nextSibling ) &&
-			$node instanceof DOMElement &&
-			$node->getAttribute( 'class' ) === 'mw-headline'
-		) {
-			// Old parser, with a fallback ID element before the headline
-			return $node;
-		} else {
-			// Parsoid (the heading node itself carries the ID)
-			return $heading;
+		$headline = $heading;
+		$offset = 0;
+
+		if ( $headline->getAttribute( 'data-mw-comment-start' ) ) {
+			$headline = $headline->parentNode;
 		}
+
+		if ( !$headline->getAttribute( 'id' ) ) {
+			// PHP HTML: Find the child with .mw-headline
+			$headline = $headline->firstChild;
+			while (
+				$headline && $headline instanceof DOMElement &&
+				$headline->getAttribute( 'class' ) !== 'mw-headline'
+			) {
+				$headline = $headline->nextSibling;
+			}
+			if ( $headline ) {
+				if (
+					( $firstChild = $headline->firstChild ) instanceof DOMElement &&
+					$firstChild->getAttribute( 'class' ) === 'mw-headline-number'
+				) {
+					$offset = 1;
+				}
+			} else {
+				$headline = $heading;
+			}
+		}
+
+		return [
+			'node' => $headline,
+			'offset' => $offset,
+		];
 	}
 
 	/**
@@ -1001,7 +1021,7 @@ class CommentParser {
 			// The range points to the root note, using it like below results in silly values
 			$id = 'h|';
 		} elseif ( $threadItem instanceof HeadingItem ) {
-			$headline = $this->getHeadlineNode( $threadItem->getRange()->startContainer );
+			$headline = $this->getHeadlineNodeAndOffset( $threadItem->getRange()->startContainer )['node'];
 			$id = 'h|' . ( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
 			$id = 'c|' . ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
@@ -1013,7 +1033,7 @@ class CommentParser {
 		// in one edit, or within a minute), add the parent ID to disambiguate them.
 		$threadItemParent = $threadItem->getParent();
 		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
-			$headline = $this->getHeadlineNode( $threadItemParent->getRange()->startContainer );
+			$headline = $this->getHeadlineNodeAndOffset( $threadItemParent->getRange()->startContainer )['node'];
 			$id .= '|' . ( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItemParent instanceof CommentItem ) {
 			$id .= '|' . ( $threadItemParent->getAuthor() ?? '' ) . '|' . $threadItemParent->getTimestamp();

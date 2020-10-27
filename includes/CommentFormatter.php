@@ -30,16 +30,15 @@ class CommentFormatter extends HtmlFormatter {
 				$threadItem->setRange( new ImmutableRange( $node, 0, $node, 0 ) );
 			}
 
-			if ( $threadItem instanceof CommentItem ) {
-				$id = $threadItem->getId();
-				$range = $threadItem->getRange();
-				$startMarker = $doc->createElement( 'span' );
-				$startMarker->setAttribute( 'data-mw-comment-start', $id );
-				$endMarker = $doc->createElement( 'span' );
-				$endMarker->setAttribute( 'data-mw-comment-end', $id );
-				$range->setStart( $range->endContainer, $range->endOffset )->insertNode( $endMarker );
-				$range->insertNode( $startMarker );
-			}
+			// And start and end markers to range
+			$id = $threadItem->getId();
+			$range = $threadItem->getRange();
+			$startMarker = $doc->createElement( 'span' );
+			$startMarker->setAttribute( 'data-mw-comment-start', $id );
+			$endMarker = $doc->createElement( 'span' );
+			$endMarker->setAttribute( 'data-mw-comment-end', $id );
+			$range->setStart( $range->endContainer, $range->endOffset )->insertNode( $endMarker );
+			$range->insertNode( $startMarker );
 
 			$itemData = $threadItem->jsonSerialize();
 			$itemJSON = json_encode( $itemData );
