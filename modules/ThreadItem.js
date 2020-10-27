@@ -47,17 +47,17 @@ OO.initClass( ThreadItem );
  *
  * @param {string|Object} json JSON serialization or hash object
  * @param {Object} commentsById Collection of comments by ID for building replies/parent pointers
- * @param {Node} placeholderNode Placeholder node in the DOM which contained this JSON
  * @return {ThreadItem}
  * @throws {Error} Unknown ThreadItem type
  */
-ThreadItem.static.newFromJSON = function ( json, commentsById, placeholderNode ) {
+ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 	// The page can be served from the HTTP cache (Varnish), and the JSON may be generated
 	// by an older version of our PHP code. Code below must be able to handle that.
 	// See ThreadItem::jsonSerialize() in PHP.
 
 	var CommentItem, HeadingItem, item, idEscaped,
 		hash = typeof json === 'string' ? JSON.parse( json ) : json;
+
 	switch ( hash.type ) {
 		case 'comment':
 			// Late require to avoid circular dependency
@@ -81,25 +81,15 @@ ThreadItem.static.newFromJSON = function ( json, commentsById, placeholderNode )
 		default:
 			throw new Error( 'Unknown ThreadItem type ' + hash.name );
 	}
-
 	item.id = hash.id;
 
-	if ( hash.type === 'comment' ) {
-		idEscaped = $.escapeSelector( item.id );
-		item.range = {
-			startContainer: document.querySelector( '[data-mw-comment-start="' + idEscaped + '"]' ),
-			startOffset: 0,
-			endContainer: document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' ),
-			endOffset: 0
-		};
-	} else {
-		item.range = {
-			startContainer: placeholderNode,
-			startOffset: 0,
-			endContainer: placeholderNode,
-			endOffset: 0
-		};
-	}
+	idEscaped = $.escapeSelector( item.id );
+	item.range = {
+		startContainer: document.querySelector( '[data-mw-comment-start="' + idEscaped + '"]' ),
+		startOffset: 0,
+		endContainer: document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' ),
+		endOffset: 0
+	};
 
 	// Setup replies/parent pointers
 	item.replies = hash.replies.map( function ( id ) {

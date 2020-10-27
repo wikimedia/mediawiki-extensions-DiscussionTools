@@ -1,8 +1,7 @@
 var controller = require( 'ext.discussionTools.init' ).controller,
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
-	logger = require( 'ext.discussionTools.init' ).logger,
-	Parser = require( 'ext.discussionTools.init' ).Parser;
+	logger = require( 'ext.discussionTools.init' ).logger;
 
 /**
  * @external CommentController
@@ -377,7 +376,7 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
  * @return {ReplyWidget}
  */
 ReplyWidget.prototype.setup = function ( data ) {
-	var heading, headingNode, summary;
+	var heading, summary;
 
 	data = data || {};
 
@@ -395,10 +394,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 			// This comment is in 0th section, there's no section title for the edit summary
 			summary = '';
 		} else {
-			headingNode = ( new Parser() ).getHeadlineNodeAndOffset( heading.range.startContainer ).node;
-			// Remove mw-headline-number. T264561
-			$( headingNode ).find( '.mw-headline-number' ).remove();
-			summary = '/* ' + headingNode.innerText.trim() + ' */ ';
+			summary = '/* ' + heading.getNativeRange().toString().trim() + ' */ ';
 		}
 		summary += mw.msg( 'discussiontools-defaultsummary-reply' );
 	}

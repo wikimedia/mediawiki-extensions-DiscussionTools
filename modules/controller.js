@@ -226,7 +226,7 @@ function init( $container, state ) {
 	// Iterate over commentNodes backwards so replies are always deserialized before their parents.
 	for ( i = commentNodes.length - 1; i >= 0; i-- ) {
 		hash = JSON.parse( commentNodes[ i ].getAttribute( 'data-mw-comment' ) );
-		comment = ThreadItem.static.newFromJSON( hash, threadItemsById, commentNodes[ i ] );
+		comment = ThreadItem.static.newFromJSON( hash, threadItemsById );
 		threadItemsById[ comment.id ] = comment;
 
 		if ( comment.type === 'comment' ) {
