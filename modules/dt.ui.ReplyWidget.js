@@ -280,11 +280,15 @@ ReplyWidget.prototype.saveEditMode = function ( mode ) {
 };
 
 ReplyWidget.prototype.onAdvancedToggleClick = function () {
+	var showAdvanced = !this.showAdvanced;
 	mw.track( 'dt.schemaVisualEditorFeatureUse', {
 		feature: 'dtReply',
-		action: 'advanced-' + ( this.showAdvanced ? 'hide' : 'show' )
+		action: 'advanced-' + ( showAdvanced ? 'show' : 'hide' )
 	} );
-	this.toggleAdvanced();
+	this.api.saveOption( 'discussiontools-showadvanced', +showAdvanced ).then( function () {
+		mw.user.options.set( 'discussiontools-showadvanced', +showAdvanced );
+	} );
+	this.toggleAdvanced( showAdvanced );
 };
 
 ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
@@ -397,7 +401,11 @@ ReplyWidget.prototype.setup = function ( data ) {
 		summary += mw.msg( 'discussiontools-defaultsummary-reply' );
 	}
 
-	this.toggleAdvanced( !!this.storage.get( this.storagePrefix + '/showAdvanced' ) || !!data.showAdvanced );
+	this.toggleAdvanced(
+		!!this.storage.get( this.storagePrefix + '/showAdvanced' ) ||
+		!!+mw.user.options.get( 'discussiontools-showadvanced' ) ||
+		!!data.showAdvanced
+	);
 
 	this.editSummaryInput.setValue( summary );
 

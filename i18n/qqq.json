@@ -17,6 +17,7 @@
 	"discussiontools-preference-discussion-link": "{{optional|Used on [[Special:Preferences]] as a link to a page where users can discuss this Beta Feature. Defaults to a page on MediaWiki.org.}}",
 	"discussiontools-preference-replytool": "Used in [[Special:Preferences]].\n\nUsed as label for checkbox to enable the reply tool.\n\nThe help text for this checkbox is: {{msg-mw|discussiontools-preference-replytool-help}}",
 	"discussiontools-preference-replytool-help": "Used in [[Special:Preferences]].\n\nUsed as help text for the checkbox {{msg-mw|discussiontools-preference-replytool}}",
+	"discussiontools-preference-showadvanced": "Used in [[Special:Preferences]].\n\nUsed as label for checkbox to always expand the \"Advanced\" menu.",
 	"discussiontools-replylink": "Label for the reply link added after each comment. Use the same casing as section edit links.\n* {{Related|editsection}}.",
 	"discussiontools-replywidget-abandon": "Message shown when abandoning a comment\n\nSee also {{msg-mw|mw-widgets-abandonedit}}.",
 	"discussiontools-replywidget-abandon-discard": "Label for button to abandon a comment\n\nThis button follows {{msg-mw|discussiontools-replywidget-abandon}}.",
