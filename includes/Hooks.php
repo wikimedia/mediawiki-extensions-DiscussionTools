@@ -194,7 +194,6 @@ class Hooks {
 	public static function onGetPreferences( User $user, array &$preferences ) {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-		$optionsLookup = $services->getUserOptionsLookup();
 
 		if (
 			$dtConfig->get( 'DiscussionToolsEnable' ) &&
@@ -208,24 +207,9 @@ class Hooks {
 			];
 		}
 
-		if (
-			$dtConfig->get( 'DiscussionToolsEnable' ) &&
-			(
-				// The 'hide-if' mechanism can't hide the empty section name, so instead hide the option
-				// here if we're in beta mode and the user has not enabled the beta feature
-				!$dtConfig->get( 'DiscussionToolsBeta' ) ||
-				$optionsLookup->getOption( $user, 'discussiontools-betaenable' )
-			)
-		) {
-			$basePrefName = $dtConfig->get( 'DiscussionToolsBeta' ) ?
-				'discussiontools-betaenable' : 'discussiontools-replytool';
-			$preferences['discussiontools-showadvanced'] = [
-				'type' => 'toggle',
-				'label-message' => 'discussiontools-preference-showadvanced',
-				'section' => 'editing/discussion',
-				'hide-if' => [ '!==', $basePrefName, '1' ],
-			];
-		}
+		$preferences['discussiontools-showadvanced'] = [
+			'type' => 'api',
+		];
 
 		$preferences['discussiontools-editmode'] = [
 			'type' => 'api',

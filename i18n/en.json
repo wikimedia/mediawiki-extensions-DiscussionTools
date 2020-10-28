@@ -11,7 +11,6 @@
 	"discussiontools-preference-discussion-link": "https:\/\/www.mediawiki.org\/wiki\/Talk:Talk_pages_project",
 	"discussiontools-preference-replytool": "Enable quick replying",
 	"discussiontools-preference-replytool-help": "This will show you a link to reply to talk page comments in one click. You can learn more about this feature by reading the [https:\/\/www.mediawiki.org\/wiki\/Special:MyLanguage\/Talk_pages_project\/Feature_summary feature summary].",
-	"discussiontools-preference-showadvanced": "Expand the \"{{int:discussiontools-replywidget-advanced}}\" menu when replying",
 	"discussiontools-replylink": "reply",
 	"discussiontools-replywidget-abandon": "Are you sure you want to discard the comment you are writing?",
 	"discussiontools-replywidget-abandon-discard": "Discard comment",
