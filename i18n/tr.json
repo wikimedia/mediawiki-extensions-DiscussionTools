@@ -16,6 +16,7 @@
 	"discussiontools-preference-description": "Tartışma sayfalarında [https://www.mediawiki.org/wiki/Talk_pages_project/replying belirli yorumlara yanıt vermek] için yeni bir iş akışı etkinleştirin.\n\nZaman içinde tartışma sayfalarıyla etkileşim kurmak için yeni araçların ekleneceğini lütfen unutmayın.\n\nBu özelliklerle ilgili güncellemeler [https://www.mediawiki.org/wiki/Talk_pages_project/Updates tartışma sayfaları projesinin güncelleme sayfasında] yayımlanacak.",
 	"discussiontools-preference-replytool": "Hızlı yanıtlamayı etkinleştir",
 	"discussiontools-preference-replytool-help": "Bu size tek bir tıklamayla tartışma sayfası yorumlarına cevap vermeniz için bir bağlantı gösterecektir. [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary Özellik özetini] okuyarak bu özellik hakkında daha fazla bilgi edinebilirsiniz.",
+	"discussiontools-preference-showadvanced": "Yanıtlarken \"{{int:discussiontools-replywidget-advanced}}\" menüsünü genişletin",
 	"discussiontools-replylink": "yanıtla",
 	"discussiontools-replywidget-abandon": "Yazdığınız yorumu silmek istediğinizden emin misiniz?",
 	"discussiontools-replywidget-abandon-discard": "Yorumu sil",

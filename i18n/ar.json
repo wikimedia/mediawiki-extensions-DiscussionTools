@@ -17,6 +17,7 @@
 	"discussiontools-preference-discussion-link": "https://ar.wikipedia.org/wiki/%D9%86%D9%82%D8%A7%D8%B4_%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D9%85%D8%B4%D8%B1%D9%88%D8%B9_%D8%A3%D8%AF%D9%88%D8%A7%D8%AA_%D8%A7%D9%84%D9%85%D8%AD%D8%A7%D8%AF%D8%AB%D8%A7%D8%AA_(%D8%A7%D9%84%D8%AA%D9%86%D8%B3%D9%8A%D9%82)",
 	"discussiontools-preference-replytool": "تفعيل الردّ السريع",
 	"discussiontools-preference-replytool-help": "سيقوم هذا بإظهار رابط للردّ على تعليقات في صفحات النقاش باستخدام نقرة واحدة. يمكنك التعرّف أكثر على هذه الأداة عبر الاطّلاع على  [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary ملخّص الميزة].",
+	"discussiontools-preference-showadvanced": "إظهار قائمة \"{{int:discussiontools-replywidget-advanced}}\" عند الردّ",
 	"discussiontools-replylink": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-abandon": "هل أنت {{GENDER:|متأكّد|متاكّدة}} من إلغاء التعليق الذي كنت بصدد كتابته؟",
 	"discussiontools-replywidget-abandon-discard": "إلغاء التعليق",

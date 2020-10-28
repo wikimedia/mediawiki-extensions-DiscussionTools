@@ -11,6 +11,7 @@
 	"discussiontools-preference-description": "Овозможи нов работек тек за [//www.mediawiki.org/wiki/Talk_pages_project/replying одговарање на поединечни коментари] на разговорни страници.\n\nИмајте на ум дека со време ќе се додаваат нови алатки за разговорни страници.\n\nПодновите за можностите ќе се објавуваат на [//www.mediawiki.org/wiki/Talk_pages_project/Updates страницата за поднови за разговорни страници].",
 	"discussiontools-preference-replytool": "Овозможи брзо одговарање",
 	"discussiontools-preference-replytool-help": "Со ова ќе ви се појави врска за давање одговор на разговорната страница со еден стисок. Повеќе за оваа можност ќе дознаете на [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary нејзиниот опис].",
+	"discussiontools-preference-showadvanced": "Отвори го менито „{{int:discussiontools-replywidget-advanced}}“ кога одговарам",
 	"discussiontools-replylink": "одговори",
 	"discussiontools-replywidget-abandon": "Сигурно сакате да го отфрлите коментарот што го пишувате?",
 	"discussiontools-replywidget-abandon-discard": "Отфрли коментар",
