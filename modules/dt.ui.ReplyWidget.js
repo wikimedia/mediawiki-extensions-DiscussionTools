@@ -129,7 +129,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 		) );
 	}
 	this.$footer.append(
-		$( '<p>' ).append(
+		$( '<p>' ).addClass( 'plainlinks' ).append(
 			mw.message( 'discussiontools-replywidget-terms-click', mw.msg( 'discussiontools-replywidget-reply' ) ).parseDom()
 		),
 		$( '<p>' ).append(
