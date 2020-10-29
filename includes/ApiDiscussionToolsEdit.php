@@ -40,7 +40,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 		switch ( $params['paction'] ) {
 			case 'addtopic':
-
 				$this->requireAtLeastOneParameter( $params, 'sectiontitle' );
 				$this->requireOnlyOneParameter( $params, 'wikitext', 'html' );
 

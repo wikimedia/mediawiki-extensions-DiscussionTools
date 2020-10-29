@@ -184,7 +184,7 @@ class CommentParser {
 			}
 
 			switch ( $code ) {
-				case 'xx' :
+				case 'xx':
 					$s .= 'x';
 					break;
 				case 'xg':

@@ -163,7 +163,7 @@ class Data {
 			// * We assume that result of $langConv->translate() doesn't produce any special codes/characters
 			// * We assume that calling $langConv->translate() separately for each character is correct
 			switch ( $code ) {
-				case 'xx' :
+				case 'xx':
 				case 'xg':
 				case 'd':
 				case 'D':
