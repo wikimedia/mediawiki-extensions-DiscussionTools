@@ -1,7 +1,8 @@
 var controller = require( 'ext.discussionTools.init' ).controller,
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
-	logger = require( 'ext.discussionTools.init' ).logger;
+	logger = require( 'ext.discussionTools.init' ).logger,
+	Parser = require( 'ext.discussionTools.init' ).Parser;
 
 /**
  * @external CommentController
@@ -393,7 +394,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 			// This comment is in 0th section, there's no section title for the edit summary
 			summary = '';
 		} else {
-			headingNode = heading.range.startContainer.querySelector( '.mw-headline' ).cloneNode( true );
+			headingNode = ( new Parser() ).getHeadlineNodeAndOffset( heading.range.startContainer ).node;
 			// Remove mw-headline-number. T264561
 			$( headingNode ).find( '.mw-headline-number' ).remove();
 			summary = '/* ' + headingNode.innerText.trim() + ' */ ';
