@@ -50,7 +50,7 @@
 	"tag-discussiontools-description": "Edit made using DiscussionTools",
 	"tag-discussiontools-edit": "Edit comment",
 	"tag-discussiontools-edit-description": "User edited an existing comment with DiscussionTools",
-	"tag-discussiontools-newtopic": "Add topic",
+	"tag-discussiontools-newtopic": "New topic",
 	"tag-discussiontools-newtopic-description": "User added a new topic to the page with DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Reply]",
 	"tag-discussiontools-reply-description": "User replied to a comment with DiscussionTools",
