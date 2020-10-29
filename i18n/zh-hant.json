@@ -13,6 +13,7 @@
 	"discussiontools-preference-description": "輸入用於在討論頁[https://www.mediawiki.org/wiki/Talk_pages_project/replying 回覆指定評論]的新工作流程。\n\n請注意隨著時間改變，將會添加用於與討論頁互動的新工具。\n\n有關這些功能的更新，將會發布在[https://www.mediawiki.org/wiki/Talk_pages_project/Updates 討論頁專案的更新頁面]。",
 	"discussiontools-preference-replytool": "啟用快速回覆",
 	"discussiontools-preference-replytool-help": "這會顯示給您一個連結，只需點擊一次便能回覆到討論頁面評論。您可以透過閱讀[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary 功能摘要]，來了解更多關於此功能。",
+	"discussiontools-preference-showadvanced": "當回覆時展開「{{int:discussiontools-replywidget-advanced}}」選單",
 	"discussiontools-replylink": "回覆",
 	"discussiontools-replywidget-abandon": "您確定要捨棄您正在編寫的評論嗎？",
 	"discussiontools-replywidget-abandon-discard": "捨棄評論",
