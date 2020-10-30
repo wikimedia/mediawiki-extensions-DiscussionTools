@@ -286,7 +286,7 @@ ReplyWidget.prototype.onAdvancedToggleClick = function () {
 		feature: 'dtReply',
 		action: 'advanced-' + ( showAdvanced ? 'show' : 'hide' )
 	} );
-	this.api.saveOption( 'discussiontools-showadvanced', +showAdvanced ).then( function () {
+	controller.getApi().saveOption( 'discussiontools-showadvanced', +showAdvanced ).then( function () {
 		mw.user.options.set( 'discussiontools-showadvanced', +showAdvanced );
 	} );
 	this.toggleAdvanced( showAdvanced );
@@ -674,7 +674,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 		} else {
 			widget.errorMessage = new OO.ui.MessageWidget( {
 				type: 'error',
-				label: code instanceof Error ? code.toString() : widget.api.getErrorMessage( data )
+				label: code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data )
 			} );
 			widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
 		}
