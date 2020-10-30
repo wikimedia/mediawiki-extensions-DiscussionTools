@@ -14,7 +14,6 @@
 	"discussiontools-preference-description": "Ative um novo workflow [//www.mediawiki.org/wiki/Talk_pages_project/replying respondendo a comentários específicos] na página de discussão.\n\nObserve que, com o tempo, novas ferramentas para interagir com as páginas de discussão serão adicionadas.\n\nAs atualizações sobre esses recursos serão publicadas na [//www.mediawiki.org/wiki/Talk_pages_project/Updates discussão da página de atualizações do projeto].",
 	"discussiontools-preference-replytool": "Ativar resposta rápida",
 	"discussiontools-preference-replytool-help": "Isso mostrará um link para responder aos comentários da página de discussão com um clique. Você pode aprender mais sobre esse recurso lendo o [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary resumo de recursos].",
-	"discussiontools-preference-showadvanced": "Expandir o menu de \"{{int:discussiontools-replywidget-advanced}}\" ao responder",
 	"discussiontools-replylink": "responder",
 	"discussiontools-replywidget-abandon": "Tem certeza de que deseja descartar o comentário que está escrevendo?",
 	"discussiontools-replywidget-abandon-discard": "Descartar comentário",
