@@ -350,18 +350,19 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 	// TODO: We rely on #setup to call #saveEditMode, so when we have 2017WTE
 	// we will need to save the new preference here as switching will not
 	// reload the editor.
-	promise.then( null, function () {
+	promise.then( function () {
+		// Switch succeeded
+		mw.track( 'dt.schemaVisualEditorFeatureUse', {
+			feature: 'editor-switch',
+			// TODO: Log as `source-nwe-desktop` when enable2017Wikitext is set
+			action: ( mode === 'visual' ? 'visual' : 'source' ) + '-desktop'
+		} );
+	}, function () {
 		// Switch failed, restore previous tab selection
 		widget.modeTabSelect.selectItemByData( mode === 'source' ? 'visual' : 'source' );
 	} ).always( function () {
 		widget.setPending( false );
 		widget.modeTabSelect.setDisabled( false );
-	} );
-
-	mw.track( 'dt.schemaVisualEditorFeatureUse', {
-		feature: 'editor-switch',
-		// TODO: Log as `source-nwe-desktop` when enable2017Wikitext is set
-		action: ( mode === 'visual' ? 'visual' : 'source' ) + '-desktop'
 	} );
 };
 

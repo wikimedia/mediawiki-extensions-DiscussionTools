@@ -224,7 +224,8 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 			) ? 1 : sampleRate );
 		}
 
-		if ( data.feature === 'editor-switch' ) {
+		if ( data.feature === 'editor-switch' && data.action.indexOf( 'dialog-' ) === -1 ) {
+			// TODO: Account for `source-nwe-desktop` when enable2017Wikitext is set
 			// eslint-disable-next-line camelcase
 			session.editor_interface = session.editor_interface === 'visualeditor' ? 'wikitext' : 'visualeditor';
 		}
