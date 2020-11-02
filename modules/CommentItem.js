@@ -29,11 +29,6 @@ function CommentItem( level, range, signatureRanges, timestamp, author ) {
 	this.author = author || null;
 
 	/**
-	 * @member {string[]} Comment warnings
-	 */
-	this.warnings = [];
-
-	/**
 	 * @member {ThreadItem} Parent thread item
 	 */
 	this.parent = null;

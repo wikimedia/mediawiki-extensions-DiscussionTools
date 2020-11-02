@@ -88,9 +88,7 @@ class CommentParserTest extends CommentTestCase {
 		$serialized->level = $threadItem->getLevel();
 		$serialized->id = $threadItem->getId();
 
-		if ( $threadItem instanceof CommentItem ) {
-			$serialized->warnings = $threadItem->getWarnings();
-		}
+		$serialized->warnings = $threadItem->getWarnings();
 
 		$serialized->replies = [];
 		foreach ( $threadItem->getReplies() as $reply ) {

@@ -11,7 +11,6 @@ class CommentItem extends ThreadItem {
 	private $signatureRanges;
 	private $timestamp;
 	private $author;
-	private $warnings = [];
 
 	/**
 	 * @param int $level
@@ -131,13 +130,6 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * @return string[] Comment warnings
-	 */
-	public function getWarnings() : array {
-		return $this->warnings;
-	}
-
-	/**
 	 * @param ImmutableRange $signatureRange Comment signature range to add
 	 */
 	public function addSignatureRange( ImmutableRange $signatureRange ) : void {
@@ -163,19 +155,5 @@ class CommentItem extends ThreadItem {
 	 */
 	public function setAuthor( ?string $author ) : void {
 		$this->author = $author;
-	}
-
-	/**
-	 * @param string $warning Comment warning
-	 */
-	public function addWarning( string $warning ) : void {
-		$this->warnings[] = $warning;
-	}
-
-	/**
-	 * @param string[] $warnings Comment warnings
-	 */
-	public function addWarnings( array $warnings ) : void {
-		$this->warnings = array_merge( $this->warnings, $warnings );
 	}
 }
