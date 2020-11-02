@@ -11,13 +11,13 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Action;
 use ConfigException;
-use Exception;
 use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
 use OutputPage;
 use RecentChange;
 use RequestContext;
 use Skin;
+use Throwable;
 use User;
 use VisualEditorHooks;
 use WebRequest;
@@ -182,8 +182,8 @@ class Hooks {
 			$formatter->addReplyLinks();
 			$newText = $formatter->getText();
 
-		} catch ( Exception $e ) {
-			// Catch exceptions, so that they don't cause the entire page to not display.
+		} catch ( Throwable $e ) {
+			// Catch errors, so that they don't cause the entire page to not display.
 			// Log it and add the request ID in a comment to make it easier to find in the logs.
 			MWExceptionHandler::logException( $e );
 
