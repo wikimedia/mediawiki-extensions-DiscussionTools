@@ -11,13 +11,16 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Action;
 use ConfigException;
+use Exception;
 use MediaWiki\MediaWikiServices;
+use MWExceptionHandler;
 use OutputPage;
 use RecentChange;
 use RequestContext;
 use Skin;
 use User;
 use VisualEditorHooks;
+use WebRequest;
 
 class Hooks {
 
@@ -170,12 +173,28 @@ class Hooks {
 			return true;
 		}
 
-		$formatter = new CommentFormatter( $text );
+		try {
+			// Add reply links and hidden data about comment ranges.
+			$formatter = new CommentFormatter( $text );
 
-		$start = microtime( true );
+			$start = microtime( true );
 
-		$formatter->addReplyLinks();
-		$text = $formatter->getText();
+			$formatter->addReplyLinks();
+			$newText = $formatter->getText();
+
+		} catch ( Exception $e ) {
+			// Catch exceptions, so that they don't cause the entire page to not display.
+			// Log it and add the request ID in a comment to make it easier to find in the logs.
+			MWExceptionHandler::logException( $e );
+
+			$requestId = htmlspecialchars( WebRequest::getRequestId() );
+			$info = "<!-- [$requestId] DiscussionTools could not add reply links on this page -->";
+			$text .= "\n" . $info;
+
+			return true;
+		}
+
+		$text = $newText;
 
 		$duration = microtime( true ) - $start;
 
