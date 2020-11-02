@@ -32,6 +32,11 @@ function ThreadItem( type, level, range ) {
 	 */
 	this.replies = [];
 
+	/**
+	 * @member {string[]} Warnings
+	 */
+	this.warnings = [];
+
 	this.rootNode = null;
 }
 

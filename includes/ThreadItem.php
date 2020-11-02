@@ -15,6 +15,7 @@ abstract class ThreadItem implements JsonSerializable {
 	protected $rootNode;
 	protected $level;
 	protected $parent;
+	protected $warnings = [];
 
 	protected $id = null;
 	protected $legacyId = null;
@@ -211,6 +212,13 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
+	 * @return string[] Warnings
+	 */
+	public function getWarnings() : array {
+		return $this->warnings;
+	}
+
+	/**
 	 * @param int $level Indentation level
 	 */
 	public function setLevel( int $level ) : void {
@@ -250,6 +258,20 @@ abstract class ThreadItem implements JsonSerializable {
 	 */
 	public function setLegacyId( ?string $id ) : void {
 		$this->legacyId = $id;
+	}
+
+	/**
+	 * @param string $warning Warning
+	 */
+	public function addWarning( string $warning ) : void {
+		$this->warnings[] = $warning;
+	}
+
+	/**
+	 * @param string[] $warnings Warnings
+	 */
+	public function addWarnings( array $warnings ) : void {
+		$this->warnings = array_merge( $this->warnings, $warnings );
 	}
 
 	/**
