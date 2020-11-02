@@ -37,7 +37,7 @@
 	"tag-discussiontools-description": "Uređivanje uz pomoć alata za raspravu",
 	"tag-discussiontools-edit": "Uredi komentar",
 	"tag-discussiontools-edit-description": "Suradnik je uredio postojeći komentar s alatom za rasprave",
-	"tag-discussiontools-newtopic": "Dodaj temu",
+	"tag-discussiontools-newtopic": "Nova tema",
 	"tag-discussiontools-newtopic-description": "Suradnik je dodao novu temu na stranicu s alatom za rasprave",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odgovor]",
 	"tag-discussiontools-reply-description": "Suradnik je odgovorio na komentar s alatom za rasprave",

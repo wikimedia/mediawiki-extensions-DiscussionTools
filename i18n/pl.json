@@ -48,7 +48,7 @@
 	"tag-discussiontools-description": "Edycja wykonana przy pomocy narzędzi dyskusji",
 	"tag-discussiontools-edit": "Edycja komentarza",
 	"tag-discussiontools-edit-description": "Użytkownik edytował istniejący komentarz przy pomocy narzędzi dyskusji",
-	"tag-discussiontools-newtopic": "Dodanie wątku",
+	"tag-discussiontools-newtopic": "Nowy wątek",
 	"tag-discussiontools-newtopic-description": "Użytkownik dodał nowy wątek do tej strony przy pomocy narzędzi dyskusji",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odpowiedź]",
 	"tag-discussiontools-reply-description": "Użytkownik odpowiedział na komentarz przy pomocy narzędzi dyskusji",

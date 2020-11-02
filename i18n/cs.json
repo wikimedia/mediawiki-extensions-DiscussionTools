@@ -48,7 +48,7 @@
 	"tag-discussiontools-description": "Editace provedená pomocí Diskusních nástrojů",
 	"tag-discussiontools-edit": "Editace komentáře",
 	"tag-discussiontools-edit-description": "Uživatel editoval existující komentář pomocí Diskusních nástrojů",
-	"tag-discussiontools-newtopic": "Přidání tématu",
+	"tag-discussiontools-newtopic": "Nové vlákno",
 	"tag-discussiontools-newtopic-description": "Uživatel přidal nové téma pomocí Diskusních nástrojů",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odpověď]",
 	"tag-discussiontools-reply-description": "Uživatel odpověděl na komentář pomocí Diskusních nástrojů",

@@ -54,7 +54,7 @@
 	"tag-discussiontools-description": "تعديل تم عن طريق أدوات_النقاش",
 	"tag-discussiontools-edit": "{{GENDER:|عدّل|عدّلي}} تعليقا",
 	"tag-discussiontools-edit-description": "عدّل مستخدمون تعليقا موجودا، عبر أدوات_النقاش",
-	"tag-discussiontools-newtopic": "{{GENDER:أضف|أضيفي}} موضوعا",
+	"tag-discussiontools-newtopic": "موضوع جديد",
 	"tag-discussiontools-newtopic-description": "أضاف مستخدمون موضوعا جديدا في الصفحة عبر أدوات_النقاش",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} ردّ]",
 	"tag-discussiontools-reply-description": "ردّ مستخدمون على تعليق عبر أدوات_النقاش",
