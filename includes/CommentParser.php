@@ -621,6 +621,10 @@ class CommentParser {
 		if ( $node instanceof DOMElement && $node->getAttribute( 'id' ) === 'toc' ) {
 			return NodeFilter::FILTER_REJECT;
 		}
+		// Don't detect comments within headings (but don't reject the headings themselves)
+		if ( ( $par = $node->parentNode ) instanceof DOMElement && preg_match( '/^h([1-6])$/i', $par->tagName ) ) {
+			return NodeFilter::FILTER_REJECT;
+		}
 		return NodeFilter::FILTER_ACCEPT;
 	}
 
