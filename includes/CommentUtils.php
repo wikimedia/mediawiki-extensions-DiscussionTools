@@ -131,6 +131,51 @@ class CommentUtils {
 	}
 
 	/**
+	 * Given a heading node, return the node on which the ID attribute is set.
+	 *
+	 * Also returns the offset within that node where the heading text starts.
+	 *
+	 * @param DOMElement $heading Heading node (`<h1>`-`<h6>`)
+	 * @return array Array containing a 'node' (DOMElement) and offset (int)
+	 */
+	public static function getHeadlineNodeAndOffset( DOMElement $heading ) : array {
+		// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
+		$headline = $heading;
+		$offset = 0;
+
+		if ( $headline->getAttribute( 'data-mw-comment-start' ) ) {
+			$headline = $headline->parentNode;
+		}
+
+		if ( !$headline->getAttribute( 'id' ) ) {
+			// PHP HTML: Find the child with .mw-headline
+			$headline = $headline->firstChild;
+			while (
+				$headline && !(
+					$headline instanceof DOMElement && $headline->getAttribute( 'class' ) === 'mw-headline'
+				)
+			) {
+				$headline = $headline->nextSibling;
+			}
+			if ( $headline ) {
+				if (
+					( $firstChild = $headline->firstChild ) instanceof DOMElement &&
+					$firstChild->getAttribute( 'class' ) === 'mw-headline-number'
+				) {
+					$offset = 1;
+				}
+			} else {
+				$headline = $heading;
+			}
+		}
+
+		return [
+			'node' => $headline,
+			'offset' => $offset,
+		];
+	}
+
+	/**
 	 * Trim ASCII whitespace, as defined in the HTML spec.
 	 *
 	 * @param string $str

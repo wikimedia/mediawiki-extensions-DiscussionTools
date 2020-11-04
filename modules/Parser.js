@@ -766,7 +766,7 @@ Parser.prototype.buildThreadItems = function () {
 
 	while ( ( node = treeWalker.nextNode() ) ) {
 		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
-			headingNodeAndOffset = this.getHeadlineNodeAndOffset( node );
+			headingNodeAndOffset = utils.getHeadlineNodeAndOffset( node );
 			headingNode = headingNodeAndOffset.node;
 			startOffset = headingNodeAndOffset.offset;
 			range = {
@@ -949,41 +949,6 @@ Parser.prototype.getThreads = function () {
 };
 
 /**
- * Given a heading node, return the node on which the ID attribute is set.
- *
- * Also returns the offset within that node where the heading text starts.
- *
- * @param {HTMLElement} heading Heading node (`<h1>`-`<h6>`)
- * @return {Array} Array containing a 'node' (HTMLElement) and offset (number)
- */
-Parser.prototype.getHeadlineNodeAndOffset = function ( heading ) {
-	// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
-	var headline = heading,
-		offset = 0;
-
-	if ( headline.getAttribute( 'data-mw-comment-start' ) ) {
-		headline = headline.parentNode;
-	}
-
-	if ( !headline.getAttribute( 'id' ) ) {
-		// PHP HTML: Find the child with .mw-headline
-		headline = headline.querySelector( '.mw-headline' );
-		if ( headline ) {
-			if ( headline.querySelector( '.mw-headline-number' ) ) {
-				offset = 1;
-			}
-		} else {
-			headline = heading;
-		}
-	}
-
-	return {
-		node: headline,
-		offset: offset
-	};
-};
-
-/**
  * Given a thread item, return an identifier for it that is unique within the page.
  *
  * @param {ThreadItem} threadItem
@@ -996,7 +961,7 @@ Parser.prototype.computeId = function ( threadItem ) {
 		// The range points to the root note, using it like below results in silly values
 		id = 'h|';
 	} else if ( threadItem instanceof HeadingItem ) {
-		headline = this.getHeadlineNodeAndOffset( threadItem.range.startContainer ).node;
+		headline = utils.getHeadlineNodeAndOffset( threadItem.range.startContainer ).node;
 		id = 'h|' + ( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItem instanceof CommentItem ) {
 		id = 'c|' + ( threadItem.author || '' ) + '|' + threadItem.timestamp.toISOString();
@@ -1008,7 +973,7 @@ Parser.prototype.computeId = function ( threadItem ) {
 	// in one edit, or within a minute), append sequential numbers
 	threadItemParent = threadItem.parent;
 	if ( threadItemParent instanceof HeadingItem && !threadItemParent.placeholderHeading ) {
-		headline = this.getHeadlineNodeAndOffset( threadItemParent.range.startContainer ).node;
+		headline = utils.getHeadlineNodeAndOffset( threadItemParent.range.startContainer ).node;
 		id += '|' + ( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItemParent instanceof CommentItem ) {
 		id += '|' + ( threadItemParent.author || '' ) + '|' + threadItemParent.timestamp.toISOString();
