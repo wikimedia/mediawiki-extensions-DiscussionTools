@@ -985,8 +985,9 @@ class CommentParser {
 			// PHP HTML: Find the child with .mw-headline
 			$headline = $headline->firstChild;
 			while (
-				$headline && $headline instanceof DOMElement &&
-				$headline->getAttribute( 'class' ) !== 'mw-headline'
+				$headline && !(
+					$headline instanceof DOMElement && $headline->getAttribute( 'class' ) === 'mw-headline'
+				)
 			) {
 				$headline = $headline->nextSibling;
 			}
