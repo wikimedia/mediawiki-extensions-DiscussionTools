@@ -175,7 +175,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							// Not a real section, probably just HTML markup in wikitext, bleh
 							$summary = '';
 						}
-						$summary = '/* ' . $heading->getRange()->startContainer->textContent . ' */ ';
 					}
 					$summary .= $this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
 				}
