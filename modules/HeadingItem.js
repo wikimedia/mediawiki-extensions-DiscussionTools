@@ -1,4 +1,5 @@
-var ThreadItem = require( './ThreadItem.js' );
+var ThreadItem = require( './ThreadItem.js' ),
+	utils = require( './utils.js' );
 
 /**
  * A heading item
@@ -19,5 +20,23 @@ function HeadingItem( range, headingLevel, placeholderHeading ) {
 }
 
 OO.inheritClass( HeadingItem, ThreadItem );
+
+HeadingItem.prototype.getLinkableTitle = function () {
+	var headingNode, id,
+		title = '';
+	// If this comment is in 0th section, there's no section title for the edit summary
+	if ( !this.placeholderHeading ) {
+		headingNode = utils.getHeadlineNodeAndOffset( this.range.startContainer ).node;
+		id = headingNode.getAttribute( 'id' );
+		if ( id ) {
+			// Replace underscores with spaces to undo Sanitizer::escapeIdInternal().
+			// This assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ],
+			// otherwise the escaped IDs are super garbled and can't be unescaped reliably.
+			title = id.replace( /_/g, ' ' );
+		}
+		// else: Not a real section, probably just HTML markup in wikitext
+	}
+	return title;
+};
 
 module.exports = HeadingItem;

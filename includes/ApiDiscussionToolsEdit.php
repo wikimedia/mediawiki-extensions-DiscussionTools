@@ -158,25 +158,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				if ( isset( $params['summary'] ) ) {
 					$summary = $params['summary'];
 				} else {
-					$heading = $comment->getHeading();
-					if ( $heading->isPlaceholderHeading() ) {
-						// This comment is in 0th section, there's no section title for the edit summary
-						$summary = '';
-					} else {
-						$headingNode =
-							CommentUtils::getHeadlineNodeAndOffset( $heading->getRange()->startContainer )['node'];
-						$id = $headingNode->getAttribute( 'id' );
-						if ( $id ) {
-							// Replace underscores with spaces to undo Sanitizer::escapeIdInternal().
-							// This assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ],
-							// otherwise the escaped IDs are super garbled and can't be unescaped reliably.
-							$summary = '/* ' . str_replace( '_', ' ', $id ) . ' */ ';
-						} else {
-							// Not a real section, probably just HTML markup in wikitext, bleh
-							$summary = '';
-						}
-					}
-					$summary .= $this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
+					$title = $comment->getHeading()->getLinkableTitle();
+					$summary = ( $title ? '/* ' . $title . ' */ ' : '' ) .
+						$this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
 				}
 
 				$api = new ApiMain(
