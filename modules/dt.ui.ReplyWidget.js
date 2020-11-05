@@ -376,7 +376,7 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
  * @return {ReplyWidget}
  */
 ReplyWidget.prototype.setup = function ( data ) {
-	var heading, headingNode, id, summary;
+	var title, summary;
 
 	data = data || {};
 
@@ -389,24 +389,9 @@ ReplyWidget.prototype.setup = function ( data ) {
 	summary = this.storage.get( this.storagePrefix + '/summary' ) || data.editSummary;
 
 	if ( !summary ) {
-		heading = this.comment.getHeading();
-		if ( heading.placeholderHeading ) {
-			// This comment is in 0th section, there's no section title for the edit summary
-			summary = '';
-		} else {
-			headingNode = utils.getHeadlineNodeAndOffset( heading.range.startContainer ).node;
-			id = headingNode.getAttribute( 'id' );
-			if ( id ) {
-				// Replace underscores with spaces to undo Sanitizer::escapeIdInternal().
-				// This assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ],
-				// otherwise the escaped IDs are super garbled and can't be unescaped reliably.
-				summary = '/* ' + id.replace( /_/g, ' ' ) + ' */ ';
-			} else {
-				// Not a real section, probably just HTML markup in wikitext, bleh
-				summary = '';
-			}
-		}
-		summary += mw.msg( 'discussiontools-defaultsummary-reply' );
+		title = this.comment.getHeading().getLinkableTitle();
+		summary = ( title ? '/* ' + title + ' */ ' : '' ) +
+			mw.msg( 'discussiontools-defaultsummary-reply' );
 	}
 
 	this.toggleAdvanced(
