@@ -511,11 +511,14 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	}
 
 	widget = this;
-	indent = {
-		dl: ':',
-		ul: '*',
-		ol: '#'
-	}[ this.context ];
+	// For now, indentation is always ':'. If we need context-aware
+	// indentation we would use the following:
+	// indent = {
+	//   dl: ':',
+	//   ul: '*',
+	//   ol: '#'
+	// }[ this.context ];
+	indent = ':';
 	wikitext = wikitext || this.getValue();
 
 	if ( this.previewWikitext === wikitext ) {
