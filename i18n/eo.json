@@ -1,8 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
+			"NMaia",
 			"Robin van der Vliet"
 		]
 	},
-	"discussiontools-replywidget-mode-source": "Fonto"
+	"discussiontools-defaultsummary-reply": "Respondo",
+	"discussiontools-replylink": "respondi",
+	"discussiontools-replywidget-cancel": "Nuligi",
+	"discussiontools-replywidget-mention-tool-header": "Trovi uzanton: $1",
+	"discussiontools-replywidget-mention-tool-title": "Mencii uzanton",
+	"discussiontools-replywidget-mode-source": "Fonto",
+	"discussiontools-replywidget-mode-visual": "Vida",
+	"discussiontools-replywidget-placeholder-reply": "Respondo al {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Antaŭrigardi",
+	"discussiontools-replywidget-reply": "Respondi",
+	"tag-discussiontools-source": "Fonto",
+	"tag-discussiontools-visual": "Vida"
 }

@@ -6,7 +6,8 @@
 			"Ed g2s",
 			"FarsiNevis",
 			"Huji",
-			"Jeeputer"
+			"Jeeputer",
+			"Ladsgroup"
 		]
 	},
 	"discussiontools": "ابزارهای گفت‌وگو",
@@ -36,6 +37,8 @@
 	"discussiontools-replywidget-transcluded": "نظر شما در [[$1]] ذخیره خواهد شد.",
 	"discussiontools-error-comment-conflict": "نظر شما نمی‌تواند ذخیره شود؛ چون شخص دیگر همزمان با شما نظری فرستاده است. لطفاً دوباره تلاش کنید یا برای مشاهدهٔ آخرین نظرها، صفحه را تازه‌سازی کنید.",
 	"discussiontools-error-comment-disappeared": "نظری که شما در حال پاسخ به آن بودید در صفحه یافت نشد. آن نظر ممکن است حذف شده یا به صفحهٔ دیگری منتقل شده باشد. لطفاً صفحه را تازه‌سازی کرده و دوباره تلاش کنید.",
+	"discussiontools-error-noswitchtove-table": "ساختار جدول",
+	"discussiontools-error-noswitchtove-template": "ساختار الگو",
 	"discussiontools-error-noswitchtove-title": "حالت دیداری غیرفعال است",
 	"tag-discussiontools-description": "ویرایش توسط ابزارهای گفتگو",
 	"tag-discussiontools-edit": "ویرایش نظر",
