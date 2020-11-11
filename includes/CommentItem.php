@@ -19,7 +19,7 @@ class CommentItem extends ThreadItem {
 	 *  timestamps) for this comment. There is always at least one signature, but there may be
 	 *  multiple. The author and timestamp of the comment is determined from the first signature.
 	 *  The last node in every signature range is a node containing the timestamp.
-	 * @param string|null $timestamp Timestamp
+	 * @param string|null $timestamp
 	 * @param string|null $author Comment author's username
 	 */
 	public function __construct(

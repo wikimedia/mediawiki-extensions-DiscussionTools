@@ -226,7 +226,7 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @param ThreadItem $parent Parent thread item
+	 * @param ThreadItem $parent
 	 */
 	public function setParent( ThreadItem $parent ) {
 		$this->parent = $parent;
@@ -261,14 +261,14 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @param string $warning Warning
+	 * @param string $warning
 	 */
 	public function addWarning( string $warning ) : void {
 		$this->warnings[] = $warning;
 	}
 
 	/**
-	 * @param string[] $warnings Warnings
+	 * @param string[] $warnings
 	 */
 	public function addWarnings( array $warnings ) : void {
 		$this->warnings = array_merge( $this->warnings, $warnings );

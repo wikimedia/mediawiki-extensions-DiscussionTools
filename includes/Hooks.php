@@ -109,7 +109,7 @@ class Hooks {
 	 *
 	 * This is attached to the MediaWiki 'BeforePageDisplay' hook.
 	 *
-	 * @param OutputPage $output The page view.
+	 * @param OutputPage $output
 	 * @param Skin $skin The skin that's going to build the UI.
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) : void {
@@ -207,8 +207,8 @@ class Hooks {
 	/**
 	 * Handler for the GetPreferences hook, to add and hide user preferences as configured
 	 *
-	 * @param User $user The user object
-	 * @param array &$preferences Their preferences object
+	 * @param User $user
+	 * @param array &$preferences
 	 */
 	public static function onGetPreferences( User $user, array &$preferences ) {
 		$services = MediaWikiServices::getInstance();
@@ -241,8 +241,8 @@ class Hooks {
 	/**
 	 * Handler for the GetBetaPreferences hook, to add and hide user beta preferences as configured
 	 *
-	 * @param User $user The user object
-	 * @param array &$preferences Their preferences object
+	 * @param User $user
+	 * @param array &$preferences
 	 */
 	public static function onGetBetaPreferences( User $user, array &$preferences ) : void {
 		$coreConfig = RequestContext::getMain()->getConfig();

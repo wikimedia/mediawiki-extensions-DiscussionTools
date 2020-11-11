@@ -71,7 +71,7 @@ class CommentParser {
 	}
 
 	/**
-	 * @param DomElement $rootNode Root node
+	 * @param DomElement $rootNode
 	 * @return CommentParser
 	 */
 	public static function newFromGlobalState( DOMElement $rootNode ) : CommentParser {
@@ -514,7 +514,7 @@ class CommentParser {
 	 * comprising the signature, in reverse order (with $timestampNode or its parent node as the last
 	 * element). The second element is the username (null for unsigned comments).
 	 *
-	 * @param DOMText $timestampNode Text node
+	 * @param DOMText $timestampNode
 	 * @param DOMNode|null $until Node to stop searching at
 	 * @return array [ nodes, username ]
 	 */
@@ -631,8 +631,8 @@ class CommentParser {
 	/**
 	 * Find a timestamps in a given text node
 	 *
-	 * @param DOMText $node Text node
-	 * @param string[] $timestampRegexps Timestamp regexps
+	 * @param DOMText $node
+	 * @param string[] $timestampRegexps
 	 * @return array|null Array with the following keys:
 	 *   - int 'offset' Length of extra text preceding the node that was used for matching
 	 *   - int 'parserIndex' Which of the regexps matched

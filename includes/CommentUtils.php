@@ -29,7 +29,7 @@ class CommentUtils {
 	];
 
 	/**
-	 * @param DOMNode $node Node
+	 * @param DOMNode $node
 	 * @return bool Node is a block element
 	 */
 	public static function isBlockElement( DOMNode $node ) : bool {
@@ -213,7 +213,7 @@ class CommentUtils {
 	/**
 	 * Get an array of sibling nodes that contain parts of the given thread item.
 	 *
-	 * @param ThreadItem $item Thread item
+	 * @param ThreadItem $item
 	 * @return DOMElement[]
 	 */
 	private static function getCoveredSiblings( ThreadItem $item ) : array {
@@ -246,7 +246,7 @@ class CommentUtils {
 	/**
 	 * Get the nodes (if any) that contain the given thread item, and nothing else.
 	 *
-	 * @param ThreadItem $item Thread item
+	 * @param ThreadItem $item
 	 * @return DOMElement[]|null
 	 */
 	public static function getFullyCoveredSiblings( ThreadItem $item ) : ?array {

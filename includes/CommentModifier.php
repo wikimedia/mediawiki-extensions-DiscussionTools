@@ -18,7 +18,7 @@ class CommentModifier {
 	/**
 	 * Add an attribute to a list item to remove pre-whitespace in Parsoid
 	 *
-	 * @param DOMElement $listItem List item element
+	 * @param DOMElement $listItem
 	 */
 	private static function whitespaceParsoidHack( DOMElement $listItem ) : void {
 		// HACK: Setting data-parsoid removes the whitespace after the list item,
@@ -30,7 +30,7 @@ class CommentModifier {
 	/**
 	 * Remove extra linebreaks from a wikitext string
 	 *
-	 * @param string $wikitext Wikitext
+	 * @param string $wikitext
 	 * @return string
 	 */
 	public static function sanitizeWikitextLinebreaks( string $wikitext ) : string {
@@ -44,7 +44,7 @@ class CommentModifier {
 	 * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
 	 * the comment.
 	 *
-	 * @param CommentItem $comment Comment item
+	 * @param CommentItem $comment
 	 * @param DOMElement $linkNode Reply link
 	 */
 	public static function addReplyLink( CommentItem $comment, DOMElement $linkNode ) : void {
@@ -74,7 +74,7 @@ class CommentModifier {
 	 * The DOM tree is suitably rearranged to ensure correct indentation level of the reply (wrapper
 	 * nodes are added, and other nodes may be moved around).
 	 *
-	 * @param CommentItem $comment Comment item
+	 * @param CommentItem $comment
 	 * @return DOMElement
 	 */
 	public static function addListItem( CommentItem $comment ) : DOMElement {
@@ -258,7 +258,7 @@ class CommentModifier {
 	 *
 	 * Assumes that the list has a parent node.
 	 *
-	 * @param DOMnode $list DOM node, will be wrapepd if it is a list element (dl/ol/ul)
+	 * @param DOMnode $list DOM node, will be wrapped if it is a list element (dl/ol/ul)
 	 */
 	public static function unwrapList( DOMnode $list ) : void {
 		$doc = $list->ownerDocument;
@@ -334,15 +334,15 @@ class CommentModifier {
 	/**
 	 * Create an element that will convert to the provided wikitext
 	 *
-	 * @param DOMDocument $doc Document
-	 * @param string $wt Wikitext
-	 * @return DOMElement Element
+	 * @param DOMDocument $doc
+	 * @param string $wikitext
+	 * @return DOMElement
 	 */
-	public static function createWikitextNode( DOMDocument $doc, string $wt ) : DOMElement {
+	public static function createWikitextNode( DOMDocument $doc, string $wikitext ) : DOMElement {
 		$span = $doc->createElement( 'span' );
 
 		$span->setAttribute( 'typeof', 'mw:Transclusion' );
-		$span->setAttribute( 'data-mw', json_encode( [ 'parts' => [ $wt ] ] ) );
+		$span->setAttribute( 'data-mw', json_encode( [ 'parts' => [ $wikitext ] ] ) );
 
 		return $span;
 	}
@@ -442,7 +442,7 @@ class CommentModifier {
 	 * Create a container of comment DOM nodes from wikitext
 	 *
 	 * @param CommentItem $comment Comment being replied to
-	 * @param string $wikitext Wikitext
+	 * @param string $wikitext
 	 */
 	public static function addWikitextReply( $comment, $wikitext ) {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
@@ -468,7 +468,7 @@ class CommentModifier {
 	 * Create a container of comment DOM nodes from HTML
 	 *
 	 * @param CommentItem $comment Comment being replied to
-	 * @param string $html HTML
+	 * @param string $html
 	 */
 	public static function addHtmlReply( $comment, $html ) {
 		$doc = $comment->getRange()->endContainer->ownerDocument;

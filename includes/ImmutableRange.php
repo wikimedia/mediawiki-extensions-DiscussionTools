@@ -61,7 +61,7 @@ class ImmutableRange {
 	/**
 	 * Get the root ancestor of a node
 	 *
-	 * @param DOMNode $node Node
+	 * @param DOMNode $node
 	 * @return DOMNode
 	 */
 	private static function getRootNode( DOMNode $node ) : DOMNode {
@@ -73,10 +73,10 @@ class ImmutableRange {
 	}
 
 	/**
-	 * @param DOMNode $startNode Start node
-	 * @param int $startOffset Start offset
-	 * @param DOMNode $endNode End node
-	 * @param int $endOffset End offset
+	 * @param DOMNode $startNode
+	 * @param int $startOffset
+	 * @param DOMNode $endNode
+	 * @param int $endOffset
 	 */
 	public function __construct(
 		DOMNode $startNode, int $startOffset, DOMNode $endNode, int $endOffset
@@ -118,8 +118,8 @@ class ImmutableRange {
 	/**
 	 * Clone range with a new start position
 	 *
-	 * @param DOMNode $startNode Start node
-	 * @param int $startOffset Start offset
+	 * @param DOMNode $startNode
+	 * @param int $startOffset
 	 * @return self
 	 */
 	public function setStart( DOMNode $startNode, int $startOffset ) : self {
@@ -131,8 +131,8 @@ class ImmutableRange {
 	/**
 	 * Clone range with a new end position
 	 *
-	 * @param DOMNode $endNode End node
-	 * @param int $endOffset End offset
+	 * @param DOMNode $endNode
+	 * @param int $endOffset
 	 * @return self
 	 */
 	public function setEnd( DOMNode $endNode, int $endOffset ) : self {
