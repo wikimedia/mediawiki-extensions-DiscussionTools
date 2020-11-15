@@ -245,15 +245,32 @@ class ImmutableRange {
 			}
 		}
 
-		$containedChildren = [];
+		$containedChildrenStart = null;
+		$containedChildrenEnd = null;
 
-		foreach ( $commonAncestor->childNodes as $child ) {
+		$child = $firstPartiallyContainedChild ?: $commonAncestor->firstChild;
+		for ( ; $child; $child = $child->nextSibling ) {
 			if ( $this->isFullyContainedNode( $child ) ) {
-				if ( $child instanceof DOMDocumentType ) {
-					throw new Error();
-				}
+				$containedChildrenStart = $child;
+				break;
+			}
+		}
 
-				$containedChildren[] = $child;
+		$child = $lastPartiallyContainedChild ?: $commonAncestor->lastChild;
+		for ( ; $child !== $containedChildrenStart; $child = $child->previousSibling ) {
+			if ( $this->isFullyContainedNode( $child ) ) {
+				$containedChildrenEnd = $child;
+				break;
+			}
+		}
+		if ( !$containedChildrenEnd ) {
+			$containedChildrenEnd = $containedChildrenStart;
+		}
+
+		// $containedChildrenStart and $containedChildrenEnd may be null here, but this loop still works correctly
+		for ( $child = $containedChildrenStart; $child !== $containedChildrenEnd; $child = $child->nextSibling ) {
+			if ( $child instanceof DOMDocumentType ) {
+				throw new Error();
 			}
 		}
 
@@ -280,8 +297,14 @@ class ImmutableRange {
 			$clone->appendChild( $subfragment );
 		}
 
-		foreach ( $containedChildren as $child ) {
+		// $containedChildrenStart and $containedChildrenEnd may be null here, but this loop still works correctly
+		for ( $child = $containedChildrenStart; $child !== $containedChildrenEnd; $child = $child->nextSibling ) {
 			$clone = $child->cloneNode( true );
+			$fragment->appendChild( $clone );
+		}
+		// If not null, this node wasn't processed by the loop
+		if ( $containedChildrenEnd ) {
+			$clone = $containedChildrenEnd->cloneNode( true );
 			$fragment->appendChild( $clone );
 		}
 
