@@ -294,7 +294,9 @@ class ImmutableRange {
 				strlen( $firstPartiallyContainedChild->nodeValue )
 			);
 			$subfragment = $subrange->cloneContents();
-			$clone->appendChild( $subfragment );
+			if ( $subfragment->hasChildNodes() ) {
+				$clone->appendChild( $subfragment );
+			}
 		}
 
 		// $containedChildrenStart and $containedChildrenEnd may be null here, but this loop still works correctly
@@ -327,7 +329,9 @@ class ImmutableRange {
 				$originalEndContainer, $originalEndOffset
 			);
 			$subfragment = $subrange->cloneContents();
-			$clone->appendChild( $subfragment );
+			if ( $subfragment->hasChildNodes() ) {
+				$clone->appendChild( $subfragment );
+			}
 		}
 
 		return $fragment;
