@@ -30,7 +30,7 @@ function MWUsernameCompletionAction( surface ) {
 	this.surface.authors.forEach( function ( user ) {
 		if ( mw.util.isIPAddress( user ) ) {
 			action.ipUsers.push( user );
-		} else {
+		} else if ( user !== mw.user.getName() ) {
 			action.localUsers.push( user );
 		}
 	} );
