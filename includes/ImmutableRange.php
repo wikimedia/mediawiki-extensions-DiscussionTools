@@ -421,20 +421,33 @@ class ImmutableRange {
 			}
 		}
 
-		$tw = new TreeWalker(
-			self::getRootNode( $boundaryPointB[0] ),
-			NodeFilter::SHOW_ALL,
-			function ( $node ) use ( $boundaryPointA ) {
-				if ( $node === $boundaryPointA[0] ) {
-					return NodeFilter::FILTER_ACCEPT;
-				}
-
-				return NodeFilter::FILTER_SKIP;
+		$commonAncestor = $this->findCommonAncestorContainer( $boundaryPointB[0], $boundaryPointA[0] );
+		if ( $commonAncestor === $boundaryPointA[0] ) {
+			$AFollowsB = false;
+		} elseif ( $commonAncestor === $boundaryPointB[0] ) {
+			$AFollowsB = true;
+		} else {
+			// A was not found inside B. Traverse both A & B up to the nodes
+			// before their common ancestor, then see if A is in the nextSibling
+			// chain of B.
+			$b = $boundaryPointB[0];
+			while ( $b->parentNode !== $commonAncestor ) {
+				$b = $b->parentNode;
 			}
-		);
-		$tw->currentNode = $boundaryPointB[0];
+			$a = $boundaryPointA[0];
+			while ( $a->parentNode !== $commonAncestor ) {
+				$a = $a->parentNode;
+			}
+			$AFollowsB = false;
+			while ( $b ) {
+				if ( $a === $b ) {
+					$AFollowsB = true;
+					break;
+				}
+				$b = $b->nextSibling;
+			}
+		}
 
-		$AFollowsB = $tw->nextNode();
 		if ( $AFollowsB ) {
 			// Swap variables
 			[ $boundaryPointB, $boundaryPointA ] = [ $boundaryPointA, $boundaryPointB ];
