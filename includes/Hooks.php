@@ -173,15 +173,10 @@ class Hooks {
 			return true;
 		}
 
+		$start = microtime( true );
 		try {
 			// Add reply links and hidden data about comment ranges.
-			$formatter = new CommentFormatter( $text );
-
-			$start = microtime( true );
-
-			$formatter->addReplyLinks();
-			$newText = $formatter->getText();
-
+			$newText = CommentFormatter::addReplyLinks( $text );
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
 			// Log it and add the request ID in a comment to make it easier to find in the logs.

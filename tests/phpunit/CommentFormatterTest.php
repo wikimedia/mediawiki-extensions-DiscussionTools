@@ -25,10 +25,7 @@ class CommentFormatterTest extends CommentTestCase {
 
 		$this->setupEnv( $config, $data );
 
-		$formatter = new CommentFormatter( $dom );
-		$formatter->addReplyLinks();
-
-		$doc = self::createDocument( $formatter->getText() );
+		$doc = self::createDocument( CommentFormatter::addReplyLinks( $dom ) );
 		$expectedDoc = self::createDocument( $expected );
 
 		// Optionally write updated content to the "reply HTML" files

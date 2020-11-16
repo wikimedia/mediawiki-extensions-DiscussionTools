@@ -3,19 +3,28 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMElement;
-use HtmlFormatter\HtmlFormatter;
+use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 
-class CommentFormatter extends HtmlFormatter {
+class CommentFormatter {
 
-	public function addReplyLinks() {
+	/**
+	 * Add reply links to some HTML
+	 *
+	 * @param string $html HTML
+	 * @return string HTML with reply links
+	 */
+	public static function addReplyLinks( $html ) {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
 
-		$doc = $this->getDoc();
-		$container = $doc->documentElement->firstChild;
+		$doc = DOMUtils::parseHTML( $html );
+		$doc->preserveWhiteSpace = false;
+
+		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
 		if ( !( $container instanceof DOMElement ) ) {
-			return;
+			return $html;
 		}
 
 		$parser = CommentParser::newFromGlobalState( $container );
@@ -71,6 +80,12 @@ class CommentFormatter extends HtmlFormatter {
 				CommentModifier::addReplyLink( $threadItem, $replyLinkButtons );
 			}
 		}
+
+		$docElement = $doc->getElementsByTagName( 'body' )->item( 0 );
+		if ( !( $docElement instanceof DOMElement ) ) {
+			return $html;
+		}
+		return DOMCompat::getInnerHTML( $docElement );
 	}
 
 }
