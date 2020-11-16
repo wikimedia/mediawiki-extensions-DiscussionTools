@@ -812,10 +812,24 @@ class CommentParser {
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curCommentEnd );
 				$endNode = $lastSigNode;
-				// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
-				// avoiding that would be more difficult and slower.
-				while ( $endNode->nextSibling && !CommentUtils::isBlockElement( $endNode->nextSibling ) ) {
-					$endNode = $endNode->nextSibling;
+				while (
+					// If this isn't a last sibling:
+					// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
+					// avoiding that would be more difficult and slower.
+					( $endNode->nextSibling && !CommentUtils::isBlockElement( $endNode->nextSibling ) ) ||
+					// When we reach a last sibling:
+					// Traverse up from inline nodes until the parent is a block element.
+					// This moves end markers from
+					//  "timestamp|</small></span></p>"
+					// to
+					//  "timestamp</small></span>|</p>"
+					(
+						!$endNode->nextSibling &&
+						!CommentUtils::isBlockElement( $endNode ) &&
+						!CommentUtils::isBlockElement( $endNode->parentNode )
+					)
+				) {
+					$endNode = $endNode->nextSibling ?: $endNode->parentNode;
 				}
 
 				if ( $endNode === $lastSigNode ) {
