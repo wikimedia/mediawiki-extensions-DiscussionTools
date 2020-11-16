@@ -83,7 +83,7 @@ function markComment( comment ) {
 	marker.style.left = ( rect.left + scrollLeft ) + 'px';
 	marker.style.width = ( rect.width ) + 'px';
 
-	if ( comment.warnings ) {
+	if ( comment.warnings && comment.warnings.length ) {
 		markerWarnings = marker.cloneNode( false );
 		markerWarnings.className = 'detected-comment-warnings';
 		markerWarnings.innerText = comment.warnings.join( '\n' );
