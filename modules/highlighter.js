@@ -1,6 +1,6 @@
 'use strict';
 
-var initialOffset, indentWidth;
+var initialOffset, indentWidth, firstMarker;
 
 function markTimestamp( parser, node, match ) {
 	var
@@ -83,11 +83,17 @@ function markComment( comment ) {
 	marker.style.left = ( rect.left + scrollLeft ) + 'px';
 	marker.style.width = ( rect.width ) + 'px';
 
+	if ( !firstMarker ) {
+		firstMarker = marker;
+	}
+
 	if ( comment.warnings && comment.warnings.length ) {
 		markerWarnings = marker.cloneNode( false );
 		markerWarnings.className = 'detected-comment-warnings';
 		markerWarnings.innerText = comment.warnings.join( '\n' );
-		document.body.appendChild( markerWarnings );
+		// Group warnings at the top as we use nth-child selectors
+		// to alternate color of markers.
+		document.body.insertBefore( markerWarnings, firstMarker );
 	}
 
 	document.body.appendChild( marker );
