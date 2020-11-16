@@ -114,10 +114,10 @@ function markComment( comment ) {
 		marker2.style.height = ( rect.top - ( parentRect.top + parentRect.height ) + 10 ) + 'px';
 		if ( rtl ) {
 			marker2.style.right = ( initialOffset - indentWidth / 2 + comment.parent.level * indentWidth ) + 'px';
-			marker2.style.width = ( ( comment.level - comment.parent.level ) * indentWidth - indentWidth / 2 ) + 'px';
+			marker2.style.width = ( ( comment.level - comment.parent.level ) * indentWidth - indentWidth / 2 ) - 2 + 'px';
 		} else {
 			marker2.style.left = ( initialOffset - indentWidth / 2 + comment.parent.level * indentWidth ) + 'px';
-			marker2.style.width = ( ( comment.level - comment.parent.level ) * indentWidth - indentWidth / 2 ) + 'px';
+			marker2.style.width = ( ( comment.level - comment.parent.level ) * indentWidth - indentWidth / 2 ) - 2 + 'px';
 		}
 		document.body.appendChild( marker2 );
 	}

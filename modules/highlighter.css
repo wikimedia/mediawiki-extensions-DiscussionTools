@@ -34,21 +34,20 @@
 	pointer-events: none;
 }
 
-.detected-comment:nth-child( 2n ) {
+.detected-comment:nth-of-type( 2n ) {
 	background: lightpink;
 }
 
-.detected-comment:nth-child( 2n + 1 ) {
+.detected-comment:nth-of-type( 2n + 1 ) {
 	background: skyblue;
 }
 
 .detected-comment-ruler {
 	position: absolute;
 	box-sizing: border-box;
-	border-left: 3px solid red;
-	border-bottom: 3px solid red;
-	box-shadow: -5px 10px 6px 0 white;
-	border-bottom-left-radius: 8px;
+	border-left: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	border-bottom-left-radius: 3px;
 }
 
 .detected-comment-warnings {
@@ -69,7 +68,11 @@
 
 .detected-comment-warnings:before {
 	content: '⚠';
-	color: white;
+	color: #000;
+	background: #fff;
 	font-size: 1rem;
 	pointer-events: all;
+	margin-left: -1em;
+	position: absolute;
+	z-index: 1;
 }
