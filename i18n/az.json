@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toghrul Rahimli"
+		]
+	},
+	"discussiontools-replywidget-abandon": "Yazdığınız şərhi ləğv etmək istədiyinizə əminsiniz?",
+	"discussiontools-replywidget-advanced": "Daha çox",
+	"discussiontools-replywidget-cancel": "İmtina",
+	"discussiontools-replywidget-feedback": "Bu funksiya haqqında rəyinizi bildirin",
+	"discussiontools-replywidget-mention-tool-header": "İstifadəçi axtar: $1",
+	"discussiontools-replywidget-mention-tool-title": "İstifadəçi qeyd et",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} adlı istifadəçiyə cavab ver",
+	"discussiontools-replywidget-reply": "Cavabla",
+	"discussiontools-replywidget-summary": "Qısa məzmun",
+	"tag-discussiontools-description": "DiscussionTools vasitəsilə redaktə edildi",
+	"tag-discussiontools-edit": "Şərhi redaktə et",
+	"tag-discussiontools-newtopic": "Yeni bölmə",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Cavabla]",
+	"tag-discussiontools-reply-description": "DiscussionTools vasitəsilə cavablandırıldı",
+	"tag-discussiontools-source": "Mənbə",
+	"tag-discussiontools-visual": "Vizual"
+}
