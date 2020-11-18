@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sonic Speedy"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "ID komentar tidak ditemukan: $1",
+	"apihelp-discussiontools-param-oldid": "Nomor revisi yang akan digunakan (default ke revisi terbaru).",
+	"apihelp-discussiontools-summary": "Mengembalikan metadata yang diperlukan untuk menginisialisasi alat diskusi.",
+	"apihelp-discussiontoolsedit-summary": "Posting pesan di halaman diskusi.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID Komentar."
+}
