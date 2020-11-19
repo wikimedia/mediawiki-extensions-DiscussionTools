@@ -4,13 +4,27 @@
 			"Умар"
 		]
 	},
+	"discussiontools": "Дийцарийн гӀирсаш",
 	"discussiontools-defaultsummary-reply": "Жоп",
+	"discussiontools-preference-label": "Дийцарийн гӀирсаш",
+	"discussiontools-preference-description": "Латайо керла белхан процесс [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] тӀехь, дийцарийн агӀонашкахь.\n\nДехар до, терго йе, хан мел йолу тӀетухур болуш бу керла аьттонаш.\n\nОцу функцех лаьцна хьажа [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
+	"discussiontools-replylink": "жоп",
+	"discussiontools-replywidget-cancel": "Цаоьшу",
+	"discussiontools-replywidget-loading": "Чуйолуш...",
+	"discussiontools-replywidget-mention-prefix": "@",
+	"discussiontools-replywidget-mention-tool-title": "Декъашхо хьахо",
 	"discussiontools-replywidget-mode-source": "Хьост",
-	"tag-discussiontools-description": "DiscussionTools гӀоьнца дина нисдар",
+	"discussiontools-replywidget-mode-visual": "БӀаьра",
+	"discussiontools-replywidget-placeholder-reply": "Жоп ло {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Хьалххе хьажар",
+	"discussiontools-replywidget-reply": "Жоп",
+	"discussiontools-signature-prefix": ",&#32;",
+	"tag-discussiontools-description": "Нисдар дина DiscussionTools гӀоьнца",
 	"tag-discussiontools-edit": "Хийца коммент",
 	"tag-discussiontools-newtopic": "Тема тӀетоха",
 	"tag-discussiontools-newtopic-description": "Декъашхочо DiscussionTools гӀоьнца керла тема тӀетоьхна",
 	"tag-discussiontools-reply-description": "Декъашхочо DiscussionTools гӀоьнца комментана жоп дела",
 	"tag-discussiontools-source": "Хьост",
+	"tag-discussiontools-visual": "БӀаьра",
 	"tag-discussiontools-visual-description": "DiscussionTools бӀаьран режехь"
 }

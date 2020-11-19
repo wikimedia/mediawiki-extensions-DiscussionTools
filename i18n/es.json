@@ -26,6 +26,7 @@
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-feedback": "Deja tus comentarios acerca de esta característica",
 	"discussiontools-replywidget-loading": "Cargando...",
+	"discussiontools-replywidget-mention-tool-header": "Buscar usuario: $1",
 	"discussiontools-replywidget-mention-tool-title": "Mencionar a un usuario",
 	"discussiontools-replywidget-mode-source": "Fuente",
 	"discussiontools-replywidget-mode-visual": "Visual",

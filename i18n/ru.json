@@ -9,13 +9,14 @@
 			"MuratTheTurkish",
 			"Okras",
 			"Pacha Tchernof",
-			"Sunpriat"
+			"Sunpriat",
+			"Умар"
 		]
 	},
 	"discussiontools": "Инструменты обсуждения",
 	"discussiontools-defaultsummary-reply": "Ответ",
 	"discussiontools-preference-label": "Инструменты обсуждения",
-	"discussiontools-preference-description": "Включить новый рабочий процесс для [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] на страницах обсуждения.\n\nПожалуйста обратите внимание, что со временембудут добавлены новые инструменты для взаимодействия со страницами обсуждения.\n\nОбновления об этих функциях будут размещены на [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
+	"discussiontools-preference-description": "Включить новый рабочий процесс для [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] на страницах обсуждения.\n\nПожалуйста обратите внимание, что со временем будут добавлены новые инструменты для взаимодействия со страницами обсуждения.\n\nОбновления об этих функциях будут размещены на [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
 	"discussiontools-replywidget-cancel": "Отмена",
 	"discussiontools-replywidget-loading": "Загрузка…",
 	"discussiontools-replywidget-mention-tool-title": "Упомянуть участника",

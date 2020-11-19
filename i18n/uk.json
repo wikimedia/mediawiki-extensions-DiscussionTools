@@ -48,7 +48,7 @@
 	"tag-discussiontools-description": "Редагування зроблене через DiscussionTools",
 	"tag-discussiontools-edit": "відредаговано коментар",
 	"tag-discussiontools-edit-description": "Користувач відредагував наявний коментар через DiscussionTools",
-	"tag-discussiontools-newtopic": "додано тему",
+	"tag-discussiontools-newtopic": "Нова тема",
 	"tag-discussiontools-newtopic-description": "Користувач створив на сторінці нову тему через DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} відповісти]",
 	"tag-discussiontools-reply-description": "Користувач відповів на коментар через DiscussionTools",
