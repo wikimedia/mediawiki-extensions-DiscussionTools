@@ -25,7 +25,7 @@
 	"discussiontools-replywidget-mode-visual": "Vizual",
 	"discussiontools-replywidget-placeholder-reply": "Răspunde lui {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Previzualizare",
-	"discussiontools-replywidget-reply": "Răspunde",
+	"discussiontools-replywidget-reply": "Răspuns",
 	"discussiontools-replywidget-signature-title": "Cod de semnătură detectat",
 	"discussiontools-replywidget-signature-body": "$1 s-a transformat în semnătura dvs. Pentru a anula acest lucru, apăsați $2. Luați în considerare că nu trebuie să vă semnați cu această unealtă. Semnătura dvs. va fi adăugată automat.",
 	"discussiontools-replywidget-summary": "Rezumat al comentariului",
