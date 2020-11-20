@@ -744,7 +744,7 @@ Parser.prototype.buildThreadItems = function () {
 		commentItems = [],
 		threadItems = [],
 		treeWalker,
-		node, range, fakeHeading, curComment, headingNodeAndOffset, headingNode, startOffset,
+		node, range, fakeHeading, curComment, curCommentEnd, headingNodeAndOffset, headingNode, startOffset,
 		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, endNode, length,
 		match, lastSigNodeOffset, startLevel, endLevel, level, dateTime, warnings;
 
@@ -767,6 +767,7 @@ Parser.prototype.buildThreadItems = function () {
 	fakeHeading.rootNode = this.rootNode;
 
 	curComment = fakeHeading;
+	curCommentEnd = range.endContainer;
 
 	while ( ( node = treeWalker.nextNode() ) ) {
 		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
@@ -782,6 +783,7 @@ Parser.prototype.buildThreadItems = function () {
 			curComment = new HeadingItem( range, +match[ 1 ] );
 			curComment.rootNode = this.rootNode;
 			threadItems.push( curComment );
+			curCommentEnd = node;
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegexps ) ) ) {
 			warnings = [];
 			foundSignature = this.findSignature( node, lastSigNode );
@@ -806,7 +808,7 @@ Parser.prototype.buildThreadItems = function () {
 			};
 
 			// Everything from the last comment up to here is the next comment
-			startNode = this.nextInterestingLeafNode( curComment.range.endContainer );
+			startNode = this.nextInterestingLeafNode( curCommentEnd );
 			endNode = lastSigNode;
 			// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 			// avoiding that would be more difficult and slower.
@@ -872,6 +874,7 @@ Parser.prototype.buildThreadItems = function () {
 				curComment.range.endContainer = range.endContainer;
 				curComment.range.endOffset = range.endOffset;
 				curComment.level = Math.min( level, curComment.level );
+				curCommentEnd = range.endContainer;
 
 				continue;
 			}
@@ -889,6 +892,7 @@ Parser.prototype.buildThreadItems = function () {
 			}
 			commentItems.push( curComment );
 			threadItems.push( curComment );
+			curCommentEnd = curComment.range.endContainer;
 		}
 	}
 

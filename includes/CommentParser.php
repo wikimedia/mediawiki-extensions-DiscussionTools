@@ -766,6 +766,7 @@ class CommentParser {
 		$fakeHeading->setRootNode( $this->rootNode );
 
 		$curComment = $fakeHeading;
+		$curCommentEnd = $range->endContainer;
 
 		$treeWalker = new TreeWalker(
 			$this->rootNode,
@@ -784,6 +785,7 @@ class CommentParser {
 				$curComment = new HeadingItem( $range, (int)( $match[ 1 ] ) );
 				$curComment->setRootNode( $this->rootNode );
 				$threadItems[] = $curComment;
+				$curCommentEnd = $node;
 			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $lastSigNode );
@@ -808,7 +810,7 @@ class CommentParser {
 				);
 
 				// Everything from the last comment up to here is the next comment
-				$startNode = $this->nextInterestingLeafNode( $curComment->getRange()->endContainer );
+				$startNode = $this->nextInterestingLeafNode( $curCommentEnd );
 				$endNode = $lastSigNode;
 				// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 				// avoiding that would be more difficult and slower.
@@ -888,6 +890,7 @@ class CommentParser {
 						$curComment->getRange()->setEnd( $range->endContainer, $range->endOffset )
 					);
 					$curComment->setLevel( min( $level, $curComment->getLevel() ) );
+					$curCommentEnd = $range->endContainer;
 
 					continue;
 				}
@@ -905,6 +908,7 @@ class CommentParser {
 				}
 				$commentItems[] = $curComment;
 				$threadItems[] = $curComment;
+				$curCommentEnd = $curComment->getRange()->endContainer;
 			}
 		}
 
