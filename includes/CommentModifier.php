@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMComment;
 use DOMDocument;
+use DOMDocumentFragment;
 use DOMElement;
 use DOMNode;
 use DOMText;
@@ -251,18 +252,80 @@ class CommentModifier {
 		return $item;
 	}
 
+	/**
+	 * Check all elements in a node list are of a given type
+	 *
+	 * Also returns false if there are no elements in the list
+	 *
+	 * @param DOMNode[] $nodes Node list
+	 * @param string $type Element type
+	 * @return bool
+	 */
+	private static function allOfType( array $nodes, string $type ) : bool {
+		$hasElements = false;
+		foreach ( $nodes as $node ) {
+			if ( $node->nodeType === XML_ELEMENT_NODE ) {
+				if ( strtolower( $node->nodeName ) !== strtolower( $type ) ) {
+					return false;
+				}
+				$hasElements = true;
+			}
+		}
+		return $hasElements;
+	}
+
+	/**
+	 * Remove unnecessary list wrappers from a comment fragment
+	 *
+	 * TODO: Implement this in JS if required
+	 *
+	 * @param DOMDocumentFragment $fragment Fragment
+	 */
+	public static function unwrapFragment( DOMDocumentFragment $fragment ) {
+		$childNodeList = iterator_to_array( $fragment->childNodes );
+
+		// Wrap orphaned list items
+		$list = null;
+		if ( self::allOfType( $childNodeList, 'dd' ) ) {
+			$list = $fragment->ownerDocument->createElement( 'dl' );
+		} elseif ( self::allOfType( $childNodeList, 'li' ) ) {
+			$list = $fragment->ownerDocument->createElement( 'ul' );
+		}
+		if ( $list ) {
+			while ( $fragment->firstChild ) {
+				$list->appendChild( $fragment->firstChild );
+			}
+			$fragment->appendChild( $list );
+		}
+
+		// If all child nodes are lists of the same type, unwrap them
+		while (
+			( $childNodeList = iterator_to_array( $fragment->childNodes ) ) && (
+				self::allOfType( $childNodeList, 'dl' ) ||
+				self::allOfType( $childNodeList, 'ul' ) ||
+				self::allOfType( $childNodeList, 'ol' )
+			)
+		) {
+			foreach ( $childNodeList as $node ) {
+				self::unwrapList( $node, $fragment );
+			}
+		}
+	}
+
 	// removeAddedListItem is only needed in the client
 
 	/**
 	 * Unwrap a top level list, converting list item text to paragraphs
 	 *
-	 * Assumes that the list has a parent node.
+	 * Assumes that the list has a parent node, or is a root child in the provided
+	 * document fragment.
 	 *
 	 * @param DOMnode $list DOM node, will be wrapped if it is a list element (dl/ol/ul)
+	 * @param DOMDocumentFragment|null $fragment Containing document fragment if list has no parent
 	 */
-	public static function unwrapList( DOMnode $list ) : void {
+	public static function unwrapList( DOMnode $list, ?DOMDocumentFragment $fragment = null ) : void {
 		$doc = $list->ownerDocument;
-		$container = $list->parentNode;
+		$container = $fragment ?: $list->parentNode;
 		$referenceNode = $list;
 
 		if ( !(
