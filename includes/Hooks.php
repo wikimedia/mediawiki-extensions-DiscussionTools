@@ -79,6 +79,10 @@ class Hooks {
 		if ( $output->getRequest()->getVal( 'dtenable' ) ) {
 			return true;
 		}
+		// Extra hack for parses from API, where this parameter isn't passed to derivative requests
+		if ( RequestContext::getMain()->getRequest()->getVal( 'dtenable' ) ) {
+			return true;
+		}
 
 		$user = $output->getUser();
 		$services = MediaWikiServices::getInstance();

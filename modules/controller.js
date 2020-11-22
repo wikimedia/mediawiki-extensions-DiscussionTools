@@ -311,6 +311,9 @@ function update( data, comment, pageName, replyWidget ) {
 				// adding our reply links in the HTML (T266195)
 				useskin: mw.config.get( 'skin' ),
 				uselang: mw.config.get( 'wgUserLanguage' ),
+				// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
+				// a page view with reply links forced with ?dtenable=1 or otherwise
+				dtenable: '1',
 				prop: [ 'text', 'modules', 'jsconfigvars' ],
 				page: mw.config.get( 'wgRelevantPageName' )
 			} );
