@@ -208,16 +208,18 @@ function getCheckboxesPromise( pageName, oldId ) {
 function init( $container, state ) {
 	var parser, pageThreads,
 		repliedToComment,
-		i, hash, comment, commentNodes, id, newId,
+		i, hash, comment, commentNodes, newId,
 		// Loads later to avoid circular dependency
 		CommentController = require( './CommentController.js' ),
-		threadItemsById = {};
+		threadItemsById = {},
+		threadItems = [];
 
 	$pageContainer = $container;
 	parser = new Parser( $pageContainer[ 0 ] );
 
 	pageThreads = [];
 	commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
+	threadItems.length = commentNodes.length;
 
 	// The page can be served from the HTTP cache (Varnish), containing data-mw-comment generated
 	// by an older version of our PHP code. Code below must be able to handle that.
@@ -236,16 +238,18 @@ function init( $container, state ) {
 			// Use unshift as we are in a backwards loop
 			pageThreads.unshift( comment );
 		}
+		threadItems[ i ] = comment;
 	}
 
 	// Recalculate legacy IDs
 	parser.threadItemsById = {};
-	for ( id in threadItemsById ) {
-		comment = threadItemsById[ id ];
+	// In the forward order this time, as the IDs for indistinguishable comments depend on it
+	for ( i = 0; i < threadItems.length; i++ ) {
+		comment = threadItems[ i ];
 		newId = parser.computeId( comment );
-		if ( newId !== id ) {
+		parser.threadItemsById[ newId ] = comment;
+		if ( newId !== comment.id ) {
 			comment.id = newId;
-			parser.threadItemsById[ newId ] = comment;
 			threadItemsById[ newId ] = comment;
 		}
 	}
