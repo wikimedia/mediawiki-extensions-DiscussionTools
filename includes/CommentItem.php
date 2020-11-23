@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMText;
 use DOMXPath;
 use MWException;
 use Title;
@@ -45,11 +46,32 @@ class CommentItem extends ThreadItem {
 	/**
 	 * Get the HTML of this comment's body
 	 *
+	 *
+	 * @param bool $stripTrailingSeparator Strip a trailing separator between the body and
+	 *  the signature which consists of whitespace and hyphens e.g. ' --'
 	 * @return string HTML
 	 */
-	public function getBodyHTML() : string {
+	public function getBodyHTML( bool $stripTrailingSeparator = false ) : string {
 		$fragment = $this->getBodyRange()->cloneContents();
 		CommentModifier::unwrapFragment( $fragment );
+
+		if ( $stripTrailingSeparator ) {
+			// Find a trailing text node
+			$lastChild = $fragment->lastChild;
+			while (
+				!( $lastChild instanceof DOMText ) &&
+				$lastChild->lastChild
+			) {
+				$lastChild = $lastChild->lastChild;
+			}
+			if (
+				$lastChild instanceof DOMText &&
+				preg_match( '/[\s\-~\x{2010}-\x{2015}\x{2043}\x{2060}]+$/u', $lastChild->nodeValue, $matches )
+			) {
+				$lastChild->nodeValue =
+					substr( $lastChild->nodeValue, 0, -strlen( $matches[0] ) );
+			}
+		}
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
 		return DOMCompat::getInnerHTML( $container );
