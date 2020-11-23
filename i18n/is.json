@@ -23,5 +23,6 @@
 	"discussiontools-replywidget-reply": "Svara",
 	"discussiontools-replywidget-signature-title": "Þú virðist hafa notað tildur („~“) til að skrifa undir, en ekki er þörf á því",
 	"discussiontools-replywidget-summary": "Breytingarágrip",
-	"discussiontools-replywidget-transcluded": "Svarið þitt verður ekki vistað á þessari síðu heldur á [[$1]]."
+	"discussiontools-replywidget-transcluded": "Svarið þitt verður ekki vistað á þessari síðu heldur á [[$1]].",
+	"tag-discussiontools-newtopic": "Nýr hluti"
 }
