@@ -49,6 +49,7 @@ class CommentItem extends ThreadItem {
 	 */
 	public function getBodyHTML() : string {
 		$fragment = $this->getBodyRange()->cloneContents();
+		CommentModifier::unwrapFragment( $fragment );
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
 		return DOMCompat::getInnerHTML( $container );

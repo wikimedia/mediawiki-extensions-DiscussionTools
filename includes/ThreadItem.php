@@ -140,6 +140,7 @@ abstract class ThreadItem implements JsonSerializable {
 	 */
 	public function getHTML() : string {
 		$fragment = $this->getRange()->cloneContents();
+		CommentModifier::unwrapFragment( $fragment );
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
 		return DOMCompat::getInnerHTML( $container );
