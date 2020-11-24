@@ -834,24 +834,15 @@ Parser.prototype.buildThreadItems = function () {
 				endNode = endNode.nextSibling || endNode.parentNode;
 			}
 
-			if ( endNode === lastSigNode ) {
-				range = {
-					startContainer: startNode.parentNode,
-					startOffset: utils.childIndexOf( startNode ),
-					endContainer: sigRange.endContainer,
-					endOffset: sigRange.endOffset
-				};
-			} else {
-				length = endNode.nodeType === Node.TEXT_NODE ?
-					endNode.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
-					endNode.childNodes.length;
-				range = {
-					startContainer: startNode.parentNode,
-					startOffset: utils.childIndexOf( startNode ),
-					endContainer: endNode,
-					endOffset: length
-				};
-			}
+			length = endNode.nodeType === Node.TEXT_NODE ?
+				endNode.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
+				endNode.childNodes.length;
+			range = {
+				startContainer: startNode.parentNode,
+				startOffset: utils.childIndexOf( startNode ),
+				endContainer: endNode,
+				endOffset: length
+			};
 
 			startLevel = utils.getIndentLevel( startNode, this.rootNode ) + 1;
 			endLevel = utils.getIndentLevel( node, this.rootNode ) + 1;

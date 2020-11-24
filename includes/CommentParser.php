@@ -832,26 +832,17 @@ class CommentParser {
 					$endNode = $endNode->nextSibling ?: $endNode->parentNode;
 				}
 
-				if ( $endNode === $lastSigNode ) {
-					$range = new ImmutableRange(
-						$startNode->parentNode,
-						CommentUtils::childIndexOf( $startNode ),
-						$sigRange->endContainer,
-						$sigRange->endOffset
-					);
-				} else {
-					$length = ( $endNode->nodeType === XML_TEXT_NODE ) ?
-						strlen( rtrim( $endNode->nodeValue, "\t\n\f\r " ) ) :
-						// PHP bug: childNodes can be null for comment nodes
-						// (it should always be a DOMNodeList, even if the node can't have children)
-						( $endNode->childNodes ? $endNode->childNodes->length : 0 );
-					$range = new ImmutableRange(
-						$startNode->parentNode,
-						CommentUtils::childIndexOf( $startNode ),
-						$endNode,
-						$length
-					);
-				}
+				$length = ( $endNode->nodeType === XML_TEXT_NODE ) ?
+					strlen( rtrim( $endNode->nodeValue, "\t\n\f\r " ) ) :
+					// PHP bug: childNodes can be null for comment nodes
+					// (it should always be a DOMNodeList, even if the node can't have children)
+					( $endNode->childNodes ? $endNode->childNodes->length : 0 );
+				$range = new ImmutableRange(
+					$startNode->parentNode,
+					CommentUtils::childIndexOf( $startNode ),
+					$endNode,
+					$length
+				);
 
 				$startLevel = CommentUtils::getIndentLevel( $startNode, $this->rootNode ) + 1;
 				$endLevel = CommentUtils::getIndentLevel( $node, $this->rootNode ) + 1;
