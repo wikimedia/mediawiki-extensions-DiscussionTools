@@ -28,6 +28,13 @@
 		"data": "../data/frwiki-data.json"
 	},
 	{
+		"name": "itwiki unsigned",
+		"dom": "cases/it-unsigned-parsoid/it-unsigned-parsoid.html",
+		"expected": "../cases/it-unsigned-parsoid/it-unsigned-parsoid-transcludedFrom.json",
+		"config": "../data/itwiki-config.json",
+		"data": "../data/itwiki-data.json"
+	},
+	{
 		"name": "parsoid-sections",
 		"dom": "cases/parsoid-sections/parsoid-sections.html",
 		"expected": "../cases/parsoid-sections/parsoid-sections-transcludedFrom.json",

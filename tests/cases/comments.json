@@ -84,6 +84,20 @@
 		"data": "../data/frwiki-data.json"
 	},
 	{
+		"name": "itwiki it-unsigned oldparser",
+		"dom": "cases/it-unsigned-oldparser/it-unsigned-oldparser.html",
+		"expected": "../cases/it-unsigned-oldparser/it-unsigned-oldparser.json",
+		"config": "../data/itwiki-config.json",
+		"data": "../data/itwiki-data.json"
+	},
+	{
+		"name": "itwiki it-unsigned parsoid",
+		"dom": "cases/it-unsigned-parsoid/it-unsigned-parsoid.html",
+		"expected": "../cases/it-unsigned-parsoid/it-unsigned-parsoid.json",
+		"config": "../data/itwiki-config.json",
+		"data": "../data/itwiki-data.json"
+	},
+	{
 		"name": "srwiki sr-ec variant",
 		"dom": "cases/sr-ec/sr-ec.html",
 		"expected": "../cases/sr-ec/sr-ec.json",

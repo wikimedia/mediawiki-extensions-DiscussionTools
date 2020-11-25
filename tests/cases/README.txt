@@ -33,6 +33,10 @@ fr-unsigned:
 https://fr.wikipedia.org/w/index.php?title=Discussion:Le_Monde&oldid=170426593&action=render
 https://fr.wikipedia.org/api/rest_v1/page/html/Discussion%3ALe_Monde/170426593
 
+it-unsigned:
+https://it.wikipedia.org/w/index.php?title=Aiuto:Sportello_informazioni&oldid=116856029&action=render
+https://it.wikipedia.org/api/rest_v1/page/html/Aiuto%3ASportello_informazioni/116856029
+
 sr-ec:
 https://sr.wikipedia.org/w/index.php?title=Википедија:Трг/Архива/Техника/35&variant=sr-ec&action=render
 

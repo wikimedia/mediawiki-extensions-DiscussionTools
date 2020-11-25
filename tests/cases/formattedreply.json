@@ -28,6 +28,13 @@
 		"data": "../data/frwiki-data.json"
 	},
 	{
+		"name": "itwiki unsigned oldparser",
+		"dom": "cases/it-unsigned-oldparser/it-unsigned-oldparser.html",
+		"expected": "cases/it-unsigned-oldparser/it-unsigned-oldparser-formattedreply.html",
+		"config": "../data/itwiki-config.json",
+		"data": "../data/itwiki-data.json"
+	},
+	{
 		"name": "Signatures in funny places",
 		"dom": "cases/signatures-funny/signatures-funny.html",
 		"expected": "cases/signatures-funny/signatures-funny-formattedreply.html",
