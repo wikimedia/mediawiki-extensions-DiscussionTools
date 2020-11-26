@@ -53,12 +53,25 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.replyBodyWidget = this.createReplyBodyWidget( inputConfig );
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
-		label: mw.msg( 'discussiontools-replywidget-reply' )
+		label: mw.msg( 'discussiontools-replywidget-reply' ),
+		title: mw.msg( 'discussiontools-replywidget-reply' ) + ' ' +
+			// TODO: Use VE keyboard shortcut generating code
+			( $.client.profile().platform === 'mac' ?
+				'⌘⏎' :
+				mw.msg( 'visualeditor-key-ctrl' ) + '+' + mw.msg( 'visualeditor-key-enter' )
+			)
+
 	} );
 	this.cancelButton = new OO.ui.ButtonWidget( {
 		flags: [ 'destructive' ],
 		label: mw.msg( 'discussiontools-replywidget-cancel' ),
-		framed: false
+		framed: false,
+		title: mw.msg( 'discussiontools-replywidget-cancel' ) + ' ' +
+			// TODO: Use VE keyboard shortcut generating code
+			( $.client.profile().platform === 'mac' ?
+				'⎋' :
+				mw.msg( 'visualeditor-key-escape' )
+			)
 	} );
 
 	this.modeTabSelect = new OO.ui.TabSelectWidget( {

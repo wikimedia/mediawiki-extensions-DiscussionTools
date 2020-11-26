@@ -124,7 +124,10 @@
 				"discussiontools-replywidget-reply",
 				"discussiontools-replywidget-summary",
 				"discussiontools-replywidget-terms-click",
-				"discussiontools-replywidget-transcluded"
+				"discussiontools-replywidget-transcluded",
+				"visualeditor-key-ctrl",
+				"visualeditor-key-enter",
+				"visualeditor-key-escape"
 			],
 			"dependencies": [
 				"oojs-ui-widgets",
