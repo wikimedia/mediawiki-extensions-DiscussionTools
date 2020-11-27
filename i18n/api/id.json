@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Daud I.F. Argana",
 			"Sonic Speedy"
 		]
 	},
@@ -8,5 +9,6 @@
 	"apihelp-discussiontools-param-oldid": "Nomor revisi yang akan digunakan (default ke revisi terbaru).",
 	"apihelp-discussiontools-summary": "Mengembalikan metadata yang diperlukan untuk menginisialisasi alat diskusi.",
 	"apihelp-discussiontoolsedit-summary": "Posting pesan di halaman diskusi.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID Komentar."
+	"apihelp-discussiontoolsedit-param-commentid": "ID Komentar.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Teks wiki"
 }
