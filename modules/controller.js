@@ -2,6 +2,7 @@
 
 var
 	$pageContainer,
+	$overlay,
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
 	logger = require( './logger.js' ),
@@ -20,26 +21,42 @@ function getApi() {
 
 function highlight( comment ) {
 	var padding = 5,
-		// $container must be position:relative/absolute
-		$container = OO.ui.getDefaultOverlay(),
-		containerRect = $container[ 0 ].getBoundingClientRect(),
-		rect = RangeFix.getBoundingClientRect( comment.getNativeRange() ),
+		overlayRect, rect,
 		$highlight = $( '<div>' ).addClass( 'dt-init-highlight' );
 
+	if ( !$overlay ) {
+		// $overlay must be position:relative/absolute
+		$overlay = $( '<div>' ).addClass( 'oo-ui-defaultOverlay' ).appendTo( 'body' );
+	}
+
+	overlayRect = $overlay[ 0 ].getBoundingClientRect();
+	rect = RangeFix.getBoundingClientRect( comment.getNativeRange() );
 	$highlight.css( {
-		top: rect.top - containerRect.top - padding,
-		left: rect.left - containerRect.left - padding,
+		top: rect.top - overlayRect.top - padding,
+		left: rect.left - overlayRect.left - padding,
 		width: rect.width + ( padding * 2 ),
 		height: rect.height + ( padding * 2 )
 	} );
-	$container.prepend( $highlight );
+	$overlay.prepend( $highlight );
 
+	// Pause for 500ms
+	// Fade in for 100ms
+	// Show for 1000ms
+	// Fade out for 500ms
+	// (animation durations are defined in CSS)
 	OO.ui.Element.static.scrollIntoView( $highlight[ 0 ], { padding: { top: 10, bottom: 10 } } ).then( function () {
 		setTimeout( function () {
-			$highlight.addClass( 'dt-init-highlight-fade' );
+			// Toggle the 'dt-init-highlight-overlay' class only when needed, because using mix-blend-mode
+			// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
+			$overlay.addClass( 'dt-init-highlight-overlay' );
+			$highlight.addClass( 'dt-init-highlight-fadein' );
 			setTimeout( function () {
-				$highlight.remove();
-			}, 500 );
+				$highlight.addClass( 'dt-init-highlight-fadeout' );
+				setTimeout( function () {
+					$highlight.remove();
+					$overlay.removeClass( 'dt-init-highlight-overlay' );
+				}, 500 );
+			}, 1000 + 100 );
 		}, 500 );
 	} );
 }
