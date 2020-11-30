@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"Func",
 			"Matma Rex",
 			"Ps2049",
 			"Shuiwater",
@@ -45,7 +46,7 @@
 	"tag-discussiontools-description": "使用讨论工具进行编辑",
 	"tag-discussiontools-edit": "编辑评论",
 	"tag-discussiontools-edit-description": "用户使用讨论工具编辑了现有评论",
-	"tag-discussiontools-newtopic": "添加话题",
+	"tag-discussiontools-newtopic": "新话题",
 	"tag-discussiontools-newtopic-description": "用户使用讨论工具在页面新增了话题",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 回复]",
 	"tag-discussiontools-reply-description": "用户已讨论工具回复了一个评论",
