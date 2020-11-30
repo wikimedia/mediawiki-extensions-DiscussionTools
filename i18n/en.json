@@ -46,6 +46,7 @@
 	"discussiontools-error-noswitchtove-table": "table syntax",
 	"discussiontools-error-noswitchtove-template": "template syntax",
 	"discussiontools-error-noswitchtove-title": "Visual mode disabled",
+	"discussiontools-postedit-confirmation-published": "Your comment was published.",
 	"tag-discussiontools": "-",
 	"tag-discussiontools-description": "Edit made using DiscussionTools",
 	"tag-discussiontools-edit": "Edit comment",

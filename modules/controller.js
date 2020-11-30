@@ -263,6 +263,12 @@ function init( $container, state ) {
 		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 	}
 
+	if ( state.repliedTo ) {
+		mw.hook( 'postEdit' ).fire( {
+			message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
+		} );
+	}
+
 	// Preload page metadata.
 	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
 	getPageData(
