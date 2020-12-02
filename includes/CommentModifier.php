@@ -463,17 +463,20 @@ class CommentModifier {
 	public static function appendSignature( DOMElement $container ) : void {
 		$doc = $container->ownerDocument;
 
+		$signature = wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+
 		// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
 		// add another paragraph to contain the signature.
 		if ( strtolower( $container->lastChild->nodeName ) !== 'p' ) {
 			$container->appendChild( $doc->createElement( 'p' ) );
+			// Trim the signature to prevent leading whitespace triggering preformatted text (T269188)
+			$signature = trim( $signature );
 		}
 		// Sign the last line
-		// TODO: When we implement posting new topics, the leading space will create an indent-pre
 		$container->lastChild->appendChild(
 			self::createWikitextNode(
 				$doc,
-				wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~'
+				$signature
 			)
 		);
 	}

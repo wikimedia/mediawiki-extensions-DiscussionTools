@@ -414,17 +414,19 @@ function isHtmlSigned( container ) {
  * @param {HTMLElement} container
  */
 function appendSignature( container ) {
-	var doc = container.ownerDocument;
+	var doc = container.ownerDocument,
+		signature = mw.msg( 'discussiontools-signature-prefix' ) + '~~~~';
 
 	// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
 	// add another paragraph to contain the signature.
 	if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
 		container.appendChild( doc.createElement( 'p' ) );
+		// Trim the signature to prevent leading whitespace triggering preformatted text (T269188)
+		signature = signature.trim();
 	}
 	// Sign the last line
-	// TODO: When we implement posting new topics, the leading space will create an indent-pre
 	container.lastChild.appendChild(
-		createWikitextNode( doc, mw.msg( 'discussiontools-signature-prefix' ) + '~~~~' )
+		createWikitextNode( doc, signature )
 	);
 }
 
