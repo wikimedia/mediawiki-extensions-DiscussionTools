@@ -10,6 +10,7 @@
 	"discussiontools-preference-description": "Латайо керла белхан процесс [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] тӀехь, дийцарийн агӀонашкахь.\n\nДехар до, терго йе, хан мел йолу тӀетухур болуш бу керла аьттонаш.\n\nОцу функцех лаьцна хьажа [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
 	"discussiontools-replylink": "жоп",
 	"discussiontools-replywidget-cancel": "Цаоьшу",
+	"discussiontools-replywidget-feedback": "ХӀокху функцех лаьцна хьайна хетарг язде",
 	"discussiontools-replywidget-loading": "Чуйолуш...",
 	"discussiontools-replywidget-mention-prefix": "@",
 	"discussiontools-replywidget-mention-tool-title": "Декъашхо хьахо",
