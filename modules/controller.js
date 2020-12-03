@@ -208,7 +208,7 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 				} ] } ).promise();
 			}
 
-			return new CommentDetails( pageName, oldId );
+			return new CommentDetails( pageName, oldId, metadata.notices );
 		} );
 }
 

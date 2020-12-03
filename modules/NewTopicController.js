@@ -9,6 +9,7 @@ function NewTopicController( $pageContainer, $replyLink, parser ) {
 		padded: true,
 		framed: true
 	} );
+	this.$notices = $( '<div>' ).addClass( 'ext-discussiontools-ui-newTopic-notices' );
 
 	this.sectionTitle = new OO.ui.TextInputWidget( {
 		// Wrap in a <h2> element to inherit heading font styles
@@ -23,7 +24,7 @@ function NewTopicController( $pageContainer, $replyLink, parser ) {
 	} );
 	this.prevTitleText = '';
 
-	this.container.$element.append( this.sectionTitleField.$element );
+	this.container.$element.append( this.$notices, this.sectionTitleField.$element );
 
 	// HeadingItem representing the heading being added, so that we can pretend we're replying to it
 	var comment = new HeadingItem( {
@@ -66,6 +67,24 @@ NewTopicController.prototype.setup = function ( mode ) {
  */
 NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 	NewTopicController.super.prototype.setupReplyWidget.call( this, replyWidget, data );
+
+	this.$notices.empty();
+	for ( var noticeName in this.replyWidget.commentDetails.notices ) {
+		if (
+			// Ignored because we have a custom warning for non-logged-in users.
+			noticeName === 'anoneditwarning' ||
+			// Ignored because it contains mostly instructions for signing comments using tildes.
+			// (Does not appear in VE notices right now, but just in case.)
+			noticeName === 'talkpagetext'
+		) {
+			continue;
+		}
+		var noticeItem = this.replyWidget.commentDetails.notices[ noticeName ];
+		var $noticeElement = $( '<div>' )
+			.addClass( 'ext-discussiontools-ui-replyWidget-notice' )
+			.html( typeof noticeItem === 'string' ? noticeItem : noticeItem.message );
+		this.$notices.append( $noticeElement );
+	}
 
 	var title = this.replyWidget.storage.get( this.replyWidget.storagePrefix + '/title' );
 	if ( title && !this.sectionTitle.getValue() ) {
