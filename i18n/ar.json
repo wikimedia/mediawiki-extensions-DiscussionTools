@@ -51,6 +51,7 @@
 	"discussiontools-error-noswitchtove-table": "صيغة الجدول",
 	"discussiontools-error-noswitchtove-template": "صيغة القالب",
 	"discussiontools-error-noswitchtove-title": "المحرّر المرئي معطّل",
+	"discussiontools-postedit-confirmation-published": "تم نشر تعليقك.",
 	"tag-discussiontools-description": "تعديل تم عن طريق أدوات_النقاش",
 	"tag-discussiontools-edit": "{{GENDER:|عدّل|عدّلي}} تعليقا",
 	"tag-discussiontools-edit-description": "عدّل مستخدمون تعليقا موجودا، عبر أدوات_النقاش",
