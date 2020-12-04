@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Javiero",
 			"NMaia",
 			"Robin van der Vliet"
 		]
@@ -15,6 +16,7 @@
 	"discussiontools-replywidget-placeholder-reply": "Respondo al {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Antaŭrigardi",
 	"discussiontools-replywidget-reply": "Respondi",
+	"discussiontools-postedit-confirmation-published": "Via komento estis publikigita.",
 	"tag-discussiontools-source": "Fonto",
 	"tag-discussiontools-visual": "Vida"
 }

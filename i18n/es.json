@@ -42,6 +42,7 @@
 	"discussiontools-error-noswitchtove-extension": "sintaxis de la extensión o la referencia",
 	"discussiontools-error-noswitchtove-table": "sintaxis de la tabla",
 	"discussiontools-error-noswitchtove-template": "sintaxis de la plantilla",
+	"discussiontools-postedit-confirmation-published": "Se publicó el comentario.",
 	"tag-discussiontools-description": "Edición hecha con DiscussionTools",
 	"tag-discussiontools-edit": "Editar comentario",
 	"tag-discussiontools-edit-description": "El usuario editó un comentario existente con DiscussionTools",
