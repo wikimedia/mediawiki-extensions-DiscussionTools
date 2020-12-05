@@ -14,6 +14,20 @@ function isBlockElement( node ) {
 }
 
 /**
+ * @param {Node} node
+ * @return {boolean} Node is considered a rendering-transparent node in Parsoid
+ */
+function isRenderingTransparentNode( node ) {
+	return (
+		node.nodeType === Node.COMMENT_NODE ||
+		node.nodeType === Node.ELEMENT_NODE && (
+			node.tagName.toLowerCase() === 'meta' ||
+			node.tagName.toLowerCase() === 'link'
+		)
+	);
+}
+
+/**
  * Get the index of a node in its parentNode's childNode list
  *
  * @param {Node} child
@@ -283,6 +297,7 @@ function getFullyCoveredSiblings( item ) {
 
 module.exports = {
 	isBlockElement: isBlockElement,
+	isRenderingTransparentNode: isRenderingTransparentNode,
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
 	getIndentLevel: getIndentLevel,
