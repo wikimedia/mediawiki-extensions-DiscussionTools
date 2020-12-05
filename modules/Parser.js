@@ -748,10 +748,6 @@ Parser.prototype.buildThreadItems = function () {
 		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, endNode, length,
 		match, lastSigNodeOffset, startLevel, endLevel, level, dateTime, warnings;
 
-	function isBlockElement( n ) {
-		return n instanceof HTMLElement && ve.isBlockElement( n );
-	}
-
 	treeWalker = this.rootNode.ownerDocument.createTreeWalker(
 		this.rootNode,
 		// eslint-disable-next-line no-bitwise
@@ -818,7 +814,7 @@ Parser.prototype.buildThreadItems = function () {
 				// If this isn't a last sibling:
 				// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 				// avoiding that would be more difficult and slower.
-				( endNode.nextSibling && !isBlockElement( endNode.nextSibling ) ) ||
+				( endNode.nextSibling && !utils.isBlockElement( endNode.nextSibling ) ) ||
 				// When we reach a last sibling:
 				// Traverse up from inline nodes until the parent is a block element.
 				// This moves end markers from
@@ -827,8 +823,8 @@ Parser.prototype.buildThreadItems = function () {
 				//  "timestamp</small></span>|</p>"
 				(
 					!endNode.nextSibling &&
-					!isBlockElement( endNode ) &&
-					!isBlockElement( endNode.parentNode )
+					!utils.isBlockElement( endNode ) &&
+					!utils.isBlockElement( endNode.parentNode )
 				)
 			) {
 				endNode = endNode.nextSibling || endNode.parentNode;

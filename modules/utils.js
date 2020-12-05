@@ -6,6 +6,14 @@
  */
 
 /**
+ * @param {Node} node
+ * @return {boolean} Node is a block element
+ */
+function isBlockElement( node ) {
+	return node instanceof HTMLElement && ve.isBlockElement( node );
+}
+
+/**
  * Get the index of a node in its parentNode's childNode list
  *
  * @param {Node} child
@@ -274,6 +282,7 @@ function getFullyCoveredSiblings( item ) {
 }
 
 module.exports = {
+	isBlockElement: isBlockElement,
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
 	getIndentLevel: getIndentLevel,

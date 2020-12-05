@@ -310,7 +310,7 @@ function unwrapList( list, fragment ) {
 			while ( list.firstChild.firstChild ) {
 				// If contents is a block element, place outside the paragraph
 				// and start a new paragraph after
-				if ( list.firstChild.firstChild instanceof HTMLElement && ve.isBlockElement( list.firstChild.firstChild ) ) {
+				if ( utils.isBlockElement( list.firstChild.firstChild ) ) {
 					if ( p.firstChild ) {
 						insertBefore = referenceNode.nextSibling;
 						referenceNode = p;
