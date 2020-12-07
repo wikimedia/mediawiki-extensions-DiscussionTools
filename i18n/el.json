@@ -22,6 +22,7 @@
 	"discussiontools-error-comment-disappeared": "Δεν ήταν δυνατή η εύρεση του σχολίου στο οποίο απαντάτε στη σελίδα. Μπορεί να έχει διαγραφεί ή μεταφερθεί σε άλλη σελίδα. Επαναλάβετε τη φόρτωση της σελίδας και προσπαθήστε ξανά.",
 	"discussiontools-error-comment-is-transcluded": "Αυτό το σχόλιο δεν μπορεί να απαντηθεί χρησιμοποιώντας αυτό το εργαλείο. Παρακαλούμε προσπαθήστε χρησιμοποιώντας το επεξεργαστή πλήρης σελίδας.",
 	"discussiontools-error-comment-is-transcluded-title": "Αυτό το σχόλιο δεν μπορεί να απαντηθεί εδώ (ακόμη), επειδή φορτώνεται από άλλη σελίδα. Παρακαλούμε πηγαίνετε στη [[$1]] για να το απαντήσετε.",
+	"discussiontools-postedit-confirmation-published": "Το σχόλιό σας δημοσιεύτηκε.",
 	"tag-discussiontools-description": "Επεξεργασία που έγινε χρησιμοποιώντας το DiscussionTools",
 	"tag-discussiontools-edit": "Επεξεργασία σχολίου",
 	"tag-discussiontools-edit-description": "Ο χρήστης επεξεργάστηκε ένα υπάρχον σχόλιο με το DiscussionTools",
