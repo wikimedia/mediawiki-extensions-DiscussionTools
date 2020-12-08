@@ -348,6 +348,27 @@
         "id": "c|Matma Rex|2020-11-02T18:33:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
         "warnings": [],
         "replies": []
+      },
+      {
+        "type": "comment",
+        "timestamp": "2020-11-02T18:33:00.000Z",
+        "author": "Matma Rex",
+        "range": [
+          "25/0",
+          "25/5/0"
+        ],
+        "signatureRanges": [
+          [
+            "25/1",
+            "25/4/30"
+          ]
+        ],
+        "level": 1,
+        "id": "c|Matma Rex|2020-11-02T18:33:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)|1",
+        "warnings": [
+          "Duplicate comment ID"
+        ],
+        "replies": []
       }
     ]
   },
@@ -355,8 +376,8 @@
     "placeholderHeading": false,
     "type": "heading",
     "range": [
-      "25/0/1",
-      "25/0/2"
+      "27/0/1",
+      "27/0/2"
     ],
     "headingLevel": 2,
     "level": 0,
@@ -368,13 +389,13 @@
         "timestamp": "2020-11-02T18:34:00.000Z",
         "author": "Matma Rex",
         "range": [
-          "27/0",
-          "27/4/30"
+          "29/0",
+          "29/4/30"
         ],
         "signatureRanges": [
           [
-            "27/1",
-            "27/4/30"
+            "29/1",
+            "29/4/30"
           ]
         ],
         "level": 1,
