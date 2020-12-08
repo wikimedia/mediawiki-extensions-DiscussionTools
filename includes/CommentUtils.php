@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMComment;
 use DOMElement;
 use DOMNode;
 use DOMXPath;
@@ -35,6 +36,20 @@ class CommentUtils {
 	public static function isBlockElement( DOMNode $node ) : bool {
 		return $node instanceof DOMElement &&
 			in_array( strtolower( $node->tagName ), self::$blockElementTypes );
+	}
+
+	/**
+	 * @param DOMNode $node
+	 * @return bool Node is considered a rendering-transparent node in Parsoid
+	 */
+	public static function isRenderingTransparentNode( DOMNode $node ) : bool {
+		return (
+			$node instanceof DOMComment ||
+			$node instanceof DOMElement && (
+				strtolower( $node->tagName ) === 'meta' ||
+				strtolower( $node->tagName ) === 'link'
+			)
+		);
 	}
 
 	/**

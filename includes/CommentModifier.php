@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMComment;
 use DOMDocument;
 use DOMDocumentFragment;
 use DOMElement;
@@ -140,13 +139,14 @@ class CommentModifier {
 				$target = $target->parentNode;
 			}
 
-			// Parsoid puts HTML comments which appear at the end of the line in wikitext outside the paragraph,
+			// Parsoid puts HTML comments (and other "rendering-transparent nodes", e.g. category links)
+			// which appear at the end of the line in wikitext outside the paragraph,
 			// but we usually shouldn't insert replies between the paragraph and such comments. (T257651)
 			// Skip over comments and whitespace, but only update target when skipping past comments.
 			$pointer = $target;
 			while (
 				$pointer->nextSibling && (
-					$pointer->nextSibling instanceof DOMComment ||
+					CommentUtils::isRenderingTransparentNode( $pointer->nextSibling ) ||
 					(
 						$pointer->nextSibling instanceof DOMText &&
 						CommentUtils::htmlTrim( $pointer->nextSibling->nodeValue ) === '' &&
@@ -157,7 +157,7 @@ class CommentModifier {
 				)
 			) {
 				$pointer = $pointer->nextSibling;
-				if ( $pointer instanceof DOMComment ) {
+				if ( CommentUtils::isRenderingTransparentNode( $pointer ) ) {
 					$target = $pointer;
 				}
 			}
