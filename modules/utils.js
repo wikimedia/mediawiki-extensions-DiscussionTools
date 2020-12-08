@@ -249,20 +249,22 @@ function getFullyCoveredSiblings( item ) {
 			( n.className && n.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 );
 	}
 
-	function firstNonemptyChild( n ) {
-		n = n.firstChild;
-		while ( n && isIgnored( n ) ) {
-			n = n.nextSibling;
+	function isFirstNonemptyChild( n ) {
+		while ( ( n = n.previousSibling ) ) {
+			if ( !isIgnored( n ) ) {
+				return false;
+			}
 		}
-		return n;
+		return true;
 	}
 
-	function lastNonemptyChild( n ) {
-		n = n.lastChild;
-		while ( n && isIgnored( n ) ) {
-			n = n.previousSibling;
+	function isLastNonemptyChild( n ) {
+		while ( ( n = n.nextSibling ) ) {
+			if ( !isIgnored( n ) ) {
+				return false;
+			}
 		}
-		return n;
+		return true;
 	}
 
 	startMatches = false;
@@ -272,7 +274,11 @@ function getFullyCoveredSiblings( item ) {
 			startMatches = true;
 			break;
 		}
-		node = firstNonemptyChild( node );
+		if ( isIgnored( node ) ) {
+			node = node.nextSibling;
+		} else {
+			node = node.firstChild;
+		}
 	}
 
 	endMatches = false;
@@ -285,15 +291,19 @@ function getFullyCoveredSiblings( item ) {
 			endMatches = true;
 			break;
 		}
-		node = lastNonemptyChild( node );
+		if ( isIgnored( node ) ) {
+			node = node.previousSibling;
+		} else {
+			node = node.lastChild;
+		}
 	}
 
 	if ( startMatches && endMatches ) {
 		// If these are all of the children (or the only child), go up one more level
 		while (
 			( parent = siblings[ 0 ].parentNode ) &&
-			firstNonemptyChild( parent ) === siblings[ 0 ] &&
-			lastNonemptyChild( parent ) === siblings[ siblings.length - 1 ]
+			isFirstNonemptyChild( siblings[ 0 ] ) &&
+			isLastNonemptyChild( siblings[ siblings.length - 1 ] )
 		) {
 			siblings = [ parent ];
 		}
