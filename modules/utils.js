@@ -22,7 +22,14 @@ function isRenderingTransparentNode( node ) {
 		node.nodeType === Node.COMMENT_NODE ||
 		node.nodeType === Node.ELEMENT_NODE && (
 			node.tagName.toLowerCase() === 'meta' ||
-			node.tagName.toLowerCase() === 'link'
+			node.tagName.toLowerCase() === 'link' ||
+			// Empty inline templates, e.g. tracking templates
+			(
+				node.tagName.toLowerCase() === 'span' &&
+				node.getAttribute( 'typeof' ).split( ' ' ).indexOf( 'mw:Transclusion' ) !== -1 &&
+				// eslint-disable-next-line no-use-before-define
+				!htmlTrim( node.innerHTML )
+			)
 		)
 	);
 }

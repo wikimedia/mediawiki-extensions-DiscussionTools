@@ -8,6 +8,7 @@ use DOMNode;
 use DOMXPath;
 use MediaWiki\MediaWikiServices;
 use Title;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentUtils {
 	private function __construct() {
@@ -47,7 +48,13 @@ class CommentUtils {
 			$node instanceof DOMComment ||
 			$node instanceof DOMElement && (
 				strtolower( $node->tagName ) === 'meta' ||
-				strtolower( $node->tagName ) === 'link'
+				strtolower( $node->tagName ) === 'link' ||
+				// Empty inline templates, e.g. tracking templates
+				(
+					strtolower( $node->tagName ) === 'span' &&
+					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ) ) &&
+					!self::htmlTrim( DOMCompat::getInnerHTML( $node ) )
+				)
 			)
 		);
 	}
