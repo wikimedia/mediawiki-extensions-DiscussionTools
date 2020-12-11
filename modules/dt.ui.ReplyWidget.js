@@ -672,7 +672,8 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 			widget.captchaMessage = new OO.ui.MessageWidget( {
 				type: 'notice',
-				label: widget.captchaInput.$element
+				label: widget.captchaInput.$element,
+				classes: [ 'dt-ui-replyWidget-captcha' ]
 			} );
 			widget.captchaMessage.$element.insertAfter( widget.$preview );
 
@@ -682,7 +683,8 @@ ReplyWidget.prototype.onReplyClick = function () {
 		} else {
 			widget.errorMessage = new OO.ui.MessageWidget( {
 				type: 'error',
-				label: code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data )
+				label: code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
+				classes: [ 'dt-ui-replyWidget-error' ]
 			} );
 			widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
 		}
