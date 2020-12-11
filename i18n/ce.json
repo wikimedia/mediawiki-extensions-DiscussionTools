@@ -8,7 +8,9 @@
 	"discussiontools-defaultsummary-reply": "Жоп",
 	"discussiontools-preference-label": "Дийцарийн гӀирсаш",
 	"discussiontools-preference-description": "Латайо керла белхан процесс [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] тӀехь, дийцарийн агӀонашкахь.\n\nДехар до, терго йе, хан мел йолу тӀетухур болуш бу керла аьттонаш.\n\nОцу функцех лаьцна хьажа [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",
+	"discussiontools-preference-info-link": "https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary",
 	"discussiontools-replylink": "жоп",
+	"discussiontools-replywidget-advanced": "Кхин тӀе",
 	"discussiontools-replywidget-cancel": "Цаоьшу",
 	"discussiontools-replywidget-feedback": "ХӀокху функцех лаьцна хьайна хетарг язде",
 	"discussiontools-replywidget-loading": "Чуйолуш...",
@@ -32,5 +34,5 @@
 	"tag-discussiontools-reply-description": "Декъашхочо DiscussionTools гӀоьнца комментана жоп дела",
 	"tag-discussiontools-source": "Хьост",
 	"tag-discussiontools-visual": "БӀаьра",
-	"tag-discussiontools-visual-description": "DiscussionTools бӀаьран режехь"
+	"tag-discussiontools-visual-description": "DiscussionTools бӀаьран ражехь"
 }
