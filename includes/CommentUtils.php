@@ -60,6 +60,33 @@ class CommentUtils {
 	}
 
 	/**
+	 * Elements which can't have element children (but some may have text content).
+	 * https://html.spec.whatwg.org/#elements-2
+	 * @var string[]
+	 */
+	private static $noElementChildrenElementTypes = [
+		// Void elements
+		'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+		'link', 'meta', 'param', 'source', 'track', 'wbr',
+		// Raw text elements
+		'script', 'style',
+		// Escapable raw text elements
+		'textarea', 'title',
+	];
+
+	/**
+	 * @param DOMNode $node
+	 * @return bool If true, node can't have element children. If false, it's complicated.
+	 */
+	public static function cantHaveElementChildren( DOMNode $node ) : bool {
+		return (
+			$node instanceof DOMComment ||
+			$node instanceof DOMElement &&
+				in_array( strtolower( $node->tagName ), self::$noElementChildrenElementTypes )
+		);
+	}
+
+	/**
 	 * Get the index of $child in its parent
 	 *
 	 * @param DOMNode $child
