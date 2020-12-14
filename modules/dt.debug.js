@@ -16,7 +16,6 @@ var
 if ( debug & DEBUG_HIGHLIGHT ) {
 	highlighter.markThreads( threads );
 
-	// TODO: Use comment.signatureRanges to mark up signatures/timestamps
 	comments.forEach( function ( comment ) {
 		comment.signatureRanges.forEach( function ( signatureRange ) {
 			var signature, emptySignature, node, match;
