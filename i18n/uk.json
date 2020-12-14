@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alexander Yukal",
+			"Base",
 			"Movses",
 			"Piramidion",
 			"Ата"
@@ -45,6 +46,7 @@
 	"discussiontools-error-noswitchtove-table": "синтаксис таблиці",
 	"discussiontools-error-noswitchtove-template": "синтаксис шаблона",
 	"discussiontools-error-noswitchtove-title": "Візуальний режим вимкнено",
+	"discussiontools-postedit-confirmation-published": "Ваш коментар опубліковано.",
 	"tag-discussiontools-description": "Редагування зроблене через DiscussionTools",
 	"tag-discussiontools-edit": "відредаговано коментар",
 	"tag-discussiontools-edit-description": "Користувач відредагував наявний коментар через DiscussionTools",
