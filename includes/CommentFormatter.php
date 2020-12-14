@@ -46,6 +46,22 @@ class CommentFormatter {
 			$startMarker->setAttribute( 'data-mw-comment-start', $id );
 			$endMarker = $doc->createElement( 'span' );
 			$endMarker->setAttribute( 'data-mw-comment-end', $id );
+
+			// Extend the range if the start or end is inside an element which can't have element children.
+			// (There may be other problematic elements... but this seems like a good start.)
+			if ( CommentUtils::cantHaveElementChildren( $range->startContainer ) ) {
+				$range = $range->setStart(
+					$range->startContainer->parentNode,
+					CommentUtils::childIndexOf( $range->startContainer )
+				);
+			}
+			if ( CommentUtils::cantHaveElementChildren( $range->endContainer ) ) {
+				$range = $range->setEnd(
+					$range->endContainer->parentNode,
+					CommentUtils::childIndexOf( $range->endContainer ) + 1
+				);
+			}
+
 			$range->setStart( $range->endContainer, $range->endOffset )->insertNode( $endMarker );
 			$range->insertNode( $startMarker );
 
