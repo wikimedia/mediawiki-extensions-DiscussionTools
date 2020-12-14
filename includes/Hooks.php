@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Action;
 use ConfigException;
+use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
 use OutputPage;
@@ -67,6 +68,14 @@ class Hooks {
 		// Don't show on edit pages, history, etc.
 		if ( Action::getActionName( $output->getContext() ) !== 'view' ) {
 			return false;
+		}
+
+		// Don't show on mobile
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
+			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
+			if ( $mobFrontContext->shouldDisplayMobileView() ) {
+				return false;
+			}
 		}
 
 		$title = $output->getTitle();
