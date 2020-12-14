@@ -1,6 +1,8 @@
 'use strict';
 /* global $:off */
 
+var noElementChildrenElementTypes;
+
 /**
  * @external ThreadItem
  */
@@ -31,6 +33,30 @@ function isRenderingTransparentNode( node ) {
 				!htmlTrim( node.innerHTML )
 			)
 		)
+	);
+}
+
+// Elements which can't have element children (but some may have text content).
+// https://html.spec.whatwg.org/#elements-2
+noElementChildrenElementTypes = [
+	// Void elements
+	'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+	'link', 'meta', 'param', 'source', 'track', 'wbr',
+	// Raw text elements
+	'script', 'style',
+	// Escapable raw text elements
+	'textarea', 'title'
+];
+
+/**
+ * @param {Node} node
+ * @return {boolean} If true, node can't have element children. If false, it's complicated.
+ */
+function cantHaveElementChildren( node ) {
+	return (
+		node.nodeType === Node.COMMENT_NODE ||
+		node.nodeType === Node.ELEMENT_NODE &&
+			noElementChildrenElementTypes.indexOf( node.tagName.toLowerCase() ) !== -1
 	);
 }
 
@@ -305,6 +331,7 @@ function getFullyCoveredSiblings( item ) {
 module.exports = {
 	isBlockElement: isBlockElement,
 	isRenderingTransparentNode: isRenderingTransparentNode,
+	cantHaveElementChildren: cantHaveElementChildren,
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
 	getIndentLevel: getIndentLevel,

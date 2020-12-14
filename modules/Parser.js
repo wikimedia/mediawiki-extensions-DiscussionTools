@@ -627,10 +627,27 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 };
 
 /**
+ * Check whether the node is a comment separator (instead of a part of the comment).
+ *
+ * @param {Node} node
+ * @return {boolean}
+ */
+function isCommentSeparator( node ) {
+	return node.nodeType === Node.ELEMENT_NODE && (
+		// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
+		node.nodeName.toLowerCase() === 'br' ||
+		// Horizontal line
+		node.nodeName.toLowerCase() === 'hr'
+	);
+}
+
+/**
  * Return the next leaf node in the tree order that is likely a part of a discussion comment,
  * rather than some boring "separator" element.
  *
- * Currently, this can return a Text node with content other than whitespace, or an `<img>` node.
+ * Currently, this can return a Text node with content other than whitespace, or an Element node
+ * that is a "void element" or "text element", except some special cases that we treat as comment
+ * separators (isCommentSeparator()).
  *
  * @private
  * @param {Node} node Node to start searching at. If it isn't a leaf node, its children are ignored.
@@ -650,10 +667,14 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 			if ( node !== rootNode && ( n === node || n.parentNode === node ) ) {
 				return NodeFilter.FILTER_REJECT;
 			}
+			// Ignore some elements usually used as separators or headers (and their descendants)
+			if ( isCommentSeparator( n ) ) {
+				return NodeFilter.FILTER_REJECT;
+			}
 			if (
 				( n.nodeType === Node.TEXT_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
 				( n.nodeType === Node.CDATA_SECTION_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
-				( n.nodeType === Node.ELEMENT_NODE && n.nodeName.toLowerCase() === 'img' )
+				( utils.cantHaveElementChildren( n ) )
 			) {
 				return NodeFilter.FILTER_ACCEPT;
 			}

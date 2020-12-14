@@ -83,10 +83,27 @@ class CommentParser {
 	}
 
 	/**
+	 * Check whether the node is a comment separator (instead of a part of the comment).
+	 *
+	 * @param DOMNode $node
+	 * @return bool
+	 */
+	private static function isCommentSeparator( DOMNode $node ) {
+		return $node instanceof DOMElement && (
+			// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
+			strtolower( $node->nodeName ) === 'br' ||
+			// Horizontal line
+			strtolower( $node->nodeName ) === 'hr'
+		);
+	}
+
+	/**
 	 * Return the next leaf node in the tree order that is likely a part of a discussion comment,
 	 * rather than some boring "separator" element.
 	 *
-	 * Currently, this can return a Text node with content other than whitespace, or an `<img>` node.
+	 * Currently, this can return a Text node with content other than whitespace, or an Element node
+	 * that is a "void element" or "text element", except some special cases that we treat as comment
+	 * separators (isCommentSeparator()).
 	 *
 	 * @param DOMNode $node Node to start searching at. This node's children are ignored.
 	 * @return DOMNode
@@ -102,6 +119,10 @@ class CommentParser {
 				if ( $node !== $rootNode && ( $n === $node || $n->parentNode === $node ) ) {
 					return NodeFilter::FILTER_REJECT;
 				}
+				// Ignore some elements usually used as separators or headers (and their descendants)
+				if ( self::isCommentSeparator( $n ) ) {
+					return NodeFilter::FILTER_REJECT;
+				}
 				if (
 					(
 						$n->nodeType === XML_TEXT_NODE &&
@@ -112,8 +133,7 @@ class CommentParser {
 						CommentUtils::htmlTrim( $n->nodeValue ) !== ''
 					) ||
 					(
-						$n->nodeType === XML_ELEMENT_NODE &&
-						strtolower( $n->nodeName ) === 'img'
+						CommentUtils::cantHaveElementChildren( $n )
 					)
 				) {
 					return NodeFilter::FILTER_ACCEPT;
