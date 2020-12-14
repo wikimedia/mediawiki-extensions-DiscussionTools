@@ -28,7 +28,7 @@ function ThreadItem( type, level, range ) {
 	 */
 	this.id = null;
 	/**
-	 * @member {CommentItem[]} Replies to this thread item
+	 * @member {ThreadItem[]} Replies to this thread item
 	 */
 	this.replies = [];
 
