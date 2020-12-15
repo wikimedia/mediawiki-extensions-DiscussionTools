@@ -12,6 +12,19 @@ var
 		.concat( conf.pluginModules.filter( mw.loader.getState ) ),
 	plainModules = [ 'ext.discussionTools.ReplyWidgetPlain' ];
 
+if ( OO.ui.isMobile() ) {
+	visualModules = [
+		'ext.visualEditor.core.mobile',
+		'ext.visualEditor.mwextensions'
+	].concat( visualModules );
+} else {
+	visualModules = [
+		'ext.visualEditor.core.desktop',
+		'ext.visualEditor.desktopTarget',
+		'ext.visualEditor.mwextensions.desktop'
+	].concat( visualModules );
+}
+
 // Start loading reply widget code
 if ( defaultVisual || enable2017Wikitext ) {
 	mw.loader.using( visualModules );

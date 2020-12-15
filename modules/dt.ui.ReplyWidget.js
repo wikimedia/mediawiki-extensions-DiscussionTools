@@ -84,30 +84,35 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 			)
 	} );
 
-	this.modeTabSelect = new ModeTabSelectWidget( {
-		classes: [ 'ext-discussiontools-ui-replyWidget-modeTabs' ],
-		items: [
-			new ModeTabOptionWidget( {
-				label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
-				data: 'visual'
-			} ),
-			new ModeTabOptionWidget( {
-				label: mw.msg( 'discussiontools-replywidget-mode-source' ),
-				data: 'source'
-			} )
-		],
-		framed: false
-	} );
-	this.modeTabSelect.$element.attr( 'aria-label', mw.msg( 'visualeditor-mweditmode-tooltip' ) );
-	// Make the option for the current mode disabled, to make it un-interactable
-	// (we override the styles to make it look as if it was selected)
-	this.modeTabSelect.findItemFromData( this.getMode() ).setDisabled( true );
-
 	this.$headerWrapper = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-headerWrapper' );
-	this.$headerWrapper.append(
-		// Visual mode toolbar attached here by CommentTarget#attachToolbar
-		this.modeTabSelect.$element
-	);
+
+	if ( !OO.ui.isMobile() ) {
+		this.modeTabSelect = new ModeTabSelectWidget( {
+			classes: [ 'ext-discussiontools-ui-replyWidget-modeTabs' ],
+			items: [
+				new ModeTabOptionWidget( {
+					label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
+					data: 'visual'
+				} ),
+				new ModeTabOptionWidget( {
+					label: mw.msg( 'discussiontools-replywidget-mode-source' ),
+					data: 'source'
+				} )
+			],
+			framed: false
+		} );
+		this.modeTabSelect.$element.attr( 'aria-label', mw.msg( 'visualeditor-mweditmode-tooltip' ) );
+		// Make the option for the current mode disabled, to make it un-interactable
+		// (we override the styles to make it look as if it was selected)
+		this.modeTabSelect.findItemFromData( this.getMode() ).setDisabled( true );
+		this.modeTabSelect.connect( this, {
+			choose: 'onModeTabSelectChoose'
+		} );
+		this.$headerWrapper.append(
+			// Visual mode toolbar attached here by CommentTarget#attachToolbar
+			this.modeTabSelect.$element
+		);
+	}
 
 	this.$preview = $( '<div>' )
 		.addClass( 'ext-discussiontools-ui-replyWidget-preview' )
@@ -195,9 +200,6 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 	this.unloadHandler = this.onUnload.bind( this );
 	this.onWatchToggleHandler = this.onWatchToggle.bind( this );
-	this.modeTabSelect.connect( this, {
-		choose: 'onModeTabSelectChoose'
-	} );
 	this.advancedToggle.connect( this, { click: 'onAdvancedToggleClick' } );
 	this.editSummaryInput.connect( this, { change: 'onEditSummaryChange' } );
 	this.editSummaryInput.$input.on( 'keydown', this.onKeyDown.bind( this, false ) );
@@ -503,6 +505,11 @@ ReplyWidget.prototype.setup = function ( data ) {
 
 	if ( this.isNewTopic ) {
 		this.commentController.sectionTitle.connect( this, { change: 'onInputChangeThrottled' } );
+	} else {
+		// De-indent replies on mobile
+		if ( OO.ui.isMobile() ) {
+			this.$element.css( 'margin-left', -this.$element.position().left );
+		}
 	}
 
 	// eslint-disable-next-line no-jquery/no-global-selector
@@ -581,7 +588,9 @@ ReplyWidget.prototype.teardown = function ( abandoned ) {
 	}
 	// Make sure that the selector is blurred before it gets removed from the document, otherwise
 	// event handlers for arrow keys are not removed, and it keeps trying to switch modes (T274423)
-	this.modeTabSelect.blur();
+	if ( this.modeTabSelect ) {
+		this.modeTabSelect.blur();
+	}
 	this.unbindBeforeUnloadHandler();
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '#ca-watch, #ca-unwatch' ).off( 'watchpage.mw', this.onWatchToggleHandler );
