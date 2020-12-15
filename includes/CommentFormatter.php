@@ -80,7 +80,7 @@ class CommentFormatter {
 				$replyLink->setAttribute( 'role', 'button' );
 				$replyLink->setAttribute( 'tabindex', '0' );
 				$replyLink->setAttribute( 'data-mw-comment', $itemJSON );
-				$replyLink->nodeValue = wfMessage( 'discussiontools-replylink' );
+				$replyLink->nodeValue = wfMessage( 'discussiontools-replylink' )->text();
 
 				$bracket = $doc->createElement( 'span' );
 				$bracket->setAttribute( 'class', 'dt-init-replylink-bracket' );
