@@ -215,8 +215,9 @@ function getCheckboxesPromise( pageName, oldId ) {
 		if ( 'wpWatchthis' in data.checkboxesDef ) {
 			checkboxesDef.wpWatchthis = data.checkboxesDef.wpWatchthis;
 		}
-		// targetLoader was loaded by getPageData
-		return mw.libs.ve.targetLoader.createCheckboxFields( checkboxesDef );
+		return mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
+			return mw.libs.ve.targetLoader.createCheckboxFields( checkboxesDef );
+		} );
 		// TODO: createCheckboxField doesn't make links in the label open in a new
 		// window as that method currently lives in ve.utils
 	} );
