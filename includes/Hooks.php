@@ -15,6 +15,7 @@ use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
 use OutputPage;
+use PageProps;
 use RecentChange;
 use RequestContext;
 use Skin;
@@ -106,13 +107,16 @@ class Hooks {
 			)
 		);
 
+		$props = PageProps::getInstance()->getProperties( $title, 'newsectionlink' );
+		$hasNewSectionLink = isset( $props[ $title->getArticleId() ] );
+
 		// Finally check the user has the tool enabled and that the page
 		// supports discussions.
 		return $userEnabled && (
 			// `wantSignatures` includes talk pages
 			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
 			// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
-			$output->showNewSectionLink()
+			$hasNewSectionLink
 			// TODO: Consider not loading if forceHideNewSectionLink is true.
 		);
 	}
