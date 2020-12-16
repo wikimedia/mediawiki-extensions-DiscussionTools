@@ -20,6 +20,7 @@ use RecentChange;
 use RequestContext;
 use Skin;
 use Throwable;
+use Title;
 use User;
 use VisualEditorHooks;
 use WebRequest;
@@ -71,6 +72,12 @@ class Hooks {
 			return false;
 		}
 
+		$title = $output->getTitle();
+		// Don't show on pages without a Title
+		if ( !$title ) {
+			return false;
+		}
+
 		// Don't show on mobile
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
 			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
@@ -79,28 +86,49 @@ class Hooks {
 			}
 		}
 
-		$title = $output->getTitle();
+		return self::isAvailableForTitleAndUser(
+			$title,
+			$output->getUser(),
+			// overrideAllChecks
+			// Query parameter override to load on any wikitext page for testing
+			$output->getRequest()->getVal( 'dtenable' ) ||
+				// Extra hack for parses from API, where this parameter isn't passed to derivative requests
+				RequestContext::getMain()->getRequest()->getVal( 'dtenable' ),
+			// overrideUserEnabled
+			$output->getRequest()->getCookie( 'discussiontools-tempenable' ) ?: false
+		);
+	}
+
+	/**
+	 * Check if the tool should be available for a given title and user
+	 *
+	 * @param Title $title
+	 * @param User $user
+	 * @param bool $overrideAllChecks Override all checks, excluding those which make
+	 *  it technically impossible to load reply links (content model check).
+	 * @param bool $overrideUserPrefs Override user preference check
+	 * @return bool
+	 */
+	private static function isAvailableForTitleAndUser(
+		Title $title,
+		User $user,
+		bool $overrideAllChecks = false,
+		bool $overrideUserPrefs = false
+	) {
 		// Only wikitext pages (e.g. not Flow boards)
 		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
 			return false;
 		}
-
-		// Query parameter override to load on any wikitext page for testing
-		if ( $output->getRequest()->getVal( 'dtenable' ) ) {
-			return true;
-		}
-		// Extra hack for parses from API, where this parameter isn't passed to derivative requests
-		if ( RequestContext::getMain()->getRequest()->getVal( 'dtenable' ) ) {
+		if ( $overrideAllChecks ) {
 			return true;
 		}
 
-		$user = $output->getUser();
 		$services = MediaWikiServices::getInstance();
 		$optionsLookup = $services->getUserOptionsLookup();
 
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 		$isBeta = $dtConfig->get( 'DiscussionToolsBeta' );
-		$userEnabled = $output->getRequest()->getCookie( 'discussiontools-tempenable' ) || (
+		$userEnabled = $overrideUserPrefs || (
 			$dtConfig->get( 'DiscussionToolsEnable' ) && (
 				( $isBeta && $optionsLookup->getOption( $user, 'discussiontools-betaenable' ) ) ||
 				( !$isBeta && $optionsLookup->getOption( $user, 'discussiontools-replytool' ) )
