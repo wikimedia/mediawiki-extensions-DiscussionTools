@@ -27,7 +27,7 @@ use WebRequest;
 
 class Hooks {
 
-	private static $tags = [
+	private const TAGS = [
 		'discussiontools',
 		// Features:
 		'discussiontools-reply',
@@ -319,7 +319,7 @@ class Hooks {
 	 * @param array &$tags Available change tags.
 	 */
 	public static function onListDefinedTags( array &$tags ) : void {
-		$tags = array_merge( $tags, static::$tags );
+		$tags = array_merge( $tags, static::TAGS );
 	}
 
 	/**
@@ -338,7 +338,7 @@ class Hooks {
 		$request = RequestContext::getMain()->getRequest();
 		$tags = explode( ',', $request->getVal( 'dttags' ) );
 
-		$tags = array_values( array_intersect( $tags, static::$tags ) );
+		$tags = array_values( array_intersect( $tags, static::TAGS ) );
 
 		if ( $tags ) {
 			$recentChange->addTags( $tags );
