@@ -341,9 +341,13 @@
 			"value": false,
 			"description": "Make DiscussionTools a BetaFeature."
 		},
+		"DiscussionTools_replytool": {
+			"value": "default",
+			"description": "Override availability of DiscussionTools reply tool. 'default', 'available', or 'unavailable'."
+		},
 		"DiscussionToolsEnable2017Wikitext": {
 			"value": false,
-			"description": "Enable the 2017 wikitext editor for wikitext replies (not yet supported)."
+			"description": "Enable the 2017 wikitext editor for wikitext mode (not yet supported)."
 		},
 		"DTSchemaEditAttemptStepSamplingRate": {
 			"value": false,
