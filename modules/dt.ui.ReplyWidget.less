@@ -123,23 +123,29 @@
 		margin-bottom: 0.5em;
 		display: flex;
 		align-items: center;
+		// Allow wrapping when the space is very narrow (buttons below the warning text)
+		flex-wrap: wrap;
+		// When wrapping, align actions to the right
+		justify-content: flex-end;
 
 		&.oo-ui-messageWidget-block {
 			> .oo-ui-iconElement-icon {
 				background-position: center center;
 				transform: scale( 1.5 );
 				transform-origin: 0 center;
+				left: 1em;
 			}
 		}
 
 		> .oo-ui-labelElement-label {
 			flex-grow: 1;
+			flex-basis: 20em;
 			margin-left: 3em;
 		}
 
 		.dt-ui-replyWidget-actions {
 			// Fix alignment within message widget
-			margin-bottom: 0;
+			margin-top: 0.5em;
 		}
 	}
 
