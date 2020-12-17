@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aefgh39622",
 			"Geonuch",
 			"Patsagorn Y."
 		]
@@ -32,7 +33,7 @@
 	"discussiontools-error-noswitchtove-template": "รูปแบบของแม่แบบ",
 	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
 	"tag-discussiontools-edit": "แก้ไชความเห็น",
-	"tag-discussiontools-newtopic": "เพิ่มหัวข้อ",
+	"tag-discussiontools-newtopic": "หัวข้อใหม่",
 	"tag-discussiontools-source": "ต้นฉบับ",
 	"tag-discussiontools-visual": "เห็นภาพ"
 }
