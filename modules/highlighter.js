@@ -11,7 +11,7 @@ function markTimestamp( parser, node, match ) {
 	newNode.splitText( match.matchData[ 0 ].length );
 
 	wrapper = document.createElement( 'span' );
-	wrapper.className = 'detected-timestamp';
+	wrapper.className = 'dt-highlighter-timestamp';
 	// We might need to actually port all the date formatting code from MediaWiki's PHP code
 	// if we want to support displaying dates in all the formats available in user preferences
 	// (which include formats in several non-Gregorian calendars).
@@ -25,7 +25,7 @@ function markSignature( sigNodes ) {
 	var
 		where = sigNodes[ 0 ],
 		wrapper = document.createElement( 'span' );
-	wrapper.className = 'detected-signature';
+	wrapper.className = 'dt-highlighter-signature';
 	where.parentNode.insertBefore( wrapper, where );
 	while ( sigNodes.length ) {
 		wrapper.appendChild( sigNodes.pop() );
@@ -77,7 +77,7 @@ function markComment( comment ) {
 
 	rect = fixFakeFirstHeadingRect( rect, comment );
 
-	marker.className = 'detected-comment';
+	marker.className = 'dt-highlighter-comment';
 	marker.style.top = ( rect.top + scrollTop ) + 'px';
 	marker.style.height = ( rect.height ) + 'px';
 	marker.style.left = ( rect.left + scrollLeft ) + 'px';
@@ -89,7 +89,7 @@ function markComment( comment ) {
 
 	if ( comment.warnings && comment.warnings.length ) {
 		markerWarnings = marker.cloneNode( false );
-		markerWarnings.className = 'detected-comment-warnings';
+		markerWarnings.className = 'dt-highlighter-comment-warnings';
 		markerWarnings.innerText = comment.warnings.join( '\n' );
 		// Group warnings at the top as we use nth-child selectors
 		// to alternate color of markers.
@@ -109,7 +109,7 @@ function markComment( comment ) {
 			parentRect.height -= 10;
 		}
 
-		marker2.className = 'detected-comment-ruler';
+		marker2.className = 'dt-highlighter-comment-ruler';
 		marker2.style.top = ( parentRect.top + parentRect.height + scrollTop ) + 'px';
 		marker2.style.height = ( rect.top - ( parentRect.top + parentRect.height ) + 10 ) + 'px';
 		if ( rtl ) {
@@ -134,7 +134,7 @@ function markThreads( threads ) {
 	}
 	// Reverse order so that box-shadows look right
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( 'body' ).append( $( '.detected-comment-ruler' ).get().reverse() );
+	$( 'body' ).append( $( '.dt-highlighter-comment-ruler' ).get().reverse() );
 }
 
 module.exports = {

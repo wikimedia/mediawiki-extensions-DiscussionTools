@@ -1,13 +1,13 @@
 /* stylelint-disable color-named */
 /* stylelint-disable unit-blacklist */
 
-.detected-timestamp {
+.dt-highlighter-timestamp {
 	border: 2px solid forestgreen;
 	border-radius: 6px;
 	margin: -2px;
 }
 
-.detected-signature {
+.dt-highlighter-signature {
 	border: 2px solid blue;
 	border-bottom-left-radius: 6px;
 	border-top-left-radius: 6px;
@@ -16,7 +16,7 @@
 	margin-right: 0;
 }
 
-.detected-signature + .detected-timestamp {
+.dt-highlighter-signature + .dt-highlighter-timestamp {
 	border-left: 0;
 	padding-left: 0;
 	margin-left: 0;
@@ -24,25 +24,25 @@
 	border-top-left-radius: 0;
 }
 
-.detected-timestamp:hover:after {
+.dt-highlighter-timestamp:hover:after {
 	content: ' ' attr( title );
 }
 
-.detected-comment {
+.dt-highlighter-comment {
 	position: absolute;
 	opacity: 0.2;
 	pointer-events: none;
 }
 
-.detected-comment:nth-of-type( 2n ) {
+.dt-highlighter-comment:nth-of-type( 2n ) {
 	background: lightpink;
 }
 
-.detected-comment:nth-of-type( 2n + 1 ) {
+.dt-highlighter-comment:nth-of-type( 2n + 1 ) {
 	background: skyblue;
 }
 
-.detected-comment-ruler {
+.dt-highlighter-comment-ruler {
 	position: absolute;
 	box-sizing: border-box;
 	border-left: 2px solid #ccc;
@@ -50,7 +50,7 @@
 	border-bottom-left-radius: 3px;
 }
 
-.detected-comment-warnings {
+.dt-highlighter-comment-warnings {
 	position: absolute;
 	color: transparent;
 	font-size: 0;
@@ -59,14 +59,14 @@
 	pointer-events: none;
 }
 
-.detected-comment-warnings:hover {
+.dt-highlighter-comment-warnings:hover {
 	background: white;
 	color: red;
 	font-size: inherit;
 	pointer-events: all;
 }
 
-.detected-comment-warnings:before {
+.dt-highlighter-comment-warnings:before {
 	content: '⚠';
 	color: #000;
 	background: #fff;
