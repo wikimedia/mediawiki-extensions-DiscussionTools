@@ -97,7 +97,7 @@
 				"dt.debug.js",
 				"highlighter.js"
 			],
-			"styles": "highlighter.css",
+			"styles": "highlighter.less",
 			"dependencies": [
 				"ext.discussionTools.init"
 			]
