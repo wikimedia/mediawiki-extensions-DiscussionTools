@@ -64,7 +64,7 @@ class Hooks {
 	 * Check if a DiscussionTools feature is available to this user
 	 *
 	 * @param User $user
-	 * @param string|null $feature Feature to check for: 'replytool'.
+	 * @param string|null $feature Feature to check for: 'replytool' or 'newtopictool'.
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
@@ -97,7 +97,7 @@ class Hooks {
 	 * Check if a DiscussionTools feature is enabled by this user
 	 *
 	 * @param User $user
-	 * @param string|null $feature Feature to check for: 'replytool'.
+	 * @param string|null $feature Feature to check for: 'replytool' or 'newtopictool'.
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
@@ -109,6 +109,7 @@ class Hooks {
 			( $feature && $optionsLookup->getOption( $user, 'discussiontools-' . $feature ) ) ||
 			// Check for any feature
 			( !$feature && (
+				$optionsLookup->getOption( $user, 'discussiontools-newtopictool' ) ||
 				$optionsLookup->getOption( $user, 'discussiontools-replytool' )
 			) )
 		);
@@ -145,7 +146,7 @@ class Hooks {
 	 * Check if the tool is available on a given page
 	 *
 	 * @param OutputPage $output
-	 * @param string|null $feature Feature to check for: 'replytool'.
+	 * @param string|null $feature Feature to check for: 'replytool' or 'newtopictool'.
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
@@ -294,6 +295,14 @@ class Hooks {
 				'type' => 'toggle',
 				'label-message' => 'discussiontools-preference-replytool',
 				'help-message' => 'discussiontools-preference-replytool-help',
+				'section' => 'editing/discussion',
+			];
+		}
+		if ( static::isFeatureAvailableToUser( $user, 'newtopictool' ) ) {
+			$preferences['discussiontools-newtopictool'] = [
+				'type' => 'toggle',
+				'label-message' => 'discussiontools-preference-newtopictool',
+				'help-message' => 'discussiontools-preference-newtopictool-help',
 				'section' => 'editing/discussion',
 			];
 		}

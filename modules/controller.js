@@ -276,18 +276,20 @@ function init( $container, state ) {
 		}
 	}
 
-	if ( newTopicController ) {
-		// Stop the torn down controller from re-appearing
-		newTopicController.$replyLink.off( 'click keypress', newTopicController.onReplyLinkClickHandler );
-	}
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$addSectionTab = $( '#ca-addsection' );
-	// TODO If the page doesn't exist yet, we'll need to handle the interface differently,
-	// for now just don't enable the tool there
-	if ( $addSectionTab.length && pageExists ) {
-		// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
-		$addSectionTab.off( '.ve-target' );
-		newTopicController = new NewTopicController( $pageContainer, $addSectionTab.find( 'a' ) );
+	if ( mw.user.options.get( 'discussiontools-newtopictool' ) ) {
+		if ( newTopicController ) {
+			// Stop the torn down controller from re-appearing
+			newTopicController.$replyLink.off( 'click keypress', newTopicController.onReplyLinkClickHandler );
+		}
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$addSectionTab = $( '#ca-addsection' );
+		// TODO If the page doesn't exist yet, we'll need to handle the interface differently,
+		// for now just don't enable the tool there
+		if ( $addSectionTab.length && pageExists ) {
+			// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
+			$addSectionTab.off( '.ve-target' );
+			newTopicController = new NewTopicController( $pageContainer, $addSectionTab.find( 'a' ) );
+		}
 	}
 
 	// For debugging (now unused in the code)

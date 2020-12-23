@@ -341,6 +341,7 @@
 	},
 	"DefaultUserOptions": {
 		"discussiontools-editmode": "",
+		"discussiontools-newtopictool": 1,
 		"discussiontools-replytool": 1
 	},
 	"config": {
@@ -355,6 +356,10 @@
 		"DiscussionTools_replytool": {
 			"value": "default",
 			"description": "Override availability of DiscussionTools reply tool. 'default', 'available', or 'unavailable'."
+		},
+		"DiscussionTools_newtopictool": {
+			"value": "default",
+			"description": "Override availability of DiscussionTools new topic tool. 'default', 'available', or 'unavailable'."
 		},
 		"DiscussionToolsEnable2017Wikitext": {
 			"value": false,
