@@ -4,6 +4,7 @@
 			"Amire80",
 			"Matma Rex",
 			"Robby",
+			"Rodney Araujo",
 			"Tacsipacsi",
 			"Umherirrender"
 		]
@@ -42,12 +43,12 @@
 	"discussiontools-replywidget-terms-click": "Terms of use for posting a reply.\n\n* $1 is the label of the button to be clicked, e.g. {{msg-mw|discussiontools-replywidget-reply}}.",
 	"discussiontools-replywidget-transcluded": "Message explaining that the comment will be saved on a different page than the one you're viewing right now (because it was transcluded from it). Parameter: $1 – page name",
 	"discussiontools-signature-prefix": "{{optional}}\nWikitext that prefixes the signature. The prefix and signature will be appended directly to the message, so this must include a leading space if a gap is desired.\n\nThis message intentionally doesn't use the prefix from {{msg-mw|sig-text}}, because it is not actually commonly used on many wikis, but you can include it in the translation if that is the convention in your language.\n{{Format|plain}}",
-	"discussiontools-error-comment-conflict": "Error message.\n\nSimilar messages:\n* {{msg-mw|visualeditor-editconflict}}\n* {{msg-mw|twocolconflict-split-tour-dialog-message-single-column-view}}\n* {{msg-mw|discussiontools-error-comment-disappeared}}",
+	"discussiontools-error-comment-conflict": "Error message of a comment conflict.\n\nSimilar messages:\n* {{msg-mw|visualeditor-editconflict}}\n* {{msg-mw|twocolconflict-split-tour-dialog-message-single-column-view}}\n* {{msg-mw|discussiontools-error-comment-disappeared}}",
 	"discussiontools-error-comment-disappeared": "Error message.",
 	"discussiontools-error-comment-is-transcluded": "Error message. Parameter: $1 – text of the 'Edit'/'Edit source' tab",
 	"discussiontools-error-comment-is-transcluded-title": "Error message. Parameter: $1 – page name",
 	"discussiontools-error-lint": "Error message. Parameters:\n* $1 – URL to documentation on mediawiki.org\n* $2 – URL to talk page on mediawiki.org\n* $3 – URL to the editor (action=edit)",
-	"discussiontools-error-noswitchtove": "Error message.\n\nParameters:\n* $1 – type of syntax detected, one of:\n** {{msg-mw|discussiontools-error-noswitchtove-extension}}\n** {{msg-mw|discussiontools-error-noswitchtove-table}}\n** {{msg-mw|discussiontools-error-noswitchtove-template}}",
+	"discussiontools-error-noswitchtove": "Error message shown when the switching to visual mode is disabled.\n\nParameters:\n* $1 – type of syntax detected, one of:\n** {{msg-mw|discussiontools-error-noswitchtove-extension}}\n** {{msg-mw|discussiontools-error-noswitchtove-table}}\n** {{msg-mw|discussiontools-error-noswitchtove-template}}",
 	"discussiontools-error-noswitchtove-extension": "Type of syntax detected, used as a parameter in {{msg-mw|discussiontools-error-noswitchtove}}.",
 	"discussiontools-error-noswitchtove-table": "Type of syntax detected, used as a parameter in {{msg-mw|discussiontools-error-noswitchtove}}.",
 	"discussiontools-error-noswitchtove-template": "Type of syntax detected, used as a parameter in {{msg-mw|discussiontools-error-noswitchtove}}.",
