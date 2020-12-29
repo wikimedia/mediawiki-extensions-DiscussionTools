@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lancine.kounfantoh.fofana"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "ߊ߬ ߞߐߖߋ߬ߓߌ߬",
+	"discussiontools-preference-label": "ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߠߎ߬",
+	"discussiontools-preference-replytool": "ߖߋ߬ߓߟߌ߬ ߖߏߣߊ ߓߌ߬ߟߵߊ߬ ߟߊ߫",
+	"discussiontools-replylink": "ߊ߬ ߞߐߖߋ߬ߓߌ߬",
+	"discussiontools-replywidget-abandon": "ߌ ߘߍ߲߬ߞߣߍ߬ߦߊ߬ߣߍ߲߫ ߞߴߌ ߦߴߊ߬ ߝߍ߬ ߞߊ߬ ߡߙߌߣߊ߲߫ ߥߦߊ߬ ߌ ߦߋ߫ ߡߍ߲ ߛߓߍ ߞߊ߲߬؟",
+	"discussiontools-replywidget-abandon-discard": "ߡߙߌߣߊ߲ ߥߦߊ߬",
+	"discussiontools-replywidget-abandon-keep": "ߛߓߍߟߌ ߘߊߓߊ߲߫",
+	"discussiontools-replywidget-advanced": "ߖߊ߲߬ߝߊ߬ߣߍ߲",
+	"discussiontools-replywidget-cancel": "ߘߐ߬ߛߊ߬ߟߌ",
+	"discussiontools-replywidget-loading": "ߟߊ߬ߢߎ߲߬ߠߌ߲...",
+	"discussiontools-replywidget-mention-tool-header": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߢߌߣߌ߲߫: $1",
+	"discussiontools-replywidget-mention-tool-title": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߕߐ߮ ߘߐߕߍ߰",
+	"discussiontools-replywidget-mode-source": "ߓߐߖߎ",
+	"discussiontools-replywidget-mode-visual": "ߦߋߢߊ",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} ߖߋ߬ߓߌ߬",
+	"discussiontools-replywidget-preview": "ߊ߬ ߘߐߜߍ߫ ߡߎߣߎ߲߬",
+	"discussiontools-replywidget-reply": "ߖߋ߬ߓߌ߬ߟߌ",
+	"discussiontools-replywidget-signature-title": "ߞߟߊ߬ߣߐ ߟߊߗߋ߲߰ߧߊ߫ ߓߘߊ߫ ߟߊߞߏߟߐ߲߫",
+	"discussiontools-replywidget-signature-body": "$1 ߓߘߊ߫ ߓߊ߲߫ ߦߟߍ߬ߡߊ߲߫ ߠߊ߫ ߞߵߊ߬ ߞߴߌ ߟߊ߫ ߞߟߊ߬ߣߐ ߘߌ߫. ߣߴߌ ߦߴߏ߬ ߘߐߛߊ߬ߞߏ ߘߐ߫ $2 ߕߐߘߐ߲߫. ߌ ߖߊ߲߭ߓߌ߬ߟߊ߬ ߞߴߌ ߕߴߊ߬ ߝߍ߬ ߞߊ߬ ߡߙߌߣߊ߲ ߞߟߊ߬ߣߐ߬ߦߊ߫ ߡߌ߬ߣߊ߲ ߏ߬ ߟߊ߫ ߡߎ߬ߕߎ߲߫. ߏ߬ ߓߊ߯ ߞߴߌ ߟߊ߫ ߞߟߊ߬ߣߐ ߘߌ߫ ߝߙߊ߬ ߞߍߒߖߘߍߦߋߓߟߏߡߊ߬.",
+	"discussiontools-replywidget-summary": "ߡߙߌߣߊ߲ ߟߊߘߛߏ߬ߟߌ",
+	"discussiontools-replywidget-terms-click": "ߣߴߌ ߞߊ߬ \"$1\" ߛߐ߲߬ߞߌ߲߫߸ ߌ ߘߌ߬ߢߍ߬ߣߍ߲߫ ߦߋ߫ ߥߞߌ ߣߌ߲߬ ߟߊ߬ߓߊ߰ߙߊ߬ߟߌ ߛߙߊߕߌ ߡߊ߬.",
+	"discussiontools-replywidget-transcluded": "ߌ ߟߊ߫ ߡߙߌߣߊ߲ ߘߌ߫ ߟߊߞߎ߲߬ߘߎ߫ [[$1]] ߘߐ߫."
+}
