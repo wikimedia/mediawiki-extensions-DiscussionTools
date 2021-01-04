@@ -1008,7 +1008,7 @@
         "timestamp": "2018-02-27T12:20:00.000Z",
         "author": "Srdjan m",
         "range": [
-          "0/74/0/0/0",
+          "0/74/2",
           "0/74/34/32"
         ],
         "signatureRanges": [
@@ -6222,7 +6222,7 @@
         "timestamp": "2018-07-30T13:43:00.000Z",
         "author": "Miljan Simonović",
         "range": [
-          "0/539/0/0/0",
+          "0/539/3/0",
           "0/539/12/29"
         ],
         "signatureRanges": [

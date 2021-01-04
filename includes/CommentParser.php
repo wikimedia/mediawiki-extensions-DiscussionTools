@@ -93,7 +93,9 @@ class CommentParser {
 			// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
 			strtolower( $node->nodeName ) === 'br' ||
 			// Horizontal line
-			strtolower( $node->nodeName ) === 'hr'
+			strtolower( $node->nodeName ) === 'hr' ||
+			// {{outdent}} templates
+			$node->getAttribute( 'class' ) === 'outdent-template'
 		);
 	}
 

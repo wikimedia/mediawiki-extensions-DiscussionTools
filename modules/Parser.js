@@ -637,7 +637,9 @@ function isCommentSeparator( node ) {
 		// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
 		node.nodeName.toLowerCase() === 'br' ||
 		// Horizontal line
-		node.nodeName.toLowerCase() === 'hr'
+		node.nodeName.toLowerCase() === 'hr' ||
+		// {{outdent}} templates
+		node.getAttribute( 'class' ) === 'outdent-template'
 	);
 }
 
