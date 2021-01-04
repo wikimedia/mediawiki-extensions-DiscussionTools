@@ -35,6 +35,13 @@
 		"data": "../data/itwiki-data.json"
 	},
 	{
+		"name": "Reply inserted inside/outside various wrapper elements",
+		"dom": "cases/wrappers/wrappers.html",
+		"expected": "cases/wrappers/wrappers-formattedreply.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Signatures in funny places",
 		"dom": "cases/signatures-funny/signatures-funny.html",
 		"expected": "cases/signatures-funny/signatures-funny-formattedreply.html",

@@ -306,20 +306,22 @@ class CommentUtils {
 			return $node->nodeType === XML_TEXT_NODE && CommentUtils::htmlTrim( $node->nodeValue ) === '';
 		};
 
-		$firstNonemptyChild = function ( $node ) use ( $isIgnored ) {
-			$node = $node->firstChild;
-			while ( $node && $isIgnored( $node ) ) {
-				$node = $node->nextSibling;
+		$isFirstNonemptyChild = function ( $node ) use ( $isIgnored ) {
+			while ( ( $node = $node->previousSibling ) ) {
+				if ( !$isIgnored( $node ) ) {
+					return false;
+				}
 			}
-			return $node;
+			return true;
 		};
 
-		$lastNonemptyChild = function ( $node ) use ( $isIgnored ) {
-			$node = $node->lastChild;
-			while ( $node && $isIgnored( $node ) ) {
-				$node = $node->previousSibling;
+		$isLastNonemptyChild = function ( $node ) use ( $isIgnored ) {
+			while ( ( $node = $node->nextSibling ) ) {
+				if ( !$isIgnored( $node ) ) {
+					return false;
+				}
 			}
-			return $node;
+			return true;
 		};
 
 		$startMatches = false;
@@ -329,7 +331,11 @@ class CommentUtils {
 				$startMatches = true;
 				break;
 			}
-			$node = $firstNonemptyChild( $node );
+			if ( $isIgnored( $node ) ) {
+				$node = $node->nextSibling;
+			} else {
+				$node = $node->firstChild;
+			}
 		}
 
 		$endMatches = false;
@@ -344,15 +350,19 @@ class CommentUtils {
 				$endMatches = true;
 				break;
 			}
-			$node = $lastNonemptyChild( $node );
+			if ( $isIgnored( $node ) ) {
+				$node = $node->previousSibling;
+			} else {
+				$node = $node->lastChild;
+			}
 		}
 
 		if ( $startMatches && $endMatches ) {
 			// If these are all of the children (or the only child), go up one more level
 			while (
 				( $parent = $siblings[ 0 ]->parentNode ) &&
-				$firstNonemptyChild( $parent ) === $siblings[ 0 ] &&
-				$lastNonemptyChild( $parent ) === end( $siblings )
+				$isFirstNonemptyChild( $siblings[ 0 ] ) &&
+				$isLastNonemptyChild( end( $siblings ) )
 			) {
 				$siblings = [ $parent ];
 			}
