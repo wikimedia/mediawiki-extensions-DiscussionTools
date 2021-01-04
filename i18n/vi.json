@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Minh Nguyen",
 			"Vinhtantran"
 		]
 	},
@@ -8,10 +9,13 @@
 	"discussiontools-desc": "Công cụ để cải tiến trang thảo luận.",
 	"discussiontools-preference-label": "Công cụ thảo luận",
 	"discussiontools-preference-description": "Kích hoạt cách làm mới để [https://www.mediawiki.org/wiki/Talk_pages_project/replying trả lời cho một bình luận cụ thể] trên trang thảo luận.\n\nXin lưu ý rằng các công cụ mới để tương tác với trang thảo luận sẽ được thêm dần theo thời gian.\n\nThông tin cập nhật của các tính năng này sẽ được đăng tại [https://www.mediawiki.org/wiki/Talk_pages_project/Updates trang cập nhật của dự án trang thảo luận].",
+	"discussiontools-preference-replytool": "Nút trả lời tức thời",
+	"discussiontools-preference-replytool-help": "Hiển thị nút trả lời đề tài trong trang thảo luận một cách tức thời chỉ cần nhấn chuột một lần. Tìm hiểu thêm về tính năng này trong [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary lời tóm lược tính năng].",
 	"discussiontools-replylink": "trả lời",
 	"discussiontools-replywidget-abandon": "Bạn có chắc chắn muốn xóa bình luận bạn đang viết?",
 	"discussiontools-replywidget-abandon-discard": "Xóa bình luận",
 	"discussiontools-replywidget-abandon-keep": "Tiếp tục viết",
+	"discussiontools-replywidget-advanced": "Nâng cao",
 	"discussiontools-replywidget-anon-warning": "<strong>Bạn chưa đăng nhập.</strong> Để mọi người biết tên của người viết câu bình luận thay vì địa chỉ IP của bạn, bạn có thể [$1 đăng nhập] hoặc [$2 mở tài khoản].",
 	"discussiontools-replywidget-cancel": "Hủy bỏ",
 	"discussiontools-replywidget-feedback": "Để lại phản hồi về tính năng này",
@@ -25,8 +29,10 @@
 	"discussiontools-replywidget-reply": "Trả lời",
 	"discussiontools-replywidget-signature-title": "Phát hiện có mã định dạng trong chữ ký",
 	"discussiontools-replywidget-signature-body": "Chữ ký của bạn đã được đổi thành $1. Để hồi lại, nhập $2. Chú ý rằng với công cụ này, bạn không cần phải ký tên vào bình luận. Chữ ký của bạn sẽ được tự động thêm vào.",
+	"discussiontools-replywidget-summary": "Tóm lược lời bình luận",
 	"discussiontools-replywidget-terms-click": "Với việc nhấn vào “$1”, bạn chấp nhận các điều khoản sử dụng của wiki này.",
 	"discussiontools-replywidget-transcluded": "Bình luận của bạn sẽ được lưu tại [[$1]].",
+	"discussiontools-error-comment-conflict": "Không thể đăng lời bình luận của bạn vì ai đó cũng bình luận cùng lúc với bạn. Xin hãy thử lại hoặc tải lại trang để xem các lời bình luận mới nhất.",
 	"discussiontools-error-comment-disappeared": "Không thể tìm thấy bình luận bạn đang trả lời tại trang này. Có thể nó đã bị xóa hoặc dời sang trang khác. Vui lòng tải lại trang rồi thử lại.",
 	"discussiontools-error-comment-is-transcluded": "Liên kết “{{int:discussiontools-replylink}}” không thể dùng để trả lời cho bình luận này. Để trả lời, vui lòng dùng bộ sửa đổi trang đầy đủ bằng cách nhấn vào “$1”.",
 	"discussiontools-error-comment-is-transcluded-title": "Liên kết “{{int:discussiontools-replylink}}” không thể dùng để trả lời cho bình luận này vì nó được tải từ trang khác. Để trả lời, vui lòng đến: [[$1]].",
@@ -36,10 +42,11 @@
 	"discussiontools-error-noswitchtove-table": "cú pháp tạo bảng",
 	"discussiontools-error-noswitchtove-template": "cú pháp bản mẫu",
 	"discussiontools-error-noswitchtove-title": "Chế độ trực quan được tắt",
+	"discussiontools-postedit-confirmation-published": "Lời bình luận của bạn đã được đăng lên.",
 	"tag-discussiontools-description": "Sửa đổi bằng Công cụ Thảo luận",
 	"tag-discussiontools-edit": "Sửa bình luận",
 	"tag-discussiontools-edit-description": "Người dùng sửa một bình luận có sẵn bằng Công cụ Thảo luận",
-	"tag-discussiontools-newtopic": "Thêm chủ đề",
+	"tag-discussiontools-newtopic": "Đề tài mới",
 	"tag-discussiontools-newtopic-description": "Người dùng thêm chủ đề mới vào trang bằng Công cụ Thảo luận",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Trả lời]",
 	"tag-discussiontools-reply-description": "Người dùng trả lời một bình luận bằng Công cụ Thảo luận",

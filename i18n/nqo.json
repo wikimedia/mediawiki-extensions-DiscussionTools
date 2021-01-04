@@ -25,5 +25,13 @@
 	"discussiontools-replywidget-signature-body": "$1 ߓߘߊ߫ ߓߊ߲߫ ߦߟߍ߬ߡߊ߲߫ ߠߊ߫ ߞߵߊ߬ ߞߴߌ ߟߊ߫ ߞߟߊ߬ߣߐ ߘߌ߫. ߣߴߌ ߦߴߏ߬ ߘߐߛߊ߬ߞߏ ߘߐ߫ $2 ߕߐߘߐ߲߫. ߌ ߖߊ߲߭ߓߌ߬ߟߊ߬ ߞߴߌ ߕߴߊ߬ ߝߍ߬ ߞߊ߬ ߡߙߌߣߊ߲ ߞߟߊ߬ߣߐ߬ߦߊ߫ ߡߌ߬ߣߊ߲ ߏ߬ ߟߊ߫ ߡߎ߬ߕߎ߲߫. ߏ߬ ߓߊ߯ ߞߴߌ ߟߊ߫ ߞߟߊ߬ߣߐ ߘߌ߫ ߝߙߊ߬ ߞߍߒߖߘߍߦߋߓߟߏߡߊ߬.",
 	"discussiontools-replywidget-summary": "ߡߙߌߣߊ߲ ߟߊߘߛߏ߬ߟߌ",
 	"discussiontools-replywidget-terms-click": "ߣߴߌ ߞߊ߬ \"$1\" ߛߐ߲߬ߞߌ߲߫߸ ߌ ߘߌ߬ߢߍ߬ߣߍ߲߫ ߦߋ߫ ߥߞߌ ߣߌ߲߬ ߟߊ߬ߓߊ߰ߙߊ߬ߟߌ ߛߙߊߕߌ ߡߊ߬.",
-	"discussiontools-replywidget-transcluded": "ߌ ߟߊ߫ ߡߙߌߣߊ߲ ߘߌ߫ ߟߊߞߎ߲߬ߘߎ߫ [[$1]] ߘߐ߫."
+	"discussiontools-replywidget-transcluded": "ߌ ߟߊ߫ ߡߙߌߣߊ߲ ߘߌ߫ ߟߊߞߎ߲߬ߘߎ߫ [[$1]] ߘߐ߫.",
+	"discussiontools-error-noswitchtove-title": "ߦߋߢߊ ߞߍߗߏ߮ ߓߘߊ߫ ߓߴߊ߬ ߟߊ߫",
+	"discussiontools-postedit-confirmation-published": "ߌ ߟߊ߫ ߡߙߌߣߊ߲ ߓߘߊ߫ ߟߊߥߊ߲߬ߞߊ߫.",
+	"tag-discussiontools-description": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߍ߲ ߠߎ߬ ߞߍߣߍ߲߫ ߞߊ߬ ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߠߊߓߊ߯ߙߊ ߕߴߌ ߘߐ߫",
+	"tag-discussiontools-edit": "ߡߙߌߣߊ߲ ߡߊߦߟߍ߬ߡߊ߲߫",
+	"tag-discussiontools-edit-description": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߓߘߊ߫ ߡߙߌߣߊ߲ ߞߘߐ߬ߡߊ߲ ߘߏ߫ ߡߊߦߟߍ߬ߡߊ߲߫ ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߠߎ߬ ߟߊ߫",
+	"tag-discussiontools-newtopic": "ߞߎ߲߬ߕߐ߰ ߞߎߘߊ",
+	"tag-discussiontools-visual": "ߦߋߢߊ",
+	"tag-discussiontools-visual-description": "ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߕߘߍ߬ ߦߋ߫ ߦߋߢߊ ߞߍߗߏ߮ ߟߋ߬ ߟߊ߫"
 }

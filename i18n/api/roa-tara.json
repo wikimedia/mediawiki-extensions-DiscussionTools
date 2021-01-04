@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "ID d'u commende non acchiate: $1",
+	"apihelp-discussiontools-param-oldid": "'U numere de revisione da ausà (predefinite jè 'urtema revisione).",
+	"apihelp-discussiontools-summary": "Tuèrne le metadate cercate pe inizializzà le struminde de le 'ngazzaminde.",
+	"apihelp-discussiontoolsedit-summary": "Manne 'nu messàgge sus a 'na pàgene de le 'ngazzaminde.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID d'u commende.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Uicchiteste"
+}

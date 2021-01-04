@@ -4,5 +4,9 @@
 			"Renessaince"
 		]
 	},
-	"discussiontools-replylink": "адказаць"
+	"discussiontools-replylink": "адказаць",
+	"tag-discussiontools-edit": "Рэдагаваць камэнтар",
+	"tag-discussiontools-edit-description": "Карыстальнік адрэдагаваў існы камэнтар праз DiscussionTools",
+	"tag-discussiontools-newtopic": "Новая тэма",
+	"tag-discussiontools-newtopic-description": "Карыстальнік дадаў на старонку новую тэму праз DiscussionTools"
 }

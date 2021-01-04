@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Minh Nguyen",
 			"Vinhtantran"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Không tìm thấy mã bình luận: $1",
 	"apihelp-discussiontools-param-oldid": "Số phiên bản sẽ dùng (mặc định là phiên bản gần nhất).",
 	"apihelp-discussiontools-summary": "Trả về siêu dữ liệu cần thiết để khởi tạo công cụ thảo luận.",
+	"apihelp-discussiontoolsedit-summary": "Đăng lời bình luận vào trang thảo luận.",
 	"apihelp-discussiontoolsedit-param-commentid": "Mã bình luận.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Mã wiki"
 }
