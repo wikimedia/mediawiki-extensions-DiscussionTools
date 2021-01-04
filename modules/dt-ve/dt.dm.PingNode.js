@@ -48,6 +48,7 @@ DmMWPingNode.static.disallowedAnnotationTypes = [ 'link' ];
 
 DmMWPingNode.static.toDomElements = function ( dataElement, doc, converter ) {
 	var domElements,
+		prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
 		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, dataElement.attributes.user );
 
 	dataElement = ve.dm.MWInternalLinkAnnotation.static.dataElementFromTitle( title );
@@ -56,7 +57,7 @@ DmMWPingNode.static.toDomElements = function ( dataElement, doc, converter ) {
 		doc.createTextNode( title.getMainText() )
 	);
 
-	return domElements;
+	return [ document.createTextNode( prefix ) ].concat( domElements );
 };
 
 // toDataElement should never be called for this node

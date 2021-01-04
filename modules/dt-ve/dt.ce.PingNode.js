@@ -38,7 +38,9 @@ OO.mixinClass( CeMWPingNode, ve.ce.FocusableNode );
 
 CeMWPingNode.static.name = 'mwPing';
 
-CeMWPingNode.static.tagName = 'a';
+CeMWPingNode.static.tagName = 'span';
+
+CeMWPingNode.static.deleteCommandName = 'insertAndOpenMWUsernameCompletions';
 
 CeMWPingNode.static.getDescription = function ( model ) {
 	return model.getAttribute( 'user' );
@@ -51,14 +53,16 @@ CeMWPingNode.static.getDescription = function ( model ) {
  */
 CeMWPingNode.prototype.initialize = function () {
 	var model = this.getModel(),
+		prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
 		user = model.getAttribute( 'user' ),
-		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, user );
+		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, user ),
+		$link;
 
 	// Parent method
 	CeMWPingNode.super.prototype.initialize.call( this );
 
 	// DOM changes
-	this.$element
+	$link = $( '<a>' )
 		.addClass( 'dt-ce-mwPingNode' )
 		.attr( {
 			href: title.getUrl(),
@@ -68,9 +72,13 @@ CeMWPingNode.prototype.initialize = function () {
 
 	ve.init.platform.linkCache.styleElement(
 		title.getPrefixedText(),
-		this.$element
+		$link
 	);
 
+	this.$element.append(
+		prefix,
+		$link
+	);
 };
 
 /* Registration */

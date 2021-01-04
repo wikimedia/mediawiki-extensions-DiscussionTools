@@ -137,7 +137,7 @@ MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range )
 		{ type: '/mwPing' }
 	] );
 
-	fragment.collapseToStart().insertContent( prefix );
+	fragment.collapseToEnd();
 
 	return fragment;
 };
@@ -164,10 +164,10 @@ ve.ui.commandRegistry.register(
 	)
 );
 ve.ui.sequenceRegistry.register(
-	new ve.ui.Sequence( 'autocompleteMWUsernames', 'openMWUsernameCompletions', '@', 0, false, false, true, true )
+	new ve.ui.Sequence( 'autocompleteMWUsernames', 'openMWUsernameCompletions', '@', 0 )
 );
 ve.ui.wikitextSequenceRegistry.register(
-	new ve.ui.Sequence( 'autocompleteMWUsernamesWikitext', 'openMWUsernameCompletions', '@', 0, false, false, true, true )
+	new ve.ui.Sequence( 'autocompleteMWUsernamesWikitext', 'openMWUsernameCompletions', '@', 0 )
 );
 
 module.exports = MWUsernameCompletionAction;
