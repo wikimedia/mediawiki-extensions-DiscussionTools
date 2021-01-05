@@ -61,12 +61,95 @@ class Hooks {
 	}
 
 	/**
+	 * Check if a DiscussionTools feature is available to this user
+	 *
+	 * @param User $user
+	 * @param string|null $feature Feature to check for: 'replytool'.
+	 *  Null will check for any DT feature.
+	 * @return bool
+	 */
+	private static function isFeatureAvailableToUser( User $user, ?string $feature = null ) : bool {
+		$services = MediaWikiServices::getInstance();
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+
+		if ( !$dtConfig->get( 'DiscussionToolsEnable' ) ) {
+			return false;
+		}
+
+		$optionsLookup = $services->getUserOptionsLookup();
+
+		// Feature-specific override
+		if ( $feature && $dtConfig->get( 'DiscussionTools_' . $feature ) !== 'default' ) {
+			// Feature setting can be 'available' or 'unavailable', overriding any BetaFeatures settings
+			return $dtConfig->get( 'DiscussionTools_' . $feature ) === 'available';
+		}
+
+		// No feature-specific override found.
+
+		// Assume that if BetaFeature is turned off, or user has it enabled, that
+		// some features are available.
+		// If this isn't the case, then DiscussionToolsEnable should have been set to false.
+		return !$dtConfig->get( 'DiscussionToolsBeta' ) ||
+			$optionsLookup->getOption( $user, 'discussiontools-betaenable' );
+	}
+
+	/**
+	 * Check if a DiscussionTools feature is enabled by this user
+	 *
+	 * @param User $user
+	 * @param string|null $feature Feature to check for: 'replytool'.
+	 *  Null will check for any DT feature.
+	 * @return bool
+	 */
+	private static function isFeatureEnabledForUser( User $user, ?string $feature = null ) : bool {
+		$services = MediaWikiServices::getInstance();
+		$optionsLookup = $services->getUserOptionsLookup();
+		return static::isFeatureAvailableToUser( $user, $feature ) && (
+			// Check for a specific feature
+			( $feature && $optionsLookup->getOption( $user, 'discussiontools-' . $feature ) ) ||
+			// Check for any feature
+			( !$feature && (
+				$optionsLookup->getOption( $user, 'discussiontools-replytool' )
+			) )
+		);
+	}
+
+	/**
+	 * Check if the tools are available for a given title
+	 *
+	 * @param Title $title
+	 * @return bool
+	 */
+	private static function isAvailableForTitle( Title $title ) : bool {
+		// Only wikitext pages (e.g. not Flow boards)
+		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
+			return false;
+		}
+
+		$services = MediaWikiServices::getInstance();
+
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+
+		$props = PageProps::getInstance()->getProperties( $title, 'newsectionlink' );
+		$hasNewSectionLink = isset( $props[ $title->getArticleId() ] );
+
+		// Check that the page supports discussions.
+		// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
+		return $hasNewSectionLink ||
+			// `wantSignatures` includes talk pages
+			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() );
+			// TODO: Consider not loading if forceHideNewSectionLink is true.
+	}
+
+	/**
 	 * Check if the tool is available on a given page
 	 *
 	 * @param OutputPage $output
+	 * @param string|null $feature Feature to check for: 'replytool'.
+	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	private static function isAvailable( OutputPage $output ) : bool {
+	private static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ) : bool {
 		// Don't show on edit pages, history, etc.
 		if ( Action::getActionName( $output->getContext() ) !== 'view' ) {
 			return false;
@@ -86,66 +169,20 @@ class Hooks {
 			}
 		}
 
-		return self::isAvailableForTitleAndUser(
-			$title,
-			$output->getUser(),
-			// overrideAllChecks
-			// Query parameter override to load on any wikitext page for testing
+		// ?dtenable=1 overrides all user and title checks
+		if (
 			$output->getRequest()->getVal( 'dtenable' ) ||
-				// Extra hack for parses from API, where this parameter isn't passed to derivative requests
-				RequestContext::getMain()->getRequest()->getVal( 'dtenable' ),
-			// overrideUserEnabled
-			$output->getRequest()->getCookie( 'discussiontools-tempenable' ) ?: false
-		);
-	}
-
-	/**
-	 * Check if the tool should be available for a given title and user
-	 *
-	 * @param Title $title
-	 * @param User $user
-	 * @param bool $overrideAllChecks Override all checks, excluding those which make
-	 *  it technically impossible to load reply links (content model check).
-	 * @param bool $overrideUserPrefs Override user preference check
-	 * @return bool
-	 */
-	private static function isAvailableForTitleAndUser(
-		Title $title,
-		User $user,
-		bool $overrideAllChecks = false,
-		bool $overrideUserPrefs = false
-	) {
-		// Only wikitext pages (e.g. not Flow boards)
-		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
-			return false;
-		}
-		if ( $overrideAllChecks ) {
+			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
+			RequestContext::getMain()->getRequest()->getVal( 'dtenable' )
+		) {
 			return true;
 		}
 
-		$services = MediaWikiServices::getInstance();
-		$optionsLookup = $services->getUserOptionsLookup();
-
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-		$isBeta = $dtConfig->get( 'DiscussionToolsBeta' );
-		$userEnabled = $overrideUserPrefs || (
-			$dtConfig->get( 'DiscussionToolsEnable' ) && (
-				( $isBeta && $optionsLookup->getOption( $user, 'discussiontools-betaenable' ) ) ||
-				( !$isBeta && $optionsLookup->getOption( $user, 'discussiontools-replytool' ) )
-			)
-		);
-
-		$props = PageProps::getInstance()->getProperties( $title, 'newsectionlink' );
-		$hasNewSectionLink = isset( $props[ $title->getArticleId() ] );
-
-		// Finally check the user has the tool enabled and that the page
-		// supports discussions.
-		return $userEnabled && (
-			// `wantSignatures` includes talk pages
-			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
-			// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
-			$hasNewSectionLink
-			// TODO: Consider not loading if forceHideNewSectionLink is true.
+		return static::isAvailableForTitle( $title ) && (
+			static::isFeatureEnabledForUser( $output->getUser(), $feature ) ||
+			// The cookie hack allows users to enable all features when they are not
+			// yet available on the wiki
+			$output->getRequest()->getCookie( 'discussiontools-tempenable' ) ?: false
 		);
 	}
 
@@ -158,7 +195,9 @@ class Hooks {
 	 * @param Skin $skin The skin that's going to build the UI.
 	 */
 	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) : void {
-		if ( self::isAvailable( $output ) ) {
+		$user = $output->getUser();
+		// Load modules if any DT feature is enabled for this user
+		if ( static::isFeatureEnabledForOutput( $output ) ) {
 			$output->addModuleStyles( [
 				'ext.discussionTools.init.styles'
 			] );
@@ -169,7 +208,6 @@ class Hooks {
 			$services = MediaWikiServices::getInstance();
 			$optionsLookup = $services->getUserOptionsLookup();
 			$req = $output->getRequest();
-			$user = $output->getUser();
 			$editor = $optionsLookup->getOption( $user, 'discussiontools-editmode' );
 			// User has no preferred editor yet
 			// If the user has a preferred editor, this will be evaluated in the client
@@ -214,7 +252,7 @@ class Hooks {
 	 */
 	public static function onOutputPageBeforeHTML( OutputPage $output, string &$text ) : bool {
 		// TODO: This is based on the current user, is there an issue with caching?
-		if ( !self::isAvailable( $output ) ) {
+		if ( !static::isFeatureEnabledForOutput( $output, 'replytool' ) ) {
 			return true;
 		}
 
@@ -251,13 +289,7 @@ class Hooks {
 	 * @param array &$preferences
 	 */
 	public static function onGetPreferences( User $user, array &$preferences ) {
-		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-
-		if (
-			$dtConfig->get( 'DiscussionToolsEnable' ) &&
-			!$dtConfig->get( 'DiscussionToolsBeta' )
-		) {
+		if ( static::isFeatureAvailableToUser( $user, 'replytool' ) ) {
 			$preferences['discussiontools-replytool'] = [
 				'type' => 'toggle',
 				'label-message' => 'discussiontools-preference-replytool',
