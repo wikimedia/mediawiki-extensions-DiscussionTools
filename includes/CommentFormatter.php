@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMElement;
+use Language;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -12,9 +13,10 @@ class CommentFormatter {
 	 * Add reply links to some HTML
 	 *
 	 * @param string $html HTML
+	 * @param Language $lang Interface language
 	 * @return string HTML with reply links
 	 */
-	public static function addReplyLinks( $html ) {
+	public static function addReplyLinks( string $html, Language $lang ) : string {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
@@ -80,7 +82,7 @@ class CommentFormatter {
 				$replyLink->setAttribute( 'role', 'button' );
 				$replyLink->setAttribute( 'tabindex', '0' );
 				$replyLink->setAttribute( 'data-mw-comment', $itemJSON );
-				$replyLink->nodeValue = wfMessage( 'discussiontools-replylink' )->text();
+				$replyLink->nodeValue = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->text();
 
 				$bracket = $doc->createElement( 'span' );
 				$bracket->setAttribute( 'class', 'dt-init-replylink-bracket' );
