@@ -197,6 +197,13 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				break;
 		}
 
+		if ( !isset( $result['newrevid'] ) ) {
+			// No new revision, so no changes were made to the page (null edit).
+			// Comment was not actually saved, so for this API, that's an error.
+			// This is probably because changes were inside a transclusion's HTML?
+			$this->dieWithError( 'discussiontools-error-comment-not-saved', 'comment-comment-not-saved' );
+		}
+
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 

@@ -80,6 +80,7 @@
 				"discussiontools-postedit-confirmation-published",
 				"discussiontools-error-comment-conflict",
 				"discussiontools-error-comment-disappeared",
+				"discussiontools-error-comment-not-saved",
 				"discussiontools-error-comment-is-transcluded",
 				"discussiontools-error-comment-is-transcluded-title",
 				"discussiontools-error-lint",
