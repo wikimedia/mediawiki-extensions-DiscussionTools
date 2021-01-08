@@ -833,25 +833,23 @@ Parser.prototype.buildThreadItems = function () {
 			// Everything from the last comment up to here is the next comment
 			startNode = this.nextInterestingLeafNode( curCommentEnd );
 			endNode = lastSigNode;
-			while (
-				// If this isn't a last sibling:
-				// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
-				// avoiding that would be more difficult and slower.
-				( endNode.nextSibling && !utils.isBlockElement( endNode.nextSibling ) ) ||
-				// When we reach a last sibling:
-				// Traverse up from inline nodes until the parent is a block element.
-				// This moves end markers from
-				//  "timestamp|</small></span></p>"
-				// to
-				//  "timestamp</small></span>|</p>"
-				(
-					!endNode.nextSibling &&
-					!utils.isBlockElement( endNode ) &&
-					!utils.isBlockElement( endNode.parentNode )
-				)
-			) {
-				endNode = endNode.nextSibling || endNode.parentNode;
-			}
+
+			// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
+			// avoiding that would be more difficult and slower.
+			utils.linearWalk(
+				lastSigNode,
+				// eslint-disable-next-line no-loop-func
+				function ( event, currentNode ) {
+					if ( utils.isBlockElement( currentNode ) ) {
+						// Stop when entering or leaving a block node
+						return true;
+					}
+					if ( event === 'leave' ) {
+						// Take the last complete node which we skipped past
+						endNode = currentNode;
+					}
+				}
+			);
 
 			length = endNode.nodeType === Node.TEXT_NODE ?
 				endNode.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :

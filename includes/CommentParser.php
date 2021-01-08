@@ -834,25 +834,22 @@ class CommentParser {
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curCommentEnd );
 				$endNode = $lastSigNode;
-				while (
-					// If this isn't a last sibling:
-					// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
-					// avoiding that would be more difficult and slower.
-					( $endNode->nextSibling && !CommentUtils::isBlockElement( $endNode->nextSibling ) ) ||
-					// When we reach a last sibling:
-					// Traverse up from inline nodes until the parent is a block element.
-					// This moves end markers from
-					//  "timestamp|</small></span></p>"
-					// to
-					//  "timestamp</small></span>|</p>"
-					(
-						!$endNode->nextSibling &&
-						!CommentUtils::isBlockElement( $endNode ) &&
-						!CommentUtils::isBlockElement( $endNode->parentNode )
-					)
-				) {
-					$endNode = $endNode->nextSibling ?: $endNode->parentNode;
-				}
+
+				// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
+				// avoiding that would be more difficult and slower.
+				CommentUtils::linearWalk(
+					$lastSigNode,
+					function ( string $event, DOMNode $node ) use ( &$endNode ) {
+						if ( CommentUtils::isBlockElement( $node ) ) {
+							// Stop when entering or leaving a block node
+							return true;
+						}
+						if ( $event === 'leave' ) {
+							// Take the last complete node which we skipped past
+							$endNode = $node;
+						}
+					}
+				);
 
 				$length = ( $endNode->nodeType === XML_TEXT_NODE ) ?
 					strlen( rtrim( $endNode->nodeValue, "\t\n\f\r " ) ) :

@@ -432,4 +432,37 @@ class CommentUtils {
 		return null;
 	}
 
+	/**
+	 * Traverse the document in depth-first order, calling the callback whenever entering and leaving
+	 * a node. The walk starts before the given node and ends when callback returns a truthy value, or
+	 * after reaching the end of the document.
+	 *
+	 * You might also think about this as processing XML token stream linearly (rather than XML
+	 * nodes), as if we were parsing the document.
+	 *
+	 * @param DOMNode $node Node to start at
+	 * @param callable $callback Function accepting two arguments: $event ('enter' or 'leave') and
+	 *     $node (DOMNode)
+	 * @return mixed Final return value of the callback
+	 */
+	public static function linearWalk( DOMNode $node, callable $callback ) {
+		$result = null;
+		[ $withinNode, $beforeNode ] = [ $node->parentNode, $node ];
+
+		while ( $beforeNode || $withinNode ) {
+			if ( $beforeNode ) {
+				$result = $callback( 'enter', $beforeNode );
+				[ $withinNode, $beforeNode ] = [ $beforeNode, $beforeNode->firstChild ];
+			} else {
+				$result = $callback( 'leave', $withinNode );
+				[ $withinNode, $beforeNode ] = [ $withinNode->parentNode, $withinNode->nextSibling ];
+			}
+
+			if ( $result ) {
+				return $result;
+			}
+		}
+		return $result;
+	}
+
 }

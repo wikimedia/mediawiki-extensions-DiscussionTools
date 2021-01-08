@@ -338,6 +338,43 @@ function getFullyCoveredSiblings( item ) {
 	return null;
 }
 
+/**
+ * Traverse the document in depth-first order, calling the callback whenever entering and leaving
+ * a node. The walk starts before the given node and ends when callback returns a truthy value, or
+ * after reaching the end of the document.
+ *
+ * You might also think about this as processing XML token stream linearly (rather than XML
+ * nodes), as if we were parsing the document.
+ *
+ * @param {Node} node Node to start at
+ * @param {Function} callback Function accepting two arguments: `event` ('enter' or 'leave') and
+ *     `node` (DOMNode)
+ * @return {Mixed} Final return value of the callback
+ */
+function linearWalk( node, callback ) {
+	var
+		result = null,
+		withinNode = node.parentNode,
+		beforeNode = node;
+
+	while ( beforeNode || withinNode ) {
+		if ( beforeNode ) {
+			result = callback( 'enter', beforeNode );
+			withinNode = beforeNode;
+			beforeNode = beforeNode.firstChild;
+		} else {
+			result = callback( 'leave', withinNode );
+			beforeNode = withinNode.nextSibling;
+			withinNode = withinNode.parentNode;
+		}
+
+		if ( result ) {
+			return result;
+		}
+	}
+	return result;
+}
+
 module.exports = {
 	isBlockElement: isBlockElement,
 	isRenderingTransparentNode: isRenderingTransparentNode,
@@ -348,5 +385,6 @@ module.exports = {
 	getFullyCoveredSiblings: getFullyCoveredSiblings,
 	getTranscludedFromElement: getTranscludedFromElement,
 	getHeadlineNodeAndOffset: getHeadlineNodeAndOffset,
-	htmlTrim: htmlTrim
+	htmlTrim: htmlTrim,
+	linearWalk: linearWalk
 };
