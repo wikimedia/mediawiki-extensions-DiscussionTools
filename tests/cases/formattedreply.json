@@ -35,6 +35,13 @@
 		"data": "../data/itwiki-data.json"
 	},
 	{
+		"name": "Mess caused by unclosed <font> tags in wikitext",
+		"dom": "cases/unclosed-font/unclosed-font.html",
+		"expected": "cases/unclosed-font/unclosed-font-formattedreply.html",
+		"config": "../data/nlwiki-config.json",
+		"data": "../data/nlwiki-data.json"
+	},
+	{
 		"name": "Reply inserted inside/outside various wrapper elements",
 		"dom": "cases/wrappers/wrappers.html",
 		"expected": "cases/wrappers/wrappers-formattedreply.html",

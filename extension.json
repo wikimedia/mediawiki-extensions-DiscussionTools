@@ -307,6 +307,8 @@
 			"cases/split-list2/split-list2-modified.html",
 			"cases/mixed-indentation/mixed-indentation.html",
 			"cases/mixed-indentation/mixed-indentation-modified.html",
+			"cases/unclosed-font/unclosed-font.html",
+			"cases/unclosed-font/unclosed-font-modified.html",
 			"cases/wrappers/wrappers.html",
 			"cases/wrappers/wrappers-modified.html",
 			"cases/signatures-funny/signatures-funny.html",

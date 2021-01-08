@@ -43,5 +43,8 @@ https://sr.wikipedia.org/w/index.php?title=Википедија:Трг/Архи�
 sr-el:
 https://sr.wikipedia.org/w/index.php?title=Википедија:Трг/Архива/Техника/35&variant=sr-el&action=render
 
+unclosed-font:
+https://nl.wikipedia.org/w/index.php?title=Overleg_gebruiker:RYasmeen_(WMF)&oldid=57970619&action=render
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.
