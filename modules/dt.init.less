@@ -1,10 +1,19 @@
 .dt-init-replylink-buttons {
 	user-select: none;
-	margin-left: 0.5em;
 	// Chromium bug (T260072): Element with `user-select: none` at the end of a paragraph causes
 	// triple-click (to select the paragraph) to also select the first character of the next paragraph
 	// https://bugs.chromium.org/p/chromium/issues/detail?id=1116214
 	display: inline-flex;
+
+	.mw-content-ltr & {
+		/* @noflip */
+		margin-left: 0.5em;
+	}
+
+	.mw-content-rtl & {
+		/* @noflip */
+		margin-right: 0.5em;
+	}
 
 	.client-nojs & {
 		display: none;
@@ -19,11 +28,15 @@
 		&-bracket {
 			color: #54595d;
 
-			&:first-of-type {
+			.mw-content-ltr &:first-of-type,
+			.mw-content-rtl &:not( :first-of-type ) {
+				/* @noflip */
 				margin-right: 0.25em;
 			}
 
-			&:not( :first-of-type ) {
+			.mw-content-ltr &:not( :first-of-type ),
+			.mw-content-rtl &:first-of-type {
+				/* @noflip */
 				margin-left: 0.25em;
 			}
 		}
