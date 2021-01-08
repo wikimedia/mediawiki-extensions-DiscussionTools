@@ -20,12 +20,12 @@ class CommentItem extends ThreadItem {
 	 *  timestamps) for this comment. There is always at least one signature, but there may be
 	 *  multiple. The author and timestamp of the comment is determined from the first signature.
 	 *  The last node in every signature range is a node containing the timestamp.
-	 * @param string|null $timestamp
-	 * @param string|null $author Comment author's username
+	 * @param string $timestamp
+	 * @param string $author Comment author's username
 	 */
 	public function __construct(
 		int $level, ImmutableRange $range,
-		array $signatureRanges = [], ?string $timestamp = null, ?string $author = null
+		array $signatureRanges, string $timestamp, string $author
 	) {
 		parent::__construct( 'comment', $level, $range );
 		$this->signatureRanges = $signatureRanges;

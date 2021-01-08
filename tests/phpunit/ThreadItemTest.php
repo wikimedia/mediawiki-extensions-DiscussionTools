@@ -25,8 +25,7 @@ class ThreadItemTest extends CommentTestCase {
 
 		$makeThreadItem = function ( array $arr ) use ( &$makeThreadItem, $range ) : ThreadItem {
 			if ( $arr['type'] === 'comment' ) {
-				$item = new CommentItem( 1, $range );
-				$item->setAuthor( $arr['author'] );
+				$item = new CommentItem( 1, $range, [], 'TIMESTAMP', $arr['author'] );
 			} else {
 				$item = new HeadingItem( $range, 2 );
 			}
