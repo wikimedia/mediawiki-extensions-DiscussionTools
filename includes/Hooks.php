@@ -259,7 +259,7 @@ class Hooks {
 		$start = microtime( true );
 		try {
 			// Add reply links and hidden data about comment ranges.
-			$newText = CommentFormatter::addReplyLinks( $text );
+			$newText = CommentFormatter::addReplyLinks( $text, $output->getLanguage() );
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
 			// Log it and add the request ID in a comment to make it easier to find in the logs.
