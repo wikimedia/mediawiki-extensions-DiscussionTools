@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use RequestContext;
 
 /**
@@ -25,8 +24,9 @@ class CommentFormatterTest extends CommentTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
+		MockCommentFormatter::$data = $data;
 
-		$actual = CommentFormatter::addReplyLinks( $dom, RequestContext::getMain()->getLanguage() );
+		$actual = MockCommentFormatter::addReplyLinks( $dom, RequestContext::getMain()->getLanguage() );
 
 		$doc = self::createDocument( $actual );
 		$expectedDoc = self::createDocument( $expected );

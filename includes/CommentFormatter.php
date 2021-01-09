@@ -10,6 +10,18 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 class CommentFormatter {
 
 	/**
+	 * Get a comment parser object for a DOM element
+	 *
+	 * This method exists so it can mocked in tests.
+	 *
+	 * @param DOMElement $container
+	 * @return CommentParser
+	 */
+	protected static function getParser( DOMElement $container ) : CommentParser {
+		return CommentParser::newFromGlobalState( $container );
+	}
+
+	/**
 	 * Add reply links to some HTML
 	 *
 	 * @param string $html HTML
@@ -29,7 +41,7 @@ class CommentFormatter {
 			return $html;
 		}
 
-		$parser = CommentParser::newFromGlobalState( $container );
+		$parser = static::getParser( $container );
 		$threadItems = $parser->getThreadItems();
 
 		foreach ( $threadItems as $threadItem ) {

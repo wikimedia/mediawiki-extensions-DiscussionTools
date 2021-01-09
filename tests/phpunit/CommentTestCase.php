@@ -105,7 +105,7 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	 * @param array $data
 	 * @return CommentParser
 	 */
-	protected static function createParser( DOMElement $rootNode, array $data ) : CommentParser {
+	public static function createParser( DOMElement $rootNode, array $data ) : CommentParser {
 		$services = MediaWikiServices::getInstance();
 		return new CommentParser(
 			$rootNode,
