@@ -43,6 +43,7 @@
 	"discussiontools-replywidget-newtopic": "Adicionar tópico",
 	"discussiontools-error-comment-conflict": "Não foi possível salvar seu comentário porque outra pessoa comentou ao mesmo tempo que você. Tente novamente ou recarregue a página para ver os comentários mais recentes.",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário ao qual você está respondendo na página. Pode ter sido excluído ou movido para outra página. Por favor, recarregue a página e tente de novo.",
+	"discussiontools-error-comment-not-saved": "Seu comentário não pôde ser salvo na versão mais recente da página. Por favor recarregue a página para ver as últimas mudanças.",
 	"discussiontools-error-comment-is-transcluded": "O link \"{{int:discussiontools-replylink}}\" não pode ser usado para responder a este comentário. Para responder, por favor, utilize o editor de página inteira clicando em \"$1\"",
 	"discussiontools-error-comment-is-transcluded-title": "Este comentário não pode ser respondido aqui (ainda), porque ele é carregado de outra página. Por favor, vá para [[$1]] para responder.",
 	"discussiontools-error-lint": "Comentários nesta página não podem ser respondidos por conta de um erro no wikitexto. Você pode aprender sobre este erro [$1 lendo a documentação], solicitando ajuda [$2 postando aqui] ou corrigindo o problema [$3 abrindo o editor de página inteira].",

@@ -45,6 +45,7 @@
 	"discussiontools-replywidget-newtopic": "Konu ekle",
 	"discussiontools-error-comment-conflict": "Sizinle aynı anda başka biri yorum yaptığı için yorumunuz kaydedilemedi. Lütfen tekrar deneyin veya en son yorumları görüntülemek için sayfayı yeniden yükleyin.",
 	"discussiontools-error-comment-disappeared": "Sayfada yanıtladığınız yorum bulunamadı. Silinmiş veya başka bir sayfaya taşınmış olabilir. Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.",
+	"discussiontools-error-comment-not-saved": "Yorumunuz sayfanın son sürümüne kaydedilemedi. En son değişiklikleri görmek için lütfen sayfayı yeniden yükleyin.",
 	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" bağlantısı bu yorumu yanıtlamak için kullanılamaz. Yanıtlamak için lütfen \"$1\" tıklayarak tam sayfa düzenleyicisini kullanın.",
 	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" bağlantısı, başka bir sayfadan yüklendiği için bu yoruma yanıt vermek için kullanılamaz. Yanıtlamak için lütfen buraya gidin: [[$1]].",
 	"discussiontools-error-lint": "Vikimetin dosyasındaki bir hata nedeniyle bu sayfadaki yorumlara yanıt verilemiyor. Bu hatayla ilgili [$1 belgeyi okuyarak] öğrenebilir, [$2 burada göndererek] yardım isteyebilir veya [$3 tam sayfa düzenleyicisini açarak] hatayı düzeltebilirsiniz.",

@@ -43,6 +43,7 @@
 	"discussiontools-replywidget-newtopic": "הוספת נושא",
 	"discussiontools-error-comment-conflict": "לא היה אפשר לשמור את התגובה שלך כי מישהו הגיב באותו זמן כמוך. נא לנסות שוב, לא לרענן את הדף כדי לראות את התגובות האחרונות.",
 	"discussiontools-error-comment-disappeared": "לא היה אפשר למצוא את התגובה שניסית להשיב עליה בדף. אולי היא נמחקה או הועברה לדף אחר. נא לרענן את הדף ולנסות שוב.",
+	"discussiontools-error-comment-not-saved": "לא היה אפשר לשמור את ההערה שלך בגרסה האחרונה של הדף. נא לרענן את הדף כדי לראות את השינויים האחרונים.",
 	"discussiontools-error-comment-is-transcluded": "הקישור \"{{int:discussiontools-replylink}}\" אינו יכול לשמש כדי להשיב לתגובה הזאת. כדי להשיב, נא להשתמש בעורך הדף המלא באמצעות לחיצה על \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "הקישור \"{{int:discussiontools-replylink}}\" אינו יכול לשמש כדי להשיב להערה הזאת כי הוא נטען מדף אחר. כדי להשיב נא לעבור לכאן: [[$1]].",
 	"discussiontools-error-lint": "לא ניתן להשיב לתגובות בדף הזה בשל שגיאה בקוד הוויקי. ניתן ללמוד על השגיאה הזאת על־ידי [$1 קריאת התיעוד], לבקש עזרה על־ידי [$2 פרסום בקשה כאן], או לתקן את השגיאה על־ידי [$3 פתיחת הדף כולו במצב עריכה].",

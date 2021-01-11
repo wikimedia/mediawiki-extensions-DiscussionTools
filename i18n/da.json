@@ -13,6 +13,9 @@
 	"discussiontools-replywidget-mode-source": "Kilde",
 	"discussiontools-replywidget-mode-visual": "Visuelt",
 	"discussiontools-replywidget-reply": "Svar",
+	"discussiontools-newtopic-placeholder-title": "Emne",
+	"discussiontools-replywidget-placeholder-newtopic": "Beskrivelse",
+	"discussiontools-replywidget-newtopic": "Tilføj emne",
 	"tag-discussiontools-edit": "Redigér kommentar",
 	"tag-discussiontools-newtopic": "Nyt emne",
 	"tag-discussiontools-source": "Kilde"
