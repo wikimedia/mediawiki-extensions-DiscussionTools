@@ -98,6 +98,10 @@ CommentController.prototype.getTranscludedFromSource = function ( commentId ) {
 	return promise;
 };
 
+/* Static properties */
+
+CommentController.static.initType = 'page';
+
 /* Methods */
 
 CommentController.prototype.onReplyLinkClick = function ( e ) {
@@ -143,7 +147,7 @@ CommentController.prototype.setup = function ( mode ) {
 
 	logger( {
 		action: 'init',
-		type: 'page',
+		type: this.constructor.static.initType || 'page',
 		mechanism: 'click',
 		// TODO: Use 'wikitext-2017' when config.enable2017Wikitext is set
 		// eslint-disable-next-line camelcase
