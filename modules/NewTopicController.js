@@ -36,6 +36,10 @@ function NewTopicController( $pageContainer, $replyLink ) {
 
 OO.inheritClass( NewTopicController, CommentController );
 
+/* Static properties */
+
+NewTopicController.static.initType = 'section';
+
 /* Methods */
 
 /**
