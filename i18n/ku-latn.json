@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Balyozxane",
-			"Bikarhêner"
+			"Bikarhêner",
+			"Biyolojiyabikurdi"
 		]
 	},
 	"discussiontools-replylink": "bibersivîne",
-	"discussiontools-replywidget-advanced": "Pêşketî"
+	"discussiontools-replywidget-advanced": "Pêşketî",
+	"discussiontools-error-comment-not-saved": "Dibe ko şîroveya te di guhertoya herî dawî ya pêlê de nehatibe tomarkirin. Ji kerema pelê cardin bar bike ko tu guhertinên dawî bibînî."
 }
