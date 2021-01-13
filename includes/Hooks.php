@@ -79,9 +79,19 @@ class Hooks {
 		$optionsLookup = $services->getUserOptionsLookup();
 
 		// Feature-specific override
-		if ( $feature && $dtConfig->get( 'DiscussionTools_' . $feature ) !== 'default' ) {
-			// Feature setting can be 'available' or 'unavailable', overriding any BetaFeatures settings
-			return $dtConfig->get( 'DiscussionTools_' . $feature ) === 'available';
+		if ( $feature ) {
+			if ( $dtConfig->get( 'DiscussionTools_' . $feature ) !== 'default' ) {
+				// Feature setting can be 'available' or 'unavailable', overriding any BetaFeatures settings
+				return $dtConfig->get( 'DiscussionTools_' . $feature ) === 'available';
+			}
+		} else {
+			// Non-feature-specific override
+			if (
+				$dtConfig->get( 'DiscussionTools_replytool' ) === 'available' ||
+				$dtConfig->get( 'DiscussionTools_newtopictool' ) === 'available'
+			) {
+				return true;
+			}
 		}
 
 		// No feature-specific override found.
