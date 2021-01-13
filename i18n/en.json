@@ -38,7 +38,7 @@
 	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki.",
 	"discussiontools-replywidget-transcluded": "Your comment will be saved at [[$1]].",
 	"discussiontools-newtopic-placeholder-title": "Topic",
-	"discussiontools-newtopic-missing-title": "Please provide a title for your comment. If you click \"{{int:discussiontools-replywidget-newtopic}}\" again, your comment will be added without a title.",
+	"discussiontools-newtopic-missing-title": "Please provide a topic for your comment. If you click \"{{int:discussiontools-replywidget-newtopic}}\" again, your comment will be added without a topic.",
 	"discussiontools-replywidget-placeholder-newtopic": "Description",
 	"discussiontools-replywidget-newtopic": "Add topic",
 	"discussiontools-signature-prefix": "&#32;",
