@@ -6,6 +6,7 @@
 			"Lejonel",
 			"LittleGun",
 			"Nirmos (Wikimedia)",
+			"Sabelöga",
 			"WikiPhoenix"
 		]
 	},
@@ -37,6 +38,9 @@
 	"discussiontools-replywidget-summary": "Kommentarssammanfattning",
 	"discussiontools-replywidget-terms-click": "Genom att klicka på \"$1\" godkänner du användarvillkoren för denna wiki.",
 	"discussiontools-replywidget-transcluded": "Din kommentar kommer att sparas på [[$1]].",
+	"discussiontools-newtopic-placeholder-title": "Ämne",
+	"discussiontools-replywidget-placeholder-newtopic": "Beskrivning",
+	"discussiontools-replywidget-newtopic": "Lägg till ämne",
 	"discussiontools-error-comment-conflict": "Ditt inlägg kunde inte sparas för att någon annan sparade samtidigt som du. Försök igen, eller ladda om sidan för att se de senaste inläggen.",
 	"discussiontools-error-comment-disappeared": "Kunde inte hitta kommentaren du besvarade på sidan. Den kanske har raderats eller flyttats till en annan sida. Var god uppdatera sidan och försök igen.",
 	"discussiontools-error-comment-is-transcluded": "Länken \"{{int:discussiontools-replylink}}\" kan inte användas för att spara på denna kommentar. Använd den fullständiga sidredigeraren genom att klicka på \"$1\" för att svara.",
