@@ -267,6 +267,14 @@ class Hooks {
 				'ext.discussionTools.init'
 			] );
 
+			$output->addJsConfigVars(
+				'wgDiscussionToolsFeaturesEnabled',
+				[
+					'replytool' => static::isFeatureEnabledForOutput( $output, 'replytool' ),
+					'newtopictool' => static::isFeatureEnabledForOutput( $output, 'newtopictool' ),
+				]
+			);
+
 			$services = MediaWikiServices::getInstance();
 			$optionsLookup = $services->getUserOptionsLookup();
 			$req = $output->getRequest();

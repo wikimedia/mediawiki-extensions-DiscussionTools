@@ -4,6 +4,7 @@ var
 	$pageContainer,
 	newTopicController,
 	$overlay,
+	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ),
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
 	logger = require( './logger.js' ),
@@ -276,7 +277,7 @@ function init( $container, state ) {
 		}
 	}
 
-	if ( mw.user.options.get( 'discussiontools-newtopictool' ) ) {
+	if ( featuresEnabled.newtopictool && mw.user.options.get( 'discussiontools-newtopictool' ) ) {
 		if ( newTopicController ) {
 			// Stop the torn down controller from re-appearing
 			newTopicController.$replyLink.off( 'click keypress', newTopicController.onReplyLinkClickHandler );
