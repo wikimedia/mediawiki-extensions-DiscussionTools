@@ -96,11 +96,23 @@ class Hooks {
 
 		// No feature-specific override found.
 
+		if ( $dtConfig->get( 'DiscussionToolsBeta' ) ) {
+			$betaenabled = $optionsLookup->getOption( $user, 'discussiontools-betaenable', -1 );
+			if ( $betaenabled !== -1 ) {
+				// betaenable doesn't have a default value, so we can check
+				// for it being unset like this. If the user has explicitly
+				// enabled or disabled it, we should immediatly return that.
+				return $betaenabled;
+			}
+			// Otherwise, being in the "test" group for this feature means
+			// it's effectively beta-enabled.
+			return self::determineUserABTestBucket( $user, $feature ) === 'test';
+		}
+
 		// Assume that if BetaFeature is turned off, or user has it enabled, that
 		// some features are available.
 		// If this isn't the case, then DiscussionToolsEnable should have been set to false.
-		return !$dtConfig->get( 'DiscussionToolsBeta' ) ||
-			$optionsLookup->getOption( $user, 'discussiontools-betaenable' );
+		return true;
 	}
 
 	/**
@@ -123,6 +135,45 @@ class Hooks {
 				$optionsLookup->getOption( $user, 'discussiontools-replytool' )
 			) )
 		);
+	}
+
+	/**
+	 * Work out the A/B test bucket for the current user
+	 *
+	 * Checks whether the A/B test is enabled and whether the user is enrolled
+	 * in it; if they're eligible and not enrolled, it will enroll them.
+	 *
+	 * @param User $user
+	 * @param string|null $feature Feature to check for: 'replytool' or 'newtopictool'.
+	 *  Null will check for any DT feature.
+	 * @return string 'test' if in the test group, 'control' if in the control group, or '' if they've
+	 *  never been in the test
+	 */
+	private static function determineUserABTestBucket( $user, $feature = null ) : string {
+		$services = MediaWikiServices::getInstance();
+		$optionsManager = $services->getUserOptionsManager();
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+
+		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
+		if (
+			!$user->isAnon() &&
+			( $abtest == 'all' || ( $feature && $abtest == $feature ) )
+		) {
+			// The A/B test is enabled, and the user is qualified to be in the
+			// test by being logged in.
+			$abstate = $optionsManager->getOption( $user, 'discussiontools-abtest' );
+			if ( !$abstate && $optionsManager->getOption( $user, 'discussiontools-editmode' ) === '' ) {
+				// Assign the user to a group. This is only being done to
+				// users who have never used the tool before, for which we're
+				// using the presence of discussiontools-editmode as a proxy,
+				// as it should be set as soon as the user interacts with the tool.
+				$abstate = $user->getId() % 2 == 0 ? 'test' : 'control';
+				$optionsManager->setOption( $user, 'discussiontools-abtest', $abstate );
+				$optionsManager->saveOptions( $user );
+			}
+			return $abstate;
+		}
+		return '';
 	}
 
 	/**
@@ -233,6 +284,16 @@ class Hooks {
 					$editor
 				);
 			}
+			$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+			$abstate = $dtConfig->get( 'DiscussionToolsABTest' ) ?
+				$optionsLookup->getOption( $user, 'discussiontools-abtest' ) :
+				false;
+			if ( $abstate ) {
+				$output->addJsConfigVars(
+					'wgDiscussionToolsABTestBucket',
+					$abstate
+				);
+			}
 		}
 	}
 
@@ -318,6 +379,9 @@ class Hooks {
 		}
 
 		$preferences['discussiontools-showadvanced'] = [
+			'type' => 'api',
+		];
+		$preferences['discussiontools-abtest'] = [
 			'type' => 'api',
 		];
 

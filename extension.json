@@ -342,7 +342,8 @@
 	"DefaultUserOptions": {
 		"discussiontools-editmode": "",
 		"discussiontools-newtopictool": 1,
-		"discussiontools-replytool": 1
+		"discussiontools-replytool": 1,
+		"discussiontools-abtest": ""
 	},
 	"config": {
 		"DiscussionToolsEnable": {
@@ -352,6 +353,10 @@
 		"DiscussionToolsBeta": {
 			"value": false,
 			"description": "Make DiscussionTools a BetaFeature."
+		},
+		"DiscussionToolsABTest": {
+			"value": false,
+			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', 'newtopictool', or 'all'"
 		},
 		"DiscussionTools_replytool": {
 			"value": "default",

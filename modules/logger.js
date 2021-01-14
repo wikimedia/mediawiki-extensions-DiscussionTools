@@ -186,6 +186,10 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 			}
 		}
 
+		if ( mw.config.get( 'wgDiscussionToolsABTestBucket' ) ) {
+			data.bucket = mw.config.get( 'wgDiscussionToolsABTestBucket' );
+		}
+
 		$.extend( data, session );
 
 		if ( trackdebug ) {
@@ -214,6 +218,10 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 			// eslint-disable-next-line camelcase
 			editor_interface: session.editor_interface
 		};
+
+		if ( mw.config.get( 'wgDiscussionToolsABTestBucket' ) ) {
+			event.bucket = mw.config.get( 'wgDiscussionToolsABTestBucket' );
+		}
 
 		if ( trackdebug ) {
 			log( topic, event, schemaVisualEditorFeatureUse.defaults );
