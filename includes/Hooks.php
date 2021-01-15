@@ -393,6 +393,19 @@ class Hooks {
 			'type' => 'api',
 		];
 
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'discussiontools' );
+		if (
+			!$dtConfig->get( 'DiscussionToolsEnable' ) ||
+			!$dtConfig->get( 'DiscussionToolsBeta' )
+		) {
+			// When out of beta, preserve the user preference in case we
+			// bring back the beta feature for a new sub-feature. (T272071)
+			$preferences['discussiontools-betaenable'] = [
+				'type' => 'api'
+			];
+		}
+
 		$preferences['discussiontools-editmode'] = [
 			'type' => 'api',
 			'validation-callback' => function ( $value ) {
