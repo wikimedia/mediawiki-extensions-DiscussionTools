@@ -52,7 +52,7 @@ class CommentUtils {
 				// Empty inline templates, e.g. tracking templates
 				(
 					strtolower( $node->tagName ) === 'span' &&
-					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ) ) &&
+					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ?? '' ) ) &&
 					!self::htmlTrim( DOMCompat::getInnerHTML( $node ) )
 				)
 			)

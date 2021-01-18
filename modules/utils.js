@@ -28,7 +28,7 @@ function isRenderingTransparentNode( node ) {
 			// Empty inline templates, e.g. tracking templates
 			(
 				node.tagName.toLowerCase() === 'span' &&
-				node.getAttribute( 'typeof' ).split( ' ' ).indexOf( 'mw:Transclusion' ) !== -1 &&
+				( node.getAttribute( 'typeof' ) || '' ).split( ' ' ).indexOf( 'mw:Transclusion' ) !== -1 &&
 				// eslint-disable-next-line no-use-before-define
 				!htmlTrim( node.innerHTML )
 			)
