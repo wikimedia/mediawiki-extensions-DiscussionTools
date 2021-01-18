@@ -3,6 +3,9 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	logger = require( 'ext.discussionTools.init' ).logger;
 
+require( './AbandonCommentDialog.js' );
+require( './AbandonTopicDialog.js' );
+
 /**
  * @external CommentController
  * @external CommentItem
@@ -476,7 +479,7 @@ ReplyWidget.prototype.tryTeardown = function () {
 		widget = this;
 
 	if ( !this.isEmpty() || ( this.isNewTopic && this.commentController.sectionTitle.getValue() ) ) {
-		promise = OO.ui.getWindowManager().openWindow( 'abandoncomment' )
+		promise = OO.ui.getWindowManager().openWindow( this.isNewTopic ? 'abandontopic' : 'abandoncomment' )
 			.closed.then( function ( data ) {
 				if ( !( data && data.action === 'discard' ) ) {
 					return $.Deferred().reject().promise();
@@ -767,27 +770,5 @@ ReplyWidget.prototype.onReplyClick = function () {
 		widget.setPending( false );
 	} );
 };
-
-/* Window registration */
-
-function AbandonCommentDialog() {
-	// Parent constructor
-	AbandonCommentDialog.super.apply( this, arguments );
-}
-
-/* Inheritance */
-
-OO.inheritClass( AbandonCommentDialog, mw.widgets.AbandonEditDialog );
-
-AbandonCommentDialog.static.name = 'abandoncomment';
-AbandonCommentDialog.static.message = OO.ui.deferMsg( 'discussiontools-replywidget-abandon' );
-AbandonCommentDialog.static.actions = OO.copy( AbandonCommentDialog.static.actions );
-AbandonCommentDialog.static.actions[ 0 ].label =
-	OO.ui.deferMsg( 'discussiontools-replywidget-abandon-discard' );
-
-AbandonCommentDialog.static.actions[ 1 ].label =
-	OO.ui.deferMsg( 'discussiontools-replywidget-abandon-keep' );
-
-OO.ui.getWindowManager().addWindows( [ new AbandonCommentDialog() ] );
 
 module.exports = ReplyWidget;
