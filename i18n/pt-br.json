@@ -38,7 +38,7 @@
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-replywidget-transcluded": "Seu comentário será salvo em [[$1]].",
 	"discussiontools-newtopic-placeholder-title": "Tópico",
-	"discussiontools-newtopic-missing-title": "Forneça um título para seu comentário. Se você clicar \"{{int:discussiontools-replywidget-newtopic}}\" novamente, seu comentário será adicionado sem título.",
+	"discussiontools-newtopic-missing-title": "Forneça um tópico para seu comentário. Se você clicar \"{{int:discussiontools-replywidget-newtopic}}\" novamente, seu comentário será adicionado sem tópico.",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrição",
 	"discussiontools-replywidget-newtopic": "Adicionar tópico",
 	"discussiontools-error-comment-conflict": "Não foi possível salvar seu comentário porque outra pessoa comentou ao mesmo tempo que você. Tente novamente ou recarregue a página para ver os comentários mais recentes.",

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ed g2s",
+			"Edgars2007",
 			"Papuass"
 		]
 	},
@@ -46,7 +47,7 @@
 	"tag-discussiontools-edit-description": "Dalībnieks laboja esošu komentāru ar diskusiju rīkiem",
 	"tag-discussiontools-newtopic": "Pievienots temats",
 	"tag-discussiontools-newtopic-description": "Dalībnieks lapai pievienoja jaunu tematu ar diskusiju rīkiem",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Atbildēja]",
+	"tag-discussiontools-reply": "<span class=\"plainlinks\">[{{int:discussiontools-replywidget-reply-link}} Atbilde]</span>",
 	"tag-discussiontools-reply-description": "Dalībnieks atbildēja uz komentāru ar diskusiju rīkiem",
 	"tag-discussiontools-source": "Vikikods",
 	"tag-discussiontools-source-description": "Diskusiju rīki bija vikikoda režīmā",

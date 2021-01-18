@@ -22,6 +22,7 @@
 	"discussiontools-preference-description": "启用一个新的工作流程，用于[https://www.mediawiki.org/wiki/Talk_pages_project/replying 回复讨论页上的特定评论] 。\n\n请注意，随着时间的推移，将增加新的讨论页互动工具。\n\n有关这些功能的更新将在[https://www.mediawiki.org/wiki/Talk_pages_project/Updates 讨论页项目的更新页面]上公布。",
 	"discussiontools-preference-newtopictool": "启用快速添加主题",
 	"discussiontools-preference-replytool": "开启快速回复",
+	"discussiontools-preference-replytool-help": "这将为您提供“回复”链接，用以快速回复讨论页上已有的特定评论。有关此功能的更多信息见[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary feature 功能摘要]。",
 	"discussiontools-replylink": "回复",
 	"discussiontools-replywidget-abandon": "您确定要放弃您正在写的评论吗?",
 	"discussiontools-replywidget-abandon-discard": "放弃评论",

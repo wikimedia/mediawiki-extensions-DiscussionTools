@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"FinlandMan",
+			"Kyykaarme",
 			"Majavah",
 			"Nike",
 			"Pxos",
@@ -46,6 +47,7 @@
 	"discussiontools-error-comment-is-transcluded-title": "-linkkiä ei voida käyttää tähän viestiin vastaamiseen, koska se on ladattu toiselta sivulta. Vastataksesi avaa tämä sivu: [[$1]].",
 	"discussiontools-error-lint": "Kommentteihin tällä sivulla ei voi vastata wikitekstissä olevan virheen vuoksi. Voit lukea [$1 ohjeen täällä], pyytää apua [$2 täällä] tai korjata virheen [$3 koko sivun muokkaimella].",
 	"discussiontools-error-noswitchtove-title": "Visuaalinen tila poistettu käytöstä",
+	"discussiontools-postedit-confirmation-published": "Kommenttisi julkaistiin.",
 	"tag-discussiontools-description": "Muokkaus tehty DiscussionTools-työkalulla",
 	"tag-discussiontools-edit": "Kommenttia muokattu",
 	"tag-discussiontools-edit-description": "Käyttäjä muokkasi olemassa olevaa kommenttia DiscussionTools-työkalulla",
