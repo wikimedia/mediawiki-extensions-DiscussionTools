@@ -91,11 +91,6 @@ function addListItem( comment ) {
 	desiredLevel = comment.level + 1;
 	target = curComment.range.endContainer;
 
-	// HACK: Skip past our own reply buttons
-	if ( target.nextSibling && target.nextSibling.className && target.nextSibling.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 ) {
-		target = target.nextSibling;
-	}
-
 	// target is a text node or an inline element at the end of a "paragraph" (not necessarily paragraph node).
 	// First, we need to find a block-level parent that we can mess with.
 	// If we can't find a surrounding list item or paragraph (e.g. maybe we're inside a table cell
@@ -106,6 +101,11 @@ function addListItem( comment ) {
 	}
 	// parent is a list item or paragraph (hopefully)
 	// target is an inline node within it
+
+	// HACK: Skip past our own reply buttons
+	if ( target.nextSibling && target.nextSibling.className && target.nextSibling.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 ) {
+		target = target.nextSibling;
+	}
 
 	// Instead of just using curComment.level, consider indentation of lists within the
 	// comment (T252702)
