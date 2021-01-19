@@ -110,6 +110,7 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 	NewTopicController.super.prototype.teardown.call( this, abandoned );
 
 	this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
+	this.sectionTitle.setValue( '' );
 	this.container.$element.detach();
 };
 
