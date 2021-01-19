@@ -336,12 +336,15 @@
 		"discussiontoolsedit": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
 	},
 	"Hooks": {
+		"ArticleParserOptions": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onArticleParserOptions",
 		"BeforePageDisplay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onBeforePageDisplay",
+		"OutputPageBeforeHTML": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onOutputPageBeforeHTML",
+		"ParserAfterTidy": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onParserAfterTidy",
+		"ParserOptionsRegister": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onParserOptionsRegister",
 		"ResourceLoaderGetConfigVars": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onResourceLoaderGetConfigVars",
 		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onGetBetaPreferences",
 		"GetPreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onGetPreferences",
 		"ListDefinedTags": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onListDefinedTags",
-		"OutputPageBeforeHTML": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onOutputPageBeforeHTML",
 		"ChangeTagsListActive": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onListDefinedTags",
 		"RecentChange_save": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onRecentChangeSave"
 	},
@@ -375,6 +378,10 @@
 		"DiscussionToolsEnable2017Wikitext": {
 			"value": false,
 			"description": "Enable the 2017 wikitext editor for wikitext mode (not yet supported)."
+		},
+		"DiscussionToolsUseParserCache": {
+			"value": true,
+			"description": "Allow DiscussionTools to use the parser cache."
 		},
 		"DTSchemaEditAttemptStepSamplingRate": {
 			"value": false,

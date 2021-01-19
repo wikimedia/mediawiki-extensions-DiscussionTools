@@ -10,12 +10,16 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use Action;
+use Article;
 use ConfigException;
 use ExtensionRegistry;
+use Language;
 use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
 use OutputPage;
 use PageProps;
+use Parser;
+use ParserOptions;
 use RecentChange;
 use RequestContext;
 use Skin;
@@ -37,6 +41,8 @@ class Hooks {
 		'discussiontools-source',
 		'discussiontools-visual',
 	];
+
+	private const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
 
 	public static function onRegistration() : void {
 		// Use globals instead of Config. Accessing it so early blows up unrelated extensions (T255704).
@@ -323,6 +329,20 @@ class Hooks {
 	}
 
 	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserAfterTidy
+	 *
+	 * @param Parser $parser
+	 * @param string &$text
+	 */
+	public static function onParserAfterTidy( Parser $parser, string &$text ) : void {
+		$popts = $parser->getOptions();
+		// ParserOption for dtreply was set in onArticleParserOptions
+		if ( $popts->getOption( 'dtreply' ) ) {
+			static::addReplyLinks( $text, $popts->getUserLangObj() );
+		}
+	}
+
+	/**
 	 * OutputPageBeforeHTML hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageBeforeHTML
 	 *
@@ -331,15 +351,37 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function onOutputPageBeforeHTML( OutputPage $output, string &$text ) : bool {
-		// TODO: This is based on the current user, is there an issue with caching?
-		if ( !static::isFeatureEnabledForOutput( $output, 'replytool' ) ) {
-			return true;
+		// Check after the parser cache if reply links need to be added for
+		// non-cacheable reasons i.e. query string or cookie
+		// The addReplyLinks method is responsible for ensuring that
+		// reply links aren't added twice.
+		if ( static::isFeatureEnabledForOutput( $output, 'replytool' ) ) {
+			static::addReplyLinks( $text, $output->getLanguage() );
+		}
+		return true;
+	}
+
+	/**
+	 * Add reply links to some HTML
+	 *
+	 * @param string &$text Parser text output
+	 * @param Language $lang Interface language
+	 */
+	private static function addReplyLinks( string &$text, Language $lang ) {
+		$start = microtime( true );
+
+		// Never add links twice.
+		// This is required because we try again to add links to cached content
+		// to support query string or cookie enabling
+		if ( strpos( $text, static::REPLY_LINKS_COMMENT ) !== false ) {
+			return;
 		}
 
-		$start = microtime( true );
+		$text = $text . "\n" . static::REPLY_LINKS_COMMENT;
+
 		try {
 			// Add reply links and hidden data about comment ranges.
-			$newText = CommentFormatter::addReplyLinks( $text, $output->getLanguage() );
+			$newText = CommentFormatter::addReplyLinks( $text, $lang );
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
 			// Log it and add the request ID in a comment to make it easier to find in the logs.
@@ -349,17 +391,45 @@ class Hooks {
 			$info = "<!-- [$requestId] DiscussionTools could not add reply links on this page -->";
 			$text .= "\n" . $info;
 
-			return true;
+			return;
 		}
 
 		$text = $newText;
-
 		$duration = microtime( true ) - $start;
 
 		$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
 		$stats->timing( 'discussiontools.addReplyLinks', $duration * 1000 );
+	}
 
-		return true;
+	/**
+	 * @param Article $article Article about to be parsed
+	 * @param ParserOptions $popts Mutable parser options
+	 * @return bool|void True or no return value to continue or false to abort
+	 */
+	public static function onArticleParserOptions( Article $article, ParserOptions $popts ) {
+		$services = MediaWikiServices::getInstance();
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+
+		if (
+			$dtConfig->get( 'DiscussionToolsUseParserCache' ) &&
+			static::isAvailableForTitle( $article->getTitle() ) &&
+			static::isFeatureEnabledForUser( $popts->getUser(), 'replytool' )
+		) {
+			$popts->setOption( 'dtreply', true );
+		}
+	}
+
+	/**
+	 * Register additional parser options
+	 *
+	 * @param array &$defaults
+	 * @param array &$inCacheKey
+	 * @param array &$lazyLoad
+	 * @return bool|void
+	 */
+	public static function onParserOptionsRegister( &$defaults, &$inCacheKey, &$lazyLoad ) {
+		$defaults['dtreply'] = null;
+		$inCacheKey['dtreply'] = true;
 	}
 
 	/**
