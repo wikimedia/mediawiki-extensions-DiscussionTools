@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
+			"EditGio",
 			"Fringio",
 			"Sakretsu",
 			"Scompo"
@@ -53,6 +54,7 @@
 	"discussiontools-error-noswitchtove-table": "sintassi di tabella",
 	"discussiontools-error-noswitchtove-template": "sintassi di template",
 	"discussiontools-error-noswitchtove-title": "Modalità visuale disabilitata",
+	"discussiontools-postedit-confirmation-topicadded": "Il tuo topic è stato aggiunto.",
 	"tag-discussiontools-description": "Modifica effettuata usando DiscussionTools",
 	"tag-discussiontools-edit": "Modifica commento",
 	"tag-discussiontools-edit-description": "L'utente ha modificato un commento esistente con DiscussionTools",
