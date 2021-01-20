@@ -5,7 +5,12 @@ var
 function NewTopicController( $pageContainer, $replyLink ) {
 	var comment;
 
-	this.$container = $( '<div>' ).addClass( 'dt-ui-newTopic' );
+	this.container = new OO.ui.PanelLayout( {
+		classes: [ 'dt-ui-newTopic' ],
+		expanded: false,
+		padded: true,
+		framed: true
+	} );
 
 	this.sectionTitle = new OO.ui.TextInputWidget( {
 		// Wrap in a <h2> element to inherit heading font styles
@@ -19,7 +24,7 @@ function NewTopicController( $pageContainer, $replyLink ) {
 	} );
 	this.prevTitleText = '';
 
-	this.$container.append( this.sectionTitleField.$element );
+	this.container.$element.append( this.sectionTitleField.$element );
 
 	// HeadingItem representing the heading being added, so that we can pretend we're replying to it
 	comment = new HeadingItem( {
@@ -63,7 +68,7 @@ NewTopicController.prototype.getTranscludedFromSource = function () {
 NewTopicController.prototype.setup = function ( mode ) {
 	var rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
 
-	this.$pageContainer.append( this.$container );
+	this.$pageContainer.append( this.container.$element );
 	NewTopicController.super.prototype.setup.call( this, mode );
 
 	// The section title field is added to the page immediately, we can scroll to the bottom and focus
@@ -105,7 +110,7 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 	NewTopicController.super.prototype.teardown.call( this, abandoned );
 
 	this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
-	this.$container.detach();
+	this.container.$element.detach();
 };
 
 /**
