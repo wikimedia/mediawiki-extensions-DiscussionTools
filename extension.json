@@ -113,7 +113,9 @@
 		},
 		"ext.discussionTools.ReplyWidget": {
 			"packageFiles": [
-				"dt.ui.ReplyWidget.js"
+				"dt.ui.ReplyWidget.js",
+				"AbandonCommentDialog.js",
+				"AbandonTopicDialog.js"
 			],
 			"styles": [
 				"dt.ui.ReplyWidget.less"
@@ -122,6 +124,9 @@
 				"discussiontools-replywidget-abandon",
 				"discussiontools-replywidget-abandon-discard",
 				"discussiontools-replywidget-abandon-keep",
+				"discussiontools-replywidget-abandontopic",
+				"discussiontools-replywidget-abandontopic-discard",
+				"discussiontools-replywidget-abandontopic-keep",
 				"discussiontools-replywidget-advanced",
 				"discussiontools-replywidget-anon-warning",
 				"discussiontools-replywidget-cancel",
