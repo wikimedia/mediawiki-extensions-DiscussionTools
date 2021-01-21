@@ -163,7 +163,7 @@ class Hooks {
 		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
 		if (
 			!$user->isAnon() &&
-			( $abtest == 'all' || ( $feature && $abtest == $feature ) )
+			( $abtest == 'all' || ( !$feature && $abtest ) || ( $feature && $abtest == $feature ) )
 		) {
 			// The A/B test is enabled, and the user is qualified to be in the
 			// test by being logged in.
