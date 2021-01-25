@@ -43,6 +43,7 @@
 	"discussiontools-replywidget-preview": "Label for the preview area of the reply widget",
 	"discussiontools-replywidget-reply": "Label for the button to submit a reply in the reply widget",
 	"discussiontools-replywidget-reply-link": "{{notranslate}}\nUsed by {{msg-mw|Tag-discussiontools-reply}} as a link to a page where users learn about the feature. Defaults to a page on MediaWiki.org.",
+	"discussiontools-replywidget-newtopic-link": "{{notranslate}}\nUsed by {{msg-mw|Tag-discussiontools-newtopic}} as a link to a page where users learn about the feature. Defaults to a page on MediaWiki.org.",
 	"discussiontools-replywidget-signature-title": "Title of the warning about typing in your signature",
 	"discussiontools-replywidget-signature-body": "Body of the warning about typing in your signature.\n\nParameters:\n* $1 – the signature markup, i.e. <code><nowiki>~~~~</nowiki></code>\n* $2 – localised keyboard shortcut to undo, for example <kbd><kbd>Ctrl</kbd>+<kbd>Z</kbd></kbd>",
 	"discussiontools-replywidget-summary": "Label for the summary field that describes your comment. This will be stored as an edit summary, but in the context of the reply tool we don't want to refer to 'edits'",
