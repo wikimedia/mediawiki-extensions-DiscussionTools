@@ -4,7 +4,7 @@ var
 	$pageContainer,
 	newTopicController,
 	$overlay,
-	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ),
+	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
 	logger = require( './logger.js' ),
