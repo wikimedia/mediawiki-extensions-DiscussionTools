@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agaafd",
 			"BaRaN6161 TURK",
 			"Incelemeelemani",
 			"MuratTheTurkish",
@@ -23,6 +24,7 @@
 	"discussiontools-replywidget-abandon": "Yazdığınız yorumu silmek istediğinizden emin misiniz?",
 	"discussiontools-replywidget-abandon-discard": "Yorumu sil",
 	"discussiontools-replywidget-abandon-keep": "Yazmaya devam et",
+	"discussiontools-replywidget-abandontopic-keep": "Yazmaya devam et",
 	"discussiontools-replywidget-advanced": "Gelişmiş",
 	"discussiontools-replywidget-anon-warning": "<strong>Oturum açmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 oturum açın] veya [$2 bir hesap oluşturabilirsiniz].",
 	"discussiontools-replywidget-cancel": "İptal",

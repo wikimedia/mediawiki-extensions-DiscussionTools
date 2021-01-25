@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"tag-discussiontools-description": "Urejanje z orodjem DiscussionTools",
+	"tag-discussiontools-edit": "Uredi komentar",
+	"tag-discussiontools-edit-description": "Uporabnik je že obstoječ komentar uredil z orodjem DiscussionTools",
+	"tag-discussiontools-newtopic": "nova tema",
+	"tag-discussiontools-newtopic-description": "Uporabnik je na strani z orodjem DiscussionTools dodal novo temo",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odgovori]",
+	"tag-discussiontools-reply-description": "Uporabnik je z orodjem DiscussionTools odogovoril na komentar",
+	"tag-discussiontools-source": "izvorni način",
+	"tag-discussiontools-source-description": "Orodje DiscussionTools je bilo uporabljeno v izvornem načinu",
+	"tag-discussiontools-visual": "vizualni način",
+	"tag-discussiontools-visual-description": "Orodje DiscussionTools je bilo v vizualnem načinu"
+}

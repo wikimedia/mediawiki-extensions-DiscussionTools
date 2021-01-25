@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"Colathewikian",
 			"Func",
 			"Matma Rex",
 			"Ps2049",
@@ -19,7 +20,7 @@
 	"discussiontools-defaultsummary-reply": "回复",
 	"discussiontools-desc": "增强讨论页面的工具",
 	"discussiontools-preference-label": "讨论工具",
-	"discussiontools-preference-description": "启用一个新的工作流程，用于[https://www.mediawiki.org/wiki/Talk_pages_project/replying 回复讨论页上的特定评论] 。\n\n请注意，随着时间的推移，将增加新的讨论页互动工具。\n\n有关这些功能的更新将在[https://www.mediawiki.org/wiki/Talk_pages_project/Updates 讨论页项目的更新页面]上公布。",
+	"discussiontools-preference-description": "启用测试中的讨论页功能，如下：\n* 一键[https://www.mediawiki.org/wiki/Talk_pages_project/replying 回复]讨论页上的评论。\n* 以内联形式[https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion 添加新话题]。\n\n您可以在您的[[Special:Preferences#mw-prefsection-editing-discussion|参数设置]]更改这些功能的设置。\n\n有关更新将在[https://www.mediawiki.org/wiki/Talk_pages_project/Updates 讨论页项目的更新页面]上公布。\n\n请注意：\n* 随着时间的推移，将增加新的测试版功能。\n* 以上的一些功能也许尚未在你的维基上被使用。",
 	"discussiontools-preference-newtopictool": "启用快速添加主题",
 	"discussiontools-preference-replytool": "开启快速回复",
 	"discussiontools-preference-replytool-help": "这将为您提供“回复”链接，用以快速回复讨论页上已有的特定评论。有关此功能的更多信息见[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary feature 功能摘要]。",
