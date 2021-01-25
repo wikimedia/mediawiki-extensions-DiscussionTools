@@ -197,7 +197,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				break;
 		}
 
-		if ( !isset( $result['newrevid'] ) ) {
+		if ( !isset( $result['newrevid'] ) && isset( $result['result'] ) && $result['result'] === 'success' ) {
 			// No new revision, so no changes were made to the page (null edit).
 			// Comment was not actually saved, so for this API, that's an error.
 			// This is probably because changes were inside a transclusion's HTML?
