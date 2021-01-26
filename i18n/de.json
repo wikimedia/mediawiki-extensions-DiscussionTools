@@ -60,7 +60,7 @@
 	"tag-discussiontools-description": "Bearbeitung durch Diskussions-Werkzeuge",
 	"tag-discussiontools-edit": "Kommentar bearbeiten",
 	"tag-discussiontools-edit-description": "Benutzer hat einen vorhandenen Kommentar mit den Diskussions-Werkzeugen bearbeitet",
-	"tag-discussiontools-newtopic": "Neues Thema",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Neues Thema]",
 	"tag-discussiontools-newtopic-description": "Benutzer hat ein neues Thema zur Seite mit den Diskussions-Werkzeugen erstellt",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Antworten]",
 	"tag-discussiontools-reply-description": "Benutzer hat auf einen Kommentar mit den Diskussions-Werkzeugen geantwortet",
