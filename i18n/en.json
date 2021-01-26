@@ -48,7 +48,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-error-comment-conflict": "Your comment could not be saved, because someone else commented at the same time as you. Please try again, or reload the page to view the latest comments.",
 	"discussiontools-error-comment-disappeared": "Could not find the comment you're replying to on the page. It might have been deleted or moved to another page. Please reload the page and try again.",
-	"discussiontools-error-comment-not-saved": "Your comment could not be saved in the latest version of the page. Please reload the page to see the latest changes.",
+	"discussiontools-error-comment-not-saved": "Your comment could not be published to the most recent version of the page. To see the latest changes, copy your drafted comment and then use your browser to reload the page.",
 	"discussiontools-error-comment-is-transcluded": "The \"{{int:discussiontools-replylink}}\" link cannot be used to reply to this comment. To reply, please use the full page editor by clicking \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "The \"{{int:discussiontools-replylink}}\" link cannot be used to reply to this comment because it is loaded from another page. To reply, please go here: [[$1]].",
 	"discussiontools-error-lint": "Comments on this page can't be replied to because of an error in the wikitext. You can learn about this error by [$1 reading the documentation], ask for help by [$2 posting here] or fix the error by [$3 opening the full page editor].",
