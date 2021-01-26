@@ -47,8 +47,8 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 	 */
 	protected static function overwriteJsonFile( string $relativePath, array $data ) : void {
 		$json = json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-		// 2 spaces instead of 4
-		$json = preg_replace( '/^( +)\1/m', '$1', $json );
+		// Tabs instead of 4 spaces
+		$json = preg_replace( '/(?:\G|^) {4}/m', "\t", $json );
 		file_put_contents( __DIR__ . '/' . $relativePath, $json . "\n" );
 	}
 
