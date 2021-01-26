@@ -347,7 +347,11 @@
 	},
 	"APIModules": {
 		"discussiontools": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionTools",
-		"discussiontoolsedit": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
+		"discussiontoolsedit": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit",
+		"discussiontoolssubscribe": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsSubscribe",
+			"services": [ "DiscussionTools.SubscriptionStore" ]
+		}
 	},
 	"Hooks": {
 		"LoadExtensionSchemaUpdates": "installer",

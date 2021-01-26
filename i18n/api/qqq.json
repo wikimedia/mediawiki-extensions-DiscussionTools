@@ -17,5 +17,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "{{doc-apihelp-param|discussiontoolsedit|wikitext}}",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addcomment}}",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addtopic}}",
-	"apihelp-discussiontoolsedit-summary": "{{doc-apihelp-summary|discussiontoolsedit}}"
+	"apihelp-discussiontoolsedit-summary": "{{doc-apihelp-summary|discussiontoolsedit}}",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "{{doc-apihelp-param|discussiontoolssubscribe|subscribe}}",
+	"apihelp-discussiontoolssubscribe-summary": "{{doc-apihelp-summary|discussiontoolssubscribe}}"
 }
