@@ -40,7 +40,7 @@ function CommentController( $pageContainer, $replyLink, comment ) {
 
 	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
 		mode = storage.get( 'reply/' + comment.id + '/mode' );
-		this.setup( mode );
+		this.setup( mode, true );
 	}
 }
 
@@ -127,8 +127,9 @@ CommentController.prototype.onReplyLinkClick = function ( e ) {
  * Create and setup the reply widget
  *
  * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
+ * @param {boolean} [hideErrors]
  */
-CommentController.prototype.setup = function ( mode ) {
+CommentController.prototype.setup = function ( mode, hideErrors ) {
 	var comment = this.comment,
 		commentController = this;
 
@@ -164,10 +165,12 @@ CommentController.prototype.setup = function ( mode ) {
 		}, function ( code, data ) {
 			commentController.teardown();
 
-			OO.ui.alert(
-				code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
-				{ size: 'medium' }
-			);
+			if ( !hideErrors ) {
+				OO.ui.alert(
+					code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
+					{ size: 'medium' }
+				);
+			}
 
 			logger( {
 				action: 'abort',
