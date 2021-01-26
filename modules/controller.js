@@ -231,6 +231,8 @@ function init( $container, state ) {
 		$addSectionTab,
 		i, hash, comment, commentNodes, newId,
 		pageExists = !!mw.config.get( 'wgRelevantArticleId' ),
+		controllers = [],
+		activeController = null,
 		// Loads later to avoid circular dependency
 		CommentController = require( './CommentController.js' ),
 		NewTopicController = require( './NewTopicController.js' ),
@@ -255,8 +257,9 @@ function init( $container, state ) {
 		threadItemsById[ comment.id ] = comment;
 
 		if ( comment.type === 'comment' ) {
-			// eslint-disable-next-line no-new
-			new CommentController( $pageContainer, $( commentNodes[ i ] ), comment );
+			controllers.push(
+				new CommentController( $pageContainer, $( commentNodes[ i ] ), comment )
+			);
 		} else {
 			// Use unshift as we are in a backwards loop
 			pageThreads.unshift( comment );
@@ -290,8 +293,36 @@ function init( $container, state ) {
 			// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
 			$addSectionTab.off( '.ve-target' );
 			newTopicController = new NewTopicController( $pageContainer, $addSectionTab.find( 'a' ) );
+			controllers.push( newTopicController );
 		}
 	}
+
+	// Hook up each link to open a reply widget
+	//
+	// TODO: Allow users to use multiple reply widgets simultaneously.
+	// Currently submitting a reply from one widget would also destroy the other ones.
+	controllers.forEach( function ( c ) {
+		c.on( 'link-click', function () {
+			// If the reply widget is already open, activate it.
+			// Reply links are also made unclickable using 'pointer-events' in CSS, but that doesn't happen
+			// for new section links, because we don't have a good way of visually disabling them.
+			// (And it also doesn't work on IE 11.)
+			if ( activeController === c ) {
+				c.showAndFocus();
+				return;
+			}
+
+			// If another reply widget is open (or opening), do nothing.
+			if ( activeController ) {
+				return;
+			}
+
+			activeController = c;
+			c.setup();
+		} ).on( 'teardown', function () {
+			activeController = null;
+		} );
+	} );
 
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;

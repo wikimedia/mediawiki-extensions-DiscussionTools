@@ -25,6 +25,9 @@ if ( defaultVisual ) {
 function CommentController( $pageContainer, $replyLink, comment ) {
 	var mode;
 
+	// Mixin constructors
+	OO.EventEmitter.call( this );
+
 	this.$pageContainer = $pageContainer;
 	this.comment = comment;
 	this.newListItem = null;
@@ -42,6 +45,7 @@ function CommentController( $pageContainer, $replyLink, comment ) {
 }
 
 OO.initClass( CommentController );
+OO.mixinClass( CommentController, OO.EventEmitter );
 
 /* CommentController private utilities */
 
@@ -116,27 +120,7 @@ CommentController.prototype.onReplyLinkClick = function ( e ) {
 
 	e.preventDefault();
 
-	// TODO: Allow users to use multiple reply widgets simultaneously.
-	// Currently submitting a reply from one widget would also destroy the other ones.
-
-	// If the reply widget is already open, activate it.
-	// Reply links are also made unclickable using 'pointer-events' in CSS, but that doesn't happen
-	// for new section links, because we don't have a good way of visually disabling them.
-	// (And it also doesn't work on IE 11.)
-	if ( this.opened ) {
-		// Show and focus the widget
-		this.replyWidget.scrollElementIntoView( { padding: scrollPadding } );
-		this.focus();
-		return;
-	}
-
-	// If another reply widget is open (or opening), do nothing.
-	// eslint-disable-next-line no-jquery/no-class-state
-	if ( this.$pageContainer.hasClass( 'dt-init-replylink-open' ) ) {
-		return;
-	}
-
-	this.setup();
+	this.emit( 'link-click' );
 };
 
 /**
@@ -209,9 +193,7 @@ CommentController.prototype.setup = function ( mode ) {
 
 		commentController.setupReplyWidget( replyWidget );
 
-		// Show and focus the widget
-		replyWidget.scrollElementIntoView( { padding: scrollPadding } );
-		commentController.focus();
+		commentController.showAndFocus();
 
 		logger( { action: 'ready' } );
 		logger( { action: 'loaded' } );
@@ -242,7 +224,6 @@ CommentController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 	replyWidget.setup( data );
 
 	this.replyWidget = replyWidget;
-	this.opened = true;
 };
 
 /**
@@ -250,6 +231,11 @@ CommentController.prototype.setupReplyWidget = function ( replyWidget, data ) {
  */
 CommentController.prototype.focus = function () {
 	this.replyWidget.focus();
+};
+
+CommentController.prototype.showAndFocus = function () {
+	this.replyWidget.scrollElementIntoView( { padding: scrollPadding } );
+	this.focus();
 };
 
 CommentController.prototype.teardown = function ( abandoned ) {
@@ -269,10 +255,10 @@ CommentController.prototype.teardown = function ( abandoned ) {
 	}
 	modifier.removeAddedListItem( this.newListItem );
 	this.newListItem = null;
-	this.opened = false;
 	if ( abandoned ) {
 		this.$replyLink.trigger( 'focus' );
 	}
+	this.emit( 'teardown' );
 };
 
 /**
