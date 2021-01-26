@@ -39,6 +39,9 @@ class CommentUtils {
 			in_array( strtolower( $node->tagName ), self::$blockElementTypes );
 	}
 
+	private const SOL_TRANSPARENT_LINK_REGEX =
+		'/(?:^|\s)mw:PageProp\/(?:Category|redirect|Language)(?=$|\s)/D';
+
 	/**
 	 * @param DOMNode $node
 	 * @return bool Node is considered a rendering-transparent node in Parsoid
@@ -48,7 +51,10 @@ class CommentUtils {
 			$node instanceof DOMComment ||
 			$node instanceof DOMElement && (
 				strtolower( $node->tagName ) === 'meta' ||
-				strtolower( $node->tagName ) === 'link' ||
+				(
+					strtolower( $node->tagName ) === 'link' &&
+					preg_match( self::SOL_TRANSPARENT_LINK_REGEX, $node->getAttribute( 'rel' ) ?? '' )
+				) ||
 				// Empty inline templates, e.g. tracking templates
 				(
 					strtolower( $node->tagName ) === 'span' &&

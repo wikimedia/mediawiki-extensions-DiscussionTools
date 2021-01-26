@@ -673,6 +673,10 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 			if ( isCommentSeparator( n ) ) {
 				return NodeFilter.FILTER_REJECT;
 			}
+			// Ignore nodes with no rendering that mess up our indentation detection
+			if ( utils.isRenderingTransparentNode( n ) ) {
+				return NodeFilter.FILTER_REJECT;
+			}
 			if (
 				( n.nodeType === Node.TEXT_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
 				( n.nodeType === Node.CDATA_SECTION_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||

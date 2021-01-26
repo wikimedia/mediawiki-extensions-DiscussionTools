@@ -125,6 +125,10 @@ class CommentParser {
 				if ( self::isCommentSeparator( $n ) ) {
 					return NodeFilter::FILTER_REJECT;
 				}
+				// Ignore nodes with no rendering that mess up our indentation detection
+				if ( CommentUtils::isRenderingTransparentNode( $n ) ) {
+					return NodeFilter::FILTER_REJECT;
+				}
 				if (
 					(
 						$n->nodeType === XML_TEXT_NODE &&
