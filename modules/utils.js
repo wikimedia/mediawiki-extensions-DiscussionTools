@@ -231,15 +231,14 @@ function getIndentLevel( node, rootNode ) {
 }
 
 /**
- * Get an array of sibling nodes that contain parts of the given thread item.
+ * Get an array of sibling nodes that contain parts of the given range.
  *
- * @param {ThreadItem} item Thread item
+ * @param {Range} range
  * @return {HTMLElement[]}
  */
-function getCoveredSiblings( item ) {
-	var range, ancestor, siblings, start, end;
+function getCoveredSiblings( range ) {
+	var ancestor, siblings, start, end;
 
-	range = item.getNativeRange();
 	ancestor = range.commonAncestorContainer;
 
 	siblings = ancestor.childNodes;
@@ -278,7 +277,7 @@ function getFullyCoveredSiblings( item ) {
 		siblings, startContainer, endContainer, startOffset, endOffset,
 		node, startMatches, endMatches, length, parent;
 
-	siblings = getCoveredSiblings( item );
+	siblings = getCoveredSiblings( item.getNativeRange() );
 	startContainer = item.range.startContainer;
 	endContainer = item.range.endContainer;
 	startOffset = item.range.startOffset;
@@ -398,6 +397,35 @@ function linearWalk( node, callback ) {
 	return result;
 }
 
+/**
+ * Like #linearWalk, but it goes backwards.
+ *
+ * @inheritdoc #linearWalk
+ */
+function linearWalkBackwards( node, callback ) {
+	var
+		result = null,
+		withinNode = node.parentNode,
+		beforeNode = node;
+
+	while ( beforeNode || withinNode ) {
+		if ( beforeNode ) {
+			result = callback( 'enter', beforeNode );
+			withinNode = beforeNode;
+			beforeNode = beforeNode.lastChild;
+		} else {
+			result = callback( 'leave', withinNode );
+			beforeNode = withinNode.previousSibling;
+			withinNode = withinNode.parentNode;
+		}
+
+		if ( result ) {
+			return result;
+		}
+	}
+	return result;
+}
+
 module.exports = {
 	isBlockElement: isBlockElement,
 	isRenderingTransparentNode: isRenderingTransparentNode,
@@ -405,9 +433,11 @@ module.exports = {
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,
 	getIndentLevel: getIndentLevel,
+	getCoveredSiblings: getCoveredSiblings,
 	getFullyCoveredSiblings: getFullyCoveredSiblings,
 	getTranscludedFromElement: getTranscludedFromElement,
 	getHeadlineNodeAndOffset: getHeadlineNodeAndOffset,
 	htmlTrim: htmlTrim,
-	linearWalk: linearWalk
+	linearWalk: linearWalk,
+	linearWalkBackwards: linearWalkBackwards
 };

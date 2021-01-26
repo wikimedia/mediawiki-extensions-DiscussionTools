@@ -266,13 +266,12 @@ class CommentUtils {
 	}
 
 	/**
-	 * Get an array of sibling nodes that contain parts of the given thread item.
+	 * Get an array of sibling nodes that contain parts of the given range.
 	 *
-	 * @param ThreadItem $item
+	 * @param ImmutableRange $range
 	 * @return DOMElement[]
 	 */
-	private static function getCoveredSiblings( ThreadItem $item ) : array {
-		$range = $item->getRange();
+	public static function getCoveredSiblings( ImmutableRange $range ) : array {
 		$ancestor = $range->commonAncestorContainer;
 
 		// Convert to array early because apparently DOMNodeList acts like a linked list
@@ -309,7 +308,7 @@ class CommentUtils {
 	 * @return DOMElement[]|null
 	 */
 	public static function getFullyCoveredSiblings( ThreadItem $item ) : ?array {
-		$siblings = self::getCoveredSiblings( $item );
+		$siblings = self::getCoveredSiblings( $item->getRange() );
 		$startContainer = $item->getRange()->startContainer;
 		$endContainer = $item->getRange()->endContainer;
 		$startOffset = $item->getRange()->startOffset;
@@ -478,6 +477,31 @@ class CommentUtils {
 			} else {
 				$result = $callback( 'leave', $withinNode );
 				[ $withinNode, $beforeNode ] = [ $withinNode->parentNode, $withinNode->nextSibling ];
+			}
+
+			if ( $result ) {
+				return $result;
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Like #linearWalk, but it goes backwards.
+	 *
+	 * @inheritDoc ::linearWalk()
+	 */
+	public static function linearWalkBackwards( DOMNode $node, callable $callback ) {
+		$result = null;
+		[ $withinNode, $beforeNode ] = [ $node->parentNode, $node ];
+
+		while ( $beforeNode || $withinNode ) {
+			if ( $beforeNode ) {
+				$result = $callback( 'enter', $beforeNode );
+				[ $withinNode, $beforeNode ] = [ $beforeNode, $beforeNode->lastChild ];
+			} else {
+				$result = $callback( 'leave', $withinNode );
+				[ $withinNode, $beforeNode ] = [ $withinNode->parentNode, $withinNode->previousSibling ];
 			}
 
 			if ( $result ) {

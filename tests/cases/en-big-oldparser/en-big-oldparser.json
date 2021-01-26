@@ -314,44 +314,60 @@
 						"replies": [
 							{
 								"type": "comment",
-								"timestamp": "2019-06-28T11:09:00.000Z",
-								"author": "PrimeHunter",
+								"timestamp": "2019-06-28T10:49:00.000Z",
+								"author": "Rich Farmbrough",
 								"range": [
 									"0/20/0/9/0/0",
-									"0/20/0/9/2/6/0/8/27"
+									"0/20/0/9/2/5/0"
 								],
 								"signatureRanges": [
 									[
-										"0/20/0/9/2/6/0/5",
-										"0/20/0/9/2/6/0/8/27"
+										"0/20/0/9/2/1",
+										"0/20/0/9/2/4"
 									]
 								],
 								"level": 3,
-								"id": "c|PrimeHunter|2019-06-28T11:09:00.000Z|Jotamar|2019-06-26T19:01:00.000Z",
-								"warnings": [
-									"Comment starts and ends with different indentation"
-								],
+								"id": "c|Rich Farmbrough|2019-06-28T10:49:00.000Z|Jotamar|2019-06-26T19:01:00.000Z",
+								"warnings": [],
 								"replies": [
 									{
 										"type": "comment",
-										"timestamp": "2019-07-01T13:48:00.000Z",
-										"author": "Jotamar",
+										"timestamp": "2019-06-28T11:09:00.000Z",
+										"author": "PrimeHunter",
 										"range": [
-											"0/20/0/9/2/6/0/9/0/0",
-											"0/20/0/9/2/6/0/9/0/4/26"
+											"0/20/0/9/2/6/0/0",
+											"0/20/0/9/2/6/0/8/27"
 										],
 										"signatureRanges": [
 											[
-												"0/20/0/9/2/6/0/9/0/1",
-												"0/20/0/9/2/6/0/9/0/4/26"
+												"0/20/0/9/2/6/0/5",
+												"0/20/0/9/2/6/0/8/27"
 											]
 										],
-										"level": 5,
-										"id": "c|Jotamar|2019-07-01T13:48:00.000Z|PrimeHunter|2019-06-28T11:09:00.000Z",
-										"warnings": [
-											"Comment skips indentation level"
-										],
-										"replies": []
+										"level": 4,
+										"id": "c|PrimeHunter|2019-06-28T11:09:00.000Z|Rich Farmbrough|2019-06-28T10:49:00.000Z",
+										"warnings": [],
+										"replies": [
+											{
+												"type": "comment",
+												"timestamp": "2019-07-01T13:48:00.000Z",
+												"author": "Jotamar",
+												"range": [
+													"0/20/0/9/2/6/0/9/0/0",
+													"0/20/0/9/2/6/0/9/0/4/26"
+												],
+												"signatureRanges": [
+													[
+														"0/20/0/9/2/6/0/9/0/1",
+														"0/20/0/9/2/6/0/9/0/4/26"
+													]
+												],
+												"level": 5,
+												"id": "c|Jotamar|2019-07-01T13:48:00.000Z|PrimeHunter|2019-06-28T11:09:00.000Z",
+												"warnings": [],
+												"replies": []
+											}
+										]
 									}
 								]
 							}
@@ -12351,67 +12367,103 @@
 		],
 		"headingLevel": 2,
 		"level": 0,
-		"id": "h|Whist_marker_-_such_a_popular_article!|2019-07-14T21:59:00.000Z",
+		"id": "h|Whist_marker_-_such_a_popular_article!|2019-07-14T21:34:00.000Z",
 		"warnings": [],
 		"replies": [
 			{
 				"type": "comment",
-				"timestamp": "2019-07-14T21:59:00.000Z",
-				"author": "Xaosflux",
+				"timestamp": "2019-07-14T21:34:00.000Z",
+				"author": "Rich Farmbrough",
 				"range": [
 					"0/590/0",
-					"0/593/0/7/26"
+					"0/591/5/0"
 				],
 				"signatureRanges": [
 					[
-						"0/593/0/4",
-						"0/593/0/7/26"
+						"0/591/1",
+						"0/591/4"
 					]
 				],
 				"level": 1,
-				"id": "c|Xaosflux|2019-07-14T21:59:00.000Z|Whist_marker_-_such_a_popular_article!",
-				"warnings": [
-					"Comment starts and ends with different indentation"
-				],
+				"id": "c|Rich Farmbrough|2019-07-14T21:34:00.000Z|Whist_marker_-_such_a_popular_article!",
+				"warnings": [],
 				"replies": [
 					{
 						"type": "comment",
-						"timestamp": "2019-07-14T22:39:00.000Z",
-						"author": "Nyttend",
+						"timestamp": "2019-07-14T21:59:00.000Z",
+						"author": "Xaosflux",
 						"range": [
-							"0/593/0/8/0/0",
-							"0/597/0/0/0/4/27"
+							"0/593/0/0/0",
+							"0/593/0/7/26"
 						],
 						"signatureRanges": [
 							[
-								"0/597/0/0/0/1",
-								"0/597/0/0/0/4/27"
+								"0/593/0/4",
+								"0/593/0/7/26"
 							]
 						],
-						"level": 3,
-						"id": "c|Nyttend|2019-07-14T22:39:00.000Z|Xaosflux|2019-07-14T21:59:00.000Z",
-						"warnings": [
-							"Comment skips indentation level"
-						],
+						"level": 2,
+						"id": "c|Xaosflux|2019-07-14T21:59:00.000Z|Rich Farmbrough|2019-07-14T21:34:00.000Z",
+						"warnings": [],
 						"replies": [
 							{
 								"type": "comment",
-								"timestamp": "2019-07-14T22:51:00.000Z",
-								"author": "Modulus12",
+								"timestamp": "2019-07-14T22:39:00.000Z",
+								"author": "Nyttend",
 								"range": [
-									"0/597/0/0/0/5/0/0",
-									"0/597/0/0/0/5/0/6/27"
+									"0/593/0/8/0/0",
+									"0/597/0/0/0/4/27"
 								],
 								"signatureRanges": [
 									[
-										"0/597/0/0/0/5/0/3",
-										"0/597/0/0/0/5/0/6/27"
+										"0/597/0/0/0/1",
+										"0/597/0/0/0/4/27"
 									]
 								],
-								"level": 4,
-								"id": "c|Modulus12|2019-07-14T22:51:00.000Z|Nyttend|2019-07-14T22:39:00.000Z",
+								"level": 3,
+								"id": "c|Nyttend|2019-07-14T22:39:00.000Z|Xaosflux|2019-07-14T21:59:00.000Z",
 								"warnings": [],
-								"replies": []
+								"replies": [
+									{
+										"type": "comment",
+										"timestamp": "2019-07-14T22:51:00.000Z",
+										"author": "Modulus12",
+										"range": [
+											"0/597/0/0/0/5/0/0",
+											"0/597/0/0/0/5/0/6/27"
+										],
+										"signatureRanges": [
+											[
+												"0/597/0/0/0/5/0/3",
+												"0/597/0/0/0/5/0/6/27"
+											]
+										],
+										"level": 4,
+										"id": "c|Modulus12|2019-07-14T22:51:00.000Z|Nyttend|2019-07-14T22:39:00.000Z",
+										"warnings": [],
+										"replies": [
+											{
+												"type": "comment",
+												"timestamp": "2019-07-15T14:49:00.000Z",
+												"author": "Rich Farmbrough",
+												"range": [
+													"0/597/0/0/0/5/0/7/0/0",
+													"0/597/0/0/0/5/0/7/0/4/0"
+												],
+												"signatureRanges": [
+													[
+														"0/597/0/0/0/5/0/7/0/1",
+														"0/597/0/0/0/5/0/7/0/4"
+													]
+												],
+												"level": 5,
+												"id": "c|Rich Farmbrough|2019-07-15T14:49:00.000Z|Modulus12|2019-07-14T22:51:00.000Z",
+												"warnings": [],
+												"replies": []
+											}
+										]
+									}
+								]
 							}
 						]
 					}
