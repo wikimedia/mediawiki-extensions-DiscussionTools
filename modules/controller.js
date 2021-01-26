@@ -312,6 +312,15 @@ function init( $container, state ) {
 				return;
 			}
 
+			// If this is a new topic link, and a reply widget is open, attempt to close it first.
+			if ( activeController && c instanceof NewTopicController ) {
+				activeController.replyWidget.tryTeardown().then( function () {
+					activeController = c;
+					c.setup();
+				} );
+				return;
+			}
+
 			// If another reply widget is open (or opening), do nothing.
 			if ( activeController ) {
 				return;

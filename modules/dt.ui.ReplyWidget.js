@@ -472,7 +472,7 @@ ReplyWidget.prototype.afterSetup = function () {
  * Try to teardown the widget, prompting the user if unsaved changes will be lost.
  *
  * @chainable
- * @return {ReplyWidget}
+ * @return {jQuery.Promise} Resolves if widget was torn down, rejects if it wasn't
  */
 ReplyWidget.prototype.tryTeardown = function () {
 	var promise,
@@ -498,10 +498,10 @@ ReplyWidget.prototype.tryTeardown = function () {
 			type: 'nochange'
 		} );
 	}
-	promise.then( function () {
+	promise = promise.then( function () {
 		widget.teardown( true );
 	} );
-	return this;
+	return promise;
 };
 
 /**
