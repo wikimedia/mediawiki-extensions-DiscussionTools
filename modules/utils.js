@@ -1,7 +1,7 @@
 'use strict';
 /* global $:off */
 
-var noElementChildrenElementTypes;
+var noElementChildrenElementTypes, solTransparentLinkRegexp;
 
 /**
  * @external ThreadItem
@@ -15,6 +15,8 @@ function isBlockElement( node ) {
 	return node instanceof HTMLElement && ve.isBlockElement( node );
 }
 
+solTransparentLinkRegexp = /(?:^|\s)mw:PageProp\/(?:Category|redirect|Language)(?=$|\s)/;
+
 /**
  * @param {Node} node
  * @return {boolean} Node is considered a rendering-transparent node in Parsoid
@@ -24,7 +26,10 @@ function isRenderingTransparentNode( node ) {
 		node.nodeType === Node.COMMENT_NODE ||
 		node.nodeType === Node.ELEMENT_NODE && (
 			node.tagName.toLowerCase() === 'meta' ||
-			node.tagName.toLowerCase() === 'link' ||
+			(
+				node.tagName.toLowerCase() === 'link' &&
+				solTransparentLinkRegexp.test( node.getAttribute( 'rel' ) || '' )
+			) ||
 			// Empty inline templates, e.g. tracking templates
 			(
 				node.tagName.toLowerCase() === 'span' &&
