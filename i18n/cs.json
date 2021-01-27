@@ -59,14 +59,14 @@
 	"discussiontools-postedit-confirmation-published": "Váš komentář byl zveřejněn.",
 	"discussiontools-postedit-confirmation-topicadded": "Vaše téma bylo přidáno.",
 	"tag-discussiontools-description": "Editace provedená pomocí Diskusních nástrojů",
-	"tag-discussiontools-edit": "Editace komentáře",
+	"tag-discussiontools-edit": "editace komentáře",
 	"tag-discussiontools-edit-description": "Uživatel editoval existující komentář pomocí Diskusních nástrojů",
-	"tag-discussiontools-newtopic": "Nové téma",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nové téma]",
 	"tag-discussiontools-newtopic-description": "Uživatel přidal nové téma pomocí Diskusních nástrojů",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odpověď]",
 	"tag-discussiontools-reply-description": "Uživatel odpověděl na komentář pomocí Diskusních nástrojů",
-	"tag-discussiontools-source": "Zdrojový kód",
+	"tag-discussiontools-source": "zdrojový kód",
 	"tag-discussiontools-source-description": "Editace byla uložena pomocí Diskusních nástrojů v editoru zdrojového kódu",
-	"tag-discussiontools-visual": "Vizuální režim",
+	"tag-discussiontools-visual": "vizuální režim",
 	"tag-discussiontools-visual-description": "Editace byla uložena pomocí Diskusních nástrojů ve vizuálním režimu."
 }

@@ -56,7 +56,7 @@
 	"tag-discussiontools-description": "Modifega efetuada cont el drovà l'Istrument de Discussion",
 	"tag-discussiontools-edit": "Modifega el coment",
 	"tag-discussiontools-edit-description": "L'utent l'hà modifegà un coment esistent con l'Istrument de Discussion",
-	"tag-discussiontools-newtopic": "Argoment noeuv",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Argoment Noeuv]",
 	"tag-discussiontools-newtopic-description": "L'utent l'hà sgiontad un argoment noeuv a la pagina con l'Istrument de Discussion",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Rispond]",
 	"tag-discussiontools-reply-description": "L'utent l'hà rispondud ai coment con l'Istrument de Discussion",

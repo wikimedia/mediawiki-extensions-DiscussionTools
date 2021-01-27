@@ -58,7 +58,7 @@
 	"tag-discussiontools-description": "Modifica effettuata usando DiscussionTools",
 	"tag-discussiontools-edit": "Modifica commento",
 	"tag-discussiontools-edit-description": "L'utente ha modificato un commento esistente con DiscussionTools",
-	"tag-discussiontools-newtopic": "Nuovo argomento",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nuovo argomento]",
 	"tag-discussiontools-newtopic-description": "L'utente ha aggiunto un nuovo argomento alla pagina con DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Rispondi]",
 	"tag-discussiontools-reply-description": "L'utente ha risposto a un commento con DiscussionTools",
