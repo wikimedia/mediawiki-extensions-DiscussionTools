@@ -98,6 +98,17 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				break;
 
 			case 'addcomment':
+				$commentId = $params['commentid'] ?? null;
+
+				if ( !$commentId ) {
+					$this->dieWithError( [ 'apierror-missingparam', 'commentid' ] );
+				}
+
+				if ( !$title->exists() ) {
+					// The page does not exist, so the comment we're trying to reply to can't exist either.
+					$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
+				}
+
 				// Fetch the latest revision
 				$requestedRevision = $this->getLatestRevision( $title );
 				$response = $this->requestRestbasePageHtml( $requestedRevision );
@@ -132,12 +143,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$container = $doc->getElementsByTagName( 'body' )->item( 0 );
 				'@phan-var DOMElement $container';
-
-				$commentId = $params['commentid'] ?? null;
-
-				if ( !$commentId ) {
-					$this->dieWithError( [ 'apierror-missingparam', 'commentid' ] );
-				}
 
 				$parser = CommentParser::newFromGlobalState( $container );
 
