@@ -66,6 +66,46 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
+	 * Get summary metadata for a thread.
+	 *
+	 * @return array Information about the comments below
+	 */
+	public function getThreadSummary(): array {
+		$authors = [];
+		$commentCount = 0;
+		$latestReply = false;
+		$threadScan = static function ( ThreadItem $comment ) use (
+			&$authors, &$commentCount, &$latestReply, &$threadScan
+		) {
+			if ( $comment instanceof CommentItem ) {
+				$author = $comment->getAuthor();
+				if ( $author ) {
+					$authors[ $author ] = true;
+				}
+				if (
+					!$latestReply ||
+					( $latestReply->getTimestamp() < $comment->getTimestamp() )
+				) {
+					$latestReply = $comment;
+				}
+				$commentCount++;
+			}
+			// Get the set of authors in the same format from each reply
+			$replies = $comment->getReplies();
+			array_walk( $replies, $threadScan );
+		};
+		$replies = $this->getReplies();
+		array_walk( $replies, $threadScan );
+
+		ksort( $authors );
+		return [
+			'authors' => array_keys( $authors ),
+			'commentCount' => $commentCount,
+			'latestReply' => $latestReply,
+		];
+	}
+
+	/**
 	 * Get the list of authors in the comment tree below this thread item.
 	 *
 	 * Usually called on a HeadingItem to find all authors in a thread.

@@ -1,3 +1,5 @@
+@import 'mediawiki.ui/variables.less';
+
 span[ data-mw-comment-start ] {
 	// Give comment anchors a negative offset so we don't position
 	// them right at the edge of the page when jumping to them
@@ -143,70 +145,263 @@ span[ data-mw-comment-start ] {
 	}
 }
 
-// NB Directional properties for anything immediately visible
-// in the header must be based on content direction.
-.ext-discussiontools-init-section {
+.ext-discussiontools-init-new-topic {
+	margin-top: 1em;
+}
+
+// Topic subscriptions (link)
+// Directional properties for anything immediately visible in the header must be based on content direction.
+.ext-discussiontools-init-section-subscribe {
+	display: none;
+
 	.ext-discussiontools-topicsubscription-enabled & {
-		overflow: hidden;
+		display: block;
 	}
 
-	&-subscribe {
+	.mw-content-ltr & {
+		/* @noflip */
+		float: right;
+	}
+
+	.mw-content-rtl & {
+		/* @noflip */
+		float: left;
+	}
+
+	&.mw-editsection-like {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		margin-top: 0.7em;
+	}
+
+	.skin-minerva & {
+		// Subscribe button is used instead in Minerva
 		display: none;
+	}
 
-		.mw-content-ltr & {
+	// Similar to mw-editsection-bracket
+	&-bracket {
+		color: #54595d;
+
+		.mw-content-ltr &:first-of-type,
+		.mw-content-rtl &:not( :first-of-type ) {
 			/* @noflip */
-			float: right;
+			margin-right: 0.25em;
 		}
 
-		.mw-content-rtl & {
+		.mw-content-ltr &:not( :first-of-type ),
+		.mw-content-rtl &:first-of-type {
 			/* @noflip */
-			float: left;
+			margin-left: 0.25em;
 		}
+	}
 
-		&.mw-editsection-like {
-			-moz-user-select: none;
-			-webkit-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-			margin-top: 0.7em;
-		}
-
-		.skin-minerva & {
-			// Temporary fix for desktop Minerva (T292241)
-			float: none;
-			white-space: nowrap;
-		}
-
-		.ext-discussiontools-topicsubscription-enabled & {
-			display: block;
-		}
-
-		// Similar to mw-editsection-bracket
-		&-bracket {
-			color: #54595d;
-
-			.mw-content-ltr &:first-of-type,
-			.mw-content-rtl &:not( :first-of-type ) {
-				/* @noflip */
-				margin-right: 0.25em;
-			}
-
-			.mw-content-ltr &:not( :first-of-type ),
-			.mw-content-rtl &:first-of-type {
-				/* @noflip */
-				margin-left: 0.25em;
-			}
-		}
-
-		&-link&-link-pending {
-			color: #72777d;
-			pointer-events: none;
-		}
+	&-link&-link-pending {
+		color: #72777d;
+		pointer-events: none;
 	}
 }
 
-.ext-discussiontools-init-new-topic {
-	margin-top: 1em;
+// Topic subscriptions (button)
+.ext-discussiontools-init-section-subscribeButton.oo-ui-buttonElement {
+	display: none;
+
+	.ext-discussiontools-topicsubscription-enabled & {
+		display: inline-block;
+	}
+}
+
+// Visual enhancements disabled
+.ext-discussiontools-init-section-bar,
+.ext-discussiontools-init-readAsWikiPage {
+	display: none;
+}
+
+// Visual enhancements enabled
+.ext-discussiontools-visualenhancements-enabled {
+	.ext-discussiontools-init-section {
+		clear: both;
+		margin: 1em 0 0 0;
+		padding: 0.5em 0;
+		font-weight: bold;
+		// stylelint-disable-next-line declaration-no-important
+		font-family: sans-serif !important;
+		border: 0;
+
+		&:not( :first-child ) {
+			border-top: 1px solid #a2a9b1;
+		}
+
+		// Hide old subscribe link
+		&-subscribe {
+			display: none;
+		}
+
+		&-bar {
+			// stylelint-disable-next-line declaration-property-unit-disallowed-list
+			font-size: 14px;
+			margin-top: 5px;
+			display: flex;
+
+			.oo-ui-buttonElement > .oo-ui-buttonElement-button {
+				font-weight: normal;
+			}
+		}
+
+		&-metadata {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		&-metaitem {
+			font-weight: normal;
+			color: #666;
+			// Make same height as "unsubscribe" button
+			margin: 7px 0;
+
+			& + .ext-discussiontools-init-section-metaitem {
+				margin-left: 12px;
+				padding-left: 12px;
+				border-left: 1px solid #a2a9b1;
+			}
+		}
+
+		&-actions {
+			margin-left: auto;
+			margin-right: -14px;
+		}
+
+		&-ellipsisButton {
+			display: none;
+		}
+	}
+
+	// Also re-style topic header input in new topic tool
+	h2.ext-discussiontools-ui-newTopic-sectionTitle .oo-ui-inputWidget-input {
+		font-weight: bold;
+		font-family: sans-serif;
+	}
+
+	/* stylelint-disable no-descending-specificity */
+	// Mobile
+	&.skin-minerva .ext-discussiontools-init-section {
+		flex-wrap: wrap;
+		// stylelint-disable-next-line declaration-no-important
+		border-bottom: 0 !important;
+		margin: 12px 0;
+		padding-bottom: 0;
+		// The tap-highlight is an odd shape and shows even for cancelled events on -actions,
+		// just hide it.
+		-webkit-tap-highlight-color: transparent;
+
+		> .mw-headline {
+			width: auto;
+			flex-grow: 1;
+			flex-basis: 0;
+		}
+
+		&:not( :first-child ) {
+			border-top: 1px solid #eaecf0;
+		}
+
+		&-bar {
+			width: 100%;
+			flex-wrap: wrap;
+		}
+
+		&-actions {
+			border-top: 1px solid #eaecf0;
+			width: 100%;
+			margin-left: 0;
+			padding: 12px 0;
+
+			> .oo-ui-buttonElement-frameless:first-child {
+				margin-left: 0;
+			}
+		}
+
+		// stylelint-disable-next-line selector-class-pattern
+		&.section-heading .ext-discussiontools-init-section-actions {
+			// Hidden until expanded
+			display: none;
+		}
+
+		&-subscribeButton {
+			margin-left: 0;
+			margin-right: 8px;
+
+			> .oo-ui-buttonElement-button {
+				margin-left: -0.42857143em;
+			}
+		}
+
+		&-ellipsisButton {
+			display: inline-block;
+		}
+
+		&-metadata {
+			width: 100%;
+			padding-left: 24px;
+		}
+
+		&-authorCountLabel,
+		&-commentCountLabel {
+			display: none;
+		}
+
+		// stylelint-disable-next-line selector-class-pattern
+		&.open-block {
+			.ext-discussiontools-init-section-bar {
+				border-bottom: 1px solid #eaecf0;
+			}
+
+			.ext-discussiontools-init-section-metadata {
+				padding-bottom: 12px;
+			}
+
+			.ext-discussiontools-init-section-actions {
+				display: block;
+			}
+		}
+
+		.mw-editsection {
+			// stylelint-disable-next-line declaration-no-important
+			display: none !important;
+		}
+
+		.mw-ui-icon + span {
+			margin-left: 0;
+		}
+	}
+
+	.ext-discussiontools-init-readAsWikiPage {
+		display: block;
+		/* Not sticky per T309889 */
+		width: 100%;
+		padding: 1em;
+		color: @colorProgressive;
+		background: @colorGray15;
+		border-top: 1px solid @colorGray14;
+		text-align: center;
+	}
+
+	&.skin-monobook .ext-discussiontools-init-section {
+		&-bar {
+			// stylelint-disable-next-line declaration-property-unit-disallowed-list
+			font-size: 12px;
+		}
+
+		&-actions {
+			margin-right: 0;
+		}
+
+		&-subscribeButton {
+			margin-right: 0;
+		}
+	}
+	/* stylelint-enable no-descending-specificity */
 }
 
 .ext-discussiontools-emptystate {

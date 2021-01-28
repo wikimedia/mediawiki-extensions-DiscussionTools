@@ -23,6 +23,7 @@ class HookUtils {
 	public const SOURCEMODETOOLBAR = 'sourcemodetoolbar';
 	public const TOPICSUBSCRIPTION = 'topicsubscription';
 	public const AUTOTOPICSUB = 'autotopicsub';
+	public const VISUALENHANCEMENTS = 'visualenhancements';
 
 	/**
 	 * @var string[] List of all sub-features. Will be used to generate:
@@ -37,6 +38,7 @@ class HookUtils {
 		self::SOURCEMODETOOLBAR,
 		self::TOPICSUBSCRIPTION,
 		self::AUTOTOPICSUB,
+		self::VISUALENHANCEMENTS,
 	];
 
 	protected static $propCache = [];
@@ -249,7 +251,9 @@ class HookUtils {
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
 			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
 
-		if ( $queryEnable ) {
+		// TEMPORARY: Don't enable visualenhancements by query as the HTML in the parser
+		// cache will not have been modified (see CommentFormatter::addTopicContainer)
+		if ( $queryEnable && $feature !== static::VISUALENHANCEMENTS ) {
 			return true;
 		}
 
@@ -272,12 +276,15 @@ class HookUtils {
 		if ( $isMobile ) {
 			// Enabling mobile removes MobileFrontend's reply and new topic tools, so always
 			// enable these tools as a replacement.
-			// Topic subscription is not yet available on mobile, awaiting UI implementation.
 			return $dtConfig->get( 'DiscussionToolsEnableMobile' ) && (
 				$feature === null ||
 				$feature === static::REPLYTOOL ||
 				$feature === static::NEWTOPICTOOL ||
-				$feature === static::SOURCEMODETOOLBAR
+				$feature === static::SOURCEMODETOOLBAR ||
+				// Even though mobile ignores user preferences, TOPICSUBSCRIPTION must
+				// still be disabled if the user isn't registered.
+				( $feature === static::TOPICSUBSCRIPTION && $output->getUser()->isRegistered() ) ||
+				$feature === static::VISUALENHANCEMENTS
 			);
 		}
 
