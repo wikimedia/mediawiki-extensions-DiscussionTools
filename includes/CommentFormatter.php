@@ -32,7 +32,7 @@ class CommentFormatter {
 	 * @param string &$text Parser text output
 	 * @param Language $lang Interface language
 	 */
-	public static function addReplyLinks( string &$text, Language $lang ) {
+	public static function addReplyLinks( string &$text, Language $lang ) : void {
 		$start = microtime( true );
 
 		// Never add links twice.

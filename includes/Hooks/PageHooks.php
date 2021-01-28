@@ -88,12 +88,17 @@ class PageHooks implements
 	 * @return bool|void This hook must not abort, it must return true or null.
 	 */
 	public function onOutputPageBeforeHTML( $output, &$text ) {
+		$lang = $output->getLanguage();
 		// Check after the parser cache if reply links need to be added for
 		// non-cacheable reasons i.e. query string or cookie
 		// The addReplyLinks method is responsible for ensuring that
 		// reply links aren't added twice.
-		if ( HookUtils::isFeatureEnabledForOutput( $output, 'replytool' ) ) {
-			CommentFormatter::addReplyLinks( $text, $output->getLanguage() );
+		$replyToolEnabled = HookUtils::isFeatureEnabledForOutput( $output, 'replytool' );
+		if ( $replyToolEnabled ) {
+			CommentFormatter::addReplyLinks( $text, $lang );
+
+			// Add CSS classes to selectively enable HTML enhancements
+			$output->addBodyClasses( 'dt-replytool-enabled' );
 		}
 		return true;
 	}
