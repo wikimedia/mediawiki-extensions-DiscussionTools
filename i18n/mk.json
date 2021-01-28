@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Matma Rex"
 		]
 	},
 	"discussiontools": "Разговорни алатки",
@@ -43,7 +44,7 @@
 	"discussiontools-replywidget-newtopic": "Додај тема",
 	"discussiontools-error-comment-conflict": "Не можев да го зачувам вашиот коментар бидејќи некој друг искоментирал во исто време. Обидете се повторно, или превчитајте ја страницата за да ги видите најновите коментари.",
 	"discussiontools-error-comment-disappeared": "Не можев да го пронајдам коментарот на кој одговарате на страницата. Можеби е избришана или преместена на друга страница. Превчитајте ја страницата и обидете се повторно.",
-	"discussiontools-error-comment-not-saved": "Не можев да го зачувам вашиот коментар во најновата верзија на страницата. Превчитајте ја за да ги видите последните промени.",
+	"discussiontools-error-comment-not-saved": "Не можев да го објавам вашиот коментар во најновата верзија на страницата. За да ги видите последните промени, прекопирајте го напишаниот коментар, па превчитајте ја страницата.",
 	"discussiontools-error-comment-is-transcluded": "Врската „{{int:discussiontools-replylink}}“ не може да се употреби за одговор на коментаров. За да одговорите, послужете се со целостраничниот уредник стискајќи на „$1“.",
 	"discussiontools-error-comment-is-transcluded-title": "Врската „{{int:discussiontools-replylink}}“ не може да се употреби за одговор на коментаров бидејќи е вчитан од друга страница. За да одговорите, појдете на [[$1]].",
 	"discussiontools-error-lint": "Не може да се одговара на коментарите на страницава поради грешка во викитекстот. Повеќе за грешката можете да дознаете [$1 читајќи ја документацијата], да побарате помош [$2 овде] или пак да ја исправите [$3 отворајќи го целостраничниот уредник].",
@@ -57,7 +58,7 @@
 	"tag-discussiontools-description": "Уредување направено со Разговорни алатки",
 	"tag-discussiontools-edit": "Изменет коментар",
 	"tag-discussiontools-edit-description": "Корисникот изменил постоечки коментар со Разговорни алатки",
-	"tag-discussiontools-newtopic": "Нова тема",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Нова тема]",
 	"tag-discussiontools-newtopic-description": "Корисникот додал тема во страницата со Разговорни алатки",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Одговори]",
 	"tag-discussiontools-reply-description": "Корисникот одговорил на коментар со Разговорни алатки",

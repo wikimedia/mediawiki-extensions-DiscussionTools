@@ -7,7 +7,8 @@
 			"FarsiNevis",
 			"Huji",
 			"Jeeputer",
-			"Ladsgroup"
+			"Ladsgroup",
+			"Matma Rex"
 		]
 	},
 	"discussiontools": "ابزارهای گفت‌وگو",
@@ -43,7 +44,7 @@
 	"tag-discussiontools-description": "ویرایش توسط ابزارهای گفتگو",
 	"tag-discussiontools-edit": "ویرایش نظر",
 	"tag-discussiontools-edit-description": "کاربر با استفاده از ابزارهای گفتگو یک پاسخ را ویرایش کرد",
-	"tag-discussiontools-newtopic": "مبحث جدید",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} مبحث جدید]",
 	"tag-discussiontools-newtopic-description": "کاربر با کمک ابزارهای گفتگو موضوعی جدید را افزود",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} پاسخ دادن]",
 	"tag-discussiontools-reply-description": "کاربر با استفاده از ابزارهای گفت‌وگو به یک نظر پاسخ داد",

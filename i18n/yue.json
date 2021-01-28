@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"DChan (WMF)",
+			"Matma Rex",
 			"Moon0319"
 		]
 	},
@@ -15,7 +16,7 @@
 	"discussiontools-replywidget-preview": "睇下",
 	"discussiontools-replywidget-reply": "答",
 	"tag-discussiontools-edit": "改註解",
-	"tag-discussiontools-newtopic": "加主題",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} 加主題]",
 	"tag-discussiontools-source": "源碼編輯",
 	"tag-discussiontools-visual": "即見編輯"
 }

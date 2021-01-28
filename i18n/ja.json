@@ -3,6 +3,7 @@
 		"authors": [
 			"Linuxmetel",
 			"Marine-Blue",
+			"Matma Rex",
 			"Object＊tofu",
 			"Omotecho",
 			"Rootflag",
@@ -60,7 +61,7 @@
 	"tag-discussiontools-description": "議論ツールを使って編集",
 	"tag-discussiontools-edit": "コメントを編集",
 	"tag-discussiontools-edit-description": "議論ツールを使ってコメントを編集",
-	"tag-discussiontools-newtopic": "新規トピック",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} 新規トピック]",
 	"tag-discussiontools-newtopic-description": "議論ツールを使ってページに新しいトピックを追加",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 返信]",
 	"tag-discussiontools-reply-description": "議論ツールを使ってコメントに返信",

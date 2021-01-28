@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Matma Rex"
+		]
 	},
 	"discussiontools": "Alatke za razgovor",
 	"discussiontools-defaultsummary-reply": "odgovor",
@@ -37,7 +39,7 @@
 	"tag-discussiontools-description": "Izmene pomoću alatka za razgovor",
 	"tag-discussiontools-edit": "uređen komentar",
 	"tag-discussiontools-edit-description": "Korisnik je uredio postojeći komentar pomoću alatka za razgovor",
-	"tag-discussiontools-newtopic": "dodata tema",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} dodata tema]",
 	"tag-discussiontools-newtopic-description": "Korisnik je dodao novu temu na stranicu pomoću alatka za razgovor",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odgovor]",
 	"tag-discussiontools-reply-description": "Korisnik je odgovorio na komentar pomoću alatka za razgovor",

@@ -5,6 +5,7 @@
 			"Larske",
 			"Lejonel",
 			"LittleGun",
+			"Matma Rex",
 			"Nirmos (Wikimedia)",
 			"Sabelöga",
 			"WikiPhoenix"
@@ -54,7 +55,7 @@
 	"tag-discussiontools-description": "Redigering gjordes med DiscussionTools",
 	"tag-discussiontools-edit": "Redigera kommentar",
 	"tag-discussiontools-edit-description": "Användare redigerade en befintlig kommentar med DiscussionTools",
-	"tag-discussiontools-newtopic": "Nytt ämne",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nytt ämne]",
 	"tag-discussiontools-newtopic-description": "Användare lade till ett ämne på sidan med DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svara]",
 	"tag-discussiontools-reply-description": "Användare svarade på en kommentar med DiscussionTools",

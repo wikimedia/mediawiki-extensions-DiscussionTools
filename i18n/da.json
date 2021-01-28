@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"Saederup92"
 		]
 	},
@@ -17,6 +18,6 @@
 	"discussiontools-replywidget-placeholder-newtopic": "Beskrivelse",
 	"discussiontools-replywidget-newtopic": "Tilføj emne",
 	"tag-discussiontools-edit": "Redigér kommentar",
-	"tag-discussiontools-newtopic": "Nyt emne",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nyt emne]",
 	"tag-discussiontools-source": "Kilde"
 }

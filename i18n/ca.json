@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
+			"Matma Rex",
 			"Mguix",
 			"Xavier Dengra"
 		]
@@ -42,7 +43,7 @@
 	"tag-discussiontools-description": "Edició realitzada a través de DiscussionTools",
 	"tag-discussiontools-edit": "Edita la intervenció",
 	"tag-discussiontools-edit-description": "L'usuari ha editat un comentari ja existent amb DiscussionTools",
-	"tag-discussiontools-newtopic": "Tema nou",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Tema nou]",
 	"tag-discussiontools-newtopic-description": "L'usuari ha afegit un nou tema amb DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respon-li]",
 	"tag-discussiontools-reply-description": "L'usuari ha respost un comentari amb DiscussionTools",

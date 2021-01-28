@@ -56,7 +56,7 @@
 	"discussiontools-signature-prefix": "{{optional}}\nWikitext that prefixes the signature. The prefix and signature will be appended directly to the message, so this must include a leading space if a gap is desired.\n\nThis message intentionally doesn't use the prefix from {{msg-mw|sig-text}}, because it is not actually commonly used on many wikis, but you can include it in the translation if that is the convention in your language.\n{{Format|plain}}",
 	"discussiontools-error-comment-conflict": "Error message of a comment conflict.\n\nSimilar messages:\n* {{msg-mw|visualeditor-editconflict}}\n* {{msg-mw|twocolconflict-split-tour-dialog-message-single-column-view}}\n* {{msg-mw|discussiontools-error-comment-disappeared}}",
 	"discussiontools-error-comment-disappeared": "Error message.",
-	"discussiontools-error-comment-not-saved": "Şîroveya te di guhertoya herî dawî ya pelê de nehate tomarkirin. Ji kerema xwe pelê nû bike ku tu guhartinên dawî bibînî.",
+	"discussiontools-error-comment-not-saved": "Error message.",
 	"discussiontools-error-comment-is-transcluded": "Error message. Parameter: $1 – text of the 'Edit'/'Edit source' tab",
 	"discussiontools-error-comment-is-transcluded-title": "Error message. Parameter: $1 – page name",
 	"discussiontools-error-lint": "Error message. Parameters:\n* $1 – URL to documentation on mediawiki.org\n* $2 – URL to talk page on mediawiki.org\n* $3 – URL to the editor (action=edit)",

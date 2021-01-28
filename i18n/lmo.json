@@ -42,7 +42,7 @@
 	"discussiontools-replywidget-newtopic": "Sgionta un argoment",
 	"discussiontools-error-comment-conflict": "El to coment l'è stad minga salvad, perchè un quaidun alter l'hà lassad un coment a l'istess temp de ti. Per piesè prova anmò, opur carega anmò per varda i ultim coment.",
 	"discussiontools-error-comment-disappeared": "A l'è strad minga possibil trovà el coment che te seret 'dree a rispondegh. A l'è facil che 'l sia stad scancelad o spostad ind un'altra part. Per piesè carega anmò la pagina e prova anmò.",
-	"discussiontools-error-comment-not-saved": "El to coment l'è stad minga salvad ind l'ultema version de la pagina. Per piasè carega la pagina de noeuv per vedè i ultem cambiament.",
+	"discussiontools-error-comment-not-saved": "El to coment l'è stad  publicad no in de l'ultema version de la pagina. Per vedè i ultim cambiament, copia el sbozz del coment e poeu drova el to programa de navigazzion per ricaregà la pagina.",
 	"discussiontools-error-comment-is-transcluded": "El conligament \"{{int:discussiontools-replylink}}\" el po minga vesser drovad per rispondegh a quell coment chì. Clica in su \"$1\" per rispond con l'editor de test de la pagina intrega.",
 	"discussiontools-error-comment-is-transcluded-title": "El \"{{int:discussiontools-replylink}}\" el po minga vesser drovad per rispondegh a quell coment chì perchè l'è stad caregad d'un altra pagina. Per rispond, per piesè, visita [[$1]].",
 	"discussiontools-error-lint": "A l'è stad no  possibil rispondegh ai coment in su quella pagina chì per via d'un eror del wikitest. te podet [$1 lensger la documentazzion] per savenn pussee sora quell eror chì, ciamà ajut [$2 chichinscì] o [$3 dervì l'editor de test de la pagina intrega] per sistemà i eror.",

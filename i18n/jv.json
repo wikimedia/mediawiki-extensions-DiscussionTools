@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"Sumbukompor"
 		]
 	},
@@ -51,7 +52,7 @@
 	"tag-discussiontools-description": "Besutan digawé nggunakaké PirantiParembugan",
 	"tag-discussiontools-edit": "Besut tanggepan",
 	"tag-discussiontools-edit-description": "Naraguna mbesut tanggepan kang wis ana mawa PirantiParembugan",
-	"tag-discussiontools-newtopic": "Rembugan anyar",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Rembugan anyar]",
 	"tag-discussiontools-newtopic-description": "Naraguna nambahaké siji rembugan anyar menyang kaca mawa PirantiParembugan",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Wangsulan]",
 	"tag-discussiontools-reply-description": "Naraguna mangsuli tanggepan mawa PirantiParembugan",

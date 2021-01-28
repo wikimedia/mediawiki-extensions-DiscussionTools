@@ -3,6 +3,7 @@
 		"authors": [
 			"Aefgh39622",
 			"Geonuch",
+			"Matma Rex",
 			"Patsagorn Y."
 		]
 	},
@@ -33,7 +34,7 @@
 	"discussiontools-error-noswitchtove-template": "รูปแบบของแม่แบบ",
 	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
 	"tag-discussiontools-edit": "แก้ไชความเห็น",
-	"tag-discussiontools-newtopic": "หัวข้อใหม่",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} หัวข้อใหม่]",
 	"tag-discussiontools-source": "ต้นฉบับ",
 	"tag-discussiontools-visual": "เห็นภาพ"
 }

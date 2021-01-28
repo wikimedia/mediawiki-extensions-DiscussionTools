@@ -3,6 +3,7 @@
 		"authors": [
 			"Cwtiyar",
 			"Ed g2s",
+			"Matma Rex",
 			"Épine",
 			"ئارام بکر"
 		]
@@ -42,7 +43,7 @@
 	"tag-discussiontools-description": "دەستکاری لەڕێگەی بەکارھێنانی ئامرازەکانی وتووێژەوە کرا",
 	"tag-discussiontools-edit": "دەستکاریی لێدوان بکە",
 	"tag-discussiontools-edit-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە دەستکاریی لێدوانێکی کرد",
-	"tag-discussiontools-newtopic": "زیادکردنی بابەت",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} زیادکردنی بابەت]",
 	"tag-discussiontools-newtopic-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە بابەتێکی نوێی بۆ پەڕەکە زیاد کرد",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} وەڵامدانەوە]",
 	"tag-discussiontools-reply-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە وەڵامی لێدوانێکی دایەوە",

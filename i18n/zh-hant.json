@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
+			"Matma Rex",
 			"Streetdeck",
 			"Xiplus"
 		]
@@ -48,7 +49,7 @@
 	"tag-discussiontools-description": "使用討論工具進行編輯",
 	"tag-discussiontools-edit": "編輯評論",
 	"tag-discussiontools-edit-description": "使用者以討論工具對現有的評論做出編輯",
-	"tag-discussiontools-newtopic": "新話題",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} 新話題]",
 	"tag-discussiontools-newtopic-description": "使用者以討論工具對頁新增一個話題",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 回覆]",
 	"tag-discussiontools-reply-description": "使用者以討論工具對一項評論做出回覆",

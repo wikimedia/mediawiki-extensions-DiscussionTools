@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"פוילישער"
 		]
 	},
@@ -19,7 +20,7 @@
 	"discussiontools-replywidget-reply": "ענטפֿער",
 	"tag-discussiontools-description": "רעדאקטירונג געמאכט דורך שמועס־געצייג",
 	"tag-discussiontools-edit": "רעדאקטירן הערה",
-	"tag-discussiontools-newtopic": "צושטעלן טעמע",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} צושטעלן טעמע]",
 	"tag-discussiontools-source": "מקור",
 	"tag-discussiontools-visual": "וויזועל"
 }

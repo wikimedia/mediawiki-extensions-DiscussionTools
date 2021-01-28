@@ -47,7 +47,7 @@
 	"discussiontools-replywidget-newtopic": "Přidat téma",
 	"discussiontools-error-comment-conflict": "Váš komentář nebylo možné uložit, protože někdo jiný uložil komentář ve stejnou dobu jako vy. Prosím, zkuste to znovu nebo stránku obnovte, aby se vám zobrazily nejnovější komentáře.",
 	"discussiontools-error-comment-disappeared": "Nemůžeme nalézt komentář, na který odpovídáte. Možná byl smazán, nebo přesunut na jinou stránku. Prosíme, aktualizujte stránku a zkuste to znovu.",
-	"discussiontools-error-comment-not-saved": "Váš komentář nelze uložit v nejnovější verzi stránky.\nProsíme, načtěte stránku znovu pro zobrazení posledních změn.",
+	"discussiontools-error-comment-not-saved": "Váš komentář nelze zveřejnit do nejnovější verze stránky (je možné, že stránka byla narušena). Prosíme, zkopírujte si svůj komentář, načtěte stránku znovu a zkuste komentář vložit znovu.",
 	"discussiontools-error-comment-is-transcluded": "Odkaz „{{int:discussiontools-replylink}}“ nemůže být použit k odpovědi na tento komentář. Abyste odpověděli, použijte editor celé stránky kliknutím na „$1“.",
 	"discussiontools-error-comment-is-transcluded-title": "Odkaz „{{int:discussiontools-replylink}}“ nemůže být použit k odpovědi na tento komentář, protože je načten z jiné stránky. Abyste odpověděli, klikněte zde: [[$1]].",
 	"discussiontools-error-lint": "Kvůli chybě ve wikitextu nelze odpovědět na komentáře na této stránce. Více informací o této chybě naleznete v [$1 dokumentaci], o pomoc můžete požádat [$2 zde] a napravit chybu můžete [$3 otevřením editoru celé stránky].",

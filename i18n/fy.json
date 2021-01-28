@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"PiefPafPier"
 		]
 	},
@@ -46,7 +47,7 @@
 	"tag-discussiontools-description": "Bewurking dien mei it Diskusje-ark",
 	"tag-discussiontools-edit": "Reäksjebewurking",
 	"tag-discussiontools-edit-description": "Meidogger hat in besteande reäksje bewurke mei it Diskusje-ark",
-	"tag-discussiontools-newtopic": "Nij mêd",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nij mêd]",
 	"tag-discussiontools-newtopic-description": "Meidogger hat in nij mêd oan 'e side taheakke mei it Diskusje-ark",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Antwurd]",
 	"tag-discussiontools-reply-description": "Meidogger hat in reäksje beäntwurde mei it Diskusje-ark",

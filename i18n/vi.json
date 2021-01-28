@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"Minh Nguyen",
 			"Vinhtantran"
 		]
@@ -55,7 +56,7 @@
 	"tag-discussiontools-description": "Sửa đổi bằng Công cụ Thảo luận",
 	"tag-discussiontools-edit": "Sửa bình luận",
 	"tag-discussiontools-edit-description": "Người dùng sửa một bình luận có sẵn bằng Công cụ Thảo luận",
-	"tag-discussiontools-newtopic": "Đề tài mới",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Đề tài mới]",
 	"tag-discussiontools-newtopic-description": "Người dùng thêm chủ đề mới vào trang bằng Công cụ Thảo luận",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Trả lời]",
 	"tag-discussiontools-reply-description": "Người dùng trả lời một bình luận bằng Công cụ Thảo luận",

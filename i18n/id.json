@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Daud I.F. Argana",
+			"Matma Rex",
 			"Sonic Speedy"
 		]
 	},
@@ -46,7 +47,7 @@
 	"tag-discussiontools-description": "Suntingan dibuat menggunakan DiscussionTools",
 	"tag-discussiontools-edit": "Sunting komentar",
 	"tag-discussiontools-edit-description": "Pengguna menyunting komentar yang ada dengan DiscussionTools",
-	"tag-discussiontools-newtopic": "Topik baru",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Topik baru]",
 	"tag-discussiontools-newtopic-description": "Pengguna menambahkan topik baru ke halaman dengan DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Balas]",
 	"tag-discussiontools-reply-description": "Pengguna membalas komentar dengan DiscussionTools",

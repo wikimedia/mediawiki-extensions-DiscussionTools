@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lancine.kounfantoh.fofana"
+			"Lancine.kounfantoh.fofana",
+			"Matma Rex"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ߊ߬ ߞߐߖߋ߬ߓߌ߬",
@@ -33,7 +34,7 @@
 	"tag-discussiontools-description": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߍ߲ ߠߎ߬ ߞߍߣߍ߲߫ ߞߊ߬ ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߠߊߓߊ߯ߙߊ ߕߴߌ ߘߐ߫",
 	"tag-discussiontools-edit": "ߡߙߌߣߊ߲ ߡߊߦߟߍ߬ߡߊ߲߫",
 	"tag-discussiontools-edit-description": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߓߘߊ߫ ߡߙߌߣߊ߲ ߞߘߐ߬ߡߊ߲ ߘߏ߫ ߡߊߦߟߍ߬ߡߊ߲߫ ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߠߎ߬ ߟߊ߫",
-	"tag-discussiontools-newtopic": "ߞߎ߲߬ߕߐ߰ ߞߎߘߊ",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} ߞߎ߲߬ߕߐ߰ ߞߎߘߊ]",
 	"tag-discussiontools-visual": "ߦߋߢߊ",
 	"tag-discussiontools-visual-description": "ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߕߘߍ߬ ߦߋ߫ ߦߋߢߊ ߞߍߗߏ߮ ߟߋ߬ ߟߊ߫"
 }

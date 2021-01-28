@@ -3,6 +3,7 @@
 		"authors": [
 			"Ed g2s",
 			"Edgars2007",
+			"Matma Rex",
 			"Papuass"
 		]
 	},
@@ -14,6 +15,8 @@
 	"discussiontools-replywidget-abandon": "Vai tiešām vēlies atmest uzrakstīto komentāru?",
 	"discussiontools-replywidget-abandon-discard": "Atmest komentāru",
 	"discussiontools-replywidget-abandon-keep": "Turpināt rakstīt",
+	"discussiontools-replywidget-abandontopic-discard": "Atmest tēmu",
+	"discussiontools-replywidget-abandontopic-keep": "Turpināt rakstīt",
 	"discussiontools-replywidget-anon-warning": "<strong>Tu neesi pieslēdzies.</strong> Lai tavs devums tiktu piesaistīts tavam vārdam, nevis tavai IP adresei, tu vari [$1 pieslēgties] vai [$2 izveidot kontu].",
 	"discussiontools-replywidget-cancel": "Atcelt",
 	"discussiontools-replywidget-feedback": "Atstāt atsauksmi par šo funkcionalitāti",
@@ -45,7 +48,7 @@
 	"tag-discussiontools-description": "Labojums veikts ar diskusiju rīkiem",
 	"tag-discussiontools-edit": "Laboja komentāru",
 	"tag-discussiontools-edit-description": "Dalībnieks laboja esošu komentāru ar diskusiju rīkiem",
-	"tag-discussiontools-newtopic": "Pievienots temats",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Pievienots temats]",
 	"tag-discussiontools-newtopic-description": "Dalībnieks lapai pievienoja jaunu tematu ar diskusiju rīkiem",
 	"tag-discussiontools-reply": "<span class=\"plainlinks\">[{{int:discussiontools-replywidget-reply-link}} Atbilde]</span>",
 	"tag-discussiontools-reply-description": "Dalībnieks atbildēja uz komentāru ar diskusiju rīkiem",

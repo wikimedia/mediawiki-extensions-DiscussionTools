@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"Pikne"
 		]
 	},
@@ -32,7 +33,7 @@
 	"tag-discussiontools-description": "Muudatus tehtud vahendiga DiscussionTools",
 	"tag-discussiontools-edit": "Kommentaari muutmine",
 	"tag-discussiontools-edit-description": "Kasutaja muutis olemasolevat kommentaari, kasutades vahendit DiscussionTools.",
-	"tag-discussiontools-newtopic": "Uus teema",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Uus teema]",
 	"tag-discussiontools-newtopic-description": "Kasutaja lisas leheküljele uue teema, kasutades vahendit DiscussionTools.",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vastus]",
 	"tag-discussiontools-reply-description": "Kasutaja vastas kommentaarile, kasutades vahendit DiscussionTools.",

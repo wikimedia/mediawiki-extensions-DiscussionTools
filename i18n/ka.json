@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"Mehman97",
 			"Გიო ოქრო"
 		]
@@ -52,7 +53,7 @@
 	"tag-discussiontools-description": "რედაქტირება განხორციელდა განხილვის ხელსაწყოს დახმარებით",
 	"tag-discussiontools-edit": "კომენტარის რედაქტირება",
 	"tag-discussiontools-edit-description": "მომხმარებელმა განხილვის ხელსაწყოების საშუალებით დაარედაქტირა მანამდე არსებული კომენტარი",
-	"tag-discussiontools-newtopic": "ახალი თემა",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} ახალი თემა]",
 	"tag-discussiontools-newtopic-description": "მომხმარებელმა განხილვის ხელსაწყოს დახმარებით გვერდზე ახალი თემა დაამატა",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} პასუხი]",
 	"tag-discussiontools-reply-description": "მომხმარებელმა განხილვის ხელსაწყოს დახმარებით უპასუხა კომენტარს",

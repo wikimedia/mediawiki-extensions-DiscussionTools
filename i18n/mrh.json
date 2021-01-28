@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matma Rex",
 			"Taytay",
 			"Teitei Para"
 		]
@@ -9,5 +10,5 @@
 	"discussiontools-newtopic-placeholder-title": "Chôtlâhpi",
 	"discussiontools-replywidget-placeholder-newtopic": "Palâsana",
 	"discussiontools-replywidget-newtopic": "Chôtlâhpi khô",
-	"tag-discussiontools-newtopic": "Chôtlâhpi thiehpa"
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Chôtlâhpi thiehpa]"
 }
