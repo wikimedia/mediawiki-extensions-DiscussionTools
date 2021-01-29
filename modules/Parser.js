@@ -10,7 +10,7 @@ var
 	codePointLength = require( 'mediawiki.String' ).codePointLength,
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
-	// Hooks::getLocalData()
+	// Data::getLocalData()
 	data = require( './parser/data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 

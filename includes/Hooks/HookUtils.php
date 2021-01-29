@@ -7,7 +7,7 @@
  * @license MIT
  */
 
-namespace MediaWiki\Extension\DiscussionTools;
+namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Action;
 use ExtensionRegistry;
@@ -18,8 +18,7 @@ use RequestContext;
 use Title;
 use User;
 
-class Hooks {
-
+class HookUtils {
 	/**
 	 * Check if a DiscussionTools feature is available to this user
 	 *

@@ -9,7 +9,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use MediaWiki\Extension\DiscussionTools\Hooks;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use RequestContext;
@@ -25,7 +24,7 @@ class PreferenceHooks implements
 	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
-		if ( Hooks::isFeatureAvailableToUser( $user, 'replytool' ) ) {
+		if ( HookUtils::isFeatureAvailableToUser( $user, 'replytool' ) ) {
 			$preferences['discussiontools-replytool'] = [
 				'type' => 'toggle',
 				'label-message' => 'discussiontools-preference-replytool',
@@ -33,7 +32,7 @@ class PreferenceHooks implements
 				'section' => 'editing/discussion',
 			];
 		}
-		if ( Hooks::isFeatureAvailableToUser( $user, 'newtopictool' ) ) {
+		if ( HookUtils::isFeatureAvailableToUser( $user, 'newtopictool' ) ) {
 			$preferences['discussiontools-newtopictool'] = [
 				'type' => 'toggle',
 				'label-message' => 'discussiontools-preference-newtopictool',

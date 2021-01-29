@@ -11,7 +11,6 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
-use MediaWiki\Extension\DiscussionTools\Hooks;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use MediaWiki\Hook\ParserOptionsRegisterHook;
 use MediaWiki\MediaWikiServices;
@@ -49,8 +48,8 @@ class ParserHooks implements
 
 		if (
 			$dtConfig->get( 'DiscussionToolsUseParserCache' ) &&
-			Hooks::isAvailableForTitle( $article->getTitle() ) &&
-			Hooks::isFeatureEnabledForUser( $popts->getUser(), 'replytool' )
+			HookUtils::isAvailableForTitle( $article->getTitle() ) &&
+			HookUtils::isFeatureEnabledForUser( $popts->getUser(), 'replytool' )
 		) {
 			$popts->setOption( 'dtreply', true );
 		}

@@ -10,7 +10,6 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
-use MediaWiki\Extension\DiscussionTools\Hooks;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\MediaWikiServices;
@@ -34,7 +33,7 @@ class PageHooks implements
 	public function onBeforePageDisplay( $output, $skin ) : void {
 		$user = $output->getUser();
 		// Load modules if any DT feature is enabled for this user
-		if ( Hooks::isFeatureEnabledForOutput( $output ) ) {
+		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
 			$output->addModuleStyles( [
 				'ext.discussionTools.init.styles'
 			] );
@@ -45,8 +44,8 @@ class PageHooks implements
 			$output->addJsConfigVars(
 				'wgDiscussionToolsFeaturesEnabled',
 				[
-					'replytool' => Hooks::isFeatureEnabledForOutput( $output, 'replytool' ),
-					'newtopictool' => Hooks::isFeatureEnabledForOutput( $output, 'newtopictool' ),
+					'replytool' => HookUtils::isFeatureEnabledForOutput( $output, 'replytool' ),
+					'newtopictool' => HookUtils::isFeatureEnabledForOutput( $output, 'newtopictool' ),
 				]
 			);
 
@@ -93,7 +92,7 @@ class PageHooks implements
 		// non-cacheable reasons i.e. query string or cookie
 		// The addReplyLinks method is responsible for ensuring that
 		// reply links aren't added twice.
-		if ( Hooks::isFeatureEnabledForOutput( $output, 'replytool' ) ) {
+		if ( HookUtils::isFeatureEnabledForOutput( $output, 'replytool' ) ) {
 			CommentFormatter::addReplyLinks( $text, $output->getLanguage() );
 		}
 		return true;
