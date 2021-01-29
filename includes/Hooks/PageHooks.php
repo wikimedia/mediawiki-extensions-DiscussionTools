@@ -9,6 +9,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
+use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\Hooks;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
@@ -93,7 +94,7 @@ class PageHooks implements
 		// The addReplyLinks method is responsible for ensuring that
 		// reply links aren't added twice.
 		if ( Hooks::isFeatureEnabledForOutput( $output, 'replytool' ) ) {
-			Hooks::addReplyLinks( $text, $output->getLanguage() );
+			CommentFormatter::addReplyLinks( $text, $output->getLanguage() );
 		}
 		return true;
 	}

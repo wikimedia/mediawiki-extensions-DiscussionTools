@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use RequestContext;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentFormatter
@@ -10,10 +11,10 @@ use RequestContext;
 class CommentFormatterTest extends CommentTestCase {
 
 	/**
-	 * @dataProvider provideAddReplyLinks
-	 * @covers ::addReplyLinks
+	 * @dataProvider provideAddReplyLinksInternal
+	 * @covers ::addReplyLinksInternal
 	 */
-	public function testAddReplyLinks(
+	public function testAddReplyLinksInternal(
 		string $name, string $dom, string $expected, string $config, string $data
 	) : void {
 		$origPath = $dom;
@@ -26,7 +27,9 @@ class CommentFormatterTest extends CommentTestCase {
 		$this->setupEnv( $config, $data );
 		MockCommentFormatter::$data = $data;
 
-		$actual = MockCommentFormatter::addReplyLinks( $dom, RequestContext::getMain()->getLanguage() );
+		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
+
+		$actual = $commentFormatter->addReplyLinksInternal( $dom, RequestContext::getMain()->getLanguage() );
 
 		$doc = self::createDocument( $actual );
 		$expectedDoc = self::createDocument( $expected );
@@ -40,7 +43,7 @@ class CommentFormatterTest extends CommentTestCase {
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
 	}
 
-	public function provideAddReplyLinks() : array {
+	public function provideAddReplyLinksInternal() : array {
 		return self::getJson( '../cases/formattedreply.json' );
 	}
 

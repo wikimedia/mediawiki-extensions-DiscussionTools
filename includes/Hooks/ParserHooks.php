@@ -10,6 +10,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
+use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\Hooks;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use MediaWiki\Hook\ParserOptionsRegisterHook;
@@ -33,7 +34,7 @@ class ParserHooks implements
 		$popts = $parser->getOptions();
 		// ParserOption for dtreply was set in onArticleParserOptions
 		if ( $popts->getOption( 'dtreply' ) ) {
-			Hooks::addReplyLinks( $text, $popts->getUserLangObj() );
+			CommentFormatter::addReplyLinks( $text, $popts->getUserLangObj() );
 		}
 	}
 

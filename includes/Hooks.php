@@ -11,20 +11,14 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Action;
 use ExtensionRegistry;
-use Language;
 use MediaWiki\MediaWikiServices;
-use MWExceptionHandler;
 use OutputPage;
 use PageProps;
 use RequestContext;
-use Throwable;
 use Title;
 use User;
-use WebRequest;
 
 class Hooks {
-
-	private const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
 
 	/**
 	 * Check if a DiscussionTools feature is available to this user
@@ -212,45 +206,5 @@ class Hooks {
 			// yet available on the wiki
 			$output->getRequest()->getCookie( 'discussiontools-tempenable' ) ?: false
 		);
-	}
-
-	/**
-	 * Add reply links to some HTML
-	 *
-	 * @param string &$text Parser text output
-	 * @param Language $lang Interface language
-	 */
-	public static function addReplyLinks( string &$text, Language $lang ) {
-		$start = microtime( true );
-
-		// Never add links twice.
-		// This is required because we try again to add links to cached content
-		// to support query string or cookie enabling
-		if ( strpos( $text, static::REPLY_LINKS_COMMENT ) !== false ) {
-			return;
-		}
-
-		$text = $text . "\n" . static::REPLY_LINKS_COMMENT;
-
-		try {
-			// Add reply links and hidden data about comment ranges.
-			$newText = CommentFormatter::addReplyLinks( $text, $lang );
-		} catch ( Throwable $e ) {
-			// Catch errors, so that they don't cause the entire page to not display.
-			// Log it and add the request ID in a comment to make it easier to find in the logs.
-			MWExceptionHandler::logException( $e );
-
-			$requestId = htmlspecialchars( WebRequest::getRequestId() );
-			$info = "<!-- [$requestId] DiscussionTools could not add reply links on this page -->";
-			$text .= "\n" . $info;
-
-			return;
-		}
-
-		$text = $newText;
-		$duration = microtime( true ) - $start;
-
-		$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
-		$stats->timing( 'discussiontools.addReplyLinks', $duration * 1000 );
 	}
 }

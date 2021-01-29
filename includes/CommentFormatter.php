@@ -4,10 +4,15 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMElement;
 use Language;
+use MediaWiki\MediaWikiServices;
+use MWExceptionHandler;
+use Throwable;
+use WebRequest;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class CommentFormatter {
+	protected const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
 
 	/**
 	 * Get a comment parser object for a DOM element
@@ -24,11 +29,51 @@ class CommentFormatter {
 	/**
 	 * Add reply links to some HTML
 	 *
+	 * @param string &$text Parser text output
+	 * @param Language $lang Interface language
+	 */
+	public static function addReplyLinks( string &$text, Language $lang ) {
+		$start = microtime( true );
+
+		// Never add links twice.
+		// This is required because we try again to add links to cached content
+		// to support query string or cookie enabling
+		if ( strpos( $text, static::REPLY_LINKS_COMMENT ) !== false ) {
+			return;
+		}
+
+		$text = $text . "\n" . static::REPLY_LINKS_COMMENT;
+
+		try {
+			// Add reply links and hidden data about comment ranges.
+			$newText = static::addReplyLinksInternal( $text, $lang );
+		} catch ( Throwable $e ) {
+			// Catch errors, so that they don't cause the entire page to not display.
+			// Log it and add the request ID in a comment to make it easier to find in the logs.
+			MWExceptionHandler::logException( $e );
+
+			$requestId = htmlspecialchars( WebRequest::getRequestId() );
+			$info = "<!-- [$requestId] DiscussionTools could not add reply links on this page -->";
+			$text .= "\n" . $info;
+
+			return;
+		}
+
+		$text = $newText;
+		$duration = microtime( true ) - $start;
+
+		$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
+		$stats->timing( 'discussiontools.addReplyLinks', $duration * 1000 );
+	}
+
+	/**
+	 * Add reply links to some HTML
+	 *
 	 * @param string $html HTML
 	 * @param Language $lang Interface language
 	 * @return string HTML with reply links
 	 */
-	public static function addReplyLinks( string $html, Language $lang ) : string {
+	protected static function addReplyLinksInternal( string $html, Language $lang ) : string {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
