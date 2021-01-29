@@ -10,61 +10,21 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use Action;
-use Article;
-use ConfigException;
 use ExtensionRegistry;
 use Language;
 use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
 use OutputPage;
 use PageProps;
-use Parser;
-use ParserOptions;
-use RecentChange;
 use RequestContext;
-use Skin;
 use Throwable;
 use Title;
 use User;
-use VisualEditorHooks;
 use WebRequest;
 
 class Hooks {
 
-	private const TAGS = [
-		'discussiontools',
-		// Features:
-		'discussiontools-reply',
-		'discussiontools-edit',
-		'discussiontools-newtopic',
-		// Input methods:
-		'discussiontools-source',
-		'discussiontools-visual',
-	];
-
 	private const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
-
-	public static function onRegistration() : void {
-		// Use globals instead of Config. Accessing it so early blows up unrelated extensions (T255704).
-		global $wgLocaltimezone, $wgFragmentMode;
-		// HACK: Do not run these tests on CI as the globals are not configured.
-		if ( getenv( 'ZUUL_PROJECT' ) ) {
-			return;
-		}
-		// If $wgLocaltimezone isn't hard-coded, it is evaluated from the system
-		// timezone. On some systems this isn't guaranteed to be static, for example
-		// on Debian, GMT can get converted to UTC, instead of Europe/London.
-		// Timestamp parsing assumes that the timezone never changes.
-		if ( !$wgLocaltimezone ) {
-			throw new ConfigException( 'DiscussionTools requires $wgLocaltimezone to be set' );
-		}
-		// If $wgFragmentMode is set to use 'legacy' encoding, determining the IDs of our thread
-		// headings is harder, especially since the implementation is different in Parsoid.
-		if ( !isset( $wgFragmentMode[0] ) || $wgFragmentMode[0] !== 'html5' ) {
-			throw new ConfigException( 'DiscussionTools requires $wgFragmentMode to be set to ' .
-				"[ 'html5', 'legacy' ] or [ 'html5' ]" );
-		}
-	}
 
 	/**
 	 * Check if a DiscussionTools feature is available to this user
@@ -74,7 +34,7 @@ class Hooks {
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	private static function isFeatureAvailableToUser( User $user, ?string $feature = null ) : bool {
+	public static function isFeatureAvailableToUser( User $user, ?string $feature = null ) : bool {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
@@ -129,7 +89,7 @@ class Hooks {
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	private static function isFeatureEnabledForUser( User $user, ?string $feature = null ) : bool {
+	public static function isFeatureEnabledForUser( User $user, ?string $feature = null ) : bool {
 		$services = MediaWikiServices::getInstance();
 		$optionsLookup = $services->getUserOptionsLookup();
 		return static::isFeatureAvailableToUser( $user, $feature ) && (
@@ -188,7 +148,7 @@ class Hooks {
 	 * @param Title $title
 	 * @return bool
 	 */
-	private static function isAvailableForTitle( Title $title ) : bool {
+	public static function isAvailableForTitle( Title $title ) : bool {
 		// Only wikitext pages (e.g. not Flow boards)
 		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
 			return false;
@@ -217,7 +177,7 @@ class Hooks {
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	private static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ) : bool {
+	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ) : bool {
 		// Don't show on edit pages, history, etc.
 		if ( Action::getActionName( $output->getContext() ) !== 'view' ) {
 			return false;
@@ -255,119 +215,12 @@ class Hooks {
 	}
 
 	/**
-	 * Adds DiscussionTools JS to the output.
-	 *
-	 * This is attached to the MediaWiki 'BeforePageDisplay' hook.
-	 *
-	 * @param OutputPage $output
-	 * @param Skin $skin The skin that's going to build the UI.
-	 */
-	public static function onBeforePageDisplay( OutputPage $output, Skin $skin ) : void {
-		$user = $output->getUser();
-		// Load modules if any DT feature is enabled for this user
-		if ( static::isFeatureEnabledForOutput( $output ) ) {
-			$output->addModuleStyles( [
-				'ext.discussionTools.init.styles'
-			] );
-			$output->addModules( [
-				'ext.discussionTools.init'
-			] );
-
-			$output->addJsConfigVars(
-				'wgDiscussionToolsFeaturesEnabled',
-				[
-					'replytool' => static::isFeatureEnabledForOutput( $output, 'replytool' ),
-					'newtopictool' => static::isFeatureEnabledForOutput( $output, 'newtopictool' ),
-				]
-			);
-
-			$services = MediaWikiServices::getInstance();
-			$optionsLookup = $services->getUserOptionsLookup();
-			$req = $output->getRequest();
-			$editor = $optionsLookup->getOption( $user, 'discussiontools-editmode' );
-			// User has no preferred editor yet
-			// If the user has a preferred editor, this will be evaluated in the client
-			if ( !$editor ) {
-				// Check which editor we would use for articles
-				// VE pref is 'visualeditor'/'wikitext'. Here we describe the mode,
-				// not the editor, so 'visual'/'source'
-				$editor = VisualEditorHooks::getPreferredEditor( $user, $req ) === 'visualeditor' ?
-					'visual' : 'source';
-				$output->addJsConfigVars(
-					'wgDiscussionToolsFallbackEditMode',
-					$editor
-				);
-			}
-			$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-			$abstate = $dtConfig->get( 'DiscussionToolsABTest' ) ?
-				$optionsLookup->getOption( $user, 'discussiontools-abtest' ) :
-				false;
-			if ( $abstate ) {
-				$output->addJsConfigVars(
-					'wgDiscussionToolsABTestBucket',
-					$abstate
-				);
-			}
-		}
-	}
-
-	/**
-	 * Set static (not request-specific) JS configuration variables
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ResourceLoaderGetConfigVars
-	 * @param array &$vars Array of variables to be added into the output of the startup module
-	 * @param string $skinName Current skin name to restrict config variables to a certain skin
-	 */
-	public static function onResourceLoaderGetConfigVars( array &$vars, string $skinName ) : void {
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
-
-		$vars['wgDTSchemaEditAttemptStepSamplingRate'] =
-			$dtConfig->get( 'DTSchemaEditAttemptStepSamplingRate' );
-		$vars['wgDTSchemaEditAttemptStepOversample'] =
-			$dtConfig->get( 'DTSchemaEditAttemptStepOversample' );
-	}
-
-	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserAfterTidy
-	 *
-	 * @param Parser $parser
-	 * @param string &$text
-	 */
-	public static function onParserAfterTidy( Parser $parser, string &$text ) : void {
-		$popts = $parser->getOptions();
-		// ParserOption for dtreply was set in onArticleParserOptions
-		if ( $popts->getOption( 'dtreply' ) ) {
-			static::addReplyLinks( $text, $popts->getUserLangObj() );
-		}
-	}
-
-	/**
-	 * OutputPageBeforeHTML hook handler
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageBeforeHTML
-	 *
-	 * @param OutputPage $output The OutputPage object to which wikitext is added
-	 * @param string &$text The HTML to be wrapped inside the #mw-content-text element
-	 * @return bool
-	 */
-	public static function onOutputPageBeforeHTML( OutputPage $output, string &$text ) : bool {
-		// Check after the parser cache if reply links need to be added for
-		// non-cacheable reasons i.e. query string or cookie
-		// The addReplyLinks method is responsible for ensuring that
-		// reply links aren't added twice.
-		if ( static::isFeatureEnabledForOutput( $output, 'replytool' ) ) {
-			static::addReplyLinks( $text, $output->getLanguage() );
-		}
-		return true;
-	}
-
-	/**
 	 * Add reply links to some HTML
 	 *
 	 * @param string &$text Parser text output
 	 * @param Language $lang Interface language
 	 */
-	private static function addReplyLinks( string &$text, Language $lang ) {
+	public static function addReplyLinks( string &$text, Language $lang ) {
 		$start = microtime( true );
 
 		// Never add links twice.
@@ -399,157 +252,5 @@ class Hooks {
 
 		$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
 		$stats->timing( 'discussiontools.addReplyLinks', $duration * 1000 );
-	}
-
-	/**
-	 * @param Article $article Article about to be parsed
-	 * @param ParserOptions $popts Mutable parser options
-	 * @return bool|void True or no return value to continue or false to abort
-	 */
-	public static function onArticleParserOptions( Article $article, ParserOptions $popts ) {
-		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-
-		if (
-			$dtConfig->get( 'DiscussionToolsUseParserCache' ) &&
-			static::isAvailableForTitle( $article->getTitle() ) &&
-			static::isFeatureEnabledForUser( $popts->getUser(), 'replytool' )
-		) {
-			$popts->setOption( 'dtreply', true );
-		}
-	}
-
-	/**
-	 * Register additional parser options
-	 *
-	 * @param array &$defaults
-	 * @param array &$inCacheKey
-	 * @param array &$lazyLoad
-	 * @return bool|void
-	 */
-	public static function onParserOptionsRegister( &$defaults, &$inCacheKey, &$lazyLoad ) {
-		$defaults['dtreply'] = null;
-		$inCacheKey['dtreply'] = true;
-	}
-
-	/**
-	 * Handler for the GetPreferences hook, to add and hide user preferences as configured
-	 *
-	 * @param User $user
-	 * @param array &$preferences
-	 */
-	public static function onGetPreferences( User $user, array &$preferences ) {
-		if ( static::isFeatureAvailableToUser( $user, 'replytool' ) ) {
-			$preferences['discussiontools-replytool'] = [
-				'type' => 'toggle',
-				'label-message' => 'discussiontools-preference-replytool',
-				'help-message' => 'discussiontools-preference-replytool-help',
-				'section' => 'editing/discussion',
-			];
-		}
-		if ( static::isFeatureAvailableToUser( $user, 'newtopictool' ) ) {
-			$preferences['discussiontools-newtopictool'] = [
-				'type' => 'toggle',
-				'label-message' => 'discussiontools-preference-newtopictool',
-				'help-message' => 'discussiontools-preference-newtopictool-help',
-				'section' => 'editing/discussion',
-			];
-		}
-
-		$preferences['discussiontools-showadvanced'] = [
-			'type' => 'api',
-		];
-		$preferences['discussiontools-abtest'] = [
-			'type' => 'api',
-		];
-
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
-		if (
-			!$dtConfig->get( 'DiscussionToolsEnable' ) ||
-			!$dtConfig->get( 'DiscussionToolsBeta' )
-		) {
-			// When out of beta, preserve the user preference in case we
-			// bring back the beta feature for a new sub-feature. (T272071)
-			$preferences['discussiontools-betaenable'] = [
-				'type' => 'api'
-			];
-		}
-
-		$preferences['discussiontools-editmode'] = [
-			'type' => 'api',
-			'validation-callback' => function ( $value ) {
-				return in_array( $value, [ '', 'source', 'visual' ], true );
-			},
-		];
-	}
-
-	/**
-	 * Handler for the GetBetaPreferences hook, to add and hide user beta preferences as configured
-	 *
-	 * @param User $user
-	 * @param array &$preferences
-	 */
-	public static function onGetBetaPreferences( User $user, array &$preferences ) : void {
-		$coreConfig = RequestContext::getMain()->getConfig();
-		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
-
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
-
-		if (
-			$dtConfig->get( 'DiscussionToolsEnable' ) &&
-			$dtConfig->get( 'DiscussionToolsBeta' )
-		) {
-			$preferences['discussiontools-betaenable'] = [
-				'version' => '1.0',
-				'label-message' => 'discussiontools-preference-label',
-				'desc-message' => 'discussiontools-preference-description',
-				'screenshot' => [
-					'ltr' => "$iconpath/betafeatures-icon-DiscussionTools-ltr.svg",
-					'rtl' => "$iconpath/betafeatures-icon-DiscussionTools-rtl.svg",
-				],
-				'info-message' => 'discussiontools-preference-info-link',
-				'discussion-message' => 'discussiontools-preference-discussion-link',
-				'requirements' => [
-					'javascript' => true
-				]
-			];
-		}
-	}
-
-	/**
-	 * Implements the ListDefinedTags and ChangeTagsListActive hooks, to
-	 * populate core Special:Tags with the change tags in use by DiscussionTools.
-	 *
-	 * @param array &$tags Available change tags.
-	 */
-	public static function onListDefinedTags( array &$tags ) : void {
-		$tags = array_merge( $tags, static::TAGS );
-	}
-
-	/**
-	 * Implements the RecentChange_save hook, to add an allowed set of changetags
-	 * to edits.
-	 *
-	 * @param RecentChange $recentChange
-	 * @return bool
-	 */
-	public static function onRecentChangeSave( RecentChange $recentChange ) : bool {
-		// only apply to api edits, since there's no case where discussiontools
-		// should be using the form-submit method.
-		if ( !defined( 'MW_API' ) ) {
-			return true;
-		}
-		$request = RequestContext::getMain()->getRequest();
-		$tags = explode( ',', $request->getVal( 'dttags' ) );
-
-		$tags = array_values( array_intersect( $tags, static::TAGS ) );
-
-		if ( $tags ) {
-			$recentChange->addTags( $tags );
-		}
-
-		return true;
 	}
 }

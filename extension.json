@@ -19,7 +19,7 @@
 			"i18n/api"
 		]
 	},
-	"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onRegistration",
+	"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\RegistrationHooks::onRegistration",
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "DiscussionTools/modules"
@@ -341,17 +341,34 @@
 		"discussiontoolsedit": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
 	},
 	"Hooks": {
-		"ArticleParserOptions": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onArticleParserOptions",
-		"BeforePageDisplay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onBeforePageDisplay",
-		"OutputPageBeforeHTML": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onOutputPageBeforeHTML",
-		"ParserAfterTidy": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onParserAfterTidy",
-		"ParserOptionsRegister": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onParserOptionsRegister",
-		"ResourceLoaderGetConfigVars": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onResourceLoaderGetConfigVars",
-		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onGetBetaPreferences",
-		"GetPreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onGetPreferences",
-		"ListDefinedTags": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onListDefinedTags",
-		"ChangeTagsListActive": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onListDefinedTags",
-		"RecentChange_save": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks::onRecentChangeSave"
+		"ArticleParserOptions": "parser",
+		"ParserAfterTidy": "parser",
+		"ParserOptionsRegister": "parser",
+		"BeforePageDisplay": "page",
+		"OutputPageBeforeHTML": "page",
+		"ResourceLoaderGetConfigVars": "resourceloader",
+		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks::onGetBetaFeaturePreferences",
+		"GetPreferences": "preferences",
+		"ChangeTagsListActive": "tags",
+		"ListDefinedTags": "tags",
+		"RecentChange_save": "tags"
+	},
+	"HookHandlers": {
+		"page": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PageHooks"
+		},
+		"parser": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ParserHooks"
+		},
+		"preferences": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks"
+		},
+		"resourceloader": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ResourceLoaderHooks"
+		},
+		"tags": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\TagHooks"
+		}
 	},
 	"DefaultUserOptions": {
 		"discussiontools-editmode": "",
