@@ -350,6 +350,7 @@
 		"discussiontoolsedit": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
 	},
 	"Hooks": {
+		"LoadExtensionSchemaUpdates": "installer",
 		"ArticleParserOptions": "parser",
 		"ParserAfterTidy": "parser",
 		"ParserOptionsRegister": "parser",
@@ -363,6 +364,9 @@
 		"RecentChange_save": "tags"
 	},
 	"HookHandlers": {
+		"installer": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\InstallerHooks"
+		},
 		"page": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PageHooks"
 		},
