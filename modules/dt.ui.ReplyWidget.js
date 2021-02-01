@@ -708,22 +708,19 @@ ReplyWidget.prototype.onReplyClick = function () {
 	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
 	logger( { action: 'saveAttempt' } );
 	widget.commentController.save( comment, pageName ).fail( function ( code, data ) {
+		// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
 		var typeMap = {
-			// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
-			editconflict: 'editConflict',
-			wasdeleted: 'editPageDeleted',
-			abusefilter: 'extensionAbuseFilter',
-			'abusefilter-disallowed': 'extensionAbuseFilter',
-			captcha: 'extensionCaptcha',
-			spamprotectiontext: 'extensionSpamBlacklist',
-			titleblacklist: 'extensionTitleBlacklist',
-			'titleblacklist-forbidden-edit': 'extensionTitleBlacklist',
 			badtoken: 'userBadToken',
-			newuser: 'userNewUser',
+			assertanonfailed: 'userNewUser',
+			assertuserfailed: 'userNewUser',
+			assertnameduserfailed: 'userNewUser',
+			'abusefilter-disallowed': 'extensionAbuseFilter',
+			'abusefilter-warning': 'extensionAbuseFilter',
+			captcha: 'extensionCaptcha',
 			spamblacklist: 'extensionSpamBlacklist',
-			empty: 'responseEmpty',
-			unknown: 'responseUnknown',
-			pagedeleted: 'editPageDeleted'
+			'titleblacklist-forbidden': 'extensionTitleBlacklist',
+			pagedeleted: 'editPageDeleted',
+			editconflict: 'editConflict'
 		};
 
 		if ( widget.captchaMessage ) {
