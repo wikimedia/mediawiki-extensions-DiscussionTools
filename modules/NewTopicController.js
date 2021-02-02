@@ -94,6 +94,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 	}
 
 	this.sectionTitle.connect( this, { change: 'onSectionTitleChange' } );
+	this.sectionTitle.$input.on( 'blur', this.onSectionTitleBlur.bind( this ) );
 };
 
 /**
@@ -111,6 +112,7 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 
 	this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
 	this.sectionTitle.setValue( '' );
+	this.sectionTitleField.setWarnings( [] );
 	this.container.$element.detach();
 };
 
@@ -193,6 +195,33 @@ NewTopicController.prototype.onSectionTitleChange = function () {
 	}
 
 	this.prevTitleText = titleText;
+
+	this.checkSectionTitleValidity();
+};
+
+/**
+ * Handle 'blur' events for the section title input.
+ *
+ * @private
+ */
+NewTopicController.prototype.onSectionTitleBlur = function () {
+	this.checkSectionTitleValidity();
+};
+
+/**
+ * Check if the section title is valid, and display a warning message.
+ *
+ * @private
+ */
+NewTopicController.prototype.checkSectionTitleValidity = function () {
+	if ( !this.sectionTitle.getValue() ) {
+		// Show warning about missing title
+		this.sectionTitleField.setWarnings( [
+			mw.msg( 'discussiontools-newtopic-missing-title' )
+		] );
+	} else {
+		this.sectionTitleField.setWarnings( [] );
+	}
 };
 
 module.exports = NewTopicController;

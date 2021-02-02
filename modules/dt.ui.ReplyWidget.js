@@ -275,10 +275,6 @@ ReplyWidget.prototype.clear = function () {
 	if ( this.errorMessage ) {
 		this.errorMessage.$element.remove();
 	}
-	if ( this.isNewTopic ) {
-		this.commentController.sectionTitleField.setWarnings( [] );
-		this.warnedAboutMissingTitle = false;
-	}
 	this.$preview.empty();
 	this.previewWikitext = null;
 	this.previewTitle = null;
@@ -676,25 +672,6 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 	if ( this.pending || this.isEmpty() ) {
 		return;
-	}
-
-	if ( this.isNewTopic ) {
-		if ( !this.commentController.sectionTitle.getValue() ) {
-			// Show warning about missing title
-			this.commentController.sectionTitleField.setWarnings( [
-				mw.msg( 'discussiontools-newtopic-missing-title' )
-			] );
-			this.commentController.sectionTitle.focus();
-
-			// Prevent submitting once, then allow if the warning was already shown
-			if ( !this.warnedAboutMissingTitle ) {
-				this.warnedAboutMissingTitle = true;
-				return;
-			}
-		} else {
-			this.commentController.sectionTitleField.setWarnings( [] );
-			this.warnedAboutMissingTitle = false;
-		}
 	}
 
 	if ( this.errorMessage ) {
