@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Balyozxane"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "IDya şiroveyê nehat dîtin: $1",
+	"apihelp-discussiontoolsedit-summary": "Peyamek li ser rûpeleke gotûbêjê binivîse.",
+	"apihelp-discussiontoolsedit-param-commentid": "IDya şiroveyê.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Wîkînivîs"
+}
