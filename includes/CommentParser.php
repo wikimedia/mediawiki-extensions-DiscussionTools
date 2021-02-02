@@ -1001,12 +1001,82 @@ class CommentParser {
 	}
 
 	/**
+	 * Truncate user generated parts of IDs so full ID always fits within a database field of length 255
+	 *
+	 * @param string $text Text
+	 * @return string Truncated text
+	 */
+	private function truncateForId( string $text ) : string {
+		return $this->language->truncateForDatabase( $text, 80, '' );
+	}
+
+	/**
 	 * Given a thread item, return an identifier for it that is unique within the page.
+	 *
+	 * @param ThreadItem $threadItem
+	 * @param bool $noDedupe Internal. Don't attempt to de-duplicate
+	 * @return string|null
+	 */
+	private function computeId( ThreadItem $threadItem, bool $noDedupe = false ) : ?string {
+		$id = null;
+
+		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
+			// The range points to the root note, using it like below results in silly values
+			$id = 'h|';
+		} elseif ( $threadItem instanceof HeadingItem ) {
+			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItem->getRange()->startContainer )['node'];
+			$id = 'h|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
+		} elseif ( $threadItem instanceof CommentItem ) {
+			$id = 'c|' . $this->truncateForId( $threadItem->getAuthor() ?? '' ) .
+				'|' . $threadItem->getTimestamp();
+		} else {
+			throw new MWException( 'Unknown ThreadItem type' );
+		}
+
+		// If there would be multiple comments with the same ID (i.e. the user left multiple comments
+		// in one edit, or within a minute), add the parent ID to disambiguate them.
+		$threadItemParent = $threadItem->getParent();
+		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
+			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItemParent->getRange()->startContainer )['node'];
+			$id .= '|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
+		} elseif ( $threadItemParent instanceof CommentItem ) {
+			$id .= '|' . $this->truncateForId( $threadItemParent->getAuthor() ?? '' ) .
+				'|' . $threadItemParent->getTimestamp();
+		}
+
+		if ( $threadItem instanceof HeadingItem ) {
+			// To avoid old threads re-appearing on popular pages when someone uses a vague title
+			// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
+			// include the oldest timestamp in the thread (i.e. date the thread was started) in the
+			// heading ID.
+			$timestamp = $this->getThreadStartTimestamp( $threadItem );
+			if ( $timestamp ) {
+				$id .= '|' . $timestamp;
+			}
+		}
+
+		if ( !$noDedupe && isset( $this->threadItemsById[$id] ) ) {
+			// Well, that's tough
+			$threadItem->addWarning( 'Duplicate comment ID' );
+			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
+			$number = 1;
+			while ( isset( $this->threadItemsById["$id|$number"] ) ) {
+				$number++;
+			}
+			$id = "$id|$number";
+		}
+
+		return $id;
+	}
+
+	/**
+	 * Given a thread item, return an identifier for it like computeId(), generated according to an
+	 * older algorithm, so that we can still match IDs from cached data.
 	 *
 	 * @param ThreadItem $threadItem
 	 * @return string|null
 	 */
-	private function computeId( ThreadItem $threadItem ) : ?string {
+	private function computeLegacyId( ThreadItem $threadItem ) : ?string {
 		$id = null;
 
 		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
@@ -1042,6 +1112,11 @@ class CommentParser {
 			}
 		}
 
+		// Legacy IDs are only required if different to the current ID
+		if ( $id === $this->computeId( $threadItem, true ) ) {
+			return null;
+		}
+
 		if ( isset( $this->threadItemsById[$id] ) ) {
 			// Well, that's tough
 			$threadItem->addWarning( 'Duplicate comment ID' );
@@ -1051,35 +1126,6 @@ class CommentParser {
 				$number++;
 			}
 			$id = "$id|$number";
-		}
-
-		return $id;
-	}
-
-	/**
-	 * Given a thread item, return an identifier for it like computeId(), generated according to an
-	 * older algorithm, so that we can still match IDs from cached data.
-	 *
-	 * @param ThreadItem $threadItem
-	 * @return string|null
-	 */
-	private function computeLegacyId( ThreadItem $threadItem ) : ?string {
-		if ( $threadItem instanceof HeadingItem ) {
-			// We don't need ids for section headings right now, but we might in the future
-			// e.g. if we allow replying directly to sections (adding top-level comments)
-			$id = null;
-		} elseif ( $threadItem instanceof CommentItem ) {
-			$id = ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
-
-			// If there would be multiple comments with the same ID (i.e. the user left multiple comments
-			// in one edit, or within a minute), append sequential numbers
-			$number = 0;
-			while ( isset( $this->threadItemsById["$id|$number"] ) ) {
-				$number++;
-			}
-			$id = "$id|$number";
-		} else {
-			throw new MWException( 'Unknown ThreadItem type' );
 		}
 
 		return $id;

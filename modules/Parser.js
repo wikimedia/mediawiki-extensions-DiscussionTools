@@ -8,6 +8,7 @@
 var
 	utils = require( './utils.js' ),
 	codePointLength = require( 'mediawiki.String' ).codePointLength,
+	trimByteLength = require( 'mediawiki.String' ).trimByteLength,
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
 	// Data::getLocalData()
@@ -987,6 +988,16 @@ Parser.prototype.getThreads = function () {
 };
 
 /**
+ * Truncate user generated parts of IDs so full ID always fits within a database field of length 255
+ *
+ * @param {string} text Text
+ * @return {string} Truncated text
+ */
+Parser.prototype.truncateForId = function ( text ) {
+	return trimByteLength( '', text, 80 ).newVal;
+};
+
+/**
  * Given a thread item, return an identifier for it that is unique within the page.
  *
  * @param {ThreadItem} threadItem
@@ -1000,9 +1011,9 @@ Parser.prototype.computeId = function ( threadItem ) {
 		id = 'h|';
 	} else if ( threadItem instanceof HeadingItem ) {
 		headline = utils.getHeadlineNodeAndOffset( threadItem.range.startContainer ).node;
-		id = 'h|' + ( headline.getAttribute( 'id' ) || '' );
+		id = 'h|' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItem instanceof CommentItem ) {
-		id = 'c|' + ( threadItem.author || '' ) + '|' + threadItem.timestamp.toISOString();
+		id = 'c|' + this.truncateForId( threadItem.author || '' ) + '|' + threadItem.timestamp.toISOString();
 	} else {
 		throw new Error( 'Unknown ThreadItem type' );
 	}
@@ -1012,9 +1023,9 @@ Parser.prototype.computeId = function ( threadItem ) {
 	threadItemParent = threadItem.parent;
 	if ( threadItemParent instanceof HeadingItem && !threadItemParent.placeholderHeading ) {
 		headline = utils.getHeadlineNodeAndOffset( threadItemParent.range.startContainer ).node;
-		id += '|' + ( headline.getAttribute( 'id' ) || '' );
+		id += '|' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItemParent instanceof CommentItem ) {
-		id += '|' + ( threadItemParent.author || '' ) + '|' + threadItemParent.timestamp.toISOString();
+		id += '|' + this.truncateForId( threadItemParent.author || '' ) + '|' + threadItemParent.timestamp.toISOString();
 	}
 
 	if ( threadItem instanceof HeadingItem ) {
