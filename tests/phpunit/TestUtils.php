@@ -6,11 +6,10 @@ use DOMDocument;
 use DOMElement;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\MediaWikiServices;
-use MediaWikiTestCase;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
-abstract class CommentTestCase extends MediaWikiTestCase {
+trait TestUtils {
 
 	/**
 	 * Create a DOMDocument from a string
@@ -113,25 +112,5 @@ abstract class CommentTestCase extends MediaWikiTestCase {
 			$services->getMainConfig(),
 			$data
 		);
-	}
-
-	/**
-	 * Setup the MW environment
-	 *
-	 * @param array $config
-	 * @param array $data
-	 */
-	protected function setupEnv( array $config, array $data ) : void {
-		$this->setMwGlobals( $config );
-		$this->setMwGlobals( [
-			'wgArticlePath' => $config['wgArticlePath'],
-			'wgNamespaceAliases' => $config['wgNamespaceIds'],
-			'wgMetaNamespace' => strtr( $config['wgFormattedNamespaces'][NS_PROJECT], ' ', '_' ),
-			'wgMetaNamespaceTalk' => strtr( $config['wgFormattedNamespaces'][NS_PROJECT_TALK], ' ', '_' ),
-			// TODO: Move this to $config
-			'wgLocaltimezone' => $data['localTimezone']
-		] );
-		$this->setUserLang( $config['wgContentLanguage'] );
-		$this->setContentLang( $config['wgContentLanguage'] );
 	}
 }

@@ -1,16 +1,20 @@
 <?php
 
-namespace MediaWiki\Extension\DiscussionTools\Tests;
+namespace MediaWiki\Extension\DiscussionTools\Tests\Unit;
 
 use DOMDocument;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
+use MediaWiki\Extension\DiscussionTools\Tests\TestUtils;
+use MediaWikiUnitTestCase;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentUtils
  *
  * @group DiscussionTools
  */
-class CommentUtilsTest extends CommentTestCase {
+class CommentUtilsTest extends MediaWikiUnitTestCase {
+
+	use TestUtils;
 
 	/**
 	 * @dataProvider provideLinearWalk

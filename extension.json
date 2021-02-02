@@ -334,6 +334,7 @@
 		"MediaWiki\\Extension\\DiscussionTools\\": "includes/"
 	},
 	"TestAutoloadNamespaces": {
+		"MediaWiki\\Extension\\DiscussionTools\\Tests\\Unit\\": "tests/phpunit/unit/",
 		"MediaWiki\\Extension\\DiscussionTools\\Tests\\": "tests/phpunit/"
 	},
 	"APIModules": {

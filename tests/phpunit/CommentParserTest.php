@@ -20,7 +20,7 @@ use Wikimedia\TestingAccessWrapper;
  *
  * @group DiscussionTools
  */
-class CommentParserTest extends CommentTestCase {
+class CommentParserTest extends IntegrationTestCase {
 
 	/**
 	 * Convert UTF-8 byte offsets to UTF-16 code unit offsets.

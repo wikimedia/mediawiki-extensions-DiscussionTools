@@ -8,7 +8,7 @@ use MediaWiki\Extension\DiscussionTools\Data;
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\Data
  */
-class DataTest extends CommentTestCase {
+class DataTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideLocalData

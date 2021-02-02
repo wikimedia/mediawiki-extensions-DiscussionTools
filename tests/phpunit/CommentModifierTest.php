@@ -10,7 +10,7 @@ use Wikimedia\Parsoid\Utils\DOMCompat;
  *
  * @group DiscussionTools
  */
-class CommentModifierTest extends CommentTestCase {
+class CommentModifierTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideAddListItem

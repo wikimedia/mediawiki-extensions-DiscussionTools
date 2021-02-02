@@ -15,7 +15,7 @@ class MockCommentFormatter extends CommentFormatter {
 	 * @return CommentParser
 	 */
 	protected static function getParser( DOMElement $container ) : CommentParser {
-		return CommentTestCase::createParser( $container, static::$data );
+		return TestUtils::createParser( $container, static::$data );
 	}
 
 }

@@ -13,7 +13,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem;
  *
  * @group DiscussionTools
  */
-class ThreadItemTest extends CommentTestCase {
+class ThreadItemTest extends IntegrationTestCase {
 	/**
 	 * @dataProvider provideAuthors
 	 * @covers ::getAuthorsBelow

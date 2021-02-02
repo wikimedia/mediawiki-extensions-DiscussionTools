@@ -8,7 +8,7 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentFormatter
  */
-class CommentFormatterTest extends CommentTestCase {
+class CommentFormatterTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideAddReplyLinksInternal
