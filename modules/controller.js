@@ -41,25 +41,20 @@ function highlight( comment ) {
 	} );
 	$overlay.prepend( $highlight );
 
-	// Pause for 500ms
-	// Fade in for 100ms
-	// Show for 1000ms
-	// Fade out for 500ms
-	// (animation durations are defined in CSS)
+	// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
+	// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
 	OO.ui.Element.static.scrollIntoView( $highlight[ 0 ], { padding: { top: 10, bottom: 10 } } ).then( function () {
+		// Toggle the 'dt-init-highlight-overlay' class only when needed, because using mix-blend-mode
+		// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
+		$overlay.addClass( 'dt-init-highlight-overlay' );
+		$highlight.addClass( 'dt-init-highlight-fadein' );
 		setTimeout( function () {
-			// Toggle the 'dt-init-highlight-overlay' class only when needed, because using mix-blend-mode
-			// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
-			$overlay.addClass( 'dt-init-highlight-overlay' );
-			$highlight.addClass( 'dt-init-highlight-fadein' );
+			$highlight.addClass( 'dt-init-highlight-fadeout' );
 			setTimeout( function () {
-				$highlight.addClass( 'dt-init-highlight-fadeout' );
-				setTimeout( function () {
-					$highlight.remove();
-					$overlay.removeClass( 'dt-init-highlight-overlay' );
-				}, 500 );
-			}, 1000 + 100 );
-		}, 500 );
+				$highlight.remove();
+				$overlay.removeClass( 'dt-init-highlight-overlay' );
+			}, 250 );
+		}, 3000 );
 	} );
 }
 
