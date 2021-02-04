@@ -40,7 +40,7 @@
 	"discussiontools-replywidget-summary": "Oggetto",
 	"discussiontools-replywidget-terms-click": "Cliccando su \"$1\", accetti le condizioni d'uso per questo wiki.",
 	"discussiontools-replywidget-transcluded": "Il tuo commento sarà salvato su [[$1]].",
-	"discussiontools-newtopic-placeholder-title": "Argomento",
+	"discussiontools-newtopic-placeholder-title": "Titolo",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrizione",
 	"discussiontools-replywidget-newtopic": "Aggiungi argomento",
 	"discussiontools-signature-prefix": "&#32;",

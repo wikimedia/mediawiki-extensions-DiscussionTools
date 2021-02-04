@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Casadelproverbio",
 			"Joetaras"
 		]
 	},
@@ -9,5 +10,6 @@
 	"discussiontools-desc": "Struminde pe migliorà le pàggene de le 'ngazzaminde.",
 	"discussiontools-preference-label": "Struminde de le 'ngazzaminde",
 	"discussiontools-replylink": "respunne",
+	"discussiontools-newtopic-placeholder-title": "Titole",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respunne]"
 }

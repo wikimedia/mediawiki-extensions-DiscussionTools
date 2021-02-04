@@ -4,5 +4,10 @@
 			"NGC 54"
 		]
 	},
+	"apierror-discussiontools-commentid-notfound": "ID-ul comentariului nu a fost găsit: $1",
+	"apihelp-discussiontools-param-oldid": "Numărul versiunii de utilizat (implicit la cea mai recentă versiune).",
+	"apihelp-discussiontools-summary": "Întoarce metadatele necesare pentru inițializarea uneltelor de discuție.",
+	"apihelp-discussiontoolsedit-summary": "Publică un mesaj pe o pagină de discuție.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID-ul comentariului.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
 }

@@ -42,7 +42,7 @@
 	"discussiontools-replywidget-terms-click": "Kliknutím na „$1“ souhlasíte s podmínkami užití této wiki.",
 	"discussiontools-replywidget-transcluded": "Váš komentář bude uložen na stránce [[$1]].",
 	"discussiontools-newtopic-placeholder-title": "Nadpis",
-	"discussiontools-newtopic-missing-title": "Prosíme, vyplňte téma vašeho komentáře. Kliknete-li znovu na „{{int:discussiontools-replywidget-newtopic}}“, přidáte komentář bez tématu.",
+	"discussiontools-newtopic-missing-title": "Prosíme, vyplňte nadpis svého diskusního tématu. Kliknete-li znovu na „{{int:discussiontools-replywidget-newtopic}}“, přidáte téma bez nadpisu.",
 	"discussiontools-replywidget-placeholder-newtopic": "Popis",
 	"discussiontools-replywidget-newtopic": "Přidat téma",
 	"discussiontools-error-comment-conflict": "Váš komentář nebylo možné uložit, protože někdo jiný uložil komentář ve stejnou dobu jako vy. Prosím, zkuste to znovu nebo stránku obnovte, aby se vám zobrazily nejnovější komentáře.",
