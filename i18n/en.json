@@ -38,7 +38,7 @@
 	"discussiontools-replywidget-newtopic-link": "https:\/\/www.mediawiki.org\/wiki\/Special:MyLanguage\/Talk_pages_project\/New_discussion",
 	"discussiontools-replywidget-signature-title": "Signature markup detected",
 	"discussiontools-replywidget-signature-body": "$1 has been transformed into your signature. To undo this, type $2. Note that you don't need to sign comments with this tool. Your signature will be added automatically.",
-	"discussiontools-replywidget-summary": "Comment summary",
+	"discussiontools-replywidget-summary": "Summary",
 	"discussiontools-replywidget-terms-click": "By clicking \"$1\", you agree to the terms of use for this wiki.",
 	"discussiontools-replywidget-transcluded": "Your comment will be saved at [[$1]].",
 	"discussiontools-newtopic-placeholder-title": "Title",
