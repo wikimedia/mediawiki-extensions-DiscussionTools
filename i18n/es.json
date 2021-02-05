@@ -42,7 +42,7 @@
 	"discussiontools-replywidget-summary": "Resumen del comentario",
 	"discussiontools-replywidget-terms-click": "Al pulsar en «$1» aceptas los términos de uso de este wiki.",
 	"discussiontools-replywidget-transcluded": "Tu comentario se publicará en [[$1]].",
-	"discussiontools-newtopic-placeholder-title": "Tema",
+	"discussiontools-newtopic-placeholder-title": "Título",
 	"discussiontools-replywidget-placeholder-newtopic": "Descripción",
 	"discussiontools-replywidget-newtopic": "Añadir tema",
 	"discussiontools-error-comment-conflict": "Tu comentario no puede guardarse, porque alguien más comentó al mismo tiempo que tú. Por favor inténtalo de nuevo, o vuelve a cargar la página para ver los últimos comentarios.",
