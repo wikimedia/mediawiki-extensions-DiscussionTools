@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Daud I.F. Argana",
+			"Hidayatsrf",
 			"Matma Rex",
 			"Sonic Speedy"
 		]
@@ -30,7 +31,7 @@
 	"discussiontools-replywidget-reply": "Balas",
 	"discussiontools-replywidget-signature-title": "Markup tanda tangan terdeteksi",
 	"discussiontools-replywidget-signature-body": "$1 telah diubah menjadi tanda tangan Anda. Untuk mengurungkan ini, ketik $2. Perhatikan bahwa Anda tidak perlu menandatangani komentar dengan alat ini. Tanda tangan Anda akan ditambahkan secara otomatis.",
-	"discussiontools-replywidget-summary": "Ringkasan komentar",
+	"discussiontools-replywidget-summary": "Ringkasan",
 	"discussiontools-replywidget-terms-click": "Dengan mengklik \"$1\", Anda setuju dengan syarat penggunaan wiki ini.",
 	"discussiontools-replywidget-transcluded": "Komentar Anda akan disimpan di [[$1]].",
 	"discussiontools-error-comment-conflict": "Komentar Anda tidak dapat disimpan, karena orang lain memberi komentar pada waktu yang sama dengan Anda. Silakan coba lagi, atau muat ulang halaman untuk melihat komentar terbaru.",

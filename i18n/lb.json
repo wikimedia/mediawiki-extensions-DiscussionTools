@@ -18,6 +18,8 @@
 	"discussiontools-replywidget-placeholder-reply": "Äntwert fir {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Kucken ouni ofzespäicheren",
 	"discussiontools-replywidget-reply": "Äntweren",
+	"discussiontools-replywidget-summary": "Resumé",
+	"discussiontools-newtopic-placeholder-title": "Titel",
 	"discussiontools-replywidget-placeholder-newtopic": "Beschreiwung",
 	"discussiontools-error-noswitchtove-extension": "Erweiderungs- oder Referenzsyntax",
 	"discussiontools-error-noswitchtove-table": "Syntax vun der Tabell",

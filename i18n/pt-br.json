@@ -3,6 +3,7 @@
 		"authors": [
 			"Dr03ramos",
 			"Eduardo Addad de Oliveira",
+			"Eduardoaddad",
 			"He7d3r",
 			"Jhonnatanricardo"
 		]
@@ -11,7 +12,7 @@
 	"discussiontools-defaultsummary-reply": "Responder",
 	"discussiontools-desc": "Ferramentas para aprimorar as páginas de discussão.",
 	"discussiontools-preference-label": "Ferramentas de discussão",
-	"discussiontools-preference-description": "Ative um novo workflow [//www.mediawiki.org/wiki/Talk_pages_project/replying respondendo a comentários específicos] na página de discussão.\n\nObserve que, com o tempo, novas ferramentas para interagir com as páginas de discussão serão adicionadas.\n\nAs atualizações sobre esses recursos serão publicadas na [//www.mediawiki.org/wiki/Talk_pages_project/Updates discussão da página de atualizações do projeto].",
+	"discussiontools-preference-description": "Ativa recursos experimentais da página de discussão:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Reply] para comentar nas páginas de discussão sobre em um clique.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Adicionar novos tópicos] usando um formulário embutido.\n\nVocê pode personalizar esses recursos em suas [[Special:Preferences#mw-prefsection-editing-discussion|preferências]].\n\nAs atualizações serão postadas na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates páginas de discussão página de atualizações do projeto].\n\nObserve:\n* Com o tempo, novos recursos experimentais serão adicionados.\n* Alguns dos recursos acima podem não estar disponíveis na sua wiki ainda.",
 	"discussiontools-preference-newtopictool": "Habilitar adição rápida de tópicos",
 	"discussiontools-preference-newtopictool-help": "Isso mostrará um formulário embutido para adicionar novos tópicos. Você pode aprender mais sobre esse recurso lendo o [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary resumo de recursos].",
 	"discussiontools-preference-replytool": "Ativar resposta rápida",
@@ -37,7 +38,7 @@
 	"discussiontools-replywidget-reply": "Responder",
 	"discussiontools-replywidget-signature-title": "Marcação de assinatura detectada",
 	"discussiontools-replywidget-signature-body": "$1 foi transformado em sua assinatura. Para desfazer isso, digite $2. Observe que você não precisa assinar comentários com esta ferramenta. Sua assinatura será adicionada automaticamente.",
-	"discussiontools-replywidget-summary": "Resumo do comentário",
+	"discussiontools-replywidget-summary": "Sumário",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-replywidget-transcluded": "Seu comentário será salvo em [[$1]].",
 	"discussiontools-newtopic-placeholder-title": "Título",

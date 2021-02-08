@@ -42,7 +42,7 @@
 	"discussiontools-replywidget-reply": "Yanıtla",
 	"discussiontools-replywidget-signature-title": "İmza işaretlemesi tespit edildi",
 	"discussiontools-replywidget-signature-body": "$1 sizin imzanıza dönüştü. Bunu geri almak için $2 yazın. Bu araçla yorum imzalamanıza gerek olmadığını unutmayın. İmzanız otomatik olarak eklenecektir.",
-	"discussiontools-replywidget-summary": "Yorum özeti",
+	"discussiontools-replywidget-summary": "Özet",
 	"discussiontools-replywidget-terms-click": "\"$1\" düğmesine tıklayarak, bu vikinin kullanım şartlarını kabul etmiş olursunuz.",
 	"discussiontools-replywidget-transcluded": "Yorumunuz [[$1]] sayfasında kaydedilecek.",
 	"discussiontools-newtopic-placeholder-title": "Başlık",

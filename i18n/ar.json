@@ -42,7 +42,7 @@
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-signature-title": "تم العثور على علامة توقيع",
 	"discussiontools-replywidget-signature-body": "تم تغيير $1 إلى توقيعك. لإلغاء ذلك، {{GENDER:|اضغط|اضغطي}} على $2. ملاحظة: لا حاجة للتوقيع على تعليقك مع هذه الأداة. توقيعك سيضاف تِلْقائيًا.",
-	"discussiontools-replywidget-summary": "ملخّص التعليق",
+	"discussiontools-replywidget-summary": "الملخص",
 	"discussiontools-replywidget-terms-click": "عند ضغطك على «$1»، فإنك {{GENDER:|توافق|توافقين}} على شروط استخدام هذه الويكي.",
 	"discussiontools-replywidget-transcluded": "سيتم حفظ تعليقك في [[$1]].",
 	"discussiontools-newtopic-placeholder-title": "العنوان",
