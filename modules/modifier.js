@@ -102,6 +102,22 @@ function addListItem( comment ) {
 	// parent is a list item or paragraph (hopefully)
 	// target is an inline node within it
 
+	// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
+	// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
+	// as some kind of a fancy frame, which are often used for barnstars and announcements.
+	covered = utils.getFullyCoveredSiblings( curComment );
+	if ( curComment.level === 1 && covered ) {
+		target = covered[ covered.length - 1 ];
+		parent = target.parentNode;
+	}
+
+	// If we can't insert a list directly inside this element, insert after it.
+	// TODO Figure out if this is still needed, the wrapper check above should handle all cases
+	if ( parent.tagName.toLowerCase() === 'p' || parent.tagName.toLowerCase() === 'pre' ) {
+		parent = parent.parentNode;
+		target = target.parentNode;
+	}
+
 	// HACK: Skip past our own reply buttons
 	if ( target.nextSibling && target.nextSibling.className && target.nextSibling.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 ) {
 		target = target.nextSibling;
@@ -121,22 +137,6 @@ function addListItem( comment ) {
 
 	} else if ( curLevel < desiredLevel ) {
 		// Insert more lists after the target to increase nesting.
-
-		// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
-		// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
-		// as some kind of a fancy frame, which are often used for barnstars and announcements.
-		covered = utils.getFullyCoveredSiblings( curComment );
-		if ( curLevel === 1 && covered ) {
-			target = covered[ covered.length - 1 ];
-			parent = target.parentNode;
-		}
-
-		// If we can't insert a list directly inside this element, insert after it.
-		// TODO Figure out if this is still needed, the wrapper check above should handle all cases
-		if ( parent.tagName.toLowerCase() === 'p' || parent.tagName.toLowerCase() === 'pre' ) {
-			parent = parent.parentNode;
-			target = target.parentNode;
-		}
 
 		// Parsoid puts HTML comments (and other "rendering-transparent nodes", e.g. category links)
 		// which appear at the end of the line in wikitext outside the paragraph,
