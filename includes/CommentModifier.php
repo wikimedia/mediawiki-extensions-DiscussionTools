@@ -126,7 +126,6 @@ class CommentModifier {
 		}
 
 		// If we can't insert a list directly inside this element, insert after it.
-		// TODO Figure out if this is still needed, the wrapper check above should handle all cases
 		if ( strtolower( $parent->tagName ) === 'p' || strtolower( $parent->tagName ) === 'pre' ) {
 			$parent = $parent->parentNode;
 			$target = $target->parentNode;
