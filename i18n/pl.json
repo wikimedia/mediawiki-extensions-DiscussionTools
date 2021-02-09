@@ -37,7 +37,7 @@
 	"discussiontools-replywidget-reply": "Odpowiedz",
 	"discussiontools-replywidget-signature-title": "Wykryto składnię podpisu",
 	"discussiontools-replywidget-signature-body": "Wikikod $1 został zamieniony na Twój podpis. Aby to wycofać, wciśnij $2. Korzystając z tego narzędzia nie musisz pamiętać o ręcznym wstawianiu podpisu. Twój podpis zostanie dodany automatycznie.",
-	"discussiontools-replywidget-summary": "Opis komentarza",
+	"discussiontools-replywidget-summary": "Opis",
 	"discussiontools-replywidget-terms-click": "Wciskając przycisk „$1”, zgadzasz się na warunki użytkowania tej wiki.",
 	"discussiontools-replywidget-transcluded": "Twój komentarz zostanie zapisany na stronie [[$1]].",
 	"discussiontools-newtopic-placeholder-title": "Tytuł",
