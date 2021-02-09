@@ -331,7 +331,7 @@ class CommentUtils {
 		};
 
 		$startMatches = false;
-		$node = $siblings[ 0 ];
+		$node = $siblings[ 0 ] ?? null;
 		while ( $node ) {
 			if ( $item->getRange()->startContainer === $node && $item->getRange()->startOffset === 0 ) {
 				$startMatches = true;
