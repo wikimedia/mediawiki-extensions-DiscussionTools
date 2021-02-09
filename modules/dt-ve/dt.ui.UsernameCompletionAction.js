@@ -17,7 +17,8 @@ var controller = require( 'ext.discussionTools.init' ).controller;
  * @param {ve.ui.Surface} surface Surface to act on
  */
 function MWUsernameCompletionAction( surface ) {
-	var action = this;
+	var action = this,
+		relevantUserName = mw.config.get( 'wgRelevantUserName' );
 
 	// Parent constructor
 	MWUsernameCompletionAction.super.call( this, surface );
@@ -34,6 +35,10 @@ function MWUsernameCompletionAction( surface ) {
 			action.localUsers.push( user );
 		}
 	} );
+	if ( relevantUserName && this.localUsers.indexOf( relevantUserName ) === -1 ) {
+		this.localUsers.push( relevantUserName );
+		this.localUsers.sort();
+	}
 	this.remoteUsers = [];
 }
 
