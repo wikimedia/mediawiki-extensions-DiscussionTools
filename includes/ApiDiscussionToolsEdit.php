@@ -224,6 +224,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					'addtopic',
 				],
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-paction',
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
 			'page' => [
 				ParamValidator::PARAM_REQUIRED => true,
@@ -248,7 +249,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			],
 			'sectiontitle' => [
 				ParamValidator::PARAM_TYPE => 'string',
-				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-sectiontitle',
 			],
 			'watchlist' => [
 				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-watchlist',
