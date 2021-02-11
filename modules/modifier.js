@@ -112,7 +112,6 @@ function addListItem( comment ) {
 	}
 
 	// If we can't insert a list directly inside this element, insert after it.
-	// TODO Figure out if this is still needed, the wrapper check above should handle all cases
 	if ( parent.tagName.toLowerCase() === 'p' || parent.tagName.toLowerCase() === 'pre' ) {
 		parent = parent.parentNode;
 		target = target.parentNode;
