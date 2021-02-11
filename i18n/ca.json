@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alan Mena",
 			"Fitoschido",
 			"Matma Rex",
 			"Mguix",
@@ -30,6 +31,7 @@
 	"discussiontools-replywidget-signature-body": "$1 s'ha convertit en la vostra signatura. Per tal de desfer-la, escriviu $2. Tingueu present que no és necessari que signeu comentaris amb aquesta eina. La vostra signatura serà afegida automàticament.",
 	"discussiontools-replywidget-terms-click": "Quan feu clic a \"$1\", esteu acceptant les condicions d'ús d'aquest wiki.",
 	"discussiontools-replywidget-transcluded": "El vostre comentari serà desat a [[$1]].",
+	"discussiontools-newtopic-placeholder-title": "Títol",
 	"discussiontools-error-comment-conflict": "El vostre comentari no s'ha pogut desar perquè algú altre ha comentat alhora. Si us plau, proveu-ho novament o refresqueu la pàgina per veure les darreres intervencions.",
 	"discussiontools-error-comment-disappeared": "No s'ha pogut trobar el comentari que provàveu de respondre. Possiblement hagi estat esborrat o traslladat a una altra pàgina. Si us plau, refresqueu la pàgina i proveu-ho un altre cop.",
 	"discussiontools-error-comment-is-transcluded": "L'enllaç \"{{int:discussiontools-replylink}}\" no pot emprar-se per respondre aquest comentari. Per respondre'l, empreu el sistema d'edició habitual a través de la pestanya o enllaç de secció superior \"$1\".",
