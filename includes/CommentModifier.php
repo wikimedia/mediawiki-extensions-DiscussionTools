@@ -116,6 +116,22 @@ class CommentModifier {
 		// parent is a list item or paragraph (hopefully)
 		// target is an inline node within it
 
+		// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
+		// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
+		// as some kind of a fancy frame, which are often used for barnstars and announcements.
+		$covered = CommentUtils::getFullyCoveredSiblings( $curComment );
+		if ( $curComment->getLevel() === 1 && $covered ) {
+			$target = end( $covered );
+			$parent = $target->parentNode;
+		}
+
+		// If we can't insert a list directly inside this element, insert after it.
+		// TODO Figure out if this is still needed, the wrapper check above should handle all cases
+		if ( strtolower( $parent->tagName ) === 'p' || strtolower( $parent->tagName ) === 'pre' ) {
+			$parent = $parent->parentNode;
+			$target = $target->parentNode;
+		}
+
 		// Instead of just using $curComment->getLevel(), consider indentation of lists within the
 		// comment (T252702)
 		$curLevel = CommentUtils::getIndentLevel( $target, $curComment->getRootNode() ) + 1;
@@ -128,22 +144,6 @@ class CommentModifier {
 
 		} elseif ( $curLevel < $desiredLevel ) {
 			// Insert more lists after the target to increase nesting.
-
-			// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
-			// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
-			// as some kind of a fancy frame, which are often used for barnstars and announcements.
-			$covered = CommentUtils::getFullyCoveredSiblings( $curComment );
-			if ( $curLevel === 1 && $covered ) {
-				$target = end( $covered );
-				$parent = $target->parentNode;
-			}
-
-			// If we can't insert a list directly inside this element, insert after it.
-			// TODO Figure out if this is still needed, the wrapper check above should handle all cases
-			if ( strtolower( $parent->tagName ) === 'p' || strtolower( $parent->tagName ) === 'pre' ) {
-				$parent = $parent->parentNode;
-				$target = $target->parentNode;
-			}
 
 			// Parsoid puts HTML comments (and other "rendering-transparent nodes", e.g. category links)
 			// which appear at the end of the line in wikitext outside the paragraph,
