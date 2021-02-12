@@ -98,15 +98,18 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				break;
 
 			case 'addcomment':
-				$commentId = $params['commentid'] ?? null;
+				$this->requireAtLeastOneParameter( $params, 'commentid', 'commentname' );
 
-				if ( !$commentId ) {
-					$this->dieWithError( [ 'apierror-missingparam', 'commentid' ] );
-				}
+				$commentId = $params['commentid'] ?? null;
+				$commentName = $params['commentname'] ?? null;
 
 				if ( !$title->exists() ) {
 					// The page does not exist, so the comment we're trying to reply to can't exist either.
-					$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
+					if ( $commentId ) {
+						$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
+					} else {
+						$this->dieWithError( [ 'apierror-discussiontools-commentname-notfound', $commentName ] );
+					}
 				}
 
 				// Fetch the latest revision
@@ -146,10 +149,25 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$parser = CommentParser::newFromGlobalState( $container );
 
-				$comment = $parser->findCommentById( $commentId );
-				if ( !$comment || !( $comment instanceof CommentItem ) ) {
-					$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
-					return;
+				if ( $commentId ) {
+					$comment = $parser->findCommentById( $commentId );
+
+					if ( !$comment || !( $comment instanceof CommentItem ) ) {
+						$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
+						return;
+					}
+
+				} else {
+					$comments = $parser->findCommentsByName( $commentName );
+					$comment = $comments[ 0 ] ?? null;
+
+					if ( count( $comments ) > 1 ) {
+						$this->dieWithError( [ 'apierror-discussiontools-commentname-ambiguous', $commentName ] );
+						return;
+					} elseif ( !$comment || !( $comment instanceof CommentItem ) ) {
+						$this->dieWithError( [ 'apierror-discussiontools-commentname-notfound', $commentName ] );
+						return;
+					}
 				}
 
 				$this->requireOnlyOneParameter( $params, 'wikitext', 'html' );
@@ -233,6 +251,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			'token' => [
 				ParamValidator::PARAM_REQUIRED => true,
 			],
+			'commentname' => null,
 			'commentid' => null,
 			'wikitext' => [
 				ParamValidator::PARAM_TYPE => 'text',

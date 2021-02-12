@@ -86,6 +86,7 @@ class CommentParserTest extends IntegrationTestCase {
 			$serialized->headingLevel = $threadItem->getHeadingLevel();
 		}
 		$serialized->level = $threadItem->getLevel();
+		$serialized->name = $threadItem->getName();
 		$serialized->id = $threadItem->getId();
 
 		$serialized->warnings = $threadItem->getWarnings();

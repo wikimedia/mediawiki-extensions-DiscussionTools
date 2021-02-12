@@ -23,8 +23,12 @@ function ThreadItem( type, level, range ) {
 	this.range = range;
 
 	/**
-	 * @member {string} Unique ID (within the page) for this comment, intended to be used to
+	 * @member {string} Name for this comment, intended to be used to
 	 *  find this comment in other revisions of the same page
+	 */
+	this.name = null;
+	/**
+	 * @member {string} Unique ID (within the page) for this comment
 	 */
 	this.id = null;
 	/**
@@ -81,6 +85,7 @@ ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 		default:
 			throw new Error( 'Unknown ThreadItem type ' + hash.name );
 	}
+	item.name = hash.name;
 	item.id = hash.id;
 
 	idEscaped = $.escapeSelector( item.id );

@@ -29,6 +29,8 @@ class CommentParser {
 	private $threadItems;
 	/** @var CommentItem[] */
 	private $commentItems;
+	/** @var ThreadItem[][] */
+	private $threadItemsByName;
 	/** @var ThreadItem[] */
 	private $threadItemsById;
 	/** @var HeadingItem[] */
@@ -798,6 +800,22 @@ class CommentParser {
 	}
 
 	/**
+	 * Find ThreadItems by their name
+	 *
+	 * This will usually return a single-element array, but it may return multiple comments if they're
+	 * indistinguishable by name. In that case, use their IDs to disambiguate.
+	 *
+	 * @param string $name Name
+	 * @return ThreadItem[] Thread items, empty array if not found
+	 */
+	public function findCommentsByName( string $name ) : array {
+		if ( !$this->threadItemsByName ) {
+			$this->buildThreads();
+		}
+		return $this->threadItemsByName[$name] ?? [];
+	}
+
+	/**
 	 * Find a ThreadItem by its ID
 	 *
 	 * @param string $id ID
@@ -1163,6 +1181,36 @@ class CommentParser {
 		return $id;
 	}
 
+	/**
+	 * Given a thread item, return an identifier for it that is consistent across all pages and
+	 * revisions where this comment might appear.
+	 *
+	 * Multiple comments on a page can have the same name; use ID to distinguish them.
+	 *
+	 * @param ThreadItem $threadItem
+	 * @return string
+	 */
+	private function computeName( ThreadItem $threadItem ) : string {
+		$name = null;
+
+		if ( $threadItem instanceof HeadingItem ) {
+			$name = 'h-';
+			$mainComment = $this->getThreadStartComment( $threadItem );
+		} elseif ( $threadItem instanceof CommentItem ) {
+			$name = 'c-';
+			$mainComment = $threadItem;
+		} else {
+			throw new MWException( 'Unknown ThreadItem type' );
+		}
+
+		if ( $mainComment ) {
+			$name .= $this->truncateForId( str_replace( ' ', '_', $mainComment->getAuthor() ) ) .
+				'-' . $mainComment->getTimestamp();
+		}
+
+		return $name;
+	}
+
 	private function buildThreads() : void {
 		if ( !$this->threadItems ) {
 			$this->buildThreadItems();
@@ -1171,6 +1219,7 @@ class CommentParser {
 		$threads = [];
 		$replies = [];
 		$this->threadItemsById = [];
+		$this->threadItemsByName = [];
 
 		foreach ( $this->threadItems as $threadItem ) {
 			if ( count( $replies ) < $threadItem->getLevel() ) {
@@ -1211,6 +1260,10 @@ class CommentParser {
 		$this->threads = $threads;
 
 		foreach ( $this->threadItems as $threadItem ) {
+			$name = $this->computeName( $threadItem );
+			$threadItem->setName( $name );
+			$this->threadItemsByName[$name][] = $threadItem;
+
 			// Set the IDs used to refer to comments and headings.
 			// This has to be a separate pass because we don't have the list of replies before
 			// this point.
