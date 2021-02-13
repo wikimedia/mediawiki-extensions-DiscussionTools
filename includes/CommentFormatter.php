@@ -8,8 +8,8 @@ use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
 use Throwable;
 use WebRequest;
-use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 
 class CommentFormatter {
 	protected const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
@@ -160,7 +160,10 @@ class CommentFormatter {
 		if ( !( $docElement instanceof DOMElement ) ) {
 			return $html;
 		}
-		return DOMCompat::getInnerHTML( $docElement );
+
+		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
+		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
+		return XMLSerializer::serialize( $docElement, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
 	}
 
 }
