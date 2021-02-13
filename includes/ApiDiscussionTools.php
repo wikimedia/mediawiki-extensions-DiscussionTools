@@ -77,6 +77,7 @@ class ApiDiscussionTools extends ApiBase {
 					'transcludedfrom',
 				],
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-paction',
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
 			'page' => [
 				ParamValidator::PARAM_REQUIRED => true,
