@@ -1015,9 +1015,9 @@ class CommentParser {
 	 *
 	 * @param ThreadItem $threadItem
 	 * @param bool $noDedupe Internal. Don't attempt to de-duplicate
-	 * @return string|null
+	 * @return string
 	 */
-	private function computeId( ThreadItem $threadItem, bool $noDedupe = false ) : ?string {
+	private function computeId( ThreadItem $threadItem, bool $noDedupe = false ) : string {
 		$id = null;
 
 		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
@@ -1183,10 +1183,8 @@ class CommentParser {
 			// This has to be a separate pass because we don't have the list of replies before
 			// this point.
 			$id = $this->computeId( $threadItem );
-			if ( $id ) {
-				$this->threadItemsById[$id] = $threadItem;
-			}
 			$threadItem->setId( $id );
+			$this->threadItemsById[$id] = $threadItem;
 			$legacyId = $this->computeLegacyId( $threadItem );
 			$threadItem->setLegacyId( $legacyId );
 			if ( $legacyId ) {

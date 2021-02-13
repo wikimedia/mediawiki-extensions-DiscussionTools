@@ -1001,7 +1001,7 @@ Parser.prototype.truncateForId = function ( text ) {
  * Given a thread item, return an identifier for it that is unique within the page.
  *
  * @param {ThreadItem} threadItem
- * @return {string|null}
+ * @return {string}
  */
 Parser.prototype.computeId = function ( threadItem ) {
 	var id, number, headline, threadItemParent, timestamp;
@@ -1111,10 +1111,8 @@ Parser.prototype.buildThreads = function () {
 		// This has to be a separate pass because we don't have the list of replies before
 		// this point.
 		id = this.computeId( threadItem );
-		if ( id ) {
-			this.threadItemsById[ id ] = threadItem;
-		}
 		threadItem.id = id;
+		this.threadItemsById[ id ] = threadItem;
 	}
 };
 
