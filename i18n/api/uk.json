@@ -6,8 +6,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID коментаря не знайдено: $1",
-	"apihelp-discussiontools-param-oldid": "Номер версії (за замовчуванням — остання версія).",
 	"apihelp-discussiontools-summary": "Повертає метадані необхідні для ініціалізації інструментів обговорення.",
+	"apihelp-discussiontools-param-oldid": "Номер версії (за замовчуванням — остання версія).",
 	"apihelp-discussiontoolsedit-summary": "Опублікувати повідомлення на сторінку обговорення.",
 	"apihelp-discussiontoolsedit-param-commentid": "Ідентифікатор коментаря.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Вікітекст"

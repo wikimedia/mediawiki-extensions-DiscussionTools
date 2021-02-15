@@ -6,8 +6,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Yorum kimliği bulunamadı: $1",
-	"apihelp-discussiontools-param-oldid": "Kullanılacak revizyon numarası (en son revizyon varsayılanları).",
 	"apihelp-discussiontools-summary": "Tartışma araçlarını başlatmak için gereken meta verileri döndürür.",
+	"apihelp-discussiontools-param-oldid": "Kullanılacak revizyon numarası (en son revizyon varsayılanları).",
 	"apihelp-discussiontoolsedit-summary": "Tartışma sayfasına bir mesaj gönderin.",
 	"apihelp-discussiontoolsedit-param-commentid": "Yorum kimliği.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Vikimetin"

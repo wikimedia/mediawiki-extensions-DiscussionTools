@@ -6,8 +6,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "No s'ha trobat la identificació del comentari: $1",
-	"apihelp-discussiontools-param-oldid": "El número de revisió que s'utilitzarà (per defecte s'utilitza la darrera revisió).",
 	"apihelp-discussiontools-summary": "Retorna les metadades necessàries per activar les eines de discussió.",
+	"apihelp-discussiontools-param-oldid": "El número de revisió que s'utilitzarà (per defecte s'utilitza la darrera revisió).",
 	"apihelp-discussiontoolsedit-param-commentid": "Identificació del comentari.",
 	"apihelp-discussiontoolsedit-param-wikitext": "text wiki"
 }

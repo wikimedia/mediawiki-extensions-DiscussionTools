@@ -5,9 +5,14 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID-ul comentariului nu a fost găsit: $1",
-	"apihelp-discussiontools-param-oldid": "Numărul versiunii de utilizat (implicit la cea mai recentă versiune).",
 	"apihelp-discussiontools-summary": "Întoarce metadatele necesare pentru inițializarea uneltelor de discuție.",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Întoarce titluri de pagini de la care fiecare comentariu de pe pagina dată este transclus.",
+	"apihelp-discussiontools-param-oldid": "Numărul versiunii de utilizat (implicit la cea mai recentă versiune).",
 	"apihelp-discussiontoolsedit-summary": "Publică un mesaj pe o pagină de discuție.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID-ul comentariului.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adaugă un comentariu nou ca un răspuns la un comentariu existent.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adaugă o secțiune de discuție nouă și primul comentariu în ea.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID-ul comentariului la care să se răspundă. Utilizat doar când <var>paction</var> este <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Utilizat doar când <var>paction</var> este <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Conținutul de publicat, ca HTML. Nu poate fi utilizat împreună cu <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Conținutul de publicat, ca wikitext. Nu poate fi utilizat împreună cu <var>html</var>."
 }

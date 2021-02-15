@@ -3,8 +3,8 @@
 		"authors": []
 	},
 	"apierror-discussiontools-commentid-notfound": "Nije pronađen ID komentara: $1",
-	"apihelp-discussiontools-param-oldid": "Broj izmene za upotrebu (podrazumevano: poslednja izmena)",
 	"apihelp-discussiontools-summary": "Prikazuje metapodatke potrebne za pokretanje alatka za razgovor.",
+	"apihelp-discussiontools-param-oldid": "Broj izmene za upotrebu (podrazumevano: poslednja izmena)",
 	"apihelp-discussiontoolsedit-param-commentid": "ID komentara",
 	"apihelp-discussiontoolsedit-param-wikitext": "Vikitekst"
 }

@@ -5,8 +5,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "A hozzászólás-azonosító nem található: $1",
-	"apihelp-discussiontools-param-oldid": "A használandó lapváltozat azonosítója (alapértelmezés szerint a legújabb lapváltozat).",
 	"apihelp-discussiontools-summary": "A megbeszéléseszközök inicializálásához szükséges metaadatok lekérése.",
+	"apihelp-discussiontools-param-oldid": "A használandó lapváltozat azonosítója (alapértelmezés szerint a legújabb lapváltozat).",
 	"apihelp-discussiontoolsedit-summary": "Üzenet elküldése egy vitalapra.",
 	"apihelp-discussiontoolsedit-param-commentid": "A hozzászólás azonosítója.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikiszöveg"

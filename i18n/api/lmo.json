@@ -5,8 +5,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID del coment minga trovad: $1",
-	"apihelp-discussiontools-param-oldid": "El numer de revision de drovà (el valor predefinid l'è l'ultema revision)",
 	"apihelp-discussiontools-summary": "El dà indree a i metadati che gh'è besogn per dagh l'inviada ai instrument de discussion.",
+	"apihelp-discussiontools-param-oldid": "El numer de revision de drovà (el valor predefinid l'è l'ultema revision)",
 	"apihelp-discussiontoolsedit-summary": "Met foeura un messagg in su la pagina de discussion.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID del coment.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikitest"

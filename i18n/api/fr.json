@@ -3,13 +3,19 @@
 		"authors": [
 			"Gomoko",
 			"Thibaut120094",
+			"Verdy p",
 			"Wladek92"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID du commentaire non trouvé : $1",
-	"apihelp-discussiontools-param-oldid": "Le numéro de révision à utiliser (par défaut, la dernière révision).",
 	"apihelp-discussiontools-summary": "Renvoie les métadonnées nécessaires pour initialiser les outils de discussion.",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Retourner les titres des pages depuis lesquelles chaque commentaire est inclus dans la page donnée.",
+	"apihelp-discussiontools-param-oldid": "Le numéro de révision à utiliser (par défaut, la dernière révision).",
 	"apihelp-discussiontoolsedit-summary": "Créer un message sur une page de discussion.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID de commentaire.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikicode"
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Ajouter un nouveau commentaire en tant que réponse à un commentaire existant.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Ajouter une nouvelle section de discussion et y inclure un premier commentaire.",
+	"apihelp-discussiontoolsedit-param-commentid": "Identifiant du commentaire auquel répondre. Utilisé seulement lorsque <var>paction</var> est <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Utilisé seulement lorsque <var>paction</var> est <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Contenu à poster, en tant que HTML. Ne peut pas être utilisé conjointement avec <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Contenu à poster, en tant que wikitexte. Ne peut pas être utilisé conjointement avec <var>html</var>."
 }

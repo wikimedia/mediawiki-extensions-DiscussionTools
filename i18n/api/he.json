@@ -6,9 +6,14 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "מזהה תגובה לא נמצא: $1",
-	"apihelp-discussiontools-param-oldid": "באיזה מספר גרסה להשתמש (ברירת המחדל היא הגרסה האחרונה).",
 	"apihelp-discussiontools-summary": "מחזירה מטא־נתונים דרושים כדי לאתחל את כלי השיחה.",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "להחזיר כותרות של דפים שכל הערה בדף הנתון מוכללת מהם.",
+	"apihelp-discussiontools-param-oldid": "באיזה מספר גרסה להשתמש (ברירת המחדל היא הגרסה האחרונה).",
 	"apihelp-discussiontoolsedit-summary": "שליחת הודעה בדף שיחה.",
-	"apihelp-discussiontoolsedit-param-commentid": "מזהה תגובה.",
-	"apihelp-discussiontoolsedit-param-wikitext": "קוד ויקי"
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "הוספת הערה חדשה להערה קיימת.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "הוספת פרק דיון חדש ותגובה חדשה בתוכו.",
+	"apihelp-discussiontoolsedit-param-commentid": "מזהה התגובה שצריך להשיב אליו. משמש רק כש־<var>paction</var> הוא <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} משמש רק כש־<var>paction</var> הוא <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-html": "איזה תוכן לשלוח, בתור HTML. לא יכול לשמש עם <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "איזה תוכן לשלוח, בתור קוד ויקי. לא יכול לשמש עם <var>html</var>."
 }

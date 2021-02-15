@@ -6,8 +6,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Nie odnaleziono ID komentarza: $1",
-	"apihelp-discussiontools-param-oldid": "Numer wersji do użycia (domyślnie ostatnia wersja).",
 	"apihelp-discussiontools-summary": "Zwraca metadane niezbędne do zainicjowania narzędzi dyskusji.",
+	"apihelp-discussiontools-param-oldid": "Numer wersji do użycia (domyślnie ostatnia wersja).",
 	"apihelp-discussiontoolsedit-summary": "Wyślij wiadomość na stronie dyskusji.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID komentarza.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikitekst"

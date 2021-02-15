@@ -6,9 +6,14 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID do comentário não encontrado: $1",
-	"apihelp-discussiontools-param-oldid": "O número de revisão para utilizar (a última revisão por padrão).",
 	"apihelp-discussiontools-summary": "Retorna os metadados necessários para inicializar as ferramentas de discussão.",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Retorne os títulos das páginas a partir das quais cada comentário na página fornecida é transcluído.",
+	"apihelp-discussiontools-param-oldid": "O número de revisão para utilizar (a última revisão por padrão).",
 	"apihelp-discussiontoolsedit-summary": "Publique uma mensagem em uma página de discussão.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID do comentário.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikitexto"
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adicione um novo comentário como resposta a um comentário existente.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adicione uma nova seção de discussão e o primeiro comentário nela.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID do comentário para responder. Só usado quando <var>paction</var> é <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Só usado quando <var>paction</var> é <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Conteúdo para postar, como HTML. Não pode ser usado junto com <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Conteúdo para postar, como wikitexto. Não pode ser usado junto com <var>html</var>."
 }

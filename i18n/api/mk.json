@@ -5,8 +5,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Не ја пронајдов назнаката на коментарот: $1",
-	"apihelp-discussiontools-param-oldid": "Број на преработката што ќе се користи (по основно: најновата преработка).",
 	"apihelp-discussiontools-summary": "Дава метаподатоци потребни за покревање на разговорните алатки.",
+	"apihelp-discussiontools-param-oldid": "Број на преработката што ќе се користи (по основно: најновата преработка).",
 	"apihelp-discussiontoolsedit-summary": "Напишете порака на разговорната страница.",
 	"apihelp-discussiontoolsedit-param-commentid": "Назнака на коментарот.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Викитекст"

@@ -5,8 +5,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "معرّف التعليق غير موجود: $1",
-	"apihelp-discussiontools-param-oldid": "رقم المراجعة للاستخدام (الافتراض إلى المراجعة الأخيرة).",
 	"apihelp-discussiontools-summary": "إرجاع البيانات الوصفية المطلوبة لتهيئة أدوات المناقشة.",
+	"apihelp-discussiontools-param-oldid": "رقم المراجعة للاستخدام (الافتراض إلى المراجعة الأخيرة).",
 	"apihelp-discussiontoolsedit-summary": "نشر رسالة على صفحة نقاش.",
 	"apihelp-discussiontoolsedit-param-commentid": "معرّف التعليق.",
 	"apihelp-discussiontoolsedit-param-html": "HTML",

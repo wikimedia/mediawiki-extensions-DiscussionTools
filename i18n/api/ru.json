@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Playershut"
+		]
+	},
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Возврат заголовков страниц, с которых трансклируется каждый комментарий на данной странице.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Добавьте новый раздел обсуждения и первый комментарий в нем.",
+	"apihelp-discussiontoolsedit-param-commentid": "Идентификатор комментария для ответа. Используется только <var>paction</var> является <var>addcomment</var>."
+}
