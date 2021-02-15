@@ -20,7 +20,10 @@ function CommentTargetWidget( config ) {
 			'heading6',
 			'insertTable',
 			'transclusionFromSequence', // T253667
-			'blockquoteWrap' // T258194
+			'blockquoteWrap', // T258194
+			// Disable to allow Tab/Shift+Tab to move focus out of the widget (T172694)
+			'indent',
+			'outdent'
 		]
 	}, config );
 
