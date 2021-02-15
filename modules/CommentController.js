@@ -380,12 +380,12 @@ CommentController.prototype.switchToWikitext = function () {
 		setTimeout( previewDeferred.resolve, 500 );
 
 		return previewDeferred.then( function () {
-			// Swap out the DOM nodes
-			oldWidget.$element.replaceWith( replyWidget.$element );
-
 			// Teardown the old widget
 			oldWidget.disconnect( commentController );
 			oldWidget.teardown();
+
+			// Swap out the DOM nodes
+			oldWidget.$element.replaceWith( replyWidget.$element );
 
 			commentController.setupReplyWidget( replyWidget, {
 				value: wikitext,
@@ -539,12 +539,12 @@ CommentController.prototype.switchToVisual = function () {
 			commentController.undoIndentReplacements( doc.body );
 		}
 
-		// Swap out the DOM nodes
-		oldWidget.$element.replaceWith( replyWidget.$element );
-
 		// Teardown the old widget
 		oldWidget.disconnect( commentController );
 		oldWidget.teardown();
+
+		// Swap out the DOM nodes
+		oldWidget.$element.replaceWith( replyWidget.$element );
 
 		commentController.setupReplyWidget( replyWidget, {
 			value: doc,

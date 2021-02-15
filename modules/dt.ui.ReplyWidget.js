@@ -511,6 +511,9 @@ ReplyWidget.prototype.teardown = function ( abandoned ) {
 	if ( this.isNewTopic ) {
 		this.commentController.sectionTitle.disconnect( this );
 	}
+	// Make sure that the selector is blurred before it gets removed from the document, otherwise
+	// event handlers for arrow keys are not removed, and it keeps trying to switch modes (T274423)
+	this.modeTabSelect.blur();
 	this.unbindBeforeUnloadHandler();
 	this.clear();
 	this.emit( 'teardown', abandoned );
