@@ -383,6 +383,9 @@
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\TagHooks"
 		}
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"DefaultUserOptions": {
 		"discussiontools-editmode": "",
 		"discussiontools-newtopictool": 1,
