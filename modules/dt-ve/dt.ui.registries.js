@@ -49,6 +49,27 @@ sequenceRegistry.register(
 	new ve.ui.Sequence( 'dtWikitextSignature', 'dtMwSignature', '~~~~', 4 )
 );
 
+// Show wikitext warnings for disabled sequences (disabled via excludeCommand):
+
+// insertTable
+sequenceRegistry.register(
+	new ve.ui.Sequence( 'wikitextTable', 'mwWikitextWarning', '{|' )
+);
+// transclusionFromSequence
+sequenceRegistry.register(
+	new ve.ui.Sequence( 'wikitextTemplate', 'mwWikitextWarning', '{{' )
+);
+// blockquoteWrap
+sequenceRegistry.register(
+	new ve.ui.Sequence( 'wikitextDescription', 'mwWikitextWarning', [ { type: 'paragraph' }, ':' ] )
+);
+// heading1-6
+// This sequence doesn't usually have a command as we don't know what
+// heading level is required, but for warnings this doesn't matter.
+sequenceRegistry.register(
+	new ve.ui.Sequence( 'wikitextHeading', 'mwWikitextWarning', [ { type: 'paragraph' }, '=', '=' ] )
+);
+
 module.exports = {
 	commandRegistry: commandRegistry,
 	sequenceRegistry: sequenceRegistry
