@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Joseph",
 			"MuratTheTurkish",
 			"ToprakM"
 		]
@@ -9,6 +10,10 @@
 	"apihelp-discussiontools-summary": "Tartışma araçlarını başlatmak için gereken meta verileri döndürür.",
 	"apihelp-discussiontools-param-oldid": "Kullanılacak revizyon numarası (en son revizyon varsayılanları).",
 	"apihelp-discussiontoolsedit-summary": "Tartışma sayfasına bir mesaj gönderin.",
-	"apihelp-discussiontoolsedit-param-commentid": "Yorum kimliği.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Vikimetin"
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Mevcut bir yoruma cevap olarak yeni bir yorum ekle.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Yeni bir tartışma bölümü ve altındaki ilk yorumu ekle.",
+	"apihelp-discussiontoolsedit-param-commentid": "Cevap verilecek yorum kimliği. Sadece <var>paction</var>, <var>addcomment</var> ise kullanılır.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Sadece <var>paction</var>, <var>addtopic</var> ise kullanılır.",
+	"apihelp-discussiontoolsedit-param-html": "Yayımlanacak içerik, HTML olarak. <var>wikitext</var> ile birlikte kullanılamaz.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Yayımlanacak içerik, vikimetin olarak. <var>html</var> ile birlikte kullanılamaz."
 }

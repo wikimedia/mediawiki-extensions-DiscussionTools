@@ -6,8 +6,13 @@
 	},
 	"apierror-discussiontools-commentid-notfound": "ID del coment minga trovad: $1",
 	"apihelp-discussiontools-summary": "El dà indree a i metadati che gh'è besogn per dagh l'inviada ai instrument de discussion.",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "El da indree i titoi di pagine di quai ogni coment in la pagina dada l'è stad inclus.",
 	"apihelp-discussiontools-param-oldid": "El numer de revision de drovà (el valor predefinid l'è l'ultema revision)",
 	"apihelp-discussiontoolsedit-summary": "Met foeura un messagg in su la pagina de discussion.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID del coment.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikitest"
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Scrin un coment noeuv come risposta a 'n coment che 'l gh'è sgiamò.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Sgionta una discussion noeuva e 'l prim coment in la sezzion medesima.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID del coment che te gh'hee de rispondegh. Drovad domà quand che <var>paction</var> l'è <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Drovad domà quand che <var>paction</var> l'è <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Contegnud de meter foeura, in forma de HTML. Se po minga drovall insema al <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Contegnud de meter foeura, come wikitest. Se po minga drovall insema a l'<var>html</var>."
 }
