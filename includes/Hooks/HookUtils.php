@@ -20,10 +20,21 @@ use User;
 
 class HookUtils {
 	/**
+	 * @var string[] List of all sub-features. Will be used to generate:
+	 *  - Feature override global: $wgDiscussionTools_FEATURE
+	 *  - Body class: dt-FEATURE-enabled
+	 *  - User option: discussiontools-FEATURE
+	 */
+	public const FEATURES = [
+		'replytool',
+		'newtopictool',
+	];
+
+	/**
 	 * Check if a DiscussionTools feature is available to this user
 	 *
 	 * @param User $user
-	 * @param string|null $feature Feature to check for: 'replytool' or 'newtopictool'.
+	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
@@ -37,19 +48,18 @@ class HookUtils {
 
 		$optionsLookup = $services->getUserOptionsLookup();
 
-		// Feature-specific override
 		if ( $feature ) {
+			// Feature-specific override
 			if ( $dtConfig->get( 'DiscussionTools_' . $feature ) !== 'default' ) {
 				// Feature setting can be 'available' or 'unavailable', overriding any BetaFeatures settings
 				return $dtConfig->get( 'DiscussionTools_' . $feature ) === 'available';
 			}
 		} else {
-			// Non-feature-specific override
-			if (
-				$dtConfig->get( 'DiscussionTools_replytool' ) === 'available' ||
-				$dtConfig->get( 'DiscussionTools_newtopictool' ) === 'available'
-			) {
-				return true;
+			// Non-feature-specific override, check for any feature
+			foreach ( static::FEATURES as $feat ) {
+				if ( $dtConfig->get( 'DiscussionTools_' . $feat ) === 'available' ) {
+					return true;
+				}
 			}
 		}
 
@@ -65,7 +75,7 @@ class HookUtils {
 			}
 			// Otherwise, being in the "test" group for this feature means
 			// it's effectively beta-enabled.
-			return self::determineUserABTestBucket( $user, $feature ) === 'test';
+			return static::determineUserABTestBucket( $user, $feature ) === 'test';
 		}
 
 		// Assume that if BetaFeature is turned off, or user has it enabled, that
@@ -78,22 +88,28 @@ class HookUtils {
 	 * Check if a DiscussionTools feature is enabled by this user
 	 *
 	 * @param User $user
-	 * @param string|null $feature Feature to check for: 'replytool' or 'newtopictool'.
+	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
 	public static function isFeatureEnabledForUser( User $user, ?string $feature = null ) : bool {
+		if ( !static::isFeatureAvailableToUser( $user, $feature ) ) {
+			return false;
+		}
 		$services = MediaWikiServices::getInstance();
 		$optionsLookup = $services->getUserOptionsLookup();
-		return static::isFeatureAvailableToUser( $user, $feature ) && (
+		if ( $feature ) {
 			// Check for a specific feature
-			( $feature && $optionsLookup->getOption( $user, 'discussiontools-' . $feature ) ) ||
+			return $optionsLookup->getOption( $user, 'discussiontools-' . $feature );
+		} else {
 			// Check for any feature
-			( !$feature && (
-				$optionsLookup->getOption( $user, 'discussiontools-newtopictool' ) ||
-				$optionsLookup->getOption( $user, 'discussiontools-replytool' )
-			) )
-		);
+			foreach ( static::FEATURES as $feat ) {
+				if ( $optionsLookup->getOption( $user, 'discussiontools-' . $feat ) ) {
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 
 	/**
@@ -103,7 +119,7 @@ class HookUtils {
 	 * in it; if they're eligible and not enrolled, it will enroll them.
 	 *
 	 * @param User $user
-	 * @param string|null $feature Feature to check for: 'replytool' or 'newtopictool'.
+	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
 	 * @return string 'test' if in the test group, 'control' if in the control group, or '' if they've
 	 *  never been in the test
@@ -166,7 +182,7 @@ class HookUtils {
 	 * Check if the tool is available on a given page
 	 *
 	 * @param OutputPage $output
-	 * @param string|null $feature Feature to check for: 'replytool' or 'newtopictool'.
+	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */

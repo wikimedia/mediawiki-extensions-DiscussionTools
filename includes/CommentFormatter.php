@@ -12,6 +12,11 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 
 class CommentFormatter {
+	// List of features which, when enabled, cause the comment formatter to run
+	public const USE_WITH_FEATURES = [
+		'replytool',
+	];
+
 	protected const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
 
 	/**

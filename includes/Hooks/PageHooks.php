@@ -41,13 +41,11 @@ class PageHooks implements
 				'ext.discussionTools.init'
 			] );
 
-			$output->addJsConfigVars(
-				'wgDiscussionToolsFeaturesEnabled',
-				[
-					'replytool' => HookUtils::isFeatureEnabledForOutput( $output, 'replytool' ),
-					'newtopictool' => HookUtils::isFeatureEnabledForOutput( $output, 'newtopictool' ),
-				]
-			);
+			$enabledVars = [];
+			foreach ( HookUtils::FEATURES as $feature ) {
+				$enabledVars[$feature] = HookUtils::isFeatureEnabledForOutput( $output, $feature );
+			}
+			$output->addJsConfigVars( 'wgDiscussionToolsFeaturesEnabled', $enabledVars );
 
 			$services = MediaWikiServices::getInstance();
 			$optionsLookup = $services->getUserOptionsLookup();
@@ -93,13 +91,20 @@ class PageHooks implements
 		// non-cacheable reasons i.e. query string or cookie
 		// The addReplyLinks method is responsible for ensuring that
 		// reply links aren't added twice.
-		$replyToolEnabled = HookUtils::isFeatureEnabledForOutput( $output, 'replytool' );
-		if ( $replyToolEnabled ) {
-			CommentFormatter::addReplyLinks( $text, $lang );
-
-			// Add CSS classes to selectively enable HTML enhancements
-			$output->addBodyClasses( 'dt-replytool-enabled' );
+		foreach ( CommentFormatter::USE_WITH_FEATURES as $feature ) {
+			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
+				CommentFormatter::addReplyLinks( $text, $lang );
+				break;
+			}
 		}
+
+		foreach ( HookUtils::FEATURES as $feature ) {
+			// Add a CSS class for each enabled feature
+			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
+				$output->addBodyClasses( "dt-$feature-enabled" );
+			}
+		}
+
 		return true;
 	}
 }

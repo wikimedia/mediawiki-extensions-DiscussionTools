@@ -24,21 +24,15 @@ class PreferenceHooks implements
 	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
-		if ( HookUtils::isFeatureAvailableToUser( $user, 'replytool' ) ) {
-			$preferences['discussiontools-replytool'] = [
-				'type' => 'toggle',
-				'label-message' => 'discussiontools-preference-replytool',
-				'help-message' => 'discussiontools-preference-replytool-help',
-				'section' => 'editing/discussion',
-			];
-		}
-		if ( HookUtils::isFeatureAvailableToUser( $user, 'newtopictool' ) ) {
-			$preferences['discussiontools-newtopictool'] = [
-				'type' => 'toggle',
-				'label-message' => 'discussiontools-preference-newtopictool',
-				'help-message' => 'discussiontools-preference-newtopictool-help',
-				'section' => 'editing/discussion',
-			];
+		foreach ( HookUtils::FEATURES as $feature ) {
+			if ( HookUtils::isFeatureAvailableToUser( $user, $feature ) ) {
+				$preferences["discussiontools-$feature"] = [
+					'type' => 'toggle',
+					'label-message' => "discussiontools-preference-$feature",
+					'help-message' => "discussiontools-preference-$feature-help",
+					'section' => 'editing/discussion',
+				];
+			}
 		}
 
 		$preferences['discussiontools-showadvanced'] = [
