@@ -222,7 +222,7 @@ function getCheckboxesPromise( pageName, oldId ) {
 
 function init( $container, state ) {
 	var parser, pageThreads,
-		repliedToComment,
+		repliedToComment, lastComment,
 		$addSectionTab,
 		i, hash, comment, commentNodes, newId,
 		pageExists = !!mw.config.get( 'wgRelevantArticleId' ),
@@ -332,8 +332,19 @@ function init( $container, state ) {
 	mw.dt.pageThreads = pageThreads;
 
 	if ( state.repliedTo === 'new' ) {
-		highlight( pageThreads[ pageThreads.length - 1 ] );
-		highlight( pageThreads[ pageThreads.length - 1 ].replies[ 0 ] );
+		// Highlight the last comment on the page
+		lastComment = threadItems[ threadItems.length - 1 ];
+		highlight( lastComment );
+
+		// If it's the only comment under its heading, highlight the heading too.
+		// (It might not be if the new discussion topic was posted without a title: T272666.)
+		if (
+			lastComment.parent &&
+			lastComment.parent.type === 'heading' &&
+			lastComment.parent.replies.length === 1
+		) {
+			highlight( lastComment.parent );
+		}
 
 		mw.hook( 'postEdit' ).fire( {
 			message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
