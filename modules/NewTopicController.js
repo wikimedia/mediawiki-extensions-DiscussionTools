@@ -33,7 +33,7 @@ function NewTopicController( $pageContainer, $replyLink ) {
 		endContainer: this.sectionTitleField.$element[ 0 ],
 		endOffset: this.sectionTitleField.$element[ 0 ].childNodes.length
 	} );
-	comment.id = 'new';
+	comment.id = 'new|' + mw.config.get( 'wgRelevantPageName' );
 	comment.isNewTopic = true;
 
 	NewTopicController.super.call( this, $pageContainer, $replyLink, comment );
