@@ -119,16 +119,16 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 /**
  * @inheritdoc
  */
-NewTopicController.prototype.doCrazyIndentReplacements = function ( wikitext ) {
-	// No crazy replacements when posting new topics
+NewTopicController.prototype.doIndentReplacements = function ( wikitext ) {
+	// No indent replacements when posting new topics
 	return wikitext;
 };
 
 /**
  * @inheritdoc
  */
-NewTopicController.prototype.undoCrazyIndentReplacements = function ( wikitext ) {
-	// No crazy replacements when posting new topics
+NewTopicController.prototype.undoIndentReplacements = function ( wikitext ) {
+	// No indent replacements when posting new topics
 	return wikitext;
 };
 

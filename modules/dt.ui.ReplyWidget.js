@@ -576,7 +576,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	if ( !wikitext.trim() ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
-		wikitext = this.commentController.doCrazyIndentReplacements( wikitext, indent );
+		wikitext = this.commentController.doIndentReplacements( wikitext, indent );
 
 		if ( !modifier.isWikitextSigned( wikitext ) ) {
 			// Add signature.

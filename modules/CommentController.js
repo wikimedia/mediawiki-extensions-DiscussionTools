@@ -407,7 +407,7 @@ CommentController.prototype.switchToWikitext = function () {
  * @param {string} indent Indent character, ':' or '*'
  * @return {string}
  */
-CommentController.prototype.doCrazyIndentReplacements = function ( wikitext, indent ) {
+CommentController.prototype.doIndentReplacements = function ( wikitext, indent ) {
 	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
 
 	wikitext = wikitext.split( '\n' ).map( function ( line ) {
@@ -423,7 +423,7 @@ CommentController.prototype.doCrazyIndentReplacements = function ( wikitext, ind
  *
  * @param {Node} rootNode Node potentially containing definition lists (modified in-place)
  */
-CommentController.prototype.undoCrazyIndentReplacements = function ( rootNode ) {
+CommentController.prototype.undoIndentReplacements = function ( rootNode ) {
 	var children = Array.prototype.slice.call( rootNode.childNodes );
 	// There may be multiple lists when some lines are template generated
 	children.forEach( function ( child ) {
@@ -473,7 +473,7 @@ CommentController.prototype.switchToVisual = function () {
 	);
 
 	if ( wikitext ) {
-		wikitext = this.doCrazyIndentReplacements( wikitext, ':' );
+		wikitext = this.doIndentReplacements( wikitext, ':' );
 
 		// Based on ve.init.mw.Target#parseWikitextFragment
 		parsePromise = controller.getApi().post( {
@@ -536,7 +536,7 @@ CommentController.prototype.switchToVisual = function () {
 					return $.Deferred().reject().promise();
 				}
 			}
-			commentController.undoCrazyIndentReplacements( doc.body );
+			commentController.undoIndentReplacements( doc.body );
 		}
 
 		// Swap out the DOM nodes
