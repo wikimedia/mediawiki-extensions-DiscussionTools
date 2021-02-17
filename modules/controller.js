@@ -331,7 +331,7 @@ function init( $container, state ) {
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
-	if ( state.repliedTo === 'new' ) {
+	if ( state.repliedTo === 'new|' + mw.config.get( 'wgRelevantPageName' ) ) {
 		// Highlight the last comment on the page
 		lastComment = threadItems[ threadItems.length - 1 ];
 		highlight( lastComment );
