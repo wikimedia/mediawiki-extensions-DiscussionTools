@@ -102,3 +102,47 @@ span[ data-mw-comment-start ] {
 	opacity: 0;
 	transition: opacity 250ms ease-out;
 }
+
+// NB Directional properties for anything immediately visible
+// in the header must be based on content direction.
+.ext-discussiontools-section {
+	&-subscribe {
+		// Overridden in ext-discussiontools-topicsubscription-enabled
+		display: none;
+	}
+
+	&-subscribe { /* stylelint-disable-line no-duplicate-selectors */
+		font-weight: normal;
+		background-repeat: no-repeat;
+		width: 20px;
+		height: 20px;
+		align-self: flex-end;
+		opacity: 0.6;
+		font-size: 14px;
+		line-height: 20px;
+	}
+
+	&-subscribe { /* stylelint-disable-line no-duplicate-selectors */
+		cursor: pointer;
+
+		&.oo-ui-image-progressive {
+			opacity: 1;
+		}
+	}
+}
+
+.ext-discussiontools-topicsubscription-enabled {
+	.ext-discussiontools-section {
+		clear: both;
+		display: flex;
+		flex-flow: row wrap;
+
+		h2 {
+			flex: 1;
+		}
+
+		&-subscribe {
+			display: block;
+		}
+	}
+}

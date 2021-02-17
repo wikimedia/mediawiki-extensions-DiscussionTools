@@ -8,6 +8,7 @@ var
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
 	logger = require( './logger.js' ),
+	utils = require( './utils.js' ),
 	pageDataCache = {};
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
@@ -233,6 +234,54 @@ function getCheckboxesPromise( pageName, oldId ) {
 	} );
 }
 
+function initTopicSubscriptions( $container ) {
+	$container.find( '.ext-discussiontools-section-subscribe' ).on( 'click', function () {
+		var element = this,
+			api = getApi(),
+			subscribe = element.classList.contains( 'oo-ui-icon-star' ),
+			commentName = this.getAttribute( 'data-mw-comment-name' ),
+			heading = $( this ).closest( 'header' ).find( 'h2' )[ 0 ],
+			section = utils.getHeadlineNodeAndOffset( heading ).node.id,
+			title = mw.config.get( 'wgRelevantPageName' ) + '#' + section;
+
+		if ( !commentName ) {
+			// This should never happen
+			return;
+		}
+
+		// TODO: Disable button while pending
+		api.postWithToken( 'csrf', {
+			action: 'discussiontoolssubscribe',
+			page: title,
+			commentname: commentName,
+			subscribe: subscribe
+		}, { contentType: 'multipart/form-data' } ).then( function ( response2 ) {
+			return OO.getProp( response2, 'discussiontoolssubscribe' ) || {};
+		} ).then( function ( result ) {
+			element.classList.remove( 'oo-ui-icon-star', 'oo-ui-icon-unStar', 'oo-ui-image-progressive' );
+			if ( result.subscribe ) {
+				element.classList.add( 'oo-ui-icon-unStar', 'oo-ui-image-progressive' );
+			} else {
+				element.classList.add( 'oo-ui-icon-star' );
+			}
+			mw.notify(
+				mw.msg(
+					result.subscribe ?
+						'discussiontools-topicsubscription-notify-subscribed-body' :
+						'discussiontools-topicsubscription-notify-unsubscribed-body'
+				),
+				{
+					title: mw.msg(
+						result.subscribe ?
+							'discussiontools-topicsubscription-notify-subscribed-title' :
+							'discussiontools-topicsubscription-notify-unsubscribed-title'
+					)
+				}
+			);
+		} );
+	} );
+}
+
 function init( $container, state ) {
 	var parser, pageThreads,
 		repliedToComment, lastComment,
@@ -314,6 +363,10 @@ function init( $container, state ) {
 			newTopicController = new NewTopicController( $pageContainer, $addSectionTab.find( 'a' ), parser );
 			controllers.push( newTopicController );
 		}
+	}
+
+	if ( featuresEnabled.topicsubscription && mw.user.options.get( 'discussiontools-topicsubscription' ) ) {
+		initTopicSubscriptions( $container );
 	}
 
 	// Hook up each link to open a reply widget

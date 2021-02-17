@@ -102,7 +102,11 @@
 				"discussiontools-newtopic-placeholder-title",
 				"discussiontools-newtopic-missing-title",
 				"discussiontools-replylink",
-				"discussiontools-replywidget-loading"
+				"discussiontools-replywidget-loading",
+				"discussiontools-topicsubscription-notify-subscribed-body",
+				"discussiontools-topicsubscription-notify-subscribed-title",
+				"discussiontools-topicsubscription-notify-unsubscribed-body",
+				"discussiontools-topicsubscription-notify-unsubscribed-title"
 			]
 		},
 		"ext.discussionTools.debug": {
@@ -372,7 +376,8 @@
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\InstallerHooks"
 		},
 		"page": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PageHooks"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PageHooks",
+			"services": [ "DiscussionTools.SubscriptionStore" ]
 		},
 		"parser": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ParserHooks"
@@ -395,6 +400,7 @@
 		"discussiontools-newtopictool": 1,
 		"discussiontools-replytool": 1,
 		"discussiontools-sourcemodetoolbar": 0,
+		"discussiontools-topicsubscription": 1,
 		"discussiontools-abtest": ""
 	},
 	"config": {
@@ -421,6 +427,10 @@
 		"DiscussionTools_sourcemodetoolbar": {
 			"value": "unavailable",
 			"description": "Enable the toolbar in source mode for the reply tool and new topic tool. 'default', 'available', or 'unavailable'."
+		},
+		"DiscussionTools_topicsubscription": {
+			"value": "default",
+			"description": "Override availability of DiscussionTools topic subscription feature. 'default', 'available', or 'unavailable'."
 		},
 		"DiscussionToolsUseParserCache": {
 			"value": true,

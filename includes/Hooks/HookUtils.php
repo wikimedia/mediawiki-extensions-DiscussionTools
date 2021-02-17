@@ -29,6 +29,7 @@ class HookUtils {
 		'replytool',
 		'newtopictool',
 		'sourcemodetoolbar',
+		'topicsubscription',
 	];
 
 	/**
@@ -44,6 +45,11 @@ class HookUtils {
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		if ( !$dtConfig->get( 'DiscussionToolsEnable' ) ) {
+			return false;
+		}
+
+		if ( $feature === 'topicsubscription' && $user->isAnon() ) {
+			// Users must be logged in to use topic subscription
 			return false;
 		}
 
@@ -204,6 +210,15 @@ class HookUtils {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
 			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
 			if ( $mobFrontContext->shouldDisplayMobileView() ) {
+				return false;
+			}
+		}
+
+		// Topic subscription is not available on your own talk page, as you will
+		// get 'mention-user-talk' notifications already. (T276996)
+		if ( $feature === 'topicsubscription' && $title->getNamespace() === NS_USER_TALK ) {
+			$user = User::newFromName( $title->getText() );
+			if ( $user->equals( $output->getUser() ) ) {
 				return false;
 			}
 		}

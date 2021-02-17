@@ -9,18 +9,31 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
+use DOMDocument;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
+use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use Skin;
 use VisualEditorHooks;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class PageHooks implements
 	BeforePageDisplayHook,
 	OutputPageBeforeHTMLHook
 {
+	/** @var SubscriptionStore */
+	protected $subscriptionStore;
+
+	/**
+	 * @param SubscriptionStore $subscriptionStore
+	 */
+	public function __construct( SubscriptionStore $subscriptionStore ) {
+		$this->subscriptionStore = $subscriptionStore;
+	}
+
 	/**
 	 * Adds DiscussionTools JS to the output.
 	 *
@@ -36,7 +49,9 @@ class PageHooks implements
 		// as this means the DOM may have been modified in the parser cache.
 		if ( HookUtils::isAvailableForTitle( $output->getTitle() ) ) {
 			$output->addModuleStyles( [
-				'ext.discussionTools.init.styles'
+				'ext.discussionTools.init.styles',
+				// Topic subscription star
+				'oojs-ui.styles.icons-moderation',
 			] );
 		}
 		// Load modules if any DT feature is enabled for this user
@@ -107,6 +122,33 @@ class PageHooks implements
 			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
 				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
 			}
+		}
+
+		if ( HookUtils::isFeatureEnabledForOutput( $output, 'topicsubscription' ) ) {
+			$subscriptionStore = $this->subscriptionStore;
+			$doc = new DOMDocument();
+			$user = $output->getUser();
+			$title = $output->getTitle();
+			$text = preg_replace_callback(
+				'/<!--__DTSUBSCRIBE__(.*)-->/',
+				function ( $matches ) use ( $doc, $subscriptionStore, $user ) {
+					$itemName = $matches[1];
+					$items = $subscriptionStore->getSubscriptionItemsForUser(
+						$user,
+						$itemName
+					);
+					$isSubscribed = count( $items ) && !$items[0]->isMuted();
+					$subscribe = $doc->createElement( 'span' );
+					$subscribe->setAttribute(
+						'class',
+						'ext-discussiontools-section-subscribe ' .
+							( $isSubscribed ? 'oo-ui-icon-unStar oo-ui-image-progressive' : 'oo-ui-icon-star' )
+					);
+					$subscribe->setAttribute( 'data-mw-comment-name', $itemName );
+					return DOMCompat::getOuterHTML( $subscribe );
+				},
+				$text
+			);
 		}
 
 		return true;

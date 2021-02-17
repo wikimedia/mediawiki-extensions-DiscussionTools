@@ -15,6 +15,7 @@ class CommentFormatter {
 	// List of features which, when enabled, cause the comment formatter to run
 	public const USE_WITH_FEATURES = [
 		'replytool',
+		'topicsubscription',
 	];
 
 	protected const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
@@ -135,6 +136,21 @@ class CommentFormatter {
 
 			if ( $threadItem instanceof HeadingItem ) {
 				$threadItem->getRange()->endContainer->setAttribute( 'data-mw-comment', $itemJSON );
+				if ( !$threadItem->isPlaceholderHeading() && $threadItem->getHeadingLevel() == 2 ) {
+					$headingNode = CommentUtils::closestElement( $threadItem->getRange()->endContainer, [ 'h2' ] );
+
+					if ( $headingNode ) {
+						$header = $doc->createElement( 'header' );
+						$header->setAttribute( 'class', 'ext-discussiontools-section' );
+
+						// Replaced in PageHooks as the icon depends on user state
+						$subscribe = $doc->createComment( '__DTSUBSCRIBE__' . $threadItem->getName() );
+
+						$headingNode->parentNode->replaceChild( $header, $headingNode );
+						$header->appendChild( $headingNode );
+						$header->appendChild( $subscribe );
+					}
+				}
 			} elseif ( $threadItem instanceof CommentItem ) {
 				$replyLinkButtons = $doc->createElement( 'span' );
 				$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
