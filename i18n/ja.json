@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"A2y4",
 			"Linuxmetel",
 			"Marine-Blue",
 			"Matma Rex",
@@ -48,6 +49,7 @@
 	"discussiontools-replywidget-summary": "返信の要約",
 	"discussiontools-replywidget-terms-click": "「$1」をクリックすると、このウィキの利用規約に同意したと見なされます。",
 	"discussiontools-replywidget-transcluded": "あなたのコメントは[[$1]]で保存されます。",
+	"discussiontools-newtopic-placeholder-title": "タイトル",
 	"discussiontools-signature-prefix": "--",
 	"discussiontools-error-comment-conflict": "ほかの利用者と同時に返信したため、あなたのコメントは保存できませんでした。もう一度送信するか、このページを再読み込みして新しいコメントを閲覧してください。",
 	"discussiontools-error-comment-disappeared": "あなたが返信しようとしているコメントがページで検出できませんでした。そのコメントは削除されたか、別のページに移動・転記された可能性があります。ページを再読み込みしてから再度お試しください。",
