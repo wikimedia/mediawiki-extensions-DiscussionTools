@@ -94,7 +94,7 @@ class CommentFormatter {
 			// Create a dummy node to attach data to.
 			if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
 				$node = $doc->createElement( 'span' );
-				$container->firstChild->insertBefore( $node, $container->firstChild->firstChild );
+				$container->insertBefore( $node, $container->firstChild );
 				$threadItem->setRange( new ImmutableRange( $node, 0, $node, 0 ) );
 			}
 

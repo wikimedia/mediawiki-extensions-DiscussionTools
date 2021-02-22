@@ -54,5 +54,12 @@
 		"expected": "cases/signatures-funny/signatures-funny-formattedreply.html",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Signatures in funny places",
+		"dom": "cases/for-parser-cache/for-parser-cache.html",
+		"expected": "cases/for-parser-cache/for-parser-cache-formattedreply.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	}
 ]
