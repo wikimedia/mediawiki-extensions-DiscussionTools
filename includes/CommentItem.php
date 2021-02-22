@@ -132,9 +132,9 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * @return string|null Comment author
+	 * @return string Comment author
 	 */
-	public function getAuthor() : ?string {
+	public function getAuthor() : string {
 		return $this->author;
 	}
 
@@ -174,9 +174,9 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * @param string|null $author Comment author
+	 * @param string $author Comment author
 	 */
-	public function setAuthor( ?string $author ) : void {
+	public function setAuthor( string $author ) : void {
 		$this->author = $author;
 	}
 }

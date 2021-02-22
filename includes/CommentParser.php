@@ -1027,7 +1027,7 @@ class CommentParser {
 			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItem->getRange()->startContainer )['node'];
 			$id = 'h|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
-			$id = 'c|' . $this->truncateForId( $threadItem->getAuthor() ?? '' ) .
+			$id = 'c|' . $this->truncateForId( $threadItem->getAuthor() ) .
 				'|' . $threadItem->getTimestamp();
 		} else {
 			throw new MWException( 'Unknown ThreadItem type' );
@@ -1040,7 +1040,7 @@ class CommentParser {
 			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItemParent->getRange()->startContainer )['node'];
 			$id .= '|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItemParent instanceof CommentItem ) {
-			$id .= '|' . $this->truncateForId( $threadItemParent->getAuthor() ?? '' ) .
+			$id .= '|' . $this->truncateForId( $threadItemParent->getAuthor() ) .
 				'|' . $threadItemParent->getTimestamp();
 		}
 
@@ -1086,7 +1086,7 @@ class CommentParser {
 			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItem->getRange()->startContainer )['node'];
 			$id = 'h|' . ( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
-			$id = 'c|' . ( $threadItem->getAuthor() ?? '' ) . '|' . $threadItem->getTimestamp();
+			$id = 'c|' . $threadItem->getAuthor() . '|' . $threadItem->getTimestamp();
 		} else {
 			throw new MWException( 'Unknown ThreadItem type' );
 		}
@@ -1098,7 +1098,7 @@ class CommentParser {
 			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItemParent->getRange()->startContainer )['node'];
 			$id .= '|' . ( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItemParent instanceof CommentItem ) {
-			$id .= '|' . ( $threadItemParent->getAuthor() ?? '' ) . '|' . $threadItemParent->getTimestamp();
+			$id .= '|' . $threadItemParent->getAuthor() . '|' . $threadItemParent->getTimestamp();
 		}
 
 		if ( $threadItem instanceof HeadingItem ) {
