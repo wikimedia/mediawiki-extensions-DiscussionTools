@@ -1004,7 +1004,7 @@ Parser.prototype.truncateForId = function ( text ) {
  * @return {string}
  */
 Parser.prototype.computeId = function ( threadItem ) {
-	var id, number, headline, threadItemParent, timestamp;
+	var id, number, headline, threadItemParent, oldestComment;
 
 	if ( threadItem instanceof HeadingItem && threadItem.placeholderHeading ) {
 		// The range points to the root note, using it like below results in silly values
@@ -1033,9 +1033,9 @@ Parser.prototype.computeId = function ( threadItem ) {
 		// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
 		// include the oldest timestamp in the thread (i.e. date the thread was started) in the
 		// heading ID.
-		timestamp = this.getThreadStartTimestamp( threadItem );
-		if ( timestamp ) {
-			id += '|' + timestamp.toISOString();
+		oldestComment = this.getThreadStartComment( threadItem );
+		if ( oldestComment ) {
+			id += '|' + oldestComment.timestamp.toISOString();
 		}
 	}
 
@@ -1118,13 +1118,13 @@ Parser.prototype.buildThreads = function () {
 
 /**
  * @param {ThreadItem} threadItem
- * @return {moment|null}
+ * @return {CommentItem|null}
  */
-Parser.prototype.getThreadStartTimestamp = function ( threadItem ) {
-	var i, comment, timestampInReplies,
-		timestamp = null;
+Parser.prototype.getThreadStartComment = function ( threadItem ) {
+	var i, comment, oldestInReplies,
+		oldest = null;
 	if ( threadItem instanceof CommentItem ) {
-		timestamp = threadItem.timestamp;
+		oldest = threadItem;
 	}
 	// Check all replies. This can't just use the first comment because threads are often summarized
 	// at the top when the discussion is closed.
@@ -1132,13 +1132,13 @@ Parser.prototype.getThreadStartTimestamp = function ( threadItem ) {
 		comment = threadItem.replies[ i ];
 		// Don't include sub-threads to avoid changing the ID when threads are "merged".
 		if ( comment instanceof CommentItem ) {
-			timestampInReplies = this.getThreadStartTimestamp( comment );
-			if ( !timestamp || timestampInReplies.isBefore( timestamp ) ) {
-				timestamp = timestampInReplies;
+			oldestInReplies = this.getThreadStartComment( comment );
+			if ( !oldest || oldestInReplies.timestamp.isBefore( oldest.timestamp ) ) {
+				oldest = oldestInReplies;
 			}
 		}
 	}
-	return timestamp;
+	return oldest;
 };
 
 module.exports = Parser;
