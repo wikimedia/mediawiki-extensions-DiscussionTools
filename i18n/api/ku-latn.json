@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Balyozxane",
+			"Bikarhêner",
 			"Guherto"
 		]
 	},
@@ -10,5 +11,5 @@
 	"apihelp-discussiontools-param-oldid": "Hejmara guhartoye ku ber werê bikaranîn (ya ji ber xwe ve dibê ya herî nû).",
 	"apihelp-discussiontoolsedit-summary": "Peyamek li ser rûpeleke gotûbêjê binivîse.",
 	"apihelp-discussiontoolsedit-param-commentid": "IDya şiroveyê.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wîkînivîs"
+	"apihelp-discussiontoolsedit-param-wikitext": "Naveroka ku wek wîkînivîs were weşandin. Nikare tevî <var>html</var> were bikaranîn."
 }

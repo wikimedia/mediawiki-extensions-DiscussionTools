@@ -1,10 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Playershut"
+			"Playershut",
+			"Sunpriat"
 		]
 	},
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Возврат заголовков страниц, с которых трансклируется каждый комментарий на данной странице.",
+	"apihelp-discussiontools-param-oldid": "Номер версии для использования (по умолчанию — последняя версия).",
+	"apihelp-discussiontoolsedit-summary": "Отправить сообщение на страницу обсуждения.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Добавить новый комментарий как ответ на предыдущий комментарий.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Добавьте новый раздел обсуждения и первый комментарий в нем.",
-	"apihelp-discussiontoolsedit-param-commentid": "Идентификатор комментария для ответа. Используется только <var>paction</var> является <var>addcomment</var>."
+	"apihelp-discussiontoolsedit-param-commentid": "Идентификатор комментария для ответа. Используется только <var>paction</var> является <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Контент для отправки, как HTML. Не может быть использовано вместе с <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Контент для отправки, как викитекст. Не может быть использовано вместе с <var>html</var>."
 }

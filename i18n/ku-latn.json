@@ -4,10 +4,11 @@
 			"Balyozxane",
 			"Bikarhêner",
 			"Biyolojiyabikurdi",
+			"Ghybu",
 			"Guherto"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Bersiv bide",
+	"discussiontools-defaultsummary-reply": "Bersiv",
 	"discussiontools-desc": "Amûrên ji bo pêşxistina rûpelên gotûbêjê.",
 	"discussiontools-preference-label": "Amûrên gotûbêjê",
 	"discussiontools-preference-newtopictool": "Lêzêdekirina mijara ya zû veke",
@@ -34,7 +35,7 @@
 	"discussiontools-replywidget-reply": "Bersiv bide",
 	"discussiontools-replywidget-signature-title": "Şanenaveke taybet hat dîtin",
 	"discussiontools-replywidget-signature-body": "$1 bû îmzeya te. Ji bonî betalkirinê $2 binivîsîne. Zanibe ku tu ne hewce yî îmzeya binivîsînî bi vê alavê re. Wê îmzeya te bixwe lê ê zêdekirin.",
-	"discussiontools-replywidget-summary": "Kurteya şiroveyê",
+	"discussiontools-replywidget-summary": "Kurte",
 	"discussiontools-replywidget-terms-click": "Piştî pê li \"$1\" kir, ew tê maneya ku tu mercên bikaranînê yên vê wîkiyê qebûl dikî.",
 	"discussiontools-replywidget-transcluded": "Şiroveya te dê li [[$1]] were qeydkirin.",
 	"discussiontools-newtopic-placeholder-title": "Sernav",

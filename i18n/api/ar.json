@@ -10,7 +10,7 @@
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "تقدّم عناوين الصفحات التي تم تضمين كل تعليق منها في الصفحة المحددة.",
 	"apihelp-discussiontools-param-oldid": "رقم المراجعة للاستخدام (الافتراض إلى المراجعة الأخيرة).",
 	"apihelp-discussiontoolsedit-summary": "نشر رسالة على صفحة نقاش.",
-	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "تضيف تعليقا جديدا كردّ على تعليق سابق.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "تضيف تعليقا جديدا ردًّا على تعليق سابق.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "تضيف قسما لنقاش جديد والتعليق الأوّل فيه.",
 	"apihelp-discussiontoolsedit-param-commentid": "معرّف التعليق المراد الردّ عليه. يستعمل فقط حين <var>paction</var> يكون <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} تستخدم فقط حين <var>paction</var> يكون <var>addtopic</var>.",
