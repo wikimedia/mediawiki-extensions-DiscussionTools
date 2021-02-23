@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMDocumentFragment;
 use DOMText;
 use DOMXPath;
 use MWException;
@@ -46,12 +47,11 @@ class CommentItem extends ThreadItem {
 	/**
 	 * Get the HTML of this comment's body
 	 *
-	 *
 	 * @param bool $stripTrailingSeparator Strip a trailing separator between the body and
 	 *  the signature which consists of whitespace and hyphens e.g. ' --'
-	 * @return string HTML
+	 * @return DOMDocumentFragment Cloned fragment of the body content
 	 */
-	public function getBodyHTML( bool $stripTrailingSeparator = false ) : string {
+	private function getBodyFragment( bool $stripTrailingSeparator = false ) : DOMDocumentFragment {
 		$fragment = $this->getBodyRange()->cloneContents();
 		CommentModifier::unwrapFragment( $fragment );
 
@@ -72,6 +72,18 @@ class CommentItem extends ThreadItem {
 					substr( $lastChild->nodeValue, 0, -strlen( $matches[0] ) );
 			}
 		}
+		return $fragment;
+	}
+
+	/**
+	 * Get the HTML of this comment's body
+	 *
+	 *
+	 * @param bool $stripTrailingSeparator See getBodyFragment
+	 * @return string HTML
+	 */
+	public function getBodyHTML( bool $stripTrailingSeparator = false ) : string {
+		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
 		return DOMCompat::getInnerHTML( $container );
@@ -80,10 +92,11 @@ class CommentItem extends ThreadItem {
 	/**
 	 * Get the text of this comment's body
 	 *
+	 * @param bool $stripTrailingSeparator See getBodyFragment
 	 * @return string Text
 	 */
-	public function getBodyText() : string {
-		$fragment = $this->getBodyRange()->cloneContents();
+	public function getBodyText( bool $stripTrailingSeparator = false ) : string {
+		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
 		return $fragment->textContent;
 	}
 
