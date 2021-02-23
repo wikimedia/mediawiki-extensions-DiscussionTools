@@ -29,7 +29,11 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 			saveFailure: 'save_failure'
 		},
 		timing = {},
-		session = {},
+		session = {
+			// eslint-disable-next-line camelcase
+			editing_session_id: mw.user.generateRandomSessionId()
+		},
+		firstInitDone = false,
 		/**
 		 * Edit schema
 		 * https://meta.wikimedia.org/wiki/Schema:EditAttemptStep
@@ -128,8 +132,11 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 
 		// Update the rolling session properties
 		if ( data.action === 'init' ) {
-			// eslint-disable-next-line camelcase
-			session.editing_session_id = mw.user.generateRandomSessionId();
+			if ( firstInitDone ) {
+				// eslint-disable-next-line camelcase
+				session.editing_session_id = mw.user.generateRandomSessionId();
+			}
+			firstInitDone = true;
 		}
 		// eslint-disable-next-line camelcase
 		session.editor_interface = data.editor_interface || session.editor_interface;
