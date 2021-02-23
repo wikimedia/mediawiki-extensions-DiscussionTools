@@ -5,14 +5,14 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "{{doc-apierror}}\n\nParameters:\n* $1 - Comment ID",
-	"apihelp-discussiontools-summary": "{{doc-apihelp-summary|discussiontools}}",
-	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "{{doc-apihelp-paramvalue|discussiontools|paction|transcludedfrom}}",
 	"apihelp-discussiontools-param-oldid": "{{doc-apihelp-param|discussiontools|oldid}}",
-	"apihelp-discussiontoolsedit-summary": "{{doc-apihelp-summary|discussiontoolsedit}}",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "{{doc-apihelp-paramvalue|discussiontools|paction|transcludedfrom}}",
+	"apihelp-discussiontools-summary": "{{doc-apihelp-summary|discussiontools}}",
+	"apihelp-discussiontoolsedit-param-commentid": "{{doc-apihelp-param|discussiontoolsedit|commentid}}",
+	"apihelp-discussiontoolsedit-param-html": "{{optional}}\n{{doc-apihelp-param|discussiontoolsedit|html}}",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{doc-apihelp-param|discussiontoolsedit|sectiontitle}}",
+	"apihelp-discussiontoolsedit-param-wikitext": "{{doc-apihelp-param|discussiontoolsedit|wikitext}}",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addcomment}}",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addtopic}}",
-	"apihelp-discussiontoolsedit-param-commentid": "{{doc-apihelp-param|discussiontoolsedit|commentid}}",
-	"apihelp-discussiontoolsedit-param-sectiontitle": "{{doc-apihelp-param|discussiontoolsedit|sectiontitle}}",
-	"apihelp-discussiontoolsedit-param-html": "{{optional}}\n{{doc-apihelp-param|discussiontoolsedit|html}}",
-	"apihelp-discussiontoolsedit-param-wikitext": "{{doc-apihelp-param|discussiontoolsedit|wikitext}}"
+	"apihelp-discussiontoolsedit-summary": "{{doc-apihelp-summary|discussiontoolsedit}}"
 }
