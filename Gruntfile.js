@@ -16,6 +16,7 @@ module.exports = function ( grunt ) {
 				'*.{js,json}',
 				'modules/**/*.{js,json}',
 				'tests/**/*.{js,json}',
+				'i18n/**/{en,qqq}.json',
 				'!modules/lib/**'
 			]
 		},
