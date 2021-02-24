@@ -5,7 +5,7 @@
 			"Zhang8569"
 		]
 	},
-	"apihelp-discussiontoolsedit-summary": "在讨论页面上发布消息。",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "请对一个已存在的评论以回复的形式添加一个新评论。",
-	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "请在第一个评论中添加一个讨论章节。"
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "请在第一个评论中添加一个讨论章节。",
+	"apihelp-discussiontoolsedit-summary": "在讨论页面上发布消息。"
 }

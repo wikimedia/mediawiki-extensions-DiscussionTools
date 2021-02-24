@@ -6,8 +6,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "No s'ha trobat la identificació del comentari: $1",
-	"apihelp-discussiontools-summary": "Retorna les metadades necessàries per activar les eines de discussió.",
 	"apihelp-discussiontools-param-oldid": "El número de revisió que s'utilitzarà (per defecte s'utilitza la darrera revisió).",
+	"apihelp-discussiontools-summary": "Retorna les metadades necessàries per activar les eines de discussió.",
 	"apihelp-discussiontoolsedit-param-commentid": "Identificació del comentari al que respondre.  Només s'utilitza quan <var>paction</var> és <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Contingut a publicar, com a wikitext.  No es pot utilitzar conjuntament amb <var>html</var>."
 }

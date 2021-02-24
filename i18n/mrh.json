@@ -6,9 +6,9 @@
 			"Teitei Para"
 		]
 	},
-	"discussiontools-replywidget-abandon-keep": "Roh pazao",
 	"discussiontools-newtopic-placeholder-title": "Chôtlâhpi",
-	"discussiontools-replywidget-placeholder-newtopic": "Palâsana",
+	"discussiontools-replywidget-abandon-keep": "Roh pazao",
 	"discussiontools-replywidget-newtopic": "Chôtlâhpi khô",
+	"discussiontools-replywidget-placeholder-newtopic": "Palâsana",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Chôtlâhpi thiehpa]"
 }

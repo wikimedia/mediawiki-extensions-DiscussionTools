@@ -6,9 +6,9 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Није пронађен ID коментара: $1",
-	"apihelp-discussiontools-summary": "Приказује метаподатке потребне за покретање алатка за разговор.",
 	"apihelp-discussiontools-param-oldid": "Број измене за употребу (подразумевано: последња измена)",
-	"apihelp-discussiontoolsedit-summary": "Објављивање поруке на страници за дискусију.",
+	"apihelp-discussiontools-summary": "Приказује метаподатке потребне за покретање алатка за разговор.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID коментара",
-	"apihelp-discussiontoolsedit-param-wikitext": "Викитекст"
+	"apihelp-discussiontoolsedit-param-wikitext": "Викитекст",
+	"apihelp-discussiontoolsedit-summary": "Објављивање поруке на страници за дискусију."
 }

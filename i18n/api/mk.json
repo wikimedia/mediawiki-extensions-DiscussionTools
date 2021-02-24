@@ -5,14 +5,14 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Не ја пронајдов назнаката на коментарот: $1",
-	"apihelp-discussiontools-summary": "Дава метаподатоци потребни за покревање на разговорните алатки.",
-	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Дај ги насловите на страниците од кои превметнат секој коментар на дадената страница.",
 	"apihelp-discussiontools-param-oldid": "Број на преработката што ќе се користи (по основно: најновата преработка).",
-	"apihelp-discussiontoolsedit-summary": "Напишете порака на разговорната страница.",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Дај ги насловите на страниците од кои превметнат секој коментар на дадената страница.",
+	"apihelp-discussiontools-summary": "Дава метаподатоци потребни за покревање на разговорните алатки.",
+	"apihelp-discussiontoolsedit-param-commentid": "Назнака на коментарот на кој се одговара. Се користи само кога <var>paction</var> е <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Содржина за објавување, како HTML. Не може да се користи заедно со <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Се користи само кога <var>paction</var> е <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Содржина за објавување, како викитекст. Не може да се користи заедно со <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Додај нов коментар како одговор на постоечки.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Додај нов разговорен оддел и првиот коментар во него.",
-	"apihelp-discussiontoolsedit-param-commentid": "Назнака на коментарот на кој се одговара. Се користи само кога <var>paction</var> е <var>addcomment</var>.",
-	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Се користи само кога <var>paction</var> е <var>addtopic</var>.",
-	"apihelp-discussiontoolsedit-param-html": "Содржина за објавување, како HTML. Не може да се користи заедно со <var>wikitext</var>.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Содржина за објавување, како викитекст. Не може да се користи заедно со <var>html</var>."
+	"apihelp-discussiontoolsedit-summary": "Напишете порака на разговорната страница."
 }

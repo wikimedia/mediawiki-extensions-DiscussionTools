@@ -6,10 +6,10 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Kommentars-ID inte funnen: $1",
-	"apihelp-discussiontools-summary": "Returnerar metadata som krävs för att initialisera diskussionsverktygen.",
 	"apihelp-discussiontools-param-oldid": "Sidversionsnummer att använd (standard är senaste versionen).",
-	"apihelp-discussiontoolsedit-summary": "Posta ett inlägg på en diskussionssida.",
-	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Lägg till ett nytt diskussionsavsnitt och dess första kommentar.",
+	"apihelp-discussiontools-summary": "Returnerar metadata som krävs för att initialisera diskussionsverktygen.",
 	"apihelp-discussiontoolsedit-param-commentid": "Kommentars-ID.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
+	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Lägg till ett nytt diskussionsavsnitt och dess första kommentar.",
+	"apihelp-discussiontoolsedit-summary": "Posta ett inlägg på en diskussionssida."
 }

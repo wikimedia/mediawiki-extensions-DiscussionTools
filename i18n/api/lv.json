@@ -5,9 +5,9 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Komentāra ID nav atrasts: $1",
-	"apihelp-discussiontools-summary": "Atgriež nepieciešamos metadatus, kas nepieciešami diskusiju rīku inicializācijai.",
 	"apihelp-discussiontools-param-oldid": "Izmantojamās versijas numurs (pēc noklusējuma jaunākais).",
-	"apihelp-discussiontoolsedit-summary": "Ievietot ziņojumu diskusiju lapā.",
+	"apihelp-discussiontools-summary": "Atgriež nepieciešamos metadatus, kas nepieciešami diskusiju rīku inicializācijai.",
 	"apihelp-discussiontoolsedit-param-commentid": "Komentāra ID",
-	"apihelp-discussiontoolsedit-param-wikitext": "Vikiteksts"
+	"apihelp-discussiontoolsedit-param-wikitext": "Vikiteksts",
+	"apihelp-discussiontoolsedit-summary": "Ievietot ziņojumu diskusiju lapā."
 }

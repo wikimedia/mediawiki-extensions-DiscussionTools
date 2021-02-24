@@ -8,8 +8,8 @@
 	"discussiontools": "Struminde de le 'ngazzaminde",
 	"discussiontools-defaultsummary-reply": "Respunne",
 	"discussiontools-desc": "Struminde pe migliorà le pàggene de le 'ngazzaminde.",
+	"discussiontools-newtopic-placeholder-title": "Titole",
 	"discussiontools-preference-label": "Struminde de le 'ngazzaminde",
 	"discussiontools-replylink": "respunne",
-	"discussiontools-newtopic-placeholder-title": "Titole",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respunne]"
 }

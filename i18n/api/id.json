@@ -6,9 +6,9 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID komentar tidak ditemukan: $1",
-	"apihelp-discussiontools-summary": "Mengembalikan metadata yang diperlukan untuk menginisialisasi alat diskusi.",
 	"apihelp-discussiontools-param-oldid": "Nomor revisi yang akan digunakan (default ke revisi terbaru).",
-	"apihelp-discussiontoolsedit-summary": "Posting pesan di halaman diskusi.",
+	"apihelp-discussiontools-summary": "Mengembalikan metadata yang diperlukan untuk menginisialisasi alat diskusi.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID Komentar.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Teks wiki"
+	"apihelp-discussiontoolsedit-param-wikitext": "Teks wiki",
+	"apihelp-discussiontoolsedit-summary": "Posting pesan di halaman diskusi."
 }

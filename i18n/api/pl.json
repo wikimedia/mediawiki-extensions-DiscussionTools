@@ -6,14 +6,14 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Nie odnaleziono komentarza z ID: $1",
-	"apihelp-discussiontools-summary": "Zwraca metadane niezbędne do zainicjowania narzędzi dyskusji.",
-	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Zwróć tytuły stron, z których transkludowane są komentarze obecne na danej stronie.",
 	"apihelp-discussiontools-param-oldid": "Numer wersji do użycia (domyślnie ostatnia wersja).",
-	"apihelp-discussiontoolsedit-summary": "Wyślij wiadomość na stronie dyskusji.",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Zwróć tytuły stron, z których transkludowane są komentarze obecne na danej stronie.",
+	"apihelp-discussiontools-summary": "Zwraca metadane niezbędne do zainicjowania narzędzi dyskusji.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID komentarza, na który odpowiedzieć. Parametr używany tylko wtedy, gdy wartość <var>paction</var> to <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Treść do dodania, jako HTML. Nie może być użyte wraz z <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Parametr używany tylko wtedy, gdy wartość <var>paction</var> to <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Treść do dodania, jako wikitekst. Nie może być użyte wraz z <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Dodaj nowy komentarz jako odpowiedź do istniejącego komentarza.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Dodaj nową sekcję dyskusji i pierwszy komentarz w niej.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID komentarza, na który odpowiedzieć. Parametr używany tylko wtedy, gdy wartość <var>paction</var> to <var>addcomment</var>.",
-	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Parametr używany tylko wtedy, gdy wartość <var>paction</var> to <var>addtopic</var>.",
-	"apihelp-discussiontoolsedit-param-html": "Treść do dodania, jako HTML. Nie może być użyte wraz z <var>wikitext</var>.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Treść do dodania, jako wikitekst. Nie może być użyte wraz z <var>html</var>."
+	"apihelp-discussiontoolsedit-summary": "Wyślij wiadomość na stronie dyskusji."
 }

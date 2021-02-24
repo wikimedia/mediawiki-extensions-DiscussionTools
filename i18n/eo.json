@@ -8,6 +8,8 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Respondo",
+	"discussiontools-newtopic-placeholder-title": "Titolo",
+	"discussiontools-postedit-confirmation-published": "Via komento estis publikigita.",
 	"discussiontools-replylink": "respondi",
 	"discussiontools-replywidget-cancel": "Nuligi",
 	"discussiontools-replywidget-mention-tool-header": "Trovi uzanton: $1",
@@ -18,8 +20,6 @@
 	"discussiontools-replywidget-preview": "Antaŭrigardi",
 	"discussiontools-replywidget-reply": "Respondi",
 	"discussiontools-replywidget-summary": "Resumo",
-	"discussiontools-newtopic-placeholder-title": "Titolo",
-	"discussiontools-postedit-confirmation-published": "Via komento estis publikigita.",
 	"tag-discussiontools-source": "Fonto",
 	"tag-discussiontools-visual": "Vida"
 }

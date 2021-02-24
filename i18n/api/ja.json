@@ -7,9 +7,9 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Comment IDが見つかりません：$1",
-	"apihelp-discussiontools-summary": "議論用ツールの初期化に必要なメタデータを返します。",
 	"apihelp-discussiontools-param-oldid": "使用する版番号 (既定では最新版)。",
-	"apihelp-discussiontoolsedit-summary": "議論ページにメッセージを投稿する。",
+	"apihelp-discussiontools-summary": "議論用ツールの初期化に必要なメタデータを返します。",
 	"apihelp-discussiontoolsedit-param-commentid": "Comment ID。",
-	"apihelp-discussiontoolsedit-param-wikitext": "ウィキテキスト"
+	"apihelp-discussiontoolsedit-param-wikitext": "ウィキテキスト",
+	"apihelp-discussiontoolsedit-summary": "議論ページにメッセージを投稿する。"
 }

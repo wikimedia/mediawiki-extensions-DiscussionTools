@@ -4,11 +4,14 @@
 			"Aefgh39622",
 			"Geonuch",
 			"Matma Rex",
-			"Patsagorn Y."
+			"Patsagorn Y.",
+			"Prame Tan"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ตอบกลับ",
 	"discussiontools-desc": "เครื่องมือปรับปรุงประสิทธิภาพในหน้าอภิปราย",
+	"discussiontools-error-noswitchtove-table": "รูปแบบของตาราง",
+	"discussiontools-error-noswitchtove-template": "รูปแบบของแม่แบบ",
 	"discussiontools-preference-label": "เครื่องมือช่วยเหลือการอภิปราย",
 	"discussiontools-preference-replytool": "เปิดใช้การตอบกลับอย่างรวดเร็ว",
 	"discussiontools-replylink": "ตอบกลับ",
@@ -28,10 +31,8 @@
 	"discussiontools-replywidget-preview": "ดูตัวอย่าง",
 	"discussiontools-replywidget-reply": "ตอบกลับ",
 	"discussiontools-replywidget-signature-title": "ตรวจพบรูปแบบของการเพิ่มลายเซ็น",
-	"discussiontools-replywidget-summary": "ความย่อการแสดงความเห็น",
+	"discussiontools-replywidget-summary": "ความย่อ",
 	"discussiontools-replywidget-transcluded": "ความเห็นของคุณจะถูกบันทึกไว้ที่ [[$1]]",
-	"discussiontools-error-noswitchtove-table": "รูปแบบของตาราง",
-	"discussiontools-error-noswitchtove-template": "รูปแบบของแม่แบบ",
 	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
 	"tag-discussiontools-edit": "แก้ไชความเห็น",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} หัวข้อใหม่]",

@@ -7,6 +7,7 @@
 	},
 	"discussiontools": "Alati za razgovor",
 	"discussiontools-defaultsummary-reply": "odgovor",
+	"discussiontools-postedit-confirmation-published": "Vaš je komentar objavljen.",
 	"discussiontools-preference-label": "Alati za razgovor",
 	"discussiontools-preference-replytool": "Uključi brzo odgovaranje",
 	"discussiontools-replylink": "odgovori",
@@ -27,7 +28,6 @@
 	"discussiontools-replywidget-signature-title": "Pronađen je potpis",
 	"discussiontools-replywidget-terms-click": "Klikom na \"$1\" prihvatate uslove korištenja ovog wikija.",
 	"discussiontools-replywidget-transcluded": "Komentar će biti sačuvan na stranici [[$1]].",
-	"discussiontools-postedit-confirmation-published": "Vaš je komentar objavljen.",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]",
 	"tag-discussiontools-source": "izvorno",
 	"tag-discussiontools-visual": "vizualno"

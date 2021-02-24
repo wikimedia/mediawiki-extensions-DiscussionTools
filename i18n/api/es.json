@@ -5,10 +5,10 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "No se encontró el ID del comentario: $1",
-	"apihelp-discussiontools-summary": "Devuelve los metadatos requeridos para inicializar las herramientas de discusión.",
 	"apihelp-discussiontools-param-oldid": "El número de revisión a usar (por defecto la revisión más reciente).",
-	"apihelp-discussiontoolsedit-summary": "Publicar un mensaje en una página de discusión.",
+	"apihelp-discussiontools-summary": "Devuelve los metadatos requeridos para inicializar las herramientas de discusión.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID del comentario.",
 	"apihelp-discussiontoolsedit-param-html": "HTML",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikitexto"
+	"apihelp-discussiontoolsedit-param-wikitext": "Wikitexto",
+	"apihelp-discussiontoolsedit-summary": "Publicar un mensaje en una página de discusión."
 }

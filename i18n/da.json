@@ -6,6 +6,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Svar",
+	"discussiontools-newtopic-placeholder-title": "Titel",
 	"discussiontools-replylink": "svar",
 	"discussiontools-replywidget-abandon-keep": "Fortsæt med at skrive",
 	"discussiontools-replywidget-cancel": "Annullér",
@@ -13,10 +14,9 @@
 	"discussiontools-replywidget-mention-tool-title": "Nævn en bruger",
 	"discussiontools-replywidget-mode-source": "Kilde",
 	"discussiontools-replywidget-mode-visual": "Visuelt",
-	"discussiontools-replywidget-reply": "Svar",
-	"discussiontools-newtopic-placeholder-title": "Titel",
-	"discussiontools-replywidget-placeholder-newtopic": "Beskrivelse",
 	"discussiontools-replywidget-newtopic": "Tilføj emne",
+	"discussiontools-replywidget-placeholder-newtopic": "Beskrivelse",
+	"discussiontools-replywidget-reply": "Svar",
 	"tag-discussiontools-edit": "Redigér kommentar",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nyt emne]",
 	"tag-discussiontools-source": "Kilde"
