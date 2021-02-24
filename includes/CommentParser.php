@@ -1049,9 +1049,9 @@ class CommentParser {
 			// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
 			// include the oldest timestamp in the thread (i.e. date the thread was started) in the
 			// heading ID.
-			$timestamp = $this->getThreadStartTimestamp( $threadItem );
-			if ( $timestamp ) {
-				$id .= '|' . $timestamp;
+			$oldestComment = $this->getThreadStartComment( $threadItem );
+			if ( $oldestComment ) {
+				$id .= '|' . $oldestComment->getTimestamp();
 			}
 		}
 
@@ -1106,9 +1106,9 @@ class CommentParser {
 			// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
 			// include the oldest timestamp in the thread (i.e. date the thread was started) in the
 			// heading ID.
-			$timestamp = $this->getThreadStartTimestamp( $threadItem );
-			if ( $timestamp ) {
-				$id .= '|' . $timestamp;
+			$oldestComment = $this->getThreadStartComment( $threadItem );
+			if ( $oldestComment ) {
+				$id .= '|' . $oldestComment->getTimestamp();
 			}
 		}
 
@@ -1195,24 +1195,24 @@ class CommentParser {
 
 	/**
 	 * @param ThreadItem $threadItem
-	 * @return string|null
+	 * @return CommentItem|null
 	 */
-	private function getThreadStartTimestamp( ThreadItem $threadItem ) {
-		$timestamp = null;
+	private function getThreadStartComment( ThreadItem $threadItem ) {
+		$oldest = null;
 		if ( $threadItem instanceof CommentItem ) {
-			$timestamp = $threadItem->getTimestamp();
+			$oldest = $threadItem;
 		}
 		// Check all replies. This can't just use the first comment because threads are often summarized
 		// at the top when the discussion is closed.
 		foreach ( $threadItem->getReplies() as $comment ) {
 			// Don't include sub-threads to avoid changing the ID when threads are "merged".
 			if ( $comment instanceof CommentItem ) {
-				$timestampInReplies = $this->getThreadStartTimestamp( $comment );
-				if ( !$timestamp || $timestampInReplies < $timestamp ) {
-					$timestamp = $timestampInReplies;
+				$oldestInReplies = $this->getThreadStartComment( $comment );
+				if ( !$oldest || $oldestInReplies->getTimestamp() < $oldest->getTimestamp() ) {
+					$oldest = $oldestInReplies;
 				}
 			}
 		}
-		return $timestamp;
+		return $oldest;
 	}
 }
