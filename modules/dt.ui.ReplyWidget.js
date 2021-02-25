@@ -3,6 +3,8 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	logger = require( 'ext.discussionTools.init' ).logger,
 	dtConf = require( 'ext.discussionTools.init' ).config,
+	ModeTabSelectWidget = require( './ModeTabSelectWidget.js' ),
+	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),
 	enable2017Wikitext = dtConf.enable2017Wikitext;
 
 require( './AbandonCommentDialog.js' );
@@ -84,22 +86,23 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 			)
 	} );
 
-	this.modeTabSelect = new OO.ui.TabSelectWidget( {
+	this.modeTabSelect = new ModeTabSelectWidget( {
 		classes: [ 'ext-discussiontools-ui-replyWidget-modeTabs' ],
 		items: [
-			new OO.ui.TabOptionWidget( {
+			new ModeTabOptionWidget( {
 				label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
 				data: 'visual'
 			} ),
-			new OO.ui.TabOptionWidget( {
+			new ModeTabOptionWidget( {
 				label: mw.msg( 'discussiontools-replywidget-mode-source' ),
 				data: 'source'
 			} )
 		],
 		framed: false
 	} );
-	// Initialize to avoid flicker when switching mode
-	this.modeTabSelect.selectItemByData( this.getMode() );
+	// Make the option for the current mode disabled, to make it un-interactable
+	// (we override the styles to make it look as if it was selected)
+	this.modeTabSelect.findItemFromData( this.getMode() ).setDisabled( true );
 
 	this.$headerWrapper = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-headerWrapper' );
 	this.$headerWrapper.append(
@@ -429,7 +432,9 @@ ReplyWidget.prototype.setup = function ( data ) {
 
 	this.bindBeforeUnloadHandler();
 	if ( this.modeTabSelect ) {
-		this.modeTabSelect.selectItemByData( this.getMode() );
+		// Make the option for the current mode disabled, to make it un-interactable
+		// (we override the styles to make it look as if it was selected)
+		this.modeTabSelect.findItemFromData( this.getMode() ).setDisabled( true );
 		this.saveEditMode( this.getMode() );
 	}
 
