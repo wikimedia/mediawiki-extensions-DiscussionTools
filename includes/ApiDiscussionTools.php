@@ -47,13 +47,13 @@ class ApiDiscussionTools extends ApiBase {
 				CommentUtils::unwrapParsoidSections( $container );
 
 				$parser = CommentParser::newFromGlobalState( $container );
-				$comments = $parser->getCommentItems();
+				$threadItems = $parser->getThreadItems();
 
 				$transcludedFrom = [];
-				foreach ( $comments as $comment ) {
-					$from = $comment->getTranscludedFrom();
-					$transcludedFrom[ $comment->getId() ] = $from;
-					$legacyId = $comment->getLegacyId();
+				foreach ( $threadItems as $threadItem ) {
+					$from = $threadItem->getTranscludedFrom();
+					$transcludedFrom[ $threadItem->getId() ] = $from;
+					$legacyId = $threadItem->getLegacyId();
 					if ( $legacyId ) {
 						$transcludedFrom[ $legacyId ] = $from;
 					}
