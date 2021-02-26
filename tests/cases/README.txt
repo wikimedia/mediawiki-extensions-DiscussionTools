@@ -46,5 +46,11 @@ https://sr.wikipedia.org/w/index.php?title=Википедија:Трг/Архи�
 unclosed-font:
 https://nl.wikipedia.org/w/index.php?title=Overleg_gebruiker:RYasmeen_(WMF)&oldid=57970619&action=render
 
+double-signature1:
+https://en.wikipedia.org/w/index.php?title=Wikipedia:Requests_for_comment/User_names&oldid=1002108637&action=render
+
+double-signature2:
+https://en.wikipedia.org/w/index.php?title=Wikipedia:Articles_for_deletion/Equal_Education&oldid=1009060583&action=render
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.
