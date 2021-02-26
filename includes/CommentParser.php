@@ -780,6 +780,30 @@ class CommentParser {
 		return $this->threadItemsById[$id] ?? null;
 	}
 
+	/**
+	 * @param DOMNode[] $sigNodes
+	 * @param array $match
+	 * @param DOMText $node
+	 * @return ImmutableRange
+	 */
+	private function adjustSigRange( array $sigNodes, array $match, DOMText $node ) {
+		$firstSigNode = end( $sigNodes );
+		$lastSigNode = $sigNodes[0];
+
+		// TODO Document why this needs to be so complicated
+		$lastSigNodeOffset = $lastSigNode === $node ?
+			$match['matchData'][0][1] + strlen( $match['matchData'][0][0] ) - $match['offset'] :
+			CommentUtils::childIndexOf( $lastSigNode ) + 1;
+		$sigRange = new ImmutableRange(
+			$firstSigNode->parentNode,
+			CommentUtils::childIndexOf( $firstSigNode ),
+			$lastSigNode === $node ? $node : $lastSigNode->parentNode,
+			$lastSigNodeOffset
+		);
+
+		return $sigRange;
+	}
+
 	private function buildThreadItems() : void {
 		$timestampRegexps = $this->getLocalTimestampRegexps();
 		$commentItems = [];
@@ -816,7 +840,6 @@ class CommentParser {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $lastSigNode );
 				$author = $foundSignature[1];
-				$firstSigNode = end( $foundSignature[0] );
 				$lastSigNode = $foundSignature[0][0];
 
 				if ( !$author ) {
@@ -825,15 +848,8 @@ class CommentParser {
 					continue;
 				}
 
-				$lastSigNodeOffset = $lastSigNode === $node ?
-					$match['matchData'][0][1] + strlen( $match['matchData'][0][0] ) - $match['offset'] :
-					CommentUtils::childIndexOf( $lastSigNode ) + 1;
-				$sigRange = new ImmutableRange(
-					$firstSigNode->parentNode,
-					CommentUtils::childIndexOf( $firstSigNode ),
-					$lastSigNode === $node ? $node : $lastSigNode->parentNode,
-					$lastSigNodeOffset
-				);
+				$sigRanges = [];
+				$sigRanges[] = $this->adjustSigRange( $foundSignature[0], $match, $node );
 
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curCommentEnd );
@@ -841,16 +857,40 @@ class CommentParser {
 
 				// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 				// avoiding that would be more difficult and slower.
+				//
+				// If this skips over another potential signature, also skip it in the main TreeWalker loop, to
+				// avoid generating multiple comments when there is more than one signature on a single "line".
+				// Often this is done when someone edits their comment later and wants to add a note about that.
+				// (Or when another person corrects a typo, or strikes out a comment, etc.) Multiple comments
+				// within one paragraph/list-item result in a confusing double "Reply" button, and we also have
+				// no way to indicate which one you're replying to (this might matter in the future for
+				// notifications or something).
 				CommentUtils::linearWalk(
 					$lastSigNode,
-					function ( string $event, DOMNode $node ) use ( &$endNode ) {
-						if ( CommentUtils::isBlockElement( $node ) ) {
+					function ( string $event, DOMNode $n ) use (
+						&$endNode, &$sigRanges,
+						$treeWalker, $timestampRegexps, $node
+					) {
+						if ( CommentUtils::isBlockElement( $n ) ) {
 							// Stop when entering or leaving a block node
 							return true;
 						}
+						if (
+							$event === 'leave' &&
+							$n instanceof DOMText && $n !== $node &&
+							( $match2 = $this->findTimestamp( $n, $timestampRegexps ) )
+						) {
+							// If this skips over another potential signature, also skip it in the main TreeWalker loop
+							$treeWalker->currentNode = $n;
+							// …and add it as another signature to this comment (regardless of the author and timestamp)
+							$foundSignature2 = $this->findSignature( $n, $node );
+							if ( $foundSignature2[1] ) {
+								$sigRanges[] = $this->adjustSigRange( $foundSignature2[0], $match2, $n );
+							}
+						}
 						if ( $event === 'leave' ) {
 							// Take the last complete node which we skipped past
-							$endNode = $node;
+							$endNode = $n;
 						}
 					}
 				);
@@ -883,50 +923,10 @@ class CommentParser {
 				// of '+00:00', like Date#toISOString in JavaScript.
 				$dateTimeStr = $dateTime->format( 'Y-m-d\TH:i:s.v\Z' );
 
-				// Avoid generating multiple comments when there is more than one signature on a single "line".
-				// Often this is done when someone edits their comment later and wants to add a note about that.
-				// (Or when another person corrects a typo, or strikes out a comment, etc.) Multiple comments
-				// within one paragraph/list-item result in a confusing double "Reply" button, and we also have
-				// no way to indicate which one you're replying to (this might matter in the future for
-				// notifications or something).
-				if (
-					$curComment instanceof CommentItem &&
-					(
-						CommentUtils::closestElement(
-							$node, [ 'li', 'dd', 'p' ]
-						) ?? $node->parentNode
-					) ===
-					(
-						CommentUtils::closestElement(
-							$curComment->getRange()->endContainer, [ 'li', 'dd', 'p' ]
-						) ?? $curComment->getRange()->endContainer->parentNode
-					)
-				) {
-					// Merge this with the previous comment. Use that comment's author and timestamp.
-					$curComment->addSignatureRange( $sigRange );
-
-					if (
-						$curComment->getRange()->endContainer === $range->endContainer &&
-						$curComment->getRange()->endOffset <= $range->endOffset
-					) {
-						// We've already skipped over this signature, and the $range and $level are messed up,
-						// because that causes $startNode to be after $endNode
-						continue;
-					}
-
-					$curComment->setRange(
-						$curComment->getRange()->setEnd( $range->endContainer, $range->endOffset )
-					);
-					$curComment->setLevel( min( $level, $curComment->getLevel() ) );
-					$curCommentEnd = $range->endContainer;
-
-					continue;
-				}
-
 				$curComment = new CommentItem(
 					$level,
 					$range,
-					[ $sigRange ],
+					$sigRanges,
 					$dateTimeStr,
 					$author
 				);
