@@ -765,6 +765,30 @@ Parser.prototype.findCommentById = function ( id ) {
 	return this.threadItemsById[ id ] || null;
 };
 
+/**
+ * @param {Node[]} sigNodes
+ * @param {Object} match
+ * @param {Text} node
+ * @return {Object}
+ */
+function adjustSigRange( sigNodes, match, node ) {
+	var firstSigNode, lastSigNode, lastSigNodeOffset, sigRange;
+	firstSigNode = sigNodes[ sigNodes.length - 1 ];
+	lastSigNode = sigNodes[ 0 ];
+
+	// TODO Document why this needs to be so complicated
+	lastSigNodeOffset = lastSigNode === node ?
+		match.matchData.index + match.matchData[ 0 ].length - match.offset :
+		utils.childIndexOf( lastSigNode ) + 1;
+	sigRange = {
+		startContainer: firstSigNode.parentNode,
+		startOffset: utils.childIndexOf( firstSigNode ),
+		endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
+		endOffset: lastSigNodeOffset
+	};
+	return sigRange;
+}
+
 Parser.prototype.buildThreadItems = function () {
 	var
 		dfParsers = this.getLocalTimestampParsers(),
@@ -773,8 +797,8 @@ Parser.prototype.buildThreadItems = function () {
 		threadItems = [],
 		treeWalker,
 		node, range, fakeHeading, curComment, curCommentEnd, headingNodeAndOffset, headingNode, startOffset,
-		foundSignature, firstSigNode, lastSigNode, sigRange, author, startNode, endNode, length,
-		match, lastSigNodeOffset, startLevel, endLevel, level, dateTime, warnings;
+		foundSignature, lastSigNode, sigRanges, author, startNode, endNode, length,
+		match, startLevel, endLevel, level, dateTime, warnings;
 
 	treeWalker = this.rootNode.ownerDocument.createTreeWalker(
 		this.rootNode,
@@ -816,7 +840,6 @@ Parser.prototype.buildThreadItems = function () {
 			warnings = [];
 			foundSignature = this.findSignature( node, lastSigNode );
 			author = foundSignature[ 1 ];
-			firstSigNode = foundSignature[ 0 ][ foundSignature[ 0 ].length - 1 ];
 			lastSigNode = foundSignature[ 0 ][ 0 ];
 
 			if ( !author ) {
@@ -825,15 +848,8 @@ Parser.prototype.buildThreadItems = function () {
 				continue;
 			}
 
-			lastSigNodeOffset = lastSigNode === node ?
-				match.matchData.index + match.matchData[ 0 ].length - match.offset :
-				utils.childIndexOf( lastSigNode ) + 1;
-			sigRange = {
-				startContainer: firstSigNode.parentNode,
-				startOffset: utils.childIndexOf( firstSigNode ),
-				endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
-				endOffset: lastSigNodeOffset
-			};
+			sigRanges = [];
+			sigRanges.push( adjustSigRange( foundSignature[ 0 ], match, node ) );
 
 			// Everything from the last comment up to here is the next comment
 			startNode = this.nextInterestingLeafNode( curCommentEnd );
@@ -841,19 +857,41 @@ Parser.prototype.buildThreadItems = function () {
 
 			// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 			// avoiding that would be more difficult and slower.
+			//
+			// If this skips over another potential signature, also skip it in the main TreeWalker loop, to
+			// avoid generating multiple comments when there is more than one signature on a single "line".
+			// Often this is done when someone edits their comment later and wants to add a note about that.
+			// (Or when another person corrects a typo, or strikes out a comment, etc.) Multiple comments
+			// within one paragraph/list-item result in a confusing double "Reply" button, and we also have
+			// no way to indicate which one you're replying to (this might matter in the future for
+			// notifications or something).
 			utils.linearWalk(
 				lastSigNode,
 				// eslint-disable-next-line no-loop-func
-				function ( event, currentNode ) {
-					if ( utils.isBlockElement( currentNode ) ) {
+				function ( event, n ) {
+					var match2, foundSignature2;
+					if ( utils.isBlockElement( n ) ) {
 						// Stop when entering or leaving a block node
 						return true;
 					}
+					if (
+						event === 'leave' &&
+						n.nodeType === Node.TEXT_NODE && n !== node &&
+						( match2 = this.findTimestamp( n, timestampRegexps ) )
+					) {
+						// If this skips over another potential signature, also skip it in the main TreeWalker loop
+						treeWalker.currentNode = n;
+						// …and add it as another signature to this comment (regardless of the author and timestamp)
+						foundSignature2 = this.findSignature( n, node );
+						if ( foundSignature2[ 1 ] ) {
+							sigRanges.push( adjustSigRange( foundSignature2[ 0 ], match2, n ) );
+						}
+					}
 					if ( event === 'leave' ) {
 						// Take the last complete node which we skipped past
-						endNode = currentNode;
+						endNode = n;
 					}
-				}
+				}.bind( this )
 			);
 
 			length = endNode.nodeType === Node.TEXT_NODE ?
@@ -879,41 +917,10 @@ Parser.prototype.buildThreadItems = function () {
 				warnings.push( dateTime.discussionToolsWarning );
 			}
 
-			// Avoid generating multiple comments when there is more than one signature on a single "line".
-			// Often this is done when someone edits their comment later and wants to add a note about that.
-			// (Or when another person corrects a typo, or strikes out a comment, etc.) Multiple comments
-			// within one paragraph/list-item result in a confusing double "Reply" button, and we also have
-			// no way to indicate which one you're replying to (this might matter in the future for
-			// notifications or something).
-			if (
-				curComment instanceof CommentItem &&
-				( utils.closestElement( node, [ 'li', 'dd', 'p' ] ) || node.parentNode ) ===
-					( utils.closestElement( curComment.range.endContainer, [ 'li', 'dd', 'p' ] ) || curComment.range.endContainer.parentNode )
-			) {
-				// Merge this with the previous comment. Use that comment's author and timestamp.
-				curComment.signatureRanges.push( sigRange );
-
-				if (
-					curComment.range.endContainer === range.endContainer &&
-					curComment.range.endOffset <= range.endOffset
-				) {
-					// We've already skipped over this signature, and the `range` and `level` are messed up,
-					// because that causes `startNode` to be after `endNode`
-					continue;
-				}
-
-				curComment.range.endContainer = range.endContainer;
-				curComment.range.endOffset = range.endOffset;
-				curComment.level = Math.min( level, curComment.level );
-				curCommentEnd = range.endContainer;
-
-				continue;
-			}
-
 			curComment = new CommentItem(
 				level,
 				range,
-				[ sigRange ],
+				sigRanges,
 				dateTime,
 				author
 			);
