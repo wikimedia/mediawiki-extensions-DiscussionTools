@@ -35,6 +35,20 @@
 		"data": "../data/itwiki-data.json"
 	},
 	{
+		"name": "Double signature 1",
+		"dom": "cases/double-signature1/double-signature1.html",
+		"expected": "cases/double-signature1/double-signature1-formattedreply.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Double signature 2",
+		"dom": "cases/double-signature2/double-signature2.html",
+		"expected": "cases/double-signature2/double-signature2-formattedreply.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Mess caused by unclosed <font> tags in wikitext",
 		"dom": "cases/unclosed-font/unclosed-font.html",
 		"expected": "cases/unclosed-font/unclosed-font-formattedreply.html",
