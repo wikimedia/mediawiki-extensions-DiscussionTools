@@ -533,6 +533,45 @@ class CommentParser {
 	}
 
 	/**
+	 * Given a link node (`<a>`), if it's a link to a user-related page, return their username.
+	 *
+	 * @param DOMElement $link
+	 * @return string|null Username, or null
+	 */
+	private static function getUsernameFromLink( DOMElement $link ) {
+		$username = null;
+		$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) );
+		if ( !$title ) {
+			return null;
+		}
+		if ( $title->getNamespace() === NS_USER || $title->getNamespace() === NS_USER_TALK ) {
+			$username = $title->getText();
+			if ( strpos( $username, '/' ) !== false ) {
+				return null;
+			}
+		} elseif ( $title->isSpecial( 'Contributions' ) ) {
+			$parts = explode( '/', $title->getText(), 2 );
+			if ( !isset( $parts[1] ) ) {
+				return null;
+			}
+			// Normalize the username: users may link to their contributions with an unnormalized name
+			$userpage = Title::makeTitleSafe( NS_USER, $parts[1] );
+			if ( !$userpage ) {
+				return null;
+			}
+			$username = $userpage->getText();
+		}
+		if ( !$username ) {
+			return null;
+		}
+		if ( IP::isIPv6( $username ) ) {
+			// Bot-generated links "Preceding unsigned comment added by" have non-standard case
+			$username = strtoupper( $username );
+		}
+		return $username;
+	}
+
+	/**
 	 * Find a user signature preceding a timestamp.
 	 *
 	 * The signature includes the timestamp node.
@@ -549,93 +588,72 @@ class CommentParser {
 	 * @return array [ nodes, username ]
 	 */
 	private function findSignature( DOMText $timestampNode, ?DOMNode $until = null ) : array {
-		// Support timestamps being linked to the diff introducing the comment:
-		// if the timestamp node is the only child of a link node, use the link node instead
-		if (
-			!$timestampNode->previousSibling && !$timestampNode->nextSibling &&
-			strtolower( $timestampNode->parentNode->nodeName ) === 'a'
-		) {
-			$timestampNode = $timestampNode->parentNode;
-		}
-
-		$node = $timestampNode;
-		$sigNodes = [ $node ];
 		$sigUsername = null;
 		$length = 0;
 		$lastLinkNode = $timestampNode;
 
-		while (
-			( $node = $node->previousSibling ) && $length < self::SIGNATURE_SCAN_LIMIT && $node !== $until
-		) {
-			$sigNodes[] = $node;
-			$length += $node->textContent ? mb_strlen( $node->textContent ) : 0;
-			if ( !( $node instanceof DOMElement ) ) {
-				continue;
-			}
+		CommentUtils::linearWalkBackwards(
+			$timestampNode,
+			function ( string $event, DOMNode $node ) use (
+				&$sigUsername, &$lastLinkNode, &$length,
+				$until, $timestampNode
+			) {
+				if ( $event === 'enter' && $node === $until ) {
+					return true;
+				}
+				if ( $length >= self::SIGNATURE_SCAN_LIMIT ) {
+					return true;
+				}
+				if ( CommentUtils::isBlockElement( $node ) ) {
+					// Don't allow reaching into preceding paragraphs
+					return true;
+				}
 
-			$links = [];
-			if ( strtolower( $node->nodeName ) === 'a' ) {
-				$links = [ $node ];
-			} else {
+				if ( $event === 'leave' && $node !== $timestampNode ) {
+					$length += $node instanceof DOMText ? mb_strlen( $node->textContent ) : 0;
+				}
+
+				// Find the closest link before timestamp that links to the user's user page.
+				//
+				// Support timestamps being linked to the diff introducing the comment:
+				// if the timestamp node is the only child of a link node, use the link node instead
+				//
 				// Handle links nested in formatting elements.
-				// Helpful accidental feature: users whose signature is not detected in full (due to
-				// text formatting) can just wrap it in a <span> to fix that.
-				// "Ten Pound Hammer • (What did I screw up now?)"
-				// "« Saper // dyskusja »"
-				$links = iterator_to_array( $node->getElementsByTagName( 'a' ) );
+				if ( $event === 'leave' && $node instanceof DOMElement && strtolower( $node->nodeName ) === 'a' ) {
+					$username = self::getUsernameFromLink( $node );
+					if ( $username ) {
+						// Accept the first link to the user namespace, then only accept links to that user
+						if ( $sigUsername === null ) {
+							$sigUsername = $username;
+						}
+						if ( $username === $sigUsername ) {
+							$lastLinkNode = $node;
+						}
+					}
+					// Keep looking if a node with links wasn't a link to a user page
+					// "Doc James (talk · contribs · email)"
+				}
 			}
-			if ( !count( $links ) ) {
-				continue;
-			}
+		);
 
-			// Find the closest link before timestamp that links to the user's user page.
-			foreach ( array_reverse( $links ) as $link ) {
-				$username = null;
-				$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) );
-				if ( !$title ) {
-					continue;
-				}
-				if ( $title->getNamespace() === NS_USER || $title->getNamespace() === NS_USER_TALK ) {
-					$username = $title->getText();
-					if ( strpos( $username, '/' ) !== false ) {
-						continue;
-					}
-				} elseif ( $title->isSpecial( 'Contributions' ) ) {
-					$parts = explode( '/', $title->getText(), 2 );
-					if ( !isset( $parts[1] ) ) {
-						continue;
-					}
-					// Normalize the username: users may link to their contributions with an unnormalized name
-					$userpage = Title::makeTitleSafe( NS_USER, $parts[1] );
-					if ( !$userpage ) {
-						continue;
-					}
-					$username = $userpage->getText();
-				}
-				if ( !$username ) {
-					continue;
-				}
-				if ( IP::isIPv6( $username ) ) {
-					// Bot-generated links "Preceding unsigned comment added by" have non-standard case
-					$username = strtoupper( $username );
-				}
+		$range = new ImmutableRange(
+			$lastLinkNode->parentNode,
+			CommentUtils::childIndexOf( $lastLinkNode ),
+			$timestampNode->parentNode,
+			CommentUtils::childIndexOf( $timestampNode ) + 1
+		);
 
-				// Accept the first link to the user namespace, then only accept links to that user
-				if ( $sigUsername === null ) {
-					$sigUsername = $username;
-				}
-				if ( $username === $sigUsername ) {
-					$lastLinkNode = $node;
-					break;
-				}
-			}
-			// Keep looking if a node with links wasn't a link to a user page
-			// "Doc James (talk · contribs · email)"
-		}
-		// Pop excess text nodes
-		while ( end( $sigNodes ) !== $lastLinkNode ) {
-			array_pop( $sigNodes );
-		}
+		// Expand the range so that it covers sibling nodes.
+		// This will include any wrapping formatting elements as part of the signature.
+		//
+		// Helpful accidental feature: users whose signature is not detected in full (due to
+		// text formatting) can just wrap it in a <span> to fix that.
+		// "Ten Pound Hammer • (What did I screw up now?)"
+		// "« Saper // dyskusja »"
+		//
+		// TODO Not sure if this is actually good, might be better to just use the range...
+		$sigNodes = array_reverse( CommentUtils::getCoveredSiblings( $range ) );
+
 		return [ $sigNodes, $sigUsername ];
 	}
 

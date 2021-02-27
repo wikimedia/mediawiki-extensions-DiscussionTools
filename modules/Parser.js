@@ -11,6 +11,7 @@ var
 	trimByteLength = require( 'mediawiki.String' ).trimByteLength,
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
+	ThreadItem = require( './ThreadItem.js' ),
 	// Data::getLocalData()
 	data = require( './parser/data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
@@ -521,6 +522,51 @@ function getTitleFromUrl( url ) {
 }
 
 /**
+ * Given a link node (`<a>`), if it's a link to a user-related page, return their username.
+ *
+ * @param {HTMLElement} link
+ * @return {string|null}
+ */
+function getUsernameFromLink( link ) {
+	var username, userpage, title;
+	title = getTitleFromUrl( link.href );
+	if ( !title ) {
+		return null;
+	}
+	if (
+		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user ||
+		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user_talk
+	) {
+		username = title.getMainText();
+		if ( username.indexOf( '/' ) !== -1 ) {
+			return null;
+		}
+	} else if (
+		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).special &&
+		title.getMainText().split( '/' )[ 0 ] === data.specialContributionsName
+	) {
+		username = title.getMainText().split( '/' )[ 1 ];
+		if ( !username ) {
+			return null;
+		}
+		// Normalize the username: users may link to their contributions with an unnormalized name
+		userpage = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, username );
+		if ( !userpage ) {
+			return null;
+		}
+		username = userpage.getMainText();
+	}
+	if ( !username ) {
+		return null;
+	}
+	if ( mw.util.isIPv6Address( username ) ) {
+		// Bot-generated links "Preceding unsigned comment added by" have non-standard case
+		username = username.toUpperCase();
+	}
+	return username;
+}
+
+/**
  * Find a user signature preceding a timestamp.
  *
  * The signature includes the timestamp node.
@@ -537,93 +583,72 @@ function getTitleFromUrl( url ) {
  *  - {string|null} Username, null for unsigned comments
  */
 Parser.prototype.findSignature = function ( timestampNode, until ) {
-	var node, sigNodes, sigUsername, length, lastLinkNode, links, nodes;
+	var sigNodes, sigUsername, length, username, lastLinkNode, range, nativeRange;
 
-	// Support timestamps being linked to the diff introducing the comment:
-	// if the timestamp node is the only child of a link node, use the link node instead
-	if (
-		!timestampNode.previousSibling && !timestampNode.nextSibling &&
-		timestampNode.parentNode.nodeName.toLowerCase() === 'a'
-	) {
-		timestampNode = timestampNode.parentNode;
-	}
-
-	node = timestampNode;
-	sigNodes = [ node ];
 	sigUsername = null;
 	length = 0;
 	lastLinkNode = timestampNode;
 
-	while ( ( node = node.previousSibling ) && length < data.signatureScanLimit && node !== until ) {
-		sigNodes.push( node );
-		length += node.textContent ? codePointLength( node.textContent ) : 0;
-		if ( node.nodeType !== Node.ELEMENT_NODE ) {
-			continue;
-		}
-		links = [];
-		if ( node.tagName.toLowerCase() === 'a' ) {
-			links.push( node );
-		} else {
-			// Handle links nested in formatting elements.
-			// Helpful accidental feature: users whose signature is not detected in full (due to
-			// text formatting) can just wrap it in a <span> to fix that.
-			// "Ten Pound Hammer • (What did I screw up now?)"
-			// "« Saper // dyskusja »"
-			nodes = node.getElementsByTagName( 'a' );
-			links.push.apply( links, nodes );
-		}
-		if ( !links.length ) {
-			continue;
-		}
-		// Find the closest link before timestamp that links to the user's user page.
-		// Use .some() rather than .every() to permit vanity links
-		// "TonyTheTiger (T / C / WP:FOUR / WP:CHICAGO / WP:WAWARD)"
-		// eslint-disable-next-line no-loop-func
-		if ( links.reverse().some( function ( link ) {
-			var username, title;
-			title = getTitleFromUrl( link.href );
-			if ( !title ) {
-				return false;
+	utils.linearWalkBackwards(
+		timestampNode,
+		function ( event, node ) {
+			if ( event === 'enter' && node === until ) {
+				return true;
 			}
-			if (
-				title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user ||
-				title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user_talk
-			) {
-				username = title.getMainText();
-				if ( username.indexOf( '/' ) !== -1 ) {
-					return false;
-				}
-			} else if (
-				title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).special &&
-				title.getMainText().split( '/' )[ 0 ] === data.specialContributionsName
-			) {
-				username = title.getMainText().split( '/' )[ 1 ];
-				// Normalize the username: users may link to their contributions with an unnormalized name
-				username = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, username ).getMainText();
+			if ( length >= data.signatureScanLimit ) {
+				return true;
 			}
-			if ( !username ) {
-				return false;
-			}
-			if ( mw.util.isIPv6Address( username ) ) {
-				// Bot-generated links "Preceding unsigned comment added by" have non-standard case
-				username = username.toUpperCase();
+			if ( utils.isBlockElement( node ) ) {
+				// Don't allow reaching into preceding paragraphs
+				return true;
 			}
 
-			// Accept the first link to the user namespace, then only accept links to that user
-			if ( !sigUsername ) {
-				sigUsername = username;
+			if ( event === 'leave' && node !== timestampNode ) {
+				length += node.nodeType === Node.TEXT_NODE ? codePointLength( node.textContent ) : 0;
 			}
-			return username === sigUsername;
-		} ) ) {
-			lastLinkNode = node;
+
+			// Find the closest link before timestamp that links to the user's user page.
+			//
+			// Support timestamps being linked to the diff introducing the comment:
+			// if the timestamp node is the only child of a link node, use the link node instead
+			//
+			// Handle links nested in formatting elements.
+			if ( event === 'leave' && node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'a' ) {
+				username = getUsernameFromLink( node );
+				if ( username ) {
+					// Accept the first link to the user namespace, then only accept links to that user
+					if ( sigUsername === null ) {
+						sigUsername = username;
+					}
+					if ( username === sigUsername ) {
+						lastLinkNode = node;
+					}
+				}
+				// Keep looking if a node with links wasn't a link to a user page
+				// "Doc James (talk · contribs · email)"
+			}
 		}
-		// Keep looking if a node with links wasn't a link to a user page
-		// "Doc James (talk · contribs · email)"
-	}
-	// Pop excess text nodes
-	while ( sigNodes[ sigNodes.length - 1 ] !== lastLinkNode ) {
-		sigNodes.pop();
-	}
+	);
+
+	range = {
+		startContainer: lastLinkNode.parentNode,
+		startOffset: utils.childIndexOf( lastLinkNode ),
+		endContainer: timestampNode.parentNode,
+		endOffset: utils.childIndexOf( timestampNode ) + 1
+	};
+	nativeRange = ThreadItem.prototype.getNativeRange.call( { range: range } );
+
+	// Expand the range so that it covers sibling nodes.
+	// This will include any wrapping formatting elements as part of the signature.
+	//
+	// Helpful accidental feature: users whose signature is not detected in full (due to
+	// text formatting) can just wrap it in a <span> to fix that.
+	// "Ten Pound Hammer • (What did I screw up now?)"
+	// "« Saper // dyskusja »"
+	//
+	// TODO Not sure if this is actually good, might be better to just use the range...
+	sigNodes = utils.getCoveredSiblings( nativeRange ).reverse();
+
 	return [ sigNodes, sigUsername ];
 };
 
