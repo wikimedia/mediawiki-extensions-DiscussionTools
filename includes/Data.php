@@ -40,19 +40,20 @@ class Data {
 			$lang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( $lang );
 		}
 
-		$langConv = $lang->getConverter();
+		$langConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
+			->getLanguageConverter( $lang );
 
 		$data = [];
 
 		$data['dateFormat'] = [];
 		$dateFormat = $lang->getDateFormatString( 'both', $lang->dateFormat( false ) );
-		foreach ( $lang->getVariants() as $variant ) {
+		foreach ( $langConv->getVariants() as $variant ) {
 			$convDateFormat = self::convertDateFormat( $dateFormat, $langConv, $variant );
 			$data['dateFormat'][$variant] = $convDateFormat;
 		}
 
 		$data['digits'] = [];
-		foreach ( $lang->getVariants() as $variant ) {
+		foreach ( $langConv->getVariants() as $variant ) {
 			$data['digits'][$variant] = [];
 			foreach ( str_split( '0123456789' ) as $digit ) {
 				if ( $config->get( 'TranslateNumerals' ) ) {
@@ -83,7 +84,7 @@ class Data {
 		) );
 
 		$data['timezones'] = [];
-		foreach ( $lang->getVariants() as $variant ) {
+		foreach ( $langConv->getVariants() as $variant ) {
 			$data['timezones'][$variant] = array_combine(
 				array_map( function ( string $tzMsg ) use ( $lang, $langConv, $variant ) {
 					// MWTimestamp::getTimezoneMessage()
@@ -115,7 +116,7 @@ class Data {
 			Language::MONTH_ABBREVIATED_MESSAGES
 		);
 		$data['contLangMessages'] = [];
-		foreach ( $lang->getVariants() as $variant ) {
+		foreach ( $langConv->getVariants() as $variant ) {
 			$data['contLangMessages'][$variant] = array_combine(
 				$messagesKeys,
 				array_map( function ( $key ) use ( $lang, $langConv, $variant ) {

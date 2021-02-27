@@ -498,6 +498,8 @@ class CommentParser {
 	 * @return string[] Regular expressions
 	 */
 	public function getLocalTimestampRegexps() : array {
+		$langConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
+			->getLanguageConverter( $this->language );
 		return array_map( function ( $contLangVariant ) {
 			return $this->getTimestampRegexp(
 				$contLangVariant,
@@ -505,7 +507,7 @@ class CommentParser {
 				'[' . implode( '', $this->digits[$contLangVariant] ) . ']',
 				$this->timezones[$contLangVariant]
 			);
-		}, $this->language->getVariants() );
+		}, $langConv->getVariants() );
 	}
 
 	/**
@@ -517,6 +519,8 @@ class CommentParser {
 	 * @return callable[] Parser functions
 	 */
 	private function getLocalTimestampParsers() : array {
+		$langConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
+			->getLanguageConverter( $this->language );
 		return array_map( function ( $contLangVariant ) {
 			return $this->getTimestampParser(
 				$contLangVariant,
@@ -525,7 +529,7 @@ class CommentParser {
 				$this->localTimezone,
 				$this->timezones[$contLangVariant]
 			);
-		}, $this->language->getVariants() );
+		}, $langConv->getVariants() );
 	}
 
 	/**
