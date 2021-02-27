@@ -275,10 +275,6 @@ class CommentUtils {
 		$range = $item->getRange();
 		$ancestor = $range->commonAncestorContainer;
 
-		if ( $ancestor === $range->startContainer || $ancestor === $range->endContainer ) {
-			return [ $ancestor ];
-		}
-
 		// Convert to array early because apparently DOMNodeList acts like a linked list
 		// and accessing items by index is slow
 		$siblings = iterator_to_array( $ancestor->childNodes );
@@ -286,13 +282,21 @@ class CommentUtils {
 		$end = count( $siblings ) - 1;
 
 		// Find first of the siblings that contains the item
-		while ( !self::contains( $siblings[ $start ], $range->startContainer ) ) {
-			$start++;
+		if ( $ancestor === $range->startContainer ) {
+			$start = $range->startOffset;
+		} else {
+			while ( !self::contains( $siblings[ $start ], $range->startContainer ) ) {
+				$start++;
+			}
 		}
 
 		// Find last of the siblings that contains the item
-		while ( !self::contains( $siblings[ $end ], $range->endContainer ) ) {
-			$end--;
+		if ( $ancestor === $range->endContainer ) {
+			$end = $range->endOffset - 1;
+		} else {
+			while ( !self::contains( $siblings[ $end ], $range->endContainer ) ) {
+				$end--;
+			}
 		}
 
 		return array_slice( $siblings, $start, $end - $start + 1 );
@@ -306,6 +310,10 @@ class CommentUtils {
 	 */
 	public static function getFullyCoveredSiblings( ThreadItem $item ) : ?array {
 		$siblings = self::getCoveredSiblings( $item );
+		$startContainer = $item->getRange()->startContainer;
+		$endContainer = $item->getRange()->endContainer;
+		$startOffset = $item->getRange()->startOffset;
+		$endOffset = $item->getRange()->endOffset;
 
 		$isIgnored = function ( $node ) {
 			// Ignore empty text nodes
@@ -333,7 +341,11 @@ class CommentUtils {
 		$startMatches = false;
 		$node = $siblings[ 0 ] ?? null;
 		while ( $node ) {
-			if ( $item->getRange()->startContainer === $node && $item->getRange()->startOffset === 0 ) {
+			if ( $startContainer->childNodes && $startContainer->childNodes[ $startOffset ] === $node ) {
+				$startMatches = true;
+				break;
+			}
+			if ( $startContainer === $node && $startOffset === 0 ) {
 				$startMatches = true;
 				break;
 			}
@@ -347,12 +359,16 @@ class CommentUtils {
 		$endMatches = false;
 		$node = end( $siblings );
 		while ( $node ) {
+			if ( $endContainer->childNodes && $endContainer->childNodes[ $endOffset - 1 ] === $node ) {
+				$endMatches = true;
+				break;
+			}
 			$length = ( $node->nodeType === XML_TEXT_NODE ) ?
 				strlen( rtrim( $node->nodeValue, "\t\n\f\r " ) ) :
 				// PHP bug: childNodes can be null for comment nodes
 				// (it should always be a DOMNodeList, even if the node can't have children)
 				( $node->childNodes ? $node->childNodes->length : 0 );
-			if ( $item->getRange()->endContainer === $node && $item->getRange()->endOffset === $length ) {
+			if ( $endContainer === $node && $endOffset === $length ) {
 				$endMatches = true;
 				break;
 			}

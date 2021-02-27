@@ -242,22 +242,26 @@ function getCoveredSiblings( item ) {
 	range = item.getNativeRange();
 	ancestor = range.commonAncestorContainer;
 
-	if ( ancestor === range.startContainer || ancestor === range.endContainer ) {
-		return [ ancestor ];
-	}
-
 	siblings = ancestor.childNodes;
 	start = 0;
 	end = siblings.length - 1;
 
 	// Find first of the siblings that contains the item
-	while ( !contains( siblings[ start ], range.startContainer ) ) {
-		start++;
+	if ( ancestor === range.startContainer ) {
+		start = range.startOffset;
+	} else {
+		while ( !contains( siblings[ start ], range.startContainer ) ) {
+			start++;
+		}
 	}
 
 	// Find last of the siblings that contains the item
-	while ( !contains( siblings[ end ], range.endContainer ) ) {
-		end--;
+	if ( ancestor === range.endContainer ) {
+		end = range.endOffset - 1;
+	} else {
+		while ( !contains( siblings[ end ], range.endContainer ) ) {
+			end--;
+		}
 	}
 
 	return Array.prototype.slice.call( siblings, start, end + 1 );
@@ -270,9 +274,15 @@ function getCoveredSiblings( item ) {
  * @return {HTMLElement[]|null}
  */
 function getFullyCoveredSiblings( item ) {
-	var siblings, node, startMatches, endMatches, length, parent;
+	var
+		siblings, startContainer, endContainer, startOffset, endOffset,
+		node, startMatches, endMatches, length, parent;
 
 	siblings = getCoveredSiblings( item );
+	startContainer = item.range.startContainer;
+	endContainer = item.range.endContainer;
+	startOffset = item.range.startOffset;
+	endOffset = item.range.endOffset;
 
 	function isIgnored( n ) {
 		// Ignore empty text nodes, and our own reply buttons
@@ -301,7 +311,11 @@ function getFullyCoveredSiblings( item ) {
 	startMatches = false;
 	node = siblings[ 0 ];
 	while ( node ) {
-		if ( item.range.startContainer === node && item.range.startOffset === 0 ) {
+		if ( startContainer.childNodes && startContainer.childNodes[ startOffset ] === node ) {
+			startMatches = true;
+			break;
+		}
+		if ( startContainer === node && startOffset === 0 ) {
 			startMatches = true;
 			break;
 		}
@@ -315,10 +329,14 @@ function getFullyCoveredSiblings( item ) {
 	endMatches = false;
 	node = siblings[ siblings.length - 1 ];
 	while ( node ) {
+		if ( endContainer.childNodes && endContainer.childNodes[ endOffset - 1 ] === node ) {
+			endMatches = true;
+			break;
+		}
 		length = node.nodeType === Node.TEXT_NODE ?
 			node.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
 			node.childNodes.length;
-		if ( item.range.endContainer === node && item.range.endOffset === length ) {
+		if ( endContainer === node && endOffset === length ) {
 			endMatches = true;
 			break;
 		}
