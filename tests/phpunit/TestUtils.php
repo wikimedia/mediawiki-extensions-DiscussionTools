@@ -24,6 +24,26 @@ trait TestUtils {
 	}
 
 	/**
+	 * Get text from path
+	 *
+	 * @param string $relativePath
+	 * @return string
+	 */
+	protected static function getText( string $relativePath ) : string {
+		return file_get_contents( __DIR__ . '/../' . $relativePath );
+	}
+
+	/**
+	 * Write text to path
+	 *
+	 * @param string $relativePath
+	 * @param string $text
+	 */
+	protected static function overwriteTextFile( string $relativePath, string $text ) : void {
+		file_put_contents( __DIR__ . '/../' . $relativePath, $text );
+	}
+
+	/**
 	 * Get parsed JSON from path
 	 *
 	 * @param string $relativePath
