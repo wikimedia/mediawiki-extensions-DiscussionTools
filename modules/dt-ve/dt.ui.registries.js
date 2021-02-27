@@ -21,7 +21,7 @@ importRegistry( ve.ui.commandRegistry, commandRegistry );
 sequenceRegistry = new ve.ui.SequenceRegistry();
 importRegistry( ve.ui.sequenceRegistry, sequenceRegistry );
 
-wikitextCommandRegistry = new ve.ui.CommandRegistry();
+wikitextCommandRegistry = new ve.ui.MWWikitextCommandRegistry( commandRegistry );
 importRegistry( ve.ui.wikitextCommandRegistry, wikitextCommandRegistry );
 wikitextSequenceRegistry = new ve.ui.SequenceRegistry();
 importRegistry( ve.ui.wikitextSequenceRegistry, wikitextSequenceRegistry );
