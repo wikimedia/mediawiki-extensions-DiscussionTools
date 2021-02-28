@@ -73,7 +73,10 @@ CommentTarget.static.importRules.external.blacklist = ve.extendObject(
 );
 
 CommentTarget.prototype.attachToolbar = function () {
-	this.replyWidget.$headerWrapper.prepend( this.getToolbar().$element );
+	this.replyWidget.$headerWrapper.append(
+		this.getToolbar().$element.append( this.replyWidget.modeTabSelect.$element )
+	);
+	this.getToolbar().$element.prepend( this.getSurface().getToolbarDialogs().$element );
 };
 
 CommentTarget.prototype.getSurfaceConfig = function ( config ) {
