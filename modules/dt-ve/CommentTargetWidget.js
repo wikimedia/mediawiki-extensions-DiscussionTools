@@ -7,9 +7,10 @@ var CommentTarget = require( './CommentTarget.js' );
  * @extends ve.ui.MWTargetWidget
  *
  * @constructor
+ * @param {mw.dt.ReplyWidgetVisual} replyWidget
  * @param {Object} [config] Configuration options
  */
-function CommentTargetWidget( config ) {
+function CommentTargetWidget( replyWidget, config ) {
 	config = $.extend( {}, {
 		excludeCommands: [
 			'heading1',
@@ -27,6 +28,7 @@ function CommentTargetWidget( config ) {
 		]
 	}, config );
 
+	this.replyWidget = replyWidget;
 	this.authors = config.authors;
 
 	// Parent constructor
@@ -44,7 +46,7 @@ OO.inheritClass( CommentTargetWidget, ve.ui.MWTargetWidget );
  * @inheritdoc
  */
 CommentTargetWidget.prototype.createTarget = function () {
-	return new CommentTarget( {
+	return new CommentTarget( this.replyWidget, {
 		// A lot of places expect ve.init.target to exist...
 		register: true,
 		toolbarGroups: this.toolbarGroups,
