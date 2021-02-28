@@ -420,6 +420,13 @@ function acceptOnlyNodesAllowingComments( node ) {
 	if ( node.id === 'toc' ) {
 		return NodeFilter.FILTER_REJECT;
 	}
+	// Don't detect comments within quotes (T275881)
+	if ( node instanceof HTMLElement && (
+		node.tagName.toLowerCase() === 'blockquote' ||
+		node.tagName.toLowerCase() === 'q'
+	) ) {
+		return NodeFilter.FILTER_REJECT;
+	}
 	// Don't detect comments within headings (but don't reject the headings themselves)
 	if ( node.parentNode instanceof HTMLElement && node.parentNode.tagName.match( /^h([1-6])$/i ) ) {
 		return NodeFilter.FILTER_REJECT;
