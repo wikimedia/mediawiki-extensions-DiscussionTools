@@ -205,7 +205,15 @@ NewTopicController.prototype.onSectionTitleChange = function () {
  * @private
  */
 NewTopicController.prototype.onSectionTitleBlur = function () {
+	var offsetChange,
+		offsetBefore = this.replyWidget.$element.offset().top;
+
 	this.checkSectionTitleValidity();
+
+	offsetChange = this.replyWidget.$element.offset().top - offsetBefore;
+	// Ensure the rest of the widget doesn't move when the validation
+	// message is triggered by a blur. (T275923)
+	window.scrollBy( 0, offsetChange );
 };
 
 /**
