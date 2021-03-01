@@ -31,10 +31,15 @@
 		}
 	}
 
-	&-headerWrapper {
+	.ve-ui-targetToolbar {
 		display: flex;
 		// Allow wrapping when the space is very narrow (mode switcher above toolbar)
 		flex-wrap: wrap-reverse;
+
+		> .oo-ui-windowManager {
+			flex-basis: 100%;
+			box-shadow: 0 -1px 1px 0 rgba( 0, 0, 0, 0.1 );
+		}
 	}
 
 	&-modeTabs {
