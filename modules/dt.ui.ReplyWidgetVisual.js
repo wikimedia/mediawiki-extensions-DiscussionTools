@@ -42,7 +42,7 @@ OO.inheritClass( ReplyWidgetVisual, require( 'ext.discussionTools.ReplyWidget' )
 /* Methods */
 
 ReplyWidgetVisual.prototype.createReplyBodyWidget = function ( config ) {
-	return new CommentTargetWidget( $.extend( {
+	return new CommentTargetWidget( this, $.extend( {
 		defaultMode: this.defaultMode
 	}, config ) );
 };

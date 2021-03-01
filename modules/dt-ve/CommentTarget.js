@@ -7,10 +7,13 @@ var
  * @class
  * @extends ve.init.mw.Target
  *
+ * @param {mw.dt.ReplyWidgetVisual} replyWidget
  * @param {Object} config Configuration options
  */
-function CommentTarget( config ) {
+function CommentTarget( replyWidget, config ) {
 	config = config || {};
+
+	this.replyWidget = replyWidget;
 
 	// Parent constructor
 	CommentTarget.super.call( this, ve.extendObject( {
@@ -70,7 +73,7 @@ CommentTarget.static.importRules.external.blacklist = ve.extendObject(
 );
 
 CommentTarget.prototype.attachToolbar = function () {
-	this.$element.parent().parent().children().first().prepend( this.getToolbar().$element );
+	this.replyWidget.$headerWrapper.prepend( this.getToolbar().$element );
 };
 
 CommentTarget.prototype.getSurfaceConfig = function ( config ) {

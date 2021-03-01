@@ -101,7 +101,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 
 	this.$headerWrapper = $( '<div>' ).addClass( 'dt-ui-replyWidget-headerWrapper' );
 	this.$headerWrapper.append(
-		// (visual mode toolbar magically appears here)
+		// Visual mode toolbar attached here by CommentTarget#attachToolbar
 		this.modeTabSelect.$element
 	);
 
