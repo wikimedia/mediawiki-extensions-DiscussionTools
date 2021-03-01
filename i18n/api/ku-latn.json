@@ -9,7 +9,7 @@
 	"apierror-discussiontools-commentid-notfound": "IDya şiroveyê nehat dîtin: $1",
 	"apihelp-discussiontools-param-oldid": "Hejmara guhartoye ku ber werê bikaranîn (ya ji ber xwe ve dibê ya herî nû).",
 	"apihelp-discussiontools-summary": "Agahiyên hewce ji bonî destpêkirina alavên gotûbêjê vedigerîne.",
-	"apihelp-discussiontoolsedit-param-commentid": "IDya şiroveyê.",
+	"apihelp-discussiontoolsedit-param-commentid": "IDya şîroveyê ji bo cewabdanê. Tenê gava <var>paction</var> <var>addcomment</var> be tê bikaranîn.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Naveroka ku wek wîkînivîs were weşandin. Nikare tevî <var>html</var> were bikaranîn.",
 	"apihelp-discussiontoolsedit-summary": "Peyamek li ser rûpeleke gotûbêjê binivîse."
 }

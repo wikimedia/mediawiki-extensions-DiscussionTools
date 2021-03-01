@@ -9,7 +9,7 @@
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "{{doc-apihelp-paramvalue|discussiontools|paction|transcludedfrom}}",
 	"apihelp-discussiontools-summary": "{{doc-apihelp-summary|discussiontools}}",
 	"apihelp-discussiontoolsedit-param-commentid": "{{doc-apihelp-param|discussiontoolsedit|commentid}}",
-	"apihelp-discussiontoolsedit-param-html": "{{optional}}\n{{doc-apihelp-param|discussiontoolsedit|html}}",
+	"apihelp-discussiontoolsedit-param-html": "{{doc-apihelp-param|discussiontoolsedit|html}}",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{doc-apihelp-param|discussiontoolsedit|sectiontitle}}",
 	"apihelp-discussiontoolsedit-param-wikitext": "{{doc-apihelp-param|discussiontoolsedit|wikitext}}",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addcomment}}",
