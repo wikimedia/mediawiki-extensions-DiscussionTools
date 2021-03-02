@@ -672,6 +672,7 @@ class CommentParser {
 		// Don't detect comments within quotes (T275881)
 		if ( $node instanceof DOMElement && (
 			strtolower( $node->tagName ) === 'blockquote' ||
+			strtolower( $node->tagName ) === 'cite' ||
 			strtolower( $node->tagName ) === 'q'
 		) ) {
 			return NodeFilter::FILTER_REJECT;

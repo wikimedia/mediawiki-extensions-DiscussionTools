@@ -423,6 +423,7 @@ function acceptOnlyNodesAllowingComments( node ) {
 	// Don't detect comments within quotes (T275881)
 	if ( node instanceof HTMLElement && (
 		node.tagName.toLowerCase() === 'blockquote' ||
+		node.tagName.toLowerCase() === 'cite' ||
 		node.tagName.toLowerCase() === 'q'
 	) ) {
 		return NodeFilter.FILTER_REJECT;
