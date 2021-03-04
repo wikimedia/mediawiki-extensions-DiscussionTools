@@ -78,6 +78,9 @@ class CommentUtils {
 		'script', 'style',
 		// Escapable raw text elements
 		'textarea', 'title',
+		// Treated like text when scripting is enabled in the parser
+		// https://html.spec.whatwg.org/#the-noscript-element
+		'noscript',
 	];
 
 	/**
