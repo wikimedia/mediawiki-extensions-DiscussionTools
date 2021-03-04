@@ -36,7 +36,11 @@ function MWUsernameCompletionAction( surface ) {
 			action.localUsers.push( user );
 		}
 	} );
-	if ( relevantUserName && this.localUsers.indexOf( relevantUserName ) === -1 ) {
+	if (
+		relevantUserName &&
+		relevantUserName !== mw.user.getName() &&
+		this.localUsers.indexOf( relevantUserName ) === -1
+	) {
 		this.localUsers.push( relevantUserName );
 		this.localUsers.sort();
 	}
