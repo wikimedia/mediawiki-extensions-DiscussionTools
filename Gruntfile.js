@@ -12,13 +12,7 @@ module.exports = function ( grunt ) {
 				cache: true,
 				fix: grunt.option( 'fix' )
 			},
-			all: [
-				'*.{js,json}',
-				'modules/**/*.{js,json}',
-				'tests/**/*.{js,json}',
-				'i18n/**/{en,qqq}.json',
-				'!modules/lib/**'
-			]
+			all: '.'
 		},
 		stylelint: {
 			all: [
