@@ -552,7 +552,7 @@ ReplyWidget.prototype.onInputChange = function () {
  * @return {jQuery.Promise} Promise resolved when we're done
  */
 ReplyWidget.prototype.preparePreview = function ( wikitext ) {
-	var parsePromise, widget, title, indent;
+	var parsePromise, widget, title, indent, signature;
 
 	if ( this.getMode() !== 'source' ) {
 		return $.Deferred().resolve().promise();
@@ -588,8 +588,13 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 
 		if ( !modifier.isWikitextSigned( wikitext ) ) {
 			// Add signature.
+			signature = mw.msg( 'discussiontools-signature-prefix' ) + '~~~~';
 			// Drop opacity of signature in preview to make message body preview clearer.
-			wikitext = wikitext + '<span style="opacity: 0.6;">' + mw.msg( 'discussiontools-signature-prefix' ) + '~~~~</span>';
+			// Extract any leading spaces outside the <span> markup to ensure accurate previews.
+			signature = signature.replace( /^( *)(.+)$/, function ( _, leadingSpaces, sig ) {
+				return leadingSpaces + '<span style="opacity: 0.6;">' + sig + '</span>';
+			} );
+			wikitext += signature;
 		}
 		if ( title ) {
 			wikitext = '== ' + title + ' ==\n' + wikitext;
