@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
 use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentModifier
@@ -158,6 +159,30 @@ class CommentModifierTest extends IntegrationTestCase {
 
 	public function provideIsHtmlSigned() : array {
 		return self::getJson( '../cases/isHtmlSigned.json' );
+	}
+
+	/**
+	 * @dataProvider provideAppendSignature
+	 * @covers ::appendSignature
+	 */
+	public function testAppendSignature(
+		string $msg, string $html, string $expected
+	) : void {
+		$doc = self::createDocument( '' );
+		$container = $doc->createElement( 'div' );
+		DOMCompat::setInnerHTML( $container, $html );
+
+		CommentModifier::appendSignature( $container );
+
+		self::assertEquals(
+			$expected,
+			XMLSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'],
+			$msg
+		);
+	}
+
+	public function provideAppendSignature() : array {
+		return self::getJson( '../cases/appendSignature.json' );
 	}
 
 	/**

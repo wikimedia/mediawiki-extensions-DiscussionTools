@@ -429,7 +429,10 @@ function appendSignature( container ) {
 	// add another paragraph to contain the signature.
 	if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
 		container.appendChild( doc.createElement( 'p' ) );
-		// Trim the signature to prevent leading whitespace triggering preformatted text (T269188)
+	}
+	// If the last node is empty, trim the signature to prevent leading whitespace triggering
+	// preformatted text (T269188, T276612)
+	if ( !container.lastChild.firstChild ) {
 		signature = signature.trim();
 	}
 	// Sign the last line
@@ -535,5 +538,6 @@ module.exports = {
 	addHtmlReply: addHtmlReply,
 	isWikitextSigned: isWikitextSigned,
 	isHtmlSigned: isHtmlSigned,
+	appendSignature: appendSignature,
 	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks
 };
