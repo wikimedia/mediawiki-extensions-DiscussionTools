@@ -9,10 +9,14 @@
 		"ve": "readonly",
 		"RangeFix": "readonly"
 	},
-	"overrides": [ {
-		"files": [ "i18n/**/*.json" ],
-		"rules": {
-			"sort-keys": "error"
+	"overrides": [
+		{
+			"files": [
+				"i18n/**/*.json"
+			],
+			"rules": {
+				"sort-keys": "error"
+			}
 		}
-	} ]
+	]
 }
