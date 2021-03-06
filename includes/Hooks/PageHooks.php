@@ -32,11 +32,15 @@ class PageHooks implements
 	 */
 	public function onBeforePageDisplay( $output, $skin ) : void {
 		$user = $output->getUser();
-		// Load modules if any DT feature is enabled for this user
-		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
+		// Load style modules if the tools can be available for the title
+		// as this means the DOM may have been modified in the parser cache.
+		if ( HookUtils::isAvailableForTitle( $output->getTitle() ) ) {
 			$output->addModuleStyles( [
 				'ext.discussionTools.init.styles'
 			] );
+		}
+		// Load modules if any DT feature is enabled for this user
+		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
 			$output->addModules( [
 				'ext.discussionTools.init'
 			] );
