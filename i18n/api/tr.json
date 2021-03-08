@@ -8,6 +8,7 @@
 	},
 	"apierror-discussiontools-commentid-notfound": "Yorum kimliği bulunamadı: $1",
 	"apihelp-discussiontools-param-oldid": "Kullanılacak revizyon numarası (en son revizyon varsayılanları).",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Bir sayfadaki her yorumun dahil edildiği sayfaların başlıklarını getirir.",
 	"apihelp-discussiontools-summary": "Tartışma araçlarını başlatmak için gereken meta verileri döndürür.",
 	"apihelp-discussiontoolsedit-param-commentid": "Cevap verilecek yorum kimliği. Sadece <var>paction</var>, <var>addcomment</var> ise kullanılır.",
 	"apihelp-discussiontoolsedit-param-html": "Yayımlanacak içerik, HTML olarak. <var>wikitext</var> ile birlikte kullanılamaz.",
