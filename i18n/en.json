@@ -28,6 +28,7 @@
 	"discussiontools-preference-newtopictool-help": "This will show you an inline form for adding new topics. You can learn more about this feature by reading the [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary feature summary].",
 	"discussiontools-preference-replytool": "Enable quick replying",
 	"discussiontools-preference-replytool-help": "This will show you a link to reply to talk page comments in one click. You can learn more about this feature by reading the [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary feature summary].",
+	"discussiontools-preference-sourcemodetoolbar": "Enable experimental tools in the quick replying and quick topic adding features' source modes",
 	"discussiontools-replylink": "reply",
 	"discussiontools-replywidget-abandon": "Are you sure you want to discard the comment you are writing?",
 	"discussiontools-replywidget-abandon-discard": "Discard comment",

@@ -2,10 +2,10 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	logger = require( 'ext.discussionTools.init' ).logger,
-	dtConf = require( 'ext.discussionTools.init' ).config,
 	ModeTabSelectWidget = require( './ModeTabSelectWidget.js' ),
 	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),
-	enable2017Wikitext = dtConf.enable2017Wikitext;
+	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
+	enable2017Wikitext = featuresEnabled.sourcemodetoolbar;
 
 require( './AbandonCommentDialog.js' );
 require( './AbandonTopicDialog.js' );

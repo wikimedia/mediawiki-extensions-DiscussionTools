@@ -8,10 +8,10 @@ var
 	logger = require( './logger.js' ),
 	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
-	dtConf = require( './config.json' ),
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
-	enable2017Wikitext = dtConf.enable2017Wikitext,
+	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
+	enable2017Wikitext = featuresEnabled.sourcemodetoolbar,
 	conf = mw.config.get( 'wgVisualEditorConfig' ),
 	visualModules = [ 'ext.discussionTools.ReplyWidgetVisual' ]
 		.concat( conf.pluginModules.filter( mw.loader.getState ) ),

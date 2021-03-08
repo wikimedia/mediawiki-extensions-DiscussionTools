@@ -35,6 +35,15 @@ class PreferenceHooks implements
 			}
 		}
 
+		if ( isset( $preferences['discussiontools-sourcemodetoolbar'] ) ) {
+			// Hide this option when it would have no effect
+			// (both reply tool and new topic tool are disabled)
+			$preferences['discussiontools-sourcemodetoolbar']['hide-if'] = [ 'AND',
+				[ '===', 'discussiontools-replytool', '' ],
+				[ '===', 'discussiontools-newtopictool', '' ],
+			];
+		}
+
 		$preferences['discussiontools-showadvanced'] = [
 			'type' => 'api',
 		];

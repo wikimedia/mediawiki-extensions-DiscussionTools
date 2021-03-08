@@ -1,8 +1,8 @@
 'use strict';
 
 var trackdebug = !!mw.util.getParamValue( 'trackdebug' ),
-	dtConf = require( './config.json' ),
-	enable2017Wikitext = dtConf.enable2017Wikitext;
+	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
+	enable2017Wikitext = featuresEnabled.sourcemodetoolbar;
 
 /**
  * Logs an event to http://meta.wikimedia.org/wiki/Schema:EditAttemptStep

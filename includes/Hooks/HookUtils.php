@@ -28,6 +28,7 @@ class HookUtils {
 	public const FEATURES = [
 		'replytool',
 		'newtopictool',
+		'sourcemodetoolbar',
 	];
 
 	/**
