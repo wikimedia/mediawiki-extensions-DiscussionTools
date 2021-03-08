@@ -144,6 +144,8 @@ class CommentFormatter {
 				$replyLink->setAttribute( 'role', 'button' );
 				$replyLink->setAttribute( 'tabindex', '0' );
 				$replyLink->setAttribute( 'data-mw-comment', $itemJSON );
+				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
+				$replyLink->setAttribute( 'href', '' );
 				$replyLink->nodeValue = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->text();
 
 				$bracket = $doc->createElement( 'span' );
