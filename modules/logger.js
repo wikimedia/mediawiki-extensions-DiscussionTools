@@ -1,6 +1,8 @@
 'use strict';
 
-var trackdebug = !!mw.util.getParamValue( 'trackdebug' );
+var trackdebug = !!mw.util.getParamValue( 'trackdebug' ),
+	dtConf = require( './config.json' ),
+	enable2017Wikitext = dtConf.enable2017Wikitext;
 
 /**
  * Logs an event to http://meta.wikimedia.org/wiki/Schema:EditAttemptStep
@@ -240,9 +242,10 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 		}
 
 		if ( data.feature === 'editor-switch' && data.action.indexOf( 'dialog-' ) === -1 ) {
-			// TODO: Account for `source-nwe-desktop` when enable2017Wikitext is set
 			// eslint-disable-next-line camelcase
-			session.editor_interface = session.editor_interface === 'visualeditor' ? 'wikitext' : 'visualeditor';
+			session.editor_interface = session.editor_interface === 'visualeditor' ?
+				( enable2017Wikitext ? 'wikitext-2017' : 'wikitext' ) :
+				'visualeditor';
 		}
 	} );
 } );

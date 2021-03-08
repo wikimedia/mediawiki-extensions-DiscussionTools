@@ -1,7 +1,9 @@
 var controller = require( 'ext.discussionTools.init' ).controller,
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
-	logger = require( 'ext.discussionTools.init' ).logger;
+	logger = require( 'ext.discussionTools.init' ).logger,
+	dtConf = require( 'ext.discussionTools.init' ).config,
+	enable2017Wikitext = dtConf.enable2017Wikitext;
 
 require( './AbandonCommentDialog.js' );
 require( './AbandonTopicDialog.js' );
@@ -395,8 +397,11 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 		// Switch succeeded
 		mw.track( 'dt.schemaVisualEditorFeatureUse', {
 			feature: 'editor-switch',
-			// TODO: Log as `source-nwe-desktop` when enable2017Wikitext is set
-			action: ( mode === 'visual' ? 'visual' : 'source' ) + '-desktop'
+			action: (
+				mode === 'visual' ?
+					'visual' :
+					( enable2017Wikitext ? 'source-nwe' : 'source' )
+			) + '-desktop'
 		} );
 	}, function () {
 		// Switch failed, restore previous tab selection
