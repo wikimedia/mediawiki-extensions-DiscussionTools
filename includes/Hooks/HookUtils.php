@@ -70,7 +70,7 @@ class HookUtils {
 			if ( $betaenabled !== -1 ) {
 				// betaenable doesn't have a default value, so we can check
 				// for it being unset like this. If the user has explicitly
-				// enabled or disabled it, we should immediatly return that.
+				// enabled or disabled it, we should immediately return that.
 				return $betaenabled;
 			}
 			// Otherwise, being in the "test" group for this feature means
@@ -115,8 +115,9 @@ class HookUtils {
 	/**
 	 * Work out the A/B test bucket for the current user
 	 *
-	 * Checks whether the A/B test is enabled and whether the user is enrolled
-	 * in it; if they're eligible and not enrolled, it will enroll them.
+	 * Checks whether the user has been enrolled in the last A/B test, if any was enabled.
+	 *
+	 * If the A/B test is enabled, and the user is eligible and not enrolled, it will enroll them.
 	 *
 	 * @param User $user
 	 * @param string|null $feature Feature to check for (one of static::FEATURES)
@@ -130,13 +131,14 @@ class HookUtils {
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
+		$abstate = $optionsManager->getOption( $user, 'discussiontools-abtest' );
+
 		if (
 			!$user->isAnon() &&
 			( $abtest == 'all' || ( !$feature && $abtest ) || ( $feature && $abtest == $feature ) )
 		) {
 			// The A/B test is enabled, and the user is qualified to be in the
 			// test by being logged in.
-			$abstate = $optionsManager->getOption( $user, 'discussiontools-abtest' );
 			if ( !$abstate && $optionsManager->getOption( $user, 'discussiontools-editmode' ) === '' ) {
 				// Assign the user to a group. This is only being done to
 				// users who have never used the tool before, for which we're
@@ -146,9 +148,8 @@ class HookUtils {
 				$optionsManager->setOption( $user, 'discussiontools-abtest', $abstate );
 				$optionsManager->saveOptions( $user );
 			}
-			return $abstate;
 		}
-		return '';
+		return $abstate;
 	}
 
 	/**
