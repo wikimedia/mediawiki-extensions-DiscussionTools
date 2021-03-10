@@ -107,7 +107,8 @@ class CommentFormatter {
 			$id = $threadItem->getId();
 			$range = $threadItem->getRange();
 			$startMarker = $doc->createElement( 'span' );
-			$startMarker->setAttribute( 'data-mw-comment-start', $id );
+			$startMarker->setAttribute( 'data-mw-comment-start', '' );
+			$startMarker->setAttribute( 'id', $id );
 			$endMarker = $doc->createElement( 'span' );
 			$endMarker->setAttribute( 'data-mw-comment-end', $id );
 

@@ -1,3 +1,10 @@
+span[ data-mw-comment-start ] {
+	// Give comment anchors a negative offset so we don't position
+	// them right at the edge of the page when jumping to them
+	position: relative;
+	top: -40px;
+}
+
 // TODO: Remove dt- prefixed classes once HTML caches have cleared
 .dt-init-replylink-buttons,
 .ext-discussiontools-init-replylink-buttons {
