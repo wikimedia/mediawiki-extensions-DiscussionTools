@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"David1010",
 			"Matma Rex",
 			"Mehman97",
 			"Გიო ოქრო"
@@ -46,7 +47,7 @@
 	"discussiontools-replywidget-reply": "უპასუხე",
 	"discussiontools-replywidget-signature-body": "$1 გადაკეთდა თქვენს ხელმოწერად. მის გასაუქმებლად, აკრიფეთ $2. გაითვალისწინეთ, რომ ამ ხელსაწყოს გამოყენების დროს თქვენ არ გჭირდებათ ხელმოწერის დატოვება. იგი ავტომატურად დაემატება.",
 	"discussiontools-replywidget-signature-title": "აღმოჩენილია ხელმოწერის აღნიშვნა",
-	"discussiontools-replywidget-summary": "კომენტარის რეზიუმე",
+	"discussiontools-replywidget-summary": "რეზიუმე",
 	"discussiontools-replywidget-terms-click": "„$1“-ზე დაჭერით, თქვენ ეთანხმებით გამოყენების პირობებს ამ ვიკისათვის.",
 	"discussiontools-replywidget-transcluded": "თქვენი კომენტარი შენახულია [[$1]]-ში.",
 	"discussiontools-signature-prefix": "&#32;",
