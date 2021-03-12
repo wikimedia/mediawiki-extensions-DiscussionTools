@@ -18,6 +18,8 @@
 	"discussiontools-desc": "Hulpmiddelen om overlegpagina's te verbeteren",
 	"discussiontools-error-comment-disappeared": "Bericht om op te reageren niet gevonden; mogelijk werd het verwijderd of verplaatst. Ververs de pagina en probeer het opnieuw.",
 	"discussiontools-error-comment-is-transcluded": "De \"{{int:discussiontools-replylink}}\"-link kan niet worden gebruikt om te reageren op deze overlegbijdrage. Gebruik om te reageren de volledige editor door op \"$1\" te klikken.",
+	"discussiontools-newtopic-missing-title": "Graag een titel toevoegen voor uw discussieonderwerp. Als u klikt op \"{{int:discussiontools-replywidget-newtopic}}\", dan zal het onderwerp geen titel hebben.",
+	"discussiontools-newtopic-placeholder-title": "Titel",
 	"discussiontools-preference-label": "Overleghulpmiddelen",
 	"discussiontools-replylink": "reageer",
 	"discussiontools-replywidget-abandon": "Weet u zeker dat u de reactie die u aan het schrijven bent, weg wil doen?",

@@ -26,7 +26,7 @@
 	"discussiontools-error-noswitchtove-table": "tablo sözdizimi",
 	"discussiontools-error-noswitchtove-template": "şablon sözdizimi",
 	"discussiontools-error-noswitchtove-title": "Görsel modu devre dışı",
-	"discussiontools-newtopic-missing-title": "Lütfen tartışma konunuz için bir başlık girin. \"{{int:discusstools-responsewidget-newtopic}}\" düğmesini tıklarsanız, konunuz başlık olmadan eklenecektir.",
+	"discussiontools-newtopic-missing-title": "Lütfen tartışma konunuz için bir başlık girin. \"{{int:discussiontools-replywidget-newtopic}}\" düğmesini tıklarsanız, konunuz başlık olmadan eklenecektir.",
 	"discussiontools-newtopic-placeholder-title": "Başlık",
 	"discussiontools-postedit-confirmation-published": "Yorumunuz yayımlandı.",
 	"discussiontools-postedit-confirmation-topicadded": "Konunuz eklendi.",
