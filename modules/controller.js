@@ -24,7 +24,7 @@ function getApi() {
 function highlight( comment ) {
 	var padding = 5,
 		overlayRect, rect,
-		$highlight = $( '<div>' ).addClass( 'dt-init-highlight' );
+		$highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
 
 	if ( !$overlay ) {
 		// $overlay must be position:relative/absolute
@@ -44,15 +44,15 @@ function highlight( comment ) {
 	// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
 	// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
 	OO.ui.Element.static.scrollIntoView( $highlight[ 0 ], { padding: { top: 10, bottom: 10 } } ).then( function () {
-		// Toggle the 'dt-init-highlight-overlay' class only when needed, because using mix-blend-mode
+		// Toggle the 'ext-discussiontools-init-highlight-overlay' class only when needed, because using mix-blend-mode
 		// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
-		$overlay.addClass( 'dt-init-highlight-overlay' );
-		$highlight.addClass( 'dt-init-highlight-fadein' );
+		$overlay.addClass( 'ext-discussiontools-init-highlight-overlay' );
+		$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
 		setTimeout( function () {
-			$highlight.addClass( 'dt-init-highlight-fadeout' );
+			$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
 			setTimeout( function () {
 				$highlight.remove();
-				$overlay.removeClass( 'dt-init-highlight-overlay' );
+				$overlay.removeClass( 'ext-discussiontools-init-highlight-overlay' );
 			}, 250 );
 		}, 3000 );
 	} );

@@ -19,7 +19,7 @@ function ReplyWidgetPlain() {
 	// Parent constructor
 	ReplyWidgetPlain.super.apply( this, arguments );
 
-	this.$element.addClass( 'dt-ui-replyWidget-plain' );
+	this.$element.addClass( 'ext-discussiontools-ui-replyWidget-plain' );
 }
 
 /* Inheritance */

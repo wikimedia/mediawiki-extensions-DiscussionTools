@@ -22,7 +22,7 @@ class HookUtils {
 	/**
 	 * @var string[] List of all sub-features. Will be used to generate:
 	 *  - Feature override global: $wgDiscussionTools_FEATURE
-	 *  - Body class: dt-FEATURE-enabled
+	 *  - Body class: ext-discussiontools-FEATURE-enabled
 	 *  - User option: discussiontools-FEATURE
 	 */
 	public const FEATURES = [

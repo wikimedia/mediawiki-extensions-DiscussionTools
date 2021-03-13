@@ -105,7 +105,7 @@ class PageHooks implements
 		foreach ( HookUtils::FEATURES as $feature ) {
 			// Add a CSS class for each enabled feature
 			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
-				$output->addBodyClasses( "dt-$feature-enabled" );
+				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
 			}
 		}
 

@@ -136,11 +136,11 @@ class CommentFormatter {
 				$threadItem->getRange()->endContainer->setAttribute( 'data-mw-comment', $itemJSON );
 			} elseif ( $threadItem instanceof CommentItem ) {
 				$replyLinkButtons = $doc->createElement( 'span' );
-				$replyLinkButtons->setAttribute( 'class', 'dt-init-replylink-buttons' );
+				$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
 
 				// Reply
 				$replyLink = $doc->createElement( 'a' );
-				$replyLink->setAttribute( 'class', 'dt-init-replylink-reply' );
+				$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
 				$replyLink->setAttribute( 'role', 'button' );
 				$replyLink->setAttribute( 'tabindex', '0' );
 				$replyLink->setAttribute( 'data-mw-comment', $itemJSON );
@@ -149,7 +149,7 @@ class CommentFormatter {
 				$replyLink->nodeValue = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->text();
 
 				$bracket = $doc->createElement( 'span' );
-				$bracket->setAttribute( 'class', 'dt-init-replylink-bracket' );
+				$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
 				$bracketLeft = $bracket->cloneNode( false );
 				$bracketLeft->nodeValue = '[';
 				$bracketRight = $bracket->cloneNode( false );

@@ -289,7 +289,8 @@ function getFullyCoveredSiblings( item ) {
 	function isIgnored( n ) {
 		// Ignore empty text nodes, and our own reply buttons
 		return ( n.nodeType === Node.TEXT_NODE && htmlTrim( n.textContent ) === '' ) ||
-			( n.className && n.className.indexOf( 'dt-init-replylink-buttons' ) !== -1 );
+			// TODO: Use ext-discussiontools-init-replylink-buttons once dt-init HTML has cleared the caches
+			( n.className && n.className.indexOf( '-init-replylink-buttons' ) !== -1 );
 	}
 
 	function isFirstNonemptyChild( n ) {

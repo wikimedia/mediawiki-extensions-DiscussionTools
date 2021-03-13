@@ -32,7 +32,7 @@ function ReplyWidgetVisual( commentController, comment, pageName, oldId, config 
 	ReplyWidgetVisual.super.apply( this, arguments );
 
 	// TODO: Rename this widget to VE, as it isn't just visual mode
-	this.$element.addClass( 'dt-ui-replyWidget-ve' );
+	this.$element.addClass( 'ext-discussiontools-ui-replyWidget-ve' );
 }
 
 /* Inheritance */
