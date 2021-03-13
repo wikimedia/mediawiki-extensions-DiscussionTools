@@ -1,7 +1,7 @@
 {
 	"extends": "stylelint-config-wikimedia",
 	"rules": {
-		"selector-class-pattern": "^(ext|dt|ve|mw|oo-ui|client|skin)-",
+		"selector-class-pattern": "^(ext|ve|mw|oo-ui|client|skin)-",
 		"unit-disallowed-list": null
 	}
 }
