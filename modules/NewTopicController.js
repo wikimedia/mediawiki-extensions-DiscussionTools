@@ -6,7 +6,7 @@ function NewTopicController( $pageContainer, $replyLink ) {
 	var comment;
 
 	this.container = new OO.ui.PanelLayout( {
-		classes: [ 'dt-ui-newTopic' ],
+		classes: [ 'ext-discussiontools-ui-newTopic' ],
 		expanded: false,
 		padded: true,
 		framed: true
@@ -15,7 +15,7 @@ function NewTopicController( $pageContainer, $replyLink ) {
 	this.sectionTitle = new OO.ui.TextInputWidget( {
 		// Wrap in a <h2> element to inherit heading font styles
 		$element: $( '<h2>' ),
-		classes: [ 'dt-ui-newTopic-sectionTitle' ],
+		classes: [ 'ext-discussiontools-ui-newTopic-sectionTitle' ],
 		placeholder: mw.msg( 'discussiontools-newtopic-placeholder-title' ),
 		spellcheck: true
 	} );

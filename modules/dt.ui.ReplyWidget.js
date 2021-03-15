@@ -85,7 +85,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	} );
 
 	this.modeTabSelect = new OO.ui.TabSelectWidget( {
-		classes: [ 'dt-ui-replyWidget-modeTabs' ],
+		classes: [ 'ext-discussiontools-ui-replyWidget-modeTabs' ],
 		items: [
 			new OO.ui.TabOptionWidget( {
 				label: mw.msg( 'discussiontools-replywidget-mode-visual' ),
@@ -101,25 +101,25 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	// Initialize to avoid flicker when switching mode
 	this.modeTabSelect.selectItemByData( this.getMode() );
 
-	this.$headerWrapper = $( '<div>' ).addClass( 'dt-ui-replyWidget-headerWrapper' );
+	this.$headerWrapper = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-headerWrapper' );
 	this.$headerWrapper.append(
 		// Visual mode toolbar attached here by CommentTarget#attachToolbar
 		this.modeTabSelect.$element
 	);
 
 	this.$preview = $( '<div>' )
-		.addClass( 'dt-ui-replyWidget-preview' )
+		.addClass( 'ext-discussiontools-ui-replyWidget-preview' )
 		.attr( 'data-label', mw.msg( 'discussiontools-replywidget-preview' ) )
 		// Set preview direction to content direction
 		.attr( 'dir', this.contentDir );
-	this.$actionsWrapper = $( '<div>' ).addClass( 'dt-ui-replyWidget-actionsWrapper' );
-	this.$actions = $( '<div>' ).addClass( 'dt-ui-replyWidget-actions' ).append(
+	this.$actionsWrapper = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-actionsWrapper' );
+	this.$actions = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-actions' ).append(
 		this.cancelButton.$element,
 		this.replyButton.$element
 	);
 
 	this.editSummaryInput = new OO.ui.TextInputWidget( {
-		classes: [ 'dt-ui-replyWidget-editSummary' ]
+		classes: [ 'ext-discussiontools-ui-replyWidget-editSummary' ]
 	} );
 	mw.widgets.visibleCodePointLimit( this.editSummaryInput, mw.config.get( 'wgCommentCodePointLimit' ) );
 
@@ -127,7 +127,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 		this.editSummaryInput,
 		{
 			align: 'top',
-			classes: [ 'dt-ui-replyWidget-editSummaryField' ],
+			classes: [ 'ext-discussiontools-ui-replyWidget-editSummaryField' ],
 			label: mw.msg( 'discussiontools-replywidget-summary' )
 		}
 	);
@@ -137,15 +137,15 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 		indicator: 'down',
 		framed: false,
 		flags: [ 'progressive' ],
-		classes: [ 'dt-ui-replyWidget-advancedToggle' ]
+		classes: [ 'ext-discussiontools-ui-replyWidget-advancedToggle' ]
 	} );
 	this.advanced = new OO.ui.MessageWidget( {
 		type: 'message',
 		$content: this.editSummaryField.$element,
-		classes: [ 'dt-ui-replyWidget-advanced' ]
+		classes: [ 'ext-discussiontools-ui-replyWidget-advanced' ]
 	} ).toggle( false ).setIcon( '' );
 
-	this.$footer = $( '<div>' ).addClass( 'dt-ui-replyWidget-footer' );
+	this.$footer = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-footer' );
 	if ( this.pageName !== mw.config.get( 'wgRelevantPageName' ) ) {
 		this.$footer.append( $( '<p>' ).append(
 			mw.message( 'discussiontools-replywidget-transcluded', this.pageName ).parseDom()
@@ -186,7 +186,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.onInputChangeThrottled = OO.ui.throttle( this.onInputChange.bind( this ), 1000 );
 
 	// Initialization
-	this.$element.addClass( 'dt-ui-replyWidget' ).append(
+	this.$element.addClass( 'ext-discussiontools-ui-replyWidget' ).append(
 		this.$headerWrapper,
 		this.replyBodyWidget.$element,
 		this.$preview,
@@ -197,7 +197,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	// Set direction to interface direction
 	this.$element.attr( 'dir', $( document.body ).css( 'direction' ) );
 	if ( this.isNewTopic ) {
-		this.$element.addClass( 'dt-ui-replyWidget-newTopic' );
+		this.$element.addClass( 'ext-discussiontools-ui-replyWidget-newTopic' );
 	}
 
 	if ( mw.user.isAnon() ) {
@@ -206,7 +206,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 			returnto: mw.config.get( 'wgPageName' )
 		};
 		this.anonWarning = new OO.ui.MessageWidget( {
-			classes: [ 'dt-ui-replyWidget-anonWarning' ],
+			classes: [ 'ext-discussiontools-ui-replyWidget-anonWarning' ],
 			type: 'warning',
 			label: mw.message( 'discussiontools-replywidget-anon-warning' )
 				.params( [
@@ -230,7 +230,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 			} );
 		}
 		if ( checkboxes.checkboxFields ) {
-			widget.$checkboxes = $( '<div>' ).addClass( 'dt-ui-replyWidget-checkboxes' );
+			widget.$checkboxes = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-checkboxes' );
 			checkboxes.checkboxFields.forEach( function ( field ) {
 				widget.$checkboxes.append( field.$element );
 			} );
@@ -732,7 +732,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 			widget.captchaMessage = new OO.ui.MessageWidget( {
 				type: 'notice',
 				label: widget.captchaInput.$element,
-				classes: [ 'dt-ui-replyWidget-captcha' ]
+				classes: [ 'ext-discussiontools-ui-replyWidget-captcha' ]
 			} );
 			widget.captchaMessage.$element.insertAfter( widget.$preview );
 
@@ -743,7 +743,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 			widget.errorMessage = new OO.ui.MessageWidget( {
 				type: 'error',
 				label: code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
-				classes: [ 'dt-ui-replyWidget-error' ]
+				classes: [ 'ext-discussiontools-ui-replyWidget-error' ]
 			} );
 			widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
 		}

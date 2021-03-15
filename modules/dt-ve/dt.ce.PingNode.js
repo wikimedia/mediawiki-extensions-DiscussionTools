@@ -63,7 +63,7 @@ CeMWPingNode.prototype.initialize = function () {
 
 	// DOM changes
 	$link = $( '<a>' )
-		.addClass( 'dt-ce-mwPingNode' )
+		.addClass( 'ext-discussiontools-ce-mwPingNode' )
 		.attr( {
 			href: title.getUrl(),
 			title: user

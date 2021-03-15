@@ -1,4 +1,6 @@
-.dt-init-replylink-buttons {
+// TODO: Remove dt- prefixed classes once HTML caches have cleared
+.dt-init-replylink-buttons,
+.ext-discussiontools-init-replylink-buttons {
 	user-select: none;
 	display: none;
 
@@ -12,7 +14,8 @@
 		margin-right: 0.5em;
 	}
 
-	.dt-replytool-enabled & {
+	.dt-replytool-enabled &,
+	.ext-discussiontools-replytool-enabled & {
 		// Chromium bug (T260072): Element with `user-select: none` at the end of a paragraph causes
 		// triple-click (to select the paragraph) to also select the first character of the next paragraph
 		// https://bugs.chromium.org/p/chromium/issues/detail?id=1116214
@@ -23,7 +26,8 @@
 		}
 	}
 
-	.dt-init-replylink {
+	.dt-init-replylink,
+	.ext-discussiontools-init-replylink {
 		&-reply {
 			cursor: pointer;
 		}
@@ -46,11 +50,11 @@
 		}
 	}
 
-	&.dt-init-replylink-active {
+	&.ext-discussiontools-init-replylink-active {
 		visibility: hidden;
 	}
 
-	.dt-init-replylink-open & > a {
+	.ext-discussiontools-init-replylink-open & > a {
 		color: #72777d;
 		pointer-events: none;
 	}
@@ -60,7 +64,7 @@
 	}
 }
 
-.dt-init-highlight {
+.ext-discussiontools-init-highlight {
 	// Support: IE11
 	// On supporting browsers, we instead use non-transparent color with mix-blend-mode.
 	// Identical to #ffe29e on white background.
@@ -71,23 +75,23 @@
 }
 
 @supports ( mix-blend-mode: multiply ) {
-	.dt-init-highlight-overlay {
+	.ext-discussiontools-init-highlight-overlay {
 		mix-blend-mode: multiply;
 		// Support: Safari
 		// Safari doesn't blend this overlay with the text unless GPU rendering is forced.
 		transform: translateZ( 0 );
 	}
 
-	.dt-init-highlight {
+	.ext-discussiontools-init-highlight {
 		background-color: #ffe29e;
 	}
 }
 
-.dt-init-highlight-fadein {
+.ext-discussiontools-init-highlight-fadein {
 	opacity: 1;
 }
 
-.dt-init-highlight-fadeout {
+.ext-discussiontools-init-highlight-fadeout {
 	opacity: 0;
 	transition: opacity 250ms ease-out;
 }

@@ -35,7 +35,7 @@ function CommentTargetWidget( replyWidget, config ) {
 	CommentTargetWidget.super.call( this, config );
 
 	// Initialization
-	this.$element.addClass( 'dt-ui-targetWidget' );
+	this.$element.addClass( 'ext-discussiontools-ui-targetWidget' );
 }
 
 /* Inheritance */

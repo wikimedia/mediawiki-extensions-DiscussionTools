@@ -38,7 +38,7 @@ function CommentController( $pageContainer, $replyLink, comment ) {
 
 	// Reply
 	this.$replyLink = $replyLink.on( 'click keypress', this.onReplyLinkClickHandler );
-	this.$replyLinkButtons = $replyLink.closest( '.dt-init-replylink-buttons' );
+	this.$replyLinkButtons = $replyLink.closest( '.ext-discussiontools-init-replylink-buttons, .dt-init-replylink-buttons' );
 
 	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
 		mode = storage.get( 'reply/' + comment.id + '/mode' );
@@ -140,9 +140,9 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 			( defaultVisual ? 'visual' : 'source' );
 	}
 
-	this.$pageContainer.addClass( 'dt-init-replylink-open' );
+	this.$pageContainer.addClass( 'ext-discussiontools-init-replylink-open' );
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '.dt-init-replylink-reply' ).attr( {
+	$( '.ext-discussiontools-init-replylink-reply, .dt-init-replylink-reply' ).attr( {
 		tabindex: '-1'
 	} );
 	// Suppress page takeover behavior for VE editing so that our unload
@@ -159,7 +159,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 			( enable2017Wikitext ? 'wikitext-2017' : 'wikitext' )
 	} );
 
-	this.$replyLinkButtons.addClass( 'dt-init-replylink-active' );
+	this.$replyLinkButtons.addClass( 'ext-discussiontools-init-replylink-active' );
 
 	if ( !this.replyWidgetPromise ) {
 		this.replyWidgetPromise = this.getTranscludedFromSource( comment.id ).then( function ( pageData ) {
@@ -251,10 +251,10 @@ CommentController.prototype.showAndFocus = function () {
 };
 
 CommentController.prototype.teardown = function ( abandoned ) {
-	this.$replyLinkButtons.removeClass( 'dt-init-replylink-active' );
-	this.$pageContainer.removeClass( 'dt-init-replylink-open' );
+	this.$replyLinkButtons.removeClass( 'ext-discussiontools-init-replylink-active' );
+	this.$pageContainer.removeClass( 'ext-discussiontools-init-replylink-open' );
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '.dt-init-replylink-reply' ).attr( {
+	$( '.ext-discussiontools-init-replylink-reply, .dt-init-replylink-reply' ).attr( {
 		tabindex: '0'
 	} );
 	// We deliberately mangled edit links earlier so VE can't steal our page;
