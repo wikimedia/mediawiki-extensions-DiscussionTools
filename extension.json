@@ -54,7 +54,8 @@
 				{
 					"name": "config.json",
 					"config": {
-						"enable": "DiscussionToolsEnable"
+						"enable": "DiscussionToolsEnable",
+						"replyIndentation": "DiscussionToolsReplyIndentation"
 					}
 				},
 				"ReplyLinksController.js",
@@ -553,6 +554,10 @@
 		"DiscussionToolsTalkPageParserCacheExpiry": {
 			"value": 0,
 			"description": "Override $wgParserCacheExpireTime for discussion pages, regardless of DiscussionTools enablement."
+		},
+		"DiscussionToolsReplyIndentation": {
+			"value": "invisible",
+			"description": "Reply indentation syntax to use: 'invisible' (use `<dl><dd>` tags to output `:` in wikitext) or 'bullet' (use `<ul><li>` tags to output `*` in wikitext)."
 		},
 		"DTSchemaEditAttemptStepSamplingRate": {
 			"value": 0,
