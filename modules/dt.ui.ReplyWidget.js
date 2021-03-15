@@ -2,6 +2,7 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	logger = require( 'ext.discussionTools.init' ).logger,
+	dtConf = require( 'ext.discussionTools.init' ).config,
 	ModeTabSelectWidget = require( './ModeTabSelectWidget.js' ),
 	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),
 	licenseMessages = require( './licenseMessages.json' ),
@@ -696,14 +697,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 		return $.Deferred().resolve().promise();
 	}
 
-	// For now, indentation is always ':'. If we need context-aware
-	// indentation we would use the following:
-	// indent = {
-	//   dl: ':',
-	//   ul: '*',
-	//   ol: '#'
-	// }[ this.context ];
-	var indent = ':';
+	var indent = dtConf.replyIndentation === 'invisible' ? ':' : '*';
 	wikitext = wikitext !== undefined ? wikitext : this.getValue();
 	wikitext = utils.htmlTrim( wikitext );
 	var title = this.isNewTopic && this.commentController.sectionTitle.getValue();

@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use MediaWiki\MediaWikiServices;
 use MWException;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
@@ -75,9 +76,12 @@ class CommentModifier {
 	 * nodes are added, and other nodes may be moved around).
 	 *
 	 * @param ThreadItem $comment
+	 * @param string $replyIndentation Reply indentation syntax to use, one of:
+	 *   - 'invisible' (use `<dl><dd>` tags to output `:` in wikitext)
+	 *   - 'bullet' (use `<ul><li>` tags to output `*` in wikitext)
 	 * @return Element
 	 */
-	public static function addListItem( ThreadItem $comment ): Element {
+	public static function addListItem( ThreadItem $comment, string $replyIndentation ): Element {
 		$listTypeMap = [
 			'li' => 'ul',
 			'dd' => 'dl'
@@ -95,8 +99,13 @@ class CommentModifier {
 		}
 
 		// Tag names for lists and items we're going to insert
-		// TODO Add an option to prefer bulleted lists (ul/li)
-		$itemType = 'dd';
+		if ( $replyIndentation === 'invisible' ) {
+			$itemType = 'dd';
+		} elseif ( $replyIndentation === 'bullet' ) {
+			$itemType = 'li';
+		} else {
+			throw new MWException( "Invalid reply indentation syntax '$replyIndentation'" );
+		}
 		$listType = $listTypeMap[ $itemType ];
 
 		$desiredLevel = $comment->getLevel() + 1;
@@ -515,6 +524,10 @@ class CommentModifier {
 	 * @param Element $container Container of comment DOM nodes
 	 */
 	public static function addReply( ThreadItem $comment, Element $container ): void {
+		$services = MediaWikiServices::getInstance();
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		$replyIndentation = $dtConfig->get( 'DiscussionToolsReplyIndentation' );
+
 		$newParsoidItem = null;
 		// Transfer comment DOM to Parsoid DOM
 		// Wrap every root node of the document in a new list item (dd/li).
@@ -523,7 +536,7 @@ class CommentModifier {
 		// like <table> or <h2> from ever occurring in the comment.
 		while ( $container->childNodes->length ) {
 			if ( !$newParsoidItem ) {
-				$newParsoidItem = self::addListItem( $comment );
+				$newParsoidItem = self::addListItem( $comment, $replyIndentation );
 			} else {
 				$newParsoidItem = self::addSiblingListItem( $newParsoidItem );
 			}

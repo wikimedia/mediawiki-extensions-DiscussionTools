@@ -37,7 +37,7 @@ class CommentModifierTest extends IntegrationTestCase {
 
 		$nodes = [];
 		foreach ( $comments as $comment ) {
-			$node = CommentModifier::addListItem( $comment );
+			$node = CommentModifier::addListItem( $comment, 'invisible' );
 			$node->textContent = 'Reply to ' . $comment->getId();
 			$nodes[] = $node;
 		}
