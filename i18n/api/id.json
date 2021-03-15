@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Daud I.F. Argana",
+			"Rachmat04",
 			"Sonic Speedy"
 		]
 	},
@@ -9,6 +10,8 @@
 	"apihelp-discussiontools-param-oldid": "Nomor revisi yang akan digunakan (default ke revisi terbaru).",
 	"apihelp-discussiontools-summary": "Mengembalikan metadata yang diperlukan untuk menginisialisasi alat diskusi.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID Komentar.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Teks wiki",
+	"apihelp-discussiontoolsedit-param-wikitext": "Konten untuk dikirim, sebagai teks wiki. Tidak dapat digunakan bersama dengan<var>html</var>.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Tambahkan sebuah komentar baru sebagai jawaban terhadap komentar yang telah ada.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Tambahkan sebuah bagian diskusi baru dan komentar pertama di dalamnya.",
 	"apihelp-discussiontoolsedit-summary": "Posting pesan di halaman diskusi."
 }

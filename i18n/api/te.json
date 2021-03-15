@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chaduvari",
 			"Veeven"
 		]
 	},
-	"apihelp-discussiontoolsedit-summary": "దిద్దుబాటు సారాంశం."
+	"apierror-discussiontools-commentid-notfound": "వ్యాఖ్య ID కనబడలేదు: $1"
 }
