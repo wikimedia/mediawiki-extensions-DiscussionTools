@@ -50,6 +50,7 @@
 				{
 					"name": "config.json",
 					"config": {
+						"beta": "DiscussionToolsBeta",
 						"enable": "DiscussionToolsEnable"
 					}
 				},

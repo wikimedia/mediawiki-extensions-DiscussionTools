@@ -30,6 +30,15 @@ if ( uri.query.dtdebug ) {
 // so reply links are added on the server.
 if ( !config.enable && !uri.query.dtenable ) {
 	mw.cookie.set( 'discussiontools-tempenable', 1 );
+} else if ( config.enable && config.beta && mw.cookie.get( 'discussiontools-tempenable' ) ) {
+	// If they were using the cookie but we're available as a beta feature now:
+	if ( mw.user.options.get( 'discussiontools-betaenable' ) ) {
+		// Clear the cookie if the beta feature is enabled
+		mw.cookie.set( 'discussiontools-tempenable', null );
+	} else {
+		// Enable the beta feature if it isn't (cookie will be cleared the next time)
+		( new mw.Api() ).saveOption( 'discussiontools-betaenable', 1 );
+	}
 }
 
 module.exports = {
