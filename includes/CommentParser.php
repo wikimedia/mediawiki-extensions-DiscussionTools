@@ -1052,13 +1052,13 @@ class CommentParser {
 
 		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
 			// The range points to the root note, using it like below results in silly values
-			$id = 'h|';
+			$id = 'h-';
 		} elseif ( $threadItem instanceof HeadingItem ) {
 			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItem->getRange()->startContainer )['node'];
-			$id = 'h|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
+			$id = 'h-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
-			$id = 'c|' . $this->truncateForId( $threadItem->getAuthor() ) .
-				'|' . $threadItem->getTimestamp();
+			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
+				'-' . $threadItem->getTimestamp();
 		} else {
 			throw new MWException( 'Unknown ThreadItem type' );
 		}
@@ -1068,10 +1068,10 @@ class CommentParser {
 		$threadItemParent = $threadItem->getParent();
 		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
 			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItemParent->getRange()->startContainer )['node'];
-			$id .= '|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
+			$id .= '-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItemParent instanceof CommentItem ) {
-			$id .= '|' . $this->truncateForId( $threadItemParent->getAuthor() ) .
-				'|' . $threadItemParent->getTimestamp();
+			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ) ) .
+				'-' . $threadItemParent->getTimestamp();
 		}
 
 		if ( $threadItem instanceof HeadingItem ) {
@@ -1081,7 +1081,7 @@ class CommentParser {
 			// heading ID.
 			$oldestComment = $this->getThreadStartComment( $threadItem );
 			if ( $oldestComment ) {
-				$id .= '|' . $oldestComment->getTimestamp();
+				$id .= '-' . $oldestComment->getTimestamp();
 			}
 		}
 
@@ -1090,10 +1090,10 @@ class CommentParser {
 			$threadItem->addWarning( 'Duplicate comment ID' );
 			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
 			$number = 1;
-			while ( isset( $this->threadItemsById["$id|$number"] ) ) {
+			while ( isset( $this->threadItemsById["$id-$number"] ) ) {
 				$number++;
 			}
-			$id = "$id|$number";
+			$id = "$id-$number";
 		}
 
 		return $id;
@@ -1114,9 +1114,10 @@ class CommentParser {
 			$id = 'h|';
 		} elseif ( $threadItem instanceof HeadingItem ) {
 			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItem->getRange()->startContainer )['node'];
-			$id = 'h|' . ( $headline->getAttribute( 'id' ) ?? '' );
+			$id = 'h|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
-			$id = 'c|' . $threadItem->getAuthor() . '|' . $threadItem->getTimestamp();
+			$id = 'c|' . $this->truncateForId( $threadItem->getAuthor() ) .
+				'|' . $threadItem->getTimestamp();
 		} else {
 			throw new MWException( 'Unknown ThreadItem type' );
 		}
@@ -1126,9 +1127,10 @@ class CommentParser {
 		$threadItemParent = $threadItem->getParent();
 		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
 			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItemParent->getRange()->startContainer )['node'];
-			$id .= '|' . ( $headline->getAttribute( 'id' ) ?? '' );
+			$id .= '|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItemParent instanceof CommentItem ) {
-			$id .= '|' . $threadItemParent->getAuthor() . '|' . $threadItemParent->getTimestamp();
+			$id .= '|' . $this->truncateForId( $threadItemParent->getAuthor() ) .
+				'|' . $threadItemParent->getTimestamp();
 		}
 
 		if ( $threadItem instanceof HeadingItem ) {
