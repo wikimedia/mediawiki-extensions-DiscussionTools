@@ -19,6 +19,7 @@ function NewTopicController( $pageContainer, $replyLink ) {
 		placeholder: mw.msg( 'discussiontools-newtopic-placeholder-title' ),
 		spellcheck: true
 	} );
+	this.sectionTitle.$input.attr( 'aria-label', mw.msg( 'discussiontools-newtopic-placeholder-title' ) );
 	this.sectionTitleField = new OO.ui.FieldLayout( this.sectionTitle, {
 		align: 'top'
 	} );

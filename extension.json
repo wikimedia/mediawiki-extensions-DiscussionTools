@@ -151,7 +151,8 @@
 				"discussiontools-replywidget-transcluded",
 				"visualeditor-key-ctrl",
 				"visualeditor-key-enter",
-				"visualeditor-key-escape"
+				"visualeditor-key-escape",
+				"visualeditor-mweditmode-tooltip"
 			],
 			"dependencies": [
 				"oojs-ui-widgets",
