@@ -206,7 +206,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 			returnto: mw.config.get( 'wgPageName' )
 		};
 		this.anonWarning = new OO.ui.MessageWidget( {
-			classes: [ 'ext-discussiontools-ui-replyWidget-anonWarning' ],
+			classes: [ 'ext-discussiontools-ui-replyWidget-anonWarning plainlinks' ],
 			type: 'warning',
 			label: mw.message( 'discussiontools-replywidget-anon-warning' )
 				.params( [
