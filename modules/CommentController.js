@@ -163,7 +163,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 
 	if ( !this.replyWidgetPromise ) {
 		this.replyWidgetPromise = this.getTranscludedFromSource( comment.id ).then( function ( pageData ) {
-			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, {}, mode === 'visual' );
+			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, { mode: mode } );
 		}, function ( code, data ) {
 			commentController.teardown();
 
@@ -206,10 +206,6 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 };
 
 CommentController.prototype.getReplyWidgetClass = function ( visual ) {
-	if ( visual === undefined ) {
-		visual = defaultVisual;
-	}
-
 	// If 2017WTE mode is enabled, always use ReplyWidgetVisual.
 	visual = visual || enable2017Wikitext;
 
@@ -218,14 +214,9 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	} );
 };
 
-CommentController.prototype.createReplyWidget = function ( comment, pageName, oldId, config, visual ) {
+CommentController.prototype.createReplyWidget = function ( comment, pageName, oldId, config ) {
 	var commentController = this;
-
-	if ( enable2017Wikitext ) {
-		config.mode = visual ? 'visual' : 'source';
-	}
-
-	return this.getReplyWidgetClass( visual ).then( function ( ReplyWidget ) {
+	return this.getReplyWidgetClass( config.mode === 'visual' ).then( function ( ReplyWidget ) {
 		return new ReplyWidget( commentController, comment, pageName, oldId, config );
 	} );
 };
@@ -378,8 +369,7 @@ CommentController.prototype.switchToWikitext = function () {
 		oldWidget.comment,
 		oldWidget.pageName,
 		oldWidget.oldId,
-		{ mode: 'source' },
-		false
+		{ mode: 'source' }
 	);
 
 	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
@@ -501,8 +491,7 @@ CommentController.prototype.switchToVisual = function () {
 		oldWidget.comment,
 		oldWidget.pageName,
 		oldWidget.oldId,
-		{ mode: 'visual' },
-		true
+		{ mode: 'visual' }
 	);
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
