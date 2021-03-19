@@ -9,5 +9,7 @@
 	"apihelp-discussiontools-summary": "Atgriež nepieciešamos metadatus, kas nepieciešami diskusiju rīku inicializācijai.",
 	"apihelp-discussiontoolsedit-param-commentid": "Komentāra ID",
 	"apihelp-discussiontoolsedit-param-wikitext": "Vikiteksts",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Pievienot jaunu komentāru kā atbildi esošam komentāram.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Pievienot jaunu diskusijas sadaļu un pirmo komentāru tajā.",
 	"apihelp-discussiontoolsedit-summary": "Ievietot ziņojumu diskusiju lapā."
 }

@@ -22,7 +22,7 @@
 	"discussiontools-error-noswitchtove-table": "תחביר טבלה",
 	"discussiontools-error-noswitchtove-template": "תחביר תבנית",
 	"discussiontools-error-noswitchtove-title": "המצב החזותי כבוי",
-	"discussiontools-newtopic-missing-title": "נא לתת כותרת לנושא הדיון שלך. אם {{GENDER:תלחץ|תלחצי}} על \"{{int:discussiontools-replywidget-newtopic}}\", הנושא שלך יתווסף ללא כותרת.",
+	"discussiontools-newtopic-missing-title": "נא לתת כותרת לנושא הדיון שלך. אם {{GENDER:|תלחץ|תלחצי}} על \"{{int:discussiontools-replywidget-newtopic}}\", הנושא שלך יתווסף ללא כותרת.",
 	"discussiontools-newtopic-placeholder-title": "כותרת",
 	"discussiontools-postedit-confirmation-published": "התגובה שלך פורסמה.",
 	"discussiontools-postedit-confirmation-topicadded": "הנושא שלך נוסף.",

@@ -10,11 +10,12 @@
 			"MuratTheTurkish",
 			"Okras",
 			"Pacha Tchernof",
+			"Stjn",
 			"Sunpriat",
 			"Умар"
 		]
 	},
-	"discussiontools": "Инструменты обсуждения",
+	"discussiontools": "Инструменты для обсуждений",
 	"discussiontools-defaultsummary-reply": "Ответ",
 	"discussiontools-desc": "Инструменты для улучшения страниц обсуждений.",
 	"discussiontools-error-comment-conflict": "Ваш комментарий не может быть сохранён, потому что кто-то ещё оставил комментарий одновременно с вами. Пожалуйста попробуйте снова или перезагрузите страницу чтобы увидеть последние комментарии.",
@@ -46,7 +47,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Отменить тему",
 	"discussiontools-replywidget-abandontopic-keep": "Продолжить писать",
 	"discussiontools-replywidget-advanced": "Дополнительно",
-	"discussiontools-replywidget-anon-warning": "<strong>Вы не вошли в систему.</strong> Чтобы получить соотнесение с вашим именем вместо вашего IP-адреса, вы можете [$1 войти] или [$2 создать аккаунт].",
+	"discussiontools-replywidget-anon-warning": "<strong>Вы не вошли в систему.</strong> Чтобы сообщение было под вашим именем, а не IP-адресом, вы можете [$1 войти] или [$2 создать учётную запись].",
 	"discussiontools-replywidget-cancel": "Отмена",
 	"discussiontools-replywidget-feedback": "Отправить отзыв об этой функции",
 	"discussiontools-replywidget-loading": "Загрузка…",
