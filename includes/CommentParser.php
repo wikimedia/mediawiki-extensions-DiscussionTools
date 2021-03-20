@@ -1149,7 +1149,7 @@ class CommentParser {
 
 		if ( isset( $this->threadItemsById[$id] ) ) {
 			// Well, that's tough
-			$threadItem->addWarning( 'Duplicate comment ID' );
+			$threadItem->addWarning( 'Duplicate comment legacy ID' );
 			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
 			$number = 1;
 			while ( isset( $this->threadItemsById["$id|$number"] ) ) {
