@@ -40,6 +40,7 @@ ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
 		// * mw-editfont-serif
 		classes: [ 'mw-editfont-' + mw.user.options.get( 'editfont' ) ]
 	}, config ) );
+	textInput.$input.attr( 'aria-label', config.placeholder );
 	// Fix jquery.ime position (T255191)
 	textInput.$input.addClass( 'ime-position-inside' );
 	return textInput;

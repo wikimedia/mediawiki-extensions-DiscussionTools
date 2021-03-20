@@ -100,6 +100,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 		],
 		framed: false
 	} );
+	this.modeTabSelect.$element.attr( 'aria-label', mw.msg( 'visualeditor-mweditmode-tooltip' ) );
 	// Make the option for the current mode disabled, to make it un-interactable
 	// (we override the styles to make it look as if it was selected)
 	this.modeTabSelect.findItemFromData( this.getMode() ).setDisabled( true );
