@@ -1048,12 +1048,12 @@ Parser.prototype.computeId = function ( threadItem ) {
 
 	if ( threadItem instanceof HeadingItem && threadItem.placeholderHeading ) {
 		// The range points to the root note, using it like below results in silly values
-		id = 'h|';
+		id = 'h-';
 	} else if ( threadItem instanceof HeadingItem ) {
 		headline = utils.getHeadlineNodeAndOffset( threadItem.range.startContainer ).node;
-		id = 'h|' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
+		id = 'h-' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItem instanceof CommentItem ) {
-		id = 'c|' + this.truncateForId( threadItem.author || '' ) + '|' + threadItem.timestamp.toISOString();
+		id = 'c-' + this.truncateForId( threadItem.author || '' ).replace( / /g, '_' ) + '-' + threadItem.timestamp.toISOString();
 	} else {
 		throw new Error( 'Unknown ThreadItem type' );
 	}
@@ -1063,9 +1063,9 @@ Parser.prototype.computeId = function ( threadItem ) {
 	threadItemParent = threadItem.parent;
 	if ( threadItemParent instanceof HeadingItem && !threadItemParent.placeholderHeading ) {
 		headline = utils.getHeadlineNodeAndOffset( threadItemParent.range.startContainer ).node;
-		id += '|' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
+		id += '-' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItemParent instanceof CommentItem ) {
-		id += '|' + this.truncateForId( threadItemParent.author || '' ) + '|' + threadItemParent.timestamp.toISOString();
+		id += '-' + this.truncateForId( threadItemParent.author || '' ).replace( / /g, '_' ) + '-' + threadItemParent.timestamp.toISOString();
 	}
 
 	if ( threadItem instanceof HeadingItem ) {
@@ -1075,7 +1075,7 @@ Parser.prototype.computeId = function ( threadItem ) {
 		// heading ID.
 		oldestComment = this.getThreadStartComment( threadItem );
 		if ( oldestComment ) {
-			id += '|' + oldestComment.timestamp.toISOString();
+			id += '-' + oldestComment.timestamp.toISOString();
 		}
 	}
 
@@ -1084,10 +1084,10 @@ Parser.prototype.computeId = function ( threadItem ) {
 		threadItem.warnings.push( 'Duplicate comment ID' );
 		// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
 		number = 1;
-		while ( this.threadItemsById[ id + '|' + number ] ) {
+		while ( this.threadItemsById[ id + '-' + number ] ) {
 			number++;
 		}
-		id = id + '|' + number;
+		id = id + '-' + number;
 	}
 
 	return id;

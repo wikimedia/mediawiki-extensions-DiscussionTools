@@ -8,7 +8,7 @@
 		],
 		"headingLevel": 2,
 		"level": 0,
-		"id": "h|multi_signatures|2020-01-25T08:31:00.000Z",
+		"id": "h-multi_signatures-2020-01-25T08:31:00.000Z",
 		"warnings": [],
 		"replies": [
 			{
@@ -30,7 +30,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-01-25T08:31:00.000Z|multi_signatures",
+				"id": "c-Matma_Rex-2020-01-25T08:31:00.000Z-multi_signatures",
 				"warnings": [],
 				"replies": [
 					{
@@ -48,7 +48,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Matma Rex|2020-01-25T08:32:00.000Z|Matma Rex|2020-01-25T08:31:00.000Z",
+						"id": "c-Matma_Rex-2020-01-25T08:32:00.000Z-Matma_Rex-2020-01-25T08:31:00.000Z",
 						"warnings": [],
 						"replies": [
 							{
@@ -70,7 +70,7 @@
 									]
 								],
 								"level": 3,
-								"id": "c|Matma Rex|2020-01-25T08:33:00.000Z|Matma Rex|2020-01-25T08:32:00.000Z",
+								"id": "c-Matma_Rex-2020-01-25T08:33:00.000Z-Matma_Rex-2020-01-25T08:32:00.000Z",
 								"warnings": [],
 								"replies": []
 							}
@@ -93,7 +93,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-01-25T08:34:00.000Z|multi_signatures",
+				"id": "c-Matma_Rex-2020-01-25T08:34:00.000Z-multi_signatures",
 				"warnings": [],
 				"replies": []
 			},
@@ -112,7 +112,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-01-25T08:34:00.000Z|multi_signatures|1",
+				"id": "c-Matma_Rex-2020-01-25T08:34:00.000Z-multi_signatures-1",
 				"warnings": [
 					"Duplicate comment ID"
 				],
@@ -136,7 +136,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Matma Rex|2020-01-25T08:35:00.000Z|Matma Rex|2020-01-25T08:34:00.000Z",
+						"id": "c-Matma_Rex-2020-01-25T08:35:00.000Z-Matma_Rex-2020-01-25T08:34:00.000Z",
 						"warnings": [],
 						"replies": []
 					},
@@ -155,7 +155,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Matma Rex|2020-01-25T08:36:00.000Z|Matma Rex|2020-01-25T08:34:00.000Z",
+						"id": "c-Matma_Rex-2020-01-25T08:36:00.000Z-Matma_Rex-2020-01-25T08:34:00.000Z",
 						"warnings": [],
 						"replies": []
 					},
@@ -174,7 +174,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Matma Rex|2020-01-25T08:37:00.000Z|Matma Rex|2020-01-25T08:34:00.000Z",
+						"id": "c-Matma_Rex-2020-01-25T08:37:00.000Z-Matma_Rex-2020-01-25T08:34:00.000Z",
 						"warnings": [],
 						"replies": [
 							{
@@ -192,7 +192,7 @@
 									]
 								],
 								"level": 3,
-								"id": "c|Matma Rex|2020-01-25T08:38:00.000Z|Matma Rex|2020-01-25T08:37:00.000Z",
+								"id": "c-Matma_Rex-2020-01-25T08:38:00.000Z-Matma_Rex-2020-01-25T08:37:00.000Z",
 								"warnings": [],
 								"replies": []
 							},
@@ -211,7 +211,7 @@
 									]
 								],
 								"level": 3,
-								"id": "c|Matma Rex|2020-01-25T08:38:00.000Z|Matma Rex|2020-01-25T08:37:00.000Z|1",
+								"id": "c-Matma_Rex-2020-01-25T08:38:00.000Z-Matma_Rex-2020-01-25T08:37:00.000Z-1",
 								"warnings": [
 									"Duplicate comment ID"
 								],
@@ -232,7 +232,7 @@
 		],
 		"headingLevel": 2,
 		"level": 0,
-		"id": "h|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)|2020-01-25T08:32:00.000Z",
+		"id": "h-hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)-2020-01-25T08:32:00.000Z",
 		"warnings": [],
 		"replies": [
 			{
@@ -250,7 +250,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-11-02T18:28:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
+				"id": "c-Matma_Rex-2020-11-02T18:28:00.000Z-hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
 				"warnings": [],
 				"replies": [
 					{
@@ -268,7 +268,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Matma Rex|2020-11-03T12:00:00.000Z|Matma Rex|2020-11-02T18:28:00.000Z",
+						"id": "c-Matma_Rex-2020-11-03T12:00:00.000Z-Matma_Rex-2020-11-02T18:28:00.000Z",
 						"warnings": [],
 						"replies": []
 					},
@@ -287,7 +287,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Bob|2020-01-25T08:32:00.000Z|Matma Rex|2020-11-02T18:28:00.000Z",
+						"id": "c-Bob-2020-01-25T08:32:00.000Z-Matma_Rex-2020-11-02T18:28:00.000Z",
 						"warnings": [
 							"Comment starts and ends with different indentation"
 						],
@@ -308,7 +308,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Matma Rex|2020-11-03T12:01:00.000Z|Matma Rex|2020-11-02T18:28:00.000Z",
+						"id": "c-Matma_Rex-2020-11-03T12:01:00.000Z-Matma_Rex-2020-11-02T18:28:00.000Z",
 						"warnings": [],
 						"replies": []
 					},
@@ -327,7 +327,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Matma Rex|2020-11-03T12:02:00.000Z|Matma Rex|2020-11-02T18:28:00.000Z",
+						"id": "c-Matma_Rex-2020-11-03T12:02:00.000Z-Matma_Rex-2020-11-02T18:28:00.000Z",
 						"warnings": [],
 						"replies": []
 					},
@@ -350,7 +350,7 @@
 							]
 						],
 						"level": 2,
-						"id": "c|Bob|2020-01-25T08:32:00.000Z|Matma Rex|2020-11-02T18:28:00.000Z|1",
+						"id": "c-Bob-2020-01-25T08:32:00.000Z-Matma_Rex-2020-11-02T18:28:00.000Z-1",
 						"warnings": [
 							"Duplicate comment ID"
 						],
@@ -373,7 +373,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-11-02T18:29:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
+				"id": "c-Matma_Rex-2020-11-02T18:29:00.000Z-hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
 				"warnings": [],
 				"replies": []
 			},
@@ -392,7 +392,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-11-02T18:30:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
+				"id": "c-Matma_Rex-2020-11-02T18:30:00.000Z-hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
 				"warnings": [],
 				"replies": []
 			},
@@ -411,7 +411,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-11-02T18:31:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
+				"id": "c-Matma_Rex-2020-11-02T18:31:00.000Z-hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
 				"warnings": [],
 				"replies": []
 			},
@@ -430,7 +430,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-11-02T18:32:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
+				"id": "c-Matma_Rex-2020-11-02T18:32:00.000Z-hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
 				"warnings": [],
 				"replies": []
 			},
@@ -449,7 +449,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-11-02T18:33:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
+				"id": "c-Matma_Rex-2020-11-02T18:33:00.000Z-hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)",
 				"warnings": [],
 				"replies": []
 			},
@@ -468,7 +468,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-11-02T18:33:00.000Z|hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)|1",
+				"id": "c-Matma_Rex-2020-11-02T18:33:00.000Z-hello_Matma_Rex_(talk)_18:27,_2_November_2020_(UTC)-1",
 				"warnings": [
 					"Duplicate comment ID"
 				],
@@ -485,7 +485,7 @@
 		],
 		"headingLevel": 2,
 		"level": 0,
-		"id": "h|Transcluded|2020-11-02T18:34:00.000Z",
+		"id": "h-Transcluded-2020-11-02T18:34:00.000Z",
 		"warnings": [],
 		"replies": [
 			{
@@ -503,7 +503,7 @@
 					]
 				],
 				"level": 1,
-				"id": "c|Matma Rex|2020-11-02T18:34:00.000Z|Transcluded",
+				"id": "c-Matma_Rex-2020-11-02T18:34:00.000Z-Transcluded",
 				"warnings": [],
 				"replies": []
 			}
