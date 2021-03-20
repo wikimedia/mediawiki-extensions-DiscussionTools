@@ -118,6 +118,8 @@
 		"ext.discussionTools.ReplyWidget": {
 			"packageFiles": [
 				"dt.ui.ReplyWidget.js",
+				"ModeTabSelectWidget.js",
+				"ModeTabOptionWidget.js",
 				"AbandonCommentDialog.js",
 				"AbandonTopicDialog.js"
 			],
