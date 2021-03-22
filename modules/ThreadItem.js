@@ -85,8 +85,7 @@ ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 
 	idEscaped = $.escapeSelector( item.id );
 	item.range = {
-		// Check old selector for compatibility with cached HTML
-		startContainer: document.getElementById( item.id ) || document.querySelector( '[data-mw-comment-start="' + idEscaped + '"]' ),
+		startContainer: document.getElementById( item.id ),
 		startOffset: 0,
 		endContainer: document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' ),
 		endOffset: 0
