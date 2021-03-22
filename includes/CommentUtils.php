@@ -201,7 +201,7 @@ class CommentUtils {
 		$headline = $heading;
 		$offset = 0;
 
-		if ( $headline->getAttribute( 'data-mw-comment-start' ) ) {
+		if ( $headline->hasAttribute( 'data-mw-comment-start' ) ) {
 			$headline = $headline->parentNode;
 		}
 
