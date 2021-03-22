@@ -58,7 +58,7 @@
 	"discussiontools-replywidget-summary": "সারাংশ",
 	"discussiontools-replywidget-terms-click": "\"$1\" ক্লিক করার দ্বারা, আপনি এই উইকির ব্যবহারের শর্তাবলী সাথে সম্মত হচ্ছেন।",
 	"discussiontools-replywidget-transcluded": "আপনার মন্তব্য [[$1]]-এ সংরক্ষণ করা হবে।",
-	"discussiontools-signature-prefix": "--",
+	"discussiontools-signature-prefix": "&#32;--&nbsp;",
 	"tag-discussiontools-description": "আলোচনা সরঞ্জাম ব্যবহার করে  সম্পাদনা করা হয়েছে",
 	"tag-discussiontools-edit": "মন্তব্য সম্পাদনা",
 	"tag-discussiontools-edit-description": "আলোচনা সরঞ্জাম ব্যবহার করে ব্যবহারকারী একটি বিদ্যমান মন্তব্য সম্পাদনা করেছেন",
