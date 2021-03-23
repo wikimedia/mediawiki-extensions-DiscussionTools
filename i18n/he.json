@@ -6,7 +6,8 @@
 			"IKhitron",
 			"Matma Rex",
 			"Steeve815",
-			"YaronSh"
+			"YaronSh",
+			"עמד"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "תגובה",
@@ -26,7 +27,7 @@
 	"discussiontools-newtopic-placeholder-title": "כותרת",
 	"discussiontools-postedit-confirmation-published": "התגובה שלך פורסמה.",
 	"discussiontools-postedit-confirmation-topicadded": "הנושא שלך נוסף.",
-	"discussiontools-preference-description": "הפעלת אפשרויות ניסיוניות של דפי שיחה:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying תגובה] להערות בדפי שיחה בלחיצה אחת.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion הוספת נושאים חדשים] באמצעות טופס מובנה.\n\nבאפשרותך להתאים אישית את האפשרויות האלו ב[[Special:Preferences#mw-prefsection-editing-discussion|העדפות]] שלך.\n\nעדכונים יפורסמו ב[https://www.mediawiki.org/wiki/Talk_pages_project/Updates דף העדכונים של מיזם דפי השיחה].\n\nלתשומת ליבך:\n* עם הזמן, יתווספו אשפרויות ניסיוניות חדשות.\n* חלק מהאפשרויות לעיל עדיין לא יהיו זמינות בוויקי שלך.",
+	"discussiontools-preference-description": "הפעלת אפשרויות ניסיוניות של דפי שיחה:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying תגובה] להערות בדפי שיחה בלחיצה אחת.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion הוספת נושאים חדשים] באמצעות טופס מובנה.\n\nבאפשרותך להתאים אישית את האפשרויות האלו ב[[Special:Preferences#mw-prefsection-editing-discussion|העדפות]] שלך.\n\nעדכונים יפורסמו ב[https://www.mediawiki.org/wiki/Talk_pages_project/Updates דף העדכונים של מיזם דפי השיחה].\n\nלתשומת ליבך:\n* עם הזמן, יתווספו אפשרויות ניסיוניות חדשות.\n* חלק מהאפשרויות לעיל עדיין לא יהיו זמינות בוויקי שלך.",
 	"discussiontools-preference-label": "כלי שיחה",
 	"discussiontools-preference-newtopictool": "להפעיל הוספת נושאים מהירה",
 	"discussiontools-preference-newtopictool-help": "זה יציג לך טופס מובנה להוספת נושאים חדשים. אפשר לקבל מידע נוסף על האפשרות הזאת באמצעות קריאת [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary התיאור המקוצר של האפשרות].",

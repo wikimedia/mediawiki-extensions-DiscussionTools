@@ -19,7 +19,7 @@
 	"tag-discussiontools-edit-description": "Uporabnik je z orodjem DiscussionTools uredil že obstoječ komentar",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} nova tema]",
 	"tag-discussiontools-newtopic-description": "Uporabnik je na strani z orodjem DiscussionTools dodal novo temo",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odgovori]",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odgovor]",
 	"tag-discussiontools-reply-description": "Uporabnik je na komentar odgovoril z orodjem DiscussionTools",
 	"tag-discussiontools-source": "izvorni način",
 	"tag-discussiontools-source-description": "Orodje DiscussionTools je bilo uporabljeno v izvornem načinu",

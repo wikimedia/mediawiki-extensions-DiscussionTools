@@ -3,6 +3,7 @@
 		"authors": [
 			"Dyolf77 (WMF)",
 			"Meno25",
+			"Michel Bakni",
 			"NEHAOUA",
 			"Tala Ali",
 			"ديفيد",
@@ -55,7 +56,7 @@
 	"discussiontools-replywidget-mode-visual": "مرئي",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|أضف|أضيفي}} موضوعا",
 	"discussiontools-replywidget-placeholder-newtopic": "تفصيل الموضوع",
-	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|قم|قومي}} بالردّ على {{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|رُدَّ|رُدِّي}} على {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "معاينة",
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-signature-body": "تم تغيير $1 إلى توقيعك. لإلغاء ذلك، {{GENDER:|اضغط|اضغطي}} على $2. ملاحظة: لا حاجة للتوقيع على تعليقك مع هذه الأداة. توقيعك سيضاف تِلْقائيًا.",
