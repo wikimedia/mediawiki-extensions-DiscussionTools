@@ -61,11 +61,9 @@ MWUsernameCompletionAction.static.methods.push( 'insertAndOpen' );
 /* Methods */
 
 MWUsernameCompletionAction.prototype.insertAndOpen = function () {
-	var sequences,
-		inserted = false,
+	var inserted = false,
 		surfaceModel = this.surface.getModel(),
-		fragment = surfaceModel.getFragment(),
-		selection = fragment.getSelection();
+		fragment = surfaceModel.getFragment();
 
 	// This is opening a window in a slightly weird way, so the normal logging
 	// doesn't catch it. This assumes that the only way to get here is from
@@ -78,16 +76,10 @@ MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 	// Run the sequence matching logic again to check
 	// if we already have the sequence inserted at the
 	// current offset.
-	if ( selection.isCollapsed() ) {
-		sequences = this.surface.sequenceRegistry.findMatching(
-			surfaceModel.getDocument().data,
-			selection.getCoveringRange().end
-		);
-		if ( sequences.some( function ( item ) {
+	if ( fragment.getSelection().isCollapsed() ) {
+		inserted = this.surface.getView().findMatchingSequences().some( function ( item ) {
 			return item.sequence === sequence;
-		} ) ) {
-			inserted = true;
-		}
+		} );
 	}
 
 	if ( !inserted ) {
