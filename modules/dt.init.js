@@ -20,7 +20,7 @@ mw.dt.init = function ( $container ) {
 
 if ( uri.query.dtdebug ) {
 	mw.loader.load( 'ext.discussionTools.debug' );
-} else if ( mw.config.get( 'wgIsProbablyEditable' ) ) {
+} else {
 	// Don't use an anonymous function, because ReplyWidget needs to be able to remove this handler
 	mw.hook( 'wikipage.content' ).add( mw.dt.init );
 }

@@ -51,21 +51,6 @@ NewTopicController.static.initType = 'section';
 /**
  * @inheritdoc
  */
-NewTopicController.prototype.getTranscludedFromSource = function () {
-	var
-		pageName = mw.config.get( 'wgRelevantPageName' ),
-		oldId = mw.config.get( 'wgCurRevisionId' );
-
-	// Always post on the current page
-	return $.Deferred().resolve( {
-		pageName: pageName,
-		oldId: oldId
-	} ).promise();
-};
-
-/**
- * @inheritdoc
- */
 NewTopicController.prototype.setup = function ( mode ) {
 	var rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
 
@@ -111,7 +96,9 @@ NewTopicController.prototype.focus = function () {
 NewTopicController.prototype.teardown = function ( abandoned ) {
 	NewTopicController.super.prototype.teardown.call( this, abandoned );
 
-	this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
+	if ( this.replyWidget ) {
+		this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
+	}
 	this.sectionTitle.setValue( '' );
 	this.sectionTitleField.setWarnings( [] );
 	this.container.$element.detach();
