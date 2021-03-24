@@ -237,8 +237,13 @@ CommentController.prototype.focus = function () {
 };
 
 CommentController.prototype.showAndFocus = function () {
-	this.replyWidget.scrollElementIntoView( { padding: scrollPadding } );
+	var commentController = this;
 	this.focus();
+	// Calling can trigger a scroll-into-view withing VE, so wait for this to
+	// happen so it doesn't cancel our scrolling of the whole widget into view
+	setTimeout( function () {
+		commentController.replyWidget.scrollElementIntoView( { padding: scrollPadding } );
+	} );
 };
 
 CommentController.prototype.teardown = function ( abandoned ) {
