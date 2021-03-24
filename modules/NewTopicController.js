@@ -2,7 +2,7 @@ var
 	CommentController = require( './CommentController.js' ),
 	HeadingItem = require( './HeadingItem.js' );
 
-function NewTopicController( $pageContainer, $replyLink ) {
+function NewTopicController( $pageContainer, $replyLink, parser ) {
 	var comment;
 
 	this.container = new OO.ui.PanelLayout( {
@@ -37,7 +37,7 @@ function NewTopicController( $pageContainer, $replyLink ) {
 	comment.id = 'new|' + mw.config.get( 'wgRelevantPageName' );
 	comment.isNewTopic = true;
 
-	NewTopicController.super.call( this, $pageContainer, $replyLink, comment );
+	NewTopicController.super.call( this, $pageContainer, $replyLink, comment, parser );
 }
 
 OO.inheritClass( NewTopicController, CommentController );

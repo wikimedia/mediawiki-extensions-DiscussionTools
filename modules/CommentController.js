@@ -24,7 +24,7 @@ if ( defaultVisual || enable2017Wikitext ) {
 	mw.loader.using( plainModules );
 }
 
-function CommentController( $pageContainer, $replyLink, comment ) {
+function CommentController( $pageContainer, $replyLink, comment, parser ) {
 	var mode;
 
 	// Mixin constructors
@@ -32,6 +32,7 @@ function CommentController( $pageContainer, $replyLink, comment ) {
 
 	this.$pageContainer = $pageContainer;
 	this.comment = comment;
+	this.parser = parser;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
 	this.onReplyLinkClickHandler = this.onReplyLinkClick.bind( this );
@@ -273,15 +274,18 @@ CommentController.prototype.teardown = function ( abandoned ) {
  * @return {Object}
  */
 CommentController.prototype.getApiQuery = function ( comment, pageName, checkboxes ) {
-	var captchaInput, replyWidget, data;
+	var captchaInput, replyWidget, data, sameNameComments;
 
 	replyWidget = this.replyWidget;
+	sameNameComments = this.parser.findCommentsByName( comment.name );
 
 	data = {
 		action: 'discussiontoolsedit',
 		paction: 'addcomment',
 		page: pageName,
-		commentid: comment.id,
+		commentname: comment.name,
+		// Only specify this if necessary to disambiguate, to avoid errors if the parent changes
+		commentid: sameNameComments.length > 1 ? comment.id : undefined,
 		summary: replyWidget.getEditSummary(),
 		assert: mw.user.isAnon() ? 'anon' : 'user',
 		assertuser: mw.user.getName() || undefined,
@@ -336,14 +340,18 @@ CommentController.prototype.save = function ( comment, pageName ) {
 		).catch( function ( code, responseData ) {
 			// Better user-facing error messages
 			if ( code === 'editconflict' ) {
-				return $.Deferred().reject( 'editconflict', { errors: [ {
-					code: 'editconflict',
+				return $.Deferred().reject( code, { errors: [ {
+					code: code,
 					html: mw.message( 'discussiontools-error-comment-conflict' ).parse()
 				} ] } ).promise();
 			}
-			if ( code === 'discussiontools-commentid-notfound' ) {
-				return $.Deferred().reject( 'discussiontools-commentid-notfound', { errors: [ {
-					code: 'discussiontools-commentid-notfound',
+			if (
+				code === 'discussiontools-commentid-notfound' ||
+				code === 'discussiontools-commentname-ambiguous' ||
+				code === 'discussiontools-commentname-notfound'
+			) {
+				return $.Deferred().reject( code, { errors: [ {
+					code: code,
 					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
 				} ] } ).promise();
 			}

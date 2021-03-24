@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": []
 	},
-	"apierror-discussiontools-commentid-notfound": "Comment ID not found: $1",
+	"apierror-discussiontools-commentid-notfound": "Comment with the ID '$1' not found.",
+	"apierror-discussiontools-commentname-ambiguous": "Multiple comments with the name '$1' found, use ID instead.",
+	"apierror-discussiontools-commentname-notfound": "Comment with the name '$1' not found.",
 	"apihelp-discussiontools-param-oldid": "The revision number to use (defaults to latest revision).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Return titles of pages from which each comment on the given page is transcluded.",
 	"apihelp-discussiontools-summary": "Returns metadata required to initialize the discussion tools.",
-	"apihelp-discussiontoolsedit-param-commentid": "Comment ID to reply to. Only used when <var>paction</var> is <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID of the comment to reply to. Only used when <var>paction</var> is <var>addcomment</var>. Overrides <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Name of the comment to reply to. Only used when <var>paction</var> is <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Content to post, as HTML. Cannot be used together with <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Only used when <var>paction</var> is <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Content to post, as wikitext. Cannot be used together with <var>html</var>.",

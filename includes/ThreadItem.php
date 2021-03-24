@@ -17,6 +17,7 @@ abstract class ThreadItem implements JsonSerializable {
 	protected $parent;
 	protected $warnings = [];
 
+	protected $name = null;
 	protected $id = null;
 	protected $legacyId = null;
 	protected $replies = [];
@@ -192,6 +193,13 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
+	 * @return string Thread item name
+	 */
+	public function getName() : string {
+		return $this->name;
+	}
+
+	/**
 	 * @return string Thread ID
 	 */
 	public function getId() : string {
@@ -245,6 +253,13 @@ abstract class ThreadItem implements JsonSerializable {
 	 */
 	public function setRootNode( DOMNode $rootNode ) : void {
 		$this->rootNode = $rootNode;
+	}
+
+	/**
+	 * @param string|null $name Thread item name
+	 */
+	public function setName( ?string $name ) : void {
+		$this->name = $name;
 	}
 
 	/**

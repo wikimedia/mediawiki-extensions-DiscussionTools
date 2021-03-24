@@ -249,11 +249,15 @@ function init( $container, state ) {
 	for ( i = commentNodes.length - 1; i >= 0; i-- ) {
 		hash = JSON.parse( commentNodes[ i ].getAttribute( 'data-mw-comment' ) );
 		comment = ThreadItem.static.newFromJSON( hash, threadItemsById );
+		if ( !comment.name ) {
+			comment.name = parser.computeName( comment );
+		}
+
 		threadItemsById[ comment.id ] = comment;
 
 		if ( comment.type === 'comment' ) {
 			controllers.push(
-				new CommentController( $pageContainer, $( commentNodes[ i ] ), comment )
+				new CommentController( $pageContainer, $( commentNodes[ i ] ), comment, parser )
 			);
 		} else {
 			// Use unshift as we are in a backwards loop
@@ -263,10 +267,17 @@ function init( $container, state ) {
 	}
 
 	// Recalculate legacy IDs
+	parser.threadItemsByName = {};
 	parser.threadItemsById = {};
 	// In the forward order this time, as the IDs for indistinguishable comments depend on it
 	for ( i = 0; i < threadItems.length; i++ ) {
 		comment = threadItems[ i ];
+
+		if ( !parser.threadItemsByName[ comment.name ] ) {
+			parser.threadItemsByName[ comment.name ] = [];
+		}
+		parser.threadItemsByName[ comment.name ].push( comment );
+
 		newId = parser.computeId( comment );
 		parser.threadItemsById[ newId ] = comment;
 		if ( newId !== comment.id ) {
@@ -287,7 +298,7 @@ function init( $container, state ) {
 		if ( $addSectionTab.length && pageExists ) {
 			// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
 			$addSectionTab.off( '.ve-target' );
-			newTopicController = new NewTopicController( $pageContainer, $addSectionTab.find( 'a' ) );
+			newTopicController = new NewTopicController( $pageContainer, $addSectionTab.find( 'a' ), parser );
 			controllers.push( newTopicController );
 		}
 	}
