@@ -478,7 +478,7 @@ class CommentModifier {
 		// If the last node is empty, trim the signature to prevent leading whitespace triggering
 		// preformatted text (T269188, T276612)
 		if ( !$container->lastChild->firstChild ) {
-			$signature = trim( $signature );
+			$signature = ltrim( $signature, ' ' );
 		}
 		// Sign the last line
 		$container->lastChild->appendChild(

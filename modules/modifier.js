@@ -434,7 +434,7 @@ function appendSignature( container ) {
 	// If the last node is empty, trim the signature to prevent leading whitespace triggering
 	// preformatted text (T269188, T276612)
 	if ( !container.lastChild.firstChild ) {
-		signature = signature.trim();
+		signature = signature.replace( /^ +/, '' );
 	}
 	// Sign the last line
 	container.lastChild.appendChild(
