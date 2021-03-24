@@ -47,7 +47,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				$html = $params['html'];
 
 				if ( $wikitext !== null ) {
-					$wikitext = trim( $wikitext );
+					$wikitext = CommentUtils::htmlTrim( $wikitext );
 					if ( !CommentModifier::isWikitextSigned( $wikitext ) ) {
 						$wikitext .=
 							$this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
