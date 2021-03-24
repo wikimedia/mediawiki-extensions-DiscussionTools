@@ -3,6 +3,9 @@
  * @external CommentItem
  */
 
+var
+	utils = require( 'ext.discussionTools.init' ).utils;
+
 /**
  * DiscussionTools ReplyWidgetPlain class
  *
@@ -62,7 +65,7 @@ ReplyWidgetPlain.prototype.clear = function () {
 };
 
 ReplyWidgetPlain.prototype.isEmpty = function () {
-	return !this.replyBodyWidget.getValue().trim();
+	return utils.htmlTrim( this.replyBodyWidget.getValue() ) === '';
 };
 
 ReplyWidgetPlain.prototype.getMode = function () {

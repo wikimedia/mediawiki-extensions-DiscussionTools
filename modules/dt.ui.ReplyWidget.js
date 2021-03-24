@@ -574,6 +574,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	// }[ this.context ];
 	indent = ':';
 	wikitext = wikitext !== undefined ? wikitext : this.getValue();
+	wikitext = utils.htmlTrim( wikitext );
 	title = this.isNewTopic && this.commentController.sectionTitle.getValue();
 
 	if ( this.previewWikitext === wikitext && this.previewTitle === title ) {
@@ -587,7 +588,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 		this.previewRequest = null;
 	}
 
-	if ( !wikitext.trim() ) {
+	if ( !wikitext ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
 		wikitext = this.commentController.doIndentReplacements( wikitext, indent );
