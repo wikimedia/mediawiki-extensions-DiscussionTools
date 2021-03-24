@@ -49,7 +49,7 @@
 	"tag-discussiontools-edit-description": "Bruker redigerte en eksisterende kommentar med DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nytt emne]",
 	"tag-discussiontools-newtopic-description": "Brukeren la til et nytt emne til siden med DiscussionTools",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svarte]",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
 	"tag-discussiontools-reply-description": "Brukeren svarte på en kommentar med DiscussionTools",
 	"tag-discussiontools-source": "DiscussionTools: kilde",
 	"tag-discussiontools-source-description": "DiscussionTools var i kildemodus",
