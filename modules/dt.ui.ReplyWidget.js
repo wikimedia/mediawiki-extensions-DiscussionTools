@@ -376,16 +376,34 @@ ReplyWidget.prototype.getEditSummary = function () {
 };
 
 ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
-	var promise,
-		mode = option.getData(),
+	var mode = option.getData(),
 		widget = this;
 
 	if ( mode === this.getMode() ) {
 		return;
 	}
 
-	this.setPending( true );
 	this.modeTabSelect.setDisabled( true );
+	this.switch( mode ).then(
+		null,
+		function () {
+			// Switch failed, restore previous tab selection
+			widget.modeTabSelect.selectItemByData( mode === 'source' ? 'visual' : 'source' );
+		}
+	).always( function () {
+		widget.modeTabSelect.setDisabled( false );
+	} );
+};
+
+ReplyWidget.prototype.switch = function ( mode ) {
+	var promise,
+		widget = this;
+
+	if ( mode === this.getMode() ) {
+		return $.Deferred().reject().promise();
+	}
+
+	this.setPending( true );
 	switch ( mode ) {
 		case 'source':
 			promise = this.commentController.switchToWikitext();
@@ -397,7 +415,7 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 	// TODO: We rely on #setup to call #saveEditMode, so when we have 2017WTE
 	// we will need to save the new preference here as switching will not
 	// reload the editor.
-	promise.then( function () {
+	return promise.then( function () {
 		// Switch succeeded
 		mw.track( 'dt.schemaVisualEditorFeatureUse', {
 			feature: 'editor-switch',
@@ -407,12 +425,8 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 					( enable2017Wikitext ? 'source-nwe' : 'source' )
 			) + '-desktop'
 		} );
-	}, function () {
-		// Switch failed, restore previous tab selection
-		widget.modeTabSelect.selectItemByData( mode === 'source' ? 'visual' : 'source' );
 	} ).always( function () {
 		widget.setPending( false );
-		widget.modeTabSelect.setDisabled( false );
 	} );
 };
 
