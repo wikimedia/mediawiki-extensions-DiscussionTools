@@ -66,9 +66,10 @@ function highlight( comment ) {
  *
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
+ * @param {boolean} [isNewTopic=false]
  * @return {jQuery.Promise}
  */
-function getPageData( pageName, oldId ) {
+function getPageData( pageName, oldId, isNewTopic ) {
 	var lintPromise, transcludedFromPromise, veMetadataPromise,
 		api = getApi();
 
@@ -77,7 +78,7 @@ function getPageData( pageName, oldId ) {
 		return pageDataCache[ pageName ][ oldId ];
 	}
 
-	if ( oldId ) {
+	if ( oldId && !isNewTopic ) {
 		lintPromise = api.get( {
 			action: 'query',
 			list: 'linterrors',
@@ -135,59 +136,71 @@ function getPageData( pageName, oldId ) {
  *  Rejects with error data if the comment is transcluded, or there are lint errors on the page.
  */
 function checkCommentOnPage( pageName, oldId, commentId ) {
-	return getPageData( pageName, oldId )
+	var isNewTopic = commentId.slice( 0, 4 ) === 'new|';
+
+	return getPageData( pageName, oldId, isNewTopic )
 		.then( function ( response ) {
 			var isTranscludedFrom, transcludedErrMsg, mwTitle, follow,
 				lintType,
+				metadata = response.metadata,
 				lintErrors = response.linterrors,
 				transcludedFrom = response.transcludedfrom;
 
-			isTranscludedFrom = transcludedFrom[ commentId ];
-			if ( isTranscludedFrom === undefined ) {
-				// The comment wasn't found when generating the "transcludedfrom" data,
-				// so we don't know where the reply should be posted. Just give up.
-				return $.Deferred().reject( 'discussiontools-commentid-notfound-transcludedfrom', { errors: [ {
-					code: 'discussiontools-commentid-notfound-transcludedfrom',
-					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
-				} ] } ).promise();
-			} else if ( isTranscludedFrom ) {
-				mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
-				// If this refers to a template rather than a subpage, we never want to edit it
-				follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
+			if ( !isNewTopic ) {
+				isTranscludedFrom = transcludedFrom[ commentId ];
+				if ( isTranscludedFrom === undefined ) {
+					// The comment wasn't found when generating the "transcludedfrom" data,
+					// so we don't know where the reply should be posted. Just give up.
+					return $.Deferred().reject( 'discussiontools-commentid-notfound-transcludedfrom', { errors: [ {
+						code: 'discussiontools-commentid-notfound-transcludedfrom',
+						html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
+					} ] } ).promise();
+				} else if ( isTranscludedFrom ) {
+					mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
+					// If this refers to a template rather than a subpage, we never want to edit it
+					follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
 
-				if ( follow ) {
-					transcludedErrMsg = mw.message(
-						'discussiontools-error-comment-is-transcluded-title',
-						mwTitle.getPrefixedText()
-					).parse();
-				} else {
-					transcludedErrMsg = mw.message(
-						'discussiontools-error-comment-is-transcluded',
-						// eslint-disable-next-line no-jquery/no-global-selector
-						$( '#ca-edit' ).text()
-					).parse();
+					if ( follow ) {
+						transcludedErrMsg = mw.message(
+							'discussiontools-error-comment-is-transcluded-title',
+							mwTitle.getPrefixedText()
+						).parse();
+					} else {
+						transcludedErrMsg = mw.message(
+							'discussiontools-error-comment-is-transcluded',
+							// eslint-disable-next-line no-jquery/no-global-selector
+							$( '#ca-edit' ).text()
+						).parse();
+					}
+
+					return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
+						data: {
+							transcludedFrom: isTranscludedFrom,
+							follow: follow
+						},
+						code: 'comment-is-transcluded',
+						html: transcludedErrMsg
+					} ] } ).promise();
 				}
 
-				return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
-					data: {
-						transcludedFrom: isTranscludedFrom,
-						follow: follow
-					},
-					code: 'comment-is-transcluded',
-					html: transcludedErrMsg
-				} ] } ).promise();
+				if ( lintErrors.length ) {
+					// We currently only request the first error
+					lintType = lintErrors[ 0 ].category;
+
+					return $.Deferred().reject( 'lint', { errors: [ {
+						code: 'lint',
+						html: mw.message( 'discussiontools-error-lint',
+							'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Lint_errors/' + lintType,
+							'https://www.mediawiki.org/wiki/Special:MyLanguage/Help_talk:Lint_errors/' + lintType,
+							mw.util.getUrl( pageName, { action: 'edit', lintid: lintErrors[ 0 ].lintId } ) ).parse()
+					} ] } ).promise();
+				}
 			}
 
-			if ( lintErrors.length ) {
-				// We currently only request the first error
-				lintType = lintErrors[ 0 ].category;
-
-				return $.Deferred().reject( 'lint', { errors: [ {
-					code: 'lint',
-					html: mw.message( 'discussiontools-error-lint',
-						'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Lint_errors/' + lintType,
-						'https://www.mediawiki.org/wiki/Special:MyLanguage/Help_talk:Lint_errors/' + lintType,
-						mw.util.getUrl( pageName, { action: 'edit', lintid: lintErrors[ 0 ].lintId } ) ).parse()
+			if ( !metadata.canEdit ) {
+				return $.Deferred().reject( 'permissions-error', { errors: [ {
+					code: 'permissions-error',
+					html: metadata.notices[ 'permissions-error' ]
 				} ] } ).promise();
 			}
 
