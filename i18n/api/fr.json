@@ -7,7 +7,9 @@
 			"Wladek92"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "ID du commentaire non trouvé : $1",
+	"apierror-discussiontools-commentid-notfound": "Commentaire avec l’ID '$1' non trouvé.",
+	"apierror-discussiontools-commentname-ambiguous": "Plusieurs commentaires avec le nom '$1' trouvés, utiliser plutôt l’ID.",
+	"apierror-discussiontools-commentname-notfound": "Commentaire avec le nom '$1' non trouvé.",
 	"apihelp-discussiontools-param-oldid": "Le numéro de révision à utiliser (par défaut, la dernière révision).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Retourner les titres des pages depuis lesquelles chaque commentaire est inclus dans la page donnée.",
 	"apihelp-discussiontools-summary": "Renvoie les métadonnées nécessaires pour initialiser les outils de discussion.",

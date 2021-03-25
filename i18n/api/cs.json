@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Georg101",
 			"Matěj Suchánek",
 			"Patriccck",
 			"Patrik L."
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "ID komentáře nebylo nalezeno: $1",
+	"apierror-discussiontools-commentid-notfound": "Komentář s ID '$1' nebyl nalezen.",
 	"apihelp-discussiontools-param-oldid": "Číslo revize, které má být použito (výchozí je poslední revize stránky).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Vrátí názvy stránek, ze kterých je každý komentář k dané stránce transkludován.",
 	"apihelp-discussiontools-summary": "Vrací metadata potřebná k inicializaci Diskusních nástrojů.",
