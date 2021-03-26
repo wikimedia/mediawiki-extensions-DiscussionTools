@@ -4,11 +4,14 @@
 			"Joetaras"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "ID d'u commende non acchiate: $1",
+	"apierror-discussiontools-commentid-notfound": "Commende cu l'ID '$1' non acchiate.",
+	"apierror-discussiontools-commentname-ambiguous": "Commende multiple cu 'u nome '$1' acchiate, ause l'ID.",
+	"apierror-discussiontools-commentname-notfound": "Commende cu 'u nome '$1' non acchiate.",
 	"apihelp-discussiontools-param-oldid": "'U numere de revisione da ausà (predefinite jè 'urtema revisione).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Tuèrne le titole d ele pàggene da 'a quale ogne commende sus a pàgene ha state escluse.",
 	"apihelp-discussiontools-summary": "Tuèrne le metadate cercate pe inizializzà le struminde de le 'ngazzaminde.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID d'u commende da respopnnere. Ausate sulamende quanne <var>paction</var> jè <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID d'u commende da responnere. Ausate sulamende quanne <var>paction</var> jè <var>addcomment</var>. Sovrascrive cu <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Nome d'u commende da responnere. Ausate sulamende quanne <var>paction</var> jè <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Condenute da pubblecà, cumme HTML. Non ge pò essere ausate 'nzieme a <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Ausate sulamende quanne <var>paction</var> jè <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Condenute da pubblecà, cumme uicchiteste. Non ge pò essere ausate 'nzieme a <var>html</var>.",

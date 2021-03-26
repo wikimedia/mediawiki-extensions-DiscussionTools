@@ -7,13 +7,14 @@
 			"Wladek92"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "Commentaire avec l’ID '$1' non trouvé.",
-	"apierror-discussiontools-commentname-ambiguous": "Plusieurs commentaires avec le nom '$1' trouvés, utiliser plutôt l’ID.",
-	"apierror-discussiontools-commentname-notfound": "Commentaire avec le nom '$1' non trouvé.",
+	"apierror-discussiontools-commentid-notfound": "Commentaire avec l’ID « $1 » non trouvé.",
+	"apierror-discussiontools-commentname-ambiguous": "Plusieurs commentaires trouvés avec le nom « $1 », utiliser plutôt l’ID.",
+	"apierror-discussiontools-commentname-notfound": "Commentaire avec le nom « $1 » non trouvé.",
 	"apihelp-discussiontools-param-oldid": "Le numéro de révision à utiliser (par défaut, la dernière révision).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Retourner les titres des pages depuis lesquelles chaque commentaire est inclus dans la page donnée.",
 	"apihelp-discussiontools-summary": "Renvoie les métadonnées nécessaires pour initialiser les outils de discussion.",
-	"apihelp-discussiontoolsedit-param-commentid": "Identifiant du commentaire auquel répondre. Utilisé seulement lorsque <var>paction</var> est <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "Identifiant du commentaire auquel répondre. Utilisé seulement lorsque <var>paction</var> vaut <var>addcomment</var>. Prévaut sur <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Nom du commentaire auquel répondre. Utilisé seulement quand <var>paction</var> vaut <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Contenu à poster, en tant que HTML. Ne peut pas être utilisé conjointement avec <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Utilisé seulement lorsque <var>paction</var> est <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Contenu à poster, en tant que wikitexte. Ne peut pas être utilisé conjointement avec <var>html</var>.",

@@ -5,11 +5,14 @@
 			"Guycn2"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "מזהה תגובה לא נמצא: $1",
+	"apierror-discussiontools-commentid-notfound": "תגובה עם המזהה '$1' לא נמצאה.",
+	"apierror-discussiontools-commentname-ambiguous": "נמצאו מספר תגובות עם השם '$1', נא להשתמש במזהה במקום זה.",
+	"apierror-discussiontools-commentname-notfound": "תגובה עם השם '$1' לא נמצאה.",
 	"apihelp-discussiontools-param-oldid": "באיזה מספר גרסה להשתמש (ברירת המחדל היא הגרסה האחרונה).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "להחזיר כותרות של דפים שכל הערה בדף הנתון מוכללת מהם.",
 	"apihelp-discussiontools-summary": "מחזירה מטא־נתונים דרושים כדי לאתחל את כלי השיחה.",
-	"apihelp-discussiontoolsedit-param-commentid": "מזהה התגובה שצריך להשיב אליו. משמש רק כש־<var>paction</var> הוא <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "מזהה התגובה שצריך להשיב אליו. משמש רק כש־<var>paction</var> הוא <var>addcomment</var>. דורס את <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "שם התגובה שצריך להשיב עליה. משמש רק כשהערך של <var>paction</var> הוא <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "איזה תוכן לשלוח, בתור HTML. לא יכול לשמש עם <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} משמש רק כש־<var>paction</var> הוא <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "איזה תוכן לשלוח, בתור קוד ויקי. לא יכול לשמש עם <var>html</var>.",

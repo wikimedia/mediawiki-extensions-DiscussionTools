@@ -5,11 +5,14 @@
 			"NEHAOUA"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "معرّف التعليق غير موجود: $1",
+	"apierror-discussiontools-commentid-notfound": "لم يُعثر على التعليق المعرّف بـ'$1'.",
+	"apierror-discussiontools-commentname-ambiguous": "عُثر على العديد من التعاليق مع الاسم '$1'، {{GENDER:|استعمل|استعملي}} المعرّف عِوَض الاسم.",
+	"apierror-discussiontools-commentname-notfound": "لم يًعثر على التعليق مع الاسم '$1'.",
 	"apihelp-discussiontools-param-oldid": "رقم المراجعة للاستخدام (الافتراض إلى المراجعة الأخيرة).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "تقدّم عناوين الصفحات التي تم تضمين كل تعليق منها في الصفحة المحددة.",
 	"apihelp-discussiontools-summary": "إرجاع البيانات الوصفية المطلوبة لتهيئة أدوات المناقشة.",
-	"apihelp-discussiontoolsedit-param-commentid": "معرّف التعليق المراد الردّ عليه. يستعمل فقط حين <var>paction</var> يكون <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "معرّف التعليق المراد الردّ عليه. يُستعمل فقط حين <var>paction</var> يكون  <var>addcomment</var>. يتجاوز <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "اسم التعليق المراد الردّ عليه. يستعمل فقط حين <var>paction</var> يكون <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "محتوى للنشر، بصيغة HTML. لا يمكن استخدامه مع <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} تستخدم فقط حين <var>paction</var> يكون <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "محتوى للنشر، كنص ويكي. لا يمكن استخدامه مع  <var>html</var>.",

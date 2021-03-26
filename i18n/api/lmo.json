@@ -4,11 +4,14 @@
 			"Salvemm el lombard"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "ID del coment minga trovad: $1",
+	"apierror-discussiontools-commentid-notfound": "El coment con l'ID $1 l'è stad minga trovad.",
+	"apierror-discussiontools-commentname-ambiguous": "A inn vegnud a voltra diversi coment cont el nom \"$1\", dopera putost l'ID.",
+	"apierror-discussiontools-commentname-notfound": "El coment che 'l se ciama '$1' l'è stad minga trovad.",
 	"apihelp-discussiontools-param-oldid": "El numer de revision de drovà (el valor predefinid l'è l'ultema revision)",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "El da indree i titoi di pagine di quai ogni coment in la pagina dada l'è stad inclus.",
 	"apihelp-discussiontools-summary": "El dà indree a i metadati che gh'è besogn per dagh l'inviada ai instrument de discussion.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID del coment che te gh'hee de rispondegh. Drovad domà quand che <var>paction</var> l'è <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID del coment che te gh'hee de rispondegh. Drovad domà quand che <var>paction</var> l'è <var>addcomment</var>. El toeu el post de <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "ID del coment che te gh'hee de rispondegh. Drovad domà quand che <var>paction</var> l'è <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Contegnud de meter foeura, in forma de HTML. Se po minga drovall insema al <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Drovad domà quand che <var>paction</var> l'è <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Contegnud de meter foeura, come wikitest. Se po minga drovall insema a l'<var>html</var>.",
