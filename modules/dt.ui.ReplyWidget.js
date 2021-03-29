@@ -387,8 +387,8 @@ ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
 	this.switch( mode ).then(
 		null,
 		function () {
-			// Switch failed, restore previous tab selection
-			widget.modeTabSelect.selectItemByData( mode === 'source' ? 'visual' : 'source' );
+			// Switch failed, clear the tab selection
+			widget.modeTabSelect.selectItem( null );
 		}
 	).always( function () {
 		widget.modeTabSelect.setDisabled( false );
