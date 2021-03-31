@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hanna Tardos",
 			"Tacsipacsi"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "A hozzászólás-azonosító nem található: $1",
+	"apierror-discussiontools-commentid-notfound": "A/az '$1' azonosítóval rendelkező hozzászólás nem található.",
 	"apihelp-discussiontools-param-oldid": "A használandó lapváltozat azonosítója (alapértelmezés szerint a legújabb lapváltozat).",
 	"apihelp-discussiontools-summary": "A megbeszéléseszközök inicializálásához szükséges metaadatok lekérése.",
 	"apihelp-discussiontoolsedit-param-commentid": "A hozzászólás azonosítója.",
