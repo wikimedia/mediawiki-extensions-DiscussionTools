@@ -5,7 +5,7 @@
 			"Tacsipacsi"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "A/az '$1' azonosítóval rendelkező hozzászólás nem található.",
+	"apierror-discussiontools-commentid-notfound": "A(z) „$1” azonosítójú hozzászólás nem található.",
 	"apihelp-discussiontools-param-oldid": "A használandó lapváltozat azonosítója (alapértelmezés szerint a legújabb lapváltozat).",
 	"apihelp-discussiontools-summary": "A megbeszéléseszközök inicializálásához szükséges metaadatok lekérése.",
 	"apihelp-discussiontoolsedit-param-commentid": "A hozzászólás azonosítója.",

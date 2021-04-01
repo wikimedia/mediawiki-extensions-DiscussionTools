@@ -31,6 +31,7 @@
 	"discussiontools-preference-newtopictool-help": "Dadurch wird ein Inline-Formular zum Hinzufügen neuer Themen angezeigt. Du kannst mehr über diese Funktion erfahren, indem du die [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary Zusammenfassung der Funktion] liest.",
 	"discussiontools-preference-replytool": "Schnelles Antworten aktivieren",
 	"discussiontools-preference-replytool-help": "Hier wird dir ein Link angezeigt, über den du mit einem Klick auf Kommentare der Diskussionsseite antworten kannst. Auf der [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary Beschreibungsseite zur Funktion] kannst du mehr dazu erfahren.",
+	"discussiontools-preference-sourcemodetoolbar": "Aktivieren von experimentellen Werkzeugen in den Wikitextmodus der Funktionen schnelles Antworten und schnelles Hinzufügen von Themen",
 	"discussiontools-replylink": "Antworten",
 	"discussiontools-replywidget-abandon": "Bist du sicher, dass du den Kommentar, den du schreibst, verwerfen willst?",
 	"discussiontools-replywidget-abandon-discard": "Kommentar verwerfen",

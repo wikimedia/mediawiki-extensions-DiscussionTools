@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dušan Kreheľ"
+			"Dušan Kreheľ",
+			"Yardom78"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Odpoveď",
 	"discussiontools-desc": "Nástroje na vylepšenie diskusných stránok.",
-	"discussiontools-newtopic-placeholder-title": "Nadpis"
+	"discussiontools-newtopic-placeholder-title": "Názov"
 }
