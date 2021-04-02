@@ -33,6 +33,7 @@
 	"discussiontools-preference-newtopictool-help": "זה יציג לך טופס מובנה להוספת נושאים חדשים. אפשר לקבל מידע נוסף על האפשרות הזאת באמצעות קריאת [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary התיאור המקוצר של האפשרות].",
 	"discussiontools-preference-replytool": "להפעיל תשובה מהירה",
 	"discussiontools-preference-replytool-help": "זה יראה לך קישור לתשובה להערות בדפי שיחה בלחיצה אחת. אפשר לקבל מידע נוסף על האפשרות הזאת באמצעות קריאת [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary תקציר על האפשרות].",
+	"discussiontools-preference-sourcemodetoolbar": "הפעלת כלים ניסיוניים במצב עריכת קוד מקור של אפשרויות התגובה המהירה והוספת הנושא המהירה",
 	"discussiontools-replylink": "תגובה",
 	"discussiontools-replywidget-abandon": "האם {{GENDER:|אתה|את}} באמת רוצה לזרוק את התגובה {{GENDER:|שאתה כותב|שאת כותבת}}?",
 	"discussiontools-replywidget-abandon-discard": "לזרוק את התגובה",
