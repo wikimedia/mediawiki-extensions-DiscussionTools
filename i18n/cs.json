@@ -33,6 +33,7 @@
 	"discussiontools-preference-newtopictool-help": "Tato funkce zobrazí formulář pro přidávání nových témat. Další informace o tomto nástroji najdete na [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary souhrnné stránce o funkci].",
 	"discussiontools-preference-replytool": "Aktivovat snadné odpovídání",
 	"discussiontools-preference-replytool-help": "Tato funkce zobrazí odkaz na odpověď na jednotlivé komentáře na diskusních stránkách. Další informace o této funkci najdete na [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary souhrnné stránce o funkci].",
+	"discussiontools-preference-sourcemodetoolbar": "Aktivovat experimentální nástroje v editoru zdrojového kódu funkcí snadné odpovídání a snadné přidávání témat.",
 	"discussiontools-replylink": "odpovědět",
 	"discussiontools-replywidget-abandon": "Jste si {{GENDER:|jist|jista|jisti}}, že chcete zahodit vámi psaný komentář?",
 	"discussiontools-replywidget-abandon-discard": "Zahodit komentář",

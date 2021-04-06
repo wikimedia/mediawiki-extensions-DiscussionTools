@@ -2,10 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
+			"NMW03",
 			"Toghrul Rahimli"
 		]
 	},
 	"discussiontools-replywidget-abandon": "Yazdığınız şərhi ləğv etmək istədiyinizə əminsiniz?",
+	"discussiontools-replywidget-abandon-discard": "Ləğv et",
+	"discussiontools-replywidget-abandon-keep": "Yazmağa davam et",
 	"discussiontools-replywidget-advanced": "Daha çox",
 	"discussiontools-replywidget-cancel": "İmtina",
 	"discussiontools-replywidget-feedback": "Bu funksiya haqqında rəyinizi bildirin",

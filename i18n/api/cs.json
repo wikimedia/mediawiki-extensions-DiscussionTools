@@ -7,11 +7,14 @@
 			"Patrik L."
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "Komentář s ID '$1' nebyl nalezen.",
+	"apierror-discussiontools-commentid-notfound": "Komentář s ID „$1“ nebyl nalezen.",
+	"apierror-discussiontools-commentname-ambiguous": "Bylo nalezeno více komentářů s názvem „$1“, namísto toho použijte parametr ID.",
+	"apierror-discussiontools-commentname-notfound": "Komentář s názvem „$1“ nebyl nalezen.",
 	"apihelp-discussiontools-param-oldid": "Číslo revize, které má být použito (výchozí je poslední revize stránky).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Vrátí názvy stránek, ze kterých je každý komentář k dané stránce transkludován.",
 	"apihelp-discussiontools-summary": "Vrací metadata potřebná k inicializaci Diskusních nástrojů.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID komentáře, na který odpovědět. Používá se pouze v případě, kdy <var>paction</var> je <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID komentáře, na který se má odpovědět. Používá se pouze v případě, kdy <var>paction</var> je <var>addcomment</var>. Přepisuje <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Název komentáře, na který se má odpovědět. Používá se pouze v případě, kdy <var>paction</var> je <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Obsah k odeslání ve formátu HTML. Nelze použít společně s <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Používá se pouze v případě, kdy <var>paction</var> je <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Obsah k odeslání ve formátu wikitextu. Nelze použít společně s <var>html</var>.",

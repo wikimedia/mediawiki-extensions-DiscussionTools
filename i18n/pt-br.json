@@ -32,6 +32,7 @@
 	"discussiontools-preference-newtopictool-help": "Isso mostrará um formulário embutido para adicionar novos tópicos. Você pode aprender mais sobre esse recurso lendo o [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary resumo de recursos].",
 	"discussiontools-preference-replytool": "Ativar resposta rápida",
 	"discussiontools-preference-replytool-help": "Isso mostrará um link para responder aos comentários da página de discussão com um clique. Você pode aprender mais sobre esse recurso lendo o [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary resumo de recursos].",
+	"discussiontools-preference-sourcemodetoolbar": "Ativar ferramentas experimentais na reposta rápida e tópico rápido adicionando recursos de modos de fonte",
 	"discussiontools-replylink": "responder",
 	"discussiontools-replywidget-abandon": "Tem certeza de que deseja descartar o comentário que está escrevendo?",
 	"discussiontools-replywidget-abandon-discard": "Descartar comentário",
