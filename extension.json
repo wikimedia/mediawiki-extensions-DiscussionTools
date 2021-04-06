@@ -428,7 +428,7 @@
 			"description": "Override availability of DiscussionTools new topic tool. 'default', 'available', or 'unavailable'."
 		},
 		"DiscussionTools_sourcemodetoolbar": {
-			"value": "unavailable",
+			"value": "default",
 			"description": "Enable the toolbar in source mode for the reply tool and new topic tool. 'default', 'available', or 'unavailable'."
 		},
 		"DiscussionTools_topicsubscription": {
