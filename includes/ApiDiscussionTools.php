@@ -52,10 +52,23 @@ class ApiDiscussionTools extends ApiBase {
 				$transcludedFrom = [];
 				foreach ( $threadItems as $threadItem ) {
 					$from = $threadItem->getTranscludedFrom();
+
+					// Key by IDs, legacy IDs, and names. This assumes that they can never conflict.
+
 					$transcludedFrom[ $threadItem->getId() ] = $from;
+
 					$legacyId = $threadItem->getLegacyId();
 					if ( $legacyId ) {
 						$transcludedFrom[ $legacyId ] = $from;
+					}
+
+					$name = $threadItem->getName();
+					if ( isset( $transcludedFrom[ $name ] ) && $transcludedFrom[ $name ] !== $from ) {
+						// Two or more items with the same name, transcluded from different pages.
+						// Consider them both to be transcluded from unknown source.
+						$transcludedFrom[ $name ] = true;
+					} else {
+						$transcludedFrom[ $name ] = $from;
 					}
 				}
 

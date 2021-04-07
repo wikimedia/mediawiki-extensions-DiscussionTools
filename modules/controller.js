@@ -132,12 +132,12 @@ function getPageData( pageName, oldId, isNewTopic ) {
  *
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
- * @param {string} commentId Comment ID
+ * @param {CommentItem} comment Comment
  * @return {jQuery.Promise} Resolves with the pageName+oldId if the comment appears on the page.
  *  Rejects with error data if the comment is transcluded, or there are lint errors on the page.
  */
-function checkCommentOnPage( pageName, oldId, commentId ) {
-	var isNewTopic = commentId.slice( 0, 4 ) === 'new|';
+function checkCommentOnPage( pageName, oldId, comment ) {
+	var isNewTopic = comment.id.slice( 0, 4 ) === 'new|';
 
 	return getPageData( pageName, oldId, isNewTopic )
 		.then( function ( response ) {
@@ -148,7 +148,12 @@ function checkCommentOnPage( pageName, oldId, commentId ) {
 				transcludedFrom = response.transcludedfrom;
 
 			if ( !isNewTopic ) {
-				isTranscludedFrom = transcludedFrom[ commentId ];
+				// First look for data by the comment's ID. If not found, also look by name.
+				// Data by ID may not be found due to differences in headings (e.g. T273413, T275821),
+				// or if a comment's parent changes.
+				// Data by name might be combined from two or more comments, which would only allow us to
+				// treat them both as transcluded from unknown source, unless we check ID first.
+				isTranscludedFrom = transcludedFrom[ comment.id ] || transcludedFrom[ comment.name ];
 				if ( isTranscludedFrom === undefined ) {
 					// The comment wasn't found when generating the "transcludedfrom" data,
 					// so we don't know where the reply should be posted. Just give up.
