@@ -220,9 +220,9 @@ class HookUtils {
 
 		// Topic subscription is not available on your own talk page, as you will
 		// get 'mention-user-talk' notifications already. (T276996)
-		if ( $feature === self::TOPICSUBSCRIPTION && $title->getNamespace() === NS_USER_TALK ) {
+		if ( $feature === self::TOPICSUBSCRIPTION && $title->getNamespace() === NS_USER_TALK && !$title->isSubpage() ) {
 			$user = User::newFromName( $title->getText() );
-			if ( $user->equals( $output->getUser() ) ) {
+			if ( $user && $user->equals( $output->getUser() ) ) {
 				return false;
 			}
 		}
