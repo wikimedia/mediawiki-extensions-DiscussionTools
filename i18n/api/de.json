@@ -15,5 +15,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Zu postender Inhalt, als Wikitext. Kann nicht zusammen mit <var>html</var> verwendet werden.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Fügt einen neuen Kommentar als Antwort auf einen vorhandenen Kommentar hinzu.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Fügt einen neuen Diskussionsabschnitt und den ersten Kommentar darin hinzu.",
-	"apihelp-discussiontoolsedit-summary": "Veröffentlichen einer Nachricht auf einer Diskussionsseite."
+	"apihelp-discussiontoolsedit-summary": "Veröffentlichen einer Nachricht auf einer Diskussionsseite.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "true zum Abonnieren, false zum Abbestellen",
+	"apihelp-discussiontoolssubscribe-summary": "Abonnieren (oder abbestellen), um Benachrichtigungen über ein Thema zu erhalten."
 }
