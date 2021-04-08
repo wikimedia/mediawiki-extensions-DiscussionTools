@@ -49,7 +49,7 @@ class ParserHooks implements
 		if (
 			$dtConfig->get( 'DiscussionToolsUseParserCache' ) &&
 			HookUtils::isAvailableForTitle( $article->getTitle() ) &&
-			HookUtils::isFeatureEnabledForUser( $popts->getUser(), 'replytool' )
+			HookUtils::isFeatureEnabledForUser( $popts->getUser(), HookUtils::REPLYTOOL )
 		) {
 			$popts->setOption( 'dtreply', true );
 		}

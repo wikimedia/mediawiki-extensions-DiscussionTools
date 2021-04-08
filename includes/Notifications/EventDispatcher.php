@@ -61,7 +61,7 @@ class EventDispatcher {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
-		if ( $dtConfig->get( 'DiscussionTools_topicsubscription' ) === 'unavailable' ) {
+		if ( $dtConfig->get( 'DiscussionTools_' . HookUtils::TOPICSUBSCRIPTION ) === 'unavailable' ) {
 			// Feature disabled for all users
 			return;
 		}

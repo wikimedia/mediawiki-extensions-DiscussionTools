@@ -124,7 +124,7 @@ class PageHooks implements
 			}
 		}
 
-		if ( HookUtils::isFeatureEnabledForOutput( $output, 'topicsubscription' ) ) {
+		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			$subscriptionStore = $this->subscriptionStore;
 			$doc = new DOMDocument();
 			$user = $output->getUser();

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use DOMElement;
 use Language;
+use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
 use Throwable;
@@ -14,8 +15,8 @@ use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 class CommentFormatter {
 	// List of features which, when enabled, cause the comment formatter to run
 	public const USE_WITH_FEATURES = [
-		'replytool',
-		'topicsubscription',
+		HookUtils::REPLYTOOL,
+		HookUtils::TOPICSUBSCRIPTION,
 	];
 
 	protected const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';

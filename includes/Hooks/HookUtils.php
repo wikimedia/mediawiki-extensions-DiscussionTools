@@ -19,6 +19,10 @@ use Title;
 use User;
 
 class HookUtils {
+	public const REPLYTOOL = 'replytool';
+	public const NEWTOPICTOOL = 'newtopictool';
+	public const SOURCEMODETOOLBAR = 'sourcemodetoolbar';
+	public const TOPICSUBSCRIPTION = 'topicsubscription';
 	/**
 	 * @var string[] List of all sub-features. Will be used to generate:
 	 *  - Feature override global: $wgDiscussionTools_FEATURE
@@ -26,10 +30,10 @@ class HookUtils {
 	 *  - User option: discussiontools-FEATURE
 	 */
 	public const FEATURES = [
-		'replytool',
-		'newtopictool',
-		'sourcemodetoolbar',
-		'topicsubscription',
+		self::REPLYTOOL,
+		self::NEWTOPICTOOL,
+		self::SOURCEMODETOOLBAR,
+		self::TOPICSUBSCRIPTION,
 	];
 
 	/**
@@ -48,7 +52,7 @@ class HookUtils {
 			return false;
 		}
 
-		if ( $feature === 'topicsubscription' && $user->isAnon() ) {
+		if ( $feature === self::TOPICSUBSCRIPTION && $user->isAnon() ) {
 			// Users must be logged in to use topic subscription
 			return false;
 		}
@@ -216,7 +220,7 @@ class HookUtils {
 
 		// Topic subscription is not available on your own talk page, as you will
 		// get 'mention-user-talk' notifications already. (T276996)
-		if ( $feature === 'topicsubscription' && $title->getNamespace() === NS_USER_TALK ) {
+		if ( $feature === self::TOPICSUBSCRIPTION && $title->getNamespace() === NS_USER_TALK ) {
 			$user = User::newFromName( $title->getText() );
 			if ( $user->equals( $output->getUser() ) ) {
 				return false;

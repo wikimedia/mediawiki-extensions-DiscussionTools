@@ -35,12 +35,12 @@ class PreferenceHooks implements
 			}
 		}
 
-		if ( isset( $preferences['discussiontools-sourcemodetoolbar'] ) ) {
+		if ( isset( $preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR] ) ) {
 			// Hide this option when it would have no effect
 			// (both reply tool and new topic tool are disabled)
-			$preferences['discussiontools-sourcemodetoolbar']['hide-if'] = [ 'AND',
-				[ '===', 'discussiontools-replytool', '' ],
-				[ '===', 'discussiontools-newtopictool', '' ],
+			$preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR]['hide-if'] = [ 'AND',
+				[ '===', 'discussiontools-' . HookUtils::REPLYTOOL, '' ],
+				[ '===', 'discussiontools-' . HookUtils::NEWTOPICTOOL, '' ],
 			];
 		}
 
