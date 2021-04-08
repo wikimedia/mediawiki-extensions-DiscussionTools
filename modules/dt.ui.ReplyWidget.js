@@ -640,6 +640,8 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 			mw.loader.load( response.parse.modulestyles );
 			mw.loader.load( response.parse.modules );
 		}
+
+		mw.hook( 'wikipage.content' ).fire( widget.$preview );
 	} );
 };
 
