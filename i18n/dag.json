@@ -1,11 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alhassan Peter"
+			"Alhassan Mohammed Awal",
+			"Alhassan Peter",
+			"Hasslaebetch",
+			"Karimbaasani",
+			"Ruky Wunpini"
 		]
 	},
-	"discussiontools-notification-subscribed-new-comment-view": "Nyama tɔɣino",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{Zaglogu bee zagnyang:$2|labisibu}} in \"<strong>$4</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "Zagi bobigu",
+	"discussiontools-notification-subscribed-new-comment-view": "Lihimi tɔɣino",
+	"discussiontools-preference-topicsubscription": "Yɛltɔɣa zuɣu piibu",
+	"discussiontools-topicsubscription-notify-subscribed-body": "A ni nya lahibali zanchaŋ taha shɛɣa yɛltɔɣa zuɣu ŋɔ ni",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Zaŋmi a maŋa pahi",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "A ku lahi nya tibili zaŋ chaŋ tɔɣino pala yaha zaŋ kpa bɔhim yaɣili ŋɔ.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Yihiri a maŋa"
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Yihiri a maŋa",
+	"echo-category-title-dt-subscription": "Yɛltɔɣa yɛlibu yaali zaŋ maŋ pahi",
+	"echo-pref-tooltip-dt-subscription": "Ti ma tibili zaŋ chaŋ din chana n piibu polo ni"
 }

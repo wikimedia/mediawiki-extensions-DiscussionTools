@@ -18,5 +18,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "איזה תוכן לשלוח, בתור קוד ויקי. לא יכול לשמש עם <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "הוספת הערה חדשה להערה קיימת.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "הוספת פרק דיון חדש ותגובה חדשה בתוכו.",
-	"apihelp-discussiontoolsedit-summary": "שליחת הודעה בדף שיחה."
+	"apihelp-discussiontoolsedit-summary": "שליחת הודעה בדף שיחה.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "true בשביל להירשם, false בשביל לבטל רישום",
+	"apihelp-discussiontoolssubscribe-summary": "להירשם (או לבטל רישום) לקבלת התראות על נושא"
 }

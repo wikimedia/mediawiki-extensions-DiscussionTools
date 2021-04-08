@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"Gustavo.moraes"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Comentário com o ID '$1' não encontrado.",
@@ -17,5 +18,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Conteúdo para postar, como wikitexto. Não pode ser usado junto com <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adicione um novo comentário como resposta a um comentário existente.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adicione uma nova seção de discussão e o primeiro comentário nela.",
-	"apihelp-discussiontoolsedit-summary": "Publique uma mensagem em uma página de discussão."
+	"apihelp-discussiontoolsedit-summary": "Publique uma mensagem em uma página de discussão.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Verdadeiro para inscrever-se, falso para cancelar inscrição",
+	"apihelp-discussiontoolssubscribe-summary": "Inscreva-se (ou cancele a inscrição) para receber notificações sobre um tópico."
 }

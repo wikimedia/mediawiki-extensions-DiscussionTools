@@ -20,6 +20,7 @@
 	"discussiontools-error-noswitchtove-title": "Vizuālais režīms atspējots",
 	"discussiontools-newtopic-missing-title": "Lūdzu, norādi virsrakstu savai diskusiju tēmai. Ja tu noklikšķināsi uz \"{{int:discussiontools-replywidget-newtopic}}\", tava tēma tiks pievienots bez virsraksta.",
 	"discussiontools-newtopic-placeholder-title": "Temats",
+	"discussiontools-notification-subscribed-new-comment-view": "Skatīt komentāru",
 	"discussiontools-postedit-confirmation-published": "Tavs komentārs tika publicēts.",
 	"discussiontools-postedit-confirmation-topicadded": "Tavs temats tika pievienots",
 	"discussiontools-preference-label": "Diskusiju rīki",

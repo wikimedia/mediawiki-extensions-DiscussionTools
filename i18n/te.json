@@ -3,7 +3,8 @@
 		"authors": [
 			"Arjunaraoc",
 			"Chaduvari",
-			"Matma Rex"
+			"Matma Rex",
+			"Veeven"
 		]
 	},
 	"discussiontools": "చర్చ ఉపకరణాలు",
@@ -21,6 +22,7 @@
 	"discussiontools-error-noswitchtove-title": "విజువల్ విధం అచేతనం",
 	"discussiontools-newtopic-missing-title": "మీ చర్చాంశానికి ఒక పేరు ఇవ్వండి. \"{{int:discussiontools-replywidget-newtopic}}\" నొక్కితే, ఈ అంశం శీర్షిక పేరేమీ లేకుండానే ప్రచురితమౌతుంది.",
 	"discussiontools-newtopic-placeholder-title": "శీర్షిక",
+	"discussiontools-notification-subscribed-new-comment-view": "వ్యాఖ్యను చూడండి",
 	"discussiontools-postedit-confirmation-published": "మీ వ్యాఖ్యను ప్రచురించాం.",
 	"discussiontools-postedit-confirmation-topicadded": "మీ విషయాన్ని చేర్చాం.",
 	"discussiontools-preference-description": "చర పేజీ ప్రయోగాత్మక అంశాలను చేతనం చేస్తుంది:\n* ఒక్క నొక్కులో చర్చ పేజీ వ్యాఖ్యలకు   [https://www.mediawiki.org/wiki/Talk_pages_project/Replying సమాధానమివ్వవచ్చు].\n* ఇన్‌లైన్ ఫారాన్ని వాడి [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion కొత్త చర్చాంశాన్ని చేర్చవచ్చు].\n\nఈ అంశాలను మీ [[Special:Preferences#mw-prefsection-editing-discussion|అభిరుచుల్లో]] అమర్చుకోవచ్చు.\n\nతాజా విశేషాలను [https://www.mediawiki.org/wiki/Talk_pages_project/Updates చర్చ పేజీల ప్రాజెక్టు తాజాకరణ పేజీల్లో] చూడవచ్చు.\n\nగమనిక:\n* కాలక్రమంలో కొత్త పరీక్షాంశాలను చేరుస్తూంటాం.\n* పైనున్న అంశాల్లో కొన్ని మీ వికీలో ఇంకా అందుబాటు లోకి వచ్చి ఉండకపోవచ్చు.",

@@ -17,5 +17,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Conținutul de publicat, ca wikitext. Nu poate fi utilizat împreună cu <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adaugă un comentariu nou ca un răspuns la un comentariu existent.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adaugă o secțiune de discuție nouă și primul comentariu în ea.",
-	"apihelp-discussiontoolsedit-summary": "Publică un mesaj pe o pagină de discuție."
+	"apihelp-discussiontoolsedit-summary": "Publică un mesaj pe o pagină de discuție.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Adevărat pentru abonare, fals pentru dezabonare.",
+	"apihelp-discussiontoolssubscribe-summary": "Abonați-vă (sau dezabonați-vă) pentru a primi notificări despre un subiect."
 }

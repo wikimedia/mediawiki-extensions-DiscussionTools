@@ -18,5 +18,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "محتوى للنشر، كنص ويكي. لا يمكن استخدامه مع  <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "تضيف تعليقا جديدا ردًّا على تعليق سابق.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "تضيف قسما لنقاش جديد والتعليق الأوّل فيه.",
-	"apihelp-discussiontoolsedit-summary": "نشر رسالة على صفحة نقاش."
+	"apihelp-discussiontoolsedit-summary": "نشر رسالة على صفحة نقاش.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "صح للاشتراك، خطأ لإلغاء الاشتراك",
+	"apihelp-discussiontoolssubscribe-summary": "اشتراك (أو إلغاء الاشتراك) لتلقّي إخطارات حول موضوع."
 }

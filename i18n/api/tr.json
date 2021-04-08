@@ -19,5 +19,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Yayımlanacak içerik, vikimetin olarak. <var>html</var> ile birlikte kullanılamaz.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Mevcut bir yoruma cevap olarak yeni bir yorum ekle.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Yeni bir tartışma bölümü ve altındaki ilk yorumu ekle.",
-	"apihelp-discussiontoolsedit-summary": "Tartışma sayfasına bir mesaj gönderin."
+	"apihelp-discussiontoolsedit-summary": "Tartışma sayfasına bir mesaj gönderin.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Abone olmak için true, ayrılmak için false",
+	"apihelp-discussiontoolssubscribe-summary": "Bir konu hakkında bildirim almak için abone ol (ya da abonelikten çık)."
 }
