@@ -407,6 +407,9 @@
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\TagHooks"
 		}
 	},
+	"Actions": {
+		"dtunsubscribe": "MediaWiki\\Extension\\DiscussionTools\\Actions\\UnsubscribeAction"
+	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],

@@ -14,6 +14,7 @@ use EchoEvent;
 use EchoEventPresentationModel;
 use EchoPresentationModelSection;
 use Language;
+use MediaWiki\MediaWikiServices;
 use RawMessage;
 use User;
 
@@ -146,8 +147,46 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 			'prioritized' => true,
 		];
 
-		// TODO: Add unsubscribe link
+		$links = [
+			$this->getAgentLink(),
+			$viewChangesLink,
+		];
 
-		return [ $this->getAgentLink(), $viewChangesLink ];
+		$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
+		$items = $subscriptionStore->getSubscriptionItemsForUser(
+			$this->getUser(),
+			[ $this->event->getExtraParam( 'subscribed-comment-name' ) ]
+		);
+		$isSubscribed = count( $items ) && !$items[0]->isMuted();
+		if ( $isSubscribed ) {
+			$commentName = $this->event->getExtraParam( 'subscribed-comment-name' );
+			$links[] = $this->getDynamicActionLink(
+				$this->event->getTitle(),
+				'bellOutline',
+				$this->msg( 'discussiontools-topicsubscription-action-unsubscribe-button' )->text(),
+				null,
+				[
+					'tokenType' => 'csrf',
+					'params' => [
+						'action' => 'discussiontoolssubscribe',
+						'page' => $this->event->getTitle(),
+						'commentname' => $commentName,
+						// 'subscribe' is unset
+					],
+					'messages' => [
+						'confirmation' => [
+							'title' => $this->msg( 'discussiontools-topicsubscription-notify-unsubscribed-title' ),
+							'description' => $this->msg( 'discussiontools-topicsubscription-notify-unsubscribed-body' )
+						]
+					]
+				],
+				[
+					'action' => 'dtunsubscribe',
+					'commentname' => $commentName,
+				]
+			);
+		}
+
+		return $links;
 	}
 }
