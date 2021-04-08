@@ -16,11 +16,13 @@ use Error;
 use FauxRequest;
 use Iterator;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
+use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use Title;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class EventDispatcher {
@@ -66,6 +68,14 @@ class EventDispatcher {
 			return;
 		}
 
+		$title = Title::newFromLinkTarget(
+			$newRevRecord->getPageAsLinkTarget()
+		);
+		if ( !HookUtils::isAvailableForTitle( $title ) ) {
+			// Not a talk page
+			return;
+		}
+
 		$oldParser = self::getParsedRevision( $oldRevRecord );
 		$newParser = self::getParsedRevision( $newRevRecord );
 
@@ -88,7 +98,7 @@ class EventDispatcher {
 			$heading = $newComment->getHeading();
 			$events[] = [
 				'type' => 'dt-subscribed-new-comment',
-				'title' => $newRevRecord->getPageAsLinkTarget(),
+				'title' => $title,
 				'extra' => [
 					'subscribed-comment-name' => $heading->getName(),
 					'comment-id' => $newComment->getId(),
