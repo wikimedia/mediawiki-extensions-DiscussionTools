@@ -59,6 +59,13 @@ class EventDispatcher {
 	 */
 	public static function generateEventsForRevision( array &$events, RevisionRecord $newRevRecord ) {
 		$services = MediaWikiServices::getInstance();
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+
+		if ( $dtConfig->get( 'DiscussionTools_topicsubscription' ) === 'unavailable' ) {
+			// Feature disabled for all users
+			return;
+		}
+
 		$revisionStore = $services->getRevisionStore();
 		$userFactory = $services->getUserFactory();
 		$oldRevRecord = $revisionStore->getPreviousRevision( $newRevRecord );
