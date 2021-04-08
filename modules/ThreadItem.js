@@ -59,13 +59,13 @@ ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 	// by an older version of our PHP code. Code below must be able to handle that.
 	// See ThreadItem::jsonSerialize() in PHP.
 
-	var CommentItem, HeadingItem, item, idEscaped,
-		hash = typeof json === 'string' ? JSON.parse( json ) : json;
+	var hash = typeof json === 'string' ? JSON.parse( json ) : json;
 
+	var item;
 	switch ( hash.type ) {
 		case 'comment':
 			// Late require to avoid circular dependency
-			CommentItem = require( './CommentItem.js' );
+			var CommentItem = require( './CommentItem.js' );
 			item = new CommentItem(
 				hash.level,
 				hash.range,
@@ -75,7 +75,7 @@ ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 			);
 			break;
 		case 'heading':
-			HeadingItem = require( './HeadingItem.js' );
+			var HeadingItem = require( './HeadingItem.js' );
 			item = new HeadingItem(
 				hash.range,
 				hash.headingLevel,
@@ -88,7 +88,7 @@ ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 	item.name = hash.name;
 	item.id = hash.id;
 
-	idEscaped = $.escapeSelector( item.id );
+	var idEscaped = $.escapeSelector( item.id );
 	item.range = {
 		startContainer: document.getElementById( item.id ),
 		startOffset: 0,
@@ -133,8 +133,6 @@ ThreadItem.prototype.getAuthorsBelow = function () {
  *   we can't determine the source.
  */
 ThreadItem.prototype.getTranscludedFrom = function () {
-	var coveredNodes, i, node, dataMw;
-
 	// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}, or a
 	// non-substituted signature template), that *does not* mean the comment is transcluded.
 	// We only want to consider comments to be transcluded if all wrapper elements (usually
@@ -144,11 +142,11 @@ ThreadItem.prototype.getTranscludedFrom = function () {
 	// (because the main purpose of this method is to decide on which page we should post
 	// replies to the given comment, and they'll go after the comment).
 
-	coveredNodes = utils.getFullyCoveredSiblings( this ) ||
+	var coveredNodes = utils.getFullyCoveredSiblings( this ) ||
 		[ this.range.endContainer ];
 
-	node = utils.getTranscludedFromElement( coveredNodes[ 0 ] );
-	for ( i = 1; i < coveredNodes.length; i++ ) {
+	var node = utils.getTranscludedFromElement( coveredNodes[ 0 ] );
+	for ( var i = 1; i < coveredNodes.length; i++ ) {
 		if ( node !== utils.getTranscludedFromElement( coveredNodes[ i ] ) ) {
 			// Comment is only partially transcluded, that should be fine
 			return false;
@@ -160,7 +158,7 @@ ThreadItem.prototype.getTranscludedFrom = function () {
 		return false;
 	}
 
-	dataMw = JSON.parse( node.getAttribute( 'data-mw' ) );
+	var dataMw = JSON.parse( node.getAttribute( 'data-mw' ) );
 
 	// Only return a page name if this is a simple single-template transclusion.
 	if (
@@ -185,9 +183,8 @@ ThreadItem.prototype.getTranscludedFrom = function () {
  * @return {Range}
  */
 ThreadItem.prototype.getNativeRange = function () {
-	var
-		doc = this.range.startContainer.ownerDocument,
-		nativeRange = doc.createRange();
+	var doc = this.range.startContainer.ownerDocument;
+	var nativeRange = doc.createRange();
 	nativeRange.setStart( this.range.startContainer, this.range.startOffset );
 	nativeRange.setEnd( this.range.endContainer, this.range.endOffset );
 	return nativeRange;

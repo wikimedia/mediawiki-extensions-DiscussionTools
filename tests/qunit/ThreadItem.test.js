@@ -33,14 +33,11 @@ QUnit.test( '#getAuthorsBelow', function ( assert ) {
 } );
 
 QUnit.test( '#getTranscludedFrom', function ( assert ) {
-	var fixture,
-		cases = require( '../cases/transcluded.json' );
+	var cases = require( '../cases/transcluded.json' );
 
-	fixture = document.getElementById( 'qunit-fixture' );
-
+	var fixture = document.getElementById( 'qunit-fixture' );
 	cases.forEach( function ( caseItem ) {
-		var comments, transcludedFrom, parser,
-			$dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+		var $dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data );
@@ -51,10 +48,10 @@ QUnit.test( '#getTranscludedFrom', function ( assert ) {
 		testUtils.overrideMwConfig( config );
 		testUtils.overrideParserData( data );
 
-		parser = new Parser( fixture );
-		comments = parser.getCommentItems();
+		var parser = new Parser( fixture );
+		var comments = parser.getCommentItems();
 
-		transcludedFrom = {};
+		var transcludedFrom = {};
 		comments.forEach( function ( comment ) {
 			transcludedFrom[ comment.id ] = comment.getTranscludedFrom();
 		} );

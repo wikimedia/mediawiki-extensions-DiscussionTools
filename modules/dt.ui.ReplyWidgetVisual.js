@@ -76,12 +76,12 @@ ReplyWidgetVisual.prototype.getMode = function () {
 };
 
 ReplyWidgetVisual.prototype.setup = function ( data ) {
-	var htmlOrDoc,
-		widget = this,
+	var widget = this,
 		target = this.replyBodyWidget.target;
 
 	data = data || {};
 
+	var htmlOrDoc;
 	if ( this.storage.get( this.storagePrefix + '/saveable' ) ) {
 		htmlOrDoc = this.storage.get( this.storagePrefix + '/ve-dochtml' );
 		target.recovered = true;

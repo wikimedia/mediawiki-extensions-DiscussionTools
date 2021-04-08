@@ -1,5 +1,4 @@
-var
-	registries = require( './dt.ui.registries.js' );
+var registries = require( './dt.ui.registries.js' );
 
 /**
  * DiscussionTools-specific target, inheriting from the stand-alone target

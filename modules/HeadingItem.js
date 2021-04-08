@@ -22,12 +22,11 @@ function HeadingItem( range, headingLevel, placeholderHeading ) {
 OO.inheritClass( HeadingItem, ThreadItem );
 
 HeadingItem.prototype.getLinkableTitle = function () {
-	var headingNode, id,
-		title = '';
+	var title = '';
 	// If this comment is in 0th section, there's no section title for the edit summary
 	if ( !this.placeholderHeading ) {
-		headingNode = utils.getHeadlineNodeAndOffset( this.range.startContainer ).node;
-		id = headingNode.getAttribute( 'id' );
+		var headingNode = utils.getHeadlineNodeAndOffset( this.range.startContainer ).node;
+		var id = headingNode.getAttribute( 'id' );
 		if ( id ) {
 			// Replace underscores with spaces to undo Sanitizer::escapeIdInternal().
 			// This assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ],

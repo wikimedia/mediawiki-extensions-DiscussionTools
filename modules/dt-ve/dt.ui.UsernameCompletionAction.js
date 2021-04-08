@@ -4,7 +4,7 @@
  * @copyright 2011-2019 VisualEditor Team and others; see http://ve.mit-license.org
  */
 
-var openCommand, insertAndOpenCommand, sequence,
+var sequence,
 	controller = require( 'ext.discussionTools.init' ).controller;
 
 /**
@@ -91,13 +91,13 @@ MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 };
 
 MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
-	var apiPromise,
-		capitalizedInput = input.length > 0 && input[ 0 ].toUpperCase() + input.slice( 1 ),
+	var capitalizedInput = input.length > 0 && input[ 0 ].toUpperCase() + input.slice( 1 ),
 		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, input ),
 		validatedInput = title ? input : '',
 		action = this;
 
 	this.api.abort(); // Abort all unfinished API requests
+	var apiPromise;
 	if ( capitalizedInput && !this.searchedPrefixes[ capitalizedInput ] ) {
 		apiPromise = this.api.get( {
 			action: 'query',
@@ -141,16 +141,14 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 };
 
 MWUsernameCompletionAction.prototype.getHeaderLabel = function ( input, suggestions ) {
-	var $query;
 	if ( suggestions === undefined ) {
-		$query = $( '<span>' ).text( input );
+		var $query = $( '<span>' ).text( input );
 		return mw.message( 'discussiontools-replywidget-mention-tool-header', $query ).parseDom();
 	}
 };
 
 MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range ) {
-	var fragment,
-		prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
+	var prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
 		title = mw.Title.newFromText( word, mw.config.get( 'wgNamespaceIds' ).user );
 
 	if ( this.surface.getMode() === 'source' ) {
@@ -159,7 +157,7 @@ MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range )
 		return MWUsernameCompletionAction.super.prototype.insertCompletion.call( this, word, range );
 	}
 
-	fragment = this.surface.getModel().getLinearFragment( range );
+	var fragment = this.surface.getModel().getLinearFragment( range );
 	fragment.removeContent().insertContent( [
 		{ type: 'mwPing', attributes: { user: word } },
 		{ type: '/mwPing' }
@@ -179,11 +177,11 @@ MWUsernameCompletionAction.prototype.shouldAbandon = function ( input ) {
 
 ve.ui.actionFactory.register( MWUsernameCompletionAction );
 
-openCommand = new ve.ui.Command(
+var openCommand = new ve.ui.Command(
 	'openMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'open',
 	{ supportedSelections: [ 'linear' ] }
 );
-insertAndOpenCommand = new ve.ui.Command(
+var insertAndOpenCommand = new ve.ui.Command(
 	'insertAndOpenMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'insertAndOpen',
 	{ supportedSelections: [ 'linear' ] }
 );

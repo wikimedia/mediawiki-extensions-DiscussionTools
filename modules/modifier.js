@@ -5,8 +5,7 @@
  * @external CommentItem
  */
 
-var
-	utils = require( './utils.js' );
+var utils = require( './utils.js' );
 
 /**
  * Add an attribute to a list item to remove pre-whitespace in Parsoid
@@ -65,37 +64,34 @@ function addReplyLink( comment, linkNode ) {
  * @return {HTMLElement}
  */
 function addListItem( comment ) {
-	var
-		curComment, curLevel, desiredLevel, itemType, listType,
-		target, pointer, parent, covered, list, item, newNode,
-		listTypeMap = {
-			li: 'ul',
-			dd: 'dl'
-		};
+	var listTypeMap = {
+		li: 'ul',
+		dd: 'dl'
+	};
 
 	// 1. Start at given comment
 	// 2. Skip past all comments with level greater than the given
 	//    (or in other words, all replies, and replies to replies, and so on)
 	// 3. Add comment with level of the given comment plus 1
 
-	curComment = comment;
+	var curComment = comment;
 	while ( curComment.replies.length ) {
 		curComment = curComment.replies[ curComment.replies.length - 1 ];
 	}
 
 	// Tag names for lists and items we're going to insert
 	// TODO Add an option to prefer bulleted lists (ul/li)
-	itemType = 'dd';
-	listType = listTypeMap[ itemType ];
+	var itemType = 'dd';
+	var listType = listTypeMap[ itemType ];
 
-	desiredLevel = comment.level + 1;
-	target = curComment.range.endContainer;
+	var desiredLevel = comment.level + 1;
+	var target = curComment.range.endContainer;
 
 	// target is a text node or an inline element at the end of a "paragraph" (not necessarily paragraph node).
 	// First, we need to find a block-level parent that we can mess with.
 	// If we can't find a surrounding list item or paragraph (e.g. maybe we're inside a table cell
 	// or something), take the parent node and hope for the best.
-	parent = utils.closestElement( target, [ 'li', 'dd', 'p' ] ) || target.parentNode;
+	var parent = utils.closestElement( target, [ 'li', 'dd', 'p' ] ) || target.parentNode;
 	while ( target.parentNode !== parent ) {
 		target = target.parentNode;
 	}
@@ -105,7 +101,7 @@ function addListItem( comment ) {
 	// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
 	// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
 	// as some kind of a fancy frame, which are often used for barnstars and announcements.
-	covered = utils.getFullyCoveredSiblings( curComment );
+	var covered = utils.getFullyCoveredSiblings( curComment );
 	if ( curComment.level === 1 && covered ) {
 		target = covered[ covered.length - 1 ];
 		parent = target.parentNode;
@@ -125,8 +121,9 @@ function addListItem( comment ) {
 
 	// Instead of just using curComment.level, consider indentation of lists within the
 	// comment (T252702)
-	curLevel = utils.getIndentLevel( target, curComment.rootNode ) + 1;
+	var curLevel = utils.getIndentLevel( target, curComment.rootNode ) + 1;
 
+	var item, list;
 	if ( desiredLevel === 1 ) {
 		// Special handling for top-level comments
 		item = target.ownerDocument.createElement( 'div' );
@@ -142,7 +139,7 @@ function addListItem( comment ) {
 		// which appear at the end of the line in wikitext outside the paragraph,
 		// but we usually shouldn't insert replies between the paragraph and such comments. (T257651)
 		// Skip over comments and whitespace, but only update target when skipping past comments.
-		pointer = target;
+		var pointer = target;
 		while (
 			pointer.nextSibling && (
 				utils.isRenderingTransparentNode( pointer.nextSibling ) ||
@@ -179,6 +176,7 @@ function addListItem( comment ) {
 	} else {
 		// Split the ancestor nodes after the target to decrease nesting.
 
+		var newNode;
 		do {
 			// If target is the last child of its parent, no need to split it
 			if ( target.nextSibling ) {
@@ -249,9 +247,8 @@ function addListItem( comment ) {
  * @param {HTMLElement} node
  */
 function removeAddedListItem( node ) {
-	var nextNode;
-
 	while ( node && node.discussionToolsModified ) {
+		var nextNode;
 		if ( node.discussionToolsModified === 'new' ) {
 			nextNode = node.previousSibling || node.parentNode;
 
@@ -291,8 +288,7 @@ function removeAddedListItem( node ) {
  * @param {DocumentFragment|null} fragment Containing document fragment if list has no parent
  */
 function unwrapList( list, fragment ) {
-	var p, insertBefore,
-		doc = list.ownerDocument,
+	var doc = list.ownerDocument,
 		container = fragment || list.parentNode,
 		referenceNode = list;
 
@@ -312,10 +308,11 @@ function unwrapList( list, fragment ) {
 		return;
 	}
 
+	var insertBefore;
 	while ( list.firstChild ) {
 		if ( list.firstChild.nodeType === Node.ELEMENT_NODE ) {
 			// Move <dd> contents to <p>
-			p = doc.createElement( 'p' );
+			var p = doc.createElement( 'p' );
 			while ( list.firstChild.firstChild ) {
 				// If contents is a block element, place outside the paragraph
 				// and start a new paragraph after
@@ -391,15 +388,14 @@ function isWikitextSigned( wikitext ) {
  * @return {boolean}
  */
 function isHtmlSigned( container ) {
-	var matches, lastSig, node;
 	// Good enough?…
-	matches = container.querySelectorAll( 'span[typeof="mw:Transclusion"][data-mw*="~~~~"]' );
+	var matches = container.querySelectorAll( 'span[typeof="mw:Transclusion"][data-mw*="~~~~"]' );
 	if ( matches.length === 0 ) {
 		return false;
 	}
-	lastSig = matches[ matches.length - 1 ];
+	var lastSig = matches[ matches.length - 1 ];
 	// Signature must be at the end of the comment - there must be no sibling following this node, or its parents
-	node = lastSig;
+	var node = lastSig;
 	while ( node ) {
 		// Skip over whitespace nodes
 		while (
@@ -452,7 +448,6 @@ function appendSignature( container ) {
  */
 function addReply( comment, container ) {
 	var newParsoidItem;
-
 	// Transfer comment DOM to Parsoid DOM
 	// Wrap every root node of the document in a new list item (dd/li).
 	// In wikitext mode every root node is a paragraph.
@@ -505,7 +500,6 @@ function addWikitextReply( comment, wikitext ) {
  */
 function addHtmlReply( comment, html ) {
 	var doc = comment.range.endContainer.ownerDocument,
-		childNodeList,
 		container = doc.createElement( 'div' );
 
 	container.innerHTML = html;
@@ -514,7 +508,7 @@ function addHtmlReply( comment, html ) {
 	// (e.g. <h2></h2>) but this will catch most cases
 	// Create a non-live child node list, so we don't have to worry about it changing
 	// as nodes are removed.
-	childNodeList = Array.prototype.slice.call( container.childNodes );
+	var childNodeList = Array.prototype.slice.call( container.childNodes );
 	childNodeList.forEach( function ( node ) {
 		if ( node.nodeName.toLowerCase() === 'p' && !utils.htmlTrim( node.innerHTML ) ) {
 			container.removeChild( node );

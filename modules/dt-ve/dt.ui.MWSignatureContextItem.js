@@ -14,11 +14,10 @@ DtUiMWSignatureContextItem.static.label =
 
 // Get the formatted, localized, platform-specific shortcut key for the given command
 DtUiMWSignatureContextItem.prototype.getShortcutKey = function ( commandName ) {
-	var commandInfo, triggerList, $shortcut;
 	// Adapted from ve.ui.CommandHelpDialog.prototype.initialize
-	commandInfo = ve.ui.commandHelpRegistry.lookup( commandName );
-	triggerList = ve.ui.triggerRegistry.lookup( commandInfo.trigger );
-	$shortcut = $( '<kbd>' ).addClass( 've-ui-commandHelpDialog-shortcut' ).append(
+	var commandInfo = ve.ui.commandHelpRegistry.lookup( commandName );
+	var triggerList = ve.ui.triggerRegistry.lookup( commandInfo.trigger );
+	var $shortcut = $( '<kbd>' ).addClass( 've-ui-commandHelpDialog-shortcut' ).append(
 		triggerList[ 0 ].getMessage( true ).map( ve.ui.CommandHelpDialog.static.buildKeyNode )
 	).find( 'kbd + kbd' ).before( '+' ).end();
 	return $shortcut;

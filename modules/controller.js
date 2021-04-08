@@ -24,7 +24,6 @@ function getApi() {
 
 function highlight( comment ) {
 	var padding = 5,
-		overlayRect, rect,
 		$highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
 
 	if ( !$overlay ) {
@@ -32,8 +31,8 @@ function highlight( comment ) {
 		$overlay = $( '<div>' ).addClass( 'oo-ui-defaultOverlay' ).appendTo( 'body' );
 	}
 
-	overlayRect = $overlay[ 0 ].getBoundingClientRect();
-	rect = RangeFix.getBoundingClientRect( comment.getNativeRange() );
+	var overlayRect = $overlay[ 0 ].getBoundingClientRect();
+	var rect = RangeFix.getBoundingClientRect( comment.getNativeRange() );
 	$highlight.css( {
 		top: rect.top - overlayRect.top - padding,
 		left: rect.left - overlayRect.left - padding,
@@ -71,14 +70,14 @@ function highlight( comment ) {
  * @return {jQuery.Promise}
  */
 function getPageData( pageName, oldId, isNewTopic ) {
-	var lintPromise, transcludedFromPromise, veMetadataPromise,
-		api = getApi();
+	var api = getApi();
 
 	pageDataCache[ pageName ] = pageDataCache[ pageName ] || {};
 	if ( pageDataCache[ pageName ][ oldId ] ) {
 		return pageDataCache[ pageName ][ oldId ];
 	}
 
+	var lintPromise, transcludedFromPromise;
 	if ( oldId && !isNewTopic ) {
 		lintPromise = api.get( {
 			action: 'query',
@@ -103,7 +102,7 @@ function getPageData( pageName, oldId, isNewTopic ) {
 		transcludedFromPromise = $.Deferred().resolve( {} ).promise();
 	}
 
-	veMetadataPromise = api.get( {
+	var veMetadataPromise = api.get( {
 		action: 'visualeditor',
 		paction: 'metadata',
 		page: pageName
@@ -141,9 +140,7 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 
 	return getPageData( pageName, oldId, isNewTopic )
 		.then( function ( response ) {
-			var isTranscludedFrom, transcludedErrMsg, mwTitle, follow,
-				lintType,
-				metadata = response.metadata,
+			var metadata = response.metadata,
 				lintErrors = response.linterrors,
 				transcludedFrom = response.transcludedfrom;
 
@@ -153,7 +150,7 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 				// or if a comment's parent changes.
 				// Data by name might be combined from two or more comments, which would only allow us to
 				// treat them both as transcluded from unknown source, unless we check ID first.
-				isTranscludedFrom = transcludedFrom[ comment.id ] || transcludedFrom[ comment.name ];
+				var isTranscludedFrom = transcludedFrom[ comment.id ] || transcludedFrom[ comment.name ];
 				if ( isTranscludedFrom === undefined ) {
 					// The comment wasn't found when generating the "transcludedfrom" data,
 					// so we don't know where the reply should be posted. Just give up.
@@ -162,10 +159,11 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 						html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
 					} ] } ).promise();
 				} else if ( isTranscludedFrom ) {
-					mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
+					var mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
 					// If this refers to a template rather than a subpage, we never want to edit it
-					follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
+					var follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
 
+					var transcludedErrMsg;
 					if ( follow ) {
 						transcludedErrMsg = mw.message(
 							'discussiontools-error-comment-is-transcluded-title',
@@ -191,7 +189,7 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 
 				if ( lintErrors.length ) {
 					// We currently only request the first error
-					lintType = lintErrors[ 0 ].category;
+					var lintType = lintErrors[ 0 ].category;
 
 					return $.Deferred().reject( 'lint', { errors: [ {
 						code: 'lint',
@@ -288,11 +286,7 @@ function initTopicSubscriptions( $container ) {
 }
 
 function init( $container, state ) {
-	var parser, pageThreads,
-		repliedToComment, lastComment,
-		$addSectionTab,
-		i, hash, comment, commentNodes, newId,
-		pageExists = !!mw.config.get( 'wgRelevantArticleId' ),
+	var pageExists = !!mw.config.get( 'wgRelevantArticleId' ),
 		controllers = [],
 		activeController = null,
 		// Loads later to avoid circular dependency
@@ -302,10 +296,10 @@ function init( $container, state ) {
 		threadItems = [];
 
 	$pageContainer = $container;
-	parser = new Parser( $pageContainer[ 0 ] );
+	var parser = new Parser( $pageContainer[ 0 ] );
 
-	pageThreads = [];
-	commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
+	var pageThreads = [];
+	var commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
 	threadItems.length = commentNodes.length;
 
 	// The page can be served from the HTTP cache (Varnish), containing data-mw-comment generated
@@ -313,8 +307,9 @@ function init( $container, state ) {
 	// See CommentFormatter::addDiscussionTools() in PHP.
 
 	// Iterate over commentNodes backwards so replies are always deserialized before their parents.
+	var i, comment;
 	for ( i = commentNodes.length - 1; i >= 0; i-- ) {
-		hash = JSON.parse( commentNodes[ i ].getAttribute( 'data-mw-comment' ) );
+		var hash = JSON.parse( commentNodes[ i ].getAttribute( 'data-mw-comment' ) );
 		comment = ThreadItem.static.newFromJSON( hash, threadItemsById );
 		if ( !comment.name ) {
 			comment.name = parser.computeName( comment );
@@ -345,7 +340,7 @@ function init( $container, state ) {
 		}
 		parser.threadItemsByName[ comment.name ].push( comment );
 
-		newId = parser.computeId( comment );
+		var newId = parser.computeId( comment );
 		parser.threadItemsById[ newId ] = comment;
 		if ( newId !== comment.id ) {
 			comment.id = newId;
@@ -359,7 +354,7 @@ function init( $container, state ) {
 			newTopicController.$replyLink.off( 'click keypress', newTopicController.onReplyLinkClickHandler );
 		}
 		// eslint-disable-next-line no-jquery/no-global-selector
-		$addSectionTab = $( '#ca-addsection' );
+		var $addSectionTab = $( '#ca-addsection' );
 		// TODO If the page doesn't exist yet, we'll need to handle the interface differently,
 		// for now just don't enable the tool there
 		if ( $addSectionTab.length && pageExists ) {
@@ -415,7 +410,7 @@ function init( $container, state ) {
 
 	if ( state.repliedTo === 'new|' + mw.config.get( 'wgRelevantPageName' ) ) {
 		// Highlight the last comment on the page
-		lastComment = threadItems[ threadItems.length - 1 ];
+		var lastComment = threadItems[ threadItems.length - 1 ];
 		highlight( lastComment );
 
 		// If it's the only comment under its heading, highlight the heading too.
@@ -434,7 +429,7 @@ function init( $container, state ) {
 
 	} else if ( state.repliedTo ) {
 		// Find the comment we replied to, then highlight the last reply
-		repliedToComment = threadItemsById[ state.repliedTo ];
+		var repliedToComment = threadItemsById[ state.repliedTo ];
 		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 
 		mw.hook( 'postEdit' ).fire( {
@@ -451,8 +446,7 @@ function init( $container, state ) {
 }
 
 function update( data, comment, pageName, replyWidget ) {
-	var watch,
-		api = getApi(),
+	var api = getApi(),
 		pageUpdated = $.Deferred();
 
 	// We posted a new comment, clear the cache, because wgCurRevisionId will not change if we posted
@@ -516,7 +510,7 @@ function update( data, comment, pageName, replyWidget ) {
 
 	// User logged in if module loaded.
 	if ( mw.loader.getState( 'mediawiki.page.watch.ajax' ) === 'ready' ) {
-		watch = require( 'mediawiki.page.watch.ajax' );
+		var watch = require( 'mediawiki.page.watch.ajax' );
 
 		watch.updateWatchLink(
 			// eslint-disable-next-line no-jquery/no-global-selector

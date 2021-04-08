@@ -1,8 +1,6 @@
 'use strict';
 /* global $:off */
 
-var noElementChildrenElementTypes, solTransparentLinkRegexp;
-
 /**
  * @external ThreadItem
  */
@@ -15,7 +13,7 @@ function isBlockElement( node ) {
 	return node instanceof HTMLElement && ve.isBlockElement( node );
 }
 
-solTransparentLinkRegexp = /(?:^|\s)mw:PageProp\/(?:Category|redirect|Language)(?=$|\s)/;
+var solTransparentLinkRegexp = /(?:^|\s)mw:PageProp\/(?:Category|redirect|Language)(?=$|\s)/;
 
 /**
  * @param {Node} node
@@ -43,7 +41,7 @@ function isRenderingTransparentNode( node ) {
 
 // Elements which can't have element children (but some may have text content).
 // https://html.spec.whatwg.org/#elements-2
-noElementChildrenElementTypes = [
+var noElementChildrenElementTypes = [
 	// Void elements
 	'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
 	'link', 'meta', 'param', 'source', 'track', 'wbr',
@@ -129,7 +127,6 @@ function closestElement( node, tagNames ) {
  * @return {HTMLElement|null} Translcusion node, null if not found
  */
 function getTranscludedFromElement( node ) {
-	var about;
 	while ( node ) {
 		// 1.
 		if (
@@ -137,7 +134,7 @@ function getTranscludedFromElement( node ) {
 			node.getAttribute( 'about' ) &&
 			/^#mwt\d+$/.test( node.getAttribute( 'about' ) )
 		) {
-			about = node.getAttribute( 'about' );
+			var about = node.getAttribute( 'about' );
 
 			// 2.
 			while (
@@ -219,12 +216,12 @@ function htmlTrim( str ) {
  * @return {number}
  */
 function getIndentLevel( node, rootNode ) {
-	var indent = 0, tagName;
+	var indent = 0;
 	while ( node ) {
 		if ( node === rootNode ) {
 			break;
 		}
-		tagName = node.tagName && node.tagName.toLowerCase();
+		var tagName = node.tagName && node.tagName.toLowerCase();
 		if ( tagName === 'li' || tagName === 'dd' ) {
 			indent++;
 		}
@@ -240,13 +237,11 @@ function getIndentLevel( node, rootNode ) {
  * @return {HTMLElement[]}
  */
 function getCoveredSiblings( range ) {
-	var ancestor, siblings, start, end;
+	var ancestor = range.commonAncestorContainer;
 
-	ancestor = range.commonAncestorContainer;
-
-	siblings = ancestor.childNodes;
-	start = 0;
-	end = siblings.length - 1;
+	var siblings = ancestor.childNodes;
+	var start = 0;
+	var end = siblings.length - 1;
 
 	// Find first of the siblings that contains the item
 	if ( ancestor === range.startContainer ) {
@@ -276,15 +271,11 @@ function getCoveredSiblings( range ) {
  * @return {HTMLElement[]|null}
  */
 function getFullyCoveredSiblings( item ) {
-	var
-		siblings, startContainer, endContainer, startOffset, endOffset,
-		node, startMatches, endMatches, length, parent;
-
-	siblings = getCoveredSiblings( item.getNativeRange() );
-	startContainer = item.range.startContainer;
-	endContainer = item.range.endContainer;
-	startOffset = item.range.startOffset;
-	endOffset = item.range.endOffset;
+	var siblings = getCoveredSiblings( item.getNativeRange() );
+	var startContainer = item.range.startContainer;
+	var endContainer = item.range.endContainer;
+	var startOffset = item.range.startOffset;
+	var endOffset = item.range.endOffset;
 
 	function isIgnored( n ) {
 		// Ignore empty text nodes, and our own reply buttons
@@ -311,8 +302,8 @@ function getFullyCoveredSiblings( item ) {
 		return true;
 	}
 
-	startMatches = false;
-	node = siblings[ 0 ];
+	var startMatches = false;
+	var node = siblings[ 0 ];
 	while ( node ) {
 		if ( startContainer.childNodes && startContainer.childNodes[ startOffset ] === node ) {
 			startMatches = true;
@@ -329,14 +320,14 @@ function getFullyCoveredSiblings( item ) {
 		}
 	}
 
-	endMatches = false;
+	var endMatches = false;
 	node = siblings[ siblings.length - 1 ];
 	while ( node ) {
 		if ( endContainer.childNodes && endContainer.childNodes[ endOffset - 1 ] === node ) {
 			endMatches = true;
 			break;
 		}
-		length = node.nodeType === Node.TEXT_NODE ?
+		var length = node.nodeType === Node.TEXT_NODE ?
 			node.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
 			node.childNodes.length;
 		if ( endContainer === node && endOffset === length ) {
@@ -351,6 +342,7 @@ function getFullyCoveredSiblings( item ) {
 	}
 
 	if ( startMatches && endMatches ) {
+		var parent;
 		// If these are all of the children (or the only child), go up one more level
 		while (
 			( parent = siblings[ 0 ].parentNode ) &&

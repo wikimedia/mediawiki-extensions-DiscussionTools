@@ -60,14 +60,11 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 } );
 
 QUnit.test( '#getThreads', function ( assert ) {
-	var fixture,
-		cases = require( '../cases/comments.json' );
+	var cases = require( '../cases/comments.json' );
 
-	fixture = document.getElementById( 'qunit-fixture' );
-
+	var fixture = document.getElementById( 'qunit-fixture' );
 	cases.forEach( function ( caseItem ) {
-		var threads, parser,
-			$dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+		var $dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data );
@@ -83,8 +80,8 @@ QUnit.test( '#getThreads', function ( assert ) {
 		testUtils.overrideMwConfig( config );
 		testUtils.overrideParserData( data );
 
-		parser = new Parser( fixture );
-		threads = parser.getThreads();
+		var parser = new Parser( fixture );
+		var threads = parser.getThreads();
 
 		threads.forEach( function ( thread, i ) {
 			testUtils.serializeComments( thread, fixture );

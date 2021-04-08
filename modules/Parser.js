@@ -65,8 +65,6 @@ function getMessages( contLangVariant, messages ) {
  * @return {string} Regular expression
  */
 Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digitsRegexp, tzAbbrs ) {
-	var s, p, num, code, endQuote, tzRegexp, regexp;
-
 	function regexpGroup( r ) {
 		return '(' + r + ')';
 	}
@@ -75,11 +73,11 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 		return '(' + array.map( mw.util.escapeRegExp ).join( '|' ) + ')';
 	}
 
-	s = '';
+	var s = '';
 	// Adapted from Language::sprintfDate()
-	for ( p = 0; p < format.length; p++ ) {
-		num = false;
-		code = format[ p ];
+	for ( var p = 0; p < format.length; p++ ) {
+		var num = false;
+		var code = format[ p ];
 		if ( code === 'x' && p < format.length - 1 ) {
 			code += format[ ++p ];
 		}
@@ -157,7 +155,7 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 			case '"':
 				// Quoted literal
 				if ( p < format.length - 1 ) {
-					endQuote = format.indexOf( '"', p + 1 );
+					var endQuote = format.indexOf( '"', p + 1 );
 					if ( endQuote === -1 ) {
 						// No terminating quote, assume literal "
 						s += '"';
@@ -178,10 +176,10 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 		}
 	}
 
-	tzRegexp = regexpAlternateGroup( Object.keys( tzAbbrs ) );
+	var tzRegexp = regexpAlternateGroup( Object.keys( tzAbbrs ) );
 	// Hard-coded parentheses and space like in Parser::pstPass2
 	// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T245784)
-	regexp = s + '[\\u200E\\u200F]? [\\u200E\\u200F]?\\(' + tzRegexp + '\\)';
+	var regexp = s + '[\\u200E\\u200F]? [\\u200E\\u200F]?\\(' + tzRegexp + '\\)';
 
 	return regexp;
 };
@@ -200,9 +198,9 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
  * @return {TimestampParser} Timestamp parser function
  */
 Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits, localTimezone, tzAbbrs ) {
-	var p, code, endQuote, matchingGroups = [];
-	for ( p = 0; p < format.length; p++ ) {
-		code = format[ p ];
+	var matchingGroups = [];
+	for ( var p = 0; p < format.length; p++ ) {
+		var code = format[ p ];
 		if ( code === 'x' && p < format.length - 1 ) {
 			code += format[ ++p ];
 		}
@@ -237,7 +235,7 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 			case '"':
 				// Quoted literal
 				if ( p < format.length - 1 ) {
-					endQuote = format.indexOf( '"', p + 1 );
+					var endQuote = format.indexOf( '"', p + 1 );
 					if ( endQuote !== -1 ) {
 						p = endQuote;
 					}
@@ -276,13 +274,11 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 			monthIdx = 0,
 			day = 0,
 			hour = 0,
-			minute = 0,
-			tzAbbr,
-			i, code2, text,
-			date;
-		for ( i = 0; i < matchingGroups.length; i++ ) {
-			code2 = matchingGroups[ i ];
-			text = match[ i + 1 ];
+			minute = 0;
+
+		for ( var i = 0; i < matchingGroups.length; i++ ) {
+			var code2 = matchingGroups[ i ];
+			var text = match[ i + 1 ];
 
 			switch ( code2 ) {
 				case 'xg':
@@ -335,11 +331,11 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 			}
 		}
 		// The last matching group is the timezone abbreviation
-		tzAbbr = tzAbbrs[ match[ match.length - 1 ] ];
+		var tzAbbr = tzAbbrs[ match[ match.length - 1 ] ];
 
 		// Most of the time, the timezone abbreviation is not necessary to parse the date, since we
 		// can assume all times are in the wiki's local timezone.
-		date = moment.tz( [ year, monthIdx, day, hour, minute ], localTimezone );
+		var date = moment.tz( [ year, monthIdx, day, hour, minute ], localTimezone );
 
 		// But during the "fall back" at the end of DST, some times will happen twice. Per the docs,
 		// "Moment Timezone handles this by always using the earlier instance of a duplicated hour."
@@ -507,8 +503,6 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
  * @return {mw.Title|null} Page title, or null if this isn't a link to a page
  */
 function getTitleFromUrl( url ) {
-	var articlePathRegexp, match;
-
 	try {
 		url = new mw.Uri( url );
 	} catch ( err ) {
@@ -519,10 +513,11 @@ function getTitleFromUrl( url ) {
 		return mw.Title.newFromText( url.query.title );
 	}
 
-	articlePathRegexp = new RegExp(
+	var articlePathRegexp = new RegExp(
 		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
 			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
 	);
+	var match;
 	if ( ( match = url.path.match( articlePathRegexp ) ) ) {
 		return mw.Title.newFromText( decodeURIComponent( match[ 1 ] ) );
 	}
@@ -537,11 +532,11 @@ function getTitleFromUrl( url ) {
  * @return {string|null}
  */
 function getUsernameFromLink( link ) {
-	var username, userpage, title;
-	title = getTitleFromUrl( link.href );
+	var title = getTitleFromUrl( link.href );
 	if ( !title ) {
 		return null;
 	}
+	var username;
 	if (
 		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user ||
 		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user_talk
@@ -559,7 +554,7 @@ function getUsernameFromLink( link ) {
 			return null;
 		}
 		// Normalize the username: users may link to their contributions with an unnormalized name
-		userpage = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, username );
+		var userpage = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, username );
 		if ( !userpage ) {
 			return null;
 		}
@@ -592,11 +587,9 @@ function getUsernameFromLink( link ) {
  *  - {string|null} Username, null for unsigned comments
  */
 Parser.prototype.findSignature = function ( timestampNode, until ) {
-	var sigNodes, sigUsername, length, username, lastLinkNode, range, nativeRange;
-
-	sigUsername = null;
-	length = 0;
-	lastLinkNode = timestampNode;
+	var sigUsername = null;
+	var length = 0;
+	var lastLinkNode = timestampNode;
 
 	utils.linearWalkBackwards(
 		timestampNode,
@@ -623,7 +616,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			//
 			// Handle links nested in formatting elements.
 			if ( event === 'leave' && node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'a' ) {
-				username = getUsernameFromLink( node );
+				var username = getUsernameFromLink( node );
 				if ( username ) {
 					// Accept the first link to the user namespace, then only accept links to that user
 					if ( sigUsername === null ) {
@@ -639,13 +632,13 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 		}
 	);
 
-	range = {
+	var range = {
 		startContainer: lastLinkNode.parentNode,
 		startOffset: utils.childIndexOf( lastLinkNode ),
 		endContainer: timestampNode.parentNode,
 		endOffset: utils.childIndexOf( timestampNode ) + 1
 	};
-	nativeRange = ThreadItem.prototype.getNativeRange.call( { range: range } );
+	var nativeRange = ThreadItem.prototype.getNativeRange.call( { range: range } );
 
 	// Expand the range so that it covers sibling nodes.
 	// This will include any wrapping formatting elements as part of the signature.
@@ -656,7 +649,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 	// "« Saper // dyskusja »"
 	//
 	// TODO Not sure if this is actually good, might be better to just use the range...
-	sigNodes = utils.getCoveredSiblings( nativeRange ).reverse();
+	var sigNodes = utils.getCoveredSiblings( nativeRange ).reverse();
 
 	return [ sigNodes, sigUsername ];
 };
@@ -691,10 +684,9 @@ function isCommentSeparator( node ) {
  * @return {Node}
  */
 Parser.prototype.nextInterestingLeafNode = function ( node ) {
-	var treeWalker,
-		rootNode = this.rootNode;
+	var rootNode = this.rootNode;
 
-	treeWalker = rootNode.ownerDocument.createTreeWalker(
+	var treeWalker = rootNode.ownerDocument.createTreeWalker(
 		rootNode,
 		// eslint-disable-next-line no-bitwise
 		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
@@ -822,15 +814,14 @@ Parser.prototype.findCommentById = function ( id ) {
  * @return {Object}
  */
 function adjustSigRange( sigNodes, match, node ) {
-	var firstSigNode, lastSigNode, lastSigNodeOffset, sigRange;
-	firstSigNode = sigNodes[ sigNodes.length - 1 ];
-	lastSigNode = sigNodes[ 0 ];
+	var firstSigNode = sigNodes[ sigNodes.length - 1 ];
+	var lastSigNode = sigNodes[ 0 ];
 
 	// TODO Document why this needs to be so complicated
-	lastSigNodeOffset = lastSigNode === node ?
+	var lastSigNodeOffset = lastSigNode === node ?
 		match.matchData.index + match.matchData[ 0 ].length - match.offset :
 		utils.childIndexOf( lastSigNode ) + 1;
-	sigRange = {
+	var sigRange = {
 		startContainer: firstSigNode.parentNode,
 		startOffset: utils.childIndexOf( firstSigNode ),
 		endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
@@ -844,13 +835,9 @@ Parser.prototype.buildThreadItems = function () {
 		dfParsers = this.getLocalTimestampParsers(),
 		timestampRegexps = this.getLocalTimestampRegexps(),
 		commentItems = [],
-		threadItems = [],
-		treeWalker,
-		node, range, fakeHeading, curComment, curCommentEnd, headingNodeAndOffset, headingNode, startOffset,
-		foundSignature, lastSigNode, sigRanges, author, startNode, endNode, length,
-		match, startLevel, endLevel, level, dateTime, warnings;
+		threadItems = [];
 
-	treeWalker = this.rootNode.ownerDocument.createTreeWalker(
+	var treeWalker = this.rootNode.ownerDocument.createTreeWalker(
 		this.rootNode,
 		// eslint-disable-next-line no-bitwise
 		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
@@ -859,23 +846,25 @@ Parser.prototype.buildThreadItems = function () {
 	);
 
 	// Placeholder heading in case there are comments in the 0th section
-	range = {
+	var range = {
 		startContainer: this.rootNode,
 		startOffset: 0,
 		endContainer: this.rootNode,
 		endOffset: 0
 	};
-	fakeHeading = new HeadingItem( range, 99, true );
+	var fakeHeading = new HeadingItem( range, 99, true );
 	fakeHeading.rootNode = this.rootNode;
 
-	curComment = fakeHeading;
-	curCommentEnd = range.endContainer;
+	var curComment = fakeHeading;
+	var curCommentEnd = range.endContainer;
 
+	var node, lastSigNode;
 	while ( ( node = treeWalker.nextNode() ) ) {
+		var match;
 		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
-			headingNodeAndOffset = utils.getHeadlineNodeAndOffset( node );
-			headingNode = headingNodeAndOffset.node;
-			startOffset = headingNodeAndOffset.offset;
+			var headingNodeAndOffset = utils.getHeadlineNodeAndOffset( node );
+			var headingNode = headingNodeAndOffset.node;
+			var startOffset = headingNodeAndOffset.offset;
 			range = {
 				startContainer: headingNode,
 				startOffset: startOffset,
@@ -887,9 +876,9 @@ Parser.prototype.buildThreadItems = function () {
 			threadItems.push( curComment );
 			curCommentEnd = node;
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegexps ) ) ) {
-			warnings = [];
-			foundSignature = this.findSignature( node, lastSigNode );
-			author = foundSignature[ 1 ];
+			var warnings = [];
+			var foundSignature = this.findSignature( node, lastSigNode );
+			var author = foundSignature[ 1 ];
 			lastSigNode = foundSignature[ 0 ][ 0 ];
 
 			if ( !author ) {
@@ -898,12 +887,12 @@ Parser.prototype.buildThreadItems = function () {
 				continue;
 			}
 
-			sigRanges = [];
+			var sigRanges = [];
 			sigRanges.push( adjustSigRange( foundSignature[ 0 ], match, node ) );
 
 			// Everything from the last comment up to here is the next comment
-			startNode = this.nextInterestingLeafNode( curCommentEnd );
-			endNode = lastSigNode;
+			var startNode = this.nextInterestingLeafNode( curCommentEnd );
+			var endNode = lastSigNode;
 
 			// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 			// avoiding that would be more difficult and slower.
@@ -944,7 +933,7 @@ Parser.prototype.buildThreadItems = function () {
 				}.bind( this )
 			);
 
-			length = endNode.nodeType === Node.TEXT_NODE ?
+			var length = endNode.nodeType === Node.TEXT_NODE ?
 				endNode.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
 				endNode.childNodes.length;
 			range = {
@@ -954,15 +943,15 @@ Parser.prototype.buildThreadItems = function () {
 				endOffset: length
 			};
 
-			startLevel = utils.getIndentLevel( startNode, this.rootNode ) + 1;
-			endLevel = utils.getIndentLevel( node, this.rootNode ) + 1;
+			var startLevel = utils.getIndentLevel( startNode, this.rootNode ) + 1;
+			var endLevel = utils.getIndentLevel( node, this.rootNode ) + 1;
 			if ( startLevel !== endLevel ) {
 				warnings.push( 'Comment starts and ends with different indentation' );
 			}
 			// Should this use the indent level of `startNode` or `node`?
-			level = Math.min( startLevel, endLevel );
+			var level = Math.min( startLevel, endLevel );
 
-			dateTime = dfParsers[ match.parserIndex ]( match.matchData );
+			var dateTime = dfParsers[ match.parserIndex ]( match.matchData );
 			if ( dateTime.discussionToolsWarning ) {
 				warnings.push( dateTime.discussionToolsWarning );
 			}
@@ -1061,7 +1050,7 @@ Parser.prototype.truncateForId = function ( text ) {
  * @return {string}
  */
 Parser.prototype.computeId = function ( threadItem ) {
-	var id, number, headline, threadItemParent, oldestComment;
+	var id, headline;
 
 	if ( threadItem instanceof HeadingItem && threadItem.placeholderHeading ) {
 		// The range points to the root note, using it like below results in silly values
@@ -1077,7 +1066,7 @@ Parser.prototype.computeId = function ( threadItem ) {
 
 	// If there would be multiple comments with the same ID (i.e. the user left multiple comments
 	// in one edit, or within a minute), append sequential numbers
-	threadItemParent = threadItem.parent;
+	var threadItemParent = threadItem.parent;
 	if ( threadItemParent instanceof HeadingItem && !threadItemParent.placeholderHeading ) {
 		headline = utils.getHeadlineNodeAndOffset( threadItemParent.range.startContainer ).node;
 		id += '-' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
@@ -1090,7 +1079,7 @@ Parser.prototype.computeId = function ( threadItem ) {
 		// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
 		// include the oldest timestamp in the thread (i.e. date the thread was started) in the
 		// heading ID.
-		oldestComment = this.getThreadStartComment( threadItem );
+		var oldestComment = this.getThreadStartComment( threadItem );
 		if ( oldestComment ) {
 			id += '-' + oldestComment.timestamp.toISOString();
 		}
@@ -1100,7 +1089,7 @@ Parser.prototype.computeId = function ( threadItem ) {
 		// Well, that's tough
 		threadItem.warnings.push( 'Duplicate comment ID' );
 		// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
-		number = 1;
+		var number = 1;
 		while ( this.threadItemsById[ id + '-' + number ] ) {
 			number++;
 		}
@@ -1143,8 +1132,7 @@ Parser.prototype.computeName = function ( threadItem ) {
 Parser.prototype.buildThreads = function () {
 	var
 		threads = [],
-		replies = [],
-		i, threadItem, id, name, maybeParent;
+		replies = [];
 
 	if ( !this.threadItems ) {
 		this.buildThreadItems();
@@ -1152,6 +1140,9 @@ Parser.prototype.buildThreads = function () {
 
 	this.threadItemsById = {};
 	this.threadItemsByName = {};
+
+	var i, threadItem;
+
 	for ( i = 0; i < this.threadItems.length; i++ ) {
 		threadItem = this.threadItems[ i ];
 
@@ -1169,7 +1160,7 @@ Parser.prototype.buildThreads = function () {
 			threads.push( threadItem );
 			// Attach as a sub-thread to preceding higher-level heading.
 			// Any replies will appear in the tree twice, under the main-thread and the sub-thread.
-			maybeParent = threads.length > 1 ? threads[ threads.length - 2 ] : null;
+			var maybeParent = threads.length > 1 ? threads[ threads.length - 2 ] : null;
 			while ( maybeParent && maybeParent.headingLevel >= threadItem.headingLevel ) {
 				maybeParent = maybeParent.parent;
 			}
@@ -1195,7 +1186,7 @@ Parser.prototype.buildThreads = function () {
 	for ( i = 0; i < this.threadItems.length; i++ ) {
 		threadItem = this.threadItems[ i ];
 
-		name = this.computeName( threadItem );
+		var name = this.computeName( threadItem );
 		threadItem.name = name;
 		if ( !this.threadItemsByName[ name ] ) {
 			this.threadItemsByName[ name ] = [];
@@ -1205,7 +1196,7 @@ Parser.prototype.buildThreads = function () {
 		// Set the IDs used to refer to comments and headings.
 		// This has to be a separate pass because we don't have the list of replies before
 		// this point.
-		id = this.computeId( threadItem );
+		var id = this.computeId( threadItem );
 		threadItem.id = id;
 		this.threadItemsById[ id ] = threadItem;
 	}
@@ -1216,18 +1207,17 @@ Parser.prototype.buildThreads = function () {
  * @return {CommentItem|null}
  */
 Parser.prototype.getThreadStartComment = function ( threadItem ) {
-	var i, comment, oldestInReplies,
-		oldest = null;
+	var oldest = null;
 	if ( threadItem instanceof CommentItem ) {
 		oldest = threadItem;
 	}
 	// Check all replies. This can't just use the first comment because threads are often summarized
 	// at the top when the discussion is closed.
-	for ( i = 0; i < threadItem.replies.length; i++ ) {
-		comment = threadItem.replies[ i ];
+	for ( var i = 0; i < threadItem.replies.length; i++ ) {
+		var comment = threadItem.replies[ i ];
 		// Don't include sub-threads to avoid changing the ID when threads are "merged".
 		if ( comment instanceof CommentItem ) {
-			oldestInReplies = this.getThreadStartComment( comment );
+			var oldestInReplies = this.getThreadStartComment( comment );
 			if ( !oldest || oldestInReplies.timestamp.isBefore( oldest.timestamp ) ) {
 				oldest = oldestInReplies;
 			}

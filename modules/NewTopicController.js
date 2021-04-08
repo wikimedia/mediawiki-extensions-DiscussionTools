@@ -3,8 +3,6 @@ var
 	HeadingItem = require( './HeadingItem.js' );
 
 function NewTopicController( $pageContainer, $replyLink, parser ) {
-	var comment;
-
 	this.container = new OO.ui.PanelLayout( {
 		classes: [ 'ext-discussiontools-ui-newTopic' ],
 		expanded: false,
@@ -28,7 +26,7 @@ function NewTopicController( $pageContainer, $replyLink, parser ) {
 	this.container.$element.append( this.sectionTitleField.$element );
 
 	// HeadingItem representing the heading being added, so that we can pretend we're replying to it
-	comment = new HeadingItem( {
+	var comment = new HeadingItem( {
 		startContainer: this.sectionTitleField.$element[ 0 ],
 		startOffset: 0,
 		endContainer: this.sectionTitleField.$element[ 0 ],
@@ -67,11 +65,9 @@ NewTopicController.prototype.setup = function ( mode ) {
  * @inheritdoc
  */
 NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
-	var title;
-
 	NewTopicController.super.prototype.setupReplyWidget.call( this, replyWidget, data );
 
-	title = this.replyWidget.storage.get( this.replyWidget.storagePrefix + '/title' );
+	var title = this.replyWidget.storage.get( this.replyWidget.storagePrefix + '/title' );
 	if ( title && !this.sectionTitle.getValue() ) {
 		// Don't overwrite if the user has already typed something in while the widget was loading.
 		// TODO This should happen immediately rather than waiting for the reply widget to load,
@@ -163,18 +159,16 @@ NewTopicController.prototype.generateSummary = function ( titleText ) {
  * @private
  */
 NewTopicController.prototype.onSectionTitleChange = function () {
-	var titleText, prevTitleText, generatedSummary, generatedPrevSummary, currentSummary;
-
-	titleText = this.sectionTitle.getValue();
-	prevTitleText = this.prevTitleText;
+	var titleText = this.sectionTitle.getValue();
+	var prevTitleText = this.prevTitleText;
 
 	if ( prevTitleText !== titleText ) {
 		this.replyWidget.storage.set( this.replyWidget.storagePrefix + '/title', titleText );
 
-		generatedSummary = this.generateSummary( titleText );
-		generatedPrevSummary = this.generateSummary( prevTitleText );
+		var generatedSummary = this.generateSummary( titleText );
+		var generatedPrevSummary = this.generateSummary( prevTitleText );
 
-		currentSummary = this.replyWidget.editSummaryInput.getValue();
+		var currentSummary = this.replyWidget.editSummaryInput.getValue();
 
 		// Fill in edit summary if it was not modified by the user yet
 		if ( currentSummary === generatedPrevSummary ) {
@@ -193,12 +187,11 @@ NewTopicController.prototype.onSectionTitleChange = function () {
  * @private
  */
 NewTopicController.prototype.onSectionTitleBlur = function () {
-	var offsetChange,
-		offsetBefore = this.replyWidget.$element.offset().top;
+	var offsetBefore = this.replyWidget.$element.offset().top;
 
 	this.checkSectionTitleValidity();
 
-	offsetChange = this.replyWidget.$element.offset().top - offsetBefore;
+	var offsetChange = this.replyWidget.$element.offset().top - offsetBefore;
 	// Ensure the rest of the widget doesn't move when the validation
 	// message is triggered by a blur. (T275923)
 	window.scrollBy( 0, offsetChange );

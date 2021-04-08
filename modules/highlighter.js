@@ -3,19 +3,17 @@
 var initialOffset, indentWidth, firstMarker;
 
 function markTimestamp( parser, node, match ) {
-	var
-		dfParsers = parser.getLocalTimestampParsers(),
-		newNode, wrapper, date;
+	var dfParsers = parser.getLocalTimestampParsers();
 
-	newNode = node.splitText( match.matchData.index );
+	var newNode = node.splitText( match.matchData.index );
 	newNode.splitText( match.matchData[ 0 ].length );
 
-	wrapper = document.createElement( 'span' );
+	var wrapper = document.createElement( 'span' );
 	wrapper.className = 'ext-discussiontools-highlighter-timestamp';
 	// We might need to actually port all the date formatting code from MediaWiki's PHP code
 	// if we want to support displaying dates in all the formats available in user preferences
 	// (which include formats in several non-Gregorian calendars).
-	date = dfParsers[ match.parserIndex ]( match.matchData );
+	var date = dfParsers[ match.parserIndex ]( match.matchData );
 	wrapper.title = date.format() + ' / ' + date.fromNow();
 	wrapper.appendChild( newNode );
 	node.parentNode.insertBefore( wrapper, node.nextSibling );
@@ -35,27 +33,24 @@ function markSignature( sigNodes ) {
 function fixFakeFirstHeadingRect( rect, comment ) {
 	// If the page has comments before the first section heading, they are connected to a "fake"
 	// heading with an empty range. Visualize the page title as the heading for that section.
-	var node;
 	if ( rect.x === 0 && rect.y === 0 && comment.type === 'heading' ) {
-		node = document.getElementsByClassName( 'firstHeading' )[ 0 ];
+		var node = document.getElementsByClassName( 'firstHeading' )[ 0 ];
 		return node.getBoundingClientRect();
 	}
 	return rect;
 }
 
 function calculateSizes() {
-	var $content, rect, $test, rtl;
-
 	if ( initialOffset !== undefined ) {
 		return;
 	}
 
 	// eslint-disable-next-line no-jquery/no-global-selector
-	rtl = $( 'html' ).attr( 'dir' ) === 'rtl';
+	var rtl = $( 'html' ).attr( 'dir' ) === 'rtl';
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$content = $( '#mw-content-text' );
-	$test = $( '<dd>' ).appendTo( $( '<dl>' ).appendTo( $content ) );
-	rect = $content[ 0 ].getBoundingClientRect();
+	var $content = $( '#mw-content-text' );
+	var $test = $( '<dd>' ).appendTo( $( '<dl>' ).appendTo( $content ) );
+	var rect = $content[ 0 ].getBoundingClientRect();
 
 	initialOffset = rtl ? document.body.scrollWidth - rect.left - rect.width : rect.left;
 	indentWidth = parseFloat( $test.css( rtl ? 'margin-right' : 'margin-left' ) ) +
@@ -72,8 +67,7 @@ function markComment( comment ) {
 		marker = document.createElement( 'div' ),
 		marker2 = document.createElement( 'div' ),
 		scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
-		scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft,
-		parentRect, i, markerWarnings;
+		scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
 
 	rect = fixFakeFirstHeadingRect( rect, comment );
 
@@ -88,7 +82,7 @@ function markComment( comment ) {
 	}
 
 	if ( comment.warnings && comment.warnings.length ) {
-		markerWarnings = marker.cloneNode( false );
+		var markerWarnings = marker.cloneNode( false );
 		markerWarnings.className = 'ext-discussiontools-highlighter-comment-warnings';
 		markerWarnings.innerText = comment.warnings.join( '\n' );
 		// Group warnings at the top as we use nth-child selectors
@@ -101,7 +95,7 @@ function markComment( comment ) {
 	calculateSizes();
 
 	if ( comment.parent ) {
-		parentRect = comment.parent.getNativeRange().getBoundingClientRect();
+		var parentRect = comment.parent.getNativeRange().getBoundingClientRect();
 		parentRect = fixFakeFirstHeadingRect( parentRect, comment.parent );
 		if ( comment.parent.level === 0 ) {
 			// Twiddle so that it looks nice
@@ -122,14 +116,13 @@ function markComment( comment ) {
 		document.body.appendChild( marker2 );
 	}
 
-	for ( i = 0; i < comment.replies.length; i++ ) {
+	for ( var i = 0; i < comment.replies.length; i++ ) {
 		markComment( comment.replies[ i ] );
 	}
 }
 
 function markThreads( threads ) {
-	var i;
-	for ( i = 0; i < threads.length; i++ ) {
+	for ( var i = 0; i < threads.length; i++ ) {
 		markComment( threads[ i ] );
 	}
 	// Reverse order so that box-shadows look right

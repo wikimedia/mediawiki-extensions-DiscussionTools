@@ -10,9 +10,7 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		fixture = document.getElementById( 'qunit-fixture' );
 
 	cases.forEach( function ( caseItem ) {
-		var actualHtml, expectedHtml, reverseActualHtml, reverseExpectedHtml,
-			i, comments, nodes, node, parser,
-			dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+		var dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
 			config = require( caseItem.config ),
 			data = require( caseItem.data );
@@ -21,28 +19,28 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		testUtils.overrideParserData( data );
 
 		$( fixture ).empty().append( expected );
-		expectedHtml = fixture.innerHTML;
+		var expectedHtml = fixture.innerHTML;
 
 		$( fixture ).empty().append( dom );
-		reverseExpectedHtml = fixture.innerHTML;
+		var reverseExpectedHtml = fixture.innerHTML;
 
-		parser = new Parser( fixture );
-		comments = parser.getCommentItems();
+		var parser = new Parser( fixture );
+		var comments = parser.getCommentItems();
 
 		// Add a reply to every comment. Note that this inserts *all* of the replies, unlike the real
 		// thing, which only deals with one at a time. This isn't ideal but resetting everything after
 		// every reply would be super slow.
-		nodes = [];
-		for ( i = 0; i < comments.length; i++ ) {
-			node = modifier.addListItem( comments[ i ] );
-			node.textContent = 'Reply to ' + comments[ i ].id;
+		var nodes = [];
+		comments.forEach( function ( comment ) {
+			var node = modifier.addListItem( comment );
+			node.textContent = 'Reply to ' + comment.id;
 			nodes.push( node );
-		}
+		} );
 
 		// Uncomment this to get updated content for the "modified HTML" files, for copy/paste:
 		// console.log( fixture.innerHTML );
 
-		actualHtml = fixture.innerHTML;
+		var actualHtml = fixture.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,
@@ -51,11 +49,11 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		);
 
 		// Now discard the replies and verify we get the original document back.
-		for ( i = 0; i < nodes.length; i++ ) {
-			modifier.removeAddedListItem( nodes[ i ] );
-		}
+		nodes.forEach( function ( node ) {
+			modifier.removeAddedListItem( node );
+		} );
 
-		reverseActualHtml = fixture.innerHTML;
+		var reverseActualHtml = fixture.innerHTML;
 		assert.strictEqual(
 			reverseActualHtml,
 			reverseExpectedHtml,
@@ -69,9 +67,7 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		fixture = document.getElementById( 'qunit-fixture' );
 
 	cases.forEach( function ( caseItem ) {
-		var actualHtml, expectedHtml,
-			i, comments, linkNode, parser,
-			dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+		var dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
 			config = require( caseItem.config ),
 			data = require( caseItem.data );
@@ -80,25 +76,25 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		testUtils.overrideParserData( data );
 
 		$( fixture ).empty().append( expected );
-		expectedHtml = fixture.innerHTML;
+		var expectedHtml = fixture.innerHTML;
 
 		$( fixture ).empty().append( dom );
 
-		parser = new Parser( fixture );
-		comments = parser.getCommentItems();
+		var parser = new Parser( fixture );
+		var comments = parser.getCommentItems();
 
 		// Add a reply link to every comment.
-		for ( i = 0; i < comments.length; i++ ) {
-			linkNode = document.createElement( 'a' );
+		comments.forEach( function ( comment ) {
+			var linkNode = document.createElement( 'a' );
 			linkNode.textContent = 'Reply';
 			linkNode.href = '#';
-			modifier.addReplyLink( comments[ i ], linkNode );
-		}
+			modifier.addReplyLink( comment, linkNode );
+		} );
 
 		// Uncomment this to get updated content for the "reply HTML" files, for copy/paste:
 		// console.log( fixture.innerHTML );
 
-		actualHtml = fixture.innerHTML;
+		var actualHtml = fixture.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,

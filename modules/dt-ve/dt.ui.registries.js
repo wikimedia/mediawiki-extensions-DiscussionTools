@@ -1,6 +1,3 @@
-var commandRegistry, sequenceRegistry,
-	wikitextCommandRegistry, wikitextSequenceRegistry;
-
 // Adapted from ve.ui.MWWikitextDataTransferHandlerFactory
 function importRegistry( parent, child ) {
 	var name;
@@ -16,14 +13,14 @@ function importRegistry( parent, child ) {
 
 // Create new registries so that we can override the behavior for signatures
 // without affecting normal VisualEditor.
-commandRegistry = new ve.ui.CommandRegistry();
+var commandRegistry = new ve.ui.CommandRegistry();
 importRegistry( ve.ui.commandRegistry, commandRegistry );
-sequenceRegistry = new ve.ui.SequenceRegistry();
+var sequenceRegistry = new ve.ui.SequenceRegistry();
 importRegistry( ve.ui.sequenceRegistry, sequenceRegistry );
 
-wikitextCommandRegistry = new ve.ui.MWWikitextCommandRegistry( commandRegistry );
+var wikitextCommandRegistry = new ve.ui.MWWikitextCommandRegistry( commandRegistry );
 importRegistry( ve.ui.wikitextCommandRegistry, wikitextCommandRegistry );
-wikitextSequenceRegistry = new ve.ui.SequenceRegistry();
+var wikitextSequenceRegistry = new ve.ui.SequenceRegistry();
 importRegistry( ve.ui.wikitextSequenceRegistry, wikitextSequenceRegistry );
 
 // Disable find-and-replace (T263570)

@@ -3,8 +3,7 @@
  * @external CommentItem
  */
 
-var
-	utils = require( 'ext.discussionTools.init' ).utils;
+var utils = require( 'ext.discussionTools.init' ).utils;
 
 /**
  * DiscussionTools ReplyWidgetPlain class
@@ -73,12 +72,10 @@ ReplyWidgetPlain.prototype.getMode = function () {
 };
 
 ReplyWidgetPlain.prototype.onInputChange = function () {
-	var wikitext;
-
 	// Parent method
 	ReplyWidgetPlain.super.prototype.onInputChange.apply( this, arguments );
 
-	wikitext = this.getValue();
+	var wikitext = this.getValue();
 	this.storage.set( this.storagePrefix + '/body', wikitext );
 };
 

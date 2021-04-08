@@ -25,8 +25,6 @@ if ( defaultVisual || enable2017Wikitext ) {
 }
 
 function CommentController( $pageContainer, $replyLink, comment, parser ) {
-	var mode;
-
 	// Mixin constructors
 	OO.EventEmitter.call( this );
 
@@ -42,7 +40,7 @@ function CommentController( $pageContainer, $replyLink, comment, parser ) {
 	this.$replyLinkButtons = $replyLink.closest( '.ext-discussiontools-init-replylink-buttons, .dt-init-replylink-buttons' );
 
 	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
-		mode = storage.get( 'reply/' + comment.id + '/mode' );
+		var mode = storage.get( 'reply/' + comment.id + '/mode' );
 		this.setup( mode, true );
 	}
 }
@@ -78,8 +76,7 @@ function getLatestRevId( pageName ) {
  * @return {jQuery.Promise} Promise which resolves with pageName+oldId, or rejects with an error
  */
 CommentController.prototype.getTranscludedFromSource = function ( comment ) {
-	var promise,
-		pageName = mw.config.get( 'wgRelevantPageName' ),
+	var pageName = mw.config.get( 'wgRelevantPageName' ),
 		oldId = mw.config.get( 'wgCurRevisionId' );
 
 	function followTransclusion( recursionLimit, code, data ) {
@@ -99,7 +96,7 @@ CommentController.prototype.getTranscludedFromSource = function ( comment ) {
 
 	// Arbitrary limit of 10 steps, which should be more than anyone could ever need
 	// (there are reasonable use cases for at least 2)
-	promise = controller.checkCommentOnPage( pageName, oldId, comment )
+	var promise = controller.checkCommentOnPage( pageName, oldId, comment )
 		.catch( followTransclusion.bind( null, 10 ) );
 
 	return promise;
@@ -279,12 +276,10 @@ CommentController.prototype.teardown = function ( abandoned ) {
  * @return {Object}
  */
 CommentController.prototype.getApiQuery = function ( comment, pageName, checkboxes ) {
-	var captchaInput, replyWidget, data, sameNameComments;
+	var replyWidget = this.replyWidget;
+	var sameNameComments = this.parser.findCommentsByName( comment.name );
 
-	replyWidget = this.replyWidget;
-	sameNameComments = this.parser.findCommentsByName( comment.name );
-
-	data = {
+	var data = {
 		action: 'discussiontoolsedit',
 		paction: 'addcomment',
 		page: pageName,
@@ -311,7 +306,7 @@ CommentController.prototype.getApiQuery = function ( comment, pageName, checkbox
 		data.html = replyWidget.getValue();
 	}
 
-	captchaInput = replyWidget.captchaInput;
+	var captchaInput = replyWidget.captchaInput;
 	if ( captchaInput ) {
 		data.captchaid = captchaInput.getCaptchaId();
 		data.captchaword = captchaInput.getCaptchaWord();
@@ -331,14 +326,13 @@ CommentController.prototype.save = function ( comment, pageName ) {
 		commentController = this;
 
 	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
-		var defaults, noTimeoutApi,
-			data = commentController.getApiQuery( comment, pageName, checkboxes );
+		var data = commentController.getApiQuery( comment, pageName, checkboxes );
 
 		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
 		// could result in duplicate messages if the user retries. (T249071)
-		defaults = OO.copy( controller.getApi().defaults );
+		var defaults = OO.copy( controller.getApi().defaults );
 		defaults.timeout = 0;
-		noTimeoutApi = new mw.Api( defaults );
+		var noTimeoutApi = new mw.Api( defaults );
 
 		return mw.libs.ve.targetSaver.postContent(
 			data, { api: noTimeoutApi }
@@ -368,8 +362,7 @@ CommentController.prototype.save = function ( comment, pageName ) {
 };
 
 CommentController.prototype.switchToWikitext = function () {
-	var wikitextPromise,
-		oldWidget = this.replyWidget,
+	var oldWidget = this.replyWidget,
 		target = oldWidget.replyBodyWidget.target,
 		oldShowAdvanced = oldWidget.showAdvanced,
 		oldEditSummary = oldWidget.getEditSummary(),
@@ -377,7 +370,7 @@ CommentController.prototype.switchToWikitext = function () {
 		commentController = this;
 
 	// TODO: We may need to pass oldid/etag when editing is supported
-	wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
+	var wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
 	this.replyWidgetPromise = this.createReplyWidget(
 		oldWidget.comment,
 		oldWidget.pageName,
@@ -469,8 +462,7 @@ CommentController.prototype.getUnsupportedNodeSelectors = function () {
 };
 
 CommentController.prototype.switchToVisual = function () {
-	var parsePromise,
-		oldWidget = this.replyWidget,
+	var oldWidget = this.replyWidget,
 		oldShowAdvanced = oldWidget.showAdvanced,
 		oldEditSummary = oldWidget.getEditSummary(),
 		wikitext = oldWidget.getValue(),
@@ -484,6 +476,7 @@ CommentController.prototype.switchToVisual = function () {
 		'$1<span data-dtsignatureforswitching="1"></span>$2'
 	);
 
+	var parsePromise;
 	if ( wikitext ) {
 		wikitext = this.doIndentReplacements( wikitext, ':' );
 
@@ -508,17 +501,17 @@ CommentController.prototype.switchToVisual = function () {
 	);
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
-		var doc, type, $msg,
-			unsupportedSelectors = commentController.getUnsupportedNodeSelectors();
+		var unsupportedSelectors = commentController.getUnsupportedNodeSelectors();
 
+		var doc;
 		if ( html ) {
 			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
 			// Remove RESTBase IDs (T253584)
 			mw.libs.ve.stripRestbaseIds( doc );
 			// Check for tables, headings, images, templates
-			for ( type in unsupportedSelectors ) {
+			for ( var type in unsupportedSelectors ) {
 				if ( doc.querySelector( unsupportedSelectors[ type ] ) ) {
-					$msg = $( '<div>' ).html(
+					var $msg = $( '<div>' ).html(
 						mw.message(
 							'discussiontools-error-noswitchtove',
 							// The following messages are used here:

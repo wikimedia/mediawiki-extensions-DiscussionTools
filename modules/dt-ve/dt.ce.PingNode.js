@@ -55,14 +55,13 @@ CeMWPingNode.prototype.initialize = function () {
 	var model = this.getModel(),
 		prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
 		user = model.getAttribute( 'user' ),
-		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, user ),
-		$link;
+		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, user );
 
 	// Parent method
 	CeMWPingNode.super.prototype.initialize.call( this );
 
 	// DOM changes
-	$link = $( '<a>' )
+	var $link = $( '<a>' )
 		.addClass( 'ext-discussiontools-ce-mwPingNode' )
 		.attr( {
 			href: title.getUrl(),

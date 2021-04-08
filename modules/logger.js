@@ -215,12 +215,10 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 	} );
 
 	mw.trackSubscribe( 'dt.schemaVisualEditorFeatureUse', function ( topic, data ) {
-		var event;
-
 		// eslint-disable-next-line camelcase
 		session.editor_interface = data.editor_interface || session.editor_interface;
 
-		event = {
+		var event = {
 			feature: data.feature,
 			action: data.action,
 			editingSessionId: session.editing_session_id,

@@ -2,8 +2,7 @@
  * @external CommentItem
  */
 
-var
-	utils = require( 'ext.discussionTools.init' ).utils;
+var utils = require( 'ext.discussionTools.init' ).utils;
 
 module.exports = {};
 
