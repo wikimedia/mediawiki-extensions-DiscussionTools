@@ -33,6 +33,7 @@
 	"discussiontools-newtopic-placeholder-title": "Titre",
 	"discussiontools-notification-subscribed-new-comment-header": "$1{{GENDER:$2|}} a répondu dans « <strong>$4</strong> ».",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Une nouvelle réponse|$1 nouvelles réponses|100=Plus de cent nouvelles réponses}} dans « <strong>$3</strong> ».",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1 : <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Afficher le commentaire",
 	"discussiontools-postedit-confirmation-published": "Votre commentaire a été publié.",
 	"discussiontools-postedit-confirmation-topicadded": "Votre sujet a été ajouté.",
