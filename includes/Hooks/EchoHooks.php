@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use EchoEvent;
 use MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 
 class EchoHooks {
@@ -26,6 +27,13 @@ class EchoHooks {
 		array &$notificationCategories,
 		array &$icons
 	) {
+		$services = MediaWikiServices::getInstance();
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		if ( $dtConfig->get( 'DiscussionTools_' . HookUtils::TOPICSUBSCRIPTION ) === 'unavailable' ) {
+			// Topic subscriptions not available on wiki.
+			return;
+		}
+
 		$notificationCategories['dt-subscription'] = [
 			'priority' => 3,
 			'tooltip' => 'echo-pref-tooltip-dt-subscription',
