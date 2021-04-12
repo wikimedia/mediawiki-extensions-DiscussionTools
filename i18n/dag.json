@@ -3,15 +3,17 @@
 		"authors": [
 			"Alhassan Mohammed Awal",
 			"Alhassan Peter",
+			"Chirifo",
 			"Hasslaebetch",
 			"Karimbaasani",
 			"Ruky Wunpini"
 		]
 	},
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{Zaglogu bee zagnyang:$2|labisibu}} in \"<strong>$4</strong>\".",
-	"discussiontools-notification-subscribed-new-comment-header-bundled": "Zagi bobigu",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "Labsibu palli yini",
 	"discussiontools-notification-subscribed-new-comment-view": "Lihimi tɔɣino",
 	"discussiontools-preference-topicsubscription": "Yɛltɔɣa zuɣu piibu",
+	"discussiontools-preference-topicsubscription-help": "Din boŋɔ ni ta soli ka a dɛri kam din niŋda",
 	"discussiontools-topicsubscription-notify-subscribed-body": "A ni nya lahibali zanchaŋ taha shɛɣa yɛltɔɣa zuɣu ŋɔ ni",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Zaŋmi a maŋa pahi",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "A ku lahi nya tibili zaŋ chaŋ tɔɣino pala yaha zaŋ kpa bɔhim yaɣili ŋɔ.",

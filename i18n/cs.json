@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Georg101",
 			"Jan Myšák",
 			"Martin Urbanec",
 			"Matěj Suchánek",
@@ -68,7 +69,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "V tomto tématu budete dostávat oznámení o nových komentářích.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Odebíráno",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Už nebudete dostávat oznámení o nových komentářích v tomto tématu.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Neodebíráno",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Odběr zrušen",
 	"echo-category-title-dt-subscription": "odběry diskusních stránek",
 	"echo-pref-tooltip-dt-subscription": "Upozorněte mě na aktivitu na odebíraných témat diskusních stránek.",
 	"tag-discussiontools-description": "Editace provedená pomocí Diskusních nástrojů",
