@@ -9,7 +9,7 @@
 	"apierror-discussiontools-commentid-notfound": "Ŋun su $1 tɔɣino kani.",
 	"apierror-discussiontools-commentname-ambiguous": "Labsibu Zaɣbobigu ni yuya'$1'din nya, zaŋmi ŋmahan gbaŋ",
 	"apierror-discussiontools-commentname-notfound": "Yuli din nyɛ  $1 tɔɣino kani.",
-	"apihelp-discussiontoolsedit-param-commentid": "ŋmahan gbaŋ din nyɛn n deei labsigu ŋɔ.zaŋ n tum tuma di<var>paction</var>nyɛla<var>pahami labsigu<</var>yaɣabu<var>labsibuyuli</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "ŋmahan gbaŋ din nyɛn n deei labsigu ŋɔ.zaŋ n tum tuma di<var>paction</var>nyɛla<var>addcomment</var>yaɣabu<var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Yɛltɔɣili yuli shɛli a ni yan labisi. Only used when <var>paction</var> is <var>addcomment</var>.",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Yɛlmaŋli piibu ni, ka yɛlmaŋli ka piibu ni",
 	"apihelp-discussiontoolssubscribe-summary": "Piibu ni a nyari tibili zaŋ chaŋ yɛtɔɣa zuɣu"
