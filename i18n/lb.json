@@ -42,6 +42,7 @@
 	"discussiontools-replywidget-reply": "Äntweren",
 	"discussiontools-replywidget-summary": "Resumé",
 	"discussiontools-replywidget-transcluded": "Är Bemierkung gëtt op [[$1]] gespäichert.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Abonnéiert",
 	"tag-discussiontools-edit": "Bemierkung änneren",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}}Neit Thema]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Äntwerten]",
