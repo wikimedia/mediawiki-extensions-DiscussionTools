@@ -234,23 +234,17 @@ class HookUtils {
 		$queryEnable = $output->getRequest()->getRawVal( 'dtenable' ) ||
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
 			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
-		// The cookie hack allows users to enable all features when they are not
-		// yet available on the wiki
-		$cookieEnable = $output->getRequest()->getCookie( 'discussiontools-tempenable' ) ?: false;
 
 		if ( $feature === self::TOPICSUBSCRIPTION ) {
-			// Can't be enabled via query/cookie, because the tables may not exist yet (T280082)
+			// Can't be enabled via query, because the tables may not exist yet (T280082)
 			$queryEnable = false;
-			$cookieEnable = false;
 		}
 
 		if ( $queryEnable ) {
 			return true;
 		}
 
-		return static::isAvailableForTitle( $title ) && (
-			static::isFeatureEnabledForUser( $output->getUser(), $feature ) ||
-			$cookieEnable
-		);
+		return static::isAvailableForTitle( $title ) &&
+			static::isFeatureEnabledForUser( $output->getUser(), $feature );
 	}
 }
