@@ -2,7 +2,28 @@
 	margin-bottom: 1em;
 	position: relative;
 	clear: both;
+}
 
+// @supports does not work when nested
+@supports ( display: flow-root ) {
+	.ext-discussiontools-ui-replyWidget {
+		// Allow the widget to be squished next to floating elements (T278476).
+		//
+		// To ensure that everything is squished to the same width, introduce a block formatting context
+		// (otherwise the preview or textarea could be wider than the container and mess up the layout).
+		// https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context
+		//
+		// All of the usual ways to do this (listed on that page) have unwanted side-effects
+		// (in particular, `overflow: hidden` cuts off VE inspectors), so we must use this relatively
+		// recent property, and only apply this fix on supporting browsers, notably excluding IE 11
+		// (https://caniuse.com/?search=flow-root)
+		display: flow-root;
+		min-width: 250px;
+		clear: none;
+	}
+}
+
+.ext-discussiontools-ui-replyWidget { /* stylelint-disable-line no-duplicate-selectors */
 	> .oo-ui-textInputWidget {
 		max-width: none;
 
