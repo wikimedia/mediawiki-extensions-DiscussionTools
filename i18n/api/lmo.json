@@ -17,5 +17,6 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Contegnud de meter foeura, come wikitest. Se po minga drovall insema a l'<var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Scrin un coment noeuv come risposta a 'n coment che 'l gh'è sgiamò.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Sgionta una discussion noeuva e 'l prim coment in la sezzion medesima.",
-	"apihelp-discussiontoolsedit-summary": "Met foeura un messagg in su la pagina de discussion."
+	"apihelp-discussiontoolsedit-summary": "Met foeura un messagg in su la pagina de discussion.",
+	"apihelp-discussiontoolssubscribe-summary": "Inscrives (o desiscrives) per ricever di notifiche sora un argoment."
 }
