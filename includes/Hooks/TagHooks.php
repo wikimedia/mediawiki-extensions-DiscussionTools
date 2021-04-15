@@ -65,7 +65,7 @@ class TagHooks implements
 			return true;
 		}
 		$request = RequestContext::getMain()->getRequest();
-		$tags = explode( ',', $request->getVal( 'dttags' ) );
+		$tags = explode( ',', $request->getText( 'dttags' ) );
 
 		$tags = array_values( array_intersect( $tags, static::TAGS ) );
 
