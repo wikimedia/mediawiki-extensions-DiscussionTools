@@ -228,9 +228,9 @@ class HookUtils {
 		}
 
 		// ?dtenable=1 overrides all user and title checks
-		$queryEnable = $output->getRequest()->getVal( 'dtenable' ) ||
+		$queryEnable = $output->getRequest()->getRawVal( 'dtenable' ) ||
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
-			RequestContext::getMain()->getRequest()->getVal( 'dtenable' );
+			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
 		// The cookie hack allows users to enable all features when they are not
 		// yet available on the wiki
 		$cookieEnable = $output->getRequest()->getCookie( 'discussiontools-tempenable' ) ?: false;
