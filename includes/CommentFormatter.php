@@ -42,9 +42,8 @@ class CommentFormatter {
 	 * Add discussion tools to some HTML
 	 *
 	 * @param string &$text Parser text output
-	 * @param Language $lang Interface language
 	 */
-	public static function addDiscussionTools( string &$text, Language $lang ) : void {
+	public static function addDiscussionTools( string &$text ) : void {
 		$start = microtime( true );
 
 		// Never add tools twice.
@@ -61,7 +60,7 @@ class CommentFormatter {
 		$text = $text . "\n" . static::MARKER_COMMENT;
 
 		try {
-			$newText = static::addDiscussionToolsInternal( $text, $lang );
+			$newText = static::addDiscussionToolsInternal( $text );
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
 			// Log it and add the request ID in a comment to make it easier to find in the logs.
@@ -85,10 +84,9 @@ class CommentFormatter {
 	 * Add discussion tools to some HTML
 	 *
 	 * @param string $html HTML
-	 * @param Language $lang Interface language
 	 * @return string HTML with discussion tools
 	 */
-	protected static function addDiscussionToolsInternal( string $html, Language $lang ) : string {
+	protected static function addDiscussionToolsInternal( string $html ) : string {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
@@ -145,7 +143,7 @@ class CommentFormatter {
 
 			if ( $threadItem instanceof HeadingItem ) {
 				$threadItem->getRange()->endContainer->setAttribute( 'data-mw-comment', $itemJSON );
-				if ( !$threadItem->isPlaceholderHeading() && $threadItem->getHeadingLevel() == 2 ) {
+				if ( !$threadItem->isPlaceholderHeading() && $threadItem->getHeadingLevel() === 2 ) {
 					$headingNode = CommentUtils::closestElement( $threadItem->getRange()->endContainer, [ 'h2' ] );
 
 					if ( $headingNode ) {
@@ -173,7 +171,9 @@ class CommentFormatter {
 				$replyLink->setAttribute( 'data-mw-comment', $itemJSON );
 				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
 				$replyLink->setAttribute( 'href', '' );
-				$replyLink->nodeValue = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->text();
+				// Replaced in ::postprocessReplyTool() as the label depends on user language
+				$replyText = $doc->createComment( '__DTREPLY__' );
+				$replyLink->appendChild( $replyText );
 
 				$bracket = $doc->createElement( 'span' );
 				$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
@@ -233,6 +233,21 @@ class CommentFormatter {
 			},
 			$text
 		);
+		return $text;
+	}
+
+	/**
+	 * Replace placeholders for reply links with the real thing.
+	 *
+	 * @param string $text
+	 * @param Language $lang
+	 * @return string
+	 */
+	public static function postprocessReplyTool(
+		string $text, Language $lang
+	) {
+		$replyText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
+		$text = str_replace( '<!--__DTREPLY__-->', $replyText, $text );
 		return $text;
 	}
 

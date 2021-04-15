@@ -35,6 +35,10 @@ class CommentFormatterTest extends IntegrationTestCase {
 			$actual, RequestContext::getMain()->getLanguage(), $mockSubStore, self::getTestUser()->getUser()
 		);
 
+		$actual = MockCommentFormatter::postprocessReplyTool(
+			$actual, RequestContext::getMain()->getLanguage()
+		);
+
 		// Optionally write updated content to the "reply HTML" files
 		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
 			self::overwriteTextFile( $expectedPath, $actual );

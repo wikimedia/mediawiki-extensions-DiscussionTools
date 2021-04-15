@@ -110,7 +110,7 @@ class PageHooks implements
 		// tools aren't added twice.
 		foreach ( CommentFormatter::USE_WITH_FEATURES as $feature ) {
 			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
-				CommentFormatter::addDiscussionTools( $text, $lang );
+				CommentFormatter::addDiscussionTools( $text );
 				break;
 			}
 		}
@@ -125,6 +125,11 @@ class PageHooks implements
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			$text = CommentFormatter::postprocessTopicSubscription(
 				$text, $lang, $this->subscriptionStore, $output->getUser()
+			);
+		}
+		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
+			$text = CommentFormatter::postprocessReplyTool(
+				$text, $lang
 			);
 		}
 
