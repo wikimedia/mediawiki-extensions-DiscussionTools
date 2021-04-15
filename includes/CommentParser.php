@@ -1062,10 +1062,9 @@ class CommentParser {
 	 * Given a thread item, return an identifier for it that is unique within the page.
 	 *
 	 * @param ThreadItem $threadItem
-	 * @param bool $noDedupe Internal. Don't attempt to de-duplicate
 	 * @return string
 	 */
-	private function computeId( ThreadItem $threadItem, bool $noDedupe = false ) : string {
+	private function computeId( ThreadItem $threadItem ) : string {
 		$id = null;
 
 		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
@@ -1103,7 +1102,7 @@ class CommentParser {
 			}
 		}
 
-		if ( !$noDedupe && isset( $this->threadItemsById[$id] ) ) {
+		if ( isset( $this->threadItemsById[$id] ) ) {
 			// Well, that's tough
 			$threadItem->addWarning( 'Duplicate comment ID' );
 			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
@@ -1162,12 +1161,7 @@ class CommentParser {
 			}
 		}
 
-		// Legacy IDs are only required if different to the current ID
-		if ( $id === $this->computeId( $threadItem, true ) ) {
-			return null;
-		}
-
-		if ( isset( $this->threadItemsById[$id] ) ) {
+		if ( isset( $this->threadItemsById[$id] ) && $this->threadItemsById[$id] !== $threadItem ) {
 			// Well, that's tough
 			$threadItem->addWarning( 'Duplicate comment legacy ID' );
 			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
