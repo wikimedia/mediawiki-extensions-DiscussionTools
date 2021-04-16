@@ -74,10 +74,10 @@ function getLatestRevId( pageName ) {
  * Like #checkCommentOnPage, but assumes the comment was found on the current page,
  * and then follows transclusions to determine the source page where it is written.
  *
- * @param {string} commentId Comment ID
+ * @param {CommentItem} comment Comment
  * @return {jQuery.Promise} Promise which resolves with pageName+oldId, or rejects with an error
  */
-CommentController.prototype.getTranscludedFromSource = function ( commentId ) {
+CommentController.prototype.getTranscludedFromSource = function ( comment ) {
 	var promise,
 		pageName = mw.config.get( 'wgRelevantPageName' ),
 		oldId = mw.config.get( 'wgCurRevisionId' );
@@ -89,7 +89,7 @@ CommentController.prototype.getTranscludedFromSource = function ( commentId ) {
 			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
 				return getLatestRevId( errorData.transcludedFrom ).then( function ( latestRevId ) {
 					// Fetch the transcluded page, until we cross the recursion limit
-					return controller.checkCommentOnPage( errorData.transcludedFrom, latestRevId, commentId )
+					return controller.checkCommentOnPage( errorData.transcludedFrom, latestRevId, comment )
 						.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
 				} );
 			}
@@ -99,7 +99,7 @@ CommentController.prototype.getTranscludedFromSource = function ( commentId ) {
 
 	// Arbitrary limit of 10 steps, which should be more than anyone could ever need
 	// (there are reasonable use cases for at least 2)
-	promise = controller.checkCommentOnPage( pageName, oldId, commentId )
+	promise = controller.checkCommentOnPage( pageName, oldId, comment )
 		.catch( followTransclusion.bind( null, 10 ) );
 
 	return promise;
@@ -163,7 +163,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 	this.$replyLinkButtons.addClass( 'ext-discussiontools-init-replylink-active' );
 
 	if ( !this.replyWidgetPromise ) {
-		this.replyWidgetPromise = this.getTranscludedFromSource( comment.id ).then( function ( pageData ) {
+		this.replyWidgetPromise = this.getTranscludedFromSource( comment ).then( function ( pageData ) {
 			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, { mode: mode } );
 		}, function ( code, data ) {
 			commentController.teardown();
