@@ -82,6 +82,8 @@
 	"tag-discussiontools-reply-description": "User replied to a comment with DiscussionTools",
 	"tag-discussiontools-source": "Source",
 	"tag-discussiontools-source-description": "DiscussionTools was in source mode",
+	"tag-discussiontools-source-enhanced": "",
+	"tag-discussiontools-source-enhanced-description": "DiscussionTools was in enhanced source mode with the toolbar",
 	"tag-discussiontools-visual": "Visual",
 	"tag-discussiontools-visual-description": "DiscussionTools was in visual mode"
 }

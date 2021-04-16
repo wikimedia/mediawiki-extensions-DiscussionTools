@@ -279,6 +279,17 @@ CommentController.prototype.getApiQuery = function ( comment, pageName, checkbox
 	var replyWidget = this.replyWidget;
 	var sameNameComments = this.parser.findCommentsByName( comment.name );
 
+	var mode = replyWidget.getMode();
+	var tags = [
+		'discussiontools',
+		'discussiontools-reply',
+		'discussiontools-' + mode
+	];
+
+	if ( mode === 'source' && enable2017Wikitext ) {
+		tags.push( 'discussiontools-source-enhanced' );
+	}
+
 	var data = {
 		action: 'discussiontoolsedit',
 		paction: 'addcomment',
@@ -293,11 +304,7 @@ CommentController.prototype.getApiQuery = function ( comment, pageName, checkbox
 		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
 		// a page view with reply links forced with ?dtenable=1 or otherwise
 		dtenable: '1',
-		dttags: [
-			'discussiontools',
-			'discussiontools-reply',
-			'discussiontools-' + replyWidget.getMode()
-		].join( ',' )
+		dttags: tags.join( ',' )
 	};
 
 	if ( replyWidget.getMode() === 'source' ) {

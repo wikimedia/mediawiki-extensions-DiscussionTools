@@ -29,6 +29,8 @@ class TagHooks implements
 		// Input methods:
 		'discussiontools-source',
 		'discussiontools-visual',
+		// Temporary input method:
+		'discussiontools-source-enhanced',
 	];
 
 	/**
