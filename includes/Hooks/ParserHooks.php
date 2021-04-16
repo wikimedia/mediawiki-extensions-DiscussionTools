@@ -48,8 +48,13 @@ class ParserHooks implements
 
 		if (
 			$dtConfig->get( 'DiscussionToolsUseParserCache' ) &&
-			HookUtils::isAvailableForTitle( $article->getTitle() ) &&
-			HookUtils::isFeatureEnabledForUser( $popts->getUser(), HookUtils::REPLYTOOL )
+			HookUtils::isAvailableForTitle( $article->getTitle() ) && (
+				// If the reply tool is enabled by default, always apply the DOM transform
+				// TODO: Check any feature in CommentFormatter::USE_WITH_FEATURES
+				$dtConfig->get( 'DiscussionTools_' . HookUtils::REPLYTOOL ) === 'available' ||
+				// ...or if enabled for a specific user
+				HookUtils::isFeatureEnabledForUser( $popts->getUser(), HookUtils::REPLYTOOL )
+			)
 		) {
 			$popts->setOption( 'dtreply', true );
 		}
