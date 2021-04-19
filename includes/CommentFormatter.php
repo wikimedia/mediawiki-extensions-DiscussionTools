@@ -141,7 +141,11 @@ class CommentFormatter {
 					$headingNode = CommentUtils::closestElement( $threadItem->getRange()->endContainer, [ 'h2' ] );
 
 					if ( $headingNode ) {
-						$headingNode->setAttribute( 'class', 'ext-discussiontools-section' );
+						$existingClass = $headingNode->getAttribute( 'class' );
+						$headingNode->setAttribute(
+							'class',
+							( $existingClass ? $existingClass . ' ' : '' ) . 'ext-discussiontools-section'
+						);
 
 						// Replaced in PageHooks as the icon depends on user state
 						$subscribe = $doc->createComment( '__DTSUBSCRIBE__' . $threadItem->getName() );
