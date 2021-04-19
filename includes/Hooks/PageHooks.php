@@ -128,7 +128,6 @@ class PageHooks implements
 			$subscriptionStore = $this->subscriptionStore;
 			$doc = new DOMDocument();
 			$user = $output->getUser();
-			$title = $output->getTitle();
 			$text = preg_replace_callback(
 				'/<!--__DTSUBSCRIBE__(.*)-->/',
 				function ( $matches ) use ( $doc, $subscriptionStore, $user ) {
