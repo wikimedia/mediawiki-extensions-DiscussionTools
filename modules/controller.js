@@ -310,7 +310,7 @@ function init( $container, state ) {
 
 	// The page can be served from the HTTP cache (Varnish), containing data-mw-comment generated
 	// by an older version of our PHP code. Code below must be able to handle that.
-	// See CommentFormatter::addReplyLinks() in PHP.
+	// See CommentFormatter::addDiscussionTools() in PHP.
 
 	// Iterate over commentNodes backwards so replies are always deserialized before their parents.
 	for ( i = commentNodes.length - 1; i >= 0; i-- ) {

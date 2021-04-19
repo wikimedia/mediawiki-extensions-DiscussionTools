@@ -19,6 +19,8 @@ class CommentFormatter {
 		HookUtils::TOPICSUBSCRIPTION,
 	];
 
+	protected const MARKER_COMMENT = '<!-- DiscussionTools addDiscussionTools called -->';
+	// Compatibility with old cached content
 	protected const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
 
 	/**
@@ -34,33 +36,36 @@ class CommentFormatter {
 	}
 
 	/**
-	 * Add reply links to some HTML
+	 * Add discussion tools to some HTML
 	 *
 	 * @param string &$text Parser text output
 	 * @param Language $lang Interface language
 	 */
-	public static function addReplyLinks( string &$text, Language $lang ) : void {
+	public static function addDiscussionTools( string &$text, Language $lang ) : void {
 		$start = microtime( true );
 
-		// Never add links twice.
-		// This is required because we try again to add links to cached content
+		// Never add tools twice.
+		// This is required because we try again to add tools to cached content
 		// to support query string or cookie enabling
+		if ( strpos( $text, static::MARKER_COMMENT ) !== false ) {
+			return;
+		}
+		// Compatibility with old cached content
 		if ( strpos( $text, static::REPLY_LINKS_COMMENT ) !== false ) {
 			return;
 		}
 
-		$text = $text . "\n" . static::REPLY_LINKS_COMMENT;
+		$text = $text . "\n" . static::MARKER_COMMENT;
 
 		try {
-			// Add reply links and hidden data about comment ranges.
-			$newText = static::addReplyLinksInternal( $text, $lang );
+			$newText = static::addDiscussionToolsInternal( $text, $lang );
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
 			// Log it and add the request ID in a comment to make it easier to find in the logs.
 			MWExceptionHandler::logException( $e );
 
 			$requestId = htmlspecialchars( WebRequest::getRequestId() );
-			$info = "<!-- [$requestId] DiscussionTools could not add reply links on this page -->";
+			$info = "<!-- [$requestId] DiscussionTools could not process this page -->";
 			$text .= "\n" . $info;
 
 			return;
@@ -74,13 +79,13 @@ class CommentFormatter {
 	}
 
 	/**
-	 * Add reply links to some HTML
+	 * Add discussion tools to some HTML
 	 *
 	 * @param string $html HTML
 	 * @param Language $lang Interface language
-	 * @return string HTML with reply links
+	 * @return string HTML with discussion tools
 	 */
-	protected static function addReplyLinksInternal( string $html, Language $lang ) : string {
+	protected static function addDiscussionToolsInternal( string $html, Language $lang ) : string {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.

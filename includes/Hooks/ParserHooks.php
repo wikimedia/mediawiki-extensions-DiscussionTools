@@ -33,7 +33,7 @@ class ParserHooks implements
 		$popts = $parser->getOptions();
 		// ParserOption for dtreply was set in onArticleParserOptions
 		if ( $popts->getOption( 'dtreply' ) ) {
-			CommentFormatter::addReplyLinks( $text, $popts->getUserLangObj() );
+			CommentFormatter::addDiscussionTools( $text, $popts->getUserLangObj() );
 		}
 	}
 

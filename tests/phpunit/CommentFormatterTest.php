@@ -11,10 +11,10 @@ use Wikimedia\TestingAccessWrapper;
 class CommentFormatterTest extends IntegrationTestCase {
 
 	/**
-	 * @dataProvider provideAddReplyLinksInternal
-	 * @covers ::addReplyLinksInternal
+	 * @dataProvider provideAddDiscussionToolsInternal
+	 * @covers ::addDiscussionToolsInternal
 	 */
-	public function testAddReplyLinksInternal(
+	public function testAddDiscussionToolsInternal(
 		string $name, string $dom, string $expected, string $config, string $data
 	) : void {
 		$dom = self::getHtml( $dom );
@@ -28,7 +28,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
-		$actual = $commentFormatter->addReplyLinksInternal( $dom, RequestContext::getMain()->getLanguage() );
+		$actual = $commentFormatter->addDiscussionToolsInternal( $dom, RequestContext::getMain()->getLanguage() );
 
 		// Optionally write updated content to the "reply HTML" files
 		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
@@ -38,7 +38,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		self::assertEquals( $expected, $actual, $name );
 	}
 
-	public function provideAddReplyLinksInternal() : array {
+	public function provideAddDiscussionToolsInternal() : array {
 		return self::getJson( '../cases/formattedreply.json' );
 	}
 
