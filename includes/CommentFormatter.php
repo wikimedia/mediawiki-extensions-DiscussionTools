@@ -141,15 +141,12 @@ class CommentFormatter {
 					$headingNode = CommentUtils::closestElement( $threadItem->getRange()->endContainer, [ 'h2' ] );
 
 					if ( $headingNode ) {
-						$header = $doc->createElement( 'header' );
-						$header->setAttribute( 'class', 'ext-discussiontools-section' );
+						$headingNode->setAttribute( 'class', 'ext-discussiontools-section' );
 
 						// Replaced in PageHooks as the icon depends on user state
 						$subscribe = $doc->createComment( '__DTSUBSCRIBE__' . $threadItem->getName() );
 
-						$headingNode->parentNode->replaceChild( $header, $headingNode );
-						$header->appendChild( $headingNode );
-						$header->appendChild( $subscribe );
+						$headingNode->appendChild( $subscribe );
 					}
 				}
 			} elseif ( $threadItem instanceof CommentItem ) {
