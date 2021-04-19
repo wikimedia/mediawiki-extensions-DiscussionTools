@@ -214,7 +214,7 @@ class CommentFormatter {
 	) : string {
 		$doc = new DOMDocument();
 		$text = preg_replace_callback(
-			'/<!--__DTSUBSCRIBE__(.*)-->/',
+			'/<!--__DTSUBSCRIBE__(.*?)-->/',
 			function ( $matches ) use ( $doc, $subscriptionStore, $user ) {
 				$itemName = $matches[1];
 				$items = $subscriptionStore->getSubscriptionItemsForUser(
