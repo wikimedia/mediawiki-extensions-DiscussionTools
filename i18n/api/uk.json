@@ -5,10 +5,10 @@
 			"Ата"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "ID коментаря не знайдено: $1",
+	"apierror-discussiontools-commentid-notfound": "Коментаря з ідентифікатором «$1» не знайдено.",
 	"apihelp-discussiontools-param-oldid": "Номер версії (за замовчуванням — остання версія).",
 	"apihelp-discussiontools-summary": "Повертає метадані необхідні для ініціалізації інструментів обговорення.",
-	"apihelp-discussiontoolsedit-param-commentid": "Ідентифікатор коментаря, на який відповідати. Використовується лише коли <var>paction</var> є <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "Ідентифікатор коментаря, на який відповідати. Використовується лише коли <var>paction</var> є <var>addcomment</var>. Перезаписує значення <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Контент для публікації як вікітекст. Не можна використати разом з <var>html</var>.",
 	"apihelp-discussiontoolsedit-summary": "Опублікувати повідомлення на сторінку обговорення."
 }

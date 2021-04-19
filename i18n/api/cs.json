@@ -3,6 +3,7 @@
 		"authors": [
 			"Georg101",
 			"Matěj Suchánek",
+			"Mormegil",
 			"Patriccck",
 			"Patrik L."
 		]
@@ -22,5 +23,5 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Přidat novou diskusní sekci a první komentář v ní.",
 	"apihelp-discussiontoolsedit-summary": "Zveřejnit zprávu na diskusní stránce.",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True pro odebírání, false pro neodebírání",
-	"apihelp-discussiontoolssubscribe-summary": "Odebírat (nebo neodebírat) pro příjem notifikací o tématu."
+	"apihelp-discussiontoolssubscribe-summary": "Přihlášení (nebo odhlášení) příjmu notifikací o tématu."
 }
