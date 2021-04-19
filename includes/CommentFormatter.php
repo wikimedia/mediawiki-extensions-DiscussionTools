@@ -2,13 +2,16 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DOMDocument;
 use DOMElement;
 use Language;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
 use Throwable;
 use WebRequest;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 
@@ -152,7 +155,7 @@ class CommentFormatter {
 							( $existingClass ? $existingClass . ' ' : '' ) . 'ext-discussiontools-section'
 						);
 
-						// Replaced in PageHooks as the icon depends on user state
+						// Replaced in ::postprocessTopicSubscription() as the icon depends on user state
 						$subscribe = $doc->createComment( '__DTSUBSCRIBE__' . $threadItem->getName() );
 
 						$headingNode->appendChild( $subscribe );
@@ -195,6 +198,42 @@ class CommentFormatter {
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
 		return XMLSerializer::serialize( $docElement, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
+	}
+
+	/**
+	 * Replace placeholders for topic subscription buttons with the real thing.
+	 *
+	 * @param string $text
+	 * @param Language $lang
+	 * @param SubscriptionStore $subscriptionStore
+	 * @param UserIdentity $user
+	 * @return string
+	 */
+	public static function postprocessTopicSubscription(
+		string $text, Language $lang, SubscriptionStore $subscriptionStore, UserIdentity $user
+	) : string {
+		$doc = new DOMDocument();
+		$text = preg_replace_callback(
+			'/<!--__DTSUBSCRIBE__(.*)-->/',
+			function ( $matches ) use ( $doc, $subscriptionStore, $user ) {
+				$itemName = $matches[1];
+				$items = $subscriptionStore->getSubscriptionItemsForUser(
+					$user,
+					$itemName
+				);
+				$isSubscribed = count( $items ) && !$items[0]->isMuted();
+				$subscribe = $doc->createElement( 'span' );
+				$subscribe->setAttribute(
+					'class',
+					'ext-discussiontools-section-subscribe ' .
+						( $isSubscribed ? 'oo-ui-icon-unStar oo-ui-image-progressive' : 'oo-ui-icon-star' )
+				);
+				$subscribe->setAttribute( 'data-mw-comment-name', $itemName );
+				return DOMCompat::getOuterHTML( $subscribe );
+			},
+			$text
+		);
+		return $text;
 	}
 
 }
