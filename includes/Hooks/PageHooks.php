@@ -106,13 +106,13 @@ class PageHooks implements
 	 */
 	public function onOutputPageBeforeHTML( $output, &$text ) {
 		$lang = $output->getLanguage();
-		// Check after the parser cache if reply links need to be added for
+		// Check after the parser cache if tools need to be added for
 		// non-cacheable reasons i.e. query string or cookie
-		// The addReplyLinks method is responsible for ensuring that
-		// reply links aren't added twice.
+		// The addDiscussionTools method is responsible for ensuring that
+		// tools aren't added twice.
 		foreach ( CommentFormatter::USE_WITH_FEATURES as $feature ) {
 			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
-				CommentFormatter::addReplyLinks( $text, $lang );
+				CommentFormatter::addDiscussionTools( $text, $lang );
 				break;
 			}
 		}
