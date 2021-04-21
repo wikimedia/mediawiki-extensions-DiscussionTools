@@ -20,7 +20,6 @@ use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Title;
 use Wikimedia\Parsoid\Utils\DOMUtils;
@@ -83,12 +82,22 @@ class EventDispatcher {
 			return;
 		}
 
+		$user = $newRevRecord->getUser();
+		if ( !$user ) {
+			// User can be null if the user is deleted, but this is unlikely
+			// to be the case if the user just made an edit
+			return;
+		}
+
 		$oldParser = self::getParsedRevision( $oldRevRecord );
 		$newParser = self::getParsedRevision( $newRevRecord );
 
 		$newComments = [];
 		foreach ( $newParser->getCommentItems() as $newComment ) {
-			if ( !$oldParser->findCommentById( $newComment->getId() ) ) {
+			if (
+				$newComment->getAuthor() === $user->getName() &&
+				!$oldParser->findCommentById( $newComment->getId() )
+			) {
 				$newComments[] = $newComment;
 			}
 		}
@@ -114,10 +123,7 @@ class EventDispatcher {
 					'revid' => $newRevRecord->getId(),
 					'mentioned-users' => $mentionedUsers,
 				],
-				'agent' => $userFactory->newFromName(
-					$newComment->getAuthor(),
-					UserFactory::RIGOR_NONE
-				),
+				'agent' => $user,
 			];
 		}
 	}
