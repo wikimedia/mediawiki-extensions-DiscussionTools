@@ -121,6 +121,7 @@ class EventDispatcher {
 				'extra' => [
 					'subscribed-comment-name' => $heading->getName(),
 					'comment-id' => $newComment->getId(),
+					'comment-name' => $newComment->getName(),
 					'content' => $newComment->getBodyText( true ),
 					'section-title' => $heading->getText(),
 					'revid' => $newRevRecord->getId(),
