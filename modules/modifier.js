@@ -180,6 +180,10 @@ function addListItem( comment ) {
 		// Split the ancestor nodes after the target to decrease nesting.
 
 		do {
+			if ( !target || !parent ) {
+				throw new Error( 'Can not decrease nesting any more' );
+			}
+
 			// If target is the last child of its parent, no need to split it
 			if ( target.nextSibling ) {
 				// Create new identical node after the parent
