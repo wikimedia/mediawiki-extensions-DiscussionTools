@@ -96,7 +96,10 @@ class EventDispatcher {
 		foreach ( $newParser->getCommentItems() as $newComment ) {
 			if (
 				$newComment->getAuthor() === $user->getName() &&
-				!$oldParser->findCommentById( $newComment->getId() )
+				// Compare comments by name, as ID could be changed by a parent comment
+				// being moved/deleted. The downside is that multiple replies within the
+				// same minute will only fire one notification.
+				count( $oldParser->findCommentsByName( $newComment->getName() ) ) === 0
 			) {
 				$newComments[] = $newComment;
 			}
