@@ -126,7 +126,18 @@ class CommentModifier {
 		}
 
 		// If we can't insert a list directly inside this element, insert after it.
-		if ( strtolower( $parent->tagName ) === 'p' || strtolower( $parent->tagName ) === 'pre' ) {
+		// The covered wrapper check above handles most cases, but we still need this sometimes, such as:
+		// * If the comment starts in the middle of a list, then ends with an unindented p/pre, the
+		//   wrapper check doesn't adjust the parent
+		// * If the comment consists of multiple list items (starting with a <dt>, so that the comment is
+		//   considered to be unindented, that is level === 1), but not all of them, the wrapper check
+		//   adjusts the parent to be the list, and the rest of the algorithm doesn't handle that well
+		if (
+			strtolower( $parent->tagName ) === 'p' ||
+			strtolower( $parent->tagName ) === 'pre' ||
+			strtolower( $parent->tagName ) === 'ul' ||
+			strtolower( $parent->tagName ) === 'dl'
+		) {
 			$parent = $parent->parentNode;
 			$target = $target->parentNode;
 		}
