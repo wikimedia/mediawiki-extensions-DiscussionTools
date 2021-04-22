@@ -243,7 +243,7 @@ function initTopicSubscriptions( $container ) {
 			api = getApi(),
 			subscribe = element.classList.contains( 'oo-ui-icon-star' ),
 			commentName = this.getAttribute( 'data-mw-comment-name' ),
-			heading = $( this ).closest( 'header' ).find( 'h2' )[ 0 ],
+			heading = $( this ).closest( '.ext-discussiontools-section' )[ 0 ],
 			section = utils.getHeadlineNodeAndOffset( heading ).node.id,
 			title = mw.config.get( 'wgRelevantPageName' ) + '#' + section;
 
