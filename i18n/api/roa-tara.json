@@ -17,5 +17,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Condenute da pubblecà, cumme uicchiteste. Non ge pò essere ausate 'nzieme a <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Aggiunge 'nu commende nuève cumme 'na resposte a 'nu commende esistende.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Aggiunge 'na seziona nove de 'ngazzamende e 'u prime commende adda jndre.",
-	"apihelp-discussiontoolsedit-summary": "Manne 'nu messàgge sus a 'na pàgene de le 'ngazzaminde."
+	"apihelp-discussiontoolsedit-summary": "Manne 'nu messàgge sus a 'na pàgene de le 'ngazzaminde.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Vere te abbone, fause te lìve",
+	"apihelp-discussiontoolssubscribe-summary": "Abbonate (o livete) pe avè le notifeche sus a stu argomende."
 }
