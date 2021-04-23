@@ -114,8 +114,7 @@ function addListItem( comment ) {
 	}
 
 	// HACK: Skip past our own reply buttons
-	// TODO: Use ext-discussiontools-init-replylink-buttons once dt-init HTML has cleared the caches
-	if ( target.nextSibling && target.nextSibling.className && target.nextSibling.className.indexOf( '-init-replylink-buttons' ) !== -1 ) {
+	if ( target.nextSibling && target.nextSibling.className && target.nextSibling.className.indexOf( 'ext-discussiontools-init-replylink-buttons' ) !== -1 ) {
 		target = target.nextSibling;
 	}
 

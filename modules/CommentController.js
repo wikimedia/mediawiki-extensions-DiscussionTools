@@ -37,7 +37,7 @@ function CommentController( $pageContainer, $replyLink, comment, parser ) {
 
 	// Reply
 	this.$replyLink = $replyLink.on( 'click keypress', this.onReplyLinkClickHandler );
-	this.$replyLinkButtons = $replyLink.closest( '.ext-discussiontools-init-replylink-buttons, .dt-init-replylink-buttons' );
+	this.$replyLinkButtons = $replyLink.closest( '.ext-discussiontools-init-replylink-buttons' );
 
 	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
 		var mode = storage.get( 'reply/' + comment.id + '/mode' );
@@ -140,7 +140,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 
 	this.$pageContainer.addClass( 'ext-discussiontools-init-replylink-open' );
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '.ext-discussiontools-init-replylink-reply, .dt-init-replylink-reply' ).attr( {
+	$( '.ext-discussiontools-init-replylink-reply' ).attr( {
 		tabindex: '-1'
 	} );
 	// Suppress page takeover behavior for VE editing so that our unload
@@ -248,7 +248,7 @@ CommentController.prototype.teardown = function ( abandoned ) {
 	this.$replyLinkButtons.removeClass( 'ext-discussiontools-init-replylink-active' );
 	this.$pageContainer.removeClass( 'ext-discussiontools-init-replylink-open' );
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '.ext-discussiontools-init-replylink-reply, .dt-init-replylink-reply' ).attr( {
+	$( '.ext-discussiontools-init-replylink-reply' ).attr( {
 		tabindex: '0'
 	} );
 	// We deliberately mangled edit links earlier so VE can't steal our page;

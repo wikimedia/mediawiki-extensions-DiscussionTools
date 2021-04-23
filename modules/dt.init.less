@@ -5,8 +5,6 @@ span[ data-mw-comment-start ] {
 	top: -40px;
 }
 
-// TODO: Remove dt- prefixed classes once HTML caches have cleared
-.dt-init-replylink-buttons,
 .ext-discussiontools-init-replylink-buttons {
 	user-select: none;
 	display: none;
@@ -21,7 +19,6 @@ span[ data-mw-comment-start ] {
 		margin-right: 0.5em;
 	}
 
-	.dt-replytool-enabled &,
 	.ext-discussiontools-replytool-enabled & {
 		// Chromium bug (T260072): Element with `user-select: none` at the end of a paragraph causes
 		// triple-click (to select the paragraph) to also select the first character of the next paragraph
@@ -33,7 +30,6 @@ span[ data-mw-comment-start ] {
 		}
 	}
 
-	.dt-init-replylink,
 	.ext-discussiontools-init-replylink {
 		&-reply {
 			cursor: pointer;
