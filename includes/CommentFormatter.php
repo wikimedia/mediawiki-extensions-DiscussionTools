@@ -213,15 +213,25 @@ class CommentFormatter {
 		string $text, Language $lang, SubscriptionStore $subscriptionStore, UserIdentity $user
 	) : string {
 		$doc = new DOMDocument();
+
+		$matches = [];
+		preg_match_all( '/<!--__DTSUBSCRIBE__(.*?)-->/', $text, $matches );
+		$itemNames = $matches[1];
+
+		$items = $subscriptionStore->getSubscriptionItemsForUser(
+			$user,
+			$itemNames
+		);
+		$itemsByName = [];
+		foreach ( $items as $item ) {
+			$itemsByName[ $item->getItemName() ] = $item;
+		}
+
 		$text = preg_replace_callback(
 			'/<!--__DTSUBSCRIBE__(.*?)-->/',
-			function ( $matches ) use ( $doc, $subscriptionStore, $user ) {
+			function ( $matches ) use ( $doc, $itemsByName ) {
 				$itemName = $matches[1];
-				$items = $subscriptionStore->getSubscriptionItemsForUser(
-					$user,
-					$itemName
-				);
-				$isSubscribed = count( $items ) && !$items[0]->isMuted();
+				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
 				$subscribe = $doc->createElement( 'span' );
 				$subscribe->setAttribute(
 					'class',
