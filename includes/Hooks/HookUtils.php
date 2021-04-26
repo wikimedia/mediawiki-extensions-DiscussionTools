@@ -170,8 +170,11 @@ class HookUtils {
 	 * @return bool
 	 */
 	public static function isAvailableForTitle( Title $title ) : bool {
-		// Only wikitext pages (e.g. not Flow boards)
+		// Only wikitext pages (e.g. not Flow boards, special pages)
 		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
+			return false;
+		}
+		if ( !$title->canExist() ) {
 			return false;
 		}
 
