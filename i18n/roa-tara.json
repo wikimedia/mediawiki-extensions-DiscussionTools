@@ -8,7 +8,12 @@
 	"discussiontools": "Struminde de le 'ngazzaminde",
 	"discussiontools-defaultsummary-reply": "Respunne",
 	"discussiontools-desc": "Struminde pe migliorà le pàggene de le 'ngazzaminde.",
+	"discussiontools-error-noswitchtove-table": "sindasse de tabbelle",
+	"discussiontools-error-noswitchtove-template": "sindasse de template",
+	"discussiontools-error-noswitchtove-title": "Modalità visuale disabbilitate",
 	"discussiontools-newtopic-placeholder-title": "Titole",
+	"discussiontools-notification-subscribed-new-comment-view": "'Ndruche 'u commende",
+	"discussiontools-postedit-confirmation-published": "'U commende tune ha state pubblecate.",
 	"discussiontools-preference-label": "Struminde de le 'ngazzaminde",
 	"discussiontools-replylink": "respunne",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respunne]"

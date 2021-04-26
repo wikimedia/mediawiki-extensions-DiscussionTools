@@ -81,6 +81,7 @@
 	"tag-discussiontools-reply-description": "Uživatel odpověděl na komentář pomocí Diskusních nástrojů",
 	"tag-discussiontools-source": "zdrojový kód",
 	"tag-discussiontools-source-description": "Editace byla uložena pomocí Diskusních nástrojů v editoru zdrojového kódu",
+	"tag-discussiontools-source-enhanced-description": "Diskusní nástroje byly v rozšířeném editoru zdrojového kódu s panelem nástrojů",
 	"tag-discussiontools-visual": "vizuální režim",
 	"tag-discussiontools-visual-description": "Editace byla uložena pomocí Diskusních nástrojů ve vizuálním režimu."
 }
