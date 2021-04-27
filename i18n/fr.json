@@ -92,6 +92,7 @@
 	"tag-discussiontools-reply-description": "L’utilisateur a répondu à un commentaire existant avec DiscussionTools",
 	"tag-discussiontools-source": "Source",
 	"tag-discussiontools-source-description": "DiscussionTools était en mode source",
+	"tag-discussiontools-source-enhanced-description": "DiscussionTools était en mode source amélioré avec la barre d’outils",
 	"tag-discussiontools-visual": "Visuel",
 	"tag-discussiontools-visual-description": "DiscussionTools était en mode visuel"
 }
