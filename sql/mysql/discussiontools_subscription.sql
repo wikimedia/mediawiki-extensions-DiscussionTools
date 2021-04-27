@@ -4,10 +4,10 @@
 -- See https://www.mediawiki.org/wiki/Manual:Schema_changes
 CREATE TABLE /*_*/discussiontools_subscription (
   sub_id INT UNSIGNED AUTO_INCREMENT NOT NULL,
-  sub_item VARCHAR(255) NOT NULL,
+  sub_item VARBINARY(255) NOT NULL,
   sub_namespace INT DEFAULT 0 NOT NULL,
-  sub_title VARCHAR(255) NOT NULL,
-  sub_section VARCHAR(255) NOT NULL,
+  sub_title VARBINARY(255) NOT NULL,
+  sub_section VARBINARY(255) NOT NULL,
   sub_state INT DEFAULT 1 NOT NULL,
   sub_user INT UNSIGNED NOT NULL,
   sub_created BINARY(14) NOT NULL,
