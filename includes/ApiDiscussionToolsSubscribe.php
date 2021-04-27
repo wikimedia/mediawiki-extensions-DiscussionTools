@@ -58,16 +58,22 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 		$subscribe = $params['subscribe'];
 
 		if ( $subscribe ) {
-			$this->subscriptionStore->addSubscriptionForUser(
+			$success = $this->subscriptionStore->addSubscriptionForUser(
 				$user,
 				$title,
 				$commentName
 			);
+			if ( !$success ) {
+				$this->dieWithError( 'apierror-discussiontools-subscription-failed-add', 'subscription-failed' );
+			}
 		} else {
-			$this->subscriptionStore->removeSubscriptionForUser(
+			$success = $this->subscriptionStore->removeSubscriptionForUser(
 				$user,
 				$commentName
 			);
+			if ( !$success ) {
+				$this->dieWithError( 'apierror-discussiontools-subscription-failed-remove', 'subscription-failed' );
+			}
 		}
 		// TODO: Subscribe should be tri-state:
 		// * subscribe (add row)
@@ -77,7 +83,7 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 		$result = [
 			'page' => $title,
 			'commentname' => $commentName,
-			'subscribe' => $subscribe
+			'subscribe' => $subscribe,
 		];
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );

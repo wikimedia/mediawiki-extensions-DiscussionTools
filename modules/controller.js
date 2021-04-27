@@ -285,6 +285,8 @@ function initTopicSubscriptions( $container ) {
 					)
 				}
 			);
+		}, function ( code, data ) {
+			mw.notify( api.getErrorMessage( data ), { type: 'error' } );
 		} );
 	} );
 }

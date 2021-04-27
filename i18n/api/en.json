@@ -5,6 +5,8 @@
 	"apierror-discussiontools-commentid-notfound": "Comment with the ID '$1' not found.",
 	"apierror-discussiontools-commentname-ambiguous": "Multiple comments with the name '$1' found, use ID instead.",
 	"apierror-discussiontools-commentname-notfound": "Comment with the name '$1' not found.",
+	"apierror-discussiontools-subscription-failed-add": "Could not subscribe to this topic.",
+	"apierror-discussiontools-subscription-failed-remove": "Could not unsubscribe from this topic.",
 	"apihelp-discussiontools-param-oldid": "The revision number to use (defaults to latest revision).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Return titles of pages from which each comment on the given page is transcluded.",
 	"apihelp-discussiontools-summary": "Returns metadata required to initialize the discussion tools.",
