@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @external CommentItem
+ */
+
 var
 	$pageContainer,
 	newTopicController,
