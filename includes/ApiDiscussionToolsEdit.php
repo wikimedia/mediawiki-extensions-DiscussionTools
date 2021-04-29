@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use ApiBase;
 use ApiMain;
 use ApiParsoidTrait;
+use DerivativeContext;
 use DerivativeRequest;
 use DOMElement;
 use MediaWiki\Logger\LoggerFactory;
@@ -66,9 +67,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				// As section=new this is append only so we don't need to
 				// worry about edit-conflict params such as oldid/baserevid/etag.
 				// Edit summary is also automatically generated when section=new
-				$api = new ApiMain(
+				$context = new DerivativeContext( $this->getContext() );
+				$context->setRequest(
 					new DerivativeRequest(
-						$this->getRequest(),
+						$context->getRequest(),
 						[
 							'action' => 'visualeditoredit',
 							'paction' => 'save',
@@ -86,7 +88,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'captchaword' => $params['captchaword']
 						],
 						/* was posted? */ true
-					),
+					)
+				);
+				$api = new ApiMain(
+					$context,
 					/* enable write? */ true
 				);
 
@@ -186,9 +191,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 						$this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
 				}
 
-				$api = new ApiMain(
+				$context = new DerivativeContext( $this->getContext() );
+				$context->setRequest(
 					new DerivativeRequest(
-						$this->getRequest(),
+						$context->getRequest(),
 						[
 							'action' => 'visualeditoredit',
 							'paction' => 'save',
@@ -205,7 +211,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'captchaword' => $params['captchaword']
 						],
 						/* was posted? */ true
-					),
+					)
+				);
+				$api = new ApiMain(
+					$context,
 					/* enable write? */ true
 				);
 
