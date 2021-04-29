@@ -173,9 +173,18 @@ span[ data-mw-comment-start ] {
 	}
 }
 
+.ext-discussiontools-init-new-topic {
+	margin-top: 1em;
+}
+
 .ext-discussiontools-emptystate {
 	display: flex;
 	justify-content: space-between;
+
+	.skin-minerva & {
+		// Add space between this and page-actions-menu in Minerva
+		margin-top: 1em;
+	}
 
 	> img {
 		width: 250px;

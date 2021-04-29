@@ -25,11 +25,10 @@ function ReplyLinksController( $pageContainer ) {
 		if ( $addSectionTab.length ) {
 			this.$addSectionLink = $addSectionTab.find( 'a' );
 			this.$addSectionLink.on( 'click keypress', this.onAddSectionLinkClickHandler );
-
-			// Handle events on all links that potentially open the new section interface,
-			// including links in the page content (from templates) or from gadgets.
-			this.$body.on( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
 		}
+		// Handle events on all links that potentially open the new section interface,
+		// including links in the page content (from templates) or from gadgets.
+		this.$body.on( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
 	}
 }
 
