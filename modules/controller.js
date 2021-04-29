@@ -26,6 +26,12 @@ function getApi() {
 	} );
 }
 
+/**
+ * Draw a semi-transparent rectangle on the page to highlight the given comment.
+ *
+ * @param {CommentItem} comment
+ * @return {jQuery} Highlight node
+ */
 function highlight( comment ) {
 	var padding = 5,
 		$highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
@@ -45,21 +51,7 @@ function highlight( comment ) {
 	} );
 	$overlay.prepend( $highlight );
 
-	// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
-	// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
-	OO.ui.Element.static.scrollIntoView( $highlight[ 0 ], { padding: { top: 10, bottom: 10 } } ).then( function () {
-		// Toggle the 'ext-discussiontools-init-highlight-overlay' class only when needed, because using mix-blend-mode
-		// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
-		$overlay.addClass( 'ext-discussiontools-init-highlight-overlay' );
-		$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
-		setTimeout( function () {
-			$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
-			setTimeout( function () {
-				$highlight.remove();
-				$overlay.removeClass( 'ext-discussiontools-init-highlight-overlay' );
-			}, 250 );
-		}, 3000 );
-	} );
+	return $highlight;
 }
 
 /**
@@ -289,6 +281,24 @@ function initTopicSubscriptions( $container ) {
 	} );
 }
 
+var $highlightedTarget = null;
+function highlightTargetComment( parser ) {
+	if ( $highlightedTarget ) {
+		$highlightedTarget.remove();
+		$overlay.removeClass( 'ext-discussiontools-init-highlight-overlay' );
+		$highlightedTarget = null;
+	}
+	// eslint-disable-next-line no-jquery/no-global-selector
+	var targetElement = $( ':target' )[ 0 ];
+	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
+		var comment = parser.findCommentById( targetElement.getAttribute( 'id' ) );
+		$highlightedTarget = highlight( comment );
+		$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
+		$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
+		$overlay.addClass( 'ext-discussiontools-init-highlight-overlay' );
+	}
+}
+
 function init( $container, state ) {
 	var pageExists = !!mw.config.get( 'wgRelevantArticleId' ),
 		controllers = [],
@@ -412,10 +422,11 @@ function init( $container, state ) {
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
+	var $highlight;
 	if ( state.repliedTo === 'new|' + mw.config.get( 'wgRelevantPageName' ) ) {
 		// Highlight the last comment on the page
 		var lastComment = threadItems[ threadItems.length - 1 ];
-		highlight( lastComment );
+		$highlight = highlight( lastComment );
 
 		// If it's the only comment under its heading, highlight the heading too.
 		// (It might not be if the new discussion topic was posted without a title: T272666.)
@@ -424,7 +435,7 @@ function init( $container, state ) {
 			lastComment.parent.type === 'heading' &&
 			lastComment.parent.replies.length === 1
 		) {
-			highlight( lastComment.parent );
+			$highlight = $highlight.add( highlight( lastComment.parent ) );
 		}
 
 		mw.hook( 'postEdit' ).fire( {
@@ -434,10 +445,30 @@ function init( $container, state ) {
 	} else if ( state.repliedTo ) {
 		// Find the comment we replied to, then highlight the last reply
 		var repliedToComment = threadItemsById[ state.repliedTo ];
-		highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
+		$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 
 		mw.hook( 'postEdit' ).fire( {
 			message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
+		} );
+	}
+
+	if ( $highlight ) {
+		$highlight.addClass( 'ext-discussiontools-init-publishedcomment' );
+
+		// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
+		// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
+		OO.ui.Element.static.scrollIntoView( $highlight[ 0 ], { padding: { top: 10, bottom: 10 } } ).then( function () {
+			// Toggle the 'ext-discussiontools-init-highlight-overlay' class only when needed, because using mix-blend-mode
+			// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
+			$overlay.addClass( 'ext-discussiontools-init-highlight-overlay' );
+			$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
+			setTimeout( function () {
+				$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
+				setTimeout( function () {
+					$highlight.remove();
+					$overlay.removeClass( 'ext-discussiontools-init-highlight-overlay' );
+				}, 250 );
+			}, 3000 );
 		} );
 	}
 
@@ -447,6 +478,9 @@ function init( $container, state ) {
 		mw.config.get( 'wgRelevantPageName' ),
 		mw.config.get( 'wgCurRevisionId' )
 	);
+
+	$( window ).on( 'hashchange', highlightTargetComment.bind( null, parser ) );
+	highlightTargetComment( parser );
 }
 
 function update( data, comment, pageName, replyWidget ) {
