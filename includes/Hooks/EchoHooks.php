@@ -63,6 +63,12 @@ class EchoHooks {
 				'expandable' => true,
 			],
 		];
+
+		// Override default handlers
+		$notifications['edit-user-talk']['presentation-model'] =
+			'MediaWiki\\Extension\\DiscussionTools\\Notifications\\EnhancedEchoEditUserTalkPresentationModel';
+		$notifications['mention']['presentation-model'] =
+			'MediaWiki\\Extension\\DiscussionTools\\Notifications\\EnhancedEchoMentionPresentationModel';
 	}
 
 	/**
