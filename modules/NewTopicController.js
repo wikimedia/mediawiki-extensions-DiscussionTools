@@ -130,14 +130,19 @@ NewTopicController.prototype.getUnsupportedNodeSelectors = function () {
 NewTopicController.prototype.getApiQuery = function ( comment, pageName, checkboxes ) {
 	var data = NewTopicController.super.prototype.getApiQuery.call( this, comment, pageName, checkboxes );
 
+	// Rebuild the tags array and remove the reply tag
+	var tags = ( data.dttags || '' ).split( ',' );
+	var replyTag = tags.indexOf( 'discussiontools-reply' );
+	if ( replyTag !== -1 ) {
+		tags.splice( replyTag, 1 );
+	}
+	// Add the newtopic tag
+	tags.push( 'discussiontools-newtopic' );
+
 	data = $.extend( {}, data, {
 		paction: 'addtopic',
 		sectiontitle: this.sectionTitle.getValue(),
-		dttags: [
-			'discussiontools',
-			'discussiontools-newtopic',
-			'discussiontools-' + this.replyWidget.getMode()
-		].join( ',' )
+		dttags: tags.join( ',' )
 	} );
 
 	return data;
