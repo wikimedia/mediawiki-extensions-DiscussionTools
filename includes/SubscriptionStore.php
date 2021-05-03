@@ -58,14 +58,14 @@ class SubscriptionStore {
 	/**
 	 * @param IDatabase $db
 	 * @param UserIdentity|null $user
-	 * @param string|null $itemName
+	 * @param array|null $itemNames
 	 * @param int|null $state
 	 * @return IResultWrapper|false
 	 */
 	private function fetchSubscriptions(
 		IDatabase $db,
 		?UserIdentity $user = null,
-		?string $itemName = null,
+		?array $itemNames = null,
 		?int $state = null
 	) {
 		$conditions = [];
@@ -74,8 +74,8 @@ class SubscriptionStore {
 			$conditions[ 'sub_user' ] = $user->getId();
 		}
 
-		if ( $itemName ) {
-			$conditions[ 'sub_item' ] = $itemName;
+		if ( $itemNames !== null ) {
+			$conditions[ 'sub_item' ] = $itemNames;
 		}
 
 		if ( $state !== null ) {
@@ -95,14 +95,14 @@ class SubscriptionStore {
 
 	/**
 	 * @param UserIdentity $user
-	 * @param string|null $itemName
+	 * @param array|null $itemNames
 	 * @param int|null $state
 	 * @param array $options
 	 * @return SubscriptionItem[]
 	 */
 	public function getSubscriptionItemsForUser(
 		UserIdentity $user,
-		?string $itemName = null,
+		?array $itemNames = null,
 		?int $state = null,
 		array $options = []
 	) : array {
@@ -117,7 +117,7 @@ class SubscriptionStore {
 		$rows = $this->fetchSubscriptions(
 			$db,
 			$user,
-			$itemName,
+			$itemNames,
 			$state
 		);
 
@@ -151,7 +151,7 @@ class SubscriptionStore {
 		$rows = $this->fetchSubscriptions(
 			$db,
 			null,
-			$itemName,
+			[ $itemName ],
 			$state
 		);
 
