@@ -80,6 +80,7 @@
 	"tag-discussiontools-reply-description": "O usuário respondeu a um comentário com DiscussionTools",
 	"tag-discussiontools-source": "Fonte",
 	"tag-discussiontools-source-description": "DiscussionTools estava no modo de fonte",
+	"tag-discussiontools-source-enhanced-description": "O DiscussionTools estava em modo de código-fonte aprimorado com a barra de ferramentas",
 	"tag-discussiontools-visual": "Visual",
 	"tag-discussiontools-visual-description": "DiscussionTools estava no modo visual"
 }
