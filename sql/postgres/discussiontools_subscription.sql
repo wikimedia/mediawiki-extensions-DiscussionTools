@@ -4,10 +4,10 @@
 -- See https://www.mediawiki.org/wiki/Manual:Schema_changes
 CREATE TABLE discussiontools_subscription (
   sub_id SERIAL NOT NULL,
-  sub_item VARCHAR(255) NOT NULL,
+  sub_item TEXT NOT NULL,
   sub_namespace INT DEFAULT 0 NOT NULL,
-  sub_title VARCHAR(255) NOT NULL,
-  sub_section VARCHAR(255) NOT NULL,
+  sub_title TEXT NOT NULL,
+  sub_section TEXT NOT NULL,
   sub_state INT DEFAULT 1 NOT NULL,
   sub_user INT NOT NULL,
   sub_created TIMESTAMPTZ NOT NULL,

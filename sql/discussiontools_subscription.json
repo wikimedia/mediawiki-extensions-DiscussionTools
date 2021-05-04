@@ -14,7 +14,7 @@
 			{
 				"name": "sub_item",
 				"comment": "Internal name used to identify this item across all pages and revisions where it might appear, see CommentParser::computeName()",
-				"type": "string",
+				"type": "binary",
 				"options": {
 					"notnull": true,
 					"length": 255
@@ -32,7 +32,7 @@
 			{
 				"name": "sub_title",
 				"comment": "Title of the page where this item appeared when the user subscribed to it",
-				"type": "string",
+				"type": "binary",
 				"options": {
 					"notnull": true,
 					"length": 255
@@ -41,7 +41,7 @@
 			{
 				"name": "sub_section",
 				"comment": "Section of the page where this item appeared when the user subscribed to it",
-				"type": "string",
+				"type": "binary",
 				"options": {
 					"notnull": true,
 					"length": 255
