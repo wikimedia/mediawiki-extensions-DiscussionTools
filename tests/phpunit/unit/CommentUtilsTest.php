@@ -28,12 +28,12 @@ class CommentUtilsTest extends MediaWikiUnitTestCase {
 		$expected = self::getJson( $expectedPath );
 
 		$actual = [];
-		CommentUtils::linearWalk( $fragment, function ( $event, $node ) use ( &$actual ) {
+		CommentUtils::linearWalk( $fragment, static function ( $event, $node ) use ( &$actual ) {
 			$actual[] = "$event {$node->nodeName}({$node->nodeType})";
 		} );
 
 		$actualBackwards = [];
-		CommentUtils::linearWalkBackwards( $fragment, function ( $event, $node ) use ( &$actualBackwards ) {
+		CommentUtils::linearWalkBackwards( $fragment, static function ( $event, $node ) use ( &$actualBackwards ) {
 			$actualBackwards[] = "$event {$node->nodeName}({$node->nodeType})";
 		} );
 
@@ -44,7 +44,7 @@ class CommentUtilsTest extends MediaWikiUnitTestCase {
 
 		self::assertEquals( $expected, $actual, $name );
 
-		$expectedBackwards = array_map( function ( $a ) {
+		$expectedBackwards = array_map( static function ( $a ) {
 			return ( substr( $a, 0, 5 ) === 'enter' ? 'leave' : 'enter' ) . substr( $a, 5 );
 		}, array_reverse( $expected ) );
 		self::assertEquals( $expectedBackwards, $actualBackwards, $name . ' (backwards)' );

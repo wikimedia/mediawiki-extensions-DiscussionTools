@@ -78,7 +78,7 @@ class Data {
 		// Avoid DateTimeZone::listAbbreviations(), it returns some half-baked list that is different
 		// from the timezone data used by everything else in PHP.
 		$timezoneAbbrs = array_values( array_unique(
-			array_map( function ( $transition ) {
+			array_map( static function ( $transition ) {
 				return $transition['abbr'];
 			}, ( new DateTimeZone( $localTimezone ) )->getTransitions() )
 		) );
@@ -86,7 +86,7 @@ class Data {
 		$data['timezones'] = [];
 		foreach ( $langConv->getVariants() as $variant ) {
 			$data['timezones'][$variant] = array_combine(
-				array_map( function ( string $tzMsg ) use ( $lang, $langConv, $variant ) {
+				array_map( static function ( string $tzMsg ) use ( $lang, $langConv, $variant ) {
 					// MWTimestamp::getTimezoneMessage()
 					// Parser::pstPass2()
 					// Messages used here: 'timezone-utc' and so on
@@ -119,7 +119,7 @@ class Data {
 		foreach ( $langConv->getVariants() as $variant ) {
 			$data['contLangMessages'][$variant] = array_combine(
 				$messagesKeys,
-				array_map( function ( $key ) use ( $lang, $langConv, $variant ) {
+				array_map( static function ( $key ) use ( $lang, $langConv, $variant ) {
 					$text = wfMessage( $key )->inLanguage( $lang )->text();
 					return $langConv->translate( $text, $variant );
 				}, $messagesKeys )
@@ -229,7 +229,7 @@ class Data {
 	) : array {
 		return array_combine(
 			$messagesKeys,
-			array_map( function ( $key ) {
+			array_map( static function ( $key ) {
 				return wfMessage( $key )->inContentLanguage()->text();
 			}, $messagesKeys )
 		);

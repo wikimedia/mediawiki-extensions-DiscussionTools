@@ -162,7 +162,7 @@ class CommentParser {
 	 * @return string Regular expression
 	 */
 	private static function regexpAlternateGroup( array $values ) : string {
-		return '(' . implode( '|', array_map( function ( string $x ) {
+		return '(' . implode( '|', array_map( static function ( string $x ) {
 			return preg_quote( $x, '/' );
 		}, $values ) ) . ')';
 	}
@@ -319,13 +319,13 @@ class CommentParser {
 	private function getTimestampParser(
 		string $contLangVariant, string $format, ?array $digits, string $localTimezone, array $tzAbbrs
 	) : callable {
-		$untransformDigits = function ( string $text ) use ( $digits ) {
+		$untransformDigits = static function ( string $text ) use ( $digits ) {
 			if ( !$digits ) {
 				return $text;
 			}
 			return preg_replace_callback(
 				'/[' . implode( '', $digits ) . ']/u',
-				function ( array $m ) use ( $digits ) {
+				static function ( array $m ) use ( $digits ) {
 					return (string)array_search( $m[0], $digits );
 				},
 				$text
@@ -387,7 +387,7 @@ class CommentParser {
 			if ( is_array( $match[0] ) ) {
 				// Strip PREG_OFFSET_CAPTURE data
 				unset( $match['offset'] );
-				$match = array_map( function ( array $tuple ) {
+				$match = array_map( static function ( array $tuple ) {
 					return $tuple[0];
 				}, $match );
 			}

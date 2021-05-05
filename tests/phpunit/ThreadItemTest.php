@@ -23,7 +23,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$node = $doc->createElement( 'div' );
 		$range = new ImmutableRange( $node, 0, $node, 0 );
 
-		$makeThreadItem = function ( array $arr ) use ( &$makeThreadItem, $range ) : ThreadItem {
+		$makeThreadItem = static function ( array $arr ) use ( &$makeThreadItem, $range ) : ThreadItem {
 			if ( $arr['type'] === 'comment' ) {
 				$item = new CommentItem( 1, $range, [], 'TIMESTAMP', $arr['author'] );
 			} else {

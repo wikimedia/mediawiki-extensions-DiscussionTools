@@ -317,12 +317,12 @@ class CommentUtils {
 		$startOffset = $item->getRange()->startOffset;
 		$endOffset = $item->getRange()->endOffset;
 
-		$isIgnored = function ( $node ) {
+		$isIgnored = static function ( $node ) {
 			// Ignore empty text nodes
 			return $node->nodeType === XML_TEXT_NODE && CommentUtils::htmlTrim( $node->nodeValue ) === '';
 		};
 
-		$isFirstNonemptyChild = function ( $node ) use ( $isIgnored ) {
+		$isFirstNonemptyChild = static function ( $node ) use ( $isIgnored ) {
 			while ( ( $node = $node->previousSibling ) ) {
 				if ( !$isIgnored( $node ) ) {
 					return false;
@@ -331,7 +331,7 @@ class CommentUtils {
 			return true;
 		};
 
-		$isLastNonemptyChild = function ( $node ) use ( $isIgnored ) {
+		$isLastNonemptyChild = static function ( $node ) use ( $isIgnored ) {
 			while ( ( $node = $node->nextSibling ) ) {
 				if ( !$isIgnored( $node ) ) {
 					return false;

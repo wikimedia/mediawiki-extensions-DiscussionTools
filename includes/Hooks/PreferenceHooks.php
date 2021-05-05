@@ -66,7 +66,7 @@ class PreferenceHooks implements
 
 		$preferences['discussiontools-editmode'] = [
 			'type' => 'api',
-			'validation-callback' => function ( $value ) {
+			'validation-callback' => static function ( $value ) {
 				return in_array( $value, [ '', 'source', 'visual' ], true );
 			},
 		];

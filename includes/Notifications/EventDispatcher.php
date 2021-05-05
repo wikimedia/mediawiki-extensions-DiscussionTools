@@ -155,7 +155,7 @@ class EventDispatcher {
 		);
 
 		// TODD: Have this return an Iterator instead?
-		$users = array_map( function ( SubscriptionItem $item ) {
+		$users = array_map( static function ( SubscriptionItem $item ) {
 			return $item->getUserIdentity();
 		}, $subscriptionItems );
 

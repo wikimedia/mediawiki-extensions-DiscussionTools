@@ -229,7 +229,7 @@ class CommentFormatter {
 
 		$text = preg_replace_callback(
 			'/<!--__DTSUBSCRIBE__(.*?)-->/',
-			function ( $matches ) use ( $doc, $itemsByName ) {
+			static function ( $matches ) use ( $doc, $itemsByName ) {
 				$itemName = $matches[1];
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
 				$subscribe = $doc->createElement( 'span' );

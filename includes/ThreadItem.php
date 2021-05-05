@@ -48,7 +48,7 @@ abstract class ThreadItem implements JsonSerializable {
 			'type' => $this->type,
 			'level' => $this->level,
 			'id' => $this->id,
-			'replies' => array_map( function ( ThreadItem $comment ) {
+			'replies' => array_map( static function ( ThreadItem $comment ) {
 				return $comment->getId();
 			}, $this->replies )
 		];
@@ -63,7 +63,7 @@ abstract class ThreadItem implements JsonSerializable {
 	 */
 	public function getAuthorsBelow() : array {
 		$authors = [];
-		$getAuthorSet = function ( ThreadItem $comment ) use ( &$authors, &$getAuthorSet ) {
+		$getAuthorSet = static function ( ThreadItem $comment ) use ( &$authors, &$getAuthorSet ) {
 			if ( $comment instanceof CommentItem ) {
 				$author = $comment->getAuthor();
 				if ( $author ) {
