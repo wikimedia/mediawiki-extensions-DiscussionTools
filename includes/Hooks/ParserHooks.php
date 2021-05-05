@@ -11,18 +11,49 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
+use MediaWiki\Hook\ParserAfterParseHook;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use MediaWiki\Hook\ParserOptionsRegisterHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleParserOptionsHook;
 use Parser;
 use ParserOptions;
+use StripState;
 
 class ParserHooks implements
+	ParserAfterParseHook,
 	ParserAfterTidyHook,
 	ArticleParserOptionsHook,
 	ParserOptionsRegisterHook
 {
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserAfterParse
+	 *
+	 * @param Parser $parser
+	 * @param string &$text
+	 * @param StripState $stripState
+	 */
+	public function onParserAfterParse( $parser, &$text, $stripState ) : void {
+		$title = $parser->getTitle();
+
+		// This condition must be unreliant on current enablement config or user preference.
+		// In other words, include parser output of talk pages with DT disabled.
+		//
+		// This is similar to HookUtils::isAvailableForTitle, but instead of querying the
+		// database for the latest metadata of a page that exists, we check metadata of
+		// the given ParserOutput object only (this runs before the edit is saved).
+		if ( $title->isTalkPage() || $parser->getOutput()->getNewSection() ) {
+			$services = MediaWikiServices::getInstance();
+			$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+			$talkExpiry = $dtConfig->get( 'DiscussionToolsTalkPageParserCacheExpiry' );
+			// Override parser cache expiry of talk pages (T280605).
+			// Note, this can only shorten it. MediaWiki ignores values higher than the default.
+			if ( $talkExpiry > 0 ) {
+				$parser->getOutput()->updateCacheExpiry( $talkExpiry );
+			}
+		}
+	}
+
 	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserAfterTidy
 	 *
