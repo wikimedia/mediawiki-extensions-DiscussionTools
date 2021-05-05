@@ -119,37 +119,47 @@ span[ data-mw-comment-start ] {
 
 // NB Directional properties for anything immediately visible
 // in the header must be based on content direction.
-.ext-discussiontools-section {
+.ext-discussiontools-init-section {
 	&-subscribe {
-		// Overridden in ext-discussiontools-topicsubscription-enabled
 		display: none;
-	}
 
-	&-subscribe { /* stylelint-disable-line no-duplicate-selectors */
-		font-weight: normal;
-		background-repeat: no-repeat;
-		width: 20px;
-		height: 20px;
-		align-self: flex-end;
-		opacity: 0.6;
-		font-size: 14px;
-		line-height: 20px;
-	}
-
-	&-subscribe { /* stylelint-disable-line no-duplicate-selectors */
-		cursor: pointer;
-
-		&.oo-ui-image-progressive {
-			opacity: 1;
-		}
-	}
-}
-
-.ext-discussiontools-topicsubscription-enabled {
-	.ext-discussiontools-section {
-		&-subscribe {
-			display: block;
+		.mw-content-ltr & {
+			/* @noflip */
 			float: right;
+		}
+
+		.mw-content-rtl & {
+			/* @noflip */
+			float: left;
+		}
+
+		&.mw-editsection-like {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			margin-top: 0.7em;
+		}
+
+		.ext-discussiontools-topicsubscription-enabled & {
+			display: block;
+		}
+
+		// Similar to mw-editsection-bracket
+		&-bracket {
+			color: #54595d;
+
+			.mw-content-ltr &:first-of-type,
+			.mw-content-rtl &:not( :first-of-type ) {
+				/* @noflip */
+				margin-right: 0.25em;
+			}
+
+			.mw-content-ltr &:not( :first-of-type ),
+			.mw-content-rtl &:first-of-type {
+				/* @noflip */
+				margin-left: 0.25em;
+			}
 		}
 	}
 }

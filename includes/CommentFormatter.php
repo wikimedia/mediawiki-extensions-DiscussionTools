@@ -150,7 +150,7 @@ class CommentFormatter {
 						$existingClass = $headingNode->getAttribute( 'class' );
 						$headingNode->setAttribute(
 							'class',
-							( $existingClass ? $existingClass . ' ' : '' ) . 'ext-discussiontools-section'
+							( $existingClass ? $existingClass . ' ' : '' ) . 'ext-discussiontools-init-section'
 						);
 
 						// Replaced in ::postprocessTopicSubscription() as the icon depends on user state
@@ -229,16 +229,49 @@ class CommentFormatter {
 
 		$text = preg_replace_callback(
 			'/<!--__DTSUBSCRIBE__(.*?)-->/',
-			static function ( $matches ) use ( $doc, $itemsByName ) {
+			static function ( $matches ) use ( $doc, $itemsByName, $lang ) {
 				$itemName = $matches[1];
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
+
 				$subscribe = $doc->createElement( 'span' );
 				$subscribe->setAttribute(
 					'class',
-					'ext-discussiontools-section-subscribe ' .
-						( $isSubscribed ? 'oo-ui-icon-unStar oo-ui-image-progressive' : 'oo-ui-icon-star' )
+					'ext-discussiontools-init-section-subscribe mw-editsection-like'
 				);
-				$subscribe->setAttribute( 'data-mw-comment-name', $itemName );
+
+				$subscribeLink = $doc->createElement( 'a' );
+				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
+				$subscribeLink->setAttribute( 'href', '' );
+				$subscribeLink->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-link' );
+				$subscribeLink->setAttribute( 'role', 'button' );
+				$subscribeLink->setAttribute( 'tabindex', '0' );
+				$subscribeLink->setAttribute( 'data-mw-comment-name', $itemName );
+				$subscribeLink->setAttribute( 'title', wfMessage(
+					$isSubscribed ?
+						'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
+						'discussiontools-topicsubscription-button-subscribe-tooltip'
+				)->inLanguage( $lang )->text() );
+				$subscribeLink->nodeValue = wfMessage(
+					$isSubscribed ?
+						'discussiontools-topicsubscription-button-unsubscribe' :
+						'discussiontools-topicsubscription-button-subscribe'
+				)->inLanguage( $lang )->text();
+
+				if ( $isSubscribed ) {
+					$subscribeLink->setAttribute( 'data-mw-subscribed', '' );
+				}
+
+				$bracket = $doc->createElement( 'span' );
+				$bracket->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-bracket' );
+				$bracketLeft = $bracket->cloneNode( false );
+				$bracketLeft->nodeValue = '[';
+				$bracketRight = $bracket->cloneNode( false );
+				$bracketRight->nodeValue = ']';
+
+				$subscribe->appendChild( $bracketLeft );
+				$subscribe->appendChild( $subscribeLink );
+				$subscribe->appendChild( $bracketRight );
+
 				return DOMCompat::getOuterHTML( $subscribe );
 			},
 			$text

@@ -234,34 +234,49 @@ function getCheckboxesPromise( pageName, oldId ) {
 }
 
 function initTopicSubscriptions( $container ) {
-	$container.find( '.ext-discussiontools-section-subscribe' ).on( 'click', function () {
-		var element = this,
-			api = getApi(),
-			subscribe = element.classList.contains( 'oo-ui-icon-star' ),
-			commentName = this.getAttribute( 'data-mw-comment-name' ),
-			heading = $( this ).closest( '.ext-discussiontools-section' )[ 0 ],
-			section = utils.getHeadlineNodeAndOffset( heading ).node.id,
-			title = mw.config.get( 'wgRelevantPageName' ) + '#' + section;
+	$container.find( '.ext-discussiontools-init-section-subscribe-link' ).on( 'click keypress', function ( e ) {
+		if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
+			// Only handle keypresses on the "Enter" or "Space" keys
+			return;
+		}
+		if ( e.type === 'click' && ( e.which !== OO.ui.MouseButtons.LEFT || e.shiftKey || e.altKey || e.ctrlKey || e.metaKey ) ) {
+			// Only handle unmodified left clicks
+			return;
+		}
+
+		e.preventDefault();
+
+		var commentName = this.getAttribute( 'data-mw-comment-name' );
 
 		if ( !commentName ) {
 			// This should never happen
 			return;
 		}
 
+		var element = this,
+			api = getApi(),
+			isSubscribed = element.hasAttribute( 'data-mw-subscribed' ),
+			heading = $( this ).closest( '.ext-discussiontools-init-section' )[ 0 ],
+			section = utils.getHeadlineNodeAndOffset( heading ).node.id,
+			title = mw.config.get( 'wgRelevantPageName' ) + '#' + section;
+
 		// TODO: Disable button while pending
 		api.postWithToken( 'csrf', {
 			action: 'discussiontoolssubscribe',
 			page: title,
 			commentname: commentName,
-			subscribe: subscribe
+			subscribe: !isSubscribed
 		}, { contentType: 'multipart/form-data' } ).then( function ( response2 ) {
 			return OO.getProp( response2, 'discussiontoolssubscribe' ) || {};
 		} ).then( function ( result ) {
-			element.classList.remove( 'oo-ui-icon-star', 'oo-ui-icon-unStar', 'oo-ui-image-progressive' );
 			if ( result.subscribe ) {
-				element.classList.add( 'oo-ui-icon-unStar', 'oo-ui-image-progressive' );
+				element.setAttribute( 'data-mw-subscribed', '' );
+				element.textContent = mw.msg( 'discussiontools-topicsubscription-button-unsubscribe' );
+				element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-unsubscribe-tooltip' ) );
 			} else {
-				element.classList.add( 'oo-ui-icon-star' );
+				element.removeAttribute( 'data-mw-subscribed' );
+				element.textContent = mw.msg( 'discussiontools-topicsubscription-button-subscribe' );
+				element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-subscribe-tooltip' ) );
 			}
 			mw.notify(
 				mw.msg(
