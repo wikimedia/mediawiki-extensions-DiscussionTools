@@ -8,6 +8,7 @@ use MediaWiki\User\UserIdentity;
 use ReadOnlyMode;
 use stdClass;
 use TitleValue;
+use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILBFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -75,6 +76,11 @@ class SubscriptionStore {
 		}
 
 		if ( $itemNames !== null ) {
+			if ( !count( $itemNames ) ) {
+				// We are not allowed to construct a filter with an empty array.
+				// Any empty array should result in no items being returned.
+				return new FakeResultWrapper( [] );
+			}
 			$conditions[ 'sub_item' ] = $itemNames;
 		}
 
