@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"StanProg"
+			"StanProg",
+			"Ted Masters"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Отговор",
@@ -36,14 +37,14 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "Ще получавате известия за нови коментари в тази тема.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Абониран",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Отписан",
-	"tag-discussiontools-description": "Редакция направена чрез Визуални инструменти",
+	"tag-discussiontools-description": "Редакция, направена чрез Визуални инструменти",
 	"tag-discussiontools-edit": "Редактиране на коментар",
 	"tag-discussiontools-edit-description": "Потребител редактира съществуващ коментар чрез Визуални инструменти",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Нова тема]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Отговор]",
 	"tag-discussiontools-reply-description": "Потребител отговори на коментар чрез Визуални инструменти",
 	"tag-discussiontools-source": "Код",
-	"tag-discussiontools-source-description": "Визуални инструменти беше в кодов режим",
+	"tag-discussiontools-source-description": "Визуални инструменти беше в режим на редактиране на кода",
 	"tag-discussiontools-visual": "Визуално",
 	"tag-discussiontools-visual-description": "Визуални инструменти беше във визуален режим"
 }
