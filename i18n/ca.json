@@ -7,6 +7,7 @@
 			"Matma Rex",
 			"Mguix",
 			"Patrik L.",
+			"Skurz0",
 			"Xavier Dengra"
 		]
 	},
@@ -80,7 +81,7 @@
 	"tag-discussiontools-reply-description": "L'usuari ha respost un comentari amb DiscussionTools",
 	"tag-discussiontools-source": "codi",
 	"tag-discussiontools-source-description": "Les Eines de Discussió es trobaven en el mode d'edició amb codi wiki",
-	"tag-discussiontools-source-enhanced-description": "Les Eines de Discussió es trobaven en el mode d'edició de codi wiki avançat (amb la barra d'eines)",
+	"tag-discussiontools-source-enhanced-description": "Les Eines de Discussió es trobaven a la barra d'eines del mode avançat d'edició de codi wiki",
 	"tag-discussiontools-visual": "visual",
 	"tag-discussiontools-visual-description": "Les Eines de Discussió es trobaven en el mode d'editor visual"
 }
