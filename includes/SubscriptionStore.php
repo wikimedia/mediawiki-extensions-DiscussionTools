@@ -48,7 +48,7 @@ class SubscriptionStore {
 	}
 
 	/**
-	 * @param int $dbIndex DB_MASTER or DB_REPLICA
+	 * @param int $dbIndex DB_PRIMARY or DB_REPLICA
 	 *
 	 * @return IDatabase
 	 */
@@ -118,7 +118,7 @@ class SubscriptionStore {
 		}
 
 		$options += [ 'forWrite' => false ];
-		$db = $this->getConnectionRef( $options['forWrite'] ? DB_MASTER : DB_REPLICA );
+		$db = $this->getConnectionRef( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
 
 		$rows = $this->fetchSubscriptions(
 			$db,
@@ -152,7 +152,7 @@ class SubscriptionStore {
 		array $options = []
 	) : array {
 		$options += [ 'forWrite' => false ];
-		$db = $this->getConnectionRef( $options['forWrite'] ? DB_MASTER : DB_REPLICA );
+		$db = $this->getConnectionRef( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
 
 		$rows = $this->fetchSubscriptions(
 			$db,
@@ -214,7 +214,7 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() ) {
 			return false;
 		}
-		$dbw = $this->getConnectionRef( DB_MASTER );
+		$dbw = $this->getConnectionRef( DB_PRIMARY );
 		$dbw->upsert(
 			'discussiontools_subscription',
 			[
@@ -251,7 +251,7 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() ) {
 			return false;
 		}
-		$dbw = $this->getConnectionRef( DB_MASTER );
+		$dbw = $this->getConnectionRef( DB_PRIMARY );
 		$dbw->update(
 			'discussiontools_subscription',
 			[ 'sub_state' => 0 ],
@@ -278,7 +278,7 @@ class SubscriptionStore {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
-		$dbw = $this->getConnectionRef( DB_MASTER );
+		$dbw = $this->getConnectionRef( DB_PRIMARY );
 
 		$conditions = [
 			'sub_item' => $itemName,
