@@ -5,6 +5,7 @@
 		]
 	},
 	"discussiontools-newtopic-missing-title": "Graag een titel toevoegen voor je discussieonderwerp. Als je klikt op \"{{int:discussiontools-replywidget-newtopic}}\", dan zal het onderwerp geen titel hebben.",
+	"discussiontools-postedit-confirmation-topicadded": "Je onderwerp werd toegevoegd.",
 	"discussiontools-replywidget-abandon": "Weet je zeker dat je de reactie die je aan het schrijven bent, weg wil doen?",
 	"discussiontools-replywidget-abandontopic": "Weet je zeker dat je het onderwerp dat je aan het schrijven bent, weg wil doen?"
 }
