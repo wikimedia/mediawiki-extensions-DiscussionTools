@@ -43,6 +43,7 @@
 	"discussiontools-preference-newtopictool-help": "入力用のインラインフォームが表示され、新しい話題を追加できます。この機能の詳細は、[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary MediaWikiの解説ページ]をご覧ください。",
 	"discussiontools-preference-replytool": "返信ツールを有効にする",
 	"discussiontools-preference-replytool-help": "返信ツールを有効にすることで、ノートページのコメントに返信ボタンが表示され、コメントへの返信を簡単に行えます。機能の詳細は[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary MediaWikiでの解説ページ]を参照してください。",
+	"discussiontools-preference-sourcemodetoolbar": "返信ツールおよびインラインの話題追加のソース編集モードで試験中の機能を有効にする",
 	"discussiontools-replylink": "返信",
 	"discussiontools-replywidget-abandon": "編集中のコメントを本当に破棄しますか？",
 	"discussiontools-replywidget-abandon-discard": "コメントを破棄",
