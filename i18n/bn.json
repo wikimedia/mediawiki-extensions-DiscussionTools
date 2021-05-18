@@ -36,6 +36,7 @@
 	"discussiontools-preference-newtopictool-help": "এটি আপনাকে নতুন আলোচনা যোগ করার জন্য একটি সরল ফরম দেখাবে। আপনি [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary বৈশিষ্ট্যের সারসংক্ষেপ] পড়ার মাধ্যমে এই বৈশিষ্ট্য সম্পর্কে আরো জানতে পারেন।",
 	"discussiontools-preference-replytool": "দ্রুত উত্তর দেওয়া সক্ষম করুন",
 	"discussiontools-preference-replytool-help": "এটি আপনাকে এক ক্লিকে আলাপ পাতার মন্তব্যে উত্তর দেওয়ার জন্য একটি লিঙ্ক দেখাবে। আপনি [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary বৈশিষ্ট্যের সারসংক্ষেপ] পড়ার মাধ্যমে এই বৈশিষ্ট্য সম্পর্কে আরো জানতে পারেন।",
+	"discussiontools-preference-sourcemodetoolbar": "আলোচনা ও উত্তরদান সরঞ্জামের উৎস মোডে পরীক্ষামূলক সরঞ্জামগুলি সক্রিয় করুন",
 	"discussiontools-replylink": "উত্তর দিন",
 	"discussiontools-replywidget-abandon": "আপনি কি নিশ্চিত, আপনি যে মন্তব্যটি লিখছেন তা বাতিল করতে চান?",
 	"discussiontools-replywidget-abandon-discard": "মন্তব্য বাতিল করুন",
