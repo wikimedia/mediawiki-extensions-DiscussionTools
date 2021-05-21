@@ -38,6 +38,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			return;
 		}
 
+		$this->getErrorFormatter()->setContextTitle( $title );
+
 		switch ( $params['paction'] ) {
 			case 'addtopic':
 				$this->requireAtLeastOneParameter( $params, 'sectiontitle' );
