@@ -50,7 +50,6 @@ CommentTargetWidget.prototype.createTarget = function () {
 		// A lot of places expect ve.init.target to exist...
 		register: true,
 		toolbarGroups: this.toolbarGroups,
-		inTargetWidget: true,
 		modes: this.modes,
 		defaultMode: this.defaultMode
 	} );
