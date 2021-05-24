@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"MarcoAurelio",
 			"Rodney Araujo",
 			"Suecarmol"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "No se encontró el ID del comentario: $1",
+	"apierror-discussiontools-commentid-notfound": "No se encontró el comentario con ID '$1'.",
 	"apierror-discussiontools-commentname-notfound": "El comentario con el nombre '$1' no ha sido encontrado.",
 	"apihelp-discussiontools-param-oldid": "El número de revisión a usar (por defecto la revisión más reciente).",
 	"apihelp-discussiontools-summary": "Devuelve los metadatos requeridos para inicializar las herramientas de discusión.",

@@ -30,6 +30,8 @@
 	"discussiontools-error-noswitchtove-title": "Se deshabilitó el modo visual",
 	"discussiontools-newtopic-missing-title": "Por favor, proporciona un título para tu tema de discusión. Si tu haces clic en «{{int:discussiontools-replywidget-newtopic}}», tu tema será añadido sin un título.",
 	"discussiontools-newtopic-placeholder-title": "Título",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|respondió}} en «<strong>$4</strong>».",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Una respuesta nueva|$1 respuestas nuevas|100=99+ respuestas nuevas}} en «<strong>$3</strong>».",
 	"discussiontools-notification-subscribed-new-comment-view": "Ver comentario",
 	"discussiontools-postedit-confirmation-published": "Se publicó el comentario.",
 	"discussiontools-postedit-confirmation-topicadded": "Se ha añadido tu tema.",
