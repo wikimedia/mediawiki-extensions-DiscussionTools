@@ -364,6 +364,7 @@
 		"EchoGetEventsForRevision": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onEchoGetEventsForRevision",
 		"LoadExtensionSchemaUpdates": "installer",
 		"ArticleParserOptions": "parser",
+		"ParserAfterParse": "parser",
 		"ParserAfterTidy": "parser",
 		"ParserOptionsRegister": "parser",
 		"BeforePageDisplay": "page",
@@ -439,6 +440,10 @@
 		"DiscussionToolsUseParserCache": {
 			"value": true,
 			"description": "Allow DiscussionTools to use the parser cache."
+		},
+		"DiscussionToolsTalkPageParserCacheExpiry": {
+			"value": 0,
+			"description": "Override $wgParserCacheExpireTime for discussion pages, regardless of DiscussionTools enablement."
 		},
 		"DTSchemaEditAttemptStepSamplingRate": {
 			"value": false,
