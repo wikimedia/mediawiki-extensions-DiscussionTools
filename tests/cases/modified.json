@@ -42,6 +42,20 @@
 		"data": "../data/arwiki-data.json"
 	},
 	{
+		"name": "Accidental dt tags (old parser)",
+		"dom": "cases/dt-tags-oldparser/dt-tags-oldparser.html",
+		"expected": "cases/dt-tags-oldparser/dt-tags-oldparser-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Accidental dt tags (Parsoid)",
+		"dom": "cases/dt-tags-parsoid/dt-tags-parsoid.html",
+		"expected": "cases/dt-tags-parsoid/dt-tags-parsoid-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Must split a list to reply to one of the comments",
 		"dom": "cases/split-list/split-list.html",
 		"expected": "cases/split-list/split-list-modified.html",
