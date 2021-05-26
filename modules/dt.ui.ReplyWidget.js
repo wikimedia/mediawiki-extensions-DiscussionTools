@@ -161,7 +161,9 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 		$( '<p>' ).append(
 			$( '<a>' )
 				.attr( {
-					href: mw.msg( 'discussiontools-replywidget-feedback-link' ),
+					href: this.isNewTopic ?
+						mw.msg( 'discussiontools-replywidget-feedback-link-newtopic' ) :
+						mw.msg( 'discussiontools-replywidget-feedback-link' ),
 					target: '_blank',
 					rel: 'noopener'
 				} )
