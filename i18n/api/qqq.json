@@ -7,6 +7,8 @@
 	"apierror-discussiontools-commentid-notfound": "{{doc-apierror}}\n\nParameters:\n* $1 - Comment ID",
 	"apierror-discussiontools-commentname-ambiguous": "{{doc-apierror}}\n\nParameters:\n* $1 - Comment name",
 	"apierror-discussiontools-commentname-notfound": "{{doc-apierror}}\n\nParameters:\n* $1 - Comment name",
+	"apierror-discussiontools-subscription-failed-add": "{{doc-apierror}}",
+	"apierror-discussiontools-subscription-failed-remove": "{{doc-apierror}}",
 	"apihelp-discussiontools-param-oldid": "{{doc-apihelp-param|discussiontools|oldid}}",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "{{doc-apihelp-paramvalue|discussiontools|paction|transcludedfrom}}",
 	"apihelp-discussiontools-summary": "{{doc-apihelp-summary|discussiontools}}",
