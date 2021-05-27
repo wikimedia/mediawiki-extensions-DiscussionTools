@@ -89,11 +89,14 @@ ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 	item.id = hash.id;
 
 	var idEscaped = $.escapeSelector( item.id );
+	var startMarker = document.getElementById( item.id );
+	var endMarker = document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' );
+
 	item.range = {
-		startContainer: document.getElementById( item.id ),
-		startOffset: 0,
-		endContainer: document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' ),
-		endOffset: 0
+		startContainer: startMarker.parentNode,
+		startOffset: utils.childIndexOf( startMarker ) + 1,
+		endContainer: endMarker.parentNode,
+		endOffset: utils.childIndexOf( endMarker )
 	};
 
 	// Setup replies/parent pointers
