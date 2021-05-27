@@ -24,6 +24,7 @@
 	"discussiontools-error-noswitchtove-table": "tabellsyntax",
 	"discussiontools-error-noswitchtove-template": "mallsyntax",
 	"discussiontools-error-noswitchtove-title": "Visuellt läge inaktiverades",
+	"discussiontools-newtopic-missing-title": "Ange gärna en rubrik till ditt diskussionsinlägg. Om du klickar på \"{{int:discussiontools-replywidget-newtopic}}\", kommer inlägget läggas till utan rubrik.",
 	"discussiontools-newtopic-placeholder-title": "Titel",
 	"discussiontools-postedit-confirmation-published": "Din kommentar publicerades.",
 	"discussiontools-postedit-confirmation-topicadded": "Ditt ämne lades till.",
