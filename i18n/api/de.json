@@ -5,6 +5,8 @@
 	"apierror-discussiontools-commentid-notfound": "Kommentar mit der ID „$1“ nicht gefunden.",
 	"apierror-discussiontools-commentname-ambiguous": "Mehrere Kommentare mit dem Namen „$1“ gefunden, stattdessen ID verwenden.",
 	"apierror-discussiontools-commentname-notfound": "Kommentar mit dem Namen „$1“ nicht gefunden.",
+	"apierror-discussiontools-subscription-failed-add": "Dieses Thema konnte nicht abonniert werden.",
+	"apierror-discussiontools-subscription-failed-remove": "Dieses Thema konnte nicht abbestellt werden.",
 	"apihelp-discussiontools-param-oldid": "Die zu verwendende Versionsnummer (Standardwert ist die letzte Version).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Gibt die Titel der Seiten zurück, von denen jeder Kommentar auf der angegebenen Seite transkludiert wird.",
 	"apihelp-discussiontools-summary": "Gibt Metadaten zurück, die zur Initialisierung der Diskussionswerkzeuge erforderlich sind.",

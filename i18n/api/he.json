@@ -8,6 +8,8 @@
 	"apierror-discussiontools-commentid-notfound": "תגובה עם המזהה '$1' לא נמצאה.",
 	"apierror-discussiontools-commentname-ambiguous": "נמצאו מספר תגובות עם השם '$1', נא להשתמש במזהה במקום זה.",
 	"apierror-discussiontools-commentname-notfound": "תגובה עם השם '$1' לא נמצאה.",
+	"apierror-discussiontools-subscription-failed-add": "לא היה אפשר להירשם לנושא הזה.",
+	"apierror-discussiontools-subscription-failed-remove": "לא היה אפשר לבטל את הרישום לנושא הזה.",
 	"apihelp-discussiontools-param-oldid": "באיזה מספר גרסה להשתמש (ברירת המחדל היא הגרסה האחרונה).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "להחזיר כותרות של דפים שכל הערה בדף הנתון מוכללת מהם.",
 	"apihelp-discussiontools-summary": "מחזירה מטא־נתונים דרושים כדי לאתחל את כלי השיחה.",

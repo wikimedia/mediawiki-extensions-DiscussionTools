@@ -7,6 +7,8 @@
 	"apierror-discussiontools-commentid-notfound": "Comentariul cu ID-ul „$1” nu a fost găsit.",
 	"apierror-discussiontools-commentname-ambiguous": "Au fost găsite ai multe comentarii cu numele „$1”, utilizați în schimb ID-ul.",
 	"apierror-discussiontools-commentname-notfound": "Comentariul cu numele „$1” nu a fost găsit.",
+	"apierror-discussiontools-subscription-failed-add": "Nu se poate abona la acest subiect.",
+	"apierror-discussiontools-subscription-failed-remove": "Nu se poate dezabona de la acest subiect.",
 	"apihelp-discussiontools-param-oldid": "Numărul versiunii de utilizat (implicit la cea mai recentă versiune).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Întoarce titluri de pagini de la care fiecare comentariu de pe pagina dată este transclus.",
 	"apihelp-discussiontools-summary": "Întoarce metadatele necesare pentru inițializarea uneltelor de discuție.",
