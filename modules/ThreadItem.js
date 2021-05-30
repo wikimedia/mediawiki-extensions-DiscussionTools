@@ -93,10 +93,12 @@ ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 	var endMarker = document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' );
 
 	item.range = {
+		// Start range after startMarker, because it produces funny results from getBoundingClientRect
 		startContainer: startMarker.parentNode,
 		startOffset: utils.childIndexOf( startMarker ) + 1,
-		endContainer: endMarker.parentNode,
-		endOffset: utils.childIndexOf( endMarker )
+		// End range inside endMarker, because modifier crashes if endContainer is a <p>/<dd>/<li> node
+		endContainer: endMarker,
+		endOffset: 0
 	};
 
 	// Setup replies/parent pointers
