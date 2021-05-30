@@ -238,7 +238,7 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 			checkboxes.checkboxFields.forEach( function ( field ) {
 				widget.$checkboxes.append( field.$element );
 			} );
-			widget.advanced.$element.prepend( widget.$checkboxes );
+			widget.editSummaryField.$body.append( widget.$checkboxes );
 
 			// bind logging:
 			for ( var name in checkboxes.checkboxesByName ) {

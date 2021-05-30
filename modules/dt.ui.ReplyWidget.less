@@ -197,8 +197,32 @@
 		}
 	}
 
-	&-editSummaryField.oo-ui-labelElement {
-		margin-top: 0;
+	&-editSummaryField {
+		// We want to display the "Summary" label and the checkboxes on the same line (above the summary
+		// field), but prevent them from overlapping if there's not enough space. The checkboxes are
+		// after the summary field in the DOM for accessibility reasons, but we want to display them
+		// above it, and we can't achieve this with floats.
+		.oo-ui-fieldLayout-body {
+			display: flex;
+			flex-flow: row-reverse wrap;
+			justify-content: space-between;
+		}
+
+		.ext-discussiontools-ui-replyWidget-checkboxes {
+			order: 1;
+		}
+
+		.oo-ui-fieldLayout-header {
+			order: 2;
+			// Stretch to all available space on the line
+			flex-grow: 1;
+		}
+
+		.oo-ui-fieldLayout-field {
+			order: 3;
+			// Force to a separate line
+			width: 100%;
+		}
 	}
 
 	&-editSummary {
@@ -220,9 +244,5 @@
 		.oo-ui-buttonElement-button {
 			min-height: auto;
 		}
-	}
-
-	&-checkboxes {
-		float: right;
 	}
 }
