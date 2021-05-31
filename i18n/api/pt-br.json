@@ -9,6 +9,8 @@
 	"apierror-discussiontools-commentid-notfound": "Comentário com o ID '$1' não encontrado.",
 	"apierror-discussiontools-commentname-ambiguous": "Vários comentários com o nome '$1' encontrados, use ID em seu lugar.",
 	"apierror-discussiontools-commentname-notfound": "Comentário com o nome '$1' não encontrado.",
+	"apierror-discussiontools-subscription-failed-add": "Não foi possível se inscrever neste tópico.",
+	"apierror-discussiontools-subscription-failed-remove": "Não foi possível cancelar a inscrição neste tópico.",
 	"apihelp-discussiontools-param-oldid": "O número de revisão para utilizar (a última revisão por padrão).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Retorne os títulos das páginas a partir das quais cada comentário na página fornecida é transcluído.",
 	"apihelp-discussiontools-summary": "Retorna os metadados necessários para inicializar as ferramentas de discussão.",

@@ -5,6 +5,8 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "شناسه نظر یافت نشد: $1",
+	"apierror-discussiontools-subscription-failed-add": "ناتوان در اشتراک در این موضوع",
+	"apierror-discussiontools-subscription-failed-remove": "ناتوان در توقف اشتراک در این موضوع",
 	"apihelp-discussiontools-param-oldid": "شماره ویرایش برای استفاده (آخرین ویرایش به‌عنوان پیش‌فرض)",
 	"apihelp-discussiontoolsedit-param-commentid": "شناسه نظر.",
 	"apihelp-discussiontoolsedit-param-wikitext": "ویکی‌متن",

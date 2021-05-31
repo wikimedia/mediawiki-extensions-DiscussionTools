@@ -7,6 +7,8 @@
 	"apierror-discussiontools-commentid-notfound": "Не пронајдов коментар со назнаката „$1“.",
 	"apierror-discussiontools-commentname-ambiguous": "Пронајдов повеќе коментари со називот „$1“. Употребете назнака.",
 	"apierror-discussiontools-commentname-notfound": "Не пронајдов коментар со назив „$1“.",
+	"apierror-discussiontools-subscription-failed-add": "Не можев да ве претплатам на темава.",
+	"apierror-discussiontools-subscription-failed-remove": "Не можев да ве отпишам од темава.",
 	"apihelp-discussiontools-param-oldid": "Број на преработката што ќе се користи (по основно: најновата преработка).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Дај ги насловите на страниците од кои превметнат секој коментар на дадената страница.",
 	"apihelp-discussiontools-summary": "Дава метаподатоци потребни за покревање на разговорните алатки.",

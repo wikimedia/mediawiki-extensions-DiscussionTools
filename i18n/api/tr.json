@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Joseph",
+			"Mim.saitkilic",
 			"MuratTheTurkish",
 			"ToprakM"
 		]
@@ -9,6 +10,8 @@
 	"apierror-discussiontools-commentid-notfound": "'$1' kimliğine sahip yorum bulunamadı.",
 	"apierror-discussiontools-commentname-ambiguous": "'$1' isimli birçok yorum bulundu, bunun yerine kimlik kullanın.",
 	"apierror-discussiontools-commentname-notfound": "'$1' isimli yorum bulunamadı.",
+	"apierror-discussiontools-subscription-failed-add": "Bu konuya abone olunamadı.",
+	"apierror-discussiontools-subscription-failed-remove": "Bu konunun aboneliğinden çıkılamadı.",
 	"apihelp-discussiontools-param-oldid": "Kullanılacak revizyon numarası (en son revizyon varsayılanları).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Bir sayfadaki her yorumun dahil edildiği sayfaların başlıklarını getirir.",
 	"apihelp-discussiontools-summary": "Tartışma araçlarını başlatmak için gereken meta verileri döndürür.",

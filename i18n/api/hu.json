@@ -9,6 +9,7 @@
 	"apihelp-discussiontools-param-oldid": "A használandó lapváltozat azonosítója (alapértelmezés szerint a legújabb lapváltozat).",
 	"apihelp-discussiontools-summary": "A megbeszéléseszközök inicializálásához szükséges metaadatok lekérése.",
 	"apihelp-discussiontoolsedit-param-commentid": "A hozzászólás azonosítója.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikiszöveg",
+	"apihelp-discussiontoolsedit-param-html": "Az elküldendő tartalom HTML-ként. Nem használható a <var>wikitext</var> paraméterrel együtt.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Az elküldendő tartalom wikiszövegként. Nem használható a <var>html</var> paraméterrel együtt.",
 	"apihelp-discussiontoolsedit-summary": "Üzenet elküldése egy vitalapra."
 }
