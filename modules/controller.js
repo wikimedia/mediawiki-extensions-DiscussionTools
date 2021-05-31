@@ -7,7 +7,6 @@
 var
 	$pageContainer,
 	newTopicController,
-	$overlay,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
@@ -36,20 +35,23 @@ function highlight( comment ) {
 	var padding = 5,
 		$highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
 
-	if ( !$overlay ) {
-		// $overlay must be position:relative/absolute
-		$overlay = $( '<div>' ).addClass( 'oo-ui-defaultOverlay' ).appendTo( 'body' );
-	}
+	// We insert the highlight in the DOM near the comment, so that it remains positioned correctly
+	// when it shifts (e.g. collapsing the table of contents), and disappears when it is hidden (e.g.
+	// opening visual editor).
+	var range = comment.getNativeRange();
+	// Support: Firefox, IE 11
+	// The highlight node must be inserted after the start marker node (data-mw-comment-start), not
+	// before, otherwise Node#getBoundingClientRect() returns wrong results.
+	range.insertNode( $highlight[ 0 ] );
 
-	var overlayRect = $overlay[ 0 ].getBoundingClientRect();
-	var rect = RangeFix.getBoundingClientRect( comment.getNativeRange() );
+	var baseRect = $highlight[ 0 ].getBoundingClientRect();
+	var rect = RangeFix.getBoundingClientRect( range );
 	$highlight.css( {
-		top: rect.top - overlayRect.top - padding,
-		left: rect.left - overlayRect.left - padding,
+		'margin-top': rect.top - baseRect.top - padding,
+		'margin-left': rect.left - baseRect.left - padding,
 		width: rect.width + ( padding * 2 ),
 		height: rect.height + ( padding * 2 )
 	} );
-	$overlay.prepend( $highlight );
 
 	return $highlight;
 }
@@ -287,7 +289,6 @@ var $highlightedTarget = null;
 function highlightTargetComment( parser ) {
 	if ( $highlightedTarget ) {
 		$highlightedTarget.remove();
-		$overlay.removeClass( 'ext-discussiontools-init-highlight-overlay' );
 		$highlightedTarget = null;
 	}
 	// eslint-disable-next-line no-jquery/no-global-selector
@@ -297,7 +298,6 @@ function highlightTargetComment( parser ) {
 		$highlightedTarget = highlight( comment );
 		$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
 		$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
-		$overlay.addClass( 'ext-discussiontools-init-highlight-overlay' );
 	}
 }
 
@@ -460,15 +460,13 @@ function init( $container, state ) {
 		// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
 		// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
 		OO.ui.Element.static.scrollIntoView( $highlight[ 0 ], { padding: { top: 10, bottom: 10 } } ).then( function () {
-			// Toggle the 'ext-discussiontools-init-highlight-overlay' class only when needed, because using mix-blend-mode
-			// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
-			$overlay.addClass( 'ext-discussiontools-init-highlight-overlay' );
 			$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
 			setTimeout( function () {
 				$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
 				setTimeout( function () {
+					// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
+					// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
 					$highlight.remove();
-					$overlay.removeClass( 'ext-discussiontools-init-highlight-overlay' );
 				}, 250 );
 			}, 3000 );
 		} );
