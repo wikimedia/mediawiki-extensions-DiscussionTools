@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use RequestContext;
+use MediaWiki\MediaWikiServices;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -28,15 +28,17 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
-		$actual = $commentFormatter->addDiscussionToolsInternal( $dom, RequestContext::getMain()->getLanguage() );
+		$actual = $commentFormatter->addDiscussionToolsInternal( $dom );
 
 		$mockSubStore = new MockSubscriptionStore();
+		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
+
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
-			$actual, RequestContext::getMain()->getLanguage(), $mockSubStore, self::getTestUser()->getUser()
+			$actual, $qqxLang, $mockSubStore, self::getTestUser()->getUser()
 		);
 
 		$actual = MockCommentFormatter::postprocessReplyTool(
-			$actual, RequestContext::getMain()->getLanguage()
+			$actual, $qqxLang
 		);
 
 		// Optionally write updated content to the "reply HTML" files
