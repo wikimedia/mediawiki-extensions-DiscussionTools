@@ -14,6 +14,7 @@ use DOMElement;
 use EchoEvent;
 use Error;
 use FauxRequest;
+use IDBAccessObject;
 use Iterator;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
@@ -67,7 +68,7 @@ class EventDispatcher {
 
 		$revisionStore = $services->getRevisionStore();
 		$userFactory = $services->getUserFactory();
-		$oldRevRecord = $revisionStore->getPreviousRevision( $newRevRecord );
+		$oldRevRecord = $revisionStore->getPreviousRevision( $newRevRecord, IDBAccessObject::READ_LATEST );
 
 		if ( $oldRevRecord === null ) {
 			// TODO: Handle page creation (oldRevRecord = null?)
