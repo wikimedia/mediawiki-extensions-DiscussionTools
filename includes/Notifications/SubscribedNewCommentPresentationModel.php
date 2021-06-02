@@ -37,7 +37,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getIconType() {
-		return $this->isUserTalkPage() ? 'edit-user-talk' : 'chat';
+		return 'chat';
 	}
 
 	/**
@@ -116,17 +116,6 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	protected function getContentSnippet() {
 		$content = $this->event->getExtraParam( 'content' );
 		return $this->language->truncateForVisual( $content, EchoDiscussionParser::DEFAULT_SNIPPET_LENGTH );
-	}
-
-	/**
-	 * @return bool
-	 */
-	protected function isUserTalkPage() {
-		// Would like to do $this->event->getTitle()->equals( $this->user->getTalkPage() )
-		// but $this->user is private in the parent class
-		$username = $this->getViewingUserForGender();
-		return $this->event->getTitle()->getNamespace() === NS_USER_TALK &&
-			$this->event->getTitle()->getText() === $username;
 	}
 
 	/**

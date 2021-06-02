@@ -46,11 +46,14 @@ class EchoHooks {
 			'user-locators' => [
 				'MediaWiki\\Extension\\DiscussionTools\\Notifications\\EventDispatcher::locateSubscribedUsers'
 			],
+			// Exclude mentioned users and talk page owner from our notification, to avoid
+			// duplicate notifications for a single comment
 			'user-filters' => [
 				[
 					"EchoUserLocator::locateFromEventExtra",
 					[ "mentioned-users" ]
-				]
+				],
+				"EchoUserLocator::locateTalkPageOwner"
 			],
 			'presentation-model' =>
 				'MediaWiki\\Extension\\DiscussionTools\\Notifications\\SubscribedNewCommentPresentationModel',
