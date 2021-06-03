@@ -15,6 +15,7 @@ use EchoEventPresentationModel;
 use EchoPresentationModelSection;
 use Language;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 use Message;
 use RawMessage;
 use User;
@@ -52,12 +53,9 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getPrimaryLink() {
-		$title = $this->event->getTitle();
-		$id = $this->event->getExtraParam( 'comment-id' );
 		// TODO: Handle bundles
 		return [
-			// Need FullURL so the section is included
-			'url' => $title->createFragmentTarget( $id )->getFullURL(),
+			'url' => $this->getCommentLink(),
 			'label' => $this->msg( 'discussiontools-notification-subscribed-new-comment-view' )->text()
 		];
 	}
@@ -112,9 +110,28 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	}
 
 	/**
-	 * @return string
+	 * Get a link to the individual comment, if available.
+	 *
+	 * @return string Full URL linking to the comment
+	 */
+	protected function getCommentLink() {
+		$title = $this->event->getTitle();
+		if ( !$this->userCan( RevisionRecord::DELETED_TEXT ) ) {
+			return $title->getFullURL();
+		}
+		$id = $this->event->getExtraParam( 'comment-id' );
+		return $title->createFragmentTarget( $id )->getFullURL();
+	}
+
+	/**
+	 * Get a snippet of the individual comment, if available.
+	 *
+	 * @return string The snippet, as plain text (may be empty)
 	 */
 	protected function getContentSnippet() {
+		if ( !$this->userCan( RevisionRecord::DELETED_TEXT ) ) {
+			return '';
+		}
 		$content = $this->event->getExtraParam( 'content' );
 		return $this->language->truncateForVisual( $content, EchoDiscussionParser::DEFAULT_SNIPPET_LENGTH );
 	}
