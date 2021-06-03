@@ -15,6 +15,7 @@ use EchoEventPresentationModel;
 use EchoPresentationModelSection;
 use Language;
 use MediaWiki\MediaWikiServices;
+use Message;
 use RawMessage;
 use User;
 
@@ -106,7 +107,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	 */
 	public function getBodyMessage() {
 		if ( !$this->isBundled() ) {
-			return new RawMessage( $this->getContentSnippet() );
+			return new RawMessage( '$1', [ Message::plaintextParam( $this->getContentSnippet() ) ] );
 		}
 	}
 
