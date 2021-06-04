@@ -6,7 +6,8 @@
 			"Hidayatsrf",
 			"Matma Rex",
 			"Rachmat04",
-			"Sonic Speedy"
+			"Sonic Speedy",
+			"WillsonEP09"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Balas",
@@ -64,10 +65,16 @@
 	"discussiontools-replywidget-summary": "Ringkasan",
 	"discussiontools-replywidget-terms-click": "Dengan mengklik \"$1\", Anda setuju dengan syarat penggunaan wiki ini.",
 	"discussiontools-replywidget-transcluded": "Komentar Anda akan disimpan di [[$1]].",
+	"discussiontools-topicsubscription-button-subscribe": "langganan",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Berhenti berlangganan untuk berhenti menerima notifikasi",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Berhenti berlangganan",
+	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Berhenti berlangganan dari topik ini?",
+	"discussiontools-topicsubscription-error-not-found-body": "Langganan yang ditentukan dalam URL tidak ditemukan.",
+	"discussiontools-topicsubscription-error-not-found-title": "Langganan tidak ditemukan",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Anda akan menerima pemberitahuan tentang komentar baru di topik ini.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Telah berlangganan",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Anda telah berlangganan!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Anda tidak akan menerima lagi pemberitahuan tentang komentar baru di topik ini.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Telah berhenti berlangganan",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Anda telah berhenti berlangganan",
 	"echo-category-title-dt-subscription": "Langganan halaman pembicaraan",
 	"echo-pref-tooltip-dt-subscription": "Kabarkan saya mengenai aktivitas langganan halaman pengguna saya.",
 	"tag-discussiontools-description": "Suntingan dibuat menggunakan DiscussionTools",
