@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"MITO",
+			"Pyscowicz"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "Kommenttia tunnisteella '$1' ei löydy.",
+	"apierror-discussiontools-subscription-failed-add": "Tätä aihetta ei voitu tilata.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Wikiteksti"
+}

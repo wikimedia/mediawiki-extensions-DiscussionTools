@@ -14,7 +14,7 @@
 	"apihelp-discussiontools-param-oldid": "O número de revisão para utilizar (a última revisão por padrão).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Retorne os títulos das páginas a partir das quais cada comentário na página fornecida é transcluído.",
 	"apihelp-discussiontools-summary": "Retorna os metadados necessários para inicializar as ferramentas de discussão.",
-	"apihelp-discussiontoolsedit-param-commentid": "ID do comentário para responder. Só usado quando <var>paction</var> é <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID do comentário a ser respondido. Só usado quando <var>paction</var> é <var>addcomment</var>. Substituições <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Nome do comentário ao qual responder. Só usado quando <var>paction</var> é <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Conteúdo para postar, como HTML. Não pode ser usado junto com <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Só usado quando <var>paction</var> é <var>addtopic</var>.",

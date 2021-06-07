@@ -82,6 +82,7 @@
 	"tag-discussiontools-reply-description": "議論ツールを使ってコメントに返信",
 	"tag-discussiontools-source": "ソース",
 	"tag-discussiontools-source-description": "議論ツールをソースモードで使用",
+	"tag-discussiontools-source-enhanced-description": "議論ツールのツールバーを使った拡張ソースモードでの編集",
 	"tag-discussiontools-visual": "ビジュアル",
 	"tag-discussiontools-visual-description": "議論ツールをビジュアルモードで使用"
 }

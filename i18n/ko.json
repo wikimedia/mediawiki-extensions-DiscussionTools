@@ -64,6 +64,7 @@
 	"discussiontools-replywidget-summary": "요약",
 	"discussiontools-replywidget-terms-click": "\"$1\"을 클릭하면 당신은 이 위키의 이용 약관에 동의한 것이 됩니다.",
 	"discussiontools-replywidget-transcluded": "당신의 의견은 [[$1]]에 저장될 것입니다.",
+	"discussiontools-topicsubscription-button-subscribe": "구독",
 	"discussiontools-topicsubscription-button-unsubscribe": "구독 해지",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "구독 취소",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "이 주제에서 구독을 취소하시겠습니까?",

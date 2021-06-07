@@ -11,6 +11,8 @@
 	"apierror-discussiontools-commentid-notfound": "Komentář s ID „$1“ nebyl nalezen.",
 	"apierror-discussiontools-commentname-ambiguous": "Bylo nalezeno více komentářů s názvem „$1“, namísto toho použijte parametr ID.",
 	"apierror-discussiontools-commentname-notfound": "Komentář s názvem „$1“ nebyl nalezen.",
+	"apierror-discussiontools-subscription-failed-add": "Nelze odebírat toto téma.",
+	"apierror-discussiontools-subscription-failed-remove": "Nelze zrušit odběr tohoto tématu.",
 	"apihelp-discussiontools-param-oldid": "Číslo revize, které má být použito (výchozí je poslední revize stránky).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Vrátí názvy stránek, ze kterých je každý komentář k dané stránce transkludován.",
 	"apihelp-discussiontools-summary": "Vrací metadata potřebná k inicializaci Diskusních nástrojů.",

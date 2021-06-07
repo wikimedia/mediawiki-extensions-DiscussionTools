@@ -4,6 +4,7 @@
 			"Ykhwong"
 		]
 	},
+	"apierror-discussiontools-subscription-failed-add": "이 주제를 구독하지 못했습니다.",
 	"apihelp-discussiontoolsedit-param-wikitext": "위키텍스트",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true는 구독이며, false는 구독 해지임",
 	"apihelp-discussiontoolssubscribe-summary": "주제에 관한 알림을 수신하기 위해 구독(또는 구독 해지)을 합니다."

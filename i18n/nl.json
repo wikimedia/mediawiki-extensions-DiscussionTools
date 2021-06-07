@@ -43,7 +43,7 @@
 	"discussiontools-replywidget-placeholder-reply": "Reactie op {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Voorvertoning",
 	"discussiontools-replywidget-reply": "Reageren",
-	"discussiontools-replywidget-summary": "Samenvatting van inhoud",
+	"discussiontools-replywidget-summary": "Samenvatting",
 	"discussiontools-replywidget-terms-click": "Door op \"$1\" te klikken, gaat u akkoord met de gebruiksvoorwaarden van deze wiki.",
 	"discussiontools-replywidget-transcluded": "Jouw commentaar wordt bewaard op [[$1]].",
 	"tag-discussiontools-description": "Bewerking gemaakt met DiscussionTools",
