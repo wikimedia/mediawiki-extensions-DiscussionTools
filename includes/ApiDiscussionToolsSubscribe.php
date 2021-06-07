@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
-use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\MediaWikiServices;
 use Title;
 use User;
@@ -33,7 +32,7 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 		// This should probably use dependency injection, but the check is only temporary
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-		if ( $dtConfig->get( 'DiscussionTools_' . HookUtils::TOPICSUBSCRIPTION ) === 'unavailable' ) {
+		if ( !$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) ) {
 			$this->dieWithError( [ 'apierror-moduledisabled', $this->getModuleName() ] );
 		}
 
