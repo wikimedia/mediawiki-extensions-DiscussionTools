@@ -29,7 +29,7 @@ class EchoHooks {
 	) {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-		if ( $dtConfig->get( 'DiscussionTools_' . HookUtils::TOPICSUBSCRIPTION ) === 'unavailable' ) {
+		if ( !$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) ) {
 			// Topic subscriptions not available on wiki.
 			return;
 		}
