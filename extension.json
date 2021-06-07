@@ -454,6 +454,10 @@
 			"value": true,
 			"description": "Allow DiscussionTools to use the parser cache."
 		},
+		"DiscussionToolsEnableTopicSubscriptionBackend": {
+			"value": true,
+			"description": "Enable the topic subscription backend. This controls whether the feature can be tried out using the query parameter, and whether the Echo events will be created. Do not enable this unless the database tables exist. Do enable it before making the 'topicsubscription' feature available."
+		},
 		"DiscussionToolsTalkPageParserCacheExpiry": {
 			"value": 0,
 			"description": "Override $wgParserCacheExpireTime for discussion pages, regardless of DiscussionTools enablement."
