@@ -24,7 +24,9 @@ function CommentTargetWidget( replyWidget, config ) {
 			'blockquoteWrap', // T258194
 			// Disable to allow Tab/Shift+Tab to move focus out of the widget (T172694)
 			'indent',
-			'outdent'
+			'outdent',
+			// Disable preformatted
+			'preformatted'
 		]
 	}, config );
 
