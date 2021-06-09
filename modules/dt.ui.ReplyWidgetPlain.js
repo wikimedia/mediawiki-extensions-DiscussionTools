@@ -1,6 +1,7 @@
 /**
  * @external CommentController
  * @external CommentItem
+ * @external CommentDetails
  */
 
 var utils = require( 'ext.discussionTools.init' ).utils;
@@ -13,8 +14,7 @@ var utils = require( 'ext.discussionTools.init' ).utils;
  * @constructor
  * @param {CommentController} commentController
  * @param {CommentItem} comment
- * @param {string} pageName
- * @param {number} oldId
+ * @param {CommentDetails} commentDetails
  * @param {Object} [config]
  */
 function ReplyWidgetPlain() {
