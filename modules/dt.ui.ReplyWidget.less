@@ -8,10 +8,12 @@
 	// 'initial' is not widely supported, but luckily, browsers that don't support it (IE 11) also
 	// don't suffer from that bug. We can't set 'text-align: left' (and rely on flipping), because
 	// that would affect the input field, which is in content language.
+	/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 	text-align: initial;
 }
 
 // @supports does not work when nested
+/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 @supports ( display: flow-root ) {
 	.ext-discussiontools-ui-replyWidget {
 		// Allow the widget to be squished next to floating elements (T278476).

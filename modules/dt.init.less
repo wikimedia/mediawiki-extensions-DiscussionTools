@@ -26,6 +26,7 @@ span[ data-mw-comment-start ] {
 		// Chromium bug (T260072): Element with `user-select: none` at the end of a paragraph causes
 		// triple-click (to select the paragraph) to also select the first character of the next paragraph
 		// https://bugs.chromium.org/p/chromium/issues/detail?id=1116214
+		/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 		display: inline-flex;
 
 		.client-nojs & {
@@ -94,8 +95,10 @@ span[ data-mw-comment-start ] {
 	opacity: 0;
 }
 
+/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 @supports ( mix-blend-mode: darken ) {
 	.ext-discussiontools-init-highlight {
+		/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 		mix-blend-mode: darken;
 		// Support: Safari
 		// Safari doesn't blend this overlay with the text unless GPU rendering is forced.
@@ -119,6 +122,7 @@ span[ data-mw-comment-start ] {
 	background-color: rgba( 255, 198, 60, 0.5 );
 }
 
+/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 @supports ( mix-blend-mode: darken ) {
 	.ext-discussiontools-init-publishedcomment {
 		background-color: #ffe29e;
@@ -130,6 +134,7 @@ span[ data-mw-comment-start ] {
 	background-color: rgba( 216, 235, 255, 0.5 );
 }
 
+/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 @supports ( mix-blend-mode: darken ) {
 	.ext-discussiontools-init-targetcomment {
 		// Same color as the :target selector for references (from Cite).
