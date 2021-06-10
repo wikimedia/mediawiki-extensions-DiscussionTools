@@ -7,6 +7,8 @@
 	"apierror-discussiontools-commentid-notfound": "Commende cu l'ID '$1' non acchiate.",
 	"apierror-discussiontools-commentname-ambiguous": "Commende multiple cu 'u nome '$1' acchiate, ause l'ID.",
 	"apierror-discussiontools-commentname-notfound": "Commende cu 'u nome '$1' non acchiate.",
+	"apierror-discussiontools-subscription-failed-add": "Non ge te puè scrivere a stu argomende.",
+	"apierror-discussiontools-subscription-failed-remove": "Non ge te puè scangellà da stu argomende.",
 	"apihelp-discussiontools-param-oldid": "'U numere de revisione da ausà (predefinite jè 'urtema revisione).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Tuèrne le titole d ele pàggene da 'a quale ogne commende sus a pàgene ha state escluse.",
 	"apihelp-discussiontools-summary": "Tuèrne le metadate cercate pe inizializzà le struminde de le 'ngazzaminde.",
