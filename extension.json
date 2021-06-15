@@ -73,6 +73,7 @@
 				"dt.ui.NewTopicController.less"
 			],
 			"dependencies": [
+				"ext.discussionTools.init.styles",
 				"moment",
 				"rangefix",
 				"oojs-ui-windows",
