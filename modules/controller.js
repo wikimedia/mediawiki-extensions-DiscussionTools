@@ -527,58 +527,76 @@ function init( $container, state ) {
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
-	var $highlight;
-	if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
-		// Highlight the last comment on the page
-		var lastComment = threadItems[ threadItems.length - 1 ];
-		$highlight = highlight( lastComment );
+	var promise = OO.ui.isMobile && mw.loader.getState( 'mobile.init' ) ?
+		mw.loader.using( 'mobile.init' ) :
+		$.Deferred().resolve().promise();
 
-		// If it's the only comment under its heading, highlight the heading too.
-		// (It might not be if the new discussion topic was posted without a title: T272666.)
-		if (
-			lastComment.parent &&
-			lastComment.parent.type === 'heading' &&
-			lastComment.parent.replies.length === 1
-		) {
-			$highlight = $highlight.add( highlight( lastComment.parent ) );
+	promise.then( function () {
+		var $highlight;
+		if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
+			// Highlight the last comment on the page
+			var lastComment = threadItems[ threadItems.length - 1 ];
+			$highlight = highlight( lastComment );
+
+			// If it's the only comment under its heading, highlight the heading too.
+			// (It might not be if the new discussion topic was posted without a title: T272666.)
+			if (
+				lastComment.parent &&
+				lastComment.parent.type === 'heading' &&
+				lastComment.parent.replies.length === 1
+			) {
+				$highlight = $highlight.add( highlight( lastComment.parent ) );
+			}
+
+			mw.hook( 'postEdit' ).fire( {
+				message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
+			} );
+
+		} else if ( state.repliedTo ) {
+			// Find the comment we replied to, then highlight the last reply
+			var repliedToComment = threadItemsById[ state.repliedTo ];
+			$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
+
+			if ( OO.ui.isMobile() ) {
+				mw.notify( mw.msg( 'discussiontools-postedit-confirmation-published', mw.user ) );
+			} else {
+				// postEdit is currently desktop only
+				mw.hook( 'postEdit' ).fire( {
+					message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
+				} );
+			}
 		}
 
-		mw.hook( 'postEdit' ).fire( {
-			message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
-		} );
+		if ( $highlight ) {
+			$highlight.addClass( 'ext-discussiontools-init-publishedcomment' );
 
-	} else if ( state.repliedTo ) {
-		// Find the comment we replied to, then highlight the last reply
-		var repliedToComment = threadItemsById[ state.repliedTo ];
-		$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
-
-		if ( OO.ui.isMobile() ) {
-			mw.notify( mw.msg( 'discussiontools-postedit-confirmation-published', mw.user ) );
-		} else {
-			// postEdit is currently desktop only
-			mw.hook( 'postEdit' ).fire( {
-				message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
+			// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
+			// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
+			OO.ui.Element.static.scrollIntoView(
+				$highlight[ 0 ],
+				{
+					padding: {
+						top: 10,
+						// Add padding on mobile to avoid overlapping the notification
+						bottom: 10 + ( OO.ui.isMobile() ? 75 : 0 )
+					},
+					// Specify scrollContainer for compatibility with MobileFrontend.
+					// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
+					scrollContainer: OO.ui.Element.static.getRootScrollableElement( $highlight[ 0 ] )
+				}
+			).then( function () {
+				$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
+				setTimeout( function () {
+					$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
+					setTimeout( function () {
+						// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
+						// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
+						$highlight.remove();
+					}, 250 );
+				}, 3000 );
 			} );
 		}
-	}
-
-	if ( $highlight ) {
-		$highlight.addClass( 'ext-discussiontools-init-publishedcomment' );
-
-		// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
-		// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
-		OO.ui.Element.static.scrollIntoView( $highlight[ 0 ], { padding: { top: 10, bottom: 10 } } ).then( function () {
-			$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
-			setTimeout( function () {
-				$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
-				setTimeout( function () {
-					// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
-					// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
-					$highlight.remove();
-				}, 250 );
-			}, 3000 );
-		} );
-	}
+	} );
 
 	// Preload page metadata.
 	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
@@ -623,6 +641,13 @@ function update( data, comment, pageName, replyWidget ) {
 	linksController.teardown();
 	linksController = null;
 	// TODO: Tell controller to teardown all other open widgets
+
+	if ( OO.ui.isMobile() ) {
+		// MobileFrontend does not use the 'wikipage.content' hook, and its interface will not
+		// re-initialize properly (e.g. page sections won't be collapsible). Reload the whole page.
+		window.location = mw.util.getUrl( pageName, { dtrepliedto: comment.id } );
+		return;
+	}
 
 	// Update page state
 	if ( pageName === mw.config.get( 'wgRelevantPageName' ) ) {
@@ -674,7 +699,7 @@ function update( data, comment, pageName, replyWidget ) {
 		} ).catch( function () {
 			// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
 			// explain this problem. Redirect to the page where the user can at least see their reply…
-			window.location = mw.util.getUrl( pageName );
+			window.location = mw.util.getUrl( pageName, { dtrepliedto: comment.id } );
 		} );
 	}
 
