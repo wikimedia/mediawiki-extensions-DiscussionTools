@@ -85,6 +85,12 @@ sequenceRegistry.register(
 );
 ve.ui.commandHelpRegistry.unregister( 'heading2' );
 
+// horizontal rule
+sequenceRegistry.register(
+	new ve.ui.Sequence( 'horizontalRule', 'mwWikitextWarning', [ { type: 'paragraph' }, '-', '-', '-', '-' ] )
+);
+ve.ui.commandHelpRegistry.unregister( 'horizontalRule' );
+
 module.exports = {
 	commandRegistry: commandRegistry,
 	sequenceRegistry: sequenceRegistry,
