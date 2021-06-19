@@ -63,20 +63,27 @@ sequenceRegistry.register(
 sequenceRegistry.register(
 	new ve.ui.Sequence( 'wikitextTable', 'mwWikitextWarning', '{|' )
 );
+ve.ui.commandHelpRegistry.unregister( 'table' );
+
 // transclusionFromSequence
 sequenceRegistry.register(
 	new ve.ui.Sequence( 'wikitextTemplate', 'mwWikitextWarning', '{{' )
 );
+ve.ui.commandHelpRegistry.unregister( 'template' );
+
 // blockquoteWrap
 sequenceRegistry.register(
 	new ve.ui.Sequence( 'wikitextDescription', 'mwWikitextWarning', [ { type: 'paragraph' }, ':' ] )
 );
+ve.ui.commandHelpRegistry.unregister( 'blockquote' );
+
 // heading1-6
 // This sequence doesn't usually have a command as we don't know what
 // heading level is required, but for warnings this doesn't matter.
 sequenceRegistry.register(
 	new ve.ui.Sequence( 'wikitextHeading', 'mwWikitextWarning', [ { type: 'paragraph' }, '=', '=' ] )
 );
+ve.ui.commandHelpRegistry.unregister( 'heading2' );
 
 module.exports = {
 	commandRegistry: commandRegistry,
