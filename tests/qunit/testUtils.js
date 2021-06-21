@@ -21,9 +21,18 @@ module.exports.newEnvironment = function () {
 	);
 
 	return QUnit.newMwEnvironment( {
+		beforeEach: function () {
+			// Disable the legacy htmlPrefilter from jquery.migrate.js, which is causing noisy warnings
+			// when running tests because we use HTML templates with wacky content in the test module.
+			$.htmlPrefilter = function ( html ) {
+				return html;
+			};
+		},
 		afterEach: function () {
 			module.exports.overrideParserData( originalParserData );
 			// mw.config is restored by QUnit.newMwEnvironment already
+
+			$.UNSAFE_restoreLegacyHtmlPrefilter();
 		}
 	} );
 };
