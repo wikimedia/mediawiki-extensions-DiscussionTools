@@ -48,8 +48,6 @@ class PageHooks implements
 		if ( HookUtils::isAvailableForTitle( $output->getTitle() ) ) {
 			$output->addModuleStyles( [
 				'ext.discussionTools.init.styles',
-				// Topic subscription star
-				'oojs-ui.styles.icons-moderation',
 			] );
 		}
 		// Load modules if any DT feature is enabled for this user
