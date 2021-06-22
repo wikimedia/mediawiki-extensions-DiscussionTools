@@ -212,7 +212,7 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 			returnto: mw.config.get( 'wgPageName' )
 		};
 		this.anonWarning = new OO.ui.MessageWidget( {
-			classes: [ 'ext-discussiontools-ui-replyWidget-anonWarning plainlinks' ],
+			classes: [ 'ext-discussiontools-ui-replyWidget-anonWarning' ],
 			type: 'warning',
 			label: mw.message( 'discussiontools-replywidget-anon-warning' )
 				.params( [
@@ -222,6 +222,7 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 				.parseDom()
 		} );
 		this.anonWarning.$element.append( this.$actions );
+		this.anonWarning.$label.addClass( 'plainlinks' );
 		this.$element.append( this.anonWarning.$element, this.$footer );
 		this.$actionsWrapper.detach();
 	}
