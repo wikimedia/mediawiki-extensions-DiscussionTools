@@ -6,6 +6,10 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "A(z) „$1” azonosítójú hozzászólás nem található.",
+	"apierror-discussiontools-commentname-ambiguous": "Több „$1” nevű hozzászólás található, használj azonosítót helyette.",
+	"apierror-discussiontools-commentname-notfound": "Nem található „$1” nevű hozzászólás.",
+	"apierror-discussiontools-subscription-failed-add": "Nem sikerült feliratkozni erre a témára.",
+	"apierror-discussiontools-subscription-failed-remove": "Nem sikerült leiratkozni erről a témáról.",
 	"apihelp-discussiontools-param-oldid": "A használandó lapváltozat azonosítója (alapértelmezés szerint a legújabb lapváltozat).",
 	"apihelp-discussiontools-summary": "A megbeszéléseszközök inicializálásához szükséges metaadatok lekérése.",
 	"apihelp-discussiontoolsedit-param-commentid": "A hozzászólás azonosítója.",
