@@ -23,8 +23,6 @@ class CommentFormatter {
 	];
 
 	protected const MARKER_COMMENT = '<!-- DiscussionTools addDiscussionTools called -->';
-	// Compatibility with old cached content
-	protected const REPLY_LINKS_COMMENT = '<!-- DiscussionTools addReplyLinks called -->';
 
 	/**
 	 * Get a comment parser object for a DOM element
@@ -50,10 +48,6 @@ class CommentFormatter {
 		// This is required because we try again to add tools to cached content
 		// to support query string or cookie enabling
 		if ( strpos( $text, static::MARKER_COMMENT ) !== false ) {
-			return;
-		}
-		// Compatibility with old cached content
-		if ( strpos( $text, static::REPLY_LINKS_COMMENT ) !== false ) {
 			return;
 		}
 
