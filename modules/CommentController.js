@@ -8,7 +8,6 @@ var
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
 	logger = require( './logger.js' ),
-	storage = mw.storage.session,
 	scrollPadding = { top: 10, bottom: 10 },
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
@@ -26,7 +25,7 @@ if ( defaultVisual || enable2017Wikitext ) {
 	mw.loader.using( plainModules );
 }
 
-function CommentController( $pageContainer, $replyLink, comment, parser ) {
+function CommentController( $pageContainer, comment, parser ) {
 	// Mixin constructors
 	OO.EventEmitter.call( this );
 
@@ -35,16 +34,6 @@ function CommentController( $pageContainer, $replyLink, comment, parser ) {
 	this.parser = parser;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
-	this.onReplyLinkClickHandler = this.onReplyLinkClick.bind( this );
-
-	// Reply
-	this.$replyLink = $replyLink.on( 'click keypress', this.onReplyLinkClickHandler );
-	this.$replyLinkButtons = $replyLink.closest( '.ext-discussiontools-init-replylink-buttons' );
-
-	if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
-		var mode = storage.get( 'reply/' + comment.id + '/mode' );
-		this.setup( mode, true );
-	}
 }
 
 OO.initClass( CommentController );
@@ -110,21 +99,6 @@ CommentController.static.initType = 'page';
 
 /* Methods */
 
-CommentController.prototype.onReplyLinkClick = function ( e ) {
-	if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
-		// Only handle keypresses on the "Enter" or "Space" keys
-		return;
-	}
-	if ( e.type === 'click' && ( e.which !== OO.ui.MouseButtons.LEFT || e.shiftKey || e.altKey || e.ctrlKey || e.metaKey ) ) {
-		// Only handle unmodified left clicks
-		return;
-	}
-
-	e.preventDefault();
-
-	this.emit( 'link-click' );
-};
-
 /**
  * Create and setup the reply widget
  *
@@ -140,16 +114,6 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 			( defaultVisual ? 'visual' : 'source' );
 	}
 
-	this.$pageContainer.addClass( 'ext-discussiontools-init-replylink-open' );
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '.ext-discussiontools-init-replylink-reply' ).attr( {
-		tabindex: '-1'
-	} );
-	// Suppress page takeover behavior for VE editing so that our unload
-	// handler can warn of data loss.
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '#ca-edit, #ca-ve-edit, .mw-editsection a, #ca-addsection' ).off( '.ve-target' );
-
 	logger( {
 		action: 'init',
 		type: this.constructor.static.initType || 'page',
@@ -158,8 +122,6 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		editor_interface: mode === 'visual' ? 'visualeditor' :
 			( enable2017Wikitext ? 'wikitext-2017' : 'wikitext' )
 	} );
-
-	this.$replyLinkButtons.addClass( 'ext-discussiontools-init-replylink-active' );
 
 	if ( !this.replyWidgetPromise ) {
 		this.replyWidgetPromise = this.getTranscludedFromSource( comment ).then( function ( commentDetails ) {
@@ -253,26 +215,9 @@ CommentController.prototype.showAndFocus = function () {
 };
 
 CommentController.prototype.teardown = function ( abandoned ) {
-	this.$replyLinkButtons.removeClass( 'ext-discussiontools-init-replylink-active' );
-	this.$pageContainer.removeClass( 'ext-discussiontools-init-replylink-open' );
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '.ext-discussiontools-init-replylink-reply' ).attr( {
-		tabindex: '0'
-	} );
-	// We deliberately mangled edit links earlier so VE can't steal our page;
-	// have it redo setup to fix those.
-	if ( mw.libs.ve && mw.libs.ve.setupEditLinks ) {
-		mw.libs.ve.setupEditLinks();
-		// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$( '#ca-addsection' ).off( '.ve-target' );
-	}
 	modifier.removeAddedListItem( this.newListItem );
 	this.newListItem = null;
-	if ( abandoned ) {
-		this.$replyLink.trigger( 'focus' );
-	}
-	this.emit( 'teardown' );
+	this.emit( 'teardown', abandoned );
 };
 
 /**
