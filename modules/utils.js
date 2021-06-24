@@ -361,6 +361,36 @@ function getFullyCoveredSiblings( item ) {
 }
 
 /**
+ * Get a MediaWiki page title from a URL.
+ *
+ * @private
+ * @param {string} url
+ * @return {mw.Title|null} Page title, or null if this isn't a link to a page
+ */
+function getTitleFromUrl( url ) {
+	try {
+		url = new mw.Uri( url );
+	} catch ( err ) {
+		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+		return null;
+	}
+	if ( url.query.title ) {
+		return mw.Title.newFromText( url.query.title );
+	}
+
+	var articlePathRegexp = new RegExp(
+		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
+			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
+	);
+	var match;
+	if ( ( match = url.path.match( articlePathRegexp ) ) ) {
+		return mw.Title.newFromText( decodeURIComponent( match[ 1 ] ) );
+	}
+
+	return null;
+}
+
+/**
  * Traverse the document in depth-first order, calling the callback whenever entering and leaving
  * a node. The walk starts before the given node and ends when callback returns a truthy value, or
  * after reaching the end of the document.
@@ -439,6 +469,7 @@ module.exports = {
 	getTranscludedFromElement: getTranscludedFromElement,
 	getHeadlineNodeAndOffset: getHeadlineNodeAndOffset,
 	htmlTrim: htmlTrim,
+	getTitleFromUrl: getTitleFromUrl,
 	linearWalk: linearWalk,
 	linearWalkBackwards: linearWalkBackwards
 };
