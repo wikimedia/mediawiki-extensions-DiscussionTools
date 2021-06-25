@@ -15,6 +15,7 @@ use Error;
 use IDBAccessObject;
 use Iterator;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
+use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\MediaWikiServices;
@@ -143,6 +144,20 @@ class EventDispatcher {
 
 		foreach ( $newComments as $newComment ) {
 			$heading = $newComment->getHeading();
+			// Find a level 2 heading, because the interface doesn't allow subscribing to other headings.
+			// (T286736)
+			while ( $heading instanceof HeadingItem && $heading->getHeadingLevel() !== 2 ) {
+				$heading = $heading->getParent();
+			}
+			if ( !( $heading instanceof HeadingItem ) ) {
+				continue;
+			}
+			// Check if the name corresponds to a section that contain no comments (only sub-sections).
+			// The interface doesn't allow subscribing to them either, because they can't be distinguished
+			// from each other. (T285796)
+			if ( $heading->getName() === 'h-' ) {
+				continue;
+			}
 			$events[] = [
 				'type' => 'dt-subscribed-new-comment',
 				'title' => $title,

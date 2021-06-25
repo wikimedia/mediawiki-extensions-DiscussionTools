@@ -101,7 +101,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'Z',
 				'../cases/EventDispatcher/multiple/rev2.json',
 			],
-			// Adding comments in section 0 (before first heading).
+			// Adding comments in section 0 (before first heading). These do not generate notifications,
+			// because the interface doesn't allow subscribing to it.
 			[
 				'cases/EventDispatcher/section0/rev1.txt',
 				'cases/EventDispatcher/section0/rev2.txt',
@@ -122,7 +123,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'../cases/EventDispatcher/emptysection/rev2.json',
 			],
 			// Adding comments in sub-sections, where the parent section has no comments (except in
-			// sub-sections).
+			// sub-sections). These do not generate notifications because of the fix for T286736,
+			// but maybe they should?
 			[
 				'cases/EventDispatcher/subsection-empty/rev1.txt',
 				'cases/EventDispatcher/subsection-empty/rev2.txt',
