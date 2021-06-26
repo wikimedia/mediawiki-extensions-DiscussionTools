@@ -231,7 +231,7 @@ class HookUtils {
 		}
 
 		// ?dtenable=1 overrides all user and title checks
-		$queryEnable = $output->getRequest()->getRawVal( 'dtenable' ) ||
+		$queryEnable = $output->getRequest()->getRawVal( 'dtenable' ) ?:
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
 			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
 
@@ -246,6 +246,11 @@ class HookUtils {
 
 		if ( $queryEnable ) {
 			return true;
+		}
+
+		if ( $queryEnable === "0" ) {
+			// ?dtenable=0 forcibly disables the feature regardless of any other checks (T285578)
+			return false;
 		}
 
 		return static::isAvailableForTitle( $title ) &&
