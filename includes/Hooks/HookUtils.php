@@ -235,7 +235,11 @@ class HookUtils {
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
 			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
 
-		if ( $feature === self::TOPICSUBSCRIPTION ) {
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+		if (
+			$feature === self::TOPICSUBSCRIPTION &&
+			!$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' )
+		) {
 			// Can't be enabled via query, because the tables may not exist yet (T280082)
 			$queryEnable = false;
 		}
