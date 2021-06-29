@@ -478,8 +478,8 @@ ReplyWidget.prototype.setup = function ( data ) {
 		// Make the option for the current mode disabled, to make it un-interactable
 		// (we override the styles to make it look as if it was selected)
 		this.modeTabSelect.findItemFromData( this.getMode() ).setDisabled( true );
-		this.saveEditMode( this.getMode() );
 	}
+	this.saveEditMode( this.getMode() );
 
 	var summary = this.storage.get( this.storagePrefix + '/summary' ) || data.editSummary;
 
