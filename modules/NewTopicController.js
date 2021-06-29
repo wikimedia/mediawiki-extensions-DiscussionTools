@@ -1,5 +1,4 @@
 var
-	utils = require( './utils.js' ),
 	logger = require( './logger.js' ),
 	controller = require( './controller.js' ),
 	CommentController = require( './CommentController.js' ),
@@ -9,9 +8,10 @@ var
  * Handles setup, save and teardown of new topic widget
  *
  * @param {jQuery} $pageContainer Page container
+ * @param {HeadingItem} threadItem
  * @param {ThreadItemSet} threadItemSet
  */
-function NewTopicController( $pageContainer, threadItemSet ) {
+function NewTopicController( $pageContainer, threadItem, threadItemSet ) {
 	this.container = new OO.ui.PanelLayout( {
 		classes: [ 'ext-discussiontools-ui-newTopic' ],
 		expanded: false,
@@ -36,14 +36,10 @@ function NewTopicController( $pageContainer, threadItemSet ) {
 	this.container.$element.append( this.$notices, this.sectionTitleField.$element );
 
 	// HeadingItem representing the heading being added, so that we can pretend we're replying to it
-	var threadItem = new HeadingItem( {
-		startContainer: this.sectionTitleField.$element[ 0 ],
-		startOffset: 0,
-		endContainer: this.sectionTitleField.$element[ 0 ],
-		endOffset: this.sectionTitleField.$element[ 0 ].childNodes.length
-	}, 2 );
-	threadItem.id = utils.NEW_TOPIC_COMMENT_ID;
-	threadItem.isNewTopic = true;
+	threadItem.range.startContainer = this.sectionTitleField.$element[ 0 ];
+	threadItem.range.startOffset = 0;
+	threadItem.range.endContainer = this.sectionTitleField.$element[ 0 ];
+	threadItem.range.endOffset = this.sectionTitleField.$element[ 0 ].childNodes.length;
 
 	NewTopicController.super.call( this, $pageContainer, threadItem, threadItemSet );
 }
@@ -90,6 +86,10 @@ NewTopicController.prototype.setup = function ( mode ) {
 
 	NewTopicController.super.prototype.setup.call( this, mode );
 
+	if ( this.threadItem.preloadtitle ) {
+		this.sectionTitle.setValue( this.threadItem.preloadtitle );
+	}
+
 	// The section title field is added to the page immediately, we can scroll to the bottom and focus
 	// it while the content field is still loading.
 	rootScrollable.scrollTop = rootScrollable.scrollHeight;
@@ -115,7 +115,16 @@ NewTopicController.prototype.setup = function ( mode ) {
 /**
  * @inheritdoc
  */
-NewTopicController.prototype.setupReplyWidget = function ( replyWidget ) {
+NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
+	if ( replyWidget.commentDetails.preloadContent && ( !data || data.value === undefined ) ) {
+		if ( replyWidget.commentDetails.preloadContentMode !== replyWidget.getMode() ) {
+			// This should never happen
+			throw new Error( 'Preload content was loaded for wrong mode' );
+		}
+		data = $.extend( {}, data, {
+			value: replyWidget.commentDetails.preloadContent
+		} );
+	}
 	NewTopicController.super.prototype.setupReplyWidget.apply( this, arguments );
 
 	this.$notices.empty();
@@ -144,6 +153,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget ) {
 			this.replyWidget.editSummaryInput.setValue( generatedSummary );
 		}
 	}
+	this.replyWidget.storage.set( this.replyWidget.storagePrefix + '/title', this.sectionTitle.getValue() );
 
 	if ( this.replyWidget.modeTabSelect ) {
 		// Start with the mode-select widget not-tabbable so focus will go from the title to the body
@@ -270,6 +280,11 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 		url.searchParams.delete( 'action' );
 		url.searchParams.delete( 'veaction' );
 		url.searchParams.delete( 'section' );
+		url.searchParams.delete( 'dtpreload' );
+		url.searchParams.delete( 'editintro' );
+		url.searchParams.delete( 'preload' );
+		url.searchParams.delete( 'preloadparams[]' );
+		url.searchParams.delete( 'preloadtitle' );
 		history.replaceState( null, '', url );
 		mw.config.set( 'wgDiscussionToolsStartNewTopicTool', false );
 	}

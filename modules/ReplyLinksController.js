@@ -56,6 +56,8 @@ OO.mixinClass( ReplyLinksController, OO.EventEmitter );
  * @event link-click
  * @param {string} id
  * @param {jQuery} $linkSet
+ * @param {jQuery} $link
+ * @param {Object} [data]
  */
 
 /* Methods */
@@ -104,11 +106,32 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 	if ( !href ) {
 		return;
 	}
+
+	var data = this.parseNewTopicLink( href );
+	if ( !data ) {
+		return;
+	}
+
+	if ( !this.isActivationEvent( e ) ) {
+		return;
+	}
+	e.preventDefault();
+
+	this.emit( 'link-click', utils.NEW_TOPIC_COMMENT_ID, $( e.currentTarget ), data );
+};
+
+/**
+ * Check if the given URL is a new topic link, and if so, return parsed parameters.
+ *
+ * @param {string} href
+ * @return {Object|null} `null` if not a new topic link, parameters otherwise
+ */
+ReplyLinksController.prototype.parseNewTopicLink = function ( href ) {
 	var url = new URL( href );
 
 	var title = mw.Title.newFromText( utils.getTitleFromUrl( href ) || '' );
 	if ( !title ) {
-		return;
+		return null;
 	}
 
 	// Recognize links to add a new topic:
@@ -121,7 +144,7 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 		var param = title.getMainText().slice( parserData.specialNewSectionName.length + 1 );
 		title = mw.Title.newFromText( param );
 		if ( !title ) {
-			return;
+			return null;
 		}
 
 	} else if (
@@ -135,28 +158,34 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 
 	} else {
 		// Not a link to add a new topic
-		return;
+		return null;
 	}
 
 	if ( title.getPrefixedDb() !== mw.config.get( 'wgRelevantPageName' ) ) {
 		// Link to add a section on another page, not supported yet (T282205)
-		return;
+		return null;
 	}
 
-	if (
-		url.searchParams.get( 'editintro' ) || url.searchParams.get( 'preload' ) ||
-		url.searchParams.getAll( 'preloadparams[]' ).length || url.searchParams.get( 'preloadtitle' )
-	) {
-		// Adding a new topic with preloaded text is not supported yet (T269310)
-		return;
+	var data = {};
+	if ( url.searchParams.get( 'editintro' ) ) {
+		data.editintro = url.searchParams.get( 'editintro' );
+	}
+	if ( url.searchParams.get( 'preload' ) ) {
+		data.preload = url.searchParams.get( 'preload' );
+	}
+	if ( url.searchParams.getAll( 'preloadparams[]' ).length ) {
+		data.preloadparams = url.searchParams.getAll( 'preloadparams[]' );
+	}
+	if ( url.searchParams.get( 'preloadtitle' ) ) {
+		data.preloadtitle = url.searchParams.get( 'preloadtitle' );
 	}
 
-	if ( !this.isActivationEvent( e ) ) {
-		return;
+	// Handle new topic with preloaded text only when requested (T269310)
+	if ( !url.searchParams.get( 'dtpreload' ) && !$.isEmptyObject( data ) ) {
+		return null;
 	}
-	e.preventDefault();
 
-	this.emit( 'link-click', utils.NEW_TOPIC_COMMENT_ID, $( e.currentTarget ) );
+	return data;
 };
 
 ReplyLinksController.prototype.isActivationEvent = function ( e ) {
