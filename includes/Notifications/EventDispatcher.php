@@ -9,11 +9,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
-use ApiMain;
 use DOMElement;
 use EchoEvent;
 use Error;
-use FauxRequest;
 use IDBAccessObject;
 use Iterator;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
@@ -22,30 +20,37 @@ use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
+use ParserOptions;
 use Title;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class EventDispatcher {
 	/**
-	 * @param RevisionRecord $revision
+	 * @param RevisionRecord $revRecord
 	 * @return CommentParser
 	 */
-	private static function getParsedRevision( RevisionRecord $revision ) : CommentParser {
-		$api = new ApiMain(
-			new FauxRequest(
-				[
-					'action' => 'parse',
-					'oldid' => $revision->getId()
-				],
-				/* was posted? */ true
-			),
-			/* enable write? */ true
+	private static function getParsedRevision( RevisionRecord $revRecord ) : CommentParser {
+		$services = MediaWikiServices::getInstance();
+
+		$pageRecord = $services->getPageStore()->getPageByReference( $revRecord->getPage() );
+		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
+
+		// If the $revRecord was fetched from the primary database, this will also fetch the content
+		// from the primary database (using the same query flags)
+		$status = $services->getParserOutputAccess()->getParserOutput(
+			$pageRecord,
+			ParserOptions::newCanonical( 'canonical' ),
+			$revRecord
 		);
+		if ( !$status->isOK() ) {
+			throw new Error( 'Could not load revision for notifications' );
+		}
 
-		$api->execute();
-		$data = $api->getResult()->getResultData();
+		$parserOutput = $status->getValue();
+		$html = $parserOutput->getText();
 
-		$doc = DOMUtils::parseHTML( $data['parse']['text'] );
+		$doc = DOMUtils::parseHTML( $html );
 		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
 		if ( !( $container instanceof DOMElement ) ) {
 			throw new Error( 'Could not load revision for notifications' );
