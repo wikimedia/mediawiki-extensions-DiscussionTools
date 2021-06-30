@@ -31,6 +31,7 @@
 	"discussiontools-error-noswitchtove-title": "Визуальный режим отключён",
 	"discussiontools-newtopic-missing-title": "Пожалуйста предоставьте заголовок для вашей темы обсуждения. Если вы кликните \"{{int:discussiontools-replywidget-newtopic}}\", ваша тема будет добавлена без заголовка.",
 	"discussiontools-newtopic-placeholder-title": "Заголовок",
+	"discussiontools-notification-subscribed-new-comment-view": "Посмотреть комментарий",
 	"discussiontools-postedit-confirmation-published": "Ваш комментарий был опубликован.",
 	"discussiontools-postedit-confirmation-topicadded": "Ваша тема была добавлена.",
 	"discussiontools-preference-description": "Включает экспериментальные функции для страниц обсуждений:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Ответить] на комментарии на страницах обсуждений в один клик.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Добавить новую тему] используя встраиваемую форму.\n\nВы можете управлять этими функциями в ваших [[Special:Preferences#mw-prefsection-editing-discussion|настройках]].\n\nИнформация об обновлениях будет публиковаться на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates странице обновлений проекта Talk pages].\n\nПожалуйста обратите внимание:\n* Со временем будут добавлены новые экспериментальные функции.\n* Некоторые из вышеперечисленных функций могут быть пока недоступны в вашей вики.",
