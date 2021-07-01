@@ -54,6 +54,7 @@
 						"enable": "DiscussionToolsEnable"
 					}
 				},
+				"ReplyLinksController.js",
 				"CommentController.js",
 				"NewTopicController.js",
 				"logger.js",

@@ -6,6 +6,11 @@
  */
 
 /**
+ * @constant
+ */
+var NEW_TOPIC_COMMENT_ID = 'new|' + mw.config.get( 'wgRelevantPageName' );
+
+/**
  * @param {Node} node
  * @return {boolean} Node is a block element
  */
@@ -422,6 +427,7 @@ function linearWalkBackwards( node, callback ) {
 }
 
 module.exports = {
+	NEW_TOPIC_COMMENT_ID: NEW_TOPIC_COMMENT_ID,
 	isBlockElement: isBlockElement,
 	isRenderingTransparentNode: isRenderingTransparentNode,
 	cantHaveElementChildren: cantHaveElementChildren,

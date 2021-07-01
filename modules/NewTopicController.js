@@ -1,8 +1,9 @@
 var
+	utils = require( './utils.js' ),
 	CommentController = require( './CommentController.js' ),
 	HeadingItem = require( './HeadingItem.js' );
 
-function NewTopicController( $pageContainer, $replyLink, parser ) {
+function NewTopicController( $pageContainer, parser ) {
 	this.container = new OO.ui.PanelLayout( {
 		classes: [ 'ext-discussiontools-ui-newTopic' ],
 		expanded: false,
@@ -33,10 +34,10 @@ function NewTopicController( $pageContainer, $replyLink, parser ) {
 		endContainer: this.sectionTitleField.$element[ 0 ],
 		endOffset: this.sectionTitleField.$element[ 0 ].childNodes.length
 	} );
-	comment.id = 'new|' + mw.config.get( 'wgRelevantPageName' );
+	comment.id = utils.NEW_TOPIC_COMMENT_ID;
 	comment.isNewTopic = true;
 
-	NewTopicController.super.call( this, $pageContainer, $replyLink, comment, parser );
+	NewTopicController.super.call( this, $pageContainer, comment, parser );
 }
 
 OO.inheritClass( NewTopicController, CommentController );

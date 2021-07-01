@@ -6,12 +6,13 @@
  */
 
 var
-	$pageContainer,
-	newTopicController,
+	$pageContainer, linksController,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
+	storage = mw.storage.session,
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
+	ReplyLinksController = require( './ReplyLinksController.js' ),
 	logger = require( './logger.js' ),
 	utils = require( './utils.js' ),
 	pageDataCache = {};
@@ -136,7 +137,7 @@ function getPageData( pageName, oldId, isNewTopic ) {
  *  Rejects with error data if the comment is transcluded, or there are lint errors on the page.
  */
 function checkCommentOnPage( pageName, oldId, comment ) {
-	var isNewTopic = comment.id.slice( 0, 4 ) === 'new|';
+	var isNewTopic = comment.id === utils.NEW_TOPIC_COMMENT_ID;
 
 	return getPageData( pageName, oldId, isNewTopic )
 		.then( function ( response ) {
@@ -316,8 +317,8 @@ function highlightTargetComment( parser ) {
 }
 
 function init( $container, state ) {
-	var pageExists = !!mw.config.get( 'wgRelevantArticleId' ),
-		controllers = [],
+	var
+		activeCommentId = null,
 		activeController = null,
 		// Loads later to avoid circular dependency
 		CommentController = require( './CommentController.js' ),
@@ -326,6 +327,7 @@ function init( $container, state ) {
 		threadItems = [];
 
 	$pageContainer = $container;
+	linksController = new ReplyLinksController( $pageContainer );
 	var parser = new Parser( $pageContainer[ 0 ] );
 
 	var pageThreads = [];
@@ -347,11 +349,7 @@ function init( $container, state ) {
 
 		threadItemsById[ comment.id ] = comment;
 
-		if ( comment.type === 'comment' ) {
-			controllers.push(
-				new CommentController( $pageContainer, $( commentNodes[ i ] ), comment, parser )
-			);
-		} else {
+		if ( comment.type === 'heading' ) {
 			// Use unshift as we are in a backwards loop
 			pageThreads.unshift( comment );
 		}
@@ -378,68 +376,89 @@ function init( $container, state ) {
 		}
 	}
 
-	if ( featuresEnabled.newtopictool && mw.user.options.get( 'discussiontools-newtopictool' ) ) {
-		if ( newTopicController ) {
-			// Stop the torn down controller from re-appearing
-			newTopicController.$replyLink.off( 'click keypress', newTopicController.onReplyLinkClickHandler );
-		}
-		// eslint-disable-next-line no-jquery/no-global-selector
-		var $addSectionTab = $( '#ca-addsection' );
-		// TODO If the page doesn't exist yet, we'll need to handle the interface differently,
-		// for now just don't enable the tool there
-		if ( $addSectionTab.length && pageExists ) {
-			// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
-			$addSectionTab.off( '.ve-target' );
-			newTopicController = new NewTopicController( $pageContainer, $addSectionTab.find( 'a' ), parser );
-			controllers.push( newTopicController );
-		}
-	}
-
 	if ( featuresEnabled.topicsubscription && mw.user.options.get( 'discussiontools-topicsubscription' ) ) {
 		initTopicSubscriptions( $container );
+	}
+
+	function setupController( commentId, $link, mode, hideErrors ) {
+		var commentController;
+		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
+			commentController = new NewTopicController( $pageContainer, parser );
+		} else {
+			commentController = new CommentController( $pageContainer, parser.findCommentById( commentId ), parser );
+		}
+
+		activeCommentId = commentId;
+		activeController = commentController;
+		linksController.setActiveLink( $link );
+
+		commentController.on( 'teardown', function ( abandoned ) {
+			activeCommentId = null;
+			activeController = null;
+			linksController.clearActiveLink();
+
+			if ( abandoned ) {
+				linksController.focusLink( $link );
+			}
+		} );
+
+		commentController.setup( mode, hideErrors );
 	}
 
 	// Hook up each link to open a reply widget
 	//
 	// TODO: Allow users to use multiple reply widgets simultaneously.
 	// Currently submitting a reply from one widget would also destroy the other ones.
-	controllers.forEach( function ( c ) {
-		c.on( 'link-click', function () {
-			// If the reply widget is already open, activate it.
-			// Reply links are also made unclickable using 'pointer-events' in CSS, but that doesn't happen
-			// for new section links, because we don't have a good way of visually disabling them.
-			// (And it also doesn't work on IE 11.)
-			if ( activeController === c ) {
-				c.showAndFocus();
-				return;
-			}
+	linksController.on( 'link-click', function ( commentId, $link ) {
+		// If the reply widget is already open, activate it.
+		// Reply links are also made unclickable using 'pointer-events' in CSS, but that doesn't happen
+		// for new section links, because we don't have a good way of visually disabling them.
+		// (And it also doesn't work on IE 11.)
+		if ( activeCommentId === commentId ) {
+			activeController.showAndFocus();
+			return;
+		}
 
-			// If this is a new topic link, and a reply widget is open, attempt to close it first.
-			if ( activeController && c instanceof NewTopicController ) {
-				activeController.replyWidget.tryTeardown().then( function () {
-					activeController = c;
-					c.setup();
-				} );
-				return;
-			}
+		// If this is a new topic link, and a reply widget is open, attempt to close it first.
+		var promise;
+		if ( activeController && commentId === utils.NEW_TOPIC_COMMENT_ID ) {
+			promise = activeController.replyWidget.tryTeardown();
+		} else {
+			promise = $.Deferred().resolve();
+		}
 
+		promise.then( function () {
 			// If another reply widget is open (or opening), do nothing.
 			if ( activeController ) {
 				return;
 			}
-
-			activeController = c;
-			c.setup();
-		} ).on( 'teardown', function () {
-			activeController = null;
+			setupController( commentId, $link );
 		} );
 	} );
+
+	// Restore autosave
+	var mode, $link;
+	for ( i = 0; i < threadItems.length; i++ ) {
+		comment = threadItems[ i ];
+		if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
+			mode = storage.get( 'reply/' + comment.id + '/mode' );
+			$link = $( commentNodes[ i ] );
+			setupController( comment.id, $link, mode, true );
+			break;
+		}
+	}
+	if ( storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ) {
+		mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$link = $( '#ca-addsection' );
+		setupController( utils.NEW_TOPIC_COMMENT_ID, $link, mode, true );
+	}
 
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
 	var $highlight;
-	if ( state.repliedTo === 'new|' + mw.config.get( 'wgRelevantPageName' ) ) {
+	if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
 		// Highlight the last comment on the page
 		var lastComment = threadItems[ threadItems.length - 1 ];
 		$highlight = highlight( lastComment );
@@ -506,6 +525,8 @@ function update( data, comment, pageName, replyWidget ) {
 	pageDataCache[ mw.config.get( 'wgRelevantPageName' ) ][ mw.config.get( 'wgCurRevisionId' ) ] = null;
 
 	replyWidget.teardown();
+	linksController.teardown();
+	linksController = null;
 	// TODO: Tell controller to teardown all other open widgets
 
 	// Update page state
