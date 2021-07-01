@@ -22,8 +22,6 @@ function ReplyLinksController( $pageContainer ) {
 		// for now just don't enable the tool there
 		var pageExists = !!mw.config.get( 'wgRelevantArticleId' );
 		if ( $addSectionTab.length && pageExists ) {
-			// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
-			$addSectionTab.off( '.ve-target' );
 			this.$addSectionLink = $addSectionTab.find( 'a' );
 			this.$addSectionLink.on( 'click keypress', this.onAddSectionLinkClickHandler );
 		}
@@ -55,6 +53,11 @@ ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
 		return;
 	}
 	e.preventDefault();
+
+	// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own.
+	// We do this on first click, because we don't control the order in which our code and NWE code
+	// runs, so its event handlers may not be registered yet.
+	$( e.target ).closest( '#ca-addsection' ).off( '.ve-target' );
 
 	this.emit( 'link-click', utils.NEW_TOPIC_COMMENT_ID, $( e.target ) );
 };
@@ -111,9 +114,6 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 	// have it redo setup to fix those.
 	if ( mw.libs.ve && mw.libs.ve.setupEditLinks ) {
 		mw.libs.ve.setupEditLinks();
-		// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$( '#ca-addsection' ).off( '.ve-target' );
 	}
 
 	this.$activeLink = null;
