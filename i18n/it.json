@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Beta16",
 			"EditGio",
 			"Fringio",
+			"Lorem Ipsum",
 			"Sakretsu",
 			"Scompo"
 		]
@@ -67,6 +69,8 @@
 	"discussiontools-replywidget-transcluded": "Il tuo commento sarà salvato su [[$1]].",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicsubscription-button-subscribe": "iscriviti",
+	"discussiontools-topicsubscription-button-unsubscribe": "annulla l'iscrizione",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Annulla l'iscrizione",
 	"tag-discussiontools-description": "Modifica effettuata usando DiscussionTools",
 	"tag-discussiontools-edit": "Modifica commento",
 	"tag-discussiontools-edit-description": "L'utente ha modificato un commento esistente con DiscussionTools",
