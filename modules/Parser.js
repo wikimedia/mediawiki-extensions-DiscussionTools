@@ -496,43 +496,13 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
 };
 
 /**
- * Get a MediaWiki page title from a URL.
- *
- * @private
- * @param {string} url
- * @return {mw.Title|null} Page title, or null if this isn't a link to a page
- */
-function getTitleFromUrl( url ) {
-	try {
-		url = new mw.Uri( url );
-	} catch ( err ) {
-		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
-		return null;
-	}
-	if ( url.query.title ) {
-		return mw.Title.newFromText( url.query.title );
-	}
-
-	var articlePathRegexp = new RegExp(
-		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
-			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
-	);
-	var match;
-	if ( ( match = url.path.match( articlePathRegexp ) ) ) {
-		return mw.Title.newFromText( decodeURIComponent( match[ 1 ] ) );
-	}
-
-	return null;
-}
-
-/**
  * Given a link node (`<a>`), if it's a link to a user-related page, return their username.
  *
  * @param {HTMLElement} link
  * @return {string|null}
  */
 function getUsernameFromLink( link ) {
-	var title = getTitleFromUrl( link.href );
+	var title = utils.getTitleFromUrl( link.href );
 	if ( !title ) {
 		return null;
 	}

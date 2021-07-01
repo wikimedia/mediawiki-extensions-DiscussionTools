@@ -6,8 +6,10 @@ function ReplyLinksController( $pageContainer ) {
 	OO.EventEmitter.call( this );
 
 	this.$pageContainer = $pageContainer;
+	this.$body = $( document.body );
 	this.onReplyLinkClickHandler = this.onReplyLinkClick.bind( this );
 	this.onAddSectionLinkClickHandler = this.onAddSectionLinkClick.bind( this );
+	this.onAnyLinkClickHandler = this.onAnyLinkClick.bind( this );
 
 	// Reply links
 	this.$replyLinks = $pageContainer.find( 'a.ext-discussiontools-init-replylink-reply[data-mw-comment]' );
@@ -24,6 +26,10 @@ function ReplyLinksController( $pageContainer ) {
 		if ( $addSectionTab.length && pageExists ) {
 			this.$addSectionLink = $addSectionTab.find( 'a' );
 			this.$addSectionLink.on( 'click keypress', this.onAddSectionLinkClickHandler );
+
+			// Handle events on all links that potentially open the new section interface,
+			// including links in the page content (from templates) or from gadgets.
+			this.$body.on( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
 		}
 	}
 }
@@ -52,14 +58,47 @@ ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
 	if ( !this.isActivationEvent( e ) ) {
 		return;
 	}
-	e.preventDefault();
-
 	// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own.
 	// We do this on first click, because we don't control the order in which our code and NWE code
 	// runs, so its event handlers may not be registered yet.
 	$( e.target ).closest( '#ca-addsection' ).off( '.ve-target' );
 
-	this.emit( 'link-click', utils.NEW_TOPIC_COMMENT_ID, $( e.target ) );
+	// onAnyLinkClick() will also handle clicks on this element, so we don't emit() here to avoid
+	// doing it twice.
+};
+
+ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
+	// Check query parameters to see if this is really a new topic link
+	var href = $( e.currentTarget ).attr( 'href' );
+	var uri;
+	try {
+		uri = new mw.Uri( href, { arrayParams: true } );
+	} catch ( err ) {
+		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+		return;
+	}
+	if ( ( uri.query.action !== 'edit' && uri.query.veaction !== 'editsource' ) || uri.query.section !== 'new' ) {
+		// Not a link to add a new topic
+		return;
+	}
+
+	var title = utils.getTitleFromUrl( href );
+	if ( !title || title.getPrefixedDb() !== mw.config.get( 'wgRelevantPageName' ) ) {
+		// Link to add a section on another page, not supported yet (T282205)
+		return;
+	}
+
+	if ( uri.query.editintro || uri.query.preload || uri.query.preloadparams || uri.query.preloadtitle ) {
+		// Adding a new topic with preloaded text is not supported yet (T269310)
+		return;
+	}
+
+	if ( !this.isActivationEvent( e ) ) {
+		return;
+	}
+	e.preventDefault();
+
+	this.emit( 'link-click', utils.NEW_TOPIC_COMMENT_ID, $( e.currentTarget ) );
 };
 
 ReplyLinksController.prototype.isActivationEvent = function ( e ) {
@@ -126,6 +165,7 @@ ReplyLinksController.prototype.teardown = function () {
 
 	this.$replyLinks.off( 'click keypress', this.onReplyLinkClickHandler );
 	this.$addSectionLink.off( 'click keypress', this.onAddSectionLinkClickHandler );
+	this.$body.off( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
 };
 
 module.exports = ReplyLinksController;
