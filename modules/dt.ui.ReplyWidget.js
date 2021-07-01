@@ -13,6 +13,7 @@ require( './AbandonTopicDialog.js' );
 /**
  * @external CommentController
  * @external CommentItem
+ * @external CommentDetails
  */
 
 /**
@@ -23,12 +24,11 @@ require( './AbandonTopicDialog.js' );
  * @constructor
  * @param {CommentController} commentController Comment controller
  * @param {CommentItem} comment Comment item
- * @param {string} pageName Page name the reply is being saved to
- * @param {number} oldId Revision ID of page at time of editing
+ * @param {CommentDetails} commentDetails
  * @param {Object} [config] Configuration options
  * @param {Object} [config.input] Configuration options for the comment input widget
  */
-function ReplyWidget( commentController, comment, pageName, oldId, config ) {
+function ReplyWidget( commentController, comment, commentDetails, config ) {
 	var widget = this;
 
 	config = config || {};
@@ -39,9 +39,10 @@ function ReplyWidget( commentController, comment, pageName, oldId, config ) {
 	this.pending = false;
 	this.commentController = commentController;
 	this.comment = comment;
+	this.commentDetails = commentDetails;
 	this.isNewTopic = !!comment.isNewTopic;
-	this.pageName = pageName;
-	this.oldId = oldId;
+	this.pageName = commentDetails.pageName;
+	this.oldId = commentDetails.oldId;
 	var contextNode = utils.closestElement( comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 	// TODO: Should storagePrefix include pageName?

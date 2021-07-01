@@ -1,5 +1,6 @@
 /**
  * @external CommentItem
+ * @external CommentDetails
  * @external ThreadItem
  */
 
@@ -74,7 +75,7 @@ function getLatestRevId( pageName ) {
  * and then follows transclusions to determine the source page where it is written.
  *
  * @param {CommentItem} comment Comment
- * @return {jQuery.Promise} Promise which resolves with pageName+oldId, or rejects with an error
+ * @return {jQuery.Promise} Promise which resolves with a CommentDetails object, or rejects with an error
  */
 CommentController.prototype.getTranscludedFromSource = function ( comment ) {
 	var pageName = mw.config.get( 'wgRelevantPageName' ),
@@ -161,8 +162,8 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 	this.$replyLinkButtons.addClass( 'ext-discussiontools-init-replylink-active' );
 
 	if ( !this.replyWidgetPromise ) {
-		this.replyWidgetPromise = this.getTranscludedFromSource( comment ).then( function ( pageData ) {
-			return commentController.createReplyWidget( comment, pageData.pageName, pageData.oldId, { mode: mode } );
+		this.replyWidgetPromise = this.getTranscludedFromSource( comment ).then( function ( commentDetails ) {
+			return commentController.createReplyWidget( comment, commentDetails, { mode: mode } );
 		}, function ( code, data ) {
 			commentController.teardown();
 
@@ -213,10 +214,16 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	} );
 };
 
-CommentController.prototype.createReplyWidget = function ( comment, pageName, oldId, config ) {
+/**
+ * @param {CommentItem} comment
+ * @param {CommentDetails} commentDetails
+ * @param {Object} config
+ * @return {jQuery.Promise} Promise resolved with a ReplyWidget
+ */
+CommentController.prototype.createReplyWidget = function ( comment, commentDetails, config ) {
 	var commentController = this;
 	return this.getReplyWidgetClass( config.mode === 'visual' ).then( function ( ReplyWidget ) {
-		return new ReplyWidget( commentController, comment, pageName, oldId, config );
+		return new ReplyWidget( commentController, comment, commentDetails, config );
 	} );
 };
 
@@ -381,8 +388,7 @@ CommentController.prototype.switchToWikitext = function () {
 	var wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
 	this.replyWidgetPromise = this.createReplyWidget(
 		oldWidget.comment,
-		oldWidget.pageName,
-		oldWidget.oldId,
+		oldWidget.commentDetails,
 		{ mode: 'source' }
 	);
 
@@ -503,8 +509,7 @@ CommentController.prototype.switchToVisual = function () {
 	}
 	this.replyWidgetPromise = this.createReplyWidget(
 		oldWidget.comment,
-		oldWidget.pageName,
-		oldWidget.oldId,
+		oldWidget.commentDetails,
 		{ mode: 'visual' }
 	);
 

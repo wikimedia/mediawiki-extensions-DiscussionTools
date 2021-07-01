@@ -2,6 +2,7 @@
 
 /**
  * @external CommentItem
+ * @external CommentDetails
  */
 
 var
@@ -10,6 +11,7 @@ var
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
+	CommentDetails = require( './CommentDetails.js' ),
 	logger = require( './logger.js' ),
 	utils = require( './utils.js' ),
 	pageDataCache = {};
@@ -130,7 +132,7 @@ function getPageData( pageName, oldId, isNewTopic ) {
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
  * @param {CommentItem} comment Comment
- * @return {jQuery.Promise} Resolves with the pageName+oldId if the comment appears on the page.
+ * @return {jQuery.Promise} Resolved with a CommentDetails object if the comment appears on the page.
  *  Rejects with error data if the comment is transcluded, or there are lint errors on the page.
  */
 function checkCommentOnPage( pageName, oldId, comment ) {
@@ -206,10 +208,7 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 				} ] } ).promise();
 			}
 
-			return {
-				pageName: pageName,
-				oldId: oldId
-			};
+			return new CommentDetails( pageName, oldId );
 		} );
 }
 

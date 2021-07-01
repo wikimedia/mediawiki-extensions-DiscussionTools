@@ -11,6 +11,7 @@ require( './dt-ve/dt.ce.PingNode.js' );
 /**
  * @external CommentController
  * @external CommentItem
+ * @external CommentDetails
  */
 
 /**
@@ -21,11 +22,10 @@ require( './dt-ve/dt.ce.PingNode.js' );
  * @constructor
  * @param {CommentController} commentController
  * @param {CommentItem} comment
- * @param {string} pageName
- * @param {number} oldId
+ * @param {CommentDetails} commentDetails
  * @param {Object} [config]
  */
-function ReplyWidgetVisual( commentController, comment, pageName, oldId, config ) {
+function ReplyWidgetVisual( commentController, comment, commentDetails, config ) {
 	this.defaultMode = config.mode;
 
 	// Parent constructor
