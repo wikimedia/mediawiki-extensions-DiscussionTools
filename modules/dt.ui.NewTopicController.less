@@ -5,6 +5,16 @@
 		margin-top: 2em;
 	}
 
+	.ext-discussiontools-ui-newTopic-notices {
+		// Ensure that the form is visible below the notice in case of large notices and small screens
+		max-height: 75vh;
+		overflow: auto;
+	}
+
+	.ext-discussiontools-ui-newTopic-notices + .oo-ui-fieldLayout {
+		margin-top: 0;
+	}
+
 	h2&-sectionTitle {
 		max-width: none;
 		// This element is a <h2> - override unwanted heading styles
