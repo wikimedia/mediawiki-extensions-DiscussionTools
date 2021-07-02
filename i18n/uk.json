@@ -3,6 +3,7 @@
 		"authors": [
 			"Alexander Yukal",
 			"Base",
+			"DDPAT",
 			"Matma Rex",
 			"Movses",
 			"Piramidion",
@@ -28,7 +29,7 @@
 	"discussiontools-newtopic-placeholder-title": "Назва",
 	"discussiontools-postedit-confirmation-published": "Ваш коментар опубліковано.",
 	"discussiontools-postedit-confirmation-topicadded": "Вашу тему було додано.",
-	"discussiontools-preference-description": "Вмикає експериментальні функції сторінок обговорення:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying відповідати] на окремі коментарі на сторінках обговорень одним натисканням.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Додавати нові теми] використовуючи просту форму.\n\nВи можете налаштувати ці функції у своїх [[Special:Preferences#mw-prefsection-editing-discussion|налаштуваннях]].\n\nНовини, пов'язані з цими функціями, публікуватимуться на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates сторінці новин проекту покращень сторінок обговорення].\n\nБудь ласка, зверніть увагу:\n* З часом додаватимуться нові експериментальні функції.\n* Деякі вищезгадані функції можуть бути ще не доступні у вашій вікі.",
+	"discussiontools-preference-description": "Вмикає експериментальні функції сторінок обговорення:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying відповідати] на окремі коментарі на сторінках обговорень одним натисканням.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Додавати нові теми] використовуючи просту форму.\n\nВи можете налаштувати ці функції у своїх [[Special:Preferences#mw-prefsection-editing-discussion|налаштуваннях]].\n\nНовини, пов'язані з цими функціями, публікуватимуться на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates сторінці новин проєкту покращень сторінок обговорення].\n\nБудь ласка, зверніть увагу:\n* З часом будуть додаватися нові експериментальні функції.\n* Деякі вищезгадані функції можуть бути ще не доступні на вашій вікі.",
 	"discussiontools-preference-label": "Інструменти обговорення",
 	"discussiontools-preference-newtopictool": "Увімкнути швидке додання теми",
 	"discussiontools-preference-newtopictool-help": "Це показуватиме Вам вбудовану форму для додання нових тем. Ви можете дізнатися більше про цю функцію прочитавши [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary її огляд].",

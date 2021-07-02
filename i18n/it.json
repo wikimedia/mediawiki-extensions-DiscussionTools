@@ -71,6 +71,8 @@
 	"discussiontools-topicsubscription-button-subscribe": "iscriviti",
 	"discussiontools-topicsubscription-button-unsubscribe": "annulla l'iscrizione",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Annulla l'iscrizione",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Ti sei iscritto!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Hai annullato l'iscrizione.",
 	"tag-discussiontools-description": "Modifica effettuata usando DiscussionTools",
 	"tag-discussiontools-edit": "Modifica commento",
 	"tag-discussiontools-edit-description": "L'utente ha modificato un commento esistente con DiscussionTools",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Les Meloures",
 			"Robby",
 			"Soued031"
 		]
@@ -35,7 +36,7 @@
 	"discussiontools-replywidget-mention-tool-title": "E Benotzer ernimmen",
 	"discussiontools-replywidget-mode-source": "Quell",
 	"discussiontools-replywidget-mode-visual": "Visuell",
-	"discussiontools-replywidget-newtopic": "Sujet dobäisetzen",
+	"discussiontools-replywidget-newtopic": "Sujet derbäisetzen",
 	"discussiontools-replywidget-placeholder-newtopic": "Beschreiwung",
 	"discussiontools-replywidget-placeholder-reply": "Äntwert fir {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Kucken ouni ofzespäicheren",
