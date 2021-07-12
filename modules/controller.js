@@ -49,12 +49,15 @@ function highlight( comment ) {
 
 	var baseRect = $highlight[ 0 ].getBoundingClientRect();
 	var rect = RangeFix.getBoundingClientRect( range );
-	$highlight.css( {
-		'margin-top': rect.top - baseRect.top - padding,
-		'margin-left': rect.left - baseRect.left - padding,
-		width: rect.width + ( padding * 2 ),
-		height: rect.height + ( padding * 2 )
-	} );
+	// rect may be null if the range is in a detached or hidden node
+	if ( rect ) {
+		$highlight.css( {
+			'margin-top': rect.top - baseRect.top - padding,
+			'margin-left': rect.left - baseRect.left - padding,
+			width: rect.width + ( padding * 2 ),
+			height: rect.height + ( padding * 2 )
+		} );
+	}
 
 	return $highlight;
 }
