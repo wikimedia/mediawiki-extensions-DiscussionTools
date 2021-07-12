@@ -6,7 +6,8 @@
 			"Hanna Tardos",
 			"Misibacsi",
 			"Samat",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Tgr"
 		]
 	},
 	"discussiontools": "Vitalapi eszközök",
@@ -38,6 +39,7 @@
 	"discussiontools-preference-replytool-help": "Hivatkozások megjelenítése a vitalapi hozzászólásokra való gyors válaszoláshoz. Lásd még [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary a válaszeszköz funkcióinak összefoglalását].",
 	"discussiontools-preference-sourcemodetoolbar": "Kísérleti eszközök engedélyezése a gyors válasz- és témanyitó eszközök forrásmódjában",
 	"discussiontools-preference-topicsubscription": "Témafeliratkozás engedélyezése",
+	"discussiontools-preference-topicsubscription-help": "Lehetővé teszi a feliratkozást téma-szintű értesítésekre. További információért lásd az [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary összefoglaló oldalt].",
 	"discussiontools-replylink": "válasz",
 	"discussiontools-replywidget-abandon": "Biztosan el akarod vetni az éppen írt hozzászólást?",
 	"discussiontools-replywidget-abandon-discard": "Hozzászólás elvetése",
@@ -50,6 +52,7 @@
 	"discussiontools-replywidget-cancel": "Mégse",
 	"discussiontools-replywidget-feedback": "Visszajelzés küldése erről a szoftverről",
 	"discussiontools-replywidget-loading": "Betöltés…",
+	"discussiontools-replywidget-mention-tool-header": "Felhasználó keresése: $1",
 	"discussiontools-replywidget-mention-tool-title": "Felhasználó megemlítése",
 	"discussiontools-replywidget-mode-source": "Forráskód",
 	"discussiontools-replywidget-mode-visual": "Vizuális",
@@ -64,6 +67,19 @@
 	"discussiontools-replywidget-terms-click": "A „$1” gombra kattintással elfogadod ezen wiki felhasználási feltételeit.",
 	"discussiontools-replywidget-transcluded": "Hozzászólásod a(z) [[$1]] lapon lesz elmentve.",
 	"discussiontools-topicsubscription-button-subscribe": "feliratkozás",
+	"discussiontools-topicsubscription-button-subscribe-tooltip": "Iratkozz fel, hogy értesítést kapj az új hozzászólásokról.",
+	"discussiontools-topicsubscription-button-unsubscribe": "leiratkozás",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Iratkozz le, hogy ne kapj több értesítést.",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Leiratkozás",
+	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Leiratkozol erről a témáról?",
+	"discussiontools-topicsubscription-error-not-found-body": "Az URL-ben megjelölt feliratkozás nem található.",
+	"discussiontools-topicsubscription-error-not-found-title": "Feliratkozás nem található",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Értesítést fogsz kapni, ha új hozzászólások vannak ebben a témában.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Feliratkoztál!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Nem fogsz többé értesítést kapni, ha új hozzászólások vannak ebben a témában.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Leiratkoztál.",
+	"echo-category-title-dt-subscription": "Vitalap feliratkozás",
+	"echo-pref-tooltip-dt-subscription": "Értesítsen a vitalap-feliratkozásaimmal kapcsolatos tevékenységről.",
 	"tag-discussiontools-description": "A DiscussionToolszal végzett szerkesztés",
 	"tag-discussiontools-edit": "Hozzászólás szerkesztése",
 	"tag-discussiontools-edit-description": "A felhasználó egy meglévő hozzászólást szerkesztett a DiscussionToolszal",
@@ -73,6 +89,7 @@
 	"tag-discussiontools-reply-description": "A felhasználó egy hozzászólásra válaszolt a DiscussionToolszal",
 	"tag-discussiontools-source": "forrás",
 	"tag-discussiontools-source-description": "A DiscussionTools forrásmódban volt",
+	"tag-discussiontools-source-enhanced-description": "A DiscussionTools fejlett forrásmódban volt, eszköztárral",
 	"tag-discussiontools-visual": "Vizuális",
 	"tag-discussiontools-visual-description": "A DiscussionTools vizuális módban volt"
 }

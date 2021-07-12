@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-discussiontoolsedit-param-wikitext": "De te plaatsen inhoud als wikitekst. Kan niet samen met <var>html</var> worden gebruikt."
+}
