@@ -319,6 +319,25 @@ function highlightTargetComment( parser ) {
 	}
 }
 
+function clearHighlightTargetComment() {
+	// eslint-disable-next-line no-jquery/no-global-selector
+	var targetElement = $( ':target' )[ 0 ];
+	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
+		// Clear the hash from the URL, triggering the 'hashchange' event and updating the :target
+		// selector (so that our code to clear our highlight works), but without scrolling anywhere.
+		// This is tricky because:
+		// * Using history.pushState() does not trigger 'hashchange' or update the :target selector.
+		//   https://developer.mozilla.org/en-US/docs/Web/API/History/pushState#description
+		//   https://github.com/whatwg/html/issues/639
+		// * Using window.location.hash does, but it also scrolls to the target, which is the top of the
+		//   page for the empty hash.
+		// Instead, we first use window.location.hash to navigate to a *different* hash (whose target
+		// doesn't exist on the page, hopefully), and then use history.pushState() to clear it.
+		window.location.hash += '-DoesNotExist-DiscussionToolsHack';
+		history.replaceState( null, document.title, window.location.href.replace( /#.*$/, '' ) );
+	}
+}
+
 function init( $container, state ) {
 	var
 		activeCommentId = null,
@@ -516,6 +535,12 @@ function init( $container, state ) {
 	);
 
 	$( window ).on( 'hashchange', highlightTargetComment.bind( null, parser ) );
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( 'body' ).on( 'click', function ( e ) {
+		if ( e.which === OO.ui.MouseButtons.LEFT ) {
+			clearHighlightTargetComment();
+		}
+	} );
 	highlightTargetComment( parser );
 }
 
