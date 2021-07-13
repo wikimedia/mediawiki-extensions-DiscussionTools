@@ -137,7 +137,13 @@ class CommentFormatter {
 
 			if ( $threadItem instanceof HeadingItem ) {
 				$threadItem->getRange()->endContainer->setAttribute( 'data-mw-comment', $itemJSON );
-				if ( !$threadItem->isPlaceholderHeading() && $threadItem->getHeadingLevel() === 2 ) {
+				if (
+					!$threadItem->isPlaceholderHeading() &&
+					$threadItem->getHeadingLevel() === 2 &&
+					// Don't show [subscribe] links if the thread doesn't have a useful name, because we won't be able
+					// to send notifications anyway. This happens for sections that contain no comments. (T285796)
+					$threadItem->getName() !== 'h-'
+				) {
 					$headingNode = CommentUtils::closestElement( $threadItem->getRange()->endContainer, [ 'h2' ] );
 
 					if ( $headingNode ) {
