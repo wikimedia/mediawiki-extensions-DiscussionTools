@@ -71,7 +71,7 @@
 	"discussiontools-replywidget-terms-click": "عند ضغطك على «$1»، فإنك {{GENDER:|توافق|توافقين}} على شروط استخدام هذه الويكي.",
 	"discussiontools-replywidget-transcluded": "سيتم حفظ تعليقك في [[$1]].",
 	"discussiontools-signature-prefix": "&#32;",
-	"discussiontools-topicsubscription-button-subscribe": "اشتراك",
+	"discussiontools-topicsubscription-button-subscribe": "متابعة",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "{{GENDER:|تابع لتتلقَّى|تابعي لتتلَقَّيْ}} إشعارات تخص التعليقات الجديدة.",
 	"discussiontools-topicsubscription-button-unsubscribe": "إلغاء المتابعة",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "{{GENDER:|ألغ|ألغي}} المتابعة لإيقاف تلقي الإشعارات.",
