@@ -18,6 +18,7 @@ use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 use ParserOptions;
@@ -98,6 +99,27 @@ class EventDispatcher {
 		$oldParser = self::getParsedRevision( $oldRevRecord );
 		$newParser = self::getParsedRevision( $newRevRecord );
 
+		self::generateEventsFromParsers( $events, $oldParser, $newParser, $newRevRecord, $title, $user );
+	}
+
+	/**
+	 * Helper for generateEventsForRevision(), separated out for easier testing.
+	 *
+	 * @param array &$events
+	 * @param CommentParser $oldParser
+	 * @param CommentParser $newParser
+	 * @param RevisionRecord $newRevRecord
+	 * @param PageIdentity $title
+	 * @param UserIdentity $user
+	 */
+	protected static function generateEventsFromParsers(
+		array &$events,
+		CommentParser $oldParser,
+		CommentParser $newParser,
+		RevisionRecord $newRevRecord,
+		PageIdentity $title,
+		UserIdentity $user
+	) {
 		$newComments = [];
 		foreach ( $newParser->getCommentItems() as $newComment ) {
 			if (
