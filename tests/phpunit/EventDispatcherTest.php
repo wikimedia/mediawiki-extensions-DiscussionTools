@@ -178,6 +178,62 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'X',
 				'../cases/EventDispatcher/notcomments/rev4.json',
 			],
+			// Multiple edits within a minute adding comments by the same user.
+			// See T285528#7177220 for more detail about each case.
+			[
+				'cases/EventDispatcher/sametime/rev1.txt',
+				'cases/EventDispatcher/sametime/rev2.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev2.json',
+			],
+			[
+				'cases/EventDispatcher/sametime/rev2.txt',
+				'cases/EventDispatcher/sametime/rev3-case1.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev3-case1.json',
+			],
+			[
+				'cases/EventDispatcher/sametime/rev2.txt',
+				'cases/EventDispatcher/sametime/rev3-case2.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev3-case2.json',
+			],
+			[
+				'cases/EventDispatcher/sametime/rev2.txt',
+				'cases/EventDispatcher/sametime/rev3-case3.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev3-case3.json',
+			],
+			[
+				'cases/EventDispatcher/sametime/rev2.txt',
+				'cases/EventDispatcher/sametime/rev3-case4.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev3-case4.json',
+			],
+			[
+				'cases/EventDispatcher/sametime/rev2.txt',
+				'cases/EventDispatcher/sametime/rev3-case5.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev3-case5.json',
+			],
+			[
+				'cases/EventDispatcher/sametime/rev1b.txt',
+				'cases/EventDispatcher/sametime/rev2b.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev2b.json',
+			],
+			[
+				'cases/EventDispatcher/sametime/rev2b.txt',
+				'cases/EventDispatcher/sametime/rev3b-case6.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev3b-case6.json',
+			],
+			[
+				'cases/EventDispatcher/sametime/rev2b.txt',
+				'cases/EventDispatcher/sametime/rev3b-case7.txt',
+				'Z',
+				'../cases/EventDispatcher/sametime/rev3b-case7.json',
+			],
 		];
 	}
 
