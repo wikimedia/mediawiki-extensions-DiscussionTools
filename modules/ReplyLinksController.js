@@ -164,8 +164,10 @@ ReplyLinksController.prototype.teardown = function () {
 	}
 
 	this.$replyLinks.off( 'click keypress', this.onReplyLinkClickHandler );
-	this.$addSectionLink.off( 'click keypress', this.onAddSectionLinkClickHandler );
-	this.$body.off( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
+	if ( this.$addSectionLink ) {
+		this.$addSectionLink.off( 'click keypress', this.onAddSectionLinkClickHandler );
+		this.$body.off( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
+	}
 };
 
 module.exports = ReplyLinksController;
