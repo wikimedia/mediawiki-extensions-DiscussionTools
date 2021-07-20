@@ -8,6 +8,8 @@
 	"apierror-discussiontools-commentid-notfound": "Nie odnaleziono komentarza z ID '$1'.",
 	"apierror-discussiontools-commentname-ambiguous": "Odnaleziono więcej niż jeden komentarz z nazwą '$1', użyj parametru ID.",
 	"apierror-discussiontools-commentname-notfound": "Nie odnaleziono komentarza z nazwą '$1'.",
+	"apierror-discussiontools-subscription-failed-add": "Nie udało się zasubskrybować tego tematu.",
+	"apierror-discussiontools-subscription-failed-remove": "Nie udało się anulować subskrypcji tego tematu.",
 	"apihelp-discussiontools-param-oldid": "Numer wersji do użycia (domyślnie ostatnia wersja).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Zwróć tytuły stron, z których transkludowane są komentarze obecne na danej stronie.",
 	"apihelp-discussiontools-summary": "Zwraca metadane niezbędne do zainicjowania narzędzi dyskusji.",
@@ -18,5 +20,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Treść do dodania, jako wikitekst. Nie może być użyte wraz z <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Dodaj nowy komentarz jako odpowiedź do istniejącego komentarza.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Dodaj nową sekcję dyskusji i pierwszy komentarz w niej.",
-	"apihelp-discussiontoolsedit-summary": "Wyślij wiadomość na stronie dyskusji."
+	"apihelp-discussiontoolsedit-summary": "Wyślij wiadomość na stronie dyskusji.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Włącz, aby subskrybować; wyłącz, aby zrezygnować z subskrypcji",
+	"apihelp-discussiontoolssubscribe-summary": "Subskrybuj (lub anuluj subskrypcję), aby otrzymywać powiadomienia o komentarzach w danym temacie."
 }
