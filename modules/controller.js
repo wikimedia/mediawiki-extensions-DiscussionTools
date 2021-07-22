@@ -546,7 +546,8 @@ function init( $container, state ) {
 
 function update( data, comment, pageName, replyWidget ) {
 	var api = getApi(),
-		pageUpdated = $.Deferred();
+		pageUpdated = $.Deferred(),
+		$content;
 
 	// We posted a new comment, clear the cache, because wgCurRevisionId will not change if we posted
 	// to a transcluded page (T266275)
@@ -560,7 +561,8 @@ function update( data, comment, pageName, replyWidget ) {
 	// Update page state
 	if ( pageName === mw.config.get( 'wgRelevantPageName' ) ) {
 		// We can use the result from the VisualEditor API
-		$pageContainer.html( data.content );
+		$content = $( $.parseHTML( data.content ) );
+		$pageContainer.find( '.mw-parser-output' ).replaceWith( $content );
 		mw.config.set( {
 			wgCurRevisionId: data.newrevid,
 			wgRevisionId: data.newrevid
@@ -592,7 +594,8 @@ function update( data, comment, pageName, replyWidget ) {
 				page: mw.config.get( 'wgRelevantPageName' )
 			} );
 		} ).then( function ( parseResp ) {
-			$pageContainer.html( parseResp.parse.text );
+			$content = $( $.parseHTML( parseResp.parse.text ) );
+			$pageContainer.find( '.mw-parser-output' ).replaceWith( $content );
 			mw.config.set( parseResp.parse.jsconfigvars );
 			mw.loader.load( parseResp.parse.modulestyles );
 			mw.loader.load( parseResp.parse.modules );
