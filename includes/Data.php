@@ -71,6 +71,8 @@ class Data {
 
 		$data['specialContributionsName'] = MediaWikiServices::getInstance()
 			->getSpecialPageFactory()->getLocalNameFor( 'Contributions' );
+		$data['specialNewSectionName'] = MediaWikiServices::getInstance()
+			->getSpecialPageFactory()->getLocalNameFor( 'NewSection' );
 
 		$localTimezone = $config->get( 'Localtimezone' );
 		// Return all timezone abbreviations for the local timezone (there will often be two, for
