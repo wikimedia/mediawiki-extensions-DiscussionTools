@@ -26,6 +26,7 @@ class TagHooks implements
 		'discussiontools-reply',
 		'discussiontools-edit',
 		'discussiontools-newtopic',
+		'discussiontools-added-comment',
 		// Input methods:
 		'discussiontools-source',
 		'discussiontools-visual',

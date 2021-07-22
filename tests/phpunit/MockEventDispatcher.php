@@ -42,4 +42,12 @@ class MockEventDispatcher extends EventDispatcher {
 		);
 	}
 
+	/**
+	 * No-op for testing
+	 *
+	 * @param RevisionRecord $newRevRecord
+	 */
+	public static function addCommentChangeTag( RevisionRecord $newRevRecord ) {
+	}
+
 }
