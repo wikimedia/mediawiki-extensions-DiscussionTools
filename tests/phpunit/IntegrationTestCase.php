@@ -14,7 +14,7 @@ abstract class IntegrationTestCase extends MediaWikiTestCase {
 	 * @param array $config
 	 * @param array $data
 	 */
-	protected function setupEnv( array $config, array $data ) : void {
+	protected function setupEnv( array $config, array $data ): void {
 		$this->setMwGlobals( $config );
 		$this->setMwGlobals( [
 			'wgArticlePath' => $config['wgArticlePath'],

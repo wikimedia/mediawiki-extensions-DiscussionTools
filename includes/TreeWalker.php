@@ -46,7 +46,7 @@ class TreeWalker {
 	 *
 	 * @return DOMNode|null The current node
 	 */
-	public function nextNode() : ?DOMNode {
+	public function nextNode(): ?DOMNode {
 		$node = $this->currentNode;
 		$result = NodeFilter::FILTER_ACCEPT;
 

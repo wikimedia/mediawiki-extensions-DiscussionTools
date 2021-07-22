@@ -41,7 +41,7 @@ class PageHooks implements
 	 * @param Skin $skin
 	 * @return void This hook must not abort, it must return no value
 	 */
-	public function onBeforePageDisplay( $output, $skin ) : void {
+	public function onBeforePageDisplay( $output, $skin ): void {
 		$user = $output->getUser();
 		// Load style modules if the tools can be available for the title
 		// as this means the DOM may have been modified in the parser cache.

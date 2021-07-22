@@ -44,21 +44,21 @@ class SubscriptionItem {
 	/**
 	 * @return UserIdentity
 	 */
-	public function getUserIdentity() : UserIdentity {
+	public function getUserIdentity(): UserIdentity {
 		return $this->user;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getItemName() : string {
+	public function getItemName(): string {
 		return $this->itemName;
 	}
 
 	/**
 	 * @return LinkTarget
 	 */
-	public function getLinkTarget() : LinkTarget {
+	public function getLinkTarget(): LinkTarget {
 		return $this->linkTarget;
 	}
 
@@ -85,7 +85,7 @@ class SubscriptionItem {
 	 *
 	 * @return bool
 	 */
-	public function isMuted() : bool {
+	public function isMuted(): bool {
 		return $this->state === 0;
 	}
 }

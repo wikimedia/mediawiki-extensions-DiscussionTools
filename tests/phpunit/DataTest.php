@@ -14,7 +14,7 @@ class DataTest extends IntegrationTestCase {
 	 * @dataProvider provideLocalData
 	 * @covers ::getLocalData
 	 */
-	public function testGetLocalData( string $langCode, array $config, string $expectedPath ) : void {
+	public function testGetLocalData( string $langCode, array $config, string $expectedPath ): void {
 		$conf = new HashConfig( $config + [
 			'ContentLanguage' => $langCode,
 			'TranslateNumerals' => true,
@@ -32,7 +32,7 @@ class DataTest extends IntegrationTestCase {
 		self::assertEquals( $expectedData, $data );
 	}
 
-	public function provideLocalData() : array {
+	public function provideLocalData(): array {
 		return [
 			// Boring
 			[ 'en', [], '../cases/datatest-en.json' ],

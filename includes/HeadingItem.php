@@ -22,7 +22,7 @@ class HeadingItem extends ThreadItem {
 	/**
 	 * @return array JSON-serializable array
 	 */
-	public function jsonSerialize() : array {
+	public function jsonSerialize(): array {
 		return array_merge( parent::jsonSerialize(), [
 			'headingLevel' => $this->headingLevel,
 			'placeholderHeading' => $this->placeholderHeading,
@@ -34,7 +34,7 @@ class HeadingItem extends ThreadItem {
 	 *
 	 * @return string Title
 	 */
-	public function getLinkableTitle() : string {
+	public function getLinkableTitle(): string {
 		$title = '';
 		// If this comment is in 0th section, there's no section title for the edit summary
 		if ( !$this->isPlaceholderHeading() ) {
@@ -55,28 +55,28 @@ class HeadingItem extends ThreadItem {
 	/**
 	 * @return int Heading level (1-6)
 	 */
-	public function getHeadingLevel() : int {
+	public function getHeadingLevel(): int {
 		return $this->headingLevel;
 	}
 
 	/**
 	 * @param int $headingLevel Heading level (1-6)
 	 */
-	public function setHeadingLevel( int $headingLevel ) : void {
+	public function setHeadingLevel( int $headingLevel ): void {
 		$this->headingLevel = $headingLevel;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function isPlaceholderHeading() : bool {
+	public function isPlaceholderHeading(): bool {
 		return $this->placeholderHeading;
 	}
 
 	/**
 	 * @param bool $placeholderHeading
 	 */
-	public function setPlaceholderHeading( bool $placeholderHeading ) : void {
+	public function setPlaceholderHeading( bool $placeholderHeading ): void {
 		$this->placeholderHeading = $placeholderHeading;
 	}
 }

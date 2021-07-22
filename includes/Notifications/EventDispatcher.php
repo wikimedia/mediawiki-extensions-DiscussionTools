@@ -30,7 +30,7 @@ class EventDispatcher {
 	 * @param RevisionRecord $revRecord
 	 * @return CommentParser
 	 */
-	private static function getParsedRevision( RevisionRecord $revRecord ) : CommentParser {
+	private static function getParsedRevision( RevisionRecord $revRecord ): CommentParser {
 		$services = MediaWikiServices::getInstance();
 
 		$pageRecord = $services->getPageStore()->getPageByReference( $revRecord->getPage() );

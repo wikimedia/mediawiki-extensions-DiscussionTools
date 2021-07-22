@@ -32,7 +32,7 @@ class CommentParserTest extends IntegrationTestCase {
 	 */
 	private static function getOffsetPath(
 		DOMElement $ancestor, DOMNode $node, int $nodeOffset
-	) : string {
+	): string {
 		if ( $node->nodeType === XML_TEXT_NODE ) {
 			$str = substr( $node->nodeValue, 0, $nodeOffset );
 			// Count characters that require two code units to encode in UTF-16
@@ -51,7 +51,7 @@ class CommentParserTest extends IntegrationTestCase {
 		return implode( '/', $path );
 	}
 
-	private static function serializeComments( ThreadItem &$threadItem, DOMElement $root ) : stdClass {
+	private static function serializeComments( ThreadItem &$threadItem, DOMElement $root ): stdClass {
 		$serialized = new stdClass();
 
 		if ( $threadItem instanceof HeadingItem ) {
@@ -107,7 +107,7 @@ class CommentParserTest extends IntegrationTestCase {
 	 */
 	public function testGetTimestampRegexp(
 		string $format, string $expected, string $message
-	) : void {
+	): void {
 		$parser = TestingAccessWrapper::newFromObject(
 			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
 		);
@@ -122,7 +122,7 @@ class CommentParserTest extends IntegrationTestCase {
 		self::assertSame( $expected, $result, $message );
 	}
 
-	public function provideTimestampRegexps() : array {
+	public function provideTimestampRegexps(): array {
 		return self::getJson( '../cases/timestamp-regex.json' );
 	}
 
@@ -132,7 +132,7 @@ class CommentParserTest extends IntegrationTestCase {
 	 */
 	public function testGetTimestampParser(
 		string $format, array $data, string $expected, string $message
-	) : void {
+	): void {
 		$parser = TestingAccessWrapper::newFromObject(
 			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
 		);
@@ -143,7 +143,7 @@ class CommentParserTest extends IntegrationTestCase {
 		self::assertEquals( $expected, $tsParser( $data ), $message );
 	}
 
-	public function provideTimestampParser() : array {
+	public function provideTimestampParser(): array {
 		return self::getJson( '../cases/timestamp-parser.json' );
 	}
 
@@ -154,7 +154,7 @@ class CommentParserTest extends IntegrationTestCase {
 	public function testGetTimestampParserDST(
 		string $sample, string $expected, string $expectedUtc, string $format,
 		string $timezone, array $timezoneAbbrs, string $message
-	) : void {
+	): void {
 		$parser = TestingAccessWrapper::newFromObject(
 			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
 		);
@@ -172,7 +172,7 @@ class CommentParserTest extends IntegrationTestCase {
 		self::assertEquals( $expectedUtc, $date, $message );
 	}
 
-	public function provideTimestampParserDST() : array {
+	public function provideTimestampParserDST(): array {
 		return self::getJson( '../cases/timestamp-parser-dst.json' );
 	}
 
@@ -182,7 +182,7 @@ class CommentParserTest extends IntegrationTestCase {
 	 */
 	public function testGetThreads(
 		string $name, string $dom, string $expected, string $config, string $data
-	) : void {
+	): void {
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -214,7 +214,7 @@ class CommentParserTest extends IntegrationTestCase {
 		}
 	}
 
-	public function provideComments() : array {
+	public function provideComments(): array {
 		return self::getJson( '../cases/comments.json' );
 	}
 

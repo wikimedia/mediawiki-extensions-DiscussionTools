@@ -39,7 +39,7 @@ abstract class ThreadItem implements JsonSerializable {
 	/**
 	 * @return array JSON-serializable array
 	 */
-	public function jsonSerialize() : array {
+	public function jsonSerialize(): array {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See ThreadItem.static.newFromJSON in JS.
@@ -61,7 +61,7 @@ abstract class ThreadItem implements JsonSerializable {
 	 *
 	 * @return string[] Author usernames
 	 */
-	public function getAuthorsBelow() : array {
+	public function getAuthorsBelow(): array {
 		$authors = [];
 		$getAuthorSet = static function ( ThreadItem $comment ) use ( &$authors, &$getAuthorSet ) {
 			if ( $comment instanceof CommentItem ) {
@@ -139,7 +139,7 @@ abstract class ThreadItem implements JsonSerializable {
 	 *
 	 * @return string HTML
 	 */
-	public function getHTML() : string {
+	public function getHTML(): string {
 		$fragment = $this->getRange()->cloneContents();
 		CommentModifier::unwrapFragment( $fragment );
 		$container = $fragment->ownerDocument->createElement( 'div' );
@@ -152,7 +152,7 @@ abstract class ThreadItem implements JsonSerializable {
 	 *
 	 * @return string Text
 	 */
-	public function getText() : string {
+	public function getText(): string {
 		$fragment = $this->getRange()->cloneContents();
 		return $fragment->textContent;
 	}
@@ -160,77 +160,77 @@ abstract class ThreadItem implements JsonSerializable {
 	/**
 	 * @return string Thread item type
 	 */
-	public function getType() : string {
+	public function getType(): string {
 		return $this->type;
 	}
 
 	/**
 	 * @return int Indentation level
 	 */
-	public function getLevel() : int {
+	public function getLevel(): int {
 		return $this->level;
 	}
 
 	/**
 	 * @return ThreadItem|null Parent thread item
 	 */
-	public function getParent() : ?ThreadItem {
+	public function getParent(): ?ThreadItem {
 		return $this->parent;
 	}
 
 	/**
 	 * @return ImmutableRange Range of the entire thread item
 	 */
-	public function getRange() : ImmutableRange {
+	public function getRange(): ImmutableRange {
 		return $this->range;
 	}
 
 	/**
 	 * @return DOMNode Root node (level is relative to this node)
 	 */
-	public function getRootNode() : DOMNode {
+	public function getRootNode(): DOMNode {
 		return $this->rootNode;
 	}
 
 	/**
 	 * @return string Thread item name
 	 */
-	public function getName() : string {
+	public function getName(): string {
 		return $this->name;
 	}
 
 	/**
 	 * @return string Thread ID
 	 */
-	public function getId() : string {
+	public function getId(): string {
 		return $this->id;
 	}
 
 	/**
 	 * @return string|null Thread ID, according to an older algorithm
 	 */
-	public function getLegacyId() : ?string {
+	public function getLegacyId(): ?string {
 		return $this->legacyId;
 	}
 
 	/**
 	 * @return ThreadItem[] Replies to this thread item
 	 */
-	public function getReplies() : array {
+	public function getReplies(): array {
 		return $this->replies;
 	}
 
 	/**
 	 * @return string[] Warnings
 	 */
-	public function getWarnings() : array {
+	public function getWarnings(): array {
 		return $this->warnings;
 	}
 
 	/**
 	 * @param int $level Indentation level
 	 */
-	public function setLevel( int $level ) : void {
+	public function setLevel( int $level ): void {
 		$this->level = $level;
 	}
 
@@ -244,56 +244,56 @@ abstract class ThreadItem implements JsonSerializable {
 	/**
 	 * @param ImmutableRange $range Thread item range
 	 */
-	public function setRange( ImmutableRange $range ) : void {
+	public function setRange( ImmutableRange $range ): void {
 		$this->range = $range;
 	}
 
 	/**
 	 * @param DOMNode $rootNode Root node (level is relative to this node)
 	 */
-	public function setRootNode( DOMNode $rootNode ) : void {
+	public function setRootNode( DOMNode $rootNode ): void {
 		$this->rootNode = $rootNode;
 	}
 
 	/**
 	 * @param string|null $name Thread item name
 	 */
-	public function setName( ?string $name ) : void {
+	public function setName( ?string $name ): void {
 		$this->name = $name;
 	}
 
 	/**
 	 * @param string|null $id Thread ID
 	 */
-	public function setId( ?string $id ) : void {
+	public function setId( ?string $id ): void {
 		$this->id = $id;
 	}
 
 	/**
 	 * @param string|null $id Thread ID
 	 */
-	public function setLegacyId( ?string $id ) : void {
+	public function setLegacyId( ?string $id ): void {
 		$this->legacyId = $id;
 	}
 
 	/**
 	 * @param string $warning
 	 */
-	public function addWarning( string $warning ) : void {
+	public function addWarning( string $warning ): void {
 		$this->warnings[] = $warning;
 	}
 
 	/**
 	 * @param string[] $warnings
 	 */
-	public function addWarnings( array $warnings ) : void {
+	public function addWarnings( array $warnings ): void {
 		$this->warnings = array_merge( $this->warnings, $warnings );
 	}
 
 	/**
 	 * @param ThreadItem $reply Reply comment
 	 */
-	public function addReply( ThreadItem $reply ) : void {
+	public function addReply( ThreadItem $reply ): void {
 		$this->replies[] = $reply;
 	}
 }

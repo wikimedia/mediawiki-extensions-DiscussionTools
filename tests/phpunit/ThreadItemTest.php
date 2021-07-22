@@ -18,12 +18,12 @@ class ThreadItemTest extends IntegrationTestCase {
 	 * @dataProvider provideAuthors
 	 * @covers ::getAuthorsBelow
 	 */
-	public function testGetAuthorsBelow( array $thread, array $expected ) : void {
+	public function testGetAuthorsBelow( array $thread, array $expected ): void {
 		$doc = $this->createDocument( '' );
 		$node = $doc->createElement( 'div' );
 		$range = new ImmutableRange( $node, 0, $node, 0 );
 
-		$makeThreadItem = static function ( array $arr ) use ( &$makeThreadItem, $range ) : ThreadItem {
+		$makeThreadItem = static function ( array $arr ) use ( &$makeThreadItem, $range ): ThreadItem {
 			if ( $arr['type'] === 'comment' ) {
 				$item = new CommentItem( 1, $range, [], 'TIMESTAMP', $arr['author'] );
 			} else {
@@ -40,7 +40,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		self::assertEquals( $expected, $threadItem->getAuthorsBelow() );
 	}
 
-	public function provideAuthors() : array {
+	public function provideAuthors(): array {
 		return self::getJson( '../cases/authors.json' );
 	}
 
@@ -51,7 +51,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	 */
 	public function testGetTranscludedFrom(
 		string $name, string $dom, string $expected, string $config, string $data
-	) : void {
+	): void {
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -85,7 +85,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		);
 	}
 
-	public function provideTranscludedFrom() : array {
+	public function provideTranscludedFrom(): array {
 		return self::getJson( '../cases/transcluded.json' );
 	}
 

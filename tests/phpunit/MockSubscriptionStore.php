@@ -25,7 +25,7 @@ class MockSubscriptionStore extends SubscriptionStore {
 		?array $itemNames = null,
 		?int $state = null,
 		array $options = []
-	) : array {
+	): array {
 		return [];
 	}
 

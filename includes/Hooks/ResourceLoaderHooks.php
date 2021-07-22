@@ -24,7 +24,7 @@ class ResourceLoaderHooks implements
 	 * @param string $skin Current skin name to restrict config variables to a certain skin
 	 * @param Config $config
 	 */
-	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ) : void {
+	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'discussiontools' );
 

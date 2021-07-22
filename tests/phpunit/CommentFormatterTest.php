@@ -16,7 +16,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 	 */
 	public function testAddDiscussionToolsInternal(
 		string $name, string $dom, string $expected, string $config, string $data
-	) : void {
+	): void {
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getText( $expected );
@@ -49,7 +49,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		self::assertEquals( $expected, $actual, $name );
 	}
 
-	public function provideAddDiscussionToolsInternal() : array {
+	public function provideAddDiscussionToolsInternal(): array {
 		return self::getJson( '../cases/formattedreply.json' );
 	}
 

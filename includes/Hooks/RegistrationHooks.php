@@ -12,7 +12,7 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 use ConfigException;
 
 class RegistrationHooks {
-	public static function onRegistration() : void {
+	public static function onRegistration(): void {
 		// Use globals instead of Config. Accessing it so early blows up unrelated extensions (T255704).
 		global $wgLocaltimezone, $wgFragmentMode;
 		// HACK: Do not run these tests on CI as the globals are not configured.

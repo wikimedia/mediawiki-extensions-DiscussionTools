@@ -21,7 +21,7 @@ class CommentModifier {
 	 *
 	 * @param DOMElement $listItem
 	 */
-	private static function whitespaceParsoidHack( DOMElement $listItem ) : void {
+	private static function whitespaceParsoidHack( DOMElement $listItem ): void {
 		// HACK: Setting data-parsoid removes the whitespace after the list item,
 		// which makes nested lists work.
 		// This is undocumented behaviour and probably very fragile.
@@ -34,7 +34,7 @@ class CommentModifier {
 	 * @param string $wikitext
 	 * @return string
 	 */
-	public static function sanitizeWikitextLinebreaks( string $wikitext ) : string {
+	public static function sanitizeWikitextLinebreaks( string $wikitext ): string {
 		$wikitext = CommentUtils::htmlTrim( $wikitext );
 		$wikitext = preg_replace( "/\r/", "\n", $wikitext );
 		$wikitext = preg_replace( "/\n+/", "\n", $wikitext );
@@ -48,7 +48,7 @@ class CommentModifier {
 	 * @param CommentItem $comment
 	 * @param DOMElement $linkNode Reply link
 	 */
-	public static function addReplyLink( CommentItem $comment, DOMElement $linkNode ) : void {
+	public static function addReplyLink( CommentItem $comment, DOMElement $linkNode ): void {
 		$target = $comment->getRange()->endContainer;
 
 		// Insert the link before trailing whitespace.
@@ -78,7 +78,7 @@ class CommentModifier {
 	 * @param ThreadItem $comment
 	 * @return DOMElement
 	 */
-	public static function addListItem( ThreadItem $comment ) : DOMElement {
+	public static function addListItem( ThreadItem $comment ): DOMElement {
 		$listTypeMap = [
 			'li' => 'ul',
 			'dd' => 'dl'
@@ -281,7 +281,7 @@ class CommentModifier {
 	 * @param string $type Element type
 	 * @return bool
 	 */
-	private static function allOfType( array $nodes, string $type ) : bool {
+	private static function allOfType( array $nodes, string $type ): bool {
 		$hasElements = false;
 		foreach ( $nodes as $node ) {
 			if ( $node->nodeType === XML_ELEMENT_NODE ) {
@@ -343,7 +343,7 @@ class CommentModifier {
 	 * @param DOMnode $list DOM node, will be wrapped if it is a list element (dl/ol/ul)
 	 * @param DOMDocumentFragment|null $fragment Containing document fragment if list has no parent
 	 */
-	public static function unwrapList( DOMnode $list, ?DOMDocumentFragment $fragment = null ) : void {
+	public static function unwrapList( DOMnode $list, ?DOMDocumentFragment $fragment = null ): void {
 		$doc = $list->ownerDocument;
 		$container = $fragment ?: $list->parentNode;
 		$referenceNode = $list;
@@ -407,7 +407,7 @@ class CommentModifier {
 	 * @param DOMElement $previousItem
 	 * @return DOMElement
 	 */
-	public static function addSiblingListItem( DOMElement $previousItem ) : DOMElement {
+	public static function addSiblingListItem( DOMElement $previousItem ): DOMElement {
 		$listItem = $previousItem->ownerDocument->createElement( $previousItem->tagName );
 		self::whitespaceParsoidHack( $listItem );
 		$previousItem->parentNode->insertBefore( $listItem, $previousItem->nextSibling );
@@ -421,7 +421,7 @@ class CommentModifier {
 	 * @param string $wikitext
 	 * @return DOMElement
 	 */
-	public static function createWikitextNode( DOMDocument $doc, string $wikitext ) : DOMElement {
+	public static function createWikitextNode( DOMDocument $doc, string $wikitext ): DOMElement {
 		$span = $doc->createElement( 'span' );
 
 		$span->setAttribute( 'typeof', 'mw:Transclusion' );
@@ -436,7 +436,7 @@ class CommentModifier {
 	 * @param string $wikitext
 	 * @return bool
 	 */
-	public static function isWikitextSigned( string $wikitext ) : bool {
+	public static function isWikitextSigned( string $wikitext ): bool {
 		$wikitext = CommentUtils::htmlTrim( $wikitext );
 		// Contains ~~~~ (four tildes), but not ~~~~~ (five tildes), at the end.
 		return (bool)preg_match( '/([^~]|^)~~~~$/', $wikitext );
@@ -448,7 +448,7 @@ class CommentModifier {
 	 * @param DOMElement $container
 	 * @return bool
 	 */
-	public static function isHtmlSigned( DOMElement $container ) : bool {
+	public static function isHtmlSigned( DOMElement $container ): bool {
 		$xpath = new DOMXPath( $container->ownerDocument );
 		// Good enough?…
 		$matches = $xpath->query( './/span[@typeof="mw:Transclusion"][contains(@data-mw,"~~~~")]', $container );
@@ -480,7 +480,7 @@ class CommentModifier {
 	 *
 	 * @param DOMElement $container
 	 */
-	public static function appendSignature( DOMElement $container ) : void {
+	public static function appendSignature( DOMElement $container ): void {
 		$doc = $container->ownerDocument;
 
 		$signature = wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';

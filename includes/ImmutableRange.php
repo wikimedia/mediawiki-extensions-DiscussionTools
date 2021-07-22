@@ -34,7 +34,7 @@ class ImmutableRange {
 	 * @param DOMNode $b
 	 * @return DOMNode Common ancestor container
 	 */
-	private static function findCommonAncestorContainer( DOMNode $a, DOMNode $b ) : DOMNode {
+	private static function findCommonAncestorContainer( DOMNode $a, DOMNode $b ): DOMNode {
 		$ancestorsA = [];
 		$ancestorsB = [];
 
@@ -64,7 +64,7 @@ class ImmutableRange {
 	 * @param DOMNode $node
 	 * @return DOMNode
 	 */
-	private static function getRootNode( DOMNode $node ) : DOMNode {
+	private static function getRootNode( DOMNode $node ): DOMNode {
 		while ( $node->parentNode ) {
 			$node = $node->parentNode;
 		}
@@ -122,7 +122,7 @@ class ImmutableRange {
 	 * @param int $startOffset
 	 * @return self
 	 */
-	public function setStart( DOMNode $startNode, int $startOffset ) : self {
+	public function setStart( DOMNode $startNode, int $startOffset ): self {
 		return new self(
 			$startNode, $startOffset, $this->mEndContainer, $this->mEndOffset
 		);
@@ -135,7 +135,7 @@ class ImmutableRange {
 	 * @param int $endOffset
 	 * @return self
 	 */
-	public function setEnd( DOMNode $endNode, int $endOffset ) : self {
+	public function setEnd( DOMNode $endNode, int $endOffset ): self {
 		return new self(
 			$this->mStartContainer, $this->mStartOffset, $endNode, $endOffset
 		);
@@ -150,7 +150,7 @@ class ImmutableRange {
 	 * @param DOMNode $node The Node to check against.
 	 * @return bool
 	 */
-	private function isPartiallyContainedNode( DOMNode $node ) : bool {
+	private function isPartiallyContainedNode( DOMNode $node ): bool {
 		$isAncestorOfStart = CommentUtils::contains( $node, $this->mStartContainer );
 		$isAncestorOfEnd = CommentUtils::contains( $node, $this->mEndContainer );
 
@@ -167,7 +167,7 @@ class ImmutableRange {
 	 * @param DOMNode $node The Node to check against.
 	 * @return bool
 	 */
-	private function isFullyContainedNode( DOMNode $node ) : bool {
+	private function isFullyContainedNode( DOMNode $node ): bool {
 		$startBP = [ $this->mStartContainer, $this->mStartOffset ];
 		$endBP = [ $this->mEndContainer, $this->mEndOffset ];
 		$root = self::getRootNode( $this->mStartContainer );
@@ -186,7 +186,7 @@ class ImmutableRange {
 	 *
 	 * @return DOMDocumentFragment
 	 */
-	public function cloneContents() : DOMDocumentFragment {
+	public function cloneContents(): DOMDocumentFragment {
 		$ownerDocument = $this->mStartContainer->ownerDocument;
 		$fragment = $ownerDocument->createDocumentFragment();
 
@@ -347,7 +347,7 @@ class ImmutableRange {
 	 * @param DOMNode $node The Node to be inserted.
 	 * @return void
 	 */
-	public function insertNode( DOMNode $node ) : void {
+	public function insertNode( DOMNode $node ): void {
 		if ( ( $this->mStartContainer instanceof DOMProcessingInstruction
 				|| $this->mStartContainer instanceof DOMComment )
 			|| ( $this->mStartContainer instanceof DOMText
@@ -414,7 +414,7 @@ class ImmutableRange {
 	private function computePosition(
 		array $boundaryPointA,
 		array $boundaryPointB
-	) : string {
+	): string {
 		if ( $boundaryPointA[0] === $boundaryPointB[0] ) {
 			if ( $boundaryPointA[1] === $boundaryPointB[1] ) {
 				return 'equal';

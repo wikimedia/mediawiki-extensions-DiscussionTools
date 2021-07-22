@@ -32,7 +32,7 @@ class CommentFormatter {
 	 * @param DOMElement $container
 	 * @return CommentParser
 	 */
-	protected static function getParser( DOMElement $container ) : CommentParser {
+	protected static function getParser( DOMElement $container ): CommentParser {
 		return CommentParser::newFromGlobalState( $container );
 	}
 
@@ -41,7 +41,7 @@ class CommentFormatter {
 	 *
 	 * @param string &$text Parser text output
 	 */
-	public static function addDiscussionTools( string &$text ) : void {
+	public static function addDiscussionTools( string &$text ): void {
 		$start = microtime( true );
 
 		// Never add tools twice.
@@ -80,7 +80,7 @@ class CommentFormatter {
 	 * @param string $html HTML
 	 * @return string HTML with discussion tools
 	 */
-	protected static function addDiscussionToolsInternal( string $html ) : string {
+	protected static function addDiscussionToolsInternal( string $html ): string {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
@@ -211,7 +211,7 @@ class CommentFormatter {
 	 */
 	public static function postprocessTopicSubscription(
 		string $text, Language $lang, SubscriptionStore $subscriptionStore, UserIdentity $user
-	) : string {
+	): string {
 		$doc = new DOMDocument();
 
 		$matches = [];

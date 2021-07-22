@@ -19,7 +19,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 */
 	public function testAddListItem(
 		string $name, string $dom, string $expected, string $config, string $data
-	) : void {
+	): void {
 		$origPath = $dom;
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
@@ -55,7 +55,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		// removeAddedListItem is not implemented on the server
 	}
 
-	public function provideAddListItem() : array {
+	public function provideAddListItem(): array {
 		return self::getJson( '../cases/modified.json' );
 	}
 
@@ -65,7 +65,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 */
 	public function testAddReplyLink(
 		string $name, string $dom, string $expected, string $config, string $data
-	) : void {
+	): void {
 		$origPath = $dom;
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
@@ -99,7 +99,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		self::assertEquals( $expectedDoc->saveHtml(), $doc->saveHtml(), $name );
 	}
 
-	public function provideAddReplyLink() : array {
+	public function provideAddReplyLink(): array {
 		return self::getJson( '../cases/reply.json' );
 	}
 
@@ -107,7 +107,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 * @dataProvider provideUnwrapList
 	 * @covers ::unwrapList
 	 */
-	public function testUnwrapList( string $name, string $html, int $index, string $expected ) : void {
+	public function testUnwrapList( string $name, string $html, int $index, string $expected ): void {
 		$doc = self::createDocument( '' );
 		$container = $doc->createElement( 'div' );
 
@@ -117,7 +117,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		self::assertEquals( $expected, DOMCompat::getInnerHTML( $container ) );
 	}
 
-	public function provideUnwrapList() : array {
+	public function provideUnwrapList(): array {
 		return self::getJson( '../cases/unwrap.json' );
 	}
 
@@ -127,7 +127,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 */
 	public function testIsWikitextSigned(
 		string $msg, string $wikitext, bool $expected
-	) : void {
+	): void {
 		self::assertEquals(
 			$expected,
 			CommentModifier::isWikitextSigned( $wikitext ),
@@ -135,7 +135,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		);
 	}
 
-	public function provideIsWikitextSigned() : array {
+	public function provideIsWikitextSigned(): array {
 		return self::getJson( '../cases/isWikitextSigned.json' );
 	}
 
@@ -145,7 +145,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 */
 	public function testIsHtmlSigned(
 		string $msg, string $html, bool $expected
-	) : void {
+	): void {
 		$doc = self::createDocument( '' );
 		$container = $doc->createElement( 'div' );
 		DOMCompat::setInnerHTML( $container, $html );
@@ -157,7 +157,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		);
 	}
 
-	public function provideIsHtmlSigned() : array {
+	public function provideIsHtmlSigned(): array {
 		return self::getJson( '../cases/isHtmlSigned.json' );
 	}
 
@@ -167,7 +167,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 */
 	public function testAppendSignature(
 		string $msg, string $html, string $expected
-	) : void {
+	): void {
 		$doc = self::createDocument( '' );
 		$container = $doc->createElement( 'div' );
 		DOMCompat::setInnerHTML( $container, $html );
@@ -181,7 +181,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		);
 	}
 
-	public function provideAppendSignature() : array {
+	public function provideAppendSignature(): array {
 		return self::getJson( '../cases/appendSignature.json' );
 	}
 
@@ -189,7 +189,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 * @dataProvider provideSanitizeWikitextLinebreaks
 	 * @covers ::sanitizeWikitextLinebreaks
 	 */
-	public function testSanitizeWikitextLinebreaks( string $msg, string $wikitext, string $expected ) : void {
+	public function testSanitizeWikitextLinebreaks( string $msg, string $wikitext, string $expected ): void {
 		self::assertEquals(
 			$expected,
 			CommentModifier::sanitizeWikitextLinebreaks( $wikitext ),
@@ -197,7 +197,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		);
 	}
 
-	public function provideSanitizeWikitextLinebreaks() : array {
+	public function provideSanitizeWikitextLinebreaks(): array {
 		return self::getJson( '../cases/sanitize-wikitext-linebreaks.json' );
 	}
 }

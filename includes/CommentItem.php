@@ -37,7 +37,7 @@ class CommentItem extends ThreadItem {
 	/**
 	 * @return array JSON-serializable array
 	 */
-	public function jsonSerialize() : array {
+	public function jsonSerialize(): array {
 		return array_merge( parent::jsonSerialize(), [
 			'timestamp' => $this->timestamp,
 			'author' => $this->author,
@@ -51,7 +51,7 @@ class CommentItem extends ThreadItem {
 	 *  the signature which consists of whitespace and hyphens e.g. ' --'
 	 * @return DOMDocumentFragment Cloned fragment of the body content
 	 */
-	private function getBodyFragment( bool $stripTrailingSeparator = false ) : DOMDocumentFragment {
+	private function getBodyFragment( bool $stripTrailingSeparator = false ): DOMDocumentFragment {
 		$fragment = $this->getBodyRange()->cloneContents();
 		CommentModifier::unwrapFragment( $fragment );
 
@@ -82,7 +82,7 @@ class CommentItem extends ThreadItem {
 	 * @param bool $stripTrailingSeparator See getBodyFragment
 	 * @return string HTML
 	 */
-	public function getBodyHTML( bool $stripTrailingSeparator = false ) : string {
+	public function getBodyHTML( bool $stripTrailingSeparator = false ): string {
 		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
@@ -95,7 +95,7 @@ class CommentItem extends ThreadItem {
 	 * @param bool $stripTrailingSeparator See getBodyFragment
 	 * @return string Text
 	 */
-	public function getBodyText( bool $stripTrailingSeparator = false ) : string {
+	public function getBodyText( bool $stripTrailingSeparator = false ): string {
 		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
 		return $fragment->textContent;
 	}
@@ -105,7 +105,7 @@ class CommentItem extends ThreadItem {
 	 *
 	 * @return Title[] Title objects for mentioned user pages
 	 */
-	public function getMentions() : array {
+	public function getMentions(): array {
 		$fragment = $this->getBodyRange()->cloneContents();
 		$xPath = new DOMXPath( $fragment->ownerDocument );
 		$links = $xPath->query( './/a', $fragment );
@@ -123,14 +123,14 @@ class CommentItem extends ThreadItem {
 	/**
 	 * @return ImmutableRange[] Comment signature ranges
 	 */
-	public function getSignatureRanges() : array {
+	public function getSignatureRanges(): array {
 		return $this->signatureRanges;
 	}
 
 	/**
 	 * @return ImmutableRange Range of the thread item's "body"
 	 */
-	public function getBodyRange() : ImmutableRange {
+	public function getBodyRange(): ImmutableRange {
 		// Exclude last signature from body
 		$signatureRanges = $this->getSignatureRanges();
 		$lastSignature = end( $signatureRanges );
@@ -140,21 +140,21 @@ class CommentItem extends ThreadItem {
 	/**
 	 * @return string Comment timestamp
 	 */
-	public function getTimestamp() : string {
+	public function getTimestamp(): string {
 		return $this->timestamp;
 	}
 
 	/**
 	 * @return string Comment author
 	 */
-	public function getAuthor() : string {
+	public function getAuthor(): string {
 		return $this->author;
 	}
 
 	/**
 	 * @return HeadingItem Closest ancestor which is a HeadingItem
 	 */
-	public function getHeading() : HeadingItem {
+	public function getHeading(): HeadingItem {
 		$parent = $this;
 		while ( $parent instanceof CommentItem ) {
 			$parent = $parent->getParent();
@@ -168,28 +168,28 @@ class CommentItem extends ThreadItem {
 	/**
 	 * @param ImmutableRange $signatureRange Comment signature range to add
 	 */
-	public function addSignatureRange( ImmutableRange $signatureRange ) : void {
+	public function addSignatureRange( ImmutableRange $signatureRange ): void {
 		$this->signatureRanges[] = $signatureRange;
 	}
 
 	/**
 	 * @param ImmutableRange[] $signatureRanges Comment signature ranges
 	 */
-	public function setSignatureRanges( array $signatureRanges ) : void {
+	public function setSignatureRanges( array $signatureRanges ): void {
 		$this->signatureRanges = $signatureRanges;
 	}
 
 	/**
 	 * @param string $timestamp Comment timestamp
 	 */
-	public function setTimestamp( string $timestamp ) : void {
+	public function setTimestamp( string $timestamp ): void {
 		$this->timestamp = $timestamp;
 	}
 
 	/**
 	 * @param string $author Comment author
 	 */
-	public function setAuthor( string $author ) : void {
+	public function setAuthor( string $author ): void {
 		$this->author = $author;
 	}
 }

@@ -17,7 +17,7 @@ trait TestUtils {
 	 * @param string $html
 	 * @return DOMDocument
 	 */
-	protected static function createDocument( string $html ) : DOMDocument {
+	protected static function createDocument( string $html ): DOMDocument {
 		$doc = DOMUtils::parseHTML( $html );
 		$doc->preserveWhiteSpace = false;
 		return $doc;
@@ -29,7 +29,7 @@ trait TestUtils {
 	 * @param string $relativePath
 	 * @return string
 	 */
-	protected static function getText( string $relativePath ) : string {
+	protected static function getText( string $relativePath ): string {
 		return file_get_contents( __DIR__ . '/../' . $relativePath );
 	}
 
@@ -39,7 +39,7 @@ trait TestUtils {
 	 * @param string $relativePath
 	 * @param string $text
 	 */
-	protected static function overwriteTextFile( string $relativePath, string $text ) : void {
+	protected static function overwriteTextFile( string $relativePath, string $text ): void {
 		file_put_contents( __DIR__ . '/../' . $relativePath, $text );
 	}
 
@@ -50,7 +50,7 @@ trait TestUtils {
 	 * @param bool $assoc See json_decode()
 	 * @return array
 	 */
-	protected static function getJson( string $relativePath, bool $assoc = true ) : array {
+	protected static function getJson( string $relativePath, bool $assoc = true ): array {
 		$json = json_decode(
 			file_get_contents( __DIR__ . '/' . $relativePath ),
 			$assoc
@@ -64,7 +64,7 @@ trait TestUtils {
 	 * @param string $relativePath
 	 * @param array $data
 	 */
-	protected static function overwriteJsonFile( string $relativePath, array $data ) : void {
+	protected static function overwriteJsonFile( string $relativePath, array $data ): void {
 		$json = json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 		// Tabs instead of 4 spaces
 		$json = preg_replace( '/(?:\G|^) {4}/m', "\t", $json );
@@ -77,7 +77,7 @@ trait TestUtils {
 	 * @param string $relativePath
 	 * @return string
 	 */
-	protected static function getHtml( string $relativePath ) : string {
+	protected static function getHtml( string $relativePath ): string {
 		$html = file_get_contents( __DIR__ . '/../' . $relativePath );
 
 		// Remove all but the body tags from full Parsoid docs
@@ -96,7 +96,7 @@ trait TestUtils {
 	 * @param DOMDocument $doc
 	 * @param string $origRelPath
 	 */
-	protected static function overwriteHtmlFile( string $relPath, DOMDocument $doc, string $origRelPath ) : void {
+	protected static function overwriteHtmlFile( string $relPath, DOMDocument $doc, string $origRelPath ): void {
 		// Do not use $doc->saveHtml(), it outputs an awful soup of HTML entities for documents with
 		// non-ASCII characters
 		$html = file_get_contents( __DIR__ . '/../' . $origRelPath );
@@ -124,7 +124,7 @@ trait TestUtils {
 	 * @param array $data
 	 * @return CommentParser
 	 */
-	public static function createParser( DOMElement $rootNode, array $data ) : CommentParser {
+	public static function createParser( DOMElement $rootNode, array $data ): CommentParser {
 		$services = MediaWikiServices::getInstance();
 		return new CommentParser(
 			$rootNode,

@@ -78,7 +78,7 @@ class PreferenceHooks implements
 	 * @param User $user
 	 * @param array &$preferences
 	 */
-	public static function onGetBetaFeaturePreferences( User $user, array &$preferences ) : void {
+	public static function onGetBetaFeaturePreferences( User $user, array &$preferences ): void {
 		$coreConfig = RequestContext::getMain()->getConfig();
 		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
 

@@ -76,7 +76,7 @@ class CommentParser {
 	 * @param DomElement $rootNode
 	 * @return CommentParser
 	 */
-	public static function newFromGlobalState( DOMElement $rootNode ) : CommentParser {
+	public static function newFromGlobalState( DOMElement $rootNode ): CommentParser {
 		return new static(
 			$rootNode,
 			MediaWikiServices::getInstance()->getContentLanguage(),
@@ -112,7 +112,7 @@ class CommentParser {
 	 * @param DOMNode $node Node to start searching at. This node's children are ignored.
 	 * @return DOMNode
 	 */
-	private function nextInterestingLeafNode( DOMNode $node ) : DOMNode {
+	private function nextInterestingLeafNode( DOMNode $node ): DOMNode {
 		$rootNode = $this->rootNode;
 		$treeWalker = new TreeWalker(
 			$rootNode,
@@ -161,7 +161,7 @@ class CommentParser {
 	 * @param string[] $values Values to match
 	 * @return string Regular expression
 	 */
-	private static function regexpAlternateGroup( array $values ) : string {
+	private static function regexpAlternateGroup( array $values ): string {
 		return '(' . implode( '|', array_map( static function ( string $x ) {
 			return preg_quote( $x, '/' );
 		}, $values ) ) . ')';
@@ -174,7 +174,7 @@ class CommentParser {
 	 * @param string[] $messages Message keys
 	 * @return string[] Message values
 	 */
-	private function getMessages( string $contLangVariant, array $messages ) : array {
+	private function getMessages( string $contLangVariant, array $messages ): array {
 		return array_map( function ( string $key ) use ( $contLangVariant ) {
 			return $this->contLangMessages[$contLangVariant][$key];
 		}, $messages );
@@ -197,7 +197,7 @@ class CommentParser {
 	 */
 	private function getTimestampRegexp(
 		string $contLangVariant, string $format, string $digitsRegexp, array $tzAbbrs
-	) : string {
+	): string {
 		$formatLength = strlen( $format );
 		$s = '';
 		// Adapted from Language::sprintfDate()
@@ -318,7 +318,7 @@ class CommentParser {
 	 */
 	private function getTimestampParser(
 		string $contLangVariant, string $format, ?array $digits, string $localTimezone, array $tzAbbrs
-	) : callable {
+	): callable {
 		$untransformDigits = static function ( string $text ) use ( $digits ) {
 			if ( !$digits ) {
 				return $text;
@@ -499,7 +499,7 @@ class CommentParser {
 	 *
 	 * @return string[] Regular expressions
 	 */
-	public function getLocalTimestampRegexps() : array {
+	public function getLocalTimestampRegexps(): array {
 		$langConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
 			->getLanguageConverter( $this->language );
 		return array_map( function ( $contLangVariant ) {
@@ -520,7 +520,7 @@ class CommentParser {
 	 *
 	 * @return callable[] Parser functions
 	 */
-	private function getLocalTimestampParsers() : array {
+	private function getLocalTimestampParsers(): array {
 		$langConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
 			->getLanguageConverter( $this->language );
 		return array_map( function ( $contLangVariant ) {
@@ -589,7 +589,7 @@ class CommentParser {
 	 * @param DOMNode|null $until Node to stop searching at
 	 * @return array [ nodes, username ]
 	 */
-	private function findSignature( DOMText $timestampNode, ?DOMNode $until = null ) : array {
+	private function findSignature( DOMText $timestampNode, ?DOMNode $until = null ): array {
 		$sigUsername = null;
 		$length = 0;
 		$lastLinkNode = $timestampNode;
@@ -697,7 +697,7 @@ class CommentParser {
 	 *   - array 'matchData' Regexp match data, which specifies the location of the match,
 	 *     and which can be parsed using getLocalTimestampParsers()
 	 */
-	public function findTimestamp( DOMText $node, array $timestampRegexps ) : ?array {
+	public function findTimestamp( DOMText $node, array $timestampRegexps ): ?array {
 		$nodeText = '';
 		$offset = 0;
 
@@ -780,7 +780,7 @@ class CommentParser {
 	 *
 	 * @return ThreadItem[] Thread items
 	 */
-	public function getThreadItems() : array {
+	public function getThreadItems(): array {
 		if ( !$this->threadItems ) {
 			$this->buildThreads();
 		}
@@ -792,7 +792,7 @@ class CommentParser {
 	 *
 	 * @return CommentItem[] Comment items
 	 */
-	public function getCommentItems() : array {
+	public function getCommentItems(): array {
 		if ( !$this->commentItems ) {
 			$this->buildThreads();
 		}
@@ -808,7 +808,7 @@ class CommentParser {
 	 * @param string $name Name
 	 * @return ThreadItem[] Thread items, empty array if not found
 	 */
-	public function findCommentsByName( string $name ) : array {
+	public function findCommentsByName( string $name ): array {
 		if ( !$this->threadItemsByName ) {
 			$this->buildThreads();
 		}
@@ -821,7 +821,7 @@ class CommentParser {
 	 * @param string $id ID
 	 * @return ThreadItem|null Thread item, null if not found
 	 */
-	public function findCommentById( string $id ) : ?ThreadItem {
+	public function findCommentById( string $id ): ?ThreadItem {
 		if ( !$this->threadItemsById ) {
 			$this->buildThreads();
 		}
@@ -852,7 +852,7 @@ class CommentParser {
 		return $sigRange;
 	}
 
-	private function buildThreadItems() : void {
+	private function buildThreadItems(): void {
 		$timestampRegexps = $this->getLocalTimestampRegexps();
 		$commentItems = [];
 		$threadItems = [];
@@ -1041,7 +1041,7 @@ class CommentParser {
 	 *
 	 * @return HeadingItem[] Tree structure of comments, top-level items are the headings.
 	 */
-	public function getThreads() : array {
+	public function getThreads(): array {
 		if ( !$this->threads ) {
 			$this->buildThreads();
 		}
@@ -1054,7 +1054,7 @@ class CommentParser {
 	 * @param string $text Text
 	 * @return string Truncated text
 	 */
-	private function truncateForId( string $text ) : string {
+	private function truncateForId( string $text ): string {
 		return $this->language->truncateForDatabase( $text, 80, '' );
 	}
 
@@ -1064,7 +1064,7 @@ class CommentParser {
 	 * @param ThreadItem $threadItem
 	 * @return string
 	 */
-	private function computeId( ThreadItem $threadItem ) : string {
+	private function computeId( ThreadItem $threadItem ): string {
 		$id = null;
 
 		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
@@ -1123,7 +1123,7 @@ class CommentParser {
 	 * @param ThreadItem $threadItem
 	 * @return string|null
 	 */
-	private function computeLegacyId( ThreadItem $threadItem ) : ?string {
+	private function computeLegacyId( ThreadItem $threadItem ): ?string {
 		$id = null;
 
 		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
@@ -1184,7 +1184,7 @@ class CommentParser {
 	 * @param ThreadItem $threadItem
 	 * @return string
 	 */
-	private function computeName( ThreadItem $threadItem ) : string {
+	private function computeName( ThreadItem $threadItem ): string {
 		$name = null;
 
 		if ( $threadItem instanceof HeadingItem ) {
@@ -1205,7 +1205,7 @@ class CommentParser {
 		return $name;
 	}
 
-	private function buildThreads() : void {
+	private function buildThreads(): void {
 		if ( !$this->threadItems ) {
 			$this->buildThreadItems();
 		}

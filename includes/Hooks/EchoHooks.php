@@ -70,7 +70,7 @@ class EchoHooks {
 	 * @param string &$bundleString
 	 * @return bool
 	 */
-	public static function onEchoGetBundleRules( EchoEvent $event, string &$bundleString ) : bool {
+	public static function onEchoGetBundleRules( EchoEvent $event, string &$bundleString ): bool {
 		switch ( $event->getType() ) {
 			case 'dt-subscribed-new-comment':
 				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'subscribed-comment-name' );

@@ -44,7 +44,7 @@ class HookUtils {
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	public static function isFeatureAvailableToUser( User $user, ?string $feature = null ) : bool {
+	public static function isFeatureAvailableToUser( User $user, ?string $feature = null ): bool {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
@@ -103,7 +103,7 @@ class HookUtils {
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	public static function isFeatureEnabledForUser( User $user, ?string $feature = null ) : bool {
+	public static function isFeatureEnabledForUser( User $user, ?string $feature = null ): bool {
 		if ( !static::isFeatureAvailableToUser( $user, $feature ) ) {
 			return false;
 		}
@@ -136,7 +136,7 @@ class HookUtils {
 	 * @return string 'test' if in the test group, 'control' if in the control group, or '' if they've
 	 *  never been in the test
 	 */
-	private static function determineUserABTestBucket( $user, $feature = null ) : string {
+	private static function determineUserABTestBucket( $user, $feature = null ): string {
 		$services = MediaWikiServices::getInstance();
 		$optionsManager = $services->getUserOptionsManager();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
@@ -169,7 +169,7 @@ class HookUtils {
 	 * @param Title $title
 	 * @return bool
 	 */
-	public static function isAvailableForTitle( Title $title ) : bool {
+	public static function isAvailableForTitle( Title $title ): bool {
 		// Only wikitext pages (e.g. not Flow boards, special pages)
 		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
 			return false;
@@ -201,7 +201,7 @@ class HookUtils {
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ) : bool {
+	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ): bool {
 		// Don't show on edit pages, history, etc.
 		if ( Action::getActionName( $output->getContext() ) !== 'view' ) {
 			return false;

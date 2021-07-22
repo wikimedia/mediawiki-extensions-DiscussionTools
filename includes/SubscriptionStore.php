@@ -58,7 +58,7 @@ class SubscriptionStore {
 	 *
 	 * @return IDatabase
 	 */
-	private function getConnectionRef( $dbIndex ) : IDatabase {
+	private function getConnectionRef( $dbIndex ): IDatabase {
 		return $this->loadBalancer->getConnectionRef( $dbIndex, [ 'watchlist' ] );
 	}
 
@@ -117,7 +117,7 @@ class SubscriptionStore {
 		?array $itemNames = null,
 		?int $state = null,
 		array $options = []
-	) : array {
+	): array {
 		// Only a registered user can be subscribed
 		if ( !$user->isRegistered() ) {
 			return [];
@@ -156,7 +156,7 @@ class SubscriptionStore {
 		string $itemName,
 		?int $state = null,
 		array $options = []
-	) : array {
+	): array {
 		$options += [ 'forWrite' => false ];
 		$db = $this->getConnectionRef( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
 
@@ -191,7 +191,7 @@ class SubscriptionStore {
 		UserIdentity $user,
 		LinkTarget $target,
 		stdClass $row
-	) : SubscriptionItem {
+	): SubscriptionItem {
 		return new SubscriptionItem(
 			$user,
 			$row->sub_item,
@@ -206,7 +206,7 @@ class SubscriptionStore {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	private function userExceedsSubscriptionLimit( UserIdentity $user ) : bool {
+	private function userExceedsSubscriptionLimit( UserIdentity $user ): bool {
 		$logger = LoggerFactory::getInstance( 'DiscussionTools' );
 		// This is always queried before updating
 		$db = $this->getConnectionRef( DB_PRIMARY );
@@ -242,7 +242,7 @@ class SubscriptionStore {
 		UserIdentity $user,
 		LinkTarget $target,
 		string $itemName
-	) : bool {
+	): bool {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
@@ -282,7 +282,7 @@ class SubscriptionStore {
 	public function removeSubscriptionForUser(
 		UserIdentity $user,
 		string $itemName
-	) : bool {
+	): bool {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
@@ -313,7 +313,7 @@ class SubscriptionStore {
 		string $field,
 		?UserIdentity $user,
 		string $itemName
-	) : bool {
+	): bool {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
@@ -350,7 +350,7 @@ class SubscriptionStore {
 	public function updateSubscriptionNotifiedTimestamp(
 		?UserIdentity $user,
 		string $itemName
-	) : bool {
+	): bool {
 		return $this->updateSubscriptionTimestamp(
 			'sub_notified',
 			$user,

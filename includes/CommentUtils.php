@@ -34,7 +34,7 @@ class CommentUtils {
 	 * @param DOMNode $node
 	 * @return bool Node is a block element
 	 */
-	public static function isBlockElement( DOMNode $node ) : bool {
+	public static function isBlockElement( DOMNode $node ): bool {
 		return $node instanceof DOMElement &&
 			in_array( strtolower( $node->tagName ), self::$blockElementTypes );
 	}
@@ -46,7 +46,7 @@ class CommentUtils {
 	 * @param DOMNode $node
 	 * @return bool Node is considered a rendering-transparent node in Parsoid
 	 */
-	public static function isRenderingTransparentNode( DOMNode $node ) : bool {
+	public static function isRenderingTransparentNode( DOMNode $node ): bool {
 		return (
 			$node instanceof DOMComment ||
 			$node instanceof DOMElement && (
@@ -87,7 +87,7 @@ class CommentUtils {
 	 * @param DOMNode $node
 	 * @return bool If true, node can't have element children. If false, it's complicated.
 	 */
-	public static function cantHaveElementChildren( DOMNode $node ) : bool {
+	public static function cantHaveElementChildren( DOMNode $node ): bool {
 		return (
 			$node instanceof DOMComment ||
 			$node instanceof DOMElement &&
@@ -101,7 +101,7 @@ class CommentUtils {
 	 * @param DOMNode $child
 	 * @return int
 	 */
-	public static function childIndexOf( DOMNode $child ) : int {
+	public static function childIndexOf( DOMNode $child ): int {
 		$i = 0;
 		while ( ( $child = $child->previousSibling ) ) {
 			$i++;
@@ -116,7 +116,7 @@ class CommentUtils {
 	 * @param DOMNode $descendant
 	 * @return bool
 	 */
-	public static function contains( DOMNode $ancestor, DOMNode $descendant ) : bool {
+	public static function contains( DOMNode $ancestor, DOMNode $descendant ): bool {
 		// TODO can we use DOMNode->compareDocumentPosition() here maybe?
 		$node = $descendant;
 		while ( $node && $node !== $ancestor ) {
@@ -132,7 +132,7 @@ class CommentUtils {
 	 * @param string[] $tagNames
 	 * @return DOMElement|null
 	 */
-	public static function closestElement( DOMNode $node, array $tagNames ) : ?DOMElement {
+	public static function closestElement( DOMNode $node, array $tagNames ): ?DOMElement {
 		do {
 			if (
 				$node->nodeType === XML_ELEMENT_NODE &&
@@ -155,7 +155,7 @@ class CommentUtils {
 	 * @param DOMNode $node
 	 * @return DOMElement|null Translcusion node, null if not found
 	 */
-	public static function getTranscludedFromElement( DOMNode $node ) : ?DOMElement {
+	public static function getTranscludedFromElement( DOMNode $node ): ?DOMElement {
 		while ( $node ) {
 			// 1.
 			if (
@@ -196,7 +196,7 @@ class CommentUtils {
 	 * @param DOMElement $heading Heading node (`<h1>`-`<h6>`)
 	 * @return array Array containing a 'node' (DOMElement) and offset (int)
 	 */
-	public static function getHeadlineNodeAndOffset( DOMElement $heading ) : array {
+	public static function getHeadlineNodeAndOffset( DOMElement $heading ): array {
 		// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
 		$headline = $heading;
 		$offset = 0;
@@ -239,7 +239,7 @@ class CommentUtils {
 	 * @param string $str
 	 * @return string
 	 */
-	public static function htmlTrim( string $str ) : string {
+	public static function htmlTrim( string $str ): string {
 		// https://infra.spec.whatwg.org/#ascii-whitespace
 		return trim( $str, "\t\n\f\r " );
 	}
@@ -253,7 +253,7 @@ class CommentUtils {
 	 * @param DOMNode $rootNode
 	 * @return int
 	 */
-	public static function getIndentLevel( DOMNode $node, DOMNode $rootNode ) : int {
+	public static function getIndentLevel( DOMNode $node, DOMNode $rootNode ): int {
 		$indent = 0;
 		while ( $node ) {
 			if ( $node === $rootNode ) {
@@ -274,7 +274,7 @@ class CommentUtils {
 	 * @param ImmutableRange $range
 	 * @return DOMElement[]
 	 */
-	public static function getCoveredSiblings( ImmutableRange $range ) : array {
+	public static function getCoveredSiblings( ImmutableRange $range ): array {
 		$ancestor = $range->commonAncestorContainer;
 
 		// Convert to array early because apparently DOMNodeList acts like a linked list
@@ -310,7 +310,7 @@ class CommentUtils {
 	 * @param ThreadItem $item
 	 * @return DOMElement[]|null
 	 */
-	public static function getFullyCoveredSiblings( ThreadItem $item ) : ?array {
+	public static function getFullyCoveredSiblings( ThreadItem $item ): ?array {
 		$siblings = self::getCoveredSiblings( $item->getRange() );
 		$startContainer = $item->getRange()->startContainer;
 		$endContainer = $item->getRange()->endContainer;
@@ -403,7 +403,7 @@ class CommentUtils {
 	 */
 	public static function unwrapParsoidSections(
 		DOMElement $element, string $keepSection = null
-	) : void {
+	): void {
 		$xpath = new DOMXPath( $element->ownerDocument );
 		$sections = $xpath->query( '//section[@data-mw-section-id]', $element );
 		foreach ( $sections as $section ) {
@@ -429,7 +429,7 @@ class CommentUtils {
 	 * @param string $url
 	 * @return Title|null
 	 */
-	public static function getTitleFromUrl( string $url ) : ?Title {
+	public static function getTitleFromUrl( string $url ): ?Title {
 		$bits = parse_url( $url );
 		$query = wfCgiToArray( $bits['query'] ?? '' );
 		if ( isset( $query['title'] ) ) {

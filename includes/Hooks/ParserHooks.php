@@ -33,7 +33,7 @@ class ParserHooks implements
 	 * @param string &$text
 	 * @param StripState $stripState
 	 */
-	public function onParserAfterParse( $parser, &$text, $stripState ) : void {
+	public function onParserAfterParse( $parser, &$text, $stripState ): void {
 		$title = $parser->getTitle();
 
 		// This condition must be unreliant on current enablement config or user preference.

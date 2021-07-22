@@ -33,7 +33,7 @@ class Data {
 	 */
 	public static function getLocalData(
 		?ResourceLoaderContext $context, Config $config, $lang = null
-	) : array {
+	): array {
 		if ( !$lang ) {
 			$lang = MediaWikiServices::getInstance()->getContentLanguage();
 		} elseif ( !( $lang instanceof Language ) ) {
@@ -146,7 +146,7 @@ class Data {
 		string $format,
 		ILanguageConverter $langConv,
 		string $variant
-	) : string {
+	): string {
 		$formatLength = strlen( $format );
 		$s = '';
 		// The supported codes must match CommentParser::getTimestampRegexp()
@@ -226,7 +226,7 @@ class Data {
 	 */
 	public static function getContentLanguageMessages(
 		ResourceLoaderContext $context, Config $config, array $messagesKeys = []
-	) : array {
+	): array {
 		return array_combine(
 			$messagesKeys,
 			array_map( static function ( $key ) {
@@ -241,7 +241,7 @@ class Data {
 	 * @param array $info
 	 * @return ResourceLoaderModule
 	 */
-	public static function addOptionalDependencies( array $info ) : ResourceLoaderModule {
+	public static function addOptionalDependencies( array $info ): ResourceLoaderModule {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 
 		foreach ( $info['optionalDependencies'] as $ext => $deps ) {
