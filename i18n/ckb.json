@@ -14,11 +14,13 @@
 	"discussiontools-error-comment-conflict": "نەتواندرا لێدوانەکەت پاشەکەوت بکرێت، لەبەر ئەوەی کەسێکی تر لە هەمان کاتدا لێدوانی نووسیوە. تکایە دووبارە هەوڵ بدەرەوە یاخود پەڕەکە خاوێن بکەرەوە بۆ بینینی نوێترین لێدوانەکان.",
 	"discussiontools-error-comment-disappeared": "نەتواندرا ئەو لێدوانە بدۆزرێتەوە کە خەریکی وەڵامدانەوەییت لەسەر پەڕەکە. لەوانەیە سڕدرابێتەوە یان بۆ پەڕەیەکی تر گواسترابێتەوە. تکایە پەڕەکە بار بکەوە و دووبارە ھەوڵ بدەرەوە.",
 	"discussiontools-error-comment-is-transcluded": "ناتواندرێت بەستەری «{{int:discussiontools-replylink}}» بۆ وەڵامدانەوەی ئەم لێدوانە بەکاربێت. بۆ وەڵامدانەوە، تکایە بە کرتەکردن لە «$1» دەستکاریکەری تەواوی پەڕەکە بەکاربێنە.",
+	"discussiontools-error-noswitchtove": "ببورە، گۆڕین بۆ دەستکاریی دیداری هەڵوەشایەوە چوونکە <b>$1</b> لە لێدوانەکەتدا هەیە. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations زیاتر فێربە]",
 	"discussiontools-error-noswitchtove-table": "سینتاکسی خشتە",
 	"discussiontools-error-noswitchtove-template": "سینتاکسی داڕێژە",
 	"discussiontools-error-noswitchtove-title": "دۆخی دیداری ناچالاک کرا",
 	"discussiontools-newtopic-missing-title": "تکایە ناونیشانێک بۆ بابەتی وتووێژەکەت دابین بکە. ئەگەر کرتە لە «{{int:discussiontools-replywidget-newtopic}}» بکەیت، ئەوا بابەتەکەت بەبێ ناونیشان زیاد دەکرێت.",
 	"discussiontools-newtopic-placeholder-title": "ناونیشان",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 لە <strong>«$4»</strong> وەڵامی دایەوە.",
 	"discussiontools-notification-subscribed-new-comment-view": "لێدوان ببینە",
 	"discussiontools-postedit-confirmation-published": "لێدوانەکەت بڵاوکرایەوە.",
 	"discussiontools-postedit-confirmation-topicadded": "بەشەکەت زیاد کرا.",
@@ -62,5 +64,6 @@
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} وەڵامدانەوە]",
 	"tag-discussiontools-reply-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە وەڵامی لێدوانێکی دایەوە",
 	"tag-discussiontools-source": "سەرچاوە",
+	"tag-discussiontools-source-description": "ئامرازەکانی لێدوان لە حاڵەتی دەستکاریی سەرچاوەدا بوو",
 	"tag-discussiontools-visual": "دیداری"
 }

@@ -2,13 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"Base",
+			"DDPAT",
 			"Ата"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Коментаря з ідентифікатором «$1» не знайдено.",
+	"apierror-discussiontools-commentname-ambiguous": "Знайдено кілька коментарів із іменем '$1', замість цього використовуйте ідентифікатор.",
+	"apierror-discussiontools-commentname-notfound": "Коментар з назвою \"$1\" не знайдено.",
+	"apierror-discussiontools-subscription-failed-add": "Не вдалося підписатися на цю тему.",
+	"apierror-discussiontools-subscription-failed-remove": "Не вдалося скасувати підписку на цю тему.",
 	"apihelp-discussiontools-param-oldid": "Номер версії (за замовчуванням — остання версія).",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Повернути заголовки сторінок, з яких виключено кожен коментар на даній сторінці.",
 	"apihelp-discussiontools-summary": "Повертає метадані необхідні для ініціалізації інструментів обговорення.",
 	"apihelp-discussiontoolsedit-param-commentid": "Ідентифікатор коментаря, на який відповідати. Використовується лише коли <var>paction</var> є <var>addcomment</var>. Перезаписує значення <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Назва коментаря, на який потрібно відповісти. Використовується лише тоді, коли <var>paction</var> є <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Контент для публікації як вікітекст. Не можна використати разом з <var>html</var>.",
 	"apihelp-discussiontoolsedit-summary": "Опублікувати повідомлення на сторінку обговорення."
 }
