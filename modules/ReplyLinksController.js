@@ -125,6 +125,11 @@ ReplyLinksController.prototype.setActiveLink = function ( $link ) {
 	if ( this.$activeLink.is( this.$replyLinks ) ) {
 		this.$activeLink.closest( '.ext-discussiontools-init-replylink-buttons' )
 			.addClass( 'ext-discussiontools-init-replylink-active' );
+	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#ca-addsection' ).addClass( 'selected' );
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#ca-view' ).removeClass( 'selected' );
 	}
 
 	this.$pageContainer.addClass( 'ext-discussiontools-init-replylink-open' );
@@ -142,6 +147,11 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 	if ( this.$activeLink.is( this.$replyLinks ) ) {
 		this.$activeLink.closest( '.ext-discussiontools-init-replylink-buttons' )
 			.removeClass( 'ext-discussiontools-init-replylink-active' );
+	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#ca-addsection' ).removeClass( 'selected' );
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#ca-view' ).addClass( 'selected' );
 	}
 
 	this.$pageContainer.removeClass( 'ext-discussiontools-init-replylink-open' );

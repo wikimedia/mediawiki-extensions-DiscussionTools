@@ -9,6 +9,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
+use Html;
+use IContextSource;
+use MediaWiki\Actions\Hook\GetActionNameHook;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Hook\BeforePageDisplayHook;
@@ -20,6 +23,7 @@ use VisualEditorHooks;
 
 class PageHooks implements
 	BeforePageDisplayHook,
+	GetActionNameHook,
 	OutputPageBeforeHTMLHook
 {
 	/** @var SubscriptionStore */
@@ -90,6 +94,34 @@ class PageHooks implements
 				);
 			}
 		}
+
+		// Replace the action=edit&section=new form with the new topic tool.
+		if ( HookUtils::shouldUseNewTopicTool( $output->getContext() ) ) {
+			$output->addJsConfigVars( 'wgDiscussionToolsStartNewTopicTool', true );
+
+			// For no-JS compatibility, redirect to the old new section editor if JS is unavailable.
+			// This isn't great, because the user has to load the page twice. But making a page that is
+			// both a view mode and an edit mode seems difficult, so I'm cutting some corners here.
+			// (Code below adapted from VisualEditor.)
+			$params = $output->getRequest()->getValues();
+			$params['dtenable'] = '0';
+			$url = wfScript() . '?' . wfArrayToCgi( $params );
+			$escapedUrl = htmlspecialchars( $url );
+
+			// Redirect if the user has no JS (<noscript>)
+			$output->addHeadItem(
+				'dt-noscript-fallback',
+				"<noscript><meta http-equiv=\"refresh\" content=\"0; url=$escapedUrl\"></noscript>"
+			);
+			// Redirect if the user has no ResourceLoader
+			$output->addScript( Html::inlineScript(
+				"(window.NORLQ=window.NORLQ||[]).push(" .
+					"function(){" .
+						"location.href=\"$url\";" .
+					"}" .
+				");"
+			) );
+		}
 	}
 
 	/**
@@ -132,5 +164,18 @@ class PageHooks implements
 		}
 
 		return true;
+	}
+
+	/**
+	 * GetActionName hook handler
+	 *
+	 * @param IContextSource $context Request context
+	 * @param string &$action Default action name, reassign to change it
+	 * @return void This hook must not abort, it must return no value
+	 */
+	public function onGetActionName( IContextSource $context, string &$action ): void {
+		if ( $action === 'edit' && HookUtils::shouldUseNewTopicTool( $context ) ) {
+			$action = 'view';
+		}
 	}
 }
