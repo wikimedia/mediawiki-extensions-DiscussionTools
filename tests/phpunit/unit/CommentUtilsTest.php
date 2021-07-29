@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests\Unit;
 
-use DOMDocument;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\Tests\TestUtils;
 use MediaWikiUnitTestCase;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentUtils
@@ -23,7 +23,7 @@ class CommentUtilsTest extends MediaWikiUnitTestCase {
 	public function testLinearWalk( string $name, string $htmlPath, string $expectedPath ) {
 		$html = self::getHtml( $htmlPath );
 		// Slightly awkward to get the same output as in the JS version
-		$fragment = ( new DOMDocument() )->createDocumentFragment();
+		$fragment = ( DOMCompat::newDocument( true ) )->createDocumentFragment();
 		$fragment->appendXML( trim( $html ) );
 		$expected = self::getJson( $expectedPath );
 

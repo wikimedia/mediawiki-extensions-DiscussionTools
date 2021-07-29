@@ -144,6 +144,7 @@ abstract class ThreadItem implements JsonSerializable {
 		CommentModifier::unwrapFragment( $fragment );
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
+		// @phan-suppress-next-line PhanTypeMismatchArgument
 		return DOMCompat::getInnerHTML( $container );
 	}
 
