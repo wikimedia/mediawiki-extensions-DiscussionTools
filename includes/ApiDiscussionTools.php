@@ -5,9 +5,9 @@ namespace MediaWiki\Extension\DiscussionTools;
 use ApiBase;
 use ApiMain;
 use ApiParsoidTrait;
-use DOMElement;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionTools extends ApiBase {
@@ -42,7 +42,7 @@ class ApiDiscussionTools extends ApiBase {
 
 				$doc = DOMUtils::parseHTML( $response['body'] );
 				$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-				'@phan-var DOMElement $container';
+				'@phan-var Element $container';
 
 				CommentUtils::unwrapParsoidSections( $container );
 

@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMDocumentFragment;
-use DOMText;
 use DOMXPath;
 use MWException;
 use Title;
+use Wikimedia\Parsoid\DOM\DocumentFragment;
+use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentItem extends ThreadItem {
@@ -49,9 +49,9 @@ class CommentItem extends ThreadItem {
 	 *
 	 * @param bool $stripTrailingSeparator Strip a trailing separator between the body and
 	 *  the signature which consists of whitespace and hyphens e.g. ' --'
-	 * @return DOMDocumentFragment Cloned fragment of the body content
+	 * @return DocumentFragment Cloned fragment of the body content
 	 */
-	private function getBodyFragment( bool $stripTrailingSeparator = false ): DOMDocumentFragment {
+	private function getBodyFragment( bool $stripTrailingSeparator = false ): DocumentFragment {
 		$fragment = $this->getBodyRange()->cloneContents();
 		CommentModifier::unwrapFragment( $fragment );
 
@@ -59,17 +59,17 @@ class CommentItem extends ThreadItem {
 			// Find a trailing text node
 			$lastChild = $fragment->lastChild;
 			while (
-				!( $lastChild instanceof DOMText ) &&
+				!( $lastChild instanceof Text ) &&
 				$lastChild->lastChild
 			) {
 				$lastChild = $lastChild->lastChild;
 			}
 			if (
-				$lastChild instanceof DOMText &&
-				preg_match( '/[\s\-~\x{2010}-\x{2015}\x{2043}\x{2060}]+$/u', $lastChild->nodeValue, $matches )
+				$lastChild instanceof Text &&
+				preg_match( '/[\s\-~\x{2010}-\x{2015}\x{2043}\x{2060}]+$/u', $lastChild->nodeValue ?? '', $matches )
 			) {
 				$lastChild->nodeValue =
-					substr( $lastChild->nodeValue, 0, -strlen( $matches[0] ) );
+					substr( $lastChild->nodeValue ?? '', 0, -strlen( $matches[0] ) );
 			}
 		}
 		return $fragment;
@@ -86,7 +86,6 @@ class CommentItem extends ThreadItem {
 		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
-		// @phan-suppress-next-line PhanTypeMismatchArgument
 		return DOMCompat::getInnerHTML( $container );
 	}
 
@@ -98,7 +97,7 @@ class CommentItem extends ThreadItem {
 	 */
 	public function getBodyText( bool $stripTrailingSeparator = false ): string {
 		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
-		return $fragment->textContent;
+		return $fragment->textContent ?? '';
 	}
 
 	/**
@@ -108,7 +107,10 @@ class CommentItem extends ThreadItem {
 	 */
 	public function getMentions(): array {
 		$fragment = $this->getBodyRange()->cloneContents();
+		// XXX use DOMCompat::querySelectorAll('a[href]') perhaps
+		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
 		$xPath = new DOMXPath( $fragment->ownerDocument );
+		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
 		$links = $xPath->query( './/a', $fragment );
 		$users = [];
 		foreach ( $links as $link ) {

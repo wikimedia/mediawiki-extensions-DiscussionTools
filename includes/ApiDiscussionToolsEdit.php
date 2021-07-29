@@ -7,10 +7,10 @@ use ApiMain;
 use ApiParsoidTrait;
 use DerivativeContext;
 use DerivativeRequest;
-use DOMElement;
 use MediaWiki\Logger\LoggerFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -58,11 +58,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				} else {
 					$doc = DOMUtils::parseHTML( $html );
 					$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-					'@phan-var DOMElement $container';
+					'@phan-var Element $container';
 					if ( !CommentModifier::isHtmlSigned( $container ) ) {
 						CommentModifier::appendSignature( $container );
 					}
-					// @phan-suppress-next-line PhanTypeMismatchArgument
 					$html = DOMCompat::getInnerHTML( $container );
 					$wikitext = $this->transformHTML( $title, $html )[ 'body' ];
 				}
@@ -153,7 +152,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				}
 
 				$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-				'@phan-var DOMElement $container';
+				'@phan-var Element $container';
 
 				$parser = CommentParser::newFromGlobalState( $container );
 
@@ -204,7 +203,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'page' => $params['page'],
 							'token' => $params['token'],
 							'oldid' => $docRevId,
-							// @phan-suppress-next-line PhanTypeMismatchArgument
 							'html' => DOMCompat::getOuterHTML( $doc->documentElement ),
 							'summary' => $summary,
 							'baserevid' => $docRevId,

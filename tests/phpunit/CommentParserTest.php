@@ -3,8 +3,6 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use DateTimeImmutable;
-use DOMElement;
-use DOMNode;
 use Error;
 use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
@@ -13,6 +11,8 @@ use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use stdClass;
+use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -25,13 +25,13 @@ class CommentParserTest extends IntegrationTestCase {
 	/**
 	 * Convert UTF-8 byte offsets to UTF-16 code unit offsets.
 	 *
-	 * @param DOMElement $ancestor
-	 * @param DOMNode $node
+	 * @param Element $ancestor
+	 * @param Node $node
 	 * @param int $nodeOffset
 	 * @return string
 	 */
 	private static function getOffsetPath(
-		DOMElement $ancestor, DOMNode $node, int $nodeOffset
+		Element $ancestor, Node $node, int $nodeOffset
 	): string {
 		if ( $node->nodeType === XML_TEXT_NODE ) {
 			$str = substr( $node->nodeValue, 0, $nodeOffset );
@@ -51,7 +51,7 @@ class CommentParserTest extends IntegrationTestCase {
 		return implode( '/', $path );
 	}
 
-	private static function serializeComments( ThreadItem &$threadItem, DOMElement $root ): stdClass {
+	private static function serializeComments( ThreadItem &$threadItem, Element $root ): stdClass {
 		$serialized = new stdClass();
 
 		if ( $threadItem instanceof HeadingItem ) {
@@ -109,7 +109,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $format, string $expected, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
+			CommentParser::newFromGlobalState( new Element( 'div' ) )
 		);
 
 		// HACK: Fix differences between JS & PHP regexes
@@ -134,7 +134,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $format, array $data, string $expected, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
+			CommentParser::newFromGlobalState( new Element( 'div' ) )
 		);
 
 		$expected = new DateTimeImmutable( $expected );
@@ -156,7 +156,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $timezone, array $timezoneAbbrs, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new DOMElement( 'div' ) )
+			CommentParser::newFromGlobalState( new Element( 'div' ) )
 		);
 
 		$regexp = $parser->getTimestampRegexp( 'en', $format, '\\d', $timezoneAbbrs );

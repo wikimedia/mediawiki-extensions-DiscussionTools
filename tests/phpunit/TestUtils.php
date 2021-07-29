@@ -2,22 +2,22 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use DOMDocument;
-use DOMElement;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Parsoid\DOM\Document;
+use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 trait TestUtils {
 
 	/**
-	 * Create a DOMDocument from a string
+	 * Create a Document from a string
 	 *
 	 * @param string $html
-	 * @return DOMDocument
+	 * @return Document
 	 */
-	protected static function createDocument( string $html ): DOMDocument {
+	protected static function createDocument( string $html ): Document {
 		$doc = DOMUtils::parseHTML( $html );
 		$doc->preserveWhiteSpace = false;
 		return $doc;
@@ -93,10 +93,10 @@ trait TestUtils {
 	 * Write HTML to path
 	 *
 	 * @param string $relPath
-	 * @param DOMDocument $doc
+	 * @param Document $doc
 	 * @param string $origRelPath
 	 */
-	protected static function overwriteHtmlFile( string $relPath, DOMDocument $doc, string $origRelPath ): void {
+	protected static function overwriteHtmlFile( string $relPath, Document $doc, string $origRelPath ): void {
 		// Do not use $doc->saveHtml(), it outputs an awful soup of HTML entities for documents with
 		// non-ASCII characters
 		$html = file_get_contents( __DIR__ . '/../' . $origRelPath );
@@ -120,11 +120,11 @@ trait TestUtils {
 	/**
 	 * Create a comment parser
 	 *
-	 * @param DOMElement $rootNode
+	 * @param Element $rootNode
 	 * @param array $data
 	 * @return CommentParser
 	 */
-	public static function createParser( DOMElement $rootNode, array $data ): CommentParser {
+	public static function createParser( Element $rootNode, array $data ): CommentParser {
 		$services = MediaWikiServices::getInstance();
 		return new CommentParser(
 			$rootNode,

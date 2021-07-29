@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMNode;
 use Exception;
 use Throwable;
+use Wikimedia\Parsoid\DOM\Node;
 
 /**
  * Partial implementation of W3 DOM4 TreeWalker interface.
@@ -26,12 +26,12 @@ class TreeWalker {
 	/**
 	 * See https://dom.spec.whatwg.org/#interface-treewalker
 	 *
-	 * @param DOMNode $root
+	 * @param Node $root
 	 * @param int $whatToShow
 	 * @param callable|null $filter
 	 */
 	public function __construct(
-		DOMNode $root,
+		Node $root,
 		int $whatToShow = NodeFilter::SHOW_ALL,
 		callable $filter = null
 	) {
@@ -44,9 +44,9 @@ class TreeWalker {
 	/**
 	 * See https://dom.spec.whatwg.org/#dom-treewalker-nextnode
 	 *
-	 * @return DOMNode|null The current node
+	 * @return Node|null The current node
 	 */
-	public function nextNode(): ?DOMNode {
+	public function nextNode(): ?Node {
 		$node = $this->currentNode;
 		$result = NodeFilter::FILTER_ACCEPT;
 
@@ -78,6 +78,7 @@ class TreeWalker {
 				$temp = $temp->parentNode;
 			}
 
+			'@phan-var Node $node';
 			$result = $this->filterNode( $node );
 
 			if ( $result === NodeFilter::FILTER_ACCEPT ) {
@@ -96,14 +97,14 @@ class TreeWalker {
 	 *
 	 * @see https://dom.spec.whatwg.org/#concept-node-filter
 	 *
-	 * @param DOMNode $node The node to check.
+	 * @param Node $node The node to check.
 	 * @return int Returns one of NodeFilter's FILTER_* constants.
 	 *     - NodeFilter::FILTER_ACCEPT
 	 *     - NodeFilter::FILTER_REJECT
 	 *     - NodeFilter::FILTER_SKIP
 	 * @throws Exception
 	 */
-	private function filterNode( DOMNode $node ): int {
+	private function filterNode( Node $node ): int {
 		if ( $this->isActive ) {
 			throw new Exception( 'InvalidStateError' );
 		}

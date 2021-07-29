@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMDocument;
-use DOMDocumentFragment;
-use DOMElement;
-use DOMNode;
-use DOMText;
 use DOMXPath;
 use MWException;
+use Wikimedia\Parsoid\DOM\Document;
+use Wikimedia\Parsoid\DOM\DocumentFragment;
+use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\DOM\Node;
+use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentModifier {
@@ -19,9 +19,9 @@ class CommentModifier {
 	/**
 	 * Add an attribute to a list item to remove pre-whitespace in Parsoid
 	 *
-	 * @param DOMElement $listItem
+	 * @param Element $listItem
 	 */
-	private static function whitespaceParsoidHack( DOMElement $listItem ): void {
+	private static function whitespaceParsoidHack( Element $listItem ): void {
 		// HACK: Setting data-parsoid removes the whitespace after the list item,
 		// which makes nested lists work.
 		// This is undocumented behaviour and probably very fragile.
@@ -46,9 +46,9 @@ class CommentModifier {
 	 * the comment.
 	 *
 	 * @param CommentItem $comment
-	 * @param DOMElement $linkNode Reply link
+	 * @param Element $linkNode Reply link
 	 */
-	public static function addReplyLink( CommentItem $comment, DOMElement $linkNode ): void {
+	public static function addReplyLink( CommentItem $comment, Element $linkNode ): void {
 		$target = $comment->getRange()->endContainer;
 
 		// Insert the link before trailing whitespace.
@@ -76,9 +76,9 @@ class CommentModifier {
 	 * nodes are added, and other nodes may be moved around).
 	 *
 	 * @param ThreadItem $comment
-	 * @return DOMElement
+	 * @return Element
 	 */
-	public static function addListItem( ThreadItem $comment ): DOMElement {
+	public static function addListItem( ThreadItem $comment ): Element {
 		$listTypeMap = [
 			'li' => 'ul',
 			'dd' => 'dl'
@@ -164,11 +164,11 @@ class CommentModifier {
 				$pointer->nextSibling && (
 					CommentUtils::isRenderingTransparentNode( $pointer->nextSibling ) ||
 					(
-						$pointer->nextSibling instanceof DOMText &&
-						CommentUtils::htmlTrim( $pointer->nextSibling->nodeValue ) === '' &&
+						$pointer->nextSibling instanceof Text &&
+						CommentUtils::htmlTrim( $pointer->nextSibling->nodeValue ?? '' ) === '' &&
 						// If more that two lines of whitespace are detected, the following HTML
 						// comments are not considered to be part of the reply (T264026)
-						!preg_match( '/(\r?\n){2,}/', $pointer->nextSibling->nodeValue )
+						!preg_match( '/(\r?\n){2,}/', $pointer->nextSibling->nodeValue ?? '' )
 					)
 				)
 			) {
@@ -277,7 +277,7 @@ class CommentModifier {
 	 *
 	 * Also returns false if there are no elements in the list
 	 *
-	 * @param DOMNode[] $nodes Node list
+	 * @param Node[] $nodes Node list
 	 * @param string $type Element type
 	 * @return bool
 	 */
@@ -299,9 +299,9 @@ class CommentModifier {
 	 *
 	 * TODO: Implement this in JS if required
 	 *
-	 * @param DOMDocumentFragment $fragment Fragment
+	 * @param DocumentFragment $fragment Fragment
 	 */
-	public static function unwrapFragment( DOMDocumentFragment $fragment ) {
+	public static function unwrapFragment( DocumentFragment $fragment ) {
 		$childNodeList = iterator_to_array( $fragment->childNodes );
 
 		// Wrap orphaned list items
@@ -340,16 +340,16 @@ class CommentModifier {
 	 * Assumes that the list has a parent node, or is a root child in the provided
 	 * document fragment.
 	 *
-	 * @param DOMnode $list DOM node, will be wrapped if it is a list element (dl/ol/ul)
-	 * @param DOMDocumentFragment|null $fragment Containing document fragment if list has no parent
+	 * @param Node $list DOM node, will be wrapped if it is a list element (dl/ol/ul)
+	 * @param DocumentFragment|null $fragment Containing document fragment if list has no parent
 	 */
-	public static function unwrapList( DOMnode $list, ?DOMDocumentFragment $fragment = null ): void {
+	public static function unwrapList( Node $list, ?DocumentFragment $fragment = null ): void {
 		$doc = $list->ownerDocument;
 		$container = $fragment ?: $list->parentNode;
 		$referenceNode = $list;
 
 		if ( !(
-			$list instanceof DOMElement && (
+			$list instanceof Element && (
 				strtolower( $list->tagName ) === 'dl' ||
 				strtolower( $list->tagName ) === 'ol' ||
 				strtolower( $list->tagName ) === 'ul'
@@ -404,10 +404,10 @@ class CommentModifier {
 	/**
 	 * Add another list item after the given one.
 	 *
-	 * @param DOMElement $previousItem
-	 * @return DOMElement
+	 * @param Element $previousItem
+	 * @return Element
 	 */
-	public static function addSiblingListItem( DOMElement $previousItem ): DOMElement {
+	public static function addSiblingListItem( Element $previousItem ): Element {
 		$listItem = $previousItem->ownerDocument->createElement( $previousItem->tagName );
 		self::whitespaceParsoidHack( $listItem );
 		$previousItem->parentNode->insertBefore( $listItem, $previousItem->nextSibling );
@@ -417,11 +417,11 @@ class CommentModifier {
 	/**
 	 * Create an element that will convert to the provided wikitext
 	 *
-	 * @param DOMDocument $doc
+	 * @param Document $doc
 	 * @param string $wikitext
-	 * @return DOMElement
+	 * @return Element
 	 */
-	public static function createWikitextNode( DOMDocument $doc, string $wikitext ): DOMElement {
+	public static function createWikitextNode( Document $doc, string $wikitext ): Element {
 		$span = $doc->createElement( 'span' );
 
 		$span->setAttribute( 'typeof', 'mw:Transclusion' );
@@ -445,12 +445,15 @@ class CommentModifier {
 	/**
 	 * Check whether HTML node contains a user signature.
 	 *
-	 * @param DOMElement $container
+	 * @param Element $container
 	 * @return bool
 	 */
-	public static function isHtmlSigned( DOMElement $container ): bool {
+	public static function isHtmlSigned( Element $container ): bool {
+		// XXX use querySelectorAll
+		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
 		$xpath = new DOMXPath( $container->ownerDocument );
 		// Good enough?…
+		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
 		$matches = $xpath->query( './/span[@typeof="mw:Transclusion"][contains(@data-mw,"~~~~")]', $container );
 		if ( $matches->length === 0 ) {
 			return false;
@@ -478,9 +481,9 @@ class CommentModifier {
 	/**
 	 * Append a user signature to the comment in the container.
 	 *
-	 * @param DOMElement $container
+	 * @param Element $container
 	 */
-	public static function appendSignature( DOMElement $container ): void {
+	public static function appendSignature( Element $container ): void {
 		$doc = $container->ownerDocument;
 
 		$signature = wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
@@ -508,9 +511,9 @@ class CommentModifier {
 	 * Add a reply to a specific comment
 	 *
 	 * @param ThreadItem $comment Comment being replied to
-	 * @param DOMElement $container Container of comment DOM nodes
+	 * @param Element $container Container of comment DOM nodes
 	 */
-	public static function addReply( ThreadItem $comment, DOMElement $container ) {
+	public static function addReply( ThreadItem $comment, Element $container ) {
 		$newParsoidItem = null;
 		// Transfer comment DOM to Parsoid DOM
 		// Wrap every root node of the document in a new list item (dd/li).
