@@ -46,6 +46,18 @@ OO.inheritClass( NewTopicController, CommentController );
 
 NewTopicController.static.initType = 'section';
 
+NewTopicController.static.suppressedEditNotices = [
+	// Ignored because we have a custom warning for non-logged-in users.
+	'anoneditwarning',
+	// Ignored because it contains mostly instructions for signing comments using tildes.
+	// (Does not appear in VE notices right now, but just in case.)
+	'talkpagetext',
+	// Ignored because the empty state takeover has already explained
+	// that this is a new article.
+	'newarticletext',
+	'newarticletextanon'
+];
+
 /* Methods */
 
 /**
@@ -71,13 +83,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 
 	this.$notices.empty();
 	for ( var noticeName in this.replyWidget.commentDetails.notices ) {
-		if (
-			// Ignored because we have a custom warning for non-logged-in users.
-			noticeName === 'anoneditwarning' ||
-			// Ignored because it contains mostly instructions for signing comments using tildes.
-			// (Does not appear in VE notices right now, but just in case.)
-			noticeName === 'talkpagetext'
-		) {
+		if ( this.constructor.static.suppressedEditNotices.indexOf( noticeName ) !== -1 ) {
 			continue;
 		}
 		var noticeItem = this.replyWidget.commentDetails.notices[ noticeName ];

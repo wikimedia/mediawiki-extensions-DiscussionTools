@@ -9,6 +9,17 @@ var controller = require( './controller.js' ),
 mw.dt = {};
 
 mw.dt.initState = {};
+
+if ( uri.query.dtrepliedto ) {
+	// If we had to reload the page to highlight the new comment, extract that data from the URL and
+	// clean it up.
+	mw.dt.initState.repliedTo = uri.query.dtrepliedto;
+	if ( window.history.replaceState ) {
+		delete uri.query.dtrepliedto;
+		window.history.replaceState( {}, '', uri.toString() );
+	}
+}
+
 mw.dt.init = function ( $container ) {
 	if ( $container.is( '#mw-content-text' ) || $container.find( '#mw-content-text' ).length ) {
 		// eslint-disable-next-line no-jquery/no-global-selector

@@ -270,17 +270,19 @@ class HookUtils {
 
 		return (
 			// ?title=...&action=edit&section=new
+			// ?title=...&action=edit&redlink=1
 			// ?title=...&veaction=editsource&section=new
 			( $req->getVal( 'action' ) === 'edit' || $req->getVal( 'veaction' ) === 'editsource' ) &&
-			$req->getVal( 'section' ) === 'new' &&
+			( $req->getVal( 'section' ) === 'new' || (
+				// a redlink for an existing page will get redirected to the regular view, so we don't want
+				// to let our empty state take it over
+				$req->getVal( 'redlink' ) === '1' && !$context->getTitle()->exists()
+			) ) &&
 			// Adding a new topic with preloaded text is not supported yet (T269310)
 			!(
 				$req->getVal( 'editintro' ) || $req->getVal( 'preload' ) ||
 				$req->getVal( 'preloadparams' ) || $req->getVal( 'preloadtitle' )
 			) &&
-			// TODO If the page doesn't exist yet, we'll need to handle the interface differently,
-			// for now just don't enable the tool there
-			$context->getTitle()->exists() &&
 			// User has new topic tool enabled (and not using &dtenable=0)
 			self::isFeatureEnabledForOutput( $out, self::NEWTOPICTOOL )
 		);

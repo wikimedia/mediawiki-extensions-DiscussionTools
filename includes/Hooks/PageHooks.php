@@ -9,6 +9,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
+use Article;
 use Html;
 use IContextSource;
 use MediaWiki\Actions\Hook\GetActionNameHook;
@@ -17,11 +18,15 @@ use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
+use OOUI\ButtonWidget;
 use OutputPage;
+use RequestContext;
 use Skin;
 use VisualEditorHooks;
 
 class PageHooks implements
+	BeforeDisplayNoArticleTextHook,
 	BeforePageDisplayHook,
 	GetActionNameHook,
 	OutputPageBeforeHTMLHook
@@ -47,6 +52,7 @@ class PageHooks implements
 	 */
 	public function onBeforePageDisplay( $output, $skin ): void {
 		$user = $output->getUser();
+		$req = $output->getRequest();
 		// Load style modules if the tools can be available for the title
 		// as this means the DOM may have been modified in the parser cache.
 		if ( HookUtils::isAvailableForTitle( $output->getTitle() ) ) {
@@ -68,7 +74,6 @@ class PageHooks implements
 
 			$services = MediaWikiServices::getInstance();
 			$optionsLookup = $services->getUserOptionsLookup();
-			$req = $output->getRequest();
 			$editor = $optionsLookup->getOption( $user, 'discussiontools-editmode' );
 			// User has no preferred editor yet
 			// If the user has a preferred editor, this will be evaluated in the client
@@ -96,7 +101,12 @@ class PageHooks implements
 		}
 
 		// Replace the action=edit&section=new form with the new topic tool.
-		if ( HookUtils::shouldUseNewTopicTool( $output->getContext() ) ) {
+		if (
+			HookUtils::shouldUseNewTopicTool( $output->getContext() ) &&
+			// unless we got here via a redlink, in which case we want to allow the empty
+			// state to be displayed:
+			$req->getVal( 'redlink' ) !== '1'
+		) {
 			$output->addJsConfigVars( 'wgDiscussionToolsStartNewTopicTool', true );
 
 			// For no-JS compatibility, redirect to the old new section editor if JS is unavailable.
@@ -145,12 +155,7 @@ class PageHooks implements
 			}
 		}
 
-		foreach ( HookUtils::FEATURES as $feature ) {
-			// Add a CSS class for each enabled feature
-			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
-				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
-			}
-		}
+		$this->addFeatureBodyClasses( $output );
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			$text = CommentFormatter::postprocessTopicSubscription(
@@ -176,6 +181,100 @@ class PageHooks implements
 	public function onGetActionName( IContextSource $context, string &$action ): void {
 		if ( $action === 'edit' && HookUtils::shouldUseNewTopicTool( $context ) ) {
 			$action = 'view';
+		}
+	}
+
+	/**
+	 * BeforeDisplayNoArticleText hook handler
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BeforeDisplayNoArticleText
+	 *
+	 * @param Article $article The (empty) article
+	 * @return bool|void This hook can abort
+	 */
+	public function onBeforeDisplayNoArticleText( $article ) {
+		// We want to override the empty state for articles on which we would be enabled
+		$title = $article->getTitle();
+		$oldid = $article->getOldID();
+		if ( $oldid || $title->hasSourceText() ) {
+			// The default display will probably be useful here, so leave it.
+			return true;
+		}
+		$context = $article->getContext();
+		$output = $context->getOutput();
+		if ( !HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) ) {
+			// Our empty states are all about using the new topic tool
+			return true;
+		}
+		$output->enableOOUI();
+		$output->enableClientCache( false );
+
+		// OutputPageBeforeHTML won't have run, since there's no parsed text
+		// to display, but we need these classes or reply links won't show
+		// after a topic is posted.
+		$this->addFeatureBodyClasses( $output );
+
+		$coreConfig = RequestContext::getMain()->getConfig();
+		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
+
+		$dir = $context->getLanguage()->getDir();
+		$lang = $context->getLanguage()->getHtmlCode();
+
+		$output->addHTML(
+			// This being mw-parser-output is a lie, but makes the reply controller cope much better with everything
+			Html::openElement( 'div', [ 'class' => "ext-discussiontools-emptystate mw-parser-output noarticletext" ] ) .
+			Html::openElement( 'div', [ 'class' => "ext-discussiontools-emptystate-text" ] )
+		);
+		if ( $title->equals( $output->getUser()->getTalkPage() ) ) {
+			$output->addHTML(
+				Html::rawElement( 'h3', [], $context->msg( 'discussiontools-emptystate-title-self' )->parse() ) .
+				Html::rawElement( 'p', [], $context->msg( 'discussiontools-emptystate-desc-self' )->parse() )
+			);
+		} else {
+			$titleMsg = $title->getNamespace() == NS_USER_TALK ?
+				'discussiontools-emptystate-title-user' :
+				'discussiontools-emptystate-title';
+			$output->addHTML(
+				Html::rawElement( 'h3', [], $context->msg( $titleMsg )->parse() ) .
+				Html::rawElement( 'p', [],
+					$context->msg(
+						$title->getNamespace() == NS_USER_TALK ?
+							'discussiontools-emptystate-desc-user' :
+							'discussiontools-emptystate-desc'
+					)->parse()
+				) .
+				new ButtonWidget( [
+					'label' => $context->msg( 'discussiontools-emptystate-button' )->text(),
+					'href' => $title->getLocalURL( 'action=edit&section=new' ),
+					'flags' => [ 'primary', 'progressive' ]
+				] )
+			);
+		}
+		$output->addHTML(
+			Html::closeElement( 'div' ) .
+			Html::element( 'img', [
+				'src' => $iconpath . '/emptystate.svg',
+				'class' => "ext-discussiontools-emptystate-logo",
+				// This is a purely decorative element
+				'alt' => "",
+			] ) .
+			Html::closeElement( 'div' )
+		);
+
+		return false;
+	}
+
+	/**
+	 * Helper to add feature-toggle classes to the output's body
+	 *
+	 * @param OutputPage $output
+	 * @return void
+	 */
+	protected function addFeatureBodyClasses( OutputPage $output ): void {
+		foreach ( HookUtils::FEATURES as $feature ) {
+			// Add a CSS class for each enabled feature
+			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
+				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
+			}
 		}
 	}
 }
