@@ -62,6 +62,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					if ( !CommentModifier::isHtmlSigned( $container ) ) {
 						CommentModifier::appendSignature( $container );
 					}
+					// @phan-suppress-next-line PhanTypeMismatchArgument
 					$html = DOMCompat::getInnerHTML( $container );
 					$wikitext = $this->transformHTML( $title, $html )[ 'body' ];
 				}
@@ -203,6 +204,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'page' => $params['page'],
 							'token' => $params['token'],
 							'oldid' => $docRevId,
+							// @phan-suppress-next-line PhanTypeMismatchArgument
 							'html' => DOMCompat::getOuterHTML( $doc->documentElement ),
 							'summary' => $summary,
 							'baserevid' => $docRevId,

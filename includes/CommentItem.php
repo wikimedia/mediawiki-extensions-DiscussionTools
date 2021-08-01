@@ -86,6 +86,7 @@ class CommentItem extends ThreadItem {
 		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
+		// @phan-suppress-next-line PhanTypeMismatchArgument
 		return DOMCompat::getInnerHTML( $container );
 	}
 

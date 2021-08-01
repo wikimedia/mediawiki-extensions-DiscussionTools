@@ -59,6 +59,7 @@ class CommentUtils {
 				(
 					strtolower( $node->tagName ) === 'span' &&
 					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ?? '' ) ) &&
+					// @phan-suppress-next-line PhanTypeMismatchArgument
 					!self::htmlTrim( DOMCompat::getInnerHTML( $node ) )
 				)
 			)

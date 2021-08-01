@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMDocument;
 use DOMElement;
 use Language;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
@@ -197,6 +196,7 @@ class CommentFormatter {
 
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
+		// @phan-suppress-next-line PhanTypeMismatchArgument
 		return XMLSerializer::serialize( $docElement, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
 	}
 
@@ -212,7 +212,7 @@ class CommentFormatter {
 	public static function postprocessTopicSubscription(
 		string $text, Language $lang, SubscriptionStore $subscriptionStore, UserIdentity $user
 	): string {
-		$doc = new DOMDocument();
+		$doc = DOMCompat::newDocument( true );
 
 		$matches = [];
 		preg_match_all( '/<!--__DTSUBSCRIBE__(.*?)-->/', $text, $matches );
@@ -272,6 +272,7 @@ class CommentFormatter {
 				$subscribe->appendChild( $subscribeLink );
 				$subscribe->appendChild( $bracketRight );
 
+				// @phan-suppress-next-line PhanTypeMismatchArgument
 				return DOMCompat::getOuterHTML( $subscribe );
 			},
 			$text
