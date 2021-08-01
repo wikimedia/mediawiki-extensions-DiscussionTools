@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMComment;
-use DOMElement;
-use DOMNode;
 use DOMXPath;
 use MediaWiki\MediaWikiServices;
 use Title;
+use Wikimedia\Parsoid\DOM\Comment;
+use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentUtils {
@@ -31,11 +31,11 @@ class CommentUtils {
 	];
 
 	/**
-	 * @param DOMNode $node
+	 * @param Node $node
 	 * @return bool Node is a block element
 	 */
-	public static function isBlockElement( DOMNode $node ): bool {
-		return $node instanceof DOMElement &&
+	public static function isBlockElement( Node $node ): bool {
+		return $node instanceof Element &&
 			in_array( strtolower( $node->tagName ), self::$blockElementTypes );
 	}
 
@@ -43,13 +43,13 @@ class CommentUtils {
 		'/(?:^|\s)mw:PageProp\/(?:Category|redirect|Language)(?=$|\s)/D';
 
 	/**
-	 * @param DOMNode $node
+	 * @param Node $node
 	 * @return bool Node is considered a rendering-transparent node in Parsoid
 	 */
-	public static function isRenderingTransparentNode( DOMNode $node ): bool {
+	public static function isRenderingTransparentNode( Node $node ): bool {
 		return (
-			$node instanceof DOMComment ||
-			$node instanceof DOMElement && (
+			$node instanceof Comment ||
+			$node instanceof Element && (
 				strtolower( $node->tagName ) === 'meta' ||
 				(
 					strtolower( $node->tagName ) === 'link' &&
@@ -59,7 +59,6 @@ class CommentUtils {
 				(
 					strtolower( $node->tagName ) === 'span' &&
 					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ?? '' ) ) &&
-					// @phan-suppress-next-line PhanTypeMismatchArgument
 					!self::htmlTrim( DOMCompat::getInnerHTML( $node ) )
 				)
 			)
@@ -85,13 +84,13 @@ class CommentUtils {
 	];
 
 	/**
-	 * @param DOMNode $node
+	 * @param Node $node
 	 * @return bool If true, node can't have element children. If false, it's complicated.
 	 */
-	public static function cantHaveElementChildren( DOMNode $node ): bool {
+	public static function cantHaveElementChildren( Node $node ): bool {
 		return (
-			$node instanceof DOMComment ||
-			$node instanceof DOMElement &&
+			$node instanceof Comment ||
+			$node instanceof Element &&
 				in_array( strtolower( $node->tagName ), self::$noElementChildrenElementTypes )
 		);
 	}
@@ -99,10 +98,10 @@ class CommentUtils {
 	/**
 	 * Get the index of $child in its parent
 	 *
-	 * @param DOMNode $child
+	 * @param Node $child
 	 * @return int
 	 */
-	public static function childIndexOf( DOMNode $child ): int {
+	public static function childIndexOf( Node $child ): int {
 		$i = 0;
 		while ( ( $child = $child->previousSibling ) ) {
 			$i++;
@@ -111,14 +110,14 @@ class CommentUtils {
 	}
 
 	/**
-	 * Check whether a DOMNode contains (is an ancestor of) another DOMNode (or is the same node)
+	 * Check whether a Node contains (is an ancestor of) another Node (or is the same node)
 	 *
-	 * @param DOMNode $ancestor
-	 * @param DOMNode $descendant
+	 * @param Node $ancestor
+	 * @param Node $descendant
 	 * @return bool
 	 */
-	public static function contains( DOMNode $ancestor, DOMNode $descendant ): bool {
-		// TODO can we use DOMNode->compareDocumentPosition() here maybe?
+	public static function contains( Node $ancestor, Node $descendant ): bool {
+		// TODO can we use Node->compareDocumentPosition() here maybe?
 		$node = $descendant;
 		while ( $node && $node !== $ancestor ) {
 			$node = $node->parentNode;
@@ -129,11 +128,11 @@ class CommentUtils {
 	/**
 	 * Find closest ancestor element using one of the given tag names.
 	 *
-	 * @param DOMNode $node
+	 * @param Node $node
 	 * @param string[] $tagNames
-	 * @return DOMElement|null
+	 * @return Element|null
 	 */
-	public static function closestElement( DOMNode $node, array $tagNames ): ?DOMElement {
+	public static function closestElement( Node $node, array $tagNames ): ?Element {
 		do {
 			if (
 				$node->nodeType === XML_ELEMENT_NODE &&
@@ -153,23 +152,23 @@ class CommentUtils {
 	 * 2. Find the main node of the about-group (first sibling with the same 'about' attribute)
 	 * 3. If this is an mw:Transclusion node, return it; otherwise, go to step 1
 	 *
-	 * @param DOMNode $node
-	 * @return DOMElement|null Translcusion node, null if not found
+	 * @param Node $node
+	 * @return Element|null Translcusion node, null if not found
 	 */
-	public static function getTranscludedFromElement( DOMNode $node ): ?DOMElement {
+	public static function getTranscludedFromElement( Node $node ): ?Element {
 		while ( $node ) {
 			// 1.
 			if (
-				$node instanceof DOMElement &&
+				$node instanceof Element &&
 				$node->getAttribute( 'about' ) &&
-				preg_match( '/^#mwt\d+$/', $node->getAttribute( 'about' ) )
+				preg_match( '/^#mwt\d+$/', $node->getAttribute( 'about' ) ?? '' )
 			) {
 				$about = $node->getAttribute( 'about' );
 
 				// 2.
 				while (
 					( $previousSibling = $node->previousSibling ) &&
-					$previousSibling instanceof DOMElement &&
+					$previousSibling instanceof Element &&
 					$previousSibling->getAttribute( 'about' ) === $about
 				) {
 					$node = $previousSibling;
@@ -178,7 +177,7 @@ class CommentUtils {
 				// 3.
 				if (
 					$node->getAttribute( 'typeof' ) &&
-					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ) )
+					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ?? '' ) )
 				) {
 					break;
 				}
@@ -194,10 +193,10 @@ class CommentUtils {
 	 *
 	 * Also returns the offset within that node where the heading text starts.
 	 *
-	 * @param DOMElement $heading Heading node (`<h1>`-`<h6>`)
-	 * @return array Array containing a 'node' (DOMElement) and offset (int)
+	 * @param Element $heading Heading node (`<h1>`-`<h6>`)
+	 * @return array Array containing a 'node' (Element) and offset (int)
 	 */
-	public static function getHeadlineNodeAndOffset( DOMElement $heading ): array {
+	public static function getHeadlineNodeAndOffset( Element $heading ): array {
 		// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
 		$headline = $heading;
 		$offset = 0;
@@ -211,14 +210,14 @@ class CommentUtils {
 			$headline = $headline->firstChild;
 			while (
 				$headline && !(
-					$headline instanceof DOMElement && $headline->getAttribute( 'class' ) === 'mw-headline'
+					$headline instanceof Element && $headline->getAttribute( 'class' ) === 'mw-headline'
 				)
 			) {
 				$headline = $headline->nextSibling;
 			}
 			if ( $headline ) {
 				if (
-					( $firstChild = $headline->firstChild ) instanceof DOMElement &&
+					( $firstChild = $headline->firstChild ) instanceof Element &&
 					$firstChild->getAttribute( 'class' ) === 'mw-headline-number'
 				) {
 					$offset = 1;
@@ -250,11 +249,11 @@ class CommentUtils {
 	 *
 	 * The indent level is the number of lists inside of which it is nested.
 	 *
-	 * @param DOMNode $node
-	 * @param DOMNode $rootNode
+	 * @param Node $node
+	 * @param Node $rootNode
 	 * @return int
 	 */
-	public static function getIndentLevel( DOMNode $node, DOMNode $rootNode ): int {
+	public static function getIndentLevel( Node $node, Node $rootNode ): int {
 		$indent = 0;
 		while ( $node ) {
 			if ( $node === $rootNode ) {
@@ -273,12 +272,12 @@ class CommentUtils {
 	 * Get an array of sibling nodes that contain parts of the given range.
 	 *
 	 * @param ImmutableRange $range
-	 * @return DOMElement[]
+	 * @return Element[]
 	 */
 	public static function getCoveredSiblings( ImmutableRange $range ): array {
 		$ancestor = $range->commonAncestorContainer;
 
-		// Convert to array early because apparently DOMNodeList acts like a linked list
+		// Convert to array early because apparently NodeList acts like a linked list
 		// and accessing items by index is slow
 		$siblings = iterator_to_array( $ancestor->childNodes );
 		$start = 0;
@@ -309,7 +308,7 @@ class CommentUtils {
 	 * Get the nodes (if any) that contain the given thread item, and nothing else.
 	 *
 	 * @param ThreadItem $item
-	 * @return DOMElement[]|null
+	 * @return Element[]|null
 	 */
 	public static function getFullyCoveredSiblings( ThreadItem $item ): ?array {
 		$siblings = self::getCoveredSiblings( $item->getRange() );
@@ -320,7 +319,7 @@ class CommentUtils {
 
 		$isIgnored = static function ( $node ) {
 			// Ignore empty text nodes
-			return $node->nodeType === XML_TEXT_NODE && CommentUtils::htmlTrim( $node->nodeValue ) === '';
+			return $node->nodeType === XML_TEXT_NODE && CommentUtils::htmlTrim( $node->nodeValue ?? '' ) === '';
 		};
 
 		$isFirstNonemptyChild = static function ( $node ) use ( $isIgnored ) {
@@ -367,9 +366,9 @@ class CommentUtils {
 				break;
 			}
 			$length = ( $node->nodeType === XML_TEXT_NODE ) ?
-				strlen( rtrim( $node->nodeValue, "\t\n\f\r " ) ) :
+				strlen( rtrim( $node->nodeValue ?? '', "\t\n\f\r " ) ) :
 				// PHP bug: childNodes can be null for comment nodes
-				// (it should always be a DOMNodeList, even if the node can't have children)
+				// (it should always be a NodeList, even if the node can't have children)
 				( $node->childNodes ? $node->childNodes->length : 0 );
 			if ( $endContainer === $node && $endOffset === $length ) {
 				$endMatches = true;
@@ -399,13 +398,16 @@ class CommentUtils {
 	/**
 	 * Unwrap Parsoid sections
 	 *
-	 * @param DOMElement $element Parent element, e.g. document body
+	 * @param Element $element Parent element, e.g. document body
 	 * @param string|null $keepSection Section to keep
 	 */
 	public static function unwrapParsoidSections(
-		DOMElement $element, string $keepSection = null
+		Element $element, string $keepSection = null
 	): void {
+		// XXX use DOMCompat::querySelectorAll
+		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
 		$xpath = new DOMXPath( $element->ownerDocument );
+		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
 		$sections = $xpath->query( '//section[@data-mw-section-id]', $element );
 		foreach ( $sections as $section ) {
 			$parent = $section->parentNode;
@@ -465,12 +467,12 @@ class CommentUtils {
 	 * You might also think about this as processing XML token stream linearly (rather than XML
 	 * nodes), as if we were parsing the document.
 	 *
-	 * @param DOMNode $node Node to start at
+	 * @param Node $node Node to start at
 	 * @param callable $callback Function accepting two arguments: $event ('enter' or 'leave') and
-	 *     $node (DOMNode)
+	 *     $node (Node)
 	 * @return mixed Final return value of the callback
 	 */
-	public static function linearWalk( DOMNode $node, callable $callback ) {
+	public static function linearWalk( Node $node, callable $callback ) {
 		$result = null;
 		[ $withinNode, $beforeNode ] = [ $node->parentNode, $node ];
 
@@ -495,7 +497,7 @@ class CommentUtils {
 	 *
 	 * @inheritDoc ::linearWalk()
 	 */
-	public static function linearWalkBackwards( DOMNode $node, callable $callback ) {
+	public static function linearWalkBackwards( Node $node, callable $callback ) {
 		$result = null;
 		[ $withinNode, $beforeNode ] = [ $node->parentNode, $node ];
 

@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMNode;
 use Exception;
+use Wikimedia\Parsoid\DOM\Node;
 
 /**
  * Partial implementation of W3 DOM4 NodeFilter interface.
@@ -42,7 +42,7 @@ class NodeFilter {
 	/**
 	 * See https://dom.spec.whatwg.org/#dom-nodefilter-acceptnode
 	 *
-	 * @param DOMNode $node
+	 * @param Node $node
 	 * @return int Constant NodeFilter::FILTER_ACCEPT,
 	 *  NodeFilter::FILTER_REJECT or NodeFilter::FILTER_SKIP.
 	 */

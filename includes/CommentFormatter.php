@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMElement;
 use Language;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\MediaWikiServices;
@@ -10,6 +9,7 @@ use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
 use Throwable;
 use WebRequest;
+use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
@@ -28,10 +28,10 @@ class CommentFormatter {
 	 *
 	 * This method exists so it can mocked in tests.
 	 *
-	 * @param DOMElement $container
+	 * @param Element $container
 	 * @return CommentParser
 	 */
-	protected static function getParser( DOMElement $container ): CommentParser {
+	protected static function getParser( Element $container ): CommentParser {
 		return CommentParser::newFromGlobalState( $container );
 	}
 
@@ -85,10 +85,11 @@ class CommentFormatter {
 		// See controller#init in JS.
 
 		$doc = DOMUtils::parseHTML( $html );
+		// @phan-suppress-next-line PhanUndeclaredProperty Nonstandard DOM prop
 		$doc->preserveWhiteSpace = false;
 
 		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-		if ( !( $container instanceof DOMElement ) ) {
+		if ( !( $container instanceof Element ) ) {
 			return $html;
 		}
 
@@ -190,13 +191,12 @@ class CommentFormatter {
 		}
 
 		$docElement = $doc->getElementsByTagName( 'body' )->item( 0 );
-		if ( !( $docElement instanceof DOMElement ) ) {
+		if ( !( $docElement instanceof Element ) ) {
 			return $html;
 		}
 
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
-		// @phan-suppress-next-line PhanTypeMismatchArgument
 		return XMLSerializer::serialize( $docElement, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
 	}
 
@@ -272,7 +272,6 @@ class CommentFormatter {
 				$subscribe->appendChild( $subscribeLink );
 				$subscribe->appendChild( $bracketRight );
 
-				// @phan-suppress-next-line PhanTypeMismatchArgument
 				return DOMCompat::getOuterHTML( $subscribe );
 			},
 			$text

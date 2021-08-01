@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMNode;
 use JsonSerializable;
+use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
@@ -114,7 +114,7 @@ abstract class ThreadItem implements JsonSerializable {
 			return false;
 		}
 
-		$dataMw = json_decode( $node->getAttribute( 'data-mw' ), true );
+		$dataMw = json_decode( $node->getAttribute( 'data-mw' ) ?? '', true );
 
 		// Only return a page name if this is a simple single-template transclusion.
 		if (
@@ -144,7 +144,6 @@ abstract class ThreadItem implements JsonSerializable {
 		CommentModifier::unwrapFragment( $fragment );
 		$container = $fragment->ownerDocument->createElement( 'div' );
 		$container->appendChild( $fragment );
-		// @phan-suppress-next-line PhanTypeMismatchArgument
 		return DOMCompat::getInnerHTML( $container );
 	}
 
@@ -155,7 +154,7 @@ abstract class ThreadItem implements JsonSerializable {
 	 */
 	public function getText(): string {
 		$fragment = $this->getRange()->cloneContents();
-		return $fragment->textContent;
+		return $fragment->textContent ?? '';
 	}
 
 	/**
@@ -187,9 +186,9 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @return DOMNode Root node (level is relative to this node)
+	 * @return Node Root node (level is relative to this node)
 	 */
-	public function getRootNode(): DOMNode {
+	public function getRootNode(): Node {
 		return $this->rootNode;
 	}
 
@@ -250,9 +249,9 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @param DOMNode $rootNode Root node (level is relative to this node)
+	 * @param Node $rootNode Root node (level is relative to this node)
 	 */
-	public function setRootNode( DOMNode $rootNode ): void {
+	public function setRootNode( Node $rootNode ): void {
 		$this->rootNode = $rootNode;
 	}
 

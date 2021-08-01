@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMComment;
-use DOMDocumentFragment;
-use DOMDocumentType;
-use DOMNode;
-use DOMProcessingInstruction;
-use DOMText;
 use Error;
 use Exception;
+use Wikimedia\Parsoid\DOM\Comment;
+use Wikimedia\Parsoid\DOM\DocumentFragment;
+use Wikimedia\Parsoid\DOM\DocumentType;
+use Wikimedia\Parsoid\DOM\Node;
+use Wikimedia\Parsoid\DOM\ProcessingInstruction;
+use Wikimedia\Parsoid\DOM\Text;
 
 /**
  * ImmutableRange has a similar API to the DOM Range class.
@@ -30,11 +30,11 @@ class ImmutableRange {
 	/**
 	 * Find the common ancestor container of two nodes
 	 *
-	 * @param DOMNode $a
-	 * @param DOMNode $b
-	 * @return DOMNode Common ancestor container
+	 * @param Node $a
+	 * @param Node $b
+	 * @return Node Common ancestor container
 	 */
-	private static function findCommonAncestorContainer( DOMNode $a, DOMNode $b ): DOMNode {
+	private static function findCommonAncestorContainer( Node $a, Node $b ): Node {
 		$ancestorsA = [];
 		$ancestorsB = [];
 
@@ -61,25 +61,26 @@ class ImmutableRange {
 	/**
 	 * Get the root ancestor of a node
 	 *
-	 * @param DOMNode $node
-	 * @return DOMNode
+	 * @param Node $node
+	 * @return Node
 	 */
-	private static function getRootNode( DOMNode $node ): DOMNode {
+	private static function getRootNode( Node $node ): Node {
 		while ( $node->parentNode ) {
 			$node = $node->parentNode;
+			'@phan-var Node $node';
 		}
 
 		return $node;
 	}
 
 	/**
-	 * @param DOMNode $startNode
+	 * @param Node $startNode
 	 * @param int $startOffset
-	 * @param DOMNode $endNode
+	 * @param Node $endNode
 	 * @param int $endOffset
 	 */
 	public function __construct(
-		DOMNode $startNode, int $startOffset, DOMNode $endNode, int $endOffset
+		Node $startNode, int $startOffset, Node $endNode, int $endOffset
 	) {
 		$this->mStartContainer = $startNode;
 		$this->mStartOffset = $startOffset;
@@ -118,11 +119,11 @@ class ImmutableRange {
 	/**
 	 * Clone range with a new start position
 	 *
-	 * @param DOMNode $startNode
+	 * @param Node $startNode
 	 * @param int $startOffset
 	 * @return self
 	 */
-	public function setStart( DOMNode $startNode, int $startOffset ): self {
+	public function setStart( Node $startNode, int $startOffset ): self {
 		return new self(
 			$startNode, $startOffset, $this->mEndContainer, $this->mEndOffset
 		);
@@ -131,11 +132,11 @@ class ImmutableRange {
 	/**
 	 * Clone range with a new end position
 	 *
-	 * @param DOMNode $endNode
+	 * @param Node $endNode
 	 * @param int $endOffset
 	 * @return self
 	 */
-	public function setEnd( DOMNode $endNode, int $endOffset ): self {
+	public function setEnd( Node $endNode, int $endOffset ): self {
 		return new self(
 			$this->mStartContainer, $this->mStartOffset, $endNode, $endOffset
 		);
@@ -147,10 +148,10 @@ class ImmutableRange {
 	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
 	 * @see https://dom.spec.whatwg.org/#partially-contained
 	 *
-	 * @param DOMNode $node The Node to check against.
+	 * @param Node $node The Node to check against.
 	 * @return bool
 	 */
-	private function isPartiallyContainedNode( DOMNode $node ): bool {
+	private function isPartiallyContainedNode( Node $node ): bool {
 		$isAncestorOfStart = CommentUtils::contains( $node, $this->mStartContainer );
 		$isAncestorOfEnd = CommentUtils::contains( $node, $this->mEndContainer );
 
@@ -164,10 +165,10 @@ class ImmutableRange {
 	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
 	 * @see https://dom.spec.whatwg.org/#contained
 	 *
-	 * @param DOMNode $node The Node to check against.
+	 * @param Node $node The Node to check against.
 	 * @return bool
 	 */
-	private function isFullyContainedNode( DOMNode $node ): bool {
+	private function isFullyContainedNode( Node $node ): bool {
 		$startBP = [ $this->mStartContainer, $this->mStartOffset ];
 		$endBP = [ $this->mEndContainer, $this->mEndOffset ];
 		$root = self::getRootNode( $this->mStartContainer );
@@ -184,9 +185,9 @@ class ImmutableRange {
 	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
 	 * @see https://dom.spec.whatwg.org/#dom-range-clonecontents
 	 *
-	 * @return DOMDocumentFragment
+	 * @return DocumentFragment
 	 */
-	public function cloneContents(): DOMDocumentFragment {
+	public function cloneContents(): DocumentFragment {
 		$ownerDocument = $this->mStartContainer->ownerDocument;
 		$fragment = $ownerDocument->createDocumentFragment();
 
@@ -202,13 +203,13 @@ class ImmutableRange {
 		$originalEndOffset = $this->mEndOffset;
 
 		if ( $originalStartContainer === $originalEndContainer
-			&& ( $originalStartContainer instanceof DOMText
-				|| $originalStartContainer instanceof DOMProcessingInstruction
-				|| $originalStartContainer instanceof DOMComment )
+			&& ( $originalStartContainer instanceof Text
+				|| $originalStartContainer instanceof ProcessingInstruction
+				|| $originalStartContainer instanceof Comment )
 		) {
 			$clone = $originalStartContainer->cloneNode();
 			$clone->nodeValue = substr(
-				$originalStartContainer->nodeValue,
+				$originalStartContainer->nodeValue ?? '',
 				$originalStartOffset,
 				$originalEndOffset - $originalStartOffset
 			);
@@ -269,14 +270,14 @@ class ImmutableRange {
 
 		// $containedChildrenStart and $containedChildrenEnd may be null here, but this loop still works correctly
 		for ( $child = $containedChildrenStart; $child !== $containedChildrenEnd; $child = $child->nextSibling ) {
-			if ( $child instanceof DOMDocumentType ) {
+			if ( $child instanceof DocumentType ) {
 				throw new Error();
 			}
 		}
 
-		if ( $firstPartiallyContainedChild instanceof DOMText
-			|| $firstPartiallyContainedChild instanceof DOMProcessingInstruction
-			|| $firstPartiallyContainedChild instanceof DOMComment
+		if ( $firstPartiallyContainedChild instanceof Text
+			|| $firstPartiallyContainedChild instanceof ProcessingInstruction
+			|| $firstPartiallyContainedChild instanceof Comment
 		) {
 			$clone = $originalStartContainer->cloneNode();
 			$clone->nodeValue = substr(
@@ -310,9 +311,9 @@ class ImmutableRange {
 			$fragment->appendChild( $clone );
 		}
 
-		if ( $lastPartiallyContainedChild instanceof DOMText
-			|| $lastPartiallyContainedChild instanceof DOMProcessingInstruction
-			|| $lastPartiallyContainedChild instanceof DOMComment
+		if ( $lastPartiallyContainedChild instanceof Text
+			|| $lastPartiallyContainedChild instanceof ProcessingInstruction
+			|| $lastPartiallyContainedChild instanceof Comment
 		) {
 			$clone = $originalEndContainer->cloneNode();
 			$clone->nodeValue = substr(
@@ -344,13 +345,13 @@ class ImmutableRange {
 	 *
 	 * @see https://dom.spec.whatwg.org/#dom-range-insertnode
 	 *
-	 * @param DOMNode $node The Node to be inserted.
+	 * @param Node $node The Node to be inserted.
 	 * @return void
 	 */
-	public function insertNode( DOMNode $node ): void {
-		if ( ( $this->mStartContainer instanceof DOMProcessingInstruction
-				|| $this->mStartContainer instanceof DOMComment )
-			|| ( $this->mStartContainer instanceof DOMText
+	public function insertNode( Node $node ): void {
+		if ( ( $this->mStartContainer instanceof ProcessingInstruction
+				|| $this->mStartContainer instanceof Comment )
+			|| ( $this->mStartContainer instanceof Text
 				&& $this->mStartContainer->parentNode === null )
 		) {
 			throw new Error();
@@ -358,7 +359,7 @@ class ImmutableRange {
 
 		$referenceNode = null;
 
-		if ( $this->mStartContainer instanceof DOMText ) {
+		if ( $this->mStartContainer instanceof Text ) {
 			$referenceNode = $this->mStartContainer;
 		} else {
 			$referenceNode = $this
@@ -373,7 +374,7 @@ class ImmutableRange {
 		// TODO: Restore this validation check?
 		// $parent->ensurePreinsertionValidity( $node, $referenceNode );
 
-		if ( $this->mStartContainer instanceof DOMText ) {
+		if ( $this->mStartContainer instanceof Text ) {
 			$referenceNode = $this->mStartContainer->splitText( $this->mStartOffset );
 		}
 
@@ -391,9 +392,13 @@ class ImmutableRange {
 		// This should just be
 		//  $parent->insertBefore( $node, $referenceNode );
 		// but the second argument is optional, not nullable
+		// XXX Maybe this was true in some ancient PHP version but
+		// doesn't seem to be true now:
+		// https://www.php.net/manual/en/domnode.insertbefore.php
 		if ( $referenceNode ) {
 			$parent->insertBefore( $node, $referenceNode );
 		} else {
+			// @phan-suppress-next-line PhanParamTooFew Nonstandard DOM
 			$parent->insertBefore( $node );
 		}
 	}

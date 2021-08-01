@@ -7,14 +7,14 @@ use DateInterval;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
-use DOMElement;
-use DOMNode;
-use DOMText;
 use IP;
 use Language;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use Title;
+use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\DOM\Node;
+use Wikimedia\Parsoid\DOM\Text;
 
 // TODO clean up static vs non-static
 // TODO consider making timestamp parsing not a returned function
@@ -22,7 +22,7 @@ use Title;
 class CommentParser {
 	private const SIGNATURE_SCAN_LIMIT = 100;
 
-	/** @var DOMElement */
+	/** @var Element */
 	private $rootNode;
 
 	/** @var ThreadItem[] */
@@ -50,12 +50,12 @@ class CommentParser {
 	private $timezones;
 
 	/**
-	 * @param DomElement $rootNode Root node of content to parse
+	 * @param Element $rootNode Root node of content to parse
 	 * @param Language $language Content language
 	 * @param Config $config
 	 * @param array $data
 	 */
-	public function __construct( DOMElement $rootNode, Language $language, Config $config, array $data = [] ) {
+	public function __construct( Element $rootNode, Language $language, Config $config, array $data = [] ) {
 		$this->rootNode = $rootNode;
 		$this->config = $config;
 		$this->language = $language;
@@ -73,10 +73,10 @@ class CommentParser {
 	}
 
 	/**
-	 * @param DomElement $rootNode
+	 * @param Element $rootNode
 	 * @return CommentParser
 	 */
-	public static function newFromGlobalState( DOMElement $rootNode ): CommentParser {
+	public static function newFromGlobalState( Element $rootNode ): CommentParser {
 		return new static(
 			$rootNode,
 			MediaWikiServices::getInstance()->getContentLanguage(),
@@ -87,11 +87,11 @@ class CommentParser {
 	/**
 	 * Check whether the node is a comment separator (instead of a part of the comment).
 	 *
-	 * @param DOMNode $node
+	 * @param Node $node
 	 * @return bool
 	 */
-	private static function isCommentSeparator( DOMNode $node ) {
-		return $node instanceof DOMElement && (
+	private static function isCommentSeparator( Node $node ) {
+		return $node instanceof Element && (
 			// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
 			strtolower( $node->nodeName ) === 'br' ||
 			// Horizontal line
@@ -109,10 +109,10 @@ class CommentParser {
 	 * that is a "void element" or "text element", except some special cases that we treat as comment
 	 * separators (isCommentSeparator()).
 	 *
-	 * @param DOMNode $node Node to start searching at. This node's children are ignored.
-	 * @return DOMNode
+	 * @param Node $node Node to start searching at. This node's children are ignored.
+	 * @return Node
 	 */
-	private function nextInterestingLeafNode( DOMNode $node ): DOMNode {
+	private function nextInterestingLeafNode( Node $node ): Node {
 		$rootNode = $this->rootNode;
 		$treeWalker = new TreeWalker(
 			$rootNode,
@@ -537,12 +537,12 @@ class CommentParser {
 	/**
 	 * Given a link node (`<a>`), if it's a link to a user-related page, return their username.
 	 *
-	 * @param DOMElement $link
+	 * @param Element $link
 	 * @return string|null Username, or null
 	 */
-	private static function getUsernameFromLink( DOMElement $link ) {
+	private static function getUsernameFromLink( Element $link ) {
 		$username = null;
-		$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) );
+		$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '' );
 		if ( !$title ) {
 			return null;
 		}
@@ -585,18 +585,18 @@ class CommentParser {
 	 * comprising the signature, in reverse order (with $timestampNode or its parent node as the last
 	 * element). The second element is the username (null for unsigned comments).
 	 *
-	 * @param DOMText $timestampNode
-	 * @param DOMNode|null $until Node to stop searching at
+	 * @param Text $timestampNode
+	 * @param Node|null $until Node to stop searching at
 	 * @return array [ nodes, username ]
 	 */
-	private function findSignature( DOMText $timestampNode, ?DOMNode $until = null ): array {
+	private function findSignature( Text $timestampNode, ?Node $until = null ): array {
 		$sigUsername = null;
 		$length = 0;
 		$lastLinkNode = $timestampNode;
 
 		CommentUtils::linearWalkBackwards(
 			$timestampNode,
-			function ( string $event, DOMNode $node ) use (
+			function ( string $event, Node $node ) use (
 				&$sigUsername, &$lastLinkNode, &$length,
 				$until, $timestampNode
 			) {
@@ -612,7 +612,7 @@ class CommentParser {
 				}
 
 				if ( $event === 'leave' && $node !== $timestampNode ) {
-					$length += $node instanceof DOMText ? mb_strlen( $node->textContent ) : 0;
+					$length += $node instanceof Text ? mb_strlen( $node->textContent ?? '' ) : 0;
 				}
 
 				// Find the closest link before timestamp that links to the user's user page.
@@ -621,7 +621,7 @@ class CommentParser {
 				// if the timestamp node is the only child of a link node, use the link node instead
 				//
 				// Handle links nested in formatting elements.
-				if ( $event === 'leave' && $node instanceof DOMElement && strtolower( $node->nodeName ) === 'a' ) {
+				if ( $event === 'leave' && $node instanceof Element && strtolower( $node->nodeName ) === 'a' ) {
 					$username = self::getUsernameFromLink( $node );
 					if ( $username ) {
 						// Accept the first link to the user namespace, then only accept links to that user
@@ -663,16 +663,16 @@ class CommentParser {
 	 * Callback for TreeWalker that will skip over nodes where we don't want to detect
 	 * comments (or section headings).
 	 *
-	 * @param DOMNode $node
+	 * @param Node $node
 	 * @return int Appropriate NodeFilter constant
 	 */
-	public static function acceptOnlyNodesAllowingComments( DOMNode $node ) {
+	public static function acceptOnlyNodesAllowingComments( Node $node ) {
 		// The table of contents has a heading that gets erroneously detected as a section
-		if ( $node instanceof DOMElement && $node->getAttribute( 'id' ) === 'toc' ) {
+		if ( $node instanceof Element && $node->getAttribute( 'id' ) === 'toc' ) {
 			return NodeFilter::FILTER_REJECT;
 		}
 		// Don't detect comments within quotes (T275881)
-		if ( $node instanceof DOMElement && (
+		if ( $node instanceof Element && (
 			strtolower( $node->tagName ) === 'blockquote' ||
 			strtolower( $node->tagName ) === 'cite' ||
 			strtolower( $node->tagName ) === 'q'
@@ -680,7 +680,7 @@ class CommentParser {
 			return NodeFilter::FILTER_REJECT;
 		}
 		// Don't detect comments within headings (but don't reject the headings themselves)
-		if ( ( $par = $node->parentNode ) instanceof DOMElement && preg_match( '/^h([1-6])$/i', $par->tagName ) ) {
+		if ( ( $par = $node->parentNode ) instanceof Element && preg_match( '/^h([1-6])$/i', $par->tagName ) ) {
 			return NodeFilter::FILTER_REJECT;
 		}
 		return NodeFilter::FILTER_ACCEPT;
@@ -689,7 +689,7 @@ class CommentParser {
 	/**
 	 * Find a timestamps in a given text node
 	 *
-	 * @param DOMText $node
+	 * @param Text $node
 	 * @param string[] $timestampRegexps
 	 * @return array|null Array with the following keys:
 	 *   - int 'offset' Length of extra text preceding the node that was used for matching
@@ -697,7 +697,7 @@ class CommentParser {
 	 *   - array 'matchData' Regexp match data, which specifies the location of the match,
 	 *     and which can be parsed using getLocalTimestampParsers()
 	 */
-	public function findTimestamp( DOMText $node, array $timestampRegexps ): ?array {
+	public function findTimestamp( Text $node, array $timestampRegexps ): ?array {
 		$nodeText = '';
 		$offset = 0;
 
@@ -710,18 +710,18 @@ class CommentParser {
 			// this, we must piece together the text, so that our regexp can match those timestamps.
 			if (
 				( $previousSibling = $node->previousSibling ) &&
-				$previousSibling instanceof DOMElement &&
+				$previousSibling instanceof Element &&
 				$previousSibling->getAttribute( 'typeof' ) === 'mw:Entity'
 			) {
 				$nodeText = $previousSibling->firstChild->nodeValue . $nodeText;
-				$offset += strlen( $previousSibling->firstChild->nodeValue );
+				$offset += strlen( $previousSibling->firstChild->nodeValue ?? '' );
 
 				// If the entity is preceded by more text, do this again
 				if (
 					$previousSibling->previousSibling &&
-					$previousSibling->previousSibling instanceof DOMText
+					$previousSibling->previousSibling instanceof Text
 				) {
-					$offset += strlen( $previousSibling->previousSibling->nodeValue );
+					$offset += strlen( $previousSibling->previousSibling->nodeValue ?? '' );
 					$node = $previousSibling->previousSibling;
 				} else {
 					$node = null;
@@ -829,12 +829,12 @@ class CommentParser {
 	}
 
 	/**
-	 * @param DOMNode[] $sigNodes
+	 * @param Node[] $sigNodes
 	 * @param array $match
-	 * @param DOMText $node
+	 * @param Text $node
 	 * @return ImmutableRange
 	 */
-	private function adjustSigRange( array $sigNodes, array $match, DOMText $node ) {
+	private function adjustSigRange( array $sigNodes, array $match, Text $node ) {
 		$firstSigNode = end( $sigNodes );
 		$lastSigNode = $sigNodes[0];
 
@@ -873,7 +873,7 @@ class CommentParser {
 		);
 		$lastSigNode = null;
 		while ( $node = $treeWalker->nextNode() ) {
-			if ( $node instanceof DOMElement && preg_match( '/^h([1-6])$/i', $node->tagName, $match ) ) {
+			if ( $node instanceof Element && preg_match( '/^h([1-6])$/i', $node->tagName, $match ) ) {
 				$headingNodeAndOffset = CommentUtils::getHeadlineNodeAndOffset( $node );
 				$headingNode = $headingNodeAndOffset['node'];
 				$startOffset = $headingNodeAndOffset['offset'];
@@ -884,7 +884,7 @@ class CommentParser {
 				$curComment->setRootNode( $this->rootNode );
 				$threadItems[] = $curComment;
 				$curCommentEnd = $node;
-			} elseif ( $node instanceof DOMText && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
+			} elseif ( $node instanceof Text && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $lastSigNode );
 				$author = $foundSignature[1];
@@ -915,7 +915,7 @@ class CommentParser {
 				// notifications or something).
 				CommentUtils::linearWalk(
 					$lastSigNode,
-					function ( string $event, DOMNode $n ) use (
+					function ( string $event, Node $n ) use (
 						&$endNode, &$sigRanges,
 						$treeWalker, $timestampRegexps, $node
 					) {
@@ -925,7 +925,7 @@ class CommentParser {
 						}
 						if (
 							$event === 'leave' &&
-							$n instanceof DOMText && $n !== $node &&
+							$n instanceof Text && $n !== $node &&
 							( $match2 = $this->findTimestamp( $n, $timestampRegexps ) )
 						) {
 							// If this skips over another potential signature, also skip it in the main TreeWalker loop
@@ -946,7 +946,7 @@ class CommentParser {
 				$length = ( $endNode->nodeType === XML_TEXT_NODE ) ?
 					strlen( rtrim( $endNode->nodeValue, "\t\n\f\r " ) ) :
 					// PHP bug: childNodes can be null for comment nodes
-					// (it should always be a DOMNodeList, even if the node can't have children)
+					// (it should always be a NodeList, even if the node can't have children)
 					( $endNode->childNodes ? $endNode->childNodes->length : 0 );
 				$range = new ImmutableRange(
 					$startNode->parentNode,
