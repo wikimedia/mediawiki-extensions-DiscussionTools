@@ -18,6 +18,7 @@
 	},
 	"localTimezone": "UTC",
 	"specialContributionsName": "Contributions",
+	"specialNewSectionName": "NewSection",
 	"timezones": {
 		"en": {
 			"UTC": "UTC"

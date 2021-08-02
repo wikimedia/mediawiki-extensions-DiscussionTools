@@ -1,4 +1,6 @@
 var
+	// Data::getLocalData()
+	parserData = require( './parser/data.json' ),
 	utils = require( './utils.js' );
 
 function ReplyLinksController( $pageContainer ) {
@@ -77,13 +79,38 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
 		return;
 	}
-	if ( ( uri.query.action !== 'edit' && uri.query.veaction !== 'editsource' ) || uri.query.section !== 'new' ) {
+
+	var title = utils.getTitleFromUrl( href );
+	if ( !title ) {
+		return;
+	}
+
+	// Recognize links to add a new topic:
+	if (
+		// Special:NewSection/...
+		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).special &&
+		title.getMainText().split( '/' )[ 0 ] === parserData.specialNewSectionName
+	) {
+		// Get the real title from the subpage parameter
+		var param = title.getMainText().slice( parserData.specialNewSectionName.length + 1 );
+		title = mw.Title.newFromText( param );
+		if ( !title ) {
+			return;
+		}
+
+	} else if (
+		// ?title=...&action=edit&section=new
+		// ?title=...&veaction=editsource&section=new
+		( uri.query.action === 'edit' || uri.query.veaction === 'editsource' ) && uri.query.section === 'new'
+	) {
+		// Do nothing
+
+	} else {
 		// Not a link to add a new topic
 		return;
 	}
 
-	var title = utils.getTitleFromUrl( href );
-	if ( !title || title.getPrefixedDb() !== mw.config.get( 'wgRelevantPageName' ) ) {
+	if ( title.getPrefixedDb() !== mw.config.get( 'wgRelevantPageName' ) ) {
 		// Link to add a section on another page, not supported yet (T282205)
 		return;
 	}
