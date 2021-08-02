@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMXPath;
 use MediaWiki\MediaWikiServices;
 use Title;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
@@ -404,17 +404,15 @@ class CommentUtils {
 	public static function unwrapParsoidSections(
 		Element $element, string $keepSection = null
 	): void {
-		// XXX use DOMCompat::querySelectorAll
-		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
-		$xpath = new DOMXPath( $element->ownerDocument );
-		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
-		$sections = $xpath->query( '//section[@data-mw-section-id]', $element );
+		$sections = DOMCompat::querySelectorAll( $element, 'section[data-mw-section-id]' );
 		foreach ( $sections as $section ) {
 			$parent = $section->parentNode;
 			$sectionId = $section->getAttribute( 'data-mw-section-id' );
 			// Copy section ID to first child (should be a heading)
-			if ( $sectionId !== '' && intval( $sectionId ) > 0 ) {
-				$section->firstChild->setAttribute( 'data-mw-section-id', $sectionId );
+			if ( $sectionId !== null && $sectionId !== '' && intval( $sectionId ) > 0 ) {
+				$firstChild = $section->firstChild;
+				Assert::precondition( $firstChild instanceof Element, 'Section has a heading' );
+				$firstChild->setAttribute( 'data-mw-section-id', $sectionId );
 			}
 			if ( $keepSection !== null && $sectionId === $keepSection ) {
 				return;

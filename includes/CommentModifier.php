@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMXPath;
 use MWException;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
@@ -449,16 +448,18 @@ class CommentModifier {
 	 * @return bool
 	 */
 	public static function isHtmlSigned( Element $container ): bool {
-		// XXX use querySelectorAll
-		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
-		$xpath = new DOMXPath( $container->ownerDocument );
 		// Good enough?…
-		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
-		$matches = $xpath->query( './/span[@typeof="mw:Transclusion"][contains(@data-mw,"~~~~")]', $container );
-		if ( $matches->length === 0 ) {
+		$matches = DOMCompat::querySelectorAll( $container, 'span[typeof="mw:Transclusion"][data-mw*="~~~~"]' );
+		// Iterate to get the last item. We don't know if $matches is an array or some iterator,
+		// and there doesn't seem to be a nicer way to get just the last item.
+		foreach ( $matches as $match ) {
+			$lastSig = $match;
+		}
+		if ( !isset( $lastSig ) ) {
+			// List was empty
 			return false;
 		}
-		$lastSig = $matches->item( $matches->length - 1 );
+
 		// Signature must be at the end of the comment - there must be no sibling following this node, or its parents
 		$node = $lastSig;
 		while ( $node ) {
@@ -466,7 +467,7 @@ class CommentModifier {
 			while (
 				$node->nextSibling &&
 				$node->nextSibling->nodeType === XML_TEXT_NODE &&
-				CommentUtils::htmlTrim( $node->nextSibling->nodeValue ) === ''
+				CommentUtils::htmlTrim( $node->nextSibling->nodeValue ?? '' ) === ''
 			) {
 				$node = $node->nextSibling;
 			}
