@@ -13,6 +13,7 @@ use Action;
 use ExtensionRegistry;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use OutputPage;
 use PageProps;
 use RequestContext;
@@ -40,12 +41,12 @@ class HookUtils {
 	/**
 	 * Check if a DiscussionTools feature is available to this user
 	 *
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	public static function isFeatureAvailableToUser( User $user, ?string $feature = null ): bool {
+	public static function isFeatureAvailableToUser( UserIdentity $user, ?string $feature = null ): bool {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
@@ -53,7 +54,7 @@ class HookUtils {
 			return false;
 		}
 
-		if ( $feature === self::TOPICSUBSCRIPTION && $user->isAnon() ) {
+		if ( $feature === self::TOPICSUBSCRIPTION && !$user->isRegistered() ) {
 			// Users must be logged in to use topic subscription
 			return false;
 		}
@@ -99,12 +100,12 @@ class HookUtils {
 	/**
 	 * Check if a DiscussionTools feature is enabled by this user
 	 *
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	public static function isFeatureEnabledForUser( User $user, ?string $feature = null ): bool {
+	public static function isFeatureEnabledForUser( UserIdentity $user, ?string $feature = null ): bool {
 		if ( !static::isFeatureAvailableToUser( $user, $feature ) ) {
 			return false;
 		}
@@ -131,7 +132,7 @@ class HookUtils {
 	 *
 	 * If the A/B test is enabled, and the user is eligible and not enrolled, it will enroll them.
 	 *
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
 	 * @return string 'test' if in the test group, 'control' if in the control group, or '' if they've
@@ -146,7 +147,7 @@ class HookUtils {
 		$abstate = $optionsManager->getOption( $user, 'discussiontools-abtest' );
 
 		if (
-			!$user->isAnon() &&
+			$user->isRegistered() &&
 			( $abtest == 'all' || ( !$feature && $abtest ) || ( $feature && $abtest == $feature ) )
 		) {
 			// The A/B test is enabled, and the user is qualified to be in the

@@ -89,7 +89,7 @@ class ParserHooks implements
 				// If the feature is enabled by default, always apply the DOM transform
 				$dtConfig->get( 'DiscussionTools_' . $feature ) === 'available' ||
 				// ...or if has been enabled by the user
-				HookUtils::isFeatureEnabledForUser( $popts->getUser(), $feature )
+				HookUtils::isFeatureEnabledForUser( $popts->getUserIdentity(), $feature )
 			) {
 				$popts->setOption( 'dtreply', true );
 				return;
