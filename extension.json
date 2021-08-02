@@ -413,7 +413,12 @@
 		}
 	},
 	"Actions": {
-		"dtunsubscribe": "MediaWiki\\Extension\\DiscussionTools\\Actions\\UnsubscribeAction"
+		"dtunsubscribe": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Actions\\UnsubscribeAction",
+			"services": [
+				"DiscussionTools.SubscriptionStore"
+			]
+		}
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"

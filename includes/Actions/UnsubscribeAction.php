@@ -9,7 +9,6 @@ use HTMLForm;
 use IContextSource;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
-use MediaWiki\MediaWikiServices;
 use Page;
 use Title;
 use User;
@@ -24,10 +23,17 @@ class UnsubscribeAction extends FormAction {
 	protected $subscriptionItem = null;
 
 	/**
-	 * @inheritDoc
+	 * @param Page $page
+	 * @param IContextSource $context
+	 * @param SubscriptionStore $subscriptionStore
 	 */
-	public function __construct( Page $page, IContextSource $context = null ) {
+	public function __construct(
+		Page $page,
+		IContextSource $context,
+		SubscriptionStore $subscriptionStore
+	) {
 		parent::__construct( $page, $context );
+		$this->subscriptionStore = $subscriptionStore;
 	}
 
 	/**
@@ -51,8 +57,6 @@ class UnsubscribeAction extends FormAction {
 		$commentName = $this->getRequest()->getVal( 'commentname' );
 
 		if ( $commentName ) {
-			$this->subscriptionStore =
-				MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
 			$subscriptionItems = $this->subscriptionStore->getSubscriptionItemsForUser(
 				$this->getUser(),
 				[ $commentName ]
