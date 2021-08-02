@@ -7,6 +7,7 @@ use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\ThreadItem
@@ -61,7 +62,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$this->setupEnv( $config, $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
+		$container = DOMCompat::getBody( $doc );
 
 		CommentUtils::unwrapParsoidSections( $container );
 

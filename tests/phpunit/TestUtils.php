@@ -103,7 +103,7 @@ trait TestUtils {
 
 		// Replace the body tag only in full Parsoid docs
 		if ( strpos( $html, '<body' ) !== false ) {
-			$innerHtml = DOMCompat::getInnerHTML( $doc->getElementsByTagName( 'body' )->item( 0 )->firstChild );
+			$innerHtml = DOMCompat::getInnerHTML( DOMCompat::getBody( $doc )->firstChild );
 			$html = preg_replace(
 				'`(<body[^>]*>)(.*)(</body>)`s',
 				// Quote \ and $ in the replacement text
@@ -111,7 +111,7 @@ trait TestUtils {
 				$html
 			);
 		} else {
-			$html = DOMCompat::getInnerHTML( $doc->getElementsByTagName( 'body' )->item( 0 ) );
+			$html = DOMCompat::getInnerHTML( DOMCompat::getBody( $doc ) );
 		}
 
 		file_put_contents( __DIR__ . '/../' . $relPath, $html );

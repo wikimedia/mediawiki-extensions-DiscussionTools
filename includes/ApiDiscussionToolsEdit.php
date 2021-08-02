@@ -10,7 +10,6 @@ use DerivativeRequest;
 use MediaWiki\Logger\LoggerFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -57,8 +56,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					}
 				} else {
 					$doc = DOMUtils::parseHTML( $html );
-					$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-					'@phan-var Element $container';
+					$container = DOMCompat::getBody( $doc );
 					if ( !CommentModifier::isHtmlSigned( $container ) ) {
 						CommentModifier::appendSignature( $container );
 					}
@@ -151,8 +149,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					);
 				}
 
-				$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-				'@phan-var Element $container';
+				$container = DOMCompat::getBody( $doc );
 
 				$parser = CommentParser::newFromGlobalState( $container );
 

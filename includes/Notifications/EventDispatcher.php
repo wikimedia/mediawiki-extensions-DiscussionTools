@@ -24,7 +24,7 @@ use MediaWiki\User\UserIdentity;
 use ParserOptions;
 use Title;
 use Wikimedia\Assert\Assert;
-use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class EventDispatcher {
@@ -53,10 +53,7 @@ class EventDispatcher {
 		$html = $parserOutput->getText();
 
 		$doc = DOMUtils::parseHTML( $html );
-		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-		if ( !( $container instanceof Element ) ) {
-			throw new Error( 'Could not load revision for notifications' );
-		}
+		$container = DOMCompat::getBody( $doc );
 		return CommentParser::newFromGlobalState( $container );
 	}
 

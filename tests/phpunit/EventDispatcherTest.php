@@ -6,6 +6,7 @@ use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\User\UserIdentityValue;
 use RawMessage;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher
@@ -29,11 +30,11 @@ class EventDispatcherTest extends IntegrationTestCase {
 
 		$dom1 = ( new RawMessage( $wikitext1 ) )->parse();
 		$doc1 = self::createDocument( $dom1 );
-		$body1 = $doc1->getElementsByTagName( 'body' )->item( 0 );
+		$body1 = DOMCompat::getBody( $doc1 );
 
 		$dom2 = ( new RawMessage( $wikitext2 ) )->parse();
 		$doc2 = self::createDocument( $dom2 );
-		$body2 = $doc2->getElementsByTagName( 'body' )->item( 0 );
+		$body2 = DOMCompat::getBody( $doc2 );
 
 		$this->setupEnv( $config, $data );
 		$parser1 = self::createParser( $body1, $data );

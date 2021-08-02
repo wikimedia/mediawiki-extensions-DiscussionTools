@@ -30,7 +30,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		$this->setupEnv( $config, $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
+		$container = DOMCompat::getBody( $doc );
 
 		$parser = self::createParser( $container, $data );
 		$comments = $parser->getCommentItems();
@@ -76,7 +76,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		$this->setupEnv( $config, $data );
 
 		$doc = self::createDocument( $dom );
-		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
+		$container = DOMCompat::getBody( $doc );
 
 		$parser = self::createParser( $container, $data );
 		$comments = $parser->getCommentItems();
