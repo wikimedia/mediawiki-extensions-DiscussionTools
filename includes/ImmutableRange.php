@@ -176,7 +176,8 @@ class ImmutableRange {
 		return self::getRootNode( $node ) === $root
 			&& $this->computePosition( [ $node, 0 ], $startBP ) === 'after'
 			&& $this->computePosition(
-				[ $node, strlen( $node->nodeValue ) ],
+				// @phan-suppress-next-line PhanUndeclaredProperty
+				[ $node, $node->length ?? $node->childNodes->length ],
 				$endBP
 			) === 'before';
 	}
@@ -208,8 +209,7 @@ class ImmutableRange {
 				|| $originalStartContainer instanceof Comment )
 		) {
 			$clone = $originalStartContainer->cloneNode();
-			$clone->nodeValue = substr(
-				$originalStartContainer->nodeValue ?? '',
+			$clone->nodeValue = $originalStartContainer->substringData(
 				$originalStartOffset,
 				$originalEndOffset - $originalStartOffset
 			);
@@ -280,10 +280,11 @@ class ImmutableRange {
 			|| $firstPartiallyContainedChild instanceof Comment
 		) {
 			$clone = $originalStartContainer->cloneNode();
-			$clone->nodeValue = substr(
-				$originalStartContainer->nodeValue,
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			$clone->nodeValue = $originalStartContainer->substringData(
 				$originalStartOffset,
-				strlen( $originalStartContainer->nodeValue ) - $originalStartOffset
+				// @phan-suppress-next-line PhanUndeclaredProperty
+				$originalStartContainer->length - $originalStartOffset
 			);
 			$fragment->appendChild( $clone );
 		} elseif ( $firstPartiallyContainedChild ) {
@@ -292,7 +293,8 @@ class ImmutableRange {
 			$subrange = new self(
 				$originalStartContainer, $originalStartOffset,
 				$firstPartiallyContainedChild,
-				strlen( $firstPartiallyContainedChild->nodeValue )
+				// @phan-suppress-next-line PhanUndeclaredProperty
+				$firstPartiallyContainedChild->length ?? $firstPartiallyContainedChild->childNodes->length
 			);
 			$subfragment = $subrange->cloneContents();
 			if ( $subfragment->hasChildNodes() ) {
@@ -316,8 +318,8 @@ class ImmutableRange {
 			|| $lastPartiallyContainedChild instanceof Comment
 		) {
 			$clone = $originalEndContainer->cloneNode();
-			$clone->nodeValue = substr(
-				$originalEndContainer->nodeValue,
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			$clone->nodeValue = $originalEndContainer->substringData(
 				0,
 				$originalEndOffset
 			);
@@ -376,10 +378,6 @@ class ImmutableRange {
 
 		if ( $this->mStartContainer instanceof Text ) {
 			$referenceNode = $this->mStartContainer->splitText( $this->mStartOffset );
-			if ( $referenceNode === false ) {
-				// FIXME: This should never happen, it indicates that the offset was out of bounds!
-				$referenceNode = null;
-			}
 		}
 
 		if ( $node === $referenceNode ) {

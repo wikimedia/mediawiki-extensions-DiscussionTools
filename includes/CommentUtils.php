@@ -367,7 +367,7 @@ class CommentUtils {
 				break;
 			}
 			$length = ( $node->nodeType === XML_TEXT_NODE ) ?
-				strlen( rtrim( $node->nodeValue ?? '', "\t\n\f\r " ) ) :
+				mb_strlen( rtrim( $node->nodeValue ?? '', "\t\n\f\r " ) ) :
 				// PHP bug: childNodes can be null for comment nodes
 				// (it should always be a NodeList, even if the node can't have children)
 				( $node->childNodes ? $node->childNodes->length : 0 );

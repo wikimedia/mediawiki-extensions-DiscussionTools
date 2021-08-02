@@ -692,10 +692,10 @@ class CommentParser {
 	 * @param Text $node
 	 * @param string[] $timestampRegexps
 	 * @return array|null Array with the following keys:
-	 *   - int 'offset' Length of extra text preceding the node that was used for matching
+	 *   - int 'offset' Length of extra text preceding the node that was used for matching (in bytes)
 	 *   - int 'parserIndex' Which of the regexps matched
 	 *   - array 'matchData' Regexp match data, which specifies the location of the match,
-	 *     and which can be parsed using getLocalTimestampParsers()
+	 *     and which can be parsed using getLocalTimestampParsers() (offsets are in bytes)
 	 */
 	public function findTimestamp( Text $node, array $timestampRegexps ): ?array {
 		$nodeText = '';
@@ -852,8 +852,10 @@ class CommentParser {
 		$lastSigNode = $sigNodes[0];
 
 		// TODO Document why this needs to be so complicated
+		$lastSigNodeOffsetByteOffset =
+			$match['matchData'][0][1] + strlen( $match['matchData'][0][0] ) - $match['offset'];
 		$lastSigNodeOffset = $lastSigNode === $node ?
-			$match['matchData'][0][1] + strlen( $match['matchData'][0][0] ) - $match['offset'] :
+			mb_strlen( substr( $node->nodeValue ?? '', 0, $lastSigNodeOffsetByteOffset ) ) :
 			CommentUtils::childIndexOf( $lastSigNode ) + 1;
 		$sigRange = new ImmutableRange(
 			$firstSigNode->parentNode,
@@ -957,7 +959,7 @@ class CommentParser {
 				);
 
 				$length = ( $endNode->nodeType === XML_TEXT_NODE ) ?
-					strlen( rtrim( $endNode->nodeValue, "\t\n\f\r " ) ) :
+					mb_strlen( rtrim( $endNode->nodeValue, "\t\n\f\r " ) ) :
 					// PHP bug: childNodes can be null for comment nodes
 					// (it should always be a NodeList, even if the node can't have children)
 					( $endNode->childNodes ? $endNode->childNodes->length : 0 );

@@ -24,7 +24,9 @@ use Wikimedia\TestingAccessWrapper;
 class CommentParserTest extends IntegrationTestCase {
 
 	/**
-	 * Convert UTF-8 byte offsets to UTF-16 code unit offsets.
+	 * Get the offset path from ancestor to offset in descendant
+	 *
+	 * Convert Unicode codepoint offsets to UTF-16 code unit offsets.
 	 *
 	 * @param Element $ancestor
 	 * @param Node $node
@@ -35,10 +37,10 @@ class CommentParserTest extends IntegrationTestCase {
 		Element $ancestor, Node $node, int $nodeOffset
 	): string {
 		if ( $node->nodeType === XML_TEXT_NODE ) {
-			$str = substr( $node->nodeValue, 0, $nodeOffset );
+			$str = mb_substr( $node->nodeValue, 0, $nodeOffset );
 			// Count characters that require two code units to encode in UTF-16
 			$count = preg_match_all( '/[\x{010000}-\x{10FFFF}]/u', $str );
-			$nodeOffset = mb_strlen( $str ) + $count;
+			$nodeOffset += $count;
 		}
 
 		$path = [ $nodeOffset ];
