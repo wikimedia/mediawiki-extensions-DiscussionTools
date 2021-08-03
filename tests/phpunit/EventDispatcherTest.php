@@ -19,7 +19,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 	 * @covers ::generateEventsFromParsers
 	 */
 	public function testGenerateEventsFromParsers(
-		string $rev1, string $rev2, string $authorUsername, string $expected
+		string $rev1, string $rev2, string $authorUsername, string $other, string $expected
 	): void {
 		$wikitext1 = self::getText( $rev1 );
 		$wikitext2 = self::getText( $rev2 );
@@ -39,7 +39,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 		$parser1 = self::createParser( $body1, $data );
 		$parser2 = self::createParser( $body2, $data );
 
-		$events = [];
+		$events = self::getJson( $other, true );
 
 		$fakeUser = new UserIdentityValue( 0, $authorUsername );
 		$fakeTitle = new PageIdentityValue( 0, NS_TALK, __CLASS__, PageIdentityValue::LOCAL );
@@ -67,24 +67,28 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/simple/rev1.txt',
 				'cases/EventDispatcher/simple/rev2.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/simple/rev2.json',
 			],
 			[
 				'cases/EventDispatcher/simple/rev2.txt',
 				'cases/EventDispatcher/simple/rev3.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/simple/rev3.json',
 			],
 			[
 				'cases/EventDispatcher/simple/rev3.txt',
 				'cases/EventDispatcher/simple/rev4.txt',
 				'Y',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/simple/rev4.json',
 			],
 			[
 				'cases/EventDispatcher/simple/rev4.txt',
 				'cases/EventDispatcher/simple/rev5.txt',
 				'X',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/simple/rev5.json',
 			],
 			// Adding a new section with heading and a top-level comment.
@@ -92,6 +96,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/newsection/rev1.txt',
 				'cases/EventDispatcher/newsection/rev2.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/newsection/rev2.json',
 			],
 			// Adding multiple replies in one edit.
@@ -99,6 +104,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/multiple/rev1.txt',
 				'cases/EventDispatcher/multiple/rev2.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/multiple/rev2.json',
 			],
 			// Adding comments in section 0 (before first heading). These do not generate notifications,
@@ -107,12 +113,14 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/section0/rev1.txt',
 				'cases/EventDispatcher/section0/rev2.txt',
 				'X',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/section0/rev2.json',
 			],
 			[
 				'cases/EventDispatcher/section0/rev2.txt',
 				'cases/EventDispatcher/section0/rev3.txt',
 				'Y',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/section0/rev3.json',
 			],
 			// Adding a comment in a previously empty section.
@@ -120,6 +128,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/emptysection/rev1.txt',
 				'cases/EventDispatcher/emptysection/rev2.txt',
 				'Y',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/emptysection/rev2.json',
 			],
 			// Adding comments in sub-sections, where the parent section has no comments (except in
@@ -129,12 +138,14 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/subsection-empty/rev1.txt',
 				'cases/EventDispatcher/subsection-empty/rev2.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/subsection-empty/rev2.json',
 			],
 			[
 				'cases/EventDispatcher/subsection-empty/rev2.txt',
 				'cases/EventDispatcher/subsection-empty/rev3.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/subsection-empty/rev3.json',
 			],
 			// Adding comments in sub-sections, where the parent section also has comments.
@@ -142,18 +153,21 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/subsection/rev1.txt',
 				'cases/EventDispatcher/subsection/rev2.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/subsection/rev2.json',
 			],
 			[
 				'cases/EventDispatcher/subsection/rev2.txt',
 				'cases/EventDispatcher/subsection/rev3.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/subsection/rev3.json',
 			],
 			[
 				'cases/EventDispatcher/subsection/rev3.txt',
 				'cases/EventDispatcher/subsection/rev4.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/subsection/rev4.json',
 			],
 			// Edits that do not add comments, and do not generate notifications.
@@ -162,6 +176,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/notcomments/rev1.txt',
 				'cases/EventDispatcher/notcomments/rev2.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/notcomments/rev2.json',
 			],
 			[
@@ -169,6 +184,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/notcomments/rev2.txt',
 				'cases/EventDispatcher/notcomments/rev3.txt',
 				'X',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/notcomments/rev3.json',
 			],
 			[
@@ -176,6 +192,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/notcomments/rev3.txt',
 				'cases/EventDispatcher/notcomments/rev4.txt',
 				'X',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/notcomments/rev4.json',
 			],
 			// Multiple edits within a minute adding comments by the same user.
@@ -184,55 +201,89 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'cases/EventDispatcher/sametime/rev1.txt',
 				'cases/EventDispatcher/sametime/rev2.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev2.json',
 			],
 			[
 				'cases/EventDispatcher/sametime/rev2.txt',
 				'cases/EventDispatcher/sametime/rev3-case1.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev3-case1.json',
 			],
 			[
 				'cases/EventDispatcher/sametime/rev2.txt',
 				'cases/EventDispatcher/sametime/rev3-case2.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev3-case2.json',
 			],
 			[
 				'cases/EventDispatcher/sametime/rev2.txt',
 				'cases/EventDispatcher/sametime/rev3-case3.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev3-case3.json',
 			],
 			[
 				'cases/EventDispatcher/sametime/rev2.txt',
 				'cases/EventDispatcher/sametime/rev3-case4.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev3-case4.json',
 			],
 			[
 				'cases/EventDispatcher/sametime/rev2.txt',
 				'cases/EventDispatcher/sametime/rev3-case5.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev3-case5.json',
 			],
 			[
 				'cases/EventDispatcher/sametime/rev1b.txt',
 				'cases/EventDispatcher/sametime/rev2b.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev2b.json',
 			],
 			[
 				'cases/EventDispatcher/sametime/rev2b.txt',
 				'cases/EventDispatcher/sametime/rev3b-case6.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev3b-case6.json',
 			],
 			[
 				'cases/EventDispatcher/sametime/rev2b.txt',
 				'cases/EventDispatcher/sametime/rev3b-case7.txt',
 				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/sametime/rev3b-case7.json',
+			],
+			// Interactions with events generated by base Echo.
+			[
+				// User talk page edit
+				'cases/EventDispatcher/other-events/rev1.txt',
+				'cases/EventDispatcher/other-events/rev2a.txt',
+				'Y',
+				'../cases/EventDispatcher/other-events/rev2a-other.json',
+				'../cases/EventDispatcher/other-events/rev2a.json',
+			],
+			[
+				// Mention
+				'cases/EventDispatcher/other-events/rev1.txt',
+				'cases/EventDispatcher/other-events/rev2b.txt',
+				'Y',
+				'../cases/EventDispatcher/other-events/rev2b-other.json',
+				'../cases/EventDispatcher/other-events/rev2b.json',
+			],
+			[
+				// Mention in edit summary
+				'cases/EventDispatcher/other-events/rev1.txt',
+				'cases/EventDispatcher/other-events/rev2c.txt',
+				'Y',
+				'../cases/EventDispatcher/other-events/rev2c-other.json',
+				'../cases/EventDispatcher/other-events/rev2c.json',
 			],
 		];
 	}
