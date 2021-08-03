@@ -800,6 +800,19 @@ class CommentParser {
 	}
 
 	/**
+	 * Get all discussion comments (and headings) within a DOM subtree, grouped by item names.
+	 *
+	 * @return ThreadItem[][] Array where keys are thread item names, values are nonempty arrays of
+	 *     thread items
+	 */
+	public function getThreadItemsByName(): array {
+		if ( !$this->threadItems ) {
+			$this->buildThreads();
+		}
+		return $this->threadItemsByName;
+	}
+
+	/**
 	 * Find ThreadItems by their name
 	 *
 	 * This will usually return a single-element array, but it may return multiple comments if they're

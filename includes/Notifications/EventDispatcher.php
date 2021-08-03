@@ -13,10 +13,12 @@ use EchoEvent;
 use Error;
 use IDBAccessObject;
 use Iterator;
+use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
@@ -104,6 +106,27 @@ class EventDispatcher {
 	}
 
 	/**
+	 * For each top-level heading, get a list of comments in the thread grouped by names, then IDs.
+	 * (Compare by name first, as ID could be changed by a parent comment being moved/deleted.)
+	 *
+	 * @param ThreadItem[] $items
+	 * @return CommentItem[][][]
+	 */
+	private static function groupCommentsByThreadAndName( array $items ): array {
+		$comments = [];
+		$threadName = null;
+		foreach ( $items as $item ) {
+			if ( $item instanceof HeadingItem && ( $item->getHeadingLevel() <= 2 || $item->isPlaceholderHeading() ) ) {
+				$threadName = $item->getName();
+			} elseif ( $item instanceof CommentItem ) {
+				Assert::invariant( $threadName !== null, 'Comments are always preceded by headings' );
+				$comments[ $threadName ][ $item->getName() ][ $item->getId() ] = $item;
+			}
+		}
+		return $comments;
+	}
+
+	/**
 	 * Helper for generateEventsForRevision(), separated out for easier testing.
 	 *
 	 * @param array &$events
@@ -121,16 +144,39 @@ class EventDispatcher {
 		PageIdentity $title,
 		UserIdentity $user
 	) {
-		$newComments = [];
-		foreach ( $newParser->getCommentItems() as $newComment ) {
-			if (
-				$newComment->getAuthor() === $user->getName() &&
-				// Compare comments by name, as ID could be changed by a parent comment
-				// being moved/deleted. The downside is that multiple replies within the
-				// same minute will only fire one notification.
-				count( $oldParser->findCommentsByName( $newComment->getName() ) ) === 0
-			) {
-				$newComments[] = $newComment;
+		$newComments = self::groupCommentsByThreadAndName( $newParser->getThreadItems() );
+		$oldComments = self::groupCommentsByThreadAndName( $oldParser->getThreadItems() );
+		$addedComments = [];
+
+		foreach ( $newComments as $threadName => $threadNewComments ) {
+			foreach ( $threadNewComments as $commentName => $nameNewComments ) {
+				// Usually, there will be 0 or 1 $nameNewComments, and 0 $nameOldComments,
+				// and $addedCount will be 0 or 1.
+				//
+				// But when multiple replies are added in one edit, or in multiple edits within the same
+				// minute, there may be more, and the complex logic below tries to make the best guess
+				// as to which comments are actually new. See the 'multiple' and 'sametime' test cases.
+				//
+				$nameOldComments = $oldComments[ $threadName ][ $commentName ] ?? [];
+				$addedCount = count( $nameNewComments ) - count( $nameOldComments );
+
+				if ( $addedCount > 0 ) {
+					// For any name that occurs more times in new than old, report that many new comments,
+					// preferring IDs that did not occur in old, then preferring comments lower in the thread.
+					foreach ( array_reverse( $nameNewComments ) as $commentId => $newComment ) {
+						if ( $addedCount > 0 && !isset( $nameOldComments[ $commentId ] ) ) {
+							$addedComments[] = $newComment;
+							$addedCount--;
+						}
+					}
+					foreach ( array_reverse( $nameNewComments ) as $commentId => $newComment ) {
+						if ( $addedCount > 0 ) {
+							$addedComments[] = $newComment;
+							$addedCount--;
+						}
+					}
+					Assert::postcondition( $addedCount === 0, 'Reported expected number of comments' );
+				}
 			}
 		}
 
@@ -142,7 +188,12 @@ class EventDispatcher {
 			}
 		}
 
-		foreach ( $newComments as $newComment ) {
+		foreach ( $addedComments as $newComment ) {
+			// Ignore comments by other users, e.g. in case of reverts or a discussion being moved.
+			// TODO: But what about someone signing another's comment?
+			if ( $newComment->getAuthor() !== $user->getName() ) {
+				continue;
+			}
 			$heading = $newComment->getHeading();
 			// Find a level 2 heading, because the interface doesn't allow subscribing to other headings.
 			// (T286736)
