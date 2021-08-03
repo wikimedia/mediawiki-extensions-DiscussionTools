@@ -472,8 +472,12 @@ function init( $container, state ) {
 	if ( storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ) {
 		mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
 		// eslint-disable-next-line no-jquery/no-global-selector
-		$link = $( '#ca-addsection' );
+		$link = $( '#ca-addsection a' );
 		setupController( utils.NEW_TOPIC_COMMENT_ID, $link, mode, true );
+	} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$link = $( '#ca-addsection a' );
+		setupController( utils.NEW_TOPIC_COMMENT_ID, $link );
 	}
 
 	// For debugging (now unused in the code)

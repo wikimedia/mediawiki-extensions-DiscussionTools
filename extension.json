@@ -381,6 +381,7 @@
 		"ParserAfterTidy": "parser",
 		"ParserOptionsRegister": "parser",
 		"BeforePageDisplay": "page",
+		"GetActionName": "page",
 		"OutputPageBeforeHTML": "page",
 		"ResourceLoaderGetConfigVars": "resourceloader",
 		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks::onGetBetaFeaturePreferences",

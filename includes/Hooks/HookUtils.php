@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Action;
 use ExtensionRegistry;
+use IContextSource;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use PageProps;
@@ -203,7 +204,7 @@ class HookUtils {
 	 */
 	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ): bool {
 		// Don't show on edit pages, history, etc.
-		if ( Action::getActionName( $output->getContext() ) !== 'view' ) {
+		if ( $feature !== self::NEWTOPICTOOL && Action::getActionName( $output->getContext() ) !== 'view' ) {
 			return false;
 		}
 
@@ -255,5 +256,33 @@ class HookUtils {
 
 		return static::isAvailableForTitle( $title ) &&
 			static::isFeatureEnabledForUser( $output->getUser(), $feature );
+	}
+
+	/**
+	 * Check if this page view should open the new topic tool on page load.
+	 *
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function shouldUseNewTopicTool( IContextSource $context ): bool {
+		$req = $context->getRequest();
+		$out = $context->getOutput();
+
+		return (
+			// ?title=...&action=edit&section=new
+			// ?title=...&veaction=editsource&section=new
+			( $req->getVal( 'action' ) === 'edit' || $req->getVal( 'veaction' ) === 'editsource' ) &&
+			$req->getVal( 'section' ) === 'new' &&
+			// Adding a new topic with preloaded text is not supported yet (T269310)
+			!(
+				$req->getVal( 'editintro' ) || $req->getVal( 'preload' ) ||
+				$req->getVal( 'preloadparams' ) || $req->getVal( 'preloadtitle' )
+			) &&
+			// TODO If the page doesn't exist yet, we'll need to handle the interface differently,
+			// for now just don't enable the tool there
+			$context->getTitle()->exists() &&
+			// User has new topic tool enabled (and not using &dtenable=0)
+			self::isFeatureEnabledForOutput( $out, self::NEWTOPICTOOL )
+		);
 	}
 }

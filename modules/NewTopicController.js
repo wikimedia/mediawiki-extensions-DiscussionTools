@@ -118,6 +118,21 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 	this.sectionTitle.setValue( '' );
 	this.sectionTitleField.setWarnings( [] );
 	this.container.$element.detach();
+
+	if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
+		var uri;
+		try {
+			uri = new mw.Uri();
+		} catch ( err ) {
+			// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+			return;
+		}
+		delete uri.query.action;
+		delete uri.query.veaction;
+		delete uri.query.section;
+		history.replaceState( null, document.title, uri.toString() );
+		mw.config.set( 'wgDiscussionToolsStartNewTopicTool', false );
+	}
 };
 
 /**
