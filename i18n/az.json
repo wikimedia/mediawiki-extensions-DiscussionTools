@@ -3,10 +3,12 @@
 		"authors": [
 			"Matma Rex",
 			"NMW03",
+			"Serkanland",
 			"Toghrul Rahimli"
 		]
 	},
 	"discussiontools-newtopic-missing-title": "Zəhmət olmasa müzakirə mövzusu üçün başlıq təyin edin. \"{{int:discussiontools-replywidget-newtopic}}\" düyməsinə bassanız, başlıq olmadan əlavə ediləcək.",
+	"discussiontools-preference-replytool": "Dərhal cavablandırmanı aktivləşdir",
 	"discussiontools-replywidget-abandon": "Yazdığınız şərhi ləğv etmək istədiyinizə əminsiniz?",
 	"discussiontools-replywidget-abandon-discard": "Ləğv et",
 	"discussiontools-replywidget-abandon-keep": "Yazmağa davam et",
