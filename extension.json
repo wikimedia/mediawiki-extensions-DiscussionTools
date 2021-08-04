@@ -420,7 +420,7 @@
 		"discussiontools-editmode": "",
 		"discussiontools-newtopictool": 1,
 		"discussiontools-replytool": 1,
-		"discussiontools-sourcemodetoolbar": 0,
+		"discussiontools-sourcemodetoolbar": 1,
 		"discussiontools-topicsubscription": 1,
 		"discussiontools-abtest": ""
 	},
