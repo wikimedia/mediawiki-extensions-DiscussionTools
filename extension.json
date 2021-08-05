@@ -380,6 +380,7 @@
 		"ParserAfterParse": "parser",
 		"ParserAfterTidy": "parser",
 		"ParserOptionsRegister": "parser",
+		"BeforeDisplayNoArticleText": "page",
 		"BeforePageDisplay": "page",
 		"GetActionName": "page",
 		"OutputPageBeforeHTML": "page",

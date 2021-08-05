@@ -22,10 +22,7 @@ function ReplyLinksController( $pageContainer ) {
 	if ( featuresEnabled.newtopictool && mw.user.options.get( 'discussiontools-newtopictool' ) ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $addSectionTab = $( '#ca-addsection' );
-		// TODO If the page doesn't exist yet, we'll need to handle the interface differently,
-		// for now just don't enable the tool there
-		var pageExists = !!mw.config.get( 'wgRelevantArticleId' );
-		if ( $addSectionTab.length && pageExists ) {
+		if ( $addSectionTab.length ) {
 			this.$addSectionLink = $addSectionTab.find( 'a' );
 			this.$addSectionLink.on( 'click keypress', this.onAddSectionLinkClickHandler );
 

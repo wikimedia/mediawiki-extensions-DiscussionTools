@@ -562,6 +562,16 @@ function update( data, comment, pageName, replyWidget ) {
 	linksController = null;
 	// TODO: Tell controller to teardown all other open widgets
 
+	var pageExists = !!mw.config.get( 'wgRelevantArticleId' );
+	if ( !pageExists ) {
+		// The page didn't exist before this update, so reload it. We'd handle
+		// setting up the content just fine (assuming there's a
+		// mw-parser-output), but fixing up the UI tabs/behavior is outside
+		// our scope.
+		window.location = mw.util.getUrl( pageName, { dtrepliedto: comment.id } );
+		return;
+	}
+
 	// Update page state
 	if ( pageName === mw.config.get( 'wgRelevantPageName' ) ) {
 		// We can use the result from the VisualEditor API
