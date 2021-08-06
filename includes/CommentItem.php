@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use DOMXPath;
 use MWException;
 use Title;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
@@ -107,17 +106,17 @@ class CommentItem extends ThreadItem {
 	 */
 	public function getMentions(): array {
 		$fragment = $this->getBodyRange()->cloneContents();
-		// XXX use DOMCompat::querySelectorAll('a[href]') perhaps
-		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
-		$xPath = new DOMXPath( $fragment->ownerDocument );
-		// @phan-suppress-next-line PhanTypeMismatchArgumentInternal Nonstandard DOM
-		$links = $xPath->query( './/a', $fragment );
+		// Note: DOMCompat::getElementsByTagName() doesn't take a DocumentFragment argument
+		$links = DOMCompat::querySelectorAll( $fragment, 'a' );
 		$users = [];
 		foreach ( $links as $link ) {
-			$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) );
-			if ( $title && $title->getNamespace() === NS_USER ) {
-				// TODO: Consider returning User objects
-				$users[] = $title;
+			$href = $link->getAttribute( 'href' );
+			if ( $href ) {
+				$title = CommentUtils::getTitleFromUrl( $href );
+				if ( $title && $title->getNamespace() === NS_USER ) {
+					// TODO: Consider returning User objects
+					$users[] = $title;
+				}
 			}
 		}
 		return array_unique( $users );
