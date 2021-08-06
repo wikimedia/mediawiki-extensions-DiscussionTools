@@ -7,7 +7,7 @@ use ApiMain;
 use ApiParsoidTrait;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionTools extends ApiBase {
@@ -41,8 +41,7 @@ class ApiDiscussionTools extends ApiBase {
 				);
 
 				$doc = DOMUtils::parseHTML( $response['body'] );
-				$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-				'@phan-var Element $container';
+				$container = DOMCompat::getBody( $doc );
 
 				CommentUtils::unwrapParsoidSections( $container );
 

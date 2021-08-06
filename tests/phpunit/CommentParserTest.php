@@ -13,6 +13,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use stdClass;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -190,7 +191,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$doc = self::createDocument( $dom );
-		$body = $doc->getElementsByTagName( 'body' )->item( 0 );
+		$body = DOMCompat::getBody( $doc );
 
 		$this->setupEnv( $config, $data );
 		$parser = self::createParser( $body, $data );

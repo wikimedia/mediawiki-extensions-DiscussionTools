@@ -88,10 +88,7 @@ class CommentFormatter {
 		// @phan-suppress-next-line PhanUndeclaredProperty Nonstandard DOM prop
 		$doc->preserveWhiteSpace = false;
 
-		$container = $doc->getElementsByTagName( 'body' )->item( 0 );
-		if ( !( $container instanceof Element ) ) {
-			return $html;
-		}
+		$container = DOMCompat::getBody( $doc );
 
 		$parser = static::getParser( $container );
 		$threadItems = $parser->getThreadItems();
@@ -190,14 +187,9 @@ class CommentFormatter {
 			}
 		}
 
-		$docElement = $doc->getElementsByTagName( 'body' )->item( 0 );
-		if ( !( $docElement instanceof Element ) ) {
-			return $html;
-		}
-
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
-		return XMLSerializer::serialize( $docElement, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
+		return XMLSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
 	}
 
 	/**
