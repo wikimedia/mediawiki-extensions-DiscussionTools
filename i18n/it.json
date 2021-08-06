@@ -38,7 +38,7 @@
 	"discussiontools-preference-newtopictool-help": "Mostra un form in linea per aggiungere nuove discussioni. Leggi il [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary/it riepilogo delle funzionalità] per scoprirne di più su questa funzionalità.",
 	"discussiontools-preference-replytool": "Abilita risposte rapide",
 	"discussiontools-preference-replytool-help": "Mostra un link per rispondere ai commenti sulle pagine di discussione con un click. Leggi il [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary/it riepilogo delle funzionalità] per scoprirne di più su questa funzionalità.",
-	"discussiontools-preference-sourcemodetoolbar": "Abilita strumenti sperimentali nella modalità sorgente delle risposte e aggiunte di argomento rapide",
+	"discussiontools-preference-sourcemodetoolbar": "Abilita strumenti di modifica nella modalità sorgente",
 	"discussiontools-replylink": "rispondi",
 	"discussiontools-replywidget-abandon": "Confermi di voler abbandonare il commento che stavi scrivendo?",
 	"discussiontools-replywidget-abandon-discard": "Annulla commento",
