@@ -287,10 +287,21 @@ ReplyWidget.prototype.clear = function () {
 	this.previewTitle = null;
 	this.toggleAdvanced( false );
 
+	this.clearStorage();
+
+	this.emit( 'clear' );
+};
+
+/**
+ * Remove any storage that the widget is using
+ */
+ReplyWidget.prototype.clearStorage = function () {
 	this.storage.remove( this.storagePrefix + '/mode' );
 	this.storage.remove( this.storagePrefix + '/saveable' );
 	this.storage.remove( this.storagePrefix + '/summary' );
 	this.storage.remove( this.storagePrefix + '/showAdvanced' );
+
+	this.emit( 'clearStorage' );
 };
 
 ReplyWidget.prototype.setPending = function ( pending ) {

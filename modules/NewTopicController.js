@@ -103,6 +103,11 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 
 	this.sectionTitle.connect( this, { change: 'onSectionTitleChange' } );
 	this.sectionTitle.$input.on( 'blur', this.onSectionTitleBlur.bind( this ) );
+
+	replyWidget.connect( this, {
+		clear: 'clear',
+		clearStorage: 'clearStorage'
+	} );
 };
 
 /**
@@ -113,16 +118,30 @@ NewTopicController.prototype.focus = function () {
 };
 
 /**
+ * Restore the widget to its original state
+ */
+NewTopicController.prototype.clear = function () {
+	// This is going to get called as part of the teardown chain from replywidget
+	this.sectionTitle.setValue( '' );
+	this.sectionTitleField.setWarnings( [] );
+};
+
+/**
+ * Remove any storage that the widget is using
+ */
+NewTopicController.prototype.clearStorage = function () {
+	// This is going to get called as part of the teardown chain from replywidget
+	if ( this.replyWidget ) {
+		this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
+	}
+};
+
+/**
  * @inheritdoc
  */
 NewTopicController.prototype.teardown = function ( abandoned ) {
 	NewTopicController.super.prototype.teardown.call( this, abandoned );
 
-	if ( this.replyWidget ) {
-		this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
-	}
-	this.sectionTitle.setValue( '' );
-	this.sectionTitleField.setWarnings( [] );
 	this.container.$element.detach();
 
 	if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {

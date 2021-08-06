@@ -557,20 +557,23 @@ function update( data, comment, pageName, replyWidget ) {
 	// to a transcluded page (T266275)
 	pageDataCache[ mw.config.get( 'wgRelevantPageName' ) ][ mw.config.get( 'wgCurRevisionId' ) ] = null;
 
-	replyWidget.teardown();
-	linksController.teardown();
-	linksController = null;
-	// TODO: Tell controller to teardown all other open widgets
-
 	var pageExists = !!mw.config.get( 'wgRelevantArticleId' );
 	if ( !pageExists ) {
 		// The page didn't exist before this update, so reload it. We'd handle
 		// setting up the content just fine (assuming there's a
 		// mw-parser-output), but fixing up the UI tabs/behavior is outside
 		// our scope.
+		replyWidget.unbindBeforeUnloadHandler();
+		replyWidget.clearStorage();
+		replyWidget.setPending( true );
 		window.location = mw.util.getUrl( pageName, { dtrepliedto: comment.id } );
 		return;
 	}
+
+	replyWidget.teardown();
+	linksController.teardown();
+	linksController = null;
+	// TODO: Tell controller to teardown all other open widgets
 
 	// Update page state
 	if ( pageName === mw.config.get( 'wgRelevantPageName' ) ) {
