@@ -376,6 +376,10 @@ class ImmutableRange {
 
 		if ( $this->mStartContainer instanceof Text ) {
 			$referenceNode = $this->mStartContainer->splitText( $this->mStartOffset );
+			if ( $referenceNode === false ) {
+				// FIXME: This should never happen, it indicates that the offset was out of bounds!
+				$referenceNode = null;
+			}
 		}
 
 		if ( $node === $referenceNode ) {
@@ -388,19 +392,9 @@ class ImmutableRange {
 
 		// TODO: Restore this validation check?
 		// $parent->preinsertNode( $node, $referenceNode );
-		//
-		// This should just be
-		//  $parent->insertBefore( $node, $referenceNode );
-		// but the second argument is optional, not nullable
-		// XXX Maybe this was true in some ancient PHP version but
-		// doesn't seem to be true now:
-		// https://www.php.net/manual/en/domnode.insertbefore.php
-		if ( $referenceNode ) {
-			$parent->insertBefore( $node, $referenceNode );
-		} else {
-			// @phan-suppress-next-line PhanParamTooFew Nonstandard DOM
-			$parent->insertBefore( $node );
-		}
+
+		// $referenceNode may be null, this is okay
+		$parent->insertBefore( $node, $referenceNode );
 	}
 
 	/**
