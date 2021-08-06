@@ -201,8 +201,11 @@ class PageHooks implements
 		}
 		$context = $article->getContext();
 		$output = $context->getOutput();
-		if ( !HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) ) {
-			// Our empty states are all about using the new topic tool
+		if ( !HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) || !$title->isTalkPage() ) {
+			// Our empty states are all about using the new topic tool, but
+			// expect to be on a talk page, so fall back if it's not
+			// available or if we're in a non-talk namespace that still has
+			// DT features enabled
 			return true;
 		}
 		$output->enableOOUI();
