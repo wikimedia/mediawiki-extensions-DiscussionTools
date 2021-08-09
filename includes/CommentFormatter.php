@@ -85,9 +85,6 @@ class CommentFormatter {
 		// See controller#init in JS.
 
 		$doc = DOMUtils::parseHTML( $html );
-		// @phan-suppress-next-line PhanUndeclaredProperty Nonstandard DOM prop
-		$doc->preserveWhiteSpace = false;
-
 		$container = DOMCompat::getBody( $doc );
 
 		$parser = static::getParser( $container );

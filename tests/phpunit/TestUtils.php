@@ -19,7 +19,6 @@ trait TestUtils {
 	 */
 	protected static function createDocument( string $html ): Document {
 		$doc = DOMUtils::parseHTML( $html );
-		$doc->preserveWhiteSpace = false;
 		return $doc;
 	}
 
