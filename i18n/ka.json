@@ -4,6 +4,7 @@
 			"David1010",
 			"Matma Rex",
 			"Mehman97",
+			"Otogi",
 			"Გიო ოქრო",
 			"Იო ოქრო"
 		]
@@ -63,6 +64,8 @@
 	"discussiontools-replywidget-terms-click": "„$1“-ზე დაჭერით, თქვენ ეთანხმებით გამოყენების პირობებს ამ ვიკისათვის.",
 	"discussiontools-replywidget-transcluded": "თქვენი კომენტარი შენახულია [[$1]]-ში.",
 	"discussiontools-signature-prefix": "&#32;",
+	"echo-category-title-dt-subscription": "განხილვის გვერდის ხელმოწერა",
+	"echo-pref-tooltip-dt-subscription": "შემატყობინე, როდესაც ვინმე ხელს აწერს ჩემ განხილვის გვერდზე.",
 	"tag-discussiontools-description": "რედაქტირება განხორციელდა განხილვის ხელსაწყოს დახმარებით",
 	"tag-discussiontools-edit": "კომენტარის რედაქტირება",
 	"tag-discussiontools-edit-description": "მომხმარებელმა განხილვის ხელსაწყოების საშუალებით დაარედაქტირა მანამდე არსებული კომენტარი",
