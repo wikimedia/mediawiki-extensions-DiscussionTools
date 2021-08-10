@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hello903hello",
 			"Kly",
 			"Matma Rex",
 			"Streetdeck",
@@ -10,6 +11,7 @@
 	"discussiontools": "討論工具",
 	"discussiontools-defaultsummary-reply": "回覆",
 	"discussiontools-desc": "提升討論頁面的工具",
+	"discussiontools-emptystate-button": "發起討論",
 	"discussiontools-error-comment-conflict": "因為有其他人跟您在同一時間發表評論，所以您的評論無法儲存。請重新嘗試，或是重新載入頁面來查看最新的評論。",
 	"discussiontools-error-comment-disappeared": "無法在頁面上找出您回覆的評論，這有可能是已被刪除或是移動到別的頁面。請重新載入頁面並再次嘗試。",
 	"discussiontools-error-comment-is-transcluded": "「{{int:discussiontools-replylink}}」連結不能夠拿來回覆此評論。若想要回覆，請透過點擊「$1」來使用全頁面編輯器。",
