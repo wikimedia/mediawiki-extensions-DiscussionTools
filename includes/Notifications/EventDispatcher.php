@@ -115,8 +115,8 @@ class EventDispatcher {
 		foreach ( $items as $item ) {
 			if ( $item instanceof HeadingItem && ( $item->getHeadingLevel() <= 2 || $item->isPlaceholderHeading() ) ) {
 				$threadName = $item->getName();
-			} elseif ( $item instanceof CommentItem ) {
-				Assert::invariant( $threadName !== null, 'Comments are always preceded by headings' );
+			} elseif ( $item instanceof CommentItem && $threadName !== null ) {
+				// FIXME: null should never happen here, but it does (T288775)
 				$comments[ $threadName ][ $item->getName() ][ $item->getId() ] = $item;
 			}
 		}
