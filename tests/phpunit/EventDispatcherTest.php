@@ -108,8 +108,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/multiple/rev2.json',
 			],
-			// Adding comments in section 0 (before first heading). These do not generate notifications,
-			// because the interface doesn't allow subscribing to it.
+			// Adding comments in section 0 (before first heading).
+			// These do not generate notifications, because the interface doesn't allow subscribing to it.
 			[
 				'cases/EventDispatcher/section0/rev1.txt',
 				'cases/EventDispatcher/section0/rev2.txt',
@@ -123,6 +123,38 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'Y',
 				'../cases/EventDispatcher/no-other-events.json',
 				'../cases/EventDispatcher/section0/rev3.json',
+			],
+			// Adding comments in section starting with a heading with level 1.
+			// These do not generate notifications, because the interface doesn't allow subscribing to it.
+			[
+				'cases/EventDispatcher/sectionlevel1/rev1.txt',
+				'cases/EventDispatcher/sectionlevel1/rev2.txt',
+				'Y',
+				'../cases/EventDispatcher/no-other-events.json',
+				'../cases/EventDispatcher/sectionlevel1/rev2.json',
+			],
+			[
+				'cases/EventDispatcher/sectionlevel1/rev2.txt',
+				'cases/EventDispatcher/sectionlevel1/rev3.txt',
+				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
+				'../cases/EventDispatcher/sectionlevel1/rev3.json',
+			],
+			[
+				'cases/EventDispatcher/sectionlevel1/rev3.txt',
+				'cases/EventDispatcher/sectionlevel1/rev4.txt',
+				'Z',
+				'../cases/EventDispatcher/no-other-events.json',
+				'../cases/EventDispatcher/sectionlevel1/rev4.json',
+			],
+			// Adding comments in section starting with a heading with level 3 (not following level 2 headings).
+			// These do not generate notifications, because the interface doesn't allow subscribing to it.
+			[
+				'cases/EventDispatcher/sectionlevel3/rev1.txt',
+				'cases/EventDispatcher/sectionlevel3/rev2.txt',
+				'Y',
+				'../cases/EventDispatcher/no-other-events.json',
+				'../cases/EventDispatcher/sectionlevel3/rev2.json',
 			],
 			// Adding a comment in a previously empty section.
 			[

@@ -103,8 +103,12 @@ class EventDispatcher {
 	}
 
 	/**
-	 * For each top-level heading, get a list of comments in the thread grouped by names, then IDs.
+	 * For each level 2 heading, get a list of comments in the thread grouped by names, then IDs.
 	 * (Compare by name first, as ID could be changed by a parent comment being moved/deleted.)
+	 * Comments in level 3+ sub-threads are grouped together with the parent thread.
+	 *
+	 * For any other headings (including level 3+ before the first level 2 heading, level 1, and
+	 * section zero placeholder headings), ignore comments in those threads.
 	 *
 	 * @param ThreadItem[] $items
 	 * @return CommentItem[][][]
@@ -113,10 +117,11 @@ class EventDispatcher {
 		$comments = [];
 		$threadName = null;
 		foreach ( $items as $item ) {
-			if ( $item instanceof HeadingItem && ( $item->getHeadingLevel() <= 2 || $item->isPlaceholderHeading() ) ) {
+			if ( $item instanceof HeadingItem && ( $item->getHeadingLevel() < 2 || $item->isPlaceholderHeading() ) ) {
+				$threadName = null;
+			} elseif ( $item instanceof HeadingItem && $item->getHeadingLevel() === 2 ) {
 				$threadName = $item->getName();
 			} elseif ( $item instanceof CommentItem && $threadName !== null ) {
-				// FIXME: null should never happen here, but it does (T288775)
 				$comments[ $threadName ][ $item->getName() ][ $item->getId() ] = $item;
 			}
 		}
