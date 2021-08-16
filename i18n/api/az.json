@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "\"$1\" nömrəli şərh tapıla bilmədi.",
+	"apierror-discussiontools-commentname-notfound": "\"$1\" adlı şərh tapıla bilmədi.",
+	"apierror-discussiontools-subscription-failed-add": "Mövzuya abunə olmaq mümkün olmadı",
+	"apierror-discussiontools-subscription-failed-remove": "Mövzunun abunəliyindən çıxmaq mümkün olmadı.",
+	"apihelp-discussiontools-param-oldid": "Versiya nömrəsi (defolt olaraq son versiyanı istifadə edir)",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Verilən səhifədəki hər bir şərhin daxil olduğu səhifələrin başlıqlarını verir.",
+	"apihelp-discussiontools-summary": "Müzakirə vasitələrini işə salmaq üçün lazım olan meta məlumatları verir.",
+	"apihelp-discussiontoolsedit-param-commentid": "Cavablandırılacaq şərhin nömrəsi. <var>paction</var> <var>addcomment</var> olduqda istifadə olunur. <var>commentname</var>-in üstünə yazır."
+}

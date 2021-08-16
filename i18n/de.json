@@ -15,7 +15,7 @@
 	"discussiontools-emptystate-desc": "Du kannst diese Diskussionsseite benutzen, um eine Diskussion mit anderen darüber zu beginnen, wie man [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] verbessern kann. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Erfahre mehr darüber, wie diese Seiten verwendet werden]].",
 	"discussiontools-emptystate-desc-self": "Personen auf {{SITENAME}} können diese Seite benutzen, um eine öffentliche Nachricht für dich zu posten und du wirst benachrichtigt, wenn sie es tun. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Mehr über diese Seite erfahren]].",
 	"discussiontools-emptystate-desc-user": "Du kanst diese Diskussionsseite verwenden, um eine Diskussion über [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] zu beginnen, die für andere öffentlich einsehbar sein wird. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Erfahre mehr darüber, wie diese Seiten verwendet werden]].",
-	"discussiontools-emptystate-title": "Beginne ein Diskusion über [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Beginne eine Diskussion über [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Willkommen auf deiner Diskussionsseite",
 	"discussiontools-emptystate-title-user": "Beginne eine Diskussion mit [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-error-comment-conflict": "Dein Kommentar konnte nicht gespeichert werden, weil jemand anderes zur gleichen Zeit wie du kommentiertest. Bitte versuche es erneut oder lade die Seite neu, um die neuesten Kommentare zu sehen.",

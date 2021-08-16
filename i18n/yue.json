@@ -38,6 +38,7 @@
 	"discussiontools-replywidget-placeholder-reply": "答{{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "睇下",
 	"discussiontools-replywidget-reply": "答",
+	"discussiontools-replywidget-summary": "摘要",
 	"discussiontools-replywidget-terms-click": "撳「$1」代表你同意呢個wiki嘅使用條款。",
 	"discussiontools-replywidget-transcluded": "你嘅留言會儲存喺[[$1]]。",
 	"tag-discussiontools-edit": "改註解",

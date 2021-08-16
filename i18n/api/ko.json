@@ -5,7 +5,9 @@
 		]
 	},
 	"apierror-discussiontools-subscription-failed-add": "이 주제를 구독하지 못했습니다.",
+	"apihelp-discussiontools-summary": "토론 도구 초기화에 필요한 메타데이터를 반환합니다.",
 	"apihelp-discussiontoolsedit-param-wikitext": "위키텍스트",
+	"apihelp-discussiontoolsedit-summary": "토론 문서에 메시지를 게시합니다.",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true는 구독이며, false는 구독 해지임",
 	"apihelp-discussiontoolssubscribe-summary": "주제에 관한 알림을 수신하기 위해 구독(또는 구독 해지)을 합니다."
 }

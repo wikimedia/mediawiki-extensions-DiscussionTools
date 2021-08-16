@@ -7,8 +7,17 @@
 			"Toghrul Rahimli"
 		]
 	},
+	"discussiontools": "Müzakirə alətləri",
+	"discussiontools-defaultsummary-reply": "Cavab",
+	"discussiontools-desc": "Müzakirə səhifələrini asanlaşdırmaq üçün alətlər",
+	"discussiontools-emptystate-button": "Müzakirə başlat",
+	"discussiontools-emptystate-desc": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] səhifəsini inkişaf etdirmək barədə digər istifadəçilərlə müzakirə aparmaq üçün bu müzakirə səhifəsindən istifadə edə bilərsiz. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Bu səhifələrin istifadəsi barədə ətraflı öyrən]].",
+	"discussiontools-emptystate-title": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] haqqında müzakirə başlat",
+	"discussiontools-emptystate-title-self": "İstifadəçi səhifənizə xoş gəlmisiniz.",
 	"discussiontools-newtopic-missing-title": "Zəhmət olmasa müzakirə mövzusu üçün başlıq təyin edin. \"{{int:discussiontools-replywidget-newtopic}}\" düyməsinə bassanız, başlıq olmadan əlavə ediləcək.",
+	"discussiontools-newtopic-placeholder-title": "Başlıq",
 	"discussiontools-preference-replytool": "Dərhal cavablandırmanı aktivləşdir",
+	"discussiontools-replylink": "cavabla",
 	"discussiontools-replywidget-abandon": "Yazdığınız şərhi ləğv etmək istədiyinizə əminsiniz?",
 	"discussiontools-replywidget-abandon-discard": "Ləğv et",
 	"discussiontools-replywidget-abandon-keep": "Yazmağa davam et",
