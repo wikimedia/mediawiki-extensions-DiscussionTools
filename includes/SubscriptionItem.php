@@ -20,7 +20,7 @@ class SubscriptionItem {
 	 * @param UserIdentity $user
 	 * @param string $itemName
 	 * @param LinkTarget $linkTarget
-	 * @param int $state 1/0 for watched/muted
+	 * @param int $state One of SubscriptionStore::STATE_* constants
 	 * @param string|null $createdTimestamp When the subscription was created
 	 * @param string|null $notifiedTimestamp When the item subscribed to last tried to trigger
 	 *                                       a notification (even if muted).
@@ -86,6 +86,6 @@ class SubscriptionItem {
 	 * @return bool
 	 */
 	public function isMuted(): bool {
-		return $this->state === 0;
+		return $this->state === SubscriptionStore::STATE_UNSUBSCRIBED;
 	}
 }

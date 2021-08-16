@@ -20,6 +20,7 @@ use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
+use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
@@ -266,7 +267,7 @@ class EventDispatcher {
 		$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
 		$subscriptionItems = $subscriptionStore->getSubscriptionItemsForTopic(
 			$commentName,
-			1
+			SubscriptionStore::STATE_SUBSCRIBED
 		);
 
 		// Update notified timestamps

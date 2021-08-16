@@ -53,8 +53,7 @@
 				"type": "integer",
 				"options": {
 					"notnull": true,
-					"default": 1,
-					"length": 1
+					"default": 1
 				}
 			},
 			{

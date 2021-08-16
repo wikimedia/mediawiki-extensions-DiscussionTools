@@ -74,10 +74,6 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 				$this->dieWithError( 'apierror-discussiontools-subscription-failed-remove', 'subscription-failed' );
 			}
 		}
-		// TODO: Subscribe should be tri-state:
-		// * subscribe (add row)
-		// * ubsubscribe (delete row)
-		// * mute (set state=0)
 
 		$result = [
 			'page' => $title,
