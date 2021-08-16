@@ -214,7 +214,7 @@ class EventDispatcher {
 					'comment-id' => $newComment->getId(),
 					'comment-name' => $newComment->getName(),
 					'content' => $newComment->getBodyText( true ),
-					'section-title' => $heading->getText(),
+					'section-title' => $heading->getLinkableTitle(),
 					'revid' => $newRevRecord->getId(),
 					'mentioned-users' => $mentionedUsers,
 				],

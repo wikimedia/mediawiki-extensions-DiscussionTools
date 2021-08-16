@@ -304,22 +304,62 @@ function initTopicSubscriptions( $container ) {
 }
 
 var $highlightedTarget = null;
-function highlightTargetComment( parser ) {
-	if ( $highlightedTarget ) {
-		$highlightedTarget.remove();
-		$highlightedTarget = null;
-	}
-	// eslint-disable-next-line no-jquery/no-global-selector
-	var targetElement = $( ':target' )[ 0 ];
-	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
-		var comment = parser.findCommentById( targetElement.getAttribute( 'id' ) );
-		$highlightedTarget = highlight( comment );
-		$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
-		$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
-	}
+function highlightTargetComment( parser, event ) {
+	// Delay with setTimeout() because "the Document's target element" (corresponding to the :target
+	// selector in CSS) is not yet updated to match the URL when handling a 'popstate' event.
+	setTimeout( function () {
+		if ( $highlightedTarget ) {
+			$highlightedTarget.remove();
+			$highlightedTarget = null;
+		}
+		// eslint-disable-next-line no-jquery/no-global-selector
+		var targetElement = $( ':target' )[ 0 ];
+
+		var uri;
+		try {
+			uri = new mw.Uri( location.href );
+		} catch ( err ) {
+			// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+			uri = null;
+		}
+		var targetIds = uri && uri.query.dtnewcomments && uri.query.dtnewcomments.split( '|' );
+		if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
+			var comment = parser.findCommentById( targetElement.getAttribute( 'id' ) );
+			$highlightedTarget = highlight( comment );
+			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
+			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
+		} else if ( targetIds ) {
+			var comments = targetIds.map( function ( id ) {
+				return parser.findCommentById( id );
+			} ).filter( function ( cmt ) {
+				return !!cmt;
+			} );
+			if ( comments.length === 0 ) {
+				return;
+			}
+
+			var highlights = comments.map( function ( cmt ) {
+				return highlight( cmt )[ 0 ];
+			} );
+			$highlightedTarget = $( highlights );
+			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
+			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
+
+			if ( !event ) {
+				// Scroll to the topmost comment on initial page load, but not on popstate events
+				var topmostComment = comments[ 0 ];
+				for ( var i = 1; i < comments.length; i++ ) {
+					if ( highlights[ i ].getBoundingClientRect().top < highlights[ i - 1 ].getBoundingClientRect().top ) {
+						topmostComment = comments[ i ];
+					}
+				}
+				document.getElementById( topmostComment.id ).scrollIntoView();
+			}
+		}
+	} );
 }
 
-function clearHighlightTargetComment() {
+function clearHighlightTargetComment( parser ) {
 	// eslint-disable-next-line no-jquery/no-global-selector
 	var targetElement = $( ':target' )[ 0 ];
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
@@ -335,6 +375,10 @@ function clearHighlightTargetComment() {
 		// doesn't exist on the page, hopefully), and then use history.pushState() to clear it.
 		window.location.hash += '-DoesNotExist-DiscussionToolsHack';
 		history.replaceState( null, document.title, window.location.href.replace( /#.*$/, '' ) );
+	} else if ( window.location.search.match( /(^\?|&)dtnewcomments=/ ) ) {
+		history.pushState( null, document.title,
+			window.location.search.replace( /(^\?|&)dtnewcomments=[^&]+/, '' ) + window.location.hash );
+		highlightTargetComment( parser );
 	}
 }
 
@@ -538,11 +582,11 @@ function init( $container, state ) {
 		mw.config.get( 'wgCurRevisionId' )
 	);
 
-	$( window ).on( 'hashchange', highlightTargetComment.bind( null, parser ) );
+	$( window ).on( 'popstate', highlightTargetComment.bind( null, parser ) );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( 'body' ).on( 'click', function ( e ) {
 		if ( e.which === OO.ui.MouseButtons.LEFT ) {
-			clearHighlightTargetComment();
+			clearHighlightTargetComment( parser );
 		}
 	} );
 	highlightTargetComment( parser );
