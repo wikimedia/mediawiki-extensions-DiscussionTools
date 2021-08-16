@@ -271,8 +271,8 @@ function initTopicSubscriptions( $container ) {
 			page: title,
 			commentname: commentName,
 			subscribe: !isSubscribed
-		}, { contentType: 'multipart/form-data' } ).then( function ( response2 ) {
-			return OO.getProp( response2, 'discussiontoolssubscribe' ) || {};
+		} ).then( function ( response ) {
+			return OO.getProp( response, 'discussiontoolssubscribe' ) || {};
 		} ).then( function ( result ) {
 			if ( result.subscribe ) {
 				element.setAttribute( 'data-mw-subscribed', '' );
