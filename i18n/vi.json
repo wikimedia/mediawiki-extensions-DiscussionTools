@@ -4,6 +4,7 @@
 			"Dotr",
 			"Matma Rex",
 			"Minh Nguyen",
+			"Nghiemtrongdai VN",
 			"Vinhtantran"
 		]
 	},
@@ -11,9 +12,9 @@
 	"discussiontools-defaultsummary-reply": "Trả lời",
 	"discussiontools-desc": "Công cụ để cải tiến trang thảo luận.",
 	"discussiontools-emptystate-button": "Bắt đầu cuộc thảo luận",
-	"discussiontools-emptystate-desc": "Bạn có thể sử dụng trang này để trò chuyện với người khác về cách khác phục [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Learn more about how these pages are used]].",
+	"discussiontools-emptystate-desc": "Bạn có thể sử dụng trang này để trò chuyện với người khác về bài viết [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|‎Tìm hiểu thêm về cách sử dụng các trang này‎]].",
 	"discussiontools-emptystate-desc-self": "Người dùng có thể sử dụng {{SITENAME}} để gửi tin nhắn công khai cho bạn và bạn sẽ được gửi thông báo về tin nhắn này. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Learn more about this page]]",
-	"discussiontools-emptystate-desc-user": "Bạn có thể dùng trang nói chuyện để bàn luận với [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] và cuộc trò chuyện sẽ ở chế độ công khai. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Learn more about how these pages are used]]",
+	"discussiontools-emptystate-desc-user": "Bạn có thể dùng trang thảo luận để bàn luận với [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] và cuộc trò chuyện sẽ ở chế độ công khai. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|‎Tìm hiểu thêm về cách sử dụng các trang này‎]]",
 	"discussiontools-emptystate-title": "Bắt đầu cuộc trò chuyện về [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Chào mừng đến trang trò chuyện",
 	"discussiontools-emptystate-title-user": "Bắt đầu cuộc trò chuyện với  [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
