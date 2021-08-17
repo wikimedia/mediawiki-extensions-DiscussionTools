@@ -497,6 +497,7 @@
 		"discussiontools-replytool": 1,
 		"discussiontools-sourcemodetoolbar": 1,
 		"discussiontools-topicsubscription": 1,
+		"discussiontools-autotopicsub": 1,
 		"discussiontools-abtest": ""
 	},
 	"config": {
@@ -531,6 +532,10 @@
 		"DiscussionTools_topicsubscription": {
 			"value": "default",
 			"description": "Override availability of DiscussionTools topic subscription feature. 'default', 'available', or 'unavailable'."
+		},
+		"DiscussionTools_autotopicsub": {
+			"value": "default",
+			"description": "Override availability of DiscussionTools automatic topic subscription feature. 'default', 'available', or 'unavailable'."
 		},
 		"DiscussionToolsEnableTopicSubscriptionBackend": {
 			"value": true,

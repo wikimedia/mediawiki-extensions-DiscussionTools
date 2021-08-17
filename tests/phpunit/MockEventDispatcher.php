@@ -7,6 +7,7 @@ use MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
+use Title;
 
 class MockEventDispatcher extends EventDispatcher {
 
@@ -48,6 +49,16 @@ class MockEventDispatcher extends EventDispatcher {
 	 * @param RevisionRecord $newRevRecord
 	 */
 	public static function addCommentChangeTag( RevisionRecord $newRevRecord ) {
+	}
+
+	/**
+	 * No-op for testing
+	 *
+	 * @param UserIdentity $user
+	 * @param Title $title
+	 * @param string $itemName
+	 */
+	protected static function addAutoSubscription( UserIdentity $user, Title $title, string $itemName ) {
 	}
 
 }

@@ -23,6 +23,8 @@ class HookUtils {
 	public const NEWTOPICTOOL = 'newtopictool';
 	public const SOURCEMODETOOLBAR = 'sourcemodetoolbar';
 	public const TOPICSUBSCRIPTION = 'topicsubscription';
+	public const AUTOTOPICSUB = 'autotopicsub';
+
 	/**
 	 * @var string[] List of all sub-features. Will be used to generate:
 	 *  - Feature override global: $wgDiscussionTools_FEATURE
@@ -34,6 +36,7 @@ class HookUtils {
 		self::NEWTOPICTOOL,
 		self::SOURCEMODETOOLBAR,
 		self::TOPICSUBSCRIPTION,
+		self::AUTOTOPICSUB,
 	];
 
 	/**
@@ -52,7 +55,7 @@ class HookUtils {
 			return false;
 		}
 
-		if ( $feature === self::TOPICSUBSCRIPTION && !$user->isRegistered() ) {
+		if ( ( $feature === self::TOPICSUBSCRIPTION || $feature === self::AUTOTOPICSUB ) && !$user->isRegistered() ) {
 			// Users must be logged in to use topic subscription
 			return false;
 		}
@@ -229,7 +232,10 @@ class HookUtils {
 
 		// Topic subscription is not available on your own talk page, as you will
 		// get 'edit-user-talk' notifications already. (T276996)
-		if ( $feature === self::TOPICSUBSCRIPTION && $title->equals( $output->getUser()->getTalkPage() ) ) {
+		if (
+			( $feature === self::TOPICSUBSCRIPTION || $feature === self::AUTOTOPICSUB ) &&
+			$title->equals( $output->getUser()->getTalkPage() )
+		) {
 			return false;
 		}
 
@@ -250,7 +256,7 @@ class HookUtils {
 			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
 
 		if (
-			$feature === self::TOPICSUBSCRIPTION &&
+			( $feature === self::TOPICSUBSCRIPTION || $feature === self::AUTOTOPICSUB ) &&
 			!$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' )
 		) {
 			// Can't be enabled via query, because the tables may not exist yet (T280082)
@@ -327,5 +333,28 @@ class HookUtils {
 			// User has new topic tool enabled (and not using &dtenable=0)
 			self::isFeatureEnabledForOutput( $out, self::NEWTOPICTOOL )
 		);
+	}
+
+	/**
+	 * Check if we should be adding automatic topic subscriptions for this user on this page.
+	 *
+	 * @param UserIdentity $user
+	 * @param Title $title
+	 * @return bool
+	 */
+	public static function shouldAddAutoSubscription( UserIdentity $user, Title $title ): bool {
+		// This duplicates the logic from isFeatureEnabledForOutput(),
+		// because we don't have access to the request or the output here.
+
+		// Topic subscription is not available on your own talk page, as you will
+		// get 'edit-user-talk' notifications already. (T276996)
+		// (can't use User::getTalkPage() to check because this is a UserIdentity)
+		if ( $title->inNamespace( NS_USER_TALK ) && $title->getText() === $user->getName() ) {
+			return false;
+		}
+
+		// Check if the user has automatic subscriptions enabled, and the tools are enabled on the page.
+		return static::isAvailableForTitle( $title ) &&
+			static::isFeatureEnabledForUser( $user, self::AUTOTOPICSUB );
 	}
 }

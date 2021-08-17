@@ -95,6 +95,13 @@ class PreferenceHooks implements
 			];
 		}
 
+		if ( isset( $preferences['discussiontools-' . HookUtils::AUTOTOPICSUB] ) ) {
+			// Hide automatic subscriptions when subscriptions are disabled
+			$preferences['discussiontools-' . HookUtils::AUTOTOPICSUB]['hide-if'] = [
+				'===', 'discussiontools-' . HookUtils::TOPICSUBSCRIPTION, ''
+			];
+		}
+
 		$preferences['discussiontools-showadvanced'] = [
 			'type' => 'api',
 		];

@@ -26,6 +26,7 @@ class SubscriptionStore {
 	 */
 	public const STATE_UNSUBSCRIBED = 0;
 	public const STATE_SUBSCRIBED = 1;
+	public const STATE_AUTOSUBSCRIBED = 2;
 
 	/** @var ILBFactory */
 	private $lbFactory;
@@ -69,14 +70,14 @@ class SubscriptionStore {
 	 * @param IDatabase $db
 	 * @param UserIdentity|null $user
 	 * @param array|null $itemNames
-	 * @param int|null $state One of SubscriptionStore::STATE_* constants
+	 * @param int|int[]|null $state One of (or an array of) SubscriptionStore::STATE_* constants
 	 * @return IResultWrapper|false
 	 */
 	private function fetchSubscriptions(
 		IDatabase $db,
 		?UserIdentity $user = null,
 		?array $itemNames = null,
-		?int $state = null
+		$state = null
 	) {
 		$conditions = [];
 
@@ -111,14 +112,14 @@ class SubscriptionStore {
 	/**
 	 * @param UserIdentity $user
 	 * @param array|null $itemNames
-	 * @param int|null $state One of SubscriptionStore::STATE_* constants
+	 * @param int[]|null $state Array of SubscriptionStore::STATE_* constants
 	 * @param array $options
 	 * @return SubscriptionItem[]
 	 */
 	public function getSubscriptionItemsForUser(
 		UserIdentity $user,
 		?array $itemNames = null,
-		?int $state = null,
+		?array $state = null,
 		array $options = []
 	): array {
 		// Only a registered user can be subscribed
@@ -151,13 +152,13 @@ class SubscriptionStore {
 
 	/**
 	 * @param string $itemName
-	 * @param int|null $state One of SubscriptionStore::STATE_* constants
+	 * @param int[]|null $state An array of SubscriptionStore::STATE_* constants
 	 * @param array $options
 	 * @return array
 	 */
 	public function getSubscriptionItemsForTopic(
 		string $itemName,
-		?int $state = null,
+		?array $state = null,
 		array $options = []
 	): array {
 		$options += [ 'forWrite' => false ];
@@ -239,12 +240,14 @@ class SubscriptionStore {
 	 * @param UserIdentity $user
 	 * @param LinkTarget $target
 	 * @param string $itemName
+	 * @param int $state
 	 * @return bool
 	 */
 	public function addSubscriptionForUser(
 		UserIdentity $user,
 		LinkTarget $target,
-		string $itemName
+		string $itemName,
+		int $state = self::STATE_SUBSCRIBED
 	): bool {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
@@ -265,12 +268,12 @@ class SubscriptionStore {
 				'sub_title' => $target->getDBkey(),
 				'sub_section' => $target->getFragment(),
 				'sub_item' => $itemName,
-				'sub_state' => self::STATE_SUBSCRIBED,
+				'sub_state' => $state,
 				'sub_created' => $dbw->timestamp(),
 			],
 			[ [ 'sub_user', 'sub_item' ] ],
 			[
-				'sub_state' => self::STATE_SUBSCRIBED,
+				'sub_state' => $state,
 			],
 			__METHOD__
 		);
@@ -304,6 +307,37 @@ class SubscriptionStore {
 			__METHOD__
 		);
 		return (bool)$dbw->affectedRows();
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @param LinkTarget $target
+	 * @param string $itemName
+	 * @return bool
+	 */
+	public function addAutoSubscriptionForUser(
+		UserIdentity $user,
+		LinkTarget $target,
+		string $itemName
+	): bool {
+		// Check for existing subscriptions.
+		// Note that this includes subscriptions with state=STATE_UNSUBSCRIBED.
+		$subscriptionItems = $this->getSubscriptionItemsForUser(
+			$user,
+			[ $itemName ],
+			null,
+			[ 'forWrite' => true ]
+		);
+		if ( $subscriptionItems ) {
+			return false;
+		}
+
+		return $this->addSubscriptionForUser(
+			$user,
+			$target,
+			$itemName,
+			self::STATE_AUTOSUBSCRIBED
+		);
 	}
 
 	/**

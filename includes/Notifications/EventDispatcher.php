@@ -266,6 +266,9 @@ class EventDispatcher {
 				],
 				'agent' => $user,
 			];
+
+			$titleForSubscriptions = Title::castFromPageIdentity( $title )->createFragmentTarget( $heading->getText() );
+			static::addAutoSubscription( $user, $titleForSubscriptions, $heading->getName() );
 		}
 	}
 
@@ -283,6 +286,26 @@ class EventDispatcher {
 	}
 
 	/**
+	 * Add an automatic subscription to the given item, assuming the user has automatic subscriptions
+	 * enabled.
+	 *
+	 * @param UserIdentity $user
+	 * @param Title $title
+	 * @param string $itemName
+	 */
+	protected static function addAutoSubscription( UserIdentity $user, Title $title, string $itemName ) {
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+
+		if (
+			$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) &&
+			HookUtils::shouldAddAutoSubscription( $user, $title )
+		) {
+			$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
+			$subscriptionStore->addAutoSubscriptionForUser( $user, $title, $itemName );
+		}
+	}
+
+	/**
 	 * Return all users subscribed to a comment
 	 *
 	 * @param EchoEvent $event
@@ -295,7 +318,7 @@ class EventDispatcher {
 		$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
 		$subscriptionItems = $subscriptionStore->getSubscriptionItemsForTopic(
 			$commentName,
-			SubscriptionStore::STATE_SUBSCRIBED
+			[ SubscriptionStore::STATE_SUBSCRIBED, SubscriptionStore::STATE_AUTOSUBSCRIBED ]
 		);
 
 		// Update notified timestamps

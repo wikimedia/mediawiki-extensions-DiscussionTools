@@ -49,7 +49,7 @@
 			},
 			{
 				"name": "sub_state",
-				"comment": "0: unsubscribed; 1: subscribed",
+				"comment": "0: unsubscribed; 1: subscribed, 2: auto-subscribed",
 				"type": "integer",
 				"options": {
 					"notnull": true,
