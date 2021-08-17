@@ -9,6 +9,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
+use ChangeTags;
+use DeferredUpdates;
 use EchoEvent;
 use Error;
 use IDBAccessObject;
@@ -76,11 +78,6 @@ class EventDispatcher {
 		$userFactory = $services->getUserFactory();
 		$oldRevRecord = $revisionStore->getPreviousRevision( $newRevRecord, IDBAccessObject::READ_LATEST );
 
-		if ( $oldRevRecord === null ) {
-			// TODO: Handle page creation (oldRevRecord = null?)
-			return;
-		}
-
 		$title = Title::newFromLinkTarget(
 			$newRevRecord->getPageAsLinkTarget()
 		);
@@ -96,7 +93,14 @@ class EventDispatcher {
 			return;
 		}
 
-		$oldParser = self::getParsedRevision( $oldRevRecord );
+		if ( $oldRevRecord !== null ) {
+			$oldParser = self::getParsedRevision( $oldRevRecord );
+		} else {
+			// Page creation
+			$doc = DOMUtils::parseHTML( '' );
+			$container = DOMCompat::getBody( $doc );
+			$oldParser = CommentParser::newFromGlobalState( $container );
+		}
 		$newParser = self::getParsedRevision( $newRevRecord );
 
 		self::generateEventsFromParsers( $events, $oldParser, $newParser, $newRevRecord, $title, $user );
@@ -190,6 +194,14 @@ class EventDispatcher {
 			}
 		}
 
+		if ( $addedComments ) {
+			// It's a bit weird to do this here, in the middle of the hook handler for Echo. However:
+			// * Echo calls this from a PageSaveComplete hook handler as a DeferredUpdate,
+			//   which is exactly how we would do this otherwise
+			// * It allows us to reuse the generated comment trees without any annoying caching
+			static::addCommentChangeTag( $newRevRecord );
+		}
+
 		foreach ( $addedComments as $newComment ) {
 			// Ignore comments by other users, e.g. in case of reverts or a discussion being moved.
 			// TODO: But what about someone signing another's comment?
@@ -226,6 +238,19 @@ class EventDispatcher {
 				'agent' => $user,
 			];
 		}
+	}
+
+	/**
+	 * Add our change tag for a revision that adds new comments.
+	 *
+	 * @param RevisionRecord $newRevRecord
+	 */
+	protected static function addCommentChangeTag( RevisionRecord $newRevRecord ) {
+		// Unclear if DeferredUpdates::addCallableUpdate() is needed,
+		// but every extension does it that way.
+		DeferredUpdates::addCallableUpdate( static function () use ( $newRevRecord ) {
+			ChangeTags::addTags( [ 'discussiontools-added-comment' ], null, $newRevRecord->getId() );
+		} );
 	}
 
 	/**
