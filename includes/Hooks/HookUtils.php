@@ -18,7 +18,6 @@ use OutputPage;
 use PageProps;
 use RequestContext;
 use Title;
-use User;
 
 class HookUtils {
 	public const REPLYTOOL = 'replytool';
@@ -224,12 +223,9 @@ class HookUtils {
 		}
 
 		// Topic subscription is not available on your own talk page, as you will
-		// get 'mention-user-talk' notifications already. (T276996)
-		if ( $feature === self::TOPICSUBSCRIPTION && $title->getNamespace() === NS_USER_TALK && !$title->isSubpage() ) {
-			$user = User::newFromName( $title->getText() );
-			if ( $user && $user->equals( $output->getUser() ) ) {
-				return false;
-			}
+		// get 'edit-user-talk' notifications already. (T276996)
+		if ( $feature === self::TOPICSUBSCRIPTION && $title->equals( $output->getUser()->getTalkPage() ) ) {
+			return false;
 		}
 
 		// ?dtenable=1 overrides all user and title checks
