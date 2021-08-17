@@ -447,8 +447,12 @@ function init( $container, state ) {
 	}
 
 	function setupController( commentId, $link, mode, hideErrors ) {
-		var commentController;
+		var commentController, $addSectionLink;
 		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$addSectionLink = $( '#ca-addsection a' );
+			// When opening new topic tool using any link, always activate the link in page tabs too
+			$link = $link.add( $addSectionLink );
 			commentController = new NewTopicController( $pageContainer, parser );
 		} else {
 			commentController = new CommentController( $pageContainer, parser.findCommentById( commentId ), parser );
@@ -515,13 +519,9 @@ function init( $container, state ) {
 	}
 	if ( storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ) {
 		mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$link = $( '#ca-addsection a' );
-		setupController( utils.NEW_TOPIC_COMMENT_ID, $link, mode, true );
+		setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ), mode, true );
 	} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$link = $( '#ca-addsection a' );
-		setupController( utils.NEW_TOPIC_COMMENT_ID, $link );
+		setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ) );
 	}
 
 	// For debugging (now unused in the code)
