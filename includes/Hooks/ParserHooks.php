@@ -72,12 +72,18 @@ class ParserHooks implements
 	 * @param string &$text
 	 */
 	public function onParserAfterTidy( $parser, &$text ) {
-		$popts = $parser->getOptions();
-		// ParserOption for dtreply was set in onArticleParserOptions
-		if ( $popts->getOption( 'dtreply' ) ) {
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
+		if ( !$dtConfig->get( 'DiscussionToolsUseParserCache' ) ) {
+			return;
+		}
+
+		// Always apply the DOM transform if DiscussionTools are available for this page,
+		// to allow linking to individual comments from Echo 'mention' and 'edit-user-talk'
+		// notifications (T253082, T281590), and to reduce parser cache fragmentation (T279864).
+		// The extra buttons are hidden in CSS (ext.discussionTools.init.styles module) when
+		// the user doesn't have DiscussionTools features enabled.
+		if ( HookUtils::isAvailableForTitle( $parser->getTitle() ) ) {
 			CommentFormatter::addDiscussionTools( $text );
-			// Always load style modules that hide our extra buttons for users who don't have
-			// DiscussionTools features enabled
 			$parser->getOutput()->addModuleStyles( [
 				'ext.discussionTools.init.styles',
 			] );
@@ -106,6 +112,8 @@ class ParserHooks implements
 				// ...or if has been enabled by the user
 				HookUtils::isFeatureEnabledForUser( $popts->getUserIdentity(), $feature )
 			) {
+				// For backwards-compatibility until the canonical cache entries
+				// without DiscussionTools DOM transform expire (T280599)
 				$popts->setOption( 'dtreply', true );
 				return;
 			}
