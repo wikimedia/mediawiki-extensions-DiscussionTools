@@ -86,7 +86,6 @@
 				"mediawiki.util",
 				"mediawiki.storage",
 				"mediawiki.String",
-				"mediawiki.cookie",
 				"ext.visualEditor.core.utils.parsing"
 			],
 			"messages": [
