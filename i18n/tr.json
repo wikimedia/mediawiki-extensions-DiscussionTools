@@ -8,6 +8,7 @@
 			"Joseph",
 			"MuratTheTurkish",
 			"SaldırganSincap",
+			"Sayginer",
 			"Sezgin İbiş",
 			"ToprakM",
 			"Vito Genovese"
@@ -17,7 +18,7 @@
 	"discussiontools-defaultsummary-reply": "Yanıt",
 	"discussiontools-desc": "Tartışma sayfalarını geliştirmek için araçlar.",
 	"discussiontools-emptystate-button": "Bir tartışma başlat",
-	"discussiontools-emptystate-desc": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] sayfasını nasıl geliştireceğiniz konusunda bir tartışma başlatmak için bu tartışma sayfasını kullanabilirsiniz.",
+	"discussiontools-emptystate-desc": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] sayfasının nasıl geliştirilebileceği konusunda bir tartışma başlatmak için bu sayfayı kullanabilirsiniz. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Bu sayfaların nasıl kullanıldığına dair daha çok şey öğrenin]].",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}} sitesindeki kişiler bu sayfayı size herkese açık bir mesaj göndermek için kullanabilir ve bunu yaptıklarında size bildirim gönderilecektir. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Bu sayfa hakkında daha fazla bilgi edinin]].",
 	"discussiontools-emptystate-desc-user": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] ile herkese açık bir tartışma başlatmak için bu tartışma sayfasını kullanabilirsiniz. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Bu sayfaların nasıl kullanıldığı hakkında daha fazla bilgi edinin]].",
 	"discussiontools-emptystate-title": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] hakkında bir tartışma başlatın.",
