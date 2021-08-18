@@ -24,6 +24,14 @@ class PreferenceHooks implements
 	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
+		if ( HookUtils::isFeatureAvailableToUser( $user ) ) {
+			$preferences['discussiontools-summary'] = [
+				'type' => 'info',
+				'default' => wfMessage( 'discussiontools-preference-summary' )->parse(),
+				'raw' => true,
+				'section' => 'editing/discussion',
+			];
+		}
 		foreach ( HookUtils::FEATURES as $feature ) {
 			if ( HookUtils::isFeatureAvailableToUser( $user, $feature ) ) {
 				$preferences["discussiontools-$feature"] = [
