@@ -18,6 +18,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Add a new comment as a reply to an existing comment.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Add a new discussion section and the first comment in it.",
 	"apihelp-discussiontoolsedit-summary": "Post a message on a discussion page.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Names of the topics to check",
+	"apihelp-discussiontoolsgetsubscriptions-summary": "Get the subscription statuses of given topics.",
 	"apihelp-discussiontoolssubscribe-param-page": "A page on which the topic appears",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Name of the topic to subscribe to (or unsubscribe from)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True to subscribe, false to unsubscribe",

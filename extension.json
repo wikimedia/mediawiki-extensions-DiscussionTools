@@ -375,6 +375,13 @@
 				"DiscussionTools.SubscriptionStore",
 				"ConfigFactory"
 			]
+		},
+		"discussiontoolsgetsubscriptions": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsGetSubscriptions",
+			"services": [
+				"DiscussionTools.SubscriptionStore",
+				"ConfigFactory"
+			]
 		}
 	},
 	"Hooks": {
