@@ -24,6 +24,12 @@ class SubscriptionStore {
 	 */
 	private const USER_SUBSCRIPTION_LIMIT = 5000;
 
+	/**
+	 * Constants for the values of the sub_state field.
+	 */
+	public const STATE_UNSUBSCRIBED = 0;
+	public const STATE_SUBSCRIBED = 1;
+
 	/** @var ILBFactory */
 	private $lbFactory;
 
@@ -66,7 +72,7 @@ class SubscriptionStore {
 	 * @param IDatabase $db
 	 * @param UserIdentity|null $user
 	 * @param array|null $itemNames
-	 * @param int|null $state
+	 * @param int|null $state One of SubscriptionStore::STATE_* constants
 	 * @return IResultWrapper|false
 	 */
 	private function fetchSubscriptions(
@@ -108,7 +114,7 @@ class SubscriptionStore {
 	/**
 	 * @param UserIdentity $user
 	 * @param array|null $itemNames
-	 * @param int|null $state
+	 * @param int|null $state One of SubscriptionStore::STATE_* constants
 	 * @param array $options
 	 * @return SubscriptionItem[]
 	 */
@@ -148,7 +154,7 @@ class SubscriptionStore {
 
 	/**
 	 * @param string $itemName
-	 * @param int|null $state
+	 * @param int|null $state One of SubscriptionStore::STATE_* constants
 	 * @param array $options
 	 * @return array
 	 */
@@ -262,12 +268,12 @@ class SubscriptionStore {
 				'sub_title' => $target->getDBkey(),
 				'sub_section' => $target->getFragment(),
 				'sub_item' => $itemName,
-				'sub_state' => 1,
+				'sub_state' => self::STATE_SUBSCRIBED,
 				'sub_created' => $dbw->timestamp(),
 			],
 			[ [ 'sub_user', 'sub_item' ] ],
 			[
-				'sub_state' => 1,
+				'sub_state' => self::STATE_SUBSCRIBED,
 			],
 			__METHOD__
 		);
@@ -293,7 +299,7 @@ class SubscriptionStore {
 		$dbw = $this->getConnectionRef( DB_PRIMARY );
 		$dbw->update(
 			'discussiontools_subscription',
-			[ 'sub_state' => 0 ],
+			[ 'sub_state' => self::STATE_UNSUBSCRIBED ],
 			[
 				'sub_user' => $user->getId(),
 				'sub_item' => $itemName,
