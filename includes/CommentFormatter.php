@@ -216,6 +216,7 @@ class CommentFormatter {
 			static function ( $matches ) use ( $doc, $itemsByName, $lang ) {
 				$itemName = $matches[1];
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
+				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
 
 				$subscribe = $doc->createElement( 'span' );
 				$subscribe->setAttribute(
@@ -241,8 +242,8 @@ class CommentFormatter {
 						'discussiontools-topicsubscription-button-subscribe'
 				)->inLanguage( $lang )->text();
 
-				if ( $isSubscribed ) {
-					$subscribeLink->setAttribute( 'data-mw-subscribed', '' );
+				if ( $subscribedState !== null ) {
+					$subscribeLink->setAttribute( 'data-mw-subscribed', (string)$subscribedState );
 				}
 
 				$bracket = $doc->createElement( 'span' );

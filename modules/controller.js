@@ -1,15 +1,21 @@
 'use strict';
 
+/* global moment */
 var
 	$pageContainer, linksController,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	storage = mw.storage.session,
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
+	HeadingItem = require( './HeadingItem.js' ),
+	CommentItem = require( './CommentItem.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
 	ReplyLinksController = require( './ReplyLinksController.js' ),
 	logger = require( './logger.js' ),
 	utils = require( './utils.js' ),
+	STATE_UNSUBSCRIBED = 0,
+	STATE_SUBSCRIBED = 1,
+	// STATE_AUTOSUBSCRIBED = 2,
 	pageDataCache = {};
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
@@ -235,6 +241,19 @@ function getCheckboxesPromise( pageName, oldId ) {
 	} );
 }
 
+function updateSubscribeButton( element, state ) {
+	if ( state !== null ) {
+		element.setAttribute( 'data-mw-subscribed', String( state ) );
+	}
+	if ( state ) {
+		element.textContent = mw.msg( 'discussiontools-topicsubscription-button-unsubscribe' );
+		element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-unsubscribe-tooltip' ) );
+	} else {
+		element.textContent = mw.msg( 'discussiontools-topicsubscription-button-subscribe' );
+		element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-subscribe-tooltip' ) );
+	}
+}
+
 function initTopicSubscriptions( $container ) {
 	$container.find( '.ext-discussiontools-init-section-subscribe-link' ).on( 'click keypress', function ( e ) {
 		if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
@@ -257,29 +276,24 @@ function initTopicSubscriptions( $container ) {
 
 		var element = this,
 			api = getApi(),
-			isSubscribed = element.hasAttribute( 'data-mw-subscribed' ),
+			subscribedState = element.hasAttribute( 'data-mw-subscribed' ) ?
+				Number( element.getAttribute( 'data-mw-subscribed' ) ) : null,
 			heading = $( this ).closest( '.ext-discussiontools-init-section' )[ 0 ],
 			section = utils.getHeadlineNodeAndOffset( heading ).node.id,
 			title = mw.config.get( 'wgRelevantPageName' ) + '#' + section;
 
-		// TODO: Disable button while pending
+		$( element ).addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+
 		api.postWithToken( 'csrf', {
 			action: 'discussiontoolssubscribe',
 			page: title,
 			commentname: commentName,
-			subscribe: !isSubscribed
+			subscribe: !subscribedState
 		} ).then( function ( response ) {
 			return OO.getProp( response, 'discussiontoolssubscribe' ) || {};
 		} ).then( function ( result ) {
-			if ( result.subscribe ) {
-				element.setAttribute( 'data-mw-subscribed', '' );
-				element.textContent = mw.msg( 'discussiontools-topicsubscription-button-unsubscribe' );
-				element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-unsubscribe-tooltip' ) );
-			} else {
-				element.removeAttribute( 'data-mw-subscribed' );
-				element.textContent = mw.msg( 'discussiontools-topicsubscription-button-subscribe' );
-				element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-subscribe-tooltip' ) );
-			}
+			$( element ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+			updateSubscribeButton( element, result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED );
 			mw.notify(
 				mw.msg(
 					result.subscribe ?
@@ -296,7 +310,70 @@ function initTopicSubscriptions( $container ) {
 			);
 		}, function ( code, data ) {
 			mw.notify( api.getErrorMessage( data ), { type: 'error' } );
+			$( element ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
 		} );
+	} );
+}
+
+function updateSubscriptionStates( $container, headingsToUpdate ) {
+	// This method is called when we recently edited this page, and auto-subscriptions might have been
+	// added for some topics. It updates the [subscribe] buttons to reflect the new subscriptions.
+
+	var $links = $container.find( '.ext-discussiontools-init-section-subscribe-link' );
+	var linksByName = {};
+	$links.each( function ( i, elem ) {
+		linksByName[ elem.getAttribute( 'data-mw-comment-name' ) ] = elem;
+	} );
+
+	// If the topic is already marked as auto-subscribed, there's nothing to do.
+	// If the topic is marked as having never been subscribed, check if they are auto-subscribed now.
+	var topicsToCheck = [];
+	var pending = [];
+	for ( var headingName in headingsToUpdate ) {
+		var el = linksByName[ headingName ];
+		var subscribedState = el.hasAttribute( 'data-mw-subscribed' ) ?
+			Number( el.getAttribute( 'data-mw-subscribed' ) ) : null;
+
+		if ( subscribedState === null ) {
+			topicsToCheck.push( headingName );
+			pending.push( el );
+		}
+	}
+	$( pending ).addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+
+	if ( !topicsToCheck.length ) {
+		return;
+	}
+
+	var api = getApi();
+	api.get( {
+		action: 'discussiontoolsgetsubscriptions',
+		commentname: topicsToCheck
+	} ).then( function ( response ) {
+		if ( $.isEmptyObject( response.subscriptions ) ) {
+			// If none of the topics has an auto-subscription yet, wait a moment and check again.
+			// updateSubscriptionStates() method is only called if we're really expecting one to be there.
+			// (There are certainly neater ways to implement this, involving push notifications or at
+			// least long-polling or something. But this is the simplest one!)
+			var wait = $.Deferred();
+			setTimeout( wait.resolve, 5000 );
+			return wait.then( function () {
+				return api.get( {
+					action: 'discussiontoolsgetsubscriptions',
+					commentname: topicsToCheck
+				} );
+			} );
+		}
+		return response;
+	} ).then( function ( response ) {
+		// Update state of each topic for which there is a subscription
+		for ( var subItemName in response.subscriptions ) {
+			var state = response.subscriptions[ subItemName ];
+			updateSubscribeButton( linksByName[ subItemName ], state );
+		}
+		$( pending ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+	}, function () {
+		$( pending ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
 	} );
 }
 
@@ -599,6 +676,41 @@ function init( $container, state ) {
 			} );
 		}
 	} );
+
+	// Check topic subscription states if the user has automatic subscriptions enabled
+	// and has recently edited this page.
+	if ( featuresEnabled.autotopicsub && mw.user.options.get( 'discussiontools-autotopicsub' ) ) {
+		var recentComments = [];
+		var headingsToUpdate = {};
+		if ( state.repliedTo ) {
+			// Edited by using the reply tool or new topic tool. Only check the edited topic.
+			if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
+				recentComments.push( threadItems[ threadItems.length - 1 ] );
+			} else {
+				recentComments.push( threadItemsById[ state.repliedTo ] );
+			}
+		} else if ( mw.config.get( 'wgPostEdit' ) ) {
+			// Edited by using wikitext editor. Check topics with their own comments within last minute.
+			for ( i = 0; i < threadItems.length; i++ ) {
+				if (
+					threadItems[ i ] instanceof CommentItem &&
+					threadItems[ i ].author === mw.user.getName() &&
+					threadItems[ i ].timestamp.isSameOrAfter( moment().subtract( 1, 'minute' ), 'minute' )
+				) {
+					recentComments.push( threadItems[ i ] );
+				}
+			}
+		}
+		for ( i = 0; i < recentComments.length; i++ ) {
+			var headingItem = recentComments[ i ].getHeading();
+			while ( headingItem instanceof HeadingItem && headingItem.headingLevel !== 2 ) {
+				headingItem = headingItem.parent;
+			}
+			// Use names as object keys to deduplicate if there are multiple comments in a topic.
+			headingsToUpdate[ headingItem.name ] = headingItem;
+		}
+		updateSubscriptionStates( $container, headingsToUpdate );
+	}
 
 	// Preload page metadata.
 	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
