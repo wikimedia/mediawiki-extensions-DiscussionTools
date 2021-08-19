@@ -45,7 +45,7 @@ class CommentFormatter {
 
 		// Never add tools twice.
 		// This is required because we try again to add tools to cached content
-		// to support query string or cookie enabling
+		// to support query string enabling.
 		if ( strpos( $text, static::MARKER_COMMENT ) !== false ) {
 			return;
 		}
