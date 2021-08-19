@@ -102,7 +102,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "您已订阅！",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "您将不再收到对于此课题的新评论的通知。",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "您已取消订阅。",
-	"echo-category-title-dt-subscription": "订阅讨论页",
+	"echo-category-title-dt-subscription": "来自订阅讨论页主题的{{PLURAL:$1|评论}}。",
 	"echo-pref-tooltip-dt-subscription": "请在由任何在关于我订阅的讨论页面活动的回复时通知我。",
 	"tag-discussiontools-description": "使用讨论工具进行编辑",
 	"tag-discussiontools-added-comment-description": "一个讨论页面评论在这次编辑中被加入了",
