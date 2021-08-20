@@ -9,6 +9,9 @@ span[ data-mw-comment-start ] {
 	user-select: none;
 	display: none;
 
+	// If a site has text-indent set on content, it would be inherited here and cause excessive padding
+	text-indent: 0;
+
 	.mw-content-ltr & {
 		/* @noflip */
 		margin-left: 0.5em;
