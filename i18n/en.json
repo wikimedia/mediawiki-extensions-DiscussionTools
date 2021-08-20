@@ -11,7 +11,7 @@
 	"discussiontools-emptystate-desc-user": "You can use this talk page to start a discussion with [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] that will be public for others to see. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Learn more about how these pages are used]].",
 	"discussiontools-emptystate-link-talkpages": "mediawikiwiki:Special:MyLanguage/Help:Talk_pages",
 	"discussiontools-emptystate-link-userpage": "mediawikiwiki:Special:MyLanguage/Help:User_page",
-	"discussiontools-emptystate-title": "Start a discussion about [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Start a discussion about [[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Welcome to your talk page",
 	"discussiontools-emptystate-title-user": "Start a discussion with [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-error-comment-conflict": "Your comment could not be saved, because someone else commented at the same time as you. Please try again, or reload the page to view the latest comments.",
