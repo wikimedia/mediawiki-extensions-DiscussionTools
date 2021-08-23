@@ -2,8 +2,9 @@
 
 /* global moment */
 var
-	$pageContainer, linksController,
+	$pageContainer, linksController, lastHighlightComment,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
+	seenAutoTopicSubPopup = !!+mw.user.options.get( 'discussiontools-seenautotopicsubpopup' ),
 	storage = mw.storage.session,
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
@@ -15,7 +16,7 @@ var
 	utils = require( './utils.js' ),
 	STATE_UNSUBSCRIBED = 0,
 	STATE_SUBSCRIBED = 1,
-	// STATE_AUTOSUBSCRIBED = 2,
+	STATE_AUTOSUBSCRIBED = 2,
 	pageDataCache = {};
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
@@ -315,6 +316,100 @@ function initTopicSubscriptions( $container ) {
 	} );
 }
 
+function maybeShowFirstTimeAutoTopicSubPopup() {
+	if ( seenAutoTopicSubPopup ) {
+		return;
+	}
+	seenAutoTopicSubPopup = true;
+	mw.user.options.set( 'discussiontools-seenautotopicsubpopup', '1' );
+	getApi().saveOption( 'discussiontools-seenautotopicsubpopup', '1' );
+
+	var $popupContent, popup;
+
+	if ( !lastHighlightComment ) {
+		return;
+	}
+
+	function close() {
+		popup.$element.removeClass( 'ext-discussiontools-autotopicsubpopup-fadein' );
+		setTimeout( function () {
+			popup.$element.detach();
+		}, 1000 );
+	}
+
+	$popupContent = $( '<div>' )
+		.append(
+			$( '<strong>' )
+				.addClass( 'ext-discussiontools-autotopicsubpopup-title' )
+				.text( mw.msg( 'discussiontools-autotopicsubpopup-title' ) ),
+			$( '<div>' )
+				.addClass( 'ext-discussiontools-autotopicsubpopup-image' ),
+			$( '<div>' )
+				.addClass( 'ext-discussiontools-autotopicsubpopup-body' )
+				.text( mw.msg( 'discussiontools-autotopicsubpopup-body' ) ),
+			$( '<div>' )
+				.addClass( 'ext-discussiontools-autotopicsubpopup-actions' )
+				.append( new OO.ui.ButtonWidget( {
+					label: mw.msg( 'discussiontools-autotopicsubpopup-dismiss' ),
+					flags: [ 'primary', 'progressive' ]
+				} ).on( 'click', close ).$element )
+				.append( new OO.ui.ButtonWidget( {
+					label: mw.msg( 'discussiontools-autotopicsubpopup-preferences' ),
+					href: mw.util.getUrl( 'Special:Preferences#mw-prefsection-editing-discussion' ),
+					framed: false
+				} ).$element )
+		);
+
+	popup = new OO.ui.PopupWidget( {
+		// Styles and dimensions
+		width: '',
+		height: '',
+		anchor: false,
+		autoClose: false,
+		head: false,
+		padded: false,
+		classes: [ 'ext-discussiontools-autotopicsubpopup' ],
+		hideWhenOutOfView: false,
+		// Content
+		$content: $popupContent.contents()
+	} );
+
+	// Like in highlight()
+	lastHighlightComment.getNativeRange().insertNode( popup.$element[ 0 ] );
+	// Pull it outside of headings to avoid silly fonts
+	if ( popup.$element.closest( 'h1, h2, h3, h4, h5, h6' ).length ) {
+		popup.$element.closest( 'h1, h2, h3, h4, h5, h6' ).after( popup.$element );
+	}
+
+	// Disable positioning, the popup is positioned in CSS, above the highlight
+	popup.toggle( true ).toggleClipping( false ).togglePositioning( false );
+
+	// If the page is very short, there might not be enough space above the highlight,
+	// causing the popup to overlap the skin navigation or even be off-screen.
+	// Position it on top of the highlight in that case...
+	// eslint-disable-next-line no-jquery/no-global-selector
+	if ( popup.$popup[ 0 ].getBoundingClientRect().top < $( '.mw-body' )[ 0 ].getBoundingClientRect().top ) {
+		popup.$popup.addClass( 'ext-discussiontools-autotopicsubpopup-overlap' );
+	}
+
+	// Scroll into view, leave some space above to avoid overlapping .postedit-container
+	OO.ui.Element.static.scrollIntoView(
+		popup.$popup[ 0 ],
+		{
+			padding: {
+				// Add padding to avoid overlapping the post-edit notification (above on desktop, below on mobile)
+				top: OO.ui.isMobile() ? 10 : 60,
+				bottom: OO.ui.isMobile() ? 85 : 10
+			},
+			// Specify scrollContainer for compatibility with MobileFrontend.
+			// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
+			scrollContainer: OO.ui.Element.static.getRootScrollableElement( popup.$popup[ 0 ] )
+		}
+	);
+
+	popup.$element.addClass( 'ext-discussiontools-autotopicsubpopup-fadein' );
+}
+
 function updateSubscriptionStates( $container, headingsToUpdate ) {
 	// This method is called when we recently edited this page, and auto-subscriptions might have been
 	// added for some topics. It updates the [subscribe] buttons to reflect the new subscriptions.
@@ -326,6 +421,7 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 	} );
 
 	// If the topic is already marked as auto-subscribed, there's nothing to do.
+	// (Except maybe show the first-time popup.)
 	// If the topic is marked as having never been subscribed, check if they are auto-subscribed now.
 	var topicsToCheck = [];
 	var pending = [];
@@ -334,7 +430,9 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 		var subscribedState = el.hasAttribute( 'data-mw-subscribed' ) ?
 			Number( el.getAttribute( 'data-mw-subscribed' ) ) : null;
 
-		if ( subscribedState === null ) {
+		if ( subscribedState === STATE_AUTOSUBSCRIBED ) {
+			maybeShowFirstTimeAutoTopicSubPopup();
+		} else if ( subscribedState === null ) {
 			topicsToCheck.push( headingName );
 			pending.push( el );
 		}
@@ -370,6 +468,9 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 		for ( var subItemName in response.subscriptions ) {
 			var state = response.subscriptions[ subItemName ];
 			updateSubscribeButton( linksByName[ subItemName ], state );
+			if ( state === STATE_AUTOSUBSCRIBED ) {
+				maybeShowFirstTimeAutoTopicSubPopup();
+			}
 		}
 		$( pending ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
 	}, function () {
@@ -616,6 +717,7 @@ function init( $container, state ) {
 			// Highlight the last comment on the page
 			var lastComment = threadItems[ threadItems.length - 1 ];
 			$highlight = highlight( lastComment );
+			lastHighlightComment = lastComment;
 
 			// If it's the only comment under its heading, highlight the heading too.
 			// (It might not be if the new discussion topic was posted without a title: T272666.)
@@ -625,6 +727,7 @@ function init( $container, state ) {
 				lastComment.parent.replies.length === 1
 			) {
 				$highlight = $highlight.add( highlight( lastComment.parent ) );
+				lastHighlightComment = lastComment.parent;
 			}
 
 			mw.hook( 'postEdit' ).fire( {
@@ -635,6 +738,7 @@ function init( $container, state ) {
 			// Find the comment we replied to, then highlight the last reply
 			var repliedToComment = threadItemsById[ state.repliedTo ];
 			$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
+			lastHighlightComment = repliedToComment.replies[ repliedToComment.replies.length - 1 ];
 
 			if ( OO.ui.isMobile() ) {
 				mw.notify( mw.msg( 'discussiontools-postedit-confirmation-published', mw.user ) );
@@ -655,9 +759,9 @@ function init( $container, state ) {
 				$highlight[ 0 ],
 				{
 					padding: {
-						top: 10,
-						// Add padding on mobile to avoid overlapping the notification
-						bottom: 10 + ( OO.ui.isMobile() ? 75 : 0 )
+						// Add padding to avoid overlapping the post-edit notification (above on desktop, below on mobile)
+						top: OO.ui.isMobile() ? 10 : 60,
+						bottom: OO.ui.isMobile() ? 85 : 10
 					},
 					// Specify scrollContainer for compatibility with MobileFrontend.
 					// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
