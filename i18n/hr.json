@@ -36,6 +36,7 @@
 	"discussiontools-replywidget-summary": "Sažetak",
 	"discussiontools-replywidget-terms-click": "Klikom na \"$1\", slažete se s uvjetima uporabe na ovom wikiju.",
 	"discussiontools-replywidget-transcluded": "Vaš će komentar biti spremljen na [[$1]].",
+	"echo-category-title-dt-subscription": "{{PLURAL:$1|Komentar|Komentare}} pretplaćenih tema na stranicama za razgovore",
 	"tag-discussiontools-description": "Uređivanje uz pomoć alata za raspravu",
 	"tag-discussiontools-edit": "Uredi komentar",
 	"tag-discussiontools-edit-description": "Suradnik je uredio postojeći komentar s alatom za rasprave",

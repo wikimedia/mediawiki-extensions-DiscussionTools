@@ -10,7 +10,7 @@
 	"discussiontools-defaultsummary-reply": "回答",
 	"discussiontools-emptystate-button": "開個新討論",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}}上嘅人可以用呢版向你發佈公開嘅訊息，而你會收到通知。[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|知多啲關於呢版嘅詳情]]。",
-	"discussiontools-emptystate-title": "開個同[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]有關嘅新討論",
+	"discussiontools-emptystate-title": "開個同[[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]有關嘅新討論",
 	"discussiontools-emptystate-title-self": "歡迎嚟到你嘅傾偈版",
 	"discussiontools-emptystate-title-user": "同[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]開個新討論",
 	"discussiontools-error-noswitchtove": "對唔住，轉唔到去即見編輯模式，因為你寫嘅留言度偵測到有<b>$1</b>。 [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations 知多啲]。",

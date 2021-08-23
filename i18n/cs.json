@@ -17,7 +17,7 @@
 	"discussiontools-emptystate-desc": "Tuto diskusní stránku můžete použít k zahájení diskuse s ostatními o tom, jak zlepšit [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Zjistěte více o tom, jak se tyto stránky používají]].",
 	"discussiontools-emptystate-desc-self": "Lidé na {{GRAMMAR:6sg|{{SITENAME}}}} mohou tuto stránku použít k tomu, aby vám napsali veřejnou zprávu, a vy budete upozorněni, až tak učiní. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Další informace o této stránce]].",
 	"discussiontools-emptystate-desc-user": "Tuto diskusní stránku můžete použít k zahájení diskuse s uživatelem [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]], která bude veřejná pro všechny ostatní. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Zjistěte více o tom, jak se tyto stránky používají]].",
-	"discussiontools-emptystate-title": "Zahajte diskusi o [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Zahajte diskusi o [[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Vítejte na své diskusní stránce!",
 	"discussiontools-emptystate-title-user": "Zahajte diskusi s uživatelem [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-error-comment-conflict": "Váš komentář nebylo možné uložit, protože někdo jiný uložil komentář ve stejnou dobu jako vy. Prosím, zkuste to znovu nebo stránku obnovte, aby se vám zobrazily nejnovější komentáře.",

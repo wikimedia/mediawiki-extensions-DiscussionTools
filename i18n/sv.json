@@ -19,7 +19,7 @@
 	"discussiontools-emptystate-desc": "Du kan använda den här diskussionssidan för att starta en diskussion med andra om hur [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] kan förbättras. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Läs mer om hur de här sidorna används]].",
 	"discussiontools-emptystate-desc-self": "Användare på {{SITENAME}} kan använda den här sidan för att skriva meddelanden till dig, och du blir aviserad när de gör det. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Läs mer om den här sidan]].",
 	"discussiontools-emptystate-desc-user": "Du kan använda den här diskussionssidan för att starta en diskussion med [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] som kommer vara öppen för andra att läsa. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Läs mer om hur de här sidorna används]].",
-	"discussiontools-emptystate-title": "Starta en diskussion om [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Starta en diskussion om [[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Välkommen till din diskussionssida",
 	"discussiontools-emptystate-title-user": "Starta en diskussion med [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-error-comment-conflict": "Ditt inlägg kunde inte sparas för att någon annan sparade samtidigt som du. Försök igen, eller ladda om sidan för att se de senaste inläggen.",

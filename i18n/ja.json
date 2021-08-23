@@ -26,7 +26,7 @@
 	"discussiontools-emptystate-desc": "このトークページを利用して[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]に関する議論を行うことができます。[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|このページの使い方に関する詳細はこちらをご覧ください]]。",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}}のユーザーはこのページを利用してあなたへの公開メッセージを送信することができます。メッセージが送信されると通知が届きます。[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|このページの使い方に関する詳細はこちらをご覧ください]]。",
 	"discussiontools-emptystate-desc-user": "このトークページを利用して[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]と公開で話し合いを行うことができます。[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|このページの使い方に関する詳細はこちらをご覧ください]]。",
-	"discussiontools-emptystate-title": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]に関する議論を行う",
+	"discussiontools-emptystate-title": "[[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]に関する議論を行う",
 	"discussiontools-emptystate-title-self": "ここはあなたのトークページです",
 	"discussiontools-emptystate-title-user": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]と話し合いを行う",
 	"discussiontools-error-comment-conflict": "ほかの利用者と同時に返信したため、あなたのコメントは保存できませんでした。もう一度送信するか、このページを再読み込みして新しいコメントを閲覧してください。",

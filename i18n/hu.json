@@ -17,7 +17,7 @@
 	"discussiontools-emptystate-desc": "Ezen a vitalapon indíthatsz megbeszélést másokkal a(z) [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] továbbfejlesztéséről. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Tudj meg többet a vitalapok használatáról.]]",
 	"discussiontools-emptystate-desc-self": "Más {{SITENAME}}-szerkesztők ezen a lapon írhatnak üzenetet neked, amiről értesítést kapsz. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Tudj meg többet a szerkesztővitalapokról.]]",
 	"discussiontools-emptystate-desc-user": "Ezen a vitalapon küldhetsz üzenetet [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] részére. Az itt küldött üzeneteket bárki láthatja. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Tudj meg többet a szerkesztővitalapokról.]]",
-	"discussiontools-emptystate-title": "Megbeszélés indítása a(z) [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] lapról",
+	"discussiontools-emptystate-title": "Megbeszélés indítása a(z) [[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] lapról",
 	"discussiontools-emptystate-title-self": "Üdvözlünk a vitalapodon!",
 	"discussiontools-emptystate-title-user": "Megbeszélés kezdeményezése [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] szerkesztővel",
 	"discussiontools-error-comment-conflict": "Nem sikerült elmenteni a hozzászólásodat, mert valaki veled egyszerre szólt hozzá a témához. Próbáld újra, vagy töltsd újra a lapot a legfrissebb hozzászólások megtekintéséhez.",

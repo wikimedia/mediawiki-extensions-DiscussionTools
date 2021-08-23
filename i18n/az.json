@@ -14,7 +14,7 @@
 	"discussiontools-emptystate-desc": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] səhifəsini inkişaf etdirmək barədə digər istifadəçilərlə müzakirə aparmaq üçün bu müzakirə səhifəsindən istifadə edə bilərsiz. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Bu səhifələrin istifadəsi barədə ətraflı öyrən]].",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}} istifadəçiləri bu səhifəni sizə mesaj yazmaq üçün istifadə edə bilərlər. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Bu səhifə haqqında daha çox öyrən]].",
 	"discussiontools-emptystate-desc-user": "Bu səhifəni [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] ilə müzakirə etmək üçün istifadə edə bilərsiniz. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Bu səhifələrin necə istifadə edildiyi haqqında daha çox öyrənin]].",
-	"discussiontools-emptystate-title": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] haqqında müzakirə başlat",
+	"discussiontools-emptystate-title": "[[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] haqqında müzakirə başlat",
 	"discussiontools-emptystate-title-self": "İstifadəçi səhifənizə xoş gəlmisiniz.",
 	"discussiontools-emptystate-title-user": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] ilə müzakirə başlat",
 	"discussiontools-error-comment-conflict": "Şərhiniz saxlanıla bilmədi, çünki sizinlə eyni vaxtda başqa istifadəçi şərh yazdı. Yenidən cəhd edin və ya son şərhləri görmək üçün səhifəni yenidən yükləyin.",

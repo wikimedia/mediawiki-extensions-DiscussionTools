@@ -11,7 +11,7 @@
 	"discussiontools-defaultsummary-reply": "Atbilde",
 	"discussiontools-desc": "Rīki diskusiju lapu uzlabošanai",
 	"discussiontools-emptystate-button": "Sākt diskusiju",
-	"discussiontools-emptystate-title": "Sāc diskusiju par [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Sāc diskusiju par [[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-user": "Sāc diskusiju ar [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-error-comment-conflict": "Tavu komentāru nevarēja saglabāt, jo kāds cits komentēja tajā pašā laikā kā tu. Lūdzu, mēģini vēlreiz vai pārlādē lapu, lai redzētu jaunākos komentārus.",
 	"discussiontools-error-comment-disappeared": "Lapā nevarēja atrast komentāru, uz ko tu atbildēji. Tas var būt dzēsts vai pārvietots uz citu lapu. Lūdzu, pārlādē lapu un mēģini vēlreiz.",

@@ -18,7 +18,7 @@
 	"discussiontools-emptystate-desc": "Ви можете скористатися цією сторінкою обговорення, щоб розпочати дискусію з іншими про те, як покращити ситуацію [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Дізнайтеся більше про те, як використовуються ці сторінки]].",
 	"discussiontools-emptystate-desc-self": "Люди на сайті {{SITENAME}} можуть використовувати цю сторінку, щоб надсилати вам загальнодоступне повідомлення, і ви отримаєте сповіщення про це. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Дізнайтесь більше про цю сторінку]].",
 	"discussiontools-emptystate-desc-user": "Ви можете скористатися цією сторінкою обговорення, щоб розпочати обговорення з [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]], яке буде загальнодоступним для перегляду іншими. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Дізнайтеся більше про те, як використовуються ці сторінки]].",
-	"discussiontools-emptystate-title": "Розпочати обговорення про [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Розпочати обговорення про [[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Ласкаво просимо на вашу сторінку обговорення",
 	"discussiontools-emptystate-title-user": "Почніть обговорення з [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-error-comment-conflict": "Не вдалося зберегти ваш коментар, бо хтось іще залишив коментар одночасно з вами. Будь ласка, спробуйте ще раз або перезавантажте сторінку, щоб побачити останні коментарі.",

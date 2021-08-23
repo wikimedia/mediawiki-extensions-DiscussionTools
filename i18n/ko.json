@@ -15,7 +15,7 @@
 	"discussiontools-emptystate-button": "토론 시작하기",
 	"discussiontools-emptystate-desc": "이 토론 문서를 사용하여 [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]] 문서를 어떻게 발전시킬지를 다른 사람들과 토론을 시작할 수 있습니다. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|이 문서들의 사용 방법에 관해 더 알아보세요]].",
 	"discussiontools-emptystate-desc-user": "이 토론 문서를 사용하여 [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]님과 토론을 시작할 수 있으며 이 토론은 다른 사용자들에게 공개됩니다. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|이 문서들의 사용 방법에 관해 더 알아보세요]].",
-	"discussiontools-emptystate-title": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]에 관한 토론을 시작하세요",
+	"discussiontools-emptystate-title": "[[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]에 관한 토론을 시작하세요",
 	"discussiontools-emptystate-title-user": "[[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]님과 토론을 시작하세요",
 	"discussiontools-error-comment-conflict": "다른 사용자가 당신과 동시에 의견을 남겼기 때문에 당신의 의견이 저장되지 않았습니다. 다시 시도하거나, 페이지를 새로고침하여 새 의견을 확인해 주세요.",
 	"discussiontools-error-comment-disappeared": "답변할 의견을 문서에서 찾을 수 없습니다. 해당 의견이 삭제되었거나 다른 문서로 옮겨졌을 수 있으므로, 문서를 새로고침하여 다시 시도해 주시기 바랍니다.",

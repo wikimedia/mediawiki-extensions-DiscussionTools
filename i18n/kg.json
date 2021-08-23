@@ -6,7 +6,7 @@
 	},
 	"discussiontools-emptystate-button": "Yantika disolo",
 	"discussiontools-emptystate-desc": "Nge lenda sadila lutiti yai ya masolo sambu na kuyantika disolo ti bantu ya nkaka na yina me tala mutindu ya kutomisa [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Learn more about how these pages are used]].",
-	"discussiontools-emptystate-title": "Yantika disolo mosi ya ke tadila [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Yantika disolo mosi ya ke tadila [[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Kukwisa ya mbote na lutiti na nge ya masolo",
 	"discussiontools-emptystate-title-user": "Yantika disolo ti [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]"
 }

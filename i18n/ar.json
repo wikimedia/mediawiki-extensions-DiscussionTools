@@ -14,7 +14,7 @@
 	"discussiontools-defaultsummary-reply": "ردّ",
 	"discussiontools-desc": "أدوات لتحسين صفحات النقاش.",
 	"discussiontools-emptystate-button": "بَدْء نقاش",
-	"discussiontools-emptystate-title": "البَدْء في نقاش حول [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "البَدْء في نقاش حول [[:{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "مرحبا بك في صفحة النقاش الخاصة بك",
 	"discussiontools-emptystate-title-user": "البَدْء في نقاش مع [[{{ARTICLESPACE}}:{{PAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-error-comment-conflict": "لا يمكن حفظ تعديلك، لأن شخصا آخر قام بالتعليق في الوقت نفسه. من فضلك {{GENDER:|حاول|حاولي}} مرّة أخرى، أو {{GENDER:|أعد|أعيدي}} تحميل الصفحة لمشاهدة آخر التعليقات.",
