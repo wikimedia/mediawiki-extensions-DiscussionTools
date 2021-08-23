@@ -65,6 +65,11 @@ class ParserHooks implements
 		// ParserOption for dtreply was set in onArticleParserOptions
 		if ( $popts->getOption( 'dtreply' ) ) {
 			CommentFormatter::addDiscussionTools( $text );
+			// Always load style modules that hide our extra buttons for users who don't have
+			// DiscussionTools features enabled
+			$parser->getOutput()->addModuleStyles( [
+				'ext.discussionTools.init.styles',
+			] );
 		}
 	}
 
