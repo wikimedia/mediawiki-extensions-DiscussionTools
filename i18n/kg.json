@@ -4,8 +4,10 @@
 			"Cgmbo"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Mvutu",
+	"discussiontools-desc": "Bisadilu sambu na kutomisa balutiti ya masolo.",
 	"discussiontools-emptystate-button": "Yantika disolo",
-	"discussiontools-emptystate-desc": "Nge lenda sadila lutiti yai ya masolo sambu na kuyantika disolo ti bantu ya nkaka na yina me tala mutindu ya kutomisa [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Learn more about how these pages are used]].",
+	"discussiontools-emptystate-desc": "Nge lenda sadila lutiti yai ya masolo sambu na kuyantika disolo ti bantu ya nkaka na yina me tala mutindu ya kutomisa [[:{{ZINAYALUTITIYANTUDIAMBU}}|{{ZINAYALUTITI}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Learn more about how these pages are used]].",
 	"discussiontools-emptystate-title": "Yantika disolo mosi ya ke tadila [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Kukwisa ya mbote na lutiti na nge ya masolo",
 	"discussiontools-emptystate-title-user": "Yantika disolo ti [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]"

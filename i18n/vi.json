@@ -15,7 +15,7 @@
 	"discussiontools-emptystate-desc": "Bạn có thể sử dụng trang này để trò chuyện với người khác về bài viết [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|‎Tìm hiểu thêm về cách sử dụng các trang này‎]].",
 	"discussiontools-emptystate-desc-self": "Người dùng có thể sử dụng {{SITENAME}} để gửi tin nhắn công khai cho bạn và bạn sẽ được gửi thông báo về tin nhắn này. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Learn more about this page]]",
 	"discussiontools-emptystate-desc-user": "Bạn có thể dùng trang thảo luận để bàn luận với [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] và cuộc trò chuyện sẽ ở chế độ công khai. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|‎Tìm hiểu thêm về cách sử dụng các trang này‎]]",
-	"discussiontools-emptystate-title": "Bắt đầu cuộc trò chuyện về [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Bắt đầu cuộc thảo luận về [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "Chào mừng đến trang trò chuyện",
 	"discussiontools-emptystate-title-user": "Bắt đầu cuộc trò chuyện với  [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-error-comment-conflict": "Không thể đăng lời bình luận của bạn vì ai đó cũng bình luận cùng lúc với bạn. Xin hãy thử lại hoặc tải lại trang để xem các lời bình luận mới nhất.",
