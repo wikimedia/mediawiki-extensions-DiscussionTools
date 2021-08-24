@@ -90,4 +90,94 @@ class ThreadItemTest extends IntegrationTestCase {
 		return self::getJson( '../cases/transcluded.json' );
 	}
 
+	/**
+	 * @dataProvider provideGetText
+	 * @covers ::getText
+	 * @covers \MediaWiki\Extension\DiscussionTools\CommentItem::getBodyText
+	 * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange::cloneContents
+	 */
+	public function testGetText(
+		string $name, string $dom, string $expected, string $config, string $data
+	): void {
+		$dom = self::getHtml( $dom );
+		$expectedPath = $expected;
+		$expected = self::getJson( $expected );
+		$config = self::getJson( $config );
+		$data = self::getJson( $data );
+
+		$doc = self::createDocument( $dom );
+		$body = DOMCompat::getBody( $doc );
+
+		$this->setupEnv( $config, $data );
+		$parser = self::createParser( $body, $data );
+		$items = $parser->getThreadItems();
+
+		$output = [];
+		foreach ( $items as $item ) {
+			$output[ $item->getId() ] = CommentUtils::htmlTrim(
+				$item instanceof CommentItem ? $item->getBodyText( true ) : $item->getText()
+			);
+		}
+
+		// Optionally write updated content to the JSON files
+		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
+			self::overwriteJsonFile( $expectedPath, $output );
+		}
+
+		self::assertEquals(
+			$expected,
+			$output,
+			$name
+		);
+	}
+
+	public function provideGetText(): array {
+		return self::getJson( '../cases/getText.json' );
+	}
+
+	/**
+	 * @dataProvider provideGetHTML
+	 * @covers ::getHTML
+	 * @covers \MediaWiki\Extension\DiscussionTools\CommentItem::getBodyHTML
+	 * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange::cloneContents
+	 */
+	public function testGetHTML(
+		string $name, string $dom, string $expected, string $config, string $data
+	): void {
+		$dom = self::getHtml( $dom );
+		$expectedPath = $expected;
+		$expected = self::getJson( $expected );
+		$config = self::getJson( $config );
+		$data = self::getJson( $data );
+
+		$doc = self::createDocument( $dom );
+		$body = DOMCompat::getBody( $doc );
+
+		$this->setupEnv( $config, $data );
+		$parser = self::createParser( $body, $data );
+		$items = $parser->getThreadItems();
+
+		$output = [];
+		foreach ( $items as $item ) {
+			$output[ $item->getId() ] = CommentUtils::htmlTrim(
+				$item instanceof CommentItem ? $item->getBodyHTML( true ) : $item->getHTML()
+			);
+		}
+
+		// Optionally write updated content to the JSON files
+		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
+			self::overwriteJsonFile( $expectedPath, $output );
+		}
+
+		self::assertEquals(
+			$expected,
+			$output,
+			$name
+		);
+	}
+
+	public function provideGetHTML(): array {
+		return self::getJson( '../cases/getHTML.json' );
+	}
+
 }
