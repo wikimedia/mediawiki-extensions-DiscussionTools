@@ -24,6 +24,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Přidat nový komentář jako odpověď na existující komentář.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Přidat novou diskusní sekci a první komentář v ní.",
 	"apihelp-discussiontoolsedit-summary": "Zveřejnit zprávu na diskusní stránce.",
+	"apihelp-discussiontoolssubscribe-param-page": "Stránka, na které se téma zobrazuje",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Název tématu, ke kterému se chcete přihlásit (nebo odhlásit z něj)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True pro odebírání, false pro neodebírání",
 	"apihelp-discussiontoolssubscribe-summary": "Přihlášení (nebo odhlášení) příjmu notifikací o tématu."
 }
