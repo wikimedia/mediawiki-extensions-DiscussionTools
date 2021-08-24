@@ -6,7 +6,6 @@ use ApiBase;
 use ApiMain;
 use MediaWiki\MediaWikiServices;
 use Title;
-use User;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsSubscribe extends ApiBase {
@@ -37,13 +36,9 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 		}
 
 		$user = $this->getUser();
-		if ( !$user || $user->isAnon() ) {
-			// TODO: More specific error message
-			$this->dieWithError(
-				'apierror-mustbeloggedin-generic', 'notloggedin'
-			);
+		if ( !$user->isRegistered() ) {
+			$this->dieWithError( 'apierror-mustbeloggedin-generic', 'notloggedin' );
 		}
-		'@phan-var User $user';
 
 		$params = $this->extractRequestParams();
 		$title = Title::newFromText( $params['page'] );
