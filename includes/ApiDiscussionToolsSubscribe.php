@@ -86,14 +86,12 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 		return [
 			'page' => [
 				ParamValidator::PARAM_REQUIRED => true,
-				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-page',
 			],
 			'token' => [
 				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'commentname' => [
 				ParamValidator::PARAM_REQUIRED => true,
-				ApiBase::PARAM_HELP_MSG => 'apihelp-discussiontoolsedit-param-commentname',
 			],
 			'subscribe' => [
 				ParamValidator::PARAM_TYPE => 'boolean',
