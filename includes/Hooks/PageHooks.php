@@ -19,10 +19,12 @@ use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
+use MediaWiki\User\UserNameUtils;
 use OOUI\ButtonWidget;
 use OutputPage;
 use RequestContext;
 use Skin;
+use SpecialPage;
 use VisualEditorHooks;
 
 class PageHooks implements
@@ -34,11 +36,16 @@ class PageHooks implements
 	/** @var SubscriptionStore */
 	protected $subscriptionStore;
 
+	/** @var UserNameUtils */
+	protected $userNameUtils;
+
 	/**
 	 * @param SubscriptionStore $subscriptionStore
+	 * @param UserNameUtils $userNameUtils
 	 */
-	public function __construct( SubscriptionStore $subscriptionStore ) {
+	public function __construct( SubscriptionStore $subscriptionStore, UserNameUtils $userNameUtils ) {
 		$this->subscriptionStore = $subscriptionStore;
+		$this->userNameUtils = $userNameUtils;
 	}
 
 	/**
@@ -227,30 +234,63 @@ class PageHooks implements
 			Html::openElement( 'div', [ 'class' => "ext-discussiontools-emptystate mw-parser-output noarticletext" ] ) .
 			Html::openElement( 'div', [ 'class' => "ext-discussiontools-emptystate-text" ] )
 		);
-		if ( $title->equals( $output->getUser()->getTalkPage() ) ) {
-			$output->addHTML(
-				Html::rawElement( 'h3', [], $context->msg( 'discussiontools-emptystate-title-self' )->parse() ) .
-				Html::rawElement( 'p', [], $context->msg( 'discussiontools-emptystate-desc-self' )->parse() )
-			);
+		$titleMsg = false;
+		$descMsg = false;
+		$descParams = [];
+		$buttonMsg = 'discussiontools-emptystate-button';
+		if ( $title->getNamespace() == NS_USER_TALK ) {
+			// This is a user talk page
+			$isIP = $this->userNameUtils->isIP( $title->getText() );
+			if ( $title->equals( $output->getUser()->getTalkPage() ) ) {
+				// This is your own user talk page
+				if ( $isIP ) {
+					// You're an IP editor, so this is only *sort of* your talk page
+					$titleMsg = 'discussiontools-emptystate-title-self-anon';
+					$descMsg = 'discussiontools-emptystate-desc-self-anon';
+					$query = $context->getRequest()->getValues();
+					unset( $query['title'] );
+					$descParams = [
+						SpecialPage::getTitleFor( 'CreateAccount' )->getFullURL( [
+							'returnto' => $context->getTitle()->getFullText(),
+							'returntoquery' => wfArrayToCgi( $query ),
+						] ),
+						SpecialPage::getTitleFor( 'Userlogin' )->getFullURL( [
+							'returnto' => $context->getTitle()->getFullText(),
+							'returntoquery' => wfArrayToCgi( $query ),
+						] ),
+					];
+				} else {
+					// You're logged in, this is very much your talk page
+					$titleMsg = 'discussiontools-emptystate-title-self';
+					$descMsg = 'discussiontools-emptystate-desc-self';
+				}
+				$buttonMsg = false;
+			} elseif ( $isIP ) {
+				// This is an IP editor
+				$titleMsg = 'discussiontools-emptystate-title-user-anon';
+				$descMsg = 'discussiontools-emptystate-desc-user-anon';
+			} else {
+				// This is any other user
+				$titleMsg = 'discussiontools-emptystate-title-user';
+				$descMsg = 'discussiontools-emptystate-desc-user';
+			}
 		} else {
-			$titleMsg = $title->getNamespace() == NS_USER_TALK ?
-				'discussiontools-emptystate-title-user' :
-				'discussiontools-emptystate-title';
-			$output->addHTML(
-				Html::rawElement( 'h3', [], $context->msg( $titleMsg )->parse() ) .
-				Html::rawElement( 'p', [],
-					$context->msg(
-						$title->getNamespace() == NS_USER_TALK ?
-							'discussiontools-emptystate-desc-user' :
-							'discussiontools-emptystate-desc'
-					)->parse()
-				) .
-				new ButtonWidget( [
-					'label' => $context->msg( 'discussiontools-emptystate-button' )->text(),
-					'href' => $title->getLocalURL( 'action=edit&section=new' ),
-					'flags' => [ 'primary', 'progressive' ]
-				] )
-			);
+			// This is any other page on which DT is enabled
+			$titleMsg = 'discussiontools-emptystate-title';
+			$descMsg = 'discussiontools-emptystate-desc';
+		}
+		$output->addHTML( Html::rawElement( 'h3', [],
+			$context->msg( $titleMsg )->parse()
+		) );
+		$output->addHTML( Html::rawElement( 'div', [ 'class' => 'plainlinks' ],
+			$context->msg( $descMsg, $descParams )->parseAsBlock()
+		) );
+		if ( $buttonMsg ) {
+			$output->addHTML( new ButtonWidget( [
+				'label' => $context->msg( $buttonMsg )->text(),
+				'href' => $title->getLocalURL( 'action=edit&section=new' ),
+				'flags' => [ 'primary', 'progressive' ]
+			] ) );
 		}
 		$output->addHTML(
 			Html::closeElement( 'div' ) .

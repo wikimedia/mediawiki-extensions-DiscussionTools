@@ -396,7 +396,10 @@
 		},
 		"page": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PageHooks",
-			"services": [ "DiscussionTools.SubscriptionStore" ]
+			"services": [
+				"DiscussionTools.SubscriptionStore",
+				"UserNameUtils"
+			]
 		},
 		"parser": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ParserHooks"
