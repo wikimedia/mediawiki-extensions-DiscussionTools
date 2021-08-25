@@ -40,7 +40,9 @@ class EventDispatcher {
 	private static function getParsedRevision( RevisionRecord $revRecord ): CommentParser {
 		$services = MediaWikiServices::getInstance();
 
-		$pageRecord = $services->getPageStore()->getPageByReference( $revRecord->getPage() );
+		$pageRecord = $services->getPageStore()->getPageByReference( $revRecord->getPage() ) ?:
+			$services->getPageStore()->getPageByReference( $revRecord->getPage(), IDBAccessObject::READ_LATEST );
+
 		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
 
 		// If the $revRecord was fetched from the primary database, this will also fetch the content
