@@ -5,6 +5,7 @@
 			"Meno25",
 			"Michel Bakni",
 			"NEHAOUA",
+			"Shbib Al-Subaie",
 			"Tala Ali",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
@@ -14,6 +15,8 @@
 	"discussiontools-defaultsummary-reply": "ردّ",
 	"discussiontools-desc": "أدوات لتحسين صفحات النقاش.",
 	"discussiontools-emptystate-button": "بَدْء نقاش",
+	"discussiontools-emptystate-desc": "يُمكنك استخدام صفحة النقاش هذه لبدء مناقشة مع الآخرين حول كيفية تطوير وتحسين [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|اعرف المزيد حول كيفية استخدام هذه الصفحات]].",
+	"discussiontools-emptystate-desc-user": "يُمكنك استخدام صفحة النقاش هذه لبدء مناقشة مع [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] وستكون عامةً ليراها الآخرون. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|اعرف المزيد حول كيفية استخدام هذه الصفحات]].",
 	"discussiontools-emptystate-title": "البَدْء في نقاش حول [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]",
 	"discussiontools-emptystate-title-self": "مرحبا بك في صفحة النقاش الخاصة بك",
 	"discussiontools-emptystate-title-user": "البَدْء في نقاش مع [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]",

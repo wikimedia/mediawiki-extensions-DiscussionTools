@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Olve Utne"
+		]
+	},
+	"discussiontools-emptystate-button": "Tjállegåde ságastallamav",
+	"discussiontools-emptystate-title": "Álge ságastallamav [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] birra",
+	"discussiontools-emptystate-title-self": "Burist båhtem duv ságastallambielláj"
+}

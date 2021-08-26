@@ -23,6 +23,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Ajouter un nouveau commentaire en tant que réponse à un commentaire existant.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Ajouter une nouvelle section de discussion et y inclure un premier commentaire.",
 	"apihelp-discussiontoolsedit-summary": "Créer un message sur une page de discussion.",
+	"apihelp-discussiontoolssubscribe-param-page": "Une page sur laquelle le sujet  apparaît",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Nom du sujet auquel s’abonner (ou se désabonner)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Vrai pour s’abonner, faux pour se désinscrire",
 	"apihelp-discussiontoolssubscribe-summary": "S’abonner (ou se désinscrire) pour recevoir des notifications sur un sujet."
 }
