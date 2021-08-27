@@ -14,7 +14,7 @@
 	"discussiontools-desc": "განხილვის გვერდების გასაუმჯობესებელი ხელსაწყოები.",
 	"discussiontools-emptystate-button": "დისკუსიის დაწყება",
 	"discussiontools-emptystate-desc": "ამ განხილვის გვერდის გამოყენება შეგიძლიათ სხვა მომხმარებლებთან დისკუსიისთვის, რათა გააუმჯობესოთ გვერდი [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|გაიგეთ მეტი როგორ გამოიყენება ეს გვერდები]].",
-	"discussiontools-emptystate-title": "დაიწყეთ დისკუსია თემაზე [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "დაიწყეთ დისკუსია თემაზე {{PAGENAME}}",
 	"discussiontools-error-comment-conflict": "თქვენი კომენტარის შენახვა ვერ მოხერხდა, რადგან ამავე დროს სხვამ დატოვა კომენტარი. გთხოვთ, სცადოთ თავიდან, ან გადატვირთეთ გვერდი ბოლო კომენტარების სანახავად.",
 	"discussiontools-error-comment-disappeared": "ვერ მოიძებნა კომენტარი, რომელსაც თქვენ პასუხობთ ამ გვერდზე. შესაძლოა იგი წაიშალა ან სხვა გვერდზე მოხდა მისი გადატანა. გთხოვთ, გადატვირთეთ გვერდი და ხელახლა სცადეთ.",
 	"discussiontools-error-comment-is-transcluded": "„პასუხის“ ბმულს ვერ გამოიყენებთ ამ კომენტარზე საპასუხოდ. ამისათვის,  გთხოვთ, გამოიყენოთ გვერდის სტანდარტული რედაქტორი „$1“-ზე დაწკაპებით.",

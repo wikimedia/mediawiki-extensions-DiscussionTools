@@ -13,7 +13,7 @@
 	"discussiontools-desc": "ئامرازەکان بۆ چارەسەرکردنی پەڕەکانی وتووێژ",
 	"discussiontools-emptystate-button": "دەست بە وتووێژێک بکە",
 	"discussiontools-emptystate-title-self": "بەخێربێیتە پەڕەی وتووێژەکەت",
-	"discussiontools-emptystate-title-user": "بە [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] دەست بە وتووێژێک بکە",
+	"discussiontools-emptystate-title-user": "بە {{PAGENAME}} دەست بە وتووێژێک بکە",
 	"discussiontools-error-comment-conflict": "نەتواندرا لێدوانەکەت پاشەکەوت بکرێت، لەبەر ئەوەی کەسێکی تر لە هەمان کاتدا لێدوانی نووسیوە. تکایە دووبارە هەوڵ بدەرەوە یاخود پەڕەکە خاوێن بکەرەوە بۆ بینینی نوێترین لێدوانەکان.",
 	"discussiontools-error-comment-disappeared": "نەتواندرا ئەو لێدوانە بدۆزرێتەوە کە خەریکی وەڵامدانەوەییت لەسەر پەڕەکە. لەوانەیە سڕدرابێتەوە یان بۆ پەڕەیەکی تر گواسترابێتەوە. تکایە پەڕەکە بار بکەوە و دووبارە ھەوڵ بدەرەوە.",
 	"discussiontools-error-comment-is-transcluded": "ناتواندرێت بەستەری «{{int:discussiontools-replylink}}» بۆ وەڵامدانەوەی ئەم لێدوانە بەکاربێت. بۆ وەڵامدانەوە، تکایە بە کرتەکردن لە «$1» دەستکاریکەری تەواوی پەڕەکە بەکاربێنە.",

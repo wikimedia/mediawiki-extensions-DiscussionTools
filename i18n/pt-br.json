@@ -16,7 +16,7 @@
 	"discussiontools-emptystate-desc": "Você pode usar esta página de discussão para iniciar uma discussão com outras pessoas sobre como melhorar [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Saiba mais sobre como essas páginas são usadas]].",
 	"discussiontools-emptystate-desc-self": "Pessoas em {{SITENAME}} pode usar esta página para postar uma mensagem pública para você e você será notificado quando isso acontecer. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Saiba mais sobre esta página]].",
 	"discussiontools-emptystate-desc-user": "Você pode usar esta página de discussão para iniciar uma discussão com [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] que será público para que outros vejam. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Saiba mais sobre como essas páginas são usadas]].",
-	"discussiontools-emptystate-title": "Comece uma discussão sobre [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]",
+	"discussiontools-emptystate-title": "Comece uma discussão sobre {{PAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bem-vindo à sua página de discussão",
 	"discussiontools-error-comment-conflict": "Não foi possível salvar seu comentário porque outra pessoa comentou ao mesmo tempo que você. Tente novamente ou recarregue a página para ver os comentários mais recentes.",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário ao qual você está respondendo na página. Pode ter sido excluído ou movido para outra página. Por favor, recarregue a página e tente de novo.",
