@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bdijkstra"
+			"Bdijkstra",
+			"McDutchie"
 		]
 	},
+	"discussiontools-emptystate-desc-user": "Op overlegpagina's bespreken we hoe we de inhoud op {{SITENAME}} zo goed mogelijk kunnen maken. Begin een nieuw overleg om verbinding te maken en samen te werken met [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Wat je hier zegt, is openbaar zodat anderen het kunnen zien. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Lees meer]]",
 	"discussiontools-newtopic-missing-title": "Graag een titel toevoegen voor je discussieonderwerp. Als je klikt op \"{{int:discussiontools-replywidget-newtopic}}\", dan zal het onderwerp geen titel hebben.",
 	"discussiontools-postedit-confirmation-topicadded": "Je onderwerp is toegevoegd.",
 	"discussiontools-replywidget-abandon": "Weet je zeker dat je de reactie die je aan het schrijven bent, weg wil doen?",

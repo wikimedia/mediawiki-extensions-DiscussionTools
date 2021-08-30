@@ -20,6 +20,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Scrin un coment noeuv come risposta a 'n coment che 'l gh'è sgiamò.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Sgionta una discussion noeuva e 'l prim coment in la sezzion medesima.",
 	"apihelp-discussiontoolsedit-summary": "Met foeura un messagg in su la pagina de discussion.",
+	"apihelp-discussiontoolssubscribe-param-page": "Una pagina che la gh'ha denter l'argoment",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Nom de l'argoment al qual inscrives (opur desiscrives)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Ver per sotoscriver, fals per anulà la sotoscrizzion",
 	"apihelp-discussiontoolssubscribe-summary": "Inscrives (o desiscrives) per ricever di notifiche sora un argoment."
 }

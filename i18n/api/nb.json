@@ -4,10 +4,24 @@
 			"Jon Harald Søby"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "Kommentar-ID ikke funnet: $1",
+	"apierror-discussiontools-commentid-notfound": "Kommentar med ID-en «$1» ikke funnet.",
+	"apierror-discussiontools-commentname-ambiguous": "Flere kommentarer med navnet «$1» funnet, bruk ID-en i stedet.",
+	"apierror-discussiontools-commentname-notfound": "Kommentar med navnet «$1» ikke funnet.",
+	"apierror-discussiontools-subscription-failed-add": "Kunne ikke abonnere på dette emnet.",
+	"apierror-discussiontools-subscription-failed-remove": "Kunne ikke fjerne abonnement på dette emnet.",
 	"apihelp-discussiontools-param-oldid": "Revisjonstallet som skal brukes (standard er siste revisjon).",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Returner titler på sidene hver kommentar på den gitte siden transkluderes fra.",
 	"apihelp-discussiontools-summary": "Returnerer metadata som kreves for å initialisere diskusjonsverktøyene.",
-	"apihelp-discussiontoolsedit-param-commentid": "Kommentar-ID det skal svares på. Brukes kun når <var>paction</var> er <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID-en til kommentaren det skal svares på. Brukes kun når <var>paction</var> er <var>addcomment</var>. Overstyrer <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Navnet på kommentaren det skal svares på. Brukes kun når <var>paction</var> er <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Innhold som skal postes, som HTML. Kan ikke brukes sammen med <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Brukes kun når <var>paction</var> er <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Innhold som skal postes som wikitekst. Kan ikke brukes sammen med <var>html</var>.",
-	"apihelp-discussiontoolsedit-summary": "Post en beskjed på en diskusjonsside."
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Legg til en ny kommentar som svar på en eksisterende kommentar.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Legg til en ny diskusjonsseksjon og den første kommentaren i den.",
+	"apihelp-discussiontoolsedit-summary": "Post en beskjed på en diskusjonsside.",
+	"apihelp-discussiontoolssubscribe-param-page": "En side emnet vises på",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Navnet på emnet det skal abonneres på (eller abonnement skal fjernes fra)",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True for å abonnere, false for å avslutte abonnement.",
+	"apihelp-discussiontoolssubscribe-summary": "Abonner (eller avslutt abonnement) for å motta varsler om et emne."
 }

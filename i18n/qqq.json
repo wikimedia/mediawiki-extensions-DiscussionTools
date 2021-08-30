@@ -27,7 +27,7 @@
 	"discussiontools-emptystate-title-self": "Heading shown on the user's own empty talk page",
 	"discussiontools-emptystate-title-self-anon": "Heading shown on the user's own empty talk page if they're an IP user",
 	"discussiontools-emptystate-title-user": "Heading shown on empty user talk pages. <code><nowiki>{{PAGENAME}}</nowiki></code> is a user name.\n\n'''Do not translate these magic words in this message:'''\n* <code><nowiki>{{PAGENAME}}</nowiki></code>",
-	"discussiontools-emptystate-title-user-anon": "Heading shown on empty IP user talk pages. <code><nowiki>{{PAGENAME}}</nowiki></code> is a user name.\n\n'''Do not translate these magic words in this message:'''\n* <code><nowiki>{{SUBJECTPAGENAME}}</nowiki></code>\n* <code><nowiki>{{PAGENAME}}</nowiki></code>",
+	"discussiontools-emptystate-title-user-anon": "Heading shown on empty IP user talk pages.",
 	"discussiontools-error-comment-conflict": "Error message of a comment conflict.\n\nSimilar messages:\n* {{msg-mw|visualeditor-editconflict}}\n* {{msg-mw|twocolconflict-split-tour-dialog-message-single-column-view}}\n* {{msg-mw|discussiontools-error-comment-disappeared}}",
 	"discussiontools-error-comment-disappeared": "Error message.",
 	"discussiontools-error-comment-is-transcluded": "Error message. Parameter: $1 – text of the 'Edit'/'Edit source' tab",
