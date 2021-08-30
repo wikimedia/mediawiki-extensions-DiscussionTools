@@ -347,13 +347,13 @@ function highlightTargetComment( parser, event ) {
 
 			if ( !event ) {
 				// Scroll to the topmost comment on initial page load, but not on popstate events
-				var topmostComment = comments[ 0 ];
+				var topmostComment = 0;
 				for ( var i = 1; i < comments.length; i++ ) {
-					if ( highlights[ i ].getBoundingClientRect().top < highlights[ i - 1 ].getBoundingClientRect().top ) {
-						topmostComment = comments[ i ];
+					if ( highlights[ i ].getBoundingClientRect().top < highlights[ topmostComment ].getBoundingClientRect().top ) {
+						topmostComment = i;
 					}
 				}
-				document.getElementById( topmostComment.id ).scrollIntoView();
+				document.getElementById( comments[ topmostComment ].id ).scrollIntoView();
 			}
 		}
 	} );
