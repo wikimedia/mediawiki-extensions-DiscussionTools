@@ -13,6 +13,7 @@
 			"Pacha Tchernof",
 			"Stjn",
 			"Sunpriat",
+			"WhatamIdoing",
 			"Умар"
 		]
 	},
@@ -38,9 +39,9 @@
 	"discussiontools-preference-description": "Включает экспериментальные функции для страниц обсуждений:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Ответить] на комментарии на страницах обсуждений в один клик.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Добавить новую тему] используя встраиваемую форму.\n\nВы можете управлять этими функциями в ваших [[Special:Preferences#mw-prefsection-editing-discussion|настройках]].\n\nИнформация об обновлениях будет публиковаться на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates странице обновлений проекта Talk pages].\n\nПожалуйста обратите внимание:\n* Со временем будут добавлены новые экспериментальные функции.\n* Некоторые из вышеперечисленных функций могут быть пока недоступны в вашей вики.",
 	"discussiontools-preference-label": "Инструменты обсуждения",
 	"discussiontools-preference-newtopictool": "Включить быстрое добавление темы",
-	"discussiontools-preference-newtopictool-help": "Эта функция будет показывать вам встраиваемую форму для добавления новых тем. Вы можете узнать больше об этой функции, прочитав [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary её описание].",
+	"discussiontools-preference-newtopictool-help": "Эта функция будет показывать вам встраиваемую форму для добавления новых тем.",
 	"discussiontools-preference-replytool": "Включить быстрый ответ",
-	"discussiontools-preference-replytool-help": "Эта функция будет показывать вам ссылку чтобы отвечать на комментарии на странице обсуждений в один клик. Вы можете узнать больше об этой функции, прочитав [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary её описание].",
+	"discussiontools-preference-replytool-help": "Эта функция будет показывать вам ссылку чтобы отвечать на комментарии на странице обсуждений в один клик.",
 	"discussiontools-preference-sourcemodetoolbar-help": "Это добавит панель инструментов к исходным режимам функций быстрого ответа и быстрого добавления тем, которая включает в себя ярлыки для проверки связи и добавления ссылок.",
 	"discussiontools-replylink": "ответить",
 	"discussiontools-replywidget-abandon": "Вы уверены, что хотите отменить написанный вами комментарий?",
