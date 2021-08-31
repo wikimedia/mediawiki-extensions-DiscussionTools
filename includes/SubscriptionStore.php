@@ -15,9 +15,6 @@ use Wikimedia\Rdbms\ILBFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IResultWrapper;
 
-// use Wikimedia\ParamValidator\TypeDef\ExpiryDef;
-// use Wikimedia\Timestamp\ConvertibleTimestamp;
-
 class SubscriptionStore {
 	/**
 	 * Maximum number of subscriptions that we can store for each user.
