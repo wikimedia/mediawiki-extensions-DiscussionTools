@@ -45,6 +45,7 @@ ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
 	textInput.$input.attr( 'aria-label', config.placeholder );
 	// Fix jquery.ime position (T255191)
 	textInput.$input.addClass( 'ime-position-inside' );
+
 	return textInput;
 };
 
@@ -89,6 +90,7 @@ ReplyWidgetPlain.prototype.setup = function ( data ) {
 
 	// Events
 	this.replyBodyWidget.connect( this, { change: this.onInputChangeThrottled } );
+	this.replyBodyWidget.$input.on( 'focus', this.emit.bind( this, 'bodyFocus' ) );
 
 	this.replyBodyWidget.setValue( data.value || autosaveValue );
 
