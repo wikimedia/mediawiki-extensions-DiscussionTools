@@ -168,6 +168,17 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
+	 * @return HeadingItem|null Closest heading that can be used for topic subscriptions
+	 */
+	public function getSubscribableHeading(): ?HeadingItem {
+		$heading = $this->getHeading();
+		while ( $heading instanceof HeadingItem && !$heading->isSubscribable() ) {
+			$heading = $heading->getParent();
+		}
+		return $heading instanceof HeadingItem ? $heading : null;
+	}
+
+	/**
 	 * @param ImmutableRange $signatureRange Comment signature range to add
 	 */
 	public function addSignatureRange( ImmutableRange $signatureRange ): void {
