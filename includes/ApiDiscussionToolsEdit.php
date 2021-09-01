@@ -7,7 +7,9 @@ use ApiMain;
 use ApiParsoidTrait;
 use DerivativeContext;
 use DerivativeRequest;
+use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -32,6 +34,14 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		$params = $this->extractRequestParams();
 		$title = Title::newFromText( $params['page'] );
 		$result = null;
+
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+		$autoSubscribe =
+			$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) &&
+			$dtConfig->get( 'DiscussionToolsAutoTopicSubWhere' ) === 'replynewtopic' &&
+			HookUtils::shouldAddAutoSubscription( $this->getUser(), $title );
+		$subscribableHeadingName = null;
+		$subscribableSectionTitle = '';
 
 		if ( !$title ) {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
@@ -109,6 +119,22 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$data = $api->getResult()->getResultData();
 				$result = $data['visualeditoredit'];
+
+				if ( $autoSubscribe && isset( $result['content'] ) ) {
+					// Determining the added topic's name directly is hard (we'd have to ensure we have the
+					// same timestamp, and replicate some CommentParser stuff). Just pull it out of the response.
+					$doc = DOMUtils::parseHTML( $result['content'] );
+					$subscribeLinks = DOMCompat::querySelectorAll(
+						DOMCompat::getBody( $doc ),
+						'.ext-discussiontools-init-section-subscribe-link'
+					);
+					// Iterate to get the last item. (Also works if there are none somehow.)
+					foreach ( $subscribeLinks as $link ) {
+						$subscribableHeadingName = $link->getAttribute( 'data-mw-comment-name' );
+					}
+					$subscribableSectionTitle =
+						MediaWikiServices::getInstance()->getParser()->stripSectionName( $params['sectiontitle'] );
+				}
 
 				break;
 
@@ -192,9 +218,17 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				if ( isset( $params['summary'] ) ) {
 					$summary = $params['summary'];
 				} else {
-					$title = $comment->getHeading()->getLinkableTitle();
-					$summary = ( $title ? '/* ' . $title . ' */ ' : '' ) .
+					$sectionTitle = $comment->getHeading()->getLinkableTitle();
+					$summary = ( $sectionTitle ? '/* ' . $sectionTitle . ' */ ' : '' ) .
 						$this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
+				}
+
+				if ( $autoSubscribe ) {
+					$heading = $comment->getSubscribableHeading();
+					if ( $heading ) {
+						$subscribableHeadingName = $heading->getName();
+						$subscribableSectionTitle = $heading->getLinkableTitle();
+					}
 				}
 
 				$context = new DerivativeContext( $this->getContext() );
@@ -240,6 +274,12 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			// Comment was not actually saved, so for this API, that's an error.
 			// This is probably because changes were inside a transclusion's HTML?
 			$this->dieWithError( 'discussiontools-error-comment-not-saved', 'comment-comment-not-saved' );
+		}
+
+		if ( $autoSubscribe && $subscribableHeadingName ) {
+			$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
+			$subsTitle = $title->createFragmentTarget( $subscribableSectionTitle );
+			$subscriptionStore->addAutoSubscriptionForUser( $this->getUser(), $subsTitle, $subscribableHeadingName );
 		}
 
 		// Check the post was successful (could have been blocked by ConfirmEdit) before

@@ -541,6 +541,10 @@
 			"value": true,
 			"description": "Enable the topic subscription backend. This controls whether the feature can be tried out using the query parameter, and whether the Echo events will be created. Do not enable this unless the database tables exist. Do enable it before making the 'topicsubscription' feature available."
 		},
+		"DiscussionToolsAutoTopicSubWhere": {
+			"value": "replynewtopic",
+			"description": "In what scenarios automatic topic subscriptions are added. Either 'replynewtopic' for only edits made using our reply tool and new topic tool, or 'everywhere' for every edit."
+		},
 		"DiscussionToolsTalkPageParserCacheExpiry": {
 			"value": 0,
 			"description": "Override $wgParserCacheExpireTime for discussion pages, regardless of DiscussionTools enablement."
