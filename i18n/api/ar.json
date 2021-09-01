@@ -23,6 +23,7 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "أضف تعليقاً جديداً للردِّ على تعليقٍ سابقٍ.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "تضيف قسما لنقاش جديد والتعليق الأوّل فيه.",
 	"apihelp-discussiontoolsedit-summary": "نشر رسالة على صفحة نقاش.",
+	"apihelp-discussiontoolssubscribe-param-page": "صفحة يظهر عليها الموضوع",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "صح للاشتراك، خطأ لإلغاء الاشتراك",
 	"apihelp-discussiontoolssubscribe-summary": "اشتراك (أو إلغاء الاشتراك) لتلقّي إخطارات حول موضوع."
 }

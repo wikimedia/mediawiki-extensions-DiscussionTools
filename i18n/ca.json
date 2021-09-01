@@ -3,6 +3,7 @@
 		"authors": [
 			"Alan Mena",
 			"Fitoschido",
+			"Galactic Thrasher",
 			"KRLS",
 			"Matma Rex",
 			"Mguix",
@@ -80,7 +81,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Us heu subscrit!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "No rebreu cap altra notificació de nous comentaris en aquest tema o fil de debat.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Us heu donat de baixa.",
-	"echo-category-title-dt-subscription": "{{PLURAL:$1|Comentari|Comentari}} en temes subscrits de les pàgines de discussió",
+	"echo-category-title-dt-subscription": "{{PLURAL:$1|Comentari|Comentaris}} en temes subscrits de les pàgines de discussió",
 	"echo-pref-tooltip-dt-subscription": "Notifica'm quan algú respon en una pàgina de discussió d'un tema on soc subscrit.",
 	"tag-discussiontools-description": "Edició realitzada a través de DiscussionTools",
 	"tag-discussiontools-edit": "Edita la intervenció",
