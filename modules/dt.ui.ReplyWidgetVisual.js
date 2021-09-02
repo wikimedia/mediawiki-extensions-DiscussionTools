@@ -95,6 +95,10 @@ ReplyWidgetVisual.prototype.setup = function ( data ) {
 	this.replyBodyWidget.setDocument( htmlOrDoc );
 
 	target.once( 'surfaceReady', function () {
+		target.getSurface().getView().connect( widget, {
+			focus: [ 'emit', 'bodyFocus' ]
+		} );
+
 		target.getSurface().getModel().setAutosaveDocId( widget.storagePrefix );
 		target.initAutosave();
 		widget.afterSetup();

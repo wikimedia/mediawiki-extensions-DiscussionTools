@@ -102,7 +102,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 	}
 
 	this.sectionTitle.connect( this, { change: 'onSectionTitleChange' } );
-	this.sectionTitle.$input.on( 'blur', this.onSectionTitleBlur.bind( this ) );
+	this.replyWidget.connect( this, { bodyFocus: 'onBodyFocus' } );
 
 	replyWidget.connect( this, {
 		clear: 'clear',
@@ -247,19 +247,23 @@ NewTopicController.prototype.onSectionTitleChange = function () {
 };
 
 /**
- * Handle 'blur' events for the section title input.
+ * Handle 'focus' events for the description field (regardless of mode).
  *
  * @private
  */
-NewTopicController.prototype.onSectionTitleBlur = function () {
+NewTopicController.prototype.onBodyFocus = function () {
 	var offsetBefore = this.replyWidget.$element.offset().top;
+	var rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
+	var scrollBefore = rootScrollable.scrollTop;
 
 	this.checkSectionTitleValidity();
 
 	var offsetChange = this.replyWidget.$element.offset().top - offsetBefore;
 	// Ensure the rest of the widget doesn't move when the validation
-	// message is triggered by a blur. (T275923)
-	window.scrollBy( 0, offsetChange );
+	// message is triggered by a focus. (T275923)
+	// Browsers sometimes also scroll in response to focus events,
+	// so use the old scrollTop value for consistent results.
+	rootScrollable.scrollTop = scrollBefore + offsetChange;
 };
 
 /**
