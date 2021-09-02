@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
+			"Belteshassar",
 			"Larske",
 			"Lejonel",
 			"LittleGun",
@@ -36,7 +37,7 @@
 	"discussiontools-error-noswitchtove-table": "tabellsyntax",
 	"discussiontools-error-noswitchtove-template": "mallsyntax",
 	"discussiontools-error-noswitchtove-title": "Visuellt läge inaktiverades",
-	"discussiontools-newtopic-missing-title": "Ange gärna en rubrik till ditt diskussionsinlägg. Om du klickar på \"{{int:discussiontools-replywidget-newtopic}}\", kommer inlägget läggas till utan rubrik.",
+	"discussiontools-newtopic-missing-title": "Ange gärna en rubrik till ditt diskussionsinlägg. Om du klickar på \"{{int:discussiontools-replywidget-newtopic}}\", kommer inlägget att läggas till utan rubrik.",
 	"discussiontools-newtopic-placeholder-title": "Rubrik",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarade}} på \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Ett nytt svar|$1 nya svar|100=99+ nya svar}} på \"<strong>$3</strong>\".",
@@ -77,7 +78,7 @@
 	"discussiontools-replywidget-summary": "Sammanfattning",
 	"discussiontools-replywidget-terms-click": "Genom att klicka på \"$1\" godkänner du användarvillkoren för denna wiki.",
 	"discussiontools-replywidget-transcluded": "Din kommentar kommer att sparas på [[$1]].",
-	"discussiontools-topicsubscription-button-subscribe": "prenumerera",
+	"discussiontools-topicsubscription-button-subscribe": "följ",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Prenumerera för få notifikationer om nya kommentarer.",
 	"discussiontools-topicsubscription-button-unsubscribe": "sluta följa",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Avsluta prenumerationen för att inte få fler notifikationer.",
