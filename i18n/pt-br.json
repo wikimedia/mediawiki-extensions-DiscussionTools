@@ -4,6 +4,7 @@
 			"Dr03ramos",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
+			"Fúlvio",
 			"Gustavo.moraes",
 			"He7d3r",
 			"Jhonnatanricardo"
@@ -48,7 +49,7 @@
 	"discussiontools-preference-newtopictool-help": "Isso mostrará um formulário embutido para adicionar novos tópicos.",
 	"discussiontools-preference-replytool": "Ativar resposta rápida",
 	"discussiontools-preference-replytool-help": "Isso mostrará um link para responder aos comentários da página de discussão com um clique.",
-	"discussiontools-preference-sourcemodetoolbar": "Ativar ferramentas experimentais na reposta rápida e tópico rápido adicionando recursos de modos de fonte",
+	"discussiontools-preference-sourcemodetoolbar": "Ativar ferramentas de edição no modo de edição de código",
 	"discussiontools-preference-topicsubscription": "Ativar a inscrição de tópico",
 	"discussiontools-preference-topicsubscription-help": "Isso permitirá que você se inscreva para receber notificações sobre comentários sobre tópicos individuais.",
 	"discussiontools-replylink": "responder",
