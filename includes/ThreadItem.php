@@ -65,10 +65,7 @@ abstract class ThreadItem implements JsonSerializable {
 		$authors = [];
 		$getAuthorSet = static function ( ThreadItem $comment ) use ( &$authors, &$getAuthorSet ) {
 			if ( $comment instanceof CommentItem ) {
-				$author = $comment->getAuthor();
-				if ( $author ) {
-					$authors[ $author ] = true;
-				}
+					$authors[ $comment->getAuthor() ] = true;
 			}
 			// Get the set of authors in the same format from each reply
 			array_map( $getAuthorSet, $comment->getReplies() );
