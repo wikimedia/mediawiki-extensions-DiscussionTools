@@ -179,10 +179,6 @@ class HookUtils {
 			return false;
 		}
 
-		$services = MediaWikiServices::getInstance();
-
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-
 		$props = PageProps::getInstance()->getProperties( $title, 'newsectionlink' );
 		$hasNewSectionLink = isset( $props[ $title->getArticleId() ] );
 
@@ -190,7 +186,7 @@ class HookUtils {
 		// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
 		return $hasNewSectionLink ||
 			// `wantSignatures` includes talk pages
-			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() );
+			MediaWikiServices::getInstance()->getNamespaceInfo()->wantSignatures( $title->getNamespace() );
 			// TODO: Consider not loading if forceHideNewSectionLink is true.
 	}
 
