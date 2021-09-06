@@ -66,7 +66,7 @@
 	"discussiontools-replywidget-feedback": "به اشتراک گذاری بازخورد در خصوص این ویژگی",
 	"discussiontools-replywidget-feedback-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/Replying",
 	"discussiontools-replywidget-loading": "در حال بارگیری...",
-	"discussiontools-replywidget-mention-prefix": "به&nbsp;",
+	"discussiontools-replywidget-mention-prefix": "@",
 	"discussiontools-replywidget-mention-tool-header": "یافتن کاربر: $1",
 	"discussiontools-replywidget-mention-tool-title": "اشاره کردن به یک کاربر",
 	"discussiontools-replywidget-mode-source": "مبدأ",
