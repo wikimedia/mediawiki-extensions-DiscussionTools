@@ -404,18 +404,29 @@
 		"page": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PageHooks",
 			"services": [
+				"ConfigFactory",
 				"DiscussionTools.SubscriptionStore",
-				"UserNameUtils"
+				"UserNameUtils",
+				"UserOptionsLookup"
 			]
 		},
 		"parser": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ParserHooks"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ParserHooks",
+			"services": [
+				"ConfigFactory"
+			]
 		},
 		"preferences": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks",
+			"services": [
+				"ConfigFactory"
+			]
 		},
 		"resourceloader": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ResourceLoaderHooks"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ResourceLoaderHooks",
+			"services": [
+				"ConfigFactory"
+			]
 		},
 		"tags": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\TagHooks"

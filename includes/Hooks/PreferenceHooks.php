@@ -9,6 +9,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
+use ConfigFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use RequestContext;
@@ -17,6 +18,18 @@ use User;
 class PreferenceHooks implements
 	GetPreferencesHook
 {
+	/** @var ConfigFactory */
+	private $configFactory;
+
+	/**
+	 * @param ConfigFactory $configFactory
+	 */
+	public function __construct(
+		ConfigFactory $configFactory
+	) {
+		$this->configFactory = $configFactory;
+	}
+
 	/**
 	 * Handler for the GetPreferences hook, to add and hide user preferences as configured
 	 *
@@ -59,8 +72,7 @@ class PreferenceHooks implements
 			'type' => 'api',
 		];
 
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 		if (
 			!$dtConfig->get( 'DiscussionToolsEnable' ) ||
 			!$dtConfig->get( 'DiscussionToolsBeta' )

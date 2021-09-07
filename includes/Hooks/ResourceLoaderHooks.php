@@ -10,12 +10,24 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Config;
-use MediaWiki\MediaWikiServices;
+use ConfigFactory;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 
 class ResourceLoaderHooks implements
 	ResourceLoaderGetConfigVarsHook
 {
+	/** @var ConfigFactory */
+	private $configFactory;
+
+	/**
+	 * @param ConfigFactory $configFactory
+	 */
+	public function __construct(
+		ConfigFactory $configFactory
+	) {
+		$this->configFactory = $configFactory;
+	}
+
 	/**
 	 * Set static (not request-specific) JS configuration variables
 	 *
@@ -25,8 +37,7 @@ class ResourceLoaderHooks implements
 	 * @param Config $config
 	 */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 
 		$vars['wgDTSchemaEditAttemptStepSamplingRate'] =
 			$dtConfig->get( 'DTSchemaEditAttemptStepSamplingRate' );

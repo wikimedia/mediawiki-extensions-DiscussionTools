@@ -10,6 +10,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
+use ConfigFactory;
 use Html;
 use IContextSource;
 use MediaWiki\Actions\Hook\GetActionNameHook;
@@ -17,9 +18,9 @@ use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserOptionsLookup;
 use OOUI\ButtonWidget;
 use OutputPage;
 use RequestContext;
@@ -33,19 +34,34 @@ class PageHooks implements
 	GetActionNameHook,
 	OutputPageBeforeHTMLHook
 {
+	/** @var ConfigFactory */
+	private $configFactory;
+
 	/** @var SubscriptionStore */
-	protected $subscriptionStore;
+	private $subscriptionStore;
 
 	/** @var UserNameUtils */
-	protected $userNameUtils;
+	private $userNameUtils;
+
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
 
 	/**
+	 * @param ConfigFactory $configFactory
 	 * @param SubscriptionStore $subscriptionStore
 	 * @param UserNameUtils $userNameUtils
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
-	public function __construct( SubscriptionStore $subscriptionStore, UserNameUtils $userNameUtils ) {
+	public function __construct(
+		ConfigFactory $configFactory,
+		SubscriptionStore $subscriptionStore,
+		UserNameUtils $userNameUtils,
+		UserOptionsLookup $userOptionsLookup
+	) {
+		$this->configFactory = $configFactory;
 		$this->subscriptionStore = $subscriptionStore;
 		$this->userNameUtils = $userNameUtils;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -79,9 +95,7 @@ class PageHooks implements
 			}
 			$output->addJsConfigVars( 'wgDiscussionToolsFeaturesEnabled', $enabledVars );
 
-			$services = MediaWikiServices::getInstance();
-			$optionsLookup = $services->getUserOptionsLookup();
-			$editor = $optionsLookup->getOption( $user, 'discussiontools-editmode' );
+			$editor = $this->userOptionsLookup->getOption( $user, 'discussiontools-editmode' );
 			// User has no preferred editor yet
 			// If the user has a preferred editor, this will be evaluated in the client
 			if ( !$editor ) {
@@ -95,9 +109,9 @@ class PageHooks implements
 					$editor
 				);
 			}
-			$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+			$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 			$abstate = $dtConfig->get( 'DiscussionToolsABTest' ) ?
-				$optionsLookup->getOption( $user, 'discussiontools-abtest' ) :
+				$this->userOptionsLookup->getOption( $user, 'discussiontools-abtest' ) :
 				false;
 			if ( $abstate ) {
 				$output->addJsConfigVars(

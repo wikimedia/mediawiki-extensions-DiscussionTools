@@ -10,11 +10,11 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
+use ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Hook\ParserAfterParseHook;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use MediaWiki\Hook\ParserOptionsRegisterHook;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleParserOptionsHook;
 use Parser;
 use ParserOptions;
@@ -26,6 +26,18 @@ class ParserHooks implements
 	ArticleParserOptionsHook,
 	ParserOptionsRegisterHook
 {
+	/** @var ConfigFactory */
+	private $configFactory;
+
+	/**
+	 * @param ConfigFactory $configFactory
+	 */
+	public function __construct(
+		ConfigFactory $configFactory
+	) {
+		$this->configFactory = $configFactory;
+	}
+
 	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserAfterParse
 	 *
@@ -43,8 +55,7 @@ class ParserHooks implements
 		// database for the latest metadata of a page that exists, we check metadata of
 		// the given ParserOutput object only (this runs before the edit is saved).
 		if ( $title->isTalkPage() || $parser->getOutput()->getNewSection() ) {
-			$services = MediaWikiServices::getInstance();
-			$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+			$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 			$talkExpiry = $dtConfig->get( 'DiscussionToolsTalkPageParserCacheExpiry' );
 			// Override parser cache expiry of talk pages (T280605).
 			// Note, this can only shorten it. MediaWiki ignores values higher than the default.
@@ -79,8 +90,7 @@ class ParserHooks implements
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onArticleParserOptions( Article $article, ParserOptions $popts ) {
-		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 
 		if (
 			!$dtConfig->get( 'DiscussionToolsUseParserCache' ) ||
