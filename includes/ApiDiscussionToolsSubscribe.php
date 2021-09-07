@@ -4,33 +4,40 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
-use MediaWiki\MediaWikiServices;
+use ConfigFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsSubscribe extends ApiBase {
 
 	/** @var SubscriptionStore */
-	protected $subscriptionStore;
+	private $subscriptionStore;
+
+	/** @var ConfigFactory */
+	private $configFactory;
 
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
 	 * @param SubscriptionStore $subscriptionStore
+	 * @param ConfigFactory $configFactory
 	 */
-	public function __construct( ApiMain $main, $name, SubscriptionStore $subscriptionStore ) {
+	public function __construct(
+		ApiMain $main,
+		$name,
+		SubscriptionStore $subscriptionStore,
+		ConfigFactory $configFactory
+	) {
 		parent::__construct( $main, $name );
-
 		$this->subscriptionStore = $subscriptionStore;
+		$this->configFactory = $configFactory;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function execute() {
-		// This should probably use dependency injection, but the check is only temporary
-		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 		if ( !$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) ) {
 			$this->dieWithError( [ 'apierror-moduledisabled', $this->getModuleName() ] );
 		}

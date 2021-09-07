@@ -363,11 +363,18 @@
 		"MediaWiki\\Extension\\DiscussionTools\\Tests\\": "tests/phpunit/"
 	},
 	"APIModules": {
-		"discussiontools": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionTools",
-		"discussiontoolsedit": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit",
+		"discussiontools": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionTools"
+		},
+		"discussiontoolsedit": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
+		},
 		"discussiontoolssubscribe": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsSubscribe",
-			"services": [ "DiscussionTools.SubscriptionStore" ]
+			"services": [
+				"DiscussionTools.SubscriptionStore",
+				"ConfigFactory"
+			]
 		}
 	},
 	"Hooks": {
