@@ -138,6 +138,7 @@ class CommentUtils {
 				$node->nodeType === XML_ELEMENT_NODE &&
 				in_array( strtolower( $node->nodeName ), $tagNames )
 			) {
+				// @phan-suppress-next-line PhanTypeMismatchReturn
 				return $node;
 			}
 			$node = $node->parentNode;

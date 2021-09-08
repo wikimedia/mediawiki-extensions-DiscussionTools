@@ -35,7 +35,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 		if ( !$title ) {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
-			return;
 		}
 
 		$this->getErrorFormatter()->setContextTitle( $title );
@@ -158,7 +157,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 					if ( !$comment || !( $comment instanceof CommentItem ) ) {
 						$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
-						return;
 					}
 
 				} else {
@@ -167,10 +165,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 					if ( count( $comments ) > 1 ) {
 						$this->dieWithError( [ 'apierror-discussiontools-commentname-ambiguous', $commentName ] );
-						return;
 					} elseif ( !$comment || !( $comment instanceof CommentItem ) ) {
 						$this->dieWithError( [ 'apierror-discussiontools-commentname-notfound', $commentName ] );
-						return;
 					}
 				}
 

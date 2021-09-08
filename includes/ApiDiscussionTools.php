@@ -31,7 +31,6 @@ class ApiDiscussionTools extends ApiBase {
 
 		if ( !$title ) {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
-			return;
 		}
 
 		switch ( $params['paction'] ) {

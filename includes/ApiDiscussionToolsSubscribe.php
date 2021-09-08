@@ -53,7 +53,6 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 
 		if ( !$title ) {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
-			return;
 		}
 		$commentName = $params['commentname'];
 		$subscribe = $params['subscribe'];

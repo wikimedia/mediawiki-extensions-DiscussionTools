@@ -65,13 +65,17 @@ abstract class ThreadItem implements JsonSerializable {
 		$authors = [];
 		$getAuthorSet = static function ( ThreadItem $comment ) use ( &$authors, &$getAuthorSet ) {
 			if ( $comment instanceof CommentItem ) {
-					$authors[ $comment->getAuthor() ] = true;
+				$authors[ $comment->getAuthor() ] = true;
 			}
 			// Get the set of authors in the same format from each reply
-			array_map( $getAuthorSet, $comment->getReplies() );
+			foreach ( $comment->getReplies() as $reply ) {
+				$getAuthorSet( $reply );
+			}
 		};
 
-		array_map( $getAuthorSet, $this->getReplies() );
+		foreach ( $this->getReplies() as $reply ) {
+			$getAuthorSet( $reply );
+		}
 
 		ksort( $authors );
 		return array_keys( $authors );
