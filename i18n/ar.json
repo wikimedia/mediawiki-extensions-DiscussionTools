@@ -94,6 +94,7 @@
 	"echo-category-title-dt-subscription": "الاشتراك في صفحة نقاش",
 	"echo-pref-tooltip-dt-subscription": "نبّهني بنشاط متابعاتي على صفحات النقاش.",
 	"tag-discussiontools-description": "تعديل تمّ عن طريق أدوات_النقاش",
+	"tag-discussiontools-added-comment-description": "تمت إضافة تعليق على صفحة نقاش في هذا التعديل",
 	"tag-discussiontools-edit": "{{GENDER:|عدّل|عدّلي}} تعليقا",
 	"tag-discussiontools-edit-description": "عدّل مستخدم تعليقا موجودا، باستخدام أدوات_النقاش",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} موضوع جديد]",
