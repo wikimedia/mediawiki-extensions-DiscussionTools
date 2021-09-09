@@ -291,7 +291,7 @@ CommentController.prototype.save = function ( comment, pageName ) {
 		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
 		// could result in duplicate messages if the user retries. (T249071)
 		var defaults = OO.copy( controller.getApi().defaults );
-		defaults.timeout = 0;
+		defaults.ajax.timeout = 0;
 		var noTimeoutApi = new mw.Api( defaults );
 
 		return mw.libs.ve.targetSaver.postContent(
