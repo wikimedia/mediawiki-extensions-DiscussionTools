@@ -1,0 +1,44 @@
+[
+	{
+		"name": "plwiki oldparser",
+		"dom": "cases/pl-big-oldparser/pl-big-oldparser.html",
+		"expected": "../cases/pl-big-oldparser/pl-big-oldparser-getText.json",
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
+	},
+	{
+		"name": "plwiki parsoid",
+		"dom": "cases/pl-big-parsoid/pl-big-parsoid.html",
+		"expected": "../cases/pl-big-parsoid/pl-big-parsoid-getText.json",
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
+	},
+	{
+		"name": "enwiki oldparser",
+		"dom": "cases/en-big-oldparser/en-big-oldparser.html",
+		"expected": "../cases/en-big-oldparser/en-big-oldparser-getText.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "enwiki parsoid",
+		"dom": "cases/en-big-parsoid/en-big-parsoid.html",
+		"expected": "../cases/en-big-parsoid/en-big-parsoid-getText.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "ckbwiki oldparser",
+		"dom": "cases/ckb-big-oldparser/ckb-big-oldparser.html",
+		"expected": "../cases/ckb-big-oldparser/ckb-big-oldparser-getText.json",
+		"config": "../data/ckbwiki-config.json",
+		"data": "../data/ckbwiki-data.json"
+	},
+	{
+		"name": "ckbwiki parsoid",
+		"dom": "cases/ckb-big-parsoid/ckb-big-parsoid.html",
+		"expected": "../cases/ckb-big-parsoid/ckb-big-parsoid-getText.json",
+		"config": "../data/ckbwiki-config.json",
+		"data": "../data/ckbwiki-data.json"
+	}
+]
