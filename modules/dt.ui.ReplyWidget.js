@@ -720,6 +720,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 		this.errorMessage.$element.remove();
 	}
 
+	this.saveInitiated = mw.now();
 	this.setPending( true );
 
 	logger( { action: 'saveIntent' } );
@@ -788,6 +789,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 
 		logger( {
 			action: 'saveFailure',
+			timing: mw.now() - widget.saveInitiated,
 			message: code,
 			type: typeMap[ code ] || 'responseUnknown'
 		} );

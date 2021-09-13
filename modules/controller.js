@@ -701,6 +701,7 @@ function update( data, comment, pageName, replyWidget ) {
 
 		logger( {
 			action: 'saveSuccess',
+			timing: mw.now() - replyWidget.saveInitiated,
 			// eslint-disable-next-line camelcase
 			revision_id: data.newrevid
 		} );
