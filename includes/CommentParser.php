@@ -7,11 +7,11 @@ use DateInterval;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
-use IP;
 use Language;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use Title;
+use Wikimedia\IPUtils;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\DOM\Text;
@@ -566,7 +566,7 @@ class CommentParser {
 		if ( !$username ) {
 			return null;
 		}
-		if ( IP::isIPv6( $username ) ) {
+		if ( IPUtils::isIPv6( $username ) ) {
 			// Bot-generated links "Preceding unsigned comment added by" have non-standard case
 			$username = strtoupper( $username );
 		}
