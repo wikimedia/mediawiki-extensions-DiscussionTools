@@ -10,12 +10,14 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ConfigFactory;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use RequestContext;
 use User;
 
 class PreferenceHooks implements
+	LocalUserCreatedHook,
 	GetPreferencesHook
 {
 	/** @var ConfigFactory */
@@ -125,4 +127,21 @@ class PreferenceHooks implements
 			];
 		}
 	}
+
+	/**
+	 * Handler for LocalUserCreated hook.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
+	 * @param User $user User object for the created user
+	 * @param bool $autocreated Whether this was an auto-creation
+	 * @return bool|void True or no return value to continue or false to abort
+	 */
+	public function onLocalUserCreated( $user, $autocreated ) {
+		// We want new users to be created with email-subscriptions to our notifications enabled
+		if ( !$autocreated ) {
+			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+			$userOptionsManager->setOption( $user, 'echo-subscriptions-email-dt-subscription', true );
+			$user->saveSettings();
+		}
+	}
+
 }

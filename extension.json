@@ -393,6 +393,7 @@
 		"ResourceLoaderGetConfigVars": "resourceloader",
 		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks::onGetBetaFeaturePreferences",
 		"GetPreferences": "preferences",
+		"LocalUserCreated": "preferences",
 		"ChangeTagsListActive": "tags",
 		"ListDefinedTags": "tags",
 		"RecentChange_save": "tags"
