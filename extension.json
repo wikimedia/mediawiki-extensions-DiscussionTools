@@ -7,7 +7,7 @@
 	"descriptionmsg": "discussiontools-desc",
 	"manifest_version": 2,
 	"requires": {
-		"MediaWiki": ">= 1.37.0",
+		"MediaWiki": ">= 1.38.0",
 		"extensions": {
 			"VisualEditor": ">= 0.1.2",
 			"Linter": "*"
