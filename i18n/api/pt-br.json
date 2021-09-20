@@ -22,6 +22,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adicione um novo comentário como resposta a um comentário existente.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adicione uma nova seção de discussão e o primeiro comentário nela.",
 	"apihelp-discussiontoolsedit-summary": "Publique uma mensagem em uma página de discussão.",
+	"apihelp-discussiontoolssubscribe-param-page": "Uma página na qual o tópico aparece",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Nome do tópico para se inscrever (ou cancelar)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True para inscrever-se, false para cancelar inscrição",
 	"apihelp-discussiontoolssubscribe-summary": "Inscreva-se (ou cancele a inscrição) para receber notificações sobre um tópico."
 }

@@ -4,5 +4,6 @@
 			"McDutchie"
 		]
 	},
-	"discussiontools-replywidget-transcluded": "Tu commento essera publicate sur [[$1]]."
+	"discussiontools-replywidget-transcluded": "Tu commento essera publicate sur [[$1]].",
+	"echo-category-title-dt-subscription": "Commento{{PLURAL:$1||s}} sur topicos subscribite de paginas de discussion"
 }

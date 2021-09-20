@@ -3,6 +3,7 @@
 		"authors": [
 			"Choodyam",
 			"Derugon",
+			"DreZhsh",
 			"Eneelk",
 			"Framawiki",
 			"Gomoko",
@@ -59,7 +60,7 @@
 	"discussiontools-preference-newtopictool-help": "Cela vous affichera un formulaire intégré pour ajouter de nouveaux sujets.",
 	"discussiontools-preference-replytool": "Activer la réponse rapide",
 	"discussiontools-preference-replytool-help": "Cela vous affichera un lien pour répondre aux commentaires de la page de discussion en un clic.",
-	"discussiontools-preference-sourcemodetoolbar": "Activer les outils e modification en mode source",
+	"discussiontools-preference-sourcemodetoolbar": "Activer les outils de modification en mode source",
 	"discussiontools-preference-sourcemodetoolbar-help": "Cela ajoutera une barre d’outils à la réponse rapide et au sujet rapide, ajoutant les modes source des fonctionnalités qui incluent des raccourcis pour tester et ajouter des liens.",
 	"discussiontools-preference-topicsubscription": "Activer l’abonnement pour le sujet",
 	"discussiontools-preference-topicsubscription-help": "Cela vous permettra de vous inscrire pour recevoir des notifications sur les commentaires sur des sujets individuels.",
