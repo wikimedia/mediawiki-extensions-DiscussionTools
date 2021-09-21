@@ -229,6 +229,8 @@ function getCheckboxesPromise( pageName, oldId ) {
 		// Only show the watch checkbox for now
 		if ( 'wpWatchthis' in data.checkboxesDef ) {
 			checkboxesDef.wpWatchthis = data.checkboxesDef.wpWatchthis;
+			// Override the label with a more verbose one to distinguish this from topic subscriptions (T290712)
+			checkboxesDef.wpWatchthis[ 'label-message' ] = 'discussiontools-replywidget-watchthis';
 		}
 		return mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
 			return mw.libs.ve.targetLoader.createCheckboxFields( checkboxesDef );
