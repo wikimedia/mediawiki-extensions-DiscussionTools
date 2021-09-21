@@ -1078,6 +1078,9 @@ class CommentParser {
 	 * @return string
 	 */
 	private function computeId( ThreadItem $threadItem ): string {
+		// When changing the algorithm below, copy the old version into computeLegacyId()
+		// for compatibility with cached data.
+
 		$id = null;
 
 		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
@@ -1137,55 +1140,11 @@ class CommentParser {
 	 * @return string|null
 	 */
 	private function computeLegacyId( ThreadItem $threadItem ): ?string {
-		$id = null;
+		// When we change the algorithm in computeId(), the old version should be copied below
+		// for compatibility with cached data.
 
-		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
-			// The range points to the root note, using it like below results in silly values
-			$id = 'h|';
-		} elseif ( $threadItem instanceof HeadingItem ) {
-			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItem->getRange()->startContainer )['node'];
-			$id = 'h|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
-		} elseif ( $threadItem instanceof CommentItem ) {
-			$id = 'c|' . $this->truncateForId( $threadItem->getAuthor() ) .
-				'|' . $threadItem->getTimestamp();
-		} else {
-			throw new MWException( 'Unknown ThreadItem type' );
-		}
-
-		// If there would be multiple comments with the same ID (i.e. the user left multiple comments
-		// in one edit, or within a minute), add the parent ID to disambiguate them.
-		$threadItemParent = $threadItem->getParent();
-		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
-			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItemParent->getRange()->startContainer )['node'];
-			$id .= '|' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
-		} elseif ( $threadItemParent instanceof CommentItem ) {
-			$id .= '|' . $this->truncateForId( $threadItemParent->getAuthor() ) .
-				'|' . $threadItemParent->getTimestamp();
-		}
-
-		if ( $threadItem instanceof HeadingItem ) {
-			// To avoid old threads re-appearing on popular pages when someone uses a vague title
-			// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
-			// include the oldest timestamp in the thread (i.e. date the thread was started) in the
-			// heading ID.
-			$oldestComment = $this->getThreadStartComment( $threadItem );
-			if ( $oldestComment ) {
-				$id .= '|' . $oldestComment->getTimestamp();
-			}
-		}
-
-		if ( isset( $this->threadItemsById[$id] ) && $this->threadItemsById[$id] !== $threadItem ) {
-			// Well, that's tough
-			$threadItem->addWarning( 'Duplicate comment legacy ID' );
-			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
-			$number = 1;
-			while ( isset( $this->threadItemsById["$id|$number"] ) ) {
-				$number++;
-			}
-			$id = "$id|$number";
-		}
-
-		return $id;
+		// Currently not needed.
+		return null;
 	}
 
 	/**
