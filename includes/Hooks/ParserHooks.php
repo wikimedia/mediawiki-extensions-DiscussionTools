@@ -77,6 +77,10 @@ class ParserHooks implements
 			return;
 		}
 
+		if ( $parser->getOptions()->getInterfaceMessage() || $parser->getOptions()->getIsPreview() ) {
+			return;
+		}
+
 		// Always apply the DOM transform if DiscussionTools are available for this page,
 		// to allow linking to individual comments from Echo 'mention' and 'edit-user-talk'
 		// notifications (T253082, T281590), and to reduce parser cache fragmentation (T279864).
