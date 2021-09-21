@@ -122,12 +122,7 @@ class PageHooks implements
 		}
 
 		// Replace the action=edit&section=new form with the new topic tool.
-		if (
-			HookUtils::shouldUseNewTopicTool( $output->getContext() ) &&
-			// unless we got here via a redlink, in which case we want to allow the empty
-			// state to be displayed:
-			$req->getVal( 'redlink' ) !== '1'
-		) {
+		if ( HookUtils::shouldOpenNewTopicTool( $output->getContext() ) ) {
 			$output->addJsConfigVars( 'wgDiscussionToolsStartNewTopicTool', true );
 
 			// For no-JS compatibility, redirect to the old new section editor if JS is unavailable.
@@ -200,7 +195,10 @@ class PageHooks implements
 	 * @return void This hook must not abort, it must return no value
 	 */
 	public function onGetActionName( IContextSource $context, string &$action ): void {
-		if ( $action === 'edit' && HookUtils::shouldUseNewTopicTool( $context ) ) {
+		if ( $action === 'edit' && (
+			HookUtils::shouldOpenNewTopicTool( $context ) ||
+			HookUtils::shouldDisplayEmptyState( $context )
+		) ) {
 			$action = 'view';
 		}
 	}
@@ -214,21 +212,16 @@ class PageHooks implements
 	 */
 	public function onBeforeDisplayNoArticleText( $article ) {
 		// We want to override the empty state for articles on which we would be enabled
-		$title = $article->getTitle();
-		$oldid = $article->getOldID();
-		if ( $oldid || $title->hasSourceText() ) {
-			// The default display will probably be useful here, so leave it.
-			return true;
-		}
 		$context = $article->getContext();
-		$output = $context->getOutput();
-		if ( !HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) || !$title->isTalkPage() ) {
+		if ( !HookUtils::shouldDisplayEmptyState( $context ) ) {
 			// Our empty states are all about using the new topic tool, but
 			// expect to be on a talk page, so fall back if it's not
 			// available or if we're in a non-talk namespace that still has
 			// DT features enabled
 			return true;
 		}
+
+		$output = $context->getOutput();
 		$output->enableOOUI();
 		$output->enableClientCache( false );
 
@@ -252,6 +245,7 @@ class PageHooks implements
 		$descMsg = false;
 		$descParams = [];
 		$buttonMsg = 'discussiontools-emptystate-button';
+		$title = $context->getTitle();
 		if ( $title->getNamespace() == NS_USER_TALK ) {
 			// This is a user talk page
 			$isIP = $this->userNameUtils->isIP( $title->getText() );

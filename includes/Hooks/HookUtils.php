@@ -257,25 +257,54 @@ class HookUtils {
 	 * @param IContextSource $context
 	 * @return bool
 	 */
-	public static function shouldUseNewTopicTool( IContextSource $context ): bool {
+	public static function shouldOpenNewTopicTool( IContextSource $context ): bool {
 		$req = $context->getRequest();
 		$out = $context->getOutput();
 
 		return (
 			// ?title=...&action=edit&section=new
-			// ?title=...&action=edit&redlink=1
 			// ?title=...&veaction=editsource&section=new
 			( $req->getVal( 'action' ) === 'edit' || $req->getVal( 'veaction' ) === 'editsource' ) &&
-			( $req->getVal( 'section' ) === 'new' || (
-				// a redlink for an existing page will get redirected to the regular view, so we don't want
-				// to let our empty state take it over
-				$req->getVal( 'redlink' ) === '1' && !$context->getTitle()->exists()
-			) ) &&
+			$req->getVal( 'section' ) === 'new' &&
 			// Adding a new topic with preloaded text is not supported yet (T269310)
 			!(
 				$req->getVal( 'editintro' ) || $req->getVal( 'preload' ) ||
 				$req->getVal( 'preloadparams' ) || $req->getVal( 'preloadtitle' )
 			) &&
+			// User has new topic tool enabled (and not using &dtenable=0)
+			self::isFeatureEnabledForOutput( $out, self::NEWTOPICTOOL )
+		);
+	}
+
+	/**
+	 * Check if this page view should display the empty state for talk pages that don't exist.
+	 *
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function shouldDisplayEmptyState( IContextSource $context ): bool {
+		$req = $context->getRequest();
+		$out = $context->getOutput();
+		$title = $context->getTitle();
+
+		return (
+			(
+				// When following a red link from another page (but not when clicking the 'Edit' tab)
+				( $req->getVal( 'action' ) === 'edit' && $req->getVal( 'redlink' ) === '1' ) ||
+				// When the new topic tool will be opened (usually when clicking the 'Add topic' tab)
+				self::shouldOpenNewTopicTool( $context ) ||
+				// In read mode (accessible for non-existent pages by clicking 'Cancel' in editor)
+				$req->getVal( 'action', 'view' ) === 'view'
+			) &&
+			// Duh
+			!$title->exists() &&
+			// Only in talk namespaces, not including other namespaces that isAvailableForTitle() allows
+			$title->isTalkPage() &&
+			// The default display will probably be more useful for...
+			// ...Permanent links to revisions of pages which have been deleted
+			$req->getIntOrNull( 'oldid' ) === null &&
+			// ...Non-existent pages with default content, e.g. in 'MediaWiki:' namespace
+			!$title->hasSourceText() &&
 			// User has new topic tool enabled (and not using &dtenable=0)
 			self::isFeatureEnabledForOutput( $out, self::NEWTOPICTOOL )
 		);
