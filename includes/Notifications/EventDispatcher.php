@@ -211,19 +211,8 @@ class EventDispatcher {
 			if ( $newComment->getAuthor() !== $user->getName() ) {
 				continue;
 			}
-			$heading = $newComment->getHeading();
-			// Find a level 2 heading, because the interface doesn't allow subscribing to other headings.
-			// (T286736)
-			while ( $heading instanceof HeadingItem && $heading->getHeadingLevel() !== 2 ) {
-				$heading = $heading->getParent();
-			}
-			if ( !( $heading instanceof HeadingItem ) ) {
-				continue;
-			}
-			// Check if the name corresponds to a section that contain no comments (only sub-sections).
-			// The interface doesn't allow subscribing to them either, because they can't be distinguished
-			// from each other. (T285796)
-			if ( $heading->getName() === 'h-' ) {
+			$heading = $newComment->getSubscribableHeading();
+			if ( !$heading ) {
 				continue;
 			}
 			$events[] = [
