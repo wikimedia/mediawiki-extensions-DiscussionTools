@@ -18,6 +18,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Fügt einen neuen Kommentar als Antwort auf einen vorhandenen Kommentar hinzu.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Fügt einen neuen Diskussionsabschnitt und den ersten Kommentar darin hinzu.",
 	"apihelp-discussiontoolsedit-summary": "Veröffentlichen einer Nachricht auf einer Diskussionsseite.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Namen der zu prüfenden Themen",
+	"apihelp-discussiontoolsgetsubscriptions-summary": "Ermittelt den Abonnementstatus der angegebenen Themen.",
 	"apihelp-discussiontoolssubscribe-param-page": "Eine Seite, auf der das Thema erscheint",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Name des Themas, das abonniert (oder abbestellt) werden soll",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true zum Abonnieren, false zum Abbestellen",
