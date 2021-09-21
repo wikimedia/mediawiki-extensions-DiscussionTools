@@ -81,6 +81,15 @@ class SubscriptionItem {
 	}
 
 	/**
+	 * Get the subscription status of this entry.
+	 *
+	 * @return int One of SubscriptionStore::STATE_* constants
+	 */
+	public function getState(): int {
+		return $this->state;
+	}
+
+	/**
 	 * Check if the notification is muted
 	 *
 	 * @return bool
