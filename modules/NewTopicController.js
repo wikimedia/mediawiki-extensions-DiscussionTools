@@ -205,6 +205,13 @@ NewTopicController.prototype.getApiQuery = function ( comment, pageName, checkbo
 		dttags: tags.join( ',' )
 	} );
 
+	// Allow MediaWiki to generate the summary if it wasn't modified by the user. This avoids
+	// inconsistencies in how wiki markup is stripped from section titles when they're used in
+	// automatic summaries. (T275178)
+	if ( data.summary === this.generateSummary( this.sectionTitle.getValue() ) ) {
+		delete data.summary;
+	}
+
 	return data;
 };
 
