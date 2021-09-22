@@ -21,6 +21,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "הוספת הערה חדשה להערה קיימת.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "הוספת פרק דיון חדש ותגובה חדשה בתוכו.",
 	"apihelp-discussiontoolsedit-summary": "שליחת הודעה בדף שיחה.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "שמות הנושאים לבדוק",
+	"apihelp-discussiontoolsgetsubscriptions-summary": "קבלת מצב המעקב של הנושאים הנתונים.",
 	"apihelp-discussiontoolssubscribe-param-page": "הדף שהנושא מופיע בו",
 	"apihelp-discussiontoolssubscribe-param-commentname": "שם הנושא שהמשתמש רוצה לעקוב אחריו (או להפסיק לעקוב אחריו)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true בשביל להירשם, false בשביל לבטל רישום",

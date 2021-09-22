@@ -20,6 +20,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adaugă un comentariu nou ca un răspuns la un comentariu existent.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adaugă o secțiune de discuție nouă și primul comentariu în ea.",
 	"apihelp-discussiontoolsedit-summary": "Publică un mesaj pe o pagină de discuție.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Numele subiectelor de verificat",
+	"apihelp-discussiontoolsgetsubscriptions-summary": "Obține stările de abonare ale subiectelor date.",
 	"apihelp-discussiontoolssubscribe-param-page": "O pagină pe care apare subiectul",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Numele subiectului la care să vă abonați (sau de la care să vă dezabonați)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Adevărat pentru abonare, fals pentru dezabonare.",
