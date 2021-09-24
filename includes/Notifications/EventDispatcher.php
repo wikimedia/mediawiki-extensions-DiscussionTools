@@ -190,10 +190,34 @@ class EventDispatcher {
 		}
 
 		$mentionedUsers = [];
-		foreach ( $events as $event ) {
+		foreach ( $events as &$event ) {
 			if ( $event['type'] === 'mention' || $event['type'] === 'mention-summary' ) {
-				// Array is keyed by user id so we can do a simple array merge
+				// Save mentioned users in our events, so that we can exclude them from our notification,
+				// to avoid duplicate notifications for a single comment.
+				// Array is keyed by user id so we can do a simple array merge.
 				$mentionedUsers += $event['extra']['mentioned-users'];
+			}
+
+			if ( count( $addedComments ) === 1 ) {
+				// If this edit was a new user talk message according to Echo,
+				// and we also found exactly one new comment,
+				// add some extra information to the edit-user-talk event.
+				if ( $event['type'] === 'edit-user-talk' ) {
+					$event['extra'] += [
+						'comment-id' => $addedComments[0]->getId(),
+						'comment-name' => $addedComments[0]->getName(),
+						'content' => $addedComments[0]->getBodyText( true ),
+					];
+				}
+
+				// Similarly for mentions.
+				// We don't handle 'content' in this case, as Echo makes its own snippets.
+				if ( $event['type'] === 'mention' ) {
+					$event['extra'] += [
+						'comment-id' => $addedComments[0]->getId(),
+						'comment-name' => $addedComments[0]->getName(),
+					];
+				}
 			}
 		}
 

@@ -9,18 +9,18 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
-use EchoDiscussionParser;
 use EchoEvent;
 use EchoEventPresentationModel;
 use EchoPresentationModelSection;
 use Language;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Revision\RevisionRecord;
 use Message;
 use RawMessage;
 use User;
 
 class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
+
+	use DiscussionToolsEventTrait;
 
 	/**
 	 * @var EchoPresentationModelSection
@@ -54,7 +54,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	 */
 	public function getPrimaryLink() {
 		return [
-			'url' => $this->getCommentLink(),
+			'url' => $this->getCommentLink() ?: $this->event->getTitle()->getFullURL(),
 			'label' => $this->msg( 'discussiontools-notification-subscribed-new-comment-view' )->text()
 		];
 	}
@@ -106,50 +106,6 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 		if ( !$this->isBundled() ) {
 			return new RawMessage( '$1', [ Message::plaintextParam( $this->getContentSnippet() ) ] );
 		}
-	}
-
-	/**
-	 * Get a link to the individual comment, if available.
-	 *
-	 * @return string Full URL linking to the comment
-	 */
-	protected function getCommentLink() {
-		$title = $this->event->getTitle();
-		if ( !$this->userCan( RevisionRecord::DELETED_TEXT ) ) {
-			return $title->getFullURL();
-		}
-		if ( !$this->isBundled() ) {
-			// For a single-comment notification, make a pretty(ish) direct link to the comment.
-			// The browser scrolls and we highlight it client-side.
-			$id = $this->event->getExtraParam( 'comment-id' );
-			return $title->createFragmentTarget( $id )->getFullURL();
-		} else {
-			// For a multi-comment notification, we can't make a direct link, because we don't know
-			// which comment appears first on the page; the best we can do is a link to the section.
-			// We handle both scrolling and highlighting client-side, using the ugly parameter
-			// listing all comments.
-			$id = $this->event->getExtraParam( 'section-title' );
-			$bundledIds = [];
-			$bundledIds[] = $this->event->getExtraParam( 'comment-id' );
-			foreach ( $this->getBundledEvents() as $event ) {
-				$bundledIds[] = $event->getExtraParam( 'comment-id' );
-			}
-			$params = [ 'dtnewcomments' => implode( '|', $bundledIds ) ];
-			return $title->createFragmentTarget( $id )->getFullURL( $params );
-		}
-	}
-
-	/**
-	 * Get a snippet of the individual comment, if available.
-	 *
-	 * @return string The snippet, as plain text (may be empty)
-	 */
-	protected function getContentSnippet() {
-		if ( !$this->userCan( RevisionRecord::DELETED_TEXT ) ) {
-			return '';
-		}
-		$content = $this->event->getExtraParam( 'content' );
-		return $this->language->truncateForVisual( $content, EchoDiscussionParser::DEFAULT_SNIPPET_LENGTH );
 	}
 
 	/**

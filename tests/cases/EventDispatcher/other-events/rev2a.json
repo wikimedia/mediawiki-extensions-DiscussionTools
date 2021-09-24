@@ -7,7 +7,10 @@
 			"minoredit": false,
 			"section-title": "C",
 			"section-text": "D.",
-			"target-page": 0
+			"target-page": 0,
+			"comment-id": "c-Y-2020-01-01T00:02:00.000Z-C",
+			"comment-name": "c-Y-2020-01-01T00:02:00.000Z",
+			"content": "D."
 		},
 		"agent": []
 	},
