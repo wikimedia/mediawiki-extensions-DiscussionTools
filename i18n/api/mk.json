@@ -20,6 +20,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Додај нов коментар како одговор на постоечки.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Додај нов разговорен оддел и првиот коментар во него.",
 	"apihelp-discussiontoolsedit-summary": "Напишете порака на разговорната страница.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Називи на темите за проверка",
+	"apihelp-discussiontoolsgetsubscriptions-summary": "Дај ги претплатните статуси на дадените теми.",
 	"apihelp-discussiontoolssubscribe-param-page": "Страницата на која се јавува темата",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Име на темата на која се претплаќате (или отпишувате)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True за претплата, false за отпис",
