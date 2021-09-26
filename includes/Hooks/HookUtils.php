@@ -15,7 +15,6 @@ use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
-use PageProps;
 use RequestContext;
 use Title;
 
@@ -179,14 +178,16 @@ class HookUtils {
 			return false;
 		}
 
-		$props = PageProps::getInstance()->getProperties( $title, 'newsectionlink' );
+		$services = MediaWikiServices::getInstance();
+
+		$props = $services->getPageProps()->getProperties( $title, 'newsectionlink' );
 		$hasNewSectionLink = isset( $props[ $title->getArticleId() ] );
 
 		// Check that the page supports discussions.
 		// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
 		return $hasNewSectionLink ||
 			// `wantSignatures` includes talk pages
-			MediaWikiServices::getInstance()->getNamespaceInfo()->wantSignatures( $title->getNamespace() );
+			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() );
 			// TODO: Consider not loading if forceHideNewSectionLink is true.
 	}
 
