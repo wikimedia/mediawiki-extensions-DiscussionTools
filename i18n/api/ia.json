@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "Commento con ID '$1' non trovate.",
+	"apierror-discussiontools-commentname-ambiguous": "Plure commentos con nomine '$1' trovate. Usa ID in vice.",
+	"apierror-discussiontools-commentname-notfound": "Commento con nomine '$1' non trovate.",
+	"apierror-discussiontools-subscription-failed-add": "Non poteva subscriber a iste topico.",
+	"apierror-discussiontools-subscription-failed-remove": "Non poteva cancellar subscription a iste topico.",
+	"apihelp-discussiontools-param-oldid": "Le numero del version a usar (predefinite le ultime version).",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Retorna titulos de paginas ab le quales cata commento sur le pagina date es transcludite.",
+	"apihelp-discussiontools-summary": "Retorna metadatos requirite pro initialisar le instrumentos de discussion.",
+	"apihelp-discussiontoolsedit-param-commentid": "ID del commento al qual responder. Solmente usate quando <var>paction</var> es <var>addcomment</var>. Supplanta <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Nomine del commento al qual responder. Solmente usate quando <var>paction</var> es <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Contento a publicar, in formato HTML. Non pote esser usate insimul a <var>wikitext</var>."
+}
