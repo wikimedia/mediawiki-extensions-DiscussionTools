@@ -160,14 +160,14 @@ class PageHooks implements
 	 */
 	public function onOutputPageBeforeHTML( $output, &$text ) {
 		$lang = $output->getLanguage();
-		// Check after the parser cache if tools need to be added for
-		// non-cacheable reasons (i.e. query string).
-		// The addDiscussionTools method is responsible for ensuring that
-		// tools aren't added twice.
-		foreach ( CommentFormatter::USE_WITH_FEATURES as $feature ) {
-			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
-				CommentFormatter::addDiscussionTools( $text );
-				break;
+
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
+		if ( !$dtConfig->get( 'DiscussionToolsUseParserCache' ) ) {
+			foreach ( CommentFormatter::USE_WITH_FEATURES as $feature ) {
+				if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
+					CommentFormatter::addDiscussionTools( $text );
+					break;
+				}
 			}
 		}
 

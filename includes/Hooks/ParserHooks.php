@@ -87,7 +87,9 @@ class ParserHooks implements
 		// The extra buttons are hidden in CSS (ext.discussionTools.init.styles module) when
 		// the user doesn't have DiscussionTools features enabled.
 		if ( HookUtils::isAvailableForTitle( $parser->getTitle() ) ) {
-			CommentFormatter::addDiscussionTools( $text );
+			// This modifies $text
+			CommentFormatter::addDiscussionTools( $text, $parser->getOutput() );
+
 			$parser->getOutput()->addModuleStyles( [
 				'ext.discussionTools.init.styles',
 			] );
