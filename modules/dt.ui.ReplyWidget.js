@@ -784,8 +784,8 @@ ReplyWidget.prototype.onReplyClick = function () {
 		// Log more precise error codes, mw.Api just gives us 'http' in all of these cases
 		if ( data.textStatus === 'timeout' || data.textStatus === 'abort' || data.textStatus === 'parsererror' ) {
 			code = data.textStatus;
-		} else {
-			code = 'http-' + ( ( data.xhr && data.xhr.status ) || 0 );
+		} else if ( data.xhr ) {
+			code = 'http-' + ( data.xhr.status || 0 );
 		}
 
 		logger( {
