@@ -74,6 +74,7 @@
 	"discussiontools-replywidget-summary": "Rezumat",
 	"discussiontools-replywidget-terms-click": "Prin apăsarea „$1”, sunteți de acord cu termenii de utilizare pentru acest wiki.",
 	"discussiontools-replywidget-transcluded": "Comentariul dvs. va fi salvat la [[$1]].",
+	"discussiontools-replywidget-watchthis": "Adăugați-vă această pagină la [[Special:Watchlist|lista de urmărire]]",
 	"discussiontools-topicsubscription-button-subscribe": "abonare",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Abonați-vă pentru a primi notificări despre comentarii noi.",
 	"discussiontools-topicsubscription-button-unsubscribe": "dezabonare",

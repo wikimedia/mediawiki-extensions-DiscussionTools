@@ -80,6 +80,7 @@
 	"discussiontools-replywidget-summary": "Zusammenfassung",
 	"discussiontools-replywidget-terms-click": "Durch Klicken auf „$1“ stimmst du den Nutzungsbedingungen für dieses Wiki zu.",
 	"discussiontools-replywidget-transcluded": "Dein Kommentar wird auf [[$1]] gespeichert.",
+	"discussiontools-replywidget-watchthis": "Füge diese Seite zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzu",
 	"discussiontools-topicsubscription-button-subscribe": "abonnieren",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Abonnieren, um Benachrichtigungen über neue Kommentare zu erhalten.",
 	"discussiontools-topicsubscription-button-unsubscribe": "abbestellen",
