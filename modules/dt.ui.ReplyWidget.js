@@ -155,11 +155,22 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 			mw.message( 'discussiontools-replywidget-transcluded', this.pageName ).parseDom()
 		) );
 	}
-	this.$footer.append(
-		$( '<p>' ).addClass( 'plainlinks' ).append(
-			mw.message( 'discussiontools-replywidget-terms-click', this.replyButtonLabel ).parseDom()
-		),
-		$( '<p>' ).append(
+	var $footerLinks = $( '<ul>' ).addClass( 'ext-discussiontools-ui-replyWidget-footer-links' );
+	if ( !mw.user.isAnon() ) {
+		$footerLinks.append(
+			$( '<li>' ).append(
+				$( '<a>' )
+					.attr( {
+						href: mw.util.getUrl( 'Special:Preferences#mw-prefsection-editing-discussion' ),
+						target: '_blank',
+						rel: 'noopener'
+					} )
+					.text( mw.msg( 'discussiontools-replywidget-preferences' ) )
+			)
+		);
+	}
+	$footerLinks.append(
+		$( '<li>' ).append(
 			$( '<a>' )
 				.attr( {
 					href: this.isNewTopic ?
@@ -170,6 +181,12 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 				} )
 				.text( mw.msg( 'discussiontools-replywidget-feedback' ) )
 		)
+	);
+	this.$footer.append(
+		$( '<p>' ).addClass( 'plainlinks' ).append(
+			mw.message( 'discussiontools-replywidget-terms-click', this.replyButtonLabel ).parseDom()
+		),
+		$footerLinks
 	);
 	this.$actionsWrapper.append( this.$footer, this.$actions );
 
