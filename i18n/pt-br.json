@@ -79,6 +79,7 @@
 	"discussiontools-replywidget-summary": "Sumário",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-replywidget-transcluded": "Seu comentário será salvo em [[$1]].",
+	"discussiontools-replywidget-watchthis": "Adicione esta página a sua [[Special:Watchlist|lista de páginas vigiadas]]",
 	"discussiontools-topicsubscription-button-subscribe": "inscrever-se",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Inscreva-se para receber notificações sobre novos comentários.",
 	"discussiontools-topicsubscription-button-unsubscribe": "cancelar inscrição",

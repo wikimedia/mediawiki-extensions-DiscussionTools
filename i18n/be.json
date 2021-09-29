@@ -62,6 +62,8 @@
 	"discussiontools-replywidget-terms-click": "Націскаючы \"$1\", вы згаджаецеся з умовамі выкарыстання гэтай вікі.",
 	"discussiontools-replywidget-transcluded": "Ваш каментарый будзе захаваны на [[$1]].",
 	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-topicsubscription-button-subscribe": "падпісацца",
+	"discussiontools-topicsubscription-button-subscribe-tooltip": "Падпішыцеся на атрыманне апавяшэнняў пра новыя каментарыі.",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Вы атрымаеце апавяшчэнні пра новыя каментарыі ў гэтай тэме.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Падпісаны",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вы больш не будзеце атрымліваць апавяшчэнні пра новыя каментарыі ў гэтай тэме.",

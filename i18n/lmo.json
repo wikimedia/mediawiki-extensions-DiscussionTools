@@ -72,6 +72,7 @@
 	"discussiontools-replywidget-summary": "Riassont del coment",
 	"discussiontools-replywidget-terms-click": "A clicà \"$1\", te acetet i condizzion de utilizazzion de quell wiki chì.",
 	"discussiontools-replywidget-transcluded": "El to coment el sarà salvad in [[$1]].",
+	"discussiontools-replywidget-watchthis": "Sgionta quasta pagina chì a la [[Special:Watchlist|lista di pagine che te tegnet d'oeugg]]",
 	"discussiontools-topicsubscription-button-subscribe": "inscrives",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Inscrives per ricever di notifiche sora i coment noeuv.",
 	"discussiontools-topicsubscription-button-unsubscribe": "disiscrives",

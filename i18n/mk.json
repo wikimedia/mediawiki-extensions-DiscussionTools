@@ -74,6 +74,7 @@
 	"discussiontools-replywidget-summary": "Опис",
 	"discussiontools-replywidget-terms-click": "Стискајќи на „$1“ се согласувате со условите на употреба на ова вики.",
 	"discussiontools-replywidget-transcluded": "Вашиот коментар ќе биде зачуван во [[$1]].",
+	"discussiontools-replywidget-watchthis": "Додајте ја страницава во [[Special:Watchlist|набљудуваните]]",
 	"discussiontools-topicsubscription-button-subscribe": "претплати се",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Претплатете се за да добивање известувања за нови коментари.",
 	"discussiontools-topicsubscription-button-unsubscribe": "отпиши се",

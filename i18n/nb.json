@@ -76,6 +76,7 @@
 	"discussiontools-replywidget-summary": "Sammendrag",
 	"discussiontools-replywidget-terms-click": "Ved å trykke på «$1» samtykker du i bruksvilkårene til denne wikien.",
 	"discussiontools-replywidget-transcluded": "Kommentaren din blir lagret på [[$1]].",
+	"discussiontools-replywidget-watchthis": "Legg denne siden til din [[Special:Watchlist|overvåkningsliste]]",
 	"discussiontools-topicsubscription-button-subscribe": "abonner",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Abonner for å motta varsler om nye kommentarer.",
 	"discussiontools-topicsubscription-button-unsubscribe": "avslutt abonnement",
