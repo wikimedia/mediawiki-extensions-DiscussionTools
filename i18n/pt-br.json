@@ -7,7 +7,8 @@
 			"Fúlvio",
 			"Gustavo.moraes",
 			"He7d3r",
-			"Jhonnatanricardo"
+			"Jhonnatanricardo",
+			"Matma Rex"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
@@ -42,7 +43,7 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Ver comentário",
 	"discussiontools-postedit-confirmation-published": "Seu comentário foi publicado.",
 	"discussiontools-postedit-confirmation-topicadded": "Seu tópico foi adicionado.",
-	"discussiontools-preference-description": "Ativa recursos experimentais da página de discussão:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Responder] para comentar nas páginas de discussão sobre em um clique.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Adicionar novos tópicos] usando um formulário embutido.\n\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Receber notificações] quando novos comentários são adicionados nas seções em que você se inscreveu.\n\nVocê pode personalizar esses recursos em suas [[Special:Preferences#mw-prefsection-editing-discussion|preferências]].\n\nAs atualizações serão postadas na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates páginas de discussão página de atualizações do projeto].\n\nObserve:\n* Com o tempo, novos recursos experimentais serão adicionados.\n* Alguns dos recursos acima podem não estar disponíveis na sua wiki ainda.",
+	"discussiontools-preference-description": "Ativa recursos experimentais da página de discussão:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Responder] para comentar nas páginas de discussão sobre em um clique.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Adicionar novos tópicos] usando um formulário embutido.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Receber notificações] quando novos comentários são adicionados nas seções em que você se inscreveu.\n\nVocê pode personalizar esses recursos em suas [[Special:Preferences#mw-prefsection-editing-discussion|preferências]].\n\nAs atualizações serão postadas na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates páginas de discussão página de atualizações do projeto].\n\nObserve:\n* Com o tempo, novos recursos experimentais serão adicionados.\n* Alguns dos recursos acima podem não estar disponíveis na sua wiki ainda.",
 	"discussiontools-preference-label": "Ferramentas de discussão",
 	"discussiontools-preference-summary": "Você pode aprender mais sobre esses recursos lendo o [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary resumo de recursos].",
 	"discussiontools-preference-newtopictool": "Habilitar adição rápida de tópicos",
