@@ -50,7 +50,13 @@ ReplyLinksController.prototype.onReplyLinkClick = function ( e ) {
 	}
 	e.preventDefault();
 
-	this.emit( 'link-click', $( e.target ).data( 'mw-comment' ).id, $( e.target ) );
+	// Browser plugins (such as Google Translate) may add extra tags inside
+	// the link, so find the containing link tag with the data we need.
+	var $link = $( e.target ).closest( 'a[data-mw-comment]' );
+	if ( !$link.length ) {
+		return;
+	}
+	this.emit( 'link-click', $link.data( 'mw-comment' ).id, $link );
 };
 
 ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
