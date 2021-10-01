@@ -22,6 +22,9 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Új komment küldése egy meglévő kommentre való válaszként.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Új megbeszélés-szakasz hozzáadása, a benne lévő első kommentel együtt.",
 	"apihelp-discussiontoolsedit-summary": "Üzenet elküldése egy vitalapra.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Az ellenőrizendő témák címei",
+	"apihelp-discussiontoolsgetsubscriptions-summary": "Adott témák feliratkozási állapotának lekérdezése.",
+	"apihelp-discussiontoolssubscribe-param-page": "Lap, amin a téma megjelenik",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Igaz a feliratkozáshoz, hamis a leiratkozáshoz",
 	"apihelp-discussiontoolssubscribe-summary": "Feliratkozás (vagy leiratkozás) egy adott téma értesítéseiről."
 }

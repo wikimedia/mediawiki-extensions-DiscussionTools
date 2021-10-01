@@ -3,6 +3,7 @@
 		"authors": [
 			"Cwtiyar",
 			"Ed g2s",
+			"Halbast",
 			"Matma Rex",
 			"Épine",
 			"ئارام بکر"
@@ -14,7 +15,7 @@
 	"discussiontools-emptystate-button": "دەست بە وتووێژێک بکە",
 	"discussiontools-emptystate-title": "وتووێژێک لەسەر {{PAGENAME}} دەست پێ بکە",
 	"discussiontools-emptystate-title-self": "بەخێربێیتە پەڕەی وتووێژەکەت",
-	"discussiontools-emptystate-title-self-anon": "بەخێربێیتە ئەم پەڕەی وتووێژە",
+	"discussiontools-emptystate-title-self-anon": "بەخێربێیت بۆ ئەم پەڕەی وتووێژە",
 	"discussiontools-emptystate-title-user": "بە {{PAGENAME}} دەست بە وتووێژێک بکە",
 	"discussiontools-emptystate-title-user-anon": "بەخێربێیتە ئەم پەڕەی وتووێژە",
 	"discussiontools-error-comment-conflict": "نەتواندرا لێدوانەکەت پاشەکەوت بکرێت، لەبەر ئەوەی کەسێکی تر لە هەمان کاتدا لێدوانی نووسیوە. تکایە دووبارە هەوڵ بدەرەوە یاخود پەڕەکە خاوێن بکەرەوە بۆ بینینی نوێترین لێدوانەکان.",
