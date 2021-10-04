@@ -96,6 +96,7 @@
 	"echo-category-title-dt-subscription": "Vitalapi {{PLURAL:$1|feliratkozás|feliratkozások}}",
 	"echo-pref-tooltip-dt-subscription": "Értesítést kérek, amikor valaki hozzászól egy olyan vitalapi témában, amire feliratkoztam.",
 	"tag-discussiontools-description": "A DiscussionToolszal végzett szerkesztés",
+	"tag-discussiontools-added-comment-description": "Vitalapi megjegyzést tartalmazó szerkesztés",
 	"tag-discussiontools-edit": "Hozzászólás szerkesztése",
 	"tag-discussiontools-edit-description": "A felhasználó egy meglévő hozzászólást szerkesztett a DiscussionToolszal",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Új téma]",

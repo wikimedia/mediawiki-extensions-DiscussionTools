@@ -86,7 +86,7 @@
 	"discussiontools-replywidget-summary": "Короткий опис",
 	"discussiontools-replywidget-terms-click": "Натискаючи «$1», Ви погоджуєтесь із умовами використання цієї вікі.",
 	"discussiontools-replywidget-transcluded": "Ваш коментар буде збережено на сторінці [[$1]].",
-	"discussiontools-replywidget-watchthis": "Додайте цю сторінку до свого [[Special:Watchlist|списку перегляду]]",
+	"discussiontools-replywidget-watchthis": "Додати цю сторінку до свого [[Special:Watchlist|списку спостереження]]",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicsubscription-button-subscribe": "підписатись",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Підписатися, щоб отримувати сповіщення про нові коментарі.",

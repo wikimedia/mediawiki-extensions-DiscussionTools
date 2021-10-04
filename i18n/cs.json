@@ -93,7 +93,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Přihlásili jste se k odběru!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Už nebudete dostávat oznámení o nových komentářích v tomto tématu.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Odhlásili jste se z odběru.",
-	"echo-category-title-dt-subscription": "Diskusní stránky\n{{PLURAL:$1|odběr|odběry|odběrů}}",
+	"echo-category-title-dt-subscription": "{{PLURAL:$1|odběr diskusní stránky|odběry diskusních stránek}}",
 	"echo-pref-tooltip-dt-subscription": "Upozorněte mě, když někdo přidá nový komentář v tématu, které odebírám.",
 	"tag-discussiontools-description": "Editace provedená pomocí Diskusních nástrojů",
 	"tag-discussiontools-added-comment-description": "V této editaci byl přidán komentář na diskusní stránku",
