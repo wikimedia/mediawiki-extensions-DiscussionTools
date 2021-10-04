@@ -15,9 +15,11 @@ use ExtensionRegistry;
 use ILanguageConverter;
 use Language;
 use MediaWiki\MediaWikiServices;
+use MessageLocalizer;
 use ResourceLoaderContext;
 use ResourceLoaderFileModule;
 use ResourceLoaderModule;
+use Title;
 
 class Data {
 	/**
@@ -235,6 +237,70 @@ class Data {
 				return wfMessage( $key )->inContentLanguage()->text();
 			}, $messagesKeys )
 		);
+	}
+
+	/**
+	 * Return information about terms-of-use messages.
+	 *
+	 * @param MessageLocalizer $context
+	 * @param Config $config
+	 * @return array Map from internal name to array of parameters for MessageLocalizer::msg()
+	 */
+	private static function getTermsOfUseMessages(
+		MessageLocalizer $context, Config $config
+	): array {
+		$messages = [
+			'reply' => [ 'discussiontools-replywidget-terms-click',
+				$context->msg( 'discussiontools-replywidget-reply' )->text() ],
+			'newtopic' => [ 'discussiontools-replywidget-terms-click',
+				$context->msg( 'discussiontools-replywidget-newtopic' )->text() ],
+		];
+
+		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+		$hookContainer->run( 'DiscussionToolsTermsOfUseMessages', [ &$messages, $context, $config ] );
+
+		return $messages;
+	}
+
+	/**
+	 * Return parsed terms-of-use messages, for use in a ResourceLoader module.
+	 *
+	 * @param MessageLocalizer $context
+	 * @param Config $config
+	 * @return array
+	 */
+	public static function getTermsOfUseMessagesParsed(
+		MessageLocalizer $context, Config $config
+	): array {
+		$messages = self::getTermsOfUseMessages( $context, $config );
+		foreach ( $messages as &$msg ) {
+			$msg = $context->msg( ...$msg )->parse();
+		}
+		return $messages;
+	}
+
+	/**
+	 * Return information about terms-of-use messages, for use in a ResourceLoader module as
+	 * 'versionCallback'. This is to avoid calling the parser from version invalidation code.
+	 *
+	 * @param MessageLocalizer $context
+	 * @param Config $config
+	 * @return array
+	 */
+	public static function getTermsOfUseMessagesVersion(
+		MessageLocalizer $context, Config $config
+	): array {
+		$messages = self::getTermsOfUseMessages( $context, $config );
+		foreach ( $messages as &$msg ) {
+			$message = $context->msg( ...$msg );
+			$msg = [
+				// Include the text of the message, in case the canonical translation changes
+				$message->plain(),
+				// Include the page touched time, in case the on-wiki override is invalidated
+				Title::makeTitle( NS_MEDIAWIKI, ucfirst( $message->getKey() ) )->getTouched(),
+			];
+		}
+		return $messages;
 	}
 
 	/**

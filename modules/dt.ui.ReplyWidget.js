@@ -4,6 +4,7 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 	logger = require( 'ext.discussionTools.init' ).logger,
 	ModeTabSelectWidget = require( './ModeTabSelectWidget.js' ),
 	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),
+	licenseMessages = require( './licenseMessages.json' ),
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	enable2017Wikitext = featuresEnabled.sourcemodetoolbar;
 
@@ -183,8 +184,8 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 		)
 	);
 	this.$footer.append(
-		$( '<p>' ).addClass( 'plainlinks' ).append(
-			mw.message( 'discussiontools-replywidget-terms-click', this.replyButtonLabel ).parseDom()
+		$( '<p>' ).addClass( 'plainlinks' ).html(
+			this.isNewTopic ? licenseMessages.newtopic : licenseMessages.reply
 		),
 		$footerLinks
 	);
