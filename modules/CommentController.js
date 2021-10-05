@@ -148,7 +148,12 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 
 		// On first load, add a placeholder list item
 		commentController.newListItem = modifier.addListItem( comment );
-		$( commentController.newListItem ).text( mw.msg( 'discussiontools-replywidget-loading' ) );
+		$( commentController.newListItem ).append(
+			// Microsoft Edge's built-in translation feature replaces the entire element when it finishes
+			// translating it, which often happens after our interface has loaded, clobbering it, unless
+			// we wrap this loading message in another element.
+			$( '<span>' ).text( mw.msg( 'discussiontools-replywidget-loading' ) )
+		);
 	}
 
 	commentController.replyWidgetPromise.then( function ( replyWidget ) {
