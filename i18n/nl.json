@@ -76,7 +76,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "U bent nu geabonneerd!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "U zult geen meldingen meer ontvangen van nieuwe reacties in dit overleg-gedeelte.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "U hebt het abonnement opgezegd.",
-	"echo-category-title-dt-subscription": "{{PLURAL:$1|Reactie|Reacties}} op geabonneerde overlegpagina-onderwerpen",
+	"echo-category-title-dt-subscription": "Overlegpagina-abonnement{{PLURAL:$1||en}}",
 	"tag-discussiontools-description": "Bewerking gemaakt met DiscussionTools",
 	"tag-discussiontools-edit": "Reactie bewerkt",
 	"tag-discussiontools-edit-description": "De gebruiker heeft een bestaande bericht bewerkt met DiscussionTools",

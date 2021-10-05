@@ -4,6 +4,7 @@
 			"Abijeet Patro",
 			"Shypoetess",
 			"गोपाल",
+			"पदाति",
 			"संजीव कुमार"
 		]
 	},
@@ -20,6 +21,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "विषय त्यागें",
 	"discussiontools-replywidget-cancel": "रद्द करें",
 	"discussiontools-replywidget-feedback": "इस सुविधा के बारे में प्रतिक्रिया साझा करें",
+	"discussiontools-replywidget-preferences": "पसंद",
 	"discussiontools-replywidget-reply": "उत्तर दें",
 	"discussiontools-replywidget-summary": "सारांश",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} उत्तर]"

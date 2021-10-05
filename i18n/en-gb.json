@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ed g2s"
+		]
+	},
+	"discussiontools-preference-description": "* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Reply] to talk page comments in one click.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Add new topics] using an inline form.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Receive notifications] when new comments are added in sections you have subscribed to.\n\nYou can customise these features in your [[Special:Preferences#mw-prefsection-editing-discussion|preferences]].\n\nUpdates will be posted on the [https://www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].\n\nPlease note:\n* Over time, new experimental features will be added.\n* Some of the features above may not be available at your wiki yet."
+}
