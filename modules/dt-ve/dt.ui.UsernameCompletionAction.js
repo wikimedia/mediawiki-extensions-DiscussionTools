@@ -91,19 +91,17 @@ MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 };
 
 MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
-	var capitalizedInput = input.length > 0 && input[ 0 ].toUpperCase() + input.slice( 1 ),
-		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, input ),
+	var title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, input ),
 		validatedInput = title ? input : '',
 		action = this;
 
 	this.api.abort(); // Abort all unfinished API requests
 	var apiPromise;
-	if ( capitalizedInput && !this.searchedPrefixes[ capitalizedInput ] ) {
+	if ( input.length > 0 && !this.searchedPrefixes[ input ] ) {
 		apiPromise = this.api.get( {
 			action: 'query',
 			list: 'allusers',
-			// Prefix of list=allusers is case sensitive, and users are stored in the DB capitalized, so:
-			auprefix: capitalizedInput,
+			auprefix: input,
 			aulimit: this.limit
 		} ).then( function ( response ) {
 			var suggestions = response.query.allusers.map( function ( user ) {
@@ -117,7 +115,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			action.remoteUsers.push.apply( action.remoteUsers, suggestions );
 			action.remoteUsers.sort();
 
-			action.searchedPrefixes[ capitalizedInput ] = true;
+			action.searchedPrefixes[ input ] = true;
 		} );
 	} else {
 		apiPromise = ve.createDeferred().resolve().promise();
@@ -130,7 +128,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 		return action.filterSuggestionsForInput(
 			action.localUsers
 				// Show no remote users if no input provided
-				.concat( capitalizedInput ? action.remoteUsers : [] ),
+				.concat( input.length > 0 ? action.remoteUsers : [] ),
 			// TODO: Consider showing IP users
 			// * Change link to Special:Contributions/<ip> (localised)
 			// * Let users know that mentioning an IP will not create a notification?
