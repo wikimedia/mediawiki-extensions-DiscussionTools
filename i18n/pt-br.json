@@ -95,7 +95,7 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Você não receberá mais notificações sobre novos comentários neste tópico",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Cancelar inscrição.",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Comentário|Comentários}} nos tópicos da página de discussão assinada",
-	"echo-pref-tooltip-dt-subscription": "Notifique-me quando alguém responder em qualquer página de discussão em um tópico que eu esteja inscrito.",
+	"echo-pref-tooltip-dt-subscription": "Notifique-me quando alguém postar um novo comentário em um tópico no qual estou inscrito.",
 	"tag-discussiontools-description": "Edição feita usando DiscussionTools",
 	"tag-discussiontools-added-comment-description": "Um comentário na página de discussão foi adicionado nesta edição",
 	"tag-discussiontools-edit": "Editar comentário",

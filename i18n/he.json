@@ -29,7 +29,7 @@
 	"discussiontools-error-comment-is-transcluded-title": "הקישור \"{{int:discussiontools-replylink}}\" אינו יכול לשמש כדי להשיב להערה הזאת כי הוא נטען מדף אחר. כדי להשיב נא לעבור לכאן: [[$1]].",
 	"discussiontools-error-comment-not-saved": "לא היה אפשר לפרסם את ההערה שלך בגרסה האחרונה של הדף. כדי לראות את השינויים האחרונים, יש להעתיק את טיוטת ההערה שלך ואז להשתמש בדפדפן שלך כדי לרענן את הדף.",
 	"discussiontools-error-lint": "לא ניתן להשיב לתגובות בדף הזה בשל שגיאה בקוד הוויקי. ניתן ללמוד על השגיאה הזאת על־ידי [$1 קריאת התיעוד], לבקש עזרה על־ידי [$2 פרסום בקשה כאן], או לתקן את השגיאה על־ידי [$3 פתיחת הדף כולו במצב עריכה].",
-	"discussiontools-error-noswitchtove": "סליחה, מעבר למצב עריכה חזותית כבוי כי זוהה <b>$1</b> בתגובה שכתבת. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations מידע נוסף].",
+	"discussiontools-error-noswitchtove": "מצטערים, מעבר למצב עריכה חזותית כבוי כי זוהה <b>$1</b> בתגובה שכתבת. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations מידע נוסף].",
 	"discussiontools-error-noswitchtove-extension": "תחביר של הרחבה או הערת שוליים",
 	"discussiontools-error-noswitchtove-table": "תחביר טבלה",
 	"discussiontools-error-noswitchtove-template": "תחביר תבנית",
