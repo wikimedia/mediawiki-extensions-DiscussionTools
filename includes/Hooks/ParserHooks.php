@@ -66,11 +66,6 @@ class ParserHooks implements
 	 * @param string &$text
 	 */
 	public function onParserAfterTidy( $parser, &$text ) {
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
-		if ( !$dtConfig->get( 'DiscussionToolsUseParserCache' ) ) {
-			return;
-		}
-
 		if ( $parser->getOptions()->getInterfaceMessage() || $parser->getOptions()->getIsPreview() ) {
 			return;
 		}

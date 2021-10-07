@@ -38,9 +38,9 @@ class CommentFormatter {
 	 * Add discussion tools to some HTML
 	 *
 	 * @param string &$text Parser text output (modified by reference)
-	 * @param ParserOutput|null $pout ParserOutput object for metadata, e.g. parser limit report
+	 * @param ParserOutput $pout ParserOutput object for metadata, e.g. parser limit report
 	 */
-	public static function addDiscussionTools( string &$text, ParserOutput $pout = null ): void {
+	public static function addDiscussionTools( string &$text, ParserOutput $pout ): void {
 		$start = microtime( true );
 		$requestId = null;
 
@@ -58,19 +58,17 @@ class CommentFormatter {
 		$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
 		$stats->timing( 'discussiontools.addReplyLinks', $duration * 1000 );
 
-		if ( $pout ) {
-			// How long this method took, in seconds
+		// How long this method took, in seconds
+		$pout->setLimitReportData(
+			'discussiontools-limitreport-timeusage',
+			sprintf( '%.3f', $duration )
+		);
+		if ( $requestId ) {
+			// Request ID where errors were logged (only if an error occurred)
 			$pout->setLimitReportData(
-				'discussiontools-limitreport-timeusage',
-				sprintf( '%.3f', $duration )
+				'discussiontools-limitreport-errorreqid',
+				$requestId
 			);
-			if ( $requestId ) {
-				// Request ID where errors were logged (only if an error occurred)
-				$pout->setLimitReportData(
-					'discussiontools-limitreport-errorreqid',
-					$requestId
-				);
-			}
 		}
 	}
 
