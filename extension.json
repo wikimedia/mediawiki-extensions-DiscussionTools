@@ -19,6 +19,9 @@
 			"i18n/api"
 		]
 	},
+	"ExtensionMessagesFiles": {
+		"DiscussionToolsAlias": "DiscussionTools.alias.php"
+	},
 	"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\RegistrationHooks::onRegistration",
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
@@ -383,6 +386,15 @@
 			"services": [
 				"DiscussionTools.SubscriptionStore",
 				"ConfigFactory"
+			]
+		}
+	},
+	"SpecialPages": {
+		"TopicSubscriptions": {
+			"class": "\\MediaWiki\\Extension\\DiscussionTools\\SpecialTopicSubscriptions",
+			"services": [
+				"LinkRenderer",
+				"LinkBatchFactory"
 			]
 		}
 	},
