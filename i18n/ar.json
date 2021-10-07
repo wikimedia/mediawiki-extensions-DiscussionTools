@@ -63,7 +63,7 @@
 	"discussiontools-replywidget-abandontopic": "هل أنت {{GENDER:|متأكّد|متاكّدة}} من تجاهل الموضوع الذي كنت بصدد كتابته؟",
 	"discussiontools-replywidget-abandontopic-discard": "تجاهل التعليق",
 	"discussiontools-replywidget-abandontopic-keep": "مواصلة الكتابة",
-	"discussiontools-replywidget-advanced": "خيار متقدم",
+	"discussiontools-replywidget-advanced": "خيارات متقدمة",
 	"discussiontools-replywidget-anon-warning": "<strong>لم تقوموا بتسجيل الدخول.</strong> لتلقي الإسناد باسمك بدلا من عنوان الآي بي الخاص بك، يمكنك [$1 تسجيل الدخول] أو [$2 إنشاء حساب].",
 	"discussiontools-replywidget-cancel": "إلغاء",
 	"discussiontools-replywidget-feedback": "{{GENDER:|شارك|شاركي}} برأيك حول هذه المِيزة",
