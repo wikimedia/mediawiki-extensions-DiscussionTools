@@ -22,8 +22,8 @@
 	"apihelp-discussiontoolsedit-summary": "{{doc-apihelp-summary|discussiontoolsedit}}",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "{{doc-apihelp-param|discussiontoolsgetsubscriptions|commentname}}",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "{{doc-apihelp-summary|discussiontoolsgetsubscriptions}}",
-	"apihelp-discussiontoolssubscribe-param-page": "{{doc-apihelp-param|discussiontoolssubscribe|page}}",
 	"apihelp-discussiontoolssubscribe-param-commentname": "{{doc-apihelp-param|discussiontoolssubscribe|commentname}}",
+	"apihelp-discussiontoolssubscribe-param-page": "{{doc-apihelp-param|discussiontoolssubscribe|page}}",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "{{doc-apihelp-param|discussiontoolssubscribe|subscribe}}",
 	"apihelp-discussiontoolssubscribe-summary": "{{doc-apihelp-summary|discussiontoolssubscribe}}"
 }

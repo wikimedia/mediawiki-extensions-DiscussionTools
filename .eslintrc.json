@@ -12,7 +12,7 @@
 	"overrides": [
 		{
 			"files": [
-				"i18n/**/*.json"
+				"i18n/**"
 			],
 			"rules": {
 				"sort-keys": "error"

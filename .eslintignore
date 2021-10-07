@@ -5,5 +5,6 @@
 /vendor/
 
 # Language files written automatically by TranslateWiki
-/**/i18n/**/*.json
-!/**/i18n/**/{en,qqq}.json
+/i18n/**/*.json
+!/i18n/**/en.json
+!/i18n/**/qqq.json
