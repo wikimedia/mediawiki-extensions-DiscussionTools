@@ -18,7 +18,10 @@ class TopicSubscriptionsPager extends TablePager {
 	 * won't get "stuck" when e.g. 50 subscriptions are all created within a second.
 	 */
 	private const INDEX_FIELDS = [
+		// The auto-increment ID will almost always have the same order as sub_created
+		// and the field already has an index.
 		'_topic' => [ 'sub_id' ],
+		'sub_created' => [ 'sub_id' ],
 		// TODO Add indexes that cover these fields to enable sorting by them
 		// 'sub_state' => [ 'sub_state', 'sub_item' ],
 		// 'sub_created' => [ 'sub_created', 'sub_item' ],
@@ -60,6 +63,8 @@ class TopicSubscriptionsPager extends TablePager {
 		return [
 			'_topic' => $this->msg( 'discussiontools-topicsubscription-pager-topic' )->text(),
 			'_page' => $this->msg( 'discussiontools-topicsubscription-pager-page' )->text(),
+			'sub_created' => $this->msg( 'discussiontools-topicsubscription-pager-created' )->text(),
+			'sub_notified' => $this->msg( 'discussiontools-topicsubscription-pager-notified' )->text(),
 			'_unsubscribe' => $this->msg( 'discussiontools-topicsubscription-pager-actions' )->text(),
 		];
 	}
@@ -80,6 +85,14 @@ class TopicSubscriptionsPager extends TablePager {
 			case '_page':
 				$title = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title );
 				return $linkRenderer->makeLink( $title, $title->getPrefixedText() );
+
+			case 'sub_created':
+				return htmlspecialchars( $this->getLanguage()->userTimeAndDate( $value, $this->getUser() ) );
+
+			case 'sub_notified':
+				return $value ?
+					htmlspecialchars( $this->getLanguage()->userTimeAndDate( $value, $this->getUser() ) ) :
+					$this->msg( 'discussiontools-topicsubscription-pager-notified-never' )->escaped();
 
 			case '_unsubscribe':
 				$title = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title );
@@ -123,6 +136,8 @@ class TopicSubscriptionsPager extends TablePager {
 				'sub_namespace',
 				'sub_title',
 				'sub_section',
+				'sub_created',
+				'sub_notified',
 			],
 			'conds' => [
 				'sub_user' => $this->getUser()->getId(),
@@ -135,7 +150,7 @@ class TopicSubscriptionsPager extends TablePager {
 	 * @inheritDoc
 	 */
 	public function getDefaultSort() {
-		return '_topic';
+		return 'sub_created';
 	}
 
 	/**
@@ -149,7 +164,7 @@ class TopicSubscriptionsPager extends TablePager {
 	 * @inheritDoc
 	 */
 	protected function isFieldSortable( $field ) {
-		// Topic is set to the auto-ID field (sub_id), so sorting by it is not very useful
+		// Hide the sort button for "Topic" as it is more accurately shown as "Created"
 		return isset( static::INDEX_FIELDS[$field] ) && $field !== '_topic';
 	}
 }
