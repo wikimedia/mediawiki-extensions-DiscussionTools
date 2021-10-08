@@ -25,8 +25,8 @@
 	"apihelp-discussiontoolsedit-summary": "Créer un message sur une page de discussion.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Noms des sujets à vérifier",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Obtenir les états d’inscription des sujets donnés.",
-	"apihelp-discussiontoolssubscribe-param-page": "Une page sur laquelle le sujet  apparaît",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Nom du sujet auquel s’abonner (ou se désabonner)",
+	"apihelp-discussiontoolssubscribe-param-page": "Une page sur laquelle le sujet  apparaît",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Vrai pour s’abonner, faux pour se désinscrire",
 	"apihelp-discussiontoolssubscribe-summary": "S’abonner (ou se désinscrire) pour recevoir des notifications sur un sujet."
 }

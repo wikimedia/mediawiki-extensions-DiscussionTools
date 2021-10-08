@@ -20,8 +20,8 @@
 	"apihelp-discussiontoolsedit-summary": "Veröffentlichen einer Nachricht auf einer Diskussionsseite.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Namen der zu prüfenden Themen",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Ermittelt den Abonnementstatus der angegebenen Themen.",
-	"apihelp-discussiontoolssubscribe-param-page": "Eine Seite, auf der das Thema erscheint",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Name des Themas, das abonniert (oder abbestellt) werden soll",
+	"apihelp-discussiontoolssubscribe-param-page": "Eine Seite, auf der das Thema erscheint",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true zum Abonnieren, false zum Abbestellen",
 	"apihelp-discussiontoolssubscribe-summary": "Abonnieren (oder abbestellen), um Benachrichtigungen über ein Thema zu erhalten."
 }

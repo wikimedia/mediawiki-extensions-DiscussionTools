@@ -25,8 +25,8 @@
 	"apihelp-discussiontoolsedit-summary": "نشر رسالة على صفحة نقاش.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "أسماء المواضيع للتحقّق منها",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "الحصول على وضعيّة الاشتراك للمواضيع المقدّمة.",
-	"apihelp-discussiontoolssubscribe-param-page": "صفحة يظهر عليها الموضوع",
 	"apihelp-discussiontoolssubscribe-param-commentname": "عنوان الموضوع الذي تريدون الاشتراك فيه (أو إلغاء الاشتراك منه)",
+	"apihelp-discussiontoolssubscribe-param-page": "صفحة يظهر عليها الموضوع",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "صح للاشتراك، خطأ لإلغاء الاشتراك",
 	"apihelp-discussiontoolssubscribe-summary": "اشتراك (أو إلغاء الاشتراك) لتلقّي إخطارات حول موضوع."
 }

@@ -24,8 +24,8 @@
 	"apihelp-discussiontoolsedit-summary": "Опублікувати повідомлення на сторінку обговорення.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Назви тем для перевірки",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Отримайте статуси підписки на певні теми.",
-	"apihelp-discussiontoolssubscribe-param-page": "Сторінка, на якій відображається тема",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Назва теми, на яку потрібно підписатися (або відписатися)",
+	"apihelp-discussiontoolssubscribe-param-page": "Сторінка, на якій відображається тема",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True для підписки, false для відмови від підписки",
 	"apihelp-discussiontoolssubscribe-summary": "Підписатися (або скасувати підписку), щоб отримувати сповіщення про тему."
 }

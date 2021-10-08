@@ -22,8 +22,8 @@
 	"apihelp-discussiontoolsedit-summary": "Manne 'nu messàgge sus a 'na pàgene de le 'ngazzaminde.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Nome de le arguminde da condrollà",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Pigghie le state de abbonamende de le arguminde cercate.",
-	"apihelp-discussiontoolssubscribe-param-page": "'Na pàgene addò iessene le arguminde",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Nome de l'argomende da abbonarse (o luarse)",
+	"apihelp-discussiontoolssubscribe-param-page": "'Na pàgene addò iessene le arguminde",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Vere te abbone, fause te lìve",
 	"apihelp-discussiontoolssubscribe-summary": "Abbonate (o livete) pe avè le notifeche sus a stu argomende."
 }

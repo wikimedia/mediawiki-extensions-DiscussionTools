@@ -22,8 +22,8 @@
 	"apihelp-discussiontoolsedit-summary": "Met foeura un messagg in su la pagina de discussion.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Nom di agroment de controllà",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Oten i stat di sotoscrizzion de certi argoment.",
-	"apihelp-discussiontoolssubscribe-param-page": "Una pagina che la gh'ha denter l'argoment",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Nom de l'argoment al qual inscrives (opur desiscrives)",
+	"apihelp-discussiontoolssubscribe-param-page": "Una pagina che la gh'ha denter l'argoment",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Ver per sotoscriver, fals per anulà la sotoscrizzion",
 	"apihelp-discussiontoolssubscribe-summary": "Inscrives (o desiscrives) per ricever di notifiche sora un argoment."
 }

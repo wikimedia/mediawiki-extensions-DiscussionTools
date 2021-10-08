@@ -23,8 +23,8 @@
 	"apihelp-discussiontoolsedit-summary": "Posta ett inlägg på en diskussionssida.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Namn på ämnen att kontrollera",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Hämta prenumerationsstatus för angivna ämnen.",
-	"apihelp-discussiontoolssubscribe-param-page": "En sida som ämnet visas på",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Namn på ämnet att prenumerera på (eller sluta prenumerera på)",
+	"apihelp-discussiontoolssubscribe-param-page": "En sida som ämnet visas på",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True för att prenumerera, false för att sluta prenumerera",
 	"apihelp-discussiontoolssubscribe-summary": "Prenumerera (eller sluta prenumerera) för att ta emot aviseringar om ett ämne."
 }
