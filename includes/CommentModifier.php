@@ -491,7 +491,7 @@ class CommentModifier {
 
 		// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
 		// add another paragraph to contain the signature.
-		if ( strtolower( $container->lastChild->nodeName ) !== 'p' ) {
+		if ( !$container->lastChild || strtolower( $container->lastChild->nodeName ) !== 'p' ) {
 			$container->appendChild( $doc->createElement( 'p' ) );
 		}
 		// If the last node is empty, trim the signature to prevent leading whitespace triggering
