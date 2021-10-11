@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
-abstract class IntegrationTestCase extends MediaWikiTestCase {
+abstract class IntegrationTestCase extends MediaWikiIntegrationTestCase {
 
 	use TestUtils;
 
