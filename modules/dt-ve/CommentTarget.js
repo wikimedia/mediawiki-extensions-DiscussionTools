@@ -71,9 +71,6 @@ CommentTarget.static.importRules.external.blacklist = ve.extendObject(
 	}
 );
 
-// T280745
-CommentTarget.static.convertToWikitextOnPaste = false;
-
 CommentTarget.prototype.attachToolbar = function () {
 	this.replyWidget.$headerWrapper.append(
 		this.getToolbar().$element.append( this.replyWidget.modeTabSelect.$element )
