@@ -7,6 +7,7 @@ use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
+use ParserOutput;
 use Throwable;
 use WebRequest;
 use Wikimedia\Parsoid\DOM\Element;
@@ -20,8 +21,6 @@ class CommentFormatter {
 		HookUtils::REPLYTOOL,
 		HookUtils::TOPICSUBSCRIPTION,
 	];
-
-	protected const MARKER_COMMENT = '<!-- DiscussionTools addDiscussionTools called -->';
 
 	/**
 	 * Get a comment parser object for a DOM element
@@ -38,39 +37,41 @@ class CommentFormatter {
 	/**
 	 * Add discussion tools to some HTML
 	 *
-	 * @param string &$text Parser text output
+	 * @param string &$text Parser text output (modified by reference)
+	 * @param ParserOutput|null $pout ParserOutput object for metadata, e.g. parser limit report
 	 */
-	public static function addDiscussionTools( string &$text ): void {
+	public static function addDiscussionTools( string &$text, ParserOutput $pout = null ): void {
 		$start = microtime( true );
-
-		// Never add tools twice.
-		// This is required because we try again to add tools to cached content
-		// to support query string enabling.
-		if ( strpos( $text, static::MARKER_COMMENT ) !== false ) {
-			return;
-		}
-
-		$text = $text . "\n" . static::MARKER_COMMENT;
+		$requestId = null;
 
 		try {
-			$newText = static::addDiscussionToolsInternal( $text );
+			$text = static::addDiscussionToolsInternal( $text );
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
-			// Log it and add the request ID in a comment to make it easier to find in the logs.
+			// Log it and report the request ID to make it easier to find in the logs.
 			MWExceptionHandler::logException( $e );
-
-			$requestId = htmlspecialchars( WebRequest::getRequestId() );
-			$info = "<!-- [$requestId] DiscussionTools could not process this page -->";
-			$text .= "\n" . $info;
-
-			return;
+			$requestId = WebRequest::getRequestId();
 		}
 
-		$text = $newText;
 		$duration = microtime( true ) - $start;
 
 		$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
 		$stats->timing( 'discussiontools.addReplyLinks', $duration * 1000 );
+
+		if ( $pout ) {
+			// How long this method took, in seconds
+			$pout->setLimitReportData(
+				'discussiontools-limitreport-timeusage',
+				sprintf( '%.3f', $duration )
+			);
+			if ( $requestId ) {
+				// Request ID where errors were logged (only if an error occurred)
+				$pout->setLimitReportData(
+					'discussiontools-limitreport-errorreqid',
+					$requestId
+				);
+			}
+		}
 	}
 
 	/**
