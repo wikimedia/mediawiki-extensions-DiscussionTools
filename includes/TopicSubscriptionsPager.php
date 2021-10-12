@@ -60,7 +60,7 @@ class TopicSubscriptionsPager extends TablePager {
 		return [
 			'_topic' => $this->msg( 'discussiontools-topicsubscription-pager-topic' )->text(),
 			'_page' => $this->msg( 'discussiontools-topicsubscription-pager-page' )->text(),
-			'_unsubscribe' => $this->msg( 'discussiontools-topicsubscription-pager-unsubscribe' )->text(),
+			'_unsubscribe' => $this->msg( 'discussiontools-topicsubscription-pager-actions' )->text(),
 		];
 	}
 
@@ -85,6 +85,7 @@ class TopicSubscriptionsPager extends TablePager {
 				$title = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title );
 				return (string)new OOUI\ButtonWidget( [
 					'label' => $this->msg( 'discussiontools-topicsubscription-pager-unsubscribe-button' )->text(),
+					'framed' => false,
 					'flags' => [ 'destructive' ],
 					'href' => $title->getLinkURL( [
 						'action' => 'dtunsubscribe',
