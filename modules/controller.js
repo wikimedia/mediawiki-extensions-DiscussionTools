@@ -444,7 +444,7 @@ function init( $container, state ) {
 		}
 	}
 
-	if ( featuresEnabled.topicsubscription && mw.user.options.get( 'discussiontools-topicsubscription' ) ) {
+	if ( featuresEnabled.topicsubscription ) {
 		initTopicSubscriptions( $container );
 	}
 
