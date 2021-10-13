@@ -438,7 +438,7 @@ function appendSignature( container ) {
 
 	// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
 	// add another paragraph to contain the signature.
-	if ( container.lastChild.nodeName.toLowerCase() !== 'p' ) {
+	if ( !container.lastChild || container.lastChild.nodeName.toLowerCase() !== 'p' ) {
 		container.appendChild( doc.createElement( 'p' ) );
 	}
 	// If the last node is empty, trim the signature to prevent leading whitespace triggering
