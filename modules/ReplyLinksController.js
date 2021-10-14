@@ -19,7 +19,7 @@ function ReplyLinksController( $pageContainer ) {
 
 	// "Add topic" link in the skin interface
 	var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
-	if ( featuresEnabled.newtopictool && mw.user.options.get( 'discussiontools-newtopictool' ) ) {
+	if ( featuresEnabled.newtopictool ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $addSectionTab = $( '#ca-addsection' );
 		if ( $addSectionTab.length ) {
