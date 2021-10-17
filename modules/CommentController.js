@@ -1,9 +1,3 @@
-/**
- * @external CommentItem
- * @external CommentDetails
- * @external ThreadItem
- */
-
 var
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),

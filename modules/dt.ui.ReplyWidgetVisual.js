@@ -9,12 +9,6 @@ require( './dt-ve/dt.dm.PingNode.js' );
 require( './dt-ve/dt.ce.PingNode.js' );
 
 /**
- * @external CommentController
- * @external CommentItem
- * @external CommentDetails
- */
-
-/**
  * DiscussionTools ReplyWidgetVisual class
  *
  * @class mw.dt.ReplyWidgetVisual
