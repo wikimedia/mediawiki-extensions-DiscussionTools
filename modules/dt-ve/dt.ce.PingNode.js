@@ -6,10 +6,6 @@
  */
 
 /**
- * @external DmMWPingNode
- */
-
-/**
  * ContentEditable MediaWiki ping node.
  *
  * @class

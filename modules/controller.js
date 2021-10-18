@@ -1,10 +1,5 @@
 'use strict';
 
-/**
- * @external CommentItem
- * @external CommentDetails
- */
-
 var
 	$pageContainer, linksController,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},

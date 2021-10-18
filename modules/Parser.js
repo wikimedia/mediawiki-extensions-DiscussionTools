@@ -1,10 +1,6 @@
 'use strict';
 /* global $:off */
 
-/**
- * @external ThreadItem
- */
-
 var
 	utils = require( './utils.js' ),
 	codePointLength = require( 'mediawiki.String' ).codePointLength,

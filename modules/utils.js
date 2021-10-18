@@ -2,10 +2,6 @@
 /* global $:off */
 
 /**
- * @external ThreadItem
- */
-
-/**
  * @constant
  */
 var NEW_TOPIC_COMMENT_ID = 'new|' + mw.config.get( 'wgRelevantPageName' );

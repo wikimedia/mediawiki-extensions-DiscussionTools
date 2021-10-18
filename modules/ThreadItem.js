@@ -1,7 +1,4 @@
 /* global moment */
-/**
- * @external CommentItem
- */
 
 var utils = require( './utils.js' );
 

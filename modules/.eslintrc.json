@@ -12,5 +12,18 @@
 	"rules": {
 		"no-implicit-globals": "off",
 		"max-len": "off"
+	},
+	"settings": {
+		"jsdoc": {
+			"preferredTypes": {
+				"CommentController": "CommentController",
+				"CommentDetails": "CommentDetails",
+				"CommentItem": "CommentItem",
+				"DmMWPingNode": "DmMWPingNode",
+				"HeadingItem": "HeadingItem",
+				"moment": "moment",
+				"ThreadItem": "ThreadItem"
+			}
+		}
 	}
 }

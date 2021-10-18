@@ -1,9 +1,3 @@
-/**
- * @external CommentController
- * @external CommentItem
- * @external CommentDetails
- */
-
 var utils = require( 'ext.discussionTools.init' ).utils;
 
 /**

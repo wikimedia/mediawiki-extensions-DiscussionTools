@@ -1,11 +1,6 @@
 var ThreadItem = require( './ThreadItem.js' );
 
 /**
- * @external moment
- * @external HeadingItem
- */
-
-/**
  * A comment item
  *
  * @class CommentItem

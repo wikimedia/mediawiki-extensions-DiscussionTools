@@ -1,10 +1,6 @@
 'use strict';
 /* global $:off */
 
-/**
- * @external CommentItem
- */
-
 var utils = require( './utils.js' );
 
 /**

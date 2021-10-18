@@ -11,12 +11,6 @@ require( './AbandonCommentDialog.js' );
 require( './AbandonTopicDialog.js' );
 
 /**
- * @external CommentController
- * @external CommentItem
- * @external CommentDetails
- */
-
-/**
  * DiscussionTools ReplyWidget class
  *
  * @class mw.dt.ReplyWidget
