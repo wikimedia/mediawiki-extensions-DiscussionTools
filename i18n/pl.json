@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chrumps",
 			"Matma Rex",
 			"Nux",
 			"Rail",
@@ -90,6 +91,8 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Dodano subskrypcję.",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Nie będziesz już otrzymywać powiadomień o nowych komentarzach w tym temacie.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Usunięto subskrypcję.",
+	"discussiontools-topicsubscription-pager-page": "Strona",
+	"discussiontools-topicsubscription-special-title": "Subskrypcje tematyczne",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Subskrypcja|Subskrypcje}} na stronach dyskusji",
 	"echo-pref-tooltip-dt-subscription": "Powiadom mnie, kiedy ktoś doda nowy komentarz w subskrybowanym przeze mnie wątku.",
 	"tag-discussiontools-added-comment-description": "W tej edycji dodano komentarz na stronie dyskusji",

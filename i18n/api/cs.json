@@ -28,6 +28,6 @@
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Získat stavy odběru daných témat.",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Název tématu, k jehož odběru se chcete přihlásit (nebo odhlásit z něj)",
 	"apihelp-discussiontoolssubscribe-param-page": "Stránka, na které se téma zobrazuje",
-	"apihelp-discussiontoolssubscribe-param-subscribe": "True pro odebírání, false pro neodebírání",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True pro odběr, false pro zrušení odběru",
 	"apihelp-discussiontoolssubscribe-summary": "Přihlášení (nebo odhlášení) příjmu notifikací o tématu."
 }

@@ -17,6 +17,7 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Pievienot jaunu komentāru kā atbildi esošam komentāram.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Pievienot jaunu diskusijas sadaļu un pirmo komentāru tajā.",
 	"apihelp-discussiontoolsedit-summary": "Ievietot ziņojumu diskusiju lapā.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Pārbaudāmo tematu nosaukumi",
 	"apihelp-discussiontoolssubscribe-param-page": "Lapa, kurā temats parādās",
 	"apihelp-discussiontoolssubscribe-summary": "Abonē (vai atcel abonementu), lai saņemtu paziņojumus par tematu."
 }

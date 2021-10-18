@@ -6,5 +6,7 @@
 	},
 	"discussiontools-replywidget-mode-source": "Աղբյուր",
 	"discussiontools-replywidget-preview": "Նախադիտում",
-	"discussiontools-topicsubscription-button-subscribe": "բաժանորդագրվել"
+	"discussiontools-topicsubscription-button-subscribe": "բաժանորդագրվել",
+	"discussiontools-topicsubscription-pager-page": "Էջ",
+	"discussiontools-topicsubscription-pager-topic": "Թեմա"
 }

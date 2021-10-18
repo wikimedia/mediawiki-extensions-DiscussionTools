@@ -1,12 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"JSantos",
 			"Joao Xavier"
 		]
 	},
 	"discussiontools-preference-description": "Permisas ajusti experimentala en diskuto-pagini:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Respondar] a komenti en diskuto-pagini uzanta singla ''klikto''.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Adjuntar nova temo a la diskuto] uzanta interreto-formulario.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Recevar informo] kande nova komenti adjuntesos en sesioni quin vu patrolias.\n\nVu povas facar ca ajusti en vua [[Special:Preferences#mw-prefsection-editing-discussion|Preferaji]].\n\nAktualigi montresos en [https://www.mediawiki.org/wiki/Talk_pages_project/Updates la diskuto-pagini di la projeto].\n\nAtencez:\n* Gradope, nova experimentala funcioni adjuntesos a la projeto.\n* Kelka funcioni povas ne esar disponebla ankore por vu.",
 	"discussiontools-replywidget-mode-source": "Fonto",
 	"discussiontools-replywidget-mode-visual": "Vidala",
+	"discussiontools-replywidget-preferences": "Preferaji",
+	"discussiontools-topicsubscription-pager-page": "Pagino",
+	"discussiontools-topicsubscription-pager-topic": "Temo",
+	"discussiontools-topicsubscription-pager-unsubscribe": "Dessuskribar",
+	"echo-category-title-dt-subscription": "{{PLURAL:$1|komento en temo di pagino|komenti en temi di pagini}} subskribita",
+	"echo-pref-tooltip-dt-subscription": "Informez me se ulu skribos komento en ula temo quan me abonis.",
 	"tag-discussiontools-edit": "Redaktez komento",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova topiko]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respondez]",

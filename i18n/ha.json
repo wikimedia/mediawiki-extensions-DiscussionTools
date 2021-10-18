@@ -1,8 +1,24 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gwanki"
+			"Abbaty",
+			"Em-em",
+			"Gwanki",
+			"Harunaningi",
+			"Itzedubaba",
+			"Umar-askirason"
 		]
 	},
-	"discussiontools-replywidget-watchthis": "Saka wannan shafin a [[Special:Watchlist|Shafukan da ake bi]]"
+	"discussiontools-limitreport-errorreqid": "Kuskuren Makaman aiki na neman ID",
+	"discussiontools-limitreport-timeusage": "KayanAikin Tattaunawa na amfanin lokaci",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|second|dakikoki}}",
+	"discussiontools-replywidget-preferences": "saituka",
+	"discussiontools-replywidget-watchthis": "Saka wannan shafin a [[Special:Watchlist|Shafukan da ake bi]]",
+	"discussiontools-topicsubscription-pager-page": "shafi",
+	"discussiontools-topicsubscription-pager-topic": "Maudu'i",
+	"discussiontools-topicsubscription-pager-unsubscribe": "wanda ba'a zaba ba",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "Rashin samun dama",
+	"discussiontools-topicsubscription-special-title": "Maudu'an da aka zaba",
+	"echo-category-title-dt-subscription": "safin magana{{PLURAL:$1|}}",
+	"echo-pref-tooltip-dt-subscription": "ku sanar dani idan wani ya wallafa sabon tsokaci akan maudu'in dana zaba"
 }

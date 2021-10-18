@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jaeminlovetaejoon",
 			"SawJaemin"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "စံးဆၢက့ၤ",
 	"discussiontools-replylink": "စံးဆၢက့ၤ",
+	"discussiontools-replywidget-preferences": "တၢ်မိၣ်န့ၢ်သး",
 	"discussiontools-replywidget-reply": "စံးဆၢက့ၤ"
 }

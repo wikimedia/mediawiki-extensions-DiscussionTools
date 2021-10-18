@@ -4,7 +4,8 @@
 			"Abuluntu",
 			"Ed g2s",
 			"Jon Harald Søby",
-			"Matma Rex"
+			"Matma Rex",
+			"Vukky"
 		]
 	},
 	"discussiontools": "Diskusjonsverktøy",
@@ -32,6 +33,9 @@
 	"discussiontools-error-noswitchtove-table": "tabellsyntaks",
 	"discussiontools-error-noswitchtove-template": "malsyntaks",
 	"discussiontools-error-noswitchtove-title": "Visuell modus deaktivert",
+	"discussiontools-limitreport-errorreqid": "Diskusjonsverktøy forespørselfeil-ID",
+	"discussiontools-limitreport-timeusage": "Tidsbruk Diskusjonsverktøy",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",
 	"discussiontools-newtopic-missing-title": "Angi en tittel for diskusjonen. Hvis du trykker på «{{int:discussiontools-replywidget-newtopic}}» blir emnet lagt til uten tittel.",
 	"discussiontools-newtopic-placeholder-title": "Tittel",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarte}} i «<strong>$4</strong>».",
@@ -90,6 +94,12 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Du abonnerer!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Du vil ikke lenger bli varslet om nye kommentarer på dette emnet.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Du har avsluttet abonnementet.",
+	"discussiontools-topicsubscription-pager-page": "Side",
+	"discussiontools-topicsubscription-pager-topic": "Tråd",
+	"discussiontools-topicsubscription-pager-unsubscribe": "Avslutt abonnement",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "Avslutt abonnement",
+	"discussiontools-topicsubscription-special-intro": "Abonnement lar deg følge en tråd på diskusjonssider. Når noen legger igjen en kommentar vil du få et varsel.\n\nTilpass hvordan og hvor du mottar disse varslene i [[Special:Preferences#mw-prefsection-echo|dine innstillinger]].",
+	"discussiontools-topicsubscription-special-title": "Tråder du abonnerer på",
 	"echo-category-title-dt-subscription": "Diskusjonsside {{PLURAL:$1|abonnement|abonnementer}}",
 	"echo-pref-tooltip-dt-subscription": "Varsle meg når noen kommenterer et emne jeg abonnerer på.",
 	"tag-discussiontools-added-comment-description": "En diskusjonssidekommentar ble lagt til i denne redigeringen",
