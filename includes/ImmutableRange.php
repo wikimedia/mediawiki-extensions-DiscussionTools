@@ -152,11 +152,8 @@ class ImmutableRange {
 	 * @return bool
 	 */
 	private function isPartiallyContainedNode( Node $node ): bool {
-		$isAncestorOfStart = CommentUtils::contains( $node, $this->mStartContainer );
-		$isAncestorOfEnd = CommentUtils::contains( $node, $this->mEndContainer );
-
-		return ( $isAncestorOfStart && !$isAncestorOfEnd )
-			|| ( !$isAncestorOfStart && $isAncestorOfEnd );
+		return CommentUtils::contains( $node, $this->mStartContainer ) xor
+			CommentUtils::contains( $node, $this->mEndContainer );
 	}
 
 	/**
@@ -169,16 +166,12 @@ class ImmutableRange {
 	 * @return bool
 	 */
 	private function isFullyContainedNode( Node $node ): bool {
-		$startBP = [ $this->mStartContainer, $this->mStartOffset ];
-		$endBP = [ $this->mEndContainer, $this->mEndOffset ];
-		$root = self::getRootNode( $this->mStartContainer );
-
-		return self::getRootNode( $node ) === $root
-			&& $this->computePosition( [ $node, 0 ], $startBP ) === 'after'
+		return self::getRootNode( $node ) === self::getRootNode( $this->mStartContainer )
+			&& $this->computePosition( $node, 0, $this->mStartContainer, $this->mStartOffset ) === 'after'
 			&& $this->computePosition(
 				// @phan-suppress-next-line PhanUndeclaredProperty
-				[ $node, $node->length ?? $node->childNodes->length ],
-				$endBP
+				$node, $node->length ?? $node->childNodes->length,
+				$this->mEndContainer, $this->mEndOffset
 			) === 'before';
 	}
 
@@ -235,6 +228,9 @@ class ImmutableRange {
 
 		$lastPartiallyContainedChild = null;
 
+		// Upstream uses lastChild then iterates over previousSibling, however this
+		// is much slower that copying all the nodes to an array, at least when using
+		// a native DOMNode, presumably because previousSibling is lazy-evaluated.
 		if ( !CommentUtils::contains( $originalEndContainer, $originalStartContainer ) ) {
 			$childNodes = iterator_to_array( $commonAncestor->childNodes );
 
@@ -403,39 +399,44 @@ class ImmutableRange {
 	 *
 	 * @see https://dom.spec.whatwg.org/#concept-range-bp-position
 	 *
-	 * @param mixed[] $boundaryPointA An array containing a Node and an offset within that Node representing a boundary.
-	 * @param mixed[] $boundaryPointB An array containing a Node and an offset within that Node representing a boundary.
-	 * @return string Returns before, equal, or after based on the position of the first boundary relative to the second
-	 *                boundary.
+	 * @param Node $nodeA
+	 * @param int $offsetA
+	 * @param Node $nodeB
+	 * @param int $offsetB
+	 * @return string 'before'|'after'|'equal'
 	 */
 	private function computePosition(
-		array $boundaryPointA,
-		array $boundaryPointB
+		Node $nodeA, int $offsetA, Node $nodeB, int $offsetB
 	): string {
-		if ( $boundaryPointA[0] === $boundaryPointB[0] ) {
-			if ( $boundaryPointA[1] === $boundaryPointB[1] ) {
+		// 1. Assert: nodeA and nodeB have the same root.
+		// Removed, not necessary for our usage
+
+		// 2. If nodeA is nodeB, then return equal if offsetA is offsetB, before if offsetA is less than offsetB, and
+		// after if offsetA is greater than offsetB.
+		if ( $nodeA === $nodeB ) {
+			if ( $offsetA === $offsetB ) {
 				return 'equal';
-			} elseif ( $boundaryPointA[1] < $boundaryPointB[1] ) {
+			} elseif ( $offsetA < $offsetB ) {
 				return 'before';
 			} else {
 				return 'after';
 			}
 		}
 
-		$commonAncestor = $this->findCommonAncestorContainer( $boundaryPointB[0], $boundaryPointA[0] );
-		if ( $commonAncestor === $boundaryPointA[0] ) {
+		$commonAncestor = $this->findCommonAncestorContainer( $nodeB, $nodeA );
+		if ( $commonAncestor === $nodeA ) {
 			$AFollowsB = false;
-		} elseif ( $commonAncestor === $boundaryPointB[0] ) {
+		} elseif ( $commonAncestor === $nodeB ) {
 			$AFollowsB = true;
 		} else {
 			// A was not found inside B. Traverse both A & B up to the nodes
 			// before their common ancestor, then see if A is in the nextSibling
 			// chain of B.
-			$b = $boundaryPointB[0];
+			$b = $nodeB;
 			while ( $b->parentNode !== $commonAncestor ) {
 				$b = $b->parentNode;
 			}
-			$a = $boundaryPointA[0];
+			$a = $nodeA;
 			while ( $a->parentNode !== $commonAncestor ) {
 				$a = $a->parentNode;
 			}
@@ -451,13 +452,14 @@ class ImmutableRange {
 
 		if ( $AFollowsB ) {
 			// Swap variables
-			[ $boundaryPointB, $boundaryPointA ] = [ $boundaryPointA, $boundaryPointB ];
+			[ $nodeB, $nodeA ] = [ $nodeA, $nodeB ];
+			[ $offsetB, $offsetA ] = [ $offsetA, $offsetB ];
 		}
 
-		$ancestor = $boundaryPointB[0]->parentNode;
+		$ancestor = $nodeB->parentNode;
 
 		while ( $ancestor ) {
-			if ( $ancestor === $boundaryPointA[0] ) {
+			if ( $ancestor === $nodeA ) {
 				break;
 			}
 
@@ -465,17 +467,20 @@ class ImmutableRange {
 		}
 
 		if ( $ancestor ) {
-			$child = $boundaryPointB[0];
+			$child = $nodeB;
 
 			while ( $child ) {
-				if ( $child->parentNode === $boundaryPointA[0] ) {
+				if ( $child->parentNode === $nodeA ) {
 					break;
 				}
 
 				$child = $child->parentNode;
 			}
 
-			if ( CommentUtils::childIndexOf( $child ) < $boundaryPointA[1] ) {
+			// Phan complains that $child may be null here, but that can't happen, because at this point
+			// we know that $nodeA is an ancestor of $nodeB, so the loop above will stop before the root.
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+			if ( CommentUtils::childIndexOf( $child ) < $offsetA ) {
 				return $AFollowsB ? 'before' : 'after';
 			}
 		}
