@@ -2,7 +2,13 @@
 
 var trackdebug = !!mw.util.getParamValue( 'trackdebug' ),
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
-	enable2017Wikitext = featuresEnabled.sourcemodetoolbar;
+	enable2017Wikitext = featuresEnabled.sourcemodetoolbar,
+	session = {
+		// Create an initial session ID in case any VisualEditorFeatureUse events
+		// trigger before our first init event
+		// eslint-disable-next-line camelcase
+		editing_session_id: mw.user.generateRandomSessionId()
+	};
 
 /**
  * Logs an event to http://meta.wikimedia.org/wiki/Schema:EditAttemptStep
@@ -12,6 +18,9 @@ var trackdebug = !!mw.util.getParamValue( 'trackdebug' ),
  */
 module.exports = function ( data ) {
 	mw.track( 'dt.schemaEditAttemptStep', data );
+};
+module.exports.getSessionId = function () {
+	return session.editing_session_id;
 };
 
 // Ensure 'ext.eventLogging' first, it provides mw.eventLog.randomTokenMatch.
@@ -31,10 +40,6 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 			saveFailure: 'save_failure'
 		},
 		timing = {},
-		session = {
-			// eslint-disable-next-line camelcase
-			editing_session_id: mw.user.generateRandomSessionId()
-		},
 		firstInitDone = false,
 		/**
 		 * Edit schema
