@@ -161,16 +161,6 @@ class PageHooks implements
 	public function onOutputPageBeforeHTML( $output, &$text ) {
 		$lang = $output->getLanguage();
 
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
-		if ( !$dtConfig->get( 'DiscussionToolsUseParserCache' ) ) {
-			foreach ( CommentFormatter::USE_WITH_FEATURES as $feature ) {
-				if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
-					CommentFormatter::addDiscussionTools( $text );
-					break;
-				}
-			}
-		}
-
 		$this->addFeatureBodyClasses( $output );
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
