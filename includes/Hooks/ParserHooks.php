@@ -9,22 +9,16 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use Article;
 use ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Hook\ParserAfterParseHook;
 use MediaWiki\Hook\ParserAfterTidyHook;
-use MediaWiki\Hook\ParserOptionsRegisterHook;
-use MediaWiki\Page\Hook\ArticleParserOptionsHook;
 use Parser;
-use ParserOptions;
 use StripState;
 
 class ParserHooks implements
 	ParserAfterParseHook,
-	ParserAfterTidyHook,
-	ArticleParserOptionsHook,
-	ParserOptionsRegisterHook
+	ParserAfterTidyHook
 {
 	/** @var ConfigFactory */
 	private $configFactory;
@@ -94,48 +88,5 @@ class ParserHooks implements
 				'ext.discussionTools.init.styles',
 			] );
 		}
-	}
-
-	/**
-	 * @param Article $article Article about to be parsed
-	 * @param ParserOptions $popts Mutable parser options
-	 * @return bool|void True or no return value to continue or false to abort
-	 */
-	public function onArticleParserOptions( Article $article, ParserOptions $popts ) {
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
-
-		if (
-			!$dtConfig->get( 'DiscussionToolsUseParserCache' ) ||
-			!HookUtils::isAvailableForTitle( $article->getTitle() )
-		) {
-			return;
-		}
-
-		foreach ( CommentFormatter::USE_WITH_FEATURES as $feature ) {
-			if (
-				// If the feature is enabled by default, always apply the DOM transform
-				$dtConfig->get( 'DiscussionTools_' . $feature ) === 'available' ||
-				// ...or if has been enabled by the user
-				HookUtils::isFeatureEnabledForUser( $popts->getUserIdentity(), $feature )
-			) {
-				// For backwards-compatibility until the canonical cache entries
-				// without DiscussionTools DOM transform expire (T280599)
-				$popts->setOption( 'dtreply', true );
-				return;
-			}
-		}
-	}
-
-	/**
-	 * Register additional parser options
-	 *
-	 * @param array &$defaults
-	 * @param array &$inCacheKey
-	 * @param array &$lazyLoad
-	 * @return bool|void
-	 */
-	public function onParserOptionsRegister( &$defaults, &$inCacheKey, &$lazyLoad ) {
-		$defaults['dtreply'] = null;
-		$inCacheKey['dtreply'] = true;
 	}
 }
