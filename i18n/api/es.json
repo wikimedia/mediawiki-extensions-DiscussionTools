@@ -8,8 +8,12 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "No se encontró el comentario con ID '$1'.",
+	"apierror-discussiontools-commentname-ambiguous": "Se encontraron múltiples comentarios con el nombre '$1', úsese el identificador en su lugar.",
 	"apierror-discussiontools-commentname-notfound": "El comentario con el nombre '$1' no ha sido encontrado.",
+	"apierror-discussiontools-subscription-failed-add": "No se puede suscribir a este tema.",
+	"apierror-discussiontools-subscription-failed-remove": "No se puede desuscribir de este tema.",
 	"apihelp-discussiontools-param-oldid": "El número de revisión a usar (por defecto la revisión más reciente).",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Regresa títulos de páginas de la cual cada comentario en la página dada es transcluída.",
 	"apihelp-discussiontools-summary": "Devuelve los metadatos requeridos para inicializar las herramientas de discusión.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID del comentario a responder. Es usado solamente cuando <var>paction</var> es <var>addcomment</var>. Sobrescribe <var>commentname</var> .",
 	"apihelp-discussiontoolsedit-param-html": "Contenido a publicar, como HTML. No puede ser usado junto a <var>wikitext</var>.",
