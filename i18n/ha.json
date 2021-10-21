@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abbaty",
+			"Bashir Gwanki",
 			"Em-em",
 			"Gwanki",
 			"Harunaningi",
@@ -13,7 +14,7 @@
 	"discussiontools-limitreport-timeusage": "KayanAikin Tattaunawa na amfanin lokaci",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|second|dakikoki}}",
 	"discussiontools-replywidget-preferences": "saituka",
-	"discussiontools-replywidget-watchthis": "Saka wannan shafin a [[Special:Watchlist|Shafukan da ake bi]]",
+	"discussiontools-replywidget-watchthis": "Saka wannan shafin a [[Special:Watchlist|Shafukan da ake bin sahu]]",
 	"discussiontools-topicsubscription-pager-page": "shafi",
 	"discussiontools-topicsubscription-pager-topic": "Maudu'i",
 	"discussiontools-topicsubscription-pager-unsubscribe": "wanda ba'a zaba ba",
