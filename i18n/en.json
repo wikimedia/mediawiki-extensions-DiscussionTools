@@ -112,7 +112,7 @@
 	"tag-discussiontools-added-comment": "-",
 	"tag-discussiontools-added-comment-description": "A talk page comment was added in this edit",
 	"tag-discussiontools-description": "Edit made using DiscussionTools",
-	"tag-discussiontools-edit": "Edit comment",
+	"tag-discussiontools-edit": "Edited comment",
 	"tag-discussiontools-edit-description": "User edited an existing comment with DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} New topic]",
 	"tag-discussiontools-newtopic-description": "User added a new topic to the page with DiscussionTools",
