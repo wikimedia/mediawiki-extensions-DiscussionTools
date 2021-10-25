@@ -6,7 +6,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "תגובה עם המזהה '$1' לא נמצאה.",
-	"apierror-discussiontools-commentname-ambiguous": "נמצאו מספר תגובות עם השם '$1', נא להשתמש במזהה במקום זה.",
+	"apierror-discussiontools-commentname-ambiguous": "נמצאו כמה תגובות עם השם \"$1\", נדרש <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "תגובה עם השם '$1' לא נמצאה.",
 	"apierror-discussiontools-subscription-failed-add": "לא היה אפשר להירשם לנושא הזה.",
 	"apierror-discussiontools-subscription-failed-remove": "לא היה אפשר לבטל את הרישום לנושא הזה.",

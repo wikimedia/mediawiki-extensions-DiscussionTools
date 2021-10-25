@@ -5,7 +5,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Comentariul cu ID-ul „$1” nu a fost găsit.",
-	"apierror-discussiontools-commentname-ambiguous": "Au fost găsite ai multe comentarii cu numele „$1”, utilizați în schimb ID-ul.",
+	"apierror-discussiontools-commentname-ambiguous": "Au fost găsite ai multe comentarii cu numele „$1”, este necesar <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "Comentariul cu numele „$1” nu a fost găsit.",
 	"apierror-discussiontools-subscription-failed-add": "Nu se poate abona la acest subiect.",
 	"apierror-discussiontools-subscription-failed-remove": "Nu se poate dezabona de la acest subiect.",

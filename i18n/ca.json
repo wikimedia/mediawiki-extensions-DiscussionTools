@@ -84,7 +84,7 @@
 	"echo-category-title-dt-subscription": "Pàginea de discussió\n{{PLURAL:$1|subscripció| subscripcions}}",
 	"echo-pref-tooltip-dt-subscription": "Notifica'm quan algú publiqui un comentari nou d'un tema on soc subscrit.",
 	"tag-discussiontools-description": "Edició realitzada a través de DiscussionTools",
-	"tag-discussiontools-edit": "Edita la intervenció",
+	"tag-discussiontools-edit": "Intervenció editada",
 	"tag-discussiontools-edit-description": "L'usuari ha editat un comentari ja existent amb DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Tema nou]",
 	"tag-discussiontools-newtopic-description": "L'usuari ha afegit un nou tema amb les Eines de Discussió",

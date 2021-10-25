@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"MarcoAurelio",
 			"Rodney Araujo",
 			"Suecarmol",
@@ -8,7 +9,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "No se encontró el comentario con ID '$1'.",
-	"apierror-discussiontools-commentname-ambiguous": "Se encontraron múltiples comentarios con el nombre '$1', úsese el identificador en su lugar.",
+	"apierror-discussiontools-commentname-ambiguous": "Se encontraron múltiples comentarios con el nombre '$1', se requiere <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "El comentario con el nombre '$1' no ha sido encontrado.",
 	"apierror-discussiontools-subscription-failed-add": "No se puede suscribir a este tema.",
 	"apierror-discussiontools-subscription-failed-remove": "No se puede desuscribir de este tema.",

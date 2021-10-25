@@ -28,6 +28,7 @@
 	"discussiontools-error-noswitchtove-table": "sintassi de tabella",
 	"discussiontools-error-noswitchtove-template": "sitassi de model",
 	"discussiontools-error-noswitchtove-title": "Manera visual disativada",
+	"discussiontools-limitreport-timeusage": "Temp de utilizazzion de l'istrument de discussion (DiscussionTols)",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|segond}}",
 	"discussiontools-newtopic-missing-title": "Per piesè dagh un argoment al to coment. Se te clichet \"{{int:discussiontools-replywidget-newtopic}}\" anmò, el to coment el sarà sgiontad senza un titol.",
 	"discussiontools-newtopic-placeholder-title": "Titol",

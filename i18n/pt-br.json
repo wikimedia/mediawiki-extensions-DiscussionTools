@@ -23,7 +23,7 @@
 	"discussiontools-emptystate-title": "Comece uma discussão sobre {{PAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bem-vindo à sua página de discussão",
 	"discussiontools-emptystate-title-self-anon": "Bem-vindo a esta página de discussão",
-	"discussiontools-emptystate-title-user": "Comece uma discussão com {{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "Comece uma discussão com {{GENDER:{{PAGENAME}}|com}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Bem-vindo a esta página de discussão",
 	"discussiontools-error-comment-conflict": "Não foi possível salvar seu comentário porque outra pessoa comentou ao mesmo tempo que você. Tente novamente ou recarregue a página para ver os comentários mais recentes.",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário ao qual você está respondendo na página. Pode ter sido excluído ou movido para outra página. Por favor, recarregue a página e tente de novo.",

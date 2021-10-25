@@ -7,7 +7,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Коментаря з ідентифікатором «$1» не знайдено.",
-	"apierror-discussiontools-commentname-ambiguous": "Знайдено кілька коментарів із іменем '$1', замість цього використовуйте ідентифікатор.",
+	"apierror-discussiontools-commentname-ambiguous": "Знайдено кілька коментарів із назвою «$1», <var>commentid</var> необхідний.",
 	"apierror-discussiontools-commentname-notfound": "Коментар з назвою \"$1\" не знайдено.",
 	"apierror-discussiontools-subscription-failed-add": "Не вдалося підписатися на цю тему.",
 	"apierror-discussiontools-subscription-failed-remove": "Не вдалося скасувати підписку на цю тему.",

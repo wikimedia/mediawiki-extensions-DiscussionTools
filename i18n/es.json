@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"Canaan9801",
 			"Ed g2s",
 			"Fewasser Traduce",
@@ -26,12 +27,12 @@
 	"discussiontools-emptystate-desc": "Las páginas de discusión son donde la gente discute cómo hacer que el contenido de {{SITENAME}} sea el mejor posible. Puedes utilizar esta página de discusión para empezar una discusión con otros usuarios acerca de cómo mejorar [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Aprende más sobre cómo usar las discusiones]].",
 	"discussiontools-emptystate-desc-self": "Los usuarios en {{SITENAME}} pueden utilizar esta página para dejarte un mensaje público y serás notificado cuándo lo hagan. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Aprende más]].",
 	"discussiontools-emptystate-desc-self-anon": "Las personas que se encuentran en {{SITENAME}} pueden utilizar esta página para enviar un mensaje público sobre las ediciones realizadas desde la dirección IP que estás utilizando actualmente.\n\nMuchas direcciones IP cambian periódicamente, y a menudo son compartidas por varias personas. Puedes [$1 crear una cuenta] o [$2 iniciar sesión] para evitar futuras confusiones con otros usuarios desconectados. La creación de una cuenta también oculta tu dirección IP.",
-	"discussiontools-emptystate-desc-user": "Las páginas de discusión son el lugar donde la gente discute cómo hacer que el contenido de {{SITENAME}} sea lo mejor posible. Inicia una nueva discusión para conectarte y colaborar con [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Lo que digas aquí será público para que lo vean los demás. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Aprende más]]",
+	"discussiontools-emptystate-desc-user": "Las páginas de discusión son donde las personas debaten sobre cómo hacer que el contenido de {{SITENAME}} sea lo mejor posible. Inicia una nueva discusión para conectar y colaborar {{GENDER:{{PAGENAME}}|con}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Lo que digas aquí será público para que otros lo vean. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Más información]]",
 	"discussiontools-emptystate-desc-user-anon": "Las páginas de discusión son el lugar donde la gente discute cómo hacer que el contenido de {{SITENAME}} sea lo mejor posible. Usa esta página para iniciar una discusión sobre las ediciones hechas desde esta dirección IP. Lo que digas aquí será público para que lo vean los demás. Muchas direcciones IP cambian periódicamente, y a veces son compartidas por varias personas. [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Aprende más]]",
 	"discussiontools-emptystate-title": "Comienza una discusión acerca de {{PAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bienvenido a tu página de discusión",
 	"discussiontools-emptystate-title-self-anon": "Bienvenido a esta página de discusión",
-	"discussiontools-emptystate-title-user": "Comienza una discusión con {{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "Comienza una discusión {{GENDER:{{PAGENAME}}|con}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Bienvenido a esta página de discusión",
 	"discussiontools-error-comment-conflict": "Tu comentario no puede guardarse, porque alguien más comentó al mismo tiempo que tú. Por favor inténtalo de nuevo, o vuelve a cargar la página para ver los últimos comentarios.",
 	"discussiontools-error-comment-disappeared": "No se ha podido encontrar el comentario al que tratas de responder. Se puede haber borrado o movido a otra página. Por favor recarga la página e inténtalo de nuevo.",
@@ -115,7 +116,7 @@
 	"echo-pref-tooltip-dt-subscription": "Notificarme cuando alguien publica un nuevo comentario sobre un tema al que estoy suscrito.",
 	"tag-discussiontools-added-comment-description": "Se añadió un comentario en la página de discusión en esta edición.",
 	"tag-discussiontools-description": "Edición hecha con DiscussionTools",
-	"tag-discussiontools-edit": "Editar comentario",
+	"tag-discussiontools-edit": "Comentario editado",
 	"tag-discussiontools-edit-description": "El usuario editó un comentario existente con DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Tema nuevo]",
 	"tag-discussiontools-newtopic-description": "Se añadió un tema nuevo a la página mediante DiscussionTools",

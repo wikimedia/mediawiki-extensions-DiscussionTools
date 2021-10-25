@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Mguix",
+			"Toniher",
 			"Xavier Dengra"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "No s'ha trobat la identificació del comentari: «$1».",
-	"apierror-discussiontools-commentname-ambiguous": "S'han trobat múltiples comentaris amb el nom «$1»; empreu millor una identificació.",
+	"apierror-discussiontools-commentname-ambiguous": "S'han trobat múltiples comentaris amb el nom «$1»; cal <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "No s'ha trobat el comentari amb el nom: «$1».",
 	"apihelp-discussiontools-param-oldid": "El número de revisió que s'utilitzarà (per defecte s'utilitza la darrera revisió).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Retorna títols de pàgines de les quals cada comentari hi és transclòs.",
