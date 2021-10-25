@@ -37,6 +37,9 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 	this.isNewTopic = !!comment.isNewTopic;
 	this.pageName = commentDetails.pageName;
 	this.oldId = commentDetails.oldId;
+	// pageExists can only be false for the new comment tool, so we
+	// don't need to worry about transcluded replies.
+	this.pageExists = mw.config.get( 'wgRelevantArticleId', 0 ) !== 0;
 	var contextNode = utils.closestElement( comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 	// TODO: Should storagePrefix include pageName?
@@ -190,6 +193,7 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 	this.$element.on( 'keydown', this.onKeyDown.bind( this, true ) );
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 	this.unloadHandler = this.onUnload.bind( this );
+	this.onWatchToggleHandler = this.onWatchToggle.bind( this );
 	this.modeTabSelect.connect( this, {
 		choose: 'onModeTabSelectChoose'
 	} );
@@ -499,6 +503,9 @@ ReplyWidget.prototype.setup = function ( data ) {
 		this.commentController.sectionTitle.connect( this, { change: 'onInputChangeThrottled' } );
 	}
 
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '#ca-watch, #ca-unwatch' ).on( 'watchpage.mw', this.onWatchToggleHandler );
+
 	return this;
 };
 
@@ -560,9 +567,25 @@ ReplyWidget.prototype.teardown = function ( abandoned ) {
 	// event handlers for arrow keys are not removed, and it keeps trying to switch modes (T274423)
 	this.modeTabSelect.blur();
 	this.unbindBeforeUnloadHandler();
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '#ca-watch, #ca-unwatch' ).off( 'watchpage.mw', this.onWatchToggleHandler );
+
 	this.clear();
 	this.emit( 'teardown', abandoned );
 	return this;
+};
+
+ReplyWidget.prototype.onWatchToggle = function ( e, actionPerformed ) {
+	var widget = this;
+	this.checkboxesPromise.then( function ( checkboxes ) {
+		if ( checkboxes.checkboxesByName.wpWatchthis ) {
+			checkboxes.checkboxesByName.wpWatchthis.setSelected(
+				!!mw.user.options.get( 'watchdefault' ) ||
+				( !!mw.user.options.get( 'watchcreations' ) && !widget.pageExists ) ||
+				actionPerformed === 'watch'
+			);
+		}
+	} );
 };
 
 ReplyWidget.prototype.onKeyDown = function ( isMultiline, e ) {
