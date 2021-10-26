@@ -167,6 +167,12 @@ class PageHooks implements
 	 * @return bool|void This hook must not abort, it must return true or null.
 	 */
 	public function onOutputPageBeforeHTML( $output, &$text ) {
+		// ParserOutputPostCacheTransform hook would be a better place to do this,
+		// so that when the ParserOutput is used directly without using this hook,
+		// we don't leave half-baked interface elements in it (see e.g. T292345, T294168).
+		// But that hook doesn't provide parameters that we need to render correctly
+		// (including the page title, interface language, and current user).
+
 		$lang = $output->getLanguage();
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			$text = CommentFormatter::postprocessTopicSubscription(
