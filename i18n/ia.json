@@ -99,7 +99,7 @@
 	"echo-pref-tooltip-dt-subscription": "Notificar me quando alcuno publica un nove commento in un topico al qual io es subscribite.",
 	"tag-discussiontools-added-comment-description": "Un commento de pagina de discussion ha essite addite in iste modification",
 	"tag-discussiontools-description": "Modification facite usante DiscussionTools",
-	"tag-discussiontools-edit": "Modificar commento",
+	"tag-discussiontools-edit": "Commento modificate",
 	"tag-discussiontools-edit-description": "Le usator ha modificate un commento existente con DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nove topico]",
 	"tag-discussiontools-newtopic-description": "Le usator ha addite un nove topico al pagina con DiscussionTools",

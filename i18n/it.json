@@ -106,7 +106,7 @@
 	"echo-pref-tooltip-dt-subscription": "Avvisami quando qualcuno commenta su un argomento a cui sono iscritto.",
 	"tag-discussiontools-added-comment-description": "Un intervento è stato aggiunto a una pagina di discussione con questa modifica",
 	"tag-discussiontools-description": "Modifica effettuata usando DiscussionTools",
-	"tag-discussiontools-edit": "Modifica commento",
+	"tag-discussiontools-edit": "Commento modificato",
 	"tag-discussiontools-edit-description": "L'utente ha modificato un commento esistente con DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nuovo argomento]",
 	"tag-discussiontools-newtopic-description": "L'utente ha aggiunto un nuovo argomento alla pagina con DiscussionTools",

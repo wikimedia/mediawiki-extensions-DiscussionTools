@@ -94,7 +94,7 @@
 	"echo-category-title-dt-subscription": "토론 문서 {{PLURAL:$1|구독}}",
 	"echo-pref-tooltip-dt-subscription": "내 토론 문서 구독의 활동에 관해 내게 알립니다.",
 	"tag-discussiontools-description": "토론 도구를 사용한 편집",
-	"tag-discussiontools-edit": "댓글 편집",
+	"tag-discussiontools-edit": "댓글 편집함",
 	"tag-discussiontools-edit-description": "토론 도구를 사용해 이미 존재하는 댓글을 수정한 편집",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} 새 주제]",
 	"tag-discussiontools-newtopic-description": "토론 도구를 사용해 새 주제를 추가한 편집",

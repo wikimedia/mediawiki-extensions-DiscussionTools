@@ -8,7 +8,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "لم يُعثَر على التعليق ذي المُعرِّف '$1'.",
-	"apierror-discussiontools-commentname-ambiguous": "عُثر على العديد من التعليقات ذات الاسم '$1'، {{GENDER:|استعمل|استعملي}} المعرّف بدلاً عن الاسم.",
+	"apierror-discussiontools-commentname-ambiguous": "عُثر على العديد من التعليقات ذات الاسم '$1'، نحتاج إلى <var>commenti</var>.",
 	"apierror-discussiontools-commentname-notfound": "لم يًعثر على التعليق مع الاسم '$1'.",
 	"apierror-discussiontools-subscription-failed-add": "تعذَّر الاشتراك في هذا الموضوع.",
 	"apierror-discussiontools-subscription-failed-remove": "لا يمكن إلغاء الاشتراك في هذا الموضوع.",

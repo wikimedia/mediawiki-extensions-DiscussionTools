@@ -8,7 +8,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Commentaire avec l’ID « $1 » non trouvé.",
-	"apierror-discussiontools-commentname-ambiguous": "Plusieurs commentaires trouvés avec le nom « $1 », utiliser plutôt l’ID.",
+	"apierror-discussiontools-commentname-ambiguous": "Plusieurs commentaires trouvés avec le nom « $1 », <var>commentid</var> est obligatoire.",
 	"apierror-discussiontools-commentname-notfound": "Commentaire avec le nom « $1 » non trouvé.",
 	"apierror-discussiontools-subscription-failed-add": "Impossible de s’abonner à ce sujet.",
 	"apierror-discussiontools-subscription-failed-remove": "Impossible de se désabonner de ce sujet.",

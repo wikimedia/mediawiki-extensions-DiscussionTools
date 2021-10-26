@@ -5,7 +5,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Commento con ID '$1' non trovate.",
-	"apierror-discussiontools-commentname-ambiguous": "Plure commentos con nomine '$1' trovate. Usa ID in vice.",
+	"apierror-discussiontools-commentname-ambiguous": "Plure commentos con nomine '$1' trovate; le uso de <var>commentid</var> es obligatori.",
 	"apierror-discussiontools-commentname-notfound": "Commento con nomine '$1' non trovate.",
 	"apierror-discussiontools-subscription-failed-add": "Non poteva subscriber a iste topico.",
 	"apierror-discussiontools-subscription-failed-remove": "Non poteva cancellar subscription a iste topico.",

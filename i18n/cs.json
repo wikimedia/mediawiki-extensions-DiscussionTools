@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fraxinus.cs",
 			"Georg101",
 			"Jan Myšák",
 			"Martin Urbanec",
@@ -17,12 +18,12 @@
 	"discussiontools-emptystate-desc": "Diskusní stránky jsou místo, kde lidé diskutují o tom, jak udělat obsah {{GRAMMAR:2sg|{{SITENAME}}}} co nejlepším možným. Tuto diskusní stránku můžete použít k zahájení diskuse s ostatními o tom, jak zlepšit [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Další informace]]",
 	"discussiontools-emptystate-desc-self": "Lidé na {{GRAMMAR:6sg|{{SITENAME}}}} mohou tuto stránku použít k tomu, aby vám napsali veřejnou zprávu, a vy budete upozorněni, až tak učiní. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Další informace]]",
 	"discussiontools-emptystate-desc-self-anon": "Lidé na {{GRAMMAR:6sg|{{SITENAME}}}} mohou tuto stránku použít k napsání veřejné zprávy ohledně editací provedených z této IP adresy, kterou právě používáte.\n\nMnoho IP adres se pravidelně mění a často je sdílí více lidí. Abyste se vyhnuli záměně s ostatními nepřihlášenými uživateli, můžete si [$1 vytvořit účet] nebo [$2 se přihlásit]. Vytvořením účtu také skryjete svou IP adresu.",
-	"discussiontools-emptystate-desc-user": "Diskusní stránky jsou místo, kde lidé diskutují o tom, jak udělat obsah {{GRAMMAR:2sg|{{SITENAME}}}} co nejlepším možným. Začněte novou diskusi, abyste se spojili a spolupracovali s uživatelem [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Co sem napíšete, bude pro ostatní veřejně dostupné. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Další informace]]",
+	"discussiontools-emptystate-desc-user": "Diskusní stránky jsou místo, kde lidé diskutují o tom, jak udělat obsah {{GRAMMAR:2sg|{{SITENAME}}}} co nejlepším možným. Začněte novou diskusi, abyste se spojili a spolupracovali {{GENDER:{{PAGENAME}}|s}} uživatelem [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Co sem napíšete, bude pro ostatní veřejně dostupné. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Další informace]]",
 	"discussiontools-emptystate-desc-user-anon": "Diskusní stránky jsou místo, kde lidé diskutují o tom, jak udělat obsah {{GRAMMAR:2sg|{{SITENAME}}}} co nejlepším možným. Na této stránce zahájíte diskusi o editacích provedených z této IP adresy. Co sem napíšete, bude pro ostatní veřejně dostupné. Mnoho IP adres se pravidelně mění a často je sdílí více lidí. [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Další informace]]",
 	"discussiontools-emptystate-title": "Zahajte diskusi o {{PAGENAME}}",
 	"discussiontools-emptystate-title-self": "Vítejte na své diskusní stránce!",
 	"discussiontools-emptystate-title-self-anon": "Vítejte na této diskusní stránce",
-	"discussiontools-emptystate-title-user": "Zahajte diskusi s uživatelem {{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "Zahajte diskusi {{GENDER:{{PAGENAME}}|s}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Vítejte na této diskusní stránce",
 	"discussiontools-error-comment-conflict": "Váš komentář nebylo možné uložit, protože někdo jiný uložil komentář ve stejnou dobu jako vy. Prosím, zkuste to znovu nebo stránku obnovte, aby se vám zobrazily nejnovější komentáře.",
 	"discussiontools-error-comment-disappeared": "Nemůžeme nalézt komentář, na který odpovídáte. Možná byl smazán, nebo přesunut na jinou stránku. Prosíme, aktualizujte stránku a zkuste to znovu.",
@@ -103,7 +104,7 @@
 	"echo-pref-tooltip-dt-subscription": "Upozorněte mě, když někdo přidá nový komentář v tématu, které odebírám.",
 	"tag-discussiontools-added-comment-description": "V této editaci byl přidán komentář na diskusní stránku",
 	"tag-discussiontools-description": "Editace provedená pomocí Diskusních nástrojů",
-	"tag-discussiontools-edit": "editace komentáře",
+	"tag-discussiontools-edit": "Editovaný komentář",
 	"tag-discussiontools-edit-description": "Uživatel editoval existující komentář pomocí Diskusních nástrojů",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nové téma]",
 	"tag-discussiontools-newtopic-description": "Uživatel přidal nové téma pomocí Diskusních nástrojů",
