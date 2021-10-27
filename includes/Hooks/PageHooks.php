@@ -76,13 +76,21 @@ class PageHooks implements
 	public function onBeforePageDisplay( $output, $skin ): void {
 		$user = $output->getUser();
 		$req = $output->getRequest();
+		foreach ( HookUtils::FEATURES as $feature ) {
+			// Add a CSS class for each enabled feature
+			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
+				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
+			}
+		}
+
 		// Load style modules if the tools can be available for the title
-		// as this means the DOM may have been modified in the parser cache.
+		// to selectively hide DT features, depending on the body classes added above.
 		if ( HookUtils::isAvailableForTitle( $output->getTitle() ) ) {
 			$output->addModuleStyles( [
 				'ext.discussionTools.init.styles',
 			] );
 		}
+
 		// Load modules if any DT feature is enabled for this user
 		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
 			$output->addModules( [
@@ -160,9 +168,6 @@ class PageHooks implements
 	 */
 	public function onOutputPageBeforeHTML( $output, &$text ) {
 		$lang = $output->getLanguage();
-
-		$this->addFeatureBodyClasses( $output );
-
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			$text = CommentFormatter::postprocessTopicSubscription(
 				$text, $lang, $this->subscriptionStore, $output->getUser()
@@ -214,11 +219,6 @@ class PageHooks implements
 		$output = $context->getOutput();
 		$output->enableOOUI();
 		$output->enableClientCache( false );
-
-		// OutputPageBeforeHTML won't have run, since there's no parsed text
-		// to display, but we need these classes or reply links won't show
-		// after a topic is posted.
-		$this->addFeatureBodyClasses( $output );
 
 		$coreConfig = RequestContext::getMain()->getConfig();
 		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
@@ -302,20 +302,5 @@ class PageHooks implements
 		);
 
 		return false;
-	}
-
-	/**
-	 * Helper to add feature-toggle classes to the output's body
-	 *
-	 * @param OutputPage $output
-	 * @return void
-	 */
-	protected function addFeatureBodyClasses( OutputPage $output ): void {
-		foreach ( HookUtils::FEATURES as $feature ) {
-			// Add a CSS class for each enabled feature
-			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
-				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
-			}
-		}
 	}
 }
