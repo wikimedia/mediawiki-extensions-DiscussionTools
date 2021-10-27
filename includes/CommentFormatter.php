@@ -164,14 +164,16 @@ class CommentFormatter {
 
 				$bracket = $doc->createElement( 'span' );
 				$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
-				$bracketLeft = $bracket->cloneNode( false );
-				$bracketLeft->nodeValue = '[';
-				$bracketRight = $bracket->cloneNode( false );
-				$bracketRight->nodeValue = ']';
+				$bracketOpen = $bracket->cloneNode( false );
+				$bracketClose = $bracket->cloneNode( false );
+				// Replaced in ::postprocessReplyTool() to avoid displaying empty brackets in various
+				// contexts where parser output is used (API T292345, search T294168, action=render)
+				$bracketOpen->appendChild( $doc->createComment( '__DTREPLYBRACKETOPEN__' ) );
+				$bracketClose->appendChild( $doc->createComment( '__DTREPLYBRACKETCLOSE__' ) );
 
-				$replyLinkButtons->appendChild( $bracketLeft );
+				$replyLinkButtons->appendChild( $bracketOpen );
 				$replyLinkButtons->appendChild( $replyLink );
-				$replyLinkButtons->appendChild( $bracketRight );
+				$replyLinkButtons->appendChild( $bracketClose );
 
 				CommentModifier::addReplyLink( $threadItem, $replyLinkButtons );
 			}
@@ -245,14 +247,14 @@ class CommentFormatter {
 
 				$bracket = $doc->createElement( 'span' );
 				$bracket->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-bracket' );
-				$bracketLeft = $bracket->cloneNode( false );
-				$bracketLeft->nodeValue = '[';
-				$bracketRight = $bracket->cloneNode( false );
-				$bracketRight->nodeValue = ']';
+				$bracketOpen = $bracket->cloneNode( false );
+				$bracketOpen->nodeValue = '[';
+				$bracketClose = $bracket->cloneNode( false );
+				$bracketClose->nodeValue = ']';
 
-				$subscribe->appendChild( $bracketLeft );
+				$subscribe->appendChild( $bracketOpen );
 				$subscribe->appendChild( $subscribeLink );
-				$subscribe->appendChild( $bracketRight );
+				$subscribe->appendChild( $bracketClose );
 
 				return DOMCompat::getOuterHTML( $subscribe );
 			},
@@ -272,7 +274,13 @@ class CommentFormatter {
 		string $text, Language $lang
 	) {
 		$replyText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
-		$text = str_replace( '<!--__DTREPLY__-->', $replyText, $text );
+
+		$text = strtr( $text, [
+			 '<!--__DTREPLY__-->' => $replyText,
+			 '<!--__DTREPLYBRACKETOPEN__-->' => '[',
+			 '<!--__DTREPLYBRACKETCLOSE__-->' => ']',
+		] );
+
 		return $text;
 	}
 
