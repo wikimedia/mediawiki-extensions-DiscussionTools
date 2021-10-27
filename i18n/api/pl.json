@@ -6,7 +6,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Nie odnaleziono komentarza z ID '$1'.",
-	"apierror-discussiontools-commentname-ambiguous": "Odnaleziono więcej niż jeden komentarz z nazwą '$1', użyj parametru ID.",
+	"apierror-discussiontools-commentname-ambiguous": "Odnaleziono więcej niż jeden komentarz z nazwą '$1', wymagany jest parametr  <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "Nie odnaleziono komentarza z nazwą '$1'.",
 	"apierror-discussiontools-subscription-failed-add": "Nie udało się zasubskrybować tego tematu.",
 	"apierror-discussiontools-subscription-failed-remove": "Nie udało się anulować subskrypcji tego tematu.",
@@ -21,6 +21,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Dodaj nowy komentarz jako odpowiedź do istniejącego komentarza.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Dodaj nową sekcję dyskusji i pierwszy komentarz w niej.",
 	"apihelp-discussiontoolsedit-summary": "Wyślij wiadomość na stronie dyskusji.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Nazwy tematów, które sprawdzić",
+	"apihelp-discussiontoolsgetsubscriptions-summary": "Sprawdź status subskrypcji podanych tematów.",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Nazwa tematu do zasubskrybowania (lub anulowania subskrypcji)",
 	"apihelp-discussiontoolssubscribe-param-page": "Tytuł strony, gdzie widoczny jest temat",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Włącz, aby subskrybować; wyłącz, aby zrezygnować z subskrypcji",

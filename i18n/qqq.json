@@ -40,7 +40,7 @@
 	"discussiontools-error-noswitchtove-template": "Type of syntax detected, used as a parameter in {{msg-mw|discussiontools-error-noswitchtove}}.",
 	"discussiontools-error-noswitchtove-title": "Type of syntax detected, used as a parameter in {{msg-mw|discussiontools-error-noswitchtove}}.",
 	"discussiontools-limitreport-errorreqid": "Label for the ID of the web request in which a DiscussionTools error has occurred.",
-	"discussiontools-limitreport-timeusage": "Label for the time usage (duration) of DiscussionTools in the parser limit report. Followed by {{msg-mw|discussiontools-limitreport-timeusage-value}}.",
+	"discussiontools-limitreport-timeusage": "Label for the time usage (duration) of DiscussionTools in the parser limit report. Followed by {{msg-mw|discussiontools-limitreport-timeusage-value}}.\n\nSimilar to:\n* {{msg-mw|limitreport-cputime}}\n* {{msg-mw|limitreport-walltime}}\n* {{msg-mw|scribunto-limitreport-timeusage}}",
 	"discussiontools-limitreport-timeusage-value": "Follows {{msg-mw|discussiontools-limitreport-timeusage}}.\n\nParameters:\n* $1 - the usage in seconds\n{{Identical|Second}}",
 	"discussiontools-newtopic-missing-title": "Warning message shown when leaving the title field empty while adding a new topic to the page.",
 	"discussiontools-newtopic-placeholder-title": "Placeholder describing the heading field of a new topic\n{{identical|Title}}",

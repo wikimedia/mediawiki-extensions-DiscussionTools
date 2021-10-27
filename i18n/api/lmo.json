@@ -5,7 +5,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "El coment con l'ID $1 l'è stad minga trovad.",
-	"apierror-discussiontools-commentname-ambiguous": "A inn vegnud a voltra diversi coment cont el nom \"$1\", dopera putost l'ID.",
+	"apierror-discussiontools-commentname-ambiguous": "A inn vegnud a voltra diversi coment cont el nom \"$1\", a gh'è bisogn de <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "El coment che 'l se ciama '$1' l'è stad minga trovad.",
 	"apierror-discussiontools-subscription-failed-add": "Impossibel iscrives a quell argoment chì.",
 	"apierror-discussiontools-subscription-failed-remove": "Impossibil disiscrives de quell argoment chì",
