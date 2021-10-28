@@ -136,7 +136,12 @@
 				"ModeTabSelectWidget.js",
 				"ModeTabOptionWidget.js",
 				"AbandonCommentDialog.js",
-				"AbandonTopicDialog.js"
+				"AbandonTopicDialog.js",
+				{
+					"name": "licenseMessages.json",
+					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getTermsOfUseMessagesParsed",
+					"versionCallback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getTermsOfUseMessagesVersion"
+				}
 			],
 			"styles": [
 				"dt.ui.ReplyWidget.less"
@@ -163,7 +168,6 @@
 				"discussiontools-replywidget-preview",
 				"discussiontools-replywidget-reply",
 				"discussiontools-replywidget-summary",
-				"discussiontools-replywidget-terms-click",
 				"discussiontools-replywidget-transcluded",
 				"visualeditor-key-ctrl",
 				"visualeditor-key-enter",
