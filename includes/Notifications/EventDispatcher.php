@@ -13,6 +13,7 @@ use ChangeTags;
 use DeferredUpdates;
 use EchoEvent;
 use Error;
+use ExtensionRegistry;
 use IDBAccessObject;
 use Iterator;
 use MediaWiki\Extension\DiscussionTools\CommentItem;
@@ -27,6 +28,7 @@ use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 use ParserOptions;
+use RequestContext;
 use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -227,6 +229,8 @@ class EventDispatcher {
 			//   which is exactly how we would do this otherwise
 			// * It allows us to reuse the generated comment trees without any annoying caching
 			static::addCommentChangeTag( $newRevRecord );
+			// For very similar reasons, we do logging here
+			static::logAddedComments( $addedComments, $newRevRecord, $title, $user );
 		}
 
 		foreach ( $addedComments as $newComment ) {
@@ -297,6 +301,110 @@ class EventDispatcher {
 		}, $subscriptionItems );
 
 		return $users;
+	}
+
+	/**
+	 * Log stuff to EventLogging's Schema:TalkPageEvent
+	 * If you don't have EventLogging installed, does nothing.
+	 *
+	 * @param array $addedComments
+	 * @param RevisionRecord $newRevRecord
+	 * @param PageIdentity $title
+	 * @param UserIdentity $identity
+	 * @return bool Whether events were logged
+	 */
+	protected static function logAddedComments( $addedComments, $newRevRecord, $title, $identity ) {
+		global $wgDTSchemaEditAttemptStepOversample, $wgDBname;
+		$request = RequestContext::getMain()->getRequest();
+		// We've reached here through Echo's post-save deferredupdate, which
+		// might either be after an API request from DiscussionTools or a
+		// regular POST from WikiEditor. Both should have this value snuck
+		// into their request if their session is being logged.
+		if ( !$request->getVal( 'editingStatsId' ) ) {
+			return false;
+		}
+		$editingStatsId = $request->getVal( 'editingStatsId' );
+
+		$extensionRegistry = ExtensionRegistry::getInstance();
+		if ( !$extensionRegistry->isLoaded( 'EventLogging' ) ) {
+			return false;
+		}
+		$inSample = self::inEventSample( $editingStatsId );
+		$shouldOversample = $wgDTSchemaEditAttemptStepOversample || (
+			$extensionRegistry->isLoaded( 'WikimediaEvents' ) &&
+			// @phan-suppress-next-line PhanUndeclaredClassMethod
+			\WikimediaEvents\WikimediaEventsHooks::shouldSchemaEditAttemptStepOversample( RequestContext::getMain() )
+		);
+		if ( !$inSample && !$shouldOversample ) {
+			return false;
+		}
+
+		$user = MediaWikiServices::getInstance()
+			->getUserFactory()
+			->newFromUserIdentity( $identity );
+
+		$isDiscussionTools = (bool)$request->getVal( 'dttags' );
+
+		foreach ( $addedComments as $comment ) {
+			$heading = $comment->getSubscribableHeading();
+			$parent = $comment->getParent();
+			if ( !$heading || !$parent ) {
+				continue;
+			}
+			$data = [
+				'$schema' => '/analytics/mediawiki/talk_page_edit/1.0.0',
+				'component_type' => $parent->getType() === 'heading' ? 'comment' : 'response',
+				'topic_id' => $heading->getId(),
+				'comment_id' => $comment->getId(),
+				'comment_parent_id' => $parent->getId(),
+				'action' => 'publish',
+				'session_id' => $editingStatsId,
+				'page_id' => $newRevRecord->getPageId(),
+				'page_namespace' => $title->getNamespace(),
+				'revision_id' => $newRevRecord->getId() ?: 0,
+				'performer' => [
+					'user_id' => $user->getId(),
+					'user_edit_count' => $user->getEditCount() ?: 0,
+					// Retention-safe values:
+					'user_is_anonymous' => !$user->isRegistered(),
+					'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $user ),
+				],
+				'database' => $wgDBname,
+				// This is unreliable, but sufficient for our purposes; we
+				// mostly just want to see the difference between DT and
+				// everything-else:
+				'integration' => $isDiscussionTools ? 'discussiontools' : 'page',
+			];
+
+			\EventLogging::submit( 'mediawiki.talk_page_edit', $data );
+		}
+
+		return true;
+	}
+
+	/**
+	 * Should the current session be sampled for EventLogging?
+	 *
+	 * @param string $sessionId
+	 * @return bool Whether to sample the session
+	 */
+	protected static function inEventSample( $sessionId ) {
+		global $wgDTSchemaEditAttemptStepSamplingRate, $wgWMESchemaEditAttemptStepSamplingRate;
+		// Sample 6.25%
+		$samplingRate = 0.0625;
+		if ( isset( $wgDTSchemaEditAttemptStepSamplingRate ) ) {
+			$samplingRate = $wgDTSchemaEditAttemptStepSamplingRate;
+		}
+		if ( isset( $wgWMESchemaEditAttemptStepSamplingRate ) ) {
+			$samplingRate = $wgWMESchemaEditAttemptStepSamplingRate;
+		}
+		if ( $samplingRate === 0 ) {
+			return false;
+		}
+		$inSample = \EventLogging::sessionInSample(
+			(int)( 1 / $samplingRate ), $sessionId
+		);
+		return $inSample;
 	}
 
 }
