@@ -148,6 +148,7 @@ class TopicSubscriptionsPager extends TablePager {
 	 * @inheritDoc
 	 */
 	protected function isFieldSortable( $field ) {
-		return isset( self::INDEX_FIELDS[$field] );
+		// Topic is set to the auto-ID field (sub_id), so sorting by it is not very useful
+		return isset( self::INDEX_FIELDS[$field] ) && $field !== '_topic';
 	}
 }
