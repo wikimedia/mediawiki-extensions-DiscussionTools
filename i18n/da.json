@@ -28,7 +28,6 @@
 	"discussiontools-replywidget-reply": "Svar",
 	"discussiontools-topicsubscription-pager-page": "Side",
 	"discussiontools-topicsubscription-pager-topic": "Emne",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Afmeld",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Afmeld",
 	"discussiontools-topicsubscription-special-intro": "Abonnementer gør det muligt for dig at følge et emne på diskussionssider. Når nogen svarer på emnet, modtager du en underretning.\n\nJuster hvordan og hvor du modtager disse underretninger i [[Special:Preferences#mw-prefsection-echo|your preferences]].",
 	"discussiontools-topicsubscription-special-title": "Emneabonnementer",

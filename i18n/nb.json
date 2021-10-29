@@ -96,7 +96,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Du har avsluttet abonnementet.",
 	"discussiontools-topicsubscription-pager-page": "Side",
 	"discussiontools-topicsubscription-pager-topic": "Tråd",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Avslutt abonnement",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Avslutt abonnement",
 	"discussiontools-topicsubscription-special-intro": "Abonnement lar deg følge en tråd på diskusjonssider. Når noen legger igjen en kommentar vil du få et varsel.\n\nTilpass hvordan og hvor du mottar disse varslene i [[Special:Preferences#mw-prefsection-echo|dine innstillinger]].",
 	"discussiontools-topicsubscription-special-title": "Tråder du abonnerer på",

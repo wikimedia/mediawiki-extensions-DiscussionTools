@@ -89,7 +89,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "구독을 해지했습니다.",
 	"discussiontools-topicsubscription-pager-page": "문서",
 	"discussiontools-topicsubscription-pager-topic": "주제",
-	"discussiontools-topicsubscription-pager-unsubscribe": "구독 취소",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "구독 취소",
 	"echo-category-title-dt-subscription": "토론 문서 {{PLURAL:$1|구독}}",
 	"echo-pref-tooltip-dt-subscription": "내 토론 문서 구독의 활동에 관해 내게 알립니다.",

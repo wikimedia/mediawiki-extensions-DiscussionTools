@@ -99,7 +99,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Aboneliğinizi iptal ettiniz.",
 	"discussiontools-topicsubscription-pager-page": "Sayfa",
 	"discussiontools-topicsubscription-pager-topic": "Konu",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Abonelikten çık",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Abonelikten çık",
 	"echo-category-title-dt-subscription": "Abone olunan tartışma sayfası konularıyla ilgili {{PLURAL:$1|yorum|yorumlar}}",
 	"echo-pref-tooltip-dt-subscription": "Abone olduğum bir konudaki herhangi bir tartışma sayfasında biri yanıt verdiğinde bana haber ver.",

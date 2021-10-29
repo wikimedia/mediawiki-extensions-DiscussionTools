@@ -11,7 +11,6 @@
 	"discussiontools-replywidget-preferences": "Preferaji",
 	"discussiontools-topicsubscription-pager-page": "Pagino",
 	"discussiontools-topicsubscription-pager-topic": "Temo",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Dessuskribar",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|komento en temo di pagino|komenti en temi di pagini}} subskribita",
 	"echo-pref-tooltip-dt-subscription": "Informez me se ulu skribos komento en ula temo quan me abonis.",
 	"tag-discussiontools-edit": "Redaktez komento",

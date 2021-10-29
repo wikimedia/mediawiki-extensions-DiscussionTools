@@ -91,7 +91,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Tu ha cancellate le subscription.",
 	"discussiontools-topicsubscription-pager-page": "Pagina",
 	"discussiontools-topicsubscription-pager-topic": "Topico",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Cancellar subscription",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Cancellar subscription",
 	"discussiontools-topicsubscription-special-intro": "Subscriptiones permitte sequer un topico sur paginas de discussion. Si alcuno responde a un topico, tu recipera un notification.\n\nAdjusta como e quando tu recipe iste notificationes in [[Special:Preferences#mw-prefsection-echo|tu preferentias]].",
 	"discussiontools-topicsubscription-special-title": "Subscriptiones a topicos",

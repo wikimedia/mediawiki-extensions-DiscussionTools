@@ -110,7 +110,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "通知を無効にしました",
 	"discussiontools-topicsubscription-pager-page": "ページ",
 	"discussiontools-topicsubscription-pager-topic": "話題",
-	"discussiontools-topicsubscription-pager-unsubscribe": "購読を解除",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "購読を解除",
 	"discussiontools-topicsubscription-special-intro": "購読するとトークページの話題を追従することができます。誰かから話題に返事が投稿されると、通知が届きます。\n\nその通知をどこでどんな頻度で受信するか、[[Special:Preferences#mw-prefsection-echo|ご自分の個人設定]]で指定してください。",
 	"discussiontools-topicsubscription-special-title": "話題を購読",

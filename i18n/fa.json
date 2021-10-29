@@ -104,7 +104,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "اشتراک شما لغو شد.",
 	"discussiontools-topicsubscription-pager-page": "صفحه",
 	"discussiontools-topicsubscription-pager-topic": "مبحث",
-	"discussiontools-topicsubscription-pager-unsubscribe": "لغو اشتراک",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "لغو اشتراک",
 	"discussiontools-topicsubscription-special-title": "مبحث‌های مشترک‌شده",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|اشتراک|اشتراک‌ها}} شما {{PLURAL:$1|صفحهٔ|صفحه‌های}} بحث",

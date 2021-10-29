@@ -100,7 +100,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "您已取消訂閱。",
 	"discussiontools-topicsubscription-pager-page": "頁面",
 	"discussiontools-topicsubscription-pager-topic": "話題",
-	"discussiontools-topicsubscription-pager-unsubscribe": "取消訂閱",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "取消訂閱",
 	"discussiontools-topicsubscription-special-intro": "訂閱能讓您跟進在討論頁上的話題。當有人回覆話題時，您會收到通知。\n\n請在[[Special:Preferences#mw-prefsection-echo|您的偏好設定]]來調整您要如何接收這些通知。",
 	"discussiontools-topicsubscription-special-title": "話題訂閱",

@@ -38,7 +38,6 @@
 	"discussiontools-replywidget-watchthis": "เพิ่มหน้านี้ไปยัง[[Special:Watchlist|รายการเฝ้าดู]]",
 	"discussiontools-topicsubscription-pager-page": "หน้า",
 	"discussiontools-topicsubscription-pager-topic": "หัวข้อ",
-	"discussiontools-topicsubscription-pager-unsubscribe": "เลิกสมัครรับ",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "เลิกสมัครรับ",
 	"discussiontools-topicsubscription-special-intro": "คุณสามารถติดตามหัวข้อบนหน้าอภิปรายได้ด้วยการกดที่ปุ่มสมัครรับ เมื่อใครเขียนตอบในหัวข้อดังกล่าว คุณจะได้รับการแจ้งเตือน\n\nสามารถปรับเปลี่ยนวิธีการรับการแจ้งเตือนของคุณได้ที่[[Special:Preferences#mw-prefsection-echo|การตั้งค่าของคุณ]]",
 	"discussiontools-topicsubscription-special-title": "หัวข้อที่สมัครรับ",

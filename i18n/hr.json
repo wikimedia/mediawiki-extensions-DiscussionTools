@@ -82,7 +82,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Prestali ste pratiti ovu temu.",
 	"discussiontools-topicsubscription-pager-page": "Stranica",
 	"discussiontools-topicsubscription-pager-topic": "Tema",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Prestani pratiti",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Prestani pratiti",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Komentar|Komentare}} pretplaćenih tema na stranicama za razgovore",
 	"echo-pref-tooltip-dt-subscription": "Obavijestite me kada netko objavi komentar u temi koju pratim.",

@@ -108,7 +108,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Te has desuscrito.",
 	"discussiontools-topicsubscription-pager-page": "Página",
 	"discussiontools-topicsubscription-pager-topic": "Tema",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Desuscribirse",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Desuscribirse",
 	"discussiontools-topicsubscription-special-intro": "Las suscripciones te permiten seguir un tema en páginas de discusión. Cuándo alguien responde al tema, recibirás una notificación.\n\nAjusta cómo y donde recibes estas notificaciones en [[Special:Preferences#mw-prefsection-echo|tus preferencias]].",
 	"discussiontools-topicsubscription-special-title": "Suscripciones de tema",

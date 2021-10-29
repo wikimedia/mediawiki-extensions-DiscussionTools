@@ -96,7 +96,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Usunięto subskrypcję.",
 	"discussiontools-topicsubscription-pager-page": "Strona",
 	"discussiontools-topicsubscription-pager-topic": "Temat",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Anuluj subskrybcję",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Anuluj subskrybcję",
 	"discussiontools-topicsubscription-special-title": "Subskrypcje tematyczne",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Subskrypcja|Subskrypcje}} na stronach dyskusji",

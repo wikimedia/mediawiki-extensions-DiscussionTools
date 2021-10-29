@@ -104,7 +104,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Olet peruuttanut tilauksen.",
 	"discussiontools-topicsubscription-pager-page": "Sivu",
 	"discussiontools-topicsubscription-pager-topic": "Aihe",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Peruuta tilaus",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Peruuta tilaus",
 	"discussiontools-topicsubscription-special-title": "Aiheiden tilaukset",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Keskustelusivutilaus|Keskustelusivutilaukset}}",

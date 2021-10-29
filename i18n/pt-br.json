@@ -99,7 +99,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Cancelar inscrição.",
 	"discussiontools-topicsubscription-pager-page": "Página",
 	"discussiontools-topicsubscription-pager-topic": "Tópico",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Cancelar inscrição",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Cancelar inscrição",
 	"discussiontools-topicsubscription-special-intro": "As inscrições permitem que você siga um tópico nas páginas de discussão. Quando alguém responder ao tópico, você receberá uma notificação.\n\nAjuste como e onde você recebe essas notificações em [[Special:Preferences#mw-prefsection-echo|suas preferências]].",
 	"discussiontools-topicsubscription-special-title": "Inscrições de trópico",

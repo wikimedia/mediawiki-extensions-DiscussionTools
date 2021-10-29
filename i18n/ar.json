@@ -104,7 +104,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "لقد ألغيت اشتراكك!",
 	"discussiontools-topicsubscription-pager-page": "الصفحة",
 	"discussiontools-topicsubscription-pager-topic": "الموضوع",
-	"discussiontools-topicsubscription-pager-unsubscribe": "إلغاء الاشتراك",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "إلغاء الاشتراك",
 	"discussiontools-topicsubscription-special-intro": "تمكنكم الاشتراكات من متابعة موضوع في صفحات النقاش. عندما يردّ أحدهم على الموضوع، ستتلقّون إشعارا.\n\nاختاروا طريقة ووقت الحصول على هذه الإشعارات من [[Special:Preferences#mw-prefsection-echo|التفضيلات]].",
 	"discussiontools-topicsubscription-special-title": "الاشتراكات في موضوع",

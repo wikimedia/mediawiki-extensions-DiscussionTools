@@ -98,7 +98,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Bạn đã ngừng theo dõi.",
 	"discussiontools-topicsubscription-pager-page": "Trang",
 	"discussiontools-topicsubscription-pager-topic": "Chủ đề",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Ngừng theo dõi",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Ngừng theo dõi",
 	"discussiontools-topicsubscription-special-intro": "Việc theo dõi sẽ giúp bạn luôn nhận được thông báo khi một ai đó viết bình luận vào chủ đề bạn quan tâm.\n\nBạn có thể điều chỉnh phương thức và thời điểm nhận thông báo trong [[Special:Preferences#mw-prefsection-echo|Tùy chọn]].",
 	"discussiontools-topicsubscription-special-title": "Mô tả chủ đề",

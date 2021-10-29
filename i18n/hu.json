@@ -95,7 +95,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Leiratkoztál.",
 	"discussiontools-topicsubscription-pager-page": "Lap",
 	"discussiontools-topicsubscription-pager-topic": "Téma",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Leiratkozás",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Leiratkozás",
 	"discussiontools-topicsubscription-special-intro": "A feliratkozások lehetővé teszik egyes vitalapi témák követését. Ha valaki válaszol egy olyan témában, amire feliratkoztál, értesítést fogsz kapni róla.\n\nAz értesítések kézbesítésének módját és helyét a [[Special:Preferences#mw-prefsection-echo|beállításaidban]] módosíthatod.",
 	"discussiontools-topicsubscription-special-title": "Témafeliratkozások",

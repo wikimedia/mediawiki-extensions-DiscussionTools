@@ -112,7 +112,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Vous êtes désabonné.",
 	"discussiontools-topicsubscription-pager-page": "Page",
 	"discussiontools-topicsubscription-pager-topic": "Sujet",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Se désabonner",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Se désabonner",
 	"discussiontools-topicsubscription-special-intro": "Les abonnements vous permettent de suivre un sujet sur les pages de discussion. Lorsque quelqu'un répond à ce sujet, vous recevez une notification.\n\nRéglez comment et où vous recevrez ces notifications dans [[Special:Preferences#mw-prefsection-echo|vos préférences]].",
 	"discussiontools-topicsubscription-special-title": "Abonnements aux sujets",

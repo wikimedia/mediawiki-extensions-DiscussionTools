@@ -96,7 +96,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Έχετε καταργήσει την εγγραφή.",
 	"discussiontools-topicsubscription-pager-page": "Σελίδα",
 	"discussiontools-topicsubscription-pager-topic": "Θέμα",
-	"discussiontools-topicsubscription-pager-unsubscribe": "Κατάργηση εγγραφής",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Κατάργηση εγγραφής",
 	"discussiontools-topicsubscription-special-intro": "Οι συνδρομές σας επιτρέπουν να παρακολουθείτε ένα θέμα στις σελίδες συζήτησης. Όταν κάποιος απαντήσει στο θέμα, θα λάβετε μια ειδοποίηση.\n\nΠροσαρμόστε πώς και πού λαμβάνετε αυτές τις ειδοποιήσεις [[Special:Preferences#mw-prefsection-echo|στις προτιμήσεις σας]].",
 	"discussiontools-topicsubscription-special-title": "Εγγραφές σε θέματα",
