@@ -250,6 +250,7 @@ CommentController.prototype.getApiQuery = function ( comment, pageName, checkbox
 		// Only specify this if necessary to disambiguate, to avoid errors if the parent changes
 		commentid: sameNameComments.length > 1 ? comment.id : undefined,
 		summary: replyWidget.getEditSummary(),
+		formtoken: replyWidget.getFormToken(),
 		assert: mw.user.isAnon() ? 'anon' : 'user',
 		assertuser: mw.user.getName() || undefined,
 		uselang: mw.config.get( 'wgUserLanguage' ),

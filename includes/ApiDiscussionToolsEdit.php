@@ -39,6 +39,17 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 		$this->getErrorFormatter()->setContextTitle( $title );
 
+		$session = null;
+		$usedFormTokensKey = 'DiscussionTools:usedFormTokens';
+		$formToken = $params['formtoken'];
+		if ( $formToken ) {
+			$session = $this->getContext()->getRequest()->getSession();
+			$usedFormTokens = $session->get( $usedFormTokensKey ) ?? [];
+			if ( in_array( $formToken, $usedFormTokens ) ) {
+				$this->dieWithError( [ 'apierror-discussiontools-formtoken-used' ] );
+			}
+		}
+
 		switch ( $params['paction'] ) {
 			case 'addtopic':
 				$this->requireAtLeastOneParameter( $params, 'sectiontitle' );
@@ -231,6 +242,21 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			$this->dieWithError( 'discussiontools-error-comment-not-saved', 'comment-comment-not-saved' );
 		}
 
+		// Check the post was successful (could have been blocked by ConfirmEdit) before
+		// marking the form token as used.
+		if ( $formToken && isset( $result['result'] ) && $result['result'] === 'success' ) {
+			$usedFormTokens[] = $formToken;
+			// Set an arbitrary limit of the number of form tokens to
+			// store to prevent session storage from becoming full.
+			// It is unlikely that form tokens other than the few most
+			// recently used will be needed.
+			while ( count( $usedFormTokens ) > 50 ) {
+				// Discard the oldest tokens first
+				array_shift( $usedFormTokens );
+			}
+			$session->set( $usedFormTokensKey, $usedFormTokens );
+		}
+
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
@@ -254,6 +280,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			],
 			'token' => [
 				ParamValidator::PARAM_REQUIRED => true,
+			],
+			'formtoken' => [
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_MAX_CHARS => 16,
 			],
 			'commentname' => null,
 			'commentid' => null,

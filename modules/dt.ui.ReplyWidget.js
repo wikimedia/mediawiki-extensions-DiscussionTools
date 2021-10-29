@@ -317,6 +317,7 @@ ReplyWidget.prototype.clearStorage = function () {
 	this.storage.remove( this.storagePrefix + '/saveable' );
 	this.storage.remove( this.storagePrefix + '/summary' );
 	this.storage.remove( this.storagePrefix + '/showAdvanced' );
+	this.storage.remove( this.storagePrefix + '/formToken' );
 
 	this.emit( 'clearStorage' );
 };
@@ -515,6 +516,20 @@ ReplyWidget.prototype.afterSetup = function () {
 	this.onInputChange();
 	// Autosave
 	this.storage.set( this.storagePrefix + '/mode', this.getMode() );
+};
+
+/**
+ * Get a random token that is unique to this reply instance
+ *
+ * @return {string} Form token
+ */
+ReplyWidget.prototype.getFormToken = function () {
+	var formToken = this.storage.get( this.storagePrefix + '/formToken' );
+	if ( !formToken ) {
+		formToken = Math.random().toString( 36 ).slice( 2 );
+		this.storage.set( this.storagePrefix + '/formToken', formToken );
+	}
+	return formToken;
 };
 
 /**
