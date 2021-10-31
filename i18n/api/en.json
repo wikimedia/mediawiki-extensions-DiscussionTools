@@ -5,7 +5,7 @@
 	"apierror-discussiontools-commentid-notfound": "Comment with the ID '$1' not found.",
 	"apierror-discussiontools-commentname-ambiguous": "Multiple comments with the name '$1' found, <var>commentid</var> is required.",
 	"apierror-discussiontools-commentname-notfound": "Comment with the name '$1' not found.",
-	"apierror-discussiontools-formtoken-used": "Comment already posted successfully. Reload the page to see it.",
+	"apierror-discussiontools-formtoken-used": "Comment already posted. Reload the page to see it.",
 	"apierror-discussiontools-subscription-failed-add": "Could not subscribe to this topic.",
 	"apierror-discussiontools-subscription-failed-remove": "Could not unsubscribe from this topic.",
 	"apihelp-discussiontools-param-oldid": "The revision number to use (defaults to latest revision).",
