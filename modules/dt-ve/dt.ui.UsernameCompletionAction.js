@@ -103,7 +103,9 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			list: 'allusers',
 			auprefix: input,
 			auprop: 'blockinfo',
-			aulimit: this.limit
+			// Fetch twice as many results as we need so we can filter
+			// blocked users and still probably have some suggestions left
+			aulimit: this.constructor.static.defaultLimit * 2
 		} ).then( function ( response ) {
 			var suggestions = response.query.allusers.filter( function ( user ) {
 				// API doesn't return IPs
