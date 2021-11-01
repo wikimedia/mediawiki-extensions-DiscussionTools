@@ -102,14 +102,20 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			action: 'query',
 			list: 'allusers',
 			auprefix: input,
+			auprop: 'blockinfo',
 			aulimit: this.limit
 		} ).then( function ( response ) {
-			var suggestions = response.query.allusers.map( function ( user ) {
-				return user.name;
-			} ).filter( function ( username ) {
+			var suggestions = response.query.allusers.filter( function ( user ) {
 				// API doesn't return IPs
-				return action.localUsers.indexOf( username ) === -1 &&
-					action.remoteUsers.indexOf( username ) === -1;
+				return action.localUsers.indexOf( user.name ) === -1 &&
+					action.remoteUsers.indexOf( user.name ) === -1 &&
+					// Exclude users with indefinite sitewide blocks:
+					// The only place such users could reply is on their
+					// own user talk page, and in that case the user
+					// will be included in localUsers.
+					!( user.blockexpiry === 'infinite' && !user.blockpartial );
+			} ).map( function ( user ) {
+				return user.name;
 			} );
 
 			action.remoteUsers.push.apply( action.remoteUsers, suggestions );
