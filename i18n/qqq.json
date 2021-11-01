@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Amire80",
 			"Biyolojiyabikurdi",
 			"Matma Rex",
@@ -72,7 +73,7 @@
 	"discussiontools-replywidget-abandontopic-keep": "Label for button to cancel abandoning a new topic\n\nThis button follows {{msg-mw|discussiontools-replywidget-abandontopic}}.\n\nSimilar to {{msg-mw|discussiontools-replywidget-abandon-keep}}.",
 	"discussiontools-replywidget-advanced": "Label for button to toggle the advanced options, which shows an edit summary input and watchlist checkbox.",
 	"discussiontools-replywidget-anon-warning": "Warning message to be displayed when anonymous user starts writing a new topic or reply.\n* $1 is a URL to log in.\n* $2 is a URL to register an account.",
-	"discussiontools-replywidget-cancel": "Label for the cancel button to exit out of the widget",
+	"discussiontools-replywidget-cancel": "Label for the cancel button to exit out of the widget\n\n{{Identical|Cancel}}",
 	"discussiontools-replywidget-feedback": "Label for link to share feedback about the reply widget",
 	"discussiontools-replywidget-feedback-link": "{{optional|Link to a page where users can share feedback about the reply widget. Defaults to a page on MediaWiki.org.}}",
 	"discussiontools-replywidget-feedback-link-newtopic": "{{optional|Link to a page where users can share feedback about the new topic widget. Defaults to a page on MediaWiki.org.}}",
@@ -109,7 +110,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Title of notification shown when a user subscribes to a topic.",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Body of notification shown when a user unsubscribes from a topic.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Title of notification shown when a user unsubscribes from a topic.",
-	"discussiontools-topicsubscription-pager-actions": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
+	"discussiontools-topicsubscription-pager-actions": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.\n{{identical|Action}}",
 	"discussiontools-topicsubscription-pager-page": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
 	"discussiontools-topicsubscription-pager-topic": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] in the table, as a button label.",

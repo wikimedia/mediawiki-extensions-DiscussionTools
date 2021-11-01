@@ -3,6 +3,7 @@
 		"authors": [
 			"AYZ04",
 			"Colathewikian",
+			"Cosine02",
 			"Dianliang233",
 			"Func",
 			"Gerongfenh",
@@ -110,6 +111,10 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "您已订阅！",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "您将不再收到对于此话题的新评论的通知。",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "您已取消订阅。",
+	"discussiontools-topicsubscription-pager-page": "页面",
+	"discussiontools-topicsubscription-pager-topic": "话题",
+	"discussiontools-topicsubscription-special-intro": "订阅功能允许您跟随在讨论页上的话题。当有用户回复该话题时，您将收到通知。\n\n您可以在[[Special:Preferences#mw-prefsection-echo|参数设定]]之中调整接收通知的方式和地点。",
+	"discussiontools-topicsubscription-special-title": "话题订阅",
 	"echo-category-title-dt-subscription": "讨论页{{PLURAL:$1|订阅}}",
 	"echo-pref-tooltip-dt-subscription": "当有人在我订阅的话题上发布新评论时通知我。",
 	"tag-discussiontools-added-comment-description": "这次编辑中被加入了一个讨论页留言",

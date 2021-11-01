@@ -4,7 +4,20 @@
 			"Ajeje Brazorf"
 		]
 	},
+	"discussiontools-emptystate-title-self": "Bimminutu â tò pàggina di discussioni",
+	"discussiontools-emptystate-title-self-anon": "Bimminutu n sta pàggina di discussioni",
+	"discussiontools-emptystate-title-user-anon": "Bimminutu n sta pàggina di discussioni",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sicunnu|sicunni}}",
+	"discussiontools-newtopic-placeholder-title": "Tìtulu",
+	"discussiontools-notification-subscribed-new-comment-view": "Talìa cummentu",
+	"discussiontools-preference-label": "Strummenta di discussioni",
+	"discussiontools-replywidget-cancel": "Annulla",
+	"discussiontools-replywidget-newtopic": "Agghiunci argumentu",
+	"discussiontools-replywidget-placeholder-newtopic": "Discrizzioni",
 	"discussiontools-replywidget-preferences": "Prifirenzi",
-	"tag-discussiontools-edit": "Cummentu canciatu"
+	"discussiontools-replywidget-summary": "Uggettu",
+	"discussiontools-topicsubscription-pager-actions": "Azzioni",
+	"discussiontools-topicsubscription-pager-page": "Pàggina",
+	"tag-discussiontools-edit": "Cummentu canciatu",
+	"tag-discussiontools-source": "Surgenti"
 }

@@ -110,6 +110,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Vous êtes abonné !",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Vous ne recevrez plus de notifications sur les nouveaux commentaires sur ce sujet.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Vous êtes désabonné.",
+	"discussiontools-topicsubscription-pager-actions": "Actions",
 	"discussiontools-topicsubscription-pager-page": "Page",
 	"discussiontools-topicsubscription-pager-topic": "Sujet",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Se désabonner",

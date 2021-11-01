@@ -4,5 +4,6 @@
 			"আফতাবুজ্জামান"
 		]
 	},
+	"apierror-discussiontools-formtoken-used": "মন্তব্য ইতোমধ্যে সফলভাবে পোস্ট করা হয়েছে। মন্তব্যটি দেখতে পাতাটি পুনরায় লোড করুন।",
 	"apihelp-discussiontoolsedit-param-wikitext": "উইকিপাঠ্য হিসেবে পোস্ট করার বিষয়বস্তু। <var>html</var> এর সাথে একত্রে ব্যবহার করা যাবে না।"
 }

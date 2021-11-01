@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DreZhsh",
 			"Gomoko",
 			"Thibaut120094",
 			"Verdy p",
@@ -10,6 +11,7 @@
 	"apierror-discussiontools-commentid-notfound": "Commentaire avec l’ID « $1 » non trouvé.",
 	"apierror-discussiontools-commentname-ambiguous": "Plusieurs commentaires trouvés avec le nom « $1 », <var>commentid</var> est obligatoire.",
 	"apierror-discussiontools-commentname-notfound": "Commentaire avec le nom « $1 » non trouvé.",
+	"apierror-discussiontools-formtoken-used": "Le commentaire a déjà été posté avec succès. Rechargez la page pour le voir.",
 	"apierror-discussiontools-subscription-failed-add": "Impossible de s’abonner à ce sujet.",
 	"apierror-discussiontools-subscription-failed-remove": "Impossible de se désabonner de ce sujet.",
 	"apihelp-discussiontools-param-oldid": "Le numéro de révision à utiliser (par défaut, la dernière révision).",
@@ -17,6 +19,7 @@
 	"apihelp-discussiontools-summary": "Renvoie les métadonnées nécessaires pour initialiser les outils de discussion.",
 	"apihelp-discussiontoolsedit-param-commentid": "Identifiant du commentaire auquel répondre. Utilisé seulement lorsque <var>paction</var> vaut <var>addcomment</var>. Prévaut sur <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Nom du commentaire auquel répondre. Utilisé seulement quand <var>paction</var> vaut <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-formtoken": "Un identifiant unique optionnel généré dans le client pour éviter la double publication.",
 	"apihelp-discussiontoolsedit-param-html": "Contenu à poster, en tant que HTML. Ne peut pas être utilisé conjointement avec <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Utilisé seulement lorsque <var>paction</var> est <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Contenu à poster, en tant que wikitexte. Ne peut pas être utilisé conjointement avec <var>html</var>.",
