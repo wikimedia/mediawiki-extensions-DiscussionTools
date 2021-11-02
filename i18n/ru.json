@@ -88,6 +88,7 @@
 	"discussiontools-topicsubscription-error-not-found-title": "Подписка не найдена",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Вы подписались!",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Вы отписались.",
+	"discussiontools-topicsubscription-pager-actions": "Действия",
 	"discussiontools-topicsubscription-pager-page": "Страница",
 	"discussiontools-topicsubscription-pager-topic": "Тема",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Отписаться",

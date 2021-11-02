@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Pacha Tchernof",
 			"Playershut",
 			"Sunpriat",
 			"Wileyfoxyx"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Комментарий с ID '$1' не был найден.",
+	"apierror-discussiontools-formtoken-used": "Комментарий уже опубликован. Чтобы увидеть его, перезагрузите страницу.",
 	"apihelp-discussiontools-param-oldid": "Номер версии для использования (по умолчанию — последняя версия).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Возвращает заголовки страниц, с которых включён каждый комментарий в заданную страницу.",
 	"apihelp-discussiontools-summary": "Возвращает метаданные, необходимые для инициализации Discussion tools.",
