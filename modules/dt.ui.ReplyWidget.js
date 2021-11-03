@@ -831,11 +831,16 @@ ReplyWidget.prototype.onReplyClick = function () {
 			widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
 		}
 
+		if ( code instanceof Error ) {
+			code = 'exception';
+		}
 		// Log more precise error codes, mw.Api just gives us 'http' in all of these cases
-		if ( data.textStatus === 'timeout' || data.textStatus === 'abort' || data.textStatus === 'parsererror' ) {
-			code = data.textStatus;
-		} else if ( data.xhr ) {
-			code = 'http-' + ( data.xhr.status || 0 );
+		if ( data ) {
+			if ( data.textStatus === 'timeout' || data.textStatus === 'abort' || data.textStatus === 'parsererror' ) {
+				code = data.textStatus;
+			} else if ( data.xhr ) {
+				code = 'http-' + ( data.xhr.status || 0 );
+			}
 		}
 
 		logger( {
