@@ -4,6 +4,7 @@
 			"Ykhwong"
 		]
 	},
+	"apierror-discussiontools-formtoken-used": "답변이 이미 게시되었습니다. 답변을 보려면 페이지를 다시 로드하십시오.",
 	"apierror-discussiontools-subscription-failed-add": "이 주제를 구독하지 못했습니다.",
 	"apihelp-discussiontools-summary": "토론 도구 초기화에 필요한 메타데이터를 반환합니다.",
 	"apihelp-discussiontoolsedit-param-wikitext": "위키텍스트",
