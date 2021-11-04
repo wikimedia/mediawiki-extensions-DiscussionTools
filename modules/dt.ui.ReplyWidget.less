@@ -1,3 +1,5 @@
+@width-breakpoint-tablet: 720px;
+
 .ext-discussiontools-ui-replyWidget {
 	margin-bottom: 1em;
 	position: relative;
@@ -37,6 +39,8 @@
 		background: none;
 		box-shadow: none;
 		border: 0;
+		// Stretch to all available space
+		flex-grow: 1;
 
 		> .oo-ui-toolbar-actions {
 			display: none;
@@ -63,12 +67,19 @@
 		}
 	}
 
+	.skin-minerva & .ve-ui-surface-visual .ve-ce-paragraphNode {
+		// Reduce paragraph spacing in editor, as replies will actually generate <dd> not <p>
+		margin: 0;
+
+		&:first-child {
+			margin-top: 0.5em;
+		}
+	}
+
 	&-modeTabs {
 		box-shadow: none;
 		height: 3em;
 		text-align: right;
-		// Stretch to all available space
-		flex-grow: 1;
 		// Hide outline that can appear after switching modes via keyboard
 		outline: 0;
 
@@ -88,6 +99,19 @@
 		.ext-discussiontools-ui-modeTab.oo-ui-widget-disabled {
 			color: #36c;
 			box-shadow: inset 0 -2px 0 0 #36c;
+		}
+	}
+
+	&-editSwitch {
+		text-align: right;
+
+		.oo-ui-toolbar-bar { /* stylelint-disable-line no-descending-specificity */
+			border: 0;
+			box-shadow: none;
+		}
+
+		.oo-ui-toolbar-popups {
+			text-align: left;
 		}
 	}
 
@@ -164,6 +188,10 @@
 
 		.ext-discussiontools-ui-replyWidget:not( .ext-discussiontools-ui-replyWidget-newTopic ) & > .mw-parser-output {
 			margin-left: -1.6em;
+
+			.skin-minerva & {
+				margin-left: -1em;
+			}
 		}
 
 		> .mw-parser-output > h2:first-child {
@@ -244,6 +272,23 @@
 			// Force to a separate line
 			width: 100%;
 		}
+
+		// Change field layout and order on mobile
+		@media all and ( max-width: @width-breakpoint-tablet ) {
+			.oo-ui-fieldLayout-header {
+				order: 1;
+			}
+
+			.oo-ui-fieldLayout-field {
+				order: 2;
+			}
+
+			.ext-discussiontools-ui-replyWidget-checkboxes {
+				order: 3;
+				flex-grow: 1;
+				margin-top: 1em;
+			}
+		}
 	}
 
 	&-editSummary {
@@ -266,4 +311,10 @@
 			min-height: auto;
 		}
 	}
+}
+
+.skin-minerva .ext-discussiontools-init-replylink-open dl dd {
+	// Disable overflow hack for scrolling images in <dd> in Minerva
+	// while the tool is open, as we need negative margins on the widget.
+	overflow: visible;
 }

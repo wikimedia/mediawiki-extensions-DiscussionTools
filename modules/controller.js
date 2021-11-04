@@ -389,6 +389,9 @@ function init( $container, state ) {
 		threadItemsById = {},
 		threadItems = [];
 
+	// Lazy-load postEdit module, may be required later (on desktop)
+	mw.loader.using( 'mediawiki.action.view.postEdit' );
+
 	$pageContainer = $container;
 	linksController = new ReplyLinksController( $pageContainer );
 	var parser = new Parser( $pageContainer[ 0 ] );
@@ -549,9 +552,14 @@ function init( $container, state ) {
 		var repliedToComment = threadItemsById[ state.repliedTo ];
 		$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 
-		mw.hook( 'postEdit' ).fire( {
-			message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
-		} );
+		if ( OO.ui.isMobile() ) {
+			mw.notify( mw.msg( 'discussiontools-postedit-confirmation-published', mw.user ) );
+		} else {
+			// postEdit is currently desktop only
+			mw.hook( 'postEdit' ).fire( {
+				message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
+			} );
+		}
 	}
 
 	if ( $highlight ) {

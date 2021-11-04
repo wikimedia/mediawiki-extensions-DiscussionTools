@@ -33,6 +33,12 @@ span[ data-mw-comment-start ] {
 		}
 	}
 
+	// No support for reply links in the mobile talk overlay
+	// stylelint-disable-next-line no-descending-specificity, selector-class-pattern
+	.talk-overlay & {
+		display: none;
+	}
+
 	.ext-discussiontools-init-replylink {
 		&-reply {
 			cursor: pointer;

@@ -82,7 +82,6 @@
 				"moment",
 				"rangefix",
 				"oojs-ui-windows",
-				"mediawiki.action.view.postEdit",
 				"mediawiki.api",
 				"mediawiki.Title",
 				"mediawiki.Uri",
@@ -119,6 +118,10 @@
 				"discussiontools-topicsubscription-notify-subscribed-title",
 				"discussiontools-topicsubscription-notify-unsubscribed-body",
 				"discussiontools-topicsubscription-notify-unsubscribed-title"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		},
 		"ext.discussionTools.debug": {
@@ -129,6 +132,10 @@
 			"styles": "highlighter.less",
 			"dependencies": [
 				"ext.discussionTools.init"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		},
 		"ext.discussionTools.ReplyWidget": {
@@ -185,7 +192,11 @@
 			"optionalDependencies": {
 				"ConfirmEdit": "ext.confirmEdit.CaptchaInputWidget"
 			},
-			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\Data::addOptionalDependencies"
+			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\Data::addOptionalDependencies",
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		},
 		"ext.discussionTools.ReplyWidgetPlain": {
 			"packageFiles": [
@@ -195,7 +206,12 @@
 				"ext.discussionTools.ReplyWidget",
 				"mediawiki.editfont.styles",
 				"mediawiki.user",
-				"mediawiki.jqueryMsg"
+				"mediawiki.jqueryMsg",
+				"ext.visualEditor.switching"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		},
 		"ext.discussionTools.ReplyWidgetVisual": {
@@ -224,9 +240,11 @@
 				"ext.visualEditor.mwcore",
 				"ext.visualEditor.mwsignature",
 				"ext.visualEditor.mwwikitext",
-				"ext.visualEditor.core.desktop",
-				"ext.visualEditor.desktopTarget",
-				"ext.visualEditor.mwextensions.desktop"
+				"ext.visualEditor.articleTarget"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
 			]
 		}
 	},
@@ -488,6 +506,10 @@
 		"DiscussionToolsABTest": {
 			"value": false,
 			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', 'newtopictool', or 'all'"
+		},
+		"DiscussionToolsEnableMobile": {
+			"value": false,
+			"description": "Enable DiscussionTools on mobile talk pages."
 		},
 		"DiscussionTools_replytool": {
 			"value": "default",

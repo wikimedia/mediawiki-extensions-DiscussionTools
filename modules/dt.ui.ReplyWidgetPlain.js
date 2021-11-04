@@ -12,8 +12,39 @@ var utils = require( 'ext.discussionTools.init' ).utils;
  * @param {Object} [config]
  */
 function ReplyWidgetPlain() {
+	var widget = this;
+
 	// Parent constructor
 	ReplyWidgetPlain.super.apply( this, arguments );
+
+	if ( OO.ui.isMobile() ) {
+		var toolFactory = new OO.ui.ToolFactory(),
+			toolGroupFactory = new OO.ui.ToolGroupFactory();
+
+		toolFactory.register( mw.libs.ve.MWEditModeVisualTool );
+		toolFactory.register( mw.libs.ve.MWEditModeSourceTool );
+		this.switchToolbar = new OO.ui.Toolbar( toolFactory, toolGroupFactory, {
+			classes: [ 'ext-discussiontools-ui-replyWidget-editSwitch' ]
+		} );
+
+		this.switchToolbar.on( 'switchEditor', function ( mode ) {
+			widget.switch( mode );
+		} );
+
+		this.switchToolbar.setup( [ {
+			name: 'editMode',
+			type: 'list',
+			icon: 'edit',
+			title: mw.msg( 'visualeditor-mweditmode-tooltip' ),
+			label: mw.msg( 'visualeditor-mweditmode-tooltip' ),
+			invisibleLabel: true,
+			include: [ 'editModeVisual', 'editModeSource' ]
+		} ] );
+
+		this.switchToolbar.emit( 'updateState' );
+
+		this.$headerWrapper.append( this.switchToolbar.$element );
+	}
 
 	this.$element.addClass( 'ext-discussiontools-ui-replyWidget-plain' );
 }

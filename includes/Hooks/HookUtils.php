@@ -211,12 +211,21 @@ class HookUtils {
 			return false;
 		}
 
-		// Don't show on mobile
+		$isMobile = false;
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
 			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
-			if ( $mobFrontContext->shouldDisplayMobileView() ) {
-				return false;
-			}
+			$isMobile = $mobFrontContext->shouldDisplayMobileView();
+		}
+
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+
+		if ( $isMobile && (
+			!$dtConfig->get( 'DiscussionToolsEnableMobile' ) ||
+			// Still disable some features for now
+			$feature === self::TOPICSUBSCRIPTION ||
+			$feature === self::NEWTOPICTOOL
+		) ) {
+			return false;
 		}
 
 		// Topic subscription is not available on your own talk page, as you will
@@ -230,7 +239,6 @@ class HookUtils {
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
 			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
 
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 		if (
 			$feature === self::TOPICSUBSCRIPTION &&
 			!$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' )

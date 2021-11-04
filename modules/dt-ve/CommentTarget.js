@@ -30,21 +30,57 @@ CommentTarget.static.name = 'discussionTools';
 
 CommentTarget.static.modes = [ 'visual', 'source' ];
 
-CommentTarget.static.toolbarGroups = [
-	{
-		name: 'style',
-		title: OO.ui.deferMsg( 'visualeditor-toolbar-style-tooltip' ),
-		include: [ 'bold', 'italic', 'moreTextStyle' ]
-	},
-	{
-		name: 'link',
-		include: [ 'link' ]
-	},
-	{
-		name: 'other',
-		include: [ 'usernameCompletion' ]
-	}
-];
+if ( OO.ui.isMobile() ) {
+	// Mobile currently expects one tool per group
+	CommentTarget.static.toolbarGroups = [
+		{
+			name: 'style',
+			classes: [ 've-test-toolbar-style' ],
+			type: 'list',
+			icon: 'textStyle',
+			title: OO.ui.deferMsg( 'visualeditor-toolbar-style-tooltip' ),
+			label: OO.ui.deferMsg( 'visualeditor-toolbar-style-tooltip' ),
+			invisibleLabel: true,
+			include: [ { group: 'textStyle' }, 'language', 'clear' ],
+			forceExpand: [ 'bold', 'italic', 'clear' ],
+			promote: [ 'bold', 'italic' ],
+			demote: [ 'strikethrough', 'code', 'underline', 'language', 'clear' ]
+		},
+		{
+			name: 'link',
+			include: [ 'link' ]
+		},
+		{
+			name: 'other',
+			include: [ 'usernameCompletion' ]
+		},
+		{
+			name: 'editMode',
+			type: 'list',
+			icon: 'edit',
+			title: OO.ui.deferMsg( 'visualeditor-mweditmode-tooltip' ),
+			label: OO.ui.deferMsg( 'visualeditor-mweditmode-tooltip' ),
+			invisibleLabel: true,
+			include: [ 'editModeVisual', 'editModeSource' ]
+		}
+	];
+} else {
+	CommentTarget.static.toolbarGroups = [
+		{
+			name: 'style',
+			title: OO.ui.deferMsg( 'visualeditor-toolbar-style-tooltip' ),
+			include: [ 'bold', 'italic', 'moreTextStyle' ]
+		},
+		{
+			name: 'link',
+			include: [ 'link' ]
+		},
+		{
+			name: 'other',
+			include: [ 'usernameCompletion' ]
+		}
+	];
+}
 
 CommentTarget.static.importRules = ve.copy( CommentTarget.static.importRules );
 
@@ -73,7 +109,7 @@ CommentTarget.static.importRules.external.blacklist = ve.extendObject(
 
 CommentTarget.prototype.attachToolbar = function () {
 	this.replyWidget.$headerWrapper.append(
-		this.getToolbar().$element.append( this.replyWidget.modeTabSelect.$element )
+		this.getToolbar().$element.append( this.replyWidget.modeTabSelect ? this.replyWidget.modeTabSelect.$element : null )
 	);
 	this.getToolbar().$element.prepend( this.getSurface().getToolbarDialogs().$element );
 };
@@ -87,6 +123,14 @@ CommentTarget.prototype.getSurfaceConfig = function ( config ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$overlayContainer: $( '#content' )
 	}, config ) );
+};
+
+CommentTarget.prototype.editSource = function () {
+	this.replyWidget.switch( 'source' );
+};
+
+CommentTarget.prototype.switchToVisualEditor = function () {
+	this.replyWidget.switch( 'visual' );
 };
 
 /* Registration */
