@@ -163,7 +163,7 @@ MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range )
 		return MWUsernameCompletionAction.super.prototype.insertCompletion.call( this, word, range );
 	}
 
-	var fragment = this.surface.getModel().getLinearFragment( range );
+	var fragment = this.surface.getModel().getLinearFragment( range, true );
 	fragment.removeContent().insertContent( [
 		{ type: 'mwPing', attributes: { user: word } },
 		{ type: '/mwPing' }
