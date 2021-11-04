@@ -537,8 +537,8 @@
 			"description": "Override $wgParserCacheExpireTime for discussion pages, regardless of DiscussionTools enablement."
 		},
 		"DTSchemaEditAttemptStepSamplingRate": {
-			"value": false,
-			"description": "Rate at which to sample sessions for instrumentation; overrides WikimediaEvents rate if set"
+			"value": 0,
+			"description": "Rate at which to sample sessions for instrumentation; overrides WikimediaEvents rate if set to any number other than 0"
 		},
 		"DTSchemaEditAttemptStepOversample": {
 			"value": false,
