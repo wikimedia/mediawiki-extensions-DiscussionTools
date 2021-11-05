@@ -509,7 +509,7 @@
 			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', 'newtopictool', or 'all'"
 		},
 		"DiscussionToolsEnableMobile": {
-			"value": false,
+			"value": true,
 			"description": "Enable DiscussionTools on mobile talk pages."
 		},
 		"DiscussionTools_replytool": {
