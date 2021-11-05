@@ -18,17 +18,20 @@ use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
+use MediaWiki\Page\Hook\ArticleViewHeaderHook;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserOptionsLookup;
 use OOUI\ButtonWidget;
 use OutputPage;
+use ParserOutput;
 use RequestContext;
 use Skin;
 use SpecialPage;
 use VisualEditorHooks;
 
 class PageHooks implements
+	ArticleViewHeaderHook,
 	BeforeDisplayNoArticleTextHook,
 	BeforePageDisplayHook,
 	GetActionNameHook,
@@ -308,5 +311,35 @@ class PageHooks implements
 		);
 
 		return false;
+	}
+
+	/**
+	 * @param Article $article
+	 * @param bool|ParserOutput &$outputDone
+	 * @param bool &$pcache
+	 * @return bool|void
+	 */
+	public function onArticleViewHeader( $article, &$outputDone, &$pcache ) {
+		$context = $article->getContext();
+		$output = $context->getOutput();
+		if (
+			$output->getSkin()->getSkinName() === 'minerva' &&
+			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
+			// No need to show the button when the empty state banner is shown
+			!HookUtils::shouldDisplayEmptyState( $context )
+		) {
+			// Minerva doesn't show a new topic button by default, unless the MobileFrontend
+			// talk page feature is enabled, but we shouldn't depend on code from there.
+			$output->enableOOUI();
+			$output->addHTML(
+				new ButtonWidget( [
+					'href' => $article->getTitle()->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
+					// TODO: Make this a local message if the Minerva feature goes away
+					'label' => $context->msg( 'minerva-talk-add-topic' )->text(),
+					'flags' => [ 'progressive', 'primary' ],
+					'classes' => [ 'ext-discussiontools-init-new-topic' ]
+				] )
+			);
+		}
 	}
 }

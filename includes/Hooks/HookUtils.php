@@ -222,8 +222,7 @@ class HookUtils {
 		if ( $isMobile && (
 			!$dtConfig->get( 'DiscussionToolsEnableMobile' ) ||
 			// Still disable some features for now
-			$feature === self::TOPICSUBSCRIPTION ||
-			$feature === self::NEWTOPICTOOL
+			$feature === self::TOPICSUBSCRIPTION
 		) ) {
 			return false;
 		}
@@ -232,6 +231,17 @@ class HookUtils {
 		// get 'edit-user-talk' notifications already. (T276996)
 		if ( $feature === self::TOPICSUBSCRIPTION && $title->equals( $output->getUser()->getTalkPage() ) ) {
 			return false;
+		}
+
+		// New topic tool is not available if __NONEWSECTIONLINK__ is set
+		// We may need to move this check to the client when we support
+		// launching the tool from other pages.
+		if ( $feature === self::NEWTOPICTOOL ) {
+			$services = MediaWikiServices::getInstance();
+			$props = $services->getPageProps()->getProperties( $title, 'nonewsectionlink' );
+			if ( isset( $props[ $title->getArticleId() ] ) ) {
+				return false;
+			}
 		}
 
 		// ?dtenable=1 overrides all user and title checks
