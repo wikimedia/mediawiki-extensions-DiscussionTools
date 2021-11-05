@@ -2,6 +2,7 @@ var
 	// Data::getLocalData()
 	parserData = require( './parser/data.json' ),
 	utils = require( './utils.js' );
+var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
 function ReplyLinksController( $pageContainer ) {
 	// Mixin constructors
@@ -18,7 +19,6 @@ function ReplyLinksController( $pageContainer ) {
 	this.$replyLinks.on( 'click keypress', this.onReplyLinkClickHandler );
 
 	// "Add topic" link in the skin interface
-	var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 	if ( featuresEnabled.newtopictool ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $addSectionTab = $( '#ca-addsection' );
@@ -203,8 +203,10 @@ ReplyLinksController.prototype.teardown = function () {
 	}
 
 	this.$replyLinks.off( 'click keypress', this.onReplyLinkClickHandler );
-	if ( this.$addSectionLink ) {
-		this.$addSectionLink.off( 'click keypress', this.onAddSectionLinkClickHandler );
+	if ( featuresEnabled.newtopictool ) {
+		if ( this.$addSectionLink ) {
+			this.$addSectionLink.off( 'click keypress', this.onAddSectionLinkClickHandler );
+		}
 		this.$body.off( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
 	}
 };
