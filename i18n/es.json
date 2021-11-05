@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Avengium",
+			"Bruno44101",
 			"Canaan9801",
 			"Ed g2s",
 			"Fewasser Traduce",
@@ -106,6 +107,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "¡Te has suscrito!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ya no recibirás notificaciones sobre comentarios nuevos en este tema.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Te has desuscrito.",
+	"discussiontools-topicsubscription-pager-actions": "Acciones",
 	"discussiontools-topicsubscription-pager-page": "Página",
 	"discussiontools-topicsubscription-pager-topic": "Tema",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Desuscribirse",
