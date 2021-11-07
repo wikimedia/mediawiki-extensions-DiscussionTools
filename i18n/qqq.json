@@ -114,6 +114,7 @@
 	"discussiontools-topicsubscription-pager-page": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
 	"discussiontools-topicsubscription-pager-topic": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] in the table, as a button label.",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Used on [[Special:Preferences]] as a label of a link to [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]].",
 	"discussiontools-topicsubscription-special-intro": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as an introduction.",
 	"discussiontools-topicsubscription-special-title": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as the page title.",
 	"echo-category-title-dt-subscription": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-dt-subscription}}",

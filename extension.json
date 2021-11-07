@@ -464,7 +464,8 @@
 		"preferences": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks",
 			"services": [
-				"ConfigFactory"
+				"ConfigFactory",
+				"LinkRenderer"
 			]
 		},
 		"resourceloader": {

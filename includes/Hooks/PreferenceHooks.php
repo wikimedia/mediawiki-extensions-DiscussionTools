@@ -10,10 +10,13 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ConfigFactory;
+use Html;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use RequestContext;
+use SpecialPage;
 use User;
 
 class PreferenceHooks implements
@@ -23,13 +26,38 @@ class PreferenceHooks implements
 	/** @var ConfigFactory */
 	private $configFactory;
 
+	/** @var LinkRenderer */
+	private $linkRenderer;
+
 	/**
 	 * @param ConfigFactory $configFactory
+	 * @param LinkRenderer $linkRenderer
 	 */
 	public function __construct(
-		ConfigFactory $configFactory
+		ConfigFactory $configFactory,
+		LinkRenderer $linkRenderer
 	) {
 		$this->configFactory = $configFactory;
+		$this->linkRenderer = $linkRenderer;
+	}
+
+	/**
+	 * Rename a key in an array while preserving the order of associative array keys.
+	 *
+	 * @param array $array
+	 * @param string $from
+	 * @param string $to
+	 * @return array Modified array
+	 */
+	private static function arrayRenameKey( array $array, string $from, string $to ): array {
+		$out = [];
+		foreach ( $array as $key => $value ) {
+			if ( $key === $from ) {
+				$key = $to;
+			}
+			$out[$key] = $value;
+		}
+		return $out;
 	}
 
 	/**
@@ -92,6 +120,33 @@ class PreferenceHooks implements
 				return in_array( $value, [ '', 'source', 'visual' ], true );
 			},
 		];
+
+		// Add a link to Special:TopicSubscriptions to the Echo preferences matrix
+		$categoryMessage = wfMessage( 'echo-category-title-dt-subscription' )->numParams( 1 )->escaped();
+		$categoryMessageExtra = $categoryMessage .
+			Html::element( 'br' ) .
+			wfMessage( 'parentheses' )->rawParams(
+				$this->linkRenderer->makeLink(
+					SpecialPage::getTitleFor( 'TopicSubscriptions' ),
+					wfMessage( 'discussiontools-topicsubscription-preferences-editsubscriptions' )->text()
+				)
+			)->escaped();
+		if ( isset( $preferences['echo-subscriptions']['rows'] ) ) {
+			$preferences['echo-subscriptions']['rows'] = self::arrayRenameKey(
+				$preferences['echo-subscriptions']['rows'],
+				$categoryMessage,
+				$categoryMessageExtra
+			);
+		}
+		if ( isset( $preferences['echo-subscriptions']['tooltips'] ) ) {
+			$preferences['echo-subscriptions']['tooltips'] = self::arrayRenameKey(
+				// Phan insists that this key doesn't exist, even though we just checked with isset()
+				// @phan-suppress-next-line PhanTypeInvalidDimOffset, PhanTypeMismatchArgument
+				$preferences['echo-subscriptions']['tooltips'],
+				$categoryMessage,
+				$categoryMessageExtra
+			);
+		}
 	}
 
 	/**

@@ -104,6 +104,7 @@
 	"discussiontools-topicsubscription-pager-page": "Page",
 	"discussiontools-topicsubscription-pager-topic": "Topic",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Unsubscribe",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Edit subscriptions",
 	"discussiontools-topicsubscription-special-intro": "Subscriptions allow you to follow a topic on talk pages. When someone replies to the topic, you will receive a notification.\n\nAdjust how and where you receive these notifications in [[Special:Preferences#mw-prefsection-echo|your preferences]].",
 	"discussiontools-topicsubscription-special-title": "Topic subscriptions",
 	"echo-category-title-dt-subscription": "Talk page {{PLURAL:$1|subscription|subscriptions}}",
