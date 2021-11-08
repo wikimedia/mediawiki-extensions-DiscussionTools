@@ -490,14 +490,14 @@ function init( $container, state ) {
 		}
 
 		// If this is a new topic link, and a reply widget is open, attempt to close it first.
-		var promise;
+		var teardownPromise;
 		if ( activeController && commentId === utils.NEW_TOPIC_COMMENT_ID ) {
-			promise = activeController.replyWidget.tryTeardown();
+			teardownPromise = activeController.replyWidget.tryTeardown();
 		} else {
-			promise = $.Deferred().resolve();
+			teardownPromise = $.Deferred().resolve();
 		}
 
-		promise.then( function () {
+		teardownPromise.then( function () {
 			// If another reply widget is open (or opening), do nothing.
 			if ( activeController ) {
 				return;
@@ -507,22 +507,24 @@ function init( $container, state ) {
 	} );
 
 	// Restore autosave
-	var mode, $link;
-	for ( i = 0; i < threadItems.length; i++ ) {
-		comment = threadItems[ i ];
-		if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
-			mode = storage.get( 'reply/' + comment.id + '/mode' );
-			$link = $( commentNodes[ i ] );
-			setupController( comment.id, $link, mode, true );
-			break;
+	( function () {
+		var mode, $link;
+		for ( i = 0; i < threadItems.length; i++ ) {
+			comment = threadItems[ i ];
+			if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
+				mode = storage.get( 'reply/' + comment.id + '/mode' );
+				$link = $( commentNodes[ i ] );
+				setupController( comment.id, $link, mode, true );
+				break;
+			}
 		}
-	}
-	if ( storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ) {
-		mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
-		setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ), mode, true );
-	} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
-		setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ) );
-	}
+		if ( storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ) {
+			mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
+			setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ), mode, true );
+		} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
+			setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ) );
+		}
+	}() );
 
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;

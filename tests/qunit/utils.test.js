@@ -25,7 +25,7 @@ QUnit.test( '#linearWalk', function ( assert ) {
 		assert.deepEqual( actual, expected, caseItem.name );
 
 		var expectedBackwards = expected.slice().reverse().map( function ( a ) {
-			return ( a.substr( 0, 5 ) === 'enter' ? 'leave' : 'enter' ) + a.substr( 5 );
+			return ( a.slice( 0, 5 ) === 'enter' ? 'leave' : 'enter' ) + a.slice( 5 );
 		} );
 		assert.deepEqual( actualBackwards, expectedBackwards, caseItem.name + ' (backwards)' );
 
