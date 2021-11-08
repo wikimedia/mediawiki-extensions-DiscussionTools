@@ -11,7 +11,7 @@
 	"apierror-discussiontools-commentid-notfound": "未找到ID为“$1”的评论。",
 	"apierror-discussiontools-commentname-ambiguous": "找到多个名称为“$1”的评论，必须提供<var>commentid</var>。",
 	"apierror-discussiontools-commentname-notfound": "未找到名为“$1”的评论。",
-	"apierror-discussiontools-formtoken-used": "评论已经成功发布。查看请重载此页面。",
+	"apierror-discussiontools-formtoken-used": "评论已经成功发布。请重新加载此页面以查看。",
 	"apierror-discussiontools-subscription-failed-add": "无法订阅此话题。",
 	"apierror-discussiontools-subscription-failed-remove": "无法取消订阅此话题。",
 	"apihelp-discussiontools-param-oldid": "要使用的修订版本号（默认为最新修订版本）。",

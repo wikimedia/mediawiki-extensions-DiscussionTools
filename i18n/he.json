@@ -99,6 +99,7 @@
 	"discussiontools-topicsubscription-pager-page": "דף",
 	"discussiontools-topicsubscription-pager-topic": "נושא",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "ביטול מינוי לנושא הזה",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "עריכת מינויים לנושאים",
 	"discussiontools-topicsubscription-special-intro": "מינוי לנושא מאפשר לך לעקוב אחרי נושא בדפי שיחה. כשמישהו משיב לנושא, {{GENDER:|תקבל|תקבלי}} התראה.\n\n{{GENDER:|כוונן איך ואיפה אתה מקבל|כוונני איך ואיפה את מקבלת}} את ההתראות האלו ב[[Special:Preferences#mw-prefsection-echo|העדפות שלך]].",
 	"discussiontools-topicsubscription-special-title": "מינויים לנושאים",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|שיחה|שיחות}} במעקב",

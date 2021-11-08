@@ -95,6 +95,7 @@
 	"discussiontools-topicsubscription-pager-page": "Страница",
 	"discussiontools-topicsubscription-pager-topic": "Тема",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Отпиши ме",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Измени претплати",
 	"discussiontools-topicsubscription-special-intro": "Претплатите ви овозможуваат да следите теми на разговорни страници. Добивате известување кога некој ќе одговори на тема.\n\nПриалгодете како и кога ги примате овие известувања во [[Special:Preferences#mw-prefsection-echo|вашите нагодувања]].",
 	"discussiontools-topicsubscription-special-title": "Тематски претплати",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Претплата|Претплати}} на разговорна страница",

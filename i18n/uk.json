@@ -107,6 +107,7 @@
 	"discussiontools-topicsubscription-pager-page": "Сторінка",
 	"discussiontools-topicsubscription-pager-topic": "Тема",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Скасувати підписку",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Редагувати підписки",
 	"discussiontools-topicsubscription-special-intro": "Підписка дозволяє стежити за темою на сторінках обговорень. Коли хтось відповість на тему, ви отримаєте сповіщення.\n\nНалаштуйте, як і де ви отримуєте ці сповіщення, у [[Special:Preferences#mw-prefsection-echo|своїх налаштуваннях]].",
 	"discussiontools-topicsubscription-special-title": "Підписки на теми",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Підписка|Підписки}} на зміни сторінок обговорення",

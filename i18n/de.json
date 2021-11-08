@@ -101,6 +101,7 @@
 	"discussiontools-topicsubscription-pager-page": "Seite",
 	"discussiontools-topicsubscription-pager-topic": "Thema",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Abbestellen",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Abonnements bearbeiten",
 	"discussiontools-topicsubscription-special-intro": "Mit einem Abonnement kannst du ein Thema auf Diskussionsseiten verfolgen. Wenn jemand auf das Thema antwortet, erhältst du eine Benachrichtigung.\n\nWie und wo du diese Benachrichtigungen erhältst, kannst du in [[Special:Preferences#mw-prefsection-echo|deinen Einstellungen]] festlegen.",
 	"discussiontools-topicsubscription-special-title": "Themenbezogene Abonnements",
 	"echo-category-title-dt-subscription": "Diskussionsseiten-{{PLURAL:$1|Abonnement|Abonnements}}",
