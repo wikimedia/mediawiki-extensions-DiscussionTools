@@ -10,6 +10,8 @@
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use ChangeTags;
+use DateInterval;
+use DateTimeImmutable;
 use DeferredUpdates;
 use EchoEvent;
 use Error;
@@ -237,6 +239,13 @@ class EventDispatcher {
 			// Ignore comments by other users, e.g. in case of reverts or a discussion being moved.
 			// TODO: But what about someone signing another's comment?
 			if ( $newComment->getAuthor() !== $user->getName() ) {
+				continue;
+			}
+			// Ignore comments which are more than 10 minutes old, as this may be a user archiving
+			// their own comment. (T290803)
+			$revTimestamp = new DateTimeImmutable( $newRevRecord->getTimestamp() );
+			$threshold = $revTimestamp->sub( new DateInterval( 'PT10M' ) );
+			if ( $newComment->getTimestamp() <= $threshold ) {
 				continue;
 			}
 			$heading = $newComment->getSubscribableHeading();

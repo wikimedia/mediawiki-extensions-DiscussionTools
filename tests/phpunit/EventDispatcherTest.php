@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use DateTimeImmutable;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\User\UserIdentityValue;
@@ -45,6 +46,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 		$fakeUser = new UserIdentityValue( 0, $authorUsername );
 		$fakeTitle = new PageIdentityValue( 0, NS_TALK, __CLASS__, PageIdentityValue::LOCAL );
 		$fakeRevRecord = new MutableRevisionRecord( $fakeTitle );
+		// All mock comments are posted between 00:00 and 00:10 on 2020-01-01
+		$fakeRevRecord->setTimestamp( ( new DateTimeImmutable( '2020-01-01T00:10' ) )->format( 'c' ) );
 		MockEventDispatcher::generateEventsFromParsers(
 			$events, $parser1, $parser2, $fakeRevRecord, $fakeTitle, $fakeUser
 		);
@@ -59,6 +62,24 @@ class EventDispatcherTest extends IntegrationTestCase {
 		}
 
 		self::assertEquals( $expectedEvents, $events );
+
+		// Assert that no events are generated for comments saved >10 minutes after their timestamps
+		$events = self::getJson( $other, true );
+		$fakeRevRecord->setTimestamp( ( new DateTimeImmutable( '2020-01-01T00:20' ) )->format( 'c' ) );
+		MockEventDispatcher::generateEventsFromParsers(
+			$events, $parser1, $parser2, $fakeRevRecord, $fakeTitle, $fakeUser
+		);
+
+		foreach ( $events as &$event ) {
+			$event = json_decode( json_encode( $event ), false );
+		}
+
+		// Other events (e.g. from Echo) are never removed
+		$events = array_filter( $events, static function ( $event ) {
+			return $event->type === 'dt-subscribed-new-comment';
+		} );
+
+		self::assertEquals( [], $events );
 	}
 
 	public function provideGenerateCases(): array {
