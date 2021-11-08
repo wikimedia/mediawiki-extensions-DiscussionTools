@@ -982,15 +982,12 @@ class CommentParser {
 				if ( isset( $dateTime->discussionToolsWarning ) ) {
 					$warnings[] = $dateTime->discussionToolsWarning;
 				}
-				// ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
-				// of '+00:00', like Date#toISOString in JavaScript.
-				$dateTimeStr = $dateTime->format( 'Y-m-d\TH:i:s.v\Z' );
 
 				$curComment = new CommentItem(
 					$level,
 					$range,
 					$sigRanges,
-					$dateTimeStr,
+					$dateTime,
 					$author
 				);
 				$curComment->setRootNode( $this->rootNode );
@@ -1093,7 +1090,7 @@ class CommentParser {
 			$id = 'h-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
 			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
-				'-' . $threadItem->getTimestamp();
+				'-' . $threadItem->getTimestampString();
 		} else {
 			throw new MWException( 'Unknown ThreadItem type' );
 		}
@@ -1106,7 +1103,7 @@ class CommentParser {
 			$id .= '-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItemParent instanceof CommentItem ) {
 			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ) ) .
-				'-' . $threadItemParent->getTimestamp();
+				'-' . $threadItemParent->getTimestampString();
 		}
 
 		if ( $threadItem instanceof HeadingItem ) {
@@ -1116,7 +1113,7 @@ class CommentParser {
 			// heading ID.
 			$oldestComment = $this->getThreadStartComment( $threadItem );
 			if ( $oldestComment ) {
-				$id .= '-' . $oldestComment->getTimestamp();
+				$id .= '-' . $oldestComment->getTimestampString();
 			}
 		}
 
@@ -1173,7 +1170,7 @@ class CommentParser {
 
 		if ( $mainComment ) {
 			$name .= $this->truncateForId( str_replace( ' ', '_', $mainComment->getAuthor() ) ) .
-				'-' . $mainComment->getTimestamp();
+				'-' . $mainComment->getTimestampString();
 		}
 
 		return $name;

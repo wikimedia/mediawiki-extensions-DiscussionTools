@@ -64,7 +64,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$serialized->type = $threadItem->getType();
 
 		if ( $threadItem instanceof CommentItem ) {
-			$serialized->timestamp = $threadItem->getTimestamp();
+			$serialized->timestamp = $threadItem->getTimestampString();
 			$serialized->author = $threadItem->getAuthor();
 		}
 
