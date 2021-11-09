@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use DateTimeImmutable;
 use MWException;
 use Title;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
@@ -20,12 +21,12 @@ class CommentItem extends ThreadItem {
 	 *  timestamps) for this comment. There is always at least one signature, but there may be
 	 *  multiple. The author and timestamp of the comment is determined from the first signature.
 	 *  The last node in every signature range is a node containing the timestamp.
-	 * @param string $timestamp
+	 * @param DateTimeImmutable $timestamp
 	 * @param string $author Comment author's username
 	 */
 	public function __construct(
 		int $level, ImmutableRange $range,
-		array $signatureRanges, string $timestamp, string $author
+		array $signatureRanges, DateTimeImmutable $timestamp, string $author
 	) {
 		parent::__construct( 'comment', $level, $range );
 		$this->signatureRanges = $signatureRanges;
@@ -38,7 +39,7 @@ class CommentItem extends ThreadItem {
 	 */
 	public function jsonSerialize(): array {
 		return array_merge( parent::jsonSerialize(), [
-			'timestamp' => $this->timestamp,
+			'timestamp' => $this->getTimestampString(),
 			'author' => $this->author,
 		] );
 	}
@@ -140,10 +141,22 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * @return string Comment timestamp
+	 * @return DateTimeImmutable Comment timestamp
 	 */
-	public function getTimestamp(): string {
+	public function getTimestamp(): DateTimeImmutable {
 		return $this->timestamp;
+	}
+
+	/**
+	 * Get the comment timestamp in a standard format
+	 *
+	 * Uses ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
+	 * of '+00:00', like Date#toISOString in JavaScript.
+	 *
+	 * @return string Comment timestamp in standard format
+	 */
+	public function getTimestampString(): string {
+		return $this->timestamp->format( 'Y-m-d\TH:i:s.v\Z' );
 	}
 
 	/**
@@ -193,9 +206,9 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * @param string $timestamp Comment timestamp
+	 * @param DateTimeImmutable $timestamp Comment timestamp
 	 */
-	public function setTimestamp( string $timestamp ): void {
+	public function setTimestamp( DateTimeImmutable $timestamp ): void {
 		$this->timestamp = $timestamp;
 	}
 

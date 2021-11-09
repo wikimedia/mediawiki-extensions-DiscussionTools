@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use DateTimeImmutable;
 use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\HeadingItem;
@@ -26,7 +27,7 @@ class ThreadItemTest extends IntegrationTestCase {
 
 		$makeThreadItem = static function ( array $arr ) use ( &$makeThreadItem, $range ): ThreadItem {
 			if ( $arr['type'] === 'comment' ) {
-				$item = new CommentItem( 1, $range, [], 'TIMESTAMP', $arr['author'] );
+				$item = new CommentItem( 1, $range, [], new DateTimeImmutable(), $arr['author'] );
 			} else {
 				$item = new HeadingItem( $range, 2 );
 			}
