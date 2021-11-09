@@ -30,7 +30,7 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 		var tsParser = parser.getTimestampParser( 'en', caseItem.format, null, 'UTC', { UTC: 'UTC' } ),
 			expectedDate = moment( caseItem.expected );
 
-		assert.ok(
+		assert.true(
 			tsParser( caseItem.data ).isSame( expectedDate ),
 			caseItem.message
 		);
@@ -48,11 +48,11 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 			tsParser = parser.getTimestampParser( 'en', caseItem.format, null, caseItem.timezone, caseItem.timezoneAbbrs ),
 			date = tsParser( caseItem.sample.match( regexp ) );
 
-		assert.ok(
+		assert.true(
 			date.isSame( caseItem.expected ),
 			caseItem.message
 		);
-		assert.ok(
+		assert.true(
 			date.isSame( caseItem.expectedUtc ),
 			caseItem.message
 		);

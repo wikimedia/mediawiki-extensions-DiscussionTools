@@ -156,7 +156,7 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 						// No terminating quote, assume literal "
 						s += '"';
 					} else {
-						s += mw.util.escapeRegExp( format.substr( p + 1, endQuote - p - 1 ) );
+						s += mw.util.escapeRegExp( format.slice( p + 1, endQuote ) );
 						p = endQuote;
 					}
 				} else {
