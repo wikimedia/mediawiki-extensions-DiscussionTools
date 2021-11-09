@@ -93,6 +93,7 @@
 	"discussiontools-topicsubscription-pager-page": "Pagina",
 	"discussiontools-topicsubscription-pager-topic": "Argoment",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Disiscrives",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Modifega i sotoscrizzion",
 	"discussiontools-topicsubscription-special-intro": "I iscrizzion i te permeten de stàgh adree a on argoment in di pagine de discussion, Quand che on quaivun el rispond a l'argoment, te ricevareet ona notifega.\n\nImposta come e quand te ricevet queste notifeghe chì in di [[Special:Preferences#mw-prefsection-echo|to preferenze]].",
 	"discussiontools-topicsubscription-special-title": "Iscrizzion a l'argoment",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|el ten d'eougg |i tegnen d'oeugg}} la pagina de ciciarada.",

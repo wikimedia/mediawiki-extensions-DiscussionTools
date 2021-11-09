@@ -7,8 +7,9 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "A(z) „$1” azonosítójú hozzászólás nem található.",
-	"apierror-discussiontools-commentname-ambiguous": "Több „$1” nevű hozzászólás található, használj azonosítót helyette.",
+	"apierror-discussiontools-commentname-ambiguous": "Több „$1” nevű hozzászólás található, a <var>commentid</var> paraméter megadása kötelező.",
 	"apierror-discussiontools-commentname-notfound": "Nem található „$1” nevű hozzászólás.",
+	"apierror-discussiontools-formtoken-used": "A hozzászólást már elküldted. Töltsd újra az oldalt, hogy megjelenjen.",
 	"apierror-discussiontools-subscription-failed-add": "Nem sikerült feliratkozni erre a témára.",
 	"apierror-discussiontools-subscription-failed-remove": "Nem sikerült leiratkozni erről a témáról.",
 	"apihelp-discussiontools-param-oldid": "A használandó lapváltozat azonosítója (alapértelmezés szerint a legújabb lapváltozat).",
