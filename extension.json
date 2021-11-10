@@ -511,8 +511,8 @@
 			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', 'newtopictool', or 'all'"
 		},
 		"DiscussionToolsEnableMobile": {
-			"value": true,
-			"description": "Enable DiscussionTools on mobile talk pages."
+			"value": "behind-overlay",
+			"description": "Enable DiscussionTools on mobile talk pages. false, 'behind-overlay' (=true) or 'remove-overlay'"
 		},
 		"DiscussionTools_replytool": {
 			"value": "default",
