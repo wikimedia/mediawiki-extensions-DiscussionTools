@@ -223,7 +223,7 @@ class HookUtils {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		if ( $isMobile && (
-			$dtConfig->get( 'DiscussionToolsEnableMobile' ) === false ||
+			!$dtConfig->get( 'DiscussionToolsEnableMobile' ) ||
 			// Still disable some features for now
 			$feature === self::TOPICSUBSCRIPTION
 		) ) {

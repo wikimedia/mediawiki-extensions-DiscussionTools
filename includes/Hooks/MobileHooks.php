@@ -22,7 +22,7 @@ class MobileHooks {
 	public static function onMinervaNeueTalkPageOverlay( $title, $output ) {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'discussiontools' );
-		if ( $dtConfig->get( 'DiscussionToolsEnableMobile' ) !== 'remove-overlay' ) {
+		if ( !$dtConfig->get( 'DiscussionToolsEnableMobile' ) ) {
 			return true;
 		}
 		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
