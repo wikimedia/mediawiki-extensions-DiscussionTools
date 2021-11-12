@@ -103,5 +103,12 @@
 		"expected": "cases/signatures-comments/signatures-comments-modified.html",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Not splitting an about-group",
+		"dom": "cases/span-about-group/span-about-group.html",
+		"expected": "cases/span-about-group/span-about-group-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	}
 ]
