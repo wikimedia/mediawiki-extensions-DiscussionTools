@@ -21,6 +21,7 @@ var solTransparentLinkRegexp = /(?:^|\s)mw:PageProp\/(?:Category|redirect|Langua
  * @return {boolean} Node is considered a rendering-transparent node in Parsoid
  */
 function isRenderingTransparentNode( node ) {
+	var nextSibling = node.nextSibling;
 	return (
 		node.nodeType === Node.COMMENT_NODE ||
 		node.nodeType === Node.ELEMENT_NODE && (
@@ -34,7 +35,13 @@ function isRenderingTransparentNode( node ) {
 				node.tagName.toLowerCase() === 'span' &&
 				( node.getAttribute( 'typeof' ) || '' ).split( ' ' ).indexOf( 'mw:Transclusion' ) !== -1 &&
 				// eslint-disable-next-line no-use-before-define
-				!htmlTrim( node.innerHTML )
+				!htmlTrim( node.innerHTML ) &&
+				(
+					!nextSibling || nextSibling.nodeType !== Node.ELEMENT_NODE ||
+					// Maybe we should be checking all of the about-grouped nodes to see if they're empty,
+					// but that's prooobably not needed in practice, and it leads to a quadratic worst case.
+					nextSibling.getAttribute( 'about' ) !== node.getAttribute( 'about' )
+				)
 			)
 		)
 	);
