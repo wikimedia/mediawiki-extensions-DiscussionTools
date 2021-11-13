@@ -66,3 +66,8 @@ QUnit.test( '#getTranscludedFrom', function ( assert ) {
 		// console.log( JSON.stringify( transcludedFrom, null, 2 ) );
 	} );
 } );
+
+// TODO:
+// * getHeading (CommentItem+HeadingItem)
+// * getLinkableTitle (HeadingItem)
+// * newFromJSON (ThreadItem)

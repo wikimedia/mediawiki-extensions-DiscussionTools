@@ -97,3 +97,8 @@ QUnit.test( '#getThreads', function ( assert ) {
 		// console.log( JSON.stringify( threads, null, 2 ) );
 	} );
 } );
+
+// TODO:
+// * findCommentsById
+// * findCommentsByName
+// * getThreadItems
