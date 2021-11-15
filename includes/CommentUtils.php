@@ -47,6 +47,7 @@ class CommentUtils {
 	 * @return bool Node is considered a rendering-transparent node in Parsoid
 	 */
 	public static function isRenderingTransparentNode( Node $node ): bool {
+		$nextSibling = $node->nextSibling;
 		return (
 			$node instanceof Comment ||
 			$node instanceof Element && (
@@ -55,11 +56,18 @@ class CommentUtils {
 					strtolower( $node->tagName ) === 'link' &&
 					preg_match( self::SOL_TRANSPARENT_LINK_REGEX, $node->getAttribute( 'rel' ) ?? '' )
 				) ||
-				// Empty inline templates, e.g. tracking templates
+				// Empty inline templates, e.g. tracking templates. (T269036)
+				// But not empty nodes that are just the start of a non-empty template about-group. (T290940)
 				(
 					strtolower( $node->tagName ) === 'span' &&
 					in_array( 'mw:Transclusion', explode( ' ', $node->getAttribute( 'typeof' ) ?? '' ) ) &&
-					!self::htmlTrim( DOMCompat::getInnerHTML( $node ) )
+					!self::htmlTrim( DOMCompat::getInnerHTML( $node ) ) &&
+					(
+						!$nextSibling || !( $nextSibling instanceof Element ) ||
+						// Maybe we should be checking all of the about-grouped nodes to see if they're empty,
+						// but that's prooobably not needed in practice, and it leads to a quadratic worst case.
+						$nextSibling->getAttribute( 'about' ) !== $node->getAttribute( 'about' )
+					)
 				)
 			)
 		);
