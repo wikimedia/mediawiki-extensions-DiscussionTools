@@ -106,7 +106,7 @@
 	"discussiontools-topicsubscription-pager-topic": "مبحث",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "لغو اشتراک",
 	"discussiontools-topicsubscription-special-title": "مبحث‌های مشترک‌شده",
-	"echo-category-title-dt-subscription": "{{PLURAL:$1|اشتراک|اشتراک‌ها}} شما {{PLURAL:$1|صفحهٔ|صفحه‌های}} بحث",
+	"echo-category-title-dt-subscription": "{{PLURAL:$1|اشتراک|اشتراک‌ها}} شما در {{PLURAL:$1|صفحهٔ|صفحه‌های}} بحث",
 	"echo-pref-tooltip-dt-subscription": "هرگاه پاسخی در هر صفحهٔ بحثی در مبحث‌هایی که پی‌گیری می‌کنم ارسال شد، مرا آگاه کن.",
 	"tag-discussiontools-added-comment-description": "در این ویرایش یک نظر در صفحهٔ بحث افزوده شد",
 	"tag-discussiontools-description": "ویرایش توسط ابزارهای گفتگو",
