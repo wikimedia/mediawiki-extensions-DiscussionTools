@@ -101,6 +101,9 @@ class PreferenceHooks implements
 		$preferences['discussiontools-abtest'] = [
 			'type' => 'api',
 		];
+		$preferences['discussiontools-newtopictool-opened'] = [
+			'type' => 'api',
+		];
 
 		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 		if (

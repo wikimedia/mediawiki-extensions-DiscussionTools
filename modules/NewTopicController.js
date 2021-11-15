@@ -1,6 +1,7 @@
 var
 	utils = require( './utils.js' ),
 	logger = require( './logger.js' ),
+	controller = require( './controller.js' ),
 	CommentController = require( './CommentController.js' ),
 	HeadingItem = require( './HeadingItem.js' );
 
@@ -74,6 +75,12 @@ NewTopicController.prototype.setup = function ( mode ) {
 	// it while the content field is still loading.
 	rootScrollable.scrollTop = rootScrollable.scrollHeight;
 	this.focus();
+
+	if ( !mw.user.options.get( 'discussiontools-newtopictool-opened' ) ) {
+		controller.getApi().saveOption( 'discussiontools-newtopictool-opened', '1' ).then( function () {
+			mw.user.options.set( 'discussiontools-newtopictool-opened', '1' );
+		} );
+	}
 };
 
 /**
