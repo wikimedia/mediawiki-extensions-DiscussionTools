@@ -176,3 +176,9 @@ QUnit.test( 'sanitizeWikitextLinebreaks', function ( assert ) {
 		);
 	} );
 } );
+
+// TODO:
+// * addHtmlReply
+// * addReply
+// * addSiblingListItem
+// * addWikitextReply
