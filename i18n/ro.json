@@ -2,11 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Carcassonne93",
+			"Cezar",
 			"Matma Rex",
 			"NGC 54",
 			"Turbojet"
 		]
 	},
+	"discussiontools-autotopicsubpopup-body": "Veți primi o notificare când cineva publică un nou comentariu în această discuție. Vă puteți ajusta setările de notificări în preferințe.",
+	"discussiontools-autotopicsubpopup-dismiss": "În regulă, am înțeles",
+	"discussiontools-autotopicsubpopup-preferences": "Preferințe",
+	"discussiontools-autotopicsubpopup-title": "V-ați abonat",
 	"discussiontools-defaultsummary-reply": "Răspuns",
 	"discussiontools-desc": "Unelte pentru îmbunătățirea paginilor de discuție.",
 	"discussiontools-emptystate-button": "Începeți o discuție",
@@ -33,7 +38,7 @@
 	"discussiontools-error-noswitchtove-title": "Modul vizual dezactivat",
 	"discussiontools-limitreport-errorreqid": "Eroare DiscussionTools la cererea ID-ului",
 	"discussiontools-limitreport-timeusage": "Timpul de utilizare DiscussionTools",
-	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secondă|seconde}}",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secundă|secunde}}",
 	"discussiontools-newtopic-missing-title": "Vă rugăm să oferiți un titlu pentru subiectul dvs. de discuție. Dacă apăsați „{{int:discussiontools-replywidget-newtopic}}”, subiectul dvs. va fi adăugat fără un titlu.",
 	"discussiontools-newtopic-placeholder-title": "Titlu",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 a {{GENDER:$2|răspuns}} în cadrul secțiunii „<strong>$4</strong>”.",
@@ -41,7 +46,9 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Vezi comentariul",
 	"discussiontools-postedit-confirmation-published": "Comentariul dvs. a fost publicat.",
 	"discussiontools-postedit-confirmation-topicadded": "Subiectul dvs. a fost adăugat.",
-	"discussiontools-preference-description": "Activează funcții experimentale pentru paginile de discuție \n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Răspundeți] la comentarii de pe paginile de discuție într-un singur clic.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Adaugți subiecte noi] utilizând un formular aliniat.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Primiți notificări] când sunt adăugate comentarii noi în secțiuni la care v-ați abonat.\n\nPuteți personaliza aceste funcții în [[Special:Preferences#mw-prefsection-editing-discussion|preferințele]] dvs.\n\nActualizări vor fi publicate pe [https://www.mediawiki.org/wiki/Talk_pages_project/Updates pagina de actualizări a proiectului pentru pagini de discuție].\n\nVă rugăm să luați în considerare:\n* De-a lungul timpului, vor fi adăugate noi funcții experimentale.\n* Se poate ca unele dintre funcțiile de mai sus să nu fie încă disponibile la wiki-ul dvs.",
+	"discussiontools-preference-autotopicsub": "Abonați-vă automat la subiecte",
+	"discussiontools-preference-autotopicsub-help": "Când începeți o nouă discuție sau comentați la o discuție existentă, veți fi {{GENDER:|notificat|notificată}} automat când alții publică comentarii noi la aceasta.",
+	"discussiontools-preference-description": "Activează funcții experimentale pentru paginile de discuție \n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Răspundeți] la comentarii de pe paginile de discuție într-un singur clic.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Adăugați subiecte noi] utilizând un formular aliniat.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Primiți notificări] când sunt adăugate comentarii noi în secțiuni la care v-ați abonat.\n\nPuteți personaliza aceste funcții în [[Special:Preferences#mw-prefsection-editing-discussion|preferințele]] dvs.\n\nActualizări vor fi publicate pe [https://www.mediawiki.org/wiki/Talk_pages_project/Updates pagina de actualizări a proiectului pentru pagini de discuție].\n\nVă rugăm să luați în considerare:\n* De-a lungul timpului vor fi adăugate noi funcții experimentale.\n* Se poate ca unele dintre funcțiile de mai sus să nu fie încă disponibile la wiki-ul dvs.",
 	"discussiontools-preference-label": "Unelte de discuție",
 	"discussiontools-preference-newtopictool": "Activați adăugarea rapidă de subiecte",
 	"discussiontools-preference-newtopictool-help": "Această unealtă îți va afișa un formular aliniat pentru a adăuga subiecte noi.",

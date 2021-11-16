@@ -10,6 +10,10 @@
 			"עמד"
 		]
 	},
+	"discussiontools-autotopicsubpopup-body": "{{GENDER:|תקבל|תקבלי}} התראה כשמישהו כותב תגובה חדשה בדיון הזה. {{GENDER:|אתה יכול|את יכולה}} לכוונןן את הגדרות ההתראות שלך בהעדפות.",
+	"discussiontools-autotopicsubpopup-dismiss": "בסדר, הבנתי",
+	"discussiontools-autotopicsubpopup-preferences": "העדפות",
+	"discussiontools-autotopicsubpopup-title": "התחלת לעקוב",
 	"discussiontools-defaultsummary-reply": "תגובה",
 	"discussiontools-desc": "כלים להרחבת דפי שיחה.",
 	"discussiontools-emptystate-button": "להתחיל דיון",
@@ -44,6 +48,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "הצגת תגובה",
 	"discussiontools-postedit-confirmation-published": "התגובה שלך פורסמה.",
 	"discussiontools-postedit-confirmation-topicadded": "הנושא שלך נוסף.",
+	"discussiontools-preference-autotopicsub": "לעקוב אוטומטית אחרי נושאים",
+	"discussiontools-preference-autotopicsub-help": "{{GENDER:|כשתתחיל|כשתתחילי}} דיון חדש או תגובה חדשה בדיון קיים, {{GENDER:|תקבל|תקבלי}} התראה אוטומטית כשאחרים ישלחו תגובות חדשות שם.",
 	"discussiontools-preference-description": "הפעלת אפשרויות ניסיוניות של דפי שיחה:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying להגיב] להערות בדפי שיחה בלחיצה אחת.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion להוסיף נושאים חדשים] באמצעות טופס מובנה.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications לקבל התראות] כשתגובות חדשות נוספות לפרקים שנרשמת אליהם.\n\nבאפשרותך להתאים אישית את האפשרויות האלו ב[[Special:Preferences#mw-prefsection-editing-discussion|העדפות]] שלך.\n\nעדכונים יפורסמו ב[https://www.mediawiki.org/wiki/Talk_pages_project/Updates דף העדכונים של מיזם דפי השיחה].\n\nלתשומת ליבך:\n* עם הזמן, יתווספו אפשרויות ניסיוניות חדשות.\n* חלק מהאפשרויות לעיל עדיין לא יהיו זמינות בוויקי שלך.",
 	"discussiontools-preference-label": "כלי שיחה",
 	"discussiontools-preference-newtopictool": "להפעיל הוספת נושאים מהירה",
