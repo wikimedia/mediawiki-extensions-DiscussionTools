@@ -94,6 +94,10 @@
 			"messages": [
 				"discussiontools-postedit-confirmation-published",
 				"discussiontools-postedit-confirmation-topicadded",
+				"discussiontools-autotopicsubpopup-title",
+				"discussiontools-autotopicsubpopup-body",
+				"discussiontools-autotopicsubpopup-dismiss",
+				"discussiontools-autotopicsubpopup-preferences",
 				"discussiontools-error-comment-conflict",
 				"discussiontools-error-comment-disappeared",
 				"discussiontools-error-comment-not-saved",

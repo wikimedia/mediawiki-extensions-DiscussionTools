@@ -211,3 +211,97 @@ span[ data-mw-comment-start ] {
 	}
 }
 /* stylelint-enable selector-class-pattern */
+
+// Styles inspired by the Popups extension
+// (and occasionally copypasted from there)
+.ext-discussiontools-autotopicsubpopup {
+	position: absolute;
+	left: 0;
+	right: 0;
+
+	// Increase specificity to override .oo-ui-popupWidget
+	.oo-ui-popupWidget& {
+		// Animations
+		opacity: 0;
+		transform: translate( 0, -20px );
+		transition: opacity 0.2s, transform 0.2s;
+
+		&-fadein {
+			opacity: 1;
+			transform: translate( 0, 0 );
+		}
+	}
+
+	.oo-ui-popupWidget-popup {
+		padding: 1.5em;
+		box-sizing: border-box;
+		// Center horizontally
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		// Position above the highlight
+		bottom: 3em;
+
+		&.ext-discussiontools-autotopicsubpopup-overlap {
+			// If there isn't enough space above, position on top of the highlight
+			top: -1em;
+			bottom: auto;
+		}
+	}
+
+	&-title {
+		font-weight: bold;
+		font-size: 1.2em;
+		display: block;
+	}
+
+	&-image {
+		/* @embed */
+		background: url( autotopicsubpopup-image.svg ) center center no-repeat;
+		width: 200px;
+		height: 200px;
+	}
+
+	// Desktop
+	@media ( min-width: 720px ) {
+		.oo-ui-popupWidget-popup {
+			width: 450px;
+			min-height: 200px;
+			padding-right: 0;
+		}
+
+		&-image {
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+		}
+
+		&-body {
+			margin-bottom: 1em;
+			margin-top: 1em;
+		}
+
+		&-title,
+		&-body,
+		&-actions {
+			margin-right: 200px;
+		}
+	}
+
+	// Mobile
+	@media ( max-width: 719px ) {
+		.oo-ui-popupWidget-popup {
+			width: 320px;
+		}
+
+		&-image {
+			width: 100%;
+		}
+
+		&-body {
+			margin-bottom: 1em;
+		}
+	}
+}

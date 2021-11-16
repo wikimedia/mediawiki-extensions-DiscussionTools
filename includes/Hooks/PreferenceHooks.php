@@ -111,6 +111,9 @@ class PreferenceHooks implements
 		$preferences['discussiontools-newtopictool-opened'] = [
 			'type' => 'api',
 		];
+		$preferences['discussiontools-seenautotopicsubpopup'] = [
+			'type' => 'api',
+		];
 
 		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 		if (
