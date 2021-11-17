@@ -533,7 +533,9 @@ ReplyWidget.prototype.afterSetup = function () {
 ReplyWidget.prototype.getFormToken = function () {
 	var formToken = this.storage.get( this.storagePrefix + '/formToken' );
 	if ( !formToken ) {
-		formToken = Math.random().toString( 36 ).slice( 2 );
+		// See ApiBase::PARAM_MAX_CHARS in ApiDiscussionToolsEdit.php
+		var maxLength = 16;
+		formToken = Math.random().toString( 36 ).slice( 2, maxLength + 2 );
 		this.storage.set( this.storagePrefix + '/formToken', formToken );
 	}
 	return formToken;
