@@ -10,6 +10,9 @@
 		]
 	},
 	"discussiontools": "Alati za raspravu",
+	"discussiontools-autotopicsubpopup-dismiss": "U redu, razumijem",
+	"discussiontools-autotopicsubpopup-preferences": "Postavke",
+	"discussiontools-autotopicsubpopup-title": "Odsad pratite ovu temu!",
 	"discussiontools-defaultsummary-reply": "Odgovor",
 	"discussiontools-desc": "Alati za poboljšanje stranica za razgovor.",
 	"discussiontools-emptystate-button": "Započnite novu raspravu",
@@ -34,6 +37,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Pogledaj komentar",
 	"discussiontools-postedit-confirmation-published": "Vaš je komentar objavljen.",
 	"discussiontools-postedit-confirmation-topicadded": "Vaša je tema dodana.",
+	"discussiontools-preference-autotopicsub": "Automatsko praćenje tema",
+	"discussiontools-preference-autotopicsub-help": "Bit ćete automatski obaviješteni o novim komentarima u temama koje ste započeli ili u koje ste dodali svoj komentar.",
 	"discussiontools-preference-description": "Omogućava pokusne mogućnosti stranica za razgovor:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Odgovor] jednim klikom na stranici za razgovor .\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Dodavanje nove teme] uz pomoć obrasca.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Primanje obavijesti] nakon dodavanja novih komentara u odlomcima koji pratite.\n\nOve mogućnosti možete prilagoditi u Vašim [[Special:Preferences#mw-prefsection-editing-discussion|postavkama]].\n\nObavijesti o ažuriranju će se objavljivati na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates stranicama za razgovor projekta].\n\nImajte u vidu:\n* S vremenom će se dodavati nove pokusne mogućnosti.\n* Neke od mogućnosti iznad možda još uvijek neće biti dostupne na Vašem wikiju.",
 	"discussiontools-preference-label": "Alati za raspravu",
 	"discussiontools-preference-newtopictool": "Omogući brzo dodavanje teme",
