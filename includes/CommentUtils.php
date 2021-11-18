@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use LogicException;
 use MediaWiki\MediaWikiServices;
 use Title;
 use Wikimedia\Assert\Assert;
@@ -561,4 +562,144 @@ class CommentUtils {
 		return $result;
 	}
 
+	/**
+	 * @param ImmutableRange $range
+	 * @return Node
+	 */
+	public static function getRangeFirstNode( ImmutableRange $range ): Node {
+		// PHP bug: childNodes can be null
+		return $range->startContainer->childNodes && $range->startContainer->childNodes->length ?
+			$range->startContainer->childNodes[ $range->startOffset ] :
+			$range->startContainer;
+	}
+
+	/**
+	 * @param ImmutableRange $range
+	 * @return Node
+	 */
+	public static function getRangeLastNode( ImmutableRange $range ): Node {
+		// PHP bug: childNodes can be null
+		return $range->endContainer->childNodes && $range->endContainer->childNodes->length ?
+			$range->endContainer->childNodes[ $range->endOffset - 1 ] :
+			$range->endContainer;
+	}
+
+	/**
+	 * Check whether two ranges overlap, and how.
+	 *
+	 * Includes a hack to check for "almost equal" ranges (whose start/end boundaries only differ by
+	 * "uninteresting" nodes that we ignore when detecting comments), and treat them as equal.
+	 *
+	 * @param ImmutableRange $a
+	 * @param ImmutableRange $b
+	 * @return string One of:
+	 *     - 'equal': Ranges A and B are equal
+	 *     - 'contains': Range A contains range B
+	 *     - 'contained': Range A is contained within range B
+	 *     - 'after': Range A is before range B
+	 *     - 'before': Range A is after range B
+	 *     - 'overlapstart': Start of range A overlaps range B
+	 *     - 'overlapend': End of range A overlaps range B
+	 */
+	public static function compareRanges( ImmutableRange $a, ImmutableRange $b ): string {
+		// Compare the positions of: start of A to start of B, start of A to end of B, and so on.
+		// Watch out, the constant names are the opposite of what they should be.
+		$startToStart = $a->compareBoundaryPoints( ImmutableRange::START_TO_START, $b );
+		$startToEnd = $a->compareBoundaryPoints( ImmutableRange::END_TO_START, $b );
+		$endToStart = $a->compareBoundaryPoints( ImmutableRange::START_TO_END, $b );
+		$endToEnd = $a->compareBoundaryPoints( ImmutableRange::END_TO_END, $b );
+
+		// Handle almost equal ranges: When start or end boundary points of the two ranges are different,
+		// but only differ by "uninteresting" nodes, treat them as equal instead.
+		if (
+			( $startToStart < 0 && self::compareRangesAlmostEqualBoundaries( $a, $b, 'start' ) ) ||
+			( $startToStart > 0 && self::compareRangesAlmostEqualBoundaries( $b, $a, 'start' ) )
+		) {
+			$startToStart = 0;
+		}
+		if (
+			( $endToEnd < 0 && self::compareRangesAlmostEqualBoundaries( $a, $b, 'end' ) ) ||
+			( $endToEnd > 0 && self::compareRangesAlmostEqualBoundaries( $b, $a, 'end' ) )
+		) {
+			$endToEnd = 0;
+		}
+
+		// Drawing to visualize these 7 cases:
+		// https://phabricator.wikimedia.org/F34826234
+		if ( $startToStart === 0 && $endToEnd === 0 ) {
+			return 'equal';
+		}
+		if ( $startToStart <= 0 && $endToEnd >= 0 ) {
+			return 'contains';
+		}
+		if ( $startToStart >= 0 && $endToEnd <= 0 ) {
+			return 'contained';
+		}
+		if ( $startToEnd >= 0 ) {
+			return 'after';
+		}
+		if ( $endToStart <= 0 ) {
+			return 'before';
+		}
+		if ( $startToStart > 0 && $startToEnd < 0 && $endToEnd >= 0 ) {
+			return 'overlapstart';
+		}
+		if ( $endToEnd < 0 && $endToStart > 0 && $startToStart <= 0 ) {
+			return 'overlapend';
+		}
+
+		throw new LogicException( 'Unreachable' );
+	}
+
+	/**
+	 * Check if the given boundary points of ranges A and B are almost equal (only differing by
+	 * uninteresting nodes).
+	 *
+	 * Boundary of A must be before the boundary of B in the tree.
+	 *
+	 * @param ImmutableRange $a
+	 * @param ImmutableRange $b
+	 * @param string $boundary 'start' or 'end'
+	 * @return bool
+	 */
+	private static function compareRangesAlmostEqualBoundaries(
+		ImmutableRange $a, ImmutableRange $b, string $boundary
+	): bool {
+		// This code is awful, but several attempts to rewrite it made it even worse.
+		// You're welcome to give it a try.
+
+		$from = $boundary === 'end' ? self::getRangeLastNode( $a ) : self::getRangeFirstNode( $a );
+		$to = $boundary === 'end' ? self::getRangeLastNode( $b ) : self::getRangeFirstNode( $b );
+
+		$skippingFrom = $boundary === 'end';
+		$foundContent = false;
+		self::linearWalk(
+			$from,
+			static function ( string $event, Node $n ) use (
+				$from, $to, $boundary, &$skippingFrom, &$foundContent
+			) {
+				if ( $n === $to && $event === ( $boundary === 'end' ? 'leave' : 'enter' ) ) {
+					return true;
+				}
+				if ( $skippingFrom ) {
+					$skippingFrom = !( $n === $from && $event === 'leave' );
+					return;
+				}
+
+				if (
+					$event === 'enter' &&
+					(
+						!CommentUtils::isCommentSeparator( $n ) &&
+						!CommentUtils::isRenderingTransparentNode( $n ) &&
+						CommentUtils::isCommentContent( $n )
+					)
+				) {
+					$foundContent = true;
+					return true;
+				}
+			}
+		);
+
+		return !$foundContent;
+	}
 }

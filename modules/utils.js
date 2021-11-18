@@ -492,6 +492,142 @@ function linearWalkBackwards( node, callback ) {
 	return result;
 }
 
+/**
+ * @param {Range} range
+ * @return {Node}
+ */
+function getRangeFirstNode( range ) {
+	return range.startContainer.childNodes.length ?
+		range.startContainer.childNodes[ range.startOffset ] :
+		range.startContainer;
+}
+
+/**
+ * @param {Range} range
+ * @return {Node}
+ */
+function getRangeLastNode( range ) {
+	return range.endContainer.childNodes.length ?
+		range.endContainer.childNodes[ range.endOffset - 1 ] :
+		range.endContainer;
+}
+
+/**
+ * Check whether two ranges overlap, and how.
+ *
+ * Includes a hack to check for "almost equal" ranges (whose start/end boundaries only differ by
+ * "uninteresting" nodes that we ignore when detecting comments), and treat them as equal.
+ *
+ * @param {Range} a
+ * @param {Range} b
+ * @return {string} One of:
+ *     - 'equal': Ranges A and B are equal
+ *     - 'contains': Range A contains range B
+ *     - 'contained': Range A is contained within range B
+ *     - 'after': Range A is before range B
+ *     - 'before': Range A is after range B
+ *     - 'overlapstart': Start of range A overlaps range B
+ *     - 'overlapend': End of range A overlaps range B
+ */
+function compareRanges( a, b ) {
+	// Compare the positions of: start of A to start of B, start of A to end of B, and so on.
+	// Watch out, the constant names are the opposite of what they should be.
+	var startToStart = a.compareBoundaryPoints( Range.START_TO_START, b );
+	var startToEnd = a.compareBoundaryPoints( Range.END_TO_START, b );
+	var endToStart = a.compareBoundaryPoints( Range.START_TO_END, b );
+	var endToEnd = a.compareBoundaryPoints( Range.END_TO_END, b );
+
+	// Check for almost equal ranges (boundary points only differing by uninteresting nodes)
+	/* eslint-disable no-use-before-define */
+	if (
+		( startToStart < 0 && compareRangesAlmostEqualBoundaries( a, b, 'start' ) ) ||
+		( startToStart > 0 && compareRangesAlmostEqualBoundaries( b, a, 'start' ) )
+	) {
+		startToStart = 0;
+	}
+	if (
+		( endToEnd < 0 && compareRangesAlmostEqualBoundaries( a, b, 'end' ) ) ||
+		( endToEnd > 0 && compareRangesAlmostEqualBoundaries( b, a, 'end' ) )
+	) {
+		endToEnd = 0;
+	}
+	/* eslint-enable no-use-before-define */
+
+	// Drawing to visualize these 7 cases:
+	// https://phabricator.wikimedia.org/F34826234
+	if ( startToStart === 0 && endToEnd === 0 ) {
+		return 'equal';
+	}
+	if ( startToStart <= 0 && endToEnd >= 0 ) {
+		return 'contains';
+	}
+	if ( startToStart >= 0 && endToEnd <= 0 ) {
+		return 'contained';
+	}
+	if ( startToEnd >= 0 ) {
+		return 'after';
+	}
+	if ( endToStart <= 0 ) {
+		return 'before';
+	}
+	if ( startToStart > 0 && startToEnd < 0 && endToEnd >= 0 ) {
+		return 'overlapstart';
+	}
+	if ( endToEnd < 0 && endToStart > 0 && startToStart <= 0 ) {
+		return 'overlapend';
+	}
+
+	throw new Error( 'Unreachable' );
+}
+
+/**
+ * Check if the given boundary points of ranges A and B are almost equal (only differing by
+ * uninteresting nodes).
+ *
+ * Boundary of A must be before the boundary of B in the tree.
+ *
+ * @param {Range} a
+ * @param {Range} b
+ * @param {string} boundary 'start' or 'end'
+ * @return {boolean}
+ */
+function compareRangesAlmostEqualBoundaries( a, b, boundary ) {
+	// This code is awful, but several attempts to rewrite it made it even worse.
+	// You're welcome to give it a try.
+
+	var from = boundary === 'end' ? getRangeLastNode( a ) : getRangeFirstNode( a );
+	var to = boundary === 'end' ? getRangeLastNode( b ) : getRangeFirstNode( b );
+
+	var skippingFrom = boundary === 'end';
+	var foundContent = false;
+	linearWalk(
+		from,
+		function ( event, n ) {
+			if ( n === to && event === ( boundary === 'end' ? 'leave' : 'enter' ) ) {
+				return true;
+			}
+			if ( skippingFrom ) {
+				skippingFrom = !( n === from && event === 'leave' );
+				return;
+			}
+
+			if (
+				event === 'enter' &&
+				(
+					!isCommentSeparator( n ) &&
+					!isRenderingTransparentNode( n ) &&
+					isCommentContent( n )
+				)
+			) {
+				foundContent = true;
+				return true;
+			}
+		}
+	);
+
+	return !foundContent;
+}
+
 module.exports = {
 	NEW_TOPIC_COMMENT_ID: NEW_TOPIC_COMMENT_ID,
 	isBlockElement: isBlockElement,
@@ -509,5 +645,6 @@ module.exports = {
 	htmlTrim: htmlTrim,
 	getTitleFromUrl: getTitleFromUrl,
 	linearWalk: linearWalk,
-	linearWalkBackwards: linearWalkBackwards
+	linearWalkBackwards: linearWalkBackwards,
+	compareRanges: compareRanges
 };

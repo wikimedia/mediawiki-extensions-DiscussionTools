@@ -3,6 +3,9 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use JsonSerializable;
+use LogicException;
+use Title;
+use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
@@ -82,39 +85,137 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * Get the name of the page from which this thread item is transcluded (if any).
+	 * Get the name of the page from which this thread item is transcluded (if any). Replies to
+	 * transcluded items must be posted on that page, instead of the current one.
+	 *
+	 * This is tricky, because we don't want to mark items as trancluded when they're just using a
+	 * template (e.g. {{ping|…}} or a non-substituted signature template). Sometimes the whole comment
+	 * can be template-generated (e.g. when using some wrapper templates), but as long as a reply can
+	 * be added outside of that template, we should not treat it as transcluded.
+	 *
+	 * The start/end boundary points of comment ranges and Parsoid transclusion ranges don't line up
+	 * exactly, even when to a human it's obvious that they cover the same content, making this more
+	 * complicated.
 	 *
 	 * @return string|bool `false` if this item is not transcluded. A string if it's transcluded
 	 *   from a single page (the page title, in text form with spaces). `true` if it's transcluded, but
 	 *   we can't determine the source.
 	 */
 	public function getTranscludedFrom() {
-		// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}, or a
-		// non-substituted signature template), that *does not* mean the comment is transcluded.
-		// We only want to consider comments to be transcluded if all wrapper elements (usually
-		// <li> or <p>) are marked as part of a single transclusion.
+		// General approach:
+		//
+		// Compare the comment range to each transclusion range on the page, and if it overlaps any of
+		// them, examine the overlap. There are a few cases:
+		//
+		// * Comment and transclusion do not overlap:
+		//   → Not transcluded.
+		// * Comment contains the transclusion:
+		//   → Not transcluded (just a template).
+		// * Comment is contained within the transclusion:
+		//   → Transcluded, we can determine the source page (unless it's a complex transclusion).
+		// * Comment and transclusion overlap partially:
+		//   → Transcluded, but we can't determine the source page.
+		// * Comment (almost) exactly matches the transclusion:
+		//   → Maybe transcluded (it could be that the source page only contains that single comment),
+		//     maybe not transcluded (it could be a wrapper template that covers a single comment).
+		//     This is very sad, and we decide based on the namespace.
+		//
+		// Most transclusion ranges on the page trivially fall in the "do not overlap" or "contains"
+		// cases, and we only have to carefully examine the two transclusion ranges that contain the
+		// first and last node of the comment range.
+		//
+		// To check for almost exact matches, we walk between the relevant boundary points, and if we
+		// only find uninteresting nodes (that would be ignored when detecting comments), we treat them
+		// like exact matches.
 
-		// If we can't find "exact" wrappers, using only the end container works out well
-		// (because the main purpose of this method is to decide on which page we should post
-		// replies to the given comment, and they'll go after the comment).
+		$commentRange = $this->getRange();
+		$startTransclNode = CommentUtils::getTranscludedFromElement(
+			CommentUtils::getRangeFirstNode( $commentRange )
+		);
+		$endTransclNode = CommentUtils::getTranscludedFromElement(
+			CommentUtils::getRangeLastNode( $commentRange )
+		);
 
-		$coveredNodes = CommentUtils::getFullyCoveredSiblings( $this ) ?:
-			[ $this->getRange()->endContainer ];
+		// We only have to examine the two transclusion ranges that contain the first/last node of the
+		// comment range (if they exist). Ignore ranges outside the comment or in the middle of it.
+		$transclNodes = [];
+		if ( $startTransclNode ) {
+			$transclNodes[] = $startTransclNode;
+		}
+		if ( $endTransclNode && $endTransclNode !== $startTransclNode ) {
+			$transclNodes[] = $endTransclNode;
+		}
 
-		$node = CommentUtils::getTranscludedFromElement( $coveredNodes[ 0 ] );
-		$length = count( $coveredNodes );
-		for ( $i = 1; $i < $length; $i++ ) {
-			if ( $node !== CommentUtils::getTranscludedFromElement( $coveredNodes[ $i ] ) ) {
-				// Comment is only partially transcluded, that should be fine
-				return false;
+		foreach ( $transclNodes as $transclNode ) {
+			$transclRange = self::getTransclusionRange( $transclNode );
+			$compared = CommentUtils::compareRanges( $commentRange, $transclRange );
+			$transclTitle = $this->getSinglePageTransclusionTitle( $transclNode );
+
+			switch ( $compared ) {
+				case 'equal':
+					// Comment (almost) exactly matches the transclusion
+					if ( $transclTitle === null ) {
+						// Multi-template transclusion, or a parser function call, or template-affected wikitext outside
+						// of a template call, or a mix of the above
+						return true;
+					} elseif ( $transclTitle->inNamespace( NS_TEMPLATE ) ) {
+						// Is that a subpage transclusion with a single comment, or a wrapper template
+						// transclusion on this page? We don't know, but let's guess based on the namespace.
+						// (T289873)
+						// Continue examining the other ranges.
+						break;
+					} else {
+						return $transclTitle->getPrefixedText();
+					}
+
+				case 'contains':
+					// Comment contains the transclusion
+
+					// If the entire transclusion is contained within the comment range, that's just a
+					// template. This is the same as a transclusion in the middle of the comment, which we
+					// ignored earlier, it just takes us longer to get here in this case.
+
+					// Continue examining the other ranges.
+					break;
+
+				case 'contained':
+					// Comment is contained within the transclusion
+					if ( $transclTitle === null ) {
+						return true;
+					} else {
+						return $transclTitle->getPrefixedText();
+					}
+
+				case 'after':
+				case 'before':
+					// Comment and transclusion do not overlap
+
+					// This should be impossible, because we ignored these ranges earlier.
+					throw new LogicException( 'Unexpected transclusion or comment range' );
+
+				case 'overlapstart':
+				case 'overlapend':
+					// Comment and transclusion overlap partially
+					return true;
+
+				default:
+					throw new LogicException( 'Unexpected return value from compareRanges()' );
 			}
 		}
 
-		if ( !$node ) {
-			// No mw:Transclusion node found, this item is not transcluded
-			return false;
-		}
+		// If we got here, the comment range was not contained by or overlapping any of the transclusion
+		// ranges. Comment is not transcluded.
+		return false;
+	}
 
+	/**
+	 * If the node represents a single-page transclusion, return that page's title.
+	 * Otherwise return null.
+	 *
+	 * @param Element $node
+	 * @return Title|null
+	 */
+	private function getSinglePageTransclusionTitle( Element $node ) {
 		$dataMw = json_decode( $node->getAttribute( 'data-mw' ) ?? '', true );
 
 		// Only return a page name if this is a simple single-template transclusion.
@@ -127,12 +228,40 @@ abstract class ThreadItem implements JsonSerializable {
 			isset( $dataMw['parts'][0]['template']['target']['href'] )
 		) {
 			$title = CommentUtils::getTitleFromUrl( $dataMw['parts'][0]['template']['target']['href'] );
-			return $title->getPrefixedText();
+			return $title;
 		}
 
-		// Multi-template transclusion, or a parser function call, or template-affected wikitext outside
-		// of a template call, or a mix of the above
-		return true;
+		return null;
+	}
+
+	/**
+	 * Given a transclusion's first node (e.g. returned by CommentUtils::getTranscludedFromElement()),
+	 * return a range starting before the node and ending after the transclusion's last node.
+	 *
+	 * @param Element $startNode
+	 * @return ImmutableRange
+	 */
+	private function getTransclusionRange( Element $startNode ) {
+		$endNode = $startNode;
+		while (
+			// Phan doesn't realize that the conditions on $nextSibling can terminate the loop
+			// @phan-suppress-next-line PhanInfiniteLoop
+			$endNode &&
+			( $nextSibling = $endNode->nextSibling ) &&
+			$nextSibling instanceof Element &&
+			$nextSibling->getAttribute( 'about' ) === $endNode->getAttribute( 'about' )
+		) {
+			$endNode = $nextSibling;
+		}
+
+		$range = new ImmutableRange(
+			$startNode->parentNode,
+			CommentUtils::childIndexOf( $startNode ),
+			$endNode->parentNode,
+			CommentUtils::childIndexOf( $endNode ) + 1
+		);
+
+		return $range;
 	}
 
 	/**
