@@ -779,42 +779,42 @@ function init( $container, state ) {
 				}, 3000 );
 			} );
 		}
-	} );
 
-	// Check topic subscription states if the user has automatic subscriptions enabled
-	// and has recently edited this page.
-	if ( featuresEnabled.autotopicsub && mw.user.options.get( 'discussiontools-autotopicsub' ) ) {
-		var recentComments = [];
-		var headingsToUpdate = {};
-		if ( state.repliedTo ) {
-			// Edited by using the reply tool or new topic tool. Only check the edited topic.
-			if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
-				recentComments.push( threadItems[ threadItems.length - 1 ] );
-			} else {
-				recentComments.push( threadItemsById[ state.repliedTo ] );
-			}
-		} else if ( mw.config.get( 'wgPostEdit' ) ) {
-			// Edited by using wikitext editor. Check topics with their own comments within last minute.
-			for ( i = 0; i < threadItems.length; i++ ) {
-				if (
-					threadItems[ i ] instanceof CommentItem &&
-					threadItems[ i ].author === mw.user.getName() &&
-					threadItems[ i ].timestamp.isSameOrAfter( moment().subtract( 1, 'minute' ), 'minute' )
-				) {
-					recentComments.push( threadItems[ i ] );
+		// Check topic subscription states if the user has automatic subscriptions enabled
+		// and has recently edited this page.
+		if ( featuresEnabled.autotopicsub && mw.user.options.get( 'discussiontools-autotopicsub' ) ) {
+			var recentComments = [];
+			var headingsToUpdate = {};
+			if ( state.repliedTo ) {
+				// Edited by using the reply tool or new topic tool. Only check the edited topic.
+				if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
+					recentComments.push( threadItems[ threadItems.length - 1 ] );
+				} else {
+					recentComments.push( threadItemsById[ state.repliedTo ] );
+				}
+			} else if ( mw.config.get( 'wgPostEdit' ) ) {
+				// Edited by using wikitext editor. Check topics with their own comments within last minute.
+				for ( i = 0; i < threadItems.length; i++ ) {
+					if (
+						threadItems[ i ] instanceof CommentItem &&
+						threadItems[ i ].author === mw.user.getName() &&
+						threadItems[ i ].timestamp.isSameOrAfter( moment().subtract( 1, 'minute' ), 'minute' )
+					) {
+						recentComments.push( threadItems[ i ] );
+					}
 				}
 			}
-		}
-		for ( i = 0; i < recentComments.length; i++ ) {
-			var headingItem = recentComments[ i ].getHeading();
-			while ( headingItem instanceof HeadingItem && headingItem.headingLevel !== 2 ) {
-				headingItem = headingItem.parent;
+			for ( i = 0; i < recentComments.length; i++ ) {
+				var headingItem = recentComments[ i ].getHeading();
+				while ( headingItem instanceof HeadingItem && headingItem.headingLevel !== 2 ) {
+					headingItem = headingItem.parent;
+				}
+				// Use names as object keys to deduplicate if there are multiple comments in a topic.
+				headingsToUpdate[ headingItem.name ] = headingItem;
 			}
-			// Use names as object keys to deduplicate if there are multiple comments in a topic.
-			headingsToUpdate[ headingItem.name ] = headingItem;
+			updateSubscriptionStates( $container, headingsToUpdate );
 		}
-		updateSubscriptionStates( $container, headingsToUpdate );
-	}
+	} );
 
 	// Preload page metadata.
 	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
