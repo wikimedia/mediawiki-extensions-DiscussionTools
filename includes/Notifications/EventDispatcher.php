@@ -347,8 +347,9 @@ class EventDispatcher {
 	 * @return bool Whether events were logged
 	 */
 	protected static function logAddedComments( $addedComments, $newRevRecord, $title, $identity ) {
-		global $wgDTSchemaEditAttemptStepOversample, $wgDBname;
-		$request = RequestContext::getMain()->getRequest();
+		global $wgDTSchemaEditAttemptStepOversample, $wgWMESchemaEditAttemptStepOversample, $wgDBname;
+		$context = RequestContext::getMain();
+		$request = $context->getRequest();
 		// We've reached here through Echo's post-save deferredupdate, which
 		// might either be after an API request from DiscussionTools or a
 		// regular POST from WikiEditor. Both should have this value snuck
@@ -357,17 +358,19 @@ class EventDispatcher {
 			return false;
 		}
 		$editingStatsId = $request->getVal( 'editingStatsId' );
+		$isDiscussionTools = (bool)$request->getVal( 'dttags' );
 
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		if ( !$extensionRegistry->isLoaded( 'EventLogging' ) ) {
 			return false;
 		}
 		$inSample = self::inEventSample( $editingStatsId );
-		$shouldOversample = $wgDTSchemaEditAttemptStepOversample || (
-			$extensionRegistry->isLoaded( 'WikimediaEvents' ) &&
-			// @phan-suppress-next-line PhanUndeclaredClassMethod
-			\WikimediaEvents\WikimediaEventsHooks::shouldSchemaEditAttemptStepOversample( RequestContext::getMain() )
-		);
+		$shouldOversample = $wgWMESchemaEditAttemptStepOversample ||
+			( $isDiscussionTools && $wgDTSchemaEditAttemptStepOversample ) || (
+				$extensionRegistry->isLoaded( 'WikimediaEvents' ) &&
+				// @phan-suppress-next-line PhanUndeclaredClassMethod
+				\WikimediaEvents\WikimediaEventsHooks::shouldSchemaEditAttemptStepOversample( $context )
+			);
 		if ( !$inSample && !$shouldOversample ) {
 			return false;
 		}
@@ -375,8 +378,6 @@ class EventDispatcher {
 		$user = MediaWikiServices::getInstance()
 			->getUserFactory()
 			->newFromUserIdentity( $identity );
-
-		$isDiscussionTools = (bool)$request->getVal( 'dttags' );
 
 		foreach ( $addedComments as $comment ) {
 			$heading = $comment->getSubscribableHeading();
@@ -400,7 +401,7 @@ class EventDispatcher {
 					'user_edit_count' => $user->getEditCount() ?: 0,
 					// Retention-safe values:
 					'user_is_anonymous' => !$user->isRegistered(),
-					'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $user ),
+					'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $user ) ?: 'N/A',
 				],
 				'database' => $wgDBname,
 				// This is unreliable, but sufficient for our purposes; we
