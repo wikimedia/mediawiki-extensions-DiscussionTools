@@ -317,6 +317,10 @@ function initTopicSubscriptions( $container ) {
 }
 
 function maybeShowFirstTimeAutoTopicSubPopup() {
+	if ( !lastHighlightComment ) {
+		return;
+	}
+
 	if ( seenAutoTopicSubPopup ) {
 		return;
 	}
@@ -325,10 +329,6 @@ function maybeShowFirstTimeAutoTopicSubPopup() {
 	getApi().saveOption( 'discussiontools-seenautotopicsubpopup', '1' );
 
 	var $popupContent, popup;
-
-	if ( !lastHighlightComment ) {
-		return;
-	}
 
 	function close() {
 		popup.$element.removeClass( 'ext-discussiontools-autotopicsubpopup-fadein' );
