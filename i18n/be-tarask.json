@@ -15,7 +15,7 @@
 	"discussiontools-replywidget-preferences": "Налады",
 	"echo-category-title-dt-subscription": "Размовы {{PLURAL:$1|падпіска|падпіскі}}",
 	"echo-pref-tooltip-dt-subscription": "Паведаміць мне, калі нехта напіша новы камэнтар у тэму, на якую я падпісаў/лася.",
-	"tag-discussiontools-edit": "Рэдагаваць камэнтар",
+	"tag-discussiontools-edit": "Адрэдагаваны камэнтар",
 	"tag-discussiontools-edit-description": "Карыстальнік адрэдагаваў існы камэнтар праз DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Новая тэма]",
 	"tag-discussiontools-newtopic-description": "Карыстальнік дадаў на старонку новую тэму праз DiscussionTools"
