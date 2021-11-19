@@ -1,20 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ankan",
 			"Ed g2s",
 			"Kupulak",
 			"Matma Rex",
+			"ZI Jony",
 			"আফতাবুজ্জামান"
 		]
 	},
 	"discussiontools": "আলোচনা সরঞ্জাম",
+	"discussiontools-autotopicsubpopup-body": "এই আলোচনায় কেউ কোনও নতুন মন্তব্য যোগ করলে আপনি একটি বিজ্ঞপ্তি পাবেন। আপনি পছন্দসমূহে যেয়ে আপনার বিজ্ঞপ্তির সেটিং বদল করতে পারবেন।",
+	"discussiontools-autotopicsubpopup-dismiss": "ঠিক আছে, বুঝেছি",
 	"discussiontools-autotopicsubpopup-preferences": "পছন্দসমূহ",
+	"discussiontools-autotopicsubpopup-title": "আপনি সদস্যতা নিয়েছেন",
 	"discussiontools-defaultsummary-reply": "উত্তর",
 	"discussiontools-desc": "আলোচনার পাতাগুলির উন্নতি সাধনের জন্য সরঞ্জাম।",
 	"discussiontools-emptystate-button": "একটি আলোচনা শুরু করুন",
-	"discussiontools-emptystate-desc": "আলাপ পাতা হল {{SITENAME}} সম্পর্কিত বিষয় নিয়ে আলাপ করার একটি স্থান। আপনি এই আলাপ পাতাটি ব্যবহার করে, কীভাবে [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]-এর উন্নতি করা যায় সে সম্পর্কে অন্যদের সাথে আলোচনা শুরু করতে পারেন। [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|আরও জানুন]]।",
-	"discussiontools-emptystate-desc-self": "{{SITENAME}}-এ কেউ আপনাকে কোনও বার্তা দিতে চাইলে এই পাতাটি ব্যবহার করে দিতে পারেন এবং কেউ বার্তা দিলে সেই সম্পর্কে আপনাকে অবহিত করা হবে। [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|আরও জানুন]]।",
-	"discussiontools-emptystate-desc-user": "আলাপ পাতা হল {{SITENAME}} সম্পর্কিত বিষয় নিয়ে আলাপ করার একটি স্থান। আপনি এই আলাপ পাতাটি ব্যবহার করে [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]-এর সাথে আলোচনা শুরু করতে পারেন। এই আলোচনা অন্যরাও দেখতে পাবেন। [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|আরও জানুন]]।",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|আলাপ পাতা]] হল {{SITENAME}} সম্পর্কিত বিষয় নিয়ে আলাপ করার একটি স্থান। আপনি এই আলাপ পাতাটি ব্যবহার করে, কীভাবে [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]-এর উন্নতি করা যায় সে সম্পর্কে অন্যদের সাথে আলোচনা শুরু করতে পারেন।",
+	"discussiontools-emptystate-desc-self": "{{SITENAME}}-এ কেউ আপনাকে কোনও বার্তা দিতে চাইলে এই [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|আলাপ পাতাটি]] ব্যবহার করে দিতে পারবেন এবং কেউ বার্তা দিলে সে সম্পর্কে আপনাকে অবহিত করা হবে।",
+	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|আলাপ পাতা]] হল {{SITENAME}} সম্পর্কিত বিষয় নিয়ে আলাপ করার একটি স্থান। আপনি এই আলাপ পাতাটি ব্যবহার করে [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]-এর সাথে আলোচনা শুরু করতে পারেন। এই আলোচনা অন্যরাও দেখতে পাবেন।",
+	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|আলাপ পাতায়]] সকলে আলোচনা করে কীভাবে {{SITENAME}}-এর বিষয়বস্তুকে উন্নত করে তোলা যায়। । আপনি এই আলাপ পাতা ব্যবহার করে আইপি ঠিকানা থেকে করা সম্পাদনা সম্পর্কে আলোচনা শুরু করতে পারেন। আপনি যা বলবেন তা যে কেউ দেখতে পাবে। অনেক আইপি ঠিকানা নির্দিষ্ট দিন পরপর পরিবর্তিত হয়, এবং অনেক সময় একাধিক ব্যক্তি সেই ঠিকানা ব্যবহার করে।",
 	"discussiontools-emptystate-title": "{{PAGENAME}} নিয়ে একটি আলোচনা শুরু করুন",
 	"discussiontools-emptystate-title-self": "আপনার আলাপ পাতায় স্বাগতম",
 	"discussiontools-emptystate-title-self-anon": "এই আলাপ পাতায় স্বাগতম",
@@ -42,6 +48,7 @@
 	"discussiontools-notification-subscribed-new-comment-view": "মন্তব্য দেখুন",
 	"discussiontools-postedit-confirmation-published": "আপনার মন্তব্য প্রকাশিত হয়েছে।",
 	"discussiontools-postedit-confirmation-topicadded": "আপনার আলোচনা যোগ করা হয়েছে।",
+	"discussiontools-preference-autotopicsub": "আলোচনায় স্বয়ংক্রিয় সদস্যতা",
 	"discussiontools-preference-description": "আলাপ পাতার পরীক্ষামূলক বৈশিষ্ট্যগুলি সক্রিয় করে:\n* এক ক্লিকে আলাপ পাতার মন্তব্যে [https://www.mediawiki.org/wiki/Talk_pages_project/Replying উত্তর দিন]।\n* একটি সরল ফরম ব্যবহার করে [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion নতুন আলোচনা যোগ করুন]।\n* আপনি যে আলোচনাগুলিতে সদস্যতা নিয়েছেন তাতে নতুন মন্তব্য যোগ হলে [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications বিজ্ঞপ্তি পান]।\n\nআপনি আপনার [[Special:Preferences#mw-prefsection-editing-discussion|পছন্দসমূহে]] এই বৈশিষ্ট্যগুলি স্বনির্ধারণ করতে পারবেন।\n\nএই বৈশিষ্ট্যগুলি সম্পর্কে হালনাগাদ [https://www.mediawiki.org/wiki/Talk_pages_project/Updates প্রকল্পের পাতায়] প্রদান করা হবে।\n\nদয়া করে লক্ষ্য করুন:\n* সময়ের সাথে সাথে, নতুন পরীক্ষামূলক সরঞ্জাম যুক্ত করা হবে।\n*  উপরের কিছু বৈশিষ্ট্য আপনার উইকিতে এখনো উপলব্ধ নাও হতে পারে।",
 	"discussiontools-preference-discussion-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project",
 	"discussiontools-preference-label": "আলোচনা সরঞ্জাম",
