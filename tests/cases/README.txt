@@ -52,5 +52,11 @@ https://en.wikipedia.org/w/index.php?title=Wikipedia:Requests_for_comment/User_n
 double-signature2:
 https://en.wikipedia.org/w/index.php?title=Wikipedia:Articles_for_deletion/Equal_Education&oldid=1009060583&action=render
 
+transclusions2:
+https://en.wikipedia.beta.wmflabs.org/api/rest_v1/page/html/Talk%3AT289873/514467
+
+transclusions3:
+https://en.wikipedia.org/api/rest_v1/page/html/Wikipedia_talk%3ATemplate_documentation/1056728376
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.
