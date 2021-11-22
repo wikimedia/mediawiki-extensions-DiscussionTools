@@ -85,7 +85,7 @@ class HookUtils {
 				// betaenable doesn't have a default value, so we can check
 				// for it being unset like this. If the user has explicitly
 				// enabled or disabled it, we should immediately return that.
-				return $betaenabled;
+				return (bool)$betaenabled;
 			}
 			// Otherwise, being in the "test" group for this feature means
 			// it's effectively beta-enabled.
