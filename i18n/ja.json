@@ -117,7 +117,7 @@
 	"echo-pref-tooltip-dt-subscription": "購読中の話題に誰かが投稿するたび、通知を受信。",
 	"tag-discussiontools-added-comment-description": "この編集でトークページにコメントが投稿されました",
 	"tag-discussiontools-description": "議論ツールを使って編集",
-	"tag-discussiontools-edit": "コメントを編集",
+	"tag-discussiontools-edit": "編集済みのコメント",
 	"tag-discussiontools-edit-description": "議論ツールを使ってコメントを編集",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} 新規トピック]",
 	"tag-discussiontools-newtopic-description": "議論ツールを使ってページに新しいトピックを追加",

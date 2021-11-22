@@ -5,6 +5,7 @@
 			"Joseph",
 			"Mim.saitkilic",
 			"MuratTheTurkish",
+			"SaldırganSincap",
 			"ToprakM"
 		]
 	},
@@ -14,7 +15,7 @@
 	"apierror-discussiontools-subscription-failed-add": "Bu konuya abone olunamadı.",
 	"apierror-discussiontools-subscription-failed-remove": "Bu konunun aboneliğinden çıkılamadı.",
 	"apihelp-discussiontools-param-oldid": "Kullanılacak revizyon numarası (en son revizyon varsayılanları).",
-	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Bir sayfadaki her yorumun dahil edildiği sayfaların başlıklarını getirir.",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Yansıtan sayfadaki her yorumun dönüştürüldüğü sayfaların başlıklarını döndürün.",
 	"apihelp-discussiontools-summary": "Tartışma araçlarını başlatmak için gereken meta verileri döndürür.",
 	"apihelp-discussiontoolsedit-param-commentid": "Cevap verilecek yorumun kimliği. Sadece <var>paction</var>, <var>addcomment</var> ise kullanılır. <var>commentname</var> dikkate alınmaz.",
 	"apihelp-discussiontoolsedit-param-commentname": "Cevap verilecek yorumun adı. Sadece <var>paction</var>, <var>addcomment</var> ise kullanılır.",
