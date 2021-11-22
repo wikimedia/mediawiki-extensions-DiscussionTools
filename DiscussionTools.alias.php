@@ -12,3 +12,8 @@ $specialPageAliases = [];
 $specialPageAliases['en'] = [
 	'TopicSubscriptions' => [ 'TopicSubscriptions' ],
 ];
+
+/** čeština (Czech) */
+$specialPageAliases['cs'] = [
+	'TopicSubscriptions' => [ 'Odebíraná_témata' ],
+];
