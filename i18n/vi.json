@@ -102,7 +102,7 @@
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Ngừng theo dõi",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Sửa chủ đề",
 	"discussiontools-topicsubscription-special-intro": "Việc theo dõi sẽ giúp bạn luôn nhận được thông báo khi một ai đó viết bình luận vào chủ đề bạn quan tâm.\n\nBạn có thể điều chỉnh phương thức và thời điểm nhận thông báo trong [[Special:Preferences#mw-prefsection-echo|tùy chọn]].",
-	"discussiontools-topicsubscription-special-title": "Mô tả chủ đề",
+	"discussiontools-topicsubscription-special-title": "Chủ đề được theo dõi",
 	"echo-category-title-dt-subscription": "Theo dõi {{PLURAL:$1}}trang thảo luận",
 	"echo-pref-tooltip-dt-subscription": "Gửi thông báo cho tôi khi có người bình luận về chủ đề tôi theo dõi.",
 	"tag-discussiontools-added-comment-description": "Sửa đổi này thêm một lời bình luận vào trang thảo luận",
