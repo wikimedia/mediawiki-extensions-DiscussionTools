@@ -2,10 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"MITO",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Kyykaarme"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Kommenttia tunnisteella '$1' ei löydy.",
+	"apierror-discussiontools-commentname-notfound": "Kommenttia nimellä '$1' ei löytynyt.",
 	"apierror-discussiontools-subscription-failed-add": "Tätä aihetta ei voitu tilata.",
+	"apierror-discussiontools-subscription-failed-remove": "Tilauksen poistaminen tästä aiheesta ei onnistunut.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikiteksti"
 }

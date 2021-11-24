@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joao Xavier"
+			"Joao Xavier",
+			"JSantos"
 		]
 	},
+	"discussiontools-emptystate-button": "Komencez diskuto",
+	"discussiontools-emptystate-title": "Komencez diskuto pri {{PAGENAME}}",
 	"discussiontools-replywidget-mode-source": "Fonto",
 	"discussiontools-replywidget-mode-visual": "Vidala",
 	"tag-discussiontools-edit": "Redaktez komento",

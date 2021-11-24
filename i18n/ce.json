@@ -25,6 +25,7 @@
 	"discussiontools-error-noswitchtove-title": "БӀаьра раж дӀадайина",
 	"discussiontools-newtopic-missing-title": "Дехар до хьан дийцарийн темин тӀетоха корта. Ахьа \"{{int:discussiontools-replywidget-newtopic}}\" тӀетаӀа йахь, хьан тема тӀетухура йу корта боцуш.",
 	"discussiontools-newtopic-placeholder-title": "Корта",
+	"discussiontools-notification-subscribed-new-comment-view": "Хьажа коммент",
 	"discussiontools-postedit-confirmation-published": "Хьан коммент дӀаязйина",
 	"discussiontools-postedit-confirmation-topicadded": "Хьан тема тӀетоьхна.",
 	"discussiontools-preference-description": "Латайо керла белхан процесс [//www.mediawiki.org/wiki/Talk_pages_project/replying replying to specific comments] тӀехь, дийцарийн агӀонашкахь.\n\nДехар до, терго йе, хан мел йолу тӀетухур болуш бу керла аьттонаш.\n\nОцу функцех лаьцна хьажа [//www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].",

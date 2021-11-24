@@ -9,6 +9,8 @@
 	"apierror-discussiontools-commentid-notfound": "Komentar dengan ID '$1' tidak ditemukan.",
 	"apierror-discussiontools-commentname-ambiguous": "Beberapa komentar dengan nama '$1' ditemukan, harap gunakan ID saja.",
 	"apierror-discussiontools-commentname-notfound": "Komentar dengan nama '$1' tidak ditemukan.",
+	"apierror-discussiontools-subscription-failed-add": "Tidak dapat berlangganan topik ini.",
+	"apierror-discussiontools-subscription-failed-remove": "Tidak dapat berhenti langganan dari topik ini.",
 	"apihelp-discussiontools-param-oldid": "Nomor revisi yang akan digunakan (baku untuk revisi terkini).",
 	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Dapatkan judul halaman di mana setiap komentar dalam halaman tersebut ditransklusikan.",
 	"apihelp-discussiontools-summary": "Dapatkan metadata yang diperlukan untuk menginisialisasi perkakas diskusi.",
