@@ -707,7 +707,7 @@ function init( $container, state ) {
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
-	var promise = OO.ui.isMobile && mw.loader.getState( 'mobile.init' ) ?
+	var promise = OO.ui.isMobile() && mw.loader.getState( 'mobile.init' ) ?
 		mw.loader.using( 'mobile.init' ) :
 		$.Deferred().resolve().promise();
 
