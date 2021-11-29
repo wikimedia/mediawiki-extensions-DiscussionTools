@@ -432,7 +432,7 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 
 		if ( subscribedState === STATE_AUTOSUBSCRIBED ) {
 			maybeShowFirstTimeAutoTopicSubPopup();
-		} else if ( subscribedState === null ) {
+		} else if ( subscribedState === null || subscribedState === STATE_UNSUBSCRIBED ) {
 			topicsToCheck.push( headingName );
 			pending.push( el );
 		}
