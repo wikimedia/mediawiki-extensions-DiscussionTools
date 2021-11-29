@@ -17,6 +17,7 @@
 			"Yusuke1109",
 			"しぃ",
 			"つぶあん派",
+			"カッパ鳥",
 			"ネイ"
 		]
 	},
@@ -26,13 +27,13 @@
 	"discussiontools-emptystate-button": "新しい議論を始める",
 	"discussiontools-emptystate-desc": "トークページとは{{SITENAME}}にあるコンテンツの最適化を皆さんで協議する場です。このページを利用し、[[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]の改善について議論を始めることができます。[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|詳細はこちらをご覧ください]]。",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}}のユーザーはこのページを利用してあなたへの公開メッセージを送信することができます。メッセージが送信されると通知が届きます。[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|このページの使い方に関する詳細はこちらをご覧ください]]。",
-	"discussiontools-emptystate-desc-self-anon": "{{SITENAME}}の匿名利用者はこのページを使って、使用中のIPアドレスから投稿した編集に関するメッセージを発信することができます。\n\nIP アドレスは定期的に書き換えられ、複数の人が共有する場合が多くあります。[$1 アカウント登録をする]か[$2 ログイン]すると、将来的に匿名利用の他者との紛らわしさを回避できます。登録アカウントからログインすると、ご使用のIPアドレスは見えなくなります。",
+	"discussiontools-emptystate-desc-self-anon": "{{SITENAME}}の匿名利用者はこの[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|トークページ]]を使って、使用中のIPアドレスから投稿した編集に関するメッセージを発信することができます。\n\nIP アドレスは定期的に書き換えられ、複数の人が共有する場合が多いです。[$1 アカウント登録をする]か[$2 ログイン]すると、将来的に匿名利用の他者との紛らわしさを回避できます。登録アカウントからログインすると、ご使用のIPアドレスは見えなくなります。",
 	"discussiontools-emptystate-desc-user": "トークページを利用して{{SITENAME}}にあるコンテンツを最適化する方法を協議します。[[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]に新しい議題をあげ、他の編集者と繋がったり共同作業を始めませんか。ここに投稿した内容は公開され他の人が閲覧します。[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|詳細はこちらをご覧ください]]。",
 	"discussiontools-emptystate-desc-user-anon": "トークページとは、{{SITENAME}}において最善のコンテンツ作りをするため、協議を行う場所です。当該のIPアドレスから投稿された編集を話題にするには、このページをご利用ください。トークページへの投稿内容は一般読者に公開されます。IPアドレスの多くは定期的に変化し、複数の人が共有しています。[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|詳細はこちら]]",
 	"discussiontools-emptystate-title": "{{PAGENAME}}に関する議論を行う",
 	"discussiontools-emptystate-title-self": "ここはあなたのトークページです",
 	"discussiontools-emptystate-title-self-anon": "ようこそ、こちらのトークページへ",
-	"discussiontools-emptystate-title-user": "{{PAGENAME}}で話し合う",
+	"discussiontools-emptystate-title-user": "{{PAGENAME}}{{GENDER:{{PAGENAME}}}}と議論を始める",
 	"discussiontools-emptystate-title-user-anon": "ようこそ、こちらのトークページへ",
 	"discussiontools-error-comment-conflict": "ほかの利用者と同時に返信したため、あなたのコメントは保存できませんでした。もう一度送信するか、このページを再読み込みして新しいコメントを閲覧してください。",
 	"discussiontools-error-comment-disappeared": "あなたが返信しようとしているコメントがページで検出できませんでした。そのコメントは削除されたか、別のページに移動・転記された可能性があります。ページを再読み込みしてから再度お試しください。",
