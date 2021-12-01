@@ -67,7 +67,7 @@ class SubscriptionItem {
 	 *
 	 * @return string|null
 	 */
-	public function getCreatedTimestamp() {
+	public function getCreatedTimestamp(): ?string {
 		return $this->createdTimestamp;
 	}
 
@@ -76,7 +76,7 @@ class SubscriptionItem {
 	 *
 	 * @return string|null
 	 */
-	public function getNotificationTimestamp() {
+	public function getNotificationTimestamp(): ?string {
 		return $this->notifiedTimestamp;
 	}
 

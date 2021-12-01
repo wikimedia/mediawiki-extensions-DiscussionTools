@@ -90,7 +90,7 @@ class CommentParser {
 	 * @param Node $node
 	 * @return bool
 	 */
-	private static function isCommentSeparator( Node $node ) {
+	private static function isCommentSeparator( Node $node ): bool {
 		return $node instanceof Element && (
 			// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
 			strtolower( $node->nodeName ) === 'br' ||
@@ -540,7 +540,7 @@ class CommentParser {
 	 * @param Element $link
 	 * @return string|null Username, or null
 	 */
-	private static function getUsernameFromLink( Element $link ) {
+	private static function getUsernameFromLink( Element $link ): ?string {
 		$username = null;
 		$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '' );
 		if ( !$title ) {
@@ -666,7 +666,7 @@ class CommentParser {
 	 * @param Node $node
 	 * @return int Appropriate NodeFilter constant
 	 */
-	public static function acceptOnlyNodesAllowingComments( Node $node ) {
+	public static function acceptOnlyNodesAllowingComments( Node $node ): int {
 		// The table of contents has a heading that gets erroneously detected as a section
 		if ( $node instanceof Element && $node->getAttribute( 'id' ) === 'toc' ) {
 			return NodeFilter::FILTER_REJECT;
@@ -847,7 +847,7 @@ class CommentParser {
 	 * @param Text $node
 	 * @return ImmutableRange
 	 */
-	private function adjustSigRange( array $sigNodes, array $match, Text $node ) {
+	private function adjustSigRange( array $sigNodes, array $match, Text $node ): ImmutableRange {
 		$firstSigNode = end( $sigNodes );
 		$lastSigNode = $sigNodes[0];
 
@@ -1247,7 +1247,7 @@ class CommentParser {
 	 * @param ThreadItem $threadItem
 	 * @return CommentItem|null
 	 */
-	private function getThreadStartComment( ThreadItem $threadItem ) {
+	private function getThreadStartComment( ThreadItem $threadItem ): ?CommentItem {
 		$oldest = null;
 		if ( $threadItem instanceof CommentItem ) {
 			$oldest = $threadItem;

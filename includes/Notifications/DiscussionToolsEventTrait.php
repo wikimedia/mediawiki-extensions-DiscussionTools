@@ -39,9 +39,9 @@ trait DiscussionToolsEventTrait {
 	/**
 	 * Get a link to the individual comment, if available.
 	 *
-	 * @return string Full URL linking to the comment
+	 * @return string|null Full URL linking to the comment, null if not available
 	 */
-	protected function getCommentLink() {
+	protected function getCommentLink(): ?string {
 		if ( !$this->userCan( RevisionRecord::DELETED_TEXT ) ) {
 			return null;
 		}
@@ -91,7 +91,7 @@ trait DiscussionToolsEventTrait {
 	 *
 	 * @return string The snippet, as plain text (may be empty)
 	 */
-	protected function getContentSnippet() {
+	protected function getContentSnippet(): string {
 		if ( !$this->userCan( RevisionRecord::DELETED_TEXT ) ) {
 			return '';
 		}
