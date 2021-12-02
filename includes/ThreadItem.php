@@ -238,7 +238,7 @@ abstract class ThreadItem implements JsonSerializable {
 	/**
 	 * @param ThreadItem $parent
 	 */
-	public function setParent( ThreadItem $parent ) {
+	public function setParent( ThreadItem $parent ): void {
 		$this->parent = $parent;
 	}
 

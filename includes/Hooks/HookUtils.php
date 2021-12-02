@@ -139,7 +139,7 @@ class HookUtils {
 	 * @return string 'test' if in the test group, 'control' if in the control group, or '' if they've
 	 *  never been in the test
 	 */
-	private static function determineUserABTestBucket( $user, $feature = null ): string {
+	private static function determineUserABTestBucket( UserIdentity $user, ?string $feature = null ): string {
 		$services = MediaWikiServices::getInstance();
 		$optionsManager = $services->getUserOptionsManager();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );

@@ -32,7 +32,7 @@ class MockEventDispatcher extends EventDispatcher {
 		RevisionRecord $newRevRecord,
 		PageIdentity $title,
 		UserIdentity $user
-	) {
+	): void {
 		parent::generateEventsFromParsers(
 			$events,
 			$oldParser,
@@ -48,7 +48,7 @@ class MockEventDispatcher extends EventDispatcher {
 	 *
 	 * @param RevisionRecord $newRevRecord
 	 */
-	public static function addCommentChangeTag( RevisionRecord $newRevRecord ) {
+	public static function addCommentChangeTag( RevisionRecord $newRevRecord ): void {
 	}
 
 	/**
@@ -58,7 +58,7 @@ class MockEventDispatcher extends EventDispatcher {
 	 * @param Title $title
 	 * @param string $itemName
 	 */
-	protected static function addAutoSubscription( UserIdentity $user, Title $title, string $itemName ) {
+	protected static function addAutoSubscription( UserIdentity $user, Title $title, string $itemName ): void {
 	}
 
 }

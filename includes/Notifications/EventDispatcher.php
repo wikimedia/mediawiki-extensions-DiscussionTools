@@ -72,7 +72,7 @@ class EventDispatcher {
 	 * @param array &$events
 	 * @param RevisionRecord $newRevRecord
 	 */
-	public static function generateEventsForRevision( array &$events, RevisionRecord $newRevRecord ) {
+	public static function generateEventsForRevision( array &$events, RevisionRecord $newRevRecord ): void {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
@@ -156,7 +156,7 @@ class EventDispatcher {
 		RevisionRecord $newRevRecord,
 		PageIdentity $title,
 		UserIdentity $user
-	) {
+	): void {
 		$newComments = self::groupCommentsByThreadAndName( $newParser->getThreadItems() );
 		$oldComments = self::groupCommentsByThreadAndName( $oldParser->getThreadItems() );
 		$addedComments = [];
@@ -277,7 +277,7 @@ class EventDispatcher {
 	 *
 	 * @param RevisionRecord $newRevRecord
 	 */
-	protected static function addCommentChangeTag( RevisionRecord $newRevRecord ) {
+	protected static function addCommentChangeTag( RevisionRecord $newRevRecord ): void {
 		// Unclear if DeferredUpdates::addCallableUpdate() is needed,
 		// but every extension does it that way.
 		DeferredUpdates::addCallableUpdate( static function () use ( $newRevRecord ) {
@@ -293,7 +293,7 @@ class EventDispatcher {
 	 * @param Title $title
 	 * @param string $itemName
 	 */
-	protected static function addAutoSubscription( UserIdentity $user, Title $title, string $itemName ) {
+	protected static function addAutoSubscription( UserIdentity $user, Title $title, string $itemName ): void {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		if (
@@ -346,7 +346,12 @@ class EventDispatcher {
 	 * @param UserIdentity $identity
 	 * @return bool Whether events were logged
 	 */
-	protected static function logAddedComments( $addedComments, $newRevRecord, $title, $identity ) {
+	protected static function logAddedComments(
+		array $addedComments,
+		RevisionRecord $newRevRecord,
+		PageIdentity $title,
+		UserIdentity $identity
+	): bool {
 		global $wgDTSchemaEditAttemptStepOversample, $wgWMESchemaEditAttemptStepOversample, $wgDBname;
 		$context = RequestContext::getMain();
 		$request = $context->getRequest();
@@ -422,7 +427,7 @@ class EventDispatcher {
 	 * @param string $sessionId
 	 * @return bool Whether to sample the session
 	 */
-	protected static function inEventSample( $sessionId ) {
+	protected static function inEventSample( string $sessionId ): bool {
 		global $wgDTSchemaEditAttemptStepSamplingRate, $wgWMESchemaEditAttemptStepSamplingRate;
 		// Sample 6.25%
 		$samplingRate = 0.0625;

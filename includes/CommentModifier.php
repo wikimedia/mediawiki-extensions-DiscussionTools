@@ -300,7 +300,7 @@ class CommentModifier {
 	 *
 	 * @param DocumentFragment $fragment Fragment
 	 */
-	public static function unwrapFragment( DocumentFragment $fragment ) {
+	public static function unwrapFragment( DocumentFragment $fragment ): void {
 		$childNodeList = iterator_to_array( $fragment->childNodes );
 
 		// Wrap orphaned list items
@@ -514,7 +514,7 @@ class CommentModifier {
 	 * @param ThreadItem $comment Comment being replied to
 	 * @param Element $container Container of comment DOM nodes
 	 */
-	public static function addReply( ThreadItem $comment, Element $container ) {
+	public static function addReply( ThreadItem $comment, Element $container ): void {
 		$newParsoidItem = null;
 		// Transfer comment DOM to Parsoid DOM
 		// Wrap every root node of the document in a new list item (dd/li).
@@ -537,7 +537,7 @@ class CommentModifier {
 	 * @param CommentItem $comment Comment being replied to
 	 * @param string $wikitext
 	 */
-	public static function addWikitextReply( $comment, $wikitext ) {
+	public static function addWikitextReply( CommentItem $comment, string $wikitext ): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = $doc->createElement( 'div' );
 
@@ -563,7 +563,7 @@ class CommentModifier {
 	 * @param CommentItem $comment Comment being replied to
 	 * @param string $html
 	 */
-	public static function addHtmlReply( $comment, $html ) {
+	public static function addHtmlReply( CommentItem $comment, string $html ): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = $doc->createElement( 'div' );
 
