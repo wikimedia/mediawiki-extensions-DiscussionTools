@@ -85,23 +85,6 @@ class CommentParser {
 	}
 
 	/**
-	 * Check whether the node is a comment separator (instead of a part of the comment).
-	 *
-	 * @param Node $node
-	 * @return bool
-	 */
-	private static function isCommentSeparator( Node $node ): bool {
-		return $node instanceof Element && (
-			// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
-			strtolower( $node->nodeName ) === 'br' ||
-			// Horizontal line
-			strtolower( $node->nodeName ) === 'hr' ||
-			// {{outdent}} templates
-			$node->getAttribute( 'class' ) === 'outdent-template'
-		);
-	}
-
-	/**
 	 * Return the next leaf node in the tree order that is likely a part of a discussion comment,
 	 * rather than some boring "separator" element.
 	 *
@@ -117,33 +100,21 @@ class CommentParser {
 		$treeWalker = new TreeWalker(
 			$rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
-			function ( $n ) use ( $node, $rootNode ) {
+			static function ( $n ) use ( $node, $rootNode ) {
 				// Ignore this node and its descendants
 				// (unless it's the root node, this is a special case for "fakeHeading" handling)
 				if ( $node !== $rootNode && ( $n === $node || $n->parentNode === $node ) ) {
 					return NodeFilter::FILTER_REJECT;
 				}
 				// Ignore some elements usually used as separators or headers (and their descendants)
-				if ( self::isCommentSeparator( $n ) ) {
+				if ( CommentUtils::isCommentSeparator( $n ) ) {
 					return NodeFilter::FILTER_REJECT;
 				}
 				// Ignore nodes with no rendering that mess up our indentation detection
 				if ( CommentUtils::isRenderingTransparentNode( $n ) ) {
 					return NodeFilter::FILTER_REJECT;
 				}
-				if (
-					(
-						$n->nodeType === XML_TEXT_NODE &&
-						CommentUtils::htmlTrim( $n->nodeValue ) !== ''
-					) ||
-					(
-						$n->nodeType === XML_CDATA_SECTION_NODE &&
-						CommentUtils::htmlTrim( $n->nodeValue ) !== ''
-					) ||
-					(
-						CommentUtils::cantHaveElementChildren( $n )
-					)
-				) {
+				if ( CommentUtils::isCommentContent( $n ) ) {
 					return NodeFilter::FILTER_ACCEPT;
 				}
 				return NodeFilter::FILTER_SKIP;
