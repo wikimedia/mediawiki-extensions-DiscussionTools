@@ -107,6 +107,7 @@
 	"discussiontools-topicsubscription-pager-page": "Sivu",
 	"discussiontools-topicsubscription-pager-topic": "Aihe",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Peruuta tilaus",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Hallitse tilauksia",
 	"discussiontools-topicsubscription-special-intro": "Tilausten avulla voit seurata yksittäisiä aiheita keskustelusivuilla. Saat ilmoituksen, kun joku vastaa aiheeseen.\n\n[[Special:Preferences#mw-prefsection-echo|Omissa asetuksissasi]] voit valita, miten ja mihin saat kyseiset ilmoitukset.",
 	"discussiontools-topicsubscription-special-title": "Aiheiden tilaukset",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Keskustelusivutilaus|Keskustelusivutilaukset}}",
