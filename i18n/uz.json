@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Malikxan"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Javob berish",
+	"discussiontools-newtopic-placeholder-title": "Sarlavha",
+	"discussiontools-notification-subscribed-new-comment-view": "Izohni koʻrish",
+	"discussiontools-preference-label": "Munozara asboblari",
+	"discussiontools-replylink": "javob berish",
+	"discussiontools-replywidget-abandon-keep": "Yozishni davom ettirish",
+	"discussiontools-replywidget-advanced": "Yetuk",
+	"discussiontools-replywidget-cancel": "Bekor qilish",
+	"discussiontools-replywidget-feedback": "Bu funksiya haqida fikr ulashish",
+	"discussiontools-replywidget-loading": "Yuklanmoqda…",
+	"discussiontools-replywidget-mention-tool-header": "Foydalanuvchini topish: $1",
+	"discussiontools-replywidget-mention-tool-title": "Foydalanuvchini tilga olish",
+	"discussiontools-replywidget-mode-source": "Manba",
+	"discussiontools-replywidget-mode-visual": "Vizual",
+	"discussiontools-replywidget-newtopic": "Mavzu qoʻshish",
+	"discussiontools-replywidget-placeholder-newtopic": "Tavsif",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ga javob berish",
+	"discussiontools-replywidget-preview": "Prevyu",
+	"discussiontools-replywidget-reply": "Javob berish",
+	"discussiontools-replywidget-summary": "Qisqa izoh",
+	"discussiontools-replywidget-transcluded": "Qoldirgan izohingiz [[$1]] sahifasida saqlanadi.",
+	"tag-discussiontools-source": "Manba",
+	"tag-discussiontools-visual": "Vizual"
+}

@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pyscowicz"
+			"Pyscowicz",
+			"Kyykaarme",
+			"MITO"
 		]
 	},
+	"apierror-discussiontools-commentid-notfound": "Kommenttia tunnisteella '$1' ei löydy.",
+	"apierror-discussiontools-commentname-notfound": "Kommenttia nimellä '$1' ei löytynyt.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikiteksti"
 }

@@ -6,10 +6,11 @@
 			"Guherto"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "IDya şiroveyê nehat dîtin: $1",
+	"apierror-discussiontools-commentid-notfound": "Şîroveyê bi IDya '$1' nehat dîtin.",
+	"apierror-discussiontools-commentname-notfound": "Şiroveya bi navê '$1' nehatiye dîtin.",
 	"apihelp-discussiontools-param-oldid": "Hejmara guhartoye ku ber werê bikaranîn (ya ji ber xwe ve dibê ya herî nû).",
 	"apihelp-discussiontools-summary": "Agahiyên hewce ji bonî destpêkirina alavên gotûbêjê vedigerîne.",
-	"apihelp-discussiontoolsedit-param-commentid": "IDya şîroveyê ji bo cewabdanê. Tenê gava <var>paction</var> <var>addcomment</var> be tê bikaranîn.",
+	"apihelp-discussiontoolsedit-param-commentid": "IDya şîroveyê ji bo cewabdanê. Tenê gava <var>paction</var> <var>addcomment</var> be tê bikaranîn. <var>commentname</var> piştguh bikin.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Naveroka ku wek wîkînivîs were weşandin. Nikare tevî <var>html</var> were bikaranîn.",
 	"apihelp-discussiontoolsedit-summary": "Peyamek li ser rûpeleke gotûbêjê binivîse."
 }

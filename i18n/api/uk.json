@@ -2,13 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"Base",
-			"Ата"
+			"Ата",
+			"DDPAT"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "ID коментаря не знайдено: $1",
+	"apierror-discussiontools-commentid-notfound": "Коментаря з ідентифікатором «$1» не знайдено.",
+	"apierror-discussiontools-commentname-notfound": "Коментар з назвою \"$1\" не знайдено.",
 	"apihelp-discussiontools-param-oldid": "Номер версії (за замовчуванням — остання версія).",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Повернути заголовки сторінок, з яких виключено кожен коментар на даній сторінці.",
 	"apihelp-discussiontools-summary": "Повертає метадані необхідні для ініціалізації інструментів обговорення.",
-	"apihelp-discussiontoolsedit-param-commentid": "Ідентифікатор коментаря, на який відповідати. Використовується лише коли <var>paction</var> є <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-commentid": "Ідентифікатор коментаря, на який відповідати. Використовується лише коли <var>paction</var> є <var>addcomment</var>. Перезаписує значення <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Назва коментаря, на який потрібно відповісти. Використовується лише тоді, коли <var>paction</var> є <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Вміст для розміщення у форматі HTML. Не можна використовувати разом з <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Використовується лише тоді, коли <var>paction</var> є <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Контент для публікації як вікітекст. Не можна використати разом з <var>html</var>.",
-	"apihelp-discussiontoolsedit-summary": "Опублікувати повідомлення на сторінку обговорення."
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Додайте новий коментар як відповідь на існуючий коментар.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Додайте новий розділ обговорення та перший коментар до нього.",
+	"apihelp-discussiontoolsedit-summary": "Опублікувати повідомлення на сторінку обговорення.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True для підписки, false для відмови від підписки",
+	"apihelp-discussiontoolssubscribe-summary": "Підписатися (або скасувати підписку), щоб отримувати сповіщення про тему."
 }

@@ -4,7 +4,9 @@
 			"Georg101",
 			"Matěj Suchánek",
 			"Patriccck",
-			"Patrik L."
+			"Patrik L.",
+			"Jan Myšák",
+			"Mormegil"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Komentář s ID „$1“ nebyl nalezen.",
@@ -20,5 +22,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Obsah k odeslání ve formátu wikitextu. Nelze použít společně s <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Přidat nový komentář jako odpověď na existující komentář.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Přidat novou diskusní sekci a první komentář v ní.",
-	"apihelp-discussiontoolsedit-summary": "Zveřejnit zprávu na diskusní stránce."
+	"apihelp-discussiontoolsedit-summary": "Zveřejnit zprávu na diskusní stránce.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True pro odběr, false pro zrušení odběru",
+	"apihelp-discussiontoolssubscribe-summary": "Přihlášení (nebo odhlášení) příjmu oznámení o tématu."
 }

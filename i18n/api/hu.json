@@ -2,13 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"Hanna Tardos",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Tgr"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "A(z) „$1” azonosítójú hozzászólás nem található.",
+	"apierror-discussiontools-commentname-notfound": "Nem található „$1” nevű hozzászólás.",
 	"apihelp-discussiontools-param-oldid": "A használandó lapváltozat azonosítója (alapértelmezés szerint a legújabb lapváltozat).",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Az egyes kommentek mellett tüntesse fel azt, hogy melyik oldalakról lettek áthivatkozva.",
 	"apihelp-discussiontools-summary": "A megbeszéléseszközök inicializálásához szükséges metaadatok lekérése.",
-	"apihelp-discussiontoolsedit-param-commentid": "A hozzászólás azonosítója.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikiszöveg",
-	"apihelp-discussiontoolsedit-summary": "Üzenet elküldése egy vitalapra."
+	"apihelp-discussiontoolsedit-param-commentid": "A megválaszolandó hozzászólás azonosítója. Csak akkor használható, amikor a <var>paction</var> értéke <var>addcomment</var>. Felülírja a <var>commentname</var> paramétert.",
+	"apihelp-discussiontoolsedit-param-commentname": "A megválaszolandó hozzászólás neve. Csak akkor használható, amikor a <var>paction</var> értéke <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Az elküldendő tartalom HTML-ként. Nem használható a <var>wikitext</var> paraméterrel együtt.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Csak akkor használható, amikor a <var>paction</var> paraméter értéke <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Az elküldendő tartalom wikiszövegként. Nem használható a <var>html</var> paraméterrel együtt.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Új komment küldése egy meglévő kommentre való válaszként.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Új megbeszélés-szakasz hozzáadása, a benne lévő első kommentel együtt.",
+	"apihelp-discussiontoolsedit-summary": "Üzenet elküldése egy vitalapra.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Igaz a feliratkozáshoz, hamis a leiratkozáshoz",
+	"apihelp-discussiontoolssubscribe-summary": "Feliratkozás (vagy leiratkozás) egy adott téma értesítéseiről."
 }

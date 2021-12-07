@@ -5,11 +5,19 @@
 			"Sabelöga"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "Kommentars-ID inte funnen: $1",
+	"apierror-discussiontools-commentid-notfound": "Kommentar med ID \"$1\" hittades inte.",
+	"apierror-discussiontools-commentname-notfound": "Kommentar med namnet \"$1\" hittades inte.",
 	"apihelp-discussiontools-param-oldid": "Sidversionsnummer att använd (standard är senaste versionen).",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Returnera sidtitlar varifrån varje kommentar på den angivna sidan infogas.",
 	"apihelp-discussiontools-summary": "Returnerar metadata som krävs för att initialisera diskussionsverktygen.",
-	"apihelp-discussiontoolsedit-param-commentid": "Kommentars-ID.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext",
+	"apihelp-discussiontoolsedit-param-commentid": "Kommentar-ID att svara på. Används endast när <var>paction</var> är <var>addcomment</var>. Åsidosätter <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Kommentarens namn som ska besvaras. Används endast när <var>paction</var> är <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Innehåll att kommentera, som HTML. Kan inte användas tillsammans med <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Används endast när <var>paction</var> är <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Innehåll att kommentera, som wikitext. Kan inte användas tillsammans med <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Lägg till en ny kommentar som ett svar till en befintlig kommentar.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Lägg till ett nytt diskussionsavsnitt och dess första kommentar.",
-	"apihelp-discussiontoolsedit-summary": "Posta ett inlägg på en diskussionssida."
+	"apihelp-discussiontoolsedit-summary": "Posta ett inlägg på en diskussionssida.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True för att prenumerera, false för att sluta prenumerera",
+	"apihelp-discussiontoolssubscribe-summary": "Prenumerera (eller sluta prenumerera) för att ta emot aviseringar om ett ämne."
 }

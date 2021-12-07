@@ -4,5 +4,7 @@
 			"Katelem"
 		]
 	},
-	"discussiontools-replywidget-abandon-keep": "Fo isi kige"
+	"discussiontools-notification-subscribed-new-comment-view": "Kpọ si etumube",
+	"discussiontools-replywidget-abandon-keep": "Fo isi kige",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Òkpoyaka ibọkọ etip òfolek aya ikọ etumube me emen ibot-ikọ yi."
 }

@@ -2,10 +2,25 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
-			"Zhang8569"
+			"Zhang8569",
+			"GuoPC",
+			"Shizhao",
+			"列维劳德"
 		]
 	},
+	"apierror-discussiontools-commentid-notfound": "未找到ID为“$1”的评论。",
+	"apierror-discussiontools-commentname-notfound": "未找到名为“$1”的评论。",
+	"apihelp-discussiontools-param-oldid": "要使用的修订版本号（默认为最新修订版本）。",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "返回给定页面上的每个评论被嵌入的页面标题。",
+	"apihelp-discussiontools-summary": "返回初始化讨论工具所需的元数据。",
+	"apihelp-discussiontoolsedit-param-commentid": "要回复的评论的ID。仅在<var>paction</var>为<var>addcomment</var>时使用。覆盖<var>commentname</var>。",
+	"apihelp-discussiontoolsedit-param-commentname": "要回复的评论的名称。仅在<var>paction</var>为<var>addcomment</var>时使用。",
+	"apihelp-discussiontoolsedit-param-html": "要作为HTML发布的内容。不能与<var>wikitext</var>一起使用。",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}}仅在<var>paction</var>为<var>addtopic</var>时使用。",
+	"apihelp-discussiontoolsedit-param-wikitext": "要作为wikitext发布的内容。不能与<var>html</var>一起使用。",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "请对一个已存在的评论以回复的形式添加一个新评论。",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "请在第一个评论中添加一个讨论章节。",
-	"apihelp-discussiontoolsedit-summary": "在讨论页面上发布消息。"
+	"apihelp-discussiontoolsedit-summary": "在讨论页面上发布消息。",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True为订阅，false为取消订阅",
+	"apihelp-discussiontoolssubscribe-summary": "订阅（或取消订阅）以接收（或不接收）有关话题的通知。"
 }

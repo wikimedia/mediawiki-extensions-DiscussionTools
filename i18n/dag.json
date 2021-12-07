@@ -5,11 +5,13 @@
 			"Alhassan Peter",
 			"Hasslaebetch",
 			"Karimbaasani",
-			"Ruky Wunpini"
+			"Ruky Wunpini",
+			"Chirifo",
+			"Jahinfo"
 		]
 	},
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{Zaglogu bee zagnyang:$2|labisibu}} in \"<strong>$4</strong>\".",
-	"discussiontools-notification-subscribed-new-comment-header-bundled": "Zagi bobigu",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "Labsibu palli yini",
 	"discussiontools-notification-subscribed-new-comment-view": "Lihimi tɔɣino",
 	"discussiontools-preference-topicsubscription": "Yɛltɔɣa zuɣu piibu",
 	"discussiontools-topicsubscription-notify-subscribed-body": "A ni nya lahibali zanchaŋ taha shɛɣa yɛltɔɣa zuɣu ŋɔ ni",

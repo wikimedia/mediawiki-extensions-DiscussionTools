@@ -3,7 +3,9 @@
 		"authors": [
 			"Matma Rex",
 			"NGC 54",
-			"Turbojet"
+			"Turbojet",
+			"Carcassonne93",
+			"Cezar"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Răspuns",
@@ -36,10 +38,10 @@
 	"discussiontools-preference-topicsubscription": "Activați abonarea la subiect",
 	"discussiontools-preference-topicsubscription-help": "Aceasta vă va permite să vă abonați pentru a primi notificări despre comentarii din subiecte individuale. Puteți afla mai multe despre această unealtă citind [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary rezumatul uneltei].",
 	"discussiontools-replylink": "răspunde",
-	"discussiontools-replywidget-abandon": "Sunteți sigur(ă) că doriți să respingeți comentariul la care scrieți?",
+	"discussiontools-replywidget-abandon": "Sunteți {{GENDER:|sigur|sigură}} că doriți să respingeți comentariul la care scrieți?",
 	"discussiontools-replywidget-abandon-discard": "Respingeți comentariul",
 	"discussiontools-replywidget-abandon-keep": "Continuă scrierea",
-	"discussiontools-replywidget-abandontopic": "Sunteți sigur(ă) că doriți să respingeți subiectul pe care îl scrieți?",
+	"discussiontools-replywidget-abandontopic": "Sunteți {{GENDER:|sigur|sigură}} că doriți să respingeți subiectul pe care îl scrieți?",
 	"discussiontools-replywidget-abandontopic-discard": "Respinge subiectul",
 	"discussiontools-replywidget-abandontopic-keep": "Continuă să scrii",
 	"discussiontools-replywidget-advanced": "Avansat",

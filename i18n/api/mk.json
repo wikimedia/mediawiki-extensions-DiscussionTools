@@ -17,5 +17,7 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Содржина за објавување, како викитекст. Не може да се користи заедно со <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Додај нов коментар како одговор на постоечки.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Додај нов разговорен оддел и првиот коментар во него.",
-	"apihelp-discussiontoolsedit-summary": "Напишете порака на разговорната страница."
+	"apihelp-discussiontoolsedit-summary": "Напишете порака на разговорната страница.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True за претплата, false за отпис",
+	"apihelp-discussiontoolssubscribe-summary": "Претплатете се (или отпишете се) за да добивате известувања на тема."
 }

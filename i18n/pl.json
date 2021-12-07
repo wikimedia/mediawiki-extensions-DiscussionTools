@@ -4,7 +4,8 @@
 			"Matma Rex",
 			"Nux",
 			"Rail",
-			"Woytecr"
+			"Woytecr",
+			"Chrumps"
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
@@ -23,6 +24,9 @@
 	"discussiontools-error-noswitchtove-title": "Tryb wizualny niedostępny",
 	"discussiontools-newtopic-missing-title": "Nie podano tytułu wątku. Jeśli klikniesz „{{int:discussiontools-replywidget-newtopic}}”, twój komentarz zostanie dodany bez tytułu.",
 	"discussiontools-newtopic-placeholder-title": "Tytuł",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|odpowiedział|odpowiedziała|odpowiedział(a)}} w wątku \"<strong>$4</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Nowa odpowiedź|$1 nowe odpowiedzi|$1 nowych odpowiedzi|100=99+ nowych odpowiedzi}} w wątku \"<strong>$3</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-view": "Zobacz komentarz",
 	"discussiontools-postedit-confirmation-published": "Twój komentarz został opublikowany.",
 	"discussiontools-postedit-confirmation-topicadded": "Dodano wątek.",
 	"discussiontools-preference-description": "Włącz eksperymentalne narzędzia do stron dyskusji.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Odpowiadanie na poszczególne komentarze]\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Dodawanie nowych wątków bez przechodzenia na osobną stronę]\n\nMożesz skonfigurować te narzędzia w [[Special:Preferences#mw-prefsection-editing-discussion|preferencjach]].\n\nAktualności będą zamieszczane na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates stronie projektu usprawniania stron dyskusji].\n\nUwaga:\n* Z biegiem czasu będą dodawane nowe narzędzia ułatwiające korzystanie ze stron dyskusji.\n* Niektóre z wyżej wymienionych funkcji mogą nie być jeszcze dostępne na tej wiki.",
@@ -31,6 +35,7 @@
 	"discussiontools-preference-newtopictool-help": "Wyświetlony zostanie ci formularz umożliwiający dodawanie wątków bez przechodzenia na osobną stronę. Możesz dowiedzieć się więcej na temat tej funkcji, czytając jej [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary podsumowanie].",
 	"discussiontools-preference-replytool": "Włącz szybkie odpowiedzi",
 	"discussiontools-preference-replytool-help": "Wyświetlony zostanie ci link umożliwiający odpowiadanie na komentarze na stronach dyskusji przy użyciu tylko jednego kliknięcia. Możesz dowiedzieć się więcej na temat tej funkcji, czytając jej [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary podsumowanie].",
+	"discussiontools-preference-topicsubscription": "Włącz subskrybowanie wątków",
 	"discussiontools-replylink": "odpowiedz",
 	"discussiontools-replywidget-abandon": "Czy na pewno chcesz odrzucić ten komentarz?",
 	"discussiontools-replywidget-abandon-discard": "Odrzuć komentarz",
@@ -57,6 +62,8 @@
 	"discussiontools-replywidget-summary": "Opis",
 	"discussiontools-replywidget-terms-click": "Wciskając przycisk „$1”, zgadzasz się na warunki użytkowania tej wiki.",
 	"discussiontools-replywidget-transcluded": "Twój komentarz zostanie zapisany na stronie [[$1]].",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Będziesz otrzymywać powiadomienia o nowych komentarzach w tym temacie.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Nie będziesz już otrzymywać powiadomień o nowych komentarzach w tym temacie.",
 	"tag-discussiontools-description": "Edycja wykonana przy pomocy narzędzi dyskusji",
 	"tag-discussiontools-edit": "Edycja komentarza",
 	"tag-discussiontools-edit-description": "Użytkownik edytował istniejący komentarz przy pomocy narzędzi dyskusji",

@@ -4,9 +4,19 @@
 			"Jeeputer"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "شناسه نظر یافت نشد: $1",
+	"apierror-discussiontools-commentid-notfound": "نظری با شناسهٔ «$1» یافت نشد.",
+	"apierror-discussiontools-commentname-notfound": "نظری با نام «$1» یافت نشد.",
 	"apihelp-discussiontools-param-oldid": "شماره ویرایش برای استفاده (آخرین ویرایش به‌عنوان پیش‌فرض)",
-	"apihelp-discussiontoolsedit-param-commentid": "شناسه نظر.",
-	"apihelp-discussiontoolsedit-param-wikitext": "ویکی‌متن",
-	"apihelp-discussiontoolsedit-summary": "فرستادن یک نظر در یک صفحهٔ بحث."
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "برگرداندن عنوان صفحه‌هایی که هر نظر در صفحهٔ مورد نظر از آن‌ها تراگنجانش شده‌است.",
+	"apihelp-discussiontools-summary": "فرادادهٔ مورد نیاز برای راه‌اندازی ابزارهای گفت‌وگو را برمی‌گرداند",
+	"apihelp-discussiontoolsedit-param-commentid": "شناسه نظر برای پاسخ دادن. تنها در صورتی که <var>paction</var> روی <var>addcomment</var> تنظیم شده‌باشد استفاده می‌شود. <var>commentname</var> را نادیده می‌گیرد.",
+	"apihelp-discussiontoolsedit-param-commentname": "نام پیام برای پاسخ دادن. تنها در صورت <var>paction</var> روی <var>addcomment</var> تنظیم شده‌باشد استفاده می‌شود.",
+	"apihelp-discussiontoolsedit-param-html": "محتوا برای ارسال، در قالب اچ‌تی‌ام‌ال. همزمان همراه با <var>wikitext</var> قابل استفاده نیست.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} تنها در صورتی که <var>paction</var> روی <var>addtopic</var> تنظیم شده‌باشد استفاده می‌شود.",
+	"apihelp-discussiontoolsedit-param-wikitext": "محتوا برای ارسال، در قالب ویکی‌متن. همزمان همراه با <var>html</var> قابل استفاده نیست.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "افزودن یک نظر تازه به‌عنوان پاسخی به یک نظر از پیش موجود.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "افزودن یک بخش گفتگوی تازه و نخستین نظر در آن.",
+	"apihelp-discussiontoolsedit-summary": "فرستادن یک نظر در یک صفحهٔ بحث.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True برای اشتراک، false برای لغو اشتراک",
+	"apihelp-discussiontoolssubscribe-summary": "اشتراک (یا لغو اشتراک) برای دریافت اعلان دربارهٔ یک مبحث."
 }

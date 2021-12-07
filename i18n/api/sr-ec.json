@@ -5,7 +5,7 @@
 			"Kizule"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "Није пронађен ID коментара: $1",
+	"apierror-discussiontools-commentid-notfound": "Коментар са ID-ом '$1' није пронађен.",
 	"apihelp-discussiontools-param-oldid": "Број измене за употребу (подразумевано: последња измена)",
 	"apihelp-discussiontools-summary": "Приказује метаподатке потребне за покретање алатка за разговор.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID коментара",

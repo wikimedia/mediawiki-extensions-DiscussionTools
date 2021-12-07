@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "\"$1\" nömrəli şərh tapıla bilmədi.",
+	"apierror-discussiontools-commentname-notfound": "\"$1\" adlı şərh tapıla bilmədi.",
+	"apihelp-discussiontools-param-oldid": "Versiya nömrəsi (defolt olaraq son versiyanı istifadə edir)",
+	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Verilən səhifədəki hər bir şərhin daxil olduğu səhifələrin başlıqlarını verir.",
+	"apihelp-discussiontools-summary": "Müzakirə vasitələrini işə salmaq üçün lazım olan meta məlumatları verir.",
+	"apihelp-discussiontoolsedit-param-commentid": "Cavablandırılacaq şərhin nömrəsi. <var>paction</var> <var>addcomment</var> olduqda istifadə olunur. <var>commentname</var>-in üstünə yazır.",
+	"apihelp-discussiontoolsedit-param-commentname": "Cavablandırılacaq şərhin adı. <var>paction</var> <var>addcomment</var> olduqda istifadə olunur.",
+	"apihelp-discussiontoolsedit-param-html": "HTML olaraq göndəriləcək məzmun. <var>wikitext</var> ilə birlikdə istifadə oluna bilər.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} <var>paction</var> <var>addcomment</var> olduqda istifadə olunur.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Vikimətn olaraq göndəriləcək məzmun. <var>html</var> ilə birlikdə istifadə oluna bilər.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Mövcud bir şərhə cavab olaraq yeni bir şərh əlavə edin.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Yeni bir müzakirə bölməsi və ona ilk şərhi əlavə edin.",
+	"apihelp-discussiontoolsedit-summary": "Bir müzakirə səhifəsinə mesaj göndərin.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Abunə olmaq üçün true, abunəlikdən çıxmaq üçün false",
+	"apihelp-discussiontoolssubscribe-summary": "Bir mövzu ilə bağlı bildiriş almaq üçün abunə olun (və ya abunəlikdən çıxın)."
+}
