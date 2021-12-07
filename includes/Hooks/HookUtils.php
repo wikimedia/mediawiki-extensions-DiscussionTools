@@ -39,6 +39,28 @@ class HookUtils {
 		self::AUTOTOPICSUB,
 	];
 
+	protected static $propCache = [];
+
+	/**
+	 * Check if a title has a page prop, and use an in-memory cache to avoid extra queries
+	 *
+	 * @param Title $title Title
+	 * @param string $prop Page property
+	 * @return bool Title has page property
+	 */
+	public static function hasPagePropCached( Title $title, string $prop ): bool {
+		$id = $title->getArticleId();
+		if ( !isset( self::$propCache[ $id ] ) ) {
+			self::$propCache[ $id ] = [];
+		}
+		if ( !isset( self::$propCache[ $id ][ $prop ] ) ) {
+			$services = MediaWikiServices::getInstance();
+			$props = $services->getPageProps()->getProperties( $title, $prop );
+			self::$propCache[ $id ][ $prop ] = isset( $props[ $id ] );
+		}
+		return self::$propCache[ $id ][ $prop ];
+	}
+
 	/**
 	 * Check if a DiscussionTools feature is available to this user
 	 *
@@ -181,11 +203,9 @@ class HookUtils {
 			return false;
 		}
 
+		$hasNewSectionLink = self::hasPagePropCached( $title, 'newsectionlink' );
+
 		$services = MediaWikiServices::getInstance();
-
-		$props = $services->getPageProps()->getProperties( $title, 'newsectionlink' );
-		$hasNewSectionLink = isset( $props[ $title->getArticleId() ] );
-
 		// Check that the page supports discussions.
 		// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
 		return $hasNewSectionLink ||
@@ -243,9 +263,7 @@ class HookUtils {
 		// We may need to move this check to the client when we support
 		// launching the tool from other pages.
 		if ( $feature === self::NEWTOPICTOOL ) {
-			$services = MediaWikiServices::getInstance();
-			$props = $services->getPageProps()->getProperties( $title, 'nonewsectionlink' );
-			if ( isset( $props[ $title->getArticleId() ] ) ) {
+			if ( self::hasPagePropCached( $title, 'nonewsectionlink' ) ) {
 				return false;
 			}
 		}
