@@ -37,6 +37,11 @@ trait DiscussionToolsEventTrait {
 	abstract protected function getBundledEvents();
 
 	/**
+	 * @return int[]|false
+	 */
+	abstract protected function getBundledIds();
+
+	/**
 	 * Get a link to the individual comment, if available.
 	 *
 	 * @return string|null Full URL linking to the comment, null if not available
@@ -102,6 +107,33 @@ trait DiscussionToolsEventTrait {
 			return '';
 		}
 		return $this->language->truncateForVisual( $content, EchoDiscussionParser::DEFAULT_SNIPPET_LENGTH );
+	}
+
+	/**
+	 * Add mark-as-read params to a link array
+	 *
+	 * Taken from EchoEventPresentationModel::getPrimaryLinkWithMarkAsRead
+	 * TODO: Upstream to Echo?
+	 *
+	 * @param array $link Link
+	 * @return array
+	 */
+	protected function addMarkAsRead( $link ) {
+		global $wgEchoCrossWikiNotifications;
+		if ( $link ) {
+			$eventIds = [ $this->event->getId() ];
+			if ( $this->getBundledIds() ) {
+				$eventIds = array_merge( $eventIds, $this->getBundledIds() );
+			}
+
+			$queryParams = [ 'markasread' => implode( '|', $eventIds ) ];
+			if ( $wgEchoCrossWikiNotifications ) {
+				$queryParams['markasreadwiki'] = wfWikiID();
+			}
+
+			$link['url'] = wfAppendQuery( $link['url'], $queryParams );
+		}
+		return $link;
 	}
 
 }

@@ -62,6 +62,19 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	/**
 	 * @inheritDoc
 	 */
+	public function jsonSerialize() {
+		$array = parent::jsonSerialize();
+
+		$legacyPrimaryLink = $this->getPrimaryLink();
+		$legacyPrimaryLink['url'] = $this->section->getTitleWithSection()->getFullURL();
+		$array['links']['legacyPrimary'] = $this->addMarkAsRead( $legacyPrimaryLink ) ?: [];
+
+		return $array;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getHeaderMessageKey() {
 		if ( $this->isBundled() ) {
 			return 'discussiontools-notification-subscribed-new-comment-header-bundled';
