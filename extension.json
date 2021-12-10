@@ -502,7 +502,7 @@
 		"discussiontools-sourcemodetoolbar": 1,
 		"discussiontools-topicsubscription": 1,
 		"discussiontools-autotopicsub": 0,
-		"discussiontools-abtest": ""
+		"discussiontools-abtest2": ""
 	},
 	"config": {
 		"DiscussionToolsEnable": {
@@ -515,7 +515,7 @@
 		},
 		"DiscussionToolsABTest": {
 			"value": false,
-			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', 'newtopictool', or 'all'"
+			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', or 'newtopictool'"
 		},
 		"DiscussionToolsEnableMobile": {
 			"value": "behind-overlay",
