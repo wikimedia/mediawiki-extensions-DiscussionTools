@@ -103,7 +103,8 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 	} else if (
 		// ?title=...&action=edit&section=new
 		// ?title=...&veaction=editsource&section=new
-		( uri.query.action === 'edit' || uri.query.veaction === 'editsource' ) && uri.query.section === 'new'
+		( uri.query.action === 'edit' || uri.query.veaction === 'editsource' ) && uri.query.section === 'new' &&
+		uri.query.dtenable !== '0'
 	) {
 		// Do nothing
 

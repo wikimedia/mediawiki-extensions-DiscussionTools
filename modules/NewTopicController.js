@@ -76,7 +76,17 @@ NewTopicController.prototype.setup = function ( mode ) {
 	rootScrollable.scrollTop = rootScrollable.scrollHeight;
 	this.focus();
 
-	if ( !mw.user.options.get( 'discussiontools-newtopictool-opened' ) ) {
+	var firstUse = !mw.user.options.get( 'discussiontools-newtopictool-opened' );
+	if (
+		( firstUse || mw.user.options.get( 'discussiontools-newtopictool-hint-shown' ) ) &&
+		mw.config.get( 'wgUserId' ) && mw.config.get( 'wgUserEditCount', 0 ) >= 500
+	) {
+		// Topic hint should be shown to logged in users who have more than
+		// 500 edits on their first use of the tool, and should persist until
+		// they deliberately close it.
+		this.setupTopicHint();
+	}
+	if ( firstUse ) {
 		controller.getApi().saveOption( 'discussiontools-newtopictool-opened', '1' ).then( function () {
 			mw.user.options.set( 'discussiontools-newtopictool-opened', '1' );
 		} );
@@ -119,6 +129,52 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 };
 
 /**
+ * Create and display a hint dialog that redirects users to the non-DT version of this tool
+ */
+NewTopicController.prototype.setupTopicHint = function () {
+	var legacyURI;
+	try {
+		legacyURI = new mw.Uri();
+	} catch ( err ) {
+		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+		return;
+	}
+	legacyURI.query.action = 'edit';
+	legacyURI.query.section = 'new';
+	legacyURI.query.dtenable = '0';
+	this.topicHint = new OO.ui.MessageWidget( {
+		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyURI.toString() ).parseDom(),
+		icon: 'article'
+	} );
+	this.topicHint.$element.addClass( 'ext-discussiontools-ui-newTopic-hint' );
+	// TODO: Once showClose lands in OOUI's MessageWidget this can be replaced:
+	var dismissButton = new OO.ui.ButtonWidget( {
+		icon: 'close',
+		framed: false,
+		title: mw.msg( 'discussiontools-newtopic-legacy-hint-close' )
+	} ).connect( this, { click: 'onTopicHintCloseClick' } );
+	this.topicHint.$element.prepend( dismissButton.$element );
+	this.container.$element.before( this.topicHint.$element );
+
+	this.topicHint.toggle( true );
+
+	// This needs to persist once it's shown
+	controller.getApi().saveOption( 'discussiontools-newtopictool-hint-shown', 1 ).then( function () {
+		mw.user.options.set( 'discussiontools-newtopictool-hint-shown', 1 );
+	} );
+};
+
+/**
+ * Handle clicks on the close button for the hint dialog
+ */
+NewTopicController.prototype.onTopicHintCloseClick = function () {
+	this.toggle( false );
+	controller.getApi().saveOption( 'discussiontools-newtopictool-hint-shown', null ).then( function () {
+		mw.user.options.set( 'discussiontools-newtopictool-hint-shown', null );
+	} );
+};
+
+/**
  * @inheritdoc
  */
 NewTopicController.prototype.focus = function () {
@@ -151,6 +207,9 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 	NewTopicController.super.prototype.teardown.call( this, abandoned );
 
 	this.container.$element.detach();
+	if ( this.topicHint ) {
+		this.topicHint.$element.detach();
+	}
 
 	if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
 		var uri;
