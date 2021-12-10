@@ -18,7 +18,6 @@ use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewHeaderHook;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\User\UserNameUtils;
@@ -323,12 +322,9 @@ class PageHooks implements
 	public function onArticleViewHeader( $article, &$outputDone, &$pcache ) {
 		$context = $article->getContext();
 		$output = $context->getOutput();
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
 		if (
 			$output->getSkin()->getSkinName() === 'minerva' &&
 			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
-			$dtConfig->get( 'DiscussionToolsEnableMobile' ) === 'remove-overlay' &&
 			// No need to show the button when the empty state banner is shown
 			!HookUtils::shouldDisplayEmptyState( $context )
 		) {
