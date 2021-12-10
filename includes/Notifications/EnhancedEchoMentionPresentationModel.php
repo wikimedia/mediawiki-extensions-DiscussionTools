@@ -27,4 +27,15 @@ class EnhancedEchoMentionPresentationModel extends EchoMentionPresentationModel 
 		}
 		return $linkInfo;
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function jsonSerialize() {
+		$array = parent::jsonSerialize();
+
+		$array['links']['legacyPrimary'] = $this->addMarkAsRead( parent::getPrimaryLink() ) ?: [];
+
+		return $array;
+	}
 }

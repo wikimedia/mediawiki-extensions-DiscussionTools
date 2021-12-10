@@ -44,4 +44,15 @@ class EnhancedEchoEditUserTalkPresentationModel extends EchoEditUserTalkPresenta
 		}
 		return parent::getBodyMessage();
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function jsonSerialize() {
+		$array = parent::jsonSerialize();
+
+		$array['links']['legacyPrimary'] = $this->addMarkAsRead( parent::getPrimaryLink() ) ?: [];
+
+		return $array;
+	}
 }
