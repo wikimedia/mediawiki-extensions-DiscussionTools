@@ -44,8 +44,8 @@ class EventDispatcher {
 	private static function getParsedRevision( RevisionRecord $revRecord ): CommentParser {
 		$services = MediaWikiServices::getInstance();
 
-		$pageRecord = $services->getPageStore()->getPageByReference( $revRecord->getPage() ) ?:
-			$services->getPageStore()->getPageByReference( $revRecord->getPage(), IDBAccessObject::READ_LATEST );
+		$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
+			$services->getPageStore()->getPageById( $revRecord->getPageId(), IDBAccessObject::READ_LATEST );
 
 		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
 
