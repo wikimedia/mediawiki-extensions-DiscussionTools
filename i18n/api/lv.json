@@ -7,6 +7,7 @@
 	"apierror-discussiontools-commentid-notfound": "Komentārs ar ID '$1' nav atrasts.",
 	"apierror-discussiontools-commentname-ambiguous": "Atrasti vairāki komentāri ar nosaukumu '$1', tā vietā izmanto ID.",
 	"apierror-discussiontools-commentname-notfound": "Komentārs ar nosaukumu '$1' nav atrasts.",
+	"apierror-discussiontools-formtoken-used": "Komentārs jau ir ievietots. Pārlādē lapu, lai redzētu to.",
 	"apierror-discussiontools-subscription-failed-add": "Neizdevās abonēt šo tematu.",
 	"apierror-discussiontools-subscription-failed-remove": "Neizdevās atcelt abonementu šim tematam.",
 	"apihelp-discussiontools-param-oldid": "Izmantojamās versijas numurs (pēc noklusējuma jaunākais).",
