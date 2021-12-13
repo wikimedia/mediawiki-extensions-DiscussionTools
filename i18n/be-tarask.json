@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Renessaince"
+			"Renessaince",
+			"Matma Rex",
+			"Nieszczarda2"
 		]
 	},
-	"discussiontools-replylink": "адказаць"
+	"discussiontools": "Інструмэнты абмеркаваньня",
+	"discussiontools-defaultsummary-reply": "Адказ",
+	"discussiontools-desc": "Інструмэнты для паляпшэньня старонак абмеркаваньняў.",
+	"discussiontools-preference-label": "Інструмэнты абмеркаваньня",
+	"discussiontools-replylink": "адказаць",
+	"tag-discussiontools-edit-description": "Карыстальнік адрэдагаваў існы камэнтар праз DiscussionTools",
+	"tag-discussiontools-newtopic-description": "Карыстальнік дадаў на старонку новую тэму праз DiscussionTools"
 }

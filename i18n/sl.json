@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dbc334",
+			"Eleassar",
+			"Matma Rex"
+		]
+	},
+	"discussiontools": "Orodja za pogovor",
+	"discussiontools-defaultsummary-reply": "Odgovor",
+	"discussiontools-desc": "Orodja za izboljšanje pogovornih strani.",
+	"discussiontools-preference-label": "Pogovorna orodja",
+	"discussiontools-replylink": "odgovori",
+	"discussiontools-replywidget-anon-warning": "<strong>Niste prijavljeni.</strong> Da boste kot avtor knamesto z IP-naslovom navedeni z imenom, se lahko [$1 prijavite] ali si [$2 ustvarite račun].",
+	"discussiontools-replywidget-cancel": "Prekliči",
+	"discussiontools-replywidget-feedback": "Pošljite komentar te možnosti",
+	"discussiontools-replywidget-loading": "Nalagam ...",
+	"discussiontools-replywidget-mention-tool-title": "Omeni uporabnika",
+	"discussiontools-replywidget-mode-source": "Izvorno",
+	"discussiontools-replywidget-mode-visual": "Vizualno",
+	"discussiontools-replywidget-placeholder-reply": "Odgovori {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Predogled",
+	"discussiontools-replywidget-reply": "Odgovori",
+	"discussiontools-replywidget-terms-click": "S klikom »$1« privoljujete v pogoje uporabe tega vikija.",
+	"discussiontools-replywidget-transcluded": "Vaš komentar bo shranjen na strani [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-error-comment-disappeared": "Komentarja, na katerega odgovarjate, na strani ni bilo mogoče najti. Morda je bil izbrisan ali prestavljen na drugo stran. Prosimo, znova naložite stran in poskusite še enkrat.",
+	"discussiontools-error-comment-is-transcluded": "Povezave »{{int:discussiontools-replylink}}« ni mogoče uporabiti za odgovor na ta komentar. Za odgovor uporabite urejevalnik celotne strani, tako da kliknete »$1«.",
+	"discussiontools-error-comment-is-transcluded-title": "Povezave »{{int:discussiontools-replylink}}« ni mogoče uporabiti za odgovor na ta komentar, ker se naloži z druge strani. Za odgovor pojdite sem: [[$1]].",
+	"discussiontools-error-lint": "Na komentarje na tej strani ne morete odgovoriti, ker se je v vikibesedilu pojavila napaka. O tej napaki se lahko poučite [$1 z branjem dokumentacije], zaprosite za pomoč [$2 na tej strani] ali napako popravite tako, da [$3 odprete urejevalnik celotne strani].",
+	"tag-discussiontools-description": "Urejanje z orodjem DiscussionTools",
+	"tag-discussiontools-edit-description": "Uporabnik je z orodjem DiscussionTools uredil že obstoječ komentar",
+	"tag-discussiontools-newtopic-description": "Uporabnik je na strani z orodjem DiscussionTools dodal novo temo",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odgovor]",
+	"tag-discussiontools-reply-description": "Uporabnik je na komentar odgovoril z orodjem DiscussionTools",
+	"tag-discussiontools-source": "izvorni način",
+	"tag-discussiontools-source-description": "Orodje DiscussionTools je bilo uporabljeno v izvornem načinu",
+	"tag-discussiontools-visual": "vizualni način",
+	"tag-discussiontools-visual-description": "Orodje DiscussionTools je bilo v vizualnem načinu"
+}

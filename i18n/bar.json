@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiBayer"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Antwort",
+	"discussiontools-desc": "Werkzeig zua Vabessarung d Diskussionsseitn",
+	"discussiontools-preference-label": "Diskussions-Werkzeig",
+	"discussiontools-replylink": "Antwort",
+	"discussiontools-replywidget-cancel": "Obbrecha",
+	"discussiontools-replywidget-mode-source": "Quejn",
+	"discussiontools-replywidget-reply": "Antwort"
+}

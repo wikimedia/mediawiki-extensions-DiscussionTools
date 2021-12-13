@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Quentí"
+			"Quentí",
+			"BrennodAloisi"
 		]
 	},
-	"discussiontools-replywidget-placeholder-reply": "Respondre a {{BIDI:$1}}"
+	"discussiontools-replywidget-placeholder-reply": "Respondre a {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Previsualizacion"
 }

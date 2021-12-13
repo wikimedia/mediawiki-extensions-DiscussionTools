@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Artsiom91",
+			"Kareyac",
+			"ZlyiLev"
+		]
+	},
+	"discussiontools": "Інструменты абмеркаванняў",
+	"discussiontools-defaultsummary-reply": "Адказ",
+	"discussiontools-desc": "Інструменты для паляпшэння старонак абмеркаванняў.",
+	"discussiontools-preference-label": "Інструменты абмеркавання",
+	"discussiontools-replylink": "адказаць",
+	"discussiontools-replywidget-anon-warning": "<strong>Вы не ўвайшлі ў сістэму.</strong> Каб паведамленне было пад вашым імем, а не IP-адрасам, вы можаце [$1 ўвайсці] або [$2 стварыць уліковы запіс].",
+	"discussiontools-replywidget-cancel": "Адмена",
+	"discussiontools-replywidget-feedback": "Адправіць водгук на гэту функцыю",
+	"discussiontools-replywidget-loading": "Загрузка…",
+	"discussiontools-replywidget-mention-tool-title": "Згадаць удзельніка",
+	"discussiontools-replywidget-mode-source": "Зыходнік",
+	"discussiontools-replywidget-mode-visual": "Візуальна",
+	"discussiontools-replywidget-placeholder-reply": "Адказаць {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Папярэдні прагляд",
+	"discussiontools-replywidget-reply": "Адказаць",
+	"discussiontools-replywidget-terms-click": "Націскаючы \"$1\", вы згаджаецеся з умовамі выкарыстання гэтай вікі.",
+	"discussiontools-replywidget-transcluded": "Ваш каментарый будзе захаваны на [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-error-comment-disappeared": "Немагчыма знайсці каментарый, на які вы адказваеце, на гэтай старонцы. Магчыма, ён выдалены або перанесены на іншую старонку. Калі ласка, перазагрузіце старонку і паспрабуйце зноў.",
+	"discussiontools-error-comment-is-transcluded": "Спасылка \"{{int:discussiontools-replylink}}\" не можа быць выкарыстана для адказу на гэты каментарый. Каб адказаць, калі ласка, скарыстайцеся рэдактарам усёй старонкі, націснуўшы \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Спасылка \"{{int:discussiontools-replylink}}\" не можа быць выкарыстана для адказу на гэты каментарый, бо ён быў загружаны з іншай старонкі. Каб адказаць, калі ласка, перайдзіце сюды: $1.",
+	"discussiontools-error-lint": "На каментарыі на гэтай старонцы немагчыма адказаць з-за памылкі ў вікітэксце. Вы можаце даведацца пра гэту памылку, [$1 прачытаўшы дакументацыю], папрасіўшы дапамогі [$2 напісаўшы сюды] або выправіўшы памылку [$3 адкрыўшы рэдактар усёй старонкі].",
+	"tag-discussiontools-description": "Праўка, здейсненая з дапамогай DiscussionTools",
+	"tag-discussiontools-edit-description": "Удзельнік адрэдагаваў існуючы каментарый з дапамогай DiscussionTools",
+	"tag-discussiontools-newtopic-description": "Удзельнік дадаў новую тэму на старонцы з дапамогай DiscussionTools",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Адказ]",
+	"tag-discussiontools-reply-description": "Удзельнік адказаў на каментарый з дапамогай DiscussionTools",
+	"tag-discussiontools-source": "Код",
+	"tag-discussiontools-source-description": "DiscussionTools быў выкарыстаны ў рэжыме праўкі зыходніка",
+	"tag-discussiontools-visual": "Візуальны рэжым",
+	"tag-discussiontools-visual-description": "DiscussionTools быў выкарыстаны ў візуальным рэжыме"
+}

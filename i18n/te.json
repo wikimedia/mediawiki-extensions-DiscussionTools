@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arjunaraoc",
+			"Chaduvari",
+			"Matma Rex",
+			"Veeven"
+		]
+	},
+	"discussiontools": "చర్చ ఉపకరణాలు",
+	"discussiontools-defaultsummary-reply": "సమాధానం",
+	"discussiontools-desc": "చర్చ పేజీలను మెరుగుపరచే ఉపకరణాలు",
+	"discussiontools-preference-label": "చర్చ ఉపకరణాలు",
+	"discussiontools-replylink": "ప్రత్యుత్తరం",
+	"discussiontools-replywidget-anon-warning": "<strong>మీరు లాగిన్ అవలేదు.</strong> IP చిరునామా కాకుండా మీ పేరు కనబడాలంటే [$1 లాగినవండి] లేదా [$2 ఖాతా సృష్టించుకోండి].",
+	"discussiontools-replywidget-cancel": "రద్దు",
+	"discussiontools-replywidget-feedback": "దీనిగురించి మీ అభిప్రాయం తెలపండి",
+	"discussiontools-replywidget-loading": "లోడవుతోంది...",
+	"discussiontools-replywidget-mention-tool-title": "వాడుకరిని ఉటంకించండి",
+	"discussiontools-replywidget-mode-source": "మూలం",
+	"discussiontools-replywidget-mode-visual": "విజువల్",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} కు ప్రత్యుత్తరం",
+	"discussiontools-replywidget-preview": "మునుజూపు",
+	"discussiontools-replywidget-reply": "ప్రత్యుత్తరం",
+	"discussiontools-replywidget-terms-click": "\"$1\" నొక్కటం ద్వారా, ఈ వికీ వాడుక షరతులను అంగీకరిస్తున్నారు.",
+	"discussiontools-replywidget-transcluded": "[[$1]] దగ్గర మీ వ్యాఖ్య భద్రపరచబడుతుంది.",
+	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-error-comment-disappeared": "మీరు ప్రత్యుత్తరమివ్వదలచిన వ్యాఖ్య ఈ పేజీలో కనబడలేదు. దానిని తొలగించడమో లేక వేరే పేజీకి తరలించడమో జరిగి ఉండవచ్చు. పేజీని తిరిగి లోడు చేసి మళ్ళీ ప్రయత్నించండి.",
+	"discussiontools-error-comment-is-transcluded": "ఈ వ్యాఖ్యకు ప్రత్యుత్తరమీయటానికి \"{{int:discussiontools-replylink}}\" లింకును వాడలేరు. ప్రత్యత్తరమీయడానికి \"$1\" నొక్కి పూర్తి పేజీ ఎడిటరును వాడండి.",
+	"discussiontools-error-comment-is-transcluded-title": "వేరే పేజీనుండి లోడయినందున ఈ వ్యాఖ్యకు ప్రత్యుత్తరమీయటానికి \"{{int:discussiontools-replylink}}\" లింకు వాడలేరు. ప్రత్యత్తరమీయడానికి  [[$1]] కు వెళ్లండి.",
+	"discussiontools-error-lint": "వికీటెక్స్టులో దోషమున్నందున ఈ పేజీలోని వ్యాఖ్యలకు ప్రత్యుత్తరమీయలేరు. [$1 డాక్యుమెంటేషను చదివి] ఆ దోషం గురించి తెలుసుకోవచ్చు. [$2 ఇక్కడ] సహాయం అడగవచ్చు. [$3 పూర్తి పేజీ ఎడిటరును తెరిచి] దోషాన్ని సవరించవచ్చు.",
+	"tag-discussiontools-description": "చర్చా ఉపకరణాలు వాడిన సవరణ",
+	"tag-discussiontools-edit-description": "ఇప్పటికే వున్న వ్యాఖ్యని చర్చా ఉపకరణాలు వాడి వాడుకరి సవరించారు.",
+	"tag-discussiontools-newtopic-description": "చర్చా ఉపకరణాలు వాడి పేజీకి కొత్త విషయాన్ని వాడుకరి చేర్చారు.",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} ప్రత్యుత్తరం]",
+	"tag-discussiontools-reply-description": "వ్యాఖ్యకు ప్రత్యుత్తరం చర్చా ఉపకరణాలు వాడి చేర్చారు.",
+	"tag-discussiontools-source": "మూలం",
+	"tag-discussiontools-source-description": "చర్చా ఉపకరణాలు మూలం విధంలో వున్నది",
+	"tag-discussiontools-visual": "విజువల్",
+	"tag-discussiontools-visual-description": "చర్చా ఉపకరణాలు విజువల్ విధంలో వున్నది"
+}

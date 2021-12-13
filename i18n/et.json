@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Matma Rex",
+			"Pikne"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Vastus",
+	"discussiontools-desc": "Tööriistad arutelulehekülgede täiustamiseks",
+	"discussiontools-preference-label": "Arutelu tööriistad",
+	"discussiontools-replylink": "vasta",
+	"discussiontools-replywidget-anon-warning": "<strong>Sa pole sisse logitud.</strong> Selleks et kommentaar omistataks sulle IP-aadressi asemel nime järgi, saad [$1 sisse logida] või [$2 konto luua].",
+	"discussiontools-replywidget-cancel": "Loobu",
+	"discussiontools-replywidget-feedback": "Jaga selle funktsiooni kohta tagasisidet",
+	"discussiontools-replywidget-loading": "Laadimine…",
+	"discussiontools-replywidget-mention-tool-title": "Maini kasutajat",
+	"discussiontools-replywidget-mode-source": "Lähtetekst",
+	"discussiontools-replywidget-mode-visual": "Visuaalne",
+	"discussiontools-replywidget-placeholder-reply": "Vasta kasutajale {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Eelvaade",
+	"discussiontools-replywidget-reply": "Vasta",
+	"discussiontools-replywidget-terms-click": "Kui klõpsad nuppu \"$1\", nõustud selle viki kasutustingimustega.",
+	"discussiontools-replywidget-transcluded": "Sinu kommentaar salvestatakse leheküljele [[$1]].",
+	"discussiontools-error-comment-disappeared": "Ei leitud kommentaari, millele vastad. Võimalik, et see on kustutatud või viidud teisele leheküljele. Palun laadi lehekülg uuesti ja proovi uuesti.",
+	"discussiontools-error-comment-is-transcluded": "Sellele kommentaarile ei saa vastata lingi \"{{int:discussiontools-replylink}}\" kaudu. Vastamiseks kasuta palun lehekülje täistoimetit, klõpsates linki \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Sellele kommentaarile ei saa vastata lingi \"{{int:discussiontools-replylink}}\" kaudu. Vastamiseks mine palun leheküljele [[$1]].",
+	"discussiontools-error-lint": "Sellel leheküljel ei saa kommentaaridele vastata, sest vikitekstis on viga. Saad selle vea kohta rohkem lugeda [$1 dokumentatsioonist] või saad küsida abi, postitades [$2 siia]. Vea parandamiseks tuleb [$3 avada lehekülje täistoimeti].",
+	"tag-discussiontools-description": "Muudatus tehtud vahendiga DiscussionTools",
+	"tag-discussiontools-edit-description": "Kasutaja muutis olemasolevat kommentaari, kasutades vahendit DiscussionTools.",
+	"tag-discussiontools-newtopic-description": "Kasutaja lisas leheküljele uue teema, kasutades vahendit DiscussionTools.",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vastus]",
+	"tag-discussiontools-reply-description": "Kasutaja vastas kommentaarile, kasutades vahendit DiscussionTools.",
+	"tag-discussiontools-source": "Lähtetekst",
+	"tag-discussiontools-source-description": "DiscussionTools oli lähteteksti režiimis.",
+	"tag-discussiontools-visual": "Visuaalne",
+	"tag-discussiontools-visual-description": "DiscussionTools oli visuaaltoimeti režiimis."
+}

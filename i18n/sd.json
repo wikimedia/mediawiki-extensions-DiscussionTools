@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kaleem Bhatti",
+			"Mehtab ahmed"
+		]
+	},
+	"discussiontools": "بحث جا اوزار",
+	"discussiontools-defaultsummary-reply": "ورندي",
+	"discussiontools-desc": "بحث صفحن کي سڌارڻ لاءِ اوزار.",
+	"discussiontools-preference-label": "بحث جا اوزار",
+	"discussiontools-replylink": "ورندي ڏيو",
+	"discussiontools-replywidget-anon-warning": "<strong>توھان داخل ٿيل نہ آھيو.</strong> پنھنجي آئپي پتي بدران پنھنجي نالي سان انتساب حاصل ڪرڻ لاءِ، توھان [$1 داخل ٿي] سگهو ٿا يا  [$2 کاتو کولي] سگهو ٿا.",
+	"discussiontools-replywidget-cancel": "رد ڪريو",
+	"discussiontools-replywidget-feedback": "ھن خصوصيت بابت موٽ ونڊيو",
+	"discussiontools-replywidget-loading": "لاهيندي...",
+	"discussiontools-replywidget-mention-tool-title": "ڪو واپرائيندڙ ڄاڻايو",
+	"discussiontools-replywidget-mode-source": "ذريعو",
+	"discussiontools-replywidget-mode-visual": "وزيوئل",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} کي ورندي ڏيندي",
+	"discussiontools-replywidget-preview": "پيش-نگاھ",
+	"discussiontools-replywidget-reply": "ورندي ڏيو",
+	"discussiontools-replywidget-terms-click": "\"$1\" کي ٽڙڪ ڪرڻ سان، توھان ھن وڪيءَ جي استعمال جي شرطن سان راضپو ڏيکاريو ٿا.",
+	"discussiontools-replywidget-transcluded": "توھان جي راءِ [[$1]] تي سانڍي ويندي.",
+	"tag-discussiontools-description": "سنوار بحث-جا-اوزار استعمال ڪندي ڪئي وئي",
+	"tag-discussiontools-edit-description": "واپرائيندڙ موجود راءِ کي بحث-جا-اوزار استعمال ڪندي سنواريو",
+	"tag-discussiontools-newtopic-description": "واپرائيندڙ صفحي ۾ بحث-جا-اوزار استعمال ڪندي ھڪ نئون موضوع وڌو",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} ورندي]",
+	"tag-discussiontools-reply-description": "واپرائيندڙ بحث-جا-اوزار استعمال ڪندي ھڪ راءِ جي ورندي ڏني",
+	"tag-discussiontools-source": "ذريعو",
+	"tag-discussiontools-source-description": "بحث-جا-اوزار ذريعي موڊ ۾ ھيا",
+	"tag-discussiontools-visual": "وزيوئل",
+	"tag-discussiontools-visual-description": "بحث-جا-اوزار وزيوئل موڊ ۾ ھيا"
+}

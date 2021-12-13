@@ -3,15 +3,22 @@
 		"authors": [
 			"Ed g2s",
 			"Kupulak",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Ankan",
+			"Matma Rex",
+			"ZI Jony"
 		]
 	},
 	"discussiontools": "আলোচনা সরঞ্জাম",
 	"discussiontools-defaultsummary-reply": "উত্তর",
+	"discussiontools-desc": "আলোচনার পাতাগুলির উন্নতি সাধনের জন্য সরঞ্জাম।",
 	"discussiontools-preference-label": "আলোচনা সরঞ্জাম",
 	"discussiontools-replylink": "উত্তর দিন",
+	"discussiontools-replywidget-anon-warning": "<strong>আপনি প্রবেশ করেননি।</strong> আপনার আইপি ঠিকানার পরিবর্তে আপনার নাম ব্যবহার করতে, [$1 প্রবেশ করুন] বা [$2 একটি অ্যাকাউন্ট তৈরি করুন]।",
 	"discussiontools-replywidget-cancel": "বাতিল",
+	"discussiontools-replywidget-feedback": "এটি সম্পর্কে আপনার প্রতিক্রিয়া জানান",
 	"discussiontools-replywidget-loading": "লোড করা হচ্ছে…",
+	"discussiontools-replywidget-mention-tool-title": "একজন ব্যবহারকারীকে উল্লেখ করুন",
 	"discussiontools-replywidget-mode-source": "উৎস",
 	"discussiontools-replywidget-mode-visual": "দৃশ্যমান",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} কে উত্তর দিন",
@@ -19,9 +26,20 @@
 	"discussiontools-replywidget-reply": "উত্তর দিন",
 	"discussiontools-replywidget-terms-click": "\"$1\" ক্লিক করার দ্বারা, আপনি এই উইকির ব্যবহারের শর্তাবলী সাথে সম্মত হচ্ছেন।",
 	"discussiontools-replywidget-transcluded": "আপনার মন্তব্য [[$1]]-এ সংরক্ষণ করা হবে।",
+	"discussiontools-signature-prefix": "&#32;--&nbsp;",
+	"discussiontools-error-comment-disappeared": "আপনি যে পাতাটিতে উত্তর দিতে যাচ্ছিলেন তা খুঁজে পাওয়া যায়নি। হয়ত এটি মুছে ফেলা হয়েছে বা স্থানান্তর করা হয়েছে। পাতাটি পুনরায় লোড করে আবার চেষ্টা করুন।",
+	"discussiontools-error-comment-is-transcluded": "এই মন্তব্যে উত্তর দিতে \"{{int:discussiontools-replylink}}\" লিঙ্কটি ব্যবহার করা যাবে না। উত্তর দিতে, দয়া করে \"$1\" ক্লিক করে পূর্ণ পাতা সম্পাদকটি ব্যবহার করুন।",
+	"discussiontools-error-comment-is-transcluded-title": "এই মন্তব্যে উত্তর দিতে \"{{int:discussiontools-replylink}}\" লিঙ্কটি ব্যবহার করা যাবে না কারণ এটি অন্য পাতা থেকে লোড হয়েছে। উত্তর দিতে, দয়া করে এখানে যান: [[$1]]।",
+	"discussiontools-error-lint": "উইকিপাঠ্যে একটি ত্রুটির কারণে এই পৃষ্ঠার মন্তব্যে উত্তর দেওয়া যাবে না। আপনি [$1 নথি পড়ার] মাধ্যমে এই ত্রুটি সম্পর্কে জানতে পারেন, [$2 এখানে পোস্ট করে] সাহায্য চাইতে পারেন অথবা [$3 সম্পূর্ণ পৃষ্ঠা সম্পাদক খুলে] ত্রুটিটি সংশোধন করতে পারেন।",
+	"tag-discussiontools-description": "আলোচনা সরঞ্জাম ব্যবহার করে  সম্পাদনা করা হয়েছে",
 	"tag-discussiontools-edit": "মন্তব্য সম্পাদনা",
+	"tag-discussiontools-edit-description": "আলোচনা সরঞ্জাম ব্যবহার করে ব্যবহারকারী একটি বিদ্যমান মন্তব্য সম্পাদনা করেছেন",
 	"tag-discussiontools-newtopic": "প্রসঙ্গ যোগ করুন",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} উত্তর দিন]",
+	"tag-discussiontools-newtopic-description": "আলোচনা সরঞ্জাম ব্যবহার করে, ব্যবহারকারী পাতাটিতে একটি নতুন আলোচনা যোগ করেছেন",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} উত্তর]",
+	"tag-discussiontools-reply-description": "আলোচনা সরঞ্জাম ব্যবহার করে ব্যবহারকারী একটি মন্তব্যে উত্তর দিয়েছেন",
 	"tag-discussiontools-source": "উৎস",
-	"tag-discussiontools-visual": "দৃশ্যমান"
+	"tag-discussiontools-source-description": "আলোচনা সরঞ্জাম উৎস মোডে ছিল",
+	"tag-discussiontools-visual": "দৃশ্যমান",
+	"tag-discussiontools-visual-description": "আলোচনা সরঞ্জাম দৃশ্যমান মোডে ছিল"
 }

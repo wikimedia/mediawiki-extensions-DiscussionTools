@@ -1,20 +1,33 @@
 {
 	"@metadata": {
 		"authors": [
-			"DChan (WMF)"
+			"DChan (WMF)",
+			"Deryck Chan",
+			"Hello903hello",
+			"Matma Rex",
+			"Moon0319"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "回答",
-	"discussiontools-replylink": "答",
+	"discussiontools": "傾嘢工具",
+	"discussiontools-defaultsummary-reply": "覆",
+	"discussiontools-preference-label": "討論工具",
+	"discussiontools-replylink": "回覆",
 	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-loading": "載入緊…",
+	"discussiontools-replywidget-mention-tool-title": "提及一位用戶",
 	"discussiontools-replywidget-mode-source": "源碼編輯",
 	"discussiontools-replywidget-mode-visual": "即見編輯",
 	"discussiontools-replywidget-placeholder-reply": "答{{BIDI:$1}}",
-	"discussiontools-replywidget-preview": "預覽",
+	"discussiontools-replywidget-preview": "睇下",
 	"discussiontools-replywidget-reply": "答",
+	"discussiontools-replywidget-terms-click": "撳「$1」代表你同意呢個wiki嘅使用條款。",
+	"discussiontools-replywidget-transcluded": "你嘅留言會儲存喺[[$1]]。",
+	"discussiontools-error-comment-disappeared": "搵唔返你覆緊嗰條留言，可能鏟咗或者搬咗去第版喇。麻煩重新載入呢版然後再試過。",
 	"tag-discussiontools-edit": "改註解",
+	"tag-discussiontools-edit-description": "用戶用DiscussionTools改咗個現有嘅留言",
 	"tag-discussiontools-newtopic": "加主題",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 回覆]",
+	"tag-discussiontools-reply-description": "用戶用DiscussionTools對一個留言作出回覆",
 	"tag-discussiontools-source": "源碼編輯",
 	"tag-discussiontools-visual": "即見編輯"
 }

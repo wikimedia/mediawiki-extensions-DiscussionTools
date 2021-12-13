@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Matma Rex",
+			"Srđan"
+		]
+	},
+	"discussiontools": "Alati za razgovor",
+	"discussiontools-defaultsummary-reply": "odgovor",
+	"discussiontools-preference-label": "Alati za razgovor",
+	"discussiontools-replylink": "odgovori",
+	"discussiontools-replywidget-cancel": "Otkaži",
+	"discussiontools-replywidget-feedback": "Dajte mišljenje o ovoj mogućnosti",
+	"discussiontools-replywidget-loading": "Učitavam…",
+	"discussiontools-replywidget-mention-tool-title": "Spomeni korisnika",
+	"discussiontools-replywidget-mode-source": "Izvorno",
+	"discussiontools-replywidget-mode-visual": "Vizualno",
+	"discussiontools-replywidget-placeholder-reply": "Odgovor korisniku/-ci {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Pregled",
+	"discussiontools-replywidget-reply": "Odgovori",
+	"discussiontools-replywidget-terms-click": "Klikom na \"$1\" prihvatate uslove korištenja ovog wikija.",
+	"discussiontools-replywidget-transcluded": "Komentar će biti sačuvan na stranici [[$1]].",
+	"tag-discussiontools-source": "izvorno",
+	"tag-discussiontools-visual": "vizualno"
+}

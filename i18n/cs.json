@@ -4,11 +4,16 @@
 			"Martin Urbanec",
 			"Matěj Suchánek",
 			"Patriccck",
-			"Robins7"
+			"Robins7",
+			"Adam N.",
+			"Fraxinus.cs",
+			"Georg101",
+			"Jan Myšák",
+			"Patrik L."
 		]
 	},
 	"discussiontools": "Diskusní nástroje",
-	"discussiontools-defaultsummary-reply": "Odpověď",
+	"discussiontools-defaultsummary-reply": "odpověď",
 	"discussiontools-desc": "Nástroje vylepšující diskusní stránky.",
 	"discussiontools-preference-label": "Diskusní nástroje",
 	"discussiontools-preference-description": "Nové Diskusní nástroje umí jednoduše [https://www.mediawiki.org/wiki/Talk_pages_project/replying odpovídat na konkrétní komentáře] na diskusních stránkách.\n\nUvědomte si, prosím, že v průběhu času budou přidávány nové funkce pro interakci s diskusními stránkami.\n\nAktualizace těchto funkcí budou zveřejněny na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates stránce s aktualizacemi projektu Diskusní stránky].",
@@ -18,8 +23,8 @@
 	"discussiontools-replywidget-feedback": "Odeslat zpětnou vazbu k této funkci",
 	"discussiontools-replywidget-loading": "Načítám…",
 	"discussiontools-replywidget-mention-tool-title": "Zmínit uživatele",
-	"discussiontools-replywidget-mode-source": "Editor zdroje",
-	"discussiontools-replywidget-mode-visual": "Vizuální editor",
+	"discussiontools-replywidget-mode-source": "Zdrojový kód",
+	"discussiontools-replywidget-mode-visual": "Vizuální",
 	"discussiontools-replywidget-placeholder-reply": "Odpovědět uživateli {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Náhled",
 	"discussiontools-replywidget-reply": "Odpovědět",
@@ -36,8 +41,8 @@
 	"tag-discussiontools-newtopic-description": "Uživatel přidal nové téma pomocí Diskusních nástrojů",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odpověď]",
 	"tag-discussiontools-reply-description": "Uživatel odpověděl na komentář pomocí Diskusních nástrojů",
-	"tag-discussiontools-source": "Zdrojový kód",
-	"tag-discussiontools-source-description": "Diskusní nástroje byly ve zdrojovém režimu",
-	"tag-discussiontools-visual": "Vizuální editor",
-	"tag-discussiontools-visual-description": "Diskusní nástroje byly ve vizuálním režimu"
+	"tag-discussiontools-source": "zdrojový kód",
+	"tag-discussiontools-source-description": "Editace byla uložena pomocí Diskusních nástrojů v editoru zdrojového kódu",
+	"tag-discussiontools-visual": "vizuální režim",
+	"tag-discussiontools-visual-description": "Editace byla uložena pomocí Diskusních nástrojů ve vizuálním režimu."
 }

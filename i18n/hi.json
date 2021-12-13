@@ -1,8 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"गोपाल"
+			"गोपाल",
+			"Abijeet Patro",
+			"Shypoetess",
+			"पदाति",
+			"संजीव कुमार"
 		]
 	},
-	"discussiontools-replywidget-feedback": "इस सुविधा के बारे में प्रतिक्रिया साझा करें"
+	"discussiontools": "चर्चा उपकरण",
+	"discussiontools-defaultsummary-reply": "उत्तर",
+	"discussiontools-desc": "चर्चा पृष्ठ सुधार के लिए उपकरण",
+	"discussiontools-preference-label": "चर्चा उपकरण",
+	"discussiontools-replylink": "उत्तर दें",
+	"discussiontools-replywidget-cancel": "रद्द करें",
+	"discussiontools-replywidget-feedback": "इस सुविधा के बारे में प्रतिक्रिया साझा करें",
+	"discussiontools-replywidget-reply": "उत्तर दें",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} उत्तर]"
 }

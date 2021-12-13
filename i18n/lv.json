@@ -2,29 +2,40 @@
 	"@metadata": {
 		"authors": [
 			"Ed g2s",
-			"Papuass"
+			"Papuass",
+			"Edgars2007",
+			"Matma Rex"
 		]
 	},
 	"discussiontools": "Diskusiju rīki",
 	"discussiontools-defaultsummary-reply": "Atbilde",
 	"discussiontools-desc": "Rīki diskusiju lapu uzlabošanai",
-	"discussiontools-replylink": "Atbildēt",
+	"discussiontools-preference-label": "Diskusiju rīki",
+	"discussiontools-replylink": "atbildēt",
 	"discussiontools-replywidget-anon-warning": "<strong>Tu neesi pieslēdzies.</strong> Lai tavs devums tiktu piesaistīts tavam vārdam, nevis tavai IP adresei, tu vari [$1 pieslēgties] vai [$2 izveidot kontu].",
 	"discussiontools-replywidget-cancel": "Atcelt",
+	"discussiontools-replywidget-feedback": "Atstāt atsauksmi par šo funkcionalitāti",
 	"discussiontools-replywidget-loading": "Ielādē…",
+	"discussiontools-replywidget-mention-tool-title": "Pieminēt dalībnieku",
+	"discussiontools-replywidget-mode-source": "Vikikods",
+	"discussiontools-replywidget-mode-visual": "Vizuālais",
 	"discussiontools-replywidget-placeholder-reply": "Atbilde {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Priekšskatījums",
 	"discussiontools-replywidget-reply": "Atbildēt",
 	"discussiontools-replywidget-terms-click": "Klikšķinot uz \"$1\", tu piekrīti šīs vikivietnes izmantošanas noteikumiem.",
+	"discussiontools-replywidget-transcluded": "Tavs komentārs tiks saglabāts [[$1]].",
+	"discussiontools-error-comment-disappeared": "Lapā nevarēja atrast komentāru, uz ko tu atbildēji. Tas var būt dzēsts vai pārvietots uz citu lapu. Lūdzu, pārlādē lapu un mēģini vēlreiz.",
+	"discussiontools-error-comment-is-transcluded": "Saiti \"{{int:discussiontools-replylink}}\" nevar izmantot, lai atbildētu uz šo komentāru. Lai atbildētu, lūdzu, izmanto pilno lapas redaktoru, spiežot uz \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Saiti \"{{int:discussiontools-replylink}}\" nevar izmantot, lai atbildētu uz šo komentāru, jo tas ir ielādēts no citas lapas. Lai atbildētu, lūdzu, dodies šeit: [[$1]].",
 	"tag-discussiontools-description": "Labojums veikts ar diskusiju rīkiem",
 	"tag-discussiontools-edit": "laboja komentāru",
 	"tag-discussiontools-edit-description": "Dalībnieks laboja esošu komentāru ar diskusiju rīkiem",
 	"tag-discussiontools-newtopic": "pievienota tēma",
-	"tag-discussiontools-newtopic-description": "Dalībnieks lapai pievienoja jaunu tēmu ar diskusiju rīkiem",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Atbildēja]",
-	"tag-discussiontools-reply-description": "Dalībnieks atbildēja uz esošu komentāru ar diskusiju rīkiem",
+	"tag-discussiontools-newtopic-description": "Dalībnieks lapai pievienoja jaunu tematu ar diskusiju rīkiem",
+	"tag-discussiontools-reply": "<span class=\"plainlinks\">[{{int:discussiontools-replywidget-reply-link}} Atbilde]</span>",
+	"tag-discussiontools-reply-description": "Dalībnieks atbildēja uz komentāru ar diskusiju rīkiem",
 	"tag-discussiontools-source": "Vikikods",
 	"tag-discussiontools-source-description": "Diskusiju rīki bija vikikoda režīmā",
 	"tag-discussiontools-visual": "Vizuāli",
-	"tag-discussiontools-visual-description": "Diskusiju rīki bija vizuālā redaktora režīmā"
+	"tag-discussiontools-visual-description": "Diskusiju rīki bija vizuālajā režīmā"
 }

@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cgmbo"
+		]
+	},
+	"discussiontools": "Bisadilu ya kusolula",
+	"discussiontools-defaultsummary-reply": "Mvutu",
+	"discussiontools-desc": "Bisadilu sambu na kutomisa balutiti ya masolo.",
+	"discussiontools-preference-label": "Bisadilu ya masolo",
+	"discussiontools-replylink": "mvutu",
+	"discussiontools-replywidget-anon-warning": "<strong>Nge me kota ve.</strong> Sambu na kubaka nsangu ya kele ti zina na nge kansi ve adrese IP na nge, nge lenda [$1 kota] to[$2 kusala konte].",
+	"discussiontools-replywidget-cancel": "Katula",
+	"discussiontools-replywidget-feedback": "Pesa komanere sambu na kima yai",
+	"discussiontools-replywidget-loading": "Yo ke na kubaka...",
+	"discussiontools-replywidget-mention-tool-title": "Tubila muntu mosi",
+	"discussiontools-replywidget-mode-source": "Kisina",
+	"discussiontools-replywidget-mode-visual": "Ya ke monana",
+	"discussiontools-replywidget-placeholder-reply": "Mvutu na {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Kutala na ntwala",
+	"discussiontools-replywidget-reply": "Mvutu",
+	"discussiontools-replywidget-terms-click": "Kana nge bweta na \"$1\", nge me ndima kusadila mambu ya kuzitisa na ntwala ya kusadila wiki yai.",
+	"discussiontools-replywidget-transcluded": "Bo ta buma komantere na nge na [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-error-comment-disappeared": "Beto ke kuka ve kumona komantere yina nge ke pesila mvutu na lutiti yai. Ziku bo me vwansa yo to yo me kuma na lutiti ya nkaka. Tula diaka lutiti mpi meka diaka.",
+	"discussiontools-error-comment-is-transcluded": "Nge lenda sadila ve lien \"{{int:discussiontools-replylink}}\" sambu na kupesa mvutu na komantere yai. Sambu na kupesa mvutu, bweta na \"$1\" sambu na kusadila lutiti ya mvimba.",
+	"discussiontools-error-comment-is-transcluded-title": "Nge lenda sadila ve lien \"{{int:discussiontools-replylink}}\" sambu na kupesa mvutu na komantere yai sambu nge me basisa yo na lutiti ya nkaka. Sambu na kupesa mvutu, kwenda awa: [[$1]].",
+	"discussiontools-error-lint": "Nge lenda pesa ve mvutu na bakomantere ya lutiti yai sambu kifu mosi kele na wikitext. Nge lenda longuka mambu ya me tala kifu yai kana nge [$1 tanga muakanda], lomba lusadisu na [$2 kutula awa] to yika kifu na [$3 kukangula lutiti ya mvimba].",
+	"tag-discussiontools-description": "Nge me sonika na nzila ya BisadiluyaDisolo",
+	"tag-discussiontools-edit-description": "Muntu me yidika komantere ya ntama na BisadiluyaDisolo",
+	"tag-discussiontools-newtopic-description": "Muntu me yika disolo ya mpa na lutiti na nsadisa ya BisadiluyaDisolo",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Mvutu]",
+	"tag-discussiontools-reply-description": "Muntu me pesa mvutu na komantere na nsadisa ya BisadiluyaDisolo",
+	"tag-discussiontools-source": "Kisina",
+	"tag-discussiontools-source-description": "BisadiluyaDisolo vandaka na mode kisina",
+	"tag-discussiontools-visual": "Ya ke monana",
+	"tag-discussiontools-visual-description": "BisadiluyaDisolo vandaka na mode ya ke monana"
+}

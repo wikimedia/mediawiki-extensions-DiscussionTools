@@ -1,8 +1,30 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geonuch"
+			"Geonuch",
+			"Aefgh39622",
+			"Matma Rex",
+			"Patsagorn Y.",
+			"Prame Tan",
+			"Thas Tayapongsak"
 		]
 	},
-	"discussiontools-replywidget-preview": "ดูตัวอย่าง"
+	"discussiontools-defaultsummary-reply": "ตอบกลับ",
+	"discussiontools-desc": "เครื่องมือปรับปรุงประสิทธิภาพในหน้าอภิปราย",
+	"discussiontools-preference-label": "เครื่องมือช่วยเหลือการอภิปราย",
+	"discussiontools-replylink": "ตอบกลับ",
+	"discussiontools-replywidget-anon-warning": "<strong>คุณยังไม่เข้าสู่ระบบ</strong> หากคุณต้องการให้อ้างอิงถึงงานที่คุณทำโดยใช้ชื่อของคุณแทนที่ที่อยู่ไอพีปัจจุบัน กรุณา[$1 เข้าสู่ระบบ]หรือ[$2 สร้างบัญชี]",
+	"discussiontools-replywidget-cancel": "ยกเลิก",
+	"discussiontools-replywidget-feedback": "แบ่งปันความเห็นเกี่ยวกับคุณลักษณะนี้",
+	"discussiontools-replywidget-loading": "กำลังโหลด...",
+	"discussiontools-replywidget-mention-tool-title": "กล่าวถึงผู้ใช้",
+	"discussiontools-replywidget-mode-source": "ต้นฉบับ",
+	"discussiontools-replywidget-mode-visual": "เห็นภาพ",
+	"discussiontools-replywidget-placeholder-reply": "กำลังตอบกลับ $1",
+	"discussiontools-replywidget-preview": "ดูตัวอย่าง",
+	"discussiontools-replywidget-reply": "ตอบกลับ",
+	"discussiontools-replywidget-transcluded": "ความเห็นของคุณจะถูกบันทึกไว้ที่ [[$1]]",
+	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
+	"tag-discussiontools-source": "ต้นฉบับ",
+	"tag-discussiontools-visual": "เห็นภาพ"
 }

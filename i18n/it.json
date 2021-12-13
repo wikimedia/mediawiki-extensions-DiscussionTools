@@ -3,11 +3,16 @@
 		"authors": [
 			"Beta16",
 			"Sakretsu",
-			"Scompo"
+			"Scompo",
+			"Ajeje Brazorf",
+			"EditGio",
+			"Ferdi2005",
+			"Fringio",
+			"Lorem Ipsum"
 		]
 	},
 	"discussiontools": "Strumenti di discussione",
-	"discussiontools-defaultsummary-reply": "Rispondi",
+	"discussiontools-defaultsummary-reply": "Risposta",
 	"discussiontools-desc": "Strumenti per migliorare le pagine di discussione.",
 	"discussiontools-preference-label": "Strumenti di discussione",
 	"discussiontools-preference-description": "Abilita una nuova sequenza operativa per [//www.mediawiki.org/wiki/Talk_pages_project/replying rispondere a specifici commenti] sulle pagine di discussione.\n\nNota bene che nuovi strumenti di interazione sulle pagine di discussione saranno aggiunti nel tempo.\n\nGli aggiornamenti di queste funzionalità saranno riportati sulla [//www.mediawiki.org/wiki/Talk_pages_project/Updates pagina di aggiornamento del relativo progetto].",
@@ -24,6 +29,7 @@
 	"discussiontools-replywidget-reply": "Rispondi",
 	"discussiontools-replywidget-terms-click": "Cliccando su \"$1\", accetti le condizioni d'uso per questo wiki.",
 	"discussiontools-replywidget-transcluded": "Il tuo commento sarà salvato su [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-error-comment-disappeared": "Non è possibile trovare il commento a cui stai rispondendo sulla pagina. Potrebbe essere stato cancellato o spostato su un'altra altrove. Per favore, ricarica la pagina e riprova.",
 	"discussiontools-error-comment-is-transcluded": "Il link \"{{int:discussiontools-replylink}}\" non può essere usato per rispondere a questo commento. Clicca su \"$1\" per rispondere con l'editor di testo dell'intera pagina.",
 	"discussiontools-error-comment-is-transcluded-title": "Il link \"{{int:discussiontools-replylink}}\" non può essere usato per rispondere a questo commento perché è caricato da un'altra pagina. Per rispondere, visita [[$1]].",

@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Saederup92"
+			"Saederup92",
+			"Antonla",
+			"Matma Rex"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Svar",
@@ -11,8 +13,10 @@
 	"discussiontools-replywidget-mention-tool-title": "Nævn en bruger",
 	"discussiontools-replywidget-mode-source": "Kilde",
 	"discussiontools-replywidget-mode-visual": "Visuelt",
+	"discussiontools-replywidget-placeholder-reply": "Svar til {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Svar",
 	"tag-discussiontools-edit": "Redigér kommentar",
 	"tag-discussiontools-newtopic": "Tilføj emne",
-	"tag-discussiontools-source": "Kilde"
+	"tag-discussiontools-source": "Kilde",
+	"tag-discussiontools-visual": "Visuelt"
 }

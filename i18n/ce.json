@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Matma Rex",
+			"Умар"
+		]
+	},
+	"discussiontools": "Дийцарийн гӀирсаш",
+	"discussiontools-defaultsummary-reply": "Жоп",
+	"discussiontools-desc": "Дийцарийн агӀонаш дика йо гӀирсаш.",
+	"discussiontools-preference-label": "Дийцарийн гӀирсаш",
+	"discussiontools-replylink": "жоп",
+	"discussiontools-replywidget-anon-warning": "<strong>Системин чу чугӀо.</strong> IP-адресан меттан хьан цӀарца хьо хилийта, хьан аьтту бу [$1 чуваха(йаха)] йа [$2 аккаунт кхолла].",
+	"discussiontools-replywidget-cancel": "Цаоьшу",
+	"discussiontools-replywidget-feedback": "ХӀокху функцех лаьцна хьайна хетарг йазде",
+	"discussiontools-replywidget-loading": "Чуйолуш...",
+	"discussiontools-replywidget-mention-tool-title": "Декъашхо хьахо",
+	"discussiontools-replywidget-mode-source": "Хьост",
+	"discussiontools-replywidget-mode-visual": "БӀаьра",
+	"discussiontools-replywidget-placeholder-reply": "Жоп ло {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Хьалххе хьажар",
+	"discussiontools-replywidget-reply": "Жоп",
+	"discussiontools-replywidget-terms-click": "$1 тӀетаӀийна, хьо реза хьуьллу викис тӀедожош долу хьолашца.",
+	"discussiontools-replywidget-transcluded": "Хьан коммент [[$1]] тӀехь дӀаяздира ду.",
+	"discussiontools-signature-prefix": ",&#32;",
+	"discussiontools-error-comment-disappeared": "Ахьа жоплуш йолу коммент хӀокху агӀонгахь кара цайо. Иза хилла мега дӀайаьккхина йа кхечу агӀонг дихьайаьккхина. Дехар до агӀо карлайаьккхина, йуху а гӀорта.",
+	"discussiontools-error-comment-is-transcluded": "ХӀара \"{{int:discussiontools-replylink}}\" хьажорг хӀокху комментана жоплуш лело йиш йац. Жоп дала, дехар до лелайе йерриге агӀонан редактор кху \"$1\" тӀетаӀийна.",
+	"discussiontools-error-comment-is-transcluded-title": "ХӀара \"{{int:discussiontools-replylink}}\" хьажорг хӀокху комментана жоплуш лело йиш йац, иза кхечу агӀонгара чуйаьккхина йолу дела. Жоп дала, дехар до хьалха гайтина йолу агӀонга гӀо: [[$1]].",
+	"discussiontools-error-lint": "Викийозан тӀехь гӀалат хилар бахьнехь хӀокху агӀонгахь комментана дуьхьала жоп дала аьтту бац. Хьан аьтту бу [$1 документаци йишина], [$2 кху чу йаздина] гӀо деха йа [$3 йерриге агӀонан редактор схьайиллина] гӀалат нисдина оцу гӀалатах лаьцна хаа,",
+	"tag-discussiontools-description": "Нисдар дина DiscussionTools гӀоьнца",
+	"tag-discussiontools-edit-description": "Декъашхочо йолуш йолу коммент хийцина DiscussionTools гӀоьнца",
+	"tag-discussiontools-newtopic-description": "Декъашхочо DiscussionTools гӀоьнца керла тема тӀетоьхна",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Жоп]",
+	"tag-discussiontools-reply-description": "Декъашхочо DiscussionTools гӀоьнца комментана жоп дела",
+	"tag-discussiontools-source": "Хьост",
+	"tag-discussiontools-source-description": "DiscussionTools ражехь",
+	"tag-discussiontools-visual": "БӀаьра",
+	"tag-discussiontools-visual-description": "DiscussionTools бӀаьран ражехь"
+}

@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"The Discoverer"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Zobab",
+	"discussiontools-desc": "Bhasabhasachim panam sudarpa khatir avtam.",
+	"discussiontools-preference-label": "Bhasabhas avtam",
+	"discussiontools-replylink": "zobab",
+	"discussiontools-replywidget-anon-warning": "<strong>Tuven sotrorombh korunk nai.</strong> Tujea IP pot'te che bodlek tujea nanvak xrey mellche khatir, tujean [$1 sotrorombh korunk zata] vo [$2 kont rochunk zata].",
+	"discussiontools-replywidget-cancel": "Rod'd kor",
+	"discussiontools-replywidget-feedback": "Hea sobhavgunna vixim protisad di",
+	"discussiontools-replywidget-loading": "Load zatam...",
+	"discussiontools-replywidget-mention-tool-title": "Vaporpeacho ul'lekh kor",
+	"discussiontools-replywidget-mode-source": "Mull",
+	"discussiontools-replywidget-mode-visual": "Dixtti",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} haka zobab di",
+	"discussiontools-replywidget-preview": "Purvdekhavo",
+	"discussiontools-replywidget-reply": "Zobab di",
+	"discussiontools-replywidget-terms-click": "\"$1\" -cher klik kelea vorvim, tu hea wikiche upeogacheo otti manun ghetai.",
+	"discussiontools-replywidget-transcluded": "Tuzo xero [[$1]] -acher zoddtolo.",
+	"tag-discussiontools-description": "BhasabhasAvtam vorvim kel'lo sompadon",
+	"tag-discussiontools-edit-description": "Vaporpean BHasabhasAvtam vorvim ek ostitvant aslolea xereacho sompadon kela.",
+	"tag-discussiontools-newtopic-description": "Vaporpean BhasabhasAvtam vorvim panar ek novo vixoi zoddla.",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Zobab di]",
+	"tag-discussiontools-reply-description": "Vaporpean BhasabhasAvtam vorvim eka xereak zobab dila.",
+	"tag-discussiontools-source": "Mull",
+	"tag-discussiontools-source-description": "BhasabhasAvtam mull rupan aslo",
+	"tag-discussiontools-visual": "Dixtti",
+	"tag-discussiontools-visual-description": "BhasabhasAvtam dixtti rupan aslo"
+}

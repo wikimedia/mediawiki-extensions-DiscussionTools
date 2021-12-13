@@ -2,7 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Geraki",
-			"Norhorn"
+			"Norhorn",
+			"Giannaras99",
+			"Matma Rex",
+			"Michail Angelos Georgoulas"
 		]
 	},
 	"discussiontools": "Εργαλεία συζήτησης",
@@ -10,18 +13,23 @@
 	"discussiontools-desc": "Εργαλεία για την ενίσχυση των σελίδων συζήτησης.",
 	"discussiontools-preference-label": "Εργαλεία συζήτησης",
 	"discussiontools-preference-description": "Ενεργοποιήστε μια νέα ροή εργασίας για [//www.mediawiki.org/wiki/Talk_pages_project/replying την απάντηση σε συγκεκριμένα σχόλια] στις σελίδες συζήτησης.\n\nΛάβετε υπόψη ότι με την πάροδο του χρόνου θα προστεθούν νέα εργαλεία αλληλεπίδρασης με τις σελίδες συζήτησης.\n\nΟι ενημερώσεις σχετικά με αυτές τις λειτουργίες θα αναρτηθούν στη [//www.mediawiki.org/wiki/Talk_pages_project/Updates σελίδα ενημερώσεων του πρότζεκτ].",
-	"discussiontools-replylink": "Απάντηση",
+	"discussiontools-replylink": "απάντηση",
 	"discussiontools-replywidget-anon-warning": "<strong>Δεν έχετε συνδεθεί.</strong> Για να λάβετε απόδοση πατρότητας με το όνομά σας αντί για τη διεύθυνση IP, μπορείτε να [$1 συνδεθείτε] ή να [$2 δημιουργήσετε έναν λογαριασμό].",
 	"discussiontools-replywidget-cancel": "Ακύρωση",
+	"discussiontools-replywidget-feedback": "Αφήστε σχόλια σχετικά με αυτό τη λειτουργία",
 	"discussiontools-replywidget-loading": "Φόρτωση…",
 	"discussiontools-replywidget-mention-tool-title": "Μνημονεύστε έναν χρήστη",
+	"discussiontools-replywidget-mode-source": "Κώδικας",
+	"discussiontools-replywidget-mode-visual": "Οπτική",
 	"discussiontools-replywidget-placeholder-reply": "Απάντηση σε {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Προεπισκόπηση",
 	"discussiontools-replywidget-reply": "Απάντηση",
 	"discussiontools-replywidget-terms-click": "Κάνοντας κλικ στο «$1», συμφωνείτε με τους όρους χρήσης αυτού του wiki.",
+	"discussiontools-replywidget-transcluded": "Το σχόλιό σας θα αποθηκευτεί στην [[$1]].",
 	"discussiontools-error-comment-disappeared": "Δεν ήταν δυνατή η εύρεση του σχολίου στο οποίο απαντάτε στη σελίδα. Μπορεί να έχει διαγραφεί ή μεταφερθεί σε άλλη σελίδα. Επαναλάβετε τη φόρτωση της σελίδας και προσπαθήστε ξανά.",
-	"discussiontools-error-comment-is-transcluded": "Αυτό το σχόλιο δεν μπορεί να απαντηθεί χρησιμοποιώντας αυτό το εργαλείο. Παρακαλούμε προσπαθήστε χρησιμοποιώντας το επεξεργαστή πλήρης σελίδας.",
-	"discussiontools-error-comment-is-transcluded-title": "Αυτό το σχόλιο δεν μπορεί να απαντηθεί εδώ (ακόμη), επειδή φορτώνεται από άλλη σελίδα. Παρακαλούμε πηγαίνετε στη [[$1]] για να το απαντήσετε.",
+	"discussiontools-error-comment-is-transcluded": "Ο σύνδεσμος «{{int:discussiontools-replylink}}» δεν μπορεί να χρησιμοποιηθεί για να απαντήσετε σε αυτό το σχόλιο. Για να απαντήσετε, χρησιμοποιήστε το πρόγραμμα επεξεργασίας πλήρους σελίδας κάνοντας κλικ στο «$1».",
+	"discussiontools-error-comment-is-transcluded-title": "Αυτό το σχόλιο δεν μπορεί να απαντηθεί εδώ (ακόμη), επειδή φορτώνεται από άλλη σελίδα. Παρακαλούμε πηγαίνετε στη [[$1]] για να το απαντήσετε.\n\n\nΟ σύνδεσμος «{{int:discussiontools-replylink}}» δεν μπορεί να χρησιμοποιηθεί για να απαντήσετε σε αυτό το σχόλιο επειδή φορτώνεται από άλλη σελίδα. Για να απαντήσετε, παρακαλούμε πηγαίντε εδώ: [[$1]]",
+	"discussiontools-error-lint": "Δεν είναι δυνατή η απάντηση σχολίων σε αυτήν τη σελίδα λόγω σφάλματος στον κώδικα wiki. Μπορείτε να μάθετε για αυτό το σφάλμα [$1 διαβάζοντας την τεκμηρίωση], ζητήστε βοήθεια [$2 αναρτώντας εδώ] ή διορθώστε το σφάλμα με [$3 ανοίγοντας το πρόγραμμα επεξεργασίας πλήρους σελίδας].",
 	"tag-discussiontools-description": "Επεξεργασία που έγινε χρησιμοποιώντας το DiscussionTools",
 	"tag-discussiontools-edit": "Επεξεργασία σχολίου",
 	"tag-discussiontools-edit-description": "Ο χρήστης επεξεργάστηκε ένα υπάρχον σχόλιο με το DiscussionTools",

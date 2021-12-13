@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dušan Kreheľ",
+			"Matroxko",
+			"Teslaton",
+			"Yardom78"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "odpoveď",
+	"discussiontools-desc": "Nástroje na vylepšenie diskusných stránok.",
+	"discussiontools-preference-label": "Nástroje diskusie",
+	"discussiontools-replylink": "odpovedať",
+	"discussiontools-replywidget-cancel": "Zrušiť",
+	"discussiontools-replywidget-feedback": "Zanechať spätnú väzbu k tejto funkcii",
+	"discussiontools-replywidget-loading": "Načítavam…",
+	"discussiontools-replywidget-mention-tool-title": "Spomenúť používateľa",
+	"discussiontools-replywidget-mode-source": "Zdrojový kód",
+	"discussiontools-replywidget-mode-visual": "Vizuálne",
+	"discussiontools-replywidget-placeholder-reply": "Odpovedať používateľovi {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Náhľad",
+	"discussiontools-replywidget-reply": "Odpovedať",
+	"discussiontools-replywidget-terms-click": "Kliknutím na „$1“ súhlasíte s podmienkami použitia tejto wiki.",
+	"discussiontools-replywidget-transcluded": "Váš komentár bude uložený na stránke [[$1]].",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odpoveď]",
+	"tag-discussiontools-source": "zdroj"
+}

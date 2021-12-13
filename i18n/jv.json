@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Matma Rex",
+			"Sumbukompor"
+		]
+	},
+	"discussiontools": "Piranti parembugan",
+	"discussiontools-defaultsummary-reply": "Mangsuli",
+	"discussiontools-desc": "Piranti kanggo nyampurnakaké kaca parembugan.",
+	"discussiontools-preference-label": "Piranti parembugan",
+	"discussiontools-replylink": "wangsuli",
+	"discussiontools-replywidget-anon-warning": "<strong>Kowé durung mlebu log.</strong> Kanggo nrima atribusi mawa jenengmu tinimbang alamat IP-mu, kowé bisa [$1 mlebu log] utawa [$2 gawé sawiji akun].",
+	"discussiontools-replywidget-cancel": "Wurung",
+	"discussiontools-replywidget-feedback": "Wènèhana pamrayoga bab fitur iki",
+	"discussiontools-replywidget-loading": "Ngamot…",
+	"discussiontools-replywidget-mention-tool-title": "Sebutna naraguna",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Pawangsulan marang {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Pratuduh",
+	"discussiontools-replywidget-reply": "Wangsuli",
+	"discussiontools-replywidget-terms-click": "Kanthi ngeklik \"$1\", kowé sarujuk karo paugeran panganggo wiki iki.",
+	"discussiontools-replywidget-transcluded": "Tanggepanmu bakal kasimpen ing [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-error-comment-disappeared": "Ora bisa nemokaké tanggepan sing kowangsuli ing kaca iki. Tanggepan kasebut bokmanawa dibusak utawa dilih menyang kaca liya. Tulung ambali ngamot kacané lan jajal manèh.",
+	"discussiontools-error-comment-is-transcluded": "Pranala \"{{int:discussiontools-replylink}}\" ora bisa digunakaké kanggo mangsuli tanggepan iki. Kanggo mangsuli, gunakaké pambesutan kaca kang jangkep kanthi ngeklik \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Pranala \"{{int:discussiontools-replylink}}\" ora bisa digunakaké kanggo mangsuli tanggepan iki amarga tanggepané dimot saka kaca liya. Kanggo mangsuli, tulung menyanga réné: [[$1]].",
+	"discussiontools-error-lint": "Tanggepan ing kaca iki ora bisa diwangsuli amarga ana kasalahan ing wikitèks. Kowé bisa nyinaoni bab kasalahan iki kanthi [$1 maca dhokuméntasi], njaluk pitulung kanthi [$2 ngeposting ing kéné], utawa ndandani kasalahan kanthi [$3 mbukak pambesutan kaca kang jangkep].",
+	"tag-discussiontools-description": "Besutan digawé nggunakaké PirantiParembugan",
+	"tag-discussiontools-edit-description": "Naraguna mbesut tanggepan kang wis ana mawa PirantiParembugan",
+	"tag-discussiontools-newtopic-description": "Naraguna nambahaké siji rembugan anyar menyang kaca mawa PirantiParembugan",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Wangsulan]",
+	"tag-discussiontools-reply-description": "Naraguna mangsuli tanggepan mawa PirantiParembugan",
+	"tag-discussiontools-source": "Wangsulan sumber",
+	"tag-discussiontools-source-description": "PirantiParembugan ana ing modhe sumber",
+	"tag-discussiontools-visual": "Wangsulan visual",
+	"tag-discussiontools-visual-description": "PirantiParembugan ana ing modhe visual"
+}

@@ -1,8 +1,40 @@
 {
 	"@metadata": {
 		"authors": [
-			"Turbojet"
+			"Turbojet",
+			"Carcassonne93",
+			"Cezar",
+			"Matma Rex",
+			"NGC 54"
 		]
 	},
-	"discussiontools-error-comment-is-transcluded": "Acest comentariu nu poate fi inserat în acest mod de lucru. Încercați prin editorul sursei paginii."
+	"discussiontools-defaultsummary-reply": "Răspuns",
+	"discussiontools-desc": "Unelte pentru îmbunătățirea paginilor de discuție.",
+	"discussiontools-preference-label": "Unelte de discuție",
+	"discussiontools-replylink": "răspunde",
+	"discussiontools-replywidget-anon-warning": "<strong>Nu sunteți autentificat.</strong> Pentru a primi atribuire cu numele dvs. în schimbul adresei dvs. IP, puteți să vă [$1 autentificați] sau să [$2 creați un cont].",
+	"discussiontools-replywidget-cancel": "Anulează",
+	"discussiontools-replywidget-feedback": "Împărtășiți feedback despre această funcție",
+	"discussiontools-replywidget-loading": "Se încarcă...",
+	"discussiontools-replywidget-mention-tool-title": "Menționați un utilizator",
+	"discussiontools-replywidget-mode-source": "Sursă",
+	"discussiontools-replywidget-mode-visual": "Vizual",
+	"discussiontools-replywidget-placeholder-reply": "Răspunde lui {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Previzualizare",
+	"discussiontools-replywidget-reply": "Răspunde",
+	"discussiontools-replywidget-terms-click": "Prin apăsarea „$1”, sunteți de acord cu termenii de utilizare pentru acest wiki.",
+	"discussiontools-replywidget-transcluded": "Comentariul dvs. va fi salvat la [[$1]].",
+	"discussiontools-error-comment-disappeared": "Nu se poate găsi comentariul căruia îi răspundeți pe pagină. Se poate să fi fost șters sau mutat pe altă pagină. Vă rugăm să reîncărcați pagina și încercați din nou.",
+	"discussiontools-error-comment-is-transcluded": "Legătura „{{int:discussiontools-replylink}}” nu poate fi utilizată pentru a răspunde acestui comentariu. Pentru a răspunde, vă rugăm să utilizați editorul de paină întreagă prin apăsarea „$1”.",
+	"discussiontools-error-comment-is-transcluded-title": "Legătura „{{int:discussiontools-replylink}}” nu poate fi utilizată pentru a răspunde acestui comentariu deoarece este încărcat din altă pagină. Pentru a răspunde, vă rugăm să mergeți aici: [[$1]].",
+	"discussiontools-error-lint": "Nu se poate răspunde comentariilor de pe această pagină din cauza unei erori în wikitext. Puteți afla despre această eroare prin [$1 citirea documentației], cererea de ajutor [$2 postând aici] sau repararea erorii [$3 deschizând editorul de pagină întreagă].",
+	"tag-discussiontools-description": "Editare făcută utilizând Unelte de discuție",
+	"tag-discussiontools-edit-description": "Utilizatorul a editat un comentariu existent cu Unelte de discuție",
+	"tag-discussiontools-newtopic-description": "Utilizatorul a adăugat un subiect nou paginii cu Unelte de discuție",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Răspuns]",
+	"tag-discussiontools-reply-description": "Utilizatorul a răspuns unui comentariu cu Unelte de discuție",
+	"tag-discussiontools-source": "Sursă",
+	"tag-discussiontools-source-description": "Unelte de discuție a fost în modul sursă",
+	"tag-discussiontools-visual": "Vizual",
+	"tag-discussiontools-visual-description": "Unelte de discuție a fost în modul vizual"
 }

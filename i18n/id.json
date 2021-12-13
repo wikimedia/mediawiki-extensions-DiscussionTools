@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"ANukuma",
+			"Daud I.F. Argana",
+			"Hidayatsrf",
+			"Matma Rex",
+			"NFarras",
+			"Rachmat04",
+			"Sonic Speedy",
+			"WillsonEP09"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Balas",
+	"discussiontools-desc": "Alat untuk meningkatkan halaman diskusi.",
+	"discussiontools-preference-label": "Perkakas diskusi",
+	"discussiontools-replylink": "balas",
+	"discussiontools-replywidget-anon-warning": "<strong>Anda belum masuk log.</strong> Untuk mencantumkan nama Anda alih-alih alamat IP Anda, Anda dapat [$1 masuk log] atau [$2 buat akun baru].",
+	"discussiontools-replywidget-cancel": "Batal",
+	"discussiontools-replywidget-feedback": "Bagikan masukan tentang fitur ini",
+	"discussiontools-replywidget-loading": "Memuat...",
+	"discussiontools-replywidget-mention-tool-title": "Sebut seorang pengguna",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Balas ke {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Pratayang",
+	"discussiontools-replywidget-reply": "Balas",
+	"discussiontools-replywidget-terms-click": "Dengan mengklik \"$1\", Anda setuju dengan syarat penggunaan wiki ini.",
+	"discussiontools-replywidget-transcluded": "Komentar Anda akan disimpan di [[$1]].",
+	"discussiontools-error-comment-disappeared": "Tidak dapat menemukan komentar yang Anda balas di halaman. Mungkin telah dihapus atau dipindahkan ke halaman lain. Harap muat ulang halaman dan coba lagi.",
+	"discussiontools-error-comment-is-transcluded": "Pranala \"{{int:discussiontools-replylink}}\" tidak dapat digunakan untuk membalas komentar ini. Untuk membalas, gunakan editor halaman penuh dengan mengklik \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Pranala \"{{int:discussiontools-replylink}}\" tidak dapat digunakan untuk membalas komentar ini karena komentarnya dimuat dari halaman lain. Untuk membalas, silakan tuju ke: [[$1]].",
+	"discussiontools-error-lint": "Komentar di halaman ini tidak bisa dibalas karena adanya galat pada teks wiki. Anda bisa mempelajari tentang galat ini dengan [$1 membaca dokumentasi], meminta bantuan dengan [$2 mengirimkan ke sini] atau memperbaiki galatnya dengan [$3 membuka penyunting halaman lengkap].",
+	"tag-discussiontools-description": "Suntingan dibuat menggunakan DiscussionTools",
+	"tag-discussiontools-edit-description": "Pengguna menyunting komentar yang ada dengan DiscussionTools",
+	"tag-discussiontools-newtopic-description": "Pengguna menambahkan topik baru ke halaman dengan DiscussionTools",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Balas]",
+	"tag-discussiontools-reply-description": "Pengguna membalas komentar dengan DiscussionTools",
+	"tag-discussiontools-source": "Sumber",
+	"tag-discussiontools-source-description": "DiscussionTools dalam mode sumber",
+	"tag-discussiontools-visual": "Visual",
+	"tag-discussiontools-visual-description": "DiscussionTools dalam mode visual"
+}

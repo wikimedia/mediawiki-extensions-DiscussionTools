@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"StanProg",
+			"Ted Masters"
+		]
+	},
+	"discussiontools": "Дискусионни инструменти",
+	"discussiontools-defaultsummary-reply": "Отговор",
+	"discussiontools-preference-label": "Дискусионни инструменти",
+	"discussiontools-replylink": "отговор",
+	"discussiontools-replywidget-cancel": "Отказ",
+	"discussiontools-replywidget-feedback": "Дайте мнението си за тази функционалност",
+	"discussiontools-replywidget-loading": "Зареждане…",
+	"discussiontools-replywidget-mention-tool-title": "Споменаване на потребител",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Визуално",
+	"discussiontools-replywidget-placeholder-reply": "Отговор до {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Предварителен преглед",
+	"discussiontools-replywidget-reply": "Отговор",
+	"discussiontools-replywidget-transcluded": "Вашият коментар ще бъде записан на [[$1]].",
+	"tag-discussiontools-description": "Редакция, направена чрез Визуални инструменти",
+	"tag-discussiontools-edit-description": "Потребител редактира съществуващ коментар чрез Визуални инструменти",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Отговор]",
+	"tag-discussiontools-reply-description": "Потребител отговори на коментар чрез Визуални инструменти",
+	"tag-discussiontools-source": "Код",
+	"tag-discussiontools-source-description": "Визуални инструменти беше в режим на редактиране на кода",
+	"tag-discussiontools-visual": "Визуално",
+	"tag-discussiontools-visual-description": "Визуални инструменти беше във визуален режим"
+}

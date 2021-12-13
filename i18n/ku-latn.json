@@ -1,8 +1,40 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bikarhêner"
+			"Bikarhêner",
+			"Balyozxane",
+			"Biyolojiyabikurdi",
+			"Ghybu",
+			"Guherto"
 		]
 	},
-	"discussiontools-replylink": "bibersivîne"
+	"discussiontools-defaultsummary-reply": "Bersiv",
+	"discussiontools-desc": "Amûrên ji bo pêşxistina rûpelên gotûbêjê.",
+	"discussiontools-preference-label": "Amûrên gotûbêjê",
+	"discussiontools-replylink": "bibersivîne",
+	"discussiontools-replywidget-anon-warning": "<strong>Tu têneketî yî.</strong> Ji bo ku dewsa navnîşana IPya te navê te yê bikarhêneriyê derkeve, yan [$1 têkeve] yan jî [$2 hesabekî çêke].",
+	"discussiontools-replywidget-cancel": "Betal bike",
+	"discussiontools-replywidget-feedback": "Fikir li ser vê alavê bişîne",
+	"discussiontools-replywidget-loading": "Tê barkirin...",
+	"discussiontools-replywidget-mention-tool-title": "Qala bikarhênerekî/ê bike",
+	"discussiontools-replywidget-mode-source": "Çavkanî",
+	"discussiontools-replywidget-mode-visual": "Dîtbarî",
+	"discussiontools-replywidget-placeholder-reply": "Ji {{BIDI:$1}} re bersiv bide",
+	"discussiontools-replywidget-preview": "Pêşdîtin",
+	"discussiontools-replywidget-reply": "Bersiv bide",
+	"discussiontools-replywidget-terms-click": "Piştî pê li \"$1\" kir, ew tê maneya ku tu mercên bikaranînê yên vê wîkiyê qebûl dikî.",
+	"discussiontools-replywidget-transcluded": "Şiroveya te dê li [[$1]] were qeydkirin.",
+	"discussiontools-error-comment-disappeared": "Nikarîbû şîroveya ku tu cewab didiyê bibîne. Belkî hatibe jêbirin yan jî barkirin. Ji kerema xwe re rûpelê nû bike û dîse biceribîne.",
+	"discussiontools-error-comment-is-transcluded": "Lînka \"{{int:discussiontools-replylink}}\" nikare ji bonî cewabdana vê şîroveyê werê bikaranîn. Ji bonî cewabkirinê, ji kerema xwe re pêl \"$1\" bike ji bonî guhartina timametiyê rûpelê.",
+	"discussiontools-error-comment-is-transcluded-title": "Lînka \"{{int:discussiontools-replylink}}\" nikare di cewabdana vê şîroveyê de werê bikaranîn ji ber ku ew ji rûpeleke dî ye. Ji bonî cewabdanê, here vir: [[$1]].",
+	"discussiontools-error-lint": "Yek nikare bersiv bide şîroveyên vê rûpelê ji ber xeletîke di nivîsê de. Tu dikarî bêhtir li ser vê xeletiyê bielimê [$1 li vir], arîkarî [$2] bixwazî yan jî xeletiyê ji ber xwe ve çêkî bi [$3 guhartina timametiyê rûpelê].",
+	"tag-discussiontools-description": "Bi DiscussionToolsê re hat guhartin",
+	"tag-discussiontools-edit-description": "Bikarhêner şîroveke heyî bi DiscussionToolsê re guhart",
+	"tag-discussiontools-newtopic-description": "Bikarhêner mijarekê lê zêde kir bi DiscussionToolsê re",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Bersiv bide]",
+	"tag-discussiontools-reply-description": "Bikarhêner cewab da şîrovekê bi DiscussionToolsê re",
+	"tag-discussiontools-source": "Çavkanî",
+	"tag-discussiontools-source-description": "DiscussionTools di şiklê çavkaniyê de bû",
+	"tag-discussiontools-visual": "Dîtbarî",
+	"tag-discussiontools-visual-description": "DiscussionTools di şiklê dîtinê de bû"
 }

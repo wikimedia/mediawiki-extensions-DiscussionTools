@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Malikxan"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Javob berish",
+	"discussiontools-preference-label": "Munozara asboblari",
+	"discussiontools-replylink": "javob berish",
+	"discussiontools-replywidget-cancel": "Bekor qilish",
+	"discussiontools-replywidget-feedback": "Bu funksiya haqida fikr ulashish",
+	"discussiontools-replywidget-loading": "Yuklanmoqda…",
+	"discussiontools-replywidget-mention-tool-title": "Foydalanuvchini tilga olish",
+	"discussiontools-replywidget-mode-source": "Manba",
+	"discussiontools-replywidget-mode-visual": "Vizual",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ga javob berish",
+	"discussiontools-replywidget-preview": "Prevyu",
+	"discussiontools-replywidget-reply": "Javob berish",
+	"discussiontools-replywidget-transcluded": "Qoldirgan izohingiz [[$1]] sahifasida saqlanadi.",
+	"tag-discussiontools-source": "Manba",
+	"tag-discussiontools-visual": "Vizual"
+}

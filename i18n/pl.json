@@ -2,7 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Rail"
+			"Rail",
+			"Chrumps",
+			"Nux",
+			"Woytecr"
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
@@ -15,16 +18,17 @@
 	"discussiontools-replywidget-cancel": "Anuluj",
 	"discussiontools-replywidget-feedback": "Prześlij opinię na temat tego oprogramowania",
 	"discussiontools-replywidget-loading": "Ładowanie…",
+	"discussiontools-replywidget-mention-tool-title": "Wywołaj użytkownika",
 	"discussiontools-replywidget-mode-source": "Kod źródłowy",
 	"discussiontools-replywidget-mode-visual": "Wizualnie",
 	"discussiontools-replywidget-placeholder-reply": "Odpowiedz na komentarz {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Podgląd",
 	"discussiontools-replywidget-reply": "Odpowiedz",
-	"discussiontools-replywidget-terms-click": "Wciskając przycisk \"$1\", zgadzasz się na warunki użytkowania tej wiki.",
+	"discussiontools-replywidget-terms-click": "Wciskając przycisk „$1”, zgadzasz się na warunki użytkowania tej wiki.",
 	"discussiontools-replywidget-transcluded": "Twój komentarz zostanie zapisany na stronie [[$1]].",
 	"discussiontools-error-comment-disappeared": "Nie udało się odnaleźć na tej stronie komentarza, na który odpowiadasz. Mógł zostać usunięty lub przeniesiony na inną stronę. Przeładuj stronę i spróbuj ponownie.",
-	"discussiontools-error-comment-is-transcluded": "Link \"{{int:discussiontools-replylink}}\" nie może być użyty, aby odpowiedzieć na ten komentarz. Aby odpowiedzieć, użyj edytora całej strony, klikając \"$1\".",
-	"discussiontools-error-comment-is-transcluded-title": "Link \"{{int:discussiontools-replylink}}\" nie może być użyty, aby odpowiedzieć na ten komentarz, ponieważ jest on załadowany z innej strony. Aby odpowiedzieć, przejdź tutaj: [[$1]].",
+	"discussiontools-error-comment-is-transcluded": "Link „{{int:discussiontools-replylink}}” nie może być użyty, aby odpowiedzieć na ten komentarz. Aby odpowiedzieć, użyj edytora całej strony, klikając „$1”.",
+	"discussiontools-error-comment-is-transcluded-title": "Link „{{int:discussiontools-replylink}}” nie może być użyty, aby odpowiedzieć na ten komentarz, ponieważ jest on załadowany z innej strony. Aby odpowiedzieć, przejdź tutaj: [[$1]].",
 	"discussiontools-error-lint": "Nie można odpowiedzieć na komentarze na tej stronie z powodu błędu w wikitekście. Możesz dowiedzieć się więcej o tym błędzie z [$1 dokumentacji], poprosić o pomoc [$2 pisząc tutaj] lub naprawić błąd w [$3 edytorze całej strony].",
 	"tag-discussiontools-description": "Edycja wykonana przy pomocy narzędzi dyskusji",
 	"tag-discussiontools-edit": "Edycja komentarza",

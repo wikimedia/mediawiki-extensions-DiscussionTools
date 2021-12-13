@@ -1,8 +1,39 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dr Lotus Black"
+			"Dr Lotus Black",
+			"Matma Rex",
+			"Ninjastrikers"
 		]
 	},
-	"discussiontools-replywidget-preview": "ကြိုတင်အစမ်းကြည့်ရှုရန်"
+	"discussiontools": "ဆွေးနွေးမှု ကိရိယာများ",
+	"discussiontools-defaultsummary-reply": "အကြောင်းပြန်ခြင်း",
+	"discussiontools-desc": "ဆွေးနွေးချက် စာမျက်နှာများ ပိုမိုကောင်းမွန်စေမည့် ကိရိယာများ။",
+	"discussiontools-preference-label": "ဆွေးနွေးမှု ကိရိယာများ",
+	"discussiontools-replylink": "အကြောင်းပြန်ရန်",
+	"discussiontools-replywidget-anon-warning": "<strong>သင်သည် အကောင့် ဝင်မထားပါ။</strong> သင့်အိုင်ပီလိပ်စာ အစား သင့်အမည်ကို ဖော်ပြနိုင်ရန်အတွက် [$1 အကောင့်ဝင်ခြင်] သို့မဟုတ် [$2 အကောင့်တစ်ခု ဖန်တီးခြင်း]ကို ဆောင်ရွက်နိုင်ပါသည်။",
+	"discussiontools-replywidget-cancel": "မလုပ်တော့ပါ",
+	"discussiontools-replywidget-feedback": "ဤလုပ်ဆောင်ချက်နှင့် ပတ်သက်၍ သုံးသပ်အကြံပြုမှုကို မျှဝေရန်",
+	"discussiontools-replywidget-loading": "ဝန်ဆွဲတင်နေသည်...",
+	"discussiontools-replywidget-mention-tool-title": "အသုံးပြုသူတစ်ဦးအား ခေါ်ယူဖော်ပြရန်",
+	"discussiontools-replywidget-mode-source": "ရင်းမြစ်",
+	"discussiontools-replywidget-mode-visual": "မြင်ကွင်း",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} သို့ အကြောင်းပြန်ရန်",
+	"discussiontools-replywidget-preview": "ကြိုတင်အစမ်းကြည့်ရှုရန်",
+	"discussiontools-replywidget-reply": "အကြောင်းပြန်ရန်",
+	"discussiontools-replywidget-terms-click": "\"$1\" ကို နှိပ်ခြင်းဖြင့် သင်သည် ဤဝီကီ အသုံးပြုခြင်းဆိုင်ရာ သတ်မှတ်ချက်များကို သဘောတူပါသည်။",
+	"discussiontools-replywidget-transcluded": "သင့်သုံးသပ်ချက်ကို [[$1]]တွင် သိမ်းဆည်းပါလိမ့်မည်။",
+	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-error-comment-disappeared": "စာမျက်နှာပေါ်တွင် သင်အကြောင်းပြန်နေသော သုံးသပ်ချက်ကို ရှာဖွေမတွေ့ပါ။ ဖျက်လိုက်ခြင်း သို့မဟုတ် အခြား စာမျက်နှာသို့ ပြောင်းရွှေ့လိုက်ခြင်းကြောင့် ဖြစ်နိုင်ပါသည်။ ကျေးဇူးပြု၍ စာမျက်နှာကို ပြန်လည်ခေါ်ယူ၍ တဖန်ပြန်ကြိုးစားပါ။",
+	"discussiontools-error-comment-is-transcluded": "ဤသုံးသပ်ချက်အား အကြောင်းပြန်ရန်အတွက် \"{{int:discussiontools-replylink}}\" လင့်ခ်ကို အသုံးမပြုနိုင်ပါ။ အကြောင်းပြန်ရန်အတွက် ကျေးဇူးပြု၍ \"$1\" ကို နှိပ်ခြင်းဖြင့် စာမျက်နှာပြည့် တည်းဖြတ်မှုကို အသုံးပြုပေးပါ။",
+	"discussiontools-error-comment-is-transcluded-title": "အခြားစာမျက်နှာမှ ခေါ်ယူဝန်ဆွဲတင်ထားသောကြောင့် ဤသုံးသပ်ချက်ကို အကြောင်းပြန်ရန်အတွက် \"{{int:discussiontools-replylink}}\" လင့်ခ်ကို အသုံးမပြုနိုင်ပါ။ အကြောင်းပြန်ရန်အတွက် ကျေးဇူးပြု၍ [[$1]] သို့ သွားရောက်ပေးပါ။",
+	"tag-discussiontools-description": "DiscussionTools အသုံးပြု၍ တည်းဖြတ်ခြင်း",
+	"tag-discussiontools-edit-description": "အသုံးပြုသူသည် ရှိနှင့်ပြီးသော သုံးသပ်ချက်တစ်ခုကို DiscussionTools ဖြင့် တည်းဖြတ်ခဲ့သည်",
+	"tag-discussiontools-newtopic-description": "အသုံးပြုသူသည် DiscussionTools ဖြင့် အကြောင်းအရာသစ်တစ်ခုကို စာမျက်နှာသို့ ပေါင်းထည့်ခဲ့သည်။",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} အကြောင်းပြန်ရန်]",
+	"tag-discussiontools-reply-description": "အသုံးပြုသူသည် DiscussionTools ဖြင့် သုံးသပ်ချက်တစ်ခုကို ပြန်ကြားခဲ့သည်။",
+	"tag-discussiontools-source": "ရင်းမြစ်",
+	"tag-discussiontools-source-description": "DiscussionTools သည် ရင်းမြစ်တည်းဖြတ်ခြင်း ဖြစ်နေသည်",
+	"tag-discussiontools-visual": "မျက်မြင်",
+	"tag-discussiontools-visual-description": "DiscussionTools သည် မျက်မြင်တည်းဖြတ် ဖြစ်နေသည်"
 }

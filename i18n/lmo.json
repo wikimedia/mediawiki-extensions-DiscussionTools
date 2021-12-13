@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Salvemm el lombard"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Risposta",
+	"discussiontools-desc": "Istrument de migliorà i pagine de discussion.",
+	"discussiontools-preference-label": "Istrument de discussion",
+	"discussiontools-replylink": "rispond",
+	"discussiontools-replywidget-anon-warning": "<strong>te see minga andà dent in del sistema.</strong> Per ricev l'atribuzzion cont el to nom, inscambi de l'adress IP, te podet [$1 andà dent] o [$2 creà un cunt].",
+	"discussiontools-replywidget-cancel": "Anula",
+	"discussiontools-replywidget-feedback": "Met foeura un coment sora quella fonzion chì",
+	"discussiontools-replywidget-loading": "Adree a caregass...",
+	"discussiontools-replywidget-mention-tool-title": "Menziona un utent",
+	"discussiontools-replywidget-mode-source": "Sorgent",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Rispondegh al / a la {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Veduda antecipada",
+	"discussiontools-replywidget-reply": "Rispond",
+	"discussiontools-replywidget-terms-click": "A clicà \"$1\", te acetet i condizzion de utilizazzion de quell wiki chì.",
+	"discussiontools-replywidget-transcluded": "El to coment el sarà salvad in [[$1]].",
+	"discussiontools-error-comment-disappeared": "A l'è strad minga possibil trovà el coment che te seret 'dree a rispondegh. A l'è facil che 'l sia stad scancelad o spostad in d'un'altra part. Per piesè carega anmò la pagina e prova anmò.",
+	"discussiontools-error-comment-is-transcluded": "El conligament \"{{int:discussiontools-replylink}}\" el po minga vesser drovad per rispondegh a quell coment chì. Clica in su \"$1\" per rispond con l'editor de test de la pagina intrega.",
+	"discussiontools-error-comment-is-transcluded-title": "El \"{{int:discussiontools-replylink}}\" el po minga vesser drovad per rispondegh a quell coment chì perchè l'è stad caregad d'un altra pagina. Per rispond, per piesè, visita [[$1]].",
+	"discussiontools-error-lint": "A l'è stad no  possibil rispondegh ai coment in su quella pagina chì per via d'un eror del wikitest. te podet [$1 lensger la documentazzion] per savenn pussee sora quell eror chì, ciamà ajut [$2 chichinscì] o [$3 dervì l'editor de test de la pagina intrega] per sistemà i eror.",
+	"tag-discussiontools-description": "Modifega efetuada cont el drovà l'Istrument de Discussion",
+	"tag-discussiontools-edit-description": "L'utent l'hà modifegà un coment esistent con l'Istrument de Discussion",
+	"tag-discussiontools-newtopic-description": "L'utent l'hà sgiontad un argoment noeuv a la pagina con l'Istrument de Discussion",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Rispond]",
+	"tag-discussiontools-reply-description": "L'utent l'hà rispondud ai coment con l'Istrument de Discussion",
+	"tag-discussiontools-source": "Sorgent",
+	"tag-discussiontools-source-description": "L'Istrument de Discussion l'era in manera sorgent",
+	"tag-discussiontools-visual": "Visual",
+	"tag-discussiontools-visual-description": "Istrument de Discussion in manera visual"
+}

@@ -2,13 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Les Meloures"
 		]
 	},
+	"discussiontools": "Diskussiouns-Geschier",
 	"discussiontools-defaultsummary-reply": "Äntweren",
+	"discussiontools-desc": "Geschier fir Diskussiounsäiten ze verbesseren.",
 	"discussiontools-preference-label": "Diskussiouns-Geschier",
 	"discussiontools-replylink": "äntweren",
+	"discussiontools-replywidget-anon-warning": "<strong>Dir sidd net ageloggt.</strong> Fir a Plaz vun enger Verbindung mat Ärer IP-Adress eng Verbindung mat Ärem Numm ze kréie musst Dir Iech [$1 aloggen] oder [$2 e Benotzerkont opmaachen].",
 	"discussiontools-replywidget-cancel": "Ofbriechen",
+	"discussiontools-replywidget-feedback": "Feedback zu dëser Funktioun ginn",
 	"discussiontools-replywidget-loading": "Lueden...",
 	"discussiontools-replywidget-mention-tool-title": "E Benotzer ernimmen",
 	"discussiontools-replywidget-mode-source": "Quell",
@@ -16,6 +21,8 @@
 	"discussiontools-replywidget-placeholder-reply": "Äntwert fir {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Kucken ouni ofzespäicheren",
 	"discussiontools-replywidget-reply": "Äntweren",
+	"discussiontools-replywidget-transcluded": "Är Bemierkung gëtt op [[$1]] gespäichert.",
+	"discussiontools-error-comment-is-transcluded": "De Link \"{{int:discussiontools-replylink}}\" kann net benotzt gi fir op dës Bemierkung z'äntweren. Fir z'änneweren benotzt wgl. den Editeur fir déi komplett Säit a klickt op \"$1\".",
 	"tag-discussiontools-edit": "Bemierkung änneren",
 	"tag-discussiontools-newtopic": "Thema dobäisetzen",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Äntwerten]",

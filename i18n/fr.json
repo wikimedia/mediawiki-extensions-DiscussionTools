@@ -10,7 +10,13 @@
 			"Shawn",
 			"Thibaut120094",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Ajeje Brazorf",
+			"DreZhsh",
+			"Pols12",
+			"Seudo",
+			"Trizek",
+			"VIGNERON"
 		]
 	},
 	"discussiontools": "Outils de discussion",
@@ -31,6 +37,7 @@
 	"discussiontools-replywidget-reply": "Répondre",
 	"discussiontools-replywidget-terms-click": "En cliquant sur « $1 », vous acceptez les conditions d’utilisation de ce wiki.",
 	"discussiontools-replywidget-transcluded": "Votre commentaire sera enregistré dans [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-error-comment-disappeared": "Impossible de trouver le commentaire auquel vous répondez sur cette page. Il a peut-être été supprimé ou déplacé sur une autre page. Veuillez rafraîchir la page et réessayer.",
 	"discussiontools-error-comment-is-transcluded": "Le lien « {{int:discussiontools-replylink}} » ne peut pas être utilisé pour répondre à ce commentaire. Pour répondre, veuillez utiliser l’éditeur de page complète en cliquant sur « $1 ».",
 	"discussiontools-error-comment-is-transcluded-title": "Le lien « {{int:discussiontools-replylink}} » ne peut pas être utilisé pour répondre à ce commentaire, parce qu’il est chargé depuis une autre page. Pour répondre, veuillez aller ici : [[$1]].",

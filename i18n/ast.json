@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Tokvo"
 		]
 	},
 	"discussiontools": "Ferramientes d'alderique",
 	"discussiontools-defaultsummary-reply": "Contestar",
 	"discussiontools-desc": "Ferramientes pa enantar les páxines d'alderique.",
-	"discussiontools-replylink": "Contestar",
+	"discussiontools-replylink": "contestar",
 	"discussiontools-replywidget-cancel": "Encaboxar",
 	"discussiontools-replywidget-loading": "Cargando...",
 	"discussiontools-replywidget-reply": "Contestar"

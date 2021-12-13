@@ -4,7 +4,11 @@
 			"Alexander Yukal",
 			"Movses",
 			"Piramidion",
-			"Ата"
+			"Ата",
+			"Base",
+			"DDPAT",
+			"Matma Rex",
+			"Renamerr"
 		]
 	},
 	"discussiontools": "Інструменти обговорення",
@@ -25,19 +29,20 @@
 	"discussiontools-replywidget-reply": "Відповісти",
 	"discussiontools-replywidget-terms-click": "Натискаючи «$1», Ви погоджуєтесь із умовами використання цієї вікі.",
 	"discussiontools-replywidget-transcluded": "Ваш коментар буде збережено на сторінці [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-error-comment-disappeared": "Не вдалося знайти коментар, на який Ви відповідаєте на цій сторінці. Можливо, його звідси вилучили або перенесли на якусь іншу сторінку. Будь ласка, перезавантажте сторінку і спробуйте ще раз.",
-	"discussiontools-error-comment-is-transcluded": "Посилання \"{{int:discussiontools-replylink}}\" не може бути використано для відповіді на цей коментар. Будь ласка, скористайтесь звичайний редактор клацнувши \"$1\".",
+	"discussiontools-error-comment-is-transcluded": "Посилання «{{int:discussiontools-replylink}}» не можна використати для відповіді на цей коментар. Будь ласка, скористайтеся звичайним редактором, натиснувши «$1» угорі або «{{int:Editsection}}» біля назви розділу.",
 	"discussiontools-error-comment-is-transcluded-title": "Посилання \"{{int:discussiontools-replylink}}\" не може бути використано для відповіді на цей коментар оскільки завантажено з іншої сторінки. Для відповіді перейдіть сюди: [[$1]].",
-	"discussiontools-error-lint": "Неможливо відповісти на коментарі, що знаходяться на цій сторінці з-за помилки у вікітексті. Ви можете дізнатись більше щодо цієї помилки або [$1 у документації], або запитавши допомоги [$2 ось тут], або виправивши помилку [$3 у редакторі коду].",
+	"discussiontools-error-lint": "Неможливо відповісти на коментарі на цій сторінці через помилку у вікітексті. Ви можете дізнатись більше про цю помилку [$1 у документації], запитати допомоги [$2 ось тут] або виправити помилку [$3 у редакторі коду].",
 	"tag-discussiontools-description": "Редагування зроблене через DiscussionTools",
 	"tag-discussiontools-edit": "відредаговано коментар",
-	"tag-discussiontools-edit-description": "Користувач відредагував один із уже наявних коментарів через DiscussionTools",
+	"tag-discussiontools-edit-description": "Користувач відредагував наявний коментар через DiscussionTools",
 	"tag-discussiontools-newtopic": "додано тему",
 	"tag-discussiontools-newtopic-description": "Користувач створив на сторінці нову тему через DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} відповісти]",
 	"tag-discussiontools-reply-description": "Користувач відповів на коментар через DiscussionTools",
 	"tag-discussiontools-source": "вікірозмітка",
 	"tag-discussiontools-source-description": "DiscussionTools було використано в режимі редагування вікірозмітки",
-	"tag-discussiontools-visual": "візуально",
+	"tag-discussiontools-visual": "Візуальний",
 	"tag-discussiontools-visual-description": "DiscussionTools було використано у візуальному режимі"
 }

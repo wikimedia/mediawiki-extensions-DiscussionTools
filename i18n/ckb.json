@@ -3,7 +3,10 @@
 		"authors": [
 			"Cwtiyar",
 			"Ed g2s",
-			"ئارام بکر"
+			"ئارام بکر",
+			"Halbast",
+			"Matma Rex",
+			"Épine"
 		]
 	},
 	"discussiontools": "ئامرازەکانی وتووێژ",
@@ -14,19 +17,27 @@
 	"discussiontools-replylink": "وەڵامدانەوە",
 	"discussiontools-replywidget-anon-warning": "<strong>تۆ نەچوویتە ژوورەوە.</strong> بۆ ئەوەی دەستکارییەکەت بدرێتە پاڵ ناوەکەت لەجیاتی ناونیشانی ئای-پییەکەت، دەتوانیت یان [$1 بچیتە ژوورەوە] یانیش [$2 ھەژمارێک دروست بکەیت].",
 	"discussiontools-replywidget-cancel": "ھەڵوەشاندنەوە",
+	"discussiontools-replywidget-feedback": "ڕەخنە و پێشنیارەکان سەبارەت بەم تایبەتمەندییە ھاوبەشی پێ بکە",
 	"discussiontools-replywidget-loading": "بارکردن...",
 	"discussiontools-replywidget-mention-tool-title": "بانگکردنی بەکارھێنەرێک",
+	"discussiontools-replywidget-mode-source": "سەرچاوە",
+	"discussiontools-replywidget-mode-visual": "دیداری",
 	"discussiontools-replywidget-placeholder-reply": "وەڵام بۆ {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "پێشبینین",
 	"discussiontools-replywidget-reply": "وەڵامدانەوە",
 	"discussiontools-replywidget-terms-click": "بە کرتەکردن لەسەر «$1»، تۆ ملکەچی مەرجەکانی بەکارھێنانی ئەم ویکییە دەبیت.",
 	"discussiontools-replywidget-transcluded": "لێدوانەکەت لە [[$1]] پاشەکەوت دەبێت.",
-	"discussiontools-error-comment-is-transcluded": "لەڕێگەی بەکارھێنانی ئەم ئامرازەوە ناتواندرێت وەڵامی ئەم لێدوانە بدرێتەوە. تکایە بەجێگەی ئەمە ھەوڵی بەکارھێنانی دەستکاریکەرێکی تەواو بدە.",
+	"discussiontools-error-comment-disappeared": "نەتواندرا ئەو لێدوانە بدۆزرێتەوە کە خەریکی وەڵامدانەوەییت لەسەر پەڕەکە. لەوانەیە سڕدرابێتەوە یان بۆ پەڕەیەکی تر گواسترابێتەوە. تکایە پەڕەکە بار بکەوە و دووبارە ھەوڵ بدەرەوە.",
+	"discussiontools-error-comment-is-transcluded": "ناتواندرێت بەستەری «{{int:discussiontools-replylink}}» بۆ وەڵامدانەوەی ئەم لێدوانە بەکاربێت. بۆ وەڵامدانەوە، تکایە بە کرتەکردن لە «$1» دەستکاریکەری تەواوی پەڕەکە بەکاربێنە.",
 	"tag-discussiontools-description": "دەستکاری لەڕێگەی بەکارھێنانی ئامرازەکانی وتووێژەوە کرا",
 	"tag-discussiontools-edit": "دەستکاریی لێدوان بکە",
+	"tag-discussiontools-edit-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە دەستکاریی لێدوانێکی کرد",
 	"tag-discussiontools-newtopic": "زیادکردنی بابەت",
+	"tag-discussiontools-newtopic-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە بابەتێکی نوێی بۆ پەڕەکە زیاد کرد",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} وەڵامدانەوە]",
 	"tag-discussiontools-reply-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە وەڵامی لێدوانێکی دایەوە",
 	"tag-discussiontools-source": "سەرچاوە",
-	"tag-discussiontools-visual": "دیداری"
+	"tag-discussiontools-source-description": "ئامرازەکانی لێدوان لە حاڵەتی دەستکاریی سەرچاوەدا بوو",
+	"tag-discussiontools-visual": "دیداری",
+	"tag-discussiontools-visual-description": "ئامرازەکانی وتووێژ لە دۆخی دیداریدایە"
 }

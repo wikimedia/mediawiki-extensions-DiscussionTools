@@ -1,8 +1,38 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joseba"
+			"Joseba",
+			"Theklan"
 		]
 	},
-	"discussiontools-replywidget-transcluded": "Zure iradokizuna [[$1]] orrialdean gordeko da"
+	"discussiontools": "Eztabaida tresnak",
+	"discussiontools-defaultsummary-reply": "Erantzun",
+	"discussiontools-desc": "Eztabaida orrialdeak hobetzeko tresnak",
+	"discussiontools-preference-label": "Eztabaida tresnak",
+	"discussiontools-replylink": "erantzun",
+	"discussiontools-replywidget-anon-warning": "<strong>Ez zaude izena emanda.</strong> Zure izenean erantzuteko, eta ez zure IP helbidea erabilita, [$1 izena eman] edo [$2 kontu bat sortu] dezakezu.",
+	"discussiontools-replywidget-cancel": "Utzi",
+	"discussiontools-replywidget-feedback": "Ezaugarri honen inguruko zure iruzkina utzi",
+	"discussiontools-replywidget-loading": "Kargatzen...",
+	"discussiontools-replywidget-mention-tool-title": "Lankide bat aipatu",
+	"discussiontools-replywidget-mode-source": "Jatorria",
+	"discussiontools-replywidget-mode-visual": "Ikusizkoa",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} lankideari erantzun",
+	"discussiontools-replywidget-preview": "Aurreikuspena",
+	"discussiontools-replywidget-reply": "Erantzun",
+	"discussiontools-replywidget-terms-click": "\"$1$ klikatuta, wiki honen erabilera terminoak onartzen dituzu.",
+	"discussiontools-replywidget-transcluded": "Zure iradokizuna [[$1]] orrialdean gordeko da",
+	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-error-comment-disappeared": "Ezin izan da aurkitu erantzuten ari zaren mezua orrialde honetan. Agian ezabatu da edo mugitu da beste orrialde batera. Mesedez, karga ezazu orrialdea eta saia zaitez berriro ere.",
+	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" lotura ezin da erabili iruzkin honi erantzuteko. Erantzun nahi baduzu, klik egin \"$1\" loturan orrialde osoko editorea irekitzeko.",
+	"discussiontools-error-lint": "Orrialde honetako iruzkinei ezin zaie erantzun arazo bat dagoelako wikitestuarekin. Akats honi buruz ikasi dezakezu [$1 dokumentazioa irakurrita], laguntza eskatu dezakezu [$2 hemen idatzita] edo akatsa konpon dezakezu [$3 orrialde osoa aldatzeko moduan irekiz].",
+	"tag-discussiontools-description": "DiscissionTools erabiliz egindako aldaketa.",
+	"tag-discussiontools-edit-description": "Erabiltzaileak DiscussionTools erabilita iruzkin bat aldatu du.",
+	"tag-discussiontools-newtopic-description": "Erabilzaileak gai berri bat gehitu du DiscussionTools erabilita",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Erantzun]",
+	"tag-discussiontools-reply-description": "Erabiltzaileak DiscussionTools erabilita erantzun du",
+	"tag-discussiontools-source": "Jatorria",
+	"tag-discussiontools-source-description": "DiscussionTools kode moduan zegoen",
+	"tag-discussiontools-visual": "Ikusizkoa",
+	"tag-discussiontools-visual-description": "DiscussionTools ikusizko editore moduan zegoen"
 }

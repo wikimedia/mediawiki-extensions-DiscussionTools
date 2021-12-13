@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fierodelveneto"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Resposta",
+	"discussiontools-desc": "Instrumentasion par mejorar łe voze de discusion.",
+	"discussiontools-preference-label": "Instruminti de discusion",
+	"discussiontools-replylink": "respondi",
+	"discussiontools-replywidget-anon-warning": "<strong>No ti ze logà.</strong> Par risévar l'atribusion col to nome, al posto che co l'ìnderiso IP [$1 lòghite] o [$2 nota na nova utensa].",
+	"discussiontools-replywidget-cancel": "Descanseła canbiamento",
+	"discussiontools-replywidget-feedback": "Comenta sta funsionałità",
+	"discussiontools-replywidget-loading": "Cargamento...",
+	"discussiontools-replywidget-mention-tool-title": "Nòmena na utensa",
+	"discussiontools-replywidget-mode-source": "Sorzente",
+	"discussiontools-replywidget-mode-visual": "Vizuałe",
+	"discussiontools-replywidget-placeholder-reply": "Respóndaghe a {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Vista prèvia del comento",
+	"discussiontools-replywidget-reply": "Respóndighe",
+	"discussiontools-replywidget-terms-click": "Schiciando so \"$1\", te aceti łe condision de dòpara par sta wiki.",
+	"discussiontools-replywidget-transcluded": "El to comento el vegnarà salvà so [[$1]].",
+	"discussiontools-error-comment-disappeared": "No se ga podesto catar el comento al cuało te zeri drio provar de rispóndar. El połe èsar sta descansełà o movesto inte n'altra pàzena. Par piazer carga de novo ła pàzena e próvaghe da novo.",
+	"discussiontools-error-comment-is-transcluded": "El ligo \"{{int:discussiontools-replylink}}\" no el połe èsar doparà par rispóndar a sto comento. Par respóndar dòpara el èditor de pàzena schiciando so \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "El ligo \"{{int:discussiontools-replylink}}\" no el połe èsar doparà par rispóndar a sto comento parché el ze cargà da n'altra pàzena. Par respóndar, védate [[$1]].",
+	"discussiontools-error-lint": "No ze sta pusìbiłe respóndar ai comenti inte sta pàzena par via de un eror inte el wikitesto. Te połi [$1 lèzar ła documentasion] par informarte so sto eror, dimandar juto [$2 cuà] o [$3 vèrzar l'èditor de testo de l'intiera pàzena] par far ła coresion.",
+	"tag-discussiontools-description": "Cànbio fazesto doparando  ła Toła de Discusion",
+	"tag-discussiontools-edit-description": "L'utensa ła canbià un comento ezistente co ła Toła de Discusion",
+	"tag-discussiontools-newtopic-description": "L'utensa ła ga zontà na nova argomentasion inte ła pàzena co ła Toła de Discusion",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respondi]",
+	"tag-discussiontools-reply-description": "L'utensa ła ga respondesto a un comento co ła Toła de Discusion",
+	"tag-discussiontools-source": "Sorzente",
+	"tag-discussiontools-source-description": "Ła toła de discusion ła zera inte ła magnera sorzente",
+	"tag-discussiontools-visual": "Vizuałe",
+	"tag-discussiontools-visual-description": "Ła toła de discusion ła zera inte ła magnera vizuałe"
+}
