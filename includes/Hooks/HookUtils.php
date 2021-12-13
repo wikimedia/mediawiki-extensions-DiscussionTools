@@ -167,25 +167,25 @@ class HookUtils {
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
-		$abstate = $optionsManager->getOption( $user, 'discussiontools-abtest' );
+		$abstate = $optionsManager->getOption( $user, 'discussiontools-abtest2' );
 
 		if (
 			$user->isRegistered() &&
-			( $abtest == 'all' || ( !$feature && $abtest ) || ( $feature && $abtest == $feature ) )
+			$feature && $abtest == $feature
 		) {
 			// The A/B test is enabled, and the user is qualified to be in the
 			// test by being logged in.
-			if ( !$abstate && $optionsManager->getOption( $user, 'discussiontools-editmode' ) === '' ) {
+			if ( !$abstate && !$optionsManager->getOption( $user, 'discussiontools-newtopictool-opened' ) ) {
 				// Assign the user to a group. This is only being done to
 				// users who have never used the tool before, for which we're
-				// using the presence of discussiontools-editmode as a proxy,
-				// as it should be set as soon as the user interacts with the tool.
+				// using the absence of discussiontools-newtopictool-opened.
 				$abstate = $user->getId() % 2 == 0 ? 'test' : 'control';
-				$optionsManager->setOption( $user, 'discussiontools-abtest', $abstate );
+				$optionsManager->setOption( $user, 'discussiontools-abtest2', $abstate );
 				$optionsManager->saveOptions( $user );
 			}
+			return $abstate;
 		}
-		return $abstate;
+		return '';
 	}
 
 	/**

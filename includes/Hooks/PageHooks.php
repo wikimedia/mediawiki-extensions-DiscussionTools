@@ -122,7 +122,7 @@ class PageHooks implements
 			}
 			$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 			$abstate = $dtConfig->get( 'DiscussionToolsABTest' ) ?
-				$this->userOptionsLookup->getOption( $user, 'discussiontools-abtest' ) :
+				$this->userOptionsLookup->getOption( $user, 'discussiontools-abtest2' ) :
 				false;
 			if ( $abstate ) {
 				$output->addJsConfigVars(
