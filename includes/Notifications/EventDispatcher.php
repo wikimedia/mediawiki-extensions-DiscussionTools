@@ -298,7 +298,7 @@ class EventDispatcher {
 
 		if (
 			$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) &&
-			$dtConfig->get( 'DiscussionToolsAutoTopicSubWhere' ) === 'everywhere' &&
+			$dtConfig->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'any' &&
 			HookUtils::shouldAddAutoSubscription( $user, $title )
 		) {
 			$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
