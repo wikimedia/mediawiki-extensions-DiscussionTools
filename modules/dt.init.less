@@ -276,17 +276,20 @@ span[ data-mw-comment-start ] {
 			top: 0;
 			right: 0;
 			height: 100%;
+			z-index: 1;
 		}
 
 		&-body {
 			margin-bottom: 1em;
 			margin-top: 1em;
+			margin-right: 200px;
 		}
 
 		&-title,
-		&-body,
 		&-actions {
-			margin-right: 200px;
+			margin-right: 150px;
+			position: relative;
+			z-index: 2;
 		}
 	}
 
