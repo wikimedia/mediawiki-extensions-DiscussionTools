@@ -128,58 +128,6 @@ ThreadItem.prototype.getAuthorsBelow = function () {
 };
 
 /**
- * Get the name of the page from which this thread item is transcluded (if any).
- *
- * @return {string|boolean} `false` if this item is not transcluded. A string if it's transcluded
- *   from a single page (the page title, in text form with spaces). `true` if it's transcluded, but
- *   we can't determine the source.
- */
-ThreadItem.prototype.getTranscludedFrom = function () {
-	// If some template is used within the comment (e.g. {{ping|…}} or {{tl|…}}, or a
-	// non-substituted signature template), that *does not* mean the comment is transcluded.
-	// We only want to consider comments to be transcluded if all wrapper elements (usually
-	// <li> or <p>) are marked as part of a single transclusion.
-
-	// If we can't find "exact" wrappers, using only the end container works out well
-	// (because the main purpose of this method is to decide on which page we should post
-	// replies to the given comment, and they'll go after the comment).
-
-	var coveredNodes = utils.getFullyCoveredSiblings( this ) ||
-		[ this.range.endContainer ];
-
-	var node = utils.getTranscludedFromElement( coveredNodes[ 0 ] );
-	for ( var i = 1; i < coveredNodes.length; i++ ) {
-		if ( node !== utils.getTranscludedFromElement( coveredNodes[ i ] ) ) {
-			// Comment is only partially transcluded, that should be fine
-			return false;
-		}
-	}
-
-	if ( !node ) {
-		// No mw:Transclusion node found, this item is not transcluded
-		return false;
-	}
-
-	var dataMw = JSON.parse( node.getAttribute( 'data-mw' ) );
-
-	// Only return a page name if this is a simple single-template transclusion.
-	if (
-		dataMw &&
-		dataMw.parts &&
-		dataMw.parts.length === 1 &&
-		dataMw.parts[ 0 ].template &&
-		dataMw.parts[ 0 ].template.target.href
-	) {
-		// Slice off the './' prefix and convert to text form (underscores to spaces, URL-decoded)
-		return mw.libs.ve.normalizeParsoidResourceName( dataMw.parts[ 0 ].template.target.href );
-	}
-
-	// Multi-template transclusion, or a parser function call, or template-affected wikitext outside
-	// of a template call, or a mix of the above
-	return true;
-};
-
-/**
  * Return a native Range object corresponding to the item's range.
  *
  * @return {Range}
