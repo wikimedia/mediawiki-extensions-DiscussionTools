@@ -545,6 +545,10 @@
 			"value": true,
 			"description": "Enable the topic subscription backend. This controls whether the feature can be tried out using the query parameter, and whether the Echo events will be created. Do not enable this unless the database tables exist. Do enable it before making the 'topicsubscription' feature available."
 		},
+		"DiscussionToolsMaxSubscriptionsPerUser": {
+			"value": 5000,
+			"description": "Maximum number of subscriptions that can be stored for each user."
+		},
 		"DiscussionToolsAutoTopicSubEditor": {
 			"value": "discussiontoolsapi",
 			"description": "Editor which triggers automatic topic subscriptions. Either 'discussiontoolsapi' for edits made using DiscussionTools' API (e.g. reply and new topic tools), or 'any' for any editor."

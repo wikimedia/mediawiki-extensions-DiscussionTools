@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use ConfigFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserFactory;
@@ -17,16 +18,14 @@ use Wikimedia\Rdbms\IResultWrapper;
 
 class SubscriptionStore {
 	/**
-	 * Maximum number of subscriptions that we can store for each user.
-	 */
-	private const USER_SUBSCRIPTION_LIMIT = 5000;
-
-	/**
 	 * Constants for the values of the sub_state field.
 	 */
 	public const STATE_UNSUBSCRIBED = 0;
 	public const STATE_SUBSCRIBED = 1;
 	public const STATE_AUTOSUBSCRIBED = 2;
+
+	/** @var ConfigFactory */
+	private $configFactory;
 
 	/** @var ILBFactory */
 	private $lbFactory;
@@ -41,15 +40,18 @@ class SubscriptionStore {
 	private $userFactory;
 
 	/**
+	 * @param ConfigFactory $configFactory
 	 * @param ILBFactory $lbFactory
 	 * @param ReadOnlyMode $readOnlyMode
 	 * @param UserFactory $userFactory
 	 */
 	public function __construct(
+		ConfigFactory $configFactory,
 		ILBFactory $lbFactory,
 		ReadOnlyMode $readOnlyMode,
 		UserFactory $userFactory
 	) {
+		$this->configFactory = $configFactory;
 		$this->lbFactory = $lbFactory;
 		$this->loadBalancer = $lbFactory->getMainLB();
 
@@ -215,15 +217,18 @@ class SubscriptionStore {
 		// This is always queried before updating
 		$db = $this->getConnectionRef( DB_PRIMARY );
 
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
+		$limit = $dtConfig->get( 'DiscussionToolsMaxSubscriptionsPerUser' );
+
 		$rowCount = $db->selectRowCount(
 			'discussiontools_subscription',
 			'*',
 			[ 'sub_user' => $user->getId() ],
 			__METHOD__,
-			[ 'LIMIT' => self::USER_SUBSCRIPTION_LIMIT ]
+			[ 'LIMIT' => $limit ]
 		);
 
-		if ( $rowCount >= self::USER_SUBSCRIPTION_LIMIT / 2 ) {
+		if ( $rowCount >= $limit / 2 ) {
 			$logger->warning(
 				"User {user} has {rowCount} subscriptions, approaching the limit",
 				[
@@ -233,7 +238,7 @@ class SubscriptionStore {
 			);
 		}
 
-		return $rowCount >= self::USER_SUBSCRIPTION_LIMIT;
+		return $rowCount >= $limit;
 	}
 
 	/**
