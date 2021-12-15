@@ -91,6 +91,20 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "Reply inserted outside various wrapper elements (real content, old parser)",
+		"dom": "cases/wrappers2-oldparser/wrappers2-oldparser.html",
+		"expected": "cases/wrappers2-oldparser/wrappers2-oldparser-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Reply inserted outside various wrapper elements (real content, Parsoid)",
+		"dom": "cases/wrappers2-parsoid/wrappers2-parsoid.html",
+		"expected": "cases/wrappers2-parsoid/wrappers2-parsoid-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Many comments consisting of a block template and a paragraph",
 		"dom": "cases/transclusions4/transclusions4.html",
 		"expected": "cases/transclusions4/transclusions4-modified.html",
