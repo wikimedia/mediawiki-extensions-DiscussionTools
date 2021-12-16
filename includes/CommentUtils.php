@@ -75,6 +75,19 @@ class CommentUtils {
 	}
 
 	/**
+	 * @param Node $node
+	 * @return bool Node was added to the page by DiscussionTools
+	 */
+	public static function isOurGeneratedNode( Node $node ): bool {
+		return $node instanceof Element && (
+			$node->getAttribute( 'class' ) === 'ext-discussiontools-init-replylink-buttons' ||
+			$node->hasAttribute( 'data-mw-comment' ) ||
+			$node->hasAttribute( 'data-mw-comment-start' ) ||
+			$node->hasAttribute( 'data-mw-comment-end' )
+		);
+	}
+
+	/**
 	 * Elements which can't have element children (but some may have text content).
 	 * https://html.spec.whatwg.org/#elements-2
 	 * @var string[]
@@ -359,81 +372,23 @@ class CommentUtils {
 	 */
 	public static function getFullyCoveredSiblings( ThreadItem $item ): ?array {
 		$siblings = self::getCoveredSiblings( $item->getRange() );
-		$startContainer = $item->getRange()->startContainer;
-		$endContainer = $item->getRange()->endContainer;
-		$startOffset = $item->getRange()->startOffset;
-		$endOffset = $item->getRange()->endOffset;
 
-		$isIgnored = static function ( $node ) {
-			// Ignore empty text nodes
-			return $node->nodeType === XML_TEXT_NODE && CommentUtils::htmlTrim( $node->nodeValue ?? '' ) === '';
+		$makeRange = static function ( $siblings ) {
+			return new ImmutableRange(
+				$siblings[0]->parentNode,
+				CommentUtils::childIndexOf( $siblings[0] ),
+				end( $siblings )->parentNode,
+				CommentUtils::childIndexOf( end( $siblings ) ) + 1
+			);
 		};
 
-		$isFirstNonemptyChild = static function ( $node ) use ( $isIgnored ) {
-			while ( ( $node = $node->previousSibling ) ) {
-				if ( !$isIgnored( $node ) ) {
-					return false;
-				}
-			}
-			return true;
-		};
+		$matches = self::compareRanges( $makeRange( $siblings ), $item->getRange() ) === 'equal';
 
-		$isLastNonemptyChild = static function ( $node ) use ( $isIgnored ) {
-			while ( ( $node = $node->nextSibling ) ) {
-				if ( !$isIgnored( $node ) ) {
-					return false;
-				}
-			}
-			return true;
-		};
-
-		$startMatches = false;
-		$node = $siblings[ 0 ] ?? null;
-		while ( $node ) {
-			if ( $startContainer->childNodes && $startContainer->childNodes[ $startOffset ] === $node ) {
-				$startMatches = true;
-				break;
-			}
-			if ( $startContainer === $node && $startOffset === 0 ) {
-				$startMatches = true;
-				break;
-			}
-			if ( $isIgnored( $node ) ) {
-				$node = $node->nextSibling;
-			} else {
-				$node = $node->firstChild;
-			}
-		}
-
-		$endMatches = false;
-		$node = end( $siblings );
-		while ( $node ) {
-			if ( $endContainer->childNodes && $endContainer->childNodes[ $endOffset - 1 ] === $node ) {
-				$endMatches = true;
-				break;
-			}
-			$length = ( $node->nodeType === XML_TEXT_NODE ) ?
-				mb_strlen( rtrim( $node->nodeValue ?? '', "\t\n\f\r " ) ) :
-				// PHP bug: childNodes can be null for comment nodes
-				// (it should always be a NodeList, even if the node can't have children)
-				( $node->childNodes ? $node->childNodes->length : 0 );
-			if ( $endContainer === $node && $endOffset === $length ) {
-				$endMatches = true;
-				break;
-			}
-			if ( $isIgnored( $node ) ) {
-				$node = $node->previousSibling;
-			} else {
-				$node = $node->lastChild;
-			}
-		}
-
-		if ( $startMatches && $endMatches ) {
+		if ( $matches ) {
 			// If these are all of the children (or the only child), go up one more level
 			while (
 				( $parent = $siblings[ 0 ]->parentNode ) &&
-				$isFirstNonemptyChild( $siblings[ 0 ] ) &&
-				$isLastNonemptyChild( end( $siblings ) )
+				self::compareRanges( $makeRange( [ $parent ] ), $item->getRange() ) === 'equal'
 			) {
 				$siblings = [ $parent ];
 			}
@@ -691,6 +646,7 @@ class CommentUtils {
 					(
 						!CommentUtils::isCommentSeparator( $n ) &&
 						!CommentUtils::isRenderingTransparentNode( $n ) &&
+						!CommentUtils::isOurGeneratedNode( $n ) &&
 						CommentUtils::isCommentContent( $n )
 					)
 				) {

@@ -47,6 +47,19 @@ function isRenderingTransparentNode( node ) {
 	);
 }
 
+/**
+ * @param {Node} node
+ * @return {boolean} Node was added to the page by DiscussionTools
+ */
+function isOurGeneratedNode( node ) {
+	return node.nodeType === Node.ELEMENT_NODE && (
+		node.className === 'ext-discussiontools-init-replylink-buttons' ||
+		node.hasAttribute( 'data-mw-comment' ) ||
+		node.hasAttribute( 'data-mw-comment-start' ) ||
+		node.hasAttribute( 'data-mw-comment-end' )
+	);
+}
+
 // Elements which can't have element children (but some may have text content).
 // https://html.spec.whatwg.org/#elements-2
 var noElementChildrenElementTypes = [
@@ -313,81 +326,24 @@ function getCoveredSiblings( range ) {
  */
 function getFullyCoveredSiblings( item ) {
 	var siblings = getCoveredSiblings( item.getNativeRange() );
-	var startContainer = item.range.startContainer;
-	var endContainer = item.range.endContainer;
-	var startOffset = item.range.startOffset;
-	var endOffset = item.range.endOffset;
 
-	function isIgnored( n ) {
-		// Ignore empty text nodes, and our own reply buttons
-		return ( n.nodeType === Node.TEXT_NODE && htmlTrim( n.textContent ) === '' ) ||
-			( n.className && n.className.indexOf( 'ext-discussiontools-init-replylink-buttons' ) !== -1 );
+	function makeRange( sibs ) {
+		var range = sibs[ 0 ].ownerDocument.createRange();
+		range.setStartBefore( sibs[ 0 ] );
+		range.setEndAfter( sibs[ sibs.length - 1 ] );
+		return range;
 	}
 
-	function isFirstNonemptyChild( n ) {
-		while ( ( n = n.previousSibling ) ) {
-			if ( !isIgnored( n ) ) {
-				return false;
-			}
-		}
-		return true;
-	}
+	// eslint-disable-next-line no-use-before-define
+	var matches = compareRanges( makeRange( siblings ), item.getNativeRange() ) === 'equal';
 
-	function isLastNonemptyChild( n ) {
-		while ( ( n = n.nextSibling ) ) {
-			if ( !isIgnored( n ) ) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	var startMatches = false;
-	var node = siblings[ 0 ];
-	while ( node ) {
-		if ( startContainer.childNodes && startContainer.childNodes[ startOffset ] === node ) {
-			startMatches = true;
-			break;
-		}
-		if ( startContainer === node && startOffset === 0 ) {
-			startMatches = true;
-			break;
-		}
-		if ( isIgnored( node ) ) {
-			node = node.nextSibling;
-		} else {
-			node = node.firstChild;
-		}
-	}
-
-	var endMatches = false;
-	node = siblings[ siblings.length - 1 ];
-	while ( node ) {
-		if ( endContainer.childNodes && endContainer.childNodes[ endOffset - 1 ] === node ) {
-			endMatches = true;
-			break;
-		}
-		var length = node.nodeType === Node.TEXT_NODE ?
-			node.textContent.replace( /[\t\n\f\r ]+$/, '' ).length :
-			node.childNodes.length;
-		if ( endContainer === node && endOffset === length ) {
-			endMatches = true;
-			break;
-		}
-		if ( isIgnored( node ) ) {
-			node = node.previousSibling;
-		} else {
-			node = node.lastChild;
-		}
-	}
-
-	if ( startMatches && endMatches ) {
-		var parent;
+	if ( matches ) {
 		// If these are all of the children (or the only child), go up one more level
+		var parent;
 		while (
 			( parent = siblings[ 0 ].parentNode ) &&
-			isFirstNonemptyChild( siblings[ 0 ] ) &&
-			isLastNonemptyChild( siblings[ siblings.length - 1 ] )
+			// eslint-disable-next-line no-use-before-define
+			compareRanges( makeRange( [ parent ] ), item.getNativeRange() ) === 'equal'
 		) {
 			siblings = [ parent ];
 		}
@@ -616,6 +572,7 @@ function compareRangesAlmostEqualBoundaries( a, b, boundary ) {
 				(
 					!isCommentSeparator( n ) &&
 					!isRenderingTransparentNode( n ) &&
+					!isOurGeneratedNode( n ) &&
 					isCommentContent( n )
 				)
 			) {
