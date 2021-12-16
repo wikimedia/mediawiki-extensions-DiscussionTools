@@ -156,7 +156,10 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 				// or if a comment's parent changes.
 				// Data by name might be combined from two or more comments, which would only allow us to
 				// treat them both as transcluded from unknown source, unless we check ID first.
-				var isTranscludedFrom = transcludedFrom[ comment.id ] || transcludedFrom[ comment.name ];
+				var isTranscludedFrom = transcludedFrom[ comment.id ];
+				if ( isTranscludedFrom === undefined ) {
+					isTranscludedFrom = transcludedFrom[ comment.name ];
+				}
 				if ( isTranscludedFrom === undefined ) {
 					// The comment wasn't found when generating the "transcludedfrom" data,
 					// so we don't know where the reply should be posted. Just give up.
