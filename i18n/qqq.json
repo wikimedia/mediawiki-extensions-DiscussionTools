@@ -49,6 +49,7 @@
 	"discussiontools-limitreport-timeusage-value": "Follows {{msg-mw|discussiontools-limitreport-timeusage}}.\n\nParameters:\n* $1 - the usage in seconds\n{{Identical|Second}}",
 	"discussiontools-newtopic-legacy-hint": "Dismissable message explaining the new topic tool and how to return to the legacy section adding tool",
 	"discussiontools-newtopic-legacy-hint-close": "Tooltip for the close button that closes an info message so it's never shown again.",
+	"discussiontools-newtopic-legacy-hint-return": "Message shown on the legacy section adding tool",
 	"discussiontools-newtopic-missing-title": "Warning message shown when leaving the title field empty while adding a new topic to the page.",
 	"discussiontools-newtopic-placeholder-title": "Placeholder describing the heading field of a new topic\n{{identical|Title}}",
 	"discussiontools-notification-subscribed-new-comment-header": "Notification header text for when there is a reply on a topic. Parameters:\n* $1 - the formatted username of the user who replied to the topic\n* $2 - the username for gender purposes\n* $3 - title of the page\n* $4 - title of the topic.",
