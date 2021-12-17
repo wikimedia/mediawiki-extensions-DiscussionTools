@@ -75,6 +75,39 @@ function cantHaveElementChildren( node ) {
 }
 
 /**
+ * Check whether the node is a comment separator (instead of a part of the comment).
+ *
+ * @param {Node} node
+ * @return {boolean}
+ */
+function isCommentSeparator( node ) {
+	return node.nodeType === Node.ELEMENT_NODE && (
+		// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
+		node.nodeName.toLowerCase() === 'br' ||
+		// Horizontal line
+		node.nodeName.toLowerCase() === 'hr' ||
+		// {{outdent}} templates
+		node.getAttribute( 'class' ) === 'outdent-template'
+	);
+}
+
+/**
+ * Check whether the node is a comment content. It's a little vague what this means…
+ *
+ * @param {Node} node Node, should be a leaf node (a node with no children)
+ * @return {boolean}
+ */
+function isCommentContent( node ) {
+	return (
+		// eslint-disable-next-line no-use-before-define
+		( node.nodeType === Node.TEXT_NODE && htmlTrim( node.textContent ) !== '' ) ||
+		// eslint-disable-next-line no-use-before-define
+		( node.nodeType === Node.CDATA_SECTION_NODE && htmlTrim( node.textContent ) !== '' ) ||
+		( cantHaveElementChildren( node ) )
+	);
+}
+
+/**
  * Get the index of a node in its parentNode's childNode list
  *
  * @param {Node} child
@@ -463,6 +496,8 @@ module.exports = {
 	NEW_TOPIC_COMMENT_ID: NEW_TOPIC_COMMENT_ID,
 	isBlockElement: isBlockElement,
 	isRenderingTransparentNode: isRenderingTransparentNode,
+	isCommentSeparator: isCommentSeparator,
+	isCommentContent: isCommentContent,
 	cantHaveElementChildren: cantHaveElementChildren,
 	childIndexOf: childIndexOf,
 	closestElement: closestElement,

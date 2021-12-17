@@ -621,23 +621,6 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 };
 
 /**
- * Check whether the node is a comment separator (instead of a part of the comment).
- *
- * @param {Node} node
- * @return {boolean}
- */
-function isCommentSeparator( node ) {
-	return node.nodeType === Node.ELEMENT_NODE && (
-		// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
-		node.nodeName.toLowerCase() === 'br' ||
-		// Horizontal line
-		node.nodeName.toLowerCase() === 'hr' ||
-		// {{outdent}} templates
-		node.getAttribute( 'class' ) === 'outdent-template'
-	);
-}
-
-/**
  * Return the next leaf node in the tree order that is likely a part of a discussion comment,
  * rather than some boring "separator" element.
  *
@@ -663,18 +646,14 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 				return NodeFilter.FILTER_REJECT;
 			}
 			// Ignore some elements usually used as separators or headers (and their descendants)
-			if ( isCommentSeparator( n ) ) {
+			if ( utils.isCommentSeparator( n ) ) {
 				return NodeFilter.FILTER_REJECT;
 			}
 			// Ignore nodes with no rendering that mess up our indentation detection
 			if ( utils.isRenderingTransparentNode( n ) ) {
 				return NodeFilter.FILTER_REJECT;
 			}
-			if (
-				( n.nodeType === Node.TEXT_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
-				( n.nodeType === Node.CDATA_SECTION_NODE && utils.htmlTrim( n.textContent ) !== '' ) ||
-				( utils.cantHaveElementChildren( n ) )
-			) {
+			if ( utils.isCommentContent( n ) ) {
 				return NodeFilter.FILTER_ACCEPT;
 			}
 			return NodeFilter.FILTER_SKIP;

@@ -104,6 +104,43 @@ class CommentUtils {
 	}
 
 	/**
+	 * Check whether the node is a comment separator (instead of a part of the comment).
+	 *
+	 * @param Node $node
+	 * @return bool
+	 */
+	public static function isCommentSeparator( Node $node ): bool {
+		return $node instanceof Element && (
+			// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
+			strtolower( $node->nodeName ) === 'br' ||
+			// Horizontal line
+			strtolower( $node->nodeName ) === 'hr' ||
+			// {{outdent}} templates
+			$node->getAttribute( 'class' ) === 'outdent-template'
+		);
+	}
+
+	/**
+	 * Check whether the node is a comment content. It's a little vague what this means…
+	 *
+	 * @param Node $node Node, should be a leaf node (a node with no children)
+	 * @return bool
+	 */
+	public static function isCommentContent( Node $node ) {
+		return (
+			$node->nodeType === XML_TEXT_NODE &&
+			self::htmlTrim( $node->nodeValue ?? '' ) !== ''
+		) ||
+		(
+			$node->nodeType === XML_CDATA_SECTION_NODE &&
+			self::htmlTrim( $node->nodeValue ?? '' ) !== ''
+		) ||
+		(
+			self::cantHaveElementChildren( $node )
+		);
+	}
+
+	/**
 	 * Get the index of $child in its parent
 	 *
 	 * @param Node $child
