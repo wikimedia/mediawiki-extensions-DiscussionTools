@@ -356,6 +356,7 @@ function maybeShowFirstTimeAutoTopicSubPopup() {
 				.append( new OO.ui.ButtonWidget( {
 					label: mw.msg( 'discussiontools-autotopicsubpopup-preferences' ),
 					href: mw.util.getUrl( 'Special:Preferences#mw-prefsection-editing-discussion' ),
+					flags: [ 'progressive' ],
 					framed: false
 				} ).$element )
 		);
