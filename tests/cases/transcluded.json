@@ -1,8 +1,22 @@
 [
 	{
-		"name": "transclusions",
+		"name": "transclusions - simple case",
 		"dom": "cases/transclusions/transclusions.html",
 		"expected": "../cases/transclusions/transclusions-transcludedFrom.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "transclusions - comments partially transcluded from a subpage",
+		"dom": "cases/transclusions2/transclusions2.html",
+		"expected": "../cases/transclusions2/transclusions2-transcludedFrom.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "transclusions - comment partially template-generated",
+		"dom": "cases/transclusions3/transclusions3.html",
+		"expected": "../cases/transclusions3/transclusions3-transcludedFrom.json",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
 	},
