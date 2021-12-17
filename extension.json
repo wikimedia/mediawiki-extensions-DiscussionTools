@@ -490,6 +490,7 @@
 		"includes/ServiceWiring.php"
 	],
 	"DefaultUserOptions": {
+		"discussiontools-betaenable": 0,
 		"discussiontools-editmode": "",
 		"discussiontools-newtopictool": 1,
 		"discussiontools-replytool": 1,
