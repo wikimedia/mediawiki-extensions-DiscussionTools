@@ -488,4 +488,62 @@ class ImmutableRange {
 		return $AFollowsB ? 'after' : 'before';
 	}
 
+	public const START_TO_START = 0;
+	public const START_TO_END = 1;
+	public const END_TO_END = 2;
+	public const END_TO_START = 3;
+
+	/**
+	 * Compares the boundary points of this Range with another Range.
+	 *
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 *
+	 * @see https://dom.spec.whatwg.org/#dom-range-compareboundarypoints
+	 *
+	 * @param int $how One of ImmutableRange::END_TO_END, ImmutableRange::END_TO_START,
+	 *     ImmutableRange::START_TO_END, ImmutableRange::START_TO_START
+	 * @param ImmutableRange $sourceRange A Range whose boundary points are to be compared.
+	 * @return int -1, 0, or 1
+	 */
+	public function compareBoundaryPoints( int $how, self $sourceRange ): int {
+		if ( self::getRootNode( $this->mStartContainer ) !== self::getRootNode( $sourceRange->startContainer ) ) {
+			throw new Error();
+		}
+
+		switch ( $how ) {
+			case self::START_TO_START:
+				$thisPoint = [ $this->mStartContainer, $this->mStartOffset ];
+				$otherPoint = [ $sourceRange->startContainer, $sourceRange->startOffset ];
+				break;
+
+			case self::START_TO_END:
+				$thisPoint = [ $this->mEndContainer, $this->mEndOffset ];
+				$otherPoint = [ $sourceRange->startContainer, $sourceRange->startOffset ];
+				break;
+
+			case self::END_TO_END:
+				$thisPoint = [ $this->mEndContainer, $this->mEndOffset ];
+				$otherPoint = [ $sourceRange->endContainer, $sourceRange->endOffset ];
+				break;
+
+			case self::END_TO_START:
+				$thisPoint = [ $this->mStartContainer, $this->mStartOffset ];
+				$otherPoint = [ $sourceRange->endContainer, $sourceRange->endOffset ];
+				break;
+
+			default:
+				throw new Error();
+		}
+
+		switch ( $this->computePosition( ...$thisPoint, ...$otherPoint ) ) {
+			case 'before':
+				return -1;
+
+			case 'equal':
+				return 0;
+
+			case 'after':
+				return 1;
+		}
+	}
 }
