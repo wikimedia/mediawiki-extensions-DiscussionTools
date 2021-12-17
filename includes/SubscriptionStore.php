@@ -326,11 +326,10 @@ class SubscriptionStore {
 		string $itemName
 	): bool {
 		// Check for existing subscriptions.
-		// Note that this includes subscriptions with state=STATE_UNSUBSCRIBED.
 		$subscriptionItems = $this->getSubscriptionItemsForUser(
 			$user,
 			[ $itemName ],
-			null,
+			[ self::STATE_SUBSCRIBED, self::STATE_AUTOSUBSCRIBED ],
 			[ 'forWrite' => true ]
 		);
 		if ( $subscriptionItems ) {
