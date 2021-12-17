@@ -49,6 +49,8 @@ OO.inheritClass( NewTopicController, CommentController );
 NewTopicController.static.initType = 'section';
 
 NewTopicController.static.suppressedEditNotices = [
+	// Our own notice, meant for the other interfaces only
+	'discussiontools-newtopic-legacy-hint-return',
 	// Ignored because we have a custom warning for non-logged-in users.
 	'anoneditwarning',
 	// Ignored because it contains mostly instructions for signing comments using tildes.
@@ -142,6 +144,8 @@ NewTopicController.prototype.setupTopicHint = function () {
 	legacyURI.query.action = 'edit';
 	legacyURI.query.section = 'new';
 	legacyURI.query.dtenable = '0';
+	// This is not a real valid value for 'editintro', but we look for it elsewhere to generate our own edit notice
+	legacyURI.query.editintro = 'mw-dt-topic-hint';
 	this.topicHint = new OO.ui.MessageWidget( {
 		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyURI.toString() ).parseDom(),
 		icon: 'article'
