@@ -99,19 +99,20 @@ class HookUtils {
 			}
 		}
 
+		// Being in the "test" group for this feature means it's enabled. This
+		// overrules the wiki's beta feature setting. (However, a user who's
+		// in the control group can still bypass this and enable the feature
+		// normally.)
+		$abtest = static::determineUserABTestBucket( $user, $feature );
+		if ( $abtest === 'test' ) {
+			return true;
+		}
+
 		// No feature-specific override found.
 
 		if ( $dtConfig->get( 'DiscussionToolsBeta' ) ) {
-			$betaenabled = $optionsLookup->getOption( $user, 'discussiontools-betaenable', -1 );
-			if ( $betaenabled !== -1 ) {
-				// betaenable doesn't have a default value, so we can check
-				// for it being unset like this. If the user has explicitly
-				// enabled or disabled it, we should immediately return that.
-				return (bool)$betaenabled;
-			}
-			// Otherwise, being in the "test" group for this feature means
-			// it's effectively beta-enabled.
-			return static::determineUserABTestBucket( $user, $feature ) === 'test';
+			$betaenabled = $optionsLookup->getOption( $user, 'discussiontools-betaenable', 0 );
+			return (bool)$betaenabled;
 		}
 
 		// Assume that if BetaFeature is turned off, or user has it enabled, that
