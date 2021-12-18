@@ -53,7 +53,7 @@ class EventDispatcher {
 		// from the primary database (using the same query flags)
 		$status = $services->getParserOutputAccess()->getParserOutput(
 			$pageRecord,
-			ParserOptions::newCanonical( 'canonical' ),
+			ParserOptions::newFromAnon(),
 			$revRecord
 		);
 		if ( !$status->isOK() ) {
