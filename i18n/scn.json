@@ -5,11 +5,12 @@
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "OK, haiu caputu",
-	"discussiontools-autotopicsubpopup-preferences": "Prifirenzi",
+	"discussiontools-autotopicsubpopup-preferences": "Cancia li prifirenzi",
 	"discussiontools-emptystate-title-self": "Bimminutu â tò pàggina di discussioni",
 	"discussiontools-emptystate-title-self-anon": "Bimminutu n sta pàggina di discussioni",
 	"discussiontools-emptystate-title-user-anon": "Bimminutu n sta pàggina di discussioni",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sicunnu|sicunni}}",
+	"discussiontools-newtopic-legacy-hint-close": "Chiudi missaggiu e nun l'ammustrari cchiù",
 	"discussiontools-newtopic-placeholder-title": "Tìtulu",
 	"discussiontools-notification-subscribed-new-comment-view": "Talìa cummentu",
 	"discussiontools-preference-label": "Strummenta di discussioni",
