@@ -7,7 +7,6 @@ var utils = require( 'ext.discussionTools.init' ).utils;
  * @extends mw.dt.ReplyWidget
  * @constructor
  * @param {CommentController} commentController
- * @param {CommentItem} comment
  * @param {CommentDetails} commentDetails
  * @param {Object} [config]
  */

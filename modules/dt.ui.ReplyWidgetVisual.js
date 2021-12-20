@@ -15,12 +15,11 @@ require( './dt-ve/dt.ce.PingNode.js' );
  * @extends mw.dt.ReplyWidget
  * @constructor
  * @param {CommentController} commentController
- * @param {CommentItem} comment
  * @param {CommentDetails} commentDetails
  * @param {Object} [config]
  * @param {string} [config.mode] Default edit mode, 'source' or 'visual'
  */
-function ReplyWidgetVisual( commentController, comment, commentDetails, config ) {
+function ReplyWidgetVisual( commentController, commentDetails, config ) {
 	this.defaultMode = config.mode;
 
 	// Parent constructor

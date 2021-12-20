@@ -5,6 +5,12 @@ var
 	CommentController = require( './CommentController.js' ),
 	HeadingItem = require( './HeadingItem.js' );
 
+/**
+ * Handles setup, save and teardown of new topic widget
+ *
+ * @param {jQuery} $pageContainer Page container
+ * @param {mw.dt.Parser} parser Comment parser
+ */
 function NewTopicController( $pageContainer, parser ) {
 	this.container = new OO.ui.PanelLayout( {
 		classes: [ 'ext-discussiontools-ui-newTopic' ],
@@ -30,16 +36,16 @@ function NewTopicController( $pageContainer, parser ) {
 	this.container.$element.append( this.$notices, this.sectionTitleField.$element );
 
 	// HeadingItem representing the heading being added, so that we can pretend we're replying to it
-	var comment = new HeadingItem( {
+	var threadItem = new HeadingItem( {
 		startContainer: this.sectionTitleField.$element[ 0 ],
 		startOffset: 0,
 		endContainer: this.sectionTitleField.$element[ 0 ],
 		endOffset: this.sectionTitleField.$element[ 0 ].childNodes.length
 	} );
-	comment.id = utils.NEW_TOPIC_COMMENT_ID;
-	comment.isNewTopic = true;
+	threadItem.id = utils.NEW_TOPIC_COMMENT_ID;
+	threadItem.isNewTopic = true;
 
-	NewTopicController.super.call( this, $pageContainer, comment, parser );
+	NewTopicController.super.call( this, $pageContainer, threadItem, parser );
 }
 
 OO.inheritClass( NewTopicController, CommentController );
@@ -267,8 +273,8 @@ NewTopicController.prototype.getUnsupportedNodeSelectors = function () {
 /**
  * @inheritdoc
  */
-NewTopicController.prototype.getApiQuery = function ( comment, pageName, checkboxes ) {
-	var data = NewTopicController.super.prototype.getApiQuery.call( this, comment, pageName, checkboxes );
+NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes ) {
+	var data = NewTopicController.super.prototype.getApiQuery.call( this, pageName, checkboxes );
 
 	// Rebuild the tags array and remove the reply tag
 	var tags = ( data.dttags || '' ).split( ',' );

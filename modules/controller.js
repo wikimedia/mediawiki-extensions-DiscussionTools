@@ -137,16 +137,16 @@ function getPageData( pageName, oldId, isNewTopic ) {
 }
 
 /**
- * Check if a given comment on a page can be replied to
+ * Check if a given thread item on a page can be replied to
  *
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
- * @param {CommentItem} comment Comment
+ * @param {ThreadItem} threadItem Thread item
  * @return {jQuery.Promise} Resolved with a CommentDetails object if the comment appears on the page.
  *  Rejects with error data if the comment is transcluded, or there are lint errors on the page.
  */
-function checkCommentOnPage( pageName, oldId, comment ) {
-	var isNewTopic = comment.id === utils.NEW_TOPIC_COMMENT_ID;
+function checkThreadItemOnPage( pageName, oldId, threadItem ) {
+	var isNewTopic = threadItem.id === utils.NEW_TOPIC_COMMENT_ID;
 
 	return getPageData( pageName, oldId, isNewTopic )
 		.then( function ( response ) {
@@ -155,17 +155,17 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 				transcludedFrom = response.transcludedfrom;
 
 			if ( !isNewTopic ) {
-				// First look for data by the comment's ID. If not found, also look by name.
+				// First look for data by the thread item's ID. If not found, also look by name.
 				// Data by ID may not be found due to differences in headings (e.g. T273413, T275821),
-				// or if a comment's parent changes.
-				// Data by name might be combined from two or more comments, which would only allow us to
+				// or if a thread item's parent changes.
+				// Data by name might be combined from two or more thread items, which would only allow us to
 				// treat them both as transcluded from unknown source, unless we check ID first.
-				var isTranscludedFrom = transcludedFrom[ comment.id ];
+				var isTranscludedFrom = transcludedFrom[ threadItem.id ];
 				if ( isTranscludedFrom === undefined ) {
-					isTranscludedFrom = transcludedFrom[ comment.name ];
+					isTranscludedFrom = transcludedFrom[ threadItem.name ];
 				}
 				if ( isTranscludedFrom === undefined ) {
-					// The comment wasn't found when generating the "transcludedfrom" data,
+					// The thread item wasn't found when generating the "transcludedfrom" data,
 					// so we don't know where the reply should be posted. Just give up.
 					return $.Deferred().reject( 'discussiontools-commentid-notfound-transcludedfrom', { errors: [ {
 						code: 'discussiontools-commentid-notfound-transcludedfrom',
@@ -898,11 +898,11 @@ function init( $container, state ) {
  * Update the page after a comment is published/saved
  *
  * @param {Object} data Edit API response data
- * @param {ThreadItem} comment Parent thread item
+ * @param {ThreadItem} threadItem Parent thread item
  * @param {string} pageName Page title
  * @param {mw.dt.ReplyWidget} replyWidget ReplyWidget
  */
-function update( data, comment, pageName, replyWidget ) {
+function update( data, threadItem, pageName, replyWidget ) {
 	var api = getApi(),
 		pageUpdated = $.Deferred(),
 		$content;
@@ -920,7 +920,7 @@ function update( data, comment, pageName, replyWidget ) {
 		replyWidget.unbindBeforeUnloadHandler();
 		replyWidget.clearStorage();
 		replyWidget.setPending( true );
-		window.location = mw.util.getUrl( pageName, { dtrepliedto: comment.id } );
+		window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
 		return;
 	}
 
@@ -932,7 +932,7 @@ function update( data, comment, pageName, replyWidget ) {
 	if ( OO.ui.isMobile() ) {
 		// MobileFrontend does not use the 'wikipage.content' hook, and its interface will not
 		// re-initialize properly (e.g. page sections won't be collapsible). Reload the whole page.
-		window.location = mw.util.getUrl( pageName, { dtrepliedto: comment.id } );
+		window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
 		return;
 	}
 
@@ -986,7 +986,7 @@ function update( data, comment, pageName, replyWidget ) {
 		} ).catch( function () {
 			// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
 			// explain this problem. Redirect to the page where the user can at least see their reply…
-			window.location = mw.util.getUrl( pageName, { dtrepliedto: comment.id } );
+			window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
 		} );
 	}
 
@@ -1004,7 +1004,7 @@ function update( data, comment, pageName, replyWidget ) {
 
 	pageUpdated.then( function () {
 		// Re-initialize and highlight the new reply.
-		mw.dt.initState.repliedTo = comment.id;
+		mw.dt.initState.repliedTo = threadItem.id;
 
 		// We need our init code to run after everyone else's handlers for this hook,
 		// so that all changes to the page layout have been completed (e.g. collapsible elements),
@@ -1028,7 +1028,7 @@ function update( data, comment, pageName, replyWidget ) {
 module.exports = {
 	init: init,
 	update: update,
-	checkCommentOnPage: checkCommentOnPage,
+	checkThreadItemOnPage: checkThreadItemOnPage,
 	getCheckboxesPromise: getCheckboxesPromise,
 	getApi: getApi
 };

@@ -19,12 +19,11 @@ require( './AbandonTopicDialog.js' );
  * @extends OO.ui.Widget
  * @constructor
  * @param {CommentController} commentController Comment controller
- * @param {CommentItem} comment Comment item
  * @param {CommentDetails} commentDetails
  * @param {Object} [config] Configuration options
  * @param {Object} [config.input] Configuration options for the comment input widget
  */
-function ReplyWidget( commentController, comment, commentDetails, config ) {
+function ReplyWidget( commentController, commentDetails, config ) {
 	var widget = this;
 
 	config = config || {};
@@ -34,18 +33,18 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 
 	this.pending = false;
 	this.commentController = commentController;
-	this.comment = comment;
+	var threadItem = commentController.getThreadItem();
 	this.commentDetails = commentDetails;
-	this.isNewTopic = !!comment.isNewTopic;
+	this.isNewTopic = !!threadItem.isNewTopic;
 	this.pageName = commentDetails.pageName;
 	this.oldId = commentDetails.oldId;
 	// pageExists can only be false for the new comment tool, so we
 	// don't need to worry about transcluded replies.
 	this.pageExists = mw.config.get( 'wgRelevantArticleId', 0 ) !== 0;
-	var contextNode = utils.closestElement( comment.range.endContainer, [ 'dl', 'ul', 'ol' ] );
+	var contextNode = utils.closestElement( threadItem.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 	// TODO: Should storagePrefix include pageName?
-	this.storagePrefix = 'reply/' + comment.id;
+	this.storagePrefix = 'reply/' + threadItem.id;
 	this.storage = mw.storage.session;
 	// eslint-disable-next-line no-jquery/no-global-selector
 	this.contentDir = $( '#mw-content-text' ).css( 'direction' );
@@ -54,12 +53,12 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 		{
 			placeholder: this.isNewTopic ?
 				mw.msg( 'discussiontools-replywidget-placeholder-newtopic' ) :
-				mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ),
+				mw.msg( 'discussiontools-replywidget-placeholder-reply', threadItem.author ),
 			authors: this.isNewTopic ?
 				// No suggestions in new topic tool yet (T277357)
 				[] :
-				// comment is a CommentItem when replying
-				comment.getHeading().getAuthorsBelow()
+				// threadItem is a CommentItem when replying
+				threadItem.getHeading().getAuthorsBelow()
 		},
 		config.input
 	);
@@ -520,7 +519,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 			// in NewTopicController#onSectionTitleChange
 			summary = '';
 		} else {
-			var title = this.comment.getHeading().getLinkableTitle();
+			var title = this.commentController.getThreadItem().getHeading().getLinkableTitle();
 			summary = ( title ? '/* ' + title + ' */ ' : '' ) +
 				mw.msg( 'discussiontools-defaultsummary-reply' );
 		}
@@ -843,10 +842,10 @@ ReplyWidget.prototype.onReplyClick = function () {
 	logger( { action: 'saveIntent' } );
 
 	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
-	var pageName = this.pageName,
-		comment = this.comment;
+	var pageName = this.pageName;
+
 	logger( { action: 'saveAttempt' } );
-	widget.commentController.save( comment, pageName ).fail( function ( code, data ) {
+	widget.commentController.save( pageName ).fail( function ( code, data ) {
 		// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
 		var typeMap = {
 			badtoken: 'userBadToken',

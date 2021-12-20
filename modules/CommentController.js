@@ -33,12 +33,19 @@ if ( defaultVisual || enable2017Wikitext ) {
 	mw.loader.using( plainModules );
 }
 
-function CommentController( $pageContainer, comment, parser ) {
+/**
+ * Handles setup, save and teardown of commenting widgets
+ *
+ * @param {jQuery} $pageContainer Page container
+ * @param {ThreadItem} threadItem Thread item to attach new comment to
+ * @param {mw.dt.Parser} parser Comment parser
+ */
+function CommentController( $pageContainer, threadItem, parser ) {
 	// Mixin constructors
 	OO.EventEmitter.call( this );
 
 	this.$pageContainer = $pageContainer;
-	this.comment = comment;
+	this.threadItem = threadItem;
 	this.parser = parser;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
@@ -68,15 +75,15 @@ function getLatestRevId( pageName ) {
 }
 
 /**
- * Like #checkCommentOnPage, but assumes the comment was found on the current page,
+ * Like #checkThreadItemOnPage, but assumes the comment was found on the current page,
  * and then follows transclusions to determine the source page where it is written.
  *
- * @param {CommentItem} comment Comment
  * @return {jQuery.Promise} Promise which resolves with a CommentDetails object, or rejects with an error
  */
-CommentController.prototype.getTranscludedFromSource = function ( comment ) {
+CommentController.prototype.getTranscludedFromSource = function () {
 	var pageName = mw.config.get( 'wgRelevantPageName' ),
-		oldId = mw.config.get( 'wgCurRevisionId' );
+		oldId = mw.config.get( 'wgCurRevisionId' ),
+		threadItem = this.getThreadItem();
 
 	function followTransclusion( recursionLimit, code, data ) {
 		var errorData;
@@ -85,7 +92,7 @@ CommentController.prototype.getTranscludedFromSource = function ( comment ) {
 			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
 				return getLatestRevId( errorData.transcludedFrom ).then( function ( latestRevId ) {
 					// Fetch the transcluded page, until we cross the recursion limit
-					return controller.checkCommentOnPage( errorData.transcludedFrom, latestRevId, comment )
+					return controller.checkThreadItemOnPage( errorData.transcludedFrom, latestRevId, threadItem )
 						.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
 				} );
 			}
@@ -95,7 +102,7 @@ CommentController.prototype.getTranscludedFromSource = function ( comment ) {
 
 	// Arbitrary limit of 10 steps, which should be more than anyone could ever need
 	// (there are reasonable use cases for at least 2)
-	var promise = controller.checkCommentOnPage( pageName, oldId, comment )
+	var promise = controller.checkThreadItemOnPage( pageName, oldId, threadItem )
 		.catch( followTransclusion.bind( null, 10 ) );
 
 	return promise;
@@ -114,7 +121,7 @@ CommentController.static.initType = 'page';
  * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
  */
 CommentController.prototype.setup = function ( mode, hideErrors ) {
-	var comment = this.comment,
+	var threadItem = this.getThreadItem(),
 		commentController = this;
 
 	if ( mode === undefined ) {
@@ -132,8 +139,8 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 	} );
 
 	if ( !this.replyWidgetPromise ) {
-		this.replyWidgetPromise = this.getTranscludedFromSource( comment ).then( function ( commentDetails ) {
-			return commentController.createReplyWidget( comment, commentDetails, { mode: mode } );
+		this.replyWidgetPromise = this.getTranscludedFromSource().then( function ( commentDetails ) {
+			return commentController.createReplyWidget( commentDetails, { mode: mode } );
 		}, function ( code, data ) {
 			commentController.teardown();
 
@@ -155,7 +162,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		} );
 
 		// On first load, add a placeholder list item
-		commentController.newListItem = modifier.addListItem( comment, dtConf.replyIndentation );
+		commentController.newListItem = modifier.addListItem( threadItem, dtConf.replyIndentation );
 		if ( commentController.newListItem.tagName.toLowerCase() === 'li' ) {
 			// When using bullet syntax, hide the marker. (T259864#7634107)
 			$( commentController.newListItem ).addClass( 'ext-discussiontools-init-noMarker' );
@@ -171,7 +178,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 	commentController.replyWidgetPromise.then( function ( replyWidget ) {
 		if ( !commentController.newListItem ) {
 			// On subsequent loads, there's no list item yet, so create one now
-			commentController.newListItem = modifier.addListItem( comment, dtConf.replyIndentation );
+			commentController.newListItem = modifier.addListItem( threadItem, dtConf.replyIndentation );
 			if ( commentController.newListItem.tagName.toLowerCase() === 'li' ) {
 				// When using bullet syntax, hide the marker. (T259864#7634107)
 				$( commentController.newListItem ).addClass( 'ext-discussiontools-init-noMarker' );
@@ -188,6 +195,21 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 	} );
 };
 
+/**
+ * Get thread item this controller is attached to
+ *
+ * @return {ThreadItem} Thread item
+ */
+CommentController.prototype.getThreadItem = function () {
+	return this.threadItem;
+};
+
+/**
+ * Get the reply widget class to use in this controller
+ *
+ * @param {boolean} visual Prefer the VE-based class
+ * @return {jQuery.Promise} Promise which resolves with a Function: the reply widget class
+ */
 CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	// If 2017WTE mode is enabled, always use ReplyWidgetVisual.
 	visual = visual || enable2017Wikitext;
@@ -198,15 +220,17 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 };
 
 /**
- * @param {CommentItem} comment
+ * Create a reply widget
+ *
  * @param {CommentDetails} commentDetails
  * @param {Object} config
  * @return {jQuery.Promise} Promise resolved with a ReplyWidget
  */
-CommentController.prototype.createReplyWidget = function ( comment, commentDetails, config ) {
+CommentController.prototype.createReplyWidget = function ( commentDetails, config ) {
 	var commentController = this;
+
 	return this.getReplyWidgetClass( config.mode === 'visual' ).then( function ( ReplyWidget ) {
-		return new ReplyWidget( commentController, comment, commentDetails, config );
+		return new ReplyWidget( commentController, commentDetails, config );
 	} );
 };
 
@@ -244,14 +268,14 @@ CommentController.prototype.teardown = function ( abandoned ) {
 /**
  * Get the parameters of the API query that can be used to post this comment.
  *
- * @param {ThreadItem} comment Parent comment
  * @param {string} pageName Title of the page to post on
  * @param {Object} checkboxes Value of the promise returned by controller#getCheckboxesPromise
  * @return {Object.<string,string>} API query data
  */
-CommentController.prototype.getApiQuery = function ( comment, pageName, checkboxes ) {
+CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
+	var threadItem = this.getThreadItem();
 	var replyWidget = this.replyWidget;
-	var sameNameComments = this.parser.findCommentsByName( comment.name );
+	var sameNameComments = this.parser.findCommentsByName( threadItem.name );
 
 	var mode = replyWidget.getMode();
 	var tags = [
@@ -268,9 +292,9 @@ CommentController.prototype.getApiQuery = function ( comment, pageName, checkbox
 		action: 'discussiontoolsedit',
 		paction: 'addcomment',
 		page: pageName,
-		commentname: comment.name,
+		commentname: threadItem.name,
 		// Only specify this if necessary to disambiguate, to avoid errors if the parent changes
-		commentid: sameNameComments.length > 1 ? comment.id : undefined,
+		commentid: sameNameComments.length > 1 ? threadItem.id : undefined,
 		summary: replyWidget.getEditSummary(),
 		formtoken: replyWidget.getFormToken(),
 		assert: mw.user.isAnon() ? 'anon' : 'user',
@@ -304,12 +328,19 @@ CommentController.prototype.getApiQuery = function ( comment, pageName, checkbox
 	return data;
 };
 
-CommentController.prototype.save = function ( comment, pageName ) {
+/**
+ * Save the comment in the comment controller
+ *
+ * @param {string} pageName Page title
+ * @return {jQuery.Promise} Promise which resolves when the save is complete
+ */
+CommentController.prototype.save = function ( pageName ) {
 	var replyWidget = this.replyWidget,
-		commentController = this;
+		commentController = this,
+		threadItem = this.getThreadItem();
 
 	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
-		var data = commentController.getApiQuery( comment, pageName, checkboxes );
+		var data = commentController.getApiQuery( pageName, checkboxes );
 
 		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
 		// could result in duplicate messages if the user retries. (T249071)
@@ -339,11 +370,16 @@ CommentController.prototype.save = function ( comment, pageName ) {
 			}
 			return $.Deferred().reject( code, responseData ).promise();
 		} ).then( function ( responseData ) {
-			controller.update( responseData, comment, pageName, replyWidget );
+			controller.update( responseData, threadItem, pageName, replyWidget );
 		} );
 	} );
 };
 
+/**
+ * Switch reply widget to wikitext input
+ *
+ * @return {jQuery.Promise} Promise which resolves when switch is complete
+ */
 CommentController.prototype.switchToWikitext = function () {
 	var oldWidget = this.replyWidget,
 		target = oldWidget.replyBodyWidget.target,
@@ -355,7 +391,6 @@ CommentController.prototype.switchToWikitext = function () {
 	// TODO: We may need to pass oldid/etag when editing is supported
 	var wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
 	this.replyWidgetPromise = this.createReplyWidget(
-		oldWidget.comment,
 		oldWidget.commentDetails,
 		{ mode: 'source' }
 	);
@@ -443,6 +478,11 @@ CommentController.prototype.getUnsupportedNodeSelectors = function () {
 	};
 };
 
+/**
+ * Switch reply widget to visual input
+ *
+ * @return {jQuery.Promise} Promise which resolves when switch is complete
+ */
 CommentController.prototype.switchToVisual = function () {
 	var oldWidget = this.replyWidget,
 		oldShowAdvanced = oldWidget.showAdvanced,
@@ -476,7 +516,6 @@ CommentController.prototype.switchToVisual = function () {
 		parsePromise = $.Deferred().resolve( '' ).promise();
 	}
 	this.replyWidgetPromise = this.createReplyWidget(
-		oldWidget.comment,
 		oldWidget.commentDetails,
 		{ mode: 'visual' }
 	);
