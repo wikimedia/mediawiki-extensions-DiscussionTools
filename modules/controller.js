@@ -21,6 +21,11 @@ var
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
 
+/**
+ * Get an MW API instance
+ *
+ * @return {mw.Api} API instance
+ */
 function getApi() {
 	return new mw.Api( {
 		parameters: {
@@ -221,6 +226,13 @@ function checkCommentOnPage( pageName, oldId, comment ) {
 		} );
 }
 
+/**
+ * Get a promise which resolves with editor checkbox data
+ *
+ * @param {string} pageName Page title
+ * @param {number} oldId Revision ID
+ * @return {jQuery.Promise} See ve.init.mw.ArticleTargetLoader#createCheckboxFields
+ */
 function getCheckboxesPromise( pageName, oldId ) {
 	return getPageData(
 		pageName,
@@ -245,6 +257,12 @@ function getCheckboxesPromise( pageName, oldId ) {
 	} );
 }
 
+/**
+ * Update a subscribe button
+ *
+ * @param {HTMLElement} element Subscribe button
+ * @param {number} state State constant (STATE_UNSUBSCRIBED, STATE_SUBSCRIBED or STATE_AUTOSUBSCRIBED)
+ */
 function updateSubscribeButton( element, state ) {
 	if ( state !== null ) {
 		element.setAttribute( 'data-mw-subscribed', String( state ) );
@@ -258,6 +276,11 @@ function updateSubscribeButton( element, state ) {
 	}
 }
 
+/**
+ * Initialize topic subscriptions feature
+ *
+ * @param {jQuery} $container Page container
+ */
 function initTopicSubscriptions( $container ) {
 	$container.find( '.ext-discussiontools-init-section-subscribe-link' ).on( 'click keypress', function ( e ) {
 		if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
@@ -319,14 +342,14 @@ function initTopicSubscriptions( $container ) {
 	} );
 }
 
+/**
+ * Show the first time popup for auto topic subscriptsions, if required
+ */
 function maybeShowFirstTimeAutoTopicSubPopup() {
-	if ( !lastHighlightComment ) {
+	if ( !lastHighlightComment || seenAutoTopicSubPopup ) {
 		return;
 	}
 
-	if ( seenAutoTopicSubPopup ) {
-		return;
-	}
 	seenAutoTopicSubPopup = true;
 	mw.user.options.set( 'discussiontools-seenautotopicsubpopup', '1' );
 	getApi().saveOption( 'discussiontools-seenautotopicsubpopup', '1' );
@@ -414,6 +437,12 @@ function maybeShowFirstTimeAutoTopicSubPopup() {
 	popup.$element.addClass( 'ext-discussiontools-autotopicsubpopup-fadein' );
 }
 
+/**
+ * Update the subscription state of various topics
+ *
+ * @param {jQuery} $container Page container
+ * @param {Object.<string, HeadingItem>} headingsToUpdate Headings of topics where subscription state has changed
+ */
 function updateSubscriptionStates( $container, headingsToUpdate ) {
 	// This method is called when we recently edited this page, and auto-subscriptions might have been
 	// added for some topics. It updates the [subscribe] buttons to reflect the new subscriptions.
@@ -483,7 +512,13 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 }
 
 var $highlightedTarget = null;
-function highlightTargetComment( parser, event ) {
+/**
+ * Highlight the comment on the page associated with the URL hash
+ *
+ * @param {mw.dt.Parser} parser Comment parser
+ * @param {boolean} [noScroll] Don't scroll to the topmost highlighed comment, e.g. on popstate
+ */
+function highlightTargetComment( parser, noScroll ) {
 	// Delay with setTimeout() because "the Document's target element" (corresponding to the :target
 	// selector in CSS) is not yet updated to match the URL when handling a 'popstate' event.
 	setTimeout( function () {
@@ -524,8 +559,7 @@ function highlightTargetComment( parser, event ) {
 			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
 			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
 
-			if ( !event ) {
-				// Scroll to the topmost comment on initial page load, but not on popstate events
+			if ( noScroll ) {
 				var topmostComment = 0;
 				for ( var i = 1; i < comments.length; i++ ) {
 					if ( highlights[ i ].getBoundingClientRect().top < highlights[ topmostComment ].getBoundingClientRect().top ) {
@@ -538,6 +572,11 @@ function highlightTargetComment( parser, event ) {
 	} );
 }
 
+/**
+ * Clear the highlighting of the comment in the URL hash
+ *
+ * @param {mw.dt.Parser} parser Comment parser
+ */
 function clearHighlightTargetComment( parser ) {
 	// eslint-disable-next-line no-jquery/no-global-selector
 	var targetElement = $( ':target' )[ 0 ];
@@ -561,6 +600,13 @@ function clearHighlightTargetComment( parser ) {
 	}
 }
 
+/**
+ * Initialize Discussion Tools features
+ *
+ * @param {jQuery} $container Page container
+ * @param {Object<string,Mixed>} [state] Page state data object
+ * @param {string} [state.repliedTo] The comment ID that was just replied to
+ */
 function init( $container, state ) {
 	var
 		activeCommentId = null,
@@ -628,6 +674,14 @@ function init( $container, state ) {
 		initTopicSubscriptions( $container );
 	}
 
+	/**
+	 * Setup comment controllers for each comment, and the new topic controller
+	 *
+	 * @param {string} commentId Comment ID, or NEW_TOPIC_COMMENT_ID constant
+	 * @param {jQuery} $link Add section link for new topic controller
+	 * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
+	 * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
+	 */
 	function setupController( commentId, $link, mode, hideErrors ) {
 		var commentController, $addSectionLink;
 		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
@@ -827,7 +881,9 @@ function init( $container, state ) {
 		mw.config.get( 'wgCurRevisionId' )
 	);
 
-	$( window ).on( 'popstate', highlightTargetComment.bind( null, parser ) );
+	$( window ).on( 'popstate', function () {
+		highlightTargetComment( parser, true );
+	} );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( 'body' ).on( 'click', function ( e ) {
 		if ( e.which === OO.ui.MouseButtons.LEFT ) {
@@ -837,6 +893,14 @@ function init( $container, state ) {
 	highlightTargetComment( parser );
 }
 
+/**
+ * Update the page after a comment is published/saved
+ *
+ * @param {Object} data Edit API response data
+ * @param {ThreadItem} comment Parent thread item
+ * @param {string} pageName Page title
+ * @param {mw.dt.ReplyWidget} replyWidget ReplyWidget
+ */
 function update( data, comment, pageName, replyWidget ) {
 	var api = getApi(),
 		pageUpdated = $.Deferred(),

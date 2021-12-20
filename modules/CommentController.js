@@ -110,7 +110,7 @@ CommentController.static.initType = 'page';
  * Create and setup the reply widget
  *
  * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
- * @param {boolean} [hideErrors]
+ * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
  */
 CommentController.prototype.setup = function ( mode, hideErrors ) {
 	var comment = this.comment,
