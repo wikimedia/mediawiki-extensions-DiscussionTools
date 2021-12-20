@@ -449,8 +449,8 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 
 	var $links = $container.find( '.ext-discussiontools-init-section-subscribe-link' );
 	var linksByName = {};
-	$links.each( function ( i, elem ) {
-		linksByName[ elem.getAttribute( 'data-mw-comment-name' ) ] = elem;
+	$links.each( function () {
+		linksByName[ this.getAttribute( 'data-mw-comment-name' ) ] = this;
 	} );
 
 	// If the topic is already marked as auto-subscribed, there's nothing to do.
