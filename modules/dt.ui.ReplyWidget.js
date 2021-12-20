@@ -274,6 +274,14 @@ OO.inheritClass( ReplyWidget, OO.ui.Widget );
 
 /* Methods */
 
+/**
+ * Create the widget for the reply body
+ *
+ * The body widget should implement #setReadOnly, #pushPending and #popPending
+ *
+ * @method
+ * @return {OO.ui.Widget}
+ */
 ReplyWidget.prototype.createReplyBodyWidget = null;
 
 /**
@@ -285,10 +293,28 @@ ReplyWidget.prototype.createReplyBodyWidget = null;
  */
 ReplyWidget.prototype.focus = null;
 
+/**
+ * Get value of reply body, HTML or wikitext
+ *
+ * @method
+ * @return {string}
+ */
 ReplyWidget.prototype.getValue = null;
 
+/**
+ * Check if the reply widget is empy
+ *
+ * @method
+ * @return {boolean}
+ */
 ReplyWidget.prototype.isEmpty = null;
 
+/**
+ * Get the current input mode of the reply widget, 'source' or 'visual'
+ *
+ * @method
+ * @return {string}
+ */
 ReplyWidget.prototype.getMode = null;
 
 /**
@@ -518,6 +544,9 @@ ReplyWidget.prototype.setup = function ( data ) {
 	return this;
 };
 
+/**
+ * Perform additional actions once the widget has been setup as is ready for input
+ */
 ReplyWidget.prototype.afterSetup = function () {
 	// Init preview and button state
 	this.onInputChange();
@@ -602,6 +631,12 @@ ReplyWidget.prototype.teardown = function ( abandoned ) {
 	return this;
 };
 
+/**
+ * Handle changes to the watch state of the page
+ *
+ * @param {jQuery.Event} e Event
+ * @param {string} actionPerformed Watch action taken
+ */
 ReplyWidget.prototype.onWatchToggle = function ( e, actionPerformed ) {
 	var widget = this;
 	this.checkboxesPromise.then( function ( checkboxes ) {
@@ -615,6 +650,13 @@ ReplyWidget.prototype.onWatchToggle = function ( e, actionPerformed ) {
 	} );
 };
 
+/**
+ * Handle key down events anywhere in the reply widget
+ *
+ * @param {boolean} isMultiline The current input is multiline
+ * @param {jQuery.Event} e Key down event
+ * @return {boolean} Return false to prevent default event
+ */
 ReplyWidget.prototype.onKeyDown = function ( isMultiline, e ) {
 	if ( e.which === OO.ui.Keys.ESCAPE ) {
 		this.tryTeardown();
@@ -629,6 +671,9 @@ ReplyWidget.prototype.onKeyDown = function ( isMultiline, e ) {
 	}
 };
 
+/**
+ * Handle input change events anywhere in the reply widget
+ */
 ReplyWidget.prototype.onInputChange = function () {
 	this.updateButtons();
 	this.storage.set( this.storagePrefix + '/saveable', this.isEmpty() ? '' : '1' );
@@ -715,11 +760,19 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	} );
 };
 
+/**
+ * Update buttons when widget state has changed
+ */
 ReplyWidget.prototype.updateButtons = function () {
 	this.replyButton.setDisabled( this.isEmpty() );
 };
 
-ReplyWidget.prototype.onFirstTransaction = function () {
+/**
+ * Handle the first change in the reply widget
+ *
+ * Currently only the first change in the body, used for logging.
+ */
+ReplyWidget.prototype.onFirstChange = function () {
 	logger( { action: 'firstChange' } );
 };
 
@@ -771,6 +824,9 @@ ReplyWidget.prototype.onUnload = function () {
 	} );
 };
 
+/**
+ * Handle clicks on the reply button
+ */
 ReplyWidget.prototype.onReplyClick = function () {
 	var widget = this;
 

@@ -18,6 +18,7 @@ require( './dt-ve/dt.ce.PingNode.js' );
  * @param {CommentItem} comment
  * @param {CommentDetails} commentDetails
  * @param {Object} [config]
+ * @param {string} [config.mode] Default edit mode, 'source' or 'visual'
  */
 function ReplyWidgetVisual( commentController, comment, commentDetails, config ) {
 	this.defaultMode = config.mode;
@@ -35,12 +36,18 @@ OO.inheritClass( ReplyWidgetVisual, require( 'ext.discussionTools.ReplyWidget' )
 
 /* Methods */
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetVisual.prototype.createReplyBodyWidget = function ( config ) {
 	return new CommentTargetWidget( this, $.extend( {
 		defaultMode: this.defaultMode
 	}, config ) );
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetVisual.prototype.getValue = function () {
 	if ( this.getMode() === 'source' ) {
 		return this.replyBodyWidget.target.getSurface().getModel().getDom();
@@ -49,6 +56,9 @@ ReplyWidgetVisual.prototype.getValue = function () {
 	}
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetVisual.prototype.clear = function () {
 	this.replyBodyWidget.clear();
 
@@ -58,17 +68,26 @@ ReplyWidgetVisual.prototype.clear = function () {
 	ReplyWidgetVisual.super.prototype.clear.apply( this, arguments );
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetVisual.prototype.isEmpty = function () {
 	var surface = this.replyBodyWidget.target.getSurface();
 	return !( surface && surface.getModel().getDocument().data.hasContent() );
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetVisual.prototype.getMode = function () {
 	return this.replyBodyWidget.target.getSurface() ?
 		this.replyBodyWidget.target.getSurface().getMode() :
 		this.defaultMode;
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetVisual.prototype.setup = function ( data ) {
 	var widget = this,
 		target = this.replyBodyWidget.target;
@@ -98,7 +117,7 @@ ReplyWidgetVisual.prototype.setup = function ( data ) {
 		widget.afterSetup();
 
 		// This needs to bind after surfaceReady so any initial population doesn't trigger it early:
-		widget.replyBodyWidget.once( 'change', widget.onFirstTransaction.bind( widget ) );
+		widget.replyBodyWidget.once( 'change', widget.onFirstChange.bind( widget ) );
 	} );
 
 	// Parent method
@@ -113,6 +132,9 @@ ReplyWidgetVisual.prototype.setup = function ( data ) {
 	return this;
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetVisual.prototype.teardown = function () {
 	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
@@ -121,6 +143,9 @@ ReplyWidgetVisual.prototype.teardown = function () {
 	return ReplyWidgetVisual.super.prototype.teardown.call( this );
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetVisual.prototype.focus = function () {
 	var targetWidget = this.replyBodyWidget;
 	setTimeout( function () {

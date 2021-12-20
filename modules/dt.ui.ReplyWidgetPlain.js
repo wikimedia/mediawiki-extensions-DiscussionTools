@@ -55,6 +55,9 @@ OO.inheritClass( ReplyWidgetPlain, require( 'ext.discussionTools.ReplyWidget' ) 
 
 /* Methods */
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
 	var textInput = new OO.ui.MultilineTextInputWidget( $.extend( {
 		rows: 3,
@@ -74,12 +77,18 @@ ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
 	return textInput;
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.focus = function () {
 	this.replyBodyWidget.focus();
 
 	return this;
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.clear = function () {
 	this.replyBodyWidget.setValue( '' );
 
@@ -89,14 +98,23 @@ ReplyWidgetPlain.prototype.clear = function () {
 	ReplyWidgetPlain.super.prototype.clear.apply( this, arguments );
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.isEmpty = function () {
 	return utils.htmlTrim( this.replyBodyWidget.getValue() ) === '';
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.getMode = function () {
 	return 'source';
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.onInputChange = function () {
 	// Parent method
 	ReplyWidgetPlain.super.prototype.onInputChange.apply( this, arguments );
@@ -105,6 +123,9 @@ ReplyWidgetPlain.prototype.onInputChange = function () {
 	this.storage.set( this.storagePrefix + '/body', wikitext );
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.setup = function ( data ) {
 	var autosaveValue = this.storage.get( this.storagePrefix + '/body' );
 
@@ -120,13 +141,16 @@ ReplyWidgetPlain.prototype.setup = function ( data ) {
 	this.replyBodyWidget.setValue( data.value || autosaveValue );
 
 	// needs to bind after the initial setValue:
-	this.replyBodyWidget.once( 'change', this.onFirstTransaction.bind( this ) );
+	this.replyBodyWidget.once( 'change', this.onFirstChange.bind( this ) );
 
 	this.afterSetup();
 
 	return this;
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.teardown = function () {
 	this.replyBodyWidget.disconnect( this );
 	this.replyBodyWidget.off( 'change' );
@@ -135,6 +159,9 @@ ReplyWidgetPlain.prototype.teardown = function () {
 	return ReplyWidgetPlain.super.prototype.teardown.call( this );
 };
 
+/**
+ * @inheritdoc
+ */
 ReplyWidgetPlain.prototype.getValue = function () {
 	return this.replyBodyWidget.getValue();
 };
