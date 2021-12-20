@@ -47,7 +47,7 @@ OO.initClass( ThreadItem );
  * Create a new ThreadItem from a JSON serialization
  *
  * @param {string|Object} json JSON serialization or hash object
- * @param {Object} commentsById Collection of comments by ID for building replies/parent pointers
+ * @param {Object.<string,ThreadItem>} commentsById Collection of comments by ID for building replies/parent pointers
  * @return {ThreadItem}
  * @throws {Error} Unknown ThreadItem type
  */
