@@ -238,7 +238,7 @@ CommentController.prototype.teardown = function ( abandoned ) {
  * @param {ThreadItem} comment Parent comment
  * @param {string} pageName Title of the page to post on
  * @param {Object} checkboxes Value of the promise returned by controller#getCheckboxesPromise
- * @return {Object}
+ * @return {Object.<string,string>} API query data
  */
 CommentController.prototype.getApiQuery = function ( comment, pageName, checkboxes ) {
 	var replyWidget = this.replyWidget;
@@ -416,7 +416,7 @@ CommentController.prototype.undoIndentReplacements = function ( rootNode ) {
  * Get the list of selectors that match nodes that can't be inserted in the comment. (We disallow
  * things that generate wikitext syntax that may conflict with list item syntax.)
  *
- * @return {Object} Map of type used for error messages (string) to CSS selector (string)
+ * @return {Object.<string,string>} Map of type used for error messages (string) to CSS selector (string)
  */
 CommentController.prototype.getUnsupportedNodeSelectors = function () {
 	return {

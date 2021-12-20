@@ -56,7 +56,7 @@ function getMessages( contLangVariant, messages ) {
  * @param {string} contLangVariant Content language variant
  * @param {string} format Date format, as used by MediaWiki
  * @param {string} digitsRegexp Regular expression matching a single localised digit, e.g. `[0-9]`
- * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
+ * @param {Object.<string,string>} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
  * @return {string} Regular expression
  */
@@ -189,7 +189,7 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
  * @param {string} format Date format, as used by MediaWiki
  * @param {string[]|null} digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
  * @param {string} localTimezone Local timezone IANA name, e.g. `America/New_York`
- * @param {Object} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
+ * @param {Object.<string,string>} tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
  *   for the local timezone, e.g. `{EDT: "EDT", EST: "EST"}`
  * @return {TimestampParser} Timestamp parser function
  */
