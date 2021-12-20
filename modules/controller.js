@@ -8,7 +8,6 @@ var
 	storage = mw.storage.session,
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
-	HeadingItem = require( './HeadingItem.js' ),
 	CommentItem = require( './CommentItem.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
 	ReplyLinksController = require( './ReplyLinksController.js' ),
@@ -808,14 +807,13 @@ function init( $container, state ) {
 					}
 				}
 			}
-			for ( i = 0; i < recentComments.length; i++ ) {
-				var headingItem = recentComments[ i ].getHeading();
-				while ( headingItem instanceof HeadingItem && headingItem.headingLevel !== 2 ) {
-					headingItem = headingItem.parent;
+			recentComments.forEach( function ( recentComment ) {
+				var headingItem = recentComment.getSubscribableHeading();
+				if ( headingItem ) {
+					// Use names as object keys to deduplicate if there are multiple comments in a topic.
+					headingsToUpdate[ headingItem.name ] = headingItem;
 				}
-				// Use names as object keys to deduplicate if there are multiple comments in a topic.
-				headingsToUpdate[ headingItem.name ] = headingItem;
-			}
+			} );
 			updateSubscriptionStates( $container, headingsToUpdate );
 		}
 	} );

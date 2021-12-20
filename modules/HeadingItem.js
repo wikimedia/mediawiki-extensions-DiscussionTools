@@ -45,4 +45,22 @@ HeadingItem.prototype.getHeading = function () {
 	return this;
 };
 
+/**
+ * Check whether this heading can be used for topic subscriptions.
+ *
+ * @return {boolean}
+ */
+HeadingItem.prototype.isSubscribable = function () {
+	return (
+		// Placeholder headings have nothing to attach the button to.
+		!this.placeholderHeading &&
+		// We only allow subscribing to level 2 headings, because the user interface for sub-headings
+		// would be difficult to present.
+		this.headingLevel === 2 &&
+		// Check if the name corresponds to a section that contain no comments (only sub-sections).
+		// They can't be distinguished from each other, so disallow subscribing.
+		this.name !== 'h-'
+	);
+};
+
 module.exports = HeadingItem;
