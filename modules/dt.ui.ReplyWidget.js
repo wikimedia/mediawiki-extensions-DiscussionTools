@@ -54,7 +54,11 @@ function ReplyWidget( commentController, comment, commentDetails, config ) {
 			placeholder: this.isNewTopic ?
 				mw.msg( 'discussiontools-replywidget-placeholder-newtopic' ) :
 				mw.msg( 'discussiontools-replywidget-placeholder-reply', comment.author ),
-			authors: comment.getHeading().getAuthorsBelow()
+			authors: this.isNewTopic ?
+				// No suggestions in new topic tool yet (T277357)
+				[] :
+				// comment is a CommentItem when replying
+				comment.getHeading().getAuthorsBelow()
 		},
 		config.input
 	);

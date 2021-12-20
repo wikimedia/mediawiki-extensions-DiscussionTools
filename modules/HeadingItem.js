@@ -39,13 +39,6 @@ HeadingItem.prototype.getLinkableTitle = function () {
 };
 
 /**
- * @return {HeadingItem} Closest ancestor which is a HeadingItem
- */
-HeadingItem.prototype.getHeading = function () {
-	return this;
-};
-
-/**
  * Check whether this heading can be used for topic subscriptions.
  *
  * @return {boolean}
