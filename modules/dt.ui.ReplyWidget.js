@@ -302,7 +302,7 @@ ReplyWidget.prototype.focus = null;
 ReplyWidget.prototype.getValue = null;
 
 /**
- * Check if the reply widget is empy
+ * Check if the reply widget is empty
  *
  * @method
  * @return {boolean}
@@ -545,7 +545,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 };
 
 /**
- * Perform additional actions once the widget has been setup as is ready for input
+ * Perform additional actions once the widget has been setup and is ready for input
  */
 ReplyWidget.prototype.afterSetup = function () {
 	// Init preview and button state
