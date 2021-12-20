@@ -42,6 +42,17 @@ CommentItem.prototype.getHeading = function () {
 	return parent;
 };
 
+/**
+ * @return {HeadingItem|null} losest heading that can be used for topic subscriptions
+ */
+CommentItem.prototype.getSubscribableHeading = function () {
+	var heading = this.getHeading();
+	while ( heading && heading.type === 'heading' && !heading.isSubscribable() ) {
+		heading = heading.parent;
+	}
+	return ( heading && heading.type === 'heading' ) ? heading : null;
+};
+
 // TODO: Implement getBodyRange/getBodyHTML/getBodyText/getMentions if required
 
 module.exports = CommentItem;
