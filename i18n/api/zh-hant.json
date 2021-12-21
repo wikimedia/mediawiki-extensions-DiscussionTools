@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"Winston Sung"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "找不到評論 ID：$1",
-	"apihelp-discussiontools-param-oldid": "要使用的修訂編號（預設爲最新版本）。",
+	"apierror-discussiontools-commentid-notfound": "查無留言ID「$1」。",
+	"apierror-discussiontools-commentname-notfound": "查無留言名稱「$1」。",
+	"apihelp-discussiontools-param-oldid": "要使用的修訂編號（預設為最新版本）。",
 	"apihelp-discussiontools-summary": "回傳詮釋資料需要初始化討論工具。",
 	"apihelp-discussiontoolsedit-param-commentid": "評論 ID",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}}僅在 <var>paction</var> 為 <var>addtopic</var> 時使用。",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wiki 語法",
-	"apihelp-discussiontoolsedit-summary": "在討論頁面上發布訊息。"
+	"apihelp-discussiontoolsedit-summary": "於討論頁發布留言。"
 }
