@@ -58,5 +58,8 @@ https://en.wikipedia.beta.wmflabs.org/api/rest_v1/page/html/Talk%3AT289873/51446
 transclusions3:
 https://en.wikipedia.org/api/rest_v1/page/html/Wikipedia_talk%3ATemplate_documentation/1056728376
 
+transclusions4:
+https://it.wikipedia.org/api/rest_v1/page/html/Wikipedia%3AVandalismi_in_corso/124462482
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.

@@ -21,6 +21,13 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "transclusions - comment partially template-generated 2",
+		"dom": "cases/transclusions4/transclusions4.html",
+		"expected": "../cases/transclusions4/transclusions4-transcludedFrom.json",
+		"config": "../data/itwiki-config.json",
+		"data": "../data/itwiki-data.json"
+	},
+	{
 		"name": "enwiki parsoid",
 		"dom": "cases/en-big-parsoid/en-big-parsoid.html",
 		"expected": "../cases/en-big-parsoid/en-big-parsoid-transcludedFrom.json",
