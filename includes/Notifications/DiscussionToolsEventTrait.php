@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use EchoDiscussionParser;
 use MediaWiki\Revision\RevisionRecord;
+use WikiMap;
 
 /**
  * This trait must be only used on EchoEventPresentationModel subclasses.
@@ -128,7 +129,7 @@ trait DiscussionToolsEventTrait {
 
 			$queryParams = [ 'markasread' => implode( '|', $eventIds ) ];
 			if ( $wgEchoCrossWikiNotifications ) {
-				$queryParams['markasreadwiki'] = wfWikiID();
+				$queryParams['markasreadwiki'] = WikiMap::getCurrentWikiId();
 			}
 
 			$link['url'] = wfAppendQuery( $link['url'], $queryParams );
