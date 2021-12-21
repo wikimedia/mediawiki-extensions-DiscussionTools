@@ -89,7 +89,9 @@ class CommentFormatter {
 		$parser = static::getParser( $container );
 		$threadItems = $parser->getThreadItems();
 
-		foreach ( $threadItems as $threadItem ) {
+		// Iterate in reverse order, because adding the range markers for a thread item
+		// can invalidate the ranges of subsequent thread items (T298096)
+		foreach ( array_reverse( $threadItems ) as $threadItem ) {
 			// TODO: Consider not attaching JSON data to the DOM.
 			// Create a dummy node to attach data to.
 			if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
@@ -98,7 +100,7 @@ class CommentFormatter {
 				$threadItem->setRange( new ImmutableRange( $node, 0, $node, 0 ) );
 			}
 
-			// And start and end markers to range
+			// Add start and end markers to range
 			$id = $threadItem->getId();
 			$range = $threadItem->getRange();
 			$startMarker = $doc->createElement( 'span' );
