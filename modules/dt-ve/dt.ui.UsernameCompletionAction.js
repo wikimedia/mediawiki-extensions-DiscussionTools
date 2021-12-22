@@ -103,6 +103,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			list: 'allusers',
 			auprefix: input,
 			auprop: 'blockinfo',
+			auwitheditsonly: 1,
 			// Fetch twice as many results as we need so we can filter
 			// blocked users and still probably have some suggestions left
 			aulimit: this.constructor.static.defaultLimit * 2
