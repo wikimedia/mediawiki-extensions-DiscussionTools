@@ -172,7 +172,7 @@ NewTopicController.prototype.setupTopicHint = function () {
  * Handle clicks on the close button for the hint dialog
  */
 NewTopicController.prototype.onTopicHintCloseClick = function () {
-	this.toggle( false );
+	this.topicHint.toggle( false );
 	controller.getApi().saveOption( 'discussiontools-newtopictool-hint-shown', null ).then( function () {
 		mw.user.options.set( 'discussiontools-newtopictool-hint-shown', null );
 	} );
