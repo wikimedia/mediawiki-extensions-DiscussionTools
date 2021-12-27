@@ -2,11 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Eitvys200",
+			"Hugo.arg",
 			"Tomasdd"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Atsakyti",
 	"discussiontools-preference-label": "Diskusijų įrankiai",
+	"discussiontools-preference-replytool": "Įjungti greito atsako režimą",
+	"discussiontools-preference-replytool-help": "Aptarimų puslapiuose prie komentarų atsiras galimybė atsakyti kitam naudotojui vienu paspaudimu.",
+	"discussiontools-preference-sourcemodetoolbar": "Atsakant, įjungti redagavimo aplinką",
 	"discussiontools-replylink": "atsakyti",
 	"discussiontools-replywidget-cancel": "Atšaukti",
 	"discussiontools-replywidget-loading": "Kraunasi...",

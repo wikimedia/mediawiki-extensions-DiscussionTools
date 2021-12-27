@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Rail"
+			"Rail",
+			"Woytecr"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Nie odnaleziono komentarza z ID '$1'.",
 	"apierror-discussiontools-commentname-ambiguous": "Odnaleziono więcej niż jeden komentarz z nazwą '$1', wymagany jest parametr  <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "Nie odnaleziono komentarza z nazwą '$1'.",
+	"apierror-discussiontools-formtoken-used": "Komentarz został już umieszczony. Przeładuj stronę aby go zobaczyć.",
 	"apierror-discussiontools-subscription-failed-add": "Nie udało się zasubskrybować tego tematu.",
 	"apierror-discussiontools-subscription-failed-remove": "Nie udało się anulować subskrypcji tego tematu.",
 	"apihelp-discussiontools-param-oldid": "Numer wersji do użycia (domyślnie ostatnia wersja).",
@@ -15,6 +17,7 @@
 	"apihelp-discussiontools-summary": "Zwraca metadane niezbędne do zainicjowania narzędzi dyskusji.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID komentarza, na który odpowiedzieć. Parametr używany tylko wtedy, gdy wartość <var>paction</var> to <var>addcomment</var>. Ma pierwszeństwo nad parametrem <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Nazwa komentarza, na który odpowiedzieć. Parametr używany tylko wtedy, gdy wartość <var>paction</var> to <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-formtoken": "Opcjonalny unikalny identyfikator wygenerowany przez oprogramowanie klienckie służący do zapobiegania wysyłania zdublowanych komentarzy.",
 	"apihelp-discussiontoolsedit-param-html": "Treść do dodania, jako HTML. Nie może być użyte wraz z <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Parametr używany tylko wtedy, gdy wartość <var>paction</var> to <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Treść do dodania, jako wikitekst. Nie może być użyte wraz z <var>html</var>.",

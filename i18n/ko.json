@@ -11,6 +11,7 @@
 		]
 	},
 	"discussiontools": "토론 도구",
+	"discussiontools-autotopicsubpopup-body": "누군가가 이 토론에 새로운 의견을 남기면, 당신은 알림을 받게 됩니다. 환경 설정에서 알림 설정을 변경할 수 있습니다.",
 	"discussiontools-autotopicsubpopup-dismiss": "알겠습니다",
 	"discussiontools-autotopicsubpopup-preferences": "환경 설정 편집",
 	"discussiontools-autotopicsubpopup-title": "구독하였습니다",

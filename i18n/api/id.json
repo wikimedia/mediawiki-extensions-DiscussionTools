@@ -7,8 +7,9 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Komentar dengan ID '$1' tidak ditemukan.",
-	"apierror-discussiontools-commentname-ambiguous": "Beberapa komentar dengan nama '$1' ditemukan, harap gunakan ID saja.",
+	"apierror-discussiontools-commentname-ambiguous": "Beberapa komentar dengan nama '$1' ditemukan, diwajibkan menggunakan <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "Komentar dengan nama '$1' tidak ditemukan.",
+	"apierror-discussiontools-formtoken-used": "Komentar sudah dikirim. Muat ulang halaman untuk melihatnya.",
 	"apierror-discussiontools-subscription-failed-add": "Tidak dapat berlangganan topik ini.",
 	"apierror-discussiontools-subscription-failed-remove": "Tidak dapat berhenti langganan dari topik ini.",
 	"apihelp-discussiontools-param-oldid": "Nomor revisi yang akan digunakan (baku untuk revisi terkini).",
