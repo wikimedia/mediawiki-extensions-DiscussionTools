@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Eitvys200",
-			"Tomasdd"
+			"Tomasdd",
+			"Hugo.arg"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Atsakyti",
 	"discussiontools-preference-label": "Diskusijų įrankiai",
+	"discussiontools-preference-replytool": "Įjungti greito atsako režimą",
 	"discussiontools-replylink": "atsakyti",
 	"discussiontools-replywidget-cancel": "Atšaukti",
 	"discussiontools-replywidget-loading": "Kraunasi...",

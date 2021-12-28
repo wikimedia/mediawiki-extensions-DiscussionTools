@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Teashae"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "جَوآب",
+	"discussiontools-replylink": "جَوآب",
+	"discussiontools-replywidget-cancel": "مَنسوٗخ",
+	"discussiontools-replywidget-loading": "لوڑ چھُ گژھن...",
+	"discussiontools-replywidget-mention-prefix": "@",
+	"discussiontools-replywidget-mode-source": "آگُر",
+	"discussiontools-replywidget-placeholder-newtopic": "تَفصیٖل",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} دِیو جَوآب",
+	"discussiontools-replywidget-preview": "نُمٲئش",
+	"discussiontools-replywidget-reply": "جَوآب",
+	"discussiontools-replywidget-summary": "خُلاسہٕ",
+	"discussiontools-signature-prefix": "&#32;",
+	"tag-discussiontools-source": "آگُر"
+}
