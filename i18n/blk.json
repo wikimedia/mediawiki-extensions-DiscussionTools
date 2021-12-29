@@ -1,10 +1,35 @@
 {
 	"@metadata": {
 		"authors": [
-			"咽頭べさ"
+			"咽頭べさ",
+			"Khun Kt"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "လဝ်းပြန်ႏချာ",
+	"discussiontools-desc": "အိုင်ကိုမ်ချက်လိတ်မဲ့ငါဖိုင်ႏ ဖေႏကယံထဲင်းတာႏ ကိရိယာႏဖိုင်ႏ။",
 	"discussiontools-emptystate-button": "မာꩻစသွူ အိုင်ကိုမ်ချက်တဗာႏ",
+	"discussiontools-emptystate-title": "အိုင်ကိုမ်စသွူ {{PAGENAME}}ခရာႏတဗာႏ",
+	"discussiontools-emptystate-title-self": "အဝ်ႏနာꩻအိုင်ကိုမ်ဒေါ့ꩻရီလိတ်မဲ့ငါယို ကျိုႏဆွုမ်ႏဒျာႏသြ",
+	"discussiontools-emptystate-title-self-anon": "အဝ်ႏအိုင်ကိုမ်ဒေါ့ꩻရီလိတ်မဲ့ငါယိုအကို ကျိုႏဆွုမ်ႏဒျာႏသြ",
+	"discussiontools-emptystate-title-user-anon": "အဝ်ႏအိုင်ကိုမ်ဒေါ့ꩻရီလိတ်မဲ့ငါယိုအကို ကျိုႏဆွုမ်ႏဒျာႏသြ",
+	"discussiontools-newtopic-placeholder-title": "ကတူႏစဲဉ်ႏ",
+	"discussiontools-notification-subscribed-new-comment-view": "ထွား တောင်ꩻသေꩻ",
+	"discussiontools-postedit-confirmation-published": "ဒင်ႏထင်ႏခါꩻလဲဉ်း နာꩻတောင်ꩻသေꩻချက်သွူ။",
+	"discussiontools-preference-label": "အိုင်ကိုမ်ချက် ကိရိယာႏ",
+	"discussiontools-replylink": "လဝ်းပြန်ႏချာ",
 	"discussiontools-replywidget-advanced": "အရန်းထို",
-	"tag-discussiontools-description": "သွုံꩻအီတွမ်ႏ အုံကွံမုꩻကိရိယာႏဖုံႏတဲင် မာꩻခြပ်ချော်ꩻ"
+	"discussiontools-replywidget-cancel": "မာꩻတဝ်းဒွုမ်",
+	"discussiontools-replywidget-loading": "အဝ်ႏဒင်ႏဝွန်ႏကျာꩻ...",
+	"discussiontools-replywidget-mention-tool-header": "ထိုမ်ႏကေားသုင်ꩻသား: $1",
+	"discussiontools-replywidget-mention-tool-title": "ထူႏဟဲ့ꩻ ကေားသုင်ꩻသားတဖြာꩻ",
+	"discussiontools-replywidget-mode-source": "ရွီႏခိုႏ",
+	"discussiontools-replywidget-mode-visual": "ထာꩻထီႏ",
+	"discussiontools-replywidget-newtopic": "ထဲမ်သော့ꩻ အကျောင်ꩻခရာႏ",
+	"discussiontools-replywidget-placeholder-newtopic": "အွောန်ႏနယ်ချက်ခရာႏ",
+	"discussiontools-replywidget-placeholder-reply": "လဝ်းပြန်ႏလွေꩻချာ {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "ထွားစံꩻနမူႏနာႏအကျိုႏ",
+	"discussiontools-replywidget-reply": "လဝ်းပြန်ႏချာ",
+	"discussiontools-replywidget-summary": "အအဲဉ်ႏချုတ်",
+	"tag-discussiontools-description": "သွုံꩻအီတွမ်ႏ အုံကွံမုꩻကိရိယာႏဖုံႏတဲင် မာꩻခြပ်ချော်ꩻ",
+	"tag-discussiontools-source": "ရွီႏခိုႏ"
 }

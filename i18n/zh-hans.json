@@ -84,7 +84,7 @@
 	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-feedback": "分享有关此功能的意见反馈",
 	"discussiontools-replywidget-loading": "正在载入……",
-	"discussiontools-replywidget-mention-tool-header": "找到用户：$1",
+	"discussiontools-replywidget-mention-tool-header": "查找用户：$1",
 	"discussiontools-replywidget-mention-tool-title": "提及用户",
 	"discussiontools-replywidget-mode-source": "源代码",
 	"discussiontools-replywidget-mode-visual": "可视化",

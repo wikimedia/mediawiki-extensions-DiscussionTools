@@ -4,7 +4,8 @@
 			"Matma Rex",
 			"Nux",
 			"Rail",
-			"Woytecr"
+			"Woytecr",
+			"Chrumps"
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
@@ -78,9 +79,9 @@
 	"discussiontools-replywidget-transcluded": "Twój komentarz zostanie zapisany na stronie [[$1]].",
 	"discussiontools-topicsubscription-button-subscribe": "subskrybuj",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Zapisz się, aby otrzymywać powiadomienia o nowych komentarzach.",
-	"discussiontools-topicsubscription-button-unsubscribe": "anuluj subskrybcję",
+	"discussiontools-topicsubscription-button-unsubscribe": "anuluj subskrypcję",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Anuluj subskrypcję, aby przestać otrzymywać powiadomienia.",
-	"discussiontools-topicsubscription-action-unsubscribe-button": "Anuluj subskrybcję",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Anuluj subskrypcję",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Anulować subskrypcję tego tematu?",
 	"discussiontools-topicsubscription-error-not-found-body": "Nie znaleziono subskrypcji podanej w adresie URL.",
 	"discussiontools-topicsubscription-error-not-found-title": "Nie znaleziono subskrypcji",
