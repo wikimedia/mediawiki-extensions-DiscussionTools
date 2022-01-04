@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arystanbek"
+		]
+	},
+	"discussiontools": "Талқылау құралдары",
+	"discussiontools-defaultsummary-reply": "Жауап беру",
+	"discussiontools-desc": "Талқылау беттерін жақсартатын құралдар.",
+	"discussiontools-error-comment-conflict": "Пікіріңіз сақталмады, себебі әлдебіреу сізбен бірдей уақытта пікір жазды. Қайталап көріңіз не ең соңғы пікірді көру үшін бетті қайта жүктеңіз.",
+	"discussiontools-replylink": "жауап беру"
+}
