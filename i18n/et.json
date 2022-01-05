@@ -13,7 +13,7 @@
 	"discussiontools-emptystate-desc-self-anon": "Saidi {{SITENAME}} kasutajad saavad postitada siia leheküljele avalikke sõnumeid sinu praeguselt IP-aadressilt tehtud muudatuste kohta.\n\nPaljud IP-aadressid muutuvad aeg-ajalt ja sageli jagab neid mitu inimest. Võid [$1 luua konto] või [$2 sisse logida] vältimaks segiajamist teiste sisse logimata kasutajatega. Konto loomisega peidad ühtlasi enda IP-aadressi.",
 	"discussiontools-emptystate-desc-user": "Arutelulehekülgi kasutatakse pidamaks nõu selle üle, kuidas saidi {{SITENAME}} sisu võimalikult heaks teha. Alusta uut arutelu, et võtta ühendust ja teha koostööd kasutajaga [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Siia kirjutatu on avalik ja kõigile nähtav. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Lisateave]]",
 	"discussiontools-emptystate-desc-user-anon": "Arutelulehekülgi kasutatakse pidamaks nõu selle üle, kuidas saidi {{SITENAME}} sisu võimalikult heaks teha. Kasuta seda lehekülge, et alustada arutelu sellelt IP-aadressilt tehtud muudatuste üle. Siia kirjutatu on avalik ja kõigile nähtav. Paljud IP-aadressid muutuvad aeg-ajalt ja sageli jagab neid mitu inimest. [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Lisateave]]",
-	"discussiontools-emptystate-title": "Alusta arutelu lehekülje {{PAGENAME}} üle",
+	"discussiontools-emptystate-title": "Alusta arutelu lehekülje \"{{PAGENAME}}\" üle",
 	"discussiontools-emptystate-title-self": "Tere tulemast enda aruteluleheküljele",
 	"discussiontools-emptystate-title-self-anon": "Tere tulemast sellele aruteluleheküljele",
 	"discussiontools-emptystate-title-user": "Alusta arutelu kasutajaga {{PAGENAME}}",

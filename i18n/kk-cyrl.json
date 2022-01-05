@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arystanbek"
+		]
+	},
+	"discussiontools": "Талқылау құралдары",
+	"discussiontools-defaultsummary-reply": "Жауап беру",
+	"discussiontools-desc": "Талқылау беттерін жақсартатын құралдар.",
+	"discussiontools-emptystate-button": "Талқылау бастау",
+	"discussiontools-emptystate-title": "{{PAGENAME}} жайында талқылау бастау",
+	"discussiontools-emptystate-title-self": "Талқылау бетіңізге қош келдіңіз",
+	"discussiontools-emptystate-title-self-anon": "Бұл талқылау бетіне қош келдіңіз",
+	"discussiontools-emptystate-title-user-anon": "Бұл талқылау бетіне қош келдіңіз",
+	"discussiontools-error-comment-conflict": "Пікіріңіз сақталмады, себебі әлдебіреу сізбен бірдей уақытта пікір жазды. Қайталап көріңіз не ең соңғы пікірді көру үшін бетті қайта жүктеңіз.",
+	"discussiontools-replylink": "жауап беру"
+}
