@@ -84,6 +84,22 @@ class PreferenceHooks implements
 					'section' => 'editing/discussion',
 				];
 			}
+
+			// Option to enable/disable new topic tool on pages that haven't been created
+			// (it's inside this loop to place the options in a nice order)
+			if ( $feature === HookUtils::NEWTOPICTOOL ) {
+				$preferences["discussiontools-newtopictool-createpage"] = [
+					'type' => 'radio',
+					'cssclass' => 'mw-htmlform-checkradio-indent',
+					'label-message' => 'discussiontools-preference-newtopictool-createpage',
+					'options-messages' => [
+						'discussiontools-preference-newtopictool-createpage-newtopictool' => 1,
+						'discussiontools-preference-newtopictool-createpage-editor' => 0,
+					],
+					'disable-if' => [ '===', 'discussiontools-' . HookUtils::NEWTOPICTOOL, '' ],
+					'section' => 'editing/discussion',
+				];
+			}
 		}
 
 		if ( isset( $preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR] ) && (
