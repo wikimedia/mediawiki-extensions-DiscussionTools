@@ -532,6 +532,7 @@
 		"discussiontools-betaenable": 0,
 		"discussiontools-editmode": "",
 		"discussiontools-newtopictool": 1,
+		"discussiontools-newtopictool-createpage": 1,
 		"discussiontools-replytool": 1,
 		"discussiontools-sourcemodetoolbar": 1,
 		"discussiontools-topicsubscription": 1,

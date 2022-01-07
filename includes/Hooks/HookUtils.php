@@ -314,12 +314,19 @@ class HookUtils {
 	public static function shouldDisplayEmptyState( IContextSource $context ): bool {
 		$req = $context->getRequest();
 		$out = $context->getOutput();
+		$user = $context->getUser();
 		$title = $context->getTitle();
+
+		$optionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 
 		return (
 			(
 				// When following a red link from another page (but not when clicking the 'Edit' tab)
-				( $req->getVal( 'action' ) === 'edit' && $req->getVal( 'redlink' ) === '1' ) ||
+				(
+					$req->getVal( 'action' ) === 'edit' && $req->getVal( 'redlink' ) === '1' &&
+					// …if not disabled by the user
+					$optionsLookup->getOption( $user, 'discussiontools-newtopictool-createpage' )
+				) ||
 				// When the new topic tool will be opened (usually when clicking the 'Add topic' tab)
 				self::shouldOpenNewTopicTool( $context ) ||
 				// In read mode (accessible for non-existent pages by clicking 'Cancel' in editor)
