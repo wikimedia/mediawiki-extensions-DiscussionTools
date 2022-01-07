@@ -60,15 +60,21 @@ span[ data-mw-comment-start ] {
 				margin-left: 0.25em;
 			}
 		}
+
+		// Similar to mw-editsection-divider
+		&-divider {
+			color: #54595d;
+		}
 	}
 
-	&.ext-discussiontools-init-replylink-active {
-		visibility: hidden;
-	}
-
-	.ext-discussiontools-init-replylink-open & > a {
+	.ext-discussiontools-init-replylink-open & > .ext-discussiontools-init-replylink-reply {
 		color: #72777d;
 		pointer-events: none;
+	}
+
+	&.ext-discussiontools-init-replylink-active > .ext-discussiontools-init-replylink-reply {
+		color: #202122;
+		text-decoration: none;
 	}
 
 	@media print {
