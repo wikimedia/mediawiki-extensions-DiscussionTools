@@ -44,6 +44,7 @@
 				"topicsubscriptions.js",
 				"mobile.js",
 				"overflowMenu.js",
+				"thanks.js",
 				"LedeSectionDialog.js",
 				{
 					"name": "controller/contLangMessages.json",
@@ -154,7 +155,12 @@
 				"discussiontools-topicsubscription-notify-unsubscribed-body",
 				"discussiontools-topicsubscription-notify-unsubscribed-title",
 				"pagetitle",
-				"skin-view-edit"
+				"skin-view-edit",
+				"cancel",
+				"thanks-button-thank",
+				"thanks-button-thanked",
+				"thanks-confirmation2",
+				"thanks-thanked-notice"
 			]
 		},
 		"ext.discussionTools.minervaicons": {
@@ -418,6 +424,7 @@
 		"RevisionDataUpdates": "dataupdates",
 		"LoadExtensionSchemaUpdates": "installer",
 		"GetDoubleUnderscoreIDs": "parser",
+		"ApiMain::moduleManager": "api",
 		"ParserAfterTidy": "parser",
 		"ParserOutputPostCacheTransform": "parser",
 		"BeforeDisplayNoArticleText": "page",
@@ -445,6 +452,9 @@
 		},
 		"installer": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\InstallerHooks"
+		},
+		"api": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ApiHooks"
 		},
 		"page": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PageHooks",
@@ -560,6 +570,10 @@
 		"DiscussionToolsEnablePermalinksFrontend": {
 			"value": true,
 			"description": "Enable permalinks frontend features: 1. Convert signature timestamps to comment links. 2. Show notification when the target comment is found on another page."
+		},
+		"DiscussionToolsEnableThanks": {
+			"value": true,
+			"description": "Show a button to thank individual comments. Requires the 'Thanks' extension."
 		},
 		"DiscussionToolsAutoTopicSubEditor": {
 			"value": "any",

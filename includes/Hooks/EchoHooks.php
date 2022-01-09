@@ -9,7 +9,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
+use ExtensionRegistry;
 use MediaWiki\Extension\DiscussionTools\Notifications\AddedTopicPresentationModel;
+use MediaWiki\Extension\DiscussionTools\Notifications\CommentThanksPresentationModel;
 use MediaWiki\Extension\DiscussionTools\Notifications\EnhancedEchoEditUserTalkPresentationModel;
 use MediaWiki\Extension\DiscussionTools\Notifications\EnhancedEchoMentionPresentationModel;
 use MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher;
@@ -101,6 +103,25 @@ class EchoHooks implements
 			],
 		];
 
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Thanks' ) ) {
+			$notifications['dt-thank'] = [
+				'category' => 'edit-thank',
+				'group' => 'positive',
+				'section' => 'message',
+				'user-locators' => [
+					[
+						[ UserLocator::class, 'locateFromEventExtra' ],
+						[ 'thanked-user-id' ]
+					]
+				],
+				'presentation-model' => CommentThanksPresentationModel::class,
+				'bundle' => [
+					'web' => true,
+					'expandable' => true,
+				],
+			];
+		}
+
 		// Override default handlers
 		$notifications['edit-user-talk']['presentation-model'] = EnhancedEchoEditUserTalkPresentationModel::class;
 		$notifications['mention']['presentation-model'] = EnhancedEchoMentionPresentationModel::class;
@@ -115,6 +136,9 @@ class EchoHooks implements
 			case 'dt-removed-topic':
 				$bundleString = $event->getType() . '-' . $event->getTitle()->getNamespace()
 					. '-' . $event->getTitle()->getDBkey();
+				break;
+			case 'dt-thank':
+				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'comment-name' );
 				break;
 		}
 	}

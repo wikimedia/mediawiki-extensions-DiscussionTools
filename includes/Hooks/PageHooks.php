@@ -304,12 +304,13 @@ class PageHooks implements
 				// Reply button: share
 				$output->addModuleStyles( 'oojs-ui.styles.icons-content' );
 			}
+			$output->addModuleStyles( [
+				// Overflow menu ('ellipsis' icon)
+				'oojs-ui.styles.icons-interactions',
+			] );
 			if ( $isMobile ) {
 				$output->addModuleStyles( [
-					// Mobile overflow menu:
-					// ellipsis
-					'oojs-ui.styles.icons-interactions',
-					// edit
+					// Edit button in overflow menu ('edit' icon)
 					'oojs-ui.styles.icons-editing-core',
 				] );
 			}
