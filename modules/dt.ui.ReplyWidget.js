@@ -542,8 +542,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 		}
 	}
 
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '#ca-watch, #ca-unwatch' ).on( 'watchpage.mw', this.onWatchToggleHandler );
+	mw.hook( 'wikipage.watchlistChange' ).add( this.onWatchToggleHandler );
 
 	return this;
 };
@@ -627,8 +626,7 @@ ReplyWidget.prototype.teardown = function ( abandoned ) {
 		this.modeTabSelect.blur();
 	}
 	this.unbindBeforeUnloadHandler();
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '#ca-watch, #ca-unwatch' ).off( 'watchpage.mw', this.onWatchToggleHandler );
+	mw.hook( 'wikipage.watchlistChange' ).remove( this.onWatchToggleHandler );
 
 	this.clear();
 	this.emit( 'teardown', abandoned );
@@ -638,17 +636,18 @@ ReplyWidget.prototype.teardown = function ( abandoned ) {
 /**
  * Handle changes to the watch state of the page
  *
- * @param {jQuery.Event} e Event
- * @param {string} actionPerformed Watch action taken
+ * @param {boolean} isWatched
+ * @param {string} expiry
+ * @param {string} expirySelected
  */
-ReplyWidget.prototype.onWatchToggle = function ( e, actionPerformed ) {
+ReplyWidget.prototype.onWatchToggle = function ( isWatched ) {
 	var widget = this;
 	this.checkboxesPromise.then( function ( checkboxes ) {
 		if ( checkboxes.checkboxesByName.wpWatchthis ) {
 			checkboxes.checkboxesByName.wpWatchthis.setSelected(
 				!!mw.user.options.get( 'watchdefault' ) ||
 				( !!mw.user.options.get( 'watchcreations' ) && !widget.pageExists ) ||
-				actionPerformed === 'watch'
+				isWatched
 			);
 		}
 	} );
