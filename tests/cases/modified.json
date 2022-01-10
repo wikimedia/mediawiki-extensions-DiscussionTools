@@ -91,6 +91,13 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "Many comments consisting of a block template and a paragraph",
+		"dom": "cases/transclusions4/transclusions4.html",
+		"expected": "cases/transclusions4/transclusions4-modified.html",
+		"config": "../data/itwiki-config.json",
+		"data": "../data/itwiki-data.json"
+	},
+	{
 		"name": "Signatures in funny places",
 		"dom": "cases/signatures-funny/signatures-funny.html",
 		"expected": "cases/signatures-funny/signatures-funny-modified.html",
