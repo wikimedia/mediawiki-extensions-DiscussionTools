@@ -991,8 +991,10 @@ function update( data, comment, pageName, replyWidget ) {
 	if ( mw.loader.getState( 'mediawiki.page.watch.ajax' ) === 'ready' ) {
 		var watch = require( 'mediawiki.page.watch.ajax' );
 
-		watch.updatePageWatchStatus(
-			data.watched,
+		watch.updateWatchLink(
+			mw.Title.newFromText( pageName ),
+			data.watched ? 'unwatch' : 'watch',
+			'idle',
 			data.watchlistexpiry
 		);
 	}
