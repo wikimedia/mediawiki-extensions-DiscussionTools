@@ -260,7 +260,7 @@ function getCheckboxesPromise( pageName, oldId ) {
  * Update a subscribe button
  *
  * @param {HTMLElement} element Subscribe button
- * @param {number} state State constant (STATE_UNSUBSCRIBED, STATE_SUBSCRIBED or STATE_AUTOSUBSCRIBED)
+ * @param {number|null} state State constant (STATE_UNSUBSCRIBED, STATE_SUBSCRIBED or STATE_AUTOSUBSCRIBED)
  */
 function updateSubscribeButton( element, state ) {
 	if ( state !== null ) {
@@ -342,7 +342,7 @@ function initTopicSubscriptions( $container ) {
 }
 
 /**
- * Show the first time popup for auto topic subscriptsions, if required
+ * Show the first time popup for auto topic subscriptions, if required
  */
 function maybeShowFirstTimeAutoTopicSubPopup() {
 	if ( !lastHighlightComment || seenAutoTopicSubPopup ) {
