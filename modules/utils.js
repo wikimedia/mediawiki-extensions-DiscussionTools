@@ -474,6 +474,15 @@ function getRangeLastNode( range ) {
  * Includes a hack to check for "almost equal" ranges (whose start/end boundaries only differ by
  * "uninteresting" nodes that we ignore when detecting comments), and treat them as equal.
  *
+ * Illustration of return values:
+ *          [    equal    ]
+ *          |[ contained ]|
+ *        [ |  contains   | ]
+ *  [overlap|start]       |
+ *          |     [overlap|end]
+ * [before] |             |
+ *          |             | [after]
+ *
  * @param {Range} a
  * @param {Range} b
  * @return {string} One of:
@@ -509,8 +518,6 @@ function compareRanges( a, b ) {
 	}
 	/* eslint-enable no-use-before-define */
 
-	// Drawing to visualize these 7 cases:
-	// https://phabricator.wikimedia.org/F34826234
 	if ( startToStart === 0 && endToEnd === 0 ) {
 		return 'equal';
 	}

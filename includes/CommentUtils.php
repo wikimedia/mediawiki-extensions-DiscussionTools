@@ -545,6 +545,15 @@ class CommentUtils {
 	 * Includes a hack to check for "almost equal" ranges (whose start/end boundaries only differ by
 	 * "uninteresting" nodes that we ignore when detecting comments), and treat them as equal.
 	 *
+	 * Illustration of return values:
+	 *          [    equal    ]
+	 *          |[ contained ]|
+	 *        [ |  contains   | ]
+	 *  [overlap|start]       |
+	 *          |     [overlap|end]
+	 * [before] |             |
+	 *          |             | [after]
+	 *
 	 * @param ImmutableRange $a
 	 * @param ImmutableRange $b
 	 * @return string One of:
@@ -579,8 +588,6 @@ class CommentUtils {
 			$endToEnd = 0;
 		}
 
-		// Drawing to visualize these 7 cases:
-		// https://phabricator.wikimedia.org/F34826234
 		if ( $startToStart === 0 && $endToEnd === 0 ) {
 			return 'equal';
 		}
