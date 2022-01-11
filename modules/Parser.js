@@ -500,8 +500,14 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
  * @param {HTMLElement} link
  * @return {string|null}
  */
-function getUsernameFromLink( link ) {
-	var title = utils.getTitleFromUrl( link.href );
+Parser.prototype.getUsernameFromLink = function ( link ) {
+	var title;
+	// Selflink: use title of current page
+	if ( link.classList.contains( 'mw-selflink' ) ) {
+		title = this.title;
+	} else {
+		title = utils.getTitleFromUrl( link.href );
+	}
 	if ( !title ) {
 		return null;
 	}
@@ -537,7 +543,7 @@ function getUsernameFromLink( link ) {
 		username = username.toUpperCase();
 	}
 	return username;
-}
+};
 
 /**
  * Find a user signature preceding a timestamp.
@@ -556,6 +562,7 @@ function getUsernameFromLink( link ) {
  *  - {string|null} Username, null for unsigned comments
  */
 Parser.prototype.findSignature = function ( timestampNode, until ) {
+	var parser = this;
 	var sigUsername = null;
 	var length = 0;
 	var lastLinkNode = timestampNode;
@@ -585,7 +592,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			//
 			// Handle links nested in formatting elements.
 			if ( event === 'leave' && node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'a' ) {
-				var username = getUsernameFromLink( node );
+				var username = parser.getUsernameFromLink( node );
 				if ( username ) {
 					// Accept the first link to the user namespace, then only accept links to that user
 					if ( sigUsername === null ) {
