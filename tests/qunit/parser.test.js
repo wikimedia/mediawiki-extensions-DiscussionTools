@@ -1,13 +1,14 @@
 /* global moment */
 var
 	testUtils = require( './testUtils.js' ),
-	Parser = require( 'ext.discussionTools.init' ).Parser;
+	Parser = require( 'ext.discussionTools.init' ).Parser,
+	dummyTitle = mw.Title.newFromText( 'Dummy' );
 
 QUnit.module( 'mw.dt.Parser', testUtils.newEnvironment() );
 
 QUnit.test( '#getTimestampRegexp', function ( assert ) {
 	var cases = require( '../cases/timestamp-regex.json' ),
-		parser = new Parser( document.createElement( 'div' ) );
+		parser = new Parser( document.createElement( 'div' ), dummyTitle );
 
 	testUtils.overrideParserData( require( '../data-en.json' ) );
 
@@ -22,7 +23,7 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 
 QUnit.test( '#getTimestampParser', function ( assert ) {
 	var cases = require( '../cases/timestamp-parser.json' ),
-		parser = new Parser( document.createElement( 'div' ) );
+		parser = new Parser( document.createElement( 'div' ), dummyTitle );
 
 	testUtils.overrideParserData( require( '../data-en.json' ) );
 
@@ -39,7 +40,7 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 
 QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 	var cases = require( '../cases/timestamp-parser-dst.json' ),
-		parser = new Parser( document.createElement( 'div' ) );
+		parser = new Parser( document.createElement( 'div' ), dummyTitle );
 
 	testUtils.overrideParserData( require( '../data-en.json' ) );
 
@@ -67,7 +68,8 @@ QUnit.test( '#getThreads', function ( assert ) {
 		var $dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
-			data = require( caseItem.data );
+			data = require( caseItem.data ),
+			title = mw.Title.newFromText( caseItem.title );
 
 		// Remove all but the body tags from full Parsoid docs
 		if ( $dom.filter( 'section' ).length ) {
@@ -80,7 +82,7 @@ QUnit.test( '#getThreads', function ( assert ) {
 		testUtils.overrideMwConfig( config );
 		testUtils.overrideParserData( data );
 
-		var parser = new Parser( fixture );
+		var parser = new Parser( fixture, title );
 		var threads = parser.getThreads();
 
 		threads.forEach( function ( thread, i ) {

@@ -187,7 +187,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$container = DOMCompat::getBody( $doc );
 
-				$parser = CommentParser::newFromGlobalState( $container );
+				$parser = CommentParser::newFromGlobalState( $container, $title );
 
 				if ( $commentId ) {
 					$comment = $parser->findCommentById( $commentId );

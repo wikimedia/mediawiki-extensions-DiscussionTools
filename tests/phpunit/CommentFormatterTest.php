@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\MediaWikiServices;
+use Title;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -17,6 +18,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 	public function testAddDiscussionToolsInternal(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
+		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getText( $expected );
@@ -28,7 +30,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
-		$actual = $commentFormatter->addDiscussionToolsInternal( $dom );
+		$actual = $commentFormatter->addDiscussionToolsInternal( $dom, $title );
 
 		$mockSubStore = new MockSubscriptionStore();
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );

@@ -11,6 +11,7 @@ use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use stdClass;
+use Title;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -112,7 +113,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $format, string $expected, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new Element( 'div' ) )
+			CommentParser::newFromGlobalState( new Element( 'div' ), Title::newFromText( 'Dummy' ) )
 		);
 
 		// HACK: Fix differences between JS & PHP regexes
@@ -137,7 +138,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $format, array $data, string $expected, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new Element( 'div' ) )
+			CommentParser::newFromGlobalState( new Element( 'div' ), Title::newFromText( 'Dummy' ) )
 		);
 
 		$expected = new DateTimeImmutable( $expected );
@@ -159,7 +160,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $timezone, array $timezoneAbbrs, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new Element( 'div' ) )
+			CommentParser::newFromGlobalState( new Element( 'div' ), Title::newFromText( 'Dummy' ) )
 		);
 
 		$regexp = $parser->getTimestampRegexp( 'en', $format, '\\d', $timezoneAbbrs );
@@ -186,6 +187,7 @@ class CommentParserTest extends IntegrationTestCase {
 	public function testGetThreads(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
+		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -196,7 +198,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$body = DOMCompat::getBody( $doc );
 
 		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $body, $data );
+		$parser = self::createParser( $body, $title, $data );
 		$threads = $parser->getThreads();
 
 		$processedThreads = [];

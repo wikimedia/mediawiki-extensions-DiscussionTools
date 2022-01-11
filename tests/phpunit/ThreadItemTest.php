@@ -8,6 +8,7 @@ use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
+use Title;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
@@ -54,6 +55,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	public function testGetTranscludedFrom(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
+		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -67,7 +69,7 @@ class ThreadItemTest extends IntegrationTestCase {
 
 		CommentUtils::unwrapParsoidSections( $container );
 
-		$parser = self::createParser( $container, $data );
+		$parser = self::createParser( $container, $title, $data );
 		$comments = $parser->getCommentItems();
 
 		$transcludedFrom = [];
@@ -100,6 +102,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	public function testGetText(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
+		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -110,7 +113,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$body = DOMCompat::getBody( $doc );
 
 		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $body, $data );
+		$parser = self::createParser( $body, $title, $data );
 		$items = $parser->getThreadItems();
 
 		$output = [];
@@ -145,6 +148,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	public function testGetHTML(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
+		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -155,7 +159,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$body = DOMCompat::getBody( $doc );
 
 		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $body, $data );
+		$parser = self::createParser( $body, $title, $data );
 		$items = $parser->getThreadItems();
 
 		$output = [];

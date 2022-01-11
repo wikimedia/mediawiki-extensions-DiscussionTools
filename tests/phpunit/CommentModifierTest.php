@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
+use Title;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 
@@ -20,6 +21,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	public function testAddListItem(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
+		$title = Title::newFromText( $title );
 		$origPath = $dom;
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
@@ -32,7 +34,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		$doc = self::createDocument( $dom );
 		$container = DOMCompat::getBody( $doc );
 
-		$parser = self::createParser( $container, $data );
+		$parser = self::createParser( $container, $title, $data );
 		$comments = $parser->getCommentItems();
 
 		$nodes = [];
@@ -66,6 +68,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	public function testAddReplyLink(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
+		$title = Title::newFromText( $title );
 		$origPath = $dom;
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
@@ -78,7 +81,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		$doc = self::createDocument( $dom );
 		$container = DOMCompat::getBody( $doc );
 
-		$parser = self::createParser( $container, $data );
+		$parser = self::createParser( $container, $title, $data );
 		$comments = $parser->getCommentItems();
 
 		foreach ( $comments as $comment ) {

@@ -24,6 +24,8 @@ class CommentParser {
 
 	/** @var Element */
 	private $rootNode;
+	/** @var Title */
+	private $title;
 
 	/** @var ThreadItem[] */
 	private $threadItems;
@@ -51,14 +53,18 @@ class CommentParser {
 
 	/**
 	 * @param Element $rootNode Root node of content to parse
+	 * @param Title $title Title of the page being parsed
 	 * @param Language $language Content language
 	 * @param Config $config
 	 * @param array $data
 	 */
-	public function __construct( Element $rootNode, Language $language, Config $config, array $data = [] ) {
+	public function __construct(
+		Element $rootNode, Title $title, Language $language, Config $config, array $data = []
+	) {
 		$this->rootNode = $rootNode;
 		$this->config = $config;
 		$this->language = $language;
+		$this->title = $title;
 
 		if ( !$data ) {
 			// TODO: Instead of passing data used for mocking, mock the methods that fetch the data.
@@ -74,11 +80,13 @@ class CommentParser {
 
 	/**
 	 * @param Element $rootNode
+	 * @param Title $title
 	 * @return CommentParser
 	 */
-	public static function newFromGlobalState( Element $rootNode ): CommentParser {
+	public static function newFromGlobalState( Element $rootNode, Title $title ): CommentParser {
 		return new static(
 			$rootNode,
+			$title,
 			MediaWikiServices::getInstance()->getContentLanguage(),
 			MediaWikiServices::getInstance()->getMainConfig()
 		);

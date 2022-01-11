@@ -17,10 +17,13 @@ var
  * comments and threads.
  *
  * @class mw.dt.Parser
+ * @constructor
+ * @param {HTMLElement} rootNode Root node of content to parse
+ * @param {mw.Title} title Title of the page being parsed
  */
-
-function Parser( rootNode ) {
+function Parser( rootNode, title ) {
 	this.rootNode = rootNode;
+	this.title = title;
 	this.threadItems = null;
 	this.commentItems = null;
 	this.threadItemsByName = null;

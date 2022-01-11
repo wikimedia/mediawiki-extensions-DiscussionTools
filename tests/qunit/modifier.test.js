@@ -13,7 +13,8 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		var dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
 			config = require( caseItem.config ),
-			data = require( caseItem.data );
+			data = require( caseItem.data ),
+			title = mw.Title.newFromText( caseItem.title );
 
 		testUtils.overrideMwConfig( config );
 		testUtils.overrideParserData( data );
@@ -24,7 +25,7 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		$( fixture ).empty().append( dom );
 		var reverseExpectedHtml = fixture.innerHTML;
 
-		var parser = new Parser( fixture );
+		var parser = new Parser( fixture, title );
 		var comments = parser.getCommentItems();
 
 		// Add a reply to every comment. Note that this inserts *all* of the replies, unlike the real
@@ -70,7 +71,8 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		var dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
 			config = require( caseItem.config ),
-			data = require( caseItem.data );
+			data = require( caseItem.data ),
+			title = mw.Title.newFromText( caseItem.title );
 
 		testUtils.overrideMwConfig( config );
 		testUtils.overrideParserData( data );
@@ -80,7 +82,7 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 
 		$( fixture ).empty().append( dom );
 
-		var parser = new Parser( fixture );
+		var parser = new Parser( fixture, title );
 		var comments = parser.getCommentItems();
 
 		// Add a reply link to every comment.

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\MediaWikiServices;
+use Title;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -120,13 +121,15 @@ trait TestUtils {
 	 * Create a comment parser
 	 *
 	 * @param Element $rootNode
+	 * @param Title $title
 	 * @param array $data
 	 * @return CommentParser
 	 */
-	public static function createParser( Element $rootNode, array $data ): CommentParser {
+	public static function createParser( Element $rootNode, Title $title, array $data ): CommentParser {
 		$services = MediaWikiServices::getInstance();
 		return new CommentParser(
 			$rootNode,
+			$title,
 			$services->getContentLanguage(),
 			$services->getMainConfig(),
 			$data

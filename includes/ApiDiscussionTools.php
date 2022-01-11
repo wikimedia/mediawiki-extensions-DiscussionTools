@@ -44,7 +44,7 @@ class ApiDiscussionTools extends ApiBase {
 
 				CommentUtils::unwrapParsoidSections( $container );
 
-				$parser = CommentParser::newFromGlobalState( $container );
+				$parser = CommentParser::newFromGlobalState( $container, $title );
 				$threadItems = $parser->getThreadItems();
 
 				$transcludedFrom = [];

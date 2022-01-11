@@ -621,7 +621,10 @@ function init( $container, state ) {
 
 	$pageContainer = $container;
 	linksController = new ReplyLinksController( $pageContainer );
-	var parser = new Parser( $pageContainer[ 0 ] );
+	var parser = new Parser(
+		$pageContainer[ 0 ],
+		mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
+	);
 
 	var pageThreads = [];
 	var commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );

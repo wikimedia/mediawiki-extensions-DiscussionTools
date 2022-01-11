@@ -60,12 +60,16 @@ class EventDispatcher {
 			throw new Error( 'Could not load revision for notifications' );
 		}
 
+		$title = Title::newFromLinkTarget(
+			$revRecord->getPageAsLinkTarget()
+		);
+
 		$parserOutput = $status->getValue();
 		$html = $parserOutput->getText();
 
 		$doc = DOMUtils::parseHTML( $html );
 		$container = DOMCompat::getBody( $doc );
-		return CommentParser::newFromGlobalState( $container );
+		return CommentParser::newFromGlobalState( $container, $title );
 	}
 
 	/**
@@ -106,7 +110,7 @@ class EventDispatcher {
 			// Page creation
 			$doc = DOMUtils::parseHTML( '' );
 			$container = DOMCompat::getBody( $doc );
-			$oldParser = CommentParser::newFromGlobalState( $container );
+			$oldParser = CommentParser::newFromGlobalState( $container, $title );
 		}
 		$newParser = self::getParsedRevision( $newRevRecord );
 

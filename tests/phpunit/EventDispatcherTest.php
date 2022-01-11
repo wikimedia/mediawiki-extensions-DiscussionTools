@@ -7,6 +7,7 @@ use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\User\UserIdentityValue;
 use RawMessage;
+use Title;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
@@ -37,9 +38,10 @@ class EventDispatcherTest extends IntegrationTestCase {
 		$doc2 = self::createDocument( $dom2 );
 		$body2 = DOMCompat::getBody( $doc2 );
 
+		$dummyTitle = Title::newFromText( 'Dummy' );
 		$this->setupEnv( $config, $data );
-		$parser1 = self::createParser( $body1, $data );
-		$parser2 = self::createParser( $body2, $data );
+		$parser1 = self::createParser( $body1, $dummyTitle, $data );
+		$parser2 = self::createParser( $body2, $dummyTitle, $data );
 
 		$events = self::getJson( $other, true );
 

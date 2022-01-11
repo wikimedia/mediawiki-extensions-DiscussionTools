@@ -77,7 +77,7 @@ class ParserHooks implements
 		// the user doesn't have DiscussionTools features enabled.
 		if ( HookUtils::isAvailableForTitle( $parser->getTitle() ) ) {
 			// This modifies $text
-			CommentFormatter::addDiscussionTools( $text, $parser->getOutput() );
+			CommentFormatter::addDiscussionTools( $text, $parser->getOutput(), $parser->getTitle() );
 
 			$parser->getOutput()->addModuleStyles( [
 				'ext.discussionTools.init.styles',

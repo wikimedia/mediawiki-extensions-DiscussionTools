@@ -9,6 +9,7 @@ use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
 use ParserOutput;
 use Throwable;
+use Title;
 use WebRequest;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -28,10 +29,11 @@ class CommentFormatter {
 	 * This method exists so it can mocked in tests.
 	 *
 	 * @param Element $container
+	 * @param Title $title
 	 * @return CommentParser
 	 */
-	protected static function getParser( Element $container ): CommentParser {
-		return CommentParser::newFromGlobalState( $container );
+	protected static function getParser( Element $container, Title $title ): CommentParser {
+		return CommentParser::newFromGlobalState( $container, $title );
 	}
 
 	/**
@@ -39,13 +41,14 @@ class CommentFormatter {
 	 *
 	 * @param string &$text Parser text output (modified by reference)
 	 * @param ParserOutput $pout ParserOutput object for metadata, e.g. parser limit report
+	 * @param Title $title
 	 */
-	public static function addDiscussionTools( string &$text, ParserOutput $pout ): void {
+	public static function addDiscussionTools( string &$text, ParserOutput $pout, Title $title ): void {
 		$start = microtime( true );
 		$requestId = null;
 
 		try {
-			$text = static::addDiscussionToolsInternal( $text );
+			$text = static::addDiscussionToolsInternal( $text, $title );
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
 			// Log it and report the request ID to make it easier to find in the logs.
@@ -76,9 +79,10 @@ class CommentFormatter {
 	 * Add discussion tools to some HTML
 	 *
 	 * @param string $html HTML
+	 * @param Title $title
 	 * @return string HTML with discussion tools
 	 */
-	protected static function addDiscussionToolsInternal( string $html ): string {
+	protected static function addDiscussionToolsInternal( string $html, Title $title ): string {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
@@ -86,7 +90,7 @@ class CommentFormatter {
 		$doc = DOMUtils::parseHTML( $html );
 		$container = DOMCompat::getBody( $doc );
 
-		$parser = static::getParser( $container );
+		$parser = static::getParser( $container, $title );
 		$threadItems = $parser->getThreadItems();
 
 		// Iterate in reverse order, because adding the range markers for a thread item

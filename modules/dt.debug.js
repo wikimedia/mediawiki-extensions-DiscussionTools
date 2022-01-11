@@ -3,7 +3,10 @@ var
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	highlighter = require( './highlighter.js' ),
-	parser = new Parser( document.getElementById( 'mw-content-text' ) ),
+	parser = new Parser(
+		document.getElementById( 'mw-content-text' ),
+		mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
+	),
 	comments = parser.getCommentItems(),
 	threads = parser.getThreads(),
 	timestampRegexps = parser.getLocalTimestampRegexps(),
