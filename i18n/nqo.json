@@ -13,6 +13,7 @@
 	"discussiontools-postedit-confirmation-published": "ߌ ߟߊ߫ ߡߙߌߣߊ߲ ߓߘߊ߫ ߟߊߥߊ߲߬ߞߊ߫.",
 	"discussiontools-postedit-confirmation-topicadded": "ߌ ߟߊ߫ ߝߐߡߊ ߓߘߊ߫ ߝߙߊ߬.",
 	"discussiontools-preference-label": "ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߠߎ߬",
+	"discussiontools-preference-newtopictool": "ߝߐߡߊ ߞߊߟߌߦߊ߫ ߘߐ߫ ߝߙߊߟߌ ߓߌ߬ߟߴߊ߬ ߟߊ߫",
 	"discussiontools-preference-replytool": "ߖߋ߬ߓߟߌ߬ ߖߏߣߊ ߓߌ߬ߟߵߊ߬ ߟߊ߫",
 	"discussiontools-replylink": "ߊ߬ ߞߐߖߋ߬ߓߌ߬",
 	"discussiontools-replywidget-abandon": "ߌ ߘߍ߲߬ߞߣߍ߬ߦߊ߬ߣߍ߲߫ ߞߴߌ ߦߴߊ߬ ߝߍ߬ ߞߊ߬ ߡߙߌߣߊ߲߫ ߥߦߊ߬ ߌ ߦߋ߫ ߡߍ߲ ߛߓߍ ߞߊ߲߬؟",
@@ -44,6 +45,10 @@
 	"tag-discussiontools-edit": "ߡߙߌߣߊ߲ ߡߊߦߟߍ߬ߡߊ߲߫",
 	"tag-discussiontools-edit-description": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߓߘߊ߫ ߡߙߌߣߊ߲ ߞߘߐ߬ߡߊ߲ ߘߏ߫ ߡߊߦߟߍ߬ߡߊ߲߫ ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߠߎ߬ ߟߊ߫",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} ߞߎ߲߬ߕߐ߰ ߞߎߘߊ]",
+	"tag-discussiontools-newtopic-description": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߓߘߊ߫ ߝߐߡߊ ߘߏ߫ ߓߌ߬ߟߊ߬ ߞߐߜߍ ߟߊ߫ ߘߊߘߐߖߊߥߏߖߐ߯ߙߊ߲ ߠߊ߫",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} ߞߐߖߋ߬ߓߌ߫]",
+	"tag-discussiontools-reply-description": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߓߘߊ߫ ߞߐߡߊߓߌ߲ߓߌ߲ߠߌ߲ ߘߏ߫ ߖߋ߬ߓߌ߬ ߘߊߘߐߖߊߥߏߖߐ߯ߙߊ߲ ߠߊ߫",
+	"tag-discussiontools-source": "ߓߐߖߎ",
 	"tag-discussiontools-visual": "ߦߋߢߊ",
 	"tag-discussiontools-visual-description": "ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ߕߘߍ߬ ߦߋ߫ ߦߋߢߊ ߞߍߗߏ߮ ߟߋ߬ ߟߊ߫"
 }
