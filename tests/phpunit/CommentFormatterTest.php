@@ -15,7 +15,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 	 * @covers ::addDiscussionToolsInternal
 	 */
 	public function testAddDiscussionToolsInternal(
-		string $name, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;

@@ -184,7 +184,7 @@ class CommentParserTest extends IntegrationTestCase {
 	 * @covers ::getThreads
 	 */
 	public function testGetThreads(
-		string $name, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;

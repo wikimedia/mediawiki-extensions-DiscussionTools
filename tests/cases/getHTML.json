@@ -1,6 +1,7 @@
 [
 	{
 		"name": "plwiki oldparser",
+		"title": "Wikipedia:Kawiarenka/Artykuły dyskusja/Archiwum/2018-październik",
 		"dom": "cases/pl-big-oldparser/pl-big-oldparser.html",
 		"expected": "../cases/pl-big-oldparser/pl-big-oldparser-getHTML.json",
 		"config": "../data/plwiki-config.json",
@@ -8,6 +9,7 @@
 	},
 	{
 		"name": "plwiki parsoid",
+		"title": "Wikipedia:Kawiarenka/Artykuły dyskusja/Archiwum/2018-październik",
 		"dom": "cases/pl-big-parsoid/pl-big-parsoid.html",
 		"expected": "../cases/pl-big-parsoid/pl-big-parsoid-getHTML.json",
 		"config": "../data/plwiki-config.json",
@@ -15,6 +17,7 @@
 	},
 	{
 		"name": "enwiki oldparser",
+		"title": "Wikipedia:Village pump (technical)/Archive 175",
 		"dom": "cases/en-big-oldparser/en-big-oldparser.html",
 		"expected": "../cases/en-big-oldparser/en-big-oldparser-getHTML.json",
 		"config": "../data/enwiki-config.json",
@@ -22,6 +25,7 @@
 	},
 	{
 		"name": "enwiki parsoid",
+		"title": "Wikipedia:Village pump (technical)/Archive 175",
 		"dom": "cases/en-big-parsoid/en-big-parsoid.html",
 		"expected": "../cases/en-big-parsoid/en-big-parsoid-getHTML.json",
 		"config": "../data/enwiki-config.json",
@@ -29,6 +33,7 @@
 	},
 	{
 		"name": "ckbwiki oldparser",
+		"title": "ویکیپیدیا:دیوەخان (پێشنیارەکان)",
 		"dom": "cases/ckb-big-oldparser/ckb-big-oldparser.html",
 		"expected": "../cases/ckb-big-oldparser/ckb-big-oldparser-getHTML.json",
 		"config": "../data/ckbwiki-config.json",
@@ -36,6 +41,7 @@
 	},
 	{
 		"name": "ckbwiki parsoid",
+		"title": "ویکیپیدیا:دیوەخان (پێشنیارەکان)",
 		"dom": "cases/ckb-big-parsoid/ckb-big-parsoid.html",
 		"expected": "../cases/ckb-big-parsoid/ckb-big-parsoid-getHTML.json",
 		"config": "../data/ckbwiki-config.json",

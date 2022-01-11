@@ -1,6 +1,7 @@
 [
 	{
 		"name": "plwiki oldparser",
+		"title": "Wikipedia:Kawiarenka/Artykuły dyskusja/Archiwum/2018-październik",
 		"dom": "cases/pl-big-oldparser/pl-big-oldparser.html",
 		"expected": "../cases/pl-big-oldparser/pl-big-oldparser.json",
 		"config": "../data/plwiki-config.json",
@@ -8,6 +9,7 @@
 	},
 	{
 		"name": "plwiki parsoid",
+		"title": "Wikipedia:Kawiarenka/Artykuły dyskusja/Archiwum/2018-październik",
 		"dom": "cases/pl-big-parsoid/pl-big-parsoid.html",
 		"expected": "../cases/pl-big-parsoid/pl-big-parsoid.json",
 		"config": "../data/plwiki-config.json",
@@ -15,6 +17,7 @@
 	},
 	{
 		"name": "enwiki oldparser",
+		"title": "Wikipedia:Village pump (technical)/Archive 175",
 		"dom": "cases/en-big-oldparser/en-big-oldparser.html",
 		"expected": "../cases/en-big-oldparser/en-big-oldparser.json",
 		"config": "../data/enwiki-config.json",
@@ -22,6 +25,7 @@
 	},
 	{
 		"name": "enwiki parsoid",
+		"title": "Wikipedia:Village pump (technical)/Archive 175",
 		"dom": "cases/en-big-parsoid/en-big-parsoid.html",
 		"expected": "../cases/en-big-parsoid/en-big-parsoid.json",
 		"config": "../data/enwiki-config.json",
@@ -29,6 +33,7 @@
 	},
 	{
 		"name": "ckbwiki oldparser",
+		"title": "ویکیپیدیا:دیوەخان (پێشنیارەکان)",
 		"dom": "cases/ckb-big-oldparser/ckb-big-oldparser.html",
 		"expected": "../cases/ckb-big-oldparser/ckb-big-oldparser.json",
 		"config": "../data/ckbwiki-config.json",
@@ -36,6 +41,7 @@
 	},
 	{
 		"name": "ckbwiki parsoid",
+		"title": "ویکیپیدیا:دیوەخان (پێشنیارەکان)",
 		"dom": "cases/ckb-big-parsoid/ckb-big-parsoid.html",
 		"expected": "../cases/ckb-big-parsoid/ckb-big-parsoid.json",
 		"config": "../data/ckbwiki-config.json",
@@ -43,6 +49,7 @@
 	},
 	{
 		"name": "arwiki no-paragraph oldparser",
+		"title": "نقاش المستخدم:Khaled",
 		"dom": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html",
 		"expected": "../cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.json",
 		"config": "../data/arwiki-config.json",
@@ -50,6 +57,7 @@
 	},
 	{
 		"name": "arwiki no-paragraph parsoid",
+		"title": "نقاش المستخدم:Khaled",
 		"dom": "cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.html",
 		"expected": "../cases/ar-no-paragraph-parsoid/ar-no-paragraph-parsoid.json",
 		"config": "../data/arwiki-config.json",
@@ -57,6 +65,7 @@
 	},
 	{
 		"name": "arwiki nbsp-timezone oldparser",
+		"title": "يكيبيديا:إخفاء أرقام الآي بي",
 		"dom": "cases/ar-nbsp-timezone-oldparser/ar-nbsp-timezone-oldparser.html",
 		"expected": "../cases/ar-nbsp-timezone-oldparser/ar-nbsp-timezone-oldparser.json",
 		"config": "../data/arwiki-config.json",
@@ -64,6 +73,7 @@
 	},
 	{
 		"name": "arwiki nbsp-timezone parsoid",
+		"title": "يكيبيديا:إخفاء أرقام الآي بي",
 		"dom": "cases/ar-nbsp-timezone-parsoid/ar-nbsp-timezone-parsoid.html",
 		"expected": "../cases/ar-nbsp-timezone-parsoid/ar-nbsp-timezone-parsoid.json",
 		"config": "../data/arwiki-config.json",
@@ -71,6 +81,7 @@
 	},
 	{
 		"name": "frwiki fr-unsigned oldparser",
+		"title": "Discussion:Le Monde",
 		"dom": "cases/fr-unsigned-oldparser/fr-unsigned-oldparser.html",
 		"expected": "../cases/fr-unsigned-oldparser/fr-unsigned-oldparser.json",
 		"config": "../data/frwiki-config.json",
@@ -78,6 +89,7 @@
 	},
 	{
 		"name": "frwiki fr-unsigned parsoid",
+		"title": "Discussion:Le Monde",
 		"dom": "cases/fr-unsigned-parsoid/fr-unsigned-parsoid.html",
 		"expected": "../cases/fr-unsigned-parsoid/fr-unsigned-parsoid.json",
 		"config": "../data/frwiki-config.json",
@@ -85,6 +97,7 @@
 	},
 	{
 		"name": "itwiki it-unsigned oldparser",
+		"title": "Aiuto:Sportello informazioni",
 		"dom": "cases/it-unsigned-oldparser/it-unsigned-oldparser.html",
 		"expected": "../cases/it-unsigned-oldparser/it-unsigned-oldparser.json",
 		"config": "../data/itwiki-config.json",
@@ -92,6 +105,7 @@
 	},
 	{
 		"name": "itwiki it-unsigned parsoid",
+		"title": "Aiuto:Sportello informazioni",
 		"dom": "cases/it-unsigned-parsoid/it-unsigned-parsoid.html",
 		"expected": "../cases/it-unsigned-parsoid/it-unsigned-parsoid.json",
 		"config": "../data/itwiki-config.json",
@@ -99,6 +113,7 @@
 	},
 	{
 		"name": "srwiki sr-ec variant",
+		"title": "Википедија:Трг/Архива/Техника/35",
 		"dom": "cases/sr-ec/sr-ec.html",
 		"expected": "../cases/sr-ec/sr-ec.json",
 		"config": "../data/srwiki-config.json",
@@ -106,6 +121,7 @@
 	},
 	{
 		"name": "srwiki sr-el variant",
+		"title": "Википедија:Trg/Arhiva/Tehnika/35",
 		"dom": "cases/sr-el/sr-el.html",
 		"expected": "../cases/sr-el/sr-el.json",
 		"config": "../data/srwiki-config.json",
@@ -113,6 +129,7 @@
 	},
 	{
 		"name": "Accidental dt tags (old parser)",
+		"title": "Talk:T279445",
 		"dom": "cases/dt-tags-oldparser/dt-tags-oldparser.html",
 		"expected": "../cases/dt-tags-oldparser/dt-tags-oldparser.json",
 		"config": "../data/enwiki-config.json",
@@ -120,6 +137,7 @@
 	},
 	{
 		"name": "Accidental dt tags (Parsoid)",
+		"title": "Talk:T279445",
 		"dom": "cases/dt-tags-parsoid/dt-tags-parsoid.html",
 		"expected": "../cases/dt-tags-parsoid/dt-tags-parsoid.json",
 		"config": "../data/enwiki-config.json",
@@ -127,6 +145,7 @@
 	},
 	{
 		"name": "No heading",
+		"title": "Talk:No heading",
 		"dom": "cases/no-heading/no-heading.html",
 		"expected": "../cases/no-heading/no-heading.json",
 		"config": "../data/enwiki-config.json",
@@ -134,6 +153,7 @@
 	},
 	{
 		"name": "Manually added signature with LRM",
+		"title": "Overleg:Charlie_Chaplin",
 		"dom": "cases/lrm-signature/lrm-signature.html",
 		"expected": "../cases/lrm-signature/lrm-signature.json",
 		"config": "../data/nlwiki-config.json",
@@ -141,6 +161,7 @@
 	},
 	{
 		"name": "Link using fallback 8-bit encoding (invalid UTF-8)",
+		"title": "Wikipédia:Kocsmafal (műszaki)/Archív32",
 		"dom": "cases/fallback-encoding-link/fallback-encoding-link.html",
 		"expected": "../cases/fallback-encoding-link/fallback-encoding-link.json",
 		"config": "../data/huwiki-config.json",
@@ -148,6 +169,7 @@
 	},
 	{
 		"name": "Signatures in funny places",
+		"title": "Talk:Signatures funny",
 		"dom": "cases/signatures-funny/signatures-funny.html",
 		"expected": "../cases/signatures-funny/signatures-funny.json",
 		"config": "../data/enwiki-config.json",

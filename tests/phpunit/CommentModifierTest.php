@@ -18,7 +18,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 * @covers ::addListItem
 	 */
 	public function testAddListItem(
-		string $name, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
 		$origPath = $dom;
 		$dom = self::getHtml( $dom );
@@ -64,7 +64,7 @@ class CommentModifierTest extends IntegrationTestCase {
 	 * @covers ::addReplyLink
 	 */
 	public function testAddReplyLink(
-		string $name, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
 		$origPath = $dom;
 		$dom = self::getHtml( $dom );

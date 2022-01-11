@@ -1,6 +1,7 @@
 [
 	{
 		"name": "plwiki oldparser",
+		"title": "Wikipedia:Kawiarenka/Artykuły dyskusja/Archiwum/2018-październik",
 		"dom": "cases/pl-big-oldparser/pl-big-oldparser.html",
 		"expected": "cases/pl-big-oldparser/pl-big-oldparser-formattedreply.html",
 		"config": "../data/plwiki-config.json",
@@ -8,6 +9,7 @@
 	},
 	{
 		"name": "enwiki oldparser",
+		"title": "Wikipedia:Village pump (technical)/Archive 175",
 		"dom": "cases/en-big-oldparser/en-big-oldparser.html",
 		"expected": "cases/en-big-oldparser/en-big-oldparser-formattedreply.html",
 		"config": "../data/enwiki-config.json",
@@ -15,6 +17,7 @@
 	},
 	{
 		"name": "arwiki no-paragraph oldparser",
+		"title": "نقاش المستخدم:Khaled",
 		"dom": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html",
 		"expected": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser-formattedreply.html",
 		"config": "../data/arwiki-config.json",
@@ -22,6 +25,7 @@
 	},
 	{
 		"name": "frwiki unsigned oldparser",
+		"title": "Discussion:Le Monde",
 		"dom": "cases/fr-unsigned-oldparser/fr-unsigned-oldparser.html",
 		"expected": "cases/fr-unsigned-oldparser/fr-unsigned-oldparser-formattedreply.html",
 		"config": "../data/frwiki-config.json",
@@ -29,6 +33,7 @@
 	},
 	{
 		"name": "itwiki unsigned oldparser",
+		"title": "Aiuto:Sportello informazioni",
 		"dom": "cases/it-unsigned-oldparser/it-unsigned-oldparser.html",
 		"expected": "cases/it-unsigned-oldparser/it-unsigned-oldparser-formattedreply.html",
 		"config": "../data/itwiki-config.json",
@@ -36,6 +41,7 @@
 	},
 	{
 		"name": "Double signature 1",
+		"title": "Wikipedia:Requests for comment/User names",
 		"dom": "cases/double-signature1/double-signature1.html",
 		"expected": "cases/double-signature1/double-signature1-formattedreply.html",
 		"config": "../data/enwiki-config.json",
@@ -43,6 +49,7 @@
 	},
 	{
 		"name": "Double signature 2",
+		"title": "Wikipedia:Articles for deletion/Equal Education",
 		"dom": "cases/double-signature2/double-signature2.html",
 		"expected": "cases/double-signature2/double-signature2-formattedreply.html",
 		"config": "../data/enwiki-config.json",
@@ -50,6 +57,7 @@
 	},
 	{
 		"name": "Mess caused by unclosed <font> tags in wikitext",
+		"title": "Overleg:Unclosed font",
 		"dom": "cases/unclosed-font/unclosed-font.html",
 		"expected": "cases/unclosed-font/unclosed-font-formattedreply.html",
 		"config": "../data/nlwiki-config.json",
@@ -57,6 +65,7 @@
 	},
 	{
 		"name": "Reply inserted inside/outside various wrapper elements",
+		"title": "Talk:Wrappers",
 		"dom": "cases/wrappers/wrappers.html",
 		"expected": "cases/wrappers/wrappers-formattedreply.html",
 		"config": "../data/enwiki-config.json",
@@ -64,6 +73,7 @@
 	},
 	{
 		"name": "Many comment start markers outside of paragraphs",
+		"title": "Wikipedia:Vandalismi in corso",
 		"dom": "cases/transclusions4/transclusions4.html",
 		"expected": "cases/transclusions4/transclusions4-formattedreply.html",
 		"config": "../data/itwiki-config.json",
@@ -71,13 +81,15 @@
 	},
 	{
 		"name": "Signatures in funny places",
+		"title": "Talk:Signatures funny",
 		"dom": "cases/signatures-funny/signatures-funny.html",
 		"expected": "cases/signatures-funny/signatures-funny-formattedreply.html",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
 	},
 	{
-		"name": "Signatures in funny places",
+		"name": "For parser cache",
+		"title": "Talk:For parser cache",
 		"dom": "cases/for-parser-cache/for-parser-cache.html",
 		"expected": "cases/for-parser-cache/for-parser-cache-formattedreply.html",
 		"config": "../data/enwiki-config.json",

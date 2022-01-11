@@ -52,7 +52,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	 * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils::unwrapParsoidSections
 	 */
 	public function testGetTranscludedFrom(
-		string $name, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
@@ -98,7 +98,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	 * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange::cloneContents
 	 */
 	public function testGetText(
-		string $name, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
@@ -143,7 +143,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	 * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange::cloneContents
 	 */
 	public function testGetHTML(
-		string $name, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
