@@ -171,6 +171,22 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
+		if ( commentController.newListItem.tagName.toLowerCase() === 'li' ) {
+			// When using bullet syntax, add some normal-looking text to the list item, so that the list
+			// marker will be shown in a reasonable place. If there's no obvious text, browsers go crazy.
+			// (IE 11 adds some empty space at the top of the list item, and aligns the marker with it;
+			// Firefox and Chrome place it somewhere in the middle of our reply widget, in different
+			// places in visual and source mode.)
+			//
+			// The spec itself describes its rules for placing the marker as "handwavey nonsense".
+			// https://www.w3.org/TR/css-lists-3/#list-style-position-property
+			$( commentController.newListItem ).prepend(
+				$( '<div>' )
+					.addClass( 'ext-discussiontools-ui-markerPlaceholder' )
+					.text( '\u00a0' )
+			);
+		}
+
 		commentController.setupReplyWidget( replyWidget );
 
 		commentController.showAndFocus();
