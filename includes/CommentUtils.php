@@ -518,10 +518,11 @@ class CommentUtils {
 	}
 
 	/**
-	 * @param ImmutableRange $range
+	 * @param ImmutableRange $range (must not be collapsed)
 	 * @return Node
 	 */
 	public static function getRangeFirstNode( ImmutableRange $range ): Node {
+		Assert::precondition( !$range->collapsed, 'Range is not collapsed' );
 		// PHP bug: childNodes can be null
 		return $range->startContainer->childNodes && $range->startContainer->childNodes->length ?
 			$range->startContainer->childNodes[ $range->startOffset ] :
@@ -529,10 +530,11 @@ class CommentUtils {
 	}
 
 	/**
-	 * @param ImmutableRange $range
+	 * @param ImmutableRange $range (must not be collapsed)
 	 * @return Node
 	 */
 	public static function getRangeLastNode( ImmutableRange $range ): Node {
+		Assert::precondition( !$range->collapsed, 'Range is not collapsed' );
 		// PHP bug: childNodes can be null
 		return $range->endContainer->childNodes && $range->endContainer->childNodes->length ?
 			$range->endContainer->childNodes[ $range->endOffset - 1 ] :

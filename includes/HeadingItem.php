@@ -97,4 +97,15 @@ class HeadingItem extends ThreadItem {
 			$this->getName() !== 'h-'
 		);
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getTranscludedFrom() {
+		// Placeholder headings break the usual logic, because their ranges are collapsed
+		if ( $this->isPlaceholderHeading() ) {
+			return false;
+		}
+		return parent::getTranscludedFrom();
+	}
 }
