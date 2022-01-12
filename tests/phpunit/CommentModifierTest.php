@@ -19,7 +19,8 @@ class CommentModifierTest extends IntegrationTestCase {
 	 * @covers ::addListItem
 	 */
 	public function testAddListItem(
-		string $name, string $title, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data,
+		string $replyIndentation = 'invisible'
 	): void {
 		$title = Title::newFromText( $title );
 		$origPath = $dom;
@@ -39,7 +40,7 @@ class CommentModifierTest extends IntegrationTestCase {
 
 		$nodes = [];
 		foreach ( $comments as $comment ) {
-			$node = CommentModifier::addListItem( $comment, 'invisible' );
+			$node = CommentModifier::addListItem( $comment, $replyIndentation );
 			$node->textContent = 'Reply to ' . $comment->getId();
 			$nodes[] = $node;
 		}

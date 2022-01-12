@@ -32,6 +32,24 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "enwiki oldparser (bullet indentation)",
+		"title": "Wikipedia:Village pump (technical)/Archive 175",
+		"dom": "cases/en-big-oldparser/en-big-oldparser.html",
+		"expected": "cases/en-big-oldparser/en-big-oldparser-modified-bullet.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json",
+		"replyIndentation": "bullet"
+	},
+	{
+		"name": "enwiki parsoid (bullet indentation)",
+		"title": "Wikipedia:Village pump (technical)/Archive 175",
+		"dom": "cases/en-big-parsoid/en-big-parsoid.html",
+		"expected": "cases/en-big-parsoid/en-big-parsoid-modified-bullet.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json",
+		"replyIndentation": "bullet"
+	},
+	{
 		"name": "arwiki no-paragraph oldparser",
 		"title": "نقاش المستخدم:Khaled",
 		"dom": "cases/ar-no-paragraph-oldparser/ar-no-paragraph-oldparser.html",
