@@ -2,6 +2,7 @@ var
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
 	logger = require( './logger.js' ),
+	dtConf = require( './config.json' ),
 	scrollPadding = { top: 10, bottom: 10 },
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
@@ -154,7 +155,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		} );
 
 		// On first load, add a placeholder list item
-		commentController.newListItem = modifier.addListItem( comment );
+		commentController.newListItem = modifier.addListItem( comment, dtConf.replyIndentation );
 		$( commentController.newListItem ).append(
 			// Microsoft Edge's built-in translation feature replaces the entire element when it finishes
 			// translating it, which often happens after our interface has loaded, clobbering it, unless
@@ -166,7 +167,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 	commentController.replyWidgetPromise.then( function ( replyWidget ) {
 		if ( !commentController.newListItem ) {
 			// On subsequent loads, there's no list item yet, so create one now
-			commentController.newListItem = modifier.addListItem( comment );
+			commentController.newListItem = modifier.addListItem( comment, dtConf.replyIndentation );
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
@@ -451,7 +452,7 @@ CommentController.prototype.switchToVisual = function () {
 
 	var parsePromise;
 	if ( wikitext ) {
-		wikitext = this.doIndentReplacements( wikitext, ':' );
+		wikitext = this.doIndentReplacements( wikitext, dtConf.replyIndentation === 'invisible' ? ':' : '*' );
 
 		// Based on ve.init.mw.Target#parseWikitextFragment
 		parsePromise = controller.getApi().post( {

@@ -1,7 +1,9 @@
 'use strict';
 /* global $:off */
 
-var utils = require( './utils.js' );
+var
+	config = require( './config.json' ),
+	utils = require( './utils.js' );
 
 /**
  * Add an attribute to a list item to remove pre-whitespace in Parsoid
@@ -57,9 +59,12 @@ function addReplyLink( comment, linkNode ) {
  * nodes are added, and other nodes may be moved around).
  *
  * @param {CommentItem} comment Comment item
+ * @param {string} replyIndentation Reply indentation syntax to use, one of:
+ *   - 'invisible' (use `<dl><dd>` tags to output `:` in wikitext)
+ *   - 'bullet' (use `<ul><li>` tags to output `*` in wikitext)
  * @return {HTMLElement}
  */
-function addListItem( comment ) {
+function addListItem( comment, replyIndentation ) {
 	var listTypeMap = {
 		li: 'ul',
 		dd: 'dl'
@@ -76,8 +81,14 @@ function addListItem( comment ) {
 	}
 
 	// Tag names for lists and items we're going to insert
-	// TODO Add an option to prefer bulleted lists (ul/li)
-	var itemType = 'dd';
+	var itemType;
+	if ( replyIndentation === 'invisible' ) {
+		itemType = 'dd';
+	} else if ( replyIndentation === 'bullet' ) {
+		itemType = 'li';
+	} else {
+		throw new Error( "Invalid reply indentation syntax '" + replyIndentation + "'" );
+	}
 	var listType = listTypeMap[ itemType ];
 
 	var desiredLevel = comment.level + 1;
@@ -457,15 +468,15 @@ function appendSignature( container ) {
  * @param {HTMLElement} container Container of comment DOM nodes
  */
 function addReply( comment, container ) {
-	var newParsoidItem;
 	// Transfer comment DOM to Parsoid DOM
 	// Wrap every root node of the document in a new list item (dd/li).
 	// In wikitext mode every root node is a paragraph.
 	// In visual mode the editor takes care of preventing problematic nodes
 	// like <table> or <h2> from ever occurring in the comment.
+	var newParsoidItem;
 	while ( container.childNodes.length ) {
 		if ( !newParsoidItem ) {
-			newParsoidItem = addListItem( comment );
+			newParsoidItem = addListItem( comment, config.replyIndentation );
 		} else {
 			newParsoidItem = addSiblingListItem( newParsoidItem );
 		}

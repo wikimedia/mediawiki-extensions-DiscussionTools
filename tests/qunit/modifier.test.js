@@ -33,7 +33,7 @@ QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
 		// every reply would be super slow.
 		var nodes = [];
 		comments.forEach( function ( comment ) {
-			var node = modifier.addListItem( comment );
+			var node = modifier.addListItem( comment, 'invisible' );
 			node.textContent = 'Reply to ' + comment.id;
 			nodes.push( node );
 		} );
