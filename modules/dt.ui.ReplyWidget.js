@@ -642,15 +642,17 @@ ReplyWidget.prototype.teardown = function ( abandoned ) {
  */
 ReplyWidget.prototype.onWatchToggle = function ( isWatched ) {
 	var widget = this;
-	this.checkboxesPromise.then( function ( checkboxes ) {
-		if ( checkboxes.checkboxesByName.wpWatchthis ) {
-			checkboxes.checkboxesByName.wpWatchthis.setSelected(
-				!!mw.user.options.get( 'watchdefault' ) ||
-				( !!mw.user.options.get( 'watchcreations' ) && !widget.pageExists ) ||
-				isWatched
-			);
-		}
-	} );
+	if ( this.pageName === mw.config.get( 'wgRelevantPageName' ) ) {
+		this.checkboxesPromise.then( function ( checkboxes ) {
+			if ( checkboxes.checkboxesByName.wpWatchthis ) {
+				checkboxes.checkboxesByName.wpWatchthis.setSelected(
+					!!mw.user.options.get( 'watchdefault' ) ||
+					( !!mw.user.options.get( 'watchcreations' ) && !widget.pageExists ) ||
+					isWatched
+				);
+			}
+		} );
+	}
 };
 
 /**
