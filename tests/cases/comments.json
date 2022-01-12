@@ -160,6 +160,14 @@
 		"data": "../data/nlwiki-data.json"
 	},
 	{
+		"name": "Signature which is just a selflink",
+		"title": "User_talk:Ed",
+		"dom": "cases/selflink-signature/selflink-signature.html",
+		"expected": "../cases/selflink-signature/selflink-signature.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Link using fallback 8-bit encoding (invalid UTF-8)",
 		"title": "Wikipédia:Kocsmafal (műszaki)/Archív32",
 		"dom": "cases/fallback-encoding-link/fallback-encoding-link.html",

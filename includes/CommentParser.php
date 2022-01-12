@@ -519,9 +519,15 @@ class CommentParser {
 	 * @param Element $link
 	 * @return string|null Username, or null
 	 */
-	private static function getUsernameFromLink( Element $link ): ?string {
+	private function getUsernameFromLink( Element $link ): ?string {
 		$username = null;
-		$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '' );
+
+		// Selflink: use title of current page
+		if ( strstr( $link->getAttribute( 'class' ) ?: '', 'mw-selflink' ) !== false ) {
+			$title = $this->title;
+		} else {
+			$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '' );
+		}
 		if ( !$title ) {
 			return null;
 		}
@@ -601,7 +607,7 @@ class CommentParser {
 				//
 				// Handle links nested in formatting elements.
 				if ( $event === 'leave' && $node instanceof Element && strtolower( $node->nodeName ) === 'a' ) {
-					$username = self::getUsernameFromLink( $node );
+					$username = $this->getUsernameFromLink( $node );
 					if ( $username ) {
 						// Accept the first link to the user namespace, then only accept links to that user
 						if ( $sigUsername === null ) {
