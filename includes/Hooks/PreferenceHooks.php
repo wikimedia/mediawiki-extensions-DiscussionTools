@@ -218,7 +218,6 @@ class PreferenceHooks implements
 			if ( HookUtils::isFeatureAvailableToUser( $user, HookUtils::AUTOTOPICSUB ) ) {
 				$userOptionsManager->setOption( $user, 'discussiontools-' . HookUtils::AUTOTOPICSUB, 1 );
 			}
-			$user->saveSettings();
 		}
 	}
 
