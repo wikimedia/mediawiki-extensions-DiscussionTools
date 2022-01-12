@@ -10,6 +10,35 @@ mw.dt = {};
 
 mw.dt.initState = {};
 
+// New Topic A/B test for logged out users:
+var tokenData = mw.storage.getObject( 'DTNewTopicABToken' );
+if ( tokenData && tokenData.expires < Date.now() ) {
+	mw.storage.remove( 'DTNewTopicABToken' );
+	tokenData = null;
+}
+if ( mw.user.isAnon() && mw.config.get( 'wgDiscussionToolsABTest' ) ) {
+	if ( !tokenData ) {
+		tokenData = {
+			token: mw.user.generateRandomSessionId(),
+			// 90 days
+			expires: Date.now() + 90 * 24 * 60 * 60 * 1000
+		};
+		mw.storage.setObject( 'DTNewTopicABToken', tokenData );
+	}
+	mw.config.set( 'wgDiscussionToolsAnonymousUserId', tokenData.token );
+	var anonid = parseInt( tokenData.token.slice( 0, 8 ), 16 );
+	var abstate = anonid % 2 === 0 ? 'test' : 'control';
+	mw.config.set( 'wgDiscussionToolsABTestBucket', abstate );
+	var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
+	if ( abstate === 'test' ) {
+		$( document.body ).addClass( 'ext-discussiontools-newtopictool-enabled' );
+		featuresEnabled.newtopictool = true;
+	} else {
+		$( document.body ).removeClass( 'ext-discussiontools-newtopictool-enabled' );
+		featuresEnabled.newtopictool = false;
+	}
+}
+
 if ( uri.query.dtrepliedto ) {
 	// If we had to reload the page to highlight the new comment, extract that data from the URL and
 	// clean it up.

@@ -93,14 +93,25 @@ class PageHooks implements
 
 		// Load style modules if the tools can be available for the title
 		// to selectively hide DT features, depending on the body classes added above.
-		if ( HookUtils::isAvailableForTitle( $output->getTitle() ) ) {
+		$availableForTitle = HookUtils::isAvailableForTitle( $output->getTitle() );
+		if ( $availableForTitle ) {
 			$output->addModuleStyles( [
 				'ext.discussionTools.init.styles',
 			] );
 		}
 
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
+
 		// Load modules if any DT feature is enabled for this user
-		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
+		if (
+			HookUtils::isFeatureEnabledForOutput( $output ) || (
+				// logged out users should get the modules when there's an a/b test
+				// client-side overrides of the enabling will occur
+				$availableForTitle &&
+				$dtConfig->get( 'DiscussionToolsABTest' ) &&
+				!$user->isRegistered()
+			)
+		) {
 			$output->addModules( [
 				'ext.discussionTools.init'
 			] );
@@ -125,7 +136,6 @@ class PageHooks implements
 					$editor
 				);
 			}
-			$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 			$abstate = $dtConfig->get( 'DiscussionToolsABTest' ) ?
 				$this->userOptionsLookup->getOption( $user, 'discussiontools-abtest2' ) :
 				false;

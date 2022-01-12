@@ -43,6 +43,11 @@ class ResourceLoaderHooks implements
 			$dtConfig->get( 'DTSchemaEditAttemptStepSamplingRate' );
 		$vars['wgDTSchemaEditAttemptStepOversample'] =
 			$dtConfig->get( 'DTSchemaEditAttemptStepOversample' );
+
+		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
+		if ( $abtest ) {
+			$vars['wgDiscussionToolsABTest'] = $abtest;
+		}
 	}
 
 }

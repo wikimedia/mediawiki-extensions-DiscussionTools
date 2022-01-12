@@ -202,6 +202,10 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 
 		if ( mw.config.get( 'wgDiscussionToolsABTestBucket' ) ) {
 			data.bucket = mw.config.get( 'wgDiscussionToolsABTestBucket' );
+			if ( mw.user.isAnon() && mw.config.get( 'wgDiscussionToolsAnonymousUserId' ) ) {
+				// eslint-disable-next-line camelcase
+				data.anonymous_user_token = mw.config.get( 'wgDiscussionToolsAnonymousUserId' );
+			}
 		}
 
 		$.extend( data, session );
