@@ -32,6 +32,14 @@
 		"data": "../data/itwiki-data.json"
 	},
 	{
+		"name": "transclusions - comment partially template-generated 3",
+		"title": "Commons talk:SPARQL query service",
+		"dom": "cases/transclusions5/transclusions5.html",
+		"expected": "../cases/transclusions5/transclusions5-transcludedFrom.json",
+		"config": "../data/commonswiki-config.json",
+		"data": "../data/commonswiki-data.json"
+	},
+	{
 		"name": "enwiki parsoid",
 		"title": "Wikipedia:Village pump (technical)/Archive 175",
 		"dom": "cases/en-big-parsoid/en-big-parsoid.html",
