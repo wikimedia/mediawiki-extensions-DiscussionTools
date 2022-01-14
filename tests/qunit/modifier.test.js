@@ -5,11 +5,12 @@ var
 
 QUnit.module( 'mw.dt.modifier', testUtils.newEnvironment() );
 
-QUnit.test( '#addListItem/#removeAddedListItem', function ( assert ) {
-	var cases = require( '../cases/modified.json' ),
-		fixture = document.getElementById( 'qunit-fixture' );
+require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
+	// This should be one test with many cases, rather than multiple tests, but the cases are large
+	// enough that processing all of them at once causes timeouts in Karma test runner.
+	QUnit.test( '#addListItem/#removeAddedListItem case ' + i, function ( assert ) {
+		var fixture = document.getElementById( 'qunit-fixture' );
 
-	cases.forEach( function ( caseItem ) {
 		var dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
 			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
 			config = require( caseItem.config ),
