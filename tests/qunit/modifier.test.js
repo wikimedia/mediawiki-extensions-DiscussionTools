@@ -34,7 +34,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
 		// every reply would be super slow.
 		var nodes = [];
 		comments.forEach( function ( comment ) {
-			var node = modifier.addListItem( comment, 'invisible' );
+			var node = modifier.addListItem( comment, caseItem.replyIndentation || 'invisible' );
 			node.textContent = 'Reply to ' + comment.id;
 			nodes.push( node );
 		} );
