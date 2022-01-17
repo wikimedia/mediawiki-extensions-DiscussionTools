@@ -6,8 +6,9 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Kommentar med ID-en «$1» ikke funnet.",
-	"apierror-discussiontools-commentname-ambiguous": "Flere kommentarer med navnet «$1» funnet, bruk ID-en i stedet.",
+	"apierror-discussiontools-commentname-ambiguous": "Flere kommentarer med navnet «$1» funnet, bruk <var>commentid</var> i stedet.",
 	"apierror-discussiontools-commentname-notfound": "Kommentar med navnet «$1» ikke funnet.",
+	"apierror-discussiontools-formtoken-used": "Kommentaren er allerede publisert. Oppdater siden for å se den.",
 	"apierror-discussiontools-subscription-failed-add": "Kunne ikke abonnere på dette emnet.",
 	"apierror-discussiontools-subscription-failed-remove": "Kunne ikke fjerne abonnement på dette emnet.",
 	"apihelp-discussiontools-param-oldid": "Revisjonstallet som skal brukes (standard er siste revisjon).",
@@ -15,6 +16,7 @@
 	"apihelp-discussiontools-summary": "Returnerer metadata som kreves for å initialisere diskusjonsverktøyene.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID-en til kommentaren det skal svares på. Brukes kun når <var>paction</var> er <var>addcomment</var>. Overstyrer <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Navnet på kommentaren det skal svares på. Brukes kun når <var>paction</var> er <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-formtoken": "En valgfri unik ID generert hos klienten for å unngå at et innlegg publiseres flere ganger.",
 	"apihelp-discussiontoolsedit-param-html": "Innhold som skal postes, som HTML. Kan ikke brukes sammen med <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Brukes kun når <var>paction</var> er <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Innhold som skal postes som wikitekst. Kan ikke brukes sammen med <var>html</var>.",
