@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abbaty",
+			"Bashir Gwanki",
+			"Em-em",
+			"Gwanki",
+			"Harunaningi",
+			"Itzedubaba",
+			"Umar-askirason"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Martani",
+	"discussiontools-desc": "Kayayyakin inganta shafukan tattaunawa.",
+	"discussiontools-error-comment-conflict": "Sharhin ku ba'a iya adana ta ba, saboda da wani yayi sharhi a daidai lokacin da kuma kuka yi. Kuyi hakuri ku sake jarabawa, ko ku sake aika shafin dan ganin sharhunan dake nan ayanzu.",
+	"discussiontools-error-comment-disappeared": "Ba'a iya samun shafin sharhin da kuke martani akai ba. Zai iya zama an goge ko an gusar da ita zuwa wani shafin. Yi hakuri ku sake aika shafin ku sake jarabawa.",
+	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" link ba za'a iya amfani dashi ba dan yin martani ga wannan sharhin ba. Dan martani, yi hakuri kuyi amfani da cikekken shafin dan amfani maɓallin gyara ta danna \"$1\"."
+}

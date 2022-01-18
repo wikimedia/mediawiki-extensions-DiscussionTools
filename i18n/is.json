@@ -2,14 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Þjarkur"
+			"Þjarkur",
+			"Snævar"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Svar",
+	"discussiontools-preference-replytool": "Virkja snöggan svarmöguleika",
 	"discussiontools-replylink": "svara",
 	"discussiontools-replywidget-abandon": "Ertu viss um að þú viljir hætta við þetta svar?",
 	"discussiontools-replywidget-abandon-discard": "Hætta við",
 	"discussiontools-replywidget-abandon-keep": "Halda áfram að skrifa",
+	"discussiontools-replywidget-abandontopic": "Ertu viss um að þú viljir hætta við umræðuefnið sem þú vart að skrifa um?",
+	"discussiontools-replywidget-abandontopic-discard": "Henda efni",
+	"discussiontools-replywidget-abandontopic-keep": "Halda áfram að skrifa",
 	"discussiontools-replywidget-advanced": "Frekari stillingar",
 	"discussiontools-replywidget-anon-warning": "<strong>Þú ert ekki skráð(ur) inn.</strong> Til að svarið verði merkt með notendanafni í staðinn fyrir IP-tölunni þinni geturðu [$1 skráð þig inn] eða [$2 stofnað aðgang].",
 	"discussiontools-replywidget-cancel": "Hætta við",
@@ -22,8 +27,10 @@
 	"discussiontools-replywidget-placeholder-reply": "Skrifa svar til {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Forskoða",
 	"discussiontools-replywidget-reply": "Svara",
+	"discussiontools-replywidget-signature-body": "$1 hefur verið breytt í undirskriftina þína Til þess að taka þetta aftur, smelltu á $2. Athugaðu að þú þarft ekki að skrifa undir ummæli með þessu tóli. Undirskriftinni þinni verður bætt við sjálfkrafa.",
 	"discussiontools-replywidget-signature-title": "Þú virðist hafa notað tildur („~“) til að skrifa undir, en ekki er þörf á því",
 	"discussiontools-replywidget-summary": "Breytingarágrip",
+	"discussiontools-replywidget-terms-click": "Með því að smella á \"$1\", samþykkir þú notendaskilmála þessa wiki vefsvæðis.",
 	"discussiontools-replywidget-transcluded": "Svarið þitt verður ekki vistað á þessari síðu heldur á [[$1]].",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nýr hluti]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
