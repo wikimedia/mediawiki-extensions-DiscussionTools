@@ -48,6 +48,7 @@
 						"discussiontools-replywidget-feedback-link",
 						"discussiontools-replywidget-feedback-link-newtopic",
 						"discussiontools-replywidget-mention-prefix",
+						"discussiontools-replywidget-mention-suffix",
 						"discussiontools-signature-prefix"
 					]
 				},

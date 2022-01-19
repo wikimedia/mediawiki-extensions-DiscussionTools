@@ -156,11 +156,12 @@ MWUsernameCompletionAction.prototype.getHeaderLabel = function ( input, suggesti
 
 MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range ) {
 	var prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
+		suffix = mw.msg( 'discussiontools-replywidget-mention-suffix' ),
 		title = mw.Title.newFromText( word, mw.config.get( 'wgNamespaceIds' ).user );
 
 	if ( this.surface.getMode() === 'source' ) {
 		// TODO: this should be configurable per-wiki so that e.g. custom templates can be used
-		word = prefix + '[[' + title.getPrefixedText() + '|' + word + ']]';
+		word = prefix + '[[' + title.getPrefixedText() + '|' + word + ']]' + suffix;
 		return MWUsernameCompletionAction.super.prototype.insertCompletion.call( this, word, range );
 	}
 

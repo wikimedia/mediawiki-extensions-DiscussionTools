@@ -50,6 +50,7 @@ CeMWPingNode.static.getDescription = function ( model ) {
 CeMWPingNode.prototype.initialize = function () {
 	var model = this.getModel(),
 		prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
+		suffix = mw.msg( 'discussiontools-replywidget-mention-suffix' ),
 		user = model.getAttribute( 'user' ),
 		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, user );
 
@@ -72,7 +73,8 @@ CeMWPingNode.prototype.initialize = function () {
 
 	this.$element.append(
 		prefix,
-		$link
+		$link,
+		suffix
 	);
 };
 
