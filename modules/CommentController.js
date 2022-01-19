@@ -156,6 +156,10 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 
 		// On first load, add a placeholder list item
 		commentController.newListItem = modifier.addListItem( comment, dtConf.replyIndentation );
+		if ( commentController.newListItem.tagName.toLowerCase() === 'li' ) {
+			// When using bullet syntax, hide the marker. (T259864#7634107)
+			$( commentController.newListItem ).addClass( 'ext-discussiontools-init-noMarker' );
+		}
 		$( commentController.newListItem ).append(
 			// Microsoft Edge's built-in translation feature replaces the entire element when it finishes
 			// translating it, which often happens after our interface has loaded, clobbering it, unless
@@ -168,24 +172,12 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		if ( !commentController.newListItem ) {
 			// On subsequent loads, there's no list item yet, so create one now
 			commentController.newListItem = modifier.addListItem( comment, dtConf.replyIndentation );
+			if ( commentController.newListItem.tagName.toLowerCase() === 'li' ) {
+				// When using bullet syntax, hide the marker. (T259864#7634107)
+				$( commentController.newListItem ).addClass( 'ext-discussiontools-init-noMarker' );
+			}
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
-
-		if ( commentController.newListItem.tagName.toLowerCase() === 'li' ) {
-			// When using bullet syntax, add some normal-looking text to the list item, so that the list
-			// marker will be shown in a reasonable place. If there's no obvious text, browsers go crazy.
-			// (IE 11 adds some empty space at the top of the list item, and aligns the marker with it;
-			// Firefox and Chrome place it somewhere in the middle of our reply widget, in different
-			// places in visual and source mode.)
-			//
-			// The spec itself describes its rules for placing the marker as "handwavey nonsense".
-			// https://www.w3.org/TR/css-lists-3/#list-style-position-property
-			$( commentController.newListItem ).prepend(
-				$( '<div>' )
-					.addClass( 'ext-discussiontools-ui-markerPlaceholder' )
-					.text( '\u00a0' )
-			);
-		}
 
 		commentController.setupReplyWidget( replyWidget );
 
