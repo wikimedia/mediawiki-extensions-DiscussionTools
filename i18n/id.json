@@ -47,6 +47,7 @@
 	"discussiontools-preference-replytool": "Aktifkan balas cepat",
 	"discussiontools-preference-replytool-help": "Ini akan menampilkan Anda sebuah pranala untuk membalas komentar halaman pembicaraan dalam satu kali tekan.",
 	"discussiontools-preference-sourcemodetoolbar": "Aktifkan peralatan menyunting di mode sumber",
+	"discussiontools-preference-sourcemodetoolbar-help": "Ini akan menambahkan bilah perkakas untuk membalas pesan dan menambahkan topik dengan cepat sebagai fitur di mode sumber, termasuk pintasan untuk memanggil orang dan menambahkan pranala.",
 	"discussiontools-preference-topicsubscription": "Aktifkan langganan topik",
 	"discussiontools-preference-topicsubscription-help": "Ini akan memungkinkan Anda berlangganan untuk menerima pemberitahuan komentar tentang topik tunggal.",
 	"discussiontools-replylink": "balas",
@@ -99,6 +100,7 @@
 	"tag-discussiontools-reply-description": "Pengguna membalas komentar dengan DiscussionTools",
 	"tag-discussiontools-source": "Sumber",
 	"tag-discussiontools-source-description": "DiscussionTools dalam mode sumber",
+	"tag-discussiontools-source-enhanced-description": "DiscussionTools dalam mode yang ditingkatkan dengan bilah perkakas",
 	"tag-discussiontools-visual": "Visual",
 	"tag-discussiontools-visual-description": "DiscussionTools dalam mode visual"
 }

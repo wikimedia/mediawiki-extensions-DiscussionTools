@@ -22,6 +22,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Tambahkan sebuah komentar baru sebagai jawaban terhadap komentar yang telah ada.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Tambahkan sebuah bagian diskusi baru dan komentar pertama di dalamnya.",
 	"apihelp-discussiontoolsedit-summary": "Kirim pesan di halaman diskusi.",
+	"apihelp-discussiontoolssubscribe-param-page": "Sebuah halaman di mana topik ini muncul",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Nama topik yang ingin mulai/berhenti berlangganan",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Benar untuk berlangganan, salah untuk tidak berlangganan",
 	"apihelp-discussiontoolssubscribe-summary": "Berlangganan (atau batalkan langganan) untuk menerima notifikasi tentang sebuah topik."
 }
