@@ -636,6 +636,10 @@
 			"value": "2022-07-12",
 			"description": "Date on which the internal timestamp format has changed (T304595), in ISO 8601 format."
 		},
+		"DiscussionToolsConflictingGadgetName": {
+			"value": "convenientDiscussions",
+			"description": "Internal name of the Convenient Discussions gadget, which conflicts with the reply tool. Reply tool will be unavailable when the user has this gadget enabled."
+		},
 		"DTSchemaEditAttemptStepSamplingRate": {
 			"value": 0,
 			"description": "Rate at which to sample sessions for instrumentation; overrides WikimediaEvents rate if set to any number other than 0"

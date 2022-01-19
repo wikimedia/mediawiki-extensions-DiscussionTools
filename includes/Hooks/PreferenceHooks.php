@@ -103,6 +103,14 @@ class PreferenceHooks implements
 						'section' => 'editing/discussion',
 					];
 				}
+
+				// Make this option unavailable when a conflicting Convenient Discussions gadget exists
+				// (we can't use 'disable-if' or 'hide-if', because they don't let us change the labels).
+				if ( HookUtils::featureConflictsWithGadget( $user, $feature ) ) {
+					$preferences["discussiontools-$feature"]['disabled'] = true;
+					$preferences["discussiontools-$feature"]['help-message'] =
+						[ 'discussiontools-preference-gadget-conflict', 'Special:Preferences#mw-prefsection-gadgets' ];
+				}
 			}
 		}
 
