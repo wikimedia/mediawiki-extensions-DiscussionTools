@@ -2,11 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Artsiom91",
+			"Chadyka",
 			"Kareyac",
 			"ZlyiLev"
 		]
 	},
 	"discussiontools": "Інструменты абмеркаванняў",
+	"discussiontools-autotopicsubpopup-body": "Вы атрымаеце апавяшчэнне, калі хто-небудзь апублікуе новы каментар у гэтым абмеркаванні. Вы можаце зменіць налады апавяшчэнняў.",
+	"discussiontools-autotopicsubpopup-dismiss": "Так, зразумела",
+	"discussiontools-autotopicsubpopup-preferences": "Зменіць налады",
+	"discussiontools-autotopicsubpopup-title": "Вы былі падпісаныя",
 	"discussiontools-defaultsummary-reply": "Адказ",
 	"discussiontools-desc": "Інструменты для паляпшэння старонак абмеркаванняў.",
 	"discussiontools-emptystate-button": "Пачаць размову",
@@ -14,6 +19,9 @@
 	"discussiontools-emptystate-desc-self": "Удзельнікі {{genitive:{{SITENAME}}}} могуць ужываць гэту [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|старонку размоў]], каб напісаць вам публічнае паведамленне, і вы будзе апавешчаны, калі гэта адбудзецца.",
 	"discussiontools-emptystate-desc-user": "Старонкі размоў — старонкі, дзе ўдзельнікі абмяркоўваюць, як зрабіць змест {{GRAMMAR:genitive|{{SITENAME}}}} лепш. Пачніце новую размову для сувязі і супрацы з удзельнікам [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Сказанае тут будзе бачна іншым удзельнікам. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Даведацца больш]]",
 	"discussiontools-emptystate-title": "Пачаць новую размову пра старонку «{{PAGENAME}}».",
+	"discussiontools-emptystate-title-self": "Сардэчна запрашаем на вашу размойную старонку",
+	"discussiontools-emptystate-title-self-anon": "Сардэчна запрашаем на гэтую размойную старонку",
+	"discussiontools-emptystate-title-user-anon": "Сардэчна запрашаем на гэтую размойную старонку",
 	"discussiontools-error-comment-conflict": "Ваш каментарый не можа быць захаваны, бо нехта яшчэ пакінуў каментарый адначасова з вамі. Калі ласка, паспрабуйце зноў або перазагрузіце старонку, каб пабачыць апошнія каментарыі.",
 	"discussiontools-error-comment-disappeared": "Немагчыма знайсці каментарый, на які вы адказваеце, на гэтай старонцы. Магчыма, ён выдалены або перанесены на іншую старонку. Калі ласка, перазагрузіце старонку і паспрабуйце зноў.",
 	"discussiontools-error-comment-is-transcluded": "Спасылка \"{{int:discussiontools-replylink}}\" не можа быць выкарыстана для адказу на гэты каментарый. Каб адказаць, калі ласка, скарыстайцеся рэдактарам усёй старонкі, націснуўшы \"$1\".",
@@ -72,6 +80,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicsubscription-button-subscribe": "падпісацца",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Падпішыцеся на атрыманне апавяшэнняў пра новыя каментарыі.",
+	"discussiontools-topicsubscription-button-unsubscribe": "адпісацца",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Вы атрымаеце апавяшчэнні пра новыя каментарыі ў гэтай тэме.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Падпісаны",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вы больш не будзеце атрымліваць апавяшчэнні пра новыя каментарыі ў гэтай тэме.",
