@@ -25,7 +25,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	/**
 	 * @var EchoPresentationModelSection
 	 */
-	private $section;
+	protected $section;
 
 	/**
 	 * @inheritDoc
