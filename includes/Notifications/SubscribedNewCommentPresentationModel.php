@@ -11,7 +11,6 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use EchoEvent;
 use EchoEventPresentationModel;
-use EchoPresentationModelSection;
 use Language;
 use MediaWiki\MediaWikiServices;
 use Message;
@@ -23,7 +22,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	use DiscussionToolsEventTrait;
 
 	/**
-	 * @var EchoPresentationModelSection
+	 * @var PlaintextEchoPresentationModelSection
 	 */
 	protected $section;
 
@@ -32,7 +31,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	 */
 	protected function __construct( EchoEvent $event, Language $language, User $user, $distributionType ) {
 		parent::__construct( $event, $language, $user, $distributionType );
-		$this->section = new EchoPresentationModelSection( $event, $user, $language );
+		$this->section = new PlaintextEchoPresentationModelSection( $event, $user, $language );
 	}
 
 	/**
