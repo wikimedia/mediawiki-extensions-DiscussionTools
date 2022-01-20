@@ -9,7 +9,7 @@
 	"discussiontools-defaultsummary-reply": "Uçuaxara",
 	"discussiontools-desc": "Murakimae'etá umukatupíri pirí murũgitaçawa sowa'etá.",
 	"discussiontools-emptystate-button": "Uyupirũ yepé murũgitaçawa",
-	"discussiontools-emptystate-title": "Uyupirũ yepé murũgitaçawa {{PAGENAME}} reçé",
+	"discussiontools-emptystate-title": "Uyupirũ yepé murũgitaçawa {{SUBJECTPAGENAME}} reçé",
 	"discussiontools-emptystate-title-self": "Purãga resika nemurũgitaçawa sowa upé",
 	"discussiontools-emptystate-title-self-anon": "Purãga resika kuá murũgitaçawa sowa upé",
 	"discussiontools-emptystate-title-user": "Uyupirũ yepé murũgitaçawa {{GENDER:{{PAGENAME}}|irũ}} {{PAGENAME}}",

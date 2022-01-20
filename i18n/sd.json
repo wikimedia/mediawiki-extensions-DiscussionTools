@@ -9,7 +9,7 @@
 	"discussiontools-defaultsummary-reply": "ورندي",
 	"discussiontools-desc": "بحث صفحن کي سڌارڻ لاءِ اوزار.",
 	"discussiontools-emptystate-button": "ڪو بحث شروع ڪريو",
-	"discussiontools-emptystate-title": "{{PAGENAME}} ڪو بحث شروع ڪريو",
+	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} ڪو بحث شروع ڪريو",
 	"discussiontools-emptystate-title-self": "توھان جي بحث صفحي تي ڀليڪار",
 	"discussiontools-emptystate-title-self-anon": "ھن بحث صفحي تي ڀليڪار",
 	"discussiontools-emptystate-title-user": "{{PAGENAME}} {{GENDER:{{PAGENAME}}|سان}} ڪا گفتگو شروع ڪريو",

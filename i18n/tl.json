@@ -8,7 +8,7 @@
 	"discussiontools-defaultsummary-reply": "Tugon",
 	"discussiontools-desc": "Mga kagamitan upang mapabuti ang mga pahina ng usapan.",
 	"discussiontools-emptystate-button": "Magsimula ng isang usapan",
-	"discussiontools-emptystate-desc": "Sa mga pahina ng usapan ang lugar kung saan pinag-uusapan ng mga indibiduwal kung paano gumawa ng nilalaman sa {{SITENAME}} sa pinakamabuting paraan. Maari mong gamitin ang pahinang ito upang magsimula makipag-usap sa ibang indibiduwal tungkol kung papaano mapabuti ang [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Alamin pa]]",
+	"discussiontools-emptystate-desc": "Sa mga pahina ng usapan ang lugar kung saan pinag-uusapan ng mga indibiduwal kung paano gumawa ng nilalaman sa {{SITENAME}} sa pinakamabuting paraan. Maari mong gamitin ang pahinang ito upang magsimula makipag-usap sa ibang indibiduwal tungkol kung papaano mapabuti ang [[:{{SUBJECTPAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Alamin pa]]",
 	"discussiontools-emptystate-desc-self": "Maaring gamitin ng mga indibiduwal sa {{SITENAME}} ang pahinang ito upang maglagay ng isang publikong mensahe para sa iyo at maabiso ka kapag ginawa nila ito. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Alamin pa]]",
 	"discussiontools-replylink": "tugon"
 }

@@ -12,7 +12,7 @@
 	"discussiontools-desc": "\nߘߊߘߐߖߊߥߏ߫ ߞߐߜߍ ߟߎ߬ ߦߋ߫ ߟߊߢߊ߬ ߟߊ߫ ߖߐ߯ߙߊ߲ ߡߍ߲ ߠߊ߫.",
 	"discussiontools-emptystate-button": "ߘߊߘߐߖߊߥߏ ߘߏ߫ ߘߊߡߌ߬ߣߊ߬",
 	"discussiontools-emptystate-desc-self": "ߡߐ߱ ߡߍ߲ ߠߎ߬ ߦߋ߫ {{SITENAME}} ߞߊ߲߬߸ ߏ߬ ߟߎ߬ ߘߌ߫ ߛߋ߫ [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|ߞߎߡߊ߫ ߞߐߜߍ]] ߟߊߓߊ߯ߙߊ߫ ߟߊ߫ ߞߊ߬ ߖߊ߬ߡߊ ߢߊߞߘߐ߫ ߗߋߛߓߍ ߟߎ߬ ߗߋ߫ ߌ ߡߊ߬߸ ߊ߬ ߣߴߌ ߘߌ߫ ߛߋ߫ ߖߊ߲߭ߓߌ߬ߟߊ߬ ߟߊ߫ ߣߴߊ߬ߟߎ߫ ߞߵߏ߬ ߞߍ߫.",
-	"discussiontools-emptystate-title": "ߘߊߘߐߖߊߥߏ ߘߊߡߌ߬ߣߊ߬ {{PAGENAME}} ߞߊ߲߬",
+	"discussiontools-emptystate-title": "ߘߊߘߐߖߊߥߏ ߘߊߡߌ߬ߣߊ߬ {{SUBJECTPAGENAME}} ߞߊ߲߬",
 	"discussiontools-emptystate-title-self": "ߌ ߣߌ߫ ߛߣߍ߫ ߌ ߟߊ߫ ߞߎߡߊ߫ ߞߐߜߍ ߞߊ߲߬",
 	"discussiontools-emptystate-title-self-anon": "ߌ ߣߌ߫ ߛߣߍ߫ ߞߎߡߊ߫ ߞߐߜߍ ߣߌ߲߬ ߞߊ߲߬",
 	"discussiontools-emptystate-title-user": "ߘߊߘߐߖߊߥߏ ߘߊߡߌ߬ߣߊ߬ {{PAGENAME}} {{GENDER:{{PAGENAME}}{{PAGENAME}}|ߘߌ߫}}",
