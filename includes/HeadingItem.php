@@ -106,6 +106,11 @@ class HeadingItem extends ThreadItem {
 		if ( $this->isPlaceholderHeading() ) {
 			return false;
 		}
+		// Collapsed ranges should otherwise be impossible, but they're not (T299583)
+		// TODO: See if we can fix the root cause, and remove this?
+		if ( $this->getRange()->collapsed ) {
+			return false;
+		}
 		return parent::getTranscludedFrom();
 	}
 }
