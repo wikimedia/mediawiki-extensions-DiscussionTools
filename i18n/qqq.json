@@ -89,6 +89,7 @@
 	"discussiontools-replywidget-feedback-link-newtopic": "{{notranslate}}\nLink to a page where users can share feedback about the new topic widget. Defaults to a page on MediaWiki.org.",
 	"discussiontools-replywidget-loading": "Message shown while the reply widget is loading",
 	"discussiontools-replywidget-mention-prefix": "{{optional|Character to prefix mentions. This does not have to be the same as the trigger character, which is always '@'.}}",
+	"discussiontools-replywidget-mention-suffix": "{{optional|Character to suffix mentions. This is intended for community customization in languages with honorifics.}}",
 	"discussiontools-replywidget-mention-tool-header": "Header of search results when searching for a user to mention.\n\nParameters:\n* $1 – search query for the username. Note that this is not a full username, and '''can't''' be used with <code><nowiki>{{GENDER:}}</nowiki></code>.",
 	"discussiontools-replywidget-mention-tool-title": "Title text for the user mention tool.",
 	"discussiontools-replywidget-mode-source": "Label for the widget's source mode.\n\nThis should not include the word 'edit' or 'editor', and where possible should avoid 'wikitext' which is MediaWiki-specific terminology.",
