@@ -21,13 +21,17 @@
 	"discussiontools-emptystate-title-user": "Bẹ hodọdopọ de jẹeji {{GENDER:{{PAGENAME}}|po}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Kuavọ do weda hodọdopọtẹn ehe",
 	"discussiontools-error-comment-conflict": "Gblọndo towe ma sọgan yin sisẹdo, na mẹdevo ko na gblọndo to whenue a to gblọndo na. Jaale bo vọ gblọndo towe kan kavi bo vọ weda lọ mẹ biọ nado pọn diọdo yọyọ lẹ",
+	"discussiontools-newtopic-placeholder-title": "Hosọ",
+	"discussiontools-replylink": "na gblọndo",
 	"discussiontools-replywidget-cancel": "Hònupla",
 	"discussiontools-replywidget-mode-source": "Asisa",
 	"discussiontools-replywidget-preferences": "Nujlomẹ lẹ",
+	"discussiontools-replywidget-reply": "Na gblọndo",
 	"discussiontools-replywidget-summary": "Bladopọ",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "A ma yin mimato",
 	"discussiontools-topicsubscription-button-subscribe": "Ma",
 	"discussiontools-topicsubscription-pager-page": "Weda",
+	"discussiontools-topicsubscription-pager-topic": "Hosọ",
 	"tag-discussiontools-source": "Asisa",
 	"tag-discussiontools-visual": "Awusọhia"
 }

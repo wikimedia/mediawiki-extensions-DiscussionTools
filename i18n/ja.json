@@ -25,7 +25,7 @@
 	"discussiontools-defaultsummary-reply": "返信",
 	"discussiontools-desc": "議論ページを充実させるためのツール",
 	"discussiontools-emptystate-button": "新しい議論を始める",
-	"discussiontools-emptystate-desc": "トークページとは{{SITENAME}}にあるコンテンツの最適化を皆さんで協議する場です。このページを利用し、[[:{{SUBJECTPAGENAME}}]]の改善について議論を始めることができます。[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|詳細はこちらをご覧ください]]。",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|トークページ]]とは{{SITENAME}}にあるコンテンツの最適化を皆さんで協議する場です。このページを利用し、[[:{{SUBJECTPAGENAME}}]]の改善について議論を始めることができます。",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}}のユーザーはこのページを利用してあなたへの公開メッセージを送信することができます。メッセージが送信されると通知が届きます。[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|このページの使い方に関する詳細はこちらをご覧ください]]。",
 	"discussiontools-emptystate-desc-self-anon": "{{SITENAME}}の匿名利用者はこの[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|トークページ]]を使って、使用中のIPアドレスから投稿した編集に関するメッセージを発信することができます。\n\nIP アドレスは定期的に書き換えられ、複数の人が共有する場合が多いです。[$1 アカウント登録をする]か[$2 ログイン]すると、将来的に匿名利用の他者との紛らわしさを回避できます。登録アカウントからログインすると、ご使用のIPアドレスは見えなくなります。",
 	"discussiontools-emptystate-desc-user": "トークページを利用して{{SITENAME}}にあるコンテンツを最適化する方法を協議します。[[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]に新しい議題をあげ、他の編集者と繋がったり共同作業を始めませんか。ここに投稿した内容は公開され他の人が閲覧します。[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|詳細はこちらをご覧ください]]。",
