@@ -65,5 +65,8 @@ https://en.wikipedia.org/api/rest_v1/page/html/User_talk%3ADylsss/1058459889
 transclusions4:
 https://it.wikipedia.org/api/rest_v1/page/html/Wikipedia%3AVandalismi_in_corso/124462482
 
+transclusions5:
+https://commons.wikimedia.org/api/rest_v1/page/html/Commons_talk%3ASPARQL_query_service
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.

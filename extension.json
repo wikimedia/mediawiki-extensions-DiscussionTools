@@ -285,6 +285,8 @@
 			"data/plwiki-data.json",
 			"data/srwiki-config.json",
 			"data/srwiki-data.json",
+			"data/commonswiki-config.json",
+			"data/commonswiki-data.json",
 			"cases/authors.json",
 			"cases/comments.json",
 			"cases/modified.json",
