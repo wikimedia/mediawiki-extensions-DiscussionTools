@@ -558,7 +558,7 @@ function highlightTargetComment( parser, noScroll ) {
 			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
 			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
 
-			if ( noScroll ) {
+			if ( !noScroll ) {
 				var topmostComment = 0;
 				for ( var i = 1; i < comments.length; i++ ) {
 					if ( highlights[ i ].getBoundingClientRect().top < highlights[ topmostComment ].getBoundingClientRect().top ) {
