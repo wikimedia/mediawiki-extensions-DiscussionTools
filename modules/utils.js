@@ -561,7 +561,11 @@ function compareRangesAlmostEqualBoundaries( a, b, boundary ) {
 	var from = boundary === 'end' ? getRangeLastNode( a ) : getRangeFirstNode( a );
 	var to = boundary === 'end' ? getRangeLastNode( b ) : getRangeFirstNode( b );
 
-	var skippingFrom = boundary === 'end';
+	var skipNode = null;
+	if ( boundary === 'end' ) {
+		skipNode = from;
+	}
+
 	var foundContent = false;
 	linearWalk(
 		from,
@@ -569,22 +573,27 @@ function compareRangesAlmostEqualBoundaries( a, b, boundary ) {
 			if ( n === to && event === ( boundary === 'end' ? 'leave' : 'enter' ) ) {
 				return true;
 			}
-			if ( skippingFrom ) {
-				skippingFrom = !( n === from && event === 'leave' );
+			if ( skipNode ) {
+				if ( n === skipNode && event === 'leave' ) {
+					skipNode = null;
+				}
 				return;
 			}
 
-			if (
-				event === 'enter' &&
-				(
-					!isCommentSeparator( n ) &&
-					!isRenderingTransparentNode( n ) &&
-					!isOurGeneratedNode( n ) &&
+			if ( event === 'enter' ) {
+				if (
+					isCommentSeparator( n ) ||
+					isRenderingTransparentNode( n ) ||
+					isOurGeneratedNode( n )
+				) {
+					skipNode = n;
+
+				} else if (
 					isCommentContent( n )
-				)
-			) {
-				foundContent = true;
-				return true;
+				) {
+					foundContent = true;
+					return true;
+				}
 			}
 		}
 	);
