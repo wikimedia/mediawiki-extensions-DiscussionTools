@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Karapananguasú Kururú Teremembé"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Uçuaxara",
+	"discussiontools-desc": "Murakimae'etá umukatupíri pirí murũgitaçawa sowa'etá.",
+	"discussiontools-preference-label": "Murũgitaçawa murakimae'etá",
+	"discussiontools-replylink": "uçuaxara",
+	"discussiontools-replywidget-cancel": "Umuamunika",
+	"discussiontools-replywidget-mode-source": "Çatari",
+	"discussiontools-replywidget-mode-visual": "Maãgawawara",
+	"discussiontools-replywidget-placeholder-reply": "Uçuaxara {{BIDI:$1}} çupé",
+	"discussiontools-replywidget-preview": "Umaã tenũdé",
+	"discussiontools-replywidget-reply": "Uçuaxara",
+	"tag-discussiontools-description": "Kuá murupiawa usó umunhã'ana upurú uikú DiscussionTools murakimaé",
+	"tag-discussiontools-source": "Çatari",
+	"tag-discussiontools-visual": "Maãgawawara"
+}

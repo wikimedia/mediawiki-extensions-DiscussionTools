@@ -29,6 +29,7 @@
 	"discussiontools-replywidget-transcluded": "لێدوانەکەت لە [[$1]] پاشەکەوت دەبێت.",
 	"discussiontools-error-comment-disappeared": "نەتواندرا ئەو لێدوانە بدۆزرێتەوە کە خەریکی وەڵامدانەوەییت لەسەر پەڕەکە. لەوانەیە سڕدرابێتەوە یان بۆ پەڕەیەکی تر گواسترابێتەوە. تکایە پەڕەکە بار بکەوە و دووبارە ھەوڵ بدەرەوە.",
 	"discussiontools-error-comment-is-transcluded": "ناتواندرێت بەستەری «{{int:discussiontools-replylink}}» بۆ وەڵامدانەوەی ئەم لێدوانە بەکاربێت. بۆ وەڵامدانەوە، تکایە بە کرتەکردن لە «$1» دەستکاریکەری تەواوی پەڕەکە بەکاربێنە.",
+	"discussiontools-error-comment-is-transcluded-title": "ناتوانرێت بەستەری «{{int:discussiontools-replylink}}» بۆ وەڵامدانەوەی ئەم لێدوانە بەکاربێت چونکە لەسەر پەڕەیەکی تر داگیراوە. بۆ وەڵامدانەوە، تکایە بڕۆ بۆ ئێرە: [[$1]].",
 	"tag-discussiontools-description": "دەستکاری لەڕێگەی بەکارھێنانی ئامرازەکانی وتووێژەوە کرا",
 	"tag-discussiontools-edit": "دەستکاریی لێدوان بکە",
 	"tag-discussiontools-edit-description": "بەکارھێنەر لەڕێگەی ئامرازەکانی وتووێژەوە دەستکاریی لێدوانێکی کرد",

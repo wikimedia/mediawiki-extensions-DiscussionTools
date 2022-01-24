@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abbaty",
+			"Bashir Gwanki",
+			"Em-em",
+			"Gwanki",
+			"Harunaningi",
+			"Itzedubaba",
+			"Umar-askirason"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Martani",
+	"discussiontools-desc": "Kayayyakin inganta shafukan tattaunawa.",
+	"discussiontools-error-comment-disappeared": "Ba'a iya samun shafin sharhin da kuke martani akai ba. Zai iya zama an goge ko an gusar da ita zuwa wani shafin. Yi hakuri ku sake aika shafin ku sake jarabawa.",
+	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" link ba za'a iya amfani dashi ba dan yin martani ga wannan sharhin ba. Dan martani, yi hakuri kuyi amfani da cikekken shafin dan amfani maɓallin gyara ta danna \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" ba za'a iya amfani da linki dan mayar da martani ga wannan sharhin ba saboda an shiga tane daga wani shafin. Dan mayar da martani, je ka nan: [[$1]].",
+	"discussiontools-error-lint": "Sharhin wannan shafi ba za'a iya mayar masu da martani ba, saboda wani kuskure a wikitext ɗin. Kuna iya sanin wannan kuskure ts [$1 reading the documentation], nema taimako ta [$2 posting here] ko gyara kuskuren [$3 opening the full page editor]."
+}
