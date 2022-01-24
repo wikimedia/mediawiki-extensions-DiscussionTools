@@ -80,7 +80,7 @@ class CommentUtils {
 	 */
 	public static function isOurGeneratedNode( Node $node ): bool {
 		return $node instanceof Element && (
-			$node->getAttribute( 'class' ) === 'ext-discussiontools-init-replylink-buttons' ||
+			DOMCompat::getClassList( $node )->contains( 'ext-discussiontools-init-replylink-buttons' ) ||
 			$node->hasAttribute( 'data-mw-comment' ) ||
 			$node->hasAttribute( 'data-mw-comment-start' ) ||
 			$node->hasAttribute( 'data-mw-comment-end' )
@@ -130,7 +130,7 @@ class CommentUtils {
 			// Horizontal line
 			strtolower( $node->nodeName ) === 'hr' ||
 			// {{outdent}} templates
-			$node->getAttribute( 'class' ) === 'outdent-template'
+			DOMCompat::getClassList( $node )->contains( 'outdent-template' )
 		);
 	}
 
@@ -270,7 +270,7 @@ class CommentUtils {
 			$headline = $headline->firstChild;
 			while (
 				$headline && !(
-					$headline instanceof Element && $headline->getAttribute( 'class' ) === 'mw-headline'
+					$headline instanceof Element && DOMCompat::getClassList( $headline )->contains( 'mw-headline' )
 				)
 			) {
 				$headline = $headline->nextSibling;
@@ -278,7 +278,7 @@ class CommentUtils {
 			if ( $headline ) {
 				if (
 					( $firstChild = $headline->firstChild ) instanceof Element &&
-					$firstChild->getAttribute( 'class' ) === 'mw-headline-number'
+					DOMCompat::getClassList( $firstChild )->contains( 'mw-headline-number' )
 				) {
 					$offset = 1;
 				}

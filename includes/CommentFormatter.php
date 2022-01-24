@@ -140,11 +140,7 @@ class CommentFormatter {
 					$headingNode = CommentUtils::closestElement( $threadItem->getRange()->endContainer, [ 'h2' ] );
 
 					if ( $headingNode ) {
-						$existingClass = $headingNode->getAttribute( 'class' );
-						$headingNode->setAttribute(
-							'class',
-							( $existingClass ? $existingClass . ' ' : '' ) . 'ext-discussiontools-init-section'
-						);
+						DOMCompat::getClassList( $headingNode )->add( 'ext-discussiontools-init-section' );
 
 						// Replaced in ::postprocessTopicSubscription() as the icon depends on user state
 						$subscribe = $doc->createComment( '__DTSUBSCRIBE__' . $threadItem->getName() );
