@@ -37,6 +37,7 @@
 	"discussiontools-postedit-confirmation-published": "Tavs komentārs tika publicēts.",
 	"discussiontools-postedit-confirmation-topicadded": "Tavs temats tika pievienots",
 	"discussiontools-preference-autotopicsub": "Automātiski abonēt tēmas",
+	"discussiontools-preference-autotopicsub-help": "Kad tu uzsāc jaunu diskusiju vai pievieno komentāru esošā diskusijā, tev tiks automātiski paziņots, kad citi pievienos jaunus komentārus tajā.",
 	"discussiontools-preference-label": "Diskusiju rīki",
 	"discussiontools-preference-newtopictool": "Iespējot ātro tematu pievienošanu",
 	"discussiontools-preference-replytool": "Iespējot ātro atbildēšanu",
