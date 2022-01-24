@@ -635,32 +635,41 @@ class CommentUtils {
 		$from = $boundary === 'end' ? self::getRangeLastNode( $a ) : self::getRangeFirstNode( $a );
 		$to = $boundary === 'end' ? self::getRangeLastNode( $b ) : self::getRangeFirstNode( $b );
 
-		$skippingFrom = $boundary === 'end';
+		$skipNode = null;
+		if ( $boundary === 'end' ) {
+			$skipNode = $from;
+		}
+
 		$foundContent = false;
 		self::linearWalk(
 			$from,
 			static function ( string $event, Node $n ) use (
-				$from, $to, $boundary, &$skippingFrom, &$foundContent
+				$from, $to, $boundary, &$skipNode, &$foundContent
 			) {
 				if ( $n === $to && $event === ( $boundary === 'end' ? 'leave' : 'enter' ) ) {
 					return true;
 				}
-				if ( $skippingFrom ) {
-					$skippingFrom = !( $n === $from && $event === 'leave' );
+				if ( $skipNode ) {
+					if ( $n === $skipNode && $event === 'leave' ) {
+						$skipNode = null;
+					}
 					return;
 				}
 
-				if (
-					$event === 'enter' &&
-					(
-						!CommentUtils::isCommentSeparator( $n ) &&
-						!CommentUtils::isRenderingTransparentNode( $n ) &&
-						!CommentUtils::isOurGeneratedNode( $n ) &&
+				if ( $event === 'enter' ) {
+					if (
+						CommentUtils::isCommentSeparator( $n ) ||
+						CommentUtils::isRenderingTransparentNode( $n ) ||
+						CommentUtils::isOurGeneratedNode( $n )
+					) {
+						$skipNode = $n;
+
+					} elseif (
 						CommentUtils::isCommentContent( $n )
-					)
-				) {
-					$foundContent = true;
-					return true;
+					) {
+						$foundContent = true;
+						return true;
+					}
 				}
 			}
 		);
