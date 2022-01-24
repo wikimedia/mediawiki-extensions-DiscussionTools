@@ -18,6 +18,7 @@ use WikiMap;
  *
  * @property \EchoEvent $event
  * @property \Language $language
+ * @property \EchoPresentationModelSection $section
  */
 trait DiscussionToolsEventTrait {
 
@@ -51,7 +52,6 @@ trait DiscussionToolsEventTrait {
 		if ( !$this->userCan( RevisionRecord::DELETED_TEXT ) ) {
 			return null;
 		}
-		$title = $this->event->getTitle();
 		if ( !$this->isBundled() ) {
 			// For a single-comment notification, make a pretty(ish) direct link to the comment.
 			// The browser scrolls and we highlight it client-side.
@@ -59,6 +59,7 @@ trait DiscussionToolsEventTrait {
 			if ( !$commentId ) {
 				return null;
 			}
+			$title = $this->event->getTitle();
 			return $title->createFragmentTarget( $commentId )->getFullURL();
 		} else {
 			// For a multi-comment notification, we can't make a direct link, because we don't know
@@ -72,23 +73,21 @@ trait DiscussionToolsEventTrait {
 			// * Mention notifications are *never* bundled.
 			// Code below tries to avoid assumptions in case this behavior changes.
 
-			$sectionTitles = [ $this->event->getExtraParam( 'section-title' ) ];
 			$commentIds = [ $this->event->getExtraParam( 'comment-id' ) ];
 			foreach ( $this->getBundledEvents() as $event ) {
-				$sectionTitles[] = $event->getExtraParam( 'section-title' );
 				$commentIds[] = $event->getExtraParam( 'comment-id' );
 			}
 			$commentIds = array_values( array_filter( $commentIds ) );
-			$sectionTitles = array_values( array_unique( array_filter( $sectionTitles ) ) );
 			if ( !$commentIds ) {
 				return null;
 			}
+
 			$params = [ 'dtnewcomments' => implode( '|', $commentIds ) ];
-			if ( count( $sectionTitles ) === 1 ) {
-				return $title->createFragmentTarget( $sectionTitles[0] )->getFullURL( $params );
-			} else {
-				return $title->getFullURL( $params );
-			}
+			// This may or may not have a fragment identifier, depending on whether it was recorded for
+			// the first one of the bundled events. It's usually not needed because we handle scrolling
+			// client-side, but we can keep it for no-JS users, and to reduce the jump when scrolling.
+			$titleWithOptionalSection = $this->section->getTitleWithSection();
+			return $titleWithOptionalSection->getFullURL( $params );
 		}
 	}
 
