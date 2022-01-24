@@ -15,6 +15,7 @@ use Wikimedia\IPUtils;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\DOM\Text;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 // TODO clean up static vs non-static
 // TODO consider making timestamp parsing not a returned function
@@ -523,7 +524,7 @@ class CommentParser {
 		$username = null;
 
 		// Selflink: use title of current page
-		if ( strstr( $link->getAttribute( 'class' ) ?: '', 'mw-selflink' ) !== false ) {
+		if ( DOMCompat::getClassList( $link )->contains( 'mw-selflink' ) ) {
 			$title = $this->title;
 		} else {
 			$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '' );

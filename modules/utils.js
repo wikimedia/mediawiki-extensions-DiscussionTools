@@ -53,7 +53,7 @@ function isRenderingTransparentNode( node ) {
  */
 function isOurGeneratedNode( node ) {
 	return node.nodeType === Node.ELEMENT_NODE && (
-		node.className === 'ext-discussiontools-init-replylink-buttons' ||
+		node.classList.contains( 'ext-discussiontools-init-replylink-buttons' ) ||
 		node.hasAttribute( 'data-mw-comment' ) ||
 		node.hasAttribute( 'data-mw-comment-start' ) ||
 		node.hasAttribute( 'data-mw-comment-end' )
@@ -100,7 +100,7 @@ function isCommentSeparator( node ) {
 		// Horizontal line
 		node.nodeName.toLowerCase() === 'hr' ||
 		// {{outdent}} templates
-		node.getAttribute( 'class' ) === 'outdent-template'
+		node.classList.contains( 'outdent-template' )
 	);
 }
 

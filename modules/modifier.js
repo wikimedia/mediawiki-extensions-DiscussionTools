@@ -132,7 +132,7 @@ function addListItem( comment, replyIndentation ) {
 	}
 
 	// HACK: Skip past our own reply buttons
-	if ( target.nextSibling && target.nextSibling.className && target.nextSibling.className.indexOf( 'ext-discussiontools-init-replylink-buttons' ) !== -1 ) {
+	if ( target.nextSibling && target.nextSibling.nodeType === Node.ELEMENT_NODE && target.nextSibling.classList.contains( 'ext-discussiontools-init-replylink-buttons' ) ) {
 		target = target.nextSibling;
 	}
 
