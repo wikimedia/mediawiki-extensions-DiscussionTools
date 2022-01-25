@@ -28,7 +28,7 @@
 	"discussiontools-error-noswitchtove-table": "tabellsyntax",
 	"discussiontools-error-noswitchtove-template": "mallsyntax",
 	"discussiontools-error-noswitchtove-title": "Visuellt läge inaktiverades",
-	"discussiontools-newtopic-missing-title": "Ange gärna en rubrik till ditt diskussionsinlägg. Om du klickar på \"{{int:discussiontools-replywidget-newtopic}}\", kommer inlägget att läggas till utan rubrik.",
+	"discussiontools-newtopic-missing-title": "Ange gärna en rubrik till ditt diskussionsämne. Om du klickar på \"{{int:discussiontools-replywidget-newtopic}}\", kommer ämnet att läggas till utan rubrik.",
 	"discussiontools-newtopic-placeholder-title": "Rubrik",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarade}} på \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Ett nytt svar|$1 nya svar|100=99+ nya svar}} på \"<strong>$3</strong>\".",

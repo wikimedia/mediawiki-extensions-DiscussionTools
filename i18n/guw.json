@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anthonymodec",
+			"Joshateji",
+			"Misteld",
+			"Sagbosam",
+			"Samatics"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Na gblọndo",
+	"discussiontools-desc": "Azọnwanu nado gọalọna weda hodọdopo tọn lẹ.",
+	"discussiontools-error-comment-conflict": "Gblọndo towe ma sọgan yin sisẹdo, na mẹdevo ko na gblọndo to whenue a to gblọndo na. Jaale bo vọ gblọndo towe kan kavi bo vọ weda lọ mẹ biọ nado pọn diọdo yọyọ lẹ.",
+	"discussiontools-error-noswitchtove-extension": "nuyidogọ kavi awusọhia alọdlẹndonu tọn",
+	"discussiontools-error-noswitchtove-table": "awusọhia wekun apotin mẹ tọn",
+	"discussiontools-error-noswitchtove-title": "A má sọgan mọ yẹdide depope",
+	"discussiontools-newtopic-placeholder-title": "Hosọ",
+	"discussiontools-notification-subscribed-new-comment-view": "Pọn gblọndo",
+	"discussiontools-postedit-confirmation-published": "Gblọndo towe ko yin sisẹdo.",
+	"discussiontools-postedit-confirmation-topicadded": "Hosọ towe ko yin yiyi dogọ.",
+	"discussiontools-replylink": "na gblọndo",
+	"discussiontools-replywidget-abandon-keep": "Zindonukọn to nue kan a te mẹ",
+	"discussiontools-replywidget-abandontopic": "A kudeji dọ a jlo na jo hosọ he ji a to wekan do lọ do yà?",
+	"discussiontools-replywidget-abandontopic-discard": "Jo hosọ lọ do",
+	"discussiontools-replywidget-abandontopic-keep": "Zindonukọn to nue kan a te mẹ",
+	"discussiontools-replywidget-cancel": "Hònupla",
+	"discussiontools-replywidget-mode-source": "Asisa",
+	"discussiontools-replywidget-reply": "Na gblọndo",
+	"discussiontools-replywidget-summary": "Bladopọ",
+	"discussiontools-replywidget-transcluded": "Gblọndo towe na yin sisẹwhè to [[$1]]",
+	"tag-discussiontools-description": "Vọjlado he yin bibasi gbọn DiscussionTools yiyizan dali",
+	"tag-discussiontools-edit-description": "Zinzantọ ehe yi DiscussionTools zan nado vọ gblọndo he tin to aimẹ dé jlado",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Hosọ yọyọ]",
+	"tag-discussiontools-newtopic-description": "Zinzantọ ehe yi DiscussionTools zan nado gọ́ hosọ yọyọ dé na weda lọ",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Na gblọndo]",
+	"tag-discussiontools-reply-description": "Zinzantọ ehe yi DiscussionTools zan nado dọ linlẹn etọn gando gblọndo dé go",
+	"tag-discussiontools-source": "Asisa",
+	"tag-discussiontools-source-description": "DiscussionTools tin to ninọmẹ asisa tọn mẹ dai",
+	"tag-discussiontools-visual": "Awusọhia",
+	"tag-discussiontools-visual-description": "DiscussionTools tin to ninọmẹ nupinpọn tọn mẹ dai"
+}

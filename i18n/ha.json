@@ -14,5 +14,8 @@
 	"discussiontools-desc": "Kayayyakin inganta shafukan tattaunawa.",
 	"discussiontools-error-comment-conflict": "Sharhin ku ba'a iya adana ta ba, saboda da wani yayi sharhi a daidai lokacin da kuma kuka yi. Kuyi hakuri ku sake jarabawa, ko ku sake aika shafin dan ganin sharhunan dake nan ayanzu.",
 	"discussiontools-error-comment-disappeared": "Ba'a iya samun shafin sharhin da kuke martani akai ba. Zai iya zama an goge ko an gusar da ita zuwa wani shafin. Yi hakuri ku sake aika shafin ku sake jarabawa.",
-	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" link ba za'a iya amfani dashi ba dan yin martani ga wannan sharhin ba. Dan martani, yi hakuri kuyi amfani da cikekken shafin dan amfani maɓallin gyara ta danna \"$1\"."
+	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" link ba za'a iya amfani dashi ba dan yin martani ga wannan sharhin ba. Dan martani, yi hakuri kuyi amfani da cikekken shafin dan amfani maɓallin gyara ta danna \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" ba za'a iya amfani da linki dan mayar da martani ga wannan sharhin ba saboda an shiga tane daga wani shafin. Dan mayar da martani, je ka nan: [[$1]].",
+	"discussiontools-error-comment-not-saved": "Sharhin ku ba za'a iya wallafa ta ba zuwa sabon yanayi na shafin. Dan ganin yanayin shafin na yanzu, kofo daftarin sharhin ka sai kayi amfani da manhajar ka sake shiga shafin.",
+	"discussiontools-error-lint": "Sharhin wannan shafi ba za'a iya mayar masu da martani ba, saboda wani kuskure a wikitext ɗin. Kuna iya sanin wannan kuskure ts [$1 reading the documentation], nema taimako ta [$2 posting here] ko gyara kuskuren [$3 opening the full page editor]."
 }
