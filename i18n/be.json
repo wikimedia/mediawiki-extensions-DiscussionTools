@@ -3,7 +3,8 @@
 		"authors": [
 			"Artsiom91",
 			"Kareyac",
-			"ZlyiLev"
+			"ZlyiLev",
+			"Chadyka"
 		]
 	},
 	"discussiontools": "Інструменты абмеркаванняў",
@@ -11,6 +12,9 @@
 	"discussiontools-desc": "Інструменты для паляпшэння старонак абмеркаванняў.",
 	"discussiontools-emptystate-button": "Пачаць размову",
 	"discussiontools-emptystate-title": "Пачаць новую размову пра старонку «{{PAGENAME}}».",
+	"discussiontools-emptystate-title-self": "Сардэчна запрашаем на вашу размойную старонку",
+	"discussiontools-emptystate-title-self-anon": "Сардэчна запрашаем на гэтую размойную старонку",
+	"discussiontools-emptystate-title-user-anon": "Сардэчна запрашаем на гэтую размойную старонку",
 	"discussiontools-error-comment-conflict": "Ваш каментарый не можа быць захаваны, бо нехта яшчэ пакінуў каментарый адначасова з вамі. Калі ласка, паспрабуйце зноў або перазагрузіце старонку, каб пабачыць апошнія каментарыі.",
 	"discussiontools-error-comment-disappeared": "Немагчыма знайсці каментарый, на які вы адказваеце, на гэтай старонцы. Магчыма, ён выдалены або перанесены на іншую старонку. Калі ласка, перазагрузіце старонку і паспрабуйце зноў.",
 	"discussiontools-error-comment-is-transcluded": "Спасылка \"{{int:discussiontools-replylink}}\" не можа быць выкарыстана для адказу на гэты каментарый. Каб адказаць, калі ласка, скарыстайцеся рэдактарам усёй старонкі, націснуўшы \"$1\".",
@@ -67,6 +71,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicsubscription-button-subscribe": "падпісацца",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Падпішыцеся на атрыманне апавяшэнняў пра новыя каментарыі.",
+	"discussiontools-topicsubscription-button-unsubscribe": "адпісацца",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Вы атрымаеце апавяшчэнні пра новыя каментарыі ў гэтай тэме.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Падпісаны",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вы больш не будзеце атрымліваць апавяшчэнні пра новыя каментарыі ў гэтай тэме.",
