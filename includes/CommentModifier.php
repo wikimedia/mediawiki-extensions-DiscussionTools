@@ -194,7 +194,6 @@ class CommentModifier {
 				// $list->setAttribute( 'dt-modified', 'new' );
 				$item = $target->ownerDocument->createElement( $itemType );
 				// $item->setAttribute( 'dt-modified', 'new' );
-				self::whitespaceParsoidHack( $item );
 
 				$parent->insertBefore( $list, $target->nextSibling );
 				$list->appendChild( $item );
@@ -237,7 +236,6 @@ class CommentModifier {
 			if ( $itemType === strtolower( $target->tagName ) ) {
 				$item = $target->ownerDocument->createElement( $itemType );
 				// $item->setAttribute( 'dt-modified', 'new' );
-				self::whitespaceParsoidHack( $item );
 				$parent->insertBefore( $item, $target->nextSibling );
 
 			} else {
@@ -266,7 +264,6 @@ class CommentModifier {
 				// $list->setAttribute( 'dt-modified', 'new' );
 				$item = $target->ownerDocument->createElement( $itemType );
 				// $item->setAttribute( 'dt-modified', 'new' );
-				self::whitespaceParsoidHack( $item );
 
 				$parent->insertBefore( $list, $target->nextSibling );
 				$list->appendChild( $item );
@@ -417,7 +414,6 @@ class CommentModifier {
 	 */
 	public static function addSiblingListItem( Element $previousItem ): Element {
 		$listItem = $previousItem->ownerDocument->createElement( $previousItem->tagName );
-		self::whitespaceParsoidHack( $listItem );
 		$previousItem->parentNode->insertBefore( $listItem, $previousItem->nextSibling );
 		return $listItem;
 	}
@@ -540,6 +536,7 @@ class CommentModifier {
 			} else {
 				$newParsoidItem = self::addSiblingListItem( $newParsoidItem );
 			}
+			self::whitespaceParsoidHack( $newParsoidItem );
 			$newParsoidItem->appendChild( $container->firstChild );
 		}
 	}
