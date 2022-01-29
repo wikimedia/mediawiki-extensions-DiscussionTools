@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
 use Title;
 use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 
 /**
@@ -151,8 +152,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		string $msg, string $html, bool $expected
 	): void {
 		$doc = self::createDocument( '' );
-		$container = $doc->createElement( 'div' );
-		DOMCompat::setInnerHTML( $container, $html );
+		$container = DOMUtils::parseHTMLToFragment( $doc, $html );
 
 		self::assertEquals(
 			$expected,
@@ -173,10 +173,9 @@ class CommentModifierTest extends IntegrationTestCase {
 		string $msg, string $html, string $expected
 	): void {
 		$doc = self::createDocument( '' );
-		$container = $doc->createElement( 'div' );
-		DOMCompat::setInnerHTML( $container, $html );
+		$container = DOMUtils::parseHTMLToFragment( $doc, $html );
 
-		CommentModifier::appendSignature( $container );
+		CommentModifier::appendSignature( $container, ' ~~~~' );
 
 		self::assertEquals(
 			$expected,

@@ -10,6 +10,7 @@ use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class CommentModifier {
 
@@ -449,10 +450,10 @@ class CommentModifier {
 	/**
 	 * Check whether HTML node contains a user signature.
 	 *
-	 * @param Element $container
+	 * @param DocumentFragment $container
 	 * @return bool
 	 */
-	public static function isHtmlSigned( Element $container ): bool {
+	public static function isHtmlSigned( DocumentFragment $container ): bool {
 		// Good enough?…
 		$matches = DOMCompat::querySelectorAll( $container, 'span[typeof="mw:Transclusion"][data-mw*="~~~~"]' );
 		// Iterate to get the last item. We don't know if $matches is an array or some iterator,
@@ -487,12 +488,11 @@ class CommentModifier {
 	/**
 	 * Append a user signature to the comment in the container.
 	 *
-	 * @param Element $container
+	 * @param DocumentFragment $container
+	 * @param string $signature
 	 */
-	public static function appendSignature( Element $container ): void {
+	public static function appendSignature( DocumentFragment $container, string $signature ): void {
 		$doc = $container->ownerDocument;
-
-		$signature = wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
 
 		// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
 		// add another paragraph to contain the signature.
@@ -517,9 +517,9 @@ class CommentModifier {
 	 * Add a reply to a specific comment
 	 *
 	 * @param ThreadItem $comment Comment being replied to
-	 * @param Element $container Container of comment DOM nodes
+	 * @param DocumentFragment $container Container of comment DOM nodes
 	 */
-	public static function addReply( ThreadItem $comment, Element $container ): void {
+	public static function addReply( ThreadItem $comment, DocumentFragment $container ): void {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 		$replyIndentation = $dtConfig->get( 'DiscussionToolsReplyIndentation' );
@@ -544,12 +544,12 @@ class CommentModifier {
 	/**
 	 * Create a container of comment DOM nodes from wikitext
 	 *
-	 * @param CommentItem $comment Comment being replied to
+	 * @param Document $doc Document where the DOM nodes will be inserted
 	 * @param string $wikitext
+	 * @return DocumentFragment DOM nodes
 	 */
-	public static function addWikitextReply( CommentItem $comment, string $wikitext ): void {
-		$doc = $comment->getRange()->endContainer->ownerDocument;
-		$container = $doc->createElement( 'div' );
+	public static function prepareWikitextReply( Document $doc, string $wikitext ): DocumentFragment {
+		$container = $doc->createDocumentFragment();
 
 		$wikitext = self::sanitizeWikitextLinebreaks( $wikitext );
 
@@ -560,24 +560,19 @@ class CommentModifier {
 			$container->appendChild( $p );
 		}
 
-		if ( !self::isWikitextSigned( $wikitext ) ) {
-			self::appendSignature( $container );
-		}
-
-		self::addReply( $comment, $container );
+		return $container;
 	}
 
 	/**
 	 * Create a container of comment DOM nodes from HTML
 	 *
-	 * @param CommentItem $comment Comment being replied to
+	 * @param Document $doc Document where the DOM nodes will be inserted
 	 * @param string $html
+	 * @return DocumentFragment DOM nodes
 	 */
-	public static function addHtmlReply( CommentItem $comment, string $html ): void {
-		$doc = $comment->getRange()->endContainer->ownerDocument;
-		$container = $doc->createElement( 'div' );
+	public static function prepareHtmlReply( Document $doc, string $html ): DocumentFragment {
+		$container = DOMUtils::parseHTMLToFragment( $doc, $html );
 
-		DOMCompat::setInnerHTML( $container, $html );
 		// Remove empty lines
 		// This should really be anything that serializes to empty string in wikitext,
 		// (e.g. <h2></h2>) but this will catch most cases
@@ -597,11 +592,38 @@ class CommentModifier {
 			}
 		}
 
-		if ( !self::isHtmlSigned( $container ) ) {
-			self::appendSignature( $container );
-		}
+		return $container;
+	}
 
+	/**
+	 * Add a reply in the DOM to a comment using wikitext.
+	 *
+	 * @param CommentItem $comment Comment being replied to
+	 * @param string $wikitext
+	 */
+	public static function addWikitextReply( CommentItem $comment, string $wikitext ): void {
+		$doc = $comment->getRange()->endContainer->ownerDocument;
+		$container = self::prepareWikitextReply( $doc, $wikitext );
+		if ( !self::isWikitextSigned( $wikitext ) ) {
+			$signature = wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+			self::appendSignature( $container, $signature );
+		}
 		self::addReply( $comment, $container );
 	}
 
+	/**
+	 * Add a reply in the DOM to a comment using HTML.
+	 *
+	 * @param CommentItem $comment Comment being replied to
+	 * @param string $html
+	 */
+	public static function addHtmlReply( CommentItem $comment, string $html ): void {
+		$doc = $comment->getRange()->endContainer->ownerDocument;
+		$container = self::prepareHtmlReply( $doc, $html );
+		if ( !self::isHtmlSigned( $container ) ) {
+			$signature = wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+			self::appendSignature( $container, $signature );
+		}
+		self::addReply( $comment, $container );
+	}
 }
