@@ -588,10 +588,14 @@ class CommentModifier {
 		// as nodes are removed.
 		$childNodeList = iterator_to_array( $container->childNodes );
 		foreach ( $childNodeList as $node ) {
-			if (
-				strtolower( $node->nodeName ) === 'p' &&
+			if ( (
+				$node instanceof Text &&
+				CommentUtils::htmlTrim( $node->nodeValue ?? '' ) === ''
+			) || (
+				$node instanceof Element &&
+				strtolower( $node->tagName ) === 'p' &&
 				CommentUtils::htmlTrim( DOMCompat::getInnerHTML( $node ) ) === ''
-			) {
+			) ) {
 				$container->removeChild( $node );
 			}
 		}
