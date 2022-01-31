@@ -96,7 +96,7 @@
 	"discussiontools-replywidget-summary": "Sammanfattning",
 	"discussiontools-replywidget-terms-click": "Genom att klicka på \"$1\" godkänner du användarvillkoren för denna wiki.",
 	"discussiontools-replywidget-transcluded": "Din kommentar kommer att sparas på [[$1]].",
-	"discussiontools-replywidget-watchthis": "Lägg till den här sidan i sin [[Special:Watchlist|bevakningslista]]",
+	"discussiontools-replywidget-watchthis": "Lägg till den här sidan i din [[Special:Watchlist|bevakningslista]]",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Avsluta prenumeration",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Sluta prenumerera på det här ämnet?",
 	"discussiontools-topicsubscription-button-subscribe": "följ",

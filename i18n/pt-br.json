@@ -8,7 +8,8 @@
 			"Gustavo.moraes",
 			"He7d3r",
 			"Jhonnatanricardo",
-			"Matma Rex"
+			"Matma Rex",
+			"Wiiformii"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
@@ -20,7 +21,7 @@
 	"discussiontools-emptystate-desc-self-anon": "As pessoas em {{SITENAME}} podem usar esta página para postar uma mensagem pública sobre edições feitas a partir do endereço IP que você está usando atualmente.\n\nMuitos endereços IP mudam periodicamente e são frequentemente compartilhados por várias pessoas. Você pode [$1 criar uma conta] ou [$2 entrar] para evitar futuras confusão com outros usuários entrados. Criar uma conta também esconde seu endereço IP.",
 	"discussiontools-emptystate-desc-user": "As páginas de discussão são onde as pessoas discutem como fazer conteúdo em {{SITENAME}} o melhor que pode ser. Inicie uma nova discussão para conectar e colaborar com[[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. O que você diz aqui será público para os outros verem. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Saiba mais]]",
 	"discussiontools-emptystate-desc-user-anon": "As páginas de discussão são onde as pessoas discutem como fazer conteúdo em {{SITENAME}} o melhor que pode ser. Use esta página para iniciar uma discussão sobre as edições feitas a partir deste endereço IP. O que você diz aqui será público para os outros verem. Muitos endereços IP mudam periodicamente e são frequentemente compartilhados por várias pessoas. [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Saber mais]]",
-	"discussiontools-emptystate-title": "Comece uma discussão sobre {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title": "Começa uma discussão sobre {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bem-vindo à sua página de discussão",
 	"discussiontools-emptystate-title-self-anon": "Bem-vindo a esta página de discussão",
 	"discussiontools-emptystate-title-user": "Comece uma discussão com {{GENDER:{{PAGENAME}}|com}} {{PAGENAME}}",
