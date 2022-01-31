@@ -134,6 +134,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
  * Create and display a hint dialog that redirects users to the non-DT version of this tool
  */
 NewTopicController.prototype.setupTopicHint = function () {
+	var topicController = this;
 	var legacyURI;
 	try {
 		legacyURI = new mw.Uri();
@@ -158,6 +159,14 @@ NewTopicController.prototype.setupTopicHint = function () {
 		title: mw.msg( 'discussiontools-newtopic-legacy-hint-close' )
 	} ).connect( this, { click: 'onTopicHintCloseClick' } );
 	this.topicHint.$element.prepend( dismissButton.$element );
+	this.topicHint.$element.find( 'a' ).on( 'click', function () {
+		// Clicking to follow this link should immediately discard the
+		// autosave. We can do this before the onBeforeUnload handler asks
+		// them to confirm, because if they decide to cancel the navigation
+		// then the autosave will occur again.
+		topicController.clearStorage();
+		topicController.replyWidget.clearStorage();
+	} );
 	this.container.$element.before( this.topicHint.$element );
 
 	this.topicHint.toggle( true );
