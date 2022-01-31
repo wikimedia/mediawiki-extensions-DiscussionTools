@@ -515,7 +515,7 @@ var $highlightedTarget = null;
  * Highlight the comment on the page associated with the URL hash
  *
  * @param {mw.dt.Parser} parser Comment parser
- * @param {boolean} [noScroll] Don't scroll to the topmost highlighed comment, e.g. on popstate
+ * @param {boolean} [noScroll] Don't scroll to the topmost highlighted comment, e.g. on popstate
  */
 function highlightTargetComment( parser, noScroll ) {
 	// Delay with setTimeout() because "the Document's target element" (corresponding to the :target
