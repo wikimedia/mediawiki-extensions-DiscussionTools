@@ -43,7 +43,7 @@ CommentItem.prototype.getHeading = function () {
 };
 
 /**
- * @return {HeadingItem|null} losest heading that can be used for topic subscriptions
+ * @return {HeadingItem|null} Closest heading that can be used for topic subscriptions
  */
 CommentItem.prototype.getSubscribableHeading = function () {
 	var heading = this.getHeading();
