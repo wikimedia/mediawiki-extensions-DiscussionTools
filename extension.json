@@ -405,6 +405,9 @@
 		"MediaWiki\\Extension\\DiscussionTools\\Tests\\": "tests/phpunit/"
 	},
 	"APIModules": {
+		"discussiontoolscompare": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsCompare"
+		},
 		"discussiontoolsedit": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
 		},

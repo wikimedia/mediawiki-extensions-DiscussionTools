@@ -7,11 +7,10 @@ use ApiMain;
 use ApiParsoidTrait;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsPageInfo extends ApiBase {
 
+	use ApiDiscussionToolsTrait;
 	use ApiParsoidTrait;
 
 	/**
@@ -32,16 +31,8 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
 		}
 
-		$response = $this->requestRestbasePageHtml(
-			$this->getValidRevision( $title, $params['oldid'] ?? null )
-		);
-
-		$doc = DOMUtils::parseHTML( $response['body'] );
-		$container = DOMCompat::getBody( $doc );
-
-		CommentUtils::unwrapParsoidSections( $container );
-
-		$parser = CommentParser::newFromGlobalState( $container, $title );
+		$revision = $this->getValidRevision( $title, $params['oldid'] ?? null );
+		$parser = $this->parseRevision( $revision );
 		$threadItems = $parser->getThreadItems();
 
 		$transcludedFrom = [];

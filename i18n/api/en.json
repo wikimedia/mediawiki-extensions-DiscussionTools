@@ -8,6 +8,7 @@
 	"apierror-discussiontools-formtoken-used": "Comment already posted. Reload the page to see it.",
 	"apierror-discussiontools-subscription-failed-add": "Could not subscribe to this topic.",
 	"apierror-discussiontools-subscription-failed-remove": "Could not unsubscribe from this topic.",
+	"apihelp-discussiontoolscompare-summary": "Get information about comment changes between two page revisions.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID of the comment to reply to. Only used when <var>paction</var> is <var>addcomment</var>. Overrides <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Name of the comment to reply to. Only used when <var>paction</var> is <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-formtoken": "An optional unique ID generated in the client to prevent double-posting.",

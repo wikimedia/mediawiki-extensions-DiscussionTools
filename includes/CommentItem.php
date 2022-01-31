@@ -45,6 +45,20 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
+	 * @return array JSON-serializable array
+	 */
+	public function jsonSerializeForDiff(): array {
+		$data = $this->jsonSerialize();
+
+		$heading = $this->getHeading();
+		$data['headingId'] = $heading->getId();
+		$subscribableHeading = $this->getSubscribableHeading();
+		$data['subscribableHeadingId'] = $subscribableHeading ? $subscribableHeading->getId() : null;
+
+		return $data;
+	}
+
+	/**
 	 * Get the HTML of this comment's body
 	 *
 	 * @param bool $stripTrailingSeparator Strip a trailing separator between the body and
