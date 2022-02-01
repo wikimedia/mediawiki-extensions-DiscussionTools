@@ -45,7 +45,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
 	// TODO: Should storagePrefix include pageName?
 	this.storagePrefix = 'reply/' + threadItem.id;
-	this.storage = mw.storage.session;
+	this.storage = controller.storage;
 	// eslint-disable-next-line no-jquery/no-global-selector
 	this.contentDir = $( '#mw-content-text' ).css( 'direction' );
 
