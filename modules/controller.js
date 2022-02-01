@@ -895,6 +895,54 @@ function init( $container, state ) {
 }
 
 /**
+ * Update the contents of the page with the data from an action=parse API response.
+ *
+ * @param {jQuery} $container Page container
+ * @param {Object} data Data from action=parse API
+ */
+function updatePageContents( $container, data ) {
+	var $content = $( $.parseHTML( data.parse.text ) );
+	$container.find( '.mw-parser-output' ).replaceWith( $content );
+	mw.config.set( data.parse.jsconfigvars );
+	mw.loader.load( data.parse.modulestyles );
+	mw.loader.load( data.parse.modules );
+	// TODO update categories, displaytitle, lastmodified
+	// We may not be able to use prop=displaytitle without making changes in the action=parse API,
+	// VE API has some confusing code that changes the HTML escaping on it before returning???
+
+	// We need our init code to run after everyone else's handlers for this hook,
+	// so that all changes to the page layout have been completed (e.g. collapsible elements),
+	// and we can measure things and display the highlight in the right place.
+	mw.hook( 'wikipage.content' ).remove( mw.dt.init );
+	mw.hook( 'wikipage.content' ).fire( $container );
+	// The hooks have "memory" so calling add() after fire() actually fires the handler,
+	// and calling add() before fire() would actually fire it twice.
+	mw.hook( 'wikipage.content' ).add( mw.dt.init );
+}
+
+/**
+ * Load the latest revision of the page and display its contents.
+ *
+ * @return {jQuery.Promise} Promise which resolves when the refresh is complete
+ */
+function refreshPageContents() {
+	return getApi().get( {
+		action: 'parse',
+		// HACK: 'useskin' triggers a different code path that runs our OutputPageBeforeHTML hook,
+		// adding our reply links in the HTML (T266195)
+		useskin: mw.config.get( 'skin' ),
+		uselang: mw.config.get( 'wgUserLanguage' ),
+		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
+		// a page view with reply links forced with ?dtenable=1 or otherwise
+		dtenable: '1',
+		prop: [ 'text', 'modules', 'jsconfigvars' ],
+		page: mw.config.get( 'wgRelevantPageName' )
+	} ).then( function ( parseResp ) {
+		updatePageContents( $pageContainer, parseResp );
+	} );
+}
+
+/**
  * Update the page after a comment is published/saved
  *
  * @param {Object} data Edit API response data
@@ -903,10 +951,6 @@ function init( $container, state ) {
  * @param {mw.dt.ReplyWidget} replyWidget ReplyWidget
  */
 function update( data, threadItem, pageName, replyWidget ) {
-	var api = getApi(),
-		pageUpdated = $.Deferred(),
-		$content;
-
 	// We posted a new comment, clear the cache, because wgCurRevisionId will not change if we posted
 	// to a transcluded page (T266275)
 	pageDataCache[ mw.config.get( 'wgRelevantPageName' ) ][ mw.config.get( 'wgCurRevisionId' ) ] = null;
@@ -936,53 +980,40 @@ function update( data, threadItem, pageName, replyWidget ) {
 		return;
 	}
 
+	// Highlight the new reply after re-initializing
+	mw.dt.initState.repliedTo = threadItem.id;
+
 	// Update page state
+	var pageUpdated = $.Deferred();
 	if ( pageName === mw.config.get( 'wgRelevantPageName' ) ) {
 		// We can use the result from the VisualEditor API
-		$content = $( $.parseHTML( data.content ) );
-		$pageContainer.find( '.mw-parser-output' ).replaceWith( $content );
+		updatePageContents( $pageContainer, {
+			parse: {
+				text: data.content,
+				jsconfigvars: data.jsconfigvars,
+				// Note: VE API merges 'modules' and 'modulestyles'
+				modules: data.modules,
+				modulestyles: []
+			}
+		} );
+
 		mw.config.set( {
 			wgCurRevisionId: data.newrevid,
 			wgRevisionId: data.newrevid
 		} );
-		mw.config.set( data.jsconfigvars );
-		// Note: VE API merges 'modules' and 'modulestyles'
-		mw.loader.load( data.modules );
-		// TODO update categories, displaytitle, lastmodified
-		// (see ve.init.mw.DesktopArticleTarget.prototype.replacePageContent)
 
 		pageUpdated.resolve();
 
 	} else {
 		// We saved to another page, we must purge and then fetch the current page
+		var api = getApi();
 		api.post( {
 			action: 'purge',
 			titles: mw.config.get( 'wgRelevantPageName' )
 		} ).then( function () {
-			return api.get( {
-				action: 'parse',
-				// HACK: 'useskin' triggers a different code path that runs our OutputPageBeforeHTML hook,
-				// adding our reply links in the HTML (T266195)
-				useskin: mw.config.get( 'skin' ),
-				uselang: mw.config.get( 'wgUserLanguage' ),
-				// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
-				// a page view with reply links forced with ?dtenable=1 or otherwise
-				dtenable: '1',
-				prop: [ 'text', 'modules', 'jsconfigvars' ],
-				page: mw.config.get( 'wgRelevantPageName' )
-			} );
-		} ).then( function ( parseResp ) {
-			$content = $( $.parseHTML( parseResp.parse.text ) );
-			$pageContainer.find( '.mw-parser-output' ).replaceWith( $content );
-			mw.config.set( parseResp.parse.jsconfigvars );
-			mw.loader.load( parseResp.parse.modulestyles );
-			mw.loader.load( parseResp.parse.modules );
-			// TODO update categories, displaytitle, lastmodified
-			// We may not be able to use prop=displaytitle without making changes in the action=parse API,
-			// VE API has some confusing code that changes the HTML escaping on it before returning???
-
+			return refreshPageContents();
+		} ).then( function () {
 			pageUpdated.resolve();
-
 		} ).catch( function () {
 			// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
 			// explain this problem. Redirect to the page where the user can at least see their reply…
@@ -1003,18 +1034,6 @@ function update( data, threadItem, pageName, replyWidget ) {
 	}
 
 	pageUpdated.then( function () {
-		// Re-initialize and highlight the new reply.
-		mw.dt.initState.repliedTo = threadItem.id;
-
-		// We need our init code to run after everyone else's handlers for this hook,
-		// so that all changes to the page layout have been completed (e.g. collapsible elements),
-		// and we can measure things and display the highlight in the right place.
-		mw.hook( 'wikipage.content' ).remove( mw.dt.init );
-		mw.hook( 'wikipage.content' ).fire( $pageContainer );
-		// The hooks have "memory" so calling add() after fire() actually fires the handler,
-		// and calling add() before fire() would actually fire it twice.
-		mw.hook( 'wikipage.content' ).add( mw.dt.init );
-
 		logger( {
 			action: 'saveSuccess',
 			timing: mw.now() - replyWidget.saveInitiated,
@@ -1022,12 +1041,13 @@ function update( data, threadItem, pageName, replyWidget ) {
 			revision_id: data.newrevid
 		} );
 	} );
-
 }
 
 module.exports = {
 	init: init,
 	update: update,
+	updatePageContents: updatePageContents,
+	refreshPageContents: refreshPageContents,
 	checkThreadItemOnPage: checkThreadItemOnPage,
 	getCheckboxesPromise: getCheckboxesPromise,
 	getApi: getApi
