@@ -13,6 +13,8 @@
 		]
 	},
 	"discussiontools": "Strumenti di discussione",
+	"discussiontools-autotopicsubpopup-dismiss": "Ok, capito",
+	"discussiontools-autotopicsubpopup-preferences": "Modifica preferenze",
 	"discussiontools-defaultsummary-reply": "Risposta",
 	"discussiontools-desc": "Strumenti per migliorare le pagine di discussione.",
 	"discussiontools-emptystate-button": "Inizia una discussione",
@@ -38,6 +40,9 @@
 	"discussiontools-error-noswitchtove-template": "sintassi di template",
 	"discussiontools-error-noswitchtove-title": "Modalità visuale disabilitata",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secondo|secondi}}",
+	"discussiontools-newtopic-legacy-hint": "<strong>È arrivato un nuovo modo per iniziare le discussioni.</strong> Questo aggiornamento consente di aggiungere argomenti utilizzando un modulo in linea e di eseguire menzioni di altri utenti con una nuova scorciatoia. Puoi ancora [$1 tornare indietro all'esperienza precedente].",
+	"discussiontools-newtopic-legacy-hint-close": "Chiudi il messaggio e non mostrare più",
+	"discussiontools-newtopic-legacy-hint-return": "<strong>Stai visualizzando l'esperienza precedente.</strong> Puoi [$1 alla nuova esperienza] o visitare le preferenze per [$2 impostare l'esperienza precedente come predefinita].",
 	"discussiontools-newtopic-missing-title": "Per favore, inserisci un titolo per l'argomento di cui desideri discutere. Se clicchi ora su \"{{int:discussiontools-replywidget-newtopic}}\", la discussione sarà creata senza titolo.",
 	"discussiontools-newtopic-placeholder-title": "Titolo",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|ha risposto}} in \"<strong>$4</strong>\".",
