@@ -59,9 +59,9 @@ ReplyWidgetVisual.prototype.getValue = function () {
  * @inheritdoc
  */
 ReplyWidgetVisual.prototype.clear = function () {
-	this.replyBodyWidget.clear();
-
 	this.replyBodyWidget.target.clearDocState();
+	// #clear removes all the surfaces, so must be done after #clearDocState
+	this.replyBodyWidget.clear();
 
 	// Parent method
 	ReplyWidgetVisual.super.prototype.clear.apply( this, arguments );
