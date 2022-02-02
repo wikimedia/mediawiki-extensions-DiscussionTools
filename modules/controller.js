@@ -906,6 +906,12 @@ function updatePageContents( $container, data ) {
 	mw.config.set( data.parse.jsconfigvars );
 	mw.loader.load( data.parse.modulestyles );
 	mw.loader.load( data.parse.modules );
+
+	mw.config.set( {
+		wgCurRevisionId: data.parse.revid,
+		wgRevisionId: data.parse.revid
+	} );
+
 	// TODO update categories, displaytitle, lastmodified
 	// We may not be able to use prop=displaytitle without making changes in the action=parse API,
 	// VE API has some confusing code that changes the HTML escaping on it before returning???
@@ -935,7 +941,7 @@ function refreshPageContents() {
 		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
 		// a page view with reply links forced with ?dtenable=1 or otherwise
 		dtenable: '1',
-		prop: [ 'text', 'modules', 'jsconfigvars' ],
+		prop: [ 'text', 'modules', 'jsconfigvars', 'revid' ],
 		page: mw.config.get( 'wgRelevantPageName' )
 	} ).then( function ( parseResp ) {
 		updatePageContents( $pageContainer, parseResp );
@@ -991,6 +997,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 			parse: {
 				text: data.content,
 				jsconfigvars: data.jsconfigvars,
+				revid: data.newrevid,
 				// Note: VE API merges 'modules' and 'modulestyles'
 				modules: data.modules,
 				modulestyles: []
