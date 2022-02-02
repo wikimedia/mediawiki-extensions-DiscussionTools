@@ -1,7 +1,7 @@
 /**
  * MemoryStorage creates a wrapper around mw.SafeStorage objects, duplicating
  * their contents in memory, so that even if the underlying storage mechanism
- * fails (e.g. quote exceeded), the storage can be relied on before the
+ * fails (e.g. quota exceeded), the storage can be relied on before the
  * page has been reloaded.
  *
  * @example

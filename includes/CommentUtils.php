@@ -213,7 +213,7 @@ class CommentUtils {
 	 * 3. If this is an mw:Transclusion node, return it; otherwise, go to step 1
 	 *
 	 * @param Node $node
-	 * @return Element|null Translcusion node, null if not found
+	 * @return Element|null Transclusion node, null if not found
 	 */
 	public static function getTranscludedFromElement( Node $node ): ?Element {
 		while ( $node ) {

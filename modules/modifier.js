@@ -289,7 +289,7 @@ function removeAddedListItem( node ) {
  *
  * Assumes that the list has a parent node.
  *
- * @param {Node} list DOM node, will be wrapepd if it is a list element (dl/ol/ul)
+ * @param {Node} list DOM node, will be wrapped if it is a list element (dl/ol/ul)
  * @param {DocumentFragment|null} fragment Containing document fragment if list has no parent
  */
 function unwrapList( list, fragment ) {
