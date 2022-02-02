@@ -169,7 +169,9 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 					// so we don't know where the reply should be posted. Just give up.
 					return $.Deferred().reject( 'discussiontools-commentid-notfound-transcludedfrom', { errors: [ {
 						code: 'discussiontools-commentid-notfound-transcludedfrom',
-						html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
+						html: mw.message( 'discussiontools-error-comment-disappeared' ).parse() +
+							'<br>' +
+							mw.message( 'discussiontools-error-comment-disappeared-reload' ).parse()
 					} ] } ).promise();
 				} else if ( isTranscludedFrom ) {
 					var mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );

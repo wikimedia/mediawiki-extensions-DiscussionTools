@@ -36,6 +36,7 @@
 	"discussiontools-emptystate-title-user-anon": "Heading shown on empty IP user talk pages.",
 	"discussiontools-error-comment-conflict": "Error message of a comment conflict.\n\nSimilar messages:\n* {{msg-mw|visualeditor-editconflict}}\n* {{msg-mw|twocolconflict-split-tour-dialog-message-single-column-view}}\n* {{msg-mw|discussiontools-error-comment-disappeared}}",
 	"discussiontools-error-comment-disappeared": "Error message.",
+	"discussiontools-error-comment-disappeared-reload": "Prompt to reload the page, sometimes show after {{msg-mw|discussiontools-error-comment-disappeared}}",
 	"discussiontools-error-comment-is-transcluded": "Error message. Parameter: $1 – text of the 'Edit'/'Edit source' tab\n\nCopy <nowiki>{{int:discussiontools-replylink}}</nowiki> into your translation. It will be shown as {{msg-mw|discussiontools-replylink}}",
 	"discussiontools-error-comment-is-transcluded-title": "Error message. Parameter: $1 – page name.\n\nCopy <nowiki>{{int:discussiontools-replylink}}</nowiki> into your translation. It will be shown as {{msg-mw|discussiontools-replylink}}",
 	"discussiontools-error-comment-not-saved": "Error message.",

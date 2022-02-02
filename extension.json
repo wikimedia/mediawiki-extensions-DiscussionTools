@@ -103,6 +103,7 @@
 				"discussiontools-autotopicsubpopup-preferences",
 				"discussiontools-error-comment-conflict",
 				"discussiontools-error-comment-disappeared",
+				"discussiontools-error-comment-disappeared-reload",
 				"discussiontools-error-comment-not-saved",
 				"discussiontools-error-comment-is-transcluded",
 				"discussiontools-error-comment-is-transcluded-title",
