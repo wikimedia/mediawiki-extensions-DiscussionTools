@@ -3,6 +3,7 @@
 var
 	$pageContainer, linksController,
 	pageThreads,
+	lastControllerScrollOffset,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	MemoryStorage = require( './MemoryStorage.js' ),
 	storage = new MemoryStorage( mw.storage.session.store ),
@@ -261,6 +262,7 @@ function init( $container, state ) {
 	 */
 	function setupController( commentId, $link, mode, hideErrors ) {
 		var commentController, $addSectionLink;
+
 		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$addSectionLink = $( '#ca-addsection a' );
@@ -278,14 +280,32 @@ function init( $container, state ) {
 		commentController.on( 'teardown', function ( teardownMode ) {
 			activeCommentId = null;
 			activeController = null;
-			linksController.clearActiveLink();
+
+			if ( teardownMode !== 'refresh' ) {
+				linksController.clearActiveLink();
+			}
 
 			if ( teardownMode === 'abandoned' ) {
 				linksController.focusLink( $link );
 			}
 		} );
+		commentController.on( 'reloadPage', function () {
+			// Teardown active reply widget(s)
+			commentController.replyWidgetPromise.then( function ( replyWidget ) {
+				lastControllerScrollOffset = $( commentController.newListItem ).offset().top;
+				replyWidget.teardown( 'refresh' );
+				refreshPageContents();
+			} );
+		} );
 
 		commentController.setup( mode, hideErrors );
+		if ( lastControllerScrollOffset ) {
+			$( document.documentElement ).scrollTop(
+				$( document.documentElement ).scrollTop() +
+				( $( commentController.newListItem ).offset().top - lastControllerScrollOffset )
+			);
+			lastControllerScrollOffset = null;
+		}
 	}
 
 	// Hook up each link to open a reply widget
