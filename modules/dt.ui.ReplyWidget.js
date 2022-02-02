@@ -330,8 +330,9 @@ ReplyWidget.prototype.getMode = null;
  * @param {boolean} [preserveStorage] Preserve auto-save storage
  */
 ReplyWidget.prototype.clear = function ( preserveStorage ) {
-	if ( this.errorMessage ) {
-		this.errorMessage.$element.remove();
+	if ( this.saveErrorMessage ) {
+		this.saveErrorMessage.$element.remove();
+		this.saveErrorMessage = null;
 	}
 	this.$preview.empty();
 	this.previewWikitext = null;
@@ -832,6 +833,22 @@ ReplyWidget.prototype.onUnload = function () {
 };
 
 /**
+ * Create an error message widget and attach it to the DOM
+ *
+ * @param {string} message Message string
+ * @return {OO.ui.MessageWidget} Message widget
+ */
+ReplyWidget.prototype.createErrorMessage = function ( message ) {
+	var errorMessage = new OO.ui.MessageWidget( {
+		type: 'error',
+		label: message,
+		classes: [ 'ext-discussiontools-ui-replyWidget-error' ]
+	} );
+	errorMessage.$element.insertBefore( this.replyBodyWidget.$element );
+	return errorMessage;
+};
+
+/**
  * Handle clicks on the reply button
  */
 ReplyWidget.prototype.onReplyClick = function () {
@@ -841,8 +858,9 @@ ReplyWidget.prototype.onReplyClick = function () {
 		return;
 	}
 
-	if ( this.errorMessage ) {
-		this.errorMessage.$element.remove();
+	if ( this.saveErrorMessage ) {
+		this.saveErrorMessage.$element.remove();
+		this.saveErrorMessage = null;
 	}
 
 	this.saveInitiated = mw.now();
@@ -897,12 +915,9 @@ ReplyWidget.prototype.onReplyClick = function () {
 			widget.captchaInput.scrollElementIntoView();
 
 		} else {
-			widget.errorMessage = new OO.ui.MessageWidget( {
-				type: 'error',
-				label: code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
-				classes: [ 'ext-discussiontools-ui-replyWidget-error' ]
-			} );
-			widget.errorMessage.$element.insertBefore( widget.replyBodyWidget.$element );
+			widget.saveErrorMessage = widget.createErrorMessage(
+				code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data )
+			);
 		}
 
 		if ( code instanceof Error ) {
