@@ -88,10 +88,12 @@ ReplyWidgetPlain.prototype.focus = function () {
 /**
  * @inheritdoc
  */
-ReplyWidgetPlain.prototype.clear = function () {
+ReplyWidgetPlain.prototype.clear = function ( preserveStorage ) {
 	this.replyBodyWidget.setValue( '' );
 
-	this.storage.remove( this.storagePrefix + '/body' );
+	if ( !preserveStorage ) {
+		this.storage.remove( this.storagePrefix + '/body' );
+	}
 
 	// Parent method
 	ReplyWidgetPlain.super.prototype.clear.apply( this, arguments );
@@ -155,7 +157,7 @@ ReplyWidgetPlain.prototype.teardown = function () {
 	this.replyBodyWidget.off( 'change' );
 
 	// Parent method
-	return ReplyWidgetPlain.super.prototype.teardown.call( this );
+	return ReplyWidgetPlain.super.prototype.teardown.apply( this, arguments );
 };
 
 /**

@@ -58,8 +58,10 @@ ReplyWidgetVisual.prototype.getValue = function () {
 /**
  * @inheritdoc
  */
-ReplyWidgetVisual.prototype.clear = function () {
-	this.replyBodyWidget.target.clearDocState();
+ReplyWidgetVisual.prototype.clear = function ( preserveStorage ) {
+	if ( !preserveStorage ) {
+		this.replyBodyWidget.target.clearDocState();
+	}
 	// #clear removes all the surfaces, so must be done after #clearDocState
 	this.replyBodyWidget.clear();
 
@@ -98,8 +100,10 @@ ReplyWidgetVisual.prototype.setup = function ( data ) {
 		htmlOrDoc = this.storage.get( this.storagePrefix + '/ve-dochtml' );
 		target.recovered = true;
 	} else {
-		htmlOrDoc = data.value || ( this.getMode() === 'visual' ? '<p></p>' : '' );
+		htmlOrDoc = data.value;
 	}
+
+	htmlOrDoc = htmlOrDoc || ( this.getMode() === 'visual' ? '<p></p>' : '' );
 
 	target.originalHtml = htmlOrDoc instanceof HTMLDocument ? ve.properInnerHtml( htmlOrDoc.body ) : htmlOrDoc;
 	target.fromEditedState = !!data.value;
@@ -139,7 +143,7 @@ ReplyWidgetVisual.prototype.teardown = function () {
 	this.replyBodyWidget.off( 'change' );
 
 	// Parent method
-	return ReplyWidgetVisual.super.prototype.teardown.call( this );
+	return ReplyWidgetVisual.super.prototype.teardown.apply( this, arguments );
 };
 
 /**
