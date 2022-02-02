@@ -5,7 +5,8 @@ var
 	$pageContainer, linksController, lastHighlightComment,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	seenAutoTopicSubPopup = !!+mw.user.options.get( 'discussiontools-seenautotopicsubpopup' ),
-	storage = mw.storage.session,
+	MemoryStorage = require( './MemoryStorage.js' ),
+	storage = new MemoryStorage( mw.storage.session.store ),
 	Parser = require( './Parser.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
 	CommentItem = require( './CommentItem.js' ),
@@ -1057,5 +1058,6 @@ module.exports = {
 	refreshPageContents: refreshPageContents,
 	checkThreadItemOnPage: checkThreadItemOnPage,
 	getCheckboxesPromise: getCheckboxesPromise,
-	getApi: getApi
+	getApi: getApi,
+	storage: storage
 };
