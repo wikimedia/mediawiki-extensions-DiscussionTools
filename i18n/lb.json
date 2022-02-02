@@ -53,6 +53,8 @@
 	"discussiontools-replywidget-transcluded": "Är Bemierkung gëtt op [[$1]] gespäichert.",
 	"discussiontools-topicsubscription-button-subscribe": "abonéieren",
 	"discussiontools-topicsubscription-button-unsubscribe": "ofbestellen",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Ofbestellen",
+	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Dëse Sujet ofbestellen?",
 	"discussiontools-topicsubscription-error-not-found-title": "Aschreiwung net fonnt",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Dir sidd ageschriwwen!",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Dir hutt Iech ofgemellt.",

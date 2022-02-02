@@ -9,7 +9,8 @@
 			"Tacsipacsi",
 			"Umherirrender",
 			"Verdy p",
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"Raymond"
 		]
 	},
 	"discussiontools": "{{name}}",
@@ -97,7 +98,7 @@
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Tooltip for the subscribe link added to each section.",
 	"discussiontools-topicsubscription-button-unsubscribe": "Label for the unsubscribe link added to each section. Use the same casing as section edit links.\nAppears in the same area as:\n* {{msg-mw|editsection}}\n* {{msg-mw|visualeditor-ca-editsource-section}}\n* {{msg-mw|discussiontools-topicsubscription-button-subscribe}}\n* {{msg-mw|discussiontools-replylink}}",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Tooltip for the unsubscribe link added to each section.",
-	"discussiontools-topicsubscription-action-unsubscribe-button": "Button to unsubscribe from a topic.",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Button to unsubscribe from a topic.\n{{identical|Unsubscribe}}",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Prompt shown when about to unsubscribe from a topic on an action page.",
 	"discussiontools-topicsubscription-error-not-found-body": "Body of error page shown when subscription not found.",
 	"discussiontools-topicsubscription-error-not-found-title": "Title of error page shown when subscription not found.",
