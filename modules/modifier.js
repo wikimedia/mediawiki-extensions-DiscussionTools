@@ -5,18 +5,6 @@ var
 	utils = require( './utils.js' );
 
 /**
- * Add an attribute to a list item to remove pre-whitespace in Parsoid
- *
- * @param {HTMLElement} listItem List item element
- */
-function whitespaceParsoidHack( listItem ) {
-	// HACK: Setting data-parsoid removes the whitespace after the list item,
-	// which makes nested lists work.
-	// This is undocumented behaviour and probably very fragile.
-	listItem.setAttribute( 'data-parsoid', '{}' );
-}
-
-/**
  * Remove extra linebreaks from a wikitext string
  *
  * @param {string} wikitext Wikitext
@@ -180,7 +168,6 @@ function addListItem( comment, replyIndentation ) {
 			list.discussionToolsModified = 'new';
 			item = target.ownerDocument.createElement( itemType );
 			item.discussionToolsModified = 'new';
-			whitespaceParsoidHack( item );
 
 			parent.insertBefore( list, target.nextSibling );
 			list.appendChild( item );
@@ -224,7 +211,6 @@ function addListItem( comment, replyIndentation ) {
 		if ( itemType === target.tagName.toLowerCase() ) {
 			item = target.ownerDocument.createElement( itemType );
 			item.discussionToolsModified = 'new';
-			whitespaceParsoidHack( item );
 			parent.insertBefore( item, target.nextSibling );
 
 		} else {
@@ -251,7 +237,6 @@ function addListItem( comment, replyIndentation ) {
 			list.discussionToolsModified = 'new';
 			item = target.ownerDocument.createElement( itemType );
 			item.discussionToolsModified = 'new';
-			whitespaceParsoidHack( item );
 
 			parent.insertBefore( list, target.nextSibling );
 			list.appendChild( item );
@@ -374,7 +359,6 @@ function unwrapList( list, fragment ) {
  */
 function addSiblingListItem( previousItem ) {
 	var listItem = previousItem.ownerDocument.createElement( previousItem.tagName );
-	whitespaceParsoidHack( listItem );
 	previousItem.parentNode.insertBefore( listItem, previousItem.nextSibling );
 	return listItem;
 }
