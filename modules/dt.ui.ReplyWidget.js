@@ -1,8 +1,6 @@
 var controller = require( 'ext.discussionTools.init' ).controller,
-	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	logger = require( 'ext.discussionTools.init' ).logger,
-	dtConf = require( 'ext.discussionTools.init' ).config,
 	ModeTabSelectWidget = require( './ModeTabSelectWidget.js' ),
 	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),
 	licenseMessages = require( './licenseMessages.json' ),
@@ -708,7 +706,6 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 		return $.Deferred().resolve().promise();
 	}
 
-	var indent = dtConf.replyIndentation === 'invisible' ? ':' : '*';
 	wikitext = wikitext !== undefined ? wikitext : this.getValue();
 	wikitext = utils.htmlTrim( wikitext );
 	var title = this.isNewTopic && this.commentController.sectionTitle.getValue();
@@ -728,40 +725,22 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	if ( !wikitext ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
-		wikitext = this.commentController.doIndentReplacements( wikitext, indent );
-
-		if ( !modifier.isWikitextSigned( wikitext ) ) {
-			// Add signature.
-			var signature = mw.msg( 'discussiontools-signature-prefix' ) + '~~~~';
-			// Drop opacity of signature in preview to make message body preview clearer.
-			// Extract any leading spaces outside the <span> markup to ensure accurate previews.
-			signature = signature.replace( /^( *)(.+)$/, function ( _, leadingSpaces, sig ) {
-				return leadingSpaces + '<span style="opacity: 0.6;">' + sig + '</span>';
-			} );
-			wikitext += signature;
-		}
-		if ( title ) {
-			wikitext = '== ' + title + ' ==\n' + wikitext;
-		}
 		this.previewRequest = parsePromise = controller.getApi().post( {
-			action: 'parse',
-			text: wikitext,
-			pst: true,
-			preview: true,
-			disableeditsection: true,
-			prop: [ 'text', 'modules', 'jsconfigvars' ],
-			title: this.pageName
+			action: 'discussiontoolspreview',
+			type: this.isNewTopic ? 'topic' : 'reply',
+			page: this.pageName,
+			wikitext: wikitext,
+			sectiontitle: title
 		} );
 	}
-	// TODO: Add list context
 
 	return parsePromise.then( function ( response ) {
-		widget.$preview.html( response ? response.parse.text : '' );
+		widget.$preview.html( response ? response.discussiontoolspreview.parse.text : '' );
 
 		if ( response ) {
-			mw.config.set( response.parse.jsconfigvars );
-			mw.loader.load( response.parse.modulestyles );
-			mw.loader.load( response.parse.modules );
+			mw.config.set( response.discussiontoolspreview.parse.jsconfigvars );
+			mw.loader.load( response.discussiontoolspreview.parse.modulestyles );
+			mw.loader.load( response.discussiontoolspreview.parse.modules );
 		}
 
 		mw.hook( 'wikipage.content' ).fire( widget.$preview );

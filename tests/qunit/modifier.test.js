@@ -122,33 +122,6 @@ QUnit.test( '#unwrapList', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'isWikitextSigned', function ( assert ) {
-	var cases = require( '../cases/isWikitextSigned.json' );
-
-	cases.forEach( function ( caseItem ) {
-		assert.strictEqual(
-			modifier.isWikitextSigned( caseItem.wikitext ),
-			caseItem.expected,
-			caseItem.msg
-		);
-	} );
-} );
-
-QUnit.test( 'isHtmlSigned', function ( assert ) {
-	var cases = require( '../cases/isHtmlSigned.json' );
-
-	cases.forEach( function ( caseItem ) {
-		var container = document.createElement( 'div' );
-		container.innerHTML = caseItem.html;
-
-		assert.strictEqual(
-			modifier.isHtmlSigned( container ),
-			caseItem.expected,
-			caseItem.msg
-		);
-	} );
-} );
-
 QUnit.test( 'sanitizeWikitextLinebreaks', function ( assert ) {
 	var cases = require( '../cases/sanitize-wikitext-linebreaks.json' );
 
