@@ -2,7 +2,6 @@
 /* global $:off */
 
 var
-	config = require( './config.json' ),
 	utils = require( './utils.js' );
 
 /**
@@ -380,16 +379,6 @@ function addSiblingListItem( previousItem ) {
 	return listItem;
 }
 
-// TODO: No longer used in the client
-function createWikitextNode( doc, wt ) {
-	var span = doc.createElement( 'span' );
-
-	span.setAttribute( 'typeof', 'mw:Transclusion' );
-	span.setAttribute( 'data-mw', JSON.stringify( { parts: [ wt ] } ) );
-
-	return span;
-}
-
 /**
  * Check whether wikitext contains a user signature.
  *
@@ -434,126 +423,13 @@ function isHtmlSigned( container ) {
 	return true;
 }
 
-/**
- * Append a user signature to the comment in the container.
- *
- * @param {HTMLElement} container
- */
-function appendSignature( container ) {
-	var doc = container.ownerDocument,
-		signature = mw.msg( 'discussiontools-signature-prefix' ) + '~~~~';
-
-	// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
-	// add another paragraph to contain the signature.
-	if ( !container.lastChild || container.lastChild.nodeName.toLowerCase() !== 'p' ) {
-		container.appendChild( doc.createElement( 'p' ) );
-	}
-	// If the last node is empty, trim the signature to prevent leading whitespace triggering
-	// preformatted text (T269188, T276612)
-	if ( !container.lastChild.firstChild ) {
-		signature = signature.replace( /^ +/, '' );
-	}
-	// Sign the last line
-	container.lastChild.appendChild(
-		createWikitextNode( doc, signature )
-	);
-}
-
-/**
- * Add a reply to a specific comment
- *
- * TODO: No longer used in the client
- *
- * @param {CommentItem} comment Comment being replied to
- * @param {HTMLElement} container Container of comment DOM nodes
- */
-function addReply( comment, container ) {
-	// Transfer comment DOM to Parsoid DOM
-	// Wrap every root node of the document in a new list item (dd/li).
-	// In wikitext mode every root node is a paragraph.
-	// In visual mode the editor takes care of preventing problematic nodes
-	// like <table> or <h2> from ever occurring in the comment.
-	var newParsoidItem;
-	while ( container.childNodes.length ) {
-		if ( !newParsoidItem ) {
-			newParsoidItem = addListItem( comment, config.replyIndentation );
-		} else {
-			newParsoidItem = addSiblingListItem( newParsoidItem );
-		}
-		newParsoidItem.appendChild( container.firstChild );
-	}
-}
-
-/**
- * Create a container of comment DOM nodes from wikitext
- *
- * TODO: No longer used in the client
- *
- * @param {CommentItem} comment Comment being replied to
- * @param {string} wikitext Wikitext
- */
-function addWikitextReply( comment, wikitext ) {
-	var doc = comment.range.endContainer.ownerDocument,
-		container = doc.createElement( 'div' );
-
-	wikitext = sanitizeWikitextLinebreaks( wikitext );
-
-	wikitext.split( '\n' ).forEach( function ( line ) {
-		var p = doc.createElement( 'p' );
-		p.appendChild( createWikitextNode( doc, line ) );
-		container.appendChild( p );
-	} );
-
-	if ( !isWikitextSigned( wikitext ) ) {
-		appendSignature( container );
-	}
-
-	addReply( comment, container );
-}
-
-/**
- * Create a container of comment DOM nodes from HTML
- *
- * TODO: No longer used in the client
- *
- * @param {CommentItem} comment Comment being replied to
- * @param {string} html HTML
- */
-function addHtmlReply( comment, html ) {
-	var doc = comment.range.endContainer.ownerDocument,
-		container = doc.createElement( 'div' );
-
-	container.innerHTML = html;
-	// Remove empty lines
-	// This should really be anything that serializes to empty string in wikitext,
-	// (e.g. <h2></h2>) but this will catch most cases
-	// Create a non-live child node list, so we don't have to worry about it changing
-	// as nodes are removed.
-	var childNodeList = Array.prototype.slice.call( container.childNodes );
-	childNodeList.forEach( function ( node ) {
-		if ( node.nodeName.toLowerCase() === 'p' && !utils.htmlTrim( node.innerHTML ) ) {
-			container.removeChild( node );
-		}
-	} );
-
-	if ( !isHtmlSigned( container ) ) {
-		appendSignature( container );
-	}
-
-	addReply( comment, container );
-}
-
 module.exports = {
 	addReplyLink: addReplyLink,
 	addListItem: addListItem,
 	removeAddedListItem: removeAddedListItem,
 	addSiblingListItem: addSiblingListItem,
 	unwrapList: unwrapList,
-	createWikitextNode: createWikitextNode,
-	addWikitextReply: addWikitextReply,
-	addHtmlReply: addHtmlReply,
 	isWikitextSigned: isWikitextSigned,
 	isHtmlSigned: isHtmlSigned,
-	appendSignature: appendSignature,
 	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks
 };

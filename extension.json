@@ -294,7 +294,6 @@
 			"cases/unwrap.json",
 			"cases/isWikitextSigned.json",
 			"cases/isHtmlSigned.json",
-			"cases/appendSignature.json",
 			"cases/linearWalk.json",
 			"cases/sanitize-wikitext-linebreaks.json",
 			"cases/timestamp-regex.json",

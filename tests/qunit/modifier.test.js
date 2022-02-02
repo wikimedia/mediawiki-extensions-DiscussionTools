@@ -151,23 +151,6 @@ QUnit.test( 'isHtmlSigned', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'appendSignature', function ( assert ) {
-	var cases = require( '../cases/appendSignature.json' );
-
-	cases.forEach( function ( caseItem ) {
-		var container = document.createElement( 'div' );
-		container.innerHTML = caseItem.html;
-
-		modifier.appendSignature( container );
-
-		assert.strictEqual(
-			container.innerHTML,
-			caseItem.expected,
-			caseItem.msg
-		);
-	} );
-} );
-
 QUnit.test( 'sanitizeWikitextLinebreaks', function ( assert ) {
 	var cases = require( '../cases/sanitize-wikitext-linebreaks.json' );
 
@@ -181,7 +164,4 @@ QUnit.test( 'sanitizeWikitextLinebreaks', function ( assert ) {
 } );
 
 // TODO:
-// * addHtmlReply
-// * addReply
 // * addSiblingListItem
-// * addWikitextReply
