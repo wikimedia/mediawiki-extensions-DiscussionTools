@@ -20,7 +20,7 @@
 	"apihelp-discussiontoolsedit-param-html": "איזה תוכן לשלוח, בתור HTML. לא יכול לשמש עם <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} משמש רק כש־<var>paction</var> הוא <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "איזה תוכן לשלוח, בתור קוד ויקי. לא יכול לשמש עם <var>html</var>.",
-	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "הוספת הערה חדשה להערה קיימת.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "הוספת הערה חדשה כתגובה להערה קיימת.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "הוספת פרק דיון חדש ותגובה חדשה בתוכו.",
 	"apihelp-discussiontoolsedit-summary": "שליחת הודעה בדף שיחה.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "שמות הנושאים לבדוק",

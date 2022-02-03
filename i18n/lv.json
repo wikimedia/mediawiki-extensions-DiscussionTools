@@ -80,6 +80,7 @@
 	"discussiontools-topicsubscription-error-not-found-body": "URL norādītais abonējums netika atrasts.",
 	"discussiontools-topicsubscription-error-not-found-title": "Abonements nav atrasts",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Tu saņemsi paziņojumus par jauniem komentāriem šajā tēmā",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Tu vairs nesaņemsi paziņojumus par jauniem komentāriem šajā tēmā.",
 	"discussiontools-topicsubscription-pager-actions": "Darbības",
 	"discussiontools-topicsubscription-pager-page": "Lapa",
 	"discussiontools-topicsubscription-pager-topic": "Tēma",
