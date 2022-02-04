@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
-use ConfigFactory;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsGetSubscriptions extends ApiBase {
@@ -12,35 +11,24 @@ class ApiDiscussionToolsGetSubscriptions extends ApiBase {
 	/** @var SubscriptionStore */
 	private $subscriptionStore;
 
-	/** @var ConfigFactory */
-	private $configFactory;
-
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
 	 * @param SubscriptionStore $subscriptionStore
-	 * @param ConfigFactory $configFactory
 	 */
 	public function __construct(
 		ApiMain $main,
 		$name,
-		SubscriptionStore $subscriptionStore,
-		ConfigFactory $configFactory
+		SubscriptionStore $subscriptionStore
 	) {
 		parent::__construct( $main, $name );
 		$this->subscriptionStore = $subscriptionStore;
-		$this->configFactory = $configFactory;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
-		if ( !$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) ) {
-			$this->dieWithError( [ 'apierror-moduledisabled', $this->getModuleName() ] );
-		}
-
 		$user = $this->getUser();
 		if ( !$user->isRegistered() ) {
 			$this->dieWithError( 'apierror-mustbeloggedin-generic', 'notloggedin' );
