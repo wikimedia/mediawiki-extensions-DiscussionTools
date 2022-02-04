@@ -511,25 +511,30 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 	if ( !title ) {
 		return null;
 	}
+
 	var username;
+	var namespaceId = title.getNamespaceId();
+	var mainText = title.getMainText();
+	var namespaceIds = mw.config.get( 'wgNamespaceIds' );
+
 	if (
-		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user ||
-		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).user_talk
+		namespaceId === namespaceIds.user ||
+		namespaceId === namespaceIds.user_talk
 	) {
-		username = title.getMainText();
+		username = mainText;
 		if ( username.indexOf( '/' ) !== -1 ) {
 			return null;
 		}
 	} else if (
-		title.getNamespaceId() === mw.config.get( 'wgNamespaceIds' ).special &&
-		title.getMainText().split( '/' )[ 0 ] === data.specialContributionsName
+		namespaceId === namespaceIds.special &&
+		mainText.split( '/' )[ 0 ] === data.specialContributionsName
 	) {
-		username = title.getMainText().split( '/' )[ 1 ];
+		username = mainText.split( '/' )[ 1 ];
 		if ( !username ) {
 			return null;
 		}
 		// Normalize the username: users may link to their contributions with an unnormalized name
-		var userpage = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, username );
+		var userpage = mw.Title.makeTitle( namespaceIds.user, username );
 		if ( !userpage ) {
 			return null;
 		}

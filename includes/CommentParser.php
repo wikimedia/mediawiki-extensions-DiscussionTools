@@ -521,8 +521,6 @@ class CommentParser {
 	 * @return string|null Username, or null
 	 */
 	private function getUsernameFromLink( Element $link ): ?string {
-		$username = null;
-
 		// Selflink: use title of current page
 		if ( DOMCompat::getClassList( $link )->contains( 'mw-selflink' ) ) {
 			$title = $this->title;
@@ -532,13 +530,18 @@ class CommentParser {
 		if ( !$title ) {
 			return null;
 		}
-		if ( $title->getNamespace() === NS_USER || $title->getNamespace() === NS_USER_TALK ) {
-			$username = $title->getText();
+
+		$username = null;
+		$namespaceId = $title->getNamespace();
+		$mainText = $title->getText();
+
+		if ( $namespaceId === NS_USER || $namespaceId === NS_USER_TALK ) {
+			$username = $mainText;
 			if ( strpos( $username, '/' ) !== false ) {
 				return null;
 			}
 		} elseif ( $title->isSpecial( 'Contributions' ) ) {
-			$parts = explode( '/', $title->getText(), 2 );
+			$parts = explode( '/', $mainText, 2 );
 			if ( !isset( $parts[1] ) ) {
 				return null;
 			}
