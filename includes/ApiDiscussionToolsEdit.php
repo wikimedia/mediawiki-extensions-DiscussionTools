@@ -68,19 +68,20 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				$wikitext = $params['wikitext'];
 				$html = $params['html'];
 
+				$signature = $this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+
 				if ( $wikitext !== null ) {
 					$wikitext = CommentUtils::htmlTrim( $wikitext );
 					if ( !CommentModifier::isWikitextSigned( $wikitext ) ) {
-						$wikitext .=
-							$this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+						$wikitext .= $signature;
 					}
 				} else {
-					$doc = DOMUtils::parseHTML( $html );
-					$container = DOMCompat::getBody( $doc );
+					$doc = DOMUtils::parseHTML( '' );
+					$container = DOMUtils::parseHTMLToFragment( $doc, $html );
 					if ( !CommentModifier::isHtmlSigned( $container ) ) {
-						CommentModifier::appendSignature( $container );
+						CommentModifier::appendSignature( $container, $signature );
 					}
-					$html = DOMCompat::getInnerHTML( $container );
+					$html = DOMUtils::getFragmentInnerHTML( $container );
 					$wikitext = $this->transformHTML( $title, $html )[ 'body' ];
 				}
 
