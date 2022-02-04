@@ -404,9 +404,6 @@
 		"MediaWiki\\Extension\\DiscussionTools\\Tests\\": "tests/phpunit/"
 	},
 	"APIModules": {
-		"discussiontools": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionTools"
-		},
 		"discussiontoolsedit": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
 		},
@@ -416,6 +413,9 @@
 				"DiscussionTools.SubscriptionStore",
 				"ConfigFactory"
 			]
+		},
+		"discussiontoolspageinfo": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPageInfo"
 		},
 		"discussiontoolssubscribe": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsSubscribe",
