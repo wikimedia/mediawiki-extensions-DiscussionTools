@@ -587,7 +587,8 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			}
 
 			if ( event === 'leave' && node !== timestampNode ) {
-				length += node.nodeType === Node.TEXT_NODE ? codePointLength( node.textContent ) : 0;
+				length += node.nodeType === Node.TEXT_NODE ?
+					codePointLength( utils.htmlTrim( node.textContent ) ) : 0;
 			}
 
 			// Find the closest link before timestamp that links to the user's user page.
