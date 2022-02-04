@@ -44,21 +44,33 @@ trait ApiDiscussionToolsTrait {
 	 * @param array $params Associative array with the following keys:
 	 *  - `type` (string) 'topic' or 'reply'
 	 *  - `title` (Title) Context title for wikitext transformations
-	 *  - `wikitext` (string) Content of the message
+	 *  - `wikitext` (string|null) Content of the message, mutually exclusive with `html`
+	 *  - `html` (string|null) Content of the message, mutually exclusive with `wikitext`
 	 *  - `sectiontitle` (string) Content of the title, when `type` is 'topic'
 	 *  - `signature` (string|null) Wikitext signature to add to the message
 	 * @return ApiResult action=parse API result
 	 */
 	protected function previewMessage( array $params ): ApiResult {
-		$wikitext = $params['wikitext'];
+		$wikitext = $params['wikitext'] ?? null;
+		$html = $params['html'] ?? null;
 		$title = $params['title'];
 		$signature = $params['signature'] ?? null;
 
 		switch ( $params['type'] ) {
 			case 'topic':
-				$wikitext = CommentUtils::htmlTrim( $wikitext );
-				if ( $signature !== null ) {
-					$wikitext .= $signature;
+				if ( $wikitext !== null ) {
+					$wikitext = CommentUtils::htmlTrim( $wikitext );
+					if ( $signature !== null ) {
+						$wikitext .= $signature;
+					}
+				} else {
+					$doc = DOMUtils::parseHTML( '' );
+					$container = DOMUtils::parseHTMLToFragment( $doc, $html );
+					if ( $signature !== null ) {
+						CommentModifier::appendSignature( $container, $signature );
+					}
+					$html = DOMUtils::getFragmentInnerHTML( $container );
+					$wikitext = $this->transformHTML( $title, $html )[ 'body' ];
 				}
 
 				if ( $params['sectiontitle'] ) {
@@ -70,7 +82,11 @@ trait ApiDiscussionToolsTrait {
 			case 'reply':
 				$doc = DOMUtils::parseHTML( '' );
 
-				$container = CommentModifier::prepareWikitextReply( $doc, $wikitext );
+				if ( $wikitext !== null ) {
+					$container = CommentModifier::prepareWikitextReply( $doc, $wikitext );
+				} else {
+					$container = CommentModifier::prepareHtmlReply( $doc, $html );
+				}
 
 				if ( $signature !== null ) {
 					CommentModifier::appendSignature( $container, $signature );

@@ -53,5 +53,4 @@ class CommentUtilsTest extends MediaWikiUnitTestCase {
 	public function provideLinearWalk(): array {
 		return self::getJson( '../cases/linearWalk.json' );
 	}
-
 }

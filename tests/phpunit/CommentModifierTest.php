@@ -125,45 +125,6 @@ class CommentModifierTest extends IntegrationTestCase {
 	}
 
 	/**
-	 * @dataProvider provideIsWikitextSigned
-	 * @covers ::isWikitextSigned
-	 */
-	public function testIsWikitextSigned(
-		string $msg, string $wikitext, bool $expected
-	): void {
-		self::assertEquals(
-			$expected,
-			CommentModifier::isWikitextSigned( $wikitext ),
-			$msg
-		);
-	}
-
-	public function provideIsWikitextSigned(): array {
-		return self::getJson( '../cases/isWikitextSigned.json' );
-	}
-
-	/**
-	 * @dataProvider provideIsHtmlSigned
-	 * @covers ::isHtmlSigned
-	 */
-	public function testIsHtmlSigned(
-		string $msg, string $html, bool $expected
-	): void {
-		$doc = self::createDocument( '' );
-		$container = DOMUtils::parseHTMLToFragment( $doc, $html );
-
-		self::assertEquals(
-			$expected,
-			CommentModifier::isHtmlSigned( $container ),
-			$msg
-		);
-	}
-
-	public function provideIsHtmlSigned(): array {
-		return self::getJson( '../cases/isHtmlSigned.json' );
-	}
-
-	/**
 	 * @dataProvider provideAppendSignature
 	 * @covers ::appendSignature
 	 */

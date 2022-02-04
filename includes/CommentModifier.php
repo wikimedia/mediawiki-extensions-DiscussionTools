@@ -436,56 +436,6 @@ class CommentModifier {
 	}
 
 	/**
-	 * Check whether wikitext contains a user signature.
-	 *
-	 * @param string $wikitext
-	 * @return bool
-	 */
-	public static function isWikitextSigned( string $wikitext ): bool {
-		$wikitext = CommentUtils::htmlTrim( $wikitext );
-		// Contains ~~~~ (four tildes), but not ~~~~~ (five tildes), at the end.
-		return (bool)preg_match( '/([^~]|^)~~~~$/', $wikitext );
-	}
-
-	/**
-	 * Check whether HTML node contains a user signature.
-	 *
-	 * @param DocumentFragment $container
-	 * @return bool
-	 */
-	public static function isHtmlSigned( DocumentFragment $container ): bool {
-		// Good enough?…
-		$matches = DOMCompat::querySelectorAll( $container, 'span[typeof="mw:Transclusion"][data-mw*="~~~~"]' );
-		// Iterate to get the last item. We don't know if $matches is an array or some iterator,
-		// and there doesn't seem to be a nicer way to get just the last item.
-		foreach ( $matches as $match ) {
-			$lastSig = $match;
-		}
-		if ( !isset( $lastSig ) ) {
-			// List was empty
-			return false;
-		}
-
-		// Signature must be at the end of the comment - there must be no sibling following this node, or its parents
-		$node = $lastSig;
-		while ( $node ) {
-			// Skip over whitespace nodes
-			while (
-				$node->nextSibling &&
-				$node->nextSibling->nodeType === XML_TEXT_NODE &&
-				CommentUtils::htmlTrim( $node->nextSibling->nodeValue ?? '' ) === ''
-			) {
-				$node = $node->nextSibling;
-			}
-			if ( $node->nextSibling ) {
-				return false;
-			}
-			$node = $node->parentNode;
-		}
-		return true;
-	}
-
-	/**
 	 * Append a user signature to the comment in the container.
 	 *
 	 * @param DocumentFragment $container
@@ -625,12 +575,12 @@ class CommentModifier {
 	 *
 	 * @param CommentItem $comment Comment being replied to
 	 * @param string $wikitext
+	 * @param string|null $signature
 	 */
-	public static function addWikitextReply( CommentItem $comment, string $wikitext ): void {
+	public static function addWikitextReply( CommentItem $comment, string $wikitext, string $signature = null ): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = self::prepareWikitextReply( $doc, $wikitext );
-		if ( !self::isWikitextSigned( $wikitext ) ) {
-			$signature = wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+		if ( $signature !== null ) {
 			self::appendSignature( $container, $signature );
 		}
 		self::addReply( $comment, $container );
@@ -641,12 +591,12 @@ class CommentModifier {
 	 *
 	 * @param CommentItem $comment Comment being replied to
 	 * @param string $html
+	 * @param string|null $signature
 	 */
-	public static function addHtmlReply( CommentItem $comment, string $html ): void {
+	public static function addHtmlReply( CommentItem $comment, string $html, string $signature = null ): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = self::prepareHtmlReply( $doc, $html );
-		if ( !self::isHtmlSigned( $container ) ) {
-			$signature = wfMessage( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+		if ( $signature !== null ) {
 			self::appendSignature( $container, $signature );
 		}
 		self::addReply( $comment, $container );

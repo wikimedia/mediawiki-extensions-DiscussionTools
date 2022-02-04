@@ -172,5 +172,4 @@ class ThreadItemSet {
 	public function getThreads(): array {
 		return $this->threads;
 	}
-
 }

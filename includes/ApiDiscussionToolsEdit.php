@@ -17,13 +17,24 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsEdit extends ApiBase {
 
+	use ApiDiscussionToolsTrait;
 	use ApiParsoidTrait;
 
+	/** @var CommentParser */
+	private $commentParser;
+
 	/**
-	 * @inheritDoc
+	 * @param ApiMain $main
+	 * @param string $name
+	 * @param CommentParser $commentParser
 	 */
-	public function __construct( ApiMain $main, string $name ) {
+	public function __construct(
+		ApiMain $main,
+		$name,
+		CommentParser $commentParser
+	) {
 		parent::__construct( $main, $name );
+		$this->commentParser = $commentParser;
 		$this->setLogger( LoggerFactory::getInstance( 'DiscussionTools' ) );
 	}
 
@@ -59,25 +70,43 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			}
 		}
 
+		$this->requireOnlyOneParameter( $params, 'wikitext', 'html' );
+		if ( $params['paction'] === 'addtopic' ) {
+			$this->requireAtLeastOneParameter( $params, 'sectiontitle' );
+		}
+
+		// To determine if we need to add a signature,
+		// preview the comment without adding one and check if the result is signed properly.
+		$previewResult = $this->previewMessage( [
+			'type' => $params['paction'] === 'addtopic' ? 'topic' : 'reply',
+			'title' => $title,
+			'wikitext' => $params['wikitext'],
+			'html' => $params['html'],
+			'sectiontitle' => $params['sectiontitle'],
+		] );
+		$previewResultHtml = $previewResult->getResultData( [ 'parse', 'text' ] );
+		$container = DOMCompat::getBody( DOMUtils::parseHTML( $previewResultHtml ) );
+		$threadItemSet = $this->commentParser->parse( $container, $title );
+		if ( CommentUtils::isSingleCommentSignedBy( $threadItemSet, $this->getUser()->getName(), $container ) ) {
+			$signature = null;
+		} else {
+			$signature = $this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
+		}
+
 		switch ( $params['paction'] ) {
 			case 'addtopic':
-				$this->requireAtLeastOneParameter( $params, 'sectiontitle' );
-				$this->requireOnlyOneParameter( $params, 'wikitext', 'html' );
-
 				$wikitext = $params['wikitext'];
 				$html = $params['html'];
 
-				$signature = $this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
-
 				if ( $wikitext !== null ) {
 					$wikitext = CommentUtils::htmlTrim( $wikitext );
-					if ( !CommentModifier::isWikitextSigned( $wikitext ) ) {
+					if ( $signature !== null ) {
 						$wikitext .= $signature;
 					}
 				} else {
 					$doc = DOMUtils::parseHTML( '' );
 					$container = DOMUtils::parseHTMLToFragment( $doc, $html );
-					if ( !CommentModifier::isHtmlSigned( $container ) ) {
+					if ( $signature !== null ) {
 						CommentModifier::appendSignature( $container, $signature );
 					}
 					$html = DOMUtils::getFragmentInnerHTML( $container );
@@ -211,12 +240,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					}
 				}
 
-				$this->requireOnlyOneParameter( $params, 'wikitext', 'html' );
-
 				if ( $params['wikitext'] !== null ) {
-					CommentModifier::addWikitextReply( $comment, $params['wikitext'] );
+					CommentModifier::addWikitextReply( $comment, $params['wikitext'], $signature );
 				} else {
-					CommentModifier::addHtmlReply( $comment, $params['html'] );
+					CommentModifier::addHtmlReply( $comment, $params['html'], $signature );
 				}
 
 				if ( isset( $params['summary'] ) ) {

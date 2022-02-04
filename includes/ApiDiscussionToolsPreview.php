@@ -7,17 +7,29 @@ use ApiMain;
 use ApiParsoidTrait;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsPreview extends ApiBase {
 
 	use ApiDiscussionToolsTrait;
 	use ApiParsoidTrait;
 
+	/** @var CommentParser */
+	private $commentParser;
+
 	/**
-	 * @inheritDoc
+	 * @param ApiMain $main
+	 * @param string $name
+	 * @param CommentParser $commentParser
 	 */
-	public function __construct( ApiMain $main, string $name ) {
+	public function __construct(
+		ApiMain $main,
+		$name,
+		CommentParser $commentParser
+	) {
 		parent::__construct( $main, $name );
+		$this->commentParser = $commentParser;
 	}
 
 	/**
@@ -34,9 +46,20 @@ class ApiDiscussionToolsPreview extends ApiBase {
 			$this->requireAtLeastOneParameter( $params, 'sectiontitle' );
 		}
 
-		// Add signature if missing
-		$signature = null;
-		if ( !CommentModifier::isWikitextSigned( $params['wikitext'] ) ) {
+		// Try without adding a signature
+		$result = $this->previewMessage( [
+			'type' => $params['type'],
+			'title' => $title,
+			'wikitext' => $params['wikitext'],
+			'sectiontitle' => $params['sectiontitle'],
+		] );
+		$resultHtml = $result->getResultData( [ 'parse', 'text' ] );
+
+		// Check if there was a signature in a proper place
+		$container = DOMCompat::getBody( DOMUtils::parseHTML( $resultHtml ) );
+		$threadItemSet = $this->commentParser->parse( $container, $title );
+		if ( !CommentUtils::isSingleCommentSignedBy( $threadItemSet, $this->getUser()->getName(), $container ) ) {
+			// If not, add the signature and re-render
 			$signature = $this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
 			// Drop opacity of signature in preview to make message body preview clearer.
 			// Extract any leading spaces outside the <span> markup to ensure accurate previews.
@@ -44,15 +67,15 @@ class ApiDiscussionToolsPreview extends ApiBase {
 				list( , $leadingSpaces, $sig ) = $matches;
 				return $leadingSpaces . '<span style="opacity: 0.6;">' . $sig . '</span>';
 			}, $signature );
-		}
 
-		$result = $this->previewMessage( [
-			'type' => $params['type'],
-			'title' => $title,
-			'wikitext' => $params['wikitext'],
-			'sectiontitle' => $params['sectiontitle'],
-			'signature' => $signature,
-		] );
+			$result = $this->previewMessage( [
+				'type' => $params['type'],
+				'title' => $title,
+				'wikitext' => $params['wikitext'],
+				'sectiontitle' => $params['sectiontitle'],
+				'signature' => $signature,
+			] );
+		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result->serializeForApiResult() );
 	}
