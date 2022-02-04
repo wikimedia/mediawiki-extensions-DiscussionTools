@@ -567,13 +567,12 @@ class CommentParser {
 	 * A signature must contain at least one link to the user's userpage, discussion page or
 	 * contributions (and may contain other links). The link may be nested in other elements.
 	 *
-	 * This function returns a two-element array. The first element is an array of sibling nodes
-	 * comprising the signature, in reverse order (with $timestampNode or its parent node as the last
-	 * element). The second element is the username (null for unsigned comments).
-	 *
 	 * @param Text $timestampNode
 	 * @param Node|null $until Node to stop searching at
-	 * @return array [ nodes, username ]
+	 * @return array Result, an associative array with the following keys:
+	 *   - Node[] `nodes` Sibling nodes comprising the signature, in reverse order (with
+	 *     $timestampNode or its parent node as the first element)
+	 *   - string|null `username` Username, null for unsigned comments
 	 */
 	private function findSignature( Text $timestampNode, ?Node $until = null ): array {
 		$sigUsername = null;
@@ -642,7 +641,10 @@ class CommentParser {
 		// TODO Not sure if this is actually good, might be better to just use the range...
 		$sigNodes = array_reverse( CommentUtils::getCoveredSiblings( $range ) );
 
-		return [ $sigNodes, $sigUsername ];
+		return [
+			'nodes' => $sigNodes,
+			'username' => $sigUsername
+		];
 	}
 
 	/**
@@ -888,8 +890,8 @@ class CommentParser {
 			} elseif ( $node instanceof Text && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $lastSigNode );
-				$author = $foundSignature[1];
-				$lastSigNode = $foundSignature[0][0];
+				$author = $foundSignature['username'];
+				$lastSigNode = $foundSignature['nodes'][0];
 
 				if ( !$author ) {
 					// Ignore timestamps for which we couldn't find a signature. It's probably not a real
@@ -898,7 +900,7 @@ class CommentParser {
 				}
 
 				$sigRanges = [];
-				$sigRanges[] = $this->adjustSigRange( $foundSignature[0], $match, $node );
+				$sigRanges[] = $this->adjustSigRange( $foundSignature['nodes'], $match, $node );
 
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curCommentEnd );
@@ -933,8 +935,8 @@ class CommentParser {
 							$treeWalker->currentNode = $n;
 							// …and add it as another signature to this comment (regardless of the author and timestamp)
 							$foundSignature2 = $this->findSignature( $n, $node );
-							if ( $foundSignature2[1] ) {
-								$sigRanges[] = $this->adjustSigRange( $foundSignature2[0], $match2, $n );
+							if ( $foundSignature2['username'] ) {
+								$sigRanges[] = $this->adjustSigRange( $foundSignature2['nodes'], $match2, $n );
 							}
 						}
 						if ( $event === 'leave' ) {

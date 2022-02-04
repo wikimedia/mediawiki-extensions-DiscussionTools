@@ -26,7 +26,7 @@ if ( debug & DEBUG_HIGHLIGHT ) {
 			if ( !match ) {
 				return;
 			}
-			var signature = parser.findSignature( node )[ 0 ];
+			var signature = parser.findSignature( node ).nodes;
 			var emptySignature = signature.length === 1 && signature[ 0 ] === node;
 			// Note that additional content may follow the timestamp (e.g. in some voting formats), but we
 			// don't care about it. The code below doesn't mark that due to now the text nodes are sliced,

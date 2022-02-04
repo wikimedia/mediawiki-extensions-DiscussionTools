@@ -556,10 +556,10 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
  * @private
  * @param {Text} timestampNode Text node
  * @param {Node} [until] Node to stop searching at
- * @return {Array} Result, a tuple contaning:
- *  - {Node[]} Sibling nodes comprising the signature, in reverse order (with
- *   `timestampNode` or its parent node as the first element)
- *  - {string|null} Username, null for unsigned comments
+ * @return {Object} Result, an object with the following keys:
+ *  - {Node[]} nodes Sibling nodes comprising the signature, in reverse order (with
+ *    `timestampNode` or its parent node as the first element)
+ *  - {string|null} username Username, null for unsigned comments
  */
 Parser.prototype.findSignature = function ( timestampNode, until ) {
 	var parser = this;
@@ -627,7 +627,10 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 	// TODO Not sure if this is actually good, might be better to just use the range...
 	var sigNodes = utils.getCoveredSiblings( nativeRange ).reverse();
 
-	return [ sigNodes, sigUsername ];
+	return {
+		nodes: sigNodes,
+		username: sigUsername
+	};
 };
 
 /**
@@ -833,8 +836,8 @@ Parser.prototype.buildThreadItems = function () {
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegexps ) ) ) {
 			var warnings = [];
 			var foundSignature = this.findSignature( node, lastSigNode );
-			var author = foundSignature[ 1 ];
-			lastSigNode = foundSignature[ 0 ][ 0 ];
+			var author = foundSignature.username;
+			lastSigNode = foundSignature.nodes[ 0 ];
 
 			if ( !author ) {
 				// Ignore timestamps for which we couldn't find a signature. It's probably not a real
@@ -843,7 +846,7 @@ Parser.prototype.buildThreadItems = function () {
 			}
 
 			var sigRanges = [];
-			sigRanges.push( adjustSigRange( foundSignature[ 0 ], match, node ) );
+			sigRanges.push( adjustSigRange( foundSignature.nodes, match, node ) );
 
 			// Everything from the last comment up to here is the next comment
 			var startNode = this.nextInterestingLeafNode( curCommentEnd );
@@ -877,8 +880,8 @@ Parser.prototype.buildThreadItems = function () {
 						treeWalker.currentNode = n;
 						// …and add it as another signature to this comment (regardless of the author and timestamp)
 						foundSignature2 = this.findSignature( n, node );
-						if ( foundSignature2[ 1 ] ) {
-							sigRanges.push( adjustSigRange( foundSignature2[ 0 ], match2, n ) );
+						if ( foundSignature2.username ) {
+							sigRanges.push( adjustSigRange( foundSignature2.nodes, match2, n ) );
 						}
 					}
 					if ( event === 'leave' ) {
