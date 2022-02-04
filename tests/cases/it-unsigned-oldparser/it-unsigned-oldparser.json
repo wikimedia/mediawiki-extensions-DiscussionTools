@@ -170,6 +170,7 @@
 						"type": "comment",
 						"timestamp": "2020-11-14T14:45:00.000Z",
 						"author": "Enzo Encius",
+						"displayName": "Enzo",
 						"range": [
 							"37/0/0",
 							"37/0/6/25"
@@ -189,6 +190,7 @@
 								"type": "comment",
 								"timestamp": "2020-11-14T14:46:00.000Z",
 								"author": "Enzo Encius",
+								"displayName": "Enzo",
 								"range": [
 									"37/0/7/0/0",
 									"37/0/7/0/4/25"
@@ -359,6 +361,7 @@
 								"type": "comment",
 								"timestamp": "2020-11-16T14:46:00.000Z",
 								"author": "Ap7189ap",
+								"displayName": "Ap7189",
 								"range": [
 									"58/0/5/0/0/0/0",
 									"58/0/5/0/5/25"
@@ -416,6 +419,7 @@
 														"type": "comment",
 														"timestamp": "2020-11-16T15:50:00.000Z",
 														"author": "Ap7189ap",
+														"displayName": "Ap7189",
 														"range": [
 															"58/0/5/0/6/0/6/0/9/0/0/0/0",
 															"58/0/5/0/6/0/6/0/9/0/9/25"
@@ -808,6 +812,7 @@
 				"type": "comment",
 				"timestamp": "2020-11-17T11:39:00.000Z",
 				"author": "Enzo Encius",
+				"displayName": "Enzo",
 				"range": [
 					"90/0",
 					"95/0/3/25"
@@ -1253,6 +1258,7 @@
 								"type": "comment",
 								"timestamp": "2020-11-19T21:10:00.000Z",
 								"author": "Popop",
+								"displayName": "Pop",
 								"range": [
 									"132/0/5/0/0",
 									"132/0/5/0/4/25"
@@ -1660,6 +1666,7 @@
 				"type": "comment",
 				"timestamp": "2020-11-19T20:51:00.000Z",
 				"author": "Janik98",
+				"displayName": "Janik",
 				"range": [
 					"167/0",
 					"167/4/26"
@@ -1811,6 +1818,7 @@
 														"type": "comment",
 														"timestamp": "2020-11-20T11:57:00.000Z",
 														"author": "Idraulico liquido",
+														"displayName": "--1dr4uI1c0",
 														"range": [
 															"175/0/8/0/6/0/8/0/12/0/0",
 															"175/0/8/0/6/0/8/0/12/0/4/25"
@@ -1962,6 +1970,7 @@
 												"type": "comment",
 												"timestamp": "2020-11-20T20:56:00.000Z",
 												"author": "Enzo Encius",
+												"displayName": "Enzo",
 												"range": [
 													"179/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/3/0/7/0/5/0/0/0/0",
 													"179/0/0/0/0/0/0/0/0/0/0/0/0/0/0/0/3/0/7/0/5/0/3/25"
@@ -2215,6 +2224,7 @@
 								"type": "comment",
 								"timestamp": "2020-11-22T00:16:00.000Z",
 								"author": "Ap7189ap",
+								"displayName": "Ap7189",
 								"range": [
 									"205/0/5/0/0",
 									"205/0/5/0/4/25"
@@ -2539,6 +2549,7 @@
 										"type": "comment",
 										"timestamp": "2020-11-23T10:53:00.000Z",
 										"author": "Etienne",
+										"displayName": "É",
 										"range": [
 											"238/0/8/0/11/0/0/0/0",
 											"238/0/8/0/11/0/6/25"

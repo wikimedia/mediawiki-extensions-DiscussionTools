@@ -18,11 +18,13 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	use CommentItemTrait {
 		getHeading as protected traitGetHeading;
 		getSubscribableHeading as protected traitGetSubscribableHeading;
+		jsonSerialize as protected traitJsonSerialize;
 	}
 
 	private $signatureRanges;
 	private $timestamp;
 	private $author;
+	private $displayName;
 
 	/**
 	 * @param int $level
@@ -33,15 +35,29 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	 *  The last node in every signature range is a node containing the timestamp.
 	 * @param DateTimeImmutable $timestamp
 	 * @param string $author Comment author's username
+	 * @param ?string $displayName Comment author's display name
 	 */
 	public function __construct(
 		int $level, ImmutableRange $range,
-		array $signatureRanges, DateTimeImmutable $timestamp, string $author
+		array $signatureRanges, DateTimeImmutable $timestamp,
+		string $author, ?string $displayName = null
 	) {
 		parent::__construct( 'comment', $level, $range );
 		$this->signatureRanges = $signatureRanges;
 		$this->timestamp = $timestamp;
 		$this->author = $author;
+		$this->displayName = $displayName;
+	}
+
+	/**
+	 * @inheritDoc CommentItemTrait::jsonSerialize
+	 */
+	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
+		$data = $this->traitJsonSerialize( $deep, $callback );
+		if ( $this->displayName ) {
+			$data['displayName'] = $this->displayName;
+		}
+		return $data;
 	}
 
 	/**
@@ -151,6 +167,13 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	 */
 	public function getAuthor(): string {
 		return $this->author;
+	}
+
+	/**
+	 * @return ?string Comment display name
+	 */
+	public function getDisplayName(): ?string {
+		return $this->displayName;
 	}
 
 	/**

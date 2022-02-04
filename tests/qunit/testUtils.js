@@ -85,6 +85,9 @@ module.exports.serializeComments = function ( parent, root ) {
 	if ( parent.timestamp ) {
 		parent.timestamp = parent.getTimestampString();
 	}
+	if ( !parent.displayName ) {
+		delete parent.displayName;
+	}
 
 	// Unimportant
 	delete parent.rootNode;

@@ -54,6 +54,7 @@
 								"type": "comment",
 								"timestamp": "2018-10-01T18:20:00.000Z",
 								"author": "Zwiadowca21",
+								"displayName": "Zwiadowca",
 								"range": [
 									"11/0/0/0/0/0",
 									"11/0/0/0/12/25"
@@ -383,6 +384,7 @@
 				"type": "comment",
 				"timestamp": "2018-10-01T13:54:00.000Z",
 				"author": "Zwiadowca21",
+				"displayName": "Zwiadowca",
 				"range": [
 					"33/0",
 					"33/15/25"
@@ -1920,6 +1922,7 @@
 				"type": "comment",
 				"timestamp": "2018-10-16T10:55:00.000Z",
 				"author": "Pawelmhm",
+				"displayName": "pawelmxm",
 				"range": [
 					"130/0",
 					"130/4/27"
@@ -1959,6 +1962,7 @@
 						"type": "comment",
 						"timestamp": "2018-10-16T12:01:00.000Z",
 						"author": "Pawelmhm",
+						"displayName": "pawelmxm",
 						"range": [
 							"132/2/0",
 							"132/2/6/27"
@@ -2313,6 +2317,7 @@
 				"type": "comment",
 				"timestamp": "2018-10-18T10:29:00.000Z",
 				"author": "Pawelmhm",
+				"displayName": "pawelmxm",
 				"range": [
 					"154/0",
 					"154/14/27"
@@ -2445,6 +2450,7 @@
 						"type": "comment",
 						"timestamp": "2018-10-02T22:16:00.000Z",
 						"author": "Matma Rex",
+						"displayName": "Matma Rex",
 						"range": [
 							"170/0/0",
 							"170/0/6/25"
@@ -3422,6 +3428,7 @@
 						"type": "comment",
 						"timestamp": "2018-10-26T16:13:00.000Z",
 						"author": "Michalwadas",
+						"displayName": "Michał Wadas",
 						"range": [
 							"242/0/0",
 							"242/0/4/27"
@@ -3713,6 +3720,7 @@
 				"type": "comment",
 				"timestamp": "2018-10-29T08:12:00.000Z",
 				"author": "Arvedui89",
+				"displayName": "Aʀvєδuι",
 				"range": [
 					"266/0",
 					"266/6/25"
