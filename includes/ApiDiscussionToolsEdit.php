@@ -37,7 +37,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 		$autoSubscribe =
-			$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) &&
 			$dtConfig->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'discussiontoolsapi' &&
 			HookUtils::shouldAddAutoSubscription( $this->getUser(), $title );
 		$subscribableHeadingName = null;

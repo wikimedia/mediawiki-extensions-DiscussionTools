@@ -78,12 +78,6 @@ class EventDispatcher {
 	 */
 	public static function generateEventsForRevision( array &$events, RevisionRecord $newRevRecord ): void {
 		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-
-		if ( !$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) ) {
-			// Feature disabled for all users
-			return;
-		}
 
 		$revisionStore = $services->getRevisionStore();
 		$userFactory = $services->getUserFactory();
@@ -301,7 +295,6 @@ class EventDispatcher {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		if (
-			$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' ) &&
 			$dtConfig->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'any' &&
 			HookUtils::shouldAddAutoSubscription( $user, $title )
 		) {

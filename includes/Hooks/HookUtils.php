@@ -274,19 +274,11 @@ class HookUtils {
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
 			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
 
-		if (
-			( $feature === self::TOPICSUBSCRIPTION || $feature === self::AUTOTOPICSUB ) &&
-			!$dtConfig->get( 'DiscussionToolsEnableTopicSubscriptionBackend' )
-		) {
-			// Can't be enabled via query, because the tables may not exist yet (T280082)
-			$queryEnable = false;
-		}
-
 		if ( $queryEnable ) {
 			return true;
 		}
 
-		if ( $queryEnable === "0" ) {
+		if ( $queryEnable === '0' ) {
 			// ?dtenable=0 forcibly disables the feature regardless of any other checks (T285578)
 			return false;
 		}
