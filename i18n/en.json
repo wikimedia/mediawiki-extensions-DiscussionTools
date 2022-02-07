@@ -99,6 +99,8 @@
 	"discussiontools-replywidget-transcluded": "Your comment will be saved at [[$1]].",
 	"discussiontools-replywidget-watchthis": "Add this page to your [[Special:Watchlist|watchlist]]",
 	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-target-comment-missing": "This comment could not be found. It might have been deleted or moved.",
+	"discussiontools-target-comments-missing": "New comments could not be found. They might have been deleted or moved.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Unsubscribe",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Unsubscribe from this topic?",
 	"discussiontools-topicsubscription-button-subscribe": "subscribe",
