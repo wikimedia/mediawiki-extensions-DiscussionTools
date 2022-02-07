@@ -410,15 +410,15 @@
 		"discussiontoolsedit": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
 		},
-		"discussiontoolssubscribe": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsSubscribe",
+		"discussiontoolsgetsubscriptions": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsGetSubscriptions",
 			"services": [
 				"DiscussionTools.SubscriptionStore",
 				"ConfigFactory"
 			]
 		},
-		"discussiontoolsgetsubscriptions": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsGetSubscriptions",
+		"discussiontoolssubscribe": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsSubscribe",
 			"services": [
 				"DiscussionTools.SubscriptionStore",
 				"ConfigFactory"
