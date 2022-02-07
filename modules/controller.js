@@ -101,12 +101,11 @@ function getPageData( pageName, oldId, isNewTopic ) {
 		} );
 
 		transcludedFromPromise = api.get( {
-			action: 'discussiontools',
-			paction: 'transcludedfrom',
+			action: 'discussiontoolspageinfo',
 			page: pageName,
 			oldid: oldId
 		} ).then( function ( response ) {
-			return OO.getProp( response, 'discussiontools' ) || {};
+			return OO.getProp( response, 'discussiontoolspageinfo', 'transcludedfrom' ) || {};
 		} );
 	} else {
 		lintPromise = $.Deferred().resolve( [] ).promise();
