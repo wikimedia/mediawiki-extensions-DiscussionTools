@@ -259,10 +259,10 @@ CommentController.prototype.showAndFocus = function () {
 	} );
 };
 
-CommentController.prototype.teardown = function ( abandoned ) {
+CommentController.prototype.teardown = function ( mode ) {
 	modifier.removeAddedListItem( this.newListItem );
 	this.newListItem = null;
-	this.emit( 'teardown', abandoned );
+	this.emit( 'teardown', mode );
 };
 
 /**

@@ -325,9 +325,11 @@ ReplyWidget.prototype.getMode = null;
  * Restore the widget to its original state
  *
  * Clear any widget values, reset UI states, and clear
- * any auto-save values.
+ * any (optionall) auto-save values.
+ *
+ * @param {boolean} [preserveStorage] Preserve auto-save storage
  */
-ReplyWidget.prototype.clear = function () {
+ReplyWidget.prototype.clear = function ( preserveStorage ) {
 	if ( this.errorMessage ) {
 		this.errorMessage.$element.remove();
 	}
@@ -336,7 +338,11 @@ ReplyWidget.prototype.clear = function () {
 	this.previewTitle = null;
 	this.toggleAdvanced( false );
 
-	this.clearStorage();
+	if ( !preserveStorage ) {
+		this.clearStorage();
+	} else {
+		this.storage.set( this.storagePrefix + '/saveable', '1' );
+	}
 
 	this.emit( 'clear' );
 };
@@ -612,11 +618,14 @@ ReplyWidget.prototype.tryTeardown = function () {
 /**
  * Teardown the widget
  *
- * @param {boolean} [abandoned] Widget was torn down after a reply was abandoned
+ * @param {string} [mode] Teardown mode:
+ *  - 'default': The reply was saved and can be discarded
+ *  - 'abandoned': The reply was abandoned and discarded
+ *  - 'refresh': The page is being refreshed, preserve auto-save
  * @chainable
  * @return {ReplyWidget}
  */
-ReplyWidget.prototype.teardown = function ( abandoned ) {
+ReplyWidget.prototype.teardown = function ( mode ) {
 	if ( this.isNewTopic ) {
 		this.commentController.sectionTitle.disconnect( this );
 	}
@@ -628,8 +637,8 @@ ReplyWidget.prototype.teardown = function ( abandoned ) {
 	this.unbindBeforeUnloadHandler();
 	mw.hook( 'wikipage.watchlistChange' ).remove( this.onWatchToggleHandler );
 
-	this.clear();
-	this.emit( 'teardown', abandoned );
+	this.clear( mode === 'refresh' );
+	this.emit( 'teardown', mode );
 	return this;
 };
 

@@ -700,12 +700,12 @@ function init( $container, state ) {
 		activeController = commentController;
 		linksController.setActiveLink( $link );
 
-		commentController.on( 'teardown', function ( abandoned ) {
+		commentController.on( 'teardown', function ( teardownMode ) {
 			activeCommentId = null;
 			activeController = null;
 			linksController.clearActiveLink();
 
-			if ( abandoned ) {
+			if ( teardownMode === 'abandoned' ) {
 				linksController.focusLink( $link );
 			}
 		} );
