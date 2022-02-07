@@ -35,6 +35,8 @@
 	"discussiontools-replywidget-transcluded": "Jouw commentaar wordt bewaard op [[$1]].",
 	"discussiontools-error-comment-disappeared": "Bericht om op te reageren niet gevonden; mogelijk werd het verwijderd of verplaatst. Ververs de pagina en probeer het opnieuw.",
 	"discussiontools-error-comment-is-transcluded": "De \"{{int:discussiontools-replylink}}\"-link kan niet worden gebruikt om te reageren op deze overlegbijdrage. Gebruik om te reageren de volledige editor door op \"$1\" te klikken.",
+	"discussiontools-error-comment-is-transcluded-title": "De link \"{{int:discussiontools-replylink}}\" kan niet worden gebruikt om op deze opmerking te reageren, omdat deze vanaf een andere pagina is geladen. Om te antwoorden, bezoek: [[$1]].",
+	"discussiontools-error-lint": "Reacties op deze pagina kunnen niet beantwoord worden vanwege een fout in de wikitekst. U kunt meer te weten komen over deze fout door [$1 de documentatie te lezen], om hulp te vragen door [$2 hier een bericht te posten] of de fout te herstellen door [$3 de tekstverwerker voor volledige pagina's te openen].",
 	"tag-discussiontools-description": "Bewerking gemaakt met DiscussionTools",
 	"tag-discussiontools-edit": "Reactie bewerkt",
 	"tag-discussiontools-edit-description": "De gebruiker heeft een bestaande bericht bewerkt met DiscussionTools",
