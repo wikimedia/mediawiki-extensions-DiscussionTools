@@ -31,6 +31,7 @@
 	"discussiontools-postedit-confirmation-published": "Är Bemierkung gouf verëffentlecht.",
 	"discussiontools-postedit-confirmation-topicadded": "Äre Sujet gouf dobäigesat.",
 	"discussiontools-preference-autotopicsub": "Automatesch op Sujeten abonéieren",
+	"discussiontools-preference-description": "Aktivéiert experimentell Funktiounen op der Diskussionssäit:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Äntwerten] mat engem Klick op Bemierkungen op Diskussionssäiten.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Nei Sujeten derbäisetzen] iwwer e Formulair deen an der Säit integréiert ass.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Notifikatioune kréien], wenn nei Bemierkungen an Abschnitter dragesat ginn, op déi Dir abonnéiert sidd.\n\nDir kënnt dës Funktiounen an Äre [[Special:Preferences#mw-prefsection-editing-discussion|Benotzerastellungen]] upassen.\n\nAktualiséierunge ginn op der [https://www.mediawiki.org/wiki/Talk_pages_project/Updates Projetssäit] publizéiert.\n\nDenkt drun:\n* Am Laf vun der Zäit ginn nei experimentell Funktiounen derbäigesat.\n* Verschiddener vun dëse Funktioune sinn eventuell an Ärer Wiki nach net disponibel.",
 	"discussiontools-preference-label": "Diskussiouns-Geschier",
 	"discussiontools-preference-newtopictool": "Séiert Derbäisetze vu Sujeten aktivéieren",
 	"discussiontools-preference-newtopictool-help": "Dëst weist Iech en Inline-Formulair fir nei Sujeten derbäizesetzen.",
