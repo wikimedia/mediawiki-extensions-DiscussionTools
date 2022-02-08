@@ -295,7 +295,9 @@ function init( $container, state ) {
 			commentController.replyWidgetPromise.then( function ( replyWidget ) {
 				lastControllerScrollOffset = $( commentController.newListItem ).offset().top;
 				replyWidget.teardown( 'refresh' );
-				refreshPageContents();
+				// Only fetch the last now "good" revision, on which we know the parent comment still exists.
+				// As we poll frequently, this will almost always be the lastet revision.
+				refreshPageContents( commentController.oldId );
 			} );
 		} );
 
@@ -452,9 +454,10 @@ function updatePageContents( $container, data ) {
 /**
  * Load the latest revision of the page and display its contents.
  *
+ * @param {number} [oldId] Revision ID to fetch, latest if not specified
  * @return {jQuery.Promise} Promise which resolves when the refresh is complete
  */
-function refreshPageContents() {
+function refreshPageContents( oldId ) {
 	return getApi().get( {
 		action: 'parse',
 		// HACK: 'useskin' triggers a different code path that runs our OutputPageBeforeHTML hook,
@@ -465,7 +468,8 @@ function refreshPageContents() {
 		// a page view with reply links forced with ?dtenable=1 or otherwise
 		dtenable: '1',
 		prop: [ 'text', 'modules', 'jsconfigvars', 'revid' ],
-		page: mw.config.get( 'wgRelevantPageName' )
+		page: !oldId ? mw.config.get( 'wgRelevantPageName' ) : undefined,
+		oldid: oldId || undefined
 	} ).then( function ( parseResp ) {
 		updatePageContents( $pageContainer, parseResp );
 	} );

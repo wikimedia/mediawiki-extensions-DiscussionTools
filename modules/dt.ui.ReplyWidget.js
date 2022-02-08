@@ -811,6 +811,21 @@ ReplyWidget.prototype.onUnload = function () {
 	} );
 };
 
+ReplyWidget.prototype.updateParentRemovedError = function ( parentRemoved ) {
+	if ( !parentRemoved ) {
+		if ( this.parentRemovedErrorMessage ) {
+			this.parentRemovedErrorMessage.$element.remove();
+			this.parentRemovedErrorMessage = null;
+		}
+		return;
+	}
+	if ( !this.parentRemovedErrorMessage ) {
+		this.parentRemovedErrorMessage = this.createErrorMessage( mw.msg( 'discussiontools-error-comment-disappeared' ) );
+	}
+	// Don't show the reload prompt if there is nothing to reply to
+	this.updateNewCommentsWarning( [] );
+};
+
 /**
  * Update "new comments" warning based on list of new comments found
  *
@@ -822,6 +837,10 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
 		if ( this.newCommentsWarning ) {
 			this.newCommentsWarning.toggle( false );
 		}
+		return;
+	}
+	// Don't show the reload prompt if there is nothing to reply to
+	if ( this.parentRemovedErrorMessage ) {
 		return;
 	}
 	if ( !this.newCommentsWarning ) {
@@ -936,9 +955,14 @@ ReplyWidget.prototype.onReplyClick = function () {
 			widget.captchaInput.scrollElementIntoView();
 
 		} else {
-			widget.saveErrorMessage = widget.createErrorMessage(
-				code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data )
-			);
+			if ( !(
+				// Don't duplicate the parentRemovedErrorMessage
+				code === 'discussiontools-commentname-notfound' && widget.parentRemovedErrorMessage
+			) ) {
+				widget.saveErrorMessage = widget.createErrorMessage(
+					code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data )
+				);
+			}
 		}
 
 		if ( code instanceof Error ) {

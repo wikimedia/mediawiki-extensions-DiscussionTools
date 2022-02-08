@@ -51,6 +51,7 @@ function CommentController( $pageContainer, threadItem, threadItemSet ) {
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
 	this.newComments = [];
+	this.parentRemoved = false;
 	this.oldId = mw.config.get( 'wgRevisionId' );
 	this.pollTimeout = null;
 	this.onVisibilityChangeHandler = this.onVisibilityChange.bind( this );
@@ -228,6 +229,7 @@ CommentController.prototype.onVisibilityChange = function () {
 };
 
 CommentController.prototype.startPoll = function () {
+	var threadItemId = this.threadItem.id;
 	var subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
 	var commentController = this;
 
@@ -249,6 +251,21 @@ CommentController.prototype.startPoll = function () {
 
 		if ( addedComments.length || removedComments.length ) {
 			commentController.updateNewCommentsWarning( addedComments, removedComments );
+		}
+
+		// Parent comment was deleted
+		var isParentRemoved = result.removedcomments.some( function ( cmt ) {
+			return cmt.id === threadItemId;
+		} );
+		// Parent comment was deleted then added back (e.g. reverted vandalism)
+		var isParentAdded = result.addedcomments.some( function ( cmt ) {
+			return cmt.id === threadItemId;
+		} );
+
+		if ( isParentAdded ) {
+			commentController.setParentRemoved( false );
+		} else if ( isParentRemoved ) {
+			commentController.setParentRemoved( true );
 		}
 
 		commentController.oldId = result.torevid;
@@ -315,6 +332,7 @@ CommentController.prototype.setupReplyWidget = function ( replyWidget, data, sup
 
 	replyWidget.setup( data, suppressNotifications );
 	replyWidget.updateNewCommentsWarning( this.newComments );
+	replyWidget.updateParentRemovedError( this.parentRemoved );
 
 	this.replyWidget = replyWidget;
 };
@@ -484,6 +502,20 @@ CommentController.prototype.updateNewCommentsWarning = function ( addedComments,
 
 	this.replyWidgetPromise.then( function ( replyWidget ) {
 		replyWidget.updateNewCommentsWarning( commentController.newComments );
+	} );
+};
+
+/**
+ * Record whether the parent thread item has been removed
+ *
+ * @param {boolean} parentRemoved
+ */
+CommentController.prototype.setParentRemoved = function ( parentRemoved ) {
+	var commentController = this;
+	this.parentRemoved = parentRemoved;
+
+	this.replyWidgetPromise.then( function ( replyWidget ) {
+		replyWidget.updateParentRemovedError( commentController.parentRemoved );
 	} );
 };
 
