@@ -7,7 +7,7 @@ use LogicException;
 use Title;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
-use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 
 /**
  * A thread item, either a heading or a comment
@@ -272,9 +272,7 @@ abstract class ThreadItem implements JsonSerializable {
 	public function getHTML(): string {
 		$fragment = $this->getRange()->cloneContents();
 		CommentModifier::unwrapFragment( $fragment );
-		$container = $fragment->ownerDocument->createElement( 'div' );
-		$container->appendChild( $fragment );
-		return DOMCompat::getInnerHTML( $container );
+		return DOMUtils::getFragmentInnerHTML( $fragment );
 	}
 
 	/**
