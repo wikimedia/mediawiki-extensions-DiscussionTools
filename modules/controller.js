@@ -288,7 +288,7 @@ function initTopicSubscriptions( $container ) {
 			// Only handle keypresses on the "Enter" or "Space" keys
 			return;
 		}
-		if ( e.type === 'click' && ( e.which !== OO.ui.MouseButtons.LEFT || e.shiftKey || e.altKey || e.ctrlKey || e.metaKey ) ) {
+		if ( e.type === 'click' && !utils.isUnmodifiedLeftClick( e ) ) {
 			// Only handle unmodified left clicks
 			return;
 		}
@@ -889,7 +889,7 @@ function init( $container, state ) {
 	} );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( 'body' ).on( 'click', function ( e ) {
-		if ( e.which === OO.ui.MouseButtons.LEFT ) {
+		if ( utils.isUnmodifiedLeftClick( e ) ) {
 			clearHighlightTargetComment( parser );
 		}
 	} );

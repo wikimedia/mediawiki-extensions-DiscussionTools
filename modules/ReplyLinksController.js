@@ -136,7 +136,7 @@ ReplyLinksController.prototype.isActivationEvent = function ( e ) {
 		// Only handle keypresses on the "Enter" or "Space" keys
 		return false;
 	}
-	if ( e.type === 'click' && ( e.which !== OO.ui.MouseButtons.LEFT || e.shiftKey || e.altKey || e.ctrlKey || e.metaKey ) ) {
+	if ( e.type === 'click' && !utils.isUnmodifiedLeftClick( e ) ) {
 		// Only handle unmodified left clicks
 		return false;
 	}
