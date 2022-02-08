@@ -55,6 +55,7 @@
 	"discussiontools-replywidget-terms-click": "Klikšķinot uz \"$1\", tu piekrīti šīs vikivietnes izmantošanas noteikumiem.",
 	"discussiontools-replywidget-transcluded": "Tavs komentārs tiks saglabāts [[$1]].",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Tu saņemsi paziņojumus par jauniem komentāriem šajā tēmā",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Tu vairs nesaņemsi paziņojumus par jauniem komentāriem šajā tēmā.",
 	"tag-discussiontools-description": "Labojums veikts ar diskusiju rīkiem",
 	"tag-discussiontools-edit": "Laboja komentāru",
 	"tag-discussiontools-edit-description": "Dalībnieks laboja esošu komentāru ar diskusiju rīkiem",
