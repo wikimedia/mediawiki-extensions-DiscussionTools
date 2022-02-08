@@ -11,9 +11,9 @@
 	"apierror-discussiontools-commentname-notfound": "Şiroveya bi navê '$1' nehatiye dîtin.",
 	"apierror-discussiontools-subscription-failed-add": "Pirsgirêkek bi şopandina mijarê re derket.",
 	"apierror-discussiontools-subscription-failed-remove": "Pirsgirêkek bi neşopîne re derket.",
-	"apihelp-discussiontools-param-oldid": "Hejmara guhartoye ku ber werê bikaranîn (ya ji ber xwe ve dibê ya herî nû).",
-	"apihelp-discussiontools-summary": "Agahiyên hewce ji bonî destpêkirina alavên gotûbêjê vedigerîne.",
 	"apihelp-discussiontoolsedit-param-commentid": "IDya şîroveyê ji bo cewabdanê. Tenê gava <var>paction</var> <var>addcomment</var> be tê bikaranîn. <var>commentname</var> piştguh bikin.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Naveroka ku wek wîkînivîs were weşandin. Nikare tevî <var>html</var> were bikaranîn.",
-	"apihelp-discussiontoolsedit-summary": "Peyamek li ser rûpeleke gotûbêjê binivîse."
+	"apihelp-discussiontoolsedit-summary": "Peyamek li ser rûpeleke gotûbêjê binivîse.",
+	"apihelp-discussiontoolspageinfo-param-oldid": "Hejmara guhartoye ku ber werê bikaranîn (ya ji ber xwe ve dibê ya herî nû).",
+	"apihelp-discussiontoolspageinfo-summary": "Agahiyên hewce ji bonî destpêkirina alavên gotûbêjê vedigerîne."
 }

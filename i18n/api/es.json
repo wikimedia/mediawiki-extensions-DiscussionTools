@@ -15,12 +15,11 @@
 	"apierror-discussiontools-formtoken-used": "Comentario ya publicado. Vuelve a cargar la página para verlo.",
 	"apierror-discussiontools-subscription-failed-add": "No se puede suscribir a este tema.",
 	"apierror-discussiontools-subscription-failed-remove": "No se puede desuscribir de este tema.",
-	"apihelp-discussiontools-param-oldid": "El número de revisión a usar (por defecto la revisión más reciente).",
-	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Regresa títulos de páginas de la cual cada comentario en la página dada es transcluída.",
-	"apihelp-discussiontools-summary": "Devuelve los metadatos requeridos para inicializar las herramientas de discusión.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID del comentario a responder. Es usado solamente cuando <var>paction</var> es <var>addcomment</var>. Sobrescribe <var>commentname</var> .",
 	"apihelp-discussiontoolsedit-param-formtoken": "Una identificación única opcional generada en el cliente para evitar la doble publicación.",
 	"apihelp-discussiontoolsedit-param-html": "Contenido a publicar, como HTML. No puede ser usado junto a <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Contenido a publicar, como wikitexto. No puede ser usado junto a <var>html</var>.",
-	"apihelp-discussiontoolsedit-summary": "Publicar un mensaje en una página de discusión."
+	"apihelp-discussiontoolsedit-summary": "Publicar un mensaje en una página de discusión.",
+	"apihelp-discussiontoolspageinfo-param-oldid": "El número de revisión a usar (por defecto la revisión más reciente).",
+	"apihelp-discussiontoolspageinfo-summary": "Devuelve los metadatos requeridos para inicializar las herramientas de discusión."
 }

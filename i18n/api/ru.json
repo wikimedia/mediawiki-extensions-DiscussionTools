@@ -9,14 +9,13 @@
 	},
 	"apierror-discussiontools-commentid-notfound": "Комментарий с ID '$1' не был найден.",
 	"apierror-discussiontools-formtoken-used": "Комментарий уже опубликован. Чтобы увидеть его, перезагрузите страницу.",
-	"apihelp-discussiontools-param-oldid": "Номер версии для использования (по умолчанию — последняя версия).",
-	"apihelp-discussiontools-paramvalue-paction-transcludedfrom": "Возвращает заголовки страниц, с которых включён каждый комментарий в заданную страницу.",
-	"apihelp-discussiontools-summary": "Возвращает метаданные, необходимые для инициализации Discussion tools.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID комментария, на который ответить. Используется только когда <var>paction</var> имеет значение <var>addcomment</var>. Перезаписывает значение <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Контент для отправки, как HTML. Не может быть использовано вместе с <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Используется только когда <var>paction</var> имеет значение <var>addtopic</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Контент для отправки, как викитекст. Не может быть использовано вместе с <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Добавить новый комментарий как ответ на предыдущий комментарий.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Добавить новый раздел обсуждения и первый комментарий в нём.",
-	"apihelp-discussiontoolsedit-summary": "Отправить сообщение на страницу обсуждения."
+	"apihelp-discussiontoolsedit-summary": "Отправить сообщение на страницу обсуждения.",
+	"apihelp-discussiontoolspageinfo-param-oldid": "Номер версии для использования (по умолчанию — последняя версия).",
+	"apihelp-discussiontoolspageinfo-summary": "Возвращает метаданные, необходимые для инициализации Discussion tools."
 }

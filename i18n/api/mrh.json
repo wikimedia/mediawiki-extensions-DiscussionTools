@@ -4,7 +4,7 @@
 			"Laitei"
 		]
 	},
-	"apihelp-discussiontools-param-oldid": "Hmâ n'awpa châta saipazina nuby (saipazi hnôh chaipa lâta defaults)",
-	"apihelp-discussiontools-summary": "Pachiana chhaichhizy pathaopato n'awpa châta a byuhpa metadata cha a paphao heih.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
+	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext",
+	"apihelp-discussiontoolspageinfo-param-oldid": "Hmâ n'awpa châta saipazina nuby (saipazi hnôh chaipa lâta defaults)",
+	"apihelp-discussiontoolspageinfo-summary": "Pachiana chhaichhizy pathaopato n'awpa châta a byuhpa metadata cha a paphao heih."
 }

@@ -27,7 +27,7 @@
 	"discussiontools-error-noswitchtove-title": "Nge me pesa ve nzila na mode ya ke monana",
 	"discussiontools-newtopic-missing-title": "Nge lenda pesa ntu-diambu na disolo na nge. Kana nge bweta \"{{int:discussiontools-replywidget-newtopic}}\", beto ta yika disolo na nge kukonda ntu-diambu.",
 	"discussiontools-newtopic-placeholder-title": "Ntu-diambu",
-	"discussiontools-notification-subscribed-new-comment-header": "$1 {{BAKALATONKENTO:$2|pesaka mvutu}} na\"<strong>$4</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header": "$1{{GENDER:$2|}} pesaka mvutu na “<strong>$4</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Mvutu mosi ya mpa|$1 bamvutu ya mpa|100=99+ bamvutu ya mpa}} na \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Tala komantere",
