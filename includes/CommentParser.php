@@ -600,7 +600,8 @@ class CommentParser {
 				}
 
 				if ( $event === 'leave' && $node !== $timestampNode ) {
-					$length += $node instanceof Text ? mb_strlen( $node->textContent ?? '' ) : 0;
+					$length += $node instanceof Text ?
+						mb_strlen( CommentUtils::htmlTrim( $node->textContent ?? '' ) ) : 0;
 				}
 
 				// Find the closest link before timestamp that links to the user's user page.
