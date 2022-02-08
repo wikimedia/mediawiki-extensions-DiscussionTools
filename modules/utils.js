@@ -178,7 +178,7 @@ function closestElement( node, tagNames ) {
  * 3. If this is an mw:Transclusion node, return it; otherwise, go to step 1
  *
  * @param {Node} node
- * @return {HTMLElement|null} Translcusion node, null if not found
+ * @return {HTMLElement|null} Transclusion node, null if not found
  */
 function getTranscludedFromElement( node ) {
 	while ( node ) {
