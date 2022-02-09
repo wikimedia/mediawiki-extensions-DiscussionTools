@@ -10,6 +10,7 @@
 	"apierror-discussiontools-formtoken-used": "Коментарот е веќе објавен. Превчитајте ја страницата за да го видите.",
 	"apierror-discussiontools-subscription-failed-add": "Не можев да ве претплатам на темава.",
 	"apierror-discussiontools-subscription-failed-remove": "Не можев да ве отпишам од темава.",
+	"apihelp-discussiontoolscompare-summary": "Дај информации за изменетите коментари помеѓу две преработки на страницата.",
 	"apihelp-discussiontoolsedit-param-commentid": "Назнака на коментарот на кој се одговара. Се користи само кога <var>paction</var> е <var>addcomment</var>. Се наметнува врз <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Назив на коментарот на кој се одговара. Се користи само кога <var>paction</var> е <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-formtoken": "Незадолжителна единствена назнака создадена во клиентот за да се спречи двојно објавување.",
