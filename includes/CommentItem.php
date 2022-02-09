@@ -8,6 +8,7 @@ use Title;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
 use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class CommentItem extends ThreadItem {
 	private $signatureRanges;
@@ -98,9 +99,7 @@ class CommentItem extends ThreadItem {
 	 */
 	public function getBodyHTML( bool $stripTrailingSeparator = false ): string {
 		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
-		$container = $fragment->ownerDocument->createElement( 'div' );
-		$container->appendChild( $fragment );
-		return DOMCompat::getInnerHTML( $container );
+		return DOMUtils::getFragmentInnerHTML( $fragment );
 	}
 
 	/**
