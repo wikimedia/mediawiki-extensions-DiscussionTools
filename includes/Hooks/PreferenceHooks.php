@@ -86,16 +86,29 @@ class PreferenceHooks implements
 			}
 		}
 
-		if ( isset( $preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR] ) ) {
+		if ( isset( $preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR] ) && (
+			isset( $preferences['discussiontools-' . HookUtils::REPLYTOOL] ) ||
+			isset( $preferences['discussiontools-' . HookUtils::NEWTOPICTOOL] )
+		) ) {
 			// Hide this option when it would have no effect
 			// (both reply tool and new topic tool are disabled)
-			$preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR]['hide-if'] = [ 'AND',
-				[ '===', 'discussiontools-' . HookUtils::REPLYTOOL, '' ],
-				[ '===', 'discussiontools-' . HookUtils::NEWTOPICTOOL, '' ],
-			];
+			$preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR]['hide-if'] = [ 'AND' ];
+
+			if ( isset( $preferences['discussiontools-' . HookUtils::REPLYTOOL] ) ) {
+				$preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR]['hide-if'][] = [
+					'===', 'discussiontools-' . HookUtils::REPLYTOOL, ''
+				];
+			}
+			if ( isset( $preferences['discussiontools-' . HookUtils::NEWTOPICTOOL] ) ) {
+				$preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR]['hide-if'][] = [
+					'===', 'discussiontools-' . HookUtils::NEWTOPICTOOL, ''
+				];
+			}
 		}
 
-		if ( isset( $preferences['discussiontools-' . HookUtils::AUTOTOPICSUB] ) ) {
+		if ( isset( $preferences['discussiontools-' . HookUtils::AUTOTOPICSUB] ) &&
+			isset( $preferences['discussiontools-' . HookUtils::TOPICSUBSCRIPTION] )
+		) {
 			// Hide automatic subscriptions when subscriptions are disabled
 			$preferences['discussiontools-' . HookUtils::AUTOTOPICSUB]['hide-if'] = [
 				'===', 'discussiontools-' . HookUtils::TOPICSUBSCRIPTION, ''
