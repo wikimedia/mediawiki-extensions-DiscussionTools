@@ -34,7 +34,6 @@ function isRenderingTransparentNode( node ) {
 			(
 				node.tagName.toLowerCase() === 'span' &&
 				( node.getAttribute( 'typeof' ) || '' ).split( ' ' ).indexOf( 'mw:Transclusion' ) !== -1 &&
-				// eslint-disable-next-line no-use-before-define
 				!htmlTrim( node.innerHTML ) &&
 				(
 					!nextSibling || nextSibling.nodeType !== Node.ELEMENT_NODE ||
@@ -112,9 +111,7 @@ function isCommentSeparator( node ) {
  */
 function isCommentContent( node ) {
 	return (
-		// eslint-disable-next-line no-use-before-define
 		( node.nodeType === Node.TEXT_NODE && htmlTrim( node.textContent ) !== '' ) ||
-		// eslint-disable-next-line no-use-before-define
 		( node.nodeType === Node.CDATA_SECTION_NODE && htmlTrim( node.textContent ) !== '' ) ||
 		( cantHaveElementChildren( node ) )
 	);
@@ -334,7 +331,6 @@ function getFullyCoveredSiblings( item ) {
 		return range;
 	}
 
-	// eslint-disable-next-line no-use-before-define
 	var matches = compareRanges( makeRange( siblings ), item.getNativeRange() ) === 'equal';
 
 	if ( matches ) {
@@ -342,7 +338,6 @@ function getFullyCoveredSiblings( item ) {
 		var parent;
 		while (
 			( parent = siblings[ 0 ].parentNode ) &&
-			// eslint-disable-next-line no-use-before-define
 			compareRanges( makeRange( [ parent ] ), item.getNativeRange() ) === 'equal'
 		) {
 			siblings = [ parent ];
@@ -503,7 +498,6 @@ function compareRanges( a, b ) {
 	var endToEnd = a.compareBoundaryPoints( Range.END_TO_END, b );
 
 	// Check for almost equal ranges (boundary points only differing by uninteresting nodes)
-	/* eslint-disable no-use-before-define */
 	if (
 		( startToStart < 0 && compareRangesAlmostEqualBoundaries( a, b, 'start' ) ) ||
 		( startToStart > 0 && compareRangesAlmostEqualBoundaries( b, a, 'start' ) )
