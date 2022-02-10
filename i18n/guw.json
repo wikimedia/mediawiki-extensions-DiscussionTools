@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Anthonymodec",
+			"Atej2*",
 			"Joshateji",
 			"Misteld",
 			"Sagbosam",
@@ -26,7 +27,7 @@
 	"discussiontools-emptystate-title-user": "Bẹ hodọdopọ de jẹeji {{GENDER:{{PAGENAME}}|po}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Kuavọ do weda hodọdopọtẹn ehe",
 	"discussiontools-error-comment-conflict": "Gblọndo towe ma sọgan yin sisẹdo, na mẹdevo ko na gblọndo to whenue a to gblọndo na. Jaale bo vọ gblọndo towe kan kavi bo vọ weda lọ mẹ biọ nado pọn diọdo yọyọ lẹ.",
-	"discussiontools-error-comment-disappeared": "Linlẹn he a to gblọndo etọn na to weda ehe ji ma yin mimọ. E sọgan ko yin súnsún kavi zize dó weda devo ji. Jaale vọ awulena weda lọ bo sọ tẹnpọn dogọ.",
+	"discussiontools-error-comment-disappeared": "Linlẹn he a to gblọndo etọn na to weda ehe ji ma yin mimọ. E sọgan ko yin súnsúnsún sẹ̀ kavi kò zize dó weda devo ji.",
 	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" nọtẹn intẹnẹt tọn ehe ma sọgan yin yiyizan dó na gblọndo na linlẹn ehe. Nado na gblọndo, jaale bo zan weda vivọ jlado gigọ gbọn \"$1\" zinzin dali.",
 	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" nọtẹn intẹnẹt tọn ehe ma sọgan yin yiyizan dó na gblọndo na linlẹn ehe na weda devo mẹ wẹ e wa sọn. Nado na gblọndo, jaale bo yí: [[$1]].",
 	"discussiontools-error-comment-not-saved": "Linlẹn towe ma sọgan yin zize sẹdò weda yọyọ agọe tọn ji. Nado mọ diọdo agọe tọn lẹ, basi vọkan nuhe a ko kandai lẹ tọn bo zan fie yè nọ kàn adlẹsi Intẹnẹt ji tọn do towe nado vọ weda lọ hùn.",
