@@ -242,7 +242,7 @@ class PageHooks implements
 
 		$output = $context->getOutput();
 		$output->enableOOUI();
-		$output->enableClientCache( false );
+		$output->disableClientCache();
 
 		$coreConfig = RequestContext::getMain()->getConfig();
 		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
