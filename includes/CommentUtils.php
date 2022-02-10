@@ -130,7 +130,14 @@ class CommentUtils {
 			// Horizontal line
 			strtolower( $node->nodeName ) === 'hr' ||
 			// {{outdent}} templates
-			DOMCompat::getClassList( $node )->contains( 'outdent-template' )
+			DOMCompat::getClassList( $node )->contains( 'outdent-template' ) ||
+			// Wikitext definition list term markup (`;`) when used as a fake heading (T265964)
+			(
+				strtolower( $node->nodeName ) === 'dl' &&
+				count( $node->childNodes ) === 1 &&
+				$node->firstChild instanceof Element &&
+				strtolower( $node->firstChild->nodeName ) === 'dt'
+			)
 		);
 	}
 
