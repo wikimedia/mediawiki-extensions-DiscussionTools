@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use DateTimeImmutable;
 use MWException;
+use Sanitizer;
 use Title;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
 use Wikimedia\Parsoid\DOM\Text;
@@ -109,8 +110,8 @@ class CommentItem extends ThreadItem {
 	 * @return string Text
 	 */
 	public function getBodyText( bool $stripTrailingSeparator = false ): string {
-		$fragment = $this->getBodyFragment( $stripTrailingSeparator );
-		return $fragment->textContent ?? '';
+		$html = $this->getBodyHTML( $stripTrailingSeparator );
+		return Sanitizer::stripAllTags( $html );
 	}
 
 	/**
