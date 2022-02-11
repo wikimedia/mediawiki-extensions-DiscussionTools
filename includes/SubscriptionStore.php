@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ConfigFactory;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use ReadOnlyMode;
@@ -210,39 +209,6 @@ class SubscriptionStore {
 
 	/**
 	 * @param UserIdentity $user
-	 * @return bool
-	 */
-	private function userExceedsSubscriptionLimit( UserIdentity $user ): bool {
-		$logger = LoggerFactory::getInstance( 'DiscussionTools' );
-		// This is always queried before updating
-		$db = $this->getConnectionRef( DB_PRIMARY );
-
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
-		$limit = $dtConfig->get( 'DiscussionToolsMaxSubscriptionsPerUser' );
-
-		$rowCount = $db->selectRowCount(
-			'discussiontools_subscription',
-			'*',
-			[ 'sub_user' => $user->getId() ],
-			__METHOD__,
-			[ 'LIMIT' => $limit ]
-		);
-
-		if ( $rowCount >= $limit / 2 ) {
-			$logger->warning(
-				"User {user} has {rowCount} subscriptions, approaching the limit",
-				[
-					'user' => $user->getId(),
-					'rowCount' => $rowCount,
-				]
-			);
-		}
-
-		return $rowCount >= $limit;
-	}
-
-	/**
-	 * @param UserIdentity $user
 	 * @param LinkTarget $target
 	 * @param string $itemName
 	 * @param int $state
@@ -259,9 +225,6 @@ class SubscriptionStore {
 		}
 		// Only a registered user can subscribe
 		if ( !$user->isRegistered() ) {
-			return false;
-		}
-		if ( $this->userExceedsSubscriptionLimit( $user ) ) {
 			return false;
 		}
 		$dbw = $this->getConnectionRef( DB_PRIMARY );
