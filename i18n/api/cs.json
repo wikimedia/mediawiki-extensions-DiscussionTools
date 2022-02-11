@@ -15,6 +15,7 @@
 	"apierror-discussiontools-formtoken-used": "Komentář byl již zveřejněn. Pokud jej chcete zobrazit, načtěte stránku znovu.",
 	"apierror-discussiontools-subscription-failed-add": "Nelze odebírat toto téma.",
 	"apierror-discussiontools-subscription-failed-remove": "Nelze zrušit odběr tohoto tématu.",
+	"apihelp-discussiontoolscompare-summary": "Získat informace o změnách komentářů mezi dvěma revizemi stránky.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID komentáře, na který se má odpovědět. Používá se pouze v případě, kdy <var>paction</var> je <var>addcomment</var>. Přepisuje <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Název komentáře, na který se má odpovědět. Používá se pouze v případě, kdy <var>paction</var> je <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-formtoken": "Volitelné unikátní ID generované v klientovi, aby se zabránilo dvojímu zveřejnění.",
