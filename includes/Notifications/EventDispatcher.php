@@ -381,38 +381,50 @@ class EventDispatcher {
 			->getUserFactory()
 			->newFromUserIdentity( $identity );
 
+		$commonData = [
+			'$schema' => '/analytics/mediawiki/talk_page_edit/1.1.0',
+			'action' => 'publish',
+			'session_id' => $editingStatsId,
+			'page_id' => $newRevRecord->getPageId(),
+			'page_namespace' => $title->getNamespace(),
+			'revision_id' => $newRevRecord->getId() ?: 0,
+			'performer' => [
+				// Note: we're logging the user who made the edit, not the user who's signed on the comment
+				'user_id' => $user->getId(),
+				'user_edit_count' => $user->getEditCount() ?: 0,
+				// Retention-safe values:
+				'user_is_anonymous' => !$user->isRegistered(),
+				'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $user ) ?: 'N/A',
+			],
+			'database' => $wgDBname,
+			// This is unreliable, but sufficient for our purposes; we
+			// mostly just want to see the difference between DT and
+			// everything-else:
+			'integration' => $isDiscussionTools ? 'discussiontools' : 'page',
+		];
+
 		foreach ( $addedComments as $comment ) {
 			$heading = $comment->getSubscribableHeading();
 			$parent = $comment->getParent();
 			if ( !$heading || !$parent ) {
 				continue;
 			}
-			$data = [
-				'$schema' => '/analytics/mediawiki/talk_page_edit/1.0.0',
-				'component_type' => $parent->getType() === 'heading' ? 'comment' : 'response',
+			if ( $parent->getType() === 'heading' ) {
+				if ( count( $heading->getReplies() ) === 1 ) {
+					// A new heading was added when this comment was created
+					$component_type = 'topic';
+				} else {
+					$component_type = 'comment';
+				}
+			} else {
+				$component_type = 'response';
+			}
+			\EventLogging::submit( 'mediawiki.talk_page_edit', array_merge( $commonData, [
+				'component_type' => $component_type,
 				'topic_id' => $heading->getId(),
 				'comment_id' => $comment->getId(),
 				'comment_parent_id' => $parent->getId(),
-				'action' => 'publish',
-				'session_id' => $editingStatsId,
-				'page_id' => $newRevRecord->getPageId(),
-				'page_namespace' => $title->getNamespace(),
-				'revision_id' => $newRevRecord->getId() ?: 0,
-				'performer' => [
-					'user_id' => $user->getId(),
-					'user_edit_count' => $user->getEditCount() ?: 0,
-					// Retention-safe values:
-					'user_is_anonymous' => !$user->isRegistered(),
-					'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $user ) ?: 'N/A',
-				],
-				'database' => $wgDBname,
-				// This is unreliable, but sufficient for our purposes; we
-				// mostly just want to see the difference between DT and
-				// everything-else:
-				'integration' => $isDiscussionTools ? 'discussiontools' : 'page',
-			];
-
-			\EventLogging::submit( 'mediawiki.talk_page_edit', $data );
+			] ) );
 		}
 
 		return true;
