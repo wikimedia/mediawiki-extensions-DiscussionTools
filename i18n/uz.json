@@ -4,7 +4,7 @@
 			"Malikxan"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Javob berish",
+	"discussiontools-defaultsummary-reply": "Javob",
 	"discussiontools-preference-label": "Munozara asboblari",
 	"discussiontools-replylink": "javob berish",
 	"discussiontools-replywidget-cancel": "Bekor qilish",
@@ -16,7 +16,9 @@
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ga javob berish",
 	"discussiontools-replywidget-preview": "Prevyu",
 	"discussiontools-replywidget-reply": "Javob berish",
+	"discussiontools-replywidget-terms-click": "„$1“ tugmasini bosish orqali ushbu viki foydalanish shartlariga rozilik bildirasiz.",
 	"discussiontools-replywidget-transcluded": "Qoldirgan izohingiz [[$1]] sahifasida saqlanadi.",
+	"tag-discussiontools-description": "DiscussionTools orqali qilingan tahrir",
 	"tag-discussiontools-source": "Manba",
 	"tag-discussiontools-visual": "Vizual"
 }
