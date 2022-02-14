@@ -174,11 +174,13 @@
 	&-preview {
 		background: #f6f6f6;
 		padding: 0.5em 1em;
+		// Establish a block formatting context, so that floated content (e.g. image thumbnails)
+		// doesn't leak out and mess up our layout. (Also hides the 'Preview' label when empty.)
+		overflow: hidden;
 
 		&:empty {
 			height: 0;
 			padding: 0;
-			overflow: hidden;
 		}
 
 		&:before {
