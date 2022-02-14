@@ -115,13 +115,13 @@ class CommentFormatter {
 
 			// Extend the range if the start or end is inside an element which can't have element children.
 			// (There may be other problematic elements... but this seems like a good start.)
-			if ( CommentUtils::cantHaveElementChildren( $range->startContainer ) ) {
+			while ( CommentUtils::cantHaveElementChildren( $range->startContainer ) ) {
 				$range = $range->setStart(
 					$range->startContainer->parentNode,
 					CommentUtils::childIndexOf( $range->startContainer )
 				);
 			}
-			if ( CommentUtils::cantHaveElementChildren( $range->endContainer ) ) {
+			while ( CommentUtils::cantHaveElementChildren( $range->endContainer ) ) {
 				$range = $range->setEnd(
 					$range->endContainer->parentNode,
 					CommentUtils::childIndexOf( $range->endContainer ) + 1
