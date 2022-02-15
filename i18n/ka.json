@@ -5,7 +5,8 @@
 			"Matma Rex",
 			"Mehman97",
 			"Გიო ოქრო",
-			"Იო ოქრო"
+			"Იო ოქრო",
+			"Otogi"
 		]
 	},
 	"discussiontools": "განხილვის ხელსაწყოები",
@@ -63,6 +64,8 @@
 	"discussiontools-replywidget-terms-click": "„$1“-ზე დაჭერით, თქვენ ეთანხმებით გამოყენების პირობებს ამ ვიკისათვის.",
 	"discussiontools-replywidget-transcluded": "თქვენი კომენტარი შენახულია [[$1]]-ში.",
 	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-topicsubscription-notify-subscribed-body": "თქვენ მიიღებთ შეტყობინებებს ამ თემაში ჩამატებული ახალი კომენტარების შესახებ.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "თქვენ აღარ მიიღებთ შეტყობინებებს ამ თემაში ჩამატებული ახალი კომენტარების შესახებ.",
 	"tag-discussiontools-description": "რედაქტირება განხორციელდა განხილვის ხელსაწყოს დახმარებით",
 	"tag-discussiontools-edit": "კომენტარის რედაქტირება",
 	"tag-discussiontools-edit-description": "მომხმარებელმა განხილვის ხელსაწყოების საშუალებით დაარედაქტირა მანამდე არსებული კომენტარი",

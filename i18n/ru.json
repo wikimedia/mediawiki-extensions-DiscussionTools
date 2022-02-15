@@ -17,7 +17,8 @@
 			"Diman Russkov",
 			"NR Deblocked",
 			"Natalilake",
-			"WhatamIdoing"
+			"WhatamIdoing",
+			"Tanzun"
 		]
 	},
 	"discussiontools": "Инструменты для обсуждений",
@@ -36,6 +37,8 @@
 	"discussiontools-error-noswitchtove-title": "Визуальный режим отключён",
 	"discussiontools-newtopic-missing-title": "Пожалуйста, предоставьте заголовок для вашей темы обсуждения. Если вы кликнете \"{{int:discussiontools-replywidget-newtopic}}\", ваша тема будет добавлена без заголовка.",
 	"discussiontools-newtopic-placeholder-title": "Заголовок",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 ответил{{GENDER:$2||а}} в «<strong>$4</strong>».",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|1=Один новый ответ|$1 новый ответ|$1 новых ответа|$1 новых ответов|100=99+ новых ответов}} в «<strong>$3</strong>».",
 	"discussiontools-notification-subscribed-new-comment-view": "Посмотреть комментарий",
 	"discussiontools-postedit-confirmation-published": "Ваш комментарий был опубликован.",
 	"discussiontools-postedit-confirmation-topicadded": "Ваша тема была добавлена.",
@@ -72,6 +75,8 @@
 	"discussiontools-replywidget-summary": "Описание",
 	"discussiontools-replywidget-terms-click": "Нажимая $1, вы соглашаетесь с условиями использования этой вики.",
 	"discussiontools-replywidget-transcluded": "Ваш комментарий будет сохранен на [[$1]].",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Вы будете получать уведомления о новых комментариях в этой теме.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вы больше не будете получать уведомления о новых комментариях в этой теме.",
 	"tag-discussiontools-description": "Правка совершена с помощью DiscussionTools",
 	"tag-discussiontools-edit": "Редактировать комментарий",
 	"tag-discussiontools-edit-description": "Пользователь отредактировал существующий комментарий с помощью DiscussionTools",
