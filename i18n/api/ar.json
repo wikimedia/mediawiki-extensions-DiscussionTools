@@ -14,6 +14,7 @@
 	"apierror-discussiontools-formtoken-used": "تم نشر التعليق فعلًا. أعد تحميل الصفحة لرؤيته.",
 	"apierror-discussiontools-subscription-failed-add": "تعذَّر الاشتراك في هذا الموضوع.",
 	"apierror-discussiontools-subscription-failed-remove": "لا يمكن إلغاء الاشتراك في هذا الموضوع.",
+	"apihelp-discussiontoolscompare-summary": "الحصول على معلومات حول تغييرات التعليق بين مراجعتين للصفحة.",
 	"apihelp-discussiontoolsedit-param-commentid": "معرّف التعليق المراد الردّ عليه. يُستعمل فقط حين يكون  <var>paction</var> هو <var>addcomment</var>. يعيد كتابة المُتغيِّر <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "اسم التعليق المُراد الردّ عليه. يستعمل فقط حين يكون <var>paction</var> هو <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-formtoken": "An optional unique ID generated in the client to prevent double-posting.",
