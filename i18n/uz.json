@@ -4,14 +4,19 @@
 			"Malikxan"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Javob berish",
+	"discussiontools-defaultsummary-reply": "Javob",
 	"discussiontools-emptystate-button": "Munozarani boshlash",
 	"discussiontools-newtopic-placeholder-title": "Sarlavha",
 	"discussiontools-notification-subscribed-new-comment-view": "Izohni koʻrish",
 	"discussiontools-preference-label": "Munozara asboblari",
 	"discussiontools-replylink": "javob berish",
+	"discussiontools-replywidget-abandon": "Yozayotgan izohingizni bekor qilmoqchi ekanligingizga aminmisiz?",
+	"discussiontools-replywidget-abandon-discard": "Izohni bekor qilish",
 	"discussiontools-replywidget-abandon-keep": "Yozishni davom ettirish",
-	"discussiontools-replywidget-advanced": "Yetuk",
+	"discussiontools-replywidget-abandontopic": "Yozayotgan mavzuingizni bekor qilmoqchi ekanligingizga aminmisiz?",
+	"discussiontools-replywidget-abandontopic-discard": "Mavzuni bekor qilish",
+	"discussiontools-replywidget-abandontopic-keep": "Yozishni davom ettirish",
+	"discussiontools-replywidget-advanced": "Kengaytirilgan",
 	"discussiontools-replywidget-cancel": "Bekor qilish",
 	"discussiontools-replywidget-feedback": "Bu funksiya haqida fikr ulashish",
 	"discussiontools-replywidget-loading": "Yuklanmoqda…",
@@ -25,7 +30,9 @@
 	"discussiontools-replywidget-preview": "Prevyu",
 	"discussiontools-replywidget-reply": "Javob berish",
 	"discussiontools-replywidget-summary": "Qisqa izoh",
+	"discussiontools-replywidget-terms-click": "„$1“ tugmasini bosish orqali ushbu viki foydalanish shartlariga rozilik bildirasiz.",
 	"discussiontools-replywidget-transcluded": "Qoldirgan izohingiz [[$1]] sahifasida saqlanadi.",
+	"tag-discussiontools-description": "DiscussionTools orqali qilingan tahrir",
 	"tag-discussiontools-source": "Manba",
 	"tag-discussiontools-visual": "Vizual"
 }

@@ -17,7 +17,8 @@
 			"WhatamIdoing",
 			"Умар",
 			"DDPAT",
-			"Natalilake"
+			"Natalilake",
+			"Tanzun"
 		]
 	},
 	"discussiontools": "Инструменты для обсуждений",
@@ -40,6 +41,8 @@
 	"discussiontools-error-noswitchtove-title": "Визуальный режим отключён",
 	"discussiontools-newtopic-missing-title": "Пожалуйста, предоставьте заголовок для вашей темы обсуждения. Если вы кликнете \"{{int:discussiontools-replywidget-newtopic}}\", ваша тема будет добавлена без заголовка.",
 	"discussiontools-newtopic-placeholder-title": "Заголовок",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 ответил{{GENDER:$2||а}} в «<strong>$4</strong>».",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|1=Один новый ответ|$1 новый ответ|$1 новых ответа|$1 новых ответов|100=99+ новых ответов}} в «<strong>$3</strong>».",
 	"discussiontools-notification-subscribed-new-comment-view": "Посмотреть комментарий",
 	"discussiontools-postedit-confirmation-published": "Ваш комментарий был опубликован.",
 	"discussiontools-postedit-confirmation-topicadded": "Ваша тема была добавлена.",
@@ -81,13 +84,19 @@
 	"discussiontools-replywidget-terms-click": "Нажимая $1, вы соглашаетесь с условиями использования этой вики.",
 	"discussiontools-replywidget-transcluded": "Ваш комментарий будет сохранен на [[$1]].",
 	"discussiontools-topicsubscription-button-subscribe": "подписаться",
+	"discussiontools-topicsubscription-button-subscribe-tooltip": "Подписаться, чтобы получать уведомления о новых комментариях.",
 	"discussiontools-topicsubscription-button-unsubscribe": "отписаться",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Отписаться, чтобы перестать получать уведомления.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Отписаться",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Отписаться от этой темы?",
+	"discussiontools-topicsubscription-error-not-found-body": "Указанная в URL подписка не найдена.",
 	"discussiontools-topicsubscription-error-not-found-title": "Подписка не найдена",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Вы будете получать уведомления о новых комментариях в этой теме.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Вы подписались!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вы больше не будете получать уведомления о новых комментариях в этой теме.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Вы отписались.",
 	"tag-discussiontools-description": "Правка совершена с помощью DiscussionTools",
+	"tag-discussiontools-added-comment-description": "В этой правке был добавлен комментарий на странице обсуждения",
 	"tag-discussiontools-edit": "Редактировать комментарий",
 	"tag-discussiontools-edit-description": "Пользователь отредактировал существующий комментарий с помощью DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Новая тема]",
@@ -96,6 +105,7 @@
 	"tag-discussiontools-reply-description": "Пользователь ответил на комментарий с помощью DiscussionTools",
 	"tag-discussiontools-source": "Код",
 	"tag-discussiontools-source-description": "DiscussionTools был в режиме правки кода",
+	"tag-discussiontools-source-enhanced-description": "DiscussionTools был в расширенном режиме исходного кода с панелью инструментов.",
 	"tag-discussiontools-visual": "Визуально",
 	"tag-discussiontools-visual-description": "DiscussionTools был в визуальном режиме"
 }

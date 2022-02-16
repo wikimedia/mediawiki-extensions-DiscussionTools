@@ -4,7 +4,8 @@
 			"Gomoko",
 			"Thibaut120094",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"DreZhsh"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Commentaire avec l’ID « $1 » non trouvé.",
@@ -24,7 +25,7 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Ajouter une nouvelle section de discussion et y inclure un premier commentaire.",
 	"apihelp-discussiontoolsedit-summary": "Créer un message sur une page de discussion.",
 	"apihelp-discussiontoolssubscribe-param-page": "Une page sur laquelle le sujet  apparaît",
-	"apihelp-discussiontoolssubscribe-param-commentname": "Nom du sujet auquel s’abonner (ou se désabonner)",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Nom du sujet auquel s’abonner (ou duquel se désabonner)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Vrai pour s’abonner, faux pour se désinscrire",
 	"apihelp-discussiontoolssubscribe-summary": "S’abonner (ou se désinscrire) pour recevoir des notifications sur un sujet."
 }

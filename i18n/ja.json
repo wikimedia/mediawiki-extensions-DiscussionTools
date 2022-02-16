@@ -18,7 +18,10 @@
 			"つぶあん派",
 			"ネイ",
 			"RYOUMA1117",
-			"カッパ鳥"
+			"カッパ鳥",
+			"Koyomiya",
+			"MirukuPC",
+			"青子守歌"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -93,7 +96,7 @@
 	"discussiontools-replywidget-summary": "要約欄",
 	"discussiontools-replywidget-terms-click": "「$1」をクリックすると、このウィキの利用規約に同意したと見なされます。",
 	"discussiontools-replywidget-transcluded": "あなたのコメントは[[$1]]に保存されます。",
-	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-signature-prefix": "--",
 	"discussiontools-topicsubscription-button-subscribe": "更新を通知",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "この節に新しいコメントが投稿されたら通知します。",
 	"discussiontools-topicsubscription-button-unsubscribe": "通知を解除",
