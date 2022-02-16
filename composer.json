@@ -18,8 +18,11 @@
 		],
 		"dbschema": [
 			"php ../../maintenance/generateSchemaSql.php --json sql/discussiontools_subscription.json --sql sql/mysql/discussiontools_subscription.sql --type mysql",
+			"php ../../maintenance/generateSchemaSql.php --json sql/discussiontools_persistent.json --sql sql/mysql/discussiontools_persistent.sql --type mysql",
 			"php ../../maintenance/generateSchemaSql.php --json sql/discussiontools_subscription.json --sql sql/postgres/discussiontools_subscription.sql --type postgres",
-			"php ../../maintenance/generateSchemaSql.php --json sql/discussiontools_subscription.json --sql sql/sqlite/discussiontools_subscription.sql --type sqlite"
+			"php ../../maintenance/generateSchemaSql.php --json sql/discussiontools_persistent.json --sql sql/postgres/discussiontools_persistent.sql --type postgres",
+			"php ../../maintenance/generateSchemaSql.php --json sql/discussiontools_subscription.json --sql sql/sqlite/discussiontools_subscription.sql --type sqlite",
+			"php ../../maintenance/generateSchemaSql.php --json sql/discussiontools_persistent.json --sql sql/sqlite/discussiontools_persistent.sql --type sqlite"
 		],
 		"phan": "phan -d . --long-progress-bar",
 		"phpcs": "phpcs -sp --cache"

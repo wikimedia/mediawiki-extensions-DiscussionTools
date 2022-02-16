@@ -3,6 +3,8 @@
 namespace MediaWiki\Extension\DiscussionTools\ThreadItem;
 
 use DateTimeImmutable;
+use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Revision\RevisionRecord;
 
 class DatabaseCommentItem extends DatabaseThreadItem implements CommentItem {
 	use CommentItemTrait {
@@ -16,6 +18,8 @@ class DatabaseCommentItem extends DatabaseThreadItem implements CommentItem {
 	private $author;
 
 	/**
+	 * @param ProperPageIdentity $page
+	 * @param RevisionRecord $rev
 	 * @param string $name
 	 * @param string $id
 	 * @param DatabaseThreadItem|null $parent
@@ -25,10 +29,11 @@ class DatabaseCommentItem extends DatabaseThreadItem implements CommentItem {
 	 * @param string $author
 	 */
 	public function __construct(
+		ProperPageIdentity $page, RevisionRecord $rev,
 		string $name, string $id, ?DatabaseThreadItem $parent, $transcludedFrom, int $level,
 		string $timestamp, string $author
 	) {
-		parent::__construct( 'comment', $name, $id, $parent, $transcludedFrom, $level );
+		parent::__construct( $page, $rev, 'comment', $name, $id, $parent, $transcludedFrom, $level );
 		$this->timestamp = $timestamp;
 		$this->author = $author;
 	}

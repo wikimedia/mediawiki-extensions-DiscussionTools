@@ -470,6 +470,19 @@
 				"LinkRenderer",
 				"LinkBatchFactory"
 			]
+		},
+		"FindComment": {
+			"class": "\\MediaWiki\\Extension\\DiscussionTools\\SpecialFindComment",
+			"services": [
+				"DiscussionTools.ThreadItemStore",
+				"DiscussionTools.ThreadItemFormatter"
+			]
+		},
+		"GoToComment": {
+			"class": "\\MediaWiki\\Extension\\DiscussionTools\\SpecialGoToComment",
+			"services": [
+				"DiscussionTools.ThreadItemStore"
+			]
 		}
 	},
 	"Hooks": {
@@ -477,6 +490,7 @@
 		"EchoGetBundleRules": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onEchoGetBundleRules",
 		"EchoGetEventsForRevision": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onEchoGetEventsForRevision",
 		"MinervaNeueTalkPageOverlay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\MobileHooks::onMinervaNeueTalkPageOverlay",
+		"RevisionDataUpdates": "dataupdates",
 		"LoadExtensionSchemaUpdates": "installer",
 		"ParserAfterTidy": "parser",
 		"ArticleViewHeader": "page",
@@ -494,6 +508,12 @@
 		"RecentChange_save": "tags"
 	},
 	"HookHandlers": {
+		"dataupdates": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\DataUpdatesHooks",
+			"services": [
+				"DiscussionTools.ThreadItemStore"
+			]
+		},
 		"installer": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\InstallerHooks"
 		},

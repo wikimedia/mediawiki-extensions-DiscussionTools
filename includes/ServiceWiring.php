@@ -29,5 +29,22 @@ return [
 			$services->getReadOnlyMode(),
 			$services->getUserFactory()
 		);
-	}
+	},
+	'DiscussionTools.ThreadItemStore' => static function ( MediaWikiServices $services ): ThreadItemStore {
+		return new ThreadItemStore(
+			$services->getConfigFactory(),
+			$services->getDBLoadBalancerFactory(),
+			$services->getReadOnlyMode(),
+			$services->getPageStore(),
+			$services->getRevisionStore(),
+			$services->getTitleFormatter(),
+			$services->getActorStore()
+		);
+	},
+	'DiscussionTools.ThreadItemFormatter' => static function ( MediaWikiServices $services ): ThreadItemFormatter {
+		return new ThreadItemFormatter(
+			$services->getTitleFormatter(),
+			$services->getLinkRenderer()
+		);
+	},
 ];

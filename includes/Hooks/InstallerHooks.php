@@ -30,5 +30,9 @@ class InstallerHooks implements
 			'discussiontools_subscription',
 			"$base/../sql/$type/discussiontools_subscription.sql"
 		);
+		$updater->addExtensionTable(
+			'discussiontools_items',
+			"$base/../sql/$type/discussiontools_persistent.sql"
+		);
 	}
 }
