@@ -364,6 +364,15 @@ class HookUtils {
 			return false;
 		}
 
+		// Users flagged as bots shouldn't be autosubscribed. They can
+		// manually subscribe if it becomes relevant. (T301933)
+		$user = MediaWikiServices::getInstance()
+			->getUserFactory()
+			->newFromUserIdentity( $user );
+		if ( $user->isBot() ) {
+			return false;
+		}
+
 		// Check if the user has automatic subscriptions enabled, and the tools are enabled on the page.
 		return static::isAvailableForTitle( $title ) &&
 			static::isFeatureEnabledForUser( $user, self::AUTOTOPICSUB );
