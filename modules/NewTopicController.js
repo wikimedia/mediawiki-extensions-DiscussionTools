@@ -127,6 +127,13 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 		this.sectionTitle.setValue( title );
 	}
 
+	if ( this.replyWidget.modeTabSelect ) {
+		// Start with the mode-select widget not-tabbable so focus will go from the title to the body
+		this.replyWidget.modeTabSelect.$element.attr( {
+			tabindex: '-1'
+		} );
+	}
+
 	this.sectionTitle.connect( this, { change: 'onSectionTitleChange' } );
 	this.replyWidget.connect( this, { bodyFocus: 'onBodyFocus' } );
 
@@ -358,6 +365,14 @@ NewTopicController.prototype.onBodyFocus = function () {
 	// Browsers sometimes also scroll in response to focus events,
 	// so use the old scrollTop value for consistent results.
 	rootScrollable.scrollTop = scrollBefore + offsetChange;
+
+	if ( this.replyWidget.modeTabSelect ) {
+		// Return normal tabbable status to the mode select widget so shift-tab will move focus to it
+		// (Similar to how the other toolbar elements only become tabbable once the body has focus)
+		this.replyWidget.modeTabSelect.$element.attr( {
+			tabindex: '0'
+		} );
+	}
 };
 
 /**
