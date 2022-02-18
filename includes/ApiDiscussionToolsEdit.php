@@ -103,6 +103,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'section' => 'new',
 							'sectiontitle' => $params['sectiontitle'],
 							'starttimestamp' => wfTimestampNow(),
+							'useskin' => $params['useskin'],
+							// Param is added by hook in MobileFrontend
+							'mobileformat' => $params['mobileformat'],
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword']
@@ -246,6 +249,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'baserevid' => $docRevId,
 							'starttimestamp' => wfTimestampNow(),
 							'etag' => $headers['etag'],
+							'useskin' => $params['useskin'],
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword']
@@ -342,6 +346,12 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			],
 			'sectiontitle' => [
 				ParamValidator::PARAM_TYPE => 'string',
+			],
+			'useskin' => [
+				ApiBase::PARAM_TYPE => array_keys(
+					MediaWikiServices::getInstance()->getSkinFactory()->getInstalledSkins()
+				),
+				ApiBase::PARAM_HELP_MSG => 'apihelp-parse-param-useskin',
 			],
 			'watchlist' => [
 				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-watchlist',
