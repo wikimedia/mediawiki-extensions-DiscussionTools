@@ -35,7 +35,7 @@
 	"discussiontools-emptystate-title-user": "Begin een overleg met {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Welkom op deze overlegpagina",
 	"discussiontools-error-comment-conflict": "Uw bericht kon niet opgeslagen worden, omdat iemand anders op hetzelfde moment een reactie plaatste. Probeer het opnieuw, of herlaad de pagina om de laatste berichten te zien.",
-	"discussiontools-error-comment-disappeared": "Bericht om op te reageren niet gevonden; mogelijk werd het verwijderd of verplaatst. Ververs de pagina en probeer het opnieuw.",
+	"discussiontools-error-comment-disappeared": "Het bericht waarop u reageert, kon niet op de pagina gevonden worden. Mogelijk is het verwijderd of verplaatst naar een andere pagina.",
 	"discussiontools-error-comment-is-transcluded": "De \"{{int:discussiontools-replylink}}\"-link kan niet worden gebruikt om te reageren op deze overlegbijdrage. Gebruik om te reageren de volledige editor door op \"$1\" te klikken.",
 	"discussiontools-error-comment-is-transcluded-title": "De link \"{{int:discussiontools-replylink}}\" kan niet worden gebruikt om op deze opmerking te reageren, omdat deze vanaf een andere pagina is geladen. Om te antwoorden, bezoek: [[$1]].",
 	"discussiontools-error-comment-not-saved": "Uw opmerking kan niet worden gepubliceerd in de meest recente versie van de pagina. Om de laatste wijzigingen te zien, kopieert u uw opgestelde opmerking en gebruikt u vervolgens uw browser om de pagina opnieuw te laden.",
