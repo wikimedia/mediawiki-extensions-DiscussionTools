@@ -523,14 +523,6 @@ function update( data, threadItem, pageName, replyWidget ) {
 	linksController = null;
 	// TODO: Tell controller to teardown all other open widgets
 
-	if ( OO.ui.isMobile() ) {
-		// MobileFrontend does not use the 'wikipage.content' hook, and its interface will not
-		// re-initialize properly (e.g. page sections won't be collapsible). Reload the whole page.
-		window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
-		logSaveSuccess();
-		return;
-	}
-
 	// Highlight the new reply after re-initializing
 	mw.dt.initState.repliedTo = threadItem.id;
 
