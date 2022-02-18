@@ -15,6 +15,7 @@ use Title;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -55,7 +56,7 @@ class CommentParserTest extends IntegrationTestCase {
 		return implode( '/', $path );
 	}
 
-	private static function serializeComments( ThreadItem &$threadItem, Element $root ): stdClass {
+	private static function serializeComments( ThreadItem $threadItem, Element $root ): stdClass {
 		$serialized = new stdClass();
 
 		if ( $threadItem instanceof HeadingItem ) {
@@ -113,7 +114,10 @@ class CommentParserTest extends IntegrationTestCase {
 		string $format, string $expected, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new Element( 'div' ), Title::newFromText( 'Dummy' ) )
+			CommentParser::newFromGlobalState(
+				DOMCompat::getBody( DOMUtils::parseHTML( '' ) ),
+				Title::newFromText( 'Dummy' )
+			)
 		);
 
 		// HACK: Fix differences between JS & PHP regexes
@@ -138,7 +142,10 @@ class CommentParserTest extends IntegrationTestCase {
 		string $format, array $data, string $expected, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new Element( 'div' ), Title::newFromText( 'Dummy' ) )
+			CommentParser::newFromGlobalState(
+				DOMCompat::getBody( DOMUtils::parseHTML( '' ) ),
+				Title::newFromText( 'Dummy' )
+			)
 		);
 
 		$expected = new DateTimeImmutable( $expected );
@@ -160,7 +167,10 @@ class CommentParserTest extends IntegrationTestCase {
 		string $timezone, array $timezoneAbbrs, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState( new Element( 'div' ), Title::newFromText( 'Dummy' ) )
+			CommentParser::newFromGlobalState(
+				DOMCompat::getBody( DOMUtils::parseHTML( '' ) ),
+				Title::newFromText( 'Dummy' )
+			)
 		);
 
 		$regexp = $parser->getTimestampRegexp( 'en', $format, '\\d', $timezoneAbbrs );

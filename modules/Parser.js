@@ -720,7 +720,6 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
  *       CommentItem( { level: 2, range: (li: I)        } )
  *     ]
  *
- * @param {HTMLElement} rootNode
  * @return {ThreadItem[]} Thread items
  */
 Parser.prototype.getThreadItems = function () {
@@ -976,15 +975,15 @@ Parser.prototype.buildThreadItems = function () {
  *         CommentItem( { level: 1, range: (p: B), replies: [
  *           CommentItem( { level: 2, range: (li: C, li: C), replies: [
  *             CommentItem( { level: 3, range: (li: D), replies: [
- *               CommentItem( { level: 4, range: (li: E), replies: [] },
- *               CommentItem( { level: 4, range: (li: F), replies: [] },
- *             ] },
- *           ] },
- *           CommentItem( { level: 2, range: (li: G), replies: [] },
- *         ] },
+ *               CommentItem( { level: 4, range: (li: E), replies: [] } ),
+ *               CommentItem( { level: 4, range: (li: F), replies: [] } ),
+ *             ] } ),
+ *           ] } ),
+ *           CommentItem( { level: 2, range: (li: G), replies: [] } ),
+ *         ] } ),
  *         CommentItem( { level: 1, range: (p: H), replies: [
- *           CommentItem( { level: 2, range: (li: I), replies: [] },
- *         ] },
+ *           CommentItem( { level: 2, range: (li: I), replies: [] } ),
+ *         ] } ),
  *       ] } )
  *     ]
  *
