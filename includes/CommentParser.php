@@ -69,7 +69,7 @@ class CommentParser {
 
 		if ( !$data ) {
 			// TODO: Instead of passing data used for mocking, mock the methods that fetch the data.
-			$data = Data::getLocalData( null, $config, $language );
+			$data = LanguageData::getLocalData( $config, $language );
 		}
 
 		$this->dateFormat = $data['dateFormat'];

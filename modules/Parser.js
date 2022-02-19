@@ -8,7 +8,7 @@ var
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
-	// Data::getLocalData()
+	// LanguageData::getLocalData()
 	data = require( './parser/data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
