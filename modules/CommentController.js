@@ -38,15 +38,15 @@ if ( defaultVisual || enable2017Wikitext ) {
  *
  * @param {jQuery} $pageContainer Page container
  * @param {ThreadItem} threadItem Thread item to attach new comment to
- * @param {mw.dt.Parser} parser Comment parser
+ * @param {ThreadItemSet} threadItemSet
  */
-function CommentController( $pageContainer, threadItem, parser ) {
+function CommentController( $pageContainer, threadItem, threadItemSet ) {
 	// Mixin constructors
 	OO.EventEmitter.call( this );
 
 	this.$pageContainer = $pageContainer;
 	this.threadItem = threadItem;
-	this.parser = parser;
+	this.threadItemSet = threadItemSet;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
 }
@@ -275,7 +275,7 @@ CommentController.prototype.teardown = function ( mode ) {
 CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 	var threadItem = this.getThreadItem();
 	var replyWidget = this.replyWidget;
-	var sameNameComments = this.parser.findCommentsByName( threadItem.name );
+	var sameNameComments = this.threadItemSet.findCommentsByName( threadItem.name );
 
 	var mode = replyWidget.getMode();
 	var tags = [

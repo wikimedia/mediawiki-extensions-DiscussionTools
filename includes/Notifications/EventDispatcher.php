@@ -19,12 +19,12 @@ use ExtensionRegistry;
 use IDBAccessObject;
 use Iterator;
 use MediaWiki\Extension\DiscussionTools\CommentItem;
-use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItemSet;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
@@ -39,9 +39,9 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 class EventDispatcher {
 	/**
 	 * @param RevisionRecord $revRecord
-	 * @return CommentParser
+	 * @return ThreadItemSet
 	 */
-	private static function getParsedRevision( RevisionRecord $revRecord ): CommentParser {
+	private static function getParsedRevision( RevisionRecord $revRecord ): ThreadItemSet {
 		$services = MediaWikiServices::getInstance();
 
 		$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
@@ -100,17 +100,17 @@ class EventDispatcher {
 		}
 
 		if ( $oldRevRecord !== null ) {
-			$oldParser = self::getParsedRevision( $oldRevRecord );
+			$oldItemSet = self::getParsedRevision( $oldRevRecord );
 		} else {
 			// Page creation
 			$doc = DOMUtils::parseHTML( '' );
 			$container = DOMCompat::getBody( $doc );
-			$oldParser = $services->getService( 'DiscussionTools.CommentParser' )
+			$oldItemSet = $services->getService( 'DiscussionTools.CommentParser' )
 				->parse( $container, $title );
 		}
-		$newParser = self::getParsedRevision( $newRevRecord );
+		$newItemSet = self::getParsedRevision( $newRevRecord );
 
-		self::generateEventsFromParsers( $events, $oldParser, $newParser, $newRevRecord, $title, $user );
+		self::generateEventsFromItemSets( $events, $oldItemSet, $newItemSet, $newRevRecord, $title, $user );
 	}
 
 	/**
@@ -143,22 +143,22 @@ class EventDispatcher {
 	 * Helper for generateEventsForRevision(), separated out for easier testing.
 	 *
 	 * @param array &$events
-	 * @param CommentParser $oldParser
-	 * @param CommentParser $newParser
+	 * @param ThreadItemSet $oldItemSet
+	 * @param ThreadItemSet $newItemSet
 	 * @param RevisionRecord $newRevRecord
 	 * @param PageIdentity $title
 	 * @param UserIdentity $user
 	 */
-	protected static function generateEventsFromParsers(
+	protected static function generateEventsFromItemSets(
 		array &$events,
-		CommentParser $oldParser,
-		CommentParser $newParser,
+		ThreadItemSet $oldItemSet,
+		ThreadItemSet $newItemSet,
 		RevisionRecord $newRevRecord,
 		PageIdentity $title,
 		UserIdentity $user
 	): void {
-		$newComments = self::groupCommentsByThreadAndName( $newParser->getThreadItems() );
-		$oldComments = self::groupCommentsByThreadAndName( $oldParser->getThreadItems() );
+		$newComments = self::groupCommentsByThreadAndName( $newItemSet->getThreadItems() );
+		$oldComments = self::groupCommentsByThreadAndName( $oldItemSet->getThreadItems() );
 		$addedComments = [];
 
 		foreach ( $newComments as $threadName => $threadNewComments ) {

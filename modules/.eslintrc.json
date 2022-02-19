@@ -22,6 +22,7 @@
 				"DmMWPingNode": "DmMWPingNode",
 				"HeadingItem": "HeadingItem",
 				"moment": "moment",
+				"ThreadItemSet": "ThreadItemSet",
 				"ThreadItem": "ThreadItem"
 			}
 		}

@@ -187,18 +187,18 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$container = DOMCompat::getBody( $doc );
 
-				$parser = MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
+				$threadItemSet = MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
 					->parse( $container, $title );
 
 				if ( $commentId ) {
-					$comment = $parser->findCommentById( $commentId );
+					$comment = $threadItemSet->findCommentById( $commentId );
 
 					if ( !$comment || !( $comment instanceof CommentItem ) ) {
 						$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
 					}
 
 				} else {
-					$comments = $parser->findCommentsByName( $commentName );
+					$comments = $threadItemSet->findCommentsByName( $commentName );
 					$comment = $comments[ 0 ] ?? null;
 
 					if ( count( $comments ) > 1 ) {

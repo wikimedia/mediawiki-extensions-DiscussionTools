@@ -182,7 +182,10 @@ class CommentParserTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideComments
-	 * @covers ::getThreads
+	 * @covers ::parse
+	 * @covers ::buildThreadItems
+	 * @covers ::buildThreads
+	 * @covers ::computeIdsAndNames
 	 */
 	public function testGetThreads(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
@@ -198,8 +201,8 @@ class CommentParserTest extends IntegrationTestCase {
 		$body = DOMCompat::getBody( $doc );
 
 		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $data )->parse( $body, $title );
-		$threads = $parser->getThreads();
+		$threadItemSet = self::createParser( $data )->parse( $body, $title );
+		$threads = $threadItemSet->getThreads();
 
 		$processedThreads = [];
 

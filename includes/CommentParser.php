@@ -27,17 +27,6 @@ class CommentParser {
 	/** @var Title */
 	private $title;
 
-	/** @var ThreadItem[] */
-	private $threadItems;
-	/** @var CommentItem[] */
-	private $commentItems;
-	/** @var ThreadItem[][] */
-	private $threadItemsByName;
-	/** @var ThreadItem[] */
-	private $threadItemsById;
-	/** @var HeadingItem[] */
-	private $threads;
-
 	/** @var Config */
 	private $config;
 
@@ -75,14 +64,17 @@ class CommentParser {
 	 *
 	 * @param Element $rootNode Root node of content to parse
 	 * @param Title $title Title of the page being parsed
-	 * @return $this
+	 * @return ThreadItemSet
 	 */
-	public function parse( Element $rootNode, Title $title ) {
+	public function parse( Element $rootNode, Title $title ): ThreadItemSet {
 		$this->rootNode = $rootNode;
 		$this->title = $title;
-		// TODO Return a data object
-		// (This line is a big fat hack)
-		return clone $this;
+
+		$result = $this->buildThreadItems();
+		$this->buildThreads( $result );
+		$this->computeIdsAndNames( $result );
+
+		return $result;
 	}
 
 	/**
@@ -730,89 +722,6 @@ class CommentParser {
 	}
 
 	/**
-	 * Get all discussion comments (and headings) within a DOM subtree.
-	 *
-	 * This returns a flat list, use getThreads() to get a tree structure starting at section headings.
-	 *
-	 * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here,
-	 * the wikitext syntax is just for illustration):
-	 *
-	 *     == A ==
-	 *     B. ~~~~
-	 *     : C.
-	 *     : C. ~~~~
-	 *     :: D. ~~~~
-	 *     ::: E. ~~~~
-	 *     ::: F. ~~~~
-	 *     : G. ~~~~
-	 *     H. ~~~~
-	 *     : I. ~~~~
-	 *
-	 * This function would return a structure like:
-	 *
-	 *     [
-	 *       HeadingItem( { level: 0, range: (h2: A)        } ),
-	 *       CommentItem( { level: 1, range: (p: B)         } ),
-	 *       CommentItem( { level: 2, range: (li: C, li: C) } ),
-	 *       CommentItem( { level: 3, range: (li: D)        } ),
-	 *       CommentItem( { level: 4, range: (li: E)        } ),
-	 *       CommentItem( { level: 4, range: (li: F)        } ),
-	 *       CommentItem( { level: 2, range: (li: G)        } ),
-	 *       CommentItem( { level: 1, range: (p: H)         } ),
-	 *       CommentItem( { level: 2, range: (li: I)        } )
-	 *     ]
-	 *
-	 * @return ThreadItem[] Thread items
-	 */
-	public function getThreadItems(): array {
-		if ( !$this->threadItems ) {
-			$this->buildThreads();
-		}
-		return $this->threadItems;
-	}
-
-	/**
-	 * Same as getFlatThreadItems, but only returns the CommentItems
-	 *
-	 * @return CommentItem[] Comment items
-	 */
-	public function getCommentItems(): array {
-		if ( !$this->commentItems ) {
-			$this->buildThreads();
-		}
-		return $this->commentItems;
-	}
-
-	/**
-	 * Find ThreadItems by their name
-	 *
-	 * This will usually return a single-element array, but it may return multiple comments if they're
-	 * indistinguishable by name. In that case, use their IDs to disambiguate.
-	 *
-	 * @param string $name Name
-	 * @return ThreadItem[] Thread items, empty array if not found
-	 */
-	public function findCommentsByName( string $name ): array {
-		if ( !$this->threadItemsByName ) {
-			$this->buildThreads();
-		}
-		return $this->threadItemsByName[$name] ?? [];
-	}
-
-	/**
-	 * Find a ThreadItem by its ID
-	 *
-	 * @param string $id ID
-	 * @return ThreadItem|null Thread item, null if not found
-	 */
-	public function findCommentById( string $id ): ?ThreadItem {
-		if ( !$this->threadItemsById ) {
-			$this->buildThreads();
-		}
-		return $this->threadItemsById[$id] ?? null;
-	}
-
-	/**
 	 * @param Node[] $sigNodes
 	 * @param array $match
 	 * @param Text $node
@@ -838,19 +747,13 @@ class CommentParser {
 		return $sigRange;
 	}
 
-	private function buildThreadItems(): void {
+	private function buildThreadItems(): ThreadItemSet {
+		$result = new ThreadItemSet();
+
 		$timestampRegexps = $this->getLocalTimestampRegexps();
-		$commentItems = [];
-		$threadItems = [];
 		$dfParsers = $this->getLocalTimestampParsers();
 
-		// Placeholder heading in case there are comments in the 0th section
-		$range = new ImmutableRange( $this->rootNode, 0, $this->rootNode, 0 );
-		$fakeHeading = new HeadingItem( $range, 99, true );
-		$fakeHeading->setRootNode( $this->rootNode );
-
-		$curComment = $fakeHeading;
-		$curCommentEnd = $range->endContainer;
+		$curCommentEnd = $this->rootNode;
 
 		$treeWalker = new TreeWalker(
 			$this->rootNode,
@@ -868,7 +771,7 @@ class CommentParser {
 				);
 				$curComment = new HeadingItem( $range, (int)( $match[ 1 ] ) );
 				$curComment->setRootNode( $this->rootNode );
-				$threadItems[] = $curComment;
+				$result->addThreadItem( $curComment );
 				$curCommentEnd = $node;
 			} elseif ( $node instanceof Text && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
 				$warnings = [];
@@ -965,70 +868,20 @@ class CommentParser {
 				if ( $warnings ) {
 					$curComment->addWarnings( $warnings );
 				}
-				$commentItems[] = $curComment;
-				$threadItems[] = $curComment;
+				if ( $result->isEmpty() ) {
+					// Add a fake placeholder heading if there are any comments in the 0th section
+					// (before the first real heading)
+					$range = new ImmutableRange( $this->rootNode, 0, $this->rootNode, 0 );
+					$fakeHeading = new HeadingItem( $range, 99, true );
+					$fakeHeading->setRootNode( $this->rootNode );
+					$result->addThreadItem( $fakeHeading );
+				}
+				$result->addThreadItem( $curComment );
 				$curCommentEnd = $curComment->getRange()->endContainer;
 			}
 		}
 
-		// Insert the fake placeholder heading if there are any comments in the 0th section
-		// (before the first real heading)
-		if ( count( $threadItems ) && !( $threadItems[ 0 ] instanceof HeadingItem ) ) {
-			array_unshift( $threadItems, $fakeHeading );
-		}
-
-		$this->commentItems = $commentItems;
-		$this->threadItems = $threadItems;
-	}
-
-	/**
-	 * Group discussion comments into threads and associate replies to original messages.
-	 *
-	 * Each thread must begin with a heading. Original messages in the thread are treated as replies to
-	 * its heading. Other replies are associated based on the order and indentation level.
-	 *
-	 * Note that the objects in `comments` are extended in-place with the additional data.
-	 *
-	 * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here,
-	 * the wikitext syntax is just for illustration):
-	 *
-	 *     == A ==
-	 *     B. ~~~~
-	 *     : C.
-	 *     : C. ~~~~
-	 *     :: D. ~~~~
-	 *     ::: E. ~~~~
-	 *     ::: F. ~~~~
-	 *     : G. ~~~~
-	 *     H. ~~~~
-	 *     : I. ~~~~
-	 *
-	 * This function would return a structure like:
-	 *
-	 *     [
-	 *       HeadingItem( { level: 0, range: (h2: A), replies: [
-	 *         CommentItem( { level: 1, range: (p: B), replies: [
-	 *           CommentItem( { level: 2, range: (li: C, li: C), replies: [
-	 *             CommentItem( { level: 3, range: (li: D), replies: [
-	 *               CommentItem( { level: 4, range: (li: E), replies: [] } ),
-	 *               CommentItem( { level: 4, range: (li: F), replies: [] } ),
-	 *             ] } ),
-	 *           ] } ),
-	 *           CommentItem( { level: 2, range: (li: G), replies: [] } ),
-	 *         ] } ),
-	 *         CommentItem( { level: 1, range: (p: H), replies: [
-	 *           CommentItem( { level: 2, range: (li: I), replies: [] } ),
-	 *         ] } ),
-	 *       ] } )
-	 *     ]
-	 *
-	 * @return HeadingItem[] Tree structure of comments, top-level items are the headings.
-	 */
-	public function getThreads(): array {
-		if ( !$this->threads ) {
-			$this->buildThreads();
-		}
-		return $this->threads;
+		return $result;
 	}
 
 	/**
@@ -1045,9 +898,10 @@ class CommentParser {
 	 * Given a thread item, return an identifier for it that is unique within the page.
 	 *
 	 * @param ThreadItem $threadItem
+	 * @param ThreadItemSet $previousItems
 	 * @return string
 	 */
-	private function computeId( ThreadItem $threadItem ): string {
+	private function computeId( ThreadItem $threadItem, ThreadItemSet $previousItems ): string {
 		// When changing the algorithm below, copy the old version into computeLegacyId()
 		// for compatibility with cached data.
 
@@ -1088,12 +942,12 @@ class CommentParser {
 			}
 		}
 
-		if ( isset( $this->threadItemsById[$id] ) ) {
+		if ( $previousItems->findCommentById( $id ) ) {
 			// Well, that's tough
 			$threadItem->addWarning( 'Duplicate comment ID' );
 			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
 			$number = 1;
-			while ( isset( $this->threadItemsById["$id-$number"] ) ) {
+			while ( $previousItems->findCommentById( "$id-$number" ) ) {
 				$number++;
 			}
 			$id = "$id-$number";
@@ -1107,9 +961,10 @@ class CommentParser {
 	 * older algorithm, so that we can still match IDs from cached data.
 	 *
 	 * @param ThreadItem $threadItem
+	 * @param ThreadItemSet $previousItems
 	 * @return string|null
 	 */
-	private function computeLegacyId( ThreadItem $threadItem ): ?string {
+	private function computeLegacyId( ThreadItem $threadItem, ThreadItemSet $previousItems ): ?string {
 		// When we change the algorithm in computeId(), the old version should be copied below
 		// for compatibility with cached data.
 
@@ -1147,17 +1002,14 @@ class CommentParser {
 		return $name;
 	}
 
-	private function buildThreads(): void {
-		if ( !$this->threadItems ) {
-			$this->buildThreadItems();
-		}
-
-		$threads = [];
+	/**
+	 * @param ThreadItemSet $result
+	 */
+	private function buildThreads( ThreadItemSet $result ): void {
+		$lastHeading = null;
 		$replies = [];
-		$this->threadItemsById = [];
-		$this->threadItemsByName = [];
 
-		foreach ( $this->threadItems as $threadItem ) {
+		foreach ( $result->getThreadItems() as $threadItem ) {
 			if ( count( $replies ) < $threadItem->getLevel() ) {
 				// Someone skipped an indentation level (or several). Pretend that the previous reply
 				// covers multiple indentation levels, so that following comments get connected to it.
@@ -1169,10 +1021,9 @@ class CommentParser {
 
 			if ( $threadItem instanceof HeadingItem ) {
 				// New root (thread)
-				$threads[] = $threadItem;
 				// Attach as a sub-thread to preceding higher-level heading.
 				// Any replies will appear in the tree twice, under the main-thread and the sub-thread.
-				$maybeParent = count( $threads ) > 1 ? $threads[ count( $threads ) - 2 ] : null;
+				$maybeParent = $lastHeading;
 				while ( $maybeParent && $maybeParent->getHeadingLevel() >= $threadItem->getHeadingLevel() ) {
 					$maybeParent = $maybeParent->getParent();
 				}
@@ -1180,6 +1031,7 @@ class CommentParser {
 					$threadItem->setParent( $maybeParent );
 					$maybeParent->addReply( $threadItem );
 				}
+				$lastHeading = $threadItem;
 			} elseif ( isset( $replies[ $threadItem->getLevel() - 1 ] ) ) {
 				// Add as a reply to the closest less-nested comment
 				$threadItem->setParent( $replies[ $threadItem->getLevel() - 1 ] );
@@ -1192,25 +1044,26 @@ class CommentParser {
 			// Cut off more deeply nested replies
 			array_splice( $replies, $threadItem->getLevel() + 1 );
 		}
+	}
 
-		$this->threads = $threads;
-
-		foreach ( $this->threadItems as $threadItem ) {
+	/**
+	 * Set the IDs and names used to refer to comments and headings.
+	 * This has to be a separate pass because we don't have the list of replies before
+	 * this point.
+	 *
+	 * @param ThreadItemSet $result
+	 */
+	private function computeIdsAndNames( ThreadItemSet $result ): void {
+		foreach ( $result->getThreadItems() as $threadItem ) {
 			$name = $this->computeName( $threadItem );
 			$threadItem->setName( $name );
-			$this->threadItemsByName[$name][] = $threadItem;
 
-			// Set the IDs used to refer to comments and headings.
-			// This has to be a separate pass because we don't have the list of replies before
-			// this point.
-			$id = $this->computeId( $threadItem );
+			$id = $this->computeId( $threadItem, $result );
 			$threadItem->setId( $id );
-			$this->threadItemsById[$id] = $threadItem;
-			$legacyId = $this->computeLegacyId( $threadItem );
+			$legacyId = $this->computeLegacyId( $threadItem, $result );
 			$threadItem->setLegacyId( $legacyId );
-			if ( $legacyId ) {
-				$this->threadItemsById[$legacyId] = $threadItem;
-			}
+
+			$result->updateIdAndNameMaps( $threadItem );
 		}
 	}
 

@@ -36,8 +36,8 @@ class CommentModifierTest extends IntegrationTestCase {
 		$doc = self::createDocument( $dom );
 		$container = DOMCompat::getBody( $doc );
 
-		$parser = self::createParser( $data )->parse( $container, $title );
-		$comments = $parser->getCommentItems();
+		$threadItemSet = self::createParser( $data )->parse( $container, $title );
+		$comments = $threadItemSet->getCommentItems();
 
 		foreach ( $comments as $comment ) {
 			$node = CommentModifier::addListItem( $comment, $replyIndentation );
@@ -81,8 +81,8 @@ class CommentModifierTest extends IntegrationTestCase {
 		$doc = self::createDocument( $dom );
 		$container = DOMCompat::getBody( $doc );
 
-		$parser = self::createParser( $data )->parse( $container, $title );
-		$comments = $parser->getCommentItems();
+		$threadItemSet = self::createParser( $data )->parse( $container, $title );
+		$comments = $threadItemSet->getCommentItems();
 
 		foreach ( $comments as $comment ) {
 			$linkNode = $doc->createElement( 'a' );

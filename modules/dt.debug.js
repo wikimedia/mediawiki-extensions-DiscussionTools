@@ -3,12 +3,13 @@ var
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	highlighter = require( './highlighter.js' ),
-	parser = new Parser( require( 'ext.discussionTools.init' ).parserData ).parse(
+	parser = new Parser( require( 'ext.discussionTools.init' ).parserData ),
+	result = parser.parse(
 		document.getElementById( 'mw-content-text' ),
 		mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
 	),
-	comments = parser.getCommentItems(),
-	threads = parser.getThreads(),
+	comments = result.getCommentItems(),
+	threads = result.getThreads(),
 	timestampRegexps = parser.getLocalTimestampRegexps(),
 	debug = +( new mw.Uri().query.dtdebug ),
 	DEBUG_HIGHLIGHT = 1,
