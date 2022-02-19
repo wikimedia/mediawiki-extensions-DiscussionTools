@@ -26,7 +26,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
-		MockCommentFormatter::$data = $data;
+		MockCommentFormatter::$parser = TestUtils::createParser( $data );
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 

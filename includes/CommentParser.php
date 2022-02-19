@@ -17,7 +17,6 @@ use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
-// TODO clean up static vs non-static
 // TODO consider making timestamp parsing not a returned function
 
 class CommentParser {
@@ -53,25 +52,17 @@ class CommentParser {
 	private $timezones;
 
 	/**
-	 * @param Element $rootNode Root node of content to parse
-	 * @param Title $title Title of the page being parsed
 	 * @param Language $language Content language
 	 * @param Config $config
-	 * @param array $data
+	 * @param LanguageData $languageData
 	 */
 	public function __construct(
-		Element $rootNode, Title $title, Language $language, Config $config, array $data = []
+		Language $language, Config $config, LanguageData $languageData
 	) {
-		$this->rootNode = $rootNode;
 		$this->config = $config;
 		$this->language = $language;
-		$this->title = $title;
 
-		if ( !$data ) {
-			// TODO: Instead of passing data used for mocking, mock the methods that fetch the data.
-			$data = LanguageData::getLocalData( $config, $language );
-		}
-
+		$data = $languageData->getLocalData();
 		$this->dateFormat = $data['dateFormat'];
 		$this->digits = $data['digits'];
 		$this->contLangMessages = $data['contLangMessages'];
@@ -80,17 +71,18 @@ class CommentParser {
 	}
 
 	/**
-	 * @param Element $rootNode
-	 * @param Title $title
-	 * @return CommentParser
+	 * Parse a discussion page.
+	 *
+	 * @param Element $rootNode Root node of content to parse
+	 * @param Title $title Title of the page being parsed
+	 * @return $this
 	 */
-	public static function newFromGlobalState( Element $rootNode, Title $title ): CommentParser {
-		return new static(
-			$rootNode,
-			$title,
-			MediaWikiServices::getInstance()->getContentLanguage(),
-			MediaWikiServices::getInstance()->getMainConfig()
-		);
+	public function parse( Element $rootNode, Title $title ) {
+		$this->rootNode = $rootNode;
+		$this->title = $title;
+		// TODO Return a data object
+		// (This line is a big fat hack)
+		return clone $this;
 	}
 
 	/**

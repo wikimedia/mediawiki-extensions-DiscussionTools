@@ -7,4 +7,4 @@ config.json:
   JSON.stringify( mw.config.get( [ 'wgContentLanguage', 'wgArticlePath', 'wgNamespaceIds', 'wgFormattedNamespaces' ] ), null, '\t' )
 
 data.json:
-  JSON.stringify( mw.loader.moduleRegistry[ 'ext.discussionTools.init' ].packageExports[ 'parser/data.json' ], null, '\t' )
+  JSON.stringify( mw.loader.require( 'ext.discussionTools.init' ).parserData )

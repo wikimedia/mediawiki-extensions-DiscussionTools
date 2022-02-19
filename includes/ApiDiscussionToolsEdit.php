@@ -187,7 +187,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$container = DOMCompat::getBody( $doc );
 
-				$parser = CommentParser::newFromGlobalState( $container, $title );
+				$parser = MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
+					->parse( $container, $title );
 
 				if ( $commentId ) {
 					$comment = $parser->findCommentById( $commentId );

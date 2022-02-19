@@ -69,7 +69,7 @@ class ThreadItemTest extends IntegrationTestCase {
 
 		CommentUtils::unwrapParsoidSections( $container );
 
-		$parser = self::createParser( $container, $title, $data );
+		$parser = self::createParser( $data )->parse( $container, $title );
 		$comments = $parser->getCommentItems();
 
 		$transcludedFrom = [];
@@ -113,7 +113,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$body = DOMCompat::getBody( $doc );
 
 		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $body, $title, $data );
+		$parser = self::createParser( $data )->parse( $body, $title );
 		$items = $parser->getThreadItems();
 
 		$output = [];
@@ -159,7 +159,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$body = DOMCompat::getBody( $doc );
 
 		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $body, $title, $data );
+		$parser = self::createParser( $data )->parse( $body, $title );
 		$items = $parser->getThreadItems();
 
 		$output = [];

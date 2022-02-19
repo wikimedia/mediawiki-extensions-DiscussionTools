@@ -1,8 +1,6 @@
-var
-	testUtils = require( './testUtils.js' ),
-	utils = require( 'ext.discussionTools.init' ).utils;
+var utils = require( 'ext.discussionTools.init' ).utils;
 
-QUnit.module( 'mw.dt.utils', testUtils.newEnvironment() );
+QUnit.module( 'mw.dt.utils', QUnit.newMwEnvironment() );
 
 QUnit.test( '#linearWalk', function ( assert ) {
 	var cases = require( '../cases/linearWalk.json' );

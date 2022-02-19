@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -24,7 +25,8 @@ trait ApiDiscussionToolsTrait {
 			$revision->getPageAsLinkTarget()
 		);
 
-		return CommentParser::newFromGlobalState( $container, $title );
+		$parser = MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' );
+		return $parser->parse( $container, $title );
 	}
 
 	/**

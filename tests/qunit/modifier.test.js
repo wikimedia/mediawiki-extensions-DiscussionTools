@@ -3,7 +3,7 @@ var
 	Parser = require( 'ext.discussionTools.init' ).Parser,
 	modifier = require( 'ext.discussionTools.init' ).modifier;
 
-QUnit.module( 'mw.dt.modifier', testUtils.newEnvironment() );
+QUnit.module( 'mw.dt.modifier', QUnit.newMwEnvironment() );
 
 require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
 	// This should be one test with many cases, rather than multiple tests, but the cases are large
@@ -18,7 +18,6 @@ require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
 			title = mw.Title.newFromText( caseItem.title );
 
 		testUtils.overrideMwConfig( config );
-		testUtils.overrideParserData( data );
 
 		$( fixture ).empty().append( expected );
 		var expectedHtml = fixture.innerHTML;
@@ -26,7 +25,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
 		$( fixture ).empty().append( dom );
 		var reverseExpectedHtml = fixture.innerHTML;
 
-		var parser = new Parser( fixture, title );
+		var parser = new Parser( data ).parse( fixture, title );
 		var comments = parser.getCommentItems();
 
 		// Add a reply to every comment. Note that this inserts *all* of the replies, unlike the real
@@ -76,14 +75,13 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 			title = mw.Title.newFromText( caseItem.title );
 
 		testUtils.overrideMwConfig( config );
-		testUtils.overrideParserData( data );
 
 		$( fixture ).empty().append( expected );
 		var expectedHtml = fixture.innerHTML;
 
 		$( fixture ).empty().append( dom );
 
-		var parser = new Parser( fixture, title );
+		var parser = new Parser( data ).parse( fixture, title );
 		var comments = parser.getCommentItems();
 
 		// Add a reply link to every comment.

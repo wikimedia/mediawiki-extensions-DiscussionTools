@@ -3,7 +3,7 @@ var
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	highlighter = require( './highlighter.js' ),
-	parser = new Parser(
+	parser = new Parser( require( 'ext.discussionTools.init' ).parserData ).parse(
 		document.getElementById( 'mw-content-text' ),
 		mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
 	),

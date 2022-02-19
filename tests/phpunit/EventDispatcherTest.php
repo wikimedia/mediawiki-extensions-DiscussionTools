@@ -40,8 +40,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 
 		$dummyTitle = Title::newFromText( 'Dummy' );
 		$this->setupEnv( $config, $data );
-		$parser1 = self::createParser( $body1, $dummyTitle, $data );
-		$parser2 = self::createParser( $body2, $dummyTitle, $data );
+		$parser1 = self::createParser( $data )->parse( $body1, $dummyTitle );
+		$parser2 = self::createParser( $data )->parse( $body2, $dummyTitle );
 
 		$events = self::getJson( $other, true );
 
