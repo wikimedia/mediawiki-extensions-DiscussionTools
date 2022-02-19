@@ -11,6 +11,7 @@ use Language;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MWException;
 use Title;
+use Wikimedia\Assert\Assert;
 use Wikimedia\IPUtils;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
@@ -930,6 +931,7 @@ class CommentParser {
 		} elseif ( $threadItem instanceof HeadingItem ) {
 			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 			$headline = $threadItem->getRange()->startContainer;
+			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
 			$id = 'h-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
 			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
@@ -944,6 +946,7 @@ class CommentParser {
 		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
 			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 			$headline = $threadItemParent->getRange()->startContainer;
+			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
 			$id .= '-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItemParent instanceof CommentItem ) {
 			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ) ) .

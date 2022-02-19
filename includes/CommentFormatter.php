@@ -11,6 +11,8 @@ use ParserOutput;
 use Throwable;
 use Title;
 use WebRequest;
+use Wikimedia\Assert\Assert;
+use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
@@ -132,9 +134,12 @@ class CommentFormatter {
 			$itemJSON = json_encode( $itemData );
 
 			if ( $threadItem instanceof HeadingItem ) {
-				$threadItem->getRange()->endContainer->setAttribute( 'data-mw-comment', $itemJSON );
+				// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
+				$headline = $threadItem->getRange()->endContainer;
+				Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
+				$headline->setAttribute( 'data-mw-comment', $itemJSON );
 				if ( $threadItem->isSubscribable() ) {
-					$headingNode = CommentUtils::closestElement( $threadItem->getRange()->endContainer, [ 'h2' ] );
+					$headingNode = CommentUtils::closestElement( $headline, [ 'h2' ] );
 
 					if ( $headingNode ) {
 						DOMCompat::getClassList( $headingNode )->add( 'ext-discussiontools-init-section' );

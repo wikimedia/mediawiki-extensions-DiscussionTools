@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use MediaWiki\MediaWikiServices;
 use MWException;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
 use Wikimedia\Parsoid\DOM\Element;
@@ -151,6 +152,7 @@ class CommentModifier {
 			$target = $target->parentNode;
 		}
 
+		Assert::precondition( $target !== null, 'We have not stepped outside the document' );
 		// Instead of just using $curComment->getLevel(), consider indentation of lists within the
 		// comment (T252702)
 		$curLevel = CommentUtils::getIndentLevel( $target, $curComment->getRootNode() ) + 1;

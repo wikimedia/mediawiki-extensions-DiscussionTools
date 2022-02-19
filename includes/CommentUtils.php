@@ -349,7 +349,7 @@ class CommentUtils {
 	 * Get an array of sibling nodes that contain parts of the given range.
 	 *
 	 * @param ImmutableRange $range
-	 * @return Element[]
+	 * @return Node[]
 	 */
 	public static function getCoveredSiblings( ImmutableRange $range ): array {
 		$ancestor = $range->commonAncestorContainer;
@@ -385,7 +385,7 @@ class CommentUtils {
 	 * Get the nodes (if any) that contain the given thread item, and nothing else.
 	 *
 	 * @param ThreadItem $item
-	 * @return Element[]|null
+	 * @return Node[]|null
 	 */
 	public static function getFullyCoveredSiblings( ThreadItem $item ): ?array {
 		$siblings = self::getCoveredSiblings( $item->getRange() );
