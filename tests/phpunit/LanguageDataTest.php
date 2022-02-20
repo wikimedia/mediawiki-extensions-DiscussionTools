@@ -3,12 +3,13 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use HashConfig;
-use MediaWiki\Extension\DiscussionTools\Data;
+use MediaWiki\Extension\DiscussionTools\LanguageData;
+use MediaWiki\MediaWikiServices;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\Data
+ * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\LanguageData
  */
-class DataTest extends IntegrationTestCase {
+class LanguageDataTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideLocalData
@@ -22,7 +23,8 @@ class DataTest extends IntegrationTestCase {
 		] );
 		$expectedData = self::getJson( $expectedPath );
 
-		$data = Data::getLocalData( null, $conf, $langCode );
+		$lang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( $langCode );
+		$data = LanguageData::getLocalData( $conf, $lang );
 
 		// Optionally write updated content to the JSON files
 		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {

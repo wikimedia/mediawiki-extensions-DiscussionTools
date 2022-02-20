@@ -41,7 +41,7 @@
 				"controller.js",
 				{
 					"name": "controller/contLangMessages.json",
-					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getContentLanguageMessages",
+					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getContentLanguageMessages",
 					"callbackParam": [
 						"discussiontools-defaultsummary-reply",
 						"newsectionsummary",
@@ -74,7 +74,7 @@
 				"lib/moment-timezone/moment-timezone-with-data-1970-2030.js",
 				{
 					"name": "parser/data.json",
-					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getLocalData"
+					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getLocalData"
 				}
 			],
 			"styles": [
@@ -157,8 +157,8 @@
 				"AbandonTopicDialog.js",
 				{
 					"name": "licenseMessages.json",
-					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getTermsOfUseMessagesParsed",
-					"versionCallback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getTermsOfUseMessagesVersion"
+					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getTermsOfUseMessagesParsed",
+					"versionCallback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getTermsOfUseMessagesVersion"
 				}
 			],
 			"styles": [
@@ -202,7 +202,7 @@
 			"optionalDependencies": {
 				"ConfirmEdit": "ext.confirmEdit.CaptchaInputWidget"
 			},
-			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\Data::addOptionalDependencies",
+			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::addOptionalDependencies",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -266,7 +266,7 @@
 			"qunit/testUtils.js",
 			{
 				"name": "data-en.json",
-				"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Data::getLocalData",
+				"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getLocalData",
 				"callbackParam": "en"
 			},
 			"data/arwiki-config.json",
