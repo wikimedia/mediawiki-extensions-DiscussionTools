@@ -2,42 +2,9 @@ var utils = require( 'ext.discussionTools.init' ).utils;
 
 module.exports = {};
 
-/* eslint-disable qunit/no-commented-tests */
-/**
- * Create a QUnit environment that will automatically restore the parser data and config at the end
- * of every test (so that we can use #overrideParserData and #overrideMwConfig without thinking
- * about cleaning it up).
- *
- * @return {Object}
- */
-module.exports.newEnvironment = function () {
-	var originalParserData = $.extend(
-		{},
-		mw.loader.moduleRegistry[ 'ext.discussionTools.init' ].packageExports[ 'parser/data.json' ]
-	);
-
-	return QUnit.newMwEnvironment( {
-		afterEach: function () {
-			module.exports.overrideParserData( originalParserData );
-			// mw.config is restored by QUnit.newMwEnvironment already
-		}
-	} );
-};
-
-/**
- * Override the parser data with the given data. Used for testing different languages etc.
- *
- * @param {Object} data
- */
-module.exports.overrideParserData = function ( data ) {
-	$.extend(
-		mw.loader.moduleRegistry[ 'ext.discussionTools.init' ].packageExports[ 'parser/data.json' ],
-		data
-	);
-};
-
 /**
  * Override mw.config with the given data. Used for testing different languages etc.
+ * (Automatically restored after every test by QUnit.newMwEnvironment.)
  *
  * @param {Object} config
  */

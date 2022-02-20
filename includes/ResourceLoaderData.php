@@ -33,13 +33,20 @@ class ResourceLoaderData {
 	public static function getLocalData(
 		ResourceLoaderContext $context, Config $config, ?string $langCode = null
 	): array {
+		$services = MediaWikiServices::getInstance();
+
 		if ( $langCode === null ) {
-			$lang = MediaWikiServices::getInstance()->getContentLanguage();
+			$langData = $services->getService( 'DiscussionTools.LanguageData' );
 		} else {
-			$lang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( $langCode );
+			$langData = new LanguageData(
+				$services->getMainConfig(),
+				$services->getLanguageFactory()->getLanguage( $langCode ),
+				$services->getLanguageConverterFactory(),
+				$services->getSpecialPageFactory()
+			);
 		}
 
-		return LanguageData::getLocalData( $config, $lang );
+		return $langData->getLocalData();
 	}
 
 	/**

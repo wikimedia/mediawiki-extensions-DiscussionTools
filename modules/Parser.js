@@ -8,8 +8,6 @@ var
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
-	// LanguageData::getLocalData()
-	data = require( './parser/data.json' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
 /**
@@ -17,11 +15,22 @@ var
  * comments and threads.
  *
  * @class mw.dt.Parser
+ * @param {Array} data Language-specific data to be used for parsing
  * @constructor
+ */
+function Parser( data ) {
+	this.data = data;
+}
+
+/**
+ * Parse a discussion page.
+ *
  * @param {HTMLElement} rootNode Root node of content to parse
  * @param {mw.Title} title Title of the page being parsed
+ * @chainable
+ * @return {Parser}
  */
-function Parser( rootNode, title ) {
+Parser.prototype.parse = function ( rootNode, title ) {
 	this.rootNode = rootNode;
 	this.title = title;
 	this.threadItems = null;
@@ -29,7 +38,8 @@ function Parser( rootNode, title ) {
 	this.threadItemsByName = null;
 	this.threadItemsById = null;
 	this.threads = null;
-}
+	return this;
+};
 
 OO.initClass( Parser );
 
@@ -41,11 +51,12 @@ OO.initClass( Parser );
  * @param {string[]} messages Message keys
  * @return {string[]} Message values
  */
-function getMessages( contLangVariant, messages ) {
+Parser.prototype.getMessages = function ( contLangVariant, messages ) {
+	var parser = this;
 	return messages.map( function ( code ) {
-		return data.contLangMessages[ contLangVariant ][ code ];
+		return parser.data.contLangMessages[ contLangVariant ][ code ];
 	} );
-}
+};
 
 /**
  * Get a regexp that matches timestamps generated using the given date format.
@@ -72,6 +83,8 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 		return '(' + array.map( mw.util.escapeRegExp ).join( '|' ) + ')';
 	}
 
+	var parser = this;
+
 	var s = '';
 	// Adapted from Language::sprintfDate()
 	for ( var p = 0; p < format.length; p++ ) {
@@ -89,7 +102,7 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				s += 'x';
 				break;
 			case 'xg':
-				s += regexpAlternateGroup( getMessages( contLangVariant, [
+				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
 					'january-gen', 'february-gen', 'march-gen', 'april-gen', 'may-gen', 'june-gen',
 					'july-gen', 'august-gen', 'september-gen', 'october-gen', 'november-gen',
 					'december-gen'
@@ -99,7 +112,7 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				num = '2';
 				break;
 			case 'D':
-				s += regexpAlternateGroup( getMessages( contLangVariant, [
+				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
 					'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'
 				] ) );
 				break;
@@ -107,20 +120,20 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				num = '1,2';
 				break;
 			case 'l':
-				s += regexpAlternateGroup( getMessages( contLangVariant, [
+				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
 					'sunday', 'monday', 'tuesday', 'wednesday', 'thursday',
 					'friday', 'saturday'
 				] ) );
 				break;
 			case 'F':
-				s += regexpAlternateGroup( getMessages( contLangVariant, [
+				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
 					'january', 'february', 'march', 'april', 'may_long', 'june',
 					'july', 'august', 'september', 'october', 'november',
 					'december'
 				] ) );
 				break;
 			case 'M':
-				s += regexpAlternateGroup( getMessages( contLangVariant, [
+				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
 					'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
 					'sep', 'oct', 'nov', 'dec'
 				] ) );
@@ -257,6 +270,8 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 		);
 	}
 
+	var parser = this;
+
 	/**
 	 * @typedef {function(Array):moment} TimestampParser
 	 */
@@ -281,7 +296,7 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 
 			switch ( code2 ) {
 				case 'xg':
-					monthIdx = getMessages( contLangVariant, [
+					monthIdx = parser.getMessages( contLangVariant, [
 						'january-gen', 'february-gen', 'march-gen', 'april-gen', 'may-gen', 'june-gen',
 						'july-gen', 'august-gen', 'september-gen', 'october-gen', 'november-gen',
 						'december-gen'
@@ -296,14 +311,14 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 					// Day of the week - unused
 					break;
 				case 'F':
-					monthIdx = getMessages( contLangVariant, [
+					monthIdx = parser.getMessages( contLangVariant, [
 						'january', 'february', 'march', 'april', 'may_long', 'june',
 						'july', 'august', 'september', 'october', 'november',
 						'december'
 					] ).indexOf( text );
 					break;
 				case 'M':
-					monthIdx = getMessages( contLangVariant, [
+					monthIdx = parser.getMessages( contLangVariant, [
 						'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
 						'sep', 'oct', 'nov', 'dec'
 					] ).indexOf( text );
@@ -372,12 +387,12 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
  */
 Parser.prototype.getLocalTimestampRegexps = function () {
 	var parser = this;
-	return Object.keys( data.dateFormat ).map( function ( contLangVariant ) {
+	return Object.keys( this.data.dateFormat ).map( function ( contLangVariant ) {
 		return parser.getTimestampRegexp(
 			contLangVariant,
-			data.dateFormat[ contLangVariant ],
-			'[' + data.digits[ contLangVariant ].join( '' ) + ']',
-			data.timezones[ contLangVariant ]
+			parser.data.dateFormat[ contLangVariant ],
+			'[' + parser.data.digits[ contLangVariant ].join( '' ) + ']',
+			parser.data.timezones[ contLangVariant ]
 		);
 	} );
 };
@@ -393,13 +408,13 @@ Parser.prototype.getLocalTimestampRegexps = function () {
  */
 Parser.prototype.getLocalTimestampParsers = function () {
 	var parser = this;
-	return Object.keys( data.dateFormat ).map( function ( contLangVariant ) {
+	return Object.keys( this.data.dateFormat ).map( function ( contLangVariant ) {
 		return parser.getTimestampParser(
 			contLangVariant,
-			data.dateFormat[ contLangVariant ],
-			data.digits[ contLangVariant ],
-			data.localTimezone,
-			data.timezones[ contLangVariant ]
+			parser.data.dateFormat[ contLangVariant ],
+			parser.data.digits[ contLangVariant ],
+			parser.data.localTimezone,
+			parser.data.timezones[ contLangVariant ]
 		);
 	} );
 };
@@ -527,7 +542,7 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 		}
 	} else if (
 		namespaceId === namespaceIds.special &&
-		mainText.split( '/' )[ 0 ] === data.specialContributionsName
+		mainText.split( '/' )[ 0 ] === this.data.specialContributionsName
 	) {
 		username = mainText.split( '/' )[ 1 ];
 		if ( !username ) {
@@ -578,7 +593,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			if ( event === 'enter' && node === until ) {
 				return true;
 			}
-			if ( length >= data.signatureScanLimit ) {
+			if ( length >= parser.data.signatureScanLimit ) {
 				return true;
 			}
 			if ( utils.isBlockElement( node ) ) {

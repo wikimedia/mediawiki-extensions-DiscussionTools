@@ -68,6 +68,7 @@ if ( uri.query.dtdebug ) {
 module.exports = {
 	controller: controller,
 	Parser: require( './Parser.js' ),
+	parserData: require( './parser/data.json' ),
 	modifier: require( './modifier.js' ),
 	ThreadItem: require( './ThreadItem.js' ),
 	HeadingItem: require( './HeadingItem.js' ),

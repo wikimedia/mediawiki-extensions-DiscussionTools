@@ -1,9 +1,8 @@
 var
-	testUtils = require( './testUtils.js' ),
 	CommentItem = require( 'ext.discussionTools.init' ).CommentItem,
 	HeadingItem = require( 'ext.discussionTools.init' ).HeadingItem;
 
-QUnit.module( 'mw.dt.ThreadItem', testUtils.newEnvironment() );
+QUnit.module( 'mw.dt.ThreadItem', QUnit.newMwEnvironment() );
 
 QUnit.test( '#getAuthorsBelow', function ( assert ) {
 	var cases = require( '../cases/authors.json' );

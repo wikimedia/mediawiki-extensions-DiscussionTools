@@ -623,7 +623,7 @@ function init( $container, state ) {
 
 	$pageContainer = $container;
 	linksController = new ReplyLinksController( $pageContainer );
-	var parser = new Parser(
+	var parser = new Parser( require( './parser/data.json' ) ).parse(
 		$pageContainer[ 0 ],
 		mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
 	);

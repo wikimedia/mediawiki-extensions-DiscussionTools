@@ -5,17 +5,16 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 use DateTimeImmutable;
 use Error;
 use MediaWiki\Extension\DiscussionTools\CommentItem;
-use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
+use MediaWiki\MediaWikiServices;
 use stdClass;
 use Title;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -114,10 +113,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $format, string $expected, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState(
-				DOMCompat::getBody( DOMUtils::parseHTML( '' ) ),
-				Title::newFromText( 'Dummy' )
-			)
+			MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
 		);
 
 		// HACK: Fix differences between JS & PHP regexes
@@ -142,10 +138,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $format, array $data, string $expected, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState(
-				DOMCompat::getBody( DOMUtils::parseHTML( '' ) ),
-				Title::newFromText( 'Dummy' )
-			)
+			MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
 		);
 
 		$expected = new DateTimeImmutable( $expected );
@@ -167,10 +160,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $timezone, array $timezoneAbbrs, string $message
 	): void {
 		$parser = TestingAccessWrapper::newFromObject(
-			CommentParser::newFromGlobalState(
-				DOMCompat::getBody( DOMUtils::parseHTML( '' ) ),
-				Title::newFromText( 'Dummy' )
-			)
+			MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
 		);
 
 		$regexp = $parser->getTimestampRegexp( 'en', $format, '\\d', $timezoneAbbrs );
@@ -208,7 +198,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$body = DOMCompat::getBody( $doc );
 
 		$this->setupEnv( $config, $data );
-		$parser = self::createParser( $body, $title, $data );
+		$parser = self::createParser( $data )->parse( $body, $title );
 		$threads = $parser->getThreads();
 
 		$processedThreads = [];

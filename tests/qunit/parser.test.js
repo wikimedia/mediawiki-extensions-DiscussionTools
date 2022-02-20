@@ -1,16 +1,13 @@
 /* global moment */
 var
 	testUtils = require( './testUtils.js' ),
-	Parser = require( 'ext.discussionTools.init' ).Parser,
-	dummyTitle = mw.Title.newFromText( 'Dummy' );
+	Parser = require( 'ext.discussionTools.init' ).Parser;
 
-QUnit.module( 'mw.dt.Parser', testUtils.newEnvironment() );
+QUnit.module( 'mw.dt.Parser', QUnit.newMwEnvironment() );
 
 QUnit.test( '#getTimestampRegexp', function ( assert ) {
 	var cases = require( '../cases/timestamp-regex.json' ),
-		parser = new Parser( document.createElement( 'div' ), dummyTitle );
-
-	testUtils.overrideParserData( require( '../data-en.json' ) );
+		parser = new Parser( require( '../data-en.json' ) );
 
 	cases.forEach( function ( caseItem ) {
 		assert.strictEqual(
@@ -23,9 +20,7 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 
 QUnit.test( '#getTimestampParser', function ( assert ) {
 	var cases = require( '../cases/timestamp-parser.json' ),
-		parser = new Parser( document.createElement( 'div' ), dummyTitle );
-
-	testUtils.overrideParserData( require( '../data-en.json' ) );
+		parser = new Parser( require( '../data-en.json' ) );
 
 	cases.forEach( function ( caseItem ) {
 		var tsParser = parser.getTimestampParser( 'en', caseItem.format, null, 'UTC', { UTC: 'UTC' } ),
@@ -40,9 +35,7 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 
 QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 	var cases = require( '../cases/timestamp-parser-dst.json' ),
-		parser = new Parser( document.createElement( 'div' ), dummyTitle );
-
-	testUtils.overrideParserData( require( '../data-en.json' ) );
+		parser = new Parser( require( '../data-en.json' ) );
 
 	cases.forEach( function ( caseItem ) {
 		var regexp = parser.getTimestampRegexp( 'en', caseItem.format, '\\d', caseItem.timezoneAbbrs ),
@@ -80,9 +73,8 @@ QUnit.test( '#getThreads', function ( assert ) {
 
 		$( fixture ).empty().append( $dom );
 		testUtils.overrideMwConfig( config );
-		testUtils.overrideParserData( data );
 
-		var parser = new Parser( fixture, title );
+		var parser = new Parser( data ).parse( fixture, title );
 		var threads = parser.getThreads();
 
 		threads.forEach( function ( thread, i ) {

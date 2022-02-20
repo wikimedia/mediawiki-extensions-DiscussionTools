@@ -11,7 +11,6 @@ use ParserOutput;
 use Throwable;
 use Title;
 use WebRequest;
-use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
@@ -28,12 +27,10 @@ class CommentFormatter {
 	 *
 	 * This method exists so it can mocked in tests.
 	 *
-	 * @param Element $container
-	 * @param Title $title
 	 * @return CommentParser
 	 */
-	protected static function getParser( Element $container, Title $title ): CommentParser {
-		return CommentParser::newFromGlobalState( $container, $title );
+	protected static function getParser(): CommentParser {
+		return MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' );
 	}
 
 	/**
@@ -90,7 +87,7 @@ class CommentFormatter {
 		$doc = DOMUtils::parseHTML( $html );
 		$container = DOMCompat::getBody( $doc );
 
-		$parser = static::getParser( $container, $title );
+		$parser = static::getParser()->parse( $container, $title );
 		$threadItems = $parser->getThreadItems();
 
 		// Iterate in reverse order, because adding the range markers for a thread item

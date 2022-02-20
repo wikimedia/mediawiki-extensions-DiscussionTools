@@ -13,26 +13,53 @@ use Config;
 use DateTimeZone;
 use ILanguageConverter;
 use Language;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Languages\LanguageConverterFactory;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 
 class LanguageData {
+	/** @var Config */
+	private $config;
+	/** @var Language */
+	private $language;
+	/** @var LanguageConverterFactory */
+	private $languageConverterFactory;
+	/** @var SpecialPageFactory */
+	private $specialPageFactory;
+
+	/**
+	 * @param Config $config
+	 * @param Language $language
+	 * @param LanguageConverterFactory $languageConverterFactory
+	 * @param SpecialPageFactory $specialPageFactory
+	 */
+	public function __construct(
+		Config $config,
+		Language $language,
+		LanguageConverterFactory $languageConverterFactory,
+		SpecialPageFactory $specialPageFactory
+	) {
+		$this->config = $config;
+		$this->language = $language;
+		$this->languageConverterFactory = $languageConverterFactory;
+		$this->specialPageFactory = $specialPageFactory;
+	}
+
 	/**
 	 * Compute data we need to parse discussion threads on pages.
 	 *
-	 * @param Config $config
-	 * @param Language $lang
 	 * @return array
 	 */
-	public static function getLocalData( Config $config, Language $lang ): array {
-		$langConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
-			->getLanguageConverter( $lang );
+	public function getLocalData(): array {
+		$config = $this->config;
+		$lang = $this->language;
+		$langConv = $this->languageConverterFactory->getLanguageConverter( $lang );
 
 		$data = [];
 
 		$data['dateFormat'] = [];
 		$dateFormat = $lang->getDateFormatString( 'both', $lang->dateFormat( false ) );
 		foreach ( $langConv->getVariants() as $variant ) {
-			$convDateFormat = self::convertDateFormat( $dateFormat, $langConv, $variant );
+			$convDateFormat = $this->convertDateFormat( $dateFormat, $langConv, $variant );
 			$data['dateFormat'][$variant] = $convDateFormat;
 		}
 
@@ -53,10 +80,10 @@ class LanguageData {
 		// ApiQuerySiteinfo
 		$data['localTimezone'] = $config->get( 'Localtimezone' );
 
-		$data['specialContributionsName'] = MediaWikiServices::getInstance()
-			->getSpecialPageFactory()->getLocalNameFor( 'Contributions' );
-		$data['specialNewSectionName'] = MediaWikiServices::getInstance()
-			->getSpecialPageFactory()->getLocalNameFor( 'NewSection' );
+		$data['specialContributionsName'] = $this->specialPageFactory
+			->getLocalNameFor( 'Contributions' );
+		$data['specialNewSectionName'] = $this->specialPageFactory
+			->getLocalNameFor( 'NewSection' );
 
 		$localTimezone = $config->get( 'Localtimezone' );
 		// Return all timezone abbreviations for the local timezone (there will often be two, for
@@ -128,7 +155,7 @@ class LanguageData {
 	 * @param string $variant
 	 * @return string
 	 */
-	private static function convertDateFormat(
+	private function convertDateFormat(
 		string $format,
 		ILanguageConverter $langConv,
 		string $variant

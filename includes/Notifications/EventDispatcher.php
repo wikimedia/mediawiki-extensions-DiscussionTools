@@ -69,7 +69,8 @@ class EventDispatcher {
 
 		$doc = DOMUtils::parseHTML( $html );
 		$container = DOMCompat::getBody( $doc );
-		return CommentParser::newFromGlobalState( $container, $title );
+		$parser = $services->getService( 'DiscussionTools.CommentParser' );
+		return $parser->parse( $container, $title );
 	}
 
 	/**
@@ -104,7 +105,8 @@ class EventDispatcher {
 			// Page creation
 			$doc = DOMUtils::parseHTML( '' );
 			$container = DOMCompat::getBody( $doc );
-			$oldParser = CommentParser::newFromGlobalState( $container, $title );
+			$oldParser = $services->getService( 'DiscussionTools.CommentParser' )
+				->parse( $container, $title );
 		}
 		$newParser = self::getParsedRevision( $newRevRecord );
 
