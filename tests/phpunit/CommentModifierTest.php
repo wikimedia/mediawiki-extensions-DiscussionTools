@@ -39,11 +39,9 @@ class CommentModifierTest extends IntegrationTestCase {
 		$parser = self::createParser( $container, $title, $data );
 		$comments = $parser->getCommentItems();
 
-		$nodes = [];
 		foreach ( $comments as $comment ) {
 			$node = CommentModifier::addListItem( $comment, $replyIndentation );
 			$node->textContent = 'Reply to ' . $comment->getId();
-			$nodes[] = $node;
 		}
 
 		$expectedDoc = self::createDocument( $expected );

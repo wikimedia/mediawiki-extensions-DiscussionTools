@@ -20,7 +20,6 @@ use Wikimedia\Parsoid\DOM\Text;
  * setStart and setEnd are still available but return a cloned range.
  */
 class ImmutableRange {
-	private $mCollapsed;
 	private $mCommonAncestorContainer;
 	private $mEndContainer;
 	private $mEndOffset;
@@ -544,6 +543,9 @@ class ImmutableRange {
 
 			case 'after':
 				return 1;
+
+			default:
+				throw new Error();
 		}
 	}
 }

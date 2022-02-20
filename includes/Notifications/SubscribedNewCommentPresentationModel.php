@@ -118,6 +118,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 		if ( !$this->isBundled() ) {
 			return new RawMessage( '$1', [ Message::plaintextParam( $this->getContentSnippet() ) ] );
 		}
+		return false;
 	}
 
 	/**
