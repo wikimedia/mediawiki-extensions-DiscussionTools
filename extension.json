@@ -66,6 +66,7 @@
 				"modifier.js",
 				"utils.js",
 				"Parser.js",
+				"ThreadItemSet.js",
 				"ThreadItem.js",
 				"CommentItem.js",
 				"HeadingItem.js",

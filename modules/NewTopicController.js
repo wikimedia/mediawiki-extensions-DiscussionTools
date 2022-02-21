@@ -9,9 +9,9 @@ var
  * Handles setup, save and teardown of new topic widget
  *
  * @param {jQuery} $pageContainer Page container
- * @param {mw.dt.Parser} parser Comment parser
+ * @param {ThreadItemSet} threadItemSet
  */
-function NewTopicController( $pageContainer, parser ) {
+function NewTopicController( $pageContainer, threadItemSet ) {
 	this.container = new OO.ui.PanelLayout( {
 		classes: [ 'ext-discussiontools-ui-newTopic' ],
 		expanded: false,
@@ -45,7 +45,7 @@ function NewTopicController( $pageContainer, parser ) {
 	threadItem.id = utils.NEW_TOPIC_COMMENT_ID;
 	threadItem.isNewTopic = true;
 
-	NewTopicController.super.call( this, $pageContainer, threadItem, parser );
+	NewTopicController.super.call( this, $pageContainer, threadItem, threadItemSet );
 }
 
 OO.inheritClass( NewTopicController, CommentController );

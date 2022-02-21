@@ -19,7 +19,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideGenerateCases
-	 * @covers ::generateEventsFromParsers
+	 * @covers ::generateEventsFromItemSets
 	 */
 	public function testGenerateEventsFromParsers(
 		string $rev1, string $rev2, string $authorUsername, string $other, string $expected
@@ -40,8 +40,9 @@ class EventDispatcherTest extends IntegrationTestCase {
 
 		$dummyTitle = Title::newFromText( 'Dummy' );
 		$this->setupEnv( $config, $data );
-		$parser1 = self::createParser( $data )->parse( $body1, $dummyTitle );
-		$parser2 = self::createParser( $data )->parse( $body2, $dummyTitle );
+		$parser = self::createParser( $data );
+		$itemSet1 = $parser->parse( $body1, $dummyTitle );
+		$itemSet2 = $parser->parse( $body2, $dummyTitle );
 
 		$events = self::getJson( $other, true );
 
@@ -50,8 +51,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 		$fakeRevRecord = new MutableRevisionRecord( $fakeTitle );
 		// All mock comments are posted between 00:00 and 00:10 on 2020-01-01
 		$fakeRevRecord->setTimestamp( ( new DateTimeImmutable( '2020-01-01T00:10' ) )->format( 'c' ) );
-		MockEventDispatcher::generateEventsFromParsers(
-			$events, $parser1, $parser2, $fakeRevRecord, $fakeTitle, $fakeUser
+		MockEventDispatcher::generateEventsFromItemSets(
+			$events, $itemSet1, $itemSet2, $fakeRevRecord, $fakeTitle, $fakeUser
 		);
 
 		foreach ( $events as &$event ) {
@@ -68,8 +69,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 		// Assert that no events are generated for comments saved >10 minutes after their timestamps
 		$events = self::getJson( $other, true );
 		$fakeRevRecord->setTimestamp( ( new DateTimeImmutable( '2020-01-01T00:20' ) )->format( 'c' ) );
-		MockEventDispatcher::generateEventsFromParsers(
-			$events, $parser1, $parser2, $fakeRevRecord, $fakeTitle, $fakeUser
+		MockEventDispatcher::generateEventsFromItemSets(
+			$events, $itemSet1, $itemSet2, $fakeRevRecord, $fakeTitle, $fakeUser
 		);
 
 		foreach ( $events as &$event ) {

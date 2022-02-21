@@ -8,6 +8,7 @@ var
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
+	ThreadItemSet = require( './ThreadItemSet.js' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
 /**
@@ -33,12 +34,12 @@ function Parser( data ) {
 Parser.prototype.parse = function ( rootNode, title ) {
 	this.rootNode = rootNode;
 	this.title = title;
-	this.threadItems = null;
-	this.commentItems = null;
-	this.threadItemsByName = null;
-	this.threadItemsById = null;
-	this.threads = null;
-	return this;
+
+	var result = this.buildThreadItems();
+	this.buildThreads( result );
+	this.computeIdsAndNames( result );
+
+	return result;
 };
 
 OO.initClass( Parser );
@@ -703,89 +704,6 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 };
 
 /**
- * Get all discussion comments (and headings) within a DOM subtree.
- *
- * This returns a flat list, use #getThreads to get a tree structure starting at section headings.
- *
- * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here, the wikitext
- * syntax is just for illustration):
- *
- *     == A ==
- *     B. ~~~~
- *     : C.
- *     : C. ~~~~
- *     :: D. ~~~~
- *     ::: E. ~~~~
- *     ::: F. ~~~~
- *     : G. ~~~~
- *     H. ~~~~
- *     : I. ~~~~
- *
- * This function would return a structure like:
- *
- *     [
- *       HeadingItem( { level: 0, range: (h2: A)        } ),
- *       CommentItem( { level: 1, range: (p: B)         } ),
- *       CommentItem( { level: 2, range: (li: C, li: C) } ),
- *       CommentItem( { level: 3, range: (li: D)        } ),
- *       CommentItem( { level: 4, range: (li: E)        } ),
- *       CommentItem( { level: 4, range: (li: F)        } ),
- *       CommentItem( { level: 2, range: (li: G)        } ),
- *       CommentItem( { level: 1, range: (p: H)         } ),
- *       CommentItem( { level: 2, range: (li: I)        } )
- *     ]
- *
- * @return {ThreadItem[]} Thread items
- */
-Parser.prototype.getThreadItems = function () {
-	if ( !this.threadItems ) {
-		this.buildThreads();
-	}
-	return this.threadItems;
-};
-
-/**
- * Same as getFlatThreadItems, but only returns the CommentItems
- *
- * @return {CommentItem[]} Comment items
- */
-Parser.prototype.getCommentItems = function () {
-	if ( !this.commentItems ) {
-		this.buildThreads();
-	}
-	return this.commentItems;
-};
-
-/**
- * Find ThreadItems by their name
- *
- * This will usually return a single-element array, but it may return multiple comments if they're
- * indistinguishable by name. In that case, use their IDs to disambiguate.
- *
- * @param {string} name Name
- * @return {ThreadItem[]} Thread items, empty array if not found
- */
-Parser.prototype.findCommentsByName = function ( name ) {
-	if ( !this.threadItemsByName ) {
-		this.buildThreads();
-	}
-	return this.threadItemsByName[ name ] || [];
-};
-
-/**
- * Find a ThreadItem by its ID
- *
- * @param {string} id ID
- * @return {ThreadItem|null} Thread item, null if not found
- */
-Parser.prototype.findCommentById = function ( id ) {
-	if ( !this.threadItemsById ) {
-		this.buildThreads();
-	}
-	return this.threadItemsById[ id ] || null;
-};
-
-/**
  * @param {Node[]} sigNodes
  * @param {Object} match
  * @param {Text} node
@@ -808,12 +726,15 @@ function adjustSigRange( sigNodes, match, node ) {
 	return sigRange;
 }
 
+/**
+ * @return {ThreadItemSet}
+ */
 Parser.prototype.buildThreadItems = function () {
+	var result = new ThreadItemSet();
+
 	var
 		dfParsers = this.getLocalTimestampParsers(),
-		timestampRegexps = this.getLocalTimestampRegexps(),
-		commentItems = [],
-		threadItems = [];
+		timestampRegexps = this.getLocalTimestampRegexps();
 
 	var treeWalker = this.rootNode.ownerDocument.createTreeWalker(
 		this.rootNode,
@@ -823,18 +744,8 @@ Parser.prototype.buildThreadItems = function () {
 		false
 	);
 
-	// Placeholder heading in case there are comments in the 0th section
-	var range = {
-		startContainer: this.rootNode,
-		startOffset: 0,
-		endContainer: this.rootNode,
-		endOffset: 0
-	};
-	var fakeHeading = new HeadingItem( range, 99, true );
-	fakeHeading.rootNode = this.rootNode;
-
-	var curComment = fakeHeading;
-	var curCommentEnd = range.endContainer;
+	var curComment, range;
+	var curCommentEnd = this.rootNode;
 
 	var node, lastSigNode;
 	while ( ( node = treeWalker.nextNode() ) ) {
@@ -851,7 +762,7 @@ Parser.prototype.buildThreadItems = function () {
 			};
 			curComment = new HeadingItem( range, +match[ 1 ] );
 			curComment.rootNode = this.rootNode;
-			threadItems.push( curComment );
+			result.addThreadItem( curComment );
 			curCommentEnd = node;
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegexps ) ) ) {
 			var warnings = [];
@@ -945,70 +856,25 @@ Parser.prototype.buildThreadItems = function () {
 			if ( warnings.length ) {
 				curComment.warnings = warnings;
 			}
-			commentItems.push( curComment );
-			threadItems.push( curComment );
+			if ( result.isEmpty() ) {
+				// Add a fake placeholder heading if there are any comments in the 0th section
+				// (before the first real heading)
+				range = {
+					startContainer: this.rootNode,
+					startOffset: 0,
+					endContainer: this.rootNode,
+					endOffset: 0
+				};
+				var fakeHeading = new HeadingItem( range, 99, true );
+				fakeHeading.rootNode = this.rootNode;
+				result.addThreadItem( fakeHeading );
+			}
+			result.addThreadItem( curComment );
 			curCommentEnd = curComment.range.endContainer;
 		}
 	}
 
-	// Insert the fake placeholder heading if there are any comments in the 0th section
-	// (before the first real heading)
-	if ( threadItems.length && !( threadItems[ 0 ] instanceof HeadingItem ) ) {
-		threadItems.unshift( fakeHeading );
-	}
-
-	this.commentItems = commentItems;
-	this.threadItems = threadItems;
-};
-
-/**
- * Group discussion comments into threads and associate replies to original messages.
- *
- * Each thread must begin with a heading. Original messages in the thread are treated as replies to
- * its heading. Other replies are associated based on the order and indentation level.
- *
- * Note that the objects in `comments` are extended in-place with the additional data.
- *
- * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here, the wikitext
- * syntax is just for illustration):
- *
- *     == A ==
- *     B. ~~~~
- *     : C.
- *     : C. ~~~~
- *     :: D. ~~~~
- *     ::: E. ~~~~
- *     ::: F. ~~~~
- *     : G. ~~~~
- *     H. ~~~~
- *     : I. ~~~~
- *
- * This function would return a structure like:
- *
- *     [
- *       HeadingItem( { level: 0, range: (h2: A), replies: [
- *         CommentItem( { level: 1, range: (p: B), replies: [
- *           CommentItem( { level: 2, range: (li: C, li: C), replies: [
- *             CommentItem( { level: 3, range: (li: D), replies: [
- *               CommentItem( { level: 4, range: (li: E), replies: [] } ),
- *               CommentItem( { level: 4, range: (li: F), replies: [] } ),
- *             ] } ),
- *           ] } ),
- *           CommentItem( { level: 2, range: (li: G), replies: [] } ),
- *         ] } ),
- *         CommentItem( { level: 1, range: (p: H), replies: [
- *           CommentItem( { level: 2, range: (li: I), replies: [] } ),
- *         ] } ),
- *       ] } )
- *     ]
- *
- * @return {HeadingItem[]} Tree structure of comments, top-level items are the headings.
- */
-Parser.prototype.getThreads = function () {
-	if ( !this.threads ) {
-		this.buildThreads();
-	}
-	return this.threads;
+	return result;
 };
 
 /**
@@ -1025,9 +891,10 @@ Parser.prototype.truncateForId = function ( text ) {
  * Given a thread item, return an identifier for it that is unique within the page.
  *
  * @param {ThreadItem} threadItem
+ * @param {ThreadItemSet} previousItems
  * @return {string}
  */
-Parser.prototype.computeId = function ( threadItem ) {
+Parser.prototype.computeId = function ( threadItem, previousItems ) {
 	var id, headline;
 
 	if ( threadItem instanceof HeadingItem && threadItem.placeholderHeading ) {
@@ -1063,12 +930,12 @@ Parser.prototype.computeId = function ( threadItem ) {
 		}
 	}
 
-	if ( this.threadItemsById[ id ] ) {
+	if ( previousItems.findCommentById( id ) ) {
 		// Well, that's tough
 		threadItem.warnings.push( 'Duplicate comment ID' );
 		// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
 		var number = 1;
-		while ( this.threadItemsById[ id + '-' + number ] ) {
+		while ( previousItems.findCommentById( id + '-' + number ) ) {
 			number++;
 		}
 		id = id + '-' + number;
@@ -1107,22 +974,16 @@ Parser.prototype.computeName = function ( threadItem ) {
 	return name;
 };
 
-Parser.prototype.buildThreads = function () {
-	var
-		threads = [],
-		replies = [];
-
-	if ( !this.threadItems ) {
-		this.buildThreadItems();
-	}
-
-	this.threadItemsById = {};
-	this.threadItemsByName = {};
+/**
+ * @param {ThreadItemSet} result
+ */
+Parser.prototype.buildThreads = function ( result ) {
+	var lastHeading = null;
+	var replies = [];
 
 	var i, threadItem;
-
-	for ( i = 0; i < this.threadItems.length; i++ ) {
-		threadItem = this.threadItems[ i ];
+	for ( i = 0; i < result.threadItems.length; i++ ) {
+		threadItem = result.threadItems[ i ];
 
 		if ( replies.length < threadItem.level ) {
 			// Someone skipped an indentation level (or several). Pretend that the previous reply
@@ -1135,10 +996,9 @@ Parser.prototype.buildThreads = function () {
 
 		if ( threadItem instanceof HeadingItem ) {
 			// New root (thread)
-			threads.push( threadItem );
 			// Attach as a sub-thread to preceding higher-level heading.
 			// Any replies will appear in the tree twice, under the main-thread and the sub-thread.
-			var maybeParent = threads.length > 1 ? threads[ threads.length - 2 ] : null;
+			var maybeParent = lastHeading;
 			while ( maybeParent && maybeParent.headingLevel >= threadItem.headingLevel ) {
 				maybeParent = maybeParent.parent;
 			}
@@ -1146,6 +1006,7 @@ Parser.prototype.buildThreads = function () {
 				threadItem.parent = maybeParent;
 				maybeParent.replies.push( threadItem );
 			}
+			lastHeading = threadItem;
 		} else if ( replies[ threadItem.level - 1 ] ) {
 			// Add as a reply to the closest less-nested comment
 			threadItem.parent = replies[ threadItem.level - 1 ];
@@ -1158,25 +1019,27 @@ Parser.prototype.buildThreads = function () {
 		// Cut off more deeply nested replies
 		replies.length = threadItem.level + 1;
 	}
+};
 
-	this.threads = threads;
-
-	for ( i = 0; i < this.threadItems.length; i++ ) {
-		threadItem = this.threadItems[ i ];
+/**
+ * Set the IDs and names used to refer to comments and headings.
+ * This has to be a separate pass because we don't have the list of replies before
+ * this point.
+ *
+ * @param {ThreadItemSet} result
+ */
+Parser.prototype.computeIdsAndNames = function ( result ) {
+	var i, threadItem;
+	for ( i = 0; i < result.threadItems.length; i++ ) {
+		threadItem = result.threadItems[ i ];
 
 		var name = this.computeName( threadItem );
 		threadItem.name = name;
-		if ( !this.threadItemsByName[ name ] ) {
-			this.threadItemsByName[ name ] = [];
-		}
-		this.threadItemsByName[ name ].push( threadItem );
 
-		// Set the IDs used to refer to comments and headings.
-		// This has to be a separate pass because we don't have the list of replies before
-		// this point.
-		var id = this.computeId( threadItem );
+		var id = this.computeId( threadItem, result );
 		threadItem.id = id;
-		this.threadItemsById[ id ] = threadItem;
+
+		result.updateIdAndNameMaps( threadItem );
 	}
 };
 

@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher;
+use MediaWiki\Extension\DiscussionTools\ThreadItemSet;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
@@ -19,24 +19,24 @@ class MockEventDispatcher extends EventDispatcher {
 	 * ... expected to be a reference, value given").
 	 *
 	 * @param array &$events
-	 * @param CommentParser $oldParser
-	 * @param CommentParser $newParser
+	 * @param ThreadItemSet $oldItemSet
+	 * @param ThreadItemSet $newItemSet
 	 * @param RevisionRecord $newRevRecord
 	 * @param PageIdentity $title
 	 * @param UserIdentity $user
 	 */
-	public static function generateEventsFromParsers(
+	public static function generateEventsFromItemSets(
 		array &$events,
-		CommentParser $oldParser,
-		CommentParser $newParser,
+		ThreadItemSet $oldItemSet,
+		ThreadItemSet $newItemSet,
 		RevisionRecord $newRevRecord,
 		PageIdentity $title,
 		UserIdentity $user
 	): void {
-		parent::generateEventsFromParsers(
+		parent::generateEventsFromItemSets(
 			$events,
-			$oldParser,
-			$newParser,
+			$oldItemSet,
+			$newItemSet,
 			$newRevRecord,
 			$title,
 			$user

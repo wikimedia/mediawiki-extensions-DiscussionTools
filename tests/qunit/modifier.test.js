@@ -25,8 +25,8 @@ require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
 		$( fixture ).empty().append( dom );
 		var reverseExpectedHtml = fixture.innerHTML;
 
-		var parser = new Parser( data ).parse( fixture, title );
-		var comments = parser.getCommentItems();
+		var threadItemSet = new Parser( data ).parse( fixture, title );
+		var comments = threadItemSet.getCommentItems();
 
 		// Add a reply to every comment. Note that this inserts *all* of the replies, unlike the real
 		// thing, which only deals with one at a time. This isn't ideal but resetting everything after
@@ -81,8 +81,8 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 
 		$( fixture ).empty().append( dom );
 
-		var parser = new Parser( data ).parse( fixture, title );
-		var comments = parser.getCommentItems();
+		var threadItemSet = new Parser( data ).parse( fixture, title );
+		var comments = threadItemSet.getCommentItems();
 
 		// Add a reply link to every comment.
 		comments.forEach( function ( comment ) {

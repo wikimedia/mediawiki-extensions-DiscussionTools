@@ -32,8 +32,8 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		}
 
 		$revision = $this->getValidRevision( $title, $params['oldid'] ?? null );
-		$parser = $this->parseRevision( $revision );
-		$threadItems = $parser->getThreadItems();
+		$threadItemSet = $this->parseRevision( $revision );
+		$threadItems = $threadItemSet->getThreadItems();
 
 		$transcludedFrom = [];
 		foreach ( $threadItems as $threadItem ) {

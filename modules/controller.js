@@ -8,7 +8,7 @@ var
 	MemoryStorage = require( './MemoryStorage.js' ),
 	storage = new MemoryStorage( mw.storage.session.store ),
 	Parser = require( './Parser.js' ),
-	ThreadItem = require( './ThreadItem.js' ),
+	ThreadItemSet = require( './ThreadItemSet.js' ),
 	CommentItem = require( './CommentItem.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
 	ReplyLinksController = require( './ReplyLinksController.js' ),
@@ -516,10 +516,10 @@ var $highlightedTarget = null;
 /**
  * Highlight the comment on the page associated with the URL hash
  *
- * @param {mw.dt.Parser} parser Comment parser
+ * @param {ThreadItemSet} threadItemSet
  * @param {boolean} [noScroll] Don't scroll to the topmost highlighted comment, e.g. on popstate
  */
-function highlightTargetComment( parser, noScroll ) {
+function highlightTargetComment( threadItemSet, noScroll ) {
 	// Delay with setTimeout() because "the Document's target element" (corresponding to the :target
 	// selector in CSS) is not yet updated to match the URL when handling a 'popstate' event.
 	setTimeout( function () {
@@ -539,13 +539,13 @@ function highlightTargetComment( parser, noScroll ) {
 		}
 		var targetIds = uri && uri.query.dtnewcomments && uri.query.dtnewcomments.split( '|' );
 		if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
-			var comment = parser.findCommentById( targetElement.getAttribute( 'id' ) );
+			var comment = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
 			$highlightedTarget = highlight( comment );
 			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
 			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
 		} else if ( targetIds ) {
 			var comments = targetIds.map( function ( id ) {
-				return parser.findCommentById( id );
+				return threadItemSet.findCommentById( id );
 			} ).filter( function ( cmt ) {
 				return !!cmt;
 			} );
@@ -576,9 +576,9 @@ function highlightTargetComment( parser, noScroll ) {
 /**
  * Clear the highlighting of the comment in the URL hash
  *
- * @param {mw.dt.Parser} parser Comment parser
+ * @param {ThreadItemSet} threadItemSet
  */
-function clearHighlightTargetComment( parser ) {
+function clearHighlightTargetComment( threadItemSet ) {
 	// eslint-disable-next-line no-jquery/no-global-selector
 	var targetElement = $( ':target' )[ 0 ];
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
@@ -597,7 +597,7 @@ function clearHighlightTargetComment( parser ) {
 	} else if ( window.location.search.match( /(^\?|&)dtnewcomments=/ ) ) {
 		history.pushState( null, document.title,
 			window.location.search.replace( /(^\?|&)dtnewcomments=[^&]+/, '' ) + window.location.hash );
-		highlightTargetComment( parser );
+		highlightTargetComment( threadItemSet );
 	}
 }
 
@@ -614,65 +614,17 @@ function init( $container, state ) {
 		activeController = null,
 		// Loads later to avoid circular dependency
 		CommentController = require( './CommentController.js' ),
-		NewTopicController = require( './NewTopicController.js' ),
-		threadItemsById = {},
-		threadItems = [];
+		NewTopicController = require( './NewTopicController.js' );
 
 	// Lazy-load postEdit module, may be required later (on desktop)
 	mw.loader.using( 'mediawiki.action.view.postEdit' );
 
 	$pageContainer = $container;
 	linksController = new ReplyLinksController( $pageContainer );
-	var parser = new Parser( require( './parser/data.json' ) ).parse(
-		$pageContainer[ 0 ],
-		mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) )
-	);
+	var parser = new Parser( require( './parser/data.json' ) );
 
-	var pageThreads = [];
 	var commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
-	threadItems.length = commentNodes.length;
-
-	// The page can be served from the HTTP cache (Varnish), containing data-mw-comment generated
-	// by an older version of our PHP code. Code below must be able to handle that.
-	// See CommentFormatter::addDiscussionTools() in PHP.
-
-	// Iterate over commentNodes backwards so replies are always deserialized before their parents.
-	var i, comment;
-	for ( i = commentNodes.length - 1; i >= 0; i-- ) {
-		var hash = JSON.parse( commentNodes[ i ].getAttribute( 'data-mw-comment' ) );
-		comment = ThreadItem.static.newFromJSON( hash, threadItemsById );
-		if ( !comment.name ) {
-			comment.name = parser.computeName( comment );
-		}
-
-		threadItemsById[ comment.id ] = comment;
-
-		if ( comment.type === 'heading' ) {
-			// Use unshift as we are in a backwards loop
-			pageThreads.unshift( comment );
-		}
-		threadItems[ i ] = comment;
-	}
-
-	// Recalculate legacy IDs
-	parser.threadItemsByName = {};
-	parser.threadItemsById = {};
-	// In the forward order this time, as the IDs for indistinguishable comments depend on it
-	for ( i = 0; i < threadItems.length; i++ ) {
-		comment = threadItems[ i ];
-
-		if ( !parser.threadItemsByName[ comment.name ] ) {
-			parser.threadItemsByName[ comment.name ] = [];
-		}
-		parser.threadItemsByName[ comment.name ].push( comment );
-
-		var newId = parser.computeId( comment );
-		parser.threadItemsById[ newId ] = comment;
-		if ( newId !== comment.id ) {
-			comment.id = newId;
-			threadItemsById[ newId ] = comment;
-		}
-	}
+	var result = ThreadItemSet.static.newFromAnnotatedNodes( commentNodes, parser );
 
 	if ( featuresEnabled.topicsubscription ) {
 		initTopicSubscriptions( $container );
@@ -693,9 +645,9 @@ function init( $container, state ) {
 			$addSectionLink = $( '#ca-addsection a' );
 			// When opening new topic tool using any link, always activate the link in page tabs too
 			$link = $link.add( $addSectionLink );
-			commentController = new NewTopicController( $pageContainer, parser );
+			commentController = new NewTopicController( $pageContainer, result );
 		} else {
-			commentController = new CommentController( $pageContainer, parser.findCommentById( commentId ), parser );
+			commentController = new CommentController( $pageContainer, result.findCommentById( commentId ), result );
 		}
 
 		activeCommentId = commentId;
@@ -749,8 +701,8 @@ function init( $container, state ) {
 	// Restore autosave
 	( function () {
 		var mode, $link;
-		for ( i = 0; i < threadItems.length; i++ ) {
-			comment = threadItems[ i ];
+		for ( var i = 0; i < result.threadItems.length; i++ ) {
+			var comment = result.threadItems[ i ];
 			if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
 				mode = storage.get( 'reply/' + comment.id + '/mode' );
 				$link = $( commentNodes[ i ] );
@@ -767,7 +719,7 @@ function init( $container, state ) {
 	}() );
 
 	// For debugging (now unused in the code)
-	mw.dt.pageThreads = pageThreads;
+	mw.dt.pageThreads = result;
 
 	var promise = OO.ui.isMobile() && mw.loader.getState( 'mobile.init' ) ?
 		mw.loader.using( 'mobile.init' ) :
@@ -777,7 +729,7 @@ function init( $container, state ) {
 		var $highlight;
 		if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
 			// Highlight the last comment on the page
-			var lastComment = threadItems[ threadItems.length - 1 ];
+			var lastComment = result.threadItems[ result.threadItems.length - 1 ];
 			$highlight = highlight( lastComment );
 			lastHighlightComment = lastComment;
 
@@ -798,7 +750,7 @@ function init( $container, state ) {
 
 		} else if ( state.repliedTo ) {
 			// Find the comment we replied to, then highlight the last reply
-			var repliedToComment = threadItemsById[ state.repliedTo ];
+			var repliedToComment = result.threadItemsById[ state.repliedTo ];
 			$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 			lastHighlightComment = repliedToComment.replies[ repliedToComment.replies.length - 1 ];
 
@@ -850,19 +802,19 @@ function init( $container, state ) {
 			if ( state.repliedTo ) {
 				// Edited by using the reply tool or new topic tool. Only check the edited topic.
 				if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
-					recentComments.push( threadItems[ threadItems.length - 1 ] );
+					recentComments.push( result.threadItems[ result.threadItems.length - 1 ] );
 				} else {
-					recentComments.push( threadItemsById[ state.repliedTo ] );
+					recentComments.push( result.threadItemsById[ state.repliedTo ] );
 				}
 			} else if ( mw.config.get( 'wgPostEdit' ) ) {
 				// Edited by using wikitext editor. Check topics with their own comments within last minute.
-				for ( i = 0; i < threadItems.length; i++ ) {
+				for ( var i = 0; i < result.threadItems.length; i++ ) {
 					if (
-						threadItems[ i ] instanceof CommentItem &&
-						threadItems[ i ].author === mw.user.getName() &&
-						threadItems[ i ].timestamp.isSameOrAfter( moment().subtract( 1, 'minute' ), 'minute' )
+						result.threadItems[ i ] instanceof CommentItem &&
+						result.threadItems[ i ].author === mw.user.getName() &&
+						result.threadItems[ i ].timestamp.isSameOrAfter( moment().subtract( 1, 'minute' ), 'minute' )
 					) {
-						recentComments.push( threadItems[ i ] );
+						recentComments.push( result.threadItems[ i ] );
 					}
 				}
 			}
@@ -885,15 +837,15 @@ function init( $container, state ) {
 	);
 
 	$( window ).on( 'popstate', function () {
-		highlightTargetComment( parser, true );
+		highlightTargetComment( result, true );
 	} );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( 'body' ).on( 'click', function ( e ) {
 		if ( utils.isUnmodifiedLeftClick( e ) ) {
-			clearHighlightTargetComment( parser );
+			clearHighlightTargetComment( result );
 		}
 	} );
-	highlightTargetComment( parser );
+	highlightTargetComment( result );
 }
 
 /**

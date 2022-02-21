@@ -74,8 +74,8 @@ QUnit.test( '#getThreads', function ( assert ) {
 		$( fixture ).empty().append( $dom );
 		testUtils.overrideMwConfig( config );
 
-		var parser = new Parser( data ).parse( fixture, title );
-		var threads = parser.getThreads();
+		var threadItemSet = new Parser( data ).parse( fixture, title );
+		var threads = threadItemSet.getThreads();
 
 		threads.forEach( function ( thread, i ) {
 			testUtils.serializeComments( thread, fixture );

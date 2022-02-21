@@ -29,6 +29,10 @@ function ThreadItem( type, level, range ) {
 	 */
 	this.id = null;
 	/**
+	 * @member {string|null} Unique ID (within the page) for this comment, according to an older algorithm
+	 */
+	this.legacyId = null;
+	/**
 	 * @member {ThreadItem[]} Replies to this thread item
 	 */
 	this.replies = [];
@@ -47,11 +51,10 @@ OO.initClass( ThreadItem );
  * Create a new ThreadItem from a JSON serialization
  *
  * @param {string|Object} json JSON serialization or hash object
- * @param {Object.<string,ThreadItem>} commentsById Collection of comments by ID for building replies/parent pointers
  * @return {ThreadItem}
  * @throws {Error} Unknown ThreadItem type
  */
-ThreadItem.static.newFromJSON = function ( json, commentsById ) {
+ThreadItem.static.newFromJSON = function ( json ) {
 	// The page can be served from the HTTP cache (Varnish), and the JSON may be generated
 	// by an older version of our PHP code. Code below must be able to handle that.
 	// See ThreadItem::jsonSerialize() in PHP.
@@ -97,12 +100,6 @@ ThreadItem.static.newFromJSON = function ( json, commentsById ) {
 		endContainer: endMarker,
 		endOffset: 0
 	};
-
-	// Setup replies/parent pointers
-	item.replies = hash.replies.map( function ( id ) {
-		commentsById[ id ].parent = item;
-		return commentsById[ id ];
-	} );
 
 	return item;
 };

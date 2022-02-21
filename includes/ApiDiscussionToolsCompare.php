@@ -62,19 +62,19 @@ class ApiDiscussionToolsCompare extends ApiBase {
 			return;
 		}
 
-		$fromParser = $this->parseRevision( $fromRev );
-		$toParser = $this->parseRevision( $toRev );
+		$fromItemSet = $this->parseRevision( $fromRev );
+		$toItemSet = $this->parseRevision( $toRev );
 
 		$removedComments = [];
-		foreach ( $fromParser->getCommentItems() as $fromComment ) {
-			if ( !$toParser->findCommentById( $fromComment->getId() ) ) {
+		foreach ( $fromItemSet->getCommentItems() as $fromComment ) {
+			if ( !$toItemSet->findCommentById( $fromComment->getId() ) ) {
 				$removedComments[] = $fromComment->jsonSerializeForDiff();
 			}
 		}
 
 		$addedComments = [];
-		foreach ( $toParser->getCommentItems() as $toComment ) {
-			if ( !$fromParser->findCommentById( $toComment->getId() ) ) {
+		foreach ( $toItemSet->getCommentItems() as $toComment ) {
+			if ( !$fromItemSet->findCommentById( $toComment->getId() ) ) {
 				$addedComments[] = $toComment->jsonSerializeForDiff();
 			}
 		}
