@@ -33,6 +33,7 @@ use MediaWiki\User\UserIdentity;
 use ParserOptions;
 use RequestContext;
 use Title;
+use TitleValue;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
@@ -61,9 +62,7 @@ class EventDispatcher {
 			throw new Error( 'Could not load revision for notifications' );
 		}
 
-		$title = Title::newFromLinkTarget(
-			$revRecord->getPageAsLinkTarget()
-		);
+		$title = TitleValue::newFromPage( $revRecord->getPage() );
 
 		$parserOutput = $status->getValue();
 		$html = $parserOutput->getText();
@@ -107,7 +106,7 @@ class EventDispatcher {
 			$doc = DOMUtils::parseHTML( '' );
 			$container = DOMCompat::getBody( $doc );
 			$oldItemSet = $services->getService( 'DiscussionTools.CommentParser' )
-				->parse( $container, $title );
+				->parse( $container, $title->getTitleValue() );
 		}
 		$newItemSet = self::getParsedRevision( $newRevRecord );
 

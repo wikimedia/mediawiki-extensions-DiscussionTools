@@ -128,7 +128,7 @@ class CommentItem extends ThreadItem {
 			$href = $link->getAttribute( 'href' );
 			if ( $href ) {
 				$siteConfig = MediaWikiServices::getInstance()->getMainConfig();
-				$title = CommentUtils::getTitleFromUrl( $href, $siteConfig );
+				$title = Title::newFromText( CommentUtils::getTitleFromUrl( $href, $siteConfig ) );
 				if ( $title && $title->getNamespace() === NS_USER ) {
 					// TODO: Consider returning User objects
 					$users[] = $title;

@@ -57,7 +57,7 @@ class ApiDiscussionToolsPreview extends ApiBase {
 
 		// Check if there was a signature in a proper place
 		$container = DOMCompat::getBody( DOMUtils::parseHTML( $resultHtml ) );
-		$threadItemSet = $this->commentParser->parse( $container, $title );
+		$threadItemSet = $this->commentParser->parse( $container, $title->getTitleValue() );
 		if ( !CommentUtils::isSingleCommentSignedBy( $threadItemSet, $this->getUser()->getName(), $container ) ) {
 			// If not, add the signature and re-render
 			$signature = $this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';

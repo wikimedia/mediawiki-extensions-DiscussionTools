@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
-use Title;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentUtils
@@ -24,7 +24,7 @@ class CommentUtilsTest extends IntegrationTestCase {
 		$config = self::getJson( "../data/enwiki-config.json" );
 		$data = self::getJson( "../data/enwiki-data.json" );
 		$this->setupEnv( $config, $data );
-		$title = Title::newFromText( $title );
+		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
 		$parser = self::createParser( $data );
 
 		$threadItemSet = $parser->parse( $container, $title );

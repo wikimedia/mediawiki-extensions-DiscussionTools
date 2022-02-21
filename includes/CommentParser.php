@@ -8,9 +8,11 @@ use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
 use Language;
+use MalformedTitleException;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MWException;
-use Title;
+use TitleParser;
+use TitleValue;
 use Wikimedia\Assert\Assert;
 use Wikimedia\IPUtils;
 use Wikimedia\Parsoid\DOM\Element;
@@ -33,6 +35,8 @@ class CommentParser {
 	private $language;
 	/** @var LanguageConverterFactory */
 	private $languageConverterFactory;
+	/** @var TitleParser */
+	private $titleParser;
 
 	private $dateFormat;
 	private $digits;
@@ -40,10 +44,11 @@ class CommentParser {
 	private $contLangMessages;
 	private $localTimezone;
 	private $timezones;
+	private $specialContributionsName;
 
 	/** @var Element */
 	private $rootNode;
-	/** @var Title */
+	/** @var TitleValue */
 	private $title;
 
 	/**
@@ -51,16 +56,19 @@ class CommentParser {
 	 * @param Language $language Content language
 	 * @param LanguageConverterFactory $languageConverterFactory
 	 * @param LanguageData $languageData
+	 * @param TitleParser $titleParser
 	 */
 	public function __construct(
 		Config $config,
 		Language $language,
 		LanguageConverterFactory $languageConverterFactory,
-		LanguageData $languageData
+		LanguageData $languageData,
+		TitleParser $titleParser
 	) {
 		$this->config = $config;
 		$this->language = $language;
 		$this->languageConverterFactory = $languageConverterFactory;
+		$this->titleParser = $titleParser;
 
 		$data = $languageData->getLocalData();
 		$this->dateFormat = $data['dateFormat'];
@@ -68,16 +76,17 @@ class CommentParser {
 		$this->contLangMessages = $data['contLangMessages'];
 		$this->localTimezone = $data['localTimezone'];
 		$this->timezones = $data['timezones'];
+		$this->specialContributionsName = $data['specialContributionsName'];
 	}
 
 	/**
 	 * Parse a discussion page.
 	 *
 	 * @param Element $rootNode Root node of content to parse
-	 * @param Title $title Title of the page being parsed
+	 * @param TitleValue $title Title of the page being parsed
 	 * @return ThreadItemSet
 	 */
-	public function parse( Element $rootNode, Title $title ): ThreadItemSet {
+	public function parse( Element $rootNode, TitleValue $title ): ThreadItemSet {
 		$this->rootNode = $rootNode;
 		$this->title = $title;
 
@@ -518,10 +527,12 @@ class CommentParser {
 		if ( DOMCompat::getClassList( $link )->contains( 'mw-selflink' ) ) {
 			$title = $this->title;
 		} else {
-			$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '', $this->config );
-		}
-		if ( !$title ) {
-			return null;
+			$titleString = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '', $this->config ) ?? '';
+			try {
+				$title = $this->titleParser->parseTitle( $titleString );
+			} catch ( MalformedTitleException $err ) {
+				return null;
+			}
 		}
 
 		$username = null;
@@ -533,17 +544,16 @@ class CommentParser {
 			if ( strpos( $username, '/' ) !== false ) {
 				return null;
 			}
-		} elseif ( $title->isSpecial( 'Contributions' ) ) {
-			$parts = explode( '/', $mainText, 2 );
-			if ( !isset( $parts[1] ) ) {
-				return null;
+		} elseif ( $namespaceId === NS_SPECIAL ) {
+			$parts = explode( '/', $mainText );
+			if ( count( $parts ) === 2 && $parts[0] === $this->specialContributionsName ) {
+				// Normalize the username: users may link to their contributions with an unnormalized name
+				$userpage = $this->titleParser->makeTitleValueSafe( NS_USER, $parts[1] );
+				if ( !$userpage ) {
+					return null;
+				}
+				$username = $userpage->getText();
 			}
-			// Normalize the username: users may link to their contributions with an unnormalized name
-			$userpage = Title::makeTitleSafe( NS_USER, $parts[1] );
-			if ( !$userpage ) {
-				return null;
-			}
-			$username = $userpage->getText();
 		}
 		if ( !$username ) {
 			return null;

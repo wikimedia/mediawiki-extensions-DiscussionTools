@@ -549,7 +549,7 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 	if ( link.classList.contains( 'mw-selflink' ) ) {
 		title = this.title;
 	} else {
-		title = utils.getTitleFromUrl( link.href );
+		title = mw.Title.newFromText( utils.getTitleFromUrl( link.href ) || '' );
 	}
 	if ( !title ) {
 		return null;
@@ -568,20 +568,16 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 		if ( username.indexOf( '/' ) !== -1 ) {
 			return null;
 		}
-	} else if (
-		namespaceId === namespaceIds.special &&
-		mainText.split( '/' )[ 0 ] === this.data.specialContributionsName
-	) {
-		username = mainText.split( '/' )[ 1 ];
-		if ( !username ) {
-			return null;
+	} else if ( namespaceId === namespaceIds.special ) {
+		var parts = mainText.split( '/' );
+		if ( parts.length === 2 && parts[ 0 ] === this.data.specialContributionsName ) {
+			// Normalize the username: users may link to their contributions with an unnormalized name
+			var userpage = mw.Title.makeTitle( namespaceIds.user, parts[ 1 ] );
+			if ( !userpage ) {
+				return null;
+			}
+			username = userpage.getMainText();
 		}
-		// Normalize the username: users may link to their contributions with an unnormalized name
-		var userpage = mw.Title.makeTitle( namespaceIds.user, username );
-		if ( !userpage ) {
-			return null;
-		}
-		username = userpage.getMainText();
 	}
 	if ( !username ) {
 		return null;

@@ -86,7 +86,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		] );
 		$previewResultHtml = $previewResult->getResultData( [ 'parse', 'text' ] );
 		$container = DOMCompat::getBody( DOMUtils::parseHTML( $previewResultHtml ) );
-		$threadItemSet = $this->commentParser->parse( $container, $title );
+		$threadItemSet = $this->commentParser->parse( $container, $title->getTitleValue() );
 		if ( CommentUtils::isSingleCommentSignedBy( $threadItemSet, $this->getUser()->getName(), $container ) ) {
 			$signature = null;
 		} else {
@@ -224,7 +224,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				$container = DOMCompat::getBody( $doc );
 
 				$threadItemSet = MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
-					->parse( $container, $title );
+					->parse( $container, $title->getTitleValue() );
 
 				if ( $commentId ) {
 					$comment = $threadItemSet->findCommentById( $commentId );
