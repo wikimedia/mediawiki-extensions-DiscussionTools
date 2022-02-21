@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AC Krah",
+			"Amoarich",
 			"Robertjamal12",
 			"Warmglow"
 		]
@@ -10,5 +11,20 @@
 	"discussiontools-autotopicsubpopup-dismiss": "Yoo, manya",
 	"discussiontools-autotopicsubpopup-preferences": "Kra nea wopɛ",
 	"discussiontools-autotopicsubpopup-title": "Wabɛka ho",
+	"discussiontools-defaultsummary-reply": "Mmuaeɛ",
+	"discussiontools-desc": "Nnoɔma a ɛbua adwenkyerɛ bia",
+	"discussiontools-emptystate-button": "Hyɛ adwenkyerɛ ase",
+	"discussiontools-emptystate-desc-self": "Nnipa ɛwɔ {{SITENAME}} bɛtumi de  [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|kasa bia]] asuma amansan kaseɛbɔ ama wo na wobɛ nya nkaebɔ sɛ ɔmo yɛ a.",
+	"discussiontools-emptystate-desc-self-anon": "Nnipa a wɔ ha {{SITENAME}} bɛtumi de [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|kasa bia]] asuma amansan kaseɛbɔ a ɛkyerɛ sesa yɛ a ɛwɔ IP akyerakwan a wode di dwuma.\n\nDodoɔ IP akyerɛkan sesa meretiamu, na mpɛn pii no nnipa dodoɔ no kyɛ. Wobɛtumi [$1 abue account] anaa [$2 bɛwura mu] sɛ neɛ bɛ ya ɛnfa mpenkyenpenkyenmu ma wɔn a apue dada no. Wobue account no sea wo IP akwankyerɛ.",
+	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Kasa biaeɛ]] yɛ babia nnipa totoa adwene wɔ kwan a wɔbtumi ayɛ biaeɛ {{SITENAME}} ɛyɛ papa. Hyɛ adwenkyerɛ foforɔ a ɛbua kwan na ɛde nkabom {{GENDER:{{PAGENAME}}|with}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Deɛ wobɛka wɔ ha bɛda adi ama amansan ahunu.",
+	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Kasa biaeɛ]] yɛ biaeɛ nnipa bɛtumi atoatoa adwene a wobɛyɛ biaeɛ {{SITENAME}} ɛbɛ yɛ papa paa. Fa saa biaeɛ hyɛ adwenkyere a ɛba ma w'atumi asesa nnoɔma a ɛwɔ IP akwankyeremu. Deɛ wo beka wɔ ha beda adi ama amansan ahunu. Dodoɔ IP akwankyerɛ sesa meretiamu mu, na mpɛn pii no afoforɔ kyɛ.",
+	"discussiontools-emptystate-title": "Hyɛ adwenkyerɛ a ɛfa {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title-self": "Akwaaba wɔ wo kasa bia",
+	"discussiontools-emptystate-title-self-anon": "Akwaaba wɔ kasa bia ha",
+	"discussiontools-emptystate-title-user": "Hyɛ adwenkyerɛ{{GENDER:{{PAGENAME}}|with}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user-anon": "Akwaaba wɔ kasa bia ha",
+	"discussiontools-error-comment-conflict": "Wa dwenkyerɛ no ntumi sea, firi sɛ obi foforɔ akyerɛ na dwene saa bia naa mu. Nti sane bue bia no foforɔ anaa hwɛ adwenkerɛ foforɔ no.",
+	"discussiontools-error-comment-disappeared": "Yɛ ntumi nhunu wa dwenkyerɛ a wode bua saa biaeɛ ha. Ɛbia apepa anaa sɛ afiri ha kɔ biaeɛ foforɔ.",
+	"discussiontools-error-comment-disappeared-reload": "Mepakyaw saa bue bia ha na yɛ biem.",
 	"discussiontools-preference-autotopicsub-help": "Sɛ wohyɛ nkɔmɔdi foforɔ ase anaa sɛ woka biribi fa nkɔmɔdi bi a ɛwɔ hɔ dada ho a, sɛ afoforɔ ka nsɛm foforɔ fa ho a wɔ aberɛ a w'ani nna woho so no wobɛnya nkaebɔ"
 }
