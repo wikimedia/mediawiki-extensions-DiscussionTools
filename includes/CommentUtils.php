@@ -327,17 +327,17 @@ class CommentUtils {
 	 * The indent level is the number of lists inside of which it is nested.
 	 *
 	 * @param Node $node
-	 * @param Node $rootNode
+	 * @param Element $rootNode
 	 * @return int
 	 */
-	public static function getIndentLevel( Node $node, Node $rootNode ): int {
+	public static function getIndentLevel( Node $node, Element $rootNode ): int {
 		$indent = 0;
 		while ( $node ) {
 			if ( $node === $rootNode ) {
 				break;
 			}
-			$nodeName = strtolower( $node->nodeName );
-			if ( $nodeName === 'li' || $nodeName === 'dd' ) {
+			$tagName = $node instanceof Element ? strtolower( $node->tagName ) : null;
+			if ( $tagName === 'li' || $tagName === 'dd' ) {
 				$indent++;
 			}
 			$node = $node->parentNode;

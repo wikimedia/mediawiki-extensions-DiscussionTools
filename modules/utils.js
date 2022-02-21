@@ -280,7 +280,7 @@ function htmlTrim( str ) {
  *
  * @private
  * @param {Node} node
- * @param {Node} rootNode
+ * @param {Element} rootNode
  * @return {number}
  */
 function getIndentLevel( node, rootNode ) {
@@ -289,7 +289,7 @@ function getIndentLevel( node, rootNode ) {
 		if ( node === rootNode ) {
 			break;
 		}
-		var tagName = node.tagName && node.tagName.toLowerCase();
+		var tagName = node instanceof HTMLElement ? node.tagName.toLowerCase() : null;
 		if ( tagName === 'li' || tagName === 'dd' ) {
 			indent++;
 		}

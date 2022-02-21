@@ -7,7 +7,6 @@ use LogicException;
 use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Element;
-use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 /**
@@ -337,9 +336,9 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @return Node Root node (level is relative to this node)
+	 * @return Element Root node (level is relative to this node)
 	 */
-	public function getRootNode(): Node {
+	public function getRootNode(): Element {
 		return $this->rootNode;
 	}
 
@@ -400,9 +399,9 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @param Node $rootNode Root node (level is relative to this node)
+	 * @param Element $rootNode Root node (level is relative to this node)
 	 */
-	public function setRootNode( Node $rootNode ): void {
+	public function setRootNode( Element $rootNode ): void {
 		$this->rootNode = $rootNode;
 	}
 
