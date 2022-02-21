@@ -148,9 +148,9 @@ class CommentUtils {
 	public static function isCommentSeparator( Node $node ): bool {
 		return $node instanceof Element && (
 			// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
-			strtolower( $node->nodeName ) === 'br' ||
+			strtolower( $node->tagName ) === 'br' ||
 			// Horizontal line
-			strtolower( $node->nodeName ) === 'hr' ||
+			strtolower( $node->tagName ) === 'hr' ||
 			// {{outdent}} templates
 			DOMCompat::getClassList( $node )->contains( 'outdent-template' )
 		);
@@ -213,7 +213,7 @@ class CommentUtils {
 		do {
 			if (
 				$node instanceof Element &&
-				in_array( strtolower( $node->nodeName ), $tagNames )
+				in_array( strtolower( $node->tagName ), $tagNames )
 			) {
 				return $node;
 			}

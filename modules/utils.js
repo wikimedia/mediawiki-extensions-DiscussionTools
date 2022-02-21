@@ -113,9 +113,9 @@ function cantHaveElementChildren( node ) {
 function isCommentSeparator( node ) {
 	return node.nodeType === Node.ELEMENT_NODE && (
 		// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
-		node.nodeName.toLowerCase() === 'br' ||
+		node.tagName.toLowerCase() === 'br' ||
 		// Horizontal line
-		node.nodeName.toLowerCase() === 'hr' ||
+		node.tagName.toLowerCase() === 'hr' ||
 		// {{outdent}} templates
 		node.classList.contains( 'outdent-template' )
 	);

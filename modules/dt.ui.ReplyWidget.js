@@ -40,7 +40,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	// don't need to worry about transcluded replies.
 	this.pageExists = mw.config.get( 'wgRelevantArticleId', 0 ) !== 0;
 	var contextNode = utils.closestElement( threadItem.range.endContainer, [ 'dl', 'ul', 'ol' ] );
-	this.context = contextNode ? contextNode.nodeName.toLowerCase() : 'dl';
+	this.context = contextNode ? contextNode.tagName.toLowerCase() : 'dl';
 	// TODO: Should storagePrefix include pageName?
 	this.storagePrefix = 'reply/' + threadItem.id;
 	this.storage = controller.storage;

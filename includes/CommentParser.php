@@ -598,7 +598,7 @@ class CommentParser {
 				// if the timestamp node is the only child of a link node, use the link node instead
 				//
 				// Handle links nested in formatting elements.
-				if ( $event === 'leave' && $node instanceof Element && strtolower( $node->nodeName ) === 'a' ) {
+				if ( $event === 'leave' && $node instanceof Element && strtolower( $node->tagName ) === 'a' ) {
 					$username = $this->getUsernameFromLink( $node );
 					if ( $username ) {
 						// Accept the first link to the user namespace, then only accept links to that user

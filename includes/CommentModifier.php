@@ -291,7 +291,7 @@ class CommentModifier {
 		$hasElements = false;
 		foreach ( $nodes as $node ) {
 			if ( $node instanceof Element ) {
-				if ( strtolower( $node->nodeName ) !== strtolower( $type ) ) {
+				if ( strtolower( $node->tagName ) !== strtolower( $type ) ) {
 					return false;
 				}
 				$hasElements = true;
