@@ -9,6 +9,7 @@ use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
+use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentUtils {
@@ -163,7 +164,7 @@ class CommentUtils {
 	 */
 	public static function isCommentContent( Node $node ) {
 		return (
-			$node->nodeType === XML_TEXT_NODE &&
+			$node instanceof Text &&
 			self::htmlTrim( $node->nodeValue ?? '' ) !== ''
 		) ||
 		(
@@ -211,10 +212,9 @@ class CommentUtils {
 	public static function closestElement( Node $node, array $tagNames ): ?Element {
 		do {
 			if (
-				$node->nodeType === XML_ELEMENT_NODE &&
+				$node instanceof Element &&
 				in_array( strtolower( $node->nodeName ), $tagNames )
 			) {
-				// @phan-suppress-next-line PhanTypeMismatchReturn
 				return $node;
 			}
 			$node = $node->parentNode;

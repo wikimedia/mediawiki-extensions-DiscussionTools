@@ -14,6 +14,7 @@ use stdClass;
 use Title;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
+use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\TestingAccessWrapper;
 
@@ -37,7 +38,7 @@ class CommentParserTest extends IntegrationTestCase {
 	private static function getOffsetPath(
 		Element $ancestor, Node $node, int $nodeOffset
 	): string {
-		if ( $node->nodeType === XML_TEXT_NODE ) {
+		if ( $node instanceof Text ) {
 			$str = mb_substr( $node->nodeValue, 0, $nodeOffset );
 			// Count characters that require two code units to encode in UTF-16
 			$count = preg_match_all( '/[\x{010000}-\x{10FFFF}]/u', $str );

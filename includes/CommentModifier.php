@@ -57,11 +57,11 @@ class CommentModifier {
 		// visible on the page. But if we insert an inline element (the reply link) after it, it becomes
 		// meaningful and gets rendered, which results in additional spacing before some reply links.
 		// Split the text node, so that we can insert the link before the trailing whitespace.
-		if ( $target->nodeType === XML_TEXT_NODE ) {
-			preg_match( '/\s*$/', $target->nodeValue, $matches, PREG_OFFSET_CAPTURE );
+		if ( $target instanceof Text ) {
+			preg_match( '/\s*$/', $target->nodeValue ?? '', $matches, PREG_OFFSET_CAPTURE );
 			$byteOffset = $matches[0][1];
 			$charOffset = mb_strlen(
-				substr( $target->nodeValue, 0, $byteOffset )
+				substr( $target->nodeValue ?? '', 0, $byteOffset )
 			);
 			$target->splitText( $charOffset );
 		}
@@ -290,7 +290,7 @@ class CommentModifier {
 	private static function allOfType( array $nodes, string $type ): bool {
 		$hasElements = false;
 		foreach ( $nodes as $node ) {
-			if ( $node->nodeType === XML_ELEMENT_NODE ) {
+			if ( $node instanceof Element ) {
 				if ( strtolower( $node->nodeName ) !== strtolower( $type ) ) {
 					return false;
 				}
@@ -371,7 +371,7 @@ class CommentModifier {
 		}
 
 		while ( $list->firstChild ) {
-			if ( $list->firstChild->nodeType === XML_ELEMENT_NODE ) {
+			if ( $list->firstChild instanceof Element ) {
 				// Move <dd> contents to <p>
 				$p = $doc->createElement( 'p' );
 				while ( $list->firstChild->firstChild ) {

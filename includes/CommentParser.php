@@ -849,8 +849,8 @@ class CommentParser {
 					}
 				);
 
-				$length = ( $endNode->nodeType === XML_TEXT_NODE ) ?
-					mb_strlen( rtrim( $endNode->nodeValue, "\t\n\f\r " ) ) :
+				$length = ( $endNode instanceof Text ) ?
+					mb_strlen( rtrim( $endNode->nodeValue ?? '', "\t\n\f\r " ) ) :
 					// PHP bug: childNodes can be null for comment nodes
 					// (it should always be a NodeList, even if the node can't have children)
 					( $endNode->childNodes ? $endNode->childNodes->length : 0 );
