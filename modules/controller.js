@@ -514,7 +514,7 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 
 var $highlightedTarget = null;
 /**
- * Highlight the comment on the page associated with the URL hash
+ * Highlight the comment(s) on the page associated with the URL hash or query string
  *
  * @param {ThreadItemSet} threadItemSet
  * @param {boolean} [noScroll] Don't scroll to the topmost highlighted comment, e.g. on popstate
@@ -530,47 +530,92 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var targetElement = $( ':target' )[ 0 ];
 
-		var uri;
-		try {
-			uri = new mw.Uri( location.href );
-		} catch ( err ) {
-			// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
-			uri = null;
-		}
-		var targetIds = uri && uri.query.dtnewcomments && uri.query.dtnewcomments.split( '|' );
 		if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
 			var comment = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
 			$highlightedTarget = highlight( comment );
 			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
 			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
-		} else if ( targetIds ) {
-			var comments = targetIds.map( function ( id ) {
-				return threadItemSet.findCommentById( id );
-			} ).filter( function ( cmt ) {
-				return !!cmt;
-			} );
-			if ( comments.length === 0 ) {
-				return;
-			}
-
-			var highlights = comments.map( function ( cmt ) {
-				return highlight( cmt )[ 0 ];
-			} );
-			$highlightedTarget = $( highlights );
-			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
-			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
-
-			if ( !noScroll ) {
-				var topmostComment = 0;
-				for ( var i = 1; i < comments.length; i++ ) {
-					if ( highlights[ i ].getBoundingClientRect().top < highlights[ topmostComment ].getBoundingClientRect().top ) {
-						topmostComment = i;
-					}
-				}
-				document.getElementById( comments[ topmostComment ].id ).scrollIntoView();
-			}
+			return;
 		}
+
+		var uri;
+		try {
+			uri = new mw.Uri( location.href );
+		} catch ( err ) {
+			// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+			return;
+		}
+		highlightNewComments(
+			threadItemSet,
+			noScroll,
+			uri.query.dtnewcomments && uri.query.dtnewcomments.split( '|' ),
+			uri.query.dtnewcommentssince,
+			uri.query.dtinthread
+		);
 	} );
+}
+
+/**
+ * Highlight the new comments on the page associated with the query string
+ *
+ * @param {ThreadItemSet} threadItemSet
+ * @param {boolean} [noScroll] Don't scroll to the topmost highlighted comment, e.g. on popstate
+ * @param {string[]} [newCommentIds] A list of comment IDs to highlight
+ * @param {string} [newCommentsSinceId] Highlight all comments after the comment with this ID
+ * @param {boolean} [inThread] When using newCommentsSinceId, only highlight comments in the same thread
+ */
+function highlightNewComments( threadItemSet, noScroll, newCommentIds, newCommentsSinceId, inThread ) {
+	newCommentIds = newCommentIds || [];
+
+	if ( newCommentsSinceId ) {
+		var newCommentsSince = threadItemSet.findCommentById( newCommentsSinceId );
+		if ( newCommentsSince && newCommentsSince instanceof CommentItem ) {
+			var sinceTimestamp = newCommentsSince.timestamp;
+			var threadItems;
+			if ( inThread ) {
+				var heading = newCommentsSince.getSubscribableHeading() || newCommentsSince.getHeading();
+				threadItems = heading.getThreadItemsBelow();
+			} else {
+				threadItems = threadItemSet.getCommentItems();
+			}
+			threadItems.forEach( function ( threadItem ) {
+				if (
+					threadItem instanceof CommentItem &&
+					threadItem.timestamp >= sinceTimestamp
+				) {
+					newCommentIds.push( threadItem.id );
+				}
+			} );
+		}
+	}
+
+	if ( newCommentIds.length ) {
+		var comments = newCommentIds.map( function ( id ) {
+			return threadItemSet.findCommentById( id );
+		} ).filter( function ( cmt ) {
+			return !!cmt;
+		} );
+		if ( comments.length === 0 ) {
+			return;
+		}
+
+		var highlights = comments.map( function ( cmt ) {
+			return highlight( cmt )[ 0 ];
+		} );
+		$highlightedTarget = $( highlights );
+		$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
+		$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
+
+		if ( !noScroll ) {
+			var topmostComment = 0;
+			for ( var i = 1; i < comments.length; i++ ) {
+				if ( highlights[ i ].getBoundingClientRect().top < highlights[ topmostComment ].getBoundingClientRect().top ) {
+					topmostComment = i;
+				}
+			}
+			document.getElementById( comments[ topmostComment ].id ).scrollIntoView();
+		}
+	}
 }
 
 /**
@@ -579,6 +624,13 @@ function highlightTargetComment( threadItemSet, noScroll ) {
  * @param {ThreadItemSet} threadItemSet
  */
 function clearHighlightTargetComment( threadItemSet ) {
+	var uri;
+	try {
+		uri = new mw.Uri( location.href );
+	} catch ( err ) {
+		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+		return;
+	}
 	// eslint-disable-next-line no-jquery/no-global-selector
 	var targetElement = $( ':target' )[ 0 ];
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
@@ -593,10 +645,16 @@ function clearHighlightTargetComment( threadItemSet ) {
 		// Instead, we first use window.location.hash to navigate to a *different* hash (whose target
 		// doesn't exist on the page, hopefully), and then use history.pushState() to clear it.
 		window.location.hash += '-DoesNotExist-DiscussionToolsHack';
-		history.replaceState( null, document.title, window.location.href.replace( /#.*$/, '' ) );
-	} else if ( window.location.search.match( /(^\?|&)dtnewcomments=/ ) ) {
-		history.pushState( null, document.title,
-			window.location.search.replace( /(^\?|&)dtnewcomments=[^&]+/, '' ) + window.location.hash );
+		uri.fragment = undefined;
+		history.replaceState( null, document.title, uri );
+	} else if (
+		'dtnewcomments' in uri.query ||
+		'dtnewcommentssince' in uri.query
+	) {
+		delete uri.query.dtnewcomments;
+		delete uri.query.dtnewcommentssince;
+		delete uri.query.dtinthread;
+		history.pushState( null, document.title, uri );
 		highlightTargetComment( threadItemSet );
 	}
 }
