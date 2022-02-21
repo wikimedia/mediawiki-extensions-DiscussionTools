@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use DateTimeImmutable;
+use MediaWiki\MediaWikiServices;
 use MWException;
 use Title;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
@@ -126,7 +127,8 @@ class CommentItem extends ThreadItem {
 		foreach ( $links as $link ) {
 			$href = $link->getAttribute( 'href' );
 			if ( $href ) {
-				$title = CommentUtils::getTitleFromUrl( $href );
+				$siteConfig = MediaWikiServices::getInstance()->getMainConfig();
+				$title = CommentUtils::getTitleFromUrl( $href, $siteConfig );
 				if ( $title && $title->getNamespace() === NS_USER ) {
 					// TODO: Consider returning User objects
 					$users[] = $title;

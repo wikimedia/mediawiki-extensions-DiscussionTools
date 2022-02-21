@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use JsonSerializable;
 use LogicException;
 use Title;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Utils\DOMUtils;
@@ -227,8 +228,9 @@ abstract class ThreadItem implements JsonSerializable {
 			// 'href' will be unset if this is a parser function rather than a template
 			isset( $dataMw['parts'][0]['template']['target']['href'] )
 		) {
-			$title = CommentUtils::getTitleFromUrl( $dataMw['parts'][0]['template']['target']['href'] );
-			return $title;
+			$parsoidHref = $dataMw['parts'][0]['template']['target']['href'];
+			Assert::precondition( substr( $parsoidHref, 0, 2 ) === './', "href has valid format" );
+			return Title::newFromText( urldecode( substr( $parsoidHref, 2 ) ) );
 		}
 
 		return null;

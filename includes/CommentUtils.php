@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use Config;
 use LogicException;
-use MediaWiki\MediaWikiServices;
 use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
@@ -430,16 +430,16 @@ class CommentUtils {
 	 * Get a MediaWiki page title from a URL
 	 *
 	 * @param string $url
+	 * @param Config $config
 	 * @return Title|null
 	 */
-	public static function getTitleFromUrl( string $url ): ?Title {
+	public static function getTitleFromUrl( string $url, Config $config ): ?Title {
 		$bits = parse_url( $url );
 		$query = wfCgiToArray( $bits['query'] ?? '' );
 		if ( isset( $query['title'] ) ) {
 			return Title::newFromText( $query['title'] );
 		}
 
-		$config = MediaWikiServices::getInstance()->getMainConfig();
 		// TODO: Set the correct base in the document?
 		if ( strpos( $url, './' ) === 0 ) {
 			$url = 'https://local' . str_replace( '$1', substr( $url, 2 ), $config->get( 'ArticlePath' ) );

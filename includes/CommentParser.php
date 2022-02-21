@@ -509,7 +509,7 @@ class CommentParser {
 		if ( DOMCompat::getClassList( $link )->contains( 'mw-selflink' ) ) {
 			$title = $this->title;
 		} else {
-			$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '' );
+			$title = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '', $this->config );
 		}
 		if ( !$title ) {
 			return null;
