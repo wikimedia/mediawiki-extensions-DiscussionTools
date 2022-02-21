@@ -20,6 +20,10 @@ use Wikimedia\Parsoid\Utils\DOMCompat;
 // TODO consider making timestamp parsing not a returned function
 
 class CommentParser {
+	/**
+	 * How far backwards we look for a signature associated with a timestamp before giving up.
+	 * Note that this is not a hard limit on the length of signatures we detect.
+	 */
 	private const SIGNATURE_SCAN_LIMIT = 100;
 
 	/** @var Config */
