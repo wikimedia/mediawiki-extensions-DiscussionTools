@@ -7,8 +7,9 @@ use MediaWiki\MediaWikiServices;
 return [
 	'DiscussionTools.CommentParser' => static function ( MediaWikiServices $services ): CommentParser {
 		return new CommentParser(
-			$services->getContentLanguage(),
 			$services->getMainConfig(),
+			$services->getContentLanguage(),
+			$services->getLanguageConverterFactory(),
 			$services->getService( 'DiscussionTools.LanguageData' )
 		);
 	},

@@ -8,7 +8,7 @@ use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
 use Language;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Languages\LanguageConverterFactory;
 use MWException;
 use Title;
 use Wikimedia\IPUtils;
@@ -22,16 +22,12 @@ use Wikimedia\Parsoid\Utils\DOMCompat;
 class CommentParser {
 	private const SIGNATURE_SCAN_LIMIT = 100;
 
-	/** @var Element */
-	private $rootNode;
-	/** @var Title */
-	private $title;
-
 	/** @var Config */
 	private $config;
-
 	/** @var Language */
 	private $language;
+	/** @var LanguageConverterFactory */
+	private $languageConverterFactory;
 
 	private $dateFormat;
 	private $digits;
@@ -40,16 +36,26 @@ class CommentParser {
 	private $localTimezone;
 	private $timezones;
 
+	/** @var Element */
+	private $rootNode;
+	/** @var Title */
+	private $title;
+
 	/**
-	 * @param Language $language Content language
 	 * @param Config $config
+	 * @param Language $language Content language
+	 * @param LanguageConverterFactory $languageConverterFactory
 	 * @param LanguageData $languageData
 	 */
 	public function __construct(
-		Language $language, Config $config, LanguageData $languageData
+		Config $config,
+		Language $language,
+		LanguageConverterFactory $languageConverterFactory,
+		LanguageData $languageData
 	) {
 		$this->config = $config;
 		$this->language = $language;
+		$this->languageConverterFactory = $languageConverterFactory;
 
 		$data = $languageData->getLocalData();
 		$this->dateFormat = $data['dateFormat'];
@@ -464,8 +470,7 @@ class CommentParser {
 	 * @return string[] Regular expressions
 	 */
 	public function getLocalTimestampRegexps(): array {
-		$langConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
-			->getLanguageConverter( $this->language );
+		$langConv = $this->languageConverterFactory->getLanguageConverter( $this->language );
 		return array_map( function ( $contLangVariant ) {
 			return $this->getTimestampRegexp(
 				$contLangVariant,
@@ -485,8 +490,7 @@ class CommentParser {
 	 * @return callable[] Parser functions
 	 */
 	private function getLocalTimestampParsers(): array {
-		$langConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
-			->getLanguageConverter( $this->language );
+		$langConv = $this->languageConverterFactory->getLanguageConverter( $this->language );
 		return array_map( function ( $contLangVariant ) {
 			return $this->getTimestampParser(
 				$contLangVariant,

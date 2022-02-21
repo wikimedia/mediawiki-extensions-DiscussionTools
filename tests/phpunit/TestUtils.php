@@ -124,8 +124,9 @@ trait TestUtils {
 	public static function createParser( array $data ): CommentParser {
 		$services = MediaWikiServices::getInstance();
 		return new CommentParser(
-			$services->getContentLanguage(),
 			$services->getMainConfig(),
+			$services->getContentLanguage(),
+			$services->getLanguageConverterFactory(),
 			new MockLanguageData( $data )
 		);
 	}
