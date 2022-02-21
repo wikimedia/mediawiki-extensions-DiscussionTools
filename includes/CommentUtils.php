@@ -167,10 +167,6 @@ class CommentUtils {
 			self::htmlTrim( $node->nodeValue ?? '' ) !== ''
 		) ||
 		(
-			$node->nodeType === XML_CDATA_SECTION_NODE &&
-			self::htmlTrim( $node->nodeValue ?? '' ) !== ''
-		) ||
-		(
 			self::cantHaveElementChildren( $node )
 		);
 	}

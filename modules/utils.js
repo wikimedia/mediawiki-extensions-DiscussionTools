@@ -130,7 +130,6 @@ function isCommentSeparator( node ) {
 function isCommentContent( node ) {
 	return (
 		( node.nodeType === Node.TEXT_NODE && htmlTrim( node.textContent ) !== '' ) ||
-		( node.nodeType === Node.CDATA_SECTION_NODE && htmlTrim( node.textContent ) !== '' ) ||
 		( cantHaveElementChildren( node ) )
 	);
 }
