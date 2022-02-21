@@ -428,20 +428,33 @@ Parser.prototype.getLocalTimestampParsers = function () {
  * @return {number} Appropriate NodeFilter constant
  */
 function acceptOnlyNodesAllowingComments( node ) {
-	// The table of contents has a heading that gets erroneously detected as a section
-	if ( node.id === 'toc' ) {
-		return NodeFilter.FILTER_REJECT;
+	if ( node instanceof HTMLElement ) {
+		var tagName = node.tagName.toLowerCase();
+		// The table of contents has a heading that gets erroneously detected as a section
+		if ( node.id === 'toc' ) {
+			return NodeFilter.FILTER_REJECT;
+		}
+		// Don't detect comments within references. We can't add replies to them without bungling up
+		// the structure in some cases (T301213), and you're not supposed to do that anyway…
+		if (
+			// <ol class="references"> is the only reliably consistent thing between the two parsers
+			tagName === 'ol' &&
+			node.classList.contains( 'references' )
+		) {
+			return NodeFilter.FILTER_REJECT;
+		}
+		// Don't detect comments within quotes (T275881)
+		if (
+			tagName === 'blockquote' ||
+			tagName === 'cite' ||
+			tagName === 'q'
+		) {
+			return NodeFilter.FILTER_REJECT;
+		}
 	}
-	// Don't detect comments within quotes (T275881)
-	if ( node instanceof HTMLElement && (
-		node.tagName.toLowerCase() === 'blockquote' ||
-		node.tagName.toLowerCase() === 'cite' ||
-		node.tagName.toLowerCase() === 'q'
-	) ) {
-		return NodeFilter.FILTER_REJECT;
-	}
+	var parentNode = node.parentNode;
 	// Don't detect comments within headings (but don't reject the headings themselves)
-	if ( node.parentNode instanceof HTMLElement && node.parentNode.tagName.match( /^h([1-6])$/i ) ) {
+	if ( parentNode instanceof HTMLElement && parentNode.tagName.match( /^h([1-6])$/i ) ) {
 		return NodeFilter.FILTER_REJECT;
 	}
 	return NodeFilter.FILTER_ACCEPT;
