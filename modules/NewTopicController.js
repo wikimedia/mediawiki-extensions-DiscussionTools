@@ -104,8 +104,8 @@ NewTopicController.prototype.setup = function ( mode ) {
 /**
  * @inheritdoc
  */
-NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
-	NewTopicController.super.prototype.setupReplyWidget.call( this, replyWidget, data );
+NewTopicController.prototype.setupReplyWidget = function ( replyWidget ) {
+	NewTopicController.super.prototype.setupReplyWidget.apply( this, arguments );
 
 	this.$notices.empty();
 	for ( var noticeName in this.replyWidget.commentDetails.notices ) {

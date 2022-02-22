@@ -124,8 +124,9 @@ CommentController.static.initType = 'page';
  *
  * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
  * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
+ * @param {boolean} [suppressNotifications] Don't notify the user if recovering auto-save
  */
-CommentController.prototype.setup = function ( mode, hideErrors ) {
+CommentController.prototype.setup = function ( mode, hideErrors, suppressNotifications ) {
 	var threadItem = this.getThreadItem(),
 		commentController = this;
 
@@ -204,7 +205,7 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
-		commentController.setupReplyWidget( replyWidget );
+		commentController.setupReplyWidget( replyWidget, {}, suppressNotifications );
 
 		commentController.showAndFocus();
 
@@ -306,13 +307,13 @@ CommentController.prototype.createReplyWidget = function ( commentDetails, confi
 	} );
 };
 
-CommentController.prototype.setupReplyWidget = function ( replyWidget, data ) {
+CommentController.prototype.setupReplyWidget = function ( replyWidget, data, suppressNotifications ) {
 	replyWidget.connect( this, {
 		teardown: 'teardown',
 		reloadPage: this.emit.bind( this, 'reloadPage' )
 	} );
 
-	replyWidget.setup( data );
+	replyWidget.setup( data, suppressNotifications );
 	replyWidget.updateNewCommentsWarning( this.newComments );
 
 	this.replyWidget = replyWidget;
