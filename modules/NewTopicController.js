@@ -148,13 +148,22 @@ NewTopicController.prototype.setupTopicHint = function () {
 		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
 		return;
 	}
-	legacyURI.query.action = 'edit';
-	legacyURI.query.section = 'new';
+	var fragment = '';
+	if ( OO.ui.isMobile() ) {
+		// mw.Uri encodes link fragments, converting to '/' to '%2F', which breaks the router
+		fragment = '#/talk/new';
+		delete legacyURI.query.action;
+		delete legacyURI.query.section;
+	} else {
+		legacyURI.query.action = 'edit';
+		legacyURI.query.section = 'new';
+	}
 	legacyURI.query.dtenable = '0';
 	// This is not a real valid value for 'editintro', but we look for it elsewhere to generate our own edit notice
 	legacyURI.query.editintro = 'mw-dt-topic-hint';
+
 	this.topicHint = new OO.ui.MessageWidget( {
-		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyURI.toString() ).parseDom(),
+		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyURI.toString() + fragment ).parseDom(),
 		icon: 'article'
 	} );
 	this.topicHint.$element.addClass( 'ext-discussiontools-ui-newTopic-hint' );
