@@ -914,7 +914,8 @@ Parser.prototype.computeId = function ( threadItem, previousItems ) {
 		// The range points to the root note, using it like below results in silly values
 		id = 'h-';
 	} else if ( threadItem instanceof HeadingItem ) {
-		headline = utils.getHeadlineNodeAndOffset( threadItem.range.startContainer ).node;
+		// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
+		headline = threadItem.range.startContainer;
 		id = 'h-' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItem instanceof CommentItem ) {
 		id = 'c-' + this.truncateForId( threadItem.author || '' ).replace( / /g, '_' ) + '-' + threadItem.timestamp.toISOString();
@@ -926,7 +927,8 @@ Parser.prototype.computeId = function ( threadItem, previousItems ) {
 	// in one edit, or within a minute), append sequential numbers
 	var threadItemParent = threadItem.parent;
 	if ( threadItemParent instanceof HeadingItem && !threadItemParent.placeholderHeading ) {
-		headline = utils.getHeadlineNodeAndOffset( threadItemParent.range.startContainer ).node;
+		// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
+		headline = threadItemParent.range.startContainer;
 		id += '-' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItemParent instanceof CommentItem ) {
 		id += '-' + this.truncateForId( threadItemParent.author || '' ).replace( / /g, '_' ) + '-' + threadItemParent.timestamp.toISOString();

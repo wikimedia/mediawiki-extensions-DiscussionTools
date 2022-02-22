@@ -38,9 +38,9 @@ class HeadingItem extends ThreadItem {
 		$title = '';
 		// If this comment is in 0th section, there's no section title for the edit summary
 		if ( !$this->isPlaceholderHeading() ) {
-			$headingNode =
-				CommentUtils::getHeadlineNodeAndOffset( $this->getRange()->startContainer )['node'];
-			$id = $headingNode->getAttribute( 'id' );
+			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
+			$headline = $this->getRange()->startContainer;
+			$id = $headline->getAttribute( 'id' );
 			if ( $id ) {
 				// Replace underscores with spaces to undo Sanitizer::escapeIdInternal().
 				// This assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ],

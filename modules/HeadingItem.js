@@ -1,5 +1,4 @@
-var ThreadItem = require( './ThreadItem.js' ),
-	utils = require( './utils.js' );
+var ThreadItem = require( './ThreadItem.js' );
 
 /**
  * A heading item
@@ -25,8 +24,9 @@ HeadingItem.prototype.getLinkableTitle = function () {
 	var title = '';
 	// If this comment is in 0th section, there's no section title for the edit summary
 	if ( !this.placeholderHeading ) {
-		var headingNode = utils.getHeadlineNodeAndOffset( this.range.startContainer ).node;
-		var id = headingNode.getAttribute( 'id' );
+		// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
+		var headline = this.range.startContainer;
+		var id = headline.getAttribute( 'id' );
 		if ( id ) {
 			// Replace underscores with spaces to undo Sanitizer::escapeIdInternal().
 			// This assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ],
