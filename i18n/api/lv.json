@@ -11,6 +11,7 @@
 	"apierror-discussiontools-subscription-failed-add": "Neizdevās abonēt šo tematu.",
 	"apierror-discussiontools-subscription-failed-remove": "Neizdevās atcelt abonementu šim tematam.",
 	"apihelp-discussiontoolsedit-param-commentid": "Komentāra ID",
+	"apihelp-discussiontoolsedit-param-formtoken": "Neobligāts unikāls ID, kas ģenerēts klienta pusē, lai novērstu dubultus ierakstus.",
 	"apihelp-discussiontoolsedit-param-html": "Publicējamais saturs kā HTML. Nevar izmantot kopā ar <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Publicējamais saturs kā vikiteksts. Nevar izmantot kopā ar <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Pievienot jaunu komentāru kā atbildi esošam komentāram.",

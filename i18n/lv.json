@@ -20,6 +20,7 @@
 	"discussiontools-emptystate-title-user-anon": "Laipni lūdzam šajā diskusiju lapā",
 	"discussiontools-error-comment-conflict": "Tavu komentāru nevarēja saglabāt, jo kāds cits komentēja tajā pašā laikā kā tu. Lūdzu, mēģini vēlreiz vai pārlādē lapu, lai redzētu jaunākos komentārus.",
 	"discussiontools-error-comment-disappeared": "Lapā nevarēja atrast komentāru, uz ko tu atbildēji. Tas var būt dzēsts vai pārvietots uz citu lapu. Lūdzu, pārlādē lapu un mēģini vēlreiz.",
+	"discussiontools-error-comment-disappeared-reload": "Lūdzu, pārlādē lapu un mēģini vēlreiz.",
 	"discussiontools-error-comment-is-transcluded": "Saiti \"{{int:discussiontools-replylink}}\" nevar izmantot, lai atbildētu uz šo komentāru. Lai atbildētu, lūdzu, izmanto pilno lapas redaktoru, spiežot uz \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "Saiti \"{{int:discussiontools-replylink}}\" nevar izmantot, lai atbildētu uz šo komentāru, jo tas ir ielādēts no citas lapas. Lai atbildētu, lūdzu, dodies šeit: [[$1]].",
 	"discussiontools-error-noswitchtove-extension": "paplašinājuma vai atsauces sintakse",
