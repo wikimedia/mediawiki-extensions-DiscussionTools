@@ -105,7 +105,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'starttimestamp' => wfTimestampNow(),
 							'useskin' => $params['useskin'],
 							// Param is added by hook in MobileFrontend
-							'mobileformat' => $params['mobileformat'],
+							'mobileformat' => $params['mobileformat'] ?? null,
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword']
