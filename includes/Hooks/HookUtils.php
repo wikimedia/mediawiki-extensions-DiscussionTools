@@ -235,22 +235,6 @@ class HookUtils {
 			return false;
 		}
 
-		$isMobile = false;
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
-			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
-			$isMobile = $mobFrontContext->shouldDisplayMobileView();
-		}
-
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
-
-		if ( $isMobile && (
-			!$dtConfig->get( 'DiscussionToolsEnableMobile' ) ||
-			// Still disable some features for now
-			$feature === self::TOPICSUBSCRIPTION
-		) ) {
-			return false;
-		}
-
 		// Topic subscription is not available on your own talk page, as you will
 		// get 'edit-user-talk' notifications already. (T276996)
 		if (
@@ -281,6 +265,23 @@ class HookUtils {
 		if ( $queryEnable === '0' ) {
 			// ?dtenable=0 forcibly disables the feature regardless of any other checks (T285578)
 			return false;
+		}
+
+		$isMobile = false;
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
+			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
+			$isMobile = $mobFrontContext->shouldDisplayMobileView();
+		}
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+
+		if ( $isMobile && $dtConfig->get( 'DiscussionToolsEnableMobile' ) ) {
+			// Enabling mobile removes MobileFrontend's reply and new topic tools, so always
+			// enable these tools as a replacement.
+			// Topic subscription is not yet available on mobile, awaiting UI implementation.
+			return $feature === null ||
+				$feature === self::REPLYTOOL ||
+				$feature === self::NEWTOPICTOOL ||
+				$feature === self::SOURCEMODETOOLBAR;
 		}
 
 		return static::isAvailableForTitle( $title ) &&
