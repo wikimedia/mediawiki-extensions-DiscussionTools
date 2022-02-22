@@ -30,7 +30,7 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|ردّ|ردّت}} في \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|رد واحد جديد|$1 ردود جديدة|100=99+ ردود جديدة}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "إظهار التعليق",
-	"discussiontools-postedit-confirmation-published": "تم نشر تعليقك.",
+	"discussiontools-postedit-confirmation-published": "نُشِر تعليقك.",
 	"discussiontools-postedit-confirmation-topicadded": "أُضيف موضوعك.",
 	"discussiontools-preference-description": "تفعيل المزايا التجريبية لصفحات النقاش:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying الردّ] على تعليقات صفحات النقاش بضغطة زرّ واحدة.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion إضافة موضوع جديد] باستخدام استمارة في النسق.\n\nيمكنكم تخصيص هذه المزايا بواسطة [[Special:Preferences#mw-prefsection-editing-discussion|التفضيلات]] الخاصة بكم.\n\nستُنشر التحديثات على  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates صفحة تحديثات مشروع صفحات النقاش].\n\nتُرجى الملاحظة:\n* تباعاً، ستتم إضافة مزايا تجريبية جديدة.\n* يمكن لبعض المزايا المدوّنة أعلاه ألّا تتوفّر، حاليا، في الويكيبيديا الخاصة بكم.",
 	"discussiontools-preference-discussion-link": "https://ar.wikipedia.org/wiki/%D9%86%D9%82%D8%A7%D8%B4_%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D9%85%D8%B4%D8%B1%D9%88%D8%B9_%D8%A3%D8%AF%D9%88%D8%A7%D8%AA_%D8%A7%D9%84%D9%85%D8%AD%D8%A7%D8%AF%D8%AB%D8%A7%D8%AA_(%D8%A7%D9%84%D8%AA%D9%86%D8%B3%D9%8A%D9%82)",
