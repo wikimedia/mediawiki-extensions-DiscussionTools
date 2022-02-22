@@ -28,6 +28,7 @@
 	"discussiontools-emptystate-title-user-anon": "Velkommen til denne diskusjonssiden",
 	"discussiontools-error-comment-conflict": "Kommentaren din kunne ikke lagret, kanskje fordi noen andre kommenterte samtidig som du gjorde det. Prøv igjen eller last siden på nytt for å vise de siste kommentarene.",
 	"discussiontools-error-comment-disappeared": "Kunne ikke finne kommentaren du svarer på på siden. Den kan ha blitt slettet eller flyttet til en annen side.",
+	"discussiontools-error-comment-disappeared-reload": "Last siden på nytt og prøv igjen.",
 	"discussiontools-error-comment-is-transcluded": "Lenka «{{int:discussiontools-replylink}}» kan ikke brukes til å svare på denne kommentaren. Bruk den vanlige redigeringsmodusen for å svare ved å trykke på «$1».",
 	"discussiontools-error-comment-is-transcluded-title": "Lenka «{{int:discussiontools-replylink}}» kan ikke brukes til å svare på denne kommentaren fordi den er lastet inn fra en annen side. Gå til [[$1]] for å svare.",
 	"discussiontools-error-comment-not-saved": "Kommentaren din kunne ikke publiseres på den nyligste versjonen av siden. For å se de siste endringene, kopier kommenaren din og bruk nettleseren for å laste siden på nytt.",

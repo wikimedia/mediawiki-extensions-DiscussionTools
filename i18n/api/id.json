@@ -12,6 +12,7 @@
 	"apierror-discussiontools-formtoken-used": "Komentar sudah dikirim. Muat ulang halaman untuk melihatnya.",
 	"apierror-discussiontools-subscription-failed-add": "Tidak dapat berlangganan topik ini.",
 	"apierror-discussiontools-subscription-failed-remove": "Tidak dapat berhenti langganan dari topik ini.",
+	"apihelp-discussiontoolscompare-summary": "Mendapatkan informasi tentang perubahan komentar antara dua revisi halaman.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID komentar yang akan dibalas. Gunakan hanya ketika <var>paction</var> adalah <var>addcomment</var>. Tolak <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Nama komentar yang akan dibalas. Gunakan hanya ketika <var>paction</var> adalah <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-formtoken": "ID unik yang bersifat opsional dan dibuat di klien untuk mencegah pos ganda.",
