@@ -533,7 +533,7 @@
 		},
 		"DiscussionToolsEnableMobile": {
 			"value": true,
-			"description": "Enable DiscussionTools on mobile talk pages."
+			"description": "Enable DiscussionTools on mobile talk pages. Currently this automatically enables 'replytool', 'newtopictool' & 'sourcemodetoolbar' on those pages and disables topic subscriptions on those pages."
 		},
 		"DiscussionTools_replytool": {
 			"value": "default",
