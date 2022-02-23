@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"AC Krah",
+			"Amoarich",
+			"Robertjamal12",
+			"Warmglow"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Mmuaeɛ",
+	"discussiontools-desc": "Nnoɔma a ɛbua adwenkyerɛ bia",
+	"discussiontools-emptystate-button": "Hyɛ adwenkyerɛ ase",
+	"discussiontools-emptystate-title-self": "Akwaaba wɔ wo kasa bia",
+	"discussiontools-emptystate-title-self-anon": "Akwaaba wɔ kasa bia ha",
+	"discussiontools-emptystate-title-user-anon": "Akwaaba wɔ kasa bia ha",
+	"discussiontools-error-comment-conflict": "Wa dwenkyerɛ no ntumi sea, firi sɛ obi foforɔ akyerɛ na dwene saa bia naa mu. Nti sane bue bia no foforɔ anaa hwɛ adwenkerɛ foforɔ no."
+}

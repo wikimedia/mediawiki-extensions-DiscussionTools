@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Teashae"
+			"Teashae",
+			"Iflaq"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "جَوآب",
+	"discussiontools-emptystate-title-self": "پَننِس بَحَث صَفَس پؠٹھ خٲر مَقدَم",
 	"discussiontools-replylink": "جَوآب",
 	"discussiontools-replywidget-cancel": "مَنسوٗخ",
 	"discussiontools-replywidget-loading": "لوڑ چھُ گژھن...",
