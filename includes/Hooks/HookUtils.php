@@ -267,6 +267,10 @@ class HookUtils {
 			return false;
 		}
 
+		if ( !static::isAvailableForTitle( $title ) ) {
+			return false;
+		}
+
 		$isMobile = false;
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
 			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
@@ -274,18 +278,19 @@ class HookUtils {
 		}
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 
-		if ( $isMobile && $dtConfig->get( 'DiscussionToolsEnableMobile' ) ) {
+		if ( $isMobile ) {
 			// Enabling mobile removes MobileFrontend's reply and new topic tools, so always
 			// enable these tools as a replacement.
 			// Topic subscription is not yet available on mobile, awaiting UI implementation.
-			return $feature === null ||
+			return $dtConfig->get( 'DiscussionToolsEnableMobile' ) && (
+				$feature === null ||
 				$feature === self::REPLYTOOL ||
 				$feature === self::NEWTOPICTOOL ||
-				$feature === self::SOURCEMODETOOLBAR;
+				$feature === self::SOURCEMODETOOLBAR
+			);
 		}
 
-		return static::isAvailableForTitle( $title ) &&
-			static::isFeatureEnabledForUser( $output->getUser(), $feature );
+		return static::isFeatureEnabledForUser( $output->getUser(), $feature );
 	}
 
 	/**
