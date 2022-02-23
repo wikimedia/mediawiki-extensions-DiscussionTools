@@ -335,11 +335,19 @@ class PageHooks implements
 	 * @return bool|void
 	 */
 	public function onArticleViewHeader( $article, &$outputDone, &$pcache ) {
+		$title = $article->getTitle();
 		$context = $article->getContext();
 		$output = $context->getOutput();
 		if (
 			$output->getSkin()->getSkinName() === 'minerva' &&
 			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
+			// Only add the button if "New section" tab would be shown in a normal skin.
+			// Match the logic in MediaWiki core:
+			// https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/add6d0a0e38167a710fb47fac97ff3004451494c/includes/skins/SkinTemplate.php#1317
+			(
+				!HookUtils::hasPagePropCached( $title, 'nonewsectionlink' ) &&
+				( $title->isTalkPage() || HookUtils::hasPagePropCached( $title, 'newsectionlink' ) )
+			) &&
 			// No need to show the button when the empty state banner is shown
 			!HookUtils::shouldDisplayEmptyState( $context )
 		) {
@@ -348,7 +356,7 @@ class PageHooks implements
 			$output->enableOOUI();
 			$output->addHTML(
 				new ButtonWidget( [
-					'href' => $article->getTitle()->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
+					'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
 					// TODO: Make this a local message if the Minerva feature goes away
 					'label' => $context->msg( 'minerva-talk-add-topic' )->text(),
 					'flags' => [ 'progressive', 'primary' ],
