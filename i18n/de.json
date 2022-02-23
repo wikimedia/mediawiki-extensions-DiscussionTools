@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"1233qwer1234qwer4",
+			"Brettchenweber",
 			"CennoxX",
 			"Doc Taxon",
 			"ElBe",
@@ -31,7 +32,7 @@
 	"discussiontools-emptystate-title-user": "Beginne eine Diskussion {{GENDER:{{PAGENAME}}|mit}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Willkommen auf dieser Diskussionsseite",
 	"discussiontools-error-comment-conflict": "Dein Kommentar konnte nicht gespeichert werden, weil jemand anderes zur gleichen Zeit wie du kommentiertest. Bitte versuche es erneut oder lade die Seite neu, um die neuesten Kommentare zu sehen.",
-	"discussiontools-error-comment-disappeared": "Kommentar, auf den du antworten möchtest, konnte auf der Seite nicht gefunden werden. Er könnte gelöscht oder auf eine andere Seite verschoben worden sein.",
+	"discussiontools-error-comment-disappeared": "Der Kommentar, auf den du antworten möchtest, konnte auf der Seite nicht gefunden werden. Er könnte gelöscht oder auf eine andere Seite verschoben worden sein.",
 	"discussiontools-error-comment-disappeared-reload": "Bitte lade die Seite neu und versuche es erneut.",
 	"discussiontools-error-comment-is-transcluded": "Der Link „{{int:discussiontools-replylink}}“ kann nicht verwendet werden, um auf diesen Kommentar zu antworten. Um zu antworten, benutze bitte den Ganzseiten-Editor, indem du auf „$1“ klickst.",
 	"discussiontools-error-comment-is-transcluded-title": "Der Link „{{int:discussiontools-replylink}}“ kann nicht verwendet werden, um auf den Kommentar zu antworten, da er von einer anderen Seite geladen wird. Um zu antworten, gehe bitte auf [[$1]].",
