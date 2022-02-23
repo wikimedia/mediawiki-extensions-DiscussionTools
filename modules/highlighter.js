@@ -294,6 +294,7 @@ module.exports = {
 	highlight: highlight,
 	highlightTargetComment: highlightTargetComment,
 	highlightPublishedComment: highlightPublishedComment,
+	highlightNewComments: highlightNewComments,
 	clearHighlightTargetComment: clearHighlightTargetComment,
 	getLastHighlightedPublishedComment: getLastHighlightedPublishedComment
 };
