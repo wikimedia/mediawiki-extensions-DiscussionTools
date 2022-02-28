@@ -513,6 +513,7 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 }
 
 var $highlightedTarget = null;
+var missingTargetNotifPromise = null;
 /**
  * Highlight the comment(s) on the page associated with the URL hash or query string
  *
@@ -527,6 +528,12 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 			$highlightedTarget.remove();
 			$highlightedTarget = null;
 		}
+		if ( missingTargetNotifPromise ) {
+			missingTargetNotifPromise.then( function ( notif ) {
+				notif.close();
+			} );
+			missingTargetNotifPromise = null;
+		}
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var targetElement = $( ':target' )[ 0 ];
 
@@ -536,6 +543,15 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
 			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
 			return;
+		}
+
+		if ( location.hash.match( /^#c-/ ) && !targetElement ) {
+			missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
+				return mw.notification.notify(
+					mw.message( 'discussiontools-target-comment-missing' ).parse(),
+					{ type: 'warn', autoHide: false }
+				);
+			} );
 		}
 
 		var uri;
@@ -566,6 +582,9 @@ function highlightTargetComment( threadItemSet, noScroll ) {
  */
 function highlightNewComments( threadItemSet, noScroll, newCommentIds, newCommentsSinceId, inThread ) {
 	newCommentIds = newCommentIds || [];
+
+	var highlightsRequested = newCommentIds.length || newCommentsSinceId;
+	var highlightsRequestedSingle = !newCommentsSinceId && newCommentIds.length === 1;
 
 	if ( newCommentsSinceId ) {
 		var newCommentsSince = threadItemSet.findCommentById( newCommentsSinceId );
@@ -615,6 +634,17 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, newCommen
 			}
 			document.getElementById( comments[ topmostComment ].id ).scrollIntoView();
 		}
+	} else if ( highlightsRequested ) {
+		missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
+			return mw.notification.notify(
+				mw.message(
+					highlightsRequestedSingle ?
+						'discussiontools-target-comment-missing' :
+						'discussiontools-target-comments-missing'
+				).parse(),
+				{ type: 'warn', autoHide: false }
+			);
+		} );
 	}
 }
 
@@ -624,6 +654,13 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, newCommen
  * @param {ThreadItemSet} threadItemSet
  */
 function clearHighlightTargetComment( threadItemSet ) {
+	if ( missingTargetNotifPromise ) {
+		missingTargetNotifPromise.then( function ( notif ) {
+			notif.close();
+		} );
+		missingTargetNotifPromise = null;
+	}
+
 	var uri;
 	try {
 		uri = new mw.Uri( location.href );
