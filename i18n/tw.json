@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"AC Krah",
+			"Amoarich",
+			"Robertjamal12",
+			"Warmglow"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Mmuaeɛ",
+	"discussiontools-desc": "Nnoɔma a ɛbua adwenkyerɛ bia",
+	"discussiontools-preference-label": "Nkitahodeɛ mfidie",
+	"discussiontools-replylink": "mmuaeɛ",
+	"discussiontools-replywidget-cancel": "Twa mu",
+	"discussiontools-replywidget-placeholder-reply": "Bua {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Hwɛ ansa",
+	"discussiontools-replywidget-reply": "Mmuaeɛ",
+	"discussiontools-replywidget-terms-click": "Sɛ wo mia \"$1\" so a, wagye mmra a ɛfa wiki wei so nyinaa atumu"
+}
