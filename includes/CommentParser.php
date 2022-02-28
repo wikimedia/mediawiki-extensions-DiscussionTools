@@ -647,20 +647,33 @@ class CommentParser {
 	 * @return int Appropriate NodeFilter constant
 	 */
 	public static function acceptOnlyNodesAllowingComments( Node $node ): int {
-		// The table of contents has a heading that gets erroneously detected as a section
-		if ( $node instanceof Element && $node->getAttribute( 'id' ) === 'toc' ) {
-			return NodeFilter::FILTER_REJECT;
+		if ( $node instanceof Element ) {
+			$tagName = strtolower( $node->tagName );
+			// The table of contents has a heading that gets erroneously detected as a section
+			if ( $node->getAttribute( 'id' ) === 'toc' ) {
+				return NodeFilter::FILTER_REJECT;
+			}
+			// Don't detect comments within references. We can't add replies to them without bungling up
+			// the structure in some cases (T301213), and you're not supposed to do that anyway…
+			if (
+				// <ol class="references"> is the only reliably consistent thing between the two parsers
+				$tagName === 'ol' &&
+				DOMCompat::getClassList( $node )->contains( 'references' )
+			) {
+				return NodeFilter::FILTER_REJECT;
+			}
+			// Don't detect comments within quotes (T275881)
+			if (
+				$tagName === 'blockquote' ||
+				$tagName === 'cite' ||
+				$tagName === 'q'
+			) {
+				return NodeFilter::FILTER_REJECT;
+			}
 		}
-		// Don't detect comments within quotes (T275881)
-		if ( $node instanceof Element && (
-			strtolower( $node->tagName ) === 'blockquote' ||
-			strtolower( $node->tagName ) === 'cite' ||
-			strtolower( $node->tagName ) === 'q'
-		) ) {
-			return NodeFilter::FILTER_REJECT;
-		}
+		$parentNode = $node->parentNode;
 		// Don't detect comments within headings (but don't reject the headings themselves)
-		if ( ( $par = $node->parentNode ) instanceof Element && preg_match( '/^h([1-6])$/i', $par->tagName ) ) {
+		if ( $parentNode instanceof Element && preg_match( '/^h([1-6])$/i', $parentNode->tagName ) ) {
 			return NodeFilter::FILTER_REJECT;
 		}
 		return NodeFilter::FILTER_ACCEPT;

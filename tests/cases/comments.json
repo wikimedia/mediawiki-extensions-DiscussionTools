@@ -168,6 +168,22 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "Comments inside references (old parser)",
+		"title": "Talk:T301213",
+		"dom": "cases/reflist-oldparser/reflist-oldparser.html",
+		"expected": "../cases/reflist-oldparser/reflist-oldparser.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Comments inside references (Parsoid)",
+		"title": "Talk:T301213",
+		"dom": "cases/reflist-parsoid/reflist-parsoid.html",
+		"expected": "../cases/reflist-parsoid/reflist-parsoid.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Link using fallback 8-bit encoding (invalid UTF-8)",
 		"title": "Wikipédia:Kocsmafal (műszaki)/Archív32",
 		"dom": "cases/fallback-encoding-link/fallback-encoding-link.html",
