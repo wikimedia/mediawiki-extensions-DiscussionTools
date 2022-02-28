@@ -6145,7 +6145,7 @@
 				"timestamp": "2019-07-03T21:58:00.000Z",
 				"author": "Mandruss",
 				"range": [
-					"0/255/0/0",
+					"0/255/0",
 					"0/257/2/5"
 				],
 				"signatureRanges": [
@@ -6534,7 +6534,7 @@
 				"timestamp": "2019-07-05T14:02:00.000Z",
 				"author": "Graham87",
 				"range": [
-					"0/289/0/0",
+					"0/289/0",
 					"0/291/7/25"
 				],
 				"signatureRanges": [
@@ -6979,7 +6979,7 @@
 				"timestamp": "2019-07-06T21:29:00.000Z",
 				"author": "Deacon Vorbis",
 				"range": [
-					"0/309/0/0",
+					"0/309/0",
 					"0/309/2/7"
 				],
 				"signatureRanges": [
@@ -10135,7 +10135,7 @@
 				"timestamp": "2019-07-06T07:05:00.000Z",
 				"author": "QEDK",
 				"range": [
-					"0/403/0/0",
+					"0/403/0",
 					"0/404/2/25"
 				],
 				"signatureRanges": [
@@ -11297,7 +11297,7 @@
 				"timestamp": "2019-07-12T03:00:00.000Z",
 				"author": "QuackGuru",
 				"range": [
-					"0/490/0/0",
+					"0/490/0",
 					"0/492/6/27"
 				],
 				"signatureRanges": [
@@ -14018,7 +14018,7 @@
 				"timestamp": "2019-07-17T11:33:00.000Z",
 				"author": "Dweller",
 				"range": [
-					"0/690/0/0/0",
+					"0/690/0/0",
 					"0/693/8/26"
 				],
 				"signatureRanges": [
@@ -14528,7 +14528,7 @@
 				"timestamp": "2019-07-16T01:11:00.000Z",
 				"author": "Whatamidoing (WMF)",
 				"range": [
-					"0/736/0/0",
+					"0/736/0",
 					"0/738/5/27"
 				],
 				"signatureRanges": [
@@ -17369,7 +17369,7 @@
 				"timestamp": "2019-07-29T00:58:00.000Z",
 				"author": "Andrybak",
 				"range": [
-					"0/904/0/0",
+					"0/904/0",
 					"0/910/10/27"
 				],
 				"signatureRanges": [
@@ -18729,7 +18729,7 @@
 				"timestamp": "2019-08-02T05:45:00.000Z",
 				"author": "Nardog",
 				"range": [
-					"0/1011/0/0",
+					"0/1011/0",
 					"0/1011/2/5"
 				],
 				"signatureRanges": [
@@ -20601,7 +20601,7 @@
 				"timestamp": "2019-08-04T14:31:00.000Z",
 				"author": "Davey2010",
 				"range": [
-					"0/1130/0/0/0",
+					"0/1130/0/0",
 					"0/1132/11/27"
 				],
 				"signatureRanges": [
@@ -23500,7 +23500,7 @@
 				"timestamp": "2019-08-10T12:26:00.000Z",
 				"author": "Davey2010",
 				"range": [
-					"0/1338/0/0/0",
+					"0/1338/0/0",
 					"0/1344/3/28"
 				],
 				"signatureRanges": [
@@ -24539,7 +24539,7 @@
 				"timestamp": "2019-08-13T20:39:00.000Z",
 				"author": "Redrose64",
 				"range": [
-					"0/1414/0/0",
+					"0/1414/0",
 					"0/1415/6/29"
 				],
 				"signatureRanges": [
@@ -24850,7 +24850,7 @@
 				"timestamp": "2019-08-14T17:55:00.000Z",
 				"author": "Vchimpanzee",
 				"range": [
-					"0/1443/0/0",
+					"0/1443/0",
 					"0/1444/6/31"
 				],
 				"signatureRanges": [
@@ -28698,7 +28698,7 @@
 				"timestamp": "2019-08-12T05:24:00.000Z",
 				"author": "QEDK",
 				"range": [
-					"0/1596/0/0",
+					"0/1596/0",
 					"0/1600/2/28"
 				],
 				"signatureRanges": [
@@ -28975,7 +28975,7 @@
 				"timestamp": "2019-08-15T10:51:00.000Z",
 				"author": "Incnis Mrsi",
 				"range": [
-					"0/1640/0/0/0",
+					"0/1640/0/0",
 					"0/1642/14/29"
 				],
 				"signatureRanges": [
@@ -29016,7 +29016,7 @@
 				"timestamp": "2019-08-15T12:03:00.000Z",
 				"author": "PrimeHunter",
 				"range": [
-					"0/1646/0/0/0",
+					"0/1646/0/0",
 					"0/1648/0/0/0/4/29"
 				],
 				"signatureRanges": [
@@ -29102,7 +29102,7 @@
 				"timestamp": "2019-08-15T16:41:00.000Z",
 				"author": "PrimeHunter",
 				"range": [
-					"0/1650/0/0/0",
+					"0/1650/0/0",
 					"0/1654/0/0/0/0/0/0/0/4/29"
 				],
 				"signatureRanges": [
