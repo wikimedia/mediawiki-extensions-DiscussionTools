@@ -4,7 +4,7 @@ var
 
 QUnit.module( 'mw.dt.ThreadItem', QUnit.newMwEnvironment() );
 
-QUnit.test( '#getAuthorsBelow', function ( assert ) {
+QUnit.test( '#getAuthorsBelow/#getThreadItemsBelow', function ( assert ) {
 	var cases = require( '../cases/authors.json' );
 
 	function newFromJSON( json ) {
@@ -15,6 +15,7 @@ QUnit.test( '#getAuthorsBelow', function ( assert ) {
 			item = new CommentItem();
 			item.author = json.author;
 		}
+		item.id = json.id;
 		item.replies = json.replies.map( newFromJSON );
 		return item;
 	}
@@ -25,7 +26,13 @@ QUnit.test( '#getAuthorsBelow', function ( assert ) {
 
 		assert.deepEqual(
 			authors,
-			caseItem.expected
+			caseItem.expectedAuthorsBelow,
+			'getAuthorsBelow'
+		);
+
+		assert.deepEqual(
+			threadItem.getThreadItemsBelow().map( function ( item ) { return item.id; } ),
+			caseItem.expectedThreadItemIdsBelow
 		);
 	} );
 } );

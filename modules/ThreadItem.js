@@ -116,12 +116,29 @@ ThreadItem.prototype.getAuthorsBelow = function () {
 	function getAuthorSet( comment ) {
 		authors[ comment.author ] = true;
 		// Get the set of authors in the same format from each reply
-		comment.replies.map( getAuthorSet );
+		comment.replies.forEach( getAuthorSet );
 	}
 
-	this.replies.map( getAuthorSet );
+	this.replies.forEach( getAuthorSet );
 
 	return Object.keys( authors ).sort();
+};
+
+/**
+ * Get the list of thread items in the comment tree below this thread item.
+ *
+ * @return {ThreadItem[]} Thread items
+ */
+ThreadItem.prototype.getThreadItemsBelow = function () {
+	var threadItems = [];
+	function getReplies( comment ) {
+		threadItems.push( comment );
+		comment.replies.forEach( getReplies );
+	}
+
+	this.replies.forEach( getReplies );
+
+	return threadItems;
 };
 
 /**

@@ -20,8 +20,11 @@ class ThreadItemTest extends IntegrationTestCase {
 	/**
 	 * @dataProvider provideAuthors
 	 * @covers ::getAuthorsBelow
+	 * @covers ::getThreadItemsBelow
 	 */
-	public function testGetAuthorsBelow( array $thread, array $expected ): void {
+	public function testGetAuthorsOrThreadItemsBelow(
+		array $thread, array $expectedAuthors, array $expectedThreadItemIds
+	): void {
 		$doc = $this->createDocument( '' );
 		$node = $doc->createElement( 'div' );
 		$range = new ImmutableRange( $node, 0, $node, 0 );
@@ -32,6 +35,7 @@ class ThreadItemTest extends IntegrationTestCase {
 			} else {
 				$item = new HeadingItem( $range, 2 );
 			}
+			$item->setId( $arr['id'] );
 			foreach ( $arr['replies'] as $reply ) {
 				$item->addReply( $makeThreadItem( $reply ) );
 			}
@@ -40,7 +44,10 @@ class ThreadItemTest extends IntegrationTestCase {
 
 		$threadItem = $makeThreadItem( $thread );
 
-		self::assertEquals( $expected, $threadItem->getAuthorsBelow() );
+		self::assertEquals( $expectedAuthors, $threadItem->getAuthorsBelow() );
+		self::assertEquals( $expectedThreadItemIds, array_map( static function ( ThreadItem $threadItem ): string {
+			return $threadItem->getId();
+		}, $threadItem->getThreadItemsBelow() ) );
 	}
 
 	public function provideAuthors(): array {

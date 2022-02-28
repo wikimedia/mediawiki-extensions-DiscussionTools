@@ -67,12 +67,12 @@ abstract class ThreadItem implements JsonSerializable {
 	 */
 	public function getAuthorsBelow(): array {
 		$authors = [];
-		$getAuthorSet = static function ( ThreadItem $comment ) use ( &$authors, &$getAuthorSet ) {
-			if ( $comment instanceof CommentItem ) {
-				$authors[ $comment->getAuthor() ] = true;
+		$getAuthorSet = static function ( ThreadItem $threadItem ) use ( &$authors, &$getAuthorSet ) {
+			if ( $threadItem instanceof CommentItem ) {
+				$authors[ $threadItem->getAuthor() ] = true;
 			}
 			// Get the set of authors in the same format from each reply
-			foreach ( $comment->getReplies() as $reply ) {
+			foreach ( $threadItem->getReplies() as $reply ) {
 				$getAuthorSet( $reply );
 			}
 		};
@@ -83,6 +83,27 @@ abstract class ThreadItem implements JsonSerializable {
 
 		ksort( $authors );
 		return array_keys( $authors );
+	}
+
+	/**
+	 * Get the list of thread items in the comment tree below this thread item.
+	 *
+	 * @return ThreadItem[] Thread items
+	 */
+	public function getThreadItemsBelow(): array {
+		$threadItems = [];
+		$getReplies = static function ( ThreadItem $threadItem ) use ( &$threadItems, &$getReplies ) {
+			$threadItems[] = $threadItem;
+			foreach ( $threadItem->getReplies() as $reply ) {
+				$getReplies( $reply );
+			}
+		};
+
+		foreach ( $this->getReplies() as $reply ) {
+			$getReplies( $reply );
+		}
+
+		return $threadItems;
 	}
 
 	/**

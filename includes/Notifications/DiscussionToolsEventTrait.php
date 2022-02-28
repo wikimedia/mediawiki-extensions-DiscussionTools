@@ -71,18 +71,15 @@ trait DiscussionToolsEventTrait {
 			// * Subscribed topic notifications are bundled per-section.
 			// * User talk page notifications are bundled per-page (so basically, always bundled).
 			// * Mention notifications are *never* bundled.
-			// Code below tries to avoid assumptions in case this behavior changes.
 
-			$commentIds = [ $this->event->getExtraParam( 'comment-id' ) ];
-			foreach ( $this->getBundledEvents() as $event ) {
-				$commentIds[] = $event->getExtraParam( 'comment-id' );
+			// Just pass the first comment in the bundle. The client has access to the comment
+			// tree and so can work out all the other comments since this one.
+			$firstEvent = $this->getBundledEvents()[ 0 ];
+			$params = [ 'dtnewcommentssince' => $firstEvent->getExtraParam( 'comment-id' ) ];
+			if ( $this->event->getExtraParam( 'subscribed-comment-name' ) ) {
+				// Topic notifications: Tell client to restrict highlights to this thread
+				$params[ 'dtinthread' ] = 1;
 			}
-			$commentIds = array_values( array_filter( $commentIds ) );
-			if ( !$commentIds ) {
-				return null;
-			}
-
-			$params = [ 'dtnewcomments' => implode( '|', $commentIds ) ];
 			// This may or may not have a fragment identifier, depending on whether it was recorded for
 			// the first one of the bundled events. It's usually not needed because we handle scrolling
 			// client-side, but we can keep it for no-JS users, and to reduce the jump when scrolling.
