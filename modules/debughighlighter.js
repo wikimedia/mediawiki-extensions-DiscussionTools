@@ -12,7 +12,7 @@ function markTimestamp( parser, node, match ) {
 	newNode.splitText( match.matchData[ 0 ].length );
 
 	var wrapper = document.createElement( 'span' );
-	wrapper.className = 'ext-discussiontools-highlighter-timestamp';
+	wrapper.className = 'ext-discussiontools-debughighlighter-timestamp';
 	// We might need to actually port all the date formatting code from MediaWiki's PHP code
 	// if we want to support displaying dates in all the formats available in user preferences
 	// (which include formats in several non-Gregorian calendars).
@@ -26,7 +26,7 @@ function markSignature( sigNodes ) {
 	var
 		where = sigNodes[ 0 ],
 		wrapper = document.createElement( 'span' );
-	wrapper.className = 'ext-discussiontools-highlighter-signature';
+	wrapper.className = 'ext-discussiontools-debughighlighter-signature';
 	where.parentNode.insertBefore( wrapper, where );
 	while ( sigNodes.length ) {
 		wrapper.appendChild( sigNodes.pop() );
@@ -58,7 +58,7 @@ function calculateSizes() {
 
 function markComment( comment ) {
 	var marker = document.createElement( 'div' );
-	marker.className = 'ext-discussiontools-highlighter-comment';
+	marker.className = 'ext-discussiontools-debughighlighter-comment';
 
 	if ( !firstMarker ) {
 		firstMarker = marker;
@@ -67,13 +67,13 @@ function markComment( comment ) {
 	var marker2 = null;
 	if ( comment.parent ) {
 		marker2 = document.createElement( 'div' );
-		marker2.className = 'ext-discussiontools-highlighter-comment-ruler';
+		marker2.className = 'ext-discussiontools-debughighlighter-comment-ruler';
 	}
 
 	var markerWarnings = null;
 	if ( comment.warnings && comment.warnings.length ) {
 		markerWarnings = document.createElement( 'div' );
-		markerWarnings.className = 'ext-discussiontools-highlighter-comment-warnings';
+		markerWarnings.className = 'ext-discussiontools-debughighlighter-comment-warnings';
 		markerWarnings.innerText = comment.warnings.join( '\n' );
 	}
 
@@ -136,7 +136,7 @@ function markThreads( threads ) {
 	threads.forEach( markComment );
 	// Reverse order so that box-shadows look right
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( 'body' ).append( $( '.ext-discussiontools-highlighter-comment-ruler' ).get().reverse() );
+	$( 'body' ).append( $( '.ext-discussiontools-debughighlighter-comment-ruler' ).get().reverse() );
 }
 
 function updateAll() {

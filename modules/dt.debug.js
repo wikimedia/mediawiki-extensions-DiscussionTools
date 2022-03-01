@@ -2,7 +2,7 @@ var
 	Parser = require( 'ext.discussionTools.init' ).Parser,
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,
-	highlighter = require( './highlighter.js' ),
+	debugHighlighter = require( './debughighlighter.js' ),
 	parser = new Parser( require( 'ext.discussionTools.init' ).parserData ),
 	result = parser.parse(
 		document.getElementById( 'mw-content-text' ),
@@ -18,7 +18,7 @@ var
 
 // eslint-disable-next-line no-bitwise
 if ( debug & DEBUG_HIGHLIGHT ) {
-	highlighter.markThreads( threads );
+	debugHighlighter.markThreads( threads );
 
 	comments.forEach( function ( comment ) {
 		comment.signatureRanges.forEach( function ( signatureRange ) {
@@ -32,9 +32,9 @@ if ( debug & DEBUG_HIGHLIGHT ) {
 			// Note that additional content may follow the timestamp (e.g. in some voting formats), but we
 			// don't care about it. The code below doesn't mark that due to now the text nodes are sliced,
 			// but we might need to take care to use the matched range of node in other cases.
-			highlighter.markTimestamp( parser, node, match );
+			debugHighlighter.markTimestamp( parser, node, match );
 			if ( !emptySignature ) {
-				highlighter.markSignature( signature );
+				debugHighlighter.markSignature( signature );
 			}
 		} );
 	} );

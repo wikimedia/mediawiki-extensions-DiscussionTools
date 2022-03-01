@@ -140,9 +140,9 @@
 		"ext.discussionTools.debug": {
 			"packageFiles": [
 				"dt.debug.js",
-				"highlighter.js"
+				"debughighlighter.js"
 			],
-			"styles": "highlighter.less",
+			"styles": "debughighlighter.less",
 			"dependencies": [
 				"ext.discussionTools.init"
 			],
