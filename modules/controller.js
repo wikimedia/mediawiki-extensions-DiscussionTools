@@ -3,6 +3,7 @@
 /* global moment */
 var
 	$pageContainer, linksController, lastHighlightComment,
+	pageThreads,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	seenAutoTopicSubPopup = !!+mw.user.options.get( 'discussiontools-seenautotopicsubpopup' ),
 	MemoryStorage = require( './MemoryStorage.js' ),
@@ -18,6 +19,7 @@ var
 	STATE_UNSUBSCRIBED = 0,
 	STATE_SUBSCRIBED = 1,
 	STATE_AUTOSUBSCRIBED = 2,
+	pageHandlersSetup = false,
 	pageDataCache = {};
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
@@ -502,7 +504,7 @@ function init( $container, state ) {
 	var parser = new Parser( require( './parser/data.json' ) );
 
 	var commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
-	var result = ThreadItemSet.static.newFromAnnotatedNodes( commentNodes, parser );
+	pageThreads = ThreadItemSet.static.newFromAnnotatedNodes( commentNodes, parser );
 
 	if ( featuresEnabled.topicsubscription ) {
 		initTopicSubscriptions( $container );
@@ -523,9 +525,9 @@ function init( $container, state ) {
 			$addSectionLink = $( '#ca-addsection a' );
 			// When opening new topic tool using any link, always activate the link in page tabs too
 			$link = $link.add( $addSectionLink );
-			commentController = new NewTopicController( $pageContainer, result );
+			commentController = new NewTopicController( $pageContainer, pageThreads );
 		} else {
-			commentController = new CommentController( $pageContainer, result.findCommentById( commentId ), result );
+			commentController = new CommentController( $pageContainer, pageThreads.findCommentById( commentId ), pageThreads );
 		}
 
 		activeCommentId = commentId;
@@ -579,8 +581,8 @@ function init( $container, state ) {
 	// Restore autosave
 	( function () {
 		var mode, $link;
-		for ( var i = 0; i < result.threadItems.length; i++ ) {
-			var comment = result.threadItems[ i ];
+		for ( var i = 0; i < pageThreads.threadItems.length; i++ ) {
+			var comment = pageThreads.threadItems[ i ];
 			if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
 				mode = storage.get( 'reply/' + comment.id + '/mode' );
 				$link = $( commentNodes[ i ] );
@@ -597,7 +599,7 @@ function init( $container, state ) {
 	}() );
 
 	// For debugging (now unused in the code)
-	mw.dt.pageThreads = result;
+	mw.dt.pageThreads = pageThreads;
 
 	var promise = OO.ui.isMobile() && mw.loader.getState( 'mobile.init' ) ?
 		mw.loader.using( 'mobile.init' ) :
@@ -605,7 +607,7 @@ function init( $container, state ) {
 
 	promise.then( function () {
 		if ( state.repliedTo ) {
-			lastHighlightComment = highlighter.highlightPublishedComment( result, state.repliedTo );
+			lastHighlightComment = highlighter.highlightPublishedComment( pageThreads, state.repliedTo );
 
 			if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
 				mw.hook( 'postEdit' ).fire( {
@@ -631,19 +633,19 @@ function init( $container, state ) {
 			if ( state.repliedTo ) {
 				// Edited by using the reply tool or new topic tool. Only check the edited topic.
 				if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
-					recentComments.push( result.threadItems[ result.threadItems.length - 1 ] );
+					recentComments.push( pageThreads.threadItems[ pageThreads.threadItems.length - 1 ] );
 				} else {
-					recentComments.push( result.threadItemsById[ state.repliedTo ] );
+					recentComments.push( pageThreads.threadItemsById[ state.repliedTo ] );
 				}
 			} else if ( mw.config.get( 'wgPostEdit' ) ) {
 				// Edited by using wikitext editor. Check topics with their own comments within last minute.
-				for ( var i = 0; i < result.threadItems.length; i++ ) {
+				for ( var i = 0; i < pageThreads.threadItems.length; i++ ) {
 					if (
-						result.threadItems[ i ] instanceof CommentItem &&
-						result.threadItems[ i ].author === mw.user.getName() &&
-						result.threadItems[ i ].timestamp.isSameOrAfter( moment().subtract( 1, 'minute' ), 'minute' )
+						pageThreads.threadItems[ i ] instanceof CommentItem &&
+						pageThreads.threadItems[ i ].author === mw.user.getName() &&
+						pageThreads.threadItems[ i ].timestamp.isSameOrAfter( moment().subtract( 1, 'minute' ), 'minute' )
 					) {
-						recentComments.push( result.threadItems[ i ] );
+						recentComments.push( pageThreads.threadItems[ i ] );
 					}
 				}
 			}
@@ -665,16 +667,20 @@ function init( $container, state ) {
 		mw.config.get( 'wgCurRevisionId' )
 	);
 
-	$( window ).on( 'popstate', function () {
-		highlighter.highlightTargetComment( result, true );
-	} );
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$( 'body' ).on( 'click', function ( e ) {
-		if ( utils.isUnmodifiedLeftClick( e ) ) {
-			highlighter.clearHighlightTargetComment( result );
-		}
-	} );
-	highlighter.highlightTargetComment( result );
+	// Page-level handlers only need to be setup once
+	if ( !pageHandlersSetup ) {
+		$( window ).on( 'popstate', function () {
+			highlighter.highlightTargetComment( pageThreads, true );
+		} );
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( 'body' ).on( 'click', function ( e ) {
+			if ( utils.isUnmodifiedLeftClick( e ) ) {
+				highlighter.clearHighlightTargetComment( pageThreads );
+			}
+		} );
+		pageHandlersSetup = true;
+	}
+	highlighter.highlightTargetComment( pageThreads );
 }
 
 /**
