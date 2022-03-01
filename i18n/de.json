@@ -97,6 +97,8 @@
 	"discussiontools-replywidget-terms-click": "Durch Klicken auf „$1“ stimmst du den Nutzungsbedingungen für dieses Wiki zu.",
 	"discussiontools-replywidget-transcluded": "Dein Kommentar wird auf [[$1]] gespeichert.",
 	"discussiontools-replywidget-watchthis": "Füge diese Seite zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzu",
+	"discussiontools-target-comment-missing": "Dieser Kommentar konnte nicht gefunden werden. Möglicherweise wurde er gelöscht oder verschoben.",
+	"discussiontools-target-comments-missing": "Es konnten keine neuen Kommentare gefunden werden. Möglicherweise wurden sie gelöscht oder verschoben.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Abbestellen",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Abonnement für dieses Thema aufheben?",
 	"discussiontools-topicsubscription-button-subscribe": "Abonnieren",
