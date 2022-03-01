@@ -1,4 +1,5 @@
 var
+	lastHighlightedPublishedComment = null,
 	CommentItem = require( './CommentItem.js' ),
 	utils = require( './utils.js' );
 
@@ -100,15 +101,14 @@ function highlightTargetComment( threadItemSet, noScroll ) {
  *
  * @param {ThreadItemSet} threadItemSet Thread item set
  * @param {string} threadItemId Thread item ID (NEW_TOPIC_COMMENT_ID for the a new topic)
- * @return {ThreadItem} Highlighted thread item
  */
 function highlightPublishedComment( threadItemSet, threadItemId ) {
-	var $highlight, highlightedThreadItem;
+	var $highlight;
 	if ( threadItemId === utils.NEW_TOPIC_COMMENT_ID ) {
 		// Highlight the last comment on the page
 		var lastComment = threadItemSet.threadItems[ threadItemSet.threadItems.length - 1 ];
 		$highlight = highlight( lastComment );
-		highlightedThreadItem = lastComment;
+		lastHighlightedPublishedComment = lastComment;
 
 		// If it's the only comment under its heading, highlight the heading too.
 		// (It might not be if the new discussion topic was posted without a title: T272666.)
@@ -118,13 +118,13 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 			lastComment.parent.replies.length === 1
 		) {
 			$highlight = $highlight.add( highlight( lastComment.parent ) );
-			highlightedThreadItem = lastComment.parent;
+			lastHighlightedPublishedComment = lastComment.parent;
 		}
 	} else {
 		// Find the comment we replied to, then highlight the last reply
 		var repliedToComment = threadItemSet.threadItemsById[ threadItemId ];
 		$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
-		highlightedThreadItem = repliedToComment.replies[ repliedToComment.replies.length - 1 ];
+		lastHighlightedPublishedComment = repliedToComment.replies[ repliedToComment.replies.length - 1 ];
 	}
 
 	$highlight.addClass( 'ext-discussiontools-init-publishedcomment' );
@@ -154,8 +154,6 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 			}, 250 );
 		}, 3000 );
 	} );
-
-	return highlightedThreadItem;
 }
 
 /**
@@ -283,9 +281,19 @@ function clearHighlightTargetComment( threadItemSet ) {
 	}
 }
 
+/**
+ * Get the last highlighted just-published comment, if any
+ *
+ * @return {ThreadItem|null}
+ */
+function getLastHighlightedPublishedComment() {
+	return lastHighlightedPublishedComment;
+}
+
 module.exports = {
 	highlight: highlight,
 	highlightTargetComment: highlightTargetComment,
 	highlightPublishedComment: highlightPublishedComment,
-	clearHighlightTargetComment: clearHighlightTargetComment
+	clearHighlightTargetComment: clearHighlightTargetComment,
+	getLastHighlightedPublishedComment: getLastHighlightedPublishedComment
 };
