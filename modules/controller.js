@@ -604,72 +604,23 @@ function init( $container, state ) {
 		$.Deferred().resolve().promise();
 
 	promise.then( function () {
-		var $highlight;
-		if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
-			// Highlight the last comment on the page
-			var lastComment = result.threadItems[ result.threadItems.length - 1 ];
-			$highlight = highlighter.highlight( lastComment );
-			lastHighlightComment = lastComment;
+		if ( state.repliedTo ) {
+			lastHighlightComment = highlighter.highlightPublishedComment( result, state.repliedTo );
 
-			// If it's the only comment under its heading, highlight the heading too.
-			// (It might not be if the new discussion topic was posted without a title: T272666.)
-			if (
-				lastComment.parent &&
-				lastComment.parent.type === 'heading' &&
-				lastComment.parent.replies.length === 1
-			) {
-				$highlight = $highlight.add( highlighter.highlight( lastComment.parent ) );
-				lastHighlightComment = lastComment.parent;
-			}
-
-			mw.hook( 'postEdit' ).fire( {
-				message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
-			} );
-
-		} else if ( state.repliedTo ) {
-			// Find the comment we replied to, then highlight the last reply
-			var repliedToComment = result.threadItemsById[ state.repliedTo ];
-			$highlight = highlighter.highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
-			lastHighlightComment = repliedToComment.replies[ repliedToComment.replies.length - 1 ];
-
-			if ( OO.ui.isMobile() ) {
-				mw.notify( mw.msg( 'discussiontools-postedit-confirmation-published', mw.user ) );
-			} else {
-				// postEdit is currently desktop only
+			if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
 				mw.hook( 'postEdit' ).fire( {
-					message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
+					message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
 				} );
-			}
-		}
-
-		if ( $highlight ) {
-			$highlight.addClass( 'ext-discussiontools-init-publishedcomment' );
-
-			// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
-			// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
-			OO.ui.Element.static.scrollIntoView(
-				$highlight[ 0 ],
-				{
-					padding: {
-						// Add padding to avoid overlapping the post-edit notification (above on desktop, below on mobile)
-						top: OO.ui.isMobile() ? 10 : 60,
-						bottom: OO.ui.isMobile() ? 85 : 10
-					},
-					// Specify scrollContainer for compatibility with MobileFrontend.
-					// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
-					scrollContainer: OO.ui.Element.static.getRootScrollableElement( $highlight[ 0 ] )
+			} else {
+				if ( OO.ui.isMobile() ) {
+					mw.notify( mw.msg( 'discussiontools-postedit-confirmation-published', mw.user ) );
+				} else {
+					// postEdit is currently desktop only
+					mw.hook( 'postEdit' ).fire( {
+						message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
+					} );
 				}
-			).then( function () {
-				$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
-				setTimeout( function () {
-					$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
-					setTimeout( function () {
-						// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
-						// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
-						$highlight.remove();
-					}, 250 );
-				}, 3000 );
-			} );
+			}
 		}
 
 		// Check topic subscription states if the user has automatic subscriptions enabled

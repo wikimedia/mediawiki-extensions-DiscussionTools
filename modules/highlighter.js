@@ -1,4 +1,6 @@
-var CommentItem = require( './CommentItem.js' );
+var
+	CommentItem = require( './CommentItem.js' ),
+	utils = require( './utils.js' );
 
 /**
  * Draw a semi-transparent rectangle on the page to highlight the given comment.
@@ -91,6 +93,69 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 			uri.query.dtinthread
 		);
 	} );
+}
+
+/**
+ * Highlight a just-published comment/topic
+ *
+ * @param {ThreadItemSet} threadItemSet Thread item set
+ * @param {string} threadItemId Thread item ID (NEW_TOPIC_COMMENT_ID for the a new topic)
+ * @return {ThreadItem} Highlighted thread item
+ */
+function highlightPublishedComment( threadItemSet, threadItemId ) {
+	var $highlight, highlightedThreadItem;
+	if ( threadItemId === utils.NEW_TOPIC_COMMENT_ID ) {
+		// Highlight the last comment on the page
+		var lastComment = threadItemSet.threadItems[ threadItemSet.threadItems.length - 1 ];
+		$highlight = highlight( lastComment );
+		highlightedThreadItem = lastComment;
+
+		// If it's the only comment under its heading, highlight the heading too.
+		// (It might not be if the new discussion topic was posted without a title: T272666.)
+		if (
+			lastComment.parent &&
+			lastComment.parent.type === 'heading' &&
+			lastComment.parent.replies.length === 1
+		) {
+			$highlight = $highlight.add( highlight( lastComment.parent ) );
+			highlightedThreadItem = lastComment.parent;
+		}
+	} else {
+		// Find the comment we replied to, then highlight the last reply
+		var repliedToComment = threadItemSet.threadItemsById[ threadItemId ];
+		$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
+		highlightedThreadItem = repliedToComment.replies[ repliedToComment.replies.length - 1 ];
+	}
+
+	$highlight.addClass( 'ext-discussiontools-init-publishedcomment' );
+
+	// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
+	// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
+	OO.ui.Element.static.scrollIntoView(
+		$highlight[ 0 ],
+		{
+			padding: {
+				// Add padding to avoid overlapping the post-edit notification (above on desktop, below on mobile)
+				top: OO.ui.isMobile() ? 10 : 60,
+				bottom: OO.ui.isMobile() ? 85 : 10
+			},
+			// Specify scrollContainer for compatibility with MobileFrontend.
+			// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
+			scrollContainer: OO.ui.Element.static.getRootScrollableElement( $highlight[ 0 ] )
+		}
+	).then( function () {
+		$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
+		setTimeout( function () {
+			$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
+			setTimeout( function () {
+				// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
+				// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
+				$highlight.remove();
+			}, 250 );
+		}, 3000 );
+	} );
+
+	return highlightedThreadItem;
 }
 
 /**
@@ -221,5 +286,6 @@ function clearHighlightTargetComment( threadItemSet ) {
 module.exports = {
 	highlight: highlight,
 	highlightTargetComment: highlightTargetComment,
+	highlightPublishedComment: highlightPublishedComment,
 	clearHighlightTargetComment: clearHighlightTargetComment
 };
