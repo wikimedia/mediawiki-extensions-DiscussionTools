@@ -39,6 +39,7 @@
 			"packageFiles": [
 				"dt.init.js",
 				"controller.js",
+				"highlighter.js",
 				{
 					"name": "controller/contLangMessages.json",
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getContentLanguageMessages",
