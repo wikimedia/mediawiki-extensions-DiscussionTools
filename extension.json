@@ -415,7 +415,10 @@
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsCompare"
 		},
 		"discussiontoolsedit": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit",
+			"services": [
+				"DiscussionTools.CommentParser"
+			]
 		},
 		"discussiontoolsgetsubscriptions": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsGetSubscriptions",
@@ -428,7 +431,10 @@
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPageInfo"
 		},
 		"discussiontoolspreview": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPreview"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPreview",
+			"services": [
+				"DiscussionTools.CommentParser"
+			]
 		},
 		"discussiontoolssubscribe": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsSubscribe",

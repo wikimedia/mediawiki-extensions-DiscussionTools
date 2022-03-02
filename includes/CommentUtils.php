@@ -697,4 +697,48 @@ class CommentUtils {
 
 		return !$foundContent;
 	}
+
+	/**
+	 * Assuming that the thread item set contains exactly one comment (or multiple comments with
+	 * identical signatures, plus optional heading), check whether that comment is properly signed by
+	 * the expected author (that is: there is a signature, and either there's nothing following the
+	 * signature, or there's some text within the same paragraph that was detected as part of the same
+	 * comment).
+	 *
+	 * @param ThreadItemSet $itemSet
+	 * @param string $author
+	 * @param Element $rootNode
+	 * @return bool
+	 */
+	public static function isSingleCommentSignedBy(
+		ThreadItemSet $itemSet,
+		string $author,
+		Element $rootNode
+	): bool {
+		$items = $itemSet->getThreadItems();
+
+		if ( $items ) {
+			// Range covering all of the detected items (to account for a heading, and for multiple
+			// signatures resulting in multiple comments)
+			$commentsRange = new ImmutableRange(
+				$items[0]->getRange()->startContainer,
+				$items[0]->getRange()->startOffset,
+				end( $items )->getRange()->endContainer,
+				end( $items )->getRange()->endOffset
+			);
+			$bodyRange = new ImmutableRange(
+				$rootNode, 0, $rootNode, count( $rootNode->childNodes )
+			);
+
+			if ( self::compareRanges( $commentsRange, $bodyRange ) === 'equal' ) {
+				// New comment includes a signature in the proper place
+				$lastComment = end( $items );
+				if ( $lastComment instanceof CommentItem && $lastComment->getAuthor() === $author ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }
