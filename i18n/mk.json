@@ -89,6 +89,8 @@
 	"discussiontools-replywidget-terms-click": "Стискајќи на „$1“ се согласувате со условите на употреба на ова вики.",
 	"discussiontools-replywidget-transcluded": "Вашиот коментар ќе биде зачуван во [[$1]].",
 	"discussiontools-replywidget-watchthis": "Додајте ја страницава во [[Special:Watchlist|набљудуваните]]",
+	"discussiontools-target-comment-missing": "Не можев да го најдам коментарот. Може да е избришан или преместен.",
+	"discussiontools-target-comments-missing": "Не можев да најдам нови коментари. Може да се избришани или преместени.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Отпиши се",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Се отпишувате од темава?",
 	"discussiontools-topicsubscription-button-subscribe": "претплати се",

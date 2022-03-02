@@ -114,6 +114,8 @@
 	"discussiontools-replywidget-transcluded": "あなたのコメントは[[$1]]に保存されます。",
 	"discussiontools-replywidget-watchthis": "このページをご自分の[[Special:Watchlist|ウォッチリスト]]に追加",
 	"discussiontools-signature-prefix": "--",
+	"discussiontools-target-comment-missing": "このコメントは見つかりませんでした。削除もしくは移動されているかもしれません。",
+	"discussiontools-target-comments-missing": "新しいコメントは見つかりませんでした。削除もしくは移動されているかもしれません。",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "通知を解除",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "この話題に関する更新の通知を受け取らないようにしますか？",
 	"discussiontools-topicsubscription-button-subscribe": "更新を通知",

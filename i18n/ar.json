@@ -100,6 +100,8 @@
 	"discussiontools-replywidget-transcluded": "سيحفظ تعليقك في [[$1]].",
 	"discussiontools-replywidget-watchthis": "إضافة هذه الصفحة إلى [[Special:Watchlist|قائمة المراقبة]]",
 	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-target-comment-missing": "لا يمكن العثور على هذا التعليق. ربما تم حذفه أو نقله.",
+	"discussiontools-target-comments-missing": "لا يمكن العثور على تعليقات جديدة. ربما تم حذفها أو نقلها.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "إلغاء الاشتراك",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "إلغاء الاشتراك قي هذا الموضوع؟",
 	"discussiontools-topicsubscription-button-subscribe": "اشتراك",

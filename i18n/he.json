@@ -94,6 +94,8 @@
 	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של אתר הוויקי הזה.",
 	"discussiontools-replywidget-transcluded": "התגובה שלך תישמר בדף [[$1]].",
 	"discussiontools-replywidget-watchthis": "הוספת הדף הזה ל[[Special:Watchlist|רשימת המעקב]] שלך",
+	"discussiontools-target-comment-missing": "לא היה אפשר למצוא את ההערה. ייתכן שהיא נמחקה או הועברה.",
+	"discussiontools-target-comments-missing": "לא היה אפשר למצוא הערות חדשות. ייתכן שהן נמחקה או הועברה.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "ביטול מעקב",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "להפסיק לעקוב אחרי הנושא הזה?",
 	"discussiontools-topicsubscription-button-subscribe": "מעקב",
