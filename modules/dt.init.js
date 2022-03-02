@@ -1,5 +1,4 @@
 var controller = require( './controller.js' ),
-	config = require( './config.json' ),
 	uri = new mw.Uri();
 
 /**
@@ -74,6 +73,5 @@ module.exports = {
 	HeadingItem: require( './HeadingItem.js' ),
 	CommentItem: require( './CommentItem.js' ),
 	utils: require( './utils.js' ),
-	logger: require( './logger.js' ),
-	config: config
+	logger: require( './logger.js' )
 };

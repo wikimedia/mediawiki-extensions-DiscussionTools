@@ -542,6 +542,31 @@ class CommentModifier {
 	}
 
 	/**
+	 * Transfer comment DOM nodes into a list node, as if adding a reply, but without requiring a
+	 * ThreadItem.
+	 *
+	 * @param DocumentFragment $container Container of comment DOM nodes
+	 * @return Element $node List node
+	 */
+	public static function transferReply( DocumentFragment $container ): Element {
+		$services = MediaWikiServices::getInstance();
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		$replyIndentation = $dtConfig->get( 'DiscussionToolsReplyIndentation' );
+
+		$doc = $container->ownerDocument;
+
+		// Like addReply(), but we make our own list
+		$list = $doc->createElement( $replyIndentation === 'invisible' ? 'dl' : 'ul' );
+		while ( $container->childNodes->length ) {
+			$item = $doc->createElement( $replyIndentation === 'invisible' ? 'dd' : 'li' );
+			self::whitespaceParsoidHack( $item );
+			$item->appendChild( $container->firstChild );
+			$list->appendChild( $item );
+		}
+		return $list;
+	}
+
+	/**
 	 * Create a container of comment DOM nodes from wikitext
 	 *
 	 * @param Document $doc Document where the DOM nodes will be inserted

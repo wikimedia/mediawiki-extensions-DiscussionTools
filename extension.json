@@ -50,8 +50,7 @@
 						"discussiontools-replywidget-feedback-link",
 						"discussiontools-replywidget-feedback-link-newtopic",
 						"discussiontools-replywidget-mention-prefix",
-						"discussiontools-replywidget-mention-suffix",
-						"discussiontools-signature-prefix"
+						"discussiontools-replywidget-mention-suffix"
 					]
 				},
 				{
@@ -299,8 +298,6 @@
 			"cases/modified.json",
 			"cases/reply.json",
 			"cases/unwrap.json",
-			"cases/isWikitextSigned.json",
-			"cases/isHtmlSigned.json",
 			"cases/linearWalk.json",
 			"cases/sanitize-wikitext-linebreaks.json",
 			"cases/timestamp-regex.json",
@@ -429,6 +426,9 @@
 		},
 		"discussiontoolspageinfo": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPageInfo"
+		},
+		"discussiontoolspreview": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPreview"
 		},
 		"discussiontoolssubscribe": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsSubscribe",

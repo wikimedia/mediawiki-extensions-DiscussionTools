@@ -363,57 +363,11 @@ function addSiblingListItem( previousItem ) {
 	return listItem;
 }
 
-/**
- * Check whether wikitext contains a user signature.
- *
- * @param {string} wikitext
- * @return {boolean}
- */
-function isWikitextSigned( wikitext ) {
-	wikitext = utils.htmlTrim( wikitext );
-	// Contains ~~~~ (four tildes), but not ~~~~~ (five tildes), at the end.
-	return /([^~]|^)~~~~$/.test( wikitext );
-}
-
-/**
- * Check whether HTML node contains a user signature.
- *
- * @param {HTMLElement} container
- * @return {boolean}
- */
-function isHtmlSigned( container ) {
-	// Good enough?…
-	var matches = container.querySelectorAll( 'span[typeof="mw:Transclusion"][data-mw*="~~~~"]' );
-	if ( matches.length === 0 ) {
-		return false;
-	}
-	var lastSig = matches[ matches.length - 1 ];
-	// Signature must be at the end of the comment - there must be no sibling following this node, or its parents
-	var node = lastSig;
-	while ( node ) {
-		// Skip over whitespace nodes
-		while (
-			node.nextSibling &&
-			node.nextSibling.nodeType === Node.TEXT_NODE &&
-			utils.htmlTrim( node.nextSibling.textContent ) === ''
-		) {
-			node = node.nextSibling;
-		}
-		if ( node.nextSibling ) {
-			return false;
-		}
-		node = node.parentNode;
-	}
-	return true;
-}
-
 module.exports = {
 	addReplyLink: addReplyLink,
 	addListItem: addListItem,
 	removeAddedListItem: removeAddedListItem,
 	addSiblingListItem: addSiblingListItem,
 	unwrapList: unwrapList,
-	isWikitextSigned: isWikitextSigned,
-	isHtmlSigned: isHtmlSigned,
 	sanitizeWikitextLinebreaks: sanitizeWikitextLinebreaks
 };
