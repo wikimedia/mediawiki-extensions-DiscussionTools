@@ -96,6 +96,8 @@
 	"discussiontools-replywidget-terms-click": "Kliknutím na „$1“ souhlasíte s podmínkami užití této wiki.",
 	"discussiontools-replywidget-transcluded": "Váš komentář bude uložen na stránce [[$1]].",
 	"discussiontools-replywidget-watchthis": "Přidat tuto stránku do vašeho [[Special:Watchlist|seznamu sledovaných stránek]]",
+	"discussiontools-target-comment-missing": "Tento komentář nebyl nalezen. Mohl být smazán nebo přesunut.",
+	"discussiontools-target-comments-missing": "Nové komentáře nemohou být nalezeny. Mohly být smazány nebo přesunuty.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Zrušit odběr",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Opravdu chcete přestat odebírat nové komentáře tohoto tématu?",
 	"discussiontools-topicsubscription-button-subscribe": "odebírat",

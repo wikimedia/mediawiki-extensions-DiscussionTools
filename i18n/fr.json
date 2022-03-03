@@ -130,7 +130,7 @@
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Modifier les abonnements",
 	"discussiontools-topicsubscription-special-intro": "Les abonnements vous permettent de suivre un sujet sur les pages de discussion. Lorsque quelqu’un répond à ce sujet, vous recevez une notification.\n\nRéglez comment et où vous recevrez ces notifications dans [[Special:Preferences#mw-prefsection-echo|vos préférences]].",
 	"discussiontools-topicsubscription-special-title": "Abonnements aux sujets",
-	"echo-category-title-dt-subscription": "{{PLURAL:$1|Abonnement à une page de discussion|Abonnements à des pages de discussion}}",
+	"echo-category-title-dt-subscription": "Abonnement{{PLURAL:$1||s}} à {{PLURAL:$1|une page|des pages}} de discussion",
 	"echo-pref-tooltip-dt-subscription": "Me notifier lorsque quelqu'un publie un nouveau commentaire dans un sujet auquel je suis abonné.",
 	"tag-discussiontools-added-comment-description": "Un commentaire de page de discussion a été ajouté dans cette modification",
 	"tag-discussiontools-description": "Modification effectuée en utilisant DiscussionTools",
