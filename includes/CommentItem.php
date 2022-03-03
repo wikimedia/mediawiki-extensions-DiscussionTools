@@ -75,8 +75,8 @@ class CommentItem extends ThreadItem {
 			// Find a trailing text node
 			$lastChild = $fragment->lastChild;
 			while (
-				!( $lastChild instanceof Text ) &&
-				$lastChild->lastChild
+				$lastChild &&
+				!( $lastChild instanceof Text )
 			) {
 				$lastChild = $lastChild->lastChild;
 			}
