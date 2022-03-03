@@ -145,7 +145,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$expected = new DateTimeImmutable( $expected );
 
 		$tsParser = $parser->getTimestampParser( 'en', $format, null, 'UTC', [ 'UTC' => 'UTC' ] );
-		self::assertEquals( $expected, $tsParser( $data ), $message );
+		self::assertEquals( $expected, $tsParser( $data )['date'], $message );
 	}
 
 	public function provideTimestampParser(): array {
@@ -171,7 +171,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$expectedUtc = new DateTimeImmutable( $expectedUtc );
 
 		preg_match( $regexp, $sample, $match, PREG_OFFSET_CAPTURE );
-		$date = $tsParser( $match );
+		$date = $tsParser( $match )['date'];
 
 		self::assertEquals( $expected, $date, $message );
 		self::assertEquals( $expectedUtc, $date, $message );

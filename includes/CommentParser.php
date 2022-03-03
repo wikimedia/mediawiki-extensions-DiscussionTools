@@ -434,6 +434,7 @@ class CommentParser {
 			// Since the timezone abbreviation disambiguates the DST/non-DST times, we can detect
 			// when PHP chose the wrong one, and then try the other one. It appears that PHP always
 			// uses the later (non-DST) hour, but that behavior isn't documented, so we account for both.
+			$dateWarning = null;
 			if ( $date->format( 'T' ) !== $tzAbbr ) {
 				$altDate = clone $date;
 				if ( $date->format( 'I' ) ) {
@@ -445,21 +446,20 @@ class CommentParser {
 				}
 				if ( $altDate->format( 'T' ) === $tzAbbr ) {
 					$date = $altDate;
-					$discussionToolsWarning = 'Timestamp has timezone abbreviation for the wrong time';
+					$dateWarning = 'Timestamp has timezone abbreviation for the wrong time';
 				} else {
-					$discussionToolsWarning = 'Ambiguous time at DST switchover was parsed';
+					$dateWarning = 'Ambiguous time at DST switchover was parsed';
 				}
 			}
 
 			// Now set the timezone back to UTC for formatting
 			$date->setTimezone( new DateTimeZone( 'UTC' ) );
 			$date = DateTimeImmutable::createFromMutable( $date );
-			if ( isset( $discussionToolsWarning ) ) {
-				// @phan-suppress-next-line PhanUndeclaredProperty
-				$date->discussionToolsWarning = $discussionToolsWarning;
-			}
 
-			return $date;
+			return [
+				'date' => $date,
+				'warning' => $dateWarning,
+			];
 		};
 	}
 
@@ -870,9 +870,11 @@ class CommentParser {
 				// Should this use the indent level of $startNode or $node?
 				$level = min( $startLevel, $endLevel );
 
-				$dateTime = $dfParsers[ $match['parserIndex'] ]( $match['matchData'] );
-				if ( isset( $dateTime->discussionToolsWarning ) ) {
-					$warnings[] = $dateTime->discussionToolsWarning;
+				[ 'date' => $dateTime, 'warning' => $dateWarning ] =
+					$dfParsers[ $match['parserIndex'] ]( $match['matchData'] );
+
+				if ( $dateWarning ) {
+					$warnings[] = $dateWarning;
 				}
 
 				$curComment = new CommentItem(
