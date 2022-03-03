@@ -131,9 +131,7 @@ class ImmutableRange {
 	 * @return self
 	 */
 	public function setStart( Node $startNode, int $startOffset ): self {
-		return new self(
-			$startNode, $startOffset, $this->mEndContainer, $this->mEndOffset
-		);
+		return $this->setStartOrEnd( 'start', $startNode, $startOffset );
 	}
 
 	/**
@@ -144,9 +142,60 @@ class ImmutableRange {
 	 * @return self
 	 */
 	public function setEnd( Node $endNode, int $endOffset ): self {
-		return new self(
-			$this->mStartContainer, $this->mStartOffset, $endNode, $endOffset
-		);
+		return $this->setStartOrEnd( 'end', $endNode, $endOffset );
+	}
+
+	/**
+	 * Sets the start or end boundary point for the Range.
+	 *
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 * @see https://dom.spec.whatwg.org/#concept-range-bp-set
+	 *
+	 * @param string $type Which boundary point should be set. Valid values are start or end.
+	 * @param Node $node The Node that will become the boundary.
+	 * @param int $offset The offset within the given Node that will be the boundary.
+	 * @return self
+	 */
+	private function setStartOrEnd( string $type, Node $node, int $offset ): self {
+		if ( $node instanceof DocumentType ) {
+			throw new Error();
+		}
+
+		switch ( $type ) {
+			case 'start':
+				$endContainer = $this->mEndContainer;
+				$endOffset = $this->mEndOffset;
+				if (
+					self::getRootNode( $this->mStartContainer ) !== self::getRootNode( $node ) ||
+					$this->computePosition(
+						$node, $offset, $this->mEndContainer, $this->mEndOffset
+					) === 'after'
+				) {
+					$endContainer = $node;
+					$endOffset = $offset;
+				}
+
+				return new self(
+					$node, $offset, $endContainer, $endOffset
+				);
+
+			case 'end':
+				$startContainer = $this->mStartContainer;
+				$startOffset = $this->mStartOffset;
+				if (
+					self::getRootNode( $this->mStartContainer ) !== self::getRootNode( $node ) ||
+					$this->computePosition(
+						$node, $offset, $this->mStartContainer, $this->mStartOffset
+					) === 'before'
+				) {
+					$startContainer = $node;
+					$startOffset = $offset;
+				}
+
+				return new self(
+					$startContainer, $startOffset, $node, $offset
+				);
+		}
 	}
 
 	/**
