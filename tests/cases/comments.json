@@ -169,11 +169,11 @@
 	},
 	{
 		"name": "Signature which is just a selflink",
-		"title": "User_talk:Ed",
+		"title": "Dyskusja_wikipedysty:Ed",
 		"dom": "cases/selflink-signature/selflink-signature.html",
 		"expected": "../cases/selflink-signature/selflink-signature.json",
-		"config": "../data/enwiki-config.json",
-		"data": "../data/enwiki-data.json"
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
 	},
 	{
 		"name": "Comments inside references (old parser)",

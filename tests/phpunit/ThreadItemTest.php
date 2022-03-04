@@ -61,7 +61,6 @@ class ThreadItemTest extends IntegrationTestCase {
 	public function testGetTranscludedFrom(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
-		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -69,6 +68,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
+		$title = Title::newFromText( $title );
 
 		$doc = self::createDocument( $dom );
 		$container = self::getThreadContainer( $doc );
@@ -108,7 +108,6 @@ class ThreadItemTest extends IntegrationTestCase {
 	public function testGetText(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
-		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -119,6 +118,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
+		$title = Title::newFromText( $title );
 		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$items = $threadItemSet->getThreadItems();
 
@@ -154,7 +154,6 @@ class ThreadItemTest extends IntegrationTestCase {
 	public function testGetHTML(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
-		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -165,6 +164,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
+		$title = Title::newFromText( $title );
 		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$items = $threadItemSet->getThreadItems();
 
