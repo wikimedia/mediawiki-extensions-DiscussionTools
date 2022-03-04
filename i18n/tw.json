@@ -5,6 +5,7 @@
 			"Amoarich",
 			"Lee Gyamfi",
 			"Robertjamal12",
+			"Rsaawah",
 			"Warmglow"
 		]
 	},
@@ -46,6 +47,7 @@
 	"discussiontools-replywidget-terms-click": "Sɛ wo mia \"$1\" so a, wagye mmra a ɛfa wiki wei so nyinaa atumu",
 	"discussiontools-replywidget-transcluded": "Yɛ bɛ kora wo mmuae no wɔ",
 	"discussiontools-replywidget-watchthis": "Fa kratafa yi ka [[Special:Watchlist|nea w'ani wɔ ho no so]]",
+	"discussiontools-target-comment-missing": "Ɛntumi ɛnhunu saa nsɛmkaae yi. Ebɛtumi aba sɛ wapopa anaa wayi akɔ baabi foforɔ.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Nni akyi",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Wo nni nyinasosɛm yi akyi anaa?",
 	"discussiontools-topicsubscription-button-subscribe": "Di akyi",
