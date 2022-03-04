@@ -89,7 +89,7 @@ ReplyWidgetVisual.prototype.getMode = function () {
 /**
  * @inheritdoc
  */
-ReplyWidgetVisual.prototype.setup = function ( data ) {
+ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 	var widget = this,
 		target = this.replyBodyWidget.target;
 
@@ -116,7 +116,7 @@ ReplyWidgetVisual.prototype.setup = function ( data ) {
 		} );
 
 		target.getSurface().getModel().setAutosaveDocId( widget.storagePrefix );
-		target.initAutosave();
+		target.initAutosave( suppressNotifications );
 		widget.afterSetup();
 
 		// This needs to bind after surfaceReady so any initial population doesn't trigger it early:

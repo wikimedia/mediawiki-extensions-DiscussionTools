@@ -259,8 +259,9 @@ function init( $container, state ) {
 	 * @param {jQuery} $link Add section link for new topic controller
 	 * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
 	 * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
+	 * @param {boolean} [suppressNotifications] Don't notify the user if recovering auto-save
 	 */
-	function setupController( commentId, $link, mode, hideErrors ) {
+	function setupController( commentId, $link, mode, hideErrors, suppressNotifications ) {
 		var commentController, $addSectionLink;
 
 		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
@@ -298,7 +299,7 @@ function init( $container, state ) {
 			} );
 		} );
 
-		commentController.setup( mode, hideErrors );
+		commentController.setup( mode, hideErrors, suppressNotifications );
 		if ( lastControllerScrollOffset ) {
 			$( document.documentElement ).scrollTop(
 				$( document.documentElement ).scrollTop() +
@@ -347,13 +348,13 @@ function init( $container, state ) {
 			if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
 				mode = storage.get( 'reply/' + comment.id + '/mode' );
 				$link = $( commentNodes[ i ] );
-				setupController( comment.id, $link, mode, true );
+				setupController( comment.id, $link, mode, true, !state.firstLoad );
 				break;
 			}
 		}
 		if ( storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ) {
 			mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
-			setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ), mode, true );
+			setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ), mode, true, !state.firstLoad );
 		} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
 			setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ) );
 		}

@@ -7,7 +7,9 @@ var controller = require( './controller.js' ),
  */
 mw.dt = {};
 
-mw.dt.initState = {};
+mw.dt.initState = {
+	firstLoad: true
+};
 
 // New Topic A/B test for logged out users:
 var tokenData = mw.storage.getObject( 'DTNewTopicABToken' );
