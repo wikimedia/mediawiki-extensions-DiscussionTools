@@ -812,6 +812,48 @@ ReplyWidget.prototype.onUnload = function () {
 };
 
 /**
+ * Update "new comments" warning based on list of new comments found
+ *
+ * @param {Object[]} comments Array of JSON-serialized CommentItem's
+ */
+ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
+	var widget = this;
+	if ( !comments.length ) {
+		if ( this.newCommentsWarning ) {
+			this.newCommentsWarning.toggle( false );
+		}
+		return;
+	}
+	if ( !this.newCommentsWarning ) {
+		this.newCommentsWarning = new OO.ui.MessageWidget( {
+			type: 'warning',
+			classes: [ 'ext-discussiontools-ui-replyWidget-newComments' ]
+		} );
+		this.newCommentsWarning.$element.attr( {
+			tabIndex: 0,
+			role: 'button'
+		} );
+		this.newCommentsWarning.$element.on( 'click keypress', function ( e ) {
+			if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
+				// Only handle keypresses on the "Enter" or "Space" keys
+				return;
+			}
+			if ( e.type === 'click' && !utils.isUnmodifiedLeftClick( e ) ) {
+				// Only handle unmodified left clicks
+				return;
+			}
+			widget.emit( 'reloadPage' );
+		} );
+		this.newCommentsWarning.$element.insertAfter( this.advanced.$element );
+	}
+
+	this.newCommentsWarning.setLabel(
+		mw.msg( 'discussiontools-replywidget-newcomments-warning', comments.length )
+	);
+	this.newCommentsWarning.toggle( true );
+};
+
+/**
  * Create an error message widget and attach it to the DOM
  *
  * @param {string} message Message string

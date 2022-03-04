@@ -3,6 +3,7 @@ var
 	modifier = require( './modifier.js' ),
 	logger = require( './logger.js' ),
 	dtConf = require( './config.json' ),
+	CommentItem = require( './CommentItem.js' ),
 	scrollPadding = { top: 10, bottom: 10 },
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
@@ -49,6 +50,10 @@ function CommentController( $pageContainer, threadItem, threadItemSet ) {
 	this.threadItemSet = threadItemSet;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
+	this.newComments = [];
+	this.oldId = mw.config.get( 'wgRevisionId' );
+	this.pollTimeout = null;
+	this.onVisibilityChangeHandler = this.onVisibilityChange.bind( this );
 }
 
 OO.initClass( CommentController );
@@ -175,7 +180,20 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		);
 	}
 
-	commentController.replyWidgetPromise.then( function ( replyWidget ) {
+	if (
+		// We can't safely reload content on mobile yet
+		!OO.ui.isMobile() &&
+		this.threadItem instanceof CommentItem &&
+		this.threadItem.getSubscribableHeading()
+	) {
+		// Use the revision ID of the content on the page, not wgCurRevisionId
+		// This means you will more likely get a refresh warning when deliberately
+		// viewing old revisions, which is helpful.
+		this.startPoll();
+		$( document ).on( 'visibilitychange', this.onVisibilityChangeHandler );
+	}
+
+	this.replyWidgetPromise.then( function ( replyWidget ) {
 		if ( !commentController.newListItem ) {
 			// On subsequent loads, there's no list item yet, so create one now
 			commentController.newListItem = modifier.addListItem( threadItem, dtConf.replyIndentation );
@@ -193,6 +211,60 @@ CommentController.prototype.setup = function ( mode, hideErrors ) {
 		logger( { action: 'ready' } );
 		logger( { action: 'loaded' } );
 	} );
+};
+
+/**
+ * Handle document visibilitychange events
+ *
+ * This allows us to pause polling when the user switches to another tab
+ */
+CommentController.prototype.onVisibilityChange = function () {
+	if ( document.hidden ) {
+		this.stopPoll();
+	} else if ( !this.pollTimeout ) {
+		this.pollTimeout = setTimeout( this.startPoll.bind( this ), 5000 );
+	}
+};
+
+CommentController.prototype.startPoll = function () {
+	var subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
+	var commentController = this;
+
+	this.pollApiRequest = controller.getApi().get( {
+		action: 'discussiontoolscompare',
+		fromrev: this.oldId,
+		totitle: mw.config.get( 'wgRelevantPageName' )
+	} );
+	this.pollApiRequest.then( function ( response ) {
+		function relevantCommentFilter( cmt ) {
+			return cmt.subscribableHeadingId === subscribableHeadingId &&
+				// Ignore posts by yourself, if logged in
+				cmt.author !== mw.user.getName();
+		}
+
+		var result = OO.getProp( response, 'discussiontoolscompare' ) || {};
+		var addedComments = result.addedcomments.filter( relevantCommentFilter );
+		var removedComments = result.removedcomments.filter( relevantCommentFilter );
+
+		if ( addedComments.length || removedComments.length ) {
+			commentController.updateNewCommentsWarning( addedComments, removedComments );
+		}
+
+		commentController.oldId = result.torevid;
+	} ).always( function () {
+		commentController.pollTimeout = setTimeout( commentController.startPoll.bind( commentController ), 5000 );
+	} );
+};
+
+CommentController.prototype.stopPoll = function () {
+	if ( this.pollTimeout ) {
+		clearTimeout( this.pollTimeout );
+		this.pollTimeout = null;
+	}
+	if ( this.pollApiRequest ) {
+		this.pollApiRequest.abort();
+		this.pollApiRequest = null;
+	}
 };
 
 /**
@@ -235,9 +307,13 @@ CommentController.prototype.createReplyWidget = function ( commentDetails, confi
 };
 
 CommentController.prototype.setupReplyWidget = function ( replyWidget, data ) {
-	replyWidget.connect( this, { teardown: 'teardown' } );
+	replyWidget.connect( this, {
+		teardown: 'teardown',
+		reloadPage: this.emit.bind( this, 'reloadPage' )
+	} );
 
 	replyWidget.setup( data );
+	replyWidget.updateNewCommentsWarning( this.newComments );
 
 	this.replyWidget = replyWidget;
 };
@@ -260,8 +336,18 @@ CommentController.prototype.showAndFocus = function () {
 };
 
 CommentController.prototype.teardown = function ( mode ) {
-	modifier.removeAddedListItem( this.newListItem );
-	this.newListItem = null;
+	if ( mode === 'refresh' ) {
+		$( this.newListItem ).empty().append(
+			$( '<span>' ).text( mw.msg( 'discussiontools-replywidget-loading' ) )
+		);
+	} else {
+		modifier.removeAddedListItem( this.newListItem );
+		this.newListItem = null;
+	}
+
+	this.stopPoll();
+	$( document ).off( 'visibilitychange', this.onVisibilityChangeHandler );
+
 	this.emit( 'teardown', mode );
 };
 
@@ -372,6 +458,31 @@ CommentController.prototype.save = function ( pageName ) {
 		} ).then( function ( responseData ) {
 			controller.update( responseData, threadItem, pageName, replyWidget );
 		} );
+	} );
+};
+
+/**
+ * Add a list of comment objects that are new on the page since it was last refreshed
+ *
+ * @param {Object[]} addedComments Array of JSON-serialized CommentItem's
+ * @param {Object[]} removedComments Array of JSON-serialized CommentItem's
+ */
+CommentController.prototype.updateNewCommentsWarning = function ( addedComments, removedComments ) {
+	var commentController = this;
+	// Add new comments
+	this.newComments.push.apply( this.newComments, addedComments );
+
+	// Delete any comments which have since been deleted (e.g. posted then reverted)
+	var removedCommentIds = removedComments.filter( function ( cmt ) {
+		return cmt.id;
+	} );
+	this.newComments = this.newComments.filter( function ( cmt ) {
+		// If comment ID is not in removedCommentIds, keep it
+		return removedCommentIds.indexOf( cmt.id ) === -1;
+	} );
+
+	this.replyWidgetPromise.then( function ( replyWidget ) {
+		replyWidget.updateNewCommentsWarning( commentController.newComments );
 	} );
 };
 
