@@ -25,6 +25,7 @@ use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItemSet;
+use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
@@ -421,7 +422,7 @@ class EventDispatcher {
 			} else {
 				$component_type = 'response';
 			}
-			\EventLogging::submit( 'mediawiki.talk_page_edit', array_merge( $commonData, [
+			EventLogging::submit( 'mediawiki.talk_page_edit', array_merge( $commonData, [
 				'component_type' => $component_type,
 				'topic_id' => $heading->getId(),
 				'comment_id' => $comment->getId(),
@@ -451,7 +452,7 @@ class EventDispatcher {
 		if ( $samplingRate === 0 ) {
 			return false;
 		}
-		$inSample = \EventLogging::sessionInSample(
+		$inSample = EventLogging::sessionInSample(
 			(int)( 1 / $samplingRate ), $sessionId
 		);
 		return $inSample;
