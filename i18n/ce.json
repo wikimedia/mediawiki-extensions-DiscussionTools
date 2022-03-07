@@ -21,7 +21,7 @@
 	"discussiontools-replywidget-preview": "Хьалххе хьажар",
 	"discussiontools-replywidget-reply": "Жоп",
 	"discussiontools-replywidget-terms-click": "$1 тӀетаӀийна, хьо реза хьуьллу викис тӀедожош долу хьолашца.",
-	"discussiontools-replywidget-transcluded": "Хьан коммент [[$1]] тӀехь дӀаяздира ду.",
+	"discussiontools-replywidget-transcluded": "Хьан коммент [[$1]] тӀехь дӀайазйира йу.",
 	"discussiontools-signature-prefix": ",&#32;",
 	"discussiontools-error-comment-disappeared": "Ахьа жоплуш йолу коммент хӀокху агӀонгахь кара цайо. Иза хилла мега дӀайаьккхина йа кхечу агӀонг дихьайаьккхина. Дехар до агӀо карлайаьккхина, йуху а гӀорта.",
 	"discussiontools-error-comment-is-transcluded": "ХӀара \"{{int:discussiontools-replylink}}\" хьажорг хӀокху комментана жоплуш лело йиш йац. Жоп дала, дехар до лелайе йерриге агӀонан редактор кху \"$1\" тӀетаӀийна.",

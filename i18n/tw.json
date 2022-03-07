@@ -4,7 +4,9 @@
 			"AC Krah",
 			"Amoarich",
 			"Robertjamal12",
-			"Warmglow"
+			"Warmglow",
+			"Lee Gyamfi",
+			"Rsaawah"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Mmuaeɛ",
@@ -12,8 +14,21 @@
 	"discussiontools-preference-label": "Nkitahodeɛ mfidie",
 	"discussiontools-replylink": "mmuaeɛ",
 	"discussiontools-replywidget-cancel": "Twa mu",
+	"discussiontools-replywidget-mention-tool-title": "Bɔ dwumadifoɔ bi din",
+	"discussiontools-replywidget-mode-source": "Etire",
+	"discussiontools-replywidget-mode-visual": "Mfoni",
 	"discussiontools-replywidget-placeholder-reply": "Bua {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Hwɛ ansa",
 	"discussiontools-replywidget-reply": "Mmuaeɛ",
-	"discussiontools-replywidget-terms-click": "Sɛ wo mia \"$1\" so a, wagye mmra a ɛfa wiki wei so nyinaa atumu"
+	"discussiontools-replywidget-terms-click": "Sɛ wo mia \"$1\" so a, wagye mmra a ɛfa wiki wei so nyinaa atumu",
+	"discussiontools-replywidget-transcluded": "Yɛ bɛ kora wo mmuae no wɔ",
+	"tag-discussiontools-description": "Wɔ de nkɔmmɔdie akade na yɛɛ nsakyerae",
+	"tag-discussiontools-edit-description": "Dwumadifoɔ de nkɔmmɔdie akade sesaa mmuae a ɛwɔ hɔ dada",
+	"tag-discussiontools-newtopic-description": "Dwumadifoɔ yi nnam nkɔmmɔdie akade de nyinasos3m foforɔ kaa ɔfa yi ho",
+	"tag-discussiontools-reply": "bua",
+	"tag-discussiontools-reply-description": "Dwumadifoɔ no de nkɔmmɔdie akade yii asɛmbisa bi ano",
+	"tag-discussiontools-source": "bea a ɛfiri",
+	"tag-discussiontools-source-description": "Na nkɔmmɔdie akade wɔ bea a ne ti firi",
+	"tag-discussiontools-visual": "Neɛ w'ani hunu",
+	"tag-discussiontools-visual-description": "Akadeɛ a wo betumi de adi nkɔmmɔ no yɛ neɛ wo de w'ani hunu"
 }
