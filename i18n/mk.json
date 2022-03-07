@@ -77,6 +77,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Спомни корисник",
 	"discussiontools-replywidget-mode-source": "Изворно",
 	"discussiontools-replywidget-mode-visual": "Нагледно",
+	"discussiontools-replywidget-newcomments-warning": "{{PLURAL:$1|Додаден е $1 нов коментар|Додадени се $1 нови коментари}} во овој оддел. Стиснете за да превчитате.",
 	"discussiontools-replywidget-newtopic": "Додај тема",
 	"discussiontools-replywidget-placeholder-newtopic": "Опис",
 	"discussiontools-replywidget-placeholder-reply": "Одговор на {{BIDI:$1}}",

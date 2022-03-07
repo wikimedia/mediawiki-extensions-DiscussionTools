@@ -21,7 +21,7 @@
 	"discussiontools-emptystate-title-user": "Začnite pogovor z {{GENDER:{{PAGENAME}}|uporabnikom|uporabnico|uporabnikom/-co}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Pozdravljeni na tej pogovorni strani",
 	"discussiontools-error-comment-conflict": "Vašega komentarja ni bilo mogoče shraniti, ker je stran sočasno z vami komentiral še nekdo drug. Prosimo, poskusite znova ali stran znova naložite, da si ogledate najnovejše komentarje.",
-	"discussiontools-error-comment-disappeared": "Komentarja, na katerega odgovarjate, na strani ni bilo mogoče najti. Morda je bil izbrisan ali prestavljen na drugo stran. Prosimo, znova naložite stran in poskusite še enkrat.",
+	"discussiontools-error-comment-disappeared": "Komentarja, na katerega odgovarjate, na strani ni bilo mogoče najti. Morda je bil izbrisan ali prestavljen na drugo stran.",
 	"discussiontools-error-comment-is-transcluded": "Povezave »{{int:discussiontools-replylink}}« ni mogoče uporabiti za odgovor na ta komentar. Za odgovor uporabite urejevalnik celotne strani, tako da kliknete »$1«.",
 	"discussiontools-error-comment-is-transcluded-title": "Povezave »{{int:discussiontools-replylink}}« ni mogoče uporabiti za odgovor na ta komentar, ker se naloži z druge strani. Za odgovor pojdite sem: [[$1]].",
 	"discussiontools-error-comment-not-saved": "Vašega komentarja ni bilo mogoče objaviti na najnovejši različici strani. Za ogled zadnjih sprememb osnutek svojega komentarja skopirajte in nato z brskalnikom znova naložite stran.",
