@@ -72,10 +72,14 @@ trait DiscussionToolsEventTrait {
 			// * User talk page notifications are bundled per-page (so basically, always bundled).
 			// * Mention notifications are *never* bundled.
 
-			// Just pass the first comment in the bundle. The client has access to the comment
+			// Just pass the oldest comment in the bundle. The client has access to the comment
 			// tree and so can work out all the other comments since this one.
-			$firstEvent = $this->getBundledEvents()[ 0 ];
-			$params = [ 'dtnewcommentssince' => $firstEvent->getExtraParam( 'comment-id' ) ];
+
+			// This does not include the newest comment, $this->event, but we are looking
+			// for the oldest comment.
+			$bundledEvents = $this->getBundledEvents();
+			$oldestEvent = end( $bundledEvents );
+			$params = [ 'dtnewcommentssince' => $oldestEvent->getExtraParam( 'comment-id' ) ];
 			if ( $this->event->getExtraParam( 'subscribed-comment-name' ) ) {
 				// Topic notifications: Tell client to restrict highlights to this thread
 				$params[ 'dtinthread' ] = 1;
