@@ -113,6 +113,12 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					$wikitext = $this->transformHTML( $title, $html )[ 'body' ];
 				}
 
+				$mobileFormatParams = [];
+				// Boolean parameters must be omitted completely to be treated as false.
+				// Param is added by hook in MobileFrontend, so it may be unset.
+				if ( isset( $params['mobileformat'] ) && $params['mobileformat'] ) {
+					$mobileFormatParams['mobileformat'] = '1';
+				}
 				// As section=new this is append only so we don't need to
 				// worry about edit-conflict params such as oldid/baserevid/etag.
 				// Edit summary is also automatically generated when section=new
@@ -133,12 +139,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'sectiontitle' => $params['sectiontitle'],
 							'starttimestamp' => wfTimestampNow(),
 							'useskin' => $params['useskin'],
-							// Param is added by hook in MobileFrontend
-							'mobileformat' => $params['mobileformat'] ?? null,
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword']
-						],
+						] + $mobileFormatParams,
 						/* was posted? */ true
 					)
 				);
