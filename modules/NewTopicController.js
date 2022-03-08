@@ -164,16 +164,11 @@ NewTopicController.prototype.setupTopicHint = function () {
 
 	this.topicHint = new OO.ui.MessageWidget( {
 		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyURI.toString() + fragment ).parseDom(),
+		showClose: true,
 		icon: 'article'
-	} );
+	} )
+		.connect( this, { close: 'onTopicHintClose' } );
 	this.topicHint.$element.addClass( 'ext-discussiontools-ui-newTopic-hint' );
-	// TODO: Once showClose lands in OOUI's MessageWidget this can be replaced:
-	var dismissButton = new OO.ui.ButtonWidget( {
-		icon: 'close',
-		framed: false,
-		title: mw.msg( 'discussiontools-newtopic-legacy-hint-close' )
-	} ).connect( this, { click: 'onTopicHintCloseClick' } );
-	this.topicHint.$element.prepend( dismissButton.$element );
 	this.topicHint.$element.find( 'a' ).on( 'click', function () {
 		// Clicking to follow this link should immediately discard the
 		// autosave. We can do this before the onBeforeUnload handler asks
@@ -184,8 +179,6 @@ NewTopicController.prototype.setupTopicHint = function () {
 	} );
 	this.container.$element.before( this.topicHint.$element );
 
-	this.topicHint.toggle( true );
-
 	// This needs to persist once it's shown
 	controller.getApi().saveOption( 'discussiontools-newtopictool-hint-shown', 1 ).then( function () {
 		mw.user.options.set( 'discussiontools-newtopictool-hint-shown', 1 );
@@ -195,8 +188,7 @@ NewTopicController.prototype.setupTopicHint = function () {
 /**
  * Handle clicks on the close button for the hint dialog
  */
-NewTopicController.prototype.onTopicHintCloseClick = function () {
-	this.topicHint.toggle( false );
+NewTopicController.prototype.onTopicHintClose = function () {
 	controller.getApi().saveOption( 'discussiontools-newtopictool-hint-shown', null ).then( function () {
 		mw.user.options.set( 'discussiontools-newtopictool-hint-shown', null );
 	} );
