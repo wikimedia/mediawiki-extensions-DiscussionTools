@@ -9,7 +9,6 @@ var
 	storage = new MemoryStorage( mw.storage.session.store ),
 	Parser = require( './Parser.js' ),
 	ThreadItemSet = require( './ThreadItemSet.js' ),
-	CommentItem = require( './CommentItem.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
 	ReplyLinksController = require( './ReplyLinksController.js' ),
 	logger = require( './logger.js' ),
@@ -292,20 +291,9 @@ function init( $container, state ) {
 			}
 		} );
 		commentController.on( 'reloadPage', function () {
-			if ( commentController.threadItem instanceof CommentItem ) {
-				var heading = commentController.threadItem.getSubscribableHeading() || commentController.threadItem.getHeading();
-				var newestTimestamp = 0;
-				var newestThreadItem = null;
-				heading.getThreadItemsBelow().forEach( function ( threadItem ) {
-					if ( threadItem instanceof CommentItem && threadItem.timestamp > newestTimestamp ) {
-						newestThreadItem = threadItem;
-						newestTimestamp = threadItem.timestamp;
-					}
-				} );
-				if ( newestThreadItem ) {
-					mw.dt.initState.newCommentsSinceId = newestThreadItem.id;
-				}
-			}
+			mw.dt.initState.newCommentIds = commentController.newComments.map( function ( cmt ) {
+				return cmt.id;
+			} );
 			// Teardown active reply widget(s)
 			commentController.replyWidgetPromise.then( function ( replyWidget ) {
 				lastControllerScrollOffset = $( commentController.newListItem ).offset().top;
@@ -402,8 +390,8 @@ function init( $container, state ) {
 					} );
 				}
 			}
-		} else if ( state.newCommentsSinceId ) {
-			highlighter.highlightNewComments( pageThreads, true, [], state.newCommentsSinceId, true );
+		} else if ( state.newCommentIds ) {
+			highlighter.highlightNewComments( pageThreads, true, state.newCommentIds );
 		}
 
 		// Check topic subscription states if the user has automatic subscriptions enabled
