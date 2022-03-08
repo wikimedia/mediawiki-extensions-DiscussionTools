@@ -32,7 +32,7 @@
 	"discussiontools-error-noswitchtove-title": "Visuele modus uitgeschakeld",
 	"discussiontools-newtopic-missing-title": "Graag een titel toevoegen voor uw discussieonderwerp. Als u klikt op \"{{int:discussiontools-replywidget-newtopic}}\", dan zal het onderwerp geen titel hebben.",
 	"discussiontools-newtopic-placeholder-title": "Titel",
-	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|regeerde}} in \"<strong>$4</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|reageerde}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Een nieuwe reactie|$1 nieuwe reacties|100=99+ nieuwe reacties}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Bekijk reactie",
 	"discussiontools-postedit-confirmation-published": "Uw reactie is gepubliceerd.",
