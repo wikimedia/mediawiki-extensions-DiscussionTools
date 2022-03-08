@@ -41,7 +41,7 @@
 	"discussiontools-limitreport-errorreqid": "Diskusjonsverktøy forespørselfeil-ID",
 	"discussiontools-limitreport-timeusage": "Tidsbruk Diskusjonsverktøy",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Det er kommet en ny måte å opprette emner på.</strong> Denne oppdateringen gjør det mulig å legge til emner med et skjema i løpende tekst og varlse andre med en snarvei. det er også mulig å [$1 velge bort disse funksjonene].",
+	"discussiontools-newtopic-legacy-hint": "<strong>Det er kommet en ny måte å opprette emner på.</strong> Denne oppdateringen gjør det mulig å legge til emner med et skjema i løpende tekst og varlse andre med en snarvei. Det er også mulig å [$1 velge bort disse funksjonene].",
 	"discussiontools-newtopic-legacy-hint-close": "Lukk meldingen uten å vise den igjen",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Dette er den klassiske opplevelsen.</strong> Du kan [$1 gå tilbake til den nye opplevelsen] eller [$2 stille inn den klassiske opplevelsen som standard] under instillinger.",
 	"discussiontools-newtopic-missing-title": "Angi en tittel for diskusjonen. Hvis du trykker på «{{int:discussiontools-replywidget-newtopic}}» blir emnet lagt til uten tittel.",

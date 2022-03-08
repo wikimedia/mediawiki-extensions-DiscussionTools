@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Beginneruser",
 			"Jeeputer"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "نظری با شناسهٔ «$1» یافت نشد.",
 	"apierror-discussiontools-commentname-ambiguous": "چندین نظر با نام «$1» یافت شد، <var>commentid</var> الزامی است.",
 	"apierror-discussiontools-commentname-notfound": "نظری با نام «$1» یافت نشد.",
+	"apierror-discussiontools-formtoken-used": "نظر را قبلاً ارسال کردید. صفحه را دوباره بارگیری کنید تا آن را ببینید.",
 	"apierror-discussiontools-subscription-failed-add": "ناتوان در اشتراک در این موضوع",
 	"apierror-discussiontools-subscription-failed-remove": "ناتوان در توقف اشتراک در این موضوع",
 	"apihelp-discussiontoolsedit-param-commentid": "شناسه نظر برای پاسخ دادن. تنها در صورتی که <var>paction</var> روی <var>addcomment</var> تنظیم شده‌باشد استفاده می‌شود. <var>commentname</var> را نادیده می‌گیرد.",

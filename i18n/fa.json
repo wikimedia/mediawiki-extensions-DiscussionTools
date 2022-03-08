@@ -3,6 +3,7 @@
 		"authors": [
 			"Ahmad252",
 			"Ajam",
+			"Beginneruser",
 			"Ed g2s",
 			"FarsiNevis",
 			"Huji",
@@ -89,7 +90,7 @@
 	"discussiontools-replywidget-mode-source": "مبدأ",
 	"discussiontools-replywidget-mode-visual": "دیداری",
 	"discussiontools-replywidget-newtopic": "افزودن مبحث",
-	"discussiontools-replywidget-placeholder-newtopic": "توضیح",
+	"discussiontools-replywidget-placeholder-newtopic": "توضیحات",
 	"discussiontools-replywidget-placeholder-reply": "پاسخ به {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "ترجیحات",
 	"discussiontools-replywidget-preview": "پیش‌نمایش",
