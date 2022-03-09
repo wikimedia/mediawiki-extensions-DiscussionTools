@@ -9,7 +9,8 @@
 			"Jeeputer",
 			"Ladsgroup",
 			"Matma Rex",
-			"Reza koulivand"
+			"Reza koulivand",
+			"Beginneruser"
 		]
 	},
 	"discussiontools": "ابزارهای گفت‌وگو",
@@ -74,7 +75,7 @@
 	"discussiontools-replywidget-mode-source": "مبدأ",
 	"discussiontools-replywidget-mode-visual": "دیداری",
 	"discussiontools-replywidget-newtopic": "افزودن مبحث",
-	"discussiontools-replywidget-placeholder-newtopic": "توضیح",
+	"discussiontools-replywidget-placeholder-newtopic": "توضیحات",
 	"discussiontools-replywidget-placeholder-reply": "پاسخ به {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "پیش‌نمایش",
 	"discussiontools-replywidget-reply": "پاسخ",

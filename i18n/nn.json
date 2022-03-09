@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Njardarlogar"
+		]
+	},
+	"discussiontools-replywidget-mention-tool-header": "Finn brukar: $1",
+	"discussiontools-replywidget-mention-tool-title": "Nemn ein brukar",
+	"discussiontools-replywidget-mode-source": "Kjelde",
+	"discussiontools-replywidget-preview": "Førehandsvising",
+	"discussiontools-replywidget-reply": "Svar",
+	"discussiontools-replywidget-summary": "Samandrag",
+	"tag-discussiontools-source": "Kjelde"
+}
