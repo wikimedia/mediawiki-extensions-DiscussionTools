@@ -928,7 +928,8 @@ class CommentParser {
 			// The range points to the root note, using it like below results in silly values
 			$id = 'h-';
 		} elseif ( $threadItem instanceof HeadingItem ) {
-			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItem->getRange()->startContainer )['node'];
+			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
+			$headline = $threadItem->getRange()->startContainer;
 			$id = 'h-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItem instanceof CommentItem ) {
 			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
@@ -941,7 +942,8 @@ class CommentParser {
 		// in one edit, or within a minute), add the parent ID to disambiguate them.
 		$threadItemParent = $threadItem->getParent();
 		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
-			$headline = CommentUtils::getHeadlineNodeAndOffset( $threadItemParent->getRange()->startContainer )['node'];
+			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
+			$headline = $threadItemParent->getRange()->startContainer;
 			$id .= '-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
 		} elseif ( $threadItemParent instanceof CommentItem ) {
 			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ) ) .
