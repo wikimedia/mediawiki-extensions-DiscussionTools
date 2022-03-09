@@ -82,7 +82,6 @@ class CommentUtils {
 	public static function isOurGeneratedNode( Node $node ): bool {
 		return $node instanceof Element && (
 			DOMCompat::getClassList( $node )->contains( 'ext-discussiontools-init-replylink-buttons' ) ||
-			$node->hasAttribute( 'data-mw-comment' ) ||
 			$node->hasAttribute( 'data-mw-comment-start' ) ||
 			$node->hasAttribute( 'data-mw-comment-end' )
 		);
@@ -392,9 +391,12 @@ class CommentUtils {
 	 * Get the nodes (if any) that contain the given thread item, and nothing else.
 	 *
 	 * @param ThreadItem $item
+	 * @param ?Node $excludedAncestorNode Node that shouldn't be included in the result, even if it
+	 *     contains the item and nothing else. This is intended to avoid traversing outside of a node
+	 *     which is a container for all the thread items.
 	 * @return Node[]|null
 	 */
-	public static function getFullyCoveredSiblings( ThreadItem $item ): ?array {
+	public static function getFullyCoveredSiblings( ThreadItem $item, ?Node $excludedAncestorNode = null ): ?array {
 		$siblings = self::getCoveredSiblings( $item->getRange() );
 
 		$makeRange = static function ( $siblings ) {
@@ -412,6 +414,7 @@ class CommentUtils {
 			// If these are all of the children (or the only child), go up one more level
 			while (
 				( $parent = $siblings[ 0 ]->parentNode ) &&
+				$parent !== $excludedAncestorNode &&
 				self::compareRanges( $makeRange( [ $parent ] ), $item->getRange() ) === 'equal'
 			) {
 				$siblings = [ $parent ];

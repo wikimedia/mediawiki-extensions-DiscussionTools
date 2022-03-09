@@ -53,7 +53,6 @@ function isRenderingTransparentNode( node ) {
 function isOurGeneratedNode( node ) {
 	return node.nodeType === Node.ELEMENT_NODE && (
 		node.classList.contains( 'ext-discussiontools-init-replylink-buttons' ) ||
-		node.hasAttribute( 'data-mw-comment' ) ||
 		node.hasAttribute( 'data-mw-comment-start' ) ||
 		node.hasAttribute( 'data-mw-comment-end' )
 	);
@@ -343,9 +342,12 @@ function getCoveredSiblings( range ) {
  * Get the nodes (if any) that contain the given thread item, and nothing else.
  *
  * @param {ThreadItem} item Thread item
+ * @param {Node} [excludedAncestorNode] Node that shouldn't be included in the result, even if it
+ *     contains the item and nothing else. This is intended to avoid traversing outside of a node
+ *     which is a container for all the thread items.
  * @return {Node[]|null}
  */
-function getFullyCoveredSiblings( item ) {
+function getFullyCoveredSiblings( item, excludedAncestorNode ) {
 	var siblings = getCoveredSiblings( item.getNativeRange() );
 
 	function makeRange( sibs ) {
@@ -362,6 +364,7 @@ function getFullyCoveredSiblings( item ) {
 		var parent;
 		while (
 			( parent = siblings[ 0 ].parentNode ) &&
+			parent !== excludedAncestorNode &&
 			compareRanges( makeRange( [ parent ] ), item.getNativeRange() ) === 'equal'
 		) {
 			siblings = [ parent ];

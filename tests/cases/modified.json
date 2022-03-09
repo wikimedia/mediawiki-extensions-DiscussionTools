@@ -82,6 +82,22 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "Single comment, heading",
+		"title": "Talk:Single comment",
+		"dom": "cases/single-comment-no-heading/single-comment-no-heading.html",
+		"expected": "cases/single-comment-no-heading/single-comment-no-heading-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Single comment with heading",
+		"title": "Talk:Single comment",
+		"dom": "cases/single-comment-heading/single-comment-heading.html",
+		"expected": "cases/single-comment-heading/single-comment-heading-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Must split a list to reply to one of the comments",
 		"title": "Talk:Split list",
 		"dom": "cases/split-list/split-list.html",

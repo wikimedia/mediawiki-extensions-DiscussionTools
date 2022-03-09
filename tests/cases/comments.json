@@ -144,10 +144,18 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
-		"name": "No heading",
-		"title": "Talk:No heading",
-		"dom": "cases/no-heading/no-heading.html",
-		"expected": "../cases/no-heading/no-heading.json",
+		"name": "Single comment, heading",
+		"title": "Talk:Single comment",
+		"dom": "cases/single-comment-no-heading/single-comment-no-heading.html",
+		"expected": "../cases/single-comment-no-heading/single-comment-no-heading.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Single comment with heading",
+		"title": "Talk:Single comment",
+		"dom": "cases/single-comment-heading/single-comment-heading.html",
+		"expected": "../cases/single-comment-heading/single-comment-heading.json",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
 	},

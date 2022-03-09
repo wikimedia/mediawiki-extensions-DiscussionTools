@@ -95,7 +95,7 @@ function addListItem( comment, replyIndentation ) {
 	// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
 	// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
 	// as some kind of a fancy frame, which are often used for barnstars and announcements.
-	var covered = utils.getFullyCoveredSiblings( curComment );
+	var covered = utils.getFullyCoveredSiblings( curComment, curComment.rootNode );
 	if ( curComment.level === 1 && covered ) {
 		target = covered[ covered.length - 1 ];
 		parent = target.parentNode;
