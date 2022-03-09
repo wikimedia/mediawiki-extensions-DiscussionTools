@@ -18,6 +18,13 @@ use Wikimedia\Parsoid\DOM\Text;
  * which is lazy evaluated.
  *
  * setStart and setEnd are still available but return a cloned range.
+ *
+ * @property bool $collapsed
+ * @property Node $commonAncestorContainer
+ * @property Node $endContainer
+ * @property int $endOffset
+ * @property Node $startContainer
+ * @property int $startOffset
  */
 class ImmutableRange {
 	private $mCommonAncestorContainer;

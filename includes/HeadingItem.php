@@ -2,6 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use Wikimedia\Assert\Assert;
+use Wikimedia\Parsoid\DOM\Element;
+
 class HeadingItem extends ThreadItem {
 	private $placeholderHeading = false;
 	private $headingLevel;
@@ -40,6 +43,7 @@ class HeadingItem extends ThreadItem {
 		if ( !$this->isPlaceholderHeading() ) {
 			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 			$headline = $this->getRange()->startContainer;
+			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
 			$id = $headline->getAttribute( 'id' );
 			if ( $id ) {
 				// Replace underscores with spaces to undo Sanitizer::escapeIdInternal().

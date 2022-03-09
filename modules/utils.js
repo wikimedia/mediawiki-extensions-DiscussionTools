@@ -302,7 +302,7 @@ function getIndentLevel( node, rootNode ) {
  * Get an array of sibling nodes that contain parts of the given range.
  *
  * @param {Range} range
- * @return {HTMLElement[]}
+ * @return {Node[]}
  */
 function getCoveredSiblings( range ) {
 	var ancestor = range.commonAncestorContainer;
@@ -336,7 +336,7 @@ function getCoveredSiblings( range ) {
  * Get the nodes (if any) that contain the given thread item, and nothing else.
  *
  * @param {ThreadItem} item Thread item
- * @return {HTMLElement[]|null}
+ * @return {Node[]|null}
  */
 function getFullyCoveredSiblings( item ) {
 	var siblings = getCoveredSiblings( item.getNativeRange() );
