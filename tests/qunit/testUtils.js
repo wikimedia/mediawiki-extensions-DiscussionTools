@@ -16,6 +16,25 @@ module.exports.overrideMwConfig = function ( config ) {
 };
 
 /**
+ * Return the node that is expected to contain thread items.
+ *
+ * @param {jQuery} $nodes
+ * @return {jQuery}
+ */
+module.exports.getThreadContainer = function ( $nodes ) {
+	// In tests created from Parsoid output, comments are contained directly in <body>. This becomes a
+	// huge mess of <section> nodes when we insert it into the existing document, oh well…
+	// In tests created from old parser output, comments are contained in <div class="mw-parser-output">.
+	if ( $nodes.filter( 'section' ).length ) {
+		return $( '<div>' )
+			.append( $nodes.filter( 'section' ) )
+			.append( $nodes.filter( 'base' ) );
+	} else {
+		return $nodes.find( 'div.mw-parser-output' );
+	}
+};
+
+/**
  * Get the offset path from ancestor to offset in descendant
  *
  * @copyright 2011-2019 VisualEditor Team and others; see http://ve.mit-license.org

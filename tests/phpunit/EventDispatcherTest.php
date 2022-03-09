@@ -8,7 +8,6 @@ use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\User\UserIdentityValue;
 use RawMessage;
 use Title;
-use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher
@@ -32,17 +31,17 @@ class EventDispatcherTest extends IntegrationTestCase {
 
 		$dom1 = ( new RawMessage( $wikitext1 ) )->parse();
 		$doc1 = self::createDocument( $dom1 );
-		$body1 = DOMCompat::getBody( $doc1 );
+		$container1 = self::getThreadContainer( $doc1 );
 
 		$dom2 = ( new RawMessage( $wikitext2 ) )->parse();
 		$doc2 = self::createDocument( $dom2 );
-		$body2 = DOMCompat::getBody( $doc2 );
+		$container2 = self::getThreadContainer( $doc2 );
 
 		$dummyTitle = Title::newFromText( 'Dummy' );
 		$this->setupEnv( $config, $data );
 		$parser = self::createParser( $data );
-		$itemSet1 = $parser->parse( $body1, $dummyTitle );
-		$itemSet2 = $parser->parse( $body2, $dummyTitle );
+		$itemSet1 = $parser->parse( $container1, $dummyTitle );
+		$itemSet2 = $parser->parse( $container2, $dummyTitle );
 
 		$events = self::getJson( $other, true );
 

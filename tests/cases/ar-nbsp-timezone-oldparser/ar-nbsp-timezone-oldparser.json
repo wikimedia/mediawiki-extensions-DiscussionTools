@@ -17,13 +17,13 @@
 				"timestamp": "2020-04-21T22:51:00.000Z",
 				"author": "Johan (WMF)",
 				"range": [
-					"0/0/1/0/0",
-					"0/15/9/30"
+					"0/1/0/0",
+					"15/9/30"
 				],
 				"signatureRanges": [
 					[
-						"0/15/6",
-						"0/15/9/30"
+						"15/6",
+						"15/9/30"
 					]
 				],
 				"level": 1,
@@ -39,13 +39,13 @@
 				"timestamp": "2020-04-28T17:47:00.000Z",
 				"author": "Dyolf77 (WMF)",
 				"range": [
-					"0/17/0",
-					"0/17/12/30"
+					"17/0",
+					"17/12/30"
 				],
 				"signatureRanges": [
 					[
-						"0/17/9",
-						"0/17/12/30"
+						"17/9",
+						"17/12/30"
 					]
 				],
 				"level": 1,
@@ -60,8 +60,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/21/1/0",
-			"0/21/1/1"
+			"21/1/0",
+			"21/1/1"
 		],
 		"headingLevel": 3,
 		"level": 0,
@@ -73,8 +73,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/25/1/0",
-					"0/25/1/1"
+					"25/1/0",
+					"25/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -87,13 +87,13 @@
 						"timestamp": "2020-04-29T14:08:00.000Z",
 						"author": "Dyolf77",
 						"range": [
-							"0/27/0",
-							"0/27/2/29"
+							"27/0",
+							"27/2/29"
 						],
 						"signatureRanges": [
 							[
-								"0/27/1",
-								"0/27/2/29"
+								"27/1",
+								"27/2/29"
 							]
 						],
 						"level": 1,
@@ -108,8 +108,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/29/0/0",
-					"0/29/0/1"
+					"29/0/0",
+					"29/0/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -122,13 +122,13 @@
 						"timestamp": "2020-04-29T17:40:00.000Z",
 						"author": "Trabelsiismail",
 						"range": [
-							"0/31/0",
-							"0/31/4/30"
+							"31/0",
+							"31/4/30"
 						],
 						"signatureRanges": [
 							[
-								"0/31/1",
-								"0/31/4/30"
+								"31/1",
+								"31/4/30"
 							]
 						],
 						"level": 1,
@@ -143,8 +143,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/33/1/0",
-					"0/33/1/1"
+					"33/1/0",
+					"33/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -157,13 +157,13 @@
 						"timestamp": "2020-04-29T22:55:00.000Z",
 						"author": "Nehaoua",
 						"range": [
-							"0/35/0",
-							"0/35/10/30"
+							"35/0",
+							"35/10/30"
 						],
 						"signatureRanges": [
 							[
-								"0/35/7",
-								"0/35/10/30"
+								"35/7",
+								"35/10/30"
 							]
 						],
 						"level": 1,
@@ -178,8 +178,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/37/1/0",
-					"0/37/1/1"
+					"37/1/0",
+					"37/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -192,8 +192,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/41/0/0",
-					"0/41/0/1"
+					"41/0/0",
+					"41/0/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -206,13 +206,13 @@
 						"timestamp": "2020-04-30T11:58:00.000Z",
 						"author": "Aws Al-mimari",
 						"range": [
-							"0/43/0",
-							"0/43/4/30"
+							"43/0",
+							"43/4/30"
 						],
 						"signatureRanges": [
 							[
-								"0/43/1",
-								"0/43/4/30"
+								"43/1",
+								"43/4/30"
 							]
 						],
 						"level": 1,
@@ -227,8 +227,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/45/1/0",
-					"0/45/1/1"
+					"45/1/0",
+					"45/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -241,13 +241,13 @@
 						"timestamp": "2020-04-30T14:00:00.000Z",
 						"author": "حسن سلمان الحسن",
 						"range": [
-							"0/47/0",
-							"0/47/4/30"
+							"47/0",
+							"47/4/30"
 						],
 						"signatureRanges": [
 							[
-								"0/47/1",
-								"0/47/4/30"
+								"47/1",
+								"47/4/30"
 							]
 						],
 						"level": 1,
@@ -262,8 +262,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/49/1/0",
-					"0/49/1/1"
+					"49/1/0",
+					"49/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -276,8 +276,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/53/1/0",
-					"0/53/1/1"
+					"53/1/0",
+					"53/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -290,8 +290,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/57/1/0",
-					"0/57/1/1"
+					"57/1/0",
+					"57/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -304,13 +304,13 @@
 						"timestamp": "2020-04-30T17:35:00.000Z",
 						"author": "Elsayed Taha",
 						"range": [
-							"0/59/0",
-							"0/59/4/30"
+							"59/0",
+							"59/4/30"
 						],
 						"signatureRanges": [
 							[
-								"0/59/1",
-								"0/59/4/30"
+								"59/1",
+								"59/4/30"
 							]
 						],
 						"level": 1,
@@ -325,8 +325,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/61/1/0",
-					"0/61/1/1"
+					"61/1/0",
+					"61/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -339,13 +339,13 @@
 						"timestamp": "2020-04-30T17:46:00.000Z",
 						"author": "أبو تائب",
 						"range": [
-							"0/63/0",
-							"0/63/3/29"
+							"63/0",
+							"63/3/29"
 						],
 						"signatureRanges": [
 							[
-								"0/63/1",
-								"0/63/3/29"
+								"63/1",
+								"63/3/29"
 							]
 						],
 						"level": 1,
@@ -360,8 +360,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/65/1/0",
-					"0/65/1/1"
+					"65/1/0",
+					"65/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -374,8 +374,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/69/1/0",
-					"0/69/1/1"
+					"69/1/0",
+					"69/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -388,8 +388,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/73/1/0",
-					"0/73/1/1"
+					"73/1/0",
+					"73/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -402,13 +402,13 @@
 						"timestamp": "2020-04-30T23:49:00.000Z",
 						"author": "Saif Oofa7",
 						"range": [
-							"0/75/0",
-							"0/76/4/29"
+							"75/0",
+							"76/4/29"
 						],
 						"signatureRanges": [
 							[
-								"0/76/1",
-								"0/76/4/29"
+								"76/1",
+								"76/4/29"
 							]
 						],
 						"level": 1,
@@ -423,8 +423,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/78/0/0",
-					"0/78/0/1"
+					"78/0/0",
+					"78/0/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -437,13 +437,13 @@
 						"timestamp": "2020-05-01T12:00:00.000Z",
 						"author": "Mohanad Kh",
 						"range": [
-							"0/80/0",
-							"0/82/4/27"
+							"80/0",
+							"82/4/27"
 						],
 						"signatureRanges": [
 							[
-								"0/82/1",
-								"0/82/4/27"
+								"82/1",
+								"82/4/27"
 							]
 						],
 						"level": 1,
@@ -458,8 +458,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/84/1/0",
-					"0/84/1/1"
+					"84/1/0",
+					"84/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -472,13 +472,13 @@
 						"timestamp": "2020-05-01T21:30:00.000Z",
 						"author": "أبو هشام",
 						"range": [
-							"0/86/0",
-							"0/86/4/27"
+							"86/0",
+							"86/4/27"
 						],
 						"signatureRanges": [
 							[
-								"0/86/1",
-								"0/86/4/27"
+								"86/1",
+								"86/4/27"
 							]
 						],
 						"level": 1,
@@ -493,8 +493,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/88/1/0",
-					"0/88/1/1"
+					"88/1/0",
+					"88/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -507,8 +507,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/92/1/0",
-					"0/92/1/1"
+					"92/1/0",
+					"92/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -521,13 +521,13 @@
 						"timestamp": "2020-05-02T03:01:00.000Z",
 						"author": "محمد بوعلام عصامي",
 						"range": [
-							"0/94/0",
-							"0/94/10/28"
+							"94/0",
+							"94/10/28"
 						],
 						"signatureRanges": [
 							[
-								"0/94/7",
-								"0/94/10/28"
+								"94/7",
+								"94/10/28"
 							]
 						],
 						"level": 1,
@@ -542,8 +542,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/96/0/0",
-					"0/96/0/1"
+					"96/0/0",
+					"96/0/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -556,8 +556,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/100/1/0",
-					"0/100/1/1"
+					"100/1/0",
+					"100/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -570,8 +570,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/104/1/0",
-					"0/104/1/1"
+					"104/1/0",
+					"104/1/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -584,8 +584,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/108/0/0",
-					"0/108/0/1"
+					"108/0/0",
+					"108/0/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -598,13 +598,13 @@
 						"timestamp": "2020-05-04T17:56:00.000Z",
 						"author": "Justwiki",
 						"range": [
-							"0/110/0",
-							"0/110/4/28"
+							"110/0",
+							"110/4/28"
 						],
 						"signatureRanges": [
 							[
-								"0/110/1",
-								"0/110/4/28"
+								"110/1",
+								"110/4/28"
 							]
 						],
 						"level": 1,
@@ -619,8 +619,8 @@
 				"placeholderHeading": false,
 				"type": "heading",
 				"range": [
-					"0/112/0/0",
-					"0/112/0/1"
+					"112/0/0",
+					"112/0/1"
 				],
 				"headingLevel": 4,
 				"level": 0,
@@ -633,13 +633,13 @@
 						"timestamp": "2020-05-05T09:36:00.000Z",
 						"author": "Abu aamir",
 						"range": [
-							"0/114/0",
-							"0/114/8/28"
+							"114/0",
+							"114/8/28"
 						],
 						"signatureRanges": [
 							[
-								"0/114/5",
-								"0/114/8/28"
+								"114/5",
+								"114/8/28"
 							]
 						],
 						"level": 1,
@@ -656,8 +656,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/25/1/0",
-			"0/25/1/1"
+			"25/1/0",
+			"25/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -670,13 +670,13 @@
 				"timestamp": "2020-04-29T14:08:00.000Z",
 				"author": "Dyolf77",
 				"range": [
-					"0/27/0",
-					"0/27/2/29"
+					"27/0",
+					"27/2/29"
 				],
 				"signatureRanges": [
 					[
-						"0/27/1",
-						"0/27/2/29"
+						"27/1",
+						"27/2/29"
 					]
 				],
 				"level": 1,
@@ -691,8 +691,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/29/0/0",
-			"0/29/0/1"
+			"29/0/0",
+			"29/0/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -705,13 +705,13 @@
 				"timestamp": "2020-04-29T17:40:00.000Z",
 				"author": "Trabelsiismail",
 				"range": [
-					"0/31/0",
-					"0/31/4/30"
+					"31/0",
+					"31/4/30"
 				],
 				"signatureRanges": [
 					[
-						"0/31/1",
-						"0/31/4/30"
+						"31/1",
+						"31/4/30"
 					]
 				],
 				"level": 1,
@@ -726,8 +726,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/33/1/0",
-			"0/33/1/1"
+			"33/1/0",
+			"33/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -740,13 +740,13 @@
 				"timestamp": "2020-04-29T22:55:00.000Z",
 				"author": "Nehaoua",
 				"range": [
-					"0/35/0",
-					"0/35/10/30"
+					"35/0",
+					"35/10/30"
 				],
 				"signatureRanges": [
 					[
-						"0/35/7",
-						"0/35/10/30"
+						"35/7",
+						"35/10/30"
 					]
 				],
 				"level": 1,
@@ -761,8 +761,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/37/1/0",
-			"0/37/1/1"
+			"37/1/0",
+			"37/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -775,8 +775,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/41/0/0",
-			"0/41/0/1"
+			"41/0/0",
+			"41/0/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -789,13 +789,13 @@
 				"timestamp": "2020-04-30T11:58:00.000Z",
 				"author": "Aws Al-mimari",
 				"range": [
-					"0/43/0",
-					"0/43/4/30"
+					"43/0",
+					"43/4/30"
 				],
 				"signatureRanges": [
 					[
-						"0/43/1",
-						"0/43/4/30"
+						"43/1",
+						"43/4/30"
 					]
 				],
 				"level": 1,
@@ -810,8 +810,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/45/1/0",
-			"0/45/1/1"
+			"45/1/0",
+			"45/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -824,13 +824,13 @@
 				"timestamp": "2020-04-30T14:00:00.000Z",
 				"author": "حسن سلمان الحسن",
 				"range": [
-					"0/47/0",
-					"0/47/4/30"
+					"47/0",
+					"47/4/30"
 				],
 				"signatureRanges": [
 					[
-						"0/47/1",
-						"0/47/4/30"
+						"47/1",
+						"47/4/30"
 					]
 				],
 				"level": 1,
@@ -845,8 +845,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/49/1/0",
-			"0/49/1/1"
+			"49/1/0",
+			"49/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -859,8 +859,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/53/1/0",
-			"0/53/1/1"
+			"53/1/0",
+			"53/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -873,8 +873,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/57/1/0",
-			"0/57/1/1"
+			"57/1/0",
+			"57/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -887,13 +887,13 @@
 				"timestamp": "2020-04-30T17:35:00.000Z",
 				"author": "Elsayed Taha",
 				"range": [
-					"0/59/0",
-					"0/59/4/30"
+					"59/0",
+					"59/4/30"
 				],
 				"signatureRanges": [
 					[
-						"0/59/1",
-						"0/59/4/30"
+						"59/1",
+						"59/4/30"
 					]
 				],
 				"level": 1,
@@ -908,8 +908,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/61/1/0",
-			"0/61/1/1"
+			"61/1/0",
+			"61/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -922,13 +922,13 @@
 				"timestamp": "2020-04-30T17:46:00.000Z",
 				"author": "أبو تائب",
 				"range": [
-					"0/63/0",
-					"0/63/3/29"
+					"63/0",
+					"63/3/29"
 				],
 				"signatureRanges": [
 					[
-						"0/63/1",
-						"0/63/3/29"
+						"63/1",
+						"63/3/29"
 					]
 				],
 				"level": 1,
@@ -943,8 +943,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/65/1/0",
-			"0/65/1/1"
+			"65/1/0",
+			"65/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -957,8 +957,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/69/1/0",
-			"0/69/1/1"
+			"69/1/0",
+			"69/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -971,8 +971,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/73/1/0",
-			"0/73/1/1"
+			"73/1/0",
+			"73/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -985,13 +985,13 @@
 				"timestamp": "2020-04-30T23:49:00.000Z",
 				"author": "Saif Oofa7",
 				"range": [
-					"0/75/0",
-					"0/76/4/29"
+					"75/0",
+					"76/4/29"
 				],
 				"signatureRanges": [
 					[
-						"0/76/1",
-						"0/76/4/29"
+						"76/1",
+						"76/4/29"
 					]
 				],
 				"level": 1,
@@ -1006,8 +1006,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/78/0/0",
-			"0/78/0/1"
+			"78/0/0",
+			"78/0/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1020,13 +1020,13 @@
 				"timestamp": "2020-05-01T12:00:00.000Z",
 				"author": "Mohanad Kh",
 				"range": [
-					"0/80/0",
-					"0/82/4/27"
+					"80/0",
+					"82/4/27"
 				],
 				"signatureRanges": [
 					[
-						"0/82/1",
-						"0/82/4/27"
+						"82/1",
+						"82/4/27"
 					]
 				],
 				"level": 1,
@@ -1041,8 +1041,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/84/1/0",
-			"0/84/1/1"
+			"84/1/0",
+			"84/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1055,13 +1055,13 @@
 				"timestamp": "2020-05-01T21:30:00.000Z",
 				"author": "أبو هشام",
 				"range": [
-					"0/86/0",
-					"0/86/4/27"
+					"86/0",
+					"86/4/27"
 				],
 				"signatureRanges": [
 					[
-						"0/86/1",
-						"0/86/4/27"
+						"86/1",
+						"86/4/27"
 					]
 				],
 				"level": 1,
@@ -1076,8 +1076,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/88/1/0",
-			"0/88/1/1"
+			"88/1/0",
+			"88/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1090,8 +1090,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/92/1/0",
-			"0/92/1/1"
+			"92/1/0",
+			"92/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1104,13 +1104,13 @@
 				"timestamp": "2020-05-02T03:01:00.000Z",
 				"author": "محمد بوعلام عصامي",
 				"range": [
-					"0/94/0",
-					"0/94/10/28"
+					"94/0",
+					"94/10/28"
 				],
 				"signatureRanges": [
 					[
-						"0/94/7",
-						"0/94/10/28"
+						"94/7",
+						"94/10/28"
 					]
 				],
 				"level": 1,
@@ -1125,8 +1125,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/96/0/0",
-			"0/96/0/1"
+			"96/0/0",
+			"96/0/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1139,8 +1139,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/100/1/0",
-			"0/100/1/1"
+			"100/1/0",
+			"100/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1153,8 +1153,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/104/1/0",
-			"0/104/1/1"
+			"104/1/0",
+			"104/1/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1167,8 +1167,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/108/0/0",
-			"0/108/0/1"
+			"108/0/0",
+			"108/0/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1181,13 +1181,13 @@
 				"timestamp": "2020-05-04T17:56:00.000Z",
 				"author": "Justwiki",
 				"range": [
-					"0/110/0",
-					"0/110/4/28"
+					"110/0",
+					"110/4/28"
 				],
 				"signatureRanges": [
 					[
-						"0/110/1",
-						"0/110/4/28"
+						"110/1",
+						"110/4/28"
 					]
 				],
 				"level": 1,
@@ -1202,8 +1202,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/112/0/0",
-			"0/112/0/1"
+			"112/0/0",
+			"112/0/1"
 		],
 		"headingLevel": 4,
 		"level": 0,
@@ -1216,13 +1216,13 @@
 				"timestamp": "2020-05-05T09:36:00.000Z",
 				"author": "Abu aamir",
 				"range": [
-					"0/114/0",
-					"0/114/8/28"
+					"114/0",
+					"114/8/28"
 				],
 				"signatureRanges": [
 					[
-						"0/114/5",
-						"0/114/8/28"
+						"114/5",
+						"114/8/28"
 					]
 				],
 				"level": 1,

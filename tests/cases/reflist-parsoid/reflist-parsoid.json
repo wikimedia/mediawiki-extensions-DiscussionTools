@@ -3,8 +3,8 @@
 		"placeholderHeading": false,
 		"type": "heading",
 		"range": [
-			"0/1/0/0",
-			"0/1/0/1"
+			"1/0/0",
+			"1/0/1"
 		],
 		"headingLevel": 2,
 		"level": 0,
@@ -17,13 +17,13 @@
 				"timestamp": "2022-02-16T00:03:00.000Z",
 				"author": "Matma Rex",
 				"range": [
-					"0/1/2/0",
-					"0/1/2/2/30"
+					"1/2/0",
+					"1/2/2/30"
 				],
 				"signatureRanges": [
 					[
-						"0/1/2/1",
-						"0/1/2/2/30"
+						"1/2/1",
+						"1/2/2/30"
 					]
 				],
 				"level": 1,

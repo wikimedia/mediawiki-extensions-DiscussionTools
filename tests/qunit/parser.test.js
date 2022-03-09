@@ -64,14 +64,7 @@ QUnit.test( '#getThreads', function ( assert ) {
 			data = require( caseItem.data ),
 			title = mw.Title.newFromText( caseItem.title );
 
-		// Remove all but the body tags from full Parsoid docs
-		if ( $dom.filter( 'section' ).length ) {
-			$dom = $( '<div>' )
-				.append( $dom.filter( 'section' ) )
-				.append( $dom.filter( 'base' ) );
-		}
-
-		$( fixture ).empty().append( $dom );
+		$( fixture ).empty().append( testUtils.getThreadContainer( $dom ).children() );
 		testUtils.overrideMwConfig( config );
 
 		var threadItemSet = new Parser( data ).parse( fixture, title );

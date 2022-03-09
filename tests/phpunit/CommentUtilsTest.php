@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use Title;
-use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentUtils
@@ -21,15 +20,15 @@ class CommentUtilsTest extends IntegrationTestCase {
 	) {
 		$title = Title::newFromText( $title );
 		$doc = self::createDocument( $html );
-		$body = DOMCompat::getBody( $doc );
+		$container = self::getThreadContainer( $doc );
 
 		$config = self::getJson( "../data/enwiki-config.json" );
 		$data = self::getJson( "../data/enwiki-data.json" );
 		$this->setupEnv( $config, $data );
 		$parser = self::createParser( $data );
 
-		$threadItemSet = $parser->parse( $body, $title );
-		$isSigned = CommentUtils::isSingleCommentSignedBy( $threadItemSet, $username, $body );
+		$threadItemSet = $parser->parse( $container, $title );
+		$isSigned = CommentUtils::isSingleCommentSignedBy( $threadItemSet, $username, $container );
 		self::assertEquals( $expected, $isSigned, $msg );
 	}
 

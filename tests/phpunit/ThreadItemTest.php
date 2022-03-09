@@ -9,7 +9,6 @@ use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use Title;
-use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\ThreadItem
@@ -72,7 +71,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$this->setupEnv( $config, $data );
 
 		$doc = self::createDocument( $dom );
-		$container = DOMCompat::getBody( $doc );
+		$container = self::getThreadContainer( $doc );
 
 		CommentUtils::unwrapParsoidSections( $container );
 
@@ -117,10 +116,10 @@ class ThreadItemTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$doc = self::createDocument( $dom );
-		$body = DOMCompat::getBody( $doc );
+		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
-		$threadItemSet = self::createParser( $data )->parse( $body, $title );
+		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$items = $threadItemSet->getThreadItems();
 
 		$output = [];
@@ -163,10 +162,10 @@ class ThreadItemTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$doc = self::createDocument( $dom );
-		$body = DOMCompat::getBody( $doc );
+		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
-		$threadItemSet = self::createParser( $data )->parse( $body, $title );
+		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$items = $threadItemSet->getThreadItems();
 
 		$output = [];

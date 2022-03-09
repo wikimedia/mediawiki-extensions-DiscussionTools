@@ -30,10 +30,10 @@ require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
 
 		testUtils.overrideMwConfig( config );
 
-		$( fixture ).empty().append( expected );
+		$( fixture ).empty().append( testUtils.getThreadContainer( expected ).children() );
 		var expectedHtml = fixture.innerHTML;
 
-		$( fixture ).empty().append( dom );
+		$( fixture ).empty().append( testUtils.getThreadContainer( dom ).children() );
 		var reverseExpectedHtml = fixture.innerHTML;
 
 		var threadItemSet = new Parser( data ).parse( fixture, title );
@@ -87,10 +87,10 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 
 		testUtils.overrideMwConfig( config );
 
-		$( fixture ).empty().append( expected );
+		$( fixture ).empty().append( testUtils.getThreadContainer( expected ).children() );
 		var expectedHtml = fixture.innerHTML;
 
-		$( fixture ).empty().append( dom );
+		$( fixture ).empty().append( testUtils.getThreadContainer( dom ).children() );
 
 		var threadItemSet = new Parser( data ).parse( fixture, title );
 		var comments = threadItemSet.getCommentItems();

@@ -5,20 +5,34 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Parsoid\DOM\Document;
+use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 trait TestUtils {
 
 	/**
-	 * Create a Document from a string
+	 * Create a Document from a string.
 	 *
 	 * @param string $html
 	 * @return Document
 	 */
 	protected static function createDocument( string $html ): Document {
-		$doc = DOMUtils::parseHTML( $html );
-		return $doc;
+		return DOMUtils::parseHTML( $html );
+	}
+
+	/**
+	 * Return the node that is expected to contain thread items.
+	 *
+	 * @param Document $doc
+	 * @return Element
+	 */
+	protected static function getThreadContainer( Document $doc ): Element {
+		// In tests created from Parsoid output, comments are contained directly in <body>.
+		// In tests created from old parser output, comments are contained in <div class="mw-parser-output">.
+		$body = DOMCompat::getBody( $doc );
+		$wrapper = DOMCompat::querySelector( $body, 'div.mw-parser-output' );
+		return $wrapper ?: $body;
 	}
 
 	/**
@@ -76,40 +90,49 @@ trait TestUtils {
 	 * @return string
 	 */
 	protected static function getHtml( string $relativePath ): string {
-		$html = file_get_contents( __DIR__ . '/../' . $relativePath );
-
-		// Remove all but the body tags from full Parsoid docs
-		if ( strpos( $html, '<body' ) !== false ) {
-			preg_match( '`(<body[^>]*>)(.*)(</body>)`s', $html, $match );
-			$html = "<div>$match[2]</div>";
-		}
-
-		return $html;
+		return file_get_contents( __DIR__ . '/../' . $relativePath );
 	}
 
 	/**
 	 * Write HTML to path
 	 *
 	 * @param string $relPath
-	 * @param Document $doc
+	 * @param Element $container
 	 * @param string $origRelPath
 	 */
-	protected static function overwriteHtmlFile( string $relPath, Document $doc, string $origRelPath ): void {
+	protected static function overwriteHtmlFile( string $relPath, Element $container, string $origRelPath ): void {
 		// Do not use $doc->saveHtml(), it outputs an awful soup of HTML entities for documents with
 		// non-ASCII characters
 		$html = file_get_contents( __DIR__ . '/../' . $origRelPath );
 
-		// Replace the body tag only in full Parsoid docs
-		if ( strpos( $html, '<body' ) !== false ) {
-			$innerHtml = DOMCompat::getInnerHTML( DOMCompat::getBody( $doc )->firstChild );
+		$newInnerHtml = DOMCompat::getInnerHTML( $container );
+
+		if ( strtolower( $container->tagName ) === 'body' ) {
+			// Apparently <body> innerHTML always has a trailing newline, even if the source HTML did not,
+			// and we need to preserve whatever whitespace was there to avoid test failures
+			preg_match( '`(\s*)(</body>|\z)`s', $html, $matches );
+			$newInnerHtml = rtrim( $newInnerHtml ) . $matches[1];
+		}
+
+		// Quote \ and $ in the replacement text
+		$quotedNewInnerHtml = strtr( $newInnerHtml, [ '\\' => '\\\\', '$' => '\\$' ] );
+
+		if ( strtolower( $container->tagName ) === 'body' ) {
+			if ( strpos( $html, '<body' ) !== false ) {
+				$html = preg_replace(
+					'`(<body[^>]*>)(.*)(</body>)`s',
+					'$1' . $quotedNewInnerHtml . '$3',
+					$html
+				);
+			} else {
+				$html = $newInnerHtml;
+			}
+		} else {
 			$html = preg_replace(
-				'`(<body[^>]*>)(.*)(</body>)`s',
-				// Quote \ and $ in the replacement text
-				'$1' . strtr( $innerHtml, [ '\\' => '\\\\', '$' => '\\$' ] ) . '$3',
+				'`(<div class="mw-parser-output">)(.*)(</div>)`s',
+				'$1' . $quotedNewInnerHtml . '$3',
 				$html
 			);
-		} else {
-			$html = DOMCompat::getInnerHTML( DOMCompat::getBody( $doc ) );
 		}
 
 		file_put_contents( __DIR__ . '/../' . $relPath, $html );

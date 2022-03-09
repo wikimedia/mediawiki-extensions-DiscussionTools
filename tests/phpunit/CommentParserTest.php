@@ -15,7 +15,6 @@ use Title;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\DOM\Text;
-use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -199,16 +198,16 @@ class CommentParserTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$doc = self::createDocument( $dom );
-		$body = DOMCompat::getBody( $doc );
+		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
-		$threadItemSet = self::createParser( $data )->parse( $body, $title );
+		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$threads = $threadItemSet->getThreads();
 
 		$processedThreads = [];
 
 		foreach ( $threads as $i => $thread ) {
-			$thread = self::serializeComments( $thread, $body );
+			$thread = self::serializeComments( $thread, $container );
 			$thread = json_decode( json_encode( $thread ), true );
 			$processedThreads[] = $thread;
 		}
