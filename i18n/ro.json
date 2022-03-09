@@ -41,7 +41,6 @@
 	"discussiontools-limitreport-timeusage": "Timpul de utilizare DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secundă|secunde}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Un nou mod de a începe subiecte este aici.</strong> Această actualizare vă permite să adăugați subiecte utilizând un formular aliniat și să menționați pe alții cu o scurtătură nouă. Puteți de asemenea [$1 să comutați înapoi la experiența moștenire].",
-	"discussiontools-newtopic-legacy-hint-close": "Închide mesajul și nu afișa din nou",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Vizualizați acum experiența moștenire.</strong> Puteți [$1 să vă întoarceți la experiența nouă] sau să vizitați preferințele pentru a [$2 seta experiența moștenire ca cea implicită dvs.]",
 	"discussiontools-newtopic-missing-title": "Vă rugăm să oferiți un titlu pentru subiectul dvs. de discuție. Dacă apăsați „{{int:discussiontools-replywidget-newtopic}}”, subiectul dvs. va fi adăugat fără un titlu.",
 	"discussiontools-newtopic-placeholder-title": "Titlu",

@@ -28,7 +28,6 @@
 	"discussiontools-error-noswitchtove-title": "ထာꩻထီႏမွဉ်းဖျင်မုꩻနဝ်ꩻ ပေ့ꩻခါꩻဒျာႏသွူ။",
 	"discussiontools-limitreport-errorreqid": "အိုင်ကိုမ်ချက်ကိရိယာႏဖိုင်ႏအမာႏ ကွီကော့ꩻချက် အုဲင်ဒီ",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|စက္ကန့်}}",
-	"discussiontools-newtopic-legacy-hint-close": "ပေ့ꩻထိုꩻ လိတ်မဲတ်သေ့တောမ်ႏ အွောန်ႏနယ်ထဲင်းမွုန်းတဝ်းဒုမ်",
 	"discussiontools-newtopic-missing-title": "နာꩻအိုင်ကိုမ်ချက် အကျောင်ꩻခရာႏတာႏ သော့ꩻဖေႏပါသွော့ ကတူႏရဲဉ်ႏသြ။ နာꩻမိဉ်ႏနျꩻသွူ {{int:discussiontools-replywidget-newtopic}}\" ယိုနဝ်ꩻ ကတူႏရဲဉ်ႏတပါတဝ်းဒါႏ နာꩻအကျောင်ꩻခရာႏလဲ့ အီႏထဲမ်သော့ꩻလွေꩻနဝ်ꩻသွူ။",
 	"discussiontools-newtopic-placeholder-title": "ကတူႏစဲဉ်ႏ",
 	"discussiontools-notification-subscribed-new-comment-header": "\"<strong>$4</strong>\" ကို $1 {{GENDER:$2|လဝ်းပြန်ႏချာလဲဉ်းသွူ}}။",

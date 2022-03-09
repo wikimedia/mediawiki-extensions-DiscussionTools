@@ -21,6 +21,7 @@
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Iegūt abonementa statusu norādītajām tēmām.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Izmantojamās versijas numurs (pēc noklusējuma jaunākais).",
 	"apihelp-discussiontoolspageinfo-summary": "Atgriež nepieciešamos metadatus, kas nepieciešami diskusiju rīku inicializācijai.",
+	"apihelp-discussiontoolspreview-summary": "Priekšskatīt ziņojumu diskusiju lapā.",
 	"apihelp-discussiontoolssubscribe-param-page": "Lapa, kurā temats parādās",
 	"apihelp-discussiontoolssubscribe-summary": "Abonē (vai atcel abonementu), lai saņemtu paziņojumus par tematu."
 }

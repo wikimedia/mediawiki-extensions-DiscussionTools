@@ -40,7 +40,6 @@
 	"discussiontools-limitreport-errorreqid": "토론 도구 오류 요청 ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 시간 사용",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|초}}",
-	"discussiontools-newtopic-legacy-hint-close": "메시지를 닫고 다시는 표시하지 않습니다",
 	"discussiontools-newtopic-missing-title": "토론 주제에 대한 제목을 정해주세요. 만약 \"{{int:discussiontools-replywidget-newtopic}}\" 버튼을 클릭한다면 주제는 제목이 없는 채로 추가됩니다.",
 	"discussiontools-newtopic-placeholder-title": "제목",
 	"discussiontools-notification-subscribed-new-comment-header": "$1님이 \"<strong>$4</strong>\"에서 {{GENDER:$2|답변을 남겼습니다}}.",

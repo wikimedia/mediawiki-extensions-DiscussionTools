@@ -41,7 +41,6 @@
 	"discussiontools-error-noswitchtove-title": "Visuaalinen tila poistettu käytöstä",
 	"discussiontools-limitreport-timeusage": "DiscussionToolsin ajankäyttö",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunti|sekuntia}}",
-	"discussiontools-newtopic-legacy-hint-close": "Sulje viesti äläkä näytä sitä enää uudestaan",
 	"discussiontools-newtopic-missing-title": "Anna otsikko keskusteluaiheellesi. Jos painat \"{{int:discussiontools-replywidget-newtopic}}\", aiheesi lisätään ilman otsikkoa.",
 	"discussiontools-newtopic-placeholder-title": "Otsikko",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|vastasi}} aiheeseen \"<strong>$4</strong>\".",

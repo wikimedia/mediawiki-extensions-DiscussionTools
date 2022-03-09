@@ -37,7 +37,6 @@
 	"discussiontools-error-noswitchtove-template": "سینتاکسی داڕێژە",
 	"discussiontools-error-noswitchtove-title": "دۆخی دیداری ناچالاک کرا",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|چرکە}}",
-	"discussiontools-newtopic-legacy-hint-close": "پەیامەکە داخە و دووبارە پیشانی مەدەرەوە",
 	"discussiontools-newtopic-missing-title": "تکایە ناونیشانێک بۆ بابەتی وتووێژەکەت دابین بکە. ئەگەر کرتە لە «{{int:discussiontools-replywidget-newtopic}}» بکەیت، ئەوا بابەتەکەت بەبێ ناونیشان زیاد دەکرێت.",
 	"discussiontools-newtopic-placeholder-title": "ناونیشان",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 لە «<strong>$4</strong>» {{GENDER:$2|وەڵامی دایەوە}}.",

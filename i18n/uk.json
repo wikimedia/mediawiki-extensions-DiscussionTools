@@ -45,7 +45,6 @@
 	"discussiontools-limitreport-timeusage": "Використання інструментів DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунди|секунд}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Це новий спосіб започатковувати обговорення.</strong> Це оновлення дозволяє вам додавати теми через вбудоване поле і легко пінгувати інших. Ви також можете [$1 перемкнутися назад на старий вигляд].",
-	"discussiontools-newtopic-legacy-hint-close": "Закрити повідомлення і не показувати знову",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Ви зараз переглядаєте старий вигляд.</strong> Ви можете [$1 повернутися до нового вигляду] або перейти у налаштування, де [$2 встановити старий вигляд собі за замовчуванням].",
 	"discussiontools-newtopic-missing-title": "Будь ласка, вкажіть назву для своєї теми в обговоренні. Якщо ви натиснете на «{{int:discussiontools-replywidget-newtopic}}», вашу тему буде додано без назви.",
 	"discussiontools-newtopic-placeholder-title": "Назва",

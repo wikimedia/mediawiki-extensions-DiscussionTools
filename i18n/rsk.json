@@ -37,7 +37,6 @@
 	"discussiontools-limitreport-timeusage": "Час хаснованя DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунди}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Нови способ за порушованє темох ту.</strong> Тото ажурированє вам оможлївює додавац теми з помоцу уложенго онлайн формулара и пинґовац других з помоцу новей кратшей драги. Ви ше тиж можеце [$1 врациц на застареле, превозидзене искуство].",
-	"discussiontools-newtopic-legacy-hint-close": "Заври поруку и нє указуй ю ознова.",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Ви тераз видзице превозидзене искуство.</strong> Ви ше можеце [$1 врациц на нове искуство] або пойсц на намесцанє опцийох же би сце [$2 намесцели скорейше, превозидзене искуство як важаце].",
 	"discussiontools-newtopic-missing-title": "Наведзце наслов за свою тему дискусиї. Кед кликнєце на \"{{int:discussiontools-replywidget-newtopic}}\", ваша тема будзе додата без наслова.",
 	"discussiontools-newtopic-placeholder-title": "Наслов",

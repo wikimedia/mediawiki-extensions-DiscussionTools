@@ -42,7 +42,6 @@
 	"discussiontools-limitreport-timeusage": "Χρήση χρόνου DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|δευτερόλεπτο|δευτερόλεπτα}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Ένας νέος τρόπος για να ξεκινήσετε θέματα είναι εδώ.</strong> Αυτή η ενημέρωση σάς δίνει τη δυνατότητα να προσθέτετε θέματα χρησιμοποιώντας μια ενσωματωμένη φόρμα και να κάνετε ping σε άλλους με μια νέα συντόμευση. Μπορείτε επίσης να [$1 μεταβείτε στην εμπειρία παλαιού τύπου].",
-	"discussiontools-newtopic-legacy-hint-close": "Κλείσιμο μηνύματος και μη επανεμφάνιση",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Τώρα βλέπετε την εμπειρία παλαιού τύπου.</strong> Μπορείτε να [$1 επιστρέψετε στη νέα εμπειρία] ή να επισκεφτείτε τις προτιμήσεις για να [$2 ορίσετε την εμπειρία παλαιού τύπου ως προεπιλογή].",
 	"discussiontools-newtopic-missing-title": "Παρακαλούμε καταχωρήστε έναν τίτλο για το σχόλιό σας. Αν ξαναπατήσετε «{{int:discussiontools-replywidget-newtopic}}», το σχόλιο σας θα προστεθεί χωρίς τίτλο.",
 	"discussiontools-newtopic-placeholder-title": "Τίτλος",

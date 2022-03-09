@@ -55,7 +55,6 @@
 	"discussiontools-limitreport-timeusage": "Время использования DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунды|секунд}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Здесь представлен новый способ начинать темы.</strong> Это обновление делает доступным вам добавление тем используя встроенную форму и пингование других новым быстрым способом. Вы также можете [$1 переключиться обратно на устаревший интерфейс].",
-	"discussiontools-newtopic-legacy-hint-close": "Закрыть сообщение и больше не показывать",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Теперь вы видите устаревший интерфейс.</strong> Вы можете [$1 вернуться к новому интерфейсу] или посетить настройки, чтобы [$2 установить устаревший интерфейс вам по умолчанию].",
 	"discussiontools-newtopic-missing-title": "Пожалуйста, предоставьте заголовок для вашей темы обсуждения. Если вы кликнете \"{{int:discussiontools-replywidget-newtopic}}\", ваша тема будет добавлена без заголовка.",
 	"discussiontools-newtopic-placeholder-title": "Заголовок",

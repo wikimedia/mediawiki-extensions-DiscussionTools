@@ -39,7 +39,6 @@
 	"discussiontools-limitreport-timeusage": "Употребено време од Разговорни алатки",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунди}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Пристигна нов начин на отпочнување теми.</strong> Оваа поднова ви овозможува да додавате теми користејќи образец во редови и да повикувате други со нова кратенка. Можете и да [$1 се вратите по старо].",
-	"discussiontools-newtopic-legacy-hint-close": "Затвори и повеќе не прикажувај",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Сега работите по старо.</strong> Можете да [$1 се вратите на новиот начин] или да ги посетите нагодувањата за да [$2 го зададете стариот начин за стандарден].",
 	"discussiontools-newtopic-missing-title": "Ставете ѝ наслов на темата. Ако стиснете на „{{int:discussiontools-replywidget-newtopic}}“, вашата тема ќе биде додадена без наслов.",
 	"discussiontools-newtopic-placeholder-title": "Наслов",

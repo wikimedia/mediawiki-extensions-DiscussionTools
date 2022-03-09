@@ -47,7 +47,6 @@
 	"discussiontools-limitreport-timeusage": "Tidsanvändning av DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Det har kommit ett nytt sätt att inleda ämnen på.</strong> Denna uppdatering gör det möjligt att lägga till ämnen med ett schema i löpande text och pinga andra med en ny genväg. Det går också att [$1 byta tillbaka till den äldre versionen].",
-	"discussiontools-newtopic-legacy-hint-close": "Stäng meddelande och visa inte igen",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Detta är den äldre versionen.</strong> Du kan [$1 gå tillbaka till den nya versionen] eller gå till dina inställningar för att [$2 ange den gamla versionen som din standard].",
 	"discussiontools-newtopic-missing-title": "Ange gärna en rubrik till ditt diskussionsämne. Om du klickar på \"{{int:discussiontools-replywidget-newtopic}}\", kommer ämnet att läggas till utan rubrik.",
 	"discussiontools-newtopic-placeholder-title": "Rubrik",

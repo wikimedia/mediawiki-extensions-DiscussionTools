@@ -56,7 +56,6 @@
 	"discussiontools-limitreport-timeusage": "Tiempo de uso de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|segundo|segundos}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>¡Te presentamos una nueva manera de comenzar hilos!</strong> Esta actualización te permite añadir hilos usando un formulario en línea así como notificar a otros usuarios con un nuevo atajo. Puedes [$1 volver a la experiencia anterior] si lo deseas.",
-	"discussiontools-newtopic-legacy-hint-close": "Cerrar mensaje y no volver a mostrar",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Ahora estás usando la experiencia antigua.</strong> Puedes [$1 volver a activar la experiencia actualizada] o bien visitar tus preferencias para [$2 hacer que esta versión sea tu opción por defecto].",
 	"discussiontools-newtopic-missing-title": "Por favor, proporciona un título para tu tema de discusión. Si haces clic en «{{int:discussiontools-replywidget-newtopic}}», tu tema será añadido sin un título.",
 	"discussiontools-newtopic-placeholder-title": "Título",

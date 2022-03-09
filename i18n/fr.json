@@ -53,7 +53,6 @@
 	"discussiontools-limitreport-timeusage": "Utilisation du temps de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 seconde{{PLURAL:$1||s}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Une nouvelle manière de démarrer des sujets se trouve ici.</strong> Cette mise à jour vous permet d’ajouter des sujets en utilisant un formulaire en ligne et de notifier les autres avec un nouveau raccourci. Vous pouvez aussi [$1 revenir à l’expérience historique].",
-	"discussiontools-newtopic-legacy-hint-close": "Fermer le message et ne plus l’afficher",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Vous regardez actuellement avec l’expérience historique.</strong> Vous pouvez [$1 revenir à la nouvelle expérience] ou aller dans les préférences pour [$2 définir l’expérience historique par défaut].",
 	"discussiontools-newtopic-missing-title": "Veuillez fournir un titre pour votre sujet de discussion. Si vous cliquez sur « {{int:discussiontools-replywidget-newtopic}} », votre sujet sera ajouté sans titre.",
 	"discussiontools-newtopic-placeholder-title": "Titre",
