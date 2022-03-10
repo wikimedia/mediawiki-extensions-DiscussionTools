@@ -117,7 +117,14 @@ function isCommentSeparator( node ) {
 		// Horizontal line
 		node.tagName.toLowerCase() === 'hr' ||
 		// {{outdent}} templates
-		node.classList.contains( 'outdent-template' )
+		node.classList.contains( 'outdent-template' ) ||
+		// Wikitext definition list term markup (`;`) when used as a fake heading (T265964)
+		(
+			node.nodeName.toLowerCase() === 'dl' &&
+			node.childNodes.length === 1 &&
+			node.firstChild.nodeType === Node.ELEMENT_NODE &&
+			node.firstChild.nodeName.toLowerCase() === 'dt'
+		)
 	);
 }
 
