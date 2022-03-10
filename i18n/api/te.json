@@ -11,5 +11,8 @@
 	"apihelp-discussiontoolsedit-param-sectiontitle": "<var>paction</var>, <var>addtopic</var> అయిన సందర్భంలో మాత్రమే {{int:apihelp-edit-param-sectiontitle}} ను వాడాలి.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "ఈసరికే ఉన్న వ్యాఖ్యకు సమాధానంగా కొత్త వ్యాఖ్య రాయండి.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "ఓ కొత్త చర్చాంశాన్ని చేర్చి, అందులో తొలి వ్యాఖ్య రాయండి.",
-	"apihelp-discussiontoolsedit-summary": "చర్చ పేజీలో ఓ సందేశం రాయండి."
+	"apihelp-discussiontoolsedit-summary": "చర్చ పేజీలో ఓ సందేశం రాయండి.",
+	"apihelp-discussiontoolspreview-param-type": "మునుజూపు చూపాల్సిన సందేశపు రకం",
+	"apihelp-discussiontoolspreview-param-wikitext": "వికీటెక్స్టు లాగా మునుజూపు చూపాల్సిన కంటెంటు.",
+	"apihelp-discussiontoolspreview-summary": "చర్చ పేజీలోని సందేశానికి మునుజూపు."
 }
