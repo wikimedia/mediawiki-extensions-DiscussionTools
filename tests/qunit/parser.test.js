@@ -27,7 +27,7 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 			expectedDate = moment( caseItem.expected );
 
 		assert.true(
-			tsParser( caseItem.data ).isSame( expectedDate ),
+			tsParser( caseItem.data ).date.isSame( expectedDate ),
 			caseItem.message
 		);
 	} );
@@ -40,7 +40,7 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 	cases.forEach( function ( caseItem ) {
 		var regexp = parser.getTimestampRegexp( 'en', caseItem.format, '\\d', caseItem.timezoneAbbrs ),
 			tsParser = parser.getTimestampParser( 'en', caseItem.format, null, caseItem.timezone, caseItem.timezoneAbbrs ),
-			date = tsParser( caseItem.sample.match( regexp ) );
+			date = tsParser( caseItem.sample.match( regexp ) ).date;
 
 		assert.true(
 			date.isSame( caseItem.expected ),

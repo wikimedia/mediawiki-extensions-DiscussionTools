@@ -285,11 +285,11 @@ class CommentModifier {
 	 *
 	 * Also returns false if there are no elements in the list
 	 *
-	 * @param Node[] $nodes Node list
+	 * @param iterable<Node> $nodes Node list
 	 * @param string $type Element type
 	 * @return bool
 	 */
-	private static function allOfType( array $nodes, string $type ): bool {
+	private static function allOfType( iterable $nodes, string $type ): bool {
 		$hasElements = false;
 		foreach ( $nodes as $node ) {
 			if ( $node instanceof Element ) {
@@ -310,13 +310,11 @@ class CommentModifier {
 	 * @param DocumentFragment $fragment Fragment
 	 */
 	public static function unwrapFragment( DocumentFragment $fragment ): void {
-		$childNodeList = iterator_to_array( $fragment->childNodes );
-
 		// Wrap orphaned list items
 		$list = null;
-		if ( self::allOfType( $childNodeList, 'dd' ) ) {
+		if ( self::allOfType( $fragment->childNodes, 'dd' ) ) {
 			$list = $fragment->ownerDocument->createElement( 'dl' );
-		} elseif ( self::allOfType( $childNodeList, 'li' ) ) {
+		} elseif ( self::allOfType( $fragment->childNodes, 'li' ) ) {
 			$list = $fragment->ownerDocument->createElement( 'ul' );
 		}
 		if ( $list ) {
@@ -328,12 +326,12 @@ class CommentModifier {
 
 		// If all child nodes are lists of the same type, unwrap them
 		while (
-			( $childNodeList = iterator_to_array( $fragment->childNodes ) ) && (
-				self::allOfType( $childNodeList, 'dl' ) ||
-				self::allOfType( $childNodeList, 'ul' ) ||
-				self::allOfType( $childNodeList, 'ol' )
-			)
+			self::allOfType( $fragment->childNodes, 'dl' ) ||
+			self::allOfType( $fragment->childNodes, 'ul' ) ||
+			self::allOfType( $fragment->childNodes, 'ol' )
 		) {
+			// Do not iterate over childNodes while we're modifying it
+			$childNodeList = iterator_to_array( $fragment->childNodes );
 			foreach ( $childNodeList as $node ) {
 				self::unwrapList( $node, $fragment );
 			}
