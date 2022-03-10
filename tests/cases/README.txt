@@ -68,5 +68,8 @@ https://it.wikipedia.org/api/rest_v1/page/html/Wikipedia%3AVandalismi_in_corso/1
 transclusions5:
 https://commons.wikimedia.org/api/rest_v1/page/html/Commons_talk%3ASPARQL_query_service
 
+fake-headings:
+https://pl.wikipedia.org/w/index.php?title=Wikipedia:Propozycje_do_Artyku%C5%82%C3%B3w_na_Medal/Aposto%C5%82_Pawie%C5%82&action=render
+
 Text is available under the Creative Commons Attribution-ShareAlike License.
 See these pages for attribution.

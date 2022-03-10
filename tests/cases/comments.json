@@ -192,6 +192,14 @@
 		"data": "../data/huwiki-data.json"
 	},
 	{
+		"name": "Fake headings using ';' syntax in wikitext (<dt> tags)",
+		"title": "Wikipedia:Propozycje do Artykułów na Medal/Apostoł Pawieł",
+		"dom": "cases/fake-headings/fake-headings.html",
+		"expected": "../cases/fake-headings/fake-headings.json",
+		"config": "../data/plwiki-config.json",
+		"data": "../data/plwiki-data.json"
+	},
+	{
 		"name": "Signatures in funny places",
 		"title": "Talk:Signatures funny",
 		"dom": "cases/signatures-funny/signatures-funny.html",
