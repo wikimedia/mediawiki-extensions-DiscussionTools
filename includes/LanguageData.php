@@ -139,10 +139,6 @@ class LanguageData {
 			);
 		}
 
-		// How far backwards we look for a signature associated with a timestamp before giving up.
-		// Note that this is not a hard limit on the length of signatures we detect.
-		$data['signatureScanLimit'] = 100;
-
 		return $data;
 	}
 

@@ -24,6 +24,14 @@ function Parser( data ) {
 }
 
 /**
+ * How far backwards we look for a signature associated with a timestamp before giving up.
+ * Note that this is not a hard limit on the length of signatures we detect.
+ *
+ * @constant {number}
+ */
+var SIGNATURE_SCAN_LIMIT = 100;
+
+/**
  * Parse a discussion page.
  *
  * @param {HTMLElement} rootNode Root node of content to parse
@@ -607,7 +615,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			if ( event === 'enter' && node === until ) {
 				return true;
 			}
-			if ( length >= parser.data.signatureScanLimit ) {
+			if ( length >= SIGNATURE_SCAN_LIMIT ) {
 				return true;
 			}
 			if ( utils.isBlockElement( node ) ) {

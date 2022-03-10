@@ -79,6 +79,5 @@
 			"nov": "nov",
 			"dec": "dic"
 		}
-	},
-	"signatureScanLimit": 100
+	}
 }
