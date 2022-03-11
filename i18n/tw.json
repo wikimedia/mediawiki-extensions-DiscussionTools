@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AC Krah",
+			"Amire80",
 			"Amoarich",
 			"Lee Gyamfi",
 			"Robertjamal12",
@@ -16,7 +17,7 @@
 	"discussiontools-defaultsummary-reply": "Mmuaeɛ",
 	"discussiontools-desc": "Nnoɔma a ɛbua adwenkyerɛ bia",
 	"discussiontools-emptystate-button": "Hyɛ adwenkyerɛ ase",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpagegs}}|Nkitaho bea]] {{SITENAME}} ɛyɛ bea a amanfoɔ di dwumadie ahodoɔ ho nkɔmmɔ  ne kwan a ɛbesi pi. Wo bɛtumi  ne afoforɔ de saa ɔfa yi afiti nkɔmmɔbɔ ase akyerɛ sɛnea [[:{{SUBJECTPAGENAME}}]] ebetu mpɔn.",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Nkitaho bea]] {{SITENAME}} ɛyɛ bea a amanfoɔ di dwumadie ahodoɔ ho nkɔmmɔ  ne kwan a ɛbesi pi. Wo bɛtumi  ne afoforɔ de saa ɔfa yi afiti nkɔmmɔbɔ ase akyerɛ sɛnea [[:{{SUBJECTPAGENAME}}]] ebetu mpɔn.",
 	"discussiontools-emptystate-desc-self": "Nnipa ɛwɔ {{SITENAME}} bɛtumi de  [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|kasa bia]] asuma amansan kaseɛbɔ ama wo na wobɛ nya nkaebɔ sɛ ɔmo yɛ a.",
 	"discussiontools-emptystate-desc-self-anon": "Nnipa a wɔ ha {{SITENAME}} bɛtumi de [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|kasa bia]] asuma amansan kaseɛbɔ a ɛkyerɛ sesa yɛ a ɛwɔ IP akyerakwan a wode di dwuma.\n\nDodoɔ IP akyerɛkan sesa meretiamu, na mpɛn pii no nnipa dodoɔ no kyɛ. Wobɛtumi [$1 abue account] anaa [$2 bɛwura mu] sɛ neɛ bɛ ya ɛnfa mpenkyenpenkyenmu ma wɔn a apue dada no. Wobue account no sea wo IP akwankyerɛ.",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Kasa biaeɛ]] yɛ babia nnipa totoa adwene wɔ kwan a wɔbtumi ayɛ biaeɛ {{SITENAME}} ɛyɛ papa. Hyɛ adwenkyerɛ foforɔ a ɛbua kwan na ɛde nkabom {{GENDER:{{PAGENAME}}|with}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Deɛ wobɛka wɔ ha bɛda adi ama amansan ahunu.",
