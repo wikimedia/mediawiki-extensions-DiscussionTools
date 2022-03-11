@@ -61,8 +61,10 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$config = static::getJson( $config );
 		$data = static::getJson( $data );
 
-		$this->setupEnv( $config, $data );
 		$this->overrideConfigValues( [
+			// Consistent defaults for generating canonical URLs
+			MainConfigNames::Server => 'https://example.org',
+			MainConfigNames::CanonicalServer => 'https://example.org',
 			MainConfigNames::ScriptPath => '/w',
 			MainConfigNames::Script => '/w/index.php',
 		] );
@@ -81,8 +83,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$outputPage->method( 'getSkin' )->willReturn( $skin );
 		$outputPage->method( 'msg' )->willReturn( 'a label' );
 
-		MockCommentFormatter::$parser = static::createParser( $data );
-
+		MockCommentFormatter::$parser = $this->createParser( $config, $data );
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
 		$pout = new ParserOutput();

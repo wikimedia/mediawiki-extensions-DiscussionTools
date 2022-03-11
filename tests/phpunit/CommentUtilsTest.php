@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
-use MediaWiki\MediaWikiServices;
 
 /**
  * @group DiscussionTools
@@ -22,9 +21,8 @@ class CommentUtilsTest extends IntegrationTestCase {
 
 		$config = static::getJson( "../data/enwiki-config.json" );
 		$data = static::getJson( "../data/enwiki-data.json" );
-		$this->setupEnv( $config, $data );
-		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
-		$parser = static::createParser( $data );
+		$title = $this->createTitleParser( $config )->parseTitle( $title );
+		$parser = $this->createParser( $config, $data );
 
 		$threadItemSet = $parser->parse( $container, $title );
 		$isSigned = CommentUtils::isSingleCommentSignedBy( $threadItemSet, $username, $container );
