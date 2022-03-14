@@ -30,7 +30,7 @@
 	"apihelp-discussiontoolspageinfo-summary": "Renvoie les métadonnées nécessaires pour initialiser les outils de discussion.",
 	"apihelp-discussiontoolspreview-param-type": "Type de message pour en afficher l’aperçu",
 	"apihelp-discussiontoolspreview-param-wikitext": "Contenu à afficher en aperçu, en tant que wikicode.",
-	"apihelp-discussiontoolspreview-summary": "Afficher un aperçu d’un message sur une page de discussion.",
+	"apihelp-discussiontoolspreview-summary": "Afficher l’aperçu d’un message sur une page de discussion.",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Nom du sujet auquel s’abonner (ou duquel se désabonner)",
 	"apihelp-discussiontoolssubscribe-param-page": "Une page sur laquelle le sujet  apparaît",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Vrai pour s’abonner, faux pour se désinscrire",
