@@ -6,38 +6,94 @@ var
 /**
  * Draw a semi-transparent rectangle on the page to highlight the given comment.
  *
- * @param {CommentItem} comment
- * @return {jQuery} Highlight node
+ * @class
+ * @param {CommentItem|CommentItem[]} comments Comment item(s) to highlight
  */
-function highlight( comment ) {
-	var padding = 5,
-		$highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
+function Highlight( comments ) {
+	var highlight = this;
 
-	// We insert the highlight in the DOM near the comment, so that it remains positioned correctly
-	// when it shifts (e.g. collapsing the table of contents), and disappears when it is hidden (e.g.
-	// opening visual editor).
-	var range = comment.getNativeRange();
-	// Support: Firefox, IE 11
-	// The highlight node must be inserted after the start marker node (data-mw-comment-start), not
-	// before, otherwise Node#getBoundingClientRect() returns wrong results.
-	range.insertNode( $highlight[ 0 ] );
+	this.ranges = [];
+	this.$element = $( [] );
+	this.topmostElement = null;
 
-	var baseRect = $highlight[ 0 ].getBoundingClientRect();
-	var rect = RangeFix.getBoundingClientRect( range );
-	// rect may be null if the range is in a detached or hidden node
-	if ( rect ) {
-		$highlight.css( {
-			'margin-top': rect.top - baseRect.top - padding,
-			'margin-left': rect.left - baseRect.left - padding,
-			width: rect.width + ( padding * 2 ),
-			height: rect.height + ( padding * 2 )
-		} );
-	}
+	comments = Array.isArray( comments ) ? comments : [ comments ];
 
-	return $highlight;
+	comments.forEach( function ( comment ) {
+		var $highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
+
+		// We insert the highlight in the DOM near the comment, so that it remains positioned correctly
+		// when it shifts (e.g. collapsing the table of contents), and disappears when it is hidden (e.g.
+		// opening visual editor).
+		var range = comment.getNativeRange();
+		// Support: Firefox, IE 11
+		// The highlight node must be inserted after the start marker node (data-mw-comment-start), not
+		// before, otherwise Node#getBoundingClientRect() returns wrong results.
+		range.insertNode( $highlight[ 0 ] );
+
+		highlight.ranges.push( range );
+		highlight.$element = highlight.$element.add( $highlight );
+	} );
+
+	// Events
+	this.updateDebounced = OO.ui.debounce( this.update.bind( this ), 500 );
+	window.addEventListener( 'resize', this.updateDebounced );
+
+	this.update();
 }
 
-var $highlightedTarget = null;
+OO.initClass( Highlight );
+
+/**
+ * Update position of highlights, e.g. after window resize
+ */
+Highlight.prototype.update = function () {
+	var highlight = this;
+	this.$element.css( {
+		'margin-top': '',
+		'margin-left': '',
+		width: '',
+		height: ''
+	} );
+	this.topmostElement = null;
+	var top = Infinity;
+	this.ranges.forEach( function ( range, i ) {
+		var baseRect = highlight.$element.get( i ).getBoundingClientRect();
+		var rect = RangeFix.getBoundingClientRect( range );
+		// rect may be null if the range is in a detached or hidden node
+		if ( rect ) {
+			var padding = 5;
+			highlight.$element.eq( i ).css( {
+				'margin-top': rect.top - baseRect.top - padding,
+				'margin-left': rect.left - baseRect.left - padding,
+				width: rect.width + ( padding * 2 ),
+				height: rect.height + ( padding * 2 )
+			} );
+			if ( rect.top < top ) {
+				highlight.topmostElement = highlight.$element.get( i );
+				top = rect.top;
+			}
+		}
+	} );
+};
+
+/**
+ * Scroll the topmost comment into view
+ */
+Highlight.prototype.scrollIntoView = function () {
+	if ( this.topmostElement ) {
+		this.topmostElement.scrollIntoView();
+	}
+};
+
+/**
+ * Destroy the highlight
+ */
+Highlight.prototype.destroy = function () {
+	this.$element.remove();
+	window.removeEventListener( 'resize', this.updateDebounced );
+};
+
+var highlightedTarget = null;
 var missingTargetNotifPromise = null;
 /**
  * Highlight the comment(s) on the page associated with the URL hash or query string
@@ -46,27 +102,27 @@ var missingTargetNotifPromise = null;
  * @param {boolean} [noScroll] Don't scroll to the topmost highlighted comment, e.g. on popstate
  */
 function highlightTargetComment( threadItemSet, noScroll ) {
+	if ( highlightedTarget ) {
+		highlightedTarget.destroy();
+		highlightedTarget = null;
+	}
+	if ( missingTargetNotifPromise ) {
+		missingTargetNotifPromise.then( function ( notif ) {
+			notif.close();
+		} );
+		missingTargetNotifPromise = null;
+	}
 	// Delay with setTimeout() because "the Document's target element" (corresponding to the :target
 	// selector in CSS) is not yet updated to match the URL when handling a 'popstate' event.
 	setTimeout( function () {
-		if ( $highlightedTarget ) {
-			$highlightedTarget.remove();
-			$highlightedTarget = null;
-		}
-		if ( missingTargetNotifPromise ) {
-			missingTargetNotifPromise.then( function ( notif ) {
-				notif.close();
-			} );
-			missingTargetNotifPromise = null;
-		}
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var targetElement = $( ':target' )[ 0 ];
 
 		if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
 			var comment = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
-			$highlightedTarget = highlight( comment );
-			$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
-			$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
+			highlightedTarget = new Highlight( comment );
+			highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
+			highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
 			return;
 		}
 
@@ -99,16 +155,19 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 /**
  * Highlight a just-published comment/topic
  *
+ * These highlights show for a short period of time then tear themselves down.
+ *
  * @param {ThreadItemSet} threadItemSet Thread item set
  * @param {string} threadItemId Thread item ID (NEW_TOPIC_COMMENT_ID for the a new topic)
  */
 function highlightPublishedComment( threadItemSet, threadItemId ) {
-	var $highlight;
+	var highlightComments = [];
+
 	if ( threadItemId === utils.NEW_TOPIC_COMMENT_ID ) {
 		// Highlight the last comment on the page
 		var lastComment = threadItemSet.threadItems[ threadItemSet.threadItems.length - 1 ];
-		$highlight = highlight( lastComment );
 		lastHighlightedPublishedComment = lastComment;
+		highlightComments.push( lastComment );
 
 		// If it's the only comment under its heading, highlight the heading too.
 		// (It might not be if the new discussion topic was posted without a title: T272666.)
@@ -117,22 +176,23 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 			lastComment.parent.type === 'heading' &&
 			lastComment.parent.replies.length === 1
 		) {
-			$highlight = $highlight.add( highlight( lastComment.parent ) );
+			highlightComments.push( lastComment.parent );
 			lastHighlightedPublishedComment = lastComment.parent;
 		}
 	} else {
 		// Find the comment we replied to, then highlight the last reply
 		var repliedToComment = threadItemSet.threadItemsById[ threadItemId ];
-		$highlight = highlight( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
-		lastHighlightedPublishedComment = repliedToComment.replies[ repliedToComment.replies.length - 1 ];
+		highlightComments.push( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
+		lastHighlightedPublishedComment = highlightComments[ 0 ];
 	}
+	var highlight = new Highlight( highlightComments );
 
-	$highlight.addClass( 'ext-discussiontools-init-publishedcomment' );
+	highlight.$element.addClass( 'ext-discussiontools-init-publishedcomment' );
 
 	// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
 	// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
 	OO.ui.Element.static.scrollIntoView(
-		$highlight[ 0 ],
+		highlight.topmostElement,
 		{
 			padding: {
 				// Add padding to avoid overlapping the post-edit notification (above on desktop, below on mobile)
@@ -141,16 +201,16 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 			},
 			// Specify scrollContainer for compatibility with MobileFrontend.
 			// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
-			scrollContainer: OO.ui.Element.static.getRootScrollableElement( $highlight[ 0 ] )
+			scrollContainer: OO.ui.Element.static.getRootScrollableElement( highlight.topmostElement )
 		}
 	).then( function () {
-		$highlight.addClass( 'ext-discussiontools-init-highlight-fadein' );
+		highlight.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
 		setTimeout( function () {
-			$highlight.addClass( 'ext-discussiontools-init-highlight-fadeout' );
+			highlight.$element.addClass( 'ext-discussiontools-init-highlight-fadeout' );
 			setTimeout( function () {
 				// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
 				// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
-				$highlight.remove();
+				highlight.destroy();
 			}, 250 );
 		}, 3000 );
 	} );
@@ -166,6 +226,11 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
  * @param {boolean} [inThread] When using newCommentsSinceId, only highlight comments in the same thread
  */
 function highlightNewComments( threadItemSet, noScroll, newCommentIds, newCommentsSinceId, inThread ) {
+	if ( highlightedTarget ) {
+		highlightedTarget.destroy();
+		highlightedTarget = null;
+	}
+
 	newCommentIds = newCommentIds || [];
 
 	var highlightsRequested = newCommentIds.length || newCommentsSinceId;
@@ -203,21 +268,12 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, newCommen
 			return;
 		}
 
-		var highlights = comments.map( function ( cmt ) {
-			return highlight( cmt )[ 0 ];
-		} );
-		$highlightedTarget = $( highlights );
-		$highlightedTarget.addClass( 'ext-discussiontools-init-targetcomment' );
-		$highlightedTarget.addClass( 'ext-discussiontools-init-highlight-fadein' );
+		highlightedTarget = new Highlight( comments );
+		highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
+		highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
 
 		if ( !noScroll ) {
-			var topmostComment = 0;
-			for ( var i = 1; i < comments.length; i++ ) {
-				if ( highlights[ i ].getBoundingClientRect().top < highlights[ topmostComment ].getBoundingClientRect().top ) {
-					topmostComment = i;
-				}
-			}
-			document.getElementById( comments[ topmostComment ].id ).scrollIntoView();
+			highlightedTarget.scrollIntoView();
 		}
 	} else if ( highlightsRequested ) {
 		missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
@@ -284,6 +340,8 @@ function clearHighlightTargetComment( threadItemSet ) {
 /**
  * Get the last highlighted just-published comment, if any
  *
+ * Used to show an auto-subscription popup to first-time users
+ *
  * @return {ThreadItem|null}
  */
 function getLastHighlightedPublishedComment() {
@@ -291,7 +349,6 @@ function getLastHighlightedPublishedComment() {
 }
 
 module.exports = {
-	highlight: highlight,
 	highlightTargetComment: highlightTargetComment,
 	highlightPublishedComment: highlightPublishedComment,
 	highlightNewComments: highlightNewComments,
