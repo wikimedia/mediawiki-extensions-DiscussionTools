@@ -440,7 +440,6 @@
 		"EchoGetEventsForRevision": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onEchoGetEventsForRevision",
 		"MinervaNeueTalkPageOverlay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\MobileHooks::onMinervaNeueTalkPageOverlay",
 		"LoadExtensionSchemaUpdates": "installer",
-		"ParserAfterParse": "parser",
 		"ParserAfterTidy": "parser",
 		"ArticleViewHeader": "page",
 		"BeforeDisplayNoArticleText": "page",
