@@ -11,15 +11,10 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
-use MediaWiki\Hook\ParserAfterParseHook;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use Parser;
-use StripState;
 
-class ParserHooks implements
-	ParserAfterParseHook,
-	ParserAfterTidyHook
-{
+class ParserHooks implements ParserAfterTidyHook {
 	/** @var ConfigFactory */
 	private $configFactory;
 
@@ -33,13 +28,16 @@ class ParserHooks implements
 	}
 
 	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserAfterParse
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserAfterTidy
 	 *
 	 * @param Parser $parser
 	 * @param string &$text
-	 * @param StripState $stripState
 	 */
-	public function onParserAfterParse( $parser, &$text, $stripState ): void {
+	public function onParserAfterTidy( $parser, &$text ) {
+		if ( $parser->getOptions()->getInterfaceMessage() || $parser->getOptions()->getIsPreview() ) {
+			return;
+		}
+
 		$title = $parser->getTitle();
 
 		// This condition must be unreliant on current enablement config or user preference.
@@ -57,25 +55,13 @@ class ParserHooks implements
 				$parser->getOutput()->updateCacheExpiry( $talkExpiry );
 			}
 		}
-	}
-
-	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserAfterTidy
-	 *
-	 * @param Parser $parser
-	 * @param string &$text
-	 */
-	public function onParserAfterTidy( $parser, &$text ) {
-		if ( $parser->getOptions()->getInterfaceMessage() || $parser->getOptions()->getIsPreview() ) {
-			return;
-		}
 
 		// Always apply the DOM transform if DiscussionTools are available for this page,
 		// to allow linking to individual comments from Echo 'mention' and 'edit-user-talk'
 		// notifications (T253082, T281590), and to reduce parser cache fragmentation (T279864).
 		// The extra buttons are hidden in CSS (ext.discussionTools.init.styles module) when
 		// the user doesn't have DiscussionTools features enabled.
-		if ( HookUtils::isAvailableForTitle( $parser->getTitle() ) ) {
+		if ( HookUtils::isAvailableForTitle( $title ) ) {
 			// This modifies $text
 			CommentFormatter::addDiscussionTools( $text, $parser->getOutput(), $parser->getTitle() );
 
