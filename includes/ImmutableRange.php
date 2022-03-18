@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Error;
 use Exception;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
 use Wikimedia\Parsoid\DOM\DocumentType;
@@ -282,11 +283,13 @@ class ImmutableRange {
 			|| $firstPartiallyContainedChild instanceof Comment
 		) {
 			$clone = $originalStartContainer->cloneNode();
-			// @phan-suppress-next-line PhanUndeclaredMethod
-			$clone->nodeValue = $originalStartContainer->substringData(
+			Assert::precondition(
+				$firstPartiallyContainedChild === $originalStartContainer,
+				'Only possible when the node is the startContainer'
+			);
+			$clone->nodeValue = $firstPartiallyContainedChild->substringData(
 				$originalStartOffset,
-				// @phan-suppress-next-line PhanUndeclaredProperty
-				$originalStartContainer->length - $originalStartOffset
+				$firstPartiallyContainedChild->length - $originalStartOffset
 			);
 			$fragment->appendChild( $clone );
 		} elseif ( $firstPartiallyContainedChild ) {
@@ -319,9 +322,12 @@ class ImmutableRange {
 			|| $lastPartiallyContainedChild instanceof ProcessingInstruction
 			|| $lastPartiallyContainedChild instanceof Comment
 		) {
-			$clone = $originalEndContainer->cloneNode();
-			// @phan-suppress-next-line PhanUndeclaredMethod
-			$clone->nodeValue = $originalEndContainer->substringData(
+			Assert::precondition(
+				$lastPartiallyContainedChild === $originalEndContainer,
+				'Only possible when the node is the endContainer'
+			);
+			$clone = $lastPartiallyContainedChild->cloneNode();
+			$clone->nodeValue = $lastPartiallyContainedChild->substringData(
 				0,
 				$originalEndOffset
 			);
