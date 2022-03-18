@@ -5,6 +5,8 @@ namespace MediaWiki\Extension\DiscussionTools;
 use Html;
 use Language;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
@@ -81,9 +83,9 @@ class CommentFormatter {
 	 * Add a topic container around a heading element
 	 *
 	 * @param Element $headingElement Heading element
-	 * @param HeadingItem|null $headingItem Heading item
+	 * @param ContentHeadingItem|null $headingItem Heading item
 	 */
-	protected static function addTopicContainer( Element $headingElement, ?HeadingItem $headingItem = null ) {
+	protected static function addTopicContainer( Element $headingElement, ?ContentHeadingItem $headingItem = null ) {
 		$doc = $headingElement->ownerDocument;
 
 		DOMCompat::getClassList( $headingElement )->add( 'ext-discussiontools-init-section' );
@@ -182,7 +184,7 @@ class CommentFormatter {
 		foreach ( array_reverse( $threadItems ) as $threadItem ) {
 			// TODO: Consider not attaching JSON data to the DOM.
 			// Create a dummy node to attach data to.
-			if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
+			if ( $threadItem instanceof ContentHeadingItem && $threadItem->isPlaceholderHeading() ) {
 				$node = $doc->createElement( 'span' );
 				$container->insertBefore( $node, $container->firstChild );
 				$threadItem->setRange( new ImmutableRange( $node, 0, $node, 0 ) );
@@ -218,7 +220,7 @@ class CommentFormatter {
 			$itemData = $threadItem->jsonSerialize();
 			$itemJSON = json_encode( $itemData );
 
-			if ( $threadItem instanceof HeadingItem ) {
+			if ( $threadItem instanceof ContentHeadingItem ) {
 				// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 				$headline = $threadItem->getRange()->endContainer;
 				Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
@@ -230,7 +232,7 @@ class CommentFormatter {
 						static::addTopicContainer( $headingElement, $threadItem );
 					}
 				}
-			} elseif ( $threadItem instanceof CommentItem ) {
+			} elseif ( $threadItem instanceof ContentCommentItem ) {
 				$replyLinkButtons = $doc->createElement( 'span' );
 				$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
 
@@ -438,10 +440,10 @@ class CommentFormatter {
 	/**
 	 * Get JSON for a commentItem that can be inserted into a comment marker
 	 *
-	 * @param CommentItem $commentItem Comment item
+	 * @param ContentCommentItem $commentItem Comment item
 	 * @return string
 	 */
-	private static function getJsonForCommentMarker( CommentItem $commentItem ): string {
+	private static function getJsonForCommentMarker( ContentCommentItem $commentItem ): string {
 		$JSON = [
 			'id' => $commentItem->getId(),
 			'timestamp' => $commentItem->getTimestampString()

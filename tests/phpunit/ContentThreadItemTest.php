@@ -3,19 +3,20 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use DateTimeImmutable;
-use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
-use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
-use MediaWiki\Extension\DiscussionTools\ThreadItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ThreadItem;
 use MediaWiki\MediaWikiServices;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\ThreadItem
+ * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem
  *
  * @group DiscussionTools
  */
-class ThreadItemTest extends IntegrationTestCase {
+class ContentThreadItemTest extends IntegrationTestCase {
 	/**
 	 * @dataProvider provideAuthors
 	 * @covers ::getAuthorsBelow
@@ -28,11 +29,11 @@ class ThreadItemTest extends IntegrationTestCase {
 		$node = $doc->createElement( 'div' );
 		$range = new ImmutableRange( $node, 0, $node, 0 );
 
-		$makeThreadItem = static function ( array $arr ) use ( &$makeThreadItem, $range ): ThreadItem {
+		$makeThreadItem = static function ( array $arr ) use ( &$makeThreadItem, $range ): ContentThreadItem {
 			if ( $arr['type'] === 'comment' ) {
-				$item = new CommentItem( 1, $range, [], new DateTimeImmutable(), $arr['author'] );
+				$item = new ContentCommentItem( 1, $range, [], new DateTimeImmutable(), $arr['author'] );
 			} else {
-				$item = new HeadingItem( $range, 2 );
+				$item = new ContentHeadingItem( $range, 2 );
 			}
 			$item->setId( $arr['id'] );
 			foreach ( $arr['replies'] as $reply ) {
@@ -102,7 +103,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	/**
 	 * @dataProvider provideGetText
 	 * @covers ::getText
-	 * @covers \MediaWiki\Extension\DiscussionTools\CommentItem::getBodyText
+	 * @covers \MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem::getBodyText
 	 * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange::cloneContents
 	 */
 	public function testGetText(
@@ -125,7 +126,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$output = [];
 		foreach ( $items as $item ) {
 			$output[ $item->getId() ] = CommentUtils::htmlTrim(
-				$item instanceof CommentItem ? $item->getBodyText( true ) : $item->getText()
+				$item instanceof ContentCommentItem ? $item->getBodyText( true ) : $item->getText()
 			);
 		}
 
@@ -148,7 +149,7 @@ class ThreadItemTest extends IntegrationTestCase {
 	/**
 	 * @dataProvider provideGetHTML
 	 * @covers ::getHTML
-	 * @covers \MediaWiki\Extension\DiscussionTools\CommentItem::getBodyHTML
+	 * @covers \MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem::getBodyHTML
 	 * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange::cloneContents
 	 */
 	public function testGetHTML(
@@ -171,7 +172,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$output = [];
 		foreach ( $items as $item ) {
 			$output[ $item->getId() ] = CommentUtils::htmlTrim(
-				$item instanceof CommentItem ? $item->getBodyHTML( true ) : $item->getHTML()
+				$item instanceof ContentCommentItem ? $item->getBodyHTML( true ) : $item->getHTML()
 			);
 		}
 

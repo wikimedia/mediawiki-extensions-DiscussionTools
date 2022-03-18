@@ -2,6 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use Wikimedia\Assert\Assert;
@@ -47,10 +49,10 @@ class CommentModifier {
 	 * Given a comment and a reply link, add the reply link to its document's DOM tree, at the end of
 	 * the comment.
 	 *
-	 * @param CommentItem $comment
+	 * @param ContentCommentItem $comment
 	 * @param Element $linkNode Reply link
 	 */
-	public static function addReplyLink( CommentItem $comment, Element $linkNode ): void {
+	public static function addReplyLink( ContentCommentItem $comment, Element $linkNode ): void {
 		$target = $comment->getRange()->endContainer;
 
 		// Insert the link before trailing whitespace.
@@ -77,13 +79,13 @@ class CommentModifier {
 	 * The DOM tree is suitably rearranged to ensure correct indentation level of the reply (wrapper
 	 * nodes are added, and other nodes may be moved around).
 	 *
-	 * @param ThreadItem $comment
+	 * @param ContentThreadItem $comment
 	 * @param string $replyIndentation Reply indentation syntax to use, one of:
 	 *   - 'invisible' (use `<dl><dd>` tags to output `:` in wikitext)
 	 *   - 'bullet' (use `<ul><li>` tags to output `*` in wikitext)
 	 * @return Element
 	 */
-	public static function addListItem( ThreadItem $comment, string $replyIndentation ): Element {
+	public static function addListItem( ContentThreadItem $comment, string $replyIndentation ): Element {
 		$listTypeMap = [
 			'li' => 'ul',
 			'dd' => 'dl'
@@ -466,10 +468,10 @@ class CommentModifier {
 	/**
 	 * Add a reply to a specific comment
 	 *
-	 * @param ThreadItem $comment Comment being replied to
+	 * @param ContentThreadItem $comment Comment being replied to
 	 * @param DocumentFragment $container Container of comment DOM nodes
 	 */
-	public static function addReply( ThreadItem $comment, DocumentFragment $container ): void {
+	public static function addReply( ContentThreadItem $comment, DocumentFragment $container ): void {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 		$replyIndentation = $dtConfig->get( 'DiscussionToolsReplyIndentation' );
@@ -573,11 +575,13 @@ class CommentModifier {
 	/**
 	 * Add a reply in the DOM to a comment using wikitext.
 	 *
-	 * @param CommentItem $comment Comment being replied to
+	 * @param ContentCommentItem $comment Comment being replied to
 	 * @param string $wikitext
 	 * @param string|null $signature
 	 */
-	public static function addWikitextReply( CommentItem $comment, string $wikitext, string $signature = null ): void {
+	public static function addWikitextReply(
+		ContentCommentItem $comment, string $wikitext, string $signature = null
+	): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = static::prepareWikitextReply( $doc, $wikitext );
 		if ( $signature !== null ) {
@@ -589,11 +593,13 @@ class CommentModifier {
 	/**
 	 * Add a reply in the DOM to a comment using HTML.
 	 *
-	 * @param CommentItem $comment Comment being replied to
+	 * @param ContentCommentItem $comment Comment being replied to
 	 * @param string $html
 	 * @param string|null $signature
 	 */
-	public static function addHtmlReply( CommentItem $comment, string $html, string $signature = null ): void {
+	public static function addHtmlReply(
+		ContentCommentItem $comment, string $html, string $signature = null
+	): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = static::prepareHtmlReply( $doc, $html );
 		if ( $signature !== null ) {

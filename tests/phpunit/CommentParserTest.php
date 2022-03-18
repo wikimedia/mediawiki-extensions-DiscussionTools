@@ -4,11 +4,11 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use DateTimeImmutable;
 use Error;
-use MediaWiki\Extension\DiscussionTools\CommentItem;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
-use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
-use MediaWiki\Extension\DiscussionTools\ThreadItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\MediaWikiServices;
 use stdClass;
 use Wikimedia\Parsoid\DOM\Element;
@@ -54,16 +54,16 @@ class CommentParserTest extends IntegrationTestCase {
 		return implode( '/', $path );
 	}
 
-	private static function serializeComments( ThreadItem $threadItem, Element $root ): stdClass {
+	private static function serializeComments( ContentThreadItem $threadItem, Element $root ): stdClass {
 		$serialized = new stdClass();
 
-		if ( $threadItem instanceof HeadingItem ) {
+		if ( $threadItem instanceof ContentHeadingItem ) {
 			$serialized->placeholderHeading = $threadItem->isPlaceholderHeading();
 		}
 
 		$serialized->type = $threadItem->getType();
 
-		if ( $threadItem instanceof CommentItem ) {
+		if ( $threadItem instanceof ContentCommentItem ) {
 			$serialized->timestamp = $threadItem->getTimestampString();
 			$serialized->author = $threadItem->getAuthor();
 		}
@@ -76,7 +76,7 @@ class CommentParserTest extends IntegrationTestCase {
 			static::getOffsetPath( $root, $range->endContainer, $range->endOffset )
 		];
 
-		if ( $threadItem instanceof CommentItem ) {
+		if ( $threadItem instanceof ContentCommentItem ) {
 			$serialized->signatureRanges = array_map( function ( ImmutableRange $range ) use ( $root ) {
 				return [
 					static::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
@@ -85,7 +85,7 @@ class CommentParserTest extends IntegrationTestCase {
 			}, $threadItem->getSignatureRanges() );
 		}
 
-		if ( $threadItem instanceof HeadingItem ) {
+		if ( $threadItem instanceof ContentHeadingItem ) {
 			$serialized->headingLevel = $threadItem->getHeadingLevel();
 		}
 		$serialized->level = $threadItem->getLevel();

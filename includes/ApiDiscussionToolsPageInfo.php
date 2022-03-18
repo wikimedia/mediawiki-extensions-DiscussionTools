@@ -4,6 +4,8 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -50,12 +52,12 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	}
 
 	/**
-	 * Get transcluded=from data for a ThreadItemSet
+	 * Get transcluded=from data for a ContentThreadItemSet
 	 *
-	 * @param ThreadItemSet $threadItemSet
+	 * @param ContentThreadItemSet $threadItemSet
 	 * @return array
 	 */
-	private static function getTranscludedFrom( ThreadItemSet $threadItemSet ): array {
+	private static function getTranscludedFrom( ContentThreadItemSet $threadItemSet ): array {
 		$threadItems = $threadItemSet->getThreadItems();
 		$transcludedFrom = [];
 		foreach ( $threadItems as $threadItem ) {
@@ -84,33 +86,33 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	}
 
 	/**
-	 * Get thread items HTML for a ThreadItemSet
+	 * Get thread items HTML for a ContentThreadItemSet
 	 *
-	 * @param ThreadItemSet $threadItemSet
+	 * @param ContentThreadItemSet $threadItemSet
 	 * @return array
 	 */
-	private static function getThreadItemsHtml( ThreadItemSet $threadItemSet ): array {
+	private static function getThreadItemsHtml( ContentThreadItemSet $threadItemSet ): array {
 		$threads = $threadItemSet->getThreads();
 		if ( count( $threads ) > 0 ) {
 			$firstHeading = $threads[0];
 			if ( !$firstHeading->isPlaceholderHeading() ) {
 				$range = new ImmutableRange( $firstHeading->getRootNode(), 0, $firstHeading->getRootNode(), 0 );
-				$fakeHeading = new HeadingItem( $range, null );
+				$fakeHeading = new ContentHeadingItem( $range, null );
 				$fakeHeading->setRootNode( $firstHeading->getRootNode() );
 				$fakeHeading->setName( 'h-' );
 				$fakeHeading->setId( 'h-' );
 				array_unshift( $threads, $fakeHeading );
 			}
 		}
-		$output = array_map( static function ( ThreadItem $item ) {
-			return $item->jsonSerialize( true, static function ( array &$array, ThreadItem $item ) {
+		$output = array_map( static function ( ContentThreadItem $item ) {
+			return $item->jsonSerialize( true, static function ( array &$array, ContentThreadItem $item ) {
 				$array['html'] = $item->getHtml();
 			} );
 		}, $threads );
 		foreach ( $threads as $index => $item ) {
 			// need to loop over this to fix up empty sections, because we
 			// need context that's not available inside the array map
-			if ( $item instanceof HeadingItem && count( $item->getReplies() ) === 0 ) {
+			if ( $item instanceof ContentHeadingItem && count( $item->getReplies() ) === 0 ) {
 				$nextItem = $threads[ $index + 1 ] ?? false;
 				$startRange = $item->getRange();
 				if ( $nextItem ) {

@@ -4,6 +4,8 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Config;
 use LogicException;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
 use Wikimedia\Parsoid\DOM\Element;
@@ -389,13 +391,15 @@ class CommentUtils {
 	/**
 	 * Get the nodes (if any) that contain the given thread item, and nothing else.
 	 *
-	 * @param ThreadItem $item
+	 * @param ContentThreadItem $item
 	 * @param ?Node $excludedAncestorNode Node that shouldn't be included in the result, even if it
 	 *     contains the item and nothing else. This is intended to avoid traversing outside of a node
 	 *     which is a container for all the thread items.
 	 * @return Node[]|null
 	 */
-	public static function getFullyCoveredSiblings( ThreadItem $item, ?Node $excludedAncestorNode = null ): ?array {
+	public static function getFullyCoveredSiblings(
+		ContentThreadItem $item, ?Node $excludedAncestorNode = null
+	): ?array {
 		$siblings = static::getCoveredSiblings( $item->getRange() );
 
 		$makeRange = static function ( $siblings ) {
@@ -710,13 +714,13 @@ class CommentUtils {
 	 * signature, or there's some text within the same paragraph that was detected as part of the same
 	 * comment).
 	 *
-	 * @param ThreadItemSet $itemSet
+	 * @param ContentThreadItemSet $itemSet
 	 * @param string $author
 	 * @param Element $rootNode
 	 * @return bool
 	 */
 	public static function isSingleCommentSignedBy(
-		ThreadItemSet $itemSet,
+		ContentThreadItemSet $itemSet,
 		string $author,
 		Element $rootNode
 	): bool {
@@ -725,7 +729,7 @@ class CommentUtils {
 		if ( $items ) {
 			$lastItem = end( $items );
 			// Check that we've detected a comment first, not just headings (T304377)
-			if ( !( $lastItem instanceof CommentItem && $lastItem->getAuthor() === $author ) ) {
+			if ( !( $lastItem instanceof ContentCommentItem && $lastItem->getAuthor() === $author ) ) {
 				return false;
 			}
 

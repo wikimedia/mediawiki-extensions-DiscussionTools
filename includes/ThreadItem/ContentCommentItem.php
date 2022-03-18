@@ -1,10 +1,12 @@
 <?php
 
-namespace MediaWiki\Extension\DiscussionTools;
+namespace MediaWiki\Extension\DiscussionTools\ThreadItem;
 
 use DateTimeImmutable;
+use MediaWiki\Extension\DiscussionTools\CommentModifier;
+use MediaWiki\Extension\DiscussionTools\CommentUtils;
+use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\MediaWikiServices;
-use MWException;
 use Sanitizer;
 use Title;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
@@ -12,7 +14,12 @@ use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
-class CommentItem extends ThreadItem {
+class ContentCommentItem extends ContentThreadItem implements CommentItem {
+	use CommentItemTrait {
+		getHeading as protected traitGetHeading;
+		getSubscribableHeading as protected traitGetSubscribableHeading;
+	}
+
 	private $signatureRanges;
 	private $timestamp;
 	private $author;
@@ -35,30 +42,6 @@ class CommentItem extends ThreadItem {
 		$this->signatureRanges = $signatureRanges;
 		$this->timestamp = $timestamp;
 		$this->author = $author;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
-		return array_merge( parent::jsonSerialize( $deep, $callback ), [
-			'timestamp' => $this->getTimestampString(),
-			'author' => $this->author,
-		] );
-	}
-
-	/**
-	 * @return array JSON-serializable array
-	 */
-	public function jsonSerializeForDiff(): array {
-		$data = $this->jsonSerialize();
-
-		$heading = $this->getHeading();
-		$data['headingId'] = $heading->getId();
-		$subscribableHeading = $this->getSubscribableHeading();
-		$data['subscribableHeadingId'] = $subscribableHeading ? $subscribableHeading->getId() : null;
-
-		return $data;
 	}
 
 	/**
@@ -164,33 +147,6 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * Get the comment timestamp in the format used in IDs and names.
-	 *
-	 * Depending on the date of the comment, this may use one of two formats:
-	 *
-	 *  - For dates prior to 'DiscussionToolsTimestampFormatSwitchTime' (by default 2022-07-12):
-	 *    Uses ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
-	 *    of '+00:00', like Date#toISOString in JavaScript.
-	 *
-	 *  - For dates on or after 'DiscussionToolsTimestampFormatSwitchTime' (by default 2022-07-12):
-	 *    Uses MediaWiki timestamp (TS_MW in MediaWiki PHP code).
-	 *
-	 * @return string Comment timestamp in standard format
-	 */
-	public function getTimestampString(): string {
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
-		$switchTime = new DateTimeImmutable(
-			$dtConfig->get( 'DiscussionToolsTimestampFormatSwitchTime' )
-		);
-		$timestamp = $this->getTimestamp();
-		if ( $timestamp < $switchTime ) {
-			return $timestamp->format( 'Y-m-d\TH:i:s.v\Z' );
-		} else {
-			return $timestamp->format( 'YmdHis' );
-		}
-	}
-
-	/**
 	 * @return string Comment author
 	 */
 	public function getAuthor(): string {
@@ -198,28 +154,18 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * @return HeadingItem Closest ancestor which is a HeadingItem
+	 * @inheritDoc CommentItemTrait::getHeading
+	 * @suppress PhanTypeMismatchReturnSuperType
 	 */
-	public function getHeading(): HeadingItem {
-		$parent = $this;
-		while ( $parent instanceof CommentItem ) {
-			$parent = $parent->getParent();
-		}
-		if ( !( $parent instanceof HeadingItem ) ) {
-			throw new MWException( 'heading parent not found' );
-		}
-		return $parent;
+	public function getHeading(): ContentHeadingItem {
+		return $this->traitGetHeading();
 	}
 
 	/**
-	 * @return HeadingItem|null Closest heading that can be used for topic subscriptions
+	 * @inheritDoc CommentItemTrait::getSubscribableHeading
 	 */
-	public function getSubscribableHeading(): ?HeadingItem {
-		$heading = $this->getHeading();
-		while ( $heading instanceof HeadingItem && !$heading->isSubscribable() ) {
-			$heading = $heading->getParent();
-		}
-		return $heading instanceof HeadingItem ? $heading : null;
+	public function getSubscribableHeading(): ?ContentHeadingItem {
+		return $this->traitGetSubscribableHeading();
 	}
 
 	/**

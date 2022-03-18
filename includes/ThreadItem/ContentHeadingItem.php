@@ -1,12 +1,17 @@
 <?php
 
-namespace MediaWiki\Extension\DiscussionTools;
+namespace MediaWiki\Extension\DiscussionTools\ThreadItem;
 
+use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Element;
 
-class HeadingItem extends ThreadItem {
-	private $placeholderHeading = false;
+class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
+	use HeadingItemTrait;
+
+	/** @var bool */
+	private $placeholderHeading;
+	/** @var int */
 	private $headingLevel;
 
 	// Placeholder headings must have a level higher than real headings (1-6)
@@ -22,18 +27,6 @@ class HeadingItem extends ThreadItem {
 		parent::__construct( 'heading', 0, $range );
 		$this->placeholderHeading = $headingLevel === null;
 		$this->headingLevel = $this->placeholderHeading ? static::PLACEHOLDER_HEADING_LEVEL : $headingLevel;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
-		return array_merge( parent::jsonSerialize( $deep, $callback ), [
-			'headingLevel' => $this->headingLevel === static::PLACEHOLDER_HEADING_LEVEL ? null : $this->headingLevel,
-			// Used for topic subscriptions. Not added to CommentItem's yet as there is
-			// no use case for it.
-			'name' => $this->name,
-		] );
 	}
 
 	/**
@@ -86,24 +79,6 @@ class HeadingItem extends ThreadItem {
 	 */
 	public function setPlaceholderHeading( bool $placeholderHeading ): void {
 		$this->placeholderHeading = $placeholderHeading;
-	}
-
-	/**
-	 * Check whether this heading can be used for topic subscriptions.
-	 *
-	 * @return bool
-	 */
-	public function isSubscribable(): bool {
-		return (
-			// Placeholder headings have nothing to attach the button to.
-			!$this->isPlaceholderHeading() &&
-			// We only allow subscribing to level 2 headings, because the user interface for sub-headings
-			// would be difficult to present.
-			$this->getHeadingLevel() === 2 &&
-			// Check if the name corresponds to a section that contain no comments (only sub-sections).
-			// They can't be distinguished from each other, so disallow subscribing.
-			$this->getName() !== 'h-'
-		);
 	}
 
 	/**
