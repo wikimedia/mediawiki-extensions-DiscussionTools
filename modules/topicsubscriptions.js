@@ -6,15 +6,16 @@ var
 	STATE_SUBSCRIBED = 1,
 	STATE_AUTOSUBSCRIBED = 2,
 	utils = require( './utils.js' ),
-	CommentItem = require( './CommentItem.js' );
+	CommentItem = require( './CommentItem.js' ),
+	linksByName = {};
 
 /**
- * Update a subscribe button
+ * Update a subscribe link
  *
- * @param {HTMLElement} element Subscribe button
+ * @param {HTMLElement} element Subscribe link
  * @param {number|null} state State constant (STATE_UNSUBSCRIBED, STATE_SUBSCRIBED or STATE_AUTOSUBSCRIBED)
  */
-function updateSubscribeButton( element, state ) {
+function updateSubscribeLink( element, state ) {
 	if ( state !== null ) {
 		element.setAttribute( 'data-mw-subscribed', String( state ) );
 	}
@@ -27,27 +28,61 @@ function updateSubscribeButton( element, state ) {
 	}
 }
 
+function changeSubscription( title, commentName, subscribe ) {
+	var promise = api.postWithToken( 'csrf', {
+		action: 'discussiontoolssubscribe',
+		page: title,
+		commentname: commentName,
+		subscribe: subscribe
+	} ).then( function ( response ) {
+		return OO.getProp( response, 'discussiontoolssubscribe' ) || {};
+	} );
+
+	promise.then( function ( result ) {
+		mw.notify(
+			mw.msg(
+				result.subscribe ?
+					'discussiontools-topicsubscription-notify-subscribed-body' :
+					'discussiontools-topicsubscription-notify-unsubscribed-body'
+			),
+			{
+				title: mw.msg(
+					result.subscribe ?
+						'discussiontools-topicsubscription-notify-subscribed-title' :
+						'discussiontools-topicsubscription-notify-unsubscribed-title'
+				)
+			}
+		);
+	}, function ( code, data ) {
+		mw.notify( api.getErrorMessage( data ), { type: 'error' } );
+	} );
+
+	return promise;
+}
+
+function getSubscribedStateFromElement( element ) {
+	return element.hasAttribute( 'data-mw-subscribed' ) ? Number( element.getAttribute( 'data-mw-subscribed' ) ) : null;
+}
+
+function getTitleFromHeading( heading ) {
+	var section = utils.getHeadlineNodeAndOffset( heading ).node.id;
+	return mw.config.get( 'wgRelevantPageName' ) + '#' + section;
+}
+
 /**
  * Initialize topic subscriptions feature
  *
  * @param {jQuery} $container Page container
  */
 function initTopicSubscriptions( $container ) {
+	linksByName = {};
+
 	// Loads later to avoid circular dependency
 	api = require( './controller.js' ).getApi();
 
-	$container.find( '.ext-discussiontools-init-section-subscribe-link' ).on( 'click keypress', function ( e ) {
-		if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
-			// Only handle keypresses on the "Enter" or "Space" keys
-			return;
-		}
-		if ( e.type === 'click' && !utils.isUnmodifiedLeftClick( e ) ) {
-			// Only handle unmodified left clicks
-			return;
-		}
-
-		e.preventDefault();
-
+	// Subscription links (no visual enhancements)
+	$container.find( '.ext-discussiontools-init-section-subscribe-link' ).each( function () {
+		var $link = $( this );
 		var commentName = this.getAttribute( 'data-mw-comment-name' );
 
 		if ( !commentName ) {
@@ -55,42 +90,34 @@ function initTopicSubscriptions( $container ) {
 			return;
 		}
 
-		var element = this,
-			subscribedState = element.hasAttribute( 'data-mw-subscribed' ) ?
-				Number( element.getAttribute( 'data-mw-subscribed' ) ) : null,
-			heading = $( this ).closest( '.ext-discussiontools-init-section' )[ 0 ],
-			section = utils.getHeadlineNodeAndOffset( heading ).node.id,
-			title = mw.config.get( 'wgRelevantPageName' ) + '#' + section;
+		linksByName[ commentName ] = this;
 
-		$( element ).addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+		var heading = $link.closest( '.ext-discussiontools-init-section' )[ 0 ];
+		var title = getTitleFromHeading( heading );
 
-		api.postWithToken( 'csrf', {
-			action: 'discussiontoolssubscribe',
-			page: title,
-			commentname: commentName,
-			subscribe: !subscribedState
-		} ).then( function ( response ) {
-			return OO.getProp( response, 'discussiontoolssubscribe' ) || {};
-		} ).then( function ( result ) {
-			$( element ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
-			updateSubscribeButton( element, result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED );
-			mw.notify(
-				mw.msg(
-					result.subscribe ?
-						'discussiontools-topicsubscription-notify-subscribed-body' :
-						'discussiontools-topicsubscription-notify-unsubscribed-body'
-				),
-				{
-					title: mw.msg(
-						result.subscribe ?
-							'discussiontools-topicsubscription-notify-subscribed-title' :
-							'discussiontools-topicsubscription-notify-unsubscribed-title'
-					)
-				}
-			);
-		}, function ( code, data ) {
-			mw.notify( api.getErrorMessage( data ), { type: 'error' } );
-			$( element ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+		$link.on( 'click keypress', function ( e ) {
+			if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
+				// Only handle keypresses on the "Enter" or "Space" keys
+				return;
+			}
+			if ( e.type === 'click' && !utils.isUnmodifiedLeftClick( e ) ) {
+				// Only handle unmodified left clicks
+				return;
+			}
+
+			e.preventDefault();
+
+			// Get latest subscribedState
+			var subscribedState = getSubscribedStateFromElement( $link[ 0 ] );
+
+			$link.addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+			changeSubscription( title, commentName, !subscribedState )
+				.then( function ( result ) {
+					updateSubscribeLink( $link[ 0 ], result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED );
+				} )
+				.always( function () {
+					$link.removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+				} );
 		} );
 	} );
 }
@@ -202,30 +229,23 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 	// This method is called when we recently edited this page, and auto-subscriptions might have been
 	// added for some topics. It updates the [subscribe] buttons to reflect the new subscriptions.
 
-	var $links = $container.find( '.ext-discussiontools-init-section-subscribe-link' );
-	var linksByName = {};
-	$links.each( function () {
-		linksByName[ this.getAttribute( 'data-mw-comment-name' ) ] = this;
-	} );
-
 	// If the topic is already marked as auto-subscribed, there's nothing to do.
 	// (Except maybe show the first-time popup.)
 	// If the topic is marked as having never been subscribed, check if they are auto-subscribed now.
 	var topicsToCheck = [];
-	var pending = [];
+	var pendingLinks = [];
 	for ( var headingName in headingsToUpdate ) {
-		var el = linksByName[ headingName ];
-		var subscribedState = el.hasAttribute( 'data-mw-subscribed' ) ?
-			Number( el.getAttribute( 'data-mw-subscribed' ) ) : null;
+		var link = linksByName[ headingName ];
+		var subscribedState = getSubscribedStateFromElement( link );
 
 		if ( subscribedState === STATE_AUTOSUBSCRIBED ) {
 			maybeShowFirstTimeAutoTopicSubPopup();
 		} else if ( subscribedState === null || subscribedState === STATE_UNSUBSCRIBED ) {
 			topicsToCheck.push( headingName );
-			pending.push( el );
+			pendingLinks.push( link );
 		}
 	}
-	$( pending ).addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+	$( pendingLinks ).addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
 
 	if ( !topicsToCheck.length ) {
 		return;
@@ -254,14 +274,13 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 		// Update state of each topic for which there is a subscription
 		for ( var subItemName in response.subscriptions ) {
 			var state = response.subscriptions[ subItemName ];
-			updateSubscribeButton( linksByName[ subItemName ], state );
+			updateSubscribeLink( linksByName[ subItemName ], state );
 			if ( state === STATE_AUTOSUBSCRIBED ) {
 				maybeShowFirstTimeAutoTopicSubPopup();
 			}
 		}
-		$( pending ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
-	}, function () {
-		$( pending ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+	} ).always( function () {
+		$( pendingLinks ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
 	} );
 }
 
