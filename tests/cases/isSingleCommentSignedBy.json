@@ -14,6 +14,13 @@
 		"expected": false
 	},
 	{
+		"msg": "Simple message [with empty heading]",
+		"title": "Talk:A",
+		"user": "X",
+		"html": "<h2><span class=\"mw-headline\" id=\"\"></span></h2>\n<p>bar\n</p>",
+		"expected": false
+	},
+	{
 		"msg": "Simple message [indented]",
 		"title": "Talk:A",
 		"user": "X",
