@@ -724,13 +724,19 @@ class CommentUtils {
 		$items = $itemSet->getThreadItems();
 
 		if ( $items ) {
+			$lastItem = end( $items );
+			// Check that we've detected a comment first, not just headings (T304377)
+			if ( !( $lastItem instanceof CommentItem && $lastItem->getAuthor() === $author ) ) {
+				return false;
+			}
+
 			// Range covering all of the detected items (to account for a heading, and for multiple
 			// signatures resulting in multiple comments)
 			$commentsRange = new ImmutableRange(
 				$items[0]->getRange()->startContainer,
 				$items[0]->getRange()->startOffset,
-				end( $items )->getRange()->endContainer,
-				end( $items )->getRange()->endOffset
+				$lastItem->getRange()->endContainer,
+				$lastItem->getRange()->endOffset
 			);
 			$bodyRange = new ImmutableRange(
 				$rootNode, 0, $rootNode, count( $rootNode->childNodes )
@@ -738,10 +744,7 @@ class CommentUtils {
 
 			if ( self::compareRanges( $commentsRange, $bodyRange ) === 'equal' ) {
 				// New comment includes a signature in the proper place
-				$lastComment = end( $items );
-				if ( $lastComment instanceof CommentItem && $lastComment->getAuthor() === $author ) {
-					return true;
-				}
+				return true;
 			}
 		}
 
