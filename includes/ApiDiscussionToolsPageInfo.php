@@ -26,6 +26,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$title = Title::newFromText( $params['page'] );
+		$prop = array_fill_keys( $params['prop'], true );
 
 		if ( !$title ) {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
@@ -33,34 +34,45 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 
 		$revision = $this->getValidRevision( $title, $params['oldid'] ?? null );
 		$threadItemSet = $this->parseRevision( $revision );
-		$threadItems = $threadItemSet->getThreadItems();
 
-		$transcludedFrom = [];
-		foreach ( $threadItems as $threadItem ) {
-			$from = $threadItem->getTranscludedFrom();
+		$result = [];
 
-			// Key by IDs, legacy IDs, and names. This assumes that they can never conflict.
+		if ( isset( $prop['transcludedfrom'] ) ) {
+			$threadItems = $threadItemSet->getThreadItems();
+			$transcludedFrom = [];
+			foreach ( $threadItems as $threadItem ) {
+				$from = $threadItem->getTranscludedFrom();
 
-			$transcludedFrom[ $threadItem->getId() ] = $from;
+				// Key by IDs, legacy IDs, and names. This assumes that they can never conflict.
 
-			$legacyId = $threadItem->getLegacyId();
-			if ( $legacyId ) {
-				$transcludedFrom[ $legacyId ] = $from;
+				$transcludedFrom[ $threadItem->getId() ] = $from;
+
+				$legacyId = $threadItem->getLegacyId();
+				if ( $legacyId ) {
+					$transcludedFrom[ $legacyId ] = $from;
+				}
+
+				$name = $threadItem->getName();
+				if ( isset( $transcludedFrom[ $name ] ) && $transcludedFrom[ $name ] !== $from ) {
+					// Two or more items with the same name, transcluded from different pages.
+					// Consider them both to be transcluded from unknown source.
+					$transcludedFrom[ $name ] = true;
+				} else {
+					$transcludedFrom[ $name ] = $from;
+				}
 			}
 
-			$name = $threadItem->getName();
-			if ( isset( $transcludedFrom[ $name ] ) && $transcludedFrom[ $name ] !== $from ) {
-				// Two or more items with the same name, transcluded from different pages.
-				// Consider them both to be transcluded from unknown source.
-				$transcludedFrom[ $name ] = true;
-			} else {
-				$transcludedFrom[ $name ] = $from;
-			}
+			$result['transcludedfrom'] = $transcludedFrom;
 		}
 
-		$result = [
-			'transcludedfrom' => $transcludedFrom
-		];
+		if ( isset( $prop['threaditemshtml'] ) ) {
+			$threads = $threadItemSet->getThreads();
+			$result['threaditemshtml'] = array_map( static function ( ThreadItem $item ) {
+				return $item->jsonSerialize( true, static function ( array &$array, ThreadItem $item ) {
+					$array['html'] = $item->getHtml();
+				} );
+			}, $threads );
+		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
@@ -75,6 +87,15 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-page',
 			],
 			'oldid' => null,
+			'prop' => [
+				ApiBase::PARAM_DFLT => 'transcludedfrom',
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => [
+					'transcludedfrom',
+					'threaditemshtml'
+				],
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
+			],
 		];
 	}
 

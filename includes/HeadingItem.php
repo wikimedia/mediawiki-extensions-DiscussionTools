@@ -23,10 +23,10 @@ class HeadingItem extends ThreadItem {
 	}
 
 	/**
-	 * @return array JSON-serializable array
+	 * @inheritDoc
 	 */
-	public function jsonSerialize(): array {
-		return array_merge( parent::jsonSerialize(), [
+	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
+		return array_merge( parent::jsonSerialize( $deep, $callback ), [
 			'headingLevel' => $this->headingLevel,
 			'placeholderHeading' => $this->placeholderHeading,
 		] );
