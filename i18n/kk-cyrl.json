@@ -7,5 +7,9 @@
 	"discussiontools": "Талқылау құралдары",
 	"discussiontools-defaultsummary-reply": "Жауап беру",
 	"discussiontools-desc": "Талқылау беттерін жақсартатын құралдар.",
-	"discussiontools-replylink": "жауап беру"
+	"discussiontools-preference-label": "Талқылау құралдары",
+	"discussiontools-replylink": "жауап беру",
+	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" сілтемесі бұл пікірге жауап беруге қолданылмайды. Жауап беру үшін \"$1\" шертіп толық бетті өңдегішті қолданыңыз.",
+	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" сілтемесі бұл пікірге жауап беруге қолданылмайды себебі басқа беттен жүктеледі. жауап беру үшін мында өтіңіз: [[$1]].",
+	"discussiontools-error-lint": "Бұл беттегі пікірлерге уикимәтін қатесіне байланысты жауап беру мүмкін емес. Бұл қате туралы [$1 құжаттамасын оқып] біле аласыз, [$2 осында жазып] көмек сұраңыз не [$3 толық бет өңдегішті ашып] қатені түзете аласыз."
 }
