@@ -96,6 +96,7 @@
 	"discussiontools-replywidget-transcluded": "Il tuo commento sarà salvato su [[$1]].",
 	"discussiontools-replywidget-watchthis": "Aggiungi questa pagina alla tua [[Special:Watchlist|lista di osservati speciali]]",
 	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-target-comment-missing": "Il commento non è stato trovato. Potrebbe essere stato cancellato o spostato.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Annulla l'iscrizione",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Disiscriversi da questo argomento?",
 	"discussiontools-topicsubscription-button-subscribe": "iscriviti",
