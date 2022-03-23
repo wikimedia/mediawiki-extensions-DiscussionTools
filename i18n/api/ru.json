@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kareyac",
 			"Pacha Tchernof",
 			"Playershut",
 			"Sunpriat",
@@ -17,5 +18,6 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Добавить новый раздел обсуждения и первый комментарий в нём.",
 	"apihelp-discussiontoolsedit-summary": "Отправить сообщение на страницу обсуждения.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Номер версии для использования (по умолчанию — последняя версия).",
+	"apihelp-discussiontoolspageinfo-param-prop": "Какие свойства получить:",
 	"apihelp-discussiontoolspageinfo-summary": "Возвращает метаданные, необходимые для инициализации Discussion tools."
 }
