@@ -37,8 +37,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 		$doc2 = self::createDocument( $dom2 );
 		$container2 = self::getThreadContainer( $doc2 );
 
-		$dummyTitle = Title::newFromText( 'Dummy' );
 		$this->setupEnv( $config, $data );
+		$dummyTitle = Title::newFromText( 'Dummy' );
 		$parser = self::createParser( $data );
 		$itemSet1 = $parser->parse( $container1, $dummyTitle );
 		$itemSet2 = $parser->parse( $container2, $dummyTitle );

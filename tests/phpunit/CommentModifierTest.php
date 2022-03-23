@@ -23,7 +23,6 @@ class CommentModifierTest extends IntegrationTestCase {
 		string $name, string $title, string $dom, string $expected, string $config, string $data,
 		string $replyIndentation = 'invisible'
 	): void {
-		$title = Title::newFromText( $title );
 		$origPath = $dom;
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
@@ -32,6 +31,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
+		$title = Title::newFromText( $title );
 
 		$doc = self::createDocument( $dom );
 		$container = self::getThreadContainer( $doc );
@@ -68,7 +68,6 @@ class CommentModifierTest extends IntegrationTestCase {
 	public function testAddReplyLink(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
-		$title = Title::newFromText( $title );
 		$origPath = $dom;
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
@@ -77,6 +76,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
+		$title = Title::newFromText( $title );
 
 		$doc = self::createDocument( $dom );
 		$container = self::getThreadContainer( $doc );

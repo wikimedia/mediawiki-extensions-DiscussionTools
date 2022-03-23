@@ -18,13 +18,13 @@ class CommentUtilsTest extends IntegrationTestCase {
 	public function testIsSingleCommentSignedBy(
 		string $msg, string $title, string $username, string $html, bool $expected
 	) {
-		$title = Title::newFromText( $title );
 		$doc = self::createDocument( $html );
 		$container = self::getThreadContainer( $doc );
 
 		$config = self::getJson( "../data/enwiki-config.json" );
 		$data = self::getJson( "../data/enwiki-data.json" );
 		$this->setupEnv( $config, $data );
+		$title = Title::newFromText( $title );
 		$parser = self::createParser( $data );
 
 		$threadItemSet = $parser->parse( $container, $title );

@@ -190,7 +190,6 @@ class CommentParserTest extends IntegrationTestCase {
 	public function testGetThreads(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
-		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getJson( $expected );
@@ -201,6 +200,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
+		$title = Title::newFromText( $title );
 		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$threads = $threadItemSet->getThreads();
 

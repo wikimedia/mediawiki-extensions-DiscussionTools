@@ -18,7 +18,6 @@ class CommentFormatterTest extends IntegrationTestCase {
 	public function testAddDiscussionToolsInternal(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
-		$title = Title::newFromText( $title );
 		$dom = self::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = self::getText( $expected );
@@ -26,6 +25,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
+		$title = Title::newFromText( $title );
 		MockCommentFormatter::$parser = TestUtils::createParser( $data );
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
