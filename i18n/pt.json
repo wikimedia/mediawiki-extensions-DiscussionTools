@@ -34,6 +34,7 @@
 	"discussiontools-preference-newtopictool": "Ativar a adição de tópicos rápida",
 	"discussiontools-preference-newtopictool-help": "Isto mostra-lhe um formulário em linha para adicionar tópicos novos.",
 	"discussiontools-preference-replytool": "Ativar resposta rápida",
+	"discussiontools-preference-replytool-help": "Isto mostra-lhe uma hiperligação para responder a comentários de páginas de discussão com um clique.",
 	"discussiontools-preference-sourcemodetoolbar": "Ativar ferramentas de edição no modo fonte",
 	"discussiontools-preference-sourcemodetoolbar-help": "Isto adiciona uma barra de ferramentas aos modos fonte das funcionalidades de resposta rápida e de adição rápida de tópicos. A barra inclui atalhos para notificação e para adição de hiperligações.",
 	"discussiontools-preference-topicsubscription": "Ativar subscrição de tópicos",

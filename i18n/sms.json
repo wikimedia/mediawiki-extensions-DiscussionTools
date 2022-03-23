@@ -4,5 +4,10 @@
 			"Yupik"
 		]
 	},
-	"discussiontools-replywidget-mention-tool-header": "Ooʒʒ õõʹnni: $1"
+	"discussiontools-defaultsummary-reply": "Vasttõs",
+	"discussiontools-replylink": "vaʹstted",
+	"discussiontools-replywidget-mention-tool-header": "Ooʒʒ õõʹnni: $1",
+	"discussiontools-replywidget-newtopic": "Lââʹzzet teeʹm",
+	"discussiontools-replywidget-reply": "Vaʹstted",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]"
 }
