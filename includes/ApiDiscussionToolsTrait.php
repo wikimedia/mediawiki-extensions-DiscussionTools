@@ -10,6 +10,7 @@ use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
+use TitleValue;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -29,9 +30,7 @@ trait ApiDiscussionToolsTrait {
 
 		CommentUtils::unwrapParsoidSections( $container );
 
-		$title = Title::newFromLinkTarget(
-			$revision->getPageAsLinkTarget()
-		);
+		$title = TitleValue::newFromPage( $revision->getPage() );
 
 		$parser = MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' );
 		return $parser->parse( $container, $title );

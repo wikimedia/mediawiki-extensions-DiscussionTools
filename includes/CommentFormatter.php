@@ -89,7 +89,7 @@ class CommentFormatter {
 		$doc = DOMUtils::parseHTML( $html );
 		$container = DOMCompat::getBody( $doc );
 
-		$threadItemSet = static::getParser()->parse( $container, $title );
+		$threadItemSet = static::getParser()->parse( $container, $title->getTitleValue() );
 		$threadItems = $threadItemSet->getThreadItems();
 
 		// Iterate in reverse order, because adding the range markers for a thread item

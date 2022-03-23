@@ -150,7 +150,8 @@ trait TestUtils {
 			$services->getMainConfig(),
 			$services->getContentLanguage(),
 			$services->getLanguageConverterFactory(),
-			new MockLanguageData( $data )
+			new MockLanguageData( $data ),
+			$services->getTitleParser()
 		);
 	}
 }

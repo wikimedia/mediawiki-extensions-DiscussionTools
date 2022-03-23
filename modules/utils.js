@@ -379,7 +379,7 @@ function getFullyCoveredSiblings( item, excludedAncestorNode ) {
  *
  * @private
  * @param {string} url
- * @return {mw.Title|null} Page title, or null if this isn't a link to a page
+ * @return {string|null} Page title, or null if this isn't a link to a page
  */
 function getTitleFromUrl( url ) {
 	try {
@@ -389,7 +389,7 @@ function getTitleFromUrl( url ) {
 		return null;
 	}
 	if ( url.query.title ) {
-		return mw.Title.newFromText( url.query.title );
+		return url.query.title;
 	}
 
 	var articlePathRegexp = new RegExp(
@@ -398,7 +398,7 @@ function getTitleFromUrl( url ) {
 	);
 	var match;
 	if ( ( match = url.path.match( articlePathRegexp ) ) ) {
-		return mw.Title.newFromText( decodeURIComponent( match[ 1 ] ) );
+		return decodeURIComponent( match[ 1 ] );
 	}
 
 	return null;

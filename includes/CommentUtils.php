@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Config;
 use LogicException;
-use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
 use Wikimedia\Parsoid\DOM\Element;
@@ -458,13 +457,13 @@ class CommentUtils {
 	 *
 	 * @param string $url
 	 * @param Config $config
-	 * @return Title|null
+	 * @return string|null
 	 */
-	public static function getTitleFromUrl( string $url, Config $config ): ?Title {
+	public static function getTitleFromUrl( string $url, Config $config ): ?string {
 		$bits = parse_url( $url );
 		$query = wfCgiToArray( $bits['query'] ?? '' );
 		if ( isset( $query['title'] ) ) {
-			return Title::newFromText( $query['title'] );
+			return $query['title'];
 		}
 
 		// TODO: Set the correct base in the document?
@@ -481,7 +480,7 @@ class CommentUtils {
 		) . '/';
 		$matches = null;
 		if ( preg_match( $articlePathRegexp, $url, $matches ) ) {
-			return Title::newFromText( urldecode( $matches[1] ) );
+			return urldecode( $matches[1] );
 		}
 		return null;
 	}

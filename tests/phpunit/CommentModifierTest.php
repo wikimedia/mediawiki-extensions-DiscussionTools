@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
-use Title;
+use MediaWiki\MediaWikiServices;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
@@ -31,7 +31,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
-		$title = Title::newFromText( $title );
+		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
 
 		$doc = self::createDocument( $dom );
 		$container = self::getThreadContainer( $doc );
@@ -76,7 +76,7 @@ class CommentModifierTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
-		$title = Title::newFromText( $title );
+		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
 
 		$doc = self::createDocument( $dom );
 		$container = self::getThreadContainer( $doc );

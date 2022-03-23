@@ -10,7 +10,8 @@ return [
 			$services->getMainConfig(),
 			$services->getContentLanguage(),
 			$services->getLanguageConverterFactory(),
-			$services->getService( 'DiscussionTools.LanguageData' )
+			$services->getService( 'DiscussionTools.LanguageData' ),
+			$services->getTitleParser()
 		);
 	},
 	'DiscussionTools.LanguageData' => static function ( MediaWikiServices $services ): LanguageData {

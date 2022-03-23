@@ -11,7 +11,6 @@ use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
 use MediaWiki\MediaWikiServices;
 use stdClass;
-use Title;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\DOM\Text;
@@ -200,7 +199,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
-		$title = Title::newFromText( $title );
+		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
 		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$threads = $threadItemSet->getThreads();
 

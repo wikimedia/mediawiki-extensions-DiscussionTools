@@ -8,7 +8,7 @@ use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\HeadingItem;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem;
-use Title;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\ThreadItem
@@ -68,7 +68,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$data = self::getJson( $data );
 
 		$this->setupEnv( $config, $data );
-		$title = Title::newFromText( $title );
+		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
 
 		$doc = self::createDocument( $dom );
 		$container = self::getThreadContainer( $doc );
@@ -118,7 +118,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
-		$title = Title::newFromText( $title );
+		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
 		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$items = $threadItemSet->getThreadItems();
 
@@ -164,7 +164,7 @@ class ThreadItemTest extends IntegrationTestCase {
 		$container = self::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
-		$title = Title::newFromText( $title );
+		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
 		$threadItemSet = self::createParser( $data )->parse( $container, $title );
 		$items = $threadItemSet->getThreadItems();
 

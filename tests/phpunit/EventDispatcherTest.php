@@ -3,11 +3,11 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use DateTimeImmutable;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\User\UserIdentityValue;
 use RawMessage;
-use Title;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher
@@ -38,7 +38,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 		$container2 = self::getThreadContainer( $doc2 );
 
 		$this->setupEnv( $config, $data );
-		$dummyTitle = Title::newFromText( 'Dummy' );
+		$dummyTitle = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( 'Dummy' );
 		$parser = self::createParser( $data );
 		$itemSet1 = $parser->parse( $container1, $dummyTitle );
 		$itemSet2 = $parser->parse( $container2, $dummyTitle );

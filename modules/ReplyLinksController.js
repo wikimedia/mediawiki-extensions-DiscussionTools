@@ -82,7 +82,7 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 		return;
 	}
 
-	var title = utils.getTitleFromUrl( href );
+	var title = mw.Title.newFromText( utils.getTitleFromUrl( href ) || '' );
 	if ( !title ) {
 		return;
 	}
