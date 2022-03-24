@@ -20,7 +20,8 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"DiscussionToolsAlias": "DiscussionTools.alias.php"
+		"DiscussionToolsAlias": "DiscussionTools.alias.php",
+		"DiscussionToolsMagic": "DiscussionTools.magic.php"
 	},
 	"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\RegistrationHooks::onRegistration",
 	"ResourceFileModulePaths": {
@@ -427,6 +428,7 @@
 		"MinervaNeueTalkPageOverlay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\MobileHooks::onMinervaNeueTalkPageOverlay",
 		"RevisionDataUpdates": "dataupdates",
 		"LoadExtensionSchemaUpdates": "installer",
+		"GetDoubleUnderscoreIDs": "parser",
 		"ParserAfterTidy": "parser",
 		"BeforeDisplayNoArticleText": "page",
 		"BeforePageDisplay": "page",

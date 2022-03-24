@@ -12,10 +12,14 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 use Config;
 use ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
+use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use Parser;
 
-class ParserHooks implements ParserAfterTidyHook {
+class ParserHooks implements
+	GetDoubleUnderscoreIDsHook,
+	ParserAfterTidyHook
+{
 
 	private Config $config;
 
@@ -71,5 +75,15 @@ class ParserHooks implements ParserAfterTidyHook {
 				'ext.discussionTools.init.styles',
 			] );
 		}
+	}
+
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/GetDoubleUnderscoreIDs
+	 *
+	 * @param string[] &$doubleUnderscoreIDs
+	 * @return bool|void
+	 */
+	public function onGetDoubleUnderscoreIDs( &$doubleUnderscoreIDs ) {
+		$doubleUnderscoreIDs[] = 'archivedtalk';
 	}
 }

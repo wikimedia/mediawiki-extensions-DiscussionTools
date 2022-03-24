@@ -349,6 +349,14 @@ class HookUtils {
 			return false;
 		}
 
+		// ARCHIVEDTALK magic word
+		if (
+			$feature === static::REPLYTOOL &&
+			self::hasPagePropCached( $title, 'archivedtalk' )
+		) {
+			return false;
+		}
+
 		$services = MediaWikiServices::getInstance();
 
 		if ( $feature === static::VISUALENHANCEMENTS ) {
@@ -373,7 +381,6 @@ class HookUtils {
 			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
 			// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
 			static::hasPagePropCached( $title, 'newsectionlink' )
-			// TODO: Consider not loading if forceHideNewSectionLink is true.
 		);
 	}
 

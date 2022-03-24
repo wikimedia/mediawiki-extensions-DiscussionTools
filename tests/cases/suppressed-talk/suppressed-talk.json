@@ -1,0 +1,192 @@
+[
+	{
+		"placeholderHeading": false,
+		"type": "heading",
+		"range": [
+			"1/1/0/0",
+			"1/1/0/1"
+		],
+		"headingLevel": 2,
+		"level": 0,
+		"name": "h-DTDummyUserAlice-2022-03-10T14:30:00.000Z",
+		"id": "h-Archived_section-2022-03-10T14:30:00.000Z",
+		"warnings": [],
+		"replies": [
+			{
+				"type": "comment",
+				"timestamp": "2022-03-10T14:30:00.000Z",
+				"author": "DTDummyUserAlice",
+				"range": [
+					"1/3/0",
+					"1/3/4/28"
+				],
+				"signatureRanges": [
+					[
+						"1/3/1",
+						"1/3/4/28"
+					]
+				],
+				"timestampRanges": [
+					[
+						"1/3/4/2",
+						"1/3/4/28"
+					]
+				],
+				"level": 1,
+				"name": "c-DTDummyUserAlice-2022-03-10T14:30:00.000Z",
+				"id": "c-DTDummyUserAlice-2022-03-10T14:30:00.000Z-Archived_section",
+				"warnings": [],
+				"replies": [
+					{
+						"type": "comment",
+						"timestamp": "2022-03-10T14:40:00.000Z",
+						"author": "DTDummyUserBob",
+						"range": [
+							"1/5/0/0",
+							"1/5/0/4/28"
+						],
+						"signatureRanges": [
+							[
+								"1/5/0/1",
+								"1/5/0/4/28"
+							]
+						],
+						"timestampRanges": [
+							[
+								"1/5/0/4/2",
+								"1/5/0/4/28"
+							]
+						],
+						"level": 2,
+						"name": "c-DTDummyUserBob-2022-03-10T14:40:00.000Z",
+						"id": "c-DTDummyUserBob-2022-03-10T14:40:00.000Z-DTDummyUserAlice-2022-03-10T14:30:00.000Z",
+						"warnings": [],
+						"replies": [
+							{
+								"type": "comment",
+								"timestamp": "2022-03-10T14:50:00.000Z",
+								"author": "DTDummyUserEve",
+								"range": [
+									"1/5/0/5/0/0",
+									"1/5/0/5/0/4/28"
+								],
+								"signatureRanges": [
+									[
+										"1/5/0/5/0/1",
+										"1/5/0/5/0/4/28"
+									]
+								],
+								"timestampRanges": [
+									[
+										"1/5/0/5/0/4/2",
+										"1/5/0/5/0/4/28"
+									]
+								],
+								"level": 3,
+								"name": "c-DTDummyUserEve-2022-03-10T14:50:00.000Z",
+								"id": "c-DTDummyUserEve-2022-03-10T14:50:00.000Z-DTDummyUserBob-2022-03-10T14:40:00.000Z",
+								"warnings": [],
+								"replies": []
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"placeholderHeading": false,
+		"type": "heading",
+		"range": [
+			"3/0/0",
+			"3/0/1"
+		],
+		"headingLevel": 2,
+		"level": 0,
+		"name": "h-DTDummyUserAlice-2022-03-10T15:30:00.000Z",
+		"id": "h-Normal_talk_section-2022-03-10T15:30:00.000Z",
+		"warnings": [],
+		"replies": [
+			{
+				"type": "comment",
+				"timestamp": "2022-03-10T15:30:00.000Z",
+				"author": "DTDummyUserAlice",
+				"range": [
+					"5/0",
+					"5/4/28"
+				],
+				"signatureRanges": [
+					[
+						"5/1",
+						"5/4/28"
+					]
+				],
+				"timestampRanges": [
+					[
+						"5/4/2",
+						"5/4/28"
+					]
+				],
+				"level": 1,
+				"name": "c-DTDummyUserAlice-2022-03-10T15:30:00.000Z",
+				"id": "c-DTDummyUserAlice-2022-03-10T15:30:00.000Z-Normal_talk_section",
+				"warnings": [],
+				"replies": [
+					{
+						"type": "comment",
+						"timestamp": "2022-03-10T15:40:00.000Z",
+						"author": "DTDummyUserBob",
+						"range": [
+							"7/0/0",
+							"7/0/4/28"
+						],
+						"signatureRanges": [
+							[
+								"7/0/1",
+								"7/0/4/28"
+							]
+						],
+						"timestampRanges": [
+							[
+								"7/0/4/2",
+								"7/0/4/28"
+							]
+						],
+						"level": 2,
+						"name": "c-DTDummyUserBob-2022-03-10T15:40:00.000Z",
+						"id": "c-DTDummyUserBob-2022-03-10T15:40:00.000Z-DTDummyUserAlice-2022-03-10T15:30:00.000Z",
+						"warnings": [],
+						"replies": [
+							{
+								"type": "comment",
+								"timestamp": "2022-03-10T15:50:00.000Z",
+								"author": "DTDummyUserEve",
+								"range": [
+									"7/0/5/0/0",
+									"7/0/5/0/4/28"
+								],
+								"signatureRanges": [
+									[
+										"7/0/5/0/1",
+										"7/0/5/0/4/28"
+									]
+								],
+								"timestampRanges": [
+									[
+										"7/0/5/0/4/2",
+										"7/0/5/0/4/28"
+									]
+								],
+								"level": 3,
+								"name": "c-DTDummyUserEve-2022-03-10T15:50:00.000Z",
+								"id": "c-DTDummyUserEve-2022-03-10T15:50:00.000Z-DTDummyUserBob-2022-03-10T15:40:00.000Z",
+								"warnings": [],
+								"replies": []
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]
