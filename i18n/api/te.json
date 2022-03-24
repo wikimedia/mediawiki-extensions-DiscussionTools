@@ -12,6 +12,7 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "ఈసరికే ఉన్న వ్యాఖ్యకు సమాధానంగా కొత్త వ్యాఖ్య రాయండి.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "ఓ కొత్త చర్చాంశాన్ని చేర్చి, అందులో తొలి వ్యాఖ్య రాయండి.",
 	"apihelp-discussiontoolsedit-summary": "చర్చ పేజీలో ఓ సందేశం రాయండి.",
+	"apihelp-discussiontoolspageinfo-param-prop": "ఏ లక్షణాలను తీసుకురావాలి:",
 	"apihelp-discussiontoolspreview-param-type": "మునుజూపు చూపాల్సిన సందేశపు రకం",
 	"apihelp-discussiontoolspreview-param-wikitext": "వికీటెక్స్టు లాగా మునుజూపు చూపాల్సిన కంటెంటు.",
 	"apihelp-discussiontoolspreview-summary": "చర్చ పేజీలోని సందేశానికి మునుజూపు."
