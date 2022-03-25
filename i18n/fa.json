@@ -99,7 +99,7 @@
 	"discussiontools-replywidget-summary": "خلاصه",
 	"discussiontools-replywidget-terms-click": "با کلیک کردن روی «$1» شما می‌پذیرید که از شرایط استفادهٔ این ویکی پیروی کنید.",
 	"discussiontools-replywidget-transcluded": "نظر شما در [[$1]] ذخیره خواهد شد.",
-	"discussiontools-replywidget-watchthis": "افزودن این صفحه به [[Special:Watchlist|فهرست پی‌گیری‌تان]]",
+	"discussiontools-replywidget-watchthis": "افزودن این صفحه به [[Special:Watchlist|فهرست پیگیری‌تان]]",
 	"discussiontools-target-comment-missing": "این نظر یافت نشد. ممکن است حذف یا منتقل شده‌باشد.",
 	"discussiontools-target-comments-missing": "نظرهای جدید یافت نشدند. ممکن است حذف یا منتقل شده‌باشند.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "لغو اشتراک",
