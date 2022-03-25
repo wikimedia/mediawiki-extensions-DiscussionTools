@@ -108,17 +108,6 @@ function initTopicSubscriptions( $container ) {
 		}
 
 		var itemName = headingItem.name;
-		if ( !itemName ) {
-			// Cached HTML may not contain item names for a short period. Assume the old
-			// data-mw-comment-name markers are present instead.
-			// This code branch can be removed a week or two after release.
-			itemName = this.getAttribute( 'data-mw-comment-name' );
-			if ( !itemName ) {
-				// This should never happen
-				return;
-			}
-		}
-
 		var title = getTitleFromHeading( heading );
 
 		linksByName[ itemName ] = this;
