@@ -29,6 +29,9 @@ class HeadingItem extends ThreadItem {
 		return array_merge( parent::jsonSerialize( $deep, $callback ), [
 			'headingLevel' => $this->headingLevel,
 			'placeholderHeading' => $this->placeholderHeading,
+			// Used for topic subscriptions. Not added to CommentItem's yet as there is
+			// no use case for it.
+			'name' => $this->name,
 		] );
 	}
 
