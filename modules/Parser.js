@@ -929,7 +929,7 @@ Parser.prototype.computeId = function ( threadItem, previousItems ) {
 		headline = threadItem.range.startContainer;
 		id = 'h-' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItem instanceof CommentItem ) {
-		id = 'c-' + this.truncateForId( threadItem.author || '' ).replace( / /g, '_' ) + '-' + threadItem.timestamp.toISOString();
+		id = 'c-' + this.truncateForId( threadItem.author || '' ).replace( / /g, '_' ) + '-' + threadItem.getTimestampString();
 	} else {
 		throw new Error( 'Unknown ThreadItem type' );
 	}
@@ -942,7 +942,7 @@ Parser.prototype.computeId = function ( threadItem, previousItems ) {
 		headline = threadItemParent.range.startContainer;
 		id += '-' + this.truncateForId( headline.getAttribute( 'id' ) || '' );
 	} else if ( threadItemParent instanceof CommentItem ) {
-		id += '-' + this.truncateForId( threadItemParent.author || '' ).replace( / /g, '_' ) + '-' + threadItemParent.timestamp.toISOString();
+		id += '-' + this.truncateForId( threadItemParent.author || '' ).replace( / /g, '_' ) + '-' + threadItemParent.getTimestampString();
 	}
 
 	if ( threadItem instanceof HeadingItem ) {
@@ -952,7 +952,7 @@ Parser.prototype.computeId = function ( threadItem, previousItems ) {
 		// heading ID.
 		var oldestComment = this.getThreadStartComment( threadItem );
 		if ( oldestComment ) {
-			id += '-' + oldestComment.timestamp.toISOString();
+			id += '-' + oldestComment.getTimestampString();
 		}
 	}
 
@@ -994,7 +994,7 @@ Parser.prototype.computeName = function ( threadItem ) {
 
 	if ( mainComment ) {
 		name += this.truncateForId( mainComment.author || '' ).replace( / /g, '_' ) +
-			'-' + mainComment.timestamp.toISOString();
+			'-' + mainComment.getTimestampString();
 	}
 
 	return name;

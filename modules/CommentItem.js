@@ -32,6 +32,18 @@ function CommentItem( level, range, signatureRanges, timestamp, author ) {
 OO.inheritClass( CommentItem, ThreadItem );
 
 /**
+ * Get the comment timestamp in a standard format
+ *
+ * Uses ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
+ * of '+00:00', like Date#toISOString in JavaScript.
+ *
+ * @return {string} Comment timestamp in standard format
+ */
+CommentItem.prototype.getTimestampString = function () {
+	return this.timestamp.toISOString();
+};
+
+/**
  * @return {HeadingItem} Closest ancestor which is a HeadingItem
  */
 CommentItem.prototype.getHeading = function () {
