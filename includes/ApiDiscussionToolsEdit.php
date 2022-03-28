@@ -162,16 +162,14 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					// Determining the added topic's name directly is hard (we'd have to ensure we have the
 					// same timestamp, and replicate some CommentParser stuff). Just pull it out of the response.
 					$doc = DOMUtils::parseHTML( $result['content'] );
-					$subscribeLinks = DOMCompat::querySelectorAll(
-						DOMCompat::getBody( $doc ),
-						'.ext-discussiontools-init-section-subscribe-link'
-					);
-					// Iterate to get the last item. (Also works if there are none somehow.)
-					foreach ( $subscribeLinks as $link ) {
-						$subscribableHeadingName = $link->getAttribute( 'data-mw-comment-name' );
+					$container = DOMCompat::getBody( $doc );
+					$threadItemSet = $this->commentParser->parse( $container, $title->getTitleValue() );
+					$threads = $threadItemSet->getThreads();
+					if ( count( $threads ) ) {
+						$lastHeading = end( $threads );
+						$subscribableHeadingName = $lastHeading->getName();
+						$subscribableSectionTitle = $lastHeading->getLinkableTitle();
 					}
-					$subscribableSectionTitle =
-						MediaWikiServices::getInstance()->getParser()->stripSectionName( $params['sectiontitle'] );
 				}
 
 				break;
