@@ -29,7 +29,7 @@
 	"apihelp-discussiontoolspageinfo-param-oldid": "Le numéro de révision à utiliser (par défaut, la dernière révision).",
 	"apihelp-discussiontoolspageinfo-param-prop": "Quelles propriétés obtenir :",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "Représentation des fils de commentaires analysés depuis la page",
-	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "Depuis quelles autres pages ont été inclus des commentaires",
+	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "Depuis quelles autres pages les commentaires ont été inclus",
 	"apihelp-discussiontoolspageinfo-summary": "Renvoie les métadonnées nécessaires pour initialiser les outils de discussion.",
 	"apihelp-discussiontoolspreview-param-type": "Type de message pour en afficher l’aperçu",
 	"apihelp-discussiontoolspreview-param-wikitext": "Contenu à afficher en aperçu, en tant que wikicode.",
