@@ -7,6 +7,7 @@ use ApiMain;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsPageInfo extends ApiBase {
 
@@ -67,11 +68,37 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 
 		if ( isset( $prop['threaditemshtml'] ) ) {
 			$threads = $threadItemSet->getThreads();
-			$result['threaditemshtml'] = array_map( static function ( ThreadItem $item ) {
+			$output = array_map( static function ( ThreadItem $item ) {
 				return $item->jsonSerialize( true, static function ( array &$array, ThreadItem $item ) {
 					$array['html'] = $item->getHtml();
 				} );
 			}, $threads );
+			foreach ( $threads as $index => $item ) {
+				// need to loop over this to fix up empty sections, because we
+				// need context that's not available inside the array map
+				if ( $item instanceof HeadingItem && count( $item->getReplies() ) === 0 ) {
+					$nextItem = $threads[ $index + 1 ] ?? false;
+					$startRange = $item->getRange();
+					if ( $nextItem ) {
+						$nextRange = $nextItem->getRange();
+						$nextStart = $nextRange->startContainer->previousSibling ?: $nextRange->startContainer;
+						$betweenRange = new ImmutableRange(
+							$startRange->endContainer->nextSibling ?: $startRange->endContainer, 0,
+							$nextStart, $nextStart->childNodes->length ?? 0
+						);
+					} else {
+						// This is the last section, so we want to go to the end of the rootnode
+						$betweenRange = new ImmutableRange(
+							$startRange->endContainer->nextSibling ?: $startRange->endContainer, 0,
+							$item->getRootNode(), $item->getRootNode()->childNodes->length
+						);
+					}
+					$fragment = $betweenRange->cloneContents();
+					CommentModifier::unwrapFragment( $fragment );
+					$output[$index]['othercontent'] = trim( DOMUtils::getFragmentInnerHTML( $fragment ) );
+				}
+			}
+			$result['threaditemshtml'] = $output;
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
