@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use JsonSerializable;
 use LogicException;
+use Sanitizer;
 use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Element;
@@ -310,8 +311,8 @@ abstract class ThreadItem implements JsonSerializable {
 	 * @return string Text
 	 */
 	public function getText(): string {
-		$fragment = $this->getRange()->cloneContents();
-		return $fragment->textContent ?? '';
+		$html = $this->getHTML();
+		return Sanitizer::stripAllTags( $html );
 	}
 
 	/**
