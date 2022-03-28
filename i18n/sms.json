@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yupik"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Vasttõs",
+	"discussiontools-replylink": "vaʹstted",
+	"discussiontools-replywidget-reply": "Vaʹstted",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]"
+}
