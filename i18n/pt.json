@@ -108,7 +108,7 @@
 	"discussiontools-topicsubscription-pager-topic": "Tópico",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Cancelar subscrição",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Editar subscrições",
-	"discussiontools-topicsubscription-special-intro": "As subscrições permitem-lhe seguir um tópico das páginas de discussão. Quando alguém responder ao tópico, receberá uma notificação.\n\nAjustar como e onde recebe estas notificações nas [[Special:Preferences#mw-prefsection-echo|suas preferências]].",
+	"discussiontools-topicsubscription-special-intro": "As subscrições permitem-lhe seguir um tópico das páginas de discussão. Quando alguém responder ao tópico, receberá uma notificação.\n\nPode ajustar como e onde recebe estas notificações nas [[Special:Preferences#mw-prefsection-echo|suas preferências]].",
 	"discussiontools-topicsubscription-special-title": "Subscrições de tópicos",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Subscrição|Subscrições}} de páginas de discussão",
 	"echo-pref-tooltip-dt-subscription": "Notificar-me quando alguém publicar um comentário novo num tópico que eu subscrevo.",
