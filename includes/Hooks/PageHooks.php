@@ -16,6 +16,7 @@ use IContextSource;
 use MediaWiki\Actions\Hook\GetActionNameHook;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
+use MediaWiki\Extension\VisualEditor\Hooks as VisualEditorHooks;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Hook\TitleGetEditNoticesHook;
@@ -32,7 +33,6 @@ use RequestContext;
 use Skin;
 use SpecialPage;
 use Title;
-use VisualEditorHooks;
 
 class PageHooks implements
 	ArticleViewHeaderHook,

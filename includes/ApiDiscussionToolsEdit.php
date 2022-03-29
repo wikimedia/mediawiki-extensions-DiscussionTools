@@ -4,10 +4,10 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
-use ApiParsoidTrait;
 use DerivativeContext;
 use DerivativeRequest;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
+use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Title;
