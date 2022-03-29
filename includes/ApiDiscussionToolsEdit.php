@@ -223,8 +223,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$container = DOMCompat::getBody( $doc );
 
-				$threadItemSet = MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
-					->parse( $container, $title->getTitleValue() );
+				$threadItemSet = $this->commentParser->parse( $container, $title->getTitleValue() );
 
 				if ( $commentId ) {
 					$comment = $threadItemSet->findCommentById( $commentId );
