@@ -85,9 +85,11 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			'sectiontitle' => $params['sectiontitle'],
 		] );
 		$previewResultHtml = $previewResult->getResultData( [ 'parse', 'text' ] );
-		$container = DOMCompat::getBody( DOMUtils::parseHTML( $previewResultHtml ) );
-		$threadItemSet = $this->commentParser->parse( $container, $title->getTitleValue() );
-		if ( CommentUtils::isSingleCommentSignedBy( $threadItemSet, $this->getUser()->getName(), $container ) ) {
+		$previewContainer = DOMCompat::getBody( DOMUtils::parseHTML( $previewResultHtml ) );
+		$previewThreadItemSet = $this->commentParser->parse( $previewContainer, $title->getTitleValue() );
+		if ( CommentUtils::isSingleCommentSignedBy(
+			$previewThreadItemSet, $this->getUser()->getName(), $previewContainer
+		) ) {
 			$signature = null;
 		} else {
 			$signature = $this->msg( 'discussiontools-signature-prefix' )->inContentLanguage()->text() . '~~~~';
