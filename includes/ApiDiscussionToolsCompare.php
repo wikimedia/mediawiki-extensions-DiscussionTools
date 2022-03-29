@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
-use ApiParsoidTrait;
+use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
