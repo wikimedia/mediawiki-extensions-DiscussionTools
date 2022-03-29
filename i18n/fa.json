@@ -51,7 +51,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "دور انداختن مبحث",
 	"discussiontools-replywidget-abandontopic-keep": "ادامه دادن به نگارش",
 	"discussiontools-replywidget-advanced": "پیشرفته",
-	"discussiontools-replywidget-anon-warning": "<strong>شما به سامانه وارد نشده‌اید.</strong> برای این که نوشته‌تان به نام خودتان ثبت شود و نشانی آی‌پی‌تان کنارش نمایش نیابد می‌توانید [$1 به سامانه وارد شوید] یا [$2 حساب بسازید].",
+	"discussiontools-replywidget-anon-warning": "<strong>شما به سامانه وارد نشده‌اید.</strong> برای این که نوشته‌تان به نام خودتان ثبت شود و نشانی آی‌پی‌تان کنارش نمایش نیابد می‌توانید [$1 به سامانه وارد شوید] یا [$2 حساب ایجاد کنید].",
 	"discussiontools-replywidget-cancel": "لغو",
 	"discussiontools-replywidget-feedback": "به اشتراک گذاری بازخورد در خصوص این ویژگی",
 	"discussiontools-replywidget-feedback-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/Replying",
