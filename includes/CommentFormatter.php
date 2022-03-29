@@ -234,7 +234,6 @@ class CommentFormatter {
 				$subscribeLink->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-link' );
 				$subscribeLink->setAttribute( 'role', 'button' );
 				$subscribeLink->setAttribute( 'tabindex', '0' );
-				$subscribeLink->setAttribute( 'data-mw-comment-name', $itemName );
 				$subscribeLink->setAttribute( 'title', wfMessage(
 					$isSubscribed ?
 						'discussiontools-topicsubscription-button-unsubscribe-tooltip' :

@@ -7,6 +7,7 @@ var
 	STATE_AUTOSUBSCRIBED = 2,
 	utils = require( './utils.js' ),
 	CommentItem = require( './CommentItem.js' ),
+	ThreadItem = require( './ThreadItem.js' ),
 	linksByName = {};
 
 /**
@@ -70,6 +71,21 @@ function getTitleFromHeading( heading ) {
 }
 
 /**
+ * Get a HeadingItem from a heading element wrapper
+ *
+ * @param {Element} heading Heading element
+ * @return {ThreadItem|null} ThreadItem, null if not found
+ */
+function getHeadingItemFromHeading( heading ) {
+	var dataNode = heading.querySelector( '[data-mw-comment]' );
+	if ( dataNode ) {
+		var hash = JSON.parse( dataNode.getAttribute( 'data-mw-comment' ) );
+		return ThreadItem.static.newFromJSON( hash );
+	}
+	return null;
+}
+
+/**
  * Initialize topic subscriptions feature
  *
  * @param {jQuery} $container Page container
@@ -83,17 +99,29 @@ function initTopicSubscriptions( $container ) {
 	// Subscription links (no visual enhancements)
 	$container.find( '.ext-discussiontools-init-section-subscribe-link' ).each( function () {
 		var $link = $( this );
-		var commentName = this.getAttribute( 'data-mw-comment-name' );
+		var heading = $link.closest( '.ext-discussiontools-init-section' )[ 0 ];
+		var headingItem = getHeadingItemFromHeading( heading );
 
-		if ( !commentName ) {
+		if ( !headingItem ) {
 			// This should never happen
 			return;
 		}
 
-		linksByName[ commentName ] = this;
+		var itemName = headingItem.name;
+		if ( !itemName ) {
+			// Cached HTML may not contain item names for a short period. Assume the old
+			// data-mw-comment-name markers are present instead.
+			// This code branch can be removed a week or two after release.
+			itemName = this.getAttribute( 'data-mw-comment-name' );
+			if ( !itemName ) {
+				// This should never happen
+				return;
+			}
+		}
 
-		var heading = $link.closest( '.ext-discussiontools-init-section' )[ 0 ];
 		var title = getTitleFromHeading( heading );
+
+		linksByName[ itemName ] = this;
 
 		$link.on( 'click keypress', function ( e ) {
 			if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
@@ -111,7 +139,7 @@ function initTopicSubscriptions( $container ) {
 			var subscribedState = getSubscribedStateFromElement( $link[ 0 ] );
 
 			$link.addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
-			changeSubscription( title, commentName, !subscribedState )
+			changeSubscription( title, itemName, !subscribedState )
 				.then( function ( result ) {
 					updateSubscribeLink( $link[ 0 ], result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED );
 				} )
