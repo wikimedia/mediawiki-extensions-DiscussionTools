@@ -135,19 +135,13 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 			} );
 		}
 
-		var uri;
-		try {
-			uri = new mw.Uri( location.href );
-		} catch ( err ) {
-			// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
-			return;
-		}
+		var url = new URL( location.href );
 		highlightNewComments(
 			threadItemSet,
 			noScroll,
-			uri.query.dtnewcomments && uri.query.dtnewcomments.split( '|' ),
-			uri.query.dtnewcommentssince,
-			uri.query.dtinthread
+			url.searchParams.get( 'dtnewcomments' ) && url.searchParams.get( 'dtnewcomments' ).split( '|' ),
+			url.searchParams.get( 'dtnewcommentssince' ),
+			url.searchParams.get( 'dtinthread' )
 		);
 	} );
 }
@@ -302,13 +296,7 @@ function clearHighlightTargetComment( threadItemSet ) {
 		missingTargetNotifPromise = null;
 	}
 
-	var uri;
-	try {
-		uri = new mw.Uri( location.href );
-	} catch ( err ) {
-		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
-		return;
-	}
+	var url = new URL( location.href );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	var targetElement = $( ':target' )[ 0 ];
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
@@ -323,16 +311,16 @@ function clearHighlightTargetComment( threadItemSet ) {
 		// Instead, we first use window.location.hash to navigate to a *different* hash (whose target
 		// doesn't exist on the page, hopefully), and then use history.pushState() to clear it.
 		window.location.hash += '-DoesNotExist-DiscussionToolsHack';
-		uri.fragment = undefined;
-		history.replaceState( null, document.title, uri );
+		url.hash = '';
+		history.replaceState( null, document.title, url );
 	} else if (
-		'dtnewcomments' in uri.query ||
-		'dtnewcommentssince' in uri.query
+		url.searchParams.has( 'dtnewcomments' ) ||
+		url.searchParams.has( 'dtnewcommentssince' )
 	) {
-		delete uri.query.dtnewcomments;
-		delete uri.query.dtnewcommentssince;
-		delete uri.query.dtinthread;
-		history.pushState( null, document.title, uri );
+		url.searchParams.delete( 'dtnewcomments' );
+		url.searchParams.delete( 'dtnewcommentssince' );
+		url.searchParams.delete( 'dtinthread' );
+		history.pushState( null, document.title, url );
 		highlightTargetComment( threadItemSet );
 	}
 }
