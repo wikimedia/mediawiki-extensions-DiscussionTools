@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Oby Ezeilo",
+			"Olugold"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Zaghachi",
+	"discussiontools-desc": "Akọrọngwa eji akwado ebe akpamnkata",
+	"discussiontools-emptystate-button": "Bido ị kpa nkata",
+	"discussiontools-emptystate-title-self": "Nnọọ n'ihu akwụkwọ gị maka ị gwa gị okwu",
+	"discussiontools-emptystate-title-self-anon": "Nnọọ n'ihu akwụkwụ nke ịgwa mmadụ okwu",
+	"discussiontools-emptystate-title-user-anon": "Nnọọ n'ihu akwụkwọ agwam mmadụ okwu",
+	"discussiontools-error-comment-conflict": " E nweghị ike ịchekwa ihe ị kwuru makana onye ọzọ ekwuola oge ị chọrọ i kwu nke gị. Biko kwuo ọzọ, maọbụ buputagharịa ihu akwụkwọ ije hụ okwu ikpeazu e kwuru",
+	"discussiontools-error-comment-is-transcluded": "Agaghị enwe ike iji nkokọ a\"{{int:discussiontools-replylink}}\" wee zaghachi okwu a. Iji zaghachi okwu a biko were otu ibe akwụkwọ eji eme ndezi site n'ịpị aka na\"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Agaghị eji nkokọ nke a \"{{int:discussiontools-replylink}}\" azaghachi okwu a maka na-esi n'ihu akwụkwọ ọzọ weta ya. Ị ịzaghachi biko gaa na ebe a: [[$1]]",
+	"discussiontools-error-comment-not-saved": "Agaghị enwe ike ibipụta ihe ị dere n'ihu akwụkwọ nke ọhụụ. I ji hụụ mgbanwe ọhuụ, kọpịrị ihe ị dere tinye ma  browza  ka o wee buputagharịa ihu akwụkọ a ọzọ."
+}

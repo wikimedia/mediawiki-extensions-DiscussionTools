@@ -68,7 +68,7 @@
 	"discussiontools-replywidget-mode-visual": "Trực quan",
 	"discussiontools-replywidget-newtopic": "Thêm đề tài",
 	"discussiontools-replywidget-placeholder-newtopic": "Miêu tả",
-	"discussiontools-replywidget-placeholder-reply": "Trả lời cho {{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "Trả lời {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Xem trước",
 	"discussiontools-replywidget-reply": "Trả lời",
 	"discussiontools-replywidget-signature-body": "Chữ ký của bạn đã được đổi thành $1. Để hủy thay đổi, nhập $2. Chú ý rằng với công cụ này, bạn không cần phải ký tên vào bình luận. Chữ ký của bạn sẽ được tự động thêm vào.",
