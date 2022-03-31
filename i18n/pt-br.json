@@ -9,10 +9,12 @@
 			"He7d3r",
 			"Jhonnatanricardo",
 			"Matma Rex",
-			"Wiiformii"
+			"Wiiformii",
+			"YuriNikolai"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
+	"discussiontools-autotopicsubpopup-preferences": "Editar preferências",
 	"discussiontools-defaultsummary-reply": "Responder",
 	"discussiontools-desc": "Ferramentas para aprimorar as páginas de discussão.",
 	"discussiontools-emptystate-button": "Iniciar uma discussão",
@@ -98,6 +100,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Você se inscreveu!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Você não receberá mais notificações sobre novos comentários neste tópico",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Cancelar inscrição.",
+	"discussiontools-topicsubscription-pager-actions": "Ações",
 	"discussiontools-topicsubscription-pager-page": "Página",
 	"discussiontools-topicsubscription-pager-topic": "Tópico",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Cancelar inscrição",

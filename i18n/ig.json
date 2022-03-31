@@ -46,5 +46,13 @@
 	"discussiontools-postedit-confirmation-topicadded": "E tinyela isiokwu gị",
 	"discussiontools-preference-autotopicsub": "Denye aha gi ozigbo maka isiokwu",
 	"discussiontools-preference-autotopicsub-help": " Mgbe ị bidoro nkata ọhụụ maọbụ okwu ọhụụ n'ebe ebere maka ikpa nkata, ị ga-enweta ozi ozigbo iji gwa gị ndị ọzọ dere okwu ọhụụ",
+	"discussiontools-preference-description": "Nye ikike maka njirimara ihu akwụkwọ ebe nnwale ikwu okwu:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Reply] site na-ịpị ya aka otu ugboro.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Add new topics] jiri njirimara ya.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Receive notifications] mgbe ọbụla etinyere okwu ọhụụ ebe i tinyere aha gị maka nnata ozi.\n\nỊnwere ike itinye ihe nriba ama na [[Special:Preferences#mw-prefsection-editing-discussion|preferences]].\n\nA ga-etinye ihe nkwalite na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates talk pages project's updates page].\n\nBiko Ọkwa dị mkpa:\n* ọtụtụ ugboro a ga-na-agbakwụnye  ihe ọrụ nnwale.\n* Ụfọdụ ihe njirimara na-egosi n'elu agaghị enweike ịpụta na wiki kitaa.",
+	"discussiontools-preference-label": "Akọrọngwa akpamnkata",
+	"discussiontools-preference-newtopictool": "ikike itinye isiokwu ozigbo ozigbo",
+	"discussiontools-preference-newtopictool-help": "Nke a ga-egosi gị usoro ntinye isiokwu ọhụụ",
+	"discussiontools-preference-replytool": "ikike nzaghachi ozi ozigbo ozigbo",
+	"discussiontools-preference-replytool-help": "Nke a ga-egosi gị nkokọ ị ga eji zaghachi ozi site n'otu mpị aka",
+	"discussiontools-preference-sourcemodetoolbar": "ikike akọrọngwa ndezi ka dị na isi iyi/isi ebe nweta",
+	"discussiontools-preference-sourcemodetoolbar-help": " Nke a ga-etinye akọrọngwa toolbar maka nzaghachi ozi ozigbo ozigbo nakwa ntinye njirimara isiokwu ozigbo ozigbo, isi ebe nweta gbakwụnyere ụzọ mkpirisi maka itinye nkokọ",
 	"tag-discussiontools-edit": "Nkọwa edeziri"
 }
