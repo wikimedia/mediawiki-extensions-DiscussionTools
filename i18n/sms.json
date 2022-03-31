@@ -5,8 +5,13 @@
 		]
 	},
 	"discussiontools-autotopicsubpopup-preferences": "Asetõõzz",
+	"discussiontools-defaultsummary-reply": "Vasttõs",
+	"discussiontools-replylink": "vaʹstted",
 	"discussiontools-replywidget-mention-tool-header": "Ooʒʒ õõʹnni: $1",
+	"discussiontools-replywidget-newtopic": "Lââʹzzet teeʹm",
 	"discussiontools-replywidget-preferences": "Asetõõzz",
+	"discussiontools-replywidget-reply": "Vaʹstted",
 	"discussiontools-replywidget-watchthis": "Lââʹzzet tän seeid tuu [[Special:Watchlist|valvvâmliʹstte]]",
-	"discussiontools-topicsubscription-pager-page": "Seidd"
+	"discussiontools-topicsubscription-pager-page": "Seidd",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]"
 }

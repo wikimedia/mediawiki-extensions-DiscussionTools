@@ -80,7 +80,7 @@
 	"discussiontools-replywidget-mode-visual": "Trực quan",
 	"discussiontools-replywidget-newtopic": "Thêm đề tài",
 	"discussiontools-replywidget-placeholder-newtopic": "Miêu tả",
-	"discussiontools-replywidget-placeholder-reply": "Trả lời cho {{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "Trả lời {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Tùy chọn",
 	"discussiontools-replywidget-preview": "Xem trước",
 	"discussiontools-replywidget-reply": "Trả lời",
