@@ -16,7 +16,7 @@ function markTimestamp( parser, node, match ) {
 	// We might need to actually port all the date formatting code from MediaWiki's PHP code
 	// if we want to support displaying dates in all the formats available in user preferences
 	// (which include formats in several non-Gregorian calendars).
-	var date = dfParsers[ match.parserIndex ]( match.matchData );
+	var date = dfParsers[ match.parserIndex ]( match.matchData ).date;
 	wrapper.title = date.format() + ' / ' + date.fromNow();
 	wrapper.appendChild( newNode );
 	node.parentNode.insertBefore( wrapper, node.nextSibling );
