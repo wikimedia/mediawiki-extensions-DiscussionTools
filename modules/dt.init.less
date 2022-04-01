@@ -218,6 +218,26 @@ span[ data-mw-comment-start ] {
 	}
 }
 
+// Mobile
+@media ( max-width: 719px ) {
+	.ext-discussiontools-emptystate {
+		display: block;
+
+		.oo-ui-buttonElement {
+			display: block;
+			text-align: center;
+
+			> a {
+				width: 80%;
+			}
+		}
+
+		> img {
+			display: none;
+		}
+	}
+}
+
 .ext-discussiontools-init-replylink-open {
 	.ext-discussiontools-emptystate,
 	> .mw-message-box-warning {
