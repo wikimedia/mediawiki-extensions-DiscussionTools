@@ -5,6 +5,14 @@ span[ data-mw-comment-start ] {
 	top: -1em;
 }
 
+span[ data-mw-comment-start ],
+span[ data-mw-comment-end ] {
+	// Support: Safari
+	// Markers at the end of a line and before an inline-block (e.g. edit icon)
+	// can cause text to stop wrapping properly. (T298371)
+	display: inline-block;
+}
+
 .ext-discussiontools-init-replylink-buttons {
 	user-select: none;
 	display: none;
