@@ -358,7 +358,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'formtoken' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 				StringDef::PARAM_MAX_CHARS => 16,
 			],
 			'commentname' => null,
@@ -380,7 +380,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'useskin' => [
-				ApiBase::PARAM_TYPE => array_keys(
+				ParamValidator::PARAM_TYPE => array_keys(
 					MediaWikiServices::getInstance()->getSkinFactory()->getInstalledSkins()
 				),
 				ApiBase::PARAM_HELP_MSG => 'apihelp-parse-param-useskin',

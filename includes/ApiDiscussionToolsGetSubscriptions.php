@@ -57,7 +57,7 @@ class ApiDiscussionToolsGetSubscriptions extends ApiBase {
 		return [
 			'commentname' => [
 				ParamValidator::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_ISMULTI => true,
 			],
 		];
 	}

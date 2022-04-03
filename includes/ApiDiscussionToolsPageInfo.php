@@ -88,9 +88,9 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			],
 			'oldid' => null,
 			'prop' => [
-				ApiBase::PARAM_DFLT => 'transcludedfrom',
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_DEFAULT => 'transcludedfrom',
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => [
 					'transcludedfrom',
 					'threaditemshtml'
 				],
