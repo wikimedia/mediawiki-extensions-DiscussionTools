@@ -12,6 +12,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\ParamValidator\TypeDef\StringDef;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -358,7 +359,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			],
 			'formtoken' => [
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_MAX_CHARS => 16,
+				StringDef::PARAM_MAX_CHARS => 16,
 			],
 			'commentname' => null,
 			'commentid' => null,
