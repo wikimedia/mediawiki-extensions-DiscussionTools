@@ -9,7 +9,8 @@
 			"Jeeputer",
 			"Ladsgroup",
 			"Matma Rex",
-			"Reza koulivand"
+			"Reza koulivand",
+			"Beginneruser"
 		]
 	},
 	"discussiontools": "ابزارهای گفت‌وگو",
@@ -17,7 +18,7 @@
 	"discussiontools-desc": "ابزارهایی برای بهبود صفحه‌های بحث",
 	"discussiontools-preference-label": "ابزارهای گفت‌وگو",
 	"discussiontools-replylink": "پاسخ",
-	"discussiontools-replywidget-anon-warning": "<strong>شما به سامانه وارد نشده‌اید.</strong> برای این که نوشته‌تان به نام خودتان ثبت شود و نشانی آی‌پی‌تان کنارش نمایش نیابد می‌توانید [$1 به سامانه وارد شوید] یا [$2 حساب بسازید].",
+	"discussiontools-replywidget-anon-warning": "<strong>شما وارد نشده‌اید.</strong> برای این که نوشته‌تان به نام خودتان ثبت شود و نشانی آی‌پی‌تان کنارش نمایش نیابد می‌توانید [$1 به سامانه وارد شوید] یا [$2 یک حساب ایجاد کنید].",
 	"discussiontools-replywidget-cancel": "لغو",
 	"discussiontools-replywidget-feedback": "به اشتراک گذاری بازخورد در خصوص این ویژگی",
 	"discussiontools-replywidget-loading": "در حال بارگیری...",

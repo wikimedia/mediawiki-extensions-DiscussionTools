@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Oby Ezeilo",
+			"Olugold"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Zaghachi",
+	"discussiontools-desc": "Akọrọngwa eji akwado ebe akpamnkata",
+	"discussiontools-preference-label": "Akọrọngwa akpamnkata",
+	"discussiontools-error-comment-is-transcluded": "Agaghị enwe ike iji nkokọ a\"{{int:discussiontools-replylink}}\" wee zaghachi okwu a. Iji zaghachi okwu a biko were otu ibe akwụkwọ eji eme ndezi site n'ịpị aka na\"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Agaghị eji nkokọ nke a \"{{int:discussiontools-replylink}}\" azaghachi okwu a maka na-esi n'ihu akwụkwọ ọzọ weta ya. Ị ịzaghachi biko gaa na ebe a: [[$1]]",
+	"discussiontools-error-lint": "Agaghị enwe ike ịzaghachi ihe ndị e  kwuru n'ihu akwụkwọ a n'ihi enwere ndeghe na Wikitext. Ị nwere ike ịmụta maka ndeghe site [$1 reading the documentation], jụọ maka enye m aka site [$2 posting here] maọbụ ịdezi ndeghe a site [$3 opening the full page editor]."
+}
