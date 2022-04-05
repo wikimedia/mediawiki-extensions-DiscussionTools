@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeeputer"
+			"Jeeputer",
+			"Beginneruser"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "نظری با شناسهٔ «$1» یافت نشد.",
@@ -18,5 +19,5 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "افزودن یک بخش گفتگوی تازه و نخستین نظر در آن.",
 	"apihelp-discussiontoolsedit-summary": "فرستادن یک نظر در یک صفحهٔ بحث.",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True برای اشتراک، false برای لغو اشتراک",
-	"apihelp-discussiontoolssubscribe-summary": "اشتراک (یا لغو اشتراک) برای دریافت اعلان دربارهٔ یک مبحث."
+	"apihelp-discussiontoolssubscribe-summary": "اشتراک (یا لغو اشتراک) برای دریافت آگاه‌سازی‌ها دربارهٔ یک مبحث."
 }
