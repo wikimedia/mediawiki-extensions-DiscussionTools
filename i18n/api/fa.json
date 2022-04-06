@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeeputer"
+			"Jeeputer",
+			"Beginneruser"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "نظری با شناسهٔ «$1» یافت نشد.",
@@ -22,5 +23,5 @@
 	"apihelp-discussiontoolssubscribe-param-page": "صفحه‌ای که مبحث در آن وجود نمایش داده می‌شود",
 	"apihelp-discussiontoolssubscribe-param-commentname": "نام مبحث برای مشترک شدن (یا لغو اشتراک)",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True برای اشتراک، false برای لغو اشتراک",
-	"apihelp-discussiontoolssubscribe-summary": "اشتراک (یا لغو اشتراک) برای دریافت اعلان دربارهٔ یک مبحث."
+	"apihelp-discussiontoolssubscribe-summary": "اشتراک (یا لغو اشتراک) برای دریافت آگاه‌سازی‌ها دربارهٔ یک مبحث."
 }
