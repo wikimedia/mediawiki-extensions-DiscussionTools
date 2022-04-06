@@ -491,6 +491,15 @@ function refreshPageContents( oldId ) {
  * @param {mw.dt.ReplyWidget} replyWidget ReplyWidget
  */
 function update( data, threadItem, pageName, replyWidget ) {
+	function logSaveSuccess() {
+		logger( {
+			action: 'saveSuccess',
+			timing: mw.now() - replyWidget.saveInitiated,
+			// eslint-disable-next-line camelcase
+			revision_id: data.newrevid
+		} );
+	}
+
 	// We posted a new comment, clear the cache, because wgCurRevisionId will not change if we posted
 	// to a transcluded page (T266275)
 	pageDataCache[ mw.config.get( 'wgRelevantPageName' ) ][ mw.config.get( 'wgCurRevisionId' ) ] = null;
@@ -505,6 +514,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 		replyWidget.clearStorage();
 		replyWidget.setPending( true );
 		window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
+		logSaveSuccess();
 		return;
 	}
 
@@ -517,6 +527,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 		// MobileFrontend does not use the 'wikipage.content' hook, and its interface will not
 		// re-initialize properly (e.g. page sections won't be collapsible). Reload the whole page.
 		window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
+		logSaveSuccess();
 		return;
 	}
 
@@ -559,6 +570,8 @@ function update( data, threadItem, pageName, replyWidget ) {
 			// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
 			// explain this problem. Redirect to the page where the user can at least see their reply…
 			window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
+			// We're confident the saving portion succeeded, so still log this:
+			logSaveSuccess();
 		} );
 	}
 
@@ -574,14 +587,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 		);
 	}
 
-	pageUpdated.then( function () {
-		logger( {
-			action: 'saveSuccess',
-			timing: mw.now() - replyWidget.saveInitiated,
-			// eslint-disable-next-line camelcase
-			revision_id: data.newrevid
-		} );
-	} );
+	pageUpdated.then( logSaveSuccess );
 }
 
 module.exports = {
