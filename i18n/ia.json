@@ -4,6 +4,10 @@
 			"McDutchie"
 		]
 	},
+	"discussiontools-autotopicsubpopup-body": "Tu recipera un notification quando alcuno invia un nove commento in iste discussion. Tu pote adjustar tu parametros de notification in le preferentias.",
+	"discussiontools-autotopicsubpopup-dismiss": "Ben, io comprende",
+	"discussiontools-autotopicsubpopup-preferences": "Modificar preferentias",
+	"discussiontools-autotopicsubpopup-title": "Tu ha essite subscribite",
 	"discussiontools-defaultsummary-reply": "Responder",
 	"discussiontools-desc": "Instrumentos pro meliorar paginas de discussion.",
 	"discussiontools-emptystate-button": "Initiar un discussion",
@@ -19,6 +23,7 @@
 	"discussiontools-emptystate-title-user-anon": "Benvenite a iste pagina de discussion",
 	"discussiontools-error-comment-conflict": "Tu commento non poteva esser salveguardate perque un altere persona ha commentate al mesme tempore que tu. Per favor tenta lo de novo, o recarga le pagina pro vider le ultime commentos.",
 	"discussiontools-error-comment-disappeared": "Non poteva trovar le commento al qual tu responde sur iste pagina. Illo pote haber essite delite o displaciate a un altere pagina.",
+	"discussiontools-error-comment-disappeared-reload": "Per favor recarga le pagina e tenta lo de novo.",
 	"discussiontools-error-comment-is-transcluded": "Le ligamine \"{{int:discussiontools-replylink}}\" non pote esser usate pro responder a iste commento. Pro responder, per favor usa le editor de paginas complete cliccante sur \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "Le ligamine \"{{int:discussiontools-replylink}}\" non pote esser usate pro responder a iste commento perque illo es cargate ab un altere pagina. Pro responder, per favor visita [[$1]].",
 	"discussiontools-error-comment-not-saved": "Tu commento non poteva esser publicate in le ultime version del pagina. Pro vider le ultime modificationes, copia le version provisori de tu commento e alora usa tu navigator pro recargar le pagina.",
