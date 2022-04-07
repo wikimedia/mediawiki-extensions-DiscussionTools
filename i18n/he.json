@@ -8,7 +8,8 @@
 			"Steeve815",
 			"YaronSh",
 			"לואיקה",
-			"עמד"
+			"עמד",
+			"Yona b"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|תקבל|תקבלי}} התראה כשמישהו כותב תגובה חדשה בדיון הזה. {{GENDER:|אתה יכול|את יכולה}} לכוונןן את הגדרות ההתראות שלך בהעדפות.",
@@ -81,7 +82,7 @@
 	"discussiontools-replywidget-mention-tool-title": "אזכור משתמש",
 	"discussiontools-replywidget-mode-source": "קוד מקור",
 	"discussiontools-replywidget-mode-visual": "חזותי",
-	"discussiontools-replywidget-newcomments-warning": "{{PLURAL:$1|תגובה חדשה אחד נוספה|$1 תגובות חדשות נוספו}} לפסגה הזאת. נא ללחוץ לרענון.",
+	"discussiontools-replywidget-newcomments-warning": "{{PLURAL:$1|תגובה חדשה אחד נוספה|$1 תגובות חדשות נוספו}} לפרק הזה. נא ללחוץ לרענון.",
 	"discussiontools-replywidget-newtopic": "הוספת נושא",
 	"discussiontools-replywidget-placeholder-newtopic": "תיאור",
 	"discussiontools-replywidget-placeholder-reply": "תגובה ל{{GRAMMAR:תחילית|$1}}",
