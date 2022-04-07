@@ -39,6 +39,7 @@ class ParserHooks implements ParserAfterTidyHook {
 		}
 
 		$title = $parser->getTitle();
+		$pout = $parser->getOutput();
 
 		// This condition must be unreliant on current enablement config or user preference.
 		// In other words, include parser output of talk pages with DT disabled.
@@ -46,13 +47,13 @@ class ParserHooks implements ParserAfterTidyHook {
 		// This is similar to HookUtils::isAvailableForTitle, but instead of querying the
 		// database for the latest metadata of a page that exists, we check metadata of
 		// the given ParserOutput object only (this runs before the edit is saved).
-		if ( $title->isTalkPage() || $parser->getOutput()->getNewSection() ) {
+		if ( $title->isTalkPage() || $pout->getNewSection() ) {
 			$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 			$talkExpiry = $dtConfig->get( 'DiscussionToolsTalkPageParserCacheExpiry' );
 			// Override parser cache expiry of talk pages (T280605).
 			// Note, this can only shorten it. MediaWiki ignores values higher than the default.
 			if ( $talkExpiry > 0 ) {
-				$parser->getOutput()->updateCacheExpiry( $talkExpiry );
+				$pout->updateCacheExpiry( $talkExpiry );
 			}
 		}
 
@@ -63,13 +64,13 @@ class ParserHooks implements ParserAfterTidyHook {
 		// the user doesn't have DiscussionTools features enabled.
 		if ( HookUtils::isAvailableForTitle( $title ) ) {
 			// This modifies $text
-			CommentFormatter::addDiscussionTools( $text, $parser->getOutput(), $parser->getTitle() );
+			CommentFormatter::addDiscussionTools( $text, $pout, $parser );
 
 			if ( $parser->getOptions()->getIsPreview() ) {
 				$text = CommentFormatter::removeInteractiveTools( $text );
 			}
 
-			$parser->getOutput()->addModuleStyles( [
+			$pout->addModuleStyles( [
 				'ext.discussionTools.init.styles',
 			] );
 		}

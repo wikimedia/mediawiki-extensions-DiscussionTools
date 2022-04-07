@@ -11,6 +11,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
 use MWTimestamp;
+use Parser;
 use ParserOutput;
 use Sanitizer;
 use Throwable;
@@ -46,14 +47,50 @@ class CommentFormatter {
 	 *
 	 * @param string &$text Parser text output (modified by reference)
 	 * @param ParserOutput $pout ParserOutput object for metadata, e.g. parser limit report
-	 * @param Title $title
+	 * @param Parser $parser
 	 */
-	public static function addDiscussionTools( string &$text, ParserOutput $pout, Title $title ): void {
+	public static function addDiscussionTools( string &$text, ParserOutput $pout, Parser $parser ): void {
+		$title = $parser->getTitle();
 		$start = microtime( true );
 		$requestId = null;
 
 		try {
-			$text = static::addDiscussionToolsInternal( $text, $title );
+			[ 'html' => $text, 'tocInfo' => $tocInfo ] =
+				static::addDiscussionToolsInternal( $text, $title );
+
+			// Enhance the table of contents in supporting skins (vector-2022)
+
+			// Only do the work if the HTML would be shown. It looks like we can only check this
+			// by checking whether the HTML for the normal TOC has been generated. Code in
+			// OutputPage::addParserOutputMetadata does the same.
+			if ( $pout->getTOCHTML() ) {
+				// If the TOC HTML has been generated, then the parser cache is already split by user
+				// language (because of the "Contents" header in the TOC), so we can render text in user
+				// language as well. If that behavior in core changes, then we'll have to change this to
+				// happen in a post-processing step (like all other transformations) to avoid splitting it.
+				$lang = $parser->getOptions()->getUserLangObj();
+				$sections = $pout->getSections();
+				foreach ( $sections as &$item ) {
+					$key = str_replace( '_', ' ', $item['anchor'] );
+					// Unset if we did not format this section as a topic container
+					if ( isset( $tocInfo[$key] ) ) {
+						$count = $lang->formatNum( $tocInfo[$key]['commentCount'] );
+						$commentCount = wfMessage(
+							'discussiontools-topicheader-commentcount',
+							$count
+						)->inLanguage( $lang )->text();
+
+						$summary = Html::element( 'span', [
+							'class' => 'ext-discussiontools-init-sidebar-meta'
+						], wfMessage( 'parentheses', $commentCount )->inLanguage( $lang )->text() );
+
+						// This also shows up in API action=parse&prop=sections output.
+						$item['html-summary'] = $summary;
+					}
+				}
+				$pout->setSections( $sections );
+			}
+
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
 			// Log it and report the request ID to make it easier to find in the logs.
@@ -85,8 +122,13 @@ class CommentFormatter {
 	 *
 	 * @param Element $headingElement Heading element
 	 * @param ContentHeadingItem|null $headingItem Heading item
+	 * @param array|null &$tocInfo TOC info
 	 */
-	protected static function addTopicContainer( Element $headingElement, ?ContentHeadingItem $headingItem = null ) {
+	protected static function addTopicContainer(
+		Element $headingElement,
+		?ContentHeadingItem $headingItem = null,
+		&$tocInfo = null
+	) {
 		$doc = $headingElement->ownerDocument;
 
 		DOMCompat::getClassList( $headingElement )->add( 'ext-discussiontools-init-section' );
@@ -159,6 +201,8 @@ class CommentFormatter {
 			$headingElement->appendChild( $ellipsisButton );
 			$headingElement->appendChild( $bar );
 		}
+
+		$tocInfo[ $headingItem->getLinkableTitle() ] = $summary;
 	}
 
 	/**
@@ -166,9 +210,9 @@ class CommentFormatter {
 	 *
 	 * @param string $html HTML
 	 * @param Title $title
-	 * @return string HTML with discussion tools
+	 * @return array HTML with discussion tools and TOC info
 	 */
-	protected static function addDiscussionToolsInternal( string $html, Title $title ): string {
+	protected static function addDiscussionToolsInternal( string $html, Title $title ): array {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
@@ -178,6 +222,8 @@ class CommentFormatter {
 
 		$threadItemSet = static::getParser()->parse( $container, $title->getTitleValue() );
 		$threadItems = $threadItemSet->getThreadItems();
+
+		$tocInfo = [];
 
 		$newestComment = null;
 		$newestCommentJSON = null;
@@ -232,7 +278,7 @@ class CommentFormatter {
 					$headingElement = CommentUtils::closestElement( $headline, [ 'h2' ] );
 
 					if ( $headingElement ) {
-						static::addTopicContainer( $headingElement, $threadItem );
+						static::addTopicContainer( $headingElement, $threadItem, $tocInfo );
 					}
 				}
 			} elseif ( $threadItem instanceof ContentCommentItem ) {
@@ -270,7 +316,9 @@ class CommentFormatter {
 
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
-		return XMLSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
+		$html = XMLSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
+
+		return [ 'html' => $html, 'tocInfo' => $tocInfo ];
 	}
 
 	/**
