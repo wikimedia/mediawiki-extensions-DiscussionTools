@@ -73,14 +73,11 @@ ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
 
 ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 	// Check query parameters to see if this is really a new topic link
-	var href = $( e.currentTarget ).attr( 'href' );
-	var uri;
-	try {
-		uri = new mw.Uri( href, { arrayParams: true } );
-	} catch ( err ) {
-		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+	var href = e.currentTarget.href;
+	if ( !href ) {
 		return;
 	}
+	var url = new URL( href );
 
 	var title = mw.Title.newFromText( utils.getTitleFromUrl( href ) || '' );
 	if ( !title ) {
@@ -103,8 +100,9 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 	} else if (
 		// ?title=...&action=edit&section=new
 		// ?title=...&veaction=editsource&section=new
-		( uri.query.action === 'edit' || uri.query.veaction === 'editsource' ) && uri.query.section === 'new' &&
-		uri.query.dtenable !== '0'
+		( url.searchParams.get( 'action' ) === 'edit' || url.searchParams.get( 'veaction' ) === 'editsource' ) &&
+		url.searchParams.get( 'section' ) === 'new' &&
+		url.searchParams.get( 'dtenable' ) !== '0'
 	) {
 		// Do nothing
 
@@ -118,7 +116,10 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 		return;
 	}
 
-	if ( uri.query.editintro || uri.query.preload || uri.query.preloadparams || uri.query.preloadtitle ) {
+	if (
+		url.searchParams.get( 'editintro' ) || url.searchParams.get( 'preload' ) ||
+		url.searchParams.getAll( 'preloadparams[]' ).length || url.searchParams.get( 'preloadtitle' )
+	) {
 		// Adding a new topic with preloaded text is not supported yet (T269310)
 		return;
 	}

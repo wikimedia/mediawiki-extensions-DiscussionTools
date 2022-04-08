@@ -1,5 +1,5 @@
 var controller = require( './controller.js' ),
-	uri = new mw.Uri();
+	url = new URL( location.href );
 
 /**
  * @class mw.dt
@@ -40,13 +40,13 @@ if ( mw.user.isAnon() && mw.config.get( 'wgDiscussionToolsABTest' ) ) {
 	}
 }
 
-if ( uri.query.dtrepliedto ) {
+if ( url.searchParams.get( 'dtrepliedto' ) ) {
 	// If we had to reload the page to highlight the new comment, extract that data from the URL and
 	// clean it up.
-	mw.dt.initState.repliedTo = uri.query.dtrepliedto;
+	mw.dt.initState.repliedTo = url.searchParams.get( 'dtrepliedto' );
 	if ( window.history.replaceState ) {
-		delete uri.query.dtrepliedto;
-		window.history.replaceState( {}, '', uri.toString() );
+		url.searchParams.delete( 'dtrepliedto' );
+		window.history.replaceState( {}, '', url );
 	}
 }
 
@@ -59,7 +59,7 @@ mw.dt.init = function ( $container ) {
 	}
 };
 
-if ( uri.query.dtdebug ) {
+if ( url.searchParams.get( 'dtdebug' ) ) {
 	mw.loader.load( 'ext.discussionTools.debug' );
 } else {
 	// Don't use an anonymous function, because ReplyWidget needs to be able to remove this handler

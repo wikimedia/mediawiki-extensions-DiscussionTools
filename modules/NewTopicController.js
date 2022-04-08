@@ -148,29 +148,21 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget ) {
  */
 NewTopicController.prototype.setupTopicHint = function () {
 	var topicController = this;
-	var legacyURI;
-	try {
-		legacyURI = new mw.Uri();
-	} catch ( err ) {
-		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
-		return;
-	}
-	var fragment = '';
+	var legacyUrl = new URL( location.href );
 	if ( OO.ui.isMobile() ) {
-		// mw.Uri encodes link fragments, converting to '/' to '%2F', which breaks the router
-		fragment = '#/talk/new';
-		delete legacyURI.query.action;
-		delete legacyURI.query.section;
+		legacyUrl.hash = '#/talk/new';
+		legacyUrl.searchParams.delete( 'action' );
+		legacyUrl.searchParams.delete( 'section' );
 	} else {
-		legacyURI.query.action = 'edit';
-		legacyURI.query.section = 'new';
+		legacyUrl.searchParams.set( 'action', 'edit' );
+		legacyUrl.searchParams.set( 'section', 'new' );
 	}
-	legacyURI.query.dtenable = '0';
+	legacyUrl.searchParams.set( 'dtenable', '0' );
 	// This is not a real valid value for 'editintro', but we look for it elsewhere to generate our own edit notice
-	legacyURI.query.editintro = 'mw-dt-topic-hint';
+	legacyUrl.searchParams.set( 'editintro', 'mw-dt-topic-hint' );
 
 	this.topicHint = new OO.ui.MessageWidget( {
-		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyURI.toString() + fragment ).parseDom(),
+		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyUrl.toString() ).parseDom(),
 		showClose: true,
 		icon: 'article'
 	} )
@@ -239,17 +231,11 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 	}
 
 	if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
-		var uri;
-		try {
-			uri = new mw.Uri();
-		} catch ( err ) {
-			// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
-			return;
-		}
-		delete uri.query.action;
-		delete uri.query.veaction;
-		delete uri.query.section;
-		history.replaceState( null, document.title, uri.toString() );
+		var url = new URL( location.href );
+		url.searchParams.delete( 'action' );
+		url.searchParams.delete( 'veaction' );
+		url.searchParams.delete( 'section' );
+		history.replaceState( null, document.title, url );
 		mw.config.set( 'wgDiscussionToolsStartNewTopicTool', false );
 	}
 };

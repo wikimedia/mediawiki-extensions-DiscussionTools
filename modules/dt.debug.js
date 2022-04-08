@@ -11,7 +11,7 @@ var
 	comments = result.getCommentItems(),
 	threads = result.getThreads(),
 	timestampRegexps = parser.getLocalTimestampRegexps(),
-	debug = +( new mw.Uri().query.dtdebug ),
+	debug = +( new URL( location.href ).searchParams.get( 'dtdebug' ) ),
 	DEBUG_HIGHLIGHT = 1,
 	DEBUG_VOTE = 2,
 	DEBUG_VOTE_PERMISSIVE = 4;

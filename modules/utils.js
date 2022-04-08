@@ -378,18 +378,16 @@ function getFullyCoveredSiblings( item, excludedAncestorNode ) {
  * Get a MediaWiki page title from a URL.
  *
  * @private
- * @param {string} url
+ * @param {string} url Absolute URL
  * @return {string|null} Page title, or null if this isn't a link to a page
  */
 function getTitleFromUrl( url ) {
-	try {
-		url = new mw.Uri( url );
-	} catch ( err ) {
-		// T106244: URL encoded values using fallback 8-bit encoding (invalid UTF-8) cause mediawiki.Uri to crash
+	if ( !url ) {
 		return null;
 	}
-	if ( url.query.title ) {
-		return url.query.title;
+	var parsedUrl = new URL( url );
+	if ( parsedUrl.searchParams.get( 'title' ) ) {
+		return parsedUrl.searchParams.get( 'title' );
 	}
 
 	var articlePathRegexp = new RegExp(
@@ -397,7 +395,7 @@ function getTitleFromUrl( url ) {
 			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
 	);
 	var match;
-	if ( ( match = url.path.match( articlePathRegexp ) ) ) {
+	if ( ( match = parsedUrl.pathname.match( articlePathRegexp ) ) ) {
 		return decodeURIComponent( match[ 1 ] );
 	}
 
