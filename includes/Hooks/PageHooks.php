@@ -250,11 +250,6 @@ class PageHooks implements
 		$dir = $context->getLanguage()->getDir();
 		$lang = $context->getLanguage()->getHtmlCode();
 
-		$output->addHTML(
-			// This being mw-parser-output is a lie, but makes the reply controller cope much better with everything
-			Html::openElement( 'div', [ 'class' => "ext-discussiontools-emptystate mw-parser-output noarticletext" ] ) .
-			Html::openElement( 'div', [ 'class' => "ext-discussiontools-emptystate-text" ] )
-		);
 		$titleMsg = false;
 		$descMsg = false;
 		$descParams = [];
@@ -301,28 +296,34 @@ class PageHooks implements
 			$titleMsg = 'discussiontools-emptystate-title';
 			$descMsg = 'discussiontools-emptystate-desc';
 		}
-		$output->addHTML( Html::rawElement( 'h3', [],
-			$context->msg( $titleMsg )->parse()
-		) );
-		$output->addHTML( Html::rawElement( 'div', [ 'class' => 'plainlinks' ],
-			$context->msg( $descMsg, $descParams )->parseAsBlock()
-		) );
+
+		$text =
+			Html::rawElement( 'h3', [],
+				$context->msg( $titleMsg )->parse()
+			) .
+			Html::rawElement( 'div', [ 'class' => 'plainlinks' ],
+				$context->msg( $descMsg, $descParams )->parseAsBlock()
+			);
+
 		if ( $buttonMsg ) {
-			$output->addHTML( new ButtonWidget( [
+			$text .= new ButtonWidget( [
 				'label' => $context->msg( $buttonMsg )->text(),
 				'href' => $title->getLocalURL( 'action=edit&section=new' ),
 				'flags' => [ 'primary', 'progressive' ]
-			] ) );
+			] );
 		}
+
 		$output->addHTML(
-			Html::closeElement( 'div' ) .
-			Html::element( 'img', [
-				'src' => $iconpath . '/emptystate.svg',
-				'class' => "ext-discussiontools-emptystate-logo",
-				// This is a purely decorative element
-				'alt' => "",
-			] ) .
-			Html::closeElement( 'div' )
+			// This being mw-parser-output is a lie, but makes the reply controller cope much better with everything
+			Html::rawElement( 'div', [ 'class' => "ext-discussiontools-emptystate mw-parser-output noarticletext" ],
+				Html::rawElement( 'div', [ 'class' => "ext-discussiontools-emptystate-text" ], $text ) .
+				Html::element( 'img', [
+					'src' => $iconpath . '/emptystate.svg',
+					'class' => "ext-discussiontools-emptystate-logo",
+					// This is a purely decorative element
+					'alt' => "",
+				] )
+			)
 		);
 
 		return false;
