@@ -21,6 +21,7 @@
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Namn på ämnen att kontrollera",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Hämta prenumerationsstatus för angivna ämnen.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Sidversionsnummer att använd (standard är senaste versionen).",
+	"apihelp-discussiontoolspageinfo-param-prop": "Vilka egenskaper att hämta:",
 	"apihelp-discussiontoolspageinfo-summary": "Returnerar metadata som krävs för att initialisera diskussionsverktygen.",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Namn på ämnet att prenumerera på (eller sluta prenumerera på)",
 	"apihelp-discussiontoolssubscribe-param-page": "En sida som ämnet visas på",
