@@ -7,10 +7,11 @@
 			"Gwanki",
 			"Harunaningi",
 			"Itzedubaba",
-			"Umar-askirason"
+			"Umar-askirason",
+			"Aliyu shaba"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Martani",
+	"discussiontools-defaultsummary-reply": "Mayarwa",
 	"discussiontools-desc": "Kayayyakin inganta shafukan tattaunawa.",
 	"discussiontools-error-comment-conflict": "Sharhin ku ba'a iya adana ta ba, saboda da wani yayi sharhi a daidai lokacin da kuma kuka yi. Kuyi hakuri ku sake jarabawa, ko ku sake aika shafin dan ganin sharhunan dake nan ayanzu.",
 	"discussiontools-error-comment-disappeared": "Ba'a iya samun shafin sharhin da kuke martani akai ba. Zai iya zama an goge ko an gusar da ita zuwa wani shafin. Yi hakuri ku sake aika shafin ku sake jarabawa.",
@@ -18,5 +19,17 @@
 	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" ba za'a iya amfani da linki dan mayar da martani ga wannan sharhin ba saboda an shiga tane daga wani shafin. Dan mayar da martani, je ka nan: [[$1]].",
 	"discussiontools-error-comment-not-saved": "Sharhin ku ba za'a iya wallafa ta ba zuwa sabon yanayi na shafin. Dan ganin yanayin shafin na yanzu, kofo daftarin sharhin ka sai kayi amfani da manhajar ka sake shiga shafin.",
 	"discussiontools-error-lint": "Sharhin wannan shafi ba za'a iya mayar masu da martani ba, saboda wani kuskure a wikitext ɗin. Kuna iya sanin wannan kuskure ts [$1 reading the documentation], nema taimako ta [$2 posting here] ko gyara kuskuren [$3 opening the full page editor].",
-	"discussiontools-error-noswitchtove": "Yi hakuri, komawa zuwa gyara na gani an dakatar dashi saboda an gano <b>$1</b> acikin bayanan da kuka rubuta. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Learn more]."
+	"discussiontools-error-noswitchtove": "Yi hakuri, komawa zuwa gyara na gani an dakatar dashi saboda an gano <b>$1</b> acikin bayanan da kuka rubuta. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Learn more].",
+	"discussiontools-error-noswitchtove-extension": "tsawo ko manazartan syntax",
+	"discussiontools-error-noswitchtove-table": "teburin syntax",
+	"discussiontools-error-noswitchtove-template": "samfurin syntax",
+	"discussiontools-error-noswitchtove-title": "An kashe yanayin gani",
+	"discussiontools-newtopic-missing-title": "Kuyi hakuri kuba da take don batun tattaunawar ku.  Ku danna \"{{int:discussiontools-replywidget-newtopic}}\", za ku ƙara batun ku ba tare da take ba.",
+	"discussiontools-newtopic-placeholder-title": "Take",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|amsa}} a cikin \"<strong>$4</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Sabuwar amsa ɗaya|Sabuwar amsoshi $1|100=99+ sabobin amsa}} a cikin \"<strong>$3</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-view": "Duba sharhi",
+	"discussiontools-postedit-confirmation-published": "An buga sharhin ku.",
+	"discussiontools-postedit-confirmation-topicadded": "An kara batun ku.",
+	"discussiontools-preference-label": "Kayan aikin tattaunawa"
 }
