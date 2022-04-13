@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Arystanbek"
+			"Arystanbek",
+			"Hedeyohu22"
 		]
 	},
 	"discussiontools": "Талқылау құралдары",
@@ -17,7 +18,7 @@
 	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" сілтемесі бұл пікірге жауап беруге қолданылмайды себебі басқа беттен жүктеледі. жауап беру үшін мында өтіңіз: [[$1]].",
 	"discussiontools-error-comment-not-saved": "Сіздің пікіріңіз беттің ең соңғы нұсқасына жариялануы мүмкін емес. Соңғы өзгерістерді көру үшін, жазылған пікіріңізді көшіріп, содан кейін бетті қайта жүктеу үшін браузерді пайдаланыңыз.",
 	"discussiontools-error-lint": "Бұл беттегі пікірлерге уикимәтін қатесіне байланысты жауап беру мүмкін емес. Бұл қате туралы [$1 құжаттамасын оқып] біле аласыз, [$2 осында жазып] көмек сұраңыз не [$3 толық бет өңдегішті ашып] қатені түзете аласыз.",
-	"discussiontools-error-noswitchtove": "Кешіріңіз, VisualEditor-ға ауысу өшірілген себебі <b>$1</b> сіз жазған пікір ретінде анықталды. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Толығырақ білу].",
+	"discussiontools-error-noswitchtove": "Кешіріңіз, VisualEditor-ға ауысу өшірілген, себебі сіз жазған пікіріңізде <b>$1</b> анықталды. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Толығырақ білу].",
 	"discussiontools-error-noswitchtove-extension": "кеңейтілім не дереккөз синтаксисі",
 	"discussiontools-error-noswitchtove-table": "Кесте синтаксисі",
 	"discussiontools-error-noswitchtove-template": "үлгі синтаксисі",

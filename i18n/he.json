@@ -8,7 +8,8 @@
 			"Steeve815",
 			"YaronSh",
 			"עמד",
-			"לואיקה"
+			"לואיקה",
+			"Yona b"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "תגובה",
@@ -71,7 +72,7 @@
 	"discussiontools-replywidget-mode-visual": "חזותי",
 	"discussiontools-replywidget-newtopic": "הוספת נושא",
 	"discussiontools-replywidget-placeholder-newtopic": "תיאור",
-	"discussiontools-replywidget-placeholder-reply": "תגובה ל{{GRAMMAR:תחילית|$1}}",
+	"discussiontools-replywidget-placeholder-reply": "תגובה להודעה של {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "תצוגה מקדימה",
 	"discussiontools-replywidget-reply": "תגובה",
 	"discussiontools-replywidget-signature-body": "הקוד $1 הומר לחתימה שלך. כדי לבטל את זה, יש ללחוץ $2. נא לשים לב לכך שאין צורך לחתום על תגובות עם הכלי הזה. החתימה שלך תתווסף באופן אוטומטי.",
