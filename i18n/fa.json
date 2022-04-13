@@ -10,6 +10,7 @@
 			"Jeeputer",
 			"Ladsgroup",
 			"Matma Rex",
+			"Mohammad ebz",
 			"Reza koulivand"
 		]
 	},
@@ -108,7 +109,7 @@
 	"discussiontools-topicsubscription-button-subscribe": "اشتراک",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "برای دریافت آگاه‌سازی‌ها دربارهٔ نظرهای جدید، مشترک شوید.",
 	"discussiontools-topicsubscription-button-unsubscribe": "لغو اشتراک",
-	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "برای توقف دریافت آگاه‌سازی‌ها، اشتراک خود را لغو کنید.",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "برای توقف دریافت اعلان‌ها، اشتراک خود را لغو کنید.",
 	"discussiontools-topicsubscription-error-not-found-body": "اشتراک مشخص‌شده در نشانی اینترنتی یافت نشد.",
 	"discussiontools-topicsubscription-error-not-found-title": "اشتراک یافت نشد",
 	"discussiontools-topicsubscription-notify-subscribed-body": "در آینده برای هر نظر ارسال‌شده در این مبحث آگاه‌سازی‌‌هایی دریافت خواهید کرد.",
