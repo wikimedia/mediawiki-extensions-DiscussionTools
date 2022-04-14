@@ -10,7 +10,8 @@
 			"Jeeputer",
 			"Ladsgroup",
 			"Matma Rex",
-			"Reza koulivand"
+			"Reza koulivand",
+			"Mohammad ebz"
 		]
 	},
 	"discussiontools": "ابزارهای گفت‌وگو",
@@ -46,7 +47,7 @@
 	"discussiontools-limitreport-errorreqid": "شناسهٔ درخواست حاوی خطای ابزارهای گفت‌وگو",
 	"discussiontools-limitreport-timeusage": "مدت استفادهٔ ابزارهای گفت‌وگو",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|ثانیه}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>راه جدیدی برای آغاز مباحث در دسترس است.</strong> این قابلیت به شما این امکان را می‌دهد تا با استفاده از یک فرم درخط، مباحث جدید ایجاد کنید و دیگران را با استفاده از یک میانبر جدید آگاه‌سازی کنید. همچنین می‌توانید [$1 به استفاده از حالت قبلی بازگردید].",
+	"discussiontools-newtopic-legacy-hint": "<strong>راه جدیدی برای آغاز مباحث در دسترس است.</strong> این به‌روزرسانی به شما این امکان را می‌دهد تا با استفاده از یک فرم درخط، مباحث جدید ایجاد کنید و دیگران را با استفاده از یک میانبر جدید آگاه‌سازی کنید. همچنین می‌توانید [$1 به استفاده از حالت قبلی بازگردید].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>شما اکنون در حال مشاهدهٔ حالت قبلی هستید.</strong> می‌توانید [$1 به حالت جدید بازگردید] یا برای [$2 قرار دادن حالت قبلی به‌عنوان پیش‌فرض] به ترجیحات مراجعه کنید.",
 	"discussiontools-newtopic-missing-title": "لطفاً برای موضوع پیام خود یک عنوان ارائه کنید. اگر روی «{{int:discussiontools-replywidget-newtopic}}» کلیک کنید، پیام شما بدون عنوان درج خواهد شد.",
 	"discussiontools-newtopic-placeholder-title": "عنوان",
@@ -108,7 +109,7 @@
 	"discussiontools-topicsubscription-button-subscribe": "اشتراک",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "برای دریافت آگاه‌سازی‌ها دربارهٔ نظرهای جدید، مشترک شوید.",
 	"discussiontools-topicsubscription-button-unsubscribe": "لغو اشتراک",
-	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "برای توقف دریافت آگاه‌سازی‌ها، اشتراک خود را لغو کنید.",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "برای توقف دریافت اعلان‌ها، اشتراک خود را لغو کنید.",
 	"discussiontools-topicsubscription-error-not-found-body": "اشتراک مشخص‌شده در نشانی اینترنتی یافت نشد.",
 	"discussiontools-topicsubscription-error-not-found-title": "اشتراک یافت نشد",
 	"discussiontools-topicsubscription-notify-subscribed-body": "در آینده برای هر نظر ارسال‌شده در این مبحث آگاه‌سازی‌‌هایی دریافت خواهید کرد.",
