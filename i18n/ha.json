@@ -7,11 +7,13 @@
 			"Gwanki",
 			"Harunaningi",
 			"Itzedubaba",
-			"Umar-askirason"
+			"Umar-askirason",
+			"Aliyu shaba"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Martani",
+	"discussiontools-defaultsummary-reply": "Mayarwa",
 	"discussiontools-desc": "Kayayyakin inganta shafukan tattaunawa.",
+	"discussiontools-preference-label": "Kayan aikin tattaunawa",
 	"discussiontools-error-comment-disappeared": "Ba'a iya samun shafin sharhin da kuke martani akai ba. Zai iya zama an goge ko an gusar da ita zuwa wani shafin. Yi hakuri ku sake aika shafin ku sake jarabawa.",
 	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" link ba za'a iya amfani dashi ba dan yin martani ga wannan sharhin ba. Dan martani, yi hakuri kuyi amfani da cikekken shafin dan amfani maɓallin gyara ta danna \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" ba za'a iya amfani da linki dan mayar da martani ga wannan sharhin ba saboda an shiga tane daga wani shafin. Dan mayar da martani, je ka nan: [[$1]].",

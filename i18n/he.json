@@ -7,7 +7,9 @@
 			"YaronSh",
 			"Guycn2",
 			"Matma Rex",
-			"עמד"
+			"עמד",
+			"Yona b",
+			"לואיקה"
 		]
 	},
 	"discussiontools": "כלי שיחה",
@@ -23,7 +25,7 @@
 	"discussiontools-replywidget-mention-tool-title": "אזכור משתמש",
 	"discussiontools-replywidget-mode-source": "קוד מקור",
 	"discussiontools-replywidget-mode-visual": "חזותי",
-	"discussiontools-replywidget-placeholder-reply": "תגובה ל{{GRAMMAR:תחילית|$1}}",
+	"discussiontools-replywidget-placeholder-reply": "תגובה להודעה של {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "תצוגה מקדימה",
 	"discussiontools-replywidget-reply": "תגובה",
 	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של אתר הוויקי הזה.",
