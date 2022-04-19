@@ -37,6 +37,7 @@ class HookUtils {
 	public const AUTOTOPICSUB = 'autotopicsub';
 	public const VISUALENHANCEMENTS = 'visualenhancements';
 	public const VISUALENHANCEMENTS_REPLY = 'visualenhancements_reply';
+	public const VISUALENHANCEMENTS_PAGEFRAME = 'visualenhancements_pageframe';
 
 	/**
 	 * @var string[] List of all sub-features. Will be used to generate:
@@ -53,6 +54,7 @@ class HookUtils {
 		self::AUTOTOPICSUB,
 		self::VISUALENHANCEMENTS,
 		self::VISUALENHANCEMENTS_REPLY,
+		self::VISUALENHANCEMENTS_PAGEFRAME,
 	];
 
 	public const FEATURES_CONFLICT_WITH_GADGET = [
@@ -387,7 +389,11 @@ class HookUtils {
 				// Even though mobile ignores user preferences, VISUALENHANCEMENTS must
 				// still be disabled if is unavailable on the wiki.
 				(
-					( $feature === static::VISUALENHANCEMENTS || $feature === static::VISUALENHANCEMENTS_REPLY ) &&
+					(
+						$feature === static::VISUALENHANCEMENTS ||
+						$feature === static::VISUALENHANCEMENTS_REPLY ||
+						$feature === static::VISUALENHANCEMENTS_PAGEFRAME
+					) &&
 					$dtConfig->get( 'DiscussionTools_' . $feature ) !== 'unavailable'
 				)
 			);

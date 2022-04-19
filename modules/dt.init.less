@@ -277,6 +277,15 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+// Page frame sub-feature
+.ext-discussiontools-visualenhancements_pageframe-enabled {
+	.mw-page-title-separator {
+		// Support IE: We could use :after { content: ' '; } but IE doesn't follow
+		// the spec and inserts the space into the clipboard when copied.
+		margin-right: 0.25em;
+	}
+}
+
 // Main feature (topic containers)
 .ext-discussiontools-visualenhancements-enabled {
 	.ext-discussiontools-init-section {
