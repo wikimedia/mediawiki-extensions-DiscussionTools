@@ -6,7 +6,8 @@
 			"Bruno44101",
 			"MarcoAurelio",
 			"Suecarmol",
-			"ZebaX2010"
+			"ZebaX2010",
+			"DiegoAmbrocio"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "No se encontró el comentario con ID '$1'.",
@@ -17,5 +18,7 @@
 	"apihelp-discussiontoolsedit-param-commentid": "ID del comentario a responder. Es usado solamente cuando <var>paction</var> es <var>addcomment</var>. Sobrescribe <var>commentname</var> .",
 	"apihelp-discussiontoolsedit-param-html": "Contenido a publicar, como HTML. No puede ser usado junto a <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Contenido a publicar, como wikitexto. No puede ser usado junto a <var>html</var>.",
-	"apihelp-discussiontoolsedit-summary": "Publicar un mensaje en una página de discusión."
+	"apihelp-discussiontoolsedit-summary": "Publicar un mensaje en una página de discusión.",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Verdadero para suscribirse, falso para darse de baja",
+	"apihelp-discussiontoolssubscribe-summary": "Subscribe (or unsubscribe) to receive notifications about a topic."
 }
