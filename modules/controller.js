@@ -434,7 +434,7 @@ function init( $container, state ) {
  */
 function updatePageContents( $container, data ) {
 	var $content = $( $.parseHTML( data.parse.text ) );
-	$container.find( '.mw-parser-output' ).replaceWith( $content );
+	$container.find( '.mw-parser-output' ).first().replaceWith( $content );
 	mw.config.set( data.parse.jsconfigvars );
 	mw.loader.load( data.parse.modulestyles );
 	mw.loader.load( data.parse.modules );
