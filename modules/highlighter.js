@@ -172,6 +172,12 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 		) {
 			highlightComments.push( lastComment.parent );
 			lastHighlightedPublishedComment = lastComment.parent;
+			var $collapsibleHeading = $( lastHighlightedPublishedComment.range.startContainer ).closest( '.collapsible-heading' );
+			// Expand collapsed section on mobile
+			if ( $collapsibleHeading.length ) {
+				var id = utils.getHeadlineNodeAndOffset( $collapsibleHeading[ 0 ] ).node.id;
+				location.hash = '#' + id;
+			}
 		}
 	} else {
 		// Find the comment we replied to, then highlight the last reply
@@ -179,34 +185,38 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 		highlightComments.push( repliedToComment.replies[ repliedToComment.replies.length - 1 ] );
 		lastHighlightedPublishedComment = highlightComments[ 0 ];
 	}
-	var highlight = new Highlight( highlightComments );
 
-	highlight.$element.addClass( 'ext-discussiontools-init-publishedcomment' );
+	// We may have changed the location hash on mobile, so wait for that to cause
+	// the section to expand before drawing the highlight.
+	setTimeout( function () {
+		var highlight = new Highlight( highlightComments );
+		highlight.$element.addClass( 'ext-discussiontools-init-publishedcomment' );
 
-	// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
-	// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
-	OO.ui.Element.static.scrollIntoView(
-		highlight.topmostElement,
-		{
-			padding: {
-				// Add padding to avoid overlapping the post-edit notification (above on desktop, below on mobile)
-				top: OO.ui.isMobile() ? 10 : 60,
-				bottom: OO.ui.isMobile() ? 85 : 10
-			},
-			// Specify scrollContainer for compatibility with MobileFrontend.
-			// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
-			scrollContainer: OO.ui.Element.static.getRootScrollableElement( highlight.topmostElement )
-		}
-	).then( function () {
-		highlight.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
-		setTimeout( function () {
-			highlight.$element.addClass( 'ext-discussiontools-init-highlight-fadeout' );
+		// Show a highlight with the same timing as the post-edit message (mediawiki.action.view.postEdit):
+		// show for 3000ms, fade out for 250ms (animation duration is defined in CSS).
+		OO.ui.Element.static.scrollIntoView(
+			highlight.topmostElement,
+			{
+				padding: {
+					// Add padding to avoid overlapping the post-edit notification (above on desktop, below on mobile)
+					top: OO.ui.isMobile() ? 10 : 60,
+					bottom: OO.ui.isMobile() ? 85 : 10
+				},
+				// Specify scrollContainer for compatibility with MobileFrontend.
+				// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
+				scrollContainer: OO.ui.Element.static.getRootScrollableElement( highlight.topmostElement )
+			}
+		).then( function () {
+			highlight.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
 			setTimeout( function () {
-				// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
-				// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
-				highlight.destroy();
-			}, 250 );
-		}, 3000 );
+				highlight.$element.addClass( 'ext-discussiontools-init-highlight-fadeout' );
+				setTimeout( function () {
+					// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
+					// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
+					highlight.destroy();
+				}, 250 );
+			}, 3000 );
+		} );
 	} );
 }
 
