@@ -587,6 +587,10 @@
 			"value": "default",
 			"description": "Override availability of DiscussionTools visual enhancements. 'default', 'available', or 'unavailable'."
 		},
+		"DiscussionTools_visualenhancements_namespaces": {
+			"value": [ 1, 3 ],
+			"description": "Namespaces on which visual enhancements are available. Array of namespaces IDs (numbers), or `true` to enable on all namespaces/pages which have DiscussionTools."
+		},
 		"DiscussionToolsAutoTopicSubEditor": {
 			"value": "discussiontoolsapi",
 			"description": "Editor which triggers automatic topic subscriptions. Either 'discussiontoolsapi' for edits made using DiscussionTools' API (e.g. reply and new topic tools), or 'any' for any editor."

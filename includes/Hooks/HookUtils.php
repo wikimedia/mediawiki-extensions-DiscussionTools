@@ -186,9 +186,11 @@ class HookUtils {
 	 * Check if the tools are available for a given title
 	 *
 	 * @param Title $title
+	 * @param string|null $feature Feature to check for (one of static::FEATURES)
+	 *  Null will check for any DT feature.
 	 * @return bool
 	 */
-	public static function isAvailableForTitle( Title $title ): bool {
+	public static function isAvailableForTitle( Title $title, ?string $feature = null ): bool {
 		// Only wikitext pages (e.g. not Flow boards, special pages)
 		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
 			return false;
@@ -197,9 +199,19 @@ class HookUtils {
 			return false;
 		}
 
+		$services = MediaWikiServices::getInstance();
+
+		if ( $feature === static::VISUALENHANCEMENTS ) {
+			$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+			$namespaces = $dtConfig->get( 'DiscussionTools_visualenhancements_namespaces' );
+			if ( is_array( $namespaces ) ) {
+				// Only allow visual enhancements in specified namespaces
+				return in_array( $title->getNamespace(), $namespaces, true );
+			}
+		}
+
 		$hasNewSectionLink = static::hasPagePropCached( $title, 'newsectionlink' );
 
-		$services = MediaWikiServices::getInstance();
 		// Check that the page supports discussions.
 		// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
 		return $hasNewSectionLink ||
@@ -262,7 +274,7 @@ class HookUtils {
 			return false;
 		}
 
-		if ( !static::isAvailableForTitle( $title ) ) {
+		if ( !static::isAvailableForTitle( $title, $feature ) ) {
 			return false;
 		}
 
