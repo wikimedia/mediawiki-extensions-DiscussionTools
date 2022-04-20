@@ -9,7 +9,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use Action;
 use ExtensionRegistry;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
@@ -225,7 +224,7 @@ class HookUtils {
 	 */
 	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ): bool {
 		// Don't show on edit pages, history, etc.
-		if ( $feature !== self::NEWTOPICTOOL && Action::getActionName( $output->getContext() ) !== 'view' ) {
+		if ( $feature !== self::NEWTOPICTOOL && $output->getActionName() !== 'view' ) {
 			return false;
 		}
 
