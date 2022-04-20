@@ -10,10 +10,9 @@ var
  * @param {CommentItem|CommentItem[]} comments Comment item(s) to highlight
  */
 function Highlight( comments ) {
-	var highlight = this;
+	var highlightNodes = [];
+	var ranges = [];
 
-	this.ranges = [];
-	this.$element = $( [] );
 	this.topmostElement = null;
 
 	comments = Array.isArray( comments ) ? comments : [ comments ];
@@ -30,9 +29,12 @@ function Highlight( comments ) {
 		// before, otherwise Node#getBoundingClientRect() returns wrong results.
 		range.insertNode( $highlight[ 0 ] );
 
-		highlight.ranges.push( range );
-		highlight.$element = highlight.$element.add( $highlight );
+		ranges.push( range );
+		highlightNodes.push( $highlight[ 0 ] );
 	} );
+
+	this.ranges = ranges;
+	this.$element = $( highlightNodes );
 
 	// Events
 	this.updateDebounced = OO.ui.debounce( this.update.bind( this ), 500 );
