@@ -11,7 +11,8 @@
 			"Nirmos (Wikimedia)",
 			"Paracel63",
 			"Sabelöga",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Jopparn"
 		]
 	},
 	"discussiontools": "Diskussionsverktyg",
@@ -82,7 +83,7 @@
 	"discussiontools-replywidget-loading": "Läser in…",
 	"discussiontools-replywidget-mention-tool-header": "Hitta användare: $1",
 	"discussiontools-replywidget-mention-tool-title": "Nämn en användare",
-	"discussiontools-replywidget-mode-source": "Wikitext",
+	"discussiontools-replywidget-mode-source": "Källa",
 	"discussiontools-replywidget-mode-visual": "Visuell",
 	"discussiontools-replywidget-newtopic": "Lägg till ämne",
 	"discussiontools-replywidget-placeholder-newtopic": "Beskrivning",
