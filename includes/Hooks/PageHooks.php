@@ -239,6 +239,14 @@ class PageHooks implements
 			$text = CommentFormatter::postprocessVisualEnhancements(
 				$text, $lang, $output->getUser(), $isMobile
 			);
+
+			$subtitle = CommentFormatter::postprocessVisualEnhancementsSubtitle(
+				$text, $lang, $output->getUser()
+			);
+
+			if ( $subtitle ) {
+				$output->addSubtitle( $subtitle );
+			}
 		}
 
 		return true;

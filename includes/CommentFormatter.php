@@ -179,6 +179,9 @@ class CommentFormatter {
 		$threadItemSet = static::getParser()->parse( $container, $title->getTitleValue() );
 		$threadItems = $threadItemSet->getThreadItems();
 
+		$newestComment = null;
+		$newestCommentJSON = null;
+
 		// Iterate in reverse order, because adding the range markers for a thread item
 		// can invalidate the ranges of subsequent thread items (T298096)
 		foreach ( array_reverse( $threadItems ) as $threadItem ) {
@@ -237,8 +240,22 @@ class CommentFormatter {
 				$replyButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
 				$replyButtons->setAttribute( 'data-mw-comment', $itemJSON );
 				$replyButtons->appendChild( $doc->createComment( '__DTREPLYBUTTONSCONTENT__' ) );
+
+				if ( !$newestComment || $threadItem->getTimestamp() > $newestComment->getTimestamp() ) {
+					$newestComment = $threadItem;
+					// Needs to calculated before DOM modifications change ranges
+					$newestCommentJSON = static::getJsonForCommentMarker( $threadItem, true );
+				}
+
 				CommentModifier::addReplyLink( $threadItem, $replyButtons );
 			}
+		}
+
+		if ( $newestCommentJSON ) {
+			$newestCommentMarker = $doc->createComment(
+				'__DTLATESTCOMMENTPAGE__' . htmlspecialchars( $newestCommentJSON, ENT_NOQUOTES ) . '__'
+			);
+			$container->appendChild( $newestCommentMarker );
 		}
 
 		// Enhance other <h2>'s which aren't part of a thread
@@ -510,13 +527,26 @@ class CommentFormatter {
 	 * Get JSON for a commentItem that can be inserted into a comment marker
 	 *
 	 * @param ContentCommentItem $commentItem Comment item
+	 * @param bool $includeTopicAndAuthor Include metadata about topic and author
 	 * @return string
 	 */
-	private static function getJsonForCommentMarker( ContentCommentItem $commentItem ): string {
+	private static function getJsonForCommentMarker(
+		ContentCommentItem $commentItem,
+		bool $includeTopicAndAuthor = false
+	): string {
 		$JSON = [
 			'id' => $commentItem->getId(),
 			'timestamp' => $commentItem->getTimestampString()
 		];
+		if ( $includeTopicAndAuthor ) {
+			$JSON['author'] = $commentItem->getAuthor();
+			$heading = $commentItem->getSubscribableHeading();
+			if ( $heading ) {
+				$JSON['heading'] = $heading->jsonSerialize();
+				$JSON['heading']['text'] = $heading->getText();
+				$JSON['heading']['linkableTitle'] = $heading->getLinkableTitle();
+			}
+		}
 		return json_encode( $JSON );
 	}
 
@@ -542,7 +572,7 @@ class CommentFormatter {
 	}
 
 	/**
-	 * Post-process timestamps
+	 * Post-process visual enhancements features (topic containers)
 	 *
 	 * @param string $text
 	 * @param Language $lang
@@ -632,6 +662,57 @@ class CommentFormatter {
 			);
 		}
 		return $text;
+	}
+
+	/**
+	 * Post-process visual enhancements features for page subtitle
+	 *
+	 * @param string $text
+	 * @param Language $lang
+	 * @param UserIdentity $user
+	 * @return ?string
+	 */
+	public static function postprocessVisualEnhancementsSubtitle(
+		string $text, Language $lang, UserIdentity $user
+	): ?string {
+		preg_match( '/<!--__DTLATESTCOMMENTPAGE__(.*?)__-->/', $text, $matches );
+		if ( count( $matches ) ) {
+			$itemData = json_decode( htmlspecialchars_decode( $matches[1] ), true );
+
+			if ( $itemData && $itemData['timestamp'] && $itemData['id'] ) {
+				$relativeTime = static::getSignatureRelativeTime(
+					new MWTimestamp( $itemData['timestamp'] ),
+					$lang,
+					$user
+				);
+				$commentLink = Html::element( 'a', [
+					'href' => '#' . Sanitizer::escapeIdForLink( $itemData['id'] )
+				], $relativeTime );
+
+				if ( isset( $itemData['heading'] ) ) {
+					$headingLink = Html::element( 'a', [
+						'href' => '#' . Sanitizer::escapeIdForLink( $itemData['heading']['linkableTitle'] )
+					], $itemData['heading']['text'] );
+					$label = wfMessage( 'discussiontools-pageframe-latestcomment' )
+						->rawParams( $commentLink )
+						->params( $itemData['author'] )
+						->rawParams( $headingLink )
+						->inLanguage( $lang )->escaped();
+				} else {
+					$label = wfMessage( 'discussiontools-pageframe-latestcomment-notopic' )
+						->rawParams( $commentLink )
+						->params( $itemData['author'] )
+						->inLanguage( $lang )->escaped();
+				}
+
+				return Html::rawElement(
+					'div',
+					[ 'class' => 'ext-discussiontools-init-pageframe-latestcomment' ],
+					$label
+				);
+			}
+		}
+		return null;
 	}
 
 	/**

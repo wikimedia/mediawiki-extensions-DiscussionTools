@@ -55,6 +55,8 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|One new reply|$1 new replies|100=99+ new replies}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "View comment",
+	"discussiontools-pageframe-latestcomment": "Latest comment: $1 by $2 in topic $3",
+	"discussiontools-pageframe-latestcomment-notopic": "Latest comment: $1 by $2",
 	"discussiontools-postedit-confirmation-published": "Your comment was published.",
 	"discussiontools-postedit-confirmation-topicadded": "Your topic was added.",
 	"discussiontools-preference-autotopicsub": "Automatically subscribe to topics",

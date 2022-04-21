@@ -244,8 +244,13 @@ h1, h2, h3, h4, h5, h6 {
 .ext-discussiontools-init-section-ellipsisButton.oo-ui-buttonElement,
 .ext-discussiontools-init-section-bar,
 .ext-discussiontools-init-replybutton.oo-ui-buttonElement,
-.ext-discussiontools-init-readAsWikiPage {
+.ext-discussiontools-init-readAsWikiPage,
+.ext-discussiontools-init-pageframe-latestcomment {
 	display: none;
+}
+
+.ext-discussiontools-init-pageframe-latestcomment {
+	color: #666;
 }
 
 // Visual enhancements enabled
@@ -283,6 +288,10 @@ h1, h2, h3, h4, h5, h6 {
 		// Support IE: We could use :after { content: ' '; } but IE doesn't follow
 		// the spec and inserts the space into the clipboard when copied.
 		margin-right: 0.25em;
+	}
+
+	.ext-discussiontools-init-pageframe-latestcomment {
+		display: block;
 	}
 }
 
