@@ -24,6 +24,7 @@ class HookUtils {
 	public const TOPICSUBSCRIPTION = 'topicsubscription';
 	public const AUTOTOPICSUB = 'autotopicsub';
 	public const VISUALENHANCEMENTS = 'visualenhancements';
+	public const VISUALENHANCEMENTS_REPLY = 'visualenhancements_reply';
 
 	/**
 	 * @var string[] List of all sub-features. Will be used to generate:
@@ -39,6 +40,7 @@ class HookUtils {
 		self::TOPICSUBSCRIPTION,
 		self::AUTOTOPICSUB,
 		self::VISUALENHANCEMENTS,
+		self::VISUALENHANCEMENTS_REPLY,
 	];
 
 	protected static $propCache = [];
@@ -142,7 +144,9 @@ class HookUtils {
 		$optionsLookup = $services->getUserOptionsLookup();
 		if ( $feature ) {
 			// Check for a specific feature
-			return $optionsLookup->getOption( $user, 'discussiontools-' . $feature );
+			$enabled = $optionsLookup->getOption( $user, 'discussiontools-' . $feature );
+			// `null` means there is no user option for this feature, so it must be enabled
+			return $enabled === null ? true : $enabled;
 		} else {
 			// Check for any feature
 			foreach ( static::FEATURES as $feat ) {

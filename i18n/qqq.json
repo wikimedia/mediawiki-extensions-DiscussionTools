@@ -80,6 +80,7 @@
 	"discussiontools-preference-topicsubscription-help": "Used in [[Special:Preferences]].\n\nUsed as help text for the checkbox {{msg-mw|discussiontools-preference-topicsubscription}}",
 	"discussiontools-preference-visualenhancements": "Used in [[Special:Preferences]].\n\nUsed as label for checkbox to enable talk page visual enhancements.\n\nThe help text for this checkbox is: {{msg-mw|discussiontools-preference-visualenhancements-help}}",
 	"discussiontools-preference-visualenhancements-help": "Used in [[Special:Preferences]].\n\nUsed as help text for the checkbox {{msg-mw|discussiontools-preference-visualenhancements}}",
+	"discussiontools-replybutton": "Label for the reply button added after each comment.",
 	"discussiontools-replylink": "Label for the reply link added after each comment. The casing and the grammar form should be similar to section edit and watch links:\n* {{msg-mw|editsection}}\n* {{msg-mw|visualeditor-ca-editsource-section}}\n* {{msg-mw|discussiontools-topicsubscription-button-subscribe}}\n* {{msg-mw|discussiontools-topicsubscription-button-unsubscribe}}",
 	"discussiontools-replywidget-abandon": "Message shown when abandoning a comment\n\nSimilar to {{msg-mw|mw-widgets-abandonedit}}, {{msg-mw|discussiontools-replywidget-abandontopic}}.",
 	"discussiontools-replywidget-abandon-discard": "Label for button to abandon a comment\n\nThis button follows {{msg-mw|discussiontools-replywidget-abandon}}.\n\nSimilar to {{msg-mw|discussiontools-replywidget-abandontopic-discard}}.",

@@ -200,8 +200,9 @@ class PageHooks implements
 			);
 		}
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
+			$output->enableOOUI();
 			$text = CommentFormatter::postprocessReplyTool(
-				$text, $lang
+				$text, $lang, $isMobile
 			);
 		}
 		if (
@@ -225,6 +226,9 @@ class PageHooks implements
 			}
 			if ( $isMobile ) {
 				$output->addModuleStyles( [
+					// Mobile reply button:
+					// share
+					'oojs-ui.styles.icons-content',
 					// Mobile overflow menu:
 					// ellipsis
 					'oojs-ui.styles.icons-interactions',

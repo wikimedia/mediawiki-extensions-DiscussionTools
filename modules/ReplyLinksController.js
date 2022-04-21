@@ -5,6 +5,8 @@ var
 var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
 function ReplyLinksController( $pageContainer ) {
+	var controller = this;
+
 	// Mixin constructors
 	OO.EventEmitter.call( this );
 
@@ -15,8 +17,18 @@ function ReplyLinksController( $pageContainer ) {
 	this.onAnyLinkClickHandler = this.onAnyLinkClick.bind( this );
 
 	// Reply links
-	this.$replyLinks = $pageContainer.find( 'a.ext-discussiontools-init-replylink-reply[data-mw-comment]' );
+	this.$replyLinks = $pageContainer.find( '.ext-discussiontools-init-replylink-reply[data-mw-comment]' );
 	this.$replyLinks.on( 'click keypress', this.onReplyLinkClickHandler );
+
+	$pageContainer.find( '.ext-discussiontools-init-replybutton' ).each( function () {
+		var replyButton = OO.ui.infuse( this );
+		var data = JSON.parse( replyButton.getData() );
+		replyButton.on( 'click', function () {
+			controller.emit( 'link-click', data.id, replyButton.$element );
+		} );
+	} );
+
+	this.$replyLinks = this.$replyLinks.add( '.ext-discussiontools-init-replybutton' );
 
 	// "Add topic" link in the skin interface
 	if ( featuresEnabled.newtopictool ) {
@@ -51,7 +63,7 @@ ReplyLinksController.prototype.onReplyLinkClick = function ( e ) {
 
 	// Browser plugins (such as Google Translate) may add extra tags inside
 	// the link, so find the containing link tag with the data we need.
-	var $link = $( e.target ).closest( 'a[data-mw-comment]' );
+	var $link = $( e.target ).closest( '[data-mw-comment]' );
 	if ( !$link.length ) {
 		return;
 	}

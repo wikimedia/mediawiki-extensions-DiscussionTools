@@ -50,9 +50,9 @@ class CommentModifier {
 	 * the comment.
 	 *
 	 * @param ContentCommentItem $comment
-	 * @param Element $linkNode Reply link
+	 * @param Node $linkNode Reply link
 	 */
-	public static function addReplyLink( ContentCommentItem $comment, Element $linkNode ): void {
+	public static function addReplyLink( ContentCommentItem $comment, Node $linkNode ): void {
 		$target = $comment->getRange()->endContainer;
 
 		// Insert the link before trailing whitespace.

@@ -232,35 +232,9 @@ class CommentFormatter {
 					}
 				}
 			} elseif ( $threadItem instanceof ContentCommentItem ) {
-				$replyLinkButtons = $doc->createElement( 'span' );
-				$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
+				$replyButtons = $doc->createComment( '__DTREPLYBUTTONS__' . $itemJSON . '__' );
 
-				// Reply
-				$replyLink = $doc->createElement( 'a' );
-				$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
-				$replyLink->setAttribute( 'role', 'button' );
-				$replyLink->setAttribute( 'tabindex', '0' );
-				$replyLink->setAttribute( 'data-mw-comment', $itemJSON );
-				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
-				$replyLink->setAttribute( 'href', '' );
-				// Replaced in ::postprocessReplyTool() as the label depends on user language
-				$replyText = $doc->createComment( '__DTREPLY__' );
-				$replyLink->appendChild( $replyText );
-
-				$bracket = $doc->createElement( 'span' );
-				$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
-				$bracketOpen = $bracket->cloneNode( false );
-				$bracketClose = $bracket->cloneNode( false );
-				// Replaced in ::postprocessReplyTool() to avoid displaying empty brackets in various
-				// contexts where parser output is used (API T292345, search T294168, action=render)
-				$bracketOpen->appendChild( $doc->createComment( '__DTREPLYBRACKETOPEN__' ) );
-				$bracketClose->appendChild( $doc->createComment( '__DTREPLYBRACKETCLOSE__' ) );
-
-				$replyLinkButtons->appendChild( $bracketOpen );
-				$replyLinkButtons->appendChild( $replyLink );
-				$replyLinkButtons->appendChild( $bracketClose );
-
-				CommentModifier::addReplyLink( $threadItem, $replyLinkButtons );
+				CommentModifier::addReplyLink( $threadItem, $replyButtons );
 			}
 		}
 
@@ -299,6 +273,7 @@ class CommentFormatter {
 		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
 		// (DESKTOP|MOBILE)? can be made unconditional once the un-suffixed buttons have cleared from the cache
 		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)?__(.*?)-->/', '', $text );
+		$text = preg_replace( '/<!--__DTREPLYBUTTONS__(.*?)-->/', '', $text );
 
 		return $text;
 	}
@@ -443,15 +418,71 @@ class CommentFormatter {
 	 *
 	 * @param string $text
 	 * @param Language $lang
+	 * @param bool $isMobile
 	 * @return string
 	 */
 	public static function postprocessReplyTool(
-		string $text, Language $lang
+		string $text, Language $lang, bool $isMobile = false
 	): string {
-		$replyText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
+		$doc = DOMCompat::newDocument( true );
+		$replyLinkText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
+		$replyButtonText = wfMessage( 'discussiontools-replybutton' )->inLanguage( $lang )->escaped();
 
+		$text = preg_replace_callback(
+			'/<!--__DTREPLYBUTTONS__(.*?)__-->/',
+			static function ( $matches ) use ( $doc, $replyLinkText, $replyButtonText, $isMobile ) {
+				$itemJSON = $matches[1];
+
+				// Classic reply link
+				$replyLinkButtons = $doc->createElement( 'span' );
+				$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
+
+				// Reply
+				$replyLink = $doc->createElement( 'a' );
+				$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
+				$replyLink->setAttribute( 'role', 'button' );
+				$replyLink->setAttribute( 'tabindex', '0' );
+				$replyLink->setAttribute( 'data-mw-comment', $itemJSON );
+				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
+				$replyLink->setAttribute( 'href', '' );
+				$replyLink->textContent = $replyLinkText;
+
+				$bracket = $doc->createElement( 'span' );
+				$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
+				$bracketOpen = $bracket->cloneNode( false );
+				$bracketClose = $bracket->cloneNode( false );
+				$bracketOpen->textContent = '[';
+				$bracketClose->textContent = ']';
+
+				$replyLinkButtons->appendChild( $bracketOpen );
+				$replyLinkButtons->appendChild( $replyLink );
+				$replyLinkButtons->appendChild( $bracketClose );
+
+				// Visual enhancements button
+				$replyLinkButton = new \OOUI\ButtonWidget( [
+					'classes' => [ 'ext-discussiontools-init-replybutton' ],
+					'framed' => false,
+					'label' => $replyButtonText,
+					'icon' => $isMobile ? 'share' : null,
+					'flags' => [ 'progressive' ],
+					'infusable' => true,
+					'data' => $itemJSON,
+				] );
+
+				DOMCompat::setInnerHTML(
+					$replyLinkButtons,
+					$replyLinkButton->toString() .
+					DOMCompat::getInnerHTML( $replyLinkButtons )
+				);
+
+				return DOMCompat::getOuterHTML( $replyLinkButtons );
+			},
+			$text
+		);
+
+		// Old style replacements for content still in parser cache
 		$text = strtr( $text, [
-			 '<!--__DTREPLY__-->' => $replyText,
+			 '<!--__DTREPLY__-->' => $replyLinkText,
 			 '<!--__DTREPLYBRACKETOPEN__-->' => '[',
 			 '<!--__DTREPLYBRACKETCLOSE__-->' => ']',
 		] );
