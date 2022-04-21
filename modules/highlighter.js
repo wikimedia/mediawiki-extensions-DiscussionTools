@@ -174,12 +174,13 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 		) {
 			highlightComments.push( lastComment.parent );
 			lastHighlightedPublishedComment = lastComment.parent;
-			var $collapsibleHeading = $( lastHighlightedPublishedComment.range.startContainer ).closest( '.collapsible-heading' );
-			// Expand collapsed section on mobile
-			if ( $collapsibleHeading.length ) {
-				var id = utils.getHeadlineNodeAndOffset( $collapsibleHeading[ 0 ] ).node.id;
-				location.hash = '#' + id;
-			}
+			// Change URL to point to this section, like the old section=new wikitext editor does.
+			// This also expands collapsed sections on mobile (T301840).
+			var sectionTitle = lastHighlightedPublishedComment.getLinkableTitle();
+			var urlFragment = mw.util.escapeIdForLink( sectionTitle );
+			// Navigate to fragment without scrolling
+			location.hash = '#' + urlFragment + '-DoesNotExist-DiscussionToolsHack';
+			history.replaceState( null, document.title, '#' + urlFragment );
 		}
 	} else {
 		// Find the comment we replied to, then highlight the last reply
@@ -318,11 +319,11 @@ function clearHighlightTargetComment( threadItemSet ) {
 		// * Using history.pushState() does not trigger 'hashchange' or update the :target selector.
 		//   https://developer.mozilla.org/en-US/docs/Web/API/History/pushState#description
 		//   https://github.com/whatwg/html/issues/639
-		// * Using window.location.hash does, but it also scrolls to the target, which is the top of the
+		// * Using location.hash does, but it also scrolls to the target, which is the top of the
 		//   page for the empty hash.
-		// Instead, we first use window.location.hash to navigate to a *different* hash (whose target
+		// Instead, we first use location.hash to navigate to a *different* hash (whose target
 		// doesn't exist on the page, hopefully), and then use history.pushState() to clear it.
-		window.location.hash += '-DoesNotExist-DiscussionToolsHack';
+		location.hash += '-DoesNotExist-DiscussionToolsHack';
 		url.hash = '';
 		history.replaceState( null, document.title, url );
 	} else if (
