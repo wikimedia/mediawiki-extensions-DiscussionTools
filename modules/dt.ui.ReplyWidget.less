@@ -4,6 +4,11 @@
 	margin-bottom: 1em;
 	position: relative;
 	clear: both;
+	// This is in user language, do not inherit text-align from the content (T306137).
+	// 'initial' is not widely supported, but luckily, browsers that don't support it (IE 11) also
+	// don't suffer from that bug. We can't set 'text-align: left' (and rely on flipping), because
+	// that would affect the input field, which is in content language.
+	text-align: initial;
 }
 
 // @supports does not work when nested
