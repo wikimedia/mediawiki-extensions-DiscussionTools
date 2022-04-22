@@ -4,6 +4,7 @@
 			"Abbaty",
 			"Aliyu shaba",
 			"Bashir Gwanki",
+			"Bello Na'im",
 			"Em-em",
 			"Gwanki",
 			"Harunaningi",
@@ -11,7 +12,7 @@
 			"Umar-askirason"
 		]
 	},
-	"discussiontools-autotopicsubpopup-body": "Za ku sami sanarwa a sanda wani yayi sabon sharhi a cikin wannan tattaunawar.  Kuna iya daidaita saitin sanarwarku a cikin zaɓin zaɓi.",
+	"discussiontools-autotopicsubpopup-body": "Za ku sami sanarwa a yadda wani yayi sabon sharhi a cikin wannan tattaunawar.  Kuna iya daidaita saitin sanarwarku a cikin zaɓin zaɓi.",
 	"discussiontools-autotopicsubpopup-dismiss": "Yauwa, Na Samu..",
 	"discussiontools-autotopicsubpopup-preferences": "Gyara zaɓuɓɓuka",
 	"discussiontools-autotopicsubpopup-title": "Kun shiga cikin masu karɓar saƙo.",
@@ -38,7 +39,7 @@
 	"discussiontools-error-noswitchtove": "Yi hakuri, komawa zuwa gyara na gani an dakatar dashi saboda an gano <b>$1</b> acikin bayanan da kuka rubuta. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Learn more].",
 	"discussiontools-error-noswitchtove-extension": "tsawo ko manazartan syntax",
 	"discussiontools-error-noswitchtove-table": "teburin syntax",
-	"discussiontools-error-noswitchtove-template": "samfurin syntax",
+	"discussiontools-error-noswitchtove-template": "samfarin syntax",
 	"discussiontools-error-noswitchtove-title": "An kashe yanayin gani",
 	"discussiontools-limitreport-errorreqid": "Kuskuren Makaman aiki na neman ID",
 	"discussiontools-limitreport-timeusage": "KayanAikin Tattaunawa na amfanin lokaci",
