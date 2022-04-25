@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Kambai Akau"
+		]
+	},
+	"discussiontools-replylink": "shim",
+	"discussiontools-replywidget-cancel": "Lyang",
+	"discussiontools-replywidget-mode-source": "A̱tyin",
+	"discussiontools-replywidget-mode-visual": "Nwuan",
+	"discussiontools-replywidget-placeholder-reply": "Shim da̱ a̱vwuo {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Shim"
+}

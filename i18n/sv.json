@@ -11,7 +11,8 @@
 			"Matma Rex",
 			"Nirmos (Wikimedia)",
 			"Paracel63",
-			"Sabelöga"
+			"Sabelöga",
+			"Jopparn"
 		]
 	},
 	"discussiontools": "Diskussionsverktyg",
@@ -25,7 +26,7 @@
 	"discussiontools-replywidget-feedback": "Ge återkoppling på denna funktion",
 	"discussiontools-replywidget-loading": "Läser in…",
 	"discussiontools-replywidget-mention-tool-title": "Nämn en användare",
-	"discussiontools-replywidget-mode-source": "Wikitext",
+	"discussiontools-replywidget-mode-source": "Källa",
 	"discussiontools-replywidget-mode-visual": "Visuell",
 	"discussiontools-replywidget-placeholder-reply": "Svara {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Förhandsgranska",

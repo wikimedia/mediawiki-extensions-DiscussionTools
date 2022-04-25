@@ -11,6 +11,11 @@
 	"discussiontools-desc": "Інструмэнты для паляпшэньня старонак абмеркаваньняў.",
 	"discussiontools-preference-label": "Інструмэнты абмеркаваньня",
 	"discussiontools-replylink": "адказаць",
+	"discussiontools-replywidget-cancel": "Скасаваць",
+	"discussiontools-replywidget-mode-source": "Крынічнік",
+	"discussiontools-replywidget-mode-visual": "Візуальна",
+	"discussiontools-replywidget-placeholder-reply": "Адказаць на {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Адказаць",
 	"tag-discussiontools-edit-description": "Карыстальнік адрэдагаваў існы камэнтар праз DiscussionTools",
 	"tag-discussiontools-newtopic-description": "Карыстальнік дадаў на старонку новую тэму праз DiscussionTools"
 }
