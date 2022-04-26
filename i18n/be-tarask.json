@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Renessaince"
+			"Renessaince",
+			"Nieszczarda2"
 		]
 	},
 	"discussiontools": "Інструмэнты абмеркаваньня",
@@ -11,6 +12,11 @@
 	"discussiontools-preference-description": "Уключае экспэрымэнтальныя функцыі старонкі абмеркаваньняў:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Адказ] на камэнтары старонкі абмеркаваньняў адным пстрыкам.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Даданьне новых тэмаў] у падрадковай форме.\n\nГэтыя функцыі можна падладзіць у вашых [[Special:Preferences#mw-prefsection-editing-discussion|наладах]].\n\nАбнаўленьні будуць зьмяшчацца на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates старонцы праекту абнаўленьняў старонак абмеркаваньняў].\n\nЗьвярніце ўвагу:\n* З часам будуць зьяўляцца новыя экспэрымэнтальныя функцыі.\n* Некаторыя з функцыяў могуць быць пакуль што недаступныя ў вашай вікі.",
 	"discussiontools-preference-label": "Інструмэнты абмеркаваньня",
 	"discussiontools-replylink": "адказаць",
+	"discussiontools-replywidget-cancel": "Скасаваць",
+	"discussiontools-replywidget-mode-source": "Крынічнік",
+	"discussiontools-replywidget-mode-visual": "Візуальна",
+	"discussiontools-replywidget-placeholder-reply": "Адказаць на {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Адказаць",
 	"tag-discussiontools-edit": "Рэдагаваць камэнтар",
 	"tag-discussiontools-edit-description": "Карыстальнік адрэдагаваў існы камэнтар праз DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Новая тэма]",

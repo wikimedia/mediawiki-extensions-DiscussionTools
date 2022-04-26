@@ -8,7 +8,8 @@
 			"Harunaningi",
 			"Itzedubaba",
 			"Umar-askirason",
-			"Aliyu shaba"
+			"Aliyu shaba",
+			"Bello Na'im"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Mayarwa",
@@ -22,7 +23,7 @@
 	"discussiontools-error-noswitchtove": "Yi hakuri, komawa zuwa gyara na gani an dakatar dashi saboda an gano <b>$1</b> acikin bayanan da kuka rubuta. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Learn more].",
 	"discussiontools-error-noswitchtove-extension": "tsawo ko manazartan syntax",
 	"discussiontools-error-noswitchtove-table": "teburin syntax",
-	"discussiontools-error-noswitchtove-template": "samfurin syntax",
+	"discussiontools-error-noswitchtove-template": "samfarin syntax",
 	"discussiontools-error-noswitchtove-title": "An kashe yanayin gani",
 	"discussiontools-newtopic-missing-title": "Kuyi hakuri kuba da take don batun tattaunawar ku.  Ku danna \"{{int:discussiontools-replywidget-newtopic}}\", za ku ƙara batun ku ba tare da take ba.",
 	"discussiontools-newtopic-placeholder-title": "Take",
@@ -31,5 +32,24 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Duba sharhi",
 	"discussiontools-postedit-confirmation-published": "An buga sharhin ku.",
 	"discussiontools-postedit-confirmation-topicadded": "An kara batun ku.",
-	"discussiontools-preference-label": "Kayan aikin tattaunawa"
+	"discussiontools-preference-label": "Kayan aikin tattaunawa",
+	"discussiontools-preference-newtopictool": "Kunna bayani da sauri",
+	"discussiontools-preference-replytool": "Kunna mai dawa da sauri",
+	"discussiontools-preference-topicsubscription": "Kunna biyan kuɗin batu",
+	"discussiontools-replylink": "Mai da",
+	"discussiontools-replywidget-abandon": "Shin kun tabbata kuna son watsar da sharhin da kuke rubutawa?",
+	"discussiontools-replywidget-abandon-discard": "Yi watsi da sharhi",
+	"discussiontools-replywidget-abandon-keep": "Ci gaba da rubutu",
+	"discussiontools-replywidget-abandontopic": "Shin kun tabbata kuna son watsar da batun da kuke rubutawa?",
+	"discussiontools-replywidget-abandontopic-discard": "Yi watsi da batun",
+	"discussiontools-replywidget-abandontopic-keep": "Ci gaba da rubutu",
+	"discussiontools-replywidget-advanced": "Na ci gaba",
+	"discussiontools-replywidget-cancel": "Soke",
+	"discussiontools-replywidget-feedback": "Raba ra'ayi game da wannan fasalin",
+	"discussiontools-replywidget-loading": "Ana lodawa",
+	"discussiontools-replywidget-mention-tool-header": "Nemo mai amfani $1",
+	"discussiontools-replywidget-mention-tool-title": "Ambaci mai amfani",
+	"discussiontools-replywidget-mode-source": "Tushe",
+	"discussiontools-replywidget-mode-visual": "Na gani",
+	"discussiontools-replywidget-newtopic": "Ƙara batu"
 }
