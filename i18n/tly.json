@@ -4,5 +4,9 @@
 			"Patriot Kur"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Ləğv karde"
+	"discussiontools-replylink": "cəvob bıdə",
+	"discussiontools-replywidget-cancel": "Ləğv karde",
+	"discussiontools-replywidget-mode-visual": "Əyoni",
+	"discussiontools-replywidget-placeholder-reply": "Cəvob bıdə bə {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Cəvob bıdə"
 }
