@@ -59,6 +59,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Pieminēt dalībnieku",
 	"discussiontools-replywidget-mode-source": "Vikikods",
 	"discussiontools-replywidget-mode-visual": "Vizuālais",
+	"discussiontools-replywidget-newcomments-warning": "Šai sadaļai {{PLURAL:$1|pievienoti $1 jauni komentāri|pievienots $1 jauns komentārs|pievienoti $1 jauni komentāri}}. Klikšķini, lai pārlādētu.",
 	"discussiontools-replywidget-newtopic": "Pievienot tematu",
 	"discussiontools-replywidget-placeholder-newtopic": "Apraksts",
 	"discussiontools-replywidget-placeholder-reply": "Atbilde {{BIDI:$1}}",
