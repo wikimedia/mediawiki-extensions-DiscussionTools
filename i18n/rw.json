@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Germain92"
+		]
+	},
+	"discussiontools-autotopicsubpopup-body": "Uramenyeshwa iyo hagize ugira icyo avuga kuri iki kiganiro. Ushobora guhitamo guhindura ibyo umenyeshwa uko ubishaka.",
+	"discussiontools-autotopicsubpopup-dismiss": "Yego, narabibonye",
+	"discussiontools-autotopicsubpopup-preferences": "Hindura ibyo ukunda",
+	"discussiontools-autotopicsubpopup-title": "Wiyandikishije",
+	"discussiontools-defaultsummary-reply": "Subiza",
+	"discussiontools-desc": "Ibikoresho bizamura Impapuro ziganirirwaho",
+	"discussiontools-emptystate-button": "Tangira kuganira",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:Ibiganirirwaho-emptystate-link-talkpages}}|Talk pages]] niho abantu baganirira uburyo bwo gushyiraho ibiganirwaho {{SITENAME}} the best that it can be. You can use this page to start a discussion with others about how to improve [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc-self": "abantu kuri {{Izina ry'urubuga}} wakoresha uru [[{{MediaWiki:Ibiganirirwaho-emptystate-link-userpage}}|talk page]] kohereza ubutumwa Rusange kuri wowe kandi urabimenyeshwa iyo babikoze"
+}

@@ -4,7 +4,10 @@
 			"Kotwys"
 		]
 	},
+	"discussiontools-replylink": "берен вазёно",
 	"discussiontools-replywidget-cancel": "Берытсконо",
 	"discussiontools-replywidget-mode-source": "Ошмесэз",
+	"discussiontools-replywidget-mode-visual": "Визуал амалэн",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} викиавторлы берен вазёно",
 	"discussiontools-replywidget-reply": "Берен вазёно"
 }
