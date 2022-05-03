@@ -5,8 +5,12 @@
 			"JSantos"
 		]
 	},
+	"discussiontools-replylink": "respondez",
+	"discussiontools-replywidget-cancel": "Nuligar",
 	"discussiontools-replywidget-mode-source": "Fonto",
 	"discussiontools-replywidget-mode-visual": "Vidala",
+	"discussiontools-replywidget-placeholder-reply": "Respondar a {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Respondez",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova topiko]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respondez]",
 	"tag-discussiontools-visual": "Visuala"
