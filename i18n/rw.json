@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Germain92"
+			"Germain92",
+			"Rodrigue"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Uramenyeshwa iyo hagize ugira icyo avuga kuri iki kiganiro. Ushobora guhitamo guhindura ibyo umenyeshwa uko ubishaka.",
@@ -12,6 +13,31 @@
 	"discussiontools-defaultsummary-reply": "Subiza",
 	"discussiontools-desc": "Ibikoresho bizamura Impapuro ziganirirwaho",
 	"discussiontools-emptystate-button": "Tangira kuganira",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:Ibiganirirwaho-emptystate-link-talkpages}}|Talk pages]] niho abantu baganirira uburyo bwo gushyiraho ibiganirwaho {{SITENAME}} the best that it can be. You can use this page to start a discussion with others about how to improve [[:{{SUBJECTPAGENAME}}]].",
-	"discussiontools-emptystate-desc-self": "abantu kuri {{Izina ry'urubuga}} wakoresha uru [[{{MediaWiki:Ibiganirirwaho-emptystate-link-userpage}}|talk page]] kohereza ubutumwa Rusange kuri wowe kandi urabimenyeshwa iyo babikoze"
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|urubuga rw'ibiganiro]] niho abantu baganirira uburyo bwo gukora ibiri kuri {{SITENAME}} mu buryo bwiza bushoboka. Ushobora gukoresha uru rubuga kugirsngo utangire kuganira n'abandi mu buryo bwo kwiteza imbere [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc-self": "Abantu kuri {{SITENAME}} bashobora gukoresha iyi[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|urubuga rw'ibiganiro]] Kohereza ubutumwa rusange bwawe kandi uzabimenyeshwa nibabikora.",
+	"discussiontools-emptystate-desc-self-anon": "Abantu kuri {{SITENAME}} bashobora gukoresha iyi [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|urubuga rw'ibiganiro]] kohereza ubutumwa rusange kubyerekeye ibyahinduwe bikozwe na aderesi ya IP ukoresha ubu.\n\nAderesi nyinshi za IP zihinduka mu gihe, kandi akenshi zisangirwa n'abantu benshi. Ushobora[$1 gukora konti] cyangwa [$2 injira] kugirango wirinde urujijo mugihe kizaza nabandi bakoresha. Gukora konti nabyo bihisha aderesi ya IP.",
+	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|urubuga rw'ibiganiro]] niho abantu baganirira uburyo bwo gukora kuri {{SITENAME}} muburyo bwiza bushoboka. Tangira ikiganiro gishya cyo guhuza no gufatanya {{GENDER:{{PAGENAME}}|hamwe}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Ibyo uvuze hano bizashyirwa kumugaragaro kugirango abandi babibone.",
+	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Urubuga rw'ibiganiro]] Niho abantu baganirira uburyo bwo gukora ibiri kuri {{SITENAME}} mu buryo bwiza bushoboka. Koresha uru rubuga kugirango utangire ikiganiro kijyanye no guhindura byakozwe muri adress ya IP. Ibyo uvuga hano bizashyirwa ahagaragara kugirango abandi babibone. Aderesi nyinshi za IP zihinduka mugihe, kandi akenshi zisangirwa n'abantu benshi.",
+	"discussiontools-emptystate-title": "Tangira ikiganiro kubyerekeye {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title-self": "Ikaze k'urubuga rw'ibiganiro rwawe",
+	"discussiontools-emptystate-title-self-anon": "Ikaze kuri uru rubuga bw'ibiganiro",
+	"discussiontools-emptystate-title-user": "Tngira ikiganiro hamwe{{GENDER:{{PAGENAME}}}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user-anon": "ikaze kuri uru rubuga rw'ibiganiro",
+	"discussiontools-error-comment-conflict": "Igitekerezo cyawe nticyashoboye kubikwa,kuko hari undi watanze igitekerezo mu gihe kimwe nawe. Mwongere mugerageze, cyangwa cyangwa usubiremo urubuga kugirango urebe ibitekerezo biheruka.",
+	"discussiontools-error-comment-disappeared": "Ntushoboye kubona igitekerezo usubiza kuri uru rubuga. Bishobora kuba byarasibwe cyangwa byimuriwe kurundi rubuga.",
+	"discussiontools-error-comment-disappeared-reload": "Mwongere mugerageze gufungura uru rubuga",
+	"discussiontools-error-comment-is-transcluded": "Ihuza\"{{int:discussiontools-replylink}}\" ntirishobora gukoreshwa mugusubiza iki gitekereo. kugirango usubize, koresha ikosora ry'urubuga ryuzuye ukanda \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Ihuza\"{{int:discussiontools-replylink}}\" ntirishobora gukoreshwa mu guhuza iki gitekerezo kuko cyashyizwe kurundi rubuga. Kugirango usubize, jya hano: [[$1]].",
+	"discussiontools-error-comment-not-saved": "Igitekerezo cyawe ntigishobora gutangazwa kuri verisiyo iheruka y;urubuga. Kugirango ubone impinduka ziheruka, koporora igitekerezo cyawe wateguye hanyuma ukoreshe mushakisha yawe kugirango wongere ufungure urubuga.",
+	"discussiontools-error-lint": "Ibitekerezo kuri uru rubuga ntibishora gusubizwa kubera ikosa muri wikitext. Ushobora kwiga ibyerekeye iri kosa ukoreshye [$1 usoma inyandiko], saba ubufasha ukoresheje [$2 wohereze hano] cyangwa ukosore ikosa ukoresheje [$3 gufungura ikosora ry'urubuga ryuzuye].",
+	"discussiontools-error-noswitchtove": "Ihangane, guhindura uburyo bwo kureba byahagaritswe kuko <b>$1</b> byagaragagaye mu bitekerezo wanditse. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations kwiga byinshi].",
+	"discussiontools-error-noswitchtove-extension": "Syntax yo kwagura cyangwa kugereranya",
+	"discussiontools-error-noswitchtove-table": "Syntax y'imbonerahamwe",
+	"discussiontools-error-noswitchtove-template": "Syntax y'inyandikorugero",
+	"discussiontools-error-noswitchtove-title": "Uburyo bwo kureba bwahagaritswe",
+	"discussiontools-limitreport-errorreqid": "Ikosa rya DiscussionTools saba ID",
+	"discussiontools-limitreport-timeusage": "Igihe cyo gukoresha DiscussionTools",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|isegonda|amasegonda}}",
+	"discussiontools-newtopic-legacy-hint": "<strong>uburyo bushya bwo gutangiza ingingo buri hano.</strong> iri vugurura rigushoboza kongeramo ingingo ukoresheje ifishi yo kuri murandasi no guhuza abandi hamwe ukoresheje impine nshya. Ushobora kandi [$1 subira inyuma kuburambe bw'umurage].",
+	"discussiontools-newtopic-legacy-hint-return": "<strong>ubu urimo kureba uburambe bw'umurage.</strong> ushobora[$1 garuka kuburambe bushya]cyangwa gusura ibyo ukunda kuri [$2 shyiraho uburambe bw'umurage kuri mburabuzi yawe]."
 }
