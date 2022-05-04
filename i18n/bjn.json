@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mnam23"
+		]
+	},
+	"discussiontools-replylink": "balas",
+	"discussiontools-replywidget-cancel": "Pasah",
+	"discussiontools-replywidget-mode-source": "Asal-mula",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Balas ka {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Balas"
+}
