@@ -91,6 +91,7 @@
 	"discussiontools-replywidget-transcluded": "Bình luận của bạn sẽ được lưu tại [[$1]].",
 	"discussiontools-replywidget-watchthis": "Thêm trang này vào [[Special:Watchlist|danh sách theo dõi]]",
 	"discussiontools-signature-prefix": "&#32;–&nbsp;",
+	"discussiontools-target-comment-missing": "Không thể tìm thấy bình luận. Có thể nó đã bị xoá hoặc di chuyển.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Ngừng theo dõi",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Ngừng theo dõi chủ đề này?",
 	"discussiontools-topicsubscription-button-subscribe": "theo dõi",
