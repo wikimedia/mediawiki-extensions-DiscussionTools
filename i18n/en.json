@@ -83,7 +83,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Mention a user",
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Visual",
-	"discussiontools-replywidget-newcomments-warning": "$1 new {{PLURAL:$1|comment has|comments have}} been added in this section. Click to reload.",
+	"discussiontools-replywidget-newcomments-button": "Show $1 new {{PLURAL:$1|comment|comments}}",
 	"discussiontools-replywidget-newtopic": "Add topic",
 	"discussiontools-replywidget-newtopic-link": "https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/New_discussion",
 	"discussiontools-replywidget-placeholder-newtopic": "Description",
