@@ -335,6 +335,11 @@ function clearHighlightTargetComment( threadItemSet ) {
 		url.searchParams.delete( 'dtinthread' );
 		history.pushState( null, document.title, url );
 		highlightTargetComment( threadItemSet );
+	} else if ( highlightedTarget ) {
+		// Highlights were applied without changing the URL, e.g. when showing
+		// new comments while drafting. Just clear the highlights.
+		highlightedTarget.destroy();
+		highlightedTarget = null;
 	}
 }
 
