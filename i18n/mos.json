@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abdul Fatawu 352",
+			"Amire80",
 			"Azoure latif 2",
 			"Hasslaebetch"
 		]
 	},
-	"discussiontools-replylink": "Loke",
+	"discussiontools-replylink": "loke",
 	"discussiontools-replywidget-cancel": "Base",
 	"discussiontools-replywidget-mode-source": "Suurs",
+	"discussiontools-replywidget-mode-visual": "Yãabo",
+	"discussiontools-replywidget-placeholder-reply": "Leoke {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Leoke"
 }
