@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Germain92",
+			"Rodrigue"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Subiza",
+	"discussiontools-desc": "Ibikoresho bizamura Impapuro ziganirirwaho",
+	"discussiontools-error-comment-is-transcluded": "Ihuza\"{{int:discussiontools-replylink}}\" ntirishobora gukoreshwa mugusubiza iki gitekereo. kugirango usubize, koresha ikosora ry'urubuga ryuzuye ukanda \"$1\".",
+	"discussiontools-error-comment-is-transcluded-title": "Ihuza\"{{int:discussiontools-replylink}}\" ntirishobora gukoreshwa mu guhuza iki gitekerezo kuko cyashyizwe kurundi rubuga. Kugirango usubize, jya hano: [[$1]].",
+	"discussiontools-error-lint": "Ibitekerezo kuri uru rubuga ntibishora gusubizwa kubera ikosa muri wikitext. Ushobora kwiga ibyerekeye iri kosa ukoreshye [$1 usoma inyandiko], saba ubufasha ukoresheje [$2 wohereze hano] cyangwa ukosore ikosa ukoresheje [$3 gufungura ikosora ry'urubuga ryuzuye]."
+}
