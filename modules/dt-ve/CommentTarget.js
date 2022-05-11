@@ -34,6 +34,10 @@ if ( OO.ui.isMobile() ) {
 	// Mobile currently expects one tool per group
 	CommentTarget.static.toolbarGroups = [
 		{
+			name: 'history',
+			include: [ 'undo' ]
+		},
+		{
 			name: 'style',
 			classes: [ 've-test-toolbar-style' ],
 			type: 'list',
