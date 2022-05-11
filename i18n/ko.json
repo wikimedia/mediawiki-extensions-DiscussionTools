@@ -7,12 +7,13 @@
 			"Ykhwong",
 			"렌즈",
 			"밝은소년",
-			"Kwj2772"
+			"Kwj2772",
+			"Bluehill"
 		]
 	},
 	"discussiontools": "토론 도구",
 	"discussiontools-defaultsummary-reply": "답변",
-	"discussiontools-desc": "토론 페이지를 향상시키는 도구입니다.",
+	"discussiontools-desc": "토론 문서를 향상시키는 도구입니다.",
 	"discussiontools-emptystate-button": "토론 시작하기",
 	"discussiontools-emptystate-desc": "토론 문서는 {{SITENAME}}에서 내용을 어떻게 가능한 좋게 만들지 논의하는 곳입니다. 이 문서를 사용하여 [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] 문서를 어떻게 발전시킬지에 관해 다른 사람들과 토론을 시작할 수 있습니다. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|더 알아보기]]",
 	"discussiontools-emptystate-desc-user": "토론 문서는 {{SITENAME}}에서 내용을 어떻게 가능한 좋게 만들지 논의하는 곳입니다. [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]님과 연락하고 협업하려면 새 토론을 시작하세요. 여기서 언급하는 내용은 다른 사용자들에게 공개됩니다. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|더 알아보기]]",

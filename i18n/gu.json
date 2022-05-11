@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"KartikMistry"
+		]
+	},
+	"discussiontools-replylink": "ઉત્તર",
+	"discussiontools-replywidget-cancel": "રદ કરો",
+	"discussiontools-replywidget-mode-source": "સ્રોત",
+	"discussiontools-replywidget-mode-visual": "વિઝ્યુલ",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ને ઉત્તર",
+	"discussiontools-replywidget-reply": "ઉત્તર"
+}

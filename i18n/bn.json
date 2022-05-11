@@ -7,7 +7,8 @@
 			"আফতাবুজ্জামান",
 			"Ankan",
 			"ZI Jony",
-			"Tahmid"
+			"Tahmid",
+			"MdsShakil"
 		]
 	},
 	"discussiontools": "আলোচনা সরঞ্জাম",
@@ -78,7 +79,7 @@
 	"discussiontools-replywidget-summary": "সারাংশ",
 	"discussiontools-replywidget-terms-click": "\"$1\" ক্লিক করার দ্বারা, আপনি এই উইকির ব্যবহারের শর্তাবলী সাথে সম্মত হচ্ছেন।",
 	"discussiontools-replywidget-transcluded": "আপনার মন্তব্য [[$1]]-এ সংরক্ষণ করা হবে।",
-	"discussiontools-signature-prefix": "&#32;--&nbsp;",
+	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicsubscription-button-subscribe": "অনুসরণ করুন",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "নতুন মন্তব্য আসলে বিজ্ঞপ্তি পেতে অনুসরণ করুন।",
 	"discussiontools-topicsubscription-button-unsubscribe": "অনুসরণ করবেন না",
