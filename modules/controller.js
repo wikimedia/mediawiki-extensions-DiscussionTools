@@ -42,10 +42,9 @@ function getApi() {
  *
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
- * @param {boolean} [isNewTopic=false]
  * @return {jQuery.Promise}
  */
-function getPageData( pageName, oldId, isNewTopic ) {
+function getPageData( pageName, oldId ) {
 	var api = getApi();
 
 	pageDataCache[ pageName ] = pageDataCache[ pageName ] || {};
@@ -54,7 +53,7 @@ function getPageData( pageName, oldId, isNewTopic ) {
 	}
 
 	var lintPromise, transcludedFromPromise;
-	if ( oldId && !isNewTopic ) {
+	if ( oldId ) {
 		lintPromise = api.get( {
 			action: 'query',
 			list: 'linterrors',
@@ -113,7 +112,7 @@ function getPageData( pageName, oldId, isNewTopic ) {
 function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 	var isNewTopic = threadItem.id === utils.NEW_TOPIC_COMMENT_ID;
 
-	return getPageData( pageName, oldId, isNewTopic )
+	return getPageData( pageName, oldId )
 		.then( function ( response ) {
 			var metadata = response.metadata,
 				lintErrors = response.linterrors,
