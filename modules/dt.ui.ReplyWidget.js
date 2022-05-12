@@ -228,7 +228,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 
 	if ( mw.user.isAnon() ) {
 		var returnTo = {
-			returntoquery: encodeURIComponent( window.location.search ),
+			returntoquery: window.location.search.slice( 1 ),
 			returnto: mw.config.get( 'wgPageName' )
 		};
 		this.anonWarning = new OO.ui.MessageWidget( {
