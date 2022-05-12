@@ -33,12 +33,14 @@
 }
 
 .ext-discussiontools-ui-replyWidget { /* stylelint-disable-line no-duplicate-selectors */
-	> .oo-ui-textInputWidget {
+	&-bodyWrapper > .oo-ui-textInputWidget {
 		max-width: none;
 
 		.oo-ui-inputWidget-input {
 			line-height: 1.5em;
 			overflow-y: hidden;
+			// Leave space for newComments button
+			padding-bottom: 22px;
 		}
 	}
 
@@ -210,8 +212,40 @@
 		}
 	}
 
+	&-bodyWrapper {
+		position: relative;
+	}
+
 	&-newComments {
-		cursor: pointer;
+		position: absolute;
+		bottom: -1em;
+		left: 50%;
+		transition: transform 250ms ease-in, opacity 250ms ease-in;
+		transform: translate( -50%, 30px );
+		opacity: 0;
+
+		&-open {
+			transform: translate( -50%, 0 );
+			opacity: 1;
+		}
+
+		// Same border-radius is applied to all these elements to ensure that the trimmed-off corner
+		// areas don't capture clicks
+		&,
+		.oo-ui-buttonElement-framed:first-child,
+		.oo-ui-buttonElement-framed:first-child .oo-ui-buttonElement-button {
+			border-bottom-left-radius: 1.1em;
+			border-top-left-radius: 1.1em;
+		}
+
+		// Same border-radius is applied to all these elements to ensure that the trimmed-off corner
+		// areas don't capture clicks
+		&,
+		.oo-ui-buttonElement-framed:last-child,
+		.oo-ui-buttonElement-framed:last-child .oo-ui-buttonElement-button {
+			border-bottom-right-radius: 1.1em;
+			border-top-right-radius: 1.1em;
+		}
 	}
 
 	&-anonWarning,

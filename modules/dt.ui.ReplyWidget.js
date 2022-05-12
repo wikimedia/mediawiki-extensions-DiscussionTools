@@ -46,6 +46,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.storage = controller.storage;
 	// eslint-disable-next-line no-jquery/no-global-selector
 	this.contentDir = $( '#mw-content-text' ).css( 'direction' );
+	this.hideNewCommentsWarning = false;
 
 	var inputConfig = $.extend(
 		{
@@ -115,6 +116,10 @@ function ReplyWidget( commentController, commentDetails, config ) {
 			this.modeTabSelect.$element
 		);
 	}
+
+	this.$bodyWrapper = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-bodyWrapper' ).append(
+		this.replyBodyWidget.$element
+	);
 
 	this.$preview = $( '<div>' )
 		.addClass( 'ext-discussiontools-ui-replyWidget-preview' )
@@ -214,7 +219,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	// Initialization
 	this.$element.addClass( 'ext-discussiontools-ui-replyWidget' ).append(
 		this.$headerWrapper,
-		this.replyBodyWidget.$element,
+		this.$bodyWrapper,
 		this.$preview,
 		this.advancedToggle.$element,
 		this.advanced.$element,
@@ -844,32 +849,45 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
 		return;
 	}
 	if ( !this.newCommentsWarning ) {
-		this.newCommentsWarning = new OO.ui.MessageWidget( {
-			type: 'warning',
-			classes: [ 'ext-discussiontools-ui-replyWidget-newComments' ]
+		this.newCommentsShow = new OO.ui.ButtonWidget( {
+			flags: [ 'progressive' ]
 		} );
-		this.newCommentsWarning.$element.attr( {
-			tabIndex: 0,
-			role: 'button'
+		this.newCommentsClose = new OO.ui.ButtonWidget( {
+			icon: 'close',
+			label: mw.msg( 'ooui-popup-widget-close-button-aria-label' ),
+			invisibleLabel: true
 		} );
-		this.newCommentsWarning.$element.on( 'click keypress', function ( e ) {
-			if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
-				// Only handle keypresses on the "Enter" or "Space" keys
-				return;
-			}
-			if ( e.type === 'click' && !utils.isUnmodifiedLeftClick( e ) ) {
-				// Only handle unmodified left clicks
-				return;
-			}
-			widget.emit( 'reloadPage' );
+		this.newCommentsWarning = new OO.ui.ButtonGroupWidget( {
+			classes: [ 'ext-discussiontools-ui-replyWidget-newComments' ],
+			items: [
+				this.newCommentsShow,
+				this.newCommentsClose
+			]
 		} );
-		this.newCommentsWarning.$element.insertAfter( this.advanced.$element );
+		this.newCommentsShow.connect( this, { click: [ 'emit', 'reloadPage' ] } );
+		this.newCommentsClose.connect( this, { click: 'onNewCommentsCloseClick' } );
+		this.$bodyWrapper.append( this.newCommentsWarning.$element );
 	}
 
-	this.newCommentsWarning.setLabel(
-		mw.msg( 'discussiontools-replywidget-newcomments-warning', comments.length )
+	this.newCommentsShow.setLabel(
+		mw.msg( 'discussiontools-replywidget-newcomments-button', comments.length )
 	);
-	this.newCommentsWarning.toggle( true );
+	if ( !this.hideNewCommentsWarning ) {
+		this.newCommentsWarning.toggle( true );
+		setTimeout( function () {
+			widget.newCommentsWarning.$element.addClass( 'ext-discussiontools-ui-replyWidget-newComments-open' );
+		} );
+	}
+};
+
+/**
+ * Handle click events on the new comments close button
+ */
+ReplyWidget.prototype.onNewCommentsCloseClick = function () {
+	this.newCommentsWarning.toggle( false );
+	// Hide the warning for the rest of the lifetime of the widget
+	this.hideNewCommentsWarning = true;
+	this.focus();
 };
 
 /**
