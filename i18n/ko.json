@@ -7,7 +7,8 @@
 			"MemphisA5",
 			"Ykhwong",
 			"렌즈",
-			"밝은소년"
+			"밝은소년",
+			"Bluehill"
 		]
 	},
 	"discussiontools": "토론 도구",
@@ -16,7 +17,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "환경 설정 편집",
 	"discussiontools-autotopicsubpopup-title": "구독하였습니다",
 	"discussiontools-defaultsummary-reply": "답변",
-	"discussiontools-desc": "토론 페이지를 향상시키는 도구입니다.",
+	"discussiontools-desc": "토론 문서를 향상시키는 도구입니다.",
 	"discussiontools-emptystate-button": "토론 시작하기",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|토론 문서]]는 {{SITENAME}}에서 내용을 어떻게 가능한 좋게 만들지 논의하는 곳입니다. 이 문서를 사용하여 [[:{{SUBJECTPAGENAME}}]] 문서를 어떻게 발전시킬지에 관해 다른 사람들과 토론을 시작할 수 있습니다.",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}}의 사람들은 이 [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|토론 문서]]를 사용하여 당신에게 공개 메시지를 게시할 수 있으며 그렇게 하면 알림을 받게 됩니다.",
