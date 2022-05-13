@@ -74,7 +74,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Спомнїце хаснователя",
 	"discussiontools-replywidget-mode-source": "Жридло",
 	"discussiontools-replywidget-mode-visual": "Визуелно",
-	"discussiontools-replywidget-newcomments-warning": "У тим оддзельку додати $1 {{PLURAL:$1|нови коментар|нови коментари}}. Кликнїце же бисце их учитали.",
 	"discussiontools-replywidget-newtopic": "Додайце тему",
 	"discussiontools-replywidget-placeholder-newtopic": "Опис",
 	"discussiontools-replywidget-placeholder-reply": "Одвит на коментар {{BIDI:$1}}",

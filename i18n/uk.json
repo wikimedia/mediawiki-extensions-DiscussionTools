@@ -88,7 +88,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Згадати користувача",
 	"discussiontools-replywidget-mode-source": "Вікітекст",
 	"discussiontools-replywidget-mode-visual": "Візуальний",
-	"discussiontools-replywidget-newcomments-warning": "У цьому розділі додано $1 {{PLURAL:$1|новий коментар|нові коментарі|нових коментарів}}. Натисніть, щоб перезавантажити.",
 	"discussiontools-replywidget-newtopic": "Додати тему",
 	"discussiontools-replywidget-placeholder-newtopic": "Опис",
 	"discussiontools-replywidget-placeholder-reply": "Відповідь на коментар {{BIDI:$1}}",

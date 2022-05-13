@@ -78,7 +78,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Згадаць удзельніка",
 	"discussiontools-replywidget-mode-source": "Зыходнік",
 	"discussiontools-replywidget-mode-visual": "Візуальна",
-	"discussiontools-replywidget-newcomments-warning": "$1 {{PLURAL:$1|новы каментар быў дададзены|новыя каментары былі дададзены|новых каментароў было дададзена}} ў гэты раздзел. Націсніце, каб перазагрузіць.",
 	"discussiontools-replywidget-newtopic": "Дадаць тэму",
 	"discussiontools-replywidget-placeholder-newtopic": "Апісанне",
 	"discussiontools-replywidget-placeholder-reply": "Адказаць {{BIDI:$1}}",

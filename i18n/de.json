@@ -84,7 +84,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Einen Benutzer erwähnen",
 	"discussiontools-replywidget-mode-source": "Quelltext",
 	"discussiontools-replywidget-mode-visual": "Visuell",
-	"discussiontools-replywidget-newcomments-warning": "$1 {{PLURAL:$1|neuer Kommentar wurde|neue Kommentare wurden}} in diesem Abschnitt hinzugefügt. Zum Neuladen anklicken.",
+	"discussiontools-replywidget-newcomments-button": "Zeige $1 {{PLURAL:$1|neuen Kommentar|neue Kommentare}}",
 	"discussiontools-replywidget-newtopic": "Thema hinzufügen",
 	"discussiontools-replywidget-placeholder-newtopic": "Beschreibung",
 	"discussiontools-replywidget-placeholder-reply": "Antwort an {{BIDI:$1}}",

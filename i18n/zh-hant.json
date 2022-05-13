@@ -84,7 +84,6 @@
 	"discussiontools-replywidget-mention-tool-title": "提及使用者",
 	"discussiontools-replywidget-mode-source": "原始碼",
 	"discussiontools-replywidget-mode-visual": "視覺化",
-	"discussiontools-replywidget-newcomments-warning": "$1則新{{PLURAL:$1|留言已被}}加入到此章節，點擊以重新載入。",
 	"discussiontools-replywidget-newtopic": "新增話題",
 	"discussiontools-replywidget-placeholder-newtopic": "描述",
 	"discussiontools-replywidget-placeholder-reply": "回覆{{BIDI:$1}}",

@@ -57,7 +57,6 @@
 	"discussiontools-replywidget-mention-tool-title": "వాడుకరిని ఉటంకించండి",
 	"discussiontools-replywidget-mode-source": "మూలం",
 	"discussiontools-replywidget-mode-visual": "విజువల్",
-	"discussiontools-replywidget-newcomments-warning": "ఈ విభాగంలో $1 కొత్త {{PLURAL:$1|వ్యాఖ్యను|వ్యాఖ్యలను}} చేర్చారు. మళ్ళీ లోడు చేసేందుకు నొక్కండి.",
 	"discussiontools-replywidget-newtopic": "అంశాన్ని చేర్చండి",
 	"discussiontools-replywidget-placeholder-newtopic": "వివరణ",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} కు ప్రత్యుత్తరం",

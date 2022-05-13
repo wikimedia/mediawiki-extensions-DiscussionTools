@@ -83,7 +83,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Zmínit uživatele",
 	"discussiontools-replywidget-mode-source": "Zdrojový kód",
 	"discussiontools-replywidget-mode-visual": "Vizuální",
-	"discussiontools-replywidget-newcomments-warning": "Do této sekce {{PLURAL:$1|byl přidán nový komentář|byly přidány $1 nové komentáře|bylo přidáno $1 nových komentářů}}. Kliknutím znovu načtete stránku.",
 	"discussiontools-replywidget-newtopic": "Přidat téma",
 	"discussiontools-replywidget-placeholder-newtopic": "Popis",
 	"discussiontools-replywidget-placeholder-reply": "Odpovědět uživateli {{BIDI:$1}}",

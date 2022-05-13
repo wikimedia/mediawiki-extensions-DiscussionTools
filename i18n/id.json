@@ -81,7 +81,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Sebut seorang pengguna",
 	"discussiontools-replywidget-mode-source": "Sumber",
 	"discussiontools-replywidget-mode-visual": "Visual",
-	"discussiontools-replywidget-newcomments-warning": "$1 {{PLURAL:$1|komentar}} baru telah ditambahkan ke bagian ini. Tekan untuk memuat ulang.",
 	"discussiontools-replywidget-newtopic": "Tambah topik",
 	"discussiontools-replywidget-placeholder-newtopic": "Deskripsi",
 	"discussiontools-replywidget-placeholder-reply": "Balas ke {{BIDI:$1}}",

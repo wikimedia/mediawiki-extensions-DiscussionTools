@@ -76,7 +76,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Vuga umukoresha",
 	"discussiontools-replywidget-mode-source": "Inkomoko",
 	"discussiontools-replywidget-mode-visual": "Biboneka",
-	"discussiontools-replywidget-newcomments-warning": "$1{{PLURAL:$1|igitekerezo gishya gifite|ibitekerezo byongeweho}} muriki gice. kanda kugirango wongere.",
 	"discussiontools-replywidget-newtopic": "Ongeraho ingingo",
 	"discussiontools-replywidget-placeholder-newtopic": "Ibisobanuro",
 	"discussiontools-replywidget-placeholder-reply": "Subiza kuri{{BIDI:$1}}",

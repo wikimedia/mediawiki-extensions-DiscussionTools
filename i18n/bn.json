@@ -81,7 +81,6 @@
 	"discussiontools-replywidget-mention-tool-title": "একজন ব্যবহারকারীকে উল্লেখ করুন",
 	"discussiontools-replywidget-mode-source": "উৎস",
 	"discussiontools-replywidget-mode-visual": "দৃশ্যমান",
-	"discussiontools-replywidget-newcomments-warning": "এই অনুচ্ছেদে $1টি নতুন {{PLURAL:$1|মন্তব্য}} যোগ হয়েছে। পুনঃলোড করতে ক্লিক করুন।",
 	"discussiontools-replywidget-newtopic": "আলোচনা যোগ করুন",
 	"discussiontools-replywidget-placeholder-newtopic": "বিবরণ",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} কে উত্তর দিন",

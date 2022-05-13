@@ -86,7 +86,6 @@
 	"discussiontools-replywidget-mention-tool-title": "إشارة إلى مستخدم",
 	"discussiontools-replywidget-mode-source": "مصدري",
 	"discussiontools-replywidget-mode-visual": "مرئي",
-	"discussiontools-replywidget-newcomments-warning": "{{PLURAL:$1|لم تتمّ إضافة أي تعليق|تمّت إضافة تعليق واحد|تمّت إضافة تعليقين اثنين|تمّت إضافة $1 تعليقات|تمّت إضافة $1 تعليقا|تمّت إضافة $1 تعليق}}. اضغطوا لإعادة التحميل.",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|أضف|أضيفي}} موضوعا",
 	"discussiontools-replywidget-placeholder-newtopic": "تفصيل الموضوع",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|رُدَّ|رُدِّي}} على {{BIDI:$1}}",

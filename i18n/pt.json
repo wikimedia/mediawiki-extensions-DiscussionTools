@@ -76,7 +76,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Mencionar um utilizador",
 	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-mode-visual": "Visual",
-	"discussiontools-replywidget-newcomments-warning": "$1 {{PLURAL:$1|comentário novo foi adicionado|comentários novos foram adicionados}} nesta secção. Clique para recarregar.",
 	"discussiontools-replywidget-newtopic": "Adicionar tópico",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrição",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",

@@ -79,7 +79,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Nevn en bruker",
 	"discussiontools-replywidget-mode-source": "Kilde",
 	"discussiontools-replywidget-mode-visual": "Visuelt",
-	"discussiontools-replywidget-newcomments-warning": "$1 {{PLURAL:$1|ny kommentar|nye kommentarer}} har blitt lagt til i denne seksjonen. Trykk for å laste på nytt.",
 	"discussiontools-replywidget-newtopic": "Legg til emne",
 	"discussiontools-replywidget-placeholder-newtopic": "Beskrivelse",
 	"discussiontools-replywidget-placeholder-reply": "Svar til {{BIDI:$1}}",

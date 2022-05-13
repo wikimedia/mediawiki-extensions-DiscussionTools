@@ -89,7 +89,6 @@
 	"discussiontools-replywidget-mention-tool-title": "اشاره کردن به یک کاربر",
 	"discussiontools-replywidget-mode-source": "مبدأ",
 	"discussiontools-replywidget-mode-visual": "دیداری",
-	"discussiontools-replywidget-newcomments-warning": "$1 {{PLURAL:$1|نظر جدید}} به این بخش افزوده شده‌است. برای تازه‌سازی کلیک کنید.",
 	"discussiontools-replywidget-newtopic": "افزودن بحث",
 	"discussiontools-replywidget-placeholder-newtopic": "توضیحات",
 	"discussiontools-replywidget-placeholder-reply": "پاسخ به {{BIDI:$1}}",

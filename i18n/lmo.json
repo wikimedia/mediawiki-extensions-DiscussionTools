@@ -74,7 +74,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Menziona un utent",
 	"discussiontools-replywidget-mode-source": "Sorgent",
 	"discussiontools-replywidget-mode-visual": "Visual",
-	"discussiontools-replywidget-newcomments-warning": "$1 noeuv {{PLURAL:$1|coment a l'è|coment a inn}} stad sgiontad in questa sezzion chì. Clica per caregà an'mò.",
 	"discussiontools-replywidget-newtopic": "Sgionta un argoment",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrizzion",
 	"discussiontools-replywidget-placeholder-reply": "Rispondegh al / a la {{BIDI:$1}}",

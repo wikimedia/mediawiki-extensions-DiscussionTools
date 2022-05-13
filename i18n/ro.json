@@ -78,7 +78,6 @@
 	"discussiontools-replywidget-mention-tool-title": "Menționați un utilizator",
 	"discussiontools-replywidget-mode-source": "Sursă",
 	"discussiontools-replywidget-mode-visual": "Vizual",
-	"discussiontools-replywidget-newcomments-warning": "$1 {{PLURAL:$1|comentariu nou a|comentarii noi au}} fost adăugate în această secțiune. Apăsați pentru a reîncărca.",
 	"discussiontools-replywidget-newtopic": "Adaugă subiect",
 	"discussiontools-replywidget-placeholder-newtopic": "Descriere",
 	"discussiontools-replywidget-placeholder-reply": "Răspunde lui {{BIDI:$1}}",
