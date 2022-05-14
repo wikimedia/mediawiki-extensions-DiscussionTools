@@ -149,12 +149,16 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 							'discussiontools-error-comment-is-transcluded-title',
 							mwTitle.getPrefixedText()
 						).parse();
-					} else {
+					} else if ( metadata.canEdit ) {
+						// If the user can edit, advise them to use the edit button
 						transcludedErrMsg = mw.message(
 							'discussiontools-error-comment-is-transcluded',
 							// eslint-disable-next-line no-jquery/no-global-selector
 							$( '#ca-edit' ).text()
 						).parse();
+					} else {
+						// Otherwise, tell them why they can't edit
+						transcludedErrMsg = metadata.notices[ 'permissions-error' ];
 					}
 
 					return $.Deferred().reject( 'comment-is-transcluded', { errors: [ {
