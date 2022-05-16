@@ -82,6 +82,7 @@
 	"discussiontools-replywidget-mention-tool-title": "אזכור משתמש",
 	"discussiontools-replywidget-mode-source": "קוד מקור",
 	"discussiontools-replywidget-mode-visual": "חזותי",
+	"discussiontools-replywidget-newcomments-button": "הצגת {{PLURAL:$1|תגובה חדשה|$1 תגובות חדשות}}",
 	"discussiontools-replywidget-newtopic": "הוספת נושא",
 	"discussiontools-replywidget-placeholder-newtopic": "תיאור",
 	"discussiontools-replywidget-placeholder-reply": "תגובה להודעה של {{BIDI:$1}}",

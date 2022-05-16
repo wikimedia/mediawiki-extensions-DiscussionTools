@@ -74,6 +74,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Mentionar un usator",
 	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-newcomments-button": "Monstrar $1 nove commento{{PLURAL:$1||s}}",
 	"discussiontools-replywidget-newtopic": "Adder topico",
 	"discussiontools-replywidget-placeholder-newtopic": "Description",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",

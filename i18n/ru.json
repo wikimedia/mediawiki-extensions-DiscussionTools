@@ -93,6 +93,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Упомянуть участника",
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Визуально",
+	"discussiontools-replywidget-newcomments-button": "Показать $1 {{PLURAL:$1|новый комментарий|новых комментария|новых комментариев}}",
 	"discussiontools-replywidget-newtopic": "Добавить тему",
 	"discussiontools-replywidget-placeholder-newtopic": "Описание",
 	"discussiontools-replywidget-placeholder-reply": "Ответить {{BIDI:$1}}",

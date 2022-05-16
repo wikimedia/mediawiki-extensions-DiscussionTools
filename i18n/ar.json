@@ -86,6 +86,7 @@
 	"discussiontools-replywidget-mention-tool-title": "إشارة إلى مستخدم",
 	"discussiontools-replywidget-mode-source": "مصدري",
 	"discussiontools-replywidget-mode-visual": "مرئي",
+	"discussiontools-replywidget-newcomments-button": "إظهار {{PLURAL:$1|لا تعليق جديد|تعليق واحد جديد|تعليقين جديدين|$1 تعليقات جديدة|$1 تعليقا جديدا|$1 تعليق جديد}}",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|أضف|أضيفي}} موضوعا",
 	"discussiontools-replywidget-placeholder-newtopic": "تفصيل الموضوع",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|رُدَّ|رُدِّي}} على {{BIDI:$1}}",
