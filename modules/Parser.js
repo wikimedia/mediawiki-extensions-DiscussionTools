@@ -3,6 +3,7 @@
 
 var
 	utils = require( './utils.js' ),
+	charAt = require( 'mediawiki.String' ).charAt,
 	codePointLength = require( 'mediawiki.String' ).codePointLength,
 	trimByteLength = require( 'mediawiki.String' ).trimByteLength,
 	CommentItem = require( './CommentItem.js' ),
@@ -190,17 +191,22 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				}
 				break;
 			default:
-				s += mw.util.escapeRegExp( format[ p ] );
+				// Copy whole characters together, instead of single UTF-16 surrogates
+				var char = charAt( format, p );
+				s += mw.util.escapeRegExp( char );
+				p += char.length - 1;
 		}
 		if ( num !== false ) {
 			s += regexpGroup( digitsRegexp + '{' + num + '}' );
 		}
+		// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T308448)
+		s += '[\\u200E\\u200F]?';
 	}
 
 	var tzRegexp = regexpAlternateGroup( Object.keys( tzAbbrs ) );
 	// Hard-coded parentheses and space like in Parser::pstPass2
 	// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T245784)
-	var regexp = s + '[\\u200E\\u200F]? [\\u200E\\u200F]?\\(' + tzRegexp + '\\)';
+	var regexp = s + ' [\\u200E\\u200F]?\\(' + tzRegexp + '\\)';
 
 	return regexp;
 };
