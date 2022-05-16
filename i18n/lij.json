@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"N. Longo"
+		]
+	},
+	"discussiontools-replylink": "rispóndi",
+	"discussiontools-replywidget-cancel": "Anùlla",
+	"discussiontools-replywidget-mode-source": "Vivàgna",
+	"discussiontools-replywidget-mode-visual": "Vizoâle",
+	"discussiontools-replywidget-placeholder-reply": "Rispóndi a {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Rispóndi"
+}
