@@ -273,11 +273,16 @@ class CommentParser {
 					}
 					break;
 				default:
-					$s .= preg_quote( $format[$p], '/' );
+					// Copy whole characters together, instead of single bytes
+					$char = mb_substr( mb_strcut( $format, $p, 4 ), 0, 1 );
+					$s .= preg_quote( $char, '/' );
+					$p += strlen( $char ) - 1;
 			}
 			if ( $num !== false ) {
 				$s .= '(' . $digitsRegexp . '{' . $num . '})';
 			}
+			// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T308448)
+			$s .= '[\\x{200E}\\x{200F}]?';
 		}
 
 		$tzRegexp = self::regexpAlternateGroup( array_keys( $tzAbbrs ) );
@@ -285,7 +290,7 @@ class CommentParser {
 		// Hard-coded parentheses and space like in Parser::pstPass2
 		// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T245784)
 		// \uNNNN syntax can only be used from PHP 7.3
-		return '/' . $s . '[\\x{200E}\\x{200F}]? [\\x{200E}\\x{200F}]?\\(' . $tzRegexp . '\\)/u';
+		return '/' . $s . ' [\\x{200E}\\x{200F}]?\\(' . $tzRegexp . '\\)/u';
 	}
 
 	/**
