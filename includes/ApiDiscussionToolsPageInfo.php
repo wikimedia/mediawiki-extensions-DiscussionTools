@@ -68,6 +68,15 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 
 		if ( isset( $prop['threaditemshtml'] ) ) {
 			$threads = $threadItemSet->getThreads();
+			if ( count( $threads ) > 0 ) {
+				$firstHeading = $threads[0];
+				if ( !$firstHeading->isPlaceholderHeading() ) {
+					$range = new ImmutableRange( $firstHeading->getRootNode(), 0, $firstHeading->getRootNode(), 0 );
+					$fakeHeading = new HeadingItem( $range, 99, true );
+					$fakeHeading->setRootNode( $firstHeading->getRootNode() );
+					array_unshift( $threads, $fakeHeading );
+				}
+			}
 			$output = array_map( static function ( ThreadItem $item ) {
 				return $item->jsonSerialize( true, static function ( array &$array, ThreadItem $item ) {
 					$array['html'] = $item->getHtml();
