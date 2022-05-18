@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Samatics"
+		]
+	},
+	"discussiontools-replylink": "reply-am",
+	"discussiontools-replywidget-cancel": "Cancel-am",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Reply to {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Reply-am"
+}

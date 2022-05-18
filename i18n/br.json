@@ -3,7 +3,8 @@
 		"authors": [
 			"Adriendelucca",
 			"Fulup",
-			"Huñvreüs"
+			"Huñvreüs",
+			"Y-M D"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Respont",
@@ -14,8 +15,12 @@
 	"discussiontools-postedit-confirmation-published": "Embannet eo bet ho kemmenn.",
 	"discussiontools-replylink": "respont",
 	"discussiontools-replywidget-advanced": "Araokaet",
+	"discussiontools-replywidget-cancel": "Nullañ",
 	"discussiontools-replywidget-feedback": "Rannañ ho soñj diwar-benn an arc'hwel-mañ",
 	"discussiontools-replywidget-mode-source": "Mammenn",
+	"discussiontools-replywidget-mode-visual": "Gwelet",
+	"discussiontools-replywidget-placeholder-reply": "Respont da {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Respont",
 	"discussiontools-replywidget-transcluded": "Enrollet e vo hoc'h evezhiadenn e [[$1]].",
 	"tag-discussiontools-source": "Mammenn"
 }
