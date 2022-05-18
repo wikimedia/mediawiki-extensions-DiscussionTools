@@ -26,7 +26,14 @@ function CommentTargetWidget( replyWidget, config ) {
 			'indent',
 			'outdent',
 			// Disable preformatted
-			'preformatted'
+			'preformatted',
+			// Save commands get loaded from articletarget module, which we load
+			// to get the edit switching tool for mobile
+			'showSave',
+			'showChanges',
+			'showPreview',
+			'saveMinoredit',
+			'saveWatchthis'
 		]
 	}, config );
 
