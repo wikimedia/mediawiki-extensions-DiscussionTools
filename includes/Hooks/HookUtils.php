@@ -151,39 +151,27 @@ class HookUtils {
 	/**
 	 * Work out the A/B test bucket for the current user
 	 *
-	 * Checks whether the user has been enrolled in the last A/B test, if any was enabled.
-	 *
-	 * If the A/B test is enabled, and the user is eligible and not enrolled, it will enroll them.
+	 * Currently this just checks whether the user is logged in, and assigns
+	 * them to a consistent bucket based on their ID.
 	 *
 	 * @param UserIdentity $user
 	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
-	 * @return string 'test' if in the test group, 'control' if in the control group, or '' if they've
-	 *  never been in the test
+	 * @return string 'test' if in the test group, 'control' if in the control group, or '' if
+	 * 	they're not in the test
 	 */
-	private static function determineUserABTestBucket( UserIdentity $user, ?string $feature = null ): string {
+	public static function determineUserABTestBucket( UserIdentity $user, ?string $feature = null ): string {
 		$services = MediaWikiServices::getInstance();
 		$optionsManager = $services->getUserOptionsManager();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
-		$abstate = $optionsManager->getOption( $user, 'discussiontools-abtest2' );
 
 		if (
 			$user->isRegistered() &&
-			$feature && $abtest == $feature
+			( $feature ? ( $abtest == $feature ) : (bool)$abtest )
 		) {
-			// The A/B test is enabled, and the user is qualified to be in the
-			// test by being logged in.
-			if ( !$abstate && !$optionsManager->getOption( $user, 'discussiontools-newtopictool-opened' ) ) {
-				// Assign the user to a group. This is only being done to
-				// users who have never used the tool before, for which we're
-				// using the absence of discussiontools-newtopictool-opened.
-				$abstate = $user->getId() % 2 == 0 ? 'test' : 'control';
-				$optionsManager->setOption( $user, 'discussiontools-abtest2', $abstate );
-				$optionsManager->saveOptions( $user );
-			}
-			return $abstate;
+			return $user->getId() % 2 == 0 ? 'test' : 'control';
 		}
 		return '';
 	}

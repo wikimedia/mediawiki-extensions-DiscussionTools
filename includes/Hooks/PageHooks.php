@@ -103,15 +103,7 @@ class PageHooks implements
 		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 
 		// Load modules if any DT feature is enabled for this user
-		if (
-			HookUtils::isFeatureEnabledForOutput( $output ) || (
-				// logged out users should get the modules when there's an a/b test
-				// client-side overrides of the enabling will occur
-				$availableForTitle &&
-				$dtConfig->get( 'DiscussionToolsABTest' ) &&
-				!$user->isRegistered()
-			)
-		) {
+		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
 			$output->addModules( [
 				'ext.discussionTools.init'
 			] );
@@ -136,15 +128,17 @@ class PageHooks implements
 					$editor
 				);
 			}
-			$abstate = $dtConfig->get( 'DiscussionToolsABTest' ) ?
-				$this->userOptionsLookup->getOption( $user, 'discussiontools-abtest2' ) :
-				false;
-			if ( $abstate ) {
-				$output->addJsConfigVars(
-					'wgDiscussionToolsABTestBucket',
-					$abstate
-				);
-			}
+		}
+
+		// This doesn't involve any DB checks, and so we can put it on every
+		// page to make it easy to pick for logging in WikiEditor. If this
+		// becomes not-cheap, move it elsewhere.
+		$abstate = HookUtils::determineUserABTestBucket( $user );
+		if ( $abstate ) {
+			$output->addJsConfigVars(
+				'wgDiscussionToolsABTestBucket',
+				$abstate
+			);
 		}
 
 		// Replace the action=edit&section=new form with the new topic tool.
