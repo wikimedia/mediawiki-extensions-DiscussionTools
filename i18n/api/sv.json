@@ -2,14 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
-			"Sabelöga"
+			"Sabelöga",
+			"WikiPhoenix"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Kommentar med ID \"$1\" hittades inte.",
-	"apierror-discussiontools-commentname-ambiguous": "Flera kommentarer med namnet \"$1\" hittades, använd ID istället.",
+	"apierror-discussiontools-commentname-ambiguous": "Flera kommentarer med namnet \"$1\" hittades, <var>commentid</var> krävs.",
 	"apierror-discussiontools-commentname-notfound": "Kommentar med namnet \"$1\" hittades inte.",
+	"apierror-discussiontools-formtoken-used": "Kommentaren har redan publicerats. Uppdatera sidan för att se den.",
 	"apierror-discussiontools-subscription-failed-add": "Kunde inte prenumerera på ämnet.",
 	"apierror-discussiontools-subscription-failed-remove": "Kunde inte avsluta prenumeration på ämnet.",
+	"apihelp-discussiontoolscompare-summary": "Få information om kommentarsändringar mellan två sidversioner.",
 	"apihelp-discussiontoolsedit-param-commentid": "Kommentar-ID att svara på. Används endast när <var>paction</var> är <var>addcomment</var>. Åsidosätter <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Kommentarens namn som ska besvaras. Används endast när <var>paction</var> är <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Innehåll att kommentera, som HTML. Kan inte användas tillsammans med <var>wikitext</var>.",
@@ -23,6 +26,9 @@
 	"apihelp-discussiontoolspageinfo-param-oldid": "Sidversionsnummer att använd (standard är senaste versionen).",
 	"apihelp-discussiontoolspageinfo-param-prop": "Vilka egenskaper att hämta:",
 	"apihelp-discussiontoolspageinfo-summary": "Returnerar metadata som krävs för att initialisera diskussionsverktygen.",
+	"apihelp-discussiontoolspreview-param-type": "Meddelandetyp att förhandsgranska",
+	"apihelp-discussiontoolspreview-param-wikitext": "Innehåll att förhandsgranska, som wikitext.",
+	"apihelp-discussiontoolspreview-summary": "Förhandsgranska ett meddelande på en diskussionssida.",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Namn på ämnet att prenumerera på (eller sluta prenumerera på)",
 	"apihelp-discussiontoolssubscribe-param-page": "En sida som ämnet visas på",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True för att prenumerera, false för att sluta prenumerera",
