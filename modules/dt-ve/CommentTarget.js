@@ -16,7 +16,7 @@ function CommentTarget( replyWidget, config ) {
 
 	// Parent constructor
 	CommentTarget.super.call( this, ve.extendObject( {
-		toolbarConfig: { actions: true, $overlay: true, position: 'top' }
+		toolbarConfig: { position: 'top' }
 	}, config ) );
 }
 
