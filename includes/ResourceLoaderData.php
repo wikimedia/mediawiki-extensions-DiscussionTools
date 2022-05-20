@@ -12,10 +12,8 @@ namespace MediaWiki\Extension\DiscussionTools;
 use Config;
 use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\ResourceLoader as RL;
 use MessageLocalizer;
-use ResourceLoaderContext;
-use ResourceLoaderFileModule;
-use ResourceLoaderModule;
 use Title;
 
 class ResourceLoaderData {
@@ -25,13 +23,13 @@ class ResourceLoaderData {
 	 * We need all of this data *in content language*. Some of it is already available in JS, but only
 	 * in client language, so it's useless for us (e.g. digit transform table, month name messages).
 	 *
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @param Config $config
 	 * @param string|null $langCode
 	 * @return array
 	 */
 	public static function getLocalData(
-		ResourceLoaderContext $context, Config $config, ?string $langCode = null
+		RL\Context $context, Config $config, ?string $langCode = null
 	): array {
 		$services = MediaWikiServices::getInstance();
 
@@ -52,13 +50,13 @@ class ResourceLoaderData {
 	/**
 	 * Return messages in content language, for use in a ResourceLoader module.
 	 *
-	 * @param ResourceLoaderContext $context
+	 * @param RL\Context $context
 	 * @param Config $config
 	 * @param array $messagesKeys
 	 * @return array
 	 */
 	public static function getContentLanguageMessages(
-		ResourceLoaderContext $context, Config $config, array $messagesKeys = []
+		RL\Context $context, Config $config, array $messagesKeys = []
 	): array {
 		return array_combine(
 			$messagesKeys,
@@ -136,9 +134,9 @@ class ResourceLoaderData {
 	 * Add optional dependencies to a ResourceLoader module definition depending on loaded extensions.
 	 *
 	 * @param array $info
-	 * @return ResourceLoaderModule
+	 * @return RL\Module
 	 */
-	public static function addOptionalDependencies( array $info ): ResourceLoaderModule {
+	public static function addOptionalDependencies( array $info ): RL\Module {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 
 		foreach ( $info['optionalDependencies'] as $ext => $deps ) {
@@ -147,7 +145,7 @@ class ResourceLoaderData {
 			}
 		}
 
-		$class = $info['class'] ?? ResourceLoaderFileModule::class;
+		$class = $info['class'] ?? RL\FileModule::class;
 		return new $class( $info );
 	}
 }
