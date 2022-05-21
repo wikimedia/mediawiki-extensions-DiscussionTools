@@ -269,6 +269,10 @@ class CommentFormatter {
 			static::addTopicContainer( $headingElement );
 		}
 
+		if ( count( $threadItems ) === 0 ) {
+			$container->appendChild( $doc->createComment( '__DTEMPTYTALKPAGE__' ) );
+		}
+
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
 		return XMLSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
@@ -552,6 +556,27 @@ class CommentFormatter {
 			$text
 		);
 		return $text;
+	}
+
+	/**
+	 * Check if the talk page had no comments or headings.
+	 *
+	 * @param string $text
+	 * @return bool
+	 */
+	public static function isEmptyTalkPage( string $text ): bool {
+		return strpos( $text, '<!--__DTEMPTYTALKPAGE__-->' ) !== false;
+	}
+
+	/**
+	 * Append content to an empty talk page
+	 *
+	 * @param string $text
+	 * @param string $content
+	 * @return string
+	 */
+	public static function appendToEmptyTalkPage( string $text, string $content ): string {
+		return str_replace( '<!--__DTEMPTYTALKPAGE__-->', $content, $text );
 	}
 
 }

@@ -401,14 +401,20 @@ span[ data-mw-comment-start ] {
 .ext-discussiontools-emptystate {
 	display: flex;
 	justify-content: space-between;
-
-	.skin-minerva & {
-		// Add space between this and page-actions-menu in Minerva
-		margin-top: 1em;
-	}
+	// Add space between this and any existing page content above,
+	// or page-actions-menu in Minerva for non-existing pages
+	margin-top: 1em;
 
 	> img {
 		width: 250px;
+	}
+
+	// stylelint-disable-next-line selector-class-pattern
+	.mw-parser-output:not( .noarticletext ) & {
+		// Separate from existing (non-discussion) content
+		margin-top: 2em;
+		padding-top: 1em;
+		border-top: 1px solid #a2a9b1;
 	}
 }
 
@@ -433,8 +439,19 @@ span[ data-mw-comment-start ] {
 }
 
 .ext-discussiontools-init-replylink-open {
+	// stylelint-disable-next-line no-descending-specificity
 	.ext-discussiontools-emptystate,
 	> .mw-message-box-warning {
+		display: none;
+	}
+}
+
+.skin-minerva.ext-discussiontools-emptystate-shown {
+	// The Minerva "Add topic" button is very eye-catching.
+	// No need to show it when the empty state banner is shown.
+	// stylelint-disable-next-line selector-class-pattern
+	.minerva-talk-add-button,
+	.ext-discussiontools-init-new-topic {
 		display: none;
 	}
 }
