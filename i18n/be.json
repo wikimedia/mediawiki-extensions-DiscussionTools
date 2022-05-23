@@ -3,7 +3,9 @@
 		"authors": [
 			"Artsiom91",
 			"Kareyac",
-			"ZlyiLev"
+			"ZlyiLev",
+			"Chadyka",
+			"No Sleep till Krupki"
 		]
 	},
 	"discussiontools": "Інструменты абмеркаванняў",
@@ -26,7 +28,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-error-comment-disappeared": "Немагчыма знайсці каментарый, на які вы адказваеце, на гэтай старонцы. Магчыма, ён выдалены або перанесены на іншую старонку. Калі ласка, перазагрузіце старонку і паспрабуйце зноў.",
 	"discussiontools-error-comment-is-transcluded": "Спасылка \"{{int:discussiontools-replylink}}\" не можа быць выкарыстана для адказу на гэты каментарый. Каб адказаць, калі ласка, скарыстайцеся рэдактарам усёй старонкі, націснуўшы \"$1\".",
-	"discussiontools-error-comment-is-transcluded-title": "Спасылка \"{{int:discussiontools-replylink}}\" не можа быць выкарыстана для адказу на гэты каментарый, бо ён быў загружаны з іншай старонкі. Каб адказаць, калі ласка, перайдзіце сюды: $1.",
+	"discussiontools-error-comment-is-transcluded-title": "Спасылка \"{{int:discussiontools-replylink}}\" не можа быць выкарыстана для адказу на гэты каментарый, бо ён быў загружаны з іншай старонкі. Каб адказаць, калі ласка, перайдзіце сюды: [[$1]].",
 	"discussiontools-error-lint": "На каментарыі на гэтай старонцы немагчыма адказаць з-за памылкі ў вікітэксце. Вы можаце даведацца пра гэту памылку, [$1 прачытаўшы дакументацыю], папрасіўшы дапамогі [$2 напісаўшы сюды] або выправіўшы памылку [$3 адкрыўшы рэдактар усёй старонкі].",
 	"tag-discussiontools-description": "Праўка, здейсненая з дапамогай DiscussionTools",
 	"tag-discussiontools-edit-description": "Удзельнік адрэдагаваў існуючы каментарый з дапамогай DiscussionTools",

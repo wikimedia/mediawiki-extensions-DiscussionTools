@@ -2,13 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Fulup",
-			"Adriendelucca"
+			"Adriendelucca",
+			"Huñvreüs",
+			"Y-M D"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Respont",
 	"discussiontools-replylink": "respont",
+	"discussiontools-replywidget-cancel": "Nullañ",
 	"discussiontools-replywidget-feedback": "Rannañ ho soñj diwar-benn an arc'hwel-mañ",
 	"discussiontools-replywidget-mode-source": "Mammenn",
+	"discussiontools-replywidget-mode-visual": "Gwelet",
+	"discussiontools-replywidget-placeholder-reply": "Respont da {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Respont",
 	"discussiontools-replywidget-transcluded": "Enrollet e vo hoc'h evezhiadenn e [[$1]].",
 	"discussiontools-error-lint": "Ne c'haller ket respont d'an evezhiadennoù er bajenn-mañ rak ur fazi zo er wikitestenn. Gallout a rit gouzout hiroc'h diwar-benn ar fazi-se en ur [lenn an teuliadur $1], goulenn sikour [$2 amañ] pe en ur reizhañ ar fazi dre [$3 zigeriñ aozer ar bajenn glok].",
 	"tag-discussiontools-source": "Mammenn"

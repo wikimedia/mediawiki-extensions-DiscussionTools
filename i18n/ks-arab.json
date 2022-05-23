@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Teashae"
+			"Teashae",
+			"Iflaq"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "جَوآب",
@@ -9,6 +10,7 @@
 	"discussiontools-replywidget-cancel": "مَنسوٗخ",
 	"discussiontools-replywidget-loading": "لوڑ چھُ گژھن...",
 	"discussiontools-replywidget-mode-source": "آگُر",
+	"discussiontools-replywidget-mode-visual": "ظٲہِر",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} دِیو جَوآب",
 	"discussiontools-replywidget-preview": "نُمٲئش",
 	"discussiontools-replywidget-reply": "جَوآب",

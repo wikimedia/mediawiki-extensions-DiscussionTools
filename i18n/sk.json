@@ -4,13 +4,15 @@
 			"Dušan Kreheľ",
 			"Matroxko",
 			"Teslaton",
-			"Yardom78"
+			"Yardom78",
+			"Luky001"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "odpoveď",
 	"discussiontools-desc": "Nástroje na vylepšenie diskusných stránok.",
 	"discussiontools-preference-label": "Nástroje diskusie",
 	"discussiontools-replylink": "odpovedať",
+	"discussiontools-replywidget-anon-warning": "<strong>Momentálne nie ste prihlásení.</strong> Aby bol váš príspevok priradený k vášmu menu a nie k vašej IP adrese, [$1 prihláste sa] alebo si [$2 vytvorte používateľský účet].",
 	"discussiontools-replywidget-cancel": "Zrušiť",
 	"discussiontools-replywidget-feedback": "Zanechať spätnú väzbu k tejto funkcii",
 	"discussiontools-replywidget-loading": "Načítavam…",
