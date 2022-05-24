@@ -220,6 +220,23 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 					mw.config.get( 'wgWMESchemaEditAttemptStepOversample' )
 				) ? 1 : sampleRate
 			);
+
+			// T309013: Also log via the Metrics Platform:
+			var eventName = 'eas.dt.' + actionPrefix;
+			var customData = $.extend(
+				{
+					integration: 'discussiontools'
+				},
+				data
+			);
+
+			delete customData.action;
+
+			// Sampling rate (and therefore whether a stream should oversample) is captured in the
+			// stream config ($wgEventStreams).
+			delete customData.is_oversample;
+
+			mw.eventLog.dispatch( eventName, customData );
 		}
 	} );
 
