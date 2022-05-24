@@ -4,7 +4,8 @@
 			"Dušan Kreheľ",
 			"Yardom78",
 			"Matroxko",
-			"Teslaton"
+			"Teslaton",
+			"Luky001"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "odpoveď",
@@ -26,6 +27,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Zahodiť tému",
 	"discussiontools-replywidget-abandontopic-keep": "Pokračovať v písaní",
 	"discussiontools-replywidget-advanced": "Pokročilé",
+	"discussiontools-replywidget-anon-warning": "<strong>Momentálne nie ste prihlásení.</strong> Aby bol váš príspevok priradený k vášmu menu a nie k vašej IP adrese, [$1 prihláste sa] alebo si [$2 vytvorte používateľský účet].",
 	"discussiontools-replywidget-cancel": "Zrušiť",
 	"discussiontools-replywidget-feedback": "Zanechať spätnú väzbu k tejto funkcii",
 	"discussiontools-replywidget-loading": "Načítavam…",

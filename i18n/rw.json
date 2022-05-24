@@ -52,5 +52,19 @@
 	"discussiontools-replywidget-reply": "Subiza",
 	"discussiontools-replywidget-signature-body": "$1 Byahinduwe muri sinye yawe.guhindura andika $2.Menya ko udakeneye gusinya ibitekerezo hamwe niki gikoresho. Umukono wawe uzingerwaho byikora.",
 	"discussiontools-replywidget-signature-title": "Ikimenyetso cyumukono cyagaragaye",
-	"discussiontools-replywidget-summary": "Incamake"
+	"discussiontools-replywidget-summary": "Incamake",
+	"discussiontools-replywidget-terms-click": "Kanda \"$1\", kwemera kubijyanye no gukoresha iyi wiki.",
+	"discussiontools-replywidget-transcluded": "Igitekerezo cyawe kizabikwa kuri [[$1]].",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Uzakira amatangazo kubyerekeye ibitekerezo bishya muriyi ngingo.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ntuzongera kwakira amatangazo kubyerekeye ibitekerezo bishya muriyi ngingo.",
+	"tag-discussiontools-description": "Ikosora ryakoreshejwe DiscussionTools",
+	"tag-discussiontools-edit-description": "Umukoresha yakosoye igitekerezo gihari akoresheje DiscussionTools",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Ingingo nshya]",
+	"tag-discussiontools-newtopic-description": "Umukoresha yongeyeho ingingo nshya ku rubuga akoresheje DiscussionTools",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Subiza]",
+	"tag-discussiontools-reply-description": "Umukoresha yasubije igitekerezo akoresheje DiscussionTools",
+	"tag-discussiontools-source": "Inkomoko",
+	"tag-discussiontools-source-description": "DiscussionTools yari muburyo bw'inkomoko",
+	"tag-discussiontools-visual": "Biboneka",
+	"tag-discussiontools-visual-description": "DiscussionTools yari mu buryo bugaragara"
 }
