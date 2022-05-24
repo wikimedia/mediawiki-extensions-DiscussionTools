@@ -4,10 +4,10 @@
 			"Samatics"
 		]
 	},
-	"discussiontools-replylink": "reply-am",
-	"discussiontools-replywidget-cancel": "Cancel-am",
+	"discussiontools-replylink": "ansa-am",
+	"discussiontools-replywidget-cancel": "Kansu-am",
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Visual",
-	"discussiontools-replywidget-placeholder-reply": "Reply to {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Reply-am"
+	"discussiontools-replywidget-placeholder-reply": "Ansa to {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Ansa-am"
 }
