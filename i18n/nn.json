@@ -4,6 +4,7 @@
 			"Njardarlogar"
 		]
 	},
+	"discussiontools-error-comment-is-transcluded": "«{{int:discussiontools-replylink}}»-lenkja kan ikkje brukast på denne kommentaren. For å svara på kommentaren lyt du gå inn i endringsmodus for heile sida ved å trykkja på «$1».",
 	"discussiontools-replywidget-mention-tool-header": "Finn brukar: $1",
 	"discussiontools-replywidget-mention-tool-title": "Nemn ein brukar",
 	"discussiontools-replywidget-mode-source": "Kjelde",
