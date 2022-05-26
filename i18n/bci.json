@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kjeanclaude"
+		]
+	},
+	"discussiontools-autotopicsubpopup-dismiss": "Yoo, n'tili",
+	"discussiontools-autotopicsubpopup-preferences": "Katchi klounklo sou ningué moun",
+	"discussiontools-defaultsummary-reply": "Tè sou",
+	"discussiontools-preference-topicsubscription": "Tingué bé douman klèlè ndè nga sou",
+	"discussiontools-replylink": "tè sou",
+	"discussiontools-replywidget-cancel": "Nan yé i koun",
+	"discussiontools-replywidget-mode-source": "Finwlè:",
+	"discussiontools-replywidget-mode-visual": "Liké nga bé woun i",
+	"discussiontools-replywidget-placeholder-reply": "Tè {{BIDI:$1}} sou",
+	"discussiontools-replywidget-reply": "Tè sou",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Yi ô douman i noun",
+	"discussiontools-topicsubscription-button-subscribe": "klè ô douman i sou",
+	"tag-discussiontools-source": "Finwlè:"
+}

@@ -117,7 +117,7 @@
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Падпіска|Падпіскі}} на старонкі размовы",
 	"echo-pref-tooltip-dt-subscription": "Паведаміць мне, калі нехта напіша новы каментар у тэму, на якую я {{GENDER:|падпісаў|падпісалася}}.",
 	"tag-discussiontools-added-comment-description": "У гэтай праўцы быў дададзены каментар на старонку размовы",
-	"tag-discussiontools-description": "Праўка, здейсненая з дапамогай DiscussionTools",
+	"tag-discussiontools-description": "Праўка, здзейсненая з дапамогай DiscussionTools",
 	"tag-discussiontools-edit": "Адрэдагаваны каментарый",
 	"tag-discussiontools-edit-description": "Удзельнік адрэдагаваў існуючы каментарый з дапамогай DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Новая тэма]",

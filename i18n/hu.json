@@ -93,6 +93,8 @@
 	"discussiontools-replywidget-terms-click": "A „$1” gombra kattintással elfogadod ezen wiki felhasználási feltételeit.",
 	"discussiontools-replywidget-transcluded": "Hozzászólásod a(z) [[$1]] lapon lesz elmentve.",
 	"discussiontools-replywidget-watchthis": "A lap hozzáadása a [[Special:Watchlist|figyelőlistádhoz]]",
+	"discussiontools-target-comment-missing": "Ez a hozzászólás nem található. Elképzelhető, hogy törölték vagy áthelyezték.",
+	"discussiontools-target-comments-missing": "Nem találhatóak új hozzászólások. Elképzelhető, hogy törölték vagy áthelyezték őket.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Leiratkozás",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Leiratkozol erről a témáról?",
 	"discussiontools-topicsubscription-button-subscribe": "feliratkozás",
