@@ -4,9 +4,17 @@
 			"Kjeanclaude"
 		]
 	},
+	"discussiontools": "Yalè kokolè ningué moun",
+	"discussiontools-autotopicsubpopup-body": "Bé kan klé amoun sè sran koun fa djôlè ouflè koun fa ba yalè kokolè floua boué nga sou'n. Amoun kloua siésié amoun ndè kan klélè ningué moun bé klounklo sou floua boué sou lô.",
 	"discussiontools-autotopicsubpopup-dismiss": "Yoo, n'tili",
 	"discussiontools-autotopicsubpopup-preferences": "Katchi klounklo sou ningué moun",
+	"discussiontools-autotopicsubpopup-title": "A klèli ô douman i sou",
 	"discussiontools-defaultsummary-reply": "Tè sou",
+	"discussiontools-desc": "Ningué nga bé fa yé yalè kokolè floua boué moun bé kpa tra laa liè.",
+	"discussiontools-emptystate-button": "Bo yalè kokolè koun i bo",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Yalè kokolè floua boué moun]] bé sou yè sran moun bé koko {{SITENAME}} i sou yalè nion, kôko yé nan ba woun atin nga ô fata kè bé sou sou nan ba yé i sou ndè moun bé kpa tra laa liè. Amoun kloua fa floua boué nga fa bo yalè kokolè koun i bo ôni sran ouflè moun, kôko yé nan ba woun atin nga ô fata kè bé sou sou nan ba yé [[:{{SUBJECTPAGENAME}}]] i sou ndè moun bé kpa tra laa liè.",
+	"discussiontools-emptystate-desc-self": "Sran nga bé wo {{SITENAME}} sou, bé kloua fa [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|yalè kokolè floua boué]] nga bé fa klè nsra noun ndè koun bé fa man wô, kôkoun è woun ndè koun ô floua boué sou sè bé yé i sô.",
+	"discussiontools-emptystate-desc-self-anon": "Sran nga bé wo {{SITENAME}} sou, bé kloua fa [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|yalè kokolè floua boué]] nga bé fa klè nsra noun ndè koun i liké katchilè moun nga bé fa ô dô nga sou IP adressi nga, bé fa yéli.\n\nIP adressi kpangban bé katchi tika tika, kôkoun sran kpangban bé tchè i sô adressi nou titi. Amoun kloua [$1 yi conti koun] annzè [$2 wlou noun] kôko yé nan i gnrou lô, amoun ni conti léfouè ouflè moun nga ba fité'n, ba sangan man. Conti koun yilè koussou ô fa wô IP adressi ô fa fia.",
 	"discussiontools-preference-topicsubscription": "Tingué bé douman klèlè ndè nga sou",
 	"discussiontools-replylink": "tè sou",
 	"discussiontools-replywidget-cancel": "Nan yé i koun",

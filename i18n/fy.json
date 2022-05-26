@@ -76,6 +76,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Meidogger neame",
 	"discussiontools-replywidget-mode-source": "Boarne",
 	"discussiontools-replywidget-mode-visual": "Fisueel",
+	"discussiontools-replywidget-newcomments-button": "$1 nije {{PLURAL:$1|reäksje|reäksjes}} werjaan",
 	"discussiontools-replywidget-newtopic": "Underwerp taheakje",
 	"discussiontools-replywidget-placeholder-newtopic": "Beskriuwing",
 	"discussiontools-replywidget-placeholder-reply": "Antwurd oan {{BIDI:$1}}",

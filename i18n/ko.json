@@ -82,6 +82,7 @@
 	"discussiontools-replywidget-mention-tool-title": "사용자 언급하기",
 	"discussiontools-replywidget-mode-source": "원본",
 	"discussiontools-replywidget-mode-visual": "시각",
+	"discussiontools-replywidget-newcomments-button": "새 {{PLURAL:$1|댓글}} $1개 표시",
 	"discussiontools-replywidget-newtopic": "주제 추가",
 	"discussiontools-replywidget-placeholder-newtopic": "설명",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}에게 답장",
