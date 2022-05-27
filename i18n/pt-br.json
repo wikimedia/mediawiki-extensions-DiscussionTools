@@ -9,6 +9,7 @@
 			"He7d3r",
 			"Jhonnatanricardo",
 			"Matma Rex",
+			"Stanglavine",
 			"Wiiformii",
 			"YuriNikolai"
 		]
@@ -21,12 +22,12 @@
 	"discussiontools-emptystate-desc": "As páginas de discussão são onde as pessoas discutem como fazer conteúdo em {{SITENAME}} o melhor que pode ser. Você pode usar esta página para iniciar uma discussão com outras pessoas sobre como melhorar [[:{{SUBJECTPAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Saiba mais sobre como essas páginas são usadas]].",
 	"discussiontools-emptystate-desc-self": "Pessoas em {{SITENAME}} pode usar esta página para postar uma mensagem pública para você e você será notificado quando isso acontecer. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Saiba mais]].",
 	"discussiontools-emptystate-desc-self-anon": "As pessoas em {{SITENAME}} podem usar esta página para postar uma mensagem pública sobre edições feitas a partir do endereço IP que você está usando atualmente.\n\nMuitos endereços IP mudam periodicamente e são frequentemente compartilhados por várias pessoas. Você pode [$1 criar uma conta] ou [$2 entrar] para evitar futuras confusão com outros usuários entrados. Criar uma conta também esconde seu endereço IP.",
-	"discussiontools-emptystate-desc-user": "As páginas de discussão são onde as pessoas discutem como fazer conteúdo em {{SITENAME}} o melhor que pode ser. Inicie uma nova discussão para conectar e colaborar com[[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. O que você diz aqui será público para os outros verem. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Saiba mais]]",
+	"discussiontools-emptystate-desc-user": "As [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|páginas de discussão]] são onde as pessoas discutem como fazer com que o conteúdo em {{SITENAME}} seja o melhor possível. Inicie uma nova discussão para conectar e colaborar {{GENDER:{{PAGENAME}}|com}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. O que você escrever aqui será público para os outros verem.",
 	"discussiontools-emptystate-desc-user-anon": "As páginas de discussão são onde as pessoas discutem como fazer conteúdo em {{SITENAME}} o melhor que pode ser. Use esta página para iniciar uma discussão sobre as edições feitas a partir deste endereço IP. O que você diz aqui será público para os outros verem. Muitos endereços IP mudam periodicamente e são frequentemente compartilhados por várias pessoas. [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Saber mais]]",
 	"discussiontools-emptystate-title": "Começa uma discussão sobre {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bem-vindo à sua página de discussão",
 	"discussiontools-emptystate-title-self-anon": "Bem-vindo a esta página de discussão",
-	"discussiontools-emptystate-title-user": "Comece uma discussão com {{GENDER:{{PAGENAME}}|com}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "Comece uma discussão {{GENDER:{{PAGENAME}}|com}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Bem-vindo a esta página de discussão",
 	"discussiontools-error-comment-conflict": "Não foi possível salvar seu comentário porque outra pessoa comentou ao mesmo tempo que você. Tente novamente ou recarregue a página para ver os comentários mais recentes.",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário ao qual você está respondendo na página. Pode ter sido excluído ou movido para outra página. Por favor, recarregue a página e tente de novo.",
