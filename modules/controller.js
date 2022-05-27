@@ -244,6 +244,11 @@ function init( $container, state ) {
 	// Lazy-load postEdit module, may be required later (on desktop)
 	mw.loader.using( 'mediawiki.action.view.postEdit' );
 
+	if ( OO.ui.isMobile() && mw.config.get( 'skin' ) === 'minerva' ) {
+		// For compatibility with Minerva click tracking (T295490)
+		$container.find( '.section-heading' ).attr( 'data-event-name', 'talkpage.section' );
+	}
+
 	$pageContainer = $container;
 	linksController = new ReplyLinksController( $pageContainer );
 	var parser = new Parser( require( './parser/data.json' ) );
