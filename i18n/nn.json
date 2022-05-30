@@ -8,5 +8,6 @@
 	"discussiontools-replywidget-mode-source": "Kjelde",
 	"discussiontools-replywidget-preview": "Førehandsvising",
 	"discussiontools-replywidget-reply": "Svar",
+	"discussiontools-error-comment-is-transcluded": "«{{int:discussiontools-replylink}}»-lenkja kan ikkje brukast på denne kommentaren. For å svara på kommentaren lyt du gå inn i endringsmodus for heile sida ved å trykkja på «$1».",
 	"tag-discussiontools-source": "Kjelde"
 }

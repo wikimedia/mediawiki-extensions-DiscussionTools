@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kjeanclaude"
+		]
+	},
+	"discussiontools": "Yalè kokolè ningué moun",
+	"discussiontools-defaultsummary-reply": "Tè sou",
+	"discussiontools-desc": "Ningué nga bé fa yé yalè kokolè floua boué moun bé kpa tra laa liè.",
+	"discussiontools-preference-label": "Yalè kokolè ningué moun",
+	"discussiontools-replylink": "tè sou",
+	"discussiontools-replywidget-cancel": "Nan yé i koun",
+	"discussiontools-replywidget-mode-source": "Finwlè:",
+	"discussiontools-replywidget-mode-visual": "Liké nga bé woun i",
+	"discussiontools-replywidget-placeholder-reply": "Tè {{BIDI:$1}} sou",
+	"discussiontools-replywidget-reply": "Tè sou",
+	"tag-discussiontools-source": "Finwlè:"
+}
