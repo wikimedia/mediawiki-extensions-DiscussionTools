@@ -62,7 +62,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Вы атрымаеце апавяшчэнні пра новыя каментарыі ў гэтай тэме.",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вы больш не будзеце атрымліваць апавяшчэнні пра новыя каментарыі ў гэтай тэме.",
-	"tag-discussiontools-description": "Праўка, здейсненая з дапамогай DiscussionTools",
+	"tag-discussiontools-description": "Праўка, здзейсненая з дапамогай DiscussionTools",
 	"tag-discussiontools-edit-description": "Удзельнік адрэдагаваў існуючы каментарый з дапамогай DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Новая тэма]",
 	"tag-discussiontools-newtopic-description": "Удзельнік дадаў новую тэму на старонцы з дапамогай DiscussionTools",

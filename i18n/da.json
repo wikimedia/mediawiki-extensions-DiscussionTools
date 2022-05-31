@@ -2,10 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Saederup92"
+			"Saederup92",
+			"Antonla",
+			"Dipsacus fullonum"
 		]
 	},
+	"discussiontools": "Discussion tools",
 	"discussiontools-defaultsummary-reply": "Svar",
+	"discussiontools-desc": "Værktøj til at forbedre diskussionssider",
 	"discussiontools-newtopic-placeholder-title": "Titel",
 	"discussiontools-postedit-confirmation-topicadded": "Dit emne blev tilføjet.",
 	"discussiontools-replylink": "svar",

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kjeanclaude"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "Ba wounman yalè kokolè nga bé fa '$1' ID yéli.",
+	"apierror-discussiontools-commentname-notfound": "Ba wounman yalè kokolè nga i douman yô lé '$1'.",
+	"apihelp-discussiontoolsedit-param-commentid": "Yalè kokolè nga ô fata kè bé tè sou, i ID. San kè <var>paction</var> ô ti <var>addcomment</var> i gounmin, yè bé fa i ô. Ô ti tchindji tra <var>commentname</var>.",
+	"apihelp-discussiontoolsedit-param-commentname": "Yalè kokolè nga ô fata kè bé tè sou, i douman. San kè <var>paction</var> ô ti <var>addcomment</var> i gounmin, yè bé fa i ô."
+}
