@@ -114,7 +114,9 @@ ThreadItem.static.newFromJSON = function ( json ) {
 ThreadItem.prototype.getAuthorsBelow = function () {
 	var authors = {};
 	function getAuthorSet( comment ) {
-		authors[ comment.author ] = true;
+		if ( comment.type === 'comment' ) {
+			authors[ comment.author ] = true;
+		}
 		// Get the set of authors in the same format from each reply
 		comment.replies.forEach( getAuthorSet );
 	}
