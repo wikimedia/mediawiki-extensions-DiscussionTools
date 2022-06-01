@@ -475,6 +475,7 @@
 		"MinervaNeueTalkPageOverlay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\MobileHooks::onMinervaNeueTalkPageOverlay",
 		"LoadExtensionSchemaUpdates": "installer",
 		"ParserAfterTidy": "parser",
+		"ParserOutputPostCacheTransform": "parser",
 		"ArticleViewHeader": "page",
 		"BeforeDisplayNoArticleText": "page",
 		"BeforePageDisplay": "page",

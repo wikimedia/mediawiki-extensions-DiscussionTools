@@ -133,6 +133,10 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 };
 
 ReplyLinksController.prototype.isActivationEvent = function ( e ) {
+	if ( mw.config.get( 'wgAction' ) !== 'view' ) {
+		// Don't do anything when we're editing/previewing
+		return false;
+	}
 	if ( e.type === 'keypress' && e.which !== OO.ui.Keys.ENTER && e.which !== OO.ui.Keys.SPACE ) {
 		// Only handle keypresses on the "Enter" or "Space" keys
 		return false;

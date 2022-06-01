@@ -279,6 +279,29 @@ class CommentFormatter {
 	}
 
 	/**
+	 * Replace placeholders for all interactive tools with nothing. This is intended for cases where
+	 * interaction is unexpected, e.g. reply links while previewing an edit.
+	 *
+	 * @param string $text
+	 * @return string
+	 */
+	public static function removeInteractiveTools( string $text ) {
+		$text = strtr( $text, [
+			'<!--__DTREPLY__-->' => '',
+			'<!--__DTREPLYBRACKETOPEN__-->' => '',
+			'<!--__DTREPLYBRACKETCLOSE__-->' => '',
+			'<!--__DTELLIPSISBUTTON__-->' => '',
+			'<!--__DTEMPTYTALKPAGE__-->' => '',
+		] );
+
+		$text = preg_replace( '/<!--__DTSUBSCRIBE__(.*?)-->/', '', $text );
+		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
+		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON__(.*?)-->/', '', $text );
+
+		return $text;
+	}
+
+	/**
 	 * Replace placeholders for topic subscription buttons with the real thing.
 	 *
 	 * @param string $text

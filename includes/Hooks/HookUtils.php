@@ -229,8 +229,8 @@ class HookUtils {
 	 * @return bool
 	 */
 	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ): bool {
-		// Don't show on edit pages, history, etc.
-		if ( $feature !== static::NEWTOPICTOOL && $output->getActionName() !== 'view' ) {
+		// Only show on normal page views (not history etc.), and in edit mode for previews
+		if ( !in_array( $output->getActionName(), [ 'view', 'edit', 'submit' ] ) ) {
 			return false;
 		}
 

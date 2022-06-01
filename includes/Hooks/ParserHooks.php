@@ -12,9 +12,14 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 use ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Hook\ParserAfterTidyHook;
+use MediaWiki\Hook\ParserOutputPostCacheTransformHook;
 use Parser;
+use ParserOutput;
 
-class ParserHooks implements ParserAfterTidyHook {
+class ParserHooks implements
+	ParserAfterTidyHook,
+	ParserOutputPostCacheTransformHook
+{
 	/** @var ConfigFactory */
 	private $configFactory;
 
@@ -34,7 +39,7 @@ class ParserHooks implements ParserAfterTidyHook {
 	 * @param string &$text
 	 */
 	public function onParserAfterTidy( $parser, &$text ) {
-		if ( $parser->getOptions()->getInterfaceMessage() || $parser->getOptions()->getIsPreview() ) {
+		if ( $parser->getOptions()->getInterfaceMessage() ) {
 			return;
 		}
 
@@ -68,6 +73,19 @@ class ParserHooks implements ParserAfterTidyHook {
 			$parser->getOutput()->addModuleStyles( [
 				'ext.discussionTools.init.styles',
 			] );
+		}
+	}
+
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ParserOutputPostCacheTransform
+	 *
+	 * @param ParserOutput $parserOutput
+	 * @param string &$text
+	 * @param array &$options
+	 */
+	public function onParserOutputPostCacheTransform( $parserOutput, &$text, &$options ): void {
+		if ( !$options['enableSectionEditLinks'] ) {
+			$text = CommentFormatter::removeInteractiveTools( $text );
 		}
 	}
 }
