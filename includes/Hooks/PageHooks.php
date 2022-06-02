@@ -350,13 +350,15 @@ class PageHooks implements
 			// talk page feature is enabled, but we shouldn't depend on code from there.
 			$output->enableOOUI();
 			$output->addHTML(
-				new ButtonWidget( [
+				( new ButtonWidget( [
 					'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
 					// TODO: Make this a local message if the Minerva feature goes away
 					'label' => $context->msg( 'minerva-talk-add-topic' )->text(),
 					'flags' => [ 'progressive', 'primary' ],
 					'classes' => [ 'ext-discussiontools-init-new-topic' ]
-				] )
+				] ) )
+					// For compatibility with Minerva click tracking (T295490)
+					->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
 			);
 		}
 	}
