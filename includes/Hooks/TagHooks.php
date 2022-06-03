@@ -67,15 +67,23 @@ class TagHooks implements
 		if ( !defined( 'MW_API' ) ) {
 			return true;
 		}
-		$request = RequestContext::getMain()->getRequest();
-		$tags = explode( ',', $request->getText( 'dttags' ) );
 
-		$tags = array_values( array_intersect( $tags, static::TAGS ) );
-
+		$tags = self::getDiscussionToolsTagsFromRequest();
 		if ( $tags ) {
 			$recentChange->addTags( $tags );
 		}
 
 		return true;
+	}
+
+	/**
+	 * Get DT tags from the dttags param in the request, and validate against known tags.
+	 *
+	 * @return array
+	 */
+	public static function getDiscussionToolsTagsFromRequest(): array {
+		$request = RequestContext::getMain()->getRequest();
+		$tags = explode( ',', $request->getText( 'dttags' ) );
+		return array_values( array_intersect( $tags, static::TAGS ) );
 	}
 }
