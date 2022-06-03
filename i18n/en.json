@@ -41,7 +41,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>A new way to start topics is here.</strong> This update enables you to add topics using an inline form and to ping others with a new shortcut. You can also [$1 switch back to the legacy experience].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>You are now viewing the legacy experience.</strong> You can [$1 return to the new experience] or visit preferences to [$2 set the legacy experience as your default].",
 	"discussiontools-newtopic-missing-title": "Please provide a title for your discussion topic. If you click \"{{int:discussiontools-replywidget-newtopic}}\", your topic will be added without a title.",
-	"discussiontools-newtopic-placeholder-title": "Title",
+	"discussiontools-newtopic-placeholder-title": "Subject",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|replied}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|One new reply|$1 new replies|100=99+ new replies}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
