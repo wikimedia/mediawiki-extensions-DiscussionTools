@@ -274,6 +274,13 @@
 				transform: scale( 1.5 );
 				transform-origin: 0 center;
 				left: 1em;
+
+				// Hide warning icon below tablet width
+				@media all and ( max-width: @width-breakpoint-tablet ) {
+					& {
+						display: none;
+					}
+				}
 			}
 		}
 
@@ -281,6 +288,13 @@
 			flex-grow: 1;
 			flex-basis: 20em;
 			margin-left: 3em;
+
+			// Hide warning icon below tablet width
+			@media all and ( max-width: @width-breakpoint-tablet ) {
+				& {
+					margin-left: 0;
+				}
+			}
 		}
 
 		.ext-discussiontools-ui-replyWidget-actions {
