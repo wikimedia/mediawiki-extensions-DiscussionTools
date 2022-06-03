@@ -38,6 +38,7 @@
 	"discussiontools-replywidget-summary": "ความย่อ",
 	"discussiontools-replywidget-transcluded": "ความเห็นของคุณจะถูกบันทึกไว้ที่ [[$1]]",
 	"discussiontools-replywidget-watchthis": "เพิ่มหน้านี้ไปยัง[[Special:Watchlist|รายการเฝ้าดู]]",
+	"discussiontools-topicsubscription-button-subscribe": "ติดตาม",
 	"discussiontools-topicsubscription-pager-page": "หน้า",
 	"discussiontools-topicsubscription-pager-topic": "หัวข้อ",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "เลิกสมัครรับ",
