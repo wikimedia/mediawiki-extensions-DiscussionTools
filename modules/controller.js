@@ -464,6 +464,10 @@ function updatePageContents( $container, data ) {
 	// The hooks have "memory" so calling add() after fire() actually fires the handler,
 	// and calling add() before fire() would actually fire it twice.
 	mw.hook( 'wikipage.content' ).add( mw.dt.init );
+
+	mw.hook( 'wikipage.tableOfContents' ).fire(
+		data.parse.showtoc ? data.parse.sections : []
+	);
 }
 
 /**
@@ -482,7 +486,7 @@ function refreshPageContents( oldId ) {
 		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
 		// a page view with reply links forced with ?dtenable=1 or otherwise
 		dtenable: '1',
-		prop: [ 'text', 'modules', 'jsconfigvars', 'revid' ],
+		prop: [ 'text', 'sections', 'modules', 'jsconfigvars', 'revid' ],
 		page: !oldId ? mw.config.get( 'wgRelevantPageName' ) : undefined,
 		oldid: oldId || undefined
 	} ).then( function ( parseResp ) {
@@ -545,7 +549,10 @@ function update( data, threadItem, pageName, replyWidget ) {
 				revid: data.newrevid,
 				// Note: VE API merges 'modules' and 'modulestyles'
 				modules: data.modules,
-				modulestyles: []
+				modulestyles: [],
+				// Note: VE API drops 'showtoc' and changes 'sections' depending on it
+				showtoc: true,
+				sections: data.sections
 			}
 		} );
 
