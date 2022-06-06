@@ -3,10 +3,13 @@
 		"authors": [
 			"Saederup92",
 			"Antonla",
-			"Matma Rex"
+			"Matma Rex",
+			"Dipsacus fullonum"
 		]
 	},
+	"discussiontools": "Discussion tools",
 	"discussiontools-defaultsummary-reply": "Svar",
+	"discussiontools-desc": "Værktøj til at forbedre diskussionssider",
 	"discussiontools-replylink": "svar",
 	"discussiontools-replywidget-cancel": "Annullér",
 	"discussiontools-replywidget-loading": "Indlæser…",
