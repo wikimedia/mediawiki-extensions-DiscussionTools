@@ -911,7 +911,7 @@ class CommentParser {
 					// Add a fake placeholder heading if there are any comments in the 0th section
 					// (before the first real heading)
 					$range = new ImmutableRange( $this->rootNode, 0, $this->rootNode, 0 );
-					$fakeHeading = new HeadingItem( $range, 99, true );
+					$fakeHeading = new HeadingItem( $range, null );
 					$fakeHeading->setRootNode( $this->rootNode );
 					$result->addThreadItem( $fakeHeading );
 				}

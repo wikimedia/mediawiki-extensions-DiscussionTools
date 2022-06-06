@@ -41,7 +41,7 @@ function NewTopicController( $pageContainer, threadItemSet ) {
 		startOffset: 0,
 		endContainer: this.sectionTitleField.$element[ 0 ],
 		endOffset: this.sectionTitleField.$element[ 0 ].childNodes.length
-	} );
+	}, 2 );
 	threadItem.id = utils.NEW_TOPIC_COMMENT_ID;
 	threadItem.isNewTopic = true;
 

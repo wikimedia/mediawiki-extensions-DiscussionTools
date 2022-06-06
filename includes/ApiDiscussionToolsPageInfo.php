@@ -95,7 +95,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			$firstHeading = $threads[0];
 			if ( !$firstHeading->isPlaceholderHeading() ) {
 				$range = new ImmutableRange( $firstHeading->getRootNode(), 0, $firstHeading->getRootNode(), 0 );
-				$fakeHeading = new HeadingItem( $range, 99, true );
+				$fakeHeading = new HeadingItem( $range, null );
 				$fakeHeading->setRootNode( $firstHeading->getRootNode() );
 				array_unshift( $threads, $fakeHeading );
 			}

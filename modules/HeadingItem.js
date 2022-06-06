@@ -1,4 +1,6 @@
 var ThreadItem = require( './ThreadItem.js' );
+// Placeholder headings must have a level higher than real headings (1-6)
+var PLACEHOLDER_HEADING_LEVEL = 99;
 
 /**
  * A heading item
@@ -7,15 +9,14 @@ var ThreadItem = require( './ThreadItem.js' );
  * @extends ThreadItem
  * @constructor
  * @param {Object} range
- * @param {number} headingLevel Heading level (1-6)
- * @param {boolean} [placeholderHeading] Item doesn't correspond to a real heading (e.g. 0th section)
+ * @param {number|null} headingLevel Heading level (1-6). Use null for a placeholder heading.
  */
-function HeadingItem( range, headingLevel, placeholderHeading ) {
+function HeadingItem( range, headingLevel ) {
 	// Parent constructor
 	HeadingItem.super.call( this, 'heading', 0, range );
 
-	this.headingLevel = headingLevel;
-	this.placeholderHeading = !!placeholderHeading;
+	this.placeholderHeading = headingLevel === null;
+	this.headingLevel = this.placeholderHeading ? PLACEHOLDER_HEADING_LEVEL : headingLevel;
 }
 
 OO.inheritClass( HeadingItem, ThreadItem );
