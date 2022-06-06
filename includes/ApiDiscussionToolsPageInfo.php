@@ -39,78 +39,98 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		$result = [];
 
 		if ( isset( $prop['transcludedfrom'] ) ) {
-			$threadItems = $threadItemSet->getThreadItems();
-			$transcludedFrom = [];
-			foreach ( $threadItems as $threadItem ) {
-				$from = $threadItem->getTranscludedFrom();
-
-				// Key by IDs, legacy IDs, and names. This assumes that they can never conflict.
-
-				$transcludedFrom[ $threadItem->getId() ] = $from;
-
-				$legacyId = $threadItem->getLegacyId();
-				if ( $legacyId ) {
-					$transcludedFrom[ $legacyId ] = $from;
-				}
-
-				$name = $threadItem->getName();
-				if ( isset( $transcludedFrom[ $name ] ) && $transcludedFrom[ $name ] !== $from ) {
-					// Two or more items with the same name, transcluded from different pages.
-					// Consider them both to be transcluded from unknown source.
-					$transcludedFrom[ $name ] = true;
-				} else {
-					$transcludedFrom[ $name ] = $from;
-				}
-			}
-
-			$result['transcludedfrom'] = $transcludedFrom;
+			$result['transcludedfrom'] = self::getTranscludedFrom( $threadItemSet );
 		}
 
 		if ( isset( $prop['threaditemshtml'] ) ) {
-			$threads = $threadItemSet->getThreads();
-			if ( count( $threads ) > 0 ) {
-				$firstHeading = $threads[0];
-				if ( !$firstHeading->isPlaceholderHeading() ) {
-					$range = new ImmutableRange( $firstHeading->getRootNode(), 0, $firstHeading->getRootNode(), 0 );
-					$fakeHeading = new HeadingItem( $range, 99, true );
-					$fakeHeading->setRootNode( $firstHeading->getRootNode() );
-					array_unshift( $threads, $fakeHeading );
-				}
-			}
-			$output = array_map( static function ( ThreadItem $item ) {
-				return $item->jsonSerialize( true, static function ( array &$array, ThreadItem $item ) {
-					$array['html'] = $item->getHtml();
-				} );
-			}, $threads );
-			foreach ( $threads as $index => $item ) {
-				// need to loop over this to fix up empty sections, because we
-				// need context that's not available inside the array map
-				if ( $item instanceof HeadingItem && count( $item->getReplies() ) === 0 ) {
-					$nextItem = $threads[ $index + 1 ] ?? false;
-					$startRange = $item->getRange();
-					if ( $nextItem ) {
-						$nextRange = $nextItem->getRange();
-						$nextStart = $nextRange->startContainer->previousSibling ?: $nextRange->startContainer;
-						$betweenRange = new ImmutableRange(
-							$startRange->endContainer->nextSibling ?: $startRange->endContainer, 0,
-							$nextStart, $nextStart->childNodes->length ?? 0
-						);
-					} else {
-						// This is the last section, so we want to go to the end of the rootnode
-						$betweenRange = new ImmutableRange(
-							$startRange->endContainer->nextSibling ?: $startRange->endContainer, 0,
-							$item->getRootNode(), $item->getRootNode()->childNodes->length
-						);
-					}
-					$fragment = $betweenRange->cloneContents();
-					CommentModifier::unwrapFragment( $fragment );
-					$output[$index]['othercontent'] = trim( DOMUtils::getFragmentInnerHTML( $fragment ) );
-				}
-			}
-			$result['threaditemshtml'] = $output;
+			$result['threaditemshtml'] = self::getThreadItemsHtml( $threadItemSet );
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * Get transcluded=from data for a ThreadItemSet
+	 *
+	 * @param ThreadItemSet $threadItemSet
+	 * @return array
+	 */
+	private static function getTranscludedFrom( ThreadItemSet $threadItemSet ): array {
+		$threadItems = $threadItemSet->getThreadItems();
+		$transcludedFrom = [];
+		foreach ( $threadItems as $threadItem ) {
+			$from = $threadItem->getTranscludedFrom();
+
+			// Key by IDs, legacy IDs, and names. This assumes that they can never conflict.
+
+			$transcludedFrom[ $threadItem->getId() ] = $from;
+
+			$legacyId = $threadItem->getLegacyId();
+			if ( $legacyId ) {
+				$transcludedFrom[ $legacyId ] = $from;
+			}
+
+			$name = $threadItem->getName();
+			if ( isset( $transcludedFrom[ $name ] ) && $transcludedFrom[ $name ] !== $from ) {
+				// Two or more items with the same name, transcluded from different pages.
+				// Consider them both to be transcluded from unknown source.
+				$transcludedFrom[ $name ] = true;
+			} else {
+				$transcludedFrom[ $name ] = $from;
+			}
+		}
+
+		return $transcludedFrom;
+	}
+
+	/**
+	 * Get thread items HTML for a ThreadItemSet
+	 *
+	 * @param ThreadItemSet $threadItemSet
+	 * @return array
+	 */
+	private static function getThreadItemsHtml( ThreadItemSet $threadItemSet ): array {
+		$threads = $threadItemSet->getThreads();
+		if ( count( $threads ) > 0 ) {
+			$firstHeading = $threads[0];
+			if ( !$firstHeading->isPlaceholderHeading() ) {
+				$range = new ImmutableRange( $firstHeading->getRootNode(), 0, $firstHeading->getRootNode(), 0 );
+				$fakeHeading = new HeadingItem( $range, 99, true );
+				$fakeHeading->setRootNode( $firstHeading->getRootNode() );
+				array_unshift( $threads, $fakeHeading );
+			}
+		}
+		$output = array_map( static function ( ThreadItem $item ) {
+			return $item->jsonSerialize( true, static function ( array &$array, ThreadItem $item ) {
+				$array['html'] = $item->getHtml();
+			} );
+		}, $threads );
+		foreach ( $threads as $index => $item ) {
+			// need to loop over this to fix up empty sections, because we
+			// need context that's not available inside the array map
+			if ( $item instanceof HeadingItem && count( $item->getReplies() ) === 0 ) {
+				$nextItem = $threads[ $index + 1 ] ?? false;
+				$startRange = $item->getRange();
+				if ( $nextItem ) {
+					$nextRange = $nextItem->getRange();
+					$nextStart = $nextRange->startContainer->previousSibling ?: $nextRange->startContainer;
+					$betweenRange = new ImmutableRange(
+						$startRange->endContainer->nextSibling ?: $startRange->endContainer, 0,
+						$nextStart, $nextStart->childNodes->length ?? 0
+					);
+				} else {
+					// This is the last section, so we want to go to the end of the rootnode
+					$betweenRange = new ImmutableRange(
+						$startRange->endContainer->nextSibling ?: $startRange->endContainer, 0,
+						$item->getRootNode(), $item->getRootNode()->childNodes->length
+					);
+				}
+				$fragment = $betweenRange->cloneContents();
+				CommentModifier::unwrapFragment( $fragment );
+				$output[$index]['othercontent'] = trim( DOMUtils::getFragmentInnerHTML( $fragment ) );
+			}
+		}
+		return $output;
 	}
 
 	/**
