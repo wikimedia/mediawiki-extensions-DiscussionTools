@@ -8,7 +8,8 @@
 			"Fringio",
 			"Lorem Ipsum",
 			"Sakretsu",
-			"Scompo"
+			"Scompo",
+			"Mannivu"
 		]
 	},
 	"discussiontools": "Strumenti di discussione",
@@ -47,7 +48,7 @@
 	"discussiontools-preference-label": "Strumenti di discussione",
 	"discussiontools-preference-summary": "Puoi avere maggiori informazioni su questa funzionalità nel [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary riepilogo delle funzionalità].",
 	"discussiontools-preference-newtopictool": "Abilita aggiunte di argomento rapide",
-	"discussiontools-preference-newtopictool-help": "Mostra un form in linea per aggiungere nuove discussioni.",
+	"discussiontools-preference-newtopictool-help": "Mostra un form in linea per aggiungere nuovi argomenti.",
 	"discussiontools-preference-replytool": "Abilita risposte rapide",
 	"discussiontools-preference-replytool-help": "Mostra un link per rispondere con un solo click ai commenti sulle pagine di discussione.",
 	"discussiontools-preference-sourcemodetoolbar": "Abilita strumenti di modifica nella modalità sorgente",

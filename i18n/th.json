@@ -5,7 +5,8 @@
 			"Geonuch",
 			"Matma Rex",
 			"Patsagorn Y.",
-			"Prame Tan"
+			"Prame Tan",
+			"Thas Tayapongsak"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ตอบกลับ",
@@ -33,6 +34,7 @@
 	"discussiontools-replywidget-signature-title": "ตรวจพบรูปแบบของการเพิ่มลายเซ็น",
 	"discussiontools-replywidget-summary": "ความย่อ",
 	"discussiontools-replywidget-transcluded": "ความเห็นของคุณจะถูกบันทึกไว้ที่ [[$1]]",
+	"discussiontools-topicsubscription-button-subscribe": "ติดตาม",
 	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
 	"tag-discussiontools-edit": "แก้ไชความเห็น",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} หัวข้อใหม่]",

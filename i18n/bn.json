@@ -51,6 +51,7 @@
 	"discussiontools-preference-replytool": "দ্রুত উত্তর দেওয়া সক্রিয় করুন",
 	"discussiontools-preference-replytool-help": "এটি আপনাকে এক ক্লিকে আলাপ পাতার মন্তব্যে উত্তর দেওয়ার জন্য একটি লিঙ্ক দেখাবে।",
 	"discussiontools-preference-sourcemodetoolbar": "উৎস মোডে সম্পাদনার সরঞ্জামগুলি সক্রিয় করুন",
+	"discussiontools-preference-sourcemodetoolbar-help": "এটি দ্রুত উত্তর ও দ্রুত আলোচনা যোগ করার বৈশিষ্ট্যের উত্স মোডে একটি সরঞ্জামদণ্ড যোগ করবে, এর মধ্যে কাউকে উল্লেখ করার ও লিঙ্ক যুক্ত করার শর্টকাট অন্তর্ভুক্ত রয়েছে।",
 	"discussiontools-preference-topicsubscription": "আলোচনা অনুসরণ সক্রিয় করুন",
 	"discussiontools-preference-topicsubscription-help": "আপনাকে যেকোন আলোচনা অনুসরণ করার অনুমতি দিবে, যার ফলে সেসব আলোচনায় নতুন মন্তব্য যোগ হলে আপনি বিজ্ঞপ্তি পাবেন।",
 	"discussiontools-replylink": "উত্তর দিন",
