@@ -100,7 +100,7 @@ class EventDispatcher {
 		}
 
 		if ( $oldRevRecord !== null ) {
-			$oldItemSet = self::getParsedRevision( $oldRevRecord );
+			$oldItemSet = static::getParsedRevision( $oldRevRecord );
 		} else {
 			// Page creation
 			$doc = DOMUtils::parseHTML( '' );
@@ -108,9 +108,9 @@ class EventDispatcher {
 			$oldItemSet = $services->getService( 'DiscussionTools.CommentParser' )
 				->parse( $container, $title->getTitleValue() );
 		}
-		$newItemSet = self::getParsedRevision( $newRevRecord );
+		$newItemSet = static::getParsedRevision( $newRevRecord );
 
-		self::generateEventsFromItemSets( $events, $oldItemSet, $newItemSet, $newRevRecord, $title, $user );
+		static::generateEventsFromItemSets( $events, $oldItemSet, $newItemSet, $newRevRecord, $title, $user );
 	}
 
 	/**
@@ -157,8 +157,8 @@ class EventDispatcher {
 		PageIdentity $title,
 		UserIdentity $user
 	): void {
-		$newComments = self::groupCommentsByThreadAndName( $newItemSet->getThreadItems() );
-		$oldComments = self::groupCommentsByThreadAndName( $oldItemSet->getThreadItems() );
+		$newComments = static::groupCommentsByThreadAndName( $newItemSet->getThreadItems() );
+		$oldComments = static::groupCommentsByThreadAndName( $oldItemSet->getThreadItems() );
 		$addedComments = [];
 
 		foreach ( $newComments as $threadName => $threadNewComments ) {
@@ -368,7 +368,7 @@ class EventDispatcher {
 		if ( !$extensionRegistry->isLoaded( 'EventLogging' ) ) {
 			return false;
 		}
-		$inSample = self::inEventSample( $editingStatsId );
+		$inSample = static::inEventSample( $editingStatsId );
 		$shouldOversample = $wgWMESchemaEditAttemptStepOversample ||
 			( $isDiscussionTools && $wgDTSchemaEditAttemptStepOversample ) || (
 				$extensionRegistry->isLoaded( 'WikimediaEvents' ) &&

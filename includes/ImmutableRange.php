@@ -107,7 +107,7 @@ class ImmutableRange {
 			case 'commonAncestorContainer':
 				if ( !$this->mCommonAncestorContainer ) {
 					$this->mCommonAncestorContainer =
-						self::findCommonAncestorContainer( $this->mStartContainer, $this->mEndContainer );
+						static::findCommonAncestorContainer( $this->mStartContainer, $this->mEndContainer );
 				}
 				return $this->mCommonAncestorContainer;
 			case 'endContainer':
@@ -173,7 +173,7 @@ class ImmutableRange {
 	 * @return bool
 	 */
 	private function isFullyContainedNode( Node $node ): bool {
-		return self::getRootNode( $node ) === self::getRootNode( $this->mStartContainer )
+		return static::getRootNode( $node ) === static::getRootNode( $this->mStartContainer )
 			&& $this->computePosition( $node, 0, $this->mStartContainer, $this->mStartOffset ) === 'after'
 			&& $this->computePosition(
 				// @phan-suppress-next-line PhanUndeclaredProperty
@@ -218,7 +218,7 @@ class ImmutableRange {
 			return $fragment;
 		}
 
-		$commonAncestor = self::findCommonAncestorContainer(
+		$commonAncestor = static::findCommonAncestorContainer(
 			$originalStartContainer,
 			$originalEndContainer
 		);
@@ -518,27 +518,27 @@ class ImmutableRange {
 	 * @return int -1, 0, or 1
 	 */
 	public function compareBoundaryPoints( int $how, self $sourceRange ): int {
-		if ( self::getRootNode( $this->mStartContainer ) !== self::getRootNode( $sourceRange->startContainer ) ) {
+		if ( static::getRootNode( $this->mStartContainer ) !== static::getRootNode( $sourceRange->startContainer ) ) {
 			throw new Error();
 		}
 
 		switch ( $how ) {
-			case self::START_TO_START:
+			case static::START_TO_START:
 				$thisPoint = [ $this->mStartContainer, $this->mStartOffset ];
 				$otherPoint = [ $sourceRange->startContainer, $sourceRange->startOffset ];
 				break;
 
-			case self::START_TO_END:
+			case static::START_TO_END:
 				$thisPoint = [ $this->mEndContainer, $this->mEndOffset ];
 				$otherPoint = [ $sourceRange->startContainer, $sourceRange->startOffset ];
 				break;
 
-			case self::END_TO_END:
+			case static::END_TO_END:
 				$thisPoint = [ $this->mEndContainer, $this->mEndOffset ];
 				$otherPoint = [ $sourceRange->endContainer, $sourceRange->endOffset ];
 				break;
 
-			case self::END_TO_START:
+			case static::END_TO_START:
 				$thisPoint = [ $this->mStartContainer, $this->mStartOffset ];
 				$otherPoint = [ $sourceRange->endContainer, $sourceRange->endOffset ];
 				break;

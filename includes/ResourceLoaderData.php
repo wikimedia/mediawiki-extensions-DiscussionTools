@@ -99,7 +99,7 @@ class ResourceLoaderData {
 	public static function getTermsOfUseMessagesParsed(
 		MessageLocalizer $context, Config $config
 	): array {
-		$messages = self::getTermsOfUseMessages( $context, $config );
+		$messages = static::getTermsOfUseMessages( $context, $config );
 		foreach ( $messages as &$msg ) {
 			$msg = $context->msg( ...$msg )->parse();
 		}
@@ -117,7 +117,7 @@ class ResourceLoaderData {
 	public static function getTermsOfUseMessagesVersion(
 		MessageLocalizer $context, Config $config
 	): array {
-		$messages = self::getTermsOfUseMessages( $context, $config );
+		$messages = static::getTermsOfUseMessages( $context, $config );
 		foreach ( $messages as &$msg ) {
 			$message = $context->msg( ...$msg );
 			$msg = [

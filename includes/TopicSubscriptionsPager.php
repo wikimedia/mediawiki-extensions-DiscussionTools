@@ -142,7 +142,7 @@ class TopicSubscriptionsPager extends TablePager {
 	 * @inheritDoc
 	 */
 	public function getIndexField() {
-		return [ self::INDEX_FIELDS[$this->mSort] ];
+		return [ static::INDEX_FIELDS[$this->mSort] ];
 	}
 
 	/**
@@ -150,6 +150,6 @@ class TopicSubscriptionsPager extends TablePager {
 	 */
 	protected function isFieldSortable( $field ) {
 		// Topic is set to the auto-ID field (sub_id), so sorting by it is not very useful
-		return isset( self::INDEX_FIELDS[$field] ) && $field !== '_topic';
+		return isset( static::INDEX_FIELDS[$field] ) && $field !== '_topic';
 	}
 }

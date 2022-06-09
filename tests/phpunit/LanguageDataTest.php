@@ -21,7 +21,7 @@ class LanguageDataTest extends IntegrationTestCase {
 			'TranslateNumerals' => true,
 			'Localtimezone' => 'UTC',
 		] );
-		$expectedData = self::getJson( $expectedPath );
+		$expectedData = static::getJson( $expectedPath );
 
 		$services = MediaWikiServices::getInstance();
 		$languageData = new LanguageData(
@@ -35,10 +35,10 @@ class LanguageDataTest extends IntegrationTestCase {
 
 		// Optionally write updated content to the JSON files
 		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
-			self::overwriteJsonFile( $expectedPath, $data );
+			static::overwriteJsonFile( $expectedPath, $data );
 		}
 
-		self::assertEquals( $expectedData, $data );
+		static::assertEquals( $expectedData, $data );
 	}
 
 	public function provideLocalData(): array {

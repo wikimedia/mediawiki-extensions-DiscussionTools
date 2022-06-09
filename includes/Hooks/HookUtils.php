@@ -31,6 +31,7 @@ class HookUtils {
 	 *  - User option: discussiontools-FEATURE
 	 */
 	public const FEATURES = [
+		// Can't use static:: in compile-time constants
 		self::REPLYTOOL,
 		self::NEWTOPICTOOL,
 		self::SOURCEMODETOOLBAR,
@@ -49,15 +50,15 @@ class HookUtils {
 	 */
 	public static function hasPagePropCached( Title $title, string $prop ): bool {
 		$id = $title->getArticleId();
-		if ( !isset( self::$propCache[ $id ] ) ) {
-			self::$propCache[ $id ] = [];
+		if ( !isset( static::$propCache[ $id ] ) ) {
+			static::$propCache[ $id ] = [];
 		}
-		if ( !isset( self::$propCache[ $id ][ $prop ] ) ) {
+		if ( !isset( static::$propCache[ $id ][ $prop ] ) ) {
 			$services = MediaWikiServices::getInstance();
 			$props = $services->getPageProps()->getProperties( $title, $prop );
-			self::$propCache[ $id ][ $prop ] = isset( $props[ $id ] );
+			static::$propCache[ $id ][ $prop ] = isset( $props[ $id ] );
 		}
-		return self::$propCache[ $id ][ $prop ];
+		return static::$propCache[ $id ][ $prop ];
 	}
 
 	/**
@@ -76,7 +77,10 @@ class HookUtils {
 			return false;
 		}
 
-		if ( ( $feature === self::TOPICSUBSCRIPTION || $feature === self::AUTOTOPICSUB ) && !$user->isRegistered() ) {
+		if (
+			( $feature === static::TOPICSUBSCRIPTION || $feature === static::AUTOTOPICSUB ) &&
+			!$user->isRegistered()
+		) {
 			// Users must be logged in to use topic subscription
 			return false;
 		}
@@ -191,7 +195,7 @@ class HookUtils {
 			return false;
 		}
 
-		$hasNewSectionLink = self::hasPagePropCached( $title, 'newsectionlink' );
+		$hasNewSectionLink = static::hasPagePropCached( $title, 'newsectionlink' );
 
 		$services = MediaWikiServices::getInstance();
 		// Check that the page supports discussions.
@@ -212,7 +216,7 @@ class HookUtils {
 	 */
 	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ): bool {
 		// Don't show on edit pages, history, etc.
-		if ( $feature !== self::NEWTOPICTOOL && $output->getActionName() !== 'view' ) {
+		if ( $feature !== static::NEWTOPICTOOL && $output->getActionName() !== 'view' ) {
 			return false;
 		}
 
@@ -225,7 +229,7 @@ class HookUtils {
 		// Topic subscription is not available on your own talk page, as you will
 		// get 'edit-user-talk' notifications already. (T276996)
 		if (
-			( $feature === self::TOPICSUBSCRIPTION || $feature === self::AUTOTOPICSUB ) &&
+			( $feature === static::TOPICSUBSCRIPTION || $feature === static::AUTOTOPICSUB ) &&
 			$title->equals( $output->getUser()->getTalkPage() )
 		) {
 			return false;
@@ -234,8 +238,8 @@ class HookUtils {
 		// New topic tool is not available if __NONEWSECTIONLINK__ is set
 		// We may need to move this check to the client when we support
 		// launching the tool from other pages.
-		if ( $feature === self::NEWTOPICTOOL ) {
-			if ( self::hasPagePropCached( $title, 'nonewsectionlink' ) ) {
+		if ( $feature === static::NEWTOPICTOOL ) {
+			if ( static::hasPagePropCached( $title, 'nonewsectionlink' ) ) {
 				return false;
 			}
 		}
@@ -271,9 +275,9 @@ class HookUtils {
 			// Topic subscription is not yet available on mobile, awaiting UI implementation.
 			return $dtConfig->get( 'DiscussionToolsEnableMobile' ) && (
 				$feature === null ||
-				$feature === self::REPLYTOOL ||
-				$feature === self::NEWTOPICTOOL ||
-				$feature === self::SOURCEMODETOOLBAR
+				$feature === static::REPLYTOOL ||
+				$feature === static::NEWTOPICTOOL ||
+				$feature === static::SOURCEMODETOOLBAR
 			);
 		}
 
@@ -301,7 +305,7 @@ class HookUtils {
 				$req->getVal( 'preloadparams' ) || $req->getVal( 'preloadtitle' )
 			) &&
 			// User has new topic tool enabled (and not using &dtenable=0)
-			self::isFeatureEnabledForOutput( $out, self::NEWTOPICTOOL )
+			static::isFeatureEnabledForOutput( $out, static::NEWTOPICTOOL )
 		);
 	}
 
@@ -328,7 +332,7 @@ class HookUtils {
 					$optionsLookup->getOption( $user, 'discussiontools-newtopictool-createpage' )
 				) ||
 				// When the new topic tool will be opened (usually when clicking the 'Add topic' tab)
-				self::shouldOpenNewTopicTool( $context ) ||
+				static::shouldOpenNewTopicTool( $context ) ||
 				// In read mode (accessible for non-existent pages by clicking 'Cancel' in editor)
 				$req->getVal( 'action', 'view' ) === 'view'
 			) &&
@@ -342,7 +346,7 @@ class HookUtils {
 			// ...Non-existent pages with default content, e.g. in 'MediaWiki:' namespace
 			!$title->hasSourceText() &&
 			// User has new topic tool enabled (and not using &dtenable=0)
-			self::isFeatureEnabledForOutput( $out, self::NEWTOPICTOOL )
+			static::isFeatureEnabledForOutput( $out, static::NEWTOPICTOOL )
 		);
 	}
 
@@ -375,6 +379,6 @@ class HookUtils {
 
 		// Check if the user has automatic subscriptions enabled, and the tools are enabled on the page.
 		return static::isAvailableForTitle( $title ) &&
-			static::isFeatureEnabledForUser( $user, self::AUTOTOPICSUB );
+			static::isFeatureEnabledForUser( $user, static::AUTOTOPICSUB );
 	}
 }

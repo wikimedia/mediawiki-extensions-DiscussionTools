@@ -23,27 +23,27 @@ class EventDispatcherTest extends IntegrationTestCase {
 	public function testGenerateEventsFromParsers(
 		string $rev1, string $rev2, string $authorUsername, string $other, string $expected
 	): void {
-		$wikitext1 = self::getText( $rev1 );
-		$wikitext2 = self::getText( $rev2 );
-		$expectedEvents = self::getJson( $expected, false );
-		$config = self::getJson( "../data/enwiki-config.json" );
-		$data = self::getJson( "../data/enwiki-data.json" );
+		$wikitext1 = static::getText( $rev1 );
+		$wikitext2 = static::getText( $rev2 );
+		$expectedEvents = static::getJson( $expected, false );
+		$config = static::getJson( "../data/enwiki-config.json" );
+		$data = static::getJson( "../data/enwiki-data.json" );
 
 		$dom1 = ( new RawMessage( $wikitext1 ) )->parse();
-		$doc1 = self::createDocument( $dom1 );
-		$container1 = self::getThreadContainer( $doc1 );
+		$doc1 = static::createDocument( $dom1 );
+		$container1 = static::getThreadContainer( $doc1 );
 
 		$dom2 = ( new RawMessage( $wikitext2 ) )->parse();
-		$doc2 = self::createDocument( $dom2 );
-		$container2 = self::getThreadContainer( $doc2 );
+		$doc2 = static::createDocument( $dom2 );
+		$container2 = static::getThreadContainer( $doc2 );
 
 		$this->setupEnv( $config, $data );
 		$dummyTitle = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( 'Dummy' );
-		$parser = self::createParser( $data );
+		$parser = static::createParser( $data );
 		$itemSet1 = $parser->parse( $container1, $dummyTitle );
 		$itemSet2 = $parser->parse( $container2, $dummyTitle );
 
-		$events = self::getJson( $other, true );
+		$events = static::getJson( $other, true );
 
 		$fakeUser = new UserIdentityValue( 0, $authorUsername );
 		$fakeTitle = new PageIdentityValue( 0, NS_TALK, __CLASS__, PageIdentityValue::LOCAL );
@@ -60,13 +60,13 @@ class EventDispatcherTest extends IntegrationTestCase {
 
 		// Optionally write updated content to the JSON files
 		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
-			self::overwriteJsonFile( $expected, $events );
+			static::overwriteJsonFile( $expected, $events );
 		}
 
-		self::assertEquals( $expectedEvents, $events );
+		static::assertEquals( $expectedEvents, $events );
 
 		// Assert that no events are generated for comments saved >10 minutes after their timestamps
-		$events = self::getJson( $other, true );
+		$events = static::getJson( $other, true );
 		$fakeRevRecord->setTimestamp( ( new DateTimeImmutable( '2020-01-01T00:20' ) )->format( 'c' ) );
 		MockEventDispatcher::generateEventsFromItemSets(
 			$events, $itemSet1, $itemSet2, $fakeRevRecord, $fakeTitle, $fakeUser
@@ -81,7 +81,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 			return $event->type === 'dt-subscribed-new-comment';
 		} );
 
-		self::assertEquals( [], $events );
+		static::assertEquals( [], $events );
 	}
 
 	public function provideGenerateCases(): array {
