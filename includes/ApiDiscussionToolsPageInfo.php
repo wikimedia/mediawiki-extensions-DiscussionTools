@@ -39,11 +39,11 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		$result = [];
 
 		if ( isset( $prop['transcludedfrom'] ) ) {
-			$result['transcludedfrom'] = self::getTranscludedFrom( $threadItemSet );
+			$result['transcludedfrom'] = static::getTranscludedFrom( $threadItemSet );
 		}
 
 		if ( isset( $prop['threaditemshtml'] ) ) {
-			$result['threaditemshtml'] = self::getThreadItemsHtml( $threadItemSet );
+			$result['threaditemshtml'] = static::getThreadItemsHtml( $threadItemSet );
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );

@@ -176,7 +176,7 @@ abstract class ThreadItem implements JsonSerializable {
 		}
 
 		foreach ( $transclNodes as $transclNode ) {
-			$transclRange = self::getTransclusionRange( $transclNode );
+			$transclRange = static::getTransclusionRange( $transclNode );
 			$compared = CommentUtils::compareRanges( $commentRange, $transclRange );
 			$transclTitle = $this->getSinglePageTransclusionTitle( $transclNode );
 

@@ -174,14 +174,14 @@ class PreferenceHooks implements
 				)
 			)->escaped();
 		if ( isset( $preferences['echo-subscriptions']['rows'] ) ) {
-			$preferences['echo-subscriptions']['rows'] = self::arrayRenameKey(
+			$preferences['echo-subscriptions']['rows'] = static::arrayRenameKey(
 				$preferences['echo-subscriptions']['rows'],
 				$categoryMessage,
 				$categoryMessageExtra
 			);
 		}
 		if ( isset( $preferences['echo-subscriptions']['tooltips'] ) ) {
-			$preferences['echo-subscriptions']['tooltips'] = self::arrayRenameKey(
+			$preferences['echo-subscriptions']['tooltips'] = static::arrayRenameKey(
 				// Phan insists that this key doesn't exist, even though we just checked with isset()
 				// @phan-suppress-next-line PhanTypeInvalidDimOffset, PhanTypeMismatchArgument
 				$preferences['echo-subscriptions']['tooltips'],

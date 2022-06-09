@@ -72,15 +72,15 @@ class CommentParserTest extends IntegrationTestCase {
 		// instead use their offsets within their parent nodes
 		$range = $threadItem->getRange();
 		$serialized->range = [
-			self::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
-			self::getOffsetPath( $root, $range->endContainer, $range->endOffset )
+			static::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
+			static::getOffsetPath( $root, $range->endContainer, $range->endOffset )
 		];
 
 		if ( $threadItem instanceof CommentItem ) {
 			$serialized->signatureRanges = array_map( function ( ImmutableRange $range ) use ( $root ) {
 				return [
-					self::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
-					self::getOffsetPath( $root, $range->endContainer, $range->endOffset )
+					static::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
+					static::getOffsetPath( $root, $range->endContainer, $range->endOffset )
 				];
 			}, $threadItem->getSignatureRanges() );
 		}
@@ -98,7 +98,7 @@ class CommentParserTest extends IntegrationTestCase {
 
 		$serialized->replies = [];
 		foreach ( $threadItem->getReplies() as $reply ) {
-			$serialized->replies[] = self::serializeComments( $reply, $root );
+			$serialized->replies[] = static::serializeComments( $reply, $root );
 		}
 
 		return $serialized;
@@ -122,11 +122,11 @@ class CommentParserTest extends IntegrationTestCase {
 		$expected = '/' . $expected . '/u';
 
 		$result = $parser->getTimestampRegexp( 'en', $format, '\\d', [ 'UTC' => 'UTC' ] );
-		self::assertSame( $expected, $result, $message );
+		static::assertSame( $expected, $result, $message );
 	}
 
 	public function provideTimestampRegexps(): array {
-		return self::getJson( '../cases/timestamp-regex.json' );
+		return static::getJson( '../cases/timestamp-regex.json' );
 	}
 
 	/**
@@ -143,11 +143,11 @@ class CommentParserTest extends IntegrationTestCase {
 		$expected = new DateTimeImmutable( $expected );
 
 		$tsParser = $parser->getTimestampParser( 'en', $format, null, 'UTC', [ 'UTC' => 'UTC' ] );
-		self::assertEquals( $expected, $tsParser( $data )['date'], $message );
+		static::assertEquals( $expected, $tsParser( $data )['date'], $message );
 	}
 
 	public function provideTimestampParser(): array {
-		return self::getJson( '../cases/timestamp-parser.json' );
+		return static::getJson( '../cases/timestamp-parser.json' );
 	}
 
 	/**
@@ -171,12 +171,12 @@ class CommentParserTest extends IntegrationTestCase {
 		preg_match( $regexp, $sample, $match, PREG_OFFSET_CAPTURE );
 		$date = $tsParser( $match )['date'];
 
-		self::assertEquals( $expected, $date, $message );
-		self::assertEquals( $expectedUtc, $date, $message );
+		static::assertEquals( $expected, $date, $message );
+		static::assertEquals( $expectedUtc, $date, $message );
 	}
 
 	public function provideTimestampParserDST(): array {
-		return self::getJson( '../cases/timestamp-parser-dst.json' );
+		return static::getJson( '../cases/timestamp-parser-dst.json' );
 	}
 
 	/**
@@ -189,40 +189,40 @@ class CommentParserTest extends IntegrationTestCase {
 	public function testGetThreads(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
-		$dom = self::getHtml( $dom );
+		$dom = static::getHtml( $dom );
 		$expectedPath = $expected;
-		$expected = self::getJson( $expected );
-		$config = self::getJson( $config );
-		$data = self::getJson( $data );
+		$expected = static::getJson( $expected );
+		$config = static::getJson( $config );
+		$data = static::getJson( $data );
 
-		$doc = self::createDocument( $dom );
-		$container = self::getThreadContainer( $doc );
+		$doc = static::createDocument( $dom );
+		$container = static::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
 		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
-		$threadItemSet = self::createParser( $data )->parse( $container, $title );
+		$threadItemSet = static::createParser( $data )->parse( $container, $title );
 		$threads = $threadItemSet->getThreads();
 
 		$processedThreads = [];
 
 		foreach ( $threads as $i => $thread ) {
-			$thread = self::serializeComments( $thread, $container );
+			$thread = static::serializeComments( $thread, $container );
 			$thread = json_decode( json_encode( $thread ), true );
 			$processedThreads[] = $thread;
 		}
 
 		// Optionally write updated content to the JSON files
 		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
-			self::overwriteJsonFile( $expectedPath, $processedThreads );
+			static::overwriteJsonFile( $expectedPath, $processedThreads );
 		}
 
 		foreach ( $threads as $i => $thread ) {
-			self::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
+			static::assertEquals( $expected[$i], $processedThreads[$i], $name . ' section ' . $i );
 		}
 	}
 
 	public function provideComments(): array {
-		return self::getJson( '../cases/comments.json' );
+		return static::getJson( '../cases/comments.json' );
 	}
 
 }

@@ -312,9 +312,9 @@ class CommentModifier {
 	public static function unwrapFragment( DocumentFragment $fragment ): void {
 		// Wrap orphaned list items
 		$list = null;
-		if ( self::allOfType( $fragment->childNodes, 'dd' ) ) {
+		if ( static::allOfType( $fragment->childNodes, 'dd' ) ) {
 			$list = $fragment->ownerDocument->createElement( 'dl' );
-		} elseif ( self::allOfType( $fragment->childNodes, 'li' ) ) {
+		} elseif ( static::allOfType( $fragment->childNodes, 'li' ) ) {
 			$list = $fragment->ownerDocument->createElement( 'ul' );
 		}
 		if ( $list ) {
@@ -326,14 +326,14 @@ class CommentModifier {
 
 		// If all child nodes are lists of the same type, unwrap them
 		while (
-			self::allOfType( $fragment->childNodes, 'dl' ) ||
-			self::allOfType( $fragment->childNodes, 'ul' ) ||
-			self::allOfType( $fragment->childNodes, 'ol' )
+			static::allOfType( $fragment->childNodes, 'dl' ) ||
+			static::allOfType( $fragment->childNodes, 'ul' ) ||
+			static::allOfType( $fragment->childNodes, 'ol' )
 		) {
 			// Do not iterate over childNodes while we're modifying it
 			$childNodeList = iterator_to_array( $fragment->childNodes );
 			foreach ( $childNodeList as $node ) {
-				self::unwrapList( $node, $fragment );
+				static::unwrapList( $node, $fragment );
 			}
 		}
 	}
@@ -456,7 +456,7 @@ class CommentModifier {
 		}
 		// Sign the last line
 		$container->lastChild->appendChild(
-			self::createWikitextNode(
+			static::createWikitextNode(
 				$doc,
 				$signature
 			)
@@ -482,11 +482,11 @@ class CommentModifier {
 		// like <table> or <h2> from ever occurring in the comment.
 		while ( $container->childNodes->length ) {
 			if ( !$newParsoidItem ) {
-				$newParsoidItem = self::addListItem( $comment, $replyIndentation );
+				$newParsoidItem = static::addListItem( $comment, $replyIndentation );
 			} else {
-				$newParsoidItem = self::addSiblingListItem( $newParsoidItem );
+				$newParsoidItem = static::addSiblingListItem( $newParsoidItem );
 			}
-			self::whitespaceParsoidHack( $newParsoidItem );
+			static::whitespaceParsoidHack( $newParsoidItem );
 			$newParsoidItem->appendChild( $container->firstChild );
 		}
 	}
@@ -509,7 +509,7 @@ class CommentModifier {
 		$list = $doc->createElement( $replyIndentation === 'invisible' ? 'dl' : 'ul' );
 		while ( $container->childNodes->length ) {
 			$item = $doc->createElement( $replyIndentation === 'invisible' ? 'dd' : 'li' );
-			self::whitespaceParsoidHack( $item );
+			static::whitespaceParsoidHack( $item );
 			$item->appendChild( $container->firstChild );
 			$list->appendChild( $item );
 		}
@@ -526,12 +526,12 @@ class CommentModifier {
 	public static function prepareWikitextReply( Document $doc, string $wikitext ): DocumentFragment {
 		$container = $doc->createDocumentFragment();
 
-		$wikitext = self::sanitizeWikitextLinebreaks( $wikitext );
+		$wikitext = static::sanitizeWikitextLinebreaks( $wikitext );
 
 		$lines = explode( "\n", $wikitext );
 		foreach ( $lines as $line ) {
 			$p = $doc->createElement( 'p' );
-			$p->appendChild( self::createWikitextNode( $doc, $line ) );
+			$p->appendChild( static::createWikitextNode( $doc, $line ) );
 			$container->appendChild( $p );
 		}
 
@@ -579,11 +579,11 @@ class CommentModifier {
 	 */
 	public static function addWikitextReply( CommentItem $comment, string $wikitext, string $signature = null ): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
-		$container = self::prepareWikitextReply( $doc, $wikitext );
+		$container = static::prepareWikitextReply( $doc, $wikitext );
 		if ( $signature !== null ) {
-			self::appendSignature( $container, $signature );
+			static::appendSignature( $container, $signature );
 		}
-		self::addReply( $comment, $container );
+		static::addReply( $comment, $container );
 	}
 
 	/**
@@ -595,10 +595,10 @@ class CommentModifier {
 	 */
 	public static function addHtmlReply( CommentItem $comment, string $html, string $signature = null ): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
-		$container = self::prepareHtmlReply( $doc, $html );
+		$container = static::prepareHtmlReply( $doc, $html );
 		if ( $signature !== null ) {
-			self::appendSignature( $container, $signature );
+			static::appendSignature( $container, $signature );
 		}
-		self::addReply( $comment, $container );
+		static::addReply( $comment, $container );
 	}
 }

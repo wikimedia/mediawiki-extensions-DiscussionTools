@@ -218,6 +218,7 @@ class SubscriptionStore {
 		UserIdentity $user,
 		LinkTarget $target,
 		string $itemName,
+		// Can't use static:: in compile-time constants
 		int $state = self::STATE_SUBSCRIBED
 	): bool {
 		if ( $this->readOnlyMode->isReadOnly() ) {
@@ -267,7 +268,7 @@ class SubscriptionStore {
 		$dbw = $this->getConnectionRef( DB_PRIMARY );
 		$dbw->update(
 			'discussiontools_subscription',
-			[ 'sub_state' => self::STATE_UNSUBSCRIBED ],
+			[ 'sub_state' => static::STATE_UNSUBSCRIBED ],
 			[
 				'sub_user' => $user->getId(),
 				'sub_item' => $itemName,
@@ -292,7 +293,7 @@ class SubscriptionStore {
 		$subscriptionItems = $this->getSubscriptionItemsForUser(
 			$user,
 			[ $itemName ],
-			[ self::STATE_SUBSCRIBED, self::STATE_AUTOSUBSCRIBED ],
+			[ static::STATE_SUBSCRIBED, static::STATE_AUTOSUBSCRIBED ],
 			[ 'forWrite' => true ]
 		);
 		if ( $subscriptionItems ) {
@@ -303,7 +304,7 @@ class SubscriptionStore {
 			$user,
 			$target,
 			$itemName,
-			self::STATE_AUTOSUBSCRIBED
+			static::STATE_AUTOSUBSCRIBED
 		);
 	}
 

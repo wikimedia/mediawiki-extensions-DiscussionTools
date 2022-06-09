@@ -200,7 +200,7 @@ class CommentParser {
 					$s .= 'x';
 					break;
 				case 'xg':
-					$s .= self::regexpAlternateGroup(
+					$s .= static::regexpAlternateGroup(
 						$this->getMessages( $contLangVariant, Language::MONTH_GENITIVE_MESSAGES )
 					);
 					break;
@@ -208,7 +208,7 @@ class CommentParser {
 					$num = '2';
 					break;
 				case 'D':
-					$s .= self::regexpAlternateGroup(
+					$s .= static::regexpAlternateGroup(
 						$this->getMessages( $contLangVariant, Language::WEEKDAY_ABBREVIATED_MESSAGES )
 					);
 					break;
@@ -216,17 +216,17 @@ class CommentParser {
 					$num = '1,2';
 					break;
 				case 'l':
-					$s .= self::regexpAlternateGroup(
+					$s .= static::regexpAlternateGroup(
 						$this->getMessages( $contLangVariant, Language::WEEKDAY_MESSAGES )
 					);
 					break;
 				case 'F':
-					$s .= self::regexpAlternateGroup(
+					$s .= static::regexpAlternateGroup(
 						$this->getMessages( $contLangVariant, Language::MONTH_MESSAGES )
 					);
 					break;
 				case 'M':
-					$s .= self::regexpAlternateGroup(
+					$s .= static::regexpAlternateGroup(
 						$this->getMessages( $contLangVariant, Language::MONTH_ABBREVIATED_MESSAGES )
 					);
 					break;
@@ -285,7 +285,7 @@ class CommentParser {
 			$s .= '[\\x{200E}\\x{200F}]?';
 		}
 
-		$tzRegexp = self::regexpAlternateGroup( array_keys( $tzAbbrs ) );
+		$tzRegexp = static::regexpAlternateGroup( array_keys( $tzAbbrs ) );
 
 		// Hard-coded parentheses and space like in Parser::pstPass2
 		// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T245784)
@@ -599,7 +599,7 @@ class CommentParser {
 				if ( $event === 'enter' && $node === $until ) {
 					return true;
 				}
-				if ( $length >= self::SIGNATURE_SCAN_LIMIT ) {
+				if ( $length >= static::SIGNATURE_SCAN_LIMIT ) {
 					return true;
 				}
 				if ( CommentUtils::isBlockElement( $node ) ) {
@@ -795,7 +795,7 @@ class CommentParser {
 		$treeWalker = new TreeWalker(
 			$this->rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
-			[ self::class, 'acceptOnlyNodesAllowingComments' ]
+			[ static::class, 'acceptOnlyNodesAllowingComments' ]
 		);
 		$lastSigNode = null;
 		while ( $node = $treeWalker->nextNode() ) {
