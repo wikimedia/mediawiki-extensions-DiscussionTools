@@ -2,16 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
-			"Mansil"
+			"Mansil",
+			"Mansil alfalb"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
 	"discussiontools-autotopicsubpopup-body": "Receberá uma notificação quando alguém publicar um comentário novo nesta discussão. Pode ajustar a sua configuração de notificações nas preferências.",
-	"discussiontools-autotopicsubpopup-dismiss": "Entendido",
+	"discussiontools-autotopicsubpopup-dismiss": "OK, eu percebi",
 	"discussiontools-autotopicsubpopup-preferences": "Editar preferências",
 	"discussiontools-autotopicsubpopup-title": "Foi tornado subscritor",
 	"discussiontools-defaultsummary-reply": "Resposta",
-	"discussiontools-desc": "Ferramentas para melhorar páginas de discussão.",
+	"discussiontools-desc": "Ferramentas para melhorar as páginas de discussão.",
 	"discussiontools-emptystate-button": "Iniciar uma discussão",
 	"discussiontools-emptystate-desc": "É nas [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|páginas de discussão]] que os utilizadores discutem como tornar o conteúdo da wiki {{SITENAME}} o melhor possível. Pode usar esta página para iniciar uma discussão com os outros utilizadores sobre o melhoramento de [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-desc-self": "Os utilizadores da wiki {{SITENAME}} podem usar esta [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|página de discussão]] para lhe deixarem uma mensagem pública e, se o fizerem, receberá uma notificação.",
@@ -51,7 +52,10 @@
 	"discussiontools-preference-autotopicsub-help": "Quando inicia uma discussão ou comenta uma discussão existente, será automaticamente notificado se outros utilizadores publicarem comentários nessa discussão.",
 	"discussiontools-preference-description": "Ativa funcionalidades experimentais das páginas de discussão:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Responder] a comentários de páginas de discussão com um clique.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Adicionar tópicos novos] com um formulário em linha.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Receber notificações] quando forem acrescentados comentários novos em secções que subscreveu.\n\nPode personalizar estas funcionalidades nas suas [[Special:Preferences#mw-prefsection-editing-discussion|preferências]].\n\nAs atualizações serão publicadas na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates página de atualizações do projeto das páginas de discussão].\n\nNote que:\n* Ao longo do tempo serão adicionadas funcionalidades experimentais novas.\n* Algumas das funcionalidades descritas acima podem ainda não estar disponíveis na sua wiki.",
 	"discussiontools-preference-label": "Ferramentas de discussão",
-	"discussiontools-preference-newtopictool": "Ativar a adição de tópicos rápida",
+	"discussiontools-preference-newtopictool": "Ativar a adição de tópico rápida",
+	"discussiontools-preference-newtopictool-createpage": "Quando eu visito uma página de discussão que ainda não foi criada:",
+	"discussiontools-preference-newtopictool-createpage-editor": "Abra o editor de wikitexto",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "Oferecer para adicionar um novo tópico",
 	"discussiontools-preference-newtopictool-help": "Isto mostra-lhe um formulário em linha para adicionar tópicos novos.",
 	"discussiontools-preference-replytool": "Ativar resposta rápida",
 	"discussiontools-preference-replytool-help": "Isto mostra-lhe uma hiperligação para responder a comentários de páginas de discussão com um clique.",
@@ -76,6 +80,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Mencionar um utilizador",
 	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-newcomments-button": "Mostrar $1 novo {{PLURAL:$1|comentário|comentários}}",
 	"discussiontools-replywidget-newtopic": "Adicionar tópico",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrição",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
