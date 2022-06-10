@@ -13,10 +13,10 @@
  * @param {Object} store
  */
 function MemoryStorage() {
+	this.data = {};
+
 	// Parent constructor
 	MemoryStorage.super.apply( this, arguments );
-
-	this.data = {};
 }
 
 // HACK: SafeStorage is not exposed as a public API, but we can
