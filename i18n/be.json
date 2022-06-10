@@ -5,6 +5,7 @@
 			"Chadyka",
 			"Kareyac",
 			"No Sleep till Krupki",
+			"Tomato Cream",
 			"ZlyiLev"
 		]
 	},
@@ -55,6 +56,9 @@
 	"discussiontools-preference-description": "Уключае эксперыментальныя функцыі старонкі абмеркаванняў:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Адказ] на каментарыі старонкі абмеркаванняў адным пстрыкам.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Даданне новых тэм] у падрадковай форме.\n\nГэтымі функцыямі можна кіраваць у вашых [[Special:Preferences#mw-prefsection-editing-discussion|настройках]].\n\nАбнаўленні будуць змяшчацца на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates старонцы праекта абнаўленняў старонак абмеркаванняў].\n\nЗвярніце ўвагу:\n* З часам будуць з’яўляцца новыя эксперыментальныя функцыі.\n* Некаторыя з функцый могуць быць пакуль што недаступныя ў вашай вікі.",
 	"discussiontools-preference-label": "Інструменты абмеркавання",
 	"discussiontools-preference-newtopictool": "Уключыць хуткае даданне тэмы",
+	"discussiontools-preference-newtopictool-createpage": "Калі я наведваю старонку размоў, якая яшчэ не была створана:",
+	"discussiontools-preference-newtopictool-createpage-editor": "Адкрыць рэдактар вікі-тэксту",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "Прапанаваць дадаць новую тэму",
 	"discussiontools-preference-newtopictool-help": "Гэта функцыя будзе паказваць вам падрадковую форму для дадання новых тэм.",
 	"discussiontools-preference-replytool": "Уключыць хуткі адказ",
 	"discussiontools-preference-replytool-help": "Гэта функцыя будзе паказваць спасылку для адказу на каментарыі на старонцы абмеркаванняў у адзін пстрык.",

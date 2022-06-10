@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Saurmandal",
 			"Shypoetess",
 			"गोपाल",
 			"पदाति",
@@ -21,6 +22,9 @@
 	"discussiontools-replywidget-abandontopic-discard": "विषय त्यागें",
 	"discussiontools-replywidget-cancel": "रद्द करें",
 	"discussiontools-replywidget-feedback": "इस सुविधा के बारे में प्रतिक्रिया साझा करें",
+	"discussiontools-replywidget-mode-source": "स्रोत",
+	"discussiontools-replywidget-mode-visual": "यथादृश्य",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} को उत्तर दें",
 	"discussiontools-replywidget-preferences": "पसंद",
 	"discussiontools-replywidget-reply": "उत्तर दें",
 	"discussiontools-replywidget-summary": "सारांश",
