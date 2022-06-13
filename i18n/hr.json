@@ -30,6 +30,7 @@
 	"discussiontools-error-comment-disappeared": "Ne možemo pronaći komentar na koji odgovarate na stranici. Vjerojatno je izbrisan ili premješten na drugu stranicu. Molimo Vas da ponovno učitate stranicu i pokušate ponovno.",
 	"discussiontools-error-comment-is-transcluded": "Poveznica \"{{int:discussiontools-replylink}}\" ne može biti uporabljena za odgovor na ovaj komentar. Da biste odgovorili, molimo rabite uređivač klikom na \"$1\"",
 	"discussiontools-error-comment-is-transcluded-title": "Poveznica \"{{int:discussiontools-replylink}}\" ne može biti uporabljena za odgovor na ovako komentar jer je učitana s druge stranice. Da biste odgovorili, molimo idite na: [[$1]].",
+	"discussiontools-error-lint": "Na komentare na ovoj stranici nije moguće odgovoriti zbog pogreške u wikitekstu. O pogrešci možete više saznati [$1 u dokumentaciji], traženjem pomoći [$2 ovdje] ili je možete popraviti [$3 otvaranjem uređivača cijele stranice].",
 	"tag-discussiontools-description": "Uređivanje uz pomoć alata za raspravu",
 	"tag-discussiontools-edit": "Uredi komentar",
 	"tag-discussiontools-edit-description": "Suradnik je uredio postojeći komentar s alatom za rasprave",

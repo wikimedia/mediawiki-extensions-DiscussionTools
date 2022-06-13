@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
-			"Mansil"
+			"Mansil",
+			"Mansil alfalb"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
 	"discussiontools-defaultsummary-reply": "Resposta",
-	"discussiontools-desc": "Ferramentas para melhorar páginas de discussão.",
+	"discussiontools-desc": "Ferramentas para melhorar as páginas de discussão.",
 	"discussiontools-preference-label": "Ferramentas de discussão",
 	"discussiontools-replylink": "responder",
 	"discussiontools-replywidget-anon-warning": "<strong>Não se autenticou.</strong> Para receber atribuição com o seu nome em vez do seu endereço IP, pode [$1 iniciar uma sessão] ou [$2 criar uma conta].",
