@@ -47,7 +47,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>הדרך החדשה להתחיל נושאים כאן.</strong> העדכון הזה מאפשר לך להוסיף נושאים באמצעות טופס ולאזכר אחרים באמצעות קיצור מקשים חדש. אפשר גם [$1 לחזור לחוויית המשתמש הישנה].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>עכשיו {{GENDER:|אתה|את}} צופה בחוויה הישנה.</strong> {{GENDER:|אתה יכול|את יכולה}} [$1 לחזור לחוויה החדשה] או לבקר בהעדפות כדי [$2 להגדיר את החוויה הישנה בתור ברירת המחדל שלך].",
 	"discussiontools-newtopic-missing-title": "נא לתת כותרת לנושא הדיון שלך. אם {{GENDER:|תלחץ|תלחצי}} על \"{{int:discussiontools-replywidget-newtopic}}\", הנושא שלך יתווסף ללא כותרת.",
-	"discussiontools-newtopic-placeholder-title": "כותרת",
+	"discussiontools-newtopic-placeholder-title": "נושא",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|הגיב|הגיבה}} בנושא \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|תגובה חדשה|$1 תגובות חדשות|100=99+ תגובות חדשות}} בנושא \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "הצגת תגובה",

@@ -45,7 +45,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>Новы спосаб распачынаць тэмы тут.</strong> Гэта абнаўленне дазваляе дадаваць тэмы з дапамогай убудаванай формы і згадваць іншых удзельнікаў з дапамогай новай скароты. Вы таксама можаце [$1 вярнуцца да старога досведу].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Зараз вы глядзіце на стары досвед.</strong> Вы можаце [$1 вярнуцца на новы досвед] ці ўвайсці ў налады і [$2 вызначыць стары досвед, як прадвызначаны].",
 	"discussiontools-newtopic-missing-title": "Калі ласка, задайце загаловак для вашай тэмы абмеркавання. Калі вы націсніце \"{{int:discussiontools-replywidget-newtopic}}\", ваша тэма будзе дададзена без загалоўка.",
-	"discussiontools-newtopic-placeholder-title": "Загаловак",
+	"discussiontools-newtopic-placeholder-title": "Тэма",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|адказаў|адказала}} на \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Адзін новы адказ у|$1 новыя адказы ў|$1 новых адказаў у|100=99+ новых адказаў у}} \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Праглядзець каментарый",

@@ -87,7 +87,7 @@
 	"discussiontools-replywidget-loading": "Läser in…",
 	"discussiontools-replywidget-mention-tool-header": "Hitta användare: $1",
 	"discussiontools-replywidget-mention-tool-title": "Nämn en användare",
-	"discussiontools-replywidget-mode-source": "Källa",
+	"discussiontools-replywidget-mode-source": "Kod",
 	"discussiontools-replywidget-mode-visual": "Visuell",
 	"discussiontools-replywidget-newcomments-button": "Visa $1 {{PLURAL:$1|ny kommentar|nya kommentarer}}",
 	"discussiontools-replywidget-newtopic": "Lägg till ämne",

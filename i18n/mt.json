@@ -4,6 +4,9 @@
 			"Chrisportelli"
 		]
 	},
+	"discussiontools-emptystate-button": "Ibda diskussjoni",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Il-paġni ta' dikussjoni]] huma lok fejn wieħed jista' jiddiskuti kif il-kontenut tal-{{SITENAME}} jista' jiġi mtejjeb. Tista' tuża din il-paġna biex tibda diskussjoni ma' oħrajn fuq kif ittejjeb il-paġna [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-title": "Ibda diskussjoni dwar {{SUBJECTPAGENAME}}",
 	"discussiontools-preference-replytool": "Attiva r-risposti veloċi",
 	"discussiontools-preference-replytool-help": "Din turik ħolqa biex tirrispondi lill-kummenti fuq paġna ta' diskussjoni bi klikk waħda."
 }

@@ -49,7 +49,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>Eine neue Art, Diskussionen zu starten, ist da.</strong> Diese Aktualisierung ermöglicht es dir, Diskussionen über ein Inline-Formular hinzuzufügen und andere mit einem neuen Shortcut anzupingen. Du kannst auch [$1 zurück zur alten Funktionalität wechseln].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Du siehst jetzt die alte Oberfläche.</strong> Du kannst [$1 zur neuen Oberfläche zurückkehren] oder die Einstellungen aufrufen, um [$2 die alte Oberfläche als Standard einzustellen].",
 	"discussiontools-newtopic-missing-title": "Bitte gib einen Titel für dein Diskussionsthema an. Wenn du erneut auf „{{int:discussiontools-replywidget-newtopic}}“ klickst, wird dein Thema ohne Titel hinzugefügt.",
-	"discussiontools-newtopic-placeholder-title": "Titel",
+	"discussiontools-newtopic-placeholder-title": "Betreff",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|antwortete}} zu „<strong>$4</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Eine neue Antwort|$1 neue Antworten|100=Über 99 neue Antworten}} in „<strong>$3</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-view": "Kommentar anzeigen",
