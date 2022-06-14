@@ -68,7 +68,7 @@ class TagHooks implements
 			return true;
 		}
 
-		$tags = self::getDiscussionToolsTagsFromRequest();
+		$tags = static::getDiscussionToolsTagsFromRequest();
 		if ( $tags ) {
 			$recentChange->addTags( $tags );
 		}

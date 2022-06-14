@@ -20,18 +20,18 @@ class ApiDiscussionToolsPageInfoTest extends IntegrationTestCase {
 	public function testGetThreadItemsHtml(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
 	): void {
-		$dom = self::getHtml( $dom );
+		$dom = static::getHtml( $dom );
 		$expectedPath = $expected;
-		$expected = self::getJson( $expected );
-		$config = self::getJson( $config );
-		$data = self::getJson( $data );
+		$expected = static::getJson( $expected );
+		$config = static::getJson( $config );
+		$data = static::getJson( $data );
 
-		$doc = self::createDocument( $dom );
-		$container = self::getThreadContainer( $doc );
+		$doc = static::createDocument( $dom );
+		$container = static::getThreadContainer( $doc );
 
 		$this->setupEnv( $config, $data );
 		$title = MediaWikiServices::getInstance()->getTitleParser()->parseTitle( $title );
-		$threadItemSet = self::createParser( $data )->parse( $container, $title );
+		$threadItemSet = static::createParser( $data )->parse( $container, $title );
 
 		$pageInfo = TestingAccessWrapper::newFromClass( ApiDiscussionToolsPageInfo::class );
 
@@ -39,16 +39,16 @@ class ApiDiscussionToolsPageInfoTest extends IntegrationTestCase {
 
 		// Optionally write updated content to the JSON files
 		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
-			self::overwriteJsonFile( $expectedPath, $threadItemsHtml );
+			static::overwriteJsonFile( $expectedPath, $threadItemsHtml );
 		}
 
-		self::assertEquals( $expected, $threadItemsHtml, $name );
+		static::assertEquals( $expected, $threadItemsHtml, $name );
 
 		$processedThreads = [];
 	}
 
 	public function provideGetThreadItemsHtml(): array {
-		return self::getJson( '../cases/threaditemshtml.json' );
+		return static::getJson( '../cases/threaditemshtml.json' );
 	}
 
 }
