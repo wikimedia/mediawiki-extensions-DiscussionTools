@@ -43,7 +43,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>Un nou mod de a începe subiecte este aici.</strong> Această actualizare vă permite să adăugați subiecte utilizând un formular aliniat și să menționați pe alții cu o scurtătură nouă. Puteți de asemenea [$1 să comutați înapoi la experiența moștenire].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Vizualizați acum experiența moștenire.</strong> Puteți [$1 să vă întoarceți la experiența nouă] sau să vizitați preferințele pentru a [$2 seta experiența moștenire ca cea implicită dvs.]",
 	"discussiontools-newtopic-missing-title": "Vă rugăm să oferiți un titlu pentru subiectul dvs. de discuție. Dacă apăsați „{{int:discussiontools-replywidget-newtopic}}”, subiectul dvs. va fi adăugat fără un titlu.",
-	"discussiontools-newtopic-placeholder-title": "Titlu",
+	"discussiontools-newtopic-placeholder-title": "Subiect",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 a {{GENDER:$2|răspuns}} în cadrul secțiunii „<strong>$4</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Un răspuns nou|$1 răspunsuri noi|100=99+ de răspunsuri noi}} în „<strong>$3</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-view": "Vezi comentariul",
