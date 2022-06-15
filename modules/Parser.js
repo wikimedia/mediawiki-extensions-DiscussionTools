@@ -895,7 +895,7 @@ Parser.prototype.buildThreadItems = function () {
 					endContainer: this.rootNode,
 					endOffset: 0
 				};
-				var fakeHeading = new HeadingItem( range, 99, true );
+				var fakeHeading = new HeadingItem( range, null );
 				fakeHeading.rootNode = this.rootNode;
 				result.addThreadItem( fakeHeading );
 			}

@@ -76,10 +76,14 @@ ThreadItem.static.newFromJSON = function ( json ) {
 			break;
 		case 'heading':
 			var HeadingItem = require( './HeadingItem.js' );
+			// Cached HTML may still have the placeholder heading constant in it.
+			// This code can be removed a few weeks after being deployed.
+			if ( hash.headingLevel === 99 ) {
+				hash.headingLevel = null;
+			}
 			item = new HeadingItem(
 				hash.range,
-				hash.headingLevel,
-				hash.placeholderHeading
+				hash.headingLevel
 			);
 			break;
 		default:

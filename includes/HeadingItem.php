@@ -9,17 +9,19 @@ class HeadingItem extends ThreadItem {
 	private $placeholderHeading = false;
 	private $headingLevel;
 
+	// Placeholder headings must have a level higher than real headings (1-6)
+	private const PLACEHOLDER_HEADING_LEVEL = 99;
+
 	/**
 	 * @param ImmutableRange $range
-	 * @param int $headingLevel Heading level (1-6)
-	 * @param bool $placeholderHeading Item doesn't correspond to a real heading (e.g. 0th section)
+	 * @param ?int $headingLevel Heading level (1-6). Use null for a placeholder heading.
 	 */
 	public function __construct(
-		ImmutableRange $range, int $headingLevel, bool $placeholderHeading = false
+		ImmutableRange $range, ?int $headingLevel
 	) {
 		parent::__construct( 'heading', 0, $range );
-		$this->headingLevel = $headingLevel;
-		$this->placeholderHeading = $placeholderHeading;
+		$this->placeholderHeading = $headingLevel === null;
+		$this->headingLevel = $this->placeholderHeading ? static::PLACEHOLDER_HEADING_LEVEL : $headingLevel;
 	}
 
 	/**
@@ -27,8 +29,7 @@ class HeadingItem extends ThreadItem {
 	 */
 	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
 		return array_merge( parent::jsonSerialize( $deep, $callback ), [
-			'headingLevel' => $this->headingLevel,
-			'placeholderHeading' => $this->placeholderHeading,
+			'headingLevel' => $this->headingLevel === static::PLACEHOLDER_HEADING_LEVEL ? null : $this->headingLevel,
 			// Used for topic subscriptions. Not added to CommentItem's yet as there is
 			// no use case for it.
 			'name' => $this->name,
