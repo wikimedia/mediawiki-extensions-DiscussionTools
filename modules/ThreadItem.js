@@ -51,10 +51,11 @@ OO.initClass( ThreadItem );
  * Create a new ThreadItem from a JSON serialization
  *
  * @param {string|Object} json JSON serialization or hash object
+ * @param {HTMLElement} rootNode
  * @return {ThreadItem}
  * @throws {Error} Unknown ThreadItem type
  */
-ThreadItem.static.newFromJSON = function ( json ) {
+ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 	// The page can be served from the HTTP cache (Varnish), and the JSON may be generated
 	// by an older version of our PHP code. Code below must be able to handle that.
 	// See ThreadItem::jsonSerialize() in PHP.
@@ -91,6 +92,8 @@ ThreadItem.static.newFromJSON = function ( json ) {
 	}
 	item.name = hash.name;
 	item.id = hash.id;
+
+	item.rootNode = rootNode;
 
 	var idEscaped = $.escapeSelector( item.id );
 	var startMarker = document.getElementById( item.id );
