@@ -115,8 +115,10 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 			focus: [ 'emit', 'bodyFocus' ]
 		} );
 
-		target.getSurface().getModel().setAutosaveDocId( widget.storagePrefix );
-		target.initAutosave( suppressNotifications );
+		target.initAutosave( {
+			suppressNotifications: suppressNotifications,
+			docId: widget.storagePrefix
+		} );
 		widget.afterSetup();
 
 		// This needs to bind after surfaceReady so any initial population doesn't trigger it early:
