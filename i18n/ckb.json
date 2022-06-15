@@ -6,7 +6,8 @@
 			"Matma Rex",
 			"Épine",
 			"ئارام بکر",
-			"Halbast"
+			"Halbast",
+			"Aram"
 		]
 	},
 	"discussiontools": "ئامرازەکانی وتووێژ",
@@ -77,6 +78,7 @@
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "بۆ وەستاندنی ئاگادارییەکان چی تر بەشدار مەبە.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "بەشدار مەبە",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "چی تر بەشداری لەم بابەتە ناکەیت؟",
+	"discussiontools-topicsubscription-error-not-found-body": "ئەو بەشدارییەی کە لە ناونیشانەکەدا دیاری کراوە نەدۆزرایەوە.",
 	"discussiontools-topicsubscription-error-not-found-title": "بەشداریکردن نەدۆزرایەوە",
 	"discussiontools-topicsubscription-notify-subscribed-body": "ئاگاداریت لەسەر لێدوانە نوێیەکانی ئەم بابەتە بۆ دێت.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "بەشداریت کرد!",

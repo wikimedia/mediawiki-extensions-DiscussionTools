@@ -61,5 +61,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Ambaci mai amfani",
 	"discussiontools-replywidget-mode-source": "Tushe",
 	"discussiontools-replywidget-mode-visual": "Na gani",
-	"discussiontools-replywidget-newtopic": "Ƙara batu"
+	"discussiontools-replywidget-newtopic": "Ƙara batu",
+	"discussiontools-replywidget-placeholder-reply": "Maidawa zuwa {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Maidawa"
 }

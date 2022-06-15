@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jojit fb"
+			"Jojit fb",
+			"Ianlopez1115"
 		]
 	},
 	"discussiontools": "Mga kagamitan para usapan",
 	"discussiontools-defaultsummary-reply": "Tugon",
 	"discussiontools-desc": "Mga kagamitan upang mapabuti ang mga pahina ng usapan.",
 	"discussiontools-emptystate-button": "Magsimula ng isang usapan",
-	"discussiontools-replylink": "tugon"
+	"discussiontools-replylink": "tugon",
+	"discussiontools-replywidget-cancel": "Ikansela",
+	"discussiontools-replywidget-mode-source": "Pinagmulan",
+	"discussiontools-replywidget-reply": "Tumugon"
 }

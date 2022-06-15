@@ -3,7 +3,8 @@
 		"authors": [
 			"Ebenoffen1",
 			"Robertjamal12",
-			"Theo"
+			"Theo",
+			"Leonard Nketsia"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Nyiano",
@@ -16,5 +17,11 @@
 	"discussiontools-newtopic-placeholder-title": "Tsirasɛm",
 	"discussiontools-notification-subscribed-new-comment-view": "Hwɛ adwenkyerɛ",
 	"discussiontools-postedit-confirmation-published": "W'adwenkyerɛ no kɔ",
-	"discussiontools-postedit-confirmation-topicadded": "Wɔdze wo tsirasɛm no aka ho"
+	"discussiontools-postedit-confirmation-topicadded": "Wɔdze wo tsirasɛm no aka ho",
+	"discussiontools-replylink": "Nyiano",
+	"discussiontools-replywidget-cancel": "Twa mu",
+	"discussiontools-replywidget-mode-source": "Bea a ofi",
+	"discussiontools-replywidget-mode-visual": "Mfonyin",
+	"discussiontools-replywidget-placeholder-reply": "Ma {{BIDI:$1}} nyiano",
+	"discussiontools-replywidget-reply": "Yi ano"
 }
