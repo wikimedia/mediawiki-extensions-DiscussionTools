@@ -129,6 +129,7 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 	// Events
 	this.replyBodyWidget.connect( this, {
 		change: 'onInputChangeThrottled',
+		cancel: 'tryTeardown',
 		submit: 'onReplyClick'
 	} );
 
