@@ -17,3 +17,8 @@ $specialPageAliases['en'] = [
 $specialPageAliases['cs'] = [
 	'TopicSubscriptions' => [ 'Odebíraná_témata' ],
 ];
+
+/** polski (Polish) */
+$specialPageAliases['pl'] = [
+	'TopicSubscriptions' => [ 'Subskrypcje_wątków', 'Subskrybowane_wątki' ],
+];
