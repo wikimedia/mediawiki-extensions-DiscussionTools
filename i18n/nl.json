@@ -50,7 +50,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>Er is een nieuwe manier om onderwerpen te starten.</strong> Met deze update kunt u onderwerpen toevoegen met een inline-formulier en anderen pingen met een nieuwe snelkoppeling. U kunt ook [$1 terugschakelen naar de oude weergave].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>U bekijkt nu de oude weergave.</strong> U kunt [$1 terugkeren naar de nieuwe weergave] of uw voorkeuren bezoeken om [$2 de oude weergave als uw standaard in te stellen].",
 	"discussiontools-newtopic-missing-title": "Graag een titel toevoegen voor uw discussieonderwerp. Als u klikt op \"{{int:discussiontools-replywidget-newtopic}}\", dan zal het onderwerp geen titel hebben.",
-	"discussiontools-newtopic-placeholder-title": "Titel",
+	"discussiontools-newtopic-placeholder-title": "Onderwerp",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|reageerde}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Een nieuwe reactie|$1 nieuwe reacties|100=99+ nieuwe reacties}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Bekijk reactie",
