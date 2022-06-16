@@ -15,7 +15,8 @@
 			"Sayginer",
 			"Sezgin İbiş",
 			"ToprakM",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Victor Trevor"
 		]
 	},
 	"discussiontools": "Tartışma araçları",
@@ -27,6 +28,7 @@
 	"discussiontools-emptystate-button": "Bir tartışma başlat",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Tartışma sayfaları]], insanların {{SITENAME}} sitesinde olabilecek en iyi içeriği nasıl oluşturacaklarını tartıştıkları yerlerdir. [[:{{SUBJECTPAGENAME}}]] sayfasını nasıl geliştireceğiniz konusunda başkalarıyla bir tartışma başlatmak için bu sayfayı kullanabilirsiniz.",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}} sitesindeki kişiler bu [[{{MediaWiki:discussiontools-emptystate-link-userpage}}| tartışma sayfayı]] size herkese açık bir mesaj göndermek için kullanabilir ve bunu yaptıklarında size bildirim gönderilecektir..",
+	"discussiontools-emptystate-desc-self-anon": "{{SITENAME}} adlı projedeki kullanıcılar, şu anda kullanmakta olduğunuz IP adresi tarafından yapılan değişiklikler hakkında mesaj göndermek için [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|bu tartışma sayfasını]] kullanabilir.\n\nBirçok IP adresi düzenli olarak değişir ve genellikle birkaç kişi tarafından kullanılır. Daha önce bu IP adresi üzerinden düzenleme yapmış farklı kullanıcılarla karışıklık yaşamamak adına bir [$1 hesap oluşturabilir] ya da [$2 giriş yapabilirsiniz]. Bir hesap oluşturmak, IP adresinizin gizlenmesine yardımcı olur.",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Konuşma sayfaları]], insanların {{SITENAME}} sitesinde olabilecek en iyi içeriği nasıl oluşturacaklarını tartıştıkları yerlerdir. [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] ile bağlantı kurmak ve işbirliği yapmak için yeni bir tartışma başlatın. Burada söyledikleriniz başkalarının görmesi için herkese açık olacak.",
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} hakkında bir tartışma başlatın.",
 	"discussiontools-emptystate-title-self": "Mesaj sayfanıza hoşgeldiniz",

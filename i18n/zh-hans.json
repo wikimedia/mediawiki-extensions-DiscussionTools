@@ -27,7 +27,8 @@
 			"沈澄心",
 			"邢家朋",
 			"铁桶",
-			"阿pp"
+			"阿pp",
+			"Diskdance"
 		]
 	},
 	"discussiontools": "讨论工具",
@@ -63,7 +64,7 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools 错误请求 ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 时间使用",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|秒}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>开启话题的新方法来了。</strong>本次更新使您可以使用内联表单添加话题，并通过新的快捷方式向其他用户发送通知。您也可以[$1 切换回旧版]。",
+	"discussiontools-newtopic-legacy-hint": "<strong>开启话题的新方法来了！</strong>本次更新使您可以使用内联表单添加话题，并通过新的快捷方式向其他用户发送通知。您也可以[$1 切换回旧版]。",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>您正在使用旧版视图。</strong>您可以[$1 返回新版视图]或在偏好设置中[$2 将旧版视图设置为您的默认界面]。",
 	"discussiontools-newtopic-missing-title": "请为您的讨论话题提供标题。如果您点击“{{int:discussiontools-replywidget-newtopic}}”，您添加的话题将不含标题。",
 	"discussiontools-newtopic-placeholder-title": "标题",
@@ -71,7 +72,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "在“<strong>$3</strong>”中有{{PLURAL:$1|一个新回复|$1个新回复|100=99+个新回复}}。",
 	"discussiontools-notification-subscribed-new-comment-view": "查看留言",
 	"discussiontools-postedit-confirmation-published": "您的留言已发布。",
-	"discussiontools-postedit-confirmation-topicadded": "您的话题已添加。",
+	"discussiontools-postedit-confirmation-topicadded": "已添加您的话题。",
 	"discussiontools-preference-autotopicsub": "自动订阅话题",
 	"discussiontools-preference-autotopicsub-help": "当您开始新讨论或在已有讨论中留言时，如果其他人发表新留言，您将自动收到通知。",
 	"discussiontools-preference-description": "启用测试中的讨论页功能：\n* 一键[https://www.mediawiki.org/wiki/Talk_pages_project/replying 回复]讨论页上的留言。\n* 以内联表单[https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion 添加新话题]。\n* 当您订阅的章节中添加新留言时[https://www.mediawiki.org/wiki/Talk_pages_project/Notifications 接收通知]。\n\n您可以在您的[[Special:Preferences#mw-prefsection-editing-discussion|参数设置]]更改这些功能的设置。\n\n有关更新将在[https://www.mediawiki.org/wiki/Talk_pages_project/Updates 讨论页项目的更新页面]上公布。\n\n请注意：\n* 随着时间的推移，将增加新的测试版功能。\n* 以上部分功能可能在您的wiki上尚不可用。",
@@ -85,7 +86,7 @@
 	"discussiontools-preference-sourcemodetoolbar-help": "该功能将在快速回复和快速添加话题功能的源代码模式中添加工具栏，用于提及他人和添加链接。",
 	"discussiontools-preference-summary": "您可以阅读[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary 功能摘要]来了解更多关于这些功能的信息。",
 	"discussiontools-preference-topicsubscription": "启用话题订阅",
-	"discussiontools-preference-topicsubscription-help": "这将让您能够订阅以收到对于个别话题中新留言的通知。",
+	"discussiontools-preference-topicsubscription-help": "该功能使您能够分别订阅每个话题以收到新留言的通知。",
 	"discussiontools-replylink": "回复",
 	"discussiontools-replywidget-abandon": "您确定要放弃您正在编写的留言吗?",
 	"discussiontools-replywidget-abandon-discard": "放弃留言",

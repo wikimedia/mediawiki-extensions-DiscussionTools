@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mansil alfalb"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "O comentário com a Id. '$1' não foi encontrado."
+}
