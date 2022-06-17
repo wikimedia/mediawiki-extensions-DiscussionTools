@@ -24,6 +24,7 @@
 				"CommentItem": "CommentItem",
 				"DmMWPingNode": "DmMWPingNode",
 				"HeadingItem": "HeadingItem",
+				"MemoryStorage": "MemoryStorage",
 				"moment": "moment",
 				"ThreadItemSet": "ThreadItemSet",
 				"ThreadItem": "ThreadItem"

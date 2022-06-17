@@ -115,9 +115,15 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 			focus: [ 'emit', 'bodyFocus' ]
 		} );
 
+		var listStorage = ve.init.platform.createListStorage( widget.storage );
+		// widget.storage is a MemoryStorage object. Copy over the .data cache so
+		// that listStorage reads from/writes to the same in-memory cache.
+		listStorage.data = widget.storage.data;
+
 		target.initAutosave( {
 			suppressNotifications: suppressNotifications,
-			docId: widget.storagePrefix
+			docId: widget.storagePrefix,
+			storage: listStorage
 		} );
 		widget.afterSetup();
 
