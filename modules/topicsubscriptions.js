@@ -7,7 +7,7 @@ var
 	STATE_AUTOSUBSCRIBED = 2,
 	utils = require( './utils.js' ),
 	CommentItem = require( './CommentItem.js' ),
-	ThreadItem = require( './ThreadItem.js' ),
+	HeadingItem = require( './HeadingItem.js' ),
 	linksByName = {};
 
 /**
@@ -65,32 +65,13 @@ function getSubscribedStateFromElement( element ) {
 	return element.hasAttribute( 'data-mw-subscribed' ) ? Number( element.getAttribute( 'data-mw-subscribed' ) ) : null;
 }
 
-function getTitleFromHeading( heading ) {
-	var section = utils.getHeadlineNodeAndOffset( heading ).node.id;
-	return mw.config.get( 'wgRelevantPageName' ) + '#' + section;
-}
-
-/**
- * Get a HeadingItem from a heading element wrapper
- *
- * @param {Element} heading Heading element
- * @return {ThreadItem|null} ThreadItem, null if not found
- */
-function getHeadingItemFromHeading( heading ) {
-	var dataNode = heading.querySelector( '[data-mw-comment]' );
-	if ( dataNode ) {
-		var hash = JSON.parse( dataNode.getAttribute( 'data-mw-comment' ) );
-		return ThreadItem.static.newFromJSON( hash );
-	}
-	return null;
-}
-
 /**
  * Initialize topic subscriptions feature
  *
  * @param {jQuery} $container Page container
+ * @param {ThreadItemSet} threadItemSet
  */
-function initTopicSubscriptions( $container ) {
+function initTopicSubscriptions( $container, threadItemSet ) {
 	linksByName = {};
 
 	// Loads later to avoid circular dependency
@@ -99,16 +80,17 @@ function initTopicSubscriptions( $container ) {
 	// Subscription links (no visual enhancements)
 	$container.find( '.ext-discussiontools-init-section-subscribe-link' ).each( function () {
 		var $link = $( this );
-		var heading = $link.closest( '.ext-discussiontools-init-section' )[ 0 ];
-		var headingItem = getHeadingItemFromHeading( heading );
+		var id = $link.closest( '.ext-discussiontools-init-section' )
+			.find( '[data-mw-comment-start]' ).attr( 'id' );
+		var headingItem = threadItemSet.findCommentById( id );
 
-		if ( !headingItem ) {
+		if ( !( headingItem instanceof HeadingItem ) ) {
 			// This should never happen
 			return;
 		}
 
 		var itemName = headingItem.name;
-		var title = getTitleFromHeading( heading );
+		var title = mw.config.get( 'wgRelevantPageName' ) + '#' + headingItem.getLinkableTitle();
 
 		linksByName[ itemName ] = this;
 
