@@ -4,9 +4,12 @@
 			"Abbas dhothar"
 		]
 	},
+	"discussiontools-replylink": "جواب",
 	"discussiontools-replywidget-advanced": "اضافی",
 	"discussiontools-replywidget-cancel": "رد کرو",
+	"discussiontools-replywidget-mode-source": "زریعہ",
 	"discussiontools-replywidget-mode-visual": "ویژوئل",
 	"discussiontools-replywidget-placeholder-newtopic": "تفصیل",
+	"discussiontools-replywidget-reply": "جواب",
 	"tag-discussiontools-visual": "ویژوئل"
 }
