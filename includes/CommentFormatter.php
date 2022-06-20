@@ -144,8 +144,10 @@ class CommentFormatter {
 					if ( $headingNode ) {
 						DOMCompat::getClassList( $headingNode )->add( 'ext-discussiontools-init-section' );
 
+						$itemNameEscaped = htmlspecialchars( $threadItem->getName(), ENT_NOQUOTES );
+
 						// Replaced in ::postprocessTopicSubscription() as the icon depends on user state
-						$subscribe = $doc->createComment( '__DTSUBSCRIBE__' . $threadItem->getName() );
+						$subscribe = $doc->createComment( '__DTSUBSCRIBELINK__' . $itemNameEscaped );
 
 						$headingNode->appendChild( $subscribe );
 					}
@@ -203,8 +205,22 @@ class CommentFormatter {
 		$doc = DOMCompat::newDocument( true );
 
 		$matches = [];
-		preg_match_all( '/<!--__DTSUBSCRIBE__(.*?)-->/', $text, $matches );
-		$itemNames = $matches[1];
+		preg_match_all( '/<!--__DTSUBSCRIBE(LINK)?__(.*?)-->/', $text, $matches );
+		$itemNames = array_map(
+			static function ( string $itemName, string $link ): string {
+				return $link ? htmlspecialchars_decode( $itemName ) : $itemName;
+			},
+			$matches[2], $matches[1]
+		);
+
+		// TODO: Remove (LINK)? from regex once parser cache has expired (a few weeks):
+		// preg_match_all( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', $text, $matches );
+		// $itemNames = array_map(
+		// 	static function ( string $itemName ): string {
+		// 		return htmlspecialchars_decode( $itemName );
+		// 	},
+		// 	$matches[1]
+		// );
 
 		$items = $subscriptionStore->getSubscriptionItemsForUser(
 			$user,
@@ -216,9 +232,10 @@ class CommentFormatter {
 		}
 
 		$text = preg_replace_callback(
-			'/<!--__DTSUBSCRIBE__(.*?)-->/',
+			'/<!--__DTSUBSCRIBE(LINK)?__(.*?)-->/',
 			static function ( $matches ) use ( $doc, $itemsByName, $lang ) {
-				$itemName = $matches[1];
+				// TODO: Remove (LINK)? from regex
+				$itemName = $matches[1] ? htmlspecialchars_decode( $matches[2] ) : $matches[2];
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
 				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
 
