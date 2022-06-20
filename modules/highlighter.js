@@ -161,38 +161,35 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 		} );
 		missingTargetNotifPromise = null;
 	}
-	// Delay with setTimeout() because "the Document's target element" (corresponding to the :target
-	// selector in CSS) is not yet updated to match the URL when handling a 'popstate' event.
-	setTimeout( function () {
-		// eslint-disable-next-line no-jquery/no-global-selector
-		var targetElement = $( ':target' )[ 0 ];
 
-		if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
-			var comment = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
-			highlightedTarget = new Highlight( comment );
-			highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
-			highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
-			return;
-		}
+	// eslint-disable-next-line no-jquery/no-global-selector
+	var targetElement = $( ':target' )[ 0 ];
 
-		if ( location.hash.match( /^#c-/ ) && !targetElement ) {
-			missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
-				return mw.notification.notify(
-					mw.message( 'discussiontools-target-comment-missing' ).parse(),
-					{ type: 'warn', autoHide: false }
-				);
-			} );
-		}
+	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
+		var comment = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
+		highlightedTarget = new Highlight( comment );
+		highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
+		highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
+		return;
+	}
 
-		var url = new URL( location.href );
-		highlightNewComments(
-			threadItemSet,
-			noScroll,
-			url.searchParams.get( 'dtnewcomments' ) && url.searchParams.get( 'dtnewcomments' ).split( '|' ),
-			url.searchParams.get( 'dtnewcommentssince' ),
-			url.searchParams.get( 'dtinthread' )
-		);
-	} );
+	if ( location.hash.match( /^#c-/ ) && !targetElement ) {
+		missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
+			return mw.notification.notify(
+				mw.message( 'discussiontools-target-comment-missing' ).parse(),
+				{ type: 'warn', autoHide: false }
+			);
+		} );
+	}
+
+	var url = new URL( location.href );
+	highlightNewComments(
+		threadItemSet,
+		noScroll,
+		url.searchParams.get( 'dtnewcomments' ) && url.searchParams.get( 'dtnewcomments' ).split( '|' ),
+		url.searchParams.get( 'dtnewcommentssince' ),
+		url.searchParams.get( 'dtinthread' )
+	);
 }
 
 /**
