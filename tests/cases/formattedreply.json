@@ -102,5 +102,13 @@
 		"expected": "cases/for-parser-cache/for-parser-cache-formattedreply.html",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Timestamp format switch behavior",
+		"title": "Talk:T304595",
+		"dom": "cases/timestamp-format-switch/timestamp-format-switch.html",
+		"expected": "cases/timestamp-format-switch/timestamp-format-switch-formattedreply.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	}
 ]

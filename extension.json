@@ -57,7 +57,8 @@
 					"name": "config.json",
 					"config": {
 						"enable": "DiscussionToolsEnable",
-						"replyIndentation": "DiscussionToolsReplyIndentation"
+						"replyIndentation": "DiscussionToolsReplyIndentation",
+						"switchTime": "DiscussionToolsTimestampFormatSwitchTime"
 					}
 				},
 				"ReplyLinksController.js",
@@ -336,6 +337,7 @@
 			"cases/fallback-encoding-link/fallback-encoding-link.json",
 			"cases/fake-headings/fake-headings.json",
 			"cases/signatures-funny/signatures-funny.json",
+			"cases/timestamp-format-switch/timestamp-format-switch.json",
 			"qunit/utils.test.js",
 			"qunit/modifier.test.js",
 			"qunit/parser.test.js",
@@ -408,7 +410,8 @@
 			"cases/signatures-comments/signatures-comments.html",
 			"cases/signatures-comments/signatures-comments-modified.html",
 			"cases/span-about-group/span-about-group.html",
-			"cases/span-about-group/span-about-group-modified.html"
+			"cases/span-about-group/span-about-group-modified.html",
+			"cases/timestamp-format-switch/timestamp-format-switch.html"
 		],
 		"dependencies": [
 			"ext.discussionTools.init"
@@ -595,6 +598,10 @@
 		"DiscussionToolsReplyIndentation": {
 			"value": "invisible",
 			"description": "Reply indentation syntax to use: 'invisible' (use `<dl><dd>` tags to output `:` in wikitext) or 'bullet' (use `<ul><li>` tags to output `*` in wikitext)."
+		},
+		"DiscussionToolsTimestampFormatSwitchTime": {
+			"value": "2022-07-12",
+			"description": "Date on which the internal timestamp format has changed (T304595), in ISO 8601 format."
 		},
 		"DTSchemaEditAttemptStepSamplingRate": {
 			"value": 0,

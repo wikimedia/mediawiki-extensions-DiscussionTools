@@ -214,5 +214,13 @@
 		"expected": "../cases/signatures-funny/signatures-funny.json",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Timestamp format switch behavior",
+		"title": "Talk:T304595",
+		"dom": "cases/timestamp-format-switch/timestamp-format-switch.html",
+		"expected": "../cases/timestamp-format-switch/timestamp-format-switch.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	}
 ]
