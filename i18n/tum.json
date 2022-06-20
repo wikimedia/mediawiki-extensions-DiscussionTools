@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tumbuka Arch"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Zgolo",
+	"discussiontools-desc": "Vilwa vakukhozgela ntchezgo",
+	"discussiontools-replylink": "zgola",
+	"discussiontools-replywidget-anon-warning": "<strong>Mundanjile.</strong> Kuti muoneske zina linu pa ivo mukulemba mmalo mwa IP address,munga [$1 njila] panji [$2 kupanga akaunti iphya].",
+	"discussiontools-replywidget-cancel": "Leka",
+	"discussiontools-replywidget-feedback": "Pelekanipo maganizo gha chinthu ichi",
+	"discussiontools-replywidget-loading": "Lindingani...",
+	"discussiontools-replywidget-mention-tool-title": "Zunula mgwiliski",
+	"discussiontools-replywidget-mode-source": "Source",
+	"discussiontools-replywidget-mode-visual": "Mwakuona",
+	"discussiontools-replywidget-placeholder-reply": "Zgola kwa {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Zgola",
+	"discussiontools-replywidget-terms-click": "Pala mwadofya \"$1\", mukuzomelezga za kagwiliskilo kawemi ntchito ka wiki yino.",
+	"discussiontools-replywidget-transcluded": "Maganizo ghinu ghasungikenge pa [[$1]].",
+	"discussiontools-error-comment-is-transcluded-title": "Linki ya \"{{int:discussiontools-replylink}}\" ingagwiliskika ntchito pakuzgola komenti iyi yayi chifukwa lafuma ku peji linyake. Kuti muzgole,chonde lutani apa : [[$1]].",
+	"tag-discussiontools-description": "Kulemba pagwiliska VilweloVyakudumbizgilana",
+	"tag-discussiontools-edit-description": "Mgwiliski wasintha ganizo na Vilwey\nloVakuchezgela",
+	"tag-discussiontools-newtopic-description": "Mgwiliski wasazgapo ganinizo liphya na VilweloVyakudumbizgana",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Zgola]",
+	"tag-discussiontools-reply-description": "Mgwiliski wazgola ku maganizo na VilweloVyakudumbizgilana",
+	"tag-discussiontools-source": "Source",
+	"tag-discussiontools-source-description": "Vilwelo vyakudumbilana vili mu source mode",
+	"tag-discussiontools-visual": "Visual",
+	"tag-discussiontools-visual-description": "VilweloVyakudumbizgilana vili mu visual mode"
+}

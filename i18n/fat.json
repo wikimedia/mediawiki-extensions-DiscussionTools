@@ -3,9 +3,16 @@
 		"authors": [
 			"Ebenoffen1",
 			"Robertjamal12",
-			"Theo"
+			"Theo",
+			"Leonard Nketsia"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Nyiano",
-	"discussiontools-desc": "Edwindadze a ɔbɔboa nkɔmbɔtwetwe nkratafa"
+	"discussiontools-desc": "Edwindadze a ɔbɔboa nkɔmbɔtwetwe nkratafa",
+	"discussiontools-replylink": "Nyiano",
+	"discussiontools-replywidget-cancel": "Twa mu",
+	"discussiontools-replywidget-mode-source": "Bea a ofi",
+	"discussiontools-replywidget-mode-visual": "Mfonyin",
+	"discussiontools-replywidget-placeholder-reply": "Ma {{BIDI:$1}} nyiano",
+	"discussiontools-replywidget-reply": "Yi ano"
 }

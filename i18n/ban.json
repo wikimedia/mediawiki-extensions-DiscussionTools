@@ -6,6 +6,11 @@
 	},
 	"discussiontools": "Piranti pabligbagan",
 	"discussiontools-defaultsummary-reply": "Ngwales",
+	"discussiontools-replylink": "wales",
+	"discussiontools-replywidget-cancel": "Wangdé",
+	"discussiontools-replywidget-mode-source": "Wit",
+	"discussiontools-replywidget-mode-visual": "Cingakan",
+	"discussiontools-replywidget-placeholder-reply": "Wales nuju {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Ngwales",
 	"tag-discussiontools-reply-description": "Anganggé ngalawes penampen nganggén DiscussionTools",
 	"tag-discussiontools-source-description": "PirantiPabligbagan ring mode wit"
