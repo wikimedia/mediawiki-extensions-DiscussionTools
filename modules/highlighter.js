@@ -17,6 +17,8 @@ function Highlight( comments ) {
 
 	comments = Array.isArray( comments ) ? comments : [ comments ];
 
+	this.rootNode = comments[ 0 ] ? comments[ 0 ].rootNode : null;
+
 	comments.forEach( function ( comment ) {
 		var $highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
 
@@ -28,6 +30,20 @@ function Highlight( comments ) {
 		// The highlight node must be inserted after the start marker node (data-mw-comment-start), not
 		// before, otherwise Node#getBoundingClientRect() returns wrong results.
 		range.insertNode( $highlight[ 0 ] );
+
+		// If the item is a top-level comment wrapped in a frame, highlight outside that frame
+		if ( comment.level === 1 ) {
+			var coveredSiblings = utils.getFullyCoveredSiblings( comment, comment.rootNode );
+			if ( coveredSiblings ) {
+				range.setStartBefore( coveredSiblings[ 0 ] );
+				range.setEndAfter( coveredSiblings[ coveredSiblings.length - 1 ] );
+			}
+		}
+
+		// If the item is a heading, highlight the full extent of it (not only the text)
+		if ( comment.type === 'heading' && !comment.placeholderHeading ) {
+			range.selectNode( $highlight.closest( 'h1, h2, h3, h4, h5, h6' )[ 0 ] );
+		}
 
 		ranges.push( range );
 		highlightNodes.push( $highlight[ 0 ] );
@@ -53,26 +69,57 @@ Highlight.prototype.update = function () {
 	this.$element.css( {
 		'margin-top': '',
 		'margin-left': '',
+		'margin-right': '',
 		width: '',
 		height: ''
 	} );
+	var rootRect = this.rootNode.getBoundingClientRect();
 	this.topmostElement = null;
-	var top = Infinity;
+	var topmostTop = Infinity;
 	this.ranges.forEach( function ( range, i ) {
-		var baseRect = highlight.$element.get( i ).getBoundingClientRect();
+		var $element = highlight.$element.eq( i );
+		var baseRect = $element[ 0 ].getBoundingClientRect();
 		var rect = RangeFix.getBoundingClientRect( range );
 		// rect may be null if the range is in a detached or hidden node
 		if ( rect ) {
+			// Draw the highlight over the full width of the page, except for very short comments
+			// (less than 1/3 of the available width).
+			//
+			// This lets the far edges of almost all comments align nicely (T309444#7968858),
+			// while still accurately highlighting comments in narrow floating boxes, such as
+			// image captions or {{archive top}}.
+			//
+			// It seems difficult to distinguish the floating boxes from comments that are just
+			// very short or very deeply indented, and this seems to work well enough in practice.
+			var useFullWidth = rect.width > rootRect.width / 3;
+
+			var top = rect.top - baseRect.top;
+			var width = rect.width;
+			var height = rect.height;
+			var left, right;
+			if ( $element.css( 'direction' ) === 'ltr' ) {
+				left = rect.left - baseRect.left;
+				if ( useFullWidth ) {
+					width = rootRect.width - ( rect.left - rootRect.left );
+				}
+			} else {
+				right = ( baseRect.left + baseRect.width ) - ( rect.left + rect.width );
+				if ( useFullWidth ) {
+					width = rootRect.width - ( ( rootRect.left + rootRect.width ) - ( rect.left + rect.width ) );
+				}
+			}
 			var padding = 5;
-			highlight.$element.eq( i ).css( {
-				'margin-top': rect.top - baseRect.top - padding,
-				'margin-left': rect.left - baseRect.left - padding,
-				width: rect.width + ( padding * 2 ),
-				height: rect.height + ( padding * 2 )
+			$element.css( {
+				'margin-top': top - padding,
+				'margin-left': left !== undefined ? left - padding : '',
+				'margin-right': right !== undefined ? right - padding : '',
+				width: width + ( padding * 2 ),
+				height: height + ( padding * 2 )
 			} );
-			if ( rect.top < top ) {
-				highlight.topmostElement = highlight.$element.get( i );
-				top = rect.top;
+
+			if ( rect.top < topmostTop ) {
+				highlight.topmostElement = $element[ 0 ];
+				topmostTop = rect.top;
 			}
 		}
 	} );
