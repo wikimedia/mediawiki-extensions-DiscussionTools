@@ -254,7 +254,7 @@ function init( $container, state ) {
 	var parser = new Parser( require( './parser/data.json' ) );
 
 	var commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
-	pageThreads = ThreadItemSet.static.newFromAnnotatedNodes( commentNodes, parser );
+	pageThreads = ThreadItemSet.static.newFromAnnotatedNodes( commentNodes, $pageContainer[ 0 ], parser );
 
 	if ( featuresEnabled.topicsubscription ) {
 		topicSubscriptions.initTopicSubscriptions( $container, pageThreads );

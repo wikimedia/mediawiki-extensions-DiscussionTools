@@ -21,11 +21,12 @@ OO.initClass( ThreadItemSet );
  * Created a ThreadItemSet from DOM nodes that have been annotated by the PHP CommentFormatter with
  * metadata about the thread structure.
  *
- * @param {HTMLElement} nodes
+ * @param {HTMLElement[]} nodes
+ * @param {HTMLElement} rootNode
  * @param {mw.dt.Parser} parser
  * @return {ThreadItemSet}
  */
-ThreadItemSet.static.newFromAnnotatedNodes = function ( nodes, parser ) {
+ThreadItemSet.static.newFromAnnotatedNodes = function ( nodes, rootNode, parser ) {
 	var result = new ThreadItemSet();
 
 	// The page can be served from the HTTP cache (Varnish), containing data-mw-comment generated
@@ -41,7 +42,7 @@ ThreadItemSet.static.newFromAnnotatedNodes = function ( nodes, parser ) {
 	// Create ThreadItem objects with basic data
 	for ( i = 0; i < nodes.length; i++ ) {
 		var hash = JSON.parse( nodes[ i ].getAttribute( 'data-mw-comment' ) );
-		item = ThreadItem.static.newFromJSON( hash );
+		item = ThreadItem.static.newFromJSON( hash, rootNode );
 		result.addThreadItem( item );
 
 		// Store info for second pass
