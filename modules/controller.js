@@ -419,7 +419,11 @@ function init( $container, state ) {
 	// Page-level handlers only need to be setup once
 	if ( !pageHandlersSetup ) {
 		$( window ).on( 'popstate', function () {
-			highlighter.highlightTargetComment( pageThreads, true );
+			// Delay with setTimeout() because "the Document's target element" (corresponding to the :target
+			// selector in CSS) is not yet updated to match the URL when handling a 'popstate' event.
+			setTimeout( function () {
+				highlighter.highlightTargetComment( pageThreads, true );
+			} );
 		} );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'body' ).on( 'click', function ( e ) {
