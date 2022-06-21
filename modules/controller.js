@@ -257,7 +257,7 @@ function init( $container, state ) {
 	pageThreads = ThreadItemSet.static.newFromAnnotatedNodes( commentNodes, parser );
 
 	if ( featuresEnabled.topicsubscription ) {
-		topicSubscriptions.initTopicSubscriptions( $container );
+		topicSubscriptions.initTopicSubscriptions( $container, pageThreads );
 	}
 
 	/**
