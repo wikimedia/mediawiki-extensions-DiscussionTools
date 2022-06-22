@@ -8,7 +8,10 @@
 			"Gustavo.moraes",
 			"He7d3r",
 			"Jhonnatanricardo",
-			"Matma Rex"
+			"Matma Rex",
+			"Stanglavine",
+			"Wiiformii",
+			"YuriNikolai"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
@@ -40,6 +43,7 @@
 	"discussiontools-newtopic-placeholder-title": "Título",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|respondeu}} em \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Uma nova resposta|$1 novas respostas|100=99+ novas respostas}} em \"<strong>$3</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Ver comentário",
 	"discussiontools-postedit-confirmation-published": "Seu comentário foi publicado.",
 	"discussiontools-postedit-confirmation-topicadded": "Seu tópico foi adicionado.",
@@ -66,6 +70,7 @@
 	"discussiontools-replywidget-cancel": "Cancelar",
 	"discussiontools-replywidget-feedback": "Compartilhe comentários sobre esse recurso",
 	"discussiontools-replywidget-loading": "Carregando…",
+	"discussiontools-replywidget-mention-prefix": "@",
 	"discussiontools-replywidget-mention-tool-header": "Encontrar usuário: $1",
 	"discussiontools-replywidget-mention-tool-title": "Mencionar um usuário",
 	"discussiontools-replywidget-mode-source": "Fonte",
@@ -80,6 +85,7 @@
 	"discussiontools-replywidget-summary": "Sumário",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-replywidget-transcluded": "Seu comentário será salvo em [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicsubscription-button-subscribe": "inscrever-se",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Inscreva-se para receber notificações sobre novos comentários.",
 	"discussiontools-topicsubscription-button-unsubscribe": "cancelar inscrição",

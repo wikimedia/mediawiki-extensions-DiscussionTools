@@ -19,6 +19,8 @@
 	"discussiontools-error-comment-not-saved": "ߌ ߟߊ߫ ߦߟߌߣߐ ߕߍߣߊ߬ ߛߐ߲߬ ߠߊ߫ ߟߊߥߊ߲߬ߞߊ߫ ߟߊ߫ ߞߐߜߍ ߓߍ߯ ߘߐ߫ ߞߐ߯ߟߕߊ ߞߊ߲߬. ߛߊ߫ ߞߊ߬ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߞߐ߯ߟߕߊ ߟߎ߬ ߦߋ߫߸ ߌ ߟߊ߫ ߡߙߌߣߊ߲ ߡߊߢߊ߲߯ߣߍ߲ ߠߎ߬ ߓߊߓߌ߬ߟߊ߫ ߞߵߌ ߟߊ߫ ߛߏ߲߯ߓߊߟߊ߲ ߠߊߓߊ߯ߙߊ߫ ߛߌߣߍ߲߬ ߞߊ߬ ߞߐߜߍ ߟߊߢߎ߲߫ ߞߎߘߊ߫ ߘߌ߫.",
 	"discussiontools-error-noswitchtove-title": "ߦߋߢߊ ߞߍߗߏ߮ ߓߘߊ߫ ߓߴߊ߬ ߟߊ߫",
 	"discussiontools-newtopic-placeholder-title": "ߞߎ߲߬ߕߐ߮",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|ߓߘߊ߫}} ߖߋ߬ߓߌ߬ߟߌ ߞߍ߫ <strong>$4</strong> ߟߊ߫",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:|ߞߐߖߋߓߌ߫ ߞߎߘߊ߫ ߘߏ߫ $1|ߞߐߖߋߓߌ߫ ߞߎߘߊ߫ $1 ߟߎ߬|߁߀߀=ߦߋ߫ ߞߐߖߋߓߌ߫ ߉߉+ ߞߎߘߊ ߟߎ߬ ߟߋ߬ ߘߌ߫}} <strong>$3</strong> ߘߐ߫.",
 	"discussiontools-notification-subscribed-new-comment-view": "ߡߙߌߣߊ߲ ߦߌ߬ߘߊ߬",
 	"discussiontools-postedit-confirmation-published": "ߌ ߟߊ߫ ߡߙߌߣߊ߲ ߓߘߊ߫ ߟߊߥߊ߲߬ߞߊ߫.",
 	"discussiontools-postedit-confirmation-topicadded": "ߌ ߟߊ߫ ߝߐߡߊ ߓߘߊ߫ ߝߙߊ߬.",
