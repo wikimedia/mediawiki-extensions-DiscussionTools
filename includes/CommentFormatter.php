@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use Html;
 use Language;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\MediaWikiServices;
@@ -108,9 +109,10 @@ class CommentFormatter {
 		// Visual enhancements: topic containers
 		$summary = $headingItem->getThreadSummary();
 		if ( $summary['commentCount'] ) {
+			$latestReplyJSON = static::getJsonForCommentMarker( $summary['latestReply'] );
 			$latestReply = $doc->createComment(
 				// Timestamp output varies by user timezone, so is formatted later
-				'__DTTIMESTAMP__' . $summary['latestReply']->getTimestamp()->getTimestamp() . '__'
+				'__DTLATESTCOMMENTTHREAD__' . htmlspecialchars( $latestReplyJSON, ENT_NOQUOTES ) . '__'
 			);
 
 			$commentCount = $doc->createComment(
@@ -424,13 +426,27 @@ class CommentFormatter {
 	 * Create a meta item label
 	 *
 	 * @param string $className
-	 * @param string $label Label
+	 * @param string|\OOUI\HtmlSnippet $label Label
 	 * @return \OOUI\Tag
 	 */
-	private static function metaLabel( string $className, string $label ): \OOUI\Tag {
+	private static function metaLabel( string $className, $label ): \OOUI\Tag {
 		return ( new \OOUI\Tag( 'span' ) )
 			->addClasses( [ 'ext-discussiontools-init-section-metaitem', $className ] )
 			->appendContent( $label );
+	}
+
+	/**
+	 * Get JSON for a commentItem that can be inserted into a comment marker
+	 *
+	 * @param CommentItem $commentItem Comment item
+	 * @return string
+	 */
+	private static function getJsonForCommentMarker( CommentItem $commentItem ): string {
+		$JSON = [
+			'id' => $commentItem->getId(),
+			'timestamp' => $commentItem->getTimestampString()
+		];
+		return json_encode( $JSON );
 	}
 
 	/**
@@ -464,18 +480,28 @@ class CommentFormatter {
 		string $text, Language $lang, UserIdentity $user
 	): string {
 		$text = preg_replace_callback(
-			'/<!--__DTTIMESTAMP__([0-9]+)__-->/',
+			'/<!--__DTLATESTCOMMENTTHREAD__(.*?)__-->/',
 			static function ( $matches ) use ( $lang, $user ) {
-				$relativeTime = static::getSignatureRelativeTime( new MWTimestamp( $matches[1] ), $lang, $user );
-				// getHumanTimestamp varies by user timezone.
-				$label = wfMessage(
-					'discussiontools-topicheader-latestcomment',
-					$relativeTime
-				)->inLanguage( $lang )->text();
-				return CommentFormatter::metaLabel(
-					'ext-discussiontools-init-section-timestampLabel',
-					$label
-				);
+				$itemData = json_decode( htmlspecialchars_decode( $matches[1] ), true );
+				if ( $itemData && $itemData['timestamp'] && $itemData['id'] ) {
+					$relativeTime = static::getSignatureRelativeTime(
+						new MWTimestamp( $itemData['timestamp'] ),
+						$lang,
+						$user
+					);
+					$commentLink = Html::element( 'a', [
+						'href' => '#' . $itemData['id']
+					], $relativeTime );
+
+					$label = wfMessage( 'discussiontools-topicheader-latestcomment' )
+						->rawParams( $commentLink )
+						->inLanguage( $lang )->escaped();
+
+					return CommentFormatter::metaLabel(
+						'ext-discussiontools-init-section-timestampLabel',
+						new \OOUI\HtmlSnippet( $label )
+					);
+				}
 			},
 			$text
 		);
