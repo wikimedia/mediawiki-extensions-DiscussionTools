@@ -95,9 +95,7 @@ class PageHooks implements
 		// to selectively hide DT features, depending on the body classes added above.
 		$availableForTitle = HookUtils::isAvailableForTitle( $output->getTitle() );
 		if ( $availableForTitle ) {
-			$output->addModuleStyles( [
-				'ext.discussionTools.init.styles',
-			] );
+			$output->addModuleStyles( 'ext.discussionTools.init.styles' );
 		}
 
 		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
@@ -187,6 +185,8 @@ class PageHooks implements
 
 		$lang = $output->getLanguage();
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
+			// Just enable OOUI PHP - the OOUI subscribe button isn't infused unless VISUALENHANCEMENTS are enabled
+			$output->setupOOUI();
 			$text = CommentFormatter::postprocessTopicSubscription(
 				$text, $lang, $this->subscriptionStore, $output->getUser()
 			);
@@ -194,6 +194,22 @@ class PageHooks implements
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
 			$text = CommentFormatter::postprocessReplyTool(
 				$text, $lang
+			);
+		}
+		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
+			$output->enableOOUI();
+			$output->addModuleStyles( [
+				// Icons for h2 bar
+				// speechBubble
+				'oojs-ui.styles.icons-alerts',
+				// userAvatar
+				'oojs-ui.styles.icons-user',
+				// clock
+				'oojs-ui.styles.icons-interactions'
+			] );
+
+			$text = CommentFormatter::postprocessVisualEnhancements(
+				$text, $lang, $output->getUser()
 			);
 		}
 

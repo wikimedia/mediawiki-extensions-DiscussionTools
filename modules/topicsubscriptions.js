@@ -8,7 +8,8 @@ var
 	utils = require( './utils.js' ),
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
-	linksByName = {};
+	linksByName = {},
+	buttonsByName = {};
 
 /**
  * Update a subscribe link
@@ -26,6 +27,27 @@ function updateSubscribeLink( element, state ) {
 	} else {
 		element.textContent = mw.msg( 'discussiontools-topicsubscription-button-subscribe' );
 		element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-subscribe-tooltip' ) );
+	}
+}
+
+/**
+ * Update a subscribe button
+ *
+ * @param {OO.ui.ButtonWidget} button Button Subscribe button
+ * @param {number|null} state State constant (STATE_UNSUBSCRIBED, STATE_SUBSCRIBED or STATE_AUTOSUBSCRIBED)
+ */
+function updateSubscribeButton( button, state ) {
+	if ( state !== null ) {
+		button.$element[ 0 ].setAttribute( 'data-mw-subscribed', String( state ) );
+	}
+	if ( state ) {
+		button.setIcon( 'bell' );
+		button.setLabel( mw.msg( 'discussiontools-topicsubscription-button-unsubscribe-label' ) );
+		button.setTitle( mw.msg( 'discussiontools-topicsubscription-button-unsubscribe-tooltip' ) );
+	} else {
+		button.setIcon( 'bellOutline' );
+		button.setLabel( mw.msg( 'discussiontools-topicsubscription-button-subscribe-label' ) );
+		button.setTitle( mw.msg( 'discussiontools-topicsubscription-button-subscribe-tooltip' ) );
 	}
 }
 
@@ -73,9 +95,49 @@ function getSubscribedStateFromElement( element ) {
  */
 function initTopicSubscriptions( $container, threadItemSet ) {
 	linksByName = {};
+	buttonsByName = {};
 
 	// Loads later to avoid circular dependency
 	api = require( './controller.js' ).getApi();
+
+	// Subscription buttons (visual enhancements)
+	$container.find( '.ext-discussiontools-init-section-subscribeButton' ).each( function () {
+		// These attributes will be lost when infusing
+		// TODO: Could also be fixed by subclassing ButtonWidget in PHP
+		var subscribedStateTemp = getSubscribedStateFromElement( this );
+
+		var id = $( this ).closest( '.ext-discussiontools-init-section' )
+			.find( '[data-mw-comment-start]' ).attr( 'id' );
+		var headingItem = threadItemSet.findCommentById( id );
+
+		if ( !( headingItem instanceof HeadingItem ) ) {
+			// This should never happen
+			return;
+		}
+
+		var name = headingItem.name;
+		var button = OO.ui.infuse( this );
+		buttonsByName[ name ] = button;
+
+		// Restore data attribute
+		button.$element[ 0 ].setAttribute( 'data-mw-subscribed', String( subscribedStateTemp ) );
+
+		var title = mw.config.get( 'wgRelevantPageName' ) + '#' + headingItem.getLinkableTitle();
+
+		button.on( 'click', function () {
+			// Get latest subscribedState
+			var subscribedState = getSubscribedStateFromElement( button.$element[ 0 ] );
+
+			button.setDisabled( true );
+			changeSubscription( title, name, !subscribedState )
+				.then( function ( result ) {
+					updateSubscribeButton( button, result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED );
+				} )
+				.always( function () {
+					button.setDisabled( false );
+				} );
+		} );
+	} );
 
 	// Subscription links (no visual enhancements)
 	$container.find( '.ext-discussiontools-init-section-subscribe-link' ).each( function () {
@@ -233,8 +295,11 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 	// If the topic is marked as having never been subscribed, check if they are auto-subscribed now.
 	var topicsToCheck = [];
 	var pendingLinks = [];
+	var pendingButtons = [];
 	for ( var headingName in headingsToUpdate ) {
 		var link = linksByName[ headingName ];
+		var button = buttonsByName[ headingName ];
+		// We can get the subscription state from the link or the button
 		var subscribedState = getSubscribedStateFromElement( link );
 
 		if ( subscribedState === STATE_AUTOSUBSCRIBED ) {
@@ -242,9 +307,13 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 		} else if ( subscribedState === null || subscribedState === STATE_UNSUBSCRIBED ) {
 			topicsToCheck.push( headingName );
 			pendingLinks.push( link );
+			pendingButtons.push( button );
 		}
 	}
 	$( pendingLinks ).addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+	pendingButtons.forEach( function ( b ) {
+		b.setDisabled( true );
+	} );
 
 	if ( !topicsToCheck.length ) {
 		return;
@@ -274,12 +343,16 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 		for ( var subItemName in response.subscriptions ) {
 			var state = response.subscriptions[ subItemName ];
 			updateSubscribeLink( linksByName[ subItemName ], state );
+			updateSubscribeButton( buttonsByName[ subItemName ], state );
 			if ( state === STATE_AUTOSUBSCRIBED ) {
 				maybeShowFirstTimeAutoTopicSubPopup();
 			}
 		}
 	} ).always( function () {
 		$( pendingLinks ).removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+		pendingButtons.forEach( function ( b ) {
+			b.setDisabled( false );
+		} );
 	} );
 }
 

@@ -124,13 +124,17 @@
 				"discussiontools-target-comment-missing",
 				"discussiontools-target-comments-missing",
 				"discussiontools-topicsubscription-button-subscribe",
+				"discussiontools-topicsubscription-button-subscribe-label",
 				"discussiontools-topicsubscription-button-subscribe-tooltip",
 				"discussiontools-topicsubscription-button-unsubscribe",
+				"discussiontools-topicsubscription-button-unsubscribe-label",
 				"discussiontools-topicsubscription-button-unsubscribe-tooltip",
 				"discussiontools-topicsubscription-notify-subscribed-body",
 				"discussiontools-topicsubscription-notify-subscribed-title",
 				"discussiontools-topicsubscription-notify-unsubscribed-body",
-				"discussiontools-topicsubscription-notify-unsubscribed-title"
+				"discussiontools-topicsubscription-notify-unsubscribed-title",
+				"minerva-talk-full-page",
+				"skin-view-edit"
 			],
 			"targets": [
 				"desktop",
@@ -536,7 +540,8 @@
 		"discussiontools-replytool": 1,
 		"discussiontools-sourcemodetoolbar": 1,
 		"discussiontools-topicsubscription": 1,
-		"discussiontools-autotopicsub": 1
+		"discussiontools-autotopicsub": 1,
+		"discussiontools-visualenhancements": 1
 	},
 	"config": {
 		"DiscussionToolsEnable": {
@@ -574,6 +579,10 @@
 		"DiscussionTools_autotopicsub": {
 			"value": "default",
 			"description": "Override availability of DiscussionTools automatic topic subscription feature. 'default', 'available', or 'unavailable'."
+		},
+		"DiscussionTools_visualenhancements": {
+			"value": "default",
+			"description": "Override availability of DiscussionTools visual enhancements. 'default', 'available', or 'unavailable'."
 		},
 		"DiscussionToolsAutoTopicSubEditor": {
 			"value": "discussiontoolsapi",

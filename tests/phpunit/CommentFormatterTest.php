@@ -35,13 +35,21 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$mockSubStore = new MockSubscriptionStore();
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
 
+		\OutputPage::setupOOUI();
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
 			$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser()
+		);
+
+		$actual = MockCommentFormatter::postprocessVisualEnhancements(
+			$actual, $qqxLang, static::getTestUser()->getUser()
 		);
 
 		$actual = MockCommentFormatter::postprocessReplyTool(
 			$actual, $qqxLang
 		);
+
+		// OOUI ID's are non-deterministic, so strip them from test output
+		$actual = preg_replace( '/ id=[\'"]ooui-php-[0-9]+[\'"]/', '', $actual );
 
 		// Optionally write updated content to the "reply HTML" files
 		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {

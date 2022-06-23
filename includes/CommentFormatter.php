@@ -7,6 +7,7 @@ use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
+use MWTimestamp;
 use ParserOutput;
 use Throwable;
 use Title;
@@ -22,6 +23,7 @@ class CommentFormatter {
 	public const USE_WITH_FEATURES = [
 		HookUtils::REPLYTOOL,
 		HookUtils::TOPICSUBSCRIPTION,
+		HookUtils::VISUALENHANCEMENTS
 	];
 
 	/**
@@ -71,6 +73,87 @@ class CommentFormatter {
 				'discussiontools-limitreport-errorreqid',
 				$requestId
 			);
+		}
+	}
+
+	/**
+	 * Add a topic container around a heading element
+	 *
+	 * @param Element $headingElement Heading element
+	 * @param HeadingItem|null $headingItem Heading item
+	 */
+	protected static function addTopicContainer( Element $headingElement, ?HeadingItem $headingItem = null ) {
+		$doc = $headingElement->ownerDocument;
+
+		DOMCompat::getClassList( $headingElement )->add( 'ext-discussiontools-init-section' );
+
+		if ( !$headingItem ) {
+			return;
+		}
+
+		$headingNameEscaped = htmlspecialchars( $headingItem->getName(), ENT_NOQUOTES );
+
+		// Replaced in ::postprocessTopicSubscription() as the text depends on user state
+		$subscribe = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingNameEscaped );
+		$headingElement->appendChild( $subscribe );
+
+		// TEMPORARY: If enhancements are "unavailable", don't modify the HTML at all
+		// so as to avoid polluting the parser cache. Once the HTML output is more stable
+		// this can be removed.
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+		if ( $dtConfig->get( 'DiscussionTools_' . HookUtils::VISUALENHANCEMENTS ) === 'unavailable' ) {
+			return;
+		}
+
+		// Visual enhancements: topic containers
+		$summary = $headingItem->getThreadSummary();
+		if ( $summary['commentCount'] ) {
+			$latestReply = $doc->createComment(
+				// Timestamp output varies by user timezone, so is formatted later
+				'__DTTIMESTAMP__' . $summary['latestReply']->getTimestamp()->getTimestamp() . '__'
+			);
+
+			$commentCount = $doc->createComment(
+				'__DTCOMMENTCOUNT__' . $summary['commentCount'] . '__'
+			);
+
+			$authorCount = $doc->createComment(
+				'__DTAUTHORCOUNT__' . count( $summary['authors'] ) . '__'
+			);
+
+			// Topic subscriptions
+			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTON__' . $headingNameEscaped );
+			$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
+
+			$metadata = $doc->createElement( 'div' );
+			$metadata->setAttribute(
+				'class',
+				'ext-discussiontools-init-section-metadata'
+			);
+
+			$metadata->appendChild( $latestReply );
+			$metadata->appendChild( $commentCount );
+			$metadata->appendChild( $authorCount );
+
+			$actions = $doc->createElement( 'div' );
+			$actions->setAttribute(
+				'class',
+				'ext-discussiontools-init-section-actions'
+			);
+
+			$actions->appendChild( $subscribeButton );
+			$actions->appendChild( $ellipsisButton );
+
+			$bar = $doc->createElement( 'div' );
+			$bar->setAttribute(
+				'class',
+				'ext-discussiontools-init-section-bar'
+			);
+
+			$bar->appendChild( $metadata );
+			$bar->appendChild( $actions );
+
+			$headingElement->appendChild( $bar );
 		}
 	}
 
@@ -139,17 +222,10 @@ class CommentFormatter {
 				Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
 				$headline->setAttribute( 'data-mw-comment', $itemJSON );
 				if ( $threadItem->isSubscribable() ) {
-					$headingNode = CommentUtils::closestElement( $headline, [ 'h2' ] );
+					$headingElement = CommentUtils::closestElement( $headline, [ 'h2' ] );
 
-					if ( $headingNode ) {
-						DOMCompat::getClassList( $headingNode )->add( 'ext-discussiontools-init-section' );
-
-						$itemNameEscaped = htmlspecialchars( $threadItem->getName(), ENT_NOQUOTES );
-
-						// Replaced in ::postprocessTopicSubscription() as the icon depends on user state
-						$subscribe = $doc->createComment( '__DTSUBSCRIBELINK__' . $itemNameEscaped );
-
-						$headingNode->appendChild( $subscribe );
+					if ( $headingElement ) {
+						static::addTopicContainer( $headingElement, $threadItem );
 					}
 				}
 			} elseif ( $threadItem instanceof CommentItem ) {
@@ -183,6 +259,12 @@ class CommentFormatter {
 
 				CommentModifier::addReplyLink( $threadItem, $replyLinkButtons );
 			}
+		}
+
+		// Enhance other <h2>'s which aren't part of a thread
+		$headings = DOMCompat::querySelectorAll( $container, 'h2' );
+		foreach ( $headings as $headingElement ) {
+			static::addTopicContainer( $headingElement );
 		}
 
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
@@ -281,6 +363,39 @@ class CommentFormatter {
 			},
 			$text
 		);
+
+		$text = preg_replace_callback(
+			'/<!--__DTSUBSCRIBEBUTTON__(.*?)-->/',
+			static function ( $matches ) use ( $doc, $itemsByName, $lang ) {
+				$itemName = htmlspecialchars_decode( $matches[1] );
+				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
+				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
+
+				$subscribe = new \OOUI\ButtonWidget( [
+					'classes' => [ 'ext-discussiontools-init-section-subscribeButton' ],
+					'framed' => false,
+					'icon' => $isSubscribed ? 'bell' : 'bellOutline',
+					'flags' => [ 'progressive' ],
+					'label' => wfMessage( $isSubscribed ?
+						'discussiontools-topicsubscription-button-unsubscribe-label' :
+						'discussiontools-topicsubscription-button-subscribe-label'
+					)->inLanguage( $lang )->text(),
+					'title' => wfMessage( $isSubscribed ?
+						'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
+						'discussiontools-topicsubscription-button-subscribe-tooltip'
+					)->inLanguage( $lang )->text(),
+					'infusable' => true,
+				] );
+
+				if ( $subscribedState !== null ) {
+					$subscribe->setAttributes( [ 'data-mw-subscribed' => (string)$subscribedState ] );
+				}
+
+				return $subscribe->toString();
+			},
+			$text
+		);
+
 		return $text;
 	}
 
@@ -293,7 +408,7 @@ class CommentFormatter {
 	 */
 	public static function postprocessReplyTool(
 		string $text, Language $lang
-	) {
+	): string {
 		$replyText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
 
 		$text = strtr( $text, [
@@ -302,6 +417,112 @@ class CommentFormatter {
 			 '<!--__DTREPLYBRACKETCLOSE__-->' => ']',
 		] );
 
+		return $text;
+	}
+
+	/**
+	 * Create a meta item label
+	 *
+	 * @param string $className
+	 * @param string $label Label
+	 * @return \OOUI\Tag
+	 */
+	private static function metaLabel( string $className, string $label ): \OOUI\Tag {
+		return ( new \OOUI\Tag( 'span' ) )
+			->addClasses( [ 'ext-discussiontools-init-section-metaitem', $className ] )
+			->appendContent( $label );
+	}
+
+	/**
+	 * Get a relative timestamp from a signature timestamp.
+	 *
+	 * Signature timestamps don't have seconds-level accuracy, so any
+	 * time difference of less than 120 seconds is treated as being
+	 * posted "just now".
+	 *
+	 * @param MWTimestamp $timestamp
+	 * @param Language $lang
+	 * @param UserIdentity $user
+	 * @return string
+	 */
+	public static function getSignatureRelativeTime( MWTimestamp $timestamp, Language $lang, UserIdentity $user ) {
+		if ( time() - intval( $timestamp->getTimestamp() ) < 120 ) {
+			$timestamp = new MWTimestamp();
+		}
+		return $lang->getHumanTimestamp( $timestamp, null, $user );
+	}
+
+	/**
+	 * Post-process timestamps
+	 *
+	 * @param string $text
+	 * @param Language $lang
+	 * @param UserIdentity $user
+	 * @return string
+	 */
+	public static function postprocessVisualEnhancements(
+		string $text, Language $lang, UserIdentity $user
+	): string {
+		$text = preg_replace_callback(
+			'/<!--__DTTIMESTAMP__([0-9]+)__-->/',
+			static function ( $matches ) use ( $lang, $user ) {
+				$relativeTime = static::getSignatureRelativeTime( new MWTimestamp( $matches[1] ), $lang, $user );
+				// getHumanTimestamp varies by user timezone.
+				$label = wfMessage(
+					'discussiontools-topicheader-latestcomment',
+					$relativeTime
+				)->inLanguage( $lang )->text();
+				return CommentFormatter::metaLabel(
+					'ext-discussiontools-init-section-timestampLabel',
+					$label
+				);
+			},
+			$text
+		);
+		$text = preg_replace_callback(
+			'/<!--__DTCOMMENTCOUNT__([0-9]+)__-->/',
+			static function ( $matches ) use ( $lang, $user ) {
+				$count = $lang->formatNum( $matches[1] );
+				$label = wfMessage(
+					'discussiontools-topicheader-commentcount',
+					$count
+				)->inLanguage( $lang )->text();
+				return CommentFormatter::metaLabel(
+					'ext-discussiontools-init-section-commentCountLabel',
+					$label
+				);
+			},
+			$text
+		);
+		$text = preg_replace_callback(
+			'/<!--__DTAUTHORCOUNT__([0-9]+)__-->/',
+			static function ( $matches ) use ( $lang, $user ) {
+				$count = $lang->formatNum( $matches[1] );
+				$label = wfMessage(
+					'discussiontools-topicheader-authorcount',
+					$count
+				)->inLanguage( $lang )->text();
+				return CommentFormatter::metaLabel(
+					'ext-discussiontools-init-section-authorCountLabel',
+					$label
+				);
+			},
+			$text
+		);
+		$text = preg_replace_callback(
+			'/<!--__DTELLIPSISBUTTON__-->/',
+			static function ( $matches ) {
+				$ellipsis = new ButtonMenuSelectWidget( [
+					'classes' => [ 'ext-discussiontools-init-section-ellipsisButton' ],
+					'framed' => false,
+					'icon' => 'ellipsis',
+					'infusable' => true,
+				] );
+
+				return $ellipsis->toString();
+			},
+			$text
+		);
 		return $text;
 	}
 
