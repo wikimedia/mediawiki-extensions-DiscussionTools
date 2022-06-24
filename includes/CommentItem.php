@@ -164,15 +164,30 @@ class CommentItem extends ThreadItem {
 	}
 
 	/**
-	 * Get the comment timestamp in a standard format
+	 * Get the comment timestamp in the format used in IDs and names.
 	 *
-	 * Uses ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
-	 * of '+00:00', like Date#toISOString in JavaScript.
+	 * Depending on the date of the comment, this may use one of two formats:
+	 *
+	 *  - For dates prior to 'DiscussionToolsTimestampFormatSwitchTime' (by default 2022-07-12):
+	 *    Uses ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
+	 *    of '+00:00', like Date#toISOString in JavaScript.
+	 *
+	 *  - For dates on or after 'DiscussionToolsTimestampFormatSwitchTime' (by default 2022-07-12):
+	 *    Uses MediaWiki timestamp (TS_MW in MediaWiki PHP code).
 	 *
 	 * @return string Comment timestamp in standard format
 	 */
 	public function getTimestampString(): string {
-		return $this->timestamp->format( 'Y-m-d\TH:i:s.v\Z' );
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+		$switchTime = new DateTimeImmutable(
+			$dtConfig->get( 'DiscussionToolsTimestampFormatSwitchTime' )
+		);
+		$timestamp = $this->getTimestamp();
+		if ( $timestamp < $switchTime ) {
+			return $timestamp->format( 'Y-m-d\TH:i:s.v\Z' );
+		} else {
+			return $timestamp->format( 'YmdHis' );
+		}
 	}
 
 	/**

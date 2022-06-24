@@ -1,4 +1,5 @@
-var ThreadItem = require( './ThreadItem.js' );
+var ThreadItem = require( './ThreadItem.js' ),
+	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
 /**
  * A comment item
@@ -32,15 +33,27 @@ function CommentItem( level, range, signatureRanges, timestamp, author ) {
 OO.inheritClass( CommentItem, ThreadItem );
 
 /**
- * Get the comment timestamp in a standard format
+ * Get the comment timestamp in the format used in IDs and names.
  *
- * Uses ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
- * of '+00:00', like Date#toISOString in JavaScript.
+ * Depending on the date of the comment, this may use one of two formats:
+ *
+ *  - For dates prior to 'DiscussionToolsTimestampFormatSwitchTime' (by default 2022-07-12):
+ *    Uses ISO 8601 date. Almost DateTimeInterface::RFC3339_EXTENDED, but ending with 'Z' instead
+ *    of '+00:00', like Date#toISOString in JavaScript.
+ *
+ *  - For dates on or after 'DiscussionToolsTimestampFormatSwitchTime' (by default 2022-07-12):
+ *    Uses MediaWiki timestamp (TS_MW in MediaWiki PHP code).
  *
  * @return {string} Comment timestamp in standard format
  */
 CommentItem.prototype.getTimestampString = function () {
-	return this.timestamp.toISOString();
+	var dtConfig = require( './config.json' );
+	var switchTime = moment( dtConfig.switchTime );
+	if ( this.timestamp < switchTime ) {
+		return this.timestamp.toISOString();
+	} else {
+		return this.timestamp.format( 'YYYYMMDDHHmmss' );
+	}
 };
 
 /**
