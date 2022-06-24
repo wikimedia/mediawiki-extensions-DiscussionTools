@@ -144,7 +144,6 @@ class CommentFormatter {
 			);
 
 			$actions->appendChild( $subscribeButton );
-			$actions->appendChild( $ellipsisButton );
 
 			$bar = $doc->createElement( 'div' );
 			$bar->setAttribute(
@@ -155,6 +154,7 @@ class CommentFormatter {
 			$bar->appendChild( $metadata );
 			$bar->appendChild( $actions );
 
+			$headingElement->appendChild( $ellipsisButton );
 			$headingElement->appendChild( $bar );
 		}
 	}

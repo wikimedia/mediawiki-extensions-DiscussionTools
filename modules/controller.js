@@ -265,6 +265,7 @@ function init( $container, state ) {
 		mw.loader.using( [ 'oojs-ui-widgets', 'oojs-ui.styles.icons-editing-core' ] ).then( function () {
 			$container.find( '.ext-discussiontools-init-section-ellipsisButton' ).each( function () {
 				var buttonMenu = OO.ui.infuse( this, { menu: {
+					horizontalPosition: 'end',
 					items: [
 						new OO.ui.MenuOptionWidget( {
 							data: 'edit',
