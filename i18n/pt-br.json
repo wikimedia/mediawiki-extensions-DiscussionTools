@@ -8,7 +8,10 @@
 			"Fúlvio",
 			"Gustavo.moraes",
 			"He7d3r",
-			"Matma Rex"
+			"Matma Rex",
+			"Stanglavine",
+			"Wiiformii",
+			"YuriNikolai"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
@@ -29,6 +32,7 @@
 	"discussiontools-replywidget-reply": "Responder",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-replywidget-transcluded": "Seu comentário será salvo em [[$1]].",
+	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário ao qual você está respondendo na página. Pode ter sido excluído ou movido para outra página. Por favor, recarregue a página e tente de novo.",
 	"discussiontools-error-comment-is-transcluded": "O link \"{{int:discussiontools-replylink}}\" não pode ser usado para responder a este comentário. Para responder, por favor, utilize o editor de página inteira clicando em \"$1\"",
 	"discussiontools-error-comment-is-transcluded-title": "Este comentário não pode ser respondido aqui (ainda), porque ele é carregado de outra página. Por favor, vá para [[$1]] para responder.",

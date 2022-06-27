@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"F Samaritani",
+			"Jaime Sulas"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Arrespundi",
+	"discussiontools-replylink": "arrespundi",
+	"discussiontools-replywidget-cancel": "Annudda",
+	"discussiontools-replywidget-mode-source": "Mitza",
+	"discussiontools-replywidget-mode-visual": "Visuali",
+	"discussiontools-replywidget-placeholder-reply": "Arrespundi a {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Anteprima",
+	"discussiontools-replywidget-reply": "Arrespundi",
+	"tag-discussiontools-source": "Mitza"
+}

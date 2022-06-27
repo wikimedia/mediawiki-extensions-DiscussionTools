@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mnam23"
+			"Mnam23",
+			"Ezagren"
 		]
 	},
+	"discussiontools": "Pakakas bacangkurah",
 	"discussiontools-replylink": "balas",
 	"discussiontools-replywidget-cancel": "Pasah",
 	"discussiontools-replywidget-mode-source": "Asal-mula",

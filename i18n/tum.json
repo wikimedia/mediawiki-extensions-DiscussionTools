@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tumbuka Arch"
+			"Tumbuka Arch",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Zgolo",
@@ -15,9 +16,11 @@
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Mwakuona",
 	"discussiontools-replywidget-placeholder-reply": "Zgola kwa {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Woneska",
 	"discussiontools-replywidget-reply": "Zgola",
 	"discussiontools-replywidget-terms-click": "Pala mwadofya \"$1\", mukuzomelezga za kagwiliskilo kawemi ntchito ka wiki yino.",
 	"discussiontools-replywidget-transcluded": "Maganizo ghinu ghasungikenge pa [[$1]].",
+	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" linki iyi ingagwiliskika ntchito pakuzgola ganizo ili yayi.Kuti muzgole,chonde gwiliskani jani likulu lolembela pakudofya apa \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "Linki ya \"{{int:discussiontools-replylink}}\" ingagwiliskika ntchito pakuzgola komenti iyi yayi chifukwa lafuma ku peji linyake. Kuti muzgole,chonde lutani apa : [[$1]].",
 	"tag-discussiontools-description": "Kulemba pagwiliska VilweloVyakudumbizgilana",
 	"tag-discussiontools-edit-description": "Mgwiliski wasintha ganizo na Vilwey\nloVakuchezgela",
