@@ -40,22 +40,21 @@ trait ApiDiscussionToolsTrait {
 	 * Given parameters describing a reply or new topic, transform them into wikitext using Parsoid,
 	 * then preview the wikitext using the legacy parser.
 	 *
+	 * @param string $type 'topic' or 'reply'
+	 * @param Title $title Context title for wikitext transformations
 	 * @param array $params Associative array with the following keys:
-	 *  - `type` (string) 'topic' or 'reply'
-	 *  - `title` (Title) Context title for wikitext transformations
 	 *  - `wikitext` (string|null) Content of the message, mutually exclusive with `html`
 	 *  - `html` (string|null) Content of the message, mutually exclusive with `wikitext`
 	 *  - `sectiontitle` (string) Content of the title, when `type` is 'topic'
 	 *  - `signature` (string|null) Wikitext signature to add to the message
 	 * @return ApiResult action=parse API result
 	 */
-	protected function previewMessage( array $params ): ApiResult {
+	protected function previewMessage( string $type, Title $title, array $params ): ApiResult {
 		$wikitext = $params['wikitext'] ?? null;
 		$html = $params['html'] ?? null;
-		$title = $params['title'];
 		$signature = $params['signature'] ?? null;
 
-		switch ( $params['type'] ) {
+		switch ( $type ) {
 			case 'topic':
 				if ( $wikitext !== null ) {
 					$wikitext = CommentUtils::htmlTrim( $wikitext );

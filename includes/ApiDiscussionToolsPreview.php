@@ -47,12 +47,14 @@ class ApiDiscussionToolsPreview extends ApiBase {
 		}
 
 		// Try without adding a signature
-		$result = $this->previewMessage( [
-			'type' => $params['type'],
-			'title' => $title,
-			'wikitext' => $params['wikitext'],
-			'sectiontitle' => $params['sectiontitle'],
-		] );
+		$result = $this->previewMessage(
+			$params['type'],
+			$title,
+			[
+				'wikitext' => $params['wikitext'],
+				'sectiontitle' => $params['sectiontitle']
+			]
+		);
 		$resultHtml = $result->getResultData( [ 'parse', 'text' ] );
 
 		// Check if there was a signature in a proper place
@@ -68,13 +70,15 @@ class ApiDiscussionToolsPreview extends ApiBase {
 				return $leadingSpaces . '<span style="opacity: 0.6;">' . $sig . '</span>';
 			}, $signature );
 
-			$result = $this->previewMessage( [
-				'type' => $params['type'],
-				'title' => $title,
-				'wikitext' => $params['wikitext'],
-				'sectiontitle' => $params['sectiontitle'],
-				'signature' => $signature,
-			] );
+			$result = $this->previewMessage(
+				$params['type'],
+				$title,
+				[
+					'wikitext' => $params['wikitext'],
+					'sectiontitle' => $params['sectiontitle'],
+					'signature' => $signature
+				]
+			);
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result->serializeForApiResult() );

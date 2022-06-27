@@ -78,13 +78,15 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 		// To determine if we need to add a signature,
 		// preview the comment without adding one and check if the result is signed properly.
-		$previewResult = $this->previewMessage( [
-			'type' => $params['paction'] === 'addtopic' ? 'topic' : 'reply',
-			'title' => $title,
-			'wikitext' => $params['wikitext'],
-			'html' => $params['html'],
-			'sectiontitle' => $params['sectiontitle'],
-		] );
+		$previewResult = $this->previewMessage(
+			$params['paction'] === 'addtopic' ? 'topic' : 'reply',
+			$title,
+			[
+				'wikitext' => $params['wikitext'],
+				'html' => $params['html'],
+				'sectiontitle' => $params['sectiontitle'],
+			]
+		);
 		$previewResultHtml = $previewResult->getResultData( [ 'parse', 'text' ] );
 		$previewContainer = DOMCompat::getBody( DOMUtils::parseHTML( $previewResultHtml ) );
 		$previewThreadItemSet = $this->commentParser->parse( $previewContainer, $title->getTitleValue() );
