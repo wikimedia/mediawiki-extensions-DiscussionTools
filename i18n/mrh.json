@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Matma Rex",
 			"Taytay",
 			"Teitei Para"
@@ -8,6 +9,7 @@
 	},
 	"discussiontools-newtopic-placeholder-title": "Chôtlâhpi",
 	"discussiontools-replywidget-abandon-keep": "Roh pazao",
+	"discussiontools-replywidget-cancel": "Châvei",
 	"discussiontools-replywidget-newtopic": "Chôtlâhpi khô",
 	"discussiontools-replywidget-placeholder-newtopic": "Palâsana",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Chôtlâhpi thiehpa]"
