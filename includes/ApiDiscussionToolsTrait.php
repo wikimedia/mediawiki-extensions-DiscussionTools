@@ -47,9 +47,12 @@ trait ApiDiscussionToolsTrait {
 	 *  - `html` (string|null) Content of the message, mutually exclusive with `wikitext`
 	 *  - `sectiontitle` (string) Content of the title, when `type` is 'topic'
 	 *  - `signature` (string|null) Wikitext signature to add to the message
+	 * @param array $originalParams Original params from the source API call
 	 * @return ApiResult action=parse API result
 	 */
-	protected function previewMessage( string $type, Title $title, array $params ): ApiResult {
+	protected function previewMessage(
+		string $type, Title $title, array $params, array $originalParams = []
+	): ApiResult {
 		$wikitext = $params['wikitext'] ?? null;
 		$html = $params['html'] ?? null;
 		$signature = $params['signature'] ?? null;
@@ -106,6 +109,12 @@ trait ApiDiscussionToolsTrait {
 			'disableeditsection' => '1',
 			'prop' => 'text|modules|jsconfigvars',
 		];
+		if ( isset( $originalParams['useskin'] ) ) {
+			$apiParams['useskin'] = $originalParams['useskin'];
+		}
+		if ( isset( $originalParams['mobileformat'] ) && $originalParams['mobileformat'] ) {
+			$apiParams['mobileformat'] = '1';
+		}
 
 		$context = new DerivativeContext( $this->getContext() );
 		$context->setRequest(

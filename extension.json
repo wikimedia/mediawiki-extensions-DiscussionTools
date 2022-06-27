@@ -447,7 +447,8 @@
 		"discussiontoolspreview": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPreview",
 			"services": [
-				"DiscussionTools.CommentParser"
+				"DiscussionTools.CommentParser",
+				"SkinFactory"
 			]
 		},
 		"discussiontoolssubscribe": {

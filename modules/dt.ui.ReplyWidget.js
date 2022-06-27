@@ -735,7 +735,9 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 			type: this.isNewTopic ? 'topic' : 'reply',
 			page: this.pageName,
 			wikitext: wikitext,
-			sectiontitle: title
+			sectiontitle: title,
+			useskin: mw.config.get( 'skin' ),
+			mobileformat: OO.ui.isMobile()
 		} );
 	}
 
