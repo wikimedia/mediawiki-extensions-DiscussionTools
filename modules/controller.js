@@ -487,8 +487,7 @@ function init( $container, state ) {
  * @param {Object} data Data from action=parse API
  */
 function updatePageContents( $container, data ) {
-	var $content = $( $.parseHTML( data.parse.text ) );
-	$container.find( '.mw-parser-output' ).first().replaceWith( $content );
+	$container.find( '.mw-parser-output' ).first().html( data.parse.text );
 	mw.config.set( data.parse.jsconfigvars );
 	mw.loader.load( data.parse.modulestyles );
 	mw.loader.load( data.parse.modules );
