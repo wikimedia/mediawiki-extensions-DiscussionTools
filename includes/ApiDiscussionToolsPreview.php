@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use ApiBase;
 use ApiMain;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
+use SkinFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -18,18 +19,24 @@ class ApiDiscussionToolsPreview extends ApiBase {
 	/** @var CommentParser */
 	private $commentParser;
 
+	/** @var SkinFactory */
+	private $skinFactory;
+
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
 	 * @param CommentParser $commentParser
+	 * @param SkinFactory $skinFactory
 	 */
 	public function __construct(
 		ApiMain $main,
 		$name,
-		CommentParser $commentParser
+		CommentParser $commentParser,
+		SkinFactory $skinFactory
 	) {
 		parent::__construct( $main, $name );
 		$this->commentParser = $commentParser;
+		$this->skinFactory = $skinFactory;
 	}
 
 	/**
@@ -53,7 +60,8 @@ class ApiDiscussionToolsPreview extends ApiBase {
 			[
 				'wikitext' => $params['wikitext'],
 				'sectiontitle' => $params['sectiontitle']
-			]
+			],
+			$params
 		);
 		$resultHtml = $result->getResultData( [ 'parse', 'text' ] );
 
@@ -77,7 +85,8 @@ class ApiDiscussionToolsPreview extends ApiBase {
 					'wikitext' => $params['wikitext'],
 					'sectiontitle' => $params['sectiontitle'],
 					'signature' => $signature
-				]
+				],
+				$params
 			);
 		}
 
@@ -108,6 +117,10 @@ class ApiDiscussionToolsPreview extends ApiBase {
 			'sectiontitle' => [
 				ParamValidator::PARAM_TYPE => 'string',
 				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-sectiontitle',
+			],
+			'useskin' => [
+				ParamValidator::PARAM_TYPE => array_keys( $this->skinFactory->getInstalledSkins() ),
+				ApiBase::PARAM_HELP_MSG => 'apihelp-parse-param-useskin',
 			],
 		];
 	}

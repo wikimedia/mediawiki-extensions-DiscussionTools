@@ -523,6 +523,7 @@ function refreshPageContents( oldId ) {
 		// HACK: 'useskin' triggers a different code path that runs our OutputPageBeforeHTML hook,
 		// adding our reply links in the HTML (T266195)
 		useskin: mw.config.get( 'skin' ),
+		mobileformat: OO.ui.isMobile(),
 		uselang: mw.config.get( 'wgUserLanguage' ),
 		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
 		// a page view with reply links forced with ?dtenable=1 or otherwise

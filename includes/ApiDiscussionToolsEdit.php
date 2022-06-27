@@ -85,7 +85,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				'wikitext' => $params['wikitext'],
 				'html' => $params['html'],
 				'sectiontitle' => $params['sectiontitle'],
-			]
+			],
+			$params
 		);
 		$previewResultHtml = $previewResult->getResultData( [ 'parse', 'text' ] );
 		$previewContainer = DOMCompat::getBody( DOMUtils::parseHTML( $previewResultHtml ) );
