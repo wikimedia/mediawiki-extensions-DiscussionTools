@@ -25,7 +25,9 @@ class MockCommentFormatter extends CommentFormatter {
 	/**
 	 * @inheritDoc
 	 */
-	public static function getSignatureRelativeTime( MWTimestamp $timestamp, Language $lang, UserIdentity $user ) {
+	public static function getSignatureRelativeTime(
+		MWTimestamp $timestamp, Language $lang, UserIdentity $user
+	): string {
 		// Relative times can't be used in tests, so just return a plain timestamp
 		return $timestamp->getTimestamp();
 	}

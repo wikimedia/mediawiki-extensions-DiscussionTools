@@ -461,7 +461,9 @@ class CommentFormatter {
 	 * @param UserIdentity $user
 	 * @return string
 	 */
-	public static function getSignatureRelativeTime( MWTimestamp $timestamp, Language $lang, UserIdentity $user ) {
+	public static function getSignatureRelativeTime(
+		MWTimestamp $timestamp, Language $lang, UserIdentity $user
+	): string {
 		if ( time() - intval( $timestamp->getTimestamp() ) < 120 ) {
 			$timestamp = new MWTimestamp();
 		}

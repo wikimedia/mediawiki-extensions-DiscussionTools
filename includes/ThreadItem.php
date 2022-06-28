@@ -284,7 +284,7 @@ abstract class ThreadItem implements JsonSerializable {
 	 * @param Element $node
 	 * @return Title|null
 	 */
-	private function getSinglePageTransclusionTitle( Element $node ) {
+	private function getSinglePageTransclusionTitle( Element $node ): ?Title {
 		$dataMw = json_decode( $node->getAttribute( 'data-mw' ) ?? '', true );
 
 		// Only return a page name if this is a simple single-template transclusion.
@@ -311,7 +311,7 @@ abstract class ThreadItem implements JsonSerializable {
 	 * @param Element $startNode
 	 * @return ImmutableRange
 	 */
-	private function getTransclusionRange( Element $startNode ) {
+	private function getTransclusionRange( Element $startNode ): ImmutableRange {
 		$endNode = $startNode;
 		while (
 			// Phan doesn't realize that the conditions on $nextSibling can terminate the loop

@@ -167,7 +167,7 @@ class CommentUtils {
 	 * @param Node $node Node, should be a leaf node (a node with no children)
 	 * @return bool
 	 */
-	public static function isCommentContent( Node $node ) {
+	public static function isCommentContent( Node $node ): bool {
 		return (
 			$node instanceof Text &&
 			static::htmlTrim( $node->nodeValue ?? '' ) !== ''
