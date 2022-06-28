@@ -229,9 +229,11 @@ span[ data-mw-comment-start ] {
 		// stylelint-disable-next-line declaration-no-important
 		font-family: sans-serif !important;
 		border: 0;
+		border-top: 1px solid #a2a9b1;
 
-		&:not( :first-child ) {
-			border-top: 1px solid #a2a9b1;
+		&:first-child {
+			border-top: 0;
+			margin-top: 0;
 		}
 
 		// Hide old subscribe link
@@ -278,6 +280,13 @@ span[ data-mw-comment-start ] {
 		}
 	}
 
+	// HACK: Can be removed once T311502 is fixed
+	// stylelint-disable-next-line no-descending-specificity, selector-type-no-unknown
+	mw\3Atocplace:first-child + .ext-discussiontools-init-section {
+		border-top: 0;
+		margin-top: 0;
+	}
+
 	// Also re-style topic header input in new topic tool
 	h2.ext-discussiontools-ui-newTopic-sectionTitle .oo-ui-inputWidget-input {
 		font-weight: bold;
@@ -295,6 +304,7 @@ span[ data-mw-comment-start ] {
 		// The tap-highlight is an odd shape and shows even for cancelled events on -actions,
 		// just hide it.
 		-webkit-tap-highlight-color: transparent;
+		border-top: 1px solid #eaecf0;
 
 		> .mw-headline {
 			width: auto;
@@ -302,8 +312,8 @@ span[ data-mw-comment-start ] {
 			flex-basis: 0;
 		}
 
-		&:not( :first-child ) {
-			border-top: 1px solid #eaecf0;
+		&:first-child {
+			border-top: 0;
 		}
 
 		&-bar {
