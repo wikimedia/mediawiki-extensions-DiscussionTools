@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ideophagous"
+		]
+	},
+	"discussiontools-emptystate-button": "بدا مداكرة",
+	"discussiontools-emptystate-title": "بدا لمداكرة على {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title-user": "بدا لمداكرة {{GENDER:{{PAGENAME}}|معا}} {{PAGENAME}}"
+}

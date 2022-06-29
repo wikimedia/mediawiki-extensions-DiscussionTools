@@ -123,7 +123,7 @@
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Button to unsubscribe from a topic.\n{{identical|Unsubscribe}}",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Prompt shown when about to unsubscribe from a topic on an action page.",
 	"discussiontools-topicsubscription-button-subscribe": "Label for the subscribe link added to each section. Use the same casing as section edit links.\n\nAppears in the same area as:\n* {{msg-mw|editsection}}\n* {{msg-mw|visualeditor-ca-editsource-section}}\n* {{msg-mw|discussiontools-topicsubscription-button-unsubscribe}}\n* {{msg-mw|discussiontools-replylink}}",
-	"discussiontools-topicsubscription-button-subscribe-label": "Label for the subscribe button added to each section. Use title case like normal buttons.",
+	"discussiontools-topicsubscription-button-subscribe-label": "Label for the subscribe button added to each section. Use title case like normal buttons.\n{{identical|Subscribe}}",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Tooltip for the subscribe link added to each section.",
 	"discussiontools-topicsubscription-button-unsubscribe": "Label for the unsubscribe link added to each section. Use the same casing as section edit links.\nAppears in the same area as:\n* {{msg-mw|editsection}}\n* {{msg-mw|visualeditor-ca-editsource-section}}\n* {{msg-mw|discussiontools-topicsubscription-button-subscribe}}\n* {{msg-mw|discussiontools-replylink}}",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Label for the unsubscribe link added to each section. Use title case like normal buttons.",
