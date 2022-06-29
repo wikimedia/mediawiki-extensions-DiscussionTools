@@ -160,6 +160,9 @@ NewTopicController.prototype.setupTopicHint = function () {
 	legacyUrl.searchParams.set( 'dtenable', '0' );
 	// This is not a real valid value for 'editintro', but we look for it elsewhere to generate our own edit notice
 	legacyUrl.searchParams.set( 'editintro', 'mw-dt-topic-hint' );
+	// Avoid triggering code that disallows section editing while editing an old version of the page (T311665)
+	legacyUrl.searchParams.delete( 'oldid' );
+	legacyUrl.searchParams.delete( 'diff' );
 
 	this.topicHint = new OO.ui.MessageWidget( {
 		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyUrl.toString() ).parseDom(),
