@@ -9,6 +9,7 @@
 	"discussiontools-emptystate-button": "Mulai bacangkurah",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Laman pamandiran]] jadi wadah urang-urang bacangkurah nangkaya mana cara maulah kontén {{SITENAME}} manjadi isi nang baik wan bujur. Silakan mulai bacangkurah agar tahubung wan bagawi baimbai {{GENDER:{{PAGENAME}}|lawan}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Apa nang Pian pandirakan di sini pacangan kawa dijanaki ulih siapa haja.",
 	"discussiontools-emptystate-title": "Mulai bacangkurah sual {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title-user": "Mulai bacangkurah lawan {{PAGENAME}}",
 	"discussiontools-replylink": "balas",
 	"discussiontools-replywidget-cancel": "Pasah",
 	"discussiontools-replywidget-mode-source": "Asal-mula",

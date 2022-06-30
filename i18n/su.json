@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kandar"
+		]
+	},
+	"discussiontools-replylink": "bales",
+	"discussiontools-replywidget-cancel": "Bolay",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Pisual",
+	"discussiontools-replywidget-placeholder-reply": "Bales ka {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Bales"
+}

@@ -3,11 +3,13 @@
 		"authors": [
 			"Matma Rex",
 			"Taytay",
-			"Teitei Para"
+			"Teitei Para",
+			"Amire80"
 		]
 	},
 	"discussiontools-newtopic-placeholder-title": "Chôtlâhpi",
 	"discussiontools-replywidget-abandon-keep": "Roh pazao",
+	"discussiontools-replywidget-cancel": "Châvei",
 	"discussiontools-replywidget-newtopic": "Chôtlâhpi khô",
 	"discussiontools-replywidget-placeholder-newtopic": "Palâsana",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Chôtlâhpi thiehpa]"
