@@ -381,17 +381,6 @@ span[ data-mw-comment-start ] {
 		}
 	}
 
-	.ext-discussiontools-init-readAsWikiPage {
-		display: block;
-		/* Not sticky per T309889 */
-		width: 100%;
-		padding: 1em;
-		color: @colorProgressive;
-		background: @colorGray15;
-		border-top: 1px solid @colorGray14;
-		text-align: center;
-	}
-
 	&.skin-monobook .ext-discussiontools-init-section {
 		&-bar {
 			// stylelint-disable-next-line declaration-property-unit-disallowed-list
@@ -559,8 +548,22 @@ span[ data-mw-comment-start ] {
 // This selector is a proxy for checking if DiscussionToolsEnableMobile
 // is set. That config enables a few tools unconditionally, including
 // the reply tool, which is usually the first to be deployed.
-.skin-minerva.ext-discussiontools-replytool-enabled {
-	.mf-section-0 { /* stylelint-disable-line selector-class-pattern */
-		display: none;
+.skin-minerva {
+	&.ext-discussiontools-replytool-enabled,
+	&.ext-discussiontools-visualenhancements-enabled {
+		.mf-section-0 { /* stylelint-disable-line selector-class-pattern */
+			display: none;
+		}
+
+		.ext-discussiontools-init-readAsWikiPage {
+			display: block;
+			/* Not sticky per T309889 */
+			width: 100%;
+			padding: 1em;
+			color: @colorProgressive;
+			background: @colorGray15;
+			border-top: 1px solid @colorGray14;
+			text-align: center;
+		}
 	}
 }

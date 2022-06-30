@@ -295,7 +295,7 @@ function init( $container, state ) {
 				.attr( 'data-event-name', 'talkpage.readAsWiki' )
 				.text( mw.message( 'minerva-talk-full-page' ).text() )
 				.on( 'click', function () {
-					$( document.body ).removeClass( 'ext-discussiontools-visualenhancements-enabled' );
+					$( document.body ).removeClass( 'ext-discussiontools-visualenhancements-enabled ext-discussiontools-replytool-enabled' );
 				} );
 		}
 		// eslint-disable-next-line no-jquery/no-global-selector
