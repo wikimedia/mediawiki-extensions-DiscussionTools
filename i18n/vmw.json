@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Tomas Armando Moz"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Ohiiha"
+	"discussiontools-replylink": "Waakhulela",
+	"discussiontools-replywidget-cancel": "Ohiiha",
+	"discussiontools-replywidget-mode-source": "Maphatthuwelo",
+	"discussiontools-replywidget-mode-visual": "Yoowooneya",
+	"discussiontools-replywidget-placeholder-reply": "Waakhulela wa {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Waakhulela"
 }
