@@ -134,8 +134,17 @@
 		margin-bottom: 0.5em;
 		margin-left: 3em;
 		white-space: nowrap;
+
+		.skin-minerva & {
+			margin-top: -2em;
+		}
 	}
 
+	.skin-minerva &-advanced:not( .oo-ui-element-hidden ) + &-actionsWrapper &-actions {
+		margin-top: 0;
+	}
+
+	// stylelint-disable-next-line no-descending-specificity
 	&-footer {
 		// Preferred width; if there isn't enough space, this wraps under the actions
 		flex-basis: 20em;
