@@ -31,7 +31,7 @@ class EnhancedEchoMentionPresentationModel extends EchoMentionPresentationModel 
 	/**
 	 * @inheritDoc
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		$array = parent::jsonSerialize();
 
 		$array['links']['legacyPrimary'] = $this->addMarkAsRead( parent::getPrimaryLink() ) ?: [];

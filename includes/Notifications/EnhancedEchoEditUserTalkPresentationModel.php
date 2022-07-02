@@ -48,7 +48,7 @@ class EnhancedEchoEditUserTalkPresentationModel extends EchoEditUserTalkPresenta
 	/**
 	 * @inheritDoc
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		$array = parent::jsonSerialize();
 
 		$array['links']['legacyPrimary'] = $this->addMarkAsRead( parent::getPrimaryLink() ) ?: [];

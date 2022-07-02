@@ -61,7 +61,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	/**
 	 * @inheritDoc
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		$array = parent::jsonSerialize();
 
 		$legacyPrimaryLink = $this->getPrimaryLink();
