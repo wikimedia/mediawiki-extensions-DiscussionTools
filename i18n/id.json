@@ -7,6 +7,7 @@
 			"Matma Rex",
 			"NFarras",
 			"Rachmat04",
+			"Robfirstname",
 			"Sonic Speedy",
 			"WillsonEP09"
 		]
@@ -46,7 +47,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>Ini adalah sebuah cara baru untuk memulai topik pembicaraan.</strong> Pembaruan ini memungkinkan Anda untuk menambahkan bagian baru dan memanggil pengguna lain menggunakan isian yang muncul di bawah halaman pembicaraan. Anda juga dapat [$1 kembali menggunakan fitur yang lama].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Anda sekarang melihat pengalaman warisan.</strong> Anda bisa [$1 kembali ke pengalaman baru] atau mengunjungi preferensi untuk [$2 menetapkan pengalaman warisan sebagai pengalaman standar Anda].",
 	"discussiontools-newtopic-missing-title": "Harap berikan judul pada topik diskusi Anda. Jika Anda mengeklik \"{{int:discussiontools-replywidget-newtopic}}\", topik Anda akan ditambahkan tanpa judul.",
-	"discussiontools-newtopic-placeholder-title": "Judul",
+	"discussiontools-newtopic-placeholder-title": "Subjek",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|menjawab}} dalam \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Satu jawaban baru|$1 jawaban baru|100=99+ jawaban baru}} dalam \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Tampilkan komentar",

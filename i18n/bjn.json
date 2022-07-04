@@ -6,6 +6,8 @@
 		]
 	},
 	"discussiontools": "Pakakas bacangkurah",
+	"discussiontools-autotopicsubpopup-body": "Pian pacangan manarima pamadahan wayah sasaurang mangirim kumintar hanyar di cangkurah ngini. Pian kawa marasukakan pangaturan pamadahan Pian di kakatujuan.",
+	"discussiontools-autotopicsubpopup-title": "Pian sudah balangganan",
 	"discussiontools-emptystate-button": "Mulai bacangkurah",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Laman pamandiran]] jadi wadah urang-urang bacangkurah nangkaya mana cara maulah kontén {{SITENAME}} manjadi isi nang baik wan bujur. Silakan mulai bacangkurah agar tahubung wan bagawi baimbai {{GENDER:{{PAGENAME}}|lawan}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Apa nang Pian pandirakan di sini pacangan kawa dijanaki ulih siapa haja.",
 	"discussiontools-emptystate-title": "Mulai bacangkurah sual {{SUBJECTPAGENAME}}",
@@ -19,5 +21,16 @@
 	"discussiontools-replywidget-newtopic": "Tambah tupik",
 	"discussiontools-replywidget-placeholder-reply": "Balas ka {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Balas",
-	"discussiontools-replywidget-watchthis": "Tambahakan laman ngini ka [[Special:Watchlist|daptar itihan]] Pian"
+	"discussiontools-replywidget-watchthis": "Tambahakan laman ngini ka [[Special:Watchlist|daptar itihan]] Pian",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Ampih balangganan",
+	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Ampih balangganan matan tupik ngini?",
+	"discussiontools-topicsubscription-button-subscribe": "balangganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "ampih balangganan",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Ampih balangganan gasan ampih manarima pamadahan",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Pian pacangan manarima pamadahan pasal kumintar hanyar di tupik ngini.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Pian sudah balangganan!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Pian kada lagi manarima pamadahan pasal kumintar hanyar di tupik ngini.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Pian sudah ampih balangganan.",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "Ampih balangganan",
+	"discussiontools-topicsubscription-special-intro": "Balangganan pinanya kawa manjadiakan Pian maumpati suatu tupik di laman pamandiran. Wayah sasaurang mambalas di tupik itu, Pian pacangan manarima pamadahan.\n\nRasukakan nangkaya apa wan di mana Pian manarima pamadahan itu di [[Special:Preferences#mw-prefsection-echo|kakatujuan Pian]]."
 }
