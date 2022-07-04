@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrisportelli",
+			"ToniSant"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Tweġiba",
+	"discussiontools-replylink": "wieġeb",
+	"discussiontools-replywidget-reply": "Wieġeb",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Wieġeb]"
+}
