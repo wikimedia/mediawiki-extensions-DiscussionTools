@@ -872,7 +872,7 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
 	}
 
 	this.newCommentsShow.setLabel(
-		mw.msg( 'discussiontools-replywidget-newcomments-button', comments.length )
+		mw.msg( 'discussiontools-replywidget-newcomments-button', mw.language.convertNumber( comments.length ) )
 	);
 	if ( !this.hideNewCommentsWarning ) {
 		this.newCommentsWarning.toggle( true );
