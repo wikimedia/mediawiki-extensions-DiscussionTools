@@ -542,19 +542,8 @@ span[ data-mw-comment-start ] {
 	}
 }
 
-// Hide lede section on mobile. Useful information *should* be handled
-// by MobileFrontend's page-issues feature, but we may need our own
-// way to show this section as that feature is quite buggy.
-// This selector is a proxy for checking if DiscussionToolsEnableMobile
-// is set. That config enables a few tools unconditionally, including
-// the reply tool, which is usually the first to be deployed.
 .skin-minerva {
-	&.ext-discussiontools-replytool-enabled,
 	&.ext-discussiontools-visualenhancements-enabled {
-		.mf-section-0 { /* stylelint-disable-line selector-class-pattern */
-			display: none;
-		}
-
 		.ext-discussiontools-init-readAsWikiPage {
 			display: block;
 			/* Not sticky per T309889 */
