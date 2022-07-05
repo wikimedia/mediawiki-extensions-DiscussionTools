@@ -52,14 +52,21 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	public function getThreadSummary(): array {
 		$authors = [];
 		$commentCount = 0;
-		$latestReply = false;
+		$oldestReply = null;
+		$latestReply = null;
 		$threadScan = static function ( ThreadItem $comment ) use (
-			&$authors, &$commentCount, &$latestReply, &$threadScan
+			&$authors, &$commentCount, &$oldestReply, &$latestReply, &$threadScan
 		) {
 			if ( $comment instanceof CommentItem ) {
 				$author = $comment->getAuthor();
 				if ( $author ) {
 					$authors[ $author ] = true;
+				}
+				if (
+					!$oldestReply ||
+					( $comment->getTimestamp() < $oldestReply->getTimestamp() )
+				) {
+					$oldestReply = $comment;
 				}
 				if (
 					!$latestReply ||
@@ -80,6 +87,7 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 		return [
 			'authors' => array_keys( $authors ),
 			'commentCount' => $commentCount,
+			'oldestReply' => $oldestReply,
 			'latestReply' => $latestReply,
 		];
 	}

@@ -956,7 +956,7 @@ Parser.prototype.computeId = function ( threadItem, previousItems ) {
 		// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
 		// include the oldest timestamp in the thread (i.e. date the thread was started) in the
 		// heading ID.
-		var oldestComment = this.getThreadStartComment( threadItem );
+		var oldestComment = threadItem.getThreadSummary().oldestReply;
 		if ( oldestComment ) {
 			id += '-' + oldestComment.getTimestampString();
 		}
@@ -990,7 +990,7 @@ Parser.prototype.computeName = function ( threadItem ) {
 
 	if ( threadItem instanceof HeadingItem ) {
 		name = 'h-';
-		mainComment = this.getThreadStartComment( threadItem );
+		mainComment = threadItem.getThreadSummary().oldestReply;
 	} else if ( threadItem instanceof CommentItem ) {
 		name = 'c-';
 		mainComment = threadItem;

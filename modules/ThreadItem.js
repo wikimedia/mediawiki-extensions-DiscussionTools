@@ -112,6 +112,45 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 };
 
 /**
+ * Get summary metadata for a thread.
+ *
+ * @return {Object} Information about the comments below
+ */
+ThreadItem.prototype.getThreadSummary = function () {
+	var authors = {};
+	var commentCount = 0;
+	var oldestReply = null;
+	var latestReply = null;
+	function threadScan( comment ) {
+		if ( comment.type === 'comment' ) {
+			authors[ comment.author ] = true;
+			if (
+				!oldestReply ||
+				( comment.timestamp < oldestReply.timestamp )
+			) {
+				oldestReply = comment;
+			}
+			if (
+				!latestReply ||
+				( latestReply.timestamp < comment.timestamp )
+			) {
+				latestReply = comment;
+			}
+			commentCount++;
+		}
+		comment.replies.forEach( threadScan );
+	}
+	this.replies.forEach( threadScan );
+
+	return {
+		authors: Object.keys( authors ).sort(),
+		commentCount: commentCount,
+		oldestReply: oldestReply,
+		latestReply: latestReply
+	};
+};
+
+/**
  * Get the list of authors in the comment tree below this thread item.
  *
  * Usually called on a HeadingItem to find all authors in a thread.

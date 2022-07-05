@@ -9,11 +9,9 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Language;
 use MalformedTitleException;
-use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
-use MediaWiki\Extension\DiscussionTools\ThreadItem\ThreadItem;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MWException;
 use TitleParser;
@@ -981,7 +979,7 @@ class CommentParser {
 			// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
 			// include the oldest timestamp in the thread (i.e. date the thread was started) in the
 			// heading ID.
-			$oldestComment = $this->getThreadStartComment( $threadItem );
+			$oldestComment = $threadItem->getThreadSummary()['oldestReply'];
 			if ( $oldestComment ) {
 				$id .= '-' . $oldestComment->getTimestampString();
 			}
@@ -1015,7 +1013,7 @@ class CommentParser {
 
 		if ( $threadItem instanceof ContentHeadingItem ) {
 			$name = 'h-';
-			$mainComment = $this->getThreadStartComment( $threadItem );
+			$mainComment = $threadItem->getThreadSummary()['oldestReply'];
 		} elseif ( $threadItem instanceof ContentCommentItem ) {
 			$name = 'c-';
 			$mainComment = $threadItem;
@@ -1092,28 +1090,5 @@ class CommentParser {
 
 			$result->updateIdAndNameMaps( $threadItem );
 		}
-	}
-
-	/**
-	 * @param ThreadItem $threadItem
-	 * @return CommentItem|null
-	 */
-	private function getThreadStartComment( ThreadItem $threadItem ): ?CommentItem {
-		$oldest = null;
-		if ( $threadItem instanceof ContentCommentItem ) {
-			$oldest = $threadItem;
-		}
-		// Check all replies. This can't just use the first comment because threads are often summarized
-		// at the top when the discussion is closed.
-		foreach ( $threadItem->getReplies() as $comment ) {
-			// Don't include sub-threads to avoid changing the ID when threads are "merged".
-			if ( $comment instanceof ContentCommentItem ) {
-				$oldestInReplies = $this->getThreadStartComment( $comment );
-				if ( !$oldest || $oldestInReplies->getTimestamp() < $oldest->getTimestamp() ) {
-					$oldest = $oldestInReplies;
-				}
-			}
-		}
-		return $oldest;
 	}
 }

@@ -187,8 +187,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 				'../cases/EventDispatcher/emptysection/rev2.json',
 			],
 			// Adding comments in sub-sections, where the parent section has no comments (except in
-			// sub-sections). These do not generate notifications because of the fix for T286736,
-			// but maybe they should?
+			// sub-sections). They generate notifications now (since T298617), previously they didn't.
 			[
 				'cases/EventDispatcher/subsection-empty/rev1.txt',
 				'cases/EventDispatcher/subsection-empty/rev2.txt',
