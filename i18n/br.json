@@ -28,6 +28,7 @@
 	"discussiontools-replywidget-mode-source": "Mammenn",
 	"discussiontools-replywidget-mode-visual": "Gwelet",
 	"discussiontools-replywidget-newtopic": "Ouzhpennañ ur gaoz",
+	"discussiontools-replywidget-placeholder-newtopic": "Deskrivadur",
 	"discussiontools-replywidget-placeholder-reply": "Respont da {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Rakwelet",
 	"discussiontools-replywidget-reply": "Respont",

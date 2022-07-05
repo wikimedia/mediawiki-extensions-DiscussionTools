@@ -28,7 +28,7 @@
 	"discussiontools-error-noswitchtove-table": "sintaksa tablice",
 	"discussiontools-error-noswitchtove-template": "sintaksa predloška",
 	"discussiontools-error-noswitchtove-title": "Vizualni način onemogućen",
-	"discussiontools-newtopic-missing-title": "Molimo Vas dodajte naslov teme. Tema će biti dodana bez naslova izaberete li »{{int:discussiontools-replywidget-newtopic}}«",
+	"discussiontools-newtopic-missing-title": "Molimo Vas dodajte naslov teme. Kliknete li na »{{int:discussiontools-replywidget-newtopic}}«, tema će biti dodana bez naslova.",
 	"discussiontools-newtopic-placeholder-title": "Tema",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|je odgovorio|je odgovorila}} u raspravi »<strong>$4</strong>«",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Jedan novi odgovor|$1 odgovora|100=99+ odgovora}} u raspravi »<strong>$3</strong>«",
@@ -78,6 +78,7 @@
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Da biste prestali primati obavijesti, otkažite pretplatu.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Prestani pratiti",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Želite li prestati pratiti ovu temu?",
+	"discussiontools-topicsubscription-error-not-found-body": "Pretplata navedena u URL-u nije pronađena.",
 	"discussiontools-topicsubscription-error-not-found-title": "Pretplata nije pronađena",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Dobivat ćete obavijesti o novim komentarima u ovoj temi.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Odsad pratite ovu temu!",
@@ -94,6 +95,7 @@
 	"tag-discussiontools-reply-description": "Suradnik je odgovorio na komentar s alatom za rasprave",
 	"tag-discussiontools-source": "Kôd",
 	"tag-discussiontools-source-description": "Alat za raspravu bio je u načinu uređivanja kôda",
+	"tag-discussiontools-source-enhanced-description": "DiscussionTools je bio u poboljšanom izvornom načinu s alatnom trakom",
 	"tag-discussiontools-visual": "Vizualno",
 	"tag-discussiontools-visual-description": "Alat za raspravu bio je u vizualnom načinu uređivanja"
 }

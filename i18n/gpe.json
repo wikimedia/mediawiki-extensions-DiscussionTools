@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"DaSupremo"
+		]
+	},
+	"discussiontools-replylink": "reply",
+	"discussiontools-replywidget-cancel": "Cancel am",
+	"discussiontools-replywidget-mode-source": "Source",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Reply to {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Reply"
+}
