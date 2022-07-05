@@ -30,6 +30,11 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	protected $id = null;
 	protected $replies = [];
 
+	protected $authors = null;
+	protected $commentCount;
+	protected $oldestReply;
+	protected $latestReply;
+
 	/**
 	 * @param string $type `heading` or `comment`
 	 * @param int $level Indentation level
@@ -46,10 +51,11 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 
 	/**
 	 * Get summary metadata for a thread.
-	 *
-	 * @return array Information about the comments below
 	 */
-	public function getThreadSummary(): array {
+	private function calculateThreadSummary(): void {
+		if ( $this->authors !== null ) {
+			return;
+		}
 		$authors = [];
 		$commentCount = 0;
 		$oldestReply = null;
@@ -84,43 +90,57 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 		array_walk( $replies, $threadScan );
 
 		ksort( $authors );
-		return [
-			'authors' => array_keys( $authors ),
-			'commentCount' => $commentCount,
-			'oldestReply' => $oldestReply,
-			'latestReply' => $latestReply,
-		];
+
+		$this->authors = array_keys( $authors );
+		$this->commentCount = $commentCount;
+		$this->oldestReply = $oldestReply;
+		$this->latestReply = $latestReply;
 	}
 
 	/**
-	 * Get the list of authors in the comment tree below this thread item.
+	 * Get the list of authors in the tree below this thread item.
 	 *
 	 * Usually called on a HeadingItem to find all authors in a thread.
 	 *
 	 * @return string[] Author usernames
 	 */
 	public function getAuthorsBelow(): array {
-		$authors = [];
-		$getAuthorSet = static function ( ContentThreadItem $threadItem ) use ( &$authors, &$getAuthorSet ) {
-			if ( $threadItem instanceof ContentCommentItem ) {
-				$authors[ $threadItem->getAuthor() ] = true;
-			}
-			// Get the set of authors in the same format from each reply
-			foreach ( $threadItem->getReplies() as $reply ) {
-				$getAuthorSet( $reply );
-			}
-		};
-
-		foreach ( $this->getReplies() as $reply ) {
-			$getAuthorSet( $reply );
-		}
-
-		ksort( $authors );
-		return array_keys( $authors );
+		$this->calculateThreadSummary();
+		return $this->authors;
 	}
 
 	/**
-	 * Get the list of thread items in the comment tree below this thread item.
+	 * Get the number of comment items in the tree below this thread item.
+	 *
+	 * @return int
+	 */
+	public function getCommentCount(): int {
+		$this->calculateThreadSummary();
+		return $this->commentCount;
+	}
+
+	/**
+	 * Get the latest reply in the tree below this thread item, null if there are no replies
+	 *
+	 * @return ContentCommentItem|null
+	 */
+	public function getLatestReply(): ?ContentCommentItem {
+		$this->calculateThreadSummary();
+		return $this->latestReply;
+	}
+
+	/**
+	 * Get the oldest reply in the tree below this thread item, null if there are no replies
+	 *
+	 * @return ContentCommentItem|null
+	 */
+	public function getOldestReply(): ?ContentCommentItem {
+		$this->calculateThreadSummary();
+		return $this->oldestReply;
+	}
+
+	/**
+	 * Get a flat list of thread items in the comment tree below this thread item.
 	 *
 	 * @return ContentThreadItem[] Thread items
 	 */
