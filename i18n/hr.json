@@ -42,7 +42,7 @@
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekunde|sekundi}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Ovo je novi način pokretanja tema.</strong> Ova nadogradnja omogućuje Vam dodavanje tema uz pomoć obrasca i pozivanje drugih uz \n pomoć novog prečaca. Možete se [$1 vratiti i na stari način].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Sada radite na stari način.</strong> Možete se [$1 vratiti na novi način] ili otići u postavke i [$2 postaviti stari način kao zadani].",
-	"discussiontools-newtopic-missing-title": "Molimo Vas dodajte naslov teme. Tema će biti dodana bez naslova izaberete li »{{int:discussiontools-replywidget-newtopic}}«",
+	"discussiontools-newtopic-missing-title": "Molimo Vas dodajte naslov teme. Kliknete li na »{{int:discussiontools-replywidget-newtopic}}«, tema će biti dodana bez naslova.",
 	"discussiontools-newtopic-placeholder-title": "Tema",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|je odgovorio|je odgovorila}} u raspravi »<strong>$4</strong>«",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Jedan novi odgovor|$1 odgovora|100=99+ odgovora}} u raspravi »<strong>$3</strong>«",
@@ -98,6 +98,7 @@
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Počnite pratiti da biste dobili obavijesti o novim komentarima.",
 	"discussiontools-topicsubscription-button-unsubscribe": "prestani pratiti",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Da biste prestali primati obavijesti, otkažite pretplatu.",
+	"discussiontools-topicsubscription-error-not-found-body": "Pretplata navedena u URL-u nije pronađena.",
 	"discussiontools-topicsubscription-error-not-found-title": "Pretplata nije pronađena",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Dobivat ćete obavijesti o novim komentarima u ovoj temi.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Odsad pratite ovu temu!",
@@ -122,6 +123,7 @@
 	"tag-discussiontools-reply-description": "Suradnik je odgovorio na komentar s alatom za rasprave",
 	"tag-discussiontools-source": "Kôd",
 	"tag-discussiontools-source-description": "Alat za raspravu bio je u načinu uređivanja kôda",
+	"tag-discussiontools-source-enhanced-description": "DiscussionTools je bio u poboljšanom izvornom načinu s alatnom trakom",
 	"tag-discussiontools-visual": "Vizualno",
 	"tag-discussiontools-visual-description": "Alat za raspravu bio je u vizualnom načinu uređivanja"
 }
