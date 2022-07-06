@@ -542,17 +542,32 @@ span[ data-mw-comment-start ] {
 	}
 }
 
-.skin-minerva {
-	&.ext-discussiontools-visualenhancements-enabled {
-		.ext-discussiontools-init-readAsWikiPage {
-			display: block;
-			/* Not sticky per T309889 */
-			width: 100%;
-			padding: 1em;
-			color: @colorProgressive;
-			background: @colorGray15;
-			border-top: 1px solid @colorGray14;
-			text-align: center;
-		}
+// DiscussionToolsEnableMobile disables the Minerva simplified talk page
+// (SkinMinerva::isSimplifiedTalkPageEnabled). This is enabled on all pages
+// in the talk namespace (with wikitext content model, but this file is not
+// loaded on non-wikitext pages).
+//
+// DiscussionToolsEnableMobile enables multiple features, including the reply tool.
+//
+// Whenever we detect that DiscussionToolsEnableMobile is disabling the Minerva
+// simplified talk page, hide the lede section, and show a "Read as wiki page" button
+// to reveal it.
+//
+// The button will disable all DT features byt remove feature CSS classes.
+// stylelint-disable-next-line selector-class-pattern
+.skin-minerva.ns-talk.ext-discussiontools-replytool-enabled {
+	.mf-section-0 { /* stylelint-disable-line selector-class-pattern */
+		display: none;
+	}
+
+	.ext-discussiontools-init-readAsWikiPage {
+		display: block;
+		/* Not sticky per T309889 */
+		width: 100%;
+		padding: 1em;
+		color: @colorProgressive;
+		background: @colorGray15;
+		border-top: 1px solid @colorGray14;
+		text-align: center;
 	}
 }
