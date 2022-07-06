@@ -255,21 +255,6 @@ class HookUtils {
 			return false;
 		}
 
-		// The logic for showing the "add topic" button (as defined in
-		// SkinTemplate::buildContentNavigationUrlsInternal) is:
-		// * __NONEWSECTIONLINK__ is not present (OutputPage::forceHideNewSectionLink) and...
-		//   - This is the current revision in a talk namespace (Title::isTalkPage) or...
-		//   - __NEWSECTIONLINK__ is present (OutputPage::showNewSectionLink)
-		if ( $feature === static::NEWTOPICTOOL ) {
-			$addTopicShown = !static::hasPagePropCached( $title, 'nonewsectionlink' ) && (
-				( $title->isTalkPage() && $output->isRevisionCurrent() ) ||
-				static::hasPagePropCached( $title, 'newsectionlink' )
-			);
-			if ( !$addTopicShown ) {
-				return false;
-			}
-		}
-
 		// ?dtenable=1 overrides all user and title checks
 		$queryEnable = $output->getRequest()->getRawVal( 'dtenable' ) ?:
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
@@ -316,6 +301,28 @@ class HookUtils {
 		}
 
 		return static::isFeatureEnabledForUser( $output->getUser(), $feature );
+	}
+
+	/**
+	 * Check if the "New section" tab would be shown in a normal skin.
+	 *
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function shouldShowNewSectionTab( IContextSource $context ): bool {
+		$title = $context->getTitle();
+		$output = $context->getOutput();
+
+		// Match the logic in MediaWiki core (as defined in SkinTemplate::buildContentNavigationUrlsInternal):
+		// https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/add6d0a0e38167a710fb47fac97ff3004451494c/includes/skins/SkinTemplate.php#1317
+		// * __NONEWSECTIONLINK__ is not present (OutputPage::forceHideNewSectionLink) and...
+		//   - This is the current revision in a talk namespace (Title::isTalkPage) or...
+		//   - __NEWSECTIONLINK__ is present (OutputPage::showNewSectionLink)
+		return (
+			!static::hasPagePropCached( $title, 'nonewsectionlink' ) &&
+			( ( $title->isTalkPage() && $output->isRevisionCurrent() ) ||
+				static::hasPagePropCached( $title, 'newsectionlink' ) )
+		);
 	}
 
 	/**
@@ -370,15 +377,15 @@ class HookUtils {
 				// In read mode (accessible for non-existent pages by clicking 'Cancel' in editor)
 				$req->getVal( 'action', 'view' ) === 'view'
 			) &&
-			// Duh
-			!$title->exists() &&
 			// Only in talk namespaces, not including other namespaces that isAvailableForTitle() allows
 			$title->isTalkPage() &&
-			// The default display will probably be more useful for...
-			// ...Permanent links to revisions of pages which have been deleted
+			// The default display will probably be more useful for links to old revisions of deleted
+			// pages (existing pages are already excluded in shouldShowNewSectionTab())
 			$req->getIntOrNull( 'oldid' ) === null &&
-			// ...Non-existent pages with default content, e.g. in 'MediaWiki:' namespace
-			!$title->hasSourceText() &&
+			// Only if "New section" tab would be shown by the skin.
+			// If the page doesn't exist, this only happens in talk namespaces.
+			// If the page exists, it also considers magic words on the page.
+			static::shouldShowNewSectionTab( $context ) &&
 			// User has new topic tool enabled (and not using &dtenable=0)
 			static::isFeatureEnabledForOutput( $out, static::NEWTOPICTOOL )
 		);

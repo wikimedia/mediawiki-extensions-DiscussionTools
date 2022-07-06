@@ -204,8 +204,8 @@ class PageHooks implements
 				$text, $lang
 			);
 		}
-		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) ) {
-			if ( CommentFormatter::isEmptyTalkPage( $text ) && $output->getTitle()->isTalkPage() ) {
+		if ( HookUtils::shouldDisplayEmptyState( $output->getContext() ) ) {
+			if ( CommentFormatter::isEmptyTalkPage( $text ) ) {
 				$output->enableOOUI();
 				$text = CommentFormatter::appendToEmptyTalkPage(
 					$text, $this->getEmptyStateHtml( $output->getContext() )
@@ -393,12 +393,7 @@ class PageHooks implements
 			$output->getSkin()->getSkinName() === 'minerva' &&
 			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
 			// Only add the button if "New section" tab would be shown in a normal skin.
-			// Match the logic in MediaWiki core:
-			// https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/add6d0a0e38167a710fb47fac97ff3004451494c/includes/skins/SkinTemplate.php#1317
-			(
-				!HookUtils::hasPagePropCached( $title, 'nonewsectionlink' ) &&
-				( $title->isTalkPage() || HookUtils::hasPagePropCached( $title, 'newsectionlink' ) )
-			)
+			HookUtils::shouldShowNewSectionTab( $context )
 		) {
 			// Minerva doesn't show a new topic button by default, unless the MobileFrontend
 			// talk page feature is enabled, but we shouldn't depend on code from there.
