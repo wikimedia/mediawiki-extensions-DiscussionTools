@@ -249,11 +249,17 @@ class HookUtils {
 			return false;
 		}
 
-		// New topic tool is not available if __NONEWSECTIONLINK__ is set
-		// We may need to move this check to the client when we support
-		// launching the tool from other pages.
+		// The logic for showing the "add topic" button (as defined in
+		// SkinTemplate::buildContentNavigationUrlsInternal) is:
+		// * __NONEWSECTIONLINK__ is not present (OutputPage::forceHideNewSectionLink) and...
+		//   - This is the current revision in a talk namespace (Title::isTalkPage) or...
+		//   - __NEWSECTIONLINK__ is present (OutputPage::showNewSectionLink)
 		if ( $feature === static::NEWTOPICTOOL ) {
-			if ( static::hasPagePropCached( $title, 'nonewsectionlink' ) ) {
+			$addTopicShown = !static::hasPagePropCached( $title, 'nonewsectionlink' ) && (
+				( $title->isTalkPage() && $output->isRevisionCurrent() ) ||
+				static::hasPagePropCached( $title, 'newsectionlink' )
+			);
+			if ( !$addTopicShown ) {
 				return false;
 			}
 		}
