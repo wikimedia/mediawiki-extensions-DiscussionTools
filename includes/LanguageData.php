@@ -90,11 +90,21 @@ class LanguageData {
 		// non-DST and DST timestamps, and sometimes more due to historical data, but that's okay).
 		// Avoid DateTimeZone::listAbbreviations(), it returns some half-baked list that is different
 		// from the timezone data used by everything else in PHP.
-		$timezoneAbbrs = array_values( array_unique(
-			array_map( static function ( $transition ) {
-				return $transition['abbr'];
-			}, ( new DateTimeZone( $localTimezone ) )->getTransitions() )
-		) );
+		$timezoneTransitions = ( new DateTimeZone( $localTimezone ) )->getTransitions();
+		if ( !is_array( $timezoneTransitions ) ) {
+			// Handle (arguably invalid) config where $wgLocaltimezone is an abbreviation like "CST"
+			// instead of a real IANA timezone name like "America/Chicago". (T312310)
+			// "DateTimeZone objects wrapping type 1 (UTC offsets) and type 2 (abbreviations) do not
+			// contain any transitions, and calling this method on them will return false."
+			// https://www.php.net/manual/en/datetimezone.gettransitions.php
+			$timezoneAbbrs = [ $localTimezone ];
+		} else {
+			$timezoneAbbrs = array_values( array_unique(
+				array_map( static function ( $transition ) {
+					return $transition['abbr'];
+				}, $timezoneTransitions )
+			) );
+		}
 
 		$data['timezones'] = [];
 		foreach ( $langConv->getVariants() as $variant ) {
