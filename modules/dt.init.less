@@ -275,7 +275,8 @@ span[ data-mw-comment-start ] {
 
 		&-actions {
 			margin-left: auto;
-			margin-right: -6px;
+			// Prevent the focus outline from being cut off (T311662), do not set to negative values
+			margin-right: 0;
 		}
 	}
 
@@ -388,7 +389,8 @@ span[ data-mw-comment-start ] {
 		}
 
 		&-actions {
-			margin-right: 0;
+			// Prevent the Apex theme focus outline from being cut off (T311662)
+			margin-right: 4px;
 		}
 
 		&-subscribeButton {
