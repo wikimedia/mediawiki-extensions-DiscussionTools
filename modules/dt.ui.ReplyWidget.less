@@ -10,6 +10,10 @@
 	// that would affect the input field, which is in content language.
 	/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 	text-align: initial;
+
+	.skin-monobook & {
+		font-size: ( 12.8em / 12.7 );
+	}
 }
 
 // @supports does not work when nested
@@ -32,7 +36,7 @@
 	}
 }
 
-.ext-discussiontools-ui-replyWidget { /* stylelint-disable-line no-duplicate-selectors */
+.ext-discussiontools-ui-replyWidget { /* stylelint-disable-line no-descending-specificity, no-duplicate-selectors */
 	&-bodyWrapper > .oo-ui-textInputWidget {
 		max-width: none;
 
@@ -81,6 +85,10 @@
 		}
 	}
 
+	.skin-monobook & .ve-ui-surface-visual {
+		font-size: ( 12.7em / 12.8 );
+	}
+
 	&-modeTabs {
 		box-shadow: none;
 		height: 3em;
@@ -90,6 +98,12 @@
 
 		.oo-ui-tabOptionWidget:last-child {
 			margin-right: 2px;
+		}
+
+		.ext-discussiontools-ui-modeTab {
+			.skin-monobook & {
+				margin-top: 0;
+			}
 		}
 
 		// When mode tabs are focussed, the only available option uses the same styles as normal focus
@@ -205,6 +219,12 @@
 		&:before {
 			content: attr( data-label );
 			color: #808080;
+		}
+
+		> .mw-parser-output {
+			.skin-monobook & {
+				font-size: ( 12.7em / 12.8 );
+			}
 		}
 
 		.ext-discussiontools-ui-replyWidget:not( .ext-discussiontools-ui-replyWidget-newTopic ) & > .mw-parser-output {
