@@ -93,7 +93,8 @@
 		}
 
 		// When mode tabs are focussed, the only available option uses the same styles as normal focus
-		.ext-discussiontools-ui-modeTab.oo-ui-optionWidget-highlighted {
+		// Hovering also adds this class, but is styled upstream with just an underline.
+		.ext-discussiontools-ui-modeTab.oo-ui-optionWidget-highlighted:not( :hover ) {
 			color: #36c;
 			border-radius: 2px;
 			box-shadow: inset 0 0 0 2px #36c;
