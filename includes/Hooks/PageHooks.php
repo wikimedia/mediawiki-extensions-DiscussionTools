@@ -196,6 +196,15 @@ class PageHooks implements
 				$text, $lang
 			);
 		}
+		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) ) {
+			if ( CommentFormatter::isEmptyTalkPage( $text ) ) {
+				$output->enableOOUI();
+				$text = CommentFormatter::appendToEmptyTalkPage(
+					$text, $this->getEmptyStateHtml( $output->getContext() )
+				);
+				$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
+			}
+		}
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
 			$output->enableOOUI();
 			$output->addModuleStyles( [
@@ -254,6 +263,25 @@ class PageHooks implements
 		$output->enableOOUI();
 		$output->disableClientCache();
 
+		$html = $this->getEmptyStateHtml( $context );
+
+		$output->addHTML(
+			// This being mw-parser-output is a lie, but makes the reply controller cope much better with everything
+			Html::rawElement( 'div', [ 'class' => 'mw-parser-output noarticletext' ], $html )
+		);
+		$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
+
+		return false;
+	}
+
+	/**
+	 * Generate HTML markup for the new topic tool's empty state, shown on talk pages that don't exist
+	 * or have no topics.
+	 *
+	 * @param IContextSource $context
+	 * @return string HTML
+	 */
+	private function getEmptyStateHtml( IContextSource $context ): string {
 		$coreConfig = RequestContext::getMain()->getConfig();
 		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
 
@@ -268,7 +296,7 @@ class PageHooks implements
 		if ( $title->getNamespace() == NS_USER_TALK && !$title->isSubpage() ) {
 			// This is a user talk page
 			$isIP = $this->userNameUtils->isIP( $title->getText() );
-			if ( $title->equals( $output->getUser()->getTalkPage() ) ) {
+			if ( $title->equals( $context->getUser()->getTalkPage() ) ) {
 				// This is your own user talk page
 				if ( $isIP ) {
 					// You're an IP editor, so this is only *sort of* your talk page
@@ -323,20 +351,18 @@ class PageHooks implements
 			] );
 		}
 
-		$output->addHTML(
-			// This being mw-parser-output is a lie, but makes the reply controller cope much better with everything
-			Html::rawElement( 'div', [ 'class' => "ext-discussiontools-emptystate mw-parser-output noarticletext" ],
-				Html::rawElement( 'div', [ 'class' => "ext-discussiontools-emptystate-text" ], $text ) .
+		$wrapped =
+			Html::rawElement( 'div', [ 'class' => 'ext-discussiontools-emptystate' ],
+				Html::rawElement( 'div', [ 'class' => 'ext-discussiontools-emptystate-text' ], $text ) .
 				Html::element( 'img', [
 					'src' => $iconpath . '/emptystate.svg',
-					'class' => "ext-discussiontools-emptystate-logo",
+					'class' => 'ext-discussiontools-emptystate-logo',
 					// This is a purely decorative element
-					'alt' => "",
+					'alt' => '',
 				] )
-			)
-		);
+			);
 
-		return false;
+		return $wrapped;
 	}
 
 	/**
@@ -358,9 +384,7 @@ class PageHooks implements
 			(
 				!HookUtils::hasPagePropCached( $title, 'nonewsectionlink' ) &&
 				( $title->isTalkPage() || HookUtils::hasPagePropCached( $title, 'newsectionlink' ) )
-			) &&
-			// No need to show the button when the empty state banner is shown
-			!HookUtils::shouldDisplayEmptyState( $context )
+			)
 		) {
 			// Minerva doesn't show a new topic button by default, unless the MobileFrontend
 			// talk page feature is enabled, but we shouldn't depend on code from there.
