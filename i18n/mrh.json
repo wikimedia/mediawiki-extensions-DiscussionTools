@@ -8,9 +8,14 @@
 		]
 	},
 	"discussiontools-newtopic-placeholder-title": "Chôtlâhpi",
+	"discussiontools-replylink": "Châ alei",
 	"discussiontools-replywidget-abandon-keep": "Roh pazao",
 	"discussiontools-replywidget-cancel": "Châvei",
+	"discussiontools-replywidget-mode-source": "Hnawh",
+	"discussiontools-replywidget-mode-visual": "Hmôna",
 	"discussiontools-replywidget-newtopic": "Chôtlâhpi khô",
 	"discussiontools-replywidget-placeholder-newtopic": "Palâsana",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} lâ châ alei teh",
+	"discussiontools-replywidget-reply": "Châ alei",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Chôtlâhpi thiehpa]"
 }
