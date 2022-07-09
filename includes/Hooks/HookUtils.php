@@ -230,7 +230,13 @@ class HookUtils {
 	 */
 	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ): bool {
 		// Only show on normal page views (not history etc.), and in edit mode for previews
-		if ( !in_array( $output->getActionName(), [ 'view', 'edit', 'submit' ] ) ) {
+		if (
+			// Don't try to call $output->getActionName if testing for NEWTOPICTOOL as we use
+			// the hook onGetActionName to override the action for the tool on empty pages.
+			// If we tried to call it here it would set up infinite recursion (T312689)
+			$feature !== static::NEWTOPICTOOL &&
+			!in_array( $output->getActionName(), [ 'view', 'edit', 'submit' ] )
+		) {
 			return false;
 		}
 
