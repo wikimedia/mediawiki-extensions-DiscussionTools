@@ -7,5 +7,10 @@
 			"Teitei Para"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Châvei"
+	"discussiontools-replylink": "Châ alei",
+	"discussiontools-replywidget-cancel": "Châvei",
+	"discussiontools-replywidget-mode-source": "Hnawh",
+	"discussiontools-replywidget-mode-visual": "Hmôna",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} lâ châ alei teh",
+	"discussiontools-replywidget-reply": "Châ alei"
 }
