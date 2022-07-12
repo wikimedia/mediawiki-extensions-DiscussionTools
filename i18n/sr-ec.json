@@ -51,7 +51,7 @@
 	"discussiontools-replywidget-placeholder-newtopic": "Опис",
 	"discussiontools-replywidget-placeholder-reply": "Овде напишите одговор кориснику {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Преглед",
-	"discussiontools-replywidget-reply": "Објави одговор",
+	"discussiontools-replywidget-reply": "Одговори",
 	"discussiontools-replywidget-signature-body": "Ознака $1 је преобликована у Ваш потпис. Ако желите да опозовете ову радњу, притисните $2. Имајте на уму да не морате потписивати коментаре при употреби ове алатке. Алатка ће аутоматски додати Ваш потпис.",
 	"discussiontools-replywidget-signature-title": "Пронађен је потпис",
 	"discussiontools-replywidget-summary": "Опис",
