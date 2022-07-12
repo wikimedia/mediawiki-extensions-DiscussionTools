@@ -48,7 +48,7 @@ OO.inheritClass( CommentItem, ThreadItem );
  */
 CommentItem.prototype.getTimestampString = function () {
 	var dtConfig = require( './config.json' );
-	var switchTime = moment( dtConfig.switchTime );
+	var switchTime = moment.utc( dtConfig.switchTime );
 	if ( this.timestamp < switchTime ) {
 		return this.timestamp.toISOString();
 	} else {
