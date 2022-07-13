@@ -7,10 +7,23 @@
 			"Amire80"
 		]
 	},
+	"discussiontools-autotopicsubpopup-body": "He biepachiana lia he chyhsa pakha ta a pachâna a kaw roh tita pahnosana sâkha na to aw. Khodâhhawhzy liata nâma pahnosanazy taopathinazy kha na kho ta na tao thei.",
+	"discussiontools-autotopicsubpopup-dismiss": "Aw, ei pahno",
+	"discussiontools-autotopicsubpopup-preferences": "Khotlynazy taopathi teh",
+	"discussiontools-autotopicsubpopup-title": "Nâ pangia haw",
+	"discussiontools-defaultsummary-reply": "Châ alei",
+	"discussiontools-desc": "Biepachiana hmiazy paphasa viapa chhaichhizy.",
+	"discussiontools-emptystate-button": "Biepachiana sâkha pathao teh",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|biepachiana hmiazy]]cha {{SITENAME}} chô liata thâtihzy kha apha chai pachâsa awpa ta kheihta tao'pa âbyuh tahpa tahpa pachia theina su a châ. [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] he kheihta pakiathysa via thei awpa ta mohrozy nah biepachiana sâkha pathao awpa ta he hmia he na hmâh thei.",
 	"discussiontools-newtopic-placeholder-title": "Chôtlâhpi",
+	"discussiontools-replylink": "Châ alei",
 	"discussiontools-replywidget-abandon-keep": "Roh pazao",
 	"discussiontools-replywidget-cancel": "Châvei",
+	"discussiontools-replywidget-mode-source": "Hnawh",
+	"discussiontools-replywidget-mode-visual": "Hmôna",
 	"discussiontools-replywidget-newtopic": "Chôtlâhpi khô",
 	"discussiontools-replywidget-placeholder-newtopic": "Palâsana",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} lâ châ alei teh",
+	"discussiontools-replywidget-reply": "Châ alei",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Chôtlâhpi thiehpa]"
 }
