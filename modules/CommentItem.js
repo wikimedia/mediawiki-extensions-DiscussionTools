@@ -52,7 +52,8 @@ CommentItem.prototype.getTimestampString = function () {
 	if ( this.timestamp < switchTime ) {
 		return this.timestamp.toISOString();
 	} else {
-		return this.timestamp.format( 'YYYYMMDDHHmmss' );
+		// Switch to English locale to avoid number formatting
+		return this.timestamp.locale( 'en' ).format( 'YYYYMMDDHHmmss' );
 	}
 };
 
