@@ -13,6 +13,7 @@
 	"discussiontools-defaultsummary-reply": "Respont",
 	"discussiontools-desc": "Benvegoù da wellaat pajennoù kaozeal.",
 	"discussiontools-emptystate-button": "Digeriñ ur gaoz nevez",
+	"discussiontools-emptystate-desc-user": "E [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|pajennoù kaozeal]] e komzer diwar-benn an tu gwellañ da aozañ endalc’h war {{SITENAME}}. Krogit gant ur gaozeadenn nevez evit mont e darempred ha kenlabourat {{GENDER:{{PAGENAME}}|gant}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Gallout a raio an holl gwelout ar pezh skrivet ganeoc’h amañ.",
 	"discussiontools-emptystate-title-self": "Degemer mat en ho pajenn gaozeal",
 	"discussiontools-emptystate-title-self-anon": "Degemer mat er bajenn gaozeal-mañ",
 	"discussiontools-emptystate-title-user": "Kregiñ ur gaozeadenn nevez {{GENDER:{{PAGENAME}}|gant}} {{PAGENAME}}",
