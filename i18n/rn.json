@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Gilbert Ndihokubwayo"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Uzomenyeshwa nihagira uwugira ico avuze muri iki kiganiro. Urashobora guhinyanyura uburyo ushaka kumenyeshwa.",
-	"discussiontools-autotopicsubpopup-dismiss": "Niko, vyanshikiye."
+	"discussiontools-autotopicsubpopup-dismiss": "Niko, vyanshikiye.",
+	"discussiontools-replylink": "kwishura",
+	"discussiontools-replywidget-cancel": "Futa",
+	"discussiontools-replywidget-mode-source": "Inkomoko",
+	"discussiontools-replywidget-mode-visual": "Biboneka",
+	"discussiontools-replywidget-placeholder-reply": "Kwishura kuri {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Kwishura"
 }
