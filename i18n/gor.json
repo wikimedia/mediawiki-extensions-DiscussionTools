@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Marwan Mohamad"
+		]
+	},
+	"discussiontools-replylink": "balasiya",
+	"discussiontools-replywidget-cancel": "Bataliya",
+	"discussiontools-replywidget-mode-source": "Bungo",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Balasiya ode {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Balasiya"
+}

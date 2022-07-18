@@ -5,8 +5,11 @@
 		]
 	},
 	"discussiontools-preference-label": "Strummenta di discussioni",
+	"discussiontools-replylink": "rispunni",
 	"discussiontools-replywidget-cancel": "Annulla",
 	"discussiontools-replywidget-mode-source": "Surgenti",
 	"discussiontools-replywidget-mode-visual": "Visuali",
+	"discussiontools-replywidget-placeholder-reply": "Rispunni a {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Rispunni",
 	"tag-discussiontools-source": "Surgenti"
 }

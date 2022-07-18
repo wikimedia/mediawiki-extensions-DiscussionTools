@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Slaia"
+		]
+	},
+	"discussiontools-replylink": "tema",
+	"discussiontools-replywidget-cancel": "Böi tohugö",
+	"discussiontools-replywidget-mode-source": "Kode",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Tema li {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Tema"
+}

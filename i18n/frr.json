@@ -4,5 +4,10 @@
 			"Murma174"
 		]
 	},
-	"discussiontools-replylink": "Swaare"
+	"discussiontools-replylink": "Swaare",
+	"discussiontools-replywidget-cancel": "Ufbreeg",
+	"discussiontools-replywidget-mode-source": "Kwel",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Oonswaar tu {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Oonswaar"
 }
