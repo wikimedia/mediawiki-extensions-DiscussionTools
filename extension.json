@@ -194,6 +194,8 @@
 				"discussiontools-replywidget-preferences",
 				"discussiontools-replywidget-preview",
 				"discussiontools-replywidget-reply",
+				"discussiontools-replywidget-return-to-newtopic",
+				"discussiontools-replywidget-return-to-reply",
 				"discussiontools-replywidget-summary",
 				"discussiontools-replywidget-transcluded",
 				"ooui-popup-widget-close-button-aria-label",
