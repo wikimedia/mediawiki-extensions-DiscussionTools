@@ -4,12 +4,23 @@
 			"Matma Rex",
 			"Taytay",
 			"Teitei Para",
-			"Amire80"
+			"Amire80",
+			"Laitei"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Châ alei",
 	"discussiontools-desc": "Biepachiana hmiazy paphasa viapa chhaichhizy.",
 	"discussiontools-emptystate-button": "Biepachiana sâkha pathao teh",
+	"discussiontools-emptystate-title-self": "Nâma pachiana hmia tawh eima chaw dy",
+	"discussiontools-emptystate-title-self-anon": "He pachiana hmia tawh eima chaw dy",
+	"discussiontools-emptystate-title-user-anon": "He pachiana hmia tawh eima chaw dy",
+	"discussiontools-error-comment-conflict": "Mo hropa ta nâma nata daihti alyupa liata a hmôna dâh a roh hawpa vâta nâma na hmôna dâh na rohpa he a pachô thei vei. Azaoh pathi bei teh cvk hmôna dâh thiehpazy palâ awpa ta hmia he khâh pathi teh.",
+	"discussiontools-error-comment-is-transcluded": "He achhyna he alei awpa ta \"{{int:discussiontools-replylink}}\" link he ahmâh thei vei.  Châ alei awpa ta \"$1\" kha hmiena chôta hmia bie taopathina kha hmâh bei teh.",
+	"discussiontools-error-comment-is-transcluded-title": "Hmia hropa tawhta awpa ta khâpa a châpa vâta he châ aleina he achhy awpa ta \"{{int:discussiontools-replylink}}\" link hecha ahmâh thei vei. Châ alei awpa ta [[$1]] lâ he vawh bei teh.",
+	"discussiontools-error-comment-not-saved": "Nâ chhyna cha version thieh chaipa hmia lâ a chaluah thei aw vei. Â pathlaina hnôhchaipa mo awpa ta, nâ chhy chakhyhna kha patly tua la, khaitawh hmia khâ pathi n'awpa châta na browser kha hmâh mah y.",
+	"discussiontools-error-noswitchtove-table": "table sona dâh",
+	"discussiontools-error-noswitchtove-template": "template sona dâh",
+	"discussiontools-error-noswitchtove-title": "Hmôthei dâh khawpa",
 	"discussiontools-newtopic-placeholder-title": "Chôtlâhpi",
 	"discussiontools-replylink": "Châ alei",
 	"discussiontools-replywidget-abandon-keep": "Roh pazao",
@@ -20,5 +31,14 @@
 	"discussiontools-replywidget-placeholder-newtopic": "Palâsana",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} lâ châ alei teh",
 	"discussiontools-replywidget-reply": "Châ alei",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Chôtlâhpi thiehpa]"
+	"discussiontools-topicsubscription-button-subscribe": "moh pangia",
+	"discussiontools-topicsubscription-button-unsubscribe": "moh adao",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Moh adao",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Nâ pangia haw!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Nâ phia haw.",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Chôtlâhpi thiehpa]",
+	"tag-discussiontools-source": "Hnawh",
+	"tag-discussiontools-source-description": "BiepachianaChhaichhia cha hnawh môd lia a y",
+	"tag-discussiontools-visual": "Hmôna",
+	"tag-discussiontools-visual-description": "BiepachianaChhaichhizy cha hmôna môd lia a y"
 }

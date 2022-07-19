@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lea.fakauvea"
+		]
+	},
+	"discussiontools-replylink": "tali",
+	"discussiontools-replywidget-cancel": "Fakafisi",
+	"discussiontools-replywidget-mode-source": "Matapuna",
+	"discussiontools-replywidget-mode-visual": "Sio",
+	"discussiontools-replywidget-placeholder-reply": "Tali kia {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Tali"
+}
