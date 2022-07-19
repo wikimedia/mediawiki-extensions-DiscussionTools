@@ -18,13 +18,14 @@ use Error;
 use ExtensionRegistry;
 use IDBAccessObject;
 use Iterator;
-use MediaWiki\Extension\DiscussionTools\CommentItem;
-use MediaWiki\Extension\DiscussionTools\HeadingItem;
+use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
-use MediaWiki\Extension\DiscussionTools\ThreadItem;
-use MediaWiki\Extension\DiscussionTools\ThreadItemSet;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\HeadingItem;
 use MediaWiki\Extension\EventLogging\EventLogging;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
@@ -41,9 +42,9 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 class EventDispatcher {
 	/**
 	 * @param RevisionRecord $revRecord
-	 * @return ThreadItemSet
+	 * @return ContentThreadItemSet
 	 */
-	private static function getParsedRevision( RevisionRecord $revRecord ): ThreadItemSet {
+	private static function getParsedRevision( RevisionRecord $revRecord ): ContentThreadItemSet {
 		$services = MediaWikiServices::getInstance();
 
 		$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
@@ -121,8 +122,8 @@ class EventDispatcher {
 	 * For any other headings (including level 3+ before the first level 2 heading, level 1, and
 	 * section zero placeholder headings), ignore comments in those threads.
 	 *
-	 * @param ThreadItem[] $items
-	 * @return CommentItem[][][]
+	 * @param ContentThreadItem[] $items
+	 * @return ContentCommentItem[][][]
 	 */
 	private static function groupCommentsByThreadAndName( array $items ): array {
 		$comments = [];
@@ -143,16 +144,16 @@ class EventDispatcher {
 	 * Helper for generateEventsForRevision(), separated out for easier testing.
 	 *
 	 * @param array &$events
-	 * @param ThreadItemSet $oldItemSet
-	 * @param ThreadItemSet $newItemSet
+	 * @param ContentThreadItemSet $oldItemSet
+	 * @param ContentThreadItemSet $newItemSet
 	 * @param RevisionRecord $newRevRecord
 	 * @param PageIdentity $title
 	 * @param UserIdentity $user
 	 */
 	protected static function generateEventsFromItemSets(
 		array &$events,
-		ThreadItemSet $oldItemSet,
-		ThreadItemSet $newItemSet,
+		ContentThreadItemSet $oldItemSet,
+		ContentThreadItemSet $newItemSet,
 		RevisionRecord $newRevRecord,
 		PageIdentity $title,
 		UserIdentity $user

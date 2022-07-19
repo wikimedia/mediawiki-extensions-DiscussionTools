@@ -20,9 +20,9 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 trait ApiDiscussionToolsTrait {
 	/**
 	 * @param RevisionRecord $revision
-	 * @return ThreadItemSet
+	 * @return ContentThreadItemSet
 	 */
-	protected function parseRevision( RevisionRecord $revision ): ThreadItemSet {
+	protected function parseRevision( RevisionRecord $revision ): ContentThreadItemSet {
 		$response = $this->requestRestbasePageHtml( $revision );
 
 		$doc = DOMUtils::parseHTML( $response['body'] );

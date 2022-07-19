@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher;
-use MediaWiki\Extension\DiscussionTools\ThreadItemSet;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
@@ -19,16 +19,16 @@ class MockEventDispatcher extends EventDispatcher {
 	 * ... expected to be a reference, value given").
 	 *
 	 * @param array &$events
-	 * @param ThreadItemSet $oldItemSet
-	 * @param ThreadItemSet $newItemSet
+	 * @param ContentThreadItemSet $oldItemSet
+	 * @param ContentThreadItemSet $newItemSet
 	 * @param RevisionRecord $newRevRecord
 	 * @param PageIdentity $title
 	 * @param UserIdentity $user
 	 */
 	public static function generateEventsFromItemSets(
 		array &$events,
-		ThreadItemSet $oldItemSet,
-		ThreadItemSet $newItemSet,
+		ContentThreadItemSet $oldItemSet,
+		ContentThreadItemSet $newItemSet,
 		RevisionRecord $newRevRecord,
 		PageIdentity $title,
 		UserIdentity $user

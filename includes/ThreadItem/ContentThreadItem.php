@@ -1,9 +1,12 @@
 <?php
 
-namespace MediaWiki\Extension\DiscussionTools;
+namespace MediaWiki\Extension\DiscussionTools\ThreadItem;
 
 use JsonSerializable;
 use LogicException;
+use MediaWiki\Extension\DiscussionTools\CommentModifier;
+use MediaWiki\Extension\DiscussionTools\CommentUtils;
+use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use Sanitizer;
 use Title;
 use Wikimedia\Assert\Assert;
@@ -13,7 +16,9 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 /**
  * A thread item, either a heading or a comment
  */
-abstract class ThreadItem implements JsonSerializable {
+abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
+	use ThreadItemTrait;
+
 	protected $type;
 	protected $range;
 	protected $rootNode;
@@ -38,31 +43,6 @@ abstract class ThreadItem implements JsonSerializable {
 		$this->type = $type;
 		$this->level = $level;
 		$this->range = $range;
-	}
-
-	/**
-	 * @param bool $deep Whether to include full serialized comments in the replies key
-	 * @param callable|null $callback Function to call on the returned serialized array, which
-	 *  will be passed into the serialized replies as well if $deep is used
-	 * @return array JSON-serializable array
-	 */
-	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
-		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
-		// and when doing so, ensure that frontend code can handle both the old and new outputs.
-		// See ThreadItem.static.newFromJSON in JS.
-
-		$array = [
-			'type' => $this->type,
-			'level' => $this->level,
-			'id' => $this->id,
-			'replies' => array_map( static function ( ThreadItem $comment ) use ( $deep, $callback ) {
-				return $deep ? $comment->jsonSerialize( $deep, $callback ) : $comment->getId();
-			}, $this->replies )
-		];
-		if ( $callback ) {
-			$callback( $array, $this );
-		}
-		return $array;
 	}
 
 	/**
@@ -135,7 +115,7 @@ abstract class ThreadItem implements JsonSerializable {
 	/**
 	 * Get the list of thread items in the comment tree below this thread item.
 	 *
-	 * @return ThreadItem[] Thread items
+	 * @return ContentThreadItem[] Thread items
 	 */
 	public function getThreadItemsBelow(): array {
 		$threadItems = [];
@@ -370,7 +350,7 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @return ThreadItem|null Parent thread item
+	 * @return ContentThreadItem|null Parent thread item
 	 */
 	public function getParent(): ?ThreadItem {
 		return $this->parent;
@@ -412,7 +392,7 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @return ThreadItem[] Replies to this thread item
+	 * @return ContentThreadItem[] Replies to this thread item
 	 */
 	public function getReplies(): array {
 		return $this->replies;
@@ -433,9 +413,9 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @param ThreadItem $parent
+	 * @param ContentThreadItem $parent
 	 */
-	public function setParent( ThreadItem $parent ): void {
+	public function setParent( ContentThreadItem $parent ): void {
 		$this->parent = $parent;
 	}
 
@@ -489,9 +469,9 @@ abstract class ThreadItem implements JsonSerializable {
 	}
 
 	/**
-	 * @param ThreadItem $reply Reply comment
+	 * @param ContentThreadItem $reply Reply comment
 	 */
-	public function addReply( ThreadItem $reply ): void {
+	public function addReply( ContentThreadItem $reply ): void {
 		$this->replies[] = $reply;
 	}
 }

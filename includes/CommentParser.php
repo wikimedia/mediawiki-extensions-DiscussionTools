@@ -9,6 +9,11 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Language;
 use MalformedTitleException;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ThreadItem;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MWException;
 use TitleParser;
@@ -84,9 +89,9 @@ class CommentParser {
 	 *
 	 * @param Element $rootNode Root node of content to parse
 	 * @param TitleValue $title Title of the page being parsed
-	 * @return ThreadItemSet
+	 * @return ContentThreadItemSet
 	 */
-	public function parse( Element $rootNode, TitleValue $title ): ThreadItemSet {
+	public function parse( Element $rootNode, TitleValue $title ): ContentThreadItemSet {
 		$this->rootNode = $rootNode;
 		$this->title = $title;
 
@@ -784,8 +789,8 @@ class CommentParser {
 		return $sigRange;
 	}
 
-	private function buildThreadItems(): ThreadItemSet {
-		$result = new ThreadItemSet();
+	private function buildThreadItems(): ContentThreadItemSet {
+		$result = new ContentThreadItemSet();
 
 		$timestampRegexps = $this->getLocalTimestampRegexps();
 		$dfParsers = $this->getLocalTimestampParsers();
@@ -806,7 +811,7 @@ class CommentParser {
 				$range = new ImmutableRange(
 					$headingNode, $startOffset, $headingNode, $headingNode->childNodes->length
 				);
-				$curComment = new HeadingItem( $range, (int)( $match[ 1 ] ) );
+				$curComment = new ContentHeadingItem( $range, (int)( $match[ 1 ] ) );
 				$curComment->setRootNode( $this->rootNode );
 				$result->addThreadItem( $curComment );
 				$curCommentEnd = $node;
@@ -896,7 +901,7 @@ class CommentParser {
 					$warnings[] = $dateWarning;
 				}
 
-				$curComment = new CommentItem(
+				$curComment = new ContentCommentItem(
 					$level,
 					$range,
 					$sigRanges,
@@ -911,7 +916,7 @@ class CommentParser {
 					// Add a fake placeholder heading if there are any comments in the 0th section
 					// (before the first real heading)
 					$range = new ImmutableRange( $this->rootNode, 0, $this->rootNode, 0 );
-					$fakeHeading = new HeadingItem( $range, null );
+					$fakeHeading = new ContentHeadingItem( $range, null );
 					$fakeHeading->setRootNode( $this->rootNode );
 					$result->addThreadItem( $fakeHeading );
 				}
@@ -936,25 +941,25 @@ class CommentParser {
 	/**
 	 * Given a thread item, return an identifier for it that is unique within the page.
 	 *
-	 * @param ThreadItem $threadItem
-	 * @param ThreadItemSet $previousItems
+	 * @param ContentThreadItem $threadItem
+	 * @param ContentThreadItemSet $previousItems
 	 * @return string
 	 */
-	private function computeId( ThreadItem $threadItem, ThreadItemSet $previousItems ): string {
+	private function computeId( ContentThreadItem $threadItem, ContentThreadItemSet $previousItems ): string {
 		// When changing the algorithm below, copy the old version into computeLegacyId()
 		// for compatibility with cached data.
 
 		$id = null;
 
-		if ( $threadItem instanceof HeadingItem && $threadItem->isPlaceholderHeading() ) {
+		if ( $threadItem instanceof ContentHeadingItem && $threadItem->isPlaceholderHeading() ) {
 			// The range points to the root note, using it like below results in silly values
 			$id = 'h-';
-		} elseif ( $threadItem instanceof HeadingItem ) {
+		} elseif ( $threadItem instanceof ContentHeadingItem ) {
 			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 			$headline = $threadItem->getRange()->startContainer;
 			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
 			$id = 'h-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
-		} elseif ( $threadItem instanceof CommentItem ) {
+		} elseif ( $threadItem instanceof ContentCommentItem ) {
 			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
 				'-' . $threadItem->getTimestampString();
 		} else {
@@ -964,17 +969,17 @@ class CommentParser {
 		// If there would be multiple comments with the same ID (i.e. the user left multiple comments
 		// in one edit, or within a minute), add the parent ID to disambiguate them.
 		$threadItemParent = $threadItem->getParent();
-		if ( $threadItemParent instanceof HeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
+		if ( $threadItemParent instanceof ContentHeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
 			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 			$headline = $threadItemParent->getRange()->startContainer;
 			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
 			$id .= '-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
-		} elseif ( $threadItemParent instanceof CommentItem ) {
+		} elseif ( $threadItemParent instanceof ContentCommentItem ) {
 			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ) ) .
 				'-' . $threadItemParent->getTimestampString();
 		}
 
-		if ( $threadItem instanceof HeadingItem ) {
+		if ( $threadItem instanceof ContentHeadingItem ) {
 			// To avoid old threads re-appearing on popular pages when someone uses a vague title
 			// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
 			// include the oldest timestamp in the thread (i.e. date the thread was started) in the
@@ -1003,11 +1008,11 @@ class CommentParser {
 	 * Given a thread item, return an identifier for it like computeId(), generated according to an
 	 * older algorithm, so that we can still match IDs from cached data.
 	 *
-	 * @param ThreadItem $threadItem
-	 * @param ThreadItemSet $previousItems
+	 * @param ContentThreadItem $threadItem
+	 * @param ContentThreadItemSet $previousItems
 	 * @return string|null
 	 */
-	private function computeLegacyId( ThreadItem $threadItem, ThreadItemSet $previousItems ): ?string {
+	private function computeLegacyId( ContentThreadItem $threadItem, ContentThreadItemSet $previousItems ): ?string {
 		// When we change the algorithm in computeId(), the old version should be copied below
 		// for compatibility with cached data.
 
@@ -1021,16 +1026,16 @@ class CommentParser {
 	 *
 	 * Multiple comments on a page can have the same name; use ID to distinguish them.
 	 *
-	 * @param ThreadItem $threadItem
+	 * @param ContentThreadItem $threadItem
 	 * @return string
 	 */
-	private function computeName( ThreadItem $threadItem ): string {
+	private function computeName( ContentThreadItem $threadItem ): string {
 		$name = null;
 
-		if ( $threadItem instanceof HeadingItem ) {
+		if ( $threadItem instanceof ContentHeadingItem ) {
 			$name = 'h-';
 			$mainComment = $this->getThreadStartComment( $threadItem );
-		} elseif ( $threadItem instanceof CommentItem ) {
+		} elseif ( $threadItem instanceof ContentCommentItem ) {
 			$name = 'c-';
 			$mainComment = $threadItem;
 		} else {
@@ -1046,9 +1051,9 @@ class CommentParser {
 	}
 
 	/**
-	 * @param ThreadItemSet $result
+	 * @param ContentThreadItemSet $result
 	 */
-	private function buildThreads( ThreadItemSet $result ): void {
+	private function buildThreads( ContentThreadItemSet $result ): void {
 		$lastHeading = null;
 		$replies = [];
 
@@ -1062,7 +1067,7 @@ class CommentParser {
 				}
 			}
 
-			if ( $threadItem instanceof HeadingItem ) {
+			if ( $threadItem instanceof ContentHeadingItem ) {
 				// New root (thread)
 				// Attach as a sub-thread to preceding higher-level heading.
 				// Any replies will appear in the tree twice, under the main-thread and the sub-thread.
@@ -1094,9 +1099,9 @@ class CommentParser {
 	 * This has to be a separate pass because we don't have the list of replies before
 	 * this point.
 	 *
-	 * @param ThreadItemSet $result
+	 * @param ContentThreadItemSet $result
 	 */
-	private function computeIdsAndNames( ThreadItemSet $result ): void {
+	private function computeIdsAndNames( ContentThreadItemSet $result ): void {
 		foreach ( $result->getThreadItems() as $threadItem ) {
 			$name = $this->computeName( $threadItem );
 			$threadItem->setName( $name );
@@ -1116,14 +1121,14 @@ class CommentParser {
 	 */
 	private function getThreadStartComment( ThreadItem $threadItem ): ?CommentItem {
 		$oldest = null;
-		if ( $threadItem instanceof CommentItem ) {
+		if ( $threadItem instanceof ContentCommentItem ) {
 			$oldest = $threadItem;
 		}
 		// Check all replies. This can't just use the first comment because threads are often summarized
 		// at the top when the discussion is closed.
 		foreach ( $threadItem->getReplies() as $comment ) {
 			// Don't include sub-threads to avoid changing the ID when threads are "merged".
-			if ( $comment instanceof CommentItem ) {
+			if ( $comment instanceof ContentCommentItem ) {
 				$oldestInReplies = $this->getThreadStartComment( $comment );
 				if ( !$oldest || $oldestInReplies->getTimestamp() < $oldest->getTimestamp() ) {
 					$oldest = $oldestInReplies;

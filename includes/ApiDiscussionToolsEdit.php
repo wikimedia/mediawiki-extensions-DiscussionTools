@@ -7,6 +7,7 @@ use ApiMain;
 use DerivativeContext;
 use DerivativeRequest;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -232,7 +233,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				if ( $commentId ) {
 					$comment = $threadItemSet->findCommentById( $commentId );
 
-					if ( !$comment || !( $comment instanceof CommentItem ) ) {
+					if ( !$comment || !( $comment instanceof ContentCommentItem ) ) {
 						$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
 					}
 
@@ -242,7 +243,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 					if ( count( $comments ) > 1 ) {
 						$this->dieWithError( [ 'apierror-discussiontools-commentname-ambiguous', $commentName ] );
-					} elseif ( !$comment || !( $comment instanceof CommentItem ) ) {
+					} elseif ( !$comment || !( $comment instanceof ContentCommentItem ) ) {
 						$this->dieWithError( [ 'apierror-discussiontools-commentname-notfound', $commentName ] );
 					}
 				}
