@@ -96,6 +96,8 @@
 	"discussiontools-replywidget-preferences": "Einstellungen",
 	"discussiontools-replywidget-preview": "Vorschau",
 	"discussiontools-replywidget-reply": "Antworten",
+	"discussiontools-replywidget-return-to-newtopic": "Zurück zum neuen Thema",
+	"discussiontools-replywidget-return-to-reply": "Zurück zur Antwort",
 	"discussiontools-replywidget-signature-body": "$1 wurde in deine Unterschrift umgewandelt. Um dies rückgängig zu machen, drücke $2. Beachte, dass du mit diesem Werkzeug keine Kommentare unterschreiben musst. Deine Unterschrift wird automatisch hinzugefügt.",
 	"discussiontools-replywidget-signature-title": "Unterschriften-Syntax erkannt",
 	"discussiontools-replywidget-summary": "Zusammenfassung",

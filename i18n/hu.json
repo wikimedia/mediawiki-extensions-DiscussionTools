@@ -88,6 +88,8 @@
 	"discussiontools-replywidget-preferences": "Beállítások",
 	"discussiontools-replywidget-preview": "Előnézet",
 	"discussiontools-replywidget-reply": "Válasz",
+	"discussiontools-replywidget-return-to-newtopic": "Visszatérés új témához",
+	"discussiontools-replywidget-return-to-reply": "Visszatérés a válaszhoz",
 	"discussiontools-replywidget-signature-body": "A $1 kód át lett alakítva az aláírásoddá. Ennek visszavonásához használd a(z) $2 billentyűkombinációt. Megjegyzés: nem szükséges kézzel aláírnod az ezzel az eszközzel írt hozzászólásaidat, az eszköz automatikusan elhelyezi az aláírást.",
 	"discussiontools-replywidget-signature-title": "Aláírás-szintaxis érzékelve",
 	"discussiontools-replywidget-summary": "Összefoglaló",

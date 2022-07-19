@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chinamoonroll"
+			"Chinamoonroll",
+			"Joseagush"
 		]
 	},
 	"discussiontools": "Piranti pabligbagan",
-	"discussiontools-autotopicsubpopup-dismiss": "Nggih, tyang uning",
-	"discussiontools-autotopicsubpopup-preferences": "Uah preferensi",
+	"discussiontools-autotopicsubpopup-dismiss": "Nggih, tiang uning",
+	"discussiontools-autotopicsubpopup-preferences": "Uah preférénsi",
 	"discussiontools-autotopicsubpopup-title": "Ragané sampun malangganan",
 	"discussiontools-defaultsummary-reply": "Ngwales",
 	"discussiontools-emptystate-button": "Ngawitin pabligbagan",

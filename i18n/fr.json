@@ -107,6 +107,8 @@
 	"discussiontools-replywidget-preferences": "Préférences",
 	"discussiontools-replywidget-preview": "Aperçu",
 	"discussiontools-replywidget-reply": "Répondre",
+	"discussiontools-replywidget-return-to-newtopic": "Retour au nouveau sujet",
+	"discussiontools-replywidget-return-to-reply": "Retour à la réponse",
 	"discussiontools-replywidget-signature-body": "$1 a été transformé dans votre signature. Pour annuler cela, tapez $2. Notez que vous n’avez pas besoin de signer vos commentaires avec cet outil. Votre signature sera ajoutée automatiquement.",
 	"discussiontools-replywidget-signature-title": "Balise de signature détectée",
 	"discussiontools-replywidget-summary": "Résumé",

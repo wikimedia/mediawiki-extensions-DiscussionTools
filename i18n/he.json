@@ -94,6 +94,8 @@
 	"discussiontools-replywidget-preferences": "העדפות",
 	"discussiontools-replywidget-preview": "תצוגה מקדימה",
 	"discussiontools-replywidget-reply": "תגובה",
+	"discussiontools-replywidget-return-to-newtopic": "חזרה לנושא החדש",
+	"discussiontools-replywidget-return-to-reply": "חזרה לתשובה",
 	"discussiontools-replywidget-signature-body": "הקוד $1 הומר לחתימה שלך. כדי לבטל את זה, יש ללחוץ $2. נא לשים לב לכך שאין צורך לחתום על תגובות עם הכלי הזה. החתימה שלך תתווסף באופן אוטומטי.",
 	"discussiontools-replywidget-signature-title": "זוהה קוד של חתימה",
 	"discussiontools-replywidget-summary": "תקציר",
