@@ -208,8 +208,21 @@ span[ data-mw-comment-start ] {
 .ext-discussiontools-init-section-subscribeButton.oo-ui-buttonElement {
 	display: none;
 
-	.ext-discussiontools-topicsubscription-enabled & {
+	> .oo-ui-buttonElement-button {
+		font-weight: normal;
+	}
+
+	.ext-discussiontools-topicsubscription-enabled.ext-discussiontools-visualenhancements-enabled & {
 		display: inline-block;
+	}
+
+	// stylelint-disable-next-line no-descending-specificity
+	body:not( .skin-minerva ) & {
+		float: right;
+		// stylelint-disable-next-line declaration-property-unit-disallowed-list
+		font-size: 14px;
+		// stylelint-disable-next-line declaration-no-important
+		margin: -2px 0 0 1em !important;
 	}
 }
 
@@ -249,10 +262,6 @@ span[ data-mw-comment-start ] {
 			display: flex;
 			// Use interface language direction (auto-flipped for RTL)
 			direction: ltr;
-
-			.oo-ui-buttonElement > .oo-ui-buttonElement-button {
-				font-weight: normal;
-			}
 		}
 
 		&-metadata {

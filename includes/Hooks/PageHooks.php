@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
 use ConfigFactory;
+use ExtensionRegistry;
 use Html;
 use IContextSource;
 use MediaWiki\Actions\Hook\GetActionNameHook;
@@ -20,6 +21,7 @@ use MediaWiki\Extension\VisualEditor\Hooks as VisualEditorHooks;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Hook\TitleGetEditNoticesHook;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleViewHeaderHook;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\User\UserNameUtils;
@@ -183,12 +185,18 @@ class PageHooks implements
 		// But that hook doesn't provide parameters that we need to render correctly
 		// (including the page title, interface language, and current user).
 
+		$isMobile = false;
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
+			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
+			$isMobile = $mobFrontContext->shouldDisplayMobileView();
+		}
 		$lang = $output->getLanguage();
+
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			// Just enable OOUI PHP - the OOUI subscribe button isn't infused unless VISUALENHANCEMENTS are enabled
 			$output->setupOOUI();
 			$text = CommentFormatter::postprocessTopicSubscription(
-				$text, $lang, $this->subscriptionStore, $output->getUser()
+				$text, $lang, $this->subscriptionStore, $output->getUser(), $isMobile
 			);
 		}
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
