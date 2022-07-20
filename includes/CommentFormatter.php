@@ -97,9 +97,9 @@ class CommentFormatter {
 		$headingNameEscaped = htmlspecialchars( $headingItem->getName(), ENT_NOQUOTES );
 
 		// Replaced in ::postprocessTopicSubscription() as the text depends on user state
-		$subscribe = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingNameEscaped );
+		$subscribeLink = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingNameEscaped );
 		if ( $headingItem->isSubscribable() ) {
-			$headingElement->appendChild( $subscribe );
+			$headingElement->insertBefore( $subscribeLink, $headingElement->firstChild );
 		}
 
 		// TEMPORARY: If enhancements are "unavailable", don't modify the HTML at all
