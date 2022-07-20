@@ -101,6 +101,8 @@
 	"discussiontools-replywidget-preferences": "تفضيلات",
 	"discussiontools-replywidget-preview": "معاينة",
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
+	"discussiontools-replywidget-return-to-newtopic": "العودة إلى موضوع جديد",
+	"discussiontools-replywidget-return-to-reply": "العودة للردّ",
 	"discussiontools-replywidget-signature-body": "تم تغيير $1 إلى توقيعك. لإلغاء ذلك، {{GENDER:|اضغط|اضغطي}} على $2. ملاحظة: لا حاجة للتوقيع على تعليقك مع هذه الأداة. توقيعك سيضاف تِلْقائيًا.",
 	"discussiontools-replywidget-signature-title": "تم العثور على علامة توقيع",
 	"discussiontools-replywidget-summary": "الملخص",

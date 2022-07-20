@@ -90,6 +90,8 @@
 	"discussiontools-replywidget-preferences": "Preferințe",
 	"discussiontools-replywidget-preview": "Previzualizare",
 	"discussiontools-replywidget-reply": "Răspunde",
+	"discussiontools-replywidget-return-to-newtopic": "Întoarceți-vă la subiectul nou",
+	"discussiontools-replywidget-return-to-reply": "Întoarceți-vă la răspuns",
 	"discussiontools-replywidget-signature-body": "$1 s-a transformat în semnătura dvs. Pentru a anula acest lucru, apăsați $2. Luați în considerare că nu trebuie să vă semnați cu această unealtă. Semnătura dvs. va fi adăugată automat.",
 	"discussiontools-replywidget-signature-title": "Cod de semnătură detectat",
 	"discussiontools-replywidget-summary": "Rezumat",

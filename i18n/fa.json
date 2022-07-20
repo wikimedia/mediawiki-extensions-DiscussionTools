@@ -100,6 +100,8 @@
 	"discussiontools-replywidget-preferences": "ترجیحات",
 	"discussiontools-replywidget-preview": "پیش‌نمایش",
 	"discussiontools-replywidget-reply": "پاسخ",
+	"discussiontools-replywidget-return-to-newtopic": "بازگشت به مبحث تازه",
+	"discussiontools-replywidget-return-to-reply": "بازگشت به پاسخ",
 	"discussiontools-replywidget-signature-body": "$1 به امضای شما تبدیل شد. برای برگرداندن این عمل، $2 را تایپ کنید. دقت کنید که در زمان استفاده از این ابزار نیازی به امضا کردن نظرات ندارید. امضای شما به‌طور خودکار اضافه خواهد شد.",
 	"discussiontools-replywidget-signature-title": "نشانه‌گذاری امضا شناسایی شد",
 	"discussiontools-replywidget-summary": "خلاصه",

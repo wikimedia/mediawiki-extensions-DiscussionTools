@@ -86,6 +86,8 @@
 	"discussiontools-replywidget-preferences": "Preferentias",
 	"discussiontools-replywidget-preview": "Previsualisation",
 	"discussiontools-replywidget-reply": "Responder",
+	"discussiontools-replywidget-return-to-newtopic": "Retornar al nove topico",
+	"discussiontools-replywidget-return-to-reply": "Retornar al responsa",
 	"discussiontools-replywidget-signature-body": "$1 ha essite transformate in tu signatura. Pro disfacer isto, preme $2. Nota que non es necessari signar commentos con iste utensile. Tu signatura essera addite automaticamente.",
 	"discussiontools-replywidget-signature-title": "Notation de signatura detegite",
 	"discussiontools-replywidget-summary": "Summario",
