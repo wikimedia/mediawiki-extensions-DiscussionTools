@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rooiratel"
+		]
+	},
+	"discussiontools-replylink": "antwoord",
+	"discussiontools-replywidget-cancel": "Kanselleer",
+	"discussiontools-replywidget-mode-source": "Bron",
+	"discussiontools-replywidget-mode-visual": "Visueel",
+	"discussiontools-replywidget-placeholder-reply": "Antwoord op {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Antwoord"
+}
