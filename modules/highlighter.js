@@ -167,9 +167,11 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
 		var comment = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
-		highlightedTarget = new Highlight( comment );
-		highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
-		highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
+		if ( comment ) {
+			highlightedTarget = new Highlight( comment );
+			highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
+			highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
+		}
 		return;
 	}
 
