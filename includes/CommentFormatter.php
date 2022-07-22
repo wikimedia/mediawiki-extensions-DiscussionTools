@@ -98,7 +98,9 @@ class CommentFormatter {
 
 		// Replaced in ::postprocessTopicSubscription() as the text depends on user state
 		$subscribe = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingNameEscaped );
-		$headingElement->appendChild( $subscribe );
+		if ( $headingItem->isSubscribable() ) {
+			$headingElement->appendChild( $subscribe );
+		}
 
 		// TEMPORARY: If enhancements are "unavailable", don't modify the HTML at all
 		// so as to avoid polluting the parser cache. Once the HTML output is more stable
@@ -145,7 +147,9 @@ class CommentFormatter {
 				'ext-discussiontools-init-section-actions'
 			);
 
-			$actions->appendChild( $subscribeButton );
+			if ( $headingItem->isSubscribable() ) {
+				$actions->appendChild( $subscribeButton );
+			}
 
 			$bar = $doc->createElement( 'div' );
 			$bar->setAttribute(
@@ -225,7 +229,7 @@ class CommentFormatter {
 				$headline = $threadItem->getRange()->endContainer;
 				Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
 				$headline->setAttribute( 'data-mw-comment', $itemJSON );
-				if ( $threadItem->isSubscribable() ) {
+				if ( $threadItem->getHeadingLevel() === 2 ) {
 					$headingElement = CommentUtils::closestElement( $headline, [ 'h2' ] );
 
 					if ( $headingElement ) {
