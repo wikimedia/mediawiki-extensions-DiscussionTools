@@ -24,12 +24,42 @@ if ( url.searchParams.get( 'dtrepliedto' ) ) {
 	}
 }
 
+/**
+ * Hook handler for `mw.hook( 'wikipage.content' )`.
+ *
+ * @param {jQuery} $container
+ */
 mw.dt.init = function ( $container ) {
+	function reallyInit( $node ) {
+		controller.init( $node, mw.dt.initState );
+		mw.dt.initState = {};
+	}
+
+	// Only (re)initialize if the hook is being fired on the page content – not on e.g. a single image
+	// in a gallery slideshow, or a preview in our own reply tool
 	if ( $container.is( '#mw-content-text' ) || $container.find( '#mw-content-text' ).length ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
-		controller.init( $( '#mw-content-text' ), mw.dt.initState );
-		// Reset for next init
-		mw.dt.initState = {};
+		reallyInit( $( '#mw-content-text' ) );
+		return;
+	}
+
+	// Otherwise, if node is detached, wait to see what it actually is
+	if ( !$container.closest( 'html' ).length ) {
+		setTimeout( function () {
+			if ( $container.closest( 'html' ).length ) {
+				mw.dt.init( $container );
+			}
+		} );
+		return;
+	}
+
+	// If it's a full page live preview, (re)initialize to support highlighting comments (T309423)
+	// FIXME This really should not depend on implementation details of 2 different live previews
+	// FIXME VisualEditor (2017WTE) preview can't be supported, because it messes with `id` attributes
+	var livePreviewSelectors = '#wikiPreview, .ext-WikiEditor-realtimepreview-preview';
+	if ( $container.closest( livePreviewSelectors ).length ) {
+		reallyInit( $container );
+		return;
 	}
 };
 
