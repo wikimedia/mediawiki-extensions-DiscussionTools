@@ -95,6 +95,8 @@
 	"discussiontools-replywidget-preferences": "Nastavení",
 	"discussiontools-replywidget-preview": "Náhled",
 	"discussiontools-replywidget-reply": "Odpovědět",
+	"discussiontools-replywidget-return-to-newtopic": "Vrátit se k vytváření nového tématu",
+	"discussiontools-replywidget-return-to-reply": "Vrátit se k vytváření odpovědi",
 	"discussiontools-replywidget-signature-body": "$1 bylo změněno na váš podpis. Operaci můžete zrušit stisknutím $2. Všimněte si, že v tomto nástroji nemusíte své komentáře podepisovat. Váš podpis bude přidán automaticky.",
 	"discussiontools-replywidget-signature-title": "Nalezena značka pro podpis",
 	"discussiontools-replywidget-summary": "Shrnutí",

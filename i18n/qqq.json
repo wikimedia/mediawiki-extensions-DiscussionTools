@@ -3,6 +3,7 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Amire80",
+			"Beginneruser",
 			"Biyolojiyabikurdi",
 			"Matma Rex",
 			"Raymond",
@@ -13,7 +14,7 @@
 			"Verdy p"
 		]
 	},
-	"discussiontools": "{{name}}",
+	"discussiontools": "{{name}}\nThe name of the extension",
 	"discussiontools-autotopicsubpopup-body": "Popup body",
 	"discussiontools-autotopicsubpopup-dismiss": "Label for a button that closes a popup",
 	"discussiontools-autotopicsubpopup-preferences": "Label for a link to Special:Preferences",
