@@ -984,6 +984,7 @@ ReplyWidget.prototype.createErrorMessage = function ( message ) {
 		classes: [ 'ext-discussiontools-ui-replyWidget-error' ]
 	} );
 	errorMessage.$element.insertBefore( this.replyBodyWidget.$element );
+	errorMessage.scrollElementIntoView();
 	return errorMessage;
 };
 
