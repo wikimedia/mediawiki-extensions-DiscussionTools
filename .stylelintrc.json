@@ -4,7 +4,7 @@
 		"stylelint-config-wikimedia/mediawiki"
 	],
 	"rules": {
-		"selector-class-pattern": "^(ext|ve|mw|oo-ui|client|skin)-",
+		"selector-class-pattern": "^(ext|ve|mw|oo-ui|client|skin|mf)-",
 		"unit-disallowed-list": null
 	}
 }
