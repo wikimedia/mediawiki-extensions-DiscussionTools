@@ -558,8 +558,13 @@ span[ data-mw-comment-start ] {
 // The button will disable all DT features byt remove feature CSS classes.
 // stylelint-disable-next-line selector-class-pattern
 .skin-minerva.ns-talk.ext-discussiontools-replytool-enabled {
-	.mf-section-0 { /* stylelint-disable-line selector-class-pattern */
+	.mf-section-0 > *:not( .ext-discussiontools-emptystate ) {
 		display: none;
+	}
+
+	.mf-section-0 > .ext-discussiontools-emptystate {
+		border-top: 0;
+		margin-top: 0;
 	}
 
 	.ext-discussiontools-init-readAsWikiPage {
