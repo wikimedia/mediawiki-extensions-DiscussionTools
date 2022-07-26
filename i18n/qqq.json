@@ -10,10 +10,11 @@
 			"Umherirrender",
 			"Verdy p",
 			"Ajeje Brazorf",
-			"Raymond"
+			"Raymond",
+			"Beginneruser"
 		]
 	},
-	"discussiontools": "{{name}}",
+	"discussiontools": "{{name}}\nThe name of the extension",
 	"discussiontools-defaultsummary-reply": "Default edit summary for a reply.\n\n'''Note that this is a noun (''a reply''), not a verb (''to reply''). Alternatively you can use a past tense verb if that's more natural in your language.'''",
 	"discussiontools-desc": "{{desc\n| name = DiscussionTools\n| url = https://www.mediawiki.org/wiki/Extension:DiscussionTools\n}}",
 	"discussiontools-emptystate-button": "Label for add new topic button on empty talk pages.",
