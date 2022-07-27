@@ -36,13 +36,14 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
 
 		\OutputPage::setupOOUI();
+		// TODO: Test mobile output as well
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
 			$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser(), false
 		);
-		// TODO: Assert mobile output as well
 
+		// TODO: Test mobile output as well
 		$actual = MockCommentFormatter::postprocessVisualEnhancements(
-			$actual, $qqxLang, static::getTestUser()->getUser()
+			$actual, $qqxLang, static::getTestUser()->getUser(), false
 		);
 
 		$actual = MockCommentFormatter::postprocessReplyTool(

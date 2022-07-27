@@ -215,18 +215,24 @@ class PageHooks implements
 		}
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
 			$output->enableOOUI();
-			$output->addModuleStyles( [
-				// Icons for h2 bar
-				// speechBubble
-				'oojs-ui.styles.icons-alerts',
-				// userAvatar
-				'oojs-ui.styles.icons-user',
-				// clock
-				'oojs-ui.styles.icons-interactions'
-			] );
-
+			if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
+				$output->addModuleStyles( [
+					// Visually enhanced topic subscriptions
+					// bell, bellOutline
+					'oojs-ui.styles.icons-alerts',
+				] );
+			}
+			if ( $isMobile ) {
+				$output->addModuleStyles( [
+					// Mobile overflow menu:
+					// ellipsis
+					'oojs-ui.styles.icons-interactions',
+					// edit
+					'oojs-ui.styles.icons-editing-core',
+				] );
+			}
 			$text = CommentFormatter::postprocessVisualEnhancements(
-				$text, $lang, $output->getUser()
+				$text, $lang, $output->getUser(), $isMobile
 			);
 		}
 
