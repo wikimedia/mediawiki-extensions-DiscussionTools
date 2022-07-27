@@ -102,6 +102,9 @@ class CommentFormatter {
 			$headingElement->insertBefore( $subscribeLink, $headingElement->firstChild );
 		}
 
+		$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONDESKTOP__' . $headingNameEscaped );
+		$headingElement->insertBefore( $subscribeButton, $headingElement->firstChild );
+
 		// TEMPORARY: If enhancements are "unavailable", don't modify the HTML at all
 		// so as to avoid polluting the parser cache. Once the HTML output is more stable
 		// this can be removed.
@@ -128,7 +131,7 @@ class CommentFormatter {
 			);
 
 			// Topic subscriptions
-			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTON__' . $headingNameEscaped );
+			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONMOBILE__' . $headingNameEscaped );
 			$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
 
 			$metadata = $doc->createElement( 'div' );
@@ -302,7 +305,8 @@ class CommentFormatter {
 
 		$text = preg_replace( '/<!--__DTSUBSCRIBE__(.*?)-->/', '', $text );
 		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
-		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON__(.*?)-->/', '', $text );
+		// (DESKTOP|MOBILE)? can be made unconditional once the un-suffixed buttons have cleared from the cache
+		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)?__(.*?)-->/', '', $text );
 
 		return $text;
 	}
@@ -314,10 +318,11 @@ class CommentFormatter {
 	 * @param Language $lang
 	 * @param SubscriptionStore $subscriptionStore
 	 * @param UserIdentity $user
+	 * @param bool $isMobile
 	 * @return string
 	 */
 	public static function postprocessTopicSubscription(
-		string $text, Language $lang, SubscriptionStore $subscriptionStore, UserIdentity $user
+		string $text, Language $lang, SubscriptionStore $subscriptionStore, UserIdentity $user, bool $isMobile
 	): string {
 		$doc = DOMCompat::newDocument( true );
 
@@ -400,9 +405,16 @@ class CommentFormatter {
 		);
 
 		$text = preg_replace_callback(
-			'/<!--__DTSUBSCRIBEBUTTON__(.*?)-->/',
-			static function ( $matches ) use ( $doc, $itemsByName, $lang ) {
-				$itemName = htmlspecialchars_decode( $matches[1] );
+			// (DESKTOP|MOBILE)? can be made unconditional once the un-suffixed buttons have cleared from the cache
+			'/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)?__(.*?)-->/',
+			static function ( $matches ) use ( $doc, $itemsByName, $lang, $isMobile ) {
+				if ( $matches[1] ) {
+					$buttonIsMobile = $matches[1] === 'MOBILE';
+					if ( $buttonIsMobile !== $isMobile ) {
+						return '';
+					}
+				}
+				$itemName = htmlspecialchars_decode( $matches[2] );
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
 				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
 

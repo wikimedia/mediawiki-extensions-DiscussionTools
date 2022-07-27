@@ -37,8 +37,9 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		\OutputPage::setupOOUI();
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
-			$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser()
+			$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser(), false
 		);
+		// TODO: Assert mobile output as well
 
 		$actual = MockCommentFormatter::postprocessVisualEnhancements(
 			$actual, $qqxLang, static::getTestUser()->getUser()
