@@ -422,7 +422,7 @@ class CommentFormatter {
 	 * @return string
 	 */
 	public static function postprocessReplyTool(
-		string $text, Language $lang, bool $isMobile = false
+		string $text, Language $lang, bool $isMobile
 	): string {
 		$doc = DOMCompat::newDocument( true );
 		$replyLinkText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();

@@ -16,11 +16,9 @@ class CommentFormatterTest extends IntegrationTestCase {
 	 * @covers ::addDiscussionToolsInternal
 	 */
 	public function testAddDiscussionToolsInternal(
-		string $name, string $title, string $dom, string $expected, string $config, string $data
+		string $name, string $title, string $dom, array $expectedByMode, string $config, string $data
 	): void {
 		$dom = static::getHtml( $dom );
-		$expectedPath = $expected;
-		$expected = static::getText( $expected );
 		$config = static::getJson( $config );
 		$data = static::getJson( $data );
 
@@ -30,39 +28,45 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
-		$actual = $commentFormatter->addDiscussionToolsInternal( $dom, $title );
+		$preprocessed = $commentFormatter->addDiscussionToolsInternal( $dom, $title );
 
 		$mockSubStore = new MockSubscriptionStore();
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
 
 		\OutputPage::setupOOUI();
-		// TODO: Test mobile output as well
-		$actual = MockCommentFormatter::postprocessTopicSubscription(
-			$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser(), false
-		);
 
-		// TODO: Test mobile output as well
-		$actual = MockCommentFormatter::postprocessVisualEnhancements(
-			$actual, $qqxLang, static::getTestUser()->getUser(), false
-		);
+		$modes = [ 'mobile' => true, 'desktop' => false ];
+		foreach ( $modes as $mode => $isMobile ) {
+			$actual = $preprocessed;
+			$expectedPath = $expectedByMode[ $mode ];
+			$expected = static::getText( $expectedPath );
 
-		$actual = MockCommentFormatter::postprocessReplyTool(
-			$actual, $qqxLang
-		);
+			$actual = MockCommentFormatter::postprocessTopicSubscription(
+				$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser(), $isMobile
+			);
 
-		// OOUI ID's are non-deterministic, so strip them from test output
-		$actual = preg_replace( '/ id=[\'"]ooui-php-[0-9]+[\'"]/', '', $actual );
+			$actual = MockCommentFormatter::postprocessVisualEnhancements(
+				$actual, $qqxLang, static::getTestUser()->getUser(), $isMobile
+			);
 
-		// Optionally write updated content to the "reply HTML" files
-		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
-			static::overwriteTextFile( $expectedPath, $actual );
+			$actual = MockCommentFormatter::postprocessReplyTool(
+				$actual, $qqxLang, $isMobile
+			);
+
+			// OOUI ID's are non-deterministic, so strip them from test output
+			$actual = preg_replace( '/ id=[\'"]ooui-php-[0-9]+[\'"]/', '', $actual );
+
+			// Optionally write updated content to the "reply HTML" files
+			if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
+				static::overwriteTextFile( $expectedPath, $actual );
+			}
+
+			static::assertEquals( $expected, $actual, $name );
 		}
-
-		static::assertEquals( $expected, $actual, $name );
 	}
 
 	public function provideAddDiscussionToolsInternal(): array {
-		return static::getJson( '../cases/formattedreply.json' );
+		return static::getJson( '../cases/formatted.json' );
 	}
 
 }
