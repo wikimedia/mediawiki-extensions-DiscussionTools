@@ -275,9 +275,7 @@ class HookUtils {
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
 			RequestContext::getMain()->getRequest()->getRawVal( 'dtenable' );
 
-		// TEMPORARY: Don't enable visualenhancements by query as the HTML in the parser
-		// cache will not have been modified (see CommentFormatter::addTopicContainer)
-		if ( $queryEnable && $feature !== static::VISUALENHANCEMENTS ) {
+		if ( $queryEnable ) {
 			return true;
 		}
 
