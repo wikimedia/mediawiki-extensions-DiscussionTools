@@ -521,10 +521,11 @@ class CommentFormatter {
 	 * @param string $text
 	 * @param Language $lang
 	 * @param UserIdentity $user
+	 * @param bool $isMobile
 	 * @return string
 	 */
 	public static function postprocessVisualEnhancements(
-		string $text, Language $lang, UserIdentity $user
+		string $text, Language $lang, UserIdentity $user, bool $isMobile
 	): string {
 		$text = preg_replace_callback(
 			'/<!--__DTLATESTCOMMENTTHREAD__(.*?)__-->/',
@@ -582,20 +583,28 @@ class CommentFormatter {
 			},
 			$text
 		);
-		$text = preg_replace_callback(
-			'/<!--__DTELLIPSISBUTTON__-->/',
-			static function ( $matches ) {
-				$ellipsis = new ButtonMenuSelectWidget( [
-					'classes' => [ 'ext-discussiontools-init-section-ellipsisButton' ],
-					'framed' => false,
-					'icon' => 'ellipsis',
-					'infusable' => true,
-				] );
+		if ( $isMobile ) {
+			$text = preg_replace_callback(
+				'/<!--__DTELLIPSISBUTTON__-->/',
+				static function ( $matches ) {
+					$ellipsis = new ButtonMenuSelectWidget( [
+						'classes' => [ 'ext-discussiontools-init-section-ellipsisButton' ],
+						'framed' => false,
+						'icon' => 'ellipsis',
+						'infusable' => true,
+					] );
 
-				return $ellipsis->toString();
-			},
-			$text
-		);
+					return $ellipsis->toString();
+				},
+				$text
+			);
+		} else {
+			$text = preg_replace(
+				'/<!--__DTELLIPSISBUTTON__-->/',
+				'',
+				$text
+			);
+		}
 		return $text;
 	}
 
