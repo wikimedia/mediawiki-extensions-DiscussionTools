@@ -9,6 +9,8 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsPageInfo extends ApiBase {
@@ -92,13 +94,25 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	 * @return array
 	 */
 	private static function getThreadItemsHtml( ContentThreadItemSet $threadItemSet ): array {
+		// This function assumes that the start of the ranges associated with
+		// HeadingItems are going to be at the start of their associated
+		// heading node (`<h2>^heading</h2>`), i.e. in the position generated
+		// by getHeadlineNodeAndOffset.
 		$threads = $threadItemSet->getThreads();
-		if ( count( $threads ) > 0 ) {
+		if ( count( $threads ) > 0 && !$threads[0]->isPlaceholderHeading() ) {
 			$firstHeading = $threads[0];
-			if ( !$firstHeading->isPlaceholderHeading() ) {
-				$range = new ImmutableRange( $firstHeading->getRootNode(), 0, $firstHeading->getRootNode(), 0 );
+			$firstRange = $firstHeading->getRange();
+			$rootNode = $firstHeading->getRootNode();
+			// We need a placeholder if there's content between the beginning
+			// of rootnode and the start of firstHeading. An ancestor of the
+			// first heading with a previousSibling is evidence that there's
+			// probably content. If this is giving false positives we could
+			// perhaps use linearWalkBackwards and DomUtils::isContentNode.
+			$closest = CommentUtils::closestElementWithSibling( $firstRange->startContainer, 'previous' );
+			if ( $closest && !$rootNode->isSameNode( $closest ) ) {
+				$range = new ImmutableRange( $rootNode, 0, $rootNode, 0 );
 				$fakeHeading = new ContentHeadingItem( $range, null );
-				$fakeHeading->setRootNode( $firstHeading->getRootNode() );
+				$fakeHeading->setRootNode( $rootNode );
 				$fakeHeading->setName( 'h-' );
 				$fakeHeading->setId( 'h-' );
 				array_unshift( $threads, $fakeHeading );
@@ -113,19 +127,54 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			// need to loop over this to fix up empty sections, because we
 			// need context that's not available inside the array map
 			if ( $item instanceof ContentHeadingItem && count( $item->getReplies() ) === 0 ) {
+				// If there are no replies we want to include whatever's
+				// inside this section as "othercontent". We create a range
+				// that's between the end of this section's heading and the
+				// start of next section's heading. The main difficulty here
+				// is avoiding catching any of the heading's tags within the
+				// range.
 				$nextItem = $threads[ $index + 1 ] ?? false;
 				$startRange = $item->getRange();
+				if ( $item->isPlaceholderHeading() ) {
+					// Placeholders don't have any heading to avoid
+					$startNode = $startRange->startContainer;
+					$startOffset = $startRange->startOffset;
+				} else {
+					$startNode = CommentUtils::closestElementWithSibling( $startRange->endContainer, 'next' );
+					$startNode = $startNode->nextSibling;
+					$startOffset = 0;
+				}
+
+				if ( !$startNode ) {
+					 $startNode = $startRange->endContainer;
+					 $startOffset = $startRange->endOffset;
+				}
+
 				if ( $nextItem ) {
-					$nextRange = $nextItem->getRange();
-					$nextStart = $nextRange->startContainer->previousSibling ?: $nextRange->startContainer;
+					$nextStart = $nextItem->getRange()->startContainer;
+					$endContainer = CommentUtils::closestElementWithSibling( $nextStart, 'previous' );
+					$endContainer = $endContainer && $endContainer->previousSibling ?
+						$endContainer->previousSibling : $nextStart;
+					$endOffset = CommentUtils::childIndexOf( $endContainer );
+					if ( $endContainer instanceof Text ) {
+						// This probably means that there's a wrapping node
+						// e.g. <div>foo\n==heading==\nbar</div>
+						$endOffset += $endContainer->length;
+					} elseif ( $endContainer instanceof Element && $endContainer->tagName === 'section' ) {
+						// if we're in sections, make sure we're selecting the
+						// end of the previous section
+						$endOffset = $endContainer->childNodes->length;
+					} elseif ( $endContainer->parentNode ) {
+						$endContainer = $endContainer->parentNode;
+					}
 					$betweenRange = new ImmutableRange(
-						$startRange->endContainer->nextSibling ?: $startRange->endContainer, 0,
-						$nextStart, $nextStart->childNodes->length ?? 0
+						$startNode, $startOffset,
+						$endContainer ?: $nextStart, $endOffset
 					);
 				} else {
 					// This is the last section, so we want to go to the end of the rootnode
 					$betweenRange = new ImmutableRange(
-						$startRange->endContainer->nextSibling ?: $startRange->endContainer, 0,
+						$startNode, $startOffset,
 						$item->getRootNode(), $item->getRootNode()->childNodes->length
 					);
 				}

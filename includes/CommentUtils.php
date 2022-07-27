@@ -230,6 +230,28 @@ class CommentUtils {
 	}
 
 	/**
+	 * Find closest ancestor element that has sibling nodes
+	 *
+	 * @param Node $node
+	 * @param string $direction Can be 'next', 'previous', or 'either'
+	 * @return Element|null
+	 */
+	public static function closestElementWithSibling( Node $node, string $direction ): ?Element {
+		do {
+			if (
+				$node instanceof Element && (
+					( $node->nextSibling && ( $direction === 'next' || $direction == 'either' ) ) ||
+					( $node->previousSibling && ( $direction === 'previous' || $direction == 'either' ) )
+				)
+			) {
+				return $node;
+			}
+			$node = $node->parentNode;
+		} while ( $node );
+		return null;
+	}
+
+	/**
 	 * Find the transclusion node which rendered the current node, if it exists.
 	 *
 	 * 1. Find the closest ancestor with an 'about' attribute
