@@ -10,10 +10,11 @@
 			"Rodney Araujo",
 			"Tacsipacsi",
 			"Umherirrender",
-			"Verdy p"
+			"Verdy p",
+			"Beginneruser"
 		]
 	},
-	"discussiontools": "{{name}}",
+	"discussiontools": "{{name}}\nThe name of the extension",
 	"discussiontools-autotopicsubpopup-body": "Popup body",
 	"discussiontools-autotopicsubpopup-dismiss": "Label for a button that closes a popup",
 	"discussiontools-autotopicsubpopup-preferences": "Label for a link to Special:Preferences",

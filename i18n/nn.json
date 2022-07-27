@@ -1,10 +1,29 @@
 {
 	"@metadata": {
 		"authors": [
-			"Njardarlogar"
+			"Njardarlogar",
+			"Ranveig"
 		]
 	},
+	"discussiontools": "Diskusjonsverktøy",
+	"discussiontools-autotopicsubpopup-body": "Du vil få ei melding når nokon publiserer ein ny kommentar i tråden. Du kan justere meldingsinnstillingane dine under innstillingar.",
+	"discussiontools-autotopicsubpopup-dismiss": "Greitt, eg forstår",
+	"discussiontools-autotopicsubpopup-preferences": "Endre innstillingar",
+	"discussiontools-autotopicsubpopup-title": "Du abonnerer",
+	"discussiontools-defaultsummary-reply": "Svar",
+	"discussiontools-desc": "Verktøy for å forbetre diskusjonssider.",
+	"discussiontools-emptystate-button": "Start ein ny diskusjon",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Diskusjonssider]] er stader der ein diskuterer korleis innhaldet på {{SITENAME}} kan bli så godt som mogleg. Du kan bruke denne sida for å starte ein diskusjon med andre om korleis [[:{{SUBJECTPAGENAME}}]] kan forbetrast.",
+	"discussiontools-emptystate-title": "Start ein diskusjon om {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title-self": "Velkommen til diskusjonssida di",
+	"discussiontools-emptystate-title-self-anon": "Velkommen til denne diskusjonssida",
+	"discussiontools-emptystate-title-user": "Start ein diskusjon {{GENDER:{{PAGENAME}}|med}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user-anon": "Velkommen til denne diskusjonssida",
 	"discussiontools-error-comment-is-transcluded": "«{{int:discussiontools-replylink}}»-lenkja kan ikkje brukast på denne kommentaren. For å svara på kommentaren lyt du gå inn i endringsmodus for heile sida ved å trykkja på «$1».",
+	"discussiontools-notification-subscribed-new-comment-view": "Vis kommentar",
+	"discussiontools-postedit-confirmation-published": "Kommentaren din vart publisert.",
+	"discussiontools-postedit-confirmation-topicadded": "Emnet ditt vart lagt til.",
+	"discussiontools-preference-autotopicsub": "Abonner automatisk på emne",
 	"discussiontools-replywidget-mention-tool-header": "Finn brukar: $1",
 	"discussiontools-replywidget-mention-tool-title": "Nemn ein brukar",
 	"discussiontools-replywidget-mode-source": "Kjelde",
@@ -13,5 +32,6 @@
 	"discussiontools-replywidget-reply": "Svar",
 	"discussiontools-replywidget-summary": "Samandrag",
 	"discussiontools-replywidget-watchthis": "Legg til sida i [[Special:Watchlist|overvakingslista]] di",
-	"tag-discussiontools-source": "Kjelde"
+	"tag-discussiontools-source": "Kjelde",
+	"tag-discussiontools-visual": "Visuell"
 }
