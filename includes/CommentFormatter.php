@@ -105,14 +105,6 @@ class CommentFormatter {
 		$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONDESKTOP__' . $headingNameEscaped );
 		$headingElement->insertBefore( $subscribeButton, $headingElement->firstChild );
 
-		// TEMPORARY: If enhancements are "unavailable", don't modify the HTML at all
-		// so as to avoid polluting the parser cache. Once the HTML output is more stable
-		// this can be removed.
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
-		if ( $dtConfig->get( 'DiscussionTools_' . HookUtils::VISUALENHANCEMENTS ) === 'unavailable' ) {
-			return;
-		}
-
 		// Visual enhancements: topic containers
 		$summary = $headingItem->getThreadSummary();
 		if ( $summary['commentCount'] ) {
