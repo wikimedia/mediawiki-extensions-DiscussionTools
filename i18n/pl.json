@@ -3,6 +3,7 @@
 		"authors": [
 			"Chrumps",
 			"Matma Rex",
+			"Msz2001",
 			"Nux",
 			"Rail",
 			"The Polish",
@@ -92,6 +93,7 @@
 	"discussiontools-replywidget-preferences": "Preferencje",
 	"discussiontools-replywidget-preview": "Podgląd",
 	"discussiontools-replywidget-reply": "Odpowiedz",
+	"discussiontools-replywidget-return-to-newtopic": "Wróć do nowego wątku",
 	"discussiontools-replywidget-signature-body": "Wikikod $1 został zamieniony na Twój podpis. Aby to wycofać, wciśnij $2. Korzystając z tego narzędzia nie musisz pamiętać o ręcznym wstawianiu podpisu. Twój podpis zostanie dodany automatycznie.",
 	"discussiontools-replywidget-signature-title": "Wykryto składnię podpisu",
 	"discussiontools-replywidget-summary": "Opis",
