@@ -205,7 +205,7 @@ class PageHooks implements
 			);
 		}
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) ) {
-			if ( CommentFormatter::isEmptyTalkPage( $text ) ) {
+			if ( CommentFormatter::isEmptyTalkPage( $text ) && $output->getTitle()->isTalkPage() ) {
 				$output->enableOOUI();
 				$text = CommentFormatter::appendToEmptyTalkPage(
 					$text, $this->getEmptyStateHtml( $output->getContext() )
