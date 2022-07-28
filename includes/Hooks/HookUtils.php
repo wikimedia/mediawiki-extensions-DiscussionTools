@@ -316,11 +316,11 @@ class HookUtils {
 		// Match the logic in MediaWiki core (as defined in SkinTemplate::buildContentNavigationUrlsInternal):
 		// https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/add6d0a0e38167a710fb47fac97ff3004451494c/includes/skins/SkinTemplate.php#1317
 		// * __NONEWSECTIONLINK__ is not present (OutputPage::forceHideNewSectionLink) and...
-		//   - This is the current revision in a talk namespace (Title::isTalkPage) or...
+		//   - This is the current revision of a non-redirect in a talk namespace or...
 		//   - __NEWSECTIONLINK__ is present (OutputPage::showNewSectionLink)
 		return (
 			!static::hasPagePropCached( $title, 'nonewsectionlink' ) &&
-			( ( $title->isTalkPage() && $output->isRevisionCurrent() ) ||
+			( ( $title->isTalkPage() && !$title->isRedirect() && $output->isRevisionCurrent() ) ||
 				static::hasPagePropCached( $title, 'newsectionlink' ) )
 		);
 	}

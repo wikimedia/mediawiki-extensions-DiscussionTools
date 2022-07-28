@@ -204,14 +204,15 @@ class PageHooks implements
 				$text, $lang
 			);
 		}
-		if ( HookUtils::shouldDisplayEmptyState( $output->getContext() ) ) {
-			if ( CommentFormatter::isEmptyTalkPage( $text ) ) {
-				$output->enableOOUI();
-				$text = CommentFormatter::appendToEmptyTalkPage(
-					$text, $this->getEmptyStateHtml( $output->getContext() )
-				);
-				$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
-			}
+		if (
+			CommentFormatter::isEmptyTalkPage( $text ) &&
+			HookUtils::shouldDisplayEmptyState( $output->getContext() )
+		) {
+			$output->enableOOUI();
+			$text = CommentFormatter::appendToEmptyTalkPage(
+				$text, $this->getEmptyStateHtml( $output->getContext() )
+			);
+			$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
 		}
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
 			$output->enableOOUI();
