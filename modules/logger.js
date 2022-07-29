@@ -30,8 +30,9 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 	var // Schema class is provided by ext.eventLogging
 		Schema = mw.eventLog.Schema,
 		user = mw.user,
-		sampleRate = mw.config.get( 'wgDTSchemaEditAttemptStepSamplingRate' ) ||
+		easSampleRate = mw.config.get( 'wgDTSchemaEditAttemptStepSamplingRate' ) ||
 			mw.config.get( 'wgWMESchemaEditAttemptStepSamplingRate' ),
+		vefuSampleRate = mw.config.get( 'wgWMESchemaVisualEditorFeatureUseSamplingRate' ) || easSampleRate,
 		actionPrefixMap = {
 			firstChange: 'first_change',
 			saveIntent: 'save_intent',
@@ -48,7 +49,7 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 		/* eslint-disable camelcase */
 		schemaEditAttemptStep = new Schema(
 			'EditAttemptStep',
-			sampleRate,
+			easSampleRate,
 			// defaults:
 			{
 				page_id: mw.config.get( 'wgArticleId' ),
@@ -69,7 +70,7 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 		),
 		schemaVisualEditorFeatureUse = new Schema(
 			'VisualEditorFeatureUse',
-			sampleRate,
+			vefuSampleRate,
 			// defaults:
 			{
 				user_id: user.getId(),
@@ -174,7 +175,7 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 		delete data.message;
 		// eslint-disable-next-line camelcase
 		data.is_oversample =
-			!mw.eventLog.inSample( 1 / sampleRate );
+			!mw.eventLog.inSample( 1 / easSampleRate );
 
 		if ( data.action === 'abort' && data.abort_type !== 'switchnochange' ) {
 			timing = {};
@@ -220,7 +221,7 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 				(
 					mw.config.get( 'wgDTSchemaEditAttemptStepOversample' ) ||
 					mw.config.get( 'wgWMESchemaEditAttemptStepOversample' )
-				) ? 1 : sampleRate
+				) ? 1 : easSampleRate
 			);
 
 			// T309013: Also log via the Metrics Platform:
@@ -264,7 +265,7 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 			schemaVisualEditorFeatureUse.log( event, (
 				mw.config.get( 'wgDTSchemaEditAttemptStepOversample' ) ||
 				mw.config.get( 'wgWMESchemaEditAttemptStepOversample' )
-			) ? 1 : sampleRate );
+			) ? 1 : vefuSampleRate );
 		}
 
 		if ( data.feature === 'editor-switch' && data.action.indexOf( 'dialog-' ) === -1 ) {
