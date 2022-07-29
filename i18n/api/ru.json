@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Facenapalm",
 			"Jack who built the house",
 			"Kaganer",
 			"Kareyac",
@@ -10,8 +11,12 @@
 			"Wileyfoxyx"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "Сообщение с ID '$1' не найдено.",
+	"apierror-discussiontools-commentid-notfound": "Сообщение с идентификатором '$1' не найдено.",
+	"apierror-discussiontools-commentname-ambiguous": "Найдено несколько сообщений с названием '$1', необходим <var>commentid</var>.",
+	"apierror-discussiontools-commentname-notfound": "Сообщение с названием '$1' не найдено.",
 	"apierror-discussiontools-formtoken-used": "Сообщение уже опубликовано. Чтобы увидеть его, перезагрузите страницу.",
+	"apierror-discussiontools-subscription-failed-add": "Не удалось подписаться на эту тему.",
+	"apierror-discussiontools-subscription-failed-remove": "Не удалось отписаться от этой темы.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID сообщения, на которое ответить. Используется только когда <var>paction</var> имеет значение <var>addcomment</var>. Перезаписывает значение <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-html": "Контент для отправки, как HTML. Не может быть использовано вместе с <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Используется только когда <var>paction</var> имеет значение <var>addtopic</var>.",
