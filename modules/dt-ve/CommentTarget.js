@@ -88,21 +88,30 @@ if ( OO.ui.isMobile() ) {
 
 CommentTarget.static.importRules = ve.copy( CommentTarget.static.importRules );
 
-CommentTarget.static.importRules.external.conversions = ve.extendObject(
-	{},
-	CommentTarget.static.importRules.external.conversions,
-	{
-		mwHeading: 'paragraph'
-	}
-);
-
 CommentTarget.static.importRules.external.blacklist = ve.extendObject(
 	{},
 	CommentTarget.static.importRules.external.blacklist,
 	{
 		// Annotations
 		// Allow pasting external links
-		'link/mwExternal': false,
+		'link/mwExternal': false
+	}
+);
+
+CommentTarget.static.importRulesForReplyTool = ve.copy( CommentTarget.static.importRules );
+
+CommentTarget.static.importRulesForReplyTool.external.conversions = ve.extendObject(
+	{},
+	CommentTarget.static.importRulesForReplyTool.external.conversions,
+	{
+		mwHeading: 'paragraph'
+	}
+);
+
+CommentTarget.static.importRulesForReplyTool.external.blacklist = ve.extendObject(
+	{},
+	CommentTarget.static.importRulesForReplyTool.external.blacklist,
+	{
 		// Strip all table structure
 		mwTable: true,
 		tableSection: true,
@@ -122,8 +131,10 @@ CommentTarget.prototype.getSurfaceConfig = function ( config ) {
 	config = ve.extendObject( { mode: this.defaultMode }, config );
 	return CommentTarget.super.prototype.getSurfaceConfig.call( this, ve.extendObject( {
 		commandRegistry: config.mode === 'source' ? registries.wikitextCommandRegistry : registries.commandRegistry,
-		sequenceRegistry: config.mode === 'source' ? registries.wikitextSequenceRegistry : registries.sequenceRegistry,
+		sequenceRegistry: config.mode === 'source' ? registries.wikitextSequenceRegistry :
+			this.replyWidget.isNewTopic ? registries.sequenceRegistry : registries.sequenceRegistryForReplyTool,
 		dataTransferHandlerFactory: config.mode === 'source' ? ve.ui.wikitextDataTransferHandlerFactory : ve.ui.dataTransferHandlerFactory,
+		importRules: this.replyWidget.isNewTopic ? this.constructor.static.importRules : this.constructor.static.importRulesForReplyTool,
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$overlayContainer: $( '#content' )
 	}, config ) );
