@@ -24,6 +24,7 @@ use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\HeadingItem;
 use MediaWiki\Extension\EventLogging\EventLogging;
@@ -140,6 +141,61 @@ class EventDispatcher {
 	}
 
 	/**
+	 * Get a list of all subscribable headings, grouped by name in case there are duplicates.
+	 *
+	 * @param ContentHeadingItem[] $items
+	 * @return ContentHeadingItem[][]
+	 */
+	private static function groupSubscribableHeadings( array $items ): array {
+		$headings = [];
+		foreach ( $items as $item ) {
+			if ( $item->isSubscribable() ) {
+				$headings[ $item->getName() ][ $item->getId() ] = $item;
+			}
+		}
+		return $headings;
+	}
+
+	/**
+	 * Compare two lists of thread items, return those in $new but not $old.
+	 *
+	 * @param ContentThreadItem[][] $old
+	 * @param ContentThreadItem[][] $new
+	 * @return iterable<ContentThreadItem>
+	 */
+	private static function findAddedItems( array $old, array $new ) {
+		foreach ( $new as $itemName => $nameNewItems ) {
+			// Usually, there will be 0 or 1 $nameNewItems, and 0 $nameOldItems,
+			// and $addedCount will be 0 or 1.
+			//
+			// But when multiple replies are added in one edit, or in multiple edits within the same
+			// minute, there may be more, and the complex logic below tries to make the best guess
+			// as to which items are actually new. See the 'multiple' and 'sametime' test cases.
+			//
+			$nameOldItems = $old[ $itemName ] ?? [];
+			$addedCount = count( $nameNewItems ) - count( $nameOldItems );
+
+			if ( $addedCount > 0 ) {
+				// For any name that occurs more times in new than old, report that many new items,
+				// preferring IDs that did not occur in old, then preferring items lower on the page.
+				foreach ( array_reverse( $nameNewItems ) as $itemId => $newItem ) {
+					if ( $addedCount > 0 && !isset( $nameOldItems[ $itemId ] ) ) {
+						yield $newItem;
+						$addedCount--;
+					}
+				}
+				foreach ( array_reverse( $nameNewItems ) as $itemId => $newItem ) {
+					if ( $addedCount > 0 ) {
+						yield $newItem;
+						$addedCount--;
+					}
+				}
+				Assert::postcondition( $addedCount === 0, 'Reported expected number of items' );
+			}
+		}
+	}
+
+	/**
 	 * Helper for generateEventsForRevision(), separated out for easier testing.
 	 *
 	 * @param array &$events
@@ -160,37 +216,21 @@ class EventDispatcher {
 		$newComments = static::groupCommentsByThreadAndName( $newItemSet->getThreadItems() );
 		$oldComments = static::groupCommentsByThreadAndName( $oldItemSet->getThreadItems() );
 		$addedComments = [];
-
 		foreach ( $newComments as $threadName => $threadNewComments ) {
-			foreach ( $threadNewComments as $commentName => $nameNewComments ) {
-				// Usually, there will be 0 or 1 $nameNewComments, and 0 $nameOldComments,
-				// and $addedCount will be 0 or 1.
-				//
-				// But when multiple replies are added in one edit, or in multiple edits within the same
-				// minute, there may be more, and the complex logic below tries to make the best guess
-				// as to which comments are actually new. See the 'multiple' and 'sametime' test cases.
-				//
-				$nameOldComments = $oldComments[ $threadName ][ $commentName ] ?? [];
-				$addedCount = count( $nameNewComments ) - count( $nameOldComments );
-
-				if ( $addedCount > 0 ) {
-					// For any name that occurs more times in new than old, report that many new comments,
-					// preferring IDs that did not occur in old, then preferring comments lower in the thread.
-					foreach ( array_reverse( $nameNewComments ) as $commentId => $newComment ) {
-						if ( $addedCount > 0 && !isset( $nameOldComments[ $commentId ] ) ) {
-							$addedComments[] = $newComment;
-							$addedCount--;
-						}
-					}
-					foreach ( array_reverse( $nameNewComments ) as $commentId => $newComment ) {
-						if ( $addedCount > 0 ) {
-							$addedComments[] = $newComment;
-							$addedCount--;
-						}
-					}
-					Assert::postcondition( $addedCount === 0, 'Reported expected number of comments' );
-				}
+			$threadOldComments = $oldComments[ $threadName ] ?? [];
+			foreach ( static::findAddedItems( $threadOldComments, $threadNewComments ) as $newComment ) {
+				Assert::precondition( $newComment instanceof ContentCommentItem, 'Must be ContentCommentItem' );
+				$addedComments[] = $newComment;
 			}
+		}
+
+		$newHeadings = static::groupSubscribableHeadings( $newItemSet->getThreads() );
+		$oldHeadings = static::groupSubscribableHeadings( $oldItemSet->getThreads() );
+		$removedHeadings = [];
+		// Pass swapped parameters to findAddedItems() to find *removed* items
+		foreach ( static::findAddedItems( $newHeadings, $oldHeadings ) as $oldHeading ) {
+			Assert::precondition( $oldHeading instanceof ContentHeadingItem, 'Must be ContentHeadingItem' );
+			$removedHeadings[] = $oldHeading;
 		}
 
 		$mentionedUsers = [];
@@ -269,6 +309,21 @@ class EventDispatcher {
 
 			$titleForSubscriptions = Title::castFromPageIdentity( $title )->createFragmentTarget( $heading->getText() );
 			static::addAutoSubscription( $user, $titleForSubscriptions, $heading->getName() );
+		}
+
+		foreach ( $removedHeadings as $oldHeading ) {
+			$events[] = [
+				'type' => 'dt-removed-topic',
+				'title' => $title,
+				'extra' => [
+					'subscribed-comment-name' => $oldHeading->getName(),
+					'heading-id' => $oldHeading->getId(),
+					'heading-name' => $oldHeading->getName(),
+					'section-title' => $oldHeading->getLinkableTitle(),
+					'revid' => $newRevRecord->getId(),
+				],
+				'agent' => $user,
+			];
 		}
 	}
 
