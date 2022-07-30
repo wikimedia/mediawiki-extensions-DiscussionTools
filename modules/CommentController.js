@@ -183,8 +183,6 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 	}
 
 	if (
-		// We can't safely reload content on mobile yet
-		!OO.ui.isMobile() &&
 		this.threadItem instanceof CommentItem &&
 		this.threadItem.getSubscribableHeading()
 	) {
