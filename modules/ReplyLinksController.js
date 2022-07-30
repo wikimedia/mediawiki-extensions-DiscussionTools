@@ -2,6 +2,7 @@ var
 	// LanguageData::getLocalData()
 	parserData = require( './parser/data.json' ),
 	utils = require( './utils.js' );
+
 var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
 function ReplyLinksController( $pageContainer ) {
@@ -47,6 +48,37 @@ function ReplyLinksController( $pageContainer ) {
 		// including links in the page content (from templates) or from gadgets.
 		this.$body.on( 'click keypress', 'a', this.onAnyLinkClickHandler );
 	}
+
+	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', function ( e ) {
+		e.preventDefault();
+
+		var $win = $( window );
+		var scrollTop = $win.scrollTop();
+		var $tmpInput = $( '<input>' )
+			.val( this.href )
+			.addClass( 'noime' )
+			.css( {
+				position: 'fixed',
+				top: 0
+			} )
+			.appendTo( 'body' )
+			.trigger( 'focus' );
+		$tmpInput[ 0 ].setSelectionRange( 0, this.href.length );
+		var copied;
+		try {
+			copied = document.execCommand( 'copy' );
+		} catch ( err ) {
+			copied = false;
+		}
+		if ( copied ) {
+			mw.notify( 'Link to comment copied to clipboard.' );
+		}
+		$tmpInput.remove();
+		// Restore scroll position
+		requestAnimationFrame( function () {
+			$win.scrollTop( scrollTop );
+		} );
+	} );
 }
 
 OO.initClass( ReplyLinksController );

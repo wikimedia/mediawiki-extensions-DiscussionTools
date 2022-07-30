@@ -26,6 +26,9 @@ abstract class IntegrationTestCase extends MediaWikiIntegrationTestCase {
 				// Data used for the tests assumes there are no variants for English.
 				// Language variants are tested using other languages.
 				MainConfigNames::UsePigLatinVariant => false,
+				// Consistent defaults for generating canonical URLs
+				MainConfigNames::Server => 'https://example.org',
+				MainConfigNames::CanonicalServer => 'https://example.org',
 			] + $config );
 		$this->setUserLang( $config['wgContentLanguage'] );
 		$this->setContentLang( $config['wgContentLanguage'] );
