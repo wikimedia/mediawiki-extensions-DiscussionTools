@@ -54,5 +54,13 @@
 		"expected": "../cases/empty-comments/empty-comments-getHTML.json",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "tracked template",
+		"title": "Commons talk:SPARQL query service",
+		"dom": "cases/tracked-template/tracked-template.html",
+		"expected": "../cases/tracked-template/tracked-template-getHTML.json",
+		"config": "../data/commonswiki-config.json",
+		"data": "../data/commonswiki-data.json"
 	}
 ]

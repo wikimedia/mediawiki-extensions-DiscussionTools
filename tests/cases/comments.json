@@ -208,6 +208,14 @@
 		"data": "../data/plwiki-data.json"
 	},
 	{
+		"name": "tracked template",
+		"title": "Commons talk:SPARQL query service",
+		"dom": "cases/tracked-template/tracked-template.html",
+		"expected": "../cases/tracked-template/tracked-template.json",
+		"config": "../data/commonswiki-config.json",
+		"data": "../data/commonswiki-data.json"
+	},
+	{
 		"name": "Signatures in funny places",
 		"title": "Talk:Signatures funny",
 		"dom": "cases/signatures-funny/signatures-funny.html",

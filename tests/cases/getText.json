@@ -46,5 +46,13 @@
 		"expected": "../cases/ckb-big-parsoid/ckb-big-parsoid-getText.json",
 		"config": "../data/ckbwiki-config.json",
 		"data": "../data/ckbwiki-data.json"
+	},
+	{
+		"name": "tracked template",
+		"title": "Commons talk:SPARQL query service",
+		"dom": "cases/tracked-template/tracked-template.html",
+		"expected": "../cases/tracked-template/tracked-template-getText.json",
+		"config": "../data/commonswiki-config.json",
+		"data": "../data/commonswiki-data.json"
 	}
 ]
