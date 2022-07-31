@@ -6,5 +6,5 @@
 	"h-HTTP_500,_server_down?-2021-12-28T00:30:00.000Z": "HTTP 500, server down?",
 	"c-Marsupium-2021-12-28T00:30:00.000Z-HTTP_500,_server_down?": "For me https://wcqs-beta.wmflabs.org/ throws a 500 Internal Server Error: Problem accessing /oauth/check_login. Reason: Request failed. Is this known? Any information when the query service might be back? Thanks in advance for any information or linking to relevant other places!",
 	"c-Shisma-2021-12-31T11:48:00.000Z-Marsupium-2021-12-28T00:30:00.000Z": "@Marsupium: issue was reported in T297454",
-	"c-Marsupium-2021-12-31T12:19:00.000Z-Marsupium-2021-12-28T00:30:00.000Z": "Tracked in Phabricator Task T297454 Thanks for the link!"
+	"c-Marsupium-2021-12-31T12:19:00.000Z-Shisma-2021-12-31T11:48:00.000Z": "Thanks for the link!"
 }
