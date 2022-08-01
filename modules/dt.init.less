@@ -255,9 +255,10 @@ span[ data-mw-comment-start ] {
 // Visual enhancements enabled
 // Reply sub-feature
 .ext-discussiontools-visualenhancements_reply-enabled {
-	.ext-discussiontools-init-replylink-bracket,
-	.ext-discussiontools-init-replylink-reply,
-	.ext-discussiontools-init-replylink-divider {
+	// Handle cached HTML: don't hide if the button is missing (TODO remove the -replybutton selector)
+	.ext-discussiontools-init-replybutton ~ .ext-discussiontools-init-replylink-bracket,
+	.ext-discussiontools-init-replybutton ~ .ext-discussiontools-init-replylink-reply,
+	.ext-discussiontools-init-replybutton ~ .ext-discussiontools-init-replylink-divider {
 		display: none;
 	}
 

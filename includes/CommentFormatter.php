@@ -436,13 +436,13 @@ class CommentFormatter {
 				// Classic reply link
 				$replyLinkButtons = $doc->createElement( 'span' );
 				$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
+				$replyLinkButtons->setAttribute( 'data-mw-comment', $itemJSON );
 
 				// Reply
 				$replyLink = $doc->createElement( 'a' );
 				$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
 				$replyLink->setAttribute( 'role', 'button' );
 				$replyLink->setAttribute( 'tabindex', '0' );
-				$replyLink->setAttribute( 'data-mw-comment', $itemJSON );
 				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
 				$replyLink->setAttribute( 'href', '' );
 				$replyLink->textContent = $replyLinkText;
@@ -466,7 +466,6 @@ class CommentFormatter {
 					'icon' => $isMobile ? 'share' : null,
 					'flags' => [ 'progressive' ],
 					'infusable' => true,
-					'data' => $itemJSON,
 				] );
 
 				DOMCompat::setInnerHTML(

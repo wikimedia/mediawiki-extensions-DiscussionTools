@@ -4,6 +4,15 @@ var
 	utils = require( './utils.js' );
 var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
+// Handle cached HTML: don't fail if the button is missing (TODO remove this)
+var dummy = new OO.ui.ButtonWidget();
+function infuseOrDummy( $node ) {
+	if ( $node.length ) {
+		return OO.ui.infuse( $node );
+	}
+	return dummy;
+}
+
 function ReplyLinksController( $pageContainer ) {
 	var controller = this;
 
@@ -13,22 +22,27 @@ function ReplyLinksController( $pageContainer ) {
 	this.$pageContainer = $pageContainer;
 	this.$body = $( document.body );
 	this.onReplyLinkClickHandler = this.onReplyLinkClick.bind( this );
+	this.onReplyButtonClickHandler = this.onReplyButtonClick.bind( this );
 	this.onAddSectionLinkClickHandler = this.onAddSectionLinkClick.bind( this );
 	this.onAnyLinkClickHandler = this.onAnyLinkClick.bind( this );
 
-	// Reply links
-	this.$replyLinks = $pageContainer.find( '.ext-discussiontools-init-replylink-reply[data-mw-comment]' );
-	this.$replyLinks.on( 'click keypress', this.onReplyLinkClickHandler );
-
-	$pageContainer.find( '.ext-discussiontools-init-replybutton' ).each( function () {
-		var replyButton = OO.ui.infuse( this );
-		var data = JSON.parse( replyButton.getData() );
-		replyButton.on( 'click', function () {
-			controller.emit( 'link-click', data.id, replyButton.$element );
-		} );
+	// Handle cached HTML: move the attribute (TODO remove this)
+	$pageContainer.find( '.ext-discussiontools-init-replylink-reply[data-mw-comment]' ).each( function () {
+		var $oldLink = $( this );
+		var $oldSet = $oldLink.closest( '.ext-discussiontools-init-replylink-buttons' );
+		$oldSet.attr( 'data-mw-comment', $oldLink.attr( 'data-mw-comment' ) );
+		$oldLink.removeAttr( 'data-mw-comment' );
 	} );
 
-	this.$replyLinks = this.$replyLinks.add( '.ext-discussiontools-init-replybutton' );
+	// Reply links
+	this.$replyLinkSets = $pageContainer.find( '.ext-discussiontools-init-replylink-buttons[data-mw-comment]' );
+
+	this.$replyLinkSets.each( function () {
+		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
+		$replyLink.on( 'click keypress', controller.onReplyLinkClickHandler );
+		replyButton.on( 'click', controller.onReplyButtonClickHandler, [ replyButton ] );
+	} );
 
 	// "Add topic" link in the skin interface
 	if ( featuresEnabled.newtopictool ) {
@@ -40,7 +54,7 @@ function ReplyLinksController( $pageContainer ) {
 		}
 		// Handle events on all links that potentially open the new section interface,
 		// including links in the page content (from templates) or from gadgets.
-		this.$body.on( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
+		this.$body.on( 'click keypress', 'a', this.onAnyLinkClickHandler );
 	}
 }
 
@@ -50,7 +64,7 @@ OO.mixinClass( ReplyLinksController, OO.EventEmitter );
 /**
  * @event link-click
  * @param {string} id
- * $@param {jQuery} $link
+ * @param {jQuery} $linkSet
  */
 
 /* Methods */
@@ -63,11 +77,16 @@ ReplyLinksController.prototype.onReplyLinkClick = function ( e ) {
 
 	// Browser plugins (such as Google Translate) may add extra tags inside
 	// the link, so find the containing link tag with the data we need.
-	var $link = $( e.target ).closest( '[data-mw-comment]' );
-	if ( !$link.length ) {
+	var $linkSet = $( e.target ).closest( '[data-mw-comment]' );
+	if ( !$linkSet.length ) {
 		return;
 	}
-	this.emit( 'link-click', $link.data( 'mw-comment' ).id, $link );
+	this.emit( 'link-click', $linkSet.data( 'mw-comment' ).id, $linkSet );
+};
+
+ReplyLinksController.prototype.onReplyButtonClick = function ( button ) {
+	var $linkSet = button.$element.closest( '[data-mw-comment]' );
+	this.emit( 'link-click', $linkSet.data( 'mw-comment' ).id, $linkSet );
 };
 
 ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
@@ -84,6 +103,11 @@ ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
 };
 
 ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
+	if ( $( e.currentTarget ).closest( '[data-mw-comment]' ).length ) {
+		// Handled elsewhere
+		return;
+	}
+
 	// Check query parameters to see if this is really a new topic link
 	var href = e.currentTarget.href;
 	if ( !href ) {
@@ -160,18 +184,19 @@ ReplyLinksController.prototype.isActivationEvent = function ( e ) {
 	return true;
 };
 
-ReplyLinksController.prototype.focusLink = function ( $link ) {
-	if ( $link.is( this.$replyLinks ) ) {
-		$link.trigger( 'focus' );
+ReplyLinksController.prototype.focusLink = function ( $linkSet ) {
+	if ( $linkSet.is( this.$replyLinkSets ) ) {
+		// Focus whichever is visible, the link or the button
+		infuseOrDummy( $linkSet.find( '.ext-discussiontools-init-replybutton' ) ).focus();
+		$linkSet.find( '.ext-discussiontools-init-replylink-reply' ).trigger( 'focus' );
 	}
 };
 
-ReplyLinksController.prototype.setActiveLink = function ( $link ) {
-	this.$activeLink = $link;
+ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
+	this.$activeLink = $linkSet;
 
-	if ( this.$activeLink.is( this.$replyLinks ) ) {
-		this.$activeLink.closest( '.ext-discussiontools-init-replylink-buttons' )
-			.addClass( 'ext-discussiontools-init-replylink-active' );
+	if ( this.$activeLink.is( this.$replyLinkSets ) ) {
+		this.$activeLink.addClass( 'ext-discussiontools-init-replylink-active' );
 	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-addsection' ).addClass( 'selected' );
@@ -180,8 +205,11 @@ ReplyLinksController.prototype.setActiveLink = function ( $link ) {
 	}
 
 	this.$pageContainer.addClass( 'ext-discussiontools-init-replylink-open' );
-	this.$replyLinks.attr( {
-		tabindex: '-1'
+	this.$replyLinkSets.each( function () {
+		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
+		$replyLink.attr( 'tabindex', -1 );
+		replyButton.setTabIndex( -1 );
 	} );
 
 	// Suppress page takeover behavior for VE editing so that our unload
@@ -191,9 +219,8 @@ ReplyLinksController.prototype.setActiveLink = function ( $link ) {
 };
 
 ReplyLinksController.prototype.clearActiveLink = function () {
-	if ( this.$activeLink.is( this.$replyLinks ) ) {
-		this.$activeLink.closest( '.ext-discussiontools-init-replylink-buttons' )
-			.removeClass( 'ext-discussiontools-init-replylink-active' );
+	if ( this.$activeLink.is( this.$replyLinkSets ) ) {
+		this.$activeLink.removeClass( 'ext-discussiontools-init-replylink-active' );
 	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-addsection' ).removeClass( 'selected' );
@@ -202,8 +229,11 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 	}
 
 	this.$pageContainer.removeClass( 'ext-discussiontools-init-replylink-open' );
-	this.$replyLinks.attr( {
-		tabindex: '0'
+	this.$replyLinkSets.each( function () {
+		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
+		$replyLink.attr( 'tabindex', 0 );
+		replyButton.setTabIndex( 0 );
 	} );
 
 	// We deliberately mangled edit links earlier so VE can't steal our page;
@@ -220,12 +250,18 @@ ReplyLinksController.prototype.teardown = function () {
 		this.clearActiveLink();
 	}
 
-	this.$replyLinks.off( 'click keypress', this.onReplyLinkClickHandler );
+	this.$replyLinkSets.each( function () {
+		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
+		$replyLink.off( 'click keypress', this.onReplyLinkClickHandler );
+		replyButton.off( 'click', this.onReplyButtonClickHandler );
+	} );
+
 	if ( featuresEnabled.newtopictool ) {
 		if ( this.$addSectionLink ) {
 			this.$addSectionLink.off( 'click keypress', this.onAddSectionLinkClickHandler );
 		}
-		this.$body.off( 'click keypress', 'a:not( [data-mw-comment] )', this.onAnyLinkClickHandler );
+		this.$body.off( 'click keypress', 'a', this.onAnyLinkClickHandler );
 	}
 };
 
