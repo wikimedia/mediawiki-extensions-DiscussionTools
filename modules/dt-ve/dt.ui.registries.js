@@ -57,43 +57,46 @@ sequenceRegistry.register(
 
 // TODO: Show a warning when typing ~~~~ in wikitext mode?
 
-// Show wikitext warnings for disabled sequences (disabled via excludeCommand):
+// Show wikitext warnings for disabled sequences (disabled via excludeCommands):
+var sequenceRegistryForReplyTool = new ve.ui.SequenceRegistry();
+importRegistry( sequenceRegistry, sequenceRegistryForReplyTool );
 
 // insertTable
-sequenceRegistry.register(
-	new ve.ui.Sequence( 'wikitextTable', 'mwWikitextWarning', '{|' )
+sequenceRegistryForReplyTool.unregister( 'wikitextTable' );
+sequenceRegistryForReplyTool.register(
+	new ve.ui.Sequence( 'wikitextTableWarning', 'mwWikitextWarning', '{|' )
 );
-ve.ui.commandHelpRegistry.unregister( 'table' );
 
 // transclusionFromSequence
-sequenceRegistry.register(
-	new ve.ui.Sequence( 'wikitextTemplate', 'mwWikitextWarning', '{{' )
+sequenceRegistryForReplyTool.unregister( 'wikitextTemplate' );
+sequenceRegistryForReplyTool.register(
+	new ve.ui.Sequence( 'wikitextTemplateWarning', 'mwWikitextWarning', '{{' )
 );
-ve.ui.commandHelpRegistry.unregister( 'template' );
 
-// blockquoteWrap
+// blockquoteWrap - note, this one applies to `sequenceRegistry` as well
+sequenceRegistry.unregister( 'wikitextDescription' );
 sequenceRegistry.register(
-	new ve.ui.Sequence( 'wikitextDescription', 'mwWikitextWarning', [ { type: 'paragraph' }, ':' ] )
+	new ve.ui.Sequence( 'wikitextDescriptionWarning', 'mwWikitextWarning', [ { type: 'paragraph' }, ':' ] )
 );
-ve.ui.commandHelpRegistry.unregister( 'blockquote' );
 
 // heading1-6
 // This sequence doesn't usually have a command as we don't know what
 // heading level is required, but for warnings this doesn't matter.
-sequenceRegistry.register(
-	new ve.ui.Sequence( 'wikitextHeading', 'mwWikitextWarning', [ { type: 'paragraph' }, '=', '=' ] )
+sequenceRegistryForReplyTool.unregister( 'wikitextHeading' );
+sequenceRegistryForReplyTool.register(
+	new ve.ui.Sequence( 'wikitextHeadingWarning', 'mwWikitextWarning', [ { type: 'paragraph' }, '=', '=' ] )
 );
-ve.ui.commandHelpRegistry.unregister( 'heading2' );
 
 // horizontal rule
-sequenceRegistry.register(
-	new ve.ui.Sequence( 'horizontalRule', 'mwWikitextWarning', [ { type: 'paragraph' }, '-', '-', '-', '-' ] )
+sequenceRegistryForReplyTool.unregister( 'horizontalRule' );
+sequenceRegistryForReplyTool.register(
+	new ve.ui.Sequence( 'horizontalRuleWarning', 'mwWikitextWarning', [ { type: 'paragraph' }, '-', '-', '-', '-' ] )
 );
-ve.ui.commandHelpRegistry.unregister( 'horizontalRule' );
 
 module.exports = {
 	commandRegistry: commandRegistry,
 	sequenceRegistry: sequenceRegistry,
+	sequenceRegistryForReplyTool: sequenceRegistryForReplyTool,
 	wikitextCommandRegistry: wikitextCommandRegistry,
 	wikitextSequenceRegistry: wikitextSequenceRegistry
 };

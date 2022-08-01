@@ -11,8 +11,23 @@ var CommentTarget = require( './CommentTarget.js' );
  * @param {Object} [config] Configuration options
  */
 function CommentTargetWidget( replyWidget, config ) {
-	config = $.extend( {}, {
-		excludeCommands: [
+	var excludeCommands = [
+		'blockquoteWrap', // T258194
+		// Disable to allow Tab/Shift+Tab to move focus out of the widget (T172694)
+		'indent',
+		'outdent',
+		// Save commands get loaded from articletarget module, which we load
+		// to get the edit switching tool for mobile
+		'showSave',
+		'showChanges',
+		'showPreview',
+		'saveMinoredit',
+		'saveWatchthis'
+	];
+
+	if ( !replyWidget.isNewTopic ) {
+		excludeCommands = excludeCommands.concat( [
+			// Disable commands for things whose wikitext markup doesn't work when indented
 			'heading1',
 			'heading2',
 			'heading3',
@@ -21,20 +36,12 @@ function CommentTargetWidget( replyWidget, config ) {
 			'heading6',
 			'insertTable',
 			'transclusionFromSequence', // T253667
-			'blockquoteWrap', // T258194
-			// Disable to allow Tab/Shift+Tab to move focus out of the widget (T172694)
-			'indent',
-			'outdent',
-			// Disable preformatted
-			'preformatted',
-			// Save commands get loaded from articletarget module, which we load
-			// to get the edit switching tool for mobile
-			'showSave',
-			'showChanges',
-			'showPreview',
-			'saveMinoredit',
-			'saveWatchthis'
-		]
+			'preformatted'
+		] );
+	}
+
+	config = $.extend( {}, {
+		excludeCommands: excludeCommands
 	}, config );
 
 	this.replyWidget = replyWidget;
