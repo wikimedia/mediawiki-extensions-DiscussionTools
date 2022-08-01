@@ -298,7 +298,7 @@ class HookUtils {
 				// Even though mobile ignores user preferences, VISUALENHANCEMENTS must
 				// still be disabled if is unavailable on the wiki.
 				(
-					$feature === static::VISUALENHANCEMENTS &&
+					( $feature === static::VISUALENHANCEMENTS || $feature === static::VISUALENHANCEMENTS_REPLY ) &&
 					$dtConfig->get( 'DiscussionTools_' . $feature ) !== 'unavailable'
 				)
 			);
