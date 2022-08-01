@@ -295,6 +295,12 @@
 		transition: transform 250ms ease-in, opacity 250ms ease-in;
 		transform: translate( -50%, 30px );
 		opacity: 0;
+		white-space: nowrap;
+
+		.skin-minerva & {
+			// stylelint-disable-next-line declaration-property-unit-disallowed-list
+			font-size: 14px;
+		}
 
 		&-open {
 			transform: translate( -50%, 0 );
