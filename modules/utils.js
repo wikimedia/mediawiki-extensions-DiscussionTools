@@ -117,6 +117,8 @@ function isCommentSeparator( node ) {
 		node.tagName.toLowerCase() === 'hr' ||
 		// {{outdent}} templates
 		node.classList.contains( 'outdent-template' ) ||
+		// {{tracked}} templates (T313097)
+		node.classList.contains( 'mw-trackedTemplate' ) ||
 		// Wikitext definition list term markup (`;`) when used as a fake heading (T265964)
 		(
 			node.nodeName.toLowerCase() === 'dl' &&

@@ -153,6 +153,8 @@ class CommentUtils {
 			strtolower( $node->tagName ) === 'hr' ||
 			// {{outdent}} templates
 			DOMCompat::getClassList( $node )->contains( 'outdent-template' ) ||
+			// {{tracked}} templates (T313097)
+			DOMCompat::getClassList( $node )->contains( 'mw-trackedTemplate' ) ||
 			// Wikitext definition list term markup (`;`) when used as a fake heading (T265964)
 			(
 				strtolower( $node->nodeName ) === 'dl' &&

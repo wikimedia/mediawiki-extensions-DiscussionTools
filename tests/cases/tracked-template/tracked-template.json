@@ -126,29 +126,28 @@
 						"name": "c-Shisma-2021-12-31T11:48:00.000Z",
 						"id": "c-Shisma-2021-12-31T11:48:00.000Z-Marsupium-2021-12-28T00:30:00.000Z",
 						"warnings": [],
-						"replies": []
-					},
-					{
-						"type": "comment",
-						"timestamp": "2021-12-31T12:19:00.000Z",
-						"author": "Marsupium",
-						"range": [
-							"2/8/0/7/0",
-							"2/8/0/9/0/4/31"
-						],
-						"signatureRanges": [
-							[
-								"2/8/0/9/0/1",
-								"2/8/0/9/0/4/31"
-							]
-						],
-						"level": 2,
-						"name": "c-Marsupium-2021-12-31T12:19:00.000Z",
-						"id": "c-Marsupium-2021-12-31T12:19:00.000Z-Marsupium-2021-12-28T00:30:00.000Z",
-						"warnings": [
-							"Comment starts and ends with different indentation"
-						],
-						"replies": []
+						"replies": [
+							{
+								"type": "comment",
+								"timestamp": "2021-12-31T12:19:00.000Z",
+								"author": "Marsupium",
+								"range": [
+									"2/8/0/9/0/0",
+									"2/8/0/9/0/4/31"
+								],
+								"signatureRanges": [
+									[
+										"2/8/0/9/0/1",
+										"2/8/0/9/0/4/31"
+									]
+								],
+								"level": 3,
+								"name": "c-Marsupium-2021-12-31T12:19:00.000Z",
+								"id": "c-Marsupium-2021-12-31T12:19:00.000Z-Shisma-2021-12-31T11:48:00.000Z",
+								"warnings": [],
+								"replies": []
+							}
+						]
 					}
 				]
 			}
