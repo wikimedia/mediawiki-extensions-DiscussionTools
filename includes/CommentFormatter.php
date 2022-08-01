@@ -454,10 +454,6 @@ class CommentFormatter {
 				$bracketOpen->textContent = '[';
 				$bracketClose->textContent = ']';
 
-				$replyLinkButtons->appendChild( $bracketOpen );
-				$replyLinkButtons->appendChild( $replyLink );
-				$replyLinkButtons->appendChild( $bracketClose );
-
 				// Visual enhancements button
 				$replyLinkButton = new \OOUI\ButtonWidget( [
 					'classes' => [ 'ext-discussiontools-init-replybutton' ],
@@ -468,11 +464,10 @@ class CommentFormatter {
 					'infusable' => true,
 				] );
 
-				DOMCompat::setInnerHTML(
-					$replyLinkButtons,
-					$replyLinkButton->toString() .
-					DOMCompat::getInnerHTML( $replyLinkButtons )
-				);
+				DOMCompat::setInnerHTML( $replyLinkButtons, $replyLinkButton->toString() );
+				$replyLinkButtons->appendChild( $bracketOpen );
+				$replyLinkButtons->appendChild( $replyLink );
+				$replyLinkButtons->appendChild( $bracketClose );
 
 				return DOMCompat::getOuterHTML( $replyLinkButtons );
 			},
