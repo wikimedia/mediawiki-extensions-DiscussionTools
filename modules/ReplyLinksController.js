@@ -4,16 +4,6 @@ var
 	utils = require( './utils.js' );
 var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
-// Handle cached HTML: don't fail if the button is missing (TODO remove this)
-var dummy = new OO.ui.ButtonWidget();
-
-function infuseOrDummy( $node ) {
-	if ( featuresEnabled.visualenhancements_reply && $node.length ) {
-		return OO.ui.infuse( $node );
-	}
-	return dummy;
-}
-
 function ReplyLinksController( $pageContainer ) {
 	var controller = this;
 
@@ -27,19 +17,11 @@ function ReplyLinksController( $pageContainer ) {
 	this.onAddSectionLinkClickHandler = this.onAddSectionLinkClick.bind( this );
 	this.onAnyLinkClickHandler = this.onAnyLinkClick.bind( this );
 
-	// Handle cached HTML: move the attribute (TODO remove this)
-	$pageContainer.find( '.ext-discussiontools-init-replylink-reply[data-mw-comment]' ).each( function () {
-		var $oldLink = $( this );
-		var $oldSet = $oldLink.closest( '.ext-discussiontools-init-replylink-buttons' );
-		$oldSet.attr( 'data-mw-comment', $oldLink.attr( 'data-mw-comment' ) );
-		$oldLink.removeAttr( 'data-mw-comment' );
-	} );
-
 	// Reply links
 	this.$replyLinkSets = $pageContainer.find( '.ext-discussiontools-init-replylink-buttons[data-mw-comment]' );
 
 	this.$replyLinkSets.each( function () {
-		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.on( 'click keypress', controller.onReplyLinkClickHandler );
 		replyButton.on( 'click', controller.onReplyButtonClickHandler, [ replyButton ] );
@@ -188,7 +170,7 @@ ReplyLinksController.prototype.isActivationEvent = function ( e ) {
 ReplyLinksController.prototype.focusLink = function ( $linkSet ) {
 	if ( $linkSet.is( this.$replyLinkSets ) ) {
 		// Focus whichever is visible, the link or the button
-		infuseOrDummy( $linkSet.find( '.ext-discussiontools-init-replybutton' ) ).focus();
+		OO.ui.infuse( $linkSet.find( '.ext-discussiontools-init-replybutton' ) ).focus();
 		$linkSet.find( '.ext-discussiontools-init-replylink-reply' ).trigger( 'focus' );
 	}
 };
@@ -224,7 +206,7 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 
 	this.$pageContainer.addClass( 'ext-discussiontools-init-replylink-open' );
 	this.$replyLinkSets.each( function () {
-		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.attr( 'tabindex', -1 );
 		if ( replyButton === activeButton ) {
@@ -260,7 +242,7 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 
 	this.$pageContainer.removeClass( 'ext-discussiontools-init-replylink-open' );
 	this.$replyLinkSets.each( function () {
-		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.attr( 'tabindex', 0 );
 		if ( replyButton === activeButton ) {
@@ -287,7 +269,7 @@ ReplyLinksController.prototype.teardown = function () {
 	}
 
 	this.$replyLinkSets.each( function () {
-		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.off( 'click keypress', controller.onReplyLinkClickHandler );
 		replyButton.off( 'click', controller.onReplyButtonClickHandler );
