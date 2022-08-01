@@ -96,6 +96,8 @@
 	"discussiontools-replywidget-preferences": "পছন্দ",
 	"discussiontools-replywidget-preview": "প্রাকদর্শন",
 	"discussiontools-replywidget-reply": "উত্তর দিন",
+	"discussiontools-replywidget-return-to-newtopic": "নতুন আলোচনায় ফিরে যান",
+	"discussiontools-replywidget-return-to-reply": "উত্তরে ফিরে যান",
 	"discussiontools-replywidget-signature-body": "$1 কে আপনার স্বাক্ষর হিসেবে রূপান্তরিত করা হয়েছে। এটিকে পূর্বাবস্থায় আনতে, $2 টিপুন। মনে রাখুন যে এই সরঞ্জামটি দিয়ে মন্তব্য করলে আপনাকে স্বাক্ষর যোগ করতে হবে না। আপনার স্বাক্ষর স্বয়ংক্রিয়ভাবে যোগ করা হবে।",
 	"discussiontools-replywidget-signature-title": "স্বাক্ষরের মার্কআপ সনাক্ত হয়েছে",
 	"discussiontools-replywidget-summary": "সারাংশ",

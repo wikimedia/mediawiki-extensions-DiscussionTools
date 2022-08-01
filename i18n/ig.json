@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Oby Ezeilo",
 			"Olugold"
 		]
@@ -10,9 +11,9 @@
 	"discussiontools-autotopicsubpopup-preferences": "Dezie ebe mmasị dị iche iche",
 	"discussiontools-autotopicsubpopup-title": "Edebanyela aha gị",
 	"discussiontools-defaultsummary-reply": "Zaghachi",
-	"discussiontools-desc": "Akọrọngwa eji akwado ebe akpamnkata",
+	"discussiontools-desc": "Akọrọngwa eji akwado ebe akpamnkata.",
 	"discussiontools-emptystate-button": "Bido ị kpa nkata",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Talk pages]] bụ ebe ndị mmadụ na-akpa nkata otu ihe dị na {{SITENAME}} ga-esi bụrụ ọkacha mma. Ị nwere ike gị na ndị ọzọ ebido ịkpa nkata\notu a ga-esi kwalite [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Talk pages]] bụ ebe ndị mmadụ na-akpa nkata otu ihe dị na {{SITENAME}} ga-esi bụrụ ọkacha mma. Ị nwere ike gị na ndị ọzọ ebido ịkpa nkata otu a ga-esi kwalite [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-desc-self": "Ndị nọ na{{SITENAME}} nwere ike iji nke  [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|talk page]] wee gosi oha ozi gị, a ga-ezitere gi ozi mgbe ha mere nke a.",
 	"discussiontools-emptystate-desc-self-anon": "Ndị nọ na {{SITENAME}} ga eji nke a [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|talk page]] wee zie ọha mmadụ  ọzị maka ndezi eji IP Adịresị iji arụ ọrụ ugbu a.\n\nỌtụtụ IP adịresị na-agbanwe mgbe ụfọdụ, ma ọtụtụ ndị ọzọ na-eji ya. Ị nwere ike  [$1 create an account] maọbụ [$2 log in] iji gbochie mgbagoju anya n'ọdị n'ihu n;etiti ndị pụgoro n'ebe ndebanye ihe. Ị mepụta akaụntu na-ezokwa IP adịresị gị.",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Talk pages]] bụ ebe ndị mmadụ na-akpa otu aga-esi mee ihe ndịna dị na {{SITENAME}} ka ọ bụrụ ọ kacha mma. Bido nkata ọhụụ iji nwee mmekọọ maọbụ jikọọ {{GENDER:{{PAGENAME}}|with}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Ihe ọ bụla ị kwuru ebe a, onye ọbụla ga-ahụ ya.",
@@ -20,12 +21,12 @@
 	"discussiontools-emptystate-title": "Bido mkparitaụka maka {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Nnọọ n'ihu akwụkwọ gị maka ị gwa gị okwu",
 	"discussiontools-emptystate-title-self-anon": "Nnọọ n'ihu akwụkwụ nke ịgwa mmadụ okwu",
-	"discussiontools-emptystate-title-user": " Bido mkparịtaụka {{GENDER:{{PAGENAME}}|with}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "Bido mkparịtaụka {{GENDER:{{PAGENAME}}|with}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Nnọọ n'ihu akwụkwọ agwam mmadụ okwu",
 	"discussiontools-error-comment-conflict": " E nweghị ike ịchekwa ihe ị kwuru makana onye ọzọ ekwuola oge ị chọrọ i kwu nke gị. Biko kwuo ọzọ, maọbụ buputagharịa ihu akwụkwọ ije hụ okwu ikpeazu e kwuru",
 	"discussiontools-error-comment-disappeared": "Ị hụghị okwu ị na-azaghachị n'ihu akwụkwọ a. Ọ nwere ike ọ bụrụ na ehichala ya maọbụ wega ya n'ihu akwụkwọ ọzọ.",
 	"discussiontools-error-comment-disappeared-reload": "Biko bipụtagharịa ihu akwụkwọ a",
-	"discussiontools-error-comment-is-transcluded": "Agaghị enwe ike iji nkokọ a\"{{int:discussiontools-replylink}}\" wee zaghachi okwu a. Iji zaghachi okwu a biko were otu ibe akwụkwọ eji eme ndezi site n'ịpị aka na\"$1\".",
+	"discussiontools-error-comment-is-transcluded": "Agaghị enwe ike iji nkokọ a\"{{int:discussiontools-replylink}}\" wee zaghachi okwu a. Iji zaghachi okwu a biko were otu ibe akwụkwọ eji eme ndezi site n'ịpị aka na \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "Agaghị eji nkokọ nke a \"{{int:discussiontools-replylink}}\" azaghachi okwu a maka na-esi n'ihu akwụkwọ ọzọ weta ya. Ị ịzaghachi biko gaa na ebe a: [[$1]]",
 	"discussiontools-error-comment-not-saved": "Agaghị enwe ike ibipụta ihe ị dere n'ihu akwụkwọ nke ọhụụ. I ji hụụ mgbanwe ọhuụ, kọpịrị ihe ị dere tinye ma  browza  ka o wee buputagharịa ihu akwụkọ a ọzọ.",
 	"discussiontools-error-lint": "Agaghị enwe ike ịzaghachi ihe ndị e  kwuru n'ihu akwụkwọ a n'ihi enwere ndeghe na Wikitext. Ị nwere ike ịmụta maka ndeghe site [$1 reading the documentation], jụọ maka enye m aka site [$2 posting here] maọbụ ịdezi ndeghe a site [$3 opening the full page editor].",
@@ -105,7 +106,7 @@
 	"discussiontools-topicsubscription-pager-topic": "Isiokwu",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Wepụ aha",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Dezie ndenye aha gị",
-	"discussiontools-topicsubscription-special-intro": "Ị denye aha ga-ekwe ka ị soro n'isiokwu a na-akpa maka ya n'ihu akwụkwọ akpamnkata. Mgbe ọbụla mmadụ zaghachiri isiokwu , ị ga-enweta ozi.\n\nDozie otu na ebe ị ga-enweta ozi ndị a na [[Special:Preferences#mw-prefsection-echo|your preferences]].",
+	"discussiontools-topicsubscription-special-intro": "Ị denye aha ga-ekwe ka ị soro n'isiokwu a na-akpa maka ya n'ihu akwụkwọ akpamnkata. Mgbe ọbụla mmadụ zaghachiri isiokwu, ị ga-enweta ozi.\n\nDozie otu na ebe ị ga-enweta ozi ndị a na [[Special:Preferences#mw-prefsection-echo|your preferences]].",
 	"discussiontools-topicsubscription-special-title": "Ndenye aha maka Isiokwu",
 	"echo-category-title-dt-subscription": "Ihu akwụkwọ i kwu okwu/mmarịta ụka {{PLURAL:$1|subscription|subscriptions}}",
 	"echo-pref-tooltip-dt-subscription": "Mee ka m mara mgbe mmadụ zitere okwu ọhụụ n'isiokwu m tinyere aha m",
@@ -115,7 +116,6 @@
 	"tag-discussiontools-edit-description": "onye ọrụ ji akọrọngwa mkparịta ụka dezie okwu di adị",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} New topic]",
 	"tag-discussiontools-newtopic-description": "Onye ọrụ ji akọrọngwa mkparịta ụka tinye isiokwu ọhụụ",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Reply]",
 	"tag-discussiontools-reply-description": "Onye ọrụ ji akọrọngwa mkparịta ụka wee zaghachi okwu",
 	"tag-discussiontools-source": "Ebe nsinweta",
 	"tag-discussiontools-source-description": "Akọrọngwa mkparịta ụka dị mode nsinweta",
