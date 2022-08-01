@@ -32,10 +32,10 @@
 		"data": "../data/itwiki-data.json"
 	},
 	{
-		"name": "transclusions - comment partially template-generated 3",
+		"name": "tracked template",
 		"title": "Commons talk:SPARQL query service",
-		"dom": "cases/transclusions5/transclusions5.html",
-		"expected": "../cases/transclusions5/transclusions5-transcludedFrom.json",
+		"dom": "cases/tracked-template/tracked-template.html",
+		"expected": "../cases/tracked-template/tracked-template-transcludedFrom.json",
 		"config": "../data/commonswiki-config.json",
 		"data": "../data/commonswiki-data.json"
 	},
