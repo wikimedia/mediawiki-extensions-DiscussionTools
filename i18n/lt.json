@@ -2,13 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Eitvys200",
-			"Tomasdd"
+			"Tomasdd",
+			"Homo",
+			"Hugo.arg"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Atsakyti",
+	"discussiontools-desc": "Įrankiai, skirti pagerinti aptarimų puslapius.",
 	"discussiontools-preference-label": "Diskusijų įrankiai",
 	"discussiontools-replylink": "atsakyti",
 	"discussiontools-replywidget-cancel": "Atšaukti",
 	"discussiontools-replywidget-loading": "Kraunasi...",
+	"discussiontools-replywidget-mention-tool-title": "Paminėti naudotoją",
+	"discussiontools-replywidget-mode-source": "Šaltinis",
+	"discussiontools-replywidget-mode-visual": "Vizualus",
+	"discussiontools-replywidget-placeholder-reply": "Atsakyti {{BIDI: $1 }}",
+	"discussiontools-replywidget-preview": "Peržiūra",
 	"discussiontools-replywidget-reply": "Atsakyti"
 }

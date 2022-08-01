@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Xuacu",
-			"Tokvo"
+			"Tokvo",
+			"Fitoschido"
 		]
 	},
 	"discussiontools": "Ferramientes d'alderique",
@@ -11,5 +12,6 @@
 	"discussiontools-replylink": "contestar",
 	"discussiontools-replywidget-cancel": "Encaboxar",
 	"discussiontools-replywidget-loading": "Cargando...",
+	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-reply": "Contestar"
 }

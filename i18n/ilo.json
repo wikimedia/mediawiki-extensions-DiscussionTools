@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lam-ang"
+		]
+	},
+	"discussiontools-replylink": "sungbat",
+	"discussiontools-replywidget-cancel": "Ukasen",
+	"discussiontools-replywidget-mode-source": "Taudan",
+	"discussiontools-replywidget-mode-visual": "Bisual",
+	"discussiontools-replywidget-placeholder-reply": "Sumungbat ken ni {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Sungbat"
+}

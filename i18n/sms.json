@@ -6,6 +6,8 @@
 	},
 	"discussiontools-defaultsummary-reply": "Vasttõs",
 	"discussiontools-replylink": "vaʹstted",
+	"discussiontools-replywidget-mode-source": "Wikiteʹkstt",
+	"discussiontools-replywidget-mode-visual": "Visuaalʼlaž",
 	"discussiontools-replywidget-reply": "Vaʹstted",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]"
 }
