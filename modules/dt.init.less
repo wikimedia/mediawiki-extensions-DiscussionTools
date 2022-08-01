@@ -86,20 +86,6 @@ span[ data-mw-comment-start ] {
 		transform: scaleX( -1 );
 	}
 
-	// Make OOUI buttons look disabled. To do this properly would require us to
-	// infuse every button which would be slow.
-	.ext-discussiontools-init-replylink-open & > .ext-discussiontools-init-replybutton {
-		// stylelint-disable-next-line plugin/no-unsupported-browser-features
-		filter: saturate( 0 );
-		opacity: 0.8;
-		pointer-events: none;
-	}
-
-	&.ext-discussiontools-init-replylink-active > .ext-discussiontools-init-replybutton {
-		// stylelint-disable-next-line plugin/no-unsupported-browser-features
-		filter: saturate( 0 ) brightness( 0 );
-	}
-
 	@media print {
 		display: none;
 	}

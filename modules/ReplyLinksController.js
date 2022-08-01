@@ -195,8 +195,10 @@ ReplyLinksController.prototype.focusLink = function ( $linkSet ) {
 ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 	this.$activeLink = $linkSet;
 
+	var activeButton;
 	if ( this.$activeLink.is( this.$replyLinkSets ) ) {
 		this.$activeLink.addClass( 'ext-discussiontools-init-replylink-active' );
+		activeButton = OO.ui.infuse( this.$activeLink.find( '.ext-discussiontools-init-replybutton' ) );
 	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-addsection' ).addClass( 'selected' );
@@ -211,7 +213,11 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.attr( 'tabindex', -1 );
-		replyButton.setTabIndex( -1 );
+		if ( replyButton === activeButton ) {
+			replyButton.setFlags( { progressive: false } );
+		} else {
+			replyButton.setDisabled( true );
+		}
 	} );
 
 	// Suppress page takeover behavior for VE editing so that our unload
@@ -221,8 +227,10 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 };
 
 ReplyLinksController.prototype.clearActiveLink = function () {
+	var activeButton;
 	if ( this.$activeLink.is( this.$replyLinkSets ) ) {
 		this.$activeLink.removeClass( 'ext-discussiontools-init-replylink-active' );
+		activeButton = OO.ui.infuse( this.$activeLink.find( '.ext-discussiontools-init-replybutton' ) );
 	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-addsection' ).removeClass( 'selected' );
@@ -237,7 +245,11 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.attr( 'tabindex', 0 );
-		replyButton.setTabIndex( 0 );
+		if ( replyButton === activeButton ) {
+			replyButton.setFlags( { progressive: true } );
+		} else {
+			replyButton.setDisabled( false );
+		}
 	} );
 
 	// We deliberately mangled edit links earlier so VE can't steal our page;
