@@ -82,6 +82,7 @@
 	"discussiontools-preference-topicsubscription-help": "Cela vous permettra de vous inscrire pour recevoir des notifications sur les commentaires sur des sujets individuels.",
 	"discussiontools-preference-visualenhancements": "Afficher l’activité de la discussion",
 	"discussiontools-preference-visualenhancements-help": "Cela activera une nouvelle apparence de la page de discussion qui comprenant des informations sur l’activité dans chaque discussion.",
+	"discussiontools-replybutton": "Répondre",
 	"discussiontools-replylink": "répondre",
 	"discussiontools-replywidget-abandon": "Êtes-vous sûr(e) de vouloir abandonner le commentaire que vous êtes en train d’écrire ?",
 	"discussiontools-replywidget-abandon-discard": "Abandonner le commentaire",
