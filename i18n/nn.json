@@ -1,15 +1,43 @@
 {
 	"@metadata": {
 		"authors": [
-			"Njardarlogar"
+			"Njardarlogar",
+			"Ranveig"
 		]
 	},
+	"discussiontools": "Diskusjonsverktøy",
+	"discussiontools-defaultsummary-reply": "Svar",
+	"discussiontools-desc": "Verktøy for å forbetre diskusjonssider.",
+	"discussiontools-emptystate-button": "Start ein diskusjon",
+	"discussiontools-emptystate-title-self": "Velkommen til diskusjonssida di",
+	"discussiontools-emptystate-title-self-anon": "Velkommen til denne diskusjonssida",
+	"discussiontools-emptystate-title-user-anon": "Velkommen til denne diskusjonssida",
+	"discussiontools-error-comment-conflict": "Kommentaren din kunne ikkje bli lagra, kanskje fordi nokon andre kommenterte samtidig som du gjorde det. Prøv igjen eller last sida på nytt for å visa dei siste kommentarane.",
 	"discussiontools-error-comment-is-transcluded": "«{{int:discussiontools-replylink}}»-lenkja kan ikkje brukast på denne kommentaren. For å svara på kommentaren lyt du gå inn i endringsmodus for heile sida ved å trykkja på «$1».",
+	"discussiontools-error-comment-is-transcluded-title": "Lenka «{{int:discussiontools-replylink}}» kan ikkje brukast til å svara på denne kommentaren fordi ho er lasta inn frå ei anna side. Gå til [[$1]] for å svara.",
+	"discussiontools-error-comment-not-saved": "Kommentaren din kunne ikkje publiserast på den nyaste versjonen av sida. For å sjå dei siste endringane, kopier kommentaren din og bruk nettlesaren for å lasta sidan på nytt.",
+	"discussiontools-error-lint": "Det er ikkje mogleg å svara på kommentarar på denne sida på grunn av ein feil i wikiteksten. Du kan læra om denne feilen ved å [$1 lesa dokumentasjonen], eller be om hjelp ved å [$2 skriva her] eller fiksa feilen ved å [$3 opna vanleg redigeringsmodus].",
+	"discussiontools-error-noswitchtove": "Orsak, bytting til visuell modus verker ikkje, fordi det blei oppdata <b>$1</b> i kommentaren du skreiv inn. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Les meir].",
+	"discussiontools-error-noswitchtove-extension": "utvidings- eller referansesyntaks",
+	"discussiontools-error-noswitchtove-table": "tabellsyntaks",
+	"discussiontools-error-noswitchtove-template": "malsyntaks",
+	"discussiontools-error-noswitchtove-title": "Visuell modus deaktivert",
+	"discussiontools-newtopic-missing-title": "Oppgje ein tittel for diskusjonen. Viss du trykker på «{{int:discussiontools-replywidget-newtopic}}» blir emnet lagt til utan tittel.",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarte}} i «<strong>$4</strong>».",
+	"discussiontools-notification-subscribed-new-comment-view": "Vis kommentar",
+	"discussiontools-postedit-confirmation-published": "Kommentaren din vart publisert.",
+	"discussiontools-postedit-confirmation-topicadded": "Emnet ditt vart lagt til.",
 	"discussiontools-replywidget-mention-tool-header": "Finn brukar: $1",
 	"discussiontools-replywidget-mention-tool-title": "Nemn ein brukar",
 	"discussiontools-replywidget-mode-source": "Kjelde",
+	"discussiontools-replywidget-mode-visual": "Visuell",
+	"discussiontools-replywidget-newtopic": "Nytt emne",
+	"discussiontools-replywidget-placeholder-newtopic": "Skildring",
+	"discussiontools-replywidget-placeholder-reply": "Svar til {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Førehandsvising",
 	"discussiontools-replywidget-reply": "Svar",
 	"discussiontools-replywidget-summary": "Samandrag",
-	"tag-discussiontools-source": "Kjelde"
+	"tag-discussiontools-source": "Kjelde",
+	"tag-discussiontools-visual": "Visuell",
+	"tag-discussiontools-visual-description": "DiscussionTools var i modus for visuell redigering"
 }

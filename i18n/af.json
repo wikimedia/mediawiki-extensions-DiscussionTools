@@ -4,8 +4,10 @@
 			"Rooiratel"
 		]
 	},
+	"discussiontools-emptystate-button": "Begin 'n bespreking",
 	"discussiontools-replylink": "antwoord",
 	"discussiontools-replywidget-cancel": "Kanselleer",
+	"discussiontools-replywidget-loading": "Besig om te laai...",
 	"discussiontools-replywidget-mode-source": "Bron",
 	"discussiontools-replywidget-mode-visual": "Visueel",
 	"discussiontools-replywidget-placeholder-reply": "Antwoord op {{BIDI:$1}}",

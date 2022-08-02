@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"J budissin"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Wotmołwić",
+	"discussiontools-desc": "Graty k polěpšenju diskusijnych stronow.",
+	"discussiontools-emptystate-button": "Nowu diskusiju započeć",
+	"discussiontools-emptystate-title-self": "Witaj na twojej diskusijnej stronje",
+	"discussiontools-emptystate-title-self-anon": "Witaj na tutej diskusijnej stronje",
+	"discussiontools-notification-subscribed-new-comment-view": "Komentar pokazać",
+	"discussiontools-postedit-confirmation-published": "Twój komentar je so wozjewił.",
+	"discussiontools-postedit-confirmation-topicadded": "Twoja tema je so dodała.",
+	"discussiontools-replywidget-abandon-keep": "Dale pisać",
+	"discussiontools-replywidget-abandontopic-keep": "Dale pisać",
+	"discussiontools-replywidget-advanced": "Rozšěrjene",
+	"discussiontools-replywidget-cancel": "Přetorhnyć",
+	"discussiontools-replywidget-loading": "Začituje so...",
+	"discussiontools-replywidget-mention-tool-title": "Wužiwarja naspomnić",
+	"discussiontools-replywidget-mode-source": "Žórło",
+	"discussiontools-replywidget-newtopic": "Temu dodać",
+	"discussiontools-replywidget-placeholder-newtopic": "Wopisanje",
+	"discussiontools-replywidget-preview": "Přehlad",
+	"discussiontools-replywidget-reply": "Wotmołwić",
+	"discussiontools-replywidget-summary": "Zjeće",
+	"discussiontools-replywidget-transcluded": "Twój komentar so na [[$1]] składuje.",
+	"discussiontools-topicsubscription-button-subscribe": "abonować",
+	"discussiontools-topicsubscription-button-subscribe-tooltip": "Wotskazać, zo bychu so zdźělenki wo nowych komentarach pósłali.",
+	"discussiontools-topicsubscription-button-unsubscribe": "wotskazać",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Wotskazać",
+	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Tutu temu wotskazać?",
+	"tag-discussiontools-source": "Žórło"
+}

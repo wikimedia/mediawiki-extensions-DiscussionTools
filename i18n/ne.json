@@ -4,10 +4,12 @@
 			"Ed g2s",
 			"Matma Rex",
 			"पर्वत सुबेदी",
-			"हिमाल सुबेदी"
+			"हिमाल सुबेदी",
+			"Bada Kaji"
 		]
 	},
 	"discussiontools-desc": "वार्तालाप पृष्ठहरू बढाउनका लागि प्रयाेग गरिने उपकरणहरू",
+	"discussiontools-emptystate-button": "छलफल सुरु गर्नुहोस्",
 	"discussiontools-preference-label": "छलफल उपकरण",
 	"discussiontools-replywidget-preview": "पूर्वावलोकन",
 	"tag-discussiontools-description": "छलफल उपकरण प्रयाेग गरि गरिएका सम्पादन",
