@@ -689,7 +689,7 @@ ReplyWidget.prototype.tryTeardown = function () {
 		} );
 	}
 	promise = promise.then( function () {
-		widget.teardown( true );
+		widget.teardown( 'abandoned' );
 	} );
 	return promise;
 };
