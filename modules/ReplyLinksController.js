@@ -6,8 +6,9 @@ var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
 // Handle cached HTML: don't fail if the button is missing (TODO remove this)
 var dummy = new OO.ui.ButtonWidget();
+
 function infuseOrDummy( $node ) {
-	if ( $node.length ) {
+	if ( featuresEnabled.visualenhancements_reply && $node.length ) {
 		return OO.ui.infuse( $node );
 	}
 	return dummy;
