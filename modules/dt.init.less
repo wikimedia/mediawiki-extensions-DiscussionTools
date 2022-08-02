@@ -635,3 +635,11 @@ span[ data-mw-comment-start ] {
 		text-align: center;
 	}
 }
+
+// HACK: Fake disabled styles for the .mw-ui-button in Vector sticky header (T307726)
+.ext-discussiontools-fake-disabled {
+	// stylelint-disable-next-line plugin/no-unsupported-browser-features
+	filter: saturate( 0 );
+	opacity: 0.8;
+	pointer-events: none;
+}

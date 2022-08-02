@@ -201,6 +201,8 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-addsection' ).addClass( 'selected' );
 		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#ca-addsection-sticky-header' ).addClass( 'ext-discussiontools-fake-disabled' );
+		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-view' ).removeClass( 'selected' );
 	}
 
@@ -224,6 +226,8 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-addsection' ).removeClass( 'selected' );
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#ca-addsection-sticky-header' ).removeClass( 'ext-discussiontools-fake-disabled' );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-view' ).addClass( 'selected' );
 	}
