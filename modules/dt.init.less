@@ -7,6 +7,16 @@ span[ data-mw-comment-start ] {
 	top: -1em;
 }
 
+// stylelint-disable-next-line selector-list-comma-newline-after
+h1, h2, h3, h4, h5, h6 {
+	span[ data-mw-comment-end ] {
+		// Support: Safari
+		// Markers at the end of a line and before an inline-block (e.g. edit icon)
+		// can cause text to stop wrapping properly. (T298371)
+		display: inline-block;
+	}
+}
+
 .ext-discussiontools-init-replylink-buttons {
 	user-select: none;
 	display: none;
