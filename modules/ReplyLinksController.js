@@ -263,6 +263,8 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 };
 
 ReplyLinksController.prototype.teardown = function () {
+	var controller = this;
+
 	if ( this.$activeLink ) {
 		this.clearActiveLink();
 	}
@@ -270,8 +272,8 @@ ReplyLinksController.prototype.teardown = function () {
 	this.$replyLinkSets.each( function () {
 		var replyButton = infuseOrDummy( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
-		$replyLink.off( 'click keypress', this.onReplyLinkClickHandler );
-		replyButton.off( 'click', this.onReplyButtonClickHandler );
+		$replyLink.off( 'click keypress', controller.onReplyLinkClickHandler );
+		replyButton.off( 'click', controller.onReplyButtonClickHandler );
 	} );
 
 	if ( featuresEnabled.newtopictool ) {
