@@ -65,6 +65,7 @@
 	"discussiontools-preference-summary": "Puoi avere maggiori informazioni su questa funzionalità nel [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary riepilogo delle funzionalità].",
 	"discussiontools-preference-topicsubscription": "Abilita iscrizione alle discussioni",
 	"discussiontools-preference-topicsubscription-help": "Consente di ricevere notifiche di nuovi commenti a discussioni specifiche.",
+	"discussiontools-replybutton": "Rispondi",
 	"discussiontools-replylink": "rispondi",
 	"discussiontools-replywidget-abandon": "Confermi di voler abbandonare il commento che stavi scrivendo?",
 	"discussiontools-replywidget-abandon-discard": "Annulla commento",

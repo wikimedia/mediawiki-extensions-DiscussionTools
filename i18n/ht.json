@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"discussiontools-replylink": "reponn",
+	"discussiontools-replywidget-cancel": "Anile",
+	"discussiontools-replywidget-mode-source": "Kòd",
+	"discussiontools-replywidget-mode-visual": "Vizyèl",
+	"discussiontools-replywidget-placeholder-reply": "Repons pou {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Reponn"
+}
