@@ -12,6 +12,7 @@
 	"discussiontools": "चर्चा उपकरण",
 	"discussiontools-defaultsummary-reply": "उत्तर",
 	"discussiontools-desc": "चर्चा पृष्ठ सुधार के लिए उपकरण",
+	"discussiontools-emptystate-desc": "{{SITENAME}} की सामग्री को यथासम्भव रूप से सर्वश्रेष्ठ बनाने के लिए लोगों द्वारा जहाँ पर चर्चा की जाती है उन्हें [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|वार्ता पृष्ठ]] कहा जाता है। [[:{{SUBJECTPAGENAME}}]] में सुधार कैसे करें, इसपर अन्यों के साथ चर्चा आरम्भ करने के लिए आप इस पृष्ठ को काम में ले सकते हैं।",
 	"discussiontools-newtopic-placeholder-title": "शीर्षक",
 	"discussiontools-preference-description": "चर्चा पृष्ठों पर [https://www.mediawiki.org/wiki/Talk_pages_project/replying विशिष्ट टिप्पणी को उत्तरित] करने के लिए नया कार्यप्रवाह सक्षम करें।\n\nकृपया ध्यान दें कि समय के साथ चर्चा पृष्ठों के साथ बातचीत के लिए नये उपकरण जोड़े जायेंगे।\n\nइन विशेषताओं के बारे में नये बदलावों को [https://www.mediawiki.org/wiki/Talk_pages_project/Updates प्रकल्प के अपडेट पृष्ठ वार्ता पृष्ठ] पर पोस्ट किया जायेगा।",
 	"discussiontools-preference-discussion-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project",

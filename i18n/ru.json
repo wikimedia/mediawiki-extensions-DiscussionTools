@@ -20,7 +20,8 @@
 			"WhatamIdoing",
 			"Умар",
 			"Kaganer",
-			"Jack who built the house"
+			"Jack who built the house",
+			"Facenapalm"
 		]
 	},
 	"discussiontools": "Инструменты для обсуждений",
@@ -46,7 +47,7 @@
 	"discussiontools-error-comment-disappeared-reload": "Пожалуйста, обновите страницу и повторите попытку.",
 	"discussiontools-error-comment-is-transcluded": "Ссылка \"{{int:discussiontools-replylink}}\" не может быть использована для ответа на это сообщение. Чтобы ответить, пожалуйста, воспользуйтесь редактором всей страницы, кликнув \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "Ссылка \"{{int:discussiontools-replylink}}\" не может быть использована для ответа на это сообщение, так как оно загружено с другой страницы. Чтобы ответить, пожалуйста, перейдите сюда: [[$1]].",
-	"discussiontools-error-comment-not-saved": "Ваш комментарий не может быть опубликован на самой последней версии этой страницы. Чтобы увидеть последние изменения, скопируйте ваш набранный комментарий и затем используйте ваш браузер чтобы перезагрузить эту страницу.",
+	"discussiontools-error-comment-not-saved": "Страница была отредактирована, поэтому ваше сообщение не может быть опубликовано. Чтобы увидеть последние изменения, скопируйте набранное вами сообщение и перезагрузите страницу в браузере.",
 	"discussiontools-error-lint": "На сообщения на этой странице невозможно ответить из-за ошибки в вики-тексте. Вы можете узнать об этой ошибке, [$1 прочтя документацию], попросить помощи, [$2 написав сюда], или исправить ошибку, [$3 открыв редактор всей страницы].",
 	"discussiontools-error-noswitchtove": "Извините, переключение в визуальный режим отключено, так как <b>$1</b> был обнаружен в сообщении, которое вы написали. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Узнать больше].",
 	"discussiontools-error-noswitchtove-extension": "синтаксис расширения или примечания",
@@ -106,6 +107,8 @@
 	"discussiontools-replywidget-terms-click": "Нажимая $1, вы соглашаетесь с условиями использования этой вики.",
 	"discussiontools-replywidget-transcluded": "Ваше сообщение будет сохранено на [[$1]].",
 	"discussiontools-replywidget-watchthis": "Добавить эту страницу в ваш [[Special:Watchlist|список наблюдения]]",
+	"discussiontools-target-comment-missing": "Сообщение не найдено. Возможно, оно было удалено или перемещено.",
+	"discussiontools-target-comments-missing": "Новые сообщения не найдены. Возможно, они были удалены или перемещены.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Отписаться",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Отписаться от этой темы?",
 	"discussiontools-topicsubscription-button-subscribe": "подписаться",
@@ -129,7 +132,7 @@
 	"echo-pref-tooltip-dt-subscription": "Уведомлять меня, когда кто-то публикует новое сообщение в теме, на которую я подписан.",
 	"tag-discussiontools-added-comment-description": "В этой правке было добавлено сообщение на странице обсуждения",
 	"tag-discussiontools-description": "Правка совершена с помощью DiscussionTools",
-	"tag-discussiontools-edit": "Отредактированный комментарий",
+	"tag-discussiontools-edit": "редактирование сообщения",
 	"tag-discussiontools-edit-description": "Пользователь отредактировал существующее сообщение с помощью DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Новая тема]",
 	"tag-discussiontools-newtopic-description": "Пользователь добавил новую тему на страницу с помощью DiscussionTools",

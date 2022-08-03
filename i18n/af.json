@@ -4,10 +4,20 @@
 			"Rooiratel"
 		]
 	},
+	"discussiontools-autotopicsubpopup-title": "Jy is ingeteken",
+	"discussiontools-emptystate-button": "Begin 'n bespreking",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Besprekingsbladsye]] is waar mense bespreek hoe om inhoud op {{SITENAME}} die beste te maak as wat dit kan wees. Jy kan hierdie bladsy gebruik om 'n bespreking met ander te begin oor hoe om [[:{{SUBJECTPAGENAME}}]] te verbeter.",
+	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Besprekingsbladsye]] is waar mense bespreek hoe om inhoud op {{SITENAME}} die beste te maak as wat dit kan wees. Gebruik hierdie bladsy om 'n bespreking te begin oor die wysigings wat vanaf hierdie IP-adres gemaak is. Wat jy hier sê sal publiek wees vir ander om te sien. Baie IP-adresse verander periodiek en word dikwels deur verskeie mense gedeel.",
+	"discussiontools-emptystate-title-user": "Begin 'n bespreking {{GENDER:{{PAGENAME}}|met}} {{PAGENAME}}",
 	"discussiontools-replylink": "antwoord",
 	"discussiontools-replywidget-cancel": "Kanselleer",
+	"discussiontools-replywidget-loading": "Besig om te laai...",
 	"discussiontools-replywidget-mode-source": "Bron",
 	"discussiontools-replywidget-mode-visual": "Visueel",
 	"discussiontools-replywidget-placeholder-reply": "Antwoord op {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Antwoord"
+	"discussiontools-replywidget-reply": "Antwoord",
+	"discussiontools-topicsubscription-button-subscribe": "inteken",
+	"discussiontools-topicsubscription-button-subscribe-tooltip": "Teken in om kennisgewings oor nuwe opmerkings te ontvang.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Jy is ingeteken",
+	"echo-pref-tooltip-dt-subscription": "Laat my weet wanneer iemand 'n nuwe opmerking plaas in 'n onderwerp waarop ek ingeteken is."
 }
