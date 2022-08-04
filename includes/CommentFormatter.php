@@ -12,6 +12,7 @@ use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
 use MWTimestamp;
 use ParserOutput;
+use Sanitizer;
 use Throwable;
 use Title;
 use WebRequest;
@@ -555,7 +556,7 @@ class CommentFormatter {
 						$user
 					);
 					$commentLink = Html::element( 'a', [
-						'href' => '#' . $itemData['id']
+						'href' => '#' . Sanitizer::escapeIdForLink( $itemData['id'] )
 					], $relativeTime );
 
 					$label = wfMessage( 'discussiontools-topicheader-latestcomment' )
