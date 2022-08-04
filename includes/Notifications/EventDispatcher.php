@@ -82,7 +82,6 @@ class EventDispatcher {
 		$services = MediaWikiServices::getInstance();
 
 		$revisionStore = $services->getRevisionStore();
-		$userFactory = $services->getUserFactory();
 		$oldRevRecord = $revisionStore->getPreviousRevision( $newRevRecord, IDBAccessObject::READ_LATEST );
 
 		$title = Title::newFromLinkTarget(
@@ -380,9 +379,8 @@ class EventDispatcher {
 			return false;
 		}
 
-		$user = MediaWikiServices::getInstance()
-			->getUserFactory()
-			->newFromUserIdentity( $identity );
+		$editTracker = MediaWikiServices::getInstance()
+			->getUserEditTracker();
 
 		$commonData = [
 			'$schema' => '/analytics/mediawiki/talk_page_edit/1.1.0',
@@ -393,11 +391,11 @@ class EventDispatcher {
 			'revision_id' => $newRevRecord->getId() ?: 0,
 			'performer' => [
 				// Note: we're logging the user who made the edit, not the user who's signed on the comment
-				'user_id' => $user->getId(),
-				'user_edit_count' => $user->getEditCount() ?: 0,
+				'user_id' => $identity->getId(),
+				'user_edit_count' => $editTracker->getUserEditCount( $identity ) ?: 0,
 				// Retention-safe values:
-				'user_is_anonymous' => !$user->isRegistered(),
-				'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $user ) ?: 'N/A',
+				'user_is_anonymous' => !$identity->isRegistered(),
+				'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $identity ) ?: 'N/A',
 			],
 			'database' => $wgDBname,
 			// This is unreliable, but sufficient for our purposes; we
