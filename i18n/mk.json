@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bjankuloski06",
-			"Matma Rex"
+			"Matma Rex",
+			"Vlad5250"
 		]
 	},
 	"discussiontools": "Разговорни алатки",
@@ -65,6 +66,7 @@
 	"discussiontools-preference-topicsubscription-help": "Ова ви овозможува да се претплатите за да добовате известувања за коментари на поединечни теми.",
 	"discussiontools-preference-visualenhancements": "Прикажи разговорни активности",
 	"discussiontools-preference-visualenhancements-help": "Ова дава нов изглед на разговорната страница кој вклучува информации за активностите во секој разговор.",
+	"discussiontools-replybutton": "Одговори",
 	"discussiontools-replylink": "одговори",
 	"discussiontools-replywidget-abandon": "Сигурно сакате да го отфрлите коментарот што го пишувате?",
 	"discussiontools-replywidget-abandon-discard": "Отфрли коментар",

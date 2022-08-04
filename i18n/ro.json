@@ -67,6 +67,7 @@
 	"discussiontools-preference-topicsubscription-help": "Aceasta vă va permite să vă abonați pentru a primi notificări despre comentarii din subiecte individuale.",
 	"discussiontools-preference-visualenhancements": "Arată activitatea discuțiilor",
 	"discussiontools-preference-visualenhancements-help": "Asta va activa o nouă aparență a paginilor de discuție care include informații despre activitatea din fiecare discuție.",
+	"discussiontools-replybutton": "Răspunde",
 	"discussiontools-replylink": "răspunde",
 	"discussiontools-replywidget-abandon": "Sunteți {{GENDER:|sigur|sigură}} că doriți să respingeți comentariul la care scrieți?",
 	"discussiontools-replywidget-abandon-discard": "Respingeți comentariul",

@@ -82,6 +82,7 @@
 	"discussiontools-preference-summary": "Вы можете узнать больше о этих возможностях прочитав [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary краткий обзор возможностей].",
 	"discussiontools-preference-topicsubscription": "Включить подписывание на темы",
 	"discussiontools-preference-topicsubscription-help": "Это позволит вам подписываться на получение уведомлений о новых сообщениях в отдельных темах.",
+	"discussiontools-replybutton": "Ответить",
 	"discussiontools-replylink": "ответить",
 	"discussiontools-replywidget-abandon": "Вы уверены, что хотите отменить написанное вами сообщение?",
 	"discussiontools-replywidget-abandon-discard": "Отменить сообщение",
