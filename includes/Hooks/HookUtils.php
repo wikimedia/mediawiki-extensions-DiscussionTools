@@ -11,11 +11,13 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ExtensionRegistry;
 use IContextSource;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
 use RequestContext;
 use Title;
+use Wikimedia\Assert\Assert;
 
 class HookUtils {
 	public const REPLYTOOL = 'replytool';
@@ -355,7 +357,7 @@ class HookUtils {
 	}
 
 	/**
-	 * Check if this page view should display the empty state for talk pages that don't exist.
+	 * Check if this page view should display the "empty state" message for empty talk pages.
 	 *
 	 * @param IContextSource $context
 	 * @return bool
@@ -383,6 +385,8 @@ class HookUtils {
 			) &&
 			// Only in talk namespaces, not including other namespaces that isAvailableForTitle() allows
 			$title->isTalkPage() &&
+			// Only if the subject page or the user exists (T288319, T312560)
+			static::pageSubjectExists( $title ) &&
 			// The default display will probably be more useful for links to old revisions of deleted
 			// pages (existing pages are already excluded in shouldShowNewSectionTab())
 			$req->getIntOrNull( 'oldid' ) === null &&
@@ -393,6 +397,33 @@ class HookUtils {
 			// User has new topic tool enabled (and not using &dtenable=0)
 			static::isFeatureEnabledForOutput( $out, static::NEWTOPICTOOL )
 		);
+	}
+
+	/**
+	 * Return whether the corresponding subject page exists, or (if the page is a user talk page,
+	 * excluding subpages) whether the user is registered or a valid IP address.
+	 *
+	 * @param LinkTarget $talkPage
+	 * @return bool
+	 */
+	private static function pageSubjectExists( LinkTarget $talkPage ): bool {
+		$services = MediaWikiServices::getInstance();
+		$namespaceInfo = $services->getNamespaceInfo();
+		Assert::precondition( $namespaceInfo->isTalk( $talkPage->getNamespace() ), "Page is a talk page" );
+
+		if ( $talkPage->getNamespace() === NS_USER_TALK && strpos( $talkPage->getText(), '/' ) === false ) {
+			if ( $services->getUserNameUtils()->isIP( $talkPage->getText() ) ) {
+				return true;
+			}
+			$subjectUser = $services->getUserFactory()->newFromName( $talkPage->getText() );
+			if ( $subjectUser && $subjectUser->isRegistered() ) {
+				return true;
+			}
+			return false;
+		} else {
+			$subjectPage = $namespaceInfo->getSubjectPage( $talkPage );
+			return $services->getPageStore()->getPageForLink( $subjectPage )->exists();
+		}
 	}
 
 	/**
