@@ -60,9 +60,8 @@ trait ApiDiscussionToolsTrait {
 		switch ( $type ) {
 			case 'topic':
 				if ( $wikitext !== null ) {
-					$wikitext = CommentUtils::htmlTrim( $wikitext );
 					if ( $signature !== null ) {
-						$wikitext .= $signature;
+						$wikitext = CommentModifier::appendSignatureWikitext( $wikitext, $signature );
 					}
 				} else {
 					$doc = DOMUtils::parseHTML( '' );

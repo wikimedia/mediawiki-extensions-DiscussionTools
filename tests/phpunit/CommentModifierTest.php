@@ -148,6 +148,22 @@ class CommentModifierTest extends IntegrationTestCase {
 	}
 
 	/**
+	 * @covers ::appendSignatureWikitext
+	 */
+	public function testAppendSignatureWikitext(): void {
+		static::assertEquals(
+			'Foo bar ~~~~',
+			CommentModifier::appendSignatureWikitext( 'Foo bar', ' ~~~~' ),
+			'Simple message'
+		);
+		static::assertEquals(
+			"Foo bar\n*A\n*B\n~~~~",
+			CommentModifier::appendSignatureWikitext( "Foo bar\n*A\n*B", ' ~~~~' ),
+			'List'
+		);
+	}
+
+	/**
 	 * @dataProvider provideSanitizeWikitextLinebreaks
 	 * @covers ::sanitizeWikitextLinebreaks
 	 */

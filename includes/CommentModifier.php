@@ -446,9 +446,24 @@ class CommentModifier {
 	public static function appendSignature( DocumentFragment $container, string $signature ): void {
 		$doc = $container->ownerDocument;
 
-		// If the last node isn't a paragraph (e.g. it's a list created in visual mode), then
-		// add another paragraph to contain the signature.
-		if ( !$container->lastChild || strtolower( $container->lastChild->nodeName ) !== 'p' ) {
+		// If the last node isn't a paragraph (e.g. it's a list created in visual mode),
+		// or looks like a list item created in wikitext mode (T263217),
+		// then add another paragraph to contain the signature.
+		$wrapperNode = $container->lastChild;
+		if (
+			!( $wrapperNode instanceof Element ) ||
+			strtolower( $wrapperNode->tagName ) !== 'p' ||
+			(
+				// This would be easier to check in prepareWikitextReply(), but that would result
+				// in an empty list item being added at the end if we don't need to add a signature.
+				( $wtNode = $wrapperNode->lastChild ) &&
+				$wtNode instanceof Element &&
+				( $dataMw = json_decode( $wtNode->getAttribute( 'data-mw' ) ?? '', true ) ) &&
+				( $wikitextLine = $dataMw['parts'][0] ?? null ) &&
+				is_string( $wikitextLine ) &&
+				in_array( $wikitextLine[0], [ '*', '#', ':', ';' ] )
+			)
+		) {
 			$container->appendChild( $doc->createElement( 'p' ) );
 		}
 		// If the last node is empty, trim the signature to prevent leading whitespace triggering
@@ -463,6 +478,29 @@ class CommentModifier {
 				$signature
 			)
 		);
+	}
+
+	/**
+	 * Append a user signature to the comment in the provided wikitext.
+	 *
+	 * @param string $wikitext
+	 * @param string $signature
+	 * @return string
+	 */
+	public static function appendSignatureWikitext( string $wikitext, string $signature ): string {
+		$wikitext = CommentUtils::htmlTrim( $wikitext );
+
+		$lines = explode( "\n", $wikitext );
+		$lastLine = end( $lines );
+
+		// If last line looks like a list item, add an empty line afterwards for the signature (T263217)
+		if ( $lastLine && in_array( $lastLine[0], [ '*', '#', ':', ';' ] ) ) {
+			$wikitext .= "\n";
+			// Trim the signature to prevent leading whitespace triggering preformatted text (T269188, T276612)
+			$signature = ltrim( $signature, ' ' );
+		}
+
+		return $wikitext . $signature;
 	}
 
 	/**
