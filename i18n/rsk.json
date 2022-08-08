@@ -39,7 +39,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>Нови способ за порушованє темох ту.</strong> Тото ажурированє вам оможлївює додавац теми з помоцу уложенго онлайн формулара и пинґовац других з помоцу новей кратшей драги. Ви ше тиж можеце [$1 врациц на застареле, превозидзене искуство].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Ви тераз видзице превозидзене искуство.</strong> Ви ше можеце [$1 врациц на нове искуство] або пойсц на намесцанє опцийох же би сце [$2 намесцели скорейше, превозидзене искуство як важаце].",
 	"discussiontools-newtopic-missing-title": "Наведзце наслов за свою тему дискусиї. Кед кликнєце на \"{{int:discussiontools-replywidget-newtopic}}\", ваша тема будзе додата без наслова.",
-	"discussiontools-newtopic-placeholder-title": "Наслов",
+	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|одвитовал}} у \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Єден нови одвит|$1 нови одвити|100=99+ нови одвити}} у \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Опатриц коментар",
