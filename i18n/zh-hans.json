@@ -27,7 +27,10 @@
 			"Xzonn",
 			"Yfdyh000",
 			"Zhang8569",
-			"沈澄心"
+			"沈澄心",
+			"Diskdance",
+			"Lakejason0",
+			"Lanyun1103"
 		]
 	},
 	"discussiontools": "讨论工具",
@@ -39,7 +42,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>您尚未登录。</strong>要使用您的用户名而非IP地址署名，您可以[$1 登录]或[$2 注册一个账户]。",
 	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-feedback": "分享有关此功能的意见反馈",
-	"discussiontools-replywidget-loading": "正在载入……",
+	"discussiontools-replywidget-loading": "正在加载……",
 	"discussiontools-replywidget-mention-tool-title": "提及用户",
 	"discussiontools-replywidget-mode-source": "源代码",
 	"discussiontools-replywidget-mode-visual": "可视化",

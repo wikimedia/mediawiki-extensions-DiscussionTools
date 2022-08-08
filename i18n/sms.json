@@ -8,6 +8,9 @@
 	"discussiontools-replylink": "vaʹstted",
 	"discussiontools-replywidget-mode-source": "Wikiteʹkstt",
 	"discussiontools-replywidget-mode-visual": "Visuaalʼlaž",
+	"discussiontools-replywidget-placeholder-reply": "Vaʹstted õõʹnnʼja {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Ouddǩiõččmõš",
 	"discussiontools-replywidget-reply": "Vaʹstted",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]"
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]",
+	"tag-discussiontools-visual": "Visuaalʼlaž"
 }

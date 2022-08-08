@@ -5,5 +5,10 @@
 			"Aey Tai Nuea"
 		]
 	},
-	"discussiontools-replywidget-mode-source": "ᥒᥫᥢ ᥒᥝᥲ ᥖᥪᥢᥰ"
+	"discussiontools-replylink": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ",
+	"discussiontools-replywidget-cancel": "ᥟᥛᥱ ᥞᥥᥖᥱ",
+	"discussiontools-replywidget-mode-source": "ᥒᥫᥢ ᥒᥝᥲ ᥖᥪᥢᥰ",
+	"discussiontools-replywidget-mode-visual": "ᥖᥣ ᥞᥢᥴ",
+	"discussiontools-replywidget-placeholder-reply": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ ᥓᥧᥰ {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ"
 }

@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Oby Ezeilo",
-			"Olugold"
+			"Olugold",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Zaghachi",
-	"discussiontools-desc": "Akọrọngwa eji akwado ebe akpamnkata",
+	"discussiontools-desc": "Akọrọngwa eji akwado ebe akpamnkata.",
 	"discussiontools-preference-label": "Akọrọngwa akpamnkata",
 	"discussiontools-replylink": "Zaghachi",
 	"discussiontools-replywidget-anon-warning": "<strong>Ị banyela.</strong> I ji were aha gị nata njirimara karịa iji adịresị IP, Ị nwere ike [$1 log in] maọbụ [$2 create an account].",
@@ -21,7 +22,7 @@
 	"discussiontools-replywidget-reply": "zaghachi",
 	"discussiontools-replywidget-terms-click": "Site na-ịpị \"$1\"aka, ị kwetala n'usoro okwu iji nke a na Wiki a",
 	"discussiontools-replywidget-transcluded": "A ga-echekwa ihe ị kwuru na [[$1]].",
-	"discussiontools-error-comment-is-transcluded": "Agaghị enwe ike iji nkokọ a\"{{int:discussiontools-replylink}}\" wee zaghachi okwu a. Iji zaghachi okwu a biko were otu ibe akwụkwọ eji eme ndezi site n'ịpị aka na\"$1\".",
+	"discussiontools-error-comment-is-transcluded": "Agaghị enwe ike iji nkokọ a\"{{int:discussiontools-replylink}}\" wee zaghachi okwu a. Iji zaghachi okwu a biko were otu ibe akwụkwọ eji eme ndezi site n'ịpị aka na \"$1\".",
 	"discussiontools-error-comment-is-transcluded-title": "Agaghị eji nkokọ nke a \"{{int:discussiontools-replylink}}\" azaghachi okwu a maka na-esi n'ihu akwụkwọ ọzọ weta ya. Ị ịzaghachi biko gaa na ebe a: [[$1]]",
 	"discussiontools-error-lint": "Agaghị enwe ike ịzaghachi ihe ndị e  kwuru n'ihu akwụkwọ a n'ihi enwere ndeghe na Wikitext. Ị nwere ike ịmụta maka ndeghe site [$1 reading the documentation], jụọ maka enye m aka site [$2 posting here] maọbụ ịdezi ndeghe a site [$3 opening the full page editor].",
 	"tag-discussiontools-description": "Ndezi eji akọrọngwa mkparịta ụka mee",

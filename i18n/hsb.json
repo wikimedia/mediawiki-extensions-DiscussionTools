@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"J budissin"
+		]
+	},
+	"discussiontools": "Diskusijne nastroje",
+	"discussiontools-defaultsummary-reply": "Wotmołwić",
+	"discussiontools-desc": "Graty k polěpšenju diskusijnych stronow.",
+	"discussiontools-replylink": "wotmołwić",
+	"discussiontools-replywidget-cancel": "Přetorhnyć",
+	"discussiontools-replywidget-loading": "Začituje so...",
+	"discussiontools-replywidget-mention-tool-title": "Wužiwarja naspomnić",
+	"discussiontools-replywidget-mode-source": "Žórło",
+	"discussiontools-replywidget-preview": "Přehlad",
+	"discussiontools-replywidget-reply": "Wotmołwić",
+	"discussiontools-replywidget-transcluded": "Twój komentar so na [[$1]] składuje.",
+	"tag-discussiontools-source": "Žórło"
+}
