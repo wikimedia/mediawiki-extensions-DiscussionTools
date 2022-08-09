@@ -238,7 +238,7 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 		url.searchParams.delete( 'action' );
 		url.searchParams.delete( 'veaction' );
 		url.searchParams.delete( 'section' );
-		history.replaceState( null, document.title, url );
+		history.replaceState( null, '', url );
 		mw.config.set( 'wgDiscussionToolsStartNewTopicTool', false );
 	}
 };
