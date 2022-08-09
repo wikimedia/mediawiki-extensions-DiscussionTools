@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Adam N.",
+			"Danny B.",
 			"Fraxinus.cs",
 			"Georg101",
 			"Jan Myšák",
@@ -25,7 +26,7 @@
 	"discussiontools-emptystate-desc-self-anon": "Lidé na {{GRAMMAR:6sg|{{SITENAME}}}} mohou použít tuto [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|diskusní stránku]] k napsání veřejné zprávy ohledně editací provedených z této IP adresy, kterou právě používáte.\n\nMnoho IP adres se pravidelně mění a často je sdílí více lidí. Abyste se vyhnuli záměně s ostatními nepřihlášenými uživateli, můžete si [$1 vytvořit účet] nebo [$2 se přihlásit]. Vytvořením účtu také skryjete svou IP adresu.",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Diskusní stránky]] jsou místa, kde lidé diskutují o tom, jak vytvořit co nejlepší {{GRAMMAR:4sg|{{SITENAME}}}}. Začněte novou diskusi, abyste se spojili a spolupracovali s {{GENDER:{{PAGENAME}}|uživatelem|uživatelkou}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Vše, co sem napíšete, bude pro ostatní veřejně dostupné.",
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Diskusní stránky]] jsou místa, kde lidé diskutují o tom, jak vytvořit co nejlepší {{GRAMMAR:4sg|{{SITENAME}}}}. Na této stránce zahájíte diskusi o editacích provedených z této IP adresy. Co sem napíšete, bude pro ostatní veřejně dostupné. Mnoho IP adres se pravidelně mění a často je sdílí více lidí.",
-	"discussiontools-emptystate-title": "Zahajte diskusi o stránce {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title": "Zahajte diskusi ke stránce {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Vítejte na své diskusní stránce!",
 	"discussiontools-emptystate-title-self-anon": "Vítejte na této diskusní stránce",
 	"discussiontools-emptystate-title-user": "Zahajte diskusi s {{GENDER:{{PAGENAME}}|uživatelem|uživatelkou}} {{PAGENAME}}",

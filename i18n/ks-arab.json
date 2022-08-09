@@ -5,9 +5,12 @@
 			"Teashae"
 		]
 	},
+	"discussiontools": "کَتھ باتھ اَوزار",
+	"discussiontools-autotopicsubpopup-dismiss": "ٹھیٖکھ چھُ.",
 	"discussiontools-defaultsummary-reply": "جَوآب",
 	"discussiontools-emptystate-button": "نٔو بَحَث کٔرِو شُروٗع",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|کَتھ صَفہٕ]] چھِ تِم صَفہٕ یِمَن پؠٹھ لوٗکھ وِکی ہُنٛد صَفَن ہُنٛد مَواد بَہتَر بَناونہٕ خٲطرٕ چھِ کَتھ باتھ کَران. تُہؠ ہیٚکِو یہِ صَفہٕ [[:{{SUBJECTPAGENAME}}]] بَہتَر بَناونہٕ خٲطرٕ کَتھ باتھ کٔرِتھ.",
+	"discussiontools-emptystate-desc-self": "{{SITENAME}} صٲرِف ہیٚکَن یہِ [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|کَتھ صَفہٕ]] تُہؠ پٲغام واتٕناونہٕ خٲطرٕ اِستِمال کٔرِتھ تہٕ تُہی میلہِ اَکج اِطلاع ییٚلہِ تِم پٲغام لیٚکھَن.",
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} صَفَس مُتلِق کٔرِو کَتھ باتھ",
 	"discussiontools-emptystate-title-self": "پَننِس کَتھ باتھ صَفَس پؠٹھ خٲر مَقدَم",
 	"discussiontools-emptystate-title-self-anon": "یَتھ کَتھ باتھ صَفَس پؠٹھ خٲر مَقدَم",
