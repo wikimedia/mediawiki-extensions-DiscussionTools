@@ -11,5 +11,8 @@
 	"discussiontools-replywidget-mode-source": "Bron",
 	"discussiontools-replywidget-mode-visual": "Visueel",
 	"discussiontools-replywidget-placeholder-reply": "Antwoord op {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Antwoord"
+	"discussiontools-replywidget-reply": "Antwoord",
+	"discussiontools-topicsubscription-button-subscribe": "inteken",
+	"discussiontools-topicsubscription-button-subscribe-tooltip": "Teken in om kennisgewings oor nuwe opmerkings te ontvang.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Jy is ingeteken"
 }

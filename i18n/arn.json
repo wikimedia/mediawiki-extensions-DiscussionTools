@@ -5,5 +5,11 @@
 		]
 	},
 	"discussiontools-newtopic-placeholder-title": "Üy",
+	"discussiontools-replylink": "llowzugun",
+	"discussiontools-replywidget-cancel": "Katrütun",
+	"discussiontools-replywidget-mode-source": "Wiriel",
+	"discussiontools-replywidget-mode-visual": "Azpengelwe",
+	"discussiontools-replywidget-placeholder-reply": "Llowzugualu {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Llowzugun",
 	"discussiontools-replywidget-summary": "Pichikalu"
 }
