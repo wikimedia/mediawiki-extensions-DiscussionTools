@@ -225,7 +225,7 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 			var urlFragment = mw.util.escapeIdForLink( sectionTitle );
 			// Navigate to fragment without scrolling
 			location.hash = '#' + urlFragment + '-DoesNotExist-DiscussionToolsHack';
-			history.replaceState( null, document.title, '#' + urlFragment );
+			history.replaceState( null, '', '#' + urlFragment );
 		}
 	} else {
 		// Find the comment we replied to, then highlight the last reply
@@ -371,7 +371,7 @@ function clearHighlightTargetComment( threadItemSet ) {
 		// doesn't exist on the page, hopefully), and then use history.pushState() to clear it.
 		location.hash += '-DoesNotExist-DiscussionToolsHack';
 		url.hash = '';
-		history.replaceState( null, document.title, url );
+		history.replaceState( null, '', url );
 	} else if (
 		url.searchParams.has( 'dtnewcomments' ) ||
 		url.searchParams.has( 'dtnewcommentssince' )
@@ -379,7 +379,7 @@ function clearHighlightTargetComment( threadItemSet ) {
 		url.searchParams.delete( 'dtnewcomments' );
 		url.searchParams.delete( 'dtnewcommentssince' );
 		url.searchParams.delete( 'dtinthread' );
-		history.pushState( null, document.title, url );
+		history.pushState( null, '', url );
 		highlightTargetComment( threadItemSet );
 	} else if ( highlightedTarget ) {
 		// Highlights were applied without changing the URL, e.g. when showing
