@@ -119,6 +119,8 @@
 				"discussiontools-newtopic-legacy-hint",
 				"discussiontools-newtopic-placeholder-title",
 				"discussiontools-newtopic-missing-title",
+				"discussiontools-pagetitle-newtopic",
+				"discussiontools-pagetitle-reply",
 				"discussiontools-replylink",
 				"discussiontools-replywidget-loading",
 				"discussiontools-replywidget-watchthis",
@@ -135,6 +137,7 @@
 				"discussiontools-topicsubscription-notify-unsubscribed-body",
 				"discussiontools-topicsubscription-notify-unsubscribed-title",
 				"minerva-talk-full-page",
+				"pagetitle",
 				"skin-view-edit"
 			],
 			"targets": [

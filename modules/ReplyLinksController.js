@@ -196,11 +196,13 @@ ReplyLinksController.prototype.focusLink = function ( $linkSet ) {
 ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 	this.$activeLink = $linkSet;
 
+	var isNewTopic = false;
 	var activeButton;
 	if ( this.$activeLink.is( this.$replyLinkSets ) ) {
 		this.$activeLink.addClass( 'ext-discussiontools-init-replylink-active' );
 		activeButton = OO.ui.infuse( this.$activeLink.find( '.ext-discussiontools-init-replybutton' ) );
 	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
+		isNewTopic = true;
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-addsection' ).addClass( 'selected' );
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -208,6 +210,17 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-view' ).removeClass( 'selected' );
 	}
+
+	this.originalDocumentTitle = document.title;
+	var title = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
+	document.title = mw.msg( 'pagetitle',
+		mw.msg(
+			isNewTopic ?
+				'discussiontools-pagetitle-newtopic' :
+				'discussiontools-pagetitle-reply',
+			title.getPrefixedText()
+		)
+	);
 
 	this.$pageContainer.addClass( 'ext-discussiontools-init-replylink-open' );
 	this.$replyLinkSets.each( function () {
@@ -239,6 +252,10 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 		$( '#ca-addsection-sticky-header' ).removeClass( 'ext-discussiontools-fake-disabled' );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-view' ).addClass( 'selected' );
+	}
+
+	if ( this.originalDocumentTitle ) {
+		document.title = this.originalDocumentTitle;
 	}
 
 	this.$pageContainer.removeClass( 'ext-discussiontools-init-replylink-open' );
