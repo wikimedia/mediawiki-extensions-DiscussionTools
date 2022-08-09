@@ -162,8 +162,7 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 		missingTargetNotifPromise = null;
 	}
 
-	// eslint-disable-next-line no-jquery/no-global-selector
-	var targetElement = $( ':target' )[ 0 ];
+	var targetElement = getTargetFromFragment( location.hash.slice( 1 ) );
 
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
 		var comment = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
@@ -356,8 +355,9 @@ function clearHighlightTargetComment( threadItemSet ) {
 	}
 
 	var url = new URL( location.href );
-	// eslint-disable-next-line no-jquery/no-global-selector
-	var targetElement = $( ':target' )[ 0 ];
+
+	var targetElement = getTargetFromFragment( location.hash.slice( 1 ) );
+
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
 		// Clear the hash from the URL, triggering the 'hashchange' event and updating the :target
 		// selector (so that our code to clear our highlight works), but without scrolling anywhere.
@@ -387,6 +387,46 @@ function clearHighlightTargetComment( threadItemSet ) {
 		highlightedTarget.destroy();
 		highlightedTarget = null;
 	}
+}
+
+/**
+ * Get the target element from a link hash
+ *
+ * This is the same element as you would get from
+ * document.querySelectorAll(':target'), but can be used on
+ * an arbitrary hash fragment, or after pushState/replaceState
+ * has been used.
+ *
+ * @param {string} hash Hash fragment, without the leading '#'
+ * @return {Element|null} Element, if found
+ */
+function getTargetFromFragment( hash ) {
+	// Per https://html.spec.whatwg.org/multipage/browsing-the-web.html#target-element
+	// we try the raw fragment first, then the percent-decoded fragment.
+	return document.getElementById( hash ) ||
+		document.getElementById( percentDecode( hash ) );
+}
+
+/**
+ * Percent decode a link fragment
+ *
+ * Link fragments can be unencoded, fully encoded or partially
+ * encoded, as defined in the spec.
+ *
+ * We can't just use decodeURI as that assumes the fragment
+ * is fully encoded, and throws an error on a string like '%A'.
+ *
+ * @param {string} text Text to decode
+ * @return {string|null} Decoded text, null if decoding failed
+ */
+function percentDecode( text ) {
+	var params = new URLSearchParams(
+		'q=' +
+		// Query string param decoding replaces '+' with ' ' before doing the
+		// percent_decode, so encode '+' to prevent this.
+		text.replace( /\+/g, '%2B' )
+	);
+	return params.get( 'q' );
 }
 
 /**

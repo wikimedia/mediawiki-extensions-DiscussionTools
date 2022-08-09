@@ -15,7 +15,8 @@
 	},
 	"settings": {
 		"polyfills": [
-			"URL"
+			"URL",
+			"URLSearchParams"
 		],
 		"jsdoc": {
 			"preferredTypes": {
