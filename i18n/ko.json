@@ -103,6 +103,8 @@
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "새 의견에 관한 알림을 받기 위해 구독합니다.",
 	"discussiontools-topicsubscription-button-unsubscribe": "구독 해지",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "알림 받기를 중단하기 위해 구독을 해지합니다.",
+	"discussiontools-topicsubscription-error-not-found-body": "URL에 지정된 구독을 찾을 수 없습니다.",
+	"discussiontools-topicsubscription-error-not-found-title": "구독을 찾을 수 없음",
 	"discussiontools-topicsubscription-notify-subscribed-body": "이 주제의 새 댓글에 관한 알림을 받게 됩니다.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "구독하였습니다!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "이 주제의 새 댓글에 관한 알림을 더 이상 받지 않게 됩니다.",

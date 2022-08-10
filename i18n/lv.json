@@ -13,6 +13,7 @@
 	"discussiontools-defaultsummary-reply": "Atbilde",
 	"discussiontools-desc": "Rīki diskusiju lapu uzlabošanai",
 	"discussiontools-emptystate-button": "Sākt diskusiju",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Diskusiju lapas]] ir vieta, kur dalībnieki var apspriest to, kā panākt, lai {{SITENAME}} ir vieta, kur informācija ir visprecīzākā. Tu vari izmantot šo lapu, lai uzsāktu diskusiju ar citiem, par to, kā uzlabot rakstu \"[[:{{SUBJECTPAGENAME}}]]\".",
 	"discussiontools-emptystate-title": "Sāc diskusiju par {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Laipni lūdzam tavā diskusiju lapā",
 	"discussiontools-emptystate-title-self-anon": "Laipni lūdzam šajā diskusiju lapā",
