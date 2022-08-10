@@ -20,6 +20,9 @@
 	"discussiontools-replywidget-preview": "पूर्वनियाळ",
 	"discussiontools-replywidget-reply": "जबाब दी",
 	"discussiontools-replywidget-summary": "सारांश",
+	"discussiontools-topicheader-authorcount": "भासाभासीन $1 {{PLURAL:$1|जण|जणा}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|शेरो|शेरे}}",
+	"discussiontools-topicheader-latestcomment": "आखेरचो शेरो: $1",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} जबाब दी]",
 	"tag-discussiontools-source": "स्रोत",
 	"tag-discussiontools-visual": "दृष्टी"
