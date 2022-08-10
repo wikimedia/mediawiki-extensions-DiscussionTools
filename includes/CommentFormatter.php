@@ -233,8 +233,10 @@ class CommentFormatter {
 					}
 				}
 			} elseif ( $threadItem instanceof ContentCommentItem ) {
-				$replyButtons = $doc->createComment( '__DTREPLYBUTTONS__' . $itemJSON . '__' );
-
+				$replyButtons = $doc->createElement( 'span' );
+				$replyButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
+				$replyButtons->setAttribute( 'data-mw-comment', $itemJSON );
+				$replyButtons->appendChild( $doc->createComment( '__DTREPLYBUTTONSCONTENT__' ) );
 				CommentModifier::addReplyLink( $threadItem, $replyButtons );
 			}
 		}
@@ -266,6 +268,7 @@ class CommentFormatter {
 			'<!--__DTREPLY__-->' => '',
 			'<!--__DTREPLYBRACKETOPEN__-->' => '',
 			'<!--__DTREPLYBRACKETCLOSE__-->' => '',
+			'<!--__DTREPLYBUTTONSCONTENT__-->' => '',
 			'<!--__DTELLIPSISBUTTON__-->' => '',
 			'<!--__DTEMPTYTALKPAGE__-->' => '',
 		] );
@@ -274,6 +277,7 @@ class CommentFormatter {
 		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
 		// (DESKTOP|MOBILE)? can be made unconditional once the un-suffixed buttons have cleared from the cache
 		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)?__(.*?)-->/', '', $text );
+		// To be removed once the old version has cleared from the cache
 		$text = preg_replace( '/<!--__DTREPLYBUTTONS__(.*?)-->/', '', $text );
 
 		return $text;
@@ -429,15 +433,17 @@ class CommentFormatter {
 		$replyLinkText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
 		$replyButtonText = wfMessage( 'discussiontools-replybutton' )->inLanguage( $lang )->escaped();
 
+		// Remove __DTREPLYBUTTONS__ once it has cleared from the cache
 		$text = preg_replace_callback(
-			'/<!--__DTREPLYBUTTONS__(.*?)__-->/',
+			'/<!--__DTREPLYBUTTONS__(.*?)__-->|<!--__DTREPLYBUTTONSCONTENT__-->/',
 			static function ( $matches ) use ( $doc, $replyLinkText, $replyButtonText, $isMobile ) {
-				$itemJSON = $matches[1];
+				$itemJSON = $matches[1] ?? null;
 
-				// Classic reply link
 				$replyLinkButtons = $doc->createElement( 'span' );
-				$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
-				$replyLinkButtons->setAttribute( 'data-mw-comment', $itemJSON );
+				if ( $itemJSON ) {
+					$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
+					$replyLinkButtons->setAttribute( 'data-mw-comment', $itemJSON );
+				}
 
 				// Reply
 				$replyLink = $doc->createElement( 'a' );
@@ -470,7 +476,9 @@ class CommentFormatter {
 				$replyLinkButtons->appendChild( $replyLink );
 				$replyLinkButtons->appendChild( $bracketClose );
 
-				return DOMCompat::getOuterHTML( $replyLinkButtons );
+				return $itemJSON ?
+					DOMCompat::getOuterHTML( $replyLinkButtons ) :
+					DOMCompat::getInnerHTML( $replyLinkButtons );
 			},
 			$text
 		);
