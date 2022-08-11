@@ -8,6 +8,7 @@
 	"discussiontools-emptystate-button": "Begin 'n bespreking",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Besprekingsbladsye]] is waar mense bespreek hoe om inhoud op {{SITENAME}} die beste te maak as wat dit kan wees. Jy kan hierdie bladsy gebruik om 'n bespreking met ander te begin oor hoe om [[:{{SUBJECTPAGENAME}}]] te verbeter.",
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Besprekingsbladsye]] is waar mense bespreek hoe om inhoud op {{SITENAME}} die beste te maak as wat dit kan wees. Gebruik hierdie bladsy om 'n bespreking te begin oor die wysigings wat vanaf hierdie IP-adres gemaak is. Wat jy hier sê sal publiek wees vir ander om te sien. Baie IP-adresse verander periodiek en word dikwels deur verskeie mense gedeel.",
+	"discussiontools-emptystate-title": "Begin 'n bespreking oor {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user": "Begin 'n bespreking {{GENDER:{{PAGENAME}}|met}} {{PAGENAME}}",
 	"discussiontools-replylink": "antwoord",
 	"discussiontools-replywidget-cancel": "Kanselleer",
