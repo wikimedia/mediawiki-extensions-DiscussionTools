@@ -406,8 +406,7 @@ class PageHooks implements
 			$output->addHTML(
 				( new ButtonWidget( [
 					'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
-					// TODO: Make this a local message if the Minerva feature goes away
-					'label' => $context->msg( 'minerva-talk-add-topic' )->text(),
+					'label' => $context->msg( 'skin-action-addsection' )->text(),
 					'flags' => [ 'progressive', 'primary' ],
 					'classes' => [ 'ext-discussiontools-init-new-topic' ]
 				] ) )
