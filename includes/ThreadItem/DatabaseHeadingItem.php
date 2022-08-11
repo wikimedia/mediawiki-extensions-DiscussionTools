@@ -2,6 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\ThreadItem;
 
+use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Revision\RevisionRecord;
+
 class DatabaseHeadingItem extends DatabaseThreadItem implements HeadingItem {
 	use HeadingItemTrait;
 
@@ -14,6 +17,8 @@ class DatabaseHeadingItem extends DatabaseThreadItem implements HeadingItem {
 	private const PLACEHOLDER_HEADING_LEVEL = 99;
 
 	/**
+	 * @param ProperPageIdentity $page
+	 * @param RevisionRecord $rev
 	 * @param string $name
 	 * @param string $id
 	 * @param DatabaseThreadItem|null $parent
@@ -22,10 +27,11 @@ class DatabaseHeadingItem extends DatabaseThreadItem implements HeadingItem {
 	 * @param ?int $headingLevel Heading level (1-6). Use null for a placeholder heading.
 	 */
 	public function __construct(
+		ProperPageIdentity $page, RevisionRecord $rev,
 		string $name, string $id, ?DatabaseThreadItem $parent, $transcludedFrom, int $level,
 		?int $headingLevel
 	) {
-		parent::__construct( 'heading', $name, $id, $parent, $transcludedFrom, $level );
+		parent::__construct( $page, $rev, 'heading', $name, $id, $parent, $transcludedFrom, $level );
 		$this->placeholderHeading = $headingLevel === null;
 		$this->headingLevel = $this->placeholderHeading ? static::PLACEHOLDER_HEADING_LEVEL : $headingLevel;
 	}

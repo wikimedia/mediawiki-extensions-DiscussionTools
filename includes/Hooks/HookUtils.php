@@ -11,13 +11,22 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ExtensionRegistry;
 use IContextSource;
+use MediaWiki\Extension\DiscussionTools\CommentUtils;
+use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
+use MediaWiki\Extension\VisualEditor\ParsoidHelper;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
+use MWException;
 use OutputPage;
+use Psr\Log\NullLogger;
 use RequestContext;
 use Title;
+use TitleValue;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class HookUtils {
 	public const REPLYTOOL = 'replytool';
@@ -65,6 +74,43 @@ class HookUtils {
 			static::$propCache[ $id ][ $prop ] = isset( $props[ $id ] );
 		}
 		return static::$propCache[ $id ][ $prop ];
+	}
+
+	/**
+	 * Parse a revision by using the discussion parser on the HTML provided by Parsoid.
+	 *
+	 * @param RevisionRecord $revRecord
+	 * @return ContentThreadItemSet
+	 */
+	public static function parseRevisionParsoidHtml( RevisionRecord $revRecord ): ContentThreadItemSet {
+		$services = MediaWikiServices::getInstance();
+		$parsoidHelper = new ParsoidHelper(
+			$services->getMainConfig(),
+			new NullLogger(),
+			false
+		);
+
+		// Get HTML for the revision
+		$status = $parsoidHelper->requestRestbasePageHtml( $revRecord );
+
+		if ( !$status->isOK() ) {
+			[ 'message' => $msg, 'params' => $params ] = $status->getErrors()[0];
+			throw new MWException( wfMessage( $msg, ...$params )->text() );
+		}
+
+		$title = TitleValue::newFromPage( $revRecord->getPage() );
+
+		$response = $status->getValue();
+		$html = $response['body'];
+
+		// Run the discussion parser on it
+		$doc = DOMUtils::parseHTML( $html );
+		$container = DOMCompat::getBody( $doc );
+
+		CommentUtils::unwrapParsoidSections( $container );
+
+		$parser = $services->getService( 'DiscussionTools.CommentParser' );
+		return $parser->parse( $container, $title );
 	}
 
 	/**

@@ -3,10 +3,16 @@
 namespace MediaWiki\Extension\DiscussionTools\ThreadItem;
 
 use JsonSerializable;
+use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Revision\RevisionRecord;
 
 class DatabaseThreadItem implements JsonSerializable, ThreadItem {
 	use ThreadItemTrait;
 
+	/** @var ProperPageIdentity */
+	private $page;
+	/** @var RevisionRecord */
+	private $rev;
 	/** @var string */
 	private $type;
 	/** @var string */
@@ -23,6 +29,8 @@ class DatabaseThreadItem implements JsonSerializable, ThreadItem {
 	private $level;
 
 	/**
+	 * @param ProperPageIdentity $page
+	 * @param RevisionRecord $rev
 	 * @param string $type
 	 * @param string $name
 	 * @param string $id
@@ -31,14 +39,31 @@ class DatabaseThreadItem implements JsonSerializable, ThreadItem {
 	 * @param int $level
 	 */
 	public function __construct(
+		ProperPageIdentity $page, RevisionRecord $rev,
 		string $type, string $name, string $id, ?DatabaseThreadItem $parent, $transcludedFrom, int $level
 	) {
+		$this->page = $page;
+		$this->rev = $rev;
 		$this->name = $name;
 		$this->id = $id;
 		$this->type = $type;
 		$this->parent = $parent;
 		$this->transcludedFrom = $transcludedFrom;
 		$this->level = $level;
+	}
+
+	/**
+	 * @return ProperPageIdentity
+	 */
+	public function getPage(): ProperPageIdentity {
+		return $this->page;
+	}
+
+	/**
+	 * @return RevisionRecord
+	 */
+	public function getRevision(): RevisionRecord {
+		return $this->rev;
 	}
 
 	/**

@@ -11,6 +11,8 @@ $specialPageAliases = [];
 /** English (English) */
 $specialPageAliases['en'] = [
 	'TopicSubscriptions' => [ 'TopicSubscriptions' ],
+	'FindComment' => [ 'FindComment' ],
+	'GoToComment' => [ 'GoToComment' ],
 ];
 
 /** čeština (Czech) */
