@@ -99,15 +99,15 @@ class SubscriptionStore {
 			$conditions[ 'sub_state' ] = $state;
 		}
 
-		return $db->select(
-			'discussiontools_subscription',
-			[
+		return $db->newSelectQueryBuilder()
+			->from( 'discussiontools_subscription' )
+			->fields( [
 				'sub_user', 'sub_item', 'sub_namespace', 'sub_title', 'sub_section', 'sub_state',
 				'sub_created', 'sub_notified'
-			],
-			$conditions,
-			__METHOD__
-		);
+			] )
+			->where( $conditions )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 	}
 
 	/**

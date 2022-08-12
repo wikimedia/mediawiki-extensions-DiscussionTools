@@ -379,12 +379,12 @@ class ThreadItemStore {
 		$dbw->doAtomicSection( $method, function ( $dbw ) use ( $method, $rev, $threadItemSet, &$didInsert ) {
 			$itemRevisionsIds = [];
 			foreach ( $threadItemSet->getThreadItems() as $item ) {
-				$itemIdsId = $dbw->selectField(
-					'discussiontools_item_ids',
-					'itid_id',
-					[ 'itid_itemid' => $item->getId() ],
-					$method
-				);
+				$itemIdsId = $dbw->newSelectQueryBuilder()
+					->from( 'discussiontools_item_ids' )
+					->field( 'itid_id' )
+					->where( [ 'itid_itemid' => $item->getId() ] )
+					->caller( $method )
+					->fetchField();
 				if ( $itemIdsId === false ) {
 					$dbw->insert(
 						'discussiontools_item_ids',
@@ -397,12 +397,12 @@ class ThreadItemStore {
 					$didInsert = true;
 				}
 
-				$itemsId = $dbw->selectField(
-					'discussiontools_items',
-					'it_id',
-					[ 'it_itemname' => $item->getName() ],
-					$method
-				);
+				$itemsId = $dbw->newSelectQueryBuilder()
+					->from( 'discussiontools_items' )
+					->field( 'it_id' )
+					->where( [ 'it_itemname' => $item->getName() ] )
+					->caller( $method )
+					->fetchField();
 				if ( $itemsId === false ) {
 					$dbw->insert(
 						'discussiontools_items',
@@ -421,15 +421,15 @@ class ThreadItemStore {
 					$didInsert = true;
 				}
 
-				$itemRevisionsId = $dbw->selectField(
-					'discussiontools_item_revisions',
-					'itr_id',
-					[
+				$itemRevisionsId = $dbw->newSelectQueryBuilder()
+					->from( 'discussiontools_item_revisions' )
+					->field( 'itr_id' )
+					->where( [
 						'itr_itemid_id' => $itemIdsId,
 						'itr_revision_id' => $rev->getId(),
-					],
-					$method
-				);
+					] )
+					->caller( $method )
+					->fetchField();
 				if ( $itemRevisionsId === false ) {
 					$transcl = $item->getTranscludedFrom();
 					$dbw->insert(
@@ -539,18 +539,18 @@ class ThreadItemStore {
 
 				// Delete rows that we don't care about, to save space (item revisions with the same ID and
 				// name as the one we just inserted, which are not the oldest or newest revision).
-				$oldestRevisionSql = $dbw->selectSQLText(
-					'discussiontools_item_pages',
-					'itp_oldest_revision_id',
-					[ 'itp_items_id' => $itemsId ],
-					$method
-				);
-				$newestRevisionSql = $dbw->selectSQLText(
-					'discussiontools_item_pages',
-					'itp_newest_revision_id',
-					[ 'itp_items_id' => $itemsId ],
-					$method
-				);
+				$oldestRevisionSql = $dbw->newSelectQueryBuilder()
+					->from( 'discussiontools_item_pages' )
+					->field( 'itp_oldest_revision_id' )
+					->where( [ 'itp_items_id' => $itemsId ] )
+					->caller( $method )
+					->getSQL();
+				$newestRevisionSql = $dbw->newSelectQueryBuilder()
+					->from( 'discussiontools_item_pages' )
+					->field( 'itp_newest_revision_id' )
+					->where( [ 'itp_items_id' => $itemsId ] )
+					->caller( $method )
+					->getSQL();
 				$dbw->delete(
 					'discussiontools_item_revisions',
 					[
