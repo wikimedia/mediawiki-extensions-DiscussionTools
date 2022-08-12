@@ -71,6 +71,42 @@ ThreadItemSet.static.newFromAnnotatedNodes = function ( nodes, rootNode, parser 
 };
 
 /**
+ * Create a new ThreadItemSet from a JSON serialization
+ *
+ * @param {Array} threads Hash object
+ * @param {HTMLElement} rootNode
+ * @param {mw.dt.Parser} parser
+ * @return {ThreadItemSet}
+ */
+ThreadItemSet.static.newFromJSON = function ( threads, rootNode, parser ) {
+	var result = new ThreadItemSet();
+
+	function infuse( itemHash, parent ) {
+		var item = ThreadItem.static.newFromJSON( itemHash, rootNode );
+
+		result.addThreadItem( item );
+
+		item.replies = itemHash.replies.map( function ( replyHash ) {
+			return infuse( replyHash, item );
+		} );
+		item.parent = parent;
+
+		return item;
+	}
+
+	threads.forEach( function ( itemHash ) {
+		infuse( itemHash, null );
+	} );
+
+	// Calculate names (currently not stored in the metadata) - can't be done
+	// in the above loop because we have to wait until we have all the
+	// replies.
+	parser.computeIdsAndNames( result );
+
+	return result;
+};
+
+/**
  * @param {ThreadItem} item
  */
 ThreadItemSet.prototype.addThreadItem = function ( item ) {

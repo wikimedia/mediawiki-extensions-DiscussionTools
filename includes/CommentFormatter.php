@@ -7,6 +7,7 @@ use Language;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
@@ -56,7 +57,7 @@ class CommentFormatter {
 
 		try {
 			[ 'html' => $text, 'tocInfo' => $tocInfo ] =
-				static::addDiscussionToolsInternal( $text, $title );
+				static::addDiscussionToolsInternal( $text, $pout, $title );
 
 			// Enhance the table of contents in supporting skins (vector-2022)
 
@@ -213,10 +214,11 @@ class CommentFormatter {
 	 * Add discussion tools to some HTML
 	 *
 	 * @param string $html HTML
+	 * @param ParserOutput $pout
 	 * @param Title $title
 	 * @return array HTML with discussion tools and TOC info
 	 */
-	protected static function addDiscussionToolsInternal( string $html, Title $title ): array {
+	protected static function addDiscussionToolsInternal( string $html, ParserOutput $pout, Title $title ): array {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
@@ -235,7 +237,6 @@ class CommentFormatter {
 		// Iterate in reverse order, because adding the range markers for a thread item
 		// can invalidate the ranges of subsequent thread items (T298096)
 		foreach ( array_reverse( $threadItems ) as $threadItem ) {
-			// TODO: Consider not attaching JSON data to the DOM.
 			// Create a dummy node to attach data to.
 			if ( $threadItem instanceof ContentHeadingItem && $threadItem->isPlaceholderHeading() ) {
 				$node = $doc->createElement( 'span' );
@@ -270,14 +271,11 @@ class CommentFormatter {
 			$range->setStart( $range->endContainer, $range->endOffset )->insertNode( $endMarker );
 			$range->insertNode( $startMarker );
 
-			$itemData = $threadItem->jsonSerialize();
-			$itemJSON = json_encode( $itemData );
-
 			if ( $threadItem instanceof ContentHeadingItem ) {
 				// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 				$headline = $threadItem->getRange()->endContainer;
 				Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
-				$headline->setAttribute( 'data-mw-comment', $itemJSON );
+				$headline->setAttribute( 'data-mw-thread-id', $threadItem->getId() );
 				if ( $threadItem->getHeadingLevel() === 2 ) {
 					$headingElement = CommentUtils::closestElement( $headline, [ 'h2' ] );
 
@@ -288,7 +286,7 @@ class CommentFormatter {
 			} elseif ( $threadItem instanceof ContentCommentItem ) {
 				$replyButtons = $doc->createElement( 'span' );
 				$replyButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
-				$replyButtons->setAttribute( 'data-mw-comment', $itemJSON );
+				$replyButtons->setAttribute( 'data-mw-thread-id', $threadItem->getId() );
 				$replyButtons->appendChild( $doc->createComment( '__DTREPLYBUTTONSCONTENT__' ) );
 
 				if ( !$newestComment || $threadItem->getTimestamp() > $newestComment->getTimestamp() ) {
@@ -321,6 +319,12 @@ class CommentFormatter {
 		if ( count( $threadItems ) === 0 ) {
 			$container->appendChild( $doc->createComment( '__DTEMPTYTALKPAGE__' ) );
 		}
+
+		$threadsJSON = array_map( static function ( ContentThreadItem $item ) {
+			return $item->jsonSerialize( true );
+		}, $threadItemSet->getThreadsStructured() );
+
+		$pout->setJsConfigVar( 'wgDiscussionToolsPageThreads', $threadsJSON );
 
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)

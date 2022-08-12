@@ -18,7 +18,7 @@ function ReplyLinksController( $pageContainer ) {
 	this.onAnyLinkClickHandler = this.onAnyLinkClick.bind( this );
 
 	// Reply links
-	this.$replyLinkSets = $pageContainer.find( '.ext-discussiontools-init-replylink-buttons[data-mw-comment]:not(:empty)' );
+	this.$replyLinkSets = $pageContainer.find( '.ext-discussiontools-init-replylink-buttons[data-mw-thread-id]:not(:empty), .ext-discussiontools-init-replylink-buttons[data-mw-comment]:not(:empty)' );
 
 	this.$replyLinkSets.each( function () {
 		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
@@ -60,16 +60,18 @@ ReplyLinksController.prototype.onReplyLinkClick = function ( e ) {
 
 	// Browser plugins (such as Google Translate) may add extra tags inside
 	// the link, so find the containing link tag with the data we need.
-	var $linkSet = $( e.target ).closest( '[data-mw-comment]' );
+	// TODO: Remove data-mw-comment support
+	var $linkSet = $( e.target ).closest( '[data-mw-thread-id],[data-mw-comment]' );
 	if ( !$linkSet.length ) {
 		return;
 	}
-	this.emit( 'link-click', $linkSet.data( 'mw-comment' ).id, $linkSet );
+	this.emit( 'link-click', $linkSet.data( 'mw-thread-id' ) || $linkSet.data( 'mw-comment' ).id, $linkSet );
 };
 
 ReplyLinksController.prototype.onReplyButtonClick = function ( button ) {
-	var $linkSet = button.$element.closest( '[data-mw-comment]' );
-	this.emit( 'link-click', $linkSet.data( 'mw-comment' ).id, $linkSet );
+	// TODO: Remove data-mw-comment support
+	var $linkSet = button.$element.closest( '[data-mw-thread-id],[data-mw-comment]' );
+	this.emit( 'link-click', $linkSet.data( 'mw-thread-id' ) || $linkSet.data( 'mw-comment' ).id, $linkSet );
 };
 
 ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
@@ -86,7 +88,8 @@ ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
 };
 
 ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
-	if ( $( e.currentTarget ).closest( '[data-mw-comment]' ).length ) {
+	// TODO: Remove data-mw-comment support
+	if ( $( e.currentTarget ).closest( '[data-mw-thread-id],[data-mw-comment]' ).length ) {
 		// Handled elsewhere
 		return;
 	}

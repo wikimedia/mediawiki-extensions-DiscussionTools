@@ -460,6 +460,9 @@
 			]
 		}
 	},
+	"LateJSConfigVarNames": [
+		"wgDiscussionToolsPageThreads"
+	],
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],

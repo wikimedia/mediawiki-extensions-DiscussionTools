@@ -249,8 +249,14 @@ function init( $container, state ) {
 	linksController = new ReplyLinksController( $pageContainer );
 	var parser = new Parser( require( './parser/data.json' ) );
 
-	var commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
-	pageThreads = ThreadItemSet.static.newFromAnnotatedNodes( commentNodes, $pageContainer[ 0 ], parser );
+	var commentNodes;
+	if ( mw.config.get( 'wgDiscussionToolsPageThreads' ) ) {
+		commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-thread-id]' );
+		pageThreads = ThreadItemSet.static.newFromJSON( mw.config.get( 'wgDiscussionToolsPageThreads' ), $pageContainer[ 0 ], parser );
+	} else {
+		commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-comment]' );
+		pageThreads = ThreadItemSet.static.newFromAnnotatedNodes( commentNodes, $pageContainer[ 0 ], parser );
+	}
 
 	if ( featuresEnabled.topicsubscription ) {
 		topicSubscriptions.initTopicSubscriptions( $container, pageThreads );
