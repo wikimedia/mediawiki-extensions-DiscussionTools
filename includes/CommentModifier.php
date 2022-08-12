@@ -438,6 +438,19 @@ class CommentModifier {
 	}
 
 	/**
+	 * Check if an element created by ::createWikitextNode() starts with list item markup.
+	 *
+	 * @param Element $node
+	 * @return bool
+	 */
+	private static function isWikitextNodeListItem( Element $node ): bool {
+		$dataMw = json_decode( $node->getAttribute( 'data-mw' ) ?? '', true );
+		$wikitextLine = $dataMw['parts'][0] ?? null;
+		return $wikitextLine && is_string( $wikitextLine ) &&
+			in_array( $wikitextLine[0], [ '*', '#', ':', ';' ] );
+	}
+
+	/**
 	 * Append a user signature to the comment in the container.
 	 *
 	 * @param DocumentFragment $container
@@ -458,10 +471,7 @@ class CommentModifier {
 				// in an empty list item being added at the end if we don't need to add a signature.
 				( $wtNode = $wrapperNode->lastChild ) &&
 				$wtNode instanceof Element &&
-				( $dataMw = json_decode( $wtNode->getAttribute( 'data-mw' ) ?? '', true ) ) &&
-				( $wikitextLine = $dataMw['parts'][0] ?? null ) &&
-				is_string( $wikitextLine ) &&
-				in_array( $wikitextLine[0], [ '*', '#', ':', ';' ] )
+				static::isWikitextNodeListItem( $wtNode )
 			)
 		) {
 			$container->appendChild( $doc->createElement( 'p' ) );
@@ -526,7 +536,18 @@ class CommentModifier {
 			} else {
 				$newParsoidItem = static::addSiblingListItem( $newParsoidItem );
 			}
-			static::whitespaceParsoidHack( $newParsoidItem );
+
+			// Suppress space after the indentation character to support nested lists (T238218).
+			// By request from the community, avoid this if possible after bullet indentation (T259864).
+			if ( !(
+				$replyIndentation === 'bullet' &&
+				( $wtNode = $container->firstChild->lastChild ) &&
+				$wtNode instanceof Element &&
+				!static::isWikitextNodeListItem( $wtNode )
+			) ) {
+				static::whitespaceParsoidHack( $newParsoidItem );
+			}
+
 			$newParsoidItem->appendChild( $container->firstChild );
 		}
 	}
@@ -549,7 +570,16 @@ class CommentModifier {
 		$list = $doc->createElement( $replyIndentation === 'invisible' ? 'dl' : 'ul' );
 		while ( $container->childNodes->length ) {
 			$item = $doc->createElement( $replyIndentation === 'invisible' ? 'dd' : 'li' );
-			static::whitespaceParsoidHack( $item );
+			// Suppress space after the indentation character to support nested lists (T238218).
+			// By request from the community, avoid this if possible after bullet indentation (T259864).
+			if ( !(
+				$replyIndentation === 'bullet' &&
+				( $wtNode = $container->firstChild->lastChild ) &&
+				$wtNode instanceof Element &&
+				!static::isWikitextNodeListItem( $wtNode )
+			) ) {
+				static::whitespaceParsoidHack( $item );
+			}
 			$item->appendChild( $container->firstChild );
 			$list->appendChild( $item );
 		}
