@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Musaddam Idriss"
 		]
 	},
-	"discussiontools-replylink": "Jaabawol",
-	"discussiontools-replywidget-cancel": "accitinde",
+	"discussiontools-replylink": "jaabawol",
+	"discussiontools-replywidget-cancel": "Accitinde",
 	"discussiontools-replywidget-mode-source": "Ɗaɗol",
 	"discussiontools-replywidget-mode-visual": "Yiide",
-	"discussiontools-replywidget-placeholder-reply": "Ruɗɗitana$1",
+	"discussiontools-replywidget-placeholder-reply": "Ruɗɗitana {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Jaabaade"
 }

@@ -20,6 +20,7 @@
 			"Stjn",
 			"Sunpriat",
 			"Tanzun",
+			"Vlad5250",
 			"WhatamIdoing",
 			"Умар"
 		]
@@ -54,6 +55,9 @@
 	"discussiontools-error-noswitchtove-table": "синтаксис таблицы",
 	"discussiontools-error-noswitchtove-template": "синтаксис шаблона",
 	"discussiontools-error-noswitchtove-title": "Визуальный режим отключён",
+	"discussiontools-findcomment-label-search": "Найти",
+	"discussiontools-findcomment-noresults": "Ничего не найдено",
+	"discussiontools-findcomment-title": "Найти комментарий",
 	"discussiontools-limitreport-errorreqid": "ID запроса с ошибкой в DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Время использования DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунды|секунд}}",
