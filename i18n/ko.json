@@ -42,6 +42,8 @@
 	"discussiontools-error-noswitchtove-template": "틀 문법",
 	"discussiontools-error-noswitchtove-title": "시각 모드 비활성화됨",
 	"discussiontools-findcomment-label-search": "검색",
+	"discussiontools-findcomment-noresults": "결과가 없습니다.",
+	"discussiontools-findcomment-results-notcurrent": "(현재 판에 없음)",
 	"discussiontools-limitreport-errorreqid": "토론 도구 오류 요청 ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 시간 사용",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|초}}",

@@ -29,6 +29,8 @@
 	"discussiontools-error-noswitchtove-table": "Syntax vun der Tabell",
 	"discussiontools-error-noswitchtove-template": "Syntax vun der Schabloun",
 	"discussiontools-error-noswitchtove-title": "Visuelle Modus desaktivéiert",
+	"discussiontools-findcomment-label-search": "Sichen",
+	"discussiontools-findcomment-results-notcurrent": "(net an der aktueller Versioun)",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|Sekonn|Sekonnen}}",
 	"discussiontools-newtopic-placeholder-title": "Sujet",
 	"discussiontools-notification-subscribed-new-comment-view": "Bemierkung weisen",

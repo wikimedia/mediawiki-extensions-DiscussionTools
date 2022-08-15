@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kareyac",
 			"StanProg",
 			"Ted Masters"
 		]
@@ -14,6 +15,7 @@
 	"discussiontools-emptystate-title-user": "Започване на дискусия {{GENDER:{{PAGENAME}}|с}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Добре дошли на тази беседа",
 	"discussiontools-error-noswitchtove-title": "Визуалният режим е деактивиран",
+	"discussiontools-findcomment-noresults": "Няма резултати.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-notification-subscribed-new-comment-view": "Преглед на коментара",
 	"discussiontools-postedit-confirmation-topicadded": "Вашата тема е добавена.",

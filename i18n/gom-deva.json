@@ -23,8 +23,12 @@
 	"discussiontools-topicheader-authorcount": "भासाभासीन $1 {{PLURAL:$1|जण|जणा}}",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|शेरो|शेरे}}",
 	"discussiontools-topicheader-latestcomment": "आखेरचो शेरो: $1",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "कळोवण्यो बंद कर",
+	"discussiontools-topicsubscription-button-subscribe": "कळोवण्यो मागय",
 	"discussiontools-topicsubscription-button-subscribe-label": "कळोवण्यो मागय",
+	"discussiontools-topicsubscription-button-unsubscribe": "कळोवण्यो बंद कर",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "कळोवण्यो बंद कर",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "कळोवण्यो बंद कर",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} जबाब दी]",
 	"tag-discussiontools-source": "स्रोत",
 	"tag-discussiontools-visual": "दृष्टी"
