@@ -16,7 +16,6 @@ use MWTimestamp;
 use ReadOnlyMode;
 use stdClass;
 use TitleFormatter;
-use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILBFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IResultWrapper;
@@ -83,15 +82,6 @@ class ThreadItemStore {
 	private function isDisabled(): bool {
 		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 		return !$dtConfig->get( 'DiscussionToolsEnablePermalinksBackend' );
-	}
-
-	/**
-	 * @param int $dbIndex DB_PRIMARY or DB_REPLICA
-	 *
-	 * @return IDatabase
-	 */
-	private function getConnectionRef( int $dbIndex ): IDatabase {
-		return $this->loadBalancer->getConnectionRef( $dbIndex, [ 'watchlist' ] );
 	}
 
 	/**
@@ -223,7 +213,7 @@ class ThreadItemStore {
 		foreach ( $result as $row ) {
 			$revs[ $row->itr_revision_id ] = null;
 		}
-		$revQueryBuilder = $this->getConnectionRef( DB_REPLICA )->newSelectQueryBuilder()
+		$revQueryBuilder = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
 			->queryInfo( $this->revStore->getQueryInfo( [ 'page' ] ) )
 			->fields( $this->pageStore->getSelectFields() )
 			->where( $revs ? [ 'rev_id' => array_keys( $revs ) ] : '0=1' );
@@ -342,7 +332,7 @@ class ThreadItemStore {
 	 * @return SelectQueryBuilder
 	 */
 	private function getIdsNamesBuilder(): SelectQueryBuilder {
-		$dbr = $this->getConnectionRef( DB_REPLICA );
+		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 
 		$queryBuilder = $dbr->newSelectQueryBuilder()
 			->from( 'discussiontools_items' )
@@ -369,7 +359,7 @@ class ThreadItemStore {
 			return false;
 		}
 
-		$dbw = $this->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$didInsert = false;
 		$method = __METHOD__;
 
