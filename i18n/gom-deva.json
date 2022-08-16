@@ -20,6 +20,9 @@
 	"discussiontools-replywidget-preview": "पूर्वनियाळ",
 	"discussiontools-replywidget-reply": "जबाब दी",
 	"discussiontools-replywidget-summary": "सारांश",
+	"discussiontools-topicsubscription-button-subscribe": "कळोवण्यो मागय",
+	"discussiontools-topicsubscription-button-unsubscribe": "कळोवण्यो बंद कर",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "कळोवण्यो बंद कर",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} जबाब दी]",
 	"tag-discussiontools-source": "स्रोत",
 	"tag-discussiontools-visual": "दृष्टी"
