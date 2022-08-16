@@ -16,9 +16,9 @@ use MWTimestamp;
 use ReadOnlyMode;
 use stdClass;
 use TitleFormatter;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILBFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\IMaintainableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
@@ -81,19 +81,16 @@ class ThreadItemStore {
 	 * @return bool
 	 */
 	private function isDisabled(): bool {
-		static $tablesCreated = null;
-		if ( $tablesCreated === null ) {
-			$tablesCreated = $this->getConnectionRef( DB_REPLICA )->tableExists( 'discussiontools_items', __METHOD__ );
-		}
-		return !$tablesCreated;
+		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
+		return !$dtConfig->get( 'DiscussionToolsEnablePermalinksBackend' );
 	}
 
 	/**
 	 * @param int $dbIndex DB_PRIMARY or DB_REPLICA
 	 *
-	 * @return IMaintainableDatabase
+	 * @return IDatabase
 	 */
-	private function getConnectionRef( int $dbIndex ): IMaintainableDatabase {
+	private function getConnectionRef( int $dbIndex ): IDatabase {
 		return $this->loadBalancer->getConnectionRef( $dbIndex, [ 'watchlist' ] );
 	}
 
