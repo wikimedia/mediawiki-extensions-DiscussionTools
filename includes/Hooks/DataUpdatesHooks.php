@@ -14,6 +14,8 @@ use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
 use MediaWiki\Revision\RenderedRevision;
 use MediaWiki\Storage\Hook\RevisionDataUpdatesHook;
 use MWCallableUpdate;
+use MWExceptionHandler;
+use Throwable;
 use Title;
 
 class DataUpdatesHooks implements RevisionDataUpdatesHook {
@@ -44,8 +46,13 @@ class DataUpdatesHooks implements RevisionDataUpdatesHook {
 		$rev = $renderedRevision->getRevision();
 		if ( HookUtils::isAvailableForTitle( $title ) ) {
 			$updates[] = new MWCallableUpdate( function () use ( $rev ) {
-				$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev );
-				$this->threadItemStore->insertThreadItems( $rev, $threadItemSet );
+				try {
+					$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev );
+					$this->threadItemStore->insertThreadItems( $rev, $threadItemSet );
+				} catch ( Throwable $e ) {
+					// Catch errors, so that they don't cause other updates to fail (T315383), but log them.
+					MWExceptionHandler::logException( $e );
+				}
 			}, __METHOD__ );
 		}
 	}
