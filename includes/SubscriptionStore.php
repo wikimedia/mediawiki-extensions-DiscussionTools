@@ -59,15 +59,6 @@ class SubscriptionStore {
 	}
 
 	/**
-	 * @param int $dbIndex DB_PRIMARY or DB_REPLICA
-	 *
-	 * @return IDatabase
-	 */
-	private function getConnectionRef( $dbIndex ): IDatabase {
-		return $this->loadBalancer->getConnectionRef( $dbIndex, [ 'watchlist' ] );
-	}
-
-	/**
 	 * @param IDatabase $db
 	 * @param UserIdentity|null $user
 	 * @param array|null $itemNames
@@ -129,7 +120,7 @@ class SubscriptionStore {
 		}
 
 		$options += [ 'forWrite' => false ];
-		$db = $this->getConnectionRef( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
+		$db = $this->loadBalancer->getConnection( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
 
 		$rows = $this->fetchSubscriptions(
 			$db,
@@ -163,7 +154,7 @@ class SubscriptionStore {
 		array $options = []
 	): array {
 		$options += [ 'forWrite' => false ];
-		$db = $this->getConnectionRef( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
+		$db = $this->loadBalancer->getConnection( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
 
 		$rows = $this->fetchSubscriptions(
 			$db,
@@ -228,7 +219,7 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() ) {
 			return false;
 		}
-		$dbw = $this->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$dbw->upsert(
 			'discussiontools_subscription',
 			[
@@ -265,7 +256,7 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() ) {
 			return false;
 		}
-		$dbw = $this->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 		$dbw->update(
 			'discussiontools_subscription',
 			[ 'sub_state' => static::STATE_UNSUBSCRIBED ],
@@ -322,7 +313,7 @@ class SubscriptionStore {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
-		$dbw = $this->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
 
 		$conditions = [
 			'sub_item' => $itemName,
