@@ -47,6 +47,8 @@
 	"discussiontools-replywidget-abandon": "Желите ли заиста да одбаците коментар који сте започели писати?",
 	"discussiontools-replywidget-abandon-discard": "Одбаци коментар",
 	"discussiontools-replywidget-abandon-keep": "Настави писање",
+	"discussiontools-replywidget-abandontopic": "Желите ли заиста да одбаците тему коју сте започели писати?",
+	"discussiontools-replywidget-abandontopic-discard": "Одбаци тему",
 	"discussiontools-replywidget-abandontopic-keep": "Настави писање",
 	"discussiontools-replywidget-advanced": "Напредно",
 	"discussiontools-replywidget-anon-warning": "<strong>Нисте пријављени.</strong> [$1 Пријавите се] или [$2 отворите налог] како бисте доприносили под корисничким именом уместо под IP адресом.",
