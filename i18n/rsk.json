@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Keresturec"
+			"Keresturec",
+			"Vlad5250"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Достанєце обвисценє кед дахто обяви нови коментар у тей дискусиї. Ви можеце намесциц параметри за обвисцованє у часци за намесцанє опцийох.",
@@ -33,6 +34,9 @@
 	"discussiontools-error-noswitchtove-table": "пренайдзена таблїчка",
 	"discussiontools-error-noswitchtove-template": "пренайдзени шаблон",
 	"discussiontools-error-noswitchtove-title": "Визуелни режим онєможлївени",
+	"discussiontools-findcomment-label-search": "Глєдай",
+	"discussiontools-findcomment-results-transcluded": "(уключени зоз другого боку)",
+	"discussiontools-findcomment-title": "Найди коментар",
 	"discussiontools-limitreport-errorreqid": "ID вимага гришку DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Час хаснованя DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунди}}",

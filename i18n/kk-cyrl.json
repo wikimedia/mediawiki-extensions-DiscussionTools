@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Arystanbek",
-			"Hedeyohu22"
+			"Hedeyohu22",
+			"СеніңШешең"
 		]
 	},
 	"discussiontools": "Талқылау құралдары",
@@ -59,5 +60,10 @@
 	"discussiontools-preference-replytool": "Жылдам жауап беруді қосу",
 	"discussiontools-preference-replytool-help": "Бұл сізге бір рет басу арқылы талқылау бетіндегі пікірлерге жауап беру сілтемесін көрсетеді.",
 	"discussiontools-preference-sourcemodetoolbar": "Қайнар модына өңдеу құралдарын қосу",
-	"discussiontools-replylink": "жауап беру"
+	"discussiontools-replylink": "жауап беру",
+	"discussiontools-replywidget-cancel": "Болдырмау",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Визуалды",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} қатысушысына жауап беру",
+	"discussiontools-replywidget-reply": "Жауап беру"
 }

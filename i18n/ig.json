@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Oby Ezeilo",
-			"Olugold"
+			"Olugold",
+			"Timzy D'Great"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Ị ga-anata ozi mgbe mmadụ tinyere okwu ọhụụ n'ebe akpamnkata. Ị nwere ike idozi ebe ọkwa nnata ozi gi ebe mmasị gị.",
@@ -73,7 +74,7 @@
 	"discussiontools-replywidget-loading": "ọ ka na-ebudata",
 	"discussiontools-replywidget-mention-tool-header": "Chọta aha ọnye ọrụ $1",
 	"discussiontools-replywidget-mention-tool-title": "Kwupụta otu aha onye ọrụ",
-	"discussiontools-replywidget-mode-source": "Ebe nsi nweta",
+	"discussiontools-replywidget-mode-source": "Ebe m si nweta",
 	"discussiontools-replywidget-mode-visual": "Nhụrụ anya",
 	"discussiontools-replywidget-newtopic": "Tinye isiokwu",
 	"discussiontools-replywidget-placeholder-newtopic": "Nkọwa",
