@@ -13,6 +13,7 @@ use ExtensionRegistry;
 use IContextSource;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
+use MediaWiki\Extension\Gadgets\GadgetRepo;
 use MediaWiki\Extension\VisualEditor\ParsoidHelper;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
@@ -52,6 +53,10 @@ class HookUtils {
 		self::AUTOTOPICSUB,
 		self::VISUALENHANCEMENTS,
 		self::VISUALENHANCEMENTS_REPLY,
+	];
+
+	public const FEATURES_CONFLICT_WITH_GADGET = [
+		self::REPLYTOOL,
 	];
 
 	protected static $propCache = [];
@@ -111,6 +116,39 @@ class HookUtils {
 
 		$parser = $services->getService( 'DiscussionTools.CommentParser' );
 		return $parser->parse( $container, $title );
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @param string $feature Feature to check for
+	 * @return bool
+	 */
+	public static function featureConflictsWithGadget( UserIdentity $user, string $feature ) {
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'discussiontools' );
+		$gadgetName = $dtConfig->get( 'DiscussionToolsConflictingGadgetName' );
+		if ( !$gadgetName ) {
+			return false;
+		}
+
+		if ( !in_array( $feature, static::FEATURES_CONFLICT_WITH_GADGET ) ) {
+			return false;
+		}
+
+		$extensionRegistry = ExtensionRegistry::getInstance();
+		if ( $extensionRegistry->isLoaded( 'Gadgets' ) ) {
+			$gadgetsRepo = GadgetRepo::singleton();
+			$match = array_search( $gadgetName, $gadgetsRepo->getGadgetIds() );
+			if ( $match !== false ) {
+				try {
+					return $gadgetsRepo->getGadget( $gadgetName )
+						->isEnabled( $user );
+				} catch ( \InvalidArgumentException $e ) {
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -191,6 +229,9 @@ class HookUtils {
 		$services = MediaWikiServices::getInstance();
 		$optionsLookup = $services->getUserOptionsLookup();
 		if ( $feature ) {
+			if ( static::featureConflictsWithGadget( $user, $feature ) ) {
+				return false;
+			}
 			// Check for a specific feature
 			$enabled = $optionsLookup->getOption( $user, 'discussiontools-' . $feature );
 			// `null` means there is no user option for this feature, so it must be enabled
