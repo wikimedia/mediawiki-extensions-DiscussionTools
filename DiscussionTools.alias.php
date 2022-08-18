@@ -18,6 +18,8 @@ $specialPageAliases['en'] = [
 /** Czech (čeština) */
 $specialPageAliases['cs'] = [
 	'TopicSubscriptions' => [ 'Odebíraná_témata' ],
+	'FindComment' => [ 'Najít_komentář' ],
+	'GoToComment' => [ 'Přejít_na_komentář' ],
 ];
 
 /** Hebrew (עברית) */
