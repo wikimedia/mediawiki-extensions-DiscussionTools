@@ -15,17 +15,24 @@ $specialPageAliases['en'] = [
 	'GoToComment' => [ 'GoToComment' ],
 ];
 
-/** čeština (Czech) */
+/** Czech (čeština) */
 $specialPageAliases['cs'] = [
 	'TopicSubscriptions' => [ 'Odebíraná_témata' ],
 ];
 
-/** 한국어 (Korean) */
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = [
+	'TopicSubscriptions' => [ 'מינויים_לנושאים' ],
+	'FindComment' => [ 'מציאת_תגובה' ],
+	'GoToComment' => [ 'מעבר_לתגובה' ],
+];
+
+/** Korean (한국어) */
 $specialPageAliases['ko'] = [
 	'TopicSubscriptions' => [ '구독하는주제' ],
 ];
 
-/** polski (Polish) */
+/** Polish (polski) */
 $specialPageAliases['pl'] = [
 	'TopicSubscriptions' => [ 'Subskrypcje_wątków', 'Subskrybowane_wątki' ],
 ];
