@@ -400,9 +400,8 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 
-	// HACK: Can be removed once T311502 is fixed
-	// stylelint-disable-next-line selector-type-no-unknown
-	mw\3Atocplace:first-child + .ext-discussiontools-init-section {
+	// TOC can output a meta tag meaning we aren't the first child anymore
+	meta:first-child + .ext-discussiontools-init-section {
 		border-top: 0;
 		margin-top: 0;
 	}
