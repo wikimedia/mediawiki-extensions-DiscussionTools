@@ -352,7 +352,7 @@ h1, h2, h3, h4, h5, h6 {
 		flex-wrap: wrap;
 		// stylelint-disable-next-line declaration-no-important
 		border-bottom: 0 !important;
-		margin: 12px 0;
+		margin: 12px 0 0 0;
 		padding-bottom: 0;
 		// The tap-highlight is an odd shape and shows even for cancelled events on -actions,
 		// just hide it.
@@ -407,6 +407,8 @@ h1, h2, h3, h4, h5, h6 {
 
 		// stylelint-disable-next-line selector-class-pattern
 		&.open-block {
+			margin-bottom: 12px;
+
 			.ext-discussiontools-init-section-actions {
 				display: block;
 			}
