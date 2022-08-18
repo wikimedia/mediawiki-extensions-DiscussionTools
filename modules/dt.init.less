@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ext-discussiontools-init-new-topic {
-	margin-top: 1em;
+	margin: 0.5em 0;
 }
 
 // Topic subscriptions (link)
@@ -402,8 +402,8 @@ h1, h2, h3, h4, h5, h6 {
 
 	// Also re-style topic header input in new topic tool
 	h2.ext-discussiontools-ui-newTopic-sectionTitle .oo-ui-inputWidget-input {
-		font-weight: bold;
 		font-family: sans-serif;
+		font-size: 0.75em;
 	}
 
 	// Mobile
@@ -411,7 +411,7 @@ h1, h2, h3, h4, h5, h6 {
 		flex-wrap: wrap;
 		// stylelint-disable-next-line declaration-no-important
 		border-bottom: 0 !important;
-		margin: 12px 0 0 0;
+		margin: 5px 0 0 0;
 		padding-bottom: 0;
 		// The tap-highlight is an odd shape and shows even for cancelled events on -actions,
 		// just hide it.
@@ -422,6 +422,16 @@ h1, h2, h3, h4, h5, h6 {
 			width: auto;
 			flex-grow: 1;
 			flex-basis: 0;
+			/* T311612 */
+			font-size: 0.75em;
+		}
+
+		// stylelint-disable-next-line selector-class-pattern
+		> .indicator,
+		&-ellipsisButton {
+			// Adjust for smaller headings
+			margin-top: -5px;
+			margin-bottom: -5px;
 		}
 
 		&:first-child {
@@ -429,6 +439,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 
 		&-bar {
+			margin-top: 0;
 			width: 100%;
 			flex-wrap: wrap;
 		}
