@@ -102,7 +102,7 @@ class HookUtils {
 
 		if ( !$status->isOK() ) {
 			[ 'message' => $msg, 'params' => $params ] = $status->getErrors()[0];
-			throw new MWException( wfMessage( $msg, ...$params )->text() );
+			throw new MWException( wfMessage( $msg, ...$params )->inLanguage( 'en' )->useDatabase( false )->text() );
 		}
 
 		$title = TitleValue::newFromPage( $revRecord->getPage() );
