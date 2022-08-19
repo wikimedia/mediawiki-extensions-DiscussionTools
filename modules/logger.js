@@ -59,7 +59,8 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 				user_class: user.isAnon() ? 'IP' : undefined,
 				user_editcount: mw.config.get( 'wgUserEditCount', 0 ),
 				mw_version: mw.config.get( 'wgVersion' ),
-				platform: 'desktop',
+				// T249944 may someday change this to not hang from MobileFrontend
+				platform: mw.config.get( 'wgMFMode' ) !== null ? 'phone' : 'desktop',
 				integration: 'discussiontools',
 				page_token: user.getPageviewToken(),
 				session_token: user.sessionId(),
@@ -73,7 +74,8 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 			{
 				user_id: user.getId(),
 				user_editcount: mw.config.get( 'wgUserEditCount', 0 ),
-				platform: 'desktop',
+				// T249944 may someday change this to not hang from MobileFrontend
+				platform: mw.config.get( 'wgMFMode' ) !== null ? 'phone' : 'desktop',
 				integration: 'discussiontools'
 			}
 		);
