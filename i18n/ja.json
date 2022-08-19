@@ -21,6 +21,7 @@
 			"つぶあん派",
 			"カッパ鳥",
 			"ネイ",
+			"春春眠眠",
 			"青子守歌"
 		]
 	},
@@ -135,6 +136,7 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "このトピックに新しいコメントが投稿されても通知は届かなくなります。",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "通知を無効にしました",
 	"discussiontools-topicsubscription-pager-actions": "操作",
+	"discussiontools-topicsubscription-pager-notified": "最新のお知らせ",
 	"discussiontools-topicsubscription-pager-page": "ページ",
 	"discussiontools-topicsubscription-pager-topic": "話題",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "購読を解除",

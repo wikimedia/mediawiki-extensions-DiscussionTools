@@ -151,7 +151,7 @@
 	"discussiontools-topicsubscription-pager-actions": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.\n{{identical|Action}}",
 	"discussiontools-topicsubscription-pager-created": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
 	"discussiontools-topicsubscription-pager-notified": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
-	"discussiontools-topicsubscription-pager-notified-never": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] in the table.",
+	"discussiontools-topicsubscription-pager-notified-never": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] in the table. It means that a notification about a topic was never sent.",
 	"discussiontools-topicsubscription-pager-page": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
 	"discussiontools-topicsubscription-pager-topic": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] as a table heading.",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Used on [[mw:Special:TopicSubscriptions|Special:TopicSubscriptions]] in the table, as a button label.",
