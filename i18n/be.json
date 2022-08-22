@@ -6,6 +6,7 @@
 			"Kareyac",
 			"No Sleep till Krupki",
 			"Tomato Cream",
+			"Tīgelika",
 			"ZlyiLev"
 		]
 	},
@@ -63,6 +64,7 @@
 	"discussiontools-preference-autotopicsub": "Аўтаматычна падпісвацца на тэмы",
 	"discussiontools-preference-autotopicsub-help": "Калі вы пачынаеце новае абмеркаванне або пакідаеце каментар у існуючым абмеркаванні, вы будзеце аўтаматычна апавешчаны, калі іншыя публікуюць новыя каментары да яе.",
 	"discussiontools-preference-description": "Уключае эксперыментальныя функцыі старонкі размоў:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Адказ] на каментарыі старонкі абмеркаванняў адным пстрыкам.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Дадаванне новых тэм] у падрадковай форме.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Апавяшчэнне], калі ў раздзелы, на якія вы падпісаліся, дадаюцца новыя каментары.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Паказ метададзеных] аб кожнай размове і ўключэнне новага макету старонкі.\n\nГэтымі функцыямі можна кіраваць у вашых [[Special:Preferences#mw-prefsection-editing-discussion|наладах]].\n\nАбнаўленні будуць змяшчацца на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates старонцы праекта абнаўленняў старонак размоў].\n\nЗвярніце ўвагу:\n* З часам будуць з’яўляцца новыя эксперыментальныя функцыі.\n* Некаторыя з функцый могуць быць пакуль што недаступныя ў вашай вікі.",
+	"discussiontools-preference-gadget-conflict": "Каб уключыць хуткі адказ, спачатку трэба [[$1|адключыць гаджэт Зручныя размовы]] у вашых наладах гаджэтаў.",
 	"discussiontools-preference-label": "Інструменты абмеркавання",
 	"discussiontools-preference-newtopictool": "Уключыць хуткае даданне тэмы",
 	"discussiontools-preference-newtopictool-createpage": "Калі я наведваю старонку размоў, якая яшчэ не была створана:",
@@ -131,6 +133,9 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вы больш не будзеце атрымліваць апавяшчэнні пра новыя каментарыі ў гэтай тэме.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Вы адпісаліся.",
 	"discussiontools-topicsubscription-pager-actions": "Дзеянні",
+	"discussiontools-topicsubscription-pager-created": "Першая падпіска",
+	"discussiontools-topicsubscription-pager-notified": "Апошняе апавяшчэнне",
+	"discussiontools-topicsubscription-pager-notified-never": "ніколі",
 	"discussiontools-topicsubscription-pager-page": "Старонка",
 	"discussiontools-topicsubscription-pager-topic": "Тэма",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Адпісацца",

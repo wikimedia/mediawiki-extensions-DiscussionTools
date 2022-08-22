@@ -20,7 +20,7 @@
 	"discussiontools-emptystate-title": "Eng Diskussioun ufänken iwwer {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Wëllkomm op Ärer Diskussiounssäit",
 	"discussiontools-emptystate-title-self-anon": "Wëllkomm op dëser Diskussiounssäit",
-	"discussiontools-emptystate-title-user": "Fänkt eng Diskussioun un  {{GENDER:{{PAGENAME}}|mam}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "Fänkt eng Diskussioun {{GENDER:{{PAGENAME}}|mam}} {{PAGENAME}} un",
 	"discussiontools-emptystate-title-user-anon": "Wëllkomm op dëser Diskussiounssäit",
 	"discussiontools-error-comment-disappeared-reload": "Lued d'Säit wgl. nach eng Kéier a probéiert nach eng Kéier.",
 	"discussiontools-error-comment-is-transcluded": "De Link \"{{int:discussiontools-replylink}}\" kann net benotzt gi fir op dës Bemierkung z'äntweren. Fir z'änneweren benotzt wgl. den Editeur fir déi komplett Säit a klickt op \"$1\".",

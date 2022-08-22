@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ерней"
+		]
+	},
+	"discussiontools-replylink": "җавап бирү",
+	"discussiontools-replywidget-cancel": "Кире алу",
+	"discussiontools-replywidget-mode-source": "Чыганак",
+	"discussiontools-replywidget-mode-visual": "Күрсәтмәле",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} га җавап бирү",
+	"discussiontools-replywidget-reply": "Җавап бирү"
+}
