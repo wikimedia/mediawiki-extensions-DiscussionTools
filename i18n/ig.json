@@ -3,7 +3,8 @@
 		"authors": [
 			"Oby Ezeilo",
 			"Olugold",
-			"Amire80"
+			"Amire80",
+			"Timzy D'Great"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Zaghachi",
@@ -15,7 +16,7 @@
 	"discussiontools-replywidget-feedback": "Kesaa ozi nzighachi maka njirimara a",
 	"discussiontools-replywidget-loading": "ọ ka na-ebudata",
 	"discussiontools-replywidget-mention-tool-title": "Kwupụta otu aha onye ọrụ",
-	"discussiontools-replywidget-mode-source": "Ebe nsi nweta",
+	"discussiontools-replywidget-mode-source": "Ebe m si nweta",
 	"discussiontools-replywidget-mode-visual": "Nhụrụ anya",
 	"discussiontools-replywidget-placeholder-reply": "Zaghachi na {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Nlele anya",

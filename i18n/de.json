@@ -8,7 +8,9 @@
 			"Doc Taxon",
 			"FF-11",
 			"Inkowik",
-			"Umherirrender"
+			"Umherirrender",
+			"Brettchenweber",
+			"ElBe"
 		]
 	},
 	"discussiontools": "Diskussions-Werkzeuge",
@@ -37,8 +39,8 @@
 	"tag-discussiontools-edit": "Kommentar bearbeiten",
 	"tag-discussiontools-edit-description": "Benutzer hat einen vorhandenen Kommentar mit den Diskussions-Werkzeugen bearbeitet",
 	"tag-discussiontools-newtopic": "Thema hinzufügen",
-	"tag-discussiontools-newtopic-description": "Benutzer hat ein neues Thema zur Seite mit den Diskussions-Werkzeugen erstellt",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Antworten]",
+	"tag-discussiontools-newtopic-description": "Benutzer hat einen neuen Abschnitt zur Seite mit den Diskussions-Werkzeugen erstellt",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Antwort]",
 	"tag-discussiontools-reply-description": "Benutzer hat auf einen Kommentar mit den Diskussions-Werkzeugen geantwortet",
 	"tag-discussiontools-source": "Quelltext",
 	"tag-discussiontools-source-description": "Diskussions-Werkzeugen waren im Quelltext-Modus",
