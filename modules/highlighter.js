@@ -401,6 +401,11 @@ function clearHighlightTargetComment( threadItemSet ) {
  * @return {Element|null} Element, if found
  */
 function getTargetFromFragment( hash ) {
+	if ( !hash ) {
+		// Firefox emits a console warning if you pass an empty string
+		// to getElementById (T272844).
+		return null;
+	}
 	// Per https://html.spec.whatwg.org/multipage/browsing-the-web.html#target-element
 	// we try the raw fragment first, then the percent-decoded fragment.
 	return document.getElementById( hash ) ||
