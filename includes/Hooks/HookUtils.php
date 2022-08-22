@@ -350,6 +350,14 @@ class HookUtils {
 			return false;
 		}
 
+		// Subfeatures are disabled if the main feature is disabled
+		if ( (
+			$feature === static::VISUALENHANCEMENTS_REPLY ||
+			$feature === static::VISUALENHANCEMENTS_PAGEFRAME
+		) && !self::isFeatureEnabledForOutput( $output, static::VISUALENHANCEMENTS ) ) {
+			return false;
+		}
+
 		// ?dtenable=1 overrides all user and title checks
 		$queryEnable = $output->getRequest()->getRawVal( 'dtenable' ) ?:
 			// Extra hack for parses from API, where this parameter isn't passed to derivative requests
