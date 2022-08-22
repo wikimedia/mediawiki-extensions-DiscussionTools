@@ -513,6 +513,15 @@ function updatePageContents( $container, data ) {
 	mw.hook( 'wikipage.tableOfContents' ).fire(
 		data.parse.showtoc ? data.parse.sections : []
 	);
+
+	// Copied from ve.init.mw.DesktopArticleTarget.prototype.saveComplete
+	// TODO: Upstream this to core/skins, triggered by a hook (wikipage.content?)
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '#t-permalink a, #coll-download-as-rl a' ).each( function () {
+		var url = new URL( this.href );
+		url.searchParams.set( 'oldid', data.parse.revid );
+		$( this ).attr( 'href', url.toString() );
+	} );
 }
 
 /**
