@@ -7,5 +7,9 @@
 	"discussiontools-emptystate-button": "Tjállegåde ságastallamav",
 	"discussiontools-emptystate-title": "Álge ságastallamav {{PAGENAME}} birra",
 	"discussiontools-emptystate-title-self": "Burist båhtem duv ságastallambielláj",
-	"discussiontools-replywidget-newtopic": "Lasedä ábdnasav"
+	"discussiontools-replylink": "svärru",
+	"discussiontools-replywidget-cancel": "Buŧŧki",
+	"discussiontools-replywidget-mode-source": "Gálldo",
+	"discussiontools-replywidget-newtopic": "Lasedä ábdnasav",
+	"discussiontools-replywidget-reply": "Svärru"
 }

@@ -4,10 +4,27 @@
 			"KartikMistry"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ઉત્તર",
+	"discussiontools-emptystate-button": "ચર્ચા શરૂ કરો",
+	"discussiontools-emptystate-title-self": "તમારા ચર્ચા પૃષ્ઠ પર સ્વાગત છે",
+	"discussiontools-emptystate-title-self-anon": "આ ચર્ચા પૃષ્ઠ પર આપનું સ્વાગત છે",
+	"discussiontools-emptystate-title-user-anon": "આ ચર્ચા પૃષ્ઠ પર આપનું સ્વાગત છે",
+	"discussiontools-error-comment-conflict": "તમારી ટીપ્પણી સંગ્રહ કરી ન શકાઇ, કારણકે કોઇ અન્યે એ જ સમયે ટીપ્પણી કરી હતી. મહેરબાની કરી ફરી પ્રયત્ન કરો, અથવા પાનાંને તાજું કરી છેલ્લી ટીપ્પણીઓ જુઓ.",
+	"discussiontools-notification-subscribed-new-comment-header": "\"<strong>$4</strong>\" માં $1 {{GENDER:$2|ઉત્તર આપ્યો}}.",
+	"discussiontools-notification-subscribed-new-comment-view": "ટીપ્પણી જુઓ",
+	"discussiontools-preference-label": "ચર્ચા સાધનો",
 	"discussiontools-replylink": "ઉત્તર",
 	"discussiontools-replywidget-cancel": "રદ કરો",
+	"discussiontools-replywidget-loading": "લાવે છે...",
 	"discussiontools-replywidget-mode-source": "સ્રોત",
 	"discussiontools-replywidget-mode-visual": "વિઝ્યુલ",
+	"discussiontools-replywidget-newtopic": "વિષય ઉમેરો",
+	"discussiontools-replywidget-placeholder-newtopic": "વર્ણન",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ને ઉત્તર",
-	"discussiontools-replywidget-reply": "ઉત્તર"
+	"discussiontools-replywidget-preview": "પૂર્વાવલોકન",
+	"discussiontools-replywidget-reply": "ઉત્તર",
+	"discussiontools-replywidget-summary": "સારાંશ",
+	"discussiontools-replywidget-transcluded": "તમારી ટિપ્પણી [[$1]] પર સાચવવામાં આવશે.",
+	"tag-discussiontools-source": "સ્રોત",
+	"tag-discussiontools-visual": "વિઝ્યુલ"
 }

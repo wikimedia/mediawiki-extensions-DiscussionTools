@@ -80,7 +80,7 @@
 	"discussiontools-replywidget-summary": "תקציר",
 	"discussiontools-replywidget-terms-click": "לחיצה על \"$1\" מהווה את הסכמתך לתנאי השימוש של אתר הוויקי הזה.",
 	"discussiontools-replywidget-transcluded": "התגובה שלך תישמר בדף [[$1]].",
-	"discussiontools-topicsubscription-button-subscribe": "מעקב",
+	"discussiontools-topicsubscription-button-subscribe": "מינוי",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "{{GENDER:|הירשם|הירשמי}} כדי לקבל התראות על תגובות חדשות.",
 	"discussiontools-topicsubscription-button-unsubscribe": "ביטול מעקב",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "{{GENDER:|בטל|בטלי}} את הרישום כדי להפסיק לקבל התראות.",

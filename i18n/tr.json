@@ -16,7 +16,9 @@
 			"Can",
 			"Erdemkose",
 			"Melissadilara",
-			"Victor Trevor"
+			"Victor Trevor",
+			"Cobija",
+			"Rapsar"
 		]
 	},
 	"discussiontools": "Tartışma araçları",
@@ -58,8 +60,8 @@
 	"discussiontools-preference-replytool-help": "Bu, size tek bir tıklamayla tartışma sayfası yorumlarına cevap vermeniz için bir bağlantı gösterecektir.",
 	"discussiontools-preference-sourcemodetoolbar": "Düzenleme araçlarını kaynak modunda etkinleştir",
 	"discussiontools-preference-sourcemodetoolbar-help": "Bu, hızlı yanıtlama ve hızlı konu ekleme özelliklerinin ping atmak ve bağlantı eklemek için kısayollar içeren kaynak modlarına bir araç çubuğu ekleyecektir.",
-	"discussiontools-preference-topicsubscription": "Konu üyeliğini etkinleştir",
-	"discussiontools-preference-topicsubscription-help": "Bu, size herhangi bir konuda yorumlara bildirim almak için üye olmanıza olanak sağlayacaktır.",
+	"discussiontools-preference-topicsubscription": "Konuya aboneliğini etkinleştir",
+	"discussiontools-preference-topicsubscription-help": "Bu sayede belirli konulara abone olarak yapılan yorumlarla ilgili bildirim almanız sağlanacaktır.",
 	"discussiontools-replylink": "yanıtla",
 	"discussiontools-replywidget-abandon": "Yazdığınız yorumu silmek istediğinizden emin misiniz?",
 	"discussiontools-replywidget-abandon-discard": "Yorumu sil",

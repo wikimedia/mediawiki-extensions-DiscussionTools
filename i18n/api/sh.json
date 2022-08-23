@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"apierror-discussiontools-subscription-failed-add": "Ne mogu se pretplatiti na ovu temu.",
+	"apierror-discussiontools-subscription-failed-remove": "Nije moguće otkazati pretplatu na ovu temu."
+}
