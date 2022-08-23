@@ -3,15 +3,5 @@
 	"extends": [
 		"wikimedia/server",
 		"wikimedia/mediawiki"
-	],
-	"overrides": [
-		{
-			"files": [
-				"i18n/**"
-			],
-			"rules": {
-				"sort-keys": "error"
-			}
-		}
 	]
 }
