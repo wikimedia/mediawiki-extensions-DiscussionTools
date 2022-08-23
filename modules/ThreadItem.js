@@ -29,10 +29,6 @@ function ThreadItem( type, level, range ) {
 	 */
 	this.id = null;
 	/**
-	 * @member {string|null} Unique ID (within the page) for this comment, according to an older algorithm
-	 */
-	this.legacyId = null;
-	/**
 	 * @member {ThreadItem[]} Replies to this thread item
 	 */
 	this.replies = [];

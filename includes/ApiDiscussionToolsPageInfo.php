@@ -65,14 +65,9 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		foreach ( $threadItems as $threadItem ) {
 			$from = $threadItem->getTranscludedFrom();
 
-			// Key by IDs, legacy IDs, and names. This assumes that they can never conflict.
+			// Key by IDs and names. This assumes that they can never conflict.
 
 			$transcludedFrom[ $threadItem->getId() ] = $from;
-
-			$legacyId = $threadItem->getLegacyId();
-			if ( $legacyId ) {
-				$transcludedFrom[ $legacyId ] = $from;
-			}
 
 			$name = $threadItem->getName();
 			if ( isset( $transcludedFrom[ $name ] ) && $transcludedFrom[ $name ] !== $from ) {

@@ -946,9 +946,6 @@ class CommentParser {
 	 * @return string
 	 */
 	private function computeId( ContentThreadItem $threadItem, ContentThreadItemSet $previousItems ): string {
-		// When changing the algorithm below, copy the old version into computeLegacyId()
-		// for compatibility with cached data.
-
 		$id = null;
 
 		if ( $threadItem instanceof ContentHeadingItem && $threadItem->isPlaceholderHeading() ) {
@@ -1002,22 +999,6 @@ class CommentParser {
 		}
 
 		return $id;
-	}
-
-	/**
-	 * Given a thread item, return an identifier for it like computeId(), generated according to an
-	 * older algorithm, so that we can still match IDs from cached data.
-	 *
-	 * @param ContentThreadItem $threadItem
-	 * @param ContentThreadItemSet $previousItems
-	 * @return string|null
-	 */
-	private function computeLegacyId( ContentThreadItem $threadItem, ContentThreadItemSet $previousItems ): ?string {
-		// When we change the algorithm in computeId(), the old version should be copied below
-		// for compatibility with cached data.
-
-		// Currently not needed.
-		return null;
 	}
 
 	/**
@@ -1108,8 +1089,6 @@ class CommentParser {
 
 			$id = $this->computeId( $threadItem, $result );
 			$threadItem->setId( $id );
-			$legacyId = $this->computeLegacyId( $threadItem, $result );
-			$threadItem->setLegacyId( $legacyId );
 
 			$result->updateIdAndNameMaps( $threadItem );
 		}

@@ -93,8 +93,6 @@ class CommentParserTest extends IntegrationTestCase {
 		$serialized->id = $threadItem->getId();
 
 		$serialized->warnings = $threadItem->getWarnings();
-		// Ignore warnings about legacy IDs (we don't have them in JS)
-		$serialized->warnings = array_values( array_diff( $serialized->warnings, [ 'Duplicate comment legacy ID' ] ) );
 
 		$serialized->replies = [];
 		foreach ( $threadItem->getReplies() as $reply ) {

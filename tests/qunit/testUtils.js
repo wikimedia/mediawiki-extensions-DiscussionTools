@@ -91,8 +91,6 @@ module.exports.serializeComments = function ( parent, root ) {
 	// Unimportant
 	delete parent.rootNode;
 
-	delete parent.legacyId;
-
 	parent.replies.forEach( function ( comment ) {
 		module.exports.serializeComments( comment, root );
 	} );
