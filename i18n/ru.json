@@ -140,6 +140,7 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вы больше не будете получать уведомления о новых сообщениях в этой теме.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Вы отписались.",
 	"discussiontools-topicsubscription-pager-actions": "Действия",
+	"discussiontools-topicsubscription-pager-notified-never": "никогда",
 	"discussiontools-topicsubscription-pager-page": "Страница",
 	"discussiontools-topicsubscription-pager-topic": "Тема",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Отписаться",
