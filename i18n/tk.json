@@ -11,5 +11,8 @@
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} ulanyjysyna jogap beriň",
 	"discussiontools-replywidget-reply": "Jogap ber",
 	"discussiontools-replywidget-return-to-newtopic": "Täze mowzuga dolan",
-	"discussiontools-replywidget-return-to-reply": "Jogap bermek üçin dolan"
+	"discussiontools-replywidget-return-to-reply": "Jogap bermek üçin dolan",
+	"discussiontools-topicsubscription-pager-created": "Ilki bilen abuna ýazyldy",
+	"discussiontools-topicsubscription-pager-notified": "Iň soňky bildiriş",
+	"discussiontools-topicsubscription-pager-notified-never": "hiç haçan"
 }
