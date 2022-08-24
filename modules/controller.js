@@ -535,6 +535,7 @@ function updatePageContents( $container, data ) {
  * @return {jQuery.Promise} Promise which resolves when the refresh is complete
  */
 function refreshPageContents( oldId ) {
+	// This should approximately match the API call in ApiVisualEditorEditor#parseWikitext
 	return getApi().get( {
 		action: 'parse',
 		// HACK: 'useskin' triggers a different code path that runs our OutputPageBeforeHTML hook,
@@ -545,7 +546,7 @@ function refreshPageContents( oldId ) {
 		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
 		// a page view with reply links forced with ?dtenable=1 or otherwise
 		dtenable: '1',
-		prop: [ 'text', 'sections', 'modules', 'jsconfigvars', 'revid' ],
+		prop: [ 'text', 'revid', 'categorieshtml', 'sections', 'displaytitle', 'subtitle', 'modules', 'jsconfigvars' ],
 		page: !oldId ? mw.config.get( 'wgRelevantPageName' ) : undefined,
 		oldid: oldId || undefined
 	} ).then( function ( parseResp ) {
