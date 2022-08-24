@@ -99,7 +99,7 @@
 	"discussiontools-target-comments-missing": "לא היה אפשר למצוא הערות חדשות. ייתכן שהן נמחקה או הועברה.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "ביטול מעקב",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "להפסיק לעקוב אחרי הנושא הזה?",
-	"discussiontools-topicsubscription-button-subscribe": "מעקב",
+	"discussiontools-topicsubscription-button-subscribe": "מינוי",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "{{GENDER:|הירשם|הירשמי}} כדי לקבל התראות על תגובות חדשות.",
 	"discussiontools-topicsubscription-button-unsubscribe": "ביטול מעקב",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "{{GENDER:|בטל|בטלי}} את הרישום כדי להפסיק לקבל התראות.",

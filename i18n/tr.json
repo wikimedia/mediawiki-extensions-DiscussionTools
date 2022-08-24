@@ -17,7 +17,8 @@
 			"ToprakM",
 			"Vito Genovese",
 			"Victor Trevor",
-			"Cobija"
+			"Cobija",
+			"Rapsar"
 		]
 	},
 	"discussiontools": "Tartışma araçları",
@@ -71,8 +72,8 @@
 	"discussiontools-preference-sourcemodetoolbar": "Düzenleme araçlarını kaynak modunda etkinleştir",
 	"discussiontools-preference-sourcemodetoolbar-help": "Bu, hızlı yanıtlama ve hızlı konu ekleme özelliklerinin ping atmak ve bağlantı eklemek için kısayollar içeren kaynak modlarına bir araç çubuğu ekleyecektir.",
 	"discussiontools-preference-summary": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary Özellik özetini] okuyarak bu özellikler hakkında daha fazla bilgi edinebilirsiniz.",
-	"discussiontools-preference-topicsubscription": "Konu üyeliğini etkinleştir",
-	"discussiontools-preference-topicsubscription-help": "Bu, size herhangi bir konuda yorumlara bildirim almak için üye olmanıza olanak sağlayacaktır.",
+	"discussiontools-preference-topicsubscription": "Konuya aboneliğini etkinleştir",
+	"discussiontools-preference-topicsubscription-help": "Bu sayede belirli konulara abone olarak yapılan yorumlarla ilgili bildirim almanız sağlanacaktır.",
 	"discussiontools-replylink": "yanıtla",
 	"discussiontools-replywidget-abandon": "Yazdığınız yorumu silmek istediğinizden emin misiniz?",
 	"discussiontools-replywidget-abandon-discard": "Yorumu sil",

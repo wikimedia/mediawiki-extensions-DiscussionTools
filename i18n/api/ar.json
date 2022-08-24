@@ -11,7 +11,7 @@
 	"apierror-discussiontools-commentid-notfound": "لم يُعثَر على التعليق ذي المُعرِّف '$1'.",
 	"apierror-discussiontools-commentname-ambiguous": "عُثر على العديد من التعليقات ذات الاسم '$1'، نحتاج إلى <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "لم يًعثر على التعليق مع الاسم '$1'.",
-	"apierror-discussiontools-formtoken-used": "تم نشر التعليق فعلًا. أعد تحميل الصفحة لرؤيته.",
+	"apierror-discussiontools-formtoken-used": "نُشر التعليق فعلًا. أعد تحميل الصفحة لرؤيته.",
 	"apierror-discussiontools-subscription-failed-add": "تعذَّر الاشتراك في هذا الموضوع.",
 	"apierror-discussiontools-subscription-failed-remove": "لا يمكن إلغاء الاشتراك في هذا الموضوع.",
 	"apihelp-discussiontoolscompare-summary": "الحصول على معلومات حول تغييرات التعليق بين مراجعتين للصفحة.",

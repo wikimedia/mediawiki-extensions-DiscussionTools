@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"L2212"
+		]
+	},
+	"discussiontools-replylink": "risponde",
+	"discussiontools-replywidget-cancel": "Annulla",
+	"discussiontools-replywidget-mode-source": "Orìgine",
+	"discussiontools-replywidget-mode-visual": "Visuale",
+	"discussiontools-replywidget-placeholder-reply": "Risponde a {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Risponde"
+}

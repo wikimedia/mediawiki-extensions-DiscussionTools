@@ -3,7 +3,8 @@
 		"authors": [
 			"Jojit fb",
 			"Ianlopez1115",
-			"Kunokuno"
+			"Kunokuno",
+			"GinawaSaHapon"
 		]
 	},
 	"discussiontools": "Mga kagamitan para usapan",
@@ -13,10 +14,10 @@
 	"discussiontools-emptystate-desc": "Sa mga pahina ng usapan ang lugar kung saan pinag-uusapan ng mga indibiduwal kung paano gumawa ng nilalaman sa {{SITENAME}} sa pinakamabuting paraan. Maari mong gamitin ang pahinang ito upang magsimula makipag-usap sa ibang indibiduwal tungkol kung papaano mapabuti ang [[:{{SUBJECTPAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Alamin pa]]",
 	"discussiontools-emptystate-desc-self": "Maaring gamitin ng mga indibiduwal sa {{SITENAME}} ang pahinang ito upang maglagay ng isang publikong mensahe para sa iyo at maabiso ka kapag ginawa nila ito. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Alamin pa]]",
 	"discussiontools-emptystate-title": "Magsimula ng usapan tungkol sa pahinang \"{{SUBJECTPAGENAME}}\"",
-	"discussiontools-replylink": "tugon",
+	"discussiontools-replylink": "sumagot",
 	"discussiontools-replywidget-cancel": "Ikansela",
-	"discussiontools-replywidget-mode-source": "Pinagmulan",
-	"discussiontools-replywidget-mode-visual": "Biswal",
-	"discussiontools-replywidget-placeholder-reply": "Tumugon sa {{BIDI: $1 }}",
-	"discussiontools-replywidget-reply": "Tumugon"
+	"discussiontools-replywidget-mode-source": "Source",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Sumagot kay {{BIDI: $1 }}",
+	"discussiontools-replywidget-reply": "Sumagot"
 }
