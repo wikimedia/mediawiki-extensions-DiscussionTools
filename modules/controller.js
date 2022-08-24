@@ -492,6 +492,14 @@ function updatePageContents( $container, data ) {
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '#contentSub, .minerva__subtitle' ).html( data.parse.subtitle );
 
+	// eslint-disable-next-line no-jquery/no-global-selector
+	if ( $( '#catlinks' ).length ) {
+		var $categories = $( $.parseHTML( data.parse.categorieshtml ) );
+		mw.hook( 'wikipage.categories' ).fire( $categories );
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#catlinks' ).replaceWith( $categories );
+	}
+
 	mw.config.set( data.parse.jsconfigvars );
 	mw.loader.load( data.parse.modulestyles );
 	mw.loader.load( data.parse.modules );
@@ -501,7 +509,7 @@ function updatePageContents( $container, data ) {
 		wgRevisionId: data.parse.revid
 	} );
 
-	// TODO: update categories, displaytitle, lastmodified
+	// TODO: update displaytitle, lastmodified
 	// We may not be able to use prop=displaytitle without making changes in the action=parse API,
 	// VE API has some confusing code that changes the HTML escaping on it before returning???
 
@@ -606,6 +614,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 			parse: {
 				text: data.content,
 				subtitle: data.contentSub,
+				categorieshtml: data.categorieshtml,
 				jsconfigvars: data.jsconfigvars,
 				revid: data.newrevid,
 				// Note: VE API merges 'modules' and 'modulestyles'
