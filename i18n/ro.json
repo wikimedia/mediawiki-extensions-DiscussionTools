@@ -56,6 +56,8 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 a {{GENDER:$2|răspuns}} în cadrul secțiunii „<strong>$4</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Un răspuns nou|$1 răspunsuri noi|100=99+ de răspunsuri noi}} în „<strong>$3</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-view": "Vezi comentariul",
+	"discussiontools-pageframe-latestcomment": "Ultimul comentariu: $1 de $2 în subiectul $3",
+	"discussiontools-pageframe-latestcomment-notopic": "Ultimul comentariu: $1 de $2",
 	"discussiontools-postedit-confirmation-published": "Comentariul dvs. a fost publicat.",
 	"discussiontools-postedit-confirmation-topicadded": "Subiectul dvs. a fost adăugat.",
 	"discussiontools-preference-autotopicsub": "Abonați-vă automat la subiecte",

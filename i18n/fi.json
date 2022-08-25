@@ -59,6 +59,8 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|vastasi}} aiheeseen \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Yksi uusi vastaus|$1 uutta vastausta|100=99+ uutta vastausta}} aiheessa \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Näytä kommentti",
+	"discussiontools-pageframe-latestcomment": "Viimeisin kommentti: $1 käyttäjältä $2 aiheessa $3",
+	"discussiontools-pageframe-latestcomment-notopic": "Viimeisin kommentti: $1 käyttäjältä $2",
 	"discussiontools-postedit-confirmation-published": "Kommenttisi julkaistiin.",
 	"discussiontools-postedit-confirmation-topicadded": "Aiheesi lisättiin.",
 	"discussiontools-preference-autotopicsub": "Tilaa aiheita automaattisesti",

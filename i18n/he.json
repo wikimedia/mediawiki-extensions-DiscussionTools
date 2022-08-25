@@ -60,6 +60,8 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|הגיב|הגיבה}} בנושא \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|תגובה חדשה|$1 תגובות חדשות|100=99+ תגובות חדשות}} בנושא \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "הצגת תגובה",
+	"discussiontools-pageframe-latestcomment": "תגובה אחרונה: $1 מאת $2 בנושא $3",
+	"discussiontools-pageframe-latestcomment-notopic": "תגובה אחרונה: $1 מאת $2",
 	"discussiontools-postedit-confirmation-published": "התגובה שלך פורסמה.",
 	"discussiontools-postedit-confirmation-topicadded": "הנושא שלך נוסף.",
 	"discussiontools-preference-autotopicsub": "לעקוב אוטומטית אחרי נושאים",

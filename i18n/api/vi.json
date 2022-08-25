@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bluetpp",
 			"Minh Nguyen",
 			"Nghiemtrongdai VN",
 			"Vinhtantran"
@@ -12,6 +13,7 @@
 	"apierror-discussiontools-formtoken-used": "Bình luận đã được đăng. Tải lại trang để xem bình luận đó.",
 	"apierror-discussiontools-subscription-failed-add": "Không thể theo dõi chủ đề này.",
 	"apierror-discussiontools-subscription-failed-remove": "Không thể ngừng theo dõi chủ đề này.",
+	"apihelp-discussiontoolscompare-summary": "Nhận thông tin về các thay đổi bình luận giữa hai lần sửa đổi trang.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID của bình luận để trả lời. Chỉ được sử dụng khi <var>paction</var> là <var>addcomment</var>. Ghi đè <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Tên của bình luận để trả lời. Chỉ được sử dụng khi <var>paction</var> là <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-formtoken": "Một ID duy nhất tùy chọn được tạo trong ứng dụng khách để ngăn đăng hai lần.",
@@ -24,7 +26,9 @@
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Tên của các chủ đề cần kiểm tra",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Nhận trạng thái theo dõi của các chủ đề nhất định.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Mã phiên bản sẽ được dùng (mặc định là phiên bản mới nhất).",
+	"apihelp-discussiontoolspageinfo-param-prop": "Thuộc tính mà bạn muốn lấy:",
 	"apihelp-discussiontoolspageinfo-summary": "Trả về siêu dữ liệu cần thiết để khởi tạo công cụ thảo luận.",
+	"apihelp-discussiontoolspreview-param-type": "Loại thông điệp để xem trước",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Tên của chủ đề cần theo dõi (hoặc ngừng theo dõi)",
 	"apihelp-discussiontoolssubscribe-summary": "Theo dõi (hoặc ngừng theo dõi) để nhận thông báo về một chủ đề."
 }
