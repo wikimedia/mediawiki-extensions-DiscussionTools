@@ -98,13 +98,13 @@ class CommentFormatter {
 		$headingNameEscaped = htmlspecialchars( $headingItem->getName(), ENT_NOQUOTES );
 
 		// Replaced in ::postprocessTopicSubscription() as the text depends on user state
-		$subscribeLink = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingNameEscaped );
 		if ( $headingItem->isSubscribable() ) {
+			$subscribeLink = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingNameEscaped );
 			$headingElement->insertBefore( $subscribeLink, $headingElement->firstChild );
-		}
 
-		$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONDESKTOP__' . $headingNameEscaped );
-		$headingElement->insertBefore( $subscribeButton, $headingElement->firstChild );
+			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONDESKTOP__' . $headingNameEscaped );
+			$headingElement->insertBefore( $subscribeButton, $headingElement->firstChild );
+		}
 
 		// Visual enhancements: topic containers
 		$summary = $headingItem->getThreadSummary();
@@ -124,9 +124,6 @@ class CommentFormatter {
 			);
 
 			// Topic subscriptions
-			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONMOBILE__' . $headingNameEscaped );
-			$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
-
 			$metadata = $doc->createElement( 'div' );
 			$metadata->setAttribute(
 				'class',
@@ -144,6 +141,7 @@ class CommentFormatter {
 			);
 
 			if ( $headingItem->isSubscribable() ) {
+				$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONMOBILE__' . $headingNameEscaped );
 				$actions->appendChild( $subscribeButton );
 			}
 
@@ -156,6 +154,7 @@ class CommentFormatter {
 			$bar->appendChild( $metadata );
 			$bar->appendChild( $actions );
 
+			$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
 			$headingElement->appendChild( $ellipsisButton );
 			$headingElement->appendChild( $bar );
 		}
