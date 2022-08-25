@@ -283,7 +283,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'summary' => $summary,
 							'baserevid' => $docRevId,
 							'starttimestamp' => wfTimestampNow(),
-							'etag' => $headers['etag'],
+							'etag' => $headers['etag'] ?? null,
 							'useskin' => $params['useskin'],
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
