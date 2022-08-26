@@ -65,6 +65,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "إظهار التعليق",
 	"discussiontools-pageframe-latestcomment": "أحدث تعليق: $1 بواسطة $2 في الموضوع $3",
 	"discussiontools-pageframe-latestcomment-notopic": "التعليق الأخير: $1 بواسطة $2",
+	"discussiontools-pagetitle-newtopic": "بدء موضوع جديد على $1",
+	"discussiontools-pagetitle-reply": "الرد على $1",
 	"discussiontools-postedit-confirmation-published": "نُشِر تعليقك.",
 	"discussiontools-postedit-confirmation-topicadded": "أُضيف موضوعك.",
 	"discussiontools-preference-autotopicsub": "الاشتراك الآلي في المواضيع",

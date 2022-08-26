@@ -65,6 +65,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "查看留言",
 	"discussiontools-pageframe-latestcomment": "由$2在話題$3上做出的最新留言：$1",
 	"discussiontools-pageframe-latestcomment-notopic": "由$2做出的最新留言：$1",
+	"discussiontools-pagetitle-newtopic": "在$1發起新話題",
+	"discussiontools-pagetitle-reply": "回覆$1",
 	"discussiontools-postedit-confirmation-published": "已發布您的留言。",
 	"discussiontools-postedit-confirmation-topicadded": "已新增您的話題。",
 	"discussiontools-preference-autotopicsub": "自動訂閱話題",

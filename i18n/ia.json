@@ -54,6 +54,7 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Vider commento",
 	"discussiontools-pageframe-latestcomment": "Ultime commento: $1 per $2 in topico $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Ultime commento: $1 per $2",
+	"discussiontools-pagetitle-newtopic": "Comenciar un nove topico sur $1",
 	"discussiontools-postedit-confirmation-published": "Tu commento ha essite publicate.",
 	"discussiontools-postedit-confirmation-topicadded": "Tu topico ha essite addite.",
 	"discussiontools-preference-autotopicsub": "Subscriber se automaticamente a topicos",

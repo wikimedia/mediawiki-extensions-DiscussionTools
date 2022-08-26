@@ -62,6 +62,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "הצגת תגובה",
 	"discussiontools-pageframe-latestcomment": "תגובה אחרונה: $1 מאת $2 בנושא $3",
 	"discussiontools-pageframe-latestcomment-notopic": "תגובה אחרונה: $1 מאת $2",
+	"discussiontools-pagetitle-newtopic": "התחלת נושא חדש בדף $1",
+	"discussiontools-pagetitle-reply": "כתיבת תגובה בנושא $1",
 	"discussiontools-postedit-confirmation-published": "התגובה שלך פורסמה.",
 	"discussiontools-postedit-confirmation-topicadded": "הנושא שלך נוסף.",
 	"discussiontools-preference-autotopicsub": "לעקוב אוטומטית אחרי נושאים",
