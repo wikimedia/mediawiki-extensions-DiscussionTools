@@ -275,7 +275,8 @@ h1, h2, h3, h4, h5, h6 {
 .ext-discussiontools-init-section-bar,
 .ext-discussiontools-init-replybutton.oo-ui-buttonElement,
 .ext-discussiontools-init-readAsWikiPage,
-.ext-discussiontools-init-pageframe-latestcomment {
+.ext-discussiontools-init-pageframe-latestcomment,
+.ext-discussiontools-init-sidebar-meta {
 	display: none;
 }
 
@@ -322,6 +323,24 @@ h1, h2, h3, h4, h5, h6 {
 
 	.ext-discussiontools-init-pageframe-latestcomment {
 		display: block;
+	}
+
+	// stylelint-disable-next-line selector-class-pattern
+	.sidebar-toc .sidebar-toc-text {
+		display: inline;
+	}
+
+	// stylelint-disable-next-line selector-class-pattern
+	.sidebar-toc .sidebar-toc-list-item {
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+
+	.ext-discussiontools-init-sidebar-meta {
+		display: inline;
+		color: #666;
+		white-space: nowrap;
+		font-size: 0.875em;
 	}
 }
 

@@ -28,7 +28,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
-		$preprocessed = $commentFormatter->addDiscussionToolsInternal( $dom, $title );
+		[ 'html' => $preprocessed ] = $commentFormatter->addDiscussionToolsInternal( $dom, $title );
 
 		$mockSubStore = new MockSubscriptionStore();
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
