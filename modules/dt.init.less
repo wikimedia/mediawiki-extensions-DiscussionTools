@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 @import 'mediawiki.ui/variables.less';
 
 span[ data-mw-comment-start ] {
@@ -24,12 +26,15 @@ h1, h2, h3, h4, h5, h6 {
 	// If a site has text-indent set on content, it would be inherited here and cause excessive padding
 	text-indent: 0;
 
-	.mw-content-ltr & {
+	// Directional properties must be based on content direction.
+	.mw-content-ltr &,
+	.mw-content-rtl .mw-content-ltr & {
 		/* @noflip */
 		margin-left: 0.5em;
 	}
 
-	.mw-content-rtl & {
+	.mw-content-rtl,
+	.mw-content-ltr .mw-content-rtl & {
 		/* @noflip */
 		margin-right: 0.5em;
 	}
@@ -47,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	// No support for reply links in the mobile talk overlay
-	// stylelint-disable-next-line no-descending-specificity, selector-class-pattern
+	// stylelint-disable-next-line selector-class-pattern
 	.talk-overlay & {
 		display: none;
 	}
@@ -62,13 +67,17 @@ h1, h2, h3, h4, h5, h6 {
 			color: #54595d;
 
 			.mw-content-ltr &:not( :last-child ),
-			.mw-content-rtl &:last-child {
+			.mw-content-rtl .mw-content-ltr &:not( :last-child ),
+			.mw-content-rtl &:last-child,
+			.mw-content-ltr .mw-content-rtl &:last-child {
 				/* @noflip */
 				margin-right: 0.25em;
 			}
 
 			.mw-content-ltr &:last-child,
-			.mw-content-rtl &:not( :last-child ), {
+			.mw-content-rtl .mw-content-ltr &:last-child,
+			.mw-content-rtl &:not( :last-child ),
+			.mw-content-ltr .mw-content-rtl &:not( :last-child ), {
 				/* @noflip */
 				margin-left: 0.25em;
 			}
@@ -164,7 +173,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Topic subscriptions (link)
-// Directional properties for anything immediately visible in the header must be based on content direction.
 .ext-discussiontools-init-section-subscribe {
 	display: none;
 
@@ -172,12 +180,15 @@ h1, h2, h3, h4, h5, h6 {
 		display: block;
 	}
 
-	.mw-content-ltr & {
+	// Directional properties must be based on content direction.
+	.mw-content-ltr &,
+	.mw-content-rtl .mw-content-ltr & {
 		/* @noflip */
 		float: right;
 	}
 
-	.mw-content-rtl & {
+	.mw-content-rtl &,
+	.mw-content-ltr .mw-content-rtl & {
 		/* @noflip */
 		float: left;
 	}
@@ -200,13 +211,17 @@ h1, h2, h3, h4, h5, h6 {
 		color: #54595d;
 
 		.mw-content-ltr &:first-child,
-		.mw-content-rtl &:last-child {
+		.mw-content-rtl .mw-content-ltr &:first-child,
+		.mw-content-rtl &:last-child,
+		.mw-content-ltr .mw-content-rtl &:last-child {
 			/* @noflip */
 			margin-right: 0.25em;
 		}
 
 		.mw-content-ltr &:last-child,
-		.mw-content-rtl &:first-child {
+		.mw-content-rtl .mw-content-ltr &:last-child,
+		.mw-content-rtl &:first-child,
+		.mw-content-ltr .mw-content-rtl &:first-child {
 			/* @noflip */
 			margin-left: 0.25em;
 		}
@@ -230,13 +245,28 @@ h1, h2, h3, h4, h5, h6 {
 		display: inline-block;
 	}
 
-	// stylelint-disable-next-line no-descending-specificity
 	body:not( .skin-minerva ) & {
-		float: right;
 		// stylelint-disable-next-line declaration-property-unit-disallowed-list
 		font-size: 14px;
+	}
+
+	// Directional properties must be based on content direction.
+	body:not( .skin-minerva ) .mw-content-ltr &,
+	body:not( .skin-minerva ) .mw-content-rtl .mw-content-ltr & {
+		/* @noflip */
+		float: right;
+		/* @noflip */
 		// stylelint-disable-next-line declaration-no-important
 		margin: -2px 0 0 1em !important;
+	}
+
+	body:not( .skin-minerva ) .mw-content-rtl &,
+	body:not( .skin-minerva ) .mw-content-ltr .mw-content-rtl & {
+		/* @noflip */
+		float: left;
+		/* @noflip */
+		// stylelint-disable-next-line declaration-no-important
+		margin: -2px 1em 0 0 !important;
 	}
 }
 
@@ -352,7 +382,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	// HACK: Can be removed once T311502 is fixed
-	// stylelint-disable-next-line no-descending-specificity, selector-type-no-unknown
+	// stylelint-disable-next-line selector-type-no-unknown
 	mw\3Atocplace:first-child + .ext-discussiontools-init-section {
 		border-top: 0;
 		margin-top: 0;
@@ -364,7 +394,6 @@ h1, h2, h3, h4, h5, h6 {
 		font-family: sans-serif;
 	}
 
-	/* stylelint-disable no-descending-specificity */
 	// Mobile
 	&.skin-minerva .ext-discussiontools-init-section {
 		flex-wrap: wrap;
@@ -453,7 +482,6 @@ h1, h2, h3, h4, h5, h6 {
 			margin-right: 4px;
 		}
 	}
-	/* stylelint-enable no-descending-specificity */
 }
 
 .ext-discussiontools-emptystate {
@@ -498,7 +526,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ext-discussiontools-init-replylink-open {
-	// stylelint-disable-next-line no-descending-specificity
 	.ext-discussiontools-emptystate,
 	> .mw-message-box-warning {
 		display: none;
