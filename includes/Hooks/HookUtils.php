@@ -445,12 +445,12 @@ class HookUtils {
 		return (
 			// ?title=...&action=edit&section=new
 			// ?title=...&veaction=editsource&section=new
-			( $req->getVal( 'action' ) === 'edit' || $req->getVal( 'veaction' ) === 'editsource' ) &&
-			$req->getVal( 'section' ) === 'new' &&
+			( $req->getRawVal( 'action' ) === 'edit' || $req->getRawVal( 'veaction' ) === 'editsource' ) &&
+			$req->getRawVal( 'section' ) === 'new' &&
 			// Adding a new topic with preloaded text is not supported yet (T269310)
 			!(
-				$req->getVal( 'editintro' ) || $req->getVal( 'preload' ) ||
-				$req->getVal( 'preloadparams' ) || $req->getVal( 'preloadtitle' )
+				$req->getCheck( 'editintro' ) || $req->getCheck( 'preload' ) ||
+				$req->getCheck( 'preloadparams' ) || $req->getCheck( 'preloadtitle' )
 			) &&
 			// User has new topic tool enabled (and not using &dtenable=0)
 			static::isFeatureEnabledForOutput( $out, static::NEWTOPICTOOL )
@@ -475,14 +475,14 @@ class HookUtils {
 			(
 				// When following a red link from another page (but not when clicking the 'Edit' tab)
 				(
-					$req->getVal( 'action' ) === 'edit' && $req->getVal( 'redlink' ) === '1' &&
+					$req->getRawVal( 'action' ) === 'edit' && $req->getRawVal( 'redlink' ) === '1' &&
 					// …if not disabled by the user
 					$optionsLookup->getOption( $user, 'discussiontools-newtopictool-createpage' )
 				) ||
 				// When the new topic tool will be opened (usually when clicking the 'Add topic' tab)
 				static::shouldOpenNewTopicTool( $context ) ||
 				// In read mode (accessible for non-existent pages by clicking 'Cancel' in editor)
-				$req->getVal( 'action', 'view' ) === 'view'
+				$req->getRawVal( 'action', 'view' ) === 'view'
 			) &&
 			// Only in talk namespaces, not including other namespaces that isAvailableForTitle() allows
 			$title->isTalkPage() &&

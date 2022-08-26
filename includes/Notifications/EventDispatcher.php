@@ -358,11 +358,11 @@ class EventDispatcher {
 		// might either be after an API request from DiscussionTools or a
 		// regular POST from WikiEditor. Both should have this value snuck
 		// into their request if their session is being logged.
-		if ( !$request->getVal( 'editingStatsId' ) ) {
+		if ( !$request->getCheck( 'editingStatsId' ) ) {
 			return false;
 		}
 		$editingStatsId = $request->getVal( 'editingStatsId' );
-		$isDiscussionTools = (bool)$request->getVal( 'dttags' );
+		$isDiscussionTools = $request->getCheck( 'dttags' );
 
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		if ( !$extensionRegistry->isLoaded( 'EventLogging' ) ) {

@@ -442,7 +442,7 @@ class PageHooks implements
 			// Only show when following the link from the new topic tool, never on normal edit attempts.
 			// This can be called from within ApiVisualEditor, so we can't access most request parameters
 			// for the main request. However, we can access 'editintro', because it's passed to the API.
-			$context->getRequest()->getVal( 'editintro' ) === 'mw-dt-topic-hint'
+			$context->getRequest()->getRawVal( 'editintro' ) === 'mw-dt-topic-hint'
 		) {
 			$context->getOutput()->enableOOUI();
 
