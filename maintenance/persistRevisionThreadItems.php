@@ -49,6 +49,7 @@ class PersistRevisionThreadItems extends TableCleanup {
 		$this->addOption( 'rev', 'Revision ID to process', false, true, false, true );
 		$this->addOption( 'page', 'Page title to process', false, true, false, true );
 		$this->addOption( 'all', 'Process the whole wiki', false, false, false, false );
+		$this->addOption( 'current', 'Process current revisions only', false, false, false, false );
 	}
 
 	public function execute() {
@@ -77,6 +78,12 @@ class PersistRevisionThreadItems extends TableCleanup {
 			$this->error( "One of 'all', 'page', or 'rev' required" );
 			$this->maybeHelp( true );
 			return;
+		}
+
+		if ( $this->getOption( 'current' ) ) {
+			// runTable() doesn't provide a way to do a JOIN. This is equivalent, but it might have
+			// different performance characteristics. It should be good enough for a maintenance script.
+			$conds[] = 'rev_id IN ( SELECT page_latest FROM page )';
 		}
 
 		$this->runTable( [
