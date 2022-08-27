@@ -61,12 +61,7 @@ ThreadItemSet.static.newFromAnnotatedNodes = function ( nodes, rootNode, parser 
 			return itemsById[ id ];
 		} );
 
-		// Recalculate legacy IDs (and calculate names, currently not stored in the metadata)
-		var newId = parser.computeId( item, result );
-		if ( newId !== item.id ) {
-			item.legacyId = item.id;
-			item.id = newId;
-		}
+		// Calculate names (currently not stored in the metadata)
 		item.name = parser.computeName( item );
 
 		result.updateIdAndNameMaps( item );
@@ -105,10 +100,6 @@ ThreadItemSet.prototype.updateIdAndNameMaps = function ( item ) {
 	this.threadItemsByName[ item.name ].push( item );
 
 	this.threadItemsById[ item.id ] = item;
-
-	if ( item.legacyId ) {
-		this.threadItemsById[ item.legacyId ] = item;
-	}
 };
 
 /**

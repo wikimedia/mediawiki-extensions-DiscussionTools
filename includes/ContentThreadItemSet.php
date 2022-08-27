@@ -59,11 +59,6 @@ class ContentThreadItemSet implements ThreadItemSet {
 		$this->threadItemsByName[ $item->getName() ][] = $item;
 
 		$this->threadItemsById[ $item->getId() ] = $item;
-
-		$legacyId = $item->getLegacyId();
-		if ( $legacyId ) {
-			$this->threadItemsById[ $legacyId ] = $item;
-		}
 	}
 
 	/**

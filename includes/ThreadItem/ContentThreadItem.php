@@ -28,7 +28,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 
 	protected $name = null;
 	protected $id = null;
-	protected $legacyId = null;
 	protected $replies = [];
 
 	/**
@@ -385,13 +384,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	}
 
 	/**
-	 * @return string|null Thread ID, according to an older algorithm
-	 */
-	public function getLegacyId(): ?string {
-		return $this->legacyId;
-	}
-
-	/**
 	 * @return ContentThreadItem[] Replies to this thread item
 	 */
 	public function getReplies(): array {
@@ -445,13 +437,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	 */
 	public function setId( ?string $id ): void {
 		$this->id = $id;
-	}
-
-	/**
-	 * @param string|null $id Thread ID
-	 */
-	public function setLegacyId( ?string $id ): void {
-		$this->legacyId = $id;
 	}
 
 	/**
