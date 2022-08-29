@@ -3,16 +3,17 @@
 		"authors": [
 			"Jojit fb",
 			"Ianlopez1115",
-			"Kunokuno"
+			"Kunokuno",
+			"GinawaSaHapon"
 		]
 	},
 	"discussiontools": "Mga kagamitan para usapan",
 	"discussiontools-defaultsummary-reply": "Tugon",
 	"discussiontools-desc": "Mga kagamitan upang mapabuti ang mga pahina ng usapan.",
-	"discussiontools-replylink": "tugon",
+	"discussiontools-replylink": "sumagot",
 	"discussiontools-replywidget-cancel": "Ikansela",
-	"discussiontools-replywidget-mode-source": "Pinagmulan",
-	"discussiontools-replywidget-mode-visual": "Biswal",
-	"discussiontools-replywidget-placeholder-reply": "Tumugon sa {{BIDI: $1 }}",
-	"discussiontools-replywidget-reply": "Tumugon"
+	"discussiontools-replywidget-mode-source": "Source",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Sumagot kay {{BIDI: $1 }}",
+	"discussiontools-replywidget-reply": "Sumagot"
 }

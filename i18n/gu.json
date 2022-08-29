@@ -8,6 +8,8 @@
 	"discussiontools-preference-label": "ચર્ચા સાધનો",
 	"discussiontools-replylink": "ઉત્તર",
 	"discussiontools-replywidget-cancel": "રદ કરો",
+	"discussiontools-replywidget-loading": "લાવે છે...",
+	"discussiontools-replywidget-mention-tool-title": "સભ્યનો ઉલ્લેખ કરો",
 	"discussiontools-replywidget-mode-source": "સ્રોત",
 	"discussiontools-replywidget-mode-visual": "વિઝ્યુલ",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ને ઉત્તર",

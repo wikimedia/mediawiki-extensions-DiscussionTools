@@ -8,7 +8,9 @@
 			"محمد أحمد عبد الفتاح",
 			"Michel Bakni",
 			"NEHAOUA",
-			"Shbib Al-Subaie"
+			"Shbib Al-Subaie",
+			"BAB ZAA",
+			"Ideophagous"
 		]
 	},
 	"discussiontools": "أدوات النقاش",
@@ -20,7 +22,7 @@
 	"discussiontools-preference-discussion-link": "https://ar.wikipedia.org/wiki/%D9%86%D9%82%D8%A7%D8%B4_%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D9%85%D8%B4%D8%B1%D9%88%D8%B9_%D8%A3%D8%AF%D9%88%D8%A7%D8%AA_%D8%A7%D9%84%D9%85%D8%AD%D8%A7%D8%AF%D8%AB%D8%A7%D8%AA_(%D8%A7%D9%84%D8%AA%D9%86%D8%B3%D9%8A%D9%82)",
 	"discussiontools-replylink": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-anon-warning": "<strong>لم تقوموا بتسجيل الدخول.</strong> لتلقي الإسناد باسمك بدلا من عنوان الآي بي الخاص بك، يمكنك [$1 تسجيل الدخول] أو [$2 إنشاء حساب].",
-	"discussiontools-replywidget-cancel": "إلغاء",
+	"discussiontools-replywidget-cancel": "ألغ",
 	"discussiontools-replywidget-feedback": "{{GENDER:|شارك|شاركي}} برأيك حول هذه المِيزة",
 	"discussiontools-replywidget-feedback-link": "https://ar.wikipedia.org/wiki/%D9%86%D9%82%D8%A7%D8%B4_%D9%88%D9%8A%D9%83%D9%8A%D8%A8%D9%8A%D8%AF%D9%8A%D8%A7:%D9%85%D8%B4%D8%B1%D9%88%D8%B9_%D8%A3%D8%AF%D9%88%D8%A7%D8%AA_%D8%A7%D9%84%D9%85%D8%AD%D8%A7%D8%AF%D8%AB%D8%A7%D8%AA_(%D8%A7%D9%84%D8%AA%D9%86%D8%B3%D9%8A%D9%82)",
 	"discussiontools-replywidget-loading": "جارٍ التحميل…",
