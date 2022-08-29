@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
@@ -116,6 +117,12 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		$output = array_map( static function ( ContentThreadItem $item ) {
 			return $item->jsonSerialize( true, static function ( array &$array, ContentThreadItem $item ) {
 				$array['html'] = $item->getHtml();
+				if ( $item instanceof CommentItem ) {
+					// We want timestamps to be consistently formatted in API
+					// output instead of varying based on comment time
+					// (T315400). The format used here is equivalent to 'Y-m-d\TH:i:s\Z'
+					$array['timestamp'] = wfTimestamp( TS_ISO_8601, $item->getTimestamp()->getTimestamp() );
+				}
 			} );
 		}, $threads );
 		foreach ( $threads as $index => $item ) {
