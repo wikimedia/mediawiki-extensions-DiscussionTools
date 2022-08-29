@@ -110,7 +110,7 @@
 	"echo-pref-tooltip-dt-subscription": "Obvesti me, ko nekdo objavi nov komentar v temi, na katero sem prijavljen/-a.",
 	"tag-discussiontools-added-comment-description": "V tem urejanju je bil dodan komentar na pogovorni strani",
 	"tag-discussiontools-description": "Urejanje z orodjem DiscussionTools",
-	"tag-discussiontools-edit": "Urejen komentar",
+	"tag-discussiontools-edit": "urejen komentar",
 	"tag-discussiontools-edit-description": "Uporabnik je z orodjem DiscussionTools uredil že obstoječ komentar",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} nova tema]",
 	"tag-discussiontools-newtopic-description": "Uporabnik je na strani z orodjem DiscussionTools dodal novo temo",

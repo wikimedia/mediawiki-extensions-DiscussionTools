@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Inabat Allanova",
 			"Nurlan"
 		]
 	},
+	"discussiontools-replylink": "juwap beriw",
+	"discussiontools-replywidget-cancel": "Biykar etiw",
+	"discussiontools-replywidget-mode-source": "Derek",
+	"discussiontools-replywidget-mode-visual": "Vizual",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ǵa juwap beriw",
+	"discussiontools-replywidget-reply": "Juwap beriw",
 	"discussiontools-topicsubscription-pager-created": "Birinshi jazılıw",
 	"discussiontools-topicsubscription-pager-notified": "Aqırǵı bildiriw xatı"
 }

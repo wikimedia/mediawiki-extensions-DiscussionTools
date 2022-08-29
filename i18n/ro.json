@@ -58,6 +58,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Vezi comentariul",
 	"discussiontools-pageframe-latestcomment": "Ultimul comentariu: $1 de $2 în subiectul $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Ultimul comentariu: $1 de $2",
+	"discussiontools-pagetitle-newtopic": "Începere subiect nou pe $1",
+	"discussiontools-pagetitle-reply": "Răspundere pe $1",
 	"discussiontools-postedit-confirmation-published": "Comentariul dvs. a fost publicat.",
 	"discussiontools-postedit-confirmation-topicadded": "Subiectul dvs. a fost adăugat.",
 	"discussiontools-preference-autotopicsub": "Abonați-vă automat la subiecte",

@@ -57,6 +57,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Прегледај коментар",
 	"discussiontools-pageframe-latestcomment": "Последен коментар: $1 од $2 на темата $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Последен коментар: $1 од $2",
+	"discussiontools-pagetitle-newtopic": "Започнување нова тема на $1",
+	"discussiontools-pagetitle-reply": "Одговор на $1",
 	"discussiontools-postedit-confirmation-published": "Вашиот коментар е објавен.",
 	"discussiontools-postedit-confirmation-topicadded": "Вашата тема е додадена.",
 	"discussiontools-preference-autotopicsub": "Автоматски претплаќај не на теми",
