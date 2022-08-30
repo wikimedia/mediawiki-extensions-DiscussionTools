@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"discussiontools-replylink": "odgovori",
+	"discussiontools-replywidget-cancel": "Otkaži",
+	"discussiontools-replywidget-mode-source": "Izvor",
+	"discussiontools-replywidget-mode-visual": "Vizualno",
+	"discussiontools-replywidget-placeholder-reply": "Odgovor korisniku/-ci {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "Odgovori"
+}

@@ -10,6 +10,9 @@
 	"discussiontools-replylink": "svärru",
 	"discussiontools-replywidget-cancel": "Buŧŧki",
 	"discussiontools-replywidget-mode-source": "Gálldo",
+	"discussiontools-replywidget-mode-visual": "Visuálalatj",
 	"discussiontools-replywidget-newtopic": "Lasedä ábdnasav",
+	"discussiontools-replywidget-placeholder-newtopic": "Gåvådibme",
+	"discussiontools-replywidget-placeholder-reply": "Svärru {{BIDI:$1}} lusa.",
 	"discussiontools-replywidget-reply": "Svärru"
 }
