@@ -30,7 +30,6 @@ class EchoHooks {
 			'priority' => 3,
 			'tooltip' => 'echo-pref-tooltip-dt-subscription',
 		];
-
 		$notifications['dt-subscribed-new-comment'] = [
 			'category' => 'dt-subscription',
 			'group' => 'interactive',
@@ -56,6 +55,26 @@ class EchoHooks {
 			],
 		];
 
+		$notificationCategories['dt-subscription-archiving'] = [
+			'priority' => 3,
+			'tooltip' => 'echo-pref-tooltip-dt-subscription-archiving',
+		];
+		$notifications['dt-removed-topic'] = [
+			'category' => 'dt-subscription-archiving',
+			'group' => 'interactive',
+			'section' => 'message',
+			'user-locators' => [
+				'MediaWiki\\Extension\\DiscussionTools\\Notifications\\EventDispatcher::locateSubscribedUsers'
+			],
+			'presentation-model' =>
+				'MediaWiki\\Extension\\DiscussionTools\\Notifications\\RemovedTopicPresentationModel',
+			'bundle' => [
+				'web' => true,
+				'email' => true,
+				'expandable' => true,
+			],
+		];
+
 		// Override default handlers
 		$notifications['edit-user-talk']['presentation-model'] =
 			'MediaWiki\\Extension\\DiscussionTools\\Notifications\\EnhancedEchoEditUserTalkPresentationModel';
@@ -72,6 +91,10 @@ class EchoHooks {
 		switch ( $event->getType() ) {
 			case 'dt-subscribed-new-comment':
 				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'subscribed-comment-name' );
+				break;
+			case 'dt-removed-topic':
+				$bundleString = $event->getType() . '-' . $event->getTitle()->getNamespace()
+					. '-' . $event->getTitle()->getDBkey();
 				break;
 		}
 		return true;
