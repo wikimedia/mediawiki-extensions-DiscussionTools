@@ -57,6 +57,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Diskouez an evezhiadenn",
 	"discussiontools-pageframe-latestcomment": "Evezhiadenn diwezhañ: $1 gant $2 e kaozeadenn $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Evezhiadenn diwezhañ: $1 gant $2",
+	"discussiontools-pagetitle-newtopic": "O voulc’hañ ur gaozeadenn war $1",
+	"discussiontools-pagetitle-reply": "O respont war $1",
 	"discussiontools-postedit-confirmation-published": "Embannet eo bet ho kemmenn.",
 	"discussiontools-postedit-confirmation-topicadded": "Ouzhpennet eo bet ho kaozeadenn.",
 	"discussiontools-preference-autotopicsub": "Koumanantiñ emgefre d’ar gaozeadennoù",
