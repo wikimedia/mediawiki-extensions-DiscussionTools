@@ -20,10 +20,10 @@ trait CommentItemTrait {
 	 * @suppress PhanTraitParentReference
 	 */
 	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
-		return array_merge( parent::jsonSerialize( $deep, $callback ), [
+		return array_merge( [
 			'timestamp' => $this->getTimestampString(),
 			'author' => $this->getAuthor(),
-		] );
+		], parent::jsonSerialize( $deep, $callback ) );
 	}
 
 	/**

@@ -16,12 +16,12 @@ trait HeadingItemTrait {
 	 * @suppress PhanTraitParentReference
 	 */
 	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
-		return array_merge( parent::jsonSerialize( $deep, $callback ), [
+		return array_merge( [
 			'headingLevel' => $this->isPlaceholderHeading() ? null : $this->getHeadingLevel(),
 			// Used for topic subscriptions. Not added to CommentItem's yet as there is
 			// no use case for it.
 			'name' => $this->getName(),
-		] );
+		], parent::jsonSerialize( $deep, $callback ) );
 	}
 
 	/**
