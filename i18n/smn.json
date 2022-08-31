@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Seipinne"
+			"Seipinne",
+			"Yupik"
 		]
 	},
 	"discussiontools-autotopicsubpopup-preferences": "Mute asâttâsâid",
 	"discussiontools-replywidget-advanced": "Viijđed",
+	"discussiontools-replywidget-cancel": "Jooskâ",
 	"discussiontools-replywidget-preferences": "Asâttâsah",
 	"discussiontools-topicsubscription-pager-page": "Sijđo"
 }
