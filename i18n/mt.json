@@ -13,6 +13,7 @@
 	"discussiontools-preference-replytool-help": "Din turik ħolqa biex tirrispondi lill-kummenti fuq paġna ta' diskussjoni bi klikk waħda.",
 	"discussiontools-replylink": "wieġeb",
 	"discussiontools-replywidget-reply": "Wieġeb",
+	"tag-discussiontools-added-comment-description": "Ġie miżjud kumment f'paġna ta' diskussjoni f'din il-modifika",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Suġġett ġdid]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Wieġeb]"
 }
