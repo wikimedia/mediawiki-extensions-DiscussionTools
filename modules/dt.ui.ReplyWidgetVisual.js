@@ -115,7 +115,7 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 			focus: [ 'emit', 'bodyFocus' ]
 		} );
 
-		var listStorage = ve.init.platform.createListStorage( widget.storage );
+		var listStorage = ve.init.platform.createConflictableStorage( widget.storage );
 		// widget.storage is a MemoryStorage object. Copy over the .data cache so
 		// that listStorage reads from/writes to the same in-memory cache.
 		listStorage.data = widget.storage.data;
@@ -123,7 +123,8 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 		target.initAutosave( {
 			suppressNotifications: suppressNotifications,
 			docId: widget.storagePrefix,
-			storage: listStorage
+			storage: listStorage,
+			storageExpiry: 60 * 60 * 24 * 30
 		} );
 		widget.afterSetup();
 
