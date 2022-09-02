@@ -10,6 +10,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
+use Config;
 use ConfigFactory;
 use ExtensionRegistry;
 use Html;
@@ -44,8 +45,8 @@ class PageHooks implements
 	OutputPageBeforeHTMLHook,
 	TitleGetEditNoticesHook
 {
-	/** @var ConfigFactory */
-	private $configFactory;
+	/** @var Config */
+	private $config;
 
 	/** @var SubscriptionStore */
 	private $subscriptionStore;
@@ -68,7 +69,7 @@ class PageHooks implements
 		UserNameUtils $userNameUtils,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		$this->configFactory = $configFactory;
+		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->subscriptionStore = $subscriptionStore;
 		$this->userNameUtils = $userNameUtils;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -99,8 +100,6 @@ class PageHooks implements
 		if ( $availableForTitle ) {
 			$output->addModuleStyles( 'ext.discussionTools.init.styles' );
 		}
-
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 
 		// Load modules if any DT feature is enabled for this user
 		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {

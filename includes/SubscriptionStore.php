@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use Config;
 use ConfigFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserFactory;
@@ -23,11 +24,8 @@ class SubscriptionStore {
 	public const STATE_SUBSCRIBED = 1;
 	public const STATE_AUTOSUBSCRIBED = 2;
 
-	/** @var ConfigFactory */
-	private $configFactory;
-
-	/** @var ILBFactory */
-	private $lbFactory;
+	/** @var Config */
+	private $config;
 
 	/** @var ILoadBalancer */
 	private $loadBalancer;
@@ -50,12 +48,10 @@ class SubscriptionStore {
 		ReadOnlyMode $readOnlyMode,
 		UserFactory $userFactory
 	) {
-		$this->configFactory = $configFactory;
-		$this->lbFactory = $lbFactory;
+		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->loadBalancer = $lbFactory->getMainLB();
-
-		$this->userFactory = $userFactory;
 		$this->readOnlyMode = $readOnlyMode;
+		$this->userFactory = $userFactory;
 	}
 
 	/**
