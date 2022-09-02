@@ -4,13 +4,15 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
+use Config;
+use ConfigFactory;
 use DerivativeContext;
 use DerivativeRequest;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
+use SkinFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\StringDef;
@@ -25,18 +27,36 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	/** @var CommentParser */
 	private $commentParser;
 
+	/** @var SubscriptionStore */
+	private $subscriptionStore;
+
+	/** @var SkinFactory */
+	private $skinFactory;
+
+	/** @var Config */
+	private $config;
+
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
 	 * @param CommentParser $commentParser
+	 * @param SubscriptionStore $subscriptionStore
+	 * @param SkinFactory $skinFactory
+	 * @param ConfigFactory $configFactory
 	 */
 	public function __construct(
 		ApiMain $main,
-		$name,
-		CommentParser $commentParser
+		string $name,
+		CommentParser $commentParser,
+		SubscriptionStore $subscriptionStore,
+		SkinFactory $skinFactory,
+		ConfigFactory $configFactory
 	) {
 		parent::__construct( $main, $name );
 		$this->commentParser = $commentParser;
+		$this->subscriptionStore = $subscriptionStore;
+		$this->skinFactory = $skinFactory;
+		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->setLogger( LoggerFactory::getInstance( 'DiscussionTools' ) );
 	}
 
@@ -48,9 +68,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		$title = Title::newFromText( $params['page'] );
 		$result = null;
 
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 		$autoSubscribe =
-			$dtConfig->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'discussiontoolsapi' &&
+			$this->config->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'discussiontoolsapi' &&
 			HookUtils::shouldAddAutoSubscription( $this->getUser(), $title );
 		$subscribableHeadingName = null;
 		$subscribableSectionTitle = '';
@@ -316,9 +335,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		}
 
 		if ( $autoSubscribe && $subscribableHeadingName ) {
-			$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
 			$subsTitle = $title->createFragmentTarget( $subscribableSectionTitle );
-			$subscriptionStore->addAutoSubscriptionForUser( $this->getUser(), $subsTitle, $subscribableHeadingName );
+			$this->subscriptionStore
+				->addAutoSubscriptionForUser( $this->getUser(), $subsTitle, $subscribableHeadingName );
 		}
 
 		// Check the post was successful (could have been blocked by ConfirmEdit) before
@@ -383,9 +402,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'useskin' => [
-				ParamValidator::PARAM_TYPE => array_keys(
-					MediaWikiServices::getInstance()->getSkinFactory()->getInstalledSkins()
-				),
+				ParamValidator::PARAM_TYPE => array_keys( $this->skinFactory->getInstalledSkins() ),
 				ApiBase::PARAM_HELP_MSG => 'apihelp-parse-param-useskin',
 			],
 			'watchlist' => [

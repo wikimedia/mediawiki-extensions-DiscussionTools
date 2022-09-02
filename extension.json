@@ -433,12 +433,18 @@
 	},
 	"APIModules": {
 		"discussiontoolscompare": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsCompare"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsCompare",
+			"services": [
+				"DiscussionTools.CommentParser"
+			]
 		},
 		"discussiontoolsedit": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit",
 			"services": [
-				"DiscussionTools.CommentParser"
+				"DiscussionTools.CommentParser",
+				"DiscussionTools.SubscriptionStore",
+				"SkinFactory",
+				"ConfigFactory"
 			]
 		},
 		"discussiontoolsgetsubscriptions": {
@@ -449,7 +455,10 @@
 			]
 		},
 		"discussiontoolspageinfo": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPageInfo"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPageInfo",
+			"services": [
+				"DiscussionTools.CommentParser"
+			]
 		},
 		"discussiontoolspreview": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPreview",

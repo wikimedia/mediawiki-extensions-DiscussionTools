@@ -30,7 +30,7 @@ class ApiDiscussionToolsPreview extends ApiBase {
 	 */
 	public function __construct(
 		ApiMain $main,
-		$name,
+		string $name,
 		CommentParser $commentParser,
 		SkinFactory $skinFactory
 	) {

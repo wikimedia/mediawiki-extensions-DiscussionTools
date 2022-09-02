@@ -19,11 +19,21 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	use ApiDiscussionToolsTrait;
 	use ApiParsoidTrait;
 
+	/** @var CommentParser */
+	private $commentParser;
+
 	/**
-	 * @inheritDoc
+	 * @param ApiMain $main
+	 * @param string $name
+	 * @param CommentParser $commentParser
 	 */
-	public function __construct( ApiMain $main, string $name ) {
+	public function __construct(
+		ApiMain $main,
+		string $name,
+		CommentParser $commentParser
+	) {
 		parent::__construct( $main, $name );
+		$this->commentParser = $commentParser;
 	}
 
 	/**
