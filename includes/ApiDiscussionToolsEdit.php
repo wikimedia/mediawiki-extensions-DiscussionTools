@@ -13,6 +13,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Revision\RevisionLookup;
 use SkinFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -40,6 +41,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	/** @var Config */
 	private $config;
 
+	/** @var RevisionLookup */
+	private $revisionLookup;
+
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
@@ -48,6 +52,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	 * @param SubscriptionStore $subscriptionStore
 	 * @param SkinFactory $skinFactory
 	 * @param ConfigFactory $configFactory
+	 * @param RevisionLookup $revisionLookup
 	 */
 	public function __construct(
 		ApiMain $main,
@@ -56,7 +61,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		CommentParser $commentParser,
 		SubscriptionStore $subscriptionStore,
 		SkinFactory $skinFactory,
-		ConfigFactory $configFactory
+		ConfigFactory $configFactory,
+		RevisionLookup $revisionLookup
 	) {
 		parent::__construct( $main, $name );
 		$this->parsoidClientFactory = $parsoidClientFactory;
@@ -64,6 +70,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		$this->subscriptionStore = $subscriptionStore;
 		$this->skinFactory = $skinFactory;
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
+		$this->revisionLookup = $revisionLookup;
 		$this->setLogger( LoggerFactory::getInstance( 'DiscussionTools' ) );
 	}
 
@@ -220,7 +227,14 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				}
 
 				// Fetch the latest revision
-				$requestedRevision = $this->getLatestRevision( $title );
+				$requestedRevision = $this->revisionLookup->getRevisionByTitle( $title );
+				if ( !$requestedRevision ) {
+					$this->dieWithError(
+						[ 'apierror-missingrev-title', wfEscapeWikiText( $title->getPrefixedText() ) ],
+						'nosuchrevid'
+					);
+				}
+
 				$response = $this->requestRestbasePageHtml( $requestedRevision );
 
 				$headers = $response['headers'];
