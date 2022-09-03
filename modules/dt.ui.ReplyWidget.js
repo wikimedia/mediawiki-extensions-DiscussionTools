@@ -30,6 +30,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	ReplyWidget.super.call( this, config );
 
 	this.pending = false;
+	this.isTornDown = false;
 	this.commentController = commentController;
 	var threadItem = commentController.getThreadItem();
 	this.commentDetails = commentDetails;
@@ -362,7 +363,7 @@ ReplyWidget.prototype.getMode = null;
  * Restore the widget to its original state
  *
  * Clear any widget values, reset UI states, and clear
- * any (optionall) auto-save values.
+ * any (optional) auto-save values.
  *
  * @param {boolean} [preserveStorage] Preserve auto-save storage
  */
@@ -370,6 +371,10 @@ ReplyWidget.prototype.clear = function ( preserveStorage ) {
 	if ( this.saveErrorMessage ) {
 		this.saveErrorMessage.$element.remove();
 		this.saveErrorMessage = null;
+	}
+	if ( this.previewRequest ) {
+		this.previewRequest.abort();
+		this.previewRequest = null;
 	}
 	this.$preview.empty();
 	this.previewWikitext = null;
@@ -705,6 +710,9 @@ ReplyWidget.prototype.tryTeardown = function () {
  * @return {ReplyWidget}
  */
 ReplyWidget.prototype.teardown = function ( mode ) {
+	// Call the change handler to save the current value in auto-save
+	this.onInputChange();
+
 	if ( this.isNewTopic ) {
 		this.commentController.sectionTitle.disconnect( this );
 	}
@@ -720,6 +728,7 @@ ReplyWidget.prototype.teardown = function ( mode ) {
 	}
 	mw.hook( 'wikipage.watchlistChange' ).remove( this.onWatchToggleHandler );
 
+	this.isTornDown = true;
 	this.clear( mode === 'refresh' );
 	this.emit( 'teardown', mode );
 	return this;
@@ -772,6 +781,11 @@ ReplyWidget.prototype.onKeyDown = function ( isMultiline, e ) {
  * Handle input change events anywhere in the reply widget
  */
 ReplyWidget.prototype.onInputChange = function () {
+	if ( this.isTornDown ) {
+		// Ignore calls after teardown, which would clear the auto-save or crash
+		return;
+	}
+
 	this.updateButtons();
 	this.storage.set( this.storagePrefix + '/saveable', this.isEmpty() ? '' : '1' );
 	this.preparePreview();
