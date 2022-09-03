@@ -117,6 +117,11 @@ ReplyWidgetPlain.prototype.getMode = function () {
  * @inheritdoc
  */
 ReplyWidgetPlain.prototype.onInputChange = function () {
+	if ( this.isTornDown ) {
+		// Ignore calls after teardown, which would clear the auto-save or crash
+		return;
+	}
+
 	// Parent method
 	ReplyWidgetPlain.super.prototype.onInputChange.apply( this, arguments );
 
