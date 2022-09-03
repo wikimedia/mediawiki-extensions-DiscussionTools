@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ExtensionRegistry;
 use IContextSource;
+use IDBAccessObject;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
@@ -22,6 +23,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 use MWException;
 use OutputPage;
+use ParserOptions;
 use RequestContext;
 use Title;
 use TitleValue;
@@ -91,23 +93,55 @@ class HookUtils {
 	 */
 	public static function parseRevisionParsoidHtml( RevisionRecord $revRecord ): ContentThreadItemSet {
 		$services = MediaWikiServices::getInstance();
-		$parsoidClientFactory = $services->getService( VisualEditorParsoidClientFactory::SERVICE_NAME );
-		/** @var ParsoidClient $parsoidClient */
-		$parsoidClient = $parsoidClientFactory->createParsoidClient( false );
+		$mainConfig = $services->getMainConfig();
 
-		$title = TitleValue::newFromPage( $revRecord->getPage() );
+		// Detect WMF private wikis, where ParsoidHelper will not work with $forwardCookies=false.
+		// Use ParsoidOutputAccess instead, which is discouraged for production use for reasons no one
+		// was able to adequately explain, but it is the only way. WMF private wikis get very few edits
+		// anyway, so this shouldn't be a big deal. (T315689)
+		$isPrivateWiki = !isset( $mainConfig->get( 'VirtualRestConfig' )['modules']['restbase'] );
 
-		// Get HTML for the revision
-		$response = $parsoidClient->getPageHtml( $revRecord, null );
+		// It's 2022 and we still can't use Parsoid in production. Work around this. (If it's no longer
+		// 2022 and this comment is still here, time to quit technology and find a job as a farmer.)
+		if ( $isPrivateWiki ) {
+			$parsoidOutputAccess = $services->getParsoidOutputAccess();
 
-		if ( !empty( $response['error'] ) ) {
-			// @phan-suppress-next-next-line PhanParamTooFewUnpack This should be documented as
-			// non-empty in ParsoidClient
-			$message = wfMessage( ...$response['error'] );
-			throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
+			$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
+				$services->getPageStore()->getPageById( $revRecord->getPageId(), IDBAccessObject::READ_LATEST );
+			Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
+
+			$status = $parsoidOutputAccess->getParserOutput(
+				$pageRecord,
+				ParserOptions::newFromAnon(),
+				$revRecord
+			);
+
+			if ( !$status->isOK() ) {
+				[ 'message' => $key, 'params' => $params ] = $status->getErrors()[0];
+				$message = wfMessage( $key, ...$params );
+				throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
+			}
+
+			$parserOutput = $status->getValue();
+			$html = $parserOutput->getText();
+
+		} else {
+			$parsoidClientFactory = $services->getService( VisualEditorParsoidClientFactory::SERVICE_NAME );
+			/** @var ParsoidClient $parsoidClient */
+			$parsoidClient = $parsoidClientFactory->createParsoidClient( false );
+
+			// Get HTML for the revision
+			$response = $parsoidClient->getPageHtml( $revRecord, null );
+
+			if ( !empty( $response['error'] ) ) {
+				// @phan-suppress-next-next-line PhanParamTooFewUnpack This should be documented as
+				// non-empty in ParsoidClient
+				$message = wfMessage( ...$response['error'] );
+				throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
+			}
+
+			$html = $response['body'];
 		}
-
-		$html = $response['body'];
 
 		// Run the discussion parser on it
 		$doc = DOMUtils::parseHTML( $html );
@@ -116,6 +150,7 @@ class HookUtils {
 		CommentUtils::unwrapParsoidSections( $container );
 
 		$parser = $services->getService( 'DiscussionTools.CommentParser' );
+		$title = TitleValue::newFromPage( $revRecord->getPage() );
 		return $parser->parse( $container, $title );
 	}
 
