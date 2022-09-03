@@ -134,9 +134,13 @@ class HookUtils {
 			$response = $parsoidClient->getPageHtml( $revRecord, null );
 
 			if ( !empty( $response['error'] ) ) {
-				// @phan-suppress-next-next-line PhanParamTooFewUnpack This should be documented as
-				// non-empty in ParsoidClient
-				$message = wfMessage( ...$response['error'] );
+				$msg = $response['error'];
+				if ( $msg[0] === 'apierror-visualeditor-docserver-http' && $msg[1] === 404 ) {
+					// RESTBase error messages for this case don't seem to make much sense. (T315688)
+					// Report more details, so that we can have a look and see what's up with them.
+					$msg[2] .= " - page {$revRecord->getPageId()}, rev {$revRecord->getId()}";
+				}
+				$message = wfMessage( ...$msg );
 				throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
 			}
 
