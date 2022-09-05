@@ -18,7 +18,7 @@ class ApiDiscussionToolsGetSubscriptions extends ApiBase {
 	 */
 	public function __construct(
 		ApiMain $main,
-		$name,
+		string $name,
 		SubscriptionStore $subscriptionStore
 	) {
 		parent::__construct( $main, $name );

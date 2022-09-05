@@ -7,7 +7,6 @@ use ApiResult;
 use DerivativeContext;
 use DerivativeRequest;
 use IContextSource;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
 use TitleValue;
@@ -16,6 +15,8 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 
 /**
  * Random methods we want to share between API modules.
+ *
+ * @property CommentParser $commentParser
  */
 trait ApiDiscussionToolsTrait {
 	/**
@@ -32,8 +33,7 @@ trait ApiDiscussionToolsTrait {
 
 		$title = TitleValue::newFromPage( $revision->getPage() );
 
-		$parser = MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' );
-		return $parser->parse( $container, $title );
+		return $this->commentParser->parse( $container, $title );
 	}
 
 	/**
