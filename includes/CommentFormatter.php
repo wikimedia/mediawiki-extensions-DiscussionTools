@@ -82,7 +82,7 @@ class CommentFormatter {
 
 						$summary = Html::element( 'span', [
 							'class' => 'ext-discussiontools-init-sidebar-meta'
-						], wfMessage( 'parentheses', $commentCount )->inLanguage( $lang )->text() );
+						], $commentCount );
 
 						// This also shows up in API action=parse&prop=sections output.
 						$item['html-summary'] = $summary;
