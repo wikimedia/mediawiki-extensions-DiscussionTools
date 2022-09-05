@@ -5,9 +5,11 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ઉત્તર",
+	"discussiontools-desc": "ચર્ચા પાનાઓને સમૃદ્ધ બનાવવા માટેના સાધનો.",
 	"discussiontools-preference-label": "ચર્ચા સાધનો",
 	"discussiontools-replylink": "ઉત્તર",
 	"discussiontools-replywidget-cancel": "રદ કરો",
+	"discussiontools-replywidget-feedback": "આ સુવિધા માટે પ્રતિભાવ આપો",
 	"discussiontools-replywidget-loading": "લાવે છે...",
 	"discussiontools-replywidget-mention-tool-title": "સભ્યનો ઉલ્લેખ કરો",
 	"discussiontools-replywidget-mode-source": "સ્રોત",
@@ -15,6 +17,7 @@
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ને ઉત્તર",
 	"discussiontools-replywidget-preview": "પૂર્વાવલોકન",
 	"discussiontools-replywidget-reply": "ઉત્તર",
+	"discussiontools-replywidget-terms-click": "\"$1\" પર ક્લિક કરીને, તમે આ વિકિના ઉપયોગની શરતો સાથે સંમત થાઓ છો.",
 	"discussiontools-replywidget-transcluded": "તમારી ટિપ્પણી [[$1]] પર સાચવવામાં આવશે.",
 	"tag-discussiontools-source": "સ્રોત",
 	"tag-discussiontools-visual": "વિઝ્યુલ"
