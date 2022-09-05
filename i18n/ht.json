@@ -4,10 +4,26 @@
 			"Amire80"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Repons",
 	"discussiontools-replylink": "reponn",
+	"discussiontools-replywidget-advanced": "Avanse",
 	"discussiontools-replywidget-cancel": "Anile",
 	"discussiontools-replywidget-mode-source": "Kòd",
 	"discussiontools-replywidget-mode-visual": "Vizyèl",
 	"discussiontools-replywidget-placeholder-reply": "Repons pou {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Reponn"
+	"discussiontools-replywidget-preview": "Kout je",
+	"discussiontools-replywidget-reply": "Reponn",
+	"discussiontools-replywidget-summary": "Rezime",
+	"discussiontools-replywidget-watchthis": "Ajoute paj sa a nan [[Special:Watchlist|list swivi]] ou",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|moun}} nan diskisyon",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kòmantè}}",
+	"discussiontools-topicheader-latestcomment": "Dènye kòmantè : $1",
+	"discussiontools-topicsubscription-button-subscribe": "fè abònman",
+	"discussiontools-topicsubscription-button-subscribe-label": "Fè abònman",
+	"discussiontools-topicsubscription-button-unsubscribe": "dezabòne",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Dezabòne",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Ou pral resevwa notifikasyon sou nouvo kòmantè yo nan sijè sa a.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Ou te abòne !",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ou pa pral resevwa notifikasyon sou nouvo kòmantè yo nan sijè sa a.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Ou te dezabòne."
 }

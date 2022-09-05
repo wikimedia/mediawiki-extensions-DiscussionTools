@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Balint36",
 			"Bencemac",
 			"Ed g2s",
 			"Hanna Tardos",
@@ -57,6 +58,7 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|válaszolt}} a(z) „<strong>$4</strong>” témában",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|$1|100=99+}} új válasz a(z) „<strong>$3</strong>” témában.",
 	"discussiontools-notification-subscribed-new-comment-view": "Hozzászólás megjelenítése",
+	"discussiontools-pagetitle-reply": "Válasz: $1",
 	"discussiontools-postedit-confirmation-published": "A hozzászólásod közzé lett téve.",
 	"discussiontools-postedit-confirmation-topicadded": "A témád közzé lett téve.",
 	"discussiontools-preference-autotopicsub": "Automatikus témafeliratkozások",

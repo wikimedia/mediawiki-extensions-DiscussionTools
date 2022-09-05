@@ -47,6 +47,7 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|je odgovorio|je odgovorila}} u raspravi »<strong>$4</strong>«",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Jedan novi odgovor|$1 odgovora|100=99+ odgovora}} u raspravi »<strong>$3</strong>«",
 	"discussiontools-notification-subscribed-new-comment-view": "Pogledaj komentar",
+	"discussiontools-pagetitle-newtopic": "Započinjanje nove teme na $1",
 	"discussiontools-postedit-confirmation-published": "Vaš je komentar objavljen.",
 	"discussiontools-postedit-confirmation-topicadded": "Vaša je tema dodana.",
 	"discussiontools-preference-autotopicsub": "Automatsko praćenje tema",

@@ -56,6 +56,7 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Vedi commento",
 	"discussiontools-pageframe-latestcomment": "Ultimo commento: $1 di $2 nell'argomento $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Ultimo commento: $1 di $2",
+	"discussiontools-pagetitle-reply": "Risposta su $1",
 	"discussiontools-postedit-confirmation-published": "Il tuo commento è stato pubblicato.",
 	"discussiontools-postedit-confirmation-topicadded": "Il tuo argomento è stato aggiunto.",
 	"discussiontools-preference-autotopicsub": "Iscrivimi automaticamente alle discussioni",
