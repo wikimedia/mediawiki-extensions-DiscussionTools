@@ -86,6 +86,8 @@ class CommentFormatter {
 
 						// This also shows up in API action=parse&prop=sections output.
 						$item['html-summary'] = $summary;
+					} else {
+						$item['html-summary'] = '';
 					}
 				}
 				$pout->setSections( $sections );
@@ -199,11 +201,11 @@ class CommentFormatter {
 			$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
 			$headingElement->appendChild( $ellipsisButton );
 			$headingElement->appendChild( $bar );
-		}
 
-		$tocInfo[ $headingItem->getLinkableTitle() ] = [
-			'commentCount' => $headingItem->getCommentCount(),
-		];
+			$tocInfo[ $headingItem->getLinkableTitle() ] = [
+				'commentCount' => $headingItem->getCommentCount(),
+			];
+		}
 	}
 
 	/**
