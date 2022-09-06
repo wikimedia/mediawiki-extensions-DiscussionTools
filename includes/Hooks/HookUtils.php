@@ -15,6 +15,7 @@ use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
 use MediaWiki\Extension\VisualEditor\ParsoidHelper;
+use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
@@ -90,9 +91,11 @@ class HookUtils {
 	 * @return ContentThreadItemSet
 	 */
 	public static function parseRevisionParsoidHtml( RevisionRecord $revRecord ): ContentThreadItemSet {
+		$services = MediaWikiServices::getInstance();
 		$parsoidHelper = new ParsoidHelper(
 			new NullLogger(),
-			false
+			false,
+			$services->getService( VisualEditorParsoidClientFactory::SERVICE_NAME )
 		);
 
 		// Get HTML for the revision
@@ -114,7 +117,6 @@ class HookUtils {
 
 		CommentUtils::unwrapParsoidSections( $container );
 
-		$services = MediaWikiServices::getInstance();
 		$parser = $services->getService( 'DiscussionTools.CommentParser' );
 		return $parser->parse( $container, $title );
 	}
