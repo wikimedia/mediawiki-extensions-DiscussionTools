@@ -29,11 +29,12 @@ function MWUsernameCompletionAction( surface ) {
 	this.searchedPrefixes = {};
 	this.localUsers = [];
 	this.ipUsers = [];
-	this.surface.authors.forEach( function ( user ) {
-		if ( mw.util.isIPAddress( user ) ) {
-			action.ipUsers.push( user );
-		} else if ( user !== mw.user.getName() ) {
-			action.localUsers.push( user );
+	this.surface.authors.forEach( function ( author ) {
+		var username = author.username;
+		if ( mw.util.isIPAddress( username ) ) {
+			action.ipUsers.push( username );
+		} else if ( username !== mw.user.getName() ) {
+			action.localUsers.push( username );
 		}
 	} );
 	if (

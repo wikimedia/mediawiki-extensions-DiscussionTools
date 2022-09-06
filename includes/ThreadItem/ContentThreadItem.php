@@ -65,9 +65,17 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 		) {
 			if ( $comment instanceof ContentCommentItem ) {
 				$author = $comment->getAuthor();
-				if ( $author ) {
-					$authors[ $author ] = true;
+				if ( !isset( $authors[ $author] ) ) {
+					$authors[ $author ] = [
+						'username' => $author,
+						'displayNames' => [],
+					];
 				}
+				$displayName = $comment->getDisplayName();
+				if ( $displayName && !in_array( $displayName, $authors[ $author ][ 'displayNames' ], true ) ) {
+					$authors[ $author ][ 'displayNames' ][] = $displayName;
+				}
+
 				if (
 					!$oldestReply ||
 					( $comment->getTimestamp() < $oldestReply->getTimestamp() )
@@ -91,7 +99,7 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 
 		ksort( $authors );
 
-		$this->authors = array_keys( $authors );
+		$this->authors = array_values( $authors );
 		$this->commentCount = $commentCount;
 		$this->oldestReply = $oldestReply;
 		$this->latestReply = $latestReply;
@@ -102,7 +110,7 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	 *
 	 * Usually called on a HeadingItem to find all authors in a thread.
 	 *
-	 * @return string[] Author usernames
+	 * @return array[] Authors, with `username` and `displayNames` (list of display names) properties.
 	 */
 	public function getAuthorsBelow(): array {
 		$this->calculateThreadSummary();
