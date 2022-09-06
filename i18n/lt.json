@@ -4,7 +4,8 @@
 			"Eitvys200",
 			"Tomasdd",
 			"Hugo.arg",
-			"Homo"
+			"Homo",
+			"Pavel1513"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Atsakyti",
@@ -38,6 +39,7 @@
 	"discussiontools-replywidget-placeholder-reply": "Atsakyti {{BIDI: $1 }}",
 	"discussiontools-replywidget-preview": "Peržiūra",
 	"discussiontools-replywidget-reply": "Atsakyti",
+	"discussiontools-replywidget-summary": "Santrauka",
 	"discussiontools-topicsubscription-button-subscribe": "prenumeruoti",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Prenumeruokite, kad gautumėte pranešimus apie naujus komentarus.",
 	"discussiontools-topicsubscription-button-unsubscribe": "nutraukti prenumeratą",

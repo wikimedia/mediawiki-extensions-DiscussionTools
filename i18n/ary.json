@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ideophagous"
+			"Ideophagous",
+			"Reda Benkhadra"
 		]
 	},
-	"discussiontools-emptystate-button": "بدا مداكرة"
+	"discussiontools-emptystate-button": "بدا مداكرة",
+	"discussiontools-replylink": "{{GENDER:|ردّ|ردّي}}",
+	"discussiontools-replywidget-cancel": "لغي",
+	"discussiontools-replywidget-mode-source": "لمصدر",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|ردَّ|ردِّي}} على {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}"
 }
