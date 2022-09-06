@@ -54,10 +54,10 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 		$commentCount = 0;
 		$oldestReply = null;
 		$latestReply = null;
-		$threadScan = static function ( ThreadItem $comment ) use (
+		$threadScan = static function ( ContentThreadItem $comment ) use (
 			&$authors, &$commentCount, &$oldestReply, &$latestReply, &$threadScan
 		) {
-			if ( $comment instanceof CommentItem ) {
+			if ( $comment instanceof ContentCommentItem ) {
 				$author = $comment->getAuthor();
 				if ( $author ) {
 					$authors[ $author ] = true;
@@ -101,8 +101,8 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	 */
 	public function getAuthorsBelow(): array {
 		$authors = [];
-		$getAuthorSet = static function ( ThreadItem $threadItem ) use ( &$authors, &$getAuthorSet ) {
-			if ( $threadItem instanceof CommentItem ) {
+		$getAuthorSet = static function ( ContentThreadItem $threadItem ) use ( &$authors, &$getAuthorSet ) {
+			if ( $threadItem instanceof ContentCommentItem ) {
 				$authors[ $threadItem->getAuthor() ] = true;
 			}
 			// Get the set of authors in the same format from each reply
@@ -126,7 +126,7 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	 */
 	public function getThreadItemsBelow(): array {
 		$threadItems = [];
-		$getReplies = static function ( ThreadItem $threadItem ) use ( &$threadItems, &$getReplies ) {
+		$getReplies = static function ( ContentThreadItem $threadItem ) use ( &$threadItems, &$getReplies ) {
 			$threadItems[] = $threadItem;
 			foreach ( $threadItem->getReplies() as $reply ) {
 				$getReplies( $reply );
