@@ -91,6 +91,12 @@ module.exports.serializeComments = function ( parent, root ) {
 	// Unimportant
 	delete parent.rootNode;
 
+	// Ignore generated properties
+	delete parent.authors;
+	delete parent.commentCount;
+	delete parent.oldestReply;
+	delete parent.latestReply;
+
 	parent.replies.forEach( function ( comment ) {
 		module.exports.serializeComments( comment, root );
 	} );

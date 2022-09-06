@@ -149,20 +149,20 @@ class CommentFormatter {
 		}
 
 		// Visual enhancements: topic containers
-		$summary = $headingItem->getThreadSummary();
-		if ( $summary['commentCount'] ) {
-			$latestReplyJSON = static::getJsonForCommentMarker( $summary['latestReply'] );
+		$latestReplyItem = $headingItem->getLatestReply();
+		if ( $latestReplyItem ) {
+			$latestReplyJSON = static::getJsonForCommentMarker( $latestReplyItem );
 			$latestReply = $doc->createComment(
 				// Timestamp output varies by user timezone, so is formatted later
 				'__DTLATESTCOMMENTTHREAD__' . htmlspecialchars( $latestReplyJSON, ENT_NOQUOTES ) . '__'
 			);
 
 			$commentCount = $doc->createComment(
-				'__DTCOMMENTCOUNT__' . $summary['commentCount'] . '__'
+				'__DTCOMMENTCOUNT__' . $headingItem->getCommentCount() . '__'
 			);
 
 			$authorCount = $doc->createComment(
-				'__DTAUTHORCOUNT__' . count( $summary['authors'] ) . '__'
+				'__DTAUTHORCOUNT__' . count( $headingItem->getAuthorsBelow() ) . '__'
 			);
 
 			// Topic subscriptions
@@ -201,7 +201,9 @@ class CommentFormatter {
 			$headingElement->appendChild( $bar );
 		}
 
-		$tocInfo[ $headingItem->getLinkableTitle() ] = $summary;
+		$tocInfo[ $headingItem->getLinkableTitle() ] = [
+			'commentCount' => $headingItem->getCommentCount(),
+		];
 	}
 
 	/**

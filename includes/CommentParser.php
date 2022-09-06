@@ -979,7 +979,7 @@ class CommentParser {
 			// (e.g. dozens of threads titled "question" on [[Wikipedia:Help desk]]: https://w.wiki/fbN),
 			// include the oldest timestamp in the thread (i.e. date the thread was started) in the
 			// heading ID.
-			$oldestComment = $threadItem->getThreadSummary()['oldestReply'];
+			$oldestComment = $threadItem->getOldestReply();
 			if ( $oldestComment ) {
 				$id .= '-' . $oldestComment->getTimestampString();
 			}
@@ -1013,7 +1013,7 @@ class CommentParser {
 
 		if ( $threadItem instanceof ContentHeadingItem ) {
 			$name = 'h-';
-			$mainComment = $threadItem->getThreadSummary()['oldestReply'];
+			$mainComment = $threadItem->getOldestReply();
 		} elseif ( $threadItem instanceof ContentCommentItem ) {
 			$name = 'c-';
 			$mainComment = $threadItem;

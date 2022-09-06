@@ -39,6 +39,11 @@ function ThreadItem( type, level, range ) {
 	this.warnings = [];
 
 	this.rootNode = null;
+
+	this.authors = null;
+	this.commentCount = null;
+	this.oldestReply = null;
+	this.latestReply = null;
 }
 
 OO.initClass( ThreadItem );
@@ -112,11 +117,12 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 };
 
 /**
- * Get summary metadata for a thread.
- *
- * @return {Object} Information about the comments below
+ * Calculate summary metadata for a thread.
  */
-ThreadItem.prototype.getThreadSummary = function () {
+ThreadItem.prototype.calculateThreadSummary = function () {
+	if ( this.authors ) {
+		return;
+	}
 	var authors = {};
 	var commentCount = 0;
 	var oldestReply = null;
@@ -142,12 +148,10 @@ ThreadItem.prototype.getThreadSummary = function () {
 	}
 	this.replies.forEach( threadScan );
 
-	return {
-		authors: Object.keys( authors ).sort(),
-		commentCount: commentCount,
-		oldestReply: oldestReply,
-		latestReply: latestReply
-	};
+	this.authors = Object.keys( authors ).sort();
+	this.commentCount = commentCount;
+	this.oldestReply = oldestReply;
+	this.latestReply = latestReply;
 };
 
 /**
@@ -158,18 +162,38 @@ ThreadItem.prototype.getThreadSummary = function () {
  * @return {string[]} Author usernames
  */
 ThreadItem.prototype.getAuthorsBelow = function () {
-	var authors = {};
-	function getAuthorSet( comment ) {
-		if ( comment.type === 'comment' ) {
-			authors[ comment.author ] = true;
-		}
-		// Get the set of authors in the same format from each reply
-		comment.replies.forEach( getAuthorSet );
-	}
+	this.calculateThreadSummary();
+	return this.authors;
+};
 
-	this.replies.forEach( getAuthorSet );
+/**
+ * Get the number of comment items in the tree below this thread item.
+ *
+ * @return {number}
+ */
+ThreadItem.prototype.getCommentCount = function () {
+	this.calculateThreadSummary();
+	return this.commentCount;
+};
 
-	return Object.keys( authors ).sort();
+/**
+ * Get the latest reply in the tree below this thread item, null if there are no replies
+ *
+ * @return {CommentItem|null}
+ */
+ThreadItem.prototype.getLatestReply = function () {
+	this.calculateThreadSummary();
+	return this.latestReply;
+};
+
+/**
+ * Get the oldest reply in the tree below this thread item, null if there are no replies
+ *
+ * @return {CommentItem|null}
+ */
+ThreadItem.prototype.getOldestReply = function () {
+	this.calculateThreadSummary();
+	return this.oldestReply;
 };
 
 /**
