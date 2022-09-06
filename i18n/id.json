@@ -105,6 +105,8 @@
 	"discussiontools-replywidget-watchthis": "Tambahkan halaman ini ke [[Special:Watchlist|daftar pantauan]] Anda",
 	"discussiontools-target-comment-missing": "Komentar ini tidak bisa ditemukan. Ia mungkin sudah dihapus atau dipindahkan.",
 	"discussiontools-target-comments-missing": "Komentar-komentar baru tidak bisa ditemukan. Mereka mungkin telah dihapus atau dipindahkan.",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|orang|orang}} dakam diskusi",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentar-komentar}}",
 	"discussiontools-topicheader-latestcomment": "Komentar terbaru: $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Berhenti berlangganan",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Berhenti berlangganan dari topik ini?",
