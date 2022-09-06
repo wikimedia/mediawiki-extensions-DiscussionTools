@@ -90,9 +90,7 @@ class HookUtils {
 	 * @return ContentThreadItemSet
 	 */
 	public static function parseRevisionParsoidHtml( RevisionRecord $revRecord ): ContentThreadItemSet {
-		$services = MediaWikiServices::getInstance();
 		$parsoidHelper = new ParsoidHelper(
-			$services->getMainConfig(),
 			new NullLogger(),
 			false
 		);
@@ -116,6 +114,7 @@ class HookUtils {
 
 		CommentUtils::unwrapParsoidSections( $container );
 
+		$services = MediaWikiServices::getInstance();
 		$parser = $services->getService( 'DiscussionTools.CommentParser' );
 		return $parser->parse( $container, $title );
 	}
