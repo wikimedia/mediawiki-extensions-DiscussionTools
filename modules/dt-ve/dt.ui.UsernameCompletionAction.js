@@ -7,6 +7,16 @@
 var sequence,
 	controller = require( 'ext.discussionTools.init' ).controller;
 
+function sortAuthors( a, b ) {
+	return a.username < b.username ? -1 : ( a.username === b.username ? 0 : 1 );
+}
+
+function hasUser( authors, username ) {
+	return authors.some( function ( author ) {
+		return author.username === username;
+	} );
+}
+
 /**
  * MWUsernameCompletionAction action.
  *
@@ -18,8 +28,7 @@ var sequence,
  * @param {ve.ui.Surface} surface Surface to act on
  */
 function MWUsernameCompletionAction( surface ) {
-	var action = this,
-		relevantUserName = mw.config.get( 'wgRelevantUserName' );
+	var action = this;
 
 	// Parent constructor
 	MWUsernameCompletionAction.super.call( this, surface );
@@ -30,20 +39,24 @@ function MWUsernameCompletionAction( surface ) {
 	this.localUsers = [];
 	this.ipUsers = [];
 	this.surface.authors.forEach( function ( author ) {
-		var username = author.username;
-		if ( mw.util.isIPAddress( username ) ) {
-			action.ipUsers.push( username );
-		} else if ( username !== mw.user.getName() ) {
-			action.localUsers.push( username );
+		if ( mw.util.isIPAddress( author.username ) ) {
+			action.ipUsers.push( author );
+		} else if ( author.username !== mw.user.getName() ) {
+			action.localUsers.push( author );
 		}
 	} );
+	// On user talk pages, always list the "owner" of the talk page
+	var relevantUserName = mw.config.get( 'wgRelevantUserName' );
 	if (
 		relevantUserName &&
 		relevantUserName !== mw.user.getName() &&
-		this.localUsers.indexOf( relevantUserName ) === -1
+		!hasUser( this.localUsers, relevantUserName )
 	) {
-		this.localUsers.push( relevantUserName );
-		this.localUsers.sort();
+		this.localUsers.push( {
+			username: relevantUserName,
+			displayNames: []
+		} );
+		this.localUsers.sort( sortAuthors );
 	}
 	this.remoteUsers = [];
 }
@@ -111,19 +124,22 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 		} ).then( function ( response ) {
 			var suggestions = response.query.allusers.filter( function ( user ) {
 				// API doesn't return IPs
-				return action.localUsers.indexOf( user.name ) === -1 &&
-					action.remoteUsers.indexOf( user.name ) === -1 &&
+				return !hasUser( action.localUsers, user.name ) &&
+					!hasUser( action.remoteUsers, user.name ) &&
 					// Exclude users with indefinite sitewide blocks:
 					// The only place such users could reply is on their
 					// own user talk page, and in that case the user
 					// will be included in localUsers.
 					!( user.blockexpiry === 'infinite' && !user.blockpartial );
 			} ).map( function ( user ) {
-				return user.name;
+				return {
+					username: user.name,
+					displayNames: []
+				};
 			} );
 
 			action.remoteUsers.push.apply( action.remoteUsers, suggestions );
-			action.remoteUsers.sort();
+			action.remoteUsers.sort( sortAuthors );
 
 			action.searchedPrefixes[ input ] = true;
 		} );
@@ -146,6 +162,42 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			validatedInput
 		);
 	} );
+};
+
+/**
+ * Compare a suggestion to the normalized user input (lower case)
+ *
+ * @param {Mixed} suggestion Suggestion data, string by default
+ * @param {string} normalizedInput Noramlized user input
+ * @return {Object} Match object, containing two booleans, `isMatch` and `isExact`
+ */
+MWUsernameCompletionAction.prototype.compareSuggestionToInput = function ( suggestion, normalizedInput ) {
+	var normalizedSuggestion = suggestion.username.toLowerCase() + ' ' +
+		suggestion.displayNames.map( function ( displayName ) {
+			return displayName.toLowerCase();
+		} ).join( ' ' );
+
+	return {
+		isMatch: normalizedSuggestion.indexOf( normalizedInput ) !== -1,
+		isExact: normalizedSuggestion === normalizedInput
+	};
+};
+
+/**
+ * Create a suggestion from an input
+ *
+ * @param {string} input User input
+ * @return {Mixed} Suggestion data, string by default
+ */
+MWUsernameCompletionAction.prototype.createSuggestion = function ( input ) {
+	return {
+		username: input,
+		displayNames: []
+	};
+};
+
+MWUsernameCompletionAction.prototype.getMenuItemForSuggestion = function ( suggestion ) {
+	return new OO.ui.MenuOptionWidget( { data: suggestion.username, label: suggestion.username } );
 };
 
 MWUsernameCompletionAction.prototype.getHeaderLabel = function ( input, suggestions ) {
