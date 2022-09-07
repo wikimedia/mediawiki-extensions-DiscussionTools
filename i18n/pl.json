@@ -6,7 +6,8 @@
 			"Nux",
 			"Rail",
 			"Woytecr",
-			"The Polish"
+			"The Polish",
+			"Msz2001"
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
@@ -46,8 +47,8 @@
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Teraz pokazywany jest stary sposób.</strong> Możesz [$1 przywrócić nowy sposób] lub odwiedzić stronę ustawień aby [$2 ustawić korzystanie ze starego sposobu jako domyślny].",
 	"discussiontools-newtopic-missing-title": "Nie podano tytułu wątku. Jeśli klikniesz „{{int:discussiontools-replywidget-newtopic}}”, twój komentarz zostanie dodany bez tytułu.",
 	"discussiontools-newtopic-placeholder-title": "Tytuł",
-	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|odpowiedział|odpowiedziała|odpowiedział(a)}} w wątku \"<strong>$4</strong>\".",
-	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Nowa odpowiedź|$1 nowe odpowiedzi|$1 nowych odpowiedzi|100=99+ nowych odpowiedzi}} w wątku \"<strong>$3</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|odpowiedział|odpowiedziała|odpowiedział(a)}} w wątku „<strong>$4</strong>”.",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Nowa odpowiedź|$1 nowe odpowiedzi|$1 nowych odpowiedzi|100=99+ nowych odpowiedzi}} w wątku „<strong>$3</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-view": "Zobacz komentarz",
 	"discussiontools-postedit-confirmation-published": "Twój komentarz został opublikowany.",
 	"discussiontools-postedit-confirmation-topicadded": "Dodano wątek.",

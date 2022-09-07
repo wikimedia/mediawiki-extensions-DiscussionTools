@@ -4,7 +4,8 @@
 			"Eitvys200",
 			"Hugo.arg",
 			"Tomasdd",
-			"Homo"
+			"Homo",
+			"Pavel1513"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Kai kas nors šiame aptarime paskelbs naują pranešimą, gausite priminimą. Priminimų parametrus galite pakoreguoti nustatymų puslapyje.",
@@ -49,6 +50,7 @@
 	"discussiontools-replywidget-preferences": "Nustatymai",
 	"discussiontools-replywidget-preview": "Peržiūra",
 	"discussiontools-replywidget-reply": "Atsakyti",
+	"discussiontools-replywidget-summary": "Santrauka",
 	"discussiontools-replywidget-watchthis": "Pridėkite šį puslapį į savo [[Special:Watchlist|stebimųjų sąrašą]]",
 	"discussiontools-target-comment-missing": "Šio komentaro nepavyko rasti. Jis galėjo būti ištrintas arba perkeltas.",
 	"discussiontools-target-comments-missing": "Nepavyko rasti naujų komentarų. Jie galėjo būti ištrinti arba perkelti.",

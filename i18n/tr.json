@@ -18,7 +18,8 @@
 			"Vito Genovese",
 			"Victor Trevor",
 			"Cobija",
-			"Rapsar"
+			"Rapsar",
+			"Sedaoal"
 		]
 	},
 	"discussiontools": "Tartışma araçları",
@@ -55,6 +56,7 @@
 	"discussiontools-limitreport-timeusage": "DiscussionTools zaman kullanımı",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|saniye}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Tartışma başlatma bölümü yenilendi.</strong> Bu güncelleme, satır içinde yer alan bir kutucuğu kullanarak konu eklemenizi ve yeni bir kısayol ile farklı kullanıcılara ping (seslenme) göndermenizi destekler. Önceki versiyona geri dönmek için [$1 tıklayın].",
+	"discussiontools-newtopic-legacy-hint-return": "<strong>Artık eski deneyimi görüntülüyorsunuz.</strong> [$1 Yeni deneyime dönebilir] veya tercihleriniz üzerinden [$2 eski deneyimi varsayılan olarak ayarlayabilirsiniz].",
 	"discussiontools-newtopic-missing-title": "Lütfen tartışma konunuz için bir başlık girin. \"{{int:discussiontools-replywidget-newtopic}}\" düğmesine tıklarsanız, konunuz başlık olmadan eklenecektir.",
 	"discussiontools-newtopic-placeholder-title": "Başlık",
 	"discussiontools-notification-subscribed-new-comment-header": "$1, \"<strong>$4</strong>\" konusuna {{GENDER:$2|yanıt verdi}}.",
@@ -63,6 +65,7 @@
 	"discussiontools-postedit-confirmation-published": "Yorumunuz yayımlandı.",
 	"discussiontools-postedit-confirmation-topicadded": "Konunuz eklendi.",
 	"discussiontools-preference-autotopicsub": "Konulara otomatik olarak abone olun",
+	"discussiontools-preference-autotopicsub-help": "Yeni bir tartışma başlattığınızda veya mevcut bir tartışmaya yorum yaptığınızda, sizden sonra başkaları yeni bir yorum gönderdiğinde otomatik olarak bilgilendirileceksiniz.",
 	"discussiontools-preference-description": "Deneysel tartışma sayfası özelliklerini etkinleştirir:\n* Tek bir tıklamayla sayfa yorumlarını tartışmak için [https://www.mediawiki.org/wiki/Talk_pages_project/Replying yanıtlayın].\n* Satır içi bir form kullanarak [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion yeni konular ekleyin].\n* Abone olduğunuz bölümlere yeni yorumlar eklendiğinde [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications bildirimler alın].\n\nBu özellikleri [[Special:Preferences#mw-prefsection-editing-discussion|tercihler]] içinde özelleştirebilirsiniz.\n\nGüncellemeler [https://www.mediawiki.org/wiki/Talk_pages_project/Updates tartışma sayfaları projesinin güncellemeler sayfasında] yayımlanacaktır.\n\nLütfen not:\n* Zamanla yeni deneysel özellikler eklenecektir.\n* Yukarıdaki özelliklerden bazıları henüz vikinizde mevcut olmayabilir.",
 	"discussiontools-preference-label": "Tartışma araçları",
 	"discussiontools-preference-newtopictool": "Hızlı konu eklemeyi etkinleştir",
@@ -102,6 +105,8 @@
 	"discussiontools-replywidget-terms-click": "\"$1\" düğmesine tıklayarak, bu vikinin kullanım şartlarını kabul etmiş olursunuz.",
 	"discussiontools-replywidget-transcluded": "Yorumunuz [[$1]] sayfasında kaydedilecek.",
 	"discussiontools-replywidget-watchthis": "Bu sayfayı [[Special:Watchlist|izleme listesine]] ekleyin",
+	"discussiontools-target-comment-missing": "Bu yorum bulunamadı. Silinmiş veya taşınmış olabilir.",
+	"discussiontools-target-comments-missing": "Yeni yorum bulunamadı. Silinmiş veya taşınmış olabilir.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Abonelikten çık",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Bu konunun aboneliğinden çık?",
 	"discussiontools-topicsubscription-button-subscribe": "abone ol",
@@ -119,6 +124,8 @@
 	"discussiontools-topicsubscription-pager-topic": "Konu",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Abonelikten çık",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Abonelikleri düzenle",
+	"discussiontools-topicsubscription-special-intro": "Abonelikler tartışma sayfalarındaki bir konuyu takip etmenizi sağlar. Biri konuya yanıt verdiğinde bildirim alırsınız.\n\nBildirimleri nasıl ve nerede alacağınızı [[Special:Preferences#mw-prefsection-echo|tercihleriniz]] üzerinden ayarlayabilirsiniz.",
+	"discussiontools-topicsubscription-special-title": "Konu abonelikleri",
 	"echo-category-title-dt-subscription": "Tartışma sayfa {{PLURAL:$1|aboneliği|abonelikleri}}",
 	"echo-pref-tooltip-dt-subscription": "Abone olduğum bir konuda biri yeni bir yorum yaptığında bana bildir.",
 	"tag-discussiontools-added-comment-description": "Bu düzenlemeye, bir tartışma sayfası yorumu eklendi",

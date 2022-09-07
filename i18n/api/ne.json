@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"बडा काजी"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "'$1' भएको टिप्पणी फेला परेन।",
+	"apierror-discussiontools-subscription-failed-add": "यस विषयमा सदस्यता लिन सकिएन।",
+	"apierror-discussiontools-subscription-failed-remove": "यस विषयबाट सदस्यता रद्द गर्न सकिएन।"
+}

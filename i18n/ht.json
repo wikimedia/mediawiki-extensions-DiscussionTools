@@ -4,10 +4,21 @@
 			"Amire80"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Repons",
 	"discussiontools-replylink": "reponn",
+	"discussiontools-replywidget-advanced": "Avanse",
 	"discussiontools-replywidget-cancel": "Anile",
 	"discussiontools-replywidget-mode-source": "Kòd",
 	"discussiontools-replywidget-mode-visual": "Vizyèl",
 	"discussiontools-replywidget-placeholder-reply": "Repons pou {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Reponn"
+	"discussiontools-replywidget-preview": "Kout je",
+	"discussiontools-replywidget-reply": "Reponn",
+	"discussiontools-replywidget-summary": "Rezime",
+	"discussiontools-replywidget-watchthis": "Ajoute paj sa a nan [[Special:Watchlist|list swivi]] ou",
+	"discussiontools-topicsubscription-button-subscribe": "fè abònman",
+	"discussiontools-topicsubscription-button-unsubscribe": "dezabòne",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Ou pral resevwa notifikasyon sou nouvo kòmantè yo nan sijè sa a.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Ou te abòne !",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ou pa pral resevwa notifikasyon sou nouvo kòmantè yo nan sijè sa a.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Ou te dezabòne."
 }
