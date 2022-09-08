@@ -11,6 +11,7 @@ use DerivativeRequest;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
+use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Logger\LoggerFactory;
 use SkinFactory;
 use Title;
@@ -27,6 +28,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	/** @var CommentParser */
 	private $commentParser;
 
+	/** @var VisualEditorParsoidClientFactory */
+	private $parsoidClientFactory;
+
 	/** @var SubscriptionStore */
 	private $subscriptionStore;
 
@@ -39,6 +43,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
+	 * @param VisualEditorParsoidClientFactory $parsoidClientFactory
 	 * @param CommentParser $commentParser
 	 * @param SubscriptionStore $subscriptionStore
 	 * @param SkinFactory $skinFactory
@@ -47,12 +52,14 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	public function __construct(
 		ApiMain $main,
 		string $name,
+		VisualEditorParsoidClientFactory $parsoidClientFactory,
 		CommentParser $commentParser,
 		SubscriptionStore $subscriptionStore,
 		SkinFactory $skinFactory,
 		ConfigFactory $configFactory
 	) {
 		parent::__construct( $main, $name );
+		$this->parsoidClientFactory = $parsoidClientFactory;
 		$this->commentParser = $commentParser;
 		$this->subscriptionStore = $subscriptionStore;
 		$this->skinFactory = $skinFactory;

@@ -7,6 +7,8 @@ use ApiResult;
 use DerivativeContext;
 use DerivativeRequest;
 use IContextSource;
+use MediaWiki\Extension\VisualEditor\ParsoidClient;
+use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
 use TitleValue;
@@ -16,6 +18,7 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 /**
  * Random methods we want to share between API modules.
  *
+ * @property VisualEditorParsoidClientFactory $parsoidClientFactory
  * @property CommentParser $commentParser
  */
 trait ApiDiscussionToolsTrait {
@@ -130,6 +133,16 @@ trait ApiDiscussionToolsTrait {
 
 		$api->execute();
 		return $api->getResult();
+	}
+
+	/**
+	 * @see VisualEditorParsoidClientFactory
+	 * @return ParsoidClient
+	 */
+	protected function getParsoidClient(): ParsoidClient {
+		return $this->parsoidClientFactory->createParsoidClient(
+			$this->getContext()->getRequest()->getHeader( 'Cookie' )
+		);
 	}
 
 	/**

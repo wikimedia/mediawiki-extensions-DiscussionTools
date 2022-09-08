@@ -8,6 +8,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
+use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Parsoid\DOM\Element;
@@ -22,17 +23,23 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	/** @var CommentParser */
 	private $commentParser;
 
+	/** @var VisualEditorParsoidClientFactory */
+	private $parsoidClientFactory;
+
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
+	 * @param VisualEditorParsoidClientFactory $parsoidClientFactory
 	 * @param CommentParser $commentParser
 	 */
 	public function __construct(
 		ApiMain $main,
 		string $name,
+		VisualEditorParsoidClientFactory $parsoidClientFactory,
 		CommentParser $commentParser
 	) {
 		parent::__construct( $main, $name );
+		$this->parsoidClientFactory = $parsoidClientFactory;
 		$this->commentParser = $commentParser;
 	}
 
