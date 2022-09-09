@@ -7,6 +7,7 @@
 			"Minh Nguyen",
 			"Nghiemtrongdai VN",
 			"NguoiDungKhongDinhDanh",
+			"Phjtieudoc",
 			"Vinhtantran"
 		]
 	},
@@ -24,7 +25,7 @@
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Trang thảo luận]] là nơi để mọi người cùng nhau thảo luận để giúp nội dung trên {{SITENAME}} trở nên tốt nhất có thể. Bạn có thể sử dụng trang này để bắt đầu một cuộc thảo luận mới để kết nối và hợp tác {{GENDER:{{PAGENAME}}|với}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Nội dung trên trang sẽ được công khai.",
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Trang thảo luận]] là nơi để mọi người cùng nhau bàn thảo để giúp nội dung trên {{SITENAME}} trở nên tốt nhất có thể. Bạn có thể sử dụng trang này để trò chuyện với người khác về những sửa đổi được thực hiện từ địa chỉ IP này. Nội dung trên trang sẽ được công khai. Rất nhiều địa chỉ IP thay đổi thường xuyên, và do nhiều người sử dụng.",
 	"discussiontools-emptystate-title": "Bắt đầu cuộc thảo luận về {{SUBJECTPAGENAME}}",
-	"discussiontools-emptystate-title-self": "Chào mừng đến với trang thảo luận của bạn",
+	"discussiontools-emptystate-title-self": "Chào mừng bạn đến với trang thảo luận của mình",
 	"discussiontools-emptystate-title-self-anon": "Chào mừng đến với trang thảo luận này",
 	"discussiontools-emptystate-title-user": "Bắt đầu cuộc trò chuyện {{GENDER:{{PAGENAME}}|với}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Chào mừng đến với trang thảo luận này",
