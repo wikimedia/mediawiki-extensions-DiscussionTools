@@ -4,10 +4,12 @@
 			"Saimawnkham"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "တွပ်ႇၶိုၼ်း",
 	"discussiontools-replylink": "တွပ်ႇၶိုၼ်း",
 	"discussiontools-replywidget-cancel": "ဢမ်ႇႁဵတ်း",
 	"discussiontools-replywidget-mode-source": "ငိူၼ်ႈငဝ်ႈတိုၼ်း",
 	"discussiontools-replywidget-mode-visual": "တႃႁၼ်",
 	"discussiontools-replywidget-placeholder-reply": "တွပ်ႇၶိုၼ်း ၸူး {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "တူၺ်းလူင်ႈၼႃႈ",
 	"discussiontools-replywidget-reply": "တွပ်ႇၶိုၼ်း"
 }

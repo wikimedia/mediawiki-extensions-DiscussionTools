@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ilja.mos"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Vaštua",
+	"discussiontools-replylink": "vaštua",
+	"discussiontools-replywidget-cancel": "Keškeytä",
+	"discussiontools-replywidget-mode-source": "Lähteh",
+	"discussiontools-replywidget-mode-visual": "Visualini",
+	"discussiontools-replywidget-placeholder-reply": "Vaštua käyttäjällä {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Esikačo",
+	"discussiontools-replywidget-reply": "Vaštua"
+}

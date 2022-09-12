@@ -4,10 +4,12 @@
 			"Amire80"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Repons",
 	"discussiontools-replylink": "reponn",
 	"discussiontools-replywidget-cancel": "Anile",
 	"discussiontools-replywidget-mode-source": "Kòd",
 	"discussiontools-replywidget-mode-visual": "Vizyèl",
 	"discussiontools-replywidget-placeholder-reply": "Repons pou {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Previzyalizasyon",
 	"discussiontools-replywidget-reply": "Reponn"
 }
