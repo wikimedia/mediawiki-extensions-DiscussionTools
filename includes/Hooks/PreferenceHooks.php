@@ -125,7 +125,10 @@ class PreferenceHooks implements
 			// (both reply tool and new topic tool are disabled)
 			$preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR]['disable-if'] = [ 'AND' ];
 
-			if ( isset( $preferences['discussiontools-' . HookUtils::REPLYTOOL] ) ) {
+			if ( isset( $preferences['discussiontools-' . HookUtils::REPLYTOOL] ) &&
+				// GlobalPreferences extension would delete disabled fields, avoid referring to it.
+				!( $preferences['discussiontools-' . HookUtils::REPLYTOOL]['disabled'] ?? false )
+			) {
 				$preferences['discussiontools-' . HookUtils::SOURCEMODETOOLBAR]['disable-if'][] = [
 					'===', 'discussiontools-' . HookUtils::REPLYTOOL, ''
 				];
