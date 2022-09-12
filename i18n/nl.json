@@ -112,6 +112,7 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Abonneren",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Abonneren op het ontvangen van notificaties bij nieuwe reacties.",
 	"discussiontools-topicsubscription-button-unsubscribe": "opzeggen",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Uitschrijven",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Opzeggen van het ontvangen van meldingen.",
 	"discussiontools-topicsubscription-error-not-found-body": "Het in de URL opgegeven abonnement is niet gevonden.",
 	"discussiontools-topicsubscription-error-not-found-title": "Abonnement niet gevonden",
