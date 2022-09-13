@@ -4,10 +4,20 @@
 			"Proabscorp!"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "उत्तर दौ",
 	"discussiontools-replylink": "उत्तर दौ",
+	"discussiontools-replywidget-advanced": "उन्नत स्तर",
 	"discussiontools-replywidget-cancel": "रद्द करौ",
 	"discussiontools-replywidget-mode-source": "स्रोत",
 	"discussiontools-replywidget-mode-visual": "दृश्य",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} क उत्तर दौ",
-	"discussiontools-replywidget-reply": "उत्तर दौ"
+	"discussiontools-replywidget-preview": "पूर्वावलोकन",
+	"discussiontools-replywidget-reply": "उत्तर दौ",
+	"discussiontools-replywidget-summary": "सारांश",
+	"discussiontools-topicsubscription-button-subscribe": "सब्सक्राइब करौ",
+	"discussiontools-topicsubscription-button-unsubscribe": "अनसब्सक्राइब करौ",
+	"discussiontools-topicsubscription-notify-subscribed-body": "तोरा हैय विषय मँ नया टिप्पणी के बारे मँ सूचना प्राप्त होथौं।",
+	"discussiontools-topicsubscription-notify-subscribed-title": "तोंय सदस्यता लै चुकलौ!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "अबअ तोरा हैय विषय मँ नया टिप्पणी के बारे मँ सूचना प्राप्त नाय होथौं।",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "तोंय सदस्यता समाप्त करी देलौ।"
 }

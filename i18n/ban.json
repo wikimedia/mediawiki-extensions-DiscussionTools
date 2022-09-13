@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chinamoonroll"
+			"Chinamoonroll",
+			"Joseagush"
 		]
 	},
 	"discussiontools": "Piranti pabligbagan",
@@ -39,6 +40,11 @@
 	"discussiontools-replywidget-reply": "Ngwales",
 	"discussiontools-replywidget-summary": "Ringkesan",
 	"discussiontools-topicsubscription-button-subscribe": "langganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "wusan malangganan",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Ragané pacang nampi pikélingan indik panampen anyar ring topik puniki.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Ragané sampun malangganan!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ragané nénten malih nampi pikélingan indik panampen anyar ring topik puniki.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Ragané wusan malangganan",
 	"tag-discussiontools-edit": "Uah penampen",
 	"tag-discussiontools-reply-description": "Anganggé ngalawes penampen nganggén DiscussionTools",
 	"tag-discussiontools-source": "Wit",

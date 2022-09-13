@@ -6,7 +6,9 @@
 			"Minh Nguyen",
 			"Nghiemtrongdai VN",
 			"Vinhtantran",
-			"NguoiDungKhongDinhDanh"
+			"NguoiDungKhongDinhDanh",
+			"Bluetpp",
+			"Phjtieudoc"
 		]
 	},
 	"discussiontools": "Công cụ thảo luận",
@@ -17,7 +19,7 @@
 	"discussiontools-emptystate-desc-self": "Người dùng có thể sử dụng {{SITENAME}} để gửi tin nhắn công khai cho bạn và bạn sẽ được gửi thông báo về tin nhắn này. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Learn more about this page]]",
 	"discussiontools-emptystate-desc-user": "Bạn có thể dùng trang thảo luận để bàn luận với [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] và cuộc trò chuyện sẽ ở chế độ công khai. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|‎Tìm hiểu thêm về cách sử dụng các trang này‎]]",
 	"discussiontools-emptystate-title": "Bắt đầu cuộc thảo luận về {{PAGENAME}}",
-	"discussiontools-emptystate-title-self": "Chào mừng đến với trang thảo luận của bạn",
+	"discussiontools-emptystate-title-self": "Chào mừng bạn đến với trang thảo luận của mình",
 	"discussiontools-emptystate-title-self-anon": "Chào mừng đến với trang thảo luận này",
 	"discussiontools-emptystate-title-user": "Bắt đầu cuộc trò chuyện với  {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Chào mừng đến với trang thảo luận này",

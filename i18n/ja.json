@@ -21,7 +21,10 @@
 			"カッパ鳥",
 			"Koyomiya",
 			"MirukuPC",
-			"青子守歌"
+			"青子守歌",
+			"Jaw Salvager",
+			"TAKAHASHI Shuuji",
+			"春春眠眠"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -72,8 +75,8 @@
 	"discussiontools-replywidget-abandon": "編集中のコメントを本当に破棄しますか？",
 	"discussiontools-replywidget-abandon-discard": "コメントを破棄",
 	"discussiontools-replywidget-abandon-keep": "編集を続行",
-	"discussiontools-replywidget-abandontopic": "書いている途中の話題を本当に破棄しますか？",
-	"discussiontools-replywidget-abandontopic-discard": "話題を破棄",
+	"discussiontools-replywidget-abandontopic": "編集中のコメントを本当に破棄してもよろしいですか？",
+	"discussiontools-replywidget-abandontopic-discard": "トピックを破棄",
 	"discussiontools-replywidget-abandontopic-keep": "編集を続行",
 	"discussiontools-replywidget-advanced": "高度",
 	"discussiontools-replywidget-anon-warning": "<strong>あなたはログインしていません。</strong>帰属としてIPアドレスではなくご自分の名前を表示させるには、[$1 ログイン]または[$2 アカウントを作成]してください。",
@@ -86,7 +89,7 @@
 	"discussiontools-replywidget-mention-tool-title": "利用者に言及する",
 	"discussiontools-replywidget-mode-source": "ソース",
 	"discussiontools-replywidget-mode-visual": "ビジュアル",
-	"discussiontools-replywidget-newtopic": "話題を追加",
+	"discussiontools-replywidget-newtopic": "トピックを追加",
 	"discussiontools-replywidget-placeholder-newtopic": "説明",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}に返信",
 	"discussiontools-replywidget-preview": "プレビュー",

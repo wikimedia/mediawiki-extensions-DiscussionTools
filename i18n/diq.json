@@ -5,10 +5,13 @@
 		]
 	},
 	"discussiontools": "Hacetê werênayışi",
+	"discussiontools-defaultsummary-reply": "Cewab",
 	"discussiontools-replylink": "cewab bıde",
 	"discussiontools-replywidget-cancel": "Bıtexelne",
 	"discussiontools-replywidget-mode-source": "Çıme",
 	"discussiontools-replywidget-mode-visual": "Vinıtbar",
 	"discussiontools-replywidget-placeholder-reply": "Cewab bıde be {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Cewab bıde"
+	"discussiontools-replywidget-preview": "Verqayt",
+	"discussiontools-replywidget-reply": "Cewab bıde",
+	"discussiontools-replywidget-summary": "Xulasa"
 }
