@@ -156,6 +156,7 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 					code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
 					{ size: 'medium' }
 				);
+				mw.track( 'dt.commentSetupError', code );
 			}
 
 			logger( {
