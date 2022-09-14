@@ -4,9 +4,10 @@
 
 span[ data-mw-comment-start ] {
 	// Give comment anchors a negative offset so we don't position
-	// them right at the edge of the page when jumping to them
-	position: relative;
-	top: -1em;
+	// them right at the edge of the page when jumping to them.
+	// Use margin rather than position to avoid Chrome bug (T317135).
+	position: absolute;
+	margin-top: -1em;
 }
 
 // stylelint-disable-next-line selector-list-comma-newline-after
