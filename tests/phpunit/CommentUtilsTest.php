@@ -6,14 +6,12 @@ use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\MediaWikiServices;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentUtils
- *
  * @group DiscussionTools
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
  */
 class CommentUtilsTest extends IntegrationTestCase {
 	/**
 	 * @dataProvider provideIsSingleCommentSignedBy
-	 * @covers ::isSingleCommentSignedBy
 	 */
 	public function testIsSingleCommentSignedBy(
 		string $msg, string $title, string $username, string $html, bool $expected

@@ -8,9 +8,8 @@ use MediaWikiUnitTestCase;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentUtils
- *
  * @group DiscussionTools
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
  */
 class CommentUtilsTest extends MediaWikiUnitTestCase {
 
@@ -18,7 +17,6 @@ class CommentUtilsTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideLinearWalk
-	 * @covers ::linearWalk
 	 */
 	public function testLinearWalk( string $name, string $htmlPath, string $expectedPath ) {
 		$html = static::getHtml( $htmlPath );

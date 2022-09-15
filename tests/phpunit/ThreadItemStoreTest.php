@@ -7,10 +7,9 @@ use MediaWiki\MediaWikiServices;
 use TestUser;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\ThreadItemStore
- *
  * @group DiscussionTools
  * @group Database
+ * @covers \MediaWiki\Extension\DiscussionTools\ThreadItemStore
  */
 class ThreadItemStoreTest extends IntegrationTestCase {
 
@@ -38,7 +37,6 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideInsertCases
-	 * @covers ::insertThreadItems
 	 */
 	public function testInsertThreadItems( string $dir ): void {
 		// Create users for the imported revisions

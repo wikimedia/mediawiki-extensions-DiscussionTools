@@ -12,15 +12,15 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ThreadItem;
 use MediaWiki\MediaWikiServices;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem
- *
  * @group DiscussionTools
+ * @covers \MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem
+ * @covers \MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
+ * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange
  */
 class ContentThreadItemTest extends IntegrationTestCase {
 	/**
 	 * @dataProvider provideAuthors
-	 * @covers ::getAuthorsBelow
-	 * @covers ::getThreadItemsBelow
 	 */
 	public function testGetAuthorsOrThreadItemsBelow(
 		array $thread, array $expectedAuthors, array $expectedThreadItemIds
@@ -56,8 +56,6 @@ class ContentThreadItemTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTranscludedFrom
-	 * @covers ::getTranscludedFrom
-	 * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils::unwrapParsoidSections
 	 */
 	public function testGetTranscludedFrom(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
@@ -102,9 +100,6 @@ class ContentThreadItemTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideGetText
-	 * @covers ::getText
-	 * @covers \MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem::getBodyText
-	 * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange::cloneContents
 	 */
 	public function testGetText(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
@@ -148,9 +143,6 @@ class ContentThreadItemTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideGetHTML
-	 * @covers ::getHTML
-	 * @covers \MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem::getBodyHTML
-	 * @covers \MediaWiki\Extension\DiscussionTools\ImmutableRange::cloneContents
 	 */
 	public function testGetHTML(
 		string $name, string $title, string $dom, string $expected, string $config, string $data

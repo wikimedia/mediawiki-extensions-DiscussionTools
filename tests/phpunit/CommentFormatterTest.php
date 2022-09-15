@@ -7,13 +7,12 @@ use Title;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentFormatter
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentFormatter
  */
 class CommentFormatterTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideAddDiscussionToolsInternal
-	 * @covers ::addDiscussionToolsInternal
 	 */
 	public function testAddDiscussionToolsInternal(
 		string $name, string $title, string $dom, array $expectedByMode, string $config, string $data

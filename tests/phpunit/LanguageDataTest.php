@@ -7,13 +7,12 @@ use MediaWiki\Extension\DiscussionTools\LanguageData;
 use MediaWiki\MediaWikiServices;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\LanguageData
+ * @covers \MediaWiki\Extension\DiscussionTools\LanguageData
  */
 class LanguageDataTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideLocalData
-	 * @covers ::getLocalData
 	 */
 	public function testGetLocalData( string $langCode, array $config, string $expectedPath ): void {
 		$conf = new HashConfig( $config + [

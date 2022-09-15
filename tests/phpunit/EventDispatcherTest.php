@@ -10,15 +10,13 @@ use MediaWiki\User\UserIdentityValue;
 use RawMessage;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher
- *
  * @group DiscussionTools
+ * @covers \MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher
  */
 class EventDispatcherTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideGenerateCases
-	 * @covers ::generateEventsFromItemSets
 	 */
 	public function testGenerateEventsFromParsers(
 		string $rev1, string $rev2, string $authorUsername, ?string $other, string $expected

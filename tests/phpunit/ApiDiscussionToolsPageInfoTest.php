@@ -8,14 +8,12 @@ use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group medium
- *
  * @covers \MediaWiki\Extension\DiscussionTools\ApiDiscussionToolsPageInfo
  */
 class ApiDiscussionToolsPageInfoTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideGetThreadItemsHtml
-	 * @covers \MediaWiki\Extension\DiscussionTools\ApiDiscussionToolsPageInfo::getThreadItemsHtml
 	 */
 	public function testGetThreadItemsHtml(
 		string $name, string $title, string $dom, string $expected, string $config, string $data

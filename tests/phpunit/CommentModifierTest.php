@@ -9,15 +9,13 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentModifier
- *
  * @group DiscussionTools
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentModifier
  */
 class CommentModifierTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideAddListItem
-	 * @covers ::addListItem
 	 */
 	public function testAddListItem(
 		string $name, string $title, string $dom, string $expected, string $config, string $data,
@@ -63,7 +61,6 @@ class CommentModifierTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideAddReplyLink
-	 * @covers ::addReplyLink
 	 */
 	public function testAddReplyLink(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
@@ -108,7 +105,6 @@ class CommentModifierTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideUnwrapList
-	 * @covers ::unwrapList
 	 */
 	public function testUnwrapList( string $name, string $html, int $index, string $expected ): void {
 		$doc = static::createDocument( '' );
@@ -126,7 +122,6 @@ class CommentModifierTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideAppendSignature
-	 * @covers ::appendSignature
 	 */
 	public function testAppendSignature(
 		string $msg, string $html, string $expected
@@ -147,9 +142,6 @@ class CommentModifierTest extends IntegrationTestCase {
 		return static::getJson( '../cases/appendSignature.json' );
 	}
 
-	/**
-	 * @covers ::appendSignatureWikitext
-	 */
 	public function testAppendSignatureWikitext(): void {
 		static::assertEquals(
 			'Foo bar ~~~~',
@@ -165,7 +157,6 @@ class CommentModifierTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideSanitizeWikitextLinebreaks
-	 * @covers ::sanitizeWikitextLinebreaks
 	 */
 	public function testSanitizeWikitextLinebreaks( string $msg, string $wikitext, string $expected ): void {
 		static::assertEquals(

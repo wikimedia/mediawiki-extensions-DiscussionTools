@@ -17,9 +17,8 @@ use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\DiscussionTools\CommentParser
- *
  * @group DiscussionTools
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentParser
  */
 class CommentParserTest extends IntegrationTestCase {
 
@@ -104,7 +103,6 @@ class CommentParserTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTimestampRegexps
-	 * @covers ::getTimestampRegexp
 	 */
 	public function testGetTimestampRegexp(
 		string $format, string $expected, string $message
@@ -129,7 +127,6 @@ class CommentParserTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTimestampParser
-	 * @covers ::getTimestampParser
 	 */
 	public function testGetTimestampParser(
 		string $format, array $data, string $expected, string $message
@@ -150,7 +147,6 @@ class CommentParserTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTimestampParserDST
-	 * @covers ::getTimestampParser
 	 */
 	public function testGetTimestampParserDST(
 		string $sample, string $expected, string $expectedUtc, string $format,
@@ -179,10 +175,6 @@ class CommentParserTest extends IntegrationTestCase {
 
 	/**
 	 * @dataProvider provideComments
-	 * @covers ::parse
-	 * @covers ::buildThreadItems
-	 * @covers ::buildThreads
-	 * @covers ::computeIdsAndNames
 	 */
 	public function testGetThreads(
 		string $name, string $title, string $dom, string $expected, string $config, string $data
