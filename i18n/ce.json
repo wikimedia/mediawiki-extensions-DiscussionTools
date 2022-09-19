@@ -49,6 +49,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|1=Цхьаъ керла жоп|$1 керла жоп|100=99+ керла жом}} «<strong>$3</strong>» чохь.",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Хьажа коммент",
+	"discussiontools-pagetitle-reply": "«$1» агӀонгахь жоп",
 	"discussiontools-postedit-confirmation-published": "Хьан коммент дӀайазйина",
 	"discussiontools-postedit-confirmation-topicadded": "Хьан тема тӀетоьхна.",
 	"discussiontools-preference-autotopicsub": "Темашна авто-тӀейаздалар",

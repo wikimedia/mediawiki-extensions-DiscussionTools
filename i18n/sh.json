@@ -4,13 +4,28 @@
 			"Vlad5250"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Odgovori",
 	"discussiontools-emptystate-desc": "Na [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|stranicama za razgovor]] raspravljamo kako stvoriti najbolji mogući sadržaj na projektu {{SITENAME}}. Ovdje započnite raspravu o poboljšanjima na stranici [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-desc-self": "Osobe na projektu {{SITENAME}} mogu rabiti ovu [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|stranicu za razgovor]] da objave javnu poruku za vas, o kojoj bit ćete obaviješteni.",
 	"discussiontools-emptystate-desc-self-anon": "Osobe na projektu {{SITENAME}} mogu rabiti ovu [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|stranicu za razgovor]] za objavu javne poruke o uređivanjima učinjenim s IP adrese koju trenutačno rabite.\n\nMnoge se IP adrese povremeno mijenjaju, i često više ljudi koristi istu adresu. Da biste izbjegli buduće zabune s drugim odjavljenim suradnicima možete [$1 otvoriti korisnički račun] ili [$2 se prijaviti]. Također, ako imate račun, vaša IP adresa neće biti vidljiva.",
 	"discussiontools-replylink": "odgovori",
+	"discussiontools-replywidget-advanced": "Napredno",
 	"discussiontools-replywidget-cancel": "Otkaži",
 	"discussiontools-replywidget-mode-source": "Izvor",
 	"discussiontools-replywidget-mode-visual": "Vizualno",
 	"discussiontools-replywidget-placeholder-reply": "Odgovor korisniku/-ci {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Odgovori"
+	"discussiontools-replywidget-preview": "Pregled",
+	"discussiontools-replywidget-reply": "Odgovori",
+	"discussiontools-replywidget-summary": "Sažetak",
+	"discussiontools-replywidget-watchthis": "Dodajte ovu stranicu na [[Special:Watchlist|spisak praćenja]]",
+	"discussiontools-topicheader-authorcount": "U raspravi {{PLURAL:$1|prisutan $1 suradnik|prisutnih $1 suradnika}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentara}}",
+	"discussiontools-topicsubscription-button-subscribe": "prati",
+	"discussiontools-topicsubscription-button-subscribe-label": "Pretplati se",
+	"discussiontools-topicsubscription-button-unsubscribe": "prestani pratiti",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Otkaži pretplatu",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Dobivat ćete obavijesti o novim komentarima na ovoj temi.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Odsad pratite!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Više više nećete dobivati obavijesti o novim komentarima na ovoj temi.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Prestali ste pratiti."
 }
