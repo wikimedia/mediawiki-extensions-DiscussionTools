@@ -435,12 +435,14 @@
 		"discussiontoolscompare": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsCompare",
 			"services": [
+				"VisualEditor.ParsoidClientFactory",
 				"DiscussionTools.CommentParser"
 			]
 		},
 		"discussiontoolsedit": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsEdit",
 			"services": [
+				"VisualEditor.ParsoidClientFactory",
 				"DiscussionTools.CommentParser",
 				"DiscussionTools.SubscriptionStore",
 				"SkinFactory",
@@ -457,12 +459,14 @@
 		"discussiontoolspageinfo": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPageInfo",
 			"services": [
+				"VisualEditor.ParsoidClientFactory",
 				"DiscussionTools.CommentParser"
 			]
 		},
 		"discussiontoolspreview": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPreview",
 			"services": [
+				"VisualEditor.ParsoidClientFactory",
 				"DiscussionTools.CommentParser",
 				"SkinFactory"
 			]

@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use ApiBase;
 use ApiMain;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
+use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use SkinFactory;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -19,22 +20,28 @@ class ApiDiscussionToolsPreview extends ApiBase {
 	/** @var CommentParser */
 	private $commentParser;
 
+	/** @var VisualEditorParsoidClientFactory */
+	private $parsoidClientFactory;
+
 	/** @var SkinFactory */
 	private $skinFactory;
 
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
+	 * @param VisualEditorParsoidClientFactory $parsoidClientFactory
 	 * @param CommentParser $commentParser
 	 * @param SkinFactory $skinFactory
 	 */
 	public function __construct(
 		ApiMain $main,
 		string $name,
+		VisualEditorParsoidClientFactory $parsoidClientFactory,
 		CommentParser $commentParser,
 		SkinFactory $skinFactory
 	) {
 		parent::__construct( $main, $name );
+		$this->parsoidClientFactory = $parsoidClientFactory;
 		$this->commentParser = $commentParser;
 		$this->skinFactory = $skinFactory;
 	}

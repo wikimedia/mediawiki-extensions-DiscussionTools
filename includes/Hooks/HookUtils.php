@@ -14,7 +14,7 @@ use IContextSource;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
-use MediaWiki\Extension\VisualEditor\ParsoidHelper;
+use MediaWiki\Extension\VisualEditor\ParsoidClient;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
@@ -22,7 +22,6 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 use MWException;
 use OutputPage;
-use Psr\Log\NullLogger;
 use RequestContext;
 use Title;
 use TitleValue;
@@ -92,23 +91,21 @@ class HookUtils {
 	 */
 	public static function parseRevisionParsoidHtml( RevisionRecord $revRecord ): ContentThreadItemSet {
 		$services = MediaWikiServices::getInstance();
-		$parsoidHelper = new ParsoidHelper(
-			new NullLogger(),
-			false,
-			$services->getService( VisualEditorParsoidClientFactory::SERVICE_NAME )
-		);
-
-		// Get HTML for the revision
-		$status = $parsoidHelper->requestRestbasePageHtml( $revRecord );
-
-		if ( !$status->isOK() ) {
-			[ 'message' => $msg, 'params' => $params ] = $status->getErrors()[0];
-			throw new MWException( wfMessage( $msg, ...$params )->inLanguage( 'en' )->useDatabase( false )->text() );
-		}
+		$parsoidClientFactory = $services->getService( VisualEditorParsoidClientFactory::SERVICE_NAME );
+		/** @var ParsoidClient $parsoidClient */
+		$parsoidClient = $parsoidClientFactory->createParsoidClient( false );
 
 		$title = TitleValue::newFromPage( $revRecord->getPage() );
 
-		$response = $status->getValue();
+		// Get HTML for the revision
+		// TODO Can we just use `null` for the second parameter?
+		$response = $parsoidClient->getPageHtml( $revRecord, Title::castFromLinkTarget( $title )->getPageLanguage() );
+
+		if ( !empty( $response['error'] ) ) {
+			$message = wfMessage( ...$response['error'] );
+			throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
+		}
+
 		$html = $response['body'];
 
 		// Run the discussion parser on it
