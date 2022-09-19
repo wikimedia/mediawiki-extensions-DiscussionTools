@@ -8,6 +8,7 @@ use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \MediaWiki\Extension\DiscussionTools\CommentFormatter
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
  */
 class CommentFormatterTest extends IntegrationTestCase {
 

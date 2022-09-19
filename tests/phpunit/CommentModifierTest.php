@@ -11,6 +11,7 @@ use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
 /**
  * @group DiscussionTools
  * @covers \MediaWiki\Extension\DiscussionTools\CommentModifier
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
  */
 class CommentModifierTest extends IntegrationTestCase {
 

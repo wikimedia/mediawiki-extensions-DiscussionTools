@@ -19,6 +19,7 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @group DiscussionTools
  * @covers \MediaWiki\Extension\DiscussionTools\CommentParser
+ * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
  */
 class CommentParserTest extends IntegrationTestCase {
 
