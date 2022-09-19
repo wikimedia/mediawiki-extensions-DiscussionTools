@@ -60,12 +60,12 @@ ThreadItemSet.static.newFromAnnotatedNodes = function ( nodes, rootNode, parser 
 			itemsById[ id ].parent = item;
 			return itemsById[ id ];
 		} );
-
-		// Calculate names (currently not stored in the metadata)
-		item.name = parser.computeName( item );
-
-		result.updateIdAndNameMaps( item );
 	}
+
+	// Calculate names (currently not stored in the metadata) - can't be done
+	// in the above loop because we have to wait until we have all the
+	// replies.
+	parser.computeIdsAndNames( result );
 
 	return result;
 };
