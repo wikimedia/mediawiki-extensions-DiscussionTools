@@ -5,11 +5,20 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Repons",
+	"discussiontools-preference-label": "Zouti diskisyon",
 	"discussiontools-replylink": "reponn",
 	"discussiontools-replywidget-cancel": "Anile",
+	"discussiontools-replywidget-feedback": "Pataje reyaksyon ou sou fonksyon sa a",
+	"discussiontools-replywidget-loading": "Ap chaje...",
+	"discussiontools-replywidget-mention-tool-title": "Mansyone yon itilizatè",
 	"discussiontools-replywidget-mode-source": "Kòd",
 	"discussiontools-replywidget-mode-visual": "Vizyèl",
 	"discussiontools-replywidget-placeholder-reply": "Repons pou {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Previzyalizasyon",
-	"discussiontools-replywidget-reply": "Reponn"
+	"discussiontools-replywidget-reply": "Reponn",
+	"discussiontools-replywidget-terms-click": "Lè w klike sou « $1 », ou dakò ak kondisyon itilizasyon wiki sa a.",
+	"tag-discussiontools-source": "Kòd",
+	"tag-discussiontools-source-description": "DiscussionTools te nan mòd kòd",
+	"tag-discussiontools-visual": "Vizyèl",
+	"tag-discussiontools-visual-description": "DiscussionTools te nan mòd vizyèl"
 }

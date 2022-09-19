@@ -4,10 +4,12 @@
 			"Noktonissian"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ᨲᩬᨷ",
 	"discussiontools-replylink": "ᨲᩬᨷ",
 	"discussiontools-replywidget-cancel": "ᩃᩮᩥ᩠ᨠᩃ᩶ᩣ᩠ᨦ",
 	"discussiontools-replywidget-mode-source": "ᩉᩖᩯ᩵ᨦᨴᩦ᩵ᨾᩣ",
 	"discussiontools-replywidget-mode-visual": "ᩉᩢ᩠ᨶᨽᩣ᩠ᨻ",
 	"discussiontools-replywidget-placeholder-reply": "ᨲᩬᨷ $1",
+	"discussiontools-replywidget-preview": "ᨲ᩠ᩅᩫᩀᩢ᩠᩵ᨦ",
 	"discussiontools-replywidget-reply": "ᨲᩬᨷ"
 }
