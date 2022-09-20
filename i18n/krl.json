@@ -15,5 +15,9 @@
 	"discussiontools-replywidget-reply": "Vaštua",
 	"discussiontools-replywidget-summary": "Yhtehveto",
 	"discussiontools-topicsubscription-button-subscribe": "tilua",
-	"discussiontools-topicsubscription-button-unsubscribe": "poissa tilavuš"
+	"discussiontools-topicsubscription-button-unsubscribe": "poissa tilavuš",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Šuat ilmoitukšet täštä aihiešta jätetyistä uušista kommenttiloista.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Tilavuš luajittu!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Et šua enyä ilmoituksie uušista tämän aihien kommenttiloista.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Olet peruuttan tilavukšen."
 }

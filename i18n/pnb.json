@@ -5,12 +5,14 @@
 			"Bgo eiu"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "جواب",
 	"discussiontools-replylink": "جواب",
 	"discussiontools-replywidget-advanced": "اضافی",
 	"discussiontools-replywidget-cancel": "رد کرو",
 	"discussiontools-replywidget-mode-source": "زریعہ",
 	"discussiontools-replywidget-mode-visual": "ویژوئل",
 	"discussiontools-replywidget-placeholder-newtopic": "تفصیل",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} تے جواب",
 	"discussiontools-replywidget-reply": "جواب",
 	"discussiontools-topicsubscription-button-subscribe": "گاہر کرو",
 	"tag-discussiontools-visual": "ویژوئل"

@@ -4,10 +4,20 @@
 			"Vlad5250"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Odgovori",
 	"discussiontools-replylink": "odgovori",
+	"discussiontools-replywidget-advanced": "Napredno",
 	"discussiontools-replywidget-cancel": "Otkaži",
 	"discussiontools-replywidget-mode-source": "Izvor",
 	"discussiontools-replywidget-mode-visual": "Vizualno",
 	"discussiontools-replywidget-placeholder-reply": "Odgovor korisniku/-ci {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Odgovori"
+	"discussiontools-replywidget-preview": "Pregled",
+	"discussiontools-replywidget-reply": "Odgovori",
+	"discussiontools-replywidget-summary": "Sažetak",
+	"discussiontools-topicsubscription-button-subscribe": "prati",
+	"discussiontools-topicsubscription-button-unsubscribe": "prestani pratiti",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Dobivat ćete obavijesti o novim komentarima na ovoj temi.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Odsad pratite!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Više više nećete dobivati obavijesti o novim komentarima na ovoj temi.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Prestali ste pratiti."
 }

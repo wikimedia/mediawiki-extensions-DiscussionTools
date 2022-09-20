@@ -24,7 +24,8 @@
 			"Facenapalm",
 			"Colt browning",
 			"Vcohen",
-			"Vlad5250"
+			"Vlad5250",
+			"WindEwriX"
 		]
 	},
 	"discussiontools": "Инструменты для обсуждений",
@@ -76,6 +77,7 @@
 	"discussiontools-replywidget-cancel": "Отмена",
 	"discussiontools-replywidget-feedback": "Отправить отзыв об этой функции",
 	"discussiontools-replywidget-loading": "Загрузка…",
+	"discussiontools-replywidget-mention-prefix": "@",
 	"discussiontools-replywidget-mention-tool-header": "Найти участника: $1",
 	"discussiontools-replywidget-mention-tool-title": "Упомянуть участника",
 	"discussiontools-replywidget-mode-source": "Код",

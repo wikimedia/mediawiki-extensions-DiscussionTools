@@ -11,6 +11,7 @@
 	"discussiontools-emptystate-title-self-anon": "Ushbu munozara sahifaga xush kelibsiz",
 	"discussiontools-emptystate-title-user-anon": "Ushbu munozara sahifaga xush kelibsiz",
 	"discussiontools-error-comment-is-transcluded": "„{{int:discussiontools-replylink}}“ havolasidan ushbu izohga javob berish uchun foydalanib boʻlmaydi. Javob berish uchun, iltimos, „$1“ tugmasini bosish orqali toʻliq sahifa tahrirlagichidan foydalaning.",
+	"discussiontools-newtopic-missing-title": "Iltimos, munozara mavzusi uchun sarlavha kiriting. „{{int:discussiontools-replywidget-newtopic}}“ tugmasini bossangiz, mavzuingiz sarlavhasiz qoʻshiladi.",
 	"discussiontools-newtopic-placeholder-title": "Sarlavha",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 nomli foydalanuvchi „<strong>$4</strong>“ mavzusida {{GENDER:$2|javob qoldirdi}}.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "„<strong>$3</strong>“ mavzusida {{PLURAL:$1|bitta yangi javob|$1 ta yangi javov|100=99+ ta yangi javob}} qoldirilgan",

@@ -4,15 +4,26 @@
 			"Rooiratel"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Antwoord",
+	"discussiontools-desc": "Gereedskap om besprekingsbladsye te verbeter.",
 	"discussiontools-emptystate-button": "Begin 'n bespreking",
+	"discussiontools-emptystate-title-self": "Welkom by jou besprekingsblad",
+	"discussiontools-emptystate-title-self-anon": "Welkom by hierdie besprekingsbladsy",
+	"discussiontools-emptystate-title-user-anon": "Welkom by hierdie besprekingsbladsy",
+	"discussiontools-error-comment-conflict": "Jou opmerking kon nie gestoor word nie, want iemand anders het op dieselfde tyd as jy opmerkings gemaak. Probeer asseblief weer, of herlaai die bladsy om die jongste opmerkings te sien.",
 	"discussiontools-replylink": "antwoord",
+	"discussiontools-replywidget-advanced": "Gevorderd",
 	"discussiontools-replywidget-cancel": "Kanselleer",
 	"discussiontools-replywidget-loading": "Besig om te laai...",
 	"discussiontools-replywidget-mode-source": "Bron",
 	"discussiontools-replywidget-mode-visual": "Visueel",
 	"discussiontools-replywidget-placeholder-reply": "Antwoord op {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Voorskou",
 	"discussiontools-replywidget-reply": "Antwoord",
+	"discussiontools-replywidget-summary": "Opsomming",
 	"discussiontools-topicsubscription-button-subscribe": "inteken",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Teken in om kennisgewings oor nuwe opmerkings te ontvang.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Jy is ingeteken"
+	"discussiontools-topicsubscription-notify-subscribed-title": "Jy is ingeteken",
+	"tag-discussiontools-source": "Bron",
+	"tag-discussiontools-visual": "Visueel"
 }
