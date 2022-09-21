@@ -7,7 +7,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Şîroveyê bi IDya '$1' nehat dîtin.",
-	"apierror-discussiontools-commentname-ambiguous": "Bi navê '$1' ji yekî zêdetir şirove hatine dîtin, dewsa wê ID bi kar bîne.",
+	"apierror-discussiontools-commentname-ambiguous": "Bi navê '$1' ji yekî zêdetir şîrove hatine dîtin, <var>commentid</var> lazim e.",
 	"apierror-discussiontools-commentname-notfound": "Şiroveya bi navê '$1' nehatiye dîtin.",
 	"apierror-discussiontools-subscription-failed-add": "Pirsgirêkek bi şopandina mijarê re derket.",
 	"apierror-discussiontools-subscription-failed-remove": "Pirsgirêkek bi neşopîne re derket.",
