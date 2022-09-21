@@ -18,6 +18,8 @@
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|mışewre|mışewreyi}}",
 	"discussiontools-topicsubscription-button-subscribe": "abone be",
 	"discussiontools-topicsubscription-button-subscribe-label": "Abone be",
+	"discussiontools-topicsubscription-button-unsubscribe": "aboneyiye ra veciye",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Aboneyiye ra veciye",
 	"discussiontools-topicsubscription-pager-page": "Pele",
 	"discussiontools-topicsubscription-pager-topic": "Mewzu"
 }
