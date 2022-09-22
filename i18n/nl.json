@@ -54,6 +54,7 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|reageerde}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Een nieuwe reactie|$1 nieuwe reacties|100=99+ nieuwe reacties}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Bekijk reactie",
+	"discussiontools-pagetitle-reply": "Reageren op $1",
 	"discussiontools-postedit-confirmation-published": "Uw reactie is gepubliceerd.",
 	"discussiontools-postedit-confirmation-topicadded": "Uw onderwerp is toegevoegd.",
 	"discussiontools-preference-autotopicsub": "Automatisch abonneren op onderwerpen",
