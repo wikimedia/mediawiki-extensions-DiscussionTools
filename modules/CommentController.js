@@ -4,7 +4,11 @@ var
 	logger = require( './logger.js' ),
 	dtConf = require( './config.json' ),
 	CommentItem = require( './CommentItem.js' ),
-	scrollPadding = { top: 10, bottom: 10 },
+	scrollPadding = {
+		// eslint-disable-next-line no-jquery/no-class-state
+		top: 10 + ( $( document.body ).hasClass( 'vector-feature-sticky-header-enabled' ) ? 50 : 0 ),
+		bottom: 10
+	},
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
