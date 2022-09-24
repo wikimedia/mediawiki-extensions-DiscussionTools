@@ -32,6 +32,8 @@ $specialPageAliases['he'] = [
 /** Korean (한국어) */
 $specialPageAliases['ko'] = [
 	'TopicSubscriptions' => [ '구독하는주제' ],
+	'FindComment' => [ '댓글찾기' ],
+	'GoToComment' => [ '댓글로가기' ],
 ];
 
 /** Polish (polski) */
