@@ -7,6 +7,8 @@
 	},
 	"discussiontools-defaultsummary-reply": "Tweġiba",
 	"discussiontools-replylink": "wieġeb",
+	"discussiontools-replywidget-mode-source": "Sors",
+	"discussiontools-replywidget-placeholder-reply": "Wieġeb lil {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Wieġeb",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Wieġeb]"
 }

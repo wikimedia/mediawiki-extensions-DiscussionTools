@@ -15,6 +15,7 @@
 	"discussiontools-replywidget-mode-source": "Hnawh",
 	"discussiontools-replywidget-mode-visual": "Hmôna",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} lâ châ alei teh",
+	"discussiontools-replywidget-preview": "Moh chhili",
 	"discussiontools-replywidget-reply": "Châ alei",
 	"discussiontools-error-comment-is-transcluded": "He achhyna he alei awpa ta \"{{int:discussiontools-replylink}}\" link he ahmâh thei vei.  Châ alei awpa ta \"$1\" kha hmiena chôta hmia bie taopathina kha hmâh bei teh.",
 	"discussiontools-error-comment-is-transcluded-title": "Hmia hropa tawhta awpa ta khâpa a châpa vâta he châ aleina he achhy awpa ta \"{{int:discussiontools-replylink}}\" link hecha ahmâh thei vei. Châ alei awpa ta [[$1]] lâ he vawh bei teh.",

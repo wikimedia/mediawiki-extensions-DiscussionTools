@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"এম আবু সাঈদ"
+			"এম আবু সাঈদ",
+			"ꠢꠣꠍꠘ ꠞꠣꠎꠣ"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ꠎꠥꠀꠙ",
 	"discussiontools-replylink": "ꠚꠤꠞꠔꠤ ꠎꠥꠀꠚ",
 	"discussiontools-replywidget-cancel": "ꠛꠣꠖ ꠖꠦꠁꠘ",
 	"discussiontools-replywidget-mode-source": "ꠎꠠ",
 	"discussiontools-replywidget-mode-visual": "ꠖꠦꠈꠣ",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}-ꠞꠦ ꠚꠤꠞꠔꠤ ꠎꠥꠀꠚ",
+	"discussiontools-replywidget-preview": "ꠀꠉꠛꠣꠠꠤ ꠖꠦꠈꠣ",
 	"discussiontools-replywidget-reply": "ꠚꠤꠞꠔꠤ ꠎꠥꠀꠚ"
 }

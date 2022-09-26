@@ -1,13 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abbas dhothar"
+			"Abbas dhothar",
+			"Bgo eiu"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "جواب",
 	"discussiontools-replylink": "جواب",
 	"discussiontools-replywidget-cancel": "رد کرو",
-	"discussiontools-replywidget-mode-source": "زریعہ",
+	"discussiontools-replywidget-mode-source": "سروت",
 	"discussiontools-replywidget-mode-visual": "ویژوئل",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} تے جواب",
+	"discussiontools-replywidget-preview": "جھلک",
 	"discussiontools-replywidget-reply": "جواب",
 	"tag-discussiontools-visual": "ویژوئل"
 }
