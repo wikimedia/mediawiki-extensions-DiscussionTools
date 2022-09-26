@@ -98,8 +98,7 @@ class HookUtils {
 		$title = TitleValue::newFromPage( $revRecord->getPage() );
 
 		// Get HTML for the revision
-		// TODO Can we just use `null` for the second parameter?
-		$response = $parsoidClient->getPageHtml( $revRecord, Title::castFromLinkTarget( $title )->getPageLanguage() );
+		$response = $parsoidClient->getPageHtml( $revRecord, null );
 
 		if ( !empty( $response['error'] ) ) {
 			$message = wfMessage( ...$response['error'] );
