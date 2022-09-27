@@ -42,6 +42,7 @@
 				"highlighter.js",
 				"topicsubscriptions.js",
 				"mobile.js",
+				"LedeSectionDialog.js",
 				{
 					"name": "controller/contLangMessages.json",
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getContentLanguageMessages",
@@ -118,6 +119,7 @@
 				"discussiontools-error-noswitchtove-table",
 				"discussiontools-error-noswitchtove-template",
 				"discussiontools-error-noswitchtove-title",
+				"discussiontools-ledesection-title",
 				"discussiontools-newtopic-legacy-hint",
 				"discussiontools-newtopic-placeholder-title",
 				"discussiontools-newtopic-missing-title",

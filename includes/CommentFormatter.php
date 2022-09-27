@@ -306,6 +306,8 @@ class CommentFormatter {
 			$container->appendChild( $newestCommentMarker );
 		}
 
+		$firstHeading = null;
+
 		// Enhance other <h2>'s which aren't part of a thread
 		$headings = DOMCompat::querySelectorAll( $container, 'h2' );
 		foreach ( $headings as $headingElement ) {
@@ -314,6 +316,18 @@ class CommentFormatter {
 				continue;
 			}
 			static::addTopicContainer( $headingElement );
+			if ( !$firstHeading ) {
+				$firstHeading = $headingElement;
+			}
+		}
+
+		if (
+			// Page has no headings but some content
+			( !$firstHeading && $container->childNodes->length ) ||
+			// Page has content before the first heading
+			( $firstHeading && $firstHeading->previousSibling !== null )
+		) {
+			$container->appendChild( $doc->createComment( '__DTHASLEDECONTENT__' ) );
 		}
 
 		if ( count( $threadItems ) === 0 ) {
@@ -758,6 +772,16 @@ class CommentFormatter {
 	 */
 	public static function appendToEmptyTalkPage( string $text, string $content ): string {
 		return str_replace( '<!--__DTEMPTYTALKPAGE__-->', $content, $text );
+	}
+
+	/**
+	 * Check if the talk page has content above the first heading, in the lede section.
+	 *
+	 * @param string $text
+	 * @return bool
+	 */
+	public static function hasLedeContent( string $text ): bool {
+		return strpos( $text, '<!--__DTHASLEDECONTENT__-->' ) !== false;
 	}
 
 }

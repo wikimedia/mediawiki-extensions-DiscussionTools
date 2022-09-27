@@ -1,4 +1,4 @@
-var $readAsWikiPage;
+var $readAsWikiPage, ledeSectionDialog;
 
 function init( $container ) {
 	// For compatibility with Minerva click tracking (T295490)
@@ -31,6 +31,24 @@ function init( $container ) {
 			e.stopPropagation();
 		} );
 	} );
+
+	var $ledeContent = $container.find( '.mf-section-0' ).children( ':not( .ext-discussiontools-emptystate )' );
+	var $ledeButton = $container.find( '.ext-discussiontools-init-lede-button' );
+	if ( $ledeButton.length ) {
+		var windowManager = OO.ui.getWindowManager();
+		if ( !ledeSectionDialog ) {
+			var LedeSectionDialog = require( './LedeSectionDialog.js' );
+			ledeSectionDialog = new LedeSectionDialog();
+			windowManager.addWindows( [ ledeSectionDialog ] );
+		}
+
+		// Lede section popup
+		OO.ui.infuse( $ledeButton ).on( 'click', function () {
+			mw.loader.using( 'oojs-ui-windows' ).then( function () {
+				windowManager.openWindow( 'ledeSection', { $content: $ledeContent } );
+			} );
+		} );
+	}
 	if ( !$readAsWikiPage ) {
 		// Read as wiki page button, copied from renderReadAsWikiPageButton in Minerva
 		$readAsWikiPage = $( '<button>' )

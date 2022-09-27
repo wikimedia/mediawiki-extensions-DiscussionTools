@@ -197,12 +197,14 @@ class PageHooks implements
 				$text, $lang, $this->subscriptionStore, $output->getUser(), $isMobile
 			);
 		}
+
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
 			$output->enableOOUI();
 			$text = CommentFormatter::postprocessReplyTool(
 				$text, $lang, $isMobile
 			);
 		}
+
 		if (
 			CommentFormatter::isEmptyTalkPage( $text ) &&
 			HookUtils::shouldDisplayEmptyState( $output->getContext() )
@@ -213,6 +215,26 @@ class PageHooks implements
 			);
 			$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
 		}
+
+		if (
+			$output->getSkin()->getSkinName() === 'minerva' &&
+			CommentFormatter::hasLedeContent( $text )
+		) {
+			$output->enableOOUI();
+			$output->addHTML(
+				Html::rawElement( 'div',
+					[ 'class' => 'ext-discussiontools-init-lede-button-container' ],
+					( new ButtonWidget( [
+						'label' => $output->getContext()->msg( 'discussiontools-ledesection-button' )->text(),
+						'classes' => [ 'ext-discussiontools-init-lede-button' ],
+						'framed' => false,
+						'icon' => 'info',
+						'infusable' => true,
+					] ) )
+				)
+			);
+		}
+
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
 			$output->enableOOUI();
 			if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
@@ -397,28 +419,34 @@ class PageHooks implements
 	 * @return bool|void
 	 */
 	public function onArticleViewHeader( $article, &$outputDone, &$pcache ) {
-		$title = $article->getTitle();
 		$context = $article->getContext();
 		$output = $context->getOutput();
-		if (
-			$output->getSkin()->getSkinName() === 'minerva' &&
-			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
-			// Only add the button if "New section" tab would be shown in a normal skin.
-			HookUtils::shouldShowNewSectionTab( $context )
-		) {
-			// Minerva doesn't show a new topic button by default, unless the MobileFrontend
-			// talk page feature is enabled, but we shouldn't depend on code from there.
-			$output->enableOOUI();
-			$output->addHTML(
-				( new ButtonWidget( [
-					'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
-					'label' => $context->msg( 'skin-action-addsection' )->text(),
-					'flags' => [ 'progressive', 'primary' ],
-					'classes' => [ 'ext-discussiontools-init-new-topic' ]
-				] ) )
-					// For compatibility with Minerva click tracking (T295490)
-					->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
-			);
+
+		if ( $output->getSkin()->getSkinName() === 'minerva' ) {
+			$title = $article->getTitle();
+
+			if (
+				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
+				// Only add the button if "New section" tab would be shown in a normal skin.
+				HookUtils::shouldShowNewSectionTab( $context )
+			) {
+				$output->enableOOUI();
+
+				// Minerva doesn't show a new topic button by default, unless the MobileFrontend
+				// talk page feature is enabled, but we shouldn't depend on code from there.
+				$output->addHTML(
+					Html::rawElement( 'div',
+						[ 'class' => 'ext-discussiontools-init-new-topic' ],
+						( new ButtonWidget( [
+							'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
+							'label' => $context->msg( 'skin-action-addsection' )->text(),
+							'flags' => [ 'progressive', 'primary' ],
+						] ) )
+							// For compatibility with Minerva click tracking (T295490)
+							->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
+					)
+				);
+			}
 		}
 	}
 

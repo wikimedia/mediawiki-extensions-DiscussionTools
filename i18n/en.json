@@ -44,6 +44,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(not in current revision)",
 	"discussiontools-findcomment-results-transcluded": "(transcluded from another page)",
 	"discussiontools-findcomment-title": "Find comment",
+	"discussiontools-ledesection-button": "Learn more about this page",
+	"discussiontools-ledesection-title": "About this talk page",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools error request ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools time usage",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|second|seconds}}",
