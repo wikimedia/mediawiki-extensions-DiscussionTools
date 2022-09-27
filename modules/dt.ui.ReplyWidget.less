@@ -52,6 +52,10 @@
 		transform: translate( -50%, -150% );
 		top: 0;
 		left: 50%;
+
+		.vector-sticky-header-visible & {
+			top: 50px;
+		}
 	}
 
 	&-scrollback-bottom {
@@ -60,6 +64,7 @@
 		left: 50%;
 	}
 
+	// stylelint-disable-next-line no-descending-specificity
 	&-scrollback-top,
 	&-scrollback-bottom {
 		position: fixed;
