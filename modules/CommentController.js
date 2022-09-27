@@ -184,6 +184,13 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 			// we wrap this loading message in another element.
 			$( '<span>' ).text( mw.msg( 'discussiontools-replywidget-loading' ) )
 		);
+		var scrollPaddingCollapsed = OO.copy( scrollPadding );
+		// We don't know exactly how tall the widge will be, but leave room for one line
+		// of preview in source mode (~270px). Visual mode is ~250px.
+		scrollPaddingCollapsed.bottom += 270;
+		OO.ui.Element.static.scrollIntoView( commentController.newListItem, {
+			padding: scrollPaddingCollapsed
+		} );
 	}
 
 	if (
