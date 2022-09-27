@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "Komentarja z ID-jem »$1« ni bilo mogoče najti.",
+	"apierror-discussiontools-commentname-notfound": "Komentarja z imenom »$1« ni bilo mogoče najti."
+}

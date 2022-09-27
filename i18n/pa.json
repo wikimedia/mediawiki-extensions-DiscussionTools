@@ -4,5 +4,13 @@
 			"Bgo eiu"
 		]
 	},
-	"discussiontools-topicsubscription-button-subscribe": "ਗਾਹਕ ਕਰੋ"
+	"discussiontools-defaultsummary-reply": "ਜੁਆਬ",
+	"discussiontools-replylink": "ਜੁਆਬ ਦਿਉ",
+	"discussiontools-replywidget-advanced": "ਉੱਨਤ",
+	"discussiontools-replywidget-cancel": "ਰੱਦ ਕਰੋ",
+	"discussiontools-replywidget-mode-source": "ਸਰੋਤ",
+	"discussiontools-replywidget-preview": "ਝਲਕ",
+	"discussiontools-replywidget-reply": "ਜੁਆਬ ਦਿਉ",
+	"discussiontools-topicsubscription-button-subscribe": "ਗਾਹਕ ਕਰੋ",
+	"discussiontools-topicsubscription-button-unsubscribe": "ਗਾਹਕੀ ਰੱਦ ਕਰੋ"
 }

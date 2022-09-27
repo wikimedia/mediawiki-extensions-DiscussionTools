@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Liridon",
-			"Klein Muçi"
+			"Klein Muçi",
+			"Пан Хаунд"
 		]
 	},
 	"discussiontools-emptystate-button": "Nis një diskutim",
+	"discussiontools-replylink": "përgjigje",
 	"discussiontools-replywidget-summary": "Përmbledhje"
 }
