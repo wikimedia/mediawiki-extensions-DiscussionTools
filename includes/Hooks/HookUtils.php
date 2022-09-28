@@ -391,16 +391,9 @@ class HookUtils {
 				// Even though mobile ignores user preferences, TOPICSUBSCRIPTION must
 				// still be disabled if the user isn't registered.
 				( $feature === static::TOPICSUBSCRIPTION && $output->getUser()->isRegistered() ) ||
-				// Even though mobile ignores user preferences, VISUALENHANCEMENTS must
-				// still be disabled if is unavailable on the wiki.
-				(
-					(
-						$feature === static::VISUALENHANCEMENTS ||
-						$feature === static::VISUALENHANCEMENTS_REPLY ||
-						$feature === static::VISUALENHANCEMENTS_PAGEFRAME
-					) &&
-					$dtConfig->get( 'DiscussionTools_' . $feature ) !== 'unavailable'
-				)
+				$feature === static::VISUALENHANCEMENTS ||
+				$feature === static::VISUALENHANCEMENTS_REPLY ||
+				$feature === static::VISUALENHANCEMENTS_PAGEFRAME
 			);
 		}
 
