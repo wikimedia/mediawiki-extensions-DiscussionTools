@@ -9,14 +9,15 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
+use Config;
 use ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use Parser;
 
 class ParserHooks implements ParserAfterTidyHook {
-	/** @var ConfigFactory */
-	private $configFactory;
+	/** @var Config */
+	private $config;
 
 	/**
 	 * @param ConfigFactory $configFactory
@@ -24,7 +25,7 @@ class ParserHooks implements ParserAfterTidyHook {
 	public function __construct(
 		ConfigFactory $configFactory
 	) {
-		$this->configFactory = $configFactory;
+		$this->config = $configFactory->makeConfig( 'discussiontools' );
 	}
 
 	/**
@@ -48,8 +49,7 @@ class ParserHooks implements ParserAfterTidyHook {
 		// database for the latest metadata of a page that exists, we check metadata of
 		// the given ParserOutput object only (this runs before the edit is saved).
 		if ( $title->isTalkPage() || $pout->getNewSection() ) {
-			$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
-			$talkExpiry = $dtConfig->get( 'DiscussionToolsTalkPageParserCacheExpiry' );
+			$talkExpiry = $this->config->get( 'DiscussionToolsTalkPageParserCacheExpiry' );
 			// Override parser cache expiry of talk pages (T280605).
 			// Note, this can only shorten it. MediaWiki ignores values higher than the default.
 			if ( $talkExpiry > 0 ) {

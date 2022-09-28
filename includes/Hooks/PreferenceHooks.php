@@ -9,6 +9,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
+use Config;
 use ConfigFactory;
 use Html;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
@@ -23,8 +24,8 @@ class PreferenceHooks implements
 	LocalUserCreatedHook,
 	GetPreferencesHook
 {
-	/** @var ConfigFactory */
-	private $configFactory;
+	/** @var Config */
+	private $config;
 
 	/** @var LinkRenderer */
 	private $linkRenderer;
@@ -37,7 +38,7 @@ class PreferenceHooks implements
 		ConfigFactory $configFactory,
 		LinkRenderer $linkRenderer
 	) {
-		$this->configFactory = $configFactory;
+		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->linkRenderer = $linkRenderer;
 	}
 
@@ -162,10 +163,9 @@ class PreferenceHooks implements
 			'type' => 'api',
 		];
 
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
 		if (
-			!$dtConfig->get( 'DiscussionToolsEnable' ) ||
-			!$dtConfig->get( 'DiscussionToolsBeta' )
+			!$this->config->get( 'DiscussionToolsEnable' ) ||
+			!$this->config->get( 'DiscussionToolsBeta' )
 		) {
 			// When out of beta, preserve the user preference in case we
 			// bring back the beta feature for a new sub-feature. (T272071)

@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use Config;
 use ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseCommentItem;
@@ -25,8 +26,8 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
  * Stores and fetches ThreadItemSets from the database.
  */
 class ThreadItemStore {
-	/** @var ConfigFactory */
-	private $configFactory;
+	/** @var Config */
+	private $config;
 
 	/** @var ILoadBalancer */
 	private $loadBalancer;
@@ -64,7 +65,7 @@ class ThreadItemStore {
 		TitleFormatter $titleFormatter,
 		ActorStore $actorStore
 	) {
-		$this->configFactory = $configFactory;
+		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->loadBalancer = $lbFactory->getMainLB();
 		$this->readOnlyMode = $readOnlyMode;
 		$this->pageStore = $pageStore;
@@ -80,8 +81,7 @@ class ThreadItemStore {
 	 * @return bool
 	 */
 	private function isDisabled(): bool {
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
-		return !$dtConfig->get( 'DiscussionToolsEnablePermalinksBackend' );
+		return !$this->config->get( 'DiscussionToolsEnablePermalinksBackend' );
 	}
 
 	/**

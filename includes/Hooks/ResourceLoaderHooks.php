@@ -16,8 +16,8 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 class ResourceLoaderHooks implements
 	ResourceLoaderGetConfigVarsHook
 {
-	/** @var ConfigFactory */
-	private $configFactory;
+	/** @var Config */
+	private $config;
 
 	/**
 	 * @param ConfigFactory $configFactory
@@ -25,7 +25,7 @@ class ResourceLoaderHooks implements
 	public function __construct(
 		ConfigFactory $configFactory
 	) {
-		$this->configFactory = $configFactory;
+		$this->config = $configFactory->makeConfig( 'discussiontools' );
 	}
 
 	/**
@@ -37,14 +37,12 @@ class ResourceLoaderHooks implements
 	 * @param Config $config
 	 */
 	public function onResourceLoaderGetConfigVars( array &$vars, $skin, Config $config ): void {
-		$dtConfig = $this->configFactory->makeConfig( 'discussiontools' );
-
 		$vars['wgDTSchemaEditAttemptStepSamplingRate'] =
-			$dtConfig->get( 'DTSchemaEditAttemptStepSamplingRate' );
+			$this->config->get( 'DTSchemaEditAttemptStepSamplingRate' );
 		$vars['wgDTSchemaEditAttemptStepOversample'] =
-			$dtConfig->get( 'DTSchemaEditAttemptStepOversample' );
+			$this->config->get( 'DTSchemaEditAttemptStepOversample' );
 
-		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
+		$abtest = $this->config->get( 'DiscussionToolsABTest' );
 		if ( $abtest ) {
 			$vars['wgDiscussionToolsABTest'] = $abtest;
 		}
