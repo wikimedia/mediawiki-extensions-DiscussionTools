@@ -690,13 +690,16 @@ h1, h2, h3, h4, h5, h6 {
 // The button will disable all DT features byt remove feature CSS classes.
 // stylelint-disable-next-line selector-class-pattern
 .skin-minerva.ns-talk.ext-discussiontools-replytool-enabled {
-	.mf-section-0 > *:not( .ext-discussiontools-emptystate ) {
-		display: none;
-	}
+	// .mw-body-content selector prevents this applying to content in the preview (T318758)
+	.mw-body-content > .mw-parser-output > .mf-section-0 {
+		> *:not( .ext-discussiontools-emptystate ) {
+			display: none;
+		}
 
-	.mf-section-0 > .ext-discussiontools-emptystate {
-		border-top: 0;
-		margin-top: 0;
+		> .ext-discussiontools-emptystate {
+			border-top: 0;
+			margin-top: 0;
+		}
 	}
 
 	.ext-discussiontools-init-readAsWikiPage {
