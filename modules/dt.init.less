@@ -522,8 +522,7 @@ h1, h2, h3, h4, h5, h6 {
 		width: 250px;
 	}
 
-	// stylelint-disable-next-line selector-class-pattern
-	.mw-parser-output:not( .noarticletext ) & {
+	&:not( :first-child ) {
 		// Separate from existing (non-discussion) content
 		margin-top: 2em;
 		padding-top: 1em;
