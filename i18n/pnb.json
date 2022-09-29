@@ -13,10 +13,15 @@
 	"discussiontools-replywidget-mode-visual": "ویژوئل",
 	"discussiontools-replywidget-placeholder-newtopic": "تفصیل",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} تے جواب",
+	"discussiontools-replywidget-preview": "جھلک",
 	"discussiontools-replywidget-reply": "جواب",
 	"discussiontools-replywidget-summary": "خلاصہ",
-	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|تپاݨی|تپاݨیاں}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|تپݨی|تپݨیاں}}",
 	"discussiontools-topicsubscription-button-subscribe": "گاہر کرو",
 	"discussiontools-topicsubscription-button-subscribe-label": "گاہرکرو",
+	"discussiontools-topicsubscription-button-unsubscribe": "گاہکی بند کرو",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "گاہکی بند کرو",
+	"discussiontools-topicsubscription-notify-subscribed-body": "توانو‏‏ں اس موضوع وچ نويں تبصرےآں دے بارے وچ اطلاعات موصول ہون گیاں۔",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "توانو‏‏ں اس موضوع وچ نويں تبصرےآں دے بارے وچ ہور اطلاعات موصول نئيں ہون گیاں۔",
 	"tag-discussiontools-visual": "ویژوئل"
 }
