@@ -487,7 +487,7 @@ function init( $container, state ) {
  * @param {Object} data Data from action=parse API
  */
 function updatePageContents( $container, data ) {
-	$container.find( '.mw-parser-output' ).first().html( data.parse.text );
+	$container.find( '.mw-parser-output' ).first().replaceWith( data.parse.text );
 
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '#contentSub, .minerva__subtitle' ).html( data.parse.subtitle );
