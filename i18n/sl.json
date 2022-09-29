@@ -40,7 +40,7 @@
 	"discussiontools-findcomment-results-name": "Komentar z navedenim imenom se je pojavil na {{PLURAL:$1|naslednji strani|naslednjih straneh}}:",
 	"discussiontools-findcomment-label-idorname": "ID komentarja ali ime",
 	"discussiontools-findcomment-gotocomment": "Če se pojavi samo v trenutni redakciji strani, greste lahko [[Special:GoToComment/$1|z uporabo te povezave neposredno na komentar]]. Sicer boste preusmerjeni na te iskalne zadetke.",
-	"discussiontools-findcomment-label-search": "Išči",
+	"discussiontools-findcomment-label-search": "Poišči",
 	"discussiontools-findcomment-noresults": "Ni zadetkov.",
 	"discussiontools-findcomment-results-notcurrent": "(ni v trenutni redakciji)",
 	"discussiontools-findcomment-results-transcluded": "(vključeno iz druge strani)",
@@ -170,5 +170,5 @@
 	"tag-discussiontools-source-description": "Orodje DiscussionTools je bilo uporabljeno v izvornem načinu",
 	"tag-discussiontools-source-enhanced-description": "Orodje DiscussionTools je bilo v naprednem načinu vira izboljšano z orodno vrstico",
 	"tag-discussiontools-visual": "vizualni način",
-	"tag-discussiontools-visual-description": "Orodje DiscussionTools je bilo v vizualnem načinu"
+	"tag-discussiontools-visual-description": "Orodje DiscussionTools je bilo uporabljeno v vizualnem načinu"
 }
