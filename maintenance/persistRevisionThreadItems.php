@@ -12,26 +12,14 @@ use TableCleanup;
 use Throwable;
 use Title;
 
-// Security: Disable all stream wrappers and reenable individually as needed
-foreach ( stream_get_wrappers() as $wrapper ) {
-	stream_wrapper_unregister( $wrapper );
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = __DIR__ . '/../../..';
 }
-
-stream_wrapper_restore( 'file' );
-$basePath = getenv( 'MW_INSTALL_PATH' );
-if ( $basePath ) {
-	if ( !is_dir( $basePath )
-		|| strpos( $basePath, '~' ) !== false
-	) {
-		die( "Bad MediaWiki install path: $basePath\n" );
-	}
-} else {
-	$basePath = __DIR__ . '/../../..';
-}
-require_once "$basePath/maintenance/Maintenance.php";
+require_once "$IP/maintenance/Maintenance.php";
 // Autoloader isn't set up yet until we do `require_once RUN_MAINTENANCE_IF_MAIN`…
 // but our class needs to exist at that point D:
-require_once "$basePath/maintenance/TableCleanup.php";
+require_once "$IP/maintenance/TableCleanup.php";
 
 class PersistRevisionThreadItems extends TableCleanup {
 
