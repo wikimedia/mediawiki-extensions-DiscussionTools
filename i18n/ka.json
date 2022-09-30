@@ -42,6 +42,7 @@
 	"discussiontools-newtopic-missing-title": "გთხოვთ, განხილვის თემას მიუთითეთ სათაური. თუკი დააწკაპუნებთ „{{int:discussiontools-replywidget-newtopic}}“-ზე, თემა სათაურის გარეშე გამოქვეყნდება.",
 	"discussiontools-newtopic-placeholder-title": "თემა",
 	"discussiontools-notification-subscribed-new-comment-view": "კომენტარის ნახვა",
+	"discussiontools-pagetitle-newtopic": "ახალი თემის დაწყება გვერდზე „$1“",
 	"discussiontools-postedit-confirmation-published": "თქვენი კომენტარი გამოქვეყნდა.",
 	"discussiontools-postedit-confirmation-topicadded": "თქვენი თემა დამატებულია.",
 	"discussiontools-preference-autotopicsub": "თემების ავტომატურად გამოწერა",
