@@ -150,6 +150,9 @@ class CommentFormatter {
 			$headingElement->insertBefore( $subscribeButton, $headingElement->firstChild );
 		}
 
+		$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
+		$headingElement->appendChild( $ellipsisButton );
+
 		// Visual enhancements: topic containers
 		$latestReplyItem = $headingItem->getLatestReply();
 		if ( $latestReplyItem ) {
@@ -198,8 +201,6 @@ class CommentFormatter {
 			$bar->appendChild( $metadata );
 			$bar->appendChild( $actions );
 
-			$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
-			$headingElement->appendChild( $ellipsisButton );
 			$headingElement->appendChild( $bar );
 
 			$tocInfo[ $headingItem->getLinkableTitle() ] = [
