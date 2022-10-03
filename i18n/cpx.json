@@ -4,6 +4,12 @@
 			"Kahin He"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "回复",
+	"discussiontools-replylink": "回复",
 	"discussiontools-replywidget-cancel": "取消/Chṳ̂-sa̤u",
-	"discussiontools-replywidget-preview": "預覽"
+	"discussiontools-replywidget-mode-source": "代码",
+	"discussiontools-replywidget-mode-visual": "可视化",
+	"discussiontools-replywidget-placeholder-reply": "回复{{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "預覽",
+	"discussiontools-replywidget-reply": "回复"
 }

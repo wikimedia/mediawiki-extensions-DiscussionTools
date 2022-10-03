@@ -10,7 +10,10 @@
 	"discussiontools-desc": "Verktøy for å forbetre diskusjonssider.",
 	"discussiontools-preference-label": "Diskusjonsverktøy",
 	"discussiontools-replylink": "svar",
+	"discussiontools-replywidget-anon-warning": "<strong>Du er ikkje logga inn</strong>. For å bli kreditert med namnet ditt i staden for IP-adressa di, kan du [$1 logga inn] eller [$2 oppretta ein konto].",
+	"discussiontools-replywidget-cancel": "Bryt av",
 	"discussiontools-replywidget-feedback": "Gje attendemelding for denne funksjonen",
+	"discussiontools-replywidget-loading": "Lastar…",
 	"discussiontools-replywidget-mention-tool-title": "Nemn ein brukar",
 	"discussiontools-replywidget-mode-source": "Kjelde",
 	"discussiontools-replywidget-mode-visual": "Visuell",
@@ -20,6 +23,7 @@
 	"discussiontools-error-comment-is-transcluded": "«{{int:discussiontools-replylink}}»-lenkja kan ikkje brukast på denne kommentaren. For å svara på kommentaren lyt du gå inn i endringsmodus for heile sida ved å trykkja på «$1».",
 	"discussiontools-error-comment-is-transcluded-title": "Lenka «{{int:discussiontools-replylink}}» kan ikkje brukast til å svara på denne kommentaren fordi ho er lasta inn frå ei anna side. Gå til [[$1]] for å svara.",
 	"discussiontools-error-lint": "Det er ikkje mogleg å svara på kommentarar på denne sida på grunn av ein feil i wikiteksten. Du kan læra om denne feilen ved å [$1 lesa dokumentasjonen], eller be om hjelp ved å [$2 skriva her] eller fiksa feilen ved å [$3 opna vanleg redigeringsmodus].",
+	"tag-discussiontools-edit-description": "Brukaren redigerte ein eksisterande kommentar med DiscussionTools",
 	"tag-discussiontools-source": "Kjelde",
 	"tag-discussiontools-visual": "Visuell",
 	"tag-discussiontools-visual-description": "DiscussionTools var i modus for visuell redigering"

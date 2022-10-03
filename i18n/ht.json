@@ -5,6 +5,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Repons",
+	"discussiontools-desc": "Zouti yo pou amelyore paj diskisyon yo.",
 	"discussiontools-preference-label": "Zouti diskisyon",
 	"discussiontools-replylink": "reponn",
 	"discussiontools-replywidget-cancel": "Anile",
@@ -17,6 +18,9 @@
 	"discussiontools-replywidget-preview": "Previzyalizasyon",
 	"discussiontools-replywidget-reply": "Reponn",
 	"discussiontools-replywidget-terms-click": "Lè w klike sou « $1 », ou dakò ak kondisyon itilizasyon wiki sa a.",
+	"tag-discussiontools-description": "Modifikasyon ki fèt ak DiscussionTools",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Reponn]",
+	"tag-discussiontools-reply-description": "Itilizatè te reponn yon kòmantè ak DiscussionTools",
 	"tag-discussiontools-source": "Kòd",
 	"tag-discussiontools-source-description": "DiscussionTools te nan mòd kòd",
 	"tag-discussiontools-visual": "Vizyèl",
