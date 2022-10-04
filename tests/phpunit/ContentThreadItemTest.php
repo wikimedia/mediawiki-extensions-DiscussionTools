@@ -32,7 +32,7 @@ class ContentThreadItemTest extends IntegrationTestCase {
 		$makeThreadItem = static function ( array $arr ) use ( &$makeThreadItem, $range ): ContentThreadItem {
 			if ( $arr['type'] === 'comment' ) {
 				$item = new ContentCommentItem(
-					1, $range, [], new DateTimeImmutable(),
+					1, $range, [], [], new DateTimeImmutable(),
 					$arr['author'],
 					$arr['displayName'] ?? null
 				);

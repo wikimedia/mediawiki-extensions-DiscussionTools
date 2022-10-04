@@ -22,6 +22,7 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	}
 
 	private $signatureRanges;
+	private $timestampRanges;
 	private $timestamp;
 	private $author;
 	private $displayName;
@@ -32,18 +33,21 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	 * @param ImmutableRange[] $signatureRanges Objects describing the extent of signatures (plus
 	 *  timestamps) for this comment. There is always at least one signature, but there may be
 	 *  multiple. The author and timestamp of the comment is determined from the first signature.
-	 *  The last node in every signature range is a node containing the timestamp.
+	 * @param ImmutableRange[] $timestampRanges Objects describing the extent of timestamps within
+	 *  the above signatures.
 	 * @param DateTimeImmutable $timestamp
 	 * @param string $author Comment author's username
 	 * @param ?string $displayName Comment author's display name
 	 */
 	public function __construct(
 		int $level, ImmutableRange $range,
-		array $signatureRanges, DateTimeImmutable $timestamp,
+		array $signatureRanges, array $timestampRanges,
+		DateTimeImmutable $timestamp,
 		string $author, ?string $displayName = null
 	) {
 		parent::__construct( 'comment', $level, $range );
 		$this->signatureRanges = $signatureRanges;
+		$this->timestampRanges = $timestampRanges;
 		$this->timestamp = $timestamp;
 		$this->author = $author;
 		$this->displayName = $displayName;
@@ -143,6 +147,13 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	 */
 	public function getSignatureRanges(): array {
 		return $this->signatureRanges;
+	}
+
+	/**
+	 * @return ImmutableRange[] Comment timestamp ranges
+	 */
+	public function getTimestampRanges(): array {
+		return $this->timestampRanges;
 	}
 
 	/**

@@ -54,6 +54,13 @@ class CommentParserTest extends IntegrationTestCase {
 		return implode( '/', $path );
 	}
 
+	private static function getPathsFromRange( ImmutableRange $range, Element $root ): array {
+		return [
+			static::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
+			static::getOffsetPath( $root, $range->endContainer, $range->endOffset )
+		];
+	}
+
 	private static function serializeComments( ContentThreadItem $threadItem, Element $root ): stdClass {
 		$serialized = new stdClass();
 
@@ -74,18 +81,16 @@ class CommentParserTest extends IntegrationTestCase {
 		// Can't serialize the DOM nodes involved in the range,
 		// instead use their offsets within their parent nodes
 		$range = $threadItem->getRange();
-		$serialized->range = [
-			static::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
-			static::getOffsetPath( $root, $range->endContainer, $range->endOffset )
-		];
+		$serialized->range = static::getPathsFromRange( $range, $root );
 
 		if ( $threadItem instanceof ContentCommentItem ) {
 			$serialized->signatureRanges = array_map( function ( ImmutableRange $range ) use ( $root ) {
-				return [
-					static::getOffsetPath( $root, $range->startContainer, $range->startOffset ),
-					static::getOffsetPath( $root, $range->endContainer, $range->endOffset )
-				];
+				return static::getPathsFromRange( $range, $root );
 			}, $threadItem->getSignatureRanges() );
+
+			$serialized->timestampRanges = array_map( function ( ImmutableRange $range ) use ( $root ) {
+				return static::getPathsFromRange( $range, $root );
+			}, $threadItem->getTimestampRanges() );
 		}
 
 		if ( $threadItem instanceof ContentHeadingItem ) {

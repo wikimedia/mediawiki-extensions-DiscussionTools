@@ -718,6 +718,17 @@ class CommentParser {
 	}
 
 	/**
+	 * Convert a byte offset within a text node to a unicode codepoint offset
+	 *
+	 * @param Text $node Text node
+	 * @param int $byteOffset Byte offset
+	 * @return int Codepoint offset
+	 */
+	private static function getCodepointOffset( Text $node, int $byteOffset ): int {
+		return mb_strlen( substr( $node->nodeValue ?? '', 0, $byteOffset ) );
+	}
+
+	/**
 	 * Find a timestamps in a given text node
 	 *
 	 * @param Text $node
@@ -727,13 +738,17 @@ class CommentParser {
 	 *   - int 'parserIndex' Which of the regexps matched
 	 *   - array 'matchData' Regexp match data, which specifies the location of the match,
 	 *     and which can be parsed using getLocalTimestampParsers() (offsets are in bytes)
+	 *   - ImmutableRange 'range' Range covering the timestamp
 	 */
 	public function findTimestamp( Text $node, array $timestampRegexps ): ?array {
 		$nodeText = '';
 		$offset = 0;
+		// Searched nodes (reverse order)
+		$nodes = [];
 
 		while ( $node ) {
 			$nodeText = $node->nodeValue . $nodeText;
+			$nodes[] = $node;
 
 			// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
 			// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
@@ -746,6 +761,7 @@ class CommentParser {
 			) {
 				$nodeText = $previousSibling->firstChild->nodeValue . $nodeText;
 				$offset += strlen( $previousSibling->firstChild->nodeValue ?? '' );
+				$nodes[] = $previousSibling->firstChild;
 
 				// If the entity is preceded by more text, do this again
 				if (
@@ -766,9 +782,41 @@ class CommentParser {
 			$matchData = null;
 			// Allows us to mimic match.index in #getComments
 			if ( preg_match( $timestampRegexp, $nodeText, $matchData, PREG_OFFSET_CAPTURE ) ) {
+				$timestampLength = strlen( $matchData[0][0] );
+				// Bytes at the end of the last node which aren't part of the match
+				$tailLength = strlen( $nodeText ) - $timestampLength - $matchData[0][1];
+				// We are moving right to left, but we start to the right of the end of
+				// the timestamp if there is trailing garbage, so that is a negative offset.
+				$count = -$tailLength;
+				$endNode = $nodes[0];
+				$endOffset = strlen( $endNode->nodeValue ?? '' ) - $tailLength;
+
+				foreach ( $nodes as $n ) {
+					$count += strlen( $n->nodeValue ?? '' );
+					// If we have counted to beyond the start of the timestamp, we are in the
+					// start node of the timestamp
+					if ( $count >= $timestampLength ) {
+						$startNode = $n;
+						// Offset is how much we overshot the start by
+						$startOffset = $count - $timestampLength;
+						break;
+					}
+				}
+				Assert::precondition( $endNode instanceof Node, 'endNode of timestamp is a Node' );
+				Assert::precondition( $startNode instanceof Node, 'startNode of timestamp range found' );
+				Assert::precondition( is_int( $startOffset ), 'startOffset of timestamp range found' );
+
+				$startOffset = static::getCodepointOffset( $startNode, $startOffset );
+				$endOffset = static::getCodepointOffset( $endNode, $endOffset );
+
+				$range = new ImmutableRange( $startNode, $startOffset, $endNode, $endOffset );
+
 				return [
 					'matchData' => $matchData,
+					// Bytes at the start of the first node which aren't part of the match
+					// TODO: Remove this and use 'range' instead
 					'offset' => $offset,
+					'range' => $range,
 					'parserIndex' => $i,
 				];
 			}
@@ -790,7 +838,7 @@ class CommentParser {
 		$lastSigNodeOffsetByteOffset =
 			$match['matchData'][0][1] + strlen( $match['matchData'][0][0] ) - $match['offset'];
 		$lastSigNodeOffset = $lastSigNode === $node ?
-			mb_strlen( substr( $node->nodeValue ?? '', 0, $lastSigNodeOffsetByteOffset ) ) :
+			static::getCodepointOffset( $node, $lastSigNodeOffsetByteOffset ) :
 			CommentUtils::childIndexOf( $lastSigNode ) + 1;
 		$sigRange = new ImmutableRange(
 			$firstSigNode->parentNode,
@@ -841,7 +889,10 @@ class CommentParser {
 				}
 
 				$sigRanges = [];
+				$timestampRanges = [];
+
 				$sigRanges[] = $this->adjustSigRange( $foundSignature['nodes'], $match, $node );
+				$timestampRanges[] = $match['range'];
 
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curCommentEnd );
@@ -860,7 +911,7 @@ class CommentParser {
 				CommentUtils::linearWalk(
 					$lastSigNode,
 					function ( string $event, Node $n ) use (
-						&$endNode, &$sigRanges,
+						&$endNode, &$sigRanges, &$timestampRanges,
 						$treeWalker, $timestampRegexps, $node
 					) {
 						if ( CommentUtils::isBlockElement( $n ) || CommentUtils::isCommentSeparator( $n ) ) {
@@ -878,6 +929,7 @@ class CommentParser {
 							$foundSignature2 = $this->findSignature( $n, $node );
 							if ( $foundSignature2['username'] ) {
 								$sigRanges[] = $this->adjustSigRange( $foundSignature2['nodes'], $match2, $n );
+								$timestampRanges[] = $match2['range'];
 							}
 						}
 						if ( $event === 'leave' ) {
@@ -918,6 +970,7 @@ class CommentParser {
 					$level,
 					$range,
 					$sigRanges,
+					$timestampRanges,
 					$dateTime,
 					$author,
 					$foundSignature['displayName']

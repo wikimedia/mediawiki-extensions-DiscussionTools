@@ -491,13 +491,18 @@ function acceptOnlyNodesAllowingComments( node ) {
  *   - {number} parserIndex Which of the regexps matched
  *   - {Array} matchData Regexp match data, which specifies the location of the match,
  *     and which can be parsed using #getLocalTimestampParsers
+ *   - {Object} range Range-like object covering the timestamp
  */
 Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
 	var matchData, i,
 		nodeText = '',
-		offset = 0;
+		offset = 0,
+		// Searched nodes (reverse order)
+		nodes = [];
+
 	while ( node ) {
 		nodeText = node.nodeValue + nodeText;
+		nodes.push( node );
 
 		// In Parsoid HTML, entities are represented as a 'mw:Entity' node, rather than normal HTML
 		// entities. On Arabic Wikipedia, the "UTC" timezone name contains some non-breaking spaces,
@@ -510,6 +515,7 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
 		) {
 			nodeText = node.previousSibling.firstChild.nodeValue + nodeText;
 			offset += node.previousSibling.firstChild.nodeValue.length;
+			nodes.push( node.previousSibling.firstChild );
 
 			// If the entity is followed by more text, do this again
 			if (
@@ -533,9 +539,43 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
 		// have links), so we only concern ourselves with the first match.
 		matchData = nodeText.match( timestampRegexps[ i ] );
 		if ( matchData ) {
+			var timestampLength = matchData[ 0 ].length;
+			// Bytes at the end of the last node which aren't part of the match
+			var tailLength = nodeText.length - timestampLength - matchData.index;
+			// We are moving right to left, but we start to the right of the end of
+			// the timestamp if there is trailing garbage, so that is a negative offset.
+			var count = -tailLength;
+			var endContainer = nodes[ 0 ];
+			var endOffset = endContainer.nodeValue.length - tailLength;
+
+			var startContainer, startOffset;
+			// eslint-disable-next-line no-loop-func
+			nodes.some( function ( n ) {
+				count += n.nodeValue.length;
+				// If we have counted to beyond the start of the timestamp, we are in the
+				// start node of the timestamp
+				if ( count >= timestampLength ) {
+					startContainer = n;
+					// Offset is how much we overshot the start by
+					startOffset = count - timestampLength;
+					return true;
+				}
+				return false;
+			} );
+
+			var range = {
+				startContainer: startContainer,
+				startOffset: startOffset,
+				endContainer: endContainer,
+				endOffset: endOffset
+			};
+
 			return {
 				matchData: matchData,
+				// Bytes at the start of the first node which aren't part of the match
+				// TODO: Remove this and use 'range' instead
 				offset: offset,
+				range: range,
 				parserIndex: i
 			};
 		}
@@ -755,7 +795,7 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
  * @param {Node[]} sigNodes
  * @param {Object} match
  * @param {Text} node
- * @return {Object}
+ * @return {Object} Range-like object
  */
 function adjustSigRange( sigNodes, match, node ) {
 	var firstSigNode = sigNodes[ sigNodes.length - 1 ];
@@ -825,7 +865,10 @@ Parser.prototype.buildThreadItems = function () {
 			}
 
 			var sigRanges = [];
+			var timestampRanges = [];
+
 			sigRanges.push( adjustSigRange( foundSignature.nodes, match, node ) );
+			timestampRanges.push( match.range );
 
 			// Everything from the last comment up to here is the next comment
 			var startNode = this.nextInterestingLeafNode( curCommentEnd );
@@ -861,6 +904,7 @@ Parser.prototype.buildThreadItems = function () {
 						foundSignature2 = this.findSignature( n, node );
 						if ( foundSignature2.username ) {
 							sigRanges.push( adjustSigRange( foundSignature2.nodes, match2, n ) );
+							timestampRanges.push( match2.range );
 						}
 					}
 					if ( event === 'leave' ) {
@@ -898,6 +942,7 @@ Parser.prototype.buildThreadItems = function () {
 				level,
 				range,
 				sigRanges,
+				timestampRanges,
 				dateTime,
 				author,
 				foundSignature.displayName

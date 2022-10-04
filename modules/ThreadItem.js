@@ -72,6 +72,7 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 				hash.level,
 				hash.range,
 				hash.signatureRanges,
+				hash.timestampRanges,
 				moment.utc( hash.timestamp, [
 					// See CommentItem#getTimestampString for notes about the two formats.
 					'YYYYMMDDHHmmss',
