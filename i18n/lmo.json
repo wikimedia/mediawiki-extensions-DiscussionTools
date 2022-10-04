@@ -13,7 +13,7 @@
 	"discussiontools-emptystate-desc-user": "I pagine de ciciarada a inn el sit indove la sgent la discut sora come scriver i contegnud {{SITENAME}} mei che se po. Taca un'altra ciciarada per conetes e lavorà insema a [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Quell che te diset el sarà publich de vedè anca per i alter. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Per savénn pussee]].",
 	"discussiontools-emptystate-desc-user-anon": "I pagine de cicarada a inn el sit indove la sgent la discut sora come scriver i contegnud in {{SITENAME}} mej che se riess. Drova questa pagina chì per tacà una ciciarada sora i modifeghe fade de quest'adress IP. Quell che te diset el sarà publich de vedè anca per i alter. On mucc de adress IP el seguta a cambià, e despess un adress IP a l'è spartid infra diverse persone. [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Per savénn pussee]]",
 	"discussiontools-emptystate-title": "Comenza una ciciarada sora {{PAGENAME}}",
-	"discussiontools-emptystate-title-self": "Benvegnud a la toa pagina de ciciarada",
+	"discussiontools-emptystate-title-self": "Benvegnud in la toa pagina de ciciarada",
 	"discussiontools-emptystate-title-self-anon": "Benvegnud/Benvegnuda in su questa pagina de ciciarada chì",
 	"discussiontools-emptystate-title-user": "Comenza ona ciciarada con {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Benvegnud/Benvegnuda in su questa pagina de ciciarada chì",

@@ -7,5 +7,7 @@
 	},
 	"apierror-discussiontools-commentid-notfound": "'$1' আইডিযুক্ত মন্তব্যটি পাওয়া যায়নি।",
 	"apierror-discussiontools-commentname-notfound": "'$1' নামযুক্ত মন্তব্যটি পাওয়া যায়নি।",
+	"apierror-discussiontools-subscription-failed-add": "এই আলোচনা অনুসরণ যায়নি।",
+	"apierror-discussiontools-subscription-failed-remove": "এই আলোচনা অ-অনুসরণ করা যায়নি।",
 	"apihelp-discussiontoolsedit-param-wikitext": "উইকিপাঠ্য হিসেবে পোস্ট করার বিষয়বস্তু। <var>html</var> এর সাথে একত্রে ব্যবহার করা যাবে না।"
 }

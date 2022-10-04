@@ -4,7 +4,7 @@
 			"Robby"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "ID vun der Bemierkung net fonnt: $1",
+	"apierror-discussiontools-commentid-notfound": "Kommentar mat der ID '$1' gouf net fonnt.",
 	"apihelp-discussiontoolsedit-param-commentid": "Bemierkung ID.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikitext"
 }
