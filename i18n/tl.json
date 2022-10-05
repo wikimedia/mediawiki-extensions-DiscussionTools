@@ -15,9 +15,19 @@
 	"discussiontools-emptystate-desc-self": "Maaring gamitin ng mga indibiduwal sa {{SITENAME}} ang pahinang ito upang maglagay ng isang publikong mensahe para sa iyo at maabiso ka kapag ginawa nila ito. [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Alamin pa]]",
 	"discussiontools-emptystate-title": "Magsimula ng usapan tungkol sa pahinang \"{{SUBJECTPAGENAME}}\"",
 	"discussiontools-replylink": "sumagot",
+	"discussiontools-replywidget-advanced": "Karagdagan",
 	"discussiontools-replywidget-cancel": "Ikansela",
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Sumagot kay {{BIDI: $1 }}",
-	"discussiontools-replywidget-reply": "Sumagot"
+	"discussiontools-replywidget-preview": "Pasilip",
+	"discussiontools-replywidget-reply": "Sumagot",
+	"discussiontools-replywidget-summary": "Buod",
+	"discussiontools-replywidget-watchthis": "Idagdga ang pahinang ito sa [[Special:Watchlist|binabantayan]] mo",
+	"discussiontools-topicsubscription-button-subscribe": "mag-sub",
+	"discussiontools-topicsubscription-button-unsubscribe": "wag mag-sub",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Makakatanggap ka ng mga abiso tungkol sa mga bagong komento sa paksang ito.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Nakapag-subscribe ka na!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Hindi ka na makakatanggap ng mga abiso tungkol sa mga bagong komento sa paksang ito.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Hindi ka naka-subscribe."
 }

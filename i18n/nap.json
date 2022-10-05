@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Finizio"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Rispunne",
+	"discussiontools-replylink": "rispunne",
+	"discussiontools-replywidget-advanced": "Avanzate",
+	"discussiontools-replywidget-cancel": "Scancella",
+	"discussiontools-replywidget-mode-source": "Origgene",
+	"discussiontools-replywidget-placeholder-reply": "Rispunne a {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Anteprimma",
+	"discussiontools-replywidget-reply": "Rispunne"
+}
