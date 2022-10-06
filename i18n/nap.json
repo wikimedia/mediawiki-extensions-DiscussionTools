@@ -9,7 +9,12 @@
 	"discussiontools-replywidget-advanced": "Avanzate",
 	"discussiontools-replywidget-cancel": "Scancella",
 	"discussiontools-replywidget-mode-source": "Origgene",
+	"discussiontools-replywidget-mode-visual": "Visuale",
 	"discussiontools-replywidget-placeholder-reply": "Rispunne a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Anteprimma",
-	"discussiontools-replywidget-reply": "Rispunne"
+	"discussiontools-replywidget-reply": "Rispunne",
+	"discussiontools-replywidget-summary": "Énnece",
+	"discussiontools-topicheader-latestcomment": "Urtemo commento: $1",
+	"discussiontools-topicsubscription-button-unsubscribe": "cancella l'iscriziona",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Cancella l'iscriziona"
 }
