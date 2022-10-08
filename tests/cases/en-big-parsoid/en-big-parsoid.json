@@ -2018,7 +2018,7 @@
 						"timestamp": "2019-06-27T14:52:00.000Z",
 						"author": "Nthep",
 						"range": [
-							"10/4/4/0",
+							"10/4/4",
 							"10/4/6/4/27"
 						],
 						"signatureRanges": [
@@ -4064,7 +4064,7 @@
 				"timestamp": "2019-06-27T14:52:00.000Z",
 				"author": "Nthep",
 				"range": [
-					"10/4/4/0",
+					"10/4/4",
 					"10/4/6/4/27"
 				],
 				"signatureRanges": [
@@ -12187,7 +12187,7 @@
 				"timestamp": "2019-07-09T05:05:00.000Z",
 				"author": "Anthonyhcole",
 				"range": [
-					"51/4/0",
+					"51/4",
 					"51/6/8/27"
 				],
 				"signatureRanges": [
@@ -14018,7 +14018,7 @@
 				"timestamp": "2019-07-17T11:33:00.000Z",
 				"author": "Dweller",
 				"range": [
-					"65/2/0",
+					"65/2",
 					"65/6/8/26"
 				],
 				"signatureRanges": [
@@ -14528,7 +14528,7 @@
 				"timestamp": "2019-07-16T01:11:00.000Z",
 				"author": "Whatamidoing (WMF)",
 				"range": [
-					"70/2/0",
+					"70/2",
 					"70/4/5/27"
 				],
 				"signatureRanges": [
@@ -20601,7 +20601,7 @@
 				"timestamp": "2019-08-04T14:31:00.000Z",
 				"author": "Davey2010",
 				"range": [
-					"108/2/0",
+					"108/2",
 					"108/4/11/27"
 				],
 				"signatureRanges": [
@@ -23500,7 +23500,7 @@
 				"timestamp": "2019-08-10T12:26:00.000Z",
 				"author": "Davey2010",
 				"range": [
-					"136/2/0",
+					"136/2",
 					"136/10/3/28"
 				],
 				"signatureRanges": [
@@ -28975,7 +28975,7 @@
 				"timestamp": "2019-08-15T10:51:00.000Z",
 				"author": "Incnis Mrsi",
 				"range": [
-					"168/2/0",
+					"168/2",
 					"168/4/18/29"
 				],
 				"signatureRanges": [
@@ -29016,7 +29016,7 @@
 				"timestamp": "2019-08-15T12:03:00.000Z",
 				"author": "PrimeHunter",
 				"range": [
-					"168/8/0",
+					"168/8",
 					"168/10/0/0/0/4/29"
 				],
 				"signatureRanges": [
@@ -29102,7 +29102,7 @@
 				"timestamp": "2019-08-15T16:41:00.000Z",
 				"author": "PrimeHunter",
 				"range": [
-					"168/12/0",
+					"168/12",
 					"168/16/0/0/0/0/0/0/0/6/29"
 				],
 				"signatureRanges": [
