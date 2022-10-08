@@ -103,6 +103,21 @@ function addListItem( comment, replyIndentation ) {
 		parent = target.parentNode;
 	}
 
+	// If the comment is in a transclusion, insert replies after the transclusion. (T313100)
+	// This method should never be called in cases where that would be a bad idea.
+	var transclusionNode = utils.getTranscludedFromElement( target );
+	if ( transclusionNode ) {
+		while (
+			transclusionNode.nextSibling &&
+			transclusionNode.nextSibling.nodeType === Node.ELEMENT_NODE &&
+			transclusionNode.nextSibling.getAttribute( 'about' ) === transclusionNode.getAttribute( 'about' )
+		) {
+			transclusionNode = transclusionNode.nextSibling;
+		}
+		target = transclusionNode;
+		parent = target.parentNode;
+	}
+
 	// If we can't insert a list directly inside this element, insert after it.
 	// The covered wrapper check above handles most cases, but we still need this sometimes, such as:
 	// * If the comment starts in the middle of a list, then ends with an unindented p/pre, the

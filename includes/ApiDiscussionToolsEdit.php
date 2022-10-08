@@ -275,6 +275,14 @@ class ApiDiscussionToolsEdit extends ApiBase {
 					}
 				}
 
+				if ( $comment->getTranscludedFrom() ) {
+					// Replying to transcluded comments should not be possible. We check this client-side, but
+					// the comment might have become transcluded in the meantime (T268069), so check again. We
+					// didn't have this check before T313100, since usually the reply would just disappear in
+					// Parsoid, but now it would be placed after the transclusion, which would be wrong.
+					$this->dieWithError( 'discussiontools-error-comment-not-saved', 'comment-became-transcluded' );
+				}
+
 				if ( $params['wikitext'] !== null ) {
 					CommentModifier::addWikitextReply( $comment, $params['wikitext'], $signature );
 				} else {
@@ -339,7 +347,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		if ( !isset( $result['newrevid'] ) && isset( $result['result'] ) && $result['result'] === 'success' ) {
 			// No new revision, so no changes were made to the page (null edit).
 			// Comment was not actually saved, so for this API, that's an error.
-			// This is probably because changes were inside a transclusion's HTML?
+			// This should not be possible after T313100.
 			$this->dieWithError( 'discussiontools-error-comment-not-saved', 'comment-comment-not-saved' );
 		}
 

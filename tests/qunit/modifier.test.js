@@ -20,6 +20,17 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		QUnit.skip( testName );
 		return;
 	}
+	// These tests depend on #getTranscludedFrom(), which we didn't implement in JS
+	var haveTranscludedComments = [
+		'arwiki no-paragraph parsoid',
+		'enwiki parsoid',
+		'Many comments consisting of a block template and a paragraph',
+		'Comment whose range almost exactly matches a template, but is not considered transcluded (T313100)'
+	];
+	if ( haveTranscludedComments.indexOf( caseItem.name ) !== -1 ) {
+		QUnit.skip( testName );
+		return;
+	}
 	QUnit.test( testName, function ( assert ) {
 		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),

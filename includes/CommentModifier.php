@@ -140,6 +140,22 @@ class CommentModifier {
 			$parent = $target->parentNode;
 		}
 
+		// If the comment is in a transclusion, insert replies after the transclusion. (T313100)
+		// This method should never be called in cases where that would be a bad idea.
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+		$transclusionNode = CommentUtils::getTranscludedFromElement( $target );
+		if ( $transclusionNode ) {
+			while (
+				( $nextSibling = $transclusionNode->nextSibling ) &&
+				$nextSibling instanceof Element &&
+				$nextSibling->getAttribute( 'about' ) === $transclusionNode->getAttribute( 'about' )
+			) {
+				$transclusionNode = $nextSibling;
+			}
+			$target = $transclusionNode;
+			$parent = $target->parentNode;
+		}
+
 		// If we can't insert a list directly inside this element, insert after it.
 		// The covered wrapper check above handles most cases, but we still need this sometimes, such as:
 		// * If the comment starts in the middle of a list, then ends with an unindented p/pre, the

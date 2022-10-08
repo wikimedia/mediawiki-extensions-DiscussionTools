@@ -39,6 +39,12 @@ class CommentModifierTest extends IntegrationTestCase {
 		$comments = $threadItemSet->getCommentItems();
 
 		foreach ( $comments as $comment ) {
+			if ( $comment->getTranscludedFrom() ) {
+				// Reply tool wouldn't be available for this comment on this page, because it's transcluded.
+				// Skip this case, because the result of addListItem() would be misleading (we add replies
+				// after the transclusion, which would be the wrong place for most of these comments).
+				continue;
+			}
 			$node = CommentModifier::addListItem( $comment, $replyIndentation );
 			$node->textContent = 'Reply to ' . $comment->getId();
 		}
