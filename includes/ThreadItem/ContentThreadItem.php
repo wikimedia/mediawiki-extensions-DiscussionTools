@@ -225,23 +225,36 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 		foreach ( $transclNodes as $transclNode ) {
 			$transclRange = static::getTransclusionRange( $transclNode );
 			$compared = CommentUtils::compareRanges( $commentRange, $transclRange );
-			$transclTitle = $this->getSinglePageTransclusionTitle( $transclNode );
+			$transclTitles = $this->getTransclusionTitles( $transclNode );
+			$simpleTransclTitle = count( $transclTitles ) === 1 ? $transclTitles[0] : null;
 
 			switch ( $compared ) {
 				case 'equal':
 					// Comment (almost) exactly matches the transclusion
-					if ( $transclTitle === null ) {
+					if ( $simpleTransclTitle === null ) {
+						// Allow replying to some accidental complex transclusions consisting of only templates
+						// and wikitext (T313093)
+						if ( count( $transclTitles ) > 1 ) {
+							foreach ( $transclTitles as $transclTitle ) {
+								if ( $transclTitle && !$transclTitle->inNamespace( NS_TEMPLATE ) ) {
+									return true;
+								}
+							}
+							// Continue examining the other ranges.
+							break;
+						}
 						// Multi-template transclusion, or a parser function call, or template-affected wikitext outside
 						// of a template call, or a mix of the above
 						return true;
-					} elseif ( $transclTitle->inNamespace( NS_TEMPLATE ) ) {
+
+					} elseif ( $simpleTransclTitle->inNamespace( NS_TEMPLATE ) ) {
 						// Is that a subpage transclusion with a single comment, or a wrapper template
 						// transclusion on this page? We don't know, but let's guess based on the namespace.
 						// (T289873)
 						// Continue examining the other ranges.
 						break;
 					} else {
-						return $transclTitle->getPrefixedText();
+						return $simpleTransclTitle->getPrefixedText();
 					}
 
 				case 'contains':
@@ -256,10 +269,10 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 
 				case 'contained':
 					// Comment is contained within the transclusion
-					if ( $transclTitle === null ) {
+					if ( $simpleTransclTitle === null ) {
 						return true;
 					} else {
-						return $transclTitle->getPrefixedText();
+						return $simpleTransclTitle->getPrefixedText();
 					}
 
 				case 'after':
@@ -285,30 +298,34 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	}
 
 	/**
-	 * If the node represents a single-page transclusion, return that page's title.
-	 * Otherwise return null.
+	 * Return the page titles for each part of the transclusion, or nulls for each part that isn't
+	 * transcluded from another page.
+	 *
+	 * If the node represents a single-page transclusion, this will return an array containing a
+	 * single Title object.
 	 *
 	 * @param Element $node
-	 * @return Title|null
+	 * @return (?Title)[]
 	 */
-	private function getSinglePageTransclusionTitle( Element $node ): ?Title {
+	private function getTransclusionTitles( Element $node ): array {
 		$dataMw = json_decode( $node->getAttribute( 'data-mw' ) ?? '', true );
+		$out = [];
 
-		// Only return a page name if this is a simple single-template transclusion.
-		if (
-			is_array( $dataMw ) &&
-			$dataMw['parts'] &&
-			count( $dataMw['parts'] ) === 1 &&
-			$dataMw['parts'][0]['template'] &&
-			// 'href' will be unset if this is a parser function rather than a template
-			isset( $dataMw['parts'][0]['template']['target']['href'] )
-		) {
-			$parsoidHref = $dataMw['parts'][0]['template']['target']['href'];
-			Assert::precondition( substr( $parsoidHref, 0, 2 ) === './', "href has valid format" );
-			return Title::newFromText( urldecode( substr( $parsoidHref, 2 ) ) );
+		foreach ( $dataMw['parts'] ?? [] as $part ) {
+			if (
+				!is_string( $part ) &&
+				// 'href' will be unset if this is a parser function rather than a template
+				isset( $part['template']['target']['href'] )
+			) {
+				$parsoidHref = $part['template']['target']['href'];
+				Assert::precondition( substr( $parsoidHref, 0, 2 ) === './', "href has valid format" );
+				$out[] = Title::newFromText( urldecode( substr( $parsoidHref, 2 ) ) );
+			} else {
+				$out[] = null;
+			}
 		}
 
-		return null;
+		return $out;
 	}
 
 	/**
