@@ -5,7 +5,9 @@ namespace MediaWiki\Extension\DiscussionTools;
 use Error;
 use Exception;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Parsoid\DOM\CharacterData;
 use Wikimedia\Parsoid\DOM\Comment;
+use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
 use Wikimedia\Parsoid\DOM\DocumentType;
 use Wikimedia\Parsoid\DOM\Node;
@@ -232,6 +234,182 @@ class ImmutableRange {
 	}
 
 	/**
+	 * Extracts the content of the Range from the node tree and places it in a
+	 * DocumentFragment.
+	 *
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 * @see https://dom.spec.whatwg.org/#dom-range-extractcontents
+	 *
+	 * @return DocumentFragment
+	 */
+	public function extractContents(): DocumentFragment {
+		$fragment = $this->mStartContainer->ownerDocument->createDocumentFragment();
+
+		if (
+			$this->mStartContainer === $this->mEndContainer
+			&& $this->mStartOffset === $this->mEndOffset
+		) {
+			return $fragment;
+		}
+
+		$originalStartNode = $this->mStartContainer;
+		$originalStartOffset = $this->mStartOffset;
+		$originalEndNode = $this->mEndContainer;
+		$originalEndOffset = $this->mEndOffset;
+
+		if (
+			$originalStartNode === $originalEndNode
+			&& ( $originalStartNode instanceof Text
+				|| $originalStartNode instanceof ProcessingInstruction
+				|| $originalStartNode instanceof Comment )
+		) {
+			$clone = $originalStartNode->cloneNode();
+			Assert::precondition( $clone instanceof CharacterData, 'TODO' );
+			$clone->data = $originalStartNode->substringData(
+				$originalStartOffset,
+				$originalEndOffset - $originalStartOffset
+			);
+			$fragment->appendChild( $clone );
+			$originalStartNode->replaceData(
+				$originalStartOffset,
+				$originalEndOffset - $originalStartOffset,
+				''
+			);
+
+			return $fragment;
+		}
+
+		$commonAncestor = $this->commonAncestorContainer;
+		// It should be impossible for common ancestor to be null here since both nodes should be
+		// in the same tree.
+		Assert::precondition( $commonAncestor !== null, 'TODO' );
+		$firstPartiallyContainedChild = null;
+
+		if ( !CommentUtils::contains( $originalStartNode, $originalEndNode ) ) {
+			foreach ( $commonAncestor->childNodes as $node ) {
+				if ( $this->isPartiallyContainedNode( $node ) ) {
+					$firstPartiallyContainedChild = $node;
+
+					break;
+				}
+			}
+		}
+
+		$lastPartiallyContainedChild = null;
+
+		if ( !CommentUtils::contains( $originalEndNode, $originalStartNode ) ) {
+			$node = $commonAncestor->lastChild;
+
+			while ( $node ) {
+				if ( $this->isPartiallyContainedNode( $node ) ) {
+					$lastPartiallyContainedChild = $node;
+
+					break;
+				}
+
+				$node = $node->previousSibling;
+			}
+		}
+
+		$containedChildren = [];
+
+		foreach ( $commonAncestor->childNodes as $childNode ) {
+			if ( $this->isFullyContainedNode( $childNode ) ) {
+				if ( $childNode instanceof DocumentType ) {
+					throw new Error();
+				}
+
+				$containedChildren[] = $childNode;
+			}
+		}
+
+		if ( CommentUtils::contains( $originalStartNode, $originalEndNode ) ) {
+			$newNode = $originalStartNode;
+			$newOffset = $originalStartOffset;
+		} else {
+			$referenceNode = $originalStartNode;
+			$parent = $referenceNode->parentNode;
+
+			while ( $parent && !CommentUtils::contains( $parent, $originalEndNode ) ) {
+				$referenceNode = $parent;
+				$parent = $referenceNode->parentNode;
+			}
+
+			// Note: If reference node’s parent is null, it would be the root of range, so would be an inclusive
+			// ancestor of original end node, and we could not reach this point.
+			Assert::precondition( $parent !== null, 'TODO' );
+			$newNode = $parent;
+			$newOffset = CommentUtils::childIndexOf( $referenceNode ) + 1;
+		}
+
+		if (
+			$firstPartiallyContainedChild instanceof Text
+			|| $firstPartiallyContainedChild instanceof ProcessingInstruction
+			|| $firstPartiallyContainedChild instanceof Comment
+		) {
+			// Note: In this case, first partially contained child is original start node.
+			Assert::precondition( $originalStartNode instanceof CharacterData, 'TODO' );
+			$clone = $originalStartNode->cloneNode();
+			Assert::precondition( $clone instanceof CharacterData, 'TODO' );
+			$clone->data = $originalStartNode->substringData(
+				$originalStartOffset,
+				$originalStartNode->length - $originalStartOffset
+			);
+			$fragment->appendChild( $clone );
+			$originalStartNode->replaceData(
+				$originalStartOffset,
+				$originalStartNode->length - $originalStartOffset,
+				''
+			);
+		} elseif ( $firstPartiallyContainedChild ) {
+			$clone = $firstPartiallyContainedChild->cloneNode();
+			$fragment->appendChild( $clone );
+			$subrange = clone $this;
+			$subrange->mStartContainer = $originalStartNode;
+			$subrange->mStartOffset = $originalStartOffset;
+			$subrange->mEndContainer = $firstPartiallyContainedChild;
+			$subrange->mEndOffset = count( $firstPartiallyContainedChild->childNodes );
+			$subfragment = $subrange->extractContents();
+			$clone->appendChild( $subfragment );
+		}
+
+		foreach ( $containedChildren as $child ) {
+			$fragment->appendChild( $child );
+		}
+
+		if (
+			$lastPartiallyContainedChild instanceof Text
+			|| $lastPartiallyContainedChild instanceof ProcessingInstruction
+			|| $lastPartiallyContainedChild instanceof Comment
+		) {
+			// Note: In this case, last partially contained child is original end node.
+			Assert::precondition( $originalEndNode instanceof CharacterData, 'TODO' );
+			$clone = $originalEndNode->cloneNode();
+			Assert::precondition( $clone instanceof CharacterData, 'TODO' );
+			$clone->data = $originalEndNode->substringData( 0, $originalEndOffset );
+			$fragment->appendChild( $clone );
+			$originalEndNode->replaceData( 0, $originalEndOffset, '' );
+		} elseif ( $lastPartiallyContainedChild ) {
+			$clone = $lastPartiallyContainedChild->cloneNode();
+			$fragment->appendChild( $clone );
+			$subrange = clone $this;
+			$subrange->mStartContainer = $lastPartiallyContainedChild;
+			$subrange->mStartOffset = 0;
+			$subrange->mEndContainer = $originalEndNode;
+			$subrange->mEndOffset = $originalEndOffset;
+			$subfragment = $subrange->extractContents();
+			$clone->appendChild( $subfragment );
+		}
+
+		$this->mStartContainer = $newNode;
+		$this->mStartOffset = $newOffset;
+		$this->mEndContainer = $newNode;
+		$this->mEndOffset = $newOffset;
+
+		return $fragment;
+	}
+
+	/**
 	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
 	 * @see https://dom.spec.whatwg.org/#dom-range-clonecontents
 	 *
@@ -450,6 +628,51 @@ class ImmutableRange {
 
 		// $referenceNode may be null, this is okay
 		$parent->insertBefore( $node, $referenceNode );
+	}
+
+	/**
+	 * Wraps the content of Range in a new Node and inserts it in to the Document.
+	 *
+	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
+	 *
+	 * @see https://dom.spec.whatwg.org/#dom-range-surroundcontents
+	 *
+	 * @param Node $newParent New parent node for contents
+	 * @return void
+	 */
+	public function surroundContents( Node $newParent ): void {
+		$commonAncestor = $this->commonAncestorContainer;
+
+		if ( $commonAncestor ) {
+			$tw = new TreeWalker( $commonAncestor );
+			$node = $tw->nextNode();
+
+			while ( $node ) {
+				if ( !$node instanceof Text && $this->isPartiallyContainedNode( $node ) ) {
+					throw new Error();
+				}
+
+				$node = $tw->nextNode();
+			}
+		}
+
+		if (
+			$newParent instanceof Document
+			|| $newParent instanceof DocumentType
+			|| $newParent instanceof DocumentFragment
+		) {
+			throw new Error();
+		}
+
+		$fragment = $this->extractContents();
+
+		while ( $newParent->firstChild ) {
+			$newParent->removeChild( $newParent->firstChild );
+		}
+
+		$this->insertNode( $newParent );
+		$newParent->appendChild( $fragment );
+		// TODO: Return new range?
 	}
 
 	/**
