@@ -131,7 +131,10 @@ class CommentModifier {
 		// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
 		// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
 		// as some kind of a fancy frame, which are often used for barnstars and announcements.
-		$covered = CommentUtils::getFullyCoveredSiblings( $curComment, $curComment->getRootNode() );
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+		$excludedWrapper = CommentUtils::closestElement( $target, [ 'section' ] ) ?:
+			$curComment->getRootNode();
+		$covered = CommentUtils::getFullyCoveredSiblings( $curComment, $excludedWrapper );
 		if ( $curComment->getLevel() === 1 && $covered ) {
 			$target = end( $covered );
 			$parent = $target->parentNode;
