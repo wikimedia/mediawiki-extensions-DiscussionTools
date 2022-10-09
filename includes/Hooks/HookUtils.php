@@ -101,7 +101,9 @@ class HookUtils {
 		$response = $parsoidClient->getPageHtml( $revRecord, null );
 
 		if ( !empty( $response['error'] ) ) {
-			$message = wfMessage( ...$response['error'] );
+			$error = $response['error'];
+			'@phan-var non-empty-array $error';
+			$message = wfMessage( $error );
 			throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
 		}
 

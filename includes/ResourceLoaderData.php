@@ -71,7 +71,8 @@ class ResourceLoaderData {
 	 *
 	 * @param MessageLocalizer $context
 	 * @param Config $config
-	 * @return array Map from internal name to array of parameters for MessageLocalizer::msg()
+	 * @return array[] Map from internal name to array of parameters for MessageLocalizer::msg()
+	 * @phan-return non-empty-array[]
 	 */
 	private static function getTermsOfUseMessages(
 		MessageLocalizer $context, Config $config
