@@ -50,10 +50,10 @@ CommentItem.prototype.getTimestampString = function () {
 	var dtConfig = require( './config.json' );
 	var switchTime = moment.utc( dtConfig.switchTime );
 	if ( this.timestamp < switchTime ) {
-		return this.timestamp.toISOString();
+		return this.timestamp.utc().toISOString();
 	} else {
 		// Switch to English locale to avoid number formatting
-		return this.timestamp.locale( 'en' ).format( 'YYYYMMDDHHmmss' );
+		return this.timestamp.utc().locale( 'en' ).format( 'YYYYMMDDHHmmss' );
 	}
 };
 
