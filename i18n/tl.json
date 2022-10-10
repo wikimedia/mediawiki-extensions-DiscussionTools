@@ -15,5 +15,6 @@
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Sumagot kay {{BIDI: $1 }}",
+	"discussiontools-replywidget-preview": "Pasilip",
 	"discussiontools-replywidget-reply": "Sumagot"
 }

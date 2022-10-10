@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Filipinayzd"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Simbag",
+	"discussiontools-replylink": "simbag",
+	"discussiontools-replywidget-cancel": "Galinon",
+	"discussiontools-replywidget-mode-source": "Ginikanan",
+	"discussiontools-replywidget-mode-visual": "Biswal",
+	"discussiontools-replywidget-placeholder-reply": "Simbag ki {{BIDI: $1 }}",
+	"discussiontools-replywidget-preview": "Patan-aw",
+	"discussiontools-replywidget-reply": "Simbag"
+}

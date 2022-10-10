@@ -5,5 +5,12 @@
 			"Luwangcha"
 		]
 	},
-	"discussiontools-replylink": "ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ"
+	"discussiontools-defaultsummary-reply": "ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ",
+	"discussiontools-replylink": "ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ",
+	"discussiontools-replywidget-cancel": "ꯇꯣꯛꯄ",
+	"discussiontools-replywidget-mode-source": "ꯍꯧꯔꯛꯐꯛ",
+	"discussiontools-replywidget-mode-visual": "ꯃꯤꯠꯅ ꯎꯕ",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ꯗ ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ",
+	"discussiontools-replywidget-preview": "ꯃꯥꯡꯖꯧꯅꯅꯥ ꯎꯠꯄ",
+	"discussiontools-replywidget-reply": "ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ"
 }
