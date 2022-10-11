@@ -5,21 +5,22 @@ var
 
 QUnit.module( 'mw.dt.modifier', QUnit.newMwEnvironment() );
 
-require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
+require( '../cases/modified.json' ).forEach( function ( caseItem ) {
+	var testName = '#addListItem/#removeAddedListItem (' + caseItem.name + ')';
 	// This should be one test with many cases, rather than multiple tests, but the cases are large
 	// enough that processing all of them at once causes timeouts in Karma test runner.
 	// FIXME: Actually, even single test cases cause timeouts now. Skip the slowest ones.
-	var tooBig = [
+	var skipTests = [
 		'enwiki oldparser',
 		'enwiki parsoid',
 		'enwiki oldparser (bullet indentation)',
 		'enwiki parsoid (bullet indentation)'
 	];
-	if ( tooBig.indexOf( caseItem.name ) !== -1 ) {
-		QUnit.skip( '#addListItem/#removeAddedListItem case ' + i );
+	if ( skipTests.indexOf( caseItem.name ) !== -1 ) {
+		QUnit.skip( testName );
 		return;
 	}
-	QUnit.test( '#addListItem/#removeAddedListItem case ' + i, function ( assert ) {
+	QUnit.test( testName, function ( assert ) {
 		var fixture = document.getElementById( 'qunit-fixture' );
 
 		var dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
@@ -57,7 +58,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
 		assert.strictEqual(
 			actualHtml,
 			expectedHtml,
-			caseItem.name
+			comments.length + ' replies added'
 		);
 
 		// Now discard the replies and verify we get the original document back.
@@ -69,7 +70,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem, i ) {
 		assert.strictEqual(
 			reverseActualHtml,
 			reverseExpectedHtml,
-			caseItem.name + ' (discard replies)'
+			nodes.length + ' replies removed'
 		);
 	} );
 } );
