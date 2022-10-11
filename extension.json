@@ -41,6 +41,7 @@
 				"controller.js",
 				"highlighter.js",
 				"topicsubscriptions.js",
+				"mobile.js",
 				{
 					"name": "controller/contLangMessages.json",
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getContentLanguageMessages",
