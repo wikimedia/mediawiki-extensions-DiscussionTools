@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use FormatJson;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Parsoid\DOM\Document;
@@ -77,9 +78,7 @@ trait TestUtils {
 	 * @param array $data
 	 */
 	protected static function overwriteJsonFile( string $relativePath, array $data ): void {
-		$json = json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-		// Tabs instead of 4 spaces
-		$json = preg_replace( '/(?:\G|^) {4}/m', "\t", $json );
+		$json = FormatJson::encode( $data, "\t", FormatJson::ALL_OK );
 		file_put_contents( __DIR__ . '/' . $relativePath, $json . "\n" );
 	}
 
