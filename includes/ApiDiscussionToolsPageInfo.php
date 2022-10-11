@@ -9,6 +9,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
+use MediaWiki\Revision\RevisionLookup;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Parsoid\DOM\Element;
@@ -26,21 +27,27 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	/** @var VisualEditorParsoidClientFactory */
 	private $parsoidClientFactory;
 
+	/** @var RevisionLookup */
+	private $revisionLookup;
+
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
 	 * @param VisualEditorParsoidClientFactory $parsoidClientFactory
 	 * @param CommentParser $commentParser
+	 * @param RevisionLookup $revisionLookup
 	 */
 	public function __construct(
 		ApiMain $main,
 		string $name,
 		VisualEditorParsoidClientFactory $parsoidClientFactory,
-		CommentParser $commentParser
+		CommentParser $commentParser,
+		RevisionLookup $revisionLookup
 	) {
 		parent::__construct( $main, $name );
 		$this->parsoidClientFactory = $parsoidClientFactory;
 		$this->commentParser = $commentParser;
+		$this->revisionLookup = $revisionLookup;
 	}
 
 	/**
@@ -48,17 +55,32 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$title = Title::newFromText( $params['page'] );
-		$prop = array_fill_keys( $params['prop'], true );
+		$this->requireAtLeastOneParameter( $params, 'page', 'oldid' );
 
-		if ( !$title ) {
-			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
+		if ( isset( $params['oldid'] ) ) {
+			$revision = $this->revisionLookup->getRevisionById( $params['oldid'] );
+			if ( !$revision ) {
+				$this->dieWithError( [ 'apierror-nosuchrevid', $params['oldid'] ] );
+			}
+
+		} else {
+			$title = Title::newFromText( $params['page'] );
+			if ( !$title ) {
+				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
+			}
+			$revision = $this->revisionLookup->getRevisionByTitle( $title );
+			if ( !$revision ) {
+				$this->dieWithError(
+					[ 'apierror-missingrev-title', wfEscapeWikiText( $title->getPrefixedText() ) ],
+					'nosuchrevid'
+				);
+			}
 		}
 
-		$revision = $this->getValidRevision( $title, $params['oldid'] ?? null );
 		$threadItemSet = $this->parseRevision( $revision );
 
 		$result = [];
+		$prop = array_fill_keys( $params['prop'], true );
 
 		if ( isset( $prop['transcludedfrom'] ) ) {
 			$result['transcludedfrom'] = static::getTranscludedFrom( $threadItemSet );
@@ -211,10 +233,11 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'page' => [
-				ParamValidator::PARAM_REQUIRED => true,
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-page',
 			],
-			'oldid' => null,
+			'oldid' => [
+				ParamValidator::PARAM_TYPE => 'integer',
+			],
 			'prop' => [
 				ParamValidator::PARAM_DEFAULT => 'transcludedfrom',
 				ParamValidator::PARAM_ISMULTI => true,

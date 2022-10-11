@@ -6,6 +6,7 @@ use ApiBase;
 use ApiMain;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
+use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -21,21 +22,27 @@ class ApiDiscussionToolsCompare extends ApiBase {
 	/** @var VisualEditorParsoidClientFactory */
 	private $parsoidClientFactory;
 
+	/** @var RevisionLookup */
+	private $revisionLookup;
+
 	/**
 	 * @param ApiMain $main
 	 * @param string $name
 	 * @param VisualEditorParsoidClientFactory $parsoidClientFactory
 	 * @param CommentParser $commentParser
+	 * @param RevisionLookup $revisionLookup
 	 */
 	public function __construct(
 		ApiMain $main,
 		string $name,
 		VisualEditorParsoidClientFactory $parsoidClientFactory,
-		CommentParser $commentParser
+		CommentParser $commentParser,
+		RevisionLookup $revisionLookup
 	) {
 		parent::__construct( $main, $name );
 		$this->parsoidClientFactory = $parsoidClientFactory;
 		$this->commentParser = $commentParser;
+		$this->revisionLookup = $revisionLookup;
 	}
 
 	/**
@@ -47,14 +54,24 @@ class ApiDiscussionToolsCompare extends ApiBase {
 		$this->requireOnlyOneParameter( $params, 'fromtitle', 'fromrev' );
 		$this->requireOnlyOneParameter( $params, 'totitle', 'torev' );
 
-		if ( $params['torev'] ) {
-			$toRev = $this->getValidRevision( null, $params['torev'] ?? null );
+		if ( isset( $params['torev'] ) ) {
+			$toRev = $this->revisionLookup->getRevisionById( $params['torev'] );
+			if ( !$toRev ) {
+				$this->dieWithError( [ 'apierror-nosuchrevid', $params['torev'] ] );
+			}
+
 		} else {
 			$toTitle = Title::newFromText( $params['totitle'] );
 			if ( !$toTitle ) {
 				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['totitle'] ) ] );
 			}
-			$toRev = $this->getValidRevision( $toTitle );
+			$toRev = $this->revisionLookup->getRevisionByTitle( $toTitle );
+			if ( !$toRev ) {
+				$this->dieWithError(
+					[ 'apierror-missingrev-title', wfEscapeWikiText( $toTitle->getPrefixedText() ) ],
+					'nosuchrevid'
+				);
+			}
 		}
 
 		// When polling for new comments this is an important optimisation,
@@ -64,14 +81,24 @@ class ApiDiscussionToolsCompare extends ApiBase {
 			return;
 		}
 
-		if ( $params['fromrev'] ) {
-			$fromRev = $this->getValidRevision( null, $params['fromrev'] ?? null );
+		if ( isset( $params['fromrev'] ) ) {
+			$fromRev = $this->revisionLookup->getRevisionById( $params['fromrev'] );
+			if ( !$fromRev ) {
+				$this->dieWithError( [ 'apierror-nosuchrevid', $params['fromrev'] ] );
+			}
+
 		} else {
 			$fromTitle = Title::newFromText( $params['fromtitle'] );
 			if ( !$fromTitle ) {
 				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['fromtitle'] ) ] );
 			}
-			$fromRev = $this->getValidRevision( $fromTitle );
+			$fromRev = $this->revisionLookup->getRevisionByTitle( $fromTitle );
+			if ( !$fromRev ) {
+				$this->dieWithError(
+					[ 'apierror-missingrev-title', wfEscapeWikiText( $fromTitle->getPrefixedText() ) ],
+					'nosuchrevid'
+				);
+			}
 		}
 
 		if ( $fromRev->hasSameContent( $toRev ) ) {

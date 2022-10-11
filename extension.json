@@ -436,7 +436,8 @@
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsCompare",
 			"services": [
 				"VisualEditor.ParsoidClientFactory",
-				"DiscussionTools.CommentParser"
+				"DiscussionTools.CommentParser",
+				"RevisionLookup"
 			]
 		},
 		"discussiontoolsedit": {
@@ -446,7 +447,8 @@
 				"DiscussionTools.CommentParser",
 				"DiscussionTools.SubscriptionStore",
 				"SkinFactory",
-				"ConfigFactory"
+				"ConfigFactory",
+				"RevisionLookup"
 			]
 		},
 		"discussiontoolsgetsubscriptions": {
@@ -460,7 +462,8 @@
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPageInfo",
 			"services": [
 				"VisualEditor.ParsoidClientFactory",
-				"DiscussionTools.CommentParser"
+				"DiscussionTools.CommentParser",
+				"RevisionLookup"
 			]
 		},
 		"discussiontoolspreview": {
