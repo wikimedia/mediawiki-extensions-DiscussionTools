@@ -5,5 +5,20 @@
 			"Hamilton Abreu"
 		]
 	},
-	"apierror-discussiontools-commentid-notfound": "O comentário com o identificador '$1' não foi encontrado."
+	"apierror-discussiontools-commentid-notfound": "O comentário com o identificador '$1' não foi encontrado.",
+	"apierror-discussiontools-commentname-notfound": "Não foi encontrado um comentário com o nome '$1'.",
+	"apierror-discussiontools-subscription-failed-add": "Não foi possível subscrever este tópico.",
+	"apierror-discussiontools-subscription-failed-remove": "Não foi possível cancelar a subscrição deste tópico.",
+	"apihelp-discussiontoolsedit-param-commentid": "Identificador do comentário a ser respondido. Só é usado quando <var>paction</var> é <var>addcomment</var>. Tem precedência sobre <var>commentname</var> .",
+	"apihelp-discussiontoolsedit-param-commentname": "Nome do comentário a ser respondido. Só é usado quando <var>paction</var> é <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Conteúdo a publicar, na forma de HTML. Não pode ser usado em conjunto com <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Só é usado quando <var>paction</var> é <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Conteúdo a publicar, como texto wiki. Não pode ser usado em conjunto com <var>html</var>.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adicionar um comentário novo como resposta a um comentário existente.",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adicionar uma secção de discussão nova e o primeiro comentário nela.",
+	"apihelp-discussiontoolsedit-summary": "Publicar uma mensagem numa página de discussão.",
+	"apihelp-discussiontoolssubscribe-param-page": "Uma página na qual o tópico aparece",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Nome do tópico a subscrever (ou cancelar a subscrição)",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "Verdadeiro para subscrever, falso para cancelar a subscrição",
+	"apihelp-discussiontoolssubscribe-summary": "Subscrever (ou cancelar a subscrição) para receber notificações sobre um tópico."
 }

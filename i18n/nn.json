@@ -24,6 +24,7 @@
 	"discussiontools-error-noswitchtove-title": "Visuell modus deaktivert",
 	"discussiontools-newtopic-missing-title": "Oppgje ein tittel for diskusjonen. Viss du trykker på «{{int:discussiontools-replywidget-newtopic}}» blir emnet lagt til utan tittel.",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarte}} i «<strong>$4</strong>».",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Eitt nytt|$1 nye|100=99+ nye}} svar i «<strong>$3</strong>».",
 	"discussiontools-notification-subscribed-new-comment-view": "Vis kommentar",
 	"discussiontools-postedit-confirmation-published": "Kommentaren din vart publisert.",
 	"discussiontools-postedit-confirmation-topicadded": "Emnet ditt vart lagt til.",
@@ -62,8 +63,15 @@
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Avslutt abonnement",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Vil du avslutta abonnementet på dette emnet?",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Du har avslutta abonnementet.",
+	"tag-discussiontools-description": "Redigering gjort med DiscussionTools",
 	"tag-discussiontools-edit-description": "Brukaren redigerte ein eksisterande kommentar med DiscussionTools",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nytt emne]",
+	"tag-discussiontools-newtopic-description": "Brukaren la til eit nytt emne til sida med DiscussionTools",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
+	"tag-discussiontools-reply-description": "Brukaren svarte på ein kommentar med DiscussionTools",
 	"tag-discussiontools-source": "Kjelde",
+	"tag-discussiontools-source-description": "DiscussionTools var i kjeldemodus",
+	"tag-discussiontools-source-enhanced-description": "Diskusjonsverktøy var i utvida kjeldemodus med verktøylinja",
 	"tag-discussiontools-visual": "Visuell",
 	"tag-discussiontools-visual-description": "DiscussionTools var i modus for visuell redigering"
 }

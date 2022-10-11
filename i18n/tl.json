@@ -12,9 +12,18 @@
 	"discussiontools-desc": "Mga kagamitan upang mapabuti ang mga pahina ng usapan.",
 	"discussiontools-emptystate-button": "Magsimula ng isang usapan",
 	"discussiontools-replylink": "sumagot",
+	"discussiontools-replywidget-advanced": "Karagdagan",
 	"discussiontools-replywidget-cancel": "Ikansela",
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Sumagot kay {{BIDI: $1 }}",
-	"discussiontools-replywidget-reply": "Sumagot"
+	"discussiontools-replywidget-preview": "Pasilip",
+	"discussiontools-replywidget-reply": "Sumagot",
+	"discussiontools-replywidget-summary": "Buod",
+	"discussiontools-topicsubscription-button-subscribe": "mag-sub",
+	"discussiontools-topicsubscription-button-unsubscribe": "wag mag-sub",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Makakatanggap ka ng mga abiso tungkol sa mga bagong komento sa paksang ito.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Nakapag-subscribe ka na!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Hindi ka na makakatanggap ng mga abiso tungkol sa mga bagong komento sa paksang ito.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Hindi ka naka-subscribe."
 }

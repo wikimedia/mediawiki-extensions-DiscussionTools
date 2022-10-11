@@ -3,14 +3,19 @@
 		"authors": [
 			"Matma Rex",
 			"Renessaince",
-			"Nieszczarda2"
+			"Nieszczarda2",
+			"Vlad5250"
 		]
 	},
 	"discussiontools": "Інструмэнты абмеркаваньня",
 	"discussiontools-defaultsummary-reply": "Адказ",
 	"discussiontools-desc": "Інструмэнты для паляпшэньня старонак абмеркаваньняў.",
+	"discussiontools-emptystate-button": "Пачаць абмеркаваньне",
+	"discussiontools-notification-subscribed-new-comment-view": "Праглядзець камэнтар",
+	"discussiontools-postedit-confirmation-published": "Ваш камэнтар быў апублікаваны.",
 	"discussiontools-preference-description": "Уключае экспэрымэнтальныя функцыі старонкі абмеркаваньняў:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Адказ] на камэнтары старонкі абмеркаваньняў адным пстрыкам.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Даданьне новых тэмаў] у падрадковай форме.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Атрымліваць паведамленьні] пры зьяўленьні новых камэнтароў у разьдзелах, на якія вы падпісаныя.\n\nГэтыя функцыі можна падладзіць у вашых [[Special:Preferences#mw-prefsection-editing-discussion|наладах]].\n\nАбнаўленьні будуць зьмяшчацца на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates старонцы праекту абнаўленьняў старонак абмеркаваньняў].\n\nЗьвярніце ўвагу:\n* З часам будуць зьяўляцца новыя экспэрымэнтальныя функцыі.\n* Некаторыя з функцыяў могуць быць пакуль што недаступныя ў вашай вікі.",
 	"discussiontools-preference-label": "Інструмэнты абмеркаваньня",
+	"discussiontools-preference-newtopictool": "Уключыць хуткае дадаваньне тэмы",
 	"discussiontools-replylink": "адказаць",
 	"discussiontools-replywidget-cancel": "Скасаваць",
 	"discussiontools-replywidget-mode-source": "Крынічнік",
