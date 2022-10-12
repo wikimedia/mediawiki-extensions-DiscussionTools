@@ -85,21 +85,20 @@ require( '../cases/comments.json' ).forEach( function ( caseItem ) {
 	}
 
 	QUnit.test( testName, function ( assert ) {
-		var fixture = document.getElementById( 'qunit-fixture' );
-		var $dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data ),
 			title = mw.Title.newFromText( caseItem.title );
 
-		$( fixture ).empty().append( testUtils.getThreadContainer( $dom ).children() );
+		var container = testUtils.getThreadContainer( dom );
 		testUtils.overrideMwConfig( config );
 
-		var threadItemSet = new Parser( data ).parse( fixture, title );
+		var threadItemSet = new Parser( data ).parse( container, title );
 		var threads = threadItemSet.getThreads();
 
 		threads.forEach( function ( thread, i ) {
-			testUtils.serializeComments( thread, fixture );
+			testUtils.serializeComments( thread, container );
 
 			assert.deepEqual(
 				JSON.parse( JSON.stringify( thread ) ),

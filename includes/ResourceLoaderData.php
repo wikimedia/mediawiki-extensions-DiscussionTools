@@ -169,7 +169,17 @@ class ResourceLoaderData {
 						if ( str_ends_with( $val, '.json' ) ) {
 							$info['packageFiles'][] = substr( $val, strlen( '../' ) );
 						} elseif ( str_ends_with( $val, '.html' ) ) {
-							$info['templates'][] = $val;
+							$info['packageFiles'][] = [
+								'name' => $val,
+								'type' => 'data',
+								'callback' => static function () use ( $info, $val ) {
+									$localPath = $info['localBasePath'] . '/' . $val;
+									return file_get_contents( $localPath );
+								},
+								'versionCallback' => static function () use ( $val ) {
+									return new RL\FilePath( $val );
+								},
+							];
 						}
 					}
 				}

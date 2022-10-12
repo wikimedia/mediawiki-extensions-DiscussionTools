@@ -7,16 +7,16 @@ QUnit.test( '#linearWalk', function ( assert ) {
 
 	cases.forEach( function ( caseItem ) {
 		var
-			$dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
+			doc = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = require( caseItem.expected );
 
 		var actual = [];
-		utils.linearWalk( $dom[ 0 ].parentNode, function ( event, node ) {
+		utils.linearWalk( doc, function ( event, node ) {
 			actual.push( event + ' ' + node.nodeName.toLowerCase() + '(' + node.nodeType + ')' );
 		} );
 
 		var actualBackwards = [];
-		utils.linearWalkBackwards( $dom[ 0 ].parentNode, function ( event, node ) {
+		utils.linearWalkBackwards( doc, function ( event, node ) {
 			actualBackwards.push( event + ' ' + node.nodeName.toLowerCase() + '(' + node.nodeType + ')' );
 		} );
 
