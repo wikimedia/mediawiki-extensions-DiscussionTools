@@ -87,6 +87,9 @@ module.exports.serializeComments = function ( parent, root ) {
 			];
 		} );
 	}
+	if ( parent.timestamp ) {
+		parent.timestamp = parent.getTimestampString();
+	}
 
 	// Unimportant
 	delete parent.rootNode;
