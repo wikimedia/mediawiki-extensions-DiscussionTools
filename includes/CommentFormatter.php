@@ -333,20 +333,13 @@ class CommentFormatter {
 	 */
 	public static function removeInteractiveTools( string $text ) {
 		$text = strtr( $text, [
-			'<!--__DTREPLY__-->' => '',
-			'<!--__DTREPLYBRACKETOPEN__-->' => '',
-			'<!--__DTREPLYBRACKETCLOSE__-->' => '',
 			'<!--__DTREPLYBUTTONSCONTENT__-->' => '',
 			'<!--__DTELLIPSISBUTTON__-->' => '',
 			'<!--__DTEMPTYTALKPAGE__-->' => '',
 		] );
 
-		$text = preg_replace( '/<!--__DTSUBSCRIBE__(.*?)-->/', '', $text );
 		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
-		// (DESKTOP|MOBILE)? can be made unconditional once the un-suffixed buttons have cleared from the cache
-		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)?__(.*?)-->/', '', $text );
-		// To be removed once the old version has cleared from the cache
-		$text = preg_replace( '/<!--__DTREPLYBUTTONS__(.*?)-->/', '', $text );
+		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)__(.*?)-->/', '', $text );
 
 		return $text;
 	}
@@ -367,22 +360,13 @@ class CommentFormatter {
 		$doc = DOMCompat::newDocument( true );
 
 		$matches = [];
-		preg_match_all( '/<!--__DTSUBSCRIBE(LINK)?__(.*?)-->/', $text, $matches );
+		preg_match_all( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', $text, $matches );
 		$itemNames = array_map(
-			static function ( string $itemName, string $link ): string {
-				return $link ? htmlspecialchars_decode( $itemName ) : $itemName;
+			static function ( string $itemName ): string {
+				return htmlspecialchars_decode( $itemName );
 			},
-			$matches[2], $matches[1]
+			$matches[1]
 		);
-
-		// TODO: Remove (LINK)? from regex once parser cache has expired (a few weeks):
-		// preg_match_all( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', $text, $matches );
-		// $itemNames = array_map(
-		// 	static function ( string $itemName ): string {
-		// 		return htmlspecialchars_decode( $itemName );
-		// 	},
-		// 	$matches[1]
-		// );
 
 		$items = $subscriptionStore->getSubscriptionItemsForUser(
 			$user,
@@ -394,10 +378,9 @@ class CommentFormatter {
 		}
 
 		$text = preg_replace_callback(
-			'/<!--__DTSUBSCRIBE(LINK)?__(.*?)-->/',
+			'/<!--__DTSUBSCRIBELINK__(.*?)-->/',
 			static function ( $matches ) use ( $doc, $itemsByName, $lang ) {
-				// TODO: Remove (LINK)? from regex
-				$itemName = $matches[1] ? htmlspecialchars_decode( $matches[2] ) : $matches[2];
+				$itemName = htmlspecialchars_decode( $matches[1] );
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
 				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
 
@@ -445,14 +428,11 @@ class CommentFormatter {
 		);
 
 		$text = preg_replace_callback(
-			// (DESKTOP|MOBILE)? can be made unconditional once the un-suffixed buttons have cleared from the cache
-			'/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)?__(.*?)-->/',
+			'/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)__(.*?)-->/',
 			static function ( $matches ) use ( $doc, $itemsByName, $lang, $isMobile ) {
-				if ( $matches[1] ) {
-					$buttonIsMobile = $matches[1] === 'MOBILE';
-					if ( $buttonIsMobile !== $isMobile ) {
-						return '';
-					}
+				$buttonIsMobile = $matches[1] === 'MOBILE';
+				if ( $buttonIsMobile !== $isMobile ) {
+					return '';
 				}
 				$itemName = htmlspecialchars_decode( $matches[2] );
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
@@ -501,17 +481,10 @@ class CommentFormatter {
 		$replyLinkText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
 		$replyButtonText = wfMessage( 'discussiontools-replybutton' )->inLanguage( $lang )->escaped();
 
-		// Remove __DTREPLYBUTTONS__ once it has cleared from the cache
 		$text = preg_replace_callback(
-			'/<!--__DTREPLYBUTTONS__(.*?)__-->|<!--__DTREPLYBUTTONSCONTENT__-->/',
+			'/<!--__DTREPLYBUTTONSCONTENT__-->/',
 			static function ( $matches ) use ( $doc, $replyLinkText, $replyButtonText, $isMobile ) {
-				$itemJSON = $matches[1] ?? null;
-
 				$replyLinkButtons = $doc->createElement( 'span' );
-				if ( $itemJSON ) {
-					$replyLinkButtons->setAttribute( 'class', 'ext-discussiontools-init-replylink-buttons' );
-					$replyLinkButtons->setAttribute( 'data-mw-comment', $itemJSON );
-				}
 
 				// Reply
 				$replyLink = $doc->createElement( 'a' );
@@ -544,19 +517,10 @@ class CommentFormatter {
 				$replyLinkButtons->appendChild( $replyLink );
 				$replyLinkButtons->appendChild( $bracketClose );
 
-				return $itemJSON ?
-					DOMCompat::getOuterHTML( $replyLinkButtons ) :
-					DOMCompat::getInnerHTML( $replyLinkButtons );
+				return DOMCompat::getInnerHTML( $replyLinkButtons );
 			},
 			$text
 		);
-
-		// Old style replacements for content still in parser cache
-		$text = strtr( $text, [
-			 '<!--__DTREPLY__-->' => $replyLinkText,
-			 '<!--__DTREPLYBRACKETOPEN__-->' => '[',
-			 '<!--__DTREPLYBRACKETCLOSE__-->' => ']',
-		] );
 
 		return $text;
 	}
