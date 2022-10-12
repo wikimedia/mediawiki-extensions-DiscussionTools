@@ -30,7 +30,7 @@ module.exports.getThreadContainer = function ( $nodes ) {
 			.append( $nodes.filter( 'section' ) )
 			.append( $nodes.filter( 'base' ) );
 	} else {
-		return $nodes.find( 'div.mw-parser-output' );
+		return $nodes.find( 'div.mw-parser-output' ).addBack( 'div.mw-parser-output' );
 	}
 };
 
