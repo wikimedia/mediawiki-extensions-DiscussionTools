@@ -18,59 +18,6 @@ function ThreadItemSet() {
 OO.initClass( ThreadItemSet );
 
 /**
- * Created a ThreadItemSet from DOM nodes that have been annotated by the PHP CommentFormatter with
- * metadata about the thread structure.
- *
- * @param {HTMLElement[]} nodes
- * @param {HTMLElement} rootNode
- * @param {mw.dt.Parser} parser
- * @return {ThreadItemSet}
- */
-ThreadItemSet.static.newFromAnnotatedNodes = function ( nodes, rootNode, parser ) {
-	var result = new ThreadItemSet();
-
-	// The page can be served from the HTTP cache (Varnish), containing data-mw-comment generated
-	// by an older version of our PHP code. Code below must be able to handle that.
-	// See CommentFormatter::addDiscussionTools() in PHP.
-
-	var i, item;
-
-	var items = [];
-	var replyIds = [];
-	var itemsById = {};
-
-	// Create ThreadItem objects with basic data
-	for ( i = 0; i < nodes.length; i++ ) {
-		var hash = JSON.parse( nodes[ i ].getAttribute( 'data-mw-comment' ) );
-		item = ThreadItem.static.newFromJSON( hash, rootNode );
-		result.addThreadItem( item );
-
-		// Store info for second pass
-		items[ i ] = item;
-		replyIds[ i ] = hash.replies;
-		itemsById[ item.id ] = item;
-	}
-
-	// Now that we have all objects, we can set up replies/parent pointers
-	for ( i = 0; i < nodes.length; i++ ) {
-		item = items[ i ];
-
-		// eslint-disable-next-line no-loop-func
-		item.replies = replyIds[ i ].map( function ( id ) {
-			itemsById[ id ].parent = item;
-			return itemsById[ id ];
-		} );
-	}
-
-	// Calculate names (currently not stored in the metadata) - can't be done
-	// in the above loop because we have to wait until we have all the
-	// replies.
-	parser.computeIdsAndNames( result );
-
-	return result;
-};
-
-/**
  * Create a new ThreadItemSet from a JSON serialization
  *
  * @param {Array} threads Hash object
