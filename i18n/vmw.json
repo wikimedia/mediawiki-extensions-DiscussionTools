@@ -6,9 +6,12 @@
 		]
 	},
 	"discussiontools-replylink": "Waakhulela",
+	"discussiontools-replywidget-advanced": "Ohela nsina",
 	"discussiontools-replywidget-cancel": "Ohiiha",
 	"discussiontools-replywidget-mode-source": "Maphatthuwelo",
 	"discussiontools-replywidget-mode-visual": "Yoowooneya",
 	"discussiontools-replywidget-placeholder-reply": "Waakhulela wa {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Waakhulela"
+	"discussiontools-replywidget-preview": "Mwaanyihereryo",
+	"discussiontools-replywidget-reply": "Waakhulela",
+	"discussiontools-replywidget-summary": "Yoosuweliha ya etthu ela"
 }

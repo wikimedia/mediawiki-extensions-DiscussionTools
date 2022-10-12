@@ -4,6 +4,7 @@
 			"Amire80"
 		]
 	},
+	"discussiontools-autotopicsubpopup-body": "Ou pral resevwa yon notifikasyon lè yon moun poste yon nouvo kòmantè nan diskisyon sa a. Ou ka ajiste konfigirasyon notifikasyon ou nan preferans ou.",
 	"discussiontools-autotopicsubpopup-dismiss": "OK, mwen konprann li",
 	"discussiontools-autotopicsubpopup-preferences": "Modifye preferans",
 	"discussiontools-autotopicsubpopup-title": "Ou te abòne",
@@ -11,6 +12,8 @@
 	"discussiontools-desc": "Zouti yo pou amelyore paj diskisyon yo.",
 	"discussiontools-emptystate-button": "Kòmanse yon diskisyon",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Paj diskisyon]] se kote moun diskite sou fason pou fè kontni sou {{SITENAME}} pi bon. Ou ka itilize paj sa a pou kòmanse yon diskisyon ak lòt moun sou fason pou amelyore [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc-self": "Moun nan {{SITENAME}} ka sèvi ak [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|paj diskisyon]] sa a pou yo afiche yon mesaj piblik pou ou epi ou pral resevwa yon notifikasyon lè yo fè li.",
+	"discussiontools-emptystate-title": "Kòmanse yon diskisyon sou {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Byenveni nan paj diskisyon ou la",
 	"discussiontools-emptystate-title-self-anon": "Byenveni nan paj diskisyon sa a",
 	"discussiontools-emptystate-title-user": "Kòmanse yon diskisyon ak {{PAGENAME}}",
@@ -24,6 +27,10 @@
 	"discussiontools-postedit-confirmation-topicadded": "Sijè ou te ajoute.",
 	"discussiontools-preference-autotopicsub": "Abòne otomatikman nan sijè yo",
 	"discussiontools-preference-label": "Zouti diskisyon",
+	"discussiontools-preference-newtopictool": "Aktive ajoute sijè rapid",
+	"discussiontools-preference-newtopictool-help": "Sa a pral montre w yon fòm nan sen paj pou ajoute nouvo sijè.",
+	"discussiontools-preference-replytool": "Aktive repons rapid",
+	"discussiontools-preference-replytool-help": "Sa a pral montre w yon lyen pou reponn nan kòmantè paj diskisyon yo nan yon sèl klik.",
 	"discussiontools-replylink": "reponn",
 	"discussiontools-replywidget-abandon-keep": "Kontinye ekri",
 	"discussiontools-replywidget-abandontopic-discard": "Jete sijè",

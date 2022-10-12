@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"ऐक्टिवेटेड्"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "उत्तर",
+	"discussiontools-replylink": "उत्तर द",
+	"discussiontools-replywidget-advanced": "उन्नत",
+	"discussiontools-replywidget-cancel": "रद्द कर",
+	"discussiontools-replywidget-mode-source": "स्रोत",
+	"discussiontools-replywidget-mode-visual": "यथादृश्य",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} के उत्तर द",
+	"discussiontools-replywidget-preview": "झलक",
+	"discussiontools-replywidget-reply": "उत्तर द",
+	"discussiontools-replywidget-summary": "सारान्स",
+	"discussiontools-replywidget-watchthis": "एकरा अपन [[Special:Watchlist|ध्यानसूचीमे]] डाल",
+	"discussiontools-topicsubscription-button-subscribe": "सदस्सता ल",
+	"discussiontools-topicsubscription-button-unsubscribe": "सदस्सता समाप्त कर",
+	"discussiontools-topicsubscription-notify-subscribed-body": "अपनेके इबिसयमे नया टिप्पनीके बारेमे सूचना मिलतई।",
+	"discussiontools-topicsubscription-notify-subscribed-title": "अपने सदस्सता लेलेह!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "अब अपनेके इबिसयमे नया टिप्पणीके बारेमे सूचना न मिलतई।",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "अपने सदस्सता समाप्त करदेली।"
+}

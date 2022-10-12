@@ -9,7 +9,16 @@
 	"discussiontools-replywidget-advanced": "Avanzate",
 	"discussiontools-replywidget-cancel": "Scancella",
 	"discussiontools-replywidget-mode-source": "Origgene",
+	"discussiontools-replywidget-mode-visual": "Visuale",
 	"discussiontools-replywidget-placeholder-reply": "Rispunne a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Anteprimma",
-	"discussiontools-replywidget-reply": "Rispunne"
+	"discussiontools-replywidget-reply": "Rispunne",
+	"discussiontools-replywidget-summary": "Énnece",
+	"discussiontools-replywidget-watchthis": "Mette sta paggena int'a toja [[Special:Watchlist|watchlist]]",
+	"discussiontools-topicsubscription-button-subscribe": "iscrivete",
+	"discussiontools-topicsubscription-button-unsubscribe": "cancella l'iscriziona",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Te vanno a arrivà 'e nove de chisto argumento.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Te sì iscritto!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Nun re vanno a arrivà cchiù 'e nove de chisto argumento.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Nun sì cchiù iscritto!"
 }
