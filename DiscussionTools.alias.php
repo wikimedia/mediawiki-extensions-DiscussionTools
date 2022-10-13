@@ -39,4 +39,6 @@ $specialPageAliases['ko'] = [
 /** Polish (polski) */
 $specialPageAliases['pl'] = [
 	'TopicSubscriptions' => [ 'Subskrypcje_wątków', 'Subskrybowane_wątki' ],
+	'FindComment' => [ 'Znajdź_komentarz' ],
+	'GoToComment' => [ 'Przejdź_do_komentarza' ],
 ];
