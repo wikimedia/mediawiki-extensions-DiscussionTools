@@ -10,7 +10,8 @@
 			"Robfirstname",
 			"Sonic Speedy",
 			"Veracious",
-			"WillsonEP09"
+			"WillsonEP09",
+			"Rex"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Anda akan menerima pemberitahuan ketika seseorang mengirimkan komentar baru di diskusi ini. Anda bisa menyesuaikan pengaturan pemberitahuan Anda di preferensi.",
@@ -67,7 +68,7 @@
 	"discussiontools-postedit-confirmation-topicadded": "Topik Anda telah ditambahkan.",
 	"discussiontools-preference-autotopicsub": "Secara otomatis berlangganan ke topik",
 	"discussiontools-preference-autotopicsub-help": "Ketika Anda membuat diskusi baru atau komentar baru di diskusi yang sudah ada, Anda akan secara otomatis diberi tahu saat ada yang mengirim komentar baru di sana.",
-	"discussiontools-preference-description": "Aktifkan fitur halaman pembicaraan uji coba:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Balas] komentar halaman pembicaraan dengan sekali klik.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Tambah topik baru] dengan menggunakan formulir pada baris yang sama.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Terima pemberitahuan] ketika komentar baru ditambahkan ke bagian di mana Anda berlangganan.\n\nAnda dapat menyesuaikan fitur ini dalam [[Special:Preferences#mw-prefsection-editing-discussion|preferensi]].\n\nPerubahan terkini akan dikabari di [https://www.mediawiki.org/wiki/Talk_pages_project/Updates halaman pembicaraan pembaruan proyek].\n\nHarap dicatat:\n* Seiring berjalannya waktu, fitur uji coba baru akan ditambahkan.\n* Beberapa fitur di atas mungkin belum tersedia dalam wiki Anda.",
+	"discussiontools-preference-description": "Aktifkan fitur halaman pembicaraan uji coba:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Balas] komentar halaman pembicaraan dengan sekali klik.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Tambah topik baru] dengan menggunakan formulir pada baris yang sama.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Terima pemberitahuan] ketika komentar baru ditambahkan ke bagian di mana Anda berlangganan.\n\nAnda dapat menyesuaikan fitur ini dalam [[Special:Preferences#mw-prefsection-editing-discussion|preferensi]] Anda.\n\nPerubahan terkini akan ditampilkan di [https://www.mediawiki.org/wiki/Talk_pages_project/Updates halaman pembicaraan pembaruan proyek].\n\nHarap dicatat:\n* Seiring berjalannya waktu, fitur eksperimental baru akan ditambahkan.\n* Beberapa fitur di atas mungkin belum tersedia dalam wiki Anda.",
 	"discussiontools-preference-gadget-conflict": "Untuk mengaktifkan balasan cepat, Anda harus terlebih dahulu [[$1|menonaktifkan perkakas Convenient Discussions]] di preferensi Perkakas Anda.",
 	"discussiontools-preference-label": "Perkakas diskusi",
 	"discussiontools-preference-newtopictool": "Aktifkan penambahan topik dengan cepat",

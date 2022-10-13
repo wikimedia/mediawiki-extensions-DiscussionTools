@@ -4,7 +4,8 @@
 			"Amire80",
 			"Oby Ezeilo",
 			"Olugold",
-			"Timzy D'Great"
+			"Timzy D'Great",
+			"Nwonwu Uchechukwu P"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Ị ga-anata ozi mgbe mmadụ tinyere okwu ọhụụ n'ebe akpamnkata. Ị nwere ike idozi ebe ọkwa nnata ozi gi ebe mmasị gị.",
@@ -90,11 +91,14 @@
 	"discussiontools-replywidget-watchthis": "Gbakwunye ihu akwụkwọ a na [[Special:Watchlist|watchlist]] gị",
 	"discussiontools-target-comment-missing": "E nweghị ike ihụ okwu a. O nwere ike ọ bụrụ na-ehichapụla ya maọbụ bugharịa ya.",
 	"discussiontools-target-comments-missing": "Enweghị ike ihụ okwu ọhụụ. O nwere ike bụrụ na-ehichapụla ya maọbụ bugharịa ya.",
+	"discussiontools-topicheader-latestcomment": "Okwu kacha ọhụrụ: $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Wepụ aha gị",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Wepụ aha gi na nnataozi gbasara isiokwu a",
 	"discussiontools-topicsubscription-button-subscribe": "Tinye aha gị maka nnata ozi",
+	"discussiontools-topicsubscription-button-subscribe-label": "Debanye aha",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Tinye aha gị maka nnata ozi banyere okwu ọhụụ",
 	"discussiontools-topicsubscription-button-unsubscribe": "wepụ aha gị",
+	"discussiontools-topicsubscription-button-unsubscribe-label": " Depụ aha",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Wepụ aha iji kwụsị nnata ozi",
 	"discussiontools-topicsubscription-error-not-found-body": "Ahụghị aha nnata ozi egosiri na URL",
 	"discussiontools-topicsubscription-error-not-found-title": "Ahụghị aha nnata ozi",

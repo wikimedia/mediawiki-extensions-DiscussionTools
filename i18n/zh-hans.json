@@ -63,6 +63,7 @@
 	"discussiontools-error-noswitchtove-table": "表格语法",
 	"discussiontools-error-noswitchtove-template": "模板语法",
 	"discussiontools-error-noswitchtove-title": "可视化模式已停用",
+	"discussiontools-findcomment-results-id": "带有指定 ID 的留言出现在以下{{PLURAL:$1|页面}}：",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools 错误请求 ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 时间使用",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|秒}}",

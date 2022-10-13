@@ -9,7 +9,8 @@
 			"Gwanki",
 			"Harunaningi",
 			"Itzedubaba",
-			"Umar-askirason"
+			"Umar-askirason",
+			"Amire80"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Za ku sami sanarwa a yadda wani yayi sabon sharhi a cikin wannan tattaunawar.  Kuna iya daidaita saitin sanarwarku a cikin zaɓin zaɓi.",
@@ -88,6 +89,6 @@
 	"discussiontools-topicsubscription-pager-topic": "Maudu'i",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Rashin samun dama",
 	"discussiontools-topicsubscription-special-title": "Maudu'an da aka zaba",
-	"echo-category-title-dt-subscription": "safin magana{{PLURAL:$1|}}",
+	"echo-category-title-dt-subscription": "Shafin magana{{PLURAL:$1|}}",
 	"echo-pref-tooltip-dt-subscription": "ku sanar dani idan wani ya wallafa sabon tsokaci akan maudu'in dana zaba"
 }
