@@ -499,40 +499,5 @@
 				"replies": []
 			}
 		]
-	},
-	{
-		"placeholderHeading": false,
-		"type": "heading",
-		"range": [
-			"29/0/1",
-			"29/0/2"
-		],
-		"headingLevel": 2,
-		"level": 0,
-		"name": "h-Matma_Rex-2020-11-02T18:34:00.000Z",
-		"id": "h-Transcluded-2020-11-02T18:34:00.000Z",
-		"warnings": [],
-		"replies": [
-			{
-				"type": "comment",
-				"timestamp": "2020-11-02T18:34:00.000Z",
-				"author": "Matma Rex",
-				"range": [
-					"31/0",
-					"31/4/30"
-				],
-				"signatureRanges": [
-					[
-						"31/1",
-						"31/4/30"
-					]
-				],
-				"level": 1,
-				"name": "c-Matma_Rex-2020-11-02T18:34:00.000Z",
-				"id": "c-Matma_Rex-2020-11-02T18:34:00.000Z-Transcluded",
-				"warnings": [],
-				"replies": []
-			}
-		]
 	}
 ]

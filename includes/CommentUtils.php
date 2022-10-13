@@ -311,26 +311,13 @@ class CommentUtils {
 
 		if ( $headline->hasAttribute( 'data-mw-comment-start' ) ) {
 			$headline = $headline->parentNode;
+			Assert::precondition( $headline !== null, 'data-mw-comment-start was attached to a heading' );
 		}
 
 		if ( !$headline->getAttribute( 'id' ) ) {
 			// PHP HTML: Find the child with .mw-headline
-			$headline = $headline->firstChild;
-			while (
-				$headline && !(
-					$headline instanceof Element && DOMCompat::getClassList( $headline )->contains( 'mw-headline' )
-				)
-			) {
-				$headline = $headline->nextSibling;
-			}
-			if ( $headline ) {
-				if (
-					( $firstChild = $headline->firstChild ) instanceof Element &&
-					DOMCompat::getClassList( $firstChild )->contains( 'mw-headline-number' )
-				) {
-					$offset = 1;
-				}
-			} else {
+			$headline = DOMCompat::querySelector( $headline, '.mw-headline' );
+			if ( !$headline ) {
 				$headline = $heading;
 			}
 		}
