@@ -149,4 +149,33 @@ class ResourceLoaderData {
 		$class = $info['class'] ?? RL\FileModule::class;
 		return new $class( $info );
 	}
+
+	/**
+	 * Generate the test module that includes all of the test data, based on the JSON files defining
+	 * test cases.
+	 *
+	 * @param array $info
+	 * @return RL\Module
+	 */
+	public static function makeTestModule( array $info ): RL\Module {
+		$keys = [ 'config', 'data', 'dom', 'expected' ];
+		foreach ( $info['testData'] as $path ) {
+			$info['packageFiles'][] = $path;
+			$localPath = $info['localBasePath'] . '/' . $path;
+			$data = json_decode( file_get_contents( $localPath ), true );
+			foreach ( $data as $case ) {
+				foreach ( $case as $key => $val ) {
+					if ( in_array( $key, $keys ) && is_string( $val ) ) {
+						if ( str_ends_with( $val, '.json' ) ) {
+							$info['packageFiles'][] = substr( $val, strlen( '../' ) );
+						} elseif ( str_ends_with( $val, '.html' ) ) {
+							$info['templates'][] = $val;
+						}
+					}
+				}
+			}
+		}
+		$class = $info['class'] ?? RL\FileModule::class;
+		return new $class( $info );
+	}
 }
