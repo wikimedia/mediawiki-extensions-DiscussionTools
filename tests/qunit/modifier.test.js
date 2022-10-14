@@ -21,23 +21,19 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		return;
 	}
 	QUnit.test( testName, function ( assert ) {
-		var fixture = document.getElementById( 'qunit-fixture' );
-
-		var dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
-			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
+		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
+			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data ),
 			title = mw.Title.newFromText( caseItem.title );
 
 		testUtils.overrideMwConfig( config );
 
-		$( fixture ).empty().append( testUtils.getThreadContainer( expected ).children() );
-		var expectedHtml = fixture.innerHTML;
+		var expectedHtml = testUtils.getThreadContainer( expected ).innerHTML;
+		var reverseExpectedHtml = testUtils.getThreadContainer( dom ).innerHTML;
 
-		$( fixture ).empty().append( testUtils.getThreadContainer( dom ).children() );
-		var reverseExpectedHtml = fixture.innerHTML;
-
-		var threadItemSet = new Parser( data ).parse( fixture, title );
+		var container = testUtils.getThreadContainer( dom );
+		var threadItemSet = new Parser( data ).parse( container, title );
 		var comments = threadItemSet.getCommentItems();
 
 		// Add a reply to every comment. Note that this inserts *all* of the replies, unlike the real
@@ -51,9 +47,9 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		} );
 
 		// Uncomment this to get updated content for the "modified HTML" files, for copy/paste:
-		// console.log( fixture.innerHTML );
+		// console.log( container.innerHTML );
 
-		var actualHtml = fixture.innerHTML;
+		var actualHtml = container.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,
@@ -66,7 +62,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 			modifier.removeAddedListItem( node );
 		} );
 
-		var reverseActualHtml = fixture.innerHTML;
+		var reverseActualHtml = container.innerHTML;
 		assert.strictEqual(
 			reverseActualHtml,
 			reverseExpectedHtml,
@@ -76,24 +72,22 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 } );
 
 QUnit.test( '#addReplyLink', function ( assert ) {
-	var cases = require( '../cases/reply.json' ),
-		fixture = document.getElementById( 'qunit-fixture' );
+	var cases = require( '../cases/reply.json' );
 
 	cases.forEach( function ( caseItem ) {
-		var dom = mw.template.get( 'test.DiscussionTools', caseItem.dom ).render(),
-			expected = mw.template.get( 'test.DiscussionTools', caseItem.expected ).render(),
+		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
+			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data ),
 			title = mw.Title.newFromText( caseItem.title );
 
 		testUtils.overrideMwConfig( config );
 
-		$( fixture ).empty().append( testUtils.getThreadContainer( expected ).children() );
-		var expectedHtml = fixture.innerHTML;
+		var expectedHtml = testUtils.getThreadContainer( expected ).innerHTML;
 
-		$( fixture ).empty().append( testUtils.getThreadContainer( dom ).children() );
+		var container = testUtils.getThreadContainer( dom );
 
-		var threadItemSet = new Parser( data ).parse( fixture, title );
+		var threadItemSet = new Parser( data ).parse( container, title );
 		var comments = threadItemSet.getCommentItems();
 
 		// Add a reply link to every comment.
@@ -105,9 +99,9 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		} );
 
 		// Uncomment this to get updated content for the "reply HTML" files, for copy/paste:
-		// console.log( fixture.innerHTML );
+		// console.log( container.innerHTML );
 
-		var actualHtml = fixture.innerHTML;
+		var actualHtml = container.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,

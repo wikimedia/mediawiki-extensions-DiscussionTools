@@ -1,5 +1,9 @@
 [
-	"enter #document-fragment(11)",
+	"enter #document(9)",
+	"enter html(1)",
+	"enter head(1)",
+	"leave head(1)",
+	"enter body(1)",
 	"enter p(1)",
 	"enter b(1)",
 	"enter a(1)",
@@ -146,5 +150,9 @@
 	"enter #text(3)",
 	"leave #text(3)",
 	"leave p(1)",
-	"leave #document-fragment(11)"
+	"enter #text(3)",
+	"leave #text(3)",
+	"leave body(1)",
+	"leave html(1)",
+	"leave #document(9)"
 ]

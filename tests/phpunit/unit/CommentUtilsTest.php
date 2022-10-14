@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\DiscussionTools\Tests\Unit;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\Tests\TestUtils;
 use MediaWikiUnitTestCase;
-use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @group DiscussionTools
@@ -20,18 +19,16 @@ class CommentUtilsTest extends MediaWikiUnitTestCase {
 	 */
 	public function testLinearWalk( string $name, string $htmlPath, string $expectedPath ) {
 		$html = static::getHtml( $htmlPath );
-		// Slightly awkward to get the same output as in the JS version
-		$fragment = ( DOMCompat::newDocument( true ) )->createDocumentFragment();
-		$fragment->appendXML( trim( $html ) );
+		$doc = static::createDocument( $html );
 		$expected = static::getJson( $expectedPath );
 
 		$actual = [];
-		CommentUtils::linearWalk( $fragment, static function ( $event, $node ) use ( &$actual ) {
+		CommentUtils::linearWalk( $doc, static function ( $event, $node ) use ( &$actual ) {
 			$actual[] = "$event {$node->nodeName}({$node->nodeType})";
 		} );
 
 		$actualBackwards = [];
-		CommentUtils::linearWalkBackwards( $fragment, static function ( $event, $node ) use ( &$actualBackwards ) {
+		CommentUtils::linearWalkBackwards( $doc, static function ( $event, $node ) use ( &$actualBackwards ) {
 			$actualBackwards[] = "$event {$node->nodeName}({$node->nodeType})";
 		} );
 
