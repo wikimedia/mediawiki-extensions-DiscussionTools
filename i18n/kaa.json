@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajiniyaz Nurniyazov",
 			"Inabat Allanova",
 			"Nurlan"
 		]
 	},
-	"discussiontools-emptystate-desc-self": "{{SITENAME}} saytındaǵı adamlar siz ushın bárshege kórinetin xabarlamalar usı [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|talqılaw betinde]] jaza aladı hámde sizge eskertpe jiberedi.",
+	"discussiontools-emptystate-desc-self": "{{SITENAME}} saytındaǵı adamlar siz ushın bárshege kórinetuǵın xabarlardı usı [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|talqılaw betinde]] jaza aladı hámde sizge eskertpe jiberedi.",
 	"discussiontools-emptystate-title-self": "Talqılaw betińizge xosh keldińiz",
 	"discussiontools-replylink": "juwap beriw",
 	"discussiontools-replywidget-cancel": "Biykar etiw",
