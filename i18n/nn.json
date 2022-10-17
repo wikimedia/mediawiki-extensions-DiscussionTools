@@ -23,8 +23,13 @@
 	"discussiontools-error-comment-is-transcluded": "«{{int:discussiontools-replylink}}»-lenkja kan ikkje brukast på denne kommentaren. For å svara på kommentaren lyt du gå inn i endringsmodus for heile sida ved å trykkja på «$1».",
 	"discussiontools-error-comment-is-transcluded-title": "Lenka «{{int:discussiontools-replylink}}» kan ikkje brukast til å svara på denne kommentaren fordi ho er lasta inn frå ei anna side. Gå til [[$1]] for å svara.",
 	"discussiontools-error-lint": "Det er ikkje mogleg å svara på kommentarar på denne sida på grunn av ein feil i wikiteksten. Du kan læra om denne feilen ved å [$1 lesa dokumentasjonen], eller be om hjelp ved å [$2 skriva her] eller fiksa feilen ved å [$3 opna vanleg redigeringsmodus].",
+	"tag-discussiontools-description": "Redigering gjort med DiscussionTools",
 	"tag-discussiontools-edit-description": "Brukaren redigerte ein eksisterande kommentar med DiscussionTools",
+	"tag-discussiontools-newtopic-description": "Brukaren la til eit nytt emne til sida med DiscussionTools",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
+	"tag-discussiontools-reply-description": "Brukaren svarte på ein kommentar med DiscussionTools",
 	"tag-discussiontools-source": "Kjelde",
+	"tag-discussiontools-source-description": "DiscussionTools var i kjeldemodus",
 	"tag-discussiontools-visual": "Visuell",
 	"tag-discussiontools-visual-description": "DiscussionTools var i modus for visuell redigering"
 }
