@@ -211,7 +211,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 
 	this.viewportScrollContainer = OO.ui.Element.static.getClosestScrollableContainer( document.body );
 	this.scrollBackTopButton = new OO.ui.ButtonWidget( {
-		classes: [ 'ext-discussiontools-ui-replyWidget-scrollback-top' ],
+		classes: [ 'ext-discussiontools-ui-replyWidget-scrollback-top mw-sticky-header-element' ],
 		icon: 'collapse',
 		label: mw.msg(
 			this.isNewTopic ?
