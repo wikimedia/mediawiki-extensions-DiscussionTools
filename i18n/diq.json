@@ -17,6 +17,8 @@
 	"discussiontools-replywidget-summary": "Xulasa",
 	"discussiontools-topicsubscription-button-subscribe": "abone be",
 	"discussiontools-topicsubscription-button-unsubscribe": "aboneyiye ra veciye",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Nê mewzu de seba mışewreyanê neweyan ra xebere gênê.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Tı abone biya!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Nê mewzu de seba mışewreyanê neweyan ra endi xebere nêgênê.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Tı aboneyiya xo ra texeliya."
 }

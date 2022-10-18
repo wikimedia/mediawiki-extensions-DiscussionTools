@@ -5,7 +5,8 @@
 			"Joshateji",
 			"Misteld",
 			"Sagbosam",
-			"Samatics"
+			"Samatics",
+			"Atej2*"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Na gblọndo",
@@ -67,9 +68,9 @@
 	"discussiontools-replywidget-summary": "Bladopọ",
 	"discussiontools-replywidget-terms-click": "Eyin a zin \"$1\", a ko yigbe na nudọnamẹ lẹ nado zan wiki ehe.",
 	"discussiontools-replywidget-transcluded": "Gblọndo towe na yin sisẹwhè to [[$1]]",
-	"discussiontools-topicsubscription-button-subscribe": "tindo mahẹ",
+	"discussiontools-topicsubscription-button-subscribe": "nado nọ mọ ẹn yí",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Yigbe nado nọ yi aidonugo lẹ gando linlẹn yọyọ lẹ go.",
-	"discussiontools-topicsubscription-button-unsubscribe": "Gbẹ",
+	"discussiontools-topicsubscription-button-unsubscribe": "ma nado nọ mọ ẹn yí",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Gbẹ nado nọ yi aidonugo lẹ.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "A ma yin mimato",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "A jlo na gbẹ gbeyiyi sọn weda ehe mẹ wẹ ya?",
