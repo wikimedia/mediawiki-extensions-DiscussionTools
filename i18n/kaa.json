@@ -6,14 +6,28 @@
 			"Nurlan"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Juwap qaytarıw",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}} saytındaǵı adamlar siz ushın bárshege kórinetuǵın xabarlardı usı [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|talqılaw betinde]] jaza aladı hámde sizge eskertpe jiberedi.",
 	"discussiontools-emptystate-title-self": "Talqılaw betińizge xosh keldińiz",
 	"discussiontools-replylink": "juwap beriw",
+	"discussiontools-replywidget-advanced": "Keńeytilgen",
 	"discussiontools-replywidget-cancel": "Biykar etiw",
 	"discussiontools-replywidget-mode-source": "Derek",
 	"discussiontools-replywidget-mode-visual": "Vizual",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ǵa juwap beriw",
+	"discussiontools-replywidget-preview": "Kórip shıǵıw",
 	"discussiontools-replywidget-reply": "Juwap beriw",
+	"discussiontools-replywidget-summary": "Juwmaq",
+	"discussiontools-replywidget-watchthis": "Bul betti [[Special:Watchlist|baqlaw dizimi]]ńizge qosıń",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|adam|adamlar}} dodalamaqta",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|pikir|pikirler}}",
+	"discussiontools-topicheader-latestcomment": "Eń sońǵı pikir: $1",
+	"discussiontools-topicsubscription-button-subscribe": "jazılıw",
+	"discussiontools-topicsubscription-button-subscribe-label": "Jazılıw",
+	"discussiontools-topicsubscription-button-unsubscribe": "jazılıwdı biykarlaw",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Jazılıwdı biykarlaw",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Siz jazıldıńız!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Siz jazılıwdı biykar qıldıńız!",
 	"discussiontools-topicsubscription-pager-created": "Birinshi jazılıw",
 	"discussiontools-topicsubscription-pager-notified": "Aqırǵı bildiriw xatı"
 }

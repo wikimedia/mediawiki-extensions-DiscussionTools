@@ -90,6 +90,7 @@
 	"discussiontools-replywidget-terms-click": "Кликом на „$1” прихватате услове коришћења овог пројекта.",
 	"discussiontools-replywidget-transcluded": "Коментар ће бити сачуван на страници [[$1]].",
 	"discussiontools-replywidget-watchthis": "[[Special:Watchlist|Надгледај ову страницу]]",
+	"discussiontools-signature-prefix": "&#32;—&#32;",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|уредник|уредника}} у расправи",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|коментар|коментара}}",
 	"discussiontools-topicheader-latestcomment": "Последњи коментар: $1",
