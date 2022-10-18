@@ -56,26 +56,16 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 require( '../cases/comments.json' ).forEach( function ( caseItem ) {
 
 	var testName = '#getThreads (' + caseItem.name + ')';
-
-	// Some parser tests are currently broken in JS
-	var skipTests = [
-		'Signature which is just a selflink'
-	];
-	if ( skipTests.indexOf( caseItem.name ) !== -1 ) {
-		QUnit.skip( testName );
-		return;
-	}
-
 	QUnit.test( testName, function ( assert ) {
 		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
-			data = require( caseItem.data ),
-			title = mw.Title.newFromText( caseItem.title );
+			data = require( caseItem.data );
 
-		var container = testUtils.getThreadContainer( dom );
 		testUtils.overrideMwConfig( config );
 
+		var container = testUtils.getThreadContainer( dom );
+		var title = mw.Title.newFromText( caseItem.title );
 		var threadItemSet = new Parser( data ).parse( container, title );
 		var threads = threadItemSet.getThreads();
 

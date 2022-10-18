@@ -24,8 +24,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),
 			config = require( caseItem.config ),
-			data = require( caseItem.data ),
-			title = mw.Title.newFromText( caseItem.title );
+			data = require( caseItem.data );
 
 		testUtils.overrideMwConfig( config );
 
@@ -33,6 +32,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		var reverseExpectedHtml = testUtils.getThreadContainer( dom ).innerHTML;
 
 		var container = testUtils.getThreadContainer( dom );
+		var title = mw.Title.newFromText( caseItem.title );
 		var threadItemSet = new Parser( data ).parse( container, title );
 		var comments = threadItemSet.getCommentItems();
 
@@ -78,15 +78,14 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),
 			config = require( caseItem.config ),
-			data = require( caseItem.data ),
-			title = mw.Title.newFromText( caseItem.title );
+			data = require( caseItem.data );
 
 		testUtils.overrideMwConfig( config );
 
 		var expectedHtml = testUtils.getThreadContainer( expected ).innerHTML;
 
 		var container = testUtils.getThreadContainer( dom );
-
+		var title = mw.Title.newFromText( caseItem.title );
 		var threadItemSet = new Parser( data ).parse( container, title );
 		var comments = threadItemSet.getCommentItems();
 
