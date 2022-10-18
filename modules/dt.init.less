@@ -359,6 +359,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Main feature (topic containers)
+.skin-minerva .ext-discussiontools-init-section {
+	// Need to fix some styles on mobile even when the feature is not enabled
+	display: flex;
+	align-items: center;
+
+	> h2 {
+		flex-grow: 1;
+	}
+
+	// stylelint-disable-next-line selector-class-pattern
+	.client-js .skin-minerva--talk-simplified&.section-heading > h2 {
+		font: inherit;
+		margin: 0;
+		padding: 0;
+	}
+}
+
 .ext-discussiontools-visualenhancements-enabled {
 	.ext-discussiontools-init-section {
 		margin: 36px 0 12px 0;
@@ -372,6 +389,15 @@ h1, h2, h3, h4, h5, h6 {
 		&:first-child {
 			border-top: 0;
 			margin-top: 0;
+		}
+
+		> h2 {
+			margin: 0;
+			padding: 0;
+			font-weight: bold;
+			// stylelint-disable-next-line declaration-no-important
+			font-family: sans-serif !important;
+			border: 0;
 		}
 
 		// Hide old subscribe link
@@ -445,10 +471,16 @@ h1, h2, h3, h4, h5, h6 {
 		-webkit-tap-highlight-color: transparent;
 		border-top: 1px solid #eaecf0;
 
+		> h2,
 		> .mw-headline {
 			width: auto;
 			flex-grow: 1;
+			// Needed to display multi-line headings correctly (because of flex-wrap on the parent, they
+			// would be put on a line of their own otherwise)
 			flex-basis: 0;
+		}
+
+		.mw-headline {
 			/* T311612 */
 			font-size: 0.75em;
 		}
