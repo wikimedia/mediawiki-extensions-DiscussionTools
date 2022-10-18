@@ -488,7 +488,9 @@ class HookUtils {
 			// Adding a new topic with preloaded text is not supported yet (T269310)
 			!(
 				$req->getCheck( 'editintro' ) || $req->getCheck( 'preload' ) ||
-				$req->getCheck( 'preloadparams' ) || $req->getCheck( 'preloadtitle' )
+				$req->getCheck( 'preloadparams' ) || $req->getCheck( 'preloadtitle' ) ||
+				// Switching or previewing from an external tool (T316333)
+				$req->getCheck( 'wpTextbox1' )
 			) &&
 			// User has new topic tool enabled (and not using &dtenable=0)
 			static::isFeatureEnabledForOutput( $out, static::NEWTOPICTOOL )
