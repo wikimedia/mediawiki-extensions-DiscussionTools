@@ -311,6 +311,10 @@ class CommentFormatter {
 		// Enhance other <h2>'s which aren't part of a thread
 		$headings = DOMCompat::querySelectorAll( $container, 'h2' );
 		foreach ( $headings as $headingElement ) {
+			$wrapper = $headingElement->parentNode;
+			if ( $wrapper instanceof Element && DOMCompat::getClassList( $wrapper )->contains( 'toctitle' ) ) {
+				continue;
+			}
 			static::addTopicContainer( $headingElement );
 		}
 
