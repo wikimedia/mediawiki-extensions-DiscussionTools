@@ -118,6 +118,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget ) {
 			.html( typeof noticeItem === 'string' ? noticeItem : noticeItem.message );
 		this.$notices.append( $noticeElement );
 	}
+	mw.hook( 'wikipage.content' ).fire( this.$notices );
 
 	var title = this.replyWidget.storage.get( this.replyWidget.storagePrefix + '/title' );
 	if ( title && !this.sectionTitle.getValue() ) {
