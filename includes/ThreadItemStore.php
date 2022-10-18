@@ -478,36 +478,6 @@ class ThreadItemStore {
 				// (in case of backfilling using the maintenance script, or in case of revisions being
 				// imported), so we need all these funky queries to see if we need to update oldest/newest.
 
-				// This should be a single upsert query (INSERT ... ON DUPLICATE KEY UPDATE), however it
-				// doesn't work in practice:
-				//
-				// - Attempt 1:
-				//   https://gerrit.wikimedia.org/r/c/mediawiki/extensions/DiscussionTools/+/771974/14/includes/ThreadItemStore.php#451
-				//
-				//   This is the same logic as below in SQL: only doing a single comparison of the timestamp
-				//   of the current revision to the existing data in discussiontools_item_pages.
-				//   It worked great on my machine, `mysql --version`:
-				//     mysql  Ver 8.0.29-0ubuntu0.20.04.3 for Linux on x86_64 ((Ubuntu))
-				//   but it failed in Wikimedia CI, `mysql --version`:
-				//     mysql  Ver 15.1 Distrib 10.3.34-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
-				//   …with the error:
-				//     "Error 1054: Unknown column 'itp_oldest_revision_id' in 'where clause'".
-				//   Apparently it doesn't like dependent subqueries in the UPDATE part of an upsert.
-				//   I'm not sure if it's a bug in MariaDB or if you're not supposed to do that.
-				//
-				// - Attempt 2:
-				//   https://gerrit.wikimedia.org/r/c/mediawiki/extensions/DiscussionTools/+/771974/15/includes/ThreadItemStore.php#451
-				//
-				//   This avoids the dependent subquery: instead of comparing to the existing data in
-				//   discussiontools_item_pages, it just takes the IDs with min/max timestamp from
-				//   discussiontools_item_revisions/revision. This should be a simple lookup from an index,
-				//   but apparently it doesn't work that way and is significantly slower (the maintenance
-				//   script went from 13 minutes to 18 minutes when processing a few thousands of revisions
-				//   on my local testing wiki).
-				//
-				// In the end, the solution below using multiple queries is just as fast as the original,
-				// and only a little more verbose.
-
 				$itemPagesRow = $dbw->newSelectQueryBuilder()
 					->from( 'discussiontools_item_pages' )
 					->join( 'revision', 'revision_oldest', [ 'itp_oldest_revision_id = revision_oldest.rev_id' ] )
