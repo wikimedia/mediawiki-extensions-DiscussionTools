@@ -40,7 +40,7 @@
 		"itr_headinglevel": null
 	},
 	{
-		"itr_id": "7",
+		"itr_id": "3",
 		"itr_itemid_id": "1",
 		"itr_revision_id": "4",
 		"itr_items_id": "1",
@@ -50,31 +50,31 @@
 		"itr_headinglevel": "2"
 	},
 	{
-		"itr_id": "8",
+		"itr_id": "4",
 		"itr_itemid_id": "2",
 		"itr_revision_id": "4",
 		"itr_items_id": "2",
-		"itr_parent_id": "7",
+		"itr_parent_id": "3",
 		"itr_transcludedfrom": null,
 		"itr_level": "1",
 		"itr_headinglevel": null
 	},
 	{
-		"itr_id": "9",
+		"itr_id": "7",
 		"itr_itemid_id": "5",
 		"itr_revision_id": "4",
 		"itr_items_id": "3",
-		"itr_parent_id": "7",
+		"itr_parent_id": "3",
 		"itr_transcludedfrom": null,
 		"itr_level": "0",
 		"itr_headinglevel": "3"
 	},
 	{
-		"itr_id": "10",
+		"itr_id": "8",
 		"itr_itemid_id": "4",
 		"itr_revision_id": "4",
 		"itr_items_id": "4",
-		"itr_parent_id": "9",
+		"itr_parent_id": "7",
 		"itr_transcludedfrom": null,
 		"itr_level": "1",
 		"itr_headinglevel": null
