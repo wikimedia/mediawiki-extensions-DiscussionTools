@@ -5,7 +5,10 @@
 			"Chadyka",
 			"Kareyac",
 			"ZlyiLev",
-			"No Sleep till Krupki"
+			"No Sleep till Krupki",
+			"Plaga med",
+			"Tomato Cream",
+			"Tīgelika"
 		]
 	},
 	"discussiontools": "Інструменты абмеркаванняў",
@@ -57,7 +60,7 @@
 	"discussiontools-preference-newtopictool": "Уключыць хуткае даданне тэмы",
 	"discussiontools-preference-newtopictool-help": "Гэта функцыя будзе паказваць вам падрадковую форму для дадання новых тэм.",
 	"discussiontools-preference-replytool": "Уключыць хуткі адказ",
-	"discussiontools-preference-replytool-help": "Гэта функцыя будзе паказваць спасылку для адказу на каментарыі на старонцы абмеркаванняў у адзін пстрык.",
+	"discussiontools-preference-replytool-help": "Гэта функцыя будзе паказваць спасылку для адказу на каментарыі на старонцы размоў адным націсканнем.",
 	"discussiontools-preference-sourcemodetoolbar": "Уключыць інструменты праўкі ў рэжыме зыходнага кода",
 	"discussiontools-preference-sourcemodetoolbar-help": "Гэта дадасць панэль інструментаў у зыходны рэжым функцый хуткага адказу і хуткага дадавання тэмы, якая ўключае скароты для згадвання ўдзельнікаў і дадавання спасылак.",
 	"discussiontools-preference-summary": "Вы можаце даведацца больш аб гэтых функцыях, [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary прачытаўшы апісання функцый].",
@@ -83,7 +86,7 @@
 	"discussiontools-replywidget-newtopic": "Дадаць тэму",
 	"discussiontools-replywidget-placeholder-newtopic": "Апісанне",
 	"discussiontools-replywidget-placeholder-reply": "Адказаць {{BIDI:$1}}",
-	"discussiontools-replywidget-preferences": "Настройкі",
+	"discussiontools-replywidget-preferences": "Параметры",
 	"discussiontools-replywidget-preview": "Папярэдні прагляд",
 	"discussiontools-replywidget-reply": "Адказаць",
 	"discussiontools-replywidget-signature-body": "$1 было пераўтворана ў ваш подпіс. Каб адмяніць гэта, націсніце $2. Звярніце ўвагу, што вам не трэба падпісваць каментарыі пры выкарыстанні гэтага інструмента. Ваш подпіс будзе дадавацца аўтаматычна.",
