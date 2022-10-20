@@ -154,6 +154,14 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "Reply inserted inside <section> elements on mobile",
+		"title": "Talk:T319148",
+		"dom": "cases/wrappers-mobile-section/wrappers-mobile-section.html",
+		"expected": "cases/wrappers-mobile-section/wrappers-mobile-section-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Many comments consisting of a block template and a paragraph",
 		"title": "Wikipedia:Vandalismi in corso",
 		"dom": "cases/transclusions4/transclusions4.html",
