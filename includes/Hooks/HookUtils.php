@@ -99,11 +99,35 @@ class HookUtils {
 		// Use ParsoidOutputAccess instead, which is discouraged for production use for reasons no one
 		// was able to adequately explain, but it is the only way. WMF private wikis get very few edits
 		// anyway, so this shouldn't be a big deal. (T315689)
-		$isPrivateWiki = !isset( $mainConfig->get( 'VirtualRestConfig' )['modules']['restbase'] );
+		$tryRESTBase = isset( $mainConfig->get( 'VirtualRestConfig' )['modules']['restbase'] );
+		$html = null;
 
 		// It's 2022 and we still can't use Parsoid in production. Work around this. (If it's no longer
 		// 2022 and this comment is still here, time to quit technology and find a job as a farmer.)
-		if ( $isPrivateWiki ) {
+		if ( $tryRESTBase ) {
+			$parsoidClientFactory = $services->getService( VisualEditorParsoidClientFactory::SERVICE_NAME );
+			/** @var ParsoidClient $parsoidClient */
+			$parsoidClient = $parsoidClientFactory->createParsoidClient( false );
+
+			// Get HTML for the revision
+			$response = $parsoidClient->getPageHtml( $revRecord, null );
+
+			if ( !empty( $response['error'] ) ) {
+				$msg = $response['error'];
+				if ( $msg[0] === 'apierror-visualeditor-docserver-http' && $msg[1] === 404 ) {
+					// Probably just RESTBase having outdated info. Try again without it. (T315688)
+				} else {
+					// @phan-suppress-next-line PhanParamTooFewUnpack We already checked that it's !empty()
+					$message = wfMessage( ...$msg );
+					throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
+				}
+			} else {
+				$html = $response['body'];
+			}
+		}
+
+		if ( $html === null ) {
+			// Private wiki, or RESTBase having outdated info
 			$parsoidOutputAccess = $services->getParsoidOutputAccess();
 
 			$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
@@ -124,27 +148,6 @@ class HookUtils {
 
 			$parserOutput = $status->getValue();
 			$html = $parserOutput->getText();
-
-		} else {
-			$parsoidClientFactory = $services->getService( VisualEditorParsoidClientFactory::SERVICE_NAME );
-			/** @var ParsoidClient $parsoidClient */
-			$parsoidClient = $parsoidClientFactory->createParsoidClient( false );
-
-			// Get HTML for the revision
-			$response = $parsoidClient->getPageHtml( $revRecord, null );
-
-			if ( !empty( $response['error'] ) ) {
-				$msg = $response['error'];
-				if ( $msg[0] === 'apierror-visualeditor-docserver-http' && $msg[1] === 404 ) {
-					// RESTBase error messages for this case don't seem to make much sense. (T315688)
-					// Report more details, so that we can have a look and see what's up with them.
-					$msg[2] .= " - page {$revRecord->getPageId()}, rev {$revRecord->getId()}";
-				}
-				$message = wfMessage( ...$msg );
-				throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
-			}
-
-			$html = $response['body'];
 		}
 
 		// Run the discussion parser on it
