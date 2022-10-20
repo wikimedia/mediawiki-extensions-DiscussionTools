@@ -118,6 +118,7 @@
 	"discussiontools-replywidget-placeholder-reply": "Reply to {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Preferences",
 	"discussiontools-replywidget-preview": "Preview",
+	"discussiontools-replywidget-publish-accesskey": "s",
 	"discussiontools-replywidget-reply": "Reply",
 	"discussiontools-replywidget-reply-link": "https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Replying",
 	"discussiontools-replywidget-return-to-newtopic": "Return to new topic",
