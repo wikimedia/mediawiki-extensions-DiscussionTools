@@ -18,7 +18,7 @@ function ReplyLinksController( $pageContainer ) {
 	this.onAnyLinkClickHandler = this.onAnyLinkClick.bind( this );
 
 	// Reply links
-	this.$replyLinkSets = $pageContainer.find( '.ext-discussiontools-init-replylink-buttons[data-mw-comment]' );
+	this.$replyLinkSets = $pageContainer.find( '.ext-discussiontools-init-replylink-buttons[data-mw-comment]:not(:empty)' );
 
 	this.$replyLinkSets.each( function () {
 		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
