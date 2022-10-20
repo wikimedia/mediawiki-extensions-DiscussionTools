@@ -488,10 +488,28 @@ function updatePageContents( $container, data ) {
 	// TODO: Upstream this to core/skins, triggered by a hook (wikipage.content?)
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '#t-permalink a, #coll-download-as-rl a' ).each( function () {
-		var url = new URL( this.href );
-		url.searchParams.set( 'oldid', data.parse.revid );
-		$( this ).attr( 'href', url.toString() );
+		var permalinkUrl = new URL( this.href );
+		permalinkUrl.searchParams.set( 'oldid', data.parse.revid );
+		$( this ).attr( 'href', permalinkUrl.toString() );
 	} );
+
+	var url = new URL( location.href );
+	url.searchParams.delete( 'oldid' );
+
+	// If there are any other query parameters left, re-use that URL object.
+	// Otherwise use the canonical style view url (T44553, T102363).
+	var keys = [];
+	url.searchParams.forEach( function ( val, key ) {
+		keys.push( key );
+	} );
+
+	if ( !keys.length || ( keys.length === 1 && keys[ 0 ] === 'title' ) ) {
+		var viewUrl = new URL( mw.util.getUrl( mw.config.get( 'wgRelevantPageName' ) ), document.baseURI );
+		viewUrl.hash = location.hash;
+		history.pushState( null, '', viewUrl );
+	} else {
+		history.pushState( null, '', url );
+	}
 }
 
 /**
