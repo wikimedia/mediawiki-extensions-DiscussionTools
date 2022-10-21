@@ -23,14 +23,9 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class PersistRevisionThreadItems extends Maintenance {
 
-	/** @var IDatabase */
-	private $dbr;
-
-	/** @var ThreadItemStore */
-	private $itemStore;
-
-	/** @var RevisionStore */
-	private $revStore;
+	private IDatabase $dbr;
+	private ThreadItemStore $itemStore;
+	private RevisionStore $revStore;
 
 	public function __construct() {
 		parent::__construct();

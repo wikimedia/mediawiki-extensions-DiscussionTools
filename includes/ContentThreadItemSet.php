@@ -16,15 +16,15 @@ use Wikimedia\Assert\Assert;
 class ContentThreadItemSet implements ThreadItemSet {
 
 	/** @var ContentThreadItem[] */
-	private $threadItems = [];
+	private array $threadItems = [];
 	/** @var ContentCommentItem[] */
-	private $commentItems = [];
+	private array $commentItems = [];
 	/** @var ContentThreadItem[][] */
-	private $threadItemsByName = [];
+	private array $threadItemsByName = [];
 	/** @var ContentThreadItem[] */
-	private $threadItemsById = [];
+	private array $threadItemsById = [];
 	/** @var ContentHeadingItem[] */
-	private $threads = [];
+	private array $threads = [];
 
 	/**
 	 * @inheritDoc

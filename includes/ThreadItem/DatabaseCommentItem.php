@@ -12,10 +12,8 @@ class DatabaseCommentItem extends DatabaseThreadItem implements CommentItem {
 		getSubscribableHeading as protected traitGetSubscribableHeading;
 	}
 
-	/** @var string */
-	private $timestamp;
-	/** @var string */
-	private $author;
+	private string $timestamp;
+	private string $author;
 
 	/**
 	 * @param ProperPageIdentity $page

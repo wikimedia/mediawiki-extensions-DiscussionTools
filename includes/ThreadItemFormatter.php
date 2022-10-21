@@ -12,11 +12,9 @@ use TitleValue;
  * Displays links to comments and headings represented as ThreadItems.
  */
 class ThreadItemFormatter {
-	/** @var TitleFormatter */
-	private $titleFormatter;
 
-	/** @var LinkRenderer */
-	private $linkRenderer;
+	private TitleFormatter $titleFormatter;
+	private LinkRenderer $linkRenderer;
 
 	/**
 	 * @param TitleFormatter $titleFormatter

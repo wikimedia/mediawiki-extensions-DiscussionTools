@@ -12,18 +12,12 @@ use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsCompare extends ApiBase {
-
 	use ApiDiscussionToolsTrait;
 	use ApiParsoidTrait;
 
-	/** @var CommentParser */
-	private $commentParser;
-
-	/** @var VisualEditorParsoidClientFactory */
-	private $parsoidClientFactory;
-
-	/** @var RevisionLookup */
-	private $revisionLookup;
+	private CommentParser $commentParser;
+	private VisualEditorParsoidClientFactory $parsoidClientFactory;
+	private RevisionLookup $revisionLookup;
 
 	/**
 	 * @param ApiMain $main

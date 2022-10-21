@@ -28,6 +28,7 @@
 		"phpcs": "phpcs -sp --cache"
 	},
 	"require": {
+		"php": ">=7.4.3",
 		"ext-json": "*",
 		"ext-dom": "*"
 	}

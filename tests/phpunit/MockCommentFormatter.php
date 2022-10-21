@@ -10,10 +10,7 @@ use MWTimestamp;
 
 class MockCommentFormatter extends CommentFormatter {
 
-	/**
-	 * @var CommentParser
-	 */
-	public static $parser;
+	public static CommentParser $parser;
 
 	/**
 	 * @return CommentParser

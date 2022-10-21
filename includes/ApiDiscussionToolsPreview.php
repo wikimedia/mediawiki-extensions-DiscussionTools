@@ -13,18 +13,12 @@ use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsPreview extends ApiBase {
-
 	use ApiDiscussionToolsTrait;
 	use ApiParsoidTrait;
 
-	/** @var CommentParser */
-	private $commentParser;
-
-	/** @var VisualEditorParsoidClientFactory */
-	private $parsoidClientFactory;
-
-	/** @var SkinFactory */
-	private $skinFactory;
+	private CommentParser $commentParser;
+	private VisualEditorParsoidClientFactory $parsoidClientFactory;
+	private SkinFactory $skinFactory;
 
 	/**
 	 * @param ApiMain $main

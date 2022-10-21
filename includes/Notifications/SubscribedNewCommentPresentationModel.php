@@ -18,13 +18,9 @@ use RawMessage;
 use User;
 
 class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
-
 	use DiscussionToolsEventTrait;
 
-	/**
-	 * @var PlaintextEchoPresentationModelSection
-	 */
-	protected $section;
+	protected PlaintextEchoPresentationModelSection $section;
 
 	/**
 	 * @inheritDoc

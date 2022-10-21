@@ -16,11 +16,8 @@ use UserNotLoggedIn;
 
 class UnsubscribeAction extends FormAction {
 
-	/** @var SubscriptionStore */
-	protected $subscriptionStore;
-
-	/** @var Subscriptionitem */
-	protected $subscriptionItem = null;
+	protected SubscriptionStore $subscriptionStore;
+	protected ?SubscriptionItem $subscriptionItem = null;
 
 	/**
 	 * @param Page $page

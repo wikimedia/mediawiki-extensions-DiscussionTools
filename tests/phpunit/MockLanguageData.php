@@ -6,10 +6,7 @@ use MediaWiki\Extension\DiscussionTools\LanguageData;
 
 class MockLanguageData extends LanguageData {
 
-	/**
-	 * @var array
-	 */
-	private $data;
+	private array $data;
 
 	/**
 	 * @param array $data

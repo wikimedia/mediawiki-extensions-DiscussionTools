@@ -20,8 +20,7 @@ use Title;
 
 class DataUpdatesHooks implements RevisionDataUpdatesHook {
 
-	/** @var ThreadItemStore */
-	private $threadItemStore;
+	private ThreadItemStore $threadItemStore;
 
 	/**
 	 * @param ThreadItemStore $threadItemStore

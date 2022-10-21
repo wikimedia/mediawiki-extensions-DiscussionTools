@@ -17,14 +17,11 @@ use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 
 class LanguageData {
-	/** @var Config */
-	private $config;
-	/** @var Language */
-	private $language;
-	/** @var LanguageConverterFactory */
-	private $languageConverterFactory;
-	/** @var SpecialPageFactory */
-	private $specialPageFactory;
+
+	private Config $config;
+	private Language $language;
+	private LanguageConverterFactory $languageConverterFactory;
+	private SpecialPageFactory $specialPageFactory;
 
 	/**
 	 * @param Config $config

@@ -16,8 +16,8 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
 class ResourceLoaderHooks implements
 	ResourceLoaderGetConfigVarsHook
 {
-	/** @var Config */
-	private $config;
+
+	private Config $config;
 
 	/**
 	 * @param ConfigFactory $configFactory

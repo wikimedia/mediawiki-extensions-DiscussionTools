@@ -9,10 +9,8 @@ use Wikimedia\Parsoid\DOM\Element;
 class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
 	use HeadingItemTrait;
 
-	/** @var bool */
-	private $placeholderHeading;
-	/** @var int */
-	private $headingLevel;
+	private bool $placeholderHeading;
+	private int $headingLevel;
 
 	// Placeholder headings must have a level higher than real headings (1-6)
 	private const PLACEHOLDER_HEADING_LEVEL = 99;
