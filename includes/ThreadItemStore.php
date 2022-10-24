@@ -483,6 +483,8 @@ class ThreadItemStore {
 					->join( 'revision', 'revision_oldest', [ 'itp_oldest_revision_id = revision_oldest.rev_id' ] )
 					->join( 'revision', 'revision_newest', [ 'itp_newest_revision_id = revision_newest.rev_id' ] )
 					->field( 'itp_id' )
+					->field( 'revision_oldest.rev_id', 'oldest_rev_id' )
+					->field( 'revision_newest.rev_id', 'newest_rev_id' )
 					->field( 'revision_oldest.rev_timestamp', 'oldest_rev_timestamp' )
 					->field( 'revision_newest.rev_timestamp', 'newest_rev_timestamp' )
 					->where( [
@@ -502,17 +504,22 @@ class ThreadItemStore {
 						$method
 					);
 				} else {
-					$existingTime = ( new MWTimestamp( $itemPagesRow->oldest_rev_timestamp ) )->getTimestamp( TS_MW );
-					if ( $existingTime >= $rev->getTimestamp() ) {
+					$oldestTime = ( new MWTimestamp( $itemPagesRow->oldest_rev_timestamp ) )->getTimestamp( TS_MW );
+					$newestTime = ( new MWTimestamp( $itemPagesRow->newest_rev_timestamp ) )->getTimestamp( TS_MW );
+					$currentTime = $rev->getTimestamp();
+
+					$oldestId = (int)$itemPagesRow->oldest_rev_id;
+					$newestId = (int)$itemPagesRow->newest_rev_id;
+					$currentId = $rev->getId();
+
+					if ( [ $oldestTime, $oldestId ] > [ $currentTime, $currentId ] ) {
 						$dbw->update(
 							'discussiontools_item_pages',
 							[ 'itp_oldest_revision_id' => $rev->getId() ],
 							[ 'itp_id' => $itemPagesRow->itp_id ],
 							$method
 						);
-					}
-					$existingTime = ( new MWTimestamp( $itemPagesRow->newest_rev_timestamp ) )->getTimestamp( TS_MW );
-					if ( $existingTime <= $rev->getTimestamp() ) {
+					} elseif ( [ $newestTime, $newestId ] < [ $currentTime, $currentId ] ) {
 						$dbw->update(
 							'discussiontools_item_pages',
 							[ 'itp_newest_revision_id' => $rev->getId() ],
