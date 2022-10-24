@@ -98,6 +98,7 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 			[ 'cases/ThreadItemStore/4transcluded-section' ],
 			[ 'cases/ThreadItemStore/5changed-comment-indentation' ],
 			[ 'cases/ThreadItemStore/6changed-heading-level' ],
+			[ 'cases/ThreadItemStore/7identical-rev-timestamp' ],
 		];
 	}
 }
