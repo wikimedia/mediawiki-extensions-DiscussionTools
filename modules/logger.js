@@ -266,6 +266,20 @@ mw.loader.using( 'ext.eventLogging' ).done( function () {
 				mw.config.get( 'wgDTSchemaEditAttemptStepOversample' ) ||
 				mw.config.get( 'wgWMESchemaEditAttemptStepOversample' )
 			) ? 1 : vefuSampleRate );
+
+			// T309602: Also log via the Metrics Platform:
+			var eventName = 'vefu.' + data.action;
+
+			/* eslint-disable camelcase */
+			var customData = {
+				feature: data.feature,
+				editing_session_id: session.editing_session_id,
+				editor_interface: session.editor_interface,
+				integration: 'discussiontools'
+			};
+			/* eslint-enable camelcase */
+
+			mw.eventLog.dispatch( eventName, customData );
 		}
 
 		if ( data.feature === 'editor-switch' && data.action.indexOf( 'dialog-' ) === -1 ) {
