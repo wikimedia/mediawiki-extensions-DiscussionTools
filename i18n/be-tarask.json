@@ -3,7 +3,8 @@
 		"authors": [
 			"Renessaince",
 			"Matma Rex",
-			"Nieszczarda2"
+			"Nieszczarda2",
+			"Vlad5250"
 		]
 	},
 	"discussiontools": "Інструмэнты абмеркаваньня",
@@ -12,6 +13,7 @@
 	"discussiontools-preference-label": "Інструмэнты абмеркаваньня",
 	"discussiontools-replylink": "адказаць",
 	"discussiontools-replywidget-cancel": "Скасаваць",
+	"discussiontools-replywidget-feedback": "Адаслаць водгук на гэтую функцыю",
 	"discussiontools-replywidget-mode-source": "Крынічнік",
 	"discussiontools-replywidget-mode-visual": "Візуальна",
 	"discussiontools-replywidget-placeholder-reply": "Адказаць на {{BIDI:$1}}",

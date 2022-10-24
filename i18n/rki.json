@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Boke",
+			"Cakkaparla",
+			"Nay Thu Rin",
+			"YaThaWinTha"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "ပြန်ပြောပါ",
+	"discussiontools-replylink": "ပြန်ပြောပါ",
+	"discussiontools-replywidget-cancel": "မလုပ်ယာ",
+	"discussiontools-replywidget-mode-source": "နဂိုမူလအရင်းအမြစ်",
+	"discussiontools-replywidget-mode-visual": "မြင်ကွင်း",
+	"discussiontools-replywidget-placeholder-reply": "BIDI:$1Repiyကိုစာပြန်ရွီးပါ",
+	"discussiontools-replywidget-preview": "စမ်းကြည့်ပါ",
+	"discussiontools-replywidget-reply": "ပြန်ပြောပါ"
+}

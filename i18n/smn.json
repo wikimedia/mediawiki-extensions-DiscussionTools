@@ -5,5 +5,12 @@
 			"Yupik"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Jooskâ"
+	"discussiontools-defaultsummary-reply": "Vástádâs",
+	"discussiontools-replylink": "västid",
+	"discussiontools-replywidget-cancel": "Jooskâ",
+	"discussiontools-replywidget-mode-source": "Käldee",
+	"discussiontools-replywidget-mode-visual": "Visuaallâš",
+	"discussiontools-replywidget-placeholder-reply": "Västid kevttei {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Munekejâdem",
+	"discussiontools-replywidget-reply": "Västid"
 }

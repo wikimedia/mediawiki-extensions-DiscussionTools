@@ -2,13 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Inabat Allanova",
-			"Nurlan"
+			"Nurlan",
+			"Ajiniyaz Nurniyazov"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Juwap qaytarıw",
 	"discussiontools-replylink": "juwap beriw",
 	"discussiontools-replywidget-cancel": "Biykar etiw",
 	"discussiontools-replywidget-mode-source": "Derek",
 	"discussiontools-replywidget-mode-visual": "Vizual",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ǵa juwap beriw",
+	"discussiontools-replywidget-preview": "Kórip shıǵıw",
 	"discussiontools-replywidget-reply": "Juwap beriw"
 }
