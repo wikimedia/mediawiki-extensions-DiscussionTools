@@ -406,7 +406,7 @@ class EventDispatcher {
 		PageIdentity $title,
 		UserIdentity $identity
 	): bool {
-		global $wgDTSchemaEditAttemptStepOversample, $wgWMESchemaEditAttemptStepOversample, $wgDBname;
+		global $wgDTSchemaEditAttemptStepOversample, $wgDBname;
 		$context = RequestContext::getMain();
 		$request = $context->getRequest();
 		// We've reached here through Echo's post-save deferredupdate, which
@@ -424,8 +424,7 @@ class EventDispatcher {
 			return false;
 		}
 		$inSample = static::inEventSample( $editingStatsId );
-		$shouldOversample = $wgWMESchemaEditAttemptStepOversample ||
-			( $isDiscussionTools && $wgDTSchemaEditAttemptStepOversample ) || (
+		$shouldOversample = ( $isDiscussionTools && $wgDTSchemaEditAttemptStepOversample ) || (
 				$extensionRegistry->isLoaded( 'WikimediaEvents' ) &&
 				// @phan-suppress-next-line PhanUndeclaredClassMethod
 				\WikimediaEvents\WikimediaEventsHooks::shouldSchemaEditAttemptStepOversample( $context )
