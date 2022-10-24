@@ -18,7 +18,7 @@
 	"discussiontools-replywidget-reply": "ပြန်ပြောပါ",
 	"discussiontools-replywidget-summary": "နိဂုံးချုပ်",
 	"discussiontools-replywidget-watchthis": "ဒေစာမျက်နှာကို မင်း၏[[Special:Watchlist|watchlist]] တွင် ထည့်ပါ။",
-	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|people}} တိုင်ပင်နီပါရေ။",
+	"discussiontools-topicheader-authorcount": "ဆွေးနွီးချက်တွင် {{PLURAL:$1|လူ}} $1 ဦးဟိမ့်ပါရေ။",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|မှတ်ချက်|မှတ်ချက်တိ}}",
 	"discussiontools-topicheader-latestcomment": "နောက်ဆုံးမှတ်ချက်တိ- $1",
 	"discussiontools-topicsubscription-button-subscribe": "စာရင်းပီးပါ",

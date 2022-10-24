@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jon Harald Søby",
 			"Njardarlogar",
 			"Ranveig"
 		]
@@ -107,6 +108,7 @@
 	"discussiontools-replywidget-return-to-newtopic": "Tilbake til nytt emne",
 	"discussiontools-replywidget-summary": "Samandrag",
 	"discussiontools-replywidget-watchthis": "Legg til sida i [[Special:Watchlist|overvakingslista]] di",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|personar}} deltek i diskusjonen",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Avslutt abonnement",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Vil du avslutta abonnementet på dette emnet?",
 	"discussiontools-topicsubscription-button-subscribe": "abonner",

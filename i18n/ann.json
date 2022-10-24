@@ -4,7 +4,11 @@
 			"Katelem"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Fọọk",
 	"discussiontools-notification-subscribed-new-comment-view": "Kpọ si etumube",
+	"discussiontools-replylink": "fọọk",
 	"discussiontools-replywidget-abandon-keep": "Fo isi kige",
+	"discussiontools-replywidget-cancel": "Gwak",
+	"discussiontools-replywidget-reply": "Fọọk",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Òkpoyaka ibọkọ etip òfolek aya ikọ etumube me emen ibot-ikọ yi."
 }
