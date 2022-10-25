@@ -82,6 +82,10 @@ if ( OO.ui.isMobile() ) {
 		{
 			name: 'other',
 			include: [ 'usernameCompletion' ]
+		},
+		{
+			name: 'specialCharacter',
+			include: [ 'specialCharacter' ]
 		}
 	];
 }
