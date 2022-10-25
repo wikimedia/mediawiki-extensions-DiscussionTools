@@ -9,7 +9,10 @@
 			"Patrik L.",
 			"Robins7",
 			"Adam N.",
-			"Fraxinus.cs"
+			"Fraxinus.cs",
+			"Danny B.",
+			"Kareyac",
+			"Mormegil"
 		]
 	},
 	"discussiontools": "Diskusní nástroje",
@@ -37,7 +40,7 @@
 	"discussiontools-error-noswitchtove-table": "syntaxe tabulky",
 	"discussiontools-error-noswitchtove-template": "syntaxe šablony",
 	"discussiontools-error-noswitchtove-title": "Vizuální režim není dostupný",
-	"discussiontools-newtopic-missing-title": "Prosíme, vyplňte nadpis svého diskusního tématu. Kliknete-li znovu na „{{int:discussiontools-replywidget-newtopic}}“, přidáte téma bez nadpisu.",
+	"discussiontools-newtopic-missing-title": "Prosíme, vyplňte nadpis svého diskusního tématu. Kliknete-li na „{{int:discussiontools-replywidget-newtopic}}“, přidáte téma bez nadpisu.",
 	"discussiontools-newtopic-placeholder-title": "Nadpis",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|odpověděl|odpověděla}} v „<strong>$4</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Jedna nová odpověď|$1 nové odpovědi|$1 nových odpovědí|100=Více než 99 nových odpovědí}} u „<strong>$3</strong>“.",

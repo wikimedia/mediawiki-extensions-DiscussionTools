@@ -18,6 +18,7 @@
 	"discussiontools-preference-newtopictool": "Уключыць хуткае дадаваньне тэмы",
 	"discussiontools-replylink": "адказаць",
 	"discussiontools-replywidget-cancel": "Скасаваць",
+	"discussiontools-replywidget-feedback": "Адаслаць водгук на гэтую функцыю",
 	"discussiontools-replywidget-mode-source": "Крынічнік",
 	"discussiontools-replywidget-mode-visual": "Візуальна",
 	"discussiontools-replywidget-placeholder-reply": "Адказаць на {{BIDI:$1}}",
