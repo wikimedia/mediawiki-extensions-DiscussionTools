@@ -31,6 +31,7 @@
 	"discussiontools-error-comment-not-saved": "Dit indlæg kunne ikke udgives på den nyeste version af siden. For at se de seneste ændringer, skal du kopiere udkastet til dit indlæg og derefter genindlæse siden i din browser.",
 	"discussiontools-error-noswitchtove-table": "tabelsyntaks",
 	"discussiontools-error-noswitchtove-template": "skabelonsyntaks",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",
 	"discussiontools-newtopic-missing-title": "Angiv venligst en titel for diskussionen. Hvis du trykker på \"{{int:discussiontools-replywidget-newtopic}}\" bliver emnet tilføjer uden en titel.",
 	"discussiontools-newtopic-placeholder-title": "Titel",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarede}} i \"<strong>$4</strong>\".",

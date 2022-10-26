@@ -4,10 +4,14 @@
 			"TayfunEt."
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Jogap ber",
 	"discussiontools-replylink": "jogap ber",
 	"discussiontools-replywidget-cancel": "Goýbolsun et",
 	"discussiontools-replywidget-mode-source": "Çeşme",
 	"discussiontools-replywidget-mode-visual": "Wizual",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} ulanyjysyna jogap beriň",
-	"discussiontools-replywidget-reply": "Jogap ber"
+	"discussiontools-replywidget-reply": "Jogap ber",
+	"discussiontools-replywidget-summary": "Gysgaça düşündiriş",
+	"discussiontools-topicsubscription-button-subscribe": "abuna ýazylyň",
+	"discussiontools-topicsubscription-button-unsubscribe": "abunalykdan çykmak"
 }
