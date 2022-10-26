@@ -355,6 +355,11 @@ function init( $container, state ) {
 
 	// Restore autosave
 	( function () {
+		if ( mw.config.get( 'wgAction' ) !== 'view' ) {
+			// Don't do anything when we're editing/previewing
+			return;
+		}
+
 		var mode, $link;
 		for ( var i = 0; i < pageThreads.threadItems.length; i++ ) {
 			var comment = pageThreads.threadItems[ i ];
