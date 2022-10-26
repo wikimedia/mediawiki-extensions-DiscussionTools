@@ -258,11 +258,7 @@ function getHeadlineNodeAndOffset( heading ) {
 	if ( !headline.getAttribute( 'id' ) ) {
 		// PHP HTML: Find the child with .mw-headline
 		headline = headline.querySelector( '.mw-headline' );
-		if ( headline ) {
-			if ( headline.querySelector( '.mw-headline-number' ) ) {
-				offset = 1;
-			}
-		} else {
+		if ( !headline ) {
 			headline = heading;
 		}
 	}
