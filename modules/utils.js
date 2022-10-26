@@ -92,13 +92,16 @@ function cantHaveElementChildren( node ) {
 			// for compatibility with TimedMediaHandler.
 			// There is no better way to detect them, and we can't insert markers here,
 			// because the media DOM CSS depends on specific tag names and their order :(
-			// We also can't return true for the whole 'figure' (or '.thumb' in legacy DOM),
-			// because we might want to handle content in the caption.
+			// TODO See if we can remove this condition when wgParserEnableLegacyMediaDOM=false
+			// is enabled everywhere.
 			(
 				[ 'a', 'span' ].indexOf( node.tagName.toLowerCase() ) !== -1 &&
 				node.firstChild &&
 				cantHaveElementChildren( node.firstChild )
-			)
+			) ||
+			// Do not insert anything inside figures when using wgParserEnableLegacyMediaDOM=false,
+			// because their CSS can't handle it (T320285).
+			node.tagName.toLowerCase() === 'figure'
 		)
 	);
 }
