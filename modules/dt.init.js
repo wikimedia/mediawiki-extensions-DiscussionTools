@@ -57,7 +57,7 @@ mw.dt.init = function ( $container ) {
 	// FIXME This really should not depend on implementation details of 2 different live previews
 	// FIXME VisualEditor (2017WTE) preview can't be supported, because it messes with `id` attributes
 	var livePreviewSelectors = '#wikiPreview, .ext-WikiEditor-realtimepreview-preview';
-	if ( $container.closest( livePreviewSelectors ).length ) {
+	if ( $container.parent().is( livePreviewSelectors ) ) {
 		reallyInit( $container );
 		return;
 	}
