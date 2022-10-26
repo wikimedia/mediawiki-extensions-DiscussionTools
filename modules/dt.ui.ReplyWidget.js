@@ -77,23 +77,24 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.replyButton = new OO.ui.ButtonWidget( {
 		flags: [ 'primary', 'progressive' ],
 		label: this.replyButtonLabel,
-		title: this.replyButtonLabel + ' ' +
+		title: this.replyButtonLabel + ' [' +
 			// TODO: Use VE keyboard shortcut generating code
 			( $.client.profile().platform === 'mac' ?
 				'⌘⏎' :
 				mw.msg( 'visualeditor-key-ctrl' ) + '+' + mw.msg( 'visualeditor-key-enter' )
-			)
+			) + ']',
+		accessKey: mw.msg( 'discussiontools-replywidget-publish-accesskey' )
 	} );
 	this.cancelButton = new OO.ui.ButtonWidget( {
 		flags: [ 'destructive' ],
 		label: mw.msg( 'discussiontools-replywidget-cancel' ),
 		framed: false,
-		title: mw.msg( 'discussiontools-replywidget-cancel' ) + ' ' +
+		title: mw.msg( 'discussiontools-replywidget-cancel' ) + ' [' +
 			// TODO: Use VE keyboard shortcut generating code
 			( $.client.profile().platform === 'mac' ?
 				'⎋' :
 				mw.msg( 'visualeditor-key-escape' )
-			)
+			) + ']'
 	} );
 
 	this.$headerWrapper = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-headerWrapper' );
