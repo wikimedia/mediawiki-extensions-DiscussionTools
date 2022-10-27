@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"GeoO",
-			"Kareyac"
+			"Kareyac",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"discussiontools-replybutton": "Պատասխանել",
+	"discussiontools-replywidget-loading": "Բեռնում…",
 	"discussiontools-replywidget-mode-source": "Աղբյուր",
 	"discussiontools-replywidget-preview": "Նախադիտում",
 	"discussiontools-topicheader-latestcomment": "Վերջին մեկնաբանությունը՝ $1",
