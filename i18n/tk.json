@@ -4,6 +4,7 @@
 			"TayfunEt."
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Jogap ber",
 	"discussiontools-replylink": "jogap ber",
 	"discussiontools-replywidget-cancel": "Goýbolsun et",
 	"discussiontools-replywidget-mode-source": "Çeşme",
@@ -12,6 +13,12 @@
 	"discussiontools-replywidget-reply": "Jogap ber",
 	"discussiontools-replywidget-return-to-newtopic": "Täze mowzuga dolan",
 	"discussiontools-replywidget-return-to-reply": "Jogap bermek üçin dolan",
+	"discussiontools-replywidget-summary": "Gysgaça düşündiriş",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|adam}} çekişmede",
+	"discussiontools-topicsubscription-button-subscribe": "abuna ýazylyň",
+	"discussiontools-topicsubscription-button-subscribe-label": "Abuna ýazylyň",
+	"discussiontools-topicsubscription-button-unsubscribe": "abunalykdan çykmak",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Abunalykdan çykmak",
 	"discussiontools-topicsubscription-pager-created": "Ilki bilen abuna ýazyldy",
 	"discussiontools-topicsubscription-pager-notified": "Iň soňky bildiriş",
 	"discussiontools-topicsubscription-pager-notified-never": "hiç haçan"
