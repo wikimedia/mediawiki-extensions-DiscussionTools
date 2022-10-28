@@ -4,7 +4,8 @@
 			"Antonla",
 			"Dipsacus fullonum",
 			"Matma Rex",
-			"Saederup92"
+			"Saederup92",
+			"Steenth"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -75,6 +76,7 @@
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Afmeld",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Vil du stoppe med at abonnere på dette emne?",
 	"discussiontools-topicsubscription-button-subscribe": "abonner",
+	"discussiontools-topicsubscription-button-subscribe-label": "Abonnér",
 	"discussiontools-topicsubscription-button-unsubscribe": "afmeld abonnement",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Afmeld abonnement",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Afmeld abonnement for at stoppe med at få meddelelser.",
