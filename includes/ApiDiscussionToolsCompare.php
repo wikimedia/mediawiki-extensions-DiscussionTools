@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
+use ApiUsageException;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Revision\RevisionLookup;
@@ -32,6 +33,7 @@ class ApiDiscussionToolsCompare extends ApiBase {
 
 	/**
 	 * @inheritDoc
+	 * @throws ApiUsageException
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
+use ApiUsageException;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use SkinFactory;
@@ -35,6 +36,7 @@ class ApiDiscussionToolsPreview extends ApiBase {
 
 	/**
 	 * @inheritDoc
+	 * @throws ApiUsageException
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();

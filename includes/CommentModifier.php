@@ -2,10 +2,12 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use InvalidArgumentException;
+use LogicException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\MediaWikiServices;
-use MWException;
+use UnexpectedValueException;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
@@ -108,7 +110,7 @@ class CommentModifier {
 		} elseif ( $replyIndentation === 'bullet' ) {
 			$itemType = 'li';
 		} else {
-			throw new MWException( "Invalid reply indentation syntax '$replyIndentation'" );
+			throw new InvalidArgumentException( "Invalid reply indentation syntax '$replyIndentation'" );
 		}
 		$listType = $listTypeMap[ $itemType ];
 
@@ -182,7 +184,7 @@ class CommentModifier {
 		if ( $desiredLevel === 1 ) {
 			// Special handling for top-level comments
 			// We use section=new API for adding them in PHP, so this should never happen
-			throw new MWException( "Can't add a top-level comment" );
+			throw new UnexpectedValueException( "Can't add a top-level comment" );
 
 		} elseif ( $curLevel < $desiredLevel ) {
 			// Insert more lists after the target to increase nesting.
@@ -231,7 +233,7 @@ class CommentModifier {
 
 			do {
 				if ( !$target || !$parent ) {
-					throw new \LogicException( 'Can not decrease nesting any more' );
+					throw new LogicException( 'Can not decrease nesting any more' );
 				}
 
 				// If target is the last child of its parent, no need to split it
@@ -295,7 +297,7 @@ class CommentModifier {
 		}
 
 		if ( $item === null ) {
-			throw new \LogicException( __METHOD__ . ' no item found' );
+			throw new LogicException( 'No item found' );
 		}
 
 		return $item;

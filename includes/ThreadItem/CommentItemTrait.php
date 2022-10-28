@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools\ThreadItem;
 
 use DateTimeImmutable;
 use MediaWiki\MediaWikiServices;
-use MWException;
+use RuntimeException;
 
 trait CommentItemTrait {
 	// phpcs:disable Squiz.WhiteSpace, MediaWiki.Commenting
@@ -76,7 +76,7 @@ trait CommentItemTrait {
 			$parent = $parent->getParent();
 		}
 		if ( !( $parent instanceof HeadingItem ) ) {
-			throw new MWException( 'heading parent not found' );
+			throw new RuntimeException( 'Heading parent not found' );
 		}
 		return $parent;
 	}

@@ -23,6 +23,7 @@ use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
+use Wikimedia\Timestamp\TimestampException;
 
 class CommentFormatter {
 	// List of features which, when enabled, cause the comment formatter to run
@@ -632,7 +633,13 @@ class CommentFormatter {
 	public static function getSignatureRelativeTime(
 		MWTimestamp $timestamp, Language $lang, UserIdentity $user
 	): string {
-		if ( time() - intval( $timestamp->getTimestamp() ) < 120 ) {
+		try {
+			$diff = time() - intval( $timestamp->getTimestamp() );
+		} catch ( TimestampException $ex ) {
+			// Can't happen
+			$diff = 0;
+		}
+		if ( $diff < 120 ) {
 			$timestamp = new MWTimestamp();
 		}
 		return $lang->getHumanTimestamp( $timestamp, null, $user );

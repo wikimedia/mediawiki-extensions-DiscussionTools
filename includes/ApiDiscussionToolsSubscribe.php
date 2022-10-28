@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
+use ApiUsageException;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -22,6 +23,7 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 
 	/**
 	 * @inheritDoc
+	 * @throws ApiUsageException
 	 */
 	public function execute() {
 		$user = $this->getUser();

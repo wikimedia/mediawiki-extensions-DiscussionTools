@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use Error;
-use Exception;
+use DOMException;
+use RuntimeException;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\CharacterData;
 use Wikimedia\Parsoid\DOM\Comment;
@@ -61,7 +61,7 @@ class ImmutableRange {
 			array_pop( $ancestorsB );
 		}
 		if ( !$node ) {
-			throw new Error( 'Nodes are not in the same document' );
+			throw new DOMException( 'Nodes are not in the same document' );
 		}
 
 		return $node;
@@ -121,7 +121,7 @@ class ImmutableRange {
 			case 'startOffset':
 				return $this->mStartOffset;
 			default:
-				throw new Exception( 'Invalid property: ' . $field );
+				throw new RuntimeException( 'Invalid property: ' . $field );
 		}
 	}
 
@@ -160,7 +160,7 @@ class ImmutableRange {
 	 */
 	private function setStartOrEnd( string $type, Node $node, int $offset ): self {
 		if ( $node instanceof DocumentType ) {
-			throw new Error();
+			throw new DOMException();
 		}
 
 		switch ( $type ) {
@@ -316,7 +316,7 @@ class ImmutableRange {
 		foreach ( $commonAncestor->childNodes as $childNode ) {
 			if ( $this->isFullyContainedNode( $childNode ) ) {
 				if ( $childNode instanceof DocumentType ) {
-					throw new Error();
+					throw new DOMException();
 				}
 
 				$containedChildren[] = $childNode;
@@ -501,7 +501,7 @@ class ImmutableRange {
 		// $containedChildrenStart and $containedChildrenEnd may be null here, but this loop still works correctly
 		for ( $child = $containedChildrenStart; $child !== $containedChildrenEnd; $child = $child->nextSibling ) {
 			if ( $child instanceof DocumentType ) {
-				throw new Error();
+				throw new DOMException();
 			}
 		}
 
@@ -591,7 +591,7 @@ class ImmutableRange {
 			|| ( $this->mStartContainer instanceof Text
 				&& $this->mStartContainer->parentNode === null )
 		) {
-			throw new Error();
+			throw new DOMException();
 		}
 
 		$referenceNode = null;
@@ -649,7 +649,7 @@ class ImmutableRange {
 
 			while ( $node ) {
 				if ( !$node instanceof Text && $this->isPartiallyContainedNode( $node ) ) {
-					throw new Error();
+					throw new DOMException();
 				}
 
 				$node = $tw->nextNode();
@@ -661,7 +661,7 @@ class ImmutableRange {
 			|| $newParent instanceof DocumentType
 			|| $newParent instanceof DocumentFragment
 		) {
-			throw new Error();
+			throw new DOMException();
 		}
 
 		$fragment = $this->extractContents();
@@ -791,7 +791,7 @@ class ImmutableRange {
 	 */
 	public function compareBoundaryPoints( int $how, self $sourceRange ): int {
 		if ( static::getRootNode( $this->mStartContainer ) !== static::getRootNode( $sourceRange->startContainer ) ) {
-			throw new Error();
+			throw new DOMException();
 		}
 
 		switch ( $how ) {
@@ -816,7 +816,7 @@ class ImmutableRange {
 				break;
 
 			default:
-				throw new Error();
+				throw new DOMException();
 		}
 
 		switch ( $this->computePosition( ...$thisPoint, ...$otherPoint ) ) {
@@ -830,7 +830,7 @@ class ImmutableRange {
 				return 1;
 
 			default:
-				throw new Error();
+				throw new DOMException();
 		}
 	}
 }

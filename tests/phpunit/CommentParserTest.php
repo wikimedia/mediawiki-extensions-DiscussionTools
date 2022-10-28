@@ -3,13 +3,13 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use DateTimeImmutable;
-use Error;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\MediaWikiServices;
+use RuntimeException;
 use stdClass;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
@@ -46,7 +46,7 @@ class CommentParserTest extends IntegrationTestCase {
 		$path = [ $nodeOffset ];
 		while ( $node !== $ancestor ) {
 			if ( !$node->parentNode ) {
-				throw new Error( 'Not a descendant' );
+				throw new RuntimeException( 'Not a descendant' );
 			}
 			array_unshift( $path, CommentUtils::childIndexOf( $node ) );
 			$node = $node->parentNode;

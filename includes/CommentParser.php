@@ -7,13 +7,15 @@ use DateInterval;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeZone;
+use InvalidArgumentException;
 use Language;
+use LogicException;
 use MalformedTitleException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Languages\LanguageConverterFactory;
-use MWException;
+use RuntimeException;
 use TitleParser;
 use TitleValue;
 use Wikimedia\Assert\Assert;
@@ -134,7 +136,7 @@ class CommentParser {
 		$treeWalker->currentNode = $node;
 		$treeWalker->nextNode();
 		if ( !$treeWalker->currentNode ) {
-			throw new MWException( 'nextInterestingLeafNode not found' );
+			throw new RuntimeException( 'nextInterestingLeafNode not found' );
 		}
 		return $treeWalker->currentNode;
 	}
@@ -430,8 +432,7 @@ class CommentParser {
 						$minute = intval( $untransformDigits( $text ) );
 						break;
 					default:
-						// TODO throw NotImplementedException or whatever it's called
-						throw new MWException( 'Not implemented' );
+						throw new LogicException( 'Not implemented' );
 				}
 			}
 
@@ -953,7 +954,7 @@ class CommentParser {
 			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
 				'-' . $threadItem->getTimestampString();
 		} else {
-			throw new MWException( 'Unknown ThreadItem type' );
+			throw new InvalidArgumentException( 'Unknown ThreadItem type' );
 		}
 
 		// If there would be multiple comments with the same ID (i.e. the user left multiple comments
@@ -1013,7 +1014,7 @@ class CommentParser {
 			$name = 'c-';
 			$mainComment = $threadItem;
 		} else {
-			throw new MWException( 'Unknown ThreadItem type' );
+			throw new InvalidArgumentException( 'Unknown ThreadItem type' );
 		}
 
 		if ( $mainComment ) {

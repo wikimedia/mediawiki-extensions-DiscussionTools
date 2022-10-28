@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use Exception;
+use DOMException;
 use Wikimedia\Parsoid\DOM\Node;
 
 /**
@@ -48,7 +48,7 @@ class NodeFilter {
 	 */
 	public function acceptNode( $node ) {
 		if ( $this->active ) {
-			throw new Exception( 'DOMException: INVALID_STATE_ERR' );
+			throw new DOMException( 'INVALID_STATE_ERR' );
 		}
 
 		$this->active = true;

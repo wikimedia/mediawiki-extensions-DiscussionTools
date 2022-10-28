@@ -11,7 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use EchoDiscussionParser;
 use EchoPresentationModelSection;
-use MWException;
+use RuntimeException;
 
 /**
  * Built-in Echo events store section titles as wikitext, and when displaying or linking to them,
@@ -40,7 +40,7 @@ class PlaintextEchoPresentationModelSection extends EchoPresentationModelSection
 	public function getTitleWithSection() {
 		$title = $this->event->getTitle();
 		if ( $title === null ) {
-			throw new MWException( 'Event #' . $this->event->getId() . ' with no title' );
+			throw new RuntimeException( 'Event #' . $this->event->getId() . ' with no title' );
 		}
 		$section = $this->getParsedSectionTitle();
 		if ( $section ) {

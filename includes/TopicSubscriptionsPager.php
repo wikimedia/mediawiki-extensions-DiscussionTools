@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use IContextSource;
+use InvalidArgumentException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkRenderer;
-use MWException;
 use OOUI;
 use TablePager;
 use Title;
@@ -101,7 +101,7 @@ class TopicSubscriptionsPager extends TablePager {
 				] );
 
 			default:
-				throw new MWException( "Unknown field '$field'" );
+				throw new InvalidArgumentException( "Unknown field '$field'" );
 		}
 	}
 
