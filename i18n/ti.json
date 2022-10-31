@@ -4,5 +4,9 @@
 			"Joanmp17"
 		]
 	},
-	"discussiontools-replywidget-preview": "ኣቐደሚ ትርኢት"
+	"discussiontools-defaultsummary-reply": "መልሲ",
+	"discussiontools-replylink": "መልስ",
+	"discussiontools-replywidget-preview": "ቅድመ ትርኢት",
+	"discussiontools-replywidget-reply": "መልስ",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} መልስ]"
 }

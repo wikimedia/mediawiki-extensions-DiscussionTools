@@ -4,7 +4,8 @@
 			"Boke",
 			"Cakkaparla",
 			"Nay Thu Rin",
-			"YaThaWinTha"
+			"YaThaWinTha",
+			"Aggasena"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ပြန်ပြောပါ",
@@ -13,6 +14,6 @@
 	"discussiontools-replywidget-mode-source": "နဂိုမူလအရင်းအမြစ်",
 	"discussiontools-replywidget-mode-visual": "မြင်ကွင်း",
 	"discussiontools-replywidget-placeholder-reply": "BIDI:$1Repiyကိုစာပြန်ရွီးပါ",
-	"discussiontools-replywidget-preview": "စမ်းကြည့်ပါ",
+	"discussiontools-replywidget-preview": "စမ်းလို့လုပ်ကြေ့ပါ",
 	"discussiontools-replywidget-reply": "ပြန်ပြောပါ"
 }

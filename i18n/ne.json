@@ -14,7 +14,7 @@
 	"discussiontools-desc": "वार्तालाप पृष्ठहरू बढाउनका लागि प्रयाेग गरिने उपकरणहरू",
 	"discussiontools-preference-label": "छलफल उपकरण",
 	"discussiontools-replylink": "जवाफ दिनुहोस्",
-	"discussiontools-replywidget-anon-warning": "<strong>तपाईंले पहिले प्रवेश गर्नुपर्छ।</strong> तपाईंको ईपी ठेगानाको सट्टा तपाईंको नाम लेख्न, तपाईं [$1 प्रवेश गर्नुहोस्] वा [$2 खाता बनाउनुहोस्]।",
+	"discussiontools-replywidget-anon-warning": "<strong>तपाईंले पहिले प्रवेश गर्नुपर्छ।</strong> तपाईंको आईपी ठेगानाको सट्टा तपाईंको नाम लेख्न, तपाईं [$1 प्रवेश गर्नुहोस्] वा [$2 खाता बनाउनुहोस्]।",
 	"discussiontools-replywidget-cancel": "रद्द गर्नुहोस्",
 	"discussiontools-replywidget-feedback": "यस सुविधाको बारेमा प्रतिक्रिया साझेदारी गर्नुहोस्",
 	"discussiontools-replywidget-loading": "खुल्दै छ…",

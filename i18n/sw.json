@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Edwingudfriend",
+			"Wangombe"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Jibu",
+	"discussiontools-replylink": "jibu",
+	"discussiontools-replywidget-cancel": "Batilisha",
+	"discussiontools-replywidget-mode-source": "Chanzo",
+	"discussiontools-replywidget-mode-visual": "Kuona",
+	"discussiontools-replywidget-placeholder-reply": "Jibu kwa {{BIDI: $1 }}",
+	"discussiontools-replywidget-preview": "Hakiki",
+	"discussiontools-replywidget-reply": "Jibu"
+}
