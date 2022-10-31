@@ -427,7 +427,10 @@ class HookUtils {
 		if ( $isMobile ) {
 			// Enabling mobile removes MobileFrontend's reply and new topic tools, so always
 			// enable these tools as a replacement.
-			return $dtConfig->get( 'DiscussionToolsEnableMobile' ) && (
+			return (
+				$dtConfig->get( 'DiscussionToolsEnableMobile' ) ||
+				static::determineUserABTestBucket( $output->getUser(), 'mobile' ) === 'test'
+			) && (
 				$feature === null ||
 				$feature === static::REPLYTOOL ||
 				$feature === static::NEWTOPICTOOL ||
