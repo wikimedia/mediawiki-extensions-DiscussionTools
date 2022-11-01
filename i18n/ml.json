@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Akbarali"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "മറുപടി",
+	"discussiontools-replylink": "മറുപടി",
+	"discussiontools-replywidget-advanced": "വിപുലമായ",
+	"discussiontools-replywidget-cancel": "റദ്ദാക്കുക",
+	"discussiontools-replywidget-mode-source": "സ്രോതസ്സ്",
+	"discussiontools-replywidget-mode-visual": "കാഴ്‌ച സംബന്ധിച്ച",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI: $1 }} എന്നതിനുള്ള മറുപടി",
+	"discussiontools-replywidget-preview": "എങ്ങനെയുണ്ടെന്നു കാണുക",
+	"discussiontools-replywidget-reply": "മറുപടി",
+	"discussiontools-replywidget-summary": "സംഗ്രഹം",
+	"discussiontools-topicsubscription-button-subscribe": "വരിക്കാരാവുക",
+	"discussiontools-topicsubscription-button-unsubscribe": "വരിക്കാരനല്ലാതാക്കുക",
+	"discussiontools-topicsubscription-notify-subscribed-body": "ഈ വിഷയത്തിലെ പുതിയ അഭിപ്രായങ്ങളെക്കുറിച്ചുള്ള അറിയിപ്പുകൾ നിങ്ങൾക്ക് ലഭിക്കും.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "നിങ്ങൾ വരി ചേർന്നു.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "ഈ വിഷയത്തിലെ പുതിയ അഭിപ്രായങ്ങളെക്കുറിച്ചുള്ള അറിയിപ്പുകൾ നിങ്ങൾക്ക് ഇനി ലഭിക്കില്ല.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "നിങ്ങൾ അൺസബ്‌സ്‌ക്രൈബ് ചെയ്തു."
+}

@@ -51,7 +51,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "विषय खारेज गर्नुहोस्",
 	"discussiontools-replywidget-abandontopic-keep": "सम्पादन जारी राख्नुहोस्",
 	"discussiontools-replywidget-advanced": "उन्नत",
-	"discussiontools-replywidget-anon-warning": "<strong>तपाईंले पहिले प्रवेश गर्नुपर्छ।</strong> तपाईंको ईपी ठेगानाको सट्टा तपाईंको नाम लेख्न, तपाईं [$1 प्रवेश गर्नुहोस्] वा [$2 खाता बनाउनुहोस्]।",
+	"discussiontools-replywidget-anon-warning": "<strong>तपाईंले पहिले प्रवेश गर्नुपर्छ।</strong> तपाईंको आईपी ठेगानाको सट्टा तपाईंको नाम लेख्न, तपाईं [$1 प्रवेश गर्नुहोस्] वा [$2 खाता बनाउनुहोस्]।",
 	"discussiontools-replywidget-cancel": "रद्द गर्नुहोस्",
 	"discussiontools-replywidget-feedback": "यस सुविधाको बारेमा प्रतिक्रिया साझेदारी गर्नुहोस्",
 	"discussiontools-replywidget-feedback-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/Replying",

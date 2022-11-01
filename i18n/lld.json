@@ -1,13 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Starladin"
+			"Starladin",
+			"Asenoner"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Respogn",
 	"discussiontools-replylink": "respogn",
 	"discussiontools-replywidget-cancel": "Scancelea",
 	"discussiontools-replywidget-mode-source": "Funtana",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Respogn a {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Respogn"
+	"discussiontools-replywidget-preview": "Odüda danfora",
+	"discussiontools-replywidget-reply": "Respogn",
+	"discussiontools-replywidget-summary": "Ressumé",
+	"discussiontools-topicsubscription-button-subscribe": "se abuné"
 }

@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"GeoO",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
+	"discussiontools-replywidget-loading": "Բեռնում…",
 	"discussiontools-replywidget-mode-source": "Աղբյուր",
 	"discussiontools-replywidget-preview": "Նախադիտում",
 	"discussiontools-topicsubscription-button-subscribe": "բաժանորդագրվել"

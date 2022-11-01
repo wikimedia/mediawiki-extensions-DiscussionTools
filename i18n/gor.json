@@ -4,10 +4,20 @@
 			"Marwan Mohamad"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Balasiya",
 	"discussiontools-replylink": "balasiya",
+	"discussiontools-replywidget-advanced": "Wumbutiyo",
 	"discussiontools-replywidget-cancel": "Bataliya",
 	"discussiontools-replywidget-mode-source": "Bungo",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Balasiya ode {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Balasiya"
+	"discussiontools-replywidget-preview": "Bilohipo",
+	"discussiontools-replywidget-reply": "Balasiya",
+	"discussiontools-replywidget-summary": "Limbu'o",
+	"discussiontools-topicsubscription-button-subscribe": "langganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "didu lolangganan",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Yi'o ma mo'otapu po'ota tomimbihu tombilu bohu lo topik botiya.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Yi'o ma lolangganan!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Yi'o didu mo'otapu po'ota tombilu bohu lo topik botiya.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Yi'o didu lolangganan."
 }

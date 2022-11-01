@@ -3,7 +3,8 @@
 		"authors": [
 			"Matma Rex",
 			"Þjarkur",
-			"Snævar"
+			"Snævar",
+			"Sveinn í Felli"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Svar",
@@ -38,6 +39,12 @@
 	"discussiontools-replywidget-summary": "Breytingarágrip",
 	"discussiontools-replywidget-terms-click": "Með því að smella á \"$1\", samþykkir þú notendaskilmála þessa wiki vefsvæðis.",
 	"discussiontools-replywidget-transcluded": "Svarið þitt verður ekki vistað á þessari síðu heldur á [[$1]].",
+	"discussiontools-topicsubscription-button-subscribe": "gerast áskrifandi",
+	"discussiontools-topicsubscription-button-unsubscribe": "segja upp áskrift",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Þú munt fá tilkynningar um nýjar athugasemdir í þessu efni.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Þú hefur gerst áskrifandi!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Þú munt ekki lengur fá tilkynningar um nýjar athugasemdir í þessu efni.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Þú hefur sagt upp áskrift.",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nýr hluti]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
 	"tag-discussiontools-source": "Frumkóði"
