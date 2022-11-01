@@ -207,7 +207,7 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 		)
 	);
 
-	this.$pageContainer.addClass( 'ext-discussiontools-init-replylink-open' );
+	$( document.body ).addClass( 'ext-discussiontools-init-replylink-open' );
 	this.$replyLinkSets.each( function () {
 		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
@@ -243,7 +243,7 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 		document.title = this.originalDocumentTitle;
 	}
 
-	this.$pageContainer.removeClass( 'ext-discussiontools-init-replylink-open' );
+	$( document.body ).removeClass( 'ext-discussiontools-init-replylink-open' );
 	this.$replyLinkSets.each( function () {
 		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
