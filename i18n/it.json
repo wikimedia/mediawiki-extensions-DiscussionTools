@@ -51,7 +51,7 @@
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secondo|secondi}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>È arrivato un nuovo modo per iniziare le discussioni.</strong> Questo aggiornamento consente di aggiungere argomenti utilizzando un modulo in linea e di eseguire menzioni di altri utenti con una nuova scorciatoia. Puoi ancora [$1 tornare indietro all'esperienza precedente].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Stai visualizzando l'esperienza precedente.</strong> Puoi [$1 alla nuova esperienza] o visitare le preferenze per [$2 impostare l'esperienza precedente come predefinita].",
-	"discussiontools-newtopic-missing-title": "Per favore, inserisci un titolo per l'argomento di cui desideri discutere. Se clicchi ora su \"{{int:discussiontools-replywidget-newtopic}}\", la discussione sarà creata senza titolo.",
+	"discussiontools-newtopic-missing-title": "Per favore, dai un titolo all'argomento di cui desideri discutere. Se clicchi ora su \"{{int:discussiontools-replywidget-newtopic}}\", la discussione sarà creata senza titolo.",
 	"discussiontools-newtopic-placeholder-title": "Oggetto",
 	"discussiontools-notification-removed-topic-body": "Potresti non ricevere più notifiche su {{PLURAL:$1|questo argomento|questi argomenti}}.",
 	"discussiontools-notification-removed-topic-header": "L'argomento \"<strong>$4</strong>\" è stato archiviato o rimosso da $3.",
