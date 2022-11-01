@@ -16,8 +16,8 @@ use MediaWiki\Hook\ParserAfterTidyHook;
 use Parser;
 
 class ParserHooks implements ParserAfterTidyHook {
-	/** @var Config */
-	private $config;
+
+	private Config $config;
 
 	/**
 	 * @param ConfigFactory $configFactory

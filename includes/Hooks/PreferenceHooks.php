@@ -24,11 +24,9 @@ class PreferenceHooks implements
 	LocalUserCreatedHook,
 	GetPreferencesHook
 {
-	/** @var Config */
-	private $config;
 
-	/** @var LinkRenderer */
-	private $linkRenderer;
+	private Config $config;
+	private LinkRenderer $linkRenderer;
 
 	/**
 	 * @param ConfigFactory $configFactory

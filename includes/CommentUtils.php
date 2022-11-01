@@ -14,6 +14,7 @@ use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class CommentUtils {
+
 	private function __construct() {
 	}
 
@@ -93,7 +94,7 @@ class CommentUtils {
 	 *
 	 * @var string[]
 	 */
-	private static $noElementChildrenElementTypes = [
+	private static array $noElementChildrenElementTypes = [
 		// https://html.spec.whatwg.org/multipage/syntax.html#elements-2
 		// Void elements
 		'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',

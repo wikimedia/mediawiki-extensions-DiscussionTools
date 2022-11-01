@@ -28,8 +28,7 @@ class TopicSubscriptionsPager extends TablePager {
 		// 'sub_notified' => [ 'sub_notified', 'sub_item' ],
 	];
 
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
+	private LinkBatchFactory $linkBatchFactory;
 
 	/**
 	 * @param IContextSource $context

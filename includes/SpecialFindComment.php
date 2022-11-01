@@ -8,11 +8,8 @@ use HTMLForm;
 
 class SpecialFindComment extends FormSpecialPage {
 
-	/** @var ThreadItemStore */
-	private $threadItemStore;
-
-	/** @var ThreadItemFormatter */
-	private $threadItemFormatter;
+	private ThreadItemStore $threadItemStore;
+	private ThreadItemFormatter $threadItemFormatter;
 
 	/**
 	 * @param ThreadItemStore $threadItemStore

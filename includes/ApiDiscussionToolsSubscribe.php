@@ -9,8 +9,7 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsSubscribe extends ApiBase {
 
-	/** @var SubscriptionStore */
-	private $subscriptionStore;
+	private SubscriptionStore $subscriptionStore;
 
 	/**
 	 * @param ApiMain $main

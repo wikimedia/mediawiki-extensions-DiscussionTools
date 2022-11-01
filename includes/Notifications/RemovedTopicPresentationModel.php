@@ -18,10 +18,7 @@ use User;
 
 class RemovedTopicPresentationModel extends EchoEventPresentationModel {
 
-	/**
-	 * @var PlaintextEchoPresentationModelSection
-	 */
-	protected $section;
+	protected PlaintextEchoPresentationModelSection $section;
 
 	/**
 	 * @inheritDoc

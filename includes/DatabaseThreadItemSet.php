@@ -16,15 +16,15 @@ use Wikimedia\Assert\Assert;
 class DatabaseThreadItemSet implements ThreadItemSet {
 
 	/** @var DatabaseThreadItem[] */
-	private $threadItems = [];
+	private array $threadItems = [];
 	/** @var DatabaseCommentItem[] */
-	private $commentItems = [];
+	private array $commentItems = [];
 	/** @var DatabaseThreadItem[][] */
-	private $threadItemsByName = [];
+	private array $threadItemsByName = [];
 	/** @var DatabaseThreadItem[] */
-	private $threadItemsById = [];
+	private array $threadItemsById = [];
 	/** @var DatabaseHeadingItem[] */
-	private $threads = [];
+	private array $threads = [];
 
 	/**
 	 * @inheritDoc

@@ -17,6 +17,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IResultWrapper;
 
 class SubscriptionStore {
+
 	/**
 	 * Constants for the values of the sub_state field.
 	 */
@@ -24,17 +25,10 @@ class SubscriptionStore {
 	public const STATE_SUBSCRIBED = 1;
 	public const STATE_AUTOSUBSCRIBED = 2;
 
-	/** @var Config */
-	private $config;
-
-	/** @var ILoadBalancer */
-	private $loadBalancer;
-
-	/** @var ReadOnlyMode */
-	private $readOnlyMode;
-
-	/** @var UserFactory */
-	private $userFactory;
+	private Config $config;
+	private ILoadBalancer $loadBalancer;
+	private ReadOnlyMode $readOnlyMode;
+	private UserFactory $userFactory;
 
 	/**
 	 * @param ConfigFactory $configFactory

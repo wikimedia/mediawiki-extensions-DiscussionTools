@@ -9,24 +9,17 @@ use MediaWiki\Revision\RevisionRecord;
 class DatabaseThreadItem implements JsonSerializable, ThreadItem {
 	use ThreadItemTrait;
 
-	/** @var ProperPageIdentity */
-	private $page;
-	/** @var RevisionRecord */
-	private $rev;
-	/** @var string */
-	private $type;
-	/** @var string */
-	private $name;
-	/** @var string */
-	private $id;
-	/** @var DatabaseThreadItem|null */
-	private $parent;
+	private ProperPageIdentity $page;
+	private RevisionRecord $rev;
+	private string $type;
+	private string $name;
+	private string $id;
+	private ?DatabaseThreadItem $parent;
 	/** @var DatabaseThreadItem[] */
-	private $replies = [];
+	private array $replies = [];
 	/** @var string|bool */
 	private $transcludedFrom;
-	/** @var int */
-	private $level;
+	private int $level;
 
 	/**
 	 * @param ProperPageIdentity $page

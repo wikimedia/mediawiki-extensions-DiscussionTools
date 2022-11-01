@@ -32,6 +32,7 @@ use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class HookUtils {
+
 	public const REPLYTOOL = 'replytool';
 	public const NEWTOPICTOOL = 'newtopictool';
 	public const SOURCEMODETOOLBAR = 'sourcemodetoolbar';
@@ -63,7 +64,7 @@ class HookUtils {
 		self::REPLYTOOL,
 	];
 
-	protected static $propCache = [];
+	protected static array $propCache = [];
 
 	/**
 	 * Check if a title has a page prop, and use an in-memory cache to avoid extra queries

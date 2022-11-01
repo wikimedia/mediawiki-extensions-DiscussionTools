@@ -22,27 +22,15 @@ use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsEdit extends ApiBase {
-
 	use ApiDiscussionToolsTrait;
 	use ApiParsoidTrait;
 
-	/** @var CommentParser */
-	private $commentParser;
-
-	/** @var VisualEditorParsoidClientFactory */
-	private $parsoidClientFactory;
-
-	/** @var SubscriptionStore */
-	private $subscriptionStore;
-
-	/** @var SkinFactory */
-	private $skinFactory;
-
-	/** @var Config */
-	private $config;
-
-	/** @var RevisionLookup */
-	private $revisionLookup;
+	private CommentParser $commentParser;
+	private VisualEditorParsoidClientFactory $parsoidClientFactory;
+	private SubscriptionStore $subscriptionStore;
+	private SkinFactory $skinFactory;
+	private Config $config;
+	private RevisionLookup $revisionLookup;
 
 	/**
 	 * @param ApiMain $main

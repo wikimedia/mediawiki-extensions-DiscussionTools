@@ -8,8 +8,7 @@ use Title;
 
 class SpecialGoToComment extends RedirectSpecialPage {
 
-	/** @var ThreadItemStore */
-	private $threadItemStore;
+	private ThreadItemStore $threadItemStore;
 
 	/**
 	 * @param ThreadItemStore $threadItemStore

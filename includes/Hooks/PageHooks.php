@@ -45,17 +45,11 @@ class PageHooks implements
 	OutputPageBeforeHTMLHook,
 	TitleGetEditNoticesHook
 {
-	/** @var Config */
-	private $config;
 
-	/** @var SubscriptionStore */
-	private $subscriptionStore;
-
-	/** @var UserNameUtils */
-	private $userNameUtils;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
+	private Config $config;
+	private SubscriptionStore $subscriptionStore;
+	private UserNameUtils $userNameUtils;
+	private UserOptionsLookup $userOptionsLookup;
 
 	/**
 	 * @param ConfigFactory $configFactory

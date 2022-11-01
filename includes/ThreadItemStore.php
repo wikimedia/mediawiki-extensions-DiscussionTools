@@ -26,26 +26,14 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
  * Stores and fetches ThreadItemSets from the database.
  */
 class ThreadItemStore {
-	/** @var Config */
-	private $config;
 
-	/** @var ILoadBalancer */
-	private $loadBalancer;
-
-	/** @var ReadOnlyMode */
-	private $readOnlyMode;
-
-	/** @var PageStore */
-	private $pageStore;
-
-	/** @var RevisionStore */
-	private $revStore;
-
-	/** @var TitleFormatter */
-	private $titleFormatter;
-
-	/** @var ActorStore */
-	private $actorStore;
+	private Config $config;
+	private ILoadBalancer $loadBalancer;
+	private ReadOnlyMode $readOnlyMode;
+	private PageStore $pageStore;
+	private RevisionStore $revStore;
+	private TitleFormatter $titleFormatter;
+	private ActorStore $actorStore;
 
 	/**
 	 * @param ConfigFactory $configFactory

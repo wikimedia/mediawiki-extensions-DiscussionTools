@@ -8,11 +8,8 @@ use SpecialPage;
 
 class SpecialTopicSubscriptions extends SpecialPage {
 
-	/** @var LinkRenderer */
-	private $linkRenderer;
-
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
+	private LinkRenderer $linkRenderer;
+	private LinkBatchFactory $linkBatchFactory;
 
 	/**
 	 * @param LinkRenderer $linkRenderer
