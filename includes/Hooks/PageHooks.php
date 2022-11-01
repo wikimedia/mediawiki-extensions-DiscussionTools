@@ -23,7 +23,6 @@ use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Page\Hook\ArticleViewHeaderHook;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserOptionsLookup;
@@ -31,14 +30,12 @@ use OOUI\ButtonWidget;
 use OOUI\HtmlSnippet;
 use OOUI\MessageWidget;
 use OutputPage;
-use ParserOutput;
 use RequestContext;
 use Skin;
 use SpecialPage;
 use Title;
 
 class PageHooks implements
-	ArticleViewHeaderHook,
 	BeforeDisplayNoArticleTextHook,
 	BeforePageDisplayHook,
 	GetActionNameHook,
@@ -269,6 +266,39 @@ class PageHooks implements
 			}
 		}
 
+		if ( $output->getSkin()->getSkinName() === 'minerva' ) {
+			$title = $output->getTitle();
+
+			if (
+				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
+				// Only add the button if "New section" tab would be shown in a normal skin.
+				HookUtils::shouldShowNewSectionTab( $output->getContext() )
+			) {
+				$output->enableOOUI();
+				$output->addModuleStyles( [
+					// For speechBubbleAdd
+					'oojs-ui.styles.icons-alerts',
+				] );
+				$output->addBodyClasses( 'ext-discussiontools-init-new-topic-opened' );
+
+				// Minerva doesn't show a new topic button by default, unless the MobileFrontend
+				// talk page feature is enabled, but we shouldn't depend on code from there.
+				$text .= Html::rawElement( 'div',
+					[ 'class' => 'ext-discussiontools-init-new-topic' ],
+					( new ButtonWidget( [
+						'classes' => [ 'ext-discussiontools-init-new-topic-button' ],
+						'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
+						'icon' => 'speechBubbleAdd',
+						'label' => $output->getContext()->msg( 'skin-action-addsection' )->text(),
+						'flags' => [ 'progressive', 'primary' ],
+						'infusable' => true,
+					] ) )
+						// For compatibility with Minerva click tracking (T295490)
+						->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
+				);
+			}
+		}
+
 		return true;
 	}
 
@@ -410,44 +440,6 @@ class PageHooks implements
 			);
 
 		return $wrapped;
-	}
-
-	/**
-	 * @param Article $article
-	 * @param bool|ParserOutput &$outputDone
-	 * @param bool &$pcache
-	 * @return bool|void
-	 */
-	public function onArticleViewHeader( $article, &$outputDone, &$pcache ) {
-		$context = $article->getContext();
-		$output = $context->getOutput();
-
-		if ( $output->getSkin()->getSkinName() === 'minerva' ) {
-			$title = $article->getTitle();
-
-			if (
-				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
-				// Only add the button if "New section" tab would be shown in a normal skin.
-				HookUtils::shouldShowNewSectionTab( $context )
-			) {
-				$output->enableOOUI();
-
-				// Minerva doesn't show a new topic button by default, unless the MobileFrontend
-				// talk page feature is enabled, but we shouldn't depend on code from there.
-				$output->addHTML(
-					Html::rawElement( 'div',
-						[ 'class' => 'ext-discussiontools-init-new-topic' ],
-						( new ButtonWidget( [
-							'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
-							'label' => $context->msg( 'skin-action-addsection' )->text(),
-							'flags' => [ 'progressive', 'primary' ],
-						] ) )
-							// For compatibility with Minerva click tracking (T295490)
-							->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
-					)
-				);
-			}
-		}
 	}
 
 	/**

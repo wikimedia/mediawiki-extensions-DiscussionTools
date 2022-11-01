@@ -185,10 +185,6 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-.ext-discussiontools-init-new-topic {
-	margin: 0.5em 0;
-}
-
 // Topic subscriptions (link)
 .ext-discussiontools-init-section-subscribe {
 	display: none;
@@ -728,20 +724,78 @@ h1, h2, h3, h4, h5, h6 {
 
 	.ext-discussiontools-init-readAsWikiPage {
 		display: block;
-		/* Not sticky per T309889 */
-		width: 100%;
-		padding: 1em;
-		color: @colorProgressive;
-		background: @colorGray15;
-		border-top: 1px solid @colorGray14;
-		text-align: center;
-		// Match Minerva styles
-		max-width: 993.3px;
-		margin-left: auto;
-		margin-right: auto;
-		// Avoid smooshing with content / empty state (T320755)
-		margin-top: 32px;
-		margin-bottom: -32px; // stylelint-disable-line declaration-block-no-redundant-longhand-properties
+	}
+}
+
+.minerva-footer-button() {
+	width: 100%;
+	padding: 1em;
+	box-sizing: content-box;
+	color: @colorProgressive;
+	background: @colorGray15;
+	border-top: 1px solid @colorGray14;
+	text-align: center;
+	// Match Minerva styles
+	max-width: 993.3px;
+	// stylelint-disable-next-line declaration-no-important
+	margin-left: -16px !important;
+	// stylelint-disable-next-line declaration-no-important
+	margin-right: -16px !important;
+}
+
+.ext-discussiontools-init-readAsWikiPage {
+	/* Not sticky per T309889 */
+	.minerva-footer-button();
+	// Avoid smooshing with content / empty state (T320755)
+	margin-top: 32px;
+	margin-bottom: -32px;
+}
+
+.ext-discussiontools-init-new-topic {
+	.minerva-footer-button();
+	// margin: 0.5em 0 !important;
+	// stylelint-disable-next-line declaration-no-important
+	display: block !important;
+	// stylelint-disable-next-line plugin/no-unsupported-browser-features
+	position: sticky;
+	// Required for IntersectionObserver trick
+	bottom: -1px;
+	transition: transform 250ms, opacity 250ms;
+	transform: translateY( 100% );
+	opacity: 0;
+	// Avoid smooshing with content / empty state (T320755)
+	margin-top: 32px;
+
+	& + .ext-discussiontools-init-readAsWikiPage {
+		margin-top: 0;
+	}
+
+	.ext-discussiontools-init-new-topic-open &,
+	.ext-discussiontools-init-new-topic-opened &,
+	.client-nojs & {
+		transform: translateY( 0 );
+		opacity: 1;
+	}
+
+	.ext-discussiontools-init-new-topic-close & {
+		transform: translateY( 100% );
+		opacity: 0;
+	}
+
+	.ext-discussiontools-init-new-topic-closed &,
+	.ext-discussiontools-init-virtual-keyboard-open &,
+	&-pinned.oo-ui-buttonElement {
+		transform: translateY( 0 );
+		opacity: 1;
+		position: static;
+		transition: none;
+	}
+
+	.ext-discussiontools-init-replylink-open & {
+		.ext-discussiontools-fake-disabled();
+		transform: translateY( 0 );
+		opacity: 1;
+		position: static;
 	}
 
 	// Always hide the table of content. This is usually hidden by the mf-section-0 rules,
