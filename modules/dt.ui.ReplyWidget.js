@@ -51,12 +51,9 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.hideNewCommentsWarning = false;
 	// Floating position for scroll back buttons: 'top', 'bottom', or null
 	this.floating = null;
-	// Copied from ve.init.Platform.static.isIos
-	this.isIos = /ipad|iphone|ipod/i.test( navigator.userAgent );
 
 	this.$window = $( this.getElementWindow() );
 	this.onWindowScrollThrottled = OO.ui.throttle( this.onWindowScroll.bind( this ), 100 );
-	this.onViewportChangeThrottled = OO.ui.throttle( this.onViewportChange.bind( this ), 100 );
 
 	var inputConfig = $.extend(
 		{
@@ -431,17 +428,6 @@ ReplyWidget.prototype.onWindowScroll = function () {
 	}
 };
 
-/**
- * Handle events which change the visualViewport (scroll/resize)
- */
-ReplyWidget.prototype.onViewportChange = function () {
-	if ( this.floating ) {
-		var isKeyboardOpen = visualViewport.height < this.viewportScrollContainer.clientHeight;
-		this.scrollBackBottomButton.toggle( !isKeyboardOpen );
-		this.scrollBackTopButton.toggle( !isKeyboardOpen );
-	}
-};
-
 ReplyWidget.prototype.setPending = function ( pending ) {
 	this.pending = pending;
 	if ( pending ) {
@@ -634,9 +620,6 @@ ReplyWidget.prototype.setup = function ( data ) {
 
 	// TODO: Use ve.addPassiveEventListener
 	this.$window.on( 'scroll', this.onWindowScrollThrottled );
-	if ( this.isIos && window.visualViewport ) {
-		$( visualViewport ).on( 'scroll resize', this.onViewportChangeThrottled );
-	}
 
 	return this;
 };
@@ -727,9 +710,6 @@ ReplyWidget.prototype.teardown = function ( mode ) {
 	}
 	this.unbindBeforeUnloadHandler();
 	this.$window.off( 'scroll', this.onWindowScrollThrottled );
-	if ( this.isIos && window.visualViewport ) {
-		$( visualViewport ).off( 'scroll resize', this.onViewportChangeThrottled );
-	}
 	mw.hook( 'wikipage.watchlistChange' ).remove( this.onWatchToggleHandler );
 
 	this.isTornDown = true;

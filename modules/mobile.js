@@ -1,8 +1,40 @@
 var $readAsWikiPage, ledeSectionDialog;
+var viewportScrollContainer = null;
+var wasKeyboardOpen = null;
+var initialClientHeight = null;
+// Copied from ve.init.Platform.static.isIos
+var isIos = /ipad|iphone|ipod/i.test( navigator.userAgent );
+
+$( document.body ).toggleClass( 'ext-discussiontools-init-ios', isIos );
+
+function onViewportChange() {
+	var isKeyboardOpen;
+
+	if ( isIos ) {
+		isKeyboardOpen = visualViewport.height < viewportScrollContainer.clientHeight;
+	} else {
+		// TODO: Support orientation changes?
+		isKeyboardOpen = viewportScrollContainer.clientHeight < initialClientHeight;
+	}
+
+	if ( isKeyboardOpen !== wasKeyboardOpen ) {
+		$( document.body ).toggleClass( 'ext-discussiontools-init-virtual-keyboard-open', isKeyboardOpen );
+	}
+
+	wasKeyboardOpen = isKeyboardOpen;
+}
 
 function init( $container ) {
 	// For compatibility with Minerva click tracking (T295490)
 	$container.find( '.section-heading' ).attr( 'data-event-name', 'talkpage.section' );
+
+	// Keyboard body classes
+	if ( !viewportScrollContainer && window.visualViewport ) {
+		viewportScrollContainer = OO.ui.Element.static.getClosestScrollableContainer( document.body );
+		initialClientHeight = viewportScrollContainer.clientHeight;
+		var onViewportChangeThrottled = OO.ui.throttle( onViewportChange, 100 );
+		$( visualViewport ).on( 'resize', onViewportChangeThrottled );
+	}
 
 	// Mobile overflow menu
 	mw.loader.using( [ 'oojs-ui-widgets', 'oojs-ui.styles.icons-editing-core' ] ).then( function () {

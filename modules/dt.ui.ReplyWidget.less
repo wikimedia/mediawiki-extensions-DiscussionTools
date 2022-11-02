@@ -75,13 +75,21 @@
 		.skin-monobook & {
 			box-shadow: 0 0.2em 1em rgba( 0, 0, 0, 0.3 );
 		}
+
+		// Buttons can't be reliably positioned on iOS when the keyboard
+		// is visible, so hide them
+		.ext-discussiontools-init-virtual-keyboard-open.ext-discussiontools-init-ios & {
+			display: none;
+		}
 	}
 
+	/* stylelint-disable no-descending-specificity */
 	&-floating-top &-scrollback-top,
 	&-floating-bottom &-scrollback-bottom {
 		opacity: 1;
 		transform: translate( -50%, 0 );
 	}
+	/* stylelint-enable no-descending-specificity */
 
 	.ve-ui-targetToolbar > .oo-ui-toolbar-bar {
 		background: none;
