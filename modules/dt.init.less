@@ -733,6 +733,13 @@ h1, h2, h3, h4, h5, h6 {
 		background: @colorGray15;
 		border-top: 1px solid @colorGray14;
 		text-align: center;
+		// Match Minerva styles
+		max-width: 993.3px;
+		margin-left: auto;
+		margin-right: auto;
+		// Avoid smooshing with content / empty state (T320755)
+		margin-top: 32px;
+		margin-bottom: -32px; // stylelint-disable-line declaration-block-no-redundant-longhand-properties
 	}
 }
 
