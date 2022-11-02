@@ -13,6 +13,7 @@
 	"discussiontools-preference-replytool-help": "Din turik ħolqa biex tirrispondi lill-kummenti fuq paġna ta' diskussjoni bi klikk waħda.",
 	"discussiontools-replylink": "wieġeb",
 	"discussiontools-replywidget-advanced": "Avvanzati",
+	"discussiontools-replywidget-anon-warning": "<strong>Bħalissa m'intix fil-kont tiegħek.</strong> Sabiex tirċievi l-attribuzzjoni b'ismek minflok l-indirizz IP tiegħek, tista' [$1 tidħol] jew [$2 toħloq kont].",
 	"discussiontools-replywidget-mode-source": "Sors",
 	"discussiontools-replywidget-placeholder-reply": "Wieġeb lil {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Wieġeb",

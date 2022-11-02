@@ -3,7 +3,8 @@
 		"authors": [
 			"Matma Rex",
 			"Snævar",
-			"Þjarkur"
+			"Þjarkur",
+			"Sveinn í Felli"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Þú munt fá tilkynningu þegar einhver skrifar nýtt svar í þessari umræðu. Þú getur breytt tilkynninga stillingunum þínum í stillingunum.",
@@ -47,6 +48,12 @@
 	"discussiontools-replywidget-terms-click": "Með því að smella á \"$1\", samþykkir þú notendaskilmála þessa wiki vefsvæðis.",
 	"discussiontools-replywidget-transcluded": "Svarið þitt verður ekki vistað á þessari síðu heldur á [[$1]].",
 	"discussiontools-replywidget-watchthis": "Bæta þessari síðu við [[Special:Watchlist|vaktlistann]] þinn",
+	"discussiontools-topicsubscription-button-subscribe": "gerast áskrifandi",
+	"discussiontools-topicsubscription-button-unsubscribe": "segja upp áskrift",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Þú munt fá tilkynningar um nýjar athugasemdir í þessu efni.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Þú hefur gerst áskrifandi!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Þú munt ekki lengur fá tilkynningar um nýjar athugasemdir í þessu efni.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Þú hefur sagt upp áskrift.",
 	"discussiontools-topicsubscription-pager-topic": "Umræðuefni",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nýr hluti]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",

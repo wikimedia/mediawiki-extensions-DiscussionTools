@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"StanProg",
-			"Ted Masters"
+			"Ted Masters",
+			"Kareyac"
 		]
 	},
 	"discussiontools": "Дискусионни инструменти",
@@ -56,6 +57,7 @@
 	"discussiontools-topicsubscription-error-not-found-title": "Не е намерен абонамент",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Ще получавате известия за нови коментари в тази тема.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Абонирането е успешно!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Вече няма да получавате известия за нови коментари в тази тема.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Отписахте се успешно.",
 	"discussiontools-topicsubscription-pager-actions": "Действия",
 	"discussiontools-topicsubscription-pager-page": "Страница",
