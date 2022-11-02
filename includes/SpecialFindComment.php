@@ -91,11 +91,11 @@ class SpecialFindComment extends FormSpecialPage {
 		}
 
 		if ( $results ) {
-			$out->addHTML( Html::rawElement( 'p', [],
-				$this->msg( 'discussiontools-findcomment-gotocomment', $this->idOrName )->parse() ) );
+			$out->addHTML(
+				$this->msg( 'discussiontools-findcomment-gotocomment', $this->idOrName )->parseAsBlock() );
 		} elseif ( $this->idOrName ) {
-			$out->addHTML( Html::rawElement( 'p', [],
-				$this->msg( 'discussiontools-findcomment-noresults' )->parse() ) );
+			$out->addHTML(
+				$this->msg( 'discussiontools-findcomment-noresults' )->parseAsBlock() );
 		}
 	}
 
@@ -112,7 +112,7 @@ class SpecialFindComment extends FormSpecialPage {
 			$list[] = Html::rawElement( 'li', [], $line );
 		}
 
-		$out->addHTML( Html::rawElement( 'p', [], $this->msg( $msgKey, count( $list ) )->parse() ) );
+		$out->addHTML( $this->msg( $msgKey, count( $list ) )->parseAsBlock() );
 		$out->addHTML( Html::rawElement( 'ul', [], implode( '', $list ) ) );
 	}
 
