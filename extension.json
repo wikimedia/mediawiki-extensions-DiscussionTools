@@ -491,10 +491,6 @@
 			"value": true,
 			"description": "Enable DiscussionTools on mobile talk pages. Currently this automatically enables 'replytool', 'newtopictool' & 'sourcemodetoolbar' on those pages and disables topic subscriptions on those pages."
 		},
-		"DiscussionToolsEnableMobile_visualenhancements": {
-			"value": true,
-			"description": "Enable DiscussionTools visual enhancements on mobile talk pages, if DiscussionTools itself is enabled. Currently this automatically enables 'visualenhancements', 'visualenhancements_reply', and 'visualenhancements_pageframe'."
-		},
 		"DiscussionTools_replytool": {
 			"value": "default",
 			"description": "Override availability of DiscussionTools reply tool. 'default', 'available', or 'unavailable'."
