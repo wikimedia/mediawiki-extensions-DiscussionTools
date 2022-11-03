@@ -7,7 +7,8 @@
 			"Halbast",
 			"Matma Rex",
 			"Épine",
-			"ئارام بکر"
+			"ئارام بکر",
+			"Sarchia"
 		]
 	},
 	"discussiontools": "ئامرازەکانی وتووێژ",
@@ -106,7 +107,7 @@
 	"discussiontools-target-comment-missing": "نەتوانرا ئەم لێدوانە بدۆزرێتەوە. لەوانەیە سڕدرابێتەوە یان گوازرابێتەوە.",
 	"discussiontools-target-comments-missing": "نەتوانرا لێدوانە نوێیەکان بدۆزرێنەوە. لەوانەیە سڕدرابنەوە یان گوازرابنەوە.",
 	"discussiontools-topicheader-authorcount": "$1 کەس لە {{PLURAL:$1|وتووێژدایە|وتووێژدان}}",
-	"discussiontools-topicheader-commentcount": "$1 لێدوان",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|لێدوان}}",
 	"discussiontools-topicheader-latestcomment": "کۆتا لێدوان: $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "بەشدار مەبە",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "چی تر بەشداری لەم بابەتە ناکەیت؟",

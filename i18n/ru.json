@@ -61,6 +61,7 @@
 	"discussiontools-findcomment-results-id": "Комментарий с данным идентификатором появился на {{PLURAL:$1|следующей  странице|следующих страницах}}:",
 	"discussiontools-findcomment-results-name": "Комментарий с данным именем появился на {{PLURAL:$1|следующей  странице|следующих страницах}}:",
 	"discussiontools-findcomment-label-idorname": "Идентификатор или имя комментария",
+	"discussiontools-findcomment-gotocomment": "Если он появляется только в текущей версии одной страницы, вы можете [[Special:GoToComment/$1|перейти непосредственно к комментарию по этой ссылке]]. В противном случае он будет перенаправлен на эти результаты поиска.",
 	"discussiontools-findcomment-label-search": "Найти",
 	"discussiontools-findcomment-noresults": "Ничего не найдено.",
 	"discussiontools-findcomment-results-notcurrent": "(не в текущей версии)",
