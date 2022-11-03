@@ -30,37 +30,37 @@
 		"itr_headinglevel": null
 	},
 	{
-		"itr_id": "13",
+		"itr_id": "7",
 		"itr_itemid_id": "4",
 		"itr_revision_id": "5",
 		"itr_items_id": "3",
-		"itr_parent_id": "12",
+		"itr_parent_id": "6",
 		"itr_transcludedfrom": null,
 		"itr_level": "3",
 		"itr_headinglevel": null
 	},
 	{
-		"itr_id": "14",
+		"itr_id": "8",
 		"itr_itemid_id": "5",
 		"itr_revision_id": "5",
 		"itr_items_id": "3",
-		"itr_parent_id": "11",
+		"itr_parent_id": "4",
 		"itr_transcludedfrom": null,
 		"itr_level": "2",
 		"itr_headinglevel": null
 	},
 	{
-		"itr_id": "17",
+		"itr_id": "6",
 		"itr_itemid_id": "3",
 		"itr_revision_id": "6",
 		"itr_items_id": "3",
-		"itr_parent_id": "16",
+		"itr_parent_id": "4",
 		"itr_transcludedfrom": null,
 		"itr_level": "2",
 		"itr_headinglevel": null
 	},
 	{
-		"itr_id": "18",
+		"itr_id": "3",
 		"itr_itemid_id": "1",
 		"itr_revision_id": "7",
 		"itr_items_id": "1",
@@ -70,11 +70,11 @@
 		"itr_headinglevel": "2"
 	},
 	{
-		"itr_id": "19",
+		"itr_id": "4",
 		"itr_itemid_id": "2",
 		"itr_revision_id": "7",
 		"itr_items_id": "2",
-		"itr_parent_id": "18",
+		"itr_parent_id": "3",
 		"itr_transcludedfrom": null,
 		"itr_level": "1",
 		"itr_headinglevel": null

@@ -357,9 +357,6 @@ class ThreadItemStore {
 		// Map of item IDs (strings) to their discussiontools_items.it_id field values (ints)
 		$itemsIds = [];
 		'@phan-var array<string,int> $itemsIds';
-		// Map of item IDs (strings) to their discussiontools_item_revisions.itr_id field values (ints)
-		$itemRevisionsIds = [];
-		'@phan-var array<string,int> $itemRevisionsIds';
 
 		// Insert or find discussiontools_item_ids rows, fill in itid_id field values.
 		// (This is not in a transaction. Orphaned rows in this table are harmlessly ignored,
@@ -415,51 +412,18 @@ class ThreadItemStore {
 			$itemsIds[ $item->getId() ] = $itemsId;
 		}
 
-		// Insert or find discussiontools_item_revisions rows, fill in itr_id field values.
-		// (This is not in a transaction. Orphaned rows in this table are harmlessly ignored,
-		// and long transactions caused performance issues on Wikimedia wikis: T315353#8218914.)
-		foreach ( $threadItemSet->getThreadItems() as $item ) {
-			$itemRevisionsId = $dbw->newSelectQueryBuilder()
-				->from( 'discussiontools_item_revisions' )
-				->field( 'itr_id' )
-				->where( [
-					'itr_itemid_id' => $itemIdsIds[ $item->getId() ],
-					'itr_revision_id' => $rev->getId(),
-				] )
-				->caller( $method )
-				->fetchField();
-			if ( $itemRevisionsId === false ) {
-				$transcl = $item->getTranscludedFrom();
-				$dbw->insert(
-					'discussiontools_item_revisions',
-					[
-						'itr_itemid_id' => $itemIdsIds[ $item->getId() ],
-						'itr_revision_id' => $rev->getId(),
-						'itr_items_id' => $itemsIds[ $item->getId() ],
-						'itr_parent_id' =>
-							// This assumes that parent items were processed first
-							$item->getParent() ? $itemRevisionsIds[ $item->getParent()->getId() ] : null,
-						'itr_transcludedfrom' =>
-							$transcl === false ? null : (
-								$transcl === true ? 0 :
-									$this->pageStore->getPageByText( $transcl )->getId()
-							),
-						'itr_level' => $item->getLevel(),
-					] +
-					( $item instanceof HeadingItem ? [
-						'itr_headinglevel' => $item->isPlaceholderHeading() ? null : $item->getHeadingLevel(),
-					] : [] ),
-					$method
-				);
-				$itemRevisionsId = $dbw->insertId();
-				$didInsert = true;
-			}
-			$itemRevisionsIds[ $item->getId() ] = $itemRevisionsId;
-		}
+		// Insert or update discussiontools_item_pages and discussiontools_item_revisions rows.
+		// This IS in a transaction. We don't really want rows for different items on the same
+		// page to point to different revisions.
+		$dbw->doAtomicSection( $method, function ( $dbw ) use (
+			$method, $rev, $threadItemSet, $itemsIds, $itemIdsIds, &$didInsert
+		) {
+			// Map of item IDs (strings) to their discussiontools_item_revisions.itr_id field values (ints)
+			$itemRevisionsIds = [];
+			'@phan-var array<string,int> $itemRevisionsIds';
 
-		// Insert or update discussiontools_item_pages rows. This IS in a transaction. We don't really
-		// want rows for different items on the same page to point to different revisions.
-		$dbw->doAtomicSection( $method, static function ( $dbw ) use ( $method, $rev, $threadItemSet, $itemsIds ) {
+			$revUpdateRows = [];
+			// Insert or update discussiontools_item_pages rows.
 			foreach ( $threadItemSet->getThreadItems() as $item ) {
 				// Update (or insert) the references to oldest/newest item revision.
 				// The page revision we're processing is usually the newest one, but it doesn't have to be
@@ -471,8 +435,8 @@ class ThreadItemStore {
 					->join( 'revision', 'revision_oldest', [ 'itp_oldest_revision_id = revision_oldest.rev_id' ] )
 					->join( 'revision', 'revision_newest', [ 'itp_newest_revision_id = revision_newest.rev_id' ] )
 					->field( 'itp_id' )
-					->field( 'revision_oldest.rev_id', 'oldest_rev_id' )
-					->field( 'revision_newest.rev_id', 'newest_rev_id' )
+					->field( 'itp_oldest_revision_id' )
+					->field( 'itp_newest_revision_id' )
 					->field( 'revision_oldest.rev_timestamp', 'oldest_rev_timestamp' )
 					->field( 'revision_newest.rev_timestamp', 'newest_rev_timestamp' )
 					->where( [
@@ -496,57 +460,105 @@ class ThreadItemStore {
 					$newestTime = ( new MWTimestamp( $itemPagesRow->newest_rev_timestamp ) )->getTimestamp( TS_MW );
 					$currentTime = $rev->getTimestamp();
 
-					$oldestId = (int)$itemPagesRow->oldest_rev_id;
-					$newestId = (int)$itemPagesRow->newest_rev_id;
+					$oldestId = (int)$itemPagesRow->itp_oldest_revision_id;
+					$newestId = (int)$itemPagesRow->itp_newest_revision_id;
 					$currentId = $rev->getId();
 
+					$updatePageField = null;
 					if ( [ $oldestTime, $oldestId ] > [ $currentTime, $currentId ] ) {
-						$dbw->update(
-							'discussiontools_item_pages',
-							[ 'itp_oldest_revision_id' => $rev->getId() ],
-							[ 'itp_id' => $itemPagesRow->itp_id ],
-							$method
-						);
+						$updatePageField = 'itp_oldest_revision_id';
 					} elseif ( [ $newestTime, $newestId ] < [ $currentTime, $currentId ] ) {
+						$updatePageField = 'itp_newest_revision_id';
+					}
+					if ( $updatePageField ) {
 						$dbw->update(
 							'discussiontools_item_pages',
-							[ 'itp_newest_revision_id' => $rev->getId() ],
+							[ $updatePageField => $rev->getId() ],
 							[ 'itp_id' => $itemPagesRow->itp_id ],
 							$method
 						);
+						if ( $oldestId !== $newestId ) {
+							// This causes most rows in discussiontools_item_revisions referring to the previously
+							// oldest/newest revision to be unused, so try re-using them.
+							$revUpdateRows[ $itemsIds[ $item->getId() ] ] = $itemPagesRow->$updatePageField;
+						}
 					}
 				}
 			}
-		}, $dbw::ATOMIC_CANCELABLE );
 
-		// Delete rows that we don't care about, to save space (item revisions with the same ID and
-		// name as the ones we just inserted, which are not the oldest or newest revision).
-		// (This is not in a transaction. Orphaned rows in this table are harmlessly ignored,
-		// and long transactions caused performance issues on Wikimedia wikis: T315353#8218914.)
-		foreach ( $threadItemSet->getThreadItems() as $item ) {
-			$oldestRevisionSql = $dbw->newSelectQueryBuilder()
-				->from( 'discussiontools_item_pages' )
-				->field( 'itp_oldest_revision_id' )
-				->where( [ 'itp_items_id' => $itemsIds[ $item->getId() ] ] )
-				->caller( $method )
-				->getSQL();
-			$newestRevisionSql = $dbw->newSelectQueryBuilder()
-				->from( 'discussiontools_item_pages' )
-				->field( 'itp_newest_revision_id' )
-				->where( [ 'itp_items_id' => $itemsIds[ $item->getId() ] ] )
-				->caller( $method )
-				->getSQL();
-			$dbw->delete(
-				'discussiontools_item_revisions',
-				[
-					'itr_itemid_id' => $itemIdsIds[ $item->getId() ],
-					'itr_items_id' => $itemsIds[ $item->getId() ],
-					"itr_revision_id NOT IN ($oldestRevisionSql)",
-					"itr_revision_id NOT IN ($newestRevisionSql)",
-				],
-				$method
-			);
-		}
+			// Insert or update discussiontools_item_revisions rows, fill in itr_id field values.
+			foreach ( $threadItemSet->getThreadItems() as $item ) {
+				$transcl = $item->getTranscludedFrom();
+				$newOrUpdateRevRow =
+					[
+						'itr_itemid_id' => $itemIdsIds[ $item->getId() ],
+						'itr_revision_id' => $rev->getId(),
+						'itr_items_id' => $itemsIds[ $item->getId() ],
+						'itr_parent_id' =>
+							// This assumes that parent items were processed first
+							$item->getParent() ? $itemRevisionsIds[ $item->getParent()->getId() ] : null,
+						'itr_transcludedfrom' =>
+							$transcl === false ? null : (
+								$transcl === true ? 0 :
+									$this->pageStore->getPageByText( $transcl )->getId()
+							),
+						'itr_level' => $item->getLevel(),
+					] +
+					( $item instanceof HeadingItem ? [
+						'itr_headinglevel' => $item->isPlaceholderHeading() ? null : $item->getHeadingLevel(),
+					] : [] );
+
+				$itemRevisionsId = $dbw->newSelectQueryBuilder()
+					->from( 'discussiontools_item_revisions' )
+					->field( 'itr_id' )
+					->where( [
+						'itr_itemid_id' => $itemIdsIds[ $item->getId() ],
+						'itr_items_id' => $itemsIds[ $item->getId() ],
+						'itr_revision_id' => $rev->getId(),
+					] )
+					->caller( $method )
+					->fetchField();
+				if ( $itemRevisionsId === false ) {
+					$itemRevisionsUpdateId = null;
+					if ( isset( $revUpdateRows[ $itemsIds[ $item->getId() ] ] ) ) {
+						$itemRevisionsUpdateId = $dbw->newSelectQueryBuilder()
+							->from( 'discussiontools_item_revisions' )
+							->field( 'itr_id' )
+							->where( [
+								'itr_revision_id' => $revUpdateRows[ $itemsIds[ $item->getId() ] ],
+								// We only keep up to 2 discussiontools_item_revisions rows with the same
+								// (itr_itemid_id, itr_items_id) pair, for the oldest and newest revision known.
+								// Here we find any rows we don't want to keep and re-use them.
+								'itr_itemid_id' => $itemIdsIds[ $item->getId() ],
+								'itr_items_id' => $itemsIds[ $item->getId() ],
+							] )
+							->caller( $method )
+							->fetchField();
+						// The row to re-use may not be found if it has a different itr_itemid_id than the row
+						// we want to add.
+					}
+					if ( $itemRevisionsUpdateId ) {
+						$dbw->update(
+							'discussiontools_item_revisions',
+							$newOrUpdateRevRow,
+							[ 'itr_id' => $itemRevisionsUpdateId ],
+							$method
+						);
+						$itemRevisionsId = $itemRevisionsUpdateId;
+					} else {
+						$dbw->insert(
+							'discussiontools_item_revisions',
+							$newOrUpdateRevRow,
+							$method
+						);
+						$itemRevisionsId = $dbw->insertId();
+					}
+
+					$itemRevisionsIds[ $item->getId() ] = $itemRevisionsId;
+					$didInsert = true;
+				}
+			}
+		}, $dbw::ATOMIC_CANCELABLE );
 
 		return $didInsert;
 	}
