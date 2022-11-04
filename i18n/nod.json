@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ed g2s",
 			"Noktonissian"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ᨲᩬᨷ",
+	"discussiontools-replybutton": "ᨲᩬᨷ",
 	"discussiontools-replylink": "ᨲᩬᨷ",
 	"discussiontools-replywidget-advanced": "ᨡᩢ᩠᩶ᨶᩈᩪᨦ",
 	"discussiontools-replywidget-cancel": "ᩃᩮᩥ᩠ᨠᩃ᩶ᩣ᩠ᨦ",
