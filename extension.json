@@ -59,7 +59,8 @@
 					"config": {
 						"enable": "DiscussionToolsEnable",
 						"replyIndentation": "DiscussionToolsReplyIndentation",
-						"switchTime": "DiscussionToolsTimestampFormatSwitchTime"
+						"switchTime": "DiscussionToolsTimestampFormatSwitchTime",
+						"showFeedbackLinks": "DiscussionToolsShowFeedbackLinks"
 					}
 				},
 				"ReplyLinksController.js",
@@ -542,6 +543,10 @@
 		"DiscussionToolsReplyIndentation": {
 			"value": "invisible",
 			"description": "Reply indentation syntax to use: 'invisible' (use `<dl><dd>` tags to output `:` in wikitext) or 'bullet' (use `<ul><li>` tags to output `*` in wikitext)."
+		},
+		"DiscussionToolsShowFeedbackLinks": {
+			"value": false,
+			"description": "Show 'Share feedback...' links in the footer of reply tool and new topic tool."
 		},
 		"DiscussionToolsTimestampFormatSwitchTime": {
 			"value": "2022-07-12",

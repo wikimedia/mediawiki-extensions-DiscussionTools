@@ -5,7 +5,8 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),
 	licenseMessages = require( './licenseMessages.json' ),
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
-	enable2017Wikitext = featuresEnabled.sourcemodetoolbar;
+	enable2017Wikitext = featuresEnabled.sourcemodetoolbar,
+	dtConf = require( 'ext.discussionTools.init' ).config;
 
 require( './AbandonCommentDialog.js' );
 require( './AbandonTopicDialog.js' );
@@ -189,19 +190,21 @@ function ReplyWidget( commentController, commentDetails, config ) {
 			)
 		);
 	}
-	$footerLinks.append(
-		$( '<li>' ).append(
-			$( '<a>' )
-				.attr( {
-					href: this.isNewTopic ?
-						mw.msg( 'discussiontools-replywidget-feedback-link-newtopic' ) :
-						mw.msg( 'discussiontools-replywidget-feedback-link' ),
-					target: '_blank',
-					rel: 'noopener'
-				} )
-				.text( mw.msg( 'discussiontools-replywidget-feedback' ) )
-		)
-	);
+	if ( dtConf.showFeedbackLinks ) {
+		$footerLinks.append(
+			$( '<li>' ).append(
+				$( '<a>' )
+					.attr( {
+						href: this.isNewTopic ?
+							mw.msg( 'discussiontools-replywidget-feedback-link-newtopic' ) :
+							mw.msg( 'discussiontools-replywidget-feedback-link' ),
+						target: '_blank',
+						rel: 'noopener'
+					} )
+					.text( mw.msg( 'discussiontools-replywidget-feedback' ) )
+			)
+		);
+	}
 	this.$footer.append(
 		$( '<p>' ).addClass( 'plainlinks' ).html(
 			this.isNewTopic ? licenseMessages.newtopic : licenseMessages.reply
