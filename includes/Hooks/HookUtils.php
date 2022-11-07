@@ -213,9 +213,9 @@ class HookUtils {
 
 		if (
 			( $feature === static::TOPICSUBSCRIPTION || $feature === static::AUTOTOPICSUB ) &&
-			!$user->isRegistered()
+			// Users must be logged in to use topic subscription, and Echo must be installed (T322498)
+			( !$user->isRegistered() || !ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) )
 		) {
-			// Users must be logged in to use topic subscription
 			return false;
 		}
 
