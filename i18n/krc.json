@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Джууабла",
+	"discussiontools-replylink": "джууабла",
+	"discussiontools-replywidget-cancel": "Ызына ал",
+	"discussiontools-replywidget-mode-source": "Къайнакъ",
+	"discussiontools-replywidget-mode-visual": "Кёрюмлю",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} атлы хайырланучугъа джууаб бер",
+	"discussiontools-replywidget-preview": "Ал къарау",
+	"discussiontools-replywidget-reply": "Джууабла"
+}

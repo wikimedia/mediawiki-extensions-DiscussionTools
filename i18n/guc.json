@@ -4,10 +4,12 @@
 			"Leonfd1992"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Asouktaa",
 	"discussiontools-replylink": "asouktaa",
 	"discussiontools-replywidget-cancel": "Oo'ulawaa",
 	"discussiontools-replywidget-mode-source": "Ashajuushi",
 	"discussiontools-replywidget-mode-visual": "Mapüleesalü",
 	"discussiontools-replywidget-placeholder-reply": "Asouktaa nümüin {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Analaaya palajanaa",
 	"discussiontools-replywidget-reply": "Asouktaa"
 }

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Akbarali"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "മറുപടി",
+	"discussiontools-replylink": "മറുപടി",
+	"discussiontools-replywidget-cancel": "റദ്ദാക്കുക",
+	"discussiontools-replywidget-mode-source": "സ്രോതസ്സ്",
+	"discussiontools-replywidget-mode-visual": "കാഴ്‌ച സംബന്ധിച്ച",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI: $1 }} എന്നതിനുള്ള മറുപടി",
+	"discussiontools-replywidget-preview": "എങ്ങനെയുണ്ടെന്നു കാണുക",
+	"discussiontools-replywidget-reply": "മറുപടി"
+}
