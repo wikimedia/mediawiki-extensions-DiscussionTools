@@ -80,12 +80,12 @@ if ( OO.ui.isMobile() ) {
 			include: [ 'link' ]
 		},
 		{
-			name: 'other',
-			include: [ 'usernameCompletion' ]
-		},
-		{
 			name: 'specialCharacter',
 			include: [ 'specialCharacter' ]
+		},
+		{
+			name: 'other',
+			include: [ 'usernameCompletion' ]
 		}
 	];
 }
