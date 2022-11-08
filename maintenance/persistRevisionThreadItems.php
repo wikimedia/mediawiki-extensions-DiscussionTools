@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
 use IDatabase;
+use Language;
 use Maintenance;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
@@ -26,6 +27,7 @@ class PersistRevisionThreadItems extends Maintenance {
 	private IDatabase $dbr;
 	private ThreadItemStore $itemStore;
 	private RevisionStore $revStore;
+	private Language $lang;
 
 	public function __construct() {
 		parent::__construct();
@@ -45,6 +47,7 @@ class PersistRevisionThreadItems extends Maintenance {
 		$this->dbr = $this->getDB( DB_REPLICA );
 		$this->itemStore = $services->getService( 'DiscussionTools.ThreadItemStore' );
 		$this->revStore = $services->getRevisionStore();
+		$this->lang = $services->getLanguageFactory()->getLanguage( 'en' );
 
 		$qb = $this->dbr->newSelectQueryBuilder();
 
@@ -88,6 +91,8 @@ class PersistRevisionThreadItems extends Maintenance {
 	 * @param array $index
 	 */
 	private function process( SelectQueryBuilder $qb, array $index ): void {
+		$start = microtime( true );
+
 		$qb->caller( __METHOD__ );
 
 		// estimateRowCount() refuses to work when fields are set, so we can't just call it on $qb
@@ -148,7 +153,9 @@ class PersistRevisionThreadItems extends Maintenance {
 			}
 		}
 
-		$this->output( "Finished!\n" );
+		$duration = microtime( true ) - $start;
+		$durationFormatted = $this->lang->formatTimePeriod( $duration );
+		$this->output( "Finished in $durationFormatted\n" );
 	}
 
 	/**
