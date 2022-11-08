@@ -85,5 +85,6 @@ module.exports = {
 	HeadingItem: require( './HeadingItem.js' ),
 	CommentItem: require( './CommentItem.js' ),
 	utils: require( './utils.js' ),
+	config: require( './config.json' ),
 	logger: require( './logger.js' )
 };
