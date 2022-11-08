@@ -310,11 +310,22 @@ class HookUtils {
 
 		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
 
-		if (
-			$user->isRegistered() &&
-			( $feature ? ( $abtest == $feature ) : (bool)$abtest )
-		) {
-			return $user->getId() % 2 == 0 ? 'test' : 'control';
+		if ( $feature ? ( $abtest == $feature ) : (bool)$abtest ) {
+			if ( $user->isRegistered() ) {
+				return $user->getId() % 2 == 0 ? 'test' : 'control';
+			}
+			// logged out
+			$req = RequestContext::getMain()->getRequest();
+			$cookie = $req->getCookie( 'DTAB', '' );
+			if ( $cookie ) {
+				return $cookie;
+			}
+			// we just want to remember this across all calls in this request
+			static $bucket = false;
+			if ( !$bucket ) {
+				$bucket = rand( 0, 1 ) <= 0.5 ? 'test' : 'control';
+			}
+			return $bucket;
 		}
 		return '';
 	}
