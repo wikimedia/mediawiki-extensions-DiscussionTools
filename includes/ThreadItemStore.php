@@ -553,10 +553,10 @@ class ThreadItemStore {
 						);
 						$itemRevisionsId = $dbw->insertId();
 					}
-
-					$itemRevisionsIds[ $item->getId() ] = $itemRevisionsId;
 					$didInsert = true;
 				}
+
+				$itemRevisionsIds[ $item->getId() ] = $itemRevisionsId;
 			}
 		}, $dbw::ATOMIC_CANCELABLE );
 
