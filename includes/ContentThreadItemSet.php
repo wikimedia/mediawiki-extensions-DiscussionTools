@@ -100,4 +100,14 @@ class ContentThreadItemSet implements ThreadItemSet {
 	public function getThreads(): array {
 		return $this->threads;
 	}
+
+	/**
+	 * @inheritDoc
+	 * @return ContentHeadingItem[] Tree structure of comments, top-level items are the headings.
+	 */
+	public function getThreadsStructured(): array {
+		return array_values( array_filter( $this->getThreads(), static function ( ContentThreadItem $item ) {
+			return $item->getParent() === null;
+		} ) );
+	}
 }

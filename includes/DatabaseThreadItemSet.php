@@ -100,4 +100,14 @@ class DatabaseThreadItemSet implements ThreadItemSet {
 	public function getThreads(): array {
 		return $this->threads;
 	}
+
+	/**
+	 * @inheritDoc
+	 * @return DatabaseHeadingItem[] Tree structure of comments, top-level items are the headings.
+	 */
+	public function getThreadsStructured(): array {
+		return array_values( array_filter( $this->getThreads(), static function ( DatabaseThreadItem $item ) {
+			return $item->getParent() === null;
+		} ) );
+	}
 }

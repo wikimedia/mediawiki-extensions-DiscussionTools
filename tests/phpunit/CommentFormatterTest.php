@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use FormatJson;
 use MediaWiki\MediaWikiServices;
+use ParserOutput;
 use Title;
 use Wikimedia\TestingAccessWrapper;
 
@@ -28,7 +30,11 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
-		[ 'html' => $preprocessed ] = $commentFormatter->addDiscussionToolsInternal( $dom, $title );
+		$pout = new ParserOutput();
+		[ 'html' => $preprocessed ] = $commentFormatter->addDiscussionToolsInternal( $dom, $pout, $title );
+		$preprocessed .= "\n<pre>\n" .
+			FormatJson::encode( $pout->getJsConfigVars(), "\t", FormatJson::ALL_OK ) .
+			"\n</pre>";
 
 		$mockSubStore = new MockSubscriptionStore();
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );

@@ -97,6 +97,9 @@ interface ThreadItemSet {
 	 * Each thread must begin with a heading. Original messages in the thread are treated as replies to
 	 * its heading. Other replies are associated based on the order and indentation level.
 	 *
+	 * WARNING: Sub-headings are included twice in this tree, once as the child item of the
+	 * "parent" heading, and once again in the root object.
+	 *
 	 * Note that the objects in `comments` are extended in-place with the additional data.
 	 *
 	 * For example, for a MediaWiki discussion like this (we're dealing with HTML DOM here,
@@ -135,4 +138,12 @@ interface ThreadItemSet {
 	 * @return HeadingItem[] Tree structure of comments, top-level items are the headings.
 	 */
 	public function getThreads(): array;
+
+	/**
+	 * Same as #getThreads, but without the duplicate sub-headings described in the
+	 * documentation of that method.
+	 *
+	 * @return HeadingItem[] Tree structure of comments, top-level items are the headings.
+	 */
+	public function getThreadsStructured(): array;
 }
