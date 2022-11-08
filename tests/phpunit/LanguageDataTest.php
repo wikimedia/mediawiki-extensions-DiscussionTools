@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use HashConfig;
 use MediaWiki\Extension\DiscussionTools\LanguageData;
 use MediaWiki\MediaWikiServices;
 
@@ -15,17 +14,20 @@ class LanguageDataTest extends IntegrationTestCase {
 	 * @dataProvider provideLocalData
 	 */
 	public function testGetLocalData( string $langCode, array $config, string $expectedPath ): void {
-		$conf = new HashConfig( $config + [
+		$config += [
 			'ContentLanguage' => $langCode,
+			'UsePigLatinVariant' => false,
 			'TranslateNumerals' => true,
 			'Localtimezone' => 'UTC',
-		] );
+		];
+		$this->overrideConfigValues( $config );
+
 		$expectedData = static::getJson( $expectedPath );
 
 		$services = MediaWikiServices::getInstance();
 		$languageData = new LanguageData(
-			$conf,
-			MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( $langCode ),
+			$services->getMainConfig(),
+			$services->getLanguageFactory()->getLanguage( $langCode ),
 			$services->getLanguageConverterFactory(),
 			$services->getSpecialPageFactory()
 		);
