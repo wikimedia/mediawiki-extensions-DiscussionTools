@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Malikxan"
+			"Malikxan",
+			"Zafar Shamsiddinov"
 		]
 	},
 	"discussiontools": "Munozara asboblari",
@@ -41,6 +42,12 @@
 	"discussiontools-replywidget-summary": "Qisqa izoh",
 	"discussiontools-replywidget-terms-click": "„$1“ tugmasini bosish orqali ushbu viki foydalanish shartlariga rozilik bildirasiz.",
 	"discussiontools-replywidget-transcluded": "Qoldirgan izohingiz [[$1]] sahifasida saqlanadi.",
+	"discussiontools-topicsubscription-button-subscribe": "obuna boʻlish",
+	"discussiontools-topicsubscription-button-unsubscribe": "obunani bekor qilish",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Siz ushbu mavzudagi yangi sharhlar haqida bildirishnoma olasiz.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Siz obuna boʻldingiz!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Siz endi ushbu mavzudagi yangi fikrlar haqida bildirishnoma olmaysiz.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Obunani bekor qildingiz.",
 	"tag-discussiontools-description": "DiscussionTools orqali qilingan tahrir",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Yangi mavzu]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Javob]",

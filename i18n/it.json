@@ -9,7 +9,9 @@
 			"Lorem Ipsum",
 			"Sakretsu",
 			"Scompo",
-			"Mannivu"
+			"Mannivu",
+			"GpieroMW",
+			"Pierpao"
 		]
 	},
 	"discussiontools": "Strumenti di discussione",
@@ -35,7 +37,7 @@
 	"discussiontools-error-noswitchtove-table": "sintassi di tabella",
 	"discussiontools-error-noswitchtove-template": "sintassi di template",
 	"discussiontools-error-noswitchtove-title": "Modalità visuale disabilitata",
-	"discussiontools-newtopic-missing-title": "Per favore, inserisci un titolo per l'argomento di cui desideri discutere. Se clicchi ora su \"{{int:discussiontools-replywidget-newtopic}}\", la discussione sarà creata senza titolo.",
+	"discussiontools-newtopic-missing-title": "Per favore, dai un titolo all'argomento di cui desideri discutere. Se clicchi ora su \"{{int:discussiontools-replywidget-newtopic}}\", la discussione sarà creata senza titolo.",
 	"discussiontools-newtopic-placeholder-title": "Titolo",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|ha risposto}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Una nuova risposta|$1 nuove risposte|100=Più di 99 nuove risposte}} in \"<strong>$3</strong>\".",
@@ -53,8 +55,8 @@
 	"discussiontools-preference-replytool-help": "Mostra un link per rispondere con un solo click ai commenti sulle pagine di discussione.",
 	"discussiontools-preference-sourcemodetoolbar": "Abilita strumenti di modifica nella modalità sorgente",
 	"discussiontools-preference-sourcemodetoolbar-help": "Mostra nella modalità sorgente delle risposte e aggiunte di discussione rapide una barra degli strumenti dotata di scorciatoie per menzionare utenti e inserire collegamenti.",
-	"discussiontools-preference-topicsubscription": "Abilita iscrizione alle discussioni",
-	"discussiontools-preference-topicsubscription-help": "Consente di ricevere notifiche di nuovi commenti a discussioni specifiche.",
+	"discussiontools-preference-topicsubscription": "Abilita iscrizione agli argomenti",
+	"discussiontools-preference-topicsubscription-help": "Ti permette di iscriverti ad argomenti specifici per ricevere una notifica a ogni nuovo commento.",
 	"discussiontools-replylink": "rispondi",
 	"discussiontools-replywidget-abandon": "Confermi di voler abbandonare il commento che stavi scrivendo?",
 	"discussiontools-replywidget-abandon-discard": "Annulla commento",

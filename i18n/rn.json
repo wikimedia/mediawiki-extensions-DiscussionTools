@@ -2,13 +2,24 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Gilbert Ndihokubwayo"
+			"Gilbert Ndihokubwayo",
+			"Ferdinand IF99"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Ishura",
 	"discussiontools-replylink": "kwishura",
+	"discussiontools-replywidget-advanced": "Biteye imbere",
 	"discussiontools-replywidget-cancel": "Futa",
 	"discussiontools-replywidget-mode-source": "Inkomoko",
 	"discussiontools-replywidget-mode-visual": "Biboneka",
 	"discussiontools-replywidget-placeholder-reply": "Kwishura kuri {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Kwishura"
+	"discussiontools-replywidget-preview": "Imbere",
+	"discussiontools-replywidget-reply": "Kwishura",
+	"discussiontools-replywidget-summary": "Incamake",
+	"discussiontools-topicsubscription-button-subscribe": "Iyandikishe",
+	"discussiontools-topicsubscription-button-unsubscribe": "Mukureho ukwiyandikisha kwanyu",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Muraza kuronka itangazo kuvyerekeye ivyifuzo bishasha kuri iki kiyago",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Mwiyandikishije",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ntimuza kuronka amatangazo kuvyerekeye ivyiyunviro kuri iki ciyunviro",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Mwiyandikishije"
 }

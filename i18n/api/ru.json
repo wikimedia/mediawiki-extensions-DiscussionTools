@@ -8,7 +8,8 @@
 			"Kareyac",
 			"Pacha Tchernof",
 			"Jack who built the house",
-			"Facenapalm"
+			"Facenapalm",
+			"Vlad5250"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Сообщение с идентификатором '$1' не найдено.",
@@ -24,5 +25,9 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Контент для отправки, в виде вики-текста. Не может использоваться вместе с <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Добавить новое сообщение как ответ на предыдущее сообщение.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Добавить новый раздел обсуждения и первое сообщение в нём.",
-	"apihelp-discussiontoolsedit-summary": "Отправить сообщение на страницу обсуждения."
+	"apihelp-discussiontoolsedit-summary": "Отправить сообщение на страницу обсуждения.",
+	"apihelp-discussiontoolssubscribe-param-page": "Страница, на которой появляется тема",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Название темы, на которую нужно подписаться (или отписаться)",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True для подписки, false для отписки",
+	"apihelp-discussiontoolssubscribe-summary": "Подписаться (или отменить подписку), чтобы получать уведомления по теме."
 }
