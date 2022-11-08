@@ -485,7 +485,7 @@
 		},
 		"DiscussionToolsABTest": {
 			"value": false,
-			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', or 'newtopictool'"
+			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', 'newtopictool', or 'mobile'"
 		},
 		"DiscussionToolsEnableMobile": {
 			"value": true,
