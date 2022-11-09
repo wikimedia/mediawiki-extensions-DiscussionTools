@@ -381,11 +381,18 @@ class ThreadItemStore {
 				->caller( $method )
 				->fetchField();
 			if ( $itemIdsId === false ) {
-				$dbw->insert(
+				// Use upsert() instead of insert() to handle race conditions (T322701).
+				// Do a SELECT first to avoid unnecessary replication and bumping auto-increment values.
+				// (We can't just use INSERT IGNORE and then do a SELECT because of implicit
+				// transactions with REPEATABLE READ.)
+				$dbw->upsert(
 					'discussiontools_item_ids',
 					[
 						'itid_itemid' => $item->getId(),
 					],
+					'itid_itemid',
+					// We update nothing, as the rows will be identical, but this can't be empty
+					[ 'itid_id = itid_id' ],
 					$method
 				);
 				$itemIdsId = $dbw->insertId();
@@ -405,7 +412,11 @@ class ThreadItemStore {
 				->caller( $method )
 				->fetchField();
 			if ( $itemsId === false ) {
-				$dbw->insert(
+				// Use upsert() instead of insert() to handle race conditions (T322701).
+				// Do a SELECT first to avoid unnecessary replication and bumping auto-increment values.
+				// (We can't just use INSERT IGNORE and then do a SELECT because of implicit
+				// transactions with REPEATABLE READ.)
+				$dbw->upsert(
 					'discussiontools_items',
 					[
 						'it_itemname' => $item->getName(),
@@ -416,6 +427,9 @@ class ThreadItemStore {
 						'it_actor' =>
 							$this->actorStore->findActorIdByName( $item->getAuthor(), $dbw ),
 					] : [] ),
+					'it_itemname',
+					// We update nothing, as the rows will be identical, but this can't be empty
+					[ 'it_id = it_id' ],
 					$method
 				);
 				$itemsId = $dbw->insertId();
