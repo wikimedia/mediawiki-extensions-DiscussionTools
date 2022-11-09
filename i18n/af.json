@@ -27,6 +27,7 @@
 	"discussiontools-replywidget-loading": "Besig om te laai...",
 	"discussiontools-replywidget-mode-source": "Bron",
 	"discussiontools-replywidget-mode-visual": "Visueel",
+	"discussiontools-replywidget-newtopic": "Voeg onderwerp by",
 	"discussiontools-replywidget-placeholder-reply": "Antwoord op {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Voorkeure",
 	"discussiontools-replywidget-preview": "Voorskou",

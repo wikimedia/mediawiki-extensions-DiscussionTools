@@ -21,7 +21,7 @@
 	"discussiontools-emptystate-desc-self-anon": "Bidragsytere på {{SITENAME}} kan bruke [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|diskusjonssiden]] til å publisere en offentlig beskjed om redigeringer gjort fra IP-adressen du bruker for tiden.\n\nMange IP-adresser endres med (u)jevne mellomrom, og deles ofte av flere personer. Du kan [$1 opprette en konto] eller [$2 logge inn] for å unngå å bli forvirret med andre uinnloggede brukere. Å opprette en brukerkonto gjør også at IP-adressen din ikke vises offentlig.",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Diskusjonssider]] er der man diskuterer hvordan innholdet på {{SITENAME}} kan bli så bra som mulig. Begynn en ny diskusjon for å samarbeide {{GENDER:{{PAGENAME}}|med}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Det du skriver her er offentlig og kan leses av alle.",
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Diskusjonssider]] er der man diskuterer hvordan innholdet på {{SITENAME}} kan bli så bra som mulig. Bruk denne siden for å begynne en diskusjon om redigeringene som er gjort fra denne IP-adressen. Det du sier her er offentlig synlig for alle. Mange IP-adresser endres med regelmessig, og deles ofte av flere personer.",
-	"discussiontools-emptystate-title": "Begynn en diskusjon om {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title": "Begynn en diskusjon om siden «{{SUBJECTPAGENAME}}»",
 	"discussiontools-emptystate-title-self": "Velkommen til diskusjonssiden din",
 	"discussiontools-emptystate-title-self-anon": "Velkommen til denne diskusjonssiden",
 	"discussiontools-emptystate-title-user": "Begynn en diskusjon {{GENDER:{{PAGENAME}}|med}} {{PAGENAME}}",

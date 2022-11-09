@@ -65,7 +65,7 @@
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Отписване",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Редактиране на абонаментите",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Абонамент|Абонаменти}} за беседa",
-	"echo-pref-tooltip-dt-subscription": "Уведомяване, когато някой публикува нов коментар в тема за която съм абониран.",
+	"echo-pref-tooltip-dt-subscription": "Известяване, когато някой публикува нов коментар в тема за която съм абониран.",
 	"tag-discussiontools-description": "Редакция, направена чрез Визуални инструменти",
 	"tag-discussiontools-edit": "Редактиран коментар",
 	"tag-discussiontools-edit-description": "Потребител редактира съществуващ коментар чрез Визуални инструменти",
