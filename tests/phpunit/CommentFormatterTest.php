@@ -18,9 +18,11 @@ class CommentFormatterTest extends IntegrationTestCase {
 	 * @dataProvider provideAddDiscussionToolsInternal
 	 */
 	public function testAddDiscussionToolsInternal(
-		string $name, string $title, string $dom, array $expectedByMode, string $config, string $data
+		string $name, string $title, string $dom, string $expected, string $config, string $data, bool $isMobile
 	): void {
 		$dom = static::getHtml( $dom );
+		$expectedPath = $expected;
+		$expected = static::getText( $expectedPath );
 		$config = static::getJson( $config );
 		$data = static::getJson( $data );
 
@@ -41,38 +43,40 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		\OutputPage::setupOOUI();
 
-		$modes = [ 'mobile' => true, 'desktop' => false ];
-		foreach ( $modes as $mode => $isMobile ) {
-			$actual = $preprocessed;
-			$expectedPath = $expectedByMode[ $mode ];
-			$expected = static::getText( $expectedPath );
+		$actual = $preprocessed;
 
-			$actual = MockCommentFormatter::postprocessTopicSubscription(
-				$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser(), $isMobile
-			);
+		$actual = MockCommentFormatter::postprocessTopicSubscription(
+			$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser(), $isMobile
+		);
 
-			$actual = MockCommentFormatter::postprocessVisualEnhancements(
-				$actual, $qqxLang, static::getTestUser()->getUser(), $isMobile
-			);
+		$actual = MockCommentFormatter::postprocessVisualEnhancements(
+			$actual, $qqxLang, static::getTestUser()->getUser(), $isMobile
+		);
 
-			$actual = MockCommentFormatter::postprocessReplyTool(
-				$actual, $qqxLang, $isMobile
-			);
+		$actual = MockCommentFormatter::postprocessReplyTool(
+			$actual, $qqxLang, $isMobile
+		);
 
-			// OOUI ID's are non-deterministic, so strip them from test output
-			$actual = preg_replace( '/ id=[\'"]ooui-php-[0-9]+[\'"]/', '', $actual );
+		// OOUI ID's are non-deterministic, so strip them from test output
+		$actual = preg_replace( '/ id=[\'"]ooui-php-[0-9]+[\'"]/', '', $actual );
 
-			// Optionally write updated content to the "reply HTML" files
-			if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
-				static::overwriteTextFile( $expectedPath, $actual );
-			}
-
-			static::assertEquals( $expected, $actual, $name );
+		// Optionally write updated content to the "reply HTML" files
+		if ( getenv( 'DISCUSSIONTOOLS_OVERWRITE_TESTS' ) ) {
+			static::overwriteTextFile( $expectedPath, $actual );
 		}
+
+		static::assertEquals( $expected, $actual, $name );
 	}
 
-	public function provideAddDiscussionToolsInternal(): array {
-		return static::getJson( '../cases/formatted.json' );
+	/**
+	 * @return iterable<array>
+	 */
+	public function provideAddDiscussionToolsInternal() {
+		foreach ( static::getJson( '../cases/formatted.json' ) as $case ) {
+			// Run each test case twice, for desktop and mobile output
+			yield array_merge( $case, [ 'expected' => $case['expected']['desktop'], 'isMobile' => false ] );
+			yield array_merge( $case, [ 'expected' => $case['expected']['mobile'], 'isMobile' => true ] );
+		}
 	}
 
 }
