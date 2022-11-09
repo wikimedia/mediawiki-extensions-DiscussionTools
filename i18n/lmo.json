@@ -31,7 +31,7 @@
 	"discussiontools-error-noswitchtove": "El passagg a la manera visual l'è stad disativad perchè in del coment che t'hee scrivud l'è stada rilevada <b>$1</b>. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Per savenn pussee].",
 	"discussiontools-error-noswitchtove-extension": "sintassi de riferiment o estension",
 	"discussiontools-error-noswitchtove-table": "sintassi de tabella",
-	"discussiontools-error-noswitchtove-template": "sitassi de model",
+	"discussiontools-error-noswitchtove-template": "sitassi del modell",
 	"discussiontools-error-noswitchtove-title": "Manera visual disativada",
 	"discussiontools-findcomment-results-id": "El coment con l'ID dad l'è vegnud a voltra in {{PLURAL:$1|questa pagina|queste pagine}} chì:",
 	"discussiontools-findcomment-results-name": "El coment con el nom dad l'è vegnud a voltra in {{PLURAL:$1|questa pagina chì|queste pagine chì}}:",
