@@ -28,7 +28,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$this->setupEnv( $config, $data );
 		$title = Title::newFromText( $title );
-		MockCommentFormatter::$parser = TestUtils::createParser( $data );
+		MockCommentFormatter::$parser = static::createParser( $data );
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
