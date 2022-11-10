@@ -26,8 +26,13 @@
 	"discussiontools-replywidget-preview": "Pregled",
 	"discussiontools-replywidget-reply": "Odgovori",
 	"discussiontools-replywidget-signature-title": "Pronađen je potpis",
+	"discussiontools-replywidget-summary": "Sažetak",
 	"discussiontools-replywidget-terms-click": "Klikom na \"$1\" prihvatate uslove korištenja ovog wikija.",
 	"discussiontools-replywidget-transcluded": "Komentar će biti sačuvan na stranici [[$1]].",
+	"discussiontools-replywidget-watchthis": "Dodaj stranicu na [[Special:Watchlist|spisak praćenja]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|osoba|osobe}} u raspravi",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentara}}",
+	"discussiontools-topicheader-latestcomment": "Posljednji komentar: $1",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]",
 	"tag-discussiontools-source": "izvorno",
 	"tag-discussiontools-visual": "vizualno"

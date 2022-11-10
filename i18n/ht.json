@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Kitanago"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Ou pral resevwa yon notifikasyon lè yon moun poste yon nouvo kòmantè nan diskisyon sa a. Ou ka ajiste konfigirasyon notifikasyon ou nan preferans ou.",
@@ -69,7 +70,7 @@
 	"discussiontools-replywidget-reply": "Reponn",
 	"discussiontools-replywidget-summary": "Rezime",
 	"discussiontools-replywidget-terms-click": "Lè w klike sou « $1 », ou dakò ak kondisyon itilizasyon wiki sa a.",
-	"discussiontools-replywidget-watchthis": "Ajoute paj sa a nan [[Special:Watchlist|list swivi]] ou",
+	"discussiontools-replywidget-watchthis": "Ajoute paj sa a nan [[Special:Watchlist|lis swivi]] ou",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|moun}} nan diskisyon",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kòmantè}}",
 	"discussiontools-topicheader-latestcomment": "Dènye kòmantè : $1",
@@ -83,9 +84,9 @@
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Dezabòne pou sispann resevwa notifikasyon yo.",
 	"discussiontools-topicsubscription-error-not-found-body": "Abònman ki espesifye nan URL la pa te jwenn.",
 	"discussiontools-topicsubscription-error-not-found-title": "Abònman pa jwenn",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Ou pral resevwa notifikasyon sou nouvo kòmantè yo nan sijè sa a.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Ou pral resevwa notifikasyon sou nouvo kòmantè sou sijè sa a.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Ou te abòne !",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ou pa pral resevwa notifikasyon sou nouvo kòmantè yo nan sijè sa a.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ou pa pral resevwa notifikasyon sou nouvo kòmantè sou sijè sa a.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Ou te dezabòne.",
 	"discussiontools-topicsubscription-pager-actions": "Aksyon yo",
 	"discussiontools-topicsubscription-pager-created": "Te abòne pou premye fwa",

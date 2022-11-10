@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"F Samaritani",
-			"Jaime Sulas"
+			"Jaime Sulas",
+			"Samaritanif"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Arrespundi",
@@ -17,6 +18,7 @@
 	"discussiontools-replywidget-preferences": "Preferèntzias",
 	"discussiontools-replywidget-preview": "Anteprima",
 	"discussiontools-replywidget-reply": "Arrespundi",
+	"discussiontools-replywidget-summary": "Arresùmini",
 	"discussiontools-topicsubscription-pager-page": "Pàgina",
 	"tag-discussiontools-source": "Mitza"
 }

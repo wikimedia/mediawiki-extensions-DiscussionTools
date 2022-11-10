@@ -8,6 +8,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Muuʹtt asetõõzzid",
 	"discussiontools-defaultsummary-reply": "Vasttõs",
 	"discussiontools-findcomment-label-search": "Ooʒʒ",
+	"discussiontools-findcomment-noresults": "Ni mâiʹd ij käunnʼjam.",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekuntt|sekuunt|sekunttâd}}",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Õhtt ođđ vasttõs|$1 ođđ vasttõõzz|$1 ođđ vasttõssâd|100=99+ ođđ replies}} teeʹmest \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Čuäʹjet kommeeʹnt",
