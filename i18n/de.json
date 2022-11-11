@@ -52,6 +52,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(nicht in aktueller Version)",
 	"discussiontools-findcomment-results-transcluded": "(von einer anderen Seite einbezogen)",
 	"discussiontools-findcomment-title": "Kommentar finden",
+	"discussiontools-ledesection-button": "Mehr über diese Seite erfahren",
+	"discussiontools-ledesection-title": "Über diese Diskussionsseite",
 	"discussiontools-limitreport-errorreqid": "Diskussions-Werkzeuge-Fehler Anfrage-ID",
 	"discussiontools-limitreport-timeusage": "Zeitverbrauch der Diskussions-Werkzeuge",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|Sekunde|Sekunden}}",
