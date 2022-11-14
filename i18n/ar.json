@@ -53,6 +53,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(ليس في المراجعة الحالية)",
 	"discussiontools-findcomment-results-transcluded": "(محولة من صفحة أخرى)",
 	"discussiontools-findcomment-title": "إضافة تعليق",
+	"discussiontools-ledesection-button": "تعلم المزيد عن هذه الصفحة",
+	"discussiontools-ledesection-title": "عن صفحة النقاش هذه",
 	"discussiontools-limitreport-errorreqid": "آي دي (ID) طلب خاطئ لـ أدوات_نقاش",
 	"discussiontools-limitreport-timeusage": "وقت استخدام أدوات_نقاش",
 	"discussiontools-limitreport-timeusage-value": "{{PLURAL:$1|أقل من ثانية|ثانية واحدة|ثانيتان|$1 ثوان|$1 ثانية}}",

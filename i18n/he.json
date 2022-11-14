@@ -50,6 +50,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(לא בגרסה הנוכחית)",
 	"discussiontools-findcomment-results-transcluded": "(מוכללת מדף אחר)",
 	"discussiontools-findcomment-title": "מציאת תגובה",
+	"discussiontools-ledesection-button": "מידע נוסף על הדף הזה",
+	"discussiontools-ledesection-title": "אודות דף השיחה הזה",
 	"discussiontools-limitreport-errorreqid": "מזהה בקשת שגיאה של כלי שיחה",
 	"discussiontools-limitreport-timeusage": "שימוש בזמן של כלי שיחה",
 	"discussiontools-limitreport-timeusage-value": "{{PLURAL:$1|שנייה אחת|$1 שניות}}",

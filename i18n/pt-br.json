@@ -45,6 +45,8 @@
 	"discussiontools-error-noswitchtove-table": "sintaxe da tabela",
 	"discussiontools-error-noswitchtove-template": "sintaxe da predefinição",
 	"discussiontools-error-noswitchtove-title": "Modo visual desativado",
+	"discussiontools-ledesection-button": "Saiba mais sobre esta página",
+	"discussiontools-ledesection-title": "Sobre esta página de discussão",
 	"discussiontools-limitreport-errorreqid": "ID de solicitação de erro do DiscussãoTools",
 	"discussiontools-limitreport-timeusage": "Uso de tempo de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|segundo|segundos}}",

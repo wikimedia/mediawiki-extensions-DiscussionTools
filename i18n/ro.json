@@ -46,6 +46,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(nu este în versiunea curentă)",
 	"discussiontools-findcomment-results-transcluded": "(transclus dintr-o altă pagină)",
 	"discussiontools-findcomment-title": "Găsire comentariu",
+	"discussiontools-ledesection-button": "Aflați mai multe despre această pagină",
+	"discussiontools-ledesection-title": "Despre această pagină de discuție",
 	"discussiontools-limitreport-errorreqid": "Eroare DiscussionTools la cererea ID-ului",
 	"discussiontools-limitreport-timeusage": "Timpul de utilizare DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secundă|secunde}}",

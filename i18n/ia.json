@@ -42,6 +42,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(non es in le version actual)",
 	"discussiontools-findcomment-results-transcluded": "(transcludite desde un altere pagina)",
 	"discussiontools-findcomment-title": "Trovar commento",
+	"discussiontools-ledesection-button": "Saper plus sur iste pagina",
+	"discussiontools-ledesection-title": "A proposito de iste pagina de discussion",
 	"discussiontools-limitreport-errorreqid": "ID del requesta del error de DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Uso de tempore de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secunda|secundas}}",

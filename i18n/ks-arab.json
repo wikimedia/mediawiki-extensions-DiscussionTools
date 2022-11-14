@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Iflaq",
+			"Tajamul9",
 			"Teashae"
 		]
 	},
@@ -16,6 +17,8 @@
 	"discussiontools-emptystate-title-self-anon": "یَتھ کَتھ باتھ صَفَس پؠٹھ خٲر مَقدَم",
 	"discussiontools-emptystate-title-user-anon": "یَتھ کَتھ باتھ صَفَس پؠٹھ خٲر مَقدَم",
 	"discussiontools-error-comment-disappeared-reload": "مہربٲنی کٔرِتھ کٔرِو یہِ صَفہٕ تازٕ تہٕ کٔرِو بیٚیہِ یہِ کٲم.",
+	"discussiontools-ledesection-button": "یَتھ صَفس مُتلق پٕریٚو بییہٚ",
+	"discussiontools-ledesection-title": "یَتھ کَتھ صَفَس مُتلِق",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|سؠکَنٛڈ}}",
 	"discussiontools-newtopic-placeholder-title": "موضوٗع",
 	"discussiontools-postedit-confirmation-topicadded": "تُہُنٛد موضوٗع آو شایع کَرنہٕ.",
@@ -38,6 +41,7 @@
 	"discussiontools-replywidget-watchthis": "یہِ صَفہٕ تھٲوِو [[Special:Watchlist|نَظرِ تَل]]",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|صٲرِف}} بَحَث مَنٛز",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|کَتھ| کَتھہٕ}}",
 	"discussiontools-topicheader-latestcomment": "ٲخری تَبصُر: $1",
 	"discussiontools-topicsubscription-button-subscribe": "تٲیِد کَرُن",
 	"discussiontools-topicsubscription-button-subscribe-label": "تٲیِد کَرُن",

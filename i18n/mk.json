@@ -45,6 +45,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(нема во тековната преработка)",
 	"discussiontools-findcomment-results-transcluded": "(превметнато од друга страница)",
 	"discussiontools-findcomment-title": "Најди коментар",
+	"discussiontools-ledesection-button": "Дознајте повеќе за страницава",
+	"discussiontools-ledesection-title": "За оваа разговорна страница",
 	"discussiontools-limitreport-errorreqid": "Назнака на барањето од Разговорни алатки со грешка",
 	"discussiontools-limitreport-timeusage": "Употребено време од Разговорни алатки",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунди}}",

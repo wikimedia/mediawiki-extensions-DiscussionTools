@@ -11,6 +11,7 @@
 	"discussiontools-newtopic-placeholder-title": "Titolo",
 	"discussiontools-postedit-confirmation-published": "Via komento estis publikigita.",
 	"discussiontools-replylink": "respondi",
+	"discussiontools-replywidget-advanced": "Altnivela",
 	"discussiontools-replywidget-cancel": "Nuligi",
 	"discussiontools-replywidget-mention-tool-header": "Trovi uzanton: $1",
 	"discussiontools-replywidget-mention-tool-title": "Mencii uzanton",
@@ -20,6 +21,12 @@
 	"discussiontools-replywidget-preview": "Antaŭrigardi",
 	"discussiontools-replywidget-reply": "Respondi",
 	"discussiontools-replywidget-summary": "Resumo",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komento|komentoj}}",
+	"discussiontools-topicheader-latestcomment": "Lasta komento: $1",
+	"discussiontools-topicsubscription-button-subscribe": "aboni",
+	"discussiontools-topicsubscription-button-subscribe-label": "Aboni",
+	"discussiontools-topicsubscription-button-unsubscribe": "malaboni",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Malaboni",
 	"tag-discussiontools-source": "Fonto",
 	"tag-discussiontools-visual": "Vida"
 }

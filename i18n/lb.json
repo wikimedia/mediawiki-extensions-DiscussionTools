@@ -34,6 +34,8 @@
 	"discussiontools-findcomment-noresults": "Keng Resultater.",
 	"discussiontools-findcomment-results-notcurrent": "(net an der aktueller Versioun)",
 	"discussiontools-findcomment-title": "Bemierkung fannen",
+	"discussiontools-ledesection-button": "Fir méi ze wëssen iwwer dës Säit",
+	"discussiontools-ledesection-title": "Iwwer dës Diskussiouns-Säit",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|Sekonn|Sekonnen}}",
 	"discussiontools-newtopic-placeholder-title": "Sujet",
 	"discussiontools-notification-removed-topic-view": "Säit weisen",

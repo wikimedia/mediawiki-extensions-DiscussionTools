@@ -48,6 +48,8 @@
 	"discussiontools-findcomment-results-name": "Il commento con il titolo dato è apparso nel{{PLURAL:$1| la pagina|le pagine}}:",
 	"discussiontools-findcomment-label-idorname": "ID commento o titolo",
 	"discussiontools-findcomment-title": "Ricerca commento",
+	"discussiontools-ledesection-button": "Ulteriori informazioni su questa pagina",
+	"discussiontools-ledesection-title": "A proposito di questa pagina di discussione",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secondo|secondi}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>È arrivato un nuovo modo per iniziare le discussioni.</strong> Questo aggiornamento consente di aggiungere argomenti utilizzando un modulo in linea e di eseguire menzioni di altri utenti con una nuova scorciatoia. Puoi ancora [$1 tornare indietro all'esperienza precedente].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Stai visualizzando l'esperienza precedente.</strong> Puoi [$1 alla nuova esperienza] o visitare le preferenze per [$2 impostare l'esperienza precedente come predefinita].",

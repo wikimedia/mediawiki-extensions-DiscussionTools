@@ -62,6 +62,7 @@
 	"discussiontools-findcomment-label-search": "検索",
 	"discussiontools-findcomment-noresults": "結果なし",
 	"discussiontools-findcomment-title": "コメントを探す",
+	"discussiontools-ledesection-title": "このトークページについて",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools エラー問い合わせ ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 使用時間",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|秒}}",
