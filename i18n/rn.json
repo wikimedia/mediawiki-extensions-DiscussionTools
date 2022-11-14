@@ -2,13 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Gilbert Ndihokubwayo"
+			"Gilbert Ndihokubwayo",
+			"Ferdinand IF99"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Ishura",
 	"discussiontools-replylink": "kwishura",
 	"discussiontools-replywidget-cancel": "Futa",
 	"discussiontools-replywidget-mode-source": "Inkomoko",
 	"discussiontools-replywidget-mode-visual": "Biboneka",
 	"discussiontools-replywidget-placeholder-reply": "Kwishura kuri {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Imbere",
 	"discussiontools-replywidget-reply": "Kwishura"
 }

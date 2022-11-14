@@ -1,9 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tofeiku"
+			"Tofeiku",
+			"Anakmalaysia"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Balas",
 	"discussiontools-replylink": "balas",
-	"discussiontools-replywidget-mention-tool-title": "Sebut seorang pengguna"
+	"discussiontools-replywidget-cancel": "Batal",
+	"discussiontools-replywidget-mention-tool-title": "Sebut seorang pengguna",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Balas kepada {{BIDI: $1 }}",
+	"discussiontools-replywidget-preview": "Pratayang",
+	"discussiontools-replywidget-reply": "Balas"
 }
