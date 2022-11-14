@@ -496,33 +496,41 @@ h1, h2, h3, h4, h5, h6 {
 			flex-wrap: wrap;
 		}
 
-		&-actions {
+		&-actions,
+		&-metadata {
 			width: 100%;
-			padding-left: 24px;
+		}
+
+		.client-js & {
+			&-actions,
+			&-metadata {
+				padding-left: 24px;
+			}
+
+			&-ellipsisButton {
+				display: inline-block;
+				// stylelint-disable-next-line declaration-property-unit-disallowed-list
+				font-size: 14px;
+				margin-right: -5px;
+				// Fix height so MenuWidget appears in the correct place with wrapped text (T311558)
+				height: 32px;
+			}
+
+			.mw-editsection {
+				// Replaced by the ellipsis button
+				// stylelint-disable-next-line declaration-no-important
+				display: none !important;
+			}
+		}
+
+		&-authorCountLabel,
+		&-commentCountLabel {
+			display: none;
 		}
 
 		// stylelint-disable-next-line selector-class-pattern
 		&.section-heading .ext-discussiontools-init-section-actions {
 			// Hidden until expanded
-			display: none;
-		}
-
-		&-ellipsisButton {
-			display: inline-block;
-			// stylelint-disable-next-line declaration-property-unit-disallowed-list
-			font-size: 14px;
-			margin-right: -5px;
-			// Fix height so MenuWidget appears in the correct place with wrapped text (T311558)
-			height: 32px;
-		}
-
-		&-metadata {
-			width: 100%;
-			padding-left: 24px;
-		}
-
-		&-authorCountLabel,
-		&-commentCountLabel {
 			display: none;
 		}
 
@@ -533,11 +541,6 @@ h1, h2, h3, h4, h5, h6 {
 			.ext-discussiontools-init-section-actions {
 				display: block;
 			}
-		}
-
-		.mw-editsection {
-			// stylelint-disable-next-line declaration-no-important
-			display: none !important;
 		}
 
 		.mw-ui-icon + span {
