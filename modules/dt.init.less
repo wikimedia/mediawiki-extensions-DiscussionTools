@@ -430,12 +430,6 @@ h1, h2, h3, h4, h5, h6 {
 				border-left: 1px solid #a2a9b1;
 			}
 		}
-
-		&-actions {
-			margin-left: auto;
-			// Prevent the focus outline from being cut off (T311662), do not set to negative values
-			margin-right: 0;
-		}
 	}
 
 	h1 + .ext-discussiontools-init-section {
@@ -504,7 +498,6 @@ h1, h2, h3, h4, h5, h6 {
 
 		&-actions {
 			width: 100%;
-			margin-left: 0;
 			padding-left: 24px;
 		}
 
@@ -561,11 +554,6 @@ h1, h2, h3, h4, h5, h6 {
 		&-bar {
 			// stylelint-disable-next-line declaration-property-unit-disallowed-list
 			font-size: 12px;
-		}
-
-		&-actions {
-			// Prevent the Apex theme focus outline from being cut off (T311662)
-			margin-right: 4px;
 		}
 	}
 }
