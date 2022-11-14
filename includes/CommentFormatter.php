@@ -132,9 +132,25 @@ class CommentFormatter {
 		?ContentHeadingItem $headingItem = null,
 		&$tocInfo = null
 	) {
+		$legacyMarkup = MediaWikiServices::getInstance()->getMainConfig()->get( 'DiscussionToolsLegacyHeadingMarkup' );
 		$doc = $headingElement->ownerDocument;
 
-		DOMCompat::getClassList( $headingElement )->add( 'ext-discussiontools-init-section' );
+		if ( $legacyMarkup ) {
+			$wrapperNode = $headingElement;
+		} else {
+			$wrapperNode = $headingElement->parentNode;
+			if ( !(
+				$wrapperNode instanceof Element &&
+				DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' )
+			) ) {
+				$wrapperNode = $doc->createElement( 'div' );
+				$wrapperNode->setAttribute( 'class', 'mw-heading mw-heading2' );
+				$headingElement->parentNode->insertBefore( $wrapperNode, $headingElement );
+				$wrapperNode->appendChild( $headingElement );
+			}
+		}
+
+		DOMCompat::getClassList( $wrapperNode )->add( 'ext-discussiontools-init-section' );
 
 		if ( !$headingItem ) {
 			return;
@@ -148,11 +164,11 @@ class CommentFormatter {
 			$headingElement->insertBefore( $subscribeLink, $headingElement->firstChild );
 
 			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONDESKTOP__' . $headingNameEscaped );
-			$headingElement->insertBefore( $subscribeButton, $headingElement->firstChild );
+			$wrapperNode->insertBefore( $subscribeButton, $wrapperNode->firstChild );
 		}
 
 		$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
-		$headingElement->appendChild( $ellipsisButton );
+		$wrapperNode->appendChild( $ellipsisButton );
 
 		// Visual enhancements: topic containers
 		$latestReplyItem = $headingItem->getLatestReply();
@@ -202,7 +218,7 @@ class CommentFormatter {
 			$bar->appendChild( $metadata );
 			$bar->appendChild( $actions );
 
-			$headingElement->appendChild( $bar );
+			$wrapperNode->appendChild( $bar );
 
 			$tocInfo[ $headingItem->getLinkableTitle() ] = [
 				'commentCount' => $headingItem->getCommentCount(),
