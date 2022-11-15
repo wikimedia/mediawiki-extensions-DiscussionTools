@@ -126,29 +126,23 @@ class CommentFormatter {
 	 * @param Element $headingElement Heading element
 	 * @param ContentHeadingItem|null $headingItem Heading item
 	 * @param array|null &$tocInfo TOC info
-	 * @return Element Wrapper element (either found or newly added), or the heading element if not using wrappers
+	 * @return Element Wrapper element (either found or newly added)
 	 */
 	protected static function addTopicContainer(
 		Element $headingElement,
 		?ContentHeadingItem $headingItem = null,
 		&$tocInfo = null
 	): Element {
-		$legacyMarkup = MediaWikiServices::getInstance()->getMainConfig()->get( 'DiscussionToolsLegacyHeadingMarkup' );
 		$doc = $headingElement->ownerDocument;
-
-		if ( $legacyMarkup ) {
-			$wrapperNode = $headingElement;
-		} else {
-			$wrapperNode = $headingElement->parentNode;
-			if ( !(
-				$wrapperNode instanceof Element &&
-				DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' )
-			) ) {
-				$wrapperNode = $doc->createElement( 'div' );
-				$wrapperNode->setAttribute( 'class', 'mw-heading mw-heading2' );
-				$headingElement->parentNode->insertBefore( $wrapperNode, $headingElement );
-				$wrapperNode->appendChild( $headingElement );
-			}
+		$wrapperNode = $headingElement->parentNode;
+		if ( !(
+			$wrapperNode instanceof Element &&
+			DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' )
+		) ) {
+			$wrapperNode = $doc->createElement( 'div' );
+			$wrapperNode->setAttribute( 'class', 'mw-heading mw-heading2' );
+			$headingElement->parentNode->insertBefore( $wrapperNode, $headingElement );
+			$wrapperNode->appendChild( $headingElement );
 		}
 
 		DOMCompat::getClassList( $wrapperNode )->add( 'ext-discussiontools-init-section' );
