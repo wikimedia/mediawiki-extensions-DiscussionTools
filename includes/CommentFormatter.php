@@ -126,12 +126,13 @@ class CommentFormatter {
 	 * @param Element $headingElement Heading element
 	 * @param ContentHeadingItem|null $headingItem Heading item
 	 * @param array|null &$tocInfo TOC info
+	 * @return Element Wrapper element (either found or newly added), or the heading element if not using wrappers
 	 */
 	protected static function addTopicContainer(
 		Element $headingElement,
 		?ContentHeadingItem $headingItem = null,
 		&$tocInfo = null
-	) {
+	): Element {
 		$legacyMarkup = MediaWikiServices::getInstance()->getMainConfig()->get( 'DiscussionToolsLegacyHeadingMarkup' );
 		$doc = $headingElement->ownerDocument;
 
@@ -153,7 +154,7 @@ class CommentFormatter {
 		DOMCompat::getClassList( $wrapperNode )->add( 'ext-discussiontools-init-section' );
 
 		if ( !$headingItem ) {
-			return;
+			return $wrapperNode;
 		}
 
 		$headingNameEscaped = htmlspecialchars( $headingItem->getName(), ENT_NOQUOTES );
@@ -224,6 +225,8 @@ class CommentFormatter {
 				'commentCount' => $headingItem->getCommentCount(),
 			];
 		}
+
+		return $wrapperNode;
 	}
 
 	/**
@@ -331,7 +334,7 @@ class CommentFormatter {
 			if ( $wrapper instanceof Element && DOMCompat::getClassList( $wrapper )->contains( 'toctitle' ) ) {
 				continue;
 			}
-			static::addTopicContainer( $headingElement );
+			$headingElement = static::addTopicContainer( $headingElement );
 			if ( !$firstHeading ) {
 				$firstHeading = $headingElement;
 			}
