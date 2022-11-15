@@ -31,7 +31,7 @@
 	"discussiontools-error-noswitchtove-table": "skladnja preglednice",
 	"discussiontools-error-noswitchtove-template": "skladnja predloge",
 	"discussiontools-error-noswitchtove-title": "vizualni način izklopljen",
-	"discussiontools-newtopic-missing-title": "Prosimo, navedite naslov za temo pogovora. Če boste kliknili »{{int:discussiontools-replywidget-newtopic}}«, se bo vaša tema dodala brez naslova.",
+	"discussiontools-newtopic-missing-title": "Prosimo, navedite naslov za temo pogovora. Če boste kliknili »{{int:discussiontools-replywidget-newtopic}}«, bo vaša tema dodana brez naslova.",
 	"discussiontools-newtopic-placeholder-title": "Naslov",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 je {{GENDER:$2|odgovoril|odgovorila|odgovoril}} v »<strong>$4</strong>«.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|En nov odgovor|$1 nova odgovora|$1 novi odgovori|$1 novih odgovorov|100=99+ novih odgovorov}} v »<strong>$3</strong>«.",

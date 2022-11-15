@@ -1,12 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tofeiku"
+			"Tofeiku",
+			"Anakmalaysia"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Balas",
 	"discussiontools-replylink": "balas",
 	"discussiontools-replywidget-abandontopic-keep": "Teruskan menulis",
+	"discussiontools-replywidget-advanced": "Lanjutan",
+	"discussiontools-replywidget-cancel": "Batal",
 	"discussiontools-replywidget-mention-tool-title": "Sebut seorang pengguna",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-newtopic": "Keterangan",
-	"discussiontools-replywidget-summary": "Ringkasan"
+	"discussiontools-replywidget-placeholder-reply": "Balas kepada {{BIDI: $1 }}",
+	"discussiontools-replywidget-preview": "Pratayang",
+	"discussiontools-replywidget-reply": "Balas",
+	"discussiontools-replywidget-summary": "Ringkasan",
+	"discussiontools-topicsubscription-button-subscribe": "langgan",
+	"discussiontools-topicsubscription-button-unsubscribe": "berhenti melanggan",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Anda akan menerima pemberitahuan tentang komen baru di topik ini.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Sudah dilanggan!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Anda tidak akan menerima lagi pemberitahuan tentang komen baru di topik ini.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Sudah berhenti melanggan."
 }

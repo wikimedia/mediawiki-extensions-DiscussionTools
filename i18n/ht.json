@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Kitanago"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Repons",
@@ -49,9 +50,9 @@
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Dezabòne nan sijè sa a ?",
 	"discussiontools-topicsubscription-error-not-found-body": "Abònman ki espesifye nan URL la pa te jwenn.",
 	"discussiontools-topicsubscription-error-not-found-title": "Abònman pa jwenn",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Ou pral resevwa notifikasyon sou nouvo kòmantè yo nan sijè sa a.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Ou pral resevwa notifikasyon sou nouvo kòmantè sou sijè sa a.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Ou te abòne !",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ou pa pral resevwa notifikasyon sou nouvo kòmantè yo nan sijè sa a.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ou pa pral resevwa notifikasyon sou nouvo kòmantè sou sijè sa a.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Ou te dezabòne.",
 	"tag-discussiontools-description": "Modifikasyon ki fèt ak DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nouvo sijè]",

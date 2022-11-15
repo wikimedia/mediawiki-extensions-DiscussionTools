@@ -9,5 +9,8 @@
 	"discussiontools-replywidget-cancel": "Бас тартув",
 	"discussiontools-replywidget-mode-source": "Излев",
 	"discussiontools-replywidget-mode-visual": "Коьрсел",
-	"discussiontools-replywidget-reply": "Джевап бер"
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} кулланувшысына джевап бер",
+	"discussiontools-replywidget-preview": "Алдан карав",
+	"discussiontools-replywidget-reply": "Джевап бер",
+	"discussiontools-replywidget-summary": "Кыска бир тасвир"
 }
