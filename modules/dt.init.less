@@ -748,6 +748,13 @@ h1, h2, h3, h4, h5, h6 {
 	.ext-discussiontools-init-readAsWikiPage {
 		display: block;
 	}
+
+	// Always hide the table of content. This is usually hidden by the mf-section-0 rules,
+	// but can sometimes appear elsewhere (e.g in the lede section overlay)
+	// stylelint-disable-next-line selector-class-pattern
+	.toc {
+		display: none;
+	}
 }
 
 .minerva-footer-button() {
@@ -819,13 +826,6 @@ h1, h2, h3, h4, h5, h6 {
 		transform: translateY( 0 );
 		opacity: 1;
 		position: static;
-	}
-
-	// Always hide the table of content. This is usually hidden by the mf-section-0 rules,
-	// but can sometimes appear elsewhere (e.g in the lede section overlay)
-	// stylelint-disable-next-line selector-class-pattern
-	.toc {
-		display: none;
 	}
 }
 
