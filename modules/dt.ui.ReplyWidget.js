@@ -943,7 +943,7 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
 				this.newCommentsClose
 			]
 		} );
-		this.newCommentsShow.connect( this, { click: [ 'emit', 'reloadPage' ] } );
+		this.newCommentsShow.connect( this, { click: 'onNewCommentsShowClick' } );
 		this.newCommentsClose.connect( this, { click: 'onNewCommentsCloseClick' } );
 		this.$bodyWrapper.append( this.newCommentsWarning.$element );
 	}
@@ -956,7 +956,22 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
 		setTimeout( function () {
 			widget.newCommentsWarning.$element.addClass( 'ext-discussiontools-ui-replyWidget-newComments-open' );
 		} );
+		mw.track( 'dt.schemaVisualEditorFeatureUse', {
+			feature: 'notificationNewComments',
+			action: 'show'
+		} );
 	}
+};
+
+/**
+ * Handle click events on the new comments show button
+ */
+ReplyWidget.prototype.onNewCommentsShowClick = function () {
+	this.emit( 'reloadPage' );
+	mw.track( 'dt.schemaVisualEditorFeatureUse', {
+		feature: 'notificationNewComments',
+		action: 'page-update'
+	} );
 };
 
 /**
@@ -967,6 +982,10 @@ ReplyWidget.prototype.onNewCommentsCloseClick = function () {
 	// Hide the warning for the rest of the lifetime of the widget
 	this.hideNewCommentsWarning = true;
 	this.focus();
+	mw.track( 'dt.schemaVisualEditorFeatureUse', {
+		feature: 'notificationNewComments',
+		action: 'close'
+	} );
 };
 
 /**
