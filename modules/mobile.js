@@ -1,4 +1,4 @@
-var $readAsWikiPage, ledeSectionDialog;
+var newTopicButton, $readAsWikiPage, ledeSectionDialog;
 var viewportScrollContainer = null;
 var wasKeyboardOpen = null;
 var initialClientHeight = null;
@@ -81,6 +81,53 @@ function init( $container ) {
 			} );
 		} );
 	}
+
+	if (
+		!newTopicButton &&
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '.ext-discussiontools-init-new-topic-button' ).length
+	) {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		newTopicButton = OO.ui.infuse( $( '.ext-discussiontools-init-new-topic-button' ) );
+		// For compatibility with Minerva click tracking (T295490)
+		newTopicButton.$element.attr( 'data-event-name', 'talkpage.add-topic' );
+		var $scrollContainer = $( OO.ui.Element.static.getClosestScrollableContainer( document.body ) );
+		var $scrollListener = $scrollContainer.is( 'html, body' ) ? $( OO.ui.Element.static.getWindow( $scrollContainer[ 0 ] ) ) : $scrollContainer;
+		var lastScrollTop = $scrollContainer.scrollTop();
+		var wasScrollDown = null;
+		var $body = $( document.body );
+		// TODO: Use ve.addPassiveEventListener
+		$scrollListener.on( 'scroll', OO.ui.throttle( function () {
+			var scrollTop = $scrollContainer.scrollTop();
+			var isScrollDown = scrollTop > lastScrollTop;
+			if ( isScrollDown !== wasScrollDown ) {
+				if ( !isScrollDown ) {
+					newTopicButton.$element.css( 'transition', 'none' );
+				}
+				$body.removeClass( [ 'ext-discussiontools-init-new-topic-closed', 'ext-discussiontools-init-new-topic-opened' ] );
+				requestAnimationFrame( function () {
+					newTopicButton.$element.css( 'transition', '' );
+					$body.addClass( isScrollDown ? 'ext-discussiontools-init-new-topic-close' : 'ext-discussiontools-init-new-topic-open' );
+					setTimeout( function () {
+						$body.removeClass( [ 'ext-discussiontools-init-new-topic-close', 'ext-discussiontools-init-new-topic-open' ] );
+						$body.addClass( isScrollDown ? 'ext-discussiontools-init-new-topic-closed' : 'ext-discussiontools-init-new-topic-opened' );
+					}, 250 );
+				} );
+			}
+
+			var observer = new IntersectionObserver(
+				function ( entries ) {
+					newTopicButton.$element.toggleClass( 'ext-discussiontools-init-new-topic-pinned', entries[ 0 ].intersectionRatio === 1 );
+				},
+				{ threshold: [ 1 ] }
+			);
+
+			observer.observe( newTopicButton.$element[ 0 ] );
+
+			lastScrollTop = scrollTop;
+			wasScrollDown = isScrollDown;
+		}, 200 ) );
+	}
 	if ( !$readAsWikiPage ) {
 		// Read as wiki page button, copied from renderReadAsWikiPageButton in Minerva
 		$readAsWikiPage = $( '<button>' )
@@ -91,8 +138,13 @@ function init( $container ) {
 				$( document.body ).removeClass( 'ext-discussiontools-visualenhancements-enabled ext-discussiontools-replytool-enabled' );
 			} );
 	}
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '#content' ).append( $readAsWikiPage );
+	if ( newTopicButton ) {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '.ext-discussiontools-init-new-topic' ).after( $readAsWikiPage );
+	} else {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#mw-content-text' ).append( $readAsWikiPage );
+	}
 }
 
 module.exports = {

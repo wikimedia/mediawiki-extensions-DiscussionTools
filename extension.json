@@ -399,7 +399,6 @@
 		"RevisionDataUpdates": "dataupdates",
 		"LoadExtensionSchemaUpdates": "installer",
 		"ParserAfterTidy": "parser",
-		"ArticleViewHeader": "page",
 		"BeforeDisplayNoArticleText": "page",
 		"BeforePageDisplay": "page",
 		"GetActionName": "page",
