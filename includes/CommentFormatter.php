@@ -325,7 +325,7 @@ class CommentFormatter {
 			$container->appendChild( $newestCommentMarker );
 		}
 
-		$firstHeading = null;
+		$startOfSections = DOMCompat::querySelector( $container, 'meta[property="mw:PageProp/toc"]' );
 
 		// Enhance other <h2>'s which aren't part of a thread
 		$headings = DOMCompat::querySelectorAll( $container, 'h2' );
@@ -335,16 +335,16 @@ class CommentFormatter {
 				continue;
 			}
 			$headingElement = static::addTopicContainer( $headingElement );
-			if ( !$firstHeading ) {
-				$firstHeading = $headingElement;
+			if ( !$startOfSections ) {
+				$startOfSections = $headingElement;
 			}
 		}
 
 		if (
 			// Page has no headings but some content
-			( !$firstHeading && $container->childNodes->length ) ||
-			// Page has content before the first heading
-			( $firstHeading && $firstHeading->previousSibling !== null )
+			( !$startOfSections && $container->childNodes->length ) ||
+			// Page has content before the first heading / TOC
+			( $startOfSections && $startOfSections->previousSibling !== null )
 		) {
 			$container->appendChild( $doc->createComment( '__DTHASLEDECONTENT__' ) );
 		}
