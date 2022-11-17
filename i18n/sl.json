@@ -50,7 +50,7 @@
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundi|sekunde|sekund}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Na voljo je nov način za začenjanje pogovornih tem.</strong> Ta posodobitev vam omogoča dodajanje tem z znotrajvrstičnim obrazcem in obveščanje drugih z novo bližnjico. Preklopite lahko tudi na [$1 predhodno izvedbo].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Zdaj si ogledujete predhodno izvedbo.<strong> Lahko se [$1 vrnete na novo izvedbo] ali obiščete nastavitve, da [$2 predhodno izvedbo nastavite kot privzeto].",
-	"discussiontools-newtopic-missing-title": "Prosimo, navedite naslov za temo pogovora. Če boste kliknili »{{int:discussiontools-replywidget-newtopic}}«, se bo vaša tema dodala brez naslova.",
+	"discussiontools-newtopic-missing-title": "Prosimo, navedite naslov za temo pogovora. Če boste kliknili »{{int:discussiontools-replywidget-newtopic}}«, bo vaša tema dodana brez naslova.",
 	"discussiontools-newtopic-placeholder-title": "Naslov",
 	"discussiontools-notification-removed-topic-body": "Morda ne boste več prejemali obvestil o {{PLURAL:$1|tej temi|teh temah}}.",
 	"discussiontools-notification-removed-topic-header": "Tema »<strong>$4</strong>« je bila arhivirana ali odstranjena s strani $3.",
