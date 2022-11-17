@@ -5,6 +5,7 @@
 			"Dipsacus fullonum",
 			"Matma Rex",
 			"Saederup92",
+			"SiGNOUT",
 			"Steenth"
 		]
 	},
@@ -35,6 +36,8 @@
 	"discussiontools-findcomment-label-search": "Søg",
 	"discussiontools-findcomment-noresults": "Ingen resultater.",
 	"discussiontools-findcomment-title": "Find indlæg",
+	"discussiontools-ledesection-button": "Lær mere om denne side",
+	"discussiontools-ledesection-title": "Om denne diskussionsside",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",
 	"discussiontools-newtopic-missing-title": "Angiv venligst en titel for diskussionen. Hvis du trykker på \"{{int:discussiontools-replywidget-newtopic}}\" bliver emnet tilføjer uden en titel.",
 	"discussiontools-newtopic-placeholder-title": "Emne",
