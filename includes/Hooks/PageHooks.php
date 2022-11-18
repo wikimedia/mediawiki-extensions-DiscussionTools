@@ -180,6 +180,10 @@ class PageHooks implements
 		// But that hook doesn't provide parameters that we need to render correctly
 		// (including the page title, interface language, and current user).
 
+		if ( strpos( $text, "class=\"mw-talkpageheader\"" ) !== false ) {
+			return;
+		}
+
 		$isMobile = false;
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
 			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
