@@ -218,6 +218,8 @@ class PageHooks implements
 		}
 
 		if (
+			$output->getTitle()->isTalkPage() &&
+			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) &&
 			$output->getSkin()->getSkinName() === 'minerva' &&
 			CommentFormatter::hasLedeContent( $text )
 		) {
