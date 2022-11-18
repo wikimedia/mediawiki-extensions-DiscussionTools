@@ -177,7 +177,7 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 	if ( location.hash.match( /^#c-/ ) && !targetElement ) {
 		missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
 			return mw.notification.notify(
-				mw.message( 'discussiontools-target-comment-missing' ).parse(),
+				mw.message( 'discussiontools-target-comment-missing' ).text(),
 				{ type: 'warn', autoHide: false }
 			);
 		} );
@@ -334,7 +334,7 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, newCommen
 					highlightsRequestedSingle ?
 						'discussiontools-target-comment-missing' :
 						'discussiontools-target-comments-missing'
-				).parse(),
+				).text(),
 				{ type: 'warn', autoHide: false }
 			);
 		} );
