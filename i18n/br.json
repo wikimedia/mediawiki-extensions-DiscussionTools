@@ -45,6 +45,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(ket er stumm red)",
 	"discussiontools-findcomment-results-transcluded": "(treuzkluzet eus ur bajenn all)",
 	"discussiontools-findcomment-title": "Klask evezhiadenn",
+	"discussiontools-ledesection-button": "Gouzout hiroc'h diwar-benn ar bajenn-mañ",
+	"discussiontools-ledesection-title": "Diwar-benn ar bajenn gaozeal-mañ",
 	"discussiontools-limitreport-errorreqid": "Anaouder reked fazi DiscussionTools",
 	"discussiontools-limitreport-timeusage": "implij amzer DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|eilenn}}",

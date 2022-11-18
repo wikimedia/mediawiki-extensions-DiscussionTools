@@ -53,6 +53,7 @@
 	"discussiontools-findcomment-results-notcurrent": "(در نسخهٔ کنونی موجود نیست)",
 	"discussiontools-findcomment-results-transcluded": "(تراگنجانش‌شده از صفحه‌ای دیگر)",
 	"discussiontools-findcomment-title": "یافتن نظر",
+	"discussiontools-ledesection-title": "دربارهٔ این صفحهٔ بحث",
 	"discussiontools-limitreport-errorreqid": "شناسهٔ درخواست حاوی خطای ابزارهای گفت‌وگو",
 	"discussiontools-limitreport-timeusage": "مدت استفادهٔ ابزارهای گفت‌وگو",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|ثانیه}}",
