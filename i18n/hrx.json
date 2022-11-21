@@ -15,13 +15,15 @@
 	"discussiontools-replywidget-reply": "Antworte",
 	"discussiontools-replywidget-summary": "Zusammerfassung",
 	"discussiontools-replywidget-watchthis": "Addizioneere do die Seit zu deiner [[Special:Watchlist|Beovachtungslist]]",
-	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|Person is|Persone sind}} aan de Diskussion}}",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|Person is|Persone sin}} aan de Diskussion",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|Kommentario|Kommentarios}}",
 	"discussiontools-topicheader-latestcomment": "Letzter Kommentario: $1",
 	"discussiontools-topicsubscription-button-subscribe": "Begleede",
 	"discussiontools-topicsubscription-button-subscribe-label": "Begleede",
 	"discussiontools-topicsubscription-button-unsubscribe": "Abbegleede",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Abbegleede",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Du werst iwer neie Kommentarios zu do dem Tema notifikeerd.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Du host begleed!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Du werst net iwer neie Kommentarios zu do dem Tema notifikeerd.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Du host abbegleed."
 }

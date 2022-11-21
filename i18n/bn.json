@@ -52,6 +52,7 @@
 	"discussiontools-findcomment-results-transcluded": "(অন্য পাতা থেকে অন্তর্ভুক্ত)",
 	"discussiontools-findcomment-title": "মন্তব্য খুঁজুন",
 	"discussiontools-ledesection-button": "এই পাতাটি সম্পর্কে আরও জানুন",
+	"discussiontools-ledesection-title": "এই আলাপ পাতাটি সম্পর্কে",
 	"discussiontools-limitreport-errorreqid": "আলোচনা সরঞ্জাম ত্রুটির অনুরোধ আইডি",
 	"discussiontools-limitreport-timeusage": "আলোচনা সরঞ্জাম সময় ব্যবহার",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|সেকেন্ড}}",
