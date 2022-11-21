@@ -95,6 +95,8 @@ class HookUtils {
 		$mainConfig = $services->getMainConfig();
 		$parsoidOutputAccess = $services->getParsoidOutputAccess();
 
+		// Look up the page by ID in master. If we just used $revRecord->getPage(),
+		// ParsoidOutputAccess would look it up by namespace+title in replica.
 		$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
 			$services->getPageStore()->getPageById( $revRecord->getPageId(), IDBAccessObject::READ_LATEST );
 		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );

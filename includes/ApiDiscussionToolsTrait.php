@@ -9,11 +9,8 @@ use DerivativeRequest;
 use IContextSource;
 use MediaWiki\Extension\VisualEditor\ParsoidClient;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
-use ParserOptions;
 use Title;
-use TitleValue;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -24,28 +21,6 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
  * @property CommentParser $commentParser
  */
 trait ApiDiscussionToolsTrait {
-	/**
-	 * @param RevisionRecord $revision
-	 * @return ContentThreadItemSet
-	 */
-	protected function parseRevision( RevisionRecord $revision ): ContentThreadItemSet {
-		$parsoidOutputAccess = MediaWikiServices::getInstance()->getParsoidOutputAccess();
-		$status = $parsoidOutputAccess->getParserOutput(
-			$revision->getPage(),
-			ParserOptions::newFromAnon(),
-			$revision
-		);
-		$html = $status->getValue()->getText();
-
-		$doc = DOMUtils::parseHTML( $html );
-		$container = DOMCompat::getBody( $doc );
-
-		CommentUtils::unwrapParsoidSections( $container );
-
-		$title = TitleValue::newFromPage( $revision->getPage() );
-
-		return $this->commentParser->parse( $container, $title );
-	}
 
 	/**
 	 * Given parameters describing a reply or new topic, transform them into wikitext using Parsoid,

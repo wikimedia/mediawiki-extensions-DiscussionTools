@@ -4,10 +4,10 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
+use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
-use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Revision\RevisionLookup;
 use Title;
@@ -17,8 +17,6 @@ use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class ApiDiscussionToolsPageInfo extends ApiBase {
-	use ApiDiscussionToolsTrait;
-	use ApiParsoidTrait;
 
 	private CommentParser $commentParser;
 	private VisualEditorParsoidClientFactory $parsoidClientFactory;
@@ -71,7 +69,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			}
 		}
 
-		$threadItemSet = $this->parseRevision( $revision );
+		$threadItemSet = HookUtils::parseRevisionParsoidHtml( $revision );
 
 		$result = [];
 		$prop = array_fill_keys( $params['prop'], true );
