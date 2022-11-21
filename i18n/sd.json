@@ -22,6 +22,7 @@
 	"discussiontools-replywidget-reply": "ورندي ڏيو",
 	"discussiontools-replywidget-terms-click": "\"$1\" کي ٽڙڪ ڪرڻ سان، توھان ھن وڪيءَ جي استعمال جي شرطن سان راضپو ڏيکاريو ٿا.",
 	"discussiontools-replywidget-transcluded": "توھان جي راءِ [[$1]] تي سانڍي ويندي.",
+	"discussiontools-signature-prefix": "&#32؛",
 	"discussiontools-error-comment-is-transcluded": "ڳنڍڻي \"{{int:discussiontools-replylink}}\" کي ھن راءِ جي ورندي ڏيڻ لاءِ استعمال نٿو ڪري سگهجي. ورندي ڏيڻ لاءِ، \"$1\" تي ڪلڪ ڪري سڄو صفحو سنوارگاھ استعمال ڪريو.",
 	"discussiontools-error-comment-is-transcluded-title": "ڳنڍڻي \"{{int:discussiontools-replylink}}\" کي ھن راءِ جي ورندي ڏيڻ لاءِ استعمال نٿو ڪري سگهجي ڇو تہ ان کي ڪنھن ٻئي صفحي تان لوڊ ڪيو ويو آھي. ورندي ڏيڻ لاءِ، ھتي وڃو: [[$1]]",
 	"discussiontools-error-lint": "وڪيٽيڪسٽ ۾ ڪنھن چڪ جي ڪري ھن صفحي تي راين جي ورندي نٿي ڏئي سگهجي. توھان ھن چڪ بابت [$1 دستاويزسازي پڙھي] ڄاڻي سگهو ٿا، مدد لاءِ [$2 ھتي لکي] ڪري پڇي سگهو ٿا يا [$3 سڄو صفحو سنوارگاھ کولي] چڪ کي ختم ڪري سگهو ٿا.",
