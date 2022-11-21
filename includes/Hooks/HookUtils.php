@@ -15,8 +15,6 @@ use IDBAccessObject;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
-use MediaWiki\Extension\VisualEditor\ParsoidClient;
-use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
@@ -95,61 +93,26 @@ class HookUtils {
 	public static function parseRevisionParsoidHtml( RevisionRecord $revRecord ): ContentThreadItemSet {
 		$services = MediaWikiServices::getInstance();
 		$mainConfig = $services->getMainConfig();
+		$parsoidOutputAccess = $services->getParsoidOutputAccess();
 
-		// Detect WMF private wikis, where ParsoidHelper will not work with $forwardCookies=false.
-		// Use ParsoidOutputAccess instead, which is discouraged for production use for reasons no one
-		// was able to adequately explain, but it is the only way. WMF private wikis get very few edits
-		// anyway, so this shouldn't be a big deal. (T315689)
-		$tryRESTBase = isset( $mainConfig->get( 'VirtualRestConfig' )['modules']['restbase'] );
-		$html = null;
+		$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
+			$services->getPageStore()->getPageById( $revRecord->getPageId(), IDBAccessObject::READ_LATEST );
+		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
 
-		// It's 2022 and we still can't use Parsoid in production. Work around this. (If it's no longer
-		// 2022 and this comment is still here, time to quit technology and find a job as a farmer.)
-		if ( $tryRESTBase ) {
-			$parsoidClientFactory = $services->getService( VisualEditorParsoidClientFactory::SERVICE_NAME );
-			/** @var ParsoidClient $parsoidClient */
-			$parsoidClient = $parsoidClientFactory->createParsoidClient( false );
+		$status = $parsoidOutputAccess->getParserOutput(
+			$pageRecord,
+			ParserOptions::newFromAnon(),
+			$revRecord
+		);
 
-			// Get HTML for the revision
-			$response = $parsoidClient->getPageHtml( $revRecord, null );
-
-			if ( !empty( $response['error'] ) ) {
-				$msg = $response['error'];
-				if ( $msg[0] === 'apierror-visualeditor-docserver-http' && $msg[1] === 404 ) {
-					// Probably just RESTBase having outdated info. Try again without it. (T315688)
-				} else {
-					// @phan-suppress-next-line PhanParamTooFewUnpack We already checked that it's !empty()
-					$message = wfMessage( ...$msg );
-					throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
-				}
-			} else {
-				$html = $response['body'];
-			}
+		if ( !$status->isOK() ) {
+			[ 'message' => $key, 'params' => $params ] = $status->getErrors()[0];
+			$message = wfMessage( $key, ...$params );
+			throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
 		}
 
-		if ( $html === null ) {
-			// Private wiki, or RESTBase having outdated info
-			$parsoidOutputAccess = $services->getParsoidOutputAccess();
-
-			$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
-				$services->getPageStore()->getPageById( $revRecord->getPageId(), IDBAccessObject::READ_LATEST );
-			Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
-
-			$status = $parsoidOutputAccess->getParserOutput(
-				$pageRecord,
-				ParserOptions::newFromAnon(),
-				$revRecord
-			);
-
-			if ( !$status->isOK() ) {
-				[ 'message' => $key, 'params' => $params ] = $status->getErrors()[0];
-				$message = wfMessage( $key, ...$params );
-				throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
-			}
-
-			$parserOutput = $status->getValue();
-			$html = $parserOutput->getText();
-		}
+		$parserOutput = $status->getValue();
+		$html = $parserOutput->getText();
 
 		// Run the discussion parser on it
 		$doc = DOMUtils::parseHTML( $html );
