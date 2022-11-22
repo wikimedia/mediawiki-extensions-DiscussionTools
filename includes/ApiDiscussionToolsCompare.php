@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
-use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
+use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -12,8 +12,6 @@ use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsCompare extends ApiBase {
-	use ApiDiscussionToolsTrait;
-	use ApiParsoidTrait;
 
 	private CommentParser $commentParser;
 	private VisualEditorParsoidClientFactory $parsoidClientFactory;
@@ -100,8 +98,8 @@ class ApiDiscussionToolsCompare extends ApiBase {
 			return;
 		}
 
-		$fromItemSet = $this->parseRevision( $fromRev );
-		$toItemSet = $this->parseRevision( $toRev );
+		$fromItemSet = HookUtils::parseRevisionParsoidHtml( $fromRev );
+		$toItemSet = HookUtils::parseRevisionParsoidHtml( $toRev );
 
 		$removedComments = [];
 		foreach ( $fromItemSet->getCommentItems() as $fromComment ) {
