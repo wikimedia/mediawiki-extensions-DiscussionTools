@@ -6,7 +6,8 @@
 			"पर्वत सुबेदी",
 			"हिमाल सुबेदी",
 			"Bada Kaji",
-			"बडा काजी"
+			"बडा काजी",
+			"CAPTAIN MEDUSA"
 		]
 	},
 	"discussiontools": "छलफल उपकरण",
@@ -33,6 +34,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "सामग्री हेर्नुहोस्",
 	"discussiontools-postedit-confirmation-published": "तपाईंको टिप्पणी प्रकाशित भयो।",
 	"discussiontools-postedit-confirmation-topicadded": "तपाईंको विषय थपियो।",
+	"discussiontools-preference-discussion-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project",
+	"discussiontools-preference-info-link": "https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary",
 	"discussiontools-preference-label": "छलफल उपकरण",
 	"discussiontools-preference-summary": "तपाईंले [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary सुविधा सारांश] पढेर यी सुविधाहरूको बारेमा थप जान्न सक्नुहुन्छ।",
 	"discussiontools-preference-newtopictool": "द्रुत विषय थप्ने सक्षम गर्नुहोस्",

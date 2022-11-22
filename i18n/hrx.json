@@ -16,6 +16,8 @@
 	"discussiontools-replywidget-summary": "Zusammerfassung",
 	"discussiontools-topicsubscription-button-subscribe": "Begleede",
 	"discussiontools-topicsubscription-button-unsubscribe": "Abbegleede",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Du werst iwer neie Kommentarios zu do dem Tema notifikeerd.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Du host begleed!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Du werst net iwer neie Kommentarios zu do dem Tema notifikeerd.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Du host abbegleed."
 }

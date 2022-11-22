@@ -12,5 +12,10 @@
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} кулланувшысына джевап бер",
 	"discussiontools-replywidget-preview": "Алдан карав",
 	"discussiontools-replywidget-reply": "Джевап бер",
-	"discussiontools-replywidget-summary": "Кыска бир тасвир"
+	"discussiontools-replywidget-summary": "Кыска бир тасвир",
+	"discussiontools-topicsubscription-button-subscribe": "джазыл",
+	"discussiontools-topicsubscription-button-unsubscribe": "джазылмадан бас тартув",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Бул мевзуда джанъы бир ший джазылса, сизге кабер бериледи.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Сиз джазылдынъыз!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Сиз джазылмадан бас тарттынъыз."
 }
