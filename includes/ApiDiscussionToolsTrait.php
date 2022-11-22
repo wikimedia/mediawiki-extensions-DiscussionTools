@@ -9,7 +9,9 @@ use DerivativeRequest;
 use IContextSource;
 use MediaWiki\Extension\VisualEditor\ParsoidClient;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use ParserOptions;
 use Title;
 use TitleValue;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -27,9 +29,15 @@ trait ApiDiscussionToolsTrait {
 	 * @return ContentThreadItemSet
 	 */
 	protected function parseRevision( RevisionRecord $revision ): ContentThreadItemSet {
-		$response = $this->requestRestbasePageHtml( $revision );
+		$parsoidOutputAccess = MediaWikiServices::getInstance()->getParsoidOutputAccess();
+		$status = $parsoidOutputAccess->getParserOutput(
+			$revision->getPage(),
+			ParserOptions::newFromAnon(),
+			$revision
+		);
+		$html = $status->getValue()->getText();
 
-		$doc = DOMUtils::parseHTML( $response['body'] );
+		$doc = DOMUtils::parseHTML( $html );
 		$container = DOMCompat::getBody( $doc );
 
 		CommentUtils::unwrapParsoidSections( $container );
@@ -146,6 +154,9 @@ trait ApiDiscussionToolsTrait {
 	}
 
 	/**
+	 * @warning (T323357) - Calling this method writes to stash, so it should be called
+	 *   only when we are fetching page HTML for editing.
+	 *
 	 * @param RevisionRecord $revision
 	 * @return array
 	 */
