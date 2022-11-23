@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Actions;
 
+use Article;
 use ErrorPageError;
 use FormAction;
 use Html;
@@ -9,7 +10,6 @@ use HTMLForm;
 use IContextSource;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
-use Page;
 use Title;
 use User;
 use UserNotLoggedIn;
@@ -20,12 +20,12 @@ class UnsubscribeAction extends FormAction {
 	protected ?SubscriptionItem $subscriptionItem = null;
 
 	/**
-	 * @param Page $page
+	 * @param Article $page
 	 * @param IContextSource $context
 	 * @param SubscriptionStore $subscriptionStore
 	 */
 	public function __construct(
-		Page $page,
+		Article $page,
 		IContextSource $context,
 		SubscriptionStore $subscriptionStore
 	) {
