@@ -7,7 +7,8 @@
 			"Timzy D'Great",
 			"Lebron jay",
 			"Nwonwu Uchechukwu P",
-			"Senator Choko"
+			"Senator Choko",
+			"Karen"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Ị ga-anata ozi mgbe mmadụ tinyere okwu ọhụụ n'ebe akpamnkata. Ị nwere ike idozi ebe ọkwa nnata ozi gi ebe mmasị gị.",
@@ -17,9 +18,9 @@
 	"discussiontools-defaultsummary-reply": "Zaghachi",
 	"discussiontools-desc": "Ngwa iji kwalite ibe mkparịta ụka.",
 	"discussiontools-emptystate-button": "Bido ị kpa nkata",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Talk pages]] bụ ebe ndị mmadụ na-akpa nkata otu ihe dị na {{SITENAME}} ga-esi bụrụ ọkacha mma. Ị nwere ike gị na ndị ọzọ ebido ịkpa nkata otu a ga-esi kwalite [[:{{SUBJECTPAGENAME}}]].",
-	"discussiontools-emptystate-desc-self": "Ndị nọ na{{SITENAME}} nwere ike iji nke  [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|talk page]] wee gosi oha ozi gị, a ga-ezitere gi ozi mgbe ha mere nke a.",
-	"discussiontools-emptystate-desc-self-anon": "Ndị nọ na {{SITENAME}} ga eji nke a [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|talk page]] wee zie ọha mmadụ  ọzị maka ndezi eji IP Adịresị iji arụ ọrụ ugbu a.\n\nỌtụtụ IP adịresị na-agbanwe mgbe ụfọdụ, ma ọtụtụ ndị ọzọ na-eji ya. Ị nwere ike  [$1 create an account] maọbụ [$2 log in] iji gbochie mgbagoju anya n'ọdị n'ihu n;etiti ndị pụgoro n'ebe ndebanye ihe. Ị mepụta akaụntu na-ezokwa IP adịresị gị.",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Ibe nkata]] bụ ebe ndị mmadụ na-akpa nkata otu ihe dị na {{SITENAME}} ga-esi bụrụ ọkacha mma. Ị nwere ike gị na ndị ọzọ ebido ịkpa nkata otu a ga-esi kwalite [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc-self": "Ndị nọ na{{SITENAME}} nwere ike iji  [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|ibe nkata a]] wee gosi oha ozi gị, a ga-ezitere gi ozi mgbe ha mere nke a.",
+	"discussiontools-emptystate-desc-self-anon": "Ndị nọ na {{SITENAME}} ga eji [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|ibe nkata a]] wee zie ọha mmadụ  ọzị maka ndezi eji IP Adịresị iji arụ ọrụ ugbu a.\n\nỌtụtụ IP adịresị na-agbanwe mgbe ụfọdụ, ma ọtụtụ ndị ọzọ na-eji ya. Ị nwere ike  [$1 keputa akaụntu] maọbụ [$2 banye] iji gbochie mgbagwoju anya n'ọdị n'ihu n'etiti ndị pụgoro n'ebe ndebanye ihe. Ị mepụta akaụntu na-ezokwa IP adịresị gị.",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Talk pages]] bụ ebe ndị mmadụ na-akpa otu aga-esi mee ihe ndịna dị na {{SITENAME}} ka ọ bụrụ ọ kacha mma. Bido nkata ọhụụ iji nwee mmekọọ maọbụ jikọọ {{GENDER:{{PAGENAME}}|with}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Ihe ọ bụla ị kwuru ebe a, onye ọbụla ga-ahụ ya.",
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Talk pages]] Nke a bụ ebe ndị mmadụ na-akpa ka aga-esi mee ihe ndịna dị na {{SITENAME}} ka ọ maa mma. Were ihu akwukwọ a bido mkparịtaụka banyere ndezi eji IP adiresị gị wee mee. Ihe ọ bụla ị kwuru ebe a ga-adị ebe onye ọbụla ga-ahụ ya. Ọtụtụ IP adiresị na-agbanwe ugboro ugboro, ma ọtụtụ mmadụ na-eji ya arụ ọrụ.",
 	"discussiontools-emptystate-title": "Bido mkparitaụka maka {{SUBJECTPAGENAME}}",
