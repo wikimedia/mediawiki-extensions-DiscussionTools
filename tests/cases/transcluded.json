@@ -32,6 +32,22 @@
 		"data": "../data/itwiki-data.json"
 	},
 	{
+		"name": "Accidental complex transclusion (T265528)",
+		"title": "Talk:T265528",
+		"dom": "cases/accidental-transclusion1/accidental-transclusion1.html",
+		"expected": "../cases/accidental-transclusion1/accidental-transclusion1-transcludedFrom.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Accidental complex transclusion (T313093)",
+		"title": "Talk:T313093",
+		"dom": "cases/accidental-transclusion2/accidental-transclusion2.html",
+		"expected": "../cases/accidental-transclusion2/accidental-transclusion2-transcludedFrom.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "tracked template",
 		"title": "Commons talk:SPARQL query service",
 		"dom": "cases/tracked-template/tracked-template.html",

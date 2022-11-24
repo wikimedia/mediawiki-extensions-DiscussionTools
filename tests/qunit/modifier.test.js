@@ -25,7 +25,9 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		'arwiki no-paragraph parsoid',
 		'enwiki parsoid',
 		'Many comments consisting of a block template and a paragraph',
-		'Comment whose range almost exactly matches a template, but is not considered transcluded (T313100)'
+		'Comment whose range almost exactly matches a template, but is not considered transcluded (T313100)',
+		'Accidental complex transclusion (T265528)',
+		'Accidental complex transclusion (T313093)'
 	];
 	if ( haveTranscludedComments.indexOf( caseItem.name ) !== -1 ) {
 		QUnit.skip( testName );

@@ -178,6 +178,22 @@
 		"data": "../data/eswiki-data.json"
 	},
 	{
+		"name": "Accidental complex transclusion (T265528)",
+		"title": "Talk:T265528",
+		"dom": "cases/accidental-transclusion1/accidental-transclusion1.html",
+		"expected": "cases/accidental-transclusion1/accidental-transclusion1-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Accidental complex transclusion (T313093)",
+		"title": "Talk:T313093",
+		"dom": "cases/accidental-transclusion2/accidental-transclusion2.html",
+		"expected": "cases/accidental-transclusion2/accidental-transclusion2-modified.html",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Signatures in funny places",
 		"title": "Talk:Signatures funny",
 		"dom": "cases/signatures-funny/signatures-funny.html",
