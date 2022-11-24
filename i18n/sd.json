@@ -105,6 +105,7 @@
 	"discussiontools-signature-prefix": "&#32؛",
 	"discussiontools-target-comment-missing": "ھي راءِ ڪونہ لھي سگهجي. اھا شايد ڊاھي وئي ھجي يا چوري وئي ھجي.",
 	"discussiontools-target-comments-missing": "نوان رايا نہ لھي سگهجيا. اھي شايد ڊاھيا ويا ھجن يا چوريا ويا ھجن.",
+	"discussiontools-topicheader-authorcount": "گفتگو ۾ {{PLURAL:$1|فرد}} $1",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|تبصرو|تبصرا}}",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "اڻ سبسڪرائب ڪريو",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "هن موضوع کان اڻ سبسڪرائب ڪريون؟",

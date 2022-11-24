@@ -30,7 +30,8 @@
 			"沈澄心",
 			"邢家朋",
 			"铁桶",
-			"阿pp"
+			"阿pp",
+			"魔琴"
 		]
 	},
 	"discussiontools": "讨论工具",
@@ -74,6 +75,7 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1在“<strong>$4</strong>”中{{GENDER:$2|回复}}了。",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "在“<strong>$3</strong>”中有{{PLURAL:$1|一个新回复|$1个新回复|100=99+个新回复}}。",
 	"discussiontools-notification-subscribed-new-comment-view": "查看留言",
+	"discussiontools-pagetitle-reply": "回复$1",
 	"discussiontools-postedit-confirmation-published": "您的留言已发布。",
 	"discussiontools-postedit-confirmation-topicadded": "已添加您的话题。",
 	"discussiontools-preference-autotopicsub": "自动订阅话题",
