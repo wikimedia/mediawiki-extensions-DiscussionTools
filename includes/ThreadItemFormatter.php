@@ -16,10 +16,6 @@ class ThreadItemFormatter {
 	private TitleFormatter $titleFormatter;
 	private LinkRenderer $linkRenderer;
 
-	/**
-	 * @param TitleFormatter $titleFormatter
-	 * @param LinkRenderer $linkRenderer
-	 */
 	public function __construct(
 		TitleFormatter $titleFormatter,
 		LinkRenderer $linkRenderer

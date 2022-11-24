@@ -48,12 +48,6 @@ class PageHooks implements
 	private UserNameUtils $userNameUtils;
 	private UserOptionsLookup $userOptionsLookup;
 
-	/**
-	 * @param ConfigFactory $configFactory
-	 * @param SubscriptionStore $subscriptionStore
-	 * @param UserNameUtils $userNameUtils
-	 * @param UserOptionsLookup $userOptionsLookup
-	 */
 	public function __construct(
 		ConfigFactory $configFactory,
 		SubscriptionStore $subscriptionStore,

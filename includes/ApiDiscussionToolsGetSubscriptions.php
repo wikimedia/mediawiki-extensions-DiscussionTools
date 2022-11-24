@@ -10,11 +10,6 @@ class ApiDiscussionToolsGetSubscriptions extends ApiBase {
 
 	private SubscriptionStore $subscriptionStore;
 
-	/**
-	 * @param ApiMain $main
-	 * @param string $name
-	 * @param SubscriptionStore $subscriptionStore
-	 */
 	public function __construct(
 		ApiMain $main,
 		string $name,

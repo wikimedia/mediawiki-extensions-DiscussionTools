@@ -19,9 +19,6 @@ class ResourceLoaderHooks implements
 
 	private Config $config;
 
-	/**
-	 * @param ConfigFactory $configFactory
-	 */
 	public function __construct(
 		ConfigFactory $configFactory
 	) {

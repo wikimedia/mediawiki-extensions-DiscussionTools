@@ -11,10 +11,6 @@ class SpecialTopicSubscriptions extends SpecialPage {
 	private LinkRenderer $linkRenderer;
 	private LinkBatchFactory $linkBatchFactory;
 
-	/**
-	 * @param LinkRenderer $linkRenderer
-	 * @param LinkBatchFactory $linkBatchFactory
-	 */
 	public function __construct(
 		LinkRenderer $linkRenderer,
 		LinkBatchFactory $linkBatchFactory

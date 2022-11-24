@@ -30,11 +30,6 @@ class TopicSubscriptionsPager extends TablePager {
 
 	private LinkBatchFactory $linkBatchFactory;
 
-	/**
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param LinkBatchFactory $linkBatchFactory
-	 */
 	public function __construct(
 		IContextSource $context,
 		LinkRenderer $linkRenderer,

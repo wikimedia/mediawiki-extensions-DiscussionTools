@@ -11,10 +11,6 @@ class SpecialFindComment extends FormSpecialPage {
 	private ThreadItemStore $threadItemStore;
 	private ThreadItemFormatter $threadItemFormatter;
 
-	/**
-	 * @param ThreadItemStore $threadItemStore
-	 * @param ThreadItemFormatter $threadItemFormatter
-	 */
 	public function __construct(
 		ThreadItemStore $threadItemStore,
 		ThreadItemFormatter $threadItemFormatter

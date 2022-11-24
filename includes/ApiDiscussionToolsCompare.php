@@ -17,13 +17,6 @@ class ApiDiscussionToolsCompare extends ApiBase {
 	private VisualEditorParsoidClientFactory $parsoidClientFactory;
 	private RevisionLookup $revisionLookup;
 
-	/**
-	 * @param ApiMain $main
-	 * @param string $name
-	 * @param VisualEditorParsoidClientFactory $parsoidClientFactory
-	 * @param CommentParser $commentParser
-	 * @param RevisionLookup $revisionLookup
-	 */
 	public function __construct(
 		ApiMain $main,
 		string $name,

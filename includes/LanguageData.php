@@ -23,12 +23,6 @@ class LanguageData {
 	private LanguageConverterFactory $languageConverterFactory;
 	private SpecialPageFactory $specialPageFactory;
 
-	/**
-	 * @param Config $config
-	 * @param Language $language
-	 * @param LanguageConverterFactory $languageConverterFactory
-	 * @param SpecialPageFactory $specialPageFactory
-	 */
 	public function __construct(
 		Config $config,
 		Language $language,

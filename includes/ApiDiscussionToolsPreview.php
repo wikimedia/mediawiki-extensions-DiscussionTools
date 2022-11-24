@@ -20,13 +20,6 @@ class ApiDiscussionToolsPreview extends ApiBase {
 	private VisualEditorParsoidClientFactory $parsoidClientFactory;
 	private SkinFactory $skinFactory;
 
-	/**
-	 * @param ApiMain $main
-	 * @param string $name
-	 * @param VisualEditorParsoidClientFactory $parsoidClientFactory
-	 * @param CommentParser $commentParser
-	 * @param SkinFactory $skinFactory
-	 */
 	public function __construct(
 		ApiMain $main,
 		string $name,

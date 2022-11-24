@@ -28,10 +28,6 @@ class PreferenceHooks implements
 	private Config $config;
 	private LinkRenderer $linkRenderer;
 
-	/**
-	 * @param ConfigFactory $configFactory
-	 * @param LinkRenderer $linkRenderer
-	 */
 	public function __construct(
 		ConfigFactory $configFactory,
 		LinkRenderer $linkRenderer
