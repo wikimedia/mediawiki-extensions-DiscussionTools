@@ -170,6 +170,14 @@
 		"data": "../data/itwiki-data.json"
 	},
 	{
+		"name": "Comment whose range almost exactly matches a template, but is not considered transcluded (T313100)",
+		"title": "Usuario discusión:Jvaspad",
+		"dom": "cases/transclusions5/transclusions5.html",
+		"expected": "cases/transclusions5/transclusions5-modified.html",
+		"config": "../data/eswiki-config.json",
+		"data": "../data/eswiki-data.json"
+	},
+	{
 		"name": "Signatures in funny places",
 		"title": "Talk:Signatures funny",
 		"dom": "cases/signatures-funny/signatures-funny.html",
