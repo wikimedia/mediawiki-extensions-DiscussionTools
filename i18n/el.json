@@ -47,6 +47,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(όχι στην τρέχουσα αναθεώρηση)",
 	"discussiontools-findcomment-results-transcluded": "(συμπεριλαμβάνεται από άλλη σελίδα)",
 	"discussiontools-findcomment-title": "Εύρεση σχολίου",
+	"discussiontools-ledesection-button": "Μάθετε περισσότερα για αυτήν τη σελίδα",
+	"discussiontools-ledesection-title": "Σχετικά με αυτήν τη σελίδα συζήτησης",
 	"discussiontools-limitreport-errorreqid": "ID σφάλματος αιτήματος DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Χρήση χρόνου DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|δευτερόλεπτο|δευτερόλεπτα}}",

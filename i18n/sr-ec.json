@@ -36,6 +36,7 @@
 	"discussiontools-findcomment-label-search": "Претрага",
 	"discussiontools-findcomment-noresults": "Нема резултата.",
 	"discussiontools-findcomment-title": "Пронађи коментар",
+	"discussiontools-ledesection-title": "О овој страници за разговор",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунд|секунда|секунди}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Нов начин додавања тема.</strong> Ова функција омогућава да додајте теме у инлајн форми и пингујете друге помоћу пречице. Такође можете се вратити на [$1 стари начин].",
 	"discussiontools-newtopic-missing-title": "Молимо наведите наслов Ваше теме. Ако кликнете „{{int:discussiontools-replywidget-newtopic}}” тема ће бити додати без наслова.",
