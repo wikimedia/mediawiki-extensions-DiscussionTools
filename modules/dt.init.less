@@ -107,7 +107,8 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	@media print {
-		display: none;
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
 	}
 }
 
@@ -244,6 +245,11 @@ h1, h2, h3, h4, h5, h6 {
 		color: #72777d;
 		pointer-events: none;
 	}
+
+	@media print {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
 }
 
 // Topic subscriptions (button)
@@ -280,6 +286,11 @@ h1, h2, h3, h4, h5, h6 {
 		/* @noflip */
 		// stylelint-disable-next-line declaration-no-important
 		margin: -2px 1em 0 0 !important;
+	}
+
+	@media print {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
 	}
 }
 
@@ -501,6 +512,10 @@ h1, h2, h3, h4, h5, h6 {
 			&-actions,
 			&-metadata {
 				padding-left: 24px;
+
+				@media print {
+					padding-left: 0;
+				}
 			}
 
 			&-ellipsisButton {
@@ -510,6 +525,11 @@ h1, h2, h3, h4, h5, h6 {
 				margin-right: -5px;
 				// Fix height so MenuWidget appears in the correct place with wrapped text (T311558)
 				height: 32px;
+
+				@media print {
+					// stylelint-disable-next-line declaration-no-important
+					display: none !important;
+				}
 			}
 
 			.mw-editsection {
@@ -772,6 +792,11 @@ h1, h2, h3, h4, h5, h6 {
 	margin-left: -16px !important;
 	// stylelint-disable-next-line declaration-no-important
 	margin-right: -16px !important;
+
+	@media print {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
 }
 
 .ext-discussiontools-init-readAsWikiPage {
@@ -832,6 +857,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .ext-discussiontools-init-lede-button-container {
 	margin: 0.5em 0;
+
+	@media print {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
 }
 
 .ext-discussiontools-init-lede-button {
