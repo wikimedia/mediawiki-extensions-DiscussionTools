@@ -8,6 +8,7 @@
 			"Guherto"
 		]
 	},
+	"discussiontools": "Amûrên gotûbêjê",
 	"discussiontools-defaultsummary-reply": "Bersiv",
 	"discussiontools-desc": "Amûrên ji bo pêşxistina rûpelên gotûbêjê.",
 	"discussiontools-preference-label": "Amûrên gotûbêjê",
@@ -24,6 +25,7 @@
 	"discussiontools-replywidget-reply": "Bersiv bide",
 	"discussiontools-replywidget-terms-click": "Piştî pê li \"$1\" kir, ew tê maneya ku tu mercên bikaranînê yên vê wîkiyê qebûl dikî.",
 	"discussiontools-replywidget-transcluded": "Şiroveya te dê li [[$1]] were qeydkirin.",
+	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-error-comment-disappeared": "Nikarîbû şîroveya ku tu cewab didiyê bibîne. Belkî hatibe jêbirin yan jî barkirin. Ji kerema xwe re rûpelê nû bike û dîse biceribîne.",
 	"discussiontools-error-comment-is-transcluded": "Lînka \"{{int:discussiontools-replylink}}\" nikare ji bonî cewabdana vê şîroveyê werê bikaranîn. Ji bonî cewabkirinê, ji kerema xwe re pêl \"$1\" bike ji bonî guhartina timametiyê rûpelê.",
 	"discussiontools-error-comment-is-transcluded-title": "Lînka \"{{int:discussiontools-replylink}}\" nikare di cewabdana vê şîroveyê de werê bikaranîn ji ber ku ew ji rûpeleke dî ye. Ji bonî cewabdanê, here vir: [[$1]].",
