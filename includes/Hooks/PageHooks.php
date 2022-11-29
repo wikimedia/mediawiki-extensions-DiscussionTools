@@ -195,6 +195,32 @@ class PageHooks implements
 						->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
 				) );
 			}
+
+			if (
+				$title->isTalkPage() &&
+				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) && (
+					CommentFormatter::hasLedeContent( $output->getHTML() ) || (
+						// Header shown on all talk pages, see Article::showNamespaceHeader
+						!$output->getContext()->msg( 'talkpageheader' )->isDisabled() &&
+						// Check if it isn't empty since it may use parser functions to only show itself on some pages
+						trim( $output->getContext()->msg( 'talkpageheader' )->text() ) !== ''
+					)
+				)
+			) {
+				$output->enableOOUI();
+				$output->prependHTML(
+					Html::rawElement( 'div',
+						[ 'class' => 'ext-discussiontools-init-lede-button-container' ],
+						( new ButtonWidget( [
+							'label' => $output->getContext()->msg( 'discussiontools-ledesection-button' )->text(),
+							'classes' => [ 'ext-discussiontools-init-lede-button' ],
+							'framed' => false,
+							'icon' => 'info',
+							'infusable' => true,
+						] ) )
+					)
+				);
+			}
 		}
 	}
 
@@ -247,27 +273,6 @@ class PageHooks implements
 				$text, $this->getEmptyStateHtml( $output->getContext() )
 			);
 			$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
-		}
-
-		if (
-			$output->getTitle()->isTalkPage() &&
-			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) &&
-			$output->getSkin()->getSkinName() === 'minerva' &&
-			CommentFormatter::hasLedeContent( $text )
-		) {
-			$output->enableOOUI();
-			$output->addHTML(
-				Html::rawElement( 'div',
-					[ 'class' => 'ext-discussiontools-init-lede-button-container' ],
-					( new ButtonWidget( [
-						'label' => $output->getContext()->msg( 'discussiontools-ledesection-button' )->text(),
-						'classes' => [ 'ext-discussiontools-init-lede-button' ],
-						'framed' => false,
-						'icon' => 'info',
-						'infusable' => true,
-					] ) )
-				)
-			);
 		}
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
