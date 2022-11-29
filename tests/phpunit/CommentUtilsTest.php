@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use GlobalVarConfig;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\MediaWikiServices;
 
@@ -32,5 +33,34 @@ class CommentUtilsTest extends IntegrationTestCase {
 
 	public function provideIsSingleCommentSignedBy(): array {
 		return static::getJson( '../cases/isSingleCommentSignedBy.json' );
+	}
+
+	/**
+	 * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils::getTitleFromUrl
+	 * @dataProvider provideGetTitleFromUrl
+	 */
+	public function testGetTitleFromUrl( $expected, $input, $config ) {
+		static::assertEquals(
+			$expected,
+			CommentUtils::getTitleFromUrl( $input, $config )
+		);
+	}
+
+	public function provideGetTitleFromUrl() {
+		// TODO: Test with different configs.
+		$config = new GlobalVarConfig();
+		$GLOBALS['wgArticlePath'] = '/wiki/$1';
+
+		yield 'null-string' => [ null, 'Foo', $config ];
+		yield 'null-path' => [ null, 'path/Foo', $config ];
+		yield 'null-wiki-path' => [ null, 'wiki/Foo', $config ];
+		yield 'simple-path' => [ 'Foo', 'site/wiki/Foo', $config ];
+		yield 'simple-cgi' => [ 'Foo', 'site/w/index.php?title=Foo', $config ];
+		yield 'viewing-path' => [ 'Foo', 'site/wiki/Foo?action=view', $config ];
+		yield 'viewing-cgi' => [ 'Foo', 'site/w/index.php?title=Foo&action=view', $config ];
+		yield 'editing-path' => [ 'Foo', 'site/wiki/Foo?action=edit', $config ];
+		yield 'editing-cgi' => [ 'Foo', 'site/w/index.php?title=Foo&action=edit', $config ];
+
+		yield 'repeated question-mark' => [ 'Foo', 'site/wiki/Foo?Gosh?This?Path?Is?Bad', $config ];
 	}
 }
