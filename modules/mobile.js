@@ -98,7 +98,8 @@ function init( $container ) {
 		var $body = $( document.body );
 		// TODO: Use ve.addPassiveEventListener
 		$scrollListener.on( 'scroll', OO.ui.throttle( function () {
-			var scrollTop = $scrollContainer.scrollTop();
+			// Round negative values up to 0 to ignore iOS scroll bouncing (T323400)
+			var scrollTop = Math.max( $scrollContainer.scrollTop(), 0 );
 			var isScrollDown = scrollTop > lastScrollTop;
 			if ( isScrollDown !== wasScrollDown ) {
 				if ( !isScrollDown ) {
