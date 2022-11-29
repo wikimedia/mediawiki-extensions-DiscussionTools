@@ -6,9 +6,15 @@
 	},
 	"discussiontools-defaultsummary-reply": "Нандырығ",
 	"discussiontools-replylink": "нандырарға",
+	"discussiontools-replywidget-advanced": "Хоза",
 	"discussiontools-replywidget-cancel": "Чох иткені",
 	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Визуально",
 	"discussiontools-replywidget-preview": "Предпросмотр",
 	"discussiontools-replywidget-reply": "нандырарға",
-	"discussiontools-replywidget-summary": "Пасханы"
+	"discussiontools-replywidget-summary": "Пасханы",
+	"discussiontools-topicsubscription-button-subscribe": "пазыныбызарға",
+	"discussiontools-topicsubscription-button-unsubscribe": "отписка идерге",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Сірер пазындызар!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Отписка иттізер."
 }
