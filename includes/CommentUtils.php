@@ -494,7 +494,7 @@ class CommentUtils {
 
 		$articlePathRegexp = '/' . str_replace(
 			preg_quote( '$1', '/' ),
-			'(.*)',
+			'([^?]*)',
 			preg_quote( $config->get( 'ArticlePath' ), '/' )
 		) . '/';
 		$matches = null;
