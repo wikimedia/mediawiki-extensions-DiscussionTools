@@ -2462,7 +2462,16 @@
 				"level": 1,
 				"id": "c-Hansmuller-2020-05-13T08:19:00.000Z-Sjabloon:Citeer_web,_een_veld_|website=_toevoegen,_als_in_Template:Cite_web_?",
 				"replies": [],
-				"html": "PS1 Romaine, kun je een archief aanleggen voor je Overleg? Nu te veel tekst op deze pagina. Dank, <a rel=\"mw:WikiLink\" href=\"./Gebruiker:Hansmuller\" title=\"Gebruiker:Hansmuller\" id=\"mwGaE\">Hansmuller</a> (<a rel=\"mw:WikiLink\" href=\"./Overleg_gebruiker:Hansmuller\" title=\"Overleg gebruiker:Hansmuller\" id=\"mwGaI\">overleg</a>) 13 mei 2020 10:19 (CEST)<br id=\"mwGaM\"/>\nPS2 Veel boeken hebben tegenwoordig een EAN in plaats van een ISBN. Mag er in <span typeof=\"mw:Nowiki\" id=\"mwGaQ\">{{Citeer boek}}</span> een veld \"|EAN=\"? <a rel=\"mw:WikiLink\" href=\"./Gebruiker:Hansmuller\" title=\"Gebruiker:Hansmuller\" id=\"mwGaU\">Hansmuller</a> (<a rel=\"mw:WikiLink\" href=\"./Overleg_gebruiker:Hansmuller\" title=\"Overleg gebruiker:Hansmuller\" id=\"mwGaY\">overleg</a>) 13 mei 2020 10:27 (CEST)"
+				"html": "PS1 Romaine, kun je een archief aanleggen voor je Overleg? Nu te veel tekst op deze pagina. Dank, <a rel=\"mw:WikiLink\" href=\"./Gebruiker:Hansmuller\" title=\"Gebruiker:Hansmuller\" id=\"mwGaE\">Hansmuller</a> (<a rel=\"mw:WikiLink\" href=\"./Overleg_gebruiker:Hansmuller\" title=\"Overleg gebruiker:Hansmuller\" id=\"mwGaI\">overleg</a>) 13 mei 2020 10:19 (CEST)"
+			},
+			{
+				"timestamp": "2020-05-13T08:27:00Z",
+				"author": "Hansmuller",
+				"type": "comment",
+				"level": 1,
+				"id": "c-Hansmuller-2020-05-13T08:27:00.000Z-Sjabloon:Citeer_web,_een_veld_|website=_toevoegen,_als_in_Template:Cite_web_?",
+				"replies": [],
+				"html": "\nPS2 Veel boeken hebben tegenwoordig een EAN in plaats van een ISBN. Mag er in <span typeof=\"mw:Nowiki\" id=\"mwGaQ\">{{Citeer boek}}</span> een veld \"|EAN=\"? <a rel=\"mw:WikiLink\" href=\"./Gebruiker:Hansmuller\" title=\"Gebruiker:Hansmuller\" id=\"mwGaU\">Hansmuller</a> (<a rel=\"mw:WikiLink\" href=\"./Overleg_gebruiker:Hansmuller\" title=\"Overleg gebruiker:Hansmuller\" id=\"mwGaY\">overleg</a>) 13 mei 2020 10:27 (CEST)"
 			}
 		],
 		"html": "<span id=\"Sjabloon:Citeer_web.2C_een_veld_.7Cwebsite.3D_toevoegen.2C_als_in_Template:Cite_web_.3F\" typeof=\"mw:FallbackId\"></span>Sjabloon:Citeer web, een veld |website= toevoegen, als in Template:Cite web ?"
