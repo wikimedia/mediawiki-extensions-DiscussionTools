@@ -10,9 +10,6 @@ class SpecialGoToComment extends RedirectSpecialPage {
 
 	private ThreadItemStore $threadItemStore;
 
-	/**
-	 * @param ThreadItemStore $threadItemStore
-	 */
 	public function __construct(
 		ThreadItemStore $threadItemStore
 	) {

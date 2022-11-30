@@ -32,16 +32,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	private Config $config;
 	private RevisionLookup $revisionLookup;
 
-	/**
-	 * @param ApiMain $main
-	 * @param string $name
-	 * @param VisualEditorParsoidClientFactory $parsoidClientFactory
-	 * @param CommentParser $commentParser
-	 * @param SubscriptionStore $subscriptionStore
-	 * @param SkinFactory $skinFactory
-	 * @param ConfigFactory $configFactory
-	 * @param RevisionLookup $revisionLookup
-	 */
 	public function __construct(
 		ApiMain $main,
 		string $name,

@@ -30,12 +30,6 @@ class SubscriptionStore {
 	private ReadOnlyMode $readOnlyMode;
 	private UserFactory $userFactory;
 
-	/**
-	 * @param ConfigFactory $configFactory
-	 * @param ILBFactory $lbFactory
-	 * @param ReadOnlyMode $readOnlyMode
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
 		ConfigFactory $configFactory,
 		ILBFactory $lbFactory,

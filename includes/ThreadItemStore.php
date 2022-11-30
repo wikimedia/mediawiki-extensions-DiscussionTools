@@ -35,15 +35,6 @@ class ThreadItemStore {
 	private TitleFormatter $titleFormatter;
 	private ActorStore $actorStore;
 
-	/**
-	 * @param ConfigFactory $configFactory
-	 * @param ILBFactory $lbFactory
-	 * @param ReadOnlyMode $readOnlyMode
-	 * @param PageStore $pageStore
-	 * @param RevisionStore $revStore
-	 * @param TitleFormatter $titleFormatter
-	 * @param ActorStore $actorStore
-	 */
 	public function __construct(
 		ConfigFactory $configFactory,
 		ILBFactory $lbFactory,

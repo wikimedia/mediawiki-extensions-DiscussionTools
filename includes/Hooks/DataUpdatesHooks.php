@@ -22,9 +22,6 @@ class DataUpdatesHooks implements RevisionDataUpdatesHook {
 
 	private ThreadItemStore $threadItemStore;
 
-	/**
-	 * @param ThreadItemStore $threadItemStore
-	 */
 	public function __construct(
 		ThreadItemStore $threadItemStore
 	) {

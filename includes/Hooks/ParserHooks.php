@@ -19,9 +19,6 @@ class ParserHooks implements ParserAfterTidyHook {
 
 	private Config $config;
 
-	/**
-	 * @param ConfigFactory $configFactory
-	 */
 	public function __construct(
 		ConfigFactory $configFactory
 	) {

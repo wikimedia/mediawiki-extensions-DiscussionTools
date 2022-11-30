@@ -19,11 +19,6 @@ class UnsubscribeAction extends FormAction {
 	protected SubscriptionStore $subscriptionStore;
 	protected ?SubscriptionItem $subscriptionItem = null;
 
-	/**
-	 * @param Article $page
-	 * @param IContextSource $context
-	 * @param SubscriptionStore $subscriptionStore
-	 */
 	public function __construct(
 		Article $page,
 		IContextSource $context,
