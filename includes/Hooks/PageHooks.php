@@ -205,8 +205,12 @@ class PageHooks implements
 						// Check if it isn't empty since it may use parser functions to only show itself on some pages
 						trim( $output->getContext()->msg( 'talkpageheader' )->text() ) !== ''
 					)
-				)
+				) &&
+				// If there are comments in the lede section, we can't really separate them from other lede
+				// content, so keep the whole section visible.
+				!CommentFormatter::hasCommentsInLedeContent( $output->getHTML() )
 			) {
+				$output->addBodyClasses( 'ext-discussiontools-init-lede-hidden' );
 				$output->enableOOUI();
 				$output->prependHTML(
 					Html::rawElement( 'div',
