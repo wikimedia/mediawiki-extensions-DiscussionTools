@@ -18,7 +18,7 @@
 	"discussiontools-emptystate-button": "Gotûbêjek bide destpêkirin",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Rûpelên gotûbêjê]] cihê ku mirov li wir nîqaş dikin ka meriv çawa naverokeke baş li ser {{SITENAME}}yê çêke. Hûn dikarin vê rûpelê bi kar bînin da ku bi kesên din re li ser çawaniya çêtirkirina [[:{{SUBJECTPAGENAME}}]] nîqaşekê bidin destpêkirin.",
 	"discussiontools-emptystate-desc-self": "Kesên li ser {{SITENAME}} dikarin vê [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|rûpela gotûbêjê]] bi kar bînin da ku ji we re peyameke giştî bişînin û gava ew bikin hûn ê agahdar bibin.",
-	"discussiontools-emptystate-title": "Li ser {{SUBJECTPAGENAME}} gotûbêjekê bidin destpêkirin",
+	"discussiontools-emptystate-title": "Li ser {{SUBJECTPAGENAME}} gotûbêjekê bide destpêkirin",
 	"discussiontools-emptystate-title-self": "Bi xêr hatî vê rûpela xwe ya gotûbêjê",
 	"discussiontools-emptystate-title-self-anon": "Bi xêr hatî vê rûpela gotûbêjê",
 	"discussiontools-emptystate-title-user": "{{GENDER:{{PAGENAME}}|Bi}} {{PAGENAME}} re gotûbêjek bide destpêkirin",
