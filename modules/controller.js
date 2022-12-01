@@ -242,6 +242,11 @@ function init( $container, state ) {
 		CommentController = require( './CommentController.js' ),
 		NewTopicController = require( './NewTopicController.js' );
 
+	// We may be re-initializing after posting a new comment, so clear the cache, because
+	// wgCurRevisionId will not change if we posted to a transcluded page (T266275).
+	// This also applies when another tool has posted a comment and reloaded page contents (T323661).
+	pageDataCache = {};
+
 	// Lazy-load postEdit module, may be required later (on desktop)
 	mw.loader.using( 'mediawiki.action.view.postEdit' );
 
@@ -560,10 +565,6 @@ function update( data, threadItem, pageName, replyWidget ) {
 			revision_id: data.newrevid
 		} );
 	}
-
-	// We posted a new comment, clear the cache, because wgCurRevisionId will not change if we posted
-	// to a transcluded page (T266275)
-	pageDataCache[ mw.config.get( 'wgRelevantPageName' ) ][ mw.config.get( 'wgCurRevisionId' ) ] = null;
 
 	var pageExists = !!mw.config.get( 'wgRelevantArticleId' );
 	if ( !pageExists ) {
