@@ -167,8 +167,15 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 					$startOffset = $startRange->startOffset;
 				} else {
 					$startNode = CommentUtils::closestElementWithSibling( $startRange->endContainer, 'next' );
-					$startNode = $startNode->nextSibling;
-					$startOffset = 0;
+					if ( !$startNode ) {
+						// If there's no siblings here this means we're on a
+						// heading that is the final heading on a page and
+						// which has no contents at all. We can skip the rest.
+						continue;
+					} else {
+						$startNode = $startNode->nextSibling;
+						$startOffset = 0;
+					}
 				}
 
 				if ( !$startNode ) {
@@ -206,7 +213,13 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 				}
 				$fragment = $betweenRange->cloneContents();
 				CommentModifier::unwrapFragment( $fragment );
-				$output[$index]['othercontent'] = trim( DOMUtils::getFragmentInnerHTML( $fragment ) );
+				$otherContent = trim( DOMUtils::getFragmentInnerHTML( $fragment ) );
+				if ( $otherContent ) {
+					// A completely empty section will result in otherContent
+					// being an empty string. In this case we should just not include it.
+					$output[$index]['othercontent'] = $otherContent;
+				}
+
 			}
 		}
 		return $output;
