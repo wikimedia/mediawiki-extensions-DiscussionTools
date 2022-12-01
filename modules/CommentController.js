@@ -49,6 +49,7 @@ function CommentController( $pageContainer, threadItem, threadItemSet ) {
 	// Mixin constructors
 	OO.EventEmitter.call( this );
 
+	this.isTornDown = false;
 	this.$pageContainer = $pageContainer;
 	this.threadItem = threadItem;
 	this.threadItemSet = threadItemSet;
@@ -280,6 +281,9 @@ CommentController.prototype.startPoll = function () {
 
 		commentController.oldId = result.torevid;
 	} ).always( function () {
+		if ( commentController.isTornDown ) {
+			return;
+		}
 		commentController.pollTimeout = setTimeout( commentController.startPoll.bind( commentController ), 5000 );
 	} );
 };
@@ -375,6 +379,7 @@ CommentController.prototype.teardown = function ( mode ) {
 	this.stopPoll();
 	$( document ).off( 'visibilitychange', this.onVisibilityChangeHandler );
 
+	this.isTornDown = true;
 	this.emit( 'teardown', mode );
 };
 
