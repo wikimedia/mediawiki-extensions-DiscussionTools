@@ -45,7 +45,7 @@
 	"discussiontools-limitreport-errorreqid": "ID de la domanda de error de DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Temp de utilizazzion de l'istrument de discussion (DiscussionTols)",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|segond}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Tela chì ona manera noeuva de comenzà i argoment.</strong> ?st'atualizazzion chì la te permet de sgiontà di argiment col drovà on modol in linea de pingànn di alter cont ona scurciatoia. Te podet anca [$1 tornà a l'esperienza legacy].",
+	"discussiontools-newtopic-legacy-hint": "<strong>Tela chì ona manera noeuva de tacà i argoment.</strong> St'atualizazzion chì la te permet de sgiontà di argoment a drovà on modol in linea de \"pingà\" i alter cont ona scurciatoia. Te podet anca [$1 tornà a l'esperienza legacy].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Te see 'dree a varda l'esprienza legacy.</strong> Te podet [$1 tornà an'mò a l'esperienza noeuva] o passaà dent in di preferenze per [$2 impostà come predefinida l'esprienza legacy].",
 	"discussiontools-newtopic-missing-title": "Per piesè dagh un argoment al to coment. Se te clichet \"{{int:discussiontools-replywidget-newtopic}}\" anmò, el to coment el sarà sgiontad senza un titol.",
 	"discussiontools-newtopic-placeholder-title": "Soget",

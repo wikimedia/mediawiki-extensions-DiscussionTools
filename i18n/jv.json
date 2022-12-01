@@ -12,7 +12,7 @@
 	"discussiontools-defaultsummary-reply": "Mangsuli",
 	"discussiontools-desc": "Piranti kanggo nyampurnakaké kaca parembugan.",
 	"discussiontools-emptystate-button": "Wiwiti parembugan anyar",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Kaca parembugan]] iku papan rembugan amrih isi ing {{SITENAME}} iku dadi luwih apik. Kowé bisa nganggo kaca iki saperlu rembugan karo liyan babagan pangrembakan kaca [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Kaca parembugan]] yaiku papan kanggo rembugan amrih isi ing {{SITENAME}} iku dadi luwih apik. Kowé bisa nganggo kaca iki saperlu rembugan karo liyan babagan pangrembakan kaca [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-title": "Wiwiti parembugan babagan {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Sugeng rawuh ing kaca parembuganmu",
 	"discussiontools-emptystate-title-self-anon": "Sugeng rawuh ing kaca parembugan iki",

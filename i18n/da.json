@@ -5,7 +5,8 @@
 			"Dipsacus fullonum",
 			"Matma Rex",
 			"Saederup92",
-			"Steenth"
+			"Steenth",
+			"SiGNOUT"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -20,6 +21,7 @@
 	"discussiontools-emptystate-desc-self": "Personer på {{SITENAME}} kan bruge denne [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|diskussionsside]] til at give en offentlig besked til dig, og du bliver underrettet når det sker.",
 	"discussiontools-emptystate-desc-self-anon": "Personer på {{SITENAME}} kan bruge denne [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|diskussionsside]] til at give en offentlig besked vedrørende redigeringer lavet fra den IP-adresse som du bruger i øjeblikket.\n\nMange IP-adresser ændres med jævne mellemrum og deles ofte af flere personer. Du kan [$1 oprette en konto] eller [$2 logge ind] for at undgå fremtidig forveksling med andre brugere som ikke er logget ind. Oprettelse af en konto skjuler også din IP-adresse.",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Diskussionssider]] er steder, hvor folk diskuterer, hvordan man kan gøre indholdet på {{SITENAME}} så godt som muligt. Start en ny diskussion for at samarbejde {{GENDER:{{PAGENAME}}|med}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Det du skriver her er offentligt og kan læses af alle.",
+	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Diskussionssider]] er der, hvor folk diskuterer, hvordan man kan gøre indholdet på {{SITENAME}} så godt som muligt. Brug denne side til at starte en diskussion om redigeringerne som er lavet fra denne IP-adresse. Det du skriver her, er offentligt og kan læses af alle. Mange IP-adresser ændres jævnligt, og deles ofte af flere personer.",
 	"discussiontools-emptystate-title": "Start en diskussion om {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Velkommen til din diskussionsside",
 	"discussiontools-emptystate-title-self-anon": "Velkommen til denne diskussionsside",

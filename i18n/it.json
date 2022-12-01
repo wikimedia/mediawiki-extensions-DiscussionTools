@@ -58,6 +58,7 @@
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|Un argomento è stato archiviato o rimosso|$1 argomenti sono stati archiviati o rimossi|100=Più di 99 argomenti sono stati archiviati o rimossi}} da $2 .",
 	"discussiontools-notification-removed-topic-header-compact": "L'argomento \"<strong>$4</strong>\" è stato archiviato o rimosso.",
 	"discussiontools-notification-removed-topic-view": "Vedi pagina",
+	"discussiontools-notification-removed-topic-disable": "Disattiva questo tipo di notifiche",
 	"discussiontools-notification-removed-topic-disabled-body": "Puoi cambiarlo nelle [[Special:Preferences#mw-prefsection-echo-echosubscriptions|tue preferenze]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|ha risposto}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Una nuova risposta|$1 nuove risposte|100=Più di 99 nuove risposte}} in \"<strong>$3</strong>\".",

@@ -30,6 +30,7 @@
 	"discussiontools-error-noswitchtove-title": "Vizuālais režīms atspējots",
 	"discussiontools-findcomment-label-idorname": "Komentāra ID vai nosaukums",
 	"discussiontools-findcomment-label-search": "Meklēt",
+	"discussiontools-findcomment-noresults": "Nav rezultātu.",
 	"discussiontools-findcomment-results-transcluded": "(iekļauts no citas lapas)",
 	"discussiontools-findcomment-title": "Atrast komentāru",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools kļūdas pieprasījuma ID",
