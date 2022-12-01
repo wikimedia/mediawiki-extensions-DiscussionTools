@@ -150,6 +150,13 @@ class TopicSubscriptionsPager extends TablePager {
 	/**
 	 * @inheritDoc
 	 */
+	public function getDefaultDirections() {
+		return static::DIR_DESCENDING;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function getIndexField() {
 		return [ static::INDEX_FIELDS[$this->mSort] ];
 	}
