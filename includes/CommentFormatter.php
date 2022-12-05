@@ -348,6 +348,15 @@ class CommentFormatter {
 		) {
 			$container->appendChild( $doc->createComment( '__DTHASLEDECONTENT__' ) );
 		}
+		if (
+			// Placeholder heading indicates that there are comments in the lede section (T324139).
+			// We can't really separate them from the lede content.
+			isset( $threadItems[0] ) &&
+			$threadItems[0] instanceof ContentHeadingItem &&
+			$threadItems[0]->isPlaceholderHeading()
+		) {
+			$container->appendChild( $doc->createComment( '__DTHASCOMMENTSINLEDECONTENT__' ) );
+		}
 
 		if ( count( $threadItems ) === 0 ) {
 			$container->appendChild( $doc->createComment( '__DTEMPTYTALKPAGE__' ) );
@@ -801,6 +810,16 @@ class CommentFormatter {
 	 */
 	public static function hasLedeContent( string $text ): bool {
 		return strpos( $text, '<!--__DTHASLEDECONTENT__-->' ) !== false;
+	}
+
+	/**
+	 * Check if the talk page has comments above the first heading, in the lede section.
+	 *
+	 * @param string $text
+	 * @return bool
+	 */
+	public static function hasCommentsInLedeContent( string $text ): bool {
+		return strpos( $text, '<!--__DTHASCOMMENTSINLEDECONTENT__-->' ) !== false;
 	}
 
 }
