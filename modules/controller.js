@@ -279,7 +279,7 @@ function init( $container, state ) {
 
 		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
 			// eslint-disable-next-line no-jquery/no-global-selector
-			$addSectionLink = $( '#ca-addsection a' );
+			$addSectionLink = $( '#ca-addsection' ).find( 'a' );
 			// When opening new topic tool using any link, always activate the link in page tabs too
 			$link = $link.add( $addSectionLink );
 			commentController = new NewTopicController( $pageContainer, pageThreads );
@@ -497,7 +497,7 @@ function updatePageContents( $container, data ) {
 	// Copied from ve.init.mw.DesktopArticleTarget.prototype.saveComplete
 	// TODO: Upstream this to core/skins, triggered by a hook (wikipage.content?)
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '#t-permalink a, #coll-download-as-rl a' ).each( function () {
+	$( '#t-permalink' ).add( '#coll-download-as-rl' ).find( 'a' ).each( function () {
 		var permalinkUrl = new URL( this.href );
 		permalinkUrl.searchParams.set( 'oldid', data.parse.revid );
 		$( this ).attr( 'href', permalinkUrl.toString() );
