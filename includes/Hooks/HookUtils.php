@@ -101,9 +101,12 @@ class HookUtils {
 			$services->getPageStore()->getPageById( $revRecord->getPageId(), IDBAccessObject::READ_LATEST );
 		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
 
+		$parserOptions = ParserOptions::newFromAnon();
+		$parserOptions->setRenderReason( __METHOD__ );
+
 		$status = $parsoidOutputAccess->getParserOutput(
 			$pageRecord,
-			ParserOptions::newFromAnon(),
+			$parserOptions,
 			$revRecord
 		);
 
