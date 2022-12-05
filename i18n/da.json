@@ -51,6 +51,7 @@
 	"discussiontools-postedit-confirmation-topicadded": "Dit emne blev tilføjet.",
 	"discussiontools-preference-autotopicsub": "Abonner automatisk på emner",
 	"discussiontools-preference-description": "Aktiverer eksperimentelle funktioner for diskussionssider:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Svar] på indlæg på diskussionssider med ét klik.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Tilføj nye emner] ved brug af en indlejret formular.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Modtag meddelelser] når nye indlæg er tilføjet i afsnit som du abonnerer på.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Vis metadata] om hver diskussion, og aktiver et nyt sidelayout.\n\nDu kan tilpasse disse funktioner i dine [[Special:Preferences#mw-prefsection-editing-discussion|indstillinger]].\n\nOpdateringer vil blive slået op på [https://www.mediawiki.org/wiki/Talk_pages_project/Updates diskussionsside-projektets opdateringsside].\n\nBemærk venligst:\n* Over tid vil nye eksperimentelle funktioner blive tilføjet.\n* Nogle af funktionerne ovenfor er måske endnu ikke tilgængelige på denne wiki.",
+	"discussiontools-replybutton": "Svar",
 	"discussiontools-replylink": "svar",
 	"discussiontools-replywidget-abandon-discard": "Kassér indlæg",
 	"discussiontools-replywidget-abandon-keep": "Fortsæt med at skrive",
@@ -101,6 +102,7 @@
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Diskussionsideabonnement|Diskussionsideabonnementer}}",
 	"tag-discussiontools-edit": "Redigeret indlæg",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nyt emne]",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
 	"tag-discussiontools-source": "Kilde",
 	"tag-discussiontools-visual": "Visuelt"
 }
