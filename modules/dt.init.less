@@ -754,6 +754,8 @@ h1, h2, h3, h4, h5, h6 {
 // stylelint-disable-next-line selector-class-pattern
 .skin-minerva.ns-talk.ext-discussiontools-replytool-enabled {
 	// .mw-body-content selector prevents this applying to content in the preview (T318758)
+	// On non-existent pages MobileFrontend wrapping isn't there
+	.mw-body-content > .mw-talkpageheader,
 	.mw-body-content > .mf-section-0,
 	.mw-body-content > .mw-parser-output > .mf-section-0 {
 		> *:not( .ext-discussiontools-emptystate ) {

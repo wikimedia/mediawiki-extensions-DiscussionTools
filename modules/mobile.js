@@ -64,7 +64,9 @@ function init( $container ) {
 		} );
 	} );
 
-	var $ledeContent = $container.find( '.mf-section-0' ).children( ':not( .ext-discussiontools-emptystate )' );
+	var $ledeContent = $container.find( '.mf-section-0' ).children( ':not( .ext-discussiontools-emptystate )' )
+		// On non-existent pages MobileFrontend wrapping isn't there
+		.add( $container.find( '.mw-talkpageheader' ) );
 	var $ledeButton = $container.find( '.ext-discussiontools-init-lede-button' );
 	if ( $ledeButton.length ) {
 		var windowManager = OO.ui.getWindowManager();
