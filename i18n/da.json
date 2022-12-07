@@ -86,6 +86,7 @@
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Diskussionsideabonnement|Diskussionsideabonnementer}}",
 	"tag-discussiontools-edit": "Redigeret indlæg",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nyt emne]",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
 	"tag-discussiontools-source": "Kilde",
 	"tag-discussiontools-visual": "Visuelt"
 }
