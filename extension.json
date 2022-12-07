@@ -399,6 +399,9 @@
 			]
 		}
 	},
+	"TrackingCategories": [
+		"discussiontools-comments-before-first-heading-category"
+	],
 	"Hooks": {
 		"BeforeCreateEchoEvent": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onBeforeCreateEchoEvent",
 		"EchoGetBundleRules": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onEchoGetBundleRules",
