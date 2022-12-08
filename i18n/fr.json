@@ -58,7 +58,7 @@
 	"discussiontools-findcomment-results-notcurrent": "(pas dans la révision actuelle)",
 	"discussiontools-findcomment-results-transcluded": "(inclus depuis une autre page)",
 	"discussiontools-findcomment-title": "Trouver le commentaire",
-	"discussiontools-limitreport-errorreqid": "ID de la demande d’erreur de DiscussionTools",
+	"discussiontools-limitreport-errorreqid": "Identifiant de requête de l’erreur DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Utilisation du temps de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 seconde{{PLURAL:$1||s}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Une nouvelle manière de démarrer des sujets se trouve ici.</strong> Cette mise à jour vous permet d’ajouter des sujets en utilisant un formulaire en ligne et de notifier les autres avec un nouveau raccourci. Vous pouvez aussi [$1 revenir à l’expérience historique].",
