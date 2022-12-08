@@ -164,6 +164,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Topic subscriptions (both kinds)
+/* stylelint-disable selector-max-id, selector-class-pattern */
+#ca-dt-page-subscribe,
+.menu__item--page-actions-overflow-t-page-subscribe,
+.ext-discussiontools-init-section-subscribe,
+.ext-discussiontools-init-section-subscribeButton {
+	// If JS is enabled, disable the buttons until it's loaded, so that users don't accidentally
+	// navigate to the no-JS interface.
+	// TODO: These clicks will be ignored, but ideally we would process them once ready (T183720).
+	.client-js:not( .ext-discussiontools-init-ready ) & {
+		pointer-events: none;
+	}
+}
+/* stylelint-enable selector-max-id, selector-class-pattern */
+
 .ext-discussiontools-visualenhancements-enabled .ext-discussiontools-init-section {
 	// Introduce a block formatting context so that floated "subscribe" links/buttons
 	// aren't affected by other floats (T327469). Most skins already include this rule
@@ -182,11 +196,6 @@ h1, h2, h3, h4, h5, h6 {
 
 	.ext-discussiontools-topicsubscription-enabled & {
 		display: block;
-
-		// Topic subscriptions currently require JS
-		.client-nojs & {
-			display: none;
-		}
 	}
 
 	// Directional properties must be based on content direction.
@@ -258,11 +267,6 @@ h1, h2, h3, h4, h5, h6 {
 
 	.ext-discussiontools-topicsubscription-enabled.ext-discussiontools-visualenhancements-enabled & {
 		display: inline-block;
-
-		// Topic subscriptions currently require JS
-		.client-nojs & {
-			display: none;
-		}
 	}
 
 	// Directional properties must be based on content direction.

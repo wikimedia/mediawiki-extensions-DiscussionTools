@@ -116,14 +116,16 @@ class CommentFormatter {
 			return $wrapperNode;
 		}
 
-		$headingNameEscaped = htmlspecialchars( $headingItem->getName(), ENT_NOQUOTES );
+		$headingJSONEscaped = htmlspecialchars(
+			json_encode( static::getJsonForHeadingMarker( $headingItem ) )
+		);
 
 		// Replaced in ::postprocessTopicSubscription() as the text depends on user state
 		if ( $headingItem->isSubscribable() ) {
-			$subscribeLink = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingNameEscaped );
+			$subscribeLink = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingJSONEscaped );
 			$headingElement->insertBefore( $subscribeLink, $headingElement->firstChild );
 
-			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONDESKTOP__' . $headingNameEscaped );
+			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONDESKTOP__' . $headingJSONEscaped );
 			$wrapperNode->insertBefore( $subscribeButton, $wrapperNode->firstChild );
 		}
 
@@ -165,7 +167,7 @@ class CommentFormatter {
 			);
 
 			if ( $headingItem->isSubscribable() ) {
-				$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONMOBILE__' . $headingNameEscaped );
+				$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONMOBILE__' . $headingJSONEscaped );
 				$actions->appendChild( $subscribeButton );
 			}
 
@@ -359,24 +361,30 @@ class CommentFormatter {
 	 *
 	 * @param string $text
 	 * @param Language $lang
+	 * @param Title $title
 	 * @param SubscriptionStore $subscriptionStore
 	 * @param UserIdentity $user
 	 * @param bool $isMobile
 	 * @return string
 	 */
 	public static function postprocessTopicSubscription(
-		string $text, Language $lang, SubscriptionStore $subscriptionStore, UserIdentity $user, bool $isMobile
+		string $text, Language $lang, Title $title,
+		SubscriptionStore $subscriptionStore, UserIdentity $user, bool $isMobile
 	): string {
 		$doc = DOMCompat::newDocument( true );
 
 		$matches = [];
+		$itemDataByName = [];
 		preg_match_all( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', $text, $matches );
-		$itemNames = array_map(
-			static function ( string $itemName ): string {
-				return htmlspecialchars_decode( $itemName );
-			},
-			$matches[1]
-		);
+		foreach ( $matches[1] as $itemData ) {
+			if ( substr( $itemData, 0, 1 ) === '{' ) {
+				$itemDataByName[ $itemData ] = json_decode( htmlspecialchars_decode( $itemData ), true );
+			} else {
+				// Compatibility with cached HTML
+				$itemDataByName[ $itemData ] = [ 'name' => htmlspecialchars_decode( $itemData ) ];
+			}
+		}
+		$itemNames = array_column( $itemDataByName, 'name' );
 
 		$items = $subscriptionStore->getSubscriptionItemsForUser(
 			$user,
@@ -388,87 +396,97 @@ class CommentFormatter {
 		}
 
 		$text = preg_replace_callback(
-			'/<!--__DTSUBSCRIBELINK__(.*?)-->/',
-			static function ( $matches ) use ( $doc, $itemsByName, $lang ) {
-				$itemName = htmlspecialchars_decode( $matches[1] );
+			'/<!--__(DTSUBSCRIBELINK|DTSUBSCRIBEBUTTON(?:DESKTOP|MOBILE))__(.*?)-->/',
+			static function ( $matches ) use ( $doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile ) {
+				$isLink = $matches[1] === 'DTSUBSCRIBELINK';
+				$buttonIsMobile = $matches[1] === 'DTSUBSCRIBEBUTTONMOBILE';
+
+				$itemData = $itemDataByName[ $matches[2] ];
+				'@phan-var array $itemData';
+				$itemName = $itemData['name'];
+
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
 				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
 
-				$subscribe = $doc->createElement( 'span' );
-				$subscribe->setAttribute(
-					'class',
-					'ext-discussiontools-init-section-subscribe mw-editsection-like'
-				);
-
-				$subscribeLink = $doc->createElement( 'a' );
-				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
-				$subscribeLink->setAttribute( 'href', '' );
-				$subscribeLink->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-link' );
-				$subscribeLink->setAttribute( 'role', 'button' );
-				$subscribeLink->setAttribute( 'tabindex', '0' );
-				$subscribeLink->setAttribute( 'title', wfMessage(
-					$isSubscribed ?
-						'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
-						'discussiontools-topicsubscription-button-subscribe-tooltip'
-				)->inLanguage( $lang )->text() );
-				$subscribeLink->nodeValue = wfMessage(
-					$isSubscribed ?
-						'discussiontools-topicsubscription-button-unsubscribe' :
-						'discussiontools-topicsubscription-button-subscribe'
-				)->inLanguage( $lang )->text();
-
-				if ( $subscribedState !== null ) {
-					$subscribeLink->setAttribute( 'data-mw-subscribed', (string)$subscribedState );
+				if ( isset( $itemData['linkableTitle'] ) ) {
+					$href = $title->getLinkURL( [
+						'action' => $isSubscribed ? 'dtunsubscribe' : 'dtsubscribe',
+						'commentname' => $itemName,
+						'section' => $itemData['linkableTitle'],
+					] );
+				} else {
+					// Compatibility with cached HTML
+					// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
+					$href = '';
 				}
 
-				$bracket = $doc->createElement( 'span' );
-				$bracket->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-bracket' );
-				$bracketOpen = $bracket->cloneNode( false );
-				$bracketOpen->nodeValue = '[';
-				$bracketClose = $bracket->cloneNode( false );
-				$bracketClose->nodeValue = ']';
+				if ( $isLink ) {
+					$subscribe = $doc->createElement( 'span' );
+					$subscribe->setAttribute(
+						'class',
+						'ext-discussiontools-init-section-subscribe mw-editsection-like'
+					);
 
-				$subscribe->appendChild( $bracketOpen );
-				$subscribe->appendChild( $subscribeLink );
-				$subscribe->appendChild( $bracketClose );
+					$subscribeLink = $doc->createElement( 'a' );
+					$subscribeLink->setAttribute( 'href', $href );
+					$subscribeLink->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-link' );
+					$subscribeLink->setAttribute( 'role', 'button' );
+					$subscribeLink->setAttribute( 'tabindex', '0' );
+					$subscribeLink->setAttribute( 'title', wfMessage(
+						$isSubscribed ?
+							'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
+							'discussiontools-topicsubscription-button-subscribe-tooltip'
+					)->inLanguage( $lang )->text() );
+					$subscribeLink->nodeValue = wfMessage(
+						$isSubscribed ?
+							'discussiontools-topicsubscription-button-unsubscribe' :
+							'discussiontools-topicsubscription-button-subscribe'
+					)->inLanguage( $lang )->text();
 
-				return DOMCompat::getOuterHTML( $subscribe );
-			},
-			$text
-		);
+					if ( $subscribedState !== null ) {
+						$subscribeLink->setAttribute( 'data-mw-subscribed', (string)$subscribedState );
+					}
 
-		$text = preg_replace_callback(
-			'/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)__(.*?)-->/',
-			static function ( $matches ) use ( $doc, $itemsByName, $lang, $isMobile ) {
-				$buttonIsMobile = $matches[1] === 'MOBILE';
-				if ( $buttonIsMobile !== $isMobile ) {
-					return '';
+					$bracket = $doc->createElement( 'span' );
+					$bracket->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-bracket' );
+					$bracketOpen = $bracket->cloneNode( false );
+					$bracketOpen->nodeValue = '[';
+					$bracketClose = $bracket->cloneNode( false );
+					$bracketClose->nodeValue = ']';
+
+					$subscribe->appendChild( $bracketOpen );
+					$subscribe->appendChild( $subscribeLink );
+					$subscribe->appendChild( $bracketClose );
+
+					return DOMCompat::getOuterHTML( $subscribe );
+				} else {
+					if ( $buttonIsMobile !== $isMobile ) {
+						return '';
+					}
+
+					$subscribe = new \OOUI\ButtonWidget( [
+						'classes' => [ 'ext-discussiontools-init-section-subscribeButton' ],
+						'framed' => false,
+						'icon' => $isSubscribed ? 'bell' : 'bellOutline',
+						'flags' => [ 'progressive' ],
+						'href' => $href,
+						'label' => wfMessage( $isSubscribed ?
+							'discussiontools-topicsubscription-button-unsubscribe-label' :
+							'discussiontools-topicsubscription-button-subscribe-label'
+						)->inLanguage( $lang )->text(),
+						'title' => wfMessage( $isSubscribed ?
+							'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
+							'discussiontools-topicsubscription-button-subscribe-tooltip'
+						)->inLanguage( $lang )->text(),
+						'infusable' => true,
+					] );
+
+					if ( $subscribedState !== null ) {
+						$subscribe->setAttributes( [ 'data-mw-subscribed' => (string)$subscribedState ] );
+					}
+
+					return $subscribe->toString();
 				}
-				$itemName = htmlspecialchars_decode( $matches[2] );
-				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
-				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
-
-				$subscribe = new \OOUI\ButtonWidget( [
-					'classes' => [ 'ext-discussiontools-init-section-subscribeButton' ],
-					'framed' => false,
-					'icon' => $isSubscribed ? 'bell' : 'bellOutline',
-					'flags' => [ 'progressive' ],
-					'label' => wfMessage( $isSubscribed ?
-						'discussiontools-topicsubscription-button-unsubscribe-label' :
-						'discussiontools-topicsubscription-button-subscribe-label'
-					)->inLanguage( $lang )->text(),
-					'title' => wfMessage( $isSubscribed ?
-						'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
-						'discussiontools-topicsubscription-button-subscribe-tooltip'
-					)->inLanguage( $lang )->text(),
-					'infusable' => true,
-				] );
-
-				if ( $subscribedState !== null ) {
-					$subscribe->setAttributes( [ 'data-mw-subscribed' => (string)$subscribedState ] );
-				}
-
-				return $subscribe->toString();
 			},
 			$text
 		);
@@ -568,11 +586,20 @@ class CommentFormatter {
 			$JSON['author'] = $commentItem->getAuthor();
 			$heading = $commentItem->getSubscribableHeading();
 			if ( $heading ) {
-				$JSON['heading'] = $heading->jsonSerialize();
-				$JSON['heading']['text'] = $heading->getText();
-				$JSON['heading']['linkableTitle'] = $heading->getLinkableTitle();
+				$JSON['heading'] = static::getJsonForHeadingMarker( $heading );
 			}
 		}
+		return $JSON;
+	}
+
+	/**
+	 * @param ContentHeadingItem $heading
+	 * @return array
+	 */
+	private static function getJsonForHeadingMarker( ContentHeadingItem $heading ): array {
+		$JSON = $heading->jsonSerialize();
+		$JSON['text'] = $heading->getText();
+		$JSON['linkableTitle'] = $heading->getLinkableTitle();
 		return $JSON;
 	}
 

@@ -8,17 +8,17 @@ use FormAction;
 use Html;
 use HTMLForm;
 use IContextSource;
-use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use SpecialPage;
 use Title;
 use User;
 use UserNotLoggedIn;
 
-class UnsubscribeAction extends FormAction {
+class SubscribeAction extends FormAction {
 
 	protected SubscriptionStore $subscriptionStore;
-	protected ?SubscriptionItem $subscriptionItem = null;
+	protected ?Title $subscriptionTitle = null;
+	protected ?string $subscriptionName = null;
 
 	public function __construct(
 		Article $page,
@@ -33,8 +33,8 @@ class UnsubscribeAction extends FormAction {
 	 * @inheritDoc
 	 */
 	protected function getPageTitle() {
-		if ( $this->subscriptionItem && !str_starts_with( $this->subscriptionItem->getItemName(), 'p-topics-' ) ) {
-			$title = Title::newFromLinkTarget( $this->subscriptionItem->getLinkTarget() );
+		if ( $this->subscriptionTitle && !str_starts_with( $this->subscriptionName, 'p-topics-' ) ) {
+			$title = $this->subscriptionTitle;
 			return htmlspecialchars( $title->getPrefixedText() ) .
 				$this->msg( 'pipe-separator' )->escaped() .
 				htmlspecialchars( $title->getFragment() );
@@ -48,17 +48,11 @@ class UnsubscribeAction extends FormAction {
 	 */
 	public function show() {
 		$commentName = $this->getRequest()->getVal( 'commentname' );
+		$section = $this->getRequest()->getVal( 'section', '' );
 
-		if ( $commentName ) {
-			$subscriptionItems = $this->subscriptionStore->getSubscriptionItemsForUser(
-				$this->getUser(),
-				[ $commentName ]
-				// We could check the user is still subscribed, but then we'd need more error messages
-			);
-
-			if ( count( $subscriptionItems ) > 0 ) {
-				$this->subscriptionItem = $subscriptionItems[ 0 ];
-			}
+		if ( $commentName !== null ) {
+			$this->subscriptionTitle = $this->getTitle()->createFragmentTarget( $section );
+			$this->subscriptionName = $commentName;
 		}
 
 		parent::show();
@@ -68,7 +62,7 @@ class UnsubscribeAction extends FormAction {
 	 * @inheritDoc
 	 */
 	public function getName() {
-		return 'dtunsubscribe';
+		return 'dtsubscribe';
 	}
 
 	/**
@@ -89,19 +83,24 @@ class UnsubscribeAction extends FormAction {
 	 * @inheritDoc
 	 */
 	protected function getFormFields() {
-		if ( $this->subscriptionItem ) {
+		if ( $this->subscriptionTitle ) {
 			return [
 				'commentname' => [
 					'name' => 'commentname',
 					'type' => 'hidden',
 					'default' => $this->getRequest()->getVal( 'commentname' ),
 				],
+				'section' => [
+					'name' => 'section',
+					'type' => 'hidden',
+					'default' => $this->getRequest()->getVal( 'section', '' ),
+				],
 				'intro' => [
 					'type' => 'info',
 					'raw' => true,
-					'default' => $this->msg( str_starts_with( $this->subscriptionItem->getItemName(), 'p-topics-' ) ?
-						'discussiontools-topicsubscription-action-unsubscribe-prompt-newtopics' :
-						'discussiontools-topicsubscription-action-unsubscribe-prompt' )->parse(),
+					'default' => $this->msg( str_starts_with( $this->subscriptionName, 'p-topics-' ) ?
+						'discussiontools-topicsubscription-action-subscribe-prompt-newtopics' :
+						'discussiontools-topicsubscription-action-subscribe-prompt' )->parse(),
 				],
 			];
 		} else {
@@ -113,18 +112,17 @@ class UnsubscribeAction extends FormAction {
 	 * @inheritDoc
 	 */
 	protected function alterForm( HTMLForm $form ) {
-		$form->setSubmitTextMsg( 'discussiontools-topicsubscription-action-unsubscribe-button' );
+		$form->setSubmitTextMsg( 'discussiontools-topicsubscription-action-subscribe-button' );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function onSubmit( $data ) {
-		$commentName = $this->getRequest()->getVal( 'commentname' );
-
-		return $this->subscriptionStore->removeSubscriptionForUser(
+		return $this->subscriptionStore->addSubscriptionForUser(
 			$this->getUser(),
-			$commentName
+			$this->subscriptionTitle,
+			$this->subscriptionName
 		);
 	}
 
@@ -136,12 +134,12 @@ class UnsubscribeAction extends FormAction {
 			Html::element(
 				'p',
 				[],
-				$this->msg( str_starts_with( $this->subscriptionItem->getItemName(), 'p-topics-' ) ?
-					'discussiontools-newtopicssubscription-notify-unsubscribed-body' :
-					'discussiontools-topicsubscription-notify-unsubscribed-body' )->text()
+				$this->msg( str_starts_with( $this->subscriptionName, 'p-topics-' ) ?
+					'discussiontools-newtopicssubscription-notify-subscribed-body' :
+					'discussiontools-topicsubscription-notify-subscribed-body' )->text()
 			)
 		);
-		$this->getOutput()->addReturnTo( $this->subscriptionItem->getLinkTarget() );
+		$this->getOutput()->addReturnTo( $this->subscriptionTitle );
 		$this->getOutput()->addReturnTo( SpecialPage::getTitleFor( 'TopicSubscriptions' ) );
 	}
 
@@ -162,7 +160,7 @@ class UnsubscribeAction extends FormAction {
 			throw new UserNotLoggedIn();
 		}
 
-		if ( !$this->subscriptionItem ) {
+		if ( !$this->subscriptionTitle ) {
 			throw new ErrorPageError(
 				'discussiontools-topicsubscription-error-not-found-title',
 				'discussiontools-topicsubscription-error-not-found-body'

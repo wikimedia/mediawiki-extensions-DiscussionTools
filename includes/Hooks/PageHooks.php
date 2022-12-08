@@ -247,6 +247,10 @@ class PageHooks implements
 						->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
 				) );
 			}
+
+			if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
+				$output->addModuleStyles( 'ext.discussionTools.minervaicons' );
+			}
 		}
 	}
 
@@ -275,7 +279,7 @@ class PageHooks implements
 			// Just enable OOUI PHP - the OOUI subscribe button isn't infused unless VISUALENHANCEMENTS are enabled
 			$output->setupOOUI();
 			$text = CommentFormatter::postprocessTopicSubscription(
-				$text, $lang, $this->subscriptionStore, $output->getUser(), $isMobile
+				$text, $lang, $output->getTitle(), $this->subscriptionStore, $output->getUser(), $isMobile
 			);
 		}
 
@@ -552,7 +556,7 @@ class PageHooks implements
 			$sidebar['TOOLBOX']['t-page-subscribe'] = [
 				'icon' => $button['icon'],
 				'text' => $button['label'],
-				'href' => '#',
+				'href' => $button['href'],
 			];
 		}
 	}
@@ -610,8 +614,10 @@ class PageHooks implements
 			)->text(),
 			'icon' => $isSubscribed ? 'bell' : 'bellOutline',
 			'isSubscribed' => $isSubscribed,
-			// TODO: Provide a no-JS action?
-			'href' => '#',
+			'href' => $title->getLinkURL( [
+				'action' => $isSubscribed ? 'dtunsubscribe' : 'dtsubscribe',
+				'commentname' => CommentUtils::getNewTopicsSubscriptionId( $title ),
+			] ),
 		];
 	}
 

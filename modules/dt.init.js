@@ -37,6 +37,9 @@ mw.dt.init = function ( $container ) {
 	function reallyInit( $node ) {
 		controller.init( $node, mw.dt.initState );
 		mw.dt.initState = {};
+
+		// TODO: This functionality could be provided by MediaWiki (T183720).
+		$( document.documentElement ).addClass( 'ext-discussiontools-init-ready' );
 	}
 
 	// Only (re)initialize if the hook is being fired on the page content – not on e.g. a single image

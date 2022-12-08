@@ -27,6 +27,10 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$data = static::getJson( $data );
 
 		$this->setupEnv( $config, $data );
+		$this->setMwGlobals( [
+			'wgScriptPath' => '/w',
+			'wgScript' => '/w/index.php',
+		] );
 		$title = Title::newFromText( $title );
 		MockCommentFormatter::$parser = static::createParser( $data );
 
@@ -54,7 +58,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$actual = $preprocessed;
 
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
-			$actual, $qqxLang, $mockSubStore, static::getTestUser()->getUser(), $isMobile
+			$actual, $qqxLang, $title, $mockSubStore, static::getTestUser()->getUser(), $isMobile
 		);
 
 		$actual = MockCommentFormatter::postprocessVisualEnhancements(

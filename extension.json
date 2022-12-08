@@ -491,6 +491,12 @@
 		}
 	},
 	"Actions": {
+		"dtsubscribe": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Actions\\SubscribeAction",
+			"services": [
+				"DiscussionTools.SubscriptionStore"
+			]
+		},
 		"dtunsubscribe": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Actions\\UnsubscribeAction",
 			"services": [
