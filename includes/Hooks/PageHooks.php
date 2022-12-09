@@ -60,6 +60,14 @@ class PageHooks implements
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
+	private function isMobile(): bool {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
+			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
+			return $mobFrontContext->shouldDisplayMobileView();
+		}
+		return false;
+	}
+
 	/**
 	 * Adds DiscussionTools JS to the output.
 	 *
@@ -77,6 +85,10 @@ class PageHooks implements
 			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
 				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
 			}
+		}
+
+		if ( $this->isMobile() && HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
+			$output->addBodyClasses( 'collapsible-headings-collapsed' );
 		}
 
 		// Load style modules if the tools can be available for the title
@@ -240,11 +252,7 @@ class PageHooks implements
 		// This hook can be executed more than once per page view if the page content is composed from
 		// multiple sources!
 
-		$isMobile = false;
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
-			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
-			$isMobile = $mobFrontContext->shouldDisplayMobileView();
-		}
+		$isMobile = $this->isMobile();
 		$lang = $output->getLanguage();
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
