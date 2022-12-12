@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Resposta",
+	"discussiontools-replylink": "responder",
+	"discussiontools-replywidget-cancel": "Cancelar",
+	"discussiontools-replywidget-mode-source": "Fonte",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Vista previa",
+	"discussiontools-replywidget-reply": "Responder"
+}

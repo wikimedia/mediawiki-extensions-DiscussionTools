@@ -4,7 +4,9 @@
 			"Saederup92",
 			"Antonla",
 			"Matma Rex",
-			"Dipsacus fullonum"
+			"Dipsacus fullonum",
+			"SiGNOUT",
+			"Steenth"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -25,6 +27,7 @@
 	"discussiontools-error-comment-is-transcluded": "Linket \"{{int:discussiontools-replylink}}\" kan ikke bruges til at besvare dette indlæg. Brug venligst den normale sideeditor til at svare ved at klikke på \"$1\".",
 	"tag-discussiontools-edit": "Redigér kommentar",
 	"tag-discussiontools-newtopic": "Tilføj emne",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
 	"tag-discussiontools-source": "Kilde",
 	"tag-discussiontools-visual": "Visuelt"
 }
