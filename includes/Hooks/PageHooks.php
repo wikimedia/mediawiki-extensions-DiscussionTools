@@ -282,11 +282,21 @@ class PageHooks implements
 					'oojs-ui.styles.icons-alerts',
 				] );
 			}
-			if ( $isMobile ) {
+			if (
+				$isMobile ||
+				(
+					HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS_REPLY ) &&
+					CommentFormatter::isLanguageRequiringReplyIcon( $lang )
+				)
+			) {
 				$output->addModuleStyles( [
-					// Mobile reply button:
+					// Reply button:
 					// share
 					'oojs-ui.styles.icons-content',
+				] );
+			}
+			if ( $isMobile ) {
+				$output->addModuleStyles( [
 					// Mobile overflow menu:
 					// ellipsis
 					'oojs-ui.styles.icons-interactions',
