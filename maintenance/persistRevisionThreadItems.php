@@ -170,7 +170,7 @@ class PersistRevisionThreadItems extends Maintenance {
 				$rev->getPageAsLinkTarget()
 			);
 			if ( HookUtils::isAvailableForTitle( $title ) ) {
-				$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev );
+				$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev, false );
 
 				// Store permalink data
 				$changed = $this->itemStore->insertThreadItems( $rev, $threadItemSet );
