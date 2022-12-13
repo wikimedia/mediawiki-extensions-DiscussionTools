@@ -534,7 +534,7 @@ class CommentFormatter {
 
 		$text = preg_replace_callback(
 			'/<!--__DTREPLYBUTTONSCONTENT__-->/',
-			static function ( $matches ) use ( $doc, $replyLinkText, $replyButtonText, $isMobile ) {
+			static function ( $matches ) use ( $doc, $replyLinkText, $replyButtonText, $isMobile, $lang ) {
 				$replyLinkButtons = $doc->createElement( 'span' );
 
 				// Reply
@@ -554,11 +554,12 @@ class CommentFormatter {
 				$bracketClose->textContent = ']';
 
 				// Visual enhancements button
+				$useIcon = $isMobile || static::isLanguageRequiringReplyIcon( $lang );
 				$replyLinkButton = new \OOUI\ButtonWidget( [
 					'classes' => [ 'ext-discussiontools-init-replybutton' ],
 					'framed' => false,
 					'label' => $replyButtonText,
-					'icon' => $isMobile ? 'share' : null,
+					'icon' => $useIcon ? 'share' : null,
 					'flags' => [ 'progressive' ],
 					'infusable' => true,
 				] );
@@ -820,6 +821,12 @@ class CommentFormatter {
 	 */
 	public static function hasCommentsInLedeContent( string $text ): bool {
 		return strpos( $text, '<!--__DTHASCOMMENTSINLEDECONTENT__-->' ) !== false;
+	}
+
+	public static function isLanguageRequiringReplyIcon( Language $lang ): bool {
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+		$languages = $dtConfig->get( 'DiscussionTools_visualenhancements_reply_icon_languages' );
+		return in_array( $lang->getCode(), $languages );
 	}
 
 }
