@@ -38,7 +38,7 @@
 	"discussiontools-findcomment-noresults": "Encam tine.",
 	"discussiontools-findcomment-results-notcurrent": "(di guhartoya heyî de tine)",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|saniye|saniyeyan}}",
-	"discussiontools-newtopic-missing-title": "Ji kerema xwe re sernavekî ji bo mijara xwe bide. Ku tu pê li \"{{int:discussiontools-replywidget-newtopic}}\" bikî, wê mijara te bêyî sernavekî lê were zêdekirin.",
+	"discussiontools-newtopic-missing-title": "Ji kerema xwe re sernavekî bide mijara xwe. Ku tu pê li \"{{int:discussiontools-replywidget-newtopic}}\" bikî, wê mijara te bêsernav lê were zêdekirin.",
 	"discussiontools-newtopic-placeholder-title": "Mijar",
 	"discussiontools-notification-removed-topic-view": "Rûpelê bibîne",
 	"discussiontools-notification-removed-topic-disable": "Dest ji wergirtina agahdariyên wisa berde",
