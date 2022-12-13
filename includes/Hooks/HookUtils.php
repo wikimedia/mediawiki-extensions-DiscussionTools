@@ -17,6 +17,7 @@ use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\Parsoid\ParsoidOutputAccess;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 use MWException;
@@ -26,6 +27,7 @@ use RequestContext;
 use Title;
 use TitleValue;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Parsoid\Core\ClientError;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -88,9 +90,17 @@ class HookUtils {
 	 * Parse a revision by using the discussion parser on the HTML provided by Parsoid.
 	 *
 	 * @param RevisionRecord $revRecord
+	 * @param bool $updateParserCache Whether the parser cache should be updated on cache miss.
+	 *        May be set to false for batch operations to avoid flooding the cache.
+	 *
 	 * @return ContentThreadItemSet
+	 * @throws MWException
+	 * @throws ClientError
 	 */
-	public static function parseRevisionParsoidHtml( RevisionRecord $revRecord ): ContentThreadItemSet {
+	public static function parseRevisionParsoidHtml(
+		RevisionRecord $revRecord,
+		$updateParserCache = true
+	): ContentThreadItemSet {
 		$services = MediaWikiServices::getInstance();
 		$mainConfig = $services->getMainConfig();
 		$parsoidOutputAccess = $services->getParsoidOutputAccess();
@@ -107,7 +117,9 @@ class HookUtils {
 		$status = $parsoidOutputAccess->getParserOutput(
 			$pageRecord,
 			$parserOptions,
-			$revRecord
+			$revRecord,
+			// Don't flood the parser cache
+			$updateParserCache ? 0 : ParsoidOutputAccess::OPT_NO_UPDATE_CACHE
 		);
 
 		if ( !$status->isOK() ) {
