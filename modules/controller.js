@@ -457,8 +457,8 @@ function init( $container, state ) {
 function updatePageContents( $container, data ) {
 	$container.find( '.mw-parser-output' ).first().replaceWith( data.parse.text );
 
-	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '#contentSub, .minerva__subtitle' ).html( data.parse.subtitle );
+	mw.util.clearSubtitle();
+	mw.util.addSubtitle( data.parse.subtitle );
 
 	// eslint-disable-next-line no-jquery/no-global-selector
 	if ( $( '#catlinks' ).length ) {
