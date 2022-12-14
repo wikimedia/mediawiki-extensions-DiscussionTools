@@ -7,7 +7,8 @@
 			"Misibacsi",
 			"Samat",
 			"Tacsipacsi",
-			"Tgr"
+			"Tgr",
+			"Balint36"
 		]
 	},
 	"discussiontools": "Vitalapi eszközök",
@@ -56,7 +57,7 @@
 	"discussiontools-preference-discussion-link": "https://hu.wikipedia.org/wiki/Wikip%C3%A9dia-vita:V%C3%A1laszeszk%C3%B6z",
 	"discussiontools-preference-label": "Vitalapi eszközök",
 	"discussiontools-preference-newtopictool": "Gyors témanyitás",
-	"discussiontools-preference-newtopictool-help": "Új vitalapi témák nyitása a új lap betöltése nélkül.",
+	"discussiontools-preference-newtopictool-help": "Új vitalapi témák nyitása új lap betöltése nélkül.",
 	"discussiontools-preference-replytool": "Gyors válasz",
 	"discussiontools-preference-replytool-help": "Hivatkozások megjelenítése a vitalapi hozzászólásokra való gyors válaszoláshoz.",
 	"discussiontools-preference-sourcemodetoolbar": "Szerkesztőeszköztár engedélyezése forrásmódban",

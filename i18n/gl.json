@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Resposta",
+	"discussiontools-replylink": "responder",
+	"discussiontools-replywidget-advanced": "Avanzado",
+	"discussiontools-replywidget-cancel": "Cancelar",
+	"discussiontools-replywidget-mode-source": "Fonte",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Vista previa",
+	"discussiontools-replywidget-reply": "Responder",
+	"discussiontools-replywidget-summary": "Resumo",
+	"discussiontools-replywidget-watchthis": "Engadir esta páxina á súa [[Special:Watchlist|lista de vixilancia]]",
+	"discussiontools-topicsubscription-button-subscribe": "subscribirse",
+	"discussiontools-topicsubscription-button-unsubscribe": "cancelar a subscrición",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Recibirás notificacións sobre os novos comentarios neste fío.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Subscribícheste!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Xa non recibirás notificacións sobre os novos comentarios neste fío.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Cancelaches a subscrición."
+}
