@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Al12si",
 			"DChan (WMF)",
 			"Deryck Chan",
 			"Ed g2s",
@@ -63,7 +64,9 @@
 	"discussiontools-topicsubscription-action-unsubscribe-button": "取消留名",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "由呢個主題取消留名？",
 	"discussiontools-topicsubscription-button-subscribe": "留名",
+	"discussiontools-topicsubscription-button-subscribe-label": "留名",
 	"discussiontools-topicsubscription-button-unsubscribe": "取消留名",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "取消留名",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "取消留名，唔再收通知",
 	"discussiontools-topicsubscription-error-not-found-body": "搵唔到呢個URL指定嘅訂閱。",
 	"discussiontools-topicsubscription-notify-subscribed-title": "你留咗名訂閱喇！",
