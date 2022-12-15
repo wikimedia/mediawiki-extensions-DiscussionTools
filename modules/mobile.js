@@ -80,6 +80,7 @@ function init( $container ) {
 		OO.ui.infuse( $ledeButton ).on( 'click', function () {
 			mw.loader.using( 'oojs-ui-windows' ).then( function () {
 				windowManager.openWindow( 'ledeSection', { $content: $ledeContent } );
+				mw.track( 'webuiactions_log.click', 'lede-button' );
 			} );
 		} );
 	}
