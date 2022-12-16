@@ -13,11 +13,10 @@ mw.dt.initState = {
 
 // A/B test for logged out users:
 if ( mw.user.isAnon() && mw.config.get( 'wgDiscussionToolsABTest' ) && mw.config.get( 'wgDiscussionToolsABTestBucket' ) ) {
-	var token = mw.cookie.get( 'DTABid', undefined, mw.user.generateRandomSessionId() );
+	var token = mw.cookie.get( 'DTABid', '', mw.user.generateRandomSessionId() );
 	mw.cookie.set( 'DTAB', mw.config.get( 'wgDiscussionToolsABTestBucket' ), { path: '/', expires: 90 * 86400, prefix: '' } );
 	mw.cookie.set( 'DTABid', token, { path: '/', expires: 90 * 86400, prefix: '' } );
 	mw.config.set( 'wgDiscussionToolsAnonymousUserId', token );
-
 }
 
 if ( url.searchParams.get( 'dtrepliedto' ) ) {
