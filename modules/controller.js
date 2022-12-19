@@ -421,10 +421,12 @@ function init( $container, state ) {
 
 	// Preload page metadata.
 	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
-	getPageData(
-		mw.config.get( 'wgRelevantPageName' ),
-		mw.config.get( 'wgCurRevisionId' )
-	);
+	if ( mw.config.get( 'wgDiscussionToolsPageThreads' ) ) {
+		getPageData(
+			mw.config.get( 'wgRelevantPageName' ),
+			mw.config.get( 'wgCurRevisionId' )
+		);
+	}
 
 	// Page-level handlers only need to be setup once
 	if ( !pageHandlersSetup ) {
