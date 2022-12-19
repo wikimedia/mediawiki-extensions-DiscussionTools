@@ -6,6 +6,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Balas",
+	"discussiontools-preference-label": "Alat perbincangan",
 	"discussiontools-replylink": "balas",
 	"discussiontools-replywidget-cancel": "Batal",
 	"discussiontools-replywidget-mention-tool-title": "Sebut seorang pengguna",
@@ -13,5 +14,7 @@
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Balas kepada {{BIDI: $1 }}",
 	"discussiontools-replywidget-preview": "Pratayang",
-	"discussiontools-replywidget-reply": "Balas"
+	"discussiontools-replywidget-reply": "Balas",
+	"tag-discussiontools-source": "Sumber",
+	"tag-discussiontools-visual": "Visual"
 }

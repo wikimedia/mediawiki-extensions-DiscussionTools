@@ -4,10 +4,12 @@
 			"咽頭べさ"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ကလေၚ်",
 	"discussiontools-replylink": "ကလေၚ်",
 	"discussiontools-replywidget-cancel": "တးပဲါ",
 	"discussiontools-replywidget-mode-source": "တမ်ရိုဟ်",
 	"discussiontools-replywidget-mode-visual": "ဗီုဆဵုညာတ်",
 	"discussiontools-replywidget-placeholder-reply": "ကလေၚ်သွဟ် {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "စမ်ရံၚ်ပဏာမ",
 	"discussiontools-replywidget-reply": "ကလေၚ်"
 }

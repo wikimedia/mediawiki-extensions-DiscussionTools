@@ -5,11 +5,19 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Resposta",
+	"discussiontools-desc": "Ferramentas para mellorar as páxinas de conversa.",
 	"discussiontools-replylink": "responder",
+	"discussiontools-replywidget-anon-warning": "<strong>Non iniciou a sesión.</strong> Para recibir atribución co seu nome en lugar do seu enderezo IP, pode [$1 iniciar sesión] ou [$2 crear unha conta].",
 	"discussiontools-replywidget-cancel": "Cancelar",
+	"discussiontools-replywidget-feedback": "Deixe un comentario sobre esta característica",
+	"discussiontools-replywidget-loading": "Cargando…",
 	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Vista previa",
-	"discussiontools-replywidget-reply": "Responder"
+	"discussiontools-replywidget-reply": "Responder",
+	"discussiontools-replywidget-terms-click": "Ao premer en \"$1\", acepta os termos de uso deste wiki.",
+	"discussiontools-replywidget-transcluded": "O seu comentario publicarase en \"[[$1]]\".",
+	"tag-discussiontools-source": "Fonte",
+	"tag-discussiontools-visual": "Visual"
 }
