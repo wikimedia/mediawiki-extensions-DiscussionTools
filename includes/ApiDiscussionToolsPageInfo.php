@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiBase;
 use ApiMain;
+use ApiUsageException;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
@@ -41,43 +42,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$this->requireAtLeastOneParameter( $params, 'page', 'oldid' );
-
-		if ( isset( $params['page'] ) ) {
-			$title = Title::newFromText( $params['page'] );
-			if ( !$title ) {
-				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
-			}
-			if ( !HookUtils::isAvailableForTitle( $title ) ) {
-				$this->getResult()->addValue(
-					null,
-					$this->getModuleName(),
-					[ 'transcludedfrom' => [] ]
-				);
-				return;
-			}
-		}
-
-		if ( isset( $params['oldid'] ) ) {
-			$revision = $this->revisionLookup->getRevisionById( $params['oldid'] );
-			if ( !$revision ) {
-				$this->dieWithError( [ 'apierror-nosuchrevid', $params['oldid'] ] );
-			}
-
-		} else {
-			$title = Title::newFromText( $params['page'] );
-			if ( !$title ) {
-				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
-			}
-			$revision = $this->revisionLookup->getRevisionByTitle( $title );
-			if ( !$revision ) {
-				$this->dieWithError(
-					[ 'apierror-missingrev-title', wfEscapeWikiText( $title->getPrefixedText() ) ],
-					'nosuchrevid'
-				);
-			}
-		}
-
-		$threadItemSet = HookUtils::parseRevisionParsoidHtml( $revision );
+		$threadItemSet = $this->getThreadItemSet( $params );
 
 		$result = [];
 		$prop = array_fill_keys( $params['prop'], true );
@@ -91,6 +56,58 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * Get the thread item set for the specified revision
+	 *
+	 * @param array $params
+	 * @return ContentThreadItemSet
+	 */
+	private function getThreadItemSet( $params ) {
+		if ( isset( $params['page'] ) ) {
+			$title = Title::newFromText( $params['page'] );
+			if ( !$title ) {
+				throw ApiUsageException::newWithMessage(
+					$this,
+					[ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ]
+				);
+			}
+		}
+
+		if ( isset( $params['oldid'] ) ) {
+			$revision = $this->revisionLookup->getRevisionById( $params['oldid'] );
+			if ( !$revision ) {
+				throw ApiUsageException::newWithMessage(
+					$this,
+					[ 'apierror-nosuchrevid', $params['oldid'] ]
+				);
+			}
+		} else {
+			$title = Title::newFromText( $params['page'] );
+			if ( !$title ) {
+				throw ApiUsageException::newWithMessage(
+					$this,
+					[ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ]
+				);
+			}
+			$revision = $this->revisionLookup->getRevisionByTitle( $title );
+			if ( !$revision ) {
+				throw ApiUsageException::newWithMessage(
+					$this,
+					[ 'apierror-missingrev-title', wfEscapeWikiText( $title->getPrefixedText() ) ],
+					'nosuchrevid'
+				);
+			}
+		}
+		$title = Title::castFromPageIdentity( $revision->getPage() );
+
+		if ( !$title || !HookUtils::isAvailableForTitle( $title ) ) {
+			// T325477: don't parse non-discussion pages
+			return new ContentThreadItemSet;
+		}
+
+		return HookUtils::parseRevisionParsoidHtml( $revision );
 	}
 
 	/**
