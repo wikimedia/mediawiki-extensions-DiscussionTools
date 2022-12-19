@@ -42,6 +42,21 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		$params = $this->extractRequestParams();
 		$this->requireAtLeastOneParameter( $params, 'page', 'oldid' );
 
+		if ( isset( $params['page'] ) ) {
+			$title = Title::newFromText( $params['page'] );
+			if ( !$title ) {
+				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
+			}
+			if ( !HookUtils::isAvailableForTitle( $title ) ) {
+				$this->getResult()->addValue(
+					null,
+					$this->getModuleName(),
+					[ 'transcludedfrom' => [] ]
+				);
+				return;
+			}
+		}
+
 		if ( isset( $params['oldid'] ) ) {
 			$revision = $this->revisionLookup->getRevisionById( $params['oldid'] );
 			if ( !$revision ) {
