@@ -103,7 +103,7 @@
 	"discussiontools-replywidget-summary": "Sumário",
 	"discussiontools-replywidget-terms-click": "Ao clicar em \"$1\", você concorda com os termos de uso desta wiki.",
 	"discussiontools-replywidget-transcluded": "Seu comentário será salvo em [[$1]].",
-	"discussiontools-replywidget-watchthis": "Adicione esta página a sua [[Special:Watchlist|lista de páginas vigiadas]]",
+	"discussiontools-replywidget-watchthis": "Adicione esta página à sua [[Special:Watchlist|lista de páginas vigiadas]]",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Não foi possível encontrar este comentário. Ele pode ter sido eliminado ou movido.",
 	"discussiontools-target-comments-missing": "Não foi possível encontrar os comentários novos. Eles podem ter sido eliminados ou movidos.",
