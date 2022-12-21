@@ -4,10 +4,19 @@
 			"咽頭べさ"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ကလေၚ်",
 	"discussiontools-replylink": "ကလေၚ်",
+	"discussiontools-replywidget-advanced": "သၠုၚ်ဗွဲကိုပ်ကၠာ",
 	"discussiontools-replywidget-cancel": "တးပဲါ",
 	"discussiontools-replywidget-mode-source": "တမ်ရိုဟ်",
 	"discussiontools-replywidget-mode-visual": "ဗီုဆဵုညာတ်",
 	"discussiontools-replywidget-placeholder-reply": "ကလေၚ်သွဟ် {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "ကလေၚ်"
+	"discussiontools-replywidget-preview": "စမ်ရံၚ်ပဏာမ",
+	"discussiontools-replywidget-reply": "ကလေၚ်",
+	"discussiontools-replywidget-summary": "သရောပ်",
+	"discussiontools-replywidget-watchthis": "ဗပေၚ်စုတ်မုက်လိက်ဏအ် သွက်အရၚ်ဇကု[[Special:Watchlist|ဇကုဂွံမၚ်မွဲလဝ်]]",
+	"discussiontools-topicsubscription-button-subscribe": "စုတ်စရၚ်တုပ်စိုတ်",
+	"discussiontools-topicsubscription-button-unsubscribe": "ပါဲထောံနူစရၚ်စုတ်လဝ်",
+	"discussiontools-topicsubscription-notify-subscribed-body": "ဇကုမဒုၚ်ကေတ်ကဵုသတိဗလမဆေၚ်စပ်ကဵုတၚ်လညာတ်တၟိပ္ဍဲပရောပရာပုစ္ဆာဏအ်။",
+	"discussiontools-topicsubscription-notify-subscribed-title": "ဇကုမဒုၚ်ကေတ်စုတ်လဝ်စရၚ်တုဲယျ!"
 }

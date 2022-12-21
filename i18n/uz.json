@@ -25,6 +25,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "„<strong>$3</strong>“ mavzusida {{PLURAL:$1|bitta yangi javob|$1 ta yangi javov|100=99+ ta yangi javob}} qoldirilgan",
 	"discussiontools-notification-subscribed-new-comment-view": "Izohni koʻrish",
 	"discussiontools-preference-label": "Munozara asboblari",
+	"discussiontools-preference-summary": "Ushbu funksiyalar bilan [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary mana bu sahifa] orqali batafsil tanishishingiz mumkin.",
 	"discussiontools-replylink": "javob berish",
 	"discussiontools-replywidget-abandon": "Yozayotgan izohingizni bekor qilmoqchi ekanligingizga aminmisiz?",
 	"discussiontools-replywidget-abandon-discard": "Izohni bekor qilish",
