@@ -6,5 +6,8 @@
 	},
 	"apierror-discussiontools-commentid-notfound": "Komentarja z ID-jem »$1« ni bilo mogoče najti.",
 	"apierror-discussiontools-commentname-ambiguous": "Najdenih je bilo več komentarjev z imenom »$1«; potreben je <var>commentid</var>.",
-	"apierror-discussiontools-commentname-notfound": "Komentarja z imenom »$1« ni bilo mogoče najti."
+	"apierror-discussiontools-commentname-notfound": "Komentarja z imenom »$1« ni bilo mogoče najti.",
+	"apihelp-discussiontoolsedit-param-html": "Vsebina za objavo, kot HTML. Ni mogoča uporaba skupaj z <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Vsebina za objavo, kot vikibesedilo. Ni mogoča uporaba skupaj s <var>html</var>.",
+	"apihelp-discussiontoolspreview-param-wikitext": "Vsebina za predogled, kot vikibesedilo."
 }
