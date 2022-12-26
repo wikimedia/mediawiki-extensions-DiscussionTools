@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"DChan (WMF)"
+			"DChan (WMF)",
+			"Afalau",
+			"Matma Rex"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ateb",
 	"discussiontools-desc": "Offer i wella tudalennau sgwrs.",
 	"discussiontools-preference-description": "Galluogi llif gwaith newydd ar gyfer [https://www.mediawiki.org/wiki/Talk_pages_project/replying ateb i sylwadau penodol] ar dudalennau sgwrs.\n\nNoder dros amser bydd offer newydd ar gyfer ymdrin â thudalennau sgwrs yn cael eu hychwanegu.\n\nCeir diweddariadau amdan y nodweddion ar  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates dudalen diweddariadau'r project tudalennau sgwrs].",
-	"discussiontools-replylink": "Ateb",
+	"discussiontools-replylink": "ateb",
 	"discussiontools-replywidget-anon-warning": "<strong>Nid ydych wedi'ch mewngofnodi.</strong> Er mwyn cael cydnabyddiaeth i'ch enw yn lle i'ch cyfeiriad IP, gallwch [$1 fewngofnodi] neu [$2 greu cyfrif].",
 	"discussiontools-replywidget-cancel": "Canslo",
 	"discussiontools-replywidget-feedback": "Anfon adborth am y nodwedd",
