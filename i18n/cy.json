@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"DChan (WMF)",
-			"Matma Rex"
+			"Matma Rex",
+			"Afalau"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ateb",
@@ -12,7 +13,8 @@
 	"discussiontools-error-comment-is-transcluded-title": "Ni does modd defnyddio'r ddolen \"{{int:discussiontools-replylink}}\" i ateb i'r sylw oherwydd ei fod wedi'i lwytho o dudalen arall. I ateb, ewch i fan hyn: [[$1]].",
 	"discussiontools-error-lint": "Nid oes modd ateb i sylwadau ar y dudalen hon oherwydd gwall yn y testun wici. Gallwch ddysgu am y gwall trwy [$1 ddarllen y ddogfennaeth], gofyn am help trwy [$2 bostio yma] neu drwsio'r gwall yn y [$3 golygydd tudalen gyfan].",
 	"discussiontools-preference-description": "Galluogi llif gwaith newydd ar gyfer [https://www.mediawiki.org/wiki/Talk_pages_project/replying ateb i sylwadau penodol] ar dudalennau sgwrs.\n\nNoder dros amser bydd offer newydd ar gyfer ymdrin â thudalennau sgwrs yn cael eu hychwanegu.\n\nCeir diweddariadau amdan y nodweddion ar  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates dudalen diweddariadau'r project tudalennau sgwrs].",
-	"discussiontools-replylink": "Ateb",
+	"discussiontools-replylink": "ateb",
+	"discussiontools-replywidget-advanced": "Uwch",
 	"discussiontools-replywidget-anon-warning": "<strong>Nid ydych wedi'ch mewngofnodi.</strong> Er mwyn cael cydnabyddiaeth i'ch enw yn lle i'ch cyfeiriad IP, gallwch [$1 fewngofnodi] neu [$2 greu cyfrif].",
 	"discussiontools-replywidget-cancel": "Canslo",
 	"discussiontools-replywidget-feedback": "Anfon adborth am y nodwedd",
@@ -22,8 +24,21 @@
 	"discussiontools-replywidget-placeholder-reply": "Ateb i {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Rhagolwg",
 	"discussiontools-replywidget-reply": "Ateb",
+	"discussiontools-replywidget-summary": "Crynodeb",
 	"discussiontools-replywidget-terms-click": "Trwy glicio \"$1\", rydych yn cydsynio i delerau defnydd y wiki.",
 	"discussiontools-replywidget-transcluded": "Bydd eich sylw yn cael ei gadw yn [[$1]].",
+	"discussiontools-replywidget-watchthis": "Ychwanegu'r dudalen hon at eich [[Special:Watchlist|rhestr wylio]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person}} yn trafod",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|sylw}}",
+	"discussiontools-topicheader-latestcomment": "Sylw diweddaraf: $1",
+	"discussiontools-topicsubscription-button-subscribe": "tanysgrifio",
+	"discussiontools-topicsubscription-button-subscribe-label": "Tanysgrifio",
+	"discussiontools-topicsubscription-button-unsubscribe": "dad-danysgrifio",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Dad-danysgrifio",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Byddwch chi'n derbyn hysbysiadau am sylwadau newydd yn y pwnc hwn.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Rydych chi wedi tanysgrifio!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ni fyddwch chi'n derbyn hysbysiadau am sylwadau newydd yn y pwnc hwn.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Rydych chi wedi dad-danysgrifio.",
 	"tag-discussiontools-description": "Golygiad wedi'i wneud yn DiscussionTools",
 	"tag-discussiontools-edit": "Golygu sylw",
 	"tag-discussiontools-edit-description": "Cafodd sylw a oedd yn bodoli eisoes ei olygu yn DiscussionTools",

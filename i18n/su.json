@@ -9,5 +9,8 @@
 	"discussiontools-replywidget-mode-source": "Sumber",
 	"discussiontools-replywidget-mode-visual": "Pisual",
 	"discussiontools-replywidget-placeholder-reply": "Bales ka {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Bales"
+	"discussiontools-replywidget-reply": "Bales",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Anjeun bakal nampa iber lamun aya nu mairan ieu jejer.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Anjeun geus ngalanggan!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Anjeun moal nampa deui iber lamun aya anu mairan dina ieu jejer."
 }
