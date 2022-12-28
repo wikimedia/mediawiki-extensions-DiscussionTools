@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rhdtranslate"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Жэуап",
+	"discussiontools-replylink": "жэуап етын",
+	"discussiontools-replywidget-advanced": "Нэхъыбэу",
+	"discussiontools-replywidget-cancel": "ЩӀегъэгъуэжын",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Плъагъуу",
+	"discussiontools-replywidget-placeholder-reply": "Жэуап етын {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Зэрыщытынум еплъын",
+	"discussiontools-replywidget-reply": "Жэуап етын",
+	"discussiontools-replywidget-summary": "Зытеухуар",
+	"discussiontools-replywidget-watchthis": "Мы напэкӀуэцӀыр уи кӀэлъыплъыныгъэм и спискэм [[Special:Watchlist|watchlist]] хэгъэхьэн",
+	"discussiontools-topicsubscription-button-subscribe": "хыхьэн",
+	"discussiontools-topicsubscription-button-unsubscribe": "къыхэкӀыжын",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Ухыхьащ!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "УкъыхэкӀыжащ."
+}
