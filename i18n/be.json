@@ -50,6 +50,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(не ў бягучай версіі)",
 	"discussiontools-findcomment-results-transcluded": "(уключаны з іншай старонкі)",
 	"discussiontools-findcomment-title": "Знайсці каментар",
+	"discussiontools-ledesection-button": "Даведацца болей пра гэтую старонку",
+	"discussiontools-ledesection-title": "Пра гэтую размоўную старонку",
 	"discussiontools-limitreport-errorreqid": "Ідэнтыфікатар запыту на памылку DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Выкарыстанне часу пашырэннем DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунды|секундаў}}",
