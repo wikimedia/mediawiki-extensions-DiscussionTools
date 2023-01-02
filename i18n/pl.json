@@ -33,7 +33,7 @@
 	"discussiontools-error-comment-disappeared-reload": "Przeładuj stronę i spróbuj ponownie.",
 	"discussiontools-error-comment-is-transcluded": "Link „{{int:discussiontools-replylink}}” nie może być użyty, aby odpowiedzieć na ten komentarz. Aby odpowiedzieć, użyj edytora całej strony, klikając „$1”.",
 	"discussiontools-error-comment-is-transcluded-title": "Link „{{int:discussiontools-replylink}}” nie może być użyty, aby odpowiedzieć na ten komentarz, ponieważ jest on załadowany z innej strony. Aby odpowiedzieć, przejdź tutaj: [[$1]].",
-	"discussiontools-error-comment-not-saved": "Twój komentarz nie mógł zostać opublikowany w najnowszej wersji ten strony. Aby zobaczyć ostatnie zmiany, skopiuj swój komentarz i przeładuj stronę.",
+	"discussiontools-error-comment-not-saved": "Twój komentarz nie mógł zostać opublikowany w najnowszej wersji tej strony. Aby zobaczyć ostatnie zmiany, skopiuj swój komentarz i przeładuj stronę.",
 	"discussiontools-error-lint": "Nie można odpowiedzieć na komentarze na tej stronie z powodu błędu w wikitekście. Możesz dowiedzieć się więcej o tym błędzie z [$1 dokumentacji], poprosić o pomoc [$2 pisząc tutaj] lub naprawić błąd w [$3 edytorze całej strony].",
 	"discussiontools-error-noswitchtove": "Przepraszamy, przejście do trybu wizualnego nie jest możliwe, ponieważ w komentarzu, który {{GENDER:|napisałeś|napisałaś|napisałeś/aś}}, użyta jest <b>$1</b>. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Więcej informacji].",
 	"discussiontools-error-noswitchtove-extension": "składnia przypisów lub innych rozszerzeń",

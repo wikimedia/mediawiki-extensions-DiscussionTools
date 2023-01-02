@@ -17,7 +17,7 @@
 	"discussiontools-defaultsummary-reply": "одговор",
 	"discussiontools-desc": "Алатке за олакшавање комуникације на страницама за разговор.",
 	"discussiontools-emptystate-button": "Започни разговор",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Странице за разговор]] су места места где уредници дискутују о садржају на Википедији. Можете користити ову страницу за покретање дискусије о садржају странице [[:{{SUBJECTPAGENAME}}]] и како је унапредити.",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Странице за разговор]] су места где уредници дискутују о садржају на Википедији. Можете користити ову страницу за покретање дискусије о садржају странице [[:{{SUBJECTPAGENAME}}]] и како је унапредити.",
 	"discussiontools-emptystate-title": "Покрени дискусију о {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Добро дошли на своју страницу за разговор",
 	"discussiontools-emptystate-title-self-anon": "Добро дошли на ову страницу за разговор",
