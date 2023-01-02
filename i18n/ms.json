@@ -9,12 +9,15 @@
 	"discussiontools-preference-label": "Alat perbincangan",
 	"discussiontools-replylink": "balas",
 	"discussiontools-replywidget-cancel": "Batal",
+	"discussiontools-replywidget-loading": "Sedang dimuatkan…",
 	"discussiontools-replywidget-mention-tool-title": "Sebut seorang pengguna",
 	"discussiontools-replywidget-mode-source": "Sumber",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Balas kepada {{BIDI: $1 }}",
 	"discussiontools-replywidget-preview": "Pratayang",
 	"discussiontools-replywidget-reply": "Balas",
+	"discussiontools-replywidget-transcluded": "Ulasan anda akan disimpan di [[$1]].",
+	"tag-discussiontools-description": "Suntingan dibuat menggunakan DiscussionTools",
 	"tag-discussiontools-source": "Sumber",
 	"tag-discussiontools-visual": "Visual"
 }

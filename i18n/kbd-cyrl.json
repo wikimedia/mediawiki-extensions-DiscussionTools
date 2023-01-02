@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rhdtranslate"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Жэуап",
+	"discussiontools-replylink": "жэуап етын",
+	"discussiontools-replywidget-cancel": "ЩӀегъэгъуэжын",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Плъагъуу",
+	"discussiontools-replywidget-placeholder-reply": "Жэуап етын {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Зэрыщытынум еплъын",
+	"discussiontools-replywidget-reply": "Жэуап етын"
+}
