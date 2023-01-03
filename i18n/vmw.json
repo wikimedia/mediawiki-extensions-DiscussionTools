@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Ofa1975",
 			"Tomas Armando Moz"
 		]
 	},
-	"discussiontools-replylink": "Waakhulela",
+	"discussiontools-replylink": "waakhulela",
 	"discussiontools-replywidget-advanced": "Ohela nsina",
 	"discussiontools-replywidget-cancel": "Ohiiha",
-	"discussiontools-replywidget-mode-source": "Maphatthuwelo",
+	"discussiontools-replywidget-mode-source": "Ekootiku-yoopacerya",
 	"discussiontools-replywidget-mode-visual": "Yoowooneya",
 	"discussiontools-replywidget-placeholder-reply": "Waakhulela wa {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Mwaanyihereryo",
