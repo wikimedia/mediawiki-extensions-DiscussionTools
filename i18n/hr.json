@@ -145,6 +145,7 @@
 	"discussiontools-topicsubscription-special-intro": "Pretplate Vam omogućavaju praćenje tema na stranicama za razgovor. Nakon nečijeg odgovora u temi, dobit ćete obavijest.\n\nU [[Special:Preferences#mw-prefsection-echo|postavkama]] postavite kako i gdje ćete primati te obavijesti.",
 	"discussiontools-topicsubscription-special-title": "Pretplate na temu",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Praćena stranica|Praćene stranice}} za razgovor",
+	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Arhiviranje}} stranice za razgovor",
 	"echo-pref-tooltip-dt-subscription": "Obavijestite me kada netko objavi komentar u temi koju pratim.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Obavijesti me kada se tema na koju sam pretplaćen arhivira ili ukloni sa stranice, ili ako se obavijesti o novim komentarima objavljenim u toj temi ne mogu poslati iz drugih razloga.",
 	"tag-discussiontools-added-comment-description": "U ovom je uređivanju dodan komentar na stranici za razgovor",

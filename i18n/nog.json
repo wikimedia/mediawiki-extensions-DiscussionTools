@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"TayfunEt."
+			"TayfunEt.",
+			"Abylaikhan 94"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Джевап бер",
-	"discussiontools-replylink": "джевап бер",
+	"discussiontools-defaultsummary-reply": "Явап бер",
+	"discussiontools-replylink": "явап бер",
 	"discussiontools-replywidget-cancel": "Бас тартув",
 	"discussiontools-replywidget-mode-source": "Излев",
 	"discussiontools-replywidget-mode-visual": "Коьрсел",
@@ -17,8 +18,8 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|киши}} кенъезде",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|кабер}}",
 	"discussiontools-topicheader-latestcomment": "Сонъкы кабер: $1",
-	"discussiontools-topicsubscription-button-subscribe": "джазыл",
-	"discussiontools-topicsubscription-button-subscribe-label": "Джазыл",
+	"discussiontools-topicsubscription-button-subscribe": "языл",
+	"discussiontools-topicsubscription-button-subscribe-label": "Языл",
 	"discussiontools-topicsubscription-button-unsubscribe": "джазылмадан бас тартув",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Джазылмадан бас тартув",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Бул мевзуда джанъы бир ший джазылса, сизге кабер бериледи.",

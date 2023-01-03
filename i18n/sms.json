@@ -28,6 +28,8 @@
 	"discussiontools-replywidget-summary": "Õʹhtteǩeässmõš",
 	"discussiontools-replywidget-watchthis": "Lââʹzzet tän seeid tuu [[Special:Watchlist|valvvâmliʹstte]]",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kommeʹntt|kommeeʹnt|kommeʹntted}}",
+	"discussiontools-topicsubscription-button-subscribe": "tiʹlle",
+	"discussiontools-topicsubscription-button-subscribe-label": "Tilaa",
 	"discussiontools-topicsubscription-pager-page": "Seidd",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]",
 	"tag-discussiontools-visual": "Visuaalʼlaž"
