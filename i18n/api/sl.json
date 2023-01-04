@@ -10,5 +10,7 @@
 	"apierror-discussiontools-subscription-failed-remove": "Odnaročilo te teme ni bilo mogoče.",
 	"apihelp-discussiontoolsedit-param-html": "Vsebina za objavo, kot HTML. Ni mogoča uporaba skupaj z <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Vsebina za objavo, kot vikibesedilo. Ni mogoča uporaba skupaj s <var>html</var>.",
-	"apihelp-discussiontoolspreview-param-wikitext": "Vsebina za predogled, kot vikibesedilo."
+	"apihelp-discussiontoolspreview-param-type": "Vrsta sporočila za predogled",
+	"apihelp-discussiontoolspreview-param-wikitext": "Vsebina za predogled, kot vikibesedilo.",
+	"apihelp-discussiontoolspreview-summary": "Predogled sporočila na strani za razprave."
 }
