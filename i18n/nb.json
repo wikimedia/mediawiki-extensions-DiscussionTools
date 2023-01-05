@@ -47,6 +47,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(ikke i den gjeldende revisjonen)",
 	"discussiontools-findcomment-results-transcluded": "(transkludert fra en annen side)",
 	"discussiontools-findcomment-title": "Finn kommentar",
+	"discussiontools-ledesection-button": "Lær mer om denne siden",
+	"discussiontools-ledesection-title": "Om denne diskusjonssiden",
 	"discussiontools-limitreport-errorreqid": "Forespørsels-feil-ID for diskusjonsverktøyet",
 	"discussiontools-limitreport-timeusage": "Tidsbruk for diskusjonsverktøy",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",

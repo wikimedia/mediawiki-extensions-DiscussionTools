@@ -6,7 +6,14 @@
 	},
 	"discussiontools-defaultsummary-reply": "Oyí",
 	"discussiontools-replylink": "Oyí",
+	"discussiontools-replywidget-advanced": "Ényogba",
 	"discussiontools-replywidget-cancel": "Kpalú",
+	"discussiontools-replywidget-mode-source": "Été",
+	"discussiontools-replywidget-preview": "Dúwa",
 	"discussiontools-replywidget-reply": "Oyí",
-	"discussiontools-replywidget-summary": "Ewngwẹ́"
+	"discussiontools-replywidget-summary": "Ewngwẹ́",
+	"discussiontools-replywidget-watchthis": "Dí Ogbá yí manyú [[Special:Watchlist|watchlist]] wé",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|oné|amóne}} á fú oluka",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ádaluto|ádaluto wéwé}}",
+	"discussiontools-topicheader-latestcomment": "Éwn má daluto ofàjaí: $1"
 }
