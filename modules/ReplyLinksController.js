@@ -27,6 +27,10 @@ function ReplyLinksController( $pageContainer ) {
 		replyButton.on( 'click', controller.onReplyButtonClickHandler, [ replyButton ] );
 	} );
 
+	this.$replyLinkSets.on( 'focusin mouseover touchstart', function () {
+		controller.emit( 'link-interact' );
+	} );
+
 	// "Add topic" link in the skin interface
 	if ( featuresEnabled.newtopictool ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -34,6 +38,10 @@ function ReplyLinksController( $pageContainer ) {
 		if ( $addSectionTab.length ) {
 			this.$addSectionLink = $addSectionTab.find( 'a' );
 			this.$addSectionLink.on( 'click keypress', this.onAddSectionLinkClickHandler );
+
+			this.$addSectionLink.on( 'focusin mouseover touchstart', function () {
+				controller.emit( 'link-interact' );
+			} );
 		}
 		// Handle events on all links that potentially open the new section interface,
 		// including links in the page content (from templates) or from gadgets.
