@@ -252,6 +252,19 @@ function init( $container, state ) {
 
 	$pageContainer = $container;
 	linksController = new ReplyLinksController( $pageContainer );
+
+	linksController.on( 'link-interact', function () {
+		// Preload page metadata when the user is about to use a link, to make the tool load faster.
+		// NOTE: As of January 2023, this is an EXPENSIVE API CALL. It must not be done on every
+		// pageview, as that would generate enough load to take down Wikimedia sites (T325477).
+		// It would be barely acceptable to do it on every *discussion* pageview, but we're trying
+		// to be better and only do it when really needed (T325598).
+		getPageData(
+			mw.config.get( 'wgRelevantPageName' ),
+			mw.config.get( 'wgCurRevisionId' )
+		);
+	} );
+
 	var parser = new Parser( require( './parser/data.json' ) );
 
 	var commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-thread-id]' );
@@ -418,15 +431,6 @@ function init( $container, state ) {
 			topicSubscriptions.updateAutoSubscriptionStates( $container, pageThreads, state.repliedTo );
 		}
 	} );
-
-	// Preload page metadata.
-	// TODO: Isn't this too early to load it? We will only need it if the user tries replying...
-	if ( mw.config.get( 'wgDiscussionToolsPageThreads' ) ) {
-		getPageData(
-			mw.config.get( 'wgRelevantPageName' ),
-			mw.config.get( 'wgCurRevisionId' )
-		);
-	}
 
 	// Page-level handlers only need to be setup once
 	if ( !pageHandlersSetup ) {
