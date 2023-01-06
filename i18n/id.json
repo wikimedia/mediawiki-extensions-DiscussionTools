@@ -50,6 +50,7 @@
 	"discussiontools-findcomment-results-notcurrent": "(tidak dalam revisi saat ini)",
 	"discussiontools-findcomment-results-transcluded": "(ditransklusikan dari halaman lain)",
 	"discussiontools-findcomment-title": "Cari komentar",
+	"discussiontools-ledesection-title": "Tentang halaman pembicaraan ini",
 	"discussiontools-limitreport-errorreqid": "ID permintaan yang mengalami galat DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Waktu menjadi pengguna DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|detik}}",

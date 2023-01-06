@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bosogo"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Жооп",
+	"discussiontools-replywidget-advanced": "Кеңейтүү",
+	"discussiontools-replywidget-cancel": "Жокко чыгаруу",
+	"discussiontools-replywidget-preview": "Алдын ала көрүү",
+	"discussiontools-replywidget-reply": "Жооп берүү",
+	"discussiontools-replywidget-summary": "Түшүндүрмө",
+	"discussiontools-replywidget-watchthis": "Бул баракты [[Special:Watchlist|көзөмөл тизмегиме]] кошуу"
+}

@@ -59,6 +59,7 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1님이 \"<strong>$4</strong>\"에서 {{GENDER:$2|답변을 남겼습니다}}.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "\"<strong>$3</strong>\"의 {{PLURAL:$1|새 답변 하나|새 답변 $1 개|100=새 답변 99+개}}.",
 	"discussiontools-notification-subscribed-new-comment-view": "댓글 보기",
+	"discussiontools-pageframe-latestcomment": "마지막 의견: $1 ($2님) - 주제: $3",
 	"discussiontools-pagetitle-newtopic": "$1에서 새 주제 시작",
 	"discussiontools-pagetitle-reply": "$1에 답변",
 	"discussiontools-postedit-confirmation-published": "댓글이 게시되었습니다.",
