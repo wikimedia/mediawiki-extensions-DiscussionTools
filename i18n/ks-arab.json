@@ -46,6 +46,7 @@
 	"discussiontools-topicsubscription-button-subscribe": "تٲیِد کَرُن",
 	"discussiontools-topicsubscription-button-subscribe-label": "تٲیِد کَرُن",
 	"discussiontools-topicsubscription-pager-actions": "عَملہٕ",
+	"discussiontools-topicsubscription-pager-notified-never": "زانٛہہ نہٕ",
 	"discussiontools-topicsubscription-pager-page": "صَفہٕ",
 	"discussiontools-topicsubscription-pager-topic": "موضوٗع",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} نٔو موضوٗع ]",

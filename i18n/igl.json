@@ -9,10 +9,11 @@
 	"discussiontools-replywidget-advanced": "Ényogba",
 	"discussiontools-replywidget-cancel": "Kpalú",
 	"discussiontools-replywidget-mode-source": "Été",
+	"discussiontools-replywidget-placeholder-reply": "Dó oyí tí{{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Dúwa",
 	"discussiontools-replywidget-reply": "Oyí",
 	"discussiontools-replywidget-summary": "Ewngwẹ́",
-	"discussiontools-replywidget-watchthis": "Dí Ogbá yí manyú [[Special:Watchlist|watchlist]] wé",
+	"discussiontools-replywidget-watchthis": "Dí ogbá yí manyú [[Special:ewn igo|ewn igo]] wé",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|oné|amóne}} á fú oluka",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ádaluto|ádaluto wéwé}}",
 	"discussiontools-topicheader-latestcomment": "Éwn má daluto ofàjaí: $1"
