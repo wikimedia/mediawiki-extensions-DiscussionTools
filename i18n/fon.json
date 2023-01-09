@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Mahuton"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Gblɔn ɖéwu",
+	"discussiontools-replylink": "gblɔn ɖéwu",
 	"discussiontools-replywidget-cancel": "Súnsún",
-	"discussiontools-replywidget-mode-source": "Ɖoɖonu"
+	"discussiontools-replywidget-mode-source": "Ɖoɖonu",
+	"discussiontools-replywidget-mode-visual": "Nukunmɔn nu",
+	"discussiontools-replywidget-placeholder-reply": "Yi gbé nu {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Nú mɔ sɛ ɖo",
+	"discussiontools-replywidget-reply": "Gblɔn ɖéwu"
 }
