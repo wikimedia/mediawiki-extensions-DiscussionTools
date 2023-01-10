@@ -230,6 +230,13 @@ class PageHooks implements
 						] ) )
 					)
 				);
+
+				// Preload jquery.makeCollapsible for LedeSectionDialog.
+				// Using the same approach as in Skin::getDefaultModules in MediaWiki core.
+				if ( strpos( $output->getHTML(), 'mw-collapsible' ) !== false ) {
+					$output->addModules( 'jquery.makeCollapsible' );
+					$output->addModuleStyles( 'jquery.makeCollapsible.styles' );
+				}
 			}
 		}
 	}
