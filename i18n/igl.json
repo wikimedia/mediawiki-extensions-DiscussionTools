@@ -13,8 +13,14 @@
 	"discussiontools-replywidget-preview": "Dúwa",
 	"discussiontools-replywidget-reply": "Oyí",
 	"discussiontools-replywidget-summary": "Ewngwẹ́",
-	"discussiontools-replywidget-watchthis": "Dí ogbá yí manyú [[Special:ewn igo|ewn igo]] wé",
+	"discussiontools-replywidget-watchthis": "Dí ogbá yí manyú wé [[Special:ewn igo|ewn igo]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|oné|amóne}} á fú oluka",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ádaluto|ádaluto wéwé}}",
-	"discussiontools-topicheader-latestcomment": "Éwn má daluto ofàjaí: $1"
+	"discussiontools-topicheader-latestcomment": "Éwn má daluto ofàjaí: $1",
+	"discussiontools-topicsubscription-button-subscribe": "É jé ké na gbí inabali",
+	"discussiontools-topicsubscription-button-subscribe-label": "É jé ké gbí inabali",
+	"discussiontools-topicsubscription-button-unsubscribe": "É té nè gbí inabali geñ",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "É té né gbí inabali geñ",
+	"discussiontools-topicsubscription-notify-subscribed-title": "É té nè na gbí inabali",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Ú wé té nè gbí inabali keñ"
 }
