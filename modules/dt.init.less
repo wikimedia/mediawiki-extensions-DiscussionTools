@@ -102,7 +102,10 @@ h1, h2, h3, h4, h5, h6 {
 		text-decoration: none;
 	}
 
-	.ext-discussiontools-init-replybutton .oo-ui-iconElement-icon.oo-ui-icon-share {
+	// Flip the icon in LTR interface languages. Un-flip it in RTL.
+	// TODO This should use a different icon, with the image itself flipped (T325664).
+	// stylelint-disable-next-line selector-class-pattern
+	body.ltr & .ext-discussiontools-init-replybutton .oo-ui-iconElement-icon.oo-ui-icon-share {
 		transform: scaleX( -1 );
 	}
 
