@@ -107,7 +107,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			return new ContentThreadItemSet;
 		}
 
-		return HookUtils::parseRevisionParsoidHtml( $revision );
+		return HookUtils::parseRevisionParsoidHtml( $revision, __METHOD__ );
 	}
 
 	/**
