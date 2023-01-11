@@ -8,7 +8,8 @@
 			"No Sleep till Krupki",
 			"Plaga med",
 			"Tomato Cream",
-			"Tīgelika"
+			"Tīgelika",
+			"Maksim L."
 		]
 	},
 	"discussiontools": "Інструменты абмеркаванняў",
@@ -26,9 +27,9 @@
 	"discussiontools-emptystate-desc-user-anon": "На [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}||старонках размоваў]] людзі абмяркоўваюць, як зрабіць змест на пляцоўцы {{SITENAME}} найлепшым. Выкарыстоўвайце гэтую старонку, каб пачаць абмеркаванне змяненняў, зробленых з гэтага IP-адрасу. Тое, што вы тут скажаце, будзе адкрытым для іншых. Многія IP-адрасы перыядычна змяняюцца і часта выкарыстоўваюцца некалькімі людзьмі.",
 	"discussiontools-emptystate-title": "Пачаць новую размову пра старонку «{{SUBJECTPAGENAME}}».",
 	"discussiontools-emptystate-title-self": "Сардэчна запрашаем на вашу старонку размоў",
-	"discussiontools-emptystate-title-self-anon": "Сардэчна запрашаем на гэтую старонку размоў",
+	"discussiontools-emptystate-title-self-anon": "Сардэчна запрашаем на гэту старонку размоў",
 	"discussiontools-emptystate-title-user": "Пачаць размову з {{GENDER:{{PAGENAME}}|удзельнікам|удзельніцай}} {{PAGENAME}}",
-	"discussiontools-emptystate-title-user-anon": "Сардэчна запрашаем на гэтую старонку размоў",
+	"discussiontools-emptystate-title-user-anon": "Сардэчна запрашаем на гэту старонку размоў",
 	"discussiontools-error-comment-conflict": "Ваш каментарый не можа быць захаваны, бо нехта яшчэ пакінуў каментарый адначасова з вамі. Калі ласка, паспрабуйце зноў або перазагрузіце старонку, каб пабачыць апошнія каментарыі.",
 	"discussiontools-error-comment-disappeared": "Немагчыма знайсці каментарый, на які вы адказваеце, на гэтай старонцы. Магчыма, ён выдалены або перанесены на іншую старонку.",
 	"discussiontools-error-comment-disappeared-reload": "Калі ласка, перазагрузіце старонку і паспрабуйце яшчэ раз.",

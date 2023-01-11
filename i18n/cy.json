@@ -35,7 +35,7 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ni fyddwch chi'n derbyn hysbysiadau am sylwadau newydd yn y pwnc hwn.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Rydych chi wedi dad-danysgrifio.",
 	"tag-discussiontools-description": "Golygiad wedi'i wneud yn DiscussionTools",
-	"tag-discussiontools-edit": "Golygu sylw",
+	"tag-discussiontools-edit": "Wedi golygu sylw",
 	"tag-discussiontools-edit-description": "Cafodd sylw a oedd yn bodoli eisoes ei olygu yn DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Ychwanegu pwnc]",
 	"tag-discussiontools-newtopic-description": "Cafodd pwnc newydd ei ychwanegu i'r dudalen yn DiscussionTools",

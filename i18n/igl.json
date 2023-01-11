@@ -6,7 +6,16 @@
 	},
 	"discussiontools-defaultsummary-reply": "Oyí",
 	"discussiontools-replylink": "Oyí",
+	"discussiontools-replywidget-advanced": "Ényogba",
 	"discussiontools-replywidget-cancel": "Kpalú",
+	"discussiontools-replywidget-mode-source": "Été",
+	"discussiontools-replywidget-placeholder-reply": "Dó oyí tí{{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Dúwa",
 	"discussiontools-replywidget-reply": "Oyí",
-	"discussiontools-replywidget-summary": "Ewngwẹ́"
+	"discussiontools-replywidget-summary": "Ewngwẹ́",
+	"discussiontools-replywidget-watchthis": "Dí ogbá yí manyú wé [[Special:ewn igo|ewn igo]]",
+	"discussiontools-topicsubscription-button-subscribe": "É jé ké na gbí inabali",
+	"discussiontools-topicsubscription-button-unsubscribe": "É té nè gbí inabali geñ",
+	"discussiontools-topicsubscription-notify-subscribed-title": "É té nè na gbí inabali",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Ú wé té nè gbí inabali keñ"
 }
