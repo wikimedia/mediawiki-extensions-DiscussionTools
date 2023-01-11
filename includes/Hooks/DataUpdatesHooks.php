@@ -41,9 +41,10 @@ class DataUpdatesHooks implements RevisionDataUpdatesHook {
 		// TODO Deduplicate work between this and the Echo hook (make it use Parsoid too)
 		$rev = $renderedRevision->getRevision();
 		if ( HookUtils::isAvailableForTitle( $title ) ) {
-			$updates[] = new MWCallableUpdate( function () use ( $rev ) {
+			$method = __METHOD__;
+			$updates[] = new MWCallableUpdate( function () use ( $rev, $method ) {
 				try {
-					$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev );
+					$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev, $method );
 					$this->threadItemStore->insertThreadItems( $rev, $threadItemSet );
 				} catch ( Throwable $e ) {
 					// Catch errors, so that they don't cause other updates to fail (T315383), but log them.

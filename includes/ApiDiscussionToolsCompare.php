@@ -91,8 +91,8 @@ class ApiDiscussionToolsCompare extends ApiBase {
 			return;
 		}
 
-		$fromItemSet = HookUtils::parseRevisionParsoidHtml( $fromRev );
-		$toItemSet = HookUtils::parseRevisionParsoidHtml( $toRev );
+		$fromItemSet = HookUtils::parseRevisionParsoidHtml( $fromRev, __METHOD__ );
+		$toItemSet = HookUtils::parseRevisionParsoidHtml( $toRev, __METHOD__ );
 
 		$removedComments = [];
 		foreach ( $fromItemSet->getCommentItems() as $fromComment ) {

@@ -90,8 +90,10 @@ class HookUtils {
 	 * Parse a revision by using the discussion parser on the HTML provided by Parsoid.
 	 *
 	 * @param RevisionRecord $revRecord
-	 * @param bool $updateParserCache Whether the parser cache should be updated on cache miss.
+	 * @param string|false $updateParserCacheFor Whether the parser cache should be updated on cache miss.
 	 *        May be set to false for batch operations to avoid flooding the cache.
+	 *        Otherwise, it should be set to the name of the calling method (__METHOD__),
+	 *        so we can track what is causing parser cache writes.
 	 *
 	 * @return ContentThreadItemSet
 	 * @throws MWException
@@ -99,7 +101,7 @@ class HookUtils {
 	 */
 	public static function parseRevisionParsoidHtml(
 		RevisionRecord $revRecord,
-		$updateParserCache = true
+		$updateParserCacheFor
 	): ContentThreadItemSet {
 		$services = MediaWikiServices::getInstance();
 		$mainConfig = $services->getMainConfig();
@@ -112,14 +114,18 @@ class HookUtils {
 		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
 
 		$parserOptions = ParserOptions::newFromAnon();
-		$parserOptions->setRenderReason( __METHOD__ );
+
+		if ( $updateParserCacheFor ) {
+			// $updateParserCache contains the name of the calling method
+			$parserOptions->setRenderReason( $updateParserCacheFor );
+		}
 
 		$status = $parsoidOutputAccess->getParserOutput(
 			$pageRecord,
 			$parserOptions,
 			$revRecord,
 			// Don't flood the parser cache
-			$updateParserCache ? 0 : ParsoidOutputAccess::OPT_NO_UPDATE_CACHE
+			$updateParserCacheFor ? 0 : ParsoidOutputAccess::OPT_NO_UPDATE_CACHE
 		);
 
 		if ( !$status->isOK() ) {
