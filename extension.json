@@ -520,10 +520,6 @@
 			"value": "default",
 			"description": "Override availability of DiscussionTools visual enhancements. 'default', 'available', or 'unavailable'."
 		},
-		"DiscussionTools_visualenhancements_namespaces": {
-			"value": [ 1, 3 ],
-			"description": "Namespaces on which visual enhancements are available. Array of namespaces IDs (numbers), or `true` to enable on all namespaces/pages which have DiscussionTools."
-		},
 		"DiscussionTools_visualenhancements_pageframe": {
 			"value": "default",
 			"description": "Override availability of DiscussionTools visual enhancements's page frame sub-feature. 'default', 'available', or 'unavailable'."
