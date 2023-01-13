@@ -115,6 +115,15 @@ class HookUtils {
 
 		$parserOptions = ParserOptions::newFromAnon();
 
+		// HACK: remove before the release of MW 1.40 / early 2023.
+		if ( $mainConfig->has( 'TemporaryParsoidHandlerParserCacheWriteRatio' ) ) {
+			// We need to be careful about ramping up the cache writes,
+			// so we don't run out of disk space.
+			if ( wfRandom() >= $mainConfig->get( 'TemporaryParsoidHandlerParserCacheWriteRatio' ) ) {
+				$updateParserCacheFor = false;
+			}
+		}
+
 		if ( $updateParserCacheFor ) {
 			// $updateParserCache contains the name of the calling method
 			$parserOptions->setRenderReason( $updateParserCacheFor );
