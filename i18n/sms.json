@@ -10,16 +10,18 @@
 	"discussiontools-findcomment-label-search": "Ooʒʒ",
 	"discussiontools-findcomment-noresults": "Ni mâiʹd ij käunnʼjam.",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekuntt|sekuunt|sekunttâd}}",
+	"discussiontools-newtopic-placeholder-title": "Äʹšš",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Õhtt ođđ vasttõs|$1 ođđ vasttõõzz|$1 ođđ vasttõssâd|100=99+ ođđ replies}} teeʹmest \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Čuäʹjet kommeeʹnt",
 	"discussiontools-replylink": "vaʹstted",
 	"discussiontools-replywidget-abandon-discard": "Tirššâl kommeeʹnt",
 	"discussiontools-replywidget-abandontopic-discard": "Tirššâl teeʹm",
 	"discussiontools-replywidget-cancel": "Jõõsk",
+	"discussiontools-replywidget-feedback": "Uuʹd maacctõõzz vasttõsprograaʹmmest",
 	"discussiontools-replywidget-mention-tool-header": "Ooʒʒ õõʹnni: $1",
 	"discussiontools-replywidget-mode-source": "Wikiteʹkstt",
-	"discussiontools-replywidget-mode-visual": "Visuaalʼlaž",
-	"discussiontools-replywidget-newtopic": "Lââʹzzet teeʹm",
+	"discussiontools-replywidget-mode-visual": "Visuaalʼlânji",
+	"discussiontools-replywidget-newtopic": "Lââʹzzet saaǥǥ tän ääʹššest",
 	"discussiontools-replywidget-placeholder-newtopic": "Deskriptt",
 	"discussiontools-replywidget-placeholder-reply": "Vaʹstted õõʹnnʼja {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Asetõõzz",
@@ -32,5 +34,5 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Tilaa",
 	"discussiontools-topicsubscription-pager-page": "Seidd",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]",
-	"tag-discussiontools-visual": "Visuaalʼlaž"
+	"tag-discussiontools-visual": "Visuaalʼlânji"
 }
