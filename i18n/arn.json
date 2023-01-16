@@ -4,10 +4,12 @@
 			"Manke ruLpa"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Llowzugun",
 	"discussiontools-replylink": "llowzugun",
 	"discussiontools-replywidget-cancel": "Katrütun",
 	"discussiontools-replywidget-mode-source": "Wiriel",
 	"discussiontools-replywidget-mode-visual": "Azpengelwe",
 	"discussiontools-replywidget-placeholder-reply": "Llowzugualu {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Wema pen",
 	"discussiontools-replywidget-reply": "Llowzugun"
 }

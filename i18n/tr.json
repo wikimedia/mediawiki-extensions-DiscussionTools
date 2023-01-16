@@ -14,7 +14,13 @@
 			"Sayginer",
 			"Sezgin İbiş",
 			"ToprakM",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Can",
+			"Cobija",
+			"Rapsar",
+			"Sadrettin",
+			"Sedaoal",
+			"Victor Trevor"
 		]
 	},
 	"discussiontools": "Tartışma araçları",
@@ -23,7 +29,7 @@
 	"discussiontools-preference-label": "Tartışma araçları",
 	"discussiontools-preference-description": "Tartışma sayfalarında [//www.mediawiki.org/wiki/Talk_pages_project/replying belirli yorumlara yanıt verme] için yeni bir iş akışı etkinleştirin.\n\nZaman içinde konuşma sayfalarıyla etkileşim kurmak için yeni araçların ekleneceğini lütfen unutmayın.\n\nBu özelliklerle ilgili güncellemeler [//www.mediawiki.org/wiki/Talk_pages_project/Updates tartışma sayfaları projesinin güncelleme sayfasında] yayınlanacak",
 	"discussiontools-replylink": "yanıtla",
-	"discussiontools-replywidget-anon-warning": "<strong>Oturum açmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 oturum açın] veya [$2 bir hesap oluşturabilirsiniz].",
+	"discussiontools-replywidget-anon-warning": "<strong>Oturum açmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 oturum açın] veya [$2 yeni hesap oluşturun].",
 	"discussiontools-replywidget-cancel": "İptal",
 	"discussiontools-replywidget-feedback": "Bu özellikle ilgili geribildirimde bulunun",
 	"discussiontools-replywidget-loading": "Yükleniyor...",
