@@ -71,10 +71,12 @@ class LanguageData {
 		// ApiQuerySiteinfo
 		$data['localTimezone'] = $config->get( 'Localtimezone' );
 
-		$data['specialContributionsName'] = $this->specialPageFactory
-			->getLocalNameFor( 'Contributions' );
-		$data['specialNewSectionName'] = $this->specialPageFactory
-			->getLocalNameFor( 'NewSection' );
+		// special page names compared against Title::getText, which contains space
+		// But aliases are stored with underscores (db key) in the alias files
+		$data['specialContributionsName'] = str_replace( '_', ' ', $this->specialPageFactory
+			->getLocalNameFor( 'Contributions' ) );
+		$data['specialNewSectionName'] = str_replace( '_', ' ', $this->specialPageFactory
+			->getLocalNameFor( 'NewSection' ) );
 
 		$localTimezone = $config->get( 'Localtimezone' );
 		// Return all timezone abbreviations for the local timezone (there will often be two, for

@@ -230,5 +230,13 @@
 		"expected": "../cases/timestamp-format-switch/timestamp-format-switch.json",
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Signatures with Special:Contributions (alias with underscored)",
+		"title": "Talk:Signatures Alias",
+		"dom": "cases/signatures-comments/signatures-contribs-alias-underscore.html",
+		"expected": "../cases/signatures-comments/signatures-contribs-alias-underscore.json",
+		"config": "../data/huwiki-config.json",
+		"data": "../data/huwiki-data.json"
 	}
 ]

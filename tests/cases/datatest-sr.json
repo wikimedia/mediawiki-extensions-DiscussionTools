@@ -43,8 +43,8 @@
 		]
 	},
 	"localTimezone": "UTC",
-	"specialContributionsName": "Contributions",
-	"specialNewSectionName": "NewSection",
+	"specialContributionsName": "Доприноси",
+	"specialNewSectionName": "Нови одељак",
 	"timezones": {
 		"sr": {
 			"UTC": "UTC"

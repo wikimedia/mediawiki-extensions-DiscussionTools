@@ -16,13 +16,12 @@
 			"9"
 		]
 	},
-	"localTimezone": "Europe/Berlin",
+	"localTimezone": "UTC",
 	"specialContributionsName": "Szerkesztő közreműködései",
+	"specialNewSectionName": "NewSection",
 	"timezones": {
 		"hu": {
-			"CEMT": "CEMT",
-			"CEST": "CEST",
-			"CET": "CET"
+			"UTC": "UTC"
 		}
 	},
 	"contLangMessages": {

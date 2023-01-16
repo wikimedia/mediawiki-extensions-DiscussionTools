@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Extension\DiscussionTools\LanguageData;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -15,10 +16,10 @@ class LanguageDataTest extends IntegrationTestCase {
 	 */
 	public function testGetLocalData( string $langCode, array $config, string $expectedPath ): void {
 		$config += [
-			'ContentLanguage' => $langCode,
-			'UsePigLatinVariant' => false,
-			'TranslateNumerals' => true,
-			'Localtimezone' => 'UTC',
+			MainConfigNames::LanguageCode => $langCode,
+			MainConfigNames::UsePigLatinVariant => false,
+			MainConfigNames::TranslateNumerals => true,
+			MainConfigNames::Localtimezone => 'UTC',
 		];
 		$this->overrideConfigValues( $config );
 
@@ -27,7 +28,7 @@ class LanguageDataTest extends IntegrationTestCase {
 		$services = MediaWikiServices::getInstance();
 		$languageData = new LanguageData(
 			$services->getMainConfig(),
-			$services->getLanguageFactory()->getLanguage( $langCode ),
+			$services->getContentLanguage(),
 			$services->getLanguageConverterFactory(),
 			$services->getSpecialPageFactory()
 		);
@@ -51,7 +52,9 @@ class LanguageDataTest extends IntegrationTestCase {
 			// Has localised digits (T261706)
 			[ 'ckb', [], '../cases/datatest-ckb.json' ],
 			// Has unusual timezone abbreviation (T265500)
-			[ 'th', [ 'Localtimezone' => 'Asia/Bangkok' ], '../cases/datatest-th.json' ],
+			[ 'th', [ MainConfigNames::Localtimezone => 'Asia/Bangkok' ], '../cases/datatest-th.json' ],
+			// Special page alias with underscores (T327021)
+			[ 'hu', [], '../cases/datatest-hu.json' ],
 		];
 	}
 
