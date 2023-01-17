@@ -118,6 +118,11 @@ function isCommentSeparator( node ) {
 		node.tagName.toLowerCase() === 'br' ||
 		// Horizontal line
 		node.tagName.toLowerCase() === 'hr' ||
+		// TemplateStyles followed by any of the others
+		(
+			[ 'style', 'link' ].indexOf( node.tagName.toLowerCase() ) !== -1 &&
+			node.nextSibling && isCommentSeparator( node.nextSibling )
+		) ||
 		// {{outdent}} templates
 		node.classList.contains( 'outdent-template' ) ||
 		// {{tracked}} templates (T313097)

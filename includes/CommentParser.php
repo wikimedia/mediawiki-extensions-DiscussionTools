@@ -843,7 +843,7 @@ class CommentParser {
 						&$endNode, &$sigRanges,
 						$treeWalker, $timestampRegexps, $node
 					) {
-						if ( CommentUtils::isBlockElement( $n ) ) {
+						if ( CommentUtils::isBlockElement( $n ) || CommentUtils::isCommentSeparator( $n ) ) {
 							// Stop when entering or leaving a block node
 							return true;
 						}

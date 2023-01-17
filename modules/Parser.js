@@ -827,7 +827,7 @@ Parser.prototype.buildThreadItems = function () {
 				// eslint-disable-next-line no-loop-func
 				function ( event, n ) {
 					var match2, foundSignature2;
-					if ( utils.isBlockElement( n ) ) {
+					if ( utils.isBlockElement( n ) || utils.isCommentSeparator( n ) ) {
 						// Stop when entering or leaving a block node
 						return true;
 					}

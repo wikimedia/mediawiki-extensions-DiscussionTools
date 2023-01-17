@@ -155,6 +155,12 @@ class CommentUtils {
 			strtolower( $node->tagName ) === 'br' ||
 			// Horizontal line
 			strtolower( $node->tagName ) === 'hr' ||
+			// TemplateStyles followed by any of the others
+			(
+				in_array( strtolower( $node->tagName ), [ 'style', 'link' ] ) &&
+				// @phan-suppress-next-line PhanInfiniteRecursion
+				$node->nextSibling && self::isCommentSeparator( $node->nextSibling )
+			) ||
 			// {{outdent}} templates
 			DOMCompat::getClassList( $node )->contains( 'outdent-template' ) ||
 			// {{tracked}} templates (T313097)
