@@ -336,12 +336,8 @@ class HookUtils {
 		$services = MediaWikiServices::getInstance();
 
 		if ( $feature === static::VISUALENHANCEMENTS ) {
-			$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-			$namespaces = $dtConfig->get( 'DiscussionTools_visualenhancements_namespaces' );
-			if ( is_array( $namespaces ) ) {
-				// Only allow visual enhancements in specified namespaces
-				return in_array( $title->getNamespace(), $namespaces, true );
-			}
+			// Visual enhancements are only enabled on talk namespaces (T325417)
+			return $title->isTalkPage();
 		}
 
 		$hasNewSectionLink = static::hasPagePropCached( $title, 'newsectionlink' );
