@@ -143,6 +143,17 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "tracked template",
+		"title": "Commons talk:SPARQL query service",
+		"dom": "cases/tracked-template/tracked-template.html",
+		"expected": {
+			"desktop": "cases/tracked-template/tracked-template-desktop.html",
+			"mobile": "cases/tracked-template/tracked-template-mobile.html"
+		},
+		"config": "../data/commonswiki-config.json",
+		"data": "../data/commonswiki-data.json"
+	},
+	{
 		"name": "Timestamp format switch behavior",
 		"title": "Talk:T304595",
 		"dom": "cases/timestamp-format-switch/timestamp-format-switch.html",
