@@ -19,7 +19,8 @@
 			"Sezgin İbiş",
 			"ToprakM",
 			"Victor Trevor",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Sadrettin"
 		]
 	},
 	"discussiontools": "Tartışma araçları",
@@ -110,7 +111,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Konuyu sil",
 	"discussiontools-replywidget-abandontopic-keep": "Yazmaya devam et",
 	"discussiontools-replywidget-advanced": "Gelişmiş",
-	"discussiontools-replywidget-anon-warning": "<strong>Oturum açmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 oturum açın] veya [$2 bir hesap oluşturabilirsiniz].",
+	"discussiontools-replywidget-anon-warning": "<strong>Oturum açmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 oturum açın] veya [$2 yeni hesap oluşturun].",
 	"discussiontools-replywidget-cancel": "İptal",
 	"discussiontools-replywidget-feedback": "Bu özellikle ilgili geribildirimde bulunun",
 	"discussiontools-replywidget-loading": "Yükleniyor...",

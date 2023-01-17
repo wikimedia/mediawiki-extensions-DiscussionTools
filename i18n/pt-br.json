@@ -132,7 +132,7 @@
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Editar inscrições",
 	"discussiontools-topicsubscription-special-intro": "As inscrições permitem que você siga um tópico nas páginas de discussão. Quando alguém responder ao tópico, você receberá uma notificação.\n\nAjuste como e onde você recebe essas notificações em [[Special:Preferences#mw-prefsection-echo|suas preferências]].",
 	"discussiontools-topicsubscription-special-title": "Inscrições de trópico",
-	"echo-category-title-dt-subscription": "{{PLURAL:$1|Comentário|Comentários}} nos tópicos da página de discussão assinada",
+	"echo-category-title-dt-subscription": "{{PLURAL:$1|Inscrição|Inscrições}} da página de discussão",
 	"echo-pref-tooltip-dt-subscription": "Notifique-me quando alguém postar um novo comentário em um tópico no qual estou inscrito.",
 	"tag-discussiontools-added-comment-description": "Um comentário na página de discussão foi adicionado nesta edição",
 	"tag-discussiontools-description": "Edição feita usando DiscussionTools",
