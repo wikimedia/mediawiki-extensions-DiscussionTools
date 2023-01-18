@@ -2,9 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Bugirbiig"
+			"Bugirbiig",
+			"Musahfm"
 		]
 	},
 	"discussiontools-emptystate-button": "Pin'ilim sɔnsinɛ li yɛla",
-	"discussiontools-ledesection-title": "Tigir nwa pian'ad"
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Talk pages",
+	"discussiontools-findcomment-label-search": "Iem",
+	"discussiontools-ledesection-title": "Tigir nwa pian'ad",
+	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|mitgim|mitgima}}"
 }
