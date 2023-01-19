@@ -70,9 +70,10 @@ class CommentFormatter {
 				// language as well. If that behavior in core changes, then we'll have to change this to
 				// happen in a post-processing step (like all other transformations) to avoid splitting it.
 				$lang = $parser->getOptions()->getUserLangObj();
-				$sections = $pout->getSections();
-				foreach ( $sections as &$item ) {
-					$key = str_replace( '_', ' ', $item['anchor'] );
+				$sections = $pout->getTOCData() === null ? [] :
+						$pout->getTOCData()->getSections();
+				foreach ( $sections as $item ) {
+					$key = str_replace( '_', ' ', $item->anchor );
 					// Unset if we did not format this section as a topic container
 					if ( isset( $tocInfo[$key] ) ) {
 						$count = $lang->formatNum( $tocInfo[$key]['commentCount'] );
@@ -84,14 +85,13 @@ class CommentFormatter {
 						$summary = Html::element( 'span', [
 							'class' => 'ext-discussiontools-init-sidebar-meta'
 						], $commentCount );
-
-						// This also shows up in API action=parse&prop=sections output.
-						$item['html-summary'] = $summary;
 					} else {
-						$item['html-summary'] = '';
+						$summary = '';
 					}
+
+					// This also shows up in API action=parse&prop=sections output.
+					$item->setExtensionData( 'DiscussionTools-html-summary', $summary );
 				}
-				$pout->setSections( $sections );
 			}
 
 		} catch ( Throwable $e ) {
