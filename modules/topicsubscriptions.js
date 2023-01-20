@@ -250,6 +250,9 @@ function maybeShowFirstTimeAutoTopicSubPopup() {
 	if ( popup.$element.closest( 'h1, h2, h3, h4, h5, h6' ).length ) {
 		popup.$element.closest( 'h1, h2, h3, h4, h5, h6' ).after( popup.$element );
 	}
+	if ( popup.$element.closest( '.mw-heading' ).length ) {
+		popup.$element.closest( '.mw-heading' ).after( popup.$element );
+	}
 
 	// Disable positioning, the popup is positioned in CSS, above the highlight
 	popup.toggle( true ).toggleClipping( false ).togglePositioning( false );
