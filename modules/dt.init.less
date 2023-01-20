@@ -186,6 +186,15 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+// Topic subscriptions (both kinds)
+.ext-discussiontools-visualenhancements-enabled .ext-discussiontools-init-section {
+	// Introduce a block formatting context so that floated "subscribe" links/buttons
+	// aren't affected by other floats (T327469). Most skins already include this rule
+	// for headings, but we add the floating stuff outside of headings (since T314714).
+	// https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context
+	overflow: hidden;
+}
+
 // Topic subscriptions (link)
 .ext-discussiontools-init-section-subscribe {
 	display: none;

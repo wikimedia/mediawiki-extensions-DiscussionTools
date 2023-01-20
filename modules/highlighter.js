@@ -1,5 +1,6 @@
 var
 	lastHighlightedPublishedComment = null,
+	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	CommentItem = require( './CommentItem.js' ),
 	utils = require( './utils.js' );
 
@@ -42,7 +43,10 @@ function Highlight( comments ) {
 
 		// If the item is a heading, highlight the full extent of it (not only the text)
 		if ( comment.type === 'heading' && !comment.placeholderHeading ) {
-			range.selectNode( $highlight.closest( 'h1, h2, h3, h4, h5, h6' )[ 0 ] );
+			range.selectNode(
+				$highlight.closest( '.mw-heading' )[ 0 ] ||
+				$highlight.closest( 'h1, h2, h3, h4, h5, h6' )[ 0 ]
+			);
 		}
 
 		ranges.push( range );
@@ -93,6 +97,16 @@ Highlight.prototype.update = function () {
 			// very short or very deeply indented, and this seems to work well enough in practice.
 			var useFullWidth = rect.width > rootRect.width / 3;
 
+			var headingTopAdj = 0;
+			if (
+				featuresEnabled.visualenhancements &&
+				$element.closest( '.ext-discussiontools-init-section' ).length
+			) {
+				// Shift the highlight a little to avoid drawing over the separator border at the top,
+				// and to cover the gap to the first comment at the bottom.
+				headingTopAdj = 10;
+			}
+
 			var top = rect.top - baseRect.top;
 			var width = rect.width;
 			var height = rect.height;
@@ -110,7 +124,7 @@ Highlight.prototype.update = function () {
 			}
 			var padding = 5;
 			$element.css( {
-				'margin-top': top - padding,
+				'margin-top': top - padding + headingTopAdj,
 				'margin-left': left !== undefined ? left - padding : '',
 				'margin-right': right !== undefined ? right - padding : '',
 				width: width + ( padding * 2 ),
