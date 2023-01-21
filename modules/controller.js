@@ -6,7 +6,7 @@ var
 	lastControllerScrollOffset,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	createMemoryStorage = require( './createMemoryStorage.js' ),
-	storage = createMemoryStorage( mw.storage.session ),
+	storage = createMemoryStorage( mw.storage ),
 	Parser = require( './Parser.js' ),
 	ThreadItemSet = require( './ThreadItemSet.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
