@@ -20,14 +20,13 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parsoid\ParsoidOutputAccess;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
-use MWException;
 use OutputPage;
 use ParserOptions;
 use RequestContext;
+use RuntimeException;
 use Title;
 use TitleValue;
 use Wikimedia\Assert\Assert;
-use Wikimedia\Parsoid\Core\ClientError;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -96,8 +95,6 @@ class HookUtils {
 	 *        so we can track what is causing parser cache writes.
 	 *
 	 * @return ContentThreadItemSet
-	 * @throws MWException
-	 * @throws ClientError
 	 */
 	public static function parseRevisionParsoidHtml(
 		RevisionRecord $revRecord,
@@ -140,7 +137,7 @@ class HookUtils {
 		if ( !$status->isOK() ) {
 			[ 'message' => $key, 'params' => $params ] = $status->getErrors()[0];
 			$message = wfMessage( $key, ...$params );
-			throw new MWException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
+			throw new RuntimeException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
 		}
 
 		$parserOutput = $status->getValue();

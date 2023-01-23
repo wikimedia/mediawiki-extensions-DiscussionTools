@@ -22,6 +22,14 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 	]
 );
 
+$cfg['warn_about_undocumented_throw_statements'] = true;
+$cfg['exception_classes_with_optional_throws_phpdoc'] = [
+	'LogicException',
+	'RuntimeException',
+	'DOMException',
+];
+$cfg['warn_about_undocumented_exceptions_thrown_by_invoked_functions'] = true;
+
 /**
  * Quick implementation of a recursive directory list.
  * @param string $dir The directory to list

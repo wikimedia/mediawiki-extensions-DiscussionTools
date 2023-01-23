@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Config;
 use ConfigFactory;
+use Exception;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseHeadingItem;
@@ -17,10 +18,12 @@ use MWTimestamp;
 use ReadOnlyMode;
 use stdClass;
 use TitleFormatter;
+use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\ILBFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\SelectQueryBuilder;
+use Wikimedia\Timestamp\TimestampException;
 
 /**
  * Stores and fetches ThreadItemSets from the database.
@@ -331,6 +334,9 @@ class ThreadItemStore {
 	 *
 	 * @param RevisionRecord $rev
 	 * @param ThreadItemSet $threadItemSet
+	 * @throws TimestampException
+	 * @throws DBError
+	 * @throws Exception
 	 * @return bool
 	 */
 	public function insertThreadItems( RevisionRecord $rev, ThreadItemSet $threadItemSet ): bool {
@@ -420,7 +426,7 @@ class ThreadItemStore {
 		// Insert or update discussiontools_item_pages and discussiontools_item_revisions rows.
 		// This IS in a transaction. We don't really want rows for different items on the same
 		// page to point to different revisions.
-		$dbw->doAtomicSection( $method, function ( $dbw ) use (
+		$dbw->doAtomicSection( $method, /** @throws TimestampException */ function ( $dbw ) use (
 			$method, $rev, $threadItemSet, $itemsIds, $itemIdsIds, &$didInsert
 		) {
 			// Map of item IDs (strings) to their discussiontools_item_revisions.itr_id field values (ints)

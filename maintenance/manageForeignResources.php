@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
+use Exception;
 use ForeignResourceManager;
 use Maintenance;
 
@@ -23,7 +24,12 @@ class ManageForeignResources extends Maintenance {
 			__DIR__ . '/../modules/lib/foreign-resources.yaml',
 			__DIR__ . '/../modules/lib'
 		);
-		return $frm->run( 'update', 'all' );
+
+		try {
+			return $frm->run( 'update', 'all' );
+		} catch ( Exception $e ) {
+			$this->fatalError( "Error: {$e->getMessage()}" );
+		}
 	}
 }
 

@@ -147,6 +147,7 @@ class UnsubscribeAction extends FormAction {
 
 	/**
 	 * @inheritDoc
+	 * @throws ErrorPageError
 	 */
 	protected function checkCanExecute( User $user ) {
 		// Must be logged in

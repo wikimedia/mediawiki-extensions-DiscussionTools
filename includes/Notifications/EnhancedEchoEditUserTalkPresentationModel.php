@@ -12,6 +12,7 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 use EchoEditUserTalkPresentationModel;
 use Message;
 use RawMessage;
+use Wikimedia\Timestamp\TimestampException;
 
 class EnhancedEchoEditUserTalkPresentationModel extends EchoEditUserTalkPresentationModel {
 
@@ -47,6 +48,7 @@ class EnhancedEchoEditUserTalkPresentationModel extends EchoEditUserTalkPresenta
 
 	/**
 	 * @inheritDoc
+	 * @throws TimestampException
 	 */
 	public function jsonSerialize(): array {
 		$array = parent::jsonSerialize();

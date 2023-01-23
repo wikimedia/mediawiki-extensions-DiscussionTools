@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use Exception;
+use DOMException;
 use Throwable;
 use Wikimedia\Parsoid\DOM\Node;
 
@@ -102,11 +102,10 @@ class TreeWalker {
 	 *     - NodeFilter::FILTER_ACCEPT
 	 *     - NodeFilter::FILTER_REJECT
 	 *     - NodeFilter::FILTER_SKIP
-	 * @throws Exception
 	 */
 	private function filterNode( Node $node ): int {
 		if ( $this->isActive ) {
-			throw new Exception( 'InvalidStateError' );
+			throw new DOMException( 'InvalidStateError' );
 		}
 
 		// Let n be node’s nodeType attribute value minus 1.

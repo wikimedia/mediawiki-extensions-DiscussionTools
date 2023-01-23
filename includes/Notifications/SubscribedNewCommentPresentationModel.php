@@ -16,6 +16,7 @@ use MediaWiki\MediaWikiServices;
 use Message;
 use RawMessage;
 use User;
+use Wikimedia\Timestamp\TimestampException;
 
 class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 	use DiscussionToolsEventTrait;
@@ -56,6 +57,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 
 	/**
 	 * @inheritDoc
+	 * @throws TimestampException
 	 */
 	public function jsonSerialize(): array {
 		$array = parent::jsonSerialize();

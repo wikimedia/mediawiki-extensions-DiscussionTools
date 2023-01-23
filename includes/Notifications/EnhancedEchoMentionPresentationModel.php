@@ -10,6 +10,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use EchoMentionPresentationModel;
+use Wikimedia\Timestamp\TimestampException;
 
 class EnhancedEchoMentionPresentationModel extends EchoMentionPresentationModel {
 
@@ -30,6 +31,7 @@ class EnhancedEchoMentionPresentationModel extends EchoMentionPresentationModel 
 
 	/**
 	 * @inheritDoc
+	 * @throws TimestampException
 	 */
 	public function jsonSerialize(): array {
 		$array = parent::jsonSerialize();

@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use ErrorPageError;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkRenderer;
 use SpecialPage;
@@ -22,6 +23,7 @@ class SpecialTopicSubscriptions extends SpecialPage {
 
 	/**
 	 * @inheritDoc
+	 * @throws ErrorPageError
 	 */
 	public function execute( $subpage ) {
 		$this->requireLogin();

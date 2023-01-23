@@ -38,6 +38,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 
 	/**
 	 * @inheritDoc
+	 * @throws ApiUsageException
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
@@ -61,6 +62,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	/**
 	 * Get the thread item set for the specified revision
 	 *
+	 * @throws ApiUsageException
 	 * @param array $params
 	 * @return ContentThreadItemSet
 	 */

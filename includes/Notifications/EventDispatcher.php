@@ -14,7 +14,6 @@ use DateInterval;
 use DateTimeImmutable;
 use DeferredUpdates;
 use EchoEvent;
-use Error;
 use ExtensionRegistry;
 use IDBAccessObject;
 use Iterator;
@@ -34,6 +33,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 use ParserOptions;
 use RequestContext;
+use RuntimeException;
 use Title;
 use TitleValue;
 use Wikimedia\Assert\Assert;
@@ -61,7 +61,7 @@ class EventDispatcher {
 			$revRecord
 		);
 		if ( !$status->isOK() ) {
-			throw new Error( 'Could not load revision for notifications' );
+			throw new RuntimeException( 'Could not load revision for notifications' );
 		}
 
 		$title = TitleValue::newFromPage( $revRecord->getPage() );
