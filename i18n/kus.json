@@ -4,7 +4,8 @@
 			"Akudugu",
 			"Amire80",
 			"Bugirbiig",
-			"Musahfm"
+			"Musahfm",
+			"WINDOL"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Een, M paamɛ li",
@@ -15,6 +16,7 @@
 	"discussiontools-emptystate-button": "Pin'ilim sɔnsinɛ li yɛla",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Talk pages",
 	"discussiontools-emptystate-title-self": "Pʋ'ʋsim tisidif fʋ pian'ʋk lakir zin'ig",
+	"discussiontools-emptystate-title-self-anon": "Pi'ant ƒal kaŋa titiƒ ken ken",
 	"discussiontools-error-comment-disappeared-reload": "Bɛllimnɛ maligim din'lɛm maki gɔs la",
 	"discussiontools-findcomment-label-search": "Iem",
 	"discussiontools-findcomment-noresults": "Ayɛi si'el kae",

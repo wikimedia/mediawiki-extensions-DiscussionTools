@@ -13,7 +13,7 @@
 	"discussiontools-defaultsummary-reply": "సమాధానం",
 	"discussiontools-desc": "చర్చ పేజీలను మెరుగుపరచే ఉపకరణాలు",
 	"discussiontools-emptystate-button": "చర్చను మొదలుపెట్టండి",
-	"discussiontools-emptystate-desc": "{{SITENAME}} లోని వ్యాసాలను అత్తమంగా తీర్చిదిద్దడం ఎలాగో చర్చించేది [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|చర్చ పేజీల్లోనే]]. [[:{{SUBJECTPAGENAME}}]] పేజీని మెరుగుపరచడంపై ఇతరులతో చర్చ మొదలు పెట్టేందుకు ఈ పేజీని వాడండి.",
+	"discussiontools-emptystate-desc": "{{SITENAME}} లోని వ్యాసాలను ఉత్తమంగా తీర్చిదిద్దడం ఎలాగో చర్చించేది [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|చర్చ పేజీల్లోనే]]. [[:{{SUBJECTPAGENAME}}]] పేజీని మెరుగుపరచడంపై ఇతరులతో చర్చ మొదలు పెట్టేందుకు ఈ పేజీని వాడండి.",
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} గురించి చర్చ మొదలు పెట్టండి",
 	"discussiontools-emptystate-title-self": "మీ చర్చ పేజీకి స్వాగతం",
 	"discussiontools-emptystate-title-self-anon": "ఈ చర్చ పేజీకి స్వాగతం",
