@@ -29,9 +29,16 @@ class SpecialFindComment extends FormSpecialPage {
 				'label-message' => 'discussiontools-findcomment-label-idorname',
 				'name' => 'idorname',
 				'type' => 'text',
-				'default' => $this->par,
+				'required' => true,
 			],
 		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getSubpageField() {
+		return 'idorname';
 	}
 
 	/**
@@ -44,12 +51,23 @@ class SpecialFindComment extends FormSpecialPage {
 	/**
 	 * @inheritDoc
 	 */
+	public function requiresPost() {
+		return false;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getShowAlways() {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function alterForm( HTMLForm $form ) {
-		$form->setMethod( 'GET' );
 		$form->setWrapperLegend( true );
 		$form->setSubmitTextMsg( 'discussiontools-findcomment-label-search' );
-		// Remove subpage when submitting
-		$form->setTitle( $this->getPageTitle() );
 	}
 
 	private $idOrName;
@@ -59,16 +77,13 @@ class SpecialFindComment extends FormSpecialPage {
 	 */
 	public function onSubmit( array $data ) {
 		$this->idOrName = $data['idorname'];
-		// Always display the form again
-		return false;
+		return true;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function execute( $par ) {
-		parent::execute( $par );
-
+	public function onSuccess() {
 		$out = $this->getOutput();
 		$results = false;
 
@@ -89,7 +104,7 @@ class SpecialFindComment extends FormSpecialPage {
 		if ( $results ) {
 			$out->addHTML(
 				$this->msg( 'discussiontools-findcomment-gotocomment', $this->idOrName )->parseAsBlock() );
-		} elseif ( $this->idOrName ) {
+		} else {
 			$out->addHTML(
 				$this->msg( 'discussiontools-findcomment-noresults' )->parseAsBlock() );
 		}
