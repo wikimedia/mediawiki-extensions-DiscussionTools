@@ -12,5 +12,6 @@
 	"discussiontools-replywidget-mode-visual": "Visuaallâš",
 	"discussiontools-replywidget-placeholder-reply": "Västid kevttei {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Munekejâdem",
-	"discussiontools-replywidget-reply": "Västid"
+	"discussiontools-replywidget-reply": "Västid",
+	"tag-discussiontools-visual": "Visuaallávt"
 }
