@@ -126,6 +126,12 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget ) {
 		// TODO This should happen immediately rather than waiting for the reply widget to load,
 		// then we wouldn't need this check, but the autosave code is in ReplyWidget.
 		this.sectionTitle.setValue( title );
+		this.prevTitleText = title;
+
+		if ( this.replyWidget.storage.get( this.replyWidget.storagePrefix + '/summary' ) === null ) {
+			var generatedSummary = this.generateSummary( title );
+			this.replyWidget.editSummaryInput.setValue( generatedSummary );
+		}
 	}
 
 	if ( this.replyWidget.modeTabSelect ) {
@@ -221,6 +227,20 @@ NewTopicController.prototype.clearStorage = function () {
 	if ( this.replyWidget ) {
 		this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
 	}
+};
+
+NewTopicController.prototype.storeEditSummary = function () {
+	if ( this.replyWidget ) {
+		var currentSummary = this.replyWidget.editSummaryInput.getValue();
+		var generatedSummary = this.generateSummary( this.sectionTitle.getValue() );
+		if ( currentSummary === generatedSummary ) {
+			// Do not store generated summaries (T315730)
+			this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/summary' );
+			return;
+		}
+	}
+
+	NewTopicController.super.prototype.storeEditSummary.call( this );
 };
 
 /**

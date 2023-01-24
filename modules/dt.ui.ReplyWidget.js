@@ -493,16 +493,11 @@ ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
 	this.advanced.toggle( !!this.showAdvanced );
 	this.advancedToggle.setIndicator( this.showAdvanced ? 'up' : 'down' );
 
-	this.storeEditSummary();
 	this.storage.set( this.storagePrefix + '/showAdvanced', this.showAdvanced ? '1' : '' );
 };
 
 ReplyWidget.prototype.onEditSummaryChange = function () {
-	this.storeEditSummary();
-};
-
-ReplyWidget.prototype.storeEditSummary = function () {
-	this.storage.set( this.storagePrefix + '/summary', this.getEditSummary() );
+	this.commentController.storeEditSummary();
 };
 
 ReplyWidget.prototype.getEditSummary = function () {

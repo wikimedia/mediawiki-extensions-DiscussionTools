@@ -351,6 +351,12 @@ CommentController.prototype.setupReplyWidget = function ( replyWidget, data, sup
 	this.replyWidget = replyWidget;
 };
 
+CommentController.prototype.storeEditSummary = function () {
+	if ( this.replyWidget ) {
+		this.replyWidget.storage.set( this.replyWidget.storagePrefix + '/summary', this.replyWidget.getEditSummary() );
+	}
+};
+
 /**
  * Focus the first input field inside the controller.
  */
