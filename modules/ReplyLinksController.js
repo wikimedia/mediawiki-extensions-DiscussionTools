@@ -277,10 +277,14 @@ ReplyLinksController.prototype.teardown = function () {
 	}
 
 	this.$replyLinkSets.each( function () {
-		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		try {
+			var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+			replyButton.off( 'click', controller.onReplyButtonClickHandler );
+		} catch ( err ) {
+			// $.data() might have already been cleared by jQuery if the elements were removed, ignore
+		}
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.off( 'click keypress', controller.onReplyLinkClickHandler );
-		replyButton.off( 'click', controller.onReplyButtonClickHandler );
 	} );
 
 	if ( featuresEnabled.newtopictool ) {

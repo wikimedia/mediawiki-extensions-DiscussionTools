@@ -250,6 +250,11 @@ function init( $container, state ) {
 	// Lazy-load postEdit module, may be required later (on desktop)
 	mw.loader.using( 'mediawiki.action.view.postEdit' );
 
+	if ( linksController ) {
+		linksController.teardown();
+		linksController = null;
+	}
+
 	$pageContainer = $container;
 	linksController = new ReplyLinksController( $pageContainer );
 
@@ -587,8 +592,6 @@ function update( data, threadItem, pageName, replyWidget ) {
 	}
 
 	replyWidget.teardown();
-	linksController.teardown();
-	linksController = null;
 	// TODO: Tell controller to teardown all other open widgets
 
 	// Highlight the new reply after re-initializing
