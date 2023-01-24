@@ -18,9 +18,11 @@
 	"discussiontools-desc": "Алатке за олакшавање комуникације на страницама за разговор.",
 	"discussiontools-emptystate-button": "Започни разговор",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Странице за разговор]] су места где уредници дискутују о садржају на Википедији. Можете користити ову страницу за покретање дискусије о садржају странице [[:{{SUBJECTPAGENAME}}]] и како је унапредити.",
+	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Странице за разговор]] су места где уредници комуницирају и дискутују о садржају на {{SITENAME}}. Започните разговор {{GENDER:{{PAGENAME}}|са}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Све што кажете овде биће јавно видљиво свима.",
 	"discussiontools-emptystate-title": "Покрени дискусију о {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Добро дошли на своју страницу за разговор",
 	"discussiontools-emptystate-title-self-anon": "Добро дошли на ову страницу за разговор",
+	"discussiontools-emptystate-title-user": "Започните дискусију {{GENDER:{{PAGENAME}}|са}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Добро дошли на ову страницу за разговор",
 	"discussiontools-error-comment-conflict": "Није могуће сачувати Ваш коментар, јер је неко други прокоментарисао у исто време. Покушајте поново или поново учитајте страницу да бисте видели најновији коментар.",
 	"discussiontools-error-comment-disappeared": "Нема коментара на који желите да одговорите. Вероватно је избрисан или премештен на другу страницу.",
@@ -132,8 +134,6 @@
 	"tag-discussiontools-newtopic-description": "Корисник је додао нову тему на страницу помоћу алатка за разговор",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} одговор]",
 	"tag-discussiontools-reply-description": "Корисник је одговорио на коментар помоћу алатка за разговор",
-	"tag-discussiontools-source": "изворно",
 	"tag-discussiontools-source-description": "Алатке за разговор биле су у изворном режиму.",
-	"tag-discussiontools-visual": "визуелно",
 	"tag-discussiontools-visual-description": "Алатке за разговор биле су у визуелном режиму."
 }

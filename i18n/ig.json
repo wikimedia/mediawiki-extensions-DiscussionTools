@@ -139,7 +139,6 @@
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} New topic]",
 	"tag-discussiontools-newtopic-description": "Onye ọrụ ji akọrọngwa mkparịta ụka tinye isiokwu ọhụụ",
 	"tag-discussiontools-reply-description": "Onye ọrụ ji akọrọngwa mkparịta ụka wee zaghachi okwu",
-	"tag-discussiontools-source": "Ebe nsinweta",
 	"tag-discussiontools-source-description": "Akọrọngwa mkparịta ụka dị mode nsinweta",
 	"tag-discussiontools-source-enhanced-description": "Akọrọngwa mkparịta ụka di na mode nsinweta ya na toolbar"
 }

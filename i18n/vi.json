@@ -168,9 +168,7 @@
 	"tag-discussiontools-newtopic-description": "Người dùng thêm chủ đề mới vào trang bằng Công cụ Thảo luận",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Trả lời]",
 	"tag-discussiontools-reply-description": "Người dùng trả lời một bình luận bằng Công cụ Thảo luận",
-	"tag-discussiontools-source": "Mã nguồn",
 	"tag-discussiontools-source-description": "Công cụ Thảo luận trong chế độ mã nguồn",
 	"tag-discussiontools-source-enhanced-description": "Công cụ thảo luận ở chế độ mã nguồn nâng cao với thanh công cụ",
-	"tag-discussiontools-visual": "Trực quan",
 	"tag-discussiontools-visual-description": "Công cụ thảo luận trong chế độ trực quan"
 }

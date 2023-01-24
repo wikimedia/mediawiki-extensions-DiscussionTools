@@ -41,6 +41,5 @@
 	"echo-pref-tooltip-dt-subscription": "Informez me se ulu skribos komento en ula temo quan me abonis.",
 	"tag-discussiontools-edit": "Redaktez komento",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova topiko]",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respondez]",
-	"tag-discussiontools-visual": "Visuala"
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respondez]"
 }

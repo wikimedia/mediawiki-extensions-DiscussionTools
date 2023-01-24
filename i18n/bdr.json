@@ -11,5 +11,6 @@
 	"discussiontools-replywidget-mode-visual": "Bijual",
 	"discussiontools-replywidget-preview": "Petele’",
 	"discussiontools-replywidget-reply": "Nampung",
-	"discussiontools-replywidget-summary": "Repod"
+	"discussiontools-replywidget-summary": "Repod",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|urang}} diam perundingan"
 }

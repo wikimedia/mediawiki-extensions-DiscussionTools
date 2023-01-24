@@ -128,8 +128,6 @@
 	"tag-discussiontools-newtopic-description": "მომხმარებელმა განხილვის ხელსაწყოს დახმარებით გვერდზე ახალი თემა დაამატა",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} პასუხი]",
 	"tag-discussiontools-reply-description": "მომხმარებელმა განხილვის ხელსაწყოს დახმარებით უპასუხა კომენტარს",
-	"tag-discussiontools-source": "წყაროს რედაქტირება",
 	"tag-discussiontools-source-description": "განხილვის ხელსაწყო წყაროს რედაქტირების რეჟიმში იყო",
-	"tag-discussiontools-visual": "ვიზუალური რედაქტირება",
 	"tag-discussiontools-visual-description": "განხილვის ხელსაწყო ვიზუალური რედაქტირების რეჟიმში იყო"
 }

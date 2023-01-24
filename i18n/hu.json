@@ -165,9 +165,7 @@
 	"tag-discussiontools-newtopic-description": "A felhasználó új témát indított a DiscussionToolszal",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} válasz]",
 	"tag-discussiontools-reply-description": "A felhasználó egy hozzászólásra válaszolt a DiscussionToolszal",
-	"tag-discussiontools-source": "forrás",
 	"tag-discussiontools-source-description": "A DiscussionTools forrásmódban volt",
 	"tag-discussiontools-source-enhanced-description": "A DiscussionTools fejlett forrásmódban volt, eszköztárral",
-	"tag-discussiontools-visual": "Vizuális",
 	"tag-discussiontools-visual-description": "A DiscussionTools vizuális módban volt"
 }

@@ -108,8 +108,6 @@
 	"tag-discussiontools-newtopic-description": "အသုံးပြုသူသည် DiscussionTools ဖြင့် အကြောင်းအရာသစ်တစ်ခုကို စာမျက်နှာသို့ ပေါင်းထည့်ခဲ့သည်။",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} အကြောင်းပြန်ရန်]",
 	"tag-discussiontools-reply-description": "အသုံးပြုသူသည် DiscussionTools ဖြင့် သုံးသပ်ချက်တစ်ခုကို ပြန်ကြားခဲ့သည်။",
-	"tag-discussiontools-source": "ရင်းမြစ်",
 	"tag-discussiontools-source-description": "DiscussionTools သည် ရင်းမြစ်တည်းဖြတ်ခြင်း ဖြစ်နေသည်",
-	"tag-discussiontools-visual": "မျက်မြင်",
 	"tag-discussiontools-visual-description": "DiscussionTools သည် မျက်မြင်တည်းဖြတ် ဖြစ်နေသည်"
 }

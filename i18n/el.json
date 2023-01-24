@@ -165,9 +165,7 @@
 	"tag-discussiontools-newtopic-description": "Ο χρήστης πρόσθεσε ένα νέο θέμα στη σελίδα με το DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Απάντηση]",
 	"tag-discussiontools-reply-description": "Ο χρήστης απάντησε σε ένα σχόλιο με το DiscussionTools",
-	"tag-discussiontools-source": "Κώδικας",
 	"tag-discussiontools-source-description": "Το DiscussionTools ήταν σε λειτουργία κώδικα",
 	"tag-discussiontools-source-enhanced-description": "Το DiscussionTools ήταν σε βελτιωμένη λειτουργία κώδικα με τη γραμμή εργαλείων",
-	"tag-discussiontools-visual": "Οπτική",
 	"tag-discussiontools-visual-description": "Τα DiscussionTools ήταν σε οπτική λειτουργία"
 }

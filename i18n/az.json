@@ -122,7 +122,5 @@
 	"tag-discussiontools-edit": "Şərhi redaktə et",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Yeni bölmə]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Cavab]",
-	"tag-discussiontools-reply-description": "DiscussionTools vasitəsilə cavablandırıldı",
-	"tag-discussiontools-source": "Mənbə",
-	"tag-discussiontools-visual": "Vizual"
+	"tag-discussiontools-reply-description": "DiscussionTools vasitəsilə cavablandırıldı"
 }

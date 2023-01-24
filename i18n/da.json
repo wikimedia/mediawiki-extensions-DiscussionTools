@@ -47,6 +47,7 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Vis indlæg",
 	"discussiontools-pageframe-latestcomment": "Seneste indlæg: $1 af $2 i emnet $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Seneste indlæg: $1 af $2",
+	"discussiontools-pagetitle-newtopic": "Starter nyt emne på $1",
 	"discussiontools-postedit-confirmation-published": "Dit indlæg er offentliggjort.",
 	"discussiontools-postedit-confirmation-topicadded": "Dit emne blev tilføjet.",
 	"discussiontools-preference-autotopicsub": "Abonner automatisk på emner",
@@ -102,7 +103,5 @@
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Diskussionsideabonnement|Diskussionsideabonnementer}}",
 	"tag-discussiontools-edit": "Redigeret indlæg",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nyt emne]",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
-	"tag-discussiontools-source": "Kilde",
-	"tag-discussiontools-visual": "Visuelt"
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]"
 }

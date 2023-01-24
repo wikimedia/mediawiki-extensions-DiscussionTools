@@ -26,7 +26,7 @@
 	"discussiontools": "Tartışma araçları",
 	"discussiontools-autotopicsubpopup-body": "Birisi bu tartışmaya yeni bir mesaj gönderdiğinde bir bildirim alacaksınız. Tercihleriniz üzerinden bildirim ayarlarınızı yapabilirsiniz.",
 	"discussiontools-autotopicsubpopup-dismiss": "Tamam, anladım",
-	"discussiontools-autotopicsubpopup-preferences": "Tercihleri düzenle",
+	"discussiontools-autotopicsubpopup-preferences": "Tercihleri değiştir",
 	"discussiontools-autotopicsubpopup-title": "Abone oldunuz",
 	"discussiontools-defaultsummary-reply": "Yanıt",
 	"discussiontools-desc": "Tartışma sayfalarını geliştirmek için araçlar.",
@@ -175,9 +175,7 @@
 	"tag-discussiontools-newtopic-description": "Kullanıcı, DiscussionTools ile sayfaya yeni bir konu ekledi",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Yanıt]",
 	"tag-discussiontools-reply-description": "Kullanıcı DiscussionTools ile bir yorumu yanıtladı",
-	"tag-discussiontools-source": "Kaynak",
 	"tag-discussiontools-source-description": "DiscussionTools kaynak modundaydı",
 	"tag-discussiontools-source-enhanced-description": "TartışmaAraçları araç çubuğu ile gelişmiş kaynak modunda",
-	"tag-discussiontools-visual": "Görsel",
 	"tag-discussiontools-visual-description": "DiscussionTools görsel modundaydı"
 }

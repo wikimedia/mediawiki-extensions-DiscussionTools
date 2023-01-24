@@ -158,9 +158,7 @@
 	"tag-discussiontools-newtopic-description": "Suradnik je dodao novu temu na stranicu s alatom za rasprave",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odgovor]",
 	"tag-discussiontools-reply-description": "Suradnik je odgovorio na komentar s alatom za rasprave",
-	"tag-discussiontools-source": "Kôd",
 	"tag-discussiontools-source-description": "Alat za raspravu bio je u načinu uređivanja kôda",
 	"tag-discussiontools-source-enhanced-description": "DiscussionTools je bio u poboljšanom izvornom načinu s alatnom trakom",
-	"tag-discussiontools-visual": "Vizualno",
 	"tag-discussiontools-visual-description": "Alat za raspravu bio je u vizualnom načinu uređivanja"
 }

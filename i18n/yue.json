@@ -79,7 +79,5 @@
 	"tag-discussiontools-edit-description": "用戶用DiscussionTools改咗個現有嘅留言",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} 加主題]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 回覆]",
-	"tag-discussiontools-reply-description": "用戶用DiscussionTools對一個留言作出回覆",
-	"tag-discussiontools-source": "源碼編輯",
-	"tag-discussiontools-visual": "即見編輯"
+	"tag-discussiontools-reply-description": "用戶用DiscussionTools對一個留言作出回覆"
 }

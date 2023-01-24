@@ -56,7 +56,5 @@
 	"discussiontools-topicsubscription-special-title": "หัวข้อที่สมัครรับ",
 	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
 	"tag-discussiontools-edit": "แก้ไชความเห็น",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} หัวข้อใหม่]",
-	"tag-discussiontools-source": "ต้นฉบับ",
-	"tag-discussiontools-visual": "เห็นภาพ"
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} หัวข้อใหม่]"
 }

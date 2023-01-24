@@ -112,7 +112,5 @@
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}}Neit Thema]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Äntwerten]",
 	"tag-discussiontools-reply-description": "De Benotzer huet op eng Bemierkung mat der Diskussiouns-Funktioun geäntwert",
-	"tag-discussiontools-source": "Quell",
-	"tag-discussiontools-visual": "Visuell",
 	"tag-discussiontools-visual-description": "Diskussiouns-Funktioun war am visuelle Modus"
 }

@@ -30,9 +30,11 @@
 	"discussiontools-error-noswitchtove-template": "সাঁচৰ বাক্যবিন্যাস",
 	"discussiontools-error-noswitchtove-title": "দৃশ্যমান ম'ড নিষ্ক্ৰিয়",
 	"discussiontools-findcomment-label-idorname": "মন্তব্য আইডি বা নাম",
+	"discussiontools-findcomment-label-search": "সন্ধান কৰক",
 	"discussiontools-findcomment-noresults": "কোনো ফলাফল নাই",
 	"discussiontools-findcomment-results-notcurrent": "(বৰ্তমানৰ সংশোধনত নহয়)",
 	"discussiontools-findcomment-results-transcluded": "(অন্য পৃষ্ঠাৰ পৰা অন্তৰ্ভুক্ত)",
+	"discussiontools-findcomment-title": "মন্তব্য সন্ধান কৰক",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|ছেকেণ্ড}}",
 	"discussiontools-newtopic-missing-title": "অনুগ্ৰহ কৰি আপোনাৰ আলোচনা বিষয়ৰ বাবে এটা শিৰোনাম প্ৰদান কৰক। যদি আপুনি \"{{int:discussiontools-replywidget-newtopic}}\"ত ক্লিক কৰে, আপোনাৰ বিষয়টো শিৰোনাম অবিহনেই যোগ কৰা হ'ব।",
 	"discussiontools-newtopic-placeholder-title": "বিষয়",
@@ -101,9 +103,7 @@
 	"tag-discussiontools-newtopic-description": "আলোচনা সঁজুলি ব্যৱহাৰ কৰি সদস্যই পৃষ্ঠাত এটা নতুন বিষয় যোগ কৰিছে",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} উত্তৰ]",
 	"tag-discussiontools-reply-description": "আলোচনা সঁজুলি ব্যৱহাৰ কৰি সদস্যই এটা মন্তব্যৰ উত্তৰ দিছিল",
-	"tag-discussiontools-source": "উৎস",
 	"tag-discussiontools-source-description": "আলোচনা সঁজুলি উৎস ম'ডত আছিল",
 	"tag-discussiontools-source-enhanced-description": "টুলবাৰৰ সৈতে আলোচনা সঁজুলি উচ্চতৰ উৎস ম'ডত আছিল",
-	"tag-discussiontools-visual": "দৃশ্যমান",
 	"tag-discussiontools-visual-description": "আলোচনা সঁজুলি দৃশ্যমান ম'ডত আছিল"
 }

@@ -154,9 +154,7 @@
 	"tag-discussiontools-newtopic-description": "토론 도구를 사용해 새 주제를 추가한 편집",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 답변]",
 	"tag-discussiontools-reply-description": "토론 도구를 사용해 답변을 한 편집",
-	"tag-discussiontools-source": "원본",
 	"tag-discussiontools-source-description": "원본 모드에서의 토론 도구 사용",
 	"tag-discussiontools-source-enhanced-description": "토론 도구가 툴바와 함께 향상된 원본 모드에 있었습니다",
-	"tag-discussiontools-visual": "시각",
 	"tag-discussiontools-visual-description": "시각 모드에서의 토론 도구 사용"
 }

@@ -135,9 +135,7 @@
 	"tag-discussiontools-newtopic-description": "Brukaren la til eit nytt emne til sida med DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]",
 	"tag-discussiontools-reply-description": "Brukaren svarte på ein kommentar med DiscussionTools",
-	"tag-discussiontools-source": "Kjelde",
 	"tag-discussiontools-source-description": "DiscussionTools var i kjeldemodus",
 	"tag-discussiontools-source-enhanced-description": "Diskusjonsverktøy var i utvida kjeldemodus med verktøylinja",
-	"tag-discussiontools-visual": "Visuell",
 	"tag-discussiontools-visual-description": "DiscussionTools var i modus for visuell redigering"
 }

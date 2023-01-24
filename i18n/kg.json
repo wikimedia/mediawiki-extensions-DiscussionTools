@@ -97,9 +97,7 @@
 	"tag-discussiontools-newtopic-description": "Muntu me yika disolo ya mpa na lutiti na nsadisa ya BisadiluyaDisolo",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Mvutu]",
 	"tag-discussiontools-reply-description": "Muntu me pesa mvutu na komantere na nsadisa ya BisadiluyaDisolo",
-	"tag-discussiontools-source": "Kisina",
 	"tag-discussiontools-source-description": "BisadiluyaDisolo vandaka na mode kisina",
 	"tag-discussiontools-source-enhanced-description": "Bo me tomisa BisadiluyaDisolo na mode kisina na nsadisa ya barre ya bisadilu",
-	"tag-discussiontools-visual": "Ya ke monana",
 	"tag-discussiontools-visual-description": "BisadiluyaDisolo vandaka na mode ya ke monana"
 }

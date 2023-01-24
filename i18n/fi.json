@@ -161,8 +161,6 @@
 	"tag-discussiontools-newtopic-description": "Käyttäjä lisäsi uuden aiheen sivulle DiscussionTools-työkalulla",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vastaus]",
 	"tag-discussiontools-reply-description": "Käyttäjä vastasi kommenttiin DiscussionTools-työkalulla",
-	"tag-discussiontools-source": "Lähdekoodi",
 	"tag-discussiontools-source-description": "Keskustelutyökalut olivat lähdekooditilassa",
-	"tag-discussiontools-visual": "Visuaalinen",
 	"tag-discussiontools-visual-description": "Keskustelutyökalut olivat visuaalisessa tilassa"
 }

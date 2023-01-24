@@ -174,9 +174,7 @@
 	"tag-discussiontools-newtopic-description": "کاربر با کمک ابزارهای گفتگو مبحث جدیدی را افزود",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} پاسخ دادن]",
 	"tag-discussiontools-reply-description": "کاربر با استفاده از ابزارهای گفت‌وگو به یک نظر پاسخ داد",
-	"tag-discussiontools-source": "مبدأ",
 	"tag-discussiontools-source-description": "ابزارهای گفتگو در حالت ویرایش مبدأ بود",
 	"tag-discussiontools-source-enhanced-description": "ابزارهای گفتگو در حالت متنی بهبودیافته به‌همراه نوار ابزار بود",
-	"tag-discussiontools-visual": "دیداری",
 	"tag-discussiontools-visual-description": "ابزارهای گفت‌وگو در حالت ویرایشگر دیداری بود"
 }

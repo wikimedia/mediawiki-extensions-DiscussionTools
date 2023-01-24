@@ -82,8 +82,6 @@
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Нова тема]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Отговор]",
 	"tag-discussiontools-reply-description": "Потребител отговори на коментар чрез Визуални инструменти",
-	"tag-discussiontools-source": "Код",
 	"tag-discussiontools-source-description": "Визуални инструменти беше в режим на редактиране на кода",
-	"tag-discussiontools-visual": "Визуално",
 	"tag-discussiontools-visual-description": "Визуални инструменти беше във визуален режим"
 }

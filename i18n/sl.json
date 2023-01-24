@@ -169,9 +169,7 @@
 	"tag-discussiontools-newtopic-description": "Uporabnik je na strani z orodjem DiscussionTools dodal novo temo",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odgovor]",
 	"tag-discussiontools-reply-description": "Uporabnik je na komentar odgovoril z orodjem DiscussionTools",
-	"tag-discussiontools-source": "izvorni način",
 	"tag-discussiontools-source-description": "Orodje DiscussionTools je bilo uporabljeno v izvornem načinu",
 	"tag-discussiontools-source-enhanced-description": "Orodje DiscussionTools je bilo v naprednem načinu vira izboljšano z orodno vrstico",
-	"tag-discussiontools-visual": "vizualni način",
 	"tag-discussiontools-visual-description": "Orodje DiscussionTools je bilo uporabljeno v vizualnem načinu"
 }

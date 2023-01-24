@@ -166,9 +166,7 @@
 	"tag-discussiontools-newtopic-description": "L'utente ha aggiunto un nuovo argomento alla pagina con DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Rispondi]",
 	"tag-discussiontools-reply-description": "L'utente ha risposto a un commento con DiscussionTools",
-	"tag-discussiontools-source": "Sorgente",
 	"tag-discussiontools-source-description": "DiscussionTools era in modalità sorgente",
 	"tag-discussiontools-source-enhanced-description": "Gli strumenti di discussione erano nella modalità sorgente migliorata dalla barra strumenti",
-	"tag-discussiontools-visual": "Visuale",
 	"tag-discussiontools-visual-description": "DiscussionTools era in modalità visuale"
 }

@@ -165,9 +165,7 @@
 	"tag-discussiontools-newtopic-description": "L'usuari ha afegit un nou tema amb DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respost]",
 	"tag-discussiontools-reply-description": "L'usuari ha respost un comentari amb DiscussionTools",
-	"tag-discussiontools-source": "Codi",
 	"tag-discussiontools-source-description": "Les Eines de Discussió es trobaven en el mode d'edició amb codi wiki",
 	"tag-discussiontools-source-enhanced-description": "Les Eines de Discussió es trobaven a la barra d'eines del mode avançat d'edició de codi wiki",
-	"tag-discussiontools-visual": "Visual",
 	"tag-discussiontools-visual-description": "Les Eines de Discussió es trobaven en el mode d'editor visual"
 }
