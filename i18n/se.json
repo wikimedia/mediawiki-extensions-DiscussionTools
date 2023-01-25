@@ -5,11 +5,18 @@
 			"Yupik"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "Ášši lea čielggas",
 	"discussiontools-defaultsummary-reply": "Vástádus",
 	"discussiontools-replylink": "vástit",
 	"discussiontools-replywidget-cancel": "Šluhtte",
+	"discussiontools-replywidget-mention-tool-header": "Oza geavaheaddji: $1",
 	"discussiontools-replywidget-mode-source": "Gáldokoda",
+	"discussiontools-replywidget-mode-visual": "Visuála",
+	"discussiontools-replywidget-newtopic": "Lasit fáttá",
+	"discussiontools-replywidget-placeholder-newtopic": "Govvádus",
 	"discussiontools-replywidget-reply": "Vástit",
 	"discussiontools-replywidget-summary": "Čoahkkáigeassu",
-	"discussiontools-topicsubscription-button-subscribe": "diŋgo"
+	"discussiontools-topicsubscription-button-subscribe": "diŋgo",
+	"discussiontools-topicsubscription-pager-page": "Siidu",
+	"discussiontools-topicsubscription-pager-topic": "Fáddá"
 }

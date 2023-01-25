@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Af420",
-			"Amjad Khan"
+			"Amjad Khan",
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ځوابول",
@@ -14,5 +15,7 @@
 	"discussiontools-replywidget-preview": "مخليدنه",
 	"discussiontools-replywidget-reply": "ځوابول",
 	"discussiontools-replywidget-summary": "لنډيز",
-	"discussiontools-replywidget-watchthis": "دا مخ په خپل [[Special:Watchlist|څار لیسټ]] کې ورګډ کړئ"
+	"discussiontools-replywidget-watchthis": "دا مخ په خپل [[Special:Watchlist|څار لیسټ]] کې ورګډ کړئ",
+	"discussiontools-topicsubscription-button-subscribe": "ونډه کښل",
+	"discussiontools-topicsubscription-button-unsubscribe": "له ونډې وتل"
 }

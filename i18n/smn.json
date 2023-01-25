@@ -2,16 +2,22 @@
 	"@metadata": {
 		"authors": [
 			"Seipinne",
-			"Yupik"
+			"Yupik",
+			"Muotâ"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "OK, äšši lii čielgâs",
 	"discussiontools-autotopicsubpopup-preferences": "Mute asâttâsâid",
 	"discussiontools-defaultsummary-reply": "Vástádâs",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|seekunt|seekunt|seekunt|sekuntid}}",
 	"discussiontools-replylink": "västid",
 	"discussiontools-replywidget-advanced": "Viijđed",
 	"discussiontools-replywidget-cancel": "Jooskâ",
+	"discussiontools-replywidget-mention-tool-header": "Uusâ kevttee: $1",
 	"discussiontools-replywidget-mode-source": "Käldee",
 	"discussiontools-replywidget-mode-visual": "Visuaallâš",
+	"discussiontools-replywidget-newtopic": "Lasseet fáádá",
+	"discussiontools-replywidget-placeholder-newtopic": "Kuvvim",
 	"discussiontools-replywidget-placeholder-reply": "Västid kevttei {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Asâttâsah",
 	"discussiontools-replywidget-preview": "Munekejâdem",
