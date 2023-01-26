@@ -62,17 +62,19 @@ class CommentFormatter {
 
 			// Enhance the table of contents in supporting skins (vector-2022)
 
-			// Only do the work if the HTML would be shown. It looks like we can only check this
-			// by checking whether the HTML for the normal TOC has been generated. Code in
-			// OutputPage::addParserOutputMetadata does the same.
-			if ( $pout->getTOCHTML() ) {
-				// If the TOC HTML has been generated, then the parser cache is already split by user
-				// language (because of the "Contents" header in the TOC), so we can render text in user
-				// language as well. If that behavior in core changes, then we'll have to change this to
-				// happen in a post-processing step (like all other transformations) to avoid splitting it.
+			// Only do the work if the ToC is present
+			// (Note that skins may decide to show the ToC even if
+			// "not recommended" (ie, the SHOW_TOC flag is false); see
+			// T315862.
+			if ( $pout->getTOCData() != null ) {
+				// The TOC generation no longer splits the parser cache
+				// by user language, but the call below to
+				// getUserLangObj() will do so.
+				// FIXME: change this to happen in a post-processing
+				// step (like all other transformations) to avoid
+				// splitting the cache.
 				$lang = $parser->getOptions()->getUserLangObj();
-				$sections = $pout->getTOCData() === null ? [] :
-						$pout->getTOCData()->getSections();
+				$sections = $pout->getTOCData()->getSections();
 				foreach ( $sections as $item ) {
 					$key = str_replace( '_', ' ', $item->anchor );
 					// Unset if we did not format this section as a topic container
