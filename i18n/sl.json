@@ -33,7 +33,7 @@
 	"discussiontools-error-lint": "Na komentarje na tej strani ne morete odgovoriti, ker se je v vikibesedilu pojavila napaka. O tej napaki se lahko poučite [$1 z branjem dokumentacije], zaprosite za pomoč [$2 na tej strani] ali napako popravite tako, da [$3 odprete urejevalnik celotne strani].",
 	"discussiontools-error-noswitchtove": "Preklop v vizualni način je žal onemogočen, ker je bila v komentarju, ki ste ga napisali, zaznana <b>$1</b>. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Več o tem].",
 	"discussiontools-error-noswitchtove-extension": "skladnja razširitve ali sklica",
-	"discussiontools-error-noswitchtove-table": "skladnja preglednice",
+	"discussiontools-error-noswitchtove-table": "skladnja tabele",
 	"discussiontools-error-noswitchtove-template": "skladnja predloge",
 	"discussiontools-error-noswitchtove-title": "vizualni način izklopljen",
 	"discussiontools-findcomment-results-id": "Komentar z navedenim ID-jem se je pojavil na {{PLURAL:$1|naslednji strani|naslednjih straneh}}:",

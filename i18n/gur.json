@@ -40,6 +40,6 @@
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Yesebasɛ",
 	"discussiontools-topicsubscription-special-intro": "Ba'asegɔ basɛ ti fu dɔla zamesegɔ yele-gile tɔgum pɛgera puan. Nɛra san lebese zamesegɔ yele-gile la, fu wan baŋɛ\n\nMaam eŋɛ se'em tı fu wan nyaŋɛ baŋɛ lebesegɔ wã san kina na bɔna [[Special:Preferences#mw-prefsection-echo|your preferences]].",
 	"discussiontools-topicsubscription-special-title": "Yelegilɛ Sakidi'ɛ",
-	"echo-category-title-dt-subscription": "Susega pɛ̃gerɛ",
+	"echo-category-title-dt-subscription": "Tɔgum pɛgerɛ {{PLURAL:$1|subscription|subscriptions}}",
 	"echo-pref-tooltip-dt-subscription": "Tiɛ ma nɛra san ta'asɛ putɛpaalɛ n bo yelezuo la ti mam dola la"
 }

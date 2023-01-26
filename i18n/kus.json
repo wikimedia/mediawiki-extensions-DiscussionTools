@@ -14,12 +14,12 @@
 	"discussiontools-defaultsummary-reply": "Lɛbisim",
 	"discussiontools-desc": "La'abanɛ na sʋŋ sɔnsʋg lakirnam",
 	"discussiontools-emptystate-button": "Pin'ilim sɔnsinɛ li yɛla",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Talk pages",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Sɔnsig lakirin la]] anɛ zin'ikanɛ ka ti na ka nwɛ' taaba saawara ka li sʋŋ ka ti sɔb la  {{SITENAME}} an sʋ'ʋm woo din nar si'em. Fʋ tun'e dɔlis lakirin nwa sɔns nɛ fʋ taaba yanamɛ na niŋ si'em ka ya sɔb la an sʋ'ʋŋa [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-title-self": "Pʋ'ʋsim tisidif fʋ pian'ʋk lakir zin'ig",
 	"discussiontools-emptystate-title-self-anon": "Pi'ant ƒal kaŋa titiƒ ken ken",
 	"discussiontools-error-comment-disappeared-reload": "Bɛllimnɛ maligim din'lɛm maki gɔs la",
 	"discussiontools-findcomment-label-search": "Iem",
 	"discussiontools-findcomment-noresults": "Ayɛi si'el kae",
-	"discussiontools-ledesection-title": "Tigir nwa pian'ad",
+	"discussiontools-ledesection-title": "Sɔnsig lakir nwa yɛla",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|mitgim|mitgima}}"
 }
