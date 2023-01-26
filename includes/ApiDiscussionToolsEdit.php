@@ -247,6 +247,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$container = DOMCompat::getBody( $doc );
 
+				CommentUtils::unwrapParsoidSections( $container );
+
 				$threadItemSet = $this->commentParser->parse( $container, $title->getTitleValue() );
 
 				if ( $commentId ) {
