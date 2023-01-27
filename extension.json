@@ -403,6 +403,7 @@
 		"BeforePageDisplay": "page",
 		"GetActionName": "page",
 		"OutputPageBeforeHTML": "page",
+		"OutputPageParserOutput": "page",
 		"TitleGetEditNotices": "page",
 		"ResourceLoaderGetConfigVars": "resourceloader",
 		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks::onGetBetaFeaturePreferences",

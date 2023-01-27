@@ -33,7 +33,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
 		$pout = new ParserOutput();
-		[ 'html' => $preprocessed ] = $commentFormatter->addDiscussionToolsInternal( $dom, $pout, $title );
+		$preprocessed = $commentFormatter->addDiscussionToolsInternal( $dom, $pout, $title );
 		$preprocessed .= "\n<pre>\n" .
 			FormatJson::encode( $pout->getJsConfigVars(), "\t", FormatJson::ALL_OK ) .
 			"\n</pre>";

@@ -57,45 +57,7 @@ class CommentFormatter {
 		$requestId = null;
 
 		try {
-			[ 'html' => $text, 'tocInfo' => $tocInfo ] =
-				static::addDiscussionToolsInternal( $text, $pout, $title );
-
-			// Enhance the table of contents in supporting skins (vector-2022)
-
-			// Only do the work if the ToC is present
-			// (Note that skins may decide to show the ToC even if
-			// "not recommended" (ie, the SHOW_TOC flag is false); see
-			// T315862.
-			if ( $pout->getTOCData() != null ) {
-				// The TOC generation no longer splits the parser cache
-				// by user language, but the call below to
-				// getUserLangObj() will do so.
-				// FIXME: change this to happen in a post-processing
-				// step (like all other transformations) to avoid
-				// splitting the cache.
-				$lang = $parser->getOptions()->getUserLangObj();
-				$sections = $pout->getTOCData()->getSections();
-				foreach ( $sections as $item ) {
-					$key = str_replace( '_', ' ', $item->anchor );
-					// Unset if we did not format this section as a topic container
-					if ( isset( $tocInfo[$key] ) ) {
-						$count = $lang->formatNum( $tocInfo[$key]['commentCount'] );
-						$commentCount = wfMessage(
-							'discussiontools-topicheader-commentcount',
-							$count
-						)->inLanguage( $lang )->text();
-
-						$summary = Html::element( 'span', [
-							'class' => 'ext-discussiontools-init-sidebar-meta'
-						], $commentCount );
-					} else {
-						$summary = '';
-					}
-
-					// This also shows up in API action=parse&prop=sections output.
-					$item->setExtensionData( 'DiscussionTools-html-summary', $summary );
-				}
-			}
+			$text = static::addDiscussionToolsInternal( $text, $pout, $title );
 
 		} catch ( Throwable $e ) {
 			// Catch errors, so that they don't cause the entire page to not display.
@@ -232,9 +194,9 @@ class CommentFormatter {
 	 * @param string $html HTML
 	 * @param ParserOutput $pout
 	 * @param Title $title
-	 * @return array HTML with discussion tools and TOC info
+	 * @return string HTML with discussion tools
 	 */
-	protected static function addDiscussionToolsInternal( string $html, ParserOutput $pout, Title $title ): array {
+	protected static function addDiscussionToolsInternal( string $html, ParserOutput $pout, Title $title ): string {
 		// The output of this method can end up in the HTTP cache (Varnish). Avoid changing it;
 		// and when doing so, ensure that frontend code can handle both the old and new outputs.
 		// See controller#init in JS.
@@ -315,6 +277,8 @@ class CommentFormatter {
 			}
 		}
 
+		$pout->setExtensionData( 'DiscussionTools-tocInfo', $tocInfo );
+
 		if ( $newestCommentJSON ) {
 			$newestCommentMarker = $doc->createComment(
 				'__DTLATESTCOMMENTPAGE__' . htmlspecialchars( $newestCommentJSON, ENT_NOQUOTES ) . '__'
@@ -369,7 +333,7 @@ class CommentFormatter {
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
 		$html = XMLSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
 
-		return [ 'html' => $html, 'tocInfo' => $tocInfo ];
+		return $html;
 	}
 
 	/**
@@ -785,6 +749,42 @@ class CommentFormatter {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Post-process visual enhancements features for table of contents
+	 *
+	 * @param ParserOutput $pout
+	 * @param Language $lang
+	 */
+	public static function postprocessTableOfContents(
+		ParserOutput $pout, Language $lang
+	): void {
+		$tocInfo = $pout->getExtensionData( 'DiscussionTools-tocInfo' );
+
+		if ( $tocInfo && $pout->getTOCData() ) {
+			$sections = $pout->getTOCData()->getSections();
+			foreach ( $sections as $item ) {
+				$key = str_replace( '_', ' ', $item->anchor );
+				// Unset if we did not format this section as a topic container
+				if ( isset( $tocInfo[$key] ) ) {
+					$count = $lang->formatNum( $tocInfo[$key]['commentCount'] );
+					$commentCount = wfMessage(
+						'discussiontools-topicheader-commentcount',
+						$count
+					)->inLanguage( $lang )->text();
+
+					$summary = Html::element( 'span', [
+						'class' => 'ext-discussiontools-init-sidebar-meta'
+					], $commentCount );
+				} else {
+					$summary = '';
+				}
+
+				// This also shows up in API action=parse&prop=sections output.
+				$item->setExtensionData( 'DiscussionTools-html-summary', $summary );
+			}
+		}
 	}
 
 	/**
