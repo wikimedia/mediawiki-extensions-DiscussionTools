@@ -72,6 +72,8 @@ class ContentThreadItemTest extends IntegrationTestCase {
 		$doc = static::createDocument( $dom );
 		$container = static::getThreadContainer( $doc );
 
+		// Unwrap sections, so that transclusions overlapping section boundaries don't cause all
+		// comments in the sections to be treated as transcluded from another page.
 		CommentUtils::unwrapParsoidSections( $container );
 
 		$threadItemSet = static::createParser( $data )->parse( $container, $title );
