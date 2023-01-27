@@ -3,6 +3,7 @@
 		"authors": [
 			"Alhassan Mohammed Awal",
 			"Alhassan Peter",
+			"Amire80",
 			"Chirifo",
 			"Hasslaebetch",
 			"Jahinfo",
@@ -11,7 +12,7 @@
 			"Ruky Wunpini"
 		]
 	},
-	"discussiontools-notification-subscribed-new-comment-header": "$1 {{Zaglogu bee zagnyang:$2|labisibu}} in \"<strong>$4</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|labisibu}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Labisiri palli yini|$1 new replies|100=99+ labisiri pala}} din be \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Lihimi tɔɣino",
 	"discussiontools-preference-topicsubscription": "Yɛltɔɣa zuɣu piibu",
