@@ -14,8 +14,6 @@ class ApiParseDiscussionToolsTest extends ApiTestCase {
 	 * @covers \MediaWiki\Extension\DiscussionTools\CommentFormatter::addDiscussionTools
 	 */
 	public function testApiParseSections() {
-		$this->markTestSkipped( 'T328072' );
-
 		$params = [
 			'action' => 'parse',
 			'title' => 'Talk:Test',
