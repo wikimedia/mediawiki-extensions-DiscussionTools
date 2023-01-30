@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ерней"
+			"Ерней",
+			"Ильгиз"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Җавап бирү",
 	"discussiontools-replylink": "җавап бирү",
 	"discussiontools-replywidget-cancel": "Кире алу",
 	"discussiontools-replywidget-mode-source": "Чыганак",
 	"discussiontools-replywidget-mode-visual": "Күрсәтмәле",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} га җавап бирү",
+	"discussiontools-replywidget-preview": "Алдан карау",
 	"discussiontools-replywidget-reply": "Җавап бирү"
 }

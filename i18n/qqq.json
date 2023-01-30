@@ -11,7 +11,9 @@
 			"Umherirrender",
 			"Verdy p",
 			"Raymond",
-			"Beginneruser"
+			"Beginneruser",
+			"Omotecho",
+			"Vriullop"
 		]
 	},
 	"discussiontools": "{{name}}\nThe name of the extension",
@@ -47,7 +49,7 @@
 	"tag-discussiontools-edit-description": "Long description of the discussiontools-edit tag ({{msg-mw|Tag-discussiontools-edit}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-edit}}\n{{Related|tag-discussiontools}}",
 	"tag-discussiontools-newtopic": "Short description of the discussiontools-newtopic tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools to create a new section of a talk page.\n\nThis message is always shown directly after {{msg-mw|tag-discussiontools}} and a comma.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-newtopic-description}}\n{{Related|tag-discussiontools}}",
 	"tag-discussiontools-newtopic-description": "Long description of the discussiontools-newtopic tag ({{msg-mw|Tag-discussiontools-newtopic}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-newtopic}}\n{{Related|tag-discussiontools}}",
-	"tag-discussiontools-reply": "Short description of the discussiontools-reply tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools to reply to an existing comment.\n\nThis message is always shown directly after {{msg-mw|tag-discussiontools}} and a comma.\n\nCopy <nowiki>{{int:discussiontools-replywidget-reply-link}}</nowiki> into your translation.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-reply-description}}\n{{Related|tag-discussiontools}}",
+	"tag-discussiontools-reply": "Short description of the discussiontools-reply tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools to reply to an existing comment.\n\nCopy <nowiki>{{int:discussiontools-replywidget-reply-link}}</nowiki> into your translation.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-reply-description}}\n{{Related|tag-discussiontools}}",
 	"tag-discussiontools-reply-description": "Long description of the discussiontools-reply tag ({{msg-mw|Tag-discussiontools-reply}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-reply}}\n{{Related|tag-discussiontools}}",
 	"tag-discussiontools-source": "Short description of the discussiontools-source tag.\n\nThis should not include the word 'edit' or 'editor', and where possible should avoid 'wikitext' which is MediaWiki-specific terminology.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools in source mode.\n\nThis message is always shown directly after {{msg-mw|tag-discussiontools-reply}} etc. and a comma.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-source-description}}\n{{Related|tag-discussiontools}}\n\n{{Identical|Source}}",
 	"tag-discussiontools-source-description": "Long description of the discussiontools-source tag ({{msg-mw|Tag-discussiontools-source}}).\n\nShown on [[Special:Tags]].\n\nSee also:\n* {{msg-mw|Tag-discussiontools-source}}\n{{Related|tag-discussiontools}}",

@@ -9,6 +9,7 @@
 	"discussiontools-replywidget-cancel": "Kinsil",
 	"discussiontools-replywidget-mode-source": "Poon",
 	"discussiontools-replywidget-mode-visual": "Bijual",
+	"discussiontools-replywidget-placeholder-reply": "Nampung {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Petele’",
 	"discussiontools-replywidget-reply": "Nampung"
 }
