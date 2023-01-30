@@ -47,7 +47,7 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1{{GENDER:$2|î|ê|î}} di \"<strong>$4</strong>\" de {{GENDER:$2|bersiv da}}.",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Şîroveyê bibîne",
-	"discussiontools-pageframe-latestcomment": "Şiroveya dawî: $1 di mijara $3 de ji aliyê $2 ve",
+	"discussiontools-pageframe-latestcomment": "Şiroveya dawî: $1 ji aliyê $2 ve di mijara $3 de",
 	"discussiontools-pageframe-latestcomment-notopic": "Şiroveya dawî: $1 ji aliye $2 ve",
 	"discussiontools-pagetitle-newtopic": "Li ser $1 mijareke nû tê destpêkirin",
 	"discussiontools-pagetitle-reply": "Li ser $1 tê bersivdan",

@@ -38,5 +38,6 @@
 	"discussiontools-replywidget-placeholder-reply": "Ma {{BIDI:$1}} nyiano",
 	"discussiontools-replywidget-reply": "Yi ano",
 	"discussiontools-target-comment-missing": "Dɛm nkasaho yi nnyi hɔ. Obotum aba dɛ wɔapepa anaa woeyi efi hɔ.",
-	"discussiontools-target-comments-missing": "Nkasaho fofor biara nnyi hɔ. Obotum aba dɛ wɔapepa anaa woeyi efi hɔ."
+	"discussiontools-target-comments-missing": "Nkasaho fofor biara nnyi hɔ. Obotum aba dɛ wɔapepa anaa woeyi efi hɔ.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Wo nsa bɛka nkrato wɔ asɛntsir yi mu adwenkyerɛ afofor ho."
 }

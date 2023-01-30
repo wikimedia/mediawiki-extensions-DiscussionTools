@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
+			"Semso98",
 			"Srđan"
 		]
 	},
@@ -33,5 +34,13 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|osoba|osobe}} u raspravi",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentara}}",
 	"discussiontools-topicheader-latestcomment": "Posljednji komentar: $1",
+	"discussiontools-topicsubscription-button-subscribe": "pretplati se",
+	"discussiontools-topicsubscription-button-subscribe-label": "Pretplati se",
+	"discussiontools-topicsubscription-button-unsubscribe": "otkaži pretplatu",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Otkaži pretplatu",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Primit ćete obavještenja o novim komentarima u ovoj temi.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Pretplatili ste se!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Više nećete primati obavještenja o novim komentarima u ovoj temi.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Otkazali ste pretplatu.",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]"
 }
