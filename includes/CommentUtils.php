@@ -452,24 +452,11 @@ class CommentUtils {
 	 * Unwrap Parsoid sections
 	 *
 	 * @param Element $element Parent element, e.g. document body
-	 * @param string|null $keepSection Section to keep
 	 */
-	public static function unwrapParsoidSections(
-		Element $element, string $keepSection = null
-	): void {
+	public static function unwrapParsoidSections( Element $element ): void {
 		$sections = DOMCompat::querySelectorAll( $element, 'section[data-mw-section-id]' );
 		foreach ( $sections as $section ) {
 			$parent = $section->parentNode;
-			$sectionId = $section->getAttribute( 'data-mw-section-id' );
-			// Copy section ID to first child (should be a heading)
-			if ( $sectionId !== null && $sectionId !== '' && intval( $sectionId ) > 0 ) {
-				$firstChild = $section->firstChild;
-				Assert::precondition( $firstChild instanceof Element, 'Section has a heading' );
-				$firstChild->setAttribute( 'data-mw-section-id', $sectionId );
-			}
-			if ( $keepSection !== null && $sectionId === $keepSection ) {
-				return;
-			}
 			while ( $section->firstChild ) {
 				$parent->insertBefore( $section->firstChild, $section );
 			}
