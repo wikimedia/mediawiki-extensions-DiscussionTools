@@ -92,6 +92,7 @@ class EchoHooks {
 			case 'dt-subscribed-new-comment':
 				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'subscribed-comment-name' );
 				break;
+			case 'dt-added-topic':
 			case 'dt-removed-topic':
 				$bundleString = $event->getType() . '-' . $event->getTitle()->getNamespace()
 					. '-' . $event->getTitle()->getDBkey();

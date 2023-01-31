@@ -17,6 +17,7 @@ use EchoEvent;
 use ExtensionRegistry;
 use IDBAccessObject;
 use Iterator;
+use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
@@ -226,6 +227,13 @@ class EventDispatcher {
 
 		$newHeadings = static::groupSubscribableHeadings( $newItemSet->getThreads() );
 		$oldHeadings = static::groupSubscribableHeadings( $oldItemSet->getThreads() );
+
+		$addedHeadings = [];
+		foreach ( static::findAddedItems( $oldHeadings, $newHeadings ) as $newHeading ) {
+			Assert::precondition( $newHeading instanceof ContentHeadingItem, 'Must be ContentHeadingItem' );
+			$addedHeadings[] = $newHeading;
+		}
+
 		$removedHeadings = [];
 		// Pass swapped parameters to findAddedItems() to find *removed* items
 		foreach ( static::findAddedItems( $newHeadings, $oldHeadings ) as $oldHeading ) {
@@ -293,6 +301,10 @@ class EventDispatcher {
 				continue;
 			}
 			$events[] = [
+				// This probably should've been called "dt-new-comment": this code is
+				// unaware if there are any subscriptions to the containing topic and
+				// an event is generated for every comment posted.
+				// However, changing this would require a complex migration.
 				'type' => 'dt-subscribed-new-comment',
 				'title' => $title,
 				'extra' => [
@@ -324,6 +336,35 @@ class EventDispatcher {
 				],
 				'agent' => $user,
 			];
+		}
+
+		$titleObj = Title::castFromPageIdentity( $title );
+		if ( $titleObj ) {
+			foreach ( $addedHeadings as $newHeading ) {
+				// Don't use $event here as that already exists as a reference from above
+				$addTopicEvent = [
+					'type' => 'dt-added-topic',
+					'title' => $title,
+					'extra' => [
+						// As no one can be subscribed to a topic before it has been created,
+						// we will notify users who have subscribed to the whole page.
+						'subscribed-comment-name' => CommentUtils::getNewTopicsSubscriptionId( $titleObj ),
+						'heading-id' => $newHeading->getId(),
+						'heading-name' => $newHeading->getName(),
+						'section-title' => $newHeading->getLinkableTitle(),
+						'revid' => $newRevRecord->getId(),
+					],
+					'agent' => $user,
+				];
+				// Add metadata about the accompanying comment
+				$firstComment = $newHeading->getOldestReply();
+				if ( $firstComment ) {
+					$addTopicEvent['extra']['comment-id'] = $firstComment->getId();
+					$addTopicEvent['extra']['comment-name'] = $firstComment->getName();
+					$addTopicEvent['extra']['content'] = $firstComment->getBodyText( true );
+				}
+				$events[] = $addTopicEvent;
+			}
 		}
 	}
 

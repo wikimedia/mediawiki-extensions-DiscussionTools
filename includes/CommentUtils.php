@@ -6,6 +6,7 @@ use Config;
 use LogicException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
+use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
 use Wikimedia\Parsoid\DOM\Element;
@@ -760,5 +761,15 @@ class CommentUtils {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Get the ID for a new topics subscription from a page title
+	 *
+	 * @param Title $title Page title
+	 * @return string ID for a new topics subscription
+	 */
+	public static function getNewTopicsSubscriptionId( Title $title ) {
+		return "p-topics-{$title->getNamespace()}:{$title->getDBkey()}";
 	}
 }
