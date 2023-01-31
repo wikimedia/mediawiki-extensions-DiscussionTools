@@ -6,7 +6,7 @@ var
 	CommentItem = require( './CommentItem.js' ),
 	scrollPadding = {
 		// eslint-disable-next-line no-jquery/no-class-state
-		top: 10 + ( $( document.body ).hasClass( 'vector-feature-sticky-header-enabled' ) ? 50 : 0 ),
+		top: 10 + ( $( document.documentElement ).hasClass( 'vector-feature-sticky-header-enabled' ) ? 50 : 0 ),
 		bottom: 10
 	},
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
