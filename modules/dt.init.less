@@ -900,6 +900,12 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+// Avoid double margin/padding caused by combining .oo-ui-panelLayout-padded and .content
+// stylelint-disable-next-line selector-class-pattern
+.ext-discussiontools-ui-ledeSectionDialog-content.oo-ui-panelLayout-padded.content {
+	margin: 0 auto;
+}
+
 // HACK: Fake disabled styles for the .mw-ui-button in Vector sticky header (T307726)
 .ext-discussiontools-fake-disabled {
 	// stylelint-disable-next-line plugin/no-unsupported-browser-features
