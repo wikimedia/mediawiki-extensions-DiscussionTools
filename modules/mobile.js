@@ -142,13 +142,26 @@ function init( $container ) {
 				$( document.body ).removeClass( 'ext-discussiontools-visualenhancements-enabled ext-discussiontools-replytool-enabled' );
 			} );
 	}
+
+	/* eslint-disable no-jquery/no-global-selector */
 	if ( newTopicButton ) {
-		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '.ext-discussiontools-init-new-topic' ).after( $readAsWikiPage );
 	} else {
-		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#mw-content-text' ).append( $readAsWikiPage );
 	}
+
+	// Tweak to prevent our footer buttons from overlapping Minerva skin elements (T328452).
+	// TODO: It would be more elegant to do this in just CSS somehow.
+	// BEWARE: I have wasted 4 hours here trying to make that happen. The elements are not nested in a
+	// helpful way, and moving them around tends to break the stickiness of the "Add topic" button.
+	if (
+		$( '.catlinks[data-mw="interface"]' ).length ||
+		$( '#page-secondary-actions > *' ).length ||
+		$( '.return-link' ).length
+	) {
+		$readAsWikiPage.addClass( 'ext-discussiontools-init-button-notFlush' );
+	}
+	/* eslint-enable no-jquery/no-global-selector */
 }
 
 module.exports = {
