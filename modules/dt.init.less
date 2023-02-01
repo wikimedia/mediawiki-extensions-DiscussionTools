@@ -808,12 +808,19 @@ h1, h2, h3, h4, h5, h6 {
 	background: @colorGray15;
 	border-top: 1px solid @colorGray14;
 	text-align: center;
+
 	// Match Minerva styles
 	max-width: 993.3px;
 	// stylelint-disable-next-line declaration-no-important
 	margin-left: -16px !important;
 	// stylelint-disable-next-line declaration-no-important
 	margin-right: -16px !important;
+
+	// Avoid smooshing with content / empty state (T320755)
+	margin-top: 32px;
+	// (it's not redundant longhand, some margins are !important and some aren't)
+	// stylelint-disable-next-line declaration-block-no-redundant-longhand-properties
+	margin-bottom: -32px;
 
 	@media print {
 		// stylelint-disable-next-line declaration-no-important
@@ -824,9 +831,6 @@ h1, h2, h3, h4, h5, h6 {
 .ext-discussiontools-init-readAsWikiPage {
 	/* Not sticky per T309889 */
 	.minerva-footer-button();
-	// Avoid smooshing with content / empty state (T320755)
-	margin-top: 32px;
-	margin-bottom: -32px;
 }
 
 .ext-discussiontools-init-new-topic {
@@ -838,12 +842,6 @@ h1, h2, h3, h4, h5, h6 {
 	transition: transform 250ms, opacity 250ms;
 	transform: translateY( 100% );
 	opacity: 0;
-	// Avoid smooshing with content / empty state (T320755)
-	margin-top: 32px;
-
-	& + .ext-discussiontools-init-readAsWikiPage {
-		margin-top: 0;
-	}
 
 	.ext-discussiontools-init-new-topic-open &,
 	.ext-discussiontools-init-new-topic-opened &,
