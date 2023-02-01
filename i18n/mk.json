@@ -164,6 +164,6 @@
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Одговори]",
 	"tag-discussiontools-reply-description": "Корисникот одговорил на коментар со Разговорни алатки",
 	"tag-discussiontools-source-description": "Разговорните алатки беа во изворен режим",
-	"tag-discussiontools-source-enhanced-description": "Разговорните алатки еа во подобрен изворен режим со алатникот",
+	"tag-discussiontools-source-enhanced-description": "Разговорните алатки беа во подобрен изворен режим со алатникот",
 	"tag-discussiontools-visual-description": "Разговорни алатки беше во нагледен режим"
 }

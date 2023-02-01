@@ -52,6 +52,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(не в поточній редакції)",
 	"discussiontools-findcomment-results-transcluded": "(включено з іншої сторінки)",
 	"discussiontools-findcomment-title": "Знайти коментар",
+	"discussiontools-ledesection-button": "Дізнатися більше про цю сторінку",
+	"discussiontools-ledesection-title": "Про цю сторінку обговорення",
 	"discussiontools-limitreport-errorreqid": "Ідентифікатор запиту на помилку DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Використання інструментів DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунди|секунд}}",

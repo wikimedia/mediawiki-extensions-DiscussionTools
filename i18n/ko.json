@@ -135,6 +135,7 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "이 주제의 새 댓글에 관한 알림을 더 이상 받지 않게 됩니다.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "구독을 해지했습니다.",
 	"discussiontools-topicsubscription-pager-actions": "동작",
+	"discussiontools-topicsubscription-pager-created": "처음 구독",
 	"discussiontools-topicsubscription-pager-notified": "마지막 알림",
 	"discussiontools-topicsubscription-pager-notified-never": "없음",
 	"discussiontools-topicsubscription-pager-page": "문서",
