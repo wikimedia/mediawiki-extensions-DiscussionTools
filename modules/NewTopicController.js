@@ -76,7 +76,18 @@ NewTopicController.static.suppressedEditNotices = [
 NewTopicController.prototype.setup = function ( mode ) {
 	var rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
 
-	this.$pageContainer.append( this.container.$element );
+	// Insert directly after the page content on already existing pages
+	// (.mw-parser-output is missing on non-existent pages)
+	var $parserOutput = this.$pageContainer.find( '.mw-parser-output' );
+	var $mobileAddTopicWrapper = this.$pageContainer.find( '.ext-discussiontools-init-new-topic' );
+	if ( $parserOutput.length ) {
+		$parserOutput.after( this.container.$element );
+	} else if ( $mobileAddTopicWrapper.length ) {
+		$mobileAddTopicWrapper.before( this.container.$element );
+	} else {
+		this.$pageContainer.append( this.container.$element );
+	}
+
 	NewTopicController.super.prototype.setup.call( this, mode );
 
 	// The section title field is added to the page immediately, we can scroll to the bottom and focus
