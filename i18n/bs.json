@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Srđan"
+			"Srđan",
+			"Semso98"
 		]
 	},
 	"discussiontools": "Alati za razgovor",
@@ -30,6 +31,12 @@
 	"discussiontools-replywidget-terms-click": "Klikom na \"$1\" prihvatate uslove korištenja ovog wikija.",
 	"discussiontools-replywidget-transcluded": "Komentar će biti sačuvan na stranici [[$1]].",
 	"discussiontools-replywidget-watchthis": "Dodaj stranicu na [[Special:Watchlist|spisak praćenja]]",
+	"discussiontools-topicsubscription-button-subscribe": "pretplati se",
+	"discussiontools-topicsubscription-button-unsubscribe": "otkaži pretplatu",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Primit ćete obavještenja o novim komentarima u ovoj temi.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Pretplatili ste se!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Više nećete primati obavještenja o novim komentarima u ovoj temi.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Otkazali ste pretplatu.",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]",
 	"tag-discussiontools-source": "izvorno",
 	"tag-discussiontools-visual": "vizualno"

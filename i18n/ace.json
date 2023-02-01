@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Si Gam Acèh"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Balah",
+	"discussiontools-replylink": "balah",
+	"discussiontools-replywidget-advanced": "Tingkat lanjut",
+	"discussiontools-replywidget-cancel": "Pubateue",
+	"discussiontools-replywidget-mode-source": "Nè",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "Balah keu {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Eu dilèe",
+	"discussiontools-replywidget-reply": "Balah",
+	"discussiontools-replywidget-summary": "Éhtisa",
+	"discussiontools-replywidget-watchthis": "Tamah mieng nyoe lam [[Special:Watchlist|dapeuta keunalön]] Droeneuh",
+	"discussiontools-topicsubscription-button-subscribe": "dapeuta",
+	"discussiontools-topicsubscription-button-unsubscribe": "piyôh dapeuta",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Droeneuh ka neudapeuta!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Droeneuh ka neupiyôh dapeuta."
+}
