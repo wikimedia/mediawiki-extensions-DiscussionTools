@@ -94,6 +94,8 @@ function init( $container ) {
 		newTopicButton = OO.ui.infuse( $( '.ext-discussiontools-init-new-topic-button' ) );
 		// For compatibility with Minerva click tracking (T295490)
 		newTopicButton.$element.attr( 'data-event-name', 'talkpage.add-topic' );
+		// eslint-disable-next-line no-jquery/no-global-selector
+		var $newTopicWrapper = $( '.ext-discussiontools-init-new-topic' );
 		var $scrollContainer = $( OO.ui.Element.static.getClosestScrollableContainer( document.body ) );
 		var $scrollListener = $scrollContainer.is( 'html, body' ) ? $( OO.ui.Element.static.getWindow( $scrollContainer[ 0 ] ) ) : $scrollContainer;
 		var lastScrollTop = $scrollContainer.scrollTop();
@@ -106,11 +108,11 @@ function init( $container ) {
 			var isScrollDown = scrollTop > lastScrollTop;
 			if ( isScrollDown !== wasScrollDown ) {
 				if ( !isScrollDown ) {
-					newTopicButton.$element.css( 'transition', 'none' );
+					$newTopicWrapper.css( 'transition', 'none' );
 				}
 				$body.removeClass( [ 'ext-discussiontools-init-new-topic-closed', 'ext-discussiontools-init-new-topic-opened' ] );
 				requestAnimationFrame( function () {
-					newTopicButton.$element.css( 'transition', '' );
+					$newTopicWrapper.css( 'transition', '' );
 					$body.addClass( isScrollDown ? 'ext-discussiontools-init-new-topic-close' : 'ext-discussiontools-init-new-topic-open' );
 					setTimeout( function () {
 						$body.removeClass( [ 'ext-discussiontools-init-new-topic-close', 'ext-discussiontools-init-new-topic-open' ] );
@@ -121,12 +123,12 @@ function init( $container ) {
 
 			var observer = new IntersectionObserver(
 				function ( entries ) {
-					newTopicButton.$element.toggleClass( 'ext-discussiontools-init-new-topic-pinned', entries[ 0 ].intersectionRatio === 1 );
+					$newTopicWrapper.toggleClass( 'ext-discussiontools-init-new-topic-pinned', entries[ 0 ].intersectionRatio === 1 );
 				},
 				{ threshold: [ 1 ] }
 			);
 
-			observer.observe( newTopicButton.$element[ 0 ] );
+			observer.observe( $newTopicWrapper[ 0 ] );
 
 			lastScrollTop = scrollTop;
 			wasScrollDown = isScrollDown;
