@@ -247,6 +247,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$container = DOMCompat::getBody( $doc );
 
+				// Unwrap sections, so that transclusions overlapping section boundaries don't cause all
+				// comments in the sections to be treated as transcluded from another page.
 				CommentUtils::unwrapParsoidSections( $container );
 
 				$threadItemSet = $this->commentParser->parse( $container, $title->getTitleValue() );
