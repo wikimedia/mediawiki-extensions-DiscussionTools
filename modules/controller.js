@@ -388,7 +388,10 @@ function init( $container, state ) {
 				break;
 			}
 		}
-		if ( storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ) {
+		if (
+			storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ||
+			storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/title' )
+		) {
 			mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
 			setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ), mode, true, !state.firstLoad );
 		} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
