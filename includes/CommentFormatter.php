@@ -737,15 +737,17 @@ class CommentFormatter {
 	/**
 	 * Post-process visual enhancements features for page subtitle
 	 *
-	 * @param string $text
+	 * @param string &$text
 	 * @param Language $lang
 	 * @param UserIdentity $user
 	 * @return ?string
 	 */
 	public static function postprocessVisualEnhancementsSubtitle(
-		string $text, Language $lang, UserIdentity $user
+		string &$text, Language $lang, UserIdentity $user
 	): ?string {
 		preg_match( '/<!--__DTLATESTCOMMENTPAGE__(.*?)__-->/', $text, $matches );
+		// The subtitle is inserted into the correct place by the caller, so cleanup the comment here
+		$text = preg_replace( '/<!--__DTLATESTCOMMENTPAGE__(.*?)-->/', '', $text );
 		if ( count( $matches ) ) {
 			$itemData = json_decode( htmlspecialchars_decode( $matches[1] ), true );
 
