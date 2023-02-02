@@ -6,12 +6,13 @@
 			"Nurlan"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Juwap qaytarıw",
+	"discussiontools-defaultsummary-reply": "Juwap beriw",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}} saytındaǵı adamlar siz ushın bárshege kórinetuǵın xabarlardı usı [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|talqılaw betinde]] jaza aladı hámde sizge eskertpe jiberedi.",
 	"discussiontools-emptystate-title-self": "Talqılaw betińizge xosh keldińiz",
 	"discussiontools-ledesection-button": "Bul bet haqqında kóbirek bilip alıń",
 	"discussiontools-ledesection-title": "Bul talqılaw beti haqqında",
 	"discussiontools-postedit-confirmation-topicadded": "Siziń temańız qosıldı.",
+	"discussiontools-replybutton": "Juwap beriw",
 	"discussiontools-replylink": "juwap beriw",
 	"discussiontools-replywidget-advanced": "Keńeytilgen",
 	"discussiontools-replywidget-cancel": "Biykar etiw",
@@ -35,5 +36,6 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Siz endi bul temadaǵı jańa pikirler haqqında bildiriw xatı almaysız.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Siz jazılıwdı biykar qıldıńız!",
 	"discussiontools-topicsubscription-pager-created": "Birinshi jazılıw",
-	"discussiontools-topicsubscription-pager-notified": "Aqırǵı bildiriw xatı"
+	"discussiontools-topicsubscription-pager-notified": "Aqırǵı bildiriw xatı",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Juwap beriw]"
 }
