@@ -418,9 +418,6 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 		assert: mw.user.isAnon() ? 'anon' : 'user',
 		assertuser: mw.user.getName() || undefined,
 		uselang: mw.config.get( 'wgUserLanguage' ),
-		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
-		// a page view with reply links forced with ?dtenable=1 or otherwise
-		dtenable: '1',
 		dttags: tags.join( ',' ),
 		editingStatsId: logger.getSessionId()
 	};
