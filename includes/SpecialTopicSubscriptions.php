@@ -30,6 +30,8 @@ class SpecialTopicSubscriptions extends SpecialPage {
 
 		parent::execute( $subpage );
 
+		$this->getOutput()->addModules( [ 'ext.discussionTools.init' ] );
+
 		$this->getOutput()->addHtml( $this->msg( 'discussiontools-topicsubscription-special-intro' )->parseAsBlock() );
 
 		$this->getOutput()->enableOOUI();

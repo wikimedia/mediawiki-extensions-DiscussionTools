@@ -92,12 +92,18 @@ class TopicSubscriptionsPager extends TablePager {
 				$title = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title );
 				return (string)new OOUI\ButtonWidget( [
 					'label' => $this->msg( 'discussiontools-topicsubscription-pager-unsubscribe-button' )->text(),
+					'classes' => [ 'ext-discussiontools-special-unsubscribe-button' ],
 					'framed' => false,
 					'flags' => [ 'destructive' ],
+					'data' => [
+						'item' => $row->sub_item,
+						'title' => $title->getPrefixedText(),
+					],
 					'href' => $title->getLinkURL( [
 						'action' => 'dtunsubscribe',
 						'commentname' => $row->sub_item,
 					] ),
+					'infusable' => true,
 				] );
 
 			default:
