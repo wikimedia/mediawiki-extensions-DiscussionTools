@@ -204,6 +204,11 @@ h1, h2, h3, h4, h5, h6 {
 
 	.ext-discussiontools-topicsubscription-enabled & {
 		display: block;
+
+		// Topic subscriptions currently require JS
+		.client-nojs & {
+			display: none;
+		}
 	}
 
 	// Directional properties must be based on content direction.
@@ -275,6 +280,11 @@ h1, h2, h3, h4, h5, h6 {
 
 	.ext-discussiontools-topicsubscription-enabled.ext-discussiontools-visualenhancements-enabled & {
 		display: inline-block;
+
+		// Topic subscriptions currently require JS
+		.client-nojs & {
+			display: none;
+		}
 	}
 
 	body:not( .skin-minerva ) & {
