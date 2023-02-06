@@ -6,10 +6,12 @@
 		]
 	},
 	"discussiontools": "Pakakas bacangkurah",
+	"discussiontools-defaultsummary-reply": "Balas",
 	"discussiontools-replylink": "balas",
 	"discussiontools-replywidget-cancel": "Pasah",
 	"discussiontools-replywidget-mode-source": "Asal-mula",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Balas ka {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Tilik",
 	"discussiontools-replywidget-reply": "Balas"
 }

@@ -1,19 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rooiratel"
+			"Rooiratel",
+			"Arnobarnard"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Antwoord",
 	"discussiontools-desc": "Gereedskap om besprekingsbladsye te verbeter.",
+	"discussiontools-preference-label": "Besprekingsnutsgoed",
 	"discussiontools-replylink": "antwoord",
+	"discussiontools-replywidget-anon-warning": "<strong>Jy is nie aangemeld nie.</strong> Om erkenning met jou naam in plaas van jou IP-adres te ontvang, kan jy [$1 aanmeld] of [$2 'n rekening skep].",
 	"discussiontools-replywidget-cancel": "Kanselleer",
+	"discussiontools-replywidget-feedback": "Deel terugvoer oor hierdie kenmerk",
 	"discussiontools-replywidget-loading": "Besig om te laai...",
+	"discussiontools-replywidget-mention-tool-title": "Noem 'n gebruiker",
 	"discussiontools-replywidget-mode-source": "Bron",
 	"discussiontools-replywidget-mode-visual": "Visueel",
 	"discussiontools-replywidget-placeholder-reply": "Antwoord op {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Voorskou",
 	"discussiontools-replywidget-reply": "Antwoord",
+	"discussiontools-replywidget-terms-click": "Deur \"$1\" te klik, stem jy in tot die gebruiksvoorwaardes vir hierdie wiki.",
+	"discussiontools-replywidget-transcluded": "Jou opmerking sal by [[$1]] gestoor word.",
+	"discussiontools-error-comment-is-transcluded": "Die \"{{int:discussiontools-replylink}}\"-skakel kan nie gebruik word om op hierdie opmerking te antwoord nie. Om te antwoord, gebruik asseblief die volledige bladsy-redigeerder deur op \" $1 \" te klik.",
+	"discussiontools-error-comment-is-transcluded-title": "Die \"{{int:discussiontools-replylink}}\"-skakel kan nie gebruik word om op hierdie opmerking te antwoord nie, want dit is vanaf 'n ander bladsy gelaai. Om te antwoord, gaan asseblief hierheen: [[$1]].",
+	"discussiontools-error-lint": "Kommentaar op hierdie bladsy kan nie beantwoord word nie as gevolg van 'n fout in die wikiteks. Jy kan meer oor hierdie fout leer deur [$1 die dokumentasie te lees], om hulp te vra deur [$2 hier te plaas] of die fout reg te stel deur [$3 die volledige bladsy-redigeerder oop te maak].",
+	"tag-discussiontools-description": "Redigeer gemaak met behulp van DiscussionTools",
+	"tag-discussiontools-edit-description": "Gebruiker het 'n bestaande opmerking met DiscussionTools geredigeer",
+	"tag-discussiontools-newtopic-description": "Gebruiker het 'n nuwe onderwerp by die bladsy gevoeg met DiscussionTools",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Antwoord]",
+	"tag-discussiontools-reply-description": "Gebruiker het geantwoord op 'n opmerking met DiscussionTools",
 	"tag-discussiontools-source": "Bron",
-	"tag-discussiontools-visual": "Visueel"
+	"tag-discussiontools-source-description": "DiscussionTools was in bronmodus",
+	"tag-discussiontools-visual": "Visueel",
+	"tag-discussiontools-visual-description": "DiscussionTools was in visuele modus"
 }
