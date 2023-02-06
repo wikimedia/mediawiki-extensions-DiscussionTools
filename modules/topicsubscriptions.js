@@ -51,6 +51,14 @@ function updateSubscribeButton( button, state ) {
 	}
 }
 
+/**
+ * Change the subscription state of a topic subscription
+ *
+ * @param {string} title Page title
+ * @param {string} commentName Comment name
+ * @param {boolean} subscribe Subscription state
+ * @return {jQuery.Promise} Promise which resolves after change of state
+ */
 function changeSubscription( title, commentName, subscribe ) {
 	var promise = api.postWithToken( 'csrf', {
 		action: 'discussiontoolssubscribe',
@@ -178,6 +186,35 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 				} )
 				.always( function () {
 					$link.removeClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
+				} );
+		} );
+	} );
+}
+
+function initSpecialTopicSubscriptions() {
+	api = require( './controller.js' ).getApi();
+
+	// Unsubscribe links on special page
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '.ext-discussiontools-special-unsubscribe-button' ).each( function () {
+		var button = OO.ui.infuse( this );
+		var data = button.getData();
+		var subscribedState = STATE_SUBSCRIBED;
+
+		button.on( 'click', function () {
+			button.setDisabled( true );
+			changeSubscription( data.title, data.item, !subscribedState )
+				.then( function ( result ) {
+					button.setLabel( mw.msg(
+						result.subscribe ?
+							'discussiontools-topicsubscription-button-unsubscribe-label' :
+							'discussiontools-topicsubscription-button-subscribe-label'
+					) );
+					button.clearFlags();
+					button.setFlags( [ result.subscribe ? 'destructive' : 'progressive' ] );
+					subscribedState = result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED;
+				} ).always( function () {
+					button.setDisabled( false );
 				} );
 		} );
 	} );
@@ -400,5 +437,6 @@ function updateAutoSubscriptionStates( $container, threadItemSet, threadItemId )
 
 module.exports = {
 	initTopicSubscriptions: initTopicSubscriptions,
+	initSpecialTopicSubscriptions: initSpecialTopicSubscriptions,
 	updateAutoSubscriptionStates: updateAutoSubscriptionStates
 };

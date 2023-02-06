@@ -75,6 +75,11 @@ if ( url.searchParams.get( 'dtdebug' ) ) {
 	mw.hook( 'wikipage.content' ).add( mw.dt.init );
 }
 
+if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'TopicSubscriptions' ) {
+	var topicSubscriptions = require( './topicsubscriptions.js' );
+	topicSubscriptions.initSpecialTopicSubscriptions();
+}
+
 module.exports = {
 	controller: controller,
 	Parser: require( './Parser.js' ),
