@@ -73,8 +73,14 @@ class TopicSubscriptionsPager extends TablePager {
 
 		switch ( $field ) {
 			case '_topic':
-				$titleSection = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title, $row->sub_section );
-				return $linkRenderer->makeLink( $titleSection, $row->sub_section );
+				if ( str_starts_with( $row->sub_item, 'p-topics-' ) ) {
+					return '<em>' .
+						$this->msg( 'discussiontools-topicsubscription-pager-newtopics-label' )->escaped() .
+					'</em>';
+				} else {
+					$titleSection = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title, $row->sub_section );
+					return $linkRenderer->makeLink( $titleSection, $row->sub_section );
+				}
 
 			case '_page':
 				$title = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title );

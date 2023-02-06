@@ -57,9 +57,10 @@ function updateSubscribeButton( button, state ) {
  * @param {string} title Page title
  * @param {string} commentName Comment name
  * @param {boolean} subscribe Subscription state
+ * @param {boolean} isNewTopics Subscription is for new topics
  * @return {jQuery.Promise} Promise which resolves after change of state
  */
-function changeSubscription( title, commentName, subscribe ) {
+function changeSubscription( title, commentName, subscribe, isNewTopics ) {
 	var promise = api.postWithToken( 'csrf', {
 		action: 'discussiontoolssubscribe',
 		page: title,
@@ -73,14 +74,30 @@ function changeSubscription( title, commentName, subscribe ) {
 		mw.notify(
 			mw.msg(
 				result.subscribe ?
-					'discussiontools-topicsubscription-notify-subscribed-body' :
-					'discussiontools-topicsubscription-notify-unsubscribed-body'
+					(
+						isNewTopics ?
+							'discussiontools-newtopicssubscription-notify-subscribed-body' :
+							'discussiontools-topicsubscription-notify-subscribed-body'
+					) :
+					(
+						isNewTopics ?
+							'discussiontools-newtopicssubscription-notify-unsubscribed-body' :
+							'discussiontools-topicsubscription-notify-unsubscribed-body'
+					)
 			),
 			{
 				title: mw.msg(
 					result.subscribe ?
-						'discussiontools-topicsubscription-notify-subscribed-title' :
-						'discussiontools-topicsubscription-notify-unsubscribed-title'
+						(
+							isNewTopics ?
+								'discussiontools-newtopicssubscription-notify-subscribed-title' :
+								'discussiontools-topicsubscription-notify-subscribed-title'
+						) :
+						(
+							isNewTopics ?
+								'discussiontools-newtopicssubscription-notify-unsubscribed-title' :
+								'discussiontools-topicsubscription-notify-unsubscribed-title'
+						)
 				)
 			}
 		);

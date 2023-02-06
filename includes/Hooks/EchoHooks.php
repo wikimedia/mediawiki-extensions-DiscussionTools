@@ -74,6 +74,21 @@ class EchoHooks {
 				'expandable' => true,
 			],
 		];
+		$notifications['dt-added-topic'] = [
+			'category' => 'dt-subscription',
+			'group' => 'interactive',
+			'section' => 'message',
+			'user-locators' => [
+				'MediaWiki\\Extension\\DiscussionTools\\Notifications\\EventDispatcher::locateSubscribedUsers'
+			],
+			'presentation-model' =>
+				'MediaWiki\\Extension\\DiscussionTools\\Notifications\\AddedTopicPresentationModel',
+			'bundle' => [
+				'web' => true,
+				'email' => true,
+				'expandable' => true,
+			],
+		];
 
 		// Override default handlers
 		$notifications['edit-user-talk']['presentation-model'] =
