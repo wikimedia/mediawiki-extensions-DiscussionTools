@@ -55,6 +55,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(niet in de huidige revisie)",
 	"discussiontools-findcomment-results-transcluded": "(overgenomen van een andere pagina)",
 	"discussiontools-findcomment-title": "Vind reactie",
+	"discussiontools-ledesection-button": "Meer informatie over deze pagina",
+	"discussiontools-ledesection-title": "Over deze overlegpagina",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools-identificatiecode voor foutverzoek",
 	"discussiontools-limitreport-timeusage": "Tijdgebruik DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|seconde|seconden}}",

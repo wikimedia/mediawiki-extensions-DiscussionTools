@@ -38,6 +38,8 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|mangsuli}} ing \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Siji wangsulan anyar|$1 wangsulan anyar|100=99+ wangsulan anyar}} ing \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Tuduhaké tanggepan",
+	"discussiontools-pageframe-latestcomment": "Tanggepan paling anyar: $1 déning $2 ing rembugan $3",
+	"discussiontools-pageframe-latestcomment-notopic": "Tanggepan paling anyar: $1 déning $2",
 	"discussiontools-postedit-confirmation-published": "Tanggepanmu wis kababar.",
 	"discussiontools-postedit-confirmation-topicadded": "Rembuganmu katambahaké.",
 	"discussiontools-preference-description": "Urubaké alur kerja kanggo [https://www.mediawiki.org/wiki/Talk_pages_project/replying mangsuli marang tanggepan mligi] ing kaca parembugan.\n\nTulung digatèkaké yèn suwé-suwé piranti anyar kanggo sesambungan mawa kaca parembugan bakal ditambahaké.\n\nPanganyaran bab fitur iki bakal diposting ing [https://www.mediawiki.org/wiki/Talk_pages_project/Updates kaca panganyaran kanggo proyèk kaca parembugan].",
