@@ -359,12 +359,18 @@ function init( $container, state ) {
 			return;
 		}
 
-		// If this is a new topic link, and a reply widget is open, attempt to close it first.
-		var teardownPromise;
-		if ( activeController && commentId === utils.NEW_TOPIC_COMMENT_ID ) {
-			teardownPromise = activeController.replyWidget.tryTeardown();
-		} else {
-			teardownPromise = $.Deferred().resolve();
+		var teardownPromise = $.Deferred().resolve();
+		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
+			// If this is a new topic link, and a reply widget is open, attempt to close it first.
+			if ( activeController ) {
+				teardownPromise = activeController.replyWidget.tryTeardown();
+			} else if ( OO.getProp( window, 've', 'init', 'target', 'tryTeardown' ) ) {
+				// If VE or 2017WTE is open, attempt to close it as well. (T317035#8590357)
+				// FIXME This should be generalized, using some global router or something,
+				// so that we don't try to open while something else is open on full screen.
+				// Another example is the MultimediaViewer extension.
+				teardownPromise = ve.init.target.tryTeardown() || $.Deferred().resolve();
+			}
 		}
 
 		teardownPromise.then( function () {
