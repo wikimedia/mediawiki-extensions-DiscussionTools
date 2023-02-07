@@ -35,6 +35,14 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$pout = new ParserOutput();
 		$preprocessed = $commentFormatter->addDiscussionToolsInternal( $dom, $pout, $title );
 		$preprocessed .= "\n<pre>\n" .
+			"newestComment: " . FormatJson::encode(
+				$pout->getExtensionData( 'DiscussionTools-newestComment' ), "\t", FormatJson::ALL_OK ) . "\n" .
+			( $pout->getExtensionData( 'DiscussionTools-hasLedeContent' ) ?
+			 "hasLedeContent\n" : '' ) .
+			( $pout->getExtensionData( 'DiscussionTools-hasCommentsInLedeContent' ) ?
+			 "hasCommentsInLedeContent\n" : '' ) .
+			( $pout->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) ?
+			 "isEmptyTalkPage\n" : '' ) .
 			FormatJson::encode( $pout->getJsConfigVars(), "\t", FormatJson::ALL_OK ) .
 			"\n</pre>";
 
