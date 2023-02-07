@@ -5,7 +5,16 @@
 			"Amire80"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "Tór, u mu gba mé",
+	"discussiontools-autotopicsubpopup-preferences": "Nwí Alù ké téné nwóché",
+	"discussiontools-autotopicsubpopup-title": "É té né gbì inabali",
 	"discussiontools-defaultsummary-reply": "Oyí",
+	"discussiontools-desc": "Aménwu ma du gwo nwù óla ogbá",
+	"discussiontools-emptystate-button": "Chané óla",
+	"discussiontools-emptystate-title-self": "wolalé nwí Ogbá oluka wé",
+	"discussiontools-emptystate-title-self-anon": "Wolale nwí Ogbá oluka í",
+	"discussiontools-emptystate-title-user": "Chané úkola{{GENDER:{{PAGENAME}}|kpaí}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user-anon": "wolalé nwí Ogbá oluka í",
 	"discussiontools-replylink": "Oyí",
 	"discussiontools-replywidget-advanced": "Ényogba",
 	"discussiontools-replywidget-cancel": "Kpalú",

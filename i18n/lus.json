@@ -5,6 +5,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Chhangna",
+	"discussiontools-replylink": "Chhang tùr",
 	"discussiontools-replywidget-advanced": "Ràiril",
 	"discussiontools-replywidget-cancel": "Sûtna",
 	"discussiontools-replywidget-mode-source": "Hnar",
@@ -13,6 +14,10 @@
 	"discussiontools-replywidget-preview": "Enchhinna",
 	"discussiontools-replywidget-reply": "Chhang tur",
 	"discussiontools-replywidget-summary": "Sawifiahna täwi",
+	"discussiontools-replywidget-watchthis": "Hë phêk kha i [[Special:Watchlist|Ralvèn]]a dah la",
+	"discussiontools-topicheader-authorcount": "Sawihonaa {{PLURAL:$1|mi}} $1 a awm",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|sawizui|sawizuite}}",
+	"discussiontools-topicheader-latestcomment": "Sawizui tlai ber: $1",
 	"discussiontools-topicsubscription-button-subscribe": "inrem tur",
 	"discussiontools-topicsubscription-button-subscribe-label": "Inrem tur",
 	"discussiontools-topicsubscription-button-unsubscribe": "inremlo tur",

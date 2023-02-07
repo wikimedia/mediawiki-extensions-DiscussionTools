@@ -4,10 +4,13 @@
 			"Javiero",
 			"NMaia",
 			"Robin van der Vliet",
-			"Wierzbowski"
+			"Wierzbowski",
+			"Agloforto"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Respondo",
+	"discussiontools-emptystate-desc-self": "Homoj sur {{SITENAME}} povas uzi ĉi tiun [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|diskutpaĝon]] por publikigi mesaĝon por vi kaj vi estos sciigita kiam ili tion faras.",
+	"discussiontools-emptystate-title-self": "Bonvenon sur via diskutpaĝo",
 	"discussiontools-newtopic-placeholder-title": "Titolo",
 	"discussiontools-postedit-confirmation-published": "Via komento estis publikigita.",
 	"discussiontools-replylink": "respondi",
