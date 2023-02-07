@@ -157,8 +157,8 @@ function init( $container ) {
 	// BEWARE: I have wasted 4 hours here trying to make that happen. The elements are not nested in a
 	// helpful way, and moving them around tends to break the stickiness of the "Add topic" button.
 	if (
-		$( '.catlinks[data-mw="interface"]' ).length ||
-		$( '#page-secondary-actions > *' ).length ||
+		$( '.catlinks' ).filter( '[data-mw="interface"]' ).length ||
+		$( '#page-secondary-actions' ).children().length ||
 		$( '.return-link' ).length
 	) {
 		$readAsWikiPage.addClass( 'ext-discussiontools-init-button-notFlush' );
