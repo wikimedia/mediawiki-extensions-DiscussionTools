@@ -66,6 +66,7 @@
 	"discussiontools-replywidget-summary": "Laburpena",
 	"discussiontools-replywidget-terms-click": "\"$1$ klikatuta, wiki honen erabilera terminoak onartzen dituzu.",
 	"discussiontools-replywidget-transcluded": "Zure iradokizuna [[$1]] orrialdean gordeko da",
+	"discussiontools-replywidget-watchthis": "Gehitu orri hau zure [[Special:Watchlist|jarraipen zerrendan]]",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Harpidetza kendu",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Gai honetatik harpidetza kendu?",

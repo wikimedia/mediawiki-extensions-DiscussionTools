@@ -32,12 +32,21 @@
 	"discussiontools-postedit-confirmation-published": "W'adwenkyerɛ no kɔ",
 	"discussiontools-postedit-confirmation-topicadded": "Wɔdze wo tsirasɛm no aka ho",
 	"discussiontools-replylink": "Nyiano",
+	"discussiontools-replywidget-advanced": "Dza etu mpon",
 	"discussiontools-replywidget-cancel": "Twa mu",
 	"discussiontools-replywidget-mode-source": "Bea a ofi",
 	"discussiontools-replywidget-mode-visual": "Mfonyin",
 	"discussiontools-replywidget-placeholder-reply": "Ma {{BIDI:$1}} nyiano",
+	"discussiontools-replywidget-preview": "Ahwɛkan",
 	"discussiontools-replywidget-reply": "Yi ano",
+	"discussiontools-replywidget-summary": "Tɔfabɔ",
+	"discussiontools-replywidget-watchthis": "Fa krataafa yi ka  [[Special:Watchlist|dza w'enyi wɔ ho]] no ho.",
 	"discussiontools-target-comment-missing": "Dɛm nkasaho yi nnyi hɔ. Obotum aba dɛ wɔapepa anaa woeyi efi hɔ.",
 	"discussiontools-target-comments-missing": "Nkasaho fofor biara nnyi hɔ. Obotum aba dɛ wɔapepa anaa woeyi efi hɔ.",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Wo nsa bɛka nkrato wɔ asɛntsir yi mu adwenkyerɛ afofor ho."
+	"discussiontools-topicsubscription-button-subscribe": "dzi ekyir",
+	"discussiontools-topicsubscription-button-unsubscribe": "gyaa ekyir dzi",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Wo nsa bɛka nkrato wɔ asɛntsir yi mu adwenkyerɛ afofor ho.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Agye hɛn nhyehyɛɛ no ato mu!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Wo nsa nnkɛka nkrato wɔ asɛntsir yi mu adwenkyerɛ afofor ho bio.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Etwa hɛn nhyehyɛɛ no mu."
 }

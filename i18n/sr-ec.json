@@ -94,6 +94,7 @@
 	"discussiontools-topicsubscription-pager-topic": "Тема",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Прекини праћење",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Уреди праћење",
+	"discussiontools-topicsubscription-special-intro": "Праћење тема омогућава вам да пратите теме на страницама за разговор. Кад неко остави коментар ви ћете добити обавештење.\n\nКако и где добијате обавештења можете подесити у [[Special:Preferences#mw-prefsection-echo|Вашим подешавањима]].",
 	"discussiontools-topicsubscription-special-title": "Праћење тема",
 	"echo-category-title-dt-subscription": "Странице за разговор {{PLURAL:$1|које пратим}}",
 	"tag-discussiontools-description": "Измене помоћу алатка за разговор",
