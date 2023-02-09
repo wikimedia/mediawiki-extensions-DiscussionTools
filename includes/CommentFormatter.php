@@ -377,12 +377,7 @@ class CommentFormatter {
 		$itemDataByName = [];
 		preg_match_all( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', $text, $matches );
 		foreach ( $matches[1] as $itemData ) {
-			if ( substr( $itemData, 0, 1 ) === '{' ) {
-				$itemDataByName[ $itemData ] = json_decode( htmlspecialchars_decode( $itemData ), true );
-			} else {
-				// Compatibility with cached HTML
-				$itemDataByName[ $itemData ] = [ 'name' => htmlspecialchars_decode( $itemData ) ];
-			}
+			$itemDataByName[ $itemData ] = json_decode( htmlspecialchars_decode( $itemData ), true );
 		}
 		$itemNames = array_column( $itemDataByName, 'name' );
 
@@ -408,17 +403,11 @@ class CommentFormatter {
 				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
 				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
 
-				if ( isset( $itemData['linkableTitle'] ) ) {
-					$href = $title->getLinkURL( [
-						'action' => $isSubscribed ? 'dtunsubscribe' : 'dtsubscribe',
-						'commentname' => $itemName,
-						'section' => $itemData['linkableTitle'],
-					] );
-				} else {
-					// Compatibility with cached HTML
-					// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
-					$href = '';
-				}
+				$href = $title->getLinkURL( [
+					'action' => $isSubscribed ? 'dtunsubscribe' : 'dtsubscribe',
+					'commentname' => $itemName,
+					'section' => $itemData['linkableTitle'],
+				] );
 
 				if ( $isLink ) {
 					$subscribe = $doc->createElement( 'span' );
