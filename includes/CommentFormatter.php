@@ -133,7 +133,7 @@ class CommentFormatter {
 		// Visual enhancements: topic containers
 		$latestReplyItem = $headingItem->getLatestReply();
 		if ( $latestReplyItem ) {
-			$latestReplyJSON = static::getJsonForCommentMarker( $latestReplyItem );
+			$latestReplyJSON = json_encode( static::getJsonArrayForCommentMarker( $latestReplyItem ) );
 			$latestReply = $doc->createComment(
 				// Timestamp output varies by user timezone, so is formatted later
 				'__DTLATESTCOMMENTTHREAD__' . htmlspecialchars( $latestReplyJSON, ENT_NOQUOTES ) . '__'
@@ -210,6 +210,7 @@ class CommentFormatter {
 		$tocInfo = [];
 
 		$newestComment = null;
+		$newestCommentData = null;
 		$newestCommentJSON = null;
 
 		// Iterate in reverse order, because adding the range markers for a thread item
@@ -270,7 +271,8 @@ class CommentFormatter {
 				if ( !$newestComment || $threadItem->getTimestamp() > $newestComment->getTimestamp() ) {
 					$newestComment = $threadItem;
 					// Needs to calculated before DOM modifications change ranges
-					$newestCommentJSON = static::getJsonForCommentMarker( $threadItem, true );
+					$newestCommentData = static::getJsonArrayForCommentMarker( $threadItem, true );
+					$newestCommentJSON = json_encode( $newestCommentData );
 				}
 
 				CommentModifier::addReplyLink( $threadItem, $replyButtons );
@@ -284,6 +286,7 @@ class CommentFormatter {
 				'__DTLATESTCOMMENTPAGE__' . htmlspecialchars( $newestCommentJSON, ENT_NOQUOTES ) . '__'
 			);
 			$container->appendChild( $newestCommentMarker );
+			$pout->setExtensionData( 'DiscussionTools-newestComment', $newestCommentData );
 		}
 
 		$startOfSections = DOMCompat::querySelector( $container, 'meta[property="mw:PageProp/toc"]' );
@@ -308,6 +311,7 @@ class CommentFormatter {
 			( $startOfSections && $startOfSections->previousSibling !== null )
 		) {
 			$container->appendChild( $doc->createComment( '__DTHASLEDECONTENT__' ) );
+			$pout->setExtensionData( 'DiscussionTools-hasLedeContent', true );
 		}
 		if (
 			// Placeholder heading indicates that there are comments in the lede section (T324139).
@@ -317,10 +321,12 @@ class CommentFormatter {
 			$threadItems[0]->isPlaceholderHeading()
 		) {
 			$container->appendChild( $doc->createComment( '__DTHASCOMMENTSINLEDECONTENT__' ) );
+			$pout->setExtensionData( 'DiscussionTools-hasCommentsInLedeContent', true );
 		}
 
 		if ( count( $threadItems ) === 0 ) {
 			$container->appendChild( $doc->createComment( '__DTEMPTYTALKPAGE__' ) );
+			$pout->setExtensionData( 'DiscussionTools-isEmptyTalkPage', true );
 		}
 
 		$threadsJSON = array_map( static function ( ContentThreadItem $item ) {
@@ -552,16 +558,16 @@ class CommentFormatter {
 	}
 
 	/**
-	 * Get JSON for a commentItem that can be inserted into a comment marker
+	 * Get JSON data for a commentItem that can be inserted into a comment marker
 	 *
 	 * @param ContentCommentItem $commentItem Comment item
 	 * @param bool $includeTopicAndAuthor Include metadata about topic and author
-	 * @return string
+	 * @return array
 	 */
-	private static function getJsonForCommentMarker(
+	private static function getJsonArrayForCommentMarker(
 		ContentCommentItem $commentItem,
 		bool $includeTopicAndAuthor = false
-	): string {
+	): array {
 		$JSON = [
 			'id' => $commentItem->getId(),
 			'timestamp' => $commentItem->getTimestampString()
@@ -575,7 +581,7 @@ class CommentFormatter {
 				$JSON['heading']['linkableTitle'] = $heading->getLinkableTitle();
 			}
 		}
-		return json_encode( $JSON );
+		return $JSON;
 	}
 
 	/**
