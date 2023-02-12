@@ -211,6 +211,7 @@ class CommentFormatter {
 
 		$newestComment = null;
 		$newestCommentData = null;
+		$newestCommentJSON = null;
 
 		// Iterate in reverse order, because adding the range markers for a thread item
 		// can invalidate the ranges of subsequent thread items (T298096)
@@ -271,6 +272,7 @@ class CommentFormatter {
 					$newestComment = $threadItem;
 					// Needs to calculated before DOM modifications change ranges
 					$newestCommentData = static::getJsonArrayForCommentMarker( $threadItem, true );
+					$newestCommentJSON = json_encode( $newestCommentData );
 				}
 
 				CommentModifier::addReplyLink( $threadItem, $replyButtons );
@@ -279,7 +281,11 @@ class CommentFormatter {
 
 		$pout->setExtensionData( 'DiscussionTools-tocInfo', $tocInfo );
 
-		if ( $newestCommentData ) {
+		if ( $newestCommentJSON ) {
+			$newestCommentMarker = $doc->createComment(
+				'__DTLATESTCOMMENTPAGE__' . htmlspecialchars( $newestCommentJSON, ENT_NOQUOTES ) . '__'
+			);
+			$container->appendChild( $newestCommentMarker );
 			$pout->setExtensionData( 'DiscussionTools-newestComment', $newestCommentData );
 		}
 
@@ -304,6 +310,7 @@ class CommentFormatter {
 			// Page has content before the first heading / TOC
 			( $startOfSections && $startOfSections->previousSibling !== null )
 		) {
+			$container->appendChild( $doc->createComment( '__DTHASLEDECONTENT__' ) );
 			$pout->setExtensionData( 'DiscussionTools-hasLedeContent', true );
 		}
 		if (
@@ -313,10 +320,12 @@ class CommentFormatter {
 			$threadItems[0] instanceof ContentHeadingItem &&
 			$threadItems[0]->isPlaceholderHeading()
 		) {
+			$container->appendChild( $doc->createComment( '__DTHASCOMMENTSINLEDECONTENT__' ) );
 			$pout->setExtensionData( 'DiscussionTools-hasCommentsInLedeContent', true );
 		}
 
 		if ( count( $threadItems ) === 0 ) {
+			$container->appendChild( $doc->createComment( '__DTEMPTYTALKPAGE__' ) );
 			$pout->setExtensionData( 'DiscussionTools-isEmptyTalkPage', true );
 		}
 
@@ -344,6 +353,7 @@ class CommentFormatter {
 		$text = strtr( $text, [
 			'<!--__DTREPLYBUTTONSCONTENT__-->' => '',
 			'<!--__DTELLIPSISBUTTON__-->' => '',
+			'<!--__DTEMPTYTALKPAGE__-->' => '',
 		] );
 
 		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
