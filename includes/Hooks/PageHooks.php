@@ -21,6 +21,7 @@ use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Extension\VisualEditor\Hooks as VisualEditorHooks;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
+use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
@@ -30,6 +31,7 @@ use OOUI\ButtonWidget;
 use OOUI\HtmlSnippet;
 use OOUI\MessageWidget;
 use OutputPage;
+use ParserOutput;
 use RequestContext;
 use Skin;
 use SpecialPage;
@@ -40,6 +42,7 @@ class PageHooks implements
 	BeforePageDisplayHook,
 	GetActionNameHook,
 	OutputPageBeforeHTMLHook,
+	OutputPageParserOutputHook,
 	TitleGetEditNoticesHook
 {
 
@@ -333,6 +336,18 @@ class PageHooks implements
 		}
 
 		return true;
+	}
+
+	/**
+	 * OutputPageParserOutput hook handler
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
+	 *
+	 * @param OutputPage $output
+	 * @param ParserOutput $pout ParserOutput instance being added in $output
+	 * @return void This hook must not abort, it must return no value
+	 */
+	public function onOutputPageParserOutput( $output, $pout ): void {
+		CommentFormatter::postprocessTableOfContents( $pout, $output->getLanguage() );
 	}
 
 	/**
