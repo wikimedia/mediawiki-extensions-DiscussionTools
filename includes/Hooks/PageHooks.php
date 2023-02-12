@@ -177,42 +177,6 @@ class PageHooks implements
 			$title = $output->getTitle();
 
 			if (
-				$title->isTalkPage() &&
-				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) && (
-					// 'DiscussionTools-ledeButton' property may be already set to true or false.
-					// Examine the other conditions only if it's unset.
-					$output->getProperty( 'DiscussionTools-ledeButton' ) ?? (
-						// Header shown on all talk pages, see Article::showNamespaceHeader
-						!$output->getContext()->msg( 'talkpageheader' )->isDisabled() &&
-						// Check if it isn't empty since it may use parser functions to only show itself on some pages
-						trim( $output->getContext()->msg( 'talkpageheader' )->text() ) !== ''
-					)
-				)
-			) {
-				$output->addBodyClasses( 'ext-discussiontools-init-lede-hidden' );
-				$output->enableOOUI();
-				$output->prependHTML(
-					Html::rawElement( 'div',
-						[ 'class' => 'ext-discussiontools-init-lede-button-container' ],
-						( new ButtonWidget( [
-							'label' => $output->getContext()->msg( 'discussiontools-ledesection-button' )->text(),
-							'classes' => [ 'ext-discussiontools-init-lede-button' ],
-							'framed' => false,
-							'icon' => 'info',
-							'infusable' => true,
-						] ) )
-					)
-				);
-
-				// Preload jquery.makeCollapsible for LedeSectionDialog.
-				// Using the same approach as in Skin::getDefaultModules in MediaWiki core.
-				if ( strpos( $output->getHTML(), 'mw-collapsible' ) !== false ) {
-					$output->addModules( 'jquery.makeCollapsible' );
-					$output->addModuleStyles( 'jquery.makeCollapsible.styles' );
-				}
-			}
-
-			if (
 				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
 				// Only add the button if "New section" tab would be shown in a normal skin.
 				HookUtils::shouldShowNewSectionTab( $output->getContext() )
@@ -239,6 +203,43 @@ class PageHooks implements
 						// For compatibility with Minerva click tracking (T295490)
 						->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
 				) );
+			}
+
+			if (
+				$title->isTalkPage() &&
+				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) && (
+					CommentFormatter::hasLedeContent( $output->getHTML() ) || (
+						// Header shown on all talk pages, see Article::showNamespaceHeader
+						!$output->getContext()->msg( 'talkpageheader' )->isDisabled() &&
+						// Check if it isn't empty since it may use parser functions to only show itself on some pages
+						trim( $output->getContext()->msg( 'talkpageheader' )->text() ) !== ''
+					)
+				) &&
+				// If there are comments in the lede section, we can't really separate them from other lede
+				// content, so keep the whole section visible.
+				!CommentFormatter::hasCommentsInLedeContent( $output->getHTML() )
+			) {
+				$output->addBodyClasses( 'ext-discussiontools-init-lede-hidden' );
+				$output->enableOOUI();
+				$output->prependHTML(
+					Html::rawElement( 'div',
+						[ 'class' => 'ext-discussiontools-init-lede-button-container' ],
+						( new ButtonWidget( [
+							'label' => $output->getContext()->msg( 'discussiontools-ledesection-button' )->text(),
+							'classes' => [ 'ext-discussiontools-init-lede-button' ],
+							'framed' => false,
+							'icon' => 'info',
+							'infusable' => true,
+						] ) )
+					)
+				);
+
+				// Preload jquery.makeCollapsible for LedeSectionDialog.
+				// Using the same approach as in Skin::getDefaultModules in MediaWiki core.
+				if ( strpos( $output->getHTML(), 'mw-collapsible' ) !== false ) {
+					$output->addModules( 'jquery.makeCollapsible' );
+					$output->addModuleStyles( 'jquery.makeCollapsible.styles' );
+				}
 			}
 		}
 	}
@@ -279,6 +280,17 @@ class PageHooks implements
 			);
 		}
 
+		if (
+			CommentFormatter::isEmptyTalkPage( $text ) &&
+			HookUtils::shouldDisplayEmptyState( $output->getContext() )
+		) {
+			$output->enableOOUI();
+			$text = CommentFormatter::appendToEmptyTalkPage(
+				$text, $this->getEmptyStateHtml( $output->getContext() )
+			);
+			$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
+		}
+
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
 			$output->enableOOUI();
 			if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
@@ -313,6 +325,14 @@ class PageHooks implements
 			$text = CommentFormatter::postprocessVisualEnhancements(
 				$text, $lang, $output->getUser(), $isMobile
 			);
+
+			$subtitle = CommentFormatter::postprocessVisualEnhancementsSubtitle(
+				$text, $lang, $output->getUser()
+			);
+
+			if ( $subtitle ) {
+				$output->addSubtitle( $subtitle );
+			}
 		}
 
 		return true;
@@ -327,64 +347,7 @@ class PageHooks implements
 	 * @return void This hook must not abort, it must return no value
 	 */
 	public function onOutputPageParserOutput( $output, $pout ): void {
-		// ParserOutputPostCacheTransform hook would be a better place to do this,
-		// so that when the ParserOutput is used directly without using this hook,
-		// we don't leave half-baked interface elements in it (see e.g. T292345, T294168).
-		// But that hook doesn't provide parameters that we need to render correctly
-		// (including the page title, interface language, and current user).
-
-		// This hook can be executed more than once per page view if the page content is composed from
-		// multiple sources!
-
-		$isMobile = $this->isMobile();
-		$lang = $output->getLanguage();
-
-		CommentFormatter::postprocessTableOfContents( $pout, $lang );
-
-		if (
-			CommentFormatter::isEmptyTalkPage( $pout ) &&
-			HookUtils::shouldDisplayEmptyState( $output->getContext() )
-		) {
-			$output->enableOOUI();
-			CommentFormatter::appendToEmptyTalkPage(
-				$pout, $this->getEmptyStateHtml( $output->getContext() )
-			);
-			$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
-		}
-
-		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
-			$subtitle = CommentFormatter::postprocessVisualEnhancementsSubtitle(
-				$pout, $lang, $output->getUser()
-			);
-
-			if ( $subtitle ) {
-				$output->addSubtitle( $subtitle );
-			}
-		}
-
-		if ( $output->getSkin()->getSkinName() === 'minerva' ) {
-			$title = $output->getTitle();
-
-			if (
-				$title->isTalkPage() &&
-				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL )
-			) {
-				if (
-					CommentFormatter::hasCommentsInLedeContent( $pout )
-				) {
-					// If there are comments in the lede section, we can't really separate them from other lede
-					// content, so keep the whole section visible.
-					$output->setProperty( 'DiscussionTools-ledeButton', false );
-
-				} elseif (
-					CommentFormatter::hasLedeContent( $pout ) &&
-					$output->getProperty( 'DiscussionTools-ledeButton' ) === null
-				) {
-					// If there is lede content and the lede button hasn't been disabled above, enable it.
-					$output->setProperty( 'DiscussionTools-ledeButton', true );
-				}
-			}
-		}
+		CommentFormatter::postprocessTableOfContents( $pout, $output->getLanguage() );
 	}
 
 	/**

@@ -707,46 +707,52 @@ class CommentFormatter {
 	/**
 	 * Post-process visual enhancements features for page subtitle
 	 *
-	 * @param ParserOutput $pout
+	 * @param string &$text
 	 * @param Language $lang
 	 * @param UserIdentity $user
 	 * @return ?string
 	 */
 	public static function postprocessVisualEnhancementsSubtitle(
-		ParserOutput $pout, Language $lang, UserIdentity $user
+		string &$text, Language $lang, UserIdentity $user
 	): ?string {
-		$itemData = $pout->getExtensionData( 'DiscussionTools-newestComment' );
-		if ( $itemData && $itemData['timestamp'] && $itemData['id'] ) {
-			$relativeTime = static::getSignatureRelativeTime(
-				new MWTimestamp( $itemData['timestamp'] ),
-				$lang,
-				$user
-			);
-			$commentLink = Html::element( 'a', [
-				'href' => '#' . Sanitizer::escapeIdForLink( $itemData['id'] )
-			], $relativeTime );
+		preg_match( '/<!--__DTLATESTCOMMENTPAGE__(.*?)__-->/', $text, $matches );
+		// The subtitle is inserted into the correct place by the caller, so cleanup the comment here
+		$text = preg_replace( '/<!--__DTLATESTCOMMENTPAGE__(.*?)-->/', '', $text );
+		if ( count( $matches ) ) {
+			$itemData = json_decode( htmlspecialchars_decode( $matches[1] ), true );
 
-			if ( isset( $itemData['heading'] ) ) {
-				$headingLink = Html::element( 'a', [
-					'href' => '#' . Sanitizer::escapeIdForLink( $itemData['heading']['linkableTitle'] )
-				], $itemData['heading']['text'] );
-				$label = wfMessage( 'discussiontools-pageframe-latestcomment' )
-					->rawParams( $commentLink )
-					->params( $itemData['author'] )
-					->rawParams( $headingLink )
-					->inLanguage( $lang )->escaped();
-			} else {
-				$label = wfMessage( 'discussiontools-pageframe-latestcomment-notopic' )
-					->rawParams( $commentLink )
-					->params( $itemData['author'] )
-					->inLanguage( $lang )->escaped();
+			if ( $itemData && $itemData['timestamp'] && $itemData['id'] ) {
+				$relativeTime = static::getSignatureRelativeTime(
+					new MWTimestamp( $itemData['timestamp'] ),
+					$lang,
+					$user
+				);
+				$commentLink = Html::element( 'a', [
+					'href' => '#' . Sanitizer::escapeIdForLink( $itemData['id'] )
+				], $relativeTime );
+
+				if ( isset( $itemData['heading'] ) ) {
+					$headingLink = Html::element( 'a', [
+						'href' => '#' . Sanitizer::escapeIdForLink( $itemData['heading']['linkableTitle'] )
+					], $itemData['heading']['text'] );
+					$label = wfMessage( 'discussiontools-pageframe-latestcomment' )
+						->rawParams( $commentLink )
+						->params( $itemData['author'] )
+						->rawParams( $headingLink )
+						->inLanguage( $lang )->escaped();
+				} else {
+					$label = wfMessage( 'discussiontools-pageframe-latestcomment-notopic' )
+						->rawParams( $commentLink )
+						->params( $itemData['author'] )
+						->inLanguage( $lang )->escaped();
+				}
+
+				return Html::rawElement(
+					'div',
+					[ 'class' => 'ext-discussiontools-init-pageframe-latestcomment' ],
+					$label
+				);
 			}
-
-			return Html::rawElement(
-				'div',
-				[ 'class' => 'ext-discussiontools-init-pageframe-latestcomment' ],
-				$label
-			);
 		}
 		return null;
 	}
@@ -790,43 +796,42 @@ class CommentFormatter {
 	/**
 	 * Check if the talk page had no comments or headings.
 	 *
-	 * @param ParserOutput $pout
+	 * @param string $text
 	 * @return bool
 	 */
-	public static function isEmptyTalkPage( ParserOutput $pout ): bool {
-		return $pout->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) === true;
+	public static function isEmptyTalkPage( string $text ): bool {
+		return strpos( $text, '<!--__DTEMPTYTALKPAGE__-->' ) !== false;
 	}
 
 	/**
 	 * Append content to an empty talk page
 	 *
-	 * @param ParserOutput $pout
+	 * @param string $text
 	 * @param string $content
+	 * @return string
 	 */
-	public static function appendToEmptyTalkPage( ParserOutput $pout, string $content ): void {
-		$text = $pout->getRawText();
-		$text .= $content;
-		$pout->setText( $text );
+	public static function appendToEmptyTalkPage( string $text, string $content ): string {
+		return str_replace( '<!--__DTEMPTYTALKPAGE__-->', $content, $text );
 	}
 
 	/**
 	 * Check if the talk page has content above the first heading, in the lede section.
 	 *
-	 * @param ParserOutput $pout
+	 * @param string $text
 	 * @return bool
 	 */
-	public static function hasLedeContent( ParserOutput $pout ): bool {
-		return $pout->getExtensionData( 'DiscussionTools-hasLedeContent' ) === true;
+	public static function hasLedeContent( string $text ): bool {
+		return strpos( $text, '<!--__DTHASLEDECONTENT__-->' ) !== false;
 	}
 
 	/**
 	 * Check if the talk page has comments above the first heading, in the lede section.
 	 *
-	 * @param ParserOutput $pout
+	 * @param string $text
 	 * @return bool
 	 */
-	public static function hasCommentsInLedeContent( ParserOutput $pout ): bool {
-		return $pout->getExtensionData( 'DiscussionTools-hasCommentsInLedeContent' ) === true;
+	public static function hasCommentsInLedeContent( string $text ): bool {
+		return strpos( $text, '<!--__DTHASCOMMENTSINLEDECONTENT__-->' ) !== false;
 	}
 
 	public static function isLanguageRequiringReplyIcon( Language $lang ): bool {
