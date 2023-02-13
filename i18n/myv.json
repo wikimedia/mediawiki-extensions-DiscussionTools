@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rueter"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Пандомс кевкстеманть",
+	"discussiontools-replylink": "пандомс кевкстеманть",
+	"discussiontools-replywidget-cancel": "Саемс мекев",
+	"discussiontools-replywidget-mode-source": "Лисьмапрязо",
+	"discussiontools-replywidget-mode-visual": "Неявиксстэ",
+	"discussiontools-replywidget-placeholder-reply": "Максомс {{BIDI:$1}}-нень каршовал",
+	"discussiontools-replywidget-preview": "Васнянь неевтезэ",
+	"discussiontools-replywidget-reply": "Пандомс кевкстеманть"
+}
