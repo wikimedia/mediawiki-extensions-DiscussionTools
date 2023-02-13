@@ -6,10 +6,14 @@
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Feley, azümfin",
 	"discussiontools-defaultsummary-reply": "Llowzugun",
-	"discussiontools-newtopic-placeholder-title": "Üy",
+	"discussiontools-findcomment-label-search": "Kintun",
+	"discussiontools-newtopic-placeholder-title": "Zungu:",
+	"discussiontools-notification-removed-topic-view": "Pen tapülh",
 	"discussiontools-replylink": "llowzugun",
 	"discussiontools-replywidget-advanced": "Zoy amulu",
 	"discussiontools-replywidget-cancel": "Katrütun",
+	"discussiontools-replywidget-loading": "Amulelu...",
+	"discussiontools-replywidget-mention-tool-header": "Kintun pünefe: $1",
 	"discussiontools-replywidget-mode-source": "Wiriel",
 	"discussiontools-replywidget-mode-visual": "Azpengelwe",
 	"discussiontools-replywidget-placeholder-reply": "Llowzugualu {{BIDI:$1}}",
@@ -21,6 +25,7 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|che}} nütramkalelu",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|wirintukun}}",
 	"discussiontools-topicheader-latestcomment": "Inan wirintukun: $1",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Inanienoalu",
 	"discussiontools-topicsubscription-button-subscribe": "inanieam",
 	"discussiontools-topicsubscription-button-subscribe-label": "Inanieam",
 	"discussiontools-topicsubscription-button-unsubscribe": "inanienoalu",
@@ -30,6 +35,8 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Werkülngewelayaymi müleyüm we nütramkan fachi zungu mew.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Inanielayaymi.",
 	"discussiontools-topicsubscription-pager-actions": "Femün",
+	"discussiontools-topicsubscription-pager-notified-never": "Turpu",
 	"discussiontools-topicsubscription-pager-page": "Tapülh",
-	"discussiontools-topicsubscription-pager-topic": "Zungu"
+	"discussiontools-topicsubscription-pager-topic": "Zungu",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "Inanienoalu"
 }
