@@ -234,7 +234,13 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 	var activeButton;
 	if ( this.$activeLink.is( this.$replyLinkSets ) ) {
 		this.$activeLink.removeClass( 'ext-discussiontools-init-replylink-active' );
-		activeButton = OO.ui.infuse( this.$activeLink.find( '.ext-discussiontools-init-replybutton' ) );
+		try {
+			activeButton = OO.ui.infuse( this.$activeLink.find( '.ext-discussiontools-init-replybutton' ) );
+		} catch ( err ) {
+			// $.data() might have already been cleared by jQuery if the elements were removed, ignore
+			// TODO: We should keep references to the OO.ui.ButtonWidget objects instead of infusing again,
+			// which would avoid this issue too
+		}
 	} else if ( this.$addSectionLink && this.$activeLink.is( this.$addSectionLink ) ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#ca-addsection' ).removeClass( 'selected' );
@@ -250,9 +256,17 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 
 	$( document.body ).removeClass( 'ext-discussiontools-init-replylink-open' );
 	this.$replyLinkSets.each( function () {
-		var replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.attr( 'tabindex', 0 );
+		var replyButton;
+		try {
+			replyButton = OO.ui.infuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		} catch ( err ) {
+			// $.data() might have already been cleared by jQuery if the elements were removed, ignore
+			// TODO: We should keep references to the OO.ui.ButtonWidget objects instead of infusing again,
+			// which would avoid this issue too
+			return;
+		}
 		if ( replyButton === activeButton ) {
 			replyButton.setFlags( { progressive: true } );
 		} else {
@@ -282,6 +296,8 @@ ReplyLinksController.prototype.teardown = function () {
 			replyButton.off( 'click', controller.onReplyButtonClickHandler );
 		} catch ( err ) {
 			// $.data() might have already been cleared by jQuery if the elements were removed, ignore
+			// TODO: We should keep references to the OO.ui.ButtonWidget objects instead of infusing again,
+			// which would avoid this issue too
 		}
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.off( 'click keypress', controller.onReplyLinkClickHandler );
