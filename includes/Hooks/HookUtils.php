@@ -350,14 +350,15 @@ class HookUtils {
 			return $title->isTalkPage();
 		}
 
-		$hasNewSectionLink = static::hasPagePropCached( $title, 'newsectionlink' );
-
 		// Check that the page supports discussions.
-		// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
-		return $hasNewSectionLink ||
-			// `wantSignatures` includes talk pages
-			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() );
+		return (
+			// Talk namespaces, and other namespaces where the signature button is shown in wikitext
+			// editor using $wgExtraSignatureNamespaces (T249036)
+			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
+			// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
+			static::hasPagePropCached( $title, 'newsectionlink' )
 			// TODO: Consider not loading if forceHideNewSectionLink is true.
+		);
 	}
 
 	/**
