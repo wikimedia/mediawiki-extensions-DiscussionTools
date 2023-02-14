@@ -327,6 +327,8 @@ class HookUtils {
 	/**
 	 * Check if the tools are available for a given title
 	 *
+	 * Keep in sync with SQL conditions in persistRevisionThreadItems.php.
+	 *
 	 * @param Title $title
 	 * @param string|null $feature Feature to check for (one of static::FEATURES)
 	 *  Null will check for any DT feature.
