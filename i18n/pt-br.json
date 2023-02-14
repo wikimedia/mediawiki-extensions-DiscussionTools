@@ -12,7 +12,8 @@
 			"Matma Rex",
 			"Stanglavine",
 			"Wiiformii",
-			"YuriNikolai"
+			"YuriNikolai",
+			"CoelhitaWingz223"
 		]
 	},
 	"discussiontools": "Ferramentas de discussão",
@@ -45,6 +46,10 @@
 	"discussiontools-error-noswitchtove-table": "sintaxe da tabela",
 	"discussiontools-error-noswitchtove-template": "sintaxe da predefinição",
 	"discussiontools-error-noswitchtove-title": "Modo visual desativado",
+	"discussiontools-findcomment-results-id": "Comentário com o ID fornecido apareceu nas seguintes {{PLURAL:$1|página|páginas}}:",
+	"discussiontools-findcomment-results-name": "Comentário com o nome fornecido apareceu nas seguintes {{PLURAL:$1|página|páginas}}:",
+	"discussiontools-findcomment-label-idorname": "Identificador ou nome do comentário",
+	"discussiontools-findcomment-gotocomment": "Se este aparece somente na revisão atual de uma página, você pode [[Special:GoToComment/$1|ir diretamente ao comentário usando esse link]]. Caso contrário ele irá redirecionar para esses resultados de pesquisa.",
 	"discussiontools-findcomment-label-search": "Pesquisar",
 	"discussiontools-findcomment-noresults": "Sem resultados.",
 	"discussiontools-findcomment-results-notcurrent": "(não na revisão atual)",
@@ -57,6 +62,8 @@
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Está agora a ver o modo de utilização antigo</strong>. Pode [$1 voltar ao modo de utilização novo] ou visitar as preferências para [$2 tornar padrão o modo de utilização antigo].",
 	"discussiontools-newtopic-missing-title": "Forneça um título para seu tópico de discussão. Se você clicar \"{{int:discussiontools-replywidget-newtopic}}\", seu tópico será adicionado sem título.",
 	"discussiontools-newtopic-placeholder-title": "Assunto",
+	"discussiontools-notification-removed-topic-body": "Você pode deixar de receber notificações sobre {{PLURAL:$1|esse tópico|esses tópicos}}.",
+	"discussiontools-notification-removed-topic-header": "Tópico \"<strong>$4</strong>\" foi arquivado ou removido de $3.",
 	"discussiontools-notification-removed-topic-view": "Ver página",
 	"discussiontools-notification-removed-topic-disable": "Parar de receber notificações como esta",
 	"discussiontools-notification-removed-topic-disabled-title": "Parará de receber notificações quando um tópico for arquivado ou removido.",
