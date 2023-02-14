@@ -75,6 +75,21 @@ class PersistRevisionThreadItems extends Maintenance {
 			return;
 		}
 
+		// Add conditions from HookUtils::isAvailableForTitle().
+		// Keep this in sync with that method.
+		$nsInfo = $services->getNamespaceInfo();
+		$qb->leftJoin( 'page_props', null, [
+			'pp_propname' => 'newsectionlink',
+			'pp_page = page_id',
+		] );
+		$qb->where( $this->dbr->makeList( [
+			'page_namespace' => array_values( array_filter(
+				$nsInfo->getValidNamespaces(),
+				[ $nsInfo, 'wantSignatures' ]
+			) ),
+			'pp_propname IS NOT NULL',
+		], IDatabase::LIST_OR ) );
+
 		if ( $this->getOption( 'current' ) ) {
 			$qb->where( 'rev_id = page_latest' );
 			$index = [ 'page_id' ];
