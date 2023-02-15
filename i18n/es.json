@@ -21,11 +21,13 @@
 			"Themasterriot",
 			"ZealousBlaze",
 			"ZebaX2010",
-			"DiegoAmbrocio"
+			"DiegoAmbrocio",
+			"FlyingAce",
+			"Pierpao"
 		]
 	},
 	"discussiontools": "Herramientas de discusión",
-	"discussiontools-autotopicsubpopup-body": "Recibirá una notificación cuando alguien publique un comentario nuevo en esta conversación. Puede configurar sus ajustes de notificaciones en preferencias.",
+	"discussiontools-autotopicsubpopup-body": "Recibirás una notificación cuando alguien publique un comentario nuevo en esta conversación. Puedes configurar tus ajustes de notificaciones en tus preferencias.",
 	"discussiontools-autotopicsubpopup-dismiss": "Entendido",
 	"discussiontools-autotopicsubpopup-preferences": "Editar preferencias",
 	"discussiontools-autotopicsubpopup-title": "Te has suscrito",
@@ -38,8 +40,8 @@
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Las páginas de discusión]] son el lugar donde los usuarios pueden debatir acerca de cómo hacer que el contenido de {{SITENAME}} sea lo mejor posible. Inicia una nueva discusión para conectar y colaborar {{GENDER:{{PAGENAME}}|con}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Lo que digas aquí será público para que otros lo vean.",
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Las páginas de discusión]] son el lugar donde los usuarios pueden debatir acerca de cómo hacer que el contenido de {{SITENAME}} sea lo mejor posible. Usa esta página para iniciar una discusión sobre las ediciones hechas desde esta dirección IP. Lo que digas aquí será público. Muchas direcciones IP cambian periódicamente y a veces son compartidas por varias personas.",
 	"discussiontools-emptystate-title": "Comienza una discusión acerca de {{SUBJECTPAGENAME}}",
-	"discussiontools-emptystate-title-self": "Bienvenido a tu página de discusión",
-	"discussiontools-emptystate-title-self-anon": "Bienvenido a esta página de discusión",
+	"discussiontools-emptystate-title-self": "{{GENDER:|Bienvenido|Bienvenida}} a tu página de discusión",
+	"discussiontools-emptystate-title-self-anon": "{{GENDER:|Bienvenido|Bienvenida}} a esta página de discusión",
 	"discussiontools-emptystate-title-user": "Comienza una discusión {{GENDER:{{PAGENAME}}|con}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Bienvenido a esta página de discusión",
 	"discussiontools-error-comment-conflict": "Tu comentario no puede guardarse, porque alguien más comentó al mismo tiempo que tú. Por favor inténtalo de nuevo, o vuelve a cargar la página para ver los últimos comentarios.",
