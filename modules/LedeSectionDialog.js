@@ -24,7 +24,6 @@ LedeSectionDialog.prototype.initialize = function () {
 	LedeSectionDialog.super.prototype.initialize.call( this );
 
 	this.contentLayout = new OO.ui.PanelLayout( {
-		scrollable: true,
 		padded: true,
 		expanded: false,
 		classes: [ 'ext-discussiontools-ui-ledeSectionDialog-content', 'mw-parser-output', 'content' ]
