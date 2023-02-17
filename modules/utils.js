@@ -627,6 +627,16 @@ function compareRangesAlmostEqualBoundaries( a, b, boundary ) {
 }
 
 /**
+ * Get the ID for a new topics subscription from a page title
+ *
+ * @param {mw.Title} title Page title
+ * @return {string} ID for a new topics subscription
+ */
+function getNewTopicsSubscriptionId( title ) {
+	return 'p-topics-' + title.getNamespaceId() + ':' + title.getMain();
+}
+
+/**
  * Check whether a jQuery event represents a plain left click, without any modifiers
  *
  * @param {jQuery.Event} e
@@ -655,5 +665,6 @@ module.exports = {
 	linearWalk: linearWalk,
 	linearWalkBackwards: linearWalkBackwards,
 	compareRanges: compareRanges,
+	getNewTopicsSubscriptionId: getNewTopicsSubscriptionId,
 	isUnmodifiedLeftClick: isUnmodifiedLeftClick
 };

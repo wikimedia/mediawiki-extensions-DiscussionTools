@@ -17,11 +17,13 @@ use Html;
 use IContextSource;
 use MediaWiki\Actions\Hook\GetActionNameHook;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
+use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Extension\VisualEditor\Hooks as VisualEditorHooks;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
+use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
@@ -34,6 +36,7 @@ use OutputPage;
 use ParserOutput;
 use RequestContext;
 use Skin;
+use SkinTemplate;
 use SpecialPage;
 use Title;
 
@@ -43,6 +46,7 @@ class PageHooks implements
 	GetActionNameHook,
 	OutputPageBeforeHTMLHook,
 	OutputPageParserOutputHook,
+	SkinTemplateNavigation__UniversalHook,
 	TitleGetEditNoticesHook
 {
 
@@ -525,6 +529,41 @@ class PageHooks implements
 			);
 
 		return $wrapped;
+	}
+
+	/**
+	 * @param SkinTemplate $sktemplate
+	 * @param array &$links
+	 * @return void
+	 * @phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
+	 */
+	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
+		$output = $sktemplate->getOutput();
+		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
+			$user = $sktemplate->getUser();
+			$title = $sktemplate->getTitle();
+			$items = $this->subscriptionStore->getSubscriptionItemsForUser(
+				$user,
+				[ CommentUtils::getNewTopicsSubscriptionId( $title ) ]
+			);
+			$subscriptionItem = count( $items ) ? $items[ 0 ] : null;
+			$isSubscribed = $subscriptionItem && !$subscriptionItem->isMuted();
+
+			$context = $sktemplate->getContext();
+			$links['actions']['dt-page-subscribe'] = [
+				'text' => $context->msg( $isSubscribed ?
+					'discussiontools-newtopicssubscription-button-unsubscribe-label' :
+					'discussiontools-newtopicssubscription-button-subscribe-label'
+				),
+				'title' => $context->msg( $isSubscribed ?
+					'discussiontools-newtopicssubscription-button-unsubscribe-tooltip' :
+					'discussiontools-newtopicssubscription-button-subscribe-tooltip'
+				),
+				'data-mw-subscribed' => $isSubscribed ? '1' : '0',
+				// TODO: Provide a no-JS action?
+				'href' => '#',
+			];
+		}
 	}
 
 	/**

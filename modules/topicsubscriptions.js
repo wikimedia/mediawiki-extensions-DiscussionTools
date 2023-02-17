@@ -16,24 +16,37 @@ var
  *
  * @param {HTMLElement} element Subscribe link
  * @param {number|null} state State constant (STATE_UNSUBSCRIBED, STATE_SUBSCRIBED or STATE_AUTOSUBSCRIBED)
+ * @param {HTMLElement|null} labelElement Subscribe link, if different to element
+ * @param {boolean} isNewTopics Is a subscribe link for new topics subscriptions
  */
-function updateSubscribeLink( element, state ) {
+function updateSubscribeLink( element, state, labelElement, isNewTopics ) {
+	labelElement = labelElement || element;
 	if ( state !== null ) {
 		element.setAttribute( 'data-mw-subscribed', String( state ) );
 	}
 	if ( state ) {
-		element.textContent = mw.msg( 'discussiontools-topicsubscription-button-unsubscribe' );
-		element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-unsubscribe-tooltip' ) );
+		labelElement.textContent = mw.msg( isNewTopics ?
+			'discussiontools-newtopicssubscription-button-unsubscribe-label' :
+			'discussiontools-topicsubscription-button-unsubscribe' );
+		element.setAttribute( 'title', mw.msg( isNewTopics ?
+			'discussiontools-newtopicssubscription-button-unsubscribe-tooltip' :
+			'discussiontools-topicsubscription-button-unsubscribe-tooltip' )
+		);
 	} else {
-		element.textContent = mw.msg( 'discussiontools-topicsubscription-button-subscribe' );
-		element.setAttribute( 'title', mw.msg( 'discussiontools-topicsubscription-button-subscribe-tooltip' ) );
+		labelElement.textContent = mw.msg( isNewTopics ?
+			'discussiontools-newtopicssubscription-button-subscribe-label' :
+			'discussiontools-topicsubscription-button-subscribe' );
+		element.setAttribute( 'title', mw.msg( isNewTopics ?
+			'discussiontools-newtopicssubscription-button-subscribe-tooltip' :
+			'discussiontools-topicsubscription-button-subscribe-tooltip' )
+		);
 	}
 }
 
 /**
  * Update a subscribe button
  *
- * @param {OO.ui.ButtonWidget} button Button Subscribe button
+ * @param {OO.ui.ButtonWidget} button Subscribe button
  * @param {number|null} state State constant (STATE_UNSUBSCRIBED, STATE_SUBSCRIBED or STATE_AUTOSUBSCRIBED)
  */
 function updateSubscribeButton( button, state ) {
@@ -206,6 +219,26 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 				} );
 		} );
 	} );
+
+	// New topics subscription button
+	( function () {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		var $button = $( '#ca-dt-page-subscribe > a' );
+		var $label = $button.find( 'span' );
+		var titleObj = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
+		var name = utils.getNewTopicsSubscriptionId( titleObj );
+
+		$button.on( 'click', function ( e ) {
+			e.preventDefault();
+			// Get latest subscribedState
+			var subscribedState = getSubscribedStateFromElement( $button[ 0 ] );
+
+			changeSubscription( titleObj.getPrefixedText(), name, !subscribedState, true )
+				.then( function ( result ) {
+					updateSubscribeLink( $button[ 0 ], result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED, $label[ 0 ], true );
+				} );
+		} );
+	}() );
 }
 
 function initSpecialTopicSubscriptions() {
