@@ -106,7 +106,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Thema verwerfen",
 	"discussiontools-replywidget-abandontopic-keep": "Weiter schreiben",
 	"discussiontools-replywidget-advanced": "Erweitert",
-	"discussiontools-replywidget-anon-warning": "<strong>Du bist nicht angemeldet.</strong> Um eine Zuordnung zu deinem Namen anstatt deiner IP-Adresse zu erhalten, kannst du dich [$1 anmelden] oder [$2 ein Benutzerkonto erstellen].",
+	"discussiontools-replywidget-anon-warning": "<strong>Du bist nicht angemeldet.</strong> Um benachrichtigt zu werden,  wenn jemand antwortet, und eine Zuordnung mit deinem Namen anstelle deiner IP-Adresse zu erhalten, kannst du dich [$1 anmelden] oder [$2 ein Benutzerkonto erstellen].",
 	"discussiontools-replywidget-cancel": "Abbrechen",
 	"discussiontools-replywidget-feedback": "Rückmeldungen über diese Funktion hinterlassen",
 	"discussiontools-replywidget-loading": "Lade …",
