@@ -96,7 +96,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Abandonar topico",
 	"discussiontools-replywidget-abandontopic-keep": "Continuar a scriber",
 	"discussiontools-replywidget-advanced": "Avantiate",
-	"discussiontools-replywidget-anon-warning": "<strong>Tu non ha aperite session.</strong> A fin que tu modificationes sia attribuite a tu nomine in vice de tu adresse IP, tu pote [$1 aperir session] o [$2 crear un conto].",
+	"discussiontools-replywidget-anon-warning": "<strong>Tu non ha aperite session.</strong> Pro reciper notification quando alcuno responde e a fin que tu modificationes sia attribuite a tu nomine in vice de tu adresse IP, tu pote [$1 aperir session] o [$2 crear un conto].",
 	"discussiontools-replywidget-cancel": "Cancellar",
 	"discussiontools-replywidget-feedback": "Lassar un commento sur iste function",
 	"discussiontools-replywidget-loading": "Cargamento in curso…",

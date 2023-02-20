@@ -52,6 +52,8 @@
 	"discussiontools-findcomment-results-notcurrent": "（不在目前修訂中）",
 	"discussiontools-findcomment-results-transcluded": "（嵌入自另一頁）",
 	"discussiontools-findcomment-title": "尋找留言",
+	"discussiontools-ledesection-button": "了解關於此頁面的更多內容",
+	"discussiontools-ledesection-title": "關於此討論頁",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools 錯誤請求 ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 時間使用",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|秒}}",

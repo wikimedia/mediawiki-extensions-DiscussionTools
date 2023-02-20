@@ -109,7 +109,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Onderwerp weghalen",
 	"discussiontools-replywidget-abandontopic-keep": "Verder schrijven",
 	"discussiontools-replywidget-advanced": "Geavanceerd",
-	"discussiontools-replywidget-anon-warning": "<strong>U bent niet aangemeld.</strong> Om naamsvermelding met uw naam te krijgen in plaats van uw IP-adres, kunt u [$1 zich aanmelden] of [$2 een account aanmaken].",
+	"discussiontools-replywidget-anon-warning": "<strong>U bent niet aangemeld.</strong> Om een melding te krijgen wanneer iemand antwoordt en om naamsvermelding met uw naam te krijgen in plaats van uw IP-adres, kunt u [$1 zich aanmelden] of [$2 een account aanmaken].",
 	"discussiontools-replywidget-cancel": "Annuleren",
 	"discussiontools-replywidget-feedback": "Geef feedback over deze functie",
 	"discussiontools-replywidget-loading": "Bezig met laden...",

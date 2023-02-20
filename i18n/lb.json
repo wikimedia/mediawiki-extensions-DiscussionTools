@@ -3,7 +3,8 @@
 		"authors": [
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"discussiontools": "Diskussiouns-Geschier",
@@ -65,7 +66,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Sujet opginn",
 	"discussiontools-replywidget-abandontopic-keep": "Virufuere mat Schreiwen",
 	"discussiontools-replywidget-advanced": "Erweidert",
-	"discussiontools-replywidget-anon-warning": "<strong>Dir sidd net ageloggt.</strong> Fir a Plaz vun enger Verbindung mat Ärer IP-Adress eng Verbindung mat Ärem Numm ze kréie musst Dir Iech [$1 aloggen] oder [$2 e Benotzerkont opmaachen].",
+	"discussiontools-replywidget-anon-warning": "<strong>Dir sidd net ageloggt.</strong> Fir e Message ze kréien, wann een äntwert, a fir eng Verbindung mat Ärem Numm amplaz mat Ärer IP-Adress ze kréie musst Dir Iech [$1 aloggen] oder [$2 e Benotzerkont opmaachen].",
 	"discussiontools-replywidget-cancel": "Ofbriechen",
 	"discussiontools-replywidget-feedback": "Feedback zu dëser Funktioun ginn",
 	"discussiontools-replywidget-loading": "Lueden...",

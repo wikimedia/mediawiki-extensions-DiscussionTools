@@ -100,7 +100,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Annulla discussione",
 	"discussiontools-replywidget-abandontopic-keep": "Continua a scrivere",
 	"discussiontools-replywidget-advanced": "Avanzate",
-	"discussiontools-replywidget-anon-warning": "<strong>Non hai effettuato l'accesso.</strong> Per ricevere l'attribuzione con il tuo nome, anziché con l'indirizzo IP, puoi [$1 accedere] o [$2 creare un'utenza].",
+	"discussiontools-replywidget-anon-warning": "<strong>Non hai effettuato l'accesso.</strong> Per essere avvisato quando qualcuno risponde e ricevere l'attribuzione con il tuo nome, anziché con l'indirizzo IP, puoi [$1 accedere] o [$2 creare un'utenza].",
 	"discussiontools-replywidget-cancel": "Annulla",
 	"discussiontools-replywidget-feedback": "Commenta questa funzionalità",
 	"discussiontools-replywidget-feedback-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/replying",
