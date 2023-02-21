@@ -3,7 +3,8 @@
 		"authors": [
 			"DChan (WMF)",
 			"Matma Rex",
-			"Afalau"
+			"Afalau",
+			"Dafyddt"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Iawn",
@@ -33,6 +34,7 @@
 	"discussiontools-notification-removed-topic-view": "Gweld y dudalen",
 	"discussiontools-notification-subscribed-new-comment-view": "Gweld sylw",
 	"discussiontools-pagetitle-newtopic": "Pwnc newydd ar $1",
+	"discussiontools-postedit-confirmation-published": "Cyhoeddwyd eich sylw.",
 	"discussiontools-preference-description": "Galluogi llif gwaith newydd ar gyfer [https://www.mediawiki.org/wiki/Talk_pages_project/replying ateb i sylwadau penodol] ar dudalennau sgwrs.\n\nNoder dros amser bydd offer newydd ar gyfer ymdrin â thudalennau sgwrs yn cael eu hychwanegu.\n\nCeir diweddariadau amdan y nodweddion ar  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates dudalen diweddariadau'r project tudalennau sgwrs].",
 	"discussiontools-replybutton": "Ateb",
 	"discussiontools-replylink": "ateb",
