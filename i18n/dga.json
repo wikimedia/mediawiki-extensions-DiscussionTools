@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Linus Konkor",
 			"Yirkang"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Leɛ sagbo",
+	"discussiontools-replywidget-advanced": "Tɔnnooŋ",
+	"discussiontools-replywidget-mode-source": "Yizie",
 	"discussiontools-replywidget-preview": "Leɛkaabo",
-	"discussiontools-replywidget-summary": "Leɛroo"
+	"discussiontools-replywidget-summary": "Leɛroo",
+	"discussiontools-replywidget-watchthis": "De a ganzu ŋa paali fo [[Special:Watchlist|watchlist]]"
 }
