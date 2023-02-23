@@ -108,7 +108,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "放棄話題",
 	"discussiontools-replywidget-abandontopic-keep": "繼續撰寫",
 	"discussiontools-replywidget-advanced": "進階",
-	"discussiontools-replywidget-anon-warning": "<strong>您尚未登入。</strong>要使用您的名稱而非IP位址署名，您可以[$1 登入]或[$2 建立帳號]。",
+	"discussiontools-replywidget-anon-warning": "<strong>您尚未登入。</strong>要在有人回覆時收到通知，以及使用您的名稱而非 IP 位址署名，您可以[$1 登入]或[$2 建立帳號]。",
 	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-feedback": "分享有關此功能的意見回饋",
 	"discussiontools-replywidget-loading": "載入中…",
