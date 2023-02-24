@@ -101,7 +101,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Απόρριψη θέματος",
 	"discussiontools-replywidget-abandontopic-keep": "Συνέχεια επεξεργασίας",
 	"discussiontools-replywidget-advanced": "Προχωρημένο",
-	"discussiontools-replywidget-anon-warning": "<strong>Δεν έχετε συνδεθεί.</strong> Για να λάβετε απόδοση πατρότητας με το όνομά σας αντί για τη διεύθυνση IP, μπορείτε να [$1 συνδεθείτε] ή να [$2 δημιουργήσετε έναν λογαριασμό].",
+	"discussiontools-replywidget-anon-warning": "<strong>Δεν είστε συνδεδεμένοι.</strong> Για να ειδοποιηθείτε όταν κάποιος απαντήσει και να αναφέρεστε με το όνομά σας αντί για τη διεύθυνση IP σας, μπορείτε να [$1 συνδεθείτε] ή [$2 να δημιουργήσετε έναν λογαριασμό].",
 	"discussiontools-replywidget-cancel": "Ακύρωση",
 	"discussiontools-replywidget-feedback": "Αφήστε σχόλια σχετικά με αυτό τη λειτουργία",
 	"discussiontools-replywidget-loading": "Φόρτωση…",

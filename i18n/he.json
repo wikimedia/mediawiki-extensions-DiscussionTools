@@ -61,7 +61,7 @@
 	"discussiontools-newtopic-placeholder-title": "נושא",
 	"discussiontools-notification-removed-topic-body": "ייתכן שלא {{GENDER:|תקבל|תקבלי}} עוד התראות על {{PLURAL:$1|הנושא הזה|הנושאים האלה}}.",
 	"discussiontools-notification-removed-topic-header": "הנושא \"<strong>$4</strong>\" אורכב או הוסר מהדף $3.",
-	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|נושא אחד אורכב או הוסר|$1 נושאים אורכבו או הוסרו|יותר מ־99 נושאים אורכבו או הוסרו}} מהדף $2.",
+	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|נושא אחד אורכב או הוסר|$1 נושאים אורכבו או הוסרו|100=יותר מ־99 נושאים אורכבו או הוסרו}} מהדף $2.",
 	"discussiontools-notification-removed-topic-header-compact": "הנושא \"<strong>$4</strong>\" אורכב או הוסר.",
 	"discussiontools-notification-removed-topic-view": "הצגת הדף",
 	"discussiontools-notification-removed-topic-disable": "להפסיק לקבל התראות כאלו",
