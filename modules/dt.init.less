@@ -287,11 +287,6 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 
-	body:not( .skin-minerva ) & {
-		// stylelint-disable-next-line declaration-property-unit-disallowed-list
-		font-size: 14px;
-	}
-
 	// Directional properties must be based on content direction.
 	body:not( .skin-minerva ) .mw-content-ltr &,
 	body:not( .skin-minerva ) .mw-content-rtl .mw-content-ltr & {
@@ -441,8 +436,6 @@ h1, h2, h3, h4, h5, h6 {
 		}
 
 		&-bar {
-			// stylelint-disable-next-line declaration-property-unit-disallowed-list
-			font-size: 14px;
 			display: flex;
 			// Use interface language direction (auto-flipped for RTL)
 			direction: ltr;
@@ -514,6 +507,11 @@ h1, h2, h3, h4, h5, h6 {
 			font-size: 0.75em;
 		}
 
+		&-bar,
+		&-ellipsisButton {
+			font-size: 0.875em;
+		}
+
 		// stylelint-disable-next-line selector-class-pattern
 		> .indicator,
 		&-ellipsisButton {
@@ -548,8 +546,6 @@ h1, h2, h3, h4, h5, h6 {
 
 			&-ellipsisButton {
 				display: inline-block;
-				// stylelint-disable-next-line declaration-property-unit-disallowed-list
-				font-size: 14px;
 				margin-right: -5px;
 				// Fix height so MenuWidget appears in the correct place with wrapped text (T311558)
 				height: 32px;
@@ -595,13 +591,6 @@ h1, h2, h3, h4, h5, h6 {
 	&.skin-minerva .mf-section-0 + .ext-discussiontools-init-section {
 		border-top: 0;
 		margin-top: 0;
-	}
-
-	&.skin-monobook .ext-discussiontools-init-section {
-		&-bar {
-			// stylelint-disable-next-line declaration-property-unit-disallowed-list
-			font-size: 12px;
-		}
 	}
 }
 
