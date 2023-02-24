@@ -22,6 +22,13 @@ $specialPageAliases['cs'] = [
 	'GoToComment' => [ 'Přejít_na_komentář' ],
 ];
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = [
+	'TopicSubscriptions' => [ 'Themenbezogene_Abonnements' ],
+	'FindComment' => [ 'Kommentar_finden' ],
+	'GoToComment' => [ 'Gehe_zu_Kommentar' ],
+];
+
 /** Spanish (español) */
 $specialPageAliases['es'] = [
 	'TopicSubscriptions' => [ 'Suscripciones_a_temas' ],
