@@ -12,6 +12,7 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 use ExtensionRegistry;
 use IContextSource;
 use IDBAccessObject;
+use LqtDispatch;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
@@ -337,6 +338,11 @@ class HookUtils {
 	public static function isAvailableForTitle( Title $title, ?string $feature = null ): bool {
 		// Only wikitext pages (e.g. not Flow boards, special pages)
 		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
+			return false;
+		}
+		// LiquidThreads needs a separate check, since it predates content models other than wikitext (T329423)
+		// @phan-suppress-next-line PhanUndeclaredClassMethod
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Liquid Threads' ) && LqtDispatch::isLqtPage( $title ) ) {
 			return false;
 		}
 		if ( !$title->canExist() ) {
