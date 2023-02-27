@@ -20,7 +20,6 @@ use stdClass;
 use TitleFormatter;
 use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\ILBFactory;
-use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\TimestampException;
@@ -31,7 +30,7 @@ use Wikimedia\Timestamp\TimestampException;
 class ThreadItemStore {
 
 	private Config $config;
-	private ILoadBalancer $loadBalancer;
+	private ILBFactory $dbConProvider;
 	private ReadOnlyMode $readOnlyMode;
 	private PageStore $pageStore;
 	private RevisionStore $revStore;
@@ -40,7 +39,7 @@ class ThreadItemStore {
 
 	public function __construct(
 		ConfigFactory $configFactory,
-		ILBFactory $lbFactory,
+		ILBFactory $dbConProvider,
 		ReadOnlyMode $readOnlyMode,
 		PageStore $pageStore,
 		RevisionStore $revStore,
@@ -48,7 +47,7 @@ class ThreadItemStore {
 		ActorStore $actorStore
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
-		$this->loadBalancer = $lbFactory->getMainLB();
+		$this->dbConProvider = $dbConProvider;
 		$this->readOnlyMode = $readOnlyMode;
 		$this->pageStore = $pageStore;
 		$this->revStore = $revStore;
@@ -195,7 +194,7 @@ class ThreadItemStore {
 		foreach ( $result as $row ) {
 			$revs[ $row->itr_revision_id ] = null;
 		}
-		$revQueryBuilder = $this->loadBalancer->getConnection( DB_REPLICA )->newSelectQueryBuilder()
+		$revQueryBuilder = $this->dbConProvider->getReplicaDatabase()->newSelectQueryBuilder()
 			->queryInfo( $this->revStore->getQueryInfo( [ 'page' ] ) )
 			->fields( $this->pageStore->getSelectFields() )
 			->where( $revs ? [ 'rev_id' => array_keys( $revs ) ] : '0=1' );
@@ -314,7 +313,7 @@ class ThreadItemStore {
 	 * @return SelectQueryBuilder
 	 */
 	private function getIdsNamesBuilder(): SelectQueryBuilder {
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->dbConProvider->getReplicaDatabase();
 
 		$queryBuilder = $dbr->newSelectQueryBuilder()
 			->from( 'discussiontools_items' )
@@ -344,7 +343,7 @@ class ThreadItemStore {
 			return false;
 		}
 
-		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbw = $this->dbConProvider->getPrimaryDatabase();
 		$didInsert = false;
 		$method = __METHOD__;
 

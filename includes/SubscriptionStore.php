@@ -11,9 +11,8 @@ use ReadOnlyMode;
 use stdClass;
 use TitleValue;
 use Wikimedia\Rdbms\FakeResultWrapper;
-use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILBFactory;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 
 class SubscriptionStore {
@@ -26,7 +25,7 @@ class SubscriptionStore {
 	public const STATE_AUTOSUBSCRIBED = 2;
 
 	private Config $config;
-	private ILoadBalancer $loadBalancer;
+	private ILBFactory $lbFactory;
 	private ReadOnlyMode $readOnlyMode;
 	private UserFactory $userFactory;
 
@@ -37,20 +36,20 @@ class SubscriptionStore {
 		UserFactory $userFactory
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
-		$this->loadBalancer = $lbFactory->getMainLB();
+		$this->lbFactory = $lbFactory;
 		$this->readOnlyMode = $readOnlyMode;
 		$this->userFactory = $userFactory;
 	}
 
 	/**
-	 * @param IDatabase $db
+	 * @param IReadableDatabase $db
 	 * @param UserIdentity|null $user
 	 * @param array|null $itemNames
 	 * @param int|int[]|null $state One of (or an array of) SubscriptionStore::STATE_* constants
 	 * @return IResultWrapper|false
 	 */
 	private function fetchSubscriptions(
-		IDatabase $db,
+		IReadableDatabase $db,
 		?UserIdentity $user = null,
 		?array $itemNames = null,
 		$state = null
@@ -104,7 +103,11 @@ class SubscriptionStore {
 		}
 
 		$options += [ 'forWrite' => false ];
-		$db = $this->loadBalancer->getConnection( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
+		if ( $options['forWrite'] ) {
+			$db = $this->lbFactory->getPrimaryDatabase();
+		} else {
+			$db = $this->lbFactory->getReplicaDatabase();
+		}
 
 		$rows = $this->fetchSubscriptions(
 			$db,
@@ -138,7 +141,11 @@ class SubscriptionStore {
 		array $options = []
 	): array {
 		$options += [ 'forWrite' => false ];
-		$db = $this->loadBalancer->getConnection( $options['forWrite'] ? DB_PRIMARY : DB_REPLICA );
+		if ( $options['forWrite'] ) {
+			$db = $this->lbFactory->getPrimaryDatabase();
+		} else {
+			$db = $this->lbFactory->getReplicaDatabase();
+		}
 
 		$rows = $this->fetchSubscriptions(
 			$db,
@@ -203,7 +210,7 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() ) {
 			return false;
 		}
-		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbw = $this->lbFactory->getPrimaryDatabase();
 		$dbw->upsert(
 			'discussiontools_subscription',
 			[
@@ -240,7 +247,7 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() ) {
 			return false;
 		}
-		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbw = $this->lbFactory->getPrimaryDatabase();
 		$dbw->update(
 			'discussiontools_subscription',
 			[ 'sub_state' => static::STATE_UNSUBSCRIBED ],
@@ -297,7 +304,7 @@ class SubscriptionStore {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
-		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbw = $this->lbFactory->getPrimaryDatabase();
 
 		$conditions = [
 			'sub_item' => $itemName,
