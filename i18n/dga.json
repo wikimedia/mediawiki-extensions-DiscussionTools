@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yirkang"
+			"Yirkang",
+			"Linus Konkor"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Leɛ sagbo"
+	"discussiontools-defaultsummary-reply": "Leɛ sagbo",
+	"discussiontools-replywidget-mode-source": "Yizie",
+	"discussiontools-replywidget-preview": "Leɛkaabo"
 }

@@ -7,6 +7,7 @@
 	"discussiontools-defaultsummary-reply": "Llowzugun",
 	"discussiontools-replylink": "llowzugun",
 	"discussiontools-replywidget-cancel": "Katrütun",
+	"discussiontools-replywidget-loading": "Amulelu...",
 	"discussiontools-replywidget-mode-source": "Wiriel",
 	"discussiontools-replywidget-mode-visual": "Azpengelwe",
 	"discussiontools-replywidget-placeholder-reply": "Llowzugualu {{BIDI:$1}}",

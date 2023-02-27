@@ -6,7 +6,8 @@
 			"Matma Rex",
 			"Patsagorn Y.",
 			"Prame Tan",
-			"Thas Tayapongsak"
+			"Thas Tayapongsak",
+			"Ekminarin"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ตอบกลับ",
@@ -24,6 +25,7 @@
 	"discussiontools-replywidget-preview": "ดูตัวอย่าง",
 	"discussiontools-replywidget-reply": "ตอบกลับ",
 	"discussiontools-replywidget-transcluded": "ความเห็นของคุณจะถูกบันทึกไว้ที่ [[$1]]",
+	"discussiontools-signature-prefix": "&#32;",
 	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
 	"tag-discussiontools-source": "ต้นฉบับ",
 	"tag-discussiontools-visual": "เห็นภาพ"

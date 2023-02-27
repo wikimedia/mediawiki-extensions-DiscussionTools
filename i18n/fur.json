@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Klenje"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Rispueste",
+	"discussiontools-replylink": "rispuint",
+	"discussiontools-replywidget-cancel": "Scancele",
+	"discussiontools-replywidget-mode-source": "Sorzint",
+	"discussiontools-replywidget-mode-visual": "Visuâl",
+	"discussiontools-replywidget-placeholder-reply": "Rispuint a {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Anteprime",
+	"discussiontools-replywidget-reply": "Rispuint"
+}

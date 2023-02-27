@@ -4,9 +4,17 @@
 			"Akudugu",
 			"Amire80",
 			"Bugirbiig",
-			"Musahfm"
+			"Musahfm",
+			"WINDOL"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Lɛbisim",
-	"discussiontools-desc": "La'abanɛ na sʋŋ sɔnsʋg lakirnam"
+	"discussiontools-desc": "La'abanɛ na sʋŋ sɔnsʋg lakirnam",
+	"discussiontools-replylink": "lɛbsim",
+	"discussiontools-replywidget-cancel": "Basim",
+	"discussiontools-replywidget-mode-source": "Tuŋ",
+	"discussiontools-replywidget-mode-visual": "Linɛ nyɛt",
+	"discussiontools-replywidget-placeholder-reply": "Lɛbisim tis {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Pa'al bi'ela",
+	"discussiontools-replywidget-reply": "Lɛbisim"
 }
