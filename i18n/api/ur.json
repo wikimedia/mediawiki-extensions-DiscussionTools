@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"TheAafi"
+		]
+	},
+	"apierror-discussiontools-commentid-notfound": "آئی ڈی '$1' کے ساتھ تبصرہ نہیں ملا۔",
+	"apierror-discussiontools-commentname-ambiguous": "'$1' نام کے ساتھ متعدد تبصرے پائے گئے۔ <var>commentid</var> کی ضرورت ہے۔",
+	"apierror-discussiontools-commentname-notfound": "'$1' نام کے ساتھ تبصرہ نہیں ملا۔",
+	"apierror-discussiontools-formtoken-used": "تبصرہ پہلے ہی پوسٹ کیا گیا ہے۔ اسے دیکھنے کے لیے صفحہ کو دوبارہ لوڈ کریں۔",
+	"apierror-discussiontools-subscription-failed-add": "اس موضوع کو سبسکرائب نہیں کیا جا سکا۔",
+	"apierror-discussiontools-subscription-failed-remove": "اس موضوع سے رکنیت ختم نہیں کی جا سکی۔",
+	"apihelp-discussiontoolscompare-summary": "صفحے کے دو نسخوں کے ما بین تبصرے کے بدلاؤ کے متعلق معلومات حاصل کریں۔"
+}

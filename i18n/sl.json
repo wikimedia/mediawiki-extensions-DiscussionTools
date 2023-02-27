@@ -70,7 +70,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Zadnji komentar: $1 uporabnika $2",
 	"discussiontools-pagetitle-newtopic": "Začetek nove teme na strani $1",
 	"discussiontools-pagetitle-reply": "Odgovor na strani $1",
-	"discussiontools-postedit-confirmation-published": "Vaš komentar je bil objavljen.",
+	"discussiontools-postedit-confirmation-published": "Vaš komentar je objavljen.",
 	"discussiontools-postedit-confirmation-topicadded": "Vaša tema je dodana.",
 	"discussiontools-preference-autotopicsub": "Samodejno naročanje na teme",
 	"discussiontools-preference-autotopicsub-help": "Ko začnete novo razpravo ali dodate nov komentar pri obstoječem pogovoru, boste samodejno obveščeni, ko bodo drugi tam dodali nove komentarje.",
