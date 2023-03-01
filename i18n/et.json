@@ -91,7 +91,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Hülga teema",
 	"discussiontools-replywidget-abandontopic-keep": "Jätka kirjutamist",
 	"discussiontools-replywidget-advanced": "Täpsem",
-	"discussiontools-replywidget-anon-warning": "<strong>Sa pole sisse logitud.</strong> Selleks et kommentaar omistataks sulle IP-aadressi asemel nime järgi, saad [$1 sisse logida] või [$2 konto luua].",
+	"discussiontools-replywidget-anon-warning": "<strong>Sa pole sisse logitud.</strong> Selleks et saada vastuse kohta teavitus ja et kommentaar omistataks sulle IP-aadressi asemel nime järgi, saad [$1 sisse logida] või [$2 konto luua].",
 	"discussiontools-replywidget-cancel": "Loobu",
 	"discussiontools-replywidget-feedback": "Jaga selle funktsiooni kohta tagasisidet",
 	"discussiontools-replywidget-loading": "Laadimine…",

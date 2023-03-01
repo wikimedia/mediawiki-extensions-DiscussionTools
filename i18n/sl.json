@@ -54,7 +54,7 @@
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Zdaj si ogledujete predhodno izvedbo.<strong> Lahko se [$1 vrnete na novo izvedbo] ali obiščete nastavitve, da [$2 predhodno izvedbo nastavite kot privzeto].",
 	"discussiontools-newtopic-missing-title": "Prosimo, navedite naslov za temo razprave. Če boste kliknili »{{int:discussiontools-replywidget-newtopic}}«, bo vaša tema dodana brez naslova.",
 	"discussiontools-newtopic-placeholder-title": "Naslov",
-	"discussiontools-notification-removed-topic-body": "Morda ne boste več prejemali obvestil o {{PLURAL:$1|tej temi|teh temah}}.",
+	"discussiontools-notification-removed-topic-body": "Mogoče ne boste več prejemali obvestil o {{PLURAL:$1|tej temi|teh temah}}.",
 	"discussiontools-notification-removed-topic-header": "Tema »<strong>$4</strong>« je bila arhivirana ali odstranjena s strani $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|Ena tema je bila arhivirana ali odstranjena|$1 temi sta bili arhivirani ali odstranjeni|$1 teme so bile arhivirane ali odstranjene|$1 tem je bilo arhiviranih ali odstranjenih|100=99+ tem je bilo arhiviranih ali odstranjenih}} s strani $2.",
 	"discussiontools-notification-removed-topic-header-compact": "Tema »<strong>$4</strong>« je bila arhivirana ali odstranjena.",
