@@ -177,11 +177,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 };
 
 /**
- * Compare a suggestion to the normalized user input (lower case)
- *
- * @param {Mixed} suggestion Suggestion data, string by default
- * @param {string} normalizedInput Noramlized user input
- * @return {Object} Match object, containing two booleans, `isMatch` and `isExact`
+ * @inheritdoc
  */
 MWUsernameCompletionAction.prototype.compareSuggestionToInput = function ( suggestion, normalizedInput ) {
 	var normalizedSuggestion = suggestion.username.toLowerCase() + ' ' +
