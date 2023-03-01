@@ -8,7 +8,9 @@
 		]
 	},
 	"discussiontools": "చర్చ ఉపకరణాలు",
+	"discussiontools-autotopicsubpopup-body": "ఈ చర్చలో ఎవరైనా కొత్త వ్యాఖ్య రాసినప్పుడు మీకు గమనింపు వస్తుంది. మీ అభిరుచుల్లో గమనింపుల సెట్టింగులను మార్చుకోవచ్చు.",
 	"discussiontools-autotopicsubpopup-dismiss": "సరే, అర్థమైంది.",
+	"discussiontools-autotopicsubpopup-preferences": "అభిరుచులను మార్చుకోండి",
 	"discussiontools-autotopicsubpopup-title": "మీరు చందా కట్టారు",
 	"discussiontools-defaultsummary-reply": "సమాధానం",
 	"discussiontools-desc": "చర్చ పేజీలను మెరుగుపరచే ఉపకరణాలు",

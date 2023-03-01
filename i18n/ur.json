@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"TheAafi"
+		]
+	},
+	"discussiontools-autotopicsubpopup-dismiss": "ٹھیک ہے، میں سمجھ گیا۔",
+	"discussiontools-defaultsummary-reply": "جواب دیں",
+	"discussiontools-emptystate-button": "بحث شروع کریں۔",
+	"discussiontools-newtopic-missing-title": "براہ کرم اپنے موضوع بحث کے لیے عنوان فراہم کریں۔ اگر آپ \"{{int:discussiontools-replywidget-newtopic}}\" پر کلک کرتے ہیں تو آپ کا تبصرہ بغیر عنوان کے شامل کر دیا جائے گا۔",
+	"discussiontools-notification-subscribed-new-comment-view": "تبصرہ دیکھیں",
+	"discussiontools-postedit-confirmation-published": "آپ کا تبصرہ شائع کردیا گیا ہے۔",
+	"discussiontools-replylink": "جواب دیں",
+	"discussiontools-replywidget-cancel": "منسوخ کریں",
+	"discussiontools-replywidget-loading": "لوڈ ہو رہا ہے۔۔۔",
+	"discussiontools-replywidget-mention-tool-title": "صارف کا تذکرہ کریں",
+	"discussiontools-replywidget-newtopic": "نیا موضوع",
+	"discussiontools-replywidget-placeholder-newtopic": "تفصیل",
+	"discussiontools-replywidget-preview": "نمائش",
+	"discussiontools-replywidget-reply": "جواب دیں",
+	"discussiontools-replywidget-summary": "خلاصہ",
+	"discussiontools-topicsubscription-pager-page": "صفحہ",
+	"discussiontools-topicsubscription-pager-topic": "موضوع",
+	"tag-discussiontools-edit": "ترمیم شدہ تبصرہ"
+}
