@@ -108,7 +108,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "আলোচনা বাতিল করুন",
 	"discussiontools-replywidget-abandontopic-keep": "লেখা অব্যাহত রাখুন",
 	"discussiontools-replywidget-advanced": "উচ্চতর",
-	"discussiontools-replywidget-anon-warning": "<strong>আপনি প্রবেশ করেননি।</strong> আপনার আইপি ঠিকানার পরিবর্তে আপনার নাম ব্যবহার করতে, [$1 প্রবেশ করুন] বা [$2 একটি অ্যাকাউন্ট তৈরি করুন]।",
+	"discussiontools-replywidget-anon-warning": "<strong>আপনি প্রবেশ করেননি।</strong> আপনার আইপি ঠিকানার পরিবর্তে আপনার নাম ব্যবহার করতে ও কেউ উত্তর দিলে বিজ্ঞপ্তি পেতে, [$1 প্রবেশ করুন] বা [$2 একটি অ্যাকাউন্ট তৈরি করুন]।",
 	"discussiontools-replywidget-cancel": "বাতিল",
 	"discussiontools-replywidget-feedback": "এটি সম্পর্কে আপনার প্রতিক্রিয়া জানান",
 	"discussiontools-replywidget-loading": "লোড করা হচ্ছে…",
