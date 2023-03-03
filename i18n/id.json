@@ -65,6 +65,7 @@
 	"discussiontools-notification-removed-topic-header-compact": "Topik \"<strong>$4</strong>\" telah diarsipkan atau dihapus.",
 	"discussiontools-notification-removed-topic-view": "Lihat halaman",
 	"discussiontools-notification-removed-topic-disable": "Berhenti menerima pemberitahuan seperti ini",
+	"discussiontools-notification-removed-topic-disabled-title": "Anda tidak akan lagi menerima notifikasi saat topik diarsipkan atau dihapus.",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|menjawab}} dalam \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Satu jawaban baru|$1 jawaban baru|100=99+ jawaban baru}} dalam \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Tampilkan komentar",
