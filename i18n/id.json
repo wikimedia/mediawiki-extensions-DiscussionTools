@@ -100,7 +100,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Buang topik",
 	"discussiontools-replywidget-abandontopic-keep": "Lanjut menulis",
 	"discussiontools-replywidget-advanced": "Lanjutan",
-	"discussiontools-replywidget-anon-warning": "<strong>Anda belum masuk log.</strong> Untuk mencantumkan nama Anda alih-alih alamat IP Anda, Anda dapat [$1 masuk log] atau [$2 buat akun baru].",
+	"discussiontools-replywidget-anon-warning": "<strong>Anda belum masuk log.</strong> Untuk mendapat notifikasi ketika seseorang membalas serta menerima atribusi dengan nama Anda (alih-alih alamat IP Anda), Anda dapat [$1 masuk log] atau [$2 membuat akun].",
 	"discussiontools-replywidget-cancel": "Batal",
 	"discussiontools-replywidget-feedback": "Bagikan masukan tentang fitur ini",
 	"discussiontools-replywidget-loading": "Memuat...",
