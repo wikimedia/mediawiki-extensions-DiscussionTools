@@ -67,6 +67,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(не в текущей версии)",
 	"discussiontools-findcomment-results-transcluded": "(включено с другой страницы)",
 	"discussiontools-findcomment-title": "Найти комментарий",
+	"discussiontools-ledesection-button": "Узнать больше об этой странице",
+	"discussiontools-ledesection-title": "Об этой странице обсуждения",
 	"discussiontools-limitreport-errorreqid": "ID запроса с ошибкой в DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Время использования DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунды|секунд}}",

@@ -9,6 +9,8 @@
 	"discussiontools-replylink": "cəvob bıdə",
 	"discussiontools-replywidget-cancel": "Ləğv karde",
 	"discussiontools-replywidget-mode-visual": "Əyoni",
+	"discussiontools-replywidget-newtopic": "Mıvzo əlovə bıkə",
 	"discussiontools-replywidget-placeholder-reply": "Cəvob bıdə bə {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Cəvob bıdə"
+	"discussiontools-replywidget-reply": "Cəvob bıdə",
+	"discussiontools-topicsubscription-pager-topic": "Mıvzo"
 }
