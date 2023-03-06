@@ -2,10 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Yirkang",
-			"Linus Konkor"
+			"Linus Konkor",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Leɛ sagbo",
+	"discussiontools-replylink": "Sagebu",
+	"discussiontools-replywidget-cancel": "Iribarebo",
 	"discussiontools-replywidget-mode-source": "Yizie",
-	"discussiontools-replywidget-preview": "Leɛkaabo"
+	"discussiontools-replywidget-mode-visual": "Kaabo",
+	"discussiontools-replywidget-placeholder-reply": "Sage o {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Leɛkaabo",
+	"discussiontools-replywidget-reply": "Sagebo"
 }

@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bgo eiu"
+			"Bgo eiu",
+			"Jagseer S Sidhu"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ਜੁਆਬ",
 	"discussiontools-replylink": "ਜੁਆਬ ਦਿਉ",
 	"discussiontools-replywidget-cancel": "ਰੱਦ ਕਰੋ",
 	"discussiontools-replywidget-mode-source": "ਸਰੋਤ",
+	"discussiontools-replywidget-mode-visual": "ਵਿਜ਼ੂਅਲ",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI: $1 }} ਨੂੰ ਜਵਾਬ ਦਿਓ",
 	"discussiontools-replywidget-preview": "ਝਲਕ",
 	"discussiontools-replywidget-reply": "ਜੁਆਬ ਦਿਉ"
 }

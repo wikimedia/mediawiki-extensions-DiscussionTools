@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Malikxan"
+			"Malikxan",
+			"Zafar Shamsiddinov"
 		]
 	},
 	"discussiontools": "Munozara asboblari",
@@ -19,8 +20,8 @@
 	"discussiontools-replywidget-preview": "Prevyu",
 	"discussiontools-replywidget-reply": "Javob berish",
 	"discussiontools-replywidget-terms-click": "„$1“ tugmasini bosish orqali ushbu viki foydalanish shartlariga rozilik bildirasiz.",
-	"discussiontools-replywidget-transcluded": "Qoldirgan izohingiz [[$1]] sahifasida saqlanadi.",
-	"discussiontools-error-comment-is-transcluded": "„{{int:discussiontools-replylink}}“ havolasidan ushbu izohga javob berish uchun foydalanib boʻlmaydi. Javob berish uchun, iltimos, „$1“ tugmasini bosish orqali toʻliq sahifa tahrirlagichidan foydalaning.",
+	"discussiontools-replywidget-transcluded": "Qoldirgan fikringiz [[$1]] sahifasida saqlanadi.",
+	"discussiontools-error-comment-is-transcluded": "„{{int:discussiontools-replylink}}“ havolasidan ushbu fikrga javob berish uchun foydalanib boʻlmaydi. Javob berish uchun, iltimos, „$1“ tugmasini bosish orqali toʻliq sahifa tahrirlagichidan foydalaning.",
 	"tag-discussiontools-description": "DiscussionTools orqali qilingan tahrir",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Javob]",
 	"tag-discussiontools-source": "Manba",
