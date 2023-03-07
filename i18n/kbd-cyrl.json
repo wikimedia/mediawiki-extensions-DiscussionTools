@@ -22,6 +22,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Хыхьэн",
 	"discussiontools-topicsubscription-button-unsubscribe": "къыхэкӀыжын",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "КъыхэкӀыжын",
+	"discussiontools-topicsubscription-notify-subscribed-body": "ДяпэкӀэ хъыбар къыуагъэщӀэнущ, тхыгъэщӀэхэр къралъхьэмэ.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Ухыхьащ!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "АфӀэкӀа хъыбар къыуагъэщӀэнукъым тхыгъэщӀэхэм теухуауэ.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "УкъыхэкӀыжащ."
 }

@@ -53,6 +53,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|1=Цхьаъ керла жоп|$1 керла жоп|100=99+ керла жом}} «<strong>$3</strong>» чохь.",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Хьажа коммент",
+	"discussiontools-pageframe-latestcomment": "ТӀаьхьара коммент йу: $1 йазйина $2 декъашхочо «$3» темехь",
 	"discussiontools-pageframe-latestcomment-notopic": "ТӀаьхьара коммент: $1 - $2",
 	"discussiontools-pagetitle-newtopic": "«$1» агӀонан тӀехь керла тема йолийна",
 	"discussiontools-pagetitle-reply": "«$1» агӀонгахь жоп",
