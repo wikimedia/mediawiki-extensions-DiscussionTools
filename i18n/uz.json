@@ -10,7 +10,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Moslamalarni tahrirlash",
 	"discussiontools-defaultsummary-reply": "Javob",
 	"discussiontools-emptystate-button": "Munozarani boshlash",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Munozara sahifalar]] {{SITENAME}}da kontentni qanday qilib yaxshilash haqida munozara qilinadigan joydir. Ushbu sahifadan [[:{{SUBJECTPAGENAME}}]] sahifasini qanday qilib yaxshilash borasida boshqa foydalanuvchilar bilan munozara boshlash uchun foydalanishingiz mumkin.",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Munozara sahifalarida]] foydalanuvchilar {{SITENAME}} maqolalarini yaxshilash bilan bogʻliq masalalarni muhokama qilishlari mumkin. [[:{{SUBJECTPAGENAME}}]] sahifasini qanday qilib yaxshilash borasida muhokama boshlash uchun ushbu sahifadan foydalanishingiz mumkin.",
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} haqida munozara boshlang",
 	"discussiontools-emptystate-title-self": "Munozara sahifangizga xush kelibsiz",
 	"discussiontools-emptystate-title-self-anon": "Ushbu munozara sahifaga xush kelibsiz",
