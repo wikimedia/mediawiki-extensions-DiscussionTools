@@ -489,19 +489,18 @@ class HookUtils {
 	public static function shouldOpenNewTopicTool( IContextSource $context ): bool {
 		$req = $context->getRequest();
 		$out = $context->getOutput();
+		$hasPreload = $req->getCheck( 'editintro' ) || $req->getCheck( 'preload' ) ||
+			$req->getCheck( 'preloadparams' ) || $req->getCheck( 'preloadtitle' ) ||
+			// Switching or previewing from an external tool (T316333)
+			$req->getCheck( 'wpTextbox1' );
 
 		return (
 			// ?title=...&action=edit&section=new
 			// ?title=...&veaction=editsource&section=new
 			( $req->getRawVal( 'action' ) === 'edit' || $req->getRawVal( 'veaction' ) === 'editsource' ) &&
 			$req->getRawVal( 'section' ) === 'new' &&
-			// Adding a new topic with preloaded text is not supported yet (T269310)
-			!(
-				$req->getCheck( 'editintro' ) || $req->getCheck( 'preload' ) ||
-				$req->getCheck( 'preloadparams' ) || $req->getCheck( 'preloadtitle' ) ||
-				// Switching or previewing from an external tool (T316333)
-				$req->getCheck( 'wpTextbox1' )
-			) &&
+			// Handle new topic with preloaded text only when requested (T269310)
+			( $req->getCheck( 'dtpreload' ) || !$hasPreload ) &&
 			// User has new topic tool enabled (and not using &dtenable=0)
 			static::isFeatureEnabledForOutput( $out, static::NEWTOPICTOOL )
 		);

@@ -10,6 +10,7 @@ var
 	Parser = require( './Parser.js' ),
 	ThreadItemSet = require( './ThreadItemSet.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
+	HeadingItem = require( './HeadingItem.js' ),
 	ReplyLinksController = require( './ReplyLinksController.js' ),
 	logger = require( './logger.js' ),
 	utils = require( './utils.js' ),
@@ -43,13 +44,15 @@ function getApi() {
  *
  * @param {string} pageName Page title
  * @param {number} oldId Revision ID
+ * @param {Object} [apiParams] Additional parameters for the API
  * @return {jQuery.Promise}
  */
-function getPageData( pageName, oldId ) {
+function getPageData( pageName, oldId, apiParams ) {
 	var api = getApi();
+	apiParams = apiParams || {};
 
 	pageDataCache[ pageName ] = pageDataCache[ pageName ] || {};
-	if ( pageDataCache[ pageName ][ oldId ] ) {
+	if ( pageDataCache[ pageName ][ oldId ] && $.isEmptyObject( apiParams ) ) {
 		return pageDataCache[ pageName ][ oldId ];
 	}
 
@@ -77,15 +80,15 @@ function getPageData( pageName, oldId ) {
 		transcludedFromPromise = $.Deferred().resolve( {} ).promise();
 	}
 
-	var veMetadataPromise = api.get( {
+	var veMetadataPromise = api.get( $.extend( {
 		action: 'visualeditor',
 		paction: 'metadata',
 		page: pageName
-	} ).then( function ( response ) {
+	}, apiParams ) ).then( function ( response ) {
 		return OO.getProp( response, 'visualeditor' ) || [];
 	} );
 
-	pageDataCache[ pageName ][ oldId ] = $.when( lintPromise, transcludedFromPromise, veMetadataPromise )
+	var promise = $.when( lintPromise, transcludedFromPromise, veMetadataPromise )
 		.then( function ( linterrors, transcludedfrom, metadata ) {
 			return {
 				linterrors: linterrors,
@@ -98,7 +101,12 @@ function getPageData( pageName, oldId ) {
 			// Let caller handle the error
 			return $.Deferred().rejectWith( this, arguments );
 		} );
-	return pageDataCache[ pageName ][ oldId ];
+
+	if ( $.isEmptyObject( apiParams ) ) {
+		pageDataCache[ pageName ][ oldId ] = promise;
+	}
+
+	return promise;
 }
 
 /**
@@ -112,8 +120,19 @@ function getPageData( pageName, oldId ) {
  */
 function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 	var isNewTopic = threadItem.id === utils.NEW_TOPIC_COMMENT_ID;
+	var defaultMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' );
+	var apiParams = null;
+	if ( isNewTopic ) {
+		apiParams = {
+			section: 'new',
+			editintro: threadItem.editintro,
+			preload: threadItem.preload,
+			preloadparams: threadItem.preloadparams,
+			paction: defaultMode === 'source' ? 'wikitext' : 'parse'
+		};
+	}
 
-	return getPageData( pageName, oldId )
+	return getPageData( pageName, oldId, apiParams )
 		.then( function ( response ) {
 			var metadata = response.metadata,
 				lintErrors = response.linterrors,
@@ -192,7 +211,7 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 				} ] } ).promise();
 			}
 
-			return new CommentDetails( pageName, oldId, metadata.notices );
+			return new CommentDetails( pageName, oldId, metadata.notices, metadata.content, defaultMode );
 		} );
 }
 
@@ -286,26 +305,26 @@ function init( $container, state ) {
 	/**
 	 * Setup comment controllers for each comment, and the new topic controller
 	 *
-	 * @param {string} commentId Comment ID, or NEW_TOPIC_COMMENT_ID constant
+	 * @param {ThreadItem} comment
 	 * @param {jQuery} $link Add section link for new topic controller
 	 * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
 	 * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
 	 * @param {boolean} [suppressNotifications] Don't notify the user if recovering auto-save
 	 */
-	function setupController( commentId, $link, mode, hideErrors, suppressNotifications ) {
+	function setupController( comment, $link, mode, hideErrors, suppressNotifications ) {
 		var commentController, $addSectionLink;
 
-		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
+		if ( comment.id === utils.NEW_TOPIC_COMMENT_ID ) {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$addSectionLink = $( '#ca-addsection' ).find( 'a' );
 			// When opening new topic tool using any link, always activate the link in page tabs too
 			$link = $link.add( $addSectionLink );
-			commentController = new NewTopicController( $pageContainer, pageThreads );
+			commentController = new NewTopicController( $pageContainer, comment, pageThreads );
 		} else {
-			commentController = new CommentController( $pageContainer, pageThreads.findCommentById( commentId ), pageThreads );
+			commentController = new CommentController( $pageContainer, comment, pageThreads );
 		}
 
-		activeCommentId = commentId;
+		activeCommentId = comment.id;
 		activeController = commentController;
 		linksController.setActiveLink( $link );
 
@@ -345,11 +364,19 @@ function init( $container, state ) {
 		}
 	}
 
+	function newTopicComment( data ) {
+		var comment = new HeadingItem( {}, 2 );
+		comment.id = utils.NEW_TOPIC_COMMENT_ID;
+		comment.isNewTopic = true;
+		$.extend( comment, data );
+		return comment;
+	}
+
 	// Hook up each link to open a reply widget
 	//
 	// TODO: Allow users to use multiple reply widgets simultaneously.
 	// Currently submitting a reply from one widget would also destroy the other ones.
-	linksController.on( 'link-click', function ( commentId, $link ) {
+	linksController.on( 'link-click', function ( commentId, $link, data ) {
 		// If the reply widget is already open, activate it.
 		// Reply links are also made unclickable using 'pointer-events' in CSS, but that doesn't happen
 		// for new section links, because we don't have a good way of visually disabling them.
@@ -378,7 +405,13 @@ function init( $container, state ) {
 			if ( activeController ) {
 				return;
 			}
-			setupController( commentId, $link );
+			var comment;
+			if ( commentId !== utils.NEW_TOPIC_COMMENT_ID ) {
+				comment = parser.findCommentById( comment.id );
+			} else {
+				comment = newTopicComment( data );
+			}
+			setupController( comment, $link );
 		} );
 	} );
 
@@ -395,7 +428,7 @@ function init( $container, state ) {
 			if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
 				mode = storage.get( 'reply/' + comment.id + '/mode' );
 				$link = $( commentNodes[ i ] );
-				setupController( comment.id, $link, mode, true, !state.firstLoad );
+				setupController( comment, $link, mode, true, !state.firstLoad );
 				break;
 			}
 		}
@@ -404,9 +437,10 @@ function init( $container, state ) {
 			storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/title' )
 		) {
 			mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
-			setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ), mode, true, !state.firstLoad );
+			setupController( newTopicComment(), $( [] ), mode, true, !state.firstLoad );
 		} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
-			setupController( utils.NEW_TOPIC_COMMENT_ID, $( [] ) );
+			var data = linksController.parseNewTopicLink( location.href );
+			setupController( newTopicComment( data ), $( [] ) );
 		}
 	}() );
 
