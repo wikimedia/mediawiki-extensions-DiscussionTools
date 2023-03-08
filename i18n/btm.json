@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"IHLubis"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "mamjawab",
+	"discussiontools-replylink": "manjawab",
+	"discussiontools-replywidget-advanced": "ipatorus",
+	"discussiontools-replywidget-cancel": "Bottalkon",
+	"discussiontools-replywidget-mode-source": "Sumber na",
+	"discussiontools-replywidget-mode-visual": "Tarida",
+	"discussiontools-replywidget-placeholder-reply": "Balas tu{{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "i ligimulakan",
+	"discussiontools-replywidget-reply": "manjawab",
+	"discussiontools-topicsubscription-button-subscribe": "marlangganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "mantak marlangganan",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Ho na akan mandapotkon obar satontang kecek na baru sian on bagasan tema on.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Ho mandung marlangganan",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ho inda be manarimo obar satontang kecek na baru sian on bagasan tema on.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Ho mandung mantak marlangganan"
+}

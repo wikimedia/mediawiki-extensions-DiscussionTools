@@ -17,6 +17,8 @@
 	"discussiontools-replywidget-watchthis": "Мы напэкӀуэцӀыр уи кӀэлъыплъыныгъэм и спискэм [[Special:Watchlist|watchlist]] хэгъэхьэн",
 	"discussiontools-topicsubscription-button-subscribe": "хыхьэн",
 	"discussiontools-topicsubscription-button-unsubscribe": "къыхэкӀыжын",
+	"discussiontools-topicsubscription-notify-subscribed-body": "ДяпэкӀэ хъыбар къыуагъэщӀэнущ, тхыгъэщӀэхэр къралъхьэмэ.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Ухыхьащ!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "АфӀэкӀа хъыбар къыуагъэщӀэнукъым тхыгъэщӀэхэм теухуауэ.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "УкъыхэкӀыжащ."
 }
