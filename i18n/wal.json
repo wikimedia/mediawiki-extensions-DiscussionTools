@@ -147,6 +147,7 @@
 	"discussiontools-topicsubscription-pager-topic": "Huuphe yohuwaa",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Xaafettoogaa qucca",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Xaafettota harumma",
+	"discussiontools-topicsubscription-special-intro": "Xaafettoti nena huuphe yohuwaan haasayaa sinttata kaallanaassi danddayissoosona. Issi asi huuphe yohuwaan zaariyoode, neeni erissuwaa ekkaasa. \n\nHa [[Special:Preferences#mw-prefsection-echo|ne doorotun]] ne waatadanne awuppe erissota ekkanaakko giigissa.",
 	"discussiontools-topicsubscription-special-title": "Huuphe yohuwaan xaafettiyoogaa",
 	"echo-category-title-dt-subscription": "Haasaya sinttaa {{PLURAL:$1|xaafettoogaa|xaafettoogeeta}}",
 	"echo-category-title-dt-subscription-archiving": "Haasayaa sinttaa {{PLURAL:$1|issippe wottiidi de'ees}}",
@@ -156,5 +157,11 @@
 	"tag-discussiontools-description": "DiscussionTools go'ettidi harummidoogaa",
 	"tag-discussiontools-edit": "Harummettuda qofaa",
 	"tag-discussiontools-edit-description": "Go'ettiyaagee DiscussionTools kase de'iya qofaa harummis",
-	"tag-discussiontools-newtopic": "[{{int\n:discussiontools-replywidget-newtopic-link}} Ooratta huuphe yohuwaa]"
+	"tag-discussiontools-newtopic": "[{{int\n:discussiontools-replywidget-newtopic-link}} Ooratta huuphe yohuwaa]",
+	"tag-discussiontools-newtopic-description": "DiscussionTools de'iya sintran go'ettiyaagee ooratta huuphe yohuwaa gujjiis.",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} zaara]",
+	"tag-discussiontools-reply-description": "DiscussionTools de'iya qofan go'ettiyaagee zaariis",
+	"tag-discussiontools-source-description": "DiscussionTools man\"iyaa hanotan de'ees",
+	"tag-discussiontools-source-enhanced-description": "DiscussionTools miishshatu tolbaariyaara lo'ida hanotan man\"iyaan de'ees",
+	"tag-discussiontools-visual-description": "DiscussionTools beettiya hanotan de'ees"
 }
