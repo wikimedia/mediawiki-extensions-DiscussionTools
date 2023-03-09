@@ -407,7 +407,7 @@ function init( $container, state ) {
 			}
 			var comment;
 			if ( commentId !== utils.NEW_TOPIC_COMMENT_ID ) {
-				comment = parser.findCommentById( comment.id );
+				comment = pageThreads.findCommentById( commentId );
 			} else {
 				comment = newTopicComment( data );
 			}
