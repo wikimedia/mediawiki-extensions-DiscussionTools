@@ -534,6 +534,10 @@
 			"description": "A list of language codes which will receive an icon in their enhanced reply-button treatment",
 			"merge_strategy": "provide_default"
 		},
+		"DiscussionTools_visualenhancements_newsectionlink_enable": {
+			"value": true,
+			"description": "Enable visual enhancements on non-talk, non-article namespaces if they have __NEWSECTIONLINK__ magic word. Temporary config for phased rollout (T331635)"
+		},
 		"DiscussionToolsEnablePermalinksBackend": {
 			"value": true,
 			"description": "Enable the permalinks backend. Do not enable this unless the database tables exist."
