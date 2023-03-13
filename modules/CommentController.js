@@ -193,6 +193,12 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 		OO.ui.Element.static.scrollIntoView( commentController.newListItem, {
 			padding: scrollPaddingCollapsed
 		} );
+
+		// Disable section collapsing on mobile. If the section were collapsed it would be hard to
+		// find your comment again. The "Return to reply" tool is broken by section collapsing as
+		// the reply widget is hidden and therefore not measureable. It's also possible the page is
+		// not long enough to trigger the "Return to reply" tool.
+		$( this.newListItem ).parents( '.collapsible-block' ).prev().addClass( 'collapsible-heading-disabled' );
 	}
 
 	if (
@@ -216,6 +222,8 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 			}
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
+
+		$( this.newListItem ).parents( '.collapsible-block' ).prev().addClass( 'collapsible-heading-disabled' );
 
 		commentController.setupReplyWidget( replyWidget, {}, suppressNotifications );
 
@@ -373,6 +381,8 @@ CommentController.prototype.showAndFocus = function () {
 };
 
 CommentController.prototype.teardown = function ( mode ) {
+	$( this.newListItem ).parents( '.collapsible-block' ).prev().removeClass( 'collapsible-heading-disabled' );
+
 	if ( mode === 'refresh' ) {
 		$( this.newListItem ).empty().append(
 			$( '<span>' ).text( mw.msg( 'discussiontools-replywidget-loading' ) )
