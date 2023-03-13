@@ -29,8 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	// Add space before the buttons using actual spaces rather than margin, so that they may collapse
 	// when the buttons wrap to a new line (T325416).
-	// (Except on Minerva, which uses block placements for the buttons rather than inline.)
-	body:not( .skin-minerva ) &::before {
+	&::before {
 		// Must use character escapes to avoid CSS minifier messing up the spaces
 		content: '\20\20';
 		white-space: pre-wrap;
@@ -349,9 +348,14 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 
+	// Use block placement for the reply buttons on mobile, to make them easier to tap.
 	&.skin-minerva .ext-discussiontools-init-replylink-buttons {
-		margin-left: 0;
 		display: block;
+
+		&::before {
+			// Remove the spaces that are used for inline placement (T325416), added at the top of this file.
+			content: '';
+		}
 	}
 }
 
