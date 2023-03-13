@@ -9,6 +9,7 @@
 	"discussiontools-replywidget-cancel": "Чох иткені",
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Визуально",
+	"discussiontools-replywidget-placeholder-reply": "Нандырарға {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Предпросмотр",
 	"discussiontools-replywidget-reply": "нандырарға"
 }

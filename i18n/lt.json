@@ -4,7 +4,8 @@
 			"Eitvys200",
 			"Tomasdd",
 			"Homo",
-			"Hugo.arg"
+			"Hugo.arg",
+			"Pavel1513"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Atsakyti",
@@ -12,6 +13,7 @@
 	"discussiontools-preference-label": "Diskusijų įrankiai",
 	"discussiontools-replylink": "atsakyti",
 	"discussiontools-replywidget-cancel": "Atšaukti",
+	"discussiontools-replywidget-feedback": "Pateikite atsiliepimą apie šią funkciją",
 	"discussiontools-replywidget-loading": "Kraunasi...",
 	"discussiontools-replywidget-mention-tool-title": "Paminėti naudotoją",
 	"discussiontools-replywidget-mode-source": "Šaltinis",

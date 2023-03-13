@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Ella Lachow"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Zaara",
+	"discussiontools-desc": "Tobbiyaa sinttata lo'issa buqurata.",
+	"discussiontools-preference-label": "Tobbiyaa miishshata",
+	"discussiontools-replylink": "zaara",
+	"discussiontools-replywidget-cancel": "Qucca",
+	"discussiontools-replywidget-feedback": "Ha hanuwaabaa oosuwaa zaaruwaa shaakka",
+	"discussiontools-replywidget-loading": "Shiishiiddi de'ees...",
+	"discussiontools-replywidget-mention-tool-title": "Go'ettiyaagaa gelissa",
+	"discussiontools-replywidget-mode-source": "Pulttuwaa",
+	"discussiontools-replywidget-mode-visual": "Beettiyaagaa",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} hagaassi zaara",
+	"discussiontools-replywidget-preview": "Zaari be'uwaa",
+	"discussiontools-replywidget-reply": "Zaara",
+	"discussiontools-replywidget-terms-click": "\"$1\" hagaa caddiyoogan, ha wiikkiiyaa go'ettiyoo maachatun maayettadasa.",
+	"discussiontools-replywidget-transcluded": "Ne qofay hagan[[$1]] wodhanawu de'ees.",
+	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" ha gattiyaagee ha qofaassi zaaruwaa immannawu go'ana danddayenna. Zaaranaassi \"$1\" haga caddada hayyanaa kumetta sinttaa harumissiyaagaa go'etta.",
+	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" ha gattiyaagee ha qofaassi zaaruwaa immannawu go'ana danddayenna, gaasoykka i hara sinttaappe yiis. Zaaranaassi hayyanaa hagaakko ba:[[$1]].",
+	"discussiontools-error-lint": "Wiikiixuufiyaan balay de'iyo gaasuwan ha sinttan de'iya qofata zaarana danddayettenna. Ha balatubaa ha [$1 issippe uttida fayileta nabbabiyoogan], luxanaassi, maaduwaassi oychiyoogan, [$2 hagan gatti oyttiyoogan] woykko hagan [$3 kumetta sinttaa harumissiyaagaa dooyiyoogan] balaa pagalana danddayaasa.",
+	"tag-discussiontools-description": "DiscussionTools go'ettidi harummidoogaa",
+	"tag-discussiontools-edit-description": "Go'ettiyaagee DiscussionTools kase de'iya qofaa harummis",
+	"tag-discussiontools-newtopic-description": "DiscussionTools de'iya sintran go'ettiyaagee ooratta huuphe yohuwaa gujjiis.",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} zaara]",
+	"tag-discussiontools-reply-description": "DiscussionTools de'iya qofan go'ettiyaagee zaariis",
+	"tag-discussiontools-source-description": "DiscussionTools man\"iyaa hanotan de'ees",
+	"tag-discussiontools-visual-description": "DiscussionTools beettiya hanotan de'ees"
+}
