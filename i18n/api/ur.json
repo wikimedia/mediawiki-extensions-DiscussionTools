@@ -10,5 +10,6 @@
 	"apierror-discussiontools-formtoken-used": "تبصرہ پہلے ہی پوسٹ کیا گیا ہے۔ اسے دیکھنے کے لیے صفحہ کو دوبارہ لوڈ کریں۔",
 	"apierror-discussiontools-subscription-failed-add": "اس موضوع کو سبسکرائب نہیں کیا جا سکا۔",
 	"apierror-discussiontools-subscription-failed-remove": "اس موضوع سے رکنیت ختم نہیں کی جا سکی۔",
-	"apihelp-discussiontoolscompare-summary": "صفحے کے دو نسخوں کے ما بین تبصرے کے بدلاؤ کے متعلق معلومات حاصل کریں۔"
+	"apihelp-discussiontoolscompare-summary": "صفحے کے دو نسخوں کے ما بین تبصرے کے بدلاؤ کے متعلق معلومات حاصل کریں۔",
+	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "موجود تبصرے کے جواب میں ایک نیا تبصرہ شامل کریں۔"
 }

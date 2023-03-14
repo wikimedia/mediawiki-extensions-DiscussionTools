@@ -70,6 +70,7 @@
 	"discussiontools-replywidget-transcluded": "Вашият коментар ще бъде записан на [[$1]].",
 	"discussiontools-replywidget-watchthis": "Добавяне на страницата към [[Special:Watchlist|списъка за наблюдение]]",
 	"discussiontools-signature-prefix": "&#32;",
+	"discussiontools-target-comment-missing": "Коментарът не може да бъде открит. Може да е изтрит или преместен.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|човек участва|човека участват}} в дискусията",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|коментар|коментари}}",
 	"discussiontools-topicheader-latestcomment": "Последен коментар: $1",
