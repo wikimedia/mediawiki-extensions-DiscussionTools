@@ -8,9 +8,12 @@
 		]
 	},
 	"discussiontools-replylink": "loke",
+	"discussiontools-replywidget-advanced": "Taoore",
 	"discussiontools-replywidget-cancel": "Base",
 	"discussiontools-replywidget-mode-source": "Suurs",
 	"discussiontools-replywidget-mode-visual": "Yãabo",
 	"discussiontools-replywidget-placeholder-reply": "Leoke {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Leoke"
+	"discussiontools-replywidget-preview": "N gese",
+	"discussiontools-replywidget-reply": "Leoke",
+	"discussiontools-replywidget-summary": "Kʋmbgo"
 }

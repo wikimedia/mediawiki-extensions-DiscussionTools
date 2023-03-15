@@ -4,5 +4,10 @@
 			"Bgo eiu"
 		]
 	},
-	"discussiontools-replywidget-advanced": "اضافی"
+	"discussiontools-defaultsummary-reply": "جواب",
+	"discussiontools-replylink": "جواب دیو",
+	"discussiontools-replywidget-advanced": "اضافی",
+	"discussiontools-replywidget-cancel": "رد کرو",
+	"discussiontools-replywidget-mode-source": "ماخذ",
+	"discussiontools-replywidget-reply": "جواب دیو"
 }

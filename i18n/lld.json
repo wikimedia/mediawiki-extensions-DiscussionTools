@@ -7,6 +7,7 @@
 	},
 	"discussiontools-defaultsummary-reply": "Respogn",
 	"discussiontools-replylink": "respogn",
+	"discussiontools-replywidget-advanced": "Avanzà",
 	"discussiontools-replywidget-cancel": "Scancelea",
 	"discussiontools-replywidget-mode-source": "Funtana",
 	"discussiontools-replywidget-mode-visual": "Visual",
@@ -14,5 +15,9 @@
 	"discussiontools-replywidget-preview": "Odüda danfora",
 	"discussiontools-replywidget-reply": "Respogn",
 	"discussiontools-replywidget-summary": "Ressumé",
-	"discussiontools-topicsubscription-button-subscribe": "se abuné"
+	"discussiontools-topicsubscription-button-subscribe": "se abuné",
+	"discussiontools-topicsubscription-button-unsubscribe": "se scrì ora",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Te es scrit ite!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Te ne giateres nia plu notificazions sun nuef cumentares sun chësc tema.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Te es scrit ora."
 }
