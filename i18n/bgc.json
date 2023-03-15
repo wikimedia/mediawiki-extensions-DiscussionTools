@@ -14,16 +14,9 @@
 	"discussiontools-replywidget-preview": "झलक",
 	"discussiontools-replywidget-reply": "उत्तर दें",
 	"discussiontools-replywidget-summary": "सारांश",
-	"discussiontools-replywidget-watchthis": "Add this page to your [[Special:Watchlist|watchlist]]",
-	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|people}} in discussion।",
-	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comment|comments}}{{PLURAL:$1|}}",
 	"discussiontools-topicheader-latestcomment": "नवीनतम टिप्पणी: $1",
 	"discussiontools-topicsubscription-button-subscribe": "सदस्यता लें",
 	"discussiontools-topicsubscription-button-subscribe-label": "सदस्यता लें",
 	"discussiontools-topicsubscription-button-unsubscribe": "सदस्यता छोड़ें",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "सदस्यता रद्द करें",
-	"discussiontools-topicsubscription-notify-subscribed-body": "You will receive notifications about new comments in this topic.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "You have subscribed!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "You will no longer receive notifications about new comments in this topic.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "You have unsubscribed."
+	"discussiontools-topicsubscription-button-unsubscribe-label": "सदस्यता रद्द करें"
 }

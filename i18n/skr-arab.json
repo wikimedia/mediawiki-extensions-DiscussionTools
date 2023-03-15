@@ -5,6 +5,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "جواب",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|ڳالھ مہاڑ ورقے]] تے {{SITENAME}} تے مواد کوں ممکن حد تائیں بہتر بݨاوݨ کیتے لوک بحث کریندے ہن۔ تساں ایں ورقے تے [[:{{SUBJECTPAGENAME}}]] کوں چنگا بݨاوݨ دے طریقے بارے ٻیاں نال بحث  شروع کر سڳدے ہو۔",
 	"discussiontools-replylink": "جواب",
 	"discussiontools-replywidget-advanced": "ودھائے",
 	"discussiontools-replywidget-cancel": "منسوخ",
