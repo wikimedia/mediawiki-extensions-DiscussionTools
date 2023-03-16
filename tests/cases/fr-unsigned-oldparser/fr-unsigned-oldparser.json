@@ -332,6 +332,7 @@
 						"type": "comment",
 						"timestamp": "2006-08-15T00:28:00.000Z",
 						"author": "Digging.holes",
+						"displayName": "DH",
 						"range": [
 							"108/2/0",
 							"108/2/6/30"
@@ -389,6 +390,7 @@
 												"type": "comment",
 												"timestamp": "2006-08-25T22:39:00.000Z",
 												"author": "Digging.holes",
+												"displayName": "DH",
 												"range": [
 													"108/2/7/2/5/0/5/0/0",
 													"108/2/7/2/5/0/5/0/4/30"
@@ -427,6 +429,7 @@
 																"type": "comment",
 																"timestamp": "2006-08-26T17:28:00.000Z",
 																"author": "Digging.holes",
+																"displayName": "DH",
 																"range": [
 																	"108/2/7/2/5/0/5/0/5/0/5/0/0",
 																	"108/2/7/2/5/0/5/0/5/0/5/0/6/30"
@@ -984,6 +987,7 @@
 										"type": "comment",
 										"timestamp": "2011-02-28T09:33:00.000Z",
 										"author": "Azoee",
+										"displayName": "Azoée",
 										"range": [
 											"195/0/5/0/7/0/0",
 											"195/0/5/0/7/0/4/31"
@@ -1143,6 +1147,7 @@
 				"type": "comment",
 				"timestamp": "2011-04-07T18:56:00.000Z",
 				"author": "Azoee",
+				"displayName": "Azoée",
 				"range": [
 					"209/0",
 					"212/0/4/29"
@@ -1185,6 +1190,7 @@
 								"type": "comment",
 								"timestamp": "2011-04-09T09:46:00.000Z",
 								"author": "Azoee",
+								"displayName": "Azoée",
 								"range": [
 									"212/0/5/0/5/0/0",
 									"212/0/5/0/5/0/4/29"
@@ -1224,6 +1230,7 @@
 				"type": "comment",
 				"timestamp": "2012-03-11T09:51:00.000Z",
 				"author": "Jules78120",
+				"displayName": "Jules",
 				"range": [
 					"216/0",
 					"218/2/6/27"
@@ -1334,6 +1341,7 @@
 								"type": "comment",
 								"timestamp": "2013-03-03T21:08:00.000Z",
 								"author": "Jules78120",
+								"displayName": "Jules",
 								"range": [
 									"229/0/7/0/0",
 									"229/0/7/0/6/26"
@@ -1372,6 +1380,7 @@
 												"type": "comment",
 												"timestamp": "2013-03-04T13:11:00.000Z",
 												"author": "Azoee",
+												"displayName": "Azoée",
 												"range": [
 													"229/0/7/0/7/0/5/0/0",
 													"229/0/7/0/7/0/5/0/14/27"
@@ -1612,6 +1621,7 @@
 						"type": "comment",
 						"timestamp": "2014-10-13T10:11:00.000Z",
 						"author": "Azoee",
+						"displayName": "azoée",
 						"range": [
 							"250/0",
 							"251/16/31"
@@ -1649,6 +1659,7 @@
 				"type": "comment",
 				"timestamp": "2014-10-13T10:11:00.000Z",
 				"author": "Azoee",
+				"displayName": "azoée",
 				"range": [
 					"250/0",
 					"251/16/31"
@@ -1740,6 +1751,7 @@
 				"type": "comment",
 				"timestamp": "2014-09-25T06:08:00.000Z",
 				"author": "Hégésippe Cormier",
+				"displayName": "Hégésippe",
 				"range": [
 					"262/0",
 					"262/22/46"
@@ -1778,6 +1790,7 @@
 								"type": "comment",
 								"timestamp": "2014-10-02T07:32:00.000Z",
 								"author": "Azoee",
+								"displayName": "azoée",
 								"range": [
 									"264/0/25/0/0",
 									"264/0/25/0/12/30"
@@ -1856,6 +1869,7 @@
 						"type": "comment",
 						"timestamp": "2016-03-31T21:24:00.000Z",
 						"author": "Daxipedia",
+						"displayName": "Daxipedia - 達克斯百科",
 						"range": [
 							"272/2/0",
 							"272/2/11/29"

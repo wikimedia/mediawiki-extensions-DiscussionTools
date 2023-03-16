@@ -547,7 +547,9 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
  * Given a link node (`<a>`), if it's a link to a user-related page, return their username.
  *
  * @param {HTMLElement} link
- * @return {string|null}
+ * @return {Object|null} Object, or null:
+ * - {string} username Username
+ * - {string|null} displayName Display name (link text if link target was in the user namespace)
  */
 Parser.prototype.getUsernameFromLink = function ( link ) {
 	var title;
@@ -562,6 +564,7 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 	}
 
 	var username;
+	var displayName = null;
 	var namespaceId = title.getNamespaceId();
 	var mainText = title.getMainText();
 	var namespaceIds = mw.config.get( 'wgNamespaceIds' );
@@ -573,6 +576,14 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 		username = mainText;
 		if ( username.indexOf( '/' ) !== -1 ) {
 			return null;
+		}
+		if ( namespaceId === namespaceIds.user ) {
+			// Use regex trim for consistency with PHP implementation
+			var text = link.textContent.replace( /^[\s]+/, '' ).replace( /[\s]+$/, '' );
+			// Record the display name if it has been customised beyond changing case
+			if ( text && text.toLowerCase() !== username.toLowerCase() ) {
+				displayName = text;
+			}
 		}
 	} else if ( namespaceId === namespaceIds.special ) {
 		var parts = mainText.split( '/' );
@@ -592,7 +603,10 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 		// Bot-generated links "Preceding unsigned comment added by" have non-standard case
 		username = username.toUpperCase();
 	}
-	return username;
+	return {
+		username: username,
+		displayName: displayName
+	};
 };
 
 /**
@@ -614,6 +628,7 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 Parser.prototype.findSignature = function ( timestampNode, until ) {
 	var parser = this;
 	var sigUsername = null;
+	var sigDisplayName = null;
 	var length = 0;
 	var lastLinkNode = timestampNode;
 
@@ -643,14 +658,17 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			//
 			// Handle links nested in formatting elements.
 			if ( event === 'leave' && node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'a' ) {
-				var username = parser.getUsernameFromLink( node );
-				if ( username ) {
+				var user = parser.getUsernameFromLink( node );
+				if ( user ) {
 					// Accept the first link to the user namespace, then only accept links to that user
 					if ( sigUsername === null ) {
-						sigUsername = username;
+						sigUsername = user.username;
 					}
-					if ( username === sigUsername ) {
+					if ( user.username === sigUsername ) {
 						lastLinkNode = node;
+						if ( user.displayName ) {
+							sigDisplayName = user.displayName;
+						}
 					}
 				}
 				// Keep looking if a node with links wasn't a link to a user page
@@ -680,7 +698,8 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 
 	return {
 		nodes: sigNodes,
-		username: sigUsername
+		username: sigUsername,
+		displayName: sigDisplayName
 	};
 };
 
@@ -880,7 +899,8 @@ Parser.prototype.buildThreadItems = function () {
 				range,
 				sigRanges,
 				dateTime,
-				author
+				author,
+				foundSignature.displayName
 			);
 			curComment.rootNode = this.rootNode;
 			if ( warnings.length ) {

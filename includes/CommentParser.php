@@ -524,9 +524,11 @@ class CommentParser {
 	 * Given a link node (`<a>`), if it's a link to a user-related page, return their username.
 	 *
 	 * @param Element $link
-	 * @return string|null Username, or null
+	 * @return array|null Array, or null:
+	 * - string 'username' Username
+	 * - string|null 'displayName' Display name (link text if link target was in the user namespace)
 	 */
-	private function getUsernameFromLink( Element $link ): ?string {
+	private function getUsernameFromLink( Element $link ): ?array {
 		// Selflink: use title of current page
 		if ( DOMCompat::getClassList( $link )->contains( 'mw-selflink' ) ) {
 			$title = $this->title;
@@ -540,6 +542,7 @@ class CommentParser {
 		}
 
 		$username = null;
+		$displayName = null;
 		$namespaceId = $title->getNamespace();
 		$mainText = $title->getText();
 
@@ -547,6 +550,14 @@ class CommentParser {
 			$username = $mainText;
 			if ( strpos( $username, '/' ) !== false ) {
 				return null;
+			}
+			if ( $namespaceId === NS_USER ) {
+				// Use regex trim for consistency with JS implementation
+				$text = preg_replace( [ '/^[\s]+/u', '/[\s]+$/u' ], '', $link->textContent ?? '' );
+				// Record the display name if it has been customised beyond changing case
+				if ( $text && mb_strtolower( $text ) !== mb_strtolower( $username ) ) {
+					$displayName = $text;
+				}
 			}
 		} elseif ( $namespaceId === NS_SPECIAL ) {
 			$parts = explode( '/', $mainText );
@@ -566,7 +577,10 @@ class CommentParser {
 			// Bot-generated links "Preceding unsigned comment added by" have non-standard case
 			$username = strtoupper( $username );
 		}
-		return $username;
+		return [
+			'username' => $username,
+			'displayName' => $displayName,
+		];
 	}
 
 	/**
@@ -586,13 +600,14 @@ class CommentParser {
 	 */
 	private function findSignature( Text $timestampNode, ?Node $until = null ): array {
 		$sigUsername = null;
+		$sigDisplayName = null;
 		$length = 0;
 		$lastLinkNode = $timestampNode;
 
 		CommentUtils::linearWalkBackwards(
 			$timestampNode,
 			function ( string $event, Node $node ) use (
-				&$sigUsername, &$lastLinkNode, &$length,
+				&$sigUsername, &$sigDisplayName, &$lastLinkNode, &$length,
 				$until, $timestampNode
 			) {
 				if ( $event === 'enter' && $node === $until ) {
@@ -618,14 +633,17 @@ class CommentParser {
 				//
 				// Handle links nested in formatting elements.
 				if ( $event === 'leave' && $node instanceof Element && strtolower( $node->tagName ) === 'a' ) {
-					$username = $this->getUsernameFromLink( $node );
-					if ( $username ) {
+					$user = $this->getUsernameFromLink( $node );
+					if ( $user ) {
 						// Accept the first link to the user namespace, then only accept links to that user
 						if ( $sigUsername === null ) {
-							$sigUsername = $username;
+							$sigUsername = $user['username'];
 						}
-						if ( $username === $sigUsername ) {
+						if ( $user['username'] === $sigUsername ) {
 							$lastLinkNode = $node;
+							if ( $user['displayName'] ) {
+								$sigDisplayName = $user['displayName'];
+							}
 						}
 					}
 					// Keep looking if a node with links wasn't a link to a user page
@@ -654,7 +672,8 @@ class CommentParser {
 
 		return [
 			'nodes' => $sigNodes,
-			'username' => $sigUsername
+			'username' => $sigUsername,
+			'displayName' => $sigDisplayName,
 		];
 	}
 
@@ -900,7 +919,8 @@ class CommentParser {
 					$range,
 					$sigRanges,
 					$dateTime,
-					$author
+					$author,
+					$foundSignature['displayName']
 				);
 				$curComment->setRootNode( $this->rootNode );
 				if ( $warnings ) {

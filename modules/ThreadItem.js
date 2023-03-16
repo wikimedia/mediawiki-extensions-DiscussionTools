@@ -77,7 +77,8 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 					'YYYYMMDDHHmmss',
 					moment.ISO_8601
 				], true ),
-				hash.author
+				hash.author,
+				hash.displayName
 			);
 			break;
 		case 'heading':

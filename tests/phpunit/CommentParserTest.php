@@ -66,6 +66,9 @@ class CommentParserTest extends IntegrationTestCase {
 		if ( $threadItem instanceof ContentCommentItem ) {
 			$serialized->timestamp = $threadItem->getTimestampString();
 			$serialized->author = $threadItem->getAuthor();
+			if ( $threadItem->getDisplayName() ) {
+				$serialized->displayName = $threadItem->getDisplayName();
+			}
 		}
 
 		// Can't serialize the DOM nodes involved in the range,

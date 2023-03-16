@@ -16,6 +16,7 @@
 				"type": "comment",
 				"timestamp": "2020-04-21T22:51:00.000Z",
 				"author": "Johan (WMF)",
+				"displayName": "Johan",
 				"range": [
 					"0/1/0/0",
 					"15/9/30"
@@ -38,6 +39,7 @@
 				"type": "comment",
 				"timestamp": "2020-04-28T17:47:00.000Z",
 				"author": "Dyolf77 (WMF)",
+				"displayName": "الحبيب مهني (ويكيميديا)",
 				"range": [
 					"17/0",
 					"17/12/30"
@@ -86,6 +88,7 @@
 						"type": "comment",
 						"timestamp": "2020-04-29T14:08:00.000Z",
 						"author": "Dyolf77",
+						"displayName": "الحبيب مهنّي",
 						"range": [
 							"27/0",
 							"27/2/29"
@@ -121,6 +124,7 @@
 						"type": "comment",
 						"timestamp": "2020-04-29T17:40:00.000Z",
 						"author": "Trabelsiismail",
+						"displayName": "طرابلسي إسماعيل",
 						"range": [
 							"31/0",
 							"31/4/30"
@@ -156,6 +160,7 @@
 						"type": "comment",
 						"timestamp": "2020-04-29T22:55:00.000Z",
 						"author": "Nehaoua",
+						"displayName": "–عادل",
 						"range": [
 							"35/0",
 							"35/10/30"
@@ -303,6 +308,7 @@
 						"type": "comment",
 						"timestamp": "2020-04-30T17:35:00.000Z",
 						"author": "Elsayed Taha",
+						"displayName": "السيد طه",
 						"range": [
 							"59/0",
 							"59/4/30"
@@ -338,6 +344,7 @@
 						"type": "comment",
 						"timestamp": "2020-04-30T17:46:00.000Z",
 						"author": "أبو تائب",
+						"displayName": "أبُو تَائِب",
 						"range": [
 							"63/0",
 							"63/3/29"
@@ -401,6 +408,7 @@
 						"type": "comment",
 						"timestamp": "2020-04-30T23:49:00.000Z",
 						"author": "Saif Oofa7",
+						"displayName": "★سيف القوضي",
 						"range": [
 							"75/0",
 							"76/4/29"
@@ -520,6 +528,7 @@
 						"type": "comment",
 						"timestamp": "2020-05-02T03:01:00.000Z",
 						"author": "محمد بوعلام عصامي",
+						"displayName": "العربيةمحمد بوعلام عصامي *«Simo.Boualam»",
 						"range": [
 							"94/0",
 							"94/10/28"
@@ -597,6 +606,7 @@
 						"type": "comment",
 						"timestamp": "2020-05-04T17:56:00.000Z",
 						"author": "Justwiki",
+						"displayName": "م.ز ناجح ناجي حسن ابو الامير",
 						"range": [
 							"110/0",
 							"110/4/28"
@@ -669,6 +679,7 @@
 				"type": "comment",
 				"timestamp": "2020-04-29T14:08:00.000Z",
 				"author": "Dyolf77",
+				"displayName": "الحبيب مهنّي",
 				"range": [
 					"27/0",
 					"27/2/29"
@@ -704,6 +715,7 @@
 				"type": "comment",
 				"timestamp": "2020-04-29T17:40:00.000Z",
 				"author": "Trabelsiismail",
+				"displayName": "طرابلسي إسماعيل",
 				"range": [
 					"31/0",
 					"31/4/30"
@@ -739,6 +751,7 @@
 				"type": "comment",
 				"timestamp": "2020-04-29T22:55:00.000Z",
 				"author": "Nehaoua",
+				"displayName": "–عادل",
 				"range": [
 					"35/0",
 					"35/10/30"
@@ -886,6 +899,7 @@
 				"type": "comment",
 				"timestamp": "2020-04-30T17:35:00.000Z",
 				"author": "Elsayed Taha",
+				"displayName": "السيد طه",
 				"range": [
 					"59/0",
 					"59/4/30"
@@ -921,6 +935,7 @@
 				"type": "comment",
 				"timestamp": "2020-04-30T17:46:00.000Z",
 				"author": "أبو تائب",
+				"displayName": "أبُو تَائِب",
 				"range": [
 					"63/0",
 					"63/3/29"
@@ -984,6 +999,7 @@
 				"type": "comment",
 				"timestamp": "2020-04-30T23:49:00.000Z",
 				"author": "Saif Oofa7",
+				"displayName": "★سيف القوضي",
 				"range": [
 					"75/0",
 					"76/4/29"
@@ -1103,6 +1119,7 @@
 				"type": "comment",
 				"timestamp": "2020-05-02T03:01:00.000Z",
 				"author": "محمد بوعلام عصامي",
+				"displayName": "العربيةمحمد بوعلام عصامي *«Simo.Boualam»",
 				"range": [
 					"94/0",
 					"94/10/28"
@@ -1180,6 +1197,7 @@
 				"type": "comment",
 				"timestamp": "2020-05-04T17:56:00.000Z",
 				"author": "Justwiki",
+				"displayName": "م.ز ناجح ناجي حسن ابو الامير",
 				"range": [
 					"110/0",
 					"110/4/28"

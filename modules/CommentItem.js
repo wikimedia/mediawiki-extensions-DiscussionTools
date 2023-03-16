@@ -15,14 +15,16 @@ var ThreadItem = require( './ThreadItem.js' ),
  *  The last node in every signature range is a node containing the timestamp.
  * @param {moment} [timestamp] Timestamp (Moment object)
  * @param {string} [author] Comment author's username
+ * @param {string|null} [displayName] Comment author's display name
  */
-function CommentItem( level, range, signatureRanges, timestamp, author ) {
+function CommentItem( level, range, signatureRanges, timestamp, author, displayName ) {
 	// Parent constructor
 	CommentItem.super.call( this, 'comment', level, range );
 
 	this.signatureRanges = signatureRanges || [];
 	this.timestamp = timestamp || null;
 	this.author = author || null;
+	this.displayName = displayName || null;
 
 	/**
 	 * @member {ThreadItem} Parent thread item
