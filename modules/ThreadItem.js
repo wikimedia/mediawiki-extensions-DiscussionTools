@@ -130,7 +130,17 @@ ThreadItem.prototype.calculateThreadSummary = function () {
 	var latestReply = null;
 	function threadScan( comment ) {
 		if ( comment.type === 'comment' ) {
-			authors[ comment.author ] = true;
+			authors[ comment.author ] = authors[ comment.author ] || {
+				username: comment.author,
+				displayNames: []
+			};
+			if (
+				comment.displayName &&
+				authors[ comment.author ].displayNames.indexOf( comment.displayName ) === -1
+			) {
+				authors[ comment.author ].displayNames.push( comment.displayName );
+			}
+
 			if (
 				!oldestReply ||
 				( comment.timestamp < oldestReply.timestamp )
@@ -149,7 +159,9 @@ ThreadItem.prototype.calculateThreadSummary = function () {
 	}
 	this.replies.forEach( threadScan );
 
-	this.authors = Object.keys( authors ).sort();
+	this.authors = Object.keys( authors ).sort().map( function ( author ) {
+		return authors[ author ];
+	} );
 	this.commentCount = commentCount;
 	this.oldestReply = oldestReply;
 	this.latestReply = latestReply;
@@ -160,7 +172,7 @@ ThreadItem.prototype.calculateThreadSummary = function () {
  *
  * Usually called on a HeadingItem to find all authors in a thread.
  *
- * @return {string[]} Author usernames
+ * @return {Object[]} Authors, with `username` and `displayNames` (list of display names) properties.
  */
 ThreadItem.prototype.getAuthorsBelow = function () {
 	this.calculateThreadSummary();
