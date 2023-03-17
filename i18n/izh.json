@@ -5,5 +5,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Vassus",
-	"discussiontools-replylink": "vassata"
+	"discussiontools-replylink": "vassata",
+	"discussiontools-replywidget-preview": "Proveroittaa",
+	"discussiontools-replywidget-reply": "Vassata"
 }
