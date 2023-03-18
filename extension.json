@@ -67,7 +67,6 @@
 				"ReplyLinksController.js",
 				"CommentController.js",
 				"NewTopicController.js",
-				"logger.js",
 				"modifier.js",
 				"utils.js",
 				"Parser.js",
@@ -565,14 +564,6 @@
 		"DiscussionToolsConflictingGadgetName": {
 			"value": "convenientDiscussions",
 			"description": "Internal name of the Convenient Discussions gadget, which conflicts with the reply tool. Reply tool will be unavailable when the user has this gadget enabled."
-		},
-		"DTSchemaEditAttemptStepSamplingRate": {
-			"value": 0,
-			"description": "Rate at which to sample sessions for instrumentation; overrides WikimediaEvents rate if set to any number other than 0"
-		},
-		"DTSchemaEditAttemptStepOversample": {
-			"value": false,
-			"description": "Oversample EditAttemptStep logging; distinct from rate tuning, as it'll flag the events as being oversampled"
 		}
 	},
 	"ConfigRegistry": {

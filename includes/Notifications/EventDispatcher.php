@@ -423,9 +423,11 @@ class EventDispatcher {
 		if ( !$extensionRegistry->isLoaded( 'EventLogging' ) ) {
 			return false;
 		}
+		if ( !$extensionRegistry->isLoaded( 'WikimediaEvents' ) ) {
+			return false;
+		}
 		$inSample = static::inEventSample( $editingStatsId );
 		$shouldOversample = ( $isDiscussionTools && $wgDTSchemaEditAttemptStepOversample ) || (
-				$extensionRegistry->isLoaded( 'WikimediaEvents' ) &&
 				// @phan-suppress-next-line PhanUndeclaredClassMethod
 				\WikimediaEvents\WikimediaEventsHooks::shouldSchemaEditAttemptStepOversample( $context )
 			);

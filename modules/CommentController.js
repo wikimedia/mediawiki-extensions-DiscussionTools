@@ -1,7 +1,6 @@
 var
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
-	logger = require( './logger.js' ),
 	dtConf = require( './config.json' ),
 	CommentItem = require( './CommentItem.js' ),
 	scrollPadding = {
@@ -141,10 +140,11 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 			( defaultVisual ? 'visual' : 'source' );
 	}
 
-	logger( {
+	mw.track( 'editAttemptStep', {
 		action: 'init',
 		type: this.constructor.static.initType || 'page',
 		mechanism: 'click',
+		integration: 'discussiontools',
 		// eslint-disable-next-line camelcase
 		editor_interface: mode === 'visual' ? 'visualeditor' :
 			( enable2017Wikitext ? 'wikitext-2017' : 'wikitext' )
@@ -164,7 +164,7 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 				mw.track( 'dt.commentSetupError', code );
 			}
 
-			logger( {
+			mw.track( 'editAttemptStep', {
 				action: 'abort',
 				type: 'preinit'
 			} );
@@ -229,8 +229,8 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 
 		commentController.showAndFocus();
 
-		logger( { action: 'ready' } );
-		logger( { action: 'loaded' } );
+		mw.track( 'editAttemptStep', { action: 'ready' } );
+		mw.track( 'editAttemptStep', { action: 'loaded' } );
 	} );
 };
 
@@ -437,8 +437,7 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
 		// a page view with reply links forced with ?dtenable=1 or otherwise
 		dtenable: '1',
-		dttags: tags.join( ',' ),
-		editingStatsId: logger.getSessionId()
+		dttags: tags.join( ',' )
 	};
 
 	if ( replyWidget.getMode() === 'source' ) {
@@ -725,7 +724,7 @@ CommentController.prototype.switchToVisual = function () {
 							size: 'medium'
 						}
 					);
-					mw.track( 'dt.schemaVisualEditorFeatureUse', {
+					mw.track( 'visualEditorFeatureUse', {
 						feature: 'editor-switch',
 						action: 'dialog-prevent-show'
 					} );

@@ -1,6 +1,5 @@
 var controller = require( 'ext.discussionTools.init' ).controller,
 	utils = require( 'ext.discussionTools.init' ).utils,
-	logger = require( 'ext.discussionTools.init' ).logger,
 	ModeTabSelectWidget = require( './ModeTabSelectWidget.js' ),
 	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),
 	licenseMessages = require( './licenseMessages.json' ),
@@ -291,7 +290,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.checkboxesPromise = controller.getCheckboxesPromise( this.pageName, this.oldId );
 	this.checkboxesPromise.then( function ( checkboxes ) {
 		function trackCheckbox( n ) {
-			mw.track( 'dt.schemaVisualEditorFeatureUse', {
+			mw.track( 'visualEditorFeatureUse', {
 				feature: 'dtReply',
 				action: 'checkbox-' + n
 			} );
@@ -452,7 +451,7 @@ ReplyWidget.prototype.saveEditMode = function ( mode ) {
 
 ReplyWidget.prototype.onAdvancedToggleClick = function () {
 	var showAdvanced = !this.showAdvanced;
-	mw.track( 'dt.schemaVisualEditorFeatureUse', {
+	mw.track( 'visualEditorFeatureUse', {
 		feature: 'dtReply',
 		action: 'advanced-' + ( showAdvanced ? 'show' : 'hide' )
 	} );
@@ -546,7 +545,7 @@ ReplyWidget.prototype.switch = function ( mode ) {
 	// reload the editor.
 	return promise.then( function () {
 		// Switch succeeded
-		mw.track( 'dt.schemaVisualEditorFeatureUse', {
+		mw.track( 'visualEditorFeatureUse', {
 			feature: 'editor-switch',
 			action: (
 				mode === 'visual' ?
@@ -661,7 +660,7 @@ ReplyWidget.prototype.tryTeardown = function () {
 				if ( !( data && data.action === 'discard' ) ) {
 					return $.Deferred().reject().promise();
 				}
-				logger( {
+				mw.track( 'editAttemptStep', {
 					action: 'abort',
 					mechanism: 'cancel',
 					type: 'abandon'
@@ -669,7 +668,7 @@ ReplyWidget.prototype.tryTeardown = function () {
 			} );
 	} else {
 		promise = $.Deferred().resolve().promise();
-		logger( {
+		mw.track( 'editAttemptStep', {
 			action: 'abort',
 			mechanism: 'cancel',
 			type: 'nochange'
@@ -839,7 +838,7 @@ ReplyWidget.prototype.updateButtons = function () {
  * Currently only the first change in the body, used for logging.
  */
 ReplyWidget.prototype.onFirstChange = function () {
-	logger( { action: 'firstChange' } );
+	mw.track( 'editAttemptStep', { action: 'firstChange' } );
 };
 
 /**
@@ -883,7 +882,7 @@ ReplyWidget.prototype.onBeforeUnload = function ( e ) {
  * @param {jQuery.Event} e Event
  */
 ReplyWidget.prototype.onUnload = function () {
-	logger( {
+	mw.track( 'editAttemptStep', {
 		action: 'abort',
 		type: this.isEmpty() ? 'nochange' : 'abandon',
 		mechanism: 'navigate'
@@ -951,7 +950,7 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
 		setTimeout( function () {
 			widget.newCommentsWarning.$element.addClass( 'ext-discussiontools-ui-replyWidget-newComments-open' );
 		} );
-		mw.track( 'dt.schemaVisualEditorFeatureUse', {
+		mw.track( 'visualEditorFeatureUse', {
 			feature: 'notificationNewComments',
 			action: 'show'
 		} );
@@ -963,7 +962,7 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
  */
 ReplyWidget.prototype.onNewCommentsShowClick = function () {
 	this.emit( 'reloadPage' );
-	mw.track( 'dt.schemaVisualEditorFeatureUse', {
+	mw.track( 'visualEditorFeatureUse', {
 		feature: 'notificationNewComments',
 		action: 'page-update'
 	} );
@@ -977,7 +976,7 @@ ReplyWidget.prototype.onNewCommentsCloseClick = function () {
 	// Hide the warning for the rest of the lifetime of the widget
 	this.hideNewCommentsWarning = true;
 	this.focus();
-	mw.track( 'dt.schemaVisualEditorFeatureUse', {
+	mw.track( 'visualEditorFeatureUse', {
 		feature: 'notificationNewComments',
 		action: 'close'
 	} );
@@ -1018,12 +1017,12 @@ ReplyWidget.prototype.onReplyClick = function () {
 	this.saveInitiated = mw.now();
 	this.setPending( true );
 
-	logger( { action: 'saveIntent' } );
+	mw.track( 'editAttemptStep', { action: 'saveIntent' } );
 
 	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
 	var pageName = this.pageName;
 
-	logger( { action: 'saveAttempt' } );
+	mw.track( 'editAttemptStep', { action: 'saveAttempt' } );
 	widget.commentController.save( pageName ).fail( function ( code, data ) {
 		// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
 		var typeMap = {
@@ -1089,7 +1088,7 @@ ReplyWidget.prototype.onReplyClick = function () {
 			}
 		}
 
-		logger( {
+		mw.track( 'editAttemptStep', {
 			action: 'saveFailure',
 			timing: mw.now() - widget.saveInitiated,
 			message: code,
