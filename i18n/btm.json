@@ -1,15 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"IHLubis"
+			"IHLubis",
+			"Amire80"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "mamjawab",
+	"discussiontools-defaultsummary-reply": "Mamjawab",
 	"discussiontools-replylink": "manjawab",
 	"discussiontools-replywidget-cancel": "Bottalkon",
 	"discussiontools-replywidget-mode-source": "Sumber na",
 	"discussiontools-replywidget-mode-visual": "Tarida",
-	"discussiontools-replywidget-placeholder-reply": "Balas tu{{BIDI:$1}}",
-	"discussiontools-replywidget-preview": "i ligimulakan",
-	"discussiontools-replywidget-reply": "manjawab"
+	"discussiontools-replywidget-placeholder-reply": "Balas tu {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "I ligimulakan",
+	"discussiontools-replywidget-reply": "Manjawab"
 }
