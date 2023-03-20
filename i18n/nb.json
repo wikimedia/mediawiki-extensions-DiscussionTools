@@ -3,6 +3,7 @@
 		"authors": [
 			"Abuluntu",
 			"Ed g2s",
+			"EdoAug",
 			"Jon Harald Søby",
 			"Matma Rex",
 			"Vukky"
@@ -75,7 +76,7 @@
 	"discussiontools-postedit-confirmation-topicadded": "Emnet ditt ble lagt til.",
 	"discussiontools-preference-autotopicsub": "Abonner på emner automatisk",
 	"discussiontools-preference-autotopicsub-help": "Når du starter en ny diskusjonstråd eller kommenterer i en eksisterende tråd vil du automatisk motta varsler når andre publiserer sine kommentarer.",
-	"discussiontools-preference-description": "Slår på eksperimentelle funksjoner for diskusjonssider:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Svar] på beskjeder med ett klikk.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Legg til nye emner] med skjema.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Bli varslet] når nye kommentarer legges til i seksjoner du abonnerer på.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Vis metadata] om hver diskusjon og aktivér et nytt utseende.\n\nDu kan tilpasse disse funksjonene i [[Special:Preferences#mw-prefsection-editing-discussion|innstillingene dine]].\n\nOppdateringer postes på [https://www.mediawiki.org/wiki/Talk_pages_project/Updates diskusjonssideprosjektets oppdateringsside].\n\nMerk:\n* Nye eksperimentelle funksjoner vil legges til over tid.\n* Noen av funksjonene er muligens ikke tilgjengelige på wikien din ennå.",
+	"discussiontools-preference-description": "Slår på eksperimentelle funksjoner for diskusjonssider:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Svar] på beskjeder med ett klikk.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Legg til nye emner] med skjema.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Bli varslet] når nye kommentarer legges til i seksjoner du abonnerer på.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Vis metadata] om hver diskusjon og aktiver et nytt utseende.\n\nDu kan tilpasse disse funksjonene i [[Special:Preferences#mw-prefsection-editing-discussion|innstillingene dine]].\n\nOppdateringer postes på [https://www.mediawiki.org/wiki/Talk_pages_project/Updates diskusjonssideprosjektets oppdateringsside].\n\nMerk:\n* Nye eksperimentelle funksjoner vil legges til over tid.\n* Noen av funksjonene er muligens ikke tilgjengelige på wikien din ennå.",
 	"discussiontools-preference-gadget-conflict": "For å slå på raske svar må du først [[$1|slå av tilleggsfunksjonen Convenient Discussions]] i innstillingene dine.",
 	"discussiontools-preference-label": "Diskusjonsverktøy",
 	"discussiontools-preference-newtopictool": "Slå på rask innlegging av emner",

@@ -17,6 +17,7 @@
 	"discussiontools-replywidget-return-to-reply": "Jogap bermek üçin dolan",
 	"discussiontools-replywidget-summary": "Gysgaça düşündiriş",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|adam}} çekişmede",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|teswir}}",
 	"discussiontools-topicheader-latestcomment": "Iň soňky teswir: $1",
 	"discussiontools-topicsubscription-button-subscribe": "abuna ýazylyň",
 	"discussiontools-topicsubscription-button-subscribe-label": "Abuna ýazylyň",
