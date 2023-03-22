@@ -35,6 +35,7 @@ class PersistRevisionThreadItems extends Maintenance {
 		$this->addDescription( 'Persist thread item information for the given pages/revisions' );
 		$this->addOption( 'rev', 'Revision ID to process', false, true, false, true );
 		$this->addOption( 'page', 'Page title to process', false, true, false, true );
+		$this->addOption( 'namespace', 'Namespace number to process', false, true, false, true );
 		$this->addOption( 'all', 'Process the whole wiki' );
 		$this->addOption( 'current', 'Process current revisions only' );
 		$this->addOption( 'start', 'Restart from this position (as printed by the script)', false, true );
@@ -55,6 +56,9 @@ class PersistRevisionThreadItems extends Maintenance {
 
 		if ( $this->getOption( 'all' ) ) {
 			// Do nothing
+
+		} elseif ( $this->getOption( 'namespace' ) ) {
+			$qb->where( [ 'page_namespace' => $this->getOption( 'namespace' ) ] );
 
 		} elseif ( $this->getOption( 'page' ) ) {
 			$linkBatch = $services->getLinkBatchFactory()->newLinkBatch();
