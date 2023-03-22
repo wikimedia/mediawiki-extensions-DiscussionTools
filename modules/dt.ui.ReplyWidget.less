@@ -230,11 +230,11 @@
 			li {
 				display: inline;
 
-				&:after {
+				&::after {
 					content: ' • ';
 				}
 
-				&:last-child:after {
+				&:last-child::after {
 					content: '';
 				}
 			}
@@ -257,7 +257,7 @@
 			padding: 0;
 		}
 
-		&:before {
+		&::before {
 			content: attr( data-label );
 			color: #808080;
 		}
