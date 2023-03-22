@@ -141,7 +141,7 @@
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "订阅以接收有关新留言的通知。",
 	"discussiontools-topicsubscription-button-unsubscribe": "取消订阅",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "取消订阅",
-	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "取消订阅以停止接收通知。",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "取消订阅以停止接收新留言的通知。",
 	"discussiontools-topicsubscription-error-not-found-body": "未找到URL中指定的订阅。",
 	"discussiontools-topicsubscription-error-not-found-title": "未找到订阅",
 	"discussiontools-topicsubscription-notify-subscribed-body": "您将收到有关此话题中新留言的通知。",
