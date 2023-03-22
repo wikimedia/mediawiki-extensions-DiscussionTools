@@ -178,6 +178,7 @@
 	"echo-category-title-dt-subscription-archiving": "Talk page {{PLURAL:$1|archiving}}",
 	"echo-pref-tooltip-dt-subscription": "Notify me when someone posts a new comment in a topic I am subscribed to.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Notify me when a topic I am subscribed to is archived or removed from a page, or if notifications about new comments posted in that topic can't be sent for other reasons.",
+	"minerva-talk-full-page": "Read as wiki page",
 	"tag-discussiontools": "-",
 	"tag-discussiontools-added-comment": "-",
 	"tag-discussiontools-added-comment-description": "A talk page comment was added in this edit",
