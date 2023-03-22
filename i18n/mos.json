@@ -7,6 +7,7 @@
 			"Amire80"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Leoke",
 	"discussiontools-replylink": "loke",
 	"discussiontools-replywidget-advanced": "Taoore",
 	"discussiontools-replywidget-cancel": "Base",
@@ -15,5 +16,12 @@
 	"discussiontools-replywidget-placeholder-reply": "Leoke {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "N gese",
 	"discussiontools-replywidget-reply": "Leoke",
-	"discussiontools-replywidget-summary": "Kʋmbgo"
+	"discussiontools-replywidget-summary": "Kʋmbgo",
+	"discussiontools-replywidget-watchthis": "Paas ni neng kada f [[Special:Watchlist|gese-sõdgre]] pʋga",
+	"discussiontools-topicsubscription-button-subscribe": "n naag f menga",
+	"discussiontools-topicsubscription-button-unsubscribe": "n yeese f menga",
+	"discussiontools-topicsubscription-notify-subscribed-body": "F na n paama kibay sẽn kẽed ne kõ-m-meng tags paal ye sẽn kẽed ne sõasg gom-zu-raoog kãnga ye.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "F naag f menga",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "F ka na n le paam kibay sẽn kẽed ne kõ-m-meng tags paal ye sẽn kẽed ne sõasg gom-zu-raoog kãnga ye.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "F yeese f menga."
 }

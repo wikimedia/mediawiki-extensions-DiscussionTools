@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"TayfunEt."
+			"TayfunEt.",
+			"Sorbat"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Йауаплау",
 	"discussiontools-replywidget-cancel": "Пулмайын иткәле",
-	"discussiontools-replywidget-summary": "Ҡысҡа аңнатыу"
+	"discussiontools-replywidget-mode-visual": "Ҡарап",
+	"discussiontools-replywidget-preview": "Алттан ҡарау",
+	"discussiontools-replywidget-summary": "Ҡысҡа аңнатыу",
+	"discussiontools-replywidget-watchthis": "Пы питне сеснең [[Special:Watchlist|ҡарағылау күцермәлек]]кә ҡушҡалы"
 }
