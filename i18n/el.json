@@ -157,6 +157,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Αρχειοθέτηση}} σελίδας συζήτησης",
 	"echo-pref-tooltip-dt-subscription": "Θέλω να λαμβάνω ειδοποιήσεις όταν κάποιος αναρτά νέο σχόλιο σε ένα θέμα που είμαι εγγεγραμμένος.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Να ειδοποιούμαι όταν ένα θέμα στο οποίο είμαι εγγεγραμμένος αρχειοθετείται ή αφαιρείται από μια σελίδα ή εάν δεν είναι δυνατή η αποστολή ειδοποιήσεων σχετικά με νέα σχόλια που δημοσιεύονται σε αυτό το θέμα για άλλους λόγους.",
+	"minerva-talk-full-page": "Διαβάστε ως σελίδα wiki",
 	"tag-discussiontools-added-comment-description": "Ένα σχόλιο σε σελίδα συζήτησης προστέθηκε με αυτή την επεξεργασία",
 	"tag-discussiontools-description": "Επεξεργασία που έγινε χρησιμοποιώντας το DiscussionTools",
 	"tag-discussiontools-edit": "Έγινε επεξεργασία σχολίου",

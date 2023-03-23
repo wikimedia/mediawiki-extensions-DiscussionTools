@@ -150,6 +150,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Arhiviranje}} stranice za razgovor",
 	"echo-pref-tooltip-dt-subscription": "Obavijestite me kada netko objavi komentar u temi koju pratim.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Obavijesti me kada se tema na koju sam pretplaćen arhivira ili ukloni sa stranice, ili ako se obavijesti o novim komentarima objavljenim u toj temi ne mogu poslati iz drugih razloga.",
+	"minerva-talk-full-page": "Čitati kao wikistranicu",
 	"tag-discussiontools-added-comment-description": "U ovom je uređivanju dodan komentar na stranici za razgovor",
 	"tag-discussiontools-description": "Uređivanje uz pomoć alata za raspravu",
 	"tag-discussiontools-edit": "Uređivani komentar",

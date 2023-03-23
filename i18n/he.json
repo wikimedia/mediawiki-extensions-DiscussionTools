@@ -172,6 +172,7 @@
 	"echo-category-title-dt-subscription-archiving": "ארכוב {{PLURAL:$1|דפי שיחה}}",
 	"echo-pref-tooltip-dt-subscription": "להודיע לי כשמישהו כותב תגובה חדשה בנושא שעשיתי מינוי עליו.",
 	"echo-pref-tooltip-dt-subscription-archiving": "להודיע לי כשנושא שעשיתי עליו מינוי מאורכב או מוסר מדף, או אם התראות על תגובות חדשות בנושא ההוא לא יכולות להישלח מסיבות אחרות.",
+	"minerva-talk-full-page": "לקרוא בתור דף ויקי",
 	"tag-discussiontools-added-comment-description": "נוספה תגובה לדף שיחה בעריכה הזאת",
 	"tag-discussiontools-description": "עריכה שנעשתה באמצעות כלי שיחה",
 	"tag-discussiontools-edit": "נערכה תגובה",

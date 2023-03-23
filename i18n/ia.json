@@ -164,6 +164,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Archivamento}} de paginas de discussion",
 	"echo-pref-tooltip-dt-subscription": "Notificar me quando alcuno publica un nove commento in un topico al qual io es subscribite.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Notificar me quando un topico al qual io es abonate es archivate o removite de un pagina, o si notificationes sur nove commentos in ille topico non pote esser inviate per altere rationes.",
+	"minerva-talk-full-page": "Leger como pagina wiki",
 	"tag-discussiontools-added-comment-description": "Un commento de pagina de discussion ha essite addite in iste modification",
 	"tag-discussiontools-description": "Modification facite usante DiscussionTools",
 	"tag-discussiontools-edit": "Commento modificate",

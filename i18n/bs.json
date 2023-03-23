@@ -46,5 +46,6 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Pretplatili ste se!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Više nećete primati obavještenja o novim komentarima u ovoj temi.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Otkazali ste pretplatu.",
+	"minerva-talk-full-page": "Prikaži kao wikistranicu",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]"
 }

@@ -169,6 +169,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|أرشفة}} صفحة نقاش",
 	"echo-pref-tooltip-dt-subscription": "نبّهني عندما يقوم أحدهم بنشر تعليق جديد على موضوع مشترك فيه.",
 	"echo-pref-tooltip-dt-subscription-archiving": "إعلامي عندما تتم أرشفة موضوع قمت بالاشتراك فيه أو إزالته من الصفحة، أو إذا تعذر إرسال إخطارات حول التعليقات الجديدة المنشورة في هذا الموضوع لأسباب أخرى.",
+	"minerva-talk-full-page": "اقرأ كصفحة ويكي",
 	"tag-discussiontools-added-comment-description": "تمت إضافة تعليق على صفحة نقاش في هذا التعديل",
 	"tag-discussiontools-description": "تعديل تمّ عن طريق أدوات_النقاش",
 	"tag-discussiontools-edit": "تعليق مُعدّل",

@@ -173,6 +173,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|}}Arhiviranje pogovornih strani",
 	"echo-pref-tooltip-dt-subscription": "Obvesti me, ko kdo objavi nov komentar v temi, na katero sem naročen_a.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Obvesti me, ko je tema, na katero sem naročen_a, arhivirana ali odstranjena s strani ali če obvestil o novih komentarjih, objavljenih pri tej temi, ni mogoče poslati iz drugih razlogov.",
+	"minerva-talk-full-page": "Beri kot vikistran",
 	"tag-discussiontools-added-comment-description": "V tem urejanju je bil dodan komentar na pogovorni strani",
 	"tag-discussiontools-description": "Urejanje z orodjem DiscussionTools",
 	"tag-discussiontools-edit": "urejen komentar",

@@ -68,6 +68,7 @@
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "เลิกสมัครรับ",
 	"discussiontools-topicsubscription-special-intro": "คุณสามารถติดตามหัวข้อบนหน้าอภิปรายได้ด้วยการกดที่ปุ่มสมัครรับ เมื่อใครเขียนตอบในหัวข้อดังกล่าว คุณจะได้รับการแจ้งเตือน\n\nสามารถปรับเปลี่ยนวิธีการรับการแจ้งเตือนของคุณได้ที่[[Special:Preferences#mw-prefsection-echo|การตั้งค่าของคุณ]]",
 	"discussiontools-topicsubscription-special-title": "หัวข้อที่สมัครรับ",
+	"minerva-talk-full-page": "อ่านหน้านี้ในรูปแบบวิกิ",
 	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
 	"tag-discussiontools-edit": "แก้ไขความเห็น",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} หัวข้อใหม่]"

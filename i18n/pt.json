@@ -155,6 +155,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Arquivamento|Arquivamentos}} de páginas de discussão",
 	"echo-pref-tooltip-dt-subscription": "Notificar-me quando alguém publicar um comentário novo num tópico que eu subscrevo.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Notificar-me quando um tópico que subscrevi for arquivado ou removido de uma página, ou se as notificações sobre novos comentários publicados nesse tópico não puderem ser enviadas por outros motivos.",
+	"minerva-talk-full-page": "Ler como página wiki",
 	"tag-discussiontools-added-comment-description": "Nesta edição foi adicionado um comentário de página de discussão",
 	"tag-discussiontools-description": "Edição realizada usando DiscussionTools",
 	"tag-discussiontools-edit": "Comentário editado",

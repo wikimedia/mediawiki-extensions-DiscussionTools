@@ -167,6 +167,7 @@
 	"echo-category-title-dt-subscription-archiving": "Tartışma sayfası {{PLURAL:$1|arşivleniyor}}",
 	"echo-pref-tooltip-dt-subscription": "Abone olduğum bir konuda biri yeni bir yorum yaptığında bana bildir.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Abone olduğum konu arşivlendiğinde, silindiğinde veya başka nedenlerden dolayı yeni yanıtlarla alakalı bildirim gönderilemeyeceği durumlarda bana haber ver.",
+	"minerva-talk-full-page": "Viki sayfası olarak oku",
 	"tag-discussiontools-added-comment-description": "Bu düzenlemeye, bir tartışma sayfası yorumu eklendi",
 	"tag-discussiontools-description": "DiscussionTools kullanılarak yapılan düzenleme",
 	"tag-discussiontools-edit": "Düzenlenmiş yorum",

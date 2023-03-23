@@ -162,6 +162,7 @@
 	"echo-category-title-dt-subscription-archiving": "Архіваванне {{PLURAL:$1|старонкі|старонак}}.",
 	"echo-pref-tooltip-dt-subscription": "Паведаміць мне, калі нехта напіша новы каментар у тэму, на якую я {{GENDER:|падпісаў|падпісалася}}.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Апавяшчаць мяне, калі тэма, на якую я {{GENDER:|падпісаны|падпісаная}}, архівуецца або выдаляецца са старонкі, або калі апавяшчэнні аб новых каментарыях, размешчаных у гэтай тэме, не могуць быць адпраўлены па іншых прычынах.",
+	"minerva-talk-full-page": "Чытаць як вікі-старонку",
 	"tag-discussiontools-added-comment-description": "У гэтай праўцы быў дададзены каментар на старонку размовы",
 	"tag-discussiontools-description": "Праўка, здзейсненая з дапамогай DiscussionTools",
 	"tag-discussiontools-edit": "Адрэдагаваны каментарый",

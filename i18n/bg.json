@@ -101,6 +101,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Архивиране}} на беседа",
 	"echo-pref-tooltip-dt-subscription": "Известяване, когато някой публикува нов коментар в тема за която съм абониран.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Известяване, когато тема, за която съм абониран, бъде архивирана или премахната от страница, или ако известията за нови коментари, публикувани в тази тема, не могат да бъдат изпратени по други причини.",
+	"minerva-talk-full-page": "Четене като уики страница",
 	"tag-discussiontools-description": "Редакция, направена чрез Визуални инструменти",
 	"tag-discussiontools-edit": "Редактиран коментар",
 	"tag-discussiontools-edit-description": "Потребител редактира съществуващ коментар чрез Визуални инструменти",

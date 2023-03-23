@@ -183,6 +183,7 @@
 	"echo-category-title-dt-subscription-archiving": "トークページの{{PLURAL:$1|アーカイブ化}}",
 	"echo-pref-tooltip-dt-subscription": "購読中の話題に誰かが新しいコメントを投稿したときに通知する。",
 	"echo-pref-tooltip-dt-subscription-archiving": "購読しているトピックがページからアーカイブまたは除去されたとき、あるいはそのトピックに新しく投稿されたコメントに関する通知がその他の理由により送信できなくなった場合に通知する。",
+	"minerva-talk-full-page": "ウィキページとして閲覧",
 	"tag-discussiontools-added-comment-description": "この編集でトークページにコメントが投稿されました",
 	"tag-discussiontools-description": "議論ツールを使って編集",
 	"tag-discussiontools-edit": "編集済みのコメント",

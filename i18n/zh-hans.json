@@ -158,6 +158,7 @@
 	"echo-category-title-dt-subscription": "讨论页{{PLURAL:$1|订阅}}",
 	"echo-category-title-dt-subscription-archiving": "讨论页{{PLURAL:$1|存档}}",
 	"echo-pref-tooltip-dt-subscription": "当有人在我订阅的话题上发布新留言时通知我。",
+	"minerva-talk-full-page": "作为wiki页面阅读",
 	"tag-discussiontools-added-comment-description": "这次编辑中加入了一个讨论页留言",
 	"tag-discussiontools-description": "使用讨论工具进行编辑",
 	"tag-discussiontools-edit": "已编辑的留言",

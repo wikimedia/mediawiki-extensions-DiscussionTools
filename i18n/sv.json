@@ -151,6 +151,7 @@
 	"discussiontools-topicsubscription-special-title": "Ämnesprenumerationer",
 	"echo-category-title-dt-subscription": "Diskussionsside{{PLURAL:$1|prenumeration|prenumerationer}}",
 	"echo-pref-tooltip-dt-subscription": "Meddela mig när någon skriver en ny kommentar i ett ämne jag prenumererar på.",
+	"minerva-talk-full-page": "Läs som wikisida",
 	"tag-discussiontools-added-comment-description": "En kommentar på en diskussionssida lades till i den här redigeringen.",
 	"tag-discussiontools-description": "Redigering gjordes med DiscussionTools",
 	"tag-discussiontools-edit": "Redigerad kommentar",

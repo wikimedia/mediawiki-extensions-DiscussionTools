@@ -157,6 +157,7 @@
 	"discussiontools-topicsubscription-special-title": "Subscripcions de temes",
 	"echo-category-title-dt-subscription": "Pàgina de discussió\n{{PLURAL:$1|subscripció| subscripcions}}",
 	"echo-pref-tooltip-dt-subscription": "Notifica'm quan algú publiqui un comentari nou d'un tema on soc subscrit.",
+	"minerva-talk-full-page": "Mostra com a pàgina wiki",
 	"tag-discussiontools-added-comment-description": "S'ha afegit un comentari a la pàgina de discussió en aquesta edició",
 	"tag-discussiontools-description": "Edició realitzada a través de DiscussionTools",
 	"tag-discussiontools-edit": "Intervenció editada",

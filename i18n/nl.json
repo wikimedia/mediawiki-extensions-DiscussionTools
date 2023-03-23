@@ -166,6 +166,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1| Archivering}} van overlegpagina",
 	"echo-pref-tooltip-dt-subscription": "Laat het me weten als iemand een nieuwe opmerking plaatst in een onderwerp waarop ik geabonneerd ben.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Meld het mij wanneer een onderwerp waarop ik geabonneerd ben wordt gearchiveerd of verwijderd wordt van een pagina, of als meldingen over nieuwe opmerkingen die in dat onderwerp zijn geplaatst om andere redenen niet kunnen worden verzonden.",
+	"minerva-talk-full-page": "Als wikipagina lezen",
 	"tag-discussiontools-added-comment-description": "Er is een opmerking op de overlegpagina toegevoegd met deze bewerking",
 	"tag-discussiontools-description": "Bewerking gemaakt met DiscussionTools",
 	"tag-discussiontools-edit": "Reactie bewerkt",

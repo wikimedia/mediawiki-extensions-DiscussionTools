@@ -143,6 +143,7 @@
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Йаздалар}} дийцарийн агӀонгахь",
 	"echo-category-title-dt-subscription-archiving": "Дийцарийн агӀонийн {{PLURAL:$1|архивйар}}",
 	"echo-pref-tooltip-dt-subscription": "Сан йаздар долучу темехь цхьам керла хаам битича соьга дӀахаийта.",
+	"minerva-talk-full-page": "Схьайелла вики-агӀо",
 	"tag-discussiontools-added-comment-description": "ХӀокху нисдаро тӀетоьхна дийцарийн агӀонгахь хаам.",
 	"tag-discussiontools-description": "Нисдар дина DiscussionTools гӀоьнца",
 	"tag-discussiontools-edit": "Хийца коммент",

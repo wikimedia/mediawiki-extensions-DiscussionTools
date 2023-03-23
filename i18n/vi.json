@@ -160,6 +160,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Lưu trữ}} trang thảo luận",
 	"echo-pref-tooltip-dt-subscription": "Gửi thông báo cho tôi khi có người bình luận về chủ đề tôi theo dõi.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Thông báo cho tôi khi một chủ đề tôi theo dõi được lưu trữ hoặc xóa khỏi trang, hoặc nếu thông báo về bình luận mới được đăng tại chủ đề đó không thể gửi được vì lý do nào khác.",
+	"minerva-talk-full-page": "Đọc dưới dạng trang wiki",
 	"tag-discussiontools-added-comment-description": "Sửa đổi này thêm một lời bình luận vào trang thảo luận",
 	"tag-discussiontools-description": "Sửa đổi bằng Công cụ Thảo luận",
 	"tag-discussiontools-edit": "Đã sửa bình luận",

@@ -145,6 +145,7 @@
 	"echo-category-title-dt-subscription-archiving": "Arutelulehekülje {{PLURAL:$1|arhiveerimine}}",
 	"echo-pref-tooltip-dt-subscription": "Teavita mind, kui keegi postitab uue kommentaari teemas, mida tellin.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Teaviti mind, kui teema, mida tellin, arhiveeriti või eemaldati leheküljelt või kui teavitusi sellesse teemasse postitatud kommentaaride kohta ei saa saata muul põhjusel.",
+	"minerva-talk-full-page": "Loe vikileheküljena",
 	"tag-discussiontools-added-comment-description": "Selle muudatusega lisati aruteluleheküljele kommentaar.",
 	"tag-discussiontools-description": "Muudatus tehtud vahendiga DiscussionTools",
 	"tag-discussiontools-edit": "Muudetud kommentaar",

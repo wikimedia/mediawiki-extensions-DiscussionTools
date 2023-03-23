@@ -27,6 +27,7 @@
 	"discussiontools-topicsubscription-pager-notified": "ናይ መወዳእታ መፍለጢ",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "ምዝገባ ኣቋርጽ",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "ምዝገባታት ኣርትዕ",
+	"minerva-talk-full-page": "ከም ገጽ ዊኪ ኣንብብ",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} ሓድሽ ኣርእስቲ]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} መልስ]"
 }

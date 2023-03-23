@@ -187,6 +187,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|}}Archivage de la page de discussion",
 	"echo-pref-tooltip-dt-subscription": "Me notifier lorsque quelqu'un publie un nouveau commentaire dans un sujet auquel je suis abonné.",
 	"echo-pref-tooltip-dt-subscription-archiving": "M’avertir lorsqu’un sujet auquel je suis abonné est archivé ou retiré d'une page, ou si des notifications concernant les nouveaux commentaires publiés dans ce sujet ne peuvent pas être envoyées pour d’autres raisons.",
+	"minerva-talk-full-page": "Lire en tant que page wiki",
 	"tag-discussiontools-added-comment-description": "Un commentaire de page de discussion a été ajouté dans cette modification",
 	"tag-discussiontools-description": "Modification effectuée en utilisant DiscussionTools",
 	"tag-discussiontools-edit": "Commentaire modifié",

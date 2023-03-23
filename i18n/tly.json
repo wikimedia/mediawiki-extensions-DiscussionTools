@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Patriot Kor",
-			"Patriot Kur"
+			"Patriot Kur",
+			"Гусейн"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Cəvob bıdə",
@@ -13,5 +14,6 @@
 	"discussiontools-replywidget-placeholder-reply": "Cəvob bıdə bə {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "Cəvob bıdə",
 	"discussiontools-replywidget-summary": "Xılosə:",
-	"discussiontools-topicsubscription-pager-topic": "Mıvzo"
+	"discussiontools-topicsubscription-pager-topic": "Mıvzo",
+	"minerva-talk-full-page": "Бәнә вики-сәһифә окарде"
 }

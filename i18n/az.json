@@ -118,6 +118,7 @@
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Abunəlikləri dəyiş",
 	"echo-category-title-dt-subscription": "Müzakirə səhifəsinə {{PLURAL:$1|abunə|abunələr}}",
 	"echo-pref-tooltip-dt-subscription": "Abunə olduğum mövzuda kimsə yeni şərh yazdıqda mənə bildir.",
+	"minerva-talk-full-page": "Viki-səhifə kimi oxu",
 	"tag-discussiontools-description": "DiscussionTools vasitəsilə redaktə edildi",
 	"tag-discussiontools-edit": "Şərhi redaktə et",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Yeni bölmə]",

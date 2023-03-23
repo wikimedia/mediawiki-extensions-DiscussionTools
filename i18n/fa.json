@@ -166,6 +166,7 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|بایگانی}} صفحهٔ بحث",
 	"echo-pref-tooltip-dt-subscription": "هرگاه پاسخی در هر صفحهٔ بحثی در مبحث‌هایی که پیگیری می‌کنم ارسال شد، مرا آگاه کن.",
 	"echo-pref-tooltip-dt-subscription-archiving": "هنگامی که یک مبحث، که من در آن مشترک هستم، بایگانی شد یا از صفحه‌ای حذف شد، یا در صورتی که آگاه‌سازی مربوط به ارسال نظرات جدید در آن مبحث به دلایل دیگری قابل ارسال نبود، مرا آگاه کن.",
+	"minerva-talk-full-page": "خواندن به‌عنوان صفحۀ ویکی",
 	"tag-discussiontools-added-comment-description": "در این ویرایش یک نظر در صفحهٔ بحث افزوده شد",
 	"tag-discussiontools-description": "ویرایش توسط ابزارهای گفتگو",
 	"tag-discussiontools-edit": "ویرایش نظر",

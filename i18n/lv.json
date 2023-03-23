@@ -121,6 +121,7 @@
 	"echo-category-title-dt-subscription": "Diskusiju lapu {{PLURAL:$1|abonementi|abonements|abonementi}}",
 	"echo-category-title-dt-subscription-archiving": "Diskusiju lapas {{PLURAL:$1|arhivēšana}}",
 	"echo-pref-tooltip-dt-subscription": "Paziņot man, kad kāds pievieno jaunu komentāru tēmā, ko es abonēju.",
+	"minerva-talk-full-page": "Lasīt kā viki lapu",
 	"tag-discussiontools-added-comment-description": "Šajā labojumā tika pievienots diskusiju lapas komentārs",
 	"tag-discussiontools-description": "Labojums veikts ar diskusiju rīkiem",
 	"tag-discussiontools-edit": "Laboja komentāru",

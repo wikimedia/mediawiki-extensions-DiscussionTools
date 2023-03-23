@@ -136,6 +136,7 @@
 	"discussiontools-topicsubscription-special-title": "Праћење тема",
 	"echo-category-title-dt-subscription": "Странице за разговор {{PLURAL:$1|које пратим}}",
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Архивирање}} страница за разговор",
+	"minerva-talk-full-page": "Читајте као вики страницу",
 	"tag-discussiontools-description": "Измене помоћу алатка за разговор",
 	"tag-discussiontools-edit": "коментар измењен",
 	"tag-discussiontools-edit-description": "Корисник је уредио постојећи коментар помоћу алатка за разговор",

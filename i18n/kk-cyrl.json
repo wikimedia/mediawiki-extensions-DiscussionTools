@@ -159,6 +159,7 @@
 	"echo-category-title-dt-subscription-archiving": "Талқылау бетін {{PLURAL:$1|мұрағаттау}}",
 	"echo-pref-tooltip-dt-subscription": "Біреу мен жазылған тақырыпқа жаңа пікір жазғанда маған хабарла.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Мен жазылған тақырып мұрағатталғанда немесе беттен жойылғанда немесе сол тақырыпта жарияланған жаңа пікірлер туралы хабарландыруларды басқа себептермен жіберу мүмкін болмаса маған хабарла.",
+	"minerva-talk-full-page": "Уики бет ретінде оқу",
 	"tag-discussiontools-added-comment-description": "Бұл өңдемеде талқылау бетіне пікір қосылды",
 	"tag-discussiontools-description": "Өңдеме DiscussionTools қолданып жасалған",
 	"tag-discussiontools-edit": "Өңделген пікір",

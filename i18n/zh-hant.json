@@ -164,6 +164,7 @@
 	"echo-category-title-dt-subscription-archiving": "討論頁{{PLURAL:$1|存檔}}",
 	"echo-pref-tooltip-dt-subscription": "當有人在我訂閱的話題上發布新留言時通知我。",
 	"echo-pref-tooltip-dt-subscription-archiving": "當我訂閱的話題從頁面上存檔或移除，或是發佈在該話題的新留言通知因故無法發送時，通知我。",
+	"minerva-talk-full-page": "作為 wiki 頁面閱讀",
 	"tag-discussiontools-added-comment-description": "在這次編輯中加入了一則討論頁留言",
 	"tag-discussiontools-description": "使用討論工具編輯",
 	"tag-discussiontools-edit": "已編輯留言",

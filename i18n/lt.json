@@ -85,5 +85,6 @@
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Redaguoti prenumeratas",
 	"discussiontools-topicsubscription-special-title": "Temų prenumeratos",
 	"echo-category-title-dt-subscription": "Aptarimų puslapio {{PLURAL:$1|prenumerata|prenumeratos}}",
-	"echo-pref-tooltip-dt-subscription": "Pranešti man, kai kas nors paskelbia naują komentarą temoje, kurią prenumeruoju."
+	"echo-pref-tooltip-dt-subscription": "Pranešti man, kai kas nors paskelbia naują komentarą temoje, kurią prenumeruoju.",
+	"minerva-talk-full-page": "Skaityti kaip viki puslapį"
 }
