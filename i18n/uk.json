@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alexander Yukal",
+			"Andriy.v",
 			"Base",
 			"DDPAT",
 			"Ice bulldog",
@@ -61,6 +62,8 @@
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Ви зараз переглядаєте старий вигляд.</strong> Ви можете [$1 повернутися до нового вигляду] або перейти у налаштування, де [$2 встановити старий вигляд собі за замовчуванням].",
 	"discussiontools-newtopic-missing-title": "Будь ласка, вкажіть назву для своєї теми в обговоренні. Якщо ви натиснете на «{{int:discussiontools-replywidget-newtopic}}», вашу тему буде додано без назви.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
+	"discussiontools-newtopicssubscription-button-subscribe-label": "Підписатись",
+	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Підписатись для отримання сповіщення коли нова тема розпочата на цій сторінці",
 	"discussiontools-notification-removed-topic-body": "Можливо, ви більше не отримуватимете сповіщень про {{PLURAL:$1|цю тему|ці теми}}.",
 	"discussiontools-notification-removed-topic-header": "Тему «<strong>$4</strong>» було архівовано або вилучено зі сторінки $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|Одну тему|$1 теми|$1 тем|100=99+ тем}} архівовано або вилучено зі сторінки $2.",
