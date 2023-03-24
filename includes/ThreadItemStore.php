@@ -70,9 +70,10 @@ class ThreadItemStore {
 	 * have appeared.
 	 *
 	 * @param string|string[] $itemName
+	 * @param int|null $limit
 	 * @return DatabaseThreadItem[]
 	 */
-	public function findNewestRevisionsByName( $itemName ): array {
+	public function findNewestRevisionsByName( $itemName, ?int $limit = 50 ): array {
 		if ( $this->isDisabled() ) {
 			return [];
 		}
@@ -85,6 +86,10 @@ class ThreadItemStore {
 				// (But we still store them, as we might need this data elsewhere.)
 				"it_itemname != 'h-'",
 			] );
+
+		if ( $limit !== null ) {
+			$queryBuilder->limit( $limit );
+		}
 
 		$result = $this->fetchItemsResultSet( $queryBuilder );
 		$revs = $this->fetchRevisionAndPageForItems( $result );
@@ -104,9 +109,10 @@ class ThreadItemStore {
 	 * appeared.
 	 *
 	 * @param string|string[] $itemId
+	 * @param int|null $limit
 	 * @return DatabaseThreadItem[]
 	 */
-	public function findNewestRevisionsById( $itemId ): array {
+	public function findNewestRevisionsById( $itemId, ?int $limit = 50 ): array {
 		if ( $this->isDisabled() ) {
 			return [];
 		}
@@ -129,6 +135,10 @@ class ThreadItemStore {
 				'it_itemname IN (' . $itemNameQueryBuilder->getSQL() . ')',
 				"it_itemname != 'h-'",
 			] );
+
+		if ( $limit !== null ) {
+			$queryBuilder->limit( $limit );
+		}
 
 		$result = $this->fetchItemsResultSet( $queryBuilder );
 		$revs = $this->fetchRevisionAndPageForItems( $result );
