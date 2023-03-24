@@ -217,6 +217,7 @@ class PageHooks implements
 			}
 
 			if (
+				$req->getRawVal( 'action', 'view' ) === 'view' &&
 				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
 				// Only add the button if "New section" tab would be shown in a normal skin.
 				HookUtils::shouldShowNewSectionTab( $output->getContext() )
