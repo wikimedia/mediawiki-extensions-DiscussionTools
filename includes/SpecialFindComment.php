@@ -8,6 +8,8 @@ use HTMLForm;
 
 class SpecialFindComment extends FormSpecialPage {
 
+	private const LIST_LIMIT = 50;
+
 	private ThreadItemStore $threadItemStore;
 	private ThreadItemFormatter $threadItemFormatter;
 
@@ -88,13 +90,13 @@ class SpecialFindComment extends FormSpecialPage {
 		$results = false;
 
 		if ( $this->idOrName ) {
-			$byId = $this->threadItemStore->findNewestRevisionsById( $this->idOrName );
+			$byId = $this->threadItemStore->findNewestRevisionsById( $this->idOrName, static::LIST_LIMIT + 1 );
 			if ( $byId ) {
 				$this->displayItems( $byId, 'discussiontools-findcomment-results-id' );
 				$results = true;
 			}
 
-			$byName = $this->threadItemStore->findNewestRevisionsByName( $this->idOrName );
+			$byName = $this->threadItemStore->findNewestRevisionsByName( $this->idOrName, static::LIST_LIMIT + 1 );
 			if ( $byName ) {
 				$this->displayItems( $byName, 'discussiontools-findcomment-results-name' );
 				$results = true;
@@ -119,12 +121,18 @@ class SpecialFindComment extends FormSpecialPage {
 
 		$list = [];
 		foreach ( $threadItems as $item ) {
+			if ( count( $list ) === static::LIST_LIMIT ) {
+				break;
+			}
 			$line = $this->threadItemFormatter->formatLine( $item, $this );
 			$list[] = Html::rawElement( 'li', [], $line );
 		}
 
 		$out->addHTML( $this->msg( $msgKey, count( $list ) )->parseAsBlock() );
 		$out->addHTML( Html::rawElement( 'ul', [], implode( '', $list ) ) );
+		if ( count( $threadItems ) > static::LIST_LIMIT ) {
+			$out->addHTML( $this->msg( 'morenotlisted' )->parseAsBlock() );
+		}
 	}
 
 	/**
