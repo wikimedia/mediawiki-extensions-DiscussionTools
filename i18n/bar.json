@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiBayer"
+			"WikiBayer",
+			"Mucalexx"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Antwort",
+	"discussiontools-defaultsummary-reply": "Ántwort",
 	"discussiontools-desc": "Werkzeig zua Vabessarung d Diskussionsseitn",
 	"discussiontools-preference-label": "Diskussions-Werkzeig",
 	"discussiontools-replylink": "Antwort",
 	"discussiontools-replywidget-cancel": "Obbrecha",
-	"discussiontools-replywidget-mode-source": "Quejn",
-	"discussiontools-replywidget-reply": "Antwort"
+	"discussiontools-replywidget-mode-source": "Gwën",
+	"discussiontools-replywidget-reply": "Ántwurt"
 }

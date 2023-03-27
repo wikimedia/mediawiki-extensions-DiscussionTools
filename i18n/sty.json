@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"TayfunEt."
+			"TayfunEt.",
+			"Sorbat"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Пулмайын иткәле"
+	"discussiontools-defaultsummary-reply": "Йауаплау",
+	"discussiontools-replywidget-cancel": "Пулмайын иткәле",
+	"discussiontools-replywidget-mode-visual": "Ҡарап",
+	"discussiontools-replywidget-preview": "Алттан ҡарау"
 }

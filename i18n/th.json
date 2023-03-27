@@ -7,9 +7,11 @@
 			"Patsagorn Y.",
 			"Prame Tan",
 			"Thas Tayapongsak",
-			"Ekminarin"
+			"Ekminarin",
+			"Kaoavi"
 		]
 	},
+	"discussiontools": "เครื่องมือช่วยในการอภิปราย",
 	"discussiontools-defaultsummary-reply": "ตอบกลับ",
 	"discussiontools-desc": "เครื่องมือปรับปรุงประสิทธิภาพในหน้าอภิปราย",
 	"discussiontools-preference-label": "เครื่องมือช่วยเหลือการอภิปราย",
@@ -27,6 +29,8 @@
 	"discussiontools-replywidget-transcluded": "ความเห็นของคุณจะถูกบันทึกไว้ที่ [[$1]]",
 	"discussiontools-signature-prefix": "&#32;",
 	"tag-discussiontools-description": "การแก้ไขโดยใช้เครื่องมือการอภิปราย",
+	"tag-discussiontools-newtopic-description": "ผู้ใช้เพิ่มหัวข้อใหม่ในหน้าด้วยเครื่องมือช่วยในการอภิปราย",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} ตอบกลับ]",
 	"tag-discussiontools-source": "ต้นฉบับ",
 	"tag-discussiontools-visual": "เห็นภาพ"
 }

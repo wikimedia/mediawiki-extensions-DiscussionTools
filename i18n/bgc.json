@@ -4,12 +4,12 @@
 			"भारत्पराक्रमि"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "उत्तर",
+	"discussiontools-defaultsummary-reply": "जवाब",
 	"discussiontools-replylink": "उत्तर",
 	"discussiontools-replywidget-cancel": "रद्द करैं",
 	"discussiontools-replywidget-mode-source": "स्रोत",
 	"discussiontools-replywidget-mode-visual": "यथादृश्य",
-	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} को उत्तर दें",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} को जवाब देवें",
 	"discussiontools-replywidget-preview": "झलक",
 	"discussiontools-replywidget-reply": "उत्तर दें"
 }

@@ -1,14 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"TheAafi"
+			"TheAafi",
+			"Muhammad Shuaib"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "جواب دیں",
+	"discussiontools-desc": "بحث کے صفحات کو بہتر کنے کے آلات",
 	"discussiontools-replylink": "جواب دیں",
 	"discussiontools-replywidget-cancel": "منسوخ کریں",
 	"discussiontools-replywidget-loading": "لوڈ ہو رہا ہے۔۔۔",
 	"discussiontools-replywidget-mention-tool-title": "صارف کا تذکرہ کریں",
+	"discussiontools-replywidget-mode-source": "ماخذی",
+	"discussiontools-replywidget-mode-visual": "بصری",
 	"discussiontools-replywidget-preview": "نمائش",
 	"discussiontools-replywidget-reply": "جواب دیں"
 }
