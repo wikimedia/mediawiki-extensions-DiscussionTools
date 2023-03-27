@@ -454,20 +454,24 @@ function acceptOnlyNodesAllowingComments( node ) {
 		if ( node.id === 'toc' ) {
 			return NodeFilter.FILTER_REJECT;
 		}
+		// Don't detect comments within quotes (T275881)
+		if (
+			tagName === 'blockquote' ||
+			tagName === 'cite' ||
+			tagName === 'q'
+		) {
+			return NodeFilter.FILTER_REJECT;
+		}
+		// Don't attempt to parse blocks marked 'mw-notalk'
+		if ( node.classList.contains( 'mw-notalk' ) ) {
+			return NodeFilter.FILTER_REJECT;
+		}
 		// Don't detect comments within references. We can't add replies to them without bungling up
 		// the structure in some cases (T301213), and you're not supposed to do that anyway…
 		if (
 			// <ol class="references"> is the only reliably consistent thing between the two parsers
 			tagName === 'ol' &&
 			node.classList.contains( 'references' )
-		) {
-			return NodeFilter.FILTER_REJECT;
-		}
-		// Don't detect comments within quotes (T275881)
-		if (
-			tagName === 'blockquote' ||
-			tagName === 'cite' ||
-			tagName === 'q'
 		) {
 			return NodeFilter.FILTER_REJECT;
 		}

@@ -349,7 +349,10 @@ class HookUtils {
 			return false;
 		}
 
-		// ARCHIVEDTALK magic word
+		// ARCHIVEDTALK/NOTALK magic words
+		if ( self::hasPagePropCached( $title, 'notalk' ) ) {
+			return false;
+		}
 		if (
 			$feature === static::REPLYTOOL &&
 			self::hasPagePropCached( $title, 'archivedtalk' )

@@ -85,5 +85,6 @@ class ParserHooks implements
 	 */
 	public function onGetDoubleUnderscoreIDs( &$doubleUnderscoreIDs ) {
 		$doubleUnderscoreIDs[] = 'archivedtalk';
+		$doubleUnderscoreIDs[] = 'notalk';
 	}
 }
