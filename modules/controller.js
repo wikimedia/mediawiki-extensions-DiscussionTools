@@ -12,7 +12,6 @@ var
 	CommentDetails = require( './CommentDetails.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
 	ReplyLinksController = require( './ReplyLinksController.js' ),
-	logger = require( './logger.js' ),
 	utils = require( './utils.js' ),
 	highlighter = require( './highlighter.js' ),
 	topicSubscriptions = require( './topicsubscriptions.js' ),
@@ -612,7 +611,7 @@ function refreshPageContents( oldId ) {
  */
 function update( data, threadItem, pageName, replyWidget ) {
 	function logSaveSuccess() {
-		logger( {
+		mw.track( 'editAttemptStep', {
 			action: 'saveSuccess',
 			timing: mw.now() - replyWidget.saveInitiated,
 			// eslint-disable-next-line camelcase

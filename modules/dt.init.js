@@ -16,7 +16,6 @@ if ( mw.user.isAnon() && mw.config.get( 'wgDiscussionToolsABTest' ) && mw.config
 	var token = mw.cookie.get( 'DTABid', '', mw.user.generateRandomSessionId() );
 	mw.cookie.set( 'DTAB', mw.config.get( 'wgDiscussionToolsABTestBucket' ), { path: '/', expires: 90 * 86400, prefix: '' } );
 	mw.cookie.set( 'DTABid', token, { path: '/', expires: 90 * 86400, prefix: '' } );
-	mw.config.set( 'wgDiscussionToolsAnonymousUserId', token );
 }
 
 if ( url.searchParams.get( 'dtrepliedto' ) ) {
@@ -89,6 +88,5 @@ module.exports = {
 	HeadingItem: require( './HeadingItem.js' ),
 	CommentItem: require( './CommentItem.js' ),
 	utils: require( './utils.js' ),
-	config: require( './config.json' ),
-	logger: require( './logger.js' )
+	config: require( './config.json' )
 };

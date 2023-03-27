@@ -1,5 +1,4 @@
 var
-	logger = require( './logger.js' ),
 	controller = require( './controller.js' ),
 	CommentController = require( './CommentController.js' ),
 	HeadingItem = require( './HeadingItem.js' );
@@ -332,8 +331,7 @@ NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 	data = $.extend( {}, data, {
 		paction: 'addtopic',
 		sectiontitle: this.sectionTitle.getValue(),
-		dttags: tags.join( ',' ),
-		editingStatsId: logger.getSessionId()
+		dttags: tags.join( ',' )
 	} );
 
 	// Allow MediaWiki to generate the summary if it wasn't modified by the user. This avoids
