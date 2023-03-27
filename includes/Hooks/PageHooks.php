@@ -23,10 +23,12 @@ use MediaWiki\Extension\VisualEditor\Hooks as VisualEditorHooks;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
+use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserOptionsLookup;
 use OOUI\ButtonWidget;
@@ -46,6 +48,7 @@ class PageHooks implements
 	GetActionNameHook,
 	OutputPageBeforeHTMLHook,
 	OutputPageParserOutputHook,
+	SidebarBeforeOutputHook,
 	SkinTemplateNavigation__UniversalHook,
 	TitleGetEditNoticesHook
 {
@@ -533,6 +536,29 @@ class PageHooks implements
 	}
 
 	/**
+	 * @param Skin $skin
+	 * @param array &$sidebar
+	 */
+	public function onSidebarBeforeOutput( $skin, &$sidebar ): void {
+		$output = $skin->getOutput();
+		if (
+			$skin->getSkinName() === 'minerva' &&
+			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION )
+		) {
+			$button = $this->getNewTopicsSubscriptionButton(
+				$skin->getUser(),
+				$skin->getTitle(),
+				$skin->getContext()
+			);
+			$sidebar['TOOLBOX']['t-page-subscribe'] = [
+				'icon' => $button['icon'],
+				'text' => $button['label'],
+				'href' => '#',
+			];
+		}
+	}
+
+	/**
 	 * @param SkinTemplate $sktemplate
 	 * @param array &$links
 	 * @return void
@@ -541,30 +567,53 @@ class PageHooks implements
 	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
 		$output = $sktemplate->getOutput();
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
-			$user = $sktemplate->getUser();
-			$title = $sktemplate->getTitle();
-			$items = $this->subscriptionStore->getSubscriptionItemsForUser(
-				$user,
-				[ CommentUtils::getNewTopicsSubscriptionId( $title ) ]
+			$button = $this->getNewTopicsSubscriptionButton(
+				$sktemplate->getUser(),
+				$sktemplate->getTitle(),
+				$sktemplate->getContext()
 			);
-			$subscriptionItem = count( $items ) ? $items[ 0 ] : null;
-			$isSubscribed = $subscriptionItem && !$subscriptionItem->isMuted();
 
-			$context = $sktemplate->getContext();
 			$links['actions']['dt-page-subscribe'] = [
-				'text' => $context->msg( $isSubscribed ?
-					'discussiontools-newtopicssubscription-button-unsubscribe-label' :
-					'discussiontools-newtopicssubscription-button-subscribe-label'
-				),
-				'title' => $context->msg( $isSubscribed ?
-					'discussiontools-newtopicssubscription-button-unsubscribe-tooltip' :
-					'discussiontools-newtopicssubscription-button-subscribe-tooltip'
-				),
-				'data-mw-subscribed' => $isSubscribed ? '1' : '0',
-				// TODO: Provide a no-JS action?
-				'href' => '#',
+				'text' => $button['label'],
+				'title' => $button['tooltip'],
+				'data-mw-subscribed' => $button['isSubscribed'] ? '1' : '0',
+				'href' => $button['href'],
 			];
 		}
+	}
+
+	/**
+	 * Get data from a new topics subcription button
+	 *
+	 * @param UserIdentity $user User
+	 * @param Title $title Title
+	 * @param IContextSource $context Context
+	 * @return array Array containing label, tooltip, icon, isSubscribed and href.
+	 */
+	private function getNewTopicsSubscriptionButton(
+		UserIdentity $user, Title $title, IContextSource $context
+	): array {
+		$items = $this->subscriptionStore->getSubscriptionItemsForUser(
+			$user,
+			[ CommentUtils::getNewTopicsSubscriptionId( $title ) ]
+		);
+		$subscriptionItem = count( $items ) ? $items[ 0 ] : null;
+		$isSubscribed = $subscriptionItem && !$subscriptionItem->isMuted();
+
+		return [
+			'label' => $context->msg( $isSubscribed ?
+				'discussiontools-newtopicssubscription-button-unsubscribe-label' :
+				'discussiontools-newtopicssubscription-button-subscribe-label'
+			)->text(),
+			'tooltip' => $context->msg( $isSubscribed ?
+				'discussiontools-newtopicssubscription-button-unsubscribe-tooltip' :
+				'discussiontools-newtopicssubscription-button-subscribe-tooltip'
+			)->text(),
+			'icon' => $isSubscribed ? 'bell' : 'bellOutline',
+			'isSubscribed' => $isSubscribed,
+			// TODO: Provide a no-JS action?
+			'href' => '#',
+		];
 	}
 
 	/**

@@ -222,9 +222,24 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 
 	// New topics subscription button
 	( function () {
-		// eslint-disable-next-line no-jquery/no-global-selector
-		var $button = $( '#ca-dt-page-subscribe > a' );
-		var $label = $button.find( 'span' );
+		var $button, $label, $icon;
+
+		if ( mw.config.get( 'skin' ) === 'minerva' ) {
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$button = $( '.menu__item--page-actions-overflow-t-page-subscribe' );
+			$label = $button.find( '.toggle-list-item__label' );
+			$icon = $button.find( '.mw-ui-icon' );
+			// HACK: We can't set data-mw-subscribed intially in Minerva, so work it out from the icon
+			// eslint-disable-next-line no-jquery/no-class-state
+			var initialState = $icon.hasClass( 'mw-ui-icon-minerva-bell' ) ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED;
+			$button.attr( 'data-mw-subscribed', String( initialState ) );
+		} else {
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$button = $( '#ca-dt-page-subscribe > a' );
+			$label = $button.find( 'span' );
+			$icon = $( [] );
+		}
+
 		var titleObj = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
 		var name = utils.getNewTopicsSubscriptionId( titleObj );
 
@@ -236,6 +251,8 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 			changeSubscription( titleObj.getPrefixedText(), name, !subscribedState, true )
 				.then( function ( result ) {
 					updateSubscribeLink( $button[ 0 ], result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED, $label[ 0 ], true );
+					$icon.toggleClass( 'mw-ui-icon-minerva-bell', !!result.subscribe );
+					$icon.toggleClass( 'mw-ui-icon-minerva-bellOutline', !result.subscribe );
 				} );
 		} );
 	}() );

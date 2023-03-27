@@ -90,6 +90,7 @@
 			],
 			"dependencies": [
 				"ext.discussionTools.init.styles",
+				"ext.discussionTools.minervaicons",
 				"web2017-polyfills",
 				"moment",
 				"rangefix",
@@ -157,6 +158,16 @@
 			"targets": [
 				"desktop",
 				"mobile"
+			]
+		},
+		"ext.discussionTools.minervaicons": {
+			"selectorWithoutVariant": ".mw-ui-icon-minerva-{name}:before",
+			"useDataURI": false,
+			"defaultColor": "#54595d",
+			"class": "ResourceLoaderOOUIIconPackModule",
+			"icons": [
+				"bell",
+				"bellOutline"
 			]
 		},
 		"ext.discussionTools.debug": {
@@ -421,6 +432,7 @@
 		"GetActionName": "page",
 		"OutputPageBeforeHTML": "page",
 		"OutputPageParserOutput": "page",
+		"SidebarBeforeOutput": "page",
 		"SkinTemplateNavigation::Universal": "page",
 		"TitleGetEditNotices": "page",
 		"ResourceLoaderGetConfigVars": "resourceloader",
