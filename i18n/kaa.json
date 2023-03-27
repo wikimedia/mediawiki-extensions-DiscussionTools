@@ -21,6 +21,8 @@
 	"discussiontools-ledesection-title": "Bul talqılaw beti haqqında",
 	"discussiontools-newtopic-missing-title": "Talqılaw tekstińizge tema qoyıńız. Egerde siz usılayınsha \"{{int:discussiontools-replywidget-newtopic}}\" túymesin bassańız, siziń tekstińiz temasız qosıladı.",
 	"discussiontools-newtopic-placeholder-title": "Tema",
+	"discussiontools-newtopicssubscription-button-subscribe-label": "Jazılıw",
+	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Bul bette jańa temalar baslanǵanda xabarnama alıw ushın jazılıw.",
 	"discussiontools-postedit-confirmation-topicadded": "Siziń temańız qosıldı.",
 	"discussiontools-preference-label": "Talqılaw quralları",
 	"discussiontools-replybutton": "Juwap beriw",

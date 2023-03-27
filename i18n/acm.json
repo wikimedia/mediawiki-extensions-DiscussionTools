@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"MRidhaAJ"
+		]
+	},
+	"discussiontools-autotopicsubpopup-body": "راح ندز إشعار من ينشر واحد تعليق بهاي المناقشة. تكدر تضبط إعدادات الإشعارات بالتفضيلات.",
+	"discussiontools-autotopicsubpopup-dismiss": "اي، إفتهمت",
+	"discussiontools-autotopicsubpopup-preferences": "تفضيلات التحرير",
+	"discussiontools-autotopicsubpopup-title": "إشتركت!",
+	"discussiontools-defaultsummary-reply": "رد",
+	"discussiontoolsdebug-pagetitle": "عنوان الصفحة",
+	"discussiontools-replylink": "{{GENDER:|ردّ|ردّي}}",
+	"discussiontools-replywidget-advanced": "خيارات متقدمة",
+	"discussiontools-replywidget-cancel": "ألغي",
+	"discussiontools-replywidget-mode-source": "مصدر",
+	"discussiontools-replywidget-mode-visual": "مرئي",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER|رد|ردي}} على {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "معاينة",
+	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
+	"discussiontools-replywidget-summary": "ملخص",
+	"discussiontools-replywidget-watchthis": "حط الصفحة بـ[[Special:Watchlist|قائمة المراقبة]]",
+	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|نفر|نفرات}}",
+	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|تعليق|تعليقات}}",
+	"discussiontools-topicheader-latestcomment": "آخر تعليق:$1",
+	"discussiontools-topicsubscription-button-subscribe": "اشتراك",
+	"discussiontools-topicsubscription-button-subscribe-label": "اشتراك",
+	"discussiontools-topicsubscription-button-unsubscribe": "الغي إشتراكك",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "إلغي إشتراكك",
+	"discussiontools-topicsubscription-notify-subscribed-body": "راح تتلقى تنبيهات على تعليقات جديدة على هاذ الموضوع",
+	"discussiontools-topicsubscription-notify-subscribed-title": "إشتركت!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "ما راح تتلقى تنبيهات على تعليقات جديدة على هاذ الموضوع.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "لغيت إشتراكك!"
+}

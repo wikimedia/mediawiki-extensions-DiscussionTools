@@ -34,6 +34,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "編集の個人設定",
 	"discussiontools-autotopicsubpopup-title": "通知を有効にしました",
 	"discussiontools-defaultsummary-reply": "返信",
+	"discussiontoolsdebug-pagetitle": "ページ名",
 	"discussiontools-desc": "議論ページを充実させるためのツール",
 	"discussiontools-emptystate-button": "新しい議論を始める",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|トークページ]]とは{{SITENAME}}にあるコンテンツの最適化を皆さんで協議する場です。[[:{{SUBJECTPAGENAME}}]]の改善について議論を始めるなら、このページを利用してください。",

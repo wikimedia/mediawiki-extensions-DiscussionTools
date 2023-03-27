@@ -15,6 +15,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Уреди подешавања",
 	"discussiontools-autotopicsubpopup-title": "Одсад пратите овај разговор.",
 	"discussiontools-defaultsummary-reply": "одговор",
+	"discussiontoolsdebug-pagetitle": "Наслов странице",
 	"discussiontools-desc": "Алатке за олакшавање комуникације на страницама за разговор.",
 	"discussiontools-emptystate-button": "Започни разговор",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Странице за разговор]] су места где уредници дискутују о садржају на Википедији. Можете користити ову страницу за покретање дискусије о садржају странице [[:{{SUBJECTPAGENAME}}]] и како је унапредити.",

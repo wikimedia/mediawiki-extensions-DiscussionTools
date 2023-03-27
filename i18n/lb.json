@@ -13,6 +13,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Astellungen änneren",
 	"discussiontools-autotopicsubpopup-title": "Dir gouft abonéiert",
 	"discussiontools-defaultsummary-reply": "Äntweren",
+	"discussiontoolsdebug-pagetitle": "Titel vun der Säit",
 	"discussiontools-desc": "Geschier fir Diskussiounsäiten ze verbesseren.",
 	"discussiontools-emptystate-button": "Eng Diskussioun ufänken",
 	"discussiontools-emptystate-desc": "Op [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Diskussiounssäiten]] diskutéiere Leit wéi se den Inhalt op {{SITENAME}} sou gutt wéi méiglech gestalte kënnen. Dir kënnt dës Säit benotze fir eng Diskussioun mat Aneren unzefänken wéi een [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] verbessere kann.",

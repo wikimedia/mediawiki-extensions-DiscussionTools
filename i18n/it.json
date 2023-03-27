@@ -21,6 +21,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Modifica preferenze",
 	"discussiontools-autotopicsubpopup-title": "Ti sei iscritto",
 	"discussiontools-defaultsummary-reply": "Risposta",
+	"discussiontoolsdebug-pagetitle": "Titolo della pagina",
 	"discussiontools-desc": "Strumenti per migliorare le pagine di discussione.",
 	"discussiontools-emptystate-button": "Inizia discussione",
 	"discussiontools-emptystate-desc": "Le [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|pagine di discussione]] sono spazi dove le persone discutono su come migliorare i contenuti di {{SITENAME}}. Inizia una nuova discussione per discutere modifiche alla pagina [[:{{SUBJECTPAGENAME}}]].",
