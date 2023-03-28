@@ -158,12 +158,39 @@ class ResourceLoaderData {
 	 * @return RL\Module
 	 */
 	public static function makeTestModule( array $info ): RL\Module {
+		// Some tests rely on PHP-only features or are too large for the Karma test runner.
+		// Skip them here. They are still tested in the PHP version.
+		$skipTests = [
+			'cases/modified.json' => [
+				// Too large, cause timeouts in Karma test runner
+				'enwiki oldparser',
+				'enwiki parsoid',
+				'enwiki oldparser (bullet indentation)',
+				'enwiki parsoid (bullet indentation)',
+				// These tests depend on #getTranscludedFrom(), which we didn't implement in JS
+				'arwiki no-paragraph parsoid',
+				'enwiki parsoid',
+				'Many comments consisting of a block template and a paragraph',
+				'Comment whose range almost exactly matches a template, but is not considered transcluded (T313100)',
+				'Accidental complex transclusion (T265528)',
+				'Accidental complex transclusion (T313093)',
+			],
+		];
+		$info['packageFiles'][] = [
+			'name' => 'skip.json',
+			'type' => 'data',
+			'content' => $skipTests,
+		];
+
 		$keys = [ 'config', 'data', 'dom', 'expected' ];
 		foreach ( $info['testData'] as $path ) {
 			$info['packageFiles'][] = $path;
 			$localPath = $info['localBasePath'] . '/' . $path;
 			$data = json_decode( file_get_contents( $localPath ), true );
 			foreach ( $data as $case ) {
+				if ( isset( $case['name'] ) && in_array( $case['name'], $skipTests[$path] ?? [] ) ) {
+					continue;
+				}
 				foreach ( $case as $key => $val ) {
 					if ( in_array( $key, $keys ) && is_string( $val ) ) {
 						if ( str_ends_with( $val, '.json' ) ) {
