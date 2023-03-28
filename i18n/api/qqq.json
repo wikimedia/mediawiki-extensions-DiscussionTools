@@ -20,6 +20,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addcomment}}",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addtopic}}",
 	"apihelp-discussiontoolsedit-summary": "{{doc-apihelp-summary|discussiontoolsedit}}",
+	"apihelp-discussiontoolsfindcomment-summary": "{{doc-apihelp-summary|discussiontoolsfindcomment}}",
+	"apihelp-discussiontoolsfindcomment-param-idorname": "{{doc-apihelp-param|discussiontoolsfindcomment|idorname}}",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "{{doc-apihelp-param|discussiontoolsgetsubscriptions|commentname}}",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "{{doc-apihelp-summary|discussiontoolsgetsubscriptions}}",
 	"apihelp-discussiontoolspageinfo-param-oldid": "{{doc-apihelp-param|discussiontoolspageinfo|oldid}}",

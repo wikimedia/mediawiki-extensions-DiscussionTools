@@ -361,6 +361,13 @@
 				"RevisionLookup"
 			]
 		},
+		"discussiontoolsfindcomment": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsFindComment",
+			"services": [
+				"DiscussionTools.ThreadItemStore",
+				"TitleFormatter"
+			]
+		},
 		"discussiontoolsgetsubscriptions": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsGetSubscriptions",
 			"services": [
