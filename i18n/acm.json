@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"MRidhaAJ"
+		]
+	},
+	"discussiontools-autotopicsubpopup-dismiss": "اي، إفتهمت",
+	"discussiontools-autotopicsubpopup-preferences": "تفضيلات التحرير",
+	"discussiontools-defaultsummary-reply": "رد",
+	"discussiontools-replywidget-advanced": "خيارات متقدمة",
+	"discussiontools-replywidget-cancel": "ألغي",
+	"discussiontools-replywidget-mode-source": "مصدر",
+	"discussiontools-replywidget-mode-visual": "مرئي",
+	"discussiontools-replywidget-preview": "معاينة",
+	"discussiontools-replywidget-summary": "ملخص",
+	"discussiontools-replywidget-watchthis": "حط الصفحة بـ[[Special:Watchlist|قائمة المراقبة]]",
+	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|نفر|نفرات}}",
+	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|تعليق|تعليقات}}",
+	"discussiontools-topicheader-latestcomment": "آخر تعليق:$1",
+	"discussiontools-topicsubscription-button-subscribe": "اشتراك",
+	"discussiontools-topicsubscription-button-subscribe-label": "اشتراك",
+	"discussiontools-topicsubscription-button-unsubscribe": "الغي إشتراكك",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "إلغي إشتراكك"
+}

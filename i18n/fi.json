@@ -152,6 +152,7 @@
 	"discussiontools-topicsubscription-special-intro": "Tilausten avulla voit seurata yksittäisiä aiheita keskustelusivuilla. Saat ilmoituksen, kun joku vastaa aiheeseen.\n\n[[Special:Preferences#mw-prefsection-echo|Omissa asetuksissasi]] voit valita, miten ja mihin saat kyseiset ilmoitukset.",
 	"discussiontools-topicsubscription-special-title": "Aiheiden tilaukset",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Keskustelusivutilaus|Keskustelusivutilaukset}}",
+	"echo-category-title-dt-subscription-archiving": "Keskustelusivun {{PLURAL:$1| arkistointi}}",
 	"echo-pref-tooltip-dt-subscription": "Ilmoita minulle, kun joku kirjoittaa kommentin tilaamaani aiheeseen.",
 	"tag-discussiontools-added-comment-description": "Tässä muokkauksessa lisättiin viesti keskustelusivulle",
 	"tag-discussiontools-description": "Muokkaus tehty DiscussionTools-työkalulla",
