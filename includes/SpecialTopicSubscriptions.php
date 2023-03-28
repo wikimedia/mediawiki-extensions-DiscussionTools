@@ -50,4 +50,10 @@ class SpecialTopicSubscriptions extends SpecialPage {
 		return $this->msg( 'discussiontools-topicsubscription-special-title' )->text();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	protected function getGroupName() {
+		return 'login';
+	}
 }
