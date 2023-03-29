@@ -5,7 +5,8 @@
 			"Ed g2s",
 			"Jon Harald Søby",
 			"Matma Rex",
-			"Vukky"
+			"Vukky",
+			"EdoAug"
 		]
 	},
 	"discussiontools": "Diskusjonsverktøy",
@@ -108,11 +109,11 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Du har avsluttet abonnementet.",
 	"discussiontools-topicsubscription-pager-actions": "Handlinger",
 	"discussiontools-topicsubscription-pager-page": "Side",
-	"discussiontools-topicsubscription-pager-topic": "Tråd",
+	"discussiontools-topicsubscription-pager-topic": "Emne",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Avslutt abonnement",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Rediger abonnementer",
 	"discussiontools-topicsubscription-special-intro": "Abonnement lar deg følge en tråd på diskusjonssider. Når noen legger igjen en kommentar vil du få et varsel.\n\nTilpass hvordan og hvor du mottar disse varslene i [[Special:Preferences#mw-prefsection-echo|dine innstillinger]].",
-	"discussiontools-topicsubscription-special-title": "Tråder du abonnerer på",
+	"discussiontools-topicsubscription-special-title": "Emner du abonnerer på",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Diskusjonssideabonnement|Diskusjonssideabonnementer}}",
 	"echo-pref-tooltip-dt-subscription": "Varsle meg når noen kommenterer et emne jeg abonnerer på.",
 	"tag-discussiontools-added-comment-description": "En diskusjonssidekommentar ble lagt til i denne redigeringen",

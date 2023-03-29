@@ -6,7 +6,8 @@
 			"Hello903hello",
 			"Matma Rex",
 			"Moon0319",
-			"Ed g2s"
+			"Ed g2s",
+			"Al12si"
 		]
 	},
 	"discussiontools": "傾嘢工具",
@@ -27,8 +28,10 @@
 	"discussiontools-notification-subscribed-new-comment-view": "睇留言",
 	"discussiontools-postedit-confirmation-published": "你嘅留言發佈咗。",
 	"discussiontools-postedit-confirmation-topicadded": "加咗你個主題",
+	"discussiontools-preference-autotopicsub": "自動留名",
 	"discussiontools-preference-label": "討論工具",
 	"discussiontools-preference-replytool": "開著快速回覆",
+	"discussiontools-preference-topicsubscription": "開着討論留名",
 	"discussiontools-replylink": "回覆",
 	"discussiontools-replywidget-abandon": "你係咪肯定想放棄你而家寫緊嘅留言？",
 	"discussiontools-replywidget-abandon-discard": "放棄留言",

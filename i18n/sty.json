@@ -6,9 +6,13 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Йауаплау",
+	"discussiontools-replywidget-advanced": "Ҡушып",
 	"discussiontools-replywidget-cancel": "Пулмайын иткәле",
+	"discussiontools-replywidget-mode-source": "Эценнән",
 	"discussiontools-replywidget-mode-visual": "Ҡарап",
 	"discussiontools-replywidget-preview": "Алттан ҡарау",
 	"discussiontools-replywidget-summary": "Ҡысҡа аңнатыу",
-	"discussiontools-replywidget-watchthis": "Пы питне сеснең [[Special:Watchlist|ҡарағылау күцермәлек]]кә ҡушҡалы"
+	"discussiontools-replywidget-watchthis": "Пы питне сеснең [[Special:Watchlist|ҡарағылау күцермәлек]]кә ҡушҡалы",
+	"discussiontools-topicsubscription-button-subscribe": "йастырылғалы",
+	"discussiontools-topicsubscription-button-unsubscribe": "ҡағынҡалы"
 }
