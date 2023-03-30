@@ -202,8 +202,10 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 		threadItemSet,
 		noScroll,
 		url.searchParams.get( 'dtnewcomments' ) && url.searchParams.get( 'dtnewcomments' ).split( '|' ),
-		url.searchParams.get( 'dtnewcommentssince' ),
-		url.searchParams.get( 'dtinthread' )
+		{
+			newCommentsSinceId: url.searchParams.get( 'dtnewcommentssince' ),
+			inThread: url.searchParams.get( 'dtinthread' )
+		}
 	);
 }
 
@@ -288,26 +290,28 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
  * @param {ThreadItemSet} threadItemSet
  * @param {boolean} [noScroll] Don't scroll to the topmost highlighted comment, e.g. on popstate
  * @param {string[]} [newCommentIds] A list of comment IDs to highlight
- * @param {string} [newCommentsSinceId] Highlight all comments after the comment with this ID
- * @param {boolean} [inThread] When using newCommentsSinceId, only highlight comments in the same thread
+ * @param {Object} [options] Extra options
+ * @param {string} [options.newCommentsSinceId] Highlight all comments after the comment with this ID
+ * @param {boolean} [options.inThread] When using newCommentsSinceId, only highlight comments in the same thread
  */
-function highlightNewComments( threadItemSet, noScroll, newCommentIds, newCommentsSinceId, inThread ) {
+function highlightNewComments( threadItemSet, noScroll, newCommentIds, options ) {
 	if ( highlightedTarget ) {
 		highlightedTarget.destroy();
 		highlightedTarget = null;
 	}
 
 	newCommentIds = newCommentIds || [];
+	options = options || {};
 
-	var highlightsRequested = newCommentIds.length || newCommentsSinceId;
-	var highlightsRequestedSingle = !newCommentsSinceId && newCommentIds.length === 1;
+	var highlightsRequested = newCommentIds.length || options.newCommentsSinceId;
+	var highlightsRequestedSingle = !options.newCommentsSinceId && newCommentIds.length === 1;
 
-	if ( newCommentsSinceId ) {
-		var newCommentsSince = threadItemSet.findCommentById( newCommentsSinceId );
+	if ( options.newCommentsSinceId ) {
+		var newCommentsSince = threadItemSet.findCommentById( options.newCommentsSinceId );
 		if ( newCommentsSince && newCommentsSince instanceof CommentItem ) {
 			var sinceTimestamp = newCommentsSince.timestamp;
 			var threadItems;
-			if ( inThread ) {
+			if ( options.inThread ) {
 				var heading = newCommentsSince.getSubscribableHeading() || newCommentsSince.getHeading();
 				threadItems = heading.getThreadItemsBelow();
 			} else {
