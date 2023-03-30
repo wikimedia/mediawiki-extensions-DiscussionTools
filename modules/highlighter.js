@@ -204,7 +204,8 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 		url.searchParams.get( 'dtnewcomments' ) && url.searchParams.get( 'dtnewcomments' ).split( '|' ),
 		{
 			newCommentsSinceId: url.searchParams.get( 'dtnewcommentssince' ),
-			inThread: url.searchParams.get( 'dtinthread' )
+			inThread: url.searchParams.get( 'dtinthread' ),
+			sinceThread: url.searchParams.get( 'dtsincethread' )
 		}
 	);
 }
@@ -293,6 +294,8 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
  * @param {Object} [options] Extra options
  * @param {string} [options.newCommentsSinceId] Highlight all comments after the comment with this ID
  * @param {boolean} [options.inThread] When using newCommentsSinceId, only highlight comments in the same thread
+ * @param {boolean} [options.sinceThread] When using newCommentsSinceId, only highlight comments in threads
+ *  created since that comment was posted.
  */
 function highlightNewComments( threadItemSet, noScroll, newCommentIds, options ) {
 	if ( highlightedTarget ) {
@@ -322,6 +325,15 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, options )
 					threadItem instanceof CommentItem &&
 					threadItem.timestamp >= sinceTimestamp
 				) {
+					if ( options.sinceThread ) {
+						// Check that we are in a thread that is newer than `sinceTimestamp`.
+						// Thread age is determined by looking at getOldestReply.
+						var itemHeading = threadItem.getSubscribableHeading() || threadItem.getHeading();
+						var oldestReply = itemHeading.getOldestReply();
+						if ( !( oldestReply && oldestReply.timestamp >= sinceTimestamp ) ) {
+							return;
+						}
+					}
 					newCommentIds.push( threadItem.id );
 				}
 			} );
@@ -397,6 +409,7 @@ function clearHighlightTargetComment( threadItemSet ) {
 		url.searchParams.delete( 'dtnewcomments' );
 		url.searchParams.delete( 'dtnewcommentssince' );
 		url.searchParams.delete( 'dtinthread' );
+		url.searchParams.delete( 'dtsincethread' );
 		history.pushState( null, '', url );
 		highlightTargetComment( threadItemSet );
 	} else if ( highlightedTarget ) {
