@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"MRidhaAJ"
 		]
 	},
@@ -16,7 +17,7 @@
 	"discussiontools-replywidget-cancel": "ألغي",
 	"discussiontools-replywidget-mode-source": "مصدر",
 	"discussiontools-replywidget-mode-visual": "مرئي",
-	"discussiontools-replywidget-placeholder-reply": "{{GENDER|رد|ردي}} على {{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|رد|ردي}} على {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "معاينة",
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-summary": "ملخص",
