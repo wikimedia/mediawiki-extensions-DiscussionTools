@@ -966,6 +966,11 @@ ReplyWidget.prototype.onNewCommentsShowClick = function () {
 		feature: 'notificationNewComments',
 		action: 'page-update'
 	} );
+	mw.track( 'editAttemptStep', {
+		action: 'abort',
+		mechanism: 'navigate',
+		type: 'pageupdate'
+	} );
 };
 
 /**
