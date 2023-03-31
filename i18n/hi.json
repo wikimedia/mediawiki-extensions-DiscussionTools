@@ -12,6 +12,7 @@
 	},
 	"discussiontools": "चर्चा उपकरण",
 	"discussiontools-defaultsummary-reply": "उत्तर",
+	"discussiontoolsdebug-pagetitle": "पृष्ठ शीर्षक",
 	"discussiontools-desc": "चर्चा पृष्ठ सुधार के लिए उपकरण",
 	"discussiontools-emptystate-desc": "{{SITENAME}} की सामग्री को यथासम्भव रूप से सर्वश्रेष्ठ बनाने के लिए लोगों द्वारा जहाँ पर चर्चा की जाती है उन्हें [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|वार्ता पृष्ठ]] कहा जाता है। [[:{{SUBJECTPAGENAME}}]] में सुधार कैसे करें, इसपर अन्यों के साथ चर्चा आरम्भ करने के लिए आप इस पृष्ठ को काम में ले सकते हैं।",
 	"discussiontools-findcomment-label-search": "खोजें",

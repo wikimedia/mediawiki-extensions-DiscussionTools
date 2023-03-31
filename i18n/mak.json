@@ -4,5 +4,8 @@
 			"Han4299"
 		]
 	},
-	"discussiontools-findcomment-label-search": "Boya"
+	"discussiontools-defaultsummary-reply": "Piwali",
+	"discussiontools-findcomment-label-search": "Boya",
+	"discussiontools-replywidget-mode-source": "Assalak",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|tau}} ilalang sipakbicak-bicara"
 }

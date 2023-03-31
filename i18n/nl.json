@@ -18,7 +18,7 @@
 		]
 	},
 	"discussiontools": "Overleghulpmiddelen",
-	"discussiontools-autotopicsubpopup-body": "U ontvangt een melding wanneer iemand een nieuwe opmerking plaatst in deze discussie. U kunt uw instellingen voor meldingen aanpassen in uw voorkeuren.",
+	"discussiontools-autotopicsubpopup-body": "U ontvangt een melding wanneer iemand een nieuwe reactie plaatst in deze discussie. U kunt uw instellingen voor meldingen aanpassen in uw voorkeuren.",
 	"discussiontools-autotopicsubpopup-dismiss": "Oké, ik snap het",
 	"discussiontools-autotopicsubpopup-preferences": "Voorkeuren bewerken",
 	"discussiontools-autotopicsubpopup-title": "U bent geabonneerd",
@@ -148,7 +148,7 @@
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Abonneren op het ontvangen van notificaties bij nieuwe reacties.",
 	"discussiontools-topicsubscription-button-unsubscribe": "opzeggen",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Uitschrijven",
-	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Opzeggen van het abonnement voor het ontvangen van meldingen over nieuwe reacties.",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Zeg uw abonnement op om geen meldingen over nieuwe reacties meer te ontvangen.",
 	"discussiontools-topicsubscription-error-not-found-body": "Het in de URL opgegeven abonnement is niet gevonden.",
 	"discussiontools-topicsubscription-error-not-found-title": "Abonnement niet gevonden",
 	"discussiontools-topicsubscription-notify-subscribed-body": "U zult meldingen krijgen van nieuwe reacties in dit overleg-gedeelte.",

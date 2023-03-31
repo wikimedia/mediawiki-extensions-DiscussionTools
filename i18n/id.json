@@ -20,6 +20,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Ubah preferensi",
 	"discussiontools-autotopicsubpopup-title": "Anda telah berlangganan",
 	"discussiontools-defaultsummary-reply": "Balas",
+	"discussiontoolsdebug-pagetitle": "Judul halaman",
 	"discussiontools-desc": "Alat untuk meningkatkan halaman diskusi.",
 	"discussiontools-emptystate-button": "Mulai diskusi baru",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Halaman pembicaraan]] merupakan tempat berdiskusi supaya konten di {{SITENAME}} menjadi lebih baik. Anda dapat menggunakan halaman ini untuk berdiskusi dengan orang lain mengenai pengembangan halaman [[:{{SUBJECTPAGENAME}}]].",
