@@ -1,3 +1,4 @@
+@import 'mediawiki.skin.variables.less';
 @width-breakpoint-tablet: 720px;
 
 .ext-discussiontools-ui-replyWidget {
@@ -151,16 +152,16 @@
 		// When mode tabs are focussed, the only available option uses the same styles as normal focus
 		// Hovering also adds this class, but is styled upstream with just an underline.
 		.ext-discussiontools-ui-modeTab.oo-ui-optionWidget-highlighted:not( :hover ) {
-			color: #36c;
-			border-radius: 2px;
-			box-shadow: inset 0 0 0 2px #36c;
+			color: @color-progressive;
+			border-radius: @border-radius-base;
+			box-shadow: @box-shadow-inset-medium @box-shadow-color-progressive-selected;
 		}
 
 		// The unavailable option in mode tabs is disabled, to make it un-interactable, but we want it
 		// to look as if it was selected
 		.ext-discussiontools-ui-modeTab.oo-ui-widget-disabled {
-			color: #36c;
-			box-shadow: inset 0 -2px 0 0 #36c;
+			color: @color-progressive;
+			box-shadow: @box-shadow-inset-medium-vertical @box-shadow-color-progressive-selected;
 		}
 	}
 
@@ -207,7 +208,7 @@
 		// Stretch to all available space
 		flex-grow: 1;
 		font-size: 0.75em;
-		color: #54595d;
+		color: @color-subtle;
 
 		> * {
 			&:first-child {
