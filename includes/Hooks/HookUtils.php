@@ -124,15 +124,16 @@ class HookUtils {
 	): ContentThreadItemSet {
 		$services = MediaWikiServices::getInstance();
 		$mainConfig = $services->getMainConfig();
-		$parsoidOutputAccess = $services->getParsoidOutputAccess();
+		$parserOutputAccess = $services->getParserOutputAccess();
 
 		// Look up the page by ID in master. If we just used $revRecord->getPage(),
-		// ParsoidOutputAccess would look it up by namespace+title in replica.
+		// ParserOutputAccess would look it up by namespace+title in replica.
 		$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
 			$services->getPageStore()->getPageById( $revRecord->getPageId(), IDBAccessObject::READ_LATEST );
 		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
 
 		$parserOptions = ParserOptions::newFromAnon();
+		$parserOptions->setUseParsoid();
 
 		// HACK: remove before the release of MW 1.40 / early 2023.
 		if ( $mainConfig->has( 'TemporaryParsoidHandlerParserCacheWriteRatio' ) ) {
@@ -148,7 +149,7 @@ class HookUtils {
 			$parserOptions->setRenderReason( $updateParserCacheFor );
 		}
 
-		$status = $parsoidOutputAccess->getParserOutput(
+		$status = $parserOutputAccess->getParserOutput(
 			$pageRecord,
 			$parserOptions,
 			$revRecord,
@@ -168,7 +169,7 @@ class HookUtils {
 		}
 
 		$parserOutput = $status->getValue();
-		$html = $parserOutput->getText();
+		$html = $parserOutput->getRawText();
 
 		// Run the discussion parser on it
 		$doc = DOMUtils::parseHTML( $html );
