@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Masiziva"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Mhinduro",
+	"discussiontools-replylink": "{{GENDER:|mhinduro}}",
+	"discussiontools-replywidget-advanced": "Zvakapunduka",
+	"discussiontools-replywidget-mode-source": "Mabviro",
+	"discussiontools-replywidget-preview": "Chipandwa",
+	"discussiontools-replywidget-summary": "Muchipfupiso",
+	"discussiontools-replywidget-watchthis": "Wedzera ichi kuzanhir ako [[Special:Zvandakarinda|zvandakarinda]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|munhu|vanhu}} muhurukuro"
+}

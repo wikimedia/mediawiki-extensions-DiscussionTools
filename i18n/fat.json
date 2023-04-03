@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Ebenoffen1",
 			"Leonard Nketsia",
 			"Robertjamal12",
@@ -31,14 +32,14 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Hwɛ adwenkyerɛ",
 	"discussiontools-postedit-confirmation-published": "W'adwenkyerɛ no kɔ",
 	"discussiontools-postedit-confirmation-topicadded": "Wɔdze wo tsirasɛm no aka ho",
-	"discussiontools-replylink": "Nyiano",
+	"discussiontools-replylink": "{{GENDER:|nyiano}}",
 	"discussiontools-replywidget-advanced": "Dza etu mpon",
 	"discussiontools-replywidget-cancel": "Twa mu",
 	"discussiontools-replywidget-mode-source": "Bea a ofi",
 	"discussiontools-replywidget-mode-visual": "Mfonyin",
-	"discussiontools-replywidget-placeholder-reply": "Ma {{BIDI:$1}} nyiano",
+	"discussiontools-replywidget-placeholder-reply": "Ma {{BIDI:$1}} {{GENDER:|nyiano}}",
 	"discussiontools-replywidget-preview": "Ahwɛkan",
-	"discussiontools-replywidget-reply": "Yi ano",
+	"discussiontools-replywidget-reply": "{{GENDER:|Yi ano}}",
 	"discussiontools-replywidget-summary": "Tɔfabɔ",
 	"discussiontools-replywidget-watchthis": "Fa krataafa yi ka  [[Special:Watchlist|dza w'enyi wɔ ho]] no ho.",
 	"discussiontools-target-comment-missing": "Dɛm nkasaho yi nnyi hɔ. Obotum aba dɛ wɔapepa anaa woeyi efi hɔ.",
@@ -50,9 +51,9 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Dzi ekyir",
 	"discussiontools-topicsubscription-button-unsubscribe": "gyaa ekyir dzi",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Gyaa ekyir dzi",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Wo nsa bɛka nkrato wɔ asɛntsir yi mu adwenkyerɛ afofor ho.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Agye hɛn nhyehyɛɛ no ato mu!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "Wo nsa nnkɛka nkrato wɔ asɛntsir yi mu adwenkyerɛ afofor ho bio.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Etwa hɛn nhyehyɛɛ no mu.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Wo}} nsa bɛka nkrato wɔ asɛntsir yi mu adwenkyerɛ afofor ho.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Agye}} hɛn nhyehyɛɛ no ato mu!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Wo}} nsa nnkɛka nkrato wɔ asɛntsir yi mu adwenkyerɛ afofor ho bio.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Etwa}} hɛn nhyehyɛɛ no mu.",
 	"minerva-talk-full-page": "Kenkan no dɛ wiki kratafa"
 }
