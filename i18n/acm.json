@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"MRidhaAJ"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "رد",
+	"discussiontools-desc": "أدوات لتحسين صفحات المناقشه.",
+	"discussiontools-replywidget-cancel": "ألغي",
+	"discussiontools-replywidget-mode-source": "مصدر",
+	"discussiontools-replywidget-mode-visual": "مرئي",
+	"discussiontools-replywidget-preview": "معاينة"
+}
