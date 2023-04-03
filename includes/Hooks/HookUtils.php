@@ -456,8 +456,7 @@ class HookUtils {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		if ( $isMobile ) {
-			// Enabling mobile removes MobileFrontend's reply and new topic tools, so always
-			// enable these tools as a replacement.
+			// DiscussionToolsEnableMobile controls all features on mobile
 			return (
 				$dtConfig->get( 'DiscussionToolsEnableMobile' ) ||
 				static::determineUserABTestBucket( $output->getUser(), 'mobile' ) === 'test'
