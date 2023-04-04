@@ -7,7 +7,8 @@
 			"Nux",
 			"Rail",
 			"The Polish",
-			"Woytecr"
+			"Woytecr",
+			"Openbk"
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
@@ -36,9 +37,9 @@
 	"discussiontools-error-comment-not-saved": "Twój komentarz nie mógł zostać opublikowany w najnowszej wersji tej strony. Aby zobaczyć ostatnie zmiany, skopiuj swój komentarz i przeładuj stronę.",
 	"discussiontools-error-lint": "Nie można odpowiedzieć na komentarze na tej stronie z powodu błędu w wikitekście. Możesz dowiedzieć się więcej o tym błędzie z [$1 dokumentacji], poprosić o pomoc [$2 pisząc tutaj] lub naprawić błąd w [$3 edytorze całej strony].",
 	"discussiontools-error-noswitchtove": "Przepraszamy, przejście do trybu wizualnego nie jest możliwe, ponieważ w komentarzu, który {{GENDER:|napisałeś|napisałaś|napisałeś/aś}}, użyta jest <b>$1</b>. [https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Więcej informacji].",
-	"discussiontools-error-noswitchtove-extension": "składnia przypisów lub innych rozszerzeń",
-	"discussiontools-error-noswitchtove-table": "składnia tabeli",
-	"discussiontools-error-noswitchtove-template": "składnia szablonów",
+	"discussiontools-error-noswitchtove-extension": "składni przypisów lub innych rozszerzeń",
+	"discussiontools-error-noswitchtove-table": "składni tabeli",
+	"discussiontools-error-noswitchtove-template": "składni szablonów",
 	"discussiontools-error-noswitchtove-title": "Tryb wizualny niedostępny",
 	"discussiontools-findcomment-results-id": "Komentarz o podanym identyfikatorze wystąpił na {{PLURAL:$1|następującej stronie|następujących stronach}}:",
 	"discussiontools-findcomment-results-name": "Komentarz o podanej nazwie wystąpił na {{PLURAL:$1|następującej stronie|następujących stronach}}:",
@@ -167,7 +168,7 @@
 	"tag-discussiontools-reply-description": "Użytkownik odpowiedział na komentarz przy pomocy narzędzi dyskusji",
 	"tag-discussiontools-source": "Kod źródłowy",
 	"tag-discussiontools-source-description": "Narzędzia dyskusji użyte w trybie kodu źródłowego",
-	"tag-discussiontools-source-enhanced-description": "Użyto DiscussionTools w rozszerzonym trybie kodu źródłowego z paskiem narzędzi",
+	"tag-discussiontools-source-enhanced-description": "Narzędzi dyskusji użyto w rozszerzonym trybie kodu źródłowego z paskiem narzędzi",
 	"tag-discussiontools-visual": "Wizualnie",
 	"tag-discussiontools-visual-description": "Narzędzia dyskusji użyte w trybie wizualnym"
 }

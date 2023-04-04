@@ -25,7 +25,8 @@
 			"Vlad5250",
 			"WhatamIdoing",
 			"Умар",
-			"WindEwriX"
+			"WindEwriX",
+			"OlegVeliky"
 		]
 	},
 	"discussiontools": "Инструменты для обсуждений",
@@ -79,7 +80,7 @@
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|Одна тема была|$1 темы было|$1 тем было|100=99+ тем было}} {{PLURAL:$1|заархивирована или удалена|заархивировано или удалено}} со страницы $2.",
 	"discussiontools-notification-removed-topic-header-compact": "Тема «<strong>$4</strong>» была заархивирована или удалена.",
 	"discussiontools-notification-removed-topic-view": "Просмотр страницы",
-	"discussiontools-notification-removed-topic-disable": "Прекратить получать подобные уведомления",
+	"discussiontools-notification-removed-topic-disable": "Не получать подобные уведомления",
 	"discussiontools-notification-removed-topic-disabled-title": "Вы больше не будете получать уведомления, когда тема архивируется или удаляется.",
 	"discussiontools-notification-removed-topic-disabled-body": "Вы можете изменить это в [[Special:Preferences#mw-prefsection-echo-echosubscriptions|своих настройках]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 ответил{{GENDER:$2||а}} в «<strong>$4</strong>».",

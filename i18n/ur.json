@@ -19,6 +19,7 @@
 	"discussiontools-replywidget-advanced": "اضافی",
 	"discussiontools-replywidget-cancel": "منسوخ کریں",
 	"discussiontools-replywidget-loading": "لوڈ ہو رہا ہے۔۔۔",
+	"discussiontools-replywidget-mention-tool-header": "صارف تلاش کریں: $1",
 	"discussiontools-replywidget-mention-tool-title": "صارف کا تذکرہ کریں",
 	"discussiontools-replywidget-mode-source": "ماخذی",
 	"discussiontools-replywidget-mode-visual": "بصری",
@@ -28,6 +29,7 @@
 	"discussiontools-replywidget-preview": "نمائش",
 	"discussiontools-replywidget-reply": "جواب دیں",
 	"discussiontools-replywidget-summary": "خلاصہ",
+	"discussiontools-topicsubscription-pager-notified-never": "کبھی نہیں",
 	"discussiontools-topicsubscription-pager-page": "صفحہ",
 	"discussiontools-topicsubscription-pager-topic": "موضوع",
 	"tag-discussiontools-edit": "ترمیم شدہ تبصرہ"
