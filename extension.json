@@ -425,7 +425,6 @@
 		"BeforeCreateEchoEvent": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onBeforeCreateEchoEvent",
 		"EchoGetBundleRules": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onEchoGetBundleRules",
 		"EchoGetEventsForRevision": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\EchoHooks::onEchoGetEventsForRevision",
-		"MinervaNeueTalkPageOverlay": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\MobileHooks::onMinervaNeueTalkPageOverlay",
 		"RevisionDataUpdates": "dataupdates",
 		"LoadExtensionSchemaUpdates": "installer",
 		"GetDoubleUnderscoreIDs": "parser",

@@ -47,12 +47,6 @@ h1, h2, h3, h4, h5, h6 {
 		display: none;
 	}
 
-	// No support for reply links in the mobile talk overlay
-	// stylelint-disable-next-line selector-class-pattern
-	.talk-overlay & {
-		display: none;
-	}
-
 	.ext-discussiontools-init-replylink {
 		&-reply {
 			cursor: pointer;
@@ -389,13 +383,6 @@ h1, h2, h3, h4, h5, h6 {
 	> h2 {
 		flex-grow: 1;
 	}
-
-	// stylelint-disable-next-line selector-class-pattern
-	.client-js .skin-minerva--talk-simplified&.section-heading > h2 {
-		font: inherit;
-		margin: 0;
-		padding: 0;
-	}
 }
 
 .ext-discussiontools-visualenhancements-enabled {
@@ -636,10 +623,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .skin-minerva.ext-discussiontools-emptystate-shown {
-	// The Minerva "Add topic" button is very eye-catching.
+	// The mobile "Add topic" button is very eye-catching.
 	// No need to show it when the empty state banner is shown.
-	// stylelint-disable-next-line selector-class-pattern
-	.minerva-talk-add-button,
 	.ext-discussiontools-init-new-topic {
 		display: none;
 	}
@@ -748,18 +733,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-// DiscussionToolsEnableMobile disables the Minerva simplified talk page
-// (SkinMinerva::isSimplifiedTalkPageEnabled). This is enabled on all pages
-// in the talk namespace (with wikitext content model, but this file is not
-// loaded on non-wikitext pages).
-//
 // DiscussionToolsEnableMobile enables multiple features, including the reply tool.
-//
-// Whenever we detect that DiscussionToolsEnableMobile is disabling the Minerva
-// simplified talk page, hide the lede section, and show a "Read as wiki page" button
+// When we detect that it's enabled, hide the lede section, and show a "Read as wiki page" button
 // to reveal it.
-//
-// The button will disable all DT features byt remove feature CSS classes.
+// The button will disable all DT features by removing feature CSS classes.
 // stylelint-disable-next-line selector-class-pattern
 .skin-minerva.ns-talk.ext-discussiontools-replytool-enabled {
 	&.ext-discussiontools-init-lede-hidden {

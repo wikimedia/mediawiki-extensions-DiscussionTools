@@ -232,8 +232,7 @@ class PageHooks implements
 				] );
 				$output->addBodyClasses( 'ext-discussiontools-init-new-topic-opened' );
 
-				// Minerva doesn't show a new topic button by default, unless the MobileFrontend
-				// talk page feature is enabled, but we shouldn't depend on code from there.
+				// Minerva doesn't show a new topic button.
 				$output->addHTML( Html::rawElement( 'div',
 					[ 'class' => 'ext-discussiontools-init-new-topic' ],
 					( new ButtonWidget( [
@@ -244,7 +243,7 @@ class PageHooks implements
 						'flags' => [ 'progressive', 'primary' ],
 						'infusable' => true,
 					] ) )
-						// For compatibility with Minerva click tracking (T295490)
+						// For compatibility with MobileWebUIActionsTracking logging (T295490)
 						->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
 				) );
 			}

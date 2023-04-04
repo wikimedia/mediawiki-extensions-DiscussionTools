@@ -25,7 +25,7 @@ function onViewportChange() {
 }
 
 function init( $container ) {
-	// For compatibility with Minerva click tracking (T295490)
+	// For compatibility with MobileWebUIActionsTracking logging (T295490)
 	$container.find( '.section-heading' ).attr( 'data-event-name', 'talkpage.section' );
 
 	// Keyboard body classes
@@ -92,7 +92,7 @@ function init( $container ) {
 	) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		newTopicButton = OO.ui.infuse( $( '.ext-discussiontools-init-new-topic-button' ) );
-		// For compatibility with Minerva click tracking (T295490)
+		// For compatibility with MobileWebUIActionsTracking logging (T295490)
 		newTopicButton.$element.attr( 'data-event-name', 'talkpage.add-topic' );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var $newTopicWrapper = $( '.ext-discussiontools-init-new-topic' );
@@ -135,7 +135,7 @@ function init( $container ) {
 		}, 200 ) );
 	}
 	if ( !$readAsWikiPage ) {
-		// Read as wiki page button, copied from renderReadAsWikiPageButton in Minerva
+		// Read as wiki page button, copied from old MobileFrontend/Minerva feature (removed in T319145)
 		$readAsWikiPage = $( '<button>' )
 			.addClass( 'ext-discussiontools-init-readAsWikiPage' )
 			.attr( 'data-event-name', 'talkpage.readAsWiki' )
