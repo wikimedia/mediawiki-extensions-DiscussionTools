@@ -8,14 +8,14 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Leoke",
-	"discussiontools-replylink": "loke",
+	"discussiontools-replylink": "{{GENDER:|loke}}",
 	"discussiontools-replywidget-advanced": "Taoore",
 	"discussiontools-replywidget-cancel": "Base",
 	"discussiontools-replywidget-mode-source": "Suurs",
 	"discussiontools-replywidget-mode-visual": "Yãabo",
-	"discussiontools-replywidget-placeholder-reply": "Leoke {{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Leoke}} {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "N gese",
-	"discussiontools-replywidget-reply": "Leoke",
+	"discussiontools-replywidget-reply": "{{GENDER:|Leoke}}",
 	"discussiontools-replywidget-summary": "Kʋmbgo",
 	"discussiontools-replywidget-watchthis": "Paas ni neng kada f [[Special:Watchlist|gese-sõdgre]] pʋga",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|neda|neba}} sõasg pʋga",
@@ -25,8 +25,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "N naag f menga",
 	"discussiontools-topicsubscription-button-unsubscribe": "n yeese f menga",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "N yeese f menga",
-	"discussiontools-topicsubscription-notify-subscribed-body": "F na n paama kibay sẽn kẽed ne kõ-m-meng tags paal ye sẽn kẽed ne sõasg gom-zu-raoog kãnga ye.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "F naag f menga",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "F ka na n le paam kibay sẽn kẽed ne kõ-m-meng tags paal ye sẽn kẽed ne sõasg gom-zu-raoog kãnga ye.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "F yeese f menga."
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|F}} na n paama kibay sẽn kẽed ne kõ-m-meng tags paal ye sẽn kẽed ne sõasg gom-zu-raoog kãnga ye.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|F}} naag f menga",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|F}} ka na n le paam kibay sẽn kẽed ne kõ-m-meng tags paal ye sẽn kẽed ne sõasg gom-zu-raoog kãnga ye.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|F}} yeese f menga."
 }

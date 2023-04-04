@@ -77,7 +77,7 @@
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "購読解除",
 	"discussiontools-newtopicssubscription-button-unsubscribe-tooltip": "このページに新しい話題が追加されても通知を受け取らないようにします。",
 	"discussiontools-newtopicssubscription-notify-subscribed-body": "このページに新しい話題が追加されると通知が届きます。",
-	"discussiontools-newtopicssubscription-notify-subscribed-title": "通知を有効にしました",
+	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|}}通知を有効にしました",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "新しい話題が追加されても通知を受け取らないようにしました。",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "通知を停止しました",
 	"discussiontools-notification-added-topic-header": "$2 が <strong>$3</strong> で新しい話題「<strong>$4</strong>」を開始しました。",
