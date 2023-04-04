@@ -1,7 +1,6 @@
+@import 'mediawiki.skin.variables.less';
+
 /* stylelint-disable no-descending-specificity */
-
-@import 'mediawiki.ui/variables.less';
-
 span[ data-mw-comment-start ] {
 	// Give comment anchors a negative offset so we don't position
 	// them right at the edge of the page when jumping to them.
@@ -61,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
 
 		// Similar to mw-editsection-bracket
 		&-bracket {
-			color: #54595d;
+			color: @color-subtle;
 
 			.mw-content-ltr &:not( :last-child ),
 			.mw-content-rtl .mw-content-ltr &:not( :last-child ),
@@ -87,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	&.ext-discussiontools-init-replylink-active > .ext-discussiontools-init-replylink-reply {
-		color: #202122;
+		color: @color-base;
 		text-decoration: none;
 	}
 
@@ -108,15 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 .ext-discussiontools-init-replylink-reply,
 .ext-discussiontools-init-section-subscribe-link {
 	&:visited {
-		color: #36c;
-	}
-
-	.skin-vector-legacy & {
-		color: #0645ad;
-	}
-
-	.skin-monobook & {
-		color: #002bb8;
+		color: @color-link;
 	}
 }
 
@@ -232,7 +223,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	// Similar to mw-editsection-bracket
 	&-bracket {
-		color: #54595d;
+		color: @color-subtle;
 
 		.mw-content-ltr &:first-child,
 		.mw-content-rtl .mw-content-ltr &:first-child,
@@ -316,7 +307,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ext-discussiontools-init-pageframe-latestcomment {
-	color: #666;
+	color: @color-subtle;
 }
 
 // Visual enhancements enabled
@@ -383,7 +374,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	.ext-discussiontools-init-sidebar-meta {
 		display: block;
-		color: #666;
+		color: @color-subtle;
 		white-space: nowrap;
 		font-size: 0.875em;
 	}
@@ -415,7 +406,7 @@ h1, h2, h3, h4, h5, h6 {
 		// stylelint-disable-next-line declaration-no-important
 		font-family: sans-serif !important;
 		border: 0;
-		border-top: 1px solid #a2a9b1;
+		border-top: @border-width-base @border-style-base @border-color-base;
 
 		&:first-child {
 			border-top: 0;
@@ -449,14 +440,14 @@ h1, h2, h3, h4, h5, h6 {
 
 		&-metaitem {
 			font-weight: normal;
-			color: #666;
+			color: @color-subtle;
 			// Make same height as "unsubscribe" button
 			margin: 7px 0;
 
 			& + .ext-discussiontools-init-section-metaitem {
 				margin-left: 12px;
 				padding-left: 12px;
-				border-left: 1px solid #a2a9b1;
+				border-left: @border-width-base @border-style-base @border-color-base;
 			}
 		}
 	}
@@ -492,7 +483,7 @@ h1, h2, h3, h4, h5, h6 {
 		// The tap-highlight is an odd shape and shows even for cancelled events on -actions,
 		// just hide it.
 		-webkit-tap-highlight-color: transparent;
-		border-top: 1px solid #eaecf0;
+		border-top: @border-width-base @border-style-base #eaecf0;
 
 		> h2,
 		> .mw-headline {
@@ -611,7 +602,7 @@ h1, h2, h3, h4, h5, h6 {
 		// Separate from existing (non-discussion) content
 		margin-top: 2em;
 		padding-top: 1em;
-		border-top: 1px solid #a2a9b1;
+		border-top: @border-width-base @border-style-base @border-color-base;
 	}
 }
 
@@ -804,9 +795,9 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	padding: 1em;
 	box-sizing: content-box;
-	color: @colorProgressive;
-	background: @colorGray15;
-	border-top: 1px solid @colorGray14;
+	color: @color-progressive;
+	background: @background-color-interactive-subtle;
+	border-top: @border-width-base @border-style-base #eaecf0;
 	text-align: center;
 
 	// Match Minerva styles
@@ -892,13 +883,13 @@ h1, h2, h3, h4, h5, h6 {
 		font-weight: normal;
 
 		> .oo-ui-labelElement-label {
-			color: #666;
+			color: @color-subtle;
 		}
 
 		// Boost specificity
 		> .oo-ui-iconElement-icon.oo-ui-iconElement-icon.oo-ui-iconElement-icon {
-			// When this opacity is applied to black color, we end up with exactly #666
-			opacity: 0.6;
+			// When this opacity is applied to black color, we end up with exactly @color-subtle (`#54595d`)
+			opacity: @opacity-icon-subtle;
 		}
 	}
 }
