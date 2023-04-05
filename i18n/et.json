@@ -34,6 +34,8 @@
 	"discussiontools-error-noswitchtove-table": "tabelisüntaks",
 	"discussiontools-error-noswitchtove-template": "mallisüntaks",
 	"discussiontools-error-noswitchtove-title": "Visuaalrežiim keelatud",
+	"discussiontools-limitreport-timeusage": "DiscussionToolsi ajakasutus",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekundit}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>See siin on uus vahend teema lisamiseks.</strong> Selle uuendusega saad lisada teema reasisese vormi kaudu ning saad teisi mainida uue otsetee abil. Samuti saad [$1 lülituda tagasi vanale vahendile].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Kasutad nüüd vana vahendit.</strong> Saad [$1 naasta uue vahendi juurde] või määrata [$2 eelistustes], et kasutad vaikimisi vana vahendit.",
 	"discussiontools-newtopic-missing-title": "Palun pealkirjasta aruteluteema. Kui klõpsad nuppu \"{{int:discussiontools-replywidget-newtopic}}\", lisatakse teema ilma pealkirjata.",

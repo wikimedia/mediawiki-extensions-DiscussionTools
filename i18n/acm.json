@@ -1,13 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"MRidhaAJ"
+			"MRidhaAJ",
+			"Amire80"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "اي، إفتهمت",
 	"discussiontools-autotopicsubpopup-preferences": "تفضيلات التحرير",
 	"discussiontools-defaultsummary-reply": "رد",
+	"discussiontools-desc": "أدوات لتحسين صفحات المناقشه.",
 	"discussiontools-emptystate-button": "إبدي مناقشة",
+	"discussiontools-emptystate-title": "ابدي مناقشه حول {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title-user": "ابدي مناقشه {{GENDER:{{PAGENAME}}|وي}} {{PAGENAME}}",
+	"discussiontools-error-noswitchtove-extension": "امتداد لو صيغة المرجع",
+	"discussiontools-error-noswitchtove-table": "نحو الجدول",
+	"discussiontools-error-noswitchtove-template": "نحو القالب",
+	"discussiontools-error-noswitchtove-title": "المحرر المرئي طافي",
 	"discussiontools-replywidget-advanced": "خيارات متقدمة",
 	"discussiontools-replywidget-cancel": "ألغي",
 	"discussiontools-replywidget-mode-source": "مصدر",

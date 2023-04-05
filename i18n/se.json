@@ -17,7 +17,11 @@
 	"discussiontools-replywidget-preview": "Ovdačájáhus",
 	"discussiontools-replywidget-reply": "Vástit",
 	"discussiontools-replywidget-summary": "Čoahkkáigeassu",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Heaitte diŋgomis",
+	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Háliidatgo heaitit dán fáttá diŋgomis?",
 	"discussiontools-topicsubscription-button-subscribe": "diŋgo",
+	"discussiontools-topicsubscription-button-unsubscribe": "heaitte diŋgomis",
 	"discussiontools-topicsubscription-pager-page": "Siidu",
-	"discussiontools-topicsubscription-pager-topic": "Fáddá"
+	"discussiontools-topicsubscription-pager-topic": "Fáddá",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "Heaitte diŋgomis"
 }

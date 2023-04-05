@@ -4,10 +4,17 @@
 			"Slaia"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Tema li",
 	"discussiontools-replylink": "tema",
+	"discussiontools-replywidget-advanced": "Amatohula",
 	"discussiontools-replywidget-cancel": "Böi tohugö",
 	"discussiontools-replywidget-mode-source": "Kode",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Tema li {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Tema"
+	"discussiontools-replywidget-preview": "Khala-khala",
+	"discussiontools-replywidget-reply": "Tema",
+	"discussiontools-replywidget-summary": "Arutua",
+	"discussiontools-replywidget-watchthis": "Nönö nga'örö andre ba nga'örö [[Special:Watchlist|nihörögö]]",
+	"discussiontools-topicsubscription-button-subscribe": "faogö ndra'ugö",
+	"discussiontools-topicsubscription-button-unsubscribe": "heta ndra'ugö"
 }
