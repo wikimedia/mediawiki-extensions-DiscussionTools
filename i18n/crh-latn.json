@@ -5,7 +5,13 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Cevap berüv",
-	"discussiontools-replylink": "cevap berüv",
+	"discussiontools-emptystate-title-self": "Muzakere saifeñizge {{GENDER:|hoş keldiñiz}}",
+	"discussiontools-emptystate-title-user-anon": "Muzakere saifesine {{GENDER:|hoş keldiñiz}}",
+	"discussiontools-newtopicssubscription-button-subscribe-label": "Abone bol",
+	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Abone bolma",
+	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Abone {{GENDER:|degilsiñiz}}.",
+	"discussiontools-replybutton": "{{GENDER:|Cevap berüv}}",
+	"discussiontools-replylink": "{{GENDER:|cevap berüv}}",
 	"discussiontools-replywidget-cancel": "Lâğu",
 	"discussiontools-replywidget-mode-source": "Menba",
 	"discussiontools-replywidget-mode-visual": "Körsel",
@@ -13,5 +19,7 @@
 	"discussiontools-replywidget-preview": "Baqıp çıquv",
 	"discussiontools-replywidget-reply": "Cevap berüv",
 	"discussiontools-replywidget-summary": "Qısqa tarif",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Abone {{GENDER:|boldıñız}}!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Abone {{GENDER:|degilsiñiz}}.",
 	"minerva-talk-full-page": "Viki saifesi kibi oqu"
 }
