@@ -99,7 +99,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Отфрли тема",
 	"discussiontools-replywidget-abandontopic-keep": "Продолжи со пишување",
 	"discussiontools-replywidget-advanced": "Напредно",
-	"discussiontools-replywidget-anon-warning": "<strong>Не сте најавени.</strong> За да бидете наведени како уредник по име наместо по IP-адреса, [$1 најавете се] или [$2 направете сметка].",
+	"discussiontools-replywidget-anon-warning": "<strong>Не сте најавени.</strong> За да бидете известувани кога некој ќе одговори и да примите заслуга по име наместо по IP-адреса, [$1 најавете се] или [$2 направете сметка].",
 	"discussiontools-replywidget-cancel": "Откажи",
 	"discussiontools-replywidget-feedback": "Дајте мислење за оваа можност",
 	"discussiontools-replywidget-loading": "Вчитувам…",

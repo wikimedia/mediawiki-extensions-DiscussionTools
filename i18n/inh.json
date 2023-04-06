@@ -9,5 +9,7 @@
 	"discussiontools-replywidget-mode-source": "Чура",
 	"discussiontools-replywidget-mode-visual": "ТӀера",
 	"discussiontools-replywidget-placeholder-reply": "Жоп ле → {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Жоп"
+	"discussiontools-replywidget-reply": "Жоп",
+	"discussiontools-topicheader-latestcomment": "ТӀеххьара хоам: $1",
+	"discussiontools-topicsubscription-pager-notified": "ТӀеххьара дӀахайтар"
 }

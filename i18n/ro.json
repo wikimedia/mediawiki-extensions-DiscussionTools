@@ -100,7 +100,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Respinge subiectul",
 	"discussiontools-replywidget-abandontopic-keep": "Continuă să scrii",
 	"discussiontools-replywidget-advanced": "Avansat",
-	"discussiontools-replywidget-anon-warning": "<strong>Nu sunteți autentificat.</strong> Pentru a primi atribuire cu numele dvs. în schimbul adresei dvs. IP, puteți să vă [$1 autentificați] sau să [$2 creați un cont].",
+	"discussiontools-replywidget-anon-warning": "<strong>Nu sunteți autentificat.</strong> Pentru a primi notificări atunci când cineva răspunde și pentru a primi atribuire cu numele dvs. în schimbul adresei dvs. IP, puteți să vă [$1 autentificați] sau să [$2 creați un cont].",
 	"discussiontools-replywidget-cancel": "Anulează",
 	"discussiontools-replywidget-feedback": "Împărtășiți feedback despre această funcție",
 	"discussiontools-replywidget-loading": "Se încarcă...",
