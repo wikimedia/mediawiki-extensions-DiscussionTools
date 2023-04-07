@@ -104,7 +104,7 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 			'class' => 'mw-content-' . $pageLang->getDir(),
 		];
 
-		foreach ( $threadItemSet->getThreads() as $thread ) {
+		foreach ( $threadItemSet->getThreadsStructured() as $thread ) {
 			$out->addHTML( $this->formatComments( $thread, $pageLangAttribs ) );
 		}
 
