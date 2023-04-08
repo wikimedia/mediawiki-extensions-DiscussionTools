@@ -182,6 +182,8 @@
 	"echo-pref-tooltip-dt-subscription": "Notify me when someone posts a new comment in a topic I am {{GENDER:|subscribed}} to.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Notify me when a topic I am {{GENDER:|subscribed}} to is archived or removed from a page, or if notifications about new comments posted in that topic can't be sent for other reasons.",
 	"minerva-talk-full-page": "Read as wiki page",
+	"discussiontools-comments-before-first-heading-category": "-",
+	"discussiontools-comments-before-first-heading-category-desc": "The discussion page contains comments in the lede section (before first heading). This may cause the lede or the comments to be displayed incorrectly, especially in the mobile version and in mobile apps.",
 	"tag-discussiontools": "-",
 	"tag-discussiontools-added-comment": "-",
 	"tag-discussiontools-added-comment-description": "A talk page comment was added in this edit",

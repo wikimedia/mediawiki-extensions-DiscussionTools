@@ -314,6 +314,8 @@ class CommentFormatter {
 			$threadItems[0]->isPlaceholderHeading()
 		) {
 			$pout->setExtensionData( 'DiscussionTools-hasCommentsInLedeContent', true );
+			MediaWikiServices::getInstance()->getTrackingCategories()
+				->addTrackingCategory( $pout, 'discussiontools-comments-before-first-heading-category', $title );
 		}
 
 		if ( count( $threadItems ) === 0 ) {
