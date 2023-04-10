@@ -11,6 +11,8 @@
 	"discussiontools-autotopicsubpopup-preferences": "ДӀайаздаларш хийца",
 	"discussiontools-autotopicsubpopup-title": "Йаздалар кхочушдина",
 	"discussiontools-defaultsummary-reply": "Жоп",
+	"discussiontoolsdebug-title": "Хаамийн структура йицаран гӀирс",
+	"discussiontoolsdebug-pagetitle": "АгӀонан корта",
 	"discussiontools-desc": "Дийцарийн агӀонаш дика йо гӀирсаш.",
 	"discussiontools-emptystate-button": "Доладе дийцар",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Дийцарийн агӀонаш]] — {{GRAMMAR:genitive|{{SITENAME}}}} чулацам дика кечбарах лаьцна дуьйцу меттиг йу. Хьан йиш йу хӀара агӀо лело, кхечу декъашхошца [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] муха дика кечйан йеза дуьйцуш.",

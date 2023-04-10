@@ -167,7 +167,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "در آینده برای هر نظر ارسال‌شده در این مبحث آگاه‌سازی‌‌هایی دریافت {{GENDER:|خواهید کرد}}.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|شما}} مشترک شده‌اید!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "در آینده دیگر برای هر نظر ارسال‌شده در این مبحث آگاه‌سازی‌‌هایی دریافت {{GENDER:|نخواهید کرد}}.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "اشتراک شما لغو شد.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "اشتراک {{GENDER:|شما}} لغو شد.",
 	"discussiontools-topicsubscription-pager-actions": "کنش‌ها",
 	"discussiontools-topicsubscription-pager-created": "نخستین {{GENDER:|اشتراک}}",
 	"discussiontools-topicsubscription-pager-newtopics-label": "مبحث‌های جدید",

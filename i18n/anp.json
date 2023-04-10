@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Angpradesh",
+			"IND-ANP",
 			"Proabscorp!"
 		]
 	},
@@ -11,7 +12,7 @@
 	"discussiontools-replywidget-cancel": "रद्द करौ",
 	"discussiontools-replywidget-mode-source": "स्रोत",
 	"discussiontools-replywidget-mode-visual": "दृश्य",
-	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|जवाब}}  {{BIDI:$1}} क",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} क {{GENDER:|जवाब}}",
 	"discussiontools-replywidget-preview": "पूर्वावलोकन",
 	"discussiontools-replywidget-reply": "{{लिंग:|जबाब}}",
 	"discussiontools-replywidget-summary": "सारांश",
@@ -25,6 +26,6 @@
 	"discussiontools-topicsubscription-button-unsubscribe-label": "अनसब्सक्राइब करौ",
 	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|तोरा}} हैय विषय मँ नया कमेंट के बारे मँ सूचना मिलथौं।",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|तोंय}} सदस्यता लै चुकलौ!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:| तोरा}}अबअ हैय विषय मँ नया कमेंट के बारे मँ सूचना नाय मिलथौं।",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|तोंय}} सदस्यता समाप्त करी लेल्है।"
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:| तोरा}} अबअ हैय विषय मँ नया कमेंट के बारे मँ सूचना नाय मिलथौं।",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|तोंय}} सदस्यता समाप्त करी लेल्हौ।"
 }
