@@ -29,6 +29,7 @@
 	"discussiontools-findcomment-label-search": "ค้นหา",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "สมัครรับ",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "เลิกสมัครรับ",
+	"discussiontools-notification-added-topic-header": "หัวข้อใหม่ \"<strong>$4</strong>\" สร้างในหน้า <strong>$3</strong> โดย $2.",
 	"discussiontools-notification-added-topic-view": "ดูหัวข้อ",
 	"discussiontools-notification-removed-topic-view": "ดูหน้า",
 	"discussiontools-notification-subscribed-new-comment-view": "ดูความเห็น",

@@ -46,7 +46,7 @@
 	"discussiontools-replywidget-placeholder-reply": "Bua {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Nea wopɛ",
 	"discussiontools-replywidget-preview": "Hwɛ ansa",
-	"discussiontools-replywidget-reply": "Mmuaeɛ",
+	"discussiontools-replywidget-reply": "{{GENDER:|Mmuaeɛ}}",
 	"discussiontools-replywidget-summary": "Tɔ fa",
 	"discussiontools-replywidget-terms-click": "Sɛ wo mia \"$1\" so a, wagye mmra a ɛfa wiki wei so nyinaa atumu",
 	"discussiontools-replywidget-transcluded": "Yɛ bɛ kora wo mmuae no wɔ",
