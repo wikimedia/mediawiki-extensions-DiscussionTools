@@ -151,7 +151,7 @@
 	"discussiontools-topicsubscription-pager-topic": "주제",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "구독 취소",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "구독 편집",
-	"discussiontools-topicsubscription-special-intro": "주제 구독을 통해 토론 문서의 주제를 팔로우할 수 있습니다. 누군가가 주제에 답변하면. 당신은 알림을 받게 됩니다.\n\n[[Special:Preferences#mw-prefsection-echo|당신의 환경 설정]]에서 알림을 어떻게, 어디에서 받을 것인지 설정하십시오.",
+	"discussiontools-topicsubscription-special-intro": "구독을 통해 토론 문서의 주제를 팔로우할 수 있습니다. 누군가가 주제에 답변하면 당신은 알림을 받게 됩니다.\n\n[[Special:Preferences#mw-prefsection-echo|당신의 환경 설정]]에서 이 알림을 어떻게, 어디에서 받을 것인지 설정하십시오.",
 	"discussiontools-topicsubscription-special-title": "구독하는 주제",
 	"echo-category-title-dt-subscription": "토론 문서 {{PLURAL:$1|구독}}",
 	"echo-category-title-dt-subscription-archiving": "토론 문서 {{PLURAL:$1|보존}}",

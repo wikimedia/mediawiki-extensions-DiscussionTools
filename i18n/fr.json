@@ -191,7 +191,6 @@
 	"echo-pref-tooltip-dt-subscription": "Me notifier lorsque quelqu'un publie un nouveau commentaire dans un sujet auquel je suis abonné{{GENDER:||e}}.",
 	"echo-pref-tooltip-dt-subscription-archiving": "M’avertir lorsqu’un sujet auquel je suis abonné{{GENDER:||e}} est archivé ou retiré d’une page, ou bien lorsque des notifications concernant les nouveaux commentaires publiés dans ce sujet ne peuvent pas être envoyées pour d’autres raisons.",
 	"minerva-talk-full-page": "Lire en tant que page wiki",
-	"discussiontools-comments-before-first-heading-category": "-",
 	"discussiontools-comments-before-first-heading-category-desc": "La page de discussion contient des commentaires dans la section de tête (avant le premier titre). Cela peut entraîner un affichage incorrect de cette section ou des commentaires, en particulier dans la version mobile et dans les applications mobiles.",
 	"tag-discussiontools-added-comment-description": "Un commentaire de page de discussion a été ajouté dans cette modification",
 	"tag-discussiontools-description": "Modification effectuée en utilisant les Outils de discussion",
