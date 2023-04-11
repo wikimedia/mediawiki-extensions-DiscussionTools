@@ -53,6 +53,8 @@
 	"discussiontools-error-noswitchtove-table": "tablo sözdizimi",
 	"discussiontools-error-noswitchtove-template": "şablon sözdizimi",
 	"discussiontools-error-noswitchtove-title": "Görsel modu devre dışı",
+	"discussiontools-findcomment-results-id": "Verilen kimliğe sahip yorum şu {{PLURAL:$1|sayfada|sayfalarda}} bulundu:",
+	"discussiontools-findcomment-results-name": "Verilen ada sahip yorum şu {{PLURAL:$1|sayfada|sayfalarda}} bulundu:",
 	"discussiontools-findcomment-label-idorname": "Yorum kimliği veya adı",
 	"discussiontools-findcomment-label-search": "Ara",
 	"discussiontools-findcomment-noresults": "Sonuç bulunamadı.",

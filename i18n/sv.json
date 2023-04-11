@@ -61,6 +61,7 @@
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Detta är den äldre versionen.</strong> Du kan [$1 gå tillbaka till den nya versionen] eller gå till dina inställningar för att [$2 ange den gamla versionen som din standard].",
 	"discussiontools-newtopic-missing-title": "Ange gärna en rubrik till ditt diskussionsämne. Om du klickar på \"{{int:discussiontools-replywidget-newtopic}}\", kommer ämnet att läggas till utan rubrik.",
 	"discussiontools-newtopic-placeholder-title": "Ämne",
+	"discussiontools-notification-removed-topic-view": "Visa sida",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarade}} på \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Ett nytt svar|$1 nya svar|100=99+ nya svar}} på \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Visa kommentar",
