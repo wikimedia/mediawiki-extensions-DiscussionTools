@@ -6,11 +6,14 @@
 	},
 	"discussiontools-defaultsummary-reply": "Cevap berüv",
 	"discussiontools-replylink": "cevap berüv",
+	"discussiontools-replywidget-advanced": "Tafsilâtlı",
 	"discussiontools-replywidget-cancel": "Lâğu",
 	"discussiontools-replywidget-mode-source": "Menba",
 	"discussiontools-replywidget-mode-visual": "Körsel",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} cavap berüv",
 	"discussiontools-replywidget-preview": "Baqıp çıquv",
 	"discussiontools-replywidget-reply": "Cevap berüv",
-	"discussiontools-replywidget-summary": "Qısqa tarif"
+	"discussiontools-replywidget-summary": "Qısqa tarif",
+	"discussiontools-topicsubscription-button-subscribe": "abone bol",
+	"discussiontools-topicsubscription-button-unsubscribe": "abone bolma"
 }

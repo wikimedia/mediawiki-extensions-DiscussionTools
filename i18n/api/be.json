@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tomato Cream"
+			"Tomato Cream",
+			"Maksim L."
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Каментар з ідэнтыфікатарам «$1» не знойдзены.",
@@ -25,7 +26,7 @@
 	"apihelp-discussiontoolspageinfo-param-oldid": "Нумар версіі для выкарыстання (па змаўчанні — апошняя версія).",
 	"apihelp-discussiontoolspageinfo-summary": "Вяртае метададзеныя, неабходныя для ініцыялізацыі інструментаў размоў.",
 	"apihelp-discussiontoolspreview-param-type": "Тып паведамлення для перадпрагляду",
-	"apihelp-discussiontoolspreview-param-wikitext": "Змест для перадпрагляду як вікі-тэкст.",
+	"apihelp-discussiontoolspreview-param-wikitext": "Перадпрагляд зместу як вікіразметкі.",
 	"apihelp-discussiontoolspreview-summary": "Перадпрагляд паведамлення на старонцы размоў.",
 	"apihelp-discussiontoolssubscribe-param-commentname": "Назва тэмы, на якую трэба падпісацца (або адпісацца)",
 	"apihelp-discussiontoolssubscribe-param-page": "Старонка, на якой знаходзіцца тэма",
