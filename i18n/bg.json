@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kareyac",
+			"Kasey",
 			"StanProg",
 			"Ted Masters"
 		]
@@ -20,6 +21,7 @@
 	"discussiontools-findcomment-noresults": "Няма резултати.",
 	"discussiontools-findcomment-title": "Намиране на коментар",
 	"discussiontools-newtopic-placeholder-title": "Тема",
+	"discussiontools-newtopicssubscription-button-subscribe-label": "Абониране",
 	"discussiontools-notification-removed-topic-header-compact": "Темата „$4“ беше архивирана или премахната.",
 	"discussiontools-notification-removed-topic-view": "Преглед на страницата",
 	"discussiontools-notification-subscribed-new-comment-view": "Преглед на коментара",
