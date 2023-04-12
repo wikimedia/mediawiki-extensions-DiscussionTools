@@ -113,17 +113,11 @@ h1, h2, h3, h4, h5, h6 {
 	position: absolute;
 	pointer-events: none;
 	opacity: 0;
-}
-
-/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-@supports ( mix-blend-mode: darken ) {
-	.ext-discussiontools-init-highlight {
-		/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-		mix-blend-mode: darken;
-		// Support: Safari
-		// Safari doesn't blend this overlay with the text unless GPU rendering is forced.
-		transform: translateZ( 0 );
-	}
+	/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+	mix-blend-mode: darken;
+	// Support: Safari
+	// Safari doesn't blend this overlay with the text unless GPU rendering is forced.
+	transform: translateZ( 0 );
 }
 
 .ext-discussiontools-init-highlight-fadein {
@@ -136,31 +130,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ext-discussiontools-init-publishedcomment {
-	// Support: IE11
-	// On supporting browsers, we instead use non-transparent color with mix-blend-mode.
-	// Identical to #ffe29e on white background.
-	background-color: rgba( 255, 198, 60, 0.5 );
-}
-
-/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-@supports ( mix-blend-mode: darken ) {
-	.ext-discussiontools-init-publishedcomment {
-		background-color: #ffe29e;
-	}
+	background-color: #ffe29e;
 }
 
 .ext-discussiontools-init-targetcomment {
-	// Support: IE11, see above
-	background-color: rgba( 216, 235, 255, 0.5 );
-}
-
-/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-@supports ( mix-blend-mode: darken ) {
-	.ext-discussiontools-init-targetcomment {
-		// Same color as the :target selector for references (from Cite).
-		// Not sure if that's a good idea, but it should be different from -publishedcomment.
-		background-color: #eaf3ff;
-	}
+	// Same color as the :target selector for references (from Cite).
+	// Not sure if that's a good idea, but it should be different from -publishedcomment.
+	background-color: #eaf3ff;
 }
 
 // Topic subscriptions (both kinds)
