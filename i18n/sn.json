@@ -12,6 +12,16 @@
 	"discussiontools-replywidget-preview": "Chipandwa",
 	"discussiontools-replywidget-reply": "{{GENDER:|Pindura}}",
 	"discussiontools-replywidget-summary": "Muchipfupiso",
-	"discussiontools-replywidget-watchthis": "Wedzera ichi kuzanhir ako [[Special:Zvandakarinda|zvandakarinda]]",
-	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|munhu|vanhu}} muhurukuro"
+	"discussiontools-replywidget-watchthis": "Wedzera zanhi rino ku[[Special:Watchlist|zvandakarinda]] zvako",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|munhu|vanhu}} muhurukuro",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|khomendi|makhomendi}}",
+	"discussiontools-topicheader-latestcomment": "Khomendi dzva: $1",
+	"discussiontools-topicsubscription-button-subscribe": "yandika",
+	"discussiontools-topicsubscription-button-subscribe-label": "Yandika",
+	"discussiontools-topicsubscription-button-unsubscribe": "zvibvise payandiko",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Zvibvise payandiko",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Iwewe}} uchaunzirwa zviziviso pamusaka pezvemakhomendi matsva endaba ino.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Iwewe}} wayandika!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Iwwewe}} hauchaunzirwe zviziviso pamusaka pemakhomendi matsva endaba ino.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Iwewe}} wabva payandiko."
 }

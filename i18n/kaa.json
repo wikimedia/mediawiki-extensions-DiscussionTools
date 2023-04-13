@@ -49,6 +49,7 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|adam|adamlar}} dodalamaqta",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|pikir|pikirler}}",
 	"discussiontools-topicheader-latestcomment": "Eń sońǵı pikir: $1",
+	"discussiontools-topicsubscription-action-subscribe-button": "Jazılıw",
 	"discussiontools-topicsubscription-button-subscribe": "jazılıw",
 	"discussiontools-topicsubscription-button-subscribe-label": "Jazılıw",
 	"discussiontools-topicsubscription-button-unsubscribe": "jazılıwdı biykarlaw",

@@ -143,6 +143,8 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|partecipante|partecipanti}} alla discussione",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|commento|commenti}}",
 	"discussiontools-topicheader-latestcomment": "Ultimo commento: $1",
+	"discussiontools-topicsubscription-action-subscribe-button": "Iscriviti",
+	"discussiontools-topicsubscription-action-subscribe-prompt": "Iscriversi a questo argomento?",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Annulla l'iscrizione",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Disiscriversi da questo argomento?",
 	"discussiontools-topicsubscription-button-subscribe": "iscriviti",
