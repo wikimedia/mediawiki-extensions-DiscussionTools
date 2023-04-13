@@ -166,6 +166,19 @@ function init( $container ) {
 	/* eslint-enable no-jquery/no-global-selector */
 }
 
+/**
+ * Close the lede section dialog if it is open.
+ *
+ * @return {jQuery.Promise} Promise resolved when the dialog is closed (or if it wasn't open)
+ */
+function closeLedeSectionDialog() {
+	if ( ledeSectionDialog && ledeSectionDialog.isOpened() ) {
+		return ledeSectionDialog.close().closed;
+	}
+	return $.Deferred().resolve();
+}
+
 module.exports = {
-	init: init
+	init: init,
+	closeLedeSectionDialog: closeLedeSectionDialog
 };
