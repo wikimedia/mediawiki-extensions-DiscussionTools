@@ -152,6 +152,8 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|человек|человека|человек}} в обсуждении",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|сообщение|сообщения|сообщений}}",
 	"discussiontools-topicheader-latestcomment": "Последнее сообщение: $1",
+	"discussiontools-topicsubscription-action-subscribe-button": "Подписаться",
+	"discussiontools-topicsubscription-action-subscribe-prompt": "Подписаться на эту тему?",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Отписаться",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Отписаться от этой темы?",
 	"discussiontools-topicsubscription-button-subscribe": "подписаться",
