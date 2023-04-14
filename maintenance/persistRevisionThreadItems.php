@@ -39,6 +39,8 @@ class PersistRevisionThreadItems extends Maintenance {
 		$this->addOption( 'all', 'Process the whole wiki' );
 		$this->addOption( 'current', 'Process current revisions only' );
 		$this->addOption( 'start', 'Restart from this position (as printed by the script)', false, true );
+		$this->addOption( 'touched-after', 'Only process pages touched after this timestamp', false, true );
+		$this->addOption( 'touched-before', 'Only process pages touched before this timestamp', false, true );
 		$this->setBatchSize( 100 );
 	}
 
@@ -97,6 +99,18 @@ class PersistRevisionThreadItems extends Maintenance {
 		if ( $this->getOption( 'current' ) ) {
 			$qb->where( 'rev_id = page_latest' );
 			$index = [ 'page_id' ];
+
+			if ( $this->getOption( 'touched-after' ) ) {
+				$qb->where( $this->dbr->buildComparison( '>', [
+					'page_touched' => $this->dbr->timestamp( $this->getOption( 'touched-after' ) )
+				] ) );
+			}
+			if ( $this->getOption( 'touched-before' ) ) {
+				$qb->where( $this->dbr->buildComparison( '<', [
+					'page_touched' => $this->dbr->timestamp( $this->getOption( 'touched-before' ) )
+				] ) );
+			}
+
 		} else {
 			// Process in order by page and time to avoid confusing results while the script is running
 			$index = [ 'rev_page', 'rev_timestamp', 'rev_id' ];
