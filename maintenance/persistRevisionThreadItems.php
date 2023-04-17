@@ -191,7 +191,7 @@ class PersistRevisionThreadItems extends Maintenance {
 			if ( HookUtils::isAvailableForTitle( $title ) ) {
 				$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev, false );
 
-				// Store permalink data
+				// Store permalink data (even when store is disabled - T334258)
 				$changed = $this->itemStore->insertThreadItems( $rev, $threadItemSet );
 			}
 		} catch ( Throwable $e ) {

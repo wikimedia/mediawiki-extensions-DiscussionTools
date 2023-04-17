@@ -61,7 +61,7 @@ class ThreadItemStore {
 	 *
 	 * @return bool
 	 */
-	private function isDisabled(): bool {
+	public function isDisabled(): bool {
 		return !$this->config->get( 'DiscussionToolsEnablePermalinksBackend' );
 	}
 
@@ -349,7 +349,7 @@ class ThreadItemStore {
 	 * @return bool
 	 */
 	public function insertThreadItems( RevisionRecord $rev, ThreadItemSet $threadItemSet ): bool {
-		if ( $this->isDisabled() || $this->readOnlyMode->isReadOnly() ) {
+		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
 
