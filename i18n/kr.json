@@ -5,10 +5,15 @@
 			"Mohammedbama123"
 		]
 	},
-	"discussiontools-replylink": "kalak ne",
+	"discussiontools-defaultsummary-reply": "Kalak ne",
+	"discussiontools-replylink": "{{GENDER:|kalakne}}",
+	"discussiontools-replywidget-advanced": "Huutu",
 	"discussiontools-replywidget-cancel": "Kwaltǝ",
 	"discussiontools-replywidget-mode-source": "Usulu",
 	"discussiontools-replywidget-mode-visual": "Kuru ye",
-	"discussiontools-replywidget-placeholder-reply": "Kalak ne {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Kalak ne"
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|kalakne}} to {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Rumin",
+	"discussiontools-replywidget-reply": "{{GENDER:|kalakne}}",
+	"discussiontools-replywidget-summary": "Kasartǝ",
+	"discussiontools-replywidget-watchthis": "Shafi ade kǝllune [[Special:Watchlist|Watchlist]]"
 }

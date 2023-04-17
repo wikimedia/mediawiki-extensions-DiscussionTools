@@ -20,7 +20,12 @@
 	"discussiontools-replywidget-preview": "پیشگی ݙکھالا",
 	"discussiontools-replywidget-reply": "{{GENDER:|جواب}}",
 	"discussiontools-replywidget-summary": "خلاصہ",
+	"discussiontools-topicheader-commentcount": "$1 {{plural:$1|تبصرہ|تبصرے}}",
+	"discussiontools-topicheader-latestcomment": "تازہ ترین تبصرہ: $1",
 	"discussiontools-topicsubscription-action-subscribe-button": "سبسکرائب کرو",
 	"discussiontools-topicsubscription-button-subscribe": "سبسکرائب کرو",
+	"discussiontools-topicsubscription-button-subscribe-label": "سبسکرائب کرو",
+	"discussiontools-topicsubscription-button-unsubscribe": "اݨ سبسکرائب کرو",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "اݨ سبسکرائب کرو",
 	"discussiontools-topicsubscription-pager-newtopics-label": "نویں عنوان"
 }

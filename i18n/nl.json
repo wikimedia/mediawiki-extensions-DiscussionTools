@@ -14,7 +14,8 @@
 			"Nickthijssen1994",
 			"PonkoSasuke",
 			"Robin van der Vliet",
-			"Romaine"
+			"Romaine",
+			"Sjoerddebruin"
 		]
 	},
 	"discussiontools": "Overleghulpmiddelen",
@@ -141,6 +142,8 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|persoon|personen}} in discussie",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|bericht|berichten}}",
 	"discussiontools-topicheader-latestcomment": "Laatste bericht: $1",
+	"discussiontools-topicsubscription-action-subscribe-button": "Abonneren",
+	"discussiontools-topicsubscription-action-subscribe-prompt": "Op dit onderwerp abonneren?",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Opzeggen",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Opzeggen van meldingen voor dit overleg-gedeelte?",
 	"discussiontools-topicsubscription-button-subscribe": "abonneren",

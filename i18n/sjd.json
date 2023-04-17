@@ -10,5 +10,9 @@
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Визуальнэ",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Вуэсстлэ}} оаннҍе {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "{{GENDER:|Вуэсстлэ}}"
+	"discussiontools-replywidget-reply": "{{GENDER:|Вуэсстлэ}}",
+	"discussiontools-topicsubscription-action-subscribe-button": "Кырьйхуввэ",
+	"discussiontools-topicsubscription-button-subscribe": "кырьйхуввэ",
+	"discussiontools-topicsubscription-button-subscribe-label": "Кырьйхуввэ",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Вуэсстлэгк]"
 }

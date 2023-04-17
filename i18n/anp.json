@@ -13,6 +13,7 @@
 	"discussiontools-defaultsummary-reply": "उत्तर दौ",
 	"discussiontoolsdebug-pagetitle": "पन्ना शीर्षक",
 	"discussiontools-emptystate-button": "चर्चा आरम्भ करौ",
+	"discussiontools-error-comment-is-transcluded": "हैय टिप्पणी क उत्तर दै लेली \"{{int:discussiontools-replylink}}\" लिंक केरौ उपयोग नाय करलौ जाबै सकै छै। जवाब दै लेली, कृपया \"$1\" प क्लिक करी क सौसे पृष्ठ संपादक क {{GENDER:|उपयोग}} करौ।",
 	"discussiontools-findcomment-label-search": "खोजौ",
 	"discussiontools-findcomment-noresults": "कोय परिणाम नाय।",
 	"discussiontools-ledesection-title": "हैय वार्ता पृष्ट केरौ बारै मँ",

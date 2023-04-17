@@ -51,5 +51,5 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "راح تتلقى تنبيهات على تعليقات جديدة على هاذ الموضوع",
 	"discussiontools-topicsubscription-notify-subscribed-title": "إشتركت!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "ما راح تتلقى تنبيهات على تعليقات جديدة على هاذ الموضوع.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "لغيت إشتراكك!"
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|لغيت اشتراكك|لغيتي اشتراكج}}."
 }

@@ -65,6 +65,7 @@
 	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|Dim un person|$1 person|$1 berson|$1 pherson|$1 pherson|$1 person}} yn trafod",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|sylw}}",
 	"discussiontools-topicheader-latestcomment": "Sylw diweddaraf: $1",
+	"discussiontools-topicsubscription-action-subscribe-button": "Tanysgrifio",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Dad-danysgrifio",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Dad-danysgrifio o'r pwnc hwn?",
 	"discussiontools-topicsubscription-button-subscribe": "tanysgrifio",
