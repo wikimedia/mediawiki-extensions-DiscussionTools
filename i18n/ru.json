@@ -77,6 +77,8 @@
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Теперь вы видите устаревший интерфейс.</strong> Вы можете [$1 вернуться к новому интерфейсу] или посетить настройки, чтобы [$2 установить себе устаревший интерфейс по умолчанию].",
 	"discussiontools-newtopic-missing-title": "Пожалуйста, введите заголовок для вашей темы обсуждения. Если вы нажмёте на «{{int:discussiontools-replywidget-newtopic}}», тема будет добавлена без заголовка.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
+	"discussiontools-newtopicssubscription-button-subscribe-label": "Подписаться",
+	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Отписаться",
 	"discussiontools-notification-removed-topic-body": "Возможно, {{GENDER:|вы}} больше не будете получать уведомления об {{PLURAL:$1|этой теме|этих темах}}.",
 	"discussiontools-notification-removed-topic-header": "Тема «<strong>$4</strong>» была заархивирована или удалена со страницы $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|Одна тема была|$1 темы было|$1 тем было|100=99+ тем было}} {{PLURAL:$1|заархивирована или удалена|заархивировано или удалено}} со страницы $2.",

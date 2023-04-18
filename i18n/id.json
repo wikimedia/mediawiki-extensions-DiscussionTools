@@ -137,6 +137,7 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|orang}} dalam diskusi",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar}}",
 	"discussiontools-topicheader-latestcomment": "Komentar terbaru: $1",
+	"discussiontools-topicsubscription-action-subscribe-prompt": "Berlangganan topik ini?",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Berhenti berlangganan",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Berhenti berlangganan dari topik ini?",
 	"discussiontools-topicsubscription-button-subscribe": "langganan",
