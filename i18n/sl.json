@@ -3,7 +3,8 @@
 		"authors": [
 			"Dbc334",
 			"Eleassar",
-			"Matma Rex"
+			"Matma Rex",
+			"Upwinxp"
 		]
 	},
 	"discussiontools": "Orodja za razpravo",
@@ -128,7 +129,7 @@
 	"discussiontools-replywidget-transcluded": "Vaš komentar bo shranjen na strani [[$1]].",
 	"discussiontools-replywidget-watchthis": "Dodaj to stran na moj [[Special:Watchlist|spisek nadzorov]]",
 	"discussiontools-signature-prefix": "&#32;",
-	"discussiontools-target-comment-missing": "Tega komentarja ni bilo mogo;e najti. Morda je bil izbrisan ali prestavljen.",
+	"discussiontools-target-comment-missing": "Tega komentarja ni bilo mogoče najti. Morda je bil izbrisan ali prestavljen.",
 	"discussiontools-target-comments-missing": "Novih komentarjev ni bilo mogoče najti. Morda so bili izbrisani ali prestavljeni.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|oseba|osebi|osebe|oseb}} v pogovoru",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentarja|komentarji|komentarjev}}",

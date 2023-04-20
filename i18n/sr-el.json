@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Matma Rex"
+			"Matma Rex",
+			"Kizule"
 		]
 	},
 	"discussiontools": "Alatke za razgovor",
@@ -36,6 +37,7 @@
 	"discussiontools-findcomment-title": "Pronađi komentar",
 	"discussiontools-ledesection-button": "Saznajte više o ovoj stranici",
 	"discussiontools-ledesection-title": "O ovoj stranici za razgovor",
+	"discussiontools-limitreport-timeusage": "Vreme korišćenja alata za diskusiju",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunda|sekundi}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Nov način dodavanja tema.</strong> Ova funkcija omogućava da dodajte teme u inlajn formi i pingujete druge pomoću prečice. Takođe možete se vratiti na [$1 stari način].",
 	"discussiontools-newtopic-missing-title": "Molimo navedite naslov Vaše teme. Ako kliknete „{{int:discussiontools-replywidget-newtopic}}” tema će biti dodati bez naslova.",

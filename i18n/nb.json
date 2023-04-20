@@ -45,7 +45,7 @@
 	"discussiontools-findcomment-gotocomment": "Hvis den kun vises i den gjeldende revisjonen av én side kan du [[Special:GoToComment/$1|gå direkte til kommentaren med denne lenka]]. Ellers vil den omdirigere til disse søkeresultatene.",
 	"discussiontools-findcomment-label-search": "Søk",
 	"discussiontools-findcomment-noresults": "Ingen resultater.",
-	"discussiontools-findcomment-results-notcurrent": "(ikke i den gjeldende revisjonen)",
+	"discussiontools-findcomment-results-notcurrent": "(ikke i den gjeldende sideversjonen)",
 	"discussiontools-findcomment-results-transcluded": "(transkludert fra en annen side)",
 	"discussiontools-findcomment-title": "Finn kommentar",
 	"discussiontools-ledesection-button": "Lær mer om denne siden",
