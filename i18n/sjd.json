@@ -6,6 +6,7 @@
 	},
 	"discussiontools-defaultsummary-reply": "Вуэсстлэгк",
 	"discussiontools-emptystate-button": "Оа̄лкхэ моа̄йнсемуж",
+	"discussiontools-replybutton": "{{GENDER:|Вуэсстлэ}}",
 	"discussiontools-replylink": "{{GENDER:|вуэсстлэ}}",
 	"discussiontools-replywidget-cancel": "Е̄ссктэ",
 	"discussiontools-replywidget-mode-source": "Код",

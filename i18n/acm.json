@@ -48,7 +48,7 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "اشتراك",
 	"discussiontools-topicsubscription-button-unsubscribe": "الغي إشتراكك",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "إلغي إشتراكك",
-	"discussiontools-topicsubscription-notify-subscribed-body": "راح تتلقى تنبيهات على تعليقات جديدة على هاذ الموضوع",
+	"discussiontools-topicsubscription-notify-subscribed-body": "راح {{GENDER:|تتلقى|تتلقين}} تنبيهات على تعليقات جديدة على هاذ الموضوع",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|انته إشتركت|انتي إشتركتي}}",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "ما راح {{GENDER:|تتلقى|تتلقين}} تنبيهات على تعليقات جديده على هاذ الموضوع.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|لغيت اشتراكك|لغيتي اشتراكج}}."
