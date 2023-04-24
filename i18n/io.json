@@ -6,6 +6,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Respondar",
+	"discussiontoolsdebug-title": "Datumo-strukturo dil utensili por diskuto",
 	"discussiontools-emptystate-button": "Komencez diskuto",
 	"discussiontools-emptystate-desc": "Diskuto-pagini esas loki ube uzeri povas diskutar pri quale krear kontenajo che {{SITENAME}} la maxim bone posibla. Vu povas uzar ca pagino por komencar diskuti kun altri pri quale plubonigar [[:{{SUBJECTPAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Savez pluse]]",
 	"discussiontools-emptystate-desc-user-anon": "Diskuto-pagini esas loki ube personi povas diskutar pri quale krear kontenajo che {{SITENAME}} la maxim bone posibla. Uzes ca pagino por diskutar la redakturi facita de ca IP-adreso. Quon vu skribos hike esos videbla por altri. Multa IP-adresi chanjas periodale, e kelkafoye uzesas da multa personi. [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Savez pluse]]",

@@ -20,7 +20,7 @@
 	"discussiontools-desc": "เครื่องมือปรับปรุงประสิทธิภาพในหน้าอภิปราย",
 	"discussiontools-emptystate-button": "เริ่มการอภิปรายใหม่",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|หน้าคุย]]คือหน้าที่ผู้คนจะอภิปรายวิธีการสร้างเนื้อหาบน {{SITENAME}} ให้ดีที่สุดเท่าที่จะทำได้ คุณสามารถใช้หน้านี้เพื่อเริ่มการอภิปรายกับผู้อื่นในการปรับปรุง [[:{{SUBJECTPAGENAME}}]] ได้เช่นกัน",
-	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|หน้าคุยกับผู้ใช้]] เป็นหน้าที่ผู้คนพูดคุยถึงวิธีการสร้างเนื้อหาของ {{SITENAME}} the best that it can be. Start a new discussion to connect and collaborate {{GENDER:{{PAGENAME}}|with}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. What {{GENDER:|you}} say here will be public for others to see.",
+	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|หน้าคุยกับผู้ใช้]] เป็นหน้าที่ผู้คนพูดคุยถึงวิธีการสร้างเนื้อหาของ {{SITENAME}} ให้ดีที่สุดเท่าที่จะเป็นไปได้ เริ่มสนทนาใหม่เพื่อประสานและทำงานร่วมกัน {{GENDER:{{PAGENAME}}|with}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. เมื่อ{{GENDER:|คุณ}}แสดงความคิดเห็นที่นี่ข้อความทั้งหมดที่คุณเพิ่มจะเป็นสาธารณะซึ่งผู้อื่นสามารถเห็นได้",
 	"discussiontools-emptystate-title": "เริ่มการอภิปรายใหม่ที่เกี่ยวกับ {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "ยินดีต้อนรับสู่หน้าพูดคุยของคุณ",
 	"discussiontools-emptystate-title-self-anon": "ยินดีต้อนรับสู่หน้าพูดคุยนี้",

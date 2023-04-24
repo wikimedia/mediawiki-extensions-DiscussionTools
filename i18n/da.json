@@ -49,6 +49,7 @@
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Afmeld abonnement",
 	"discussiontools-newtopicssubscription-button-unsubscribe-tooltip": "Afmeld abonnement for ikke længere at modtage beskeder, når der oprettes nye beskeder på denne side.",
 	"discussiontools-newtopicssubscription-notify-subscribed-body": "{{GENDER:|Du}} vil modtage beskeder, når der oprettes nye diskussioner på denne side.",
+	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|Du}} abonnerer!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|Du}} vil ikke længere modtage beskeder, når der oprettes nye diskussioner på denne side.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Du}} har afmeldt abonnementet.",
 	"discussiontools-notification-added-topic-header": "Ny diskussion \"<strong>$4</strong>\" er oprettet på <strong>$3</strong> af $2.",
