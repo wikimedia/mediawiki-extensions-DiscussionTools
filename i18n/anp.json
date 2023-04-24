@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Proabscorp!"
+			"Proabscorp!",
+			"Angpradesh",
+			"IND-ANP"
 		]
 	},
+	"discussiontools": "चर्चा उपकरण",
 	"discussiontools-defaultsummary-reply": "उत्तर दौ",
 	"discussiontools-replylink": "उत्तर दौ",
 	"discussiontools-replywidget-cancel": "रद्द करौ",
+	"discussiontools-replywidget-loading": "लोड होय रहलौ छौं...",
 	"discussiontools-replywidget-mode-source": "स्रोत",
 	"discussiontools-replywidget-mode-visual": "दृश्य",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} क उत्तर दौ",

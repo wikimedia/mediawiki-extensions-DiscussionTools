@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Slomox"
+			"Slomox",
+			"Wikiundeplattsnacker"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Anter",
 	"discussiontools-replylink": "antern",
+	"discussiontools-replywidget-cancel": "Afbreken",
+	"discussiontools-replywidget-mode-source": "Born",
+	"discussiontools-replywidget-mode-visual": "Genauet Afbild",
+	"discussiontools-replywidget-preview": "Vörschau",
 	"discussiontools-replywidget-reply": "Antern"
 }

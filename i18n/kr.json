@@ -5,10 +5,12 @@
 			"Mohammedbama123"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Kalak ne",
 	"discussiontools-replylink": "kalak ne",
 	"discussiontools-replywidget-cancel": "Kwaltǝ",
 	"discussiontools-replywidget-mode-source": "Usulu",
 	"discussiontools-replywidget-mode-visual": "Kuru ye",
 	"discussiontools-replywidget-placeholder-reply": "Kalak ne {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Rumin",
 	"discussiontools-replywidget-reply": "Kalak ne"
 }

@@ -4,10 +4,12 @@
 			"Murma174"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Oonswaar",
 	"discussiontools-replylink": "Swaare",
 	"discussiontools-replywidget-cancel": "Ufbreeg",
 	"discussiontools-replywidget-mode-source": "Kwel",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-placeholder-reply": "Oonswaar tu {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Föörskau",
 	"discussiontools-replywidget-reply": "Oonswaar"
 }
