@@ -571,7 +571,13 @@
 			"description": "Override availability of DiscussionTools visual enhancements's reply buttons sub-feature. 'default', 'available', or 'unavailable'."
 		},
 		"DiscussionTools_visualenhancements_reply_icon_languages": {
-			"value": [ "ar", "zh", "yue", "ja", "nod" ],
+			"value": [
+				"ar",
+				"zh",
+				"yue",
+				"ja",
+				"nod"
+			],
 			"description": "A list of language codes which will receive an icon in their enhanced reply-button treatment",
 			"merge_strategy": "provide_default"
 		},

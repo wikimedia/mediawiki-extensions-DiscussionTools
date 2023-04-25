@@ -11,7 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use EchoDiscussionParser;
 use MediaWiki\Revision\RevisionRecord;
-use WikiMap;
+use MediaWiki\WikiMap\WikiMap;
 
 /**
  * This trait must be only used on EchoEventPresentationModel subclasses.
