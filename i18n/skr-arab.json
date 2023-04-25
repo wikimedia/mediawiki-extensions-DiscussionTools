@@ -14,5 +14,10 @@
 	"discussiontools-replywidget-preview": "پیشگی ݙکھالا",
 	"discussiontools-replywidget-reply": "جواب",
 	"discussiontools-replywidget-summary": "خلاصہ",
-	"discussiontools-topicsubscription-button-subscribe": "سبسکرائب کرو"
+	"discussiontools-topicheader-commentcount": "$1 {{plural:$1|تبصرہ|تبصرے}}",
+	"discussiontools-topicheader-latestcomment": "تازہ ترین تبصرہ: $1",
+	"discussiontools-topicsubscription-button-subscribe": "سبسکرائب کرو",
+	"discussiontools-topicsubscription-button-subscribe-label": "سبسکرائب کرو",
+	"discussiontools-topicsubscription-button-unsubscribe": "اݨ سبسکرائب کرو",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "اݨ سبسکرائب کرو"
 }

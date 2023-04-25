@@ -6,7 +6,9 @@
 			"Matma Rex",
 			"Saederup92",
 			"Steenth",
-			"SiGNOUT"
+			"SiGNOUT",
+			"Sarrus",
+			"Weblars"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -40,6 +42,9 @@
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",
 	"discussiontools-newtopic-missing-title": "Angiv venligst en titel for diskussionen. Hvis du trykker på \"{{int:discussiontools-replywidget-newtopic}}\" bliver emnet tilføjer uden en titel.",
 	"discussiontools-newtopic-placeholder-title": "Emne",
+	"discussiontools-notification-removed-topic-header": "Diskussionen \"<strong>$4</strong>\" blev arkiveret eller fjernet fra $3.",
+	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|En diskussion|$1 diskussioner|100=99+ diskussioner}} blev arkiveret eller fjernet fra $2.",
+	"discussiontools-notification-removed-topic-header-compact": "Diskussionen \"<strong>$4</strong>\" blev arkiveret eller fjernet.",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarede}} i \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Et nyt svar|$1 nye svar|100=99+ nye svar}} i \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Vis indlæg",
