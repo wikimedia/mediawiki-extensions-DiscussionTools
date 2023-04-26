@@ -15,9 +15,13 @@ var
 	utils = require( './utils.js' ),
 	highlighter = require( './highlighter.js' ),
 	topicSubscriptions = require( './topicsubscriptions.js' ),
-	mobile = require( './mobile.js' ),
 	pageHandlersSetup = false,
 	pageDataCache = {};
+
+var mobile = null;
+if ( OO.ui.isMobile() && mw.config.get( 'skin' ) === 'minerva' ) {
+	mobile = require( './mobile.js' );
+}
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
 
@@ -297,7 +301,7 @@ function init( $container, state ) {
 		topicSubscriptions.initTopicSubscriptions( $container, pageThreads );
 	}
 
-	if ( OO.ui.isMobile() && mw.config.get( 'skin' ) === 'minerva' ) {
+	if ( mobile ) {
 		mobile.init( $container );
 	}
 
@@ -397,6 +401,12 @@ function init( $container, state ) {
 				// Another example is the MultimediaViewer extension.
 				teardownPromise = ve.init.target.tryTeardown() || $.Deferred().resolve();
 			}
+		}
+
+		if ( mobile ) {
+			teardownPromise = teardownPromise.then( function () {
+				return mobile.closeLedeSectionDialog();
+			} );
 		}
 
 		teardownPromise.then( function () {
