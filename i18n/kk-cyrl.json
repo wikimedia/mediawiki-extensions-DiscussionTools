@@ -4,7 +4,8 @@
 			"Arystanbek",
 			"Hedeyohu22",
 			"СеніңШешең",
-			"Ajiniyaz Nurniyazov"
+			"Ajiniyaz Nurniyazov",
+			"Batyrbek.kz"
 		]
 	},
 	"discussiontools": "Талқылау құралдары",
@@ -67,7 +68,7 @@
 	"discussiontools-preference-topicsubscription-help": "Бұл сізге жеке тақырыптардағы пікірлер туралы ескертпелер алуға жазылуға мүмкіндік береді.",
 	"discussiontools-replylink": "жауап беру",
 	"discussiontools-replywidget-abandon": "Жазып жатқан пікіріңізді тастап кететініңізге сенімдісіз бе?",
-	"discussiontools-replywidget-abandon-discard": "Kommentariydi taslap ketiw",
+	"discussiontools-replywidget-abandon-discard": "Пікірді өшіру",
 	"discussiontools-replywidget-abandon-keep": "Жазуды жалғастыру",
 	"discussiontools-replywidget-abandontopic": "Жазып жатқан тақырыбыңызды тастап кететініңізге сенімдісіз бе?",
 	"discussiontools-replywidget-abandontopic-discard": "Тақырыпты тастап кету",

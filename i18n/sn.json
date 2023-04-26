@@ -6,8 +6,12 @@
 	},
 	"discussiontools-defaultsummary-reply": "Mhinduro",
 	"discussiontools-replywidget-advanced": "Zvakapunduka",
+	"discussiontools-replywidget-cancel": "Dzimura",
 	"discussiontools-replywidget-mode-source": "Mabviro",
+	"discussiontools-replywidget-mode-visual": "Ruono",
 	"discussiontools-replywidget-preview": "Chipandwa",
 	"discussiontools-replywidget-summary": "Muchipfupiso",
-	"discussiontools-replywidget-watchthis": "Wedzera ichi kuzanhir ako [[Special:Zvandakarinda|zvandakarinda]]"
+	"discussiontools-replywidget-watchthis": "Wedzera zanhi rino ku[[Special:Watchlist|zvandakarinda]] zvako",
+	"discussiontools-topicsubscription-button-subscribe": "yandika",
+	"discussiontools-topicsubscription-button-unsubscribe": "zvibvise payandiko"
 }

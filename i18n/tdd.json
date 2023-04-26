@@ -5,10 +5,16 @@
 			"Aey Tai Nuea"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ",
 	"discussiontools-replylink": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ",
+	"discussiontools-replywidget-advanced": "ᥓᥢᥳ ᥔᥧᥒᥴ",
 	"discussiontools-replywidget-cancel": "ᥟᥛᥱ ᥞᥥᥖᥱ",
 	"discussiontools-replywidget-mode-source": "ᥒᥫᥢ ᥒᥝᥲ ᥖᥪᥢᥰ",
 	"discussiontools-replywidget-mode-visual": "ᥖᥣ ᥞᥢᥴ",
 	"discussiontools-replywidget-placeholder-reply": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ ᥓᥧᥰ {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ"
+	"discussiontools-replywidget-preview": "ᥖᥨᥭᥰ ᥙᥧᥒᥱ ᥖᥦᥐ ᥖᥨᥝ ᥕᥣᥒᥱ",
+	"discussiontools-replywidget-reply": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ",
+	"discussiontools-replywidget-summary": "ᥞᥨᥝᥴ ᥞᥧᥙ",
+	"discussiontools-topicsubscription-button-subscribe": "ᥖᥤᥖᥱ ᥓᥩᥛᥰ",
+	"discussiontools-topicsubscription-button-unsubscribe": "ᥟᥛᥱ ᥖᥤᥖᥱ ᥖᥣᥛᥰ"
 }

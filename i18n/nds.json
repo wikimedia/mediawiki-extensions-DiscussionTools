@@ -1,9 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Slomox"
+			"Slomox",
+			"Wikiundeplattsnacker"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Anter",
 	"discussiontools-replylink": "antern",
-	"discussiontools-replywidget-reply": "Antern"
+	"discussiontools-replywidget-advanced": "Verwiedert",
+	"discussiontools-replywidget-cancel": "Afbreken",
+	"discussiontools-replywidget-mode-source": "Born",
+	"discussiontools-replywidget-mode-visual": "Genauet Afbild",
+	"discussiontools-replywidget-preview": "Vörschau",
+	"discussiontools-replywidget-reply": "Antern",
+	"discussiontools-replywidget-summary": "Tosomenfooten",
+	"discussiontools-replywidget-watchthis": "Do disse Siet to dien [[Special:Watchlist|Oppasslist]] dorto",
+	"discussiontools-topicsubscription-button-subscribe": "Indragen",
+	"discussiontools-topicsubscription-button-unsubscribe": "utschrieben"
 }

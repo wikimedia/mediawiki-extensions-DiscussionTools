@@ -6,12 +6,16 @@
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "ٹھیک ہے، میں سمجھ گیا۔",
+	"discussiontools-autotopicsubpopup-preferences": "ترجیحات میں ترمیم کریں۔",
 	"discussiontools-defaultsummary-reply": "جواب دیں",
 	"discussiontools-desc": "بحث کے صفحات کو بہتر کنے کے آلات",
 	"discussiontools-emptystate-button": "بحث شروع کریں۔",
+	"discussiontools-error-noswitchtove-title": "بصری موڈ غیر فعال کیا گیا۔",
 	"discussiontools-newtopic-missing-title": "براہ کرم اپنے موضوع بحث کے لیے عنوان فراہم کریں۔ اگر آپ \"{{int:discussiontools-replywidget-newtopic}}\" پر کلک کرتے ہیں تو آپ کا تبصرہ بغیر عنوان کے شامل کر دیا جائے گا۔",
 	"discussiontools-notification-subscribed-new-comment-view": "تبصرہ دیکھیں",
 	"discussiontools-postedit-confirmation-published": "آپ کا تبصرہ شائع کردیا گیا ہے۔",
+	"discussiontools-postedit-confirmation-topicadded": "آپ کا موضوع شامل کیا گیا تھا۔",
+	"discussiontools-preference-autotopicsub": "خودکار طور پر عنوانات کو سبسکرائب کریں۔",
 	"discussiontools-replylink": "جواب دیں",
 	"discussiontools-replywidget-advanced": "اضافی",
 	"discussiontools-replywidget-cancel": "منسوخ کریں",
@@ -26,7 +30,14 @@
 	"discussiontools-replywidget-preview": "نمائش",
 	"discussiontools-replywidget-reply": "جواب دیں",
 	"discussiontools-replywidget-summary": "خلاصہ",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "ان سبسکرائب کریں۔",
+	"discussiontools-topicsubscription-button-subscribe": "سبسکرائب کریں",
+	"discussiontools-topicsubscription-button-unsubscribe": "ان سبسکرائب کریں۔",
 	"discussiontools-topicsubscription-pager-page": "صفحہ",
 	"discussiontools-topicsubscription-pager-topic": "موضوع",
-	"tag-discussiontools-edit": "ترمیم شدہ تبصرہ"
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "ان سبسکرائب کریں۔",
+	"tag-discussiontools-edit": "ترمیم شدہ تبصرہ",
+	"tag-discussiontools-reply-description": "صارف نے DiscussionTools استعمال کرنے ہوئے تبصرے کا جواب دیا",
+	"tag-discussiontools-source-description": "DiscussionTools مآخذی موڈ میں تھا۔",
+	"tag-discussiontools-visual-description": "DiscussionTools بصری موڈ میں تھا۔"
 }
