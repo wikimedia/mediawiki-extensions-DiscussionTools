@@ -2,6 +2,7 @@ var controller = require( 'ext.discussionTools.init' ).controller,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	ModeTabSelectWidget = require( './ModeTabSelectWidget.js' ),
 	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),
+	contLangMessages = require( './contLangMessages.json' ),
 	licenseMessages = require( './licenseMessages.json' ),
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	enable2017Wikitext = featuresEnabled.sourcemodetoolbar,
@@ -267,6 +268,9 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	}
 
 	if ( mw.user.isAnon() ) {
+		var msg = this.commentDetails.wouldAutoCreate ?
+			'discussiontools-replywidget-autocreate-warning' :
+			'discussiontools-replywidget-anon-warning';
 		var returnTo = {
 			returntoquery: window.location.search.slice( 1 ),
 			returnto: mw.config.get( 'wgPageName' )
@@ -274,10 +278,12 @@ function ReplyWidget( commentController, commentDetails, config ) {
 		this.anonWarning = new OO.ui.MessageWidget( {
 			classes: [ 'ext-discussiontools-ui-replyWidget-anonWarning' ],
 			type: 'warning',
-			label: mw.message( 'discussiontools-replywidget-anon-warning' )
+			// eslint-disable-next-line mediawiki/msg-doc
+			label: mw.message( msg )
 				.params( [
 					mw.util.getUrl( 'Special:Userlogin', returnTo ),
-					mw.util.getUrl( 'Special:Userlogin/signup', returnTo )
+					mw.util.getUrl( 'Special:Userlogin/signup', returnTo ),
+					contLangMessages[ 'tempuser-helppage' ]
 				] )
 				.parseDom()
 		} );

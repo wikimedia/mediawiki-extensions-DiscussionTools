@@ -214,7 +214,7 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 				} ] } ).promise();
 			}
 
-			return new CommentDetails( pageName, oldId, metadata.notices, metadata.content, defaultMode );
+			return new CommentDetails( pageName, oldId, metadata.notices, metadata.wouldautocreate, metadata.content, defaultMode );
 		} );
 }
 
