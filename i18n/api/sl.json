@@ -20,6 +20,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Doda nov komentar kot odgovor na obstoječi komentar.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Dodajte nov razdelek za razpravo in prvi komentar v njem.",
 	"apihelp-discussiontoolsedit-summary": "Objava sporočila na razpravni strani.",
+	"apihelp-discussiontoolsfindcomment-summary": "Iskanje komentarja po ID-ju ali imenu.",
+	"apihelp-discussiontoolsfindcomment-param-idorname": "ID ali ime komentarja",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Imena tem za preverjanje",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Pridobi stanja naročenosti na predložene teme.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Številka redakcije za uporabo (po privzetem zadnja redakcija).",

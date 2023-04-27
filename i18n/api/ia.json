@@ -20,6 +20,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adder un nove commento como responsa a un commento existente.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adder un nove section de discussion e le prime commento in illo.",
 	"apihelp-discussiontoolsedit-summary": "Publicar un message sur un pagina de discussion.",
+	"apihelp-discussiontoolsfindcomment-summary": "Cercar un commento per su ID o nomine.",
+	"apihelp-discussiontoolsfindcomment-param-idorname": "ID o nomine del commento",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Nomines del topicos a verificar",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Obtener le statos de subscription de topicos date.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Le numero del version a usar (predefinite le ultime version).",

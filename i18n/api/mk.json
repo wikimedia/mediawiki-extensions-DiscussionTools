@@ -20,6 +20,8 @@
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Додај нов коментар како одговор на постоечки.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Додај нов разговорен оддел и првиот коментар во него.",
 	"apihelp-discussiontoolsedit-summary": "Напишете порака на разговорната страница.",
+	"apihelp-discussiontoolsfindcomment-summary": "Најдете коментар според назнака или име.",
+	"apihelp-discussiontoolsfindcomment-param-idorname": "Назнака на коментарот или име",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Називи на темите за проверка",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Дај ги претплатните статуси на дадените теми.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Број на преработката што ќе се користи (по основно: најновата преработка).",
