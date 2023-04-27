@@ -22,6 +22,7 @@
 	"discussiontools-ledesection-title": "یَتھ کَتھ صَفَس مُتلِق",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|سؠکَنٛڈ}}",
 	"discussiontools-newtopic-placeholder-title": "موضوٗع",
+	"discussiontools-pageframe-latestcomment": "تازٕ کَتھ باتھ: $1 صٲرِف $2 دٔسؠ $3 موضوٗعَس پؠٹھ",
 	"discussiontools-postedit-confirmation-topicadded": "تُہُنٛد موضوٗع آو شایع کَرنہٕ.",
 	"discussiontools-replybutton": "جَوآب",
 	"discussiontools-replylink": "جَوآب",
