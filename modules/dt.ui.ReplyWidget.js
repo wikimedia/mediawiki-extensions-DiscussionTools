@@ -173,7 +173,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 		) );
 	}
 	var $footerLinks = $( '<ul>' ).addClass( 'ext-discussiontools-ui-replyWidget-footer-links' );
-	if ( !mw.user.isAnon() ) {
+	if ( mw.user.isNamed() ) {
 		$footerLinks.append(
 			$( '<li>' ).append(
 				$( '<a>' )
