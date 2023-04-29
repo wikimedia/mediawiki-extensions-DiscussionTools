@@ -19,7 +19,7 @@ use ReadOnlyMode;
 use stdClass;
 use TitleFormatter;
 use Wikimedia\Rdbms\DBError;
-use Wikimedia\Rdbms\ILBFactory;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\TimestampException;
@@ -30,7 +30,7 @@ use Wikimedia\Timestamp\TimestampException;
 class ThreadItemStore {
 
 	private Config $config;
-	private ILBFactory $dbConProvider;
+	private IConnectionProvider $dbProvider;
 	private ReadOnlyMode $readOnlyMode;
 	private PageStore $pageStore;
 	private RevisionStore $revStore;
@@ -39,7 +39,7 @@ class ThreadItemStore {
 
 	public function __construct(
 		ConfigFactory $configFactory,
-		ILBFactory $dbConProvider,
+		IConnectionProvider $dbProvider,
 		ReadOnlyMode $readOnlyMode,
 		PageStore $pageStore,
 		RevisionStore $revStore,
@@ -47,7 +47,7 @@ class ThreadItemStore {
 		ActorStore $actorStore
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
-		$this->dbConProvider = $dbConProvider;
+		$this->dbProvider = $dbProvider;
 		$this->readOnlyMode = $readOnlyMode;
 		$this->pageStore = $pageStore;
 		$this->revStore = $revStore;
@@ -204,10 +204,10 @@ class ThreadItemStore {
 		foreach ( $result as $row ) {
 			$revs[ $row->itr_revision_id ] = null;
 		}
-		$revQueryBuilder = $this->dbConProvider->getReplicaDatabase()->newSelectQueryBuilder()
-			->queryInfo( $this->revStore->getQueryInfo( [ 'page' ] ) )
-			->fields( $this->pageStore->getSelectFields() )
-			->where( $revs ? [ 'rev_id' => array_keys( $revs ) ] : '0=1' );
+		$revQueryBuilder = $this->dbProvider->getReplicaDatabase()->newSelectQueryBuilder()
+											->queryInfo( $this->revStore->getQueryInfo( [ 'page' ] ) )
+											->fields( $this->pageStore->getSelectFields() )
+											->where( $revs ? [ 'rev_id' => array_keys( $revs ) ] : '0=1' );
 		$revResult = $revQueryBuilder->fetchResultSet();
 		foreach ( $revResult as $row ) {
 			$revs[ $row->rev_id ] = $row;
@@ -323,7 +323,7 @@ class ThreadItemStore {
 	 * @return SelectQueryBuilder
 	 */
 	private function getIdsNamesBuilder(): SelectQueryBuilder {
-		$dbr = $this->dbConProvider->getReplicaDatabase();
+		$dbr = $this->dbProvider->getReplicaDatabase();
 
 		$queryBuilder = $dbr->newSelectQueryBuilder()
 			->from( 'discussiontools_items' )
@@ -353,7 +353,7 @@ class ThreadItemStore {
 			return false;
 		}
 
-		$dbw = $this->dbConProvider->getPrimaryDatabase();
+		$dbw = $this->dbProvider->getPrimaryDatabase();
 		$didInsert = false;
 		$method = __METHOD__;
 

@@ -11,7 +11,7 @@ use ReadOnlyMode;
 use stdClass;
 use TitleValue;
 use Wikimedia\Rdbms\FakeResultWrapper;
-use Wikimedia\Rdbms\ILBFactory;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 
@@ -25,18 +25,18 @@ class SubscriptionStore {
 	public const STATE_AUTOSUBSCRIBED = 2;
 
 	private Config $config;
-	private ILBFactory $lbFactory;
+	private IConnectionProvider $dbProvider;
 	private ReadOnlyMode $readOnlyMode;
 	private UserFactory $userFactory;
 
 	public function __construct(
 		ConfigFactory $configFactory,
-		ILBFactory $lbFactory,
+		IConnectionProvider $dbProvider,
 		ReadOnlyMode $readOnlyMode,
 		UserFactory $userFactory
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
-		$this->lbFactory = $lbFactory;
+		$this->dbProvider = $dbProvider;
 		$this->readOnlyMode = $readOnlyMode;
 		$this->userFactory = $userFactory;
 	}
@@ -104,9 +104,9 @@ class SubscriptionStore {
 
 		$options += [ 'forWrite' => false ];
 		if ( $options['forWrite'] ) {
-			$db = $this->lbFactory->getPrimaryDatabase();
+			$db = $this->dbProvider->getPrimaryDatabase();
 		} else {
-			$db = $this->lbFactory->getReplicaDatabase();
+			$db = $this->dbProvider->getReplicaDatabase();
 		}
 
 		$rows = $this->fetchSubscriptions(
@@ -142,9 +142,9 @@ class SubscriptionStore {
 	): array {
 		$options += [ 'forWrite' => false ];
 		if ( $options['forWrite'] ) {
-			$db = $this->lbFactory->getPrimaryDatabase();
+			$db = $this->dbProvider->getPrimaryDatabase();
 		} else {
-			$db = $this->lbFactory->getReplicaDatabase();
+			$db = $this->dbProvider->getReplicaDatabase();
 		}
 
 		$rows = $this->fetchSubscriptions(
@@ -210,7 +210,7 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() ) {
 			return false;
 		}
-		$dbw = $this->lbFactory->getPrimaryDatabase();
+		$dbw = $this->dbProvider->getPrimaryDatabase();
 		$dbw->upsert(
 			'discussiontools_subscription',
 			[
@@ -247,7 +247,7 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() ) {
 			return false;
 		}
-		$dbw = $this->lbFactory->getPrimaryDatabase();
+		$dbw = $this->dbProvider->getPrimaryDatabase();
 		$dbw->update(
 			'discussiontools_subscription',
 			[ 'sub_state' => static::STATE_UNSUBSCRIBED ],
@@ -304,7 +304,7 @@ class SubscriptionStore {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
-		$dbw = $this->lbFactory->getPrimaryDatabase();
+		$dbw = $this->dbProvider->getPrimaryDatabase();
 
 		$conditions = [
 			'sub_item' => $itemName,
