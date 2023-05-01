@@ -133,6 +133,7 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|توھان}} ھن موضوع بابت نون راين جا اطلاع حاصل وڌيڪ حاصل نہ ڪندا.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|توھان}} اڻ سبسڪرائب ڪري ڇڏيو.",
 	"discussiontools-topicsubscription-pager-actions": "عمل",
+	"discussiontools-topicsubscription-pager-created": "پھريان {{GENDER:|سبسڪرائب ڪيل}}",
 	"discussiontools-topicsubscription-pager-notified": "تازه ترين اطلاع",
 	"discussiontools-topicsubscription-pager-notified-never": "ڪڏهن بہ نہ",
 	"discussiontools-topicsubscription-pager-page": "صفحو",
