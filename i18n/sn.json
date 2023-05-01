@@ -5,8 +5,11 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Mhinduro",
+	"discussiontools-preference-label": "Maturusi ehurukuro",
 	"discussiontools-replywidget-cancel": "Dzimura",
+	"discussiontools-replywidget-loading": "Kuraichisa...",
 	"discussiontools-replywidget-mode-source": "Mabviro",
 	"discussiontools-replywidget-mode-visual": "Ruono",
-	"discussiontools-replywidget-preview": "Chipandwa"
+	"discussiontools-replywidget-preview": "Chipandwa",
+	"discussiontools-replywidget-transcluded": "Komendi yako ichakotswa pa [[$1]]."
 }

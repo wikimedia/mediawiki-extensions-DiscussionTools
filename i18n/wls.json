@@ -4,10 +4,12 @@
 			"Lea.fakauvea"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Tali",
 	"discussiontools-replylink": "tali",
 	"discussiontools-replywidget-cancel": "Fakafisi",
 	"discussiontools-replywidget-mode-source": "Matapuna",
 	"discussiontools-replywidget-mode-visual": "Sio",
 	"discussiontools-replywidget-placeholder-reply": "Tali kia {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Sio fakatomu'a",
 	"discussiontools-replywidget-reply": "Tali"
 }

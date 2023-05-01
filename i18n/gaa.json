@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jwale2"
+			"Jwale2",
+			"Amire80"
 		]
 	},
 	"discussiontools-replywidget-cancel": "Foo mli",
+	"discussiontools-replywidget-preview": "Kwɛmɔ shi kome daŋ",
 	"discussiontools-replywidget-reply": "Hetoo"
 }

@@ -10,6 +10,7 @@
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Визуальнэ",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} вуэсстлэ",
+	"discussiontools-replywidget-preview": "Э̄ввткӣһчмушш",
 	"discussiontools-replywidget-reply": "Вуэсстлэ",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Вуэсстлэгк]"
 }
