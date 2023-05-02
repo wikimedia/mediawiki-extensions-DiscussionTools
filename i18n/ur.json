@@ -5,6 +5,7 @@
 			"TheAafi"
 		]
 	},
+	"discussiontools": "آلات گفتگو",
 	"discussiontools-autotopicsubpopup-dismiss": "ٹھیک ہے، میں سمجھ گیا۔",
 	"discussiontools-autotopicsubpopup-preferences": "ترجیحات میں ترمیم کریں۔",
 	"discussiontools-autotopicsubpopup-title": "{{GENDER:|آپ}} سبسکرائب ہو چکے ہیں۔",
@@ -34,6 +35,15 @@
 	"discussiontools-postedit-confirmation-topicadded": "آپ کا موضوع شامل کیا گیا تھا۔",
 	"discussiontools-preference-autotopicsub": "خودکار طور پر عنوانات کو سبسکرائب کریں۔",
 	"discussiontools-preference-autotopicsub-help": "جب {{GENDER:|آپ}} کوئی نئی بحث شروع کرتے ہیں یا کسی پرانی بحث پر تبصرہ کرتے ہیں، اس پر دوسروں کے تبصروں کی آپ کو خودکار طور پر اطلاع کی جائے گی۔",
+	"discussiontools-preference-newtopictool": "فوری اضافۂ موضوع کو فعال کریں",
+	"discussiontools-preference-newtopictool-createpage": "جب کسی ایسے تبادلۂ خیال صفحہ پر جانا ہو جسے اب تک بنایا نہیں گیا ہے تو:",
+	"discussiontools-preference-newtopictool-createpage-editor": "ویکی خانۂ ترمیم کھولا جائے",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "نئے موضوع کو شامل کرنے کی پیشکش کی جائے",
+	"discussiontools-preference-newtopictool-help": "اس کی مدد سے نئے موضوعات کو بڑی آسانی سے شامل کیا جا سکتا ہے۔",
+	"discussiontools-preference-replytool": "فوری جواب کو فعال کریں",
+	"discussiontools-preference-replytool-help": "اسے فعال کرنے پر ایک ربط نمودار ہوتا ہے جس کی مدد سے ایک کلک پر تبادلۂ خیال صفحہ کے تبصروں کا جواب دیا جا سکتا ہے۔",
+	"discussiontools-preference-sourcemodetoolbar": "ماخذی حالت میں آلات ترمیم فعال کریں",
+	"discussiontools-preference-summary": "ان سہولتوں کے متعلق مزید تفصیلات کے لیے آپ [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary اس صفحہ] سے رجوع کر سکتے ہیں۔",
 	"discussiontools-replybutton": "{{GENDER:|جواب دیں}}",
 	"discussiontools-replylink": "{{GENDER:|جواب دیں}}",
 	"discussiontools-replywidget-advanced": "اضافی",

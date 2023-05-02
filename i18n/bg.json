@@ -12,6 +12,8 @@
 	"discussiontools-autotopicsubpopup-preferences": "Редактиране на предпочитанията",
 	"discussiontools-autotopicsubpopup-title": "{{GENDER:|YouАбонирането е}} успешно",
 	"discussiontools-defaultsummary-reply": "Отговор",
+	"discussiontoolsdebug-title": "Структура на данните на инструментите за дискусии",
+	"discussiontoolsdebug-pagetitle": "Заглавие на страницата",
 	"discussiontools-emptystate-button": "Започване на дискусия",
 	"discussiontools-emptystate-title-user": "Започване на дискусия {{GENDER:{{PAGENAME}}|с}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "{{GENDER:|Добре дошли}} на тази беседа",

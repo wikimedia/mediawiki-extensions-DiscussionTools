@@ -2,13 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
-			"Kizule"
+			"Kizule",
+			"Milicevic01"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Коментар са ID-ом '$1' није пронађен.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID коментара",
 	"apihelp-discussiontoolsedit-param-wikitext": "Викитекст",
 	"apihelp-discussiontoolsedit-summary": "Објављивање поруке на страници за дискусију.",
+	"apihelp-discussiontoolsfindcomment-param-idorname": "ID коментара или име",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Број измене за употребу (подразумевано: последња измена)",
 	"apihelp-discussiontoolspageinfo-summary": "Приказује метаподатке потребне за покретање алатка за разговор."
 }
