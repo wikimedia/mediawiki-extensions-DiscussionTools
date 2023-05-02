@@ -57,3 +57,11 @@ $specialPageAliases['pl'] = [
 	'FindComment' => [ 'Znajdź_komentarz' ],
 	'GoToComment' => [ 'Przejdź_do_komentarza' ],
 ];
+
+/** Urdu (اردو) */
+$specialPageAliases['ur'] = [
+	'TopicSubscriptions' => [ 'گفتگو_میں_شرکت' ],
+	'FindComment' => [ 'تلاش_تبصرہ' ],
+	'GoToComment' => [ 'تبصرہ_پر_جائیں' ],
+	'DiscussionToolsDebug' => [ 'آلات_گفتگو_کی_خرابی_کا_ازالہ' ],
+];
