@@ -4,13 +4,14 @@
 			"Base",
 			"DDPAT",
 			"Ice bulldog",
-			"Ата"
+			"Ата",
+			"Andriy.v"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Коментаря з ідентифікатором «$1» не знайдено.",
 	"apierror-discussiontools-commentname-ambiguous": "Знайдено кілька коментарів із назвою «$1», <var>commentid</var> необхідний.",
 	"apierror-discussiontools-commentname-notfound": "Коментар з назвою \"$1\" не знайдено.",
-	"apierror-discussiontools-formtoken-used": "Коментар уже опубліковано. Перезавантажте сторінку, щоб побачити її.",
+	"apierror-discussiontools-formtoken-used": "Коментар уже опубліковано. Перезавантажте сторінку, щоб побачити його.",
 	"apierror-discussiontools-subscription-failed-add": "Не вдалося підписатися на цю тему.",
 	"apierror-discussiontools-subscription-failed-remove": "Не вдалося скасувати підписку на цю тему.",
 	"apihelp-discussiontoolscompare-summary": "Отримати інформацію про зміни коментарів між двома версіями сторінки.",
