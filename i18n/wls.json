@@ -4,10 +4,17 @@
 			"Lea.fakauvea"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Tali",
 	"discussiontools-replylink": "tali",
+	"discussiontools-replywidget-advanced": "Fakatokatoka",
 	"discussiontools-replywidget-cancel": "Fakafisi",
 	"discussiontools-replywidget-mode-source": "Matapuna",
 	"discussiontools-replywidget-mode-visual": "Sio",
 	"discussiontools-replywidget-placeholder-reply": "Tali kia {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Tali"
+	"discussiontools-replywidget-preview": "Sio fakatomu'a",
+	"discussiontools-replywidget-reply": "Tali",
+	"discussiontools-replywidget-summary": "Fakanounou",
+	"discussiontools-replywidget-watchthis": "Tohi te pāsina aeni ki tau [[Special:Watchlist|lisi muli'i]]",
+	"discussiontools-topicsubscription-button-subscribe": "Tohi tau higoa",
+	"discussiontools-topicsubscription-button-unsubscribe": "Molehi tau higoa"
 }
