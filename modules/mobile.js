@@ -83,6 +83,7 @@ function init( $container ) {
 				mw.track( 'webuiactions_log.click', 'lede-button' );
 			} );
 		} );
+		mw.track( 'webuiactions_log.show', 'lede-button' );
 	}
 
 	if (
