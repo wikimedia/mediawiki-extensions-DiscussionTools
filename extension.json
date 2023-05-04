@@ -336,7 +336,8 @@
 		]
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\DiscussionTools\\": "includes/"
+		"MediaWiki\\Extension\\DiscussionTools\\": "includes/",
+		"MediaWiki\\Extension\\DiscussionTools\\Maintenance\\": "maintenance/"
 	},
 	"TestAutoloadNamespaces": {
 		"MediaWiki\\Extension\\DiscussionTools\\Tests\\Unit\\": "tests/phpunit/unit/",
