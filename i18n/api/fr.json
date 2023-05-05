@@ -4,6 +4,7 @@
 			"DreZhsh",
 			"Gomoko",
 			"Thibaut120094",
+			"Urhixidur",
 			"Verdy p",
 			"Wladek92"
 		]
@@ -18,9 +19,9 @@
 	"apihelp-discussiontoolsedit-param-commentid": "Identifiant du commentaire auquel répondre. Utilisé seulement lorsque <var>paction</var> vaut <var>addcomment</var>. Prévaut sur <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Nom du commentaire auquel répondre. Utilisé seulement quand <var>paction</var> vaut <var>addcomment</var>.",
 	"apihelp-discussiontoolsedit-param-formtoken": "Un identifiant unique optionnel généré dans le client pour éviter la double publication.",
-	"apihelp-discussiontoolsedit-param-html": "Contenu à poster, en tant que HTML. Ne peut pas être utilisé conjointement avec <var>wikitext</var>.",
+	"apihelp-discussiontoolsedit-param-html": "Contenu à publier, en tant que HTML. Ne peut pas être utilisé conjointement avec <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Utilisé seulement lorsque <var>paction</var> est <var>addtopic</var>.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Contenu à poster, en tant que wikicode. Ne peut pas être utilisé conjointement avec <var>html</var>.",
+	"apihelp-discussiontoolsedit-param-wikitext": "Contenu à publier, en tant que wikicode. Ne peut pas être utilisé conjointement avec <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Ajouter un nouveau commentaire en tant que réponse à un commentaire existant.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Ajouter une nouvelle section de discussion et y inclure un premier commentaire.",
 	"apihelp-discussiontoolsedit-summary": "Créer un message sur une page de discussion.",
