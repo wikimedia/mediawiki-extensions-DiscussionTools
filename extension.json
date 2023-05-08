@@ -540,7 +540,7 @@
 		},
 		"DiscussionToolsABTest": {
 			"value": false,
-			"description": "A/B test DiscussionTools features for logged in users. false, 'replytool', 'newtopictool', or 'mobile'"
+			"description": "A/B test DiscussionTools features for logged in users. false, any valid feature string for an option below, or an array thereof"
 		},
 		"DiscussionToolsEnableMobile": {
 			"value": true,
