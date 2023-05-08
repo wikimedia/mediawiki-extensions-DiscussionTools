@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kandar"
+			"Kandar",
+			"Pijri Paijar"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Bales",
 	"discussiontools-replylink": "bales",
 	"discussiontools-replywidget-cancel": "Bolay",
 	"discussiontools-replywidget-mode-source": "Sumber",
 	"discussiontools-replywidget-mode-visual": "Pisual",
 	"discussiontools-replywidget-placeholder-reply": "Bales ka {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Pramidang",
 	"discussiontools-replywidget-reply": "Bales"
 }
