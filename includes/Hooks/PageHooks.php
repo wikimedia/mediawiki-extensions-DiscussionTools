@@ -109,12 +109,7 @@ class PageHooks implements
 		}
 
 		// Load modules if any DT feature is enabled for this user
-		if (
-			HookUtils::isFeatureEnabledForOutput( $output ) ||
-			// If there's an a/b test we need to include the JS for unregistered users just so
-			// we can make sure we store the bucket
-			( $this->config->get( 'DiscussionToolsABTest' ) && !$user->isRegistered() )
-		) {
+		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
 			$output->addModules( [
 				'ext.discussionTools.init'
 			] );
