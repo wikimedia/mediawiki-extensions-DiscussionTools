@@ -300,27 +300,18 @@ class HookUtils {
 	 */
 	public static function determineUserABTestBucket( UserIdentity $user, ?string $feature = null ): string {
 		$services = MediaWikiServices::getInstance();
-		$optionsManager = $services->getUserOptionsManager();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
+		if ( !$abtest ) {
+			return '';
+		}
 
-		if ( $feature ? ( $abtest == $feature ) : (bool)$abtest ) {
-			if ( $user->isRegistered() ) {
-				return $user->getId() % 2 == 0 ? 'test' : 'control';
-			}
-			// logged out
-			$req = RequestContext::getMain()->getRequest();
-			$cookie = $req->getCookie( 'DTAB', '' );
-			if ( $cookie ) {
-				return $cookie;
-			}
-			// we just want to remember this across all calls in this request
-			static $bucket = false;
-			if ( !$bucket ) {
-				$bucket = rand( 0, 1 ) <= 0.5 ? 'test' : 'control';
-			}
-			return $bucket;
+		if (
+			( $feature ? in_array( $feature, (array)$abtest ) : (bool)$abtest ) &&
+			$user->isRegistered()
+		) {
+			return $user->getId() % 2 == 0 ? 'test' : 'control';
 		}
 		return '';
 	}
