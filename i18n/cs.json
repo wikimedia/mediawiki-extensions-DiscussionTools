@@ -61,6 +61,7 @@
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Nyní se vám zobrazuje starší funkcionalita.</strong> Můžete se [$1 vrátit k novější] nebo navštívit nastavení a [$2 nastavit si tuto starší jako výchozí].",
 	"discussiontools-newtopic-missing-title": "Prosíme, vyplňte nadpis svého diskusního tématu. Kliknete-li na „{{int:discussiontools-replywidget-newtopic}}“, přidáte téma bez nadpisu.",
 	"discussiontools-newtopic-placeholder-title": "Předmět",
+	"discussiontools-newtopicssubscription-button-subscribe-label": "Odebírat",
 	"discussiontools-notification-removed-topic-body": "Je možné, že již nebudete dostávat oznámení o {{PLURAL:$1|tomto tématu|těchto tématech}}.",
 	"discussiontools-notification-removed-topic-header": "Téma „<strong>$4</strong>“ bylo archivováno nebo odstraněno ze stránky $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|Jedno téma bylo archivováno nebo odstraněno|$1 témata byla archivována nebo odstraněna|$1 témat bylo archivováno nebo odstraněno|100=Více než 99 témat bylo archivováno nebo odstraněno}} z $2.",
