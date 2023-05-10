@@ -10,6 +10,7 @@
 	"discussiontools-emptystate-button": "Tanga hurukuro",
 	"discussiontools-emptystate-title": "Tanga hurukuro nezve {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user": "Tanga hurukuro {{GENDER:{{PAGENAME}}|na}} {{PAGENAME}}",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|akapindura}} mu \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Ringa komendi",
 	"discussiontools-postedit-confirmation-published": "Komendi rako rakhandiswa.",
 	"discussiontools-postedit-confirmation-topicadded": "Ndaba yako yawedzerwa.",
