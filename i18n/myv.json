@@ -5,14 +5,14 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Пандомс кевкстеманть",
-	"discussiontools-replylink": "пандомс кевкстеманть",
+	"discussiontools-replylink": "{{GENDER:|пандомс кевкстеманть}}",
 	"discussiontools-replywidget-advanced": "Седе домка",
 	"discussiontools-replywidget-cancel": "Саемс мекев",
 	"discussiontools-replywidget-mode-source": "Лисьмапрязо",
 	"discussiontools-replywidget-mode-visual": "Неявиксстэ",
-	"discussiontools-replywidget-placeholder-reply": "Максомс {{BIDI:$1}}-нень каршовал",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Максомс}} {{BIDI:$1}}-нень каршовал",
 	"discussiontools-replywidget-preview": "Васнянь неевтезэ",
-	"discussiontools-replywidget-reply": "Пандомс кевкстеманть",
+	"discussiontools-replywidget-reply": "{{GENDER:|Пандомс кевкстеманть}}",
 	"discussiontools-replywidget-summary": "Нурькинестэ",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ломань|ломанть}} кортнить",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|арсема-мель|арсемат-мельть}}",
@@ -21,5 +21,7 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Сёрмадстык",
 	"discussiontools-topicsubscription-button-unsubscribe": "Саемс мекев сёрмадстоманть",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Саемс мекев сёрмадстоманть",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Сёрмадстык прят!"
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Тонеть}} пачтыть те теманть коряс од арсемадо-ушодксто.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Сёрмадстык}} прят!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Кадык}} кармавтовксот."
 }
