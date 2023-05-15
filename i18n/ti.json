@@ -6,6 +6,10 @@
 	},
 	"discussiontools-defaultsummary-reply": "መልሲ",
 	"discussiontools-replylink": "መልስ",
+	"discussiontools-replywidget-cancel": "ኣትርፍ",
+	"discussiontools-replywidget-loading": "ይጽዕን ኣሎ…",
+	"discussiontools-replywidget-mode-source": "ምንጪ",
+	"discussiontools-replywidget-mode-visual": "ርእየታዊ",
 	"discussiontools-replywidget-preview": "ቅድመ ትርኢት",
 	"discussiontools-replywidget-reply": "መልስ",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} መልስ]"
