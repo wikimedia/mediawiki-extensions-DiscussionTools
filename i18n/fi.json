@@ -66,6 +66,8 @@
 	"discussiontools-notification-subscribed-new-comment-view": "Näytä kommentti",
 	"discussiontools-pageframe-latestcomment": "Viimeisin kommentti: $1 käyttäjältä $2 aiheessa $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Viimeisin kommentti: $1 käyttäjältä $2",
+	"discussiontools-pagetitle-newtopic": "Aloitetaan uusi aihe sivulla $1",
+	"discussiontools-pagetitle-reply": "Vastataan sivulla $1",
 	"discussiontools-postedit-confirmation-published": "Kommenttisi julkaistiin.",
 	"discussiontools-postedit-confirmation-topicadded": "Aiheesi lisättiin.",
 	"discussiontools-preference-autotopicsub": "Tilaa aiheita automaattisesti",
