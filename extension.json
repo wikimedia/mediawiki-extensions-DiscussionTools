@@ -194,6 +194,13 @@
 				"AbandonCommentDialog.js",
 				"AbandonTopicDialog.js",
 				{
+					"name": "contLangMessages.json",
+					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getContentLanguageMessages",
+					"callbackParam": [
+						"tempuser-helppage"
+					]
+				},
+				{
 					"name": "licenseMessages.json",
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getTermsOfUseMessagesParsed",
 					"versionCallback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getTermsOfUseMessagesVersion"
@@ -211,6 +218,7 @@
 				"discussiontools-replywidget-abandontopic-keep",
 				"discussiontools-replywidget-advanced",
 				"discussiontools-replywidget-anon-warning",
+				"discussiontools-replywidget-autocreate-warning",
 				"discussiontools-replywidget-cancel",
 				"discussiontools-replywidget-feedback",
 				"discussiontools-replywidget-mention-tool-header",
