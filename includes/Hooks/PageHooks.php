@@ -464,12 +464,19 @@ class PageHooks implements
 		if ( $title->getNamespace() == NS_USER_TALK && !$title->isSubpage() ) {
 			// This is a user talk page
 			$isIP = $this->userNameUtils->isIP( $title->getText() );
+			$isTemp = $this->userNameUtils->isTemp( $title->getText() );
 			if ( $title->equals( $context->getUser()->getTalkPage() ) ) {
 				// This is your own user talk page
-				if ( $isIP ) {
-					// You're an IP editor, so this is only *sort of* your talk page
-					$titleMsg = 'discussiontools-emptystate-title-self-anon';
-					$descMsg = 'discussiontools-emptystate-desc-self-anon';
+				if ( $isIP || $isTemp ) {
+					if ( $isIP ) {
+						// You're an IP editor, so this is only *sort of* your talk page
+						$titleMsg = 'discussiontools-emptystate-title-self-anon';
+						$descMsg = 'discussiontools-emptystate-desc-self-anon';
+					} else {
+						// You're a temporary user, so you don't get some of the good stuff
+						$titleMsg = 'discussiontools-emptystate-title-self-temp';
+						$descMsg = 'discussiontools-emptystate-desc-self-temp';
+					}
 					$query = $context->getRequest()->getValues();
 					unset( $query['title'] );
 					$descParams = [
@@ -492,6 +499,10 @@ class PageHooks implements
 				// This is an IP editor
 				$titleMsg = 'discussiontools-emptystate-title-user-anon';
 				$descMsg = 'discussiontools-emptystate-desc-user-anon';
+			} elseif ( $isTemp ) {
+				// This is a temporary user
+				$titleMsg = 'discussiontools-emptystate-title-user-temp';
+				$descMsg = 'discussiontools-emptystate-desc-user-temp';
 			} else {
 				// This is any other user
 				$titleMsg = 'discussiontools-emptystate-title-user';
