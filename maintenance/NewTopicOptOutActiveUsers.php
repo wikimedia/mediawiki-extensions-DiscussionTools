@@ -117,3 +117,5 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 	}
 
 }
+
+$maintClass = NewTopicOptOutActiveUsers::class;
