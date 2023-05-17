@@ -26,7 +26,9 @@
 	"discussiontools-replywidget-reply": "Vaʹstted",
 	"discussiontools-replywidget-summary": "Õʹhtteǩeässmõš",
 	"discussiontools-replywidget-watchthis": "Lââʹzzet tän seeid tuu [[Special:Watchlist|valvvâmliʹstte]]",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "Čåuddõõđ tiʹllʼjõõzz",
 	"discussiontools-topicsubscription-button-subscribe": "tiʹlle",
+	"discussiontools-topicsubscription-button-unsubscribe": "čåuddõõđ tiʹllʼjõõzz",
 	"discussiontools-topicsubscription-pager-page": "Seidd",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]",
 	"tag-discussiontools-visual": "Visuaalʼlânji"
