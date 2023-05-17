@@ -5,10 +5,13 @@ namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 use IDatabase;
 use Maintenance;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserFactory;
 
 class NewTopicOptOutActiveUsers extends Maintenance {
 
 	private IDatabase $dbw;
+	private UserFactory $userFactory;
 
 	public function __construct() {
 		parent::__construct();
@@ -33,6 +36,7 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 		}
 
 		$this->dbw = $this->getDB( DB_PRIMARY );
+		$this->userFactory = MediaWikiServices::getInstance()->getUserFactory();
 
 		$userRows = $this->dbw->newSelectQueryBuilder()
 			->caller( __METHOD__ )
@@ -100,6 +104,18 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 			->fetchField();
 		if ( $foundRow ) {
 			return 'betaenable';
+		}
+
+		// Skip accounts that shouldn't have non-default preferences
+		$user = $this->userFactory->newFromId( $userId );
+		if ( $user->isSystemUser() ) {
+			return 'system';
+		}
+		if ( $user->isBot() ) {
+			return 'bot';
+		}
+		if ( $user->isTemp() ) {
+			return 'temp';
 		}
 
 		return null;
