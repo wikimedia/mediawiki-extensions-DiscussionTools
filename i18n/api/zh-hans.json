@@ -15,7 +15,7 @@
 	"apierror-discussiontools-commentname-notfound": "未找到名为“$1”的留言。",
 	"apierror-discussiontools-formtoken-used": "留言已成功发布。请重新加载此页面以查看。",
 	"apierror-discussiontools-subscription-failed-add": "无法订阅此话题。",
-	"apierror-discussiontools-subscription-failed-remove": "无法取消订阅此话题。",
+	"apierror-discussiontools-subscription-failed-remove": "无法退订此话题。",
 	"apihelp-discussiontoolscompare-summary": "获取两个页面修订之间有关留言更改的信息。",
 	"apihelp-discussiontoolsedit-param-commentid": "要回复的留言的ID。仅在<var>paction</var>为<var>addcomment</var>时使用。覆盖<var>commentname</var>。",
 	"apihelp-discussiontoolsedit-param-commentname": "要回复的留言的名称。仅在<var>paction</var>为<var>addcomment</var>时使用。",
@@ -36,8 +36,8 @@
 	"apihelp-discussiontoolspreview-param-type": "要预览的消息类型",
 	"apihelp-discussiontoolspreview-param-wikitext": "要预览的内容，如wikitext。",
 	"apihelp-discussiontoolspreview-summary": "在讨论页上预览消息。",
-	"apihelp-discussiontoolssubscribe-param-commentname": "要订阅（或取消订阅）的话题名称",
+	"apihelp-discussiontoolssubscribe-param-commentname": "要订阅（或退订）的话题名称",
 	"apihelp-discussiontoolssubscribe-param-page": "出现此话题的页面",
-	"apihelp-discussiontoolssubscribe-param-subscribe": "True为订阅，false为取消订阅",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "True为订阅，false为退订",
 	"apihelp-discussiontoolssubscribe-summary": "订阅（或取消订阅）以接收（或不接收）有关话题的通知。"
 }
