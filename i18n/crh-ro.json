@@ -22,6 +22,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Abone bol",
 	"discussiontools-topicsubscription-button-unsubscribe": "abone bolma",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Abone bolma",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Bo mewzuğa yazılğanda {{GENDER:|sĭzge}} qaber berĭlecek.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Abone {{GENDER:|boldıñız}}!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Endĭ {{GENDER:|sĭz}} bo mewzu haqqında qaber almayacaqsĭñĭz.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Abonelĭkten {{GENDER:|şıqtıñız}}."
 }
