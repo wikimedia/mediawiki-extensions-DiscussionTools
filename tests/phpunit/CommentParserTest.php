@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use DateTimeImmutable;
+use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
@@ -116,6 +117,7 @@ class CommentParserTest extends IntegrationTestCase {
 	public function testGetTimestampRegexp(
 		string $format, string $expected, string $message
 	): void {
+		/** @var CommentParser $parser */
 		$parser = TestingAccessWrapper::newFromObject(
 			MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
 		);
@@ -140,6 +142,7 @@ class CommentParserTest extends IntegrationTestCase {
 	public function testGetTimestampParser(
 		string $format, array $data, string $expected, string $message
 	): void {
+		/** @var CommentParser $parser */
 		$parser = TestingAccessWrapper::newFromObject(
 			MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
 		);
@@ -161,6 +164,7 @@ class CommentParserTest extends IntegrationTestCase {
 		string $sample, string $expected, string $expectedUtc, string $format,
 		string $timezone, array $timezoneAbbrs, string $message
 	): void {
+		/** @var CommentParser $parser */
 		$parser = TestingAccessWrapper::newFromObject(
 			MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' )
 		);

@@ -13,6 +13,7 @@ use ExtensionRegistry;
 use IContextSource;
 use IDBAccessObject;
 use LqtDispatch;
+use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
@@ -161,6 +162,7 @@ class HookUtils {
 		// comments in the sections to be treated as transcluded from another page.
 		CommentUtils::unwrapParsoidSections( $container );
 
+		/** @var CommentParser $parser */
 		$parser = $services->getService( 'DiscussionTools.CommentParser' );
 		$title = TitleValue::newFromPage( $revRecord->getPage() );
 		return $parser->parse( $container, $title );

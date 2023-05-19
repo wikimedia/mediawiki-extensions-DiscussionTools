@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use EchoEventPresentationModel;
 use Language;
+use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\MediaWikiServices;
@@ -142,6 +143,7 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 			$viewChangesLink,
 		];
 
+		/** @var SubscriptionStore $parser */
 		$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
 		$items = $subscriptionStore->getSubscriptionItemsForUser(
 			$this->getUser(),

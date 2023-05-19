@@ -16,6 +16,7 @@ use DeferredUpdates;
 use ExtensionRegistry;
 use IDBAccessObject;
 use Iterator;
+use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
@@ -72,6 +73,7 @@ class EventDispatcher {
 
 		$doc = DOMUtils::parseHTML( $html );
 		$container = DOMCompat::getBody( $doc );
+		/** @var CommentParser $parser */
 		$parser = $services->getService( 'DiscussionTools.CommentParser' );
 		return $parser->parse( $container, $title );
 	}
@@ -396,6 +398,7 @@ class EventDispatcher {
 			$dtConfig->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'any' &&
 			HookUtils::shouldAddAutoSubscription( $user, $title )
 		) {
+			/** @var SubscriptionStore $parser */
 			$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
 			$subscriptionStore->addAutoSubscriptionForUser( $user, $title, $itemName );
 		}
@@ -411,6 +414,7 @@ class EventDispatcher {
 	public static function locateSubscribedUsers( Event $event, $batchSize = 500 ) {
 		$commentName = $event->getExtraParam( 'subscribed-comment-name' );
 
+		/** @var SubscriptionStore $subscriptionStore */
 		$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
 		$subscriptionItems = $subscriptionStore->getSubscriptionItemsForTopic(
 			$commentName,

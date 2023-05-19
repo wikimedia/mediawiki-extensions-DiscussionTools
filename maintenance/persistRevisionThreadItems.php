@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
-use IDatabase;
 use Language;
 use Maintenance;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
@@ -14,6 +13,7 @@ use MWExceptionRenderer;
 use stdClass;
 use Throwable;
 use Title;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -24,7 +24,7 @@ require_once "$IP/maintenance/Maintenance.php";
 
 class PersistRevisionThreadItems extends Maintenance {
 
-	private IDatabase $dbr;
+	private IReadableDatabase $dbr;
 	private ThreadItemStore $itemStore;
 	private RevisionStore $revStore;
 	private Language $lang;
@@ -94,7 +94,7 @@ class PersistRevisionThreadItems extends Maintenance {
 				[ $nsInfo, 'wantSignatures' ]
 			) ),
 			'pp_propname IS NOT NULL',
-		], IDatabase::LIST_OR ) );
+		], IReadableDatabase::LIST_OR ) );
 
 		if ( $this->getOption( 'current' ) ) {
 			$qb->where( 'rev_id = page_latest' );
