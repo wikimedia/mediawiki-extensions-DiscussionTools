@@ -548,7 +548,7 @@ class CommentParser {
 
 		if ( $namespaceId === NS_USER || $namespaceId === NS_USER_TALK ) {
 			$username = $mainText;
-			if ( strpos( $username, '/' ) !== false ) {
+			if ( str_contains( $username, '/' ) ) {
 				return null;
 			}
 			if ( $namespaceId === NS_USER ) {

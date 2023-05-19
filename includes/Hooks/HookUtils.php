@@ -571,7 +571,7 @@ class HookUtils {
 		$namespaceInfo = $services->getNamespaceInfo();
 		Assert::precondition( $namespaceInfo->isTalk( $talkPage->getNamespace() ), "Page is a talk page" );
 
-		if ( $talkPage->getNamespace() === NS_USER_TALK && strpos( $talkPage->getText(), '/' ) === false ) {
+		if ( $talkPage->getNamespace() === NS_USER_TALK && !str_contains( $talkPage->getText(), '/' ) ) {
 			if ( $services->getUserNameUtils()->isIP( $talkPage->getText() ) ) {
 				return true;
 			}
