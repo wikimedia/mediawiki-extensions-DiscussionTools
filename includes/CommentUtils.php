@@ -6,6 +6,7 @@ use Config;
 use LogicException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
+use MediaWiki\MainConfigNames;
 use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
@@ -480,16 +481,17 @@ class CommentUtils {
 		}
 
 		// TODO: Set the correct base in the document?
-		if ( strpos( $url, './' ) === 0 ) {
-			$url = 'https://local' . str_replace( '$1', substr( $url, 2 ), $config->get( 'ArticlePath' ) );
-		} elseif ( strpos( $url, '://' ) === false ) {
+		if ( str_starts_with( $url, './' ) ) {
+			$url = substr( $url, 2 );
+			$url = 'https://local' . str_replace( '$1', $url, $config->get( MainConfigNames::ArticlePath ) );
+		} elseif ( !str_contains( $url, '://' ) ) {
 			$url = 'https://local' . $url;
 		}
 
 		$articlePathRegexp = '/' . str_replace(
 			preg_quote( '$1', '/' ),
 			'([^?]*)',
-			preg_quote( $config->get( 'ArticlePath' ), '/' )
+			preg_quote( $config->get( MainConfigNames::ArticlePath ), '/' )
 		) . '/';
 		$matches = null;
 		if ( preg_match( $articlePathRegexp, $url, $matches ) ) {
