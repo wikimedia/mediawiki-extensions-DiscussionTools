@@ -12,9 +12,9 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 use EchoEvent;
 use EchoEventPresentationModel;
 use Language;
+use MediaWiki\Language\RawMessage;
 use MediaWiki\MediaWikiServices;
 use Message;
-use RawMessage;
 use User;
 use Wikimedia\Timestamp\TimestampException;
 
