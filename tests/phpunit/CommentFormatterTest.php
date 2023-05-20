@@ -83,7 +83,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 	/**
 	 * @return iterable<array>
 	 */
-	public function provideAddDiscussionToolsInternal() {
+	public static function provideAddDiscussionToolsInternal() {
 		foreach ( static::getJson( '../cases/formatted.json' ) as $case ) {
 			// Run each test case twice, for desktop and mobile output
 			yield array_merge( $case, [ 'expected' => $case['expected']['desktop'], 'isMobile' => false ] );

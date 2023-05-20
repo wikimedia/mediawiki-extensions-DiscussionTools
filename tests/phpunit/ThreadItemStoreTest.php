@@ -90,7 +90,7 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 		static::assertEquals( $expected, $actual );
 	}
 
-	public function provideInsertCases(): array {
+	public static function provideInsertCases(): array {
 		return [
 			[ 'cases/ThreadItemStore/1simple-example' ],
 			[ 'cases/ThreadItemStore/2archived-section' ],

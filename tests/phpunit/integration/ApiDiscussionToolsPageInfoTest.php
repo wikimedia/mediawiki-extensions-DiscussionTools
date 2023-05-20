@@ -68,7 +68,7 @@ class ApiDiscussionToolsPageInfoTest extends ApiTestCase {
 		static::assertEquals( $expected, $threadItemsHtml, $name );
 	}
 
-	public function provideGetThreadItemsHtml(): array {
+	public static function provideGetThreadItemsHtml(): array {
 		return static::getJson( '../cases/threaditemshtml.json' );
 	}
 

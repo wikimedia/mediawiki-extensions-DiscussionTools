@@ -54,7 +54,7 @@ class ContentThreadItemTest extends IntegrationTestCase {
 		}, $threadItem->getThreadItemsBelow() ) );
 	}
 
-	public function provideAuthors(): array {
+	public static function provideAuthors(): array {
 		return static::getJson( '../cases/authors.json' );
 	}
 
@@ -100,7 +100,7 @@ class ContentThreadItemTest extends IntegrationTestCase {
 		);
 	}
 
-	public function provideTranscludedFrom(): array {
+	public static function provideTranscludedFrom(): array {
 		return static::getJson( '../cases/transcluded.json' );
 	}
 
@@ -143,7 +143,7 @@ class ContentThreadItemTest extends IntegrationTestCase {
 		);
 	}
 
-	public function provideGetText(): array {
+	public static function provideGetText(): array {
 		return static::getJson( '../cases/getText.json' );
 	}
 
@@ -186,7 +186,7 @@ class ContentThreadItemTest extends IntegrationTestCase {
 		);
 	}
 
-	public function provideGetHTML(): array {
+	public static function provideGetHTML(): array {
 		return static::getJson( '../cases/getHTML.json' );
 	}
 

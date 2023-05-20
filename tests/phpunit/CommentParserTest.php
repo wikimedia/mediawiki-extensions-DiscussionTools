@@ -130,7 +130,7 @@ class CommentParserTest extends IntegrationTestCase {
 		static::assertSame( $expected, $result, $message );
 	}
 
-	public function provideTimestampRegexps(): array {
+	public static function provideTimestampRegexps(): array {
 		return static::getJson( '../cases/timestamp-regex.json' );
 	}
 
@@ -150,7 +150,7 @@ class CommentParserTest extends IntegrationTestCase {
 		static::assertEquals( $expected, $tsParser( $data )['date'], $message );
 	}
 
-	public function provideTimestampParser(): array {
+	public static function provideTimestampParser(): array {
 		return static::getJson( '../cases/timestamp-parser.json' );
 	}
 
@@ -178,7 +178,7 @@ class CommentParserTest extends IntegrationTestCase {
 		static::assertEquals( $expectedUtc, $date, $message );
 	}
 
-	public function provideTimestampParserDST(): array {
+	public static function provideTimestampParserDST(): array {
 		return static::getJson( '../cases/timestamp-parser-dst.json' );
 	}
 
@@ -220,7 +220,7 @@ class CommentParserTest extends IntegrationTestCase {
 		}
 	}
 
-	public function provideComments(): array {
+	public static function provideComments(): array {
 		return static::getJson( '../cases/comments.json' );
 	}
 

@@ -81,7 +81,7 @@ class EventDispatcherTest extends IntegrationTestCase {
 		static::assertEquals( [], $events );
 	}
 
-	public function provideGenerateCases(): array {
+	public static function provideGenerateCases(): array {
 		return [
 			// Several simple edits adding replies by different users.
 			[
