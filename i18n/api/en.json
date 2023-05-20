@@ -24,6 +24,7 @@
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Get the subscription statuses of given topics.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "The revision number to use (defaults to latest revision).",
 	"apihelp-discussiontoolspageinfo-param-prop": "Which properties to get:",
+	"apihelp-discussiontoolspageinfo-param-excludesignatures": "Exclude user signatures from the comments (when using <var>prop=threaditemshtml</var>).",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "Representation of the comment threads parsed from the page",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "Which other pages comments have been transcluded from",
 	"apihelp-discussiontoolspageinfo-summary": "Returns metadata required to initialize the discussion tools.",

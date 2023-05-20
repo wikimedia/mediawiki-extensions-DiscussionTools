@@ -10,7 +10,7 @@
 	"discussiontools-defaultsummary-reply": "Reply",
 	"discussiontoolsdebug-title": "Discussion tools data structure",
 	"discussiontoolsdebug-pagetitle": "Page title",
-	"discussiontoolsdebug-intro": "This page demonstrates how the [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools extension] recognizes the threads and comments present on the page '''[[:$1]]'''. You may find it useful in debugging issues with the extension or understanding how it works. The same information is available in the [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "This page demonstrates how the [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools extension] recognizes the threads and comments present on the page '''[[:$1]]'''. You may find it useful in debugging issues with the extension or understanding how it works. The same information is available in the [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Tools to enhance discussion pages.",
 	"discussiontools-emptystate-button": "Start a discussion",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Talk pages]] are where people discuss how to make content on {{SITENAME}} the best that it can be. {{GENDER:|You}} can use this page to start a discussion with others about how to improve [[:{{SUBJECTPAGENAME}}]].",

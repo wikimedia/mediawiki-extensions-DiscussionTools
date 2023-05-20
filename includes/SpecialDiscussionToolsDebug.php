@@ -11,6 +11,7 @@ use MediaWiki\Linker\Linker;
 use MediaWiki\Page\ParserOutputAccess;
 use MWTimestamp;
 use ParserOptions;
+use SpecialPage;
 use Title;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -95,7 +96,16 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 
 		$out = $this->getOutput();
 
-		$out->addHTML( $this->msg( 'discussiontoolsdebug-intro', $title->getPrefixedText() )->parseAsBlock() );
+		$out->addHTML( $this->msg(
+			'discussiontoolsdebug-intro',
+			$title->getPrefixedText(),
+			SpecialPage::getTitleFor(
+				'ApiSandbox',
+				false,
+				'action=discussiontoolspageinfo&prop=threaditemshtml&excludesignatures=1&page='
+					. urlencode( $title->getPrefixedText() )
+			)->getFullText()
+		)->parseAsBlock() );
 
 		$pageLang = $title->getPageViewLanguage();
 		$pageLangAttribs = [
@@ -138,7 +148,7 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 					'</span>' .
 				'</span>' .
 				Html::rawElement( 'div', $pageLangAttribs,
-					'<div class="mw-dt-comment-body mw-parser-output">' . $comment->getBodyHtml( true ) . '</div>'
+					'<div class="mw-dt-comment-body mw-parser-output">' . $comment->getBodyHTML( true ) . '</div>'
 				);
 		}
 		$level = $comment->getLevel();

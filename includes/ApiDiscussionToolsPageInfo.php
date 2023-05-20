@@ -7,6 +7,7 @@ use ApiMain;
 use ApiUsageException;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
@@ -53,7 +54,8 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		}
 
 		if ( isset( $prop['threaditemshtml'] ) ) {
-			$result['threaditemshtml'] = static::getThreadItemsHtml( $threadItemSet );
+			$excludeSignatures = $params['excludesignatures'];
+			$result['threaditemshtml'] = static::getThreadItemsHtml( $threadItemSet, $excludeSignatures );
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
@@ -145,9 +147,10 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	 * Get thread items HTML for a ContentThreadItemSet
 	 *
 	 * @param ContentThreadItemSet $threadItemSet
+	 * @param bool $excludeSignatures
 	 * @return array
 	 */
-	private static function getThreadItemsHtml( ContentThreadItemSet $threadItemSet ): array {
+	private static function getThreadItemsHtml( ContentThreadItemSet $threadItemSet, bool $excludeSignatures ): array {
 		// This function assumes that the start of the ranges associated with
 		// HeadingItems are going to be at the start of their associated
 		// heading node (`<h2>^heading</h2>`), i.e. in the position generated
@@ -172,9 +175,16 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 				array_unshift( $threads, $fakeHeading );
 			}
 		}
-		$output = array_map( static function ( ContentThreadItem $item ) {
-			return $item->jsonSerialize( true, static function ( array &$array, ContentThreadItem $item ) {
-				$array['html'] = $item->getHtml();
+		$output = array_map( static function ( ContentThreadItem $item ) use ( $excludeSignatures ) {
+			return $item->jsonSerialize( true, static function ( array &$array, ContentThreadItem $item ) use (
+				$excludeSignatures
+			) {
+				if ( $item instanceof ContentCommentItem && $excludeSignatures ) {
+					$array['html'] = $item->getBodyHTML( true );
+				} else {
+					$array['html'] = $item->getHTML();
+				}
+
 				if ( $item instanceof CommentItem ) {
 					// We want timestamps to be consistently formatted in API
 					// output instead of varying based on comment time
@@ -279,6 +289,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 				],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
+			'excludesignatures' => false,
 		];
 	}
 
