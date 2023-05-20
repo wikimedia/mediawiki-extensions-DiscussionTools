@@ -231,7 +231,12 @@ MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range )
 
 MWUsernameCompletionAction.prototype.shouldAbandon = function ( input ) {
 	// TODO: need to consider whether pending loads from server are happening here
-	return MWUsernameCompletionAction.super.prototype.shouldAbandon.apply( this, arguments ) && input.split( /\s+/ ).length > 2;
+	return MWUsernameCompletionAction.super.prototype.shouldAbandon.apply( this, arguments ) && (
+		// Abandon if the user hit space immediately
+		input.match( /^\s+$/ ) ||
+		// Abandon if there's more than two words entered without a match
+		input.split( /\s+/ ).length > 2
+	);
 };
 
 /* Registration */
