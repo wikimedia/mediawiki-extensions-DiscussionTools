@@ -8,35 +8,8 @@ var
 		top: 10 + ( $( document.documentElement ).hasClass( 'vector-feature-sticky-header-enabled' ) ? 50 : 0 ),
 		bottom: 10
 	},
-	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
-	defaultVisual = defaultEditMode === 'visual',
-	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
-	enable2017Wikitext = featuresEnabled.sourcemodetoolbar,
-	conf = mw.config.get( 'wgVisualEditorConfig' ),
-	visualModules = [ 'ext.discussionTools.ReplyWidgetVisual' ]
-		.concat( conf.pluginModules.filter( mw.loader.getState ) ),
-	plainModules = [ 'ext.discussionTools.ReplyWidgetPlain' ];
-
-if ( OO.ui.isMobile() ) {
-	visualModules = [
-		'ext.visualEditor.core.mobile',
-		'ext.visualEditor.mwextensions'
-	].concat( visualModules );
-} else {
-	visualModules = [
-		'ext.visualEditor.core.desktop',
-		'ext.visualEditor.desktopTarget',
-		'ext.visualEditor.mwextensions.desktop'
-	].concat( visualModules );
-}
-
-// Start loading reply widget code
-if ( defaultVisual || enable2017Wikitext ) {
-	mw.loader.using( visualModules );
-} else {
-	mw.loader.using( plainModules );
-}
-
+	defaultVisual = controller.defaultVisual,
+	enable2017Wikitext = controller.enable2017Wikitext;
 /**
  * Handles setup, save and teardown of commenting widgets
  *
@@ -326,7 +299,7 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	// If 2017WTE mode is enabled, always use ReplyWidgetVisual.
 	visual = visual || enable2017Wikitext;
 
-	return mw.loader.using( visual ? visualModules : plainModules ).then( function () {
+	return mw.loader.using( controller.getReplyWidgetModules( visual ) ).then( function () {
 		return require( visual ? 'ext.discussionTools.ReplyWidgetVisual' : 'ext.discussionTools.ReplyWidgetPlain' );
 	} );
 };

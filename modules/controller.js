@@ -16,7 +16,10 @@ var
 	highlighter = require( './highlighter.js' ),
 	topicSubscriptions = require( './topicsubscriptions.js' ),
 	pageHandlersSetup = false,
-	pageDataCache = {};
+	pageDataCache = {},
+	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
+	defaultVisual = defaultEditMode === 'visual',
+	enable2017Wikitext = featuresEnabled.sourcemodetoolbar;
 
 var mobile = null;
 if ( OO.ui.isMobile() && mw.config.get( 'skin' ) === 'minerva' ) {
@@ -250,6 +253,36 @@ function getCheckboxesPromise( pageName, oldId ) {
 }
 
 /**
+ * Get the resourceloader modules required for a mode of the reply widget
+ *
+ * @param {boolean} visual Prefer the VE-based class
+ * @return {string[]}
+ */
+function getReplyWidgetModules( visual ) {
+	if ( !visual ) {
+		return [ 'ext.discussionTools.ReplyWidgetPlain' ];
+	}
+
+	var veConf = mw.config.get( 'wgVisualEditorConfig' ),
+		visualModules = [ 'ext.discussionTools.ReplyWidgetVisual' ]
+			.concat( veConf.pluginModules.filter( mw.loader.getState ) );
+
+	if ( OO.ui.isMobile() ) {
+		visualModules = [
+			'ext.visualEditor.core.mobile',
+			'ext.visualEditor.mwextensions'
+		].concat( visualModules );
+	} else {
+		visualModules = [
+			'ext.visualEditor.core.desktop',
+			'ext.visualEditor.desktopTarget',
+			'ext.visualEditor.mwextensions.desktop'
+		].concat( visualModules );
+	}
+	return visualModules;
+}
+
+/**
  * Initialize Discussion Tools features
  *
  * @param {jQuery} $container Page container
@@ -303,6 +336,15 @@ function init( $container, state ) {
 
 	if ( mobile ) {
 		mobile.init( $container );
+	}
+
+	if ( linksController.pageHasReplyLinks() || linksController.pageHasNewTopicLink() ) {
+		// Start loading reply widget code
+		// The worst-case here is that we might be on a page with no comments
+		// and the add-topic link suppressed, *but* which has valid links to
+		// trigger the new topic tool within the content. If that happens,
+		// the modules will still be loaded when those links are interacted with.
+		mw.loader.using( getReplyWidgetModules( defaultVisual || enable2017Wikitext ) );
 	}
 
 	/**
@@ -718,5 +760,8 @@ module.exports = {
 	checkThreadItemOnPage: checkThreadItemOnPage,
 	getCheckboxesPromise: getCheckboxesPromise,
 	getApi: getApi,
-	storage: storage
+	storage: storage,
+	getReplyWidgetModules: getReplyWidgetModules,
+	defaultVisual: defaultVisual,
+	enable2017Wikitext: enable2017Wikitext
 };
