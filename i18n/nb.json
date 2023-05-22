@@ -5,7 +5,8 @@
 			"Jon Harald Søby",
 			"Abuluntu",
 			"Matma Rex",
-			"Vukky"
+			"Vukky",
+			"EdoAug"
 		]
 	},
 	"discussiontools": "Diskusjonsverktøy",
@@ -22,7 +23,7 @@
 	"discussiontools-replywidget-mode-source": "Kilde",
 	"discussiontools-replywidget-mode-visual": "Visuelt",
 	"discussiontools-replywidget-placeholder-reply": "Svar til {{BIDI:$1}}",
-	"discussiontools-replywidget-preview": "Forhåndsvis",
+	"discussiontools-replywidget-preview": "Forhåndsvisning",
 	"discussiontools-replywidget-reply": "Svar",
 	"discussiontools-replywidget-terms-click": "Ved å trykke på «$1» samtykker du i bruksvilkårene til denne wikien.",
 	"discussiontools-replywidget-transcluded": "Kommentaren din blir lagret på [[$1]].",
