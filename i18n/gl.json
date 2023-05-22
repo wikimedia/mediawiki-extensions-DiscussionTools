@@ -31,7 +31,7 @@
 	"discussiontools-newtopic-placeholder-title": "Asunto",
 	"discussiontools-notification-subscribed-new-comment-view": "Amosar o comentario",
 	"discussiontools-pagetitle-newtopic": "Iniciando un fío novo en \"$1\"",
-	"discussiontools-replybutton": "Responder",
+	"discussiontools-replybutton": "{{GENDER:|Responder}}",
 	"discussiontools-replylink": "{{GENDER:|responder}}",
 	"discussiontools-replywidget-abandon": "Quere desbotar o comentario que está escribindo?",
 	"discussiontools-replywidget-abandon-discard": "Desbotar o comentario",
