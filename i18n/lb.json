@@ -3,7 +3,8 @@
 		"authors": [
 			"Les Meloures",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"discussiontools": "Diskussiouns-Geschier",
@@ -91,7 +92,7 @@
 	"discussiontools-topicsubscription-button-subscribe": "abonéieren",
 	"discussiontools-topicsubscription-button-subscribe-label": "Abonéieren",
 	"discussiontools-topicsubscription-button-unsubscribe": "ofbestellen",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "DEsabonnéieren",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Ofbestellen",
 	"discussiontools-topicsubscription-error-not-found-title": "Aschreiwung net fonnt",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Dir kritt Notifikatiounen fir nei Bemierkungen zu dësem Thema.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Dir sidd ageschriwwen!",
