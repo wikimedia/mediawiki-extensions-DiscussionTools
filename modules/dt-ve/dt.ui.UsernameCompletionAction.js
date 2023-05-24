@@ -26,12 +26,13 @@ function hasUser( authors, username ) {
  * @extends ve.ui.CompletionAction
  * @constructor
  * @param {ve.ui.Surface} surface Surface to act on
+ * @param {string} [source]
  */
-function MWUsernameCompletionAction( surface ) {
+function MWUsernameCompletionAction() {
 	var action = this;
 
 	// Parent constructor
-	MWUsernameCompletionAction.super.call( this, surface );
+	MWUsernameCompletionAction.super.apply( this, arguments );
 
 	// Shared API object so previous requests can be aborted
 	this.api = controller.getApi();
