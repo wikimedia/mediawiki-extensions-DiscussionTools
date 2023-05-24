@@ -6,10 +6,8 @@
 	position: relative;
 	clear: both;
 	// This is in user language, do not inherit text-align from the content (T306137).
-	// 'initial' is not widely supported, but luckily, browsers that don't support it (IE 11) also
-	// don't suffer from that bug. We can't set 'text-align: left' (and rely on flipping), because
+	// We can't set 'text-align: left' (and rely on flipping), because
 	// that would affect the input field, which is in content language.
-	/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 	text-align: initial;
 
 	.skin-monobook & {
@@ -18,7 +16,6 @@
 }
 
 // @supports does not work when nested
-/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 @supports ( display: flow-root ) {
 	.ext-discussiontools-ui-replyWidget {
 		// Allow the widget to be squished next to floating elements (T278476).
@@ -29,7 +26,7 @@
 		//
 		// All of the usual ways to do this (listed on that page) have unwanted side-effects
 		// (in particular, `overflow: hidden` cuts off VE inspectors), so we must use this relatively
-		// recent property, and only apply this fix on supporting browsers, notably excluding IE 11
+		// recent property, and only apply this fix on supporting browsers, notably excluding Safari <13
 		// (https://caniuse.com/?search=flow-root)
 		display: flow-root;
 		min-width: 250px;

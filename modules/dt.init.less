@@ -113,7 +113,6 @@ h1, h2, h3, h4, h5, h6 {
 	position: absolute;
 	pointer-events: none;
 	opacity: 0;
-	/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 	mix-blend-mode: darken;
 	// Support: Safari
 	// Safari doesn't blend this overlay with the text unless GPU rendering is forced.
@@ -778,7 +777,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .ext-discussiontools-init-new-topic {
 	.minerva-footer-button();
-	// stylelint-disable-next-line plugin/no-unsupported-browser-features
 	position: sticky;
 	// Required for IntersectionObserver trick
 	bottom: -1px;
@@ -854,7 +852,6 @@ h1, h2, h3, h4, h5, h6 {
 
 // HACK: Fake disabled styles for the .mw-ui-button in Vector sticky header (T307726)
 .ext-discussiontools-fake-disabled {
-	// stylelint-disable-next-line plugin/no-unsupported-browser-features
 	filter: saturate( 0 );
 	opacity: 0.8;
 	pointer-events: none;
