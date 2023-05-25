@@ -115,7 +115,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Konuyu sil",
 	"discussiontools-replywidget-abandontopic-keep": "Yazmaya devam et",
 	"discussiontools-replywidget-advanced": "Gelişmiş",
-	"discussiontools-replywidget-anon-warning": "<strong>Oturum açmadınız.</strong> IP adresiniz yerine adınızla ilgili bir atıf almak için [$1 oturum açın] veya [$2 yeni hesap oluşturun].",
+	"discussiontools-replywidget-anon-warning": "<strong>Oturum açmadınız.</strong> Biri yanıtladığında bildirim almak ve IP adresiniz yerine adınızla atıf almak için [$1 oturum açabilir] ya da [$2 yeni hesap oluşturabilirsiniz].",
 	"discussiontools-replywidget-cancel": "İptal",
 	"discussiontools-replywidget-feedback": "Bu özellikle ilgili geribildirimde bulunun",
 	"discussiontools-replywidget-loading": "Yükleniyor...",
