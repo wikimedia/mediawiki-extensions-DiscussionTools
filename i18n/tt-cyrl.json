@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Run Li",
 			"Ерней",
 			"Ильгиз"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Җавап бирү",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Фикер алышу битләрендә]] кешеләр {{GRAMMAR:genitive|{{SITENAME}}}} эчтәлегенничек яхшыртырга кирәклеге турында фикер алышалар. Сез бу битне башка катнашучылар белән «[[:{{SUBJECTPAGENAME}}]]» битенә нинди яхшыртулар кертү турында сөйләшү өчен куллана аласыз.",
 	"discussiontools-replylink": "җавап бирү",
 	"discussiontools-replywidget-advanced": "Киңәйтелгән",
 	"discussiontools-replywidget-cancel": "Кире алу",
