@@ -1,5 +1,4 @@
 var
-	controller = require( './controller.js' ),
 	CommentController = require( './CommentController.js' ),
 	HeadingItem = require( './HeadingItem.js' );
 
@@ -50,8 +49,6 @@ OO.inheritClass( NewTopicController, CommentController );
 NewTopicController.static.initType = 'section';
 
 NewTopicController.static.suppressedEditNotices = [
-	// Our own notice, meant for the other interfaces only
-	'discussiontools-newtopic-legacy-hint-return',
 	// Ignored because we have a custom warning for non-logged-in users.
 	'anoneditwarning',
 	// Ignored because it contains mostly instructions for signing comments using tildes.
@@ -93,22 +90,6 @@ NewTopicController.prototype.setup = function ( mode ) {
 	// it while the content field is still loading.
 	rootScrollable.scrollTop = rootScrollable.scrollHeight;
 	this.focus();
-
-	var firstUse = !mw.user.options.get( 'discussiontools-newtopictool-opened' );
-	if (
-		( firstUse || mw.user.options.get( 'discussiontools-newtopictool-hint-shown' ) ) &&
-		mw.config.get( 'wgUserId' ) && mw.config.get( 'wgUserEditCount', 0 ) >= 500
-	) {
-		// Topic hint should be shown to logged in users who have more than
-		// 500 edits on their first use of the tool, and should persist until
-		// they deliberately close it.
-		this.setupTopicHint();
-	}
-	if ( firstUse ) {
-		controller.getApi().saveOption( 'discussiontools-newtopictool-opened', '1' ).then( function () {
-			mw.user.options.set( 'discussiontools-newtopictool-opened', '1' );
-		} );
-	}
 };
 
 /**
@@ -171,59 +152,6 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 };
 
 /**
- * Create and display a hint dialog that redirects users to the non-DT version of this tool
- */
-NewTopicController.prototype.setupTopicHint = function () {
-	var topicController = this;
-	var legacyUrl = new URL( location.href );
-	if ( OO.ui.isMobile() ) {
-		legacyUrl.hash = '#/talk/new';
-		legacyUrl.searchParams.delete( 'action' );
-		legacyUrl.searchParams.delete( 'section' );
-	} else {
-		legacyUrl.searchParams.set( 'action', 'edit' );
-		legacyUrl.searchParams.set( 'section', 'new' );
-	}
-	legacyUrl.searchParams.set( 'dtenable', '0' );
-	// This is not a real valid value for 'editintro', but we look for it elsewhere to generate our own edit notice
-	legacyUrl.searchParams.set( 'editintro', 'mw-dt-topic-hint' );
-	// Avoid triggering code that disallows section editing while editing an old version of the page (T311665)
-	legacyUrl.searchParams.delete( 'oldid' );
-	legacyUrl.searchParams.delete( 'diff' );
-
-	this.topicHint = new OO.ui.MessageWidget( {
-		label: mw.message( 'discussiontools-newtopic-legacy-hint', legacyUrl.toString() ).parseDom(),
-		showClose: true,
-		icon: 'article'
-	} )
-		.connect( this, { close: 'onTopicHintClose' } );
-	this.topicHint.$element.addClass( 'ext-discussiontools-ui-newTopic-hint' );
-	this.topicHint.$element.find( 'a' ).on( 'click', function () {
-		// Clicking to follow this link should immediately discard the
-		// autosave. We can do this before the onBeforeUnload handler asks
-		// them to confirm, because if they decide to cancel the navigation
-		// then the autosave will occur again.
-		topicController.clearStorage();
-		topicController.replyWidget.clearStorage();
-	} );
-	this.container.$element.before( this.topicHint.$element );
-
-	// This needs to persist once it's shown
-	controller.getApi().saveOption( 'discussiontools-newtopictool-hint-shown', 1 ).then( function () {
-		mw.user.options.set( 'discussiontools-newtopictool-hint-shown', 1 );
-	} );
-};
-
-/**
- * Handle clicks on the close button for the hint dialog
- */
-NewTopicController.prototype.onTopicHintClose = function () {
-	controller.getApi().saveOption( 'discussiontools-newtopictool-hint-shown', null ).then( function () {
-		mw.user.options.set( 'discussiontools-newtopictool-hint-shown', null );
-	} );
-};
-
-/**
  * @inheritdoc
  */
 NewTopicController.prototype.focus = function () {
@@ -270,9 +198,6 @@ NewTopicController.prototype.teardown = function ( abandoned ) {
 	NewTopicController.super.prototype.teardown.call( this, abandoned );
 
 	this.container.$element.detach();
-	if ( this.topicHint ) {
-		this.topicHint.$element.detach();
-	}
 
 	if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
 		var url = new URL( location.href );

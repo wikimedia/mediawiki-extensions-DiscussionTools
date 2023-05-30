@@ -57,8 +57,6 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools error request ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools time usage",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|second|seconds}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>A new way to start topics is here.</strong> This update enables {{GENDER:|you}} to add topics using an inline form and to ping others with a new shortcut. You can also [$1 switch back to the legacy experience].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>{{GENDER:|You}} are now viewing the legacy experience.</strong> You can [$1 return to the new experience] or visit preferences to [$2 set the legacy experience as your default].",
 	"discussiontools-newtopic-missing-title": "Please provide a title for {{GENDER:|your}} discussion topic. If you click \"{{int:discussiontools-replywidget-newtopic}}\", your topic will be added without a title.",
 	"discussiontools-newtopic-placeholder-title": "Subject",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Subscribe",

@@ -147,12 +147,6 @@ class PreferenceHooks implements
 		$preferences['discussiontools-showadvanced'] = [
 			'type' => 'api',
 		];
-		$preferences['discussiontools-newtopictool-opened'] = [
-			'type' => 'api',
-		];
-		$preferences['discussiontools-newtopictool-hint-shown'] = [
-			'type' => 'api',
-		];
 		$preferences['discussiontools-seenautotopicsubpopup'] = [
 			'type' => 'api',
 		];

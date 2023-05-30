@@ -25,15 +25,12 @@ use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
-use MediaWiki\Hook\TitleGetEditNoticesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserOptionsLookup;
 use OOUI\ButtonWidget;
-use OOUI\HtmlSnippet;
-use OOUI\MessageWidget;
 use OutputPage;
 use ParserOutput;
 use RequestContext;
@@ -49,8 +46,7 @@ class PageHooks implements
 	OutputPageBeforeHTMLHook,
 	OutputPageParserOutputHook,
 	SidebarBeforeOutputHook,
-	SkinTemplateNavigation__UniversalHook,
-	TitleGetEditNoticesHook
+	SkinTemplateNavigation__UniversalHook
 {
 
 	private Config $config;
@@ -625,49 +621,5 @@ class PageHooks implements
 				'commentname' => CommentUtils::getNewTopicsSubscriptionId( $title ),
 			] ),
 		];
-	}
-
-	/**
-	 * @param Title $title Title object for the page the edit notices are for
-	 * @param int $oldid Revision ID that the edit notices are for (or 0 for latest)
-	 * @param array &$notices Array of notices. Keys are i18n message keys, values are
-	 *   parseAsBlock()ed messages.
-	 * @return bool|void True or no return value to continue or false to abort
-	 */
-	public function onTitleGetEditNotices( $title, $oldid, &$notices ) {
-		$context = RequestContext::getMain();
-
-		if (
-			// Hint is active
-			$this->userOptionsLookup->getOption( $context->getUser(), 'discussiontools-newtopictool-hint-shown' ) &&
-			// Turning off the new topic tool also dismisses the hint
-			$this->userOptionsLookup->getOption( $context->getUser(), 'discussiontools-' . HookUtils::NEWTOPICTOOL ) &&
-			// Only show when following the link from the new topic tool, never on normal edit attempts.
-			// This can be called from within ApiVisualEditor, so we can't access most request parameters
-			// for the main request. However, we can access 'editintro', because it's passed to the API.
-			$context->getRequest()->getRawVal( 'editintro' ) === 'mw-dt-topic-hint'
-		) {
-			$context->getOutput()->enableOOUI();
-
-			$returnUrl = $title->getFullURL( [
-				'action' => 'edit',
-				'section' => 'new',
-				'dtenable' => '1',
-			] );
-			$prefUrl = SpecialPage::getTitleFor( 'Preferences' )
-				->createFragmentTarget( 'mw-prefsection-editing-discussion' )->getFullURL();
-
-			$topicHint = new MessageWidget( [
-				'label' => new HtmlSnippet( wfMessage( 'discussiontools-newtopic-legacy-hint-return' )
-					->params( $returnUrl, $prefUrl )->parse() ),
-				'icon' => 'article',
-				'classes' => [ 'ext-discussiontools-ui-newTopic-hint-return' ],
-			] );
-
-			// Add our notice above the built-in ones
-			$notices = [
-				'discussiontools-newtopic-legacy-hint-return' => (string)$topicHint,
-			] + $notices;
-		}
 	}
 }
