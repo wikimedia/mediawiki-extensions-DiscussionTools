@@ -159,6 +159,8 @@ h1, h2, h3, h4, h5, h6 {
 	// for headings, but we add the floating stuff outside of headings (since T314714).
 	// https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context
 	overflow: hidden;
+	// Prevent squishing too much (T335823)
+	min-width: 20em;
 
 	.skin-minerva& {
 		overflow: visible;
