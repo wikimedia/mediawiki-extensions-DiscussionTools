@@ -231,9 +231,8 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 		$( '#ca-view' ).removeClass( 'selected' );
 	}
 
-	this.originalDocumentTitle = document.title;
 	var title = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
-	document.title = mw.msg( 'pagetitle',
+	var pageTitleMsg = mw.message( 'pagetitle',
 		mw.msg(
 			isNewTopic ?
 				'discussiontools-pagetitle-newtopic' :
@@ -241,6 +240,15 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 			title.getPrefixedText()
 		)
 	);
+
+	// T317600
+	if ( pageTitleMsg.isParseable() ) {
+		this.originalDocumentTitle = document.title;
+		document.title = pageTitleMsg.text();
+	} else {
+		mw.log.warn( 'DiscussionTools: MediaWiki:Pagetitle contains unsupported syntax. ' +
+			'https://www.mediawiki.org/wiki/Manual:Messages_API#Feature_support_in_JavaScript' );
+	}
 
 	$( document.body ).addClass( 'ext-discussiontools-init-replylink-open' );
 	this.$replyLinkSets.each( function () {
