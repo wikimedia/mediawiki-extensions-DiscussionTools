@@ -62,8 +62,6 @@
 	"discussiontools-limitreport-errorreqid": "آي دي (ID) طلب خاطئ لـ أدوات_نقاش",
 	"discussiontools-limitreport-timeusage": "وقت استخدام أدوات_نقاش",
 	"discussiontools-limitreport-timeusage-value": "{{PLURAL:$1|أقل من ثانية|ثانية واحدة|ثانيتان|$1 ثوان|$1 ثانية}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>هذه طريقة جديدة للبدء في المواضيع.</strong> {{GENDER:|يُمَكّنكَ|يُمَكّنكِ}} هذا التحديث من إضافة مواضيع باستخدام نموذج مضمن والإشارة للآخرين باستخدام اختصار جديد. يُمْكنك أيضًا [$1 التبديل مرة أخرى إلى التجربة القديمة].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>أنت الآن {{GENDER:|تشاهد|تشاهدين}} التجربة القديمة.</strong> يمكنك [$1 الرجوع إلى التجربة الجديدة] أو زيارة التفضيلات [$2 لتحديد التجربة القديمة كافتراضية].",
 	"discussiontools-newtopic-missing-title": "رجاءً، {{GENDER:|ضع|ضعي}} عنوانًا لتعليقك. لو ضغطت مجدّدا على «{{int:discussiontools-replywidget-newtopic}}»، سيُنشر التعليق من غير عنوان.",
 	"discussiontools-newtopic-placeholder-title": "الموضوع",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "اشتراك",

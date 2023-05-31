@@ -37,8 +37,6 @@
 	"discussiontools-limitreport-errorreqid": "ID mô ô fin DiscussionTools (yalè kokolè ningué moun) bé sa woussalè sou satofouanlè sou",
 	"discussiontools-limitreport-timeusage": "Yalè kokolè ningué moun bé yolè dô i nouan",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|seconde|secondes moun}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Ndè moun bé bo bolè i yowlè ouflè koun wo wafan.</strong> Liké siésiélè sô ô man amoun kloua fa ndè moun goua sou ôni interneti sou formulaire koun, kôkoun amoun kloua flè sran ouflè moun ôni raccourci ouflè koun. I koussou, amoun kloua [$1 sa amoun sin laa liké yowlè sou].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Dô nga sou amoun sou woun laa liké yowlè moun.</strong> Amoun kloua [$1 sa amoun sin liké yowlè i version ouflè sou] annzè amoun wô bé klounklo sou ningué moun bé sou, nan amoun a [$2 siésié laa liké yowlè moun bé kè amoun liké nga ô fata kè ô doumoua fité i bo bolè noun].",
 	"discussiontools-newtopic-missing-title": "Amoun yatchi, amoun man amoun yalè kokolè ndè i douman koun. Sè amoun tin \"{{int:discussiontools-replywidget-newtopic}}\" sou'n, bé fa amoun ndè mô ô léman douman'n, bé fa goua sou.",
 	"discussiontools-newtopic-placeholder-title": "Akpassoua douman",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|tè li sou}} in \"<strong>$4</strong>\".",

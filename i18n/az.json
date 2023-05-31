@@ -58,8 +58,6 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools xəta sorğusu ID-si",
 	"discussiontools-limitreport-timeusage": "DiscussionTools vaxtdan istifadə",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|saniyə}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Mövzu başlatmağın yeni yolu buradadır.</strong> Bu güncəlləmə {{GENDER:|sizə}} daxili formadan istifadə edərək mövzular əlavə etməyə və başqalarına yeni qısayol vasitəsilə teq göndərməyə imkan verir. Siz həmçinin [$1 köhnə dizayna qayıda bilərsiniz].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>{{GENDER:|Siz}} indi köhnə dizayna baxırsınız.</strong> Siz [$2 yeni dizayna qayıda] və ya  [$1 köhnə təcrübəni defolt olaraq təyin etmək] üçün nizamlamalara gedə bilərsiniz.",
 	"discussiontools-newtopic-missing-title": "Müzakirə mövzusu üçün başlıq təqdim edin. Əgər \"{{int:discussiontools-replywidget-newtopic}}\" klikləsəniz, mövzunuz başlıqsız əlavə olunacaq.",
 	"discussiontools-newtopic-placeholder-title": "Mövzu",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abunə ol",

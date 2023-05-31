@@ -55,8 +55,6 @@
 	"discussiontools-ledesection-title": "Tietoja tästä keskustelusivusta",
 	"discussiontools-limitreport-timeusage": "DiscussionToolsin ajankäyttö",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunti|sekuntia}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Uusi tapa aloittaa aiheita on nyt täällä.</strong> Tämän päivityksen avulla voit lisätä uusia keskustelunaiheita lomaketta käyttämällä, ja voit samalla myös helpommin pingata muita käyttäjiä. Voit myös [$1 vaihtaa takaisin vanhaan toimintoon].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Käytät nyt vanhaa toimintoa.</strong> Voit [$1 palata uuteen toimintoon] tai asettaa vanhan toiminnon [$2 oletukseksi omissa asetuksissasi].",
 	"discussiontools-newtopic-missing-title": "Anna otsikko {{GENDER:|keskustelunaiheellesi}}. Jos painat \"{{int:discussiontools-replywidget-newtopic}}\", aiheesi lisätään ilman otsikkoa.",
 	"discussiontools-newtopic-placeholder-title": "Otsikko",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Tilaa",

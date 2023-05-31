@@ -78,8 +78,6 @@
 	"discussiontools-limitreport-errorreqid": "Identificador de solicitud de error de DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Tiempo de uso de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|segundo|segundos}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Te presentamos una nueva manera de comenzar temas</strong> Esta actualización te permite añadir temas usando un formulario así como notificar a otros usuarios con un nuevo atajo. Puedes [$1 volver a la experiencia anterior] si lo deseas.",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Ahora estás usando la versión antigua.</strong> Puedes [$1 volver a activar la versión moderna] o bien ir a tus preferencias para [$2 hacer que esta versión sea tu opción por defecto].",
 	"discussiontools-newtopic-missing-title": "Por favor indica un título para la conversación. Si haces clic en «{{int:discussiontools-replywidget-newtopic}}» se publicará sin este.",
 	"discussiontools-newtopic-placeholder-title": "Asunto",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Suscribirse",

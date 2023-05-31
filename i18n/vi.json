@@ -54,8 +54,6 @@
 	"discussiontools-limitreport-errorreqid": "ID yêu cầu của lỗi Công cụ Thảo luận",
 	"discussiontools-limitreport-timeusage": "Thời gian Công cụ Thảo luận sử dụng",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|giây}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Đây là cách mới để tạo chủ đề.</strong> Bản cập nhật này giúp bạn tạo chủ đề bằng biểu mẫu nội dòng và nhắc đến thành viên khác bằng một lối tắt mới. Bạn cũng có thể [$1 quay lại cài đặt cũ].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Bạn đang sử dụng cài đặt cũ.</strong> Bạn có thể [$1 quay lại cài đặt mới] hoặc đến tùy chọn để [$2 đặt cài đặt cũ làm mặc định].",
 	"discussiontools-newtopic-missing-title": "Xin hãy đặt tiêu đề cho chủ đề thảo luận. Nếu bạn nhấn “{{int:discussiontools-replywidget-newtopic}}”, chủ đề của bạn sẽ được đăng lên mà không có tiêu đề.",
 	"discussiontools-newtopic-placeholder-title": "Chủ đề",
 	"discussiontools-notification-removed-topic-body": "Bạn sẽ không còn nhận thông báo về {{PLURAL:$1||những}} chủ đề này nữa.",

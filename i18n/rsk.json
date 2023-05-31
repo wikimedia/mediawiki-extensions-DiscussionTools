@@ -51,8 +51,6 @@
 	"discussiontools-limitreport-errorreqid": "ID вимага гришку DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Час хаснованя DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунди}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Нови способ за порушованє темох ту.</strong> Тото ажурированє {{GENDER:|вам}} оможлївює додавац теми з помоцу уложеного инлайн формулара и пинґовац других з помоцу новей кратшей драги. Ви ше тиж можеце [$1 врациц на старши, превозидзени способ].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>{{GENDER:|Ви}} тераз видзице скорейши способ.</strong> Ви ше можеце [$1 врациц на новши способ] або пойсц на намесцанє опцийох же би сце [$2 намесцели скорейши способ як важаци].",
 	"discussiontools-newtopic-missing-title": "Наведзце наслов за {{GENDER:|вашу}} тему дискусиї. Кед кликнєце на \"{{int:discussiontools-replywidget-newtopic}}\", ваша тема будзе додата без наслова.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Подписац ше",

@@ -82,8 +82,6 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools 错误请求 ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 时间使用",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|秒}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>开启话题的新方法来了！</strong>本次更新使{{GENDER:|您}}可以使用内联表单添加话题，并通过新的快捷方式向其他用户发送通知。您也可以[$1 切换回旧版]。",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>{{GENDER:|您}}正在使用旧版视图。</strong>您可以[$1 返回新版视图]或在偏好设置中[$2 将旧版视图设置为您的默认界面]。",
 	"discussiontools-newtopic-missing-title": "请为{{GENDER:|您的}}讨论话题提供标题。如果您点击“{{int:discussiontools-replywidget-newtopic}}”，您添加的话题将不含标题。",
 	"discussiontools-newtopic-placeholder-title": "主题",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "订阅",

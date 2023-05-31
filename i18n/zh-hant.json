@@ -58,8 +58,6 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools 錯誤請求 ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 時間使用",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|秒}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>開啟話題的新方法來了！</strong>本次更新使您可以使用行內表單新增話題，並透過新的捷徑向其他使用者傳送通知。您也可以[$1 切換回舊版]。",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>您正在使用舊版視圖。</strong>您可以[$1 返回新版視圖]或在偏好設定中[$2 將舊版視圖設定為您的預設介面]。",
 	"discussiontools-newtopic-missing-title": "請為您的討論話題提供一個標題，如果您點擊「{{int:discussiontools-replywidget-newtopic}}」，將加入您不帶標題的話題。",
 	"discussiontools-newtopic-placeholder-title": "主旨",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "訂閱",

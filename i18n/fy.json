@@ -47,8 +47,6 @@
 	"discussiontools-limitreport-errorreqid": "Oanfraach-ID fan 'e Diskusje-arkflater",
 	"discussiontools-limitreport-timeusage": "Tiidgebrûk fan it Diskusje-ark",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekonde|sekonden}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Der is in nije manier om ûnderwerpen te begjinnen.</strong> Dizze nije ferzje lit jo ûnderwerpen taheakje mei in formulier binnen de tekst, en oaren 'pinge' mei in nije fluchtoets. Jo kinne ek [$1 werom nei de âlde bewende rûtine].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Hjir hawwe jo de âlde bewende rûtine.</strong> Jo kinne [$1 werom nei de nije praktyk], of yn 'e foarkarren de [$2 âlde rûtine as jo standert ynstelle].",
 	"discussiontools-newtopic-missing-title": "Jou a.j.w. in titel op foar jo oerlisûnderwerp. At jo op \"{{int:discussiontools-replywidget-newtopic}}\" klikke, wurdt jo ûnderwerp sûnder titel taheakke.",
 	"discussiontools-newtopic-placeholder-title": "Underwerp",
 	"discussiontools-notification-removed-topic-body": "Jo krije faaks gjin meldingen mear oer {{PLURAL:$1|dit ûnderwerp|dizze ûnderwerpen}}.",

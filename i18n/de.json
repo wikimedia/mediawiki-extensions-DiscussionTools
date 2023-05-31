@@ -65,8 +65,6 @@
 	"discussiontools-limitreport-errorreqid": "Diskussions-Werkzeuge-Fehler Anfrage-ID",
 	"discussiontools-limitreport-timeusage": "Zeitverbrauch der Diskussions-Werkzeuge",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|Sekunde|Sekunden}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Eine neue Art, Diskussionen zu beginnen, ist da.</strong> Diese Aktualisierung ermöglicht es dir, Diskussionen über ein Formular direkt auf der Seite hinzuzufügen und andere mit einem neuen Schnellzugriff anzupingen. Du kannst auch [$1 zurück zur alten Funktionalität wechseln].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Du siehst jetzt die alte Oberfläche.</strong> Du kannst [$1 zur neuen Oberfläche zurückkehren] oder die Einstellungen aufrufen, um [$2 die alte Oberfläche als Standard einzustellen].",
 	"discussiontools-newtopic-missing-title": "Bitte gib einen Titel für dein Diskussionsthema an. Wenn du auf „{{int:discussiontools-replywidget-newtopic}}“ klickst, wird dein Abschnitt ohne Titel hinzugefügt.",
 	"discussiontools-newtopic-placeholder-title": "Betreff",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abonnieren",

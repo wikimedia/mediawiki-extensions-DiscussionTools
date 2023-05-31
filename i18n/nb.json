@@ -56,8 +56,6 @@
 	"discussiontools-limitreport-errorreqid": "Forespørsels-feil-ID for diskusjonsverktøyet",
 	"discussiontools-limitreport-timeusage": "Tidsbruk for diskusjonsverktøy",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Det er kommet en ny måte å opprette emner på.</strong> Denne oppdateringen gjør det mulig å legge til emner med et skjema i løpende tekst og varsle andre med en snarvei. Det er også mulig å [$1 velge bort disse funksjonene].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Dette er den klassiske opplevelsen.</strong> {{GENDER:|Du}} kan [$1 gå tilbake til den nye opplevelsen] eller [$2 sette den klassiske opplevelsen som standard] i innstillingene.",
 	"discussiontools-newtopic-missing-title": "Angi en tittel for diskusjonen. Hvis {{GENDER:|du}} trykker på «{{int:discussiontools-replywidget-newtopic}}» blir emnet lagt til uten tittel.",
 	"discussiontools-newtopic-placeholder-title": "Emne",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abonner",

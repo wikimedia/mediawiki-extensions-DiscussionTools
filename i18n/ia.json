@@ -54,8 +54,6 @@
 	"discussiontools-limitreport-errorreqid": "ID del requesta del error de DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Uso de tempore de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secunda|secundas}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Un nove maniera de comenciar topicos ha arrivate.</strong> Iste actualisation te permitte adder topicos usante un formulario incorporate e notificar altere usatores con un nove accesso directe. Alternativemente, tu pote [$1 retornar al systema precedente].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Tu usa ora le systema ancian.</strong> Tu pote [$1 retornar al systema nove] o visitar le preferentias pro [$2 eliger le systema ancian como predefinite].",
 	"discussiontools-newtopic-missing-title": "Per favor forni un titulo pro tu topico de discussion. Si tu clicca sur \"{{int:discussiontools-replywidget-newtopic}}\", tu topico essera addite sin titulo.",
 	"discussiontools-newtopic-placeholder-title": "Subjecto",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abonar me",

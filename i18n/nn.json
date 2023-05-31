@@ -48,8 +48,6 @@
 	"discussiontools-limitreport-errorreqid": "Diskusjonsverktøy spørjingsfeil-ID",
 	"discussiontools-limitreport-timeusage": "Tidsbruk Diskusjonsverktøy",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Det er kome ein ny måte å oppretta emne på</strong>. Denne oppdateringa gjer det mogleg å legga til emne med eit skjema i løpande tekst og varsle andre med ein snarveg. Det er òg mogleg å [$1 velja bort desse funksjonane].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Dette er den klassiske opplevinga</strong>. Du kan [$1 gå tilbake til den nye opplevinga] eller [$2 stille inn den klassiske opplevinga som standard] under instillingar.",
 	"discussiontools-newtopic-missing-title": "Oppgje ein tittel for diskusjonen. Viss du trykker på «{{int:discussiontools-replywidget-newtopic}}» blir emnet lagt til utan tittel.",
 	"discussiontools-newtopic-placeholder-title": "Emne",
 	"discussiontools-notification-removed-topic-body": "Du vil ikkje lenger få varsel om {{PLURAL:$1|dette emna|desse emna}}.",

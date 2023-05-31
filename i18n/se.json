@@ -13,6 +13,8 @@
 	"discussiontools-findcomment-noresults": "Eai bohtosat",
 	"discussiontools-findcomment-title": "Oza kommeantta",
 	"discussiontools-ledesection-button": "Lassedieđut dán siiddu birra",
+	"discussiontools-limitreport-timeusage": "DiscussionTools-áigegeavaheapmi",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundda}}",
 	"discussiontools-newtopic-placeholder-title": "Fáddá",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Diŋgo",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Heaitte diŋgomis",

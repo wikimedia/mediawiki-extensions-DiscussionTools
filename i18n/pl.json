@@ -60,8 +60,6 @@
 	"discussiontools-limitreport-errorreqid": "ID błędu DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Czas pracy (DiscussionTools)",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundy|sekund}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Oto nowy sposób zakładania nowych wątków.</strong> Ta zmiana umożliwia dodawanie wątków poprzez bezpośrednio umiejscowiony formularz a także łatwe wywoływanie innych użytkowników za pomocą nowego skrótu. Możesz też [$1 przełączyć się z powrotem na starą metodę].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Widzisz teraz stary widok.</strong> Możesz [$1 przywrócić nowy sposób] lub odwiedzić stronę ustawień aby [$2 ustawić korzystanie ze starego sposobu jako domyślny].",
 	"discussiontools-newtopic-missing-title": "Nie podano tytułu wątku. Jeśli klikniesz „{{int:discussiontools-replywidget-newtopic}}”, twój komentarz zostanie dodany bez tytułu.",
 	"discussiontools-newtopic-placeholder-title": "Tytuł",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Subskrybuj",

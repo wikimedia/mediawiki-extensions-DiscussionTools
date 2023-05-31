@@ -52,8 +52,6 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools klaidos užklausos ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools laiko naudojimas",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekundė|sekundės}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Tai naujas būdas pradėti temas.</strong> Šis atnaujinimas jums suteikia galimybę įrašyti temą įterpiant į tekstą bei įtraukti kitus naudotojus. Jei pageidaujate, galite [$1 grįžti prie senos aptarimų formos].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>{{GENDER:|Jūs}} dabar žiūrite seną versiją.</strong> Galite [$1 grįžti į naują versiją] arba apsilankyti nustatymuose ir [$2 nustatyti seną versiją kaip numatytąją].",
 	"discussiontools-newtopic-missing-title": "Nurodykite {{GENDER:|savo}} aptarimo temos pavadinimą. Jei paspausite „{{int:discussiontools-replywidget-newtopic}}“, nauja tema bus pridėta be pavadinimo.",
 	"discussiontools-newtopic-placeholder-title": "Antraštė",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Prenumeruoti",

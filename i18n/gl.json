@@ -26,7 +26,6 @@
 	"discussiontools-findcomment-label-search": "Procurar",
 	"discussiontools-findcomment-noresults": "Non hai resultados.",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|segundo|segundos}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Presentamos a nova forma de comezar fíos de conversa.</strong> Esta actualización permítelle engadir fíos mediante un formulario en liña e notificar a outras persoas cun novo atallo. Tamén pode [$1 regresar á experiencia antiga].",
 	"discussiontools-newtopic-missing-title": "Proporcione un título para o teu fío de conversa. Se fai clic en \"{{int:discussiontools-replywidget-newtopic}}\", o seu fío engadirase sen título.",
 	"discussiontools-newtopic-placeholder-title": "Asunto",
 	"discussiontools-notification-subscribed-new-comment-view": "Amosar o comentario",

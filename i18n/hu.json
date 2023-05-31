@@ -55,8 +55,6 @@
 	"discussiontools-findcomment-title": "Hozzászólás keresése",
 	"discussiontools-ledesection-title": "Erről a vitalapról",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|másodperc}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Itt az új megbeszélések indításának új módja.</strong> Ez a frissítés lehetővé teszi új megbeszélések indítását a lap újratöltése nélkül és más szerkesztők megpingelését egy új gyorsbillentyűvel. Lehetőség van [$1 a régi verzióhoz való visszatérésre] is.",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Most a régi újmegbeszélés-eszközt használod.</strong> Lehetőséged van az [$1 új eszközhöz való visszatérésre] vagy a beállításaid meglátogatására [$2 a régi eszköz alapértelmezetté tételéhez].",
 	"discussiontools-newtopic-missing-title": "Add meg a témád címét. A „{{int:discussiontools-replywidget-newtopic}}” gombra kattintva a téma cím nélkül lesz hozzáadva.",
 	"discussiontools-newtopic-placeholder-title": "Tárgy",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Feliratkozás",

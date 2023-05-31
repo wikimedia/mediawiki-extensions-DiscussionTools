@@ -48,8 +48,6 @@
 	"discussiontools-ledesection-button": "Vidi više o ovoj stranici",
 	"discussiontools-ledesection-title": "O ovoj stranici za razgovor",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekunde|sekundi}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Ovo je novi način pokretanja tema.</strong> Ova nadogradnja omogućuje Vam dodavanje tema uz pomoć obrasca i pozivanje drugih uz \n pomoć novog prečaca. Možete se [$1 vratiti i na stari način].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Sada radite na stari način.</strong> Možete se [$1 vratiti na novi način] ili otići u postavke i [$2 postaviti stari način kao zadani].",
 	"discussiontools-newtopic-missing-title": "Molimo Vas dodajte naslov teme. Kliknete li na »{{int:discussiontools-replywidget-newtopic}}«, tema će biti dodana bez naslova.",
 	"discussiontools-newtopic-placeholder-title": "Tema",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Pretplati se",

@@ -50,8 +50,6 @@
 	"discussiontools-limitreport-errorreqid": "Anaouder reked fazi DiscussionTools",
 	"discussiontools-limitreport-timeusage": "implij amzer DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|eilenn}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Un doare nevez zo bremañ da voulc’hañ ar c’haozeadennoù.</strong> Gant an doare nevez-mañ e c’hellit ouzhpennañ rannbennadoù gant ur furmskrid enlinenn ha menegiñ re all gant ur berrdroc’h nevez. Gallout a rit [$1 mont en-dro d’an doare kozh] ivez.",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Emaoc’h oc’h ober gant an doare kozh.</strong> Gallout a rit [$1 mont en-dro d’an doare nevez] pe mont d’ho penndibaboù ha [$2 dibab an doare kozh dre ziouer].",
 	"discussiontools-newtopic-missing-title": "Roit un titl d’ho rannbennad mar plij. Ma klikit \"{{int:discussiontools-replywidget-newtopic}}\" e vo ouzhpennet ho rannbennad hep titl.",
 	"discussiontools-newtopic-placeholder-title": "Danvez",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Koumanantiñ",

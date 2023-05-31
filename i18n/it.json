@@ -56,8 +56,6 @@
 	"discussiontools-ledesection-button": "Ulteriori informazioni su questa pagina",
 	"discussiontools-ledesection-title": "A proposito di questa pagina di discussione",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secondo|secondi}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>È arrivato un nuovo modo per iniziare le discussioni.</strong> Questo aggiornamento consente di aggiungere argomenti utilizzando un modulo in linea e di eseguire menzioni di altri utenti con una nuova scorciatoia. {{GENDER:|Puoi}} ancora [$1 tornare indietro all'esperienza precedente].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>{{GENDER:|Stai}} visualizzando l'esperienza precedente.</strong> Puoi [$1 ritornare alla nuova esperienza] o visitare le preferenze per [$2 impostare l'esperienza precedente come predefinita].",
 	"discussiontools-newtopic-missing-title": "Per favore, {{GENDER:|dai}} un titolo all'argomento di cui desideri discutere. Se clicchi ora su \"{{int:discussiontools-replywidget-newtopic}}\", la discussione sarà creata senza titolo.",
 	"discussiontools-newtopic-placeholder-title": "Oggetto",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Iscriviti",

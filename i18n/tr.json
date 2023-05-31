@@ -74,8 +74,6 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools hata isteği kimliği",
 	"discussiontools-limitreport-timeusage": "DiscussionTools zaman kullanımı",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|saniye}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Tartışma başlatma bölümü yenilendi.</strong> Bu güncelleme, satır içinde yer alan bir kutucuğu kullanarak konu eklemenizi ve yeni bir kısayol ile farklı kullanıcılara ping (seslenme) göndermenizi destekler. Önceki versiyona geri dönmek için [$1 {{GENDER:|tıklayın}}].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Artık eski deneyimi görüntülüyorsunuz.</strong> [$1 Yeni deneyime dönebilir] veya tercihleriniz üzerinden [$2 eski deneyimi varsayılan olarak {{GENDER:|ayarlayabilirsiniz}}].",
 	"discussiontools-newtopic-missing-title": "Lütfen tartışma konunuz için bir başlık girin. \"{{int:discussiontools-replywidget-newtopic}}\" düğmesine {{GENDER:|tıklarsanız}}, konunuz başlık olmadan eklenecektir.",
 	"discussiontools-newtopic-placeholder-title": "Konu",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abone ol",

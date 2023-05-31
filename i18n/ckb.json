@@ -47,8 +47,6 @@
 	"discussiontools-ledesection-title": "سەبارەت بەم پەڕەی وتووێژە",
 	"discussiontools-limitreport-errorreqid": "ناسنامەی داواکاریی ھەڵەی ئامرازەکانی وتووێژ",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|چرکە}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>ئێرە ڕێگەیەکی نوێیە تا دەست بە بابەتەکان بکەیت.</strong> ئەم نوێکردنەوەیە توانات دەداتێ تا بابەتە نوێیەکان بە بەکارھێنانی فۆڕمێکی ناوھێڵ زیاد بکەیت و بە قەدبڕێکی نوێش بانگی ئەوانی تر بکەیت. دەشتوانیت [$1 بۆ ئەزموونە کۆنەکە بگەڕێیتەوە].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>ئێستا تۆ ئەزموونە کۆنەکە دەبینیت.</strong> دەتوانیت [$1 بۆ ئەزموونە نوێیەکە بگەڕێیتەوە] یان سەردانی ھەڵبژاردەکانت بکە تا [$2 ئەزموونە کۆنەکە بکەیتە بنچینەیی].",
 	"discussiontools-newtopic-missing-title": "تکایە ناونیشانێک بۆ بابەتی وتووێژەکەت دابین بکە. ئەگەر کرتە لە «{{int:discussiontools-replywidget-newtopic}}» بکەیت، ئەوا بابەتەکەت بەبێ ناونیشان زیاد دەکرێت.",
 	"discussiontools-newtopic-placeholder-title": "بابەت",
 	"discussiontools-notification-removed-topic-header": "بابەتی «<strong>$4</strong>» ئەرشیڤ کراوە یانیش لە $3 لابراوە.",

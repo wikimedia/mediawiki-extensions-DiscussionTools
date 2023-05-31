@@ -41,8 +41,6 @@
 	"discussiontools-limitreport-errorreqid": "Obiọ ID tọn he ma sọgbe na DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Whènu zinzan to DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|nukunwhiwhe|nukunwhiwhe lẹ}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Aliho yọyọ dé nado bẹ hosọ lẹ jẹeji die.</strong> Vọjlado ehe na gọalọna we nado gọ́ hosọ lẹ na gbọn zinzan ohia nukinkan tọn lẹ bo sọ dọn aidonugo mẹdevo lẹ tọn dó aliho yọyọ he bọawu he tin go. A sọgan sọ [$1 lẹkọ do aliho he mẹ e te dai].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Aliho he mẹ e tin te dai wẹ a to pinpọn.</strong> A sọgan [$1 lẹkọ do lehe e tin te todin] kavi yì nujlomẹ lẹ mẹ nado [$2 jlaẹ do lehe a jlo dọ ni nọ].",
 	"discussiontools-newtopic-missing-title": "Jaale wleawuna hosọ dè na hodọdopọ towe. E yin a zin\"{{int:discussiontools-replywidget-newtopic}}\", hodọdopọ towe na yin yiyi dogọ ṣigba é ma na dó hosọ.",
 	"discussiontools-newtopic-placeholder-title": "Hosọ",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|na gblọndo}} to \"<strong>$4</strong>\".",

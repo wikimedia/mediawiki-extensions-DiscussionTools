@@ -76,8 +76,6 @@
 	"discussiontools-limitreport-errorreqid": "ID запроса с ошибкой в DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Время использования DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунды|секунд}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Новый способ создания тем.</strong> Это обновление {{GENDER:|позволяет}} добавлять темы через форму и уведомлять других людей в обсуждениях (через сокращение @). При желании вы можете [$1 вернуться к прежней версии].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>Теперь {{GENDER:|вы}} видите устаревший интерфейс.</strong> Вы можете [$1 вернуться к новому интерфейсу] или посетить настройки, чтобы [$2 установить себе устаревший интерфейс по умолчанию].",
 	"discussiontools-newtopic-missing-title": "Пожалуйста, введите заголовок для {{GENDER:|своей}} темы обсуждения. Если вы нажмёте на «{{int:discussiontools-replywidget-newtopic}}», тема будет добавлена без заголовка.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Подписаться",

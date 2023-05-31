@@ -50,8 +50,6 @@
 	"discussiontools-limitreport-errorreqid": "گفتگوجااوزار چڪ رڪئيسٽ آئڊي",
 	"discussiontools-limitreport-timeusage": "گفتگوجااوزار وقت جو استعمال",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|سيڪنڊ|سيڪنڊَ}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>ھتي موضوع شروع ڪرڻ جو نئون طريقو آهي.</strong> ھي تجديد {{GENDER:|توھان}} کي اِنلائين فارم ٻين کي پنگ ڪرڻ جو نئون شارٽ ڪٽ استعمال ڪندي موضوع شامل ڪرڻ جي قابل بڻائي ٿي. توھان [$1 واپس ليگيسي تجربي ڏانھن پڻ وڃي] سگهو ٿا.",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>ھاڻي {{GENDER:|توھان}} ليگيسي تجربو ڏسي رھيا آھيو.</strong> توھان [$1 نئين تجربي ڏانھن وري سگهو ٿا] يا [$2 ليگيسي تجربي کي پنھنجو ڊفالٽ مرتب ڪرڻ لاءِ] ترجيحن ڏانهن وڃو.",
 	"discussiontools-newtopic-missing-title": "{{GENDER:|پنھنجي}} گفتگو لاءِ لازمي ڪو عنوان ڏيو. جيڪڏهن توھان {{int:discussiontools-replywidget-newtopic}}\" کي ڪلڪ ڪندئو، تہ توھان جو موضوع بغير عنوان جي وڌو ويندو.",
 	"discussiontools-newtopic-placeholder-title": "موضوع",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "سبسڪرائب ڪريو",

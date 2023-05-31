@@ -52,8 +52,6 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools balaa oyshaa IDiyaa",
 	"discussiontools-limitreport-timeusage": "DiscussionTools wodiyaa go\"ettaa",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekonddiyaa|sekonddeta}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>huuphe yohuwaabaa doommiyo ogee hagaana. </strong> ha ooraxissuwaa huuphe yohuwaa giddo yafaran qitsiyaa wottiyooganinne haraata qanxxo ogiyan oottana mala danddayissees. {{GENDER:|Neeni}} ha'ikka [$1 ashuuraa meeziyaassi zaranawu] danddayaasa.",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>ha'i {{GENDER:|neeni}} ashuuraa meeziyaa be'aydda daasa.</strong> Neeni[$1 ooratta meeziyaakko zaaranawu] woykko doorota xomoosanawu [$2 kase meeziyaa de'iyaagaatto giigissa].",
 	"discussiontools-newtopic-missing-title": "Hayyanaa tobbiyaassi {{GENDER:|ne}} huuphe yohuwaa imma. Neeni hagaa caddiyoode \"{{int:discussiontools-replywidget-newtopic}}\" ne huuphe yohoy, huuphe yohoy baynnan gujettees.",
 	"discussiontools-newtopic-placeholder-title": "Allaaliyaa",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Xaafetta",

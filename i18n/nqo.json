@@ -45,8 +45,6 @@
 	"discussiontools-limitreport-errorreqid": "ߘߊߘߐߖߊߥߏ߫ ߖߐ߯ߙߊ߲ ID ߡߊߢߌ߬ߣߌ߲߬ߞߊ ߝߎ߬ߕߎ߲߬ߕߌ",
 	"discussiontools-limitreport-timeusage": "ߘߊߘߐߖߊߥߏߖߐ߯ߙߊ߲ ߟߊߓߊ߯ߙߊ߫ ߕߎߡߊ",
 	"discussiontools-limitreport-timeusage-value": "{{PLURAL:|ߝߌ߬ߟߊ߲ $1|ߝߌ߬ߟߊ߲߫ $1 ߟߎ߫}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>ߛߌߟߊ߫ ߞߎߘߊ ߡߍ߲ ߦߋ߫ ߦߋ߲߬ ߞߊ߬ ߢߌߣߌ߲ߞߏ ߘߊߡߌ߬ߣߊ߬߸ ߏ߬ ߦߋ߫ ߦߊ߲߬ ߠߋ߬.</strong> ߟߊ߬ߞߎ߬ߘߦߊ߬ߟߌ ߏ߬ ߦߴߊ߬ ߕߏ߫ ߟߊ߫ ߟߋ߬ {{GENDER:|ߌ}} ߦߋ߫ ߛߋ߫ ߢߌߣߌ߲ߝߋ߲ ߝߙߊ߬ ߟߊ߫ ߜߊ߲߬ߞߎ߲߬ߠߌ߲ ߖߙߎߡߎ߲ ߘߐ߫ ߊ߬ ߞߊ߬ ߘߏ ߟߎ߬ ߖߊ߲߬ߓߌ߬ߟߊ߬ ߛߌߟߊߛߎߘߎ߲ ߘߏ߫ ߝߍ߬. ߌ ߘߌ߫ ߛߋ߫ ߝߣߊ߫ ߞߊ߬ [$1 ߌ ߞߐߛߊ߬ߦߌ߫ ߝߊ߰ߡߎ߲߬ߠߌ߲߫ ߞߘߐ߬ߡߊ߲ ߡߊ߬]",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>{{GENDER:|ߌ}} ߦߴߊ߬ ߦߋ ߞߊ߲߬ ߝߊ߰ߡߎ߲߬ߠߌ߲ ߞߘߐ߬ߡߊ߲ ߠߋ߬ ߟߊ߫.</strong> ߌ ߘߌ߫ ߛߋ߫ [$1 ߌ ߞߐߛߊ߬ߦߌ߫ ߟߊ߫ ߝߊ߰ߡߎ߲߬ߠߌ߲߫ ߞߎߘߊ ߡߊ߬ ߝߣߊ߫] ߥߟߊ߫ ߌ ߦߴߌ ߞߐߛߊ߬ߦߌ߫ ߦߟߌߡߊߛߙߋ ߟߎ߬ ߡߊ߬ ߞߊ߬ [$2 ߊ߬ ߓߌ߬ߟߊ߬ ߝߊ߰ߡߎ߲߬ߠߌ߲߫ ߞߘߐ߬ߡߊ߲ ߠߊ߫ ߌ ߟߊ߫ ߓߐߛߎ߲ ߘߌ߫].",
 	"discussiontools-newtopic-missing-title": "ߞߎ߲߬ߕߐ߮ ߘߏ߫ ߡߊߛߐ߫ {{GENDER:|ߌ}} ߟߊ߫ ߘߊߘߐߖߊߥߏ ߢߌߣߌ߲ߞߏ ߟߊ߫. ߣߴߌ ߞߊ߬ \"{{int:discussiontools-replywidget-newtopic}}\" ߛߐ߲߬ߞߌ߲߫߸ ߌ ߟߊ߫ ߢߌߣߌ߲ߞߏ ߘߌ߫ ߟߊߥߊ߲߬ߞߊ߫ ߞߎ߲߬ߕߐ߰ ߕߊ߲ߧߊ ߘߐ߫.",
 	"discussiontools-newtopic-placeholder-title": "ߢߌߣߌ߲ߞߏ",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "ߊ߬ ߡߊߝߘߎ߫",

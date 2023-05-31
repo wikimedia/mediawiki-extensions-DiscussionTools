@@ -71,8 +71,6 @@
 	"discussiontools-limitreport-errorreqid": "Identifiant de requête de l’erreur des Outils de discussion",
 	"discussiontools-limitreport-timeusage": "Utilisation du temps des Outils de discussion",
 	"discussiontools-limitreport-timeusage-value": "$1 seconde{{PLURAL:$1||s}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>Une nouvelle manière de démarrer des sujets se trouve ici.</strong> Cette mise à jour {{GENDER:|}}vous permet d’ajouter des sujets en utilisant un formulaire en ligne et de notifier les autres avec un nouveau raccourci. Vous pouvez aussi [$1 revenir à l’ancienne expérience].",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>{{GENDER:|}}Vous regardez actuellement avec l’ancienne expérience.</strong> Vous pouvez [$1 revenir à la nouvelle expérience] ou aller dans les préférences pour [$2 définir l’expérience historique par défaut].",
 	"discussiontools-newtopic-missing-title": "{{GENDER:|}}Veuillez fournir un titre pour votre sujet de discussion. Si vous cliquez sur « {{int:discussiontools-replywidget-newtopic}} », votre sujet sera ajouté sans titre.",
 	"discussiontools-newtopic-placeholder-title": "Sujet",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "S’abonner",

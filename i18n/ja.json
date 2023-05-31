@@ -68,8 +68,6 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools エラー問い合わせ ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 使用時間",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|秒}}",
-	"discussiontools-newtopic-legacy-hint": "<strong>トピックの投稿に新しい方法ができました。</strong>今回の更新により、インラインのフォームを利用して新しい話題の追加ができ、他の利用者に通知する新規のショートカットが使えます。[$1 以前の体験に戻す]ことも可能です。",
-	"discussiontools-newtopic-legacy-hint-return": "<strong>現在、従来型の画面を使用しています。</strong> 個人設定を開いて[$1 新しい画面に切り替える]ことも[$2 従来の画面を既定に設定することもできます]。",
 	"discussiontools-newtopic-missing-title": "話題に題名をつけてください。このまま「{{int:discussiontools-replywidget-newtopic}}」をクリックすると、題名のない話題が追加されます。",
 	"discussiontools-newtopic-placeholder-title": "件名",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "購読",
