@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kahin He"
+			"Kahin He",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "回复",
 	"discussiontools-replylink": "回复",
 	"discussiontools-replywidget-advanced": "高级",
-	"discussiontools-replywidget-cancel": "取消/Chṳ̂-sa̤u",
+	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-mode-source": "代码",
 	"discussiontools-replywidget-mode-visual": "可视化",
 	"discussiontools-replywidget-placeholder-reply": "回复{{BIDI:$1}}",

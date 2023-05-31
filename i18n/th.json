@@ -24,6 +24,8 @@
 	"discussiontools-error-noswitchtove-table": "รูปแบบของตาราง",
 	"discussiontools-error-noswitchtove-template": "รูปแบบของแม่แบบ",
 	"discussiontools-notification-subscribed-new-comment-view": "ดูความเห็น",
+	"discussiontools-postedit-confirmation-published": "ความคิดเห็นของคุณได้เผยแพร่แล้ว",
+	"discussiontools-postedit-confirmation-topicadded": "เพิ่มหัวข้อของคุณแล้ว",
 	"discussiontools-preference-label": "เครื่องมือช่วยเหลือการอภิปราย",
 	"discussiontools-preference-replytool": "เปิดใช้การตอบกลับอย่างรวดเร็ว",
 	"discussiontools-replylink": "ตอบกลับ",
