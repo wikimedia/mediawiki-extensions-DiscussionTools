@@ -213,10 +213,12 @@ class HookUtils {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
+		$userNameUtils = $services->getUserNameUtils();
 		if (
 			( $feature === static::TOPICSUBSCRIPTION || $feature === static::AUTOTOPICSUB ) &&
 			// Users must be logged in to use topic subscription, and Echo must be installed (T322498)
-			( !$user->isRegistered() || !ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) )
+			( !$user->isRegistered() || $userNameUtils->isTemp( $user->getName() ) ||
+				!ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) )
 		) {
 			return false;
 		}
@@ -458,7 +460,7 @@ class HookUtils {
 				$feature === static::SOURCEMODETOOLBAR ||
 				// Even though mobile ignores user preferences, TOPICSUBSCRIPTION must
 				// still be disabled if the user isn't registered.
-				( $feature === static::TOPICSUBSCRIPTION && $output->getUser()->isRegistered() ) ||
+				( $feature === static::TOPICSUBSCRIPTION && $output->getUser()->isNamed() ) ||
 				$feature === static::VISUALENHANCEMENTS ||
 				$feature === static::VISUALENHANCEMENTS_REPLY ||
 				$feature === static::VISUALENHANCEMENTS_PAGEFRAME;

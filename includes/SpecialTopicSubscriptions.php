@@ -26,7 +26,7 @@ class SpecialTopicSubscriptions extends SpecialPage {
 	 * @throws ErrorPageError
 	 */
 	public function execute( $subpage ) {
-		$this->requireLogin();
+		$this->requireNamedUser();
 
 		parent::execute( $subpage );
 

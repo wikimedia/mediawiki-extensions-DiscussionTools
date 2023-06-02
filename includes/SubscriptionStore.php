@@ -7,6 +7,7 @@ use ConfigFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserNameUtils;
 use ReadOnlyMode;
 use stdClass;
 use TitleValue;
@@ -28,17 +29,20 @@ class SubscriptionStore {
 	private IConnectionProvider $dbProvider;
 	private ReadOnlyMode $readOnlyMode;
 	private UserFactory $userFactory;
+	private UserNameUtils $userNameUtils;
 
 	public function __construct(
 		ConfigFactory $configFactory,
 		IConnectionProvider $dbProvider,
 		ReadOnlyMode $readOnlyMode,
-		UserFactory $userFactory
+		UserFactory $userFactory,
+		UserNameUtils $userNameUtils
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->dbProvider = $dbProvider;
 		$this->readOnlyMode = $readOnlyMode;
 		$this->userFactory = $userFactory;
+		$this->userNameUtils = $userNameUtils;
 	}
 
 	/**
@@ -98,7 +102,7 @@ class SubscriptionStore {
 		array $options = []
 	): array {
 		// Only a registered user can be subscribed
-		if ( !$user->isRegistered() ) {
+		if ( !$user->isRegistered() || $this->userNameUtils->isTemp( $user->getName() ) ) {
 			return [];
 		}
 
@@ -207,7 +211,7 @@ class SubscriptionStore {
 			return false;
 		}
 		// Only a registered user can subscribe
-		if ( !$user->isRegistered() ) {
+		if ( !$user->isRegistered() || $this->userNameUtils->isTemp( $user->getName() ) ) {
 			return false;
 		}
 		$dbw = $this->dbProvider->getPrimaryDatabase();
@@ -244,7 +248,7 @@ class SubscriptionStore {
 			return false;
 		}
 		// Only a registered user can subscribe
-		if ( !$user->isRegistered() ) {
+		if ( !$user->isRegistered() || $this->userNameUtils->isTemp( $user->getName() ) ) {
 			return false;
 		}
 		$dbw = $this->dbProvider->getPrimaryDatabase();
