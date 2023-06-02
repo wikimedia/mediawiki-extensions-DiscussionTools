@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use FormatJson;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use ParserOutput;
 use Title;
@@ -27,9 +28,9 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$data = static::getJson( $data );
 
 		$this->setupEnv( $config, $data );
-		$this->setMwGlobals( [
-			'wgScriptPath' => '/w',
-			'wgScript' => '/w/index.php',
+		$this->overrideConfigValues( [
+			MainConfigNames::ScriptPath => '/w',
+			MainConfigNames::Script => '/w/index.php',
 		] );
 		$title = Title::newFromText( $title );
 		MockCommentFormatter::$parser = static::createParser( $data );

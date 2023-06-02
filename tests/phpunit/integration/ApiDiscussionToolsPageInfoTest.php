@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use ApiTestCase;
 use MediaWiki\Extension\DiscussionTools\ApiDiscussionToolsPageInfo;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\TestingAccessWrapper;
 
@@ -23,15 +24,16 @@ class ApiDiscussionToolsPageInfoTest extends ApiTestCase {
 	 * @param array $data
 	 */
 	protected function setupEnv( array $config, array $data ): void {
-		$this->setMwGlobals( [
-			'wgNamespaceAliases' => $config['wgNamespaceIds'],
-			'wgMetaNamespace' => strtr( $config['wgFormattedNamespaces'][NS_PROJECT], ' ', '_' ),
-			'wgMetaNamespaceTalk' => strtr( $config['wgFormattedNamespaces'][NS_PROJECT_TALK], ' ', '_' ),
+		$this->overrideConfigValues( [
+			MainConfigNames::NamespaceAliases => $config['wgNamespaceIds'],
+			MainConfigNames::MetaNamespace => strtr( $config['wgFormattedNamespaces'][NS_PROJECT], ' ', '_' ),
+			MainConfigNames::MetaNamespaceTalk =>
+				strtr( $config['wgFormattedNamespaces'][NS_PROJECT_TALK], ' ', '_' ),
 			// TODO: Move this to $config
-			'wgLocaltimezone' => $data['localTimezone'],
+			MainConfigNames::Localtimezone => $data['localTimezone'],
 			// Data used for the tests assumes there are no variants for English.
 			// Language variants are tested using other languages.
-			'wgUsePigLatinVariant' => false,
+			MainConfigNames::UsePigLatinVariant => false,
 		] + $config );
 		$this->setUserLang( $config['wgContentLanguage'] );
 		$this->setContentLang( $config['wgContentLanguage'] );
