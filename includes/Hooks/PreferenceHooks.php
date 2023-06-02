@@ -239,6 +239,11 @@ class PreferenceHooks implements
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onLocalUserCreated( $user, $autocreated ) {
+		if ( $user->isTemp() ) {
+			// Temp users can't have preferences (and we don't let them have topic subscriptions anyway)
+			return;
+		}
+
 		if ( !$autocreated ) {
 			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
 			// We want new users to be created with email-subscriptions to our notifications enabled
