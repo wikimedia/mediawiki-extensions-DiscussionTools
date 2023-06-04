@@ -184,6 +184,7 @@ class CommentParser {
 	): string {
 		$formatLength = strlen( $format );
 		$s = '';
+		$raw = false;
 		// Adapted from Language::sprintfDate()
 		for ( $p = 0; $p < $formatLength; $p++ ) {
 			$num = false;
@@ -203,6 +204,9 @@ class CommentParser {
 					$s .= static::regexpAlternateGroup(
 						$this->getMessages( $contLangVariant, Language::MONTH_GENITIVE_MESSAGES )
 					);
+					break;
+				case 'xn':
+					$raw = true;
 					break;
 				case 'd':
 					$num = '2';
@@ -230,6 +234,9 @@ class CommentParser {
 						$this->getMessages( $contLangVariant, Language::MONTH_ABBREVIATED_MESSAGES )
 					);
 					break;
+				case 'm':
+					$num = '2';
+					break;
 				case 'n':
 					$num = '1,2';
 					break;
@@ -246,6 +253,9 @@ class CommentParser {
 					$num = '2';
 					break;
 				case 'i':
+					$num = '2';
+					break;
+				case 's':
 					$num = '2';
 					break;
 				case '\\':
@@ -279,7 +289,12 @@ class CommentParser {
 					$p += strlen( $char ) - 1;
 			}
 			if ( $num !== false ) {
-				$s .= '(' . $digitsRegexp . '{' . $num . '})';
+				if ( $raw ) {
+					$s .= '([0-9]{' . $num . '})';
+					$raw = false;
+				} else {
+					$s .= '(' . $digitsRegexp . '{' . $num . '})';
+				}
 			}
 			// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T308448)
 			$s .= '[\\x{200E}\\x{200F}]?';
@@ -334,6 +349,7 @@ class CommentParser {
 
 			switch ( $code ) {
 				case 'xx':
+				case 'xn':
 					break;
 				case 'xg':
 				case 'd':
@@ -342,12 +358,14 @@ class CommentParser {
 				case 'l':
 				case 'F':
 				case 'M':
+				case 'm':
 				case 'n':
 				case 'Y':
 				case 'xkY':
 				case 'G':
 				case 'H':
 				case 'i':
+				case 's':
 					$matchingGroups[] = $code;
 					break;
 				case '\\':
@@ -414,6 +432,7 @@ class CommentParser {
 							$this->getMessages( $contLangVariant, Language::MONTH_ABBREVIATED_MESSAGES )
 						);
 						break;
+					case 'm':
 					case 'n':
 						$monthIdx = intval( $untransformDigits( $text ) ) - 1;
 						break;
@@ -430,6 +449,9 @@ class CommentParser {
 						break;
 					case 'i':
 						$minute = intval( $untransformDigits( $text ) );
+						break;
+					case 's':
+						// Seconds - unused, because most timestamp formats omit them
 						break;
 					default:
 						throw new LogicException( 'Not implemented' );

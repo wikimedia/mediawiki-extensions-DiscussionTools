@@ -96,6 +96,7 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 	var parser = this;
 
 	var s = '';
+	var raw = false;
 	// Adapted from Language::sprintfDate()
 	for ( var p = 0; p < format.length; p++ ) {
 		var num = false;
@@ -117,6 +118,9 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 					'july-gen', 'august-gen', 'september-gen', 'october-gen', 'november-gen',
 					'december-gen'
 				] ) );
+				break;
+			case 'xn':
+				raw = true;
 				break;
 			case 'd':
 				num = '2';
@@ -148,6 +152,9 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 					'sep', 'oct', 'nov', 'dec'
 				] ) );
 				break;
+			case 'm':
+				num = '2';
+				break;
 			case 'n':
 				num = '1,2';
 				break;
@@ -164,6 +171,9 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				num = '2';
 				break;
 			case 'i':
+				num = '2';
+				break;
+			case 's':
 				num = '2';
 				break;
 			case '\\':
@@ -197,7 +207,12 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				p += char.length - 1;
 		}
 		if ( num !== false ) {
-			s += regexpGroup( digitsRegexp + '{' + num + '}' );
+			if ( raw ) {
+				s += regexpGroup( '[0-9]{' + num + '}' );
+				raw = false;
+			} else {
+				s += regexpGroup( digitsRegexp + '{' + num + '}' );
+			}
 		}
 		// Ignore some invisible Unicode characters that often sneak into copy-pasted timestamps (T308448)
 		s += '[\\u200E\\u200F]?';
@@ -237,6 +252,7 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 
 		switch ( code ) {
 			case 'xx':
+			case 'xn':
 				break;
 			case 'xg':
 			case 'd':
@@ -245,12 +261,14 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 			case 'l':
 			case 'F':
 			case 'M':
+			case 'm':
 			case 'n':
 			case 'Y':
 			case 'xkY':
 			case 'G':
 			case 'H':
 			case 'i':
+			case 's':
 				matchingGroups.push( code );
 				break;
 			case '\\':
@@ -340,6 +358,7 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 						'sep', 'oct', 'nov', 'dec'
 					] ).indexOf( text );
 					break;
+				case 'm':
 				case 'n':
 					monthIdx = Number( untransformDigits( text ) ) - 1;
 					break;
@@ -356,6 +375,9 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 					break;
 				case 'i':
 					minute = Number( untransformDigits( text ) );
+					break;
+				case 's':
+					// Seconds - unused, because most timestamp formats omit them
 					break;
 				default:
 					throw new Error( 'Not implemented' );
