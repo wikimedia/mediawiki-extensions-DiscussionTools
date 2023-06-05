@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Han4299"
+			"Han4299",
+			"Bennylin"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Piwali",
 	"discussiontools-replywidget-cancel": "Tanjari",
-	"discussiontools-replywidget-mode-source": "Assalak"
+	"discussiontools-replywidget-mode-source": "Assalak",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-preview": "Riolocinik"
 }

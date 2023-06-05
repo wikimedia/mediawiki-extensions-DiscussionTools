@@ -23,14 +23,19 @@
 	"discussiontools-replywidget-preview": "Sınaq göstərişi",
 	"discussiontools-replywidget-reply": "Cavabla",
 	"discussiontools-replywidget-terms-click": "\"$1\" düyməsinə basaraq, bu vikinin istifadə şərtlərini qəbul edirsiniz.",
+	"discussiontools-replywidget-transcluded": "Şərhiniz [[$1]] səhifəsində yadda saxlanılacaq.",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-error-comment-disappeared": "Səhifədə cavablandırdığınız şərh tapılmadı. Silinmiş və ya başqa bir səhifəyə köçürülmüş ola bilər. Zəhmət olmasa səhifəni yenidən yükləyin və yenidən cəhd edin.",
 	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" keçidi buna şərhə cavab vermək üçün istifadə edilə bilməz. Zəhmət olmasa, cavab vermək üçün \"$1\" düyməsinə klikləyib redaktora keçin.",
 	"discussiontools-error-comment-is-transcluded-title": "\"{{int:discussiontools-replylink}}\" keçidi buna cavab vermək üçün istifadə edilə bilməz çünki o başqa səhifədən yüklənib. Cavab vermək üçün zəhmət olmasa [[$1]] səhifəsinə gedin.",
 	"discussiontools-error-lint": "Bu səhifədəki şərhlərə vikimətndəki xəta səbəbiylə cavab verilə bilməz. Bu xəta haqqında [$1 daha çox öyrənə], [$2 bununla bağlı yardım istəyə] və ya [$3 tam redaktoru açaraq] xətanı düzəldə bilərsiniz.",
 	"tag-discussiontools-description": "DiscussionTools vasitəsilə redaktə edildi",
+	"tag-discussiontools-edit-description": "İstifadəçi DiscussionTools ilə mövcud şərhi redaktə etdi",
+	"tag-discussiontools-newtopic-description": "İstifadəçi DiscussionTools ilə səhifəyə yeni mövzu əlavə etdi",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Cavab]",
 	"tag-discussiontools-reply-description": "DiscussionTools vasitəsilə cavablandırıldı",
 	"tag-discussiontools-source": "Mənbə",
-	"tag-discussiontools-visual": "Vizual"
+	"tag-discussiontools-source-description": "DiscussionTools mənbə rejimində idi",
+	"tag-discussiontools-visual": "Vizual",
+	"tag-discussiontools-visual-description": "DiscussionTools vizual rejimdə idi"
 }

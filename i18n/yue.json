@@ -5,7 +5,10 @@
 			"Deryck Chan",
 			"Hello903hello",
 			"Matma Rex",
-			"Moon0319"
+			"Moon0319",
+			"Al12si",
+			"Ed g2s",
+			"捍粵者"
 		]
 	},
 	"discussiontools": "傾嘢工具",
@@ -28,7 +31,7 @@
 	"tag-discussiontools-edit-description": "用戶用DiscussionTools改咗個現有嘅留言",
 	"tag-discussiontools-newtopic": "加主題",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 回覆]",
-	"tag-discussiontools-reply-description": "用戶用DiscussionTools對一個留言作出回覆",
+	"tag-discussiontools-reply-description": "用戶用DiscussionTools回覆留言",
 	"tag-discussiontools-source": "源碼編輯",
 	"tag-discussiontools-visual": "即見編輯"
 }

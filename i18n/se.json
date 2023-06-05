@@ -11,5 +11,6 @@
 	"discussiontools-replywidget-mode-source": "Gáldokoda",
 	"discussiontools-replywidget-mode-visual": "Visuála",
 	"discussiontools-replywidget-preview": "Ovdačájáhus",
-	"discussiontools-replywidget-reply": "Vástit"
+	"discussiontools-replywidget-reply": "Vástit",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vástádus]"
 }
