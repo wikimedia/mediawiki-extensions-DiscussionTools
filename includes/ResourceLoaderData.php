@@ -11,6 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Config;
 use ExtensionRegistry;
+use MediaWiki\Extension\DiscussionTools\Hooks\HookRunner;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\ResourceLoader as RL;
 use MessageLocalizer;
@@ -84,8 +85,8 @@ class ResourceLoaderData {
 				$context->msg( 'discussiontools-replywidget-newtopic' )->text() ],
 		];
 
-		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
-		$hookContainer->run( 'DiscussionToolsTermsOfUseMessages', [ &$messages, $context, $config ] );
+		$hookRunner = new HookRunner( MediaWikiServices::getInstance()->getHookContainer() );
+		$hookRunner->onDiscussionToolsTermsOfUseMessages( $messages, $context, $config );
 
 		return $messages;
 	}
