@@ -60,6 +60,7 @@ function MWUsernameCompletionAction() {
 		this.localUsers.sort( sortAuthors );
 	}
 	this.remoteUsers = [];
+	this.sequenceAdded = false;
 }
 
 /* Inheritance */
@@ -102,7 +103,17 @@ MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 	}
 	fragment.collapseToEnd().select();
 
+	this.sequenceAdded = true;
+
 	return this.open();
+};
+
+MWUsernameCompletionAction.prototype.getSequenceLength = function () {
+	if ( this.sequenceAdded ) {
+		return this.constructor.static.sequenceLength;
+	}
+	// Parent method
+	return MWUsernameCompletionAction.super.prototype.getSequenceLength.apply( this, arguments );
 };
 
 MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
