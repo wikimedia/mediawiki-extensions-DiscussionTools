@@ -202,10 +202,6 @@ class HookUtils {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
-		if ( !$dtConfig->get( 'DiscussionToolsEnable' ) ) {
-			return false;
-		}
-
 		if (
 			( $feature === static::TOPICSUBSCRIPTION || $feature === static::AUTOTOPICSUB ) &&
 			// Users must be logged in to use topic subscription, and Echo must be installed (T322498)

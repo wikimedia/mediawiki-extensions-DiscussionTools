@@ -151,10 +151,7 @@ class PreferenceHooks implements
 			'type' => 'api',
 		];
 
-		if (
-			!$this->config->get( 'DiscussionToolsEnable' ) ||
-			!$this->config->get( 'DiscussionToolsBeta' )
-		) {
+		if ( !$this->config->get( 'DiscussionToolsBeta' ) ) {
 			// When out of beta, preserve the user preference in case we
 			// bring back the beta feature for a new sub-feature. (T272071)
 			$preferences['discussiontools-betaenable'] = [
@@ -210,10 +207,7 @@ class PreferenceHooks implements
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'discussiontools' );
 
-		if (
-			$dtConfig->get( 'DiscussionToolsEnable' ) &&
-			$dtConfig->get( 'DiscussionToolsBeta' )
-		) {
+		if ( $dtConfig->get( 'DiscussionToolsBeta' ) ) {
 			$preferences['discussiontools-betaenable'] = [
 				'version' => '1.0',
 				'label-message' => 'discussiontools-preference-label',

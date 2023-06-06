@@ -62,7 +62,6 @@
 				{
 					"name": "config.json",
 					"config": {
-						"enable": "DiscussionToolsEnable",
 						"replyIndentation": "DiscussionToolsReplyIndentation",
 						"switchTime": "DiscussionToolsTimestampFormatSwitchTime",
 						"showFeedbackLinks": "DiscussionToolsShowFeedbackLinks"
@@ -537,10 +536,6 @@
 		"discussiontools-visualenhancements": 1
 	},
 	"config": {
-		"DiscussionToolsEnable": {
-			"value": true,
-			"description": "Enable DiscussionTools on talk pages."
-		},
 		"DiscussionToolsBeta": {
 			"value": false,
 			"description": "Make DiscussionTools a BetaFeature."
