@@ -4,16 +4,23 @@
 			"Saraiki"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "ٹھیک ہے، سمجھ گھدے",
 	"discussiontools-defaultsummary-reply": "جواب",
 	"discussiontoolsdebug-pagetitle": "ورقہ عنوان",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|ڳالھ مہاڑ ورقے]] تے {{SITENAME}} تے مواد کوں ممکن حد تائیں بہتر بݨاوݨ کیتے لوک بحث کریندے ہن۔ تساں ایں ورقے تے [[:{{SUBJECTPAGENAME}}]] کوں چنگا بݨاوݨ دے طریقے بارے ٻیاں نال بحث  شروع کر سڳدے ہو۔",
+	"discussiontools-emptystate-button": "بحت شروع کرو",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|ڳالھ مہاڑ ورقے]] تے {{SITENAME}} تے مواد کوں ممکن حد تائیں بہتر بݨاوݨ کیتے لوک بحث کریندے ہن۔ {{GENDER:|تساں}}ایں ورقے تے [[:{{SUBJECTPAGENAME}}]] کوں چنگا بݨاوݨ دے طریقے بارے ٻیاں نال بحث  شروع کر سڳدے ہو۔",
+	"discussiontools-findcomment-label-search": "ڳولو",
+	"discussiontools-findcomment-noresults": "کوئی نتیجہ کائنی۔",
+	"discussiontools-newtopic-placeholder-title": "موضوع",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "سبسکرائب کرو",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "اݨ سبسکرائب کرو",
 	"discussiontools-notification-added-topic-view": "موضوع ݙیکھو",
+	"discussiontools-notification-removed-topic-view": "ورقہ ݙیکھو",
 	"discussiontools-replybutton": "{{GENDER:|جواب}}",
 	"discussiontools-replylink": "{{GENDER:|جواب}}",
 	"discussiontools-replywidget-advanced": "ودھائے",
 	"discussiontools-replywidget-cancel": "منسوخ",
+	"discussiontools-replywidget-loading": "لوڈ تھین٘دا پئے۔۔۔",
 	"discussiontools-replywidget-mode-source": "ماخذ",
 	"discussiontools-replywidget-mode-visual": "بصری",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|نواں}} موضوع",
@@ -27,5 +34,10 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "سبسکرائب کرو",
 	"discussiontools-topicsubscription-button-unsubscribe": "اݨ سبسکرائب کرو",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "اݨ سبسکرائب کرو",
-	"discussiontools-topicsubscription-pager-newtopics-label": "نویں عنوان"
+	"discussiontools-topicsubscription-pager-actions": "عمل",
+	"discussiontools-topicsubscription-pager-newtopics-label": "نویں عنوان",
+	"discussiontools-topicsubscription-pager-notified-never": "کݙاہیں وی کائناں",
+	"discussiontools-topicsubscription-pager-page": "ورقہ",
+	"discussiontools-topicsubscription-pager-topic": "موضوع",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "اݨ سبسکرائب کرو"
 }

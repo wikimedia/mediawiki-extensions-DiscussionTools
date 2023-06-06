@@ -27,7 +27,7 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "jiondoe",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Jiondoe",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Utapokea arifa kuhusu maoni mapya katika mada hii.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Umejiandikisha!",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Wewe}} umejiandikisha!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Hutapokea tena arifa kuhusu maoni mapya katika mada hii.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Umejiondoa."
 }
