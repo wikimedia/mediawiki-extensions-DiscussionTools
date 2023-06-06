@@ -15,6 +15,7 @@
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|seekunt|seekunt|seekunt|sekuntid}}",
 	"discussiontools-newtopic-placeholder-title": "Paječaalâ",
 	"discussiontools-notification-removed-topic-view": "Čääiti siijđo",
+	"discussiontools-preference-autotopicsub": "Tiiláá fáádáid automaatlávt",
 	"discussiontools-replybutton": "Västid",
 	"discussiontools-replylink": "västid",
 	"discussiontools-replywidget-advanced": "Viijđed",
@@ -42,6 +43,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Tiilám rahtum!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Jieh innig uážu almottâsâid uđđâ kommenttijn taan fáádást.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Lah kiäsám tiilám maassâd.",
+	"discussiontools-topicsubscription-pager-actions": "Tooimah",
 	"discussiontools-topicsubscription-pager-notified-never": "ij kuássin",
 	"discussiontools-topicsubscription-pager-page": "Sijđo"
 }

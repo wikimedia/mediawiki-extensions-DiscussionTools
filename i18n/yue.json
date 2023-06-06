@@ -7,14 +7,15 @@
 			"Matma Rex",
 			"Moon0319",
 			"Ed g2s",
-			"Al12si"
+			"Al12si",
+			"捍粵者"
 		]
 	},
 	"discussiontools": "傾嘢工具",
 	"discussiontools-autotopicsubpopup-dismiss": "好，收到",
 	"discussiontools-autotopicsubpopup-preferences": "改喜好設定",
 	"discussiontools-defaultsummary-reply": "覆",
-	"discussiontools-emptystate-button": "開個新討論",
+	"discussiontools-emptystate-button": "開新討論",
 	"discussiontools-emptystate-desc-self": "{{SITENAME}}上嘅人可以用呢個[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|傾偈版]]向你發佈公開嘅訊息，而你會收到通知。",
 	"discussiontools-emptystate-title": "開個同{{SUBJECTPAGENAME}}有關嘅新討論",
 	"discussiontools-emptystate-title-self": "歡迎嚟到你嘅傾偈版",
@@ -83,7 +84,7 @@
 	"tag-discussiontools-edit-description": "用戶用DiscussionTools改咗個現有嘅留言",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} 加主題]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} 回覆]",
-	"tag-discussiontools-reply-description": "用戶用DiscussionTools對一個留言作出回覆",
+	"tag-discussiontools-reply-description": "用戶用DiscussionTools回覆留言",
 	"tag-discussiontools-source": "源碼編輯",
 	"tag-discussiontools-visual": "即見編輯"
 }
