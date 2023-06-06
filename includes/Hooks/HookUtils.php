@@ -170,7 +170,7 @@ class HookUtils {
 			return false;
 		}
 
-		if ( !in_array( $feature, static::FEATURES_CONFLICT_WITH_GADGET ) ) {
+		if ( !in_array( $feature, static::FEATURES_CONFLICT_WITH_GADGET, true ) ) {
 			return false;
 		}
 
@@ -308,7 +308,7 @@ class HookUtils {
 		}
 
 		if (
-			( $feature ? in_array( $feature, (array)$abtest ) : (bool)$abtest ) &&
+			( $feature ? in_array( $feature, (array)$abtest, true ) : (bool)$abtest ) &&
 			$user->isRegistered()
 		) {
 			return $user->getId() % 2 == 0 ? 'test' : 'control';
@@ -393,7 +393,7 @@ class HookUtils {
 			// the hook onGetActionName to override the action for the tool on empty pages.
 			// If we tried to call it here it would set up infinite recursion (T312689)
 			$feature !== static::NEWTOPICTOOL &&
-			!in_array( $output->getActionName(), [ 'view', 'edit', 'submit' ] )
+			!in_array( $output->getActionName(), [ 'view', 'edit', 'submit' ], true )
 		) {
 			return false;
 		}

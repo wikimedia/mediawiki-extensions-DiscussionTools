@@ -189,11 +189,11 @@ class ResourceLoaderData {
 			$localPath = $info['localBasePath'] . '/' . $path;
 			$data = json_decode( file_get_contents( $localPath ), true );
 			foreach ( $data as $case ) {
-				if ( isset( $case['name'] ) && in_array( $case['name'], $skipTests[$path] ?? [] ) ) {
+				if ( isset( $case['name'] ) && in_array( $case['name'], $skipTests[$path] ?? [], true ) ) {
 					continue;
 				}
 				foreach ( $case as $key => $val ) {
-					if ( in_array( $key, $keys ) && is_string( $val ) ) {
+					if ( in_array( $key, $keys, true ) && is_string( $val ) ) {
 						if ( str_ends_with( $val, '.json' ) ) {
 							$info['packageFiles'][] = substr( $val, strlen( '../' ) );
 						} elseif ( str_ends_with( $val, '.html' ) ) {

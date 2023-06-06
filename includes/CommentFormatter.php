@@ -840,7 +840,7 @@ class CommentFormatter {
 	public static function isLanguageRequiringReplyIcon( Language $lang ): bool {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 		$languages = $dtConfig->get( 'DiscussionTools_visualenhancements_reply_icon_languages' );
-		return in_array( $lang->getCode(), $languages );
+		return in_array( $lang->getCode(), $languages, true );
 	}
 
 }

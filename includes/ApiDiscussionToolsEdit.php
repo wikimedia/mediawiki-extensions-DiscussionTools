@@ -80,7 +80,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		if ( $formToken ) {
 			$session = $this->getContext()->getRequest()->getSession();
 			$usedFormTokens = $session->get( $usedFormTokensKey ) ?? [];
-			if ( in_array( $formToken, $usedFormTokens ) ) {
+			if ( in_array( $formToken, $usedFormTokens, true ) ) {
 				$this->dieWithError( [ 'apierror-discussiontools-formtoken-used' ] );
 			}
 		}
