@@ -450,12 +450,7 @@ class HookUtils {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		if ( $isMobile ) {
-			// DiscussionToolsEnableMobile controls all features on mobile
-			return (
-				$dtConfig->get( 'DiscussionToolsEnableMobile' ) ||
-				static::determineUserABTestBucket( $output->getUser(), 'mobile' ) === 'test'
-			) && (
-				$feature === null ||
+			return $feature === null ||
 				$feature === static::REPLYTOOL ||
 				$feature === static::NEWTOPICTOOL ||
 				$feature === static::SOURCEMODETOOLBAR ||
@@ -464,8 +459,7 @@ class HookUtils {
 				( $feature === static::TOPICSUBSCRIPTION && $output->getUser()->isRegistered() ) ||
 				$feature === static::VISUALENHANCEMENTS ||
 				$feature === static::VISUALENHANCEMENTS_REPLY ||
-				$feature === static::VISUALENHANCEMENTS_PAGEFRAME
-			);
+				$feature === static::VISUALENHANCEMENTS_PAGEFRAME;
 		}
 
 		return static::isFeatureEnabledForUser( $output->getUser(), $feature );

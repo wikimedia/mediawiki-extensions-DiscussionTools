@@ -544,10 +544,6 @@
 			"value": false,
 			"description": "A/B test DiscussionTools features for logged in users. false, any valid feature string for an option below, or an array thereof"
 		},
-		"DiscussionToolsEnableMobile": {
-			"value": true,
-			"description": "Enable DiscussionTools on mobile talk pages. Currently this automatically enables 'replytool', 'newtopictool' & 'sourcemodetoolbar' on those pages and disables topic subscriptions on those pages."
-		},
 		"DiscussionTools_visualenhancements": {
 			"value": "default",
 			"description": "Override availability of DiscussionTools visual enhancements. 'default', 'available', or 'unavailable'."
