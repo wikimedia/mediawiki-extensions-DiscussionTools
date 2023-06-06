@@ -548,26 +548,6 @@
 			"value": true,
 			"description": "Enable DiscussionTools on mobile talk pages. Currently this automatically enables 'replytool', 'newtopictool' & 'sourcemodetoolbar' on those pages and disables topic subscriptions on those pages."
 		},
-		"DiscussionTools_replytool": {
-			"value": "default",
-			"description": "Override availability of DiscussionTools reply tool. 'default', 'available', or 'unavailable'."
-		},
-		"DiscussionTools_newtopictool": {
-			"value": "default",
-			"description": "Override availability of DiscussionTools new topic tool. 'default', 'available', or 'unavailable'."
-		},
-		"DiscussionTools_sourcemodetoolbar": {
-			"value": "default",
-			"description": "Enable the toolbar in source mode for the reply tool and new topic tool. 'default', 'available', or 'unavailable'."
-		},
-		"DiscussionTools_topicsubscription": {
-			"value": "default",
-			"description": "Override availability of DiscussionTools topic subscription feature. 'default', 'available', or 'unavailable'."
-		},
-		"DiscussionTools_autotopicsub": {
-			"value": "default",
-			"description": "Override availability of DiscussionTools automatic topic subscription feature. 'default', 'available', or 'unavailable'."
-		},
 		"DiscussionTools_visualenhancements": {
 			"value": "default",
 			"description": "Override availability of DiscussionTools visual enhancements. 'default', 'available', or 'unavailable'."

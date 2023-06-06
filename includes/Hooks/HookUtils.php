@@ -44,7 +44,6 @@ class HookUtils {
 
 	/**
 	 * @var string[] List of all sub-features. Will be used to generate:
-	 *  - Feature override global: $wgDiscussionTools_FEATURE
 	 *  - Body class: ext-discussiontools-FEATURE-enabled
 	 *  - User option: discussiontools-FEATURE
 	 */
@@ -55,6 +54,16 @@ class HookUtils {
 		self::SOURCEMODETOOLBAR,
 		self::TOPICSUBSCRIPTION,
 		self::AUTOTOPICSUB,
+		self::VISUALENHANCEMENTS,
+		self::VISUALENHANCEMENTS_REPLY,
+		self::VISUALENHANCEMENTS_PAGEFRAME,
+	];
+
+	/**
+	 * @var string[] List of configurable sub-features, used to generate:
+	 *  - Feature override global: $wgDiscussionTools_FEATURE
+	 */
+	public const CONFIGS = [
 		self::VISUALENHANCEMENTS,
 		self::VISUALENHANCEMENTS_REPLY,
 		self::VISUALENHANCEMENTS_PAGEFRAME,
@@ -214,17 +223,18 @@ class HookUtils {
 
 		if ( $feature ) {
 			// Feature-specific override
+			if ( !in_array( $feature, static::CONFIGS, true ) ) {
+				// Feature is not configurable, always available
+				return true;
+			}
 			if ( $dtConfig->get( 'DiscussionTools_' . $feature ) !== 'default' ) {
 				// Feature setting can be 'available' or 'unavailable', overriding any BetaFeatures settings
 				return $dtConfig->get( 'DiscussionTools_' . $feature ) === 'available';
 			}
 		} else {
-			// Non-feature-specific override, check for any feature
-			foreach ( static::FEATURES as $feat ) {
-				if ( $dtConfig->get( 'DiscussionTools_' . $feat ) === 'available' ) {
-					return true;
-				}
-			}
+			// Some features are always available, so if no feature is
+			// specified (i.e. checking for any feature), always return true.
+			return true;
 		}
 
 		// Being in the "test" group for this feature means it's enabled. This
@@ -243,9 +253,6 @@ class HookUtils {
 			return (bool)$betaenabled;
 		}
 
-		// Assume that if BetaFeature is turned off, or user has it enabled, that
-		// some features are available.
-		// If this isn't the case, then DiscussionToolsEnable should have been set to false.
 		return true;
 	}
 
