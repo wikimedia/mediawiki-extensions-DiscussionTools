@@ -7,6 +7,8 @@
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Ášši lea čielggas",
 	"discussiontools-defaultsummary-reply": "Vástádus",
+	"discussiontools-limitreport-timeusage": "DiscussionTools-áigegeavaheapmi",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundda}}",
 	"discussiontools-notification-subscribed-new-comment-view": "Čájet kommeantta",
 	"discussiontools-replylink": "vástit",
 	"discussiontools-replywidget-cancel": "Šluhtte",
