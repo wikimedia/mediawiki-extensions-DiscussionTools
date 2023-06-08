@@ -13,7 +13,6 @@ use ChangeTags;
 use DateInterval;
 use DateTimeImmutable;
 use DeferredUpdates;
-use EchoEvent;
 use ExtensionRegistry;
 use IDBAccessObject;
 use Iterator;
@@ -28,6 +27,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\HeadingItem;
 use MediaWiki\Extension\EventLogging\EventLogging;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
@@ -404,11 +404,11 @@ class EventDispatcher {
 	/**
 	 * Return all users subscribed to a comment
 	 *
-	 * @param EchoEvent $event
+	 * @param Event $event
 	 * @param int $batchSize
 	 * @return UserIdentity[]|Iterator<UserIdentity>
 	 */
-	public static function locateSubscribedUsers( EchoEvent $event, $batchSize = 500 ) {
+	public static function locateSubscribedUsers( Event $event, $batchSize = 500 ) {
 		$commentName = $event->getExtraParam( 'subscribed-comment-name' );
 
 		$subscriptionStore = MediaWikiServices::getInstance()->getService( 'DiscussionTools.SubscriptionStore' );
