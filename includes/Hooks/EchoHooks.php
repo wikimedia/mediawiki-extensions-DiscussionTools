@@ -9,8 +9,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use EchoEvent;
 use MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Revision\RevisionRecord;
 
 class EchoHooks {
@@ -98,11 +98,11 @@ class EchoHooks {
 	}
 
 	/**
-	 * @param EchoEvent $event
+	 * @param Event $event
 	 * @param string &$bundleString
 	 * @return bool
 	 */
-	public static function onEchoGetBundleRules( EchoEvent $event, string &$bundleString ): bool {
+	public static function onEchoGetBundleRules( Event $event, string &$bundleString ): bool {
 		switch ( $event->getType() ) {
 			case 'dt-subscribed-new-comment':
 				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'subscribed-comment-name' );

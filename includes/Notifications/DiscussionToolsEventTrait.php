@@ -10,15 +10,18 @@
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use EchoDiscussionParser;
+use Language;
+use MediaWiki\Extension\Notifications\Formatters\EchoPresentationModelSection;
+use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\WikiMap\WikiMap;
 
 /**
  * This trait must be only used on EchoEventPresentationModel subclasses.
  *
- * @property \EchoEvent $event
- * @property \Language $language
- * @property \EchoPresentationModelSection $section
+ * @property Event $event
+ * @property Language $language
+ * @property EchoPresentationModelSection $section
  */
 trait DiscussionToolsEventTrait {
 
@@ -34,7 +37,7 @@ trait DiscussionToolsEventTrait {
 	abstract protected function isBundled();
 
 	/**
-	 * @return \EchoEvent[]
+	 * @return Event[]
 	 */
 	abstract protected function getBundledEvents();
 
