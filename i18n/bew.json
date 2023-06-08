@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bangrapip"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Bales",
+	"discussiontools-replylink": "{{GENDER:|bales}}",
+	"discussiontools-replywidget-advanced": "Lanjutan",
+	"discussiontools-replywidget-cancel": "Urungin",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Liatan",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Bales}} ke {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Pradeleng",
+	"discussiontools-replywidget-reply": "{{GENDER:|Bales}}",
+	"discussiontools-replywidget-summary": "Rangkuman",
+	"discussiontools-replywidget-watchthis": "Tambahin ni halaman ke lu punya [[Special:Watchlist|daptar pantengan]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|orang}} di dalem kongko",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|tanggepan}}",
+	"discussiontools-topicheader-latestcomment": "Tanggepan paling baru: $1",
+	"discussiontools-topicsubscription-button-subscribe": "langganan",
+	"discussiontools-topicsubscription-button-subscribe-label": "Langganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "berenti langganan",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Berenti Langganan",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Lu}} bakal nerima ma'lumat tanggepan baru perihal ni topik.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Lu}} udah langganan!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Lu}} kaga' bakal nerima lagi ma'lumat tanggepan baru perihal ni topik.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Lu}} udah berenti langganan."
+}
