@@ -341,4 +341,14 @@ ReplyLinksController.prototype.teardown = function () {
 	}
 };
 
+ReplyLinksController.prototype.pageHasReplyLinks = function () {
+	return this.$replyLinkSets.length > 0;
+};
+
+ReplyLinksController.prototype.pageHasNewTopicLink = function () {
+	// Note: this will miss if there are random on-page links that would
+	// trigger the new topic tool via onAnyLinkClick
+	return featuresEnabled.newtopictool && document.getElementById( 'ca-addsection' );
+};
+
 module.exports = ReplyLinksController;
