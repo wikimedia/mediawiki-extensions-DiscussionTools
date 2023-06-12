@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Roustammr"
+			"Roustammr",
+			"Sagan"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Кәрәкмәй"
+	"discussiontools-defaultsummary-reply": "Яуап бирергә",
+	"discussiontools-replywidget-cancel": "Кәрәкмәй",
+	"discussiontools-replywidget-mode-source": "Сығанаҡ",
+	"discussiontools-replywidget-mode-visual": "Визуаль",
+	"discussiontools-replywidget-preview": "Ҡарап сығырға"
 }
