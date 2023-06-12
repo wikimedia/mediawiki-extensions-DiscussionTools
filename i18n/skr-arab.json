@@ -28,6 +28,7 @@
 	"discussiontools-replywidget-mode-source": "ماخذ",
 	"discussiontools-replywidget-mode-visual": "بصری",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|نواں}} موضوع",
+	"discussiontools-replywidget-placeholder-newtopic": "تفصیل",
 	"discussiontools-replywidget-preferences": "ترجیحاں",
 	"discussiontools-replywidget-preview": "پیشگی ݙکھالا",
 	"discussiontools-replywidget-reply": "{{GENDER:|جواب}}",

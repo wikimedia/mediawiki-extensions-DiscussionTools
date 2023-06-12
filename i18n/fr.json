@@ -83,6 +83,7 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Vous êtes désabonné{{GENDER:||e}}.",
 	"discussiontools-notification-added-topic-header": "Nouveau sujet « <strong>$4</strong> » créé sur <strong>$3</strong> par $2.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Un nouveau sujet|$1 nouveaux sujets|100=Au moins une centaine de nouveaux sujets}} sur « <strong>$2</strong> ».",
+	"discussiontools-notification-added-topic-header-compact": "$3 : <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Afficher le sujet",
 	"discussiontools-notification-removed-topic-body": "{{GENDER:|}}Vous pourriez ne plus recevoir de notifications concernant ce{{PLURAL:$1||s}} sujet{{PLURAL:$1||s}}.",
 	"discussiontools-notification-removed-topic-header": "Le sujet « <strong>$4</strong> » a été archivé ou retiré de $3.",

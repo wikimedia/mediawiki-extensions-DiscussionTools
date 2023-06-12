@@ -22,8 +22,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "सदस्सता",
 	"discussiontools-topicsubscription-button-unsubscribe": "सदस्सता समाप्त करी",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "असदस्सता",
-	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|अपनेके}} ई बिसयमे नया टिप्पणीके बारेमे सूचना मिलतै।",
-	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|अपने}} सदस्सता लेलेली!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "अखनी {{GENDER:|अपनेके}} ई बिसयमे नया टिप्पणीके बारेमे सूचना न मिलतै।",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|अपनेके}} ई बिषयमे नया टिप्पणीके बारेमे सूचना मिलत।",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|अपने}} सदस्सता ले लेली!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "अखनी {{GENDER:|अपनेके}} ई बिषयमे नया टिप्पणीके बारेमे सूचना न मिलत।",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|अपने}} सदस्सता समाप्त करदेली।"
 }
