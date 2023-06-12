@@ -448,6 +448,17 @@ CommentController.prototype.save = function ( pageName ) {
 	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
 		var data = commentController.getApiQuery( pageName, checkboxes );
 
+		if (
+			// We're saving the first comment on a page that previously didn't exist.
+			// Don't fetch the new revision's HTML content, because we will reload the whole page.
+			!mw.config.get( 'wgRelevantArticleId' ) ||
+			// We're saving a comment on a different page than the one being viewed.
+			// Don't fetch the new revision's HTML content, because we can't use it anyway.
+			pageName !== mw.config.get( 'wgRelevantPageName' )
+		) {
+			data.nocontent = true;
+		}
+
 		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
 		// could result in duplicate messages if the user retries. (T249071)
 		var defaults = OO.copy( controller.getApi().defaults );
