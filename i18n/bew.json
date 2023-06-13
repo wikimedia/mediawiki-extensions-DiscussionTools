@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bangrapip"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Bales",
+	"discussiontools-replywidget-advanced": "Lanjutan",
+	"discussiontools-replywidget-cancel": "Urungin",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Liatan",
+	"discussiontools-replywidget-preview": "Pradeleng",
+	"discussiontools-replywidget-summary": "Rangkuman",
+	"discussiontools-replywidget-watchthis": "Tambahin ni halaman ke lu punya [[Special:Watchlist|daptar pantengan]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|orang}} di dalem perhadring",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|tanggepan}}",
+	"discussiontools-topicheader-latestcomment": "Tanggepan paling baru: $1",
+	"discussiontools-topicsubscription-button-subscribe": "langganan",
+	"discussiontools-topicsubscription-button-subscribe-label": "Langganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "berenti langganan",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Berenti Langganan"
+}

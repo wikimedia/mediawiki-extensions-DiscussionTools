@@ -15,6 +15,7 @@
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|seekunt|seekunt|seekunt|sekuntid}}",
 	"discussiontools-newtopic-placeholder-title": "Paječaalâ",
 	"discussiontools-notification-removed-topic-view": "Čääiti siijđo",
+	"discussiontools-notification-subscribed-new-comment-view": "Čääiti komment",
 	"discussiontools-preference-autotopicsub": "Tiiláá fáádáid automaatlávt",
 	"discussiontools-replybutton": "Västid",
 	"discussiontools-replylink": "västid",
