@@ -8,8 +8,9 @@ var
  * @param {jQuery} $pageContainer Page container
  * @param {HeadingItem} threadItem
  * @param {ThreadItemSet} threadItemSet
+ * @param {MemoryStorage} storage Storage object for autosave
  */
-function NewTopicController( $pageContainer, threadItem, threadItemSet ) {
+function NewTopicController( $pageContainer, threadItem, threadItemSet, storage ) {
 	this.container = new OO.ui.PanelLayout( {
 		classes: [ 'ext-discussiontools-ui-newTopic' ],
 		expanded: false,
@@ -39,7 +40,7 @@ function NewTopicController( $pageContainer, threadItem, threadItemSet ) {
 	threadItem.range.endContainer = this.sectionTitleField.$element[ 0 ];
 	threadItem.range.endOffset = this.sectionTitleField.$element[ 0 ].childNodes.length;
 
-	NewTopicController.super.call( this, $pageContainer, threadItem, threadItemSet );
+	NewTopicController.super.call( this, $pageContainer, threadItem, threadItemSet, storage );
 }
 
 OO.inheritClass( NewTopicController, CommentController );
@@ -120,7 +121,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 	}
 	mw.hook( 'wikipage.content' ).fire( this.$notices );
 
-	var title = this.replyWidget.storage.get( this.replyWidget.storagePrefix + '/title' );
+	var title = this.replyWidget.storage.get( 'title' );
 	if ( title && !this.sectionTitle.getValue() ) {
 		// Don't overwrite if the user has already typed something in while the widget was loading.
 		// TODO This should happen immediately rather than waiting for the reply widget to load,
@@ -128,12 +129,12 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 		this.sectionTitle.setValue( title );
 		this.prevTitleText = title;
 
-		if ( this.replyWidget.storage.get( this.replyWidget.storagePrefix + '/summary' ) === null ) {
+		if ( this.replyWidget.storage.get( 'summary' ) === null ) {
 			var generatedSummary = this.generateSummary( title );
 			this.replyWidget.editSummaryInput.setValue( generatedSummary );
 		}
 	}
-	this.replyWidget.storage.set( this.replyWidget.storagePrefix + '/title', this.sectionTitle.getValue() );
+	this.replyWidget.storage.set( 'title', this.sectionTitle.getValue() );
 
 	if ( this.replyWidget.modeTabSelect ) {
 		// Start with the mode-select widget not-tabbable so focus will go from the title to the body
@@ -173,7 +174,7 @@ NewTopicController.prototype.clear = function () {
 NewTopicController.prototype.clearStorage = function () {
 	// This is going to get called as part of the teardown chain from replywidget
 	if ( this.replyWidget ) {
-		this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/title' );
+		this.replyWidget.storage.remove( 'title' );
 	}
 };
 
@@ -183,7 +184,7 @@ NewTopicController.prototype.storeEditSummary = function () {
 		var generatedSummary = this.generateSummary( this.sectionTitle.getValue() );
 		if ( currentSummary === generatedSummary ) {
 			// Do not store generated summaries (T315730)
-			this.replyWidget.storage.remove( this.replyWidget.storagePrefix + '/summary' );
+			this.replyWidget.storage.remove( 'summary' );
 			return;
 		}
 	}
@@ -289,7 +290,7 @@ NewTopicController.prototype.onSectionTitleChange = function () {
 	var prevTitleText = this.prevTitleText;
 
 	if ( prevTitleText !== titleText ) {
-		this.replyWidget.storage.set( this.replyWidget.storagePrefix + '/title', titleText );
+		this.replyWidget.storage.set( 'title', titleText );
 
 		var generatedSummary = this.generateSummary( titleText );
 		var generatedPrevSummary = this.generateSummary( prevTitleText );

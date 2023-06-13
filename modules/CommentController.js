@@ -16,8 +16,9 @@ var
  * @param {jQuery} $pageContainer Page container
  * @param {ThreadItem} threadItem Thread item to attach new comment to
  * @param {ThreadItemSet} threadItemSet
+ * @param {MemoryStorage} storage Storage object for autosave
  */
-function CommentController( $pageContainer, threadItem, threadItemSet ) {
+function CommentController( $pageContainer, threadItem, threadItemSet, storage ) {
 	// Mixin constructors
 	OO.EventEmitter.call( this );
 
@@ -25,6 +26,7 @@ function CommentController( $pageContainer, threadItem, threadItemSet ) {
 	this.$pageContainer = $pageContainer;
 	this.threadItem = threadItem;
 	this.threadItemSet = threadItemSet;
+	this.storage = storage;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
 	this.newComments = [];
@@ -334,7 +336,7 @@ CommentController.prototype.setupReplyWidget = function ( replyWidget, data, sup
 
 CommentController.prototype.storeEditSummary = function () {
 	if ( this.replyWidget ) {
-		this.replyWidget.storage.set( this.replyWidget.storagePrefix + '/summary', this.replyWidget.getEditSummary() );
+		this.replyWidget.storage.set( 'summary', this.replyWidget.getEditSummary() );
 	}
 };
 
