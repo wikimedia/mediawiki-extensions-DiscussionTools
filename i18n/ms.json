@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Anakmalaysia",
+			"Hakimi97",
 			"Tofeiku"
 		]
 	},
@@ -48,7 +49,7 @@
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-newtopic": "Tambah topik",
 	"discussiontools-replywidget-placeholder-newtopic": "Keterangan",
-	"discussiontools-replywidget-placeholder-reply": "Balas kepada {{BIDI: $1 }}",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Balas}} kepada {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Keutamaan",
 	"discussiontools-replywidget-preview": "Pratayang",
 	"discussiontools-replywidget-reply": "{{GENDER:|Balas}}",
@@ -65,10 +66,10 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "berhenti melanggan",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Berhenti melanggan",
 	"discussiontools-topicsubscription-error-not-found-title": "Langganan tidak dijumpai",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Anda akan menerima pemberitahuan tentang komen baru di topik ini.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Sudah dilanggan!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "Anda tidak akan menerima lagi pemberitahuan tentang komen baru di topik ini.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Sudah berhenti melanggan.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Anda}} akan menerima pemberitahuan mengenai komen terbaru di topik ini.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Anda}} sudah melangganinya!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Anda}} tidak akan menerima pemberitahuan lagi berkenaan ulasan-ulasan baharu di topik ini.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Anda}} sudah berhenti melanggan.",
 	"discussiontools-topicsubscription-pager-actions": "Tindakan",
 	"discussiontools-topicsubscription-pager-created": "Kali pertama melanggan",
 	"discussiontools-topicsubscription-pager-notified": "Pemberitahuan terkini",

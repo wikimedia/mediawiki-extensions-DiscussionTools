@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Maksim L.",
+			"Plaga med",
 			"Tomato Cream"
 		]
 	},
@@ -23,7 +24,7 @@
 	"apihelp-discussiontoolsedit-summary": "Апублікаваць паведамленне на старонцы размовы.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Назвы тэмаў для праверкі",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Атрымаць станы падпіскі на зададзеныя тэмы.",
-	"apihelp-discussiontoolspageinfo-param-oldid": "Нумар версіі для выкарыстання (па змаўчанні — апошняя версія).",
+	"apihelp-discussiontoolspageinfo-param-oldid": "Нумар версіі для выкарыстання (прадвызначана — апошняя версія).",
 	"apihelp-discussiontoolspageinfo-param-prop": "Якія ўласцівасці атрымаць:",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "Прадстаўленне каментарыяў, разабраных са старонкі",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "З якіх іншых старонак былі ўключаны каментары",

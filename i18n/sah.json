@@ -1,8 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"HalanTul"
+			"HalanTul",
+			"MARKSDNW"
 		]
 	},
-	"discussiontools-emptystate-title-self": "Тус бэйэҥ суруйсар сиргэр {{GENDER:|киирбиккинэн}} (эйиэхэ туһаайыллыбыт суруктары манна суруйуохтарын сөп)"
+	"discussiontools-defaultsummary-reply": "хоруй",
+	"discussiontools-emptystate-title-self": "Тус бэйэҥ суруйсар сиргэр {{GENDER:|киирбиккинэн}} (эйиэхэ туһаайыллыбыт суруктары манна суруйуохтарын сөп)",
+	"discussiontools-replywidget-advanced": "Дириҥник",
+	"discussiontools-replywidget-cancel": "Салҕаама",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Көстүү",
+	"discussiontools-replywidget-preview": "Хайдах буолара",
+	"discussiontools-replywidget-summary": "Быһаарыы",
+	"discussiontools-replywidget-watchthis": "Бу сирэйи [[Special:Watchlist|watchlist]] эб",
+	"discussiontools-topicsubscription-button-subscribe": "сурутуу",
+	"discussiontools-topicsubscription-button-unsubscribe": "сурутууттан аккаастан"
 }

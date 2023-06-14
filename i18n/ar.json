@@ -36,7 +36,7 @@
 	"discussiontools-emptystate-title": "البدء في نقاش حول {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "مرحبًا بك في صفحة النقاش الخاصة بك",
 	"discussiontools-emptystate-title-self-anon": "مرحبًا بك في صفحة النقاش هذه",
-	"discussiontools-emptystate-title-self-temp": "مرحبًا {{GENDER:|بكَ|بكِ}}بك في صفحة نقاشك",
+	"discussiontools-emptystate-title-self-temp": "مرحبًا {{GENDER:|بكَ|بكِ}} في صفحة نقاشك",
 	"discussiontools-emptystate-title-user": "البدء في نقاش {{GENDER:{{PAGENAME}}|مع}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "مرحبًا بك في صفحة النقاش هذه",
 	"discussiontools-emptystate-title-user-temp": "البَدْء في نقاش {{GENDER:{{PAGENAME}}|مع}} {{PAGENAME}}",
