@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Agilight",
+			"Karak-Kyzyl"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Харыы",
+	"discussiontools-replywidget-advanced": "Немей",
+	"discussiontools-replywidget-cancel": "Ойталал",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Визуалдыг",
+	"discussiontools-replywidget-preview": "Чижеглей көөрү",
+	"discussiontools-replywidget-summary": "Түңнел",
+	"discussiontools-replywidget-watchthis": "Бо арынны [[Special:Watchlist|хайгаарал даңзыңарже]] немээр",
+	"discussiontools-topicsubscription-button-subscribe": "бижиттинер",
+	"discussiontools-topicsubscription-button-unsubscribe": "үндүр бижидер"
+}

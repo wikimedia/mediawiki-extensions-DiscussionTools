@@ -1,8 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Roustammr"
+			"Roustammr",
+			"Sagan"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Кәрәкмәй"
+	"discussiontools-defaultsummary-reply": "Яуап бирергә",
+	"discussiontools-replywidget-advanced": "Киңәйтелгән",
+	"discussiontools-replywidget-cancel": "Кәрәкмәй",
+	"discussiontools-replywidget-mode-source": "Сығанаҡ",
+	"discussiontools-replywidget-mode-visual": "Визуаль",
+	"discussiontools-replywidget-preview": "Ҡарап сығырға",
+	"discussiontools-replywidget-summary": "Һөҙөмтә",
+	"discussiontools-replywidget-watchthis": "Был битте [[Special:Watchlist|күҙәреү исемлеге]]нә өҫтәргә",
+	"discussiontools-topicsubscription-button-subscribe": "яҙылырға",
+	"discussiontools-topicsubscription-button-unsubscribe": "яҙылыуҙан баш тартырға"
 }
