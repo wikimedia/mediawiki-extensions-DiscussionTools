@@ -480,6 +480,11 @@ function init( $container, state ) {
 				mode = storage.get( 'reply/' + comment.id + '/mode' );
 				$link = $( commentNodes[ i ] );
 				setupController( comment, $link, mode, true, !state.firstLoad );
+				if ( OO.ui.isMobile() ) {
+					var urlFragment = mw.util.escapeIdForLink( comment.id );
+					// Force the section to expand on mobile (T338920)
+					location.hash = '#' + urlFragment;
+				}
 				break;
 			}
 		}
