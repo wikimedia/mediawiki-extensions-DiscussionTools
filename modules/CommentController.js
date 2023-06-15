@@ -196,8 +196,6 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 		}
 		$( commentController.newListItem ).empty().append( replyWidget.$element );
 
-		$( this.newListItem ).parents( '.collapsible-block' ).prev().addClass( 'collapsible-heading-disabled' );
-
 		commentController.setupReplyWidget( replyWidget, {}, suppressNotifications );
 
 		commentController.showAndFocus();
