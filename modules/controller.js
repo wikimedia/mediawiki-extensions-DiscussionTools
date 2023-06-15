@@ -516,14 +516,9 @@ function init( $container, state ) {
 					message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
 				} );
 			} else {
-				if ( OO.ui.isMobile() ) {
-					mw.notify( mw.msg( 'discussiontools-postedit-confirmation-published', mw.user ) );
-				} else {
-					// postEdit is currently desktop only
-					mw.hook( 'postEdit' ).fire( {
-						message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
-					} );
-				}
+				mw.hook( 'postEdit' ).fire( {
+					message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
+				} );
 			}
 		} else if ( state.newCommentIds ) {
 			highlighter.highlightNewComments( pageThreads, true, state.newCommentIds );
