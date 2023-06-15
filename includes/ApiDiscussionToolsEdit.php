@@ -162,6 +162,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword'],
 							'nocontent' => $params['nocontent'],
+							'returnto' => $params['returnto'],
+							'returntoquery' => $params['returntoquery'],
+							'returntoanchor' => $params['returntoanchor'],
 						] + $mobileFormatParams,
 						/* was posted? */ true
 					)
@@ -322,6 +325,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword'],
 							'nocontent' => $params['nocontent'],
+							'returnto' => $params['returnto'],
+							'returntoquery' => $params['returntoquery'],
+							'returntoanchor' => $params['returntoanchor'],
 						],
 						/* was posted? */ true
 					)
@@ -431,6 +437,20 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			],
 			'nocontent' => [
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-nocontent',
+			],
+			'returnto' => [
+				ParamValidator::PARAM_TYPE => 'title',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-returnto',
+			],
+			'returntoquery' => [
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_DEFAULT => '',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-returntoquery',
+			],
+			'returntoanchor' => [
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_DEFAULT => '',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-returntoanchor',
 			],
 		];
 	}

@@ -674,15 +674,17 @@ function update( data, threadItem, pageName, replyWidget ) {
 		} );
 	}
 
-	if ( pageName === mw.config.get( 'wgRelevantPageName' ) && data.nocontent ) {
-		// The page didn't exist before this update, so reload it. We'd handle
-		// setting up the content just fine (assuming there's a
-		// mw-parser-output), but fixing up the UI tabs/behavior is outside
-		// our scope.
+	if (
+		( pageName === mw.config.get( 'wgRelevantPageName' ) && data.nocontent ) ||
+		data.tempusercreated
+	) {
+		// Reload if the page didn't exist before this update, or we just became logged in
+		// as a temporary user. We'd handle setting up the content just fine (assuming there's
+		// a mw-parser-output), but fixing up the UI tabs/behavior is outside our scope.
 		replyWidget.unbindBeforeUnloadHandler();
 		replyWidget.clearStorage();
 		replyWidget.setPending( true );
-		window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
+		window.location = data.tempusercreatedredirect || mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
 		logSaveSuccess();
 		return;
 	}
