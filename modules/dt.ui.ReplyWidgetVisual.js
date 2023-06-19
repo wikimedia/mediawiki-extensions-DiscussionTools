@@ -96,8 +96,8 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 	data = data || {};
 
 	var htmlOrDoc;
-	if ( this.storage.get( this.storagePrefix + '/saveable' ) ) {
-		htmlOrDoc = this.storage.get( this.storagePrefix + '/ve-dochtml' );
+	if ( this.storage.get( 'saveable' ) ) {
+		htmlOrDoc = this.storage.get( 've-dochtml' );
 		target.recovered = true;
 	} else {
 		htmlOrDoc = data.value;
@@ -115,16 +115,9 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 			focus: [ 'emit', 'bodyFocus' ]
 		} );
 
-		var listStorage = ve.init.platform.createConflictableStorage( widget.storage );
-		// widget.storage is a MemoryStorage object. Copy over the .data cache so
-		// that listStorage reads from/writes to the same in-memory cache.
-		listStorage.data = widget.storage.data;
-
 		target.initAutosave( {
 			suppressNotifications: suppressNotifications,
-			docId: widget.storagePrefix,
-			storage: listStorage,
-			storageExpiry: 60 * 60 * 24 * 30
+			storage: widget.storage
 		} );
 		widget.afterSetup();
 

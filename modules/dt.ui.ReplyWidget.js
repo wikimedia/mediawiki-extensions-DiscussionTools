@@ -43,9 +43,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.pageExists = mw.config.get( 'wgRelevantArticleId', 0 ) !== 0;
 	var contextNode = utils.closestElement( threadItem.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.tagName.toLowerCase() : 'dl';
-	// TODO: Should storagePrefix include pageName?
-	this.storagePrefix = 'reply/' + threadItem.id;
-	this.storage = controller.storage;
+	this.storage = commentController.storage;
 	// eslint-disable-next-line no-jquery/no-global-selector
 	this.contentDir = $( '#mw-content-text' ).css( 'direction' );
 	this.hideNewCommentsWarning = false;
@@ -390,7 +388,7 @@ ReplyWidget.prototype.clear = function ( preserveStorage ) {
 	if ( !preserveStorage ) {
 		this.clearStorage();
 	} else {
-		this.storage.set( this.storagePrefix + '/saveable', '1' );
+		this.storage.set( 'saveable', '1' );
 	}
 
 	this.emit( 'clear' );
@@ -400,12 +398,7 @@ ReplyWidget.prototype.clear = function ( preserveStorage ) {
  * Remove any storage that the widget is using
  */
 ReplyWidget.prototype.clearStorage = function () {
-	this.storage.remove( this.storagePrefix + '/mode' );
-	this.storage.remove( this.storagePrefix + '/saveable' );
-	this.storage.remove( this.storagePrefix + '/summary' );
-	this.storage.remove( this.storagePrefix + '/showAdvanced' );
-	this.storage.remove( this.storagePrefix + '/formToken' );
-
+	this.storage.clear();
 	this.emit( 'clearStorage' );
 };
 
@@ -498,7 +491,7 @@ ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
 	this.advanced.toggle( !!this.showAdvanced );
 	this.advancedToggle.setIndicator( this.showAdvanced ? 'up' : 'down' );
 
-	this.storage.set( this.storagePrefix + '/showAdvanced', this.showAdvanced ? '1' : '' );
+	this.storage.set( 'showAdvanced', this.showAdvanced ? '1' : '' );
 };
 
 ReplyWidget.prototype.onEditSummaryChange = function () {
@@ -585,7 +578,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 	}
 	this.saveEditMode( this.getMode() );
 
-	var summary = this.storage.get( this.storagePrefix + '/summary' ) || data.editSummary;
+	var summary = this.storage.get( 'summary' ) || data.editSummary;
 
 	if ( !summary ) {
 		if ( this.isNewTopic ) {
@@ -600,7 +593,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 	}
 
 	this.toggleAdvanced(
-		!!this.storage.get( this.storagePrefix + '/showAdvanced' ) ||
+		!!this.storage.get( 'showAdvanced' ) ||
 		!!+mw.user.options.get( 'discussiontools-showadvanced' ) ||
 		!!data.showAdvanced
 	);
@@ -631,7 +624,7 @@ ReplyWidget.prototype.afterSetup = function () {
 	// Init preview and button state
 	this.onInputChange();
 	// Autosave
-	this.storage.set( this.storagePrefix + '/mode', this.getMode() );
+	this.storage.set( 'mode', this.getMode() );
 };
 
 /**
@@ -640,12 +633,12 @@ ReplyWidget.prototype.afterSetup = function () {
  * @return {string} Form token
  */
 ReplyWidget.prototype.getFormToken = function () {
-	var formToken = this.storage.get( this.storagePrefix + '/formToken' );
+	var formToken = this.storage.get( 'formToken' );
 	if ( !formToken ) {
 		// See ApiBase::PARAM_MAX_CHARS in ApiDiscussionToolsEdit.php
 		var maxLength = 16;
 		formToken = Math.random().toString( 36 ).slice( 2, maxLength + 2 );
-		this.storage.set( this.storagePrefix + '/formToken', formToken );
+		this.storage.set( 'formToken', formToken );
 	}
 	return formToken;
 };
@@ -771,7 +764,7 @@ ReplyWidget.prototype.onInputChange = function () {
 	}
 
 	this.updateButtons();
-	this.storage.set( this.storagePrefix + '/saveable', this.isEmpty() ? '' : '1' );
+	this.storage.set( 'saveable', this.isEmpty() ? '' : '1' );
 	this.preparePreview();
 };
 

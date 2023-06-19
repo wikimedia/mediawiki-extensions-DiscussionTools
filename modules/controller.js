@@ -5,8 +5,8 @@ var
 	pageThreads,
 	lastControllerScrollOffset,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
-	createMemoryStorage = require( './createMemoryStorage.js' ),
-	storage = createMemoryStorage( mw.storage ),
+	MemoryStorage = require( './MemoryStorage.js' ),
+	STORAGE_EXPIRY = 60 * 60 * 24 * 30,
 	Parser = require( './Parser.js' ),
 	ThreadItemSet = require( './ThreadItemSet.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
@@ -355,18 +355,22 @@ function init( $container, state ) {
 	 * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
 	 * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
 	 * @param {boolean} [suppressNotifications] Don't notify the user if recovering auto-save
+	 * @param {MemoryStorage} [storage] Storage object for autosave
 	 */
-	function setupController( comment, $link, mode, hideErrors, suppressNotifications ) {
+	function setupController( comment, $link, mode, hideErrors, suppressNotifications, storage ) {
 		var commentController, $addSectionLink;
 
+		if ( !storage ) {
+			storage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + comment.id, STORAGE_EXPIRY );
+		}
 		if ( comment.id === utils.NEW_TOPIC_COMMENT_ID ) {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$addSectionLink = $( '#ca-addsection' ).find( 'a' );
 			// When opening new topic tool using any link, always activate the link in page tabs too
 			$link = $link.add( $addSectionLink );
-			commentController = new NewTopicController( $pageContainer, comment, pageThreads );
+			commentController = new NewTopicController( $pageContainer, comment, pageThreads, storage );
 		} else {
-			commentController = new CommentController( $pageContainer, comment, pageThreads );
+			commentController = new CommentController( $pageContainer, comment, pageThreads, storage );
 		}
 
 		activeCommentId = comment.id;
@@ -473,13 +477,14 @@ function init( $container, state ) {
 			return;
 		}
 
-		var mode, $link;
+		var mode, $link, storage;
 		for ( var i = 0; i < pageThreads.threadItems.length; i++ ) {
 			var comment = pageThreads.threadItems[ i ];
-			if ( storage.get( 'reply/' + comment.id + '/saveable' ) ) {
-				mode = storage.get( 'reply/' + comment.id + '/mode' );
+			storage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + comment.id, STORAGE_EXPIRY );
+			if ( storage.get( 'saveable' ) ) {
+				mode = storage.get( 'mode' );
 				$link = $( commentNodes[ i ] );
-				setupController( comment, $link, mode, true, !state.firstLoad );
+				setupController( comment, $link, mode, true, !state.firstLoad, storage );
 				if ( OO.ui.isMobile() ) {
 					var urlFragment = mw.util.escapeIdForLink( comment.id );
 					// Force the section to expand on mobile (T338920)
@@ -488,12 +493,10 @@ function init( $container, state ) {
 				break;
 			}
 		}
-		if (
-			storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/saveable' ) ||
-			storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/title' )
-		) {
-			mode = storage.get( 'reply/' + utils.NEW_TOPIC_COMMENT_ID + '/mode' );
-			setupController( newTopicComment(), $( [] ), mode, true, !state.firstLoad );
+		storage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + utils.NEW_TOPIC_COMMENT_ID, STORAGE_EXPIRY );
+		if ( storage.get( 'saveable' ) || storage.get( 'title' ) ) {
+			mode = storage.get( 'mode' );
+			setupController( newTopicComment(), $( [] ), mode, true, !state.firstLoad, storage );
 		} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
 			var data = linksController.parseNewTopicLink( location.href );
 			setupController( newTopicComment( data ), $( [] ) );
@@ -760,7 +763,6 @@ module.exports = {
 	checkThreadItemOnPage: checkThreadItemOnPage,
 	getCheckboxesPromise: getCheckboxesPromise,
 	getApi: getApi,
-	storage: storage,
 	getReplyWidgetModules: getReplyWidgetModules,
 	defaultVisual: defaultVisual,
 	enable2017Wikitext: enable2017Wikitext
