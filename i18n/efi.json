@@ -4,5 +4,16 @@
 			"Samatics"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Kpọn̄"
+	"discussiontools-defaultsummary-reply": "Ibọrọ",
+	"discussiontools-replylink": "{{GENDER:|bọrọ}}",
+	"discussiontools-replywidget-cancel": "Kpọn̄",
+	"discussiontools-replywidget-mode-source": "Ntọñọ",
+	"discussiontools-replywidget-preview": "Se idikpepde",
+	"discussiontools-replywidget-reply": "{{GENDER:|Bọrọ}}",
+	"discussiontools-replywidget-summary": "Se mbụk emi abañade",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ibọrọ|mme ibọrọ}}",
+	"discussiontools-topicsubscription-button-subscribe": "kot kpukpru ini",
+	"discussiontools-topicsubscription-button-subscribe-label": "Kot kpukpru ini",
+	"discussiontools-topicsubscription-button-unsubscribe": "tre ndikot",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Tre ndikot"
 }

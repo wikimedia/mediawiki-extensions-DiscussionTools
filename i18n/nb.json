@@ -120,7 +120,7 @@
 	"discussiontools-replywidget-abandontopic-keep": "Fortsett å skrive",
 	"discussiontools-replywidget-advanced": "Avansert",
 	"discussiontools-replywidget-anon-warning": "<strong>Du er ikke innlogget.</strong> For å få varsel når noen svarer og for å bli kreditert med navnet ditt i stedet for IP-adressa di kan du [$1 logge inn] eller [$2 opprette en konto].",
-	"discussiontools-replywidget-autocreate-warning": "<strong>Du er ikke logget inn.</strong> Du kan [$1 logge inn] eller [$2 opprette en konto] for å bli varslet om svar og få et ordentlig brukernavn.",
+	"discussiontools-replywidget-autocreate-warning": "<strong>Du er ikke logget inn.</strong> Du kan [$1 logge inn] eller [$2 opprette en konto] for å bli varslet om svar og få et ordentlig brukernavn i stedet for et [[$3|autogenerert navn]].",
 	"discussiontools-replywidget-cancel": "Avbryt",
 	"discussiontools-replywidget-feedback": "{{GENDER:|Gi}} tilbakemelding på denne funksjonen",
 	"discussiontools-replywidget-loading": "Laster …",
