@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bennylin"
+			"Bennylin",
+			"27christian11"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Alusi",
 	"discussiontools-replywidget-cancel": "Sundati",
 	"discussiontools-replywidget-mode-source": "Mual na",
 	"discussiontools-replywidget-mode-visual": "Visual",
