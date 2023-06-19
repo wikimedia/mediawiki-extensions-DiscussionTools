@@ -179,18 +179,21 @@ class LanguageData {
 			switch ( $code ) {
 				case 'xx':
 				case 'xg':
+				case 'xn':
 				case 'd':
 				case 'D':
 				case 'j':
 				case 'l':
 				case 'F':
 				case 'M':
+				case 'm':
 				case 'n':
 				case 'Y':
 				case 'xkY':
 				case 'G':
 				case 'H':
 				case 'i':
+				case 's':
 					// Special code - pass through unchanged
 					$s .= $code;
 					break;
