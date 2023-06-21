@@ -7,6 +7,8 @@
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Ášši lea čielggas",
 	"discussiontools-defaultsummary-reply": "Vástádus",
+	"discussiontools-error-noswitchtove-table": "tabeallasyntáksa",
+	"discussiontools-error-noswitchtove-template": "mállesyntáksa",
 	"discussiontools-limitreport-timeusage": "DiscussionTools-áigegeavaheapmi",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundda}}",
 	"discussiontools-notification-subscribed-new-comment-view": "Čájet kommeantta",
@@ -27,6 +29,7 @@
 	"discussiontools-topicsubscription-pager-page": "Siidu",
 	"discussiontools-topicsubscription-pager-topic": "Fáddá",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Heaitte diŋgomis",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Rievdat diŋgomiid",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Ođđa fáddá]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vástádus]"
 }

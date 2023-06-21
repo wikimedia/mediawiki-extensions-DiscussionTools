@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mohammedbama123",
-			"Amire80"
+			"Amire80",
+			"Umargana1"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Kalak ne",
@@ -15,5 +16,7 @@
 	"discussiontools-replywidget-preview": "Rumin",
 	"discussiontools-replywidget-reply": "Kalak ne",
 	"discussiontools-replywidget-summary": "Kasartǝ",
-	"discussiontools-replywidget-watchthis": "Shafi ade kǝllune [[Special:Watchlist|Watchlist]]"
+	"discussiontools-replywidget-watchthis": "Shafi ade kǝllune [[Special:Watchlist|Watchlist]]",
+	"discussiontools-topicsubscription-button-subscribe": "Yuwo",
+	"discussiontools-topicsubscription-button-unsubscribe": "Yuumi"
 }

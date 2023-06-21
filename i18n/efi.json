@@ -1,8 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Samatics"
+			"Samatics",
+			"Maryeren"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Kpọn̄"
+	"discussiontools-defaultsummary-reply": "Ibọrọ",
+	"discussiontools-replywidget-advanced": "Ekaiso",
+	"discussiontools-replywidget-cancel": "Kpọn̄",
+	"discussiontools-replywidget-mode-source": "Ntọñọ",
+	"discussiontools-replywidget-mode-visual": "Ndise",
+	"discussiontools-replywidget-preview": "Se idikpepde",
+	"discussiontools-replywidget-summary": "Se mbụk emi abañade",
+	"discussiontools-replywidget-watchthis": "Dian enye emi ke Page fo\n[[Special:Watchlist|watchlist]]",
+	"discussiontools-topicsubscription-button-subscribe": "kot kpukpru ini",
+	"discussiontools-topicsubscription-button-unsubscribe": "tre ndikot"
 }
