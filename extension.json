@@ -97,7 +97,6 @@
 				"oojs-ui-windows",
 				"mediawiki.api",
 				"mediawiki.Title",
-				"mediawiki.Uri",
 				"mediawiki.util",
 				"mediawiki.storage",
 				"mediawiki.String",
