@@ -674,8 +674,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 		} );
 	}
 
-	var pageExists = !!mw.config.get( 'wgRelevantArticleId' );
-	if ( !pageExists ) {
+	if ( pageName === mw.config.get( 'wgRelevantPageName' ) && data.nocontent ) {
 		// The page didn't exist before this update, so reload it. We'd handle
 		// setting up the content just fine (assuming there's a
 		// mw-parser-output), but fixing up the UI tabs/behavior is outside

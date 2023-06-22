@@ -160,7 +160,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'useskin' => $params['useskin'],
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
-							'captchaword' => $params['captchaword']
+							'captchaword' => $params['captchaword'],
+							'nocontent' => $params['nocontent'],
 						] + $mobileFormatParams,
 						/* was posted? */ true
 					)
@@ -319,7 +320,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'useskin' => $params['useskin'],
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
-							'captchaword' => $params['captchaword']
+							'captchaword' => $params['captchaword'],
+							'nocontent' => $params['nocontent'],
 						],
 						/* was posted? */ true
 					)
@@ -426,6 +428,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			],
 			'captchaword' => [
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-captchaword',
+			],
+			'nocontent' => [
+				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-nocontent',
 			],
 		];
 	}
