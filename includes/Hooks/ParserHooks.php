@@ -69,6 +69,8 @@ class ParserHooks implements
 
 			if ( $parser->getOptions()->getIsPreview() ) {
 				$text = CommentFormatter::removeInteractiveTools( $text );
+				// Suppress the empty state
+				$pout->setExtensionData( 'DiscussionTools-isEmptyTalkPage', null );
 			}
 
 			$pout->addModuleStyles( [
