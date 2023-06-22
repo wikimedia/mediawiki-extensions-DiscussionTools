@@ -16,6 +16,7 @@
 	"apihelp-discussiontoolsedit-param-formtoken": "{{doc-apihelp-param|discussiontoolsedit|formtoken}}",
 	"apihelp-discussiontoolsedit-param-html": "{{doc-apihelp-param|discussiontoolsedit|html}}",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{doc-apihelp-param|discussiontoolsedit|sectiontitle}}",
+	"apihelp-discussiontoolsedit-param-allownosectiontitle": "{{doc-apihelp-param|discussiontoolsedit|allownosectiontitle}}",
 	"apihelp-discussiontoolsedit-param-wikitext": "{{doc-apihelp-param|discussiontoolsedit|wikitext}}",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addcomment}}",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "{{doc-apihelp-paramvalue|discussiontoolsedit|paction|addtopic}}",

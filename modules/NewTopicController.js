@@ -257,6 +257,9 @@ NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 	data = $.extend( {}, data, {
 		paction: 'addtopic',
 		sectiontitle: this.sectionTitle.getValue(),
+		// TODO: Make the user somehow confirm that they really want to post a topic with no subject
+		// before sending this parameter (T334163)
+		allownosectiontitle: true,
 		dttags: tags.join( ',' )
 	} );
 

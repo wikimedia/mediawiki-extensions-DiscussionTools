@@ -118,6 +118,39 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				$wikitext = $params['wikitext'];
 				$html = $params['html'];
 
+				$previewHeading = null;
+				$previewHeadings = $previewThreadItemSet->getThreads();
+				if ( count( $previewHeadings ) > 0 && !$previewHeadings[ 0 ]->isPlaceholderHeading() ) {
+					$previewHeading = $previewHeadings[ 0 ];
+				}
+
+				if ( !$params['allownosectiontitle'] ) {
+					// Check if the preview HTML starts with a section title. Note that even if the provided
+					// 'sectiontitle' param is empty, a heading could been included in the message body, and
+					// that's acceptable (T338390). Heading levels other than the default level 2 are also
+					// acceptable (T267288).
+					if ( !$previewHeading ) {
+						$this->dieWithError( [ 'discussiontools-newtopic-missing-title' ] );
+					}
+				}
+
+				if ( isset( $params['summary'] ) ) {
+					$summary = $params['summary'];
+				} else {
+					// Generate an edit summary from the heading in the preview HTML, rather than from the
+					// 'sectiontitle' param like the action=edit API would. This has two benefits:
+					// * Works when the heading is included in the message body instead of the param (T338390)
+					// * Works better for complicated markup in the heading, e.g. templates (T335200)
+					if ( $previewHeading ) {
+						$sectionTitle = $previewHeading->getLinkableTitle();
+						$summary = $this->msg( 'newsectionsummary' )->plaintextParams( $sectionTitle )
+							->inContentLanguage()->text();
+					} else {
+						// TODO: Should we generate something here? (T275702)
+						$summary = '';
+					}
+				}
+
 				if ( $wikitext !== null ) {
 					if ( $signature !== null ) {
 						$wikitext = CommentModifier::appendSignatureWikitext( $wikitext, $signature );
@@ -151,9 +184,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'page' => $params['page'],
 							'token' => $params['token'],
 							'wikitext' => $wikitext,
-							// A default is provided automatically by the Edit API
-							// for new sections when the summary is empty.
-							'summary' => $params['summary'],
+							'summary' => $summary,
 							'section' => 'new',
 							'sectiontitle' => $params['sectiontitle'],
 							'starttimestamp' => wfTimestampNow(),
@@ -414,6 +445,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			'sectiontitle' => [
 				ParamValidator::PARAM_TYPE => 'string',
 			],
+			'allownosectiontitle' => false,
 			'useskin' => [
 				ParamValidator::PARAM_TYPE => array_keys( $this->skinFactory->getInstalledSkins() ),
 				ApiBase::PARAM_HELP_MSG => 'apihelp-parse-param-useskin',
