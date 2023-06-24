@@ -78,7 +78,9 @@ class SpecialFindComment extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
-		$this->idOrName = $data['idorname'];
+		// They are correctly written with underscores, but allow spaces too for consistency with
+		// the behavior of internal wiki links.
+		$this->idOrName = str_replace( ' ', '_', $data['idorname'] );
 		return true;
 	}
 
