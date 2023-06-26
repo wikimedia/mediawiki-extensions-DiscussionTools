@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Samatics"
+			"Samatics",
+			"Maryeren"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Kpọn̄"
+	"discussiontools-defaultsummary-reply": "Ibọrọ",
+	"discussiontools-replywidget-cancel": "Kpọn̄",
+	"discussiontools-replywidget-mode-source": "Ntọñọ",
+	"discussiontools-replywidget-mode-visual": "Ndise",
+	"discussiontools-replywidget-preview": "Se idikpepde"
 }

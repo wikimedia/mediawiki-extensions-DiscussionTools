@@ -6,8 +6,19 @@
 	},
 	"discussiontools-defaultsummary-reply": "Bales",
 	"discussiontools-desc": "Peranti bakal ningkatin halaman perhadring.",
+	"discussiontools-preference-label": "Peranti perhadring",
 	"discussiontools-replywidget-cancel": "Urungin",
+	"discussiontools-replywidget-loading": "Muat...",
+	"discussiontools-replywidget-mention-tool-title": "Sebut pemaké",
 	"discussiontools-replywidget-mode-source": "Sumber",
-	"discussiontools-replywidget-mode-visual": "Liatan",
-	"discussiontools-replywidget-preview": "Pradeleng"
+	"discussiontools-replywidget-mode-visual": "Delengan",
+	"discussiontools-replywidget-preview": "Pradeleng",
+	"discussiontools-replywidget-transcluded": "Lu punya tanggepan bakal disimpen di [[$1]].",
+	"tag-discussiontools-description": "Permakan dikeja paké DiscussionTools",
+	"tag-discussiontools-edit-description": "Pemaké mermak tanggepan nyang udah ada paké DiscussionTools",
+	"tag-discussiontools-newtopic-description": "Pemaké nambahin topik baru ke halaman paké DiscussionTools",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Bales]",
+	"tag-discussiontools-reply-description": "Pemaké ngebales tanggepan paké DiscussionTools",
+	"tag-discussiontools-source-description": "DiscussionTools – dalem mode sumber",
+	"tag-discussiontools-visual-description": "DiscussionTools – dalem mode delengan"
 }
