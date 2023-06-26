@@ -37,7 +37,7 @@
 	"discussiontools-error-lint": "Tanggepan di ni halaman kaga' bisa dijawab lantaran adanya kengabluan di tèks wiki. {{GENDER:|Lu}} bisa belajarin pasal ni kengabluan dengen [$1 ngebaca dokumèntasi], minta tulung dengen [$2 mublisir atawa ngirim di mari], atawa betulin kengabluannya dengen [$3 ngebuka pemermak halaman penu].",
 	"discussiontools-error-noswitchtove": "Maap, ngeganti ke mode delengan dimatiin sebab <b>$1</b> keendus di tanggepan {{GENDER:|lu}} punya tulis.[https://www.mediawiki.org/wiki/Special:MyLanguage/Help:DiscussionTools/Reply_tool_visual_mode_limitations Belajarin lebi lanjut].",
 	"discussiontools-error-noswitchtove-extension": "èkstènsi atawa nahwu ruju'an",
-	"discussiontools-error-noswitchtove-table": "nahwu tabèl",
+	"discussiontools-error-noswitchtove-table": "nahwu jadwal",
 	"discussiontools-error-noswitchtove-template": "nahwu blatan",
 	"discussiontools-error-noswitchtove-title": "Mode delengan dimatiin",
 	"discussiontools-findcomment-results-id": "Tanggepan dengen tu ID udah nongol di ni {{PLURAL:$1|halaman|halaman pada}}:",
