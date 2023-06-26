@@ -222,6 +222,11 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 
 	// New topics subscription button
 	( function () {
+		// Note: because this function gets called from `wikipage.content`,
+		// and we're interacting with elements outside of $container, make
+		// sure to account for this possibly being run multiple times on a
+		// pageload. Calls from DT's own previews are filtered out, but other
+		// page actions like live-preview can still reach this point.
 		var $button, $label, $icon;
 
 		if ( mw.config.get( 'skin' ) === 'minerva' ) {
@@ -243,7 +248,7 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 		var titleObj = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
 		var name = utils.getNewTopicsSubscriptionId( titleObj );
 
-		$button.on( 'click', function ( e ) {
+		$button.off( '.mw-dt-topicsubscriptions' ).on( 'click.mw-dt-topicsubscriptions', function ( e ) {
 			e.preventDefault();
 			// Get latest subscribedState
 			var subscribedState = getSubscribedStateFromElement( $button[ 0 ] );
