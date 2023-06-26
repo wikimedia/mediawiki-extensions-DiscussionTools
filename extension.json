@@ -66,7 +66,8 @@
 					"config": {
 						"replyIndentation": "DiscussionToolsReplyIndentation",
 						"switchTime": "DiscussionToolsTimestampFormatSwitchTime",
-						"showFeedbackLinks": "DiscussionToolsShowFeedbackLinks"
+						"showFeedbackLinks": "DiscussionToolsShowFeedbackLinks",
+						"enablePermalinksFrontend": "DiscussionToolsEnablePermalinksFrontend"
 					}
 				},
 				"ReplyLinksController.js",
@@ -144,6 +145,8 @@
 				"discussiontools-target-comment-missing",
 				"discussiontools-target-heading-missing",
 				"discussiontools-target-comments-missing",
+				"discussiontools-target-comment-found-moved",
+				"discussiontools-target-heading-found-moved",
 				"discussiontools-topicsubscription-button-subscribe",
 				"discussiontools-topicsubscription-button-subscribe-label",
 				"discussiontools-topicsubscription-button-subscribe-tooltip",
@@ -573,9 +576,9 @@
 			"value": true,
 			"description": "Enable the permalinks backend. Do not enable this unless the database tables exist."
 		},
-		"DiscussionToolsEnableTimestampLinks": {
+		"DiscussionToolsEnablePermalinksFrontend": {
 			"value": true,
-			"description": "Convert signature timestamps to comment links."
+			"description": "Enable permalinks frontend features: 1. Convert signature timestamps to comment links. 2. Show notification when the target comment is found on another page."
 		},
 		"DiscussionToolsAutoTopicSubEditor": {
 			"value": "any",

@@ -156,6 +156,8 @@
 	"discussiontools-target-comment-missing": "This comment could not be found. It might have been deleted or moved.",
 	"discussiontools-target-comments-missing": "New comments could not be found. They might have been deleted or moved.",
 	"discussiontools-target-heading-missing": "This topic could not be found. It might have been deleted or moved.",
+	"discussiontools-target-comment-found-moved": "This comment could not be found on this page, but it does exist on the following {{PLURAL:$1|page|pages}}:",
+	"discussiontools-target-heading-found-moved": "This topic could not be found on this page, but it does exist on the following {{PLURAL:$1|page|pages}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|people}} in discussion",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comment|comments}}",
 	"discussiontools-topicheader-latestcomment": "Latest comment: $1",

@@ -542,6 +542,7 @@ function init( $container, state ) {
 		}
 	} );
 
+	var dismissableNotificationPromise = null;
 	// Page-level handlers only need to be setup once
 	if ( !pageHandlersSetup ) {
 		$( window ).on( 'popstate', function () {
@@ -557,12 +558,94 @@ function init( $container, state ) {
 				// Remove the highlight and the hash from the URL, unless clicking on another link
 				highlighter.clearHighlightTargetComment( pageThreads );
 			}
+			if ( dismissableNotificationPromise ) {
+				dismissableNotificationPromise.then( function ( notif ) {
+					notif.close();
+				} );
+				dismissableNotificationPromise = null;
+			}
 		} );
 		pageHandlersSetup = true;
 	}
 	if ( state.firstLoad ) {
 		promise.then( function () {
-			highlighter.highlightTargetComment( pageThreads );
+			var highlightResult = highlighter.highlightTargetComment( pageThreads );
+			if ( highlightResult.highlighted.length === 0 ) {
+				// TODO: Support multiple commentIds being requested and not all being found
+				if ( highlightResult.requested.length === 1 ) {
+					var isHeading = highlightResult.requested[ 0 ].slice( 0, 1 ) === 'h';
+					var dtConf = require( './config.json' );
+					var findCommentRequest = dtConf.enablePermalinksFrontend ?
+						getApi().get( {
+							action: 'discussiontoolsfindcomment',
+							idorname: highlightResult.requested[ 0 ]
+						} ) :
+						$.Deferred().resolve( {} ).promise();
+					dismissableNotificationPromise = $.when(
+						findCommentRequest,
+						mw.loader.using( 'mediawiki.notification' )
+					).then( function ( results ) {
+						var result = results[ 0 ];
+						var titles = [];
+						if ( result.discussiontoolsfindcomment ) {
+							titles = result.discussiontoolsfindcomment.map( function ( threadItemData ) {
+								// oldid=null means the item appears on the current revision of the page
+								if ( !threadItemData.oldid ) {
+									var title = mw.Title.newFromText(
+										threadItemData.title + '#' +
+										mw.util.escapeIdForLink( threadItemData.id )
+									);
+									return title;
+								}
+								return null;
+							} ).filter( function ( url ) {
+								return url;
+							} );
+						}
+						if ( titles.length ) {
+							var $list = $( '<ul>' );
+							var $notification = $( '<div>' ).append(
+								$( '<p>' ).text( mw.message(
+									isHeading ?
+										'discussiontools-target-heading-found-moved' :
+										'discussiontools-target-comment-found-moved',
+									titles.length
+								).text() ),
+								$list
+							);
+							titles.forEach( function ( title ) {
+								$list.append(
+									$( '<li>' ).append(
+										$( '<a>' ).attr( 'href', title.getUrl() ).text( title.getPrefixedText() )
+									)
+								);
+							} );
+							mw.notification.notify(
+								$notification,
+								{ type: 'warn', autoHide: false }
+							);
+							// This notification should not be accidentally dismissable
+							return $.Deferred().reject().promise();
+						} else {
+							return mw.notification.notify(
+								mw.message( isHeading ?
+									'discussiontools-target-heading-missing' :
+									'discussiontools-target-comment-missing'
+								).text(),
+								{ type: 'warn', autoHide: false }
+							);
+						}
+					} );
+				}
+				if ( highlightResult.requested.length > 1 || highlightResult.requestedSince ) {
+					dismissableNotificationPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
+						return mw.notification.notify(
+							mw.message( 'discussiontools-target-comments-missing' ).text(),
+							{ type: 'warn', autoHide: false }
+						);
+					} );
+				}
+			}
 		} );
 	}
 }
