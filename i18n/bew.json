@@ -12,7 +12,7 @@
 	"discussiontools-emptystate-title": "Mulain perhadring pasal {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user": "Mulain perhadring {{GENDER:{{PAGENAME}}|ama}} {{PAGENAME}}",
 	"discussiontools-error-noswitchtove-extension": "èkstènsi atawa nahwu ruju'an",
-	"discussiontools-error-noswitchtove-table": "nahwu tabèl",
+	"discussiontools-error-noswitchtove-table": "nahwu jadwal",
 	"discussiontools-error-noswitchtove-template": "nahwu blatan",
 	"discussiontools-error-noswitchtove-title": "Mode delengan dimatiin",
 	"discussiontools-findcomment-results-id": "Tanggepan dengen tu ID udah nongol di ni {{PLURAL:$1|halaman|halaman pada}}:",
