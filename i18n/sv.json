@@ -54,6 +54,7 @@
 	"discussiontools-newtopic-placeholder-title": "Rubrik",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarade}} på \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Ett nytt svar|$1 nya svar|100=99+ nya svar}} på \"<strong>$3</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Visa kommentar",
 	"discussiontools-postedit-confirmation-published": "Din kommentar publicerades.",
 	"discussiontools-postedit-confirmation-topicadded": "Ditt ämne lades till.",
