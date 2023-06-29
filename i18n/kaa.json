@@ -55,6 +55,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Temanı taslap ketiw",
 	"discussiontools-replywidget-abandontopic-keep": "Jazıwdı dawam etiw",
 	"discussiontools-replywidget-advanced": "Keńeytilgen",
+	"discussiontools-replywidget-anon-warning": "<strong>Siz sistemaǵa kirmegensiz.</strong> Basqalar sizge juwap bergende xabardar bolıw hám siz jazǵan pikirler astında IP adresińiz emes, atıńız kóriniwi ushın [$1 sistemaǵa kirińiz] yamasa [$2 akkaunt jaratıńız].",
 	"discussiontools-replywidget-cancel": "Biykar etiw",
 	"discussiontools-replywidget-loading": "Júklenbekte...",
 	"discussiontools-replywidget-mention-tool-header": "Paydalanıwshını tabıw: $1",
