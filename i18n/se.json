@@ -2,10 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Kimberli Mäkäräinen (WMNO)",
-			"Yupik"
+			"Yupik",
+			"Lea-Christine Sara"
 		]
 	},
+	"discussiontools": "Ságastallanreaiddut",
 	"discussiontools-defaultsummary-reply": "Vástádus",
+	"discussiontools-desc": "Reaiddut buoridan dihte ságastallan siidduid.",
 	"discussiontools-replylink": "vástit",
 	"discussiontools-replywidget-cancel": "Šluhtte",
 	"discussiontools-replywidget-mode-source": "Gáldokoda",
