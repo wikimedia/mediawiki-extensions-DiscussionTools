@@ -8,6 +8,8 @@
 	"discussiontools-replylink": "жооп берүү",
 	"discussiontools-replywidget-advanced": "Кеңейтүү",
 	"discussiontools-replywidget-cancel": "Жокко чыгаруу",
+	"discussiontools-replywidget-mode-visual": "Визуалдык",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} {{GENDER:|жооп берүү}}",
 	"discussiontools-replywidget-preview": "Алдын ала көрүү",
 	"discussiontools-replywidget-reply": "Жооп берүү",
 	"discussiontools-replywidget-summary": "Түшүндүрмө",
@@ -17,5 +19,8 @@
 	"discussiontools-topicheader-latestcomment": "Соңку пикир: $1",
 	"discussiontools-topicsubscription-button-subscribe": "жазылуу",
 	"discussiontools-topicsubscription-button-subscribe-label": "Жазылуу",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Жазылдыңыз !"
+	"discussiontools-topicsubscription-button-unsubscribe": "жазылуудан баш тартуу",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Жазылуудан баш тартуу",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Жазылдыңыз !",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Жазылуудан баш тарттыңыз."
 }

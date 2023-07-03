@@ -47,6 +47,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(pole praeguses redaktsioonis)",
 	"discussiontools-findcomment-results-transcluded": "(teiselt leheküljelt mallikasutusena)",
 	"discussiontools-findcomment-title": "Kommentaari leidmine",
+	"discussiontools-ledesection-button": "Lisateave selle lehekülje kohta",
+	"discussiontools-ledesection-title": "Selle lehekülje kohta",
 	"discussiontools-limitreport-timeusage": "DiscussionToolsi ajakasutus",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekundit}}",
 	"discussiontools-newtopic-missing-title": "Palun pealkirjasta aruteluteema. Kui klõpsad nuppu \"{{int:discussiontools-replywidget-newtopic}}\", lisatakse teema ilma pealkirjata.",
