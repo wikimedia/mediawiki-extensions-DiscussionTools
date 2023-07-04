@@ -7,6 +7,7 @@
 	"discussiontools-defaultsummary-reply": "Жооп",
 	"discussiontools-replywidget-advanced": "Кеңейтүү",
 	"discussiontools-replywidget-cancel": "Жокко чыгаруу",
+	"discussiontools-replywidget-mode-visual": "Визуалдык",
 	"discussiontools-replywidget-preview": "Алдын ала көрүү",
 	"discussiontools-replywidget-reply": "Жооп берүү",
 	"discussiontools-replywidget-summary": "Түшүндүрмө",
@@ -15,5 +16,7 @@
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|пикир}}",
 	"discussiontools-topicheader-latestcomment": "Соңку пикир: $1",
 	"discussiontools-topicsubscription-button-subscribe": "жазылуу",
-	"discussiontools-topicsubscription-button-subscribe-label": "Жазылуу"
+	"discussiontools-topicsubscription-button-subscribe-label": "Жазылуу",
+	"discussiontools-topicsubscription-button-unsubscribe": "жазылуудан баш тартуу",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Жазылуудан баш тартуу"
 }
