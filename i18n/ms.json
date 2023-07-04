@@ -36,7 +36,7 @@
 	"discussiontools-preference-label": "Alat perbincangan",
 	"discussiontools-preference-newtopictool-createpage-editor": "Buka penyunting wikiteks",
 	"discussiontools-preference-visualenhancements": "Lihat kegiatan perbincangan",
-	"discussiontools-replybutton": "Balas",
+	"discussiontools-replybutton": "{{GENDER:|Balas}}",
 	"discussiontools-replylink": "{{GENDER:|balas}}",
 	"discussiontools-replywidget-abandon-keep": "Teruskan menulis",
 	"discussiontools-replywidget-abandontopic-keep": "Teruskan menulis",
