@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lifeway"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Вашмут",
+	"discussiontools-replylink": "{{GENDER:|вашешташ}}",
+	"discussiontools-replywidget-advanced": "Ешарен",
+	"discussiontools-replywidget-cancel": "Чараш",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Вашешташ}}: {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Ончылгоч ончымаш",
+	"discussiontools-replywidget-reply": "{{GENDER:|Вашешташ}}",
+	"discussiontools-replywidget-summary": "Возен ончыктымаш",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|еҥ}} каҥашымаште",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|увертарымаш}}",
+	"discussiontools-topicheader-latestcomment": "Пытартыш увертарымаш: $1",
+	"discussiontools-topicsubscription-button-subscribe": "возалташ",
+	"discussiontools-topicsubscription-button-subscribe-label": "Возалташ",
+	"discussiontools-topicsubscription-button-unsubscribe": "ӧрдыжтаралташ",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Ӧрдыжтаралташ",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Тый}} возалтынат!"
+}
