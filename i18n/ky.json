@@ -7,9 +7,11 @@
 	"discussiontools-defaultsummary-reply": "Жооп",
 	"discussiontools-replywidget-advanced": "Кеңейтүү",
 	"discussiontools-replywidget-cancel": "Жокко чыгаруу",
+	"discussiontools-replywidget-mode-visual": "Визуалдык",
 	"discussiontools-replywidget-preview": "Алдын ала көрүү",
 	"discussiontools-replywidget-reply": "Жооп берүү",
 	"discussiontools-replywidget-summary": "Түшүндүрмө",
 	"discussiontools-replywidget-watchthis": "Бул баракты [[Special:Watchlist|көзөмөл тизмегиме]] кошуу",
-	"discussiontools-topicsubscription-button-subscribe": "жазылуу"
+	"discussiontools-topicsubscription-button-subscribe": "жазылуу",
+	"discussiontools-topicsubscription-button-unsubscribe": "жазылуудан баш тартуу"
 }
