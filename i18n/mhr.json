@@ -13,6 +13,7 @@
 	"discussiontools-replywidget-preview": "Ончылгоч ончымаш",
 	"discussiontools-replywidget-reply": "{{GENDER:|Вашешташ}}",
 	"discussiontools-replywidget-summary": "Возен ончыктымаш",
+	"discussiontools-replywidget-watchthis": "Тиде велыжым тыйын [[Special:Watchlist|эскерыме спискыш]] ешараш",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|еҥ}} каҥашымаште",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|увертарымаш}}",
 	"discussiontools-topicheader-latestcomment": "Пытартыш увертарымаш: $1",
@@ -20,5 +21,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Возалташ",
 	"discussiontools-topicsubscription-button-unsubscribe": "ӧрдыжтаралташ",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Ӧрдыжтаралташ",
-	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Тый}} возалтынат!"
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Тый}} тиде темыште у увертарымаш нерген шижтарымашым наледаш тӱҥалат.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Тый}} возалтынат!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Тый}} тиде темыште у увертарымаш нерген шижтарымашым наледаш тетла от тӱҥал.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Тый}} ӧрдыжтаралтынат."
 }
