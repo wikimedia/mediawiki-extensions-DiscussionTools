@@ -173,9 +173,8 @@ ReplyLinksController.prototype.parseNewTopicLink = function ( href ) {
 	if ( url.searchParams.get( 'preload' ) ) {
 		data.preload = url.searchParams.get( 'preload' );
 	}
-	if ( url.searchParams.getAll( 'preloadparams[]' ).length ) {
-		// Handle numbered array parameters like MediaWiki's PHP code does (T231382)
-		data.preloadparams = new mw.Uri( url.toString(), { arrayParams: true } ).query.preloadparams;
+	if ( mw.util.getArrayParam( 'preloadparams', url.searchParams ) ) {
+		data.preloadparams = mw.util.getArrayParam( 'preloadparams', url.searchParams );
 	}
 	if ( url.searchParams.get( 'preloadtitle' ) ) {
 		data.preloadtitle = url.searchParams.get( 'preloadtitle' );
