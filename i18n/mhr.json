@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lifeway"
+			"Lifeway",
+			"Венина Наталья Константиновна"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Вашмут",
@@ -9,6 +10,7 @@
 	"discussiontools-replywidget-advanced": "Ешарен",
 	"discussiontools-replywidget-cancel": "Чараш",
 	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Кузе коеш",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Вашешташ}}: {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Ончылгоч ончымаш",
 	"discussiontools-replywidget-reply": "{{GENDER:|Вашешташ}}",
