@@ -20,6 +20,7 @@
 	"discussiontools-emptystate-title": "Započni raspravu o stranici {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "{{GENDER:|Dobro došli}} na svoju stranicu za razgovor",
 	"discussiontools-emptystate-title-self-anon": "{{GENDER:|Dobro došli}} na stranicu za razgovor",
+	"discussiontools-emptystate-title-user": "Započni razgovor s {{GENDER:{{PAGENAME}}|korisnikom|korisnicom|osobom}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "{{GENDER:|Dobro došli}} na stranicu za razgovor",
 	"discussiontools-error-comment-conflict": "Ne mogu sačuvati {{GENDER:|Vaš}} komentar jer je neko drugi prokomentirao u isto vrijeme. Pokušajte ponovo ili ponovo učitajte stranicu da biste vidjeli najnovije komentare.",
 	"discussiontools-error-comment-disappeared": "Ne mogu pronaći komentar na koji {{GENDER:|odgovarate}}. Možda je izbrisan ili premješten na drugu stranicu.",
