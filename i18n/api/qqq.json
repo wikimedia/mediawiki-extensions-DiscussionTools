@@ -26,6 +26,7 @@
 	"apihelp-discussiontoolsgetsubscriptions-summary": "{{doc-apihelp-summary|discussiontoolsgetsubscriptions}}",
 	"apihelp-discussiontoolspageinfo-param-oldid": "{{doc-apihelp-param|discussiontoolspageinfo|oldid}}",
 	"apihelp-discussiontoolspageinfo-param-prop": "{{doc-apihelp-param|discussiontoolspageinfo|prop}}",
+	"apihelp-discussiontoolspageinfo-param-excludesignatures": "{{doc-apihelp-param|discussiontoolspageinfo|excludesignatures}}",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "{{doc-apihelp-paramvalue|discussiontoolspageinfo|prop|threaditemshtml}}",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "{{doc-apihelp-paramvalue|discussiontoolspageinfo|prop|transcludedfrom}}",
 	"apihelp-discussiontoolspageinfo-summary": "{{doc-apihelp-summary|discussiontoolspageinfo}}",
