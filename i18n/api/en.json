@@ -14,6 +14,7 @@
 	"apihelp-discussiontoolsedit-param-formtoken": "An optional unique ID generated in the client to prevent double-posting.",
 	"apihelp-discussiontoolsedit-param-html": "Content to post, as HTML. Cannot be used together with <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Only used when <var>paction</var> is <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-allownosectiontitle": "Allow posting a new section without a title.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Content to post, as wikitext. Cannot be used together with <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Add a new comment as a reply to an existing comment.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Add a new discussion section and the first comment in it.",
