@@ -459,6 +459,15 @@ CommentController.prototype.save = function ( pageName ) {
 			data.nocontent = true;
 		}
 
+		if ( replyWidget.commentDetails.wouldAutoCreate ) {
+			// This means that we might need to redirect to an opaque URL,
+			// so we must set up query parameters we want ahead of time.
+			data.returnto = pageName;
+			var params = new URLSearchParams();
+			params.set( 'dtrepliedto', commentController.getThreadItem().id );
+			data.returntoquery = params.toString();
+		}
+
 		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
 		// could result in duplicate messages if the user retries. (T249071)
 		var defaults = OO.copy( controller.getApi().defaults );
