@@ -23,7 +23,7 @@
 	"discussiontools-defaultsummary-reply": "ردّ",
 	"discussiontoolsdebug-title": "هيكل بيانات أدوات المناقشة",
 	"discussiontoolsdebug-pagetitle": "عنوان الصفحة",
-	"discussiontoolsdebug-intro": "توضح هذه الصفحة كيف يتعرف [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools امتداد أداة النقاش] على خيط المحادثات والتعليقات الموجودة على الصفحة '''[[:$1]]'''. قد تجد مفيدًا تصحيحُ الأخطاء المتعلقة بالامتداد أو فهم كيفية عمله. تتوفر نفس المعلومات في [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "توضح هذه الصفحة كيف يتعرف [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools امتداد أداة النقاش] على خيط المحادثات والتعليقات الموجودة على الصفحة '''[[:$1]]'''. قد تجد مفيدًا تصحيحُ الأخطاء المتعلقة بالامتداد أو فهم كيفية عمله. تتوفر نفس المعلومات في [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "أدوات لتحسين صفحات النقاش.",
 	"discussiontools-emptystate-button": "بَدْء نقاش",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|صفحات النقاش]] هي المكان الذي يناقش فيه المستخدمون كيفية تطوير المحتوى في {{SITENAME}} بأحسن طريقة ممكنة. {{GENDER:|يمكنكَ|يمكنكِ}} استخدام صفحة النقاش هذه لبدء نقاش مع الآخرين حول كيفية تطوير وتحسين صفحة [[:{{SUBJECTPAGENAME}}]].",

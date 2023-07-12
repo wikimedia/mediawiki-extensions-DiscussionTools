@@ -15,7 +15,7 @@
 	"discussiontools-defaultsummary-reply": "Răspuns",
 	"discussiontoolsdebug-title": "Structura datelor uneltelor de discuție",
 	"discussiontoolsdebug-pagetitle": "Titlul paginii",
-	"discussiontoolsdebug-intro": "Această pagină demonstrează cum [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools extensia DiscussionTools] recunoaște subiectele și comentariile prezente pe pagina '''[[:$1]]'''. S-ar putea să o găsiți utilă la depanarea problemelor cu extensia sau la a înțelege cum funcționează. Aceleași informații sunt disponibile în [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "Această pagină demonstrează cum [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools extensia DiscussionTools] recunoaște subiectele și comentariile prezente pe pagina '''[[:$1]]'''. S-ar putea să o găsiți utilă la depanarea problemelor cu extensia sau la a înțelege cum funcționează. Aceleași informații sunt disponibile în [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Unelte pentru îmbunătățirea paginilor de discuție.",
 	"discussiontools-emptystate-button": "Începeți o discuție",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Paginile de discuție]] {{GENDER:|sunt}} locul unde oamenii discută despre cum să facă conținutul de pe {{SITENAME}} să fie cât se poate de bun. Puteți utiliza această pagină pentru a începe o discuție cu alții despre cum să se îmbunătățească [[:{{SUBJECTPAGENAME}}]].",

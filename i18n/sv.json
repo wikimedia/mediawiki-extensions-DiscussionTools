@@ -23,7 +23,7 @@
 	"discussiontools-defaultsummary-reply": "Svar",
 	"discussiontoolsdebug-title": "Diskussionsverktygets datastruktur",
 	"discussiontoolsdebug-pagetitle": "Sidtitel",
-	"discussiontoolsdebug-intro": "Den här sidan visar hur  [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools tillägget DiscussionTools] känner igen trådarna och kommentarerna som finns på sidan '''[[:$1]]'''. Du kan använda den för att felsöka problem med tillägget eller förstå hur det fungerar. Samma information finns i [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "Den här sidan visar hur  [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools tillägget DiscussionTools] känner igen trådarna och kommentarerna som finns på sidan '''[[:$1]]'''. Du kan använda den för att felsöka problem med tillägget eller förstå hur det fungerar. Samma information finns i [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Verktyg för att förbättra diskussionssidor.",
 	"discussiontools-emptystate-button": "Starta en diskussion",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Diskussionssidor]] är där folk kan diskutera hur man kan förbättra innehållet på {{SITENAME}}. {{GENDER:|Du}} kan använda den här sidan för att starta en diskussion med andra om hur [[:{{SUBJECTPAGENAME}}]] kan förbättras.",

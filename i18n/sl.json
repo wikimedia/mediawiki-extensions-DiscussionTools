@@ -15,7 +15,7 @@
 	"discussiontools-defaultsummary-reply": "Odgovor",
 	"discussiontoolsdebug-title": "Podatkovna struktura orodij za razprave",
 	"discussiontoolsdebug-pagetitle": "Naslov strani",
-	"discussiontoolsdebug-intro": "Ta stran prikazuje, kako [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools razširitev DiscussionTools] prepozna teme in komentarje na strani '''[[:$1]]'''. Morda vam bo koristila pri odpravljanju napak z razširitvijo ali razumevanju njenega delovanja. Iste informacije so na voljo v [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|API-ju discussiontoolspageinfo]].",
+	"discussiontoolsdebug-intro": "Ta stran prikazuje, kako [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools razširitev DiscussionTools] prepozna teme in komentarje na strani '''[[:$1]]'''. Morda vam bo koristila pri odpravljanju napak z razširitvijo ali razumevanju njenega delovanja. Enake informacije so na voljo v [[$2|API-ju discussiontoolspageinfo]].",
 	"discussiontools-desc": "Orodja za izboljšanje razpravne strani.",
 	"discussiontools-emptystate-button": "Začnite razpravo",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Pogovorne strani]] so mesto za pogovor o tem, kako v projektu {{SITENAME}} ustvariti najboljšo mogočo vsebino. To stran lahko {{GENDER:|uporabite}} za začetek razprave o tem, kako izboljšati stran [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]].",

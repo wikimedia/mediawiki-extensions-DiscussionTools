@@ -29,7 +29,7 @@
 	"discussiontools-defaultsummary-reply": "Réponse",
 	"discussiontoolsdebug-title": "Structure des données des outils de discussion",
 	"discussiontoolsdebug-pagetitle": "Titre de la page",
-	"discussiontoolsdebug-intro": "Cette page montre comment l’[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools extension Outils de discussion] reconnaît les fils de discussion et les commentaires présents sur la page '''[[:$1]]'''. Vous pouvez trouver cela utile pour déboguer des problèmes avec l’extension ou comprendre son fonctionnement. Les mêmes informations sont disponibles dans l’[[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|API discussiontoolspageinfo]].",
+	"discussiontoolsdebug-intro": "Cette page montre comment l’[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools extension Outils de discussion] reconnaît les fils de discussion et les commentaires présents sur la page '''[[:$1]]'''. Vous pouvez trouver cela utile pour déboguer des problèmes avec l’extension ou comprendre son fonctionnement. Les mêmes informations sont disponibles dans l’[[$2|API discussiontoolspageinfo]].",
 	"discussiontools-desc": "Outils pour améliorer les pages de discussion.",
 	"discussiontools-emptystate-button": "Démarrer une discussion",
 	"discussiontools-emptystate-desc": "Les [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|pages de discussion]] sont l’endroit où diverses personnes peuvent discuter de la manière d’améliorer le contenu de {{SITENAME}}. {{GENDER:|}}Vous pouvez utiliser cette page pour démarrer une discussion avec les autres utilisateurs sur la façon d’améliorer [[:{{SUBJECTPAGENAME}}]].",

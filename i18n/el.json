@@ -18,7 +18,7 @@
 	"discussiontools-defaultsummary-reply": "Απάντηση",
 	"discussiontoolsdebug-title": "Δομή δεδομένων εργαλείων συζήτησης",
 	"discussiontoolsdebug-pagetitle": "Τίτλος σελίδας",
-	"discussiontoolsdebug-intro": "Αυτή η σελίδα δείχνει πώς η [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools επέκταση DiscussionTools] αναγνωρίζει τα νήματα και τα σχόλια που υπάρχουν στη σελίδα '''[[:$1]]'''. Μπορεί να σας φανεί χρήσιμο για τον εντοπισμό σφαλμάτων με την επέκταση ή για την κατανόηση του τρόπου λειτουργίας της. Οι ίδιες πληροφορίες είναι διαθέσιμες στο [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "Αυτή η σελίδα δείχνει πώς η [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools επέκταση DiscussionTools] αναγνωρίζει τα νήματα και τα σχόλια που υπάρχουν στη σελίδα '''[[:$1]]'''. Μπορεί να σας φανεί χρήσιμο για τον εντοπισμό σφαλμάτων με την επέκταση ή για την κατανόηση του τρόπου λειτουργίας της. Οι ίδιες πληροφορίες είναι διαθέσιμες στο [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Εργαλεία για τη βελτίωση των σελίδων συζήτησης.",
 	"discussiontools-emptystate-button": "Ξεκινήστε μια συζήτηση",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Σελίδες συζήτησης]] είναι όπου οι άνθρωποι συζητούν πώς να κάνουν το περιεχόμενο στον {{SITENAME}} όσο το δυνατόν καλύτερο. {{GENDER:|Εσείς}} μπορείτε να χρησιμοποιήσετε αυτήν τη σελίδα για να ξεκινήσετε μια συζήτηση με άλλους σχετικά με το πώς να βελτιώσετε το [[:{{SUBJECTPAGENAME}}]].",

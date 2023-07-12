@@ -43,7 +43,7 @@
 	"discussiontools-defaultsummary-reply": "回复",
 	"discussiontoolsdebug-title": "讨论工具数据结构",
 	"discussiontoolsdebug-pagetitle": "页面标题",
-	"discussiontoolsdebug-intro": "此页面演示[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools扩展]如何识别页面'''[[:$1]]'''上的讨论串和留言，有助于调试扩展的问题或了解其工作原理。[[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]]中提供相同的信息。",
+	"discussiontoolsdebug-intro": "此页面演示[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools扩展]如何识别页面'''[[:$1]]'''上的讨论串和留言，有助于调试扩展的问题或了解其工作原理。[[$2|discussiontoolspageinfo API]]中提供相同的信息。",
 	"discussiontools-desc": "增强讨论页面的工具。",
 	"discussiontools-emptystate-button": "发起讨论",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|讨论页]]是用户讨论如何完善{{SITENAME}}中内容的地方。{{GENDER:|您}}可以使用此页面与他人讨论如何改善[[:{{SUBJECTPAGENAME}}]]。",

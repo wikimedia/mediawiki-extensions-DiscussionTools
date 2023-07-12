@@ -11,7 +11,7 @@
 	"discussiontools-defaultsummary-reply": "Responder",
 	"discussiontoolsdebug-title": "Structura de datos del utensiles de discussion",
 	"discussiontoolsdebug-pagetitle": "Titulo del pagina",
-	"discussiontoolsdebug-intro": "Iste pagina demonstrate como le [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools extension DiscussionTools] recognosce le discussiones e commentos presente sur le pagina '''[[:$1]]'''. Illo pote esser utile pro resolver problemas con le extension o pro comprender como functiona. Le mesme information es disponibile in le [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|API discussiontoolspageinfo]].",
+	"discussiontoolsdebug-intro": "Iste pagina demonstrate como le [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools extension DiscussionTools] recognosce le discussiones e commentos presente sur le pagina '''[[:$1]]'''. Illo pote esser utile pro resolver problemas con le extension o pro comprender como functiona. Le mesme information es disponibile in le [[$2|API discussiontoolspageinfo]].",
 	"discussiontools-desc": "Instrumentos pro meliorar paginas de discussion.",
 	"discussiontools-emptystate-button": "Initiar un discussion",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Paginas de discussion]] es ubi le gente discute como facer le contento de {{SITENAME}} le melior possibile. Tu pote usar iste pagina pro initiar un discussion con alteres sur como meliorar [[:{{SUBJECTPAGENAME}}]].",

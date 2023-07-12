@@ -11,7 +11,7 @@
 	"discussiontools-defaultsummary-reply": "Bales",
 	"discussiontoolsdebug-title": "Struktur data peranti perhadring",
 	"discussiontoolsdebug-pagetitle": "Judul halaman",
-	"discussiontoolsdebug-intro": "Ni halaman ngasi unjuk pagémana [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools èkstènsi DiscussionTool] ngenalin kuwelan èn tanggepan nyang ada di halaman '''[[:$1]]'''. Barangkali, tu beguna bakal lu dalem ngebuang masalah bangsat nyang bekaètan dengen èkstènsinya atawa bakal mahamin cara kerjanya. Inpormasi nyang sama bisa juga' diliat di [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "Ni halaman ngasi unjuk pagémana [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools èkstènsi DiscussionTool] ngenalin kuwelan èn tanggepan nyang ada di halaman '''[[:$1]]'''. Barangkali, tu beguna bakal lu dalem ngebuang masalah bangsat nyang bekaètan dengen èkstènsinya atawa bakal mahamin cara kerjanya. Inpormasi nyang sama bisa juga' diliat di [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Peranti bakal ningkatin halaman perhadring.",
 	"discussiontools-emptystate-button": "Mulain perhadring",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Halaman obrolan]] entu tempat orang-orang pada ngeriung caranya bikin isi di {{SITENAME}} sebagus-bagusnya. {{GENDER:|Lu}} bisa juga maké ni halaman bakal mulain perhadring ama laènnya pasal cara ningkatin [[:{{SUBJECTPAGENAME}}]].",

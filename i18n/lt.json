@@ -16,7 +16,7 @@
 	"discussiontools-defaultsummary-reply": "Atsakyti",
 	"discussiontoolsdebug-title": "Diskusijų įrankių duomenų struktūra",
 	"discussiontoolsdebug-pagetitle": "Puslapio pavadinimas",
-	"discussiontoolsdebug-intro": "Šis puslapis demonstruoja kaip [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools plėtinys] atpažįsta gijas ir komentarus, esančius '''[[:$1]]''' puslapyje. Tai gali būti naudinga randant plėtinio klaidas ar perprantant kaip jis veikia. Tokia pat informacija prieinama ir [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "Šis puslapis demonstruoja kaip [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools plėtinys] atpažįsta gijas ir komentarus, esančius '''[[:$1]]''' puslapyje. Tai gali būti naudinga randant plėtinio klaidas ar perprantant kaip jis veikia. Tokia pat informacija prieinama ir [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Įrankiai, skirti pagerinti aptarimų puslapius.",
 	"discussiontools-emptystate-button": "Pradėti diskusiją",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Aptarimų puslapiai]] yra vieta, kur asmenys diskutuoja, kaip {{SITENAME}} turinį padaryti kiek įmanoma geresnį. {{GENDER:|Jūs}} šiame puslapyje galite pradėti diskusiją su kitais kaip patobulinti [[:{{SUBJECTPAGENAME}}]].",

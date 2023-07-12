@@ -31,7 +31,7 @@
 	"discussiontools-defaultsummary-reply": "Yanıt",
 	"discussiontoolsdebug-title": "Tartışma araçları veri yapısı",
 	"discussiontoolsdebug-pagetitle": "Sayfa başlığı",
-	"discussiontoolsdebug-intro": "Bu sayfa, [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools TartışmaAraçları uzantısının] '''[[:$1]]''' sayfasındaki konuları ve yorumları nasıl gördüğünü gösterir. Uzantıyla ilgili sorunları ayıklamak ya da nasıl çalıştığını anlamak için bunu yararlı bulabilirsiniz. Aynı bilgi [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]] sayfasında mevcuttur.",
+	"discussiontoolsdebug-intro": "Bu sayfa, [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools TartışmaAraçları uzantısının] '''[[:$1]]''' sayfasındaki konuları ve yorumları nasıl gördüğünü gösterir. Uzantıyla ilgili sorunları ayıklamak ya da nasıl çalıştığını anlamak için bunu yararlı bulabilirsiniz. Aynı bilgi [[$2|discussiontoolspageinfo API]] sayfasında mevcuttur.",
 	"discussiontools-desc": "Tartışma sayfalarını geliştirmek için araçlar.",
 	"discussiontools-emptystate-button": "Bir tartışma başlat",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Tartışma sayfaları]], insanların {{SITENAME}} projesindeki içerikleri olabilecek en iyi hallerine nasıl getirecekleri üzerine tartıştıkları yerdir. [[:{{SUBJECTPAGENAME}}]] sayfasını geliştirmek adına neler {{GENDER:|yapabileceğinizi}} tartışmak için bu sayfayı kullanabilirsiniz.",

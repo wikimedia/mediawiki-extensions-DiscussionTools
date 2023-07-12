@@ -14,7 +14,7 @@
 	"discussiontools-defaultsummary-reply": "Vástádus",
 	"discussiontoolsdebug-title": "Dihtorstruktuvra ságastallanreaidduide",
 	"discussiontoolsdebug-pagetitle": "Siidonamma",
-	"discussiontoolsdebug-intro": "Dát siidu čájeha movt [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools extension] dovda kommentáraid ja ságastallamiid ''[[:$1]]'''siiddus. Dát sáhttá leat dehálaš ohcan dihte čuolmmaid viiddidemiin dahje ipmirdan dihte movt dat doaibma. Seamma dieđut leat olámuttos [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "Dát siidu čájeha movt [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools extension] dovda kommentáraid ja ságastallamiid ''[[:$1]]'''siiddus. Dát sáhttá leat dehálaš ohcan dihte čuolmmaid viiddidemiin dahje ipmirdan dihte movt dat doaibma. Seamma dieđut leat olámuttos [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Reaiddut buoridan dihte ságastallan siidduid.",
 	"discussiontools-emptystate-button": "Álggat ságastallama",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Ságastallansiidduin]] ságastallet movt sisdoallu {{SITENAME}} sáhttá šaddat nu buorre go vejolaš. Don sáhtát dán siiddu atnit álggahan dihte ságastallama earáiguin movt [[:{{SUBJECTPAGENAME}}]] sáhttá buoridit.",

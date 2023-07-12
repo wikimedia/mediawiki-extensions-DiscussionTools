@@ -19,7 +19,7 @@
 	"discussiontools-defaultsummary-reply": "Válasz",
 	"discussiontoolsdebug-title": "DiscussionTools-adatszerkezet",
 	"discussiontoolsdebug-pagetitle": "Lap címe",
-	"discussiontoolsdebug-intro": "Ez a lap azt mutatja be, hogy a [https://www.mediawiki.org/wiki/Extension:DiscussionTools/hu DiscussionTools kiterjesztés] hogyan ismeri fel a(z) '''[[:$1]]''' lapon lévő beszélgetésszálakat és hozzászólásokat. Ezek az információk hasznosak lehetnek a hibakereséshez és a kiterjesztés működésének megértéséhez. Ugyanezen információk elérhetők a [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API-val]] is.",
+	"discussiontoolsdebug-intro": "Ez a lap azt mutatja be, hogy a [https://www.mediawiki.org/wiki/Extension:DiscussionTools/hu DiscussionTools kiterjesztés] hogyan ismeri fel a(z) '''[[:$1]]''' lapon lévő beszélgetésszálakat és hozzászólásokat. Ezek az információk hasznosak lehetnek a hibakereséshez és a kiterjesztés működésének megértéséhez. Ugyanezen információk elérhetők a [[$2|discussiontoolspageinfo API-val]] is.",
 	"discussiontools-desc": "Eszközök a vitalapok fejlesztésére.",
 	"discussiontools-emptystate-button": "Megbeszélés indítása",
 	"discussiontools-emptystate-desc": "A [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|vitalapokon]] lehet megbeszélni másokkal, hogy hogyan lehet a(z) {{SITENAME}} tartalmát a lehető legjobbá tenni. Ezen a vitalapon indíthatsz megbeszélést másokkal a(z) [[:{{SUBJECTPAGENAME}}]] továbbfejlesztéséről.",

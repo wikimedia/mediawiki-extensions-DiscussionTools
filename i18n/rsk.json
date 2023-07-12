@@ -12,7 +12,7 @@
 	"discussiontools-defaultsummary-reply": "Одвит",
 	"discussiontoolsdebug-title": "Структура податкох алата за дискусию",
 	"discussiontoolsdebug-pagetitle": "Наслов бока",
-	"discussiontoolsdebug-intro": "На тим боку ше демонструє на яки способ [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools преширенє DiscussionTools] препознава теми и коментари хтори присутни на боку '''[[:$1]]'''. Можебуц вам тото  будзе хасновите у одстраньованю гришкох зоз екстензию або у розуменю як вона функционує. Тота информация доступна у [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "На тим боку ше демонструє на яки способ [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools преширенє DiscussionTools] препознава теми и коментари хтори присутни на боку '''[[:$1]]'''. Можебуц вам тото  будзе хасновите у одстраньованю гришкох зоз екстензию або у розуменю як вона функционує. Тота информация доступна у [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Инструменти за олєгчованє комуникациї на  бокох за розгварку.",
 	"discussiontools-emptystate-button": "Почац дискусию",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Боки за розгварку]] то места на хторих редакторе дискутую о змисту на Википедию. На тим боку можеце розпочац дискусию о змисту бока [[:{{SUBJECTPAGENAME}}]] и як то унапредзиц.",

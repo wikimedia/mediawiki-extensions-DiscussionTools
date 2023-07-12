@@ -22,7 +22,7 @@
 	"discussiontools-defaultsummary-reply": "Відповідь",
 	"discussiontoolsdebug-title": "Структура даних інструментів обговорення",
 	"discussiontoolsdebug-pagetitle": "Назва сторінки",
-	"discussiontoolsdebug-intro": "Ця сторінка демонструє, яким чином [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools розширення DiscussionTools] розпізнає гілки і коментарі, наявні на сторінці '''[[:$1]]'''. Це може бути корисним при відлагодженні проблем з розширенням чи розумінні того, як воно працює. Ця ж інформація доступна у [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "Ця сторінка демонструє, яким чином [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools розширення DiscussionTools] розпізнає гілки і коментарі, наявні на сторінці '''[[:$1]]'''. Це може бути корисним при відлагодженні проблем з розширенням чи розумінні того, як воно працює. Ця ж інформація доступна у [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Інструменти для покращення сторінок обговорення.",
 	"discussiontools-emptystate-button": "Почніть обговорення",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Сторінки обговорення]] — це місця, де люди обговорюють, як зробити вміст {{GRAMMAR:genitive|{{SITENAME}}}} якомога кращим. {{GENDER:|Ви}} можете скористатися цією сторінкою, щоб розпочати обговорення з іншими про те, як покращити ситуацію [[:{{SUBJECTPAGENAME}}]].",

@@ -15,7 +15,7 @@
 	"discussiontools-defaultsummary-reply": "Cavab",
 	"discussiontoolsdebug-title": "Müzakirə vasitələrinin məlumat strukturu",
 	"discussiontoolsdebug-pagetitle": "Səhifənin adı",
-	"discussiontoolsdebug-intro": "Bu səhifə [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools əlavəsinin] '''[[:$1]]''' səhifəsində mövcud olan mövzuları və şərhləri necə gördüyünü göstərir. \nƏlavə ilə bağlı problemləri həll etmək və ya onun necə işlədiyini başa düşmək üçün bunu istifadə edə bilərsiniz. Eyni məlumat [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|API]]-də mövcuddur.",
+	"discussiontoolsdebug-intro": "Bu səhifə [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools əlavəsinin] '''[[:$1]]''' səhifəsində mövcud olan mövzuları və şərhləri necə gördüyünü göstərir. \nƏlavə ilə bağlı problemləri həll etmək və ya onun necə işlədiyini başa düşmək üçün bunu istifadə edə bilərsiniz. Eyni məlumat [[$2|API]]-də mövcuddur.",
 	"discussiontools-desc": "Müzakirə səhifələrini asanlaşdırmaq üçün alətlər",
 	"discussiontools-emptystate-button": "Müzakirə başlat",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Müzakirə səhifələri]] istifadəçilərin {{SITENAME}} məzmununu daha yaxşı hala necə gətirə biləcəkləri haqqında danışdıqları yerdir. [[:{{SUBJECTPAGENAME}}]] səhifəsini inkişaf etdirmək barədə digər istifadəçilərlə müzakirə aparmaq üçün bu müzakirə səhifəsindən istifadə edə {{GENDER:|bilərsiz}}.",

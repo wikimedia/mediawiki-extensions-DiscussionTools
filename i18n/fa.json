@@ -22,7 +22,7 @@
 	"discussiontools-defaultsummary-reply": "پاسخ",
 	"discussiontoolsdebug-title": "ساختار دادهٔ ابزارهای گفت‌وگو",
 	"discussiontoolsdebug-pagetitle": "عنوان صفحه",
-	"discussiontoolsdebug-intro": "این صفحه نشان می‌دهد که چگونه [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools افزونهٔ ابزارهای گفت‌وگو] ریسه‌ها و نظرهای حاضر در صفحهٔ '''[[:$1]]''' را شناسایی می‌کند. ممکن است این قابلیت به‌منظور اشکال‌زدایی از افزونه درک چگونگی عملکرد آن برای شما مفید باشد. اطلاعات یکسانی در [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page=$1|discussiontoolspageinfo API]] در دسترس است.",
+	"discussiontoolsdebug-intro": "این صفحه نشان می‌دهد که چگونه [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools افزونهٔ ابزارهای گفت‌وگو] ریسه‌ها و نظرهای حاضر در صفحهٔ '''[[:$1]]''' را شناسایی می‌کند. ممکن است این قابلیت به‌منظور اشکال‌زدایی از افزونه درک چگونگی عملکرد آن برای شما مفید باشد. اطلاعات یکسانی در [[$2|discussiontoolspageinfo API]] در دسترس است.",
 	"discussiontools-desc": "ابزارهایی برای بهبود صفحه‌های بحث",
 	"discussiontools-emptystate-button": "آغاز گفتگو",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|صفحه‌های بحث]] جایی هستند که افراد در آن‌ها به گفتگو پیرامون چگونگی بهبود محتوای {{SITENAME}} به بهترین نحو می‌پردازند. می‌توانید از این صفحه برای آغاز یک گفتگو با سایرین دربارهٔ راه‌های بهبود [[:{{SUBJECTPAGENAME}}]] استفاده کنید.",
