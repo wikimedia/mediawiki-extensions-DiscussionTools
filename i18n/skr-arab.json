@@ -9,6 +9,8 @@
 	"discussiontools-defaultsummary-reply": "جواب",
 	"discussiontools-emptystate-button": "بحت شروع کرو",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|ڳالھ مہاڑ ورقے]] تے {{SITENAME}} تے مواد کوں ممکن حد تائیں بہتر بݨاوݨ کیتے لوک بحث کریندے ہن۔ تساں ایں ورقے تے [[:{{SUBJECTPAGENAME}}]] کوں چنگا بݨاوݨ دے طریقے بارے ٻیاں نال بحث  شروع کر سڳدے ہو۔",
+	"discussiontools-error-noswitchtove-table": "نحوی ٹیبل",
+	"discussiontools-error-noswitchtove-template": "نحوی سانچہ",
 	"discussiontools-notification-subscribed-new-comment-view": "تبصرہ ݙیکھو",
 	"discussiontools-replylink": "جواب",
 	"discussiontools-replywidget-abandon-discard": "تبصرہ مُکاؤ",

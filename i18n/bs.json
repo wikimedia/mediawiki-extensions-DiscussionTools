@@ -12,6 +12,7 @@
 	"discussiontools-defaultsummary-reply": "odgovor",
 	"discussiontools-emptystate-button": "Započni raspravu",
 	"discussiontools-emptystate-title": "Započni raspravu o stranici {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title-user": "Započni razgovor s {{GENDER:{{PAGENAME}}|korisnikom|korisnicom|osobom}} {{PAGENAME}}",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|odgovorio|odgovorila|odgovorio/-la}} je u raspravi \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Jedan novi odgovor|$1 nova odgovora|100=99+ novih odgovora}} u raspravi \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Prikaži komentar",

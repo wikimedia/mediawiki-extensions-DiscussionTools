@@ -13,5 +13,8 @@
 	"discussiontools-replywidget-placeholder-reply": "Nampung {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Petele’",
 	"discussiontools-replywidget-reply": "Nampung",
-	"discussiontools-replywidget-summary": "Repod"
+	"discussiontools-replywidget-summary": "Repod",
+	"discussiontools-replywidget-watchthis": "Namba laman tu ta'[[Special:Watchlist|senarai nijegoon]]",
+	"discussiontools-topicsubscription-button-subscribe": "ngendo'",
+	"discussiontools-topicsubscription-button-unsubscribe": "beranti ngendo'"
 }
