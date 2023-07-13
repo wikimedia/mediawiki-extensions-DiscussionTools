@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Anakmalaysia",
-			"Tofeiku"
+			"Tofeiku",
+			"Hakimi97"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Anda akan menerima pemberitahuan apabila seseorang menghantar ulasan baru di perbincangan ini. Anda boleh menyesuaikan tetapan pemberitahuan anda di keutamaan.",
@@ -11,8 +12,10 @@
 	"discussiontools-autotopicsubpopup-title": "Anda telah melanggan",
 	"discussiontools-defaultsummary-reply": "Balas",
 	"discussiontools-emptystate-button": "Mulakan perbincangan",
+	"discussiontools-emptystate-title": "Mulakan perbincangan berkaitan {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Selamat datang ke laman perbincangan anda",
 	"discussiontools-emptystate-title-self-anon": "Selamat datang ke laman perbincangan ini",
+	"discussiontools-emptystate-title-user": "Mulakan perbincangan {{GENDER:{{PAGENAME}}|dengan}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Selamat datang ke laman perbincangan ini",
 	"discussiontools-error-comment-disappeared-reload": "Sila muat semula laman dan cuba lagi.",
 	"discussiontools-findcomment-label-search": "Cari",
