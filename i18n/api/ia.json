@@ -16,6 +16,7 @@
 	"apihelp-discussiontoolsedit-param-formtoken": "Un ID unic optional generate in le cliente pro impedir publication duple.",
 	"apihelp-discussiontoolsedit-param-html": "Contento a publicar, in formato HTML. Non pote esser usate insimul a <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Solmente usate quando <var>paction</var> es <var>addtopic</var>.",
+	"apihelp-discussiontoolsedit-param-allownosectiontitle": "Permitter publicar un nove section sin titulo.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Contento a publicar, in formato wikitexto. Non pote esser usate insimul a <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Adder un nove commento como responsa a un commento existente.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Adder un nove section de discussion e le prime commento in illo.",
