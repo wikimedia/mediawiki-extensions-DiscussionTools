@@ -27,6 +27,7 @@
 	"apihelp-discussiontoolsgetsubscriptions-summary": "Obtener le statos de subscription de topicos date.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Le numero del version a usar (predefinite le ultime version).",
 	"apihelp-discussiontoolspageinfo-param-prop": "Qual proprietates obtener:",
+	"apihelp-discussiontoolspageinfo-param-excludesignatures": "Excluder signaturas de usatores del commentos (quando se usa <var>prop=threaditemshtml</var>).",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "Representation del filos de commentos generate a base del pagina",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "De qual altere paginas se ha transcludite commentos",
 	"apihelp-discussiontoolspageinfo-summary": "Retorna metadatos requirite pro initialisar le instrumentos de discussion.",
