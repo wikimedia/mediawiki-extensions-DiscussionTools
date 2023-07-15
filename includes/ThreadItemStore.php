@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use Config;
 use ConfigFactory;
 use Exception;
+use LogicException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseHeadingItem;
@@ -19,7 +20,8 @@ use ReadOnlyMode;
 use stdClass;
 use TitleFormatter;
 use Wikimedia\Rdbms\DBError;
-use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\ILBFactory;
+use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\TimestampException;
@@ -30,7 +32,7 @@ use Wikimedia\Timestamp\TimestampException;
 class ThreadItemStore {
 
 	private Config $config;
-	private IConnectionProvider $dbProvider;
+	private ILBFactory $dbProvider;
 	private ReadOnlyMode $readOnlyMode;
 	private PageStore $pageStore;
 	private RevisionStore $revStore;
@@ -39,7 +41,7 @@ class ThreadItemStore {
 
 	public function __construct(
 		ConfigFactory $configFactory,
-		IConnectionProvider $dbProvider,
+		ILBFactory $dbProvider,
 		ReadOnlyMode $readOnlyMode,
 		PageStore $pageStore,
 		RevisionStore $revStore,
@@ -339,6 +341,34 @@ class ThreadItemStore {
 	}
 
 	/**
+	 * @param callable $find Function that does a SELECT and returns primary key field
+	 * @param callable $insert Function that does an INSERT IGNORE and returns last insert ID
+	 * @param bool &$didInsert Set to true if the insert succeeds
+	 * @return int Return value of whichever function succeeded
+	 */
+	private function findOrInsertIdButTryHarder( callable $find, callable $insert, bool &$didInsert ) {
+		$dbw = $this->dbProvider->getPrimaryDatabase();
+
+		$id = $find( $dbw );
+		if ( !$id ) {
+			$id = $insert( $dbw );
+			if ( $id ) {
+				$didInsert = true;
+			} else {
+				// Maybe it's there, but we can't see it due to REPEATABLE_READ?
+				// Try again in another connection. (T339882, T322701)
+				$dbwAnother = $this->dbProvider->getMainLB()
+					->getConnection( DB_PRIMARY, [], false, ILoadBalancer::CONN_TRX_AUTOCOMMIT );
+				$id = $find( $dbwAnother );
+				if ( !$id ) {
+					throw new LogicException( "Database can't find our row and won't let us insert it" );
+				}
+			}
+		}
+		return $id;
+	}
+
+	/**
 	 * Store the thread item set.
 	 *
 	 * @param RevisionRecord $rev
@@ -368,30 +398,28 @@ class ThreadItemStore {
 		// (This is not in a transaction. Orphaned rows in this table are harmlessly ignored,
 		// and long transactions caused performance issues on Wikimedia wikis: T315353#8218914.)
 		foreach ( $threadItemSet->getThreadItems() as $item ) {
-			$itemIdsId = $dbw->newSelectQueryBuilder()
-				->from( 'discussiontools_item_ids' )
-				->field( 'itid_id' )
-				->where( [ 'itid_itemid' => $item->getId() ] )
-				->caller( $method )
-				->fetchField();
-			if ( $itemIdsId === false ) {
-				// Use upsert() instead of insert() to handle race conditions (T322701).
-				// Do a SELECT first to avoid unnecessary replication and bumping auto-increment values.
-				// (We can't just use INSERT IGNORE and then do a SELECT because of implicit
-				// transactions with REPEATABLE READ.)
-				$dbw->upsert(
-					'discussiontools_item_ids',
-					[
-						'itid_itemid' => $item->getId(),
-					],
-					'itid_itemid',
-					// We update nothing, as the rows will be identical, but this can't be empty
-					[ 'itid_id = itid_id' ],
-					$method
-				);
-				$itemIdsId = $dbw->insertId();
-				$didInsert = true;
-			}
+			$itemIdsId = $this->findOrInsertIdButTryHarder(
+				static function ( $dbw ) use ( $item, $method ) {
+					return $dbw->newSelectQueryBuilder()
+						->from( 'discussiontools_item_ids' )
+						->field( 'itid_id' )
+						->where( [ 'itid_itemid' => $item->getId() ] )
+						->caller( $method )
+						->fetchField();
+				},
+				static function ( $dbw ) use ( $item, $method ) {
+					$dbw->insert(
+						'discussiontools_item_ids',
+						[
+							'itid_itemid' => $item->getId(),
+						],
+						$method,
+						[ 'IGNORE' ]
+					);
+					return $dbw->insertId();
+				},
+				$didInsert
+			);
 			$itemIdsIds[ $item->getId() ] = $itemIdsId;
 		}
 
@@ -399,36 +427,34 @@ class ThreadItemStore {
 		// (This is not in a transaction. Orphaned rows in this table are harmlessly ignored,
 		// and long transactions caused performance issues on Wikimedia wikis: T315353#8218914.)
 		foreach ( $threadItemSet->getThreadItems() as $item ) {
-			$itemsId = $dbw->newSelectQueryBuilder()
-				->from( 'discussiontools_items' )
-				->field( 'it_id' )
-				->where( [ 'it_itemname' => $item->getName() ] )
-				->caller( $method )
-				->fetchField();
-			if ( $itemsId === false ) {
-				// Use upsert() instead of insert() to handle race conditions (T322701).
-				// Do a SELECT first to avoid unnecessary replication and bumping auto-increment values.
-				// (We can't just use INSERT IGNORE and then do a SELECT because of implicit
-				// transactions with REPEATABLE READ.)
-				$dbw->upsert(
-					'discussiontools_items',
-					[
-						'it_itemname' => $item->getName(),
-					] +
-					( $item instanceof CommentItem ? [
-						'it_timestamp' =>
-							$dbw->timestamp( $item->getTimestampString() ),
-						'it_actor' =>
-							$this->actorStore->findActorIdByName( $item->getAuthor(), $dbw ),
-					] : [] ),
-					'it_itemname',
-					// We update nothing, as the rows will be identical, but this can't be empty
-					[ 'it_id = it_id' ],
-					$method
-				);
-				$itemsId = $dbw->insertId();
-				$didInsert = true;
-			}
+			$itemsId = $this->findOrInsertIdButTryHarder(
+				static function ( $dbw ) use ( $item, $method ) {
+					return $dbw->newSelectQueryBuilder()
+						->from( 'discussiontools_items' )
+						->field( 'it_id' )
+						->where( [ 'it_itemname' => $item->getName() ] )
+						->caller( $method )
+						->fetchField();
+				},
+				function ( $dbw ) use ( $item, $method ) {
+					$dbw->insert(
+						'discussiontools_items',
+						[
+							'it_itemname' => $item->getName(),
+						] +
+						( $item instanceof CommentItem ? [
+							'it_timestamp' =>
+								$dbw->timestamp( $item->getTimestampString() ),
+							'it_actor' =>
+								$this->actorStore->findActorIdByName( $item->getAuthor(), $dbw ),
+						] : [] ),
+						$method,
+						[ 'IGNORE' ]
+					);
+					return $dbw->insertId();
+				},
+				$didInsert
+			);
 			$itemsIds[ $item->getId() ] = $itemsId;
 		}
 
