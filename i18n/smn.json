@@ -51,5 +51,6 @@
 	"discussiontools-topicsubscription-pager-actions": "Tooimah",
 	"discussiontools-topicsubscription-pager-notified-never": "ij kuássin",
 	"discussiontools-topicsubscription-pager-page": "Sijđo",
-	"minerva-talk-full-page": "Luuvâ wikisijđon"
+	"minerva-talk-full-page": "Luuvâ wikisijđon",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Uđđâ fáddá]"
 }
