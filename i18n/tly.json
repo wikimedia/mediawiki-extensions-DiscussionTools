@@ -2,13 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Patriot Kur",
-			"Patriot Kor"
+			"Patriot Kor",
+			"Гусейн"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Cəvob bıdə",
+	"discussiontools-defaultsummary-reply": "Čəvob",
+	"discussiontools-desc": "No-pegəton səhifon ozavzije gornə diləgon.",
 	"discussiontools-replylink": "cəvob bıdə",
-	"discussiontools-replywidget-cancel": "Ləğv karde",
-	"discussiontools-replywidget-mode-visual": "Əyoni",
+	"discussiontools-replywidget-cancel": "Ohašte",
+	"discussiontools-replywidget-mode-source": "Səvon",
+	"discussiontools-replywidget-mode-visual": "Vizual",
 	"discussiontools-replywidget-placeholder-reply": "Cəvob bıdə bə {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Syftənə nišo doj",
 	"discussiontools-replywidget-reply": "Cəvob bıdə"
 }

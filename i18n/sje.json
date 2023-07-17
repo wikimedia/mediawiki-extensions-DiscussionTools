@@ -4,10 +4,12 @@
 			"Olve Utne"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Svärru",
 	"discussiontools-replylink": "svärru",
 	"discussiontools-replywidget-cancel": "Buŧŧki",
 	"discussiontools-replywidget-mode-source": "Gálldo",
 	"discussiontools-replywidget-mode-visual": "Visuálalatj",
 	"discussiontools-replywidget-placeholder-reply": "Svärru {{BIDI:$1}} lusa.",
+	"discussiontools-replywidget-preview": "Åvvdåvuosedibme",
 	"discussiontools-replywidget-reply": "Svärru"
 }

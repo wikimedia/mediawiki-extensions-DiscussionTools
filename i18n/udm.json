@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kotwys"
+			"Kotwys",
+			"Света Поторочина"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Валэктон",
 	"discussiontools-replylink": "берен вазёно",
 	"discussiontools-replywidget-cancel": "Берытсконо",
-	"discussiontools-replywidget-mode-source": "Ошмесэз",
+	"discussiontools-replywidget-mode-source": "Кылдонэз",
 	"discussiontools-replywidget-mode-visual": "Визуал амалэн",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} викиавторлы берен вазёно",
+	"discussiontools-replywidget-preview": "бамез эскерон",
 	"discussiontools-replywidget-reply": "Берен вазёно"
 }
