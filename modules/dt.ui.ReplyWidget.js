@@ -799,14 +799,19 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 	if ( !wikitext ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
-		this.previewRequest = parsePromise = controller.getApi().post( {
-			action: 'discussiontoolspreview',
-			type: this.isNewTopic ? 'topic' : 'reply',
-			page: this.pageName,
-			wikitext: wikitext,
-			sectiontitle: title,
-			useskin: mw.config.get( 'skin' ),
-			mobileformat: OO.ui.isMobile()
+		// Acquire a temporary user username before previewing, so that signatures and
+		// user-related magic words display the temp user instead of IP user in the preview. (T331397)
+		parsePromise = mw.user.acquireTempUserName().then( function () {
+			widget.previewRequest = controller.getApi().post( {
+				action: 'discussiontoolspreview',
+				type: widget.isNewTopic ? 'topic' : 'reply',
+				page: widget.pageName,
+				wikitext: wikitext,
+				sectiontitle: title,
+				useskin: mw.config.get( 'skin' ),
+				mobileformat: OO.ui.isMobile()
+			} );
+			return widget.previewRequest;
 		} );
 	}
 
