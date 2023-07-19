@@ -31,6 +31,7 @@
 	"discussiontools-topicsubscription-button-subscribe": "tiʹlle",
 	"discussiontools-topicsubscription-button-unsubscribe": "čåuddõõđ tiʹllʼjõõzz",
 	"discussiontools-topicsubscription-pager-page": "Seidd",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Ođđ teeʹmm]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vasttõs]",
 	"tag-discussiontools-visual": "Visuaalʼlânji"
 }

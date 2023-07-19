@@ -5,8 +5,12 @@
 			"Венина Наталья Константиновна"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "Йӧра, мый умылышым",
+	"discussiontools-autotopicsubpopup-preferences": "Келыштарымашым вашталташ",
 	"discussiontools-defaultsummary-reply": "Вашмут",
-	"discussiontools-replywidget-advanced": "Ешарен",
+	"discussiontools-emptystate-button": "Каҥашымашым тӱҥалаш",
+	"discussiontools-preference-label": "Каҥашымаш ӱзгар",
+	"discussiontools-replywidget-advanced": "Кумдаҥдыме",
 	"discussiontools-replywidget-cancel": "Чараш",
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Кузе коеш",
