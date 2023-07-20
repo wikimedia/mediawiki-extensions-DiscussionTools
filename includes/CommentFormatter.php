@@ -12,7 +12,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
 use MWTimestamp;
-use Parser;
 use ParserOutput;
 use Sanitizer;
 use Throwable;
@@ -49,10 +48,9 @@ class CommentFormatter {
 	 *
 	 * @param string &$text Parser text output (modified by reference)
 	 * @param ParserOutput $pout ParserOutput object for metadata, e.g. parser limit report
-	 * @param Parser $parser
+	 * @param Title $title
 	 */
-	public static function addDiscussionTools( string &$text, ParserOutput $pout, Parser $parser ): void {
-		$title = $parser->getTitle();
+	public static function addDiscussionTools( string &$text, ParserOutput $pout, Title $title ): void {
 		$start = microtime( true );
 		$requestId = null;
 

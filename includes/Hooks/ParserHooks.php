@@ -65,7 +65,7 @@ class ParserHooks implements
 		// the user doesn't have DiscussionTools features enabled.
 		if ( HookUtils::isAvailableForTitle( $title ) ) {
 			// This modifies $text
-			CommentFormatter::addDiscussionTools( $text, $pout, $parser );
+			CommentFormatter::addDiscussionTools( $text, $pout, $title );
 
 			if ( $parser->getOptions()->getIsPreview() ) {
 				$text = CommentFormatter::removeInteractiveTools( $text );
