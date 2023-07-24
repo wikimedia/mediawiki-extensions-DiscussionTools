@@ -8,11 +8,22 @@
 	},
 	"discussiontools-defaultsummary-reply": "Čəvob",
 	"discussiontools-desc": "No-pegəton səhifon ozavzije gornə diləgon.",
+	"discussiontools-preference-label": "No-pegəti diləgon",
 	"discussiontools-replylink": "cəvob bıdə",
 	"discussiontools-replywidget-cancel": "Ohašte",
+	"discussiontools-replywidget-loading": "Əlovə kardə bejdə…",
+	"discussiontools-replywidget-mention-tool-title": "Ištirokəkə nyšonə karde",
 	"discussiontools-replywidget-mode-source": "Səvon",
 	"discussiontools-replywidget-mode-visual": "Vizual",
 	"discussiontools-replywidget-placeholder-reply": "Cəvob bıdə bə {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Syftənə nišo doj",
-	"discussiontools-replywidget-reply": "Cəvob bıdə"
+	"discussiontools-replywidget-reply": "Cəvob bıdə",
+	"discussiontools-replywidget-transcluded": "Šymə komment ogətə bəbe bə [[$1]].",
+	"tag-discussiontools-description": "Sərost kardə byə de DiscussionTools dastəki",
+	"tag-discussiontools-edit-description": "Okoədə sərost kadyše kommenti de DiscussionTools dastəki",
+	"tag-discussiontools-newtopic-description": "Okoədə əlovə kardyše nujə myžor bə səhifə de DiscussionTools dastəki",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Čəvob]",
+	"tag-discussiontools-reply-description": "Okoədə čəvob doše bə kommenti de DiscussionTools dastəki",
+	"tag-discussiontools-source-description": "DiscussionTools kodi sərost karde režimədə be",
+	"tag-discussiontools-visual-description": "DiscussionTools bə vində režimədə be"
 }

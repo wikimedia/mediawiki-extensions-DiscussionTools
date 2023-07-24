@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "回复",
+	"discussiontools-replywidget-cancel": "取消",
+	"discussiontools-replywidget-mode-source": "代码",
+	"discussiontools-replywidget-mode-visual": "可视化"
+}
