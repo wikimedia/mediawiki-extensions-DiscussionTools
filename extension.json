@@ -563,7 +563,7 @@
 				"ja",
 				"nod"
 			],
-			"description": "A list of language codes which will receive an icon in their enhanced reply-button treatment",
+			"description": "A list of language codes which will receive an icon in their enhanced reply-button treatment, due to translation being very short (T323537).",
 			"merge_strategy": "provide_default"
 		},
 		"DiscussionTools_visualenhancements_newsectionlink_enable": {
