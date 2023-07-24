@@ -188,7 +188,7 @@ class HookUtils {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		if ( $extensionRegistry->isLoaded( 'Gadgets' ) ) {
 			$gadgetsRepo = GadgetRepo::singleton();
-			$match = array_search( $gadgetName, $gadgetsRepo->getGadgetIds() );
+			$match = array_search( $gadgetName, $gadgetsRepo->getGadgetIds(), true );
 			if ( $match !== false ) {
 				try {
 					return $gadgetsRepo->getGadget( $gadgetName )
