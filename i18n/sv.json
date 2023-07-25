@@ -161,7 +161,7 @@
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Avsluta prenumeration",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Sluta prenumerera på det här ämnet?",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt-newtopics": "Sluta prenumerera på aviseringar om nya ämnen på den här sidan?",
-	"discussiontools-topicsubscription-button-subscribe": "följa",
+	"discussiontools-topicsubscription-button-subscribe": "följ",
 	"discussiontools-topicsubscription-button-subscribe-label": "Prenumerera",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "{{GENDER:|Följ}} för få aviseringar om nya kommentarer.",
 	"discussiontools-topicsubscription-button-unsubscribe": "sluta följa",
