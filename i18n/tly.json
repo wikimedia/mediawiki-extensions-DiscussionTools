@@ -13,6 +13,7 @@
 	"discussiontools-emptystate-button": "No-pegəti bino karde",
 	"discussiontools-emptystate-title": "Ce səhifə «{{SUBJECTPAGENAME}}» no-pegəti bino karde",
 	"discussiontools-emptystate-title-user": "Bino karde no-pegəti {{GENDER:{{PAGENAME}}|de}} {{PAGENAME}}",
+	"discussiontools-error-noswitchtove-extension": "ce hyrhovuži ijən ǧejdi sintaksis",
 	"discussiontools-error-noswitchtove-table": "čədvəli sintaksis",
 	"discussiontools-error-noswitchtove-template": "šabloni sintaksis",
 	"discussiontools-error-noswitchtove-title": "Vizualə režim okyštə byə",
