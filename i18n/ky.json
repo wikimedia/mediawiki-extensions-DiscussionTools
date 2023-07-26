@@ -8,6 +8,7 @@
 	"discussiontools-replylink": "жооп берүү",
 	"discussiontools-replywidget-advanced": "Кеңейтүү",
 	"discussiontools-replywidget-cancel": "Жокко чыгаруу",
+	"discussiontools-replywidget-mode-source": "Булак",
 	"discussiontools-replywidget-mode-visual": "Визуалдык",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} {{GENDER:|жооп берүү}}",
 	"discussiontools-replywidget-preview": "Алдын ала көрүү",
