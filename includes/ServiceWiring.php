@@ -33,7 +33,7 @@ return [
 			$services->getDBLoadBalancerFactory(),
 			$services->getReadOnlyMode(),
 			$services->getUserFactory(),
-			$services->getUserNameUtils()
+			$services->getUserIdentityUtils()
 		);
 	},
 	'DiscussionTools.ThreadItemStore' => static function ( MediaWikiServices $services ): ThreadItemStore {

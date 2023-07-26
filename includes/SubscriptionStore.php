@@ -7,7 +7,7 @@ use ConfigFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserIdentityUtils;
 use ReadOnlyMode;
 use stdClass;
 use TitleValue;
@@ -29,20 +29,20 @@ class SubscriptionStore {
 	private IConnectionProvider $dbProvider;
 	private ReadOnlyMode $readOnlyMode;
 	private UserFactory $userFactory;
-	private UserNameUtils $userNameUtils;
+	private UserIdentityUtils $userIdentityUtils;
 
 	public function __construct(
 		ConfigFactory $configFactory,
 		IConnectionProvider $dbProvider,
 		ReadOnlyMode $readOnlyMode,
 		UserFactory $userFactory,
-		UserNameUtils $userNameUtils
+		UserIdentityUtils $userIdentityUtils
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->dbProvider = $dbProvider;
 		$this->readOnlyMode = $readOnlyMode;
 		$this->userFactory = $userFactory;
-		$this->userNameUtils = $userNameUtils;
+		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
 	/**
@@ -102,7 +102,7 @@ class SubscriptionStore {
 		array $options = []
 	): array {
 		// Only a registered user can be subscribed
-		if ( !$user->isRegistered() || $this->userNameUtils->isTemp( $user->getName() ) ) {
+		if ( !$user->isRegistered() || $this->userIdentityUtils->isTemp( $user ) ) {
 			return [];
 		}
 
@@ -211,7 +211,7 @@ class SubscriptionStore {
 			return false;
 		}
 		// Only a registered user can subscribe
-		if ( !$user->isRegistered() || $this->userNameUtils->isTemp( $user->getName() ) ) {
+		if ( !$user->isRegistered() || $this->userIdentityUtils->isTemp( $user ) ) {
 			return false;
 		}
 		$dbw = $this->dbProvider->getPrimaryDatabase();
@@ -248,7 +248,7 @@ class SubscriptionStore {
 			return false;
 		}
 		// Only a registered user can subscribe
-		if ( !$user->isRegistered() || $this->userNameUtils->isTemp( $user->getName() ) ) {
+		if ( !$user->isRegistered() || $this->userIdentityUtils->isTemp( $user ) ) {
 			return false;
 		}
 		$dbw = $this->dbProvider->getPrimaryDatabase();
