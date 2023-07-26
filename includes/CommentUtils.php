@@ -254,8 +254,8 @@ class CommentUtils {
 		do {
 			if (
 				$node instanceof Element && (
-					( $node->nextSibling && ( $direction === 'next' || $direction == 'either' ) ) ||
-					( $node->previousSibling && ( $direction === 'previous' || $direction == 'either' ) )
+					( $node->nextSibling && ( $direction === 'next' || $direction === 'either' ) ) ||
+					( $node->previousSibling && ( $direction === 'previous' || $direction === 'either' ) )
 				)
 			) {
 				return $node;

@@ -318,7 +318,7 @@ class HookUtils {
 			( $feature ? in_array( $feature, (array)$abtest, true ) : (bool)$abtest ) &&
 			$user->isRegistered()
 		) {
-			return $user->getId() % 2 == 0 ? 'test' : 'control';
+			return $user->getId() % 2 === 0 ? 'test' : 'control';
 		}
 		return '';
 	}

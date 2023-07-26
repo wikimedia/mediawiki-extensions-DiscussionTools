@@ -29,7 +29,7 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 	 */
 	public function testInsertThreadItems( string $dir ): void {
 		if (
-			$this->db->getType() == 'mysql' &&
+			$this->db->getType() === 'mysql' &&
 			strpos( $this->db->getSoftwareLink(), 'MySQL' ) &&
 			!$this->getCliArg( 'use-normal-tables' )
 		) {
