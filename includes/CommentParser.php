@@ -330,7 +330,7 @@ class CommentParser {
 			return preg_replace_callback(
 				'/[' . implode( '', $digits ) . ']/u',
 				static function ( array $m ) use ( $digits ) {
-					return (string)array_search( $m[0], $digits );
+					return (string)array_search( $m[0], $digits, true );
 				},
 				$text
 			);
@@ -409,7 +409,8 @@ class CommentParser {
 					case 'xg':
 						$monthIdx = array_search(
 							$text,
-							$this->getMessages( $contLangVariant, Language::MONTH_GENITIVE_MESSAGES )
+							$this->getMessages( $contLangVariant, Language::MONTH_GENITIVE_MESSAGES ),
+							true
 						);
 						break;
 					case 'd':
@@ -423,13 +424,15 @@ class CommentParser {
 					case 'F':
 						$monthIdx = array_search(
 							$text,
-							$this->getMessages( $contLangVariant, Language::MONTH_MESSAGES )
+							$this->getMessages( $contLangVariant, Language::MONTH_MESSAGES ),
+							true
 						);
 						break;
 					case 'M':
 						$monthIdx = array_search(
 							$text,
-							$this->getMessages( $contLangVariant, Language::MONTH_ABBREVIATED_MESSAGES )
+							$this->getMessages( $contLangVariant, Language::MONTH_ABBREVIATED_MESSAGES ),
+							true
 						);
 						break;
 					case 'm':
