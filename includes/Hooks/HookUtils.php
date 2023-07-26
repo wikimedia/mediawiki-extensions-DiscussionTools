@@ -213,11 +213,11 @@ class HookUtils {
 		$services = MediaWikiServices::getInstance();
 		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 
-		$userNameUtils = $services->getUserNameUtils();
+		$userIdentityUtils = $services->getUserIdentityUtils();
 		if (
 			( $feature === static::TOPICSUBSCRIPTION || $feature === static::AUTOTOPICSUB ) &&
 			// Users must be logged in to use topic subscription, and Echo must be installed (T322498)
-			( !$user->isRegistered() || $userNameUtils->isTemp( $user->getName() ) ||
+			( !$user->isRegistered() || $userIdentityUtils->isTemp( $user ) ||
 				!ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) )
 		) {
 			return false;

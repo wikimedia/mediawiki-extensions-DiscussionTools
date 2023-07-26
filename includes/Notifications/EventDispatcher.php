@@ -482,7 +482,7 @@ class EventDispatcher {
 
 		$services = MediaWikiServices::getInstance();
 		$editTracker = $services->getUserEditTracker();
-		$userNameUtils = $services->getUserNameUtils();
+		$userIdentityUtils = $services->getUserIdentityUtils();
 
 		$commonData = [
 			'$schema' => '/analytics/mediawiki/talk_page_edit/1.2.0',
@@ -497,7 +497,7 @@ class EventDispatcher {
 				'user_edit_count' => $editTracker->getUserEditCount( $identity ) ?: 0,
 				// Retention-safe values:
 				'user_is_anonymous' => !$identity->isRegistered(),
-				'user_is_temp' => $userNameUtils->isTemp( $identity->getName() ),
+				'user_is_temp' => $userIdentityUtils->isTemp( $identity ),
 				'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $identity ) ?: 'N/A',
 			],
 			'database' => $wgDBname,
