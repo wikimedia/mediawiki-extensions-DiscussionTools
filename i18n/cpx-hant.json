@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"discussiontools-replywidget-cancel": "取消",
+	"discussiontools-replywidget-preview": "預覽",
+	"discussiontools-topicsubscription-button-subscribe": "訂閱",
+	"discussiontools-topicsubscription-button-unsubscribe": "取消訂閱"
+}
