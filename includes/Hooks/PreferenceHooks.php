@@ -238,17 +238,15 @@ class PreferenceHooks implements
 			return;
 		}
 
-		if ( !$autocreated ) {
-			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
-			// We want new users to be created with email-subscriptions to our notifications enabled
-			$userOptionsManager->setOption( $user, 'echo-subscriptions-email-dt-subscription', true );
-			// The auto topic subscription feature is disabled by default for existing users, but
-			// we enable it for new users (T294398).
-			// This can only occur when the feature is available for everyone; when it's in beta,
-			// the new user won't have the beta enabled, so it'll never be available here.
-			if ( HookUtils::isFeatureAvailableToUser( $user, HookUtils::AUTOTOPICSUB ) ) {
-				$userOptionsManager->setOption( $user, 'discussiontools-' . HookUtils::AUTOTOPICSUB, 1 );
-			}
+		$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+		// We want new users to be created with email-subscriptions to our notifications enabled
+		$userOptionsManager->setOption( $user, 'echo-subscriptions-email-dt-subscription', true );
+		// The auto topic subscription feature is disabled by default for existing users, but
+		// we enable it for new users (T294398).
+		// This can only occur when the feature is available for everyone; when it's in beta,
+		// the new user won't have the beta enabled, so it'll never be available here.
+		if ( HookUtils::isFeatureAvailableToUser( $user, HookUtils::AUTOTOPICSUB ) ) {
+			$userOptionsManager->setOption( $user, 'discussiontools-' . HookUtils::AUTOTOPICSUB, 1 );
 		}
 	}
 
