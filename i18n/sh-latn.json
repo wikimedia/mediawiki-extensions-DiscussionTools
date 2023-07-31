@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Odgovori",
+	"discussiontools-preference-label": "Alati za razgovor",
+	"discussiontools-replywidget-cancel": "Otkaži",
+	"discussiontools-replywidget-mode-source": "Izvor",
+	"discussiontools-replywidget-mode-visual": "Vizualno",
+	"discussiontools-replywidget-preview": "Pregled"
+}
