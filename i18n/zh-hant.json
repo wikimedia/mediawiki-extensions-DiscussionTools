@@ -72,7 +72,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "「<strong>$3</strong>」有{{PLURAL:$1|一則新回覆|$1則新回覆|100=99+則新回覆}}。",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1：<em>$3</em>。",
 	"discussiontools-notification-subscribed-new-comment-view": "查看留言",
-	"discussiontools-pageframe-latestcomment": "由$2在話題$3上做出的最新留言：$1",
+	"discussiontools-pageframe-latestcomment": "由$2在話題$3上作出的最新留言：$1",
 	"discussiontools-pageframe-latestcomment-notopic": "$2的最新留言：$1",
 	"discussiontools-pagetitle-newtopic": "在$1發起新話題",
 	"discussiontools-pagetitle-reply": "回覆$1",
