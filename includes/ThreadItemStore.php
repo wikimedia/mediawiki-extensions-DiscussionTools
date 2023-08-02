@@ -499,7 +499,8 @@ class ThreadItemStore {
 							'itp_oldest_revision_id' => $rev->getId(),
 							'itp_newest_revision_id' => $rev->getId(),
 						],
-						$method
+						$method,
+						[ 'IGNORE' ]
 					);
 				} else {
 					$oldestTime = ( new MWTimestamp( $itemPagesRow->oldest_rev_timestamp ) )->getTimestamp( TS_MW );
@@ -554,14 +555,15 @@ class ThreadItemStore {
 						'itr_headinglevel' => $item->isPlaceholderHeading() ? null : $item->getHeadingLevel(),
 					] : [] );
 
+				$itemRevisionsConds = [
+					'itr_itemid_id' => $itemIdsIds[ $item->getId() ],
+					'itr_items_id' => $itemsIds[ $item->getId() ],
+					'itr_revision_id' => $rev->getId(),
+				];
 				$itemRevisionsId = $dbw->newSelectQueryBuilder()
 					->from( 'discussiontools_item_revisions' )
 					->field( 'itr_id' )
-					->where( [
-						'itr_itemid_id' => $itemIdsIds[ $item->getId() ],
-						'itr_items_id' => $itemsIds[ $item->getId() ],
-						'itr_revision_id' => $rev->getId(),
-					] )
+					->where( $itemRevisionsConds )
 					->caller( $method )
 					->fetchField();
 				if ( $itemRevisionsId === false ) {
@@ -591,15 +593,29 @@ class ThreadItemStore {
 							$method
 						);
 						$itemRevisionsId = $itemRevisionsUpdateId;
+						$didInsert = true;
 					} else {
-						$dbw->insert(
-							'discussiontools_item_revisions',
-							$newOrUpdateRevRow,
-							$method
+						$itemRevisionsId = $this->findOrInsertIdButTryHarder(
+							static function ( $dbw ) use ( $itemRevisionsConds, $method ) {
+								return $dbw->newSelectQueryBuilder()
+									->from( 'discussiontools_item_revisions' )
+									->field( 'itr_id' )
+									->where( $itemRevisionsConds )
+									->caller( $method )
+									->fetchField();
+							},
+							static function ( $dbw ) use ( $newOrUpdateRevRow, $method ) {
+								$dbw->insert(
+									'discussiontools_item_revisions',
+									$newOrUpdateRevRow,
+									$method,
+									[ 'IGNORE' ]
+								);
+								return $dbw->insertId();
+							},
+							$didInsert
 						);
-						$itemRevisionsId = $dbw->insertId();
 					}
-					$didInsert = true;
 				}
 
 				$itemRevisionsIds[ $item->getId() ] = $itemRevisionsId;
