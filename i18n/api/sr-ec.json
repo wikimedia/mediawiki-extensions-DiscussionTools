@@ -9,7 +9,7 @@
 	"apierror-discussiontools-commentid-notfound": "Коментар са ID-ом '$1' није пронађен.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID коментара",
 	"apihelp-discussiontoolsedit-param-allownosectiontitle": "Дозвољава постављање новог одељка без наслова.",
-	"apihelp-discussiontoolsedit-param-wikitext": "Викитекст",
+	"apihelp-discussiontoolsedit-param-wikitext": "Викитекст; не може се користити <var>html</var>",
 	"apihelp-discussiontoolsedit-summary": "Објављивање поруке на страници за дискусију.",
 	"apihelp-discussiontoolsfindcomment-param-idorname": "ID коментара или име",
 	"apihelp-discussiontoolspageinfo-param-oldid": "Број измене за употребу (подразумевано: последња измена)",
