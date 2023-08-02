@@ -83,6 +83,8 @@
 	"discussiontools-replywidget-transcluded": "Коментар ће бити сачуван на страници [[$1]].",
 	"discussiontools-replywidget-watchthis": "[[Special:Watchlist|Надгледај ову страницу]]",
 	"discussiontools-signature-prefix": "&#32;—&#32;",
+	"discussiontools-target-comment-missing": "Овај коментар није пронађен. Можда је премештен или обрисан.",
+	"discussiontools-target-comments-missing": "Нови коментари нису пронађени. Можда су премештени или обрисани.",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Прекини праћење",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Прекини праћење ове теме?",
 	"discussiontools-topicsubscription-button-subscribe": "прати",

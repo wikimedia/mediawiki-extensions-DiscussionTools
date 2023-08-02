@@ -3,19 +3,23 @@
 		"authors": [
 			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik",
-			"Lea-Christine Sara"
+			"Lea-Christine Sara",
+			"Ante75"
 		]
 	},
 	"discussiontools": "Ságastallanreaiddut",
 	"discussiontools-autotopicsubpopup-dismiss": "Ášši lea čielggas",
 	"discussiontools-autotopicsubpopup-preferences": "Rievdat ásahusaid",
 	"discussiontools-defaultsummary-reply": "Vástádus",
-	"discussiontools-desc": "Reaiddut buoridan dihte ságastallan siidduid.",
+	"discussiontools-desc": "Reaiddut, main sáhttá buoridit ságastallansiidduid.",
 	"discussiontools-emptystate-button": "Álggat ságastallama",
 	"discussiontools-emptystate-title": "Álggat ságastallama {{SUBJECTPAGENAME}} birra",
 	"discussiontools-emptystate-title-user": "Álggat ságastallama {{GENDER:{{PAGENAME}}}} {{PAGENAME}}",
+	"discussiontools-error-noswitchtove-extension": "viiddidan- dahje referánsasyntáksa",
 	"discussiontools-error-noswitchtove-table": "tabeallasyntáksa",
 	"discussiontools-error-noswitchtove-template": "mállesyntáksa",
+	"discussiontools-error-noswitchtove-title": "Oaidnin láhki jáddaduvvon",
+	"discussiontools-limitreport-errorreqid": "Ságastallanreaidduid jearalaldahkii vearu ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools-áigegeavaheapmi",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundda}}",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|vástidii}}  \"<strong>$4</strong>\".",
