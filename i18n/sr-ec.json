@@ -108,6 +108,8 @@
 	"discussiontools-replywidget-transcluded": "Коментар ће бити сачуван на страници [[$1]].",
 	"discussiontools-replywidget-watchthis": "[[Special:Watchlist|Надгледај ову страницу]]",
 	"discussiontools-signature-prefix": "&#32;—&#32;",
+	"discussiontools-target-comment-missing": "Овај коментар није пронађен. Можда је премештен или обрисан.",
+	"discussiontools-target-comments-missing": "Нови коментари нису пронађени. Можда су премештени или обрисани.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|уредник|уредника}} у расправи",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|коментар|коментара}}",
 	"discussiontools-topicheader-latestcomment": "Последњи коментар: $1",
