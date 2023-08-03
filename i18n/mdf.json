@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Валгриш"
+		]
+	},
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|мяль-арьсема|мяльхть-арьсемат}}",
+	"discussiontools-topicheader-latestcomment": "Мекольце мяльсь-азондомась"
+}
