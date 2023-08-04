@@ -100,7 +100,10 @@ class ApiDiscussionToolsPreview extends ApiBase {
 					'reply',
 					'topic',
 				],
-				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [
+					'reply' => 'apihelp-discussiontoolsedit-paramvalue-paction-addcomment',
+					'topic' => 'apihelp-discussiontoolsedit-paramvalue-paction-addtopic',
+				],
 			],
 			'page' => [
 				ParamValidator::PARAM_REQUIRED => true,
