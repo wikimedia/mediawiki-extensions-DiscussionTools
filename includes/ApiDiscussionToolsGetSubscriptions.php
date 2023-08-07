@@ -57,11 +57,4 @@ class ApiDiscussionToolsGetSubscriptions extends ApiBase {
 			],
 		];
 	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function isInternal() {
-		return true;
-	}
 }

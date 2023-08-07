@@ -100,13 +100,6 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 	/**
 	 * @inheritDoc
 	 */
-	public function isInternal() {
-		return true;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function isWriteMode() {
 		return true;
 	}
