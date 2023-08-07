@@ -11,6 +11,7 @@ use MediaWiki\User\UserIdentityValue;
 
 /**
  * @group DiscussionTools
+ * @group Database
  * @covers \MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher
  */
 class EventDispatcherTest extends IntegrationTestCase {

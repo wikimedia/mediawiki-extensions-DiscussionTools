@@ -3,8 +3,10 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use FormatJson;
+use GenderCache;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use ParserOutput;
 use Title;
 use Wikimedia\TestingAccessWrapper;
@@ -19,8 +21,9 @@ class CommentFormatterTest extends IntegrationTestCase {
 	 * @dataProvider provideAddDiscussionToolsInternal
 	 */
 	public function testAddDiscussionToolsInternal(
-		string $name, string $title, string $dom, string $expected, string $config, string $data, bool $isMobile
+		string $name, string $titleText, string $dom, string $expected, string $config, string $data, bool $isMobile
 	): void {
+		$this->setService( 'GenderCache', $this->createMock( GenderCache::class ) );
 		$dom = static::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = static::getText( $expectedPath );
@@ -32,7 +35,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 			MainConfigNames::ScriptPath => '/w',
 			MainConfigNames::Script => '/w/index.php',
 		] );
-		$title = Title::newFromText( $title );
+		$title = Title::newFromText( $titleText );
 		MockCommentFormatter::$parser = static::createParser( $data );
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
@@ -59,11 +62,11 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$actual = $preprocessed;
 
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
-			$actual, $qqxLang, $title, $mockSubStore, static::getTestUser()->getUser(), $isMobile
+			$actual, $qqxLang, $title, $mockSubStore, $this->createMock( UserIdentity::class ), $isMobile
 		);
 
 		$actual = MockCommentFormatter::postprocessVisualEnhancements(
-			$actual, $qqxLang, static::getTestUser()->getUser(), $isMobile
+			$actual, $qqxLang, $this->createMock( UserIdentity::class ), $isMobile
 		);
 
 		$actual = MockCommentFormatter::postprocessReplyTool(
