@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Roustammr",
-			"Sagan"
+			"Sagan",
+			"З. ӘЙЛЕ"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Яуап бирергә",
-	"discussiontools-replywidget-cancel": "Кәрәкмәй",
+	"discussiontools-replywidget-cancel": "Кире алыу",
 	"discussiontools-replywidget-mode-source": "Сығанаҡ",
 	"discussiontools-replywidget-mode-visual": "Визуаль",
 	"discussiontools-replywidget-preview": "Ҡарап сығырға"
