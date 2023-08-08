@@ -29,6 +29,7 @@ use RuntimeException;
 use Title;
 use TitleValue;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
@@ -106,6 +107,7 @@ class HookUtils {
 	 *        so we can track what is causing parser cache writes.
 	 *
 	 * @return ContentThreadItemSet
+	 * @throws ResourceLimitExceededException
 	 */
 	public static function parseRevisionParsoidHtml(
 		RevisionRecord $revRecord,
@@ -147,6 +149,11 @@ class HookUtils {
 
 		if ( !$status->isOK() ) {
 			[ 'message' => $key, 'params' => $params ] = $status->getErrors()[0];
+			// XXX: HtmlOutputRendererHelper checks for a resource limit exceeded message as well,
+			// maybe we shouldn't be catching that so low down.  Re-throw for callers.
+			if ( $status->hasMessage( 'parsoid-resource-limit-exceeded' ) ) {
+				throw new ResourceLimitExceededException( $params[0] ?? '' );
+			}
 			$message = wfMessage( $key, ...$params );
 			throw new RuntimeException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
 		}
