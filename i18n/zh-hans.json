@@ -76,7 +76,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "在“<strong>$3</strong>”中有{{PLURAL:$1|一个新回复|$1个新回复|100=99+个新回复}}。",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1：<em>$3</em>。",
 	"discussiontools-notification-subscribed-new-comment-view": "查看留言",
-	"discussiontools-postedit-confirmation-published": "已发布您的留言。",
+	"discussiontools-postedit-confirmation-published": "您的留言已发布。",
 	"discussiontools-postedit-confirmation-topicadded": "已添加您的话题。",
 	"discussiontools-preference-autotopicsub": "自动订阅话题",
 	"discussiontools-preference-autotopicsub-help": "当您开始新讨论或在已有讨论中留言时，如果其他人发表新留言，您将自动收到通知。",

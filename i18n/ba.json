@@ -2,17 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Roustammr",
-			"Sagan"
+			"Sagan",
+			"З. ӘЙЛЕ"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Яуап бирергә",
 	"discussiontools-replywidget-advanced": "Киңәйтелгән",
-	"discussiontools-replywidget-cancel": "Кәрәкмәй",
+	"discussiontools-replywidget-cancel": "Кире алыу",
 	"discussiontools-replywidget-mode-source": "Сығанаҡ",
 	"discussiontools-replywidget-mode-visual": "Визуаль",
 	"discussiontools-replywidget-preview": "Ҡарап сығырға",
-	"discussiontools-replywidget-summary": "Һөҙөмтә",
-	"discussiontools-replywidget-watchthis": "Был битте [[Special:Watchlist|күҙәреү исемлеге]]нә өҫтәргә",
+	"discussiontools-replywidget-summary": "Тасуирлама",
+	"discussiontools-replywidget-watchthis": "Был битте [[Special:Watchlist|күҙәтеү исемлегегеҙ]]гә өҫтәргә",
 	"discussiontools-topicsubscription-button-subscribe": "яҙылырға",
 	"discussiontools-topicsubscription-button-unsubscribe": "яҙылыуҙан баш тартырға"
 }
