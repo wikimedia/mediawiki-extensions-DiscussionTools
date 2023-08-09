@@ -102,8 +102,8 @@ function init( $container ) {
 		var lastScrollTop = $scrollContainer.scrollTop();
 		var wasScrollDown = null;
 		var $body = $( document.body );
-		// TODO: Use ve.addPassiveEventListener
-		$scrollListener.on( 'scroll', OO.ui.throttle( function () {
+		// This block of code is only run once, so we don't need to remove this listener ever
+		$scrollListener[ 0 ].addEventListener( 'scroll', OO.ui.throttle( function () {
 			// Round negative values up to 0 to ignore iOS scroll bouncing (T323400)
 			var scrollTop = Math.max( $scrollContainer.scrollTop(), 0 );
 			var isScrollDown = scrollTop > lastScrollTop;
@@ -133,7 +133,7 @@ function init( $container ) {
 
 			lastScrollTop = scrollTop;
 			wasScrollDown = isScrollDown;
-		}, 200 ) );
+		}, 200 ), { passive: true } );
 	}
 	if ( !$readAsWikiPage ) {
 		// Read as wiki page button, copied from old MobileFrontend/Minerva feature (removed in T319145)
