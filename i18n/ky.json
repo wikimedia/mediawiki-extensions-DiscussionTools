@@ -5,6 +5,9 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Жооп",
+	"discussiontoolsdebug-pagetitle": "Барактын аталышы",
+	"discussiontools-emptystate-button": "Талкууну баштоо",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Талкуу барактарында]] мазмунду кантип жакшыртуу керектигин талкуулашат. Башкалар менен «[[:{{SUBJECTPAGENAME}}]]‎» барагын {{GENDER|талкууласаңыз}} болот.",
 	"discussiontools-replylink": "жооп берүү",
 	"discussiontools-replywidget-advanced": "Кеңейтүү",
 	"discussiontools-replywidget-cancel": "Жокко чыгаруу",
