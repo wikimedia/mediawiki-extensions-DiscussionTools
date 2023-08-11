@@ -99,7 +99,11 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 		$foundRow = $this->dbw->newSelectQueryBuilder()
 			->caller( __METHOD__ )
 			->table( 'user_properties' )
-			->where( [ 'up_user' => $userId, 'up_property' => 'discussiontools-betaenable', 'up_value' => 1 ] )
+			->where( [
+				'up_user' => $userId,
+				'up_property' => 'discussiontools-betaenable',
+				'up_value' => 1,
+			] )
 			->field( '1' )
 			->fetchField();
 		if ( $foundRow ) {
@@ -125,11 +129,15 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 		// We can't use UserOptionsManager here, because we want to store the preference
 		// in the database even if it's identical to the current default
 		// (this script is only used when we're about to change the default).
-		$this->dbw->insert(
-			'user_properties',
-			[ 'up_user' => $userId, 'up_property' => 'discussiontools-' . HookUtils::NEWTOPICTOOL, 'up_value' => 0 ],
-			__METHOD__
-		);
+		$this->dbw->newInsertQueryBuilder()
+			->table( 'user_properties' )
+			->row( [
+				'up_user' => $userId,
+				'up_property' => 'discussiontools-' . HookUtils::NEWTOPICTOOL,
+				'up_value' => 0,
+			] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 }
