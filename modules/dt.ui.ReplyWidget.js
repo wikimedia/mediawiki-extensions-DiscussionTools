@@ -611,8 +611,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 
 	mw.hook( 'wikipage.watchlistChange' ).add( this.onWatchToggleHandler );
 
-	// TODO: Use ve.addPassiveEventListener
-	this.$window.on( 'scroll', this.onWindowScrollThrottled );
+	this.$window[ 0 ].addEventListener( 'scroll', this.onWindowScrollThrottled, { passive: true } );
 
 	return this;
 };
@@ -702,7 +701,7 @@ ReplyWidget.prototype.teardown = function ( mode ) {
 		this.modeTabSelect.blur();
 	}
 	this.unbindBeforeUnloadHandler();
-	this.$window.off( 'scroll', this.onWindowScrollThrottled );
+	this.$window[ 0 ].removeEventListener( 'scroll', this.onWindowScrollThrottled, { passive: true } );
 	mw.hook( 'wikipage.watchlistChange' ).remove( this.onWatchToggleHandler );
 
 	this.isTornDown = true;
