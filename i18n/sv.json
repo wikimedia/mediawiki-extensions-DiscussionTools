@@ -68,7 +68,7 @@
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekunder}}",
 	"discussiontools-newtopic-missing-title": "Ange gärna en rubrik till {{GENDER:|ditt}} diskussionsämne. Om du klickar på \"{{int:discussiontools-replywidget-newtopic}}\", kommer ämnet att läggas till utan rubrik.",
 	"discussiontools-newtopic-placeholder-title": "Ämne",
-	"discussiontools-newtopicssubscription-button-subscribe-label": "Följa",
+	"discussiontools-newtopicssubscription-button-subscribe-label": "Följ",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Prenumerera för att få aviseringar när nya ämnen startas på den här sidan.",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Avsluta prenumeration",
 	"discussiontools-newtopicssubscription-button-unsubscribe-tooltip": "Avsluta prenumerationen för att slut få aviseringar när nya ämnen startas på den här sidan.",
