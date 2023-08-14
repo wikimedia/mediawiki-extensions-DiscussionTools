@@ -14,6 +14,7 @@ use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Revision\RevisionLookup;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMUtils;
@@ -111,7 +112,11 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			return new ContentThreadItemSet;
 		}
 
-		return HookUtils::parseRevisionParsoidHtml( $revision, __METHOD__ );
+		try {
+			return HookUtils::parseRevisionParsoidHtml( $revision, __METHOD__ );
+		} catch ( ResourceLimitExceededException $e ) {
+			$this->dieWithException( $e );
+		}
 	}
 
 	/**
