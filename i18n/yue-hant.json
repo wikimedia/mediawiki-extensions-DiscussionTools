@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ktchankt",
 			"Winston Sung"
 		]
 	},
@@ -31,7 +32,7 @@
 	"discussiontools-preference-replytool": "開著快速回覆",
 	"discussiontools-preference-topicsubscription": "開着討論留名",
 	"discussiontools-replybutton": "回覆",
-	"discussiontools-replylink": "回覆",
+	"discussiontools-replylink": "{{GENDER:|回覆}}",
 	"discussiontools-replywidget-abandon": "你係咪肯定想放棄你而家寫緊嘅留言？",
 	"discussiontools-replywidget-abandon-discard": "放棄留言",
 	"discussiontools-replywidget-abandon-keep": "繼續寫",
@@ -48,10 +49,10 @@
 	"discussiontools-replywidget-mode-visual": "即見編輯",
 	"discussiontools-replywidget-newtopic": "加主題",
 	"discussiontools-replywidget-placeholder-newtopic": "描述",
-	"discussiontools-replywidget-placeholder-reply": "答{{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|答}}{{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "喜好設定",
 	"discussiontools-replywidget-preview": "睇下",
-	"discussiontools-replywidget-reply": "答",
+	"discussiontools-replywidget-reply": "{{GENDER:|答}}",
 	"discussiontools-replywidget-signature-body": "$1變咗做呢個簽名。想還原嘅話就打$2。留意，用呢個工具嘅時候唔使特登簽名，簽名會自動加落去。",
 	"discussiontools-replywidget-signature-title": "偵測到簽名標記",
 	"discussiontools-replywidget-summary": "摘要",
@@ -69,9 +70,10 @@
 	"discussiontools-topicsubscription-button-unsubscribe-label": "取消留名",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "取消留名，唔再收通知",
 	"discussiontools-topicsubscription-error-not-found-body": "搵唔到呢個URL指定嘅訂閱。",
-	"discussiontools-topicsubscription-notify-subscribed-title": "你留咗名訂閱喇！",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "呢個主題有留言嘅時候，唔會再通知你。",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "你取消咗留名訂閱喇。",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|你}}會收到呢個話題有新留言嘅通知。",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|你}}留咗名訂閱喇！",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "呢個主題有留言嘅時候，唔會再通知{{GENDER:|你}}。",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|你}}取消咗留名訂閱喇。",
 	"echo-category-title-dt-subscription": "訂閱咗嘅討論頁主題嘅留言",
 	"echo-pref-tooltip-dt-subscription": "任何討論版入面，我留名訂閱嘅主題有人回覆，就通知我。",
 	"tag-discussiontools-added-comment-description": "呢次編輯加咗討論版留言",
