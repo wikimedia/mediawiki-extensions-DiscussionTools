@@ -454,7 +454,7 @@
 		"SidebarBeforeOutput": "page",
 		"SkinTemplateNavigation::Universal": "page",
 		"ResourceLoaderGetConfigVars": "resourceloader",
-		"GetBetaFeaturePreferences": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks::onGetBetaFeaturePreferences",
+		"GetBetaFeaturePreferences": "betapreferences",
 		"GetPreferences": "preferences",
 		"LocalUserCreated": "preferences",
 		"ChangeTagsListActive": "tags",
@@ -491,6 +491,13 @@
 			"services": [
 				"ConfigFactory",
 				"LinkRenderer"
+			]
+		},
+		"betapreferences": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\BetaPreferenceHooks",
+			"services": [
+				"MainConfig",
+				"ConfigFactory"
 			]
 		},
 		"resourceloader": {
