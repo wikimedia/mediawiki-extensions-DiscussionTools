@@ -552,7 +552,9 @@ function init( $container, state ) {
 		pageHandlersSetup = true;
 	}
 	if ( state.firstLoad ) {
-		highlighter.highlightTargetComment( pageThreads );
+		promise.then( function () {
+			highlighter.highlightTargetComment( pageThreads );
+		} );
 	}
 }
 
