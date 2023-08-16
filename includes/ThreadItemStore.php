@@ -416,7 +416,7 @@ class ThreadItemStore {
 						->ignore()
 						->caller( $method )
 						->execute();
-					return $dbw->insertId();
+					return $dbw->affectedRows() ? $dbw->insertId() : null;
 				},
 				$didInsert
 			);
@@ -453,7 +453,7 @@ class ThreadItemStore {
 						->ignore()
 						->caller( $method )
 						->execute();
-					return $dbw->insertId();
+					return $dbw->affectedRows() ? $dbw->insertId() : null;
 				},
 				$didInsert
 			);
@@ -613,7 +613,7 @@ class ThreadItemStore {
 									->ignore()
 									->caller( $method )
 									->execute();
-								return $dbw->insertId();
+								return $dbw->affectedRows() ? $dbw->insertId() : null;
 							},
 							$didInsert
 						);
