@@ -16,10 +16,17 @@ use MediaWiki\Extension\DiscussionTools\Notifications\EnhancedEchoMentionPresent
 use MediaWiki\Extension\DiscussionTools\Notifications\EventDispatcher;
 use MediaWiki\Extension\DiscussionTools\Notifications\RemovedTopicPresentationModel;
 use MediaWiki\Extension\DiscussionTools\Notifications\SubscribedNewCommentPresentationModel;
+use MediaWiki\Extension\Notifications\Hooks\BeforeCreateEchoEventHook;
+use MediaWiki\Extension\Notifications\Hooks\EchoGetBundleRulesHook;
+use MediaWiki\Extension\Notifications\Hooks\EchoGetEventsForRevisionHook;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Revision\RevisionRecord;
 
-class EchoHooks {
+class EchoHooks implements
+	BeforeCreateEchoEventHook,
+	EchoGetBundleRulesHook,
+	EchoGetEventsForRevisionHook
+{
 	/**
 	 * Add notification events to Echo
 	 *
@@ -27,7 +34,7 @@ class EchoHooks {
 	 * @param array &$notificationCategories
 	 * @param array &$icons
 	 */
-	public static function onBeforeCreateEchoEvent(
+	public function onBeforeCreateEchoEvent(
 		array &$notifications,
 		array &$notificationCategories,
 		array &$icons
@@ -101,9 +108,8 @@ class EchoHooks {
 	/**
 	 * @param Event $event
 	 * @param string &$bundleString
-	 * @return bool
 	 */
-	public static function onEchoGetBundleRules( Event $event, string &$bundleString ): bool {
+	public function onEchoGetBundleRules( Event $event, string &$bundleString ) {
 		switch ( $event->getType() ) {
 			case 'dt-subscribed-new-comment':
 				$bundleString = $event->getType() . '-' . $event->getExtraParam( 'subscribed-comment-name' );
@@ -114,7 +120,6 @@ class EchoHooks {
 					. '-' . $event->getTitle()->getDBkey();
 				break;
 		}
-		return true;
 	}
 
 	/**
@@ -122,7 +127,7 @@ class EchoHooks {
 	 * @param RevisionRecord $revision
 	 * @param bool $isRevert
 	 */
-	public static function onEchoGetEventsForRevision( array &$events, RevisionRecord $revision, bool $isRevert ) {
+	public function onEchoGetEventsForRevision( array &$events, RevisionRecord $revision, bool $isRevert ) {
 		if ( $isRevert ) {
 			return;
 		}
