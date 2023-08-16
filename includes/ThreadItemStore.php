@@ -20,8 +20,10 @@ use ReadOnlyMode;
 use stdClass;
 use TitleFormatter;
 use Wikimedia\Rdbms\DBError;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILBFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\TimestampException;
@@ -399,7 +401,7 @@ class ThreadItemStore {
 		// and long transactions caused performance issues on Wikimedia wikis: T315353#8218914.)
 		foreach ( $threadItemSet->getThreadItems() as $item ) {
 			$itemIdsId = $this->findOrInsertIdButTryHarder(
-				static function ( $dbw ) use ( $item, $method ) {
+				static function ( IReadableDatabase $dbw ) use ( $item, $method ) {
 					return $dbw->newSelectQueryBuilder()
 						->from( 'discussiontools_item_ids' )
 						->field( 'itid_id' )
@@ -407,15 +409,13 @@ class ThreadItemStore {
 						->caller( $method )
 						->fetchField();
 				},
-				static function ( $dbw ) use ( $item, $method ) {
-					$dbw->insert(
-						'discussiontools_item_ids',
-						[
-							'itid_itemid' => $item->getId(),
-						],
-						$method,
-						[ 'IGNORE' ]
-					);
+				static function ( IDatabase $dbw ) use ( $item, $method ) {
+					$dbw->newInsertQueryBuilder()
+						->table( 'discussiontools_item_ids' )
+						->row( [ 'itid_itemid' => $item->getId() ] )
+						->ignore()
+						->caller( $method )
+						->execute();
 					return $dbw->insertId();
 				},
 				$didInsert
@@ -428,7 +428,7 @@ class ThreadItemStore {
 		// and long transactions caused performance issues on Wikimedia wikis: T315353#8218914.)
 		foreach ( $threadItemSet->getThreadItems() as $item ) {
 			$itemsId = $this->findOrInsertIdButTryHarder(
-				static function ( $dbw ) use ( $item, $method ) {
+				static function ( IReadableDatabase $dbw ) use ( $item, $method ) {
 					return $dbw->newSelectQueryBuilder()
 						->from( 'discussiontools_items' )
 						->field( 'it_id' )
@@ -436,21 +436,23 @@ class ThreadItemStore {
 						->caller( $method )
 						->fetchField();
 				},
-				function ( $dbw ) use ( $item, $method ) {
-					$dbw->insert(
-						'discussiontools_items',
-						[
-							'it_itemname' => $item->getName(),
-						] +
-						( $item instanceof CommentItem ? [
-							'it_timestamp' =>
-								$dbw->timestamp( $item->getTimestampString() ),
-							'it_actor' =>
-								$this->actorStore->findActorIdByName( $item->getAuthor(), $dbw ),
-						] : [] ),
-						$method,
-						[ 'IGNORE' ]
-					);
+				function ( IDatabase $dbw ) use ( $item, $method ) {
+					$dbw->newInsertQueryBuilder()
+						->table( 'discussiontools_items' )
+						->row(
+							[
+								'it_itemname' => $item->getName(),
+							] +
+							( $item instanceof CommentItem ? [
+								'it_timestamp' =>
+									$dbw->timestamp( $item->getTimestampString() ),
+								'it_actor' =>
+									$this->actorStore->findActorIdByName( $item->getAuthor(), $dbw ),
+							] : [] )
+						)
+						->ignore()
+						->caller( $method )
+						->execute();
 					return $dbw->insertId();
 				},
 				$didInsert
@@ -461,7 +463,7 @@ class ThreadItemStore {
 		// Insert or update discussiontools_item_pages and discussiontools_item_revisions rows.
 		// This IS in a transaction. We don't really want rows for different items on the same
 		// page to point to different revisions.
-		$dbw->doAtomicSection( $method, /** @throws TimestampException */ function ( $dbw ) use (
+		$dbw->doAtomicSection( $method, /** @throws TimestampException */ function ( IDatabase $dbw ) use (
 			$method, $rev, $threadItemSet, $itemsIds, $itemIdsIds, &$didInsert
 		) {
 			// Map of item IDs (strings) to their discussiontools_item_revisions.itr_id field values (ints)
@@ -491,17 +493,17 @@ class ThreadItemStore {
 					] )
 					->fetchRow();
 				if ( $itemPagesRow === false ) {
-					$dbw->insert(
-						'discussiontools_item_pages',
-						[
+					$dbw->newInsertQueryBuilder()
+						->table( 'discussiontools_item_pages' )
+						->row( [
 							'itp_items_id' => $itemsIds[ $item->getId() ],
 							'itp_page_id' => $rev->getPageId(),
 							'itp_oldest_revision_id' => $rev->getId(),
 							'itp_newest_revision_id' => $rev->getId(),
-						],
-						$method,
-						[ 'IGNORE' ]
-					);
+						] )
+						->ignore()
+						->caller( $method )
+						->execute();
 				} else {
 					$oldestTime = ( new MWTimestamp( $itemPagesRow->oldest_rev_timestamp ) )->getTimestamp( TS_MW );
 					$newestTime = ( new MWTimestamp( $itemPagesRow->newest_rev_timestamp ) )->getTimestamp( TS_MW );
@@ -518,12 +520,12 @@ class ThreadItemStore {
 						$updatePageField = 'itp_newest_revision_id';
 					}
 					if ( $updatePageField ) {
-						$dbw->update(
-							'discussiontools_item_pages',
-							[ $updatePageField => $rev->getId() ],
-							[ 'itp_id' => $itemPagesRow->itp_id ],
-							$method
-						);
+						$dbw->newUpdateQueryBuilder()
+							->table( 'discussiontools_item_pages' )
+							->set( [ $updatePageField => $rev->getId() ] )
+							->where( [ 'itp_id' => $itemPagesRow->itp_id ] )
+							->caller( $method )
+							->execute();
 						if ( $oldestId !== $newestId ) {
 							// This causes most rows in discussiontools_item_revisions referring to the previously
 							// oldest/newest revision to be unused, so try re-using them.
@@ -586,17 +588,17 @@ class ThreadItemStore {
 						// we want to add.
 					}
 					if ( $itemRevisionsUpdateId ) {
-						$dbw->update(
-							'discussiontools_item_revisions',
-							$newOrUpdateRevRow,
-							[ 'itr_id' => $itemRevisionsUpdateId ],
-							$method
-						);
+						$dbw->newUpdateQueryBuilder()
+							->table( 'discussiontools_item_revisions' )
+							->set( $newOrUpdateRevRow )
+							->where( [ 'itr_id' => $itemRevisionsUpdateId ] )
+							->caller( $method )
+							->execute();
 						$itemRevisionsId = $itemRevisionsUpdateId;
 						$didInsert = true;
 					} else {
 						$itemRevisionsId = $this->findOrInsertIdButTryHarder(
-							static function ( $dbw ) use ( $itemRevisionsConds, $method ) {
+							static function ( IReadableDatabase $dbw ) use ( $itemRevisionsConds, $method ) {
 								return $dbw->newSelectQueryBuilder()
 									->from( 'discussiontools_item_revisions' )
 									->field( 'itr_id' )
@@ -604,13 +606,13 @@ class ThreadItemStore {
 									->caller( $method )
 									->fetchField();
 							},
-							static function ( $dbw ) use ( $newOrUpdateRevRow, $method ) {
-								$dbw->insert(
-									'discussiontools_item_revisions',
-									$newOrUpdateRevRow,
-									$method,
-									[ 'IGNORE' ]
-								);
+							static function ( IDatabase $dbw ) use ( $newOrUpdateRevRow, $method ) {
+								$dbw->newInsertQueryBuilder()
+									->table( 'discussiontools_item_revisions' )
+									->row( $newOrUpdateRevRow )
+									->ignore()
+									->caller( $method )
+									->execute();
 								return $dbw->insertId();
 							},
 							$didInsert

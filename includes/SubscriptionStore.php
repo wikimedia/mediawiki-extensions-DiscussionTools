@@ -252,15 +252,15 @@ class SubscriptionStore {
 			return false;
 		}
 		$dbw = $this->dbProvider->getPrimaryDatabase();
-		$dbw->update(
-			'discussiontools_subscription',
-			[ 'sub_state' => static::STATE_UNSUBSCRIBED ],
-			[
+		$dbw->newUpdateQueryBuilder()
+			->table( 'discussiontools_subscription' )
+			->set( [ 'sub_state' => static::STATE_UNSUBSCRIBED ] )
+			->where( [
 				'sub_user' => $user->getId(),
 				'sub_item' => $itemName,
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->execute();
 		return (bool)$dbw->affectedRows();
 	}
 
@@ -318,12 +318,12 @@ class SubscriptionStore {
 			$conditions[ 'sub_user' ] = $user->getId();
 		}
 
-		$dbw->update(
-			'discussiontools_subscription',
-			[ $field => $dbw->timestamp() ],
-			$conditions,
-			__METHOD__
-		);
+		$dbw->newUpdateQueryBuilder()
+			->table( 'discussiontools_subscription' )
+			->set( [ $field => $dbw->timestamp() ] )
+			->where( $conditions )
+			->caller( __METHOD__ )
+			->execute();
 		return (bool)$dbw->affectedRows();
 	}
 
