@@ -62,9 +62,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		$title = Title::newFromText( $params['page'] );
 		$result = null;
 
-		$autoSubscribe =
-			$this->config->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'discussiontoolsapi' &&
-			HookUtils::shouldAddAutoSubscription( $this->getUser(), $title );
+		$autoSubscribe = $params['autosubscribe'] === 'yes' ||
+			( $this->config->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'discussiontoolsapi' &&
+			HookUtils::shouldAddAutoSubscription( $this->getUser(), $title ) &&
+			$params['autosubscribe'] === 'default' );
 		$subscribableHeadingName = null;
 		$subscribableSectionTitle = '';
 
@@ -193,6 +194,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword'],
 							'nocontent' => $params['nocontent'],
+							// NOTE: Must use getText() to work; PHP array from $params['tags'] is not understood
+							// by the visualeditoredit API.
+							'tags' => $this->getRequest()->getText( 'tags' ),
 							'returnto' => $params['returnto'],
 							'returntoquery' => $params['returntoquery'],
 							'returntoanchor' => $params['returntoanchor'],
@@ -356,6 +360,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword'],
 							'nocontent' => $params['nocontent'],
+							// NOTE: Must use getText() to work; PHP array from $params['tags'] is not understood
+							// by the visualeditoredit API.
+							'tags' => $this->getRequest()->getText( 'tags' ),
 							'returnto' => $params['returnto'],
 							'returntoquery' => $params['returntoquery'],
 							'returntoanchor' => $params['returntoanchor'],
@@ -424,6 +431,14 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-paction',
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
+			'autosubscribe' => [
+				ParamValidator::PARAM_TYPE => [
+					'yes',
+					'no',
+					'default'
+				],
+				ParamValidator::PARAM_DEFAULT => 'default',
+			],
 			'page' => [
 				ParamValidator::PARAM_REQUIRED => true,
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-page',
@@ -470,6 +485,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			'nocontent' => [
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-nocontent',
 			],
+			'tags' => [
+				ParamValidator::PARAM_ISMULTI => true,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-tags',
+			],
 			'returnto' => [
 				ParamValidator::PARAM_TYPE => 'title',
 				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-returnto',
@@ -492,13 +511,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	 */
 	public function needsToken() {
 		return 'csrf';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function isInternal() {
-		return true;
 	}
 
 	/**

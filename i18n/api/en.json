@@ -11,6 +11,7 @@
 	"apihelp-discussiontoolscompare-summary": "Get information about comment changes between two page revisions.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID of the comment to reply to. Only used when <var>paction</var> is <var>addcomment</var>. Overrides <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Name of the comment to reply to. Only used when <var>paction</var> is <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-autosubscribe": "Automatically subscribe the user to the talk page thread?",
 	"apihelp-discussiontoolsedit-param-formtoken": "An optional unique ID generated in the client to prevent double-posting.",
 	"apihelp-discussiontoolsedit-param-html": "Content to post, as HTML. Cannot be used together with <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Only used when <var>paction</var> is <var>addtopic</var>.",
