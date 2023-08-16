@@ -16,7 +16,6 @@ use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
-use RequestContext;
 use SpecialPage;
 use User;
 
@@ -191,37 +190,6 @@ class PreferenceHooks implements
 				$categoryMessage,
 				$categoryMessageExtra
 			);
-		}
-	}
-
-	/**
-	 * Handler for the GetBetaFeaturePreferences hook, to add and hide user beta preferences as configured
-	 *
-	 * @param User $user
-	 * @param array &$preferences
-	 */
-	public static function onGetBetaFeaturePreferences( User $user, array &$preferences ): void {
-		$coreConfig = RequestContext::getMain()->getConfig();
-		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
-
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
-
-		if ( $dtConfig->get( 'DiscussionToolsBeta' ) ) {
-			$preferences['discussiontools-betaenable'] = [
-				'version' => '1.0',
-				'label-message' => 'discussiontools-preference-label',
-				'desc-message' => 'discussiontools-preference-description',
-				'screenshot' => [
-					'ltr' => "$iconpath/betafeatures-icon-DiscussionTools-ltr.svg",
-					'rtl' => "$iconpath/betafeatures-icon-DiscussionTools-rtl.svg",
-				],
-				'info-message' => 'discussiontools-preference-info-link',
-				'discussion-message' => 'discussiontools-preference-discussion-link',
-				'requirements' => [
-					'javascript' => true
-				]
-			];
 		}
 	}
 
