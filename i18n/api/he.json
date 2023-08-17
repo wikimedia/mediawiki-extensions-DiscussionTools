@@ -14,6 +14,7 @@
 	"apihelp-discussiontoolscompare-summary": "קבלת מידע על שינויי תגובות בין שתי גרסאות דף.",
 	"apihelp-discussiontoolsedit-param-commentid": "מזהה התגובה שצריך להשיב אליו. משמש רק כש־<var>paction</var> הוא <var>addcomment</var>. דורס את <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "שם התגובה שצריך להשיב עליה. משמש רק כשהערך של <var>paction</var> הוא <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-autosubscribe": "האם לעשות למשתמש מינוי אוטומטי לשרשור בדף השיחה?",
 	"apihelp-discussiontoolsedit-param-formtoken": "מזהה ייחודי (לא חובה) שמחולל בלקוח כדי למנוע שליחה כפולה.",
 	"apihelp-discussiontoolsedit-param-html": "איזה תוכן לשלוח, בתור HTML. לא יכול לשמש עם <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} משמש רק כש־<var>paction</var> הוא <var>addtopic</var>.",

@@ -17,5 +17,6 @@
 	"discussiontools-topicsubscription-button-subscribe": "సభ్యత్వం",
 	"discussiontools-topicsubscription-button-subscribe-label": "సభ్యత్వం",
 	"discussiontools-topicsubscription-button-unsubscribe": "సభ్యత్వం పుస్",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "సభ్యత్వం పుస్"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "సభ్యత్వం పుస్",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|ని}} ఇదున్ అన్సబ్స్క్రయిబ్."
 }

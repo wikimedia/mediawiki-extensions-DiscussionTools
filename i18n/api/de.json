@@ -11,6 +11,7 @@
 	"apihelp-discussiontoolscompare-summary": "Informationen über Kommentaränderungen zwischen zwei Seitenversionen abrufen.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID des Kommentars, auf den geantwortet werden soll. Wird nur verwendet, wenn <var>paction</var> <var>addcomment</var> ist. Übersteuert <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Name des Kommentars, auf den geantwortet werden soll. Wird nur verwendet, wenn <var>paction</var> <var>addcomment</var> ist.",
+	"apihelp-discussiontoolsedit-param-autosubscribe": "Den Benutzer automatisch für den Diskussionsseitenthread abonnieren?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Eine optionale eindeutige ID, die im Client generiert wird, um Doppelmeldungen zu verhindern.",
 	"apihelp-discussiontoolsedit-param-html": "Zu postender Inhalt, als HTML. Kann nicht zusammen mit <var>wikitext</var> verwendet werden.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Wird nur verwendet, wenn <var>paction</var> <var>addtopic</var> ist.",

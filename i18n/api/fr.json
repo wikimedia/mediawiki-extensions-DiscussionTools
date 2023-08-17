@@ -18,6 +18,7 @@
 	"apihelp-discussiontoolscompare-summary": "Obtient des informations au sujet des changements de commentaire entre deux révisions de page.",
 	"apihelp-discussiontoolsedit-param-commentid": "Identifiant du commentaire auquel répondre. Utilisé seulement lorsque <var>paction</var> vaut <var>addcomment</var>. Prévaut sur <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Nom du commentaire auquel répondre. Utilisé seulement quand <var>paction</var> vaut <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-autosubscribe": "Inscrire automatiquement l’utilisateur au fil de la page de discussion ?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Un identifiant unique optionnel généré dans le client pour éviter la double publication.",
 	"apihelp-discussiontoolsedit-param-html": "Contenu à publier, en tant que HTML. Ne peut pas être utilisé conjointement avec <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Utilisé seulement lorsque <var>paction</var> est <var>addtopic</var>.",
