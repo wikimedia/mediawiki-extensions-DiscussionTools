@@ -180,13 +180,14 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
  * @inheritdoc
  */
 MWUsernameCompletionAction.prototype.compareSuggestionToInput = function ( suggestion, normalizedInput ) {
-	var normalizedSuggestion = suggestion.username.toLowerCase() + ' ' +
+	var normalizedSuggestion = suggestion.username.toLowerCase(),
+		normalizedSearchIndex = normalizedSuggestion + ' ' +
 		suggestion.displayNames.map( function ( displayName ) {
 			return displayName.toLowerCase();
 		} ).join( ' ' );
 
 	return {
-		isMatch: normalizedSuggestion.indexOf( normalizedInput ) !== -1,
+		isMatch: normalizedSearchIndex.indexOf( normalizedInput ) !== -1,
 		isExact: normalizedSuggestion === normalizedInput
 	};
 };
