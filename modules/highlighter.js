@@ -27,7 +27,7 @@ function Highlight( comments ) {
 		// when it shifts (e.g. collapsing the table of contents), and disappears when it is hidden (e.g.
 		// opening visual editor).
 		var range = comment.getNativeRange();
-		// Support: Firefox, IE 11
+		// Support: Firefox
 		// The highlight node must be inserted after the start marker node (data-mw-comment-start), not
 		// before, otherwise Node#getBoundingClientRect() returns wrong results.
 		range.insertNode( $highlight[ 0 ] );
@@ -59,6 +59,15 @@ function Highlight( comments ) {
 	// Events
 	this.updateDebounced = OO.ui.debounce( this.update.bind( this ), 500 );
 	window.addEventListener( 'resize', this.updateDebounced );
+
+	if ( OO.ui.isMobile() ) {
+		// In MobileFrontend, ensure the section we are highlighting within is expanded. This is
+		// often the case as we add the hash fragment to our notification URLs, but not when we highlight
+		// comments across multiple threads.
+		// HACK: Ideally MF would expose Toggler as a public API, but for now just find the correct DOM
+		// node and trigger a fake click.
+		this.$element.parents( '.collapsible-block' ).prev( '.collapsible-heading:not( .open-block )' ).trigger( 'click' );
+	}
 
 	this.update();
 }
