@@ -13,6 +13,7 @@
 	"apihelp-discussiontoolscompare-summary": "Pridobi informacije o spremembah komentarjev med dvema redakcijama strani.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID komentarja, na katerega želite odgovoriti. Uporablja se le, če je <var>paction</var> <var>addcomment</var>. Preglasi <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Ime komentarja, na katerega želite odgovoriti. Uporablja se le, če je <var>paction</var> <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-autosubscribe": "Želite samodejno naročiti uporabnika na nit pogovorne strani?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Izbirni enolični ID, ustvarjen v odjemalcu za preprečevanje dvojnega objavljanja.",
 	"apihelp-discussiontoolsedit-param-html": "Vsebina za objavo, kot HTML. Ni mogoča uporaba skupaj z <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Uporablja se le, če je <var>paction</var> <var>addtopic</var>.",
