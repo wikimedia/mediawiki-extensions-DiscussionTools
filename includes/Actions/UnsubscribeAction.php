@@ -10,8 +10,8 @@ use HTMLForm;
 use IContextSource;
 use MediaWiki\Extension\DiscussionTools\SubscriptionItem;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
+use MediaWiki\Title\Title;
 use SpecialPage;
-use Title;
 use User;
 use UserNotLoggedIn;
 

@@ -6,7 +6,7 @@ use ApiBase;
 use ApiMain;
 use ApiUsageException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
-use Title;
+use MediaWiki\Title\Title;
 use TitleFormatter;
 use Wikimedia\ParamValidator\ParamValidator;
 
