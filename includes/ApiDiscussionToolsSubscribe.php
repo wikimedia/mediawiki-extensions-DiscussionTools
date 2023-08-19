@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use ApiBase;
 use ApiMain;
 use ApiUsageException;
-use Title;
+use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsSubscribe extends ApiBase {

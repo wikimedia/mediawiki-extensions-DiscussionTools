@@ -9,8 +9,8 @@ use Html;
 use HTMLForm;
 use IContextSource;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
+use MediaWiki\Title\Title;
 use SpecialPage;
-use Title;
 use User;
 use UserNotLoggedIn;
 
