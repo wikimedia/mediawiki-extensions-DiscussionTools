@@ -9,10 +9,10 @@ use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Shell\Shell;
+use MediaWiki\Title\Title;
 use MWExceptionRenderer;
 use stdClass;
 use Throwable;
-use Title;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 

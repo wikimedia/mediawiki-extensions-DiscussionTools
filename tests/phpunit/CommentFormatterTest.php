@@ -6,9 +6,9 @@ use FormatJson;
 use GenderCache;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use ParserOutput;
-use Title;
 use Wikimedia\TestingAccessWrapper;
 
 /**

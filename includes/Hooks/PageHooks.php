@@ -27,6 +27,7 @@ use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserOptionsLookup;
@@ -37,7 +38,6 @@ use RequestContext;
 use Skin;
 use SkinTemplate;
 use SpecialPage;
-use Title;
 
 class PageHooks implements
 	BeforeDisplayNoArticleTextHook,

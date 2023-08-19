@@ -6,9 +6,9 @@ use IContextSource;
 use InvalidArgumentException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Title\Title;
 use OOUI;
 use TablePager;
-use Title;
 
 class TopicSubscriptionsPager extends TablePager {
 

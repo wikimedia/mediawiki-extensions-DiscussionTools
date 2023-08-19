@@ -13,10 +13,10 @@ use DeferrableUpdate;
 use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
 use MediaWiki\Revision\RenderedRevision;
 use MediaWiki\Storage\Hook\RevisionDataUpdatesHook;
+use MediaWiki\Title\Title;
 use MWCallableUpdate;
 use MWExceptionHandler;
 use Throwable;
-use Title;
 
 class DataUpdatesHooks implements RevisionDataUpdatesHook {
 

@@ -14,8 +14,8 @@ use ExtensionRegistry;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookRunner;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\ResourceLoader as RL;
+use MediaWiki\Title\Title;
 use MessageLocalizer;
-use Title;
 
 class ResourceLoaderData {
 	/**
