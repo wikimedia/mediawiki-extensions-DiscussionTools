@@ -16,6 +16,13 @@ $specialPageAliases['en'] = [
 	'DiscussionToolsDebug' => [ 'DiscussionToolsDebug' ],
 ];
 
+/** Bengali (বাংলা) */
+$specialPageAliases['bn'] = [
+	'TopicSubscriptions' => [ 'আলোচনা_অনুসরণ' ],
+	'FindComment' => [ 'মন্তব্য_খুঁজুন' ],
+	'GoToComment' => [ 'মন্তব্যে_চলুন' ],
+];
+
 /** Czech (čeština) */
 $specialPageAliases['cs'] = [
 	'TopicSubscriptions' => [ 'Odebíraná_témata' ],
