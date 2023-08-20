@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
-use IDatabase;
 use Maintenance;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;
+use Wikimedia\Rdbms\IDatabase;
 
 class NewTopicOptOutActiveUsers extends Maintenance {
 
