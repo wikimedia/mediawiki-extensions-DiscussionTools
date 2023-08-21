@@ -38,7 +38,7 @@
 	"discussiontools-defaultsummary-reply": "Ответ",
 	"discussiontoolsdebug-title": "Структура данных инструментов для обсуждений",
 	"discussiontoolsdebug-pagetitle": "Заголовок страницы",
-	"discussiontoolsdebug-intro": "На этой странице показано, как [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools Расширение DiscussionTools] распознаёт темы и комментарии, присутствующие на странице '''[[:$1]]'''. Это может быть полезным для отладки проблем с расширением или понимания того, как оно работает. Та же информация доступна в [[Special:ApiSandbox#action=discussiontoolspageinfo&prop=threaditemshtml&page= $1 |discussiontoolspageinfo API]].",
+	"discussiontoolsdebug-intro": "На этой странице показано, как [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools Расширение DiscussionTools] распознаёт темы и комментарии, присутствующие на странице '''[[:$1]]'''. Это может быть полезным для отладки проблем с расширением или понимания того, как оно работает. Та же информация доступна в [[$2|API discussiontoolspageinfo]].",
 	"discussiontools-desc": "Инструменты для улучшения страниц обсуждений.",
 	"discussiontools-emptystate-button": "Начать обсуждение",
 	"discussiontools-emptystate-desc": "На [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|страницах обсуждения]] люди обсуждают, как улучшить содержимое {{GRAMMAR:genitive|{{SITENAME}}}}. Вы можете использовать эту страницу, чтобы обсудить с другими участниками, какие улучшения внести на страницу «[[:{{SUBJECTPAGENAME}}]]».",

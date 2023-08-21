@@ -13,6 +13,7 @@
 	"apihelp-discussiontoolscompare-summary": "Дај информации за изменетите коментари помеѓу две преработки на страницата.",
 	"apihelp-discussiontoolsedit-param-commentid": "Назнака на коментарот на кој се одговара. Се користи само кога <var>paction</var> е <var>addcomment</var>. Се наметнува врз <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Назив на коментарот на кој се одговара. Се користи само кога <var>paction</var> е <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-autosubscribe": "Сакате автоматски да го претплатите корисникот на нишката во разговорната страница?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Незадолжителна единствена назнака создадена во клиентот за да се спречи двојно објавување.",
 	"apihelp-discussiontoolsedit-param-html": "Содржина за објавување, како HTML. Не може да се користи заедно со <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Се користи само кога <var>paction</var> е <var>addtopic</var>.",
