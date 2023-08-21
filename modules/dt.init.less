@@ -468,6 +468,13 @@ h1, h2, h3, h4, h5, h6 {
 		}
 
 		// stylelint-disable-next-line selector-class-pattern
+		> .indicator {
+			// The indicator lives inside the h2 on normal pages, so expects
+			// to have the same base font size as the heading.
+			font-size: 1.5em;
+		}
+
+		// stylelint-disable-next-line selector-class-pattern
 		> .indicator,
 		&-ellipsisButton {
 			// Adjust for smaller headings
