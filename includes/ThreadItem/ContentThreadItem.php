@@ -261,6 +261,10 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 						// (T289873)
 						// Continue examining the other ranges.
 						break;
+					} elseif ( !$simpleTransclTitle->canExist() ) {
+						// Special page transclusion, probably accidental (T344622). Don't return the title,
+						// since it's useless for replying, and can't be stored in the permalink database.
+						return true;
 					} else {
 						return $simpleTransclTitle->getPrefixedText();
 					}
@@ -278,6 +282,10 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 				case 'contained':
 					// Comment is contained within the transclusion
 					if ( $simpleTransclTitle === null ) {
+						return true;
+					} elseif ( !$simpleTransclTitle->canExist() ) {
+						// Special page transclusion, probably accidental (T344622). Don't return the title,
+						// since it's useless for replying, and can't be stored in the permalink database.
 						return true;
 					} else {
 						return $simpleTransclTitle->getPrefixedText();
