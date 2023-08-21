@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"TayfunEt."
+			"TayfunEt.",
+			"Sahran",
+			"Zolgoyo"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "جاۋاب",
 	"discussiontools-replylink": "جاۋاب",
 	"discussiontools-replywidget-cancel": "ۋاز كەچ",
 	"discussiontools-replywidget-mode-source": "مەنبە",
 	"discussiontools-replywidget-mode-visual": "كۆرۈنىدىغان قىلىش",
+	"discussiontools-replywidget-preview": "ئالدىن كۆزەت",
 	"discussiontools-replywidget-reply": "جاۋاب"
 }
