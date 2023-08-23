@@ -14,6 +14,7 @@
 			"Jhonnatanricardo",
 			"Matma Rex",
 			"Stanglavine",
+			"Stephanyb76",
 			"Wiiformii",
 			"YuriNikolai"
 		]
@@ -102,8 +103,8 @@
 	"discussiontools-preference-topicsubscription": "Ativar a inscrição de tópico",
 	"discussiontools-preference-topicsubscription-help": "Isso permitirá que você se inscreva para receber notificações sobre comentários sobre tópicos individuais.",
 	"discussiontools-preference-visualenhancements": "Mostrar a atividade de discussões",
-	"discussiontools-replybutton": "Responder",
-	"discussiontools-replylink": "responder",
+	"discussiontools-replybutton": "{{GENDER:|Responder}}",
+	"discussiontools-replylink": "{{GENDER:|responder}}",
 	"discussiontools-replywidget-abandon": "Tem certeza de que deseja descartar o comentário que está escrevendo?",
 	"discussiontools-replywidget-abandon-discard": "Descartar comentário",
 	"discussiontools-replywidget-abandon-keep": "Continue escrevendo",
