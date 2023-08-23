@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rut"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Дживаб",
+	"discussiontools-replywidget-advanced": "Бала устарахана",
+	"discussiontools-replywidget-cancel": "Отмена",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Визуально",
+	"discussiontools-replywidget-preview": "Предпросмотр",
+	"discussiontools-replywidget-summary": "Джикды кихьин",
+	"discussiontools-replywidget-watchthis": "Мид джар выды [[Special:Watchlist|гакъад-сиягьа]] уу лихъихьин",
+	"discussiontools-topicsubscription-button-subscribe": "подписаться",
+	"discussiontools-topicsubscription-button-unsubscribe": "отписаться"
+}

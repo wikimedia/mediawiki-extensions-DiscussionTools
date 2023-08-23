@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martindimaggio"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Risposta",
+	"discussiontools-replywidget-advanced": "Avanzartur",
+	"discussiontools-replywidget-cancel": "Skançilar",
+	"discussiontools-replywidget-mode-source": "Krua",
+	"discussiontools-replywidget-mode-visual": "Visuali",
+	"discussiontools-replywidget-preview": "Vrej më para",
+	"discussiontools-replywidget-summary": "Oggettu",
+	"discussiontools-replywidget-watchthis": "Jungir sta pagina te [[Special:Watchlist|Lista e vrejtur]]",
+	"discussiontools-topicsubscription-button-subscribe": "iskriviru",
+	"discussiontools-topicsubscription-button-unsubscribe": "anular iskrizionin"
+}
