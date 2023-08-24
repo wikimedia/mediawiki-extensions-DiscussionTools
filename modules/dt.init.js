@@ -22,8 +22,10 @@ if ( url.searchParams.get( 'dtrepliedto' ) ) {
 	// If we had to reload the page to highlight the new comment, extract that data from the URL and
 	// clean it up.
 	mw.dt.initState.repliedTo = url.searchParams.get( 'dtrepliedto' );
+	mw.dt.initState.tempUserCreated = url.searchParams.has( 'dttempusercreated' );
 	if ( window.history.replaceState ) {
 		url.searchParams.delete( 'dtrepliedto' );
+		url.searchParams.delete( 'dttempusercreated' );
 		window.history.replaceState( {}, '', url );
 	}
 }

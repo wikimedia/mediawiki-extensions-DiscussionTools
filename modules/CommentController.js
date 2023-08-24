@@ -465,6 +465,7 @@ CommentController.prototype.save = function ( pageName ) {
 			data.returnto = pageName;
 			var params = new URLSearchParams();
 			params.set( 'dtrepliedto', commentController.getThreadItem().id );
+			params.set( 'dttempusercreated', '1' );
 			data.returntoquery = params.toString();
 		}
 

@@ -288,6 +288,7 @@ function getReplyWidgetModules( visual ) {
  * @param {jQuery} $container Page container
  * @param {Object<string,Mixed>} [state] Page state data object
  * @param {string} [state.repliedTo] The comment ID that was just replied to
+ * @param {boolean} [state.tempUserCreated] Whether a temp user was just created
  */
 function init( $container, state ) {
 	var
@@ -516,10 +517,12 @@ function init( $container, state ) {
 
 			if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
 				mw.hook( 'postEdit' ).fire( {
+					tempUserCreated: state.tempUserCreated,
 					message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
 				} );
 			} else {
 				mw.hook( 'postEdit' ).fire( {
+					tempUserCreated: state.tempUserCreated,
 					message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
 				} );
 			}
@@ -686,7 +689,10 @@ function update( data, threadItem, pageName, replyWidget ) {
 		replyWidget.unbindBeforeUnloadHandler();
 		replyWidget.clearStorage();
 		replyWidget.setPending( true );
-		window.location = data.tempusercreatedredirect || mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );
+		window.location = data.tempusercreatedredirect || mw.util.getUrl( pageName, {
+			dtrepliedto: threadItem.id,
+			dttempusercreated: '1'
+		} );
 		logSaveSuccess();
 		return;
 	}
@@ -696,6 +702,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 
 	// Highlight the new reply after re-initializing
 	mw.dt.initState.repliedTo = threadItem.id;
+	mw.dt.initState.tempUserCreated = data.tempusercreated;
 
 	// Update page state
 	var pageUpdated = $.Deferred();
