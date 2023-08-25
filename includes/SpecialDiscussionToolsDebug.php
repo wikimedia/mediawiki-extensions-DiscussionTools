@@ -48,6 +48,7 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 				'name' => 'pagetitle',
 				'type' => 'title',
 				'required' => true,
+				'exists' => true,
 			],
 		];
 	}
