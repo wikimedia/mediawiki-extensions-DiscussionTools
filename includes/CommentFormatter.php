@@ -127,7 +127,14 @@ class CommentFormatter {
 			$wrapperNode->insertBefore( $subscribeButton, $wrapperNode->firstChild );
 		}
 
-		$ellipsisButton = $doc->createComment( '__DTELLIPSISBUTTON__' );
+		$editable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) !== null;
+		$ellipsisDataJSON = json_encode( [
+			'editable' => $editable,
+		] );
+
+		$ellipsisButton = $doc->createComment(
+			'__DTELLIPSISBUTTON__' . htmlspecialchars( $ellipsisDataJSON, ENT_NOQUOTES )
+		);
 		$wrapperNode->appendChild( $ellipsisButton );
 
 		// Visual enhancements: topic containers
@@ -345,9 +352,9 @@ class CommentFormatter {
 	public static function removeInteractiveTools( string $text ) {
 		$text = strtr( $text, [
 			'<!--__DTREPLYBUTTONSCONTENT__-->' => '',
-			'<!--__DTELLIPSISBUTTON__-->' => '',
 		] );
 
+		$text = preg_replace( '/<!--__DTELLIPSISBUTTON__(.*?)-->/', '', $text );
 		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
 		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)__(.*?)-->/', '', $text );
 
@@ -687,22 +694,36 @@ class CommentFormatter {
 		);
 		if ( $isMobile ) {
 			$text = preg_replace_callback(
-				'/<!--__DTELLIPSISBUTTON__-->/',
+				'/<!--__DTELLIPSISBUTTON__(.*?)-->/',
 				static function ( $matches ) {
-					$ellipsis = new ButtonMenuSelectWidget( [
-						'classes' => [ 'ext-discussiontools-init-section-ellipsisButton' ],
-						'framed' => false,
-						'icon' => 'ellipsis',
-						'infusable' => true,
-					] );
+					if ( $matches[1] ) {
+						$ellipsisData = json_decode( htmlspecialchars_decode( $matches[1] ), true );
+					} else {
+						// Backwards compatibly with the old data-less comments.
+						// Can be removed once the caches have cleared after a few weeks.
+						$ellipsisData = [ 'editable' => true ];
+					}
 
-					return $ellipsis->toString();
+					// Currently 'edit' is the only button, so if the section
+					// isn't editable, omit the whole menu.
+					if ( $ellipsisData['editable'] ?? false ) {
+						$ellipsis = new ButtonMenuSelectWidget( [
+							'classes' => [ 'ext-discussiontools-init-section-ellipsisButton' ],
+							'framed' => false,
+							'icon' => 'ellipsis',
+							'infusable' => true,
+						] );
+
+						return $ellipsis->toString();
+					} else {
+						return '';
+					}
 				},
 				$text
 			);
 		} else {
 			$text = preg_replace(
-				'/<!--__DTELLIPSISBUTTON__-->/',
+				'/<!--__DTELLIPSISBUTTON__(.*?)-->/',
 				'',
 				$text
 			);
