@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rut"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Дживаб",
+	"discussiontools-replywidget-cancel": "Отмена",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Визуально",
+	"discussiontools-replywidget-preview": "Предпросмотр"
+}
