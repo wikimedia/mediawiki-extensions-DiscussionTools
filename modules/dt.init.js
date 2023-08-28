@@ -77,9 +77,16 @@ if ( url.searchParams.get( 'dtdebug' ) ) {
 	mw.hook( 'wikipage.content' ).add( mw.dt.init );
 }
 
+var topicSubscriptions;
+
 if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'TopicSubscriptions' ) {
-	var topicSubscriptions = require( './topicsubscriptions.js' );
+	topicSubscriptions = require( './topicsubscriptions.js' );
 	topicSubscriptions.initSpecialTopicSubscriptions();
+}
+
+if ( mw.config.get( 'wgAction' ) === 'history' ) {
+	topicSubscriptions = require( './topicsubscriptions.js' );
+	topicSubscriptions.initNewTopicsSubscription();
 }
 
 // Clean up old localStorage entries that were erroneously set with no expiration (T339042).

@@ -584,6 +584,8 @@ class PageHooks implements
 				'data-mw-subscribed' => $button['isSubscribed'] ? '1' : '0',
 				'href' => $button['href'],
 			];
+
+			$output->addModules( [ 'ext.discussionTools.init' ] );
 		}
 	}
 
