@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Astahar"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Хурав",
+	"discussiontools-replywidget-advanced": "Хушма опцисем",
+	"discussiontools-replywidget-cancel": "Пӑрахӑҫла",
+	"discussiontools-replywidget-mode-source": "Код",
+	"discussiontools-replywidget-mode-visual": "Курӑмлӑ",
+	"discussiontools-replywidget-preview": "Малтанлӑха пӑхни",
+	"discussiontools-replywidget-summary": "Кӗскен ӑнлантарни",
+	"discussiontools-replywidget-watchthis": "Ку страницӑна хӑвӑрӑн [[Special:Watchlist|watchlist]] хуш",
+	"discussiontools-topicsubscription-button-subscribe": "ҫырӑн",
+	"discussiontools-topicsubscription-button-unsubscribe": "ҫырӑннине пӑрахӑҫла"
+}

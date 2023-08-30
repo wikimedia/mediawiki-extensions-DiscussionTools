@@ -3,7 +3,8 @@
 		"authors": [
 			"Tokvo",
 			"Xuacu",
-			"Fitoschido"
+			"Fitoschido",
+			"YoaR"
 		]
 	},
 	"discussiontools": "Ferramientes d'alderique",
@@ -15,5 +16,6 @@
 	"discussiontools-replywidget-loading": "Cargando...",
 	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-reply": "Contestar",
+	"discussiontools-replywidget-summary": "Resume",
 	"discussiontools-topicsubscription-button-subscribe": "soscríbite"
 }

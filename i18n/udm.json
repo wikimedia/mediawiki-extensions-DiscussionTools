@@ -12,10 +12,10 @@
 	"discussiontools-replywidget-mode-source": "Кылдонэз",
 	"discussiontools-replywidget-mode-visual": "Визуал амалэн",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} викиавторлы берен вазёно",
-	"discussiontools-replywidget-preview": "бамез эскерон",
+	"discussiontools-replywidget-preview": "Азьпал учкон",
 	"discussiontools-replywidget-reply": "Берен вазёно",
 	"discussiontools-replywidget-summary": "Вакчияк кылсуред",
-	"discussiontools-replywidget-watchthis": "Ватсаны та бамез асьтэлэн [[Special:Watchlist|чакланъёсын лыдъетады]]",
-	"discussiontools-topicsubscription-button-subscribe": "гожтӥськыны",
-	"discussiontools-topicsubscription-button-unsubscribe": "Гожтӥськонъёслэсь куштӥськыны"
+	"discussiontools-replywidget-watchthis": "Та бамез асьтэлэн [[Special:Watchlist|чакланъёсын лыдъетады]] ватсано.",
+	"discussiontools-topicsubscription-button-subscribe": "гожтӥськоно",
+	"discussiontools-topicsubscription-button-unsubscribe": "Гожтӥськонъёслэсь куштӥськоно"
 }
