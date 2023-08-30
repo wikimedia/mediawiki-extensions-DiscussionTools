@@ -16,6 +16,8 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Request\DerivativeRequest;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\Title;
+use MediaWiki\User\TempUser\TempUserCreator;
+use MediaWiki\User\UserFactory;
 use SkinFactory;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\StringDef;
@@ -29,6 +31,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	private CommentParser $commentParser;
 	private VisualEditorParsoidClientFactory $parsoidClientFactory;
 	private SubscriptionStore $subscriptionStore;
+	private TempUserCreator $tempUserCreator;
+	private UserFactory $userFactory;
 	private SkinFactory $skinFactory;
 	private Config $config;
 	private RevisionLookup $revisionLookup;
@@ -39,6 +43,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		VisualEditorParsoidClientFactory $parsoidClientFactory,
 		CommentParser $commentParser,
 		SubscriptionStore $subscriptionStore,
+		TempUserCreator $tempUserCreator,
+		UserFactory $userFactory,
 		SkinFactory $skinFactory,
 		ConfigFactory $configFactory,
 		RevisionLookup $revisionLookup
@@ -47,6 +53,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		$this->parsoidClientFactory = $parsoidClientFactory;
 		$this->commentParser = $commentParser;
 		$this->subscriptionStore = $subscriptionStore;
+		$this->tempUserCreator = $tempUserCreator;
+		$this->userFactory = $userFactory;
 		$this->skinFactory = $skinFactory;
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->revisionLookup = $revisionLookup;
@@ -107,7 +115,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		$previewContainer = DOMCompat::getBody( DOMUtils::parseHTML( $previewResultHtml ) );
 		$previewThreadItemSet = $this->commentParser->parse( $previewContainer, $title->getTitleValue() );
 		if ( CommentUtils::isSingleCommentSignedBy(
-			$previewThreadItemSet, $this->getUser()->getName(), $previewContainer
+			$previewThreadItemSet, $this->getUserForPreview()->getName(), $previewContainer
 		) ) {
 			$signature = null;
 		} else {

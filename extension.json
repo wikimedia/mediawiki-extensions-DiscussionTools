@@ -363,6 +363,8 @@
 				"VisualEditor.ParsoidClientFactory",
 				"DiscussionTools.CommentParser",
 				"DiscussionTools.SubscriptionStore",
+				"TempUserCreator",
+				"UserFactory",
 				"SkinFactory",
 				"ConfigFactory",
 				"RevisionLookup"
@@ -395,6 +397,8 @@
 			"services": [
 				"VisualEditor.ParsoidClientFactory",
 				"DiscussionTools.CommentParser",
+				"TempUserCreator",
+				"UserFactory",
 				"SkinFactory"
 			]
 		},
