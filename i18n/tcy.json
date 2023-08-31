@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chidananda Kampa"
+			"Chidananda Kampa",
+			"ChiK"
 		]
 	},
+	"discussiontools-replywidget-advanced": "ಸುದಾರ್ತಿನ",
 	"discussiontools-replywidget-cancel": "ವಜಾ ಮಲ್ಪುಲೆ",
 	"discussiontools-replywidget-mode-source": "ಮೂಲೊ",
 	"discussiontools-replywidget-mode-visual": "ತೋಜುನವು",
