@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"BHARATHESHA ALASANDEMAJALU",
 			"ChiK",
 			"Chidananda Kampa"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ಪ್ರತಿಕ್ರಿಯೆ",
 	"discussiontools-replywidget-advanced": "ಸುದಾರ್ತಿನ",
 	"discussiontools-replywidget-cancel": "ವಜಾ ಮಲ್ಪುಲೆ",
 	"discussiontools-replywidget-mode-source": "ಮೂಲೊ",
