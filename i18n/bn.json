@@ -156,6 +156,7 @@
 	"discussiontools-topicsubscription-action-subscribe-prompt-newtopics": "এই পাতায় নতুন আলোচনা সম্পর্কে বিজ্ঞপ্তি পেতে অনুসরণ করবেন?",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "অনুসরণ করবেন না",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "এই আলোচনা আর অনুসরণ করতে চান না?",
+	"discussiontools-topicsubscription-action-unsubscribe-prompt-newtopics": "এই পাতায় নতুন আলোচনা সম্পর্কে বিজ্ঞপ্তি পেতে চান না?",
 	"discussiontools-topicsubscription-button-subscribe": "অনুসরণ করুন",
 	"discussiontools-topicsubscription-button-subscribe-label": "অনুসরণ করুন",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "নতুন মন্তব্য আসলে বিজ্ঞপ্তি পেতে অনুসরণ করুন।",
