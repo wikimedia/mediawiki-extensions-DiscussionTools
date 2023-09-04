@@ -689,10 +689,11 @@ function update( data, threadItem, pageName, replyWidget ) {
 		replyWidget.unbindBeforeUnloadHandler();
 		replyWidget.clearStorage();
 		replyWidget.setPending( true );
-		window.location = data.tempusercreatedredirect || mw.util.getUrl( pageName, {
-			dtrepliedto: threadItem.id,
-			dttempusercreated: '1'
-		} );
+		var params = { dtrepliedto: threadItem.id };
+		if ( data.tempusercreated ) {
+			params.dttempusercreated = '1';
+		}
+		window.location = data.tempusercreatedredirect || mw.util.getUrl( pageName, params );
 		logSaveSuccess();
 		return;
 	}
