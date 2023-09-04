@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chidananda Kampa"
+			"Chidananda Kampa",
+			"BHARATHESHA ALASANDEMAJALU",
+			"ChiK"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ಪ್ರತಿಕ್ರಿಯೆ",
 	"discussiontools-replywidget-cancel": "ವಜಾ ಮಲ್ಪುಲೆ",
 	"discussiontools-replywidget-mode-source": "ಮೂಲೊ",
 	"discussiontools-replywidget-mode-visual": "ತೋಜುನವು",
