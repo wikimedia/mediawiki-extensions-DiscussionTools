@@ -214,6 +214,13 @@ class SubscriptionStore {
 		if ( !$user->isRegistered() || $this->userIdentityUtils->isTemp( $user ) ) {
 			return false;
 		}
+
+		$section = $target->getFragment();
+		// Truncate to the database field length, taking care not to mess up multibyte characters,
+		// appending a marker so that we can recognize this happened and display an ellipsis later.
+		// Using U+001F "Unit Separator" seems appropriate, and it can't occur in wikitext.
+		$truncSection = strlen( $section ) > 254 ? mb_strcut( $section, 0, 254 ) . "\x1f" : $section;
+
 		$dbw = $this->dbProvider->getPrimaryDatabase();
 		$dbw->upsert(
 			'discussiontools_subscription',
@@ -221,7 +228,7 @@ class SubscriptionStore {
 				'sub_user' => $user->getId(),
 				'sub_namespace' => $target->getNamespace(),
 				'sub_title' => $target->getDBkey(),
-				'sub_section' => $target->getFragment(),
+				'sub_section' => $truncSection,
 				'sub_item' => $itemName,
 				'sub_state' => $state,
 				'sub_created' => $dbw->timestamp(),

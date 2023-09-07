@@ -80,12 +80,21 @@ class TopicSubscriptionsPager extends TablePager {
 						$this->msg( 'discussiontools-topicsubscription-pager-newtopics-label' )->escaped() .
 					'</em>';
 				} else {
-					$titleSection = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title, $row->sub_section );
-					if ( !$titleSection ) {
-						// Handle invalid titles (T345648)
-						return htmlspecialchars( $row->sub_section );
+					$section = $row->sub_section;
+					// Detect truncated section titles: either intentionally truncated by SubscriptionStore,
+					// or incorrect multibyte truncation of old entries (T345648).
+					$last = mb_substr( $section, -1 );
+					if ( $last !== '' && ( $last === "\x1f" || mb_ord( $last ) === false ) ) {
+						$section = substr( $section, 0, -strlen( $last ) );
+						// We can't link to the section correctly, since the only link we have is truncated
+						return htmlspecialchars( $section ) . $this->msg( 'ellipsis' )->escaped();
 					}
-					return $linkRenderer->makeLink( $titleSection, $row->sub_section );
+					$titleSection = Title::makeTitleSafe( $row->sub_namespace, $row->sub_title, $section );
+					if ( !$titleSection ) {
+						// Handle invalid titles of any other kind, just in case
+						return htmlspecialchars( $section );
+					}
+					return $linkRenderer->makeLink( $titleSection, $section );
 				}
 
 			case '_page':
