@@ -15,6 +15,7 @@
 	"apihelp-discussiontoolscompare-summary": "두 페이지 판 사이의 의견 변경 내용에 관한 정보를 가져옵니다.",
 	"apihelp-discussiontoolsedit-param-wikitext": "위키텍스트로 게시할 콘텐츠입니다. <var>html</var>과 함께 사용할 수 없습니다.",
 	"apihelp-discussiontoolsedit-summary": "토론 문서에 메시지를 게시합니다.",
+	"apihelp-discussiontoolsfindcomment-param-idorname": "댓글 ID 또는 이름",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "검사할 주제의 이름",
 	"apihelp-discussiontoolsgetsubscriptions-summary": "지정된 주제의 구독 상태를 가져옵니다.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "사용할 판 번호입니다. (기본값은 최신판입니다)",
@@ -23,6 +24,7 @@
 	"apihelp-discussiontoolspreview-param-type": "미리 볼 메시지의 유형",
 	"apihelp-discussiontoolspreview-param-wikitext": "위키텍스트 형식의 미리 볼 내용입니다.",
 	"apihelp-discussiontoolspreview-summary": "토론 문서의 메시지를 미리 봅니다.",
+	"apihelp-discussiontoolssubscribe-param-commentname": "구독(또는 구독 해지)할 주제의 이름",
 	"apihelp-discussiontoolssubscribe-param-page": "주제가 표시되는 페이지",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true는 구독이며, false는 구독 해지임",
 	"apihelp-discussiontoolssubscribe-summary": "주제에 관한 알림을 수신하기 위해 구독(또는 구독 해지)을 합니다."
