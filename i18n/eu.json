@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Atzerritik",
+			"Izendegi",
 			"Joseba",
 			"Theklan"
 		]
@@ -82,7 +83,7 @@
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Harpidetza kendu iruzkinak jasotzeari uzteko.",
 	"discussiontools-topicsubscription-error-not-found-body": "URLan aipatutako harpidetza ez da aurkitu.",
 	"discussiontools-topicsubscription-error-not-found-title": "Harpidetza ez da aurkitu",
-	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:$1|Zuk}} gai honetan izandako ekintza guztiei buruzko jakinarazpenak jasoko dituzu.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Zuk}} gai honetan egindako iruzkin berrien jakinarazpenak jasoko dituzu.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Harpidetu zara!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Gai honi buruz uzten diren iruzkinei buruzko ohartarazpen gehiagorik ez duzu jasoko.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Harpidetza kendu duzu.",
