@@ -233,15 +233,15 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	// Events
 	this.replyButton.connect( this, { click: 'onReplyClick' } );
 	this.cancelButton.connect( this, { click: 'tryTeardown' } );
-	this.$element.on( 'keydown', this.onKeyDown.bind( this, true ) );
+	this.$element.on( 'keydown', this.onKeyDown.bind( this ) );
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
 	this.unloadHandler = this.onUnload.bind( this );
 	this.onWatchToggleHandler = this.onWatchToggle.bind( this );
 	this.advancedToggle.connect( this, { click: 'onAdvancedToggleClick' } );
 	this.editSummaryInput.connect( this, { change: 'onEditSummaryChange' } );
-	this.editSummaryInput.$input.on( 'keydown', this.onKeyDown.bind( this, false ) );
+	this.editSummaryInput.$input.on( 'keydown', this.onKeyDown.bind( this ) );
 	if ( this.isNewTopic ) {
-		this.commentController.sectionTitle.$input.on( 'keydown', this.onKeyDown.bind( this, false ) );
+		this.commentController.sectionTitle.$input.on( 'keydown', this.onKeyDown.bind( this ) );
 	}
 	this.scrollBackTopButton.connect( this, { click: 'onScrollBackButtonClick' } );
 	this.scrollBackBottomButton.connect( this, { click: 'onScrollBackButtonClick' } );
@@ -735,11 +735,10 @@ ReplyWidget.prototype.onWatchToggle = function ( isWatched ) {
 /**
  * Handle key down events anywhere in the reply widget
  *
- * @param {boolean} isMultiline The current input is multiline
  * @param {jQuery.Event} e Key down event
  * @return {boolean} Return false to prevent default event
  */
-ReplyWidget.prototype.onKeyDown = function ( isMultiline, e ) {
+ReplyWidget.prototype.onKeyDown = function ( e ) {
 	if ( e.which === OO.ui.Keys.ESCAPE ) {
 		this.tryTeardown();
 		return false;
@@ -747,7 +746,8 @@ ReplyWidget.prototype.onKeyDown = function ( isMultiline, e ) {
 
 	// VE surfaces already handle CTRL+Enter, but this will catch
 	// the plain surface, and the edit summary input.
-	if ( e.which === OO.ui.Keys.ENTER && ( !isMultiline || e.ctrlKey || e.metaKey ) ) {
+	// Require CTRL+Enter even on single line inputs per T326500.
+	if ( e.which === OO.ui.Keys.ENTER && ( e.ctrlKey || e.metaKey ) ) {
 		this.onReplyClick();
 		return false;
 	}
