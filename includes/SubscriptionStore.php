@@ -204,7 +204,7 @@ class SubscriptionStore {
 		UserIdentity $user,
 		LinkTarget $target,
 		string $itemName,
-		// Can't use static:: in compile-time constants
+		// Can not use static:: in compile-time constants
 		int $state = self::STATE_SUBSCRIBED
 	): bool {
 		if ( $this->readOnlyMode->isReadOnly() ) {
