@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"TerranBoy"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "جواو",
+	"discussiontools-replywidget-advanced": "پێشکەفتێ",
+	"discussiontools-replywidget-cancel": "هەڵوەشاننەوە",
+	"discussiontools-replywidget-mode-source": "سەرچاوە",
+	"discussiontools-replywidget-preview": "پێشدیین",
+	"discussiontools-replywidget-summary": "خوڵاسە",
+	"discussiontools-topicsubscription-button-subscribe": "بەشدار بوو",
+	"discussiontools-topicsubscription-button-subscribe-label": "بەشدار بوو",
+	"discussiontools-topicsubscription-button-unsubscribe": "بەشدار نەوو",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "بەشدار نەوو",
+	"discussiontools-topicsubscription-pager-notified-never": "هەرگز",
+	"discussiontools-topicsubscription-pager-page": "پەرە",
+	"discussiontools-topicsubscription-pager-topic": "باوەت"
+}
