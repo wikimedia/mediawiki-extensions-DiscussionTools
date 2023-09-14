@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 use Config;
 use ConfigFactory;
 use Exception;
-use LogicException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseHeadingItem;
@@ -19,6 +18,7 @@ use MWTimestamp;
 use ReadOnlyMode;
 use stdClass;
 use TitleFormatter;
+use Wikimedia\NormalizedException\NormalizedException;
 use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILBFactory;
@@ -346,9 +346,12 @@ class ThreadItemStore {
 	 * @param callable $find Function that does a SELECT and returns primary key field
 	 * @param callable $insert Function that does an INSERT IGNORE and returns last insert ID
 	 * @param bool &$didInsert Set to true if the insert succeeds
+	 * @param RevisionRecord $rev For error logging
 	 * @return int Return value of whichever function succeeded
 	 */
-	private function findOrInsertIdButTryHarder( callable $find, callable $insert, bool &$didInsert ) {
+	private function findOrInsertIdButTryHarder(
+		callable $find, callable $insert, bool &$didInsert, RevisionRecord $rev
+	) {
 		$dbw = $this->dbProvider->getPrimaryDatabase();
 
 		$id = $find( $dbw );
@@ -363,7 +366,13 @@ class ThreadItemStore {
 					->getConnection( DB_PRIMARY, [], false, ILoadBalancer::CONN_TRX_AUTOCOMMIT );
 				$id = $find( $dbwAnother );
 				if ( !$id ) {
-					throw new LogicException( "Database can't find our row and won't let us insert it" );
+					throw new NormalizedException(
+						"Database can't find our row and won't let us insert it on page {page} revision {revision}",
+						[
+							'page' => $rev->getPageId(),
+							'revision' => $rev->getId(),
+						]
+					);
 				}
 			}
 		}
@@ -418,7 +427,8 @@ class ThreadItemStore {
 						->execute();
 					return $dbw->affectedRows() ? $dbw->insertId() : null;
 				},
-				$didInsert
+				$didInsert,
+				$rev
 			);
 			$itemIdsIds[ $item->getId() ] = $itemIdsId;
 		}
@@ -455,7 +465,8 @@ class ThreadItemStore {
 						->execute();
 					return $dbw->affectedRows() ? $dbw->insertId() : null;
 				},
-				$didInsert
+				$didInsert,
+				$rev
 			);
 			$itemsIds[ $item->getId() ] = $itemsId;
 		}
@@ -615,7 +626,8 @@ class ThreadItemStore {
 									->execute();
 								return $dbw->affectedRows() ? $dbw->insertId() : null;
 							},
-							$didInsert
+							$didInsert,
+							$rev
 						);
 					}
 				}
