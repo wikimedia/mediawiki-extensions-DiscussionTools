@@ -41,8 +41,6 @@ class CommentFormatter {
 	 * Get a comment parser object for a DOM element
 	 *
 	 * This method exists so it can mocked in tests.
-	 *
-	 * @return CommentParser
 	 */
 	protected static function getParser(): CommentParser {
 		return MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' );
@@ -479,13 +477,6 @@ class CommentFormatter {
 
 	/**
 	 * Replace placeholders for topic subscription buttons with the real thing.
-	 *
-	 * @param string $text
-	 * @param IContextSource $contextSource
-	 * @param SubscriptionStore $subscriptionStore
-	 * @param bool $isMobile
-	 * @param bool $useButtons
-	 * @return string
 	 */
 	public static function postprocessTopicSubscription(
 		string $text, IContextSource $contextSource,
@@ -613,12 +604,6 @@ class CommentFormatter {
 
 	/**
 	 * Replace placeholders for reply links with the real thing.
-	 *
-	 * @param string $text
-	 * @param IContextSource $contextSource
-	 * @param bool $isMobile
-	 * @param bool $useButtons
-	 * @return string
 	 */
 	public static function postprocessReplyTool(
 		string $text, IContextSource $contextSource, bool $isMobile, bool $useButtons
@@ -715,10 +700,6 @@ class CommentFormatter {
 		return $JSON;
 	}
 
-	/**
-	 * @param ContentHeadingItem $heading
-	 * @return array
-	 */
 	private static function getJsonForHeadingMarker( ContentHeadingItem $heading ): array {
 		$JSON = $heading->jsonSerialize();
 		$JSON['text'] = $heading->getText();
@@ -732,11 +713,6 @@ class CommentFormatter {
 	 * Signature timestamps don't have seconds-level accuracy, so any
 	 * time difference of less than 120 seconds is treated as being
 	 * posted "just now".
-	 *
-	 * @param MWTimestamp $timestamp
-	 * @param Language $lang
-	 * @param UserIdentity $user
-	 * @return string
 	 */
 	public static function getSignatureRelativeTime(
 		MWTimestamp $timestamp, Language $lang, UserIdentity $user
@@ -755,11 +731,6 @@ class CommentFormatter {
 
 	/**
 	 * Post-process visual enhancements features (topic containers)
-	 *
-	 * @param string $text
-	 * @param IContextSource $contextSource
-	 * @param bool $isMobile
-	 * @return string
 	 */
 	public static function postprocessVisualEnhancements(
 		string $text, IContextSource $contextSource, bool $isMobile
@@ -882,10 +853,6 @@ class CommentFormatter {
 
 	/**
 	 * Post-process visual enhancements features for page subtitle
-	 *
-	 * @param ParserOutput $pout
-	 * @param IContextSource $contextSource
-	 * @return ?string
 	 */
 	public static function postprocessVisualEnhancementsSubtitle(
 		ParserOutput $pout, IContextSource $contextSource
@@ -930,9 +897,6 @@ class CommentFormatter {
 
 	/**
 	 * Post-process visual enhancements features for table of contents
-	 *
-	 * @param ParserOutput $pout
-	 * @param IContextSource $contextSource
 	 */
 	public static function postprocessTableOfContents(
 		ParserOutput $pout, IContextSource $contextSource
@@ -967,9 +931,6 @@ class CommentFormatter {
 
 	/**
 	 * Check if the talk page had no comments or headings.
-	 *
-	 * @param ParserOutput $pout
-	 * @return bool
 	 */
 	public static function isEmptyTalkPage( ParserOutput $pout ): bool {
 		return $pout->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) === true;
@@ -977,9 +938,6 @@ class CommentFormatter {
 
 	/**
 	 * Append content to an empty talk page
-	 *
-	 * @param ParserOutput $pout
-	 * @param string $content
 	 */
 	public static function appendToEmptyTalkPage( ParserOutput $pout, string $content ): void {
 		$text = $pout->getRawText();
@@ -989,9 +947,6 @@ class CommentFormatter {
 
 	/**
 	 * Check if the talk page has content above the first heading, in the lede section.
-	 *
-	 * @param ParserOutput $pout
-	 * @return bool
 	 */
 	public static function hasLedeContent( ParserOutput $pout ): bool {
 		return $pout->getExtensionData( 'DiscussionTools-hasLedeContent' ) === true;
@@ -999,9 +954,6 @@ class CommentFormatter {
 
 	/**
 	 * Check if the talk page has comments above the first heading, in the lede section.
-	 *
-	 * @param ParserOutput $pout
-	 * @return bool
 	 */
 	public static function hasCommentsInLedeContent( ParserOutput $pout ): bool {
 		return $pout->getExtensionData( 'DiscussionTools-hasCommentsInLedeContent' ) === true;

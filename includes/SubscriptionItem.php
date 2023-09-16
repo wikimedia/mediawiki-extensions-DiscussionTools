@@ -41,31 +41,20 @@ class SubscriptionItem {
 		$this->notifiedTimestamp = $notifiedTimestamp;
 	}
 
-	/**
-	 * @return UserIdentity
-	 */
 	public function getUserIdentity(): UserIdentity {
 		return $this->user;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getItemName(): string {
 		return $this->itemName;
 	}
 
-	/**
-	 * @return LinkTarget
-	 */
 	public function getLinkTarget(): LinkTarget {
 		return $this->linkTarget;
 	}
 
 	/**
 	 * Get the creation timestamp of this entry.
-	 *
-	 * @return string|null
 	 */
 	public function getCreatedTimestamp(): ?string {
 		return $this->createdTimestamp;
@@ -73,8 +62,6 @@ class SubscriptionItem {
 
 	/**
 	 * Get the notification timestamp of this entry.
-	 *
-	 * @return string|null
 	 */
 	public function getNotificationTimestamp(): ?string {
 		return $this->notifiedTimestamp;
@@ -91,8 +78,6 @@ class SubscriptionItem {
 
 	/**
 	 * Check if the notification is muted
-	 *
-	 * @return bool
 	 */
 	public function isMuted(): bool {
 		return $this->state === SubscriptionStore::STATE_UNSUBSCRIBED;

@@ -121,9 +121,6 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 
 	/**
 	 * Get transcluded=from data for a ContentThreadItemSet
-	 *
-	 * @param ContentThreadItemSet $threadItemSet
-	 * @return array
 	 */
 	private static function getTranscludedFrom( ContentThreadItemSet $threadItemSet ): array {
 		$threadItems = $threadItemSet->getThreadItems();
@@ -150,10 +147,6 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 
 	/**
 	 * Get thread items HTML for a ContentThreadItemSet
-	 *
-	 * @param ContentThreadItemSet $threadItemSet
-	 * @param bool $excludeSignatures
-	 * @return array
 	 */
 	private static function getThreadItemsHtml( ContentThreadItemSet $threadItemSet, bool $excludeSignatures ): array {
 		// This function assumes that the start of the ranges associated with

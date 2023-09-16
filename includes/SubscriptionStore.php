@@ -172,12 +172,6 @@ class SubscriptionStore {
 		return $items;
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @param LinkTarget $target
-	 * @param stdClass $row
-	 * @return SubscriptionItem
-	 */
 	private function getSubscriptionItemFromRow(
 		UserIdentity $user,
 		LinkTarget $target,
@@ -193,13 +187,6 @@ class SubscriptionStore {
 		);
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @param LinkTarget $target
-	 * @param string $itemName
-	 * @param int $state
-	 * @return bool
-	 */
 	public function addSubscriptionForUser(
 		UserIdentity $user,
 		LinkTarget $target,
@@ -242,11 +229,6 @@ class SubscriptionStore {
 		return (bool)$dbw->affectedRows();
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @param string $itemName
-	 * @return bool
-	 */
 	public function removeSubscriptionForUser(
 		UserIdentity $user,
 		string $itemName
@@ -271,12 +253,6 @@ class SubscriptionStore {
 		return (bool)$dbw->affectedRows();
 	}
 
-	/**
-	 * @param UserIdentity $user
-	 * @param LinkTarget $target
-	 * @param string $itemName
-	 * @return bool
-	 */
 	public function addAutoSubscriptionForUser(
 		UserIdentity $user,
 		LinkTarget $target,
@@ -340,10 +316,6 @@ class SubscriptionStore {
 	 * This field could be used in future to cleanup notifications
 	 * that are no longer needed (e.g. because the conversation has
 	 * been archived), so should be set for muted notifications too.
-	 *
-	 * @param UserIdentity|null $user
-	 * @param string $itemName
-	 * @return bool
 	 */
 	public function updateSubscriptionNotifiedTimestamp(
 		?UserIdentity $user,

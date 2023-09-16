@@ -484,9 +484,6 @@ class HookUtils {
 
 	/**
 	 * Check if the "New section" tab would be shown in a normal skin.
-	 *
-	 * @param IContextSource $context
-	 * @return bool
 	 */
 	public static function shouldShowNewSectionTab( IContextSource $context ): bool {
 		$title = $context->getTitle();
@@ -506,9 +503,6 @@ class HookUtils {
 
 	/**
 	 * Check if this page view should open the new topic tool on page load.
-	 *
-	 * @param IContextSource $context
-	 * @return bool
 	 */
 	public static function shouldOpenNewTopicTool( IContextSource $context ): bool {
 		$req = $context->getRequest();
@@ -532,9 +526,6 @@ class HookUtils {
 
 	/**
 	 * Check if this page view should display the "empty state" message for empty talk pages.
-	 *
-	 * @param IContextSource $context
-	 * @return bool
 	 */
 	public static function shouldDisplayEmptyState( IContextSource $context ): bool {
 		$req = $context->getRequest();
@@ -576,9 +567,6 @@ class HookUtils {
 	/**
 	 * Return whether the corresponding subject page exists, or (if the page is a user talk page,
 	 * excluding subpages) whether the user is registered or a valid IP address.
-	 *
-	 * @param LinkTarget $talkPage
-	 * @return bool
 	 */
 	private static function pageSubjectExists( LinkTarget $talkPage ): bool {
 		$services = MediaWikiServices::getInstance();
@@ -602,10 +590,6 @@ class HookUtils {
 
 	/**
 	 * Check if we should be adding automatic topic subscriptions for this user on this page.
-	 *
-	 * @param UserIdentity $user
-	 * @param Title $title
-	 * @return bool
 	 */
 	public static function shouldAddAutoSubscription( UserIdentity $user, Title $title ): bool {
 		// This duplicates the logic from isFeatureEnabledForOutput(),

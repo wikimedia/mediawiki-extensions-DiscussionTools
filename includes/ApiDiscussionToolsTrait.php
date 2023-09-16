@@ -151,19 +151,9 @@ trait ApiDiscussionToolsTrait {
 	/**
 	 * @warning (T323357) - Calling this method writes to stash, so it should be called
 	 *   only when we are fetching page HTML for editing.
-	 *
-	 * @param RevisionRecord $revision
-	 * @return array
 	 */
 	abstract protected function requestRestbasePageHtml( RevisionRecord $revision ): array;
 
-	/**
-	 * @param Title $title
-	 * @param string $html
-	 * @param int|null $oldid
-	 * @param string|null $etag
-	 * @return array
-	 */
 	abstract protected function transformHTML(
 		Title $title, string $html, int $oldid = null, string $etag = null
 	): array;

@@ -27,9 +27,6 @@ class BetaPreferenceHooks implements GetBetaFeaturePreferencesHook {
 
 	/**
 	 * Handler for the GetBetaFeaturePreferences hook, to add and hide user beta preferences as configured
-	 *
-	 * @param User $user
-	 * @param array &$preferences
 	 */
 	public function onGetBetaFeaturePreferences( User $user, array &$preferences ) {
 		if ( $this->config->get( 'DiscussionToolsBeta' ) ) {

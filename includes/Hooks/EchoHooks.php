@@ -30,10 +30,6 @@ class EchoHooks implements
 {
 	/**
 	 * Add notification events to Echo
-	 *
-	 * @param array &$notifications
-	 * @param array &$notificationCategories
-	 * @param array &$icons
 	 */
 	public function onBeforeCreateEchoEvent(
 		array &$notifications,
@@ -110,10 +106,6 @@ class EchoHooks implements
 		$notifications['mention']['presentation-model'] = EnhancedEchoMentionPresentationModel::class;
 	}
 
-	/**
-	 * @param Event $event
-	 * @param string &$bundleString
-	 */
 	public function onEchoGetBundleRules( Event $event, string &$bundleString ) {
 		switch ( $event->getType() ) {
 			case 'dt-subscribed-new-comment':
@@ -128,9 +120,6 @@ class EchoHooks implements
 	}
 
 	/**
-	 * @param array &$events
-	 * @param RevisionRecord $revision
-	 * @param bool $isRevert
 	 * @throws ResourceLimitExceededException
 	 */
 	public function onEchoGetEventsForRevision( array &$events, RevisionRecord $revision, bool $isRevert ) {

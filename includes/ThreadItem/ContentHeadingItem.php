@@ -55,9 +55,6 @@ class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
 		return $title;
 	}
 
-	/**
-	 * @return bool
-	 */
 	public function isUneditableSection(): bool {
 		return $this->uneditableSection;
 	}
@@ -84,16 +81,10 @@ class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
 		$this->headingLevel = $headingLevel;
 	}
 
-	/**
-	 * @return bool
-	 */
 	public function isPlaceholderHeading(): bool {
 		return $this->placeholderHeading;
 	}
 
-	/**
-	 * @param bool $placeholderHeading
-	 */
 	public function setPlaceholderHeading( bool $placeholderHeading ): void {
 		$this->placeholderHeading = $placeholderHeading;
 	}

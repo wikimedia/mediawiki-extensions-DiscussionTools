@@ -114,10 +114,6 @@ class SpecialFindComment extends FormSpecialPage {
 		}
 	}
 
-	/**
-	 * @param array $threadItems
-	 * @param string $msgKey
-	 */
 	private function displayItems( array $threadItems, string $msgKey ) {
 		$out = $this->getOutput();
 

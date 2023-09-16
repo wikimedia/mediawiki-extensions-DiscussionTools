@@ -27,11 +27,6 @@ class CommentParserTest extends IntegrationTestCase {
 	 * Get the offset path from ancestor to offset in descendant
 	 *
 	 * Convert Unicode codepoint offsets to UTF-16 code unit offsets.
-	 *
-	 * @param Element $ancestor
-	 * @param Node $node
-	 * @param int $nodeOffset
-	 * @return string
 	 */
 	private static function getOffsetPath(
 		Element $ancestor, Node $node, int $nodeOffset

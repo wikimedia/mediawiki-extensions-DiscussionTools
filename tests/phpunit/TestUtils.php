@@ -24,9 +24,6 @@ trait TestUtils {
 
 	/**
 	 * Create a Document from a string.
-	 *
-	 * @param string $html
-	 * @return Document
 	 */
 	protected static function createDocument( string $html ): Document {
 		return DOMUtils::parseHTML( $html );
@@ -34,9 +31,6 @@ trait TestUtils {
 
 	/**
 	 * Return the node that is expected to contain thread items.
-	 *
-	 * @param Document $doc
-	 * @return Element
 	 */
 	protected static function getThreadContainer( Document $doc ): Element {
 		// In tests created from Parsoid output, comments are contained directly in <body>.
@@ -48,9 +42,6 @@ trait TestUtils {
 
 	/**
 	 * Get text from path
-	 *
-	 * @param string $relativePath
-	 * @return string
 	 */
 	protected static function getText( string $relativePath ): string {
 		return file_get_contents( __DIR__ . '/../' . $relativePath );
@@ -58,9 +49,6 @@ trait TestUtils {
 
 	/**
 	 * Write text to path
-	 *
-	 * @param string $relativePath
-	 * @param string $text
 	 */
 	protected static function overwriteTextFile( string $relativePath, string $text ): void {
 		file_put_contents( __DIR__ . '/../' . $relativePath, $text );
@@ -83,9 +71,6 @@ trait TestUtils {
 
 	/**
 	 * Write JSON to path
-	 *
-	 * @param string $relativePath
-	 * @param array $data
 	 */
 	protected static function overwriteJsonFile( string $relativePath, array $data ): void {
 		$json = FormatJson::encode( $data, "\t", FormatJson::ALL_OK );
@@ -94,9 +79,6 @@ trait TestUtils {
 
 	/**
 	 * Get HTML from path
-	 *
-	 * @param string $relativePath
-	 * @return string
 	 */
 	protected static function getHtml( string $relativePath ): string {
 		return file_get_contents( __DIR__ . '/../' . $relativePath );
@@ -104,10 +86,6 @@ trait TestUtils {
 
 	/**
 	 * Write HTML to path
-	 *
-	 * @param string $relPath
-	 * @param Element $container
-	 * @param string $origRelPath
 	 */
 	protected static function overwriteHtmlFile( string $relPath, Element $container, string $origRelPath ): void {
 		// Do not use $doc->saveHtml(), it outputs an awful soup of HTML entities for documents with

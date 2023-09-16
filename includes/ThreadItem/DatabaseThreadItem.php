@@ -45,16 +45,10 @@ class DatabaseThreadItem implements JsonSerializable, ThreadItem {
 		$this->level = $level;
 	}
 
-	/**
-	 * @return ProperPageIdentity
-	 */
 	public function getPage(): ProperPageIdentity {
 		return $this->page;
 	}
 
-	/**
-	 * @return RevisionRecord
-	 */
 	public function getRevision(): RevisionRecord {
 		return $this->rev;
 	}

@@ -84,9 +84,6 @@ class ImmutableRange {
 
 	/**
 	 * Get the root ancestor of a node
-	 *
-	 * @param Node $node
-	 * @return Node
 	 */
 	private static function getRootNode( Node $node ): Node {
 		while ( $node->parentNode ) {
@@ -97,12 +94,6 @@ class ImmutableRange {
 		return $node;
 	}
 
-	/**
-	 * @param Node $startNode
-	 * @param int $startOffset
-	 * @param Node $endNode
-	 * @param int $endOffset
-	 */
 	public function __construct(
 		Node $startNode, int $startOffset, Node $endNode, int $endOffset
 	) {
@@ -142,10 +133,6 @@ class ImmutableRange {
 
 	/**
 	 * Clone range with a new start position
-	 *
-	 * @param Node $startNode
-	 * @param int $startOffset
-	 * @return self
 	 */
 	public function setStart( Node $startNode, int $startOffset ): self {
 		return $this->setStartOrEnd( 'start', $startNode, $startOffset );
@@ -153,10 +140,6 @@ class ImmutableRange {
 
 	/**
 	 * Clone range with a new end position
-	 *
-	 * @param Node $endNode
-	 * @param int $endOffset
-	 * @return self
 	 */
 	public function setEnd( Node $endNode, int $endOffset ): self {
 		return $this->setStartOrEnd( 'end', $endNode, $endOffset );
@@ -254,8 +237,6 @@ class ImmutableRange {
 	 *
 	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
 	 * @see https://dom.spec.whatwg.org/#dom-range-extractcontents
-	 *
-	 * @return DocumentFragment
 	 */
 	public function extractContents(): DocumentFragment {
 		$fragment = $this->mStartContainer->ownerDocument->createDocumentFragment();
@@ -427,8 +408,6 @@ class ImmutableRange {
 	/**
 	 * Ported from https://github.com/TRowbotham/PHPDOM (MIT)
 	 * @see https://dom.spec.whatwg.org/#dom-range-clonecontents
-	 *
-	 * @return DocumentFragment
 	 */
 	public function cloneContents(): DocumentFragment {
 		$ownerDocument = $this->mStartContainer->ownerDocument;

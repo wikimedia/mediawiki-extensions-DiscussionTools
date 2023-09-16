@@ -123,8 +123,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 
 	/**
 	 * Get the number of comment items in the tree below this thread item.
-	 *
-	 * @return int
 	 */
 	public function getCommentCount(): int {
 		$this->calculateThreadSummary();
@@ -133,8 +131,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 
 	/**
 	 * Get the latest reply in the tree below this thread item, null if there are no replies
-	 *
-	 * @return ContentCommentItem|null
 	 */
 	public function getLatestReply(): ?ContentCommentItem {
 		$this->calculateThreadSummary();
@@ -143,8 +139,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 
 	/**
 	 * Get the oldest reply in the tree below this thread item, null if there are no replies
-	 *
-	 * @return ContentCommentItem|null
 	 */
 	public function getOldestReply(): ?ContentCommentItem {
 		$this->calculateThreadSummary();
@@ -285,9 +279,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 		$this->level = $level;
 	}
 
-	/**
-	 * @param ContentThreadItem $parent
-	 */
 	public function setParent( ContentThreadItem $parent ): void {
 		$this->parent = $parent;
 	}
@@ -320,9 +311,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 		$this->id = $id;
 	}
 
-	/**
-	 * @param string $warning
-	 */
 	public function addWarning( string $warning ): void {
 		$this->warnings[] = $warning;
 	}

@@ -145,9 +145,6 @@ class CommentUtils {
 
 	/**
 	 * Check whether the node is a comment separator (instead of a part of the comment).
-	 *
-	 * @param Node $node
-	 * @return bool
 	 */
 	public static function isCommentSeparator( Node $node ): bool {
 		if ( !( $node instanceof Element ) ) {
@@ -209,9 +206,6 @@ class CommentUtils {
 
 	/**
 	 * Get the index of $child in its parent
-	 *
-	 * @param Node $child
-	 * @return int
 	 */
 	public static function childIndexOf( Node $child ): int {
 		$i = 0;
@@ -223,10 +217,6 @@ class CommentUtils {
 
 	/**
 	 * Check whether a Node contains (is an ancestor of) another Node (or is the same node)
-	 *
-	 * @param Node $ancestor
-	 * @param Node $descendant
-	 * @return bool
 	 */
 	public static function contains( Node $ancestor, Node $descendant ): bool {
 		// TODO can we use Node->compareDocumentPosition() here maybe?
@@ -356,9 +346,6 @@ class CommentUtils {
 
 	/**
 	 * Trim ASCII whitespace, as defined in the HTML spec.
-	 *
-	 * @param string $str
-	 * @return string
 	 */
 	public static function htmlTrim( string $str ): string {
 		// https://infra.spec.whatwg.org/#ascii-whitespace
@@ -369,10 +356,6 @@ class CommentUtils {
 	 * Get the indent level of $node, relative to $rootNode.
 	 *
 	 * The indent level is the number of lists inside of which it is nested.
-	 *
-	 * @param Node $node
-	 * @param Element $rootNode
-	 * @return int
 	 */
 	public static function getIndentLevel( Node $node, Element $rootNode ): int {
 		$indent = 0;
@@ -749,11 +732,6 @@ class CommentUtils {
 	 * the expected author (that is: there is a signature, and either there's nothing following the
 	 * signature, or there's some text within the same paragraph that was detected as part of the same
 	 * comment).
-	 *
-	 * @param ContentThreadItemSet $itemSet
-	 * @param string $author
-	 * @param Element $rootNode
-	 * @return bool
 	 */
 	public static function isSingleCommentSignedBy(
 		ContentThreadItemSet $itemSet,

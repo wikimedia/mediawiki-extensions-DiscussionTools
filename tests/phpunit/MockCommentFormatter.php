@@ -12,9 +12,6 @@ class MockCommentFormatter extends CommentFormatter {
 
 	public static CommentParser $parser;
 
-	/**
-	 * @return CommentParser
-	 */
 	protected static function getParser(): CommentParser {
 		return static::$parser;
 	}

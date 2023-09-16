@@ -41,8 +41,6 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class EventDispatcher {
 	/**
-	 * @param RevisionRecord $revRecord
-	 * @return ContentThreadItemSet
 	 * @throws ResourceLimitExceededException
 	 */
 	private static function getParsedRevision( RevisionRecord $revRecord ): ContentThreadItemSet {
@@ -50,8 +48,6 @@ class EventDispatcher {
 	}
 
 	/**
-	 * @param array &$events
-	 * @param RevisionRecord $newRevRecord
 	 * @throws ResourceLimitExceededException
 	 */
 	public static function generateEventsForRevision( array &$events, RevisionRecord $newRevRecord ): void {
@@ -172,13 +168,6 @@ class EventDispatcher {
 
 	/**
 	 * Helper for generateEventsForRevision(), separated out for easier testing.
-	 *
-	 * @param array &$events
-	 * @param ContentThreadItemSet $oldItemSet
-	 * @param ContentThreadItemSet $newItemSet
-	 * @param RevisionRecord $newRevRecord
-	 * @param PageIdentity $title
-	 * @param UserIdentity $user
 	 */
 	protected static function generateEventsFromItemSets(
 		array &$events,
@@ -344,8 +333,6 @@ class EventDispatcher {
 
 	/**
 	 * Add our change tag for a revision that adds new comments.
-	 *
-	 * @param RevisionRecord $newRevRecord
 	 */
 	protected static function addCommentChangeTag( RevisionRecord $newRevRecord ): void {
 		// Unclear if DeferredUpdates::addCallableUpdate() is needed,
@@ -358,10 +345,6 @@ class EventDispatcher {
 	/**
 	 * Add an automatic subscription to the given item, assuming the user has automatic subscriptions
 	 * enabled.
-	 *
-	 * @param UserIdentity $user
-	 * @param Title $title
-	 * @param string $itemName
 	 */
 	protected static function addAutoSubscription( UserIdentity $user, Title $title, string $itemName ): void {
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );

@@ -66,8 +66,6 @@ class ThreadItemStore {
 	/**
 	 * Returns true if the tables necessary for this feature haven't been created yet,
 	 * to allow failing softly in that case.
-	 *
-	 * @return bool
 	 */
 	public function isDisabled(): bool {
 		return !$this->config->get( 'DiscussionToolsEnablePermalinksBackend' );
@@ -288,10 +286,6 @@ class ThreadItemStore {
 		return $threadItems;
 	}
 
-	/**
-	 * @param SelectQueryBuilder $queryBuilder
-	 * @return IResultWrapper
-	 */
 	private function fetchItemsResultSet( SelectQueryBuilder $queryBuilder ): IResultWrapper {
 		$queryBuilder
 			->fields( [
@@ -352,12 +346,6 @@ class ThreadItemStore {
 		return $revs;
 	}
 
-	/**
-	 * @param stdClass $row
-	 * @param DatabaseThreadItemSet|null $set
-	 * @param array $revs
-	 * @return DatabaseThreadItem|null
-	 */
 	private function getThreadItemFromRow(
 		stdClass $row, ?DatabaseThreadItemSet $set, array $revs
 	): ?DatabaseThreadItem {
@@ -427,9 +415,6 @@ class ThreadItemStore {
 	/**
 	 * Find the thread item set for the given revision, assuming that it is the current revision of
 	 * its page.
-	 *
-	 * @param int $revId
-	 * @return DatabaseThreadItemSet
 	 */
 	public function findThreadItemsInCurrentRevision( int $revId ): DatabaseThreadItemSet {
 		if ( $this->isDisabled() ) {
@@ -456,9 +441,6 @@ class ThreadItemStore {
 		return $set;
 	}
 
-	/**
-	 * @return SelectQueryBuilder
-	 */
 	private function getIdsNamesBuilder(): SelectQueryBuilder {
 		$dbr = $this->dbProvider->getReplicaDatabase();
 

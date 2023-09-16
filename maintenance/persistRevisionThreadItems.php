@@ -120,10 +120,6 @@ class PersistRevisionThreadItems extends Maintenance {
 		$this->process( $qb, $index );
 	}
 
-	/**
-	 * @param SelectQueryBuilder $qb
-	 * @param array $index
-	 */
 	private function process( SelectQueryBuilder $qb, array $index ): void {
 		$start = microtime( true );
 

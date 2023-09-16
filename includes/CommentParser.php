@@ -1287,10 +1287,6 @@ class CommentParser {
 
 	/**
 	 * Given a thread item, return an identifier for it that is unique within the page.
-	 *
-	 * @param ContentThreadItem $threadItem
-	 * @param ContentThreadItemSet $previousItems
-	 * @return string
 	 */
 	private function computeId( ContentThreadItem $threadItem, ContentThreadItemSet $previousItems ): string {
 		$id = null;
@@ -1355,9 +1351,6 @@ class CommentParser {
 	 * revisions where this comment might appear.
 	 *
 	 * Multiple comments on a page can have the same name; use ID to distinguish them.
-	 *
-	 * @param ContentThreadItem $threadItem
-	 * @return string
 	 */
 	private function computeName( ContentThreadItem $threadItem ): string {
 		$name = null;
@@ -1380,9 +1373,6 @@ class CommentParser {
 		return $name;
 	}
 
-	/**
-	 * @param ContentThreadItemSet $result
-	 */
 	private function buildThreads( ContentThreadItemSet $result ): void {
 		$lastHeading = null;
 		$replies = [];
@@ -1428,8 +1418,6 @@ class CommentParser {
 	 * Set the IDs and names used to refer to comments and headings.
 	 * This has to be a separate pass because we don't have the list of replies before
 	 * this point.
-	 *
-	 * @param ContentThreadItemSet $result
 	 */
 	private function computeIdsAndNames( ContentThreadItemSet $result ): void {
 		foreach ( $result->getThreadItems() as $threadItem ) {

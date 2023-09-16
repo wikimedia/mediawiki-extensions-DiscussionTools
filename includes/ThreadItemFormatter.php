@@ -26,9 +26,6 @@ class ThreadItemFormatter {
 
 	/**
 	 * Make a link to a thread item on the page.
-	 *
-	 * @param DatabaseThreadItem $item
-	 * @return string
 	 */
 	public function makeLink( DatabaseThreadItem $item ): string {
 		$title = TitleValue::newFromPage( $item->getPage() )->createFragmentTarget( $item->getId() );
@@ -46,10 +43,6 @@ class ThreadItemFormatter {
 
 	/**
 	 * Make a link to a thread item on the page, with additional information (used on special pages).
-	 *
-	 * @param DatabaseThreadItem $item
-	 * @param MessageLocalizer $context
-	 * @return string
 	 */
 	public function formatLine( DatabaseThreadItem $item, MessageLocalizer $context ): string {
 		$contents = [];
