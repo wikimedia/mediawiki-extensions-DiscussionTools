@@ -30,11 +30,11 @@ use Wikimedia\Parsoid\DOM\Text;
  * @property int $startOffset
  */
 class ImmutableRange {
-	private $mCommonAncestorContainer;
-	private $mEndContainer;
-	private $mEndOffset;
-	private $mStartContainer;
-	private $mStartOffset;
+	private ?Node $mCommonAncestorContainer = null;
+	private Node $mEndContainer;
+	private int $mEndOffset;
+	private Node $mStartContainer;
+	private int $mStartOffset;
 
 	/**
 	 * Find the common ancestor container of two nodes

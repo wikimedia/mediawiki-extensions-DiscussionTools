@@ -16,12 +16,12 @@ use Wikimedia\Parsoid\DOM\Node;
  */
 class TreeWalker {
 
-	public $root;
-	public $whatToShow;
-	public $currentNode;
+	public Node $root;
+	public int $whatToShow;
+	public Node $currentNode;
+	/** @var callable */
 	public $filter;
-
-	private $isActive = false;
+	private bool $isActive = false;
 
 	/**
 	 * See https://dom.spec.whatwg.org/#interface-treewalker

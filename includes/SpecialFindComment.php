@@ -72,7 +72,7 @@ class SpecialFindComment extends FormSpecialPage {
 		$form->setSubmitTextMsg( 'discussiontools-findcomment-label-search' );
 	}
 
-	private $idOrName;
+	private string $idOrName;
 
 	/**
 	 * @inheritDoc
