@@ -823,8 +823,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Tweak to prevent our footer buttons from overlapping Minerva skin elements (T328452).
-.ext-discussiontools-init-button-notFlush {
+// In cases where the "Read as wiki page" button is not shown:
+.client-nojs .ext-discussiontools-init-new-topic,
+.ext-discussiontools-init-new-topic-pinned.ext-discussiontools-init-button-notFlush {
 	margin-bottom: 32px;
+}
+
+// In cases where the "Read as wiki page" button is shown:
+// stylelint-disable-next-line selector-class-pattern
+.client-js .skin-minerva.ns-talk.ext-discussiontools-replytool-enabled {
+	.ext-discussiontools-init-new-topic-pinned.ext-discussiontools-init-button-notFlush {
+		margin-bottom: -32px;
+	}
+
+	.ext-discussiontools-init-readAsWikiPage.ext-discussiontools-init-button-notFlush {
+		margin-bottom: 32px;
+	}
 }
 
 .ext-discussiontools-init-lede-button-container {
