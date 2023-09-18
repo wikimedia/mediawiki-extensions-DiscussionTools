@@ -86,6 +86,9 @@ function init( $container ) {
 		mw.track( 'webuiactions_log.show', 'lede-button' );
 	}
 
+	// eslint-disable-next-line no-jquery/no-global-selector
+	var $newTopicWrapper = $( '.ext-discussiontools-init-new-topic' );
+
 	if (
 		!newTopicButton &&
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -95,8 +98,6 @@ function init( $container ) {
 		newTopicButton = OO.ui.infuse( $( '.ext-discussiontools-init-new-topic-button' ) );
 		// For compatibility with MobileWebUIActionsTracking logging (T295490)
 		newTopicButton.$element.attr( 'data-event-name', 'talkpage.add-topic' );
-		// eslint-disable-next-line no-jquery/no-global-selector
-		var $newTopicWrapper = $( '.ext-discussiontools-init-new-topic' );
 		var $scrollContainer = $( OO.ui.Element.static.getClosestScrollableContainer( document.body ) );
 		var $scrollListener = $scrollContainer.is( 'html, body' ) ? $( OO.ui.Element.static.getWindow( $scrollContainer[ 0 ] ) ) : $scrollContainer;
 		var lastScrollTop = $scrollContainer.scrollTop();
@@ -148,7 +149,7 @@ function init( $container ) {
 
 	/* eslint-disable no-jquery/no-global-selector */
 	if ( newTopicButton ) {
-		$( '.ext-discussiontools-init-new-topic' ).after( $readAsWikiPage );
+		$newTopicWrapper.after( $readAsWikiPage );
 	} else {
 		$( '#mw-content-text' ).append( $readAsWikiPage );
 	}
@@ -163,6 +164,7 @@ function init( $container ) {
 		$( '.return-link' ).length
 	) {
 		$readAsWikiPage.addClass( 'ext-discussiontools-init-button-notFlush' );
+		$newTopicWrapper.addClass( 'ext-discussiontools-init-button-notFlush' );
 	}
 	/* eslint-enable no-jquery/no-global-selector */
 }
