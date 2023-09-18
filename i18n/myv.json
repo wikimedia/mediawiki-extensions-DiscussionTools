@@ -1,15 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rueter"
+			"Rueter",
+			"Сантяй"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Пандомс кевкстеманть",
+	"discussiontools-defaultsummary-reply": "Каршо вал",
 	"discussiontools-replylink": "пандомс кевкстеманть",
 	"discussiontools-replywidget-cancel": "Саемс мекев",
-	"discussiontools-replywidget-mode-source": "Лисьмапрязо",
-	"discussiontools-replywidget-mode-visual": "Неявиксстэ",
+	"discussiontools-replywidget-mode-source": "Салава тешкс",
+	"discussiontools-replywidget-mode-visual": "Ланга ваннозь",
 	"discussiontools-replywidget-placeholder-reply": "Максомс {{BIDI:$1}}-нень каршовал",
-	"discussiontools-replywidget-preview": "Васнянь неевтезэ",
+	"discussiontools-replywidget-preview": "Икелепелень ваннома",
 	"discussiontools-replywidget-reply": "Пандомс кевкстеманть"
 }
