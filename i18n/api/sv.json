@@ -15,6 +15,7 @@
 	"apihelp-discussiontoolscompare-summary": "Få information om kommentarsändringar mellan två sidversioner.",
 	"apihelp-discussiontoolsedit-param-commentid": "Kommentar-ID att svara på. Används endast när <var>paction</var> är <var>addcomment</var>. Åsidosätter <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Kommentarens namn som ska besvaras. Används endast när <var>paction</var> är <var>addcomment</var>.",
+	"apihelp-discussiontoolsedit-param-autosubscribe": "Låt användaren prenumerera automatiskt på diskussionssidans tråd?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Ett valfritt, unikt ID genereras i klienten för att förhindra att den publiceras två gånger.",
 	"apihelp-discussiontoolsedit-param-html": "Innehåll att kommentera, som HTML. Kan inte användas tillsammans med <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Används endast när <var>paction</var> är <var>addtopic</var>.",
