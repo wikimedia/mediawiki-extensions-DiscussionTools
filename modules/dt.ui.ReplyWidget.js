@@ -74,11 +74,8 @@ function ReplyWidget( commentController, commentDetails, config ) {
 		flags: [ 'primary', 'progressive' ],
 		label: this.replyButtonLabel,
 		title: this.replyButtonLabel + ' [' +
-			// TODO: Use VE keyboard shortcut generating code
-			( $.client.profile().platform === 'mac' ?
-				'⌘⏎' :
-				mw.msg( 'visualeditor-key-ctrl' ) + '+' + mw.msg( 'visualeditor-key-enter' )
-			) + ']',
+			new ve.ui.Trigger( ve.ui.commandHelpRegistry.lookup( 'dialogConfirm' ).shortcuts[ 0 ] ).getMessage() +
+			']',
 		accessKey: mw.msg( 'discussiontools-replywidget-publish-accesskey' )
 	} );
 	this.cancelButton = new OO.ui.ButtonWidget( {
@@ -86,11 +83,8 @@ function ReplyWidget( commentController, commentDetails, config ) {
 		label: mw.msg( 'discussiontools-replywidget-cancel' ),
 		framed: false,
 		title: mw.msg( 'discussiontools-replywidget-cancel' ) + ' [' +
-			// TODO: Use VE keyboard shortcut generating code
-			( $.client.profile().platform === 'mac' ?
-				'⎋' :
-				mw.msg( 'visualeditor-key-escape' )
-			) + ']'
+			new ve.ui.Trigger( ve.ui.commandHelpRegistry.lookup( 'dialogCancel' ).shortcuts[ 0 ] ).getMessage() +
+			']'
 	} );
 
 	this.$headerWrapper = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-headerWrapper' );
