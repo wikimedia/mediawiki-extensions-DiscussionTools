@@ -125,6 +125,7 @@
 	"discussiontools-replywidget-feedback": "{{GENDER:|Share feedback}} about this feature",
 	"discussiontools-replywidget-feedback-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/Replying",
 	"discussiontools-replywidget-feedback-link-newtopic": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/New_discussion",
+	"discussiontools-replywidget-keyboard-shortcut-submit": "You can press $1 to submit your comment",
 	"discussiontools-replywidget-loading": "Loading…",
 	"discussiontools-replywidget-mention-prefix": "@",
 	"discussiontools-replywidget-mention-suffix": "",
