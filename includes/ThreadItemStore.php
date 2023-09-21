@@ -621,7 +621,11 @@ class ThreadItemStore {
 								$dbw->newInsertQueryBuilder()
 									->table( 'discussiontools_item_revisions' )
 									->row( $newOrUpdateRevRow )
-									->ignore()
+									// Fix rows with corrupted itr_items_id=0,
+									// which are causing conflicts (T339882, T343859#9185559)
+									->onDuplicateKeyUpdate()
+									->uniqueIndexFields( [ 'itr_itemid_id', 'itr_revision_id' ] )
+									->set( $newOrUpdateRevRow )
 									->caller( $method )
 									->execute();
 								return $dbw->affectedRows() ? $dbw->insertId() : null;
