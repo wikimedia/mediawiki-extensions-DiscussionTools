@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
-			"Winston Sung"
+			"Winston Sung",
+			"列维劳德"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "查無留言ID「$1」。",
@@ -14,6 +15,7 @@
 	"apihelp-discussiontoolscompare-summary": "取得兩個頁面修訂之間關於留言更改的資訊。",
 	"apihelp-discussiontoolsedit-param-commentid": "要回覆的留言 ID。僅能在 <var>paction</var> 為 <var>addcomment</var> 時使用。會覆蓋 <var>commentname</var>。",
 	"apihelp-discussiontoolsedit-param-commentname": "要回覆的留言名稱。僅能在 <var>paction</var> 為 <var>addcomment</var> 時使用。",
+	"apihelp-discussiontoolsedit-param-autosubscribe": "是否為使用者自動訂閱討論頁面的討論串？",
 	"apihelp-discussiontoolsedit-param-formtoken": "在客戶端所產生的選用唯一 ID 能防止重複發布。",
 	"apihelp-discussiontoolsedit-param-html": "以 HTML 格式發布的內容。請不要與 <var>wikitext</var> 一起使用。",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}}僅在 <var>paction</var> 為 <var>addtopic</var> 時使用。",

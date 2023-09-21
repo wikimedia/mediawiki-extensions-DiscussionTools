@@ -158,7 +158,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Você}} receberá notificações sobre novos comentários neste tópico",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Você}} se inscreveu!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Você}} não receberá mais notificações sobre novos comentários neste tópico",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Cancelar inscrição.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Você}} cancelou a assinatura.",
 	"discussiontools-topicsubscription-pager-actions": "Ações",
 	"discussiontools-topicsubscription-pager-newtopics-label": "Novo tópico",
 	"discussiontools-topicsubscription-pager-notified": "Última notificação",

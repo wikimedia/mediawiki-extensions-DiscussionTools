@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
+			"Саид Мисарбиев",
 			"Умар"
 		]
 	},
@@ -85,7 +86,7 @@
 	"discussiontools-preference-visualenhancements": "Гайта дийцарийн жигаралла",
 	"discussiontools-preference-visualenhancements-help": "ХӀокху опцес латайо дийцаран агӀонан керла хатӀ, цунна йукъахь йу хӀора дийцаран жигараллех информаци.",
 	"discussiontools-replybutton": "Жоп",
-	"discussiontools-replylink": "жоп",
+	"discussiontools-replylink": "жоп далар",
 	"discussiontools-replywidget-abandon": "Хьуна бакъалла а лаьа йазйина коммент дӀайаккха?",
 	"discussiontools-replywidget-abandon-discard": "ДӀайаккха коммент",
 	"discussiontools-replywidget-abandon-keep": "Чекхдакха йаздар",
@@ -108,7 +109,7 @@
 	"discussiontools-replywidget-placeholder-reply": "Жоп ло {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Нисдаран гӀирс",
 	"discussiontools-replywidget-preview": "Хьалххе хьажар",
-	"discussiontools-replywidget-reply": "Жоп",
+	"discussiontools-replywidget-reply": "{{GENDER:|Жоп дала}}",
 	"discussiontools-replywidget-return-to-newtopic": "Керла теме хьажа",
 	"discussiontools-replywidget-return-to-reply": "Жоьпе хьажа",
 	"discussiontools-replywidget-signature-body": "$1 хьан куьг дина. Иза дӀадаккха дезахь, $2 тӀетаӀае. Дагахь дина, хӀара гӀирс лелош комментан куьг теӀо цаоьшу. Хьан куьг ша тӀетухура ду.",
