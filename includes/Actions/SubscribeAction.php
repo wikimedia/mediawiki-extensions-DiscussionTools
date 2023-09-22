@@ -35,9 +35,8 @@ class SubscribeAction extends FormAction {
 	protected function getPageTitle() {
 		if ( $this->subscriptionTitle && !str_starts_with( $this->subscriptionName, 'p-topics-' ) ) {
 			$title = $this->subscriptionTitle;
-			return htmlspecialchars( $title->getPrefixedText() ) .
-				$this->msg( 'pipe-separator' )->escaped() .
-				htmlspecialchars( $title->getFragment() );
+			return $this->msg( 'discussiontools-topicsubscription-action-title' )
+				->plaintextParams( $title->getPrefixedText(), $title->getFragment() );
 		} else {
 			return parent::getPageTitle();
 		}
