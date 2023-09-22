@@ -35,7 +35,7 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'discussiontoolsdebug-title' )->text();
+		return $this->msg( 'discussiontoolsdebug-title' );
 	}
 
 	/**

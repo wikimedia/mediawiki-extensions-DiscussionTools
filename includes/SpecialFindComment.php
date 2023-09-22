@@ -141,6 +141,6 @@ class SpecialFindComment extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'discussiontools-findcomment-title' )->text();
+		return $this->msg( 'discussiontools-findcomment-title' );
 	}
 }

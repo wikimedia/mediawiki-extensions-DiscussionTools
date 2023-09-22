@@ -47,7 +47,7 @@ class SpecialTopicSubscriptions extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'discussiontools-topicsubscription-special-title' )->text();
+		return $this->msg( 'discussiontools-topicsubscription-special-title' );
 	}
 
 	/**
