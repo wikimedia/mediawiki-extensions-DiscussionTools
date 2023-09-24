@@ -75,7 +75,13 @@ class HookUtils {
 		self::REPLYTOOL,
 	];
 
-	protected static array $propCache = [];
+	private const CACHED_PAGE_PROPS = [
+		'newsectionlink',
+		'nonewsectionlink',
+		'notalk',
+		'archivedtalk',
+	];
+	private static array $propCache = [];
 
 	/**
 	 * Check if a title has a page prop, and use an in-memory cache to avoid extra queries
@@ -85,16 +91,19 @@ class HookUtils {
 	 * @return bool Title has page property
 	 */
 	public static function hasPagePropCached( Title $title, string $prop ): bool {
+		Assert::parameter(
+			in_array( $prop, static::CACHED_PAGE_PROPS, true ),
+			'$prop',
+			'must be one of the cached properties'
+		);
 		$id = $title->getArticleId();
 		if ( !isset( static::$propCache[ $id ] ) ) {
-			static::$propCache[ $id ] = [];
-		}
-		if ( !isset( static::$propCache[ $id ][ $prop ] ) ) {
 			$services = MediaWikiServices::getInstance();
-			$props = $services->getPageProps()->getProperties( $title, $prop );
-			static::$propCache[ $id ][ $prop ] = isset( $props[ $id ] );
+			// Always fetch all of our properties, we need to check several of them on most requests
+			static::$propCache[ $id ] =
+				$services->getPageProps()->getProperties( $title, static::CACHED_PAGE_PROPS );
 		}
-		return static::$propCache[ $id ][ $prop ];
+		return isset( static::$propCache[ $id ][ $prop ] );
 	}
 
 	/**
