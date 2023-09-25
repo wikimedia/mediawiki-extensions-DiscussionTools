@@ -289,6 +289,15 @@
 		.section-heading .indicator { /* stylelint-disable-line selector-class-pattern */
 			display: none;
 		}
+
+		// ... and expand sections
+		.collapsible-block[ hidden ] { /* stylelint-disable-line selector-class-pattern */
+			// If hidden=until-found is supported, this will set content-visibility: hidden;
+			content-visibility: visible;
+			// otherwise it will set display: none;
+			display: block;
+		}
+		// TODO: Consider doing this via's Toggler.js's APIs, rather than CSS overrides.
 	}
 
 	&-bodyWrapper {
