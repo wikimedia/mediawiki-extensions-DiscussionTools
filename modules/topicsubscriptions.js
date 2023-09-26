@@ -126,6 +126,15 @@ function getSubscribedStateFromElement( element ) {
 }
 
 /**
+ * Lazy load API to avoid circular dependency
+ */
+function initApi() {
+	if ( !api ) {
+		api = require( './controller.js' ).getApi();
+	}
+}
+
+/**
  * Initialize topic subscriptions feature
  *
  * @param {jQuery} $container Page container
@@ -135,8 +144,7 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 	linksByName = {};
 	buttonsByName = {};
 
-	// Loads later to avoid circular dependency
-	api = require( './controller.js' ).getApi();
+	initApi();
 
 	// Subscription buttons (visual enhancements)
 	$container.find( '.ext-discussiontools-init-section-subscribeButton' ).each( function () {
@@ -220,47 +228,54 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 		} );
 	} );
 
-	// New topics subscription button
-	( function () {
-		// Note: because this function gets called from `wikipage.content`,
-		// and we're interacting with elements outside of $container, make
-		// sure to account for this possibly being run multiple times on a
-		// pageload. Calls from DT's own previews are filtered out, but other
-		// page actions like live-preview can still reach this point.
-		var $button, $label, $icon;
+	initNewTopicsSubscription();
+}
 
-		if ( mw.config.get( 'skin' ) === 'minerva' ) {
-			// eslint-disable-next-line no-jquery/no-global-selector
-			$button = $( '.menu__item--page-actions-overflow-t-page-subscribe' );
-			$label = $button.find( '.toggle-list-item__label' );
-			$icon = $button.find( '.mw-ui-icon' );
-			// HACK: We can't set data-mw-subscribed intially in Minerva, so work it out from the icon
-			// eslint-disable-next-line no-jquery/no-class-state
-			var initialState = $icon.hasClass( 'mw-ui-icon-minerva-bell' ) ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED;
-			$button.attr( 'data-mw-subscribed', String( initialState ) );
-		} else {
-			// eslint-disable-next-line no-jquery/no-global-selector
-			$button = $( '#ca-dt-page-subscribe > a' );
-			$label = $button.find( 'span' );
-			$icon = $( [] );
-		}
+/**
+ * Bind new topics subscription button
+ *
+ * Note: because this function can get called from `wikipage.content`,
+ * and we're interacting with elements outside of $container, make
+ * sure to account for this possibly being run multiple times on a
+ * pageload. Calls from DT's own previews are filtered out, but other
+ * page actions like live-preview can still reach this point.
+ */
+function initNewTopicsSubscription() {
+	var $button, $label, $icon;
 
-		var titleObj = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
-		var name = utils.getNewTopicsSubscriptionId( titleObj );
+	initApi();
 
-		$button.off( '.mw-dt-topicsubscriptions' ).on( 'click.mw-dt-topicsubscriptions', function ( e ) {
-			e.preventDefault();
-			// Get latest subscribedState
-			var subscribedState = getSubscribedStateFromElement( $button[ 0 ] );
+	if ( mw.config.get( 'skin' ) === 'minerva' ) {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$button = $( '.menu__item--page-actions-overflow-t-page-subscribe' );
+		$label = $button.find( '.toggle-list-item__label' );
+		$icon = $button.find( '.mw-ui-icon' );
+		// HACK: We can't set data-mw-subscribed intially in Minerva, so work it out from the icon
+		// eslint-disable-next-line no-jquery/no-class-state
+		var initialState = $icon.hasClass( 'mw-ui-icon-minerva-bell' ) ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED;
+		$button.attr( 'data-mw-subscribed', String( initialState ) );
+	} else {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$button = $( '#ca-dt-page-subscribe > a' );
+		$label = $button.find( 'span' );
+		$icon = $( [] );
+	}
 
-			changeSubscription( titleObj.getPrefixedText(), name, !subscribedState, true )
-				.then( function ( result ) {
-					updateSubscribeLink( $button[ 0 ], result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED, $label[ 0 ], true );
-					$icon.toggleClass( 'mw-ui-icon-minerva-bell', !!result.subscribe );
-					$icon.toggleClass( 'mw-ui-icon-minerva-bellOutline', !result.subscribe );
-				} );
-		} );
-	}() );
+	var titleObj = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
+	var name = utils.getNewTopicsSubscriptionId( titleObj );
+
+	$button.off( '.mw-dt-topicsubscriptions' ).on( 'click.mw-dt-topicsubscriptions', function ( e ) {
+		e.preventDefault();
+		// Get latest subscribedState
+		var subscribedState = getSubscribedStateFromElement( $button[ 0 ] );
+
+		changeSubscription( titleObj.getPrefixedText(), name, !subscribedState, true )
+			.then( function ( result ) {
+				updateSubscribeLink( $button[ 0 ], result.subscribe ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED, $label[ 0 ], true );
+				$icon.toggleClass( 'mw-ui-icon-minerva-bell', !!result.subscribe );
+				$icon.toggleClass( 'mw-ui-icon-minerva-bellOutline', !result.subscribe );
+			} );
+	} );
 }
 
 function initSpecialTopicSubscriptions() {
@@ -510,5 +525,6 @@ function updateAutoSubscriptionStates( $container, threadItemSet, threadItemId )
 module.exports = {
 	initTopicSubscriptions: initTopicSubscriptions,
 	initSpecialTopicSubscriptions: initSpecialTopicSubscriptions,
+	initNewTopicsSubscription: initNewTopicsSubscription,
 	updateAutoSubscriptionStates: updateAutoSubscriptionStates
 };
