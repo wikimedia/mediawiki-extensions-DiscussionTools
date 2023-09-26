@@ -415,8 +415,14 @@ class HookUtils {
 			// Don't try to call $output->getActionName if testing for NEWTOPICTOOL as we use
 			// the hook onGetActionName to override the action for the tool on empty pages.
 			// If we tried to call it here it would set up infinite recursion (T312689)
-			$feature !== static::NEWTOPICTOOL &&
-			!in_array( $output->getActionName(), [ 'view', 'edit', 'submit' ], true )
+			$feature !== static::NEWTOPICTOOL && !(
+				in_array( $output->getActionName(), [ 'view', 'edit', 'submit' ], true ) ||
+				// Subscriptions (specifically page-level subscriptions) are available on history pages (T345096)
+				(
+					$output->getActionName() === 'history' &&
+					$feature === static::TOPICSUBSCRIPTION
+				)
+			)
 		) {
 			return false;
 		}
