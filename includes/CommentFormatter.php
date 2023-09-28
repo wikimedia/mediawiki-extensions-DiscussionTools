@@ -4,11 +4,13 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use Html;
 use Language;
+use MediaWiki\Extension\DiscussionTools\Hooks\HookRunner;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
@@ -41,6 +43,10 @@ class CommentFormatter {
 	 */
 	protected static function getParser(): CommentParser {
 		return MediaWikiServices::getInstance()->getService( 'DiscussionTools.CommentParser' );
+	}
+
+	protected static function getHookRunner(): HookRunner {
+		return new HookRunner( MediaWikiServices::getInstance()->getHookContainer() );
 	}
 
 	/**
@@ -94,7 +100,7 @@ class CommentFormatter {
 	protected static function addTopicContainer(
 		Element $headingElement,
 		?ContentHeadingItem $headingItem = null,
-		&$tocInfo = null
+		?array &$tocInfo = null
 	): Element {
 		$doc = $headingElement->ownerDocument;
 		$wrapperNode = $headingElement->parentNode;
@@ -128,14 +134,15 @@ class CommentFormatter {
 		}
 
 		$editable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) !== null;
-		$ellipsisDataJSON = json_encode( [
+		$overflowMenuData = json_encode( [
 			'editable' => $editable,
+			'threadItem' => $headingItem,
 		] );
 
-		$ellipsisButton = $doc->createComment(
-			'__DTELLIPSISBUTTON__' . htmlspecialchars( $ellipsisDataJSON, ENT_NOQUOTES )
+		$overflowMenuButton = $doc->createComment(
+			'__DTELLIPSISBUTTON__' . htmlspecialchars( $overflowMenuData, ENT_NOQUOTES )
 		);
-		$wrapperNode->appendChild( $ellipsisButton );
+		$wrapperNode->appendChild( $overflowMenuButton );
 
 		// Visual enhancements: topic containers
 		$latestReplyItem = $headingItem->getLatestReply();
@@ -649,13 +656,14 @@ class CommentFormatter {
 	 *
 	 * @param string $text
 	 * @param Language $lang
-	 * @param UserIdentity $user
+	 * @param OutputPage $outputPage
 	 * @param bool $isMobile
 	 * @return string
 	 */
 	public static function postprocessVisualEnhancements(
-		string $text, Language $lang, UserIdentity $user, bool $isMobile
+		string $text, Language $lang, OutputPage $outputPage, bool $isMobile
 	): string {
+		$user = $outputPage->getUser();
 		$text = preg_replace_callback(
 			'/<!--__DTLATESTCOMMENTTHREAD__(.*?)__-->/',
 			static function ( $matches ) use ( $lang, $user ) {
@@ -715,26 +723,46 @@ class CommentFormatter {
 		if ( $isMobile ) {
 			$text = preg_replace_callback(
 				'/<!--__DTELLIPSISBUTTON__(.*?)-->/',
-				static function ( $matches ) {
-					if ( $matches[1] ) {
-						$ellipsisData = json_decode( htmlspecialchars_decode( $matches[1] ), true );
-					} else {
-						// Backwards compatibly with the old data-less comments.
-						// Can be removed once the caches have cleared after a few weeks.
-						$ellipsisData = [ 'editable' => true ];
-					}
+				static function ( $matches ) use ( $outputPage ) {
+					$overflowMenuData = json_decode( htmlspecialchars_decode( $matches[1] ), true ) ?? [];
 
-					// Currently 'edit' is the only button, so if the section
-					// isn't editable, omit the whole menu.
-					if ( $ellipsisData['editable'] ?? false ) {
-						$ellipsis = new ButtonMenuSelectWidget( [
-							'classes' => [ 'ext-discussiontools-init-section-ellipsisButton' ],
+					$isSectionEditable = $overflowMenuData['editable'];
+					// TODO: Remove the fallback to empty array after the parser cache is updated.
+					$threadItem = $overflowMenuData['threadItem'] ?? [];
+					$overflowMenuItems = [];
+					$resourceLoaderModules = [];
+
+					self::getHookRunner()->onDiscussionToolsAddOverflowMenuItems(
+						$overflowMenuItems,
+						$resourceLoaderModules,
+						$isSectionEditable,
+						$threadItem,
+						$outputPage
+					);
+
+					if ( $overflowMenuItems ) {
+						usort(
+							$overflowMenuItems,
+							static function ( OverflowMenuItem $itemA, OverflowMenuItem $itemB ): int {
+								return $itemB->getWeight() - $itemA->getWeight();
+							}
+						);
+
+						$overflowButton = new ButtonMenuSelectWidget( [
+							'classes' => [
+								// TODO: Remove ellipsisButton class after parser cache is updated
+								'ext-discussiontools-init-section-ellipsisButton',
+								'ext-discussiontools-init-section-overflowMenuButton'
+							],
 							'framed' => false,
 							'icon' => 'ellipsis',
 							'infusable' => true,
+							'data' => [
+								'itemConfigs' => $overflowMenuItems,
+								'resourceLoaderModules' => $resourceLoaderModules
+							]
 						] );
-
-						return $ellipsis->toString();
+						return $overflowButton->toString();
 					} else {
 						return '';
 					}

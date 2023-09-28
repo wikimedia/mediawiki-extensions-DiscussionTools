@@ -338,7 +338,7 @@ function init( $container, state ) {
 	}
 
 	if ( mobile ) {
-		mobile.init( $container );
+		mobile.init( $container, pageThreads );
 	}
 
 	if ( linksController.pageHasReplyLinks() || linksController.pageHasNewTopicLink() ) {

@@ -2,13 +2,17 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use Config;
 use FormatJson;
 use GenderCache;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use ParserOutput;
+use Skin;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -65,8 +69,18 @@ class CommentFormatterTest extends IntegrationTestCase {
 			$actual, $qqxLang, $title, $mockSubStore, $this->createMock( UserIdentity::class ), $isMobile
 		);
 
+		$user = $this->createMock( User::class );
+		$title = $this->createMock( Title::class );
+		$skin = $this->createMock( Skin::class );
+		$config = $this->createMock( Config::class );
+		$outputPage = $this->createMock( OutputPage::class );
+		$outputPage->method( 'getTitle' )->willReturn( $title );
+		$outputPage->method( 'getUser' )->willReturn( $user );
+		$outputPage->method( 'getSkin' )->willReturn( $skin );
+		$outputPage->method( 'getConfig' )->willReturn( $config );
+		$outputPage->method( 'msg' )->willReturn( 'a label' );
 		$actual = MockCommentFormatter::postprocessVisualEnhancements(
-			$actual, $qqxLang, $this->createMock( UserIdentity::class ), $isMobile
+			$actual, $qqxLang, $outputPage, $isMobile
 		);
 
 		$actual = MockCommentFormatter::postprocessReplyTool(

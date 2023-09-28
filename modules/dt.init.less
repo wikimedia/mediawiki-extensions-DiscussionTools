@@ -280,7 +280,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Visual enhancements disabled
+// TODO: Remove reference to ellipsisButton after parser cache is updated
 .ext-discussiontools-init-section-ellipsisButton.oo-ui-buttonElement,
+.ext-discussiontools-init-section-overflowMenuButton.oo-ui-buttonElement,
 .ext-discussiontools-init-section-bar,
 .ext-discussiontools-init-replybutton.oo-ui-buttonElement,
 .ext-discussiontools-init-readAsWikiPage,
@@ -470,13 +472,17 @@ h1, h2, h3, h4, h5, h6 {
 			font-size: 0.75em;
 		}
 
+		/* TODO: Remove reference to ellipsisButton after parser cache is updated */
 		&-bar,
+		&-overflowMenuButton,
 		&-ellipsisButton {
 			font-size: 0.875em;
 		}
 
+		/* TODO: Remove reference to ellipsisButton after parser cache is updated */
 		// stylelint-disable-next-line selector-class-pattern
 		> .indicator,
+		&-overflowMenuButton,
 		&-ellipsisButton {
 			// Adjust for smaller headings
 			margin-top: -5px;
@@ -507,7 +513,10 @@ h1, h2, h3, h4, h5, h6 {
 				}
 			}
 
+			/* TODO: Remove reference to ellipsisButton after parser cache is updated */
+			&-overflowMenuButton,
 			&-ellipsisButton {
+				font-weight: normal;
 				display: inline-block;
 				margin-right: -5px;
 				// Fix height so MenuWidget appears in the correct place with wrapped text (T311558)

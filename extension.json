@@ -464,6 +464,7 @@
 		"GetBetaFeaturePreferences": "betapreferences",
 		"GetPreferences": "preferences",
 		"LocalUserCreated": "preferences",
+		"DiscussionToolsAddOverflowMenuItems": "discussiontools",
 		"ChangeTagsListActive": "tags",
 		"ListDefinedTags": "tags",
 		"RecentChange_save": "tags"
@@ -512,6 +513,9 @@
 			"services": [
 				"ConfigFactory"
 			]
+		},
+		"discussiontools": {
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\DiscussionToolsHooks"
 		},
 		"tags": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\TagHooks"
