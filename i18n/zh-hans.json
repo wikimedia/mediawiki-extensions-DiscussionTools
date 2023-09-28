@@ -32,7 +32,8 @@
 			"铁桶",
 			"阿pp",
 			"魔琴",
-			"Hehua"
+			"Hehua",
+			"LittlePaw365"
 		]
 	},
 	"discussiontools": "讨论工具",
@@ -142,8 +143,8 @@
 	"discussiontools-replywidget-preferences": "参数设置",
 	"discussiontools-replywidget-preview": "预览",
 	"discussiontools-replywidget-reply": "回复",
-	"discussiontools-replywidget-return-to-newtopic": "返回至新话题",
-	"discussiontools-replywidget-return-to-reply": "返回至回复",
+	"discussiontools-replywidget-return-to-newtopic": "返回新话题",
+	"discussiontools-replywidget-return-to-reply": "返回回复",
 	"discussiontools-replywidget-signature-body": "$1已转换成您的签名。若要取消，请输入$2。请注意使用此工具时，您不需要在留言上签名，您的签名会被自动添加。",
 	"discussiontools-replywidget-signature-title": "发现签名标记",
 	"discussiontools-replywidget-summary": "摘要",
