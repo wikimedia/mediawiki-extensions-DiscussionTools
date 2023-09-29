@@ -9,6 +9,7 @@ use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
+use MediaWiki\Extension\DiscussionTools\ThreadItem\ThreadItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
@@ -20,6 +21,7 @@ use Sanitizer;
 use Throwable;
 use WebRequest;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
@@ -134,15 +136,7 @@ class CommentFormatter {
 		}
 
 		$editable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) !== null;
-		$overflowMenuData = json_encode( [
-			'editable' => $editable,
-			'threadItem' => $headingItem,
-		] );
-
-		$overflowMenuButton = $doc->createComment(
-			'__DTELLIPSISBUTTON__' . htmlspecialchars( $overflowMenuData, ENT_NOQUOTES )
-		);
-		$wrapperNode->appendChild( $overflowMenuButton );
+		self::addOverflowMenuButton( $headingItem, $doc, $wrapperNode, [ 'editable' => $editable ] );
 
 		// Visual enhancements: topic containers
 		$latestReplyItem = $headingItem->getLatestReply();
@@ -306,6 +300,8 @@ class CommentFormatter {
 						$lastTimestamp->surroundContents( $link );
 					}
 				}
+				$editable = DOMCompat::querySelector( $replyButtons, 'mw\\:editsection' ) !== null;
+				self::addOverflowMenuButton( $threadItem, $doc, $replyButtons, [ 'editable' => $editable ] );
 			}
 
 			$range->insertNode( $startMarker );
@@ -367,6 +363,29 @@ class CommentFormatter {
 		$html = XMLSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
 
 		return $html;
+	}
+
+	/**
+	 * Add an overflow menu button to an element.
+	 *
+	 * @param ThreadItem $threadItem The heading or comment item
+	 * @param Document $document Retrieved by parsing page HTML
+	 * @param Element $element The element to add the overflow menu button to
+	 * @param array $data Arbitrary data to encode with the button HTML. The thread item is always included.
+	 * @return void
+	 */
+	protected static function addOverflowMenuButton(
+		ThreadItem $threadItem, Document $document, Element $element, array $data = []
+	): void {
+		$overflowMenuDataJSON = json_encode( array_merge(
+			$data,
+			[ 'threadItem' => $threadItem ]
+		) );
+
+		$overflowMenuButton = $document->createComment(
+			'__DTELLIPSISBUTTON__' . htmlspecialchars( $overflowMenuDataJSON, ENT_NOQUOTES )
+		);
+		$element->appendChild( $overflowMenuButton );
 	}
 
 	/**
