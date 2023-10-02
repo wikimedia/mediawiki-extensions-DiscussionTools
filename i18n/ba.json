@@ -8,17 +8,17 @@
 	},
 	"discussiontools-defaultsummary-reply": "Яуап бирергә",
 	"discussiontools-replylink": "{{GENDER:|яуап бирергә}}",
-	"discussiontools-replywidget-advanced": "Киңәйтелгән",
-	"discussiontools-replywidget-cancel": "Кире алыу",
+	"discussiontools-replywidget-advanced": "Өҫтәмә",
+	"discussiontools-replywidget-cancel": "Кире алырға",
 	"discussiontools-replywidget-mode-source": "Сығанаҡ",
 	"discussiontools-replywidget-mode-visual": "Визуаль",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} мөрәжәғәтенә {{GENDER:|яуап бирергә}}",
 	"discussiontools-replywidget-preview": "Ҡарап сығырға",
 	"discussiontools-replywidget-reply": "{{GENDER:|Яуап бирергә}}",
 	"discussiontools-replywidget-summary": "Тасуирлама",
-	"discussiontools-replywidget-watchthis": "Был битте [[Special:Watchlist|күҙәтеү исемлегегеҙ]]гә өҫтәргә",
+	"discussiontools-replywidget-watchthis": "Был битте [[Special:Watchlist|күҙәтеү исемлегегеҙгә]] өҫтәргә",
 	"discussiontools-topicheader-authorcount": "фекер алышыуҙа $1 {{PLURAL:$1|кеше}}",
-	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|хәбәр|хәбәрҙәр}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|хәбәр}}",
 	"discussiontools-topicheader-latestcomment": "Һуңғы хәбәр: $1",
 	"discussiontools-topicsubscription-button-subscribe": "яҙылырға",
 	"discussiontools-topicsubscription-button-subscribe-label": "Яҙылырға",
@@ -27,5 +27,5 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Һеҙ}} был темалағы яңылыҡтар тураһында хәбәр аласаҡһығыҙ.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Һеҙ}} яҙылдығыҙ!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Һеҙ}} был темалағы яңылыҡтар тураһында хәбәр алмаясаҡһығыҙ.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Вы}} яҙылыуҙан баш тарттығыҙ."
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|һеҙ}} яҙылыуҙан баш тарттығыҙ."
 }

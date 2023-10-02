@@ -29,7 +29,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Vaporpeacho ul'lekh kor",
 	"discussiontools-replywidget-mode-source": "Mull",
 	"discussiontools-replywidget-mode-visual": "Dixtti",
-	"discussiontools-replywidget-newtopic": "Vixoi zodd",
+	"discussiontools-replywidget-newtopic": "Vixoi {{GENDER:|zodd}}",
 	"discussiontools-replywidget-placeholder-newtopic": "Vornon",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} haka {{GENDER:|zobab di}}",
 	"discussiontools-replywidget-preview": "Purvdekhavo",
