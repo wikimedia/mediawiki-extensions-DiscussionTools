@@ -219,6 +219,10 @@ class CommentFormatter {
 		$newestComment = null;
 		$newestCommentData = null;
 
+		$url = $title->getCanonicalURL();
+		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+		$enableTimestampLinks = $dtConfig->get( 'DiscussionToolsEnableTimestampLinks' );
+
 		// Iterate in reverse order, because adding the range markers for a thread item
 		// can invalidate the ranges of subsequent thread items (T298096)
 		foreach ( array_reverse( $threadItems ) as $threadItem ) {
@@ -254,7 +258,7 @@ class CommentFormatter {
 			}
 
 			$range->setStart( $range->endContainer, $range->endOffset )->insertNode( $endMarker );
-			$range->insertNode( $startMarker );
+			// Start marker is added after reply link to keep reverse DOM order
 
 			if ( $threadItem instanceof ContentHeadingItem ) {
 				// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
@@ -281,7 +285,23 @@ class CommentFormatter {
 				}
 
 				CommentModifier::addReplyLink( $threadItem, $replyButtons );
+
+				if ( $enableTimestampLinks ) {
+					$timestampRanges = $threadItem->getTimestampRanges();
+					$lastTimestamp = end( $timestampRanges );
+					$existingLink = CommentUtils::closestElement( $lastTimestamp->startContainer, [ 'a' ] ) ??
+						CommentUtils::closestElement( $lastTimestamp->endContainer, [ 'a' ] );
+
+					if ( !$existingLink ) {
+						$link = $doc->createElement( 'a' );
+						$link->setAttribute( 'href', $url . '#' . Sanitizer::escapeIdForLink( $threadItem->getId() ) );
+						$link->setAttribute( 'class', 'ext-discussiontools-init-timestamplink' );
+						$lastTimestamp->surroundContents( $link );
+					}
+				}
 			}
+
+			$range->insertNode( $startMarker );
 		}
 
 		$pout->setExtensionData( 'DiscussionTools-tocInfo', $tocInfo );
