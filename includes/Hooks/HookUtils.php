@@ -100,7 +100,7 @@ class HookUtils {
 		if ( !isset( static::$propCache[ $id ] ) ) {
 			$services = MediaWikiServices::getInstance();
 			// Always fetch all of our properties, we need to check several of them on most requests
-			static::$propCache[ $id ] =
+			static::$propCache +=
 				$services->getPageProps()->getProperties( $title, static::CACHED_PAGE_PROPS );
 		}
 		return isset( static::$propCache[ $id ][ $prop ] );
