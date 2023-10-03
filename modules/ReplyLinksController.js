@@ -49,9 +49,7 @@ function ReplyLinksController( $pageContainer ) {
 		this.$body.on( 'click keypress', 'a', this.onAnyLinkClickHandler );
 	}
 
-	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', function ( e ) {
-		e.preventDefault();
-
+	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', function () {
 		var $win = $( window );
 		var scrollTop = $win.scrollTop();
 		var $tmpInput = $( '<input>' )
