@@ -71,7 +71,7 @@ function ReplyLinksController( $pageContainer ) {
 			copied = false;
 		}
 		if ( copied ) {
-			mw.notify( 'Link to comment copied to clipboard.' );
+			mw.notify( mw.msg( 'discussiontools-permalink-comment-copied' ) );
 		}
 		$tmpInput.remove();
 		// Restore scroll position
