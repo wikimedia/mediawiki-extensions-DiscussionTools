@@ -165,6 +165,15 @@ function ReplyWidget( commentController, commentDetails, config ) {
 		classes: [ 'ext-discussiontools-ui-replyWidget-advanced' ]
 	} ).toggle( false ).setIcon( '' );
 
+	this.enterWarning = new OO.ui.MessageWidget( {
+		classes: [ 'ext-discussiontools-ui-replyWidget-enterWarning' ],
+		type: 'warning',
+		label: mw.msg(
+			'discussiontools-replywidget-keyboard-shortcut-submit',
+			new ve.ui.Trigger( ve.ui.commandHelpRegistry.lookup( 'dialogConfirm' ).shortcuts[ 0 ] ).getMessage()
+		)
+	} ).toggle( false );
+
 	this.$footer = $( '<div>' ).addClass( 'ext-discussiontools-ui-replyWidget-footer' );
 	if ( this.pageName !== mw.config.get( 'wgRelevantPageName' ) ) {
 		this.$footer.append( $( '<p>' ).append(
@@ -255,6 +264,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 		this.$preview,
 		this.advancedToggle.$element,
 		this.advanced.$element,
+		this.enterWarning.$element,
 		this.$actionsWrapper,
 		this.scrollBackTopButton.$element,
 		this.scrollBackBottomButton.$element
@@ -492,6 +502,10 @@ ReplyWidget.prototype.toggleAdvanced = function ( showAdvanced ) {
 	this.advancedToggle.setIndicator( this.showAdvanced ? 'up' : 'down' );
 
 	this.storage.set( 'showAdvanced', this.showAdvanced ? '1' : '' );
+};
+
+ReplyWidget.prototype.showEnterWarning = function () {
+	this.enterWarning.toggle( true );
 };
 
 ReplyWidget.prototype.onEditSummaryChange = function () {
@@ -747,9 +761,14 @@ ReplyWidget.prototype.onKeyDown = function ( e ) {
 	// VE surfaces already handle CTRL+Enter, but this will catch
 	// the plain surface, and the edit summary input.
 	// Require CTRL+Enter even on single line inputs per T326500.
-	if ( e.which === OO.ui.Keys.ENTER && ( e.ctrlKey || e.metaKey ) ) {
-		this.onReplyClick();
-		return false;
+	if ( e.which === OO.ui.Keys.ENTER ) {
+		if ( e.ctrlKey || e.metaKey ) {
+			this.onReplyClick();
+			return false;
+		} else if ( e.target.tagName === 'INPUT' ) {
+			this.showEnterWarning();
+			return false;
+		}
 	}
 };
 
