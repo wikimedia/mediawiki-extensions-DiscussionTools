@@ -87,6 +87,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Latest comment: $1 by $2",
 	"discussiontools-pagetitle-newtopic": "Starting new topic on $1",
 	"discussiontools-pagetitle-reply": "Replying on $1",
+	"discussiontools-permalink-comment-copied": "Link to comment copied to clipboard.",
 	"discussiontools-postedit-confirmation-published": "Your comment was published.",
 	"discussiontools-postedit-confirmation-topicadded": "Your topic was added.",
 	"discussiontools-preference-autotopicsub": "Automatically subscribe to topics",
