@@ -17,7 +17,8 @@
 			"VIGNERON",
 			"Verdy p",
 			"Wladek92",
-			"McDutchie"
+			"McDutchie",
+			"Urhixidur"
 		]
 	},
 	"discussiontools": "Outils de discussion",
@@ -84,7 +85,7 @@
 	"discussiontools-pagetitle-reply": "Réponse sur $1",
 	"discussiontools-postedit-confirmation-published": "Votre commentaire a été publié.",
 	"discussiontools-postedit-confirmation-topicadded": "Votre sujet a été ajouté.",
-	"discussiontools-preference-autotopicsub": "S’inscrire automatiquement aux sujets",
+	"discussiontools-preference-autotopicsub": "S’abonner automatiquement aux sujets",
 	"discussiontools-preference-autotopicsub-help": "Quand vous commencez une nouvelle discussion ou un nouveau commentaire dans une discussion existante, vous serez automatiquement notifié quand d’autres posteront de nouveaux commentaires dessus.",
 	"discussiontools-preference-description": "Active des fonctionnalités expérimentales de page de discussion :\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying répondre] aux commentaires de la page de discussion en un clic ;\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion ajouter de nouveaux sujets] en utilisant un formulaire intégré ;\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications recevoir des notifications] quand de nouveaux commentaires sont ajoutés dans les sections auxquelles vous vous êtes abonné{{GENDER:||e}} ;\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability afficher les métadonnées] sur chaque discussion et activer un nouveau cadre de page.\n\nVous pouvez personnaliser ces fonctionnalités dans [[Special:Preferences#mw-prefsection-editing-discussion|vos préférences]].\n\nLes mises à jour seront publiées sur la [https://www.mediawiki.org/wiki/Talk_pages_project/Updates page des mises à jour du projet des pages de discussion].\n\nVeuillez noter :\n* au fil du temps, de nouvelles fonctionnalités expérimentales seront ajoutées ;\n* certaines des fonctionnalités ci-dessus peuvent ne pas encore être disponibles sur votre wiki.",
 	"discussiontools-preference-discussion-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project",
@@ -100,7 +101,7 @@
 	"discussiontools-preference-replytool-help": "Cela vous affichera un lien pour répondre aux commentaires de la page de discussion en un clic.",
 	"discussiontools-preference-sourcemodetoolbar": "Activer les outils de modification en mode source",
 	"discussiontools-preference-sourcemodetoolbar-help": "Cela ajoutera une barre d’outils à la réponse rapide et au sujet rapide, ajoutant les modes source des fonctionnalités qui incluent des raccourcis pour tester et ajouter des liens.",
-	"discussiontools-preference-summary": "Vous pouvez en apprendre davantage sur ces fonctionnalités en lisant le [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary résumé de la fonctionnalité].",
+	"discussiontools-preference-summary": "Vous pouvez en savoir plus sur ces fonctionnalités en lisant [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary leur présentation].",
 	"discussiontools-preference-topicsubscription": "Activer l’abonnement aux sujets",
 	"discussiontools-preference-topicsubscription-help": "Cela vous permettra de vous inscrire pour recevoir des notifications sur les commentaires sur des sujets individuels.",
 	"discussiontools-preference-visualenhancements": "Afficher l’activité de la discussion",

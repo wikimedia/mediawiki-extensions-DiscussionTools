@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"СерМар"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Вочакыв",
+	"discussiontools-replywidget-advanced": "Паськӧдӧм",
+	"discussiontools-replywidget-cancel": "Дугӧдны",
+	"discussiontools-replywidget-mode-source": "Ӧшмӧс",
+	"discussiontools-replywidget-mode-visual": "Визуальнӧй",
+	"discussiontools-replywidget-preview": "Водзвыв видзӧдлӧм",
+	"discussiontools-replywidget-summary": "Ставнас",
+	"discussiontools-replywidget-watchthis": "Содтыны тайӧ лист боксӧ асланыд [[Special:Watchlist|watchlist]]",
+	"discussiontools-topicheader-authorcount": "Сёрнитӧмын $1 {{PLURAL:$1|морт|йӧз}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|юӧртӧм|юӧртӧмъяс}}",
+	"discussiontools-topicheader-latestcomment": "Медбӧръя юӧр:$1",
+	"discussiontools-topicsubscription-button-subscribe": "гижӧдчыны",
+	"discussiontools-topicsubscription-button-subscribe-label": "Гижӧдчыны",
+	"discussiontools-topicsubscription-button-unsubscribe": "мынтӧдчыны",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Мынтӧдчыны"
+}

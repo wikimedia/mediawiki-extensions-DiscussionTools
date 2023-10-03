@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Лариса Чиркова"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Vastata",
+	"discussiontools-replywidget-advanced": "Ezmäine",
+	"discussiontools-replywidget-cancel": "Heitta",
+	"discussiontools-replywidget-mode-source": "Lähte",
+	"discussiontools-replywidget-mode-visual": "Vizualine",
+	"discussiontools-replywidget-preview": "Ezikacund",
+	"discussiontools-replywidget-summary": "Ühthevedo",
+	"discussiontools-replywidget-watchthis": "Ližata necen lehtpolen ičeze  [[Special:Kacundlistale|kacundlistale]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ristit|ristitud}} sel'genzoituses",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|sel'genzoituz|sel'genzoitused}}",
+	"discussiontools-topicheader-latestcomment": "Jäl'gmäine sel'genzoituz: $1",
+	"discussiontools-topicsubscription-button-subscribe": "kirjutadas",
+	"discussiontools-topicsubscription-button-subscribe-label": "Kirjutade",
+	"discussiontools-topicsubscription-button-unsubscribe": "heitta kirjutust",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Heita kirjutust"
+}
