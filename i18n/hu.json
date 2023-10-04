@@ -117,6 +117,7 @@
 	"discussiontools-replywidget-cancel": "Mégse",
 	"discussiontools-replywidget-feedback": "Visszajelzés küldése erről a szoftverről",
 	"discussiontools-replywidget-feedback-link": "https://hu.wikipedia.org/wiki/Wikip%C3%A9dia-vita:V%C3%A1laszeszk%C3%B6z",
+	"discussiontools-replywidget-keyboard-shortcut-submit": "Megjegyzés elküldéséhez nyomd meg $1 gombot!",
 	"discussiontools-replywidget-loading": "Betöltés…",
 	"discussiontools-replywidget-mention-tool-header": "Felhasználó keresése: $1",
 	"discussiontools-replywidget-mention-tool-title": "Felhasználó megemlítése",

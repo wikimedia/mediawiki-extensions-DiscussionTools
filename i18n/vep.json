@@ -4,26 +4,26 @@
 			"Лариса Чиркова"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Vastata",
+	"discussiontools-defaultsummary-reply": "Vastta",
 	"discussiontools-replylink": "{{GENDER:|vastata}}",
 	"discussiontools-replywidget-advanced": "Ezmäine",
-	"discussiontools-replywidget-cancel": "Heitta",
+	"discussiontools-replywidget-cancel": "Heitä",
 	"discussiontools-replywidget-mode-source": "Lähte",
 	"discussiontools-replywidget-mode-visual": "Vizualine",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Vastta}} kävutajale {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Ezikacund",
 	"discussiontools-replywidget-reply": "{{GENDER:|Vastta}}",
 	"discussiontools-replywidget-summary": "Ühthevedo",
-	"discussiontools-replywidget-watchthis": "Ližata necen lehtpolen ičeze  [[Special:Kacundlistale|kacundlistale]]",
+	"discussiontools-replywidget-watchthis": "Ližada nece lehtpol' ičeze  [[Special:Kacundlistale|kacundlistale]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ristit|ristitud}} sel'genzoituses",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|sel'genzoituz|sel'genzoitused}}",
 	"discussiontools-topicheader-latestcomment": "Jäl'gmäine sel'genzoituz: $1",
 	"discussiontools-topicsubscription-button-subscribe": "kirjutadas",
 	"discussiontools-topicsubscription-button-subscribe-label": "Kirjutade",
 	"discussiontools-topicsubscription-button-unsubscribe": "heitta kirjutust",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Heita kirjutust",
-	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Sinä}} saškanded vestit uziš kirjutesiš neciš paginas.",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Heitä kirjutust",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Sinä}} saškanded vestid uziden kirjutusiden polhe neciš paginas.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Sinä\n}} oled kirjutanus!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Sinä}} ed saškande vestit uziš kirjutesiš neciš paginas.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Sinä}} ei ole kirjutanus uzištoile."
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Sinä}} ed saškande vestid uziden kirjutusiden polhe neciš paginas.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Sinä}} ed ole kirjutanus uzištoile."
 }
