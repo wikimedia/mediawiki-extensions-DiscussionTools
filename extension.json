@@ -44,6 +44,7 @@
 				"dt.init.js",
 				"controller.js",
 				"highlighter.js",
+				"permalinks.js",
 				"topicsubscriptions.js",
 				"mobile.js",
 				"LedeSectionDialog.js",
