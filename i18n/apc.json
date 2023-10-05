@@ -4,5 +4,19 @@
 			"FunLater"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "ردّ"
+	"discussiontools-defaultsummary-reply": "ردّ",
+	"discussiontools-replywidget-advanced": "متقدمة",
+	"discussiontools-replywidget-cancel": "لغي",
+	"discussiontools-replywidget-mode-source": "مصدري",
+	"discussiontools-replywidget-mode-visual": "مرئي",
+	"discussiontools-replywidget-preview": "عرض مسبق",
+	"discussiontools-replywidget-summary": "تلخيص",
+	"discussiontools-replywidget-watchthis": "زيد هيدي الصفحة ع [[Special:Watchlist|لايحة المراقبة]]",
+	"discussiontools-topicheader-authorcount": "عدد المستخدمين يلى عم تتناقش: $1",
+	"discussiontools-topicheader-commentcount": "عدد التعليقات: $1",
+	"discussiontools-topicheader-latestcomment": "آخر تعليق: $1",
+	"discussiontools-topicsubscription-button-subscribe": "شترك",
+	"discussiontools-topicsubscription-button-subscribe-label": "شترك",
+	"discussiontools-topicsubscription-button-unsubscribe": "لغي الإشتراك",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "لغي الإشتراك"
 }

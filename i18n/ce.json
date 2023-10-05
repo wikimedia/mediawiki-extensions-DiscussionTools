@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Умар"
+			"Умар",
+			"Саид Мисарбиев"
 		]
 	},
 	"discussiontools": "Дийцарийн гӀирсаш",
@@ -41,6 +42,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(карара версехь дац)",
 	"discussiontools-findcomment-results-transcluded": "(кхечу агӀонгара латина)",
 	"discussiontools-findcomment-title": "Лаха коммент",
+	"discussiontools-ledesection-button": "ХӀокху агӀонах лаьцна мадарра",
+	"discussiontools-ledesection-title": "ХӀокху дийцарийн агӀонах лаьцна",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools чохь гӀалат долуш ID дехар",
 	"discussiontools-limitreport-timeusage": "DiscussionTools лелош йолу хан",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунд}}",

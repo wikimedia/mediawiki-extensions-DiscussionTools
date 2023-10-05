@@ -71,7 +71,7 @@
 	"discussiontools-preference-autotopicsub": "Telli teemad automaatselt",
 	"discussiontools-preference-autotopicsub-help": "Kui alustad uut arutelu või postitad kommentaari olemasolevasse arutelusse, siis saad hiljem automaatselt teavituse, kui keegi teine kommenteerib seda teemat.",
 	"discussiontools-preference-description": "Kasuta arutelulehekülgedel katselisi funktsioone:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Vasta] arutelukommentaarile ühe klõpsuga.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Lisa uus teema], kasutades reasisest vormi.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Saa teavitus], kui sinu tellitud alaosasse lisatakse uus kommentaar.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Näita metaandmeid] iga arutelu kohta ja kasuta uut lehekülje paigutust.\n\nSaad [[Special:Preferences#mw-prefsection-editing-discussion|eelistustes]] neid funktsioone kohandada.\n\nUuendused postitatakse [https://www.mediawiki.org/wiki/Talk_pages_project/Updates arutelulehekülgede projekti uuenduste leheküljele].\n\nPane tähele:\n* Ajapikku lisatakse uusi katselisi funktsioone.\n* Mõni eespool mainitud funktsioon ei pruugi olla sinu vikis veel saadaval.",
-	"discussiontools-preference-label": "Arutelu tööriistad",
+	"discussiontools-preference-label": "Arutelutööriistad",
 	"discussiontools-preference-newtopictool": "Kasuta kiiret teema lisamist",
 	"discussiontools-preference-newtopictool-createpage": "Kui lähen aruteluleheküljele, mida pole veel alustatud, siis",
 	"discussiontools-preference-newtopictool-createpage-editor": "ava vikiteksti toimeti",
