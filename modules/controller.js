@@ -15,6 +15,7 @@ var
 	utils = require( './utils.js' ),
 	highlighter = require( './highlighter.js' ),
 	topicSubscriptions = require( './topicsubscriptions.js' ),
+	permalinks = require( './permalinks.js' ),
 	pageHandlersSetup = false,
 	pageDataCache = {},
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
@@ -313,6 +314,7 @@ function init( $container, state ) {
 
 	$pageContainer = $container;
 	linksController = new ReplyLinksController( $pageContainer );
+	permalinks.init( $pageContainer );
 
 	linksController.on( 'link-interact', function () {
 		// Preload page metadata when the user is about to use a link, to make the tool load faster.
