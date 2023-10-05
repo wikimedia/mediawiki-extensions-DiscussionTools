@@ -49,9 +49,13 @@ function init( $container, pageThreads ) {
 			}
 			var threadItem = pageThreads.findCommentById( $threadMarker.data( 'mw-thread-id' ) );
 
-			var buttonMenu = OO.ui.infuse( this, { menu: {
-				horizontalPosition: threadItem.type === 'heading' ? 'end' : 'start'
-			} } );
+			var buttonMenu = OO.ui.infuse( this, {
+				$overlay: true,
+				menu: {
+					classes: [ 'ext-discussiontools-init-section-overflowMenu' ],
+					horizontalPosition: threadItem.type === 'heading' ? 'end' : 'start'
+				}
+			} );
 
 			mw.loader.using( buttonMenu.getData().resourceLoaderModules || [] ).then( function () {
 				var itemConfigs = buttonMenu.getData().itemConfigs;
@@ -186,10 +190,11 @@ function init( $container, pageThreads ) {
 }
 
 // Handler for "edit" link in overflow menu, only setup once as the hook is global
-mw.hook( 'discussionToolsOverflowMenuOnChoose' ).add( function ( id, menuItem ) {
+mw.hook( 'discussionToolsOverflowMenuOnChoose' ).add( function ( id, menuItem, threadItem ) {
 	if ( id === 'edit' ) {
 		// Click the hidden section-edit link
-		menuItem.$element.closest( '.ext-discussiontools-init-section' ).find( '.mw-editsection > a' ).trigger( 'click' );
+		$( threadItem.getNativeRange().commonAncestorContainer )
+			.closest( '.ext-discussiontools-init-section' ).find( '.mw-editsection > a' ).trigger( 'click' );
 	}
 } );
 
