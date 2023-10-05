@@ -29,10 +29,26 @@ function copyLink( link ) {
 	}
 	$tmpInput.remove();
 
-	// Restore scroll position, can be changed by setSelectionRange
-	requestAnimationFrame( function () {
+	// Restore scroll position, can be changed by setSelectionRange, or hash navigation
+	function afterNextScroll() {
+		// On desktop we can restore scroll immediately after the scroll
+		// event, preventing a scroll flicker.
 		$win.scrollTop( scrollTop );
-	} );
+		// On mobile, we need to wait another execution cycle (setTimeout)
+		// before the scroll is rendered (and not requestAnimationFrame).
+		setTimeout( function () {
+			$win.scrollTop( scrollTop );
+		} );
+	}
+	// Restore scroll position when the scroll event fires.
+	// setTimeout does't reliably wait long enough for the native
+	// scroll to happen.
+	$win.one( 'scroll', afterNextScroll );
+	// If we happened to be in the exact correct position, 'scroll' won't fire,
+	// so clear the listener after a short delay
+	setTimeout( function () {
+		$win.off( 'scroll', afterNextScroll );
+	}, 1000 );
 }
 
 module.exports = {
