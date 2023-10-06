@@ -313,7 +313,7 @@ class PageHooks implements
 				] );
 			}
 			$text = CommentFormatter::postprocessVisualEnhancements(
-				$text, $lang, $output->getUser(), $isMobile
+				$text, $lang, $output, $isMobile
 			);
 		}
 

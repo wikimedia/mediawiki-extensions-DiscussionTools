@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Config;
+use IContextSource;
 use MediaWiki\HookContainer\HookContainer;
 use MessageLocalizer;
 
@@ -11,7 +12,8 @@ use MessageLocalizer;
  * @internal
  */
 class HookRunner implements
-	DiscussionToolsTermsOfUseMessagesHook
+	DiscussionToolsTermsOfUseMessagesHook,
+	DiscussionToolsAddOverflowMenuItemsHook
 {
 	private HookContainer $hookContainer;
 
@@ -26,6 +28,26 @@ class HookRunner implements
 		return $this->hookContainer->run(
 			'DiscussionToolsTermsOfUseMessages',
 			[ &$messages, $context, $config ]
+		);
+	}
+
+	/** @inheritDoc */
+	public function onDiscussionToolsAddOverflowMenuItems(
+		array &$overflowMenuItems,
+		array &$resourceLoaderModules,
+		bool $isSectionEditable,
+		array $threadItemData,
+		IContextSource $contextSource
+	) {
+		return $this->hookContainer->run(
+			'DiscussionToolsAddOverflowMenuItems',
+			[
+				&$overflowMenuItems,
+				&$resourceLoaderModules,
+				$isSectionEditable,
+				$threadItemData,
+				$contextSource,
+			]
 		);
 	}
 }
