@@ -123,6 +123,8 @@ function isCommentSeparator( node ) {
 			[ 'style', 'link' ].indexOf( node.tagName.toLowerCase() ) !== -1 &&
 			node.nextSibling && isCommentSeparator( node.nextSibling )
 		) ||
+		// Anything marked as not containing comments
+		node.classList.contains( 'mw-notalk' ) ||
 		// {{outdent}} templates
 		node.classList.contains( 'outdent-template' ) ||
 		// {{tracked}} templates (T313097)

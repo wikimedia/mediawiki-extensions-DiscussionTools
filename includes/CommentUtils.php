@@ -163,6 +163,8 @@ class CommentUtils {
 				// @phan-suppress-next-line PhanInfiniteRecursion
 				$node->nextSibling && self::isCommentSeparator( $node->nextSibling )
 			) ||
+			// Anything marked as not containing comments
+			DOMCompat::getClassList( $node )->contains( 'mw-notalk' ) ||
 			// {{outdent}} templates
 			DOMCompat::getClassList( $node )->contains( 'outdent-template' ) ||
 			// {{tracked}} templates (T313097)
