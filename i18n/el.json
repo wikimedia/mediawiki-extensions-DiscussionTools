@@ -75,7 +75,7 @@
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Μια νέα απάντηση|$1 νέες απαντήσεις|100=99+ νέες απαντήσεις}} στη «<strong>$2</strong>».",
 	"discussiontools-notification-added-topic-view": "Εμφάνιση θέματος",
 	"discussiontools-notification-removed-topic-body": "{{GENDER:|Εσείς}} ενδέχεται να μην λαμβάνετε πλέον ειδοποιήσεις σχετικά με το {{PLURAL:$1| αυτό το θέμα|αυτά τα θέματα}}.",
-	"discussiontools-notification-removed-topic-header": "Το θέμα \" <strong>$4</strong> \" αρχειοθετήθηκε ή αφαιρέθηκε από $3 .",
+	"discussiontools-notification-removed-topic-header": "Το θέμα «<strong>$4</strong>» αρχειοθετήθηκε ή αφαιρέθηκε από την $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1| Ένα θέμα ήταν| $1 θέματα|100=99+ θέματα}} αρχειοθετήθηκαν ή αφαιρέθηκαν από $2 .",
 	"discussiontools-notification-removed-topic-header-compact": "Το θέμα \" <strong>$4</strong> \" αρχειοθετήθηκε ή καταργήθηκε.",
 	"discussiontools-notification-removed-topic-view": "Προβολή σελίδας",
