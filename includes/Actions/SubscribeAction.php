@@ -33,7 +33,9 @@ class SubscribeAction extends FormAction {
 	 * @inheritDoc
 	 */
 	protected function getPageTitle() {
-		if ( $this->subscriptionTitle && !str_starts_with( $this->subscriptionName, 'p-topics-' ) ) {
+		if ( $this->subscriptionTitle &&
+			$this->subscriptionName !== null && !str_starts_with( $this->subscriptionName, 'p-topics-' )
+		) {
 			$title = $this->subscriptionTitle;
 			return $this->msg( 'discussiontools-topicsubscription-action-title' )
 				->plaintextParams( $title->getPrefixedText(), $title->getFragment() );
