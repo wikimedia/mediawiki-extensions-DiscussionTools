@@ -4,5 +4,9 @@
 			"FunLater"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "ردّ"
+	"discussiontools-defaultsummary-reply": "ردّ",
+	"discussiontools-replywidget-cancel": "لغي",
+	"discussiontools-replywidget-mode-source": "مصدري",
+	"discussiontools-replywidget-mode-visual": "مرئي",
+	"discussiontools-replywidget-preview": "عرض مسبق"
 }
