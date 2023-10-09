@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use FormatJson;
 use GenderCache;
+use MediaWiki\Config\Config;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
@@ -44,6 +45,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
 		$skin = $this->createMock( Skin::class );
 		$outputPage = $this->createMock( OutputPage::class );
+		$outputPage->method( 'getConfig' )->willReturn( $this->createMock( Config::class ) );
 		$outputPage->method( 'getTitle' )->willReturn( $title );
 		$outputPage->method( 'getUser' )->willReturn( $user );
 		$outputPage->method( 'getLanguage' )->willReturn( $qqxLang );
