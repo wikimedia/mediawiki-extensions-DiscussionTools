@@ -264,21 +264,18 @@ class PageHooks implements
 		// multiple sources!
 
 		$isMobile = $this->isMobile();
-		$lang = $output->getLanguage();
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			// Just enable OOUI PHP - the OOUI subscribe button isn't infused unless VISUALENHANCEMENTS are enabled
 			$output->setupOOUI();
 			$text = CommentFormatter::postprocessTopicSubscription(
-				$text, $lang, $output->getTitle(), $this->subscriptionStore, $output->getUser(), $isMobile
+				$text, $output, $this->subscriptionStore, $isMobile
 			);
 		}
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
 			$output->enableOOUI();
-			$text = CommentFormatter::postprocessReplyTool(
-				$text, $lang, $isMobile
-			);
+			$text = CommentFormatter::postprocessReplyTool( $text, $output, $isMobile );
 		}
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
@@ -294,7 +291,7 @@ class PageHooks implements
 				$isMobile ||
 				(
 					HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS_REPLY ) &&
-					CommentFormatter::isLanguageRequiringReplyIcon( $lang )
+					CommentFormatter::isLanguageRequiringReplyIcon( $output->getLanguage() )
 				)
 			) {
 				$output->addModuleStyles( [
@@ -312,9 +309,7 @@ class PageHooks implements
 					'oojs-ui.styles.icons-editing-core',
 				] );
 			}
-			$text = CommentFormatter::postprocessVisualEnhancements(
-				$text, $lang, $output, $isMobile
-			);
+			$text = CommentFormatter::postprocessVisualEnhancements( $text, $output, $isMobile );
 		}
 
 		return true;
@@ -339,9 +334,8 @@ class PageHooks implements
 		// multiple sources!
 
 		$isMobile = $this->isMobile();
-		$lang = $output->getLanguage();
 
-		CommentFormatter::postprocessTableOfContents( $pout, $lang );
+		CommentFormatter::postprocessTableOfContents( $pout, $output );
 
 		if (
 			CommentFormatter::isEmptyTalkPage( $pout ) &&
@@ -355,9 +349,7 @@ class PageHooks implements
 		}
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
-			$subtitle = CommentFormatter::postprocessVisualEnhancementsSubtitle(
-				$pout, $lang, $output->getUser()
-			);
+			$subtitle = CommentFormatter::postprocessVisualEnhancementsSubtitle( $pout, $output );
 
 			if ( $subtitle ) {
 				$output->addSubtitle( $subtitle );
