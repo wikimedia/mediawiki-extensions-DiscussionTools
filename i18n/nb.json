@@ -70,7 +70,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|Du}} abonnerer!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|Du}} vil ikke lenger få varsler når nye emner legges til på denne siden.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Du}} har avsluttet abonnementet.",
-	"discussiontools-notification-added-topic-header": "$2 opprettet emnet «<strong>$4</strong> på <strong>$3</strong>.",
+	"discussiontools-notification-added-topic-header": "$2 opprettet emnet «<strong>$4</strong>» på <strong>$3</strong>.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Ett nytt emne|$1 nye emner|100=99+ nye emner}} på «<strong>$2</strong>».",
 	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Vis emne",

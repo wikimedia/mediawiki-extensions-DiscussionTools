@@ -70,6 +70,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Dir sidd net ageloggt.</strong> Fir e Message ze kréien, wann een äntwert, a fir eng Verbindung mat Ärem Numm amplaz mat Ärer IP-Adress ze kréie musst Dir Iech [$1 aloggen] oder [$2 e Benotzerkont opmaachen].",
 	"discussiontools-replywidget-cancel": "Ofbriechen",
 	"discussiontools-replywidget-feedback": "Feedback zu dëser Funktioun ginn",
+	"discussiontools-replywidget-keyboard-shortcut-submit": "Dir kënnt $1 drécken fir Är Bemierkung ofzeschécken",
 	"discussiontools-replywidget-loading": "Lueden...",
 	"discussiontools-replywidget-mention-tool-header": "Benotzer sichen: $1",
 	"discussiontools-replywidget-mention-tool-title": "E Benotzer ernimmen",
