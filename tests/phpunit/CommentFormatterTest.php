@@ -2,14 +2,12 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use Config;
 use FormatJson;
 use GenderCache;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use ParserOutput;
 use Skin;
@@ -39,7 +37,19 @@ class CommentFormatterTest extends IntegrationTestCase {
 			MainConfigNames::ScriptPath => '/w',
 			MainConfigNames::Script => '/w/index.php',
 		] );
+
 		$title = Title::newFromText( $titleText );
+		$subscriptionStore = new MockSubscriptionStore();
+		$user = $this->createMock( UserIdentity::class );
+		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
+		$skin = $this->createMock( Skin::class );
+		$outputPage = $this->createMock( OutputPage::class );
+		$outputPage->method( 'getTitle' )->willReturn( $title );
+		$outputPage->method( 'getUser' )->willReturn( $user );
+		$outputPage->method( 'getLanguage' )->willReturn( $qqxLang );
+		$outputPage->method( 'getSkin' )->willReturn( $skin );
+		$outputPage->method( 'msg' )->willReturn( 'a label' );
+
 		MockCommentFormatter::$parser = static::createParser( $data );
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
@@ -58,33 +68,20 @@ class CommentFormatterTest extends IntegrationTestCase {
 			FormatJson::encode( $pout->getJsConfigVars(), "\t", FormatJson::ALL_OK ) .
 			"\n</pre>";
 
-		$mockSubStore = new MockSubscriptionStore();
-		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
-
 		\OutputPage::setupOOUI();
 
 		$actual = $preprocessed;
 
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
-			$actual, $qqxLang, $title, $mockSubStore, $this->createMock( UserIdentity::class ), $isMobile
+			$actual, $outputPage, $subscriptionStore, $isMobile
 		);
 
-		$user = $this->createMock( User::class );
-		$title = $this->createMock( Title::class );
-		$skin = $this->createMock( Skin::class );
-		$config = $this->createMock( Config::class );
-		$outputPage = $this->createMock( OutputPage::class );
-		$outputPage->method( 'getTitle' )->willReturn( $title );
-		$outputPage->method( 'getUser' )->willReturn( $user );
-		$outputPage->method( 'getSkin' )->willReturn( $skin );
-		$outputPage->method( 'getConfig' )->willReturn( $config );
-		$outputPage->method( 'msg' )->willReturn( 'a label' );
 		$actual = MockCommentFormatter::postprocessVisualEnhancements(
-			$actual, $qqxLang, $outputPage, $isMobile
+			$actual, $outputPage, $isMobile
 		);
 
 		$actual = MockCommentFormatter::postprocessReplyTool(
-			$actual, $qqxLang, $isMobile
+			$actual, $outputPage, $isMobile
 		);
 
 		// OOUI ID's are non-deterministic, so strip them from test output

@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use Html;
+use IContextSource;
 use Language;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookRunner;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
@@ -11,7 +12,6 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ThreadItem;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MWExceptionHandler;
@@ -411,16 +411,14 @@ class CommentFormatter {
 	 * Replace placeholders for topic subscription buttons with the real thing.
 	 *
 	 * @param string $text
-	 * @param Language $lang
-	 * @param Title $title
+	 * @param IContextSource $contextSource
 	 * @param SubscriptionStore $subscriptionStore
-	 * @param UserIdentity $user
 	 * @param bool $isMobile
 	 * @return string
 	 */
 	public static function postprocessTopicSubscription(
-		string $text, Language $lang, Title $title,
-		SubscriptionStore $subscriptionStore, UserIdentity $user, bool $isMobile
+		string $text, IContextSource $contextSource,
+		SubscriptionStore $subscriptionStore, bool $isMobile
 	): string {
 		$doc = DOMCompat::newDocument( true );
 
@@ -432,6 +430,7 @@ class CommentFormatter {
 		}
 		$itemNames = array_column( $itemDataByName, 'name' );
 
+		$user = $contextSource->getUser();
 		$items = $subscriptionStore->getSubscriptionItemsForUser(
 			$user,
 			$itemNames
@@ -441,6 +440,8 @@ class CommentFormatter {
 			$itemsByName[ $item->getItemName() ] = $item;
 		}
 
+		$lang = $contextSource->getLanguage();
+		$title = $contextSource->getTitle();
 		$text = preg_replace_callback(
 			'/<!--__(DTSUBSCRIBELINK|DTSUBSCRIBEBUTTON(?:DESKTOP|MOBILE))__(.*?)-->/',
 			static function ( $matches ) use ( $doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile ) {
@@ -538,14 +539,16 @@ class CommentFormatter {
 	 * Replace placeholders for reply links with the real thing.
 	 *
 	 * @param string $text
-	 * @param Language $lang
+	 * @param IContextSource $contextSource
 	 * @param bool $isMobile
 	 * @return string
 	 */
 	public static function postprocessReplyTool(
-		string $text, Language $lang, bool $isMobile
+		string $text, IContextSource $contextSource, bool $isMobile
 	): string {
 		$doc = DOMCompat::newDocument( true );
+
+		$lang = $contextSource->getLanguage();
 		$replyLinkText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
 		$replyButtonText = wfMessage( 'discussiontools-replybutton' )->inLanguage( $lang )->escaped();
 
@@ -674,15 +677,15 @@ class CommentFormatter {
 	 * Post-process visual enhancements features (topic containers)
 	 *
 	 * @param string $text
-	 * @param Language $lang
-	 * @param OutputPage $outputPage
+	 * @param IContextSource $contextSource
 	 * @param bool $isMobile
 	 * @return string
 	 */
 	public static function postprocessVisualEnhancements(
-		string $text, Language $lang, OutputPage $outputPage, bool $isMobile
+		string $text, IContextSource $contextSource, bool $isMobile
 	): string {
-		$user = $outputPage->getUser();
+		$lang = $contextSource->getLanguage();
+		$user = $contextSource->getUser();
 		$text = preg_replace_callback(
 			'/<!--__DTLATESTCOMMENTTHREAD__(.*?)__-->/',
 			static function ( $matches ) use ( $lang, $user ) {
@@ -742,7 +745,7 @@ class CommentFormatter {
 		if ( $isMobile ) {
 			$text = preg_replace_callback(
 				'/<!--__DTELLIPSISBUTTON__(.*?)-->/',
-				static function ( $matches ) use ( $outputPage ) {
+				static function ( $matches ) use ( $contextSource ) {
 					$overflowMenuData = json_decode( htmlspecialchars_decode( $matches[1] ), true ) ?? [];
 
 					$isSectionEditable = $overflowMenuData['editable'];
@@ -756,7 +759,7 @@ class CommentFormatter {
 						$resourceLoaderModules,
 						$isSectionEditable,
 						$threadItem,
-						$outputPage
+						$contextSource
 					);
 
 					if ( $overflowMenuItems ) {
@@ -802,15 +805,16 @@ class CommentFormatter {
 	 * Post-process visual enhancements features for page subtitle
 	 *
 	 * @param ParserOutput $pout
-	 * @param Language $lang
-	 * @param UserIdentity $user
+	 * @param IContextSource $contextSource
 	 * @return ?string
 	 */
 	public static function postprocessVisualEnhancementsSubtitle(
-		ParserOutput $pout, Language $lang, UserIdentity $user
+		ParserOutput $pout, IContextSource $contextSource
 	): ?string {
 		$itemData = $pout->getExtensionData( 'DiscussionTools-newestComment' );
 		if ( $itemData && $itemData['timestamp'] && $itemData['id'] ) {
+			$lang = $contextSource->getLanguage();
+			$user = $contextSource->getUser();
 			$relativeTime = static::getSignatureRelativeTime(
 				new MWTimestamp( $itemData['timestamp'] ),
 				$lang,
@@ -849,10 +853,10 @@ class CommentFormatter {
 	 * Post-process visual enhancements features for table of contents
 	 *
 	 * @param ParserOutput $pout
-	 * @param Language $lang
+	 * @param IContextSource $contextSource
 	 */
 	public static function postprocessTableOfContents(
-		ParserOutput $pout, Language $lang
+		ParserOutput $pout, IContextSource $contextSource
 	): void {
 		$tocInfo = $pout->getExtensionData( 'DiscussionTools-tocInfo' );
 
@@ -862,6 +866,7 @@ class CommentFormatter {
 				$key = str_replace( '_', ' ', $item->anchor );
 				// Unset if we did not format this section as a topic container
 				if ( isset( $tocInfo[$key] ) ) {
+					$lang = $contextSource->getLanguage();
 					$count = $lang->formatNum( $tocInfo[$key]['commentCount'] );
 					$commentCount = wfMessage(
 						'discussiontools-topicheader-commentcount',
