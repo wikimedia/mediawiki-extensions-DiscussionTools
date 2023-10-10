@@ -57,7 +57,7 @@
 	"discussiontools-newtopic-missing-title": "Παρακαλούμε καταχωρήστε έναν τίτλο για το σχόλιό σας. Αν ξαναπατήσετε «{{int:discussiontools-replywidget-newtopic}}», το σχόλιο σας θα προστεθεί χωρίς τίτλο.",
 	"discussiontools-newtopic-placeholder-title": "Θέμα",
 	"discussiontools-notification-removed-topic-body": "Ενδέχεται να μην λαμβάνετε πλέον ειδοποιήσεις σχετικά με το {{PLURAL:$1|αυτό το θέμα|αυτά τα θέματα}}.",
-	"discussiontools-notification-removed-topic-header": "Το θέμα \" <strong>$4</strong> \" αρχειοθετήθηκε ή αφαιρέθηκε από $3 .",
+	"discussiontools-notification-removed-topic-header": "Το θέμα «<strong>$4</strong>» αρχειοθετήθηκε ή αφαιρέθηκε από την $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1| Ένα θέμα ήταν| $1 θέματα|100=99+ θέματα}} αρχειοθετήθηκαν ή αφαιρέθηκαν από $2 .",
 	"discussiontools-notification-removed-topic-header-compact": "Το θέμα \" <strong>$4</strong> \" αρχειοθετήθηκε ή καταργήθηκε.",
 	"discussiontools-notification-removed-topic-view": "Προβολή σελίδας",
