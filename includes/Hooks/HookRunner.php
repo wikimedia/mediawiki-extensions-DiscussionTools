@@ -35,7 +35,6 @@ class HookRunner implements
 	public function onDiscussionToolsAddOverflowMenuItems(
 		array &$overflowMenuItems,
 		array &$resourceLoaderModules,
-		bool $isSectionEditable,
 		array $threadItemData,
 		IContextSource $contextSource
 	) {
@@ -44,7 +43,6 @@ class HookRunner implements
 			[
 				&$overflowMenuItems,
 				&$resourceLoaderModules,
-				$isSectionEditable,
 				$threadItemData,
 				$contextSource,
 			]

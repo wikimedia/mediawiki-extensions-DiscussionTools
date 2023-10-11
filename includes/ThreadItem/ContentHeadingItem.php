@@ -7,10 +7,13 @@ use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Element;
 
 class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
-	use HeadingItemTrait;
+	use HeadingItemTrait {
+		jsonSerialize as traitJsonSerialize;
+	}
 
 	private bool $placeholderHeading;
 	private int $headingLevel;
+	private bool $uneditableSection = false;
 
 	// Placeholder headings must have a level higher than real headings (1-6)
 	private const PLACEHOLDER_HEADING_LEVEL = 99;
@@ -49,6 +52,21 @@ class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
 			// else: Not a real section, probably just HTML markup in wikitext
 		}
 		return $title;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isUneditableSection(): bool {
+		return $this->uneditableSection;
+	}
+
+	/**
+	 * @param bool $uneditableSection The heading represents a section that can't be
+	 *  edited on its own.
+	 */
+	public function setUneditableSection( bool $uneditableSection ): void {
+		$this->uneditableSection = $uneditableSection;
 	}
 
 	/**
@@ -93,5 +111,18 @@ class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
 			return false;
 		}
 		return parent::getTranscludedFrom();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function jsonSerialize( bool $deep = false, ?callable $callback = null ): array {
+		$data = $this->traitJsonSerialize( $deep, $callback );
+
+		// When this is false (which is most of the time), omit the key for efficiency
+		if ( $this->isUneditableSection() ) {
+			$data[ 'uneditableSection' ] = true;
+		}
+		return $data;
 	}
 }

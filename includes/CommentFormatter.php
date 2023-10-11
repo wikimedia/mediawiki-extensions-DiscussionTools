@@ -135,8 +135,9 @@ class CommentFormatter {
 			$wrapperNode->insertBefore( $subscribeButton, $wrapperNode->firstChild );
 		}
 
-		$editable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) !== null;
-		self::addOverflowMenuButton( $headingItem, $doc, $wrapperNode, [ 'editable' => $editable ] );
+		$uneditable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) === null;
+		$headingItem->setUneditableSection( $uneditable );
+		self::addOverflowMenuButton( $headingItem, $doc, $wrapperNode );
 
 		// Visual enhancements: topic containers
 		$latestReplyItem = $headingItem->getLatestReply();
@@ -370,16 +371,12 @@ class CommentFormatter {
 	 * @param ThreadItem $threadItem The heading or comment item
 	 * @param Document $document Retrieved by parsing page HTML
 	 * @param Element $element The element to add the overflow menu button to
-	 * @param array $data Arbitrary data to encode with the button HTML. The thread item is always included.
 	 * @return void
 	 */
 	protected static function addOverflowMenuButton(
-		ThreadItem $threadItem, Document $document, Element $element, array $data = []
+		ThreadItem $threadItem, Document $document, Element $element
 	): void {
-		$overflowMenuDataJSON = json_encode( array_merge(
-			$data,
-			[ 'threadItem' => $threadItem ]
-		) );
+		$overflowMenuDataJSON = json_encode( [ 'threadItem' => $threadItem ] );
 
 		$overflowMenuButton = $document->createComment(
 			'__DTELLIPSISBUTTON__' . htmlspecialchars( $overflowMenuDataJSON, ENT_NOQUOTES )
@@ -746,9 +743,12 @@ class CommentFormatter {
 			static function ( $matches ) use ( $contextSource, $isMobile ) {
 				$overflowMenuData = json_decode( htmlspecialchars_decode( $matches[1] ), true ) ?? [];
 
-				$isSectionEditable = $overflowMenuData['editable'] ?? false;
 				// TODO: Remove the fallback to empty array after the parser cache is updated.
 				$threadItem = $overflowMenuData['threadItem'] ?? [];
+				// TODO: Remove $overflowMenuData['editable'] after caches clear
+				if ( isset( $overflowMenuData['editable'] ) ) {
+					$threadItem['uneditableSection'] = !$overflowMenuData['editable'];
+				}
 				$threadItemType = $threadItem['type'] ?? null;
 				if ( !$isMobile && $threadItemType === 'heading' ) {
 					// Displaying the overflow menu next to a topic heading is a bit more
@@ -761,7 +761,6 @@ class CommentFormatter {
 				self::getHookRunner()->onDiscussionToolsAddOverflowMenuItems(
 					$overflowMenuItems,
 					$resourceLoaderModules,
-					$isSectionEditable,
 					$threadItem,
 					$contextSource
 				);
