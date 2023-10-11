@@ -20,7 +20,8 @@ var
 	pageDataCache = {},
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
-	enable2017Wikitext = featuresEnabled.sourcemodetoolbar;
+	enable2017Wikitext = featuresEnabled.sourcemodetoolbar,
+	overflowMenu = require( './overflowMenu.js' );
 
 var mobile = null;
 if ( OO.ui.isMobile() && mw.config.get( 'skin' ) === 'minerva' ) {
@@ -336,6 +337,8 @@ function init( $container, state ) {
 	if ( featuresEnabled.topicsubscription ) {
 		topicSubscriptions.initTopicSubscriptions( $container, pageThreads );
 	}
+
+	overflowMenu.init( $container, pageThreads );
 
 	if ( mobile ) {
 		mobile.init( $container, pageThreads );

@@ -47,6 +47,7 @@
 				"permalinks.js",
 				"topicsubscriptions.js",
 				"mobile.js",
+				"overflowMenu.js",
 				"LedeSectionDialog.js",
 				{
 					"name": "controller/contLangMessages.json",
