@@ -31,7 +31,9 @@ class DiscussionToolsHooks implements
 		array $threadItemData,
 		IContextSource $contextSource
 	) {
-		if ( ( $threadItemData['type'] ?? null ) === 'heading' && $isSectionEditable ) {
+		if ( ( $threadItemData['type'] ?? null ) === 'heading' &&
+			$isSectionEditable &&
+			$contextSource->getSkin()->getSkinName() === 'minerva' ) {
 			$overflowMenuItems[] = new OverflowMenuItem(
 				'edit',
 				'edit',
