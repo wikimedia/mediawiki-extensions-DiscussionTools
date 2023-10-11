@@ -741,62 +741,61 @@ class CommentFormatter {
 			},
 			$text
 		);
-		if ( $isMobile ) {
-			$text = preg_replace_callback(
-				'/<!--__DTELLIPSISBUTTON__(.*?)-->/',
-				static function ( $matches ) use ( $contextSource ) {
-					$overflowMenuData = json_decode( htmlspecialchars_decode( $matches[1] ), true ) ?? [];
+		$text = preg_replace_callback(
+			'/<!--__DTELLIPSISBUTTON__(.*?)-->/',
+			static function ( $matches ) use ( $contextSource, $isMobile ) {
+				$overflowMenuData = json_decode( htmlspecialchars_decode( $matches[1] ), true ) ?? [];
 
-					$isSectionEditable = $overflowMenuData['editable'] ?? false;
-					// TODO: Remove the fallback to empty array after the parser cache is updated.
-					$threadItem = $overflowMenuData['threadItem'] ?? [];
-					$overflowMenuItems = [];
-					$resourceLoaderModules = [];
+				$isSectionEditable = $overflowMenuData['editable'] ?? false;
+				// TODO: Remove the fallback to empty array after the parser cache is updated.
+				$threadItem = $overflowMenuData['threadItem'] ?? [];
+				$threadItemType = $threadItem['type'] ?? null;
+				if ( !$isMobile && $threadItemType === 'heading' ) {
+					// Displaying the overflow menu next to a topic heading is a bit more
+					// complicated on desktop, so leaving it out for now.
+					return '';
+				}
+				$overflowMenuItems = [];
+				$resourceLoaderModules = [];
 
-					self::getHookRunner()->onDiscussionToolsAddOverflowMenuItems(
+				self::getHookRunner()->onDiscussionToolsAddOverflowMenuItems(
+					$overflowMenuItems,
+					$resourceLoaderModules,
+					$isSectionEditable,
+					$threadItem,
+					$contextSource
+				);
+
+				if ( $overflowMenuItems ) {
+					usort(
 						$overflowMenuItems,
-						$resourceLoaderModules,
-						$isSectionEditable,
-						$threadItem,
-						$contextSource
+						static function ( OverflowMenuItem $itemA, OverflowMenuItem $itemB ): int {
+							return $itemB->getWeight() - $itemA->getWeight();
+						}
 					);
 
-					if ( $overflowMenuItems ) {
-						usort(
-							$overflowMenuItems,
-							static function ( OverflowMenuItem $itemA, OverflowMenuItem $itemB ): int {
-								return $itemB->getWeight() - $itemA->getWeight();
-							}
-						);
+					$overflowButton = new ButtonMenuSelectWidget( [
+						'classes' => [
+							// TODO: Remove ellipsisButton class after parser cache is updated
+							'ext-discussiontools-init-section-ellipsisButton',
+							'ext-discussiontools-init-section-overflowMenuButton'
+						],
+						'framed' => false,
+						'icon' => 'ellipsis',
+						'infusable' => true,
+						'data' => [
+							'itemConfigs' => $overflowMenuItems,
+							'resourceLoaderModules' => $resourceLoaderModules
+						]
+					] );
+					return $overflowButton->toString();
+				} else {
+					return '';
+				}
+			},
+			$text
+		);
 
-						$overflowButton = new ButtonMenuSelectWidget( [
-							'classes' => [
-								// TODO: Remove ellipsisButton class after parser cache is updated
-								'ext-discussiontools-init-section-ellipsisButton',
-								'ext-discussiontools-init-section-overflowMenuButton'
-							],
-							'framed' => false,
-							'icon' => 'ellipsis',
-							'infusable' => true,
-							'data' => [
-								'itemConfigs' => $overflowMenuItems,
-								'resourceLoaderModules' => $resourceLoaderModules
-							]
-						] );
-						return $overflowButton->toString();
-					} else {
-						return '';
-					}
-				},
-				$text
-			);
-		} else {
-			$text = preg_replace(
-				'/<!--__DTELLIPSISBUTTON__(.*?)-->/',
-				'',
-				$text
-			);
-		}
 		return $text;
 	}
 
