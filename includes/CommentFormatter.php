@@ -300,8 +300,7 @@ class CommentFormatter {
 						$lastTimestamp->surroundContents( $link );
 					}
 				}
-				$editable = DOMCompat::querySelector( $replyButtons, 'mw\\:editsection' ) !== null;
-				self::addOverflowMenuButton( $threadItem, $doc, $replyButtons, [ 'editable' => $editable ] );
+				self::addOverflowMenuButton( $threadItem, $doc, $replyButtons );
 			}
 
 			$range->insertNode( $startMarker );
@@ -748,7 +747,7 @@ class CommentFormatter {
 				static function ( $matches ) use ( $contextSource ) {
 					$overflowMenuData = json_decode( htmlspecialchars_decode( $matches[1] ), true ) ?? [];
 
-					$isSectionEditable = $overflowMenuData['editable'];
+					$isSectionEditable = $overflowMenuData['editable'] ?? false;
 					// TODO: Remove the fallback to empty array after the parser cache is updated.
 					$threadItem = $overflowMenuData['threadItem'] ?? [];
 					$overflowMenuItems = [];
