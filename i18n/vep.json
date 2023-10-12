@@ -11,7 +11,7 @@
 	"discussiontools-replywidget-mode-visual": "Vizualine",
 	"discussiontools-replywidget-preview": "Ezikacund",
 	"discussiontools-replywidget-summary": "Ühthevedo",
-	"discussiontools-replywidget-watchthis": "Ližada nece lehtpol' ičeze  [[Special:Kacundlistale|kacundlistale]]",
+	"discussiontools-replywidget-watchthis": "Ližada nece lehtpol' ičeze  [[Special:Watchlist|kacundlistale]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ristit|ristitud}} sel'genzoituses",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|sel'genzoituz|sel'genzoitused}}",
 	"discussiontools-topicheader-latestcomment": "Jäl'gmäine sel'genzoituz: $1",
