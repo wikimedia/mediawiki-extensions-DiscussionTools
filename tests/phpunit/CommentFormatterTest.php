@@ -44,6 +44,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$user = $this->createMock( UserIdentity::class );
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
 		$skin = $this->createMock( Skin::class );
+		$skin->method( 'getSkinName' )->willReturn( 'minerva' );
 		$outputPage = $this->createMock( OutputPage::class );
 		$outputPage->method( 'getConfig' )->willReturn( $this->createMock( Config::class ) );
 		$outputPage->method( 'getTitle' )->willReturn( $title );
