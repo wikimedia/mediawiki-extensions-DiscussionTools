@@ -548,7 +548,8 @@ function init( $container, state ) {
 		} );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'body' ).on( 'click', function ( e ) {
-			if ( utils.isUnmodifiedLeftClick( e ) ) {
+			if ( utils.isUnmodifiedLeftClick( e ) && !e.target.closest( 'a' ) ) {
+				// Remove the highlight and the hash from the URL, unless clicking on another link
 				highlighter.clearHighlightTargetComment( pageThreads );
 			}
 		} );
