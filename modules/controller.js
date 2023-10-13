@@ -256,31 +256,26 @@ function getCheckboxesPromise( pageName, oldId ) {
 /**
  * Get the resourceloader modules required for a mode of the reply widget
  *
- * @param {boolean} visual Prefer the VE-based class
  * @return {string[]}
  */
-function getReplyWidgetModules( visual ) {
-	if ( !visual ) {
-		return [ 'ext.discussionTools.ReplyWidgetPlain' ];
-	}
-
+function getReplyWidgetModules() {
 	var veConf = mw.config.get( 'wgVisualEditorConfig' ),
-		visualModules = [ 'ext.discussionTools.ReplyWidgetVisual' ]
+		modules = [ 'ext.discussionTools.ReplyWidget' ]
 			.concat( veConf.pluginModules.filter( mw.loader.getState ) );
 
 	if ( OO.ui.isMobile() ) {
-		visualModules = [
+		modules = [
 			'ext.visualEditor.core.mobile',
 			'ext.visualEditor.mwextensions'
-		].concat( visualModules );
+		].concat( modules );
 	} else {
-		visualModules = [
+		modules = [
 			'ext.visualEditor.core.desktop',
 			'ext.visualEditor.desktopTarget',
 			'ext.visualEditor.mwextensions.desktop'
-		].concat( visualModules );
+		].concat( modules );
 	}
-	return visualModules;
+	return modules;
 }
 
 /**
@@ -347,7 +342,7 @@ function init( $container, state ) {
 		// and the add-topic link suppressed, *but* which has valid links to
 		// trigger the new topic tool within the content. If that happens,
 		// the modules will still be loaded when those links are interacted with.
-		mw.loader.using( getReplyWidgetModules( defaultVisual || enable2017Wikitext ) );
+		mw.loader.using( getReplyWidgetModules() );
 	}
 
 	/**
