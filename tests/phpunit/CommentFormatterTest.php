@@ -9,7 +9,7 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Title\Title;
-use MediaWiki\User\UserIdentity;
+use MediaWiki\User\User;
 use ParserOutput;
 use Skin;
 use Wikimedia\TestingAccessWrapper;
@@ -41,7 +41,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$title = Title::newFromText( $titleText );
 		$subscriptionStore = new MockSubscriptionStore();
-		$user = $this->createMock( UserIdentity::class );
+		$user = $this->createMock( User::class );
 		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
 		$skin = $this->createMock( Skin::class );
 		$skin->method( 'getSkinName' )->willReturn( 'minerva' );
