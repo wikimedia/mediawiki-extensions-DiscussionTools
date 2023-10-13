@@ -14,5 +14,6 @@
 	"discussiontools-replylink": "embohovái",
 	"discussiontools-replywidget-cancel": "Eheja",
 	"discussiontools-replywidget-mode-source": "Kuatia reñoiha",
-	"discussiontools-replywidget-placeholder-reply": "Embohovái {{BIDI:$1}}-pe"
+	"discussiontools-replywidget-placeholder-reply": "Embohovái {{BIDI:$1}}-pe",
+	"discussiontools-replywidget-summary": "Jehaimombyky"
 }
