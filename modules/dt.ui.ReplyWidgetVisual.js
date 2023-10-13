@@ -31,7 +31,7 @@ function ReplyWidgetVisual( commentController, commentDetails, config ) {
 
 /* Inheritance */
 
-OO.inheritClass( ReplyWidgetVisual, require( 'ext.discussionTools.ReplyWidget' ) );
+OO.inheritClass( ReplyWidgetVisual, require( './dt.ui.ReplyWidget.js' ) );
 
 /* Methods */
 
