@@ -86,6 +86,8 @@ class PageHooks implements
 	public function onBeforePageDisplay( $output, $skin ): void {
 		$user = $output->getUser();
 		$req = $output->getRequest();
+		$title = $output->getTitle();
+
 		foreach ( HookUtils::FEATURES as $feature ) {
 			// Add a CSS class for each enabled feature
 			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
@@ -93,13 +95,15 @@ class PageHooks implements
 			}
 		}
 
-		if ( $this->isMobile() && HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
+		$isMobile = $this->isMobile();
+
+		if ( $isMobile && HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
 			$output->addBodyClasses( 'collapsible-headings-collapsed' );
 		}
 
 		// Load style modules if the tools can be available for the title
 		// to selectively hide DT features, depending on the body classes added above.
-		$availableForTitle = HookUtils::isAvailableForTitle( $output->getTitle() );
+		$availableForTitle = HookUtils::isAvailableForTitle( $title );
 		if ( $availableForTitle ) {
 			$output->addModuleStyles( 'ext.discussionTools.init.styles' );
 		}
@@ -171,9 +175,7 @@ class PageHooks implements
 			) );
 		}
 
-		if ( $output->getSkin()->getSkinName() === 'minerva' ) {
-			$title = $output->getTitle();
-
+		if ( $isMobile ) {
 			if (
 				$title->isTalkPage() &&
 				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) && (
@@ -209,7 +211,9 @@ class PageHooks implements
 					$output->addModuleStyles( 'jquery.makeCollapsible.styles' );
 				}
 			}
+		}
 
+		if ( $output->getSkin()->getSkinName() === 'minerva' ) {
 			if (
 				$req->getRawVal( 'action', 'view' ) === 'view' &&
 				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
@@ -332,8 +336,6 @@ class PageHooks implements
 
 		// This hook can be executed more than once per page view if the page content is composed from
 		// multiple sources!
-
-		$isMobile = $this->isMobile();
 
 		CommentFormatter::postprocessTableOfContents( $pout, $output );
 
