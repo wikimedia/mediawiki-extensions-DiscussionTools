@@ -107,6 +107,7 @@
 	"discussiontools-replywidget-anon-warning": "<strong>Niste prijavljeni.</strong> Da biste doprinosili pod suradničkim imenom umjesto IP adresom, možete se [$1 prijaviti] ili [$2 stvoriti račun].",
 	"discussiontools-replywidget-cancel": "Odustani",
 	"discussiontools-replywidget-feedback": "Podijelite s nama povratnu informaciju o ovoj mogućnosti programske opreme",
+	"discussiontools-replywidget-keyboard-shortcut-submit": "Kako biste dodali komentar, možete pritisnuti $1",
 	"discussiontools-replywidget-loading": "Učitava se…",
 	"discussiontools-replywidget-mention-tool-header": "Pronađi suradnika: $1",
 	"discussiontools-replywidget-mention-tool-title": "Spomeni suradnicu/suradnika",
