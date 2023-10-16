@@ -3,8 +3,14 @@
 		"authors": [
 			"Klein Muçi",
 			"Liridon",
-			"Пан Хаунд"
+			"Пан Хаунд",
+			"Besnik b"
 		]
 	},
-	"discussiontools-replylink": "përgjigju"
+	"discussiontools-defaultsummary-reply": "Përgjigje",
+	"discussiontools-replylink": "përgjigju",
+	"discussiontools-replywidget-cancel": "Anuloje",
+	"discussiontools-replywidget-mode-source": "Burim",
+	"discussiontools-replywidget-mode-visual": "Pamor",
+	"discussiontools-replywidget-preview": "Paraparje"
 }

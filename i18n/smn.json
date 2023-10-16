@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Seipinne",
-			"Yupik"
+			"Yupik",
+			"Muotâ"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Vástádâs",
@@ -13,5 +14,6 @@
 	"discussiontools-replywidget-placeholder-reply": "Västid kevttei {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Munekejâdem",
 	"discussiontools-replywidget-reply": "Västid",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vástádâs]",
 	"tag-discussiontools-visual": "Visuaallávt"
 }
