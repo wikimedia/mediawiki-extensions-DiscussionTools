@@ -170,7 +170,7 @@ h1, h2, h3, h4, h5, h6 {
 	// Prevent squishing too much (T335823)
 	min-width: 20em;
 
-	.skin-minerva& {
+	.mw-mf& {
 		// Prevent the ellipsis button's focus ring from being clipped.
 		// We have no floated links/buttons on mobile, so this is okay.
 		overflow: visible;
@@ -206,8 +206,8 @@ h1, h2, h3, h4, h5, h6 {
 		margin-top: 0.7em;
 	}
 
-	.skin-minerva & {
-		// Subscribe button is used instead in Minerva
+	.mw-mf & {
+		// Subscribe button is used instead on mobile
 		display: none;
 	}
 
@@ -257,8 +257,8 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	// Directional properties must be based on content direction.
-	body:not( .skin-minerva ) .mw-content-ltr &,
-	body:not( .skin-minerva ) .mw-content-rtl .mw-content-ltr & {
+	body:not( .mw-mf ) .mw-content-ltr &,
+	body:not( .mw-mf ) .mw-content-rtl .mw-content-ltr & {
 		/* @noflip */
 		float: right;
 		/* @noflip */
@@ -266,8 +266,8 @@ h1, h2, h3, h4, h5, h6 {
 		margin: -2px 0 0 1em !important;
 	}
 
-	body:not( .skin-minerva ) .mw-content-rtl &,
-	body:not( .skin-minerva ) .mw-content-ltr .mw-content-rtl & {
+	body:not( .mw-mf ) .mw-content-rtl &,
+	body:not( .mw-mf ) .mw-content-ltr .mw-content-rtl & {
 		/* @noflip */
 		float: left;
 		/* @noflip */
@@ -310,7 +310,7 @@ h1, h2, h3, h4, h5, h6 {
 		margin-right: 0;
 	}
 
-	&:not( .skin-minerva ) .ext-discussiontools-init-replybutton.oo-ui-buttonElement {
+	&:not( .mw-mf ) .ext-discussiontools-init-replybutton.oo-ui-buttonElement {
 		// Slim height for inline placement. Minerva uses block placement.
 		margin-top: -8px;
 		margin-bottom: -8px;
@@ -332,7 +332,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	// Use block placement for the reply buttons on mobile, to make them easier to tap.
-	&.skin-minerva .ext-discussiontools-init-replylink-buttons {
+	&.mw-mf .ext-discussiontools-init-replylink-buttons {
 		display: block;
 
 		&::before {
@@ -363,7 +363,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Main feature (topic containers)
-.skin-minerva .ext-discussiontools-init-section {
+.mw-mf .ext-discussiontools-init-section {
 	// Need to fix some styles on mobile even when the feature is not enabled
 	display: flex;
 	align-items: center;
@@ -444,12 +444,12 @@ h1, h2, h3, h4, h5, h6 {
 		font-family: sans-serif;
 	}
 
-	&.skin-minerva h2.ext-discussiontools-ui-newTopic-sectionTitle .oo-ui-inputWidget-input {
+	&.mw-mf h2.ext-discussiontools-ui-newTopic-sectionTitle .oo-ui-inputWidget-input {
 		font-size: 0.75em;
 	}
 
 	// Mobile
-	&.skin-minerva .ext-discussiontools-init-section {
+	&.mw-mf .ext-discussiontools-init-section {
 		flex-wrap: wrap;
 		// stylelint-disable-next-line declaration-no-important
 		border-bottom: 0 !important;
@@ -562,7 +562,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 
-	&.skin-minerva .ext-discussiontools-init-section-overflowMenu {
+	&.mw-mf .ext-discussiontools-init-section-overflowMenu {
 		// Not sure if this should have custom styles like this…
 		// They were once accidentally inherited from the heading,
 		// before the menu was moved to an overlay.
@@ -570,7 +570,7 @@ h1, h2, h3, h4, h5, h6 {
 		font-size: 0.875em;
 	}
 
-	&.skin-minerva .mf-section-0 + .ext-discussiontools-init-section {
+	&.mw-mf .mf-section-0 + .ext-discussiontools-init-section {
 		border-top: 0;
 		margin-top: 0;
 	}
@@ -625,7 +625,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-.skin-minerva.ext-discussiontools-emptystate-shown {
+.mw-mf.ext-discussiontools-emptystate-shown {
 	// The mobile "Add topic" button is very eye-catching.
 	// No need to show it when the empty state banner is shown.
 	.ext-discussiontools-init-new-topic {
@@ -741,7 +741,7 @@ h1, h2, h3, h4, h5, h6 {
 // to reveal it.
 // The button will disable all DT features by removing feature CSS classes.
 // stylelint-disable-next-line selector-class-pattern
-.skin-minerva.ns-talk.ext-discussiontools-replytool-enabled {
+.mw-mf.ns-talk.ext-discussiontools-replytool-enabled {
 	&.ext-discussiontools-init-lede-hidden {
 		// .mw-body-content selector prevents this applying to content in the preview (T318758)
 		// On non-existent pages MobileFrontend wrapping isn't there
@@ -851,7 +851,7 @@ h1, h2, h3, h4, h5, h6 {
 
 // In cases where the "Read as wiki page" button is shown:
 // stylelint-disable-next-line selector-class-pattern
-.client-js .skin-minerva.ns-talk.ext-discussiontools-replytool-enabled {
+.client-js .mw-mf.ns-talk.ext-discussiontools-replytool-enabled {
 	.ext-discussiontools-init-new-topic-pinned.ext-discussiontools-init-button-notFlush {
 		margin-bottom: -32px;
 	}
