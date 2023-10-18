@@ -775,8 +775,6 @@ class CommentFormatter {
 
 					$overflowButton = new ButtonMenuSelectWidget( [
 						'classes' => [
-							// TODO: Remove ellipsisButton class after parser cache is updated
-							'ext-discussiontools-init-section-ellipsisButton',
 							'ext-discussiontools-init-section-overflowMenuButton'
 						],
 						'framed' => false,

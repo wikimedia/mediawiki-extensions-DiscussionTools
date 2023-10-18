@@ -6,9 +6,7 @@
  */
 function init( $container, pageThreads ) {
 	mw.loader.using( [ 'oojs-ui-widgets', 'oojs-ui.styles.icons-editing-core' ] ).then( function () {
-		// TODO: Replace with .ext-discussiontools-init-section-overflowMenuButton
-		//  after parser cache is updated
-		$container.find( '.ext-discussiontools-init-section-ellipsisButton' ).each( function () {
+		$container.find( '.ext-discussiontools-init-section-overflowMenuButton' ).each( function () {
 			// Comment ellipsis
 			var $threadMarker = $( this ).closest( '[data-mw-thread-id]' );
 			if ( !$threadMarker.length ) {

@@ -171,7 +171,7 @@ h1, h2, h3, h4, h5, h6 {
 	min-width: 20em;
 
 	.mw-mf& {
-		// Prevent the ellipsis button's focus ring from being clipped.
+		// Prevent the overflow menu's focus ring from being clipped.
 		// We have no floated links/buttons on mobile, so this is okay.
 		overflow: visible;
 	}
@@ -471,18 +471,14 @@ h1, h2, h3, h4, h5, h6 {
 			font-size: 0.75em;
 		}
 
-		/* TODO: Remove reference to ellipsisButton after parser cache is updated */
 		&-bar,
-		&-overflowMenuButton,
-		&-ellipsisButton {
+		&-overflowMenuButton {
 			font-size: 0.875em;
 		}
 
-		/* TODO: Remove reference to ellipsisButton after parser cache is updated */
 		// stylelint-disable-next-line selector-class-pattern
 		> .indicator,
-		&-overflowMenuButton,
-		&-ellipsisButton {
+		&-overflowMenuButton {
 			// Adjust for smaller headings
 			margin-top: -5px;
 			margin-bottom: -5px;
@@ -512,9 +508,7 @@ h1, h2, h3, h4, h5, h6 {
 				}
 			}
 
-			/* TODO: Remove reference to ellipsisButton after parser cache is updated */
-			&-overflowMenuButton,
-			&-ellipsisButton {
+			&-overflowMenuButton {
 				font-weight: normal;
 				display: inline-block;
 				margin-right: -5px;
@@ -528,7 +522,7 @@ h1, h2, h3, h4, h5, h6 {
 			}
 
 			.mw-editsection {
-				// Replaced by the ellipsis button
+				// Replaced by the overflow menu
 				// stylelint-disable-next-line declaration-no-important
 				display: none !important;
 			}
