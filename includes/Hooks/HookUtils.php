@@ -19,7 +19,7 @@ use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
 use MediaWiki\Extension\Gadgets\GadgetRepo;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Parser\Parsoid\ParsoidOutputAccess;
+use MediaWiki\Page\ParserOutputAccess;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
@@ -153,7 +153,7 @@ class HookUtils {
 			$parserOptions,
 			$revRecord,
 			// Don't flood the parser cache
-			$updateParserCacheFor ? 0 : ParsoidOutputAccess::OPT_NO_UPDATE_CACHE
+			$updateParserCacheFor ? 0 : ParserOutputAccess::OPT_NO_UPDATE_CACHE
 		);
 
 		if ( !$status->isOK() ) {
