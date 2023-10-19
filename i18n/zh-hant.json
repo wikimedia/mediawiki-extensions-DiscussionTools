@@ -13,7 +13,8 @@
 			"Xiplus",
 			"捍粵者",
 			"沈澄心",
-			"Cookai1205"
+			"Cookai1205",
+			"H78c67c"
 		]
 	},
 	"discussiontools": "討論工具（Discussion tools）",
@@ -156,7 +157,7 @@
 	"discussiontools-topicsubscription-pager-actions": "操作",
 	"discussiontools-topicsubscription-pager-created": "首個訂閱",
 	"discussiontools-topicsubscription-pager-notified": "最新通知",
-	"discussiontools-topicsubscription-pager-notified-never": "從不",
+	"discussiontools-topicsubscription-pager-notified-never": "從未",
 	"discussiontools-topicsubscription-pager-page": "頁面",
 	"discussiontools-topicsubscription-pager-topic": "話題",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "取消訂閱",
