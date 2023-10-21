@@ -222,9 +222,9 @@ class SubscriptionStore {
 		$truncSection = strlen( $section ) > 254 ? mb_strcut( $section, 0, 254 ) . "\x1f" : $section;
 
 		$dbw = $this->dbProvider->getPrimaryDatabase();
-		$dbw->upsert(
-			'discussiontools_subscription',
-			[
+		$dbw->newInsertQueryBuilder()
+			->table( 'discussiontools_subscription' )
+			->row( [
 				'sub_user' => $user->getId(),
 				'sub_namespace' => $target->getNamespace(),
 				'sub_title' => $target->getDBkey(),
@@ -232,13 +232,13 @@ class SubscriptionStore {
 				'sub_item' => $itemName,
 				'sub_state' => $state,
 				'sub_created' => $dbw->timestamp(),
-			],
-			[ [ 'sub_user', 'sub_item' ] ],
-			[
+			] )
+			->onDuplicateKeyUpdate()
+			->uniqueIndexFields( [ 'sub_user', 'sub_item' ] )
+			->set( [
 				'sub_state' => $state,
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )->execute();
 		return (bool)$dbw->affectedRows();
 	}
 
