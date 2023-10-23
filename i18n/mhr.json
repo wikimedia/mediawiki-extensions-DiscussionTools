@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Lifeway",
-			"Венина Наталья Константиновна"
+			"Венина Наталья Константиновна",
+			"Валентина Семёнова"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Вашмут",
+	"discussiontools-desc": "Каҥашыме страницым саемдышашлан инструмент-влак",
 	"discussiontools-preference-label": "Каҥашымаш ӱзгар",
 	"discussiontools-replywidget-cancel": "Чараш",
 	"discussiontools-replywidget-mode-source": "Важ",

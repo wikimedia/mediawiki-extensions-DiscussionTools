@@ -4,8 +4,10 @@
 			"Astahar"
 		]
 	},
+	"discussiontools": "Сӳтсе явмалли хатӗр-хӗтӗр",
 	"discussiontools-defaultsummary-reply": "Хурав",
 	"discussiontools-replywidget-cancel": "Пӑрахӑҫла",
+	"discussiontools-replywidget-mention-tool-title": "Хутшӑнакана асӑн",
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Курӑмлӑ",
 	"discussiontools-replywidget-preview": "Малтанлӑха пӑхни"
