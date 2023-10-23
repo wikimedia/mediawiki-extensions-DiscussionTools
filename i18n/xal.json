@@ -1,9 +1,32 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ukhant Erdemt"
+			"Ukhant Erdemt",
+			"Алия"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Хәрүлх",
 	"discussiontools-permalink-comment-copied": "Седкгдл бичх холвас сольлцана буфрерт хуулгдв",
-	"discussiontools-replywidget-keyboard-shortcut-submit": "Та $1 дархла, седкгдлән илгәҗ болҗанат"
+	"discussiontools-replylink": "{{GENDER:|хәрүлх}}",
+	"discussiontools-replywidget-advanced": "Немлт",
+	"discussiontools-replywidget-cancel": "Цуцлх",
+	"discussiontools-replywidget-keyboard-shortcut-submit": "Та $1 дархла, седкгдлән илгәҗ болҗанат",
+	"discussiontools-replywidget-mode-source": "Экн-үүсвр",
+	"discussiontools-replywidget-mode-visual": "Нүдәрн үзх",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Хәрүлх}} to {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Урдчлн үзх",
+	"discussiontools-replywidget-reply": "{{GENDER:|Хәрүлх}}",
+	"discussiontools-replywidget-summary": "Товч аһулһ",
+	"discussiontools-replywidget-watchthis": "Эн халхиг Тана [[Special:Watchlist|watchlist]] кинжәх халхсин җигсәлтд немх",
+	"discussiontools-topicheader-authorcount": "Күүндәнд {{PLURAL:$1|күн|күмс}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|медгдл|медгдлмүд}}",
+	"discussiontools-topicheader-latestcomment": "Сүүлин медгдл: $1",
+	"discussiontools-topicsubscription-button-subscribe": "бүртклд орх",
+	"discussiontools-topicsubscription-button-subscribe-label": "Бүртклд орх",
+	"discussiontools-topicsubscription-button-unsubscribe": "бүрткләс һарх",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Бүрткләс һарх",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Та}} эн седвдк шин бичгүдин туск медгдлмүдиг күлән авхт.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Та}} Бүртклд орвт!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Та}} дәкҗ эн седвдк шин бичгүдин туск медгдлмүдиг күлән авшгот.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Та}} бүрткләс һарвт."
 }
