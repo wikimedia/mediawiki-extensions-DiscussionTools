@@ -5,7 +5,13 @@
 			"Света Поторочина"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "Ярам, мон валай.",
+	"discussiontools-autotopicsubpopup-preferences": "Ладъянъёсты воштоно",
 	"discussiontools-defaultsummary-reply": "Валэктон",
+	"discussiontools-desc": "Вераськон бамъёсты умоятон тӥрлык",
+	"discussiontools-emptystate-button": "Вераськонэз кутсконо",
+	"discussiontools-emptystate-title": "\"{{SUBJECTPAGENAME}}\" темая вераськонэз кутсконо.",
+	"discussiontools-emptystate-title-user": "{{GENDER:{{PAGENAME}}|бамлы}} {{PAGENAME}} бамен вераськонэз кутсконо",
 	"discussiontools-replylink": "берен вазёно",
 	"discussiontools-replywidget-advanced": "Ватсаса",
 	"discussiontools-replywidget-cancel": "Берланьтон",

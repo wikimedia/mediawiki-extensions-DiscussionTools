@@ -4,7 +4,14 @@
 			"Валгриш"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "Пара, шарьхкотьф.",
+	"discussiontools-autotopicsubpopup-preferences": "Полафтомс ладяматнень",
 	"discussiontools-defaultsummary-reply": "Пандома вал кизефксть коряс",
+	"discussiontools-desc": "Кядъёнксне сяда цебярьста ладяманди арьсезь корхтамнь лопатнень.",
+	"discussiontools-emptystate-button": "Ушедомс арьсезь корхнемать",
+	"discussiontools-emptystate-title": "Ушедомс арьсезь корхнемань лопать «{{SUBJECTPAGENAME}}»",
+	"discussiontools-emptystate-title-user": "Ушетк аоьсезь корхнемацень {{GENDER:{{PAGENAME}}|мархта}}",
+	"discussiontools-findcomment-label-search": "Вешендема",
 	"discussiontools-replywidget-advanced": "Полаткс максфти",
 	"discussiontools-replywidget-cancel": "Сявомс меки",
 	"discussiontools-replywidget-mode-source": "Кодсь",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Умар"
+			"Умар",
+			"Саид Мисарбиев"
 		]
 	},
 	"discussiontools": "Дийцарийн гӀирсаш",
@@ -49,6 +50,8 @@
 	"discussiontools-newtopic-missing-title": "Дехар до хьан дийцарийн темин тӀетоха корта. Ахьа \"{{int:discussiontools-replywidget-newtopic}}\" тӀетаӀа йахь, хьан тема тӀетухура йу корта боцуш.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-notification-removed-topic-view": "АгӀоне хьажар",
+	"discussiontools-notification-removed-topic-disable": "Ма бахкийта иштта хаамаш",
+	"discussiontools-notification-removed-topic-disabled-body": "Ахьа хӀара хийца мега [[Special:Preferences#mw-prefsection-echo-echosubscriptions|хьан нисдаран гӀирс]] чохь.",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|жоп делла}} \"<strong>$4</strong>\" чохь.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|1=Цхьаъ керла жоп|$1 керла жоп|100=99+ керла жом}} «<strong>$3</strong>» чохь.",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",

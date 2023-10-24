@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ukhant Erdemt",
+			"Алия"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Хәрүлх",
+	"discussiontools-replywidget-advanced": "Немлт",
+	"discussiontools-replywidget-cancel": "Цуцлх",
+	"discussiontools-replywidget-mode-source": "Экн-үүсвр",
+	"discussiontools-replywidget-mode-visual": "Нүдәрн үзх",
+	"discussiontools-replywidget-preview": "Урдчлн үзх",
+	"discussiontools-replywidget-summary": "Товч аһулһ",
+	"discussiontools-replywidget-watchthis": "Эн халхиг Тана [[Special:Watchlist|watchlist]] кинжәх халхсин җигсәлтд немх",
+	"discussiontools-topicheader-authorcount": "Күүндәнд {{PLURAL:$1|күн|күмс}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|медгдл|медгдлмүд}}",
+	"discussiontools-topicheader-latestcomment": "Сүүлин медгдл: $1",
+	"discussiontools-topicsubscription-button-subscribe": "бүртклд орх",
+	"discussiontools-topicsubscription-button-subscribe-label": "Бүртклд орх",
+	"discussiontools-topicsubscription-button-unsubscribe": "бүрткләс һарх",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Бүрткләс һарх"
+}
