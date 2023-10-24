@@ -765,7 +765,8 @@ ReplyWidget.prototype.onKeyDown = function ( e ) {
 		if ( e.ctrlKey || e.metaKey ) {
 			this.onReplyClick();
 			return false;
-		} else if ( e.target.tagName === 'INPUT' ) {
+		} else if ( e.target.tagName === 'INPUT' && !this.$bodyWrapper[ 0 ].contains( e.target ) ) {
+			// The body wrapper can contain VE UI widgets that you may need to press enter within
 			this.showEnterWarning();
 			return false;
 		}
