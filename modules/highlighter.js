@@ -2,39 +2,40 @@ var
 	lastHighlightedPublishedComment = null,
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	CommentItem = require( './CommentItem.js' ),
+	HeadingItem = require( './HeadingItem.js' ),
 	utils = require( './utils.js' );
 
 /**
- * Draw a semi-transparent rectangle on the page to highlight the given comment.
+ * Draw a semi-transparent rectangle on the page to highlight the given thread item.
  *
  * @class
- * @param {CommentItem|CommentItem[]} comments Comment item(s) to highlight
+ * @param {ThreadItem|ThreadItem[]} items Thread item(s) to highlight
  */
-function Highlight( comments ) {
+function Highlight( items ) {
 	var highlightNodes = [];
 	var ranges = [];
 
 	this.topmostElement = null;
 
-	comments = Array.isArray( comments ) ? comments : [ comments ];
+	items = Array.isArray( items ) ? items : [ items ];
 
-	this.rootNode = comments[ 0 ] ? comments[ 0 ].rootNode : null;
+	this.rootNode = items[ 0 ] ? items[ 0 ].rootNode : null;
 
-	comments.forEach( function ( comment ) {
+	items.forEach( function ( item ) {
 		var $highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
 
-		// We insert the highlight in the DOM near the comment, so that it remains positioned correctly
+		// We insert the highlight in the DOM near the thead item, so that it remains positioned correctly
 		// when it shifts (e.g. collapsing the table of contents), and disappears when it is hidden (e.g.
 		// opening visual editor).
-		var range = comment.getNativeRange();
+		var range = item.getNativeRange();
 		// Support: Firefox
 		// The highlight node must be inserted after the start marker node (data-mw-comment-start), not
 		// before, otherwise Node#getBoundingClientRect() returns wrong results.
 		range.insertNode( $highlight[ 0 ] );
 
 		// If the item is a top-level comment wrapped in a frame, highlight outside that frame
-		if ( comment.level === 1 ) {
-			var coveredSiblings = utils.getFullyCoveredSiblings( comment, comment.rootNode );
+		if ( item.level === 1 ) {
+			var coveredSiblings = utils.getFullyCoveredSiblings( item, item.rootNode );
 			if ( coveredSiblings ) {
 				range.setStartBefore( coveredSiblings[ 0 ] );
 				range.setEndAfter( coveredSiblings[ coveredSiblings.length - 1 ] );
@@ -42,7 +43,7 @@ function Highlight( comments ) {
 		}
 
 		// If the item is a heading, highlight the full extent of it (not only the text)
-		if ( comment.type === 'heading' && !comment.placeholderHeading ) {
+		if ( item instanceof HeadingItem && !item.placeholderHeading ) {
 			range.selectNode(
 				$highlight.closest( '.mw-heading' )[ 0 ] ||
 				$highlight.closest( 'h1, h2, h3, h4, h5, h6' )[ 0 ]
@@ -149,7 +150,7 @@ Highlight.prototype.update = function () {
 };
 
 /**
- * Scroll the topmost comment into view
+ * Scroll the topmost highlight into view
  */
 Highlight.prototype.scrollIntoView = function () {
 	if ( this.topmostElement ) {
@@ -168,10 +169,10 @@ Highlight.prototype.destroy = function () {
 var highlightedTarget = null;
 var missingTargetNotifPromise = null;
 /**
- * Highlight the comment(s) on the page associated with the URL hash or query string
+ * Highlight the thread item(s) on the page associated with the URL hash or query string
  *
  * @param {ThreadItemSet} threadItemSet
- * @param {boolean} [noScroll] Don't scroll to the topmost highlighted comment, e.g. on popstate
+ * @param {boolean} [noScroll] Don't scroll to the topmost highlight, e.g. on popstate
  */
 function highlightTargetComment( threadItemSet, noScroll ) {
 	if ( highlightedTarget ) {
@@ -188,16 +189,16 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 	var targetElement = mw.util.getTargetFromFragment();
 
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
-		var comment = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
-		if ( comment ) {
-			highlightedTarget = new Highlight( comment );
+		var threadItem = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
+		if ( threadItem ) {
+			highlightedTarget = new Highlight( threadItem );
 			highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
 			highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
 		}
 		return;
 	}
 
-	if ( location.hash.match( /^#c-/ ) && !targetElement ) {
+	if ( location.hash.match( /^#(c|h)-/ ) && !targetElement ) {
 		missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
 			return mw.notification.notify(
 				mw.message( 'discussiontools-target-comment-missing' ).text(),
