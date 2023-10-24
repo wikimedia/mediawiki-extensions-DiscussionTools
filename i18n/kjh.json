@@ -16,11 +16,15 @@
 	"discussiontools-replywidget-reply": "{{GENDER\n:|нандырарға}}",
 	"discussiontools-replywidget-summary": "Пасханы",
 	"discussiontools-replywidget-watchthis": "Сірернің [[Special:Watchlist|харааны списогіңерге]] хозарға",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|кiзi}} ӱзӱрігде",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|искiрiг}}",
 	"discussiontools-topicheader-latestcomment": "Халғанҷы искіріг: $1",
 	"discussiontools-topicsubscription-button-subscribe": "пазыныбызарға",
 	"discussiontools-topicsubscription-button-subscribe-label": "Пазыныбызарға",
 	"discussiontools-topicsubscription-button-unsubscribe": "отписка идерге",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Отписка идерге",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Сiрер}} пу темада наа искiрiглердеңер пічіктер аларзар.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Сiрер}} пазын салдар!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Сiрер}} пу темада наа искiрiглердеңер пічіктер паза албассар.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Сiрер}} пазынғанын чох идібіскезер."
 }
