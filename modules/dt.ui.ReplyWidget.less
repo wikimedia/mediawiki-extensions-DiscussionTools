@@ -1,5 +1,4 @@
 @import 'mediawiki.skin.variables.less';
-@width-breakpoint-tablet: 720px;
 
 .ext-discussiontools-ui-replyWidget {
 	margin-bottom: 1em;
@@ -374,7 +373,7 @@
 				left: 1em;
 
 				// Hide warning icon below tablet width
-				@media all and ( max-width: @width-breakpoint-tablet ) {
+				@media all and ( max-width: @max-width-breakpoint-mobile ) {
 					& {
 						display: none;
 					}
@@ -388,7 +387,7 @@
 			margin-left: 3em;
 
 			// Hide warning icon below tablet width
-			@media all and ( max-width: @width-breakpoint-tablet ) {
+			@media all and ( max-width: @max-width-breakpoint-mobile ) {
 				& {
 					margin-left: 0;
 				}
@@ -429,7 +428,7 @@
 		}
 
 		// Change field layout and order on mobile
-		@media all and ( max-width: @width-breakpoint-tablet ) {
+		@media all and ( max-width: @max-width-breakpoint-mobile ) {
 			.oo-ui-fieldLayout-header {
 				order: 1;
 			}
