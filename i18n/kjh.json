@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"AlexandrL714"
+			"AlexandrL714",
+			"Oxianboal"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Нандырығ",
@@ -15,6 +16,8 @@
 	"discussiontools-replywidget-reply": "нандырарға",
 	"discussiontools-replywidget-summary": "Пасханы",
 	"discussiontools-replywidget-watchthis": "Сірернің [[Special:Watchlist|харааны списогіңерге]] хозарға",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|кiзi}} ӱзӱрігде",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|искiрiг}}",
 	"discussiontools-topicheader-latestcomment": "Халғанҷы искіріг: $1",
 	"discussiontools-topicsubscription-button-subscribe": "пазыныбызарға",
 	"discussiontools-topicsubscription-button-subscribe-label": "Пазыныбызарға",
