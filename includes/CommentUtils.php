@@ -20,7 +20,7 @@ class CommentUtils {
 	private function __construct() {
 	}
 
-	private static $blockElementTypes = [
+	private static array $blockElementTypes = [
 		'div', 'p',
 		// Tables
 		'table', 'tbody', 'thead', 'tfoot', 'caption', 'th', 'tr', 'td',

@@ -40,13 +40,16 @@ class CommentParser {
 	private LanguageConverterFactory $languageConverterFactory;
 	private TitleParser $titleParser;
 
-	private $dateFormat;
-	private $digits;
+	/** @var string[] */
+	private array $dateFormat;
+	/** @var string[][] */
+	private array $digits;
 	/** @var string[][] */
 	private $contLangMessages;
-	private $localTimezone;
-	private $timezones;
-	private $specialContributionsName;
+	private string $localTimezone;
+	/** @var string[][] */
+	private array $timezones;
+	private string $specialContributionsName;
 
 	private Element $rootNode;
 	private TitleValue $title;

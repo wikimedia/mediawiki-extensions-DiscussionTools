@@ -21,11 +21,13 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 		jsonSerialize as protected traitJsonSerialize;
 	}
 
-	private $signatureRanges;
-	private $timestampRanges;
-	private $timestamp;
-	private $author;
-	private $displayName;
+	/** @var ImmutableRange[] */
+	private array $signatureRanges;
+	/** @var ImmutableRange[] */
+	private array $timestampRanges;
+	private DateTimeImmutable $timestamp;
+	private string $author;
+	private ?string $displayName;
 
 	/**
 	 * @param int $level

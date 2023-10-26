@@ -9,12 +9,12 @@ use MediaWiki\User\UserIdentity;
  * Representation of a subscription to a given topic.
  */
 class SubscriptionItem {
-	private $itemName;
-	private $linkTarget;
-	private $user;
-	private $state;
-	private $createdTimestamp;
-	private $notifiedTimestamp;
+	private UserIdentity $user;
+	private string $itemName;
+	private LinkTarget $linkTarget;
+	private int $state;
+	private ?string $createdTimestamp;
+	private ?string $notifiedTimestamp;
 
 	/**
 	 * @param UserIdentity $user
@@ -28,7 +28,7 @@ class SubscriptionItem {
 	public function __construct(
 		UserIdentity $user,
 		string $itemName,
-		linkTarget $linkTarget,
+		LinkTarget $linkTarget,
 		int $state,
 		?string $createdTimestamp,
 		?string $notifiedTimestamp

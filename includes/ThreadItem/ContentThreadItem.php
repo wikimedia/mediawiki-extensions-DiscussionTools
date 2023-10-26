@@ -19,21 +19,24 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	use ThreadItemTrait;
 
-	protected $type;
-	protected $range;
-	protected $rootNode;
-	protected $level;
-	protected $parent;
-	protected $warnings = [];
+	protected string $type;
+	protected ImmutableRange $range;
+	protected Element $rootNode;
+	protected int $level;
+	protected ?ContentThreadItem $parent = null;
+	/** @var string[] */
+	protected array $warnings = [];
 
-	protected $name = null;
-	protected $id = null;
-	protected $replies = [];
+	protected string $name;
+	protected string $id;
+	/** @var ContentThreadItem[] */
+	protected array $replies = [];
 
-	protected $authors = null;
-	protected $commentCount;
-	protected $oldestReply;
-	protected $latestReply;
+	/** @var ?array[] */
+	protected ?array $authors = null;
+	protected int $commentCount;
+	protected ?ContentCommentItem $oldestReply;
+	protected ?ContentCommentItem $latestReply;
 
 	/**
 	 * @param string $type `heading` or `comment`
@@ -487,16 +490,16 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	}
 
 	/**
-	 * @param string|null $name Thread item name
+	 * @param string $name Thread item name
 	 */
-	public function setName( ?string $name ): void {
+	public function setName( string $name ): void {
 		$this->name = $name;
 	}
 
 	/**
-	 * @param string|null $id Thread ID
+	 * @param string $id Thread ID
 	 */
-	public function setId( ?string $id ): void {
+	public function setId( string $id ): void {
 		$this->id = $id;
 	}
 
