@@ -430,6 +430,7 @@
 		"LoadExtensionSchemaUpdates": "installer",
 		"GetDoubleUnderscoreIDs": "parser",
 		"ParserAfterTidy": "parser",
+		"ParserOutputPostCacheTransform": "parser",
 		"BeforeDisplayNoArticleText": "page",
 		"BeforePageDisplay": "page",
 		"GetActionName": "page",
