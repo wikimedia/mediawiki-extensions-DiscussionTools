@@ -199,9 +199,13 @@ function highlightTargetComment( threadItemSet, noScroll ) {
 	}
 
 	if ( location.hash.match( /^#(c|h)-/ ) && !targetElement ) {
+		var isHeading = location.hash.slice( 1, 2 ) === 'h';
 		missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
 			return mw.notification.notify(
-				mw.message( 'discussiontools-target-comment-missing' ).text(),
+				mw.message( isHeading ?
+					'discussiontools-target-heading-missing' :
+					'discussiontools-target-comment-missing'
+				).text(),
 				{ type: 'warn', autoHide: false }
 			);
 		} );
