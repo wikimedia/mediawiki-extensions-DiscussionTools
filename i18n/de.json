@@ -151,6 +151,7 @@
 	"discussiontools-replywidget-watchthis": "Füge diese Seite zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzu",
 	"discussiontools-target-comment-missing": "Dieser Kommentar konnte nicht gefunden werden. Möglicherweise wurde er gelöscht oder verschoben.",
 	"discussiontools-target-comments-missing": "Es konnten keine neuen Kommentare gefunden werden. Möglicherweise wurden sie gelöscht oder verschoben.",
+	"discussiontools-target-heading-missing": "Dieses Thema konnte nicht gefunden werden. Möglicherweise wurde es gelöscht oder verschoben.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|Person ist|Personen sind}} an der Diskussion beteiligt",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|Kommentar|Kommentare}}",
 	"discussiontools-topicheader-latestcomment": "Letzter Kommentar: $1",

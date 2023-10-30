@@ -135,6 +135,7 @@
 	"discussiontools-signature-prefix": "&#32;—&#32;",
 	"discussiontools-target-comment-missing": "Овај коментар није пронађен. Можда је премештен или обрисан.",
 	"discussiontools-target-comments-missing": "Нови коментари нису пронађени. Можда су премештени или обрисани.",
+	"discussiontools-target-heading-missing": "Ова тема није пронађена. Можда је премештена или обрисана.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|уредник|уредника}} у расправи",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|коментар|коментара}}",
 	"discussiontools-topicheader-latestcomment": "Последњи коментар: $1",

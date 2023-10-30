@@ -140,6 +140,7 @@
 	"discussiontools-replywidget-watchthis": "Adder iste pagina a tu [[Special:Watchlist|observatorio]]",
 	"discussiontools-target-comment-missing": "Iste commento non poteva esser trovate. Es possibile que illo ha essite delite o displaciate.",
 	"discussiontools-target-comments-missing": "Le nove commentos non poteva esser trovate. Es possibile que illos ha essite delite o displaciate.",
+	"discussiontools-target-heading-missing": "Iste topico non poteva esser trovate. Es possibile que illo ha essite delite o displaciate.",
 	"discussiontools-topicheader-authorcount": "$1 persona{{PLURAL:$1||s}} in discussion",
 	"discussiontools-topicheader-commentcount": "$1 commento{{PLURAL:$1||s}}",
 	"discussiontools-topicheader-latestcomment": "Ultime commento: $1",
