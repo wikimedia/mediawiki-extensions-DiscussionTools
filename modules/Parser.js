@@ -623,7 +623,12 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 	if ( link.classList.contains( 'mw-selflink' ) ) {
 		title = this.title;
 	} else {
-		title = mw.Title.newFromText( utils.getTitleFromUrl( link.href ) || '' );
+		var titleString = utils.getTitleFromUrl( link.href ) || '';
+		// Performance optimization, skip strings that obviously don't contain a namespace
+		if ( !titleString || titleString.indexOf( ':' ) === -1 ) {
+			return null;
+		}
+		title = mw.Title.newFromText( titleString );
 	}
 	if ( !title ) {
 		return null;
