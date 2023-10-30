@@ -11,6 +11,7 @@
 	"discussiontoolsdebug-pagetitle": "Барактын аталышы",
 	"discussiontools-emptystate-button": "Талкууну баштоо",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Талкуу барактарында]], тийиштүү барактын мазмуну кеп кылынат. «[[:{{SUBJECTPAGENAME}}]]‎» барагын башкалар менен {{GENDER:|талкууласаңыз}} болот.",
+	"discussiontools-emptystate-title-self-temp": "Баарлашуу барагыңызга {{GENDER:|кош келиңиз}}",
 	"discussiontools-findcomment-label-search": "Издөө",
 	"discussiontools-ledesection-title": "Бул талкуу барагы тууралуу",
 	"discussiontools-newtopic-missing-title": "{{GENDER:|Талкууңуздун}} темасын белгилеңиз. Болбосо, «‎{{int:discussiontools-replywidget-newtopic}}» баскычын чакылдатканыңызда, жазганыңыз темасыз кошулат.",
@@ -18,6 +19,7 @@
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Жазылуу",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Жазылуудан баш тартуу",
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Жазылдыңыз !",
+	"discussiontools-postedit-confirmation-topicadded": "Темаңыз кошулду.",
 	"discussiontools-replybutton": "{{GENDER:|Жооп берүү}}",
 	"discussiontools-replylink": "жооп берүү",
 	"discussiontools-replywidget-advanced": "Кеңейтүү",
@@ -52,5 +54,6 @@
 	"discussiontools-topicsubscription-pager-notified-never": "эч качан",
 	"discussiontools-topicsubscription-pager-page": "Барак",
 	"discussiontools-topicsubscription-pager-topic": "Тема",
-	"discussiontools-topicsubscription-pager-unsubscribe-button": "Жазылуудан баш тартуу"
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "Жазылуудан баш тартуу",
+	"echo-category-title-dt-subscription-archiving": "Талкуу барагын {{PLURAL:$1|архивдөө}}"
 }

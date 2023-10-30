@@ -143,6 +143,7 @@
 	"discussiontools-replywidget-watchthis": "Додајте ја страницава во [[Special:Watchlist|набљудуваните]]",
 	"discussiontools-target-comment-missing": "Не можев да го најдам коментарот. Може да е избришан или преместен.",
 	"discussiontools-target-comments-missing": "Не можев да најдам нови коментари. Може да се избришани или преместени.",
+	"discussiontools-target-heading-missing": "Не можев да ја најдам оваа тема. Може да е избришана или преместена.",
 	"discussiontools-topicheader-authorcount": "Во разговорот {{PLURAL:$1|е присутно $1 лице|се присутни $1 лица}}",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|коментар|коментари}}",
 	"discussiontools-topicheader-latestcomment": "Последен коментар: $1",

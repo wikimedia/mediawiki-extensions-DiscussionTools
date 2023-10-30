@@ -148,6 +148,7 @@
 	"discussiontools-replywidget-watchthis": "הוספת הדף הזה ל[[Special:Watchlist|רשימת המעקב]] שלך",
 	"discussiontools-target-comment-missing": "לא היה אפשר למצוא את ההערה. ייתכן שהיא נמחקה או הועברה.",
 	"discussiontools-target-comments-missing": "לא היה אפשר למצוא הערות חדשות. ייתכן שהן נמחקה או הועברה.",
+	"discussiontools-target-heading-missing": "לא היה אפשר למצוא את הנושא הזה. ייתכן שהוא נמחק או הועבר.",
 	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|אדם אחד|$1 אנשים}} בשיחה",
 	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|תגובה אחת|$1 תגובות}}",
 	"discussiontools-topicheader-latestcomment": "תגובה אחרונה: $1",
