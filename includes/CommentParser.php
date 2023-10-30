@@ -562,6 +562,10 @@ class CommentParser {
 			$title = $this->title;
 		} else {
 			$titleString = CommentUtils::getTitleFromUrl( $link->getAttribute( 'href' ) ?? '', $this->config ) ?? '';
+			// Performance optimization, skip strings that obviously don't contain a namespace
+			if ( $titleString === '' || !str_contains( $titleString, ':' ) ) {
+				return null;
+			}
 			try {
 				$title = $this->titleParser->parseTitle( $titleString );
 			} catch ( MalformedTitleException $err ) {
