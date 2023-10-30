@@ -113,30 +113,45 @@ function cantHaveElementChildren( node ) {
  * @return {boolean}
  */
 function isCommentSeparator( node ) {
-	return node.nodeType === Node.ELEMENT_NODE && (
-		// Empty paragraphs (`<p><br></p>`) between indented comments mess up indentation detection
-		node.tagName.toLowerCase() === 'br' ||
-		// Horizontal line
-		node.tagName.toLowerCase() === 'hr' ||
-		// TemplateStyles followed by any of the others
-		(
-			[ 'style', 'link' ].indexOf( node.tagName.toLowerCase() ) !== -1 &&
-			node.nextSibling && isCommentSeparator( node.nextSibling )
-		) ||
+	if ( node.nodeType !== Node.ELEMENT_NODE ) {
+		return false;
+	}
+
+	var tagName = node.tagName.toLowerCase();
+	if ( tagName === 'br' || tagName === 'hr' ) {
+		return true;
+	}
+
+	// TemplateStyles followed by any of the others
+	if ( node.nextSibling &&
+		( tagName === 'link' || tagName === 'style' ) &&
+		isCommentSeparator( node.nextSibling )
+	) {
+		return true;
+	}
+
+	var classList = node.classList;
+	if (
 		// Anything marked as not containing comments
-		node.classList.contains( 'mw-notalk' ) ||
+		classList.contains( 'mw-notalk' ) ||
 		// {{outdent}} templates
-		node.classList.contains( 'outdent-template' ) ||
+		classList.contains( 'outdent-template' ) ||
 		// {{tracked}} templates (T313097)
-		node.classList.contains( 'mw-trackedTemplate' ) ||
-		// Wikitext definition list term markup (`;`) when used as a fake heading (T265964)
-		(
-			node.nodeName.toLowerCase() === 'dl' &&
-			node.childNodes.length === 1 &&
-			node.firstChild.nodeType === Node.ELEMENT_NODE &&
-			node.firstChild.nodeName.toLowerCase() === 'dt'
-		)
-	);
+		classList.contains( 'mw-trackedTemplate' )
+	) {
+		return true;
+	}
+
+	// Wikitext definition list term markup (`;`) when used as a fake heading (T265964)
+	if ( tagName === 'dl' &&
+		node.childNodes.length === 1 &&
+		node.firstChild.nodeType === Node.ELEMENT_NODE &&
+		node.firstChild.nodeName.toLowerCase() === 'dt'
+	) {
+		return true;
+	}
+
+	return false;
 }
 
 /**
@@ -384,7 +399,7 @@ function getTitleFromUrl( url ) {
 
 	var articlePathRegexp = new RegExp(
 		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
-			.replace( mw.util.escapeRegExp( '$1' ), '(.*)' )
+			.replace( '\\$1', '(.*)' )
 	);
 	var match;
 	if ( ( match = parsedUrl.pathname.match( articlePathRegexp ) ) ) {
