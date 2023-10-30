@@ -1,15 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"AlexandrL714"
+			"AlexandrL714",
+			"Oxianboal"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Нандырығ",
 	"discussiontools-replylink": "нандырарға",
-	"discussiontools-replywidget-cancel": "Чох иткені",
+	"discussiontools-replywidget-cancel": "Тохтадарға",
 	"discussiontools-replywidget-mode-source": "Код",
-	"discussiontools-replywidget-mode-visual": "Визуально",
+	"discussiontools-replywidget-mode-visual": "Визуальнай",
 	"discussiontools-replywidget-placeholder-reply": "Нандырарға {{BIDI:$1}}",
-	"discussiontools-replywidget-preview": "Предпросмотр",
+	"discussiontools-replywidget-preview": "Пастағы кӧрім",
 	"discussiontools-replywidget-reply": "нандырарға"
 }

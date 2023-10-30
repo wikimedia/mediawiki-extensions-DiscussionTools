@@ -20,7 +20,14 @@
 			"Умар",
 			"Kaganer",
 			"Tanzun",
-			"Jack who built the house"
+			"Jack who built the house",
+			"Colt browning",
+			"Facenapalm",
+			"OlegVeliky",
+			"Smigles",
+			"Vcohen",
+			"Vlad5250",
+			"WindEwriX"
 		]
 	},
 	"discussiontools": "Инструменты для обсуждений",
@@ -50,7 +57,7 @@
 	"tag-discussiontools-edit-description": "Пользователь отредактировал существующее сообщение с помощью DiscussionTools",
 	"tag-discussiontools-newtopic": "Добавить тему",
 	"tag-discussiontools-newtopic-description": "Пользователь добавил новую тему на страницу с помощью DiscussionTools",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Ответ]",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} ответ]",
 	"tag-discussiontools-reply-description": "Пользователь ответил на сообщение с помощью DiscussionTools",
 	"tag-discussiontools-source": "Код",
 	"tag-discussiontools-source-description": "DiscussionTools был в режиме правки кода",

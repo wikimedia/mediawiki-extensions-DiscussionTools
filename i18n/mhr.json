@@ -10,7 +10,17 @@
 	"discussiontools-desc": "Каҥашыме страницым саемдышашлан инструмент-влак",
 	"discussiontools-preference-label": "Каҥашымаш ӱзгар",
 	"discussiontools-replywidget-cancel": "Чараш",
+	"discussiontools-replywidget-loading": "Вераҥдымаш…",
+	"discussiontools-replywidget-mention-tool-title": "Пайдаланышым ушештараш",
 	"discussiontools-replywidget-mode-source": "Важ",
 	"discussiontools-replywidget-mode-visual": "Кузе коеш",
-	"discussiontools-replywidget-preview": "Ончылгоч ончымаш"
+	"discussiontools-replywidget-preview": "Ончылгоч ончымаш",
+	"discussiontools-replywidget-transcluded": "Тендан комментарийда [[$1]] велыжыш  аралалт кодеш.",
+	"tag-discussiontools-description": "DiscussionTools дене тӧрлымӧ",
+	"tag-discussiontools-edit-description": "Пайдаланыше улшо рашемдымашым DiscussionTools дене тӧрлен",
+	"tag-discussiontools-newtopic-description": "Пайдаланыше у темым DiscussionTools дене ешарен",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Вашмут]",
+	"tag-discussiontools-reply-description": "Пайдаланыше рашемдымашлан DiscussionTools дене вашештен",
+	"tag-discussiontools-source-description": "DiscussionTools тӱҥалтыш режимыште лийын",
+	"tag-discussiontools-visual-description": "DiscussionTools койшо режимыште лийын"
 }

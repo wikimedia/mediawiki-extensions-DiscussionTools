@@ -2,15 +2,30 @@
 	"@metadata": {
 		"authors": [
 			"Ерней",
-			"Ильгиз"
+			"Ильгиз",
+			"Mansur",
+			"Run Li",
+			"З. ӘЙЛЕ"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Җавап бирү",
+	"discussiontools-desc": "Фикерләшү битләрен яхшырту өчен кораллар.",
+	"discussiontools-preference-label": "Фикер алышу кораллары",
 	"discussiontools-replylink": "җавап бирү",
 	"discussiontools-replywidget-cancel": "Кире алу",
+	"discussiontools-replywidget-loading": "Йөкләнә...",
+	"discussiontools-replywidget-mention-tool-title": "Катнашучыны искә алырга",
 	"discussiontools-replywidget-mode-source": "Чыганак",
 	"discussiontools-replywidget-mode-visual": "Күрсәтмәле",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} га җавап бирү",
 	"discussiontools-replywidget-preview": "Алдан карау",
-	"discussiontools-replywidget-reply": "Җавап бирү"
+	"discussiontools-replywidget-reply": "Җавап бирү",
+	"discussiontools-replywidget-transcluded": "Хәбәрегез [[$1]] битендә сакланачак.",
+	"tag-discussiontools-description": "Төзәтмә DiscussionTools ярдәмендә эшләнде",
+	"tag-discussiontools-edit-description": "Кулланучы DiscussionTools ярдәмендә булган хәбәрне төзәтте",
+	"tag-discussiontools-newtopic-description": "Кулланучы биткә DiscussionTools ярдәмендә яңа тема өстәде",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Җавап]",
+	"tag-discussiontools-reply-description": "Кулланучы DiscussionTools ярдәмендә хәбәргә җавап бирде",
+	"tag-discussiontools-source-description": "DiscussionTools кодны төзәтү режимында иде",
+	"tag-discussiontools-visual-description": "DiscussionTools визуаль режимда иде"
 }

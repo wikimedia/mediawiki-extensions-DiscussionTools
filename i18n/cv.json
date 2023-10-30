@@ -6,9 +6,18 @@
 	},
 	"discussiontools": "Сӳтсе явмалли хатӗр-хӗтӗр",
 	"discussiontools-defaultsummary-reply": "Хурав",
+	"discussiontools-desc": "Сӳтсе яву страницисене лайӑхлатмалли хатӗрсем.",
+	"discussiontools-preference-label": "Сӳтсе явмалли хатӗр-хӗтӗр",
 	"discussiontools-replywidget-cancel": "Пӑрахӑҫла",
+	"discussiontools-replywidget-loading": "Тиенет…",
 	"discussiontools-replywidget-mention-tool-title": "Хутшӑнакана асӑн",
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Курӑмлӑ",
-	"discussiontools-replywidget-preview": "Малтанлӑха пӑхни"
+	"discussiontools-replywidget-preview": "Малтанлӑха пӑхни",
+	"discussiontools-replywidget-transcluded": "Сирӗн сообщени [[$1]] ҫинче ҫырӑнса упранӗ.",
+	"tag-discussiontools-edit-description": "DiscussionTools-па усӑ курса хутшӑнакан кунта вырнаҫнӑ сообщениен улӑштарнӑ",
+	"tag-discussiontools-newtopic-description": "Хутшӑнакан DiscussionTools-па усӑ курса страницӑна ҫӗнӗ тема хушнӑ",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Хурав]",
+	"tag-discussiontools-reply-description": "Хутшӑнакан DiscussionTools-па усӑ курса сообщени ҫине хуравланӑ",
+	"tag-discussiontools-source-description": "DiscussionTools код тӳрлетнин режимӗнче пулнӑ"
 }

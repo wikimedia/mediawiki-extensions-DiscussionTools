@@ -5,8 +5,20 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Пандома вал кизефксть коряс",
+	"discussiontools-desc": "Кядъёнксне сяда цебярьста ладяманди арьсезь корхтамнь лопатнень.",
+	"discussiontools-preference-label": "Арьсезь корхнемань кядъёнкст",
 	"discussiontools-replywidget-cancel": "Сявомс меки",
+	"discussiontools-replywidget-loading": "Пяшкодема...",
+	"discussiontools-replywidget-mention-tool-title": "Лятфтамс сувайть",
 	"discussiontools-replywidget-mode-source": "Кодсь",
 	"discussiontools-replywidget-mode-visual": "Ланга ванозь",
-	"discussiontools-replywidget-preview": "Инголькиге ваномась"
+	"discussiontools-replywidget-preview": "Инголькиге ваномась",
+	"discussiontools-replywidget-transcluded": "Тонь сёрматфце кармай ванфтф [[$1]]-са.",
+	"tag-discussiontools-description": "Петькссь ульсь тиф DiscussionTools вельде",
+	"tag-discussiontools-edit-description": "Сувайсь петезе уликс сёрманять DiscussionTools вельде",
+	"tag-discussiontools-newtopic-description": "Сувайсь поладсь од тема  лопать лангс DiscussionTools вельде",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Меквал]",
+	"tag-discussiontools-reply-description": "Сувайсь макссь меквал сёрманять лангс DiscussionTools вельде",
+	"tag-discussiontools-source-description": "DiscussionTools ульсь ладяф кяшф валть петеманц коряс режимса",
+	"tag-discussiontools-visual-description": "DiscussionTools ульсь няевиста ащи режимса"
 }

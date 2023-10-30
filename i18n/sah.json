@@ -6,8 +6,10 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "хоруй",
+	"discussiontools-preference-label": "Ырытыы сэбэ-сэбиргэлэ",
 	"discussiontools-replywidget-cancel": "Салҕаама",
 	"discussiontools-replywidget-loading": "Киллэрии…",
+	"discussiontools-replywidget-mention-tool-title": "Кыттааччыны аҕын",
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Көстүү",
 	"discussiontools-replywidget-preview": "Хайдах буолара"

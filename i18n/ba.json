@@ -3,13 +3,26 @@
 		"authors": [
 			"Roustammr",
 			"Sagan",
-			"З. ӘЙЛЕ"
+			"З. ӘЙЛЕ",
+			"Mansur",
+			"Айсар"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Яуап бирергә",
 	"discussiontools-desc": "Фекер алышыу биттәрен яҡшыртыу ҡоралдары.",
+	"discussiontools-preference-label": "Фекер алышыу ҡоралдары",
 	"discussiontools-replywidget-cancel": "Кире алырға",
+	"discussiontools-replywidget-loading": "Йөкләнә...",
+	"discussiontools-replywidget-mention-tool-title": "Ҡатнашыусыны телгә алырға",
 	"discussiontools-replywidget-mode-source": "Сығанаҡ",
 	"discussiontools-replywidget-mode-visual": "Визуаль",
-	"discussiontools-replywidget-preview": "Ҡарап сығырға"
+	"discussiontools-replywidget-preview": "Ҡарап сығырға",
+	"discussiontools-replywidget-transcluded": "Фекерегеҙ [[$1]] битендә һаҡланасаҡ.",
+	"tag-discussiontools-description": "Төҙәтеү DiscussionTools ярҙамында эшләнде",
+	"tag-discussiontools-edit-description": "Ҡатнашыусы фекерҙе DiscussionTools ярҙамында мөхәррирләне",
+	"tag-discussiontools-newtopic-description": "Ҡатнашыусы биткә яңы  теманы DiscussionTools ярҙамында өҫтәне",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Яуап]",
+	"tag-discussiontools-reply-description": "Ҡатнашыусы фекергә DiscussionTools ярҙамында яуап бирҙе",
+	"tag-discussiontools-source-description": "DiscussionTools вики-тексты үҙгәртергә режимында ине",
+	"tag-discussiontools-visual-description": "DiscussionTools визуаль режимда ине"
 }

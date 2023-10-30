@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ukhant Erdemt",
+			"Алия"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Хәрүлх",
+	"discussiontools-desc": "Күүндәнә халхсиг сәәҗрүлх керглүрмүд.",
+	"discussiontools-replywidget-cancel": "Цуцлх",
+	"discussiontools-replywidget-mode-source": "Экн-үүсвр",
+	"discussiontools-replywidget-mode-visual": "Нүдәрн үзх",
+	"discussiontools-replywidget-preview": "Урдчлн үзх"
+}

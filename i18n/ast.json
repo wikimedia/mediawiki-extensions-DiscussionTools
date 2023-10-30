@@ -3,14 +3,15 @@
 		"authors": [
 			"Xuacu",
 			"Tokvo",
-			"Fitoschido"
+			"Fitoschido",
+			"YoaR"
 		]
 	},
 	"discussiontools": "Ferramientes d'alderique",
 	"discussiontools-defaultsummary-reply": "Contestar",
 	"discussiontools-desc": "Ferramientes pa enantar les páxines d'alderique.",
 	"discussiontools-replylink": "contestar",
-	"discussiontools-replywidget-cancel": "Encaboxar",
+	"discussiontools-replywidget-cancel": "Zarrar",
 	"discussiontools-replywidget-loading": "Cargando...",
 	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-reply": "Contestar"

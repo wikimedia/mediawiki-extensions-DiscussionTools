@@ -13,12 +13,12 @@
 	"discussiontools-replywidget-mode-source": "Sumber",
 	"discussiontools-replywidget-mode-visual": "Delengan",
 	"discussiontools-replywidget-preview": "Pradeleng",
-	"discussiontools-replywidget-transcluded": "Lu punya tanggepan bakal disimpen di [[$1]].",
+	"discussiontools-replywidget-transcluded": "Lu punya sautan bakal disimpen di [[$1]].",
 	"tag-discussiontools-description": "Permakan dikeja paké DiscussionTools",
-	"tag-discussiontools-edit-description": "Pemaké mermak tanggepan nyang udah ada paké DiscussionTools",
+	"tag-discussiontools-edit-description": "Pemaké mermak sautan nyang udah ada paké DiscussionTools",
 	"tag-discussiontools-newtopic-description": "Pemaké nambahin topik baru ke halaman paké DiscussionTools",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Bales]",
-	"tag-discussiontools-reply-description": "Pemaké ngebales tanggepan paké DiscussionTools",
+	"tag-discussiontools-reply-description": "Pemaké ngebales sautan paké DiscussionTools",
 	"tag-discussiontools-source-description": "DiscussionTools – dalem mode sumber",
 	"tag-discussiontools-visual-description": "DiscussionTools – dalem mode delengan"
 }
