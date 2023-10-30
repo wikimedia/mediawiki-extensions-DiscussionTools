@@ -140,7 +140,7 @@ class CommentParserTest extends IntegrationTestCase {
 	 * @dataProvider provideTimestampParser
 	 */
 	public function testGetTimestampParser(
-		string $format, array $data, string $expected, string $message
+		string $format, ?array $digits, array $data, string $expected, string $message
 	): void {
 		/** @var CommentParser $parser */
 		$parser = TestingAccessWrapper::newFromObject(
@@ -149,7 +149,7 @@ class CommentParserTest extends IntegrationTestCase {
 
 		$expected = new DateTimeImmutable( $expected );
 
-		$tsParser = $parser->getTimestampParser( 'en', $format, null, 'UTC', [ 'UTC' => 'UTC' ] );
+		$tsParser = $parser->getTimestampParser( 'en', $format, $digits, 'UTC', [ 'UTC' => 'UTC' ] );
 		static::assertEquals( $expected, $tsParser( $data )['date'], $message );
 	}
 
