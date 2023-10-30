@@ -9,7 +9,7 @@
 	"requires": {
 		"MediaWiki": ">= 1.41",
 		"extensions": {
-			"VisualEditor": ">= 0.1.2",
+			"VisualEditor": "*",
 			"Linter": "*"
 		}
 	},
