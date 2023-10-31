@@ -317,7 +317,7 @@ class CommentParser {
 	 *
 	 * @param string $contLangVariant Content language variant
 	 * @param string $format Date format, as used by MediaWiki
-	 * @param string[]|null $digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
+	 * @param array<int,string>|null $digits Localised digits from 0 to 9, e.g. `[ '0', '1', ..., '9' ]`
 	 * @param string $localTimezone Local timezone IANA name, e.g. `America/New_York`
 	 * @param array $tzAbbrs Map of localised timezone abbreviations to IANA abbreviations
 	 *   for the local timezone, e.g. [ 'EDT' => 'EDT', 'EST' => 'EST' ]
@@ -326,17 +326,8 @@ class CommentParser {
 	private function getTimestampParser(
 		string $contLangVariant, string $format, ?array $digits, string $localTimezone, array $tzAbbrs
 	): callable {
-		$untransformDigits = static function ( string $text ) use ( $digits ) {
-			if ( !$digits ) {
-				return $text;
-			}
-			return preg_replace_callback(
-				'/[' . implode( '', $digits ) . ']/u',
-				static function ( array $m ) use ( $digits ) {
-					return (string)array_search( $m[0], $digits, true );
-				},
-				$text
-			);
+		$untransformDigits = static function ( string $text ) use ( $digits ): int {
+			return (int)( $digits ? strtr( $text, array_flip( $digits ) ) : $text );
 		};
 
 		$formatLength = strlen( $format );
@@ -418,7 +409,7 @@ class CommentParser {
 						break;
 					case 'd':
 					case 'j':
-						$day = intval( $untransformDigits( $text ) );
+						$day = $untransformDigits( $text );
 						break;
 					case 'D':
 					case 'l':
@@ -440,21 +431,21 @@ class CommentParser {
 						break;
 					case 'm':
 					case 'n':
-						$monthIdx = intval( $untransformDigits( $text ) ) - 1;
+						$monthIdx = $untransformDigits( $text ) - 1;
 						break;
 					case 'Y':
-						$year = intval( $untransformDigits( $text ) );
+						$year = $untransformDigits( $text );
 						break;
 					case 'xkY':
 						// Thai year
-						$year = intval( $untransformDigits( $text ) ) - 543;
+						$year = $untransformDigits( $text ) - 543;
 						break;
 					case 'G':
 					case 'H':
-						$hour = intval( $untransformDigits( $text ) );
+						$hour = $untransformDigits( $text );
 						break;
 					case 'i':
-						$minute = intval( $untransformDigits( $text ) );
+						$minute = $untransformDigits( $text );
 						break;
 					case 's':
 						// Seconds - unused, because most timestamp formats omit them

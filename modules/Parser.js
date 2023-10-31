@@ -291,16 +291,15 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 		}
 	}
 
+	/**
+	 * @param {string} text
+	 * @return {number}
+	 */
 	function untransformDigits( text ) {
-		if ( !digits ) {
-			return text;
-		}
-		return text.replace(
+		return Number( digits ? text.replace(
 			new RegExp( '[' + digits.join( '' ) + ']', 'g' ),
-			function ( m ) {
-				return digits.indexOf( m );
-			}
-		);
+			( m ) => digits.indexOf( m )
+		) : text );
 	}
 
 	var parser = this;
@@ -339,7 +338,7 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 					break;
 				case 'd':
 				case 'j':
-					day = Number( untransformDigits( text ) );
+					day = untransformDigits( text );
 					break;
 				case 'D':
 				case 'l':
@@ -360,21 +359,21 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 					break;
 				case 'm':
 				case 'n':
-					monthIdx = Number( untransformDigits( text ) ) - 1;
+					monthIdx = untransformDigits( text ) - 1;
 					break;
 				case 'Y':
-					year = Number( untransformDigits( text ) );
+					year = untransformDigits( text );
 					break;
 				case 'xkY':
 					// Thai year
-					year = Number( untransformDigits( text ) ) - 543;
+					year = untransformDigits( text ) - 543;
 					break;
 				case 'G':
 				case 'H':
-					hour = Number( untransformDigits( text ) );
+					hour = untransformDigits( text );
 					break;
 				case 'i':
-					minute = Number( untransformDigits( text ) );
+					minute = untransformDigits( text );
 					break;
 				case 's':
 					// Seconds - unused, because most timestamp formats omit them
