@@ -143,6 +143,7 @@
 	"discussiontools-topicsubscription-special-intro": "بەشداریکردنەکان ڕێگەت پێ دەدەن تا شوێنی بەشی سەر سەر پەڕەی وتووێژەکان بکەویت. کاتێک کەسێک وەڵامی بەشێک دەداتەوە، ئاگادارییەکت بۆ دێت.\n\nلە [[Special:Preferences#mw-prefsection-echo|ھەڵبژاردەکانت]] \nچۆنیەتی و شوێنی ئاگادارییە ھاتووەکانت ڕێک بخە.",
 	"discussiontools-topicsubscription-special-title": "بەشداریکردنی بابەتەکان",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|بەشداریی|بەشدارییەکانی}} پەڕەی وتووێژ",
+	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|ئەرشیڤکردنی}} پەڕەی وتووێژ",
 	"echo-pref-tooltip-dt-subscription": "کاتێک کەسێک لێدوانێکی نوێ لە بابەتێک کە من بەشداریم تێیدا کردووە دەدات، ئاگادارم بکەوە.",
 	"tag-discussiontools-added-comment-description": "لەم دەستکارییە لێدوانێکی پەڕەی وتووێژ زیاد کرا",
 	"tag-discussiontools-description": "دەستکاری لەڕێگەی بەکارھێنانی ئامرازەکانی وتووێژەوە کرا",

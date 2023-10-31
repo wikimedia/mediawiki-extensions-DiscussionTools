@@ -68,6 +68,7 @@
 	"discussiontools-notification-removed-topic-disabled-body": "Вы можаце змяніць гэта ў [[Special:Preferences#mw-prefsection-echo-echosubscriptions|вашых наладах]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|адказаў|адказала}} на \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Адзін новы адказ у|$1 новыя адказы ў|$1 новых адказаў у|100=99+ новых адказаў у}} \"<strong>$3</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Праглядзець каментарый",
 	"discussiontools-pageframe-latestcomment": "Апошні каментар: $1, ад удзельніка $2 у тэме $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Апошні каментар: $1, ад удзельніка $2",

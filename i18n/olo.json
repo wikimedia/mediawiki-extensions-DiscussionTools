@@ -1,15 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ruppijeva"
+			"Ruppijeva",
+			"Ilja.mos"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Vastua",
 	"discussiontools-replywidget-advanced": "Eči tarkembah",
 	"discussiontools-replywidget-cancel": "Hylgiä",
 	"discussiontools-replywidget-mode-source": "Wikitekstu",
 	"discussiontools-replywidget-mode-visual": "Vizualine",
 	"discussiontools-replywidget-preview": "Ezikaččelu",
 	"discussiontools-replywidget-summary": "Yhtehvedo",
+	"discussiontools-replywidget-watchthis": "Ližiä tämä sivu omah [[Special:Watchlist|tarkailulistah]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|hengi|hengie}} piginanpiendäs",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kommentuarii|kommentuariedu}}",
 	"discussiontools-topicheader-latestcomment": "Jälgimäine kommentuarii: $1",
