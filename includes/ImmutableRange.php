@@ -47,19 +47,34 @@ class ImmutableRange {
 		$ancestorsA = [];
 		$ancestorsB = [];
 
+		$parent = $a;
 		do {
-			$ancestorsA[] = $a;
-		} while ( ( $a = $a->parentNode ) );
+			// While walking up the parents of $a we found $b is a parent of $a or even identical
+			if ( $parent === $b ) {
+				return $b;
+			}
+			$ancestorsA[] = $parent;
+		} while ( $parent = $parent->parentNode );
+
+		$parent = $b;
 		do {
-			$ancestorsB[] = $b;
-		} while ( ( $b = $b->parentNode ) );
+			// While walking up the parents of $b we found $a is a parent of $b or even identical
+			if ( $parent === $a ) {
+				return $a;
+			}
+			$ancestorsB[] = $parent;
+		} while ( $parent = $parent->parentNode );
 
 		$node = null;
-		while ( end( $ancestorsA ) && end( $ancestorsA ) === end( $ancestorsB ) ) {
-			$node = end( $ancestorsA );
-			array_pop( $ancestorsA );
-			array_pop( $ancestorsB );
+		// Start with the top-most (hopefully) identical root node, walk down, skip everything
+		// that's identical, and stop at the first mismatch
+		$indexA = count( $ancestorsA );
+		$indexB = count( $ancestorsB );
+		while ( $indexA-- && $indexB-- && $ancestorsA[$indexA] === $ancestorsB[$indexB] ) {
+			// Remember the last match closest to $a and $b
+			$node = $ancestorsA[$indexA];
 		}
+
 		if ( !$node ) {
 			throw new DOMException( 'Nodes are not in the same document' );
 		}
