@@ -23,8 +23,8 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "юхаязле",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Юхаязле",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Керда хоам бенаб аьнна {{GENDER:|хьога}} хайтаргда укх тема чу.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Хьо}} дӀатӀаязвеннав!",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Хьо {{GENDER:|хьатӀаязвеннав|хьатӀаязъеннай}}!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Хьога}} кхы хайтаргдац керда хоам бенаб аьнна укх тема чу.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Хьо}} юхаязвеннав!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Хьо {{GENDER:|дӀатӀераязвеннав|дӀатӀераязъеннай}}!",
 	"discussiontools-topicsubscription-pager-notified": "ТӀеххьара дӀахайтар"
 }
