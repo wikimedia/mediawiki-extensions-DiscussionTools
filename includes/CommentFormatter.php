@@ -79,6 +79,10 @@ class CommentFormatter {
 
 		// How long this method took, in seconds
 		$pout->setLimitReportData(
+			// The following messages can be generated upstream
+			// * discussiontools-limitreport-timeusage-value
+			// * discussiontools-limitreport-timeusage-value-text
+			// * discussiontools-limitreport-timeusage-value-html
 			'discussiontools-limitreport-timeusage',
 			sprintf( '%.3f', $duration )
 		);
@@ -345,6 +349,8 @@ class CommentFormatter {
 		) {
 			$pout->setExtensionData( 'DiscussionTools-hasCommentsInLedeContent', true );
 			MediaWikiServices::getInstance()->getTrackingCategories()
+				// The following messages are generated upstream:
+				// * discussiontools-comments-before-first-heading-category-desc
 				->addTrackingCategory( $pout, 'discussiontools-comments-before-first-heading-category', $title );
 		}
 
