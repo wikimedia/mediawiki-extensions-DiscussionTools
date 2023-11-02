@@ -19,7 +19,7 @@
 	"discussiontools-newtopic-placeholder-title": "Седв",
 	"discussiontools-replywidget-advanced": "Немлт",
 	"discussiontools-replywidget-cancel": "Цуцлх",
-	"discussiontools-replywidget-mode-source": "Экн-үүсвр",
+	"discussiontools-replywidget-mode-source": "Экн кодар",
 	"discussiontools-replywidget-mode-visual": "Нүдәрн үзх",
 	"discussiontools-replywidget-preview": "Урдчлн үзх",
 	"discussiontools-replywidget-summary": "Товч аһулһ",
@@ -27,8 +27,8 @@
 	"discussiontools-topicheader-authorcount": "Күүндәнд {{PLURAL:$1|күн|күмс}}",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|медгдл|медгдлмүд}}",
 	"discussiontools-topicheader-latestcomment": "Сүүлин медгдл: $1",
-	"discussiontools-topicsubscription-button-subscribe": "бүртклд орх",
-	"discussiontools-topicsubscription-button-subscribe-label": "Бүртклд орх",
-	"discussiontools-topicsubscription-button-unsubscribe": "бүрткләс һарх",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Бүрткләс һарх"
+	"discussiontools-topicsubscription-button-subscribe": "закх",
+	"discussiontools-topicsubscription-button-subscribe-label": "Закх",
+	"discussiontools-topicsubscription-button-unsubscribe": "заклһ цуцлх",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Заклһ цуцлх"
 }
