@@ -134,9 +134,9 @@ class RemovedTopicPresentationModel extends EchoEventPresentationModel {
 		];
 
 		// Known preferences used below:
-		// echo-subscriptions-email-dt-subscription-archiving
-		// echo-subscriptions-push-dt-subscription-archiving
-		// echo-subscriptions-web-dt-subscription-archiving
+		// * echo-subscriptions-email-dt-subscription-archiving
+		// * echo-subscriptions-push-dt-subscription-archiving
+		// * echo-subscriptions-web-dt-subscription-archiving
 
 		$category = $this->getCategory();
 		$isDisabled = true;

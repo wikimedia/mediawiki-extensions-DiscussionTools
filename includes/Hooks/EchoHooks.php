@@ -39,6 +39,8 @@ class EchoHooks implements
 		array &$notificationCategories,
 		array &$icons
 	) {
+		// The following messages are generated upstream
+		// * echo-category-title-dt-subscription
 		$notificationCategories['dt-subscription'] = [
 			'priority' => 3,
 			'tooltip' => 'echo-pref-tooltip-dt-subscription',
@@ -67,6 +69,8 @@ class EchoHooks implements
 			],
 		];
 
+		// The following messages are generated upstream
+		// * echo-category-title-dt-subscription-archiving
 		$notificationCategories['dt-subscription-archiving'] = [
 			'priority' => 3,
 			'tooltip' => 'echo-pref-tooltip-dt-subscription-archiving',

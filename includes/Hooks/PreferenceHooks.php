@@ -80,7 +80,21 @@ class PreferenceHooks implements
 			if ( HookUtils::isFeatureAvailableToUser( $user, $feature ) ) {
 				$preferences["discussiontools-$feature"] = [
 					'type' => 'toggle',
+					// The following messages are used here:
+					// * discussiontools-preference-autotopicsub
+					// * discussiontools-preference-newtopictool
+					// * discussiontools-preference-replytool
+					// * discussiontools-preference-sourcemodetoolbar
+					// * discussiontools-preference-topicsubscription
+					// * discussiontools-preference-visualenhancements
 					'label-message' => "discussiontools-preference-$feature",
+					// The following messages are used here:
+					// * discussiontools-preference-autotopicsub-help
+					// * discussiontools-preference-newtopictool-help
+					// * discussiontools-preference-replytool-help
+					// * discussiontools-preference-sourcemodetoolbar-help
+					// * discussiontools-preference-topicsubscription-help
+					// * discussiontools-preference-visualenhancements-help
 					'help-message' => "discussiontools-preference-$feature-help",
 					'section' => 'editing/discussion',
 				];
