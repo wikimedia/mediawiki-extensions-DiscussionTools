@@ -365,7 +365,8 @@ h1, h2, h3, h4, h5, h6 {
 .mw-mf .ext-discussiontools-init-section {
 	// Need to fix some styles on mobile even when the feature is not enabled
 	display: flex;
-	align-items: center;
+	// stylelint-disable-next-line declaration-no-important
+	align-items: flex-start !important;
 
 	> h2 {
 		flex-grow: 1;
@@ -478,12 +479,15 @@ h1, h2, h3, h4, h5, h6 {
 			font-size: 0.875em;
 		}
 
-		// stylelint-disable-next-line selector-class-pattern
-		> .indicator,
 		&-overflowMenuButton {
 			// Adjust for smaller headings
-			margin-top: -5px;
-			margin-bottom: -5px;
+			margin-top: -4px;
+			margin-bottom: -6px;
+		}
+
+		// stylelint-disable-next-line selector-class-pattern
+		> .indicator {
+			margin-top: 4px;
 		}
 
 		&:first-child {
