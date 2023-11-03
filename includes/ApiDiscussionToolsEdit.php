@@ -19,6 +19,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\TempUser\TempUserCreator;
 use MediaWiki\User\UserFactory;
 use SkinFactory;
+use Wikimedia\Assert\Assert;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\StringDef;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -267,30 +268,20 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				$headers = $response['headers'];
 				$doc = DOMUtils::parseHTML( $response['body'] );
 
-				// Don't trust RESTBase to always give us the revision we requested,
-				// instead get the revision ID from the document and use that.
+				// Validate that we got the revision we requested.
 				// Ported from ve.init.mw.ArticleTarget.prototype.parseMetadata
 				$docRevId = null;
 				$aboutDoc = $doc->documentElement->getAttribute( 'about' );
-
 				if ( $aboutDoc ) {
 					preg_match( '/revision\\/([0-9]+)$/', $aboutDoc, $docRevIdMatches );
 					if ( $docRevIdMatches ) {
 						$docRevId = (int)$docRevIdMatches[ 1 ];
 					}
 				}
-
-				if ( !$docRevId ) {
-					$this->dieWithError( 'apierror-visualeditor-docserver', 'docserver' );
-				}
-
-				if ( $docRevId !== $requestedRevision->getId() ) {
-					// TODO: If this never triggers, consider removing the check.
-					$this->getLogger()->warning(
-						"Requested revision {$requestedRevision->getId()} " .
-						"but received {$docRevId}."
-					);
-				}
+				Assert::postcondition( $docRevId !== null,
+					'Parsoid document had no revision information' );
+				Assert::postcondition( $docRevId === $requestedRevision->getId(),
+					'Parsoid revision did not match requested revision' );
 
 				$container = DOMCompat::getBody( $doc );
 
