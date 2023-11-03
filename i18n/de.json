@@ -125,7 +125,7 @@
 	"discussiontools-replywidget-abandontopic-keep": "Weiter schreiben",
 	"discussiontools-replywidget-advanced": "Erweitert",
 	"discussiontools-replywidget-anon-warning": "<strong>Du bist nicht angemeldet.</strong> Um benachrichtigt zu werden,  wenn jemand antwortet, und eine Zuordnung mit deinem Namen anstelle deiner IP-Adresse zu erhalten, kannst du dich [$1 anmelden] oder [$2 ein Benutzerkonto erstellen].",
-	"discussiontools-replywidget-autocreate-warning": "<strong>Du bist nicht angemeldet.</strong> Um benachrichtigt zu werden, wenn jemand antwortet, und einen Namen deiner Wahl anstelle eines [[$3|autogenerierten Namens]] zu erhalten, kannst du dich [$1 anmelden] oder [$2 ein Benutzerkonto erstellen].",
+	"discussiontools-replywidget-autocreate-warning": "<strong>Sie sind nicht angemeldet.</strong> Sobald du eine Änderung vornimmst, wird ein temporäres Konto für dich erstellt. [[$3|Weitere Informationen]]. [$1 Melde dich an] oder [$2 erstelle ein Konto], um benachrichtigt zu werden, wenn jemand nach Ablauf dieses Kontos antwortet, und um auf andere Funktionen zugreifen zu können.",
 	"discussiontools-replywidget-cancel": "Abbrechen",
 	"discussiontools-replywidget-feedback": "Rückmeldungen über diese Funktion hinterlassen",
 	"discussiontools-replywidget-keyboard-shortcut-submit": "Du kannst $1 drücken, um deinen Kommentar abzuschicken",

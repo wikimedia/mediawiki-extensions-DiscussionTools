@@ -153,6 +153,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Denne kommentaren ble ikke funnet. Den kan ha blitt slettet eller flyttet.",
 	"discussiontools-target-comments-missing": "Nye kommentarer ble ikke funnet. De kan ha blitt slettet eller flyttet.",
+	"discussiontools-target-heading-missing": "Dette emnet ble ikke funnet. Det kan ha blitt slettet eller flyttet.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|personer}} deltar i diskusjonen",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kommentar|kommentarer}}",
 	"discussiontools-topicheader-latestcomment": "Siste innlegg: $1",
