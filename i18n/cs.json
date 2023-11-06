@@ -31,7 +31,7 @@
 	"discussiontools-emptystate-title": "Zahajte diskusi ke stránce {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Vítejte na své diskusní stránce!",
 	"discussiontools-emptystate-title-self-anon": "Vítejte na této diskusní stránce",
-	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Vítejte}} na své diskusní stránce",
+	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Vítejte}} na své dočasné diskusní stránce",
 	"discussiontools-emptystate-title-user": "Zahajte diskusi s {{GENDER:{{PAGENAME}}|uživatelem|uživatelkou}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Vítejte na této diskusní stránce",
 	"discussiontools-error-comment-conflict": "Váš komentář nebylo možné uložit, protože někdo jiný uložil komentář ve stejnou dobu jako vy. Prosím, zkuste to znovu nebo stránku obnovte, aby se vám zobrazily nejnovější komentáře.",

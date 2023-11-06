@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ankan",
+			"Borhan",
 			"Ed g2s",
 			"Kupulak",
 			"Matma Rex",
@@ -31,7 +32,7 @@
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} নিয়ে একটি আলোচনা শুরু করুন",
 	"discussiontools-emptystate-title-self": "আপনার আলাপ পাতায় স্বাগতম",
 	"discussiontools-emptystate-title-self-anon": "এই আলাপ পাতায় স্বাগতম",
-	"discussiontools-emptystate-title-self-temp": "আপনার আলাপ পাতায় {{GENDER:|স্বাগতম}}",
+	"discussiontools-emptystate-title-self-temp": "আপনার অস্থায়ী আলাপ পাতায় {{GENDER:|স্বাগতম}}",
 	"discussiontools-emptystate-title-user": "{{PAGENAME}}-এর {{GENDER:{{PAGENAME}}|সাথে}} একটি আলোচনা শুরু করুন",
 	"discussiontools-emptystate-title-user-anon": "এই আলাপ পাতায় স্বাগতম",
 	"discussiontools-emptystate-title-user-temp": "{{PAGENAME}}-এর {{GENDER:{{PAGENAME}}|সাথে}} একটি আলোচনা শুরু করুন",

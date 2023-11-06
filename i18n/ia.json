@@ -114,7 +114,7 @@
 	"discussiontools-replywidget-abandontopic-keep": "Continuar a scriber",
 	"discussiontools-replywidget-advanced": "Avantiate",
 	"discussiontools-replywidget-anon-warning": "<strong>Tu non ha aperite session.</strong> Pro reciper notification quando alcuno responde e a fin que tu modificationes sia attribuite a tu nomine in vice de tu adresse IP, tu pote [$1 aperir session] o [$2 crear un conto].",
-	"discussiontools-replywidget-autocreate-warning": "<strong>Tu non ha aperite session.</strong> Pro reciper notification quando alcuno responde e a fin que tu modificationes sia attribuite a tu nomine in loco de [[$3|un nomine generate automaticamente]], tu pote [$1 aperir session] o [$2 crear un conto].",
+	"discussiontools-replywidget-autocreate-warning": "<strong>Tu non ha aperite session.</strong> Al momento que tu apporta un modification, un conto temporari essera create pro te. [[$3|Saper plus]]. [$1 Aperi session] o [$2 crea un conto] pro esser notificate quando alcuno responde post que iste conto expira, e pro acceder a altere functiones.",
 	"discussiontools-replywidget-cancel": "Cancellar",
 	"discussiontools-replywidget-feedback": "Lassar un commento sur iste function",
 	"discussiontools-replywidget-keyboard-shortcut-submit": "Tu pote premer $1 pro submitter tu commento",

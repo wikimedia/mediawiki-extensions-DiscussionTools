@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"H78c67c",
 			"Ktchankt",
 			"Winston Sung"
 		]
@@ -25,6 +26,7 @@
 	"discussiontools-newtopic-missing-title": "請為你嘅討論話題畀個標題。如果你撳「{{int:discussiontools-replywidget-newtopic}}」，將會加你無標題嘅話題。",
 	"discussiontools-newtopic-placeholder-title": "標題",
 	"discussiontools-notification-subscribed-new-comment-view": "睇留言",
+	"discussiontools-pageframe-latestcomment": "最新留言：$1由$2喺主題$3度留言",
 	"discussiontools-postedit-confirmation-published": "你嘅留言發佈咗。",
 	"discussiontools-postedit-confirmation-topicadded": "加咗你個主題",
 	"discussiontools-preference-autotopicsub": "自動留名",
