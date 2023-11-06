@@ -6,11 +6,15 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "хоруй",
+	"discussiontools-desc": "Ырытыы сирэйдэри тупсарар сэптэр-сэбиргэллэр",
 	"discussiontools-preference-label": "Ырытыы сэбэ-сэбиргэлэ",
 	"discussiontools-replywidget-cancel": "Салҕаама",
 	"discussiontools-replywidget-loading": "Киллэрии…",
 	"discussiontools-replywidget-mention-tool-title": "Кыттааччыны аҕын",
 	"discussiontools-replywidget-mode-source": "Код",
 	"discussiontools-replywidget-mode-visual": "Көстүү",
-	"discussiontools-replywidget-preview": "Хайдах буолара"
+	"discussiontools-replywidget-preview": "Хайдах буолара",
+	"discussiontools-replywidget-transcluded": "Эн хос быһаарыыҥ манна [[$1]] бигэргэниэ.",
+	"tag-discussiontools-description": "DiscussionTools көмөтүнэн уларытыы оҥоһулунна",
+	"tag-discussiontools-reply-description": "Кыттааччы хос быһаарыыга DiscussionTools көмөтүнэн хоруйбут"
 }
