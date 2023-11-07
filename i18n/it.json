@@ -33,7 +33,7 @@
 	"discussiontools-emptystate-title": "Inizia una discussione su {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "{{GENDER:|Benvenuto|Benvenuta}} nella tua pagina di discussione",
 	"discussiontools-emptystate-title-self-anon": "{{GENDER:|Benvenuto|Benvenuta}} in questa pagina di discussione",
-	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Benvenuto|Benvenuta}} nella tua pagina di discussione",
+	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Benvenuto|Benvenuta}} nella tua pagina temporanea di discussione",
 	"discussiontools-emptystate-title-user": "Inizia una discussione con {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "{{GENDER:|Benvenuto|Benvenuta}} in questa pagina di discussione",
 	"discussiontools-emptystate-title-user-temp": "Inizia una discussione {{GENDER:{{PAGENAME}}|con}} {{PAGENAME}}",
