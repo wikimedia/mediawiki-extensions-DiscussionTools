@@ -467,7 +467,12 @@ function init( $container, state ) {
 			} else {
 				comment = newTopicComment( data );
 			}
-			setupController( comment, $link );
+			if ( comment ) {
+				setupController( comment, $link );
+			} else {
+				// We couldn't find the comment, so express that there's an issue
+				mw.notify( mw.msg( 'discussiontools-error-comment-disappeared' ) );
+			}
 		} );
 	} );
 
