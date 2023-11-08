@@ -36,7 +36,7 @@
 	"discussiontools-emptystate-title": "آغاز یک گفتگو دربارهٔ {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "به صفحهٔ بحث {{GENDER:|خودتان}} خوش آمدید",
 	"discussiontools-emptystate-title-self-anon": "به این صفحهٔ بحث {{GENDER:|خوش آمدید}}",
-	"discussiontools-emptystate-title-self-temp": "به صفحهٔ بحث {{GENDER:|خودتان}} خوش آمدید",
+	"discussiontools-emptystate-title-self-temp": "به صفحهٔ بحث موقت {{GENDER:|خود}} خوش آمدید",
 	"discussiontools-emptystate-title-user": "آغاز یک گفتگو {{GENDER:{{PAGENAME}}|با}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "به این صفحهٔ بحث {{GENDER:|خوش آمدید}}",
 	"discussiontools-emptystate-title-user-temp": "آغاز یک گفتگو {{GENDER:{{PAGENAME}}|با}} {{PAGENAME}}",
