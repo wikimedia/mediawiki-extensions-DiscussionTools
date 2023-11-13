@@ -365,8 +365,7 @@ h1, h2, h3, h4, h5, h6 {
 .mw-mf .ext-discussiontools-init-section {
 	// Need to fix some styles on mobile even when the feature is not enabled
 	display: flex;
-	// stylelint-disable-next-line declaration-no-important
-	align-items: flex-start !important;
+	align-items: center;
 
 	> h2 {
 		flex-grow: 1;
@@ -451,6 +450,8 @@ h1, h2, h3, h4, h5, h6 {
 	// Mobile
 	&.mw-mf .ext-discussiontools-init-section {
 		flex-wrap: wrap;
+		// stylelint-disable-next-line declaration-no-important
+		align-items: flex-start !important;
 		// stylelint-disable-next-line declaration-no-important
 		border-bottom: 0 !important;
 		margin: 5px 0 0 0;
