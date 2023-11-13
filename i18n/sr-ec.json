@@ -23,7 +23,7 @@
 	"discussiontools-replywidget-feedback": "Повратне информације о функцији",
 	"discussiontools-replywidget-feedback-link": "https://mediawiki.org/wiki/Talk:Talk_pages_project/replying",
 	"discussiontools-replywidget-loading": "Учитавање…",
-	"discussiontools-replywidget-mention-tool-title": "Спомените корисника",
+	"discussiontools-replywidget-mention-tool-title": "Спомени корисника",
 	"discussiontools-replywidget-mode-source": "Изворно",
 	"discussiontools-replywidget-mode-visual": "Визуелно",
 	"discussiontools-replywidget-placeholder-reply": "Овде напишите одговор кориснику {{BIDI:$1}}",

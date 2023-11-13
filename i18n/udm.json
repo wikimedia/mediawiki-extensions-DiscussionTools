@@ -10,9 +10,19 @@
 	"discussiontools-preference-label": "Вераськон тӥрлык",
 	"discussiontools-replylink": "берен вазёно",
 	"discussiontools-replywidget-cancel": "Берланьтон",
+	"discussiontools-replywidget-loading": "Инъян...",
+	"discussiontools-replywidget-mention-tool-title": "Юзчиез тодэ вайыны",
 	"discussiontools-replywidget-mode-source": "Кылдонэз",
 	"discussiontools-replywidget-mode-visual": "Визуал амалэн",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} викиавторлы берен вазёно",
 	"discussiontools-replywidget-preview": "Азьпал учкон",
-	"discussiontools-replywidget-reply": "Берен вазёно"
+	"discussiontools-replywidget-reply": "Берен вазёно",
+	"discussiontools-replywidget-transcluded": "Тӥляд валэктэтты [[$1]] сакламын луоз.",
+	"tag-discussiontools-description": "Тупатъямын DiscussionTools-эз кутыса",
+	"tag-discussiontools-edit-description": " Юзчи та валэктэтэз DiscussionTools-эз кутыса тупатъям",
+	"tag-discussiontools-newtopic-description": "Юзчи выль темаез баме DiscussionTools-эз кутыса ватсам",
+	"tag-discussiontools-reply": "[{{int:discussiontools\n-replywidget-reply-link}} Вазёно]",
+	"tag-discussiontools-reply-description": "Юзчи валэктэтлы DiscussionTools-эз кутыса вазем",
+	"tag-discussiontools-source-description": "DiscussionTools кодэз тупатон режимын вал",
+	"tag-discussiontools-visual-description": "DiscussionTools визуальной режимын вылэм"
 }
