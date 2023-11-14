@@ -9,6 +9,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Параметрлерди өзгөртүү",
 	"discussiontools-defaultsummary-reply": "Жооп",
 	"discussiontools-emptystate-button": "Талкууну баштоо",
+	"discussiontools-emptystate-title": "«‎{{SUBJECTPAGENAME}}» жөнүндө талкууну баштоо",
 	"discussiontools-findcomment-label-search": "Издөө",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-postedit-confirmation-topicadded": "Темаңыз кошулду.",
