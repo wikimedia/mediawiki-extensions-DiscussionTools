@@ -391,11 +391,6 @@ h1, h2, h3, h4, h5, h6 {
 		border: 0;
 		border-top: @border-width-base @border-style-base @border-color-base;
 
-		&:first-child {
-			border-top: 0;
-			margin-top: 0;
-		}
-
 		h2 {
 			margin: 0;
 			padding: 0;
@@ -436,13 +431,30 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 
+	// [Old Parser HTML] Hide the border-top (section divider) if:
+	/* Our section heading is the first element on the page */
+	.mw-parser-output > .ext-discussiontools-init-section:first-child,
+	/* Our section heading is the first element on the page, except for invisible TOC placeholder */
+	.mw-parser-output > meta:first-child + .ext-discussiontools-init-section,
+	/* Our section heading directly follows a <h1> heading (which has border-bottom on most skins) */
 	h1 + .ext-discussiontools-init-section {
 		border-top: 0;
 		margin-top: 0;
 	}
 
-	// TOC can output a meta tag meaning we aren't the first child anymore
-	meta:first-child + .ext-discussiontools-init-section {
+	// [Parsoid HTML] Hide the border-top (section divider) if:
+	/* Our section heading is the first element on the page */
+	.mw-parser-output > section:first-child:empty + section > .ext-discussiontools-init-section,
+	/* Our section heading directly follows a <h1> heading (which has border-bottom on most skins) */
+	h1 + section > .ext-discussiontools-init-section {
+		border-top: 0;
+		margin-top: 0;
+	}
+
+	// This needs to be a separate rule, because the :has() selector is not yet supported by all browsers
+	// Support: Firefox <= 120, Chrome <= 105, Safari <= 15.3 (https://caniuse.com/css-has)
+	/* Our section heading is the first element on the page, except for invisible TOC placeholder */
+	.mw-parser-output > section:first-child:has( > meta:only-child ) + section > .ext-discussiontools-init-section {
 		border-top: 0;
 		margin-top: 0;
 	}
