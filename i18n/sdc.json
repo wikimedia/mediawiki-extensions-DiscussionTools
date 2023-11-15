@@ -21,6 +21,8 @@
 	"discussiontools-replywidget-preview": "Antiprimma",
 	"discussiontools-replywidget-reply": "{{GENDER:|Ripondi}}",
 	"discussiontools-replywidget-summary": "Dettàgliu",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|cummentu|cummenti}}",
+	"discussiontools-topicheader-latestcomment": "Cummentu più rizzenti: $1",
 	"discussiontools-topicsubscription-pager-actions": "Azioni",
 	"discussiontools-topicsubscription-pager-page": "Pàgina"
 }

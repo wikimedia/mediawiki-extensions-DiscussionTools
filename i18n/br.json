@@ -139,6 +139,7 @@
 	"discussiontools-replywidget-watchthis": "Ouzhpennañ ar bajenn-mañ d'ho [[Special:Watchlist|roll evezhiañ]]",
 	"discussiontools-target-comment-missing": "Ne oa ket kavet an evezhiadenn-mañ. Marteze eo bet diverket pe dilec’hiet.",
 	"discussiontools-target-comments-missing": "Ne oa ket kavet an evezhiadennoù nevez. Marteze int bet diverket pe dilec’hiet.",
+	"discussiontools-target-heading-missing": "N’eo ket bet kavet an evezhiadenn-mañ. Marteze eo bet diverket pe dilec’hiet.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|den}} er gaozeadenn",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|evezhiadenn}}",
 	"discussiontools-topicheader-latestcomment": "Evezhiadenn diwezhañ: $1",
