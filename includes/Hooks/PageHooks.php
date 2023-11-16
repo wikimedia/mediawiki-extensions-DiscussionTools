@@ -91,6 +91,15 @@ class PageHooks implements
 		foreach ( HookUtils::FEATURES as $feature ) {
 			// Add a CSS class for each enabled feature
 			if ( HookUtils::isFeatureEnabledForOutput( $output, $feature ) ) {
+				// The following CSS classes are generated here:
+				// * ext-discussiontools-replytool-enabled
+				// * ext-discussiontools-newtopictool-enabled
+				// * ext-discussiontools-sourcemodetoolbar-enabled
+				// * ext-discussiontools-topicsubscription-enabled
+				// * ext-discussiontools-autotopicsub-enabled
+				// * ext-discussiontools-visualenhancements-enabled
+				// * ext-discussiontools-visualenhancements_reply-enabled
+				// * ext-discussiontools-visualenhancements_pageframe-enabled
 				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
 			}
 		}
