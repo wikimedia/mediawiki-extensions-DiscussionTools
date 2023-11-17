@@ -4,10 +4,17 @@
 			"Amire80",
 			"Linus Konkor",
 			"NgmenRaphael",
-			"Yirkang"
+			"Yirkang",
+			"Zakaria Tunsung"
 		]
 	},
+	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Fo}} na nyɛ la duoro ka neɛ kaŋa wa wa di dɛmo paalaa a dɛmo a dɛmmo diibo zie ŋa. Fo na toɔŋ leɛre la fo duori danworo waaloŋ a yi a pɛrɛfɛrɛnsere zieŋ.",
+	"discussiontools-autotopicsubpopup-dismiss": "A segɛɛŋ, n nyɛ o la",
+	"discussiontools-autotopicsubpopup-preferences": "leɛre pɛrɛnfɛrɛnsere",
+	"discussiontools-autotopicsubpopup-title": "{{GENDER:|Fo}} de la sagoo nɔdegere",
 	"discussiontools-defaultsummary-reply": "Leɛ sagbo",
+	"discussiontoolsdebug-title": "Di dɛmmo kyaare a toma boma yɛlɛ waaloŋ",
+	"discussiontoolsdebug-pagetitle": "Gampɛle yɛlzu",
 	"discussiontools-replylink": "{{GENDER:|sagebu}}",
 	"discussiontools-replywidget-advanced": "Tɔnnooŋ",
 	"discussiontools-replywidget-cancel": "Iribarebo",
