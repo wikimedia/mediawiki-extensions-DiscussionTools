@@ -44,7 +44,8 @@ h1, h2, h3, h4, h5, h6 {
 
 	// Archived talk section (T295553)
 	.ext-discussiontools-replytool-enabled .mw-archivedtalk & {
-		display: none;
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
 	}
 
 	.ext-discussiontools-init-replylink {
