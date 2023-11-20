@@ -99,14 +99,9 @@ class ParserHooks implements
 		// (and leave the onParserAfterTidy handler for legacy HTML).
 		if ( PageBundleParserOutputConverter::hasPageBundle( $parserOutput ) ) {
 			$titleDbKey = $parserOutput->getExtensionData( ParsoidParser::PARSOID_TITLE_KEY );
-			// (Temporary) This extension data won't be available till the ParserCache
-			// content rolls over (after the core patch that sets this data rides the train).
-			if ( $titleDbKey ) {
-				$title = Title::newFromDBkey( $titleDbKey );
-				if ( $title ) {
-					$this->transformHtml( $parserOutput, $text, $title, $isPreview );
-				}
-			}
+			$title = Title::newFromDBkey( $titleDbKey );
+			'@phan-var Title $title';
+			$this->transformHtml( $parserOutput, $text, $title, $isPreview );
 		}
 	}
 
