@@ -3,10 +3,15 @@
 		"authors": [
 			"Yirkang",
 			"Linus Konkor",
-			"Amire80"
+			"Amire80",
+			"NgmenRaphael",
+			"Zakaria Tunsung"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "A segɛɛŋ, n nyɛ o la",
+	"discussiontools-autotopicsubpopup-preferences": "leɛre pɛrɛnfɛrɛnsere",
 	"discussiontools-defaultsummary-reply": "Leɛ sagbo",
+	"discussiontools-emptystate-button": "Piili dɛmmo diibo",
 	"discussiontools-replylink": "Sagebu",
 	"discussiontools-replywidget-advanced": "Tɔnnooŋ",
 	"discussiontools-replywidget-cancel": "Iribarebo",

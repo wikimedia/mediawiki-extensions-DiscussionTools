@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"F Samaritani"
+			"F Samaritani",
+			"Jun Misugi"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ripundì",
@@ -20,6 +21,8 @@
 	"discussiontools-replywidget-preview": "Antiprimma",
 	"discussiontools-replywidget-reply": "Ripundì",
 	"discussiontools-replywidget-summary": "Dettàgliu",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|cummentu|cummenti}}",
+	"discussiontools-topicheader-latestcomment": "Cummentu più rizzenti: $1",
 	"discussiontools-topicsubscription-pager-actions": "Azioni",
 	"discussiontools-topicsubscription-pager-page": "Pàgina",
 	"tag-discussiontools-source": "Orìgini",
