@@ -86,12 +86,6 @@ class ParserHooks implements
 	 * @inheritDoc
 	 */
 	public function onParserOutputPostCacheTransform( $parserOutput, &$text, &$options ): void {
-		if ( $parserOutput->getExtensionData( 'DiscussionTools-tocInfo' ) !== null ) {
-			// Since getText() could be called multiple times, return if we have
-			// already processed this ParserOutput object
-			return;
-		}
-
 		// NOTE: This is a temporary proxy for 'isPreview' flag in ParserOptions.
 		// It is not clear whether 'editsectionEditLinks' is disabled only for previews.
 		$isPreview = empty( $options['enableSectionEditLinks'] );
