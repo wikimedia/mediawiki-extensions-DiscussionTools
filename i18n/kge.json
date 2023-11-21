@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"EWDAja",
 			"Es Krim 5 Juta Rasa"
 		]
 	},
@@ -22,6 +23,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Langganan",
 	"discussiontools-topicsubscription-button-unsubscribe": "buhodak bulangganan",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Buhodak Bulangganan",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Niku}} bakal narima panginjukpandaian tentang komentar anyar di topik sija.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Niku}} kok radu bulangganan!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Niku}} mak lagi narima panginjukpandaian tentang komentar anyar di topik sija.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Niku}} kok buhodak bulangganan."
 }
