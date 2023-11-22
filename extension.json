@@ -414,6 +414,7 @@
 		"DiscussionToolsDebug": {
 			"class": "\\MediaWiki\\Extension\\DiscussionTools\\SpecialDiscussionToolsDebug",
 			"services": [
+				"LanguageFactory",
 				"ParserOutputAccess",
 				"DiscussionTools.CommentParser"
 			]
