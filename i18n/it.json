@@ -141,6 +141,7 @@
 	"discussiontools-replywidget-watchthis": "Aggiungi questa pagina alla tua [[Special:Watchlist|lista di osservati speciali]]",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Il commento non è stato trovato. Potrebbe essere stato cancellato o spostato.",
+	"discussiontools-target-comments-missing": "I nuovi commenti non sono stati trovati. Potrebbero essere stati cancellati o spostati.",
 	"discussiontools-target-heading-missing": "L'argomento non è stato trovato. Potrebbe essere stato cancellato o spostato.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|partecipante|partecipanti}} alla discussione",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|commento|commenti}}",
