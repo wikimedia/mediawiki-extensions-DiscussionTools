@@ -10,8 +10,6 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
-use Config;
-use ConfigFactory;
 use ExtensionRegistry;
 use Html;
 use IContextSource;
@@ -49,18 +47,15 @@ class PageHooks implements
 	SkinTemplateNavigation__UniversalHook
 {
 
-	private Config $config;
 	private SubscriptionStore $subscriptionStore;
 	private UserNameUtils $userNameUtils;
 	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
-		ConfigFactory $configFactory,
 		SubscriptionStore $subscriptionStore,
 		UserNameUtils $userNameUtils,
 		UserOptionsLookup $userOptionsLookup
 	) {
-		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->subscriptionStore = $subscriptionStore;
 		$this->userNameUtils = $userNameUtils;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -68,6 +63,7 @@ class PageHooks implements
 
 	private function isMobile(): bool {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
+			/** @var \MobileContext $mobFrontContext */
 			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
 			return $mobFrontContext->shouldDisplayMobileView();
 		}
@@ -112,16 +108,13 @@ class PageHooks implements
 
 		// Load style modules if the tools can be available for the title
 		// to selectively hide DT features, depending on the body classes added above.
-		$availableForTitle = HookUtils::isAvailableForTitle( $title );
-		if ( $availableForTitle ) {
+		if ( HookUtils::isAvailableForTitle( $title ) ) {
 			$output->addModuleStyles( 'ext.discussionTools.init.styles' );
 		}
 
 		// Load modules if any DT feature is enabled for this user
 		if ( HookUtils::isFeatureEnabledForOutput( $output ) ) {
-			$output->addModules( [
-				'ext.discussionTools.init'
-			] );
+			$output->addModules( 'ext.discussionTools.init' );
 
 			$enabledVars = [];
 			foreach ( HookUtils::FEATURES as $feature ) {
@@ -230,10 +223,8 @@ class PageHooks implements
 				HookUtils::shouldShowNewSectionTab( $output->getContext() )
 			) {
 				$output->enableOOUI();
-				$output->addModuleStyles( [
-					// For speechBubbleAdd
-					'oojs-ui.styles.icons-alerts',
-				] );
+				// For speechBubbleAdd
+				$output->addModuleStyles( 'oojs-ui.styles.icons-alerts' );
 				$output->addBodyClasses( 'ext-discussiontools-init-new-topic-opened' );
 
 				// Minerva doesn't show a new topic button.
@@ -294,11 +285,8 @@ class PageHooks implements
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
 			$output->enableOOUI();
 			if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
-				$output->addModuleStyles( [
-					// Visually enhanced topic subscriptions
-					// bell, bellOutline
-					'oojs-ui.styles.icons-alerts',
-				] );
+				// Visually enhanced topic subscriptions: bell, bellOutline
+				$output->addModuleStyles( 'oojs-ui.styles.icons-alerts' );
 			}
 			if (
 				$isMobile ||
@@ -307,11 +295,8 @@ class PageHooks implements
 					CommentFormatter::isLanguageRequiringReplyIcon( $output->getLanguage() )
 				)
 			) {
-				$output->addModuleStyles( [
-					// Reply button:
-					// share
-					'oojs-ui.styles.icons-content',
-				] );
+				// Reply button: share
+				$output->addModuleStyles( 'oojs-ui.styles.icons-content' );
 			}
 			if ( $isMobile ) {
 				$output->addModuleStyles( [
@@ -324,8 +309,6 @@ class PageHooks implements
 			}
 			$text = CommentFormatter::postprocessVisualEnhancements( $text, $output, $isMobile );
 		}
-
-		return true;
 	}
 
 	/**
@@ -452,11 +435,6 @@ class PageHooks implements
 		$coreConfig = RequestContext::getMain()->getConfig();
 		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
 
-		$dir = $context->getLanguage()->getDir();
-		$lang = $context->getLanguage()->getHtmlCode();
-
-		$titleMsg = false;
-		$descMsg = false;
 		$descParams = [];
 		$buttonMsg = 'discussiontools-emptystate-button';
 		$title = $context->getTitle();
