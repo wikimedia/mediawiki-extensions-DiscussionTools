@@ -461,7 +461,6 @@
 		"page": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PageHooks",
 			"services": [
-				"ConfigFactory",
 				"DiscussionTools.SubscriptionStore",
 				"UserNameUtils",
 				"UserOptionsLookup"
