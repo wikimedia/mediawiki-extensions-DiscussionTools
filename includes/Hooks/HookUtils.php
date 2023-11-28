@@ -386,7 +386,7 @@ class HookUtils {
 				static::hasPagePropCached( $title, 'newsectionlink' ) &&
 				// excluding the main namespace, unless it has been configured for signatures
 				(
-					$title->getNamespace() !== NS_MAIN ||
+					!$title->inNamespace( NS_MAIN ) ||
 					$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() )
 				)
 			);
@@ -595,7 +595,7 @@ class HookUtils {
 		$namespaceInfo = $services->getNamespaceInfo();
 		Assert::precondition( $namespaceInfo->isTalk( $talkPage->getNamespace() ), "Page is a talk page" );
 
-		if ( $talkPage->getNamespace() === NS_USER_TALK && !str_contains( $talkPage->getText(), '/' ) ) {
+		if ( $talkPage->inNamespace( NS_USER_TALK ) && !str_contains( $talkPage->getText(), '/' ) ) {
 			if ( $services->getUserNameUtils()->isIP( $talkPage->getText() ) ) {
 				return true;
 			}
