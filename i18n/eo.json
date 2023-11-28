@@ -5,7 +5,8 @@
 			"NMaia",
 			"Robin van der Vliet",
 			"Wierzbowski",
-			"Agloforto"
+			"Agloforto",
+			"Ziko"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Respondo",
@@ -24,6 +25,8 @@
 	"discussiontools-replywidget-preview": "Antaŭrigardi",
 	"discussiontools-replywidget-reply": "Respondi",
 	"discussiontools-replywidget-summary": "Resumo",
+	"discussiontools-replywidget-watchthis": "Aldonu ĉi tiun paĝon al via [[Special:Watchlist|atentaro]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|persono|homoj}} en diskuto",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komento|komentoj}}",
 	"discussiontools-topicheader-latestcomment": "Lasta komento: $1",
 	"discussiontools-topicsubscription-button-subscribe": "aboni",
