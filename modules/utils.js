@@ -397,6 +397,8 @@ function getTitleFromUrl( url ) {
 		return parsedUrl.searchParams.get( 'title' );
 	}
 
+	// wgArticlePath is site config so is trusted
+	// eslint-disable-next-line security/detect-non-literal-regexp
 	var articlePathRegexp = new RegExp(
 		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
 			.replace( '\\$1', '(.*)' )
@@ -542,7 +544,6 @@ function compareRanges( a, b ) {
 	) {
 		endToEnd = 0;
 	}
-	/* eslint-enable no-use-before-define */
 
 	if ( startToStart === 0 && endToEnd === 0 ) {
 		return 'equal';

@@ -744,7 +744,7 @@ ReplyWidget.prototype.onWatchToggle = function ( isWatched ) {
  * Handle key down events anywhere in the reply widget
  *
  * @param {jQuery.Event} e Key down event
- * @return {boolean} Return false to prevent default event
+ * @return {boolean|undefined} Return false to prevent default event
  */
 ReplyWidget.prototype.onKeyDown = function ( e ) {
 	if ( e.which === OO.ui.Keys.ESCAPE ) {

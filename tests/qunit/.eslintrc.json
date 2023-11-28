@@ -6,6 +6,7 @@
 	],
 	"rules": {
 		"no-implicit-globals": "off",
-		"max-len": "off"
+		"max-len": "off",
+		"security/detect-non-literal-require": "off"
 	}
 }
