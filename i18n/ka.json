@@ -43,6 +43,8 @@
 	"discussiontools-newtopic-missing-title": "გთხოვთ, განხილვის თემას მიუთითეთ სათაური. თუკი დააწკაპუნებთ „{{int:discussiontools-replywidget-newtopic}}“-ზე, თემა სათაურის გარეშე გამოქვეყნდება.",
 	"discussiontools-newtopic-placeholder-title": "თემა",
 	"discussiontools-notification-subscribed-new-comment-view": "კომენტარის ნახვა",
+	"discussiontools-pageframe-latestcomment": "ბოლო კომენტარი: $1 დატოვა მომხმარებელმა $2 თემაში $3",
+	"discussiontools-pageframe-latestcomment-notopic": "ბოლო კომენტარი: $1 დატოვა მომხმარებელმა $2",
 	"discussiontools-pagetitle-newtopic": "ახალი თემის დაწყება გვერდზე „$1“",
 	"discussiontools-postedit-confirmation-published": "თქვენი კომენტარი გამოქვეყნდა.",
 	"discussiontools-postedit-confirmation-topicadded": "თქვენი თემა დამატებულია.",
