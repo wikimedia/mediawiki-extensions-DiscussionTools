@@ -17,10 +17,16 @@
 	"discussiontools-ledesection-button": "Эн халхин талар үлүг медҗ авх",
 	"discussiontools-ledesection-title": "Эн күүндәнә хәлхин туск",
 	"discussiontools-newtopic-placeholder-title": "Седв",
+	"discussiontools-notification-removed-topic-view": "Халхиг үзх",
+	"discussiontools-notification-removed-topic-disable": "Эн метин медгдлиг авлго бәәх",
 	"discussiontools-replywidget-advanced": "Немлт",
 	"discussiontools-replywidget-cancel": "Цуцлх",
+	"discussiontools-replywidget-loading": "Ацалҗана...",
+	"discussiontools-replywidget-mention-tool-title": "Кергләчиг дурдх",
 	"discussiontools-replywidget-mode-source": "Экн кодар",
 	"discussiontools-replywidget-mode-visual": "Нүдәрн үзх",
+	"discussiontools-replywidget-placeholder-newtopic": "Тодрхаллт",
+	"discussiontools-replywidget-preferences": "Тохрлһ",
 	"discussiontools-replywidget-preview": "Урдчлн үзх",
 	"discussiontools-replywidget-summary": "Товч аһулһ",
 	"discussiontools-replywidget-watchthis": "Эн халхиг Тана [[Special:Watchlist|watchlist]] кинжәх халхсин җигсәлтд немх",
@@ -30,5 +36,9 @@
 	"discussiontools-topicsubscription-button-subscribe": "закх",
 	"discussiontools-topicsubscription-button-subscribe-label": "Закх",
 	"discussiontools-topicsubscription-button-unsubscribe": "заклһ цуцлх",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Заклһ цуцлх"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Заклһ цуцлх",
+	"discussiontools-topicsubscription-pager-actions": "Үүлдлмүд",
+	"discussiontools-topicsubscription-pager-page": "Халх",
+	"discussiontools-topicsubscription-pager-topic": "Седв",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "Заклһ цуцлх"
 }
