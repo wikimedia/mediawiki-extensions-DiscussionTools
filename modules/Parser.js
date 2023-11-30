@@ -314,7 +314,7 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 	 * Timestamp parser
 	 *
 	 * @param {Array} match RegExp match data
-	 * @return {Object} Result, an object with the following keys:
+	 * @return {Object} Result, an object with the following keys (or null if the date is invalid):
 	 *  - {moment} date Moment date object
 	 *  - {string|null} warning Warning message if the input wasn't correctly formed
 	 */
@@ -412,6 +412,13 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 			} else {
 				dateWarning = 'Ambiguous time at DST switchover was parsed';
 			}
+		}
+
+		// We require the date to be compatible with our libraries, for example zero or negative years (T352455)
+		// In PHP we need to check with MWTimestamp.
+		// In JS we need to check with Moment.
+		if ( !date.isValid() ) {
+			return null;
 		}
 
 		return {
@@ -965,6 +972,9 @@ Parser.prototype.buildThreadItems = function () {
 			var level = Math.min( startLevel, endLevel );
 
 			var parserResult = dfParsers[ match.parserIndex ]( match.matchData );
+			if ( !parserResult ) {
+				continue;
+			}
 			var dateTime = parserResult.date;
 			if ( parserResult.warning ) {
 				warnings.push( parserResult.warning );
