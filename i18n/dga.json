@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ANTHONY DERY",
 			"Amire80",
 			"Linus Konkor",
 			"NgmenRaphael",
@@ -16,8 +17,10 @@
 	"discussiontoolsdebug-title": "Di dɛmmo kyaare a toma boma yɛlɛ waaloŋ",
 	"discussiontoolsdebug-pagetitle": "Gampɛle yɛlzu",
 	"discussiontoolsdebug-intro": "A gampɛle ŋa wulo la a [https://www.mediawiki.org/wiki/Special:N kɔkɔre/Extension:Dɛmmo diibo Toma boma Dɛmmo diibo Toma boma extension] nyɛ wulo la a threads aneŋ teɛroo yɛlyaga naŋ be a gampɛle ŋa pampana '''[[:$1]]'''. Fo na baŋ nyɛ la o tɔna a debugging yɛlɛ poɔ ne a extension bee baŋ lɛ na ka o tona. A duoro ŋa na la be la a [[$2|discussiontoolspageinfo API]].",
+	"discussiontools-desc": "Boma na naŋ baŋ soŋ a kombo diibu vuo",
 	"discussiontools-emptystate-button": "Piili dɛmmo diibo",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Yeli gampɛlɛ]] are where people discuss how to make content on {{SITENAME}} the best that it can be. {{GENDER:|You}} can use this page to start a discussion with others about how to improve [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc-self": "Noba naŋ be {{SITENAME}} naŋ baŋ toŋ neŋ la a [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|kombo vuo]] a naŋ toɔle noba zaa duoroo {{GENDER:|you}}, kyɛ ka fo naŋ nyɛ la teɛre ma ka ba naŋ e o",
 	"discussiontools-replylink": "{{GENDER:|sagebu}}",
 	"discussiontools-replywidget-advanced": "Tɔnnooŋ",
 	"discussiontools-replywidget-cancel": "Iribarebo",

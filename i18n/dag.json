@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ANTHONY DERY",
 			"Alhassan Mohammed Awal",
 			"Alhassan Peter",
 			"Amire80",
@@ -22,9 +23,12 @@
 	"discussiontools-defaultsummary-reply": "Labisigu",
 	"discussiontoolsdebug-title": "Saawara tuma nɛma biɛhigu soya",
 	"discussiontoolsdebug-pagetitle": "Paaji taachi",
+	"discussiontoolsdebug-intro": " A peegyi ŋa wulee lɛ a [https://www.mediawiki.org/wiki/Special:N kɔkɔre/yɔlebo:kɔmbodi \nBoma] wuli ka ferebo aŋ a yelteɛbo naŋ be a peegyi '''[[:$1]]'''. F naŋ baŋ nyɛ o la ka o taa tɔnɔ a debaagi yele kyaare neŋ a yɔlebo bee taa pare bambo lɛnɛɛ ona tona. A duoroo na la beebe a  The same information is available in the [[$2|kɔmbodiibubomapeegyiduori API]]",
 	"discussiontools-desc": "Tuman niɛma ŋan yɛn sɔŋ yɛligi sawara paajinima",
 	"discussiontools-emptystate-button": "Piligimi sawara",
-	"discussiontools-emptystate-desc-self-anon": "N IP adrɛɛsi maa taɣirila saha shɛli kam, ka di tooi zooi ka ninvuɣ' bɔbili mali ŋa. A ni [$1 nam akɔnti] bee [$2 kpubu[ din yɛn gu ka taɣi saha ŋan kanna nangbankpeeni zaŋ chaŋ ban yi polo. Akɔnti nambu gba nyɛla ŋan sɔŋdi sɔɣiri",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|kɔmbo peegyi]] e la be noba naŋ maŋ di demmo lɛ ba naŋ maale yelzu kyaare {{SITENAME}} lɛ ona naŋ soma. {{GENDER:|fooŋ}} naŋ baŋ de la a peegyi ŋa a piili neŋ demmoneŋ fo taaba lɛnɛɛ fo naŋ na zɛge do  saa [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc-self": "Noba naŋ be  {{SITENAME}} naŋ baŋ toneŋ la [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|demmo di peegyi]] a toɔle a duori to neɛ zaa {{GENDER:|fooŋ}}, kyɛ fo naŋ nyɛ la leɛ teɛre ma ka ba naŋ e.",
+	"discussiontools-emptystate-desc-self-anon": "N IP adrɛɛsi maa taɣirila saha shɛli kam, ka di tooi zooi ka ninvuɣ' bɔbili mali ŋa. A ni [$1 nam akɔnti] bee [$2 kpubu[ din yɛn gu ka taɣi saha ŋan kanna nangbankpeeni zaŋ chaŋ ban yi polo. Akɔnti nambu gba nyɛla ŋan sɔŋdi sɔɣiri.",
 	"discussiontools-emptystate-title-self-anon": "{{PAƔA BEE DOO:|Maraba}} paaji ŋɔ zuɣu",
 	"discussiontools-emptystate-title-self-temp": "{{PAƔA BEE DOO:|maraba}} paaji shɛli din ku yuui ŋɔ zuɣu",
 	"discussiontools-emptystate-title-user": "Pilimi saawara ni  {{PAƔA BEE DOO :{{PAAJI YULI}}|ni}} {{PAAJI YULI}}",
