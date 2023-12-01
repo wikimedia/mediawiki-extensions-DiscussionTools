@@ -555,14 +555,14 @@
 			"description": "Override availability of DiscussionTools visual enhancements's reply buttons sub-feature. 'default', 'available', or 'unavailable'."
 		},
 		"DiscussionTools_visualenhancements_reply_icon_languages": {
-			"value": [
-				"ar",
-				"zh",
-				"yue",
-				"ja",
-				"nod"
-			],
-			"description": "A list of language codes which will receive an icon in their enhanced reply-button treatment, due to translation being very short (T323537).",
+			"value": {
+				"ar": true,
+				"zh": true,
+				"yue": true,
+				"ja": true,
+				"nod": true
+			},
+			"description": "A dictionary of language codes which will receive an icon in their enhanced reply-button treatment, due to translation being very short (T323537). Language fallbacks will be checked unless a language is explicitly set to `false` (T352289). Normalized language codes are lower case.",
 			"merge_strategy": "provide_default"
 		},
 		"DiscussionTools_visualenhancements_newsectionlink_enable": {

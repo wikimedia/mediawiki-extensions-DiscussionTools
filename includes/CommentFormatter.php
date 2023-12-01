@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
+use ConfigException;
 use Html;
 use IContextSource;
 use Language;
@@ -932,10 +933,40 @@ class CommentFormatter {
 		return $pout->getExtensionData( 'DiscussionTools-hasCommentsInLedeContent' ) === true;
 	}
 
-	public static function isLanguageRequiringReplyIcon( Language $lang ): bool {
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+	/**
+	 * Check if the language requires an icon for the reply button
+	 *
+	 * @param Language $userLang Language
+	 * @return bool
+	 */
+	public static function isLanguageRequiringReplyIcon( Language $userLang ): bool {
+		$services = MediaWikiServices::getInstance();
+
+		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
 		$languages = $dtConfig->get( 'DiscussionTools_visualenhancements_reply_icon_languages' );
-		return in_array( $lang->getCode(), $languages, true );
+
+		if ( array_is_list( $languages ) ) {
+			// Detect legacy list format
+			throw new ConfigException(
+				'DiscussionTools_visualenhancements_reply_icon_languages must be an associative array'
+			);
+		}
+
+		// User language matched exactly and is explicitly set to true or false
+		if ( isset( $languages[ $userLang->getCode() ] ) ) {
+			return (bool)$languages[ $userLang->getCode() ];
+		}
+
+		// Check fallback languages
+		$fallbackLanguages = $userLang->getFallbackLanguages();
+		foreach ( $fallbackLanguages as $fallbackLangauge ) {
+			if ( isset( $languages[ $fallbackLangauge ] ) ) {
+				return (bool)$languages[ $fallbackLangauge ];
+			}
+		}
+
+		// Language not listed, default is to show no icon
+		return false;
 	}
 
 }
