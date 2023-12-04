@@ -4,15 +4,22 @@
 			"Azoure latif 2",
 			"Hasslaebetch",
 			"Abdul Fatawu 352",
-			"Amire80"
+			"Amire80",
+			"Soumaya"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Leoke",
+	"discussiontools-desc": "Sõsg sõsg sɛb sẽn tõe n sõng tɩ d maneg sõsg sɛbã.",
+	"discussiontools-preference-label": "Sõs-y-yã",
 	"discussiontools-replylink": "loke",
 	"discussiontools-replywidget-cancel": "Base",
+	"discussiontools-replywidget-loading": "B sẽn da tʋkdã...",
+	"discussiontools-replywidget-mention-tool-title": "Wilg-y sõssã",
 	"discussiontools-replywidget-mode-source": "Suurs",
 	"discussiontools-replywidget-mode-visual": "Yãabo",
 	"discussiontools-replywidget-placeholder-reply": "Leoke {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "N gese",
-	"discussiontools-replywidget-reply": "Leoke"
+	"discussiontools-replywidget-reply": "Leoke",
+	"discussiontools-replywidget-transcluded": "Y sẽn gomdã na n paama b sẽn kõ-a wã n be [[$1]].",
+	"tag-discussiontools-description": "D sẽn maand n tũ DiscussionTools wã"
 }

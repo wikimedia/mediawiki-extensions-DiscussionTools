@@ -4,10 +4,13 @@
 			"Robin van der Vliet",
 			"Javiero",
 			"NMaia",
-			"Wierzbowski"
+			"Wierzbowski",
+			"Agloforto",
+			"Ziko"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Respondo",
+	"discussiontools-desc": "Iloj por plibonigi diskutpaĝojn.",
 	"discussiontools-replylink": "respondi",
 	"discussiontools-replywidget-cancel": "Nuligi",
 	"discussiontools-replywidget-mention-tool-title": "Mencii uzanton",
