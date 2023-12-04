@@ -566,15 +566,14 @@ class CommentParser {
 
 		$username = null;
 		$displayName = null;
-		$namespaceId = $title->getNamespace();
 		$mainText = $title->getText();
 
-		if ( $namespaceId === NS_USER || $namespaceId === NS_USER_TALK ) {
+		if ( $title->inNamespace( NS_USER ) || $title->inNamespace( NS_USER_TALK ) ) {
 			$username = $mainText;
 			if ( str_contains( $username, '/' ) ) {
 				return null;
 			}
-			if ( $namespaceId === NS_USER ) {
+			if ( $title->inNamespace( NS_USER ) ) {
 				// Use regex trim for consistency with JS implementation
 				$text = preg_replace( [ '/^[\s]+/u', '/[\s]+$/u' ], '', $link->textContent ?? '' );
 				// Record the display name if it has been customised beyond changing case
@@ -582,7 +581,7 @@ class CommentParser {
 					$displayName = $text;
 				}
 			}
-		} elseif ( $namespaceId === NS_SPECIAL ) {
+		} elseif ( $title->inNamespace( NS_SPECIAL ) ) {
 			$parts = explode( '/', $mainText );
 			if ( count( $parts ) === 2 && $parts[0] === $this->specialContributionsName ) {
 				// Normalize the username: users may link to their contributions with an unnormalized name

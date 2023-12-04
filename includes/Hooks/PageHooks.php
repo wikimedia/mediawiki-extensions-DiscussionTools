@@ -438,7 +438,7 @@ class PageHooks implements
 		$descParams = [];
 		$buttonMsg = 'discussiontools-emptystate-button';
 		$title = $context->getTitle();
-		if ( $title->getNamespace() === NS_USER_TALK && !$title->isSubpage() ) {
+		if ( $title->inNamespace( NS_USER_TALK ) && !$title->isSubpage() ) {
 			// This is a user talk page
 			$isIP = $this->userNameUtils->isIP( $title->getText() );
 			$isTemp = $this->userNameUtils->isTemp( $title->getText() );

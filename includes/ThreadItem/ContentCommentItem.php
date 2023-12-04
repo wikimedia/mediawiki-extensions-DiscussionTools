@@ -135,7 +135,7 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 			if ( $href ) {
 				$siteConfig = MediaWikiServices::getInstance()->getMainConfig();
 				$title = Title::newFromText( CommentUtils::getTitleFromUrl( $href, $siteConfig ) );
-				if ( $title && $title->getNamespace() === NS_USER ) {
+				if ( $title && $title->inNamespace( NS_USER ) ) {
 					// TODO: Consider returning User objects
 					$users[] = $title;
 				}
