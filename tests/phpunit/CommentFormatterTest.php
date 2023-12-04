@@ -21,6 +21,34 @@ use Wikimedia\TestingAccessWrapper;
 class CommentFormatterTest extends IntegrationTestCase {
 
 	/**
+	 * @dataProvider provideIsLanguageRequiringReplyIcon
+	 */
+	public function testIsLanguageRequiringReplyIcon(
+		string $langCode, bool $expected, ?array $config = null
+	): void {
+		$lang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( $langCode );
+		if ( $config ) {
+			$this->overrideConfigValues( [
+				'DiscussionTools_visualenhancements_reply_icon_languages' => $config
+			] );
+		}
+		$actual = MockCommentFormatter::isLanguageRequiringReplyIcon( $lang );
+		static::assertEquals( $expected, $actual, $langCode );
+	}
+
+	public static function provideIsLanguageRequiringReplyIcon(): array {
+		return [
+			[ 'zh', true ],
+			[ 'zh-hant', true ],
+			[ 'ar', true ],
+			[ 'arz', true ],
+			[ 'arz', false, [ 'ar' => true, 'arz' => false ] ],
+			[ 'en', false ],
+			[ 'he', false ],
+		];
+	}
+
+	/**
 	 * @dataProvider provideAddDiscussionToolsInternal
 	 */
 	public function testAddDiscussionToolsInternal(
