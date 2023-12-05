@@ -26,7 +26,7 @@
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Фикер алышу бите]] — {{SITENAME}} проекты эчтәлеген ничек яхшырту турында фикер алышу урыны. Бу IP-адрестан кертелгән үзгәрешләр турында фикер алышуны башлау өчен бу битне файдаланыгыз. Сезнең язганнарны башкалар да укый ала. Күп кенә IP-адреслар үзгәрә һәм бик еш бер үк вакытта берничә кеше тарафыннан кулланыла.",
 	"discussiontools-emptystate-desc-user-temp": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-temp}}|Фикер алышу бите]] — {{SITENAME}} проекты эчтәлеген ничек яхшырту турында фикер алышу урыны. [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] {{GENDER:{{PAGENAME}}|белән}} бәйләнешкә керү һәм берәр-нәрсә турында фикер алышу өчен яңа фикер алышу башлагыз. {{GENDER:|Сезнең}} монда язганнарны башкалар да укый алачак. Бу бит [[{{MediaWiki:tempuser-helppage}}|вакытлыча хисап язмасына]]  карый һәм аның хуҗасы башка аннан файдалана алмаска мөмкин.",
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} битендә фикер алышуны башларга",
-	"discussiontools-emptystate-title-self": "Фикерләшү битегезгә {{GENDER:|рәхим итегез}}",
+	"discussiontools-emptystate-title-self": "Бәхәс битегезгә рәхим итегез",
 	"discussiontools-emptystate-title-self-anon": "Бу фикерләшү битенә {{GENDER:|рәхим итегез}}",
 	"discussiontools-emptystate-title-self-temp": "Фикерләшү битегезгә {{GENDER:|рәхим итегез}}",
 	"discussiontools-emptystate-title-user": "{{PAGENAME}} белән фикер алышуны башларга",

@@ -14,6 +14,7 @@
 	"discussiontools-emptystate-title": "Mulai bacangkurah sual {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user": "Mulai bacangkurah lawan {{PAGENAME}}",
 	"discussiontools-newtopic-missing-title": "Tulung julungakan judul pada tupik cangkurah pian. Amun Pian manikin \"{{int:discussiontools-replywidget-newtopic}}\", tupik Pian pacangan ditambahakan kada pakai judul.",
+	"discussiontools-newtopicssubscription-button-subscribe-label": "Balangganan",
 	"discussiontools-pageframe-latestcomment": "Kumintar pahanyarnya: $1 ulih $2 pada tupik $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Kumintar pahanyarnya: $1 ulih $2",
 	"discussiontools-replylink": "{{GENDER:|balas}}",
