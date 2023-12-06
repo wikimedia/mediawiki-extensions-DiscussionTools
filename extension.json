@@ -551,10 +551,6 @@
 			"description": "A dictionary of language codes which will receive an icon in their enhanced reply-button treatment, due to translation being very short (T323537). Language fallbacks will be checked unless a language is explicitly set to `false` (T352289). Normalized language codes are lower case.",
 			"merge_strategy": "provide_default"
 		},
-		"DiscussionTools_visualenhancements_newsectionlink_enable": {
-			"value": true,
-			"description": "Enable visual enhancements on non-talk, non-article namespaces if they have __NEWSECTIONLINK__ magic word. Temporary config for phased rollout (T331635)"
-		},
 		"DiscussionToolsEnablePermalinksBackend": {
 			"value": true,
 			"description": "Enable the permalinks backend. Do not enable this unless the database tables exist."

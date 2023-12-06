@@ -381,7 +381,6 @@ class HookUtils {
 			$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 			// Visual enhancements are only enabled on talk namespaces (T325417) ...
 			return $title->isTalkPage() || (
-				$dtConfig->get( 'DiscussionTools_visualenhancements_newsectionlink_enable' ) &&
 				// ... or __NEWSECTIONLINK__ pages (T331635)
 				static::hasPagePropCached( $title, 'newsectionlink' ) &&
 				// excluding the main namespace, unless it has been configured for signatures
