@@ -135,6 +135,7 @@
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|teɛroo|teɛɛroo}}",
 	"discussiontools-topicheader-latestcomment": "Yelle paaba : $1",
 	"discussiontools-topicsubscription-action-subscribe-button": "Kpɛ",
+	"discussiontools-topicsubscription-action-subscribe-prompt": "Kpɛ  a yelzu ŋa",
 	"discussiontools-topicsubscription-button-subscribe": "Sage la",
 	"discussiontools-topicsubscription-button-subscribe-label": "Sage la",
 	"discussiontools-topicsubscription-button-unsubscribe": "Ba sagebo",

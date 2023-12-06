@@ -114,6 +114,7 @@
 	"discussiontools-replywidget-autocreate-warning": "<strong>Нисте пријављени.</strong> Ваша измена ће бити приписана аутоматски генерисаном имену. [[$3|Сазнајте више]]. [$1 Пријавите се] или [$2 отворите налог] да приступите другим бенефитима.",
 	"discussiontools-replywidget-cancel": "Откажи",
 	"discussiontools-replywidget-feedback": "Повратне информације о функцији",
+	"discussiontools-replywidget-keyboard-shortcut-submit": "Да додате коментар притисните $1",
 	"discussiontools-replywidget-loading": "Учитавање…",
 	"discussiontools-replywidget-mention-tool-header": "Нађи корисника: $1",
 	"discussiontools-replywidget-mention-tool-title": "Спомени корисника",
