@@ -10,6 +10,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\HeadingItem;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageStore;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
@@ -138,6 +139,58 @@ class ThreadItemStore {
 			->where( [
 				'it_itemname IN (' . $itemNameQueryBuilder->getSQL() . ')',
 				"it_itemname != 'h-'",
+			] );
+
+		if ( $limit !== null ) {
+			$queryBuilder->limit( $limit );
+		}
+
+		$result = $this->fetchItemsResultSet( $queryBuilder );
+		$revs = $this->fetchRevisionAndPageForItems( $result );
+
+		$threadItems = [];
+		foreach ( $result as $row ) {
+			$threadItem = $this->getThreadItemFromRow( $row, null, $revs );
+			if ( $threadItem ) {
+				$threadItems[] = $threadItem;
+			}
+		}
+		return $threadItems;
+	}
+
+	/**
+	 * Find the thread items with the given ID in the newest revision of every page in which they have
+	 * appeared.
+	 *
+	 * @param string|string[] $heading
+	 * @param int $articleId
+	 * @param int|null $limit
+	 * @return DatabaseThreadItem[]
+	 */
+	public function findNewestRevisionsByHeading( $heading, int $articleId, ?int $limit = 50 ): array {
+		if ( $this->isDisabled() ) {
+			return [];
+		}
+
+		$language = MediaWikiServices::getInstance()->getContentLanguage();
+		$heading = $language->truncateForDatabase( $heading, 80, '' );
+
+		$dbw = $this->dbProvider->getPrimaryDatabase();
+
+		$itemIdQueryBuilder = $this->getIdsNamesBuilder()
+			->join( 'revision', null, [ 'rev_id = itr_revision_id' ] )
+			->where( [ 'itid_itemid' . $dbw->buildLike(
+				'h-' . $heading . '-',
+				$dbw->anyString()
+			) ] )
+			// Has once appered on the specified page ID
+			->where( [ 'rev_page' => $articleId ] )
+			->field( 'itid_itemid' );
+
+		$queryBuilder = $this->getIdsNamesBuilder();
+		$queryBuilder
+			->where( [
+				'itid_itemid IN (' . $itemIdQueryBuilder->getSQL() . ')'
 			] );
 
 		if ( $limit !== null ) {
