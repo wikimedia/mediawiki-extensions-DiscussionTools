@@ -12,7 +12,8 @@
 			"Ruky Wunpini",
 			"Attah Mohammed",
 			"Issahiddris98",
-			"Musahfm"
+			"Musahfm",
+			"ANTHONY DERY"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Inn, n-nyɛli",
@@ -53,11 +54,12 @@
 	"discussiontools-replywidget-abandontopic-keep": "Tuɣimi Sabbu",
 	"discussiontools-replywidget-advanced": "Tooni tibu",
 	"discussiontools-replywidget-cancel": "Nyahima",
+	"discussiontools-replywidget-loading": "ʒili laɣimbu",
 	"discussiontools-replywidget-mention-tool-header": "Bɔmi ŋun tumda: $1",
 	"discussiontools-replywidget-mention-tool-title": "Bɔlimi ŋun tumda",
 	"discussiontools-replywidget-mode-source": "Di ni yina shɛli",
 	"discussiontools-replywidget-mode-visual": "Palo ni",
-	"discussiontools-replywidget-newcomments-button": "Zaŋ wuhi $1 zaɣ' palli {{ZAƔ' BƆBILI:$1|tɔɣino|tɔɣinonima}}",
+	"discussiontools-replywidget-newcomments-button": "Zaŋ wuhi $1 zaɣ' palli {{PLURAL:$1|comment|comments}}",
 	"discussiontools-replywidget-placeholder-newtopic": "Buɣisibu",
 	"discussiontools-replywidget-preferences": "Suhuyurilim",
 	"discussiontools-replywidget-preview": "N-nya pɔi",
@@ -88,7 +90,7 @@
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Malimi a toto",
 	"discussiontools-topicsubscription-special-title": "Yɛlikpani toto",
 	"echo-category-title-dt-subscription": "Yɛltɔɣa yaɣili {{PLURAL:$1|zaŋ maŋa pahi|subscriptions}}",
-	"echo-category-title-dt-subscription-archiving": "Yɛltɔɣa paaji PLURAL\n:$1|archiving}}",
+	"echo-category-title-dt-subscription-archiving": "Yɛltɔɣa paaji {{PLURAL\n:$1|archiving}}",
 	"echo-pref-tooltip-dt-subscription": "Ti ma tibili zaŋ chaŋ din chana n piibu polo ni",
 	"tag-discussiontools-added-comment-description": "Tɔɣino ŋan be yɛltɔɣa paaji ŋɔ zuɣu pahila maliniŋ puuni",
 	"tag-discussiontools-description": "Maliniŋ shɛli din niŋ ka di nyɛla saawara tuma niɛma ka bɛ zaŋ niŋ ʋa",

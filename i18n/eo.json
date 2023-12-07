@@ -9,9 +9,15 @@
 			"Ziko"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "Bone, komprenite",
+	"discussiontools-autotopicsubpopup-preferences": "Redakti preferojn",
 	"discussiontools-defaultsummary-reply": "Respondo",
+	"discussiontools-desc": "Iloj por plibonigi diskutpaĝojn.",
+	"discussiontools-emptystate-button": "Komencu diskuton",
 	"discussiontools-emptystate-desc-self": "Homoj sur {{SITENAME}} povas uzi ĉi tiun [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|diskutpaĝon]] por publikigi mesaĝon por vi kaj vi estos sciigita kiam ili tion faras.",
+	"discussiontools-emptystate-title": "Komencu diskuton pri {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bonvenon sur via diskutpaĝo",
+	"discussiontools-emptystate-title-user": "Komencu diskuton {{GENDER:{{PAGENAME}}|kun}} {{PAGENAME}}",
 	"discussiontools-newtopic-placeholder-title": "Titolo",
 	"discussiontools-postedit-confirmation-published": "Via komento estis publikigita.",
 	"discussiontools-replylink": "respondi",
