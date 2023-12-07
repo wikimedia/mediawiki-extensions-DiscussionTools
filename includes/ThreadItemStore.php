@@ -21,10 +21,12 @@ use stdClass;
 use Wikimedia\NormalizedException\NormalizedException;
 use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\ILBFactory;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
+use Wikimedia\Rdbms\LikeValue;
 use Wikimedia\Rdbms\ReadOnlyMode;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\TimestampException;
@@ -179,10 +181,10 @@ class ThreadItemStore {
 
 		$itemIdQueryBuilder = $this->getIdsNamesBuilder()
 			->join( 'revision', null, [ 'rev_id = itr_revision_id' ] )
-			->where( [ 'itid_itemid' . $dbw->buildLike(
+			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'h-' . $heading . '-',
 				$dbw->anyString()
-			) ] )
+			) ) )
 			// Has once appered on the specified page ID
 			->where( [ 'rev_page' => $articleId ] )
 			->field( 'itid_itemid' );
