@@ -167,52 +167,45 @@ Highlight.prototype.destroy = function () {
 };
 
 var highlightedTarget = null;
-var missingTargetNotifPromise = null;
 /**
  * Highlight the thread item(s) on the page associated with the URL hash or query string
  *
  * @param {ThreadItemSet} threadItemSet
  * @param {boolean} [noScroll] Don't scroll to the topmost highlight, e.g. on popstate
+ * @return {Object} Object containing 'requested' IDs, 'requestedSince' ID, and successfully 'highligted' IDs
  */
 function highlightTargetComment( threadItemSet, noScroll ) {
 	if ( highlightedTarget ) {
 		highlightedTarget.destroy();
 		highlightedTarget = null;
 	}
-	if ( missingTargetNotifPromise ) {
-		missingTargetNotifPromise.then( function ( notif ) {
-			notif.close();
-		} );
-		missingTargetNotifPromise = null;
-	}
 
 	var targetElement = mw.util.getTargetFromFragment();
 
 	if ( targetElement && targetElement.hasAttribute( 'data-mw-comment-start' ) ) {
+		var threadItemId = targetElement.getAttribute( 'id' );
 		var threadItem = threadItemSet.findCommentById( targetElement.getAttribute( 'id' ) );
 		if ( threadItem ) {
 			highlightedTarget = new Highlight( threadItem );
 			highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
 			highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
 		}
-		return;
+		return {
+			requested: [ threadItemId ],
+			highlighted: [ threadItemId ]
+		};
 	}
 
-	if ( location.hash.match( /^#(c|h)-/ ) && !targetElement ) {
-		var isHeading = location.hash.slice( 1, 2 ) === 'h';
-		missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
-			return mw.notification.notify(
-				mw.message( isHeading ?
-					'discussiontools-target-heading-missing' :
-					'discussiontools-target-comment-missing'
-				).text(),
-				{ type: 'warn', autoHide: false }
-			);
-		} );
+	// Single thread item not highlighted yet
+	if ( location.hash.match( /^#(c|h)-/ ) ) {
+		return {
+			requested: [ location.hash.slice( 1 ) ],
+			highlighted: []
+		};
 	}
 
 	var url = new URL( location.href );
-	highlightNewComments(
+	return highlightNewComments(
 		threadItemSet,
 		noScroll,
 		url.searchParams.get( 'dtnewcomments' ) && url.searchParams.get( 'dtnewcomments' ).split( '|' ),
@@ -310,6 +303,7 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
  * @param {boolean} [options.inThread] When using newCommentsSinceId, only highlight comments in the same thread
  * @param {boolean} [options.sinceThread] When using newCommentsSinceId, only highlight comments in threads
  *  created since that comment was posted.
+ * @return {Object} Object containing 'requested' comment IDs, 'requestedSince' ID, and successfully 'highligted' IDs
  */
 function highlightNewComments( threadItemSet, noScroll, newCommentIds, options ) {
 	if ( highlightedTarget ) {
@@ -319,9 +313,6 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, options )
 
 	newCommentIds = newCommentIds || [];
 	options = options || {};
-
-	var highlightsRequested = newCommentIds.length || options.newCommentsSinceId;
-	var highlightsRequestedSingle = !options.newCommentsSinceId && newCommentIds.length === 1;
 
 	if ( options.newCommentsSinceId ) {
 		var newCommentsSince = threadItemSet.findCommentById( options.newCommentsSinceId );
@@ -354,35 +345,28 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, options )
 		}
 	}
 
+	var comments;
 	if ( newCommentIds.length ) {
-		var comments = newCommentIds.map( function ( id ) {
+		comments = newCommentIds.map( function ( id ) {
 			return threadItemSet.findCommentById( id );
 		} ).filter( function ( cmt ) {
 			return !!cmt;
 		} );
-		if ( comments.length === 0 ) {
-			return;
-		}
+		if ( comments.length ) {
+			highlightedTarget = new Highlight( comments );
+			highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
+			highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
 
-		highlightedTarget = new Highlight( comments );
-		highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );
-		highlightedTarget.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
-
-		if ( !noScroll ) {
-			highlightedTarget.scrollIntoView();
+			if ( !noScroll ) {
+				highlightedTarget.scrollIntoView();
+			}
 		}
-	} else if ( highlightsRequested ) {
-		missingTargetNotifPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
-			return mw.notification.notify(
-				mw.message(
-					highlightsRequestedSingle ?
-						'discussiontools-target-comment-missing' :
-						'discussiontools-target-comments-missing'
-				).text(),
-				{ type: 'warn', autoHide: false }
-			);
-		} );
 	}
+	return {
+		requested: newCommentIds,
+		requestedSince: options.newCommentsSinceId,
+		highlighted: comments || []
+	};
 }
 
 /**
@@ -391,13 +375,6 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, options )
  * @param {ThreadItemSet} threadItemSet
  */
 function clearHighlightTargetComment( threadItemSet ) {
-	if ( missingTargetNotifPromise ) {
-		missingTargetNotifPromise.then( function ( notif ) {
-			notif.close();
-		} );
-		missingTargetNotifPromise = null;
-	}
-
 	var url = new URL( location.href );
 
 	var targetElement = mw.util.getTargetFromFragment();

@@ -228,7 +228,7 @@ class CommentFormatter {
 
 		$url = $title->getCanonicalURL();
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
-		$enableTimestampLinks = $dtConfig->get( 'DiscussionToolsEnableTimestampLinks' );
+		$enablePermalinksFrontend = $dtConfig->get( 'DiscussionToolsEnablePermalinksFrontend' );
 
 		// Iterate in reverse order, because adding the range markers for a thread item
 		// can invalidate the ranges of subsequent thread items (T298096)
@@ -293,7 +293,7 @@ class CommentFormatter {
 
 				CommentModifier::addReplyLink( $threadItem, $replyButtons );
 
-				if ( $enableTimestampLinks ) {
+				if ( $enablePermalinksFrontend ) {
 					$timestampRanges = $threadItem->getTimestampRanges();
 					$lastTimestamp = end( $timestampRanges );
 					$existingLink = CommentUtils::closestElement( $lastTimestamp->startContainer, [ 'a' ] ) ??
