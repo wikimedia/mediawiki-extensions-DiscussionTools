@@ -20,12 +20,13 @@ class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
 
 	/**
 	 * @param ImmutableRange $range
+	 * @param bool|string $transcludedFrom
 	 * @param ?int $headingLevel Heading level (1-6). Use null for a placeholder heading.
 	 */
 	public function __construct(
-		ImmutableRange $range, ?int $headingLevel
+		ImmutableRange $range, $transcludedFrom, ?int $headingLevel
 	) {
-		parent::__construct( 'heading', 0, $range );
+		parent::__construct( 'heading', 0, $range, $transcludedFrom );
 		$this->placeholderHeading = $headingLevel === null;
 		$this->headingLevel = $this->placeholderHeading ? static::PLACEHOLDER_HEADING_LEVEL : $headingLevel;
 	}
@@ -95,22 +96,6 @@ class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
 	 */
 	public function setPlaceholderHeading( bool $placeholderHeading ): void {
 		$this->placeholderHeading = $placeholderHeading;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getTranscludedFrom() {
-		// Placeholder headings break the usual logic, because their ranges are collapsed
-		if ( $this->isPlaceholderHeading() ) {
-			return false;
-		}
-		// Collapsed ranges should otherwise be impossible, but they're not (T299583)
-		// TODO: See if we can fix the root cause, and remove this?
-		if ( $this->getRange()->collapsed ) {
-			return false;
-		}
-		return parent::getTranscludedFrom();
 	}
 
 	/**

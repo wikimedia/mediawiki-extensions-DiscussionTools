@@ -173,7 +173,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			$closest = CommentUtils::closestElementWithSibling( $firstRange->startContainer, 'previous' );
 			if ( $closest && !$rootNode->isSameNode( $closest ) ) {
 				$range = new ImmutableRange( $rootNode, 0, $rootNode, 0 );
-				$fakeHeading = new ContentHeadingItem( $range, null );
+				$fakeHeading = new ContentHeadingItem( $range, false, null );
 				$fakeHeading->setRootNode( $rootNode );
 				$fakeHeading->setName( 'h-' );
 				$fakeHeading->setId( 'h-' );
