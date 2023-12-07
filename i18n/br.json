@@ -23,7 +23,7 @@
 	"discussiontools-emptystate-title": "Kregiñ ur gaozeadenn diwar-benn {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "{{GENDER:|Degemer mat}} en ho pajenn gaozeal",
 	"discussiontools-emptystate-title-self-anon": "{{GENDER:|Degemer mat}} er bajenn gaozeal-mañ",
-	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Degemer mat}} en ho pajenn gaozeal",
+	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Degemer mat}} en ho pajenn gaozeal evit ur mare",
 	"discussiontools-emptystate-title-user": "Kregiñ ur gaozeadenn nevez {{GENDER:{{PAGENAME}}|gant}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "{{GENDER:|Degemer mat}} er bajenn gaozeal-mañ",
 	"discussiontools-emptystate-title-user-temp": "Boulc’hañ ur gaozeadenn nevez {{GENDER:{{PAGENAME}}|gant}} {{PAGENAME}}",
