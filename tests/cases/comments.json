@@ -96,6 +96,14 @@
 		"data": "../data/frwiki-data.json"
 	},
 	{
+		"name": "frwiki fr-invalid-date",
+		"title": "Wikipédia:Oracle/semaine 9 2006",
+		"dom": "cases/fr-invalid-date/fr-invalid-date.html",
+		"expected": "../cases/fr-invalid-date/fr-invalid-date.json",
+		"config": "../data/frwiki-config.json",
+		"data": "../data/frwiki-data.json"
+	},
+	{
 		"name": "itwiki it-unsigned oldparser",
 		"title": "Aiuto:Sportello informazioni",
 		"dom": "cases/it-unsigned-oldparser/it-unsigned-oldparser.html",

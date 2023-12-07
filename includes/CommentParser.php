@@ -15,6 +15,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Languages\LanguageConverterFactory;
+use MWTimestamp;
 use RuntimeException;
 use TitleParser;
 use TitleValue;
@@ -24,6 +25,7 @@ use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Timestamp\TimestampException;
 
 // TODO consider making timestamp parsing not a returned function
 
@@ -491,6 +493,16 @@ class CommentParser {
 			// Now set the timezone back to UTC for formatting
 			$date->setTimezone( new DateTimeZone( 'UTC' ) );
 			$date = DateTimeImmutable::createFromMutable( $date );
+
+			// We require the date to be compatible with our libraries, for example zero or negative years (T352455)
+			// In PHP we need to check with MWTimestamp.
+			// In JS we need to check with Moment.
+			try {
+				// @phan-suppress-next-line PhanNoopNew
+				new MWTimestamp( $date->format( 'c' ) );
+			} catch ( TimestampException $ex ) {
+				return null;
+			}
 
 			return [
 				'date' => $date,
@@ -986,8 +998,11 @@ class CommentParser {
 				// Should this use the indent level of $startNode or $node?
 				$level = min( $startLevel, $endLevel );
 
-				[ 'date' => $dateTime, 'warning' => $dateWarning ] =
-					$dfParsers[ $match['parserIndex'] ]( $match['matchData'] );
+				$parserResult = $dfParsers[ $match['parserIndex'] ]( $match['matchData'] );
+				if ( !$parserResult ) {
+					continue;
+				}
+				[ 'date' => $dateTime, 'warning' => $dateWarning ] = $parserResult;
 
 				if ( $dateWarning ) {
 					$warnings[] = $dateWarning;
