@@ -157,7 +157,7 @@ ReplyWidgetVisual.prototype.focus = function () {
 	setTimeout( function () {
 		// Check surface still exists after timeout
 		if ( targetWidget.getSurface() ) {
-			targetWidget.getSurface().getModel().selectLastContentOffset();
+			targetWidget.getSurface().getView().selectLastSelectableContentOffset();
 			targetWidget.focus();
 		}
 	} );
