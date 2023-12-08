@@ -152,6 +152,8 @@
 	"discussiontools-target-comment-missing": "Dieser Kommentar konnte nicht gefunden werden. Möglicherweise wurde er gelöscht oder verschoben.",
 	"discussiontools-target-comments-missing": "Es konnten keine neuen Kommentare gefunden werden. Möglicherweise wurden sie gelöscht oder verschoben.",
 	"discussiontools-target-heading-missing": "Dieses Thema konnte nicht gefunden werden. Möglicherweise wurde es gelöscht oder verschoben.",
+	"discussiontools-target-comment-found-moved": "Dieser Kommentar konnte auf dieser Seite nicht gefunden werden, existiert aber auf {{PLURAL:$1|der folgenden Seite|den folgenden Seiten}}:",
+	"discussiontools-target-heading-found-moved": "Dieses Thema konnte auf dieser Seite nicht gefunden werden, existiert aber auf {{PLURAL:$1|der folgenden Seite|den folgenden Seiten}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|Person ist|Personen sind}} an der Diskussion beteiligt",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|Kommentar|Kommentare}}",
 	"discussiontools-topicheader-latestcomment": "Letzter Kommentar: $1",
