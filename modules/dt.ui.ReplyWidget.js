@@ -709,7 +709,7 @@ ReplyWidget.prototype.teardown = function ( mode ) {
 		this.modeTabSelect.blur();
 	}
 	this.unbindBeforeUnloadHandler();
-	this.$window[ 0 ].removeEventListener( 'scroll', this.onWindowScrollThrottled, { passive: true } );
+	this.$window[ 0 ].removeEventListener( 'scroll', this.onWindowScrollThrottled );
 	mw.hook( 'wikipage.watchlistChange' ).remove( this.onWatchToggleHandler );
 
 	this.isTornDown = true;
