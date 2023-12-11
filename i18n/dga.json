@@ -11,11 +11,19 @@
 	},
 	"discussiontools-defaultsummary-reply": "Leɛ sagbo",
 	"discussiontools-desc": "Boma na naŋ baŋ soŋ a kombo diibu vuo",
+	"discussiontools-preference-label": "Dɛmmo diibu boma",
 	"discussiontools-replylink": "Sagebu",
 	"discussiontools-replywidget-cancel": "Iribarebo",
+	"discussiontools-replywidget-loading": "Loodiŋ...",
+	"discussiontools-replywidget-mention-tool-title": "Pore a tontonneba",
 	"discussiontools-replywidget-mode-source": "Yizie",
 	"discussiontools-replywidget-mode-visual": "Kaabo",
 	"discussiontools-replywidget-placeholder-reply": "Sage o {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Leɛkaabo",
-	"discussiontools-replywidget-reply": "Sagebo"
+	"discussiontools-replywidget-reply": "Sagebo",
+	"discussiontools-replywidget-transcluded": "A fo yelteɛbo naŋ nyɛ la bimmo a  \n [[$1]].",
+	"tag-discussiontools-description": "Maale emmo e yineŋ dɛmmoboma",
+	"tag-discussiontools-edit-description": "Tontonaa maale eŋe yelteɛbo neŋ dɛmmobom",
+	"tag-discussiontools-newtopic-description": "Tontonneba eŋ la yelzu paala a gampɛle neŋ dɛmmoboma",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} nɔ-iri]"
 }

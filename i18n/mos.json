@@ -21,5 +21,11 @@
 	"discussiontools-replywidget-preview": "N gese",
 	"discussiontools-replywidget-reply": "Leoke",
 	"discussiontools-replywidget-transcluded": "Y sẽn gomdã na n paama b sẽn kõ-a wã n be [[$1]].",
-	"tag-discussiontools-description": "D sẽn maand n tũ DiscussionTools wã"
+	"tag-discussiontools-description": "D sẽn maand n tũ DiscussionTools wã",
+	"tag-discussiontools-edit-description": "Tʋmtʋmda malga-gʋlsga ne goam sana ne sõs tʋʋm-teedo",
+	"tag-discussiontools-newtopic-description": "Tʋmtɩmda paasa yɛl-wɛɛng paalga nenga pɩge ne sõs-teedo",
+	"tag-discussiontools-reply": "[{{int: discussiontools-replywidget-reply-link}} loki]",
+	"tag-discussiontools-reply-description": "Tɩmtɩmde loka gomda ne sõs-tʋʋm-teedo",
+	"tag-discussiontools-source-description": "Sõs-tʋʋm-teed ra be ne yĩgra mõde",
+	"tag-discussiontools-visual-description": "Sõs-tɩm-teed ra be ne Vĩsual mõde"
 }
