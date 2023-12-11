@@ -141,6 +141,8 @@
 	"discussiontools-target-comment-missing": "Iste commento non poteva esser trovate. Es possibile que illo ha essite delite o displaciate.",
 	"discussiontools-target-comments-missing": "Le nove commentos non poteva esser trovate. Es possibile que illos ha essite delite o displaciate.",
 	"discussiontools-target-heading-missing": "Iste topico non poteva esser trovate. Es possibile que illo ha essite delite o displaciate.",
+	"discussiontools-target-comment-found-moved": "Iste commento non poteva esser trovate sur iste pagina, ma existe sur le sequente pagina{{PLURAL:$1||s}}:",
+	"discussiontools-target-heading-found-moved": "Iste topico non poteva esser trovate sur iste pagina, ma existe sur le sequente pagina{{PLURAL:$1||s}}:",
 	"discussiontools-topicheader-authorcount": "$1 persona{{PLURAL:$1||s}} in discussion",
 	"discussiontools-topicheader-commentcount": "$1 commento{{PLURAL:$1||s}}",
 	"discussiontools-topicheader-latestcomment": "Ultime commento: $1",

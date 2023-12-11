@@ -145,6 +145,8 @@
 	"discussiontools-target-comment-missing": "B pa yã gom-kãngã ye. Tõe tɩ b basa-a lame, wall b kɩtame t'a lebg n zĩnd a to.",
 	"discussiontools-target-comments-missing": "B pa tõog n paam gom-biis a taab ye. Tõe tɩ b basa-b lame, wall b kɩtame tɩ b lɛɛg n kẽng zĩig a to.",
 	"discussiontools-target-heading-missing": "B pa tõog n yã gom-kãngã ye. Tõe tɩ b basa-a lame, wall b kɩtame t'a lebg n zĩnd a to.",
+	"discussiontools-target-comment-found-moved": "Gomd kada ka toog n paam neng kada zugu, la a be ne link n pʋgda wa\n{{PLURAL:$1|page|pages}}:",
+	"discussiontools-target-heading-found-moved": "Gomd kada ka toog n paam neng kada zugu, la a be ne link n pʋgda wa\n{{PLURAL:$1|page|pages}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|neda|neba}} sõasg pʋga",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|f tagsgo|tagse}}",
 	"discussiontools-topicheader-latestcomment": "Yaoolem tagsgo: $1",

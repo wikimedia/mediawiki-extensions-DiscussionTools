@@ -161,6 +161,8 @@
 	"discussiontools-target-comment-missing": "Bu yorum bulunamadı. Silinmiş veya taşınmış olabilir.",
 	"discussiontools-target-comments-missing": "Yeni yorum bulunamadı. Silinmiş veya taşınmış olabilir.",
 	"discussiontools-target-heading-missing": "Bu konu bulunamadı. Silinmiş ya da taşınmış olabilir.",
+	"discussiontools-target-comment-found-moved": "Bu yorum bu sayfada bulunamadı, ancak şu {{PLURAL:$1|sayfada|sayfalarda}} var:",
+	"discussiontools-target-heading-found-moved": "Bu konu bu sayfada bulunamadı, ancak şu {{PLURAL:$1|sayfada|sayfalarda}} var:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|kişi}} tartışmada",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|yorum}}",
 	"discussiontools-topicheader-latestcomment": "Son yorum: $1",
