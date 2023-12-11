@@ -9,17 +9,17 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use Config;
-use ConfigFactory;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use MediaWiki\Hook\ParserOutputPostCacheTransformHook;
 use MediaWiki\Parser\Parsoid\PageBundleParserOutputConverter;
 use MediaWiki\Parser\Parsoid\ParsoidParser;
+use MediaWiki\Title\Title;
 use Parser;
 use ParserOutput;
-use Title;
 
 class ParserHooks implements
 	ParserOutputPostCacheTransformHook,

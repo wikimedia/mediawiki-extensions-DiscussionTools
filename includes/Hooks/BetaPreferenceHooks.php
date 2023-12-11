@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use Config;
-use ConfigFactory;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Extension\BetaFeatures\Hooks\GetBetaFeaturePreferencesHook;
 use MediaWiki\MainConfigNames;
-use User;
+use MediaWiki\User\User;
 
 /**
  * Hooks from BetaFeatures extension,

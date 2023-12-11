@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 use ErrorPageError;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkRenderer;
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class SpecialTopicSubscriptions extends SpecialPage {
 

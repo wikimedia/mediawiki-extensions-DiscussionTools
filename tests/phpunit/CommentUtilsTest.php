@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use GlobalVarConfig;
+use MediaWiki\Config\GlobalVarConfig;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\MediaWikiServices;
 

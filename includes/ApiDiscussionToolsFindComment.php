@@ -7,7 +7,7 @@ use ApiMain;
 use ApiUsageException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
 use MediaWiki\Title\Title;
-use TitleFormatter;
+use MediaWiki\Title\TitleFormatter;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsFindComment extends ApiBase {

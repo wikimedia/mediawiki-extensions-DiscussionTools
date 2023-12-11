@@ -8,9 +8,9 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Pager\TablePager;
 use MediaWiki\Title\Title;
 use OOUI;
-use TablePager;
 
 class TopicSubscriptionsPager extends TablePager {
 

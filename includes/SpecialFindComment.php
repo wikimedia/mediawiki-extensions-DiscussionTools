@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use FormSpecialPage;
-use Html;
 use HTMLForm;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\FormSpecialPage;
 
 class SpecialFindComment extends FormSpecialPage {
 

@@ -9,15 +9,15 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use Config;
-use ConfigFactory;
-use Html;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigFactory;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
-use SpecialPage;
-use User;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\User;
 
 class PreferenceHooks implements
 	LocalUserCreatedHook,

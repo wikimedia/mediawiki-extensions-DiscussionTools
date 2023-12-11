@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use Config;
 use DateInterval;
 use DateTime;
 use DateTimeImmutable;
@@ -10,15 +9,16 @@ use DateTimeZone;
 use InvalidArgumentException;
 use Language;
 use LogicException;
-use MalformedTitleException;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Languages\LanguageConverterFactory;
-use MWTimestamp;
+use MediaWiki\Title\MalformedTitleException;
+use MediaWiki\Title\TitleParser;
+use MediaWiki\Title\TitleValue;
+use MediaWiki\Utils\MWTimestamp;
 use RuntimeException;
-use TitleParser;
-use TitleValue;
 use Wikimedia\Assert\Assert;
 use Wikimedia\IPUtils;
 use Wikimedia\Parsoid\DOM\Element;

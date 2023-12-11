@@ -99,7 +99,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 			FormatJson::encode( $pout->getJsConfigVars(), "\t", FormatJson::ALL_OK ) .
 			"\n</pre>";
 
-		\OutputPage::setupOOUI();
+		OutputPage::setupOOUI();
 
 		$actual = $preprocessed;
 

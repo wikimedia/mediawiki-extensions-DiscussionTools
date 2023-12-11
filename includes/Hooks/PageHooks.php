@@ -11,7 +11,6 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use Article;
 use ExtensionRegistry;
-use Html;
 use IContextSource;
 use MediaWiki\Actions\Hook\GetActionNameHook;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
@@ -23,19 +22,20 @@ use MediaWiki\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserNameUtils;
 use OOUI\ButtonWidget;
-use OutputPage;
 use ParserOutput;
 use RequestContext;
 use Skin;
 use SkinTemplate;
-use SpecialPage;
 
 class PageHooks implements
 	BeforeDisplayNoArticleTextHook,

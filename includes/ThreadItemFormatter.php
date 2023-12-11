@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Title\TitleFormatter;
+use MediaWiki\Title\TitleValue;
 use MessageLocalizer;
-use TitleFormatter;
-use TitleValue;
 
 /**
  * Displays links to comments and headings represented as ThreadItems.

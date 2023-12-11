@@ -9,10 +9,10 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use Config;
 use DateTimeZone;
 use ILanguageConverter;
 use Language;
+use MediaWiki\Config\Config;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\MainConfigNames;
 use MediaWiki\SpecialPage\SpecialPageFactory;

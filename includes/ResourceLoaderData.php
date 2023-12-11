@@ -9,8 +9,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use Config;
 use ExtensionRegistry;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookRunner;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\ResourceLoader as RL;
