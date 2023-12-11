@@ -46,7 +46,7 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 		$source = new ImportStringSource( static::getText( "$dir/dump.xml" ) );
 		$importer = MediaWikiServices::getInstance()
 			->getWikiImporterFactory()
-			->getWikiImporter( $source );
+			->getWikiImporter( $source, $this->getTestSysop()->getAuthority() );
 		// `true` means to assign edits to the users we created above
 		$importer->setUsernamePrefix( 'import', true );
 		$importer->doImport();
