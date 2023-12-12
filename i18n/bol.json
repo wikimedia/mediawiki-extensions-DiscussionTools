@@ -4,5 +4,8 @@
 			"El-hussain14"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Guko"
+	"discussiontools-defaultsummary-reply": "Reply",
+	"discussiontools-replywidget-cancel": "Guko",
+	"discussiontools-replywidget-mode-source": "Zalshe",
+	"discussiontools-replywidget-summary": "Taƙaito"
 }
