@@ -678,7 +678,11 @@ class ThreadItemStore {
 									// which are causing conflicts (T339882, T343859#9185559)
 									->onDuplicateKeyUpdate()
 									->uniqueIndexFields( [ 'itr_itemid_id', 'itr_revision_id' ] )
-									->set( $newOrUpdateRevRow )
+									// Omit redundant updates to avoid warnings (T353432)
+									->set( array_diff_key(
+										$newOrUpdateRevRow,
+										[ 'itr_itemid_id' => true, 'itr_revision_id' => true ]
+									) )
 									->caller( $method )
 									->execute();
 								return $dbw->affectedRows() ? $dbw->insertId() : null;
