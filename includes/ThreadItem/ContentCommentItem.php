@@ -67,7 +67,7 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	}
 
 	/**
-	 * Get the HTML of this comment's body
+	 * Get the DOM of this comment's body
 	 *
 	 * @param bool $stripTrailingSeparator Strip a trailing separator between the body and
 	 *  the signature which consists of whitespace and hyphens e.g. ' --'
@@ -159,7 +159,7 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	}
 
 	/**
-	 * @return ImmutableRange Range of the thread item's "body"
+	 * @return ImmutableRange Range of the comment's "body"
 	 */
 	public function getBodyRange(): ImmutableRange {
 		// Exclude last signature from body
