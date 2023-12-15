@@ -762,7 +762,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 		endContainer: timestampNode.parentNode,
 		endOffset: utils.childIndexOf( timestampNode ) + 1
 	};
-	var nativeRange = ThreadItem.prototype.getNativeRange.call( { range: range } );
+	var nativeRange = ThreadItem.prototype.getRange.call( { range: range } );
 
 	// Expand the range so that it covers sibling nodes.
 	// This will include any wrapping formatting elements as part of the signature.

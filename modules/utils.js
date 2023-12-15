@@ -355,7 +355,7 @@ function getCoveredSiblings( range ) {
  * @return {Node[]|null}
  */
 function getFullyCoveredSiblings( item, excludedAncestorNode ) {
-	var siblings = getCoveredSiblings( item.getNativeRange() );
+	var siblings = getCoveredSiblings( item.getRange() );
 
 	function makeRange( sibs ) {
 		var range = sibs[ 0 ].ownerDocument.createRange();
@@ -364,7 +364,7 @@ function getFullyCoveredSiblings( item, excludedAncestorNode ) {
 		return range;
 	}
 
-	var matches = compareRanges( makeRange( siblings ), item.getNativeRange() ) === 'equal';
+	var matches = compareRanges( makeRange( siblings ), item.getRange() ) === 'equal';
 
 	if ( matches ) {
 		// If these are all of the children (or the only child), go up one more level
@@ -372,7 +372,7 @@ function getFullyCoveredSiblings( item, excludedAncestorNode ) {
 		while (
 			( parent = siblings[ 0 ].parentNode ) &&
 			parent !== excludedAncestorNode &&
-			compareRanges( makeRange( [ parent ] ), item.getNativeRange() ) === 'equal'
+			compareRanges( makeRange( [ parent ] ), item.getRange() ) === 'equal'
 		) {
 			siblings = [ parent ];
 		}

@@ -369,7 +369,7 @@ function maybeShowFirstTimeAutoTopicSubPopup() {
 	} );
 
 	// Like in highlight()
-	lastHighlightComment.getNativeRange().insertNode( popup.$element[ 0 ] );
+	lastHighlightComment.getRange().insertNode( popup.$element[ 0 ] );
 	// Pull it outside of headings to avoid silly fonts
 	if ( popup.$element.closest( 'h1, h2, h3, h4, h5, h6' ).length ) {
 		popup.$element.closest( 'h1, h2, h3, h4, h5, h6' ).after( popup.$element );
