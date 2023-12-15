@@ -174,5 +174,27 @@
 		},
 		"config": "../data/enwiki-config.json",
 		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Heading with inline styles (oldparser)",
+		"title": "Talk:Heading_with_styles",
+		"dom": "cases/heading-style-oldparser/heading-style-oldparser.html",
+		"expected": {
+			"desktop": "cases/heading-style-oldparser/heading-style-oldparser-formatted-desktop.html",
+			"mobile": "cases/heading-style-oldparser/heading-style-oldparser-formatted-mobile.html"
+		},
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Heading with inline styles (parsoid)",
+		"title": "Talk:Heading_with_styles",
+		"dom": "cases/heading-style-parsoid/heading-style-parsoid.html",
+		"expected": {
+			"desktop": "cases/heading-style-parsoid/heading-style-parsoid-formatted-desktop.html",
+			"mobile": "cases/heading-style-parsoid/heading-style-parsoid-formatted-mobile.html"
+		},
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
 	}
 ]
