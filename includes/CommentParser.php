@@ -15,7 +15,6 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Title\MalformedTitleException;
-use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\Utils\MWTimestamp;
@@ -570,9 +569,8 @@ class CommentParser {
 			if ( $titleString === '' || !str_contains( $titleString, ':' ) ) {
 				return null;
 			}
-			try {
-				$title = $this->titleParser->parseTitle( $titleString );
-			} catch ( MalformedTitleException $err ) {
+			$title = $this->parseTitle( $titleString );
+			if ( !$title ) {
 				return null;
 			}
 		}
@@ -1112,7 +1110,8 @@ class CommentParser {
 			$transclRange = static::getTransclusionRange( $transclNode );
 			$compared = CommentUtils::compareRanges( $commentRange, $transclRange );
 			$transclTitles = $this->getTransclusionTitles( $transclNode );
-			$simpleTransclTitle = count( $transclTitles ) === 1 ? $transclTitles[0] : null;
+			$simpleTransclTitle = count( $transclTitles ) === 1 && $transclTitles[0] !== null ?
+				$this->parseTitle( $transclTitles[0] ) : null;
 
 			switch ( $compared ) {
 				case 'equal':
@@ -1121,9 +1120,12 @@ class CommentParser {
 						// Allow replying to some accidental complex transclusions consisting of only templates
 						// and wikitext (T313093)
 						if ( count( $transclTitles ) > 1 ) {
-							foreach ( $transclTitles as $transclTitle ) {
-								if ( $transclTitle && !$transclTitle->inNamespace( NS_TEMPLATE ) ) {
-									return true;
+							foreach ( $transclTitles as $transclTitleString ) {
+								if ( $transclTitleString !== null ) {
+									$transclTitle = $this->parseTitle( $transclTitleString );
+									if ( $transclTitle && !$transclTitle->inNamespace( NS_TEMPLATE ) ) {
+										return true;
+									}
 								}
 							}
 							// Continue examining the other ranges.
@@ -1139,12 +1141,13 @@ class CommentParser {
 						// (T289873)
 						// Continue examining the other ranges.
 						break;
-					} elseif ( !$simpleTransclTitle->canExist() ) {
-						// Special page transclusion, probably accidental (T344622). Don't return the title,
+					} elseif ( !$this->titleCanExist( $simpleTransclTitle ) ) {
+						// Special page transclusion (T344622) or something else weird. Don't return the title,
 						// since it's useless for replying, and can't be stored in the permalink database.
 						return true;
 					} else {
-						return $simpleTransclTitle->getPrefixedText();
+						Assert::precondition( $transclTitles[0] !== null, "Simple transclusion found" );
+						return strtr( $transclTitles[0], '_', ' ' );
 					}
 
 				case 'contains':
@@ -1161,12 +1164,13 @@ class CommentParser {
 					// Comment is contained within the transclusion
 					if ( $simpleTransclTitle === null ) {
 						return true;
-					} elseif ( !$simpleTransclTitle->canExist() ) {
-						// Special page transclusion, probably accidental (T344622). Don't return the title,
+					} elseif ( !$this->titleCanExist( $simpleTransclTitle ) ) {
+						// Special page transclusion (T344622) or something else weird. Don't return the title,
 						// since it's useless for replying, and can't be stored in the permalink database.
 						return true;
 					} else {
-						return $simpleTransclTitle->getPrefixedText();
+						Assert::precondition( $transclTitles[0] !== null, "Simple transclusion found" );
+						return strtr( $transclTitles[0], '_', ' ' );
 					}
 
 				case 'after':
@@ -1191,15 +1195,29 @@ class CommentParser {
 		return false;
 	}
 
+	private function titleCanExist( TitleValue $title ): bool {
+		return $title->getNamespace() >= NS_MAIN &&
+			!$title->isExternal() &&
+			$title->getText() !== '';
+	}
+
+	private function parseTitle( string $titleString ): ?TitleValue {
+		try {
+			return $this->titleParser->parseTitle( $titleString );
+		} catch ( MalformedTitleException $err ) {
+			return null;
+		}
+	}
+
 	/**
 	 * Return the page titles for each part of the transclusion, or nulls for each part that isn't
 	 * transcluded from another page.
 	 *
 	 * If the node represents a single-page transclusion, this will return an array containing a
-	 * single Title object.
+	 * single string.
 	 *
 	 * @param Element $node
-	 * @return (?Title)[]
+	 * @return array<string|null>
 	 */
 	private function getTransclusionTitles( Element $node ): array {
 		$dataMw = json_decode( $node->getAttribute( 'data-mw' ) ?? '', true );
@@ -1213,7 +1231,7 @@ class CommentParser {
 			) {
 				$parsoidHref = $part['template']['target']['href'];
 				Assert::precondition( substr( $parsoidHref, 0, 2 ) === './', "href has valid format" );
-				$out[] = Title::newFromText( urldecode( substr( $parsoidHref, 2 ) ) );
+				$out[] = urldecode( substr( $parsoidHref, 2 ) );
 			} else {
 				$out[] = null;
 			}
