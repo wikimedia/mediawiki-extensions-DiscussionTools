@@ -374,6 +374,12 @@ class CommentFormatter {
 					}
 				}
 				self::addOverflowMenuButton( $threadItem, $doc, $replyButtons );
+
+				$sigMarker = $doc->createElement( 'span' );
+				$sigMarker->setAttribute( 'data-mw-comment-sig', $id );
+				$signatureRanges = $threadItem->getSignatureRanges();
+				$lastSignature = end( $signatureRanges );
+				$lastSignature->insertNode( $sigMarker );
 			}
 
 			$range->insertNode( $startMarker );
