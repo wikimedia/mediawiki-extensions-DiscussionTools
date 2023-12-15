@@ -32,6 +32,7 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	/**
 	 * @param int $level
 	 * @param ImmutableRange $range
+	 * @param bool|string $transcludedFrom
 	 * @param ImmutableRange[] $signatureRanges Objects describing the extent of signatures (plus
 	 *  timestamps) for this comment. There is always at least one signature, but there may be
 	 *  multiple. The author and timestamp of the comment is determined from the first signature.
@@ -42,12 +43,12 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	 * @param ?string $displayName Comment author's display name
 	 */
 	public function __construct(
-		int $level, ImmutableRange $range,
+		int $level, ImmutableRange $range, $transcludedFrom,
 		array $signatureRanges, array $timestampRanges,
 		DateTimeImmutable $timestamp,
 		string $author, ?string $displayName = null
 	) {
-		parent::__construct( 'comment', $level, $range );
+		parent::__construct( 'comment', $level, $range, $transcludedFrom );
 		$this->signatureRanges = $signatureRanges;
 		$this->timestampRanges = $timestampRanges;
 		$this->timestamp = $timestamp;
