@@ -666,7 +666,7 @@ function init( $container, state ) {
 					}
 				} );
 			}
-			if ( highlightResult.highlighted.length === 0 && highlightResult.requested.length > 1 || highlightResult.requestedSince ) {
+			if ( highlightResult.highlighted.length === 0 && ( highlightResult.requested.length > 1 || highlightResult.requestedSince ) ) {
 				dismissableNotificationPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
 					return mw.notification.notify(
 						mw.message( 'discussiontools-target-comments-missing' ).text(),
