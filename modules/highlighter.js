@@ -27,7 +27,7 @@ function Highlight( items ) {
 		// We insert the highlight in the DOM near the thead item, so that it remains positioned correctly
 		// when it shifts (e.g. collapsing the table of contents), and disappears when it is hidden (e.g.
 		// opening visual editor).
-		var range = item.getNativeRange();
+		var range = item.getRange();
 		// Support: Firefox
 		// The highlight node must be inserted after the start marker node (data-mw-comment-start), not
 		// before, otherwise Node#getBoundingClientRect() returns wrong results.

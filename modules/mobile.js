@@ -147,7 +147,7 @@ function init( $container ) {
 mw.hook( 'discussionToolsOverflowMenuOnChoose' ).add( function ( id, menuItem, threadItem ) {
 	if ( id === 'edit' ) {
 		// Click the hidden section-edit link
-		$( threadItem.getNativeRange().commonAncestorContainer )
+		$( threadItem.getRange().commonAncestorContainer )
 			.closest( '.ext-discussiontools-init-section' ).find( '.mw-editsection > a' ).trigger( 'click' );
 	}
 } );
