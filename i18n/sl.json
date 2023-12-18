@@ -151,6 +151,8 @@
 	"discussiontools-target-comment-missing": "Tega komentarja ni bilo mogoče najti. Morda je bil izbrisan ali prestavljen.",
 	"discussiontools-target-comments-missing": "Novih komentarjev ni bilo mogoče najti. Morda so bili izbrisani ali prestavljeni.",
 	"discussiontools-target-heading-missing": "Te teme ni bilo mogoče najti. Morda je bila izbrisana ali prestavljena.",
+	"discussiontools-target-comment-found-moved": "Tega komentarja ni bilo mogoče najti na tej strani, obstaja pa na {{PLURAL:$1|naslednji strani|naslednjih straneh}}:",
+	"discussiontools-target-heading-found-moved": "Te teme ni bilo mogoče najti na tej strani, obstaja pa na {{PLURAL:$1|naslednji strani|naslednjih straneh}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|oseba|osebi|osebe|oseb}} v pogovoru",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentarja|komentarji|komentarjev}}",
 	"discussiontools-topicheader-latestcomment": "Zadnji komentar: $1",
