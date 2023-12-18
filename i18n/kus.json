@@ -7,6 +7,7 @@
 			"Bugirbiig",
 			"Mozanky",
 			"Musahfm",
+			"Poasana Anabah",
 			"WINDOL"
 		]
 	},
@@ -147,6 +148,7 @@
 	"discussiontools-target-comment-missing": "Pʋ nye lɛbisʋg nwaa. Li tɔn'ɛ n saae bɛɛ tɔɔm zin'ig.",
 	"discussiontools-target-comments-missing": "Pʋ nye lɛbisʋg paalɛ. Ba tɔn'ɛ saae bɛɛ tɔɔm zin'ig.",
 	"discussiontools-target-heading-missing": "Pʋ nye yɛlzug nwaa. Li tɔn'ɛ saae bɛɛ tɔɔm zin'ig.",
+	"discussiontools-target-heading-found-moved": "Pian' kaŋa nwa pʋ bɛ lakir nwa nii, amaa li bɛ linɛ dɔl la ni  {{PLURAL:$1|page|pages}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|nid|nidib}} bɛ sɔnsigin",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|lɛbisʋg|lɛbisa}}",
 	"discussiontools-topicheader-latestcomment": "Lɛbis paal: $1",

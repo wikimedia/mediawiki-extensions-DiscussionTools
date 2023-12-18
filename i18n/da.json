@@ -8,7 +8,8 @@
 			"Sarrus",
 			"SiGNOUT",
 			"Steenth",
-			"Weblars"
+			"Weblars",
+			"Zakawer2"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -98,6 +99,8 @@
 	"discussiontools-replywidget-summary": "Redigeringsbeskrivelse",
 	"discussiontools-replywidget-terms-click": "Ved at klikke på \"$1\" accepterer {{GENDER:|du}} brugsbetingelserne for denne wiki.",
 	"discussiontools-replywidget-watchthis": "Tilføj denne side til din [[Special:Watchlist|overvågningsliste]]",
+	"discussiontools-target-comment-found-moved": "Denne kommentar kunne ikke findes på denne side, men faktisk eksisterer den på {{PLURAL:$1|den|de}} følgende {{PLURAL:$1|side|sider}}:",
+	"discussiontools-target-heading-found-moved": "Dette emne kunne ikke findes på denne side, men faktisk eksisterer det på {{PLURAL:$1|den|de}} følgende {{PLURAL:$1|side|sider}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|personer}} i diskussionen",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|indlæg}}",
 	"discussiontools-topicheader-latestcomment": "Seneste indlæg: $1",
