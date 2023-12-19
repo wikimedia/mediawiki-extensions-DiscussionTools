@@ -33,6 +33,8 @@
 	"discussiontools-findcomment-title": "Bɔmi tɔɣino",
 	"discussiontools-limitreport-timeusage-value": "{{PLURAL:$1|}}",
 	"discussiontools-newtopic-placeholder-title": "Baŋsim yaɣili",
+	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|One topic was|$1 topics were|100=99+ topics were}} beni bee n-yi $2 ni.",
+	"discussiontools-notification-removed-topic-header-compact": "Yɛltɔɣ' kpani \"<strong>$4</strong>\" zaa beni bee n-yi.",
 	"discussiontools-notification-removed-topic-view": "Yulimi paaji",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|labisibu}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Labisiri palli yini|$1 new replies|100=99+ labisiri pala}} din be \"<strong>$3</strong>\".",
