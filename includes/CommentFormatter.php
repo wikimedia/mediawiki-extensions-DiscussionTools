@@ -115,6 +115,15 @@ class CommentFormatter {
 			$wrapperNode instanceof Element &&
 			DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' )
 		) ) {
+			// Do not add the wrapper if the heading has attributes generated from wikitext (T353489).
+			// Only allow reserved attributes (e.g. 'data-mw', which can't be used in wikitext, but which
+			// are used internally by our own code and by Parsoid) and the 'id' attribute used by Parsoid.
+			foreach ( $headingElement->attributes as $attr ) {
+				if ( $attr->name !== 'id' && !Sanitizer::isReservedDataAttribute( $attr->name ) ) {
+					return $headingElement;
+				}
+			}
+
 			$wrapperNode = $doc->createElement( 'div' );
 			$wrapperNode->setAttribute( 'class', 'mw-heading mw-heading2' );
 			$headingElement->parentNode->insertBefore( $wrapperNode, $headingElement );
