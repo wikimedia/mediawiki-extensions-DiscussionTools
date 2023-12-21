@@ -63,7 +63,7 @@
 	"discussiontools-replywidget-abandon-keep": "ဆက်လက် ရေးသားမည်",
 	"discussiontools-replywidget-abandontopic-keep": "ဆက်လက် ရေးသားမည်",
 	"discussiontools-replywidget-advanced": "အဆင့်မြင့်",
-	"discussiontools-replywidget-anon-warning": "<strong>သင်သည် အကောင့် ဝင်မထားပါ။</strong> သင့်အိုင်ပီလိပ်စာ အစား သင့်အမည်ကို ဖော်ပြနိုင်ရန်အတွက် [$1 အကောင့်ဝင်ခြင်] သို့မဟုတ် [$2 အကောင့်တစ်ခု ဖန်တီးခြင်း]ကို ဆောင်ရွက်နိုင်ပါသည်။",
+	"discussiontools-replywidget-anon-warning": "<strong>သင်သည် အကောင့် ဝင်မထားပါ။</strong> တစ်စုံတစ်ဦး အကြောင်းပြန်သောအခါနှင့် ဆက်စပ်လုပ်ဆောင်ချက်များအား သင့်အိုင်ပီလိပ်စာ အစား သင့်အမည်ဖြင့် အသိပေးချက် ဖော်ပြနိုင်ရန်အတွက် [$1 အကောင့်ဝင်ခြင်း] သို့မဟုတ် [$2 အကောင့်တစ်ခု ဖန်တီးခြင်း]ကို ဆောင်ရွက်နိုင်ပါသည်။",
 	"discussiontools-replywidget-cancel": "မလုပ်တော့ပါ",
 	"discussiontools-replywidget-feedback": "ဤလုပ်ဆောင်ချက်နှင့် ပတ်သက်၍ သုံးသပ်အကြံပြုမှုကို မျှဝေရန်",
 	"discussiontools-replywidget-feedback-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/Replying",

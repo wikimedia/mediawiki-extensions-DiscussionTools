@@ -5,7 +5,8 @@
 			"Amire80",
 			"Azoure latif 2",
 			"Hasslaebetch",
-			"Soumaya"
+			"Soumaya",
+			"Raizkgh"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "M paama-a lame.",
@@ -38,9 +39,9 @@
 	"discussiontools-notification-removed-topic-header-compact": "B sẽn tall \"<strong>$4</strong>\" yellã b sẽn tall n yiis-a wã.",
 	"discussiontools-notification-removed-topic-view": "Seb-vão paalé",
 	"discussiontools-notification-removed-topic-disable": "Bas-y n deegd sõss wa woto",
-	"discussiontools-notification-removed-topic-disabled-body": "Y tõe n toeema kada pʋge ne [[Special: Preferences #mw-preferences-echo-echosubscriptions|your preferences]]",
+	"discussiontools-notification-removed-topic-disabled-body": "Y tõe n toeema kada pʋge ne [[Special:Preferences#mw-prefsection-echo-echosubscriptions|your preferences]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2 replied}} ne \"<strong>$4</strong>\".",
-	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1 on One new \n\ntopic = $100 = 99+ new topics}} \"\n\n<strong>$2</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|One new reply|$1 new replies|100=99+ new replies}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Bao-y sõsg ning sẽn be be wã",
 	"discussiontools-pageframe-latestcomment": "Sõsg a ye: $1 ne $2 yell a 3 pʋgẽ $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Yaoolem tagsgo: $1 ne $2",
