@@ -6,7 +6,8 @@
 			"Amire80",
 			"ANTHONY DERY",
 			"NgmenRaphael",
-			"Zakaria Tunsung"
+			"Zakaria Tunsung",
+			"Joachim Yirkang"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Leɛ sagbo",
@@ -25,5 +26,8 @@
 	"tag-discussiontools-description": "Maale emmo e yineŋ dɛmmoboma",
 	"tag-discussiontools-edit-description": "Tontonaa maale eŋe yelteɛbo neŋ dɛmmobom",
 	"tag-discussiontools-newtopic-description": "Tontonneba eŋ la yelzu paala a gampɛle neŋ dɛmmoboma",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} nɔ-iri]"
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} nɔ-iri]",
+	"tag-discussiontools-reply-description": "Tontona sage la a yɛlɛ a yɛlɛ dieŋ poɔ",
+	"tag-discussiontools-source-description": "Kya kya ŋa da be la a yɛlɛ yizie",
+	"tag-discussiontools-visual-description": "Dɛmmo diibu boma da be la nimie nyaabo moode"
 }
