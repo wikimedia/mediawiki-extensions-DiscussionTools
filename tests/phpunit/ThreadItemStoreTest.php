@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use ExtensionRegistry;
 use ImportStringSource;
 use MediaWiki\MediaWikiServices;
 use TestUser;
@@ -35,6 +36,9 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 		) {
 			$this->markTestSkipped( 'Set PHPUNIT_USE_NORMAL_TABLES=1 env variable to run these tests, ' .
 				'otherwise they would fail due to a MySQL bug with temporary tables (T256006)' );
+		}
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Liquid Threads' ) ) {
+			$this->setMwGlobals( 'wgLqtTalkPages', false );
 		}
 
 		// Create users for the imported revisions
