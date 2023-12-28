@@ -145,6 +145,7 @@
 	"discussiontools-topicheader-latestcomment": "Последњи коментар: $1",
 	"discussiontools-topicsubscription-action-subscribe-button": "Прати",
 	"discussiontools-topicsubscription-action-subscribe-prompt": "Пратите ову тему?",
+	"discussiontools-topicsubscription-action-subscribe-prompt-newtopics": "Обавештавај ме о новим темама на овој страници?",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Прекини праћење",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Прекини праћење ове теме?",
 	"discussiontools-topicsubscription-button-subscribe": "прати",
