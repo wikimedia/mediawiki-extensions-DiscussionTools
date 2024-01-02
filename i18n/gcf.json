@@ -8,6 +8,8 @@
 	"discussiontools-replylink": "{{GENDER:|réponn}}",
 	"discussiontools-replywidget-advanced": "Chèché on jan plibon",
 	"discussiontools-replywidget-cancel": "Anilé",
+	"discussiontools-replywidget-mode-visual": "Vizyèl",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Réponn}} a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Prévizyalizasyon",
 	"discussiontools-replywidget-reply": "{{GENDER:|Réponn}}",
 	"discussiontools-replywidget-summary": "Rézimé",
