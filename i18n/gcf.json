@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Histnou"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Répons",
+	"discussiontools-replywidget-advanced": "Chèché on jan plibon",
+	"discussiontools-replywidget-cancel": "Anilé",
+	"discussiontools-replywidget-preview": "Prévizyalizasyon",
+	"discussiontools-replywidget-summary": "Rézimé",
+	"discussiontools-replywidget-watchthis": "Ajouté paj-lasa asi [[Special:Watchlist|lis-ou-véyé]] a-w",
+	"discussiontools-topicheader-latestcomment": "Dènyé kòmantè : $1",
+	"discussiontools-topicsubscription-button-subscribe": "abonné-w",
+	"discussiontools-topicsubscription-button-subscribe-label": "Abonné-w",
+	"discussiontools-topicsubscription-button-unsubscribe": "Dézabonné-w",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Dezabonné-w"
+}

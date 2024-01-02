@@ -6,5 +6,18 @@
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Kala",
 	"discussiontools-autotopicsubpopup-preferences": "Tjiyinytji yunytjurriwa tjuṯa",
-	"discussiontools-replywidget-preferences": "Yunytjurriwa tjuṯa"
+	"discussiontools-defaultsummary-reply": "Wangka",
+	"discussiontools-replywidget-advanced": "Tayiti",
+	"discussiontools-replywidget-cancel": "Iluntarra",
+	"discussiontools-replywidget-mode-source": "Puutulawana",
+	"discussiontools-replywidget-mode-visual": "Nyawa",
+	"discussiontools-replywidget-preferences": "Yunytjurriwa tjuṯa",
+	"discussiontools-replywidget-preview": "Nyawa",
+	"discussiontools-replywidget-summary": "Rangkalpa",
+	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|wangka}} 1",
+	"discussiontools-topicheader-latestcomment": "Wangka nyuwana: $1",
+	"discussiontools-topicsubscription-button-subscribe": "tjapukraypa",
+	"discussiontools-topicsubscription-button-subscribe-label": "Tjapukraypa",
+	"discussiontools-topicsubscription-button-unsubscribe": "wiya tjapukraypa",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Wiya tjapukraypa"
 }
