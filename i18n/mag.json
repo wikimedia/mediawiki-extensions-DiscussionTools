@@ -17,7 +17,7 @@
 	"discussiontools-replywidget-watchthis": "एकरा अपन [[Special:Watchlist|ध्यानसूचीमे]] डाली",
 	"discussiontools-topicheader-authorcount": "बार्तालापमे $1 {{PLURAL:$1|लोग}}",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|टिप्पणी}}",
-	"discussiontools-topicheader-latestcomment": "सबसे नया टिप्पणी: $1",
+	"discussiontools-topicheader-latestcomment": "सबसे नया टिप्पणी : $1",
 	"discussiontools-topicsubscription-button-subscribe": "सदस्सता ली",
 	"discussiontools-topicsubscription-button-subscribe-label": "सदस्सता",
 	"discussiontools-topicsubscription-button-unsubscribe": "सदस्सता समाप्त करी",
