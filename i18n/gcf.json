@@ -4,11 +4,17 @@
 			"Histnou"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "Ok, an konprann-li",
+	"discussiontools-autotopicsubpopup-preferences": "Modifyé préférans",
 	"discussiontools-defaultsummary-reply": "Répons",
+	"discussiontoolsdebug-pagetitle": "Tit a paj",
+	"discussiontools-emptystate-button": "Konmansé on bokantaj",
+	"discussiontools-emptystate-title-self": "{{GENDER:|Nou kontan vwè-w}} asi paj a bokantaj a-w",
+	"discussiontools-emptystate-title-self-anon": "{{GENDER:|Nou kontan vwè-w}} asi paj a bokantaj-lasa",
 	"discussiontools-replylink": "{{GENDER:|réponn}}",
 	"discussiontools-replywidget-advanced": "Chèché on jan plibon",
 	"discussiontools-replywidget-cancel": "Anilé",
-	"discussiontools-replywidget-mode-source": "Sous",
+	"discussiontools-replywidget-mode-source": "Chouk",
 	"discussiontools-replywidget-mode-visual": "Vizyèl",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Réponn}} a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Prévizyalizasyon",

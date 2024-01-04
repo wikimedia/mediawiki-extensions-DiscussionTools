@@ -179,6 +179,8 @@
 	"discussiontools-target-comment-missing": "未找到该留言。它可能已被删除或移动。",
 	"discussiontools-target-comments-missing": "未找到新留言。它们可能已被删除或移动。",
 	"discussiontools-target-heading-missing": "未找到该话题。它可能已被删除或移动。",
+	"discussiontools-target-comment-found-moved": "无法在此页面上找到该留言，但其存在于以下{{PLURAL:$1|页面}}：",
+	"discussiontools-target-heading-found-moved": "无法在此页面上找到该话题，但其存在于以下{{PLURAL:$1|页面}}：",
 	"discussiontools-topicheader-authorcount": "$1{{PLURAL:$1|人}}参与讨论",
 	"discussiontools-topicheader-commentcount": "$1{{PLURAL:$1|条留言}}",
 	"discussiontools-topicheader-latestcomment": "最新留言：$1",
