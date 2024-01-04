@@ -287,7 +287,6 @@ h1, h2, h3, h4, h5, h6 {
 // Visual enhancements disabled
 .ext-discussiontools-init-section-bar,
 .ext-discussiontools-init-replybutton.oo-ui-buttonElement,
-.ext-discussiontools-init-readAsWikiPage,
 .ext-discussiontools-init-pageframe-latestcomment,
 .ext-discussiontools-init-sidebar-meta {
 	display: none;
@@ -753,9 +752,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // DiscussionTools automatically enables most features on mobile.
-// When we detect that it's enabled, hide the lede section, and show a "Read as wiki page" button
-// to reveal it.
-// The button will disable all DT features by removing feature CSS classes.
+// When we detect that it's enabled, hide the lede section.
 // stylelint-disable-next-line selector-class-pattern
 .mw-mf.ns-talk.ext-discussiontools-replytool-enabled {
 	&.ext-discussiontools-init-lede-hidden {
@@ -773,10 +770,6 @@ h1, h2, h3, h4, h5, h6 {
 				margin-top: 0;
 			}
 		}
-	}
-
-	.ext-discussiontools-init-readAsWikiPage {
-		display: block;
 	}
 
 	// Always hide the table of content. This is usually hidden by the mf-section-0 rules,
@@ -813,11 +806,6 @@ h1, h2, h3, h4, h5, h6 {
 		// stylelint-disable-next-line declaration-no-important
 		display: none !important;
 	}
-}
-
-.ext-discussiontools-init-readAsWikiPage {
-	/* Not sticky per T309889 */
-	.minerva-footer-button();
 }
 
 .ext-discussiontools-init-new-topic {
@@ -859,22 +847,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Tweak to prevent our footer buttons from overlapping Minerva skin elements (T328452).
-// In cases where the "Read as wiki page" button is not shown:
 .client-nojs .ext-discussiontools-init-new-topic,
 .ext-discussiontools-init-new-topic-pinned.ext-discussiontools-init-button-notFlush {
 	margin-bottom: 32px;
-}
-
-// In cases where the "Read as wiki page" button is shown:
-// stylelint-disable-next-line selector-class-pattern
-.client-js .mw-mf.ns-talk.ext-discussiontools-replytool-enabled {
-	.ext-discussiontools-init-new-topic-pinned.ext-discussiontools-init-button-notFlush {
-		margin-bottom: -32px;
-	}
-
-	.ext-discussiontools-init-readAsWikiPage.ext-discussiontools-init-button-notFlush {
-		margin-bottom: 32px;
-	}
 }
 
 .ext-discussiontools-init-lede-button-container {

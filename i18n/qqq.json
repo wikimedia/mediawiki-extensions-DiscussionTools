@@ -209,7 +209,6 @@
 	"echo-category-title-dt-subscription-archiving": "{{doc-echo-category-title|tooltip=Echo-pref-tooltip-dt-subscription-archiving}}",
 	"echo-pref-tooltip-dt-subscription": "{{doc-echo-pref-tooltip|title=Echo-category-title-dt-subscription}}",
 	"echo-pref-tooltip-dt-subscription-archiving": "{{doc-echo-pref-tooltip|title=Echo-category-title-dt-subscription-archiving}}",
-	"minerva-talk-full-page": "Used as label for link to show the full talk page.",
 	"discussiontools-comments-before-first-heading-category": "{{ignored}}\n{{tracking category name}}",
 	"discussiontools-comments-before-first-heading-category-desc": "Tracking category description.",
 	"tag-discussiontools": "{{ignored}}\nShort description of the discussiontools tag.\n\nShown on lists of changes (history, recentchanges, etc.) for each edit made using DiscussionTools.\n\nSee also:\n* {{msg-mw|Tag-discussiontools-description}}\n{{Related|tag-discussiontools}}",
