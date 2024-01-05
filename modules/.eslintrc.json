@@ -29,6 +29,7 @@
 				"HeadingItem": "HeadingItem",
 				"MemoryStorage": "MemoryStorage",
 				"moment": "moment",
+				"ReplyWidget": "ReplyWidget",
 				"ThreadItemSet": "ThreadItemSet",
 				"ThreadItem": "ThreadItem"
 			}

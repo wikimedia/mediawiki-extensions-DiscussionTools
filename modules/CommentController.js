@@ -153,8 +153,6 @@ CommentController.prototype.setup = function ( options ) {
 					type: 'preinit'
 				} );
 
-				this.replyWidgetPromise = null;
-
 				return $.Deferred().reject();
 			}
 		);
@@ -350,36 +348,34 @@ CommentController.prototype.setupReplyWidget = function ( replyWidget, data, sup
 	replyWidget.setup( data, suppressNotifications );
 	replyWidget.updateNewCommentsWarning( this.newComments );
 	replyWidget.updateParentRemovedError( this.parentRemoved );
-	replyWidget.connect( this, { submit: 'onReplySubmit' } );
-
-	this.replyWidget = replyWidget;
+	replyWidget.connect( this, { submit: [ 'onReplySubmit', replyWidget ] } );
 };
 
 CommentController.prototype.storeEditSummary = function () {
-	if ( this.replyWidget ) {
-		this.replyWidget.storage.set( 'summary', this.replyWidget.getEditSummary() );
-	}
+	this.replyWidgetPromise.then( ( replyWidget ) => {
+		replyWidget.storage.set( 'summary', replyWidget.getEditSummary() );
+	} );
 };
 
 /**
  * Focus the first input field inside the controller.
  */
 CommentController.prototype.focus = function () {
-	this.replyWidget.focus();
+	this.replyWidgetPromise.then( ( replyWidget ) => {
+		replyWidget.focus();
+	} );
 };
 
 /**
  * Scroll the widget into view and focus it
  */
 CommentController.prototype.showAndFocus = function () {
-	if ( this.replyWidgetPromise ) {
-		this.replyWidgetPromise.then( ( replyWidget ) => {
-			replyWidget.scrollElementIntoView( { padding: scrollPadding } )
-				.then( () => {
-					this.focus();
-				} );
-		} );
-	}
+	this.replyWidgetPromise.then( ( replyWidget ) => {
+		replyWidget.scrollElementIntoView( { padding: scrollPadding } )
+			.then( () => {
+				this.focus();
+			} );
+	} );
 };
 
 /**
@@ -388,10 +384,7 @@ CommentController.prototype.showAndFocus = function () {
  * @return {jQuery.Promise} Resolves when the widget is torn down, rejects if it fails.
  */
 CommentController.prototype.tryTeardown = function () {
-	if ( this.replyWidgetPromise ) {
-		return this.replyWidgetPromise.then( ( replyWidget ) => replyWidget.tryTeardown() );
-	}
-	return $.Deferred().resolve().promise();
+	return this.replyWidgetPromise.then( ( replyWidget ) => replyWidget.tryTeardown() );
 };
 
 /**
@@ -421,14 +414,14 @@ CommentController.prototype.onReplyWidgetTeardown = function ( mode ) {
 /**
  * Get the parameters of the API query that can be used to post this comment.
  *
+ * @param {ReplyWidget} replyWidget Reply widget
  * @param {string} pageName Title of the page to post on
  * @param {Object} checkboxes Value of the promise returned by controller#getCheckboxesPromise
  * @param {Object} extraParams Extra params to pass to the API
  * @return {Object.<string,string>} API query data
  */
-CommentController.prototype.getApiQuery = function ( pageName, checkboxes, extraParams ) {
+CommentController.prototype.getApiQuery = function ( replyWidget, pageName, checkboxes, extraParams ) {
 	const threadItem = this.getThreadItem();
-	const replyWidget = this.replyWidget;
 	const sameNameComments = this.threadItemSet.findCommentsByName( threadItem.name );
 
 	const mode = replyWidget.getMode();
@@ -483,46 +476,46 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes, extra
 /**
  * Handle the reply widget being submitted
  *
+ * @param {ReplyWidget} replyWidget Reply widget
  * @param {Object} extraParams Extra params to pass to the API
  */
-CommentController.prototype.onReplySubmit = function ( extraParams ) {
-	if ( !this.replyWidget ) {
-		return;
-	}
-
-	this.replyWidget.clearSaveErrorMessage();
+CommentController.prototype.onReplySubmit = function ( replyWidget, extraParams ) {
+	replyWidget.clearSaveErrorMessage();
 
 	this.saveInitiated = mw.now();
-	this.replyWidget.setPending( true );
+	replyWidget.setPending( true );
 
 	mw.track( 'editAttemptStep', { action: 'saveIntent' } );
 	mw.track( 'editAttemptStep', { action: 'saveAttempt' } );
 
 	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
-	this.save( this.replyWidget.pageName, extraParams )
-		.then( null, this.saveFail.bind( this ) )
+	this.save( replyWidget, replyWidget.pageName, extraParams )
+		.then( null, ( code, data ) => {
+			this.saveFail( replyWidget, code, data );
+		} )
 		.always( () => {
-			this.replyWidget.setPending( false );
+			replyWidget.setPending( false );
 		} );
 };
 
 /**
  * Handle save failures from the API
  *
+ * @param {ReplyWidget} replyWidget Reply widget
  * @param {string} code Error code
  * @param {Object} data Error data
  */
-CommentController.prototype.saveFail = function ( code, data ) {
+CommentController.prototype.saveFail = function ( replyWidget, code, data ) {
 	this.startPoll();
 
 	const captchaData = OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' );
 
 	if ( captchaData ) {
 		code = 'captcha';
-		this.replyWidget.clearCaptcha();
-		this.replyWidget.setCaptcha( captchaData );
+		replyWidget.clearCaptcha();
+		replyWidget.setCaptcha( captchaData );
 	} else {
-		this.replyWidget.setSaveErrorMessage( code, data );
+		replyWidget.setSaveErrorMessage( code, data );
 	}
 
 	if ( code instanceof Error ) {
@@ -562,18 +555,18 @@ CommentController.prototype.saveFail = function ( code, data ) {
 /**
  * Save the comment in the comment controller
  *
+ * @param {ReplyWidget} replyWidget Reply widget
  * @param {string} pageName Page title
  * @param {Object} extraParams Extra params to pass to the API
  * @return {jQuery.Promise} Promise which resolves when the save is complete
  */
-CommentController.prototype.save = function ( pageName, extraParams ) {
+CommentController.prototype.save = function ( replyWidget, pageName, extraParams ) {
 	this.stopPoll();
 
-	const replyWidget = this.replyWidget,
-		threadItem = this.getThreadItem();
+	const threadItem = this.getThreadItem();
 
-	return this.replyWidget.checkboxesPromise.then( ( checkboxes ) => {
-		const data = this.getApiQuery( pageName, checkboxes, extraParams );
+	return replyWidget.checkboxesPromise.then( ( checkboxes ) => {
+		const data = this.getApiQuery( replyWidget, pageName, checkboxes, extraParams );
 
 		if (
 			// We're saving the first comment on a page that previously didn't exist.
@@ -689,41 +682,42 @@ CommentController.prototype.setParentRemoved = function ( parentRemoved ) {
  * @return {jQuery.Promise} Promise which resolves when switch is complete
  */
 CommentController.prototype.switchToWikitext = function () {
-	const oldWidget = this.replyWidget,
-		target = oldWidget.replyBodyWidget.target,
-		oldShowAdvanced = oldWidget.showAdvanced,
-		oldEditSummary = oldWidget.getEditSummary(),
-		previewDeferred = $.Deferred();
+	return this.replyWidgetPromise.then( ( oldWidget ) => {
+		const target = oldWidget.replyBodyWidget.target,
+			oldShowAdvanced = oldWidget.showAdvanced,
+			oldEditSummary = oldWidget.getEditSummary(),
+			previewDeferred = $.Deferred();
 
-	// TODO: We may need to pass oldid/etag when editing is supported
-	const wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
-	this.replyWidgetPromise = this.createReplyWidget(
-		oldWidget.commentDetails,
-		{ mode: 'source' }
-	);
+		// TODO: We may need to pass oldid/etag when editing is supported
+		const wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
+		this.replyWidgetPromise = this.createReplyWidget(
+			oldWidget.commentDetails,
+			{ mode: 'source' }
+		);
 
-	return $.when( wikitextPromise, this.replyWidgetPromise ).then( ( wikitext, replyWidget ) => {
-		// To prevent the "Reply" / "Cancel" buttons from shifting when the preview loads,
-		// wait for the preview (but no longer than 500 ms) before swithing the editors.
-		replyWidget.preparePreview( wikitext ).then( previewDeferred.resolve );
-		setTimeout( previewDeferred.resolve, 500 );
+		return $.when( wikitextPromise, this.replyWidgetPromise ).then( ( wikitext, newWidget ) => {
+			// To prevent the "Reply" / "Cancel" buttons from shifting when the preview loads,
+			// wait for the preview (but no longer than 500 ms) before swithing the editors.
+			newWidget.preparePreview( wikitext ).then( previewDeferred.resolve );
+			setTimeout( previewDeferred.resolve, 500 );
 
-		return previewDeferred.then( () => {
-			// Teardown the old widget
-			oldWidget.disconnect( this );
-			oldWidget.teardown();
+			return previewDeferred.then( () => {
+				// Teardown the old widget
+				oldWidget.disconnect( this );
+				oldWidget.teardown();
 
-			// Swap out the DOM nodes
-			oldWidget.$element.replaceWith( replyWidget.$element );
+				// Swap out the DOM nodes
+				oldWidget.$element.replaceWith( newWidget.$element );
 
-			this.setupReplyWidget( replyWidget, {
-				value: wikitext,
-				showAdvanced: oldShowAdvanced,
-				editSummary: oldEditSummary
+				this.setupReplyWidget( newWidget, {
+					value: wikitext,
+					showAdvanced: oldShowAdvanced,
+					editSummary: oldEditSummary
+				} );
+
+				// Focus the editor
+				newWidget.focus();
 			} );
-
-			// Focus the editor
-			replyWidget.focus();
 		} );
 	} );
 };
@@ -789,97 +783,98 @@ CommentController.prototype.getUnsupportedNodeSelectors = function () {
  * @return {jQuery.Promise} Promise which resolves when switch is complete
  */
 CommentController.prototype.switchToVisual = function () {
-	const oldWidget = this.replyWidget,
-		oldShowAdvanced = oldWidget.showAdvanced,
-		oldEditSummary = oldWidget.getEditSummary();
-	let wikitext = oldWidget.getValue();
+	return this.replyWidgetPromise.then( ( oldWidget ) => {
+		const oldShowAdvanced = oldWidget.showAdvanced,
+			oldEditSummary = oldWidget.getEditSummary();
+		let wikitext = oldWidget.getValue();
 
-	// Replace wikitext signatures with a special marker recognized by DtDmMWSignatureNode
-	// to render them as signature nodes in visual mode.
-	wikitext = wikitext.replace(
-		// Replace ~~~~ (four tildes), but not ~~~~~ (five tildes)
-		/([^~]|^)~~~~([^~]|$)/g,
-		'$1<span data-dtsignatureforswitching="1"></span>$2'
-	);
+		// Replace wikitext signatures with a special marker recognized by DtDmMWSignatureNode
+		// to render them as signature nodes in visual mode.
+		wikitext = wikitext.replace(
+			// Replace ~~~~ (four tildes), but not ~~~~~ (five tildes)
+			/([^~]|^)~~~~([^~]|$)/g,
+			'$1<span data-dtsignatureforswitching="1"></span>$2'
+		);
 
-	let parsePromise;
-	if ( wikitext ) {
-		wikitext = this.doIndentReplacements( wikitext, dtConf.replyIndentation === 'invisible' ? ':' : '*' );
+		let parsePromise;
+		if ( wikitext ) {
+			wikitext = this.doIndentReplacements( wikitext, dtConf.replyIndentation === 'invisible' ? ':' : '*' );
 
-		// Based on ve.init.mw.Target#parseWikitextFragment
-		parsePromise = controller.getApi().post( {
-			action: 'visualeditor',
-			paction: 'parsefragment',
-			page: oldWidget.pageName,
-			wikitext: wikitext,
-			pst: true
-		} ).then( ( response ) => response && response.visualeditor.content );
-	} else {
-		parsePromise = $.Deferred().resolve( '' ).promise();
-	}
-	this.replyWidgetPromise = this.createReplyWidget(
-		oldWidget.commentDetails,
-		{ mode: 'visual' }
-	);
-
-	return $.when( parsePromise, this.replyWidgetPromise ).then( ( html, replyWidget ) => {
-		const unsupportedSelectors = this.getUnsupportedNodeSelectors();
-
-		let doc;
-		if ( html ) {
-			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
-			// Remove RESTBase IDs (T253584)
-			mw.libs.ve.stripRestbaseIds( doc );
-			// Check for tables, headings, images, templates
-			for ( const type in unsupportedSelectors ) {
-				if ( doc.querySelector( unsupportedSelectors[ type ] ) ) {
-					const $msg = $( '<div>' ).html(
-						mw.message(
-							'discussiontools-error-noswitchtove',
-							// The following messages are used here:
-							// * discussiontools-error-noswitchtove-extension
-							// * discussiontools-error-noswitchtove-table
-							// * discussiontools-error-noswitchtove-template
-							mw.msg( 'discussiontools-error-noswitchtove-' + type )
-						).parse()
-					);
-					$msg.find( 'a' ).attr( {
-						target: '_blank',
-						rel: 'noopener'
-					} );
-					OO.ui.alert(
-						$msg.contents(),
-						{
-							title: mw.msg( 'discussiontools-error-noswitchtove-title' ),
-							size: 'medium'
-						}
-					);
-					mw.track( 'visualEditorFeatureUse', {
-						feature: 'editor-switch',
-						action: 'dialog-prevent-show'
-					} );
-
-					return $.Deferred().reject().promise();
-				}
-			}
-			this.undoIndentReplacements( doc.body );
+			// Based on ve.init.mw.Target#parseWikitextFragment
+			parsePromise = controller.getApi().post( {
+				action: 'visualeditor',
+				paction: 'parsefragment',
+				page: oldWidget.pageName,
+				wikitext: wikitext,
+				pst: true
+			} ).then( ( response ) => response && response.visualeditor.content );
+		} else {
+			parsePromise = $.Deferred().resolve( '' ).promise();
 		}
+		this.replyWidgetPromise = this.createReplyWidget(
+			oldWidget.commentDetails,
+			{ mode: 'visual' }
+		);
 
-		// Teardown the old widget
-		oldWidget.disconnect( this );
-		oldWidget.teardown();
+		return $.when( parsePromise, this.replyWidgetPromise ).then( ( html, newWidget ) => {
+			const unsupportedSelectors = this.getUnsupportedNodeSelectors();
 
-		// Swap out the DOM nodes
-		oldWidget.$element.replaceWith( replyWidget.$element );
+			let doc;
+			if ( html ) {
+				doc = newWidget.replyBodyWidget.target.parseDocument( html );
+				// Remove RESTBase IDs (T253584)
+				mw.libs.ve.stripRestbaseIds( doc );
+				// Check for tables, headings, images, templates
+				for ( const type in unsupportedSelectors ) {
+					if ( doc.querySelector( unsupportedSelectors[ type ] ) ) {
+						const $msg = $( '<div>' ).html(
+							mw.message(
+								'discussiontools-error-noswitchtove',
+								// The following messages are used here:
+								// * discussiontools-error-noswitchtove-extension
+								// * discussiontools-error-noswitchtove-table
+								// * discussiontools-error-noswitchtove-template
+								mw.msg( 'discussiontools-error-noswitchtove-' + type )
+							).parse()
+						);
+						$msg.find( 'a' ).attr( {
+							target: '_blank',
+							rel: 'noopener'
+						} );
+						OO.ui.alert(
+							$msg.contents(),
+							{
+								title: mw.msg( 'discussiontools-error-noswitchtove-title' ),
+								size: 'medium'
+							}
+						);
+						mw.track( 'visualEditorFeatureUse', {
+							feature: 'editor-switch',
+							action: 'dialog-prevent-show'
+						} );
 
-		this.setupReplyWidget( replyWidget, {
-			value: doc,
-			showAdvanced: oldShowAdvanced,
-			editSummary: oldEditSummary
+						return $.Deferred().reject().promise();
+					}
+				}
+				this.undoIndentReplacements( doc.body );
+			}
+
+			// Teardown the old widget
+			oldWidget.disconnect( this );
+			oldWidget.teardown();
+
+			// Swap out the DOM nodes
+			oldWidget.$element.replaceWith( newWidget.$element );
+
+			this.setupReplyWidget( newWidget, {
+				value: doc,
+				showAdvanced: oldShowAdvanced,
+				editSummary: oldEditSummary
+			} );
+
+			// Focus the editor
+			newWidget.focus();
 		} );
-
-		// Focus the editor
-		replyWidget.focus();
 	} );
 };
 
