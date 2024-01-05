@@ -345,12 +345,19 @@ CommentController.prototype.focus = function () {
 	this.replyWidget.focus();
 };
 
+/**
+ * Scroll the widget into view and focus it
+ */
 CommentController.prototype.showAndFocus = function () {
 	var commentController = this;
-	this.replyWidget.scrollElementIntoView( { padding: scrollPadding } )
-		.then( function () {
-			commentController.focus();
+	if ( this.replyWidgetPromise ) {
+		this.replyWidgetPromise.then( function ( replyWidget ) {
+			replyWidget.scrollElementIntoView( { padding: scrollPadding } )
+				.then( function () {
+					commentController.focus();
+				} );
 		} );
+	}
 };
 
 CommentController.prototype.teardown = function ( mode ) {
