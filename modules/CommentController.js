@@ -370,6 +370,20 @@ CommentController.prototype.showAndFocus = function () {
 };
 
 /**
+ * Try to tear down the reply widget, if it is setup
+ *
+ * @return {jQuery.Promise} Resolves when the widget is torn down, rejects if it fails.
+ */
+CommentController.prototype.tryTeardown = function () {
+	if ( this.replyWidgetPromise ) {
+		return this.replyWidgetPromise.then( function ( replyWidget ) {
+			return replyWidget.tryTeardown();
+		} );
+	}
+	return $.Deferred().resolve().promise();
+};
+
+/**
  * Handle teardown events from the reply widget
  *
  * @param {string} mode Teardown mode. See dt.ui.ReplyWidget#teardown
