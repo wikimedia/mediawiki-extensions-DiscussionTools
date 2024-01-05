@@ -97,6 +97,15 @@ CommentController.prototype.getTranscludedFromSource = function () {
 
 CommentController.static.initType = 'page';
 
+/* Events */
+
+/**
+ * The current widget has been torn down
+ *
+ * @event teardown
+ * @param string mode Teardown mode. See dt.ui.ReplyWidget#teardown.
+ */
+
 /* Methods */
 
 /**
@@ -129,7 +138,7 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 		this.replyWidgetPromise = this.getTranscludedFromSource().then( function ( commentDetails ) {
 			return commentController.createReplyWidget( commentDetails, { mode: mode } );
 		}, function ( code, data ) {
-			commentController.teardown();
+			commentController.onReplyWidgetTeardown();
 
 			if ( !hideErrors ) {
 				OO.ui.alert(
@@ -321,7 +330,7 @@ CommentController.prototype.createReplyWidget = function ( commentDetails, confi
 
 CommentController.prototype.setupReplyWidget = function ( replyWidget, data, suppressNotifications ) {
 	replyWidget.connect( this, {
-		teardown: 'teardown',
+		teardown: 'onReplyWidgetTeardown',
 		reloadPage: this.emit.bind( this, 'reloadPage' )
 	} );
 
@@ -360,7 +369,12 @@ CommentController.prototype.showAndFocus = function () {
 	}
 };
 
-CommentController.prototype.teardown = function ( mode ) {
+/**
+ * Handle teardown events from the reply widget
+ *
+ * @param {string} mode Teardown mode. See dt.ui.ReplyWidget#teardown
+ */
+CommentController.prototype.onReplyWidgetTeardown = function ( mode ) {
 	$( this.newListItem ).parents( '.collapsible-block' ).prev().removeClass( 'collapsible-heading-disabled' );
 
 	if ( mode === 'refresh' ) {

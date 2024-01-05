@@ -322,6 +322,33 @@ function ReplyWidget( commentController, commentDetails, config ) {
 
 OO.inheritClass( ReplyWidget, OO.ui.Widget );
 
+/* Events */
+
+/**
+ * The widget has been torn down
+ *
+ * @event teardown
+ * @param string mode Teardown mode. See #teardown.
+ */
+
+/**
+ * The widget has had contents cleared
+ *
+ * @event clear
+ */
+
+/**
+ * Auto save storage has been cleared for the widget
+ *
+ * @event clearStorage
+ */
+
+/**
+ * The 'Reload page' button in the widget was clicked
+ *
+ * @event reloadPage
+ */
+
 /* Methods */
 
 /**
