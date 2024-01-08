@@ -430,7 +430,6 @@ function init( $container, state ) {
 		// If the reply widget is already open, activate it.
 		// Reply links are also made unclickable using 'pointer-events' in CSS, but that doesn't happen
 		// for new section links, because we don't have a good way of visually disabling them.
-		// (And it also doesn't work on IE 11.)
 		if ( activeCommentId === commentId ) {
 			activeController.showAndFocus();
 			return;
