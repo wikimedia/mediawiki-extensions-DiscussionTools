@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ahiise2"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Okugarukamu",
+	"discussiontools-replywidget-advanced": "Ekikiraho",
+	"discussiontools-replywidget-cancel": "Ihaho",
+	"discussiontools-replywidget-mode-source": "Oburugo",
+	"discussiontools-replywidget-mode-visual": "Okwolekwa",
+	"discussiontools-replywidget-preview": "Eby'omumaiso",
+	"discussiontools-replywidget-summary": "Omubugufu",
+	"discussiontools-replywidget-watchthis": "Teera orupapura runu [[Special:Watchlist|eby'okulindwa]] byawe",
+	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|Omuntu|Abantu}} $1 omukuhanuura",
+	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|ekiteekerezo|ebiteekerezo}} $1",
+	"discussiontools-topicheader-latestcomment": "Ekiteekerezo ekikeerererwa: $1",
+	"discussiontools-topicsubscription-button-subscribe": "tunga ekirangirro",
+	"discussiontools-topicsubscription-button-subscribe-label": "Tunga ekirangirro",
+	"discussiontools-topicsubscription-button-unsubscribe": "otatunga ekirangirro",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Otatunga ekirangirro"
+}

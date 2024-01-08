@@ -120,7 +120,7 @@
 	"discussiontools-replywidget-summary": "Rezumat",
 	"discussiontools-replywidget-terms-click": "Prin apăsarea „$1”, sunteți de acord cu termenii de utilizare pentru acest wiki.",
 	"discussiontools-replywidget-transcluded": "Comentariul dvs. va fi salvat la [[$1]].",
-	"discussiontools-replywidget-watchthis": "Adăugați-vă această pagină la [[Special:Watchlist|lista de urmărire]]",
+	"discussiontools-replywidget-watchthis": "Adăugați-vă această pagină la [[Special:Watchlist|pagini urmărite]]",
 	"discussiontools-target-comment-missing": "Acest comentariu nu a putut fi găsit. Se poate să fi fost șters sau mutat.",
 	"discussiontools-target-comments-missing": "Noile comentarii nu au putut fi găsite. Se poate să fi fost șterse sau mutate.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|persoană|persoane}} în discuție",
