@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ahiise2"
+		]
+	},
+	"discussiontools-replywidget-summary": "Omubugufu",
+	"discussiontools-replywidget-watchthis": "Tamu runu orupapura [[Special:Watchlist|omubironzibwa]] byawe",
+	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|Omuntu $1 owagambirangana|Abantu $1 abagambirangana}}"
+}
