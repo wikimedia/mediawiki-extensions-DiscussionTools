@@ -18,12 +18,12 @@
 	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|Omuntu|Abantu}} $1 omukuhanuura",
 	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|ekiteekerezo|ebiteekerezo}} $1",
 	"discussiontools-topicheader-latestcomment": "Ekiteekerezo ekikeerererwa: $1",
-	"discussiontools-topicsubscription-button-subscribe": "tunga ekirangirro",
-	"discussiontools-topicsubscription-button-subscribe-label": "Tunga ekirangirro",
-	"discussiontools-topicsubscription-button-unsubscribe": "otatunga ekirangirro",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Otatunga ekirangirro",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Olitunga ekirangirro ky'ekiteekerezo kihyaka omukigambwaho kinu.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Olitunga}} ekirangirro!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "Tolitunga ekirangirro ky'ekiteekerezo kihyaka omukigambwaho kinu.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Tolitunga}} ekirangirro."
+	"discussiontools-topicsubscription-button-subscribe": "rangwa",
+	"discussiontools-topicsubscription-button-subscribe-label": "Rangwa",
+	"discussiontools-topicsubscription-button-unsubscribe": "otarangwa",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Otarangwa",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Olitunga}} ekirangirro ky'ekiteekerezo kihyaka omukigambwaho kinu.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Oyerangisiibwe}}!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Tolitunga}} ekirangirro ky'ekiteekerezo kihyaka omukigambwaho kinu.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Toyerangisiibwe}}."
 }
