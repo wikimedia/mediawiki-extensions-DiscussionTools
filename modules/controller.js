@@ -608,7 +608,7 @@ function init( $container, state ) {
 					getApi().get( $.extend( {
 						action: 'discussiontoolsfindcomment'
 					}, findCommentQuery ) ) :
-					$.Deferred().resolve( {} ).promise();
+					$.Deferred().resolve( [ {} ] ).promise();
 				dismissableNotificationPromise = $.when(
 					findCommentRequest,
 					mw.loader.using( 'mediawiki.notification' )
