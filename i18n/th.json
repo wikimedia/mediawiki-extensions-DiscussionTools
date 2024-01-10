@@ -8,7 +8,8 @@
 			"Matma Rex",
 			"Patsagorn Y.",
 			"Prame Tan",
-			"Thas Tayapongsak"
+			"Thas Tayapongsak",
+			"Thastp"
 		]
 	},
 	"discussiontools": "เครื่องมือช่วยในการอภิปราย",
@@ -21,7 +22,9 @@
 	"discussiontools-desc": "เครื่องมือปรับปรุงประสิทธิภาพในหน้าอภิปราย",
 	"discussiontools-emptystate-button": "เริ่มการอภิปรายใหม่",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|หน้าคุย]]คือหน้าที่ผู้คนจะอภิปรายวิธีการสร้างเนื้อหาบน{{SITENAME}}ให้ดีที่สุดเท่าที่จะทำได้ {{GENDER:|คุณ}}สามารถใช้หน้านี้เพื่อเริ่มการอภิปรายกับผู้อื่นในการปรับปรุง [[:{{SUBJECTPAGENAME}}]] ได้เช่นกัน",
+	"discussiontools-emptystate-desc-self-anon": "ผู้คนบน{{SITENAME}}สามารถใช้ [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|หน้าพูดคุย]]นี้เพื่อเผยแพร่ข้อความสาธารณะเกี่ยวกับการแก้ไขที่ทำจากเลขที่อยู่ไอพีที่{{GENDER:|คุณ}}กำลังใช้งานอยู่\n\nเลขที่อยู่ไอพีจำนวนมากมีการเปลี่ยนแปลงเป็นระยะ และมักถูกใช้ร่วมกันโดยคนหลายคน คุณสามารถ[$1 สร้างบัญชี]หรือ[$2 เข้าสู่ระบบ]เพื่อหลีกเลี่ยงความสับสนในอนาคตกับผู้ใช้ที่ออกจากระบบรายอื่น การสร้างบัญชียังซ่อนเลขที่อยู่ไอพีของคุณด้วย",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|หน้าคุยกับผู้ใช้]]เป็นหน้าที่ผู้คนพูดคุยถึงวิธีการสร้างเนื้อหาของ{{SITENAME}} ให้ดีที่สุดเท่าที่จะเป็นไปได้ เริ่มสนทนาใหม่เพื่อประสานและทำงานร่วมกัน{{GENDER:{{PAGENAME}}|กับ}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] เมื่อ{{GENDER:|คุณ}}แสดงความคิดเห็นที่นี่ข้อความทั้งหมดที่คุณเพิ่มจะเป็นสาธารณะซึ่งผู้อื่นสามารถเห็นได้",
+	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|หน้าพูดคุย]]เป็นที่ที่ผู้คนพูดคุยถึงวิธีสร้างเนื้อหาบน{{SITENAME}}ให้ดีที่สุดเท่าที่จะเป็นไปได้ ใช้หน้านี้เพื่อเริ่มการสนทนาเกี่ยวกับการแก้ไขที่เกิดจากเลขที่อยู่ไอพีนี้ สิ่งที่{{GENDER:|คุณ}}พูดที่นี่จะถูกเปิดเผยแบบสาธารณะให้ผู้อื่นเห็นเลขที่อยู่ไอพีจำนวนมากเปลี่ยนแปลงเป็นระยะ และมักมีผู้แบ่งปันร่วมกันหลายคน",
 	"discussiontools-emptystate-title": "เริ่มการอภิปรายใหม่ที่เกี่ยวกับ {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "{{GENDER:|ยินดีต้อนรับ}}สู่หน้าพูดคุยของคุณ",
 	"discussiontools-emptystate-title-self-anon": "{{GENDER:|ยินดีต้อนรับ}}สู่หน้าพูดคุยนี้",
