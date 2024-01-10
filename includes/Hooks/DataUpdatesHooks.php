@@ -38,7 +38,8 @@ class DataUpdatesHooks implements RevisionDataUpdatesHook {
 		// This doesn't trigger on action=purge, only on automatic purge after editing a template or
 		// transcluded page, and API action=purge&forcelinkupdate=1.
 
-		// TODO Deduplicate work between this and the Echo hook (make it use Parsoid too)
+		// TODO: Deduplicate the thread-item-processing done here with the Echo hook
+		// (which thread-item-processes the current and previous revisions).
 		$rev = $renderedRevision->getRevision();
 		if ( HookUtils::isAvailableForTitle( $title ) ) {
 			$method = __METHOD__;

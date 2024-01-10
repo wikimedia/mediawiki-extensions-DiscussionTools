@@ -57,6 +57,7 @@ class EventDispatcher {
 
 		// If the $revRecord was fetched from the primary database, this will also fetch the content
 		// from the primary database (using the same query flags)
+		// TODO: Fetch HTML from Parsoid, as we do in onRevisionDataUpdates.
 		$status = $services->getParserOutputAccess()->getParserOutput(
 			$pageRecord,
 			ParserOptions::newFromAnon(),
