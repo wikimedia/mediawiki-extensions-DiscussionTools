@@ -21,6 +21,7 @@ use MediaWiki\Extension\Notifications\Hooks\EchoGetBundleRulesHook;
 use MediaWiki\Extension\Notifications\Hooks\EchoGetEventsForRevisionHook;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Revision\RevisionRecord;
+use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 
 class EchoHooks implements
 	BeforeCreateEchoEventHook,
@@ -130,6 +131,7 @@ class EchoHooks implements
 	 * @param array &$events
 	 * @param RevisionRecord $revision
 	 * @param bool $isRevert
+	 * @throws ResourceLimitExceededException
 	 */
 	public function onEchoGetEventsForRevision( array &$events, RevisionRecord $revision, bool $isRevert ) {
 		if ( $isRevert ) {
