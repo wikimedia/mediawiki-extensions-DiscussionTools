@@ -30,11 +30,7 @@
 	},
 	"ResourceModules": {
 		"ext.discussionTools.init.styles": {
-			"styles": "dt.init.less",
-			"targets": [
-				"desktop",
-				"mobile"
-			]
+			"styles": "dt.init.less"
 		},
 		"ext.discussionTools.debug.styles": {
 			"styles": "dt.debug.less"
@@ -160,10 +156,6 @@
 				"minerva-talk-full-page",
 				"pagetitle",
 				"skin-view-edit"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.discussionTools.minervaicons": {
@@ -184,10 +176,6 @@
 			"styles": "debughighlighter.less",
 			"dependencies": [
 				"ext.discussionTools.init"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.discussionTools.ReplyWidget": {
@@ -282,11 +270,7 @@
 			"optionalDependencies": {
 				"ConfirmEdit": "ext.confirmEdit.CaptchaInputWidget"
 			},
-			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::addOptionalDependencies",
-			"targets": [
-				"desktop",
-				"mobile"
-			]
+			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::addOptionalDependencies"
 		}
 	},
 	"ForeignResourcesDir": "modules/lib",
