@@ -22,7 +22,7 @@
 	"discussiontools-emptystate-title": "Iniciar uma discussão sobre {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bem-vindo à sua página de discussão",
 	"discussiontools-emptystate-title-self-anon": "Bem-vindo a esta página de discussão",
-	"discussiontools-emptystate-title-user": "Iniciar uma discussão com {{GENDER:{{PAGENAME}}|o utilizador |a utilizadora |}}{{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "Iniciar uma discussão com {{GENDER:{{PAGENAME}}|o utilizador|a utilizadora}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Bem-vindo a esta página de discussão",
 	"discussiontools-error-comment-conflict": "Não foi possível gravar o seu comentário porque outra pessoa comentou ao mesmo tempo. Tente novamente, por favor, ou refresque a página para ver as últimas intervenções.",
 	"discussiontools-error-comment-disappeared": "Não foi possível encontrar o comentário a que está a responder na página. Este pode ter sido eliminado ou movido para outra página.",
