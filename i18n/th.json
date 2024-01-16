@@ -37,7 +37,7 @@
 	"discussiontools-ledesection-button": "เรียนรู้เพิ่มเติมเกี่ยวกับหน้านี้",
 	"discussiontools-ledesection-title": "เกี่ยวกับหน้าคุยนี้",
 	"discussiontools-newtopic-missing-title": "โปรดระบุชื่อสำหรับหัวข้อสนทนาของ{{GENDER:|คุณ}} หากคุณกด \"{{int:discussiontools-replywidget-newtopic}}\" หัวข้อของคุณจะถูกเพิ่มโดยไม่มีชื่อ",
-	"discussiontools-newtopic-placeholder-title": "หัวข้อ",
+	"discussiontools-newtopic-placeholder-title": "เรื่อง",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "สมัครรับ",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "เลิกสมัครรับ",
 	"discussiontools-newtopicssubscription-notify-subscribed-body": "{{GENDER:|คุณ}}จะได้รับการแจ้งเตือนเมื่อมีหัวข้อใหม่ในหน้านี้",
