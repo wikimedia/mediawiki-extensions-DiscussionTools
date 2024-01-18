@@ -97,14 +97,14 @@ class CommentFormatter {
 	}
 
 	/**
-	 * Add a topic container around a heading element
+	 * Add a wrapper, topic container, and subscribe link around a heading element
 	 *
 	 * @param Element $headingElement Heading element
 	 * @param ContentHeadingItem|null $headingItem Heading item
 	 * @param array|null &$tocInfo TOC info
 	 * @return Element Wrapper element (either found or newly added)
 	 */
-	protected static function addTopicContainer(
+	protected static function handleHeading(
 		Element $headingElement,
 		?ContentHeadingItem $headingItem = null,
 		?array &$tocInfo = null
@@ -125,17 +125,118 @@ class CommentFormatter {
 			}
 
 			$wrapperNode = $doc->createElement( 'div' );
-			$wrapperNode->setAttribute( 'class', 'mw-heading mw-heading2' );
 			$headingElement->parentNode->insertBefore( $wrapperNode, $headingElement );
 			$wrapperNode->appendChild( $headingElement );
 		}
-
-		DOMCompat::getClassList( $wrapperNode )->add( 'ext-discussiontools-init-section' );
 
 		if ( !$headingItem ) {
 			return $wrapperNode;
 		}
 
+		$uneditable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) === null;
+		$headingItem->setUneditableSection( $uneditable );
+		self::addOverflowMenuButton( $headingItem, $doc, $wrapperNode );
+
+		$latestReplyItem = $headingItem->getLatestReply();
+
+		$bar = null;
+		if ( $latestReplyItem ) {
+			$bar = $doc->createElement( 'div' );
+			$bar->setAttribute(
+				'class',
+				'ext-discussiontools-init-section-bar'
+			);
+		}
+
+		self::addTopicContainer(
+			$wrapperNode, $latestReplyItem, $doc, $headingItem, $bar, $tocInfo
+		);
+
+		self::addSubscribeLink(
+			$headingItem, $doc, $headingElement, $wrapperNode, $latestReplyItem, $bar
+		);
+
+		if ( $latestReplyItem ) {
+			// The check for if ( $latestReplyItem ) prevents $bar from being null
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+			$wrapperNode->appendChild( $bar );
+		}
+
+		return $wrapperNode;
+	}
+
+	/**
+	 * Add a topic container around a heading element.
+	 *
+	 * A topic container is the information displayed when the "Show discusion activity" user
+	 * preference is selected. This displays information such as the latest comment time, number
+	 * of comments, and number of editors in the discussion.
+	 *
+	 * @param Element &$wrapperNode
+	 * @param ?ContentCommentItem $latestReplyItem
+	 * @param Document &$doc
+	 * @param ContentHeadingItem &$headingItem
+	 * @param ?Element &$bar
+	 * @param array &$tocInfo
+	 */
+	protected static function addTopicContainer(
+		&$wrapperNode, $latestReplyItem, &$doc, &$headingItem, &$bar, &$tocInfo
+	) {
+		if ( !(
+			$wrapperNode instanceof Element &&
+			DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' )
+		) ) {
+			DOMCompat::getClassList( $wrapperNode )->add( 'mw-heading' );
+			DOMCompat::getClassList( $wrapperNode )->add( 'mw-heading2' );
+		}
+		DOMCompat::getClassList( $wrapperNode )->add( 'ext-discussiontools-init-section' );
+
+		if ( !$latestReplyItem ) {
+			return;
+		}
+
+		$latestReplyJSON = json_encode( static::getJsonArrayForCommentMarker( $latestReplyItem ) );
+		$latestReply = $doc->createComment(
+			// Timestamp output varies by user timezone, so is formatted later
+			'__DTLATESTCOMMENTTHREAD__' . htmlspecialchars( $latestReplyJSON, ENT_NOQUOTES ) . '__'
+		);
+
+		$commentCount = $doc->createComment(
+			'__DTCOMMENTCOUNT__' . $headingItem->getCommentCount() . '__'
+		);
+
+		$authorCount = $doc->createComment(
+			'__DTAUTHORCOUNT__' . count( $headingItem->getAuthorsBelow() ) . '__'
+		);
+
+		$metadata = $doc->createElement( 'div' );
+		$metadata->setAttribute(
+			'class',
+			'ext-discussiontools-init-section-metadata'
+		);
+		$metadata->appendChild( $latestReply );
+		$metadata->appendChild( $commentCount );
+		$metadata->appendChild( $authorCount );
+		$bar->appendChild( $metadata );
+
+		$tocInfo[ $headingItem->getLinkableTitle() ] = [
+			'commentCount' => $headingItem->getCommentCount(),
+		];
+	}
+
+	/**
+	 * Add a subscribe/unsubscribe link to the right of a heading element
+	 *
+	 * @param ContentHeadingItem $headingItem
+	 * @param Document $doc
+	 * @param Element $headingElement
+	 * @param Element &$wrapperNode
+	 * @param ?ContentCommentItem $latestReplyItem
+	 * @param ?Element &$bar
+	 */
+	protected static function addSubscribeLink(
+		$headingItem, $doc, $headingElement, &$wrapperNode, $latestReplyItem, &$bar
+	) {
 		$headingJSONEscaped = htmlspecialchars(
 			json_encode( static::getJsonForHeadingMarker( $headingItem ) )
 		);
@@ -149,66 +250,20 @@ class CommentFormatter {
 			$wrapperNode->insertBefore( $subscribeButton, $wrapperNode->firstChild );
 		}
 
-		$uneditable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) === null;
-		$headingItem->setUneditableSection( $uneditable );
-		self::addOverflowMenuButton( $headingItem, $doc, $wrapperNode );
-
-		// Visual enhancements: topic containers
-		$latestReplyItem = $headingItem->getLatestReply();
-		if ( $latestReplyItem ) {
-			$latestReplyJSON = json_encode( static::getJsonArrayForCommentMarker( $latestReplyItem ) );
-			$latestReply = $doc->createComment(
-				// Timestamp output varies by user timezone, so is formatted later
-				'__DTLATESTCOMMENTTHREAD__' . htmlspecialchars( $latestReplyJSON, ENT_NOQUOTES ) . '__'
-			);
-
-			$commentCount = $doc->createComment(
-				'__DTCOMMENTCOUNT__' . $headingItem->getCommentCount() . '__'
-			);
-
-			$authorCount = $doc->createComment(
-				'__DTAUTHORCOUNT__' . count( $headingItem->getAuthorsBelow() ) . '__'
-			);
-
-			// Topic subscriptions
-			$metadata = $doc->createElement( 'div' );
-			$metadata->setAttribute(
-				'class',
-				'ext-discussiontools-init-section-metadata'
-			);
-
-			$metadata->appendChild( $latestReply );
-			$metadata->appendChild( $commentCount );
-			$metadata->appendChild( $authorCount );
-
-			$actions = $doc->createElement( 'div' );
-			$actions->setAttribute(
-				'class',
-				'ext-discussiontools-init-section-actions'
-			);
-
-			if ( $headingItem->isSubscribable() ) {
-				$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONMOBILE__' . $headingJSONEscaped );
-				$actions->appendChild( $subscribeButton );
-			}
-
-			$bar = $doc->createElement( 'div' );
-			$bar->setAttribute(
-				'class',
-				'ext-discussiontools-init-section-bar'
-			);
-
-			$bar->appendChild( $metadata );
-			$bar->appendChild( $actions );
-
-			$wrapperNode->appendChild( $bar );
-
-			$tocInfo[ $headingItem->getLinkableTitle() ] = [
-				'commentCount' => $headingItem->getCommentCount(),
-			];
+		if ( !$latestReplyItem ) {
+			return;
 		}
 
-		return $wrapperNode;
+		$actions = $doc->createElement( 'div' );
+		$actions->setAttribute(
+			'class',
+			'ext-discussiontools-init-section-actions'
+		);
+		if ( $headingItem->isSubscribable() ) {
+			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONMOBILE__' . $headingJSONEscaped );
+			$actions->appendChild( $subscribeButton );
+		}
+		$bar->appendChild( $actions );
 	}
 
 	/**
@@ -285,7 +340,7 @@ class CommentFormatter {
 					$headingElement = CommentUtils::closestElement( $headline, [ 'h2' ] );
 
 					if ( $headingElement ) {
-						static::addTopicContainer( $headingElement, $threadItem, $tocInfo );
+						static::handleHeading( $headingElement, $threadItem, $tocInfo );
 					}
 				}
 			} elseif ( $threadItem instanceof ContentCommentItem ) {
@@ -336,7 +391,7 @@ class CommentFormatter {
 			if ( $wrapper instanceof Element && DOMCompat::getClassList( $wrapper )->contains( 'toctitle' ) ) {
 				continue;
 			}
-			$headingElement = static::addTopicContainer( $headingElement );
+			$headingElement = static::handleHeading( $headingElement );
 			if ( !$startOfSections ) {
 				$startOfSections = $headingElement;
 			}
