@@ -11,6 +11,8 @@
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Wawa}} kopa {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "{{GENDER:|wawa kopa yaka}}",
 	"discussiontools-replywidget-watchthis": "[[Special:Watchlist|Mamuk-miłayt ukuk pipa khanumakwst kanawi pipa mayka nanich]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|tilixam}} łaksta wawa yakwa",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ts'əm-ikta|kanawi ts'əm-ikta}}",
 	"discussiontools-topicheader-latestcomment": "Wixt-chxi ts'əm-ikta: $1",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Ałqi {{GENDER:|Maika}} iskəm wawa-ikta pus chxi wawa-ikta kopa ukuk ikta."
 }
