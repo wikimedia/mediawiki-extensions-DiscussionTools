@@ -14,17 +14,6 @@ use TestUser;
  */
 class ThreadItemStoreTest extends IntegrationTestCase {
 
-	/** @var @inheritDoc */
-	protected $tablesUsed = [
-		'user',
-		'page',
-		'revision',
-		'discussiontools_items',
-		'discussiontools_item_pages',
-		'discussiontools_item_revisions',
-		'discussiontools_item_ids',
-	];
-
 	/**
 	 * @dataProvider provideInsertCases
 	 */
