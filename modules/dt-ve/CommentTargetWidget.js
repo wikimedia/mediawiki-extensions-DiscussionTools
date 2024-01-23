@@ -1,5 +1,3 @@
-var CommentTarget = require( './CommentTarget.js' );
-
 /**
  * DiscussionTools TargetWidget class
  *
@@ -62,7 +60,7 @@ OO.inheritClass( CommentTargetWidget, ve.ui.MWTargetWidget );
  * @inheritdoc
  */
 CommentTargetWidget.prototype.createTarget = function () {
-	return new CommentTarget( this.replyWidget, {
+	return ve.init.mw.targetFactory.create( 'discussionTools', this.replyWidget, {
 		// A lot of places expect ve.init.target to exist...
 		register: true,
 		toolbarGroups: this.toolbarGroups,
