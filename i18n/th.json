@@ -8,7 +8,8 @@
 			"Patsagorn Y.",
 			"Prame Tan",
 			"Thas Tayapongsak",
-			"Kaoavi"
+			"Kaoavi",
+			"Thastp"
 		]
 	},
 	"discussiontools": "เครื่องมือช่วยในการอภิปราย",
@@ -26,7 +27,7 @@
 	"discussiontools-findcomment-label-search": "ค้นหา",
 	"discussiontools-ledesection-button": "เรียนรู้เพิ่มเติมเกี่ยวกับหน้านี้",
 	"discussiontools-ledesection-title": "เกี่ยวกับหน้าคุยนี้",
-	"discussiontools-newtopic-placeholder-title": "หัวข้อ",
+	"discussiontools-newtopic-placeholder-title": "เรื่อง",
 	"discussiontools-notification-removed-topic-view": "ดูหน้า",
 	"discussiontools-notification-removed-topic-disabled-body": "คุณสามารถเปลี่ยนนี้ได้ใน[[Special:Preferences#mw-prefsection-echo-echosubscriptions|การตั้งค่าของคุณ]]",
 	"discussiontools-notification-subscribed-new-comment-view": "ดูความเห็น",

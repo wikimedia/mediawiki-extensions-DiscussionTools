@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"POSSUM chowg"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Wawa kopa yaka",
+	"discussiontools-replywidget-cancel": "Mash mamuk-ikta.",
+	"discussiontools-replywidget-mode-source": "Lalasin-pipa",
+	"discussiontools-replywidget-watchthis": "[[Special:Watchlist|Mamuk-miłayt ukuk pipa khanumakwst kanawi pipa mayka nanich]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|tilixam}} łaksta wawa yakwa",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ts'əm-ikta|kanawi ts'əm-ikta}}",
+	"discussiontools-topicheader-latestcomment": "Wixt-chxi ts'əm-ikta: $1"
+}
