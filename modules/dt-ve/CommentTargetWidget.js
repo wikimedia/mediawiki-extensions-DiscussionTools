@@ -1,3 +1,5 @@
+require( './CommentTarget.js' );
+
 /**
  * DiscussionTools TargetWidget class
  *
