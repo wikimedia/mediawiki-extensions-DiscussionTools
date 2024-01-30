@@ -583,6 +583,8 @@ function init( $container, state ) {
 					// A leading '/' usually means a application route, e.g. /media, or /editor.
 					// We can't rule out a heading title (T349498), but they are unlikely
 					/^\//,
+					// Gadget: ConvenientDiscussions
+					/^\d{12}_/,
 					// Gadget: RedWarn
 					/^noticeApplied-/
 				];
