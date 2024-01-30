@@ -737,21 +737,23 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			//
 			// Handle links nested in formatting elements.
 			if ( event === 'leave' && node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'a' ) {
-				var user = parser.getUsernameFromLink( node );
-				if ( user ) {
-					// Accept the first link to the user namespace, then only accept links to that user
-					if ( sigUsername === null ) {
-						sigUsername = user.username;
-					}
-					if ( user.username === sigUsername ) {
-						lastLinkNode = node;
-						if ( user.displayName ) {
-							sigDisplayName = user.displayName;
+				if ( !node.classList.contains( 'ext-discussiontools-init-timestamplink' ) ) {
+					var user = parser.getUsernameFromLink( node );
+					if ( user ) {
+						// Accept the first link to the user namespace, then only accept links to that user
+						if ( sigUsername === null ) {
+							sigUsername = user.username;
+						}
+						if ( user.username === sigUsername ) {
+							lastLinkNode = node;
+							if ( user.displayName ) {
+								sigDisplayName = user.displayName;
+							}
 						}
 					}
+					// Keep looking if a node with links wasn't a link to a user page
+					// "Doc James (talk · contribs · email)"
 				}
-				// Keep looking if a node with links wasn't a link to a user page
-				// "Doc James (talk · contribs · email)"
 			}
 		}
 	);
