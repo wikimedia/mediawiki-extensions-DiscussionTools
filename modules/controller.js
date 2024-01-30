@@ -571,6 +571,20 @@ function init( $container, state ) {
 			var findCommentQuery;
 			var isHeading = false;
 			var highlightResult = highlighter.highlightTargetComment( pageThreads );
+
+			// Hash contains a non-replaced space (should be underscore), maybe due to
+			// manual creation or a broken third party tool. Just replace the spaces
+			// and navigate to the new URL.
+			// Ideally we'd use history.replaceState but that wouldn't scroll the page.
+			// Only do the replacement if the original hash doesn't correspond to a target
+			// element, but the fixed hash does, to avoid affects on other apps which
+			// may use fragments with spaces.
+			if ( location.hash && !mw.util.getTargetFromFragment() && location.hash.indexOf( '%20' ) !== -1 ) {
+				var fixedHash = location.hash.slice( 1 ).replace( /%20/g, '_' );
+				if ( mw.util.getTargetFromFragment( fixedHash ) ) {
+					location.hash = fixedHash;
+				}
+			}
 			if (
 				// Fragment doesn't correspond to an element on the page
 				location.hash &&
