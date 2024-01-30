@@ -256,6 +256,14 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "Timestamp links",
+		"title": "User_talk:Ed",
+		"dom": "cases/timestamplink/timestamplink.html",
+		"expected": "../cases/timestamplink/timestamplink.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Signatures with Special:Contributions (alias with underscored)",
 		"title": "Talk:Signatures Alias",
 		"dom": "cases/signatures-comments/signatures-contribs-alias-underscore.html",
