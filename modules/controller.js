@@ -590,7 +590,7 @@ function init( $container, state ) {
 					return !pattern.test( fragment );
 				} ) ) {
 					findCommentQuery = {
-						heading: fragment.replace( / /g, '_' ),
+						heading: decodeURI( fragment ).replace( / /g, '_' ),
 						page: mw.config.get( 'wgRelevantPageName' )
 					};
 					isHeading = true;
