@@ -1,10 +1,24 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chinneeb"
+			"Chinneeb",
+			"Enkhsaihan2005"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Хариулах",
 	"discussiontools-replylink": "хариулах",
+	"discussiontools-replywidget-advanced": "Дэлгэрэнгүй",
 	"discussiontools-replywidget-cancel": "Цуцлах",
-	"discussiontools-replywidget-mode-source": "Эх кодоор"
+	"discussiontools-replywidget-mode-source": "Эх кодоор",
+	"discussiontools-replywidget-mode-visual": "Харагдах байдал",
+	"discussiontools-replywidget-preview": "Урьдчилж харах",
+	"discussiontools-replywidget-summary": "Дүгнэлт",
+	"discussiontools-replywidget-watchthis": "Энэ хуудсыг [[Special:Watchlist|харах жагсаалт]]-д нэмнэ үү.",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|хүн|хүмүүс}} хэлэлцэж байна",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|Сэтгэгдэл|Сэтгэгдлүүд}}",
+	"discussiontools-topicheader-latestcomment": "Сүүлийн сэтгэгдэл: $1",
+	"discussiontools-topicsubscription-button-subscribe": "бүртгүүлэх",
+	"discussiontools-topicsubscription-button-subscribe-label": "Бүртгүүлэх",
+	"discussiontools-topicsubscription-button-unsubscribe": "бүртгэлээ цуцлах",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Бүртгэлээ цуцлах"
 }
