@@ -666,21 +666,26 @@ class CommentParser {
 				//
 				// Handle links nested in formatting elements.
 				if ( $event === 'leave' && $node instanceof Element && strtolower( $node->tagName ) === 'a' ) {
-					$user = $this->getUsernameFromLink( $node );
-					if ( $user ) {
-						// Accept the first link to the user namespace, then only accept links to that user
-						if ( $sigUsername === null ) {
-							$sigUsername = $user['username'];
-						}
-						if ( $user['username'] === $sigUsername ) {
-							$lastLinkNode = $node;
-							if ( $user['displayName'] ) {
-								$sigDisplayName = $user['displayName'];
+					$classList = DOMCompat::getClassList( $node );
+					// Generated timestamp links sometimes look like username links (e.g. on user talk pages)
+					// so ignore these.
+					if ( !$classList->contains( 'ext-discussiontools-init-timestamplink' ) ) {
+						$user = $this->getUsernameFromLink( $node );
+						if ( $user ) {
+							// Accept the first link to the user namespace, then only accept links to that user
+							if ( $sigUsername === null ) {
+								$sigUsername = $user['username'];
+							}
+							if ( $user['username'] === $sigUsername ) {
+								$lastLinkNode = $node;
+								if ( $user['displayName'] ) {
+									$sigDisplayName = $user['displayName'];
+								}
 							}
 						}
+						// Keep looking if a node with links wasn't a link to a user page
+						// "Doc James (talk · contribs · email)"
 					}
-					// Keep looking if a node with links wasn't a link to a user page
-					// "Doc James (talk · contribs · email)"
 				}
 			}
 		);
