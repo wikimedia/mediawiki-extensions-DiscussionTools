@@ -599,7 +599,7 @@ function init( $container, state ) {
 				}
 			} else if ( highlightResult.highlighted.length === 0 && highlightResult.requested.length === 1 ) {
 				findCommentQuery = {
-					idorname: highlightResult.requested[ 0 ]
+					idorname: decodeURI( highlightResult.requested[ 0 ] )
 				};
 				isHeading = highlightResult.requested[ 0 ].slice( 0, 1 ) === 'h';
 			}
