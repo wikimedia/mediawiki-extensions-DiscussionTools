@@ -1004,11 +1004,13 @@ Parser.prototype.buildThreadItems = function () {
 /**
  * Truncate user generated parts of IDs so full ID always fits within a database field of length 255
  *
+ * nb: Text should already have had spaces replaced with underscores by this point.
+ *
  * @param {string} text Text
  * @return {string} Truncated text
  */
 Parser.prototype.truncateForId = function ( text ) {
-	return trimByteLength( '', text, 80 ).newVal;
+	return trimByteLength( '', text, 80 ).newVal.replace( /^_+|_+$/g, '' );
 };
 
 /**
