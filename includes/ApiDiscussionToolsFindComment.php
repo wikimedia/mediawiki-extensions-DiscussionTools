@@ -84,7 +84,6 @@ class ApiDiscussionToolsFindComment extends ApiBase {
 			if ( $redirects === 1 && $value['couldredirect'] ) {
 				$value['shouldredirect'] = true;
 			}
-			unset( $value['couldredirect'] );
 			$this->getResult()->addValue( $this->getModuleName(), null, $value );
 		}
 	}

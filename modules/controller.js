@@ -619,8 +619,9 @@ function init( $container, state ) {
 					var titles = [];
 					if ( result.discussiontoolsfindcomment ) {
 						titles = result.discussiontoolsfindcomment.map( function ( threadItemData ) {
-							// oldid=null means the item appears on the current revision of the page
-							if ( !threadItemData.oldid ) {
+							// Only show items that appear on the current revision of their page
+							// and are not transcluded from another page
+							if ( threadItemData.couldredirect ) {
 								var title = mw.Title.newFromText(
 									threadItemData.title + '#' +
 									mw.util.escapeIdForLink( threadItemData.id )
