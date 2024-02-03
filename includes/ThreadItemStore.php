@@ -15,6 +15,7 @@ use MediaWiki\Page\PageStore;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Title\TitleFormatter;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\ActorStore;
 use MediaWiki\Utils\MWTimestamp;
 use stdClass;
@@ -161,15 +162,21 @@ class ThreadItemStore {
 	}
 
 	/**
-	 * Find the thread items with the given ID in the newest revision of every page in which they have
-	 * appeared.
+	 * Find heading items matching some text which:
 	 *
-	 * @param string|string[] $heading
-	 * @param int $articleId
+	 *  1. appeared at some point in the history of the targetpage, or if this returns no results:
+	 *  2. currently appear on a sub-page of the target page, or if this returns no results:
+	 *  3. currently appears on any page, but only if it is a unique match
+	 *
+	 * @param string|string[] $heading Heading text to match
+	 * @param int $articleId Article ID of the target page
+	 * @param TitleValue $title Title of the target page
 	 * @param int|null $limit
 	 * @return DatabaseThreadItem[]
 	 */
-	public function findNewestRevisionsByHeading( $heading, int $articleId, ?int $limit = 50 ): array {
+	public function findNewestRevisionsByHeading(
+		$heading, int $articleId, TitleValue $title, ?int $limit = 50
+	): array {
 		if ( $this->isDisabled() ) {
 			return [];
 		}
@@ -179,7 +186,9 @@ class ThreadItemStore {
 
 		$dbw = $this->dbProvider->getPrimaryDatabase();
 
-		$itemIdQueryBuilder = $this->getIdsNamesBuilder()
+		// 1. Try to find items which have appeared on the page at some point
+		//    in its history.
+		$itemIdInPageHistoryQueryBuilder = $this->getIdsNamesBuilder()
 			->join( 'revision', null, [ 'rev_id = itr_revision_id' ] )
 			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'h-' . $heading . '-',
@@ -189,11 +198,70 @@ class ThreadItemStore {
 			->where( [ 'rev_page' => $articleId ] )
 			->field( 'itid_itemid' );
 
+		$threadItems = $this->findNewestRevisionsByQuery( $itemIdInPageHistoryQueryBuilder, $limit );
+
+		if ( count( $threadItems ) ) {
+			return $threadItems;
+		}
+
+		// 2. If the thread item's database hasn't been back-filled with historical revisions
+		//    then approach (1) may not work, instead look for matching headings the currently
+		//    appear on sub-pages, which matches the archiving convention on most wikis.
+		$itemIdInSubPageQueryBuilder = $this->getIdsNamesBuilder()
+			->join( 'page', null, [ 'page_id = itp_page_id' ] )
+			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
+				'h-' . $heading . '-',
+				$dbw->anyString()
+			) ) )
+			->where( $dbw->expr( 'page_title', IExpression::LIKE, new LikeValue(
+				$title->getText() . '/',
+				$dbw->anyString()
+			) ) )
+			->where( [ 'page_namespace' => $title->getNamespace() ] )
+			->field( 'itid_itemid' );
+
+		$threadItems = $this->findNewestRevisionsByQuery( $itemIdInSubPageQueryBuilder, $limit );
+
+		if ( count( $threadItems ) ) {
+			return $threadItems;
+		}
+
+		// 3. Look for an "exact" match of the heading on any page. Because we are searching
+		//    so broadly, only return if there is exactly one match to the heading name.
+		$itemIdInAnyPageQueryBuilder = $this->getIdsNamesBuilder()
+			->join( 'page', null, [ 'page_id = itp_page_id', 'page_latest = itr_revision_id' ] )
+			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
+				'h-' . $heading . '-',
+				$dbw->anyString()
+			) ) )
+			->field( 'itid_itemid' )
+			// We only care if there is one, or more than one result
+			->limit( 2 );
+
+		// Check there is only one result in the sub-query
+		$itemIds = $itemIdInAnyPageQueryBuilder->fetchFieldValues();
+		if ( count( $itemIds ) === 1 ) {
+			return $this->findNewestRevisionsByQuery( $itemIds[ 0 ] );
+		}
+
+		return [];
+	}
+
+	/**
+	 * @param SelectQueryBuilder|string $itemIdOrQueryBuilder Sub-query which returns item ID's, or an itemID
+	 * @param int|null $limit
+	 * @return DatabaseThreadItem[]
+	 */
+	private function findNewestRevisionsByQuery( $itemIdOrQueryBuilder, ?int $limit = 50 ): array {
 		$queryBuilder = $this->getIdsNamesBuilder();
-		$queryBuilder
-			->where( [
-				'itid_itemid IN (' . $itemIdQueryBuilder->getSQL() . ')'
-			] );
+		if ( $itemIdOrQueryBuilder instanceof SelectQueryBuilder ) {
+			$queryBuilder
+				->where( [
+					'itid_itemid IN (' . $itemIdOrQueryBuilder->getSQL() . ')'
+				] );
+		} else {
+			$queryBuilder->where( [ 'itid_itemid' => $itemIdOrQueryBuilder ] );
+		}
 
 		if ( $limit !== null ) {
 			$queryBuilder->limit( $limit );

@@ -61,7 +61,9 @@ class ApiDiscussionToolsFindComment extends ApiBase {
 				$articleId = $title->getArticleId();
 
 				if ( $articleId ) {
-					$byHeading = $this->threadItemStore->findNewestRevisionsByHeading( $heading, $articleId );
+					$byHeading = $this->threadItemStore->findNewestRevisionsByHeading(
+						$heading, $articleId, $title->getTitleValue()
+					);
 					foreach ( $byHeading as $item ) {
 						$values[] = $this->getValue( $item, 'heading' );
 					}
