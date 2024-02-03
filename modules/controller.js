@@ -489,12 +489,12 @@ function init( $container, state ) {
 			if ( storage.get( 'saveable' ) ) {
 				mode = storage.get( 'mode' );
 				$link = $( commentNodes[ i ] );
-				setupController( comment, $link, mode, true, !state.firstLoad, storage );
 				if ( OO.ui.isMobile() ) {
 					var urlFragment = mw.util.escapeIdForLink( comment.id );
 					// Force the section to expand on mobile (T338920)
 					location.hash = '#' + urlFragment;
 				}
+				setupController( comment, $link, mode, true, !state.firstLoad, storage );
 				break;
 			}
 		}
