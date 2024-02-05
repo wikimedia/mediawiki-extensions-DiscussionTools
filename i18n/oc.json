@@ -3,7 +3,8 @@
 		"authors": [
 			"BrennodAloisi",
 			"Quentí",
-			"Nicolas Eynaud"
+			"Nicolas Eynaud",
+			"Lhanars"
 		]
 	},
 	"discussiontools": "Aisinas de discussion",
@@ -22,7 +23,7 @@
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comentari|comentaris}}",
 	"discussiontools-topicheader-latestcomment": "Darrièr comentari: $1",
 	"discussiontools-topicsubscription-button-subscribe": "S'abonar",
-	"discussiontools-topicsubscription-button-subscribe-label": "S'abonar",
+	"discussiontools-topicsubscription-button-subscribe-label": "M'inscriure",
 	"discussiontools-topicsubscription-button-unsubscribe": "Se desabonar",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Se desabonar"
 }
