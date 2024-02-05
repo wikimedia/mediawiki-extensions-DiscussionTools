@@ -592,14 +592,14 @@ function init( $container, state ) {
 					return !pattern.test( fragment );
 				} ) ) {
 					findCommentQuery = {
-						heading: decodeURI( fragment ).replace( / /g, '_' ),
+						heading: mw.util.percentDecodeFragment( fragment ).replace( / /g, '_' ),
 						page: mw.config.get( 'wgRelevantPageName' )
 					};
 					isHeading = true;
 				}
 			} else if ( highlightResult.highlighted.length === 0 && highlightResult.requested.length === 1 ) {
 				findCommentQuery = {
-					idorname: decodeURI( highlightResult.requested[ 0 ] )
+					idorname: mw.util.percentDecodeFragment( highlightResult.requested[ 0 ] )
 				};
 				isHeading = highlightResult.requested[ 0 ].slice( 0, 1 ) === 'h';
 			}
