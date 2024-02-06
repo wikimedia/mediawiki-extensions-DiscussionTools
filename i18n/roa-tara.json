@@ -28,5 +28,13 @@
 	"discussiontools-replywidget-preview": "Andeprime",
 	"discussiontools-replywidget-reply": "Respunne",
 	"discussiontools-replywidget-summary": "Riepiloghe",
+	"discussiontools-replywidget-watchthis": "Aggiunge sta pàgene a l'[[Special:Watchlist|elenghe de le pàggene ca condrolle]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|partecipande}} a 'u 'ngazzamende",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|commende}}",
+	"discussiontools-topicheader-latestcomment": "Urteme commende: $1",
+	"discussiontools-topicsubscription-button-subscribe": "'scrivite",
+	"discussiontools-topicsubscription-button-subscribe-label": "'Scrivite",
+	"discussiontools-topicsubscription-button-unsubscribe": "Lasse perde l'iscrizione",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Lasse perde l'iscrizione",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respunne]"
 }
