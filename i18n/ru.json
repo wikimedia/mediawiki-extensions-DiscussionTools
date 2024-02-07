@@ -106,6 +106,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Последний комментарий: $1 от $2",
 	"discussiontools-pagetitle-newtopic": "На странице «$1» начата новая тема",
 	"discussiontools-pagetitle-reply": "Ответ на странице «$1»",
+	"discussiontools-permalink-comment-copied": "Ссылка на сообщение скопирована в буфер обмена.",
 	"discussiontools-postedit-confirmation-published": "Ваше сообщение было опубликовано.",
 	"discussiontools-postedit-confirmation-topicadded": "Ваша тема была добавлена.",
 	"discussiontools-preference-autotopicsub": "Автоматически подписываться на темы",

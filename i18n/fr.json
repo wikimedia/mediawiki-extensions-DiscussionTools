@@ -103,6 +103,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Dernier commentaire : $1 par $2",
 	"discussiontools-pagetitle-newtopic": "Démarrage d’un nouveau sujet sur $1",
 	"discussiontools-pagetitle-reply": "Réponse sur $1",
+	"discussiontools-permalink-comment-copied": "Le lien vers le commentaire a été copié dans le presse-papiers.",
 	"discussiontools-postedit-confirmation-published": "Votre commentaire a été publié.",
 	"discussiontools-postedit-confirmation-topicadded": "Votre sujet a été ajouté.",
 	"discussiontools-preference-autotopicsub": "S’abonner automatiquement aux sujets",

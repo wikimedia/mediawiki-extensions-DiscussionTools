@@ -27,7 +27,8 @@
 			"カッパ鳥",
 			"ネイ",
 			"春春眠眠",
-			"青子守歌"
+			"青子守歌",
+			"Whym"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -100,6 +101,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "最新のコメント：$1 | 投稿者：$2",
 	"discussiontools-pagetitle-newtopic": "$1で新しいトピックを開始する",
 	"discussiontools-pagetitle-reply": "$1で返信する",
+	"discussiontools-permalink-comment-copied": "発言へのリンクがクリップボードにコピーされました。",
 	"discussiontools-postedit-confirmation-published": "コメントが公開されました。",
 	"discussiontools-postedit-confirmation-topicadded": "話題が追加されました。",
 	"discussiontools-preference-autotopicsub": "コメントした話題を自動的に購読する",
@@ -168,10 +170,10 @@
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "この話題に関する更新の通知を受け取らないようにしますか？",
 	"discussiontools-topicsubscription-button-subscribe": "更新を通知",
 	"discussiontools-topicsubscription-button-subscribe-label": "購読",
-	"discussiontools-topicsubscription-button-subscribe-tooltip": "この節に新しいコメントが投稿されたら通知します。",
+	"discussiontools-topicsubscription-button-subscribe-tooltip": "購読するとこの節に新しい発言があったときに通知を受け取れます。",
 	"discussiontools-topicsubscription-button-unsubscribe": "通知を解除",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "購読解除",
-	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "通知を受け取らないようにします。",
+	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "購読解除すると新しい発言があったときの通知が来なくなります。",
 	"discussiontools-topicsubscription-error-not-found-body": "URLで指定された議論が見つかりませんでした。",
 	"discussiontools-topicsubscription-error-not-found-title": "対象が見つかりません",
 	"discussiontools-topicsubscription-notify-subscribed-body": "このトピックに新しいコメントが投稿されたら通知を受け取ります。",
