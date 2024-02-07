@@ -922,7 +922,8 @@ class CommentParser {
 				$curCommentEnd = $node;
 			} elseif ( $node instanceof Text && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
 				$warnings = [];
-				$foundSignature = $this->findSignature( $node, $lastSigNode );
+				$foundSignature = $this->findSignature( $node,
+					$curCommentEnd === $this->rootNode ? null : $curCommentEnd );
 				$author = $foundSignature['username'];
 				$lastSigNode = $foundSignature['nodes'][0];
 

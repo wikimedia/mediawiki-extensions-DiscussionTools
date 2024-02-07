@@ -895,7 +895,8 @@ Parser.prototype.buildThreadItems = function () {
 			curCommentEnd = node;
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegexps ) ) ) {
 			var warnings = [];
-			var foundSignature = this.findSignature( node, lastSigNode );
+			var foundSignature = this.findSignature( node,
+				curCommentEnd === this.rootNode ? null : curCommentEnd );
 			var author = foundSignature.username;
 			lastSigNode = foundSignature.nodes[ 0 ];
 
