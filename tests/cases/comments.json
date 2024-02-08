@@ -232,6 +232,22 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "Signature with multiple timestamp in formatting elements causing an infinite loop (T356884)",
+		"title": "Talk:T356884",
+		"dom": "cases/signatures-T356884/signatures-T356884.html",
+		"expected": "../cases/signatures-T356884/signatures-T356884.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
+		"name": "Signature with unclosed formatting elements doesn't eat subsequent comments",
+		"title": "Talk:T356884b",
+		"dom": "cases/signatures-T356884b/signatures-T356884b.html",
+		"expected": "../cases/signatures-T356884b/signatures-T356884b.json",
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "Timestamp format switch behavior",
 		"title": "Talk:T304595",
 		"dom": "cases/timestamp-format-switch/timestamp-format-switch.html",
