@@ -87,6 +87,7 @@ class ThreadItemStore {
 		}
 
 		$queryBuilder = $this->getIdsNamesBuilder()
+			->caller( __METHOD__ )
 			->where( [
 				'it_itemname' => $itemName,
 				// Disallow querying for headings of sections that contain no comments.
@@ -125,7 +126,8 @@ class ThreadItemStore {
 			return [];
 		}
 
-		$queryBuilder = $this->getIdsNamesBuilder();
+		$queryBuilder = $this->getIdsNamesBuilder()
+			->caller( __METHOD__ );
 
 		// First find the name associated with the ID; then find by name. Otherwise we wouldn't find the
 		// latest revision in case comment ID changed, e.g. the comment was moved elsewhere on the page.
@@ -189,6 +191,7 @@ class ThreadItemStore {
 		// 1. Try to find items which have appeared on the page at some point
 		//    in its history.
 		$itemIdInPageHistoryQueryBuilder = $this->getIdsNamesBuilder()
+			->caller( __METHOD__ . ' case 1' )
 			->join( 'revision', null, [ 'rev_id = itr_revision_id' ] )
 			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'h-' . $heading . '-',
@@ -198,7 +201,8 @@ class ThreadItemStore {
 			->where( [ 'rev_page' => $articleId ] )
 			->field( 'itid_itemid' );
 
-		$threadItems = $this->findNewestRevisionsByQuery( $itemIdInPageHistoryQueryBuilder, $limit );
+		$threadItems = $this->findNewestRevisionsByQuery( __METHOD__ . ' case 1',
+			$itemIdInPageHistoryQueryBuilder, $limit );
 
 		if ( count( $threadItems ) ) {
 			return $threadItems;
@@ -208,6 +212,7 @@ class ThreadItemStore {
 		//    then approach (1) may not work, instead look for matching headings the currently
 		//    appear on sub-pages, which matches the archiving convention on most wikis.
 		$itemIdInSubPageQueryBuilder = $this->getIdsNamesBuilder()
+			->caller( __METHOD__ . ' case 2' )
 			->join( 'page', null, [ 'page_id = itp_page_id' ] )
 			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'h-' . $heading . '-',
@@ -220,7 +225,8 @@ class ThreadItemStore {
 			->where( [ 'page_namespace' => $title->getNamespace() ] )
 			->field( 'itid_itemid' );
 
-		$threadItems = $this->findNewestRevisionsByQuery( $itemIdInSubPageQueryBuilder, $limit );
+		$threadItems = $this->findNewestRevisionsByQuery( __METHOD__ . ' case 2',
+			$itemIdInSubPageQueryBuilder, $limit );
 
 		if ( count( $threadItems ) ) {
 			return $threadItems;
@@ -229,6 +235,7 @@ class ThreadItemStore {
 		// 3. Look for an "exact" match of the heading on any page. Because we are searching
 		//    so broadly, only return if there is exactly one match to the heading name.
 		$itemIdInAnyPageQueryBuilder = $this->getIdsNamesBuilder()
+			->caller( __METHOD__ . ' case 3' )
 			->join( 'page', null, [ 'page_id = itp_page_id', 'page_latest = itr_revision_id' ] )
 			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'h-' . $heading . '-',
@@ -241,19 +248,20 @@ class ThreadItemStore {
 		// Check there is only one result in the sub-query
 		$itemIds = $itemIdInAnyPageQueryBuilder->fetchFieldValues();
 		if ( count( $itemIds ) === 1 ) {
-			return $this->findNewestRevisionsByQuery( $itemIds[ 0 ] );
+			return $this->findNewestRevisionsByQuery( __METHOD__ . ' case 3', $itemIds[ 0 ] );
 		}
 
 		return [];
 	}
 
 	/**
+	 * @param string $fname
 	 * @param SelectQueryBuilder|string $itemIdOrQueryBuilder Sub-query which returns item ID's, or an itemID
 	 * @param int|null $limit
 	 * @return DatabaseThreadItem[]
 	 */
-	private function findNewestRevisionsByQuery( $itemIdOrQueryBuilder, ?int $limit = 50 ): array {
-		$queryBuilder = $this->getIdsNamesBuilder();
+	private function findNewestRevisionsByQuery( $fname, $itemIdOrQueryBuilder, ?int $limit = 50 ): array {
+		$queryBuilder = $this->getIdsNamesBuilder()->caller( $fname . ' / ' . __METHOD__ );
 		if ( $itemIdOrQueryBuilder instanceof SelectQueryBuilder ) {
 			$queryBuilder
 				->where( [
@@ -307,6 +315,7 @@ class ThreadItemStore {
 			// Parent item ID (the string, not just the primary key)
 			->leftJoin(
 				$this->getIdsNamesBuilder()
+					->caller( __METHOD__ )
 					->fields( [
 						'itr_parent__itr_id' => 'itr_id',
 						'itr_parent__itid_itemid' => 'itid_itemid',
@@ -332,9 +341,10 @@ class ThreadItemStore {
 			$revs[ $row->itr_revision_id ] = null;
 		}
 		$revQueryBuilder = $this->dbProvider->getReplicaDatabase()->newSelectQueryBuilder()
-											->queryInfo( $this->revStore->getQueryInfo( [ 'page' ] ) )
-											->fields( $this->pageStore->getSelectFields() )
-											->where( $revs ? [ 'rev_id' => array_keys( $revs ) ] : '0=1' );
+			->caller( __METHOD__ )
+			->queryInfo( $this->revStore->getQueryInfo( [ 'page' ] ) )
+			->fields( $this->pageStore->getSelectFields() )
+			->where( $revs ? [ 'rev_id' => array_keys( $revs ) ] : '0=1' );
 		$revResult = $revQueryBuilder->fetchResultSet();
 		foreach ( $revResult as $row ) {
 			$revs[ $row->rev_id ] = $row;
