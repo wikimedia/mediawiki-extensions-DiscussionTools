@@ -73,7 +73,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Beşê jê bibe",
 	"discussiontools-replywidget-abandontopic-keep": "Nivîsînê bidomîne",
 	"discussiontools-replywidget-advanced": "Pêşketî",
-	"discussiontools-replywidget-anon-warning": "<strong>Tu têneketî yî.</strong> Ji bo ku dewsa navnîşana IPya te navê te yê bikarhêneriyê derkeve, yan [$1 têkeve] yan jî [$2 hesabekî çêke].",
+	"discussiontools-replywidget-anon-warning": "<strong>Tu ne têketî yî.</strong> Tu dikarî [$1 têkevî] yan jî [$2 hesabekî çêkî] ji bo ku werî agahdarkirin wextê ku kesek cewab bide û navê te yê bikarhêneriyê derkeve dewsa adresa IPya te.",
 	"discussiontools-replywidget-cancel": "Betal bike",
 	"discussiontools-replywidget-feedback": "Fikir li ser vê alavê bişîne",
 	"discussiontools-replywidget-loading": "Tê barkirin...",
