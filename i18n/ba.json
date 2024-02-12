@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bashkorttan",
 			"Mansur",
 			"Roustammr",
 			"Sagan",
@@ -13,7 +14,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Көйләүҙәрҙе үҙгәртергә",
 	"discussiontools-autotopicsubpopup-title": "{{GENDER:|Һеҙ}} яҙылған булғанһығыҙ",
 	"discussiontools-defaultsummary-reply": "Яуап бирергә",
-	"discussiontoolsdebug-title": "Фекер алышыу ҡоралдары структураһы",
+	"discussiontoolsdebug-title": "Фекер алышыу ҡоралдарының мәғлүмәт структураһы",
 	"discussiontoolsdebug-pagetitle": "Бит атамаһы",
 	"discussiontoolsdebug-intro": "Был биттә [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools киңәйтеү  DiscussionTools] '''[[:$1]]''' битендә булған темаларҙы һәм фекерҙәрҙе нисек таныуы күрһәтелә. Был киңәйтеүгә бәйле проблемаларҙы хәл итеү өсөн йәки уның нисек эшләгәнен аңлау өсөн файҙалы була ала. Шул уҡ мәғлүмәт [[$2|API discussiontoolspageinfo]] битендә бар.",
 	"discussiontools-desc": "Фекер алышыу биттәрен яҡшыртыу ҡоралдары.",
@@ -21,7 +22,7 @@
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Фекер алышыу битендә]] {{GRAMMAR:genitive|{{SITENAME}}}} проектының эстәлеген нисек яҡшыртыу тураһында фекерҙәре менән уртаҡлашалар. {{GENDER:|Һеҙ}} был битте «[[:{{SUBJECTPAGENAME}}]]» битенә яҡшыртыуҙар индереү буйынса фекер алышыуҙа файҙалана алаһығыҙ.",
 	"discussiontools-emptystate-desc-self": "\n{{GRAMMAR:genitive|{{SITENAME}}}} проектында ҡатнашыусылар [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|фекер алышыу битен]] һеҙгә яҙыу өсөн файҙалана ала.  {{GENDER:|Һеҙгә}} был хаҡта хәбәр киләсәк.",
 	"discussiontools-emptystate-desc-self-anon": "{{GRAMMAR:genitive|{{SITENAME}}}} проектында ҡатнашыусылар [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|фекер алышыу битен]], {{GENDER:|һеҙҙең}} IP-адрестан эшләнгән төҙәтеүҙәр тураһында хәбәр итеү өсөн файҙалана ала. \n\nКүп кенә IP-адрестар даими алмаштырыла һәм бер үк ваҡытта бер нисә кеше тарафынан ҡулланыла. Башҡа кеше тип уйламаһындар өсөн, һеҙ [$1 адресында иҫәп яҙмаһын булдыра] йәки [$2 адресында таныла] алаһығыҙ. Иҫәп яҙмаһы булдырыу ҙа IP-адресығыҙҙы йәшерә.",
-	"discussiontools-emptystate-desc-self-temp": "{{SITENAME}} проектында ҡатнашыусылар [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|фекер алышыу битендә]] {{ПОЛ:|һеҙгә}} хәбәр ҡалдырһа, был хаҡта хәбәр киләсәк.\n\nӘлеге ваҡытта һеҙ автоматик рәүештә булдырылған [[{{MediaWiki:tempuser-helppage}}|ваҡытлыса иҫәп яҙмаһын]] файҙаланаһығыҙ. Үҙегеҙ теләгән исем менән теркәлеү һәм өҫтәмә мөмкинлектәр алыу өсөн [$1 адресында иҫәп яҙмаһы булдырығыҙ] йәки [$2 адресында танылығыҙ].",
+	"discussiontools-emptystate-desc-self-temp": "{{SITENAME}} ҡулланыусылары был [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|әңгәмә]] битен {{GENDER:|һеҙгә}} асыҡ хәбәр яҙыу өсөн ҡуллана ала.\n\nАхыр сиктә был биттең  [[{{MediaWiki:tempuser-helppage}}|мөҙҙәте туласаҡ]]. Хәбәрҙәр алыуҙы дауам итеү һәм башҡа функцияларҙы ҡулланыу өсөн, [$1 иҫәп яҙмаһы булдырығыҙ] йәки [$2 инегеҙ].",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Фекер алышыу бите]] — {{GRAMMAR:genitive|{{SITENAME}}}} проектының эстәлеген нисек яҡшыртыу тураһында фекер алышыу урыны. [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] {{GENDER:{{PAGENAME}}|менән}} бәйләнешкә инеп, нимә буйынсалыр фекер алышыу өсөн яңы фекер алышыу башлағыҙ. {{GENDER:|Һеҙҙең}} бында яҙғанды барыһы ла уҡый ала.",
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Фекер алышыу бите]] - {{SITENAME}} проекты эстәлеген нисек итеп яҡшыртыу тураһында фекер алышыу урыны. Ошо IP-адрестан эшләнгән төҙәтеүҙәр буйынса фекер алышыу өсөн был битте файҙаланығыҙ.  {{GENDER:|Һеҙҙең}} яҙғандарҙы башҡалар ҙа уҡый ала. Күп кенә IP-адрестар үҙгәрә һәм бик йыш бер үк ваҡытта бер нисә кеше тарафынан ҡулланыла.",
 	"discussiontools-emptystate-desc-user-temp": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-temp}}|Фекер алышыу бите]] - {{SITENAME}} проектының эстәлеген нисек итеп яҡшыртыу һәм уның нисек булырға тейешлеге тураһында фекер алышыу урыны. [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] {{GENDER:{{PAGENAME}}|битенә}} ҡушылыу өсөн яңы тема башлағыҙ. {{GENDER:|һеҙҙең}} яҙғандарығыҙ барыһына ла күренәсәк. Был битте [[{{MediaWiki:tempuser-helppage}}|ваҡытлыса иҫәп яҙмаһы]] булдырған, күрәһең, ул башҡаса был биткә инә алмай.",
@@ -97,7 +98,7 @@
 	"discussiontools-preference-newtopictool": "Теманы тиҙ өҫтәүҙе ҡабыҙырға",
 	"discussiontools-preference-newtopictool-createpage": "Әлегә булдырылмаған фекер алышыу битенә ингәнемдә:",
 	"discussiontools-preference-newtopictool-createpage-editor": "Вики-текст мөхәррирен асырға",
-	"discussiontools-preference-newtopictool-createpage-newtopictool": "Яңы тема өҫтәргә тәҡдим итергә",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "Яңы тема өҫтәүҙе тәҡдим итеү",
 	"discussiontools-preference-newtopictool-help": "Был мөмкинлек һеҙгә яңы тема өҫтәү формаһын күрһәтер.",
 	"discussiontools-preference-replytool": "Тиҙ яуап мөмкинлеген ҡабыҙырға",
 	"discussiontools-preference-replytool-help": "Был фекер алышыу битендәге хәбәрҙәргә бер баҫыуҙа яуап биреү һылтанмаһын өҫтәй.",
@@ -128,7 +129,7 @@
 	"discussiontools-replywidget-mode-source": "Сығанаҡ",
 	"discussiontools-replywidget-mode-visual": "Визуаль",
 	"discussiontools-replywidget-newcomments-button": "$1 {{PLURAL:$1|яңы фекерҙе}} күрһәтергә",
-	"discussiontools-replywidget-newtopic": "Тема {{GENDER:|өҫтәргә}}",
+	"discussiontools-replywidget-newtopic": "Тема {{GENDER:|өҫтәү}}",
 	"discussiontools-replywidget-placeholder-newtopic": "Тасуирлама",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} фекеренә {{GENDER:|яуап бирергә}}",
 	"discussiontools-replywidget-preferences": "Көйләүҙәр",
