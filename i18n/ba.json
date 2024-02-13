@@ -5,7 +5,8 @@
 			"Sagan",
 			"З. ӘЙЛЕ",
 			"Mansur",
-			"Айсар"
+			"Айсар",
+			"Bashkorttan"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Яҡшы, аңлашылды",
@@ -54,7 +55,7 @@
 	"discussiontools-preference-newtopictool": "Теманы тиҙ өҫтәүҙе ҡабыҙырға",
 	"discussiontools-preference-newtopictool-createpage": "Әлегә булдырылмаған фекер алышыу битенә ингәнемдә:",
 	"discussiontools-preference-newtopictool-createpage-editor": "Вики-текст мөхәррирен асырға",
-	"discussiontools-preference-newtopictool-createpage-newtopictool": "Яңы тема өҫтәргә тәҡдим итергә",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "Яңы тема өҫтәүҙе тәҡдим итеү",
 	"discussiontools-preference-newtopictool-help": "Был мөмкинлек һеҙгә яңы тема өҫтәү формаһын күрһәтер.",
 	"discussiontools-preference-replytool": "Тиҙ яуап мөмкинлеген ҡабыҙырға",
 	"discussiontools-preference-replytool-help": "Был фекер алышыу битендәге хәбәрҙәргә бер баҫыуҙа яуап биреү һылтанмаһын өҫтәй.",
