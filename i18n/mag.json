@@ -4,7 +4,12 @@
 			"ऐक्टिवेटेड्"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "ठीक हे, समझ गेली ।",
+	"discussiontools-autotopicsubpopup-preferences": "पसन्द सम्पादन की",
 	"discussiontools-defaultsummary-reply": "उत्तर",
+	"discussiontoolsdebug-pagetitle": "पन्ना शीर्षक",
+	"discussiontools-desc": "चर्चापन्ना सुधारला उपकरण",
+	"discussiontools-emptystate-button": "चर्चा आरम्भ करी",
 	"discussiontools-findcomment-label-search": "खोजी",
 	"discussiontools-findcomment-noresults": "कौनो परिणाम न ।",
 	"discussiontools-findcomment-results-notcurrent": "(बर्तमान सन्शोधनमे न)",

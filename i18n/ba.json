@@ -5,7 +5,8 @@
 			"Sagan",
 			"З. ӘЙЛЕ",
 			"Mansur",
-			"Айсар"
+			"Айсар",
+			"Bashkorttan"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Был фекер алышыуҙа кемдер яңы хәбәр яҙһа, {{GENDER:|һеҙгә}} белдереү киләсәк. Белдереүҙәр параметрын көйләүҙәрҙә көйләй алаһығыҙ.",
@@ -13,7 +14,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Көйләүҙәрҙе үҙгәртергә",
 	"discussiontools-autotopicsubpopup-title": "{{GENDER:|Һеҙ}} яҙылған булғанһығыҙ",
 	"discussiontools-defaultsummary-reply": "Яуап бирергә",
-	"discussiontoolsdebug-title": "Фекер алышыу ҡоралдары структураһы",
+	"discussiontoolsdebug-title": "Фекер алышыу ҡоралдарының мәғлүмәт структураһы",
 	"discussiontoolsdebug-pagetitle": "Бит атамаһы",
 	"discussiontoolsdebug-intro": "Был биттә [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools киңәйтеү  DiscussionTools] '''[[:$1]]''' битендә булған темаларҙы һәм фекерҙәрҙе нисек таныуы күрһәтелә. Был киңәйтеүгә бәйле проблемаларҙы хәл итеү өсөн йәки уның нисек эшләгәнен аңлау өсөн файҙалы була ала. Шул уҡ мәғлүмәт [[$2|API discussiontoolspageinfo]] битендә бар.",
 	"discussiontools-desc": "Фекер алышыу биттәрен яҡшыртыу ҡоралдары.",
@@ -97,7 +98,7 @@
 	"discussiontools-preference-newtopictool": "Теманы тиҙ өҫтәүҙе ҡабыҙырға",
 	"discussiontools-preference-newtopictool-createpage": "Әлегә булдырылмаған фекер алышыу битенә ингәнемдә:",
 	"discussiontools-preference-newtopictool-createpage-editor": "Вики-текст мөхәррирен асырға",
-	"discussiontools-preference-newtopictool-createpage-newtopictool": "Яңы тема өҫтәргә тәҡдим итергә",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "Яңы тема өҫтәүҙе тәҡдим итеү",
 	"discussiontools-preference-newtopictool-help": "Был мөмкинлек һеҙгә яңы тема өҫтәү формаһын күрһәтер.",
 	"discussiontools-preference-replytool": "Тиҙ яуап мөмкинлеген ҡабыҙырға",
 	"discussiontools-preference-replytool-help": "Был фекер алышыу битендәге хәбәрҙәргә бер баҫыуҙа яуап биреү һылтанмаһын өҫтәй.",
@@ -128,7 +129,7 @@
 	"discussiontools-replywidget-mode-source": "Сығанаҡ",
 	"discussiontools-replywidget-mode-visual": "Визуаль",
 	"discussiontools-replywidget-newcomments-button": "$1 {{PLURAL:$1|яңы фекерҙе}} күрһәтергә",
-	"discussiontools-replywidget-newtopic": "Тема {{GENDER:|өҫтәргә}}",
+	"discussiontools-replywidget-newtopic": "Тема {{GENDER:|өҫтәү}}",
 	"discussiontools-replywidget-placeholder-newtopic": "Тасуирлама",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} фекеренә {{GENDER:|яуап бирергә}}",
 	"discussiontools-replywidget-preferences": "Көйләүҙәр",
