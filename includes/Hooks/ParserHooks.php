@@ -15,6 +15,7 @@ use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use MediaWiki\Hook\ParserOutputPostCacheTransformHook;
+use MediaWiki\Parser\ParserOutputFlags;
 use MediaWiki\Parser\Parsoid\PageBundleParserOutputConverter;
 use MediaWiki\Parser\Parsoid\ParsoidParser;
 use MediaWiki\Title\Title;
@@ -86,14 +87,7 @@ class ParserHooks implements
 	 * @inheritDoc
 	 */
 	public function onParserOutputPostCacheTransform( $parserOutput, &$text, &$options ): void {
-		// TEMPORARY for wikitech visualdiff testing: Pin this to false so we
-		// always render reply links (for anon users as well) to match current
-		// behavior which also lets us run a truer visual diff with DT.
-		//
-		// NOTE: This is a temporary proxy for 'isPreview' flag in ParserOptions.
-		// It is not clear whether 'editsectionEditLinks' is disabled only for previews.
-		// $isPreview = empty( $options['enableSectionEditLinks'] );
-		$isPreview = false;
+		$isPreview = $parserOutput->getOutputFlag( ParserOutputFlags::IS_PREVIEW );
 
 		// We want to run this hook only on Parsoid HTML for now.
 		// (and leave the onParserAfterTidy handler for legacy HTML).
