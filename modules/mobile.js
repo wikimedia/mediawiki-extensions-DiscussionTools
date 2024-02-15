@@ -1,4 +1,4 @@
-var newTopicButton, $readAsWikiPage, ledeSectionDialog;
+var newTopicButton, ledeSectionDialog;
 var viewportScrollContainer = null;
 var wasKeyboardOpen = null;
 var initialClientHeight = null;
@@ -110,34 +110,17 @@ function init( $container ) {
 			wasScrollDown = isScrollDown;
 		}, 200 ), { passive: true } );
 	}
-	if ( !$readAsWikiPage ) {
-		// Read as wiki page button, copied from old MobileFrontend/Minerva feature (removed in T319145)
-		$readAsWikiPage = $( '<button>' )
-			.addClass( 'ext-discussiontools-init-readAsWikiPage' )
-			.attr( 'data-event-name', 'talkpage.readAsWiki' )
-			.text( mw.message( 'minerva-talk-full-page' ).text() )
-			.on( 'click', function () {
-				$( document.body ).removeClass( 'ext-discussiontools-visualenhancements-enabled ext-discussiontools-replytool-enabled' );
-			} );
-	}
-
-	/* eslint-disable no-jquery/no-global-selector */
-	if ( newTopicButton ) {
-		$newTopicWrapper.after( $readAsWikiPage );
-	} else {
-		$( '#mw-content-text' ).append( $readAsWikiPage );
-	}
 
 	// Tweak to prevent our footer buttons from overlapping Minerva skin elements (T328452).
 	// TODO: It would be more elegant to do this in just CSS somehow.
 	// BEWARE: I have wasted 4 hours here trying to make that happen. The elements are not nested in a
 	// helpful way, and moving them around tends to break the stickiness of the "Add topic" button.
+	/* eslint-disable no-jquery/no-global-selector */
 	if (
 		$( '.catlinks' ).filter( '[data-mw="interface"]' ).length ||
 		$( '#page-secondary-actions' ).children().length ||
 		$( '.return-link' ).length
 	) {
-		$readAsWikiPage.addClass( 'ext-discussiontools-init-button-notFlush' );
 		$newTopicWrapper.addClass( 'ext-discussiontools-init-button-notFlush' );
 	}
 	/* eslint-enable no-jquery/no-global-selector */
