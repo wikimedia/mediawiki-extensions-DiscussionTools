@@ -9,6 +9,7 @@
 			"Patsagorn Y.",
 			"Prame Tan",
 			"RidJasper",
+			"Siam2019",
 			"Thas Tayapongsak",
 			"Thastp"
 		]
@@ -66,6 +67,8 @@
 	"discussiontools-postedit-confirmation-published": "ความคิดเห็นของคุณได้เผยแพร่แล้ว",
 	"discussiontools-postedit-confirmation-topicadded": "เพิ่มหัวข้อของคุณแล้ว",
 	"discussiontools-preference-label": "เครื่องมือช่วยเหลือการอภิปราย",
+	"discussiontools-preference-newtopictool-createpage-editor": "เปิดตัวแก้ไขข้อความวิกิ",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "เสนอให้เพิ่มหัวข้อใหม่",
 	"discussiontools-preference-replytool": "เปิดใช้การตอบกลับอย่างรวดเร็ว",
 	"discussiontools-preference-replytool-help": "นี่จะแสดงลิงก์สำหรับการตอบกลับความเห็นหน้าพูดคุยได้ในคลิกเดียว",
 	"discussiontools-replybutton": "{{GENDER:|ตอบกลับ}}",
