@@ -1,43 +1,43 @@
 [
 	{
-		"headingLevel": 2,
-		"id": "h-Hello-20240130095300",
-		"level": 0,
-		"name": "h-Alice-20240130095300",
 		"placeholderHeading": false,
+		"type": "heading",
 		"range": [
 			"1/3/2/0",
 			"1/3/2/3"
 		],
+		"headingLevel": 2,
+		"level": 0,
+		"name": "h-Alice-20240130095300",
+		"id": "h-Hello-20240130095300",
+		"warnings": [],
 		"replies": [
 			{
+				"type": "comment",
+				"timestamp": "20240130095300",
 				"author": "Alice",
-				"id": "c-Alice-20240130095300-Hello",
-				"level": 1,
-				"name": "c-Alice-20240130095300",
 				"range": [
 					"3/2",
 					"3/12/0"
 				],
-				"replies": [],
 				"signatureRanges": [
 					[
 						"3/3",
 						"3/8"
 					]
 				],
-				"timestamp": "20240130095300",
 				"timestampRanges": [
 					[
 						"3/7/0/0",
 						"3/7/0/28"
 					]
 				],
-				"type": "comment",
-				"warnings": []
+				"level": 1,
+				"name": "c-Alice-20240130095300",
+				"id": "c-Alice-20240130095300-Hello",
+				"warnings": [],
+				"replies": []
 			}
-		],
-		"type": "heading",
-		"warnings": []
+		]
 	}
 ]
