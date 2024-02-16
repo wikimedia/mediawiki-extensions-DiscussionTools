@@ -793,7 +793,8 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
  * separators (isCommentSeparator()).
  *
  * @private
- * @param {Node} node Node to start searching at. If it isn't a leaf node, its children are ignored.
+ * @param {Node|null} node Node after which to start searching
+ *   (if null, start at the beginning of the document).
  * @return {Node}
  */
 Parser.prototype.nextInterestingLeafNode = function ( node ) {
@@ -804,9 +805,8 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 		// eslint-disable-next-line no-bitwise
 		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
 		function ( n ) {
-			// Ignore this node and its descendants
-			// (unless it's the root node, this is a special case for "fakeHeading" handling)
-			if ( node !== rootNode && ( n === node || n.parentNode === node ) ) {
+			// Skip past the starting node and its descendants
+			if ( n === node || n.parentNode === node ) {
 				return NodeFilter.FILTER_REJECT;
 			}
 			// Ignore some elements usually used as separators or headers (and their descendants)
@@ -824,7 +824,9 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 		},
 		false
 	);
-	treeWalker.currentNode = node;
+	if ( node ) {
+		treeWalker.currentNode = node;
+	}
 	treeWalker.nextNode();
 	if ( !treeWalker.currentNode ) {
 		throw new Error( 'nextInterestingLeafNode not found' );
@@ -874,9 +876,9 @@ Parser.prototype.buildThreadItems = function () {
 	);
 
 	var curComment, range;
-	var curCommentEnd = this.rootNode;
+	var curCommentEnd = null;
 
-	var node, lastSigNode;
+	var node;
 	while ( ( node = treeWalker.nextNode() ) ) {
 		var match;
 		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
@@ -895,10 +897,8 @@ Parser.prototype.buildThreadItems = function () {
 			curCommentEnd = node;
 		} else if ( node.nodeType === Node.TEXT_NODE && ( match = this.findTimestamp( node, timestampRegexps ) ) ) {
 			var warnings = [];
-			var foundSignature = this.findSignature( node,
-				curCommentEnd === this.rootNode ? null : curCommentEnd );
+			var foundSignature = this.findSignature( node, curCommentEnd );
 			var author = foundSignature.username;
-			lastSigNode = foundSignature.nodes[ 0 ];
 
 			if ( !author ) {
 				// Ignore timestamps for which we couldn't find a signature. It's probably not a real
@@ -914,7 +914,7 @@ Parser.prototype.buildThreadItems = function () {
 
 			// Everything from the last comment up to here is the next comment
 			var startNode = this.nextInterestingLeafNode( curCommentEnd );
-			var endNode = lastSigNode;
+			var endNode = foundSignature.nodes[ 0 ];
 
 			// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 			// avoiding that would be more difficult and slower.
@@ -927,7 +927,7 @@ Parser.prototype.buildThreadItems = function () {
 			// no way to indicate which one you're replying to (this might matter in the future for
 			// notifications or something).
 			utils.linearWalk(
-				lastSigNode,
+				endNode,
 				// eslint-disable-next-line no-loop-func
 				function ( event, n ) {
 					var match2, foundSignature2;

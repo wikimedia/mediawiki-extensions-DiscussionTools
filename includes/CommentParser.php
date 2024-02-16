@@ -110,18 +110,18 @@ class CommentParser {
 	 * that is a "void element" or "text element", except some special cases that we treat as comment
 	 * separators (isCommentSeparator()).
 	 *
-	 * @param Node $node Node to start searching at. This node's children are ignored.
+	 * @param ?Node $node Node after which to start searching
+	 *   (if null, start at the beginning of the document).
 	 * @return Node
 	 */
-	private function nextInterestingLeafNode( Node $node ): Node {
+	private function nextInterestingLeafNode( ?Node $node ): Node {
 		$rootNode = $this->rootNode;
 		$treeWalker = new TreeWalker(
 			$rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
 			static function ( $n ) use ( $node, $rootNode ) {
-				// Ignore this node and its descendants
-				// (unless it's the root node, this is a special case for "fakeHeading" handling)
-				if ( $node !== $rootNode && ( $n === $node || $n->parentNode === $node ) ) {
+				// Skip past the starting node and its descendants
+				if ( $n === $node || $n->parentNode === $node ) {
 					return NodeFilter::FILTER_REJECT;
 				}
 				// Ignore some elements usually used as separators or headers (and their descendants)
@@ -138,7 +138,9 @@ class CommentParser {
 				return NodeFilter::FILTER_SKIP;
 			}
 		);
-		$treeWalker->currentNode = $node;
+		if ( $node ) {
+			$treeWalker->currentNode = $node;
+		}
 		$treeWalker->nextNode();
 		if ( !$treeWalker->currentNode ) {
 			throw new RuntimeException( 'nextInterestingLeafNode not found' );
@@ -899,14 +901,13 @@ class CommentParser {
 		$timestampRegexps = $this->getLocalTimestampRegexps();
 		$dfParsers = $this->getLocalTimestampParsers();
 
-		$curCommentEnd = $this->rootNode;
+		$curCommentEnd = null;
 
 		$treeWalker = new TreeWalker(
 			$this->rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
 			[ static::class, 'acceptOnlyNodesAllowingComments' ]
 		);
-		$lastSigNode = null;
 		while ( $node = $treeWalker->nextNode() ) {
 			if ( $node instanceof Element && preg_match( '/^h([1-6])$/i', $node->tagName, $match ) ) {
 				$headingNodeAndOffset = CommentUtils::getHeadlineNodeAndOffset( $node );
@@ -922,10 +923,8 @@ class CommentParser {
 				$curCommentEnd = $node;
 			} elseif ( $node instanceof Text && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
 				$warnings = [];
-				$foundSignature = $this->findSignature( $node,
-					$curCommentEnd === $this->rootNode ? null : $curCommentEnd );
+				$foundSignature = $this->findSignature( $node, $curCommentEnd );
 				$author = $foundSignature['username'];
-				$lastSigNode = $foundSignature['nodes'][0];
 
 				if ( !$author ) {
 					// Ignore timestamps for which we couldn't find a signature. It's probably not a real
@@ -941,7 +940,7 @@ class CommentParser {
 
 				// Everything from the last comment up to here is the next comment
 				$startNode = $this->nextInterestingLeafNode( $curCommentEnd );
-				$endNode = $lastSigNode;
+				$endNode = $foundSignature['nodes'][0];
 
 				// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 				// avoiding that would be more difficult and slower.
@@ -954,7 +953,7 @@ class CommentParser {
 				// no way to indicate which one you're replying to (this might matter in the future for
 				// notifications or something).
 				CommentUtils::linearWalk(
-					$lastSigNode,
+					$endNode,
 					function ( string $event, Node $n ) use (
 						&$endNode, &$sigRanges, &$timestampRanges,
 						$treeWalker, $timestampRegexps, $node
