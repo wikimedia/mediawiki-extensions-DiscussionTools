@@ -143,6 +143,17 @@
 		"data": "../data/enwiki-data.json"
 	},
 	{
+		"name": "For parser cache (new)",
+		"title": "Talk:For parser cache",
+		"dom": "cases/for-parser-cache-new/for-parser-cache-new.html",
+		"expected": {
+			"desktop": "cases/for-parser-cache-new/for-parser-cache-new-formatted-desktop.html",
+			"mobile": "cases/for-parser-cache-new/for-parser-cache-new-formatted-mobile.html"
+		},
+		"config": "../data/enwiki-config.json",
+		"data": "../data/enwiki-data.json"
+	},
+	{
 		"name": "tracked template",
 		"title": "Commons talk:SPARQL query service",
 		"dom": "cases/tracked-template/tracked-template.html",

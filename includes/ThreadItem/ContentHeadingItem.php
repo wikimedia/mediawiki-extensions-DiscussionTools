@@ -43,7 +43,7 @@ class ContentHeadingItem extends ContentThreadItem implements HeadingItem {
 			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 			$headline = $this->getRange()->startContainer;
 			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
-			$id = $headline->getAttribute( 'id' );
+			$id = $headline->getAttribute( 'id' ) ?: $headline->getAttribute( 'data-mw-anchor' );
 			if ( $id ) {
 				// Replace underscores with spaces to undo Sanitizer::escapeIdInternal().
 				// This assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ],
