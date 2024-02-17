@@ -181,20 +181,9 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	public function getHTML(): string {
 		$fragment = $this->getRange()->cloneContents();
 		CommentModifier::unwrapFragment( $fragment );
-		// Does not work: T357812
-		// $editsection = DOMCompat::querySelector( $fragment, 'mw\\:editsection' );
-		for ( $n = $fragment->firstChild; $n; $n = $n->nextSibling ) {
-			if ( $n instanceof Element ) {
-				if ( strtolower( $n->tagName ) === 'mw:editsection' ) {
-					$n->parentNode->removeChild( $n );
-					break;
-				}
-				$editsection = DOMCompat::querySelector( $n, 'mw\\:editsection' );
-				if ( $editsection ) {
-					$editsection->parentNode->removeChild( $editsection );
-					break;
-				}
-			}
+		$editsection = DOMCompat::querySelector( $fragment, 'mw\\:editsection' );
+		if ( $editsection ) {
+			$editsection->parentNode->removeChild( $editsection );
 		}
 		return DOMUtils::getFragmentInnerHTML( $fragment );
 	}
