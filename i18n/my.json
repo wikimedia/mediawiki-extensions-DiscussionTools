@@ -113,7 +113,6 @@
 	"echo-category-title-dt-subscription": "ဆွေးနွေးချက်စာမျက်နှာ {{PLURAL:$1|စာရင်းပေးမှု|စာရင်းပေးမှုများ}}",
 	"echo-category-title-dt-subscription-archiving": "ဆွေးနွေးချက်စာမျက်နှာ {{PLURAL:$1|မော်ကွန်းတိုက်}}",
 	"echo-pref-tooltip-dt-subscription": "မိမိ{{GENDER:|စာရင်းပေးသွင်းထားသော}} ခေါင်းစဉ်တွင် တစ်စုံတစ်ဦးက သုံးသပ်ချက်အသစ် ရေးသွားပါက မိမိအား အသိပေးပါ။",
-	"minerva-talk-full-page": "ဝီကီစာမျက်နှာအဖြစ် ဖတ်ရှုရန်",
 	"tag-discussiontools-description": "DiscussionTools အသုံးပြု၍ တည်းဖြတ်ခြင်း",
 	"tag-discussiontools-edit": "ပြင်ဆင်ထားသော သုံးသပ်ချက်",
 	"tag-discussiontools-edit-description": "အသုံးပြုသူသည် ရှိနှင့်ပြီးသော သုံးသပ်ချက်တစ်ခုကို DiscussionTools ဖြင့် တည်းဖြတ်ခဲ့သည်",

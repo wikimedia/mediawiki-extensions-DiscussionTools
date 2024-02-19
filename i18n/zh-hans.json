@@ -217,7 +217,6 @@
 	"echo-category-title-dt-subscription-archiving": "讨论页{{PLURAL:$1|存档}}",
 	"echo-pref-tooltip-dt-subscription": "当有人在我{{GENDER:|订阅}}的话题内发布新留言时通知我。",
 	"echo-pref-tooltip-dt-subscription-archiving": "当我{{GENDER:|订阅}}的话题被存档或从页面删除时，或当有关话题内新发布留言的通知因其他原因无法发送时通知我。",
-	"minerva-talk-full-page": "作为wiki页面阅读",
 	"discussiontools-comments-before-first-heading-category-desc": "该讨论页含有位于导言章节（首个标题前）的留言。这可能会导致导言或留言显示错误，特别是在移动版和手机应用内。",
 	"tag-discussiontools-added-comment-description": "此编辑内添加了讨论页留言",
 	"tag-discussiontools-description": "使用讨论工具做出的编辑",

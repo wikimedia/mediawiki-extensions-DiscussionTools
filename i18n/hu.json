@@ -176,7 +176,6 @@
 	"echo-category-title-dt-subscription-archiving": "Vitalapi {{PLURAL:$1|archiválás|archiválások}}",
 	"echo-pref-tooltip-dt-subscription": "Értesítést kérek, amikor valaki hozzászól egy olyan vitalapi témában, amire feliratkoztam.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Értesítést kérek, ha archiválnak vagy eltávolítanak egy lapról egy olyan témát, amire feliratkoztam, vagy ha a jövőbeli hozzászólásokról szóló értesítések más okból nem kézbesíthetőek.",
-	"minerva-talk-full-page": "Olvasás wikilapként",
 	"discussiontools-comments-before-first-heading-category-desc": "A vitalap „bevezetőjében” (az első szakaszcím előtt) hozzászólások találhatók. Ez a „bevezető” vagy a hozzászólások hibás megjelenését okozhatja, különösen a mobilos verzióban és a mobilalkalmazásokban.",
 	"tag-discussiontools-added-comment-description": "Vitalapi megjegyzést tartalmazó szerkesztés",
 	"tag-discussiontools-description": "A DiscussionToolszal végzett szerkesztés",

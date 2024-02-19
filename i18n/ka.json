@@ -124,7 +124,6 @@
 	"discussiontools-topicsubscription-special-title": "გამოწერილი თემები",
 	"echo-category-title-dt-subscription": "განხილვის გვერდის {{PLURAL:$1|გამოწერა|გამოწერები}}",
 	"echo-pref-tooltip-dt-subscription": "შემატყობინე, როდესაც ვინმე იმ თემაში დაამატებს კომენტარს, რომელიც გამოწერილი მაქვს.",
-	"minerva-talk-full-page": "ვიკიგვერდის სახით წაკითხვა",
 	"tag-discussiontools-added-comment-description": "ამ რედაქტირებით განხილვის გვერდს კომენტარი დაემატა",
 	"tag-discussiontools-description": "რედაქტირება განხორციელდა განხილვის ხელსაწყოს დახმარებით",
 	"tag-discussiontools-edit": "კომენტარის რედაქტირება",

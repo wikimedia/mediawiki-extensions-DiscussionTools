@@ -192,7 +192,6 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Arkivering}} av diskusjonsside",
 	"echo-pref-tooltip-dt-subscription": "Varsle {{GENDER:|meg}} når noen kommenterer et emne jeg abonnerer på.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Varsle {{GENDER:|meg}} når et emne jeg abonnerer på arkiveres eller fjernes fra en side, eller om varsler om nye kommentarer i slike emner ikke kan sendes av andre årsaker.",
-	"minerva-talk-full-page": "Les som wikiside",
 	"discussiontools-comments-before-first-heading-category-desc": "Diskusjonssiden inneholder kommentarer i begynnelsen av siden (før første overskrift). Dette kan gjøre at begynnelsen av siden eller kommentarene vises feil, spesielt i mobilversjonen og mobilappene.",
 	"tag-discussiontools-added-comment-description": "En diskusjonssidekommentar ble lagt til i denne redigeringen",
 	"tag-discussiontools-description": "Redigering gjort med DiscussionTools",

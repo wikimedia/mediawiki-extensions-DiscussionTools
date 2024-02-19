@@ -187,7 +187,6 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Archiwizacja}} stron dyskusji",
 	"echo-pref-tooltip-dt-subscription": "Powiadom mnie, kiedy ktoś doda nowy komentarz w subskrybowanym przeze mnie wątku.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Powiadom mnie, gdy subskrybowany przeze mnie wątek zostanie zarchiwizowany lub usunięty ze strony, lub jeśli z innych powodów nie będzie możliwe wysyłanie powiadomień o nowych komentarzach opublikowanych w tym wątku.",
-	"minerva-talk-full-page": "Przeczytaj jak stronę wiki",
 	"discussiontools-comments-before-first-heading-category-desc": "Strona dyskusji zawiera komentarze w sekcji początkowej (przed pierwszym nagłówkiem). Może to spowodować nieprawidłowe wyświetlanie tej sekcji lub zawartych w niej komentarzy, szczególnie w wersji mobilnej i aplikacjach mobilnych.",
 	"tag-discussiontools-added-comment-description": "W tej edycji dodano komentarz na stronie dyskusji",
 	"tag-discussiontools-description": "Edycja wykonana przy pomocy narzędzi dyskusji",

@@ -190,7 +190,6 @@
 	"echo-category-title-dt-subscription-archiving": "Diskussionsseiten-{{PLURAL:$1|Archivierung}}",
 	"echo-pref-tooltip-dt-subscription": "Benachrichtige mich, wenn jemand einen neuen Kommentar zu einem Thema schreibt, das ich abonniert habe.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Benachrichtige mich, wenn ein Abschnitt, den ich abonniert habe, archiviert oder von einer Seite entfernt wird oder wenn Benachrichtigungen über neue Kommentare zu diesem Abschnitt aus anderen Gründen nicht gesendet werden können.",
-	"minerva-talk-full-page": "Als Wikiseite lesen",
 	"discussiontools-comments-before-first-heading-category-desc": "Die Diskussionsseite enthält Kommentare im ersten Abschnitt (vor der ersten Überschrift). Dies kann insbesondere in der mobilen Version und in mobilen Apps dazu führen, dass der erste Abschnitt oder die Kommentare falsch angezeigt werden.",
 	"tag-discussiontools-added-comment-description": "Ein Kommentar zur Diskussionsseite wurde in dieser Bearbeitung hinzugefügt",
 	"tag-discussiontools-description": "Bearbeitung durch Diskussions-Werkzeuge",

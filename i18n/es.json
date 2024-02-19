@@ -203,7 +203,6 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Archivado}} de páginas de discusión",
 	"echo-pref-tooltip-dt-subscription": "Notificarme cuando alguien publica un nuevo comentario sobre un tema al que estoy {{GENDER:|suscrito|suscrita}}.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Notifícame cuando un hilo al que estoy {{GENDER:|suscrito|suscrita}} se archive o sea eliminado de una página de discusión, o cuando no se puedan enviar notificaciones sobre nuevos comentarios por cualquier otro motivo.",
-	"minerva-talk-full-page": "Leer como página de wiki",
 	"discussiontools-comments-before-first-heading-category-desc": "La página de discusión contiene comentarios en la sección principal (antes del primer encabezado). Esto puede causar que la introducción o los comentarios se muestren incorrectamente, especialmente en la versión móvil y en las aplicaciones móviles.",
 	"tag-discussiontools-added-comment-description": "Se añadió un comentario en la página de discusión en esta edición.",
 	"tag-discussiontools-description": "Edición hecha con DiscussionTools",

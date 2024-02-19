@@ -183,7 +183,6 @@
 	"echo-category-title-dt-subscription-archiving": "Дийцарийн агӀонийн {{PLURAL:$1|архивйар}}",
 	"echo-pref-tooltip-dt-subscription": "Сан йаздар долучу темехь цхьам керла хаам битича соьга дӀахаийта.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Хаийта суна, аса {{GENDER:|куьг йаздина}} тема архиве йодахь йа дӀайаккхахь йа оцу теманехь керла  комментарин хаам цхьаьна бахьнехь дӀа ца бахьийтина.",
-	"minerva-talk-full-page": "Схьайелла вики-агӀо",
 	"discussiontools-comments-before-first-heading-category-desc": "Дийцадаккхаран агӀонгахь комментареш йу чуваларан декъехь (хьалхара коьртан хьалха). Цуо нийса ца гайта тарло чуваларан блок йа комментареш, башха чӀогӀа мобилан версешкахь а, мобилан приложенешкахь а.",
 	"tag-discussiontools-added-comment-description": "ХӀокху нисдаро тӀетоьхна дийцарийн агӀонгахь хаам.",
 	"tag-discussiontools-description": "Нисдар дина DiscussionTools гӀоьнца",

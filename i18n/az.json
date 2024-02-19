@@ -190,7 +190,6 @@
 	"echo-category-title-dt-subscription-archiving": "Müzakirə səhifəsi {{PLURAL:$1|arxivləşdirilir}}",
 	"echo-pref-tooltip-dt-subscription": "Kimsə {{GENDER:|abunə olduğum}} mövzuda yeni şərh yazdıqda mənə bildir.",
 	"echo-pref-tooltip-dt-subscription-archiving": "{{GENDER:|Abunə olduğum}} mövzu arxivləşdirildikdə və ya səhifədən silindikdə və ya həmin mövzuda yerləşdirilmiş yeni şərhlər haqqında bildirişlər başqa səbəblərdən göndərilə bilmədiyi zaman mənə bildir.",
-	"minerva-talk-full-page": "Viki-səhifə kimi oxu",
 	"discussiontools-comments-before-first-heading-category-desc": "Müzakirə səhifəsində lede bölməsində (birinci başlıqdan əvvəl) şərhlər var. Bu, xüsusilə mobil versiyada və mobil proqramlarda lede və ya şərhlərin səhv göstərilməsinə səbəb ola bilər.",
 	"tag-discussiontools-added-comment-description": "Bu redaktəyə müzakirə səhifəsi şərhi əlavə edildi",
 	"tag-discussiontools-description": "DiscussionTools vasitəsilə redaktə edildi",

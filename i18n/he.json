@@ -187,7 +187,6 @@
 	"echo-category-title-dt-subscription-archiving": "ארכוב {{PLURAL:$1|דפי שיחה}}",
 	"echo-pref-tooltip-dt-subscription": "להודיע לי כשמישהו כותב תגובה חדשה בנושא {{GENDER:|שעשיתי מינוי}} עליו.",
 	"echo-pref-tooltip-dt-subscription-archiving": "להודיע לי כשנושא שעשיתי עליו {{GENDER:|מינוי}} מאורכב או מוסר מדף, או אם התראות על תגובות חדשות בנושא ההוא לא יכולות להישלח מסיבות אחרות.",
-	"minerva-talk-full-page": "לקרוא בתור דף ויקי",
 	"discussiontools-comments-before-first-heading-category-desc": "דף הדיון מכיל הערות בפרק התיחה (לפני הכותרת הראשונה). זה יכול לגרום לפרק הפתיחה או להערות להיות מוצגות בצורה שגויה, במיוחד בגרסה הניידת וביישומים.",
 	"tag-discussiontools-added-comment-description": "נוספה תגובה לדף שיחה בעריכה הזאת",
 	"tag-discussiontools-description": "עריכה שנעשתה באמצעות כלי שיחה",

@@ -188,7 +188,6 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Archiviazione}} delle pagine di discussione",
 	"echo-pref-tooltip-dt-subscription": "Avvisami quando qualcuno commenta un argomento a cui sono {{GENDER:|iscritto|iscritta}}.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Avvisami quando un argomento a cui sono {{GENDER:|iscritto|iscritta}} è archiviato o rimosso dalla pagina, oppure avvisami se le notifiche di nuovi commenti a quell'argomento non possono essermi inviate per altri motivi.",
-	"minerva-talk-full-page": "Leggi come pagina wiki",
 	"tag-discussiontools-added-comment-description": "Un intervento è stato aggiunto a una pagina di discussione con questa modifica",
 	"tag-discussiontools-description": "Modifica effettuata usando DiscussionTools",
 	"tag-discussiontools-edit": "Commento modificato",

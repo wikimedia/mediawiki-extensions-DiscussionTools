@@ -189,7 +189,6 @@
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|}}Arhiviranje pogovornih strani",
 	"echo-pref-tooltip-dt-subscription": "Obvesti me, ko kdo objavi nov komentar v temi, na katero sem {{GENDER:|naročen|naročena|naročen_a}}.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Obvesti me, ko je tema, na katero sem {{GENDER:|naročen|naročena|naročen_a}}, arhivirana ali odstranjena s strani ali če obvestil o novih komentarjih, objavljenih pri tej temi, ni mogoče poslati iz drugih razlogov.",
-	"minerva-talk-full-page": "Beri kot vikistran",
 	"discussiontools-comments-before-first-heading-category-desc": "Stran za razprave vsebuje v uvodnem razdelku (pred prvim naslovom) komentarje. To lahko povzroči, da so uvod ali komentarji prikazani nepravilno, zlasti v mobilni različici in mobilnih aplikacijah.",
 	"tag-discussiontools-added-comment-description": "V tem urejanju je bil dodan komentar na pogovorni strani",
 	"tag-discussiontools-description": "Urejanje z orodjem DiscussionTools",

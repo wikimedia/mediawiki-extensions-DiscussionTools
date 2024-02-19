@@ -191,7 +191,6 @@
 	"echo-category-title-dt-subscription-archiving": "আলাপ পাতা {{PLURAL:$1|সংগ্রহশালাভুক্ত}} হলে",
 	"echo-pref-tooltip-dt-subscription": "আমার অনুসরণ করা আলোচনায় কেউ নতুন মন্তব্য করলে আমাকে অবহিত করুন।",
 	"echo-pref-tooltip-dt-subscription-archiving": "আমি অনুসরণ করছি এমন একটি বিষয় আর্কাইভ করা হলে বা পাতা থেকে সরানো হলে আমাকে অবহিত করুন, অথবা যদি সেই আলোচনায় পোস্ট করা নতুন মন্তব্যের বিজ্ঞপ্তি কোনও কারণে পাঠানো না গেলে আমাকে অবহিত করুন।",
-	"minerva-talk-full-page": "উইকি পাতা হিসেবে পড়ুন",
 	"tag-discussiontools-added-comment-description": "এই সম্পাদনায় একটি মন্তব্য যোগ হয়েছে",
 	"tag-discussiontools-description": "আলোচনা সরঞ্জাম ব্যবহার করে  সম্পাদনা করা হয়েছে",
 	"tag-discussiontools-edit": "সম্পাদিত মন্তব্য",

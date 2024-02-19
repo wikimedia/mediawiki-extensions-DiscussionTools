@@ -71,6 +71,5 @@
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "सदस्सता छोड़ी",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "सदस्सता सम्पादित करी",
 	"discussiontools-topicsubscription-special-title": "बिषय सदस्सता",
-	"echo-category-title-dt-subscription": "बार्तापन्ना {{PLURAL:$1|सदस्सता}}",
-	"minerva-talk-full-page": "विकिपन्ना नियन पढ़ी"
+	"echo-category-title-dt-subscription": "बार्तापन्ना {{PLURAL:$1|सदस्सता}}"
 }
