@@ -9,6 +9,7 @@
 	},
 	"discussiontools": "Aisinas de discussion",
 	"discussiontools-defaultsummary-reply": "Respònsa",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 vos a {{GENDER:$2|respòst}} a «<strong>$4</strong>».",
 	"discussiontools-pageframe-latestcomment": "Comentari darrièr: $1 per $2 dins lo tèma $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Darrièr comentari: $1 per $2",
 	"discussiontools-replywidget-advanced": "Avançat",

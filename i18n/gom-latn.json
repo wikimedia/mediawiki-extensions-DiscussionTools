@@ -14,6 +14,7 @@
 	"discussiontools-error-noswitchtove-title": "Dixtti rup osokxom kela",
 	"discussiontools-findcomment-label-idorname": "Xereacho ank vo nanv",
 	"discussiontools-findcomment-label-search": "Sod",
+	"discussiontools-findcomment-results-transcluded": "(dusrea panak savn sondorbh-aspavit)",
 	"discussiontools-findcomment-title": "Xero sod",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|second}}",
 	"discussiontools-newtopic-missing-title": "Upkar korun tujea bhasabhasachea vixoiak ek mathallo di. Tu \"{{int:discussiontools-replywidget-newtopic}}\" -acher klik korxi zalear, tuzo vixoi mathallea vinnem zoddtolo.",

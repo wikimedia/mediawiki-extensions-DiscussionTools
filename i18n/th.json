@@ -10,7 +10,8 @@
 			"Ekminarin",
 			"Kaoavi",
 			"Thastp",
-			"RidJasper"
+			"RidJasper",
+			"Siam2019"
 		]
 	},
 	"discussiontools": "เครื่องมือช่วยในการอภิปราย",
@@ -22,7 +23,7 @@
 	"discussiontools-emptystate-button": "เริ่มการอภิปรายใหม่",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|หน้าคุย]]คือหน้าที่ผู้คนจะอภิปรายวิธีการสร้างเนื้อหาบน {{SITENAME}} ให้ดีที่สุดเท่าที่จะทำได้ คุณสามารถใช้หน้านี้เพื่อเริ่มการอภิปรายกับผู้อื่นในการปรับปรุง [[:{{SUBJECTPAGENAME}}]] ได้เช่นกัน",
 	"discussiontools-emptystate-title": "เริ่มการอภิปรายใหม่ที่เกี่ยวกับ {{SUBJECTPAGENAME}}",
-	"discussiontools-emptystate-title-user": "เริ่มการอภิปราย {{GENDER:{{PAGENAME}}|ด้วย}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "เริ่มการอภิปราย{{GENDER:{{PAGENAME}}|ด้วย}} {{PAGENAME}}",
 	"discussiontools-error-noswitchtove-table": "รูปแบบของตาราง",
 	"discussiontools-error-noswitchtove-template": "รูปแบบของแม่แบบ",
 	"discussiontools-error-noswitchtove-title": "ปิดใช้งานโหมดแบบเห็นภาพ",
@@ -31,6 +32,7 @@
 	"discussiontools-findcomment-noresults": "ไม่มีผลลัพธ์",
 	"discussiontools-findcomment-results-notcurrent": "(ไม่ใช่ในการแก้ไขปัจจุบัน)",
 	"discussiontools-findcomment-title": "ค้นหาความคิดเห็น",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|วินาที}}",
 	"discussiontools-newtopic-placeholder-title": "เรื่อง",
 	"discussiontools-notification-removed-topic-view": "ดูหน้า",
 	"discussiontools-notification-removed-topic-disabled-body": "คุณสามารถเปลี่ยนนี้ได้ใน[[Special:Preferences#mw-prefsection-echo-echosubscriptions|การตั้งค่าของคุณ]]",
@@ -42,7 +44,10 @@
 	"discussiontools-postedit-confirmation-published": "ความคิดเห็นของคุณได้เผยแพร่แล้ว",
 	"discussiontools-postedit-confirmation-topicadded": "เพิ่มหัวข้อของคุณแล้ว",
 	"discussiontools-preference-label": "เครื่องมือช่วยเหลือการอภิปราย",
+	"discussiontools-preference-newtopictool-createpage-editor": "เปิดตัวแก้ไขข้อความวิกิ",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "เสนอให้เพิ่มหัวข้อใหม่",
 	"discussiontools-preference-replytool": "เปิดใช้การตอบกลับอย่างรวดเร็ว",
+	"discussiontools-preference-replytool-help": "นี่จะแสดงลิงก์สำหรับการตอบกลับความเห็นหน้าพูดคุยได้ในคลิกเดียว",
 	"discussiontools-replybutton": "ตอบกลับ",
 	"discussiontools-replylink": "ตอบกลับ",
 	"discussiontools-replywidget-abandon": "แน่ใจหรือไม่ว่าต้องการยกเลิกการตอบกลับนี้?",
