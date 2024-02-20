@@ -34,7 +34,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "Henda efni",
 	"discussiontools-replywidget-abandontopic-keep": "Halda áfram að skrifa",
 	"discussiontools-replywidget-advanced": "Frekari stillingar",
-	"discussiontools-replywidget-anon-warning": "<strong>Þú ert ekki skráð(ur) inn.</strong> Til að svarið verði merkt með notendanafni í staðinn fyrir IP-tölunni þinni geturðu [$1 skráð þig inn] eða [$2 stofnað aðgang].",
+	"discussiontools-replywidget-anon-warning": "<strong>Þú ert ekki skráð(ur) inn.</strong> Til að fá tilkynningu þegar einhver svarar og fá eignun með nafninu þínu í stað IP-staðfangsins þíns getur þú [$1 skráð þig inn] eða [$2 búið til aðgang].",
 	"discussiontools-replywidget-cancel": "Hætta við",
 	"discussiontools-replywidget-feedback": "Ertu með ábendingar um þennan fídus?",
 	"discussiontools-replywidget-loading": "Hleð...",

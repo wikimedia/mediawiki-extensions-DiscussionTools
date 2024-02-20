@@ -10,7 +10,8 @@
 			"Thas Tayapongsak",
 			"Kaoavi",
 			"Thastp",
-			"RidJasper"
+			"RidJasper",
+			"Siam2019"
 		]
 	},
 	"discussiontools": "เครื่องมือช่วยในการอภิปราย",
@@ -30,7 +31,7 @@
 	"discussiontools-findcomment-label-search": "ค้นหา",
 	"discussiontools-findcomment-noresults": "ไม่มีผลลัพธ์",
 	"discussiontools-findcomment-results-notcurrent": "(ไม่ใช่ในการแก้ไขปัจจุบัน)",
-	"discussiontools-findcomment-title": "ค้นหาความคิดเห็น",
+	"discussiontools-findcomment-title": "ค้นหาความเห็น",
 	"discussiontools-ledesection-button": "เรียนรู้เพิ่มเติมเกี่ยวกับหน้านี้",
 	"discussiontools-ledesection-title": "เกี่ยวกับหน้าคุยนี้",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|วินาที}}",
@@ -45,6 +46,8 @@
 	"discussiontools-postedit-confirmation-published": "ความคิดเห็นของคุณได้เผยแพร่แล้ว",
 	"discussiontools-postedit-confirmation-topicadded": "เพิ่มหัวข้อของคุณแล้ว",
 	"discussiontools-preference-label": "เครื่องมือช่วยเหลือการอภิปราย",
+	"discussiontools-preference-newtopictool-createpage-editor": "เปิดตัวแก้ไขข้อความวิกิ",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "เสนอให้เพิ่มหัวข้อใหม่",
 	"discussiontools-preference-replytool": "เปิดใช้การตอบกลับอย่างรวดเร็ว",
 	"discussiontools-preference-replytool-help": "นี่จะแสดงลิงก์สำหรับการตอบกลับความเห็นหน้าพูดคุยได้ในคลิกเดียว",
 	"discussiontools-replybutton": "ตอบกลับ",
