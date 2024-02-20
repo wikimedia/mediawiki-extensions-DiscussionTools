@@ -268,21 +268,27 @@ class PageHooks implements
 		// multiple sources!
 
 		$isMobile = $this->isMobile();
+		$visualEnhancementsEnabled =
+			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS );
+		$visualEnhancementsReplyEnabled =
+			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS_REPLY );
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			// Just enable OOUI PHP - the OOUI subscribe button isn't infused unless VISUALENHANCEMENTS are enabled
 			$output->setupOOUI();
 			$text = CommentFormatter::postprocessTopicSubscription(
-				$text, $output, $this->subscriptionStore, $isMobile
+				$text, $output, $this->subscriptionStore, $isMobile, $visualEnhancementsEnabled
 			);
 		}
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
 			$output->enableOOUI();
-			$text = CommentFormatter::postprocessReplyTool( $text, $output, $isMobile );
+			$text = CommentFormatter::postprocessReplyTool(
+				$text, $output, $isMobile, $visualEnhancementsReplyEnabled
+			);
 		}
 
-		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS ) ) {
+		if ( $visualEnhancementsEnabled ) {
 			$output->enableOOUI();
 			if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 				// Visually enhanced topic subscriptions: bell, bellOutline
@@ -291,7 +297,7 @@ class PageHooks implements
 			if (
 				$isMobile ||
 				(
-					HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS_REPLY ) &&
+					$visualEnhancementsReplyEnabled &&
 					CommentFormatter::isLanguageRequiringReplyIcon( $output->getLanguage() )
 				)
 			) {

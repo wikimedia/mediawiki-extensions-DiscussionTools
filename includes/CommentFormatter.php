@@ -484,11 +484,12 @@ class CommentFormatter {
 	 * @param IContextSource $contextSource
 	 * @param SubscriptionStore $subscriptionStore
 	 * @param bool $isMobile
+	 * @param bool $useButtons
 	 * @return string
 	 */
 	public static function postprocessTopicSubscription(
 		string $text, IContextSource $contextSource,
-		SubscriptionStore $subscriptionStore, bool $isMobile
+		SubscriptionStore $subscriptionStore, bool $isMobile, bool $useButtons
 	): string {
 		$doc = DOMCompat::newDocument( true );
 
@@ -514,8 +515,10 @@ class CommentFormatter {
 		$title = $contextSource->getTitle();
 		$text = preg_replace_callback(
 			'/<!--__(DTSUBSCRIBELINK|DTSUBSCRIBEBUTTON(?:DESKTOP|MOBILE))__(.*?)-->/',
-			static function ( $matches ) use ( $doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile ) {
-				$isLink = $matches[1] === 'DTSUBSCRIBELINK';
+			static function ( $matches ) use (
+				$doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile, $useButtons
+			) {
+				$isButton = $matches[1] !== 'DTSUBSCRIBELINK';
 				$buttonIsMobile = $matches[1] === 'DTSUBSCRIBEBUTTONMOBILE';
 
 				$itemData = $itemDataByName[ $matches[2] ];
@@ -531,7 +534,10 @@ class CommentFormatter {
 					'section' => $itemData['linkableTitle'],
 				] );
 
-				if ( $isLink ) {
+				if ( $isButton !== $useButtons ) {
+					return '';
+				}
+				if ( !$isButton ) {
 					$subscribe = $doc->createElement( 'span' );
 					$subscribe->setAttribute(
 						'class',
@@ -611,10 +617,11 @@ class CommentFormatter {
 	 * @param string $text
 	 * @param IContextSource $contextSource
 	 * @param bool $isMobile
+	 * @param bool $useButtons
 	 * @return string
 	 */
 	public static function postprocessReplyTool(
-		string $text, IContextSource $contextSource, bool $isMobile
+		string $text, IContextSource $contextSource, bool $isMobile, bool $useButtons
 	): string {
 		$doc = DOMCompat::newDocument( true );
 
@@ -624,40 +631,43 @@ class CommentFormatter {
 
 		$text = preg_replace_callback(
 			'/<!--__DTREPLYBUTTONSCONTENT__-->/',
-			static function ( $matches ) use ( $doc, $replyLinkText, $replyButtonText, $isMobile, $lang ) {
+			static function ( $matches ) use ( $doc, $replyLinkText, $replyButtonText, $isMobile, $useButtons, $lang ) {
 				$replyLinkButtons = $doc->createElement( 'span' );
 
-				// Reply
-				$replyLink = $doc->createElement( 'a' );
-				$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
-				$replyLink->setAttribute( 'role', 'button' );
-				$replyLink->setAttribute( 'tabindex', '0' );
-				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
-				$replyLink->setAttribute( 'href', '' );
-				$replyLink->textContent = $replyLinkText;
+				if ( $useButtons ) {
+					// Visual enhancements button
+					$useIcon = $isMobile || static::isLanguageRequiringReplyIcon( $lang );
+					$replyLinkButton = new \OOUI\ButtonWidget( [
+						'classes' => [ 'ext-discussiontools-init-replybutton' ],
+						'framed' => false,
+						'label' => $replyButtonText,
+						'icon' => $useIcon ? 'share' : null,
+						'flags' => [ 'progressive' ],
+						'infusable' => true,
+					] );
 
-				$bracket = $doc->createElement( 'span' );
-				$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
-				$bracketOpen = $bracket->cloneNode( false );
-				$bracketClose = $bracket->cloneNode( false );
-				$bracketOpen->textContent = '[';
-				$bracketClose->textContent = ']';
+					DOMCompat::setInnerHTML( $replyLinkButtons, $replyLinkButton->toString() );
+				} else {
+					// Reply link
+					$replyLink = $doc->createElement( 'a' );
+					$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
+					$replyLink->setAttribute( 'role', 'button' );
+					$replyLink->setAttribute( 'tabindex', '0' );
+					// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
+					$replyLink->setAttribute( 'href', '' );
+					$replyLink->textContent = $replyLinkText;
 
-				// Visual enhancements button
-				$useIcon = $isMobile || static::isLanguageRequiringReplyIcon( $lang );
-				$replyLinkButton = new \OOUI\ButtonWidget( [
-					'classes' => [ 'ext-discussiontools-init-replybutton' ],
-					'framed' => false,
-					'label' => $replyButtonText,
-					'icon' => $useIcon ? 'share' : null,
-					'flags' => [ 'progressive' ],
-					'infusable' => true,
-				] );
+					$bracket = $doc->createElement( 'span' );
+					$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
+					$bracketOpen = $bracket->cloneNode( false );
+					$bracketClose = $bracket->cloneNode( false );
+					$bracketOpen->textContent = '[';
+					$bracketClose->textContent = ']';
 
-				DOMCompat::setInnerHTML( $replyLinkButtons, $replyLinkButton->toString() );
-				$replyLinkButtons->appendChild( $bracketOpen );
-				$replyLinkButtons->appendChild( $replyLink );
-				$replyLinkButtons->appendChild( $bracketClose );
+					$replyLinkButtons->appendChild( $bracketOpen );
+					$replyLinkButtons->appendChild( $replyLink );
+					$replyLinkButtons->appendChild( $bracketClose );
+				}
 
 				return DOMCompat::getInnerHTML( $replyLinkButtons );
 			},
