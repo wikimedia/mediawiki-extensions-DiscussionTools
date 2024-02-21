@@ -516,13 +516,13 @@ class ThreadItemStore {
 	 * Store the thread item set.
 	 *
 	 * @param RevisionRecord $rev
-	 * @param ThreadItemSet $threadItemSet
+	 * @param ContentThreadItemSet $threadItemSet
 	 * @throws TimestampException
 	 * @throws DBError
 	 * @throws Exception
 	 * @return bool
 	 */
-	public function insertThreadItems( RevisionRecord $rev, ThreadItemSet $threadItemSet ): bool {
+	public function insertThreadItems( RevisionRecord $rev, ContentThreadItemSet $threadItemSet ): bool {
 		if ( $this->readOnlyMode->isReadOnly() ) {
 			return false;
 		}
