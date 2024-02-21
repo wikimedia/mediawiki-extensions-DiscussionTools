@@ -482,7 +482,7 @@ class ThreadItemStore {
 	 * @param RevisionRecord $rev For error logging
 	 * @return int Return value of whichever function succeeded
 	 */
-	private function findOrInsertIdButTryHarder(
+	private function findOrInsertId(
 		callable $find, callable $insert, bool &$didInsert, RevisionRecord $rev
 	) {
 		$dbw = $this->dbProvider->getPrimaryDatabase();
@@ -542,7 +542,7 @@ class ThreadItemStore {
 		// (This is not in a transaction. Orphaned rows in this table are harmlessly ignored,
 		// and long transactions caused performance issues on Wikimedia wikis: T315353#8218914.)
 		foreach ( $threadItemSet->getThreadItems() as $item ) {
-			$itemIdsId = $this->findOrInsertIdButTryHarder(
+			$itemIdsId = $this->findOrInsertId(
 				static function ( IReadableDatabase $dbw ) use ( $item, $method ) {
 					return $dbw->newSelectQueryBuilder()
 						->from( 'discussiontools_item_ids' )
@@ -570,7 +570,7 @@ class ThreadItemStore {
 		// (This is not in a transaction. Orphaned rows in this table are harmlessly ignored,
 		// and long transactions caused performance issues on Wikimedia wikis: T315353#8218914.)
 		foreach ( $threadItemSet->getThreadItems() as $item ) {
-			$itemsId = $this->findOrInsertIdButTryHarder(
+			$itemsId = $this->findOrInsertId(
 				static function ( IReadableDatabase $dbw ) use ( $item, $method ) {
 					return $dbw->newSelectQueryBuilder()
 						->from( 'discussiontools_items' )
@@ -741,7 +741,7 @@ class ThreadItemStore {
 						$itemRevisionsId = $itemRevisionsUpdateId;
 						$didInsert = true;
 					} else {
-						$itemRevisionsId = $this->findOrInsertIdButTryHarder(
+						$itemRevisionsId = $this->findOrInsertId(
 							static function ( IReadableDatabase $dbw ) use ( $itemRevisionsConds, $method ) {
 								return $dbw->newSelectQueryBuilder()
 									->from( 'discussiontools_item_revisions' )
