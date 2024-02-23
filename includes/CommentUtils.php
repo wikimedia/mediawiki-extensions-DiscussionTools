@@ -6,6 +6,7 @@ use Config;
 use LogicException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
+use MediaWiki\MainConfigNames;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Comment;
 use Wikimedia\Parsoid\DOM\Element;
@@ -467,11 +468,16 @@ class CommentUtils {
 	/**
 	 * Get a MediaWiki page title from a URL
 	 *
-	 * @param string $url
-	 * @param Config $config
+	 * @param string $url Relative URL (from a `href` attribute)
+	 * @param Config $config Config settings needed to resolve the relative URL
 	 * @return string|null
 	 */
 	public static function getTitleFromUrl( string $url, Config $config ): ?string {
+		// Protocol-relative URLs are handled really badly by parse_url()
+		if ( str_starts_with( $url, '//' ) ) {
+			$url = "http:$url";
+		}
+
 		$bits = parse_url( $url );
 		$query = wfCgiToArray( $bits['query'] ?? '' );
 		if ( isset( $query['title'] ) ) {
@@ -479,19 +485,26 @@ class CommentUtils {
 		}
 
 		// TODO: Set the correct base in the document?
-		if ( strpos( $url, './' ) === 0 ) {
-			$url = 'https://local' . str_replace( '$1', substr( $url, 2 ), $config->get( 'ArticlePath' ) );
-		} elseif ( strpos( $url, '://' ) === false ) {
-			$url = 'https://local' . $url;
+		$articlePath = $config->get( MainConfigNames::ArticlePath );
+		if ( str_starts_with( $url, './' ) ) {
+			// Assume this is URL in the format used by Parsoid documents
+			$url = substr( $url, 2 );
+			$path = str_replace( '$1', $url, $articlePath );
+		} elseif ( !str_contains( $url, '://' ) ) {
+			// Assume this is URL in the format used by legacy parser documents
+			$path = $url;
+		} else {
+			// External link
+			$path = $bits['path'] ?? '';
 		}
 
-		$articlePathRegexp = '/' . str_replace(
-			preg_quote( '$1', '/' ),
+		$articlePathRegexp = '/^' . str_replace(
+			'\\$1',
 			'([^?]*)',
 			preg_quote( $config->get( 'ArticlePath' ), '/' )
 		) . '/';
 		$matches = null;
-		if ( preg_match( $articlePathRegexp, $url, $matches ) ) {
+		if ( preg_match( $articlePathRegexp, $path, $matches ) ) {
 			return urldecode( $matches[1] );
 		}
 		return null;
