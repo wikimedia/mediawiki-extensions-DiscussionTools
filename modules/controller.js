@@ -475,6 +475,10 @@ function init( $container, state ) {
 		} );
 	} );
 
+	var mobilePromise = OO.ui.isMobile() && mw.loader.getState( 'mobile.init' ) ?
+		mw.loader.using( 'mobile.init' ) :
+		$.Deferred().resolve().promise();
+
 	// Restore autosave
 	( function () {
 		if ( mw.config.get( 'wgAction' ) !== 'view' ) {
@@ -482,28 +486,33 @@ function init( $container, state ) {
 			return;
 		}
 
-		var mode, $link, storage;
-		for ( var i = 0; i < pageThreads.threadItems.length; i++ ) {
-			var comment = pageThreads.threadItems[ i ];
-			storage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + comment.id, STORAGE_EXPIRY );
-			if ( storage.get( 'saveable' ) ) {
-				mode = storage.get( 'mode' );
-				$link = $( commentNodes[ i ] );
-				if ( OO.ui.isMobile() ) {
-					var urlFragment = mw.util.escapeIdForLink( comment.id );
-					// Force the section to expand on mobile (T338920)
-					location.hash = '#' + urlFragment;
-				}
-				setupController( comment, $link, mode, true, !state.firstLoad, storage );
+		for ( let i = 0; i < pageThreads.threadItems.length; i++ ) {
+			const comment = pageThreads.threadItems[ i ];
+			const replyStorage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + comment.id, STORAGE_EXPIRY );
+			if ( replyStorage.get( 'saveable' ) ) {
+				const mode = replyStorage.get( 'mode' );
+				const $link = $( commentNodes[ i ] );
+				// Wait for mobile section toggling code to be ready
+				mobilePromise.then( function () {
+					if ( OO.ui.isMobile() ) {
+						const urlFragment = mw.util.escapeIdForLink( comment.id );
+						// Force the section to expand on mobile (T338920)
+						location.hash = '#' + urlFragment;
+					}
+					// Wait for the 'hashchange' event to be handled by the mobile code
+					setTimeout( function () {
+						setupController( comment, $link, mode, true, !state.firstLoad, replyStorage );
+					} );
+				} );
 				break;
 			}
 		}
-		storage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + utils.NEW_TOPIC_COMMENT_ID, STORAGE_EXPIRY );
-		if ( storage.get( 'saveable' ) || storage.get( 'title' ) ) {
-			mode = storage.get( 'mode' );
-			setupController( newTopicComment(), $( [] ), mode, true, !state.firstLoad, storage );
+		const newTopicStorage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + utils.NEW_TOPIC_COMMENT_ID, STORAGE_EXPIRY );
+		if ( newTopicStorage.get( 'saveable' ) || newTopicStorage.get( 'title' ) ) {
+			const mode = newTopicStorage.get( 'mode' );
+			setupController( newTopicComment(), $( [] ), mode, true, !state.firstLoad, newTopicStorage );
 		} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
-			var data = linksController.parseNewTopicLink( location.href );
+			const data = linksController.parseNewTopicLink( location.href );
 			setupController( newTopicComment( data ), $( [] ) );
 		}
 	}() );
@@ -511,11 +520,7 @@ function init( $container, state ) {
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
-	var promise = OO.ui.isMobile() && mw.loader.getState( 'mobile.init' ) ?
-		mw.loader.using( 'mobile.init' ) :
-		$.Deferred().resolve().promise();
-
-	promise.then( function () {
+	mobilePromise.then( function () {
 		if ( state.repliedTo ) {
 			highlighter.highlightPublishedComment( pageThreads, state.repliedTo );
 
@@ -567,7 +572,7 @@ function init( $container, state ) {
 		pageHandlersSetup = true;
 	}
 	if ( state.firstLoad ) {
-		promise.then( function () {
+		mobilePromise.then( function () {
 			var findCommentQuery;
 			var isHeading = false;
 			var highlightResult = highlighter.highlightTargetComment( pageThreads );
