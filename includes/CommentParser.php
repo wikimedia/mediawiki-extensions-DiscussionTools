@@ -1302,7 +1302,8 @@ class CommentParser {
 			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 			$headline = $threadItem->getRange()->startContainer;
 			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
-			$id = 'h-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
+			$id = 'h-' . $this->truncateForId( $headline->getAttribute( 'id' )
+				 ?: $headline->getAttribute( 'data-mw-anchor' ) ?? '' );
 		} elseif ( $threadItem instanceof ContentCommentItem ) {
 			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
 				'-' . $threadItem->getTimestampString();
@@ -1317,7 +1318,8 @@ class CommentParser {
 			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 			$headline = $threadItemParent->getRange()->startContainer;
 			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
-			$id .= '-' . $this->truncateForId( $headline->getAttribute( 'id' ) ?? '' );
+			$id .= '-' . $this->truncateForId( $headline->getAttribute( 'id' )
+				 ?: $headline->getAttribute( 'data-mw-anchor' ) ?? '' );
 		} elseif ( $threadItemParent instanceof ContentCommentItem ) {
 			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ) ) .
 				'-' . $threadItemParent->getTimestampString();

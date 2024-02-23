@@ -7,6 +7,7 @@ use MediaWiki\Extension\DiscussionTools\CommentModifier;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Parser\Sanitizer;
 use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 
 /**
@@ -186,6 +187,21 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	public function getHTML(): string {
 		$fragment = $this->getRange()->cloneContents();
 		CommentModifier::unwrapFragment( $fragment );
+		// Does not work: T357812
+		// $editsection = DOMCompat::querySelector( $fragment, 'mw\\:editsection' );
+		for ( $n = $fragment->firstChild; $n; $n = $n->nextSibling ) {
+			if ( $n instanceof Element ) {
+				if ( strtolower( $n->tagName ) === 'mw:editsection' ) {
+					$n->parentNode->removeChild( $n );
+					break;
+				}
+				$editsection = DOMCompat::querySelector( $n, 'mw\\:editsection' );
+				if ( $editsection ) {
+					$editsection->parentNode->removeChild( $editsection );
+					break;
+				}
+			}
+		}
 		return DOMUtils::getFragmentInnerHTML( $fragment );
 	}
 

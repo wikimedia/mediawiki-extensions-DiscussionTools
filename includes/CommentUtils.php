@@ -340,7 +340,7 @@ class CommentUtils {
 			Assert::precondition( $headline !== null, 'data-mw-comment-start was attached to a heading' );
 		}
 
-		if ( !$headline->getAttribute( 'id' ) ) {
+		if ( !$headline->getAttribute( 'id' ) && !$headline->getAttribute( 'data-mw-anchor' ) ) {
 			// PHP HTML: Find the child with .mw-headline
 			$headline = DOMCompat::querySelector( $headline, '.mw-headline' );
 			if ( !$headline ) {
