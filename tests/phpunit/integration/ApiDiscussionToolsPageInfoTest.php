@@ -34,6 +34,7 @@ class ApiDiscussionToolsPageInfoTest extends ApiTestCase {
 			// Data used for the tests assumes there are no variants for English.
 			// Language variants are tested using other languages.
 			MainConfigNames::UsePigLatinVariant => false,
+			MainConfigNames::ArticlePath => '/wiki/$1',
 		] + $config );
 		$this->setUserLang( $config['wgContentLanguage'] );
 		$this->setContentLang( $config['wgContentLanguage'] );

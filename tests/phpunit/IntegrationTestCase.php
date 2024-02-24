@@ -29,6 +29,7 @@ abstract class IntegrationTestCase extends MediaWikiIntegrationTestCase {
 				// Consistent defaults for generating canonical URLs
 				MainConfigNames::Server => 'https://example.org',
 				MainConfigNames::CanonicalServer => 'https://example.org',
+				MainConfigNames::ArticlePath => '/wiki/$1',
 			] + $config );
 		$this->setUserLang( $config['wgContentLanguage'] );
 		$this->setContentLang( $config['wgContentLanguage'] );
