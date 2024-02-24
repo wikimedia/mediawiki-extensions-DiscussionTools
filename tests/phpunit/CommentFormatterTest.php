@@ -65,6 +65,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 			// Consistent defaults for generating canonical URLs
 			MainConfigNames::Server => 'https://example.org',
 			MainConfigNames::CanonicalServer => 'https://example.org',
+			MainConfigNames::ArticlePath => '/wiki/$1',
 			MainConfigNames::ScriptPath => '/w',
 			MainConfigNames::Script => '/w/index.php',
 		] );
