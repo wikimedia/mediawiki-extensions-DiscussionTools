@@ -106,6 +106,8 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "ไม่พบความคิดเห็นนี้ อาจถูกลบหรือย้ายแล้ว",
 	"discussiontools-target-heading-missing": "ไม่พบหัวข้อนี้ อาจถูกลบหรือย้ายแล้ว",
+	"discussiontools-target-comment-found-moved": "ไม่พบความคิดเห็นนี้ในหน้านี้ แต่มีอยู่ใน{{PLURAL:$1|หน้า}}:",
+	"discussiontools-target-heading-found-moved": "ไม่พบหัวข้อนี้ในหน้านี้ แต่มีอยู่ใน{{PLURAL:$1|หน้า}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|คน}}ในการอภิปราย",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ความคิดเห็น}}",
 	"discussiontools-topicheader-latestcomment": "ความคิดเห็นล่าสุด: $1",

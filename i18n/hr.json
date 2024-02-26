@@ -3,6 +3,7 @@
 		"authors": [
 			"Bugoslav",
 			"Ed g2s",
+			"Hijerovit",
 			"MaGa",
 			"Matma Rex",
 			"Neptune, the Mystic",
@@ -131,8 +132,8 @@
 	"discussiontools-target-comment-missing": "Nije moguće pronaći ovaj komentar. Možda je izbrisan ili premješten.",
 	"discussiontools-target-comments-missing": "Nije moguće pronaći nove komentare. Možda su izbrisani ili premješteni.",
 	"discussiontools-target-heading-missing": "Nije moguće pronaći ovu temu. Moguće da je izbrisana ili premještena.",
-	"discussiontools-target-comment-found-moved": "Nije moguće pronaći ovaj komentar na ovoj stranici, ali postoji na  {{PLURAL:$1|sljedećoj stranici|sljedećim stranicama}}:",
-	"discussiontools-target-heading-found-moved": "Nije moguće pronaći ovu temu na ovoj stranici, ali postoji na  {{PLURAL:$1|sljedećoj stranici|sljedećim stranicama}}:",
+	"discussiontools-target-comment-found-moved": "Komentar nije moguće pronaći na ovoj stranici, ali postoji na {{PLURAL:$1|sljedećoj stranici|sljedećim stranicama}}:",
+	"discussiontools-target-heading-found-moved": "Temu nije moguće pronaći na ovoj stranici, ali postoji na {{PLURAL:$1|sljedećoj stranici|sljedećim stranicama}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|suradnik|suradnika}} u raspravi",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentara}}",
 	"discussiontools-topicheader-latestcomment": "Zadnji komentar: $1",
