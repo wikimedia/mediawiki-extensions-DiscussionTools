@@ -26,7 +26,9 @@
 			"Jaw Salvager",
 			"Kokage si",
 			"TAKAHASHI Shuuji",
-			"ひまり"
+			"ひまり",
+			"LaMagiaaa",
+			"Whym"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -62,6 +64,8 @@
 	"discussiontools-findcomment-label-idorname": "コメントIDまたは名前",
 	"discussiontools-findcomment-label-search": "検索",
 	"discussiontools-findcomment-noresults": "結果なし",
+	"discussiontools-findcomment-results-notcurrent": "（現在の版になし）",
+	"discussiontools-findcomment-results-transcluded": "（他のページから参照読み込み）",
 	"discussiontools-findcomment-title": "コメントを探す",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools エラー問い合わせ ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 使用時間",

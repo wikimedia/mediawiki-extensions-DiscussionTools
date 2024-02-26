@@ -31,7 +31,7 @@
 	"discussiontools-findcomment-label-search": "ค้นหา",
 	"discussiontools-findcomment-noresults": "ไม่มีผลลัพธ์",
 	"discussiontools-findcomment-results-notcurrent": "(ไม่ใช่ในการแก้ไขปัจจุบัน)",
-	"discussiontools-findcomment-title": "ค้นหาความคิดเห็น",
+	"discussiontools-findcomment-title": "ค้นหาความเห็น",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|วินาที}}",
 	"discussiontools-newtopic-placeholder-title": "เรื่อง",
 	"discussiontools-notification-removed-topic-view": "ดูหน้า",
