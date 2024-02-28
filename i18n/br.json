@@ -125,7 +125,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Menegiñ un implijer",
 	"discussiontools-replywidget-mode-source": "Mammenn",
 	"discussiontools-replywidget-mode-visual": "Gwelet",
-	"discussiontools-replywidget-newcomments-button": "O tiskouez $1 {{PLURAL:$1|evezhiadenn}} nevez",
+	"discussiontools-replywidget-newcomments-button": "Diskouez $1 {{PLURAL:$1|evezhiadenn}} nevez",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|Ouzhpennañ}} ur gaozeadenn",
 	"discussiontools-replywidget-placeholder-newtopic": "Deskrivadur",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Respont}} da {{BIDI:$1}}",

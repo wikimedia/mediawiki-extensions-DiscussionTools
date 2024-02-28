@@ -89,7 +89,7 @@
 	"discussiontools-pagetitle-reply": "«$1» битендә яуап бирелгән",
 	"discussiontools-permalink-comment-copied": "Фекергә һылтанма ваҡытлыса һаҡлағысҡа күсерелгән.",
 	"discussiontools-postedit-confirmation-published": "Хәбәрегеҙ яҙҙырылды.",
-	"discussiontools-postedit-confirmation-topicadded": "Һеҙҙең тема өҫтәлде.",
+	"discussiontools-postedit-confirmation-topicadded": "Темағыҙ өҫтәлде.",
 	"discussiontools-preference-autotopicsub": "Темаларға автоматик рәүештә яҙылырға",
 	"discussiontools-preference-autotopicsub-help": "{{GENDER:|Һеҙ}} яңы фекер алышыу башлағанда йәки булған темала хәбәр ҡалдырғанда, башҡалар яуап бирһә, автоматик рәүештә белдереү аласаҡһығыҙ.",
 	"discussiontools-preference-description": "Фекер алышыу биттәренә тәжрибә мөмкинлектәрен индерә:\n* Һәр бәхәс өсөн \n[https://www.mediawiki.org/wiki/Talk_pages_project/Usability метамәғлүмәттәрҙе күрһәтергә] һәм биттең яңыртылған версткаһын тоҡандырырға.\n\nҺеҙ был мөмкинлектәр менән [[Special:Preferences#mw-prefsection-editing-discussion|көйләүҙәрегеҙҙә]] идара итә алаһығыҙ.\n\nЯңыртыуҙар тураһында мәғлүмәт  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates Talk pages проектының яңыртыуҙар битендә] күренәсәк.\n\nШуға иғтибар итегеҙ:\n* Күпмелер ваҡыттан һуң яңы тәжрибә мөмкинлектәре өҫтәләсәк.\n* Һанап үтелгән мөмкинлектәрҙең ҡайһы берҙәре әлегә һеҙҙең викиҙа ҡулланылмай.",
