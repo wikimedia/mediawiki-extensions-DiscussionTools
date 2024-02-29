@@ -139,6 +139,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Tätä kommentia ei löytynyt. Se on voitu poistaa tai siirtää.",
 	"discussiontools-target-comments-missing": "Uusia kommentteja ei löytynyt. Ne on ehkä poistettu tai siirretty.",
+	"discussiontools-target-heading-missing": "Tätä aihetta ei löytynyt. Se on saatettu poistaa tai siirtää.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|henkilö|henkilöä}} keskustelussa",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kommentti|kommenttia}}",
 	"discussiontools-topicheader-latestcomment": "Viimeisin kommentti: $1",
