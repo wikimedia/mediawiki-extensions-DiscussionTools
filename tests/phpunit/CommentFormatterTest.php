@@ -52,7 +52,8 @@ class CommentFormatterTest extends IntegrationTestCase {
 	 * @dataProvider provideAddDiscussionToolsInternal
 	 */
 	public function testAddDiscussionToolsInternal(
-		string $name, string $titleText, string $dom, string $expected, string $config, string $data, bool $isMobile
+		string $name, string $titleText, string $dom, string $expected, string $config, string $data,
+		bool $isMobile, bool $useButtons
 	): void {
 		$this->setService( 'GenderCache', $this->createMock( GenderCache::class ) );
 		$dom = static::getHtml( $dom );
@@ -106,7 +107,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$actual = $preprocessed;
 
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
-			$actual, $outputPage, $subscriptionStore, $isMobile
+			$actual, $outputPage, $subscriptionStore, $isMobile, $useButtons
 		);
 
 		$actual = MockCommentFormatter::postprocessVisualEnhancements(
@@ -114,7 +115,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		);
 
 		$actual = MockCommentFormatter::postprocessReplyTool(
-			$actual, $outputPage, $isMobile
+			$actual, $outputPage, $isMobile, $useButtons
 		);
 
 		// OOUI ID's are non-deterministic, so strip them from test output
@@ -134,8 +135,14 @@ class CommentFormatterTest extends IntegrationTestCase {
 	public static function provideAddDiscussionToolsInternal() {
 		foreach ( static::getJson( '../cases/formatted.json' ) as $case ) {
 			// Run each test case twice, for desktop and mobile output
-			yield array_merge( $case, [ 'expected' => $case['expected']['desktop'], 'isMobile' => false ] );
-			yield array_merge( $case, [ 'expected' => $case['expected']['mobile'], 'isMobile' => true ] );
+			yield array_merge( $case,
+				[ 'expected' => $case['expected']['desktop'], 'isMobile' => false, 'useButtons' => true ] );
+			yield array_merge( $case,
+				[ 'expected' => $case['expected']['mobile'], 'isMobile' => true, 'useButtons' => true ] );
+
+			// Test the legacy output without visual enhancements (only available on desktop)
+			yield array_merge( $case,
+				[ 'expected' => $case['expected']['legacy'], 'isMobile' => false, 'useButtons' => false ] );
 		}
 	}
 
