@@ -8,7 +8,8 @@
 			"Akoonaba",
 			"Amire80",
 			"Amoramah",
-			"Sir Amugi"
+			"Sir Amugi",
+			"Atalata Gumah"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Awoo, N bɔkɛ ya",
@@ -17,6 +18,14 @@
 	"discussiontools-desc": "Lɔgeseto n wan suŋɛ sɔsega pɛgera",
 	"discussiontools-emptystate-button": "Pi'ilum sɔsega",
 	"discussiontools-emptystate-title": "Pi'ilum sɔsega yɛsera {{SUBJECTPAGENAME}}",
+	"discussiontools-findcomment-label-search": "Ɛ",
+	"discussiontools-findcomment-noresults": "Rezɔɔsi Kai boi",
+	"discussiontools-findcomment-results-notcurrent": "(not in current revision)",
+	"discussiontools-findcomment-results-transcluded": "(transcluded from another page)",
+	"discussiontools-findcomment-title": "Bisɛ lebesego",
+	"discussiontools-limitreport-errorreqid": "'DiscussionTool error request ID'",
+	"discussiontools-limitreport-timeusage": "'DiscussionTool yine usege'",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|second|seconds}}",
 	"discussiontools-notification-subscribed-new-comment-view": "Bisɛ lebesego",
 	"discussiontools-pageframe-latestcomment": "Latest comment: $1 by $2 in topic $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Latest comment: $1 by $2",
