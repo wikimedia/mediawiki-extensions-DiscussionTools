@@ -151,7 +151,7 @@ class CommentFormatter {
 		);
 
 		self::addSubscribeLink(
-			$headingItem, $doc, $headingElement, $wrapperNode, $latestReplyItem, $bar
+			$headingItem, $doc, $wrapperNode, $latestReplyItem, $bar
 		);
 
 		if ( $latestReplyItem ) {
@@ -171,11 +171,11 @@ class CommentFormatter {
 	 * of comments, and number of editors in the discussion.
 	 */
 	protected static function addTopicContainer(
-		Element &$wrapperNode,
+		Element $wrapperNode,
 		?ContentCommentItem $latestReplyItem,
-		Document &$doc,
-		ContentHeadingItem &$headingItem,
-		?Element &$bar,
+		Document $doc,
+		ContentHeadingItem $headingItem,
+		?Element $bar,
 		array &$tocInfo
 	) {
 		if ( !DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' ) ) {
@@ -223,10 +223,9 @@ class CommentFormatter {
 	protected static function addSubscribeLink(
 		ContentHeadingItem $headingItem,
 		Document $doc,
-		Element $headingElement,
-		Element &$wrapperNode,
+		Element $wrapperNode,
 		?ContentCommentItem $latestReplyItem,
-		?Element &$bar
+		?Element $bar
 	) {
 		$headingJSONEscaped = htmlspecialchars(
 			json_encode( static::getJsonForHeadingMarker( $headingItem ) )
@@ -234,9 +233,6 @@ class CommentFormatter {
 
 		// Replaced in ::postprocessTopicSubscription() as the text depends on user state
 		if ( $headingItem->isSubscribable() ) {
-			$subscribeLink = $doc->createComment( '__DTSUBSCRIBELINK__' . $headingJSONEscaped );
-			$headingElement->insertBefore( $subscribeLink, $headingElement->firstChild );
-
 			$subscribeButton = $doc->createComment( '__DTSUBSCRIBEBUTTONDESKTOP__' . $headingJSONEscaped );
 			$wrapperNode->insertBefore( $subscribeButton, $wrapperNode->firstChild );
 		}
@@ -459,6 +455,7 @@ class CommentFormatter {
 		] );
 
 		$text = preg_replace( '/<!--__DTELLIPSISBUTTON__(.*?)-->/', '', $text );
+		// No longer used, this can be removed once parser cache expires:
 		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
 		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)__(.*?)-->/', '', $text );
 
@@ -474,6 +471,7 @@ class CommentFormatter {
 	): string {
 		$doc = DOMCompat::newDocument( true );
 
+		// No longer used, this can be removed once parser cache expires:
 		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
 
 		$matches = [];
