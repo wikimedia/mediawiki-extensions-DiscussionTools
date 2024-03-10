@@ -54,6 +54,7 @@ class ImmutableRange {
 				return $b;
 			}
 			$ancestorsA[] = $parent;
+			// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 		} while ( $parent = $parent->parentNode );
 
 		$parent = $b;
@@ -63,6 +64,7 @@ class ImmutableRange {
 				return $a;
 			}
 			$ancestorsB[] = $parent;
+			// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 		} while ( $parent = $parent->parentNode );
 
 		$node = null;

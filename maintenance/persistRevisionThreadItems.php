@@ -104,12 +104,12 @@ class PersistRevisionThreadItems extends Maintenance {
 			if ( $this->getOption( 'touched-after' ) ) {
 				$qb->where( $dbr->expr(
 					'page_touched', '>', $dbr->timestamp( $this->getOption( 'touched-after' ) )
-			) );
+				) );
 			}
 			if ( $this->getOption( 'touched-before' ) ) {
 				$qb->where( $dbr->expr(
 					'page_touched', '<', $dbr->timestamp( $this->getOption( 'touched-before' ) )
-			) );
+				) );
 			}
 
 		} else {
