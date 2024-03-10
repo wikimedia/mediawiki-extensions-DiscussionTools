@@ -215,7 +215,6 @@ class CommentUtils {
 	 */
 	public static function childIndexOf( Node $child ): int {
 		$i = 0;
-		// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 		while ( ( $child = $child->previousSibling ) ) {
 			$i++;
 		}
@@ -302,7 +301,6 @@ class CommentUtils {
 
 				// 2.
 				while (
-					// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 					( $previousSibling = $node->previousSibling ) &&
 					$previousSibling instanceof Element &&
 					$previousSibling->getAttribute( 'about' ) === $about
@@ -455,7 +453,6 @@ class CommentUtils {
 		if ( $matches ) {
 			// If these are all of the children (or the only child), go up one more level
 			while (
-				// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 				( $parent = $siblings[ 0 ]->parentNode ) &&
 				$parent !== $excludedAncestorNode &&
 				static::compareRanges( $makeRange( [ $parent ] ), $item->getRange() ) === 'equal'

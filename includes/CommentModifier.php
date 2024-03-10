@@ -148,7 +148,6 @@ class CommentModifier {
 		$transclusionNode = CommentUtils::getTranscludedFromElement( $target );
 		if ( $transclusionNode ) {
 			while (
-				// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 				( $nextSibling = $transclusionNode->nextSibling ) &&
 				$nextSibling instanceof Element &&
 				$nextSibling->getAttribute( 'about' ) === $transclusionNode->getAttribute( 'about' )
@@ -491,7 +490,6 @@ class CommentModifier {
 			(
 				// This would be easier to check in prepareWikitextReply(), but that would result
 				// in an empty list item being added at the end if we don't need to add a signature.
-				// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.Found
 				( $wtNode = $wrapperNode->lastChild ) &&
 				$wtNode instanceof Element &&
 				static::isWikitextNodeListItem( $wtNode )
@@ -564,7 +562,6 @@ class CommentModifier {
 			// By request from the community, avoid this if possible after bullet indentation (T259864).
 			if ( !(
 				$replyIndentation === 'bullet' &&
-				// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.Found
 				( $wtNode = $container->firstChild->lastChild ) &&
 				$wtNode instanceof Element &&
 				!static::isWikitextNodeListItem( $wtNode )
@@ -598,7 +595,6 @@ class CommentModifier {
 			// By request from the community, avoid this if possible after bullet indentation (T259864).
 			if ( !(
 				$replyIndentation === 'bullet' &&
-				// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.Found
 				( $wtNode = $container->firstChild->lastChild ) &&
 				$wtNode instanceof Element &&
 				!static::isWikitextNodeListItem( $wtNode )

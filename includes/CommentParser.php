@@ -800,7 +800,6 @@ class CommentParser {
 			// which apparently are often turned into &nbsp; entities by buggy editing tools. To handle
 			// this, we must piece together the text, so that our regexp can match those timestamps.
 			if (
-				// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.Found
 				( $previousSibling = $node->previousSibling ) &&
 				$previousSibling instanceof Element &&
 				$previousSibling->getAttribute( 'typeof' ) === 'mw:Entity'
@@ -909,7 +908,6 @@ class CommentParser {
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
 			[ static::class, 'acceptOnlyNodesAllowingComments' ]
 		);
-		// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 		while ( $node = $treeWalker->nextNode() ) {
 			if ( $node instanceof Element && preg_match( '/^h([1-6])$/i', $node->tagName, $match ) ) {
 				$headingNodeAndOffset = CommentUtils::getHeadlineNodeAndOffset( $node );
@@ -923,7 +921,6 @@ class CommentParser {
 				$curComment->setRootNode( $this->rootNode );
 				$result->addThreadItem( $curComment );
 				$curCommentEnd = $node;
-				// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.Found
 			} elseif ( $node instanceof Text && ( $match = $this->findTimestamp( $node, $timestampRegexps ) ) ) {
 				$warnings = [];
 				$foundSignature = $this->findSignature( $node, $curCommentEnd );
@@ -968,7 +965,6 @@ class CommentParser {
 						if (
 							$event === 'leave' &&
 							$n instanceof Text && $n !== $node &&
-							// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.Found
 							( $match2 = $this->findTimestamp( $n, $timestampRegexps ) )
 						) {
 							// If this skips over another potential signature, also skip it in the main TreeWalker loop
@@ -1262,7 +1258,6 @@ class CommentParser {
 			// Phan doesn't realize that the conditions on $nextSibling can terminate the loop
 			// @phan-suppress-next-line PhanInfiniteLoop
 			$endNode &&
-			// @phpcs:ignore Generic.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
 			( $nextSibling = $endNode->nextSibling ) &&
 			$nextSibling instanceof Element &&
 			$nextSibling->getAttribute( 'about' ) === $endNode->getAttribute( 'about' )

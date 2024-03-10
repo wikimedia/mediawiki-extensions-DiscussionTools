@@ -1,7 +1,20 @@
 <?xml version="1.0"?>
 <ruleset>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
-		<exclude name="MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures" />
+		<!--
+		Code such as this:
+			while ( ( $foo = $foo->nextSibling ) && someCondition( $foo ) ) { … }
+		is often convenient when working on DOM tree structures, which we do a lot of in this extension.
+
+		It's particularly helpful in combination with Phan, which can infer that `$foo` is non-null from
+		the code above, but it can't infer that `$foo->nextSibling` is non-null in code like this:
+			while ( $foo->nextSibling && someCondition( $foo->nextSibling ) ) { … }
+
+		When the variable is the only condition, we add extra parentheses to indicate that it isn't a
+		typo for `==`, which is a convention borrowed from C:
+			while ( ( $foo = $foo->nextSibling ) ) { … }
+		-->
+		<exclude name="Generic.CodeAnalysis.AssignmentInCondition" />
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php" />
