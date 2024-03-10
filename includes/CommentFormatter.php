@@ -169,21 +169,16 @@ class CommentFormatter {
 	 * A topic container is the information displayed when the "Show discusion activity" user
 	 * preference is selected. This displays information such as the latest comment time, number
 	 * of comments, and number of editors in the discussion.
-	 *
-	 * @param Element &$wrapperNode
-	 * @param ?ContentCommentItem $latestReplyItem
-	 * @param Document &$doc
-	 * @param ContentHeadingItem &$headingItem
-	 * @param ?Element &$bar
-	 * @param array &$tocInfo
 	 */
 	protected static function addTopicContainer(
-		&$wrapperNode, $latestReplyItem, &$doc, &$headingItem, &$bar, &$tocInfo
+		Element &$wrapperNode,
+		?ContentCommentItem $latestReplyItem,
+		Document &$doc,
+		ContentHeadingItem &$headingItem,
+		?Element &$bar,
+		array &$tocInfo
 	) {
-		if ( !(
-			$wrapperNode instanceof Element &&
-			DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' )
-		) ) {
+		if ( !DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' ) ) {
 			DOMCompat::getClassList( $wrapperNode )->add( 'mw-heading' );
 			DOMCompat::getClassList( $wrapperNode )->add( 'mw-heading2' );
 		}
@@ -224,16 +219,14 @@ class CommentFormatter {
 
 	/**
 	 * Add a subscribe/unsubscribe link to the right of a heading element
-	 *
-	 * @param ContentHeadingItem $headingItem
-	 * @param Document $doc
-	 * @param Element $headingElement
-	 * @param Element &$wrapperNode
-	 * @param ?ContentCommentItem $latestReplyItem
-	 * @param ?Element &$bar
 	 */
 	protected static function addSubscribeLink(
-		$headingItem, $doc, $headingElement, &$wrapperNode, $latestReplyItem, &$bar
+		ContentHeadingItem $headingItem,
+		Document $doc,
+		Element $headingElement,
+		Element &$wrapperNode,
+		?ContentCommentItem $latestReplyItem,
+		?Element &$bar
 	) {
 		$headingJSONEscaped = htmlspecialchars(
 			json_encode( static::getJsonForHeadingMarker( $headingItem ) )
@@ -459,11 +452,8 @@ class CommentFormatter {
 	/**
 	 * Replace placeholders for all interactive tools with nothing. This is intended for cases where
 	 * interaction is unexpected, e.g. reply links while previewing an edit.
-	 *
-	 * @param string $text
-	 * @return string
 	 */
-	public static function removeInteractiveTools( string $text ) {
+	public static function removeInteractiveTools( string $text ): string {
 		$text = strtr( $text, [
 			'<!--__DTREPLYBUTTONSCONTENT__-->' => '',
 		] );
