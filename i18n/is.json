@@ -49,7 +49,7 @@
 	"discussiontools-replywidget-preview": "Forskoða",
 	"discussiontools-replywidget-reply": "Svara",
 	"discussiontools-replywidget-signature-body": "$1 hefur verið breytt í undirskriftina þína Til þess að taka þetta aftur, smelltu á $2. Athugaðu að þú þarft ekki að skrifa undir ummæli með þessu tóli. Undirskriftinni þinni verður bætt við sjálfkrafa.",
-	"discussiontools-replywidget-signature-title": "Þú virðist hafa notað tildur („~“) til að skrifa undir, en ekki er þörf á því",
+	"discussiontools-replywidget-signature-title": "Undirskriftaruppmerking greindist",
 	"discussiontools-replywidget-summary": "Breytingarágrip",
 	"discussiontools-replywidget-terms-click": "Með því að smella á \"$1\", samþykkir þú notendaskilmála þessa wiki vefsvæðis.",
 	"discussiontools-replywidget-transcluded": "Svarið þitt verður ekki vistað á þessari síðu heldur á [[$1]].",

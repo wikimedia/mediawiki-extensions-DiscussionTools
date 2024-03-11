@@ -27,10 +27,11 @@
 			"Умар",
 			"WindEwriX",
 			"OlegVeliky",
-			"Smigles"
+			"Smigles",
+			"Novichev"
 		]
 	},
-	"discussiontools": "Инструменты для обсуждений",
+	"discussiontools": "Инструменты обсуждений",
 	"discussiontools-autotopicsubpopup-body": "Вы получите уведомление, когда кто-нибудь опубликует новое сообщение в этом обсуждении. Вы можете отрегулировать параметры ваших уведомлений в настройках.",
 	"discussiontools-autotopicsubpopup-dismiss": "Окей, понятно",
 	"discussiontools-autotopicsubpopup-preferences": "Изменить настройки",
@@ -98,7 +99,7 @@
 	"discussiontools-preference-autotopicsub-help": "Когда вы начинаете новое обсуждение или оставляете сообщение в существующем обсуждении, вы будете автоматически уведомлены при опубликовании другими новых сообщений в нем.",
 	"discussiontools-preference-description": "Включает экспериментальные функции для страниц обсуждений:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Ответить] на сообщения на страницах обсуждений одним кликом.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Добавить новую тему] используя встраиваемую форму.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Получать уведомления] когда добавляются новые комментарии в разделы, на которые вы подписались.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Показывать метаданные] для каждой дискуссии и включить обновлённую вёрстку страниц.\n\nВы можете управлять этими функциями в ваших [[Special:Preferences#mw-prefsection-editing-discussion|настройках]].\n\nИнформация об обновлениях будет публиковаться на [https://www.mediawiki.org/wiki/Talk_pages_project/Updates странице обновлений проекта Talk pages].\n\nПожалуйста обратите внимание:\n* Со временем будут добавлены новые экспериментальные функции.\n* Некоторые из вышеперечисленных функций могут быть пока недоступны в вашей вики.",
 	"discussiontools-preference-gadget-conflict": "Чтобы включить быстрый ответ, сначала необходимо [[$1|отключить гаджет «Удобные обсуждения»]] в настройках гаджетов.",
-	"discussiontools-preference-label": "Инструменты обсуждения",
+	"discussiontools-preference-label": "Инструменты обсуждений",
 	"discussiontools-preference-newtopictool": "Включить быстрое добавление темы",
 	"discussiontools-preference-newtopictool-createpage": "Когда я посещаю ещё не созданную страницу обсуждения:",
 	"discussiontools-preference-newtopictool-createpage-editor": "Открыть редактор вики-текста",
