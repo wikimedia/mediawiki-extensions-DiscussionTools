@@ -44,7 +44,7 @@
 	"discussiontools-emptystate-title": "Démarrer une discussion sur {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bienvenue sur {{GENDER:|}}votre page de discussion",
 	"discussiontools-emptystate-title-self-anon": "{{GENDER:|}}Bienvenue sur cette page de discussion",
-	"discussiontools-emptystate-title-self-temp": "Bienvenue sur {{GENDER:|}}votre page de discussion",
+	"discussiontools-emptystate-title-self-temp": "Bienvenue sur {{GENDER:|}}votre page de discussion temporaire",
 	"discussiontools-emptystate-title-user": "Démarrer une discussion avec {{GENDER:{{PAGENAME}}|}}{{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "{{GENDER:|}}Bienvenue sur cette page de discussion",
 	"discussiontools-emptystate-title-user-temp": "Démarrer une discussion avec {{GENDER:{{PAGENAME}}|}}{{PAGENAME}}",
