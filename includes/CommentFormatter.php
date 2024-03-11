@@ -484,9 +484,11 @@ class CommentFormatter {
 	): string {
 		$doc = DOMCompat::newDocument( true );
 
+		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
+
 		$matches = [];
 		$itemDataByName = [];
-		preg_match_all( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', $text, $matches );
+		preg_match_all( '/<!--__DTSUBSCRIBEBUTTONDESKTOP__(.*?)-->/', $text, $matches );
 		foreach ( $matches[1] as $itemData ) {
 			$itemDataByName[ $itemData ] = json_decode( htmlspecialchars_decode( $itemData ), true );
 		}
@@ -505,11 +507,10 @@ class CommentFormatter {
 		$lang = $contextSource->getLanguage();
 		$title = $contextSource->getTitle();
 		$text = preg_replace_callback(
-			'/<!--__(DTSUBSCRIBELINK|DTSUBSCRIBEBUTTON(?:DESKTOP|MOBILE))__(.*?)-->/',
+			'/<!--__(DTSUBSCRIBEBUTTON(?:DESKTOP|MOBILE))__(.*?)-->/',
 			static function ( $matches ) use (
 				$doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile, $useButtons
 			) {
-				$isButton = $matches[1] !== 'DTSUBSCRIBELINK';
 				$buttonIsMobile = $matches[1] === 'DTSUBSCRIBEBUTTONMOBILE';
 
 				$itemData = $itemDataByName[ $matches[2] ];
@@ -525,10 +526,11 @@ class CommentFormatter {
 					'section' => $itemData['linkableTitle'],
 				] );
 
-				if ( $isButton !== $useButtons ) {
+				if ( $buttonIsMobile !== $isMobile ) {
 					return '';
 				}
-				if ( !$isButton ) {
+
+				if ( !$useButtons ) {
 					$subscribe = $doc->createElement( 'span' );
 					$subscribe->setAttribute(
 						'class',
@@ -568,10 +570,6 @@ class CommentFormatter {
 
 					return DOMCompat::getOuterHTML( $subscribe );
 				} else {
-					if ( $buttonIsMobile !== $isMobile ) {
-						return '';
-					}
-
 					$subscribe = new \OOUI\ButtonWidget( [
 						'classes' => [ 'ext-discussiontools-init-section-subscribeButton' ],
 						'framed' => false,
