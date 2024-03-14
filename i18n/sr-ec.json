@@ -88,7 +88,6 @@
 	"discussiontools-postedit-confirmation-topicadded": "Ваша тема је додата.",
 	"discussiontools-preference-autotopicsub": "Аутоматски прати теме",
 	"discussiontools-preference-autotopicsub-help": "Када {{GENDER:|покренете}} нову дискусију или додате коментар у постојећу, аутоматски ће те пратити исту.",
-	"discussiontools-preference-description": "Омогућава нови начин [https://www.mediawiki.org/wiki/Talk_pages_project/replying одговарања на коментаре] на страницама за разговор.\n\nИмајте на уму да ће се с временом увести још нових алатки за комуницирање на страницама за разговор.\n\nНовости о тим новим алаткама биће објављене  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates овде].",
 	"discussiontools-preference-label": "Алатке за разговор",
 	"discussiontools-preference-newtopictool": "Брзо додавање тема",
 	"discussiontools-preference-newtopictool-createpage": "За странице за разговор којих још увек нема:",
