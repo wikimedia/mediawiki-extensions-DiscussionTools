@@ -28,7 +28,7 @@
 	"discussiontools-emptystate-title": "Álggat ságastallama {{SUBJECTPAGENAME}} birra",
 	"discussiontools-emptystate-title-self": "{{GENDER:|Bures boahtin}} iežat ságastallansiidui",
 	"discussiontools-emptystate-title-self-anon": "{{GENDER:|Bures boahtin}} dán ságastallansiidui",
-	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Bures boahtin}} iežat ságastallansiidui",
+	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Bures boahtin}} iežat gaskaboddosaš ságastallansiidui",
 	"discussiontools-emptystate-title-user": "Álggat ságastallama {{GENDER:{{PAGENAME}}}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "{{GENDER:|Bures boahtin}} dán ságastallansiidui",
 	"discussiontools-emptystate-title-user-temp": "Álggat ságastallama {{GENDER:{{PAGENAME}}}} {{PAGENAME}}",
