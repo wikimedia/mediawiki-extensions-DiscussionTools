@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nadezhda"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Вӓшештӹш",
+	"discussiontools-replywidget-advanced": "Кымдаэмдӹмӹ",
+	"discussiontools-replywidget-cancel": "Цӓрӓш",
+	"discussiontools-replywidget-mode-source": "Источник",
+	"discussiontools-replywidget-mode-visual": "Кыце каеш",
+	"discussiontools-replywidget-preview": "Анзыц анжен лӓкмӓш",
+	"discussiontools-replywidget-summary": "Кӹтӹк сирен анжыктымаш",
+	"discussiontools-replywidget-watchthis": "Ти страницӓм тӹньӹн [[Special:Watchlist|тӹшлӹшӹ спискӹшкет]] уштараш",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|эдем|эдемвлӓ}} кӓнгӓшӹмӓштӹ",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|комментари|комментаривлӓ}}",
+	"discussiontools-topicheader-latestcomment": "Пӹтӓртӹш комментари: $1",
+	"discussiontools-topicsubscription-button-subscribe": "сирӓлташ",
+	"discussiontools-topicsubscription-button-subscribe-label": "Сирӓлтӓш",
+	"discussiontools-topicsubscription-button-unsubscribe": "ӧрдӹжӹш карангаш",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Ӧрдӹжӹш карангаш"
+}
