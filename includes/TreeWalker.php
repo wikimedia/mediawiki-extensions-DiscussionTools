@@ -19,21 +19,17 @@ class TreeWalker {
 	public Node $root;
 	public int $whatToShow;
 	public Node $currentNode;
-	/** @var callable */
+	/** @var callable|null */
 	public $filter;
 	private bool $isActive = false;
 
 	/**
 	 * See https://dom.spec.whatwg.org/#interface-treewalker
-	 *
-	 * @param Node $root
-	 * @param int $whatToShow
-	 * @param callable|null $filter
 	 */
 	public function __construct(
 		Node $root,
 		int $whatToShow = NodeFilter::SHOW_ALL,
-		callable $filter = null
+		?callable $filter = null
 	) {
 		$this->currentNode = $root;
 		$this->filter = $filter;

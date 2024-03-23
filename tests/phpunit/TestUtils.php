@@ -125,12 +125,7 @@ trait TestUtils {
 		file_put_contents( __DIR__ . '/../' . $relPath, $html );
 	}
 
-	/**
-	 * @param array $config
-	 * @param array $data
-	 * @return array
-	 */
-	private static function prepareConfig( array $config, array $data ) {
+	private static function prepareConfig( array $config, array $data ): array {
 		return [
 			'LanguageCode' => $config['wgContentLanguage'],
 			'ArticlePath' => $config['wgArticlePath'],
