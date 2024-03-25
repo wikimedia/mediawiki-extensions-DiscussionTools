@@ -144,7 +144,7 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
  * @return {Object|null} `null` if not a new topic link, parameters otherwise
  */
 ReplyLinksController.prototype.parseNewTopicLink = function ( href ) {
-	var url = new URL( href );
+	var searchParams = new URL( href ).searchParams;
 
 	var title = mw.Title.newFromText( utils.getTitleFromUrl( href ) || '' );
 	if ( !title ) {
@@ -167,9 +167,9 @@ ReplyLinksController.prototype.parseNewTopicLink = function ( href ) {
 	} else if (
 		// ?title=...&action=edit&section=new
 		// ?title=...&veaction=editsource&section=new
-		( url.searchParams.get( 'action' ) === 'edit' || url.searchParams.get( 'veaction' ) === 'editsource' ) &&
-		url.searchParams.get( 'section' ) === 'new' &&
-		url.searchParams.get( 'dtenable' ) !== '0'
+		( searchParams.get( 'action' ) === 'edit' || searchParams.get( 'veaction' ) === 'editsource' ) &&
+		searchParams.get( 'section' ) === 'new' &&
+		searchParams.get( 'dtenable' ) !== '0'
 	) {
 		// Do nothing
 
@@ -184,21 +184,21 @@ ReplyLinksController.prototype.parseNewTopicLink = function ( href ) {
 	}
 
 	var data = {};
-	if ( url.searchParams.get( 'editintro' ) ) {
-		data.editintro = url.searchParams.get( 'editintro' );
+	if ( searchParams.get( 'editintro' ) ) {
+		data.editintro = searchParams.get( 'editintro' );
 	}
-	if ( url.searchParams.get( 'preload' ) ) {
-		data.preload = url.searchParams.get( 'preload' );
+	if ( searchParams.get( 'preload' ) ) {
+		data.preload = searchParams.get( 'preload' );
 	}
-	if ( mw.util.getArrayParam( 'preloadparams', url.searchParams ) ) {
-		data.preloadparams = mw.util.getArrayParam( 'preloadparams', url.searchParams );
+	if ( mw.util.getArrayParam( 'preloadparams', searchParams ) ) {
+		data.preloadparams = mw.util.getArrayParam( 'preloadparams', searchParams );
 	}
-	if ( url.searchParams.get( 'preloadtitle' ) ) {
-		data.preloadtitle = url.searchParams.get( 'preloadtitle' );
+	if ( searchParams.get( 'preloadtitle' ) ) {
+		data.preloadtitle = searchParams.get( 'preloadtitle' );
 	}
 
 	// Handle new topic with preloaded text only when requested (T269310)
-	if ( !url.searchParams.get( 'dtpreload' ) && !$.isEmptyObject( data ) ) {
+	if ( !searchParams.get( 'dtpreload' ) && !$.isEmptyObject( data ) ) {
 		return null;
 	}
 
