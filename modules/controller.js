@@ -602,6 +602,12 @@ function init( $container, state ) {
 					// A leading '/' usually means a application route, e.g. /media, or /editor.
 					// We can't rule out a heading title (T349498), but they are unlikely
 					/^\//,
+					// "top" is a magic value in the WHATWG spec that goes to the top of the
+					// document (unless there's an actual id=top element on the page), see:
+					// https://html.spec.whatwg.org/multipage/browsing-the-web.html#scrolling-to-a-fragment:top-of-the-document-2
+					// There's a very rare edge case of actual headings named "top" that we'll
+					// be missing here, but they're far less common than the top-of-page usage.
+					/^top$/i,
 					// Gadget: ConvenientDiscussions
 					/^\d{12}_/,
 					// Gadget: RedWarn
