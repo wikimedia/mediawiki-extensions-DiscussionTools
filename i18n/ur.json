@@ -50,6 +50,7 @@
 	"discussiontools-preference-sourcemodetoolbar-help": "اس کے ذریعہ خانۂ ترمیم میں فوری جواب اور فوری اضافۂ موضوع کے لیے ایک خانۂ آلات کا اضافہ ہوتا ہے جس کی مدد سے صارفین کو آواز دینا اور روابط شامل کرنا آسان ہو جاتا ہے۔",
 	"discussiontools-preference-summary": "ان سہولتوں کے متعلق مزید تفصیلات کے لیے آپ [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary اس صفحہ] سے رجوع کر سکتے ہیں۔",
 	"discussiontools-preference-topicsubscription": "شرکت گفتگو کو فعال کریں",
+	"discussiontools-preference-topicsubscription-help": "یہ آپ کو انفرادی موضوعات پر کیے جانے والے تبصروں کی اطلاعات موصول کرنے کے لیے سبسکرائب کرنے کی اجازت دے گا۔",
 	"discussiontools-replybutton": "{{GENDER:|جواب دیں}}",
 	"discussiontools-replylink": "{{GENDER:|جواب دیں}}",
 	"discussiontools-replywidget-advanced": "اضافی",
