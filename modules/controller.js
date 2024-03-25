@@ -788,9 +788,8 @@ function refreshPageContents( oldId ) {
 		useskin: mw.config.get( 'skin' ),
 		mobileformat: OO.ui.isMobile(),
 		uselang: mw.config.get( 'wgUserLanguage' ),
-		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
-		// a page view with reply links forced with ?dtenable=1 or otherwise
-		dtenable: '1',
+		// Pass through dtenable query string param from original request
+		dtenable: new URLSearchParams( location.search ).get( 'dtenable' ) ? '1' : undefined,
 		prop: [ 'text', 'revid', 'categorieshtml', 'sections', 'displaytitle', 'subtitle', 'modules', 'jsconfigvars' ],
 		page: !oldId ? mw.config.get( 'wgRelevantPageName' ) : undefined,
 		oldid: oldId || undefined

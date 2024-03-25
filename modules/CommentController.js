@@ -442,9 +442,8 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 		assert: mw.user.isAnon() ? 'anon' : 'user',
 		assertuser: mw.user.getName() || undefined,
 		uselang: mw.config.get( 'wgUserLanguage' ),
-		// HACK: Always display reply links afterwards, ignoring preferences etc., in case this was
-		// a page view with reply links forced with ?dtenable=1 or otherwise
-		dtenable: '1',
+		// Pass through dtenable query string param from original request
+		dtenable: new URLSearchParams( location.search ).get( 'dtenable' ) ? '1' : undefined,
 		dttags: tags.join( ',' )
 	};
 
