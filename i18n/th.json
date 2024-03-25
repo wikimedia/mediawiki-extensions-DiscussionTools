@@ -53,6 +53,8 @@
 	"discussiontools-replywidget-abandon": "แน่ใจหรือไม่ว่าต้องการยกเลิกการตอบกลับนี้?",
 	"discussiontools-replywidget-abandon-discard": "ยกเลิกความเห็น",
 	"discussiontools-replywidget-abandon-keep": "เขียนต่อ",
+	"discussiontools-replywidget-abandontopic-discard": "ยกเลิกหัวข้อ",
+	"discussiontools-replywidget-abandontopic-keep": "เขียนต่อ",
 	"discussiontools-replywidget-advanced": "ขั้นสูง",
 	"discussiontools-replywidget-anon-warning": "<strong>คุณยังไม่เข้าสู่ระบบ</strong> หากคุณต้องการให้อ้างอิงถึงงานที่คุณทำโดยใช้ชื่อของคุณแทนที่ที่อยู่ไอพีปัจจุบัน กรุณา[$1 เข้าสู่ระบบ]หรือ[$2 สร้างบัญชี]",
 	"discussiontools-replywidget-cancel": "ยกเลิก",
