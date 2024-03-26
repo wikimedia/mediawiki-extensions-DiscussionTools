@@ -28,7 +28,8 @@
 			"青子守歌",
 			"ひまり",
 			"LaMagiaaa",
-			"Whym"
+			"Whym",
+			"Yushu-kasai"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -77,9 +78,9 @@
 	"discussiontools-newtopic-missing-title": "話題に題名をつけてください。このまま「{{int:discussiontools-replywidget-newtopic}}」をクリックすると、題名のない話題が追加されます。",
 	"discussiontools-newtopic-placeholder-title": "件名",
 	"discussiontools-notification-removed-topic-body": "{{PLURAL:$1|このトピック}}に関する通知をこれ以上受け取りません。",
-	"discussiontools-notification-removed-topic-header": "トピック「<strong>$4</strong>」は、$3からアーカイブまたは削除されました。",
+	"discussiontools-notification-removed-topic-header": "トピック「<strong>$4</strong>」は、$3から過去ログ化または除去されました。",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|ひとつのトピック|$1個のトピック|100=99+個のトピック}} が$2からアーカイブまたは除去されました。",
-	"discussiontools-notification-removed-topic-header-compact": "トピック「<strong>$4</strong>」はアーカイブまたは削除されました。",
+	"discussiontools-notification-removed-topic-header-compact": "トピック「<strong>$4</strong>」は過去ログ化または除去されました。",
 	"discussiontools-notification-removed-topic-view": "ページを閲覧",
 	"discussiontools-notification-removed-topic-disable": "このような通知の受信を停止する",
 	"discussiontools-notification-removed-topic-disabled-title": "トピックがアーカイブまたは削除されたときに、通知が届かなくなりました。",
