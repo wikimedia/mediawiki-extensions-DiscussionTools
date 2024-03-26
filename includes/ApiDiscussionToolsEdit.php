@@ -202,7 +202,8 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'watchlist' => $params['watchlist'],
 							'captchaid' => $params['captchaid'],
 							'captchaword' => $params['captchaword'],
-							'nocontent' => $params['nocontent'],
+							// Always fetch content if auto-subscribing, it's needed below (T359751)
+							'nocontent' => $autoSubscribe ? null : $params['nocontent'],
 							// NOTE: Must use getText() to work; PHP array from $params['tags'] is not understood
 							// by the visualeditoredit API.
 							'tags' => $this->getRequest()->getText( 'tags' ),
@@ -234,6 +235,11 @@ class ApiDiscussionToolsEdit extends ApiBase {
 						$lastHeading = end( $threads );
 						$subscribableHeadingName = $lastHeading->getName();
 						$subscribableSectionTitle = $lastHeading->getLinkableTitle();
+					}
+					if ( $params['nocontent'] ) {
+						// We had to fetch content even if not requested by the caller (T359751), but pretend we didn't
+						unset( $result['content'] );
+						$result['nocontent'] = true;
 					}
 				}
 
