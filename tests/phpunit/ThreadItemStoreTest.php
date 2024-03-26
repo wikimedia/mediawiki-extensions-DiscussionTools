@@ -68,7 +68,7 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 		foreach ( $tables as $table => $order ) {
 			$expected[$table] = static::getJson( "../$dir/$table.json", true );
 
-			$res = wfGetDb( DB_REPLICA )->newSelectQueryBuilder()
+			$res = $this->getDb()->newSelectQueryBuilder()
 				->from( $table )
 				->field( '*' )
 				->caller( __METHOD__ )
