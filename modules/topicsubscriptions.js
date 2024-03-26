@@ -166,7 +166,9 @@ function initTopicSubscriptions( $container, threadItemSet ) {
 		buttonsByName[ name ] = button;
 
 		// Restore data attribute
-		button.$element[ 0 ].setAttribute( 'data-mw-subscribed', String( subscribedStateTemp ) );
+		if ( subscribedStateTemp !== null ) {
+			button.$element[ 0 ].setAttribute( 'data-mw-subscribed', String( subscribedStateTemp ) );
+		}
 
 		var title = mw.config.get( 'wgRelevantPageName' ) + '#' + headingItem.getLinkableTitle();
 
@@ -426,15 +428,18 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 	for ( var headingName in headingsToUpdate ) {
 		var link = linksByName[ headingName ];
 		var button = buttonsByName[ headingName ];
-		// We can get the subscription state from the link or the button
-		var subscribedState = getSubscribedStateFromElement( link );
+		var subscribedState = getSubscribedStateFromElement( link || button.$element[ 0 ] );
 
 		if ( subscribedState === STATE_AUTOSUBSCRIBED ) {
 			maybeShowFirstTimeAutoTopicSubPopup();
 		} else if ( subscribedState === null || subscribedState === STATE_UNSUBSCRIBED ) {
 			topicsToCheck.push( headingName );
-			pendingLinks.push( link );
-			pendingButtons.push( button );
+			if ( link ) {
+				pendingLinks.push( link );
+			}
+			if ( button ) {
+				pendingButtons.push( button );
+			}
 		}
 	}
 	$( pendingLinks ).addClass( 'ext-discussiontools-init-section-subscribe-link-pending' );
@@ -469,8 +474,12 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 		// Update state of each topic for which there is a subscription
 		for ( var subItemName in response.subscriptions ) {
 			var state = response.subscriptions[ subItemName ];
-			updateSubscribeLink( linksByName[ subItemName ], state );
-			updateSubscribeButton( buttonsByName[ subItemName ], state );
+			if ( linksByName[ subItemName ] ) {
+				updateSubscribeLink( linksByName[ subItemName ], state );
+			}
+			if ( buttonsByName[ subItemName ] ) {
+				updateSubscribeButton( buttonsByName[ subItemName ], state );
+			}
 			if ( state === STATE_AUTOSUBSCRIBED ) {
 				maybeShowFirstTimeAutoTopicSubPopup();
 			}
