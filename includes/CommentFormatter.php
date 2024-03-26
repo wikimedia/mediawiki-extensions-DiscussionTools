@@ -455,8 +455,6 @@ class CommentFormatter {
 		] );
 
 		$text = preg_replace( '/<!--__DTELLIPSISBUTTON__(.*?)-->/', '', $text );
-		// No longer used, this can be removed once parser cache expires:
-		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
 		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)__(.*?)-->/', '', $text );
 
 		return $text;
@@ -470,9 +468,6 @@ class CommentFormatter {
 		SubscriptionStore $subscriptionStore, bool $isMobile, bool $useButtons
 	): string {
 		$doc = DOMCompat::newDocument( true );
-
-		// No longer used, this can be removed once parser cache expires:
-		$text = preg_replace( '/<!--__DTSUBSCRIBELINK__(.*?)-->/', '', $text );
 
 		$matches = [];
 		$itemDataByName = [];
