@@ -5,6 +5,7 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
+	grunt.loadNpmTasks( 'grunt-tyops' );
 
 	grunt.initConfig( {
 		eslint: {
@@ -20,9 +21,25 @@ module.exports = function ( grunt ) {
 				'modules/**/*.{css,less}'
 			]
 		},
+		tyops: {
+			options: {
+				typos: 'typos.json'
+			},
+			src: [
+				'**/*.{js,json,less,css,txt,php,md,sh}',
+				'!package-lock.json',
+				'!typos.json',
+				'!i18n/**',
+				'i18n/en.json',
+				'i18n/qqq.json',
+				'!lib/**',
+				'!{docs,node_modules,vendor}/**',
+				'!.git/**'
+			]
+		},
 		banana: conf.MessagesDirs
 	} );
 
-	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'banana' ] );
+	grunt.registerTask( 'test', [ 'tyops', 'eslint', 'stylelint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };

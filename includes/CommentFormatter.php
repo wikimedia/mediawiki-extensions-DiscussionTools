@@ -971,9 +971,9 @@ class CommentFormatter {
 
 		// Check fallback languages
 		$fallbackLanguages = $userLang->getFallbackLanguages();
-		foreach ( $fallbackLanguages as $fallbackLangauge ) {
-			if ( isset( $languages[ $fallbackLangauge ] ) ) {
-				return (bool)$languages[ $fallbackLangauge ];
+		foreach ( $fallbackLanguages as $fallbackLanguage ) {
+			if ( isset( $languages[ $fallbackLanguage ] ) ) {
+				return (bool)$languages[ $fallbackLanguage ];
 			}
 		}
 
