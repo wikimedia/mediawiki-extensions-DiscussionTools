@@ -599,9 +599,9 @@ function init( $container, state ) {
 			) {
 				var fragment = location.hash.slice( 1 );
 				var ignorePatterns = [
-					// A leading '/' usually means a application route, e.g. /media, or /editor.
+					// A leading '/' or '!/' usually means a application route, e.g. /media, or /editor.
 					// We can't rule out a heading title (T349498), but they are unlikely
-					/^\//,
+					/^!?\//,
 					// "top" is a magic value in the WHATWG spec that goes to the top of the
 					// document (unless there's an actual id=top element on the page), see:
 					// https://html.spec.whatwg.org/multipage/browsing-the-web.html#scrolling-to-a-fragment:top-of-the-document-2
