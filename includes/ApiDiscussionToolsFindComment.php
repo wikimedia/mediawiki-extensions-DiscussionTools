@@ -106,8 +106,7 @@ class ApiDiscussionToolsFindComment extends ApiBase {
 			'matchedby' => $matchedBy,
 			// Could this be an automatic redirect? Will be converted to 'shouldredirect'
 			// if there is only one of these in the result set.
-			// Matches logic in Special:GoToComment
-			'couldredirect' => $item->getRevision()->isCurrent() && !is_string( $item->getTranscludedFrom() )
+			'couldredirect' => $item->isCanonicalPermalink(),
 		];
 	}
 

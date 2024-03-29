@@ -381,7 +381,9 @@
 			"class": "\\MediaWiki\\Extension\\DiscussionTools\\SpecialTopicSubscriptions",
 			"services": [
 				"LinkRenderer",
-				"LinkBatchFactory"
+				"LinkBatchFactory",
+				"DiscussionTools.ThreadItemStore",
+				"DiscussionTools.ThreadItemFormatter"
 			]
 		},
 		"FindComment": {

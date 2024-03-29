@@ -110,4 +110,12 @@ class DatabaseThreadItem implements JsonSerializable, ThreadItem {
 	public function getLevel(): int {
 		return $this->level;
 	}
+
+	/**
+	 * An item can generate the canonical permalink if it is not transcluded from another page,
+	 * and it was found in the current revision of its page.
+	 */
+	public function isCanonicalPermalink(): bool {
+		return $this->getRevision()->isCurrent() && !is_string( $this->getTranscludedFrom() );
+	}
 }

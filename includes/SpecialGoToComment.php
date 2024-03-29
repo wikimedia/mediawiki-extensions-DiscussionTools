@@ -26,21 +26,19 @@ class SpecialGoToComment extends RedirectSpecialPage {
 		// Search for all thread items with the given ID or name, returning results from the latest
 		// revision of each page they appeared on.
 		//
-		// If there is exactly one result which is not transcluded from another page and in the current
-		// revision of its page, redirect to it.
-		//
+		// If there is exactly one good result (see isCanonicalPermalink()), redirect to it.
 		// Otherwise, redirect to full search results on Special:FindComment.
 
 		if ( $subpage ) {
 			$threadItems = $this->threadItemStore->findNewestRevisionsById( $subpage );
 			foreach ( $threadItems as $item ) {
-				if ( $item->getRevision()->isCurrent() && !is_string( $item->getTranscludedFrom() ) ) {
+				if ( $item->isCanonicalPermalink() ) {
 					$results[] = $item;
 				}
 			}
 			$threadItems = $this->threadItemStore->findNewestRevisionsByName( $subpage );
 			foreach ( $threadItems as $item ) {
-				if ( $item->getRevision()->isCurrent() && !is_string( $item->getTranscludedFrom() ) ) {
+				if ( $item->isCanonicalPermalink() ) {
 					$results[] = $item;
 				}
 			}
