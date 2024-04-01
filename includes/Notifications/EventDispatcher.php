@@ -9,7 +9,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
-use ChangeTags;
 use DateInterval;
 use DateTimeImmutable;
 use ExtensionRegistry;
@@ -338,7 +337,8 @@ class EventDispatcher {
 		// Unclear if DeferredUpdates::addCallableUpdate() is needed,
 		// but every extension does it that way.
 		DeferredUpdates::addCallableUpdate( static function () use ( $newRevRecord ) {
-			ChangeTags::addTags( [ 'discussiontools-added-comment' ], null, $newRevRecord->getId() );
+			MediaWikiServices::getInstance()->getChangeTagsStore()
+				->addTags( [ 'discussiontools-added-comment' ], null, $newRevRecord->getId() );
 		} );
 	}
 
