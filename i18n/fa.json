@@ -11,7 +11,9 @@
 			"Ladsgroup",
 			"Matma Rex",
 			"Mohammad ebz",
-			"Reza koulivand"
+			"Reza koulivand",
+			"Ebraminio",
+			"Rulebased"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -44,8 +46,8 @@
 	"discussiontools-error-noswitchtove-table": "ساختار جدول",
 	"discussiontools-error-noswitchtove-template": "ساختار الگو",
 	"discussiontools-error-noswitchtove-title": "حالت دیداری غیرفعال است",
-	"discussiontools-findcomment-results-id": "نظر دارای شناسهٔ واردشده در {{PLURAL:$1|صفحهٔ|صفحه‌های}} زیر ظاهر شده‌است:",
-	"discussiontools-findcomment-results-name": "نظر دارای نام واردشده در {{PLURAL:$1|صفحهٔ|صفحه‌های}} زیر ظاهر شده‌است:",
+	"discussiontools-findcomment-results-id": "نظر دارای شناسهٔ واردشده در {{PLURAL:$1|صفحهٔ|صفحه‌های}} زیر ظاهر شده است:",
+	"discussiontools-findcomment-results-name": "نظر دارای نام واردشده در {{PLURAL:$1|صفحهٔ|صفحه‌های}} زیر ظاهر شده است:",
 	"discussiontools-findcomment-label-idorname": "شناسه یا نام نظر",
 	"discussiontools-findcomment-gotocomment": "اگر تنها در نسخهٔ کنونی یک صفحه نمایش یابد، می‌توانید [[Special:GoToComment/$1|با کمک این پیوند مستقیماً به آن نظر بروید]]. در غیر این صورت، به این نتایج جستجو هدایت خواهید شد.",
 	"discussiontools-findcomment-label-search": "جستجو",
