@@ -122,6 +122,8 @@
 	"discussiontools-replywidget-return-to-newtopic": "Tilbake til nytt emne",
 	"discussiontools-replywidget-summary": "Samandrag",
 	"discussiontools-replywidget-watchthis": "Legg til sida i [[Special:Watchlist|overvakingslista]] di",
+	"discussiontools-target-comment-found-moved": "Kommentaren vart ikkje funne på denne sida, men han finst på {{PLURAL:$1|denne sida|desse sidene}}:",
+	"discussiontools-target-heading-found-moved": "Emnet vart ikkje funne på denne sida, men det finst på {{PLURAL:$1|denne sida|desse sidene}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|personar}} deltek i diskusjonen",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kommentar|kommentarar}}",
 	"discussiontools-topicheader-latestcomment": "Siste kommentar: $1",
