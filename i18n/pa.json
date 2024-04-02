@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Bgo eiu",
-			"Jagseer S Sidhu"
+			"Jagseer S Sidhu",
+			"Kuldeepburjbhalaike"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ਜੁਆਬ",
+	"discussiontools-ledesection-button": "ਇਸ ਸਫ਼ੇ ਬਾਰੇ ਹੋਰ ਜਾਣੋ",
 	"discussiontools-replylink": "ਜੁਆਬ ਦਿਉ",
 	"discussiontools-replywidget-advanced": "ਉੱਨਤ",
 	"discussiontools-replywidget-cancel": "ਰੱਦ ਕਰੋ",
