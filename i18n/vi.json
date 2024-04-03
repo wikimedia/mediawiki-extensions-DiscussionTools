@@ -10,7 +10,9 @@
 			"Nghiemtrongdai VN",
 			"NguoiDungKhongDinhDanh",
 			"Phjtieudoc",
-			"Vinhtantran"
+			"Vinhtantran",
+			"Doraemonluonbentoi",
+			"Pisceskaze"
 		]
 	},
 	"discussiontools": "Công cụ thảo luận",
@@ -142,9 +144,9 @@
 	"discussiontools-topicsubscription-error-not-found-body": "Không tìm thấy theo dõi được chỉ định trong URL.",
 	"discussiontools-topicsubscription-error-not-found-title": "Không tìm thấy theo dõi",
 	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Bạn}} sẽ nhận được thông báo về bình luận mới trong chủ đề này.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Bạn đã theo dõi.",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "Bạn sẽ không nhận thông báo bình luận mới trong chủ đề này nữa.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Bạn đã ngừng theo dõi.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Bạn}} đã theo dõi!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Bạn}} không còn nhận được thông báo về bình luận mới trong chủ đề này.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Bạn}} đã ngừng theo dõi.",
 	"discussiontools-topicsubscription-pager-actions": "Tác vụ",
 	"discussiontools-topicsubscription-pager-created": "Theo dõi đầu tiên",
 	"discussiontools-topicsubscription-pager-notified": "Thông báo mới nhất",
