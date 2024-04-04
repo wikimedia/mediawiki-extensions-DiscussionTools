@@ -138,17 +138,6 @@ class PageHooks implements
 			}
 		}
 
-		// This doesn't involve any DB checks, and so we can put it on every
-		// page to make it easy to pick for logging in WikiEditor. If this
-		// becomes not-cheap, move it elsewhere.
-		$abstate = HookUtils::determineUserABTestBucket( $user );
-		if ( $abstate ) {
-			$output->addJsConfigVars(
-				'wgDiscussionToolsABTestBucket',
-				$abstate
-			);
-		}
-
 		// Replace the action=edit&section=new form with the new topic tool.
 		if ( HookUtils::shouldOpenNewTopicTool( $output->getContext() ) ) {
 			$output->addJsConfigVars( 'wgDiscussionToolsStartNewTopicTool', true );

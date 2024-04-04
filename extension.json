@@ -483,12 +483,6 @@
 				"ConfigFactory"
 			]
 		},
-		"resourceloader": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ResourceLoaderHooks",
-			"services": [
-				"ConfigFactory"
-			]
-		},
 		"discussiontools": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\DiscussionToolsHooks"
 		},
@@ -542,10 +536,6 @@
 		"DiscussionToolsBeta": {
 			"value": false,
 			"description": "Make DiscussionTools a BetaFeature."
-		},
-		"DiscussionToolsABTest": {
-			"value": false,
-			"description": "A/B test DiscussionTools features for logged in users. false, any valid feature string for an option below, or an array thereof"
 		},
 		"DiscussionTools_visualenhancements": {
 			"value": "default",

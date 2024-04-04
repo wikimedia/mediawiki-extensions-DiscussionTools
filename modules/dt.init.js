@@ -11,13 +11,6 @@ mw.dt.initState = {
 	firstLoad: true
 };
 
-// A/B test for logged out users:
-if ( mw.user.isAnon() && mw.config.get( 'wgDiscussionToolsABTest' ) && mw.config.get( 'wgDiscussionToolsABTestBucket' ) ) {
-	const token = mw.cookie.get( 'DTABid', '', mw.user.generateRandomSessionId() );
-	mw.cookie.set( 'DTAB', mw.config.get( 'wgDiscussionToolsABTestBucket' ), { path: '/', expires: 90 * 86400, prefix: '' } );
-	mw.cookie.set( 'DTABid', token, { path: '/', expires: 90 * 86400, prefix: '' } );
-}
-
 if ( url.searchParams.get( 'dtrepliedto' ) ) {
 	// If we had to reload the page to highlight the new comment, extract that data from the URL and
 	// clean it up.
