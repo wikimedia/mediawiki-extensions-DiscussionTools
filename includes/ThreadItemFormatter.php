@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\Title\TitleFormatter;
 use MediaWiki\Title\TitleValue;
 use MessageLocalizer;
 
@@ -13,21 +12,18 @@ use MessageLocalizer;
  */
 class ThreadItemFormatter {
 
-	private TitleFormatter $titleFormatter;
 	private LinkRenderer $linkRenderer;
 
 	public function __construct(
-		TitleFormatter $titleFormatter,
 		LinkRenderer $linkRenderer
 	) {
-		$this->titleFormatter = $titleFormatter;
 		$this->linkRenderer = $linkRenderer;
 	}
 
 	/**
 	 * Make a link to a thread item on the page.
 	 */
-	public function makeLink( DatabaseThreadItem $item ): string {
+	public function makeLink( DatabaseThreadItem $item, ?string $text = null ): string {
 		$title = TitleValue::newFromPage( $item->getPage() )->createFragmentTarget( $item->getId() );
 
 		$query = [];
@@ -35,7 +31,6 @@ class ThreadItemFormatter {
 			$query['oldid'] = $item->getRevision()->getId();
 		}
 
-		$text = $this->titleFormatter->getPrefixedText( $title );
 		$link = $this->linkRenderer->makeLink( $title, $text, [], $query );
 
 		return $link;
