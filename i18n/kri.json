@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"122112ê"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Ansa",
+	"discussiontools-replywidget-advanced": "We advans",
+	"discussiontools-replywidget-cancel": "Kansul",
+	"discussiontools-replywidget-mode-source": "Sòrs",
+	"discussiontools-replywidget-mode-visual": "Vizhual",
+	"discussiontools-replywidget-preview": "Prevyu",
+	"discussiontools-replywidget-summary": "Sùmmari",
+	"discussiontools-replywidget-watchthis": "Ad dis pej to yu [[Special:Watchlist|watchlist]].",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1| pɔsin|pipul}} we de tɔk bɔt",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1| kɔmɛnt|kɔmɛnt dɛn}}",
+	"discussiontools-topicheader-latestcomment": "Di las kɔmɛnt: $1",
+	"discussiontools-topicsubscription-button-subscribe": "sabskraib",
+	"discussiontools-topicsubscription-button-subscribe-label": "Sabskraib",
+	"discussiontools-topicsubscription-button-unsubscribe": "unsabskraib",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Unsabskraib"
+}
