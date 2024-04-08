@@ -28,7 +28,7 @@
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} haqqında müzakirə başlat",
 	"discussiontools-emptystate-title-self": "İstifadəçi səhifənizə xoş gəlmisiniz.",
 	"discussiontools-emptystate-title-self-anon": "Bu müzakirə səhifəsinə xoş gəlmisiniz",
-	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Müzakirə səhifənizə xoş gəlmisiniz}}",
+	"discussiontools-emptystate-title-self-temp": "Müvəqqəti müzakirə səhifənizə {{GENDER:|xoş gəlmisiniz}}",
 	"discussiontools-emptystate-title-user": "{{PAGENAME}} {{GENDER:{{PAGENAME}}|ilə}} müzakirə başlat",
 	"discussiontools-emptystate-title-user-anon": "Bu müzakirə səhifəsinə xoş gəlmisiniz",
 	"discussiontools-emptystate-title-user-temp": "{{PAGENAME}} {{GENDER:{{PAGENAME}}|ilə}} müzakirə başladın",

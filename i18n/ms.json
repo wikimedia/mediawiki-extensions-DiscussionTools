@@ -113,6 +113,8 @@
 	"discussiontools-topicsubscription-pager-page": "Laman",
 	"discussiontools-topicsubscription-pager-topic": "Topik",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Sunting langganan",
+	"echo-category-title-dt-subscription": "{{PLURAL:$1|Langganan}} laman perbincangan",
+	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Pengarkiban}} laman perbincangan",
 	"tag-discussiontools-added-comment-description": "Ulasan laman perbincangan telah ditambah di suntingan ini",
 	"tag-discussiontools-description": "Suntingan dibuat menggunakan DiscussionTools",
 	"tag-discussiontools-edit": "Ulasan yang disunting"
