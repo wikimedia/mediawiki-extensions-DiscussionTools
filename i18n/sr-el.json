@@ -54,7 +54,6 @@
 	"discussiontools-postedit-confirmation-published": "Vaš komentar je objavljen.",
 	"discussiontools-postedit-confirmation-topicadded": "Vaša tema je dodata.",
 	"discussiontools-preference-autotopicsub": "Automatski prati teme",
-	"discussiontools-preference-description": "Omogućava novi način [https://www.mediawiki.org/wiki/Talk_pages_project/replying odgovaranja na komentare] na stranicama za razgovor.\n\nImajte na umu da će se s vremenom uvesti još novih alatki za komuniciranje na stranicama za razgovor.\n\nNovosti o tim novim alatkama biće objavljene  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates ovde].",
 	"discussiontools-preference-label": "Alatke za razgovor",
 	"discussiontools-preference-newtopictool": "Brzo dodavanje tema",
 	"discussiontools-preference-newtopictool-createpage": "Za stranice za razgovor kojih još uvek nema:",
