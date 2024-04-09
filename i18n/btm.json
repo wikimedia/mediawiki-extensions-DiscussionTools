@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"IHLubis"
+			"IHLubis",
+			"Veracious"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Mamjawab",
@@ -15,7 +16,7 @@
 	"discussiontools-replywidget-preview": "I ligimulakan",
 	"discussiontools-replywidget-reply": "Manjawab",
 	"discussiontools-replywidget-summary": "Ringkasan",
-	"discussiontools-replywidget-watchthis": "Tambaima alaman on tu ho [[Special:Watchlist|daftar pamataan]]",
+	"discussiontools-replywidget-watchthis": "Tambaima alaman on tu [[Special:Watchlist|daftar pamataan]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|halak}} i bagasan marpokat",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kecek}}",
 	"discussiontools-topicheader-latestcomment": "Na tarbaru kecekna: $1",
