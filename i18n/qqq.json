@@ -173,7 +173,7 @@
 	"discussiontools-target-comment-found-moved": "Message shown when a comment is not found on the current page, but has been found on another page or pages, e.g. an archive.\n\nParameters:\n* $1 – number of pages the comment was found on.",
 	"discussiontools-target-heading-found-moved": "Message shown when a topic heading is not found on the current page, but has been found on another page, e.g. an archive.\n\nParameters:\n* $1 – number of pages the topic was found on.",
 	"discussiontools-topicheader-authorcount": "Label showing how many users have commented in a discussion.",
-	"discussiontools-topicheader-commentcount": "Label showing how many comments have been posted in a discussion. for languages without plural counters, just apply <nowiki> {{PLURAL:$1|[''comment''_in_your_language]}}</nowiki>, but never delete the template or it triggers error alert.",
+	"discussiontools-topicheader-commentcount": "Label showing how many comments have been posted in a discussion. When only one thing was posted and there were no replies, the number is 1.",
 	"discussiontools-topicheader-latestcomment": "Label showing when the most recent comment was posted in a discussion. Parameters:\n* $1 – When the comment was posted, e.g. '1 hour ago'. This text is a link to the comment.",
 	"discussiontools-topicsubscription-action-title": "Shown as page title when subscribing to or unsubscribing from a topic on a page. Parameters:\n* $1 - title of the page\n* $2 - title of the topic",
 	"discussiontools-topicsubscription-action-subscribe-button": "Button to subscribe to a topic.\n{{identical|Subscribe}}",
