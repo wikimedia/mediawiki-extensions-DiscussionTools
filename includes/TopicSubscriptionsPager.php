@@ -36,7 +36,7 @@ class TopicSubscriptionsPager extends TablePager {
 	private ThreadItemFormatter $threadItemFormatter;
 
 	/** @var array<string,DatabaseThreadItem[]> */
-	private array $threadItemsByName;
+	private array $threadItemsByName = [];
 
 	public function __construct(
 		IContextSource $context,
@@ -55,6 +55,9 @@ class TopicSubscriptionsPager extends TablePager {
 	 * @inheritDoc
 	 */
 	public function preprocessResults( $result ) {
+		if ( !$result->numRows() ) {
+			return;
+		}
 		$lb = $this->linkBatchFactory->newLinkBatch();
 		$itemNames = [];
 		foreach ( $result as $row ) {
@@ -63,7 +66,6 @@ class TopicSubscriptionsPager extends TablePager {
 		}
 		$lb->execute();
 
-		$this->threadItemsByName = [];
 		// Increased limit to allow finding and skipping over some bad permalinks
 		$threadItems = $this->threadItemStore->findNewestRevisionsByName( $itemNames, $this->mLimit * 5 );
 		foreach ( $threadItems as $threadItem ) {
