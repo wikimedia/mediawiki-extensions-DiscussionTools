@@ -20,6 +20,7 @@
 	"discussiontools-emptystate-title-self": "Velkomin/n á spjallsíðuna þína",
 	"discussiontools-emptystate-title-self-anon": "Velkomin/n á þessa spjallsíðu",
 	"discussiontools-findcomment-results-transcluded": "(innifalið frá öðrum síðum)",
+	"discussiontools-findcomment-title": "Finna athugasemd",
 	"discussiontools-newtopic-missing-title": "Vinsamlegast tilgreindu titil fyrir umræðuefnið. Ef þú smellir á \"{{int:discussiontools-replywidget-newtopic}}\", þá verður umræðuefninu þínu bætt við án titils.",
 	"discussiontools-preference-newtopictool": "Virkja flýtiviðbót umræðuefna",
 	"discussiontools-preference-replytool": "Virkja snöggan svarmöguleika",
