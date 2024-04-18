@@ -478,14 +478,9 @@ function init( $container, state ) {
 		$.Deferred().resolve().promise();
 
 	// Restore autosave
-	( function () {
-		if ( mw.config.get( 'wgAction' ) !== 'view' ) {
-			// Don't do anything when we're editing/previewing
-			return;
-		}
-
-		for ( let i = 0; i < pageThreads.threadItems.length; i++ ) {
-			const comment = pageThreads.threadItems[ i ];
+	// Don't do anything when we're editing/previewing
+	if ( mw.config.get( 'wgAction' ) === 'view' ) {
+		pageThreads.threadItems.every( ( comment, i ) => {
 			const replyStorage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + comment.id, STORAGE_EXPIRY );
 			if ( replyStorage.get( 'saveable' ) ) {
 				const mode = replyStorage.get( 'mode' );
@@ -502,9 +497,10 @@ function init( $container, state ) {
 						setupController( comment, $link, mode, true, !state.firstLoad, replyStorage );
 					} );
 				} );
-				break;
+				return false;
 			}
-		}
+			return true;
+		} );
 		const newTopicStorage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + utils.NEW_TOPIC_COMMENT_ID, STORAGE_EXPIRY );
 		if ( newTopicStorage.get( 'saveable' ) || newTopicStorage.get( 'title' ) ) {
 			const mode = newTopicStorage.get( 'mode' );
@@ -513,7 +509,7 @@ function init( $container, state ) {
 			const data = linksController.parseNewTopicLink( location.href );
 			setupController( newTopicComment( data ), $( [] ) );
 		}
-	}() );
+	}
 
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
