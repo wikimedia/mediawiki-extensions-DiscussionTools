@@ -596,7 +596,7 @@ function compareRangesAlmostEqualBoundaries( a, b, boundary ) {
 	var foundContent = false;
 	linearWalk(
 		from,
-		function ( event, n ) {
+		( event, n ) => {
 			if ( n === to && event === ( boundary === 'end' ? 'leave' : 'enter' ) ) {
 				return true;
 			}

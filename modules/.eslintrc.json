@@ -12,7 +12,8 @@
 	"rules": {
 		"no-implicit-globals": "off",
 		"no-var": "off",
-		"max-len": "off"
+		"max-len": "off",
+		"prefer-arrow-callback": "error"
 	},
 	"settings": {
 		"polyfills": [

@@ -20,8 +20,8 @@ var
 if ( debug & DEBUG_HIGHLIGHT ) {
 	debugHighlighter.markThreads( threads );
 
-	comments.forEach( function ( comment ) {
-		comment.signatureRanges.forEach( function ( signatureRange ) {
+	comments.forEach( ( comment ) => {
+		comment.signatureRanges.forEach( ( signatureRange ) => {
 			var node = signatureRange.endContainer;
 			var match = parser.findTimestamp( node, timestampRegexps );
 			if ( !match ) {
@@ -42,7 +42,7 @@ if ( debug & DEBUG_HIGHLIGHT ) {
 
 // eslint-disable-next-line no-bitwise
 if ( ( debug & DEBUG_VOTE ) || ( debug & DEBUG_VOTE_PERMISSIVE ) ) {
-	threads.forEach( function ( thread ) {
+	threads.forEach( ( thread ) => {
 		var firstComment = thread.replies[ 0 ];
 
 		if ( firstComment && firstComment.type === 'comment' ) {
@@ -63,7 +63,7 @@ if ( ( debug & DEBUG_VOTE ) || ( debug & DEBUG_VOTE_PERMISSIVE ) ) {
 
 			var lastReply;
 			var level = firstVote.level;
-			firstVote.parent.replies.forEach( function ( reply ) {
+			firstVote.parent.replies.forEach( ( reply ) => {
 				if ( reply.type === 'comment' && reply.level <= level ) {
 					lastReply = reply;
 				}

@@ -77,12 +77,12 @@ module.exports.serializeComments = function ( parent, root ) {
 	// instead use their offsets within their parent nodes
 	parent.range = getPathsFromRange( root, parent.range );
 	if ( parent.signatureRanges ) {
-		parent.signatureRanges = parent.signatureRanges.map( function ( range ) {
+		parent.signatureRanges = parent.signatureRanges.map( ( range ) => {
 			return getPathsFromRange( root, range );
 		} );
 	}
 	if ( parent.timestampRanges ) {
-		parent.timestampRanges = parent.timestampRanges.map( function ( range ) {
+		parent.timestampRanges = parent.timestampRanges.map( ( range ) => {
 			return getPathsFromRange( root, range );
 		} );
 	}
@@ -102,7 +102,7 @@ module.exports.serializeComments = function ( parent, root ) {
 	delete parent.oldestReply;
 	delete parent.latestReply;
 
-	parent.replies.forEach( function ( comment ) {
+	parent.replies.forEach( ( comment ) => {
 		module.exports.serializeComments( comment, root );
 	} );
 };

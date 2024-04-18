@@ -6,7 +6,7 @@ function sortAuthors( a, b ) {
 }
 
 function hasUser( authors, username ) {
-	return authors.some( function ( author ) {
+	return authors.some( ( author ) => {
 		return author.username === username;
 	} );
 }
@@ -23,8 +23,6 @@ function hasUser( authors, username ) {
  * @param {string} [source]
  */
 function MWUsernameCompletionAction() {
-	var action = this;
-
 	// Parent constructor
 	MWUsernameCompletionAction.super.apply( this, arguments );
 
@@ -33,11 +31,11 @@ function MWUsernameCompletionAction() {
 	this.searchedPrefixes = {};
 	this.localUsers = [];
 	this.ipUsers = [];
-	this.surface.authors.forEach( function ( author ) {
+	this.surface.authors.forEach( ( author ) => {
 		if ( mw.util.isIPAddress( author.username ) ) {
-			action.ipUsers.push( author );
+			this.ipUsers.push( author );
 		} else if ( author.username !== mw.user.getName() ) {
-			action.localUsers.push( author );
+			this.localUsers.push( author );
 		}
 	} );
 	// On user talk pages, always list the "owner" of the talk page
@@ -87,7 +85,7 @@ MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 	// if we already have the sequence inserted at the
 	// current offset.
 	if ( fragment.getSelection().isCollapsed() ) {
-		inserted = this.surface.getView().findMatchingSequences().some( function ( item ) {
+		inserted = this.surface.getView().findMatchingSequences().some( ( item ) => {
 			return item.sequence === sequence;
 		} );
 	}
@@ -127,8 +125,8 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			// Fetch twice as many results as we need so we can filter
 			// blocked users and still probably have some suggestions left
 			aulimit: this.constructor.static.defaultLimit * 2
-		} ).then( function ( response ) {
-			var suggestions = response.query.allusers.filter( function ( user ) {
+		} ).then( ( response ) => {
+			var suggestions = response.query.allusers.filter( ( user ) => {
 				// API doesn't return IPs
 				return !hasUser( action.localUsers, user.name ) &&
 					!hasUser( action.remoteUsers, user.name ) &&
@@ -137,7 +135,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 					// own user talk page, and in that case the user
 					// will be included in localUsers.
 					!( user.blockexpiry === 'infinite' && !user.blockpartial );
-			} ).map( function ( user ) {
+			} ).map( ( user ) => {
 				return {
 					username: user.name,
 					displayNames: []
@@ -153,7 +151,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 		apiPromise = ve.createDeferred().resolve().promise();
 	}
 
-	return apiPromise.then( function () {
+	return apiPromise.then( () => {
 		// By concatenating on-thread authors and remote-fetched authors, both
 		// sorted alphabetically, we'll get our suggestion popup sorted so all
 		// on-thread matches come first.
@@ -176,7 +174,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 MWUsernameCompletionAction.prototype.compareSuggestionToInput = function ( suggestion, normalizedInput ) {
 	var normalizedSuggestion = suggestion.username.toLowerCase(),
 		normalizedSearchIndex = normalizedSuggestion + ' ' +
-		suggestion.displayNames.map( function ( displayName ) {
+		suggestion.displayNames.map( ( displayName ) => {
 			return displayName.toLowerCase();
 		} ).join( ' ' );
 

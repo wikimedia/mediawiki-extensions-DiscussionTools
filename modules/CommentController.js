@@ -54,7 +54,7 @@ function getLatestRevId( pageName ) {
 		rvprop: 'ids',
 		rvlimit: 1,
 		titles: pageName
-	} ).then( function ( resp ) {
+	} ).then( ( resp ) => {
 		return resp.query.pages[ 0 ].revisions[ 0 ].revid;
 	} );
 }
@@ -75,7 +75,7 @@ CommentController.prototype.getTranscludedFromSource = function () {
 		if ( recursionLimit > 0 && code === 'comment-is-transcluded' ) {
 			errorData = data.errors[ 0 ].data;
 			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
-				return getLatestRevId( errorData.transcludedFrom ).then( function ( latestRevId ) {
+				return getLatestRevId( errorData.transcludedFrom ).then( ( latestRevId ) => {
 					// Fetch the transcluded page, until we cross the recursion limit
 					return controller.checkThreadItemOnPage( errorData.transcludedFrom, latestRevId, threadItem )
 						.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
@@ -116,8 +116,7 @@ CommentController.static.initType = 'page';
  * @param {boolean} [suppressNotifications] Don't notify the user if recovering auto-save
  */
 CommentController.prototype.setup = function ( mode, hideErrors, suppressNotifications ) {
-	var threadItem = this.getThreadItem(),
-		commentController = this;
+	var threadItem = this.getThreadItem();
 
 	if ( mode === undefined ) {
 		mode = mw.user.options.get( 'discussiontools-editmode' ) ||
@@ -135,10 +134,10 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 	} );
 
 	if ( !this.replyWidgetPromise ) {
-		this.replyWidgetPromise = this.getTranscludedFromSource().then( function ( commentDetails ) {
-			return commentController.createReplyWidget( commentDetails, { mode: mode } );
-		}, function ( code, data ) {
-			commentController.onReplyWidgetTeardown();
+		this.replyWidgetPromise = this.getTranscludedFromSource().then( ( commentDetails ) => {
+			return this.createReplyWidget( commentDetails, { mode: mode } );
+		}, ( code, data ) => {
+			this.onReplyWidgetTeardown();
 
 			if ( !hideErrors ) {
 				OO.ui.alert(
@@ -153,18 +152,18 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 				type: 'preinit'
 			} );
 
-			commentController.replyWidgetPromise = null;
+			this.replyWidgetPromise = null;
 
 			return $.Deferred().reject();
 		} );
 
 		// On first load, add a placeholder list item
-		commentController.newListItem = modifier.addListItem( threadItem, dtConf.replyIndentation );
-		if ( commentController.newListItem.tagName.toLowerCase() === 'li' ) {
+		this.newListItem = modifier.addListItem( threadItem, dtConf.replyIndentation );
+		if ( this.newListItem.tagName.toLowerCase() === 'li' ) {
 			// When using bullet syntax, hide the marker. (T259864#7634107)
-			$( commentController.newListItem ).addClass( 'ext-discussiontools-init-noMarker' );
+			$( this.newListItem ).addClass( 'ext-discussiontools-init-noMarker' );
 		}
-		$( commentController.newListItem ).append(
+		$( this.newListItem ).append(
 			// Microsoft Edge's built-in translation feature replaces the entire element when it finishes
 			// translating it, which often happens after our interface has loaded, clobbering it, unless
 			// we wrap this loading message in another element.
@@ -174,7 +173,7 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 		// We don't know exactly how tall the widge will be, but leave room for one line
 		// of preview in source mode (~270px). Visual mode is ~250px.
 		scrollPaddingCollapsed.bottom += 270;
-		OO.ui.Element.static.scrollIntoView( commentController.newListItem, {
+		OO.ui.Element.static.scrollIntoView( this.newListItem, {
 			padding: scrollPaddingCollapsed
 		} );
 
@@ -196,20 +195,20 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 		$( document ).on( 'visibilitychange', this.onVisibilityChangeHandler );
 	}
 
-	this.replyWidgetPromise.then( function ( replyWidget ) {
-		if ( !commentController.newListItem ) {
+	this.replyWidgetPromise.then( ( replyWidget ) => {
+		if ( !this.newListItem ) {
 			// On subsequent loads, there's no list item yet, so create one now
-			commentController.newListItem = modifier.addListItem( threadItem, dtConf.replyIndentation );
-			if ( commentController.newListItem.tagName.toLowerCase() === 'li' ) {
+			this.newListItem = modifier.addListItem( threadItem, dtConf.replyIndentation );
+			if ( this.newListItem.tagName.toLowerCase() === 'li' ) {
 				// When using bullet syntax, hide the marker. (T259864#7634107)
-				$( commentController.newListItem ).addClass( 'ext-discussiontools-init-noMarker' );
+				$( this.newListItem ).addClass( 'ext-discussiontools-init-noMarker' );
 			}
 		}
-		$( commentController.newListItem ).empty().append( replyWidget.$element );
+		$( this.newListItem ).empty().append( replyWidget.$element );
 
-		commentController.setupReplyWidget( replyWidget, {}, suppressNotifications );
+		this.setupReplyWidget( replyWidget, {}, suppressNotifications );
 
-		commentController.showAndFocus();
+		this.showAndFocus();
 
 		mw.track( 'editAttemptStep', { action: 'ready' } );
 		mw.track( 'editAttemptStep', { action: 'loaded' } );
@@ -232,14 +231,13 @@ CommentController.prototype.onVisibilityChange = function () {
 CommentController.prototype.startPoll = function () {
 	var threadItemId = this.threadItem.id;
 	var subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
-	var commentController = this;
 
 	this.pollApiRequest = controller.getApi().get( {
 		action: 'discussiontoolscompare',
 		fromrev: this.oldId,
 		totitle: mw.config.get( 'wgRelevantPageName' )
 	} );
-	this.pollApiRequest.then( function ( response ) {
+	this.pollApiRequest.then( ( response ) => {
 		function relevantCommentFilter( cmt ) {
 			return cmt.subscribableHeadingId === subscribableHeadingId &&
 				// Ignore posts by yourself, if logged in
@@ -251,30 +249,30 @@ CommentController.prototype.startPoll = function () {
 		var removedComments = result.removedcomments.filter( relevantCommentFilter );
 
 		if ( addedComments.length || removedComments.length ) {
-			commentController.updateNewCommentsWarning( addedComments, removedComments );
+			this.updateNewCommentsWarning( addedComments, removedComments );
 		}
 
 		// Parent comment was deleted
-		var isParentRemoved = result.removedcomments.some( function ( cmt ) {
+		var isParentRemoved = result.removedcomments.some( ( cmt ) => {
 			return cmt.id === threadItemId;
 		} );
 		// Parent comment was deleted then added back (e.g. reverted vandalism)
-		var isParentAdded = result.addedcomments.some( function ( cmt ) {
+		var isParentAdded = result.addedcomments.some( ( cmt ) => {
 			return cmt.id === threadItemId;
 		} );
 
 		if ( isParentAdded ) {
-			commentController.setParentRemoved( false );
+			this.setParentRemoved( false );
 		} else if ( isParentRemoved ) {
-			commentController.setParentRemoved( true );
+			this.setParentRemoved( true );
 		}
 
-		commentController.oldId = result.torevid;
-	} ).always( function () {
-		if ( commentController.isTornDown ) {
+		this.oldId = result.torevid;
+	} ).always( () => {
+		if ( this.isTornDown ) {
 			return;
 		}
-		commentController.pollTimeout = setTimeout( commentController.startPoll.bind( commentController ), 5000 );
+		this.pollTimeout = setTimeout( this.startPoll.bind( this ), 5000 );
 	} );
 };
 
@@ -308,7 +306,7 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	// If 2017WTE mode is enabled, always use ReplyWidgetVisual.
 	visual = visual || enable2017Wikitext;
 
-	return mw.loader.using( controller.getReplyWidgetModules() ).then( function () {
+	return mw.loader.using( controller.getReplyWidgetModules() ).then( () => {
 		return require( 'ext.discussionTools.ReplyWidget' )[ visual ? 'ReplyWidgetVisual' : 'ReplyWidgetPlain' ];
 	} );
 };
@@ -321,10 +319,8 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
  * @return {jQuery.Promise} Promise resolved with a ReplyWidget
  */
 CommentController.prototype.createReplyWidget = function ( commentDetails, config ) {
-	var commentController = this;
-
-	return this.getReplyWidgetClass( config.mode === 'visual' ).then( function ( ReplyWidget ) {
-		return new ReplyWidget( commentController, commentDetails, config );
+	return this.getReplyWidgetClass( config.mode === 'visual' ).then( ( ReplyWidget ) => {
+		return new ReplyWidget( this, commentDetails, config );
 	} );
 };
 
@@ -358,12 +354,11 @@ CommentController.prototype.focus = function () {
  * Scroll the widget into view and focus it
  */
 CommentController.prototype.showAndFocus = function () {
-	var commentController = this;
 	if ( this.replyWidgetPromise ) {
-		this.replyWidgetPromise.then( function ( replyWidget ) {
+		this.replyWidgetPromise.then( ( replyWidget ) => {
 			replyWidget.scrollElementIntoView( { padding: scrollPadding } )
-				.then( function () {
-					commentController.focus();
+				.then( () => {
+					this.focus();
 				} );
 		} );
 	}
@@ -376,7 +371,7 @@ CommentController.prototype.showAndFocus = function () {
  */
 CommentController.prototype.tryTeardown = function () {
 	if ( this.replyWidgetPromise ) {
-		return this.replyWidgetPromise.then( function ( replyWidget ) {
+		return this.replyWidgetPromise.then( ( replyWidget ) => {
 			return replyWidget.tryTeardown();
 		} );
 	}
@@ -476,11 +471,10 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
  */
 CommentController.prototype.save = function ( pageName ) {
 	var replyWidget = this.replyWidget,
-		commentController = this,
 		threadItem = this.getThreadItem();
 
-	return this.replyWidget.checkboxesPromise.then( function ( checkboxes ) {
-		var data = commentController.getApiQuery( pageName, checkboxes );
+	return this.replyWidget.checkboxesPromise.then( ( checkboxes ) => {
+		var data = this.getApiQuery( pageName, checkboxes );
 
 		if (
 			// We're saving the first comment on a page that previously didn't exist.
@@ -498,7 +492,7 @@ CommentController.prototype.save = function ( pageName ) {
 			// so we must set up query parameters we want ahead of time.
 			data.returnto = pageName;
 			var params = new URLSearchParams();
-			params.set( 'dtrepliedto', commentController.getThreadItem().id );
+			params.set( 'dtrepliedto', this.getThreadItem().id );
 			params.set( 'dttempusercreated', '1' );
 			data.returntoquery = params.toString();
 		}
@@ -511,7 +505,7 @@ CommentController.prototype.save = function ( pageName ) {
 
 		return mw.libs.ve.targetSaver.postContent(
 			data, { api: noTimeoutApi }
-		).catch( function ( code, responseData ) {
+		).catch( ( code, responseData ) => {
 			// Better user-facing error messages
 			if ( code === 'editconflict' ) {
 				return $.Deferred().reject( code, { errors: [ {
@@ -530,7 +524,7 @@ CommentController.prototype.save = function ( pageName ) {
 				} ] } ).promise();
 			}
 			return $.Deferred().reject( code, responseData ).promise();
-		} ).then( function ( responseData ) {
+		} ).then( ( responseData ) => {
 			controller.update( responseData, threadItem, pageName, replyWidget );
 		} );
 	} );
@@ -543,21 +537,20 @@ CommentController.prototype.save = function ( pageName ) {
  * @param {Object[]} removedComments Array of JSON-serialized CommentItem's
  */
 CommentController.prototype.updateNewCommentsWarning = function ( addedComments, removedComments ) {
-	var commentController = this;
 	// Add new comments
 	this.newComments.push.apply( this.newComments, addedComments );
 
 	// Delete any comments which have since been deleted (e.g. posted then reverted)
-	var removedCommentIds = removedComments.filter( function ( cmt ) {
+	var removedCommentIds = removedComments.filter( ( cmt ) => {
 		return cmt.id;
 	} );
-	this.newComments = this.newComments.filter( function ( cmt ) {
+	this.newComments = this.newComments.filter( ( cmt ) => {
 		// If comment ID is not in removedCommentIds, keep it
 		return removedCommentIds.indexOf( cmt.id ) === -1;
 	} );
 
-	this.replyWidgetPromise.then( function ( replyWidget ) {
-		replyWidget.updateNewCommentsWarning( commentController.newComments );
+	this.replyWidgetPromise.then( ( replyWidget ) => {
+		replyWidget.updateNewCommentsWarning( this.newComments );
 	} );
 };
 
@@ -567,11 +560,10 @@ CommentController.prototype.updateNewCommentsWarning = function ( addedComments,
  * @param {boolean} parentRemoved
  */
 CommentController.prototype.setParentRemoved = function ( parentRemoved ) {
-	var commentController = this;
 	this.parentRemoved = parentRemoved;
 
-	this.replyWidgetPromise.then( function ( replyWidget ) {
-		replyWidget.updateParentRemovedError( commentController.parentRemoved );
+	this.replyWidgetPromise.then( ( replyWidget ) => {
+		replyWidget.updateParentRemovedError( this.parentRemoved );
 	} );
 };
 
@@ -585,8 +577,7 @@ CommentController.prototype.switchToWikitext = function () {
 		target = oldWidget.replyBodyWidget.target,
 		oldShowAdvanced = oldWidget.showAdvanced,
 		oldEditSummary = oldWidget.getEditSummary(),
-		previewDeferred = $.Deferred(),
-		commentController = this;
+		previewDeferred = $.Deferred();
 
 	// TODO: We may need to pass oldid/etag when editing is supported
 	var wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
@@ -595,21 +586,21 @@ CommentController.prototype.switchToWikitext = function () {
 		{ mode: 'source' }
 	);
 
-	return $.when( wikitextPromise, this.replyWidgetPromise ).then( function ( wikitext, replyWidget ) {
+	return $.when( wikitextPromise, this.replyWidgetPromise ).then( ( wikitext, replyWidget ) => {
 		// To prevent the "Reply" / "Cancel" buttons from shifting when the preview loads,
 		// wait for the preview (but no longer than 500 ms) before swithing the editors.
 		replyWidget.preparePreview( wikitext ).then( previewDeferred.resolve );
 		setTimeout( previewDeferred.resolve, 500 );
 
-		return previewDeferred.then( function () {
+		return previewDeferred.then( () => {
 			// Teardown the old widget
-			oldWidget.disconnect( commentController );
+			oldWidget.disconnect( this );
 			oldWidget.teardown();
 
 			// Swap out the DOM nodes
 			oldWidget.$element.replaceWith( replyWidget.$element );
 
-			commentController.setupReplyWidget( replyWidget, {
+			this.setupReplyWidget( replyWidget, {
 				value: wikitext,
 				showAdvanced: oldShowAdvanced,
 				editSummary: oldEditSummary
@@ -632,7 +623,7 @@ CommentController.prototype.switchToWikitext = function () {
 CommentController.prototype.doIndentReplacements = function ( wikitext, indent ) {
 	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
 
-	wikitext = wikitext.split( '\n' ).map( function ( line ) {
+	wikitext = wikitext.split( '\n' ).map( ( line ) => {
 		return indent + line;
 	} ).join( '\n' );
 
@@ -648,7 +639,7 @@ CommentController.prototype.doIndentReplacements = function ( wikitext, indent )
 CommentController.prototype.undoIndentReplacements = function ( rootNode ) {
 	var children = Array.prototype.slice.call( rootNode.childNodes );
 	// There may be multiple lists when some lines are template generated
-	children.forEach( function ( child ) {
+	children.forEach( ( child ) => {
 		if ( child.nodeType === Node.ELEMENT_NODE ) {
 			// Unwrap list
 			modifier.unwrapList( child );
@@ -687,8 +678,7 @@ CommentController.prototype.switchToVisual = function () {
 	var oldWidget = this.replyWidget,
 		oldShowAdvanced = oldWidget.showAdvanced,
 		oldEditSummary = oldWidget.getEditSummary(),
-		wikitext = oldWidget.getValue(),
-		commentController = this;
+		wikitext = oldWidget.getValue();
 
 	// Replace wikitext signatures with a special marker recognized by DtDmMWSignatureNode
 	// to render them as signature nodes in visual mode.
@@ -709,7 +699,7 @@ CommentController.prototype.switchToVisual = function () {
 			page: oldWidget.pageName,
 			wikitext: wikitext,
 			pst: true
-		} ).then( function ( response ) {
+		} ).then( ( response ) => {
 			return response && response.visualeditor.content;
 		} );
 	} else {
@@ -720,8 +710,8 @@ CommentController.prototype.switchToVisual = function () {
 		{ mode: 'visual' }
 	);
 
-	return $.when( parsePromise, this.replyWidgetPromise ).then( function ( html, replyWidget ) {
-		var unsupportedSelectors = commentController.getUnsupportedNodeSelectors();
+	return $.when( parsePromise, this.replyWidgetPromise ).then( ( html, replyWidget ) => {
+		var unsupportedSelectors = this.getUnsupportedNodeSelectors();
 
 		var doc;
 		if ( html ) {
@@ -760,17 +750,17 @@ CommentController.prototype.switchToVisual = function () {
 					return $.Deferred().reject().promise();
 				}
 			}
-			commentController.undoIndentReplacements( doc.body );
+			this.undoIndentReplacements( doc.body );
 		}
 
 		// Teardown the old widget
-		oldWidget.disconnect( commentController );
+		oldWidget.disconnect( this );
 		oldWidget.teardown();
 
 		// Swap out the DOM nodes
 		oldWidget.$element.replaceWith( replyWidget.$element );
 
-		commentController.setupReplyWidget( replyWidget, {
+		this.setupReplyWidget( replyWidget, {
 			value: doc,
 			showAdvanced: oldShowAdvanced,
 			editSummary: oldEditSummary

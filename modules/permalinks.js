@@ -1,6 +1,6 @@
 function init( $pageContainer ) {
-	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', function () {
-		copyLink( this.href );
+	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', ( e ) => {
+		copyLink( e.target.href );
 	} ).attr( 'data-event-name', 'discussiontools.permalink-copied' );
 }
 
@@ -36,7 +36,7 @@ function copyLink( link ) {
 		$win.scrollTop( scrollTop );
 		// On mobile, we need to wait another execution cycle (setTimeout)
 		// before the scroll is rendered (and not requestAnimationFrame).
-		setTimeout( function () {
+		setTimeout( () => {
 			$win.scrollTop( scrollTop );
 		} );
 	}
@@ -46,7 +46,7 @@ function copyLink( link ) {
 	$win.one( 'scroll', afterNextScroll );
 	// If we happened to be in the exact correct position, 'scroll' won't fire,
 	// so clear the listener after a short delay
-	setTimeout( function () {
+	setTimeout( () => {
 		$win.off( 'scroll', afterNextScroll );
 	}, 1000 );
 }

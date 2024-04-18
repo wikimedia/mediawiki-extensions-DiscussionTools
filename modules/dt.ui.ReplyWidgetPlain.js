@@ -11,8 +11,6 @@ var utils = require( 'ext.discussionTools.init' ).utils;
  * @param {Object} [config]
  */
 function ReplyWidgetPlain() {
-	var widget = this;
-
 	// Parent constructor
 	ReplyWidgetPlain.super.apply( this, arguments );
 
@@ -26,8 +24,8 @@ function ReplyWidgetPlain() {
 			classes: [ 'ext-discussiontools-ui-replyWidget-editSwitch' ]
 		} );
 
-		this.switchToolbar.on( 'switchEditor', function ( mode ) {
-			widget.switch( mode );
+		this.switchToolbar.on( 'switchEditor', ( mode ) => {
+			this.switch( mode );
 		} );
 
 		this.switchToolbar.setup( [ {

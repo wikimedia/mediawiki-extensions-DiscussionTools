@@ -5,7 +5,7 @@ var
 
 QUnit.module( 'mw.dt.modifier', QUnit.newMwEnvironment() );
 
-require( '../cases/modified.json' ).forEach( function ( caseItem ) {
+require( '../cases/modified.json' ).forEach( ( caseItem ) => {
 	var testName = '#addListItem/#removeAddedListItem (' + caseItem.name + ')';
 	// This should be one test with many cases, rather than multiple tests, but the cases are large
 	// enough that processing all of them at once causes timeouts in Karma test runner.
@@ -14,7 +14,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		QUnit.skip( testName );
 		return;
 	}
-	QUnit.test( testName, function ( assert ) {
+	QUnit.test( testName, ( assert ) => {
 		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),
 			config = require( caseItem.config ),
@@ -34,7 +34,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		// thing, which only deals with one at a time. This isn't ideal but resetting everything after
 		// every reply would be super slow.
 		var nodes = [];
-		comments.forEach( function ( comment ) {
+		comments.forEach( ( comment ) => {
 			var node = modifier.addListItem( comment, caseItem.replyIndentation || 'invisible' );
 			node.textContent = 'Reply to ' + comment.id;
 			nodes.push( node );
@@ -52,7 +52,7 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 		);
 
 		// Now discard the replies and verify we get the original document back.
-		nodes.forEach( function ( node ) {
+		nodes.forEach( ( node ) => {
 			modifier.removeAddedListItem( node );
 		} );
 
@@ -65,10 +65,10 @@ require( '../cases/modified.json' ).forEach( function ( caseItem ) {
 	} );
 } );
 
-QUnit.test( '#addReplyLink', function ( assert ) {
+QUnit.test( '#addReplyLink', ( assert ) => {
 	var cases = require( '../cases/reply.json' );
 
-	cases.forEach( function ( caseItem ) {
+	cases.forEach( ( caseItem ) => {
 		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),
 			config = require( caseItem.config ),
@@ -84,7 +84,7 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 		var comments = threadItemSet.getCommentItems();
 
 		// Add a reply link to every comment.
-		comments.forEach( function ( comment ) {
+		comments.forEach( ( comment ) => {
 			var linkNode = document.createElement( 'a' );
 			linkNode.textContent = 'Reply';
 			linkNode.href = '#';
@@ -104,10 +104,10 @@ QUnit.test( '#addReplyLink', function ( assert ) {
 	} );
 } );
 
-QUnit.test( '#unwrapList', function ( assert ) {
+QUnit.test( '#unwrapList', ( assert ) => {
 	var cases = require( '../cases/unwrap.json' );
 
-	cases.forEach( function ( caseItem ) {
+	cases.forEach( ( caseItem ) => {
 		var container = document.createElement( 'div' );
 
 		container.innerHTML = caseItem.html;
@@ -121,10 +121,10 @@ QUnit.test( '#unwrapList', function ( assert ) {
 	} );
 } );
 
-QUnit.test( 'sanitizeWikitextLinebreaks', function ( assert ) {
+QUnit.test( 'sanitizeWikitextLinebreaks', ( assert ) => {
 	var cases = require( '../cases/sanitize-wikitext-linebreaks.json' );
 
-	cases.forEach( function ( caseItem ) {
+	cases.forEach( ( caseItem ) => {
 		assert.strictEqual(
 			modifier.sanitizeWikitextLinebreaks( caseItem.wikitext ),
 			caseItem.expected,
