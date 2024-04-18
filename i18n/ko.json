@@ -68,6 +68,7 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "이 문서에 새로운 주제가 시작될 때 알림을 더 이상 받지 않습니다.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "구독을 해지했습니다.",
 	"discussiontools-notification-added-topic-view": "주제 보기",
+	"discussiontools-notification-removed-topic-body": "{{PLURAL:$1|이 주제}}에 관해 더 이상 알림을 받지 않게 됩니다.",
 	"discussiontools-notification-removed-topic-header": "\"<strong>$4</strong>\" 주제는 $3 문서에서 보관 또는 제거되었습니다.",
 	"discussiontools-notification-removed-topic-header-compact": "주제 \"<strong>$4</strong>\"이(가) 보존되거나 제거되었습니다.",
 	"discussiontools-notification-removed-topic-view": "문서 보기",
