@@ -72,7 +72,7 @@ function getPageData( pageName, oldId, apiParams ) {
 			lntcategories: 'fostered',
 			lntlimit: 1,
 			lnttitle: pageName
-		} ).then( function ( response ) {
+		} ).then( ( response ) => {
 			return OO.getProp( response, 'query', 'linterrors' ) || [];
 		} );
 
@@ -80,7 +80,7 @@ function getPageData( pageName, oldId, apiParams ) {
 			action: 'discussiontoolspageinfo',
 			page: pageName,
 			oldid: oldId
-		} ).then( function ( response ) {
+		} ).then( ( response ) => {
 			return OO.getProp( response, 'discussiontoolspageinfo', 'transcludedfrom' ) || {};
 		} );
 	} else {
@@ -92,18 +92,16 @@ function getPageData( pageName, oldId, apiParams ) {
 		action: 'visualeditor',
 		paction: 'metadata',
 		page: pageName
-	}, apiParams ) ).then( function ( response ) {
+	}, apiParams ) ).then( ( response ) => {
 		return OO.getProp( response, 'visualeditor' ) || [];
 	} );
 
 	var promise = $.when( lintPromise, transcludedFromPromise, veMetadataPromise )
-		.then( function ( linterrors, transcludedfrom, metadata ) {
-			return {
-				linterrors: linterrors,
-				transcludedfrom: transcludedfrom,
-				metadata: metadata
-			};
-		}, function () {
+		.then( ( linterrors, transcludedfrom, metadata ) => ( {
+			linterrors: linterrors,
+			transcludedfrom: transcludedfrom,
+			metadata: metadata
+		} ), () => {
 			// Clear on failure
 			pageDataCache[ pageName ][ oldId ] = null;
 			// Let caller handle the error
@@ -141,7 +139,7 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 	}
 
 	return getPageData( pageName, oldId, apiParams )
-		.then( function ( response ) {
+		.then( ( response ) => {
 			var metadata = response.metadata,
 				lintErrors = response.linterrors,
 				transcludedFrom = response.transcludedfrom;
@@ -234,7 +232,7 @@ function getCheckboxesPromise( pageName, oldId ) {
 	return getPageData(
 		pageName,
 		oldId
-	).then( function ( pageData ) {
+	).then( ( pageData ) => {
 		var data = pageData.metadata,
 			checkboxesDef = {};
 
@@ -246,7 +244,7 @@ function getCheckboxesPromise( pageName, oldId ) {
 			// Override the label with a more verbose one to distinguish this from topic subscriptions (T290712)
 			checkboxesDef.wpWatchthis[ 'label-message' ] = 'discussiontools-replywidget-watchthis';
 		}
-		return mw.loader.using( 'ext.visualEditor.targetLoader' ).then( function () {
+		return mw.loader.using( 'ext.visualEditor.targetLoader' ).then( () => {
 			return mw.libs.ve.targetLoader.createCheckboxFields( checkboxesDef );
 		} );
 		// TODO: createCheckboxField doesn't make links in the label open in a new
@@ -312,7 +310,7 @@ function init( $container, state ) {
 	linksController = new ReplyLinksController( $pageContainer );
 	permalinks.init( $pageContainer );
 
-	linksController.on( 'link-interact', function () {
+	linksController.on( 'link-interact', () => {
 		// Preload page metadata when the user is about to use a link, to make the tool load faster.
 		// NOTE: As of January 2023, this is an EXPENSIVE API CALL. It must not be done on every
 		// pageview, as that would generate enough load to take down Wikimedia sites (T325477).
@@ -378,7 +376,7 @@ function init( $container, state ) {
 		activeController = commentController;
 		linksController.setActiveLink( $link );
 
-		commentController.on( 'teardown', function ( teardownMode ) {
+		commentController.on( 'teardown', ( teardownMode ) => {
 			activeCommentId = null;
 			activeController = null;
 
@@ -390,12 +388,12 @@ function init( $container, state ) {
 				linksController.focusLink( $link );
 			}
 		} );
-		commentController.on( 'reloadPage', function () {
-			mw.dt.initState.newCommentIds = commentController.newComments.map( function ( cmt ) {
+		commentController.on( 'reloadPage', () => {
+			mw.dt.initState.newCommentIds = commentController.newComments.map( ( cmt ) => {
 				return cmt.id;
 			} );
 			// Teardown active reply widget(s)
-			commentController.replyWidgetPromise.then( function ( replyWidget ) {
+			commentController.replyWidgetPromise.then( ( replyWidget ) => {
 				lastControllerScrollOffset = $( commentController.newListItem ).offset().top;
 				replyWidget.teardown( 'refresh' );
 				// Only fetch the last now "good" revision, on which we know the parent comment still exists.
@@ -426,7 +424,7 @@ function init( $container, state ) {
 	//
 	// TODO: Allow users to use multiple reply widgets simultaneously.
 	// Currently submitting a reply from one widget would also destroy the other ones.
-	linksController.on( 'link-click', function ( commentId, $link, data ) {
+	linksController.on( 'link-click', ( commentId, $link, data ) => {
 		// If the reply widget is already open, activate it.
 		// Reply links are also made unclickable using 'pointer-events' in CSS, but that doesn't happen
 		// for new section links, because we don't have a good way of visually disabling them.
@@ -450,12 +448,12 @@ function init( $container, state ) {
 		}
 
 		if ( mobile ) {
-			teardownPromise = teardownPromise.then( function () {
+			teardownPromise = teardownPromise.then( () => {
 				return mobile.closeLedeSectionDialog();
 			} );
 		}
 
-		teardownPromise.then( function () {
+		teardownPromise.then( () => {
 			// If another reply widget is open (or opening), do nothing.
 			if ( activeController ) {
 				return;
@@ -493,14 +491,14 @@ function init( $container, state ) {
 				const mode = replyStorage.get( 'mode' );
 				const $link = $( commentNodes[ i ] );
 				// Wait for mobile section toggling code to be ready
-				mobilePromise.then( function () {
+				mobilePromise.then( () => {
 					if ( OO.ui.isMobile() ) {
 						const urlFragment = mw.util.escapeIdForLink( comment.id );
 						// Force the section to expand on mobile (T338920)
 						location.hash = '#' + urlFragment;
 					}
 					// Wait for the 'hashchange' event to be handled by the mobile code
-					setTimeout( function () {
+					setTimeout( () => {
 						setupController( comment, $link, mode, true, !state.firstLoad, replyStorage );
 					} );
 				} );
@@ -520,7 +518,7 @@ function init( $container, state ) {
 	// For debugging (now unused in the code)
 	mw.dt.pageThreads = pageThreads;
 
-	mobilePromise.then( function () {
+	mobilePromise.then( () => {
 		if ( state.repliedTo ) {
 			highlighter.highlightPublishedComment( pageThreads, state.repliedTo );
 
@@ -549,21 +547,21 @@ function init( $container, state ) {
 	var dismissableNotificationPromise = null;
 	// Page-level handlers only need to be setup once
 	if ( !pageHandlersSetup ) {
-		$( window ).on( 'popstate', function () {
+		$( window ).on( 'popstate', () => {
 			// Delay with setTimeout() because "the Document's target element" (corresponding to the :target
 			// selector in CSS) is not yet updated to match the URL when handling a 'popstate' event.
-			setTimeout( function () {
+			setTimeout( () => {
 				highlighter.highlightTargetComment( pageThreads, true );
 			} );
 		} );
 		// eslint-disable-next-line no-jquery/no-global-selector
-		$( 'body' ).on( 'click', function ( e ) {
+		$( 'body' ).on( 'click', ( e ) => {
 			if ( utils.isUnmodifiedLeftClick( e ) && !e.target.closest( 'a' ) ) {
 				// Remove the highlight and the hash from the URL, unless clicking on another link
 				highlighter.clearHighlightTargetComment( pageThreads );
 			}
 			if ( dismissableNotificationPromise ) {
-				dismissableNotificationPromise.then( function ( notif ) {
+				dismissableNotificationPromise.then( ( notif ) => {
 					notif.close();
 				} );
 				dismissableNotificationPromise = null;
@@ -572,7 +570,7 @@ function init( $container, state ) {
 		pageHandlersSetup = true;
 	}
 	if ( state.firstLoad ) {
-		mobilePromise.then( function () {
+		mobilePromise.then( () => {
 			var findCommentQuery;
 			var isHeading = false;
 			var highlightResult = highlighter.highlightTargetComment( pageThreads );
@@ -613,7 +611,7 @@ function init( $container, state ) {
 					// Gadget: RedWarn
 					/^noticeApplied-/
 				];
-				if ( ignorePatterns.every( function ( pattern ) {
+				if ( ignorePatterns.every( ( pattern ) => {
 					return !pattern.test( fragment );
 				} ) ) {
 					findCommentQuery = {
@@ -639,11 +637,11 @@ function init( $container, state ) {
 				dismissableNotificationPromise = $.when(
 					findCommentRequest,
 					mw.loader.using( 'mediawiki.notification' )
-				).then( function ( results ) {
+				).then( ( results ) => {
 					var result = results[ 0 ];
 					var titles = [];
 					if ( result.discussiontoolsfindcomment ) {
-						titles = result.discussiontoolsfindcomment.map( function ( threadItemData ) {
+						titles = result.discussiontoolsfindcomment.map( ( threadItemData ) => {
 							// Only show items that appear on the current revision of their page
 							// and are not transcluded from another page
 							if ( threadItemData.couldredirect ) {
@@ -654,7 +652,7 @@ function init( $container, state ) {
 								return title;
 							}
 							return null;
-						} ).filter( function ( url ) {
+						} ).filter( ( url ) => {
 							return url;
 						} );
 					}
@@ -669,7 +667,7 @@ function init( $container, state ) {
 							).text() ),
 							$list
 						);
-						titles.forEach( function ( title ) {
+						titles.forEach( ( title ) => {
 							$list.append(
 								$( '<li>' ).append(
 									$( '<a>' ).attr( 'href', title.getUrl() ).text( title.getPrefixedText() )
@@ -694,7 +692,7 @@ function init( $container, state ) {
 				} );
 			}
 			if ( highlightResult.highlighted.length === 0 && ( highlightResult.requested.length > 1 || highlightResult.requestedSince ) ) {
-				dismissableNotificationPromise = mw.loader.using( 'mediawiki.notification' ).then( function () {
+				dismissableNotificationPromise = mw.loader.using( 'mediawiki.notification' ).then( () => {
 					return mw.notification.notify(
 						mw.message( 'discussiontools-target-comments-missing' ).text(),
 						{ type: 'warn', autoHide: false }
@@ -754,10 +752,10 @@ function updatePageContents( $container, data ) {
 	// Copied from ve.init.mw.DesktopArticleTarget.prototype.saveComplete
 	// TODO: Upstream this to core/skins, triggered by a hook (wikipage.content?)
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '#t-permalink' ).add( '#coll-download-as-rl' ).find( 'a' ).each( function () {
-		var permalinkUrl = new URL( this.href );
+	$( '#t-permalink' ).add( '#coll-download-as-rl' ).find( 'a' ).each( ( i, link ) => {
+		var permalinkUrl = new URL( link.href );
 		permalinkUrl.searchParams.set( 'oldid', data.parse.revid );
-		$( this ).attr( 'href', permalinkUrl.toString() );
+		$( link ).attr( 'href', permalinkUrl.toString() );
 	} );
 
 	var url = new URL( location.href );
@@ -766,7 +764,7 @@ function updatePageContents( $container, data ) {
 	// If there are any other query parameters left, re-use that URL object.
 	// Otherwise use the canonical style view url (T44553, T102363).
 	var keys = [];
-	url.searchParams.forEach( function ( val, key ) {
+	url.searchParams.forEach( ( val, key ) => {
 		keys.push( key );
 	} );
 
@@ -799,7 +797,7 @@ function refreshPageContents( oldId ) {
 		prop: [ 'text', 'revid', 'categorieshtml', 'sections', 'displaytitle', 'subtitle', 'modules', 'jsconfigvars' ],
 		page: !oldId ? mw.config.get( 'wgRelevantPageName' ) : undefined,
 		oldid: oldId || undefined
-	} ).then( function ( parseResp ) {
+	} ).then( ( parseResp ) => {
 		updatePageContents( $pageContainer, parseResp );
 	} );
 }
@@ -881,11 +879,11 @@ function update( data, threadItem, pageName, replyWidget ) {
 		api.post( {
 			action: 'purge',
 			titles: mw.config.get( 'wgRelevantPageName' )
-		} ).then( function () {
+		} ).then( () => {
 			return refreshPageContents();
-		} ).then( function () {
+		} ).then( () => {
 			pageUpdated.resolve();
-		} ).catch( function () {
+		} ).catch( () => {
 			// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to
 			// explain this problem. Redirect to the page where the user can at least see their reply…
 			window.location = mw.util.getUrl( pageName, { dtrepliedto: threadItem.id } );

@@ -62,9 +62,8 @@ OO.initClass( Parser );
  * @return {string[]} Message values
  */
 Parser.prototype.getMessages = function ( contLangVariant, messages ) {
-	var parser = this;
-	return messages.map( function ( code ) {
-		return parser.data.contLangMessages[ contLangVariant ][ code ];
+	return messages.map( ( code ) => {
+		return this.data.contLangMessages[ contLangVariant ][ code ];
 	} );
 };
 
@@ -93,8 +92,6 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 		return '(' + array.map( mw.util.escapeRegExp ).join( '|' ) + ')';
 	}
 
-	var parser = this;
-
 	var s = '';
 	var raw = false;
 	// Adapted from Language::sprintfDate()
@@ -113,7 +110,7 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				s += 'x';
 				break;
 			case 'xg':
-				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
+				s += regexpAlternateGroup( this.getMessages( contLangVariant, [
 					'january-gen', 'february-gen', 'march-gen', 'april-gen', 'may-gen', 'june-gen',
 					'july-gen', 'august-gen', 'september-gen', 'october-gen', 'november-gen',
 					'december-gen'
@@ -126,7 +123,7 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				num = '2';
 				break;
 			case 'D':
-				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
+				s += regexpAlternateGroup( this.getMessages( contLangVariant, [
 					'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'
 				] ) );
 				break;
@@ -134,20 +131,20 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 				num = '1,2';
 				break;
 			case 'l':
-				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
+				s += regexpAlternateGroup( this.getMessages( contLangVariant, [
 					'sunday', 'monday', 'tuesday', 'wednesday', 'thursday',
 					'friday', 'saturday'
 				] ) );
 				break;
 			case 'F':
-				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
+				s += regexpAlternateGroup( this.getMessages( contLangVariant, [
 					'january', 'february', 'march', 'april', 'may_long', 'june',
 					'july', 'august', 'september', 'october', 'november',
 					'december'
 				] ) );
 				break;
 			case 'M':
-				s += regexpAlternateGroup( parser.getMessages( contLangVariant, [
+				s += regexpAlternateGroup( this.getMessages( contLangVariant, [
 					'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
 					'sep', 'oct', 'nov', 'dec'
 				] ) );
@@ -304,8 +301,6 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 		) : text );
 	}
 
-	var parser = this;
-
 	/**
 	 * @typedef {function(Array):moment} TimestampParser
 	 */
@@ -318,7 +313,7 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 	 *  - {moment} date Moment date object
 	 *  - {string|null} warning Warning message if the input wasn't correctly formed
 	 */
-	return function timestampParser( match ) {
+	return ( match ) => {
 		var
 			year = 0,
 			monthIdx = 0,
@@ -332,7 +327,7 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 
 			switch ( code2 ) {
 				case 'xg':
-					monthIdx = parser.getMessages( contLangVariant, [
+					monthIdx = this.getMessages( contLangVariant, [
 						'january-gen', 'february-gen', 'march-gen', 'april-gen', 'may-gen', 'june-gen',
 						'july-gen', 'august-gen', 'september-gen', 'october-gen', 'november-gen',
 						'december-gen'
@@ -347,14 +342,14 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 					// Day of the week - unused
 					break;
 				case 'F':
-					monthIdx = parser.getMessages( contLangVariant, [
+					monthIdx = this.getMessages( contLangVariant, [
 						'january', 'february', 'march', 'april', 'may_long', 'june',
 						'july', 'august', 'september', 'october', 'november',
 						'december'
 					] ).indexOf( text );
 					break;
 				case 'M':
-					monthIdx = parser.getMessages( contLangVariant, [
+					monthIdx = this.getMessages( contLangVariant, [
 						'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
 						'sep', 'oct', 'nov', 'dec'
 					] ).indexOf( text );
@@ -437,13 +432,12 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
  * @return {string[]} Regular expressions
  */
 Parser.prototype.getLocalTimestampRegexps = function () {
-	var parser = this;
-	return Object.keys( this.data.dateFormat ).map( function ( contLangVariant ) {
-		return parser.getTimestampRegexp(
+	return Object.keys( this.data.dateFormat ).map( ( contLangVariant ) => {
+		return this.getTimestampRegexp(
 			contLangVariant,
-			parser.data.dateFormat[ contLangVariant ],
-			'[' + parser.data.digits[ contLangVariant ].join( '' ) + ']',
-			parser.data.timezones[ contLangVariant ]
+			this.data.dateFormat[ contLangVariant ],
+			'[' + this.data.digits[ contLangVariant ].join( '' ) + ']',
+			this.data.timezones[ contLangVariant ]
 		);
 	} );
 };
@@ -458,14 +452,13 @@ Parser.prototype.getLocalTimestampRegexps = function () {
  * @return {TimestampParser[]} Timestamp parser functions
  */
 Parser.prototype.getLocalTimestampParsers = function () {
-	var parser = this;
-	return Object.keys( this.data.dateFormat ).map( function ( contLangVariant ) {
-		return parser.getTimestampParser(
+	return Object.keys( this.data.dateFormat ).map( ( contLangVariant ) => {
+		return this.getTimestampParser(
 			contLangVariant,
-			parser.data.dateFormat[ contLangVariant ],
-			parser.data.digits[ contLangVariant ],
-			parser.data.localTimezone,
-			parser.data.timezones[ contLangVariant ]
+			this.data.dateFormat[ contLangVariant ],
+			this.data.digits[ contLangVariant ],
+			this.data.localTimezone,
+			this.data.timezones[ contLangVariant ]
 		);
 	} );
 };
@@ -584,7 +577,7 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
 
 			var startContainer, startOffset;
 			// eslint-disable-next-line no-loop-func
-			nodes.some( function ( n ) {
+			nodes.some( ( n ) => {
 				count += n.nodeValue.length;
 				// If we have counted to beyond the start of the timestamp, we are in the
 				// start node of the timestamp
@@ -705,7 +698,6 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
  *  - {string|null} username Username, null for unsigned comments
  */
 Parser.prototype.findSignature = function ( timestampNode, until ) {
-	var parser = this;
 	var sigUsername = null;
 	var sigDisplayName = null;
 	var length = 0;
@@ -713,7 +705,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 
 	utils.linearWalkBackwards(
 		timestampNode,
-		function ( event, node ) {
+		( event, node ) => {
 			if ( event === 'enter' && node === until ) {
 				return true;
 			}
@@ -738,7 +730,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			// Handle links nested in formatting elements.
 			if ( event === 'leave' && node.nodeType === Node.ELEMENT_NODE && node.tagName.toLowerCase() === 'a' ) {
 				if ( !node.classList.contains( 'ext-discussiontools-init-timestamplink' ) ) {
-					var user = parser.getUsernameFromLink( node );
+					var user = this.getUsernameFromLink( node );
 					if ( user ) {
 						// Accept the first link to the user namespace, then only accept links to that user
 						if ( sigUsername === null ) {
@@ -804,7 +796,7 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 		rootNode,
 		// eslint-disable-next-line no-bitwise
 		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
-		function ( n ) {
+		( n ) => {
 			// Skip past the starting node and its descendants
 			if ( n === node || n.parentNode === node ) {
 				return NodeFilter.FILTER_REJECT;
@@ -929,7 +921,7 @@ Parser.prototype.buildThreadItems = function () {
 			utils.linearWalk(
 				endNode,
 				// eslint-disable-next-line no-loop-func
-				function ( event, n ) {
+				( event, n ) => {
 					var match2, foundSignature2;
 					if ( utils.isBlockElement( n ) || utils.isCommentSeparator( n ) ) {
 						// Stop when entering or leaving a block node
@@ -953,7 +945,7 @@ Parser.prototype.buildThreadItems = function () {
 						// Take the last complete node which we skipped past
 						endNode = n;
 					}
-				}.bind( this )
+				}
 			);
 
 			var length = endNode.nodeType === Node.TEXT_NODE ?

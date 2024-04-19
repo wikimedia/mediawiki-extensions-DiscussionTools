@@ -21,7 +21,7 @@ function Highlight( items ) {
 
 	this.rootNode = items[ 0 ] ? items[ 0 ].rootNode : null;
 
-	items.forEach( function ( item ) {
+	items.forEach( ( item ) => {
 		var $highlight = $( '<div>' ).addClass( 'ext-discussiontools-init-highlight' );
 
 		// We insert the highlight in the DOM near the thead item, so that it remains positioned correctly
@@ -79,7 +79,6 @@ OO.initClass( Highlight );
  * Update position of highlights, e.g. after window resize
  */
 Highlight.prototype.update = function () {
-	var highlight = this;
 	this.$element.css( {
 		'margin-top': '',
 		'margin-left': '',
@@ -90,8 +89,8 @@ Highlight.prototype.update = function () {
 	var rootRect = this.rootNode.getBoundingClientRect();
 	this.topmostElement = null;
 	var topmostTop = Infinity;
-	this.ranges.forEach( function ( range, i ) {
-		var $element = highlight.$element.eq( i );
+	this.ranges.forEach( ( range, i ) => {
+		var $element = this.$element.eq( i );
 		var baseRect = $element[ 0 ].getBoundingClientRect();
 		var rect = RangeFix.getBoundingClientRect( range );
 		// rect may be null if the range is in a detached or hidden node
@@ -142,7 +141,7 @@ Highlight.prototype.update = function () {
 			} );
 
 			if ( rect.top < topmostTop ) {
-				highlight.topmostElement = $element[ 0 ];
+				this.topmostElement = $element[ 0 ];
 				topmostTop = rect.top;
 			}
 		}
@@ -260,7 +259,7 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 
 	// We may have changed the location hash on mobile, so wait for that to cause
 	// the section to expand before drawing the highlight.
-	setTimeout( function () {
+	setTimeout( () => {
 		var highlight = new Highlight( highlightComments );
 		highlight.$element.addClass( 'ext-discussiontools-init-publishedcomment' );
 
@@ -278,11 +277,11 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
 				// Apparently it makes `<dd>` elements scrollable and OOUI tried to scroll them instead of body.
 				scrollContainer: OO.ui.Element.static.getRootScrollableElement( highlight.topmostElement )
 			}
-		).then( function () {
+		).then( () => {
 			highlight.$element.addClass( 'ext-discussiontools-init-highlight-fadein' );
-			setTimeout( function () {
+			setTimeout( () => {
 				highlight.$element.addClass( 'ext-discussiontools-init-highlight-fadeout' );
-				setTimeout( function () {
+				setTimeout( () => {
 					// Remove the node when no longer needed, because it's using CSS 'mix-blend-mode', which
 					// affects the text rendering of the whole page, disabling subpixel antialiasing on Windows
 					highlight.destroy();
@@ -325,7 +324,7 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, options )
 			} else {
 				threadItems = threadItemSet.getCommentItems();
 			}
-			threadItems.forEach( function ( threadItem ) {
+			threadItems.forEach( ( threadItem ) => {
 				if (
 					threadItem instanceof CommentItem &&
 					threadItem.timestamp >= sinceTimestamp
@@ -347,9 +346,9 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, options )
 
 	var comments;
 	if ( newCommentIds.length ) {
-		comments = newCommentIds.map( function ( id ) {
+		comments = newCommentIds.map( ( id ) => {
 			return threadItemSet.findCommentById( id );
-		} ).filter( function ( cmt ) {
+		} ).filter( ( cmt ) => {
 			return !!cmt;
 		} );
 		if ( comments.length ) {

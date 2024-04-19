@@ -90,8 +90,7 @@ ReplyWidgetVisual.prototype.getMode = function () {
  * @inheritdoc
  */
 ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
-	var widget = this,
-		target = this.replyBodyWidget.target;
+	var target = this.replyBodyWidget.target;
 
 	data = data || {};
 
@@ -110,19 +109,19 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 
 	this.replyBodyWidget.setDocument( htmlOrDoc );
 
-	target.once( 'surfaceReady', function () {
-		target.getSurface().getView().connect( widget, {
+	target.once( 'surfaceReady', () => {
+		target.getSurface().getView().connect( this, {
 			focus: [ 'emit', 'bodyFocus' ]
 		} );
 
 		target.initAutosave( {
 			suppressNotifications: suppressNotifications,
-			storage: widget.storage
+			storage: this.storage
 		} );
-		widget.afterSetup();
+		this.afterSetup();
 
 		// This needs to bind after surfaceReady so any initial population doesn't trigger it early:
-		widget.replyBodyWidget.once( 'change', widget.onFirstChange.bind( widget ) );
+		this.replyBodyWidget.once( 'change', this.onFirstChange.bind( this ) );
 	} );
 
 	// Parent method
@@ -154,7 +153,7 @@ ReplyWidgetVisual.prototype.teardown = function () {
  */
 ReplyWidgetVisual.prototype.focus = function () {
 	var targetWidget = this.replyBodyWidget;
-	setTimeout( function () {
+	setTimeout( () => {
 		// Check surface still exists after timeout
 		if ( targetWidget.getSurface() ) {
 			targetWidget.getSurface().getView().selectLastSelectableContentOffset();

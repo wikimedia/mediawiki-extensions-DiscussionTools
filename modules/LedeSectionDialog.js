@@ -34,8 +34,7 @@ LedeSectionDialog.prototype.initialize = function () {
 
 LedeSectionDialog.prototype.getSetupProcess = function ( data ) {
 	return LedeSectionDialog.super.prototype.getSetupProcess.call( this, data )
-		.next( function () {
-			var dialog = this;
+		.next( () => {
 			this.contentLayout.$element.empty().append( data.$content );
 
 			// Enable collapsible content (T323639), which is normally not handled on mobile (T111565).
@@ -44,14 +43,14 @@ LedeSectionDialog.prototype.getSetupProcess = function ( data ) {
 			var $collapsible = this.contentLayout.$element.find( '.mw-collapsible' );
 			if ( $collapsible.length ) {
 				// This module is also preloaded in PageHooks to avoid visual jumps when things collapse.
-				mw.loader.using( 'jquery.makeCollapsible' ).then( function () {
+				mw.loader.using( 'jquery.makeCollapsible' ).then( () => {
 					$collapsible.makeCollapsible();
-					$collapsible.on( 'afterExpand.mw-collapsible afterCollapse.mw-collapsible', function () {
-						dialog.updateSize();
+					$collapsible.on( 'afterExpand.mw-collapsible afterCollapse.mw-collapsible', () => {
+						this.updateSize();
 					} );
 				} );
 			}
-		}, this );
+		} );
 };
 
 module.exports = LedeSectionDialog;

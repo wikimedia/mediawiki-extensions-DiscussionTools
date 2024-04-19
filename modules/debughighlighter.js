@@ -140,7 +140,7 @@ function markThreads( threads ) {
 }
 
 function updateAll() {
-	updaters.forEach( function ( update ) {
+	updaters.forEach( ( update ) => {
 		calculateSizes();
 		update();
 	} );

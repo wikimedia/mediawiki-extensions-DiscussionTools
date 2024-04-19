@@ -52,7 +52,7 @@ mw.dt.init = function ( $container ) {
 
 	// Otherwise, if node is detached, wait to see what it actually is
 	if ( !$container.closest( 'html' ).length ) {
-		setTimeout( function () {
+		setTimeout( () => {
 			if ( $container.closest( 'html' ).length ) {
 				mw.dt.init( $container );
 			}
@@ -92,7 +92,7 @@ if ( mw.config.get( 'wgAction' ) === 'history' ) {
 // Clean up old localStorage entries that were erroneously set with no expiration (T339042).
 // We are no longer using these keys since T329299.
 // TODO: Remove this code after a few weeks.
-mw.requestIdleCallback( function () {
+mw.requestIdleCallback( () => {
 	try {
 		for ( var key in localStorage ) {
 			if ( key.startsWith( 'reply/' ) ) {

@@ -5,11 +5,11 @@ var
 
 QUnit.module( 'mw.dt.Parser', QUnit.newMwEnvironment() );
 
-QUnit.test( '#getTimestampRegexp', function ( assert ) {
+QUnit.test( '#getTimestampRegexp', ( assert ) => {
 	var cases = require( '../cases/timestamp-regex.json' ),
 		parser = new Parser( require( '../data-en.json' ) );
 
-	cases.forEach( function ( caseItem ) {
+	cases.forEach( ( caseItem ) => {
 		assert.strictEqual(
 			parser.getTimestampRegexp( 'en', caseItem.format, '\\d', { UTC: 'UTC' } ),
 			caseItem.expected,
@@ -18,11 +18,11 @@ QUnit.test( '#getTimestampRegexp', function ( assert ) {
 	} );
 } );
 
-QUnit.test( '#getTimestampParser', function ( assert ) {
+QUnit.test( '#getTimestampParser', ( assert ) => {
 	var cases = require( '../cases/timestamp-parser.json' ),
 		parser = new Parser( require( '../data-en.json' ) );
 
-	cases.forEach( function ( caseItem ) {
+	cases.forEach( ( caseItem ) => {
 		var tsParser = parser.getTimestampParser( 'en', caseItem.format, caseItem.digits, 'UTC', { UTC: 'UTC' } ),
 			expectedDate = moment( caseItem.expected );
 
@@ -33,11 +33,11 @@ QUnit.test( '#getTimestampParser', function ( assert ) {
 	} );
 } );
 
-QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
+QUnit.test( '#getTimestampParser (at DST change)', ( assert ) => {
 	var cases = require( '../cases/timestamp-parser-dst.json' ),
 		parser = new Parser( require( '../data-en.json' ) );
 
-	cases.forEach( function ( caseItem ) {
+	cases.forEach( ( caseItem ) => {
 		var regexp = parser.getTimestampRegexp( 'en', caseItem.format, '\\d', caseItem.timezoneAbbrs ),
 			tsParser = parser.getTimestampParser( 'en', caseItem.format, null, caseItem.timezone, caseItem.timezoneAbbrs ),
 			date = tsParser( caseItem.sample.match( regexp ) ).date;
@@ -53,10 +53,10 @@ QUnit.test( '#getTimestampParser (at DST change)', function ( assert ) {
 	} );
 } );
 
-require( '../cases/comments.json' ).forEach( function ( caseItem ) {
+require( '../cases/comments.json' ).forEach( ( caseItem ) => {
 
 	var testName = '#getThreads (' + caseItem.name + ')';
-	QUnit.test( testName, function ( assert ) {
+	QUnit.test( testName, ( assert ) => {
 		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
@@ -69,7 +69,7 @@ require( '../cases/comments.json' ).forEach( function ( caseItem ) {
 		var threadItemSet = new Parser( data ).parse( container, title );
 		var threads = threadItemSet.getThreads();
 
-		threads.forEach( function ( thread, i ) {
+		threads.forEach( ( thread, i ) => {
 			testUtils.serializeComments( thread, container );
 
 			assert.deepEqual(

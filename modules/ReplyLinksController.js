@@ -20,8 +20,6 @@ function tryInfuse( $element ) {
 }
 
 function ReplyLinksController( $pageContainer ) {
-	var controller = this;
-
 	// Mixin constructors
 	OO.EventEmitter.call( this );
 
@@ -35,17 +33,17 @@ function ReplyLinksController( $pageContainer ) {
 	// Reply links
 	this.$replyLinkSets = $pageContainer.find( '.ext-discussiontools-init-replylink-buttons[ data-mw-thread-id ]:not( :empty )' );
 
-	this.$replyLinkSets.each( function () {
-		var replyButton = tryInfuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
-		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
-		$replyLink.on( 'click keypress', controller.onReplyLinkClickHandler );
+	this.$replyLinkSets.each( ( i, replyLinkContainer ) => {
+		var replyButton = tryInfuse( $( replyLinkContainer ).find( '.ext-discussiontools-init-replybutton' ) );
+		var $replyLink = $( replyLinkContainer ).find( '.ext-discussiontools-init-replylink-reply' );
+		$replyLink.on( 'click keypress', this.onReplyLinkClickHandler );
 		if ( replyButton ) {
-			replyButton.on( 'click', controller.onReplyButtonClickHandler, [ replyButton ] );
+			replyButton.on( 'click', this.onReplyButtonClickHandler, [ replyButton ] );
 		}
 	} );
 
-	this.$replyLinkSets.on( 'focusin mouseover touchstart', function () {
-		controller.emit( 'link-interact' );
+	this.$replyLinkSets.on( 'focusin mouseover touchstart', () => {
+		this.emit( 'link-interact' );
 	} );
 
 	// "Add topic" link in the skin interface
@@ -56,8 +54,8 @@ function ReplyLinksController( $pageContainer ) {
 			this.$addSectionLink = $addSectionTab.find( 'a' );
 			this.$addSectionLink.on( 'click keypress', this.onAddSectionLinkClickHandler );
 
-			this.$addSectionLink.on( 'focusin mouseover touchstart', function () {
-				controller.emit( 'link-interact' );
+			this.$addSectionLink.on( 'focusin mouseover touchstart', () => {
+				this.emit( 'link-interact' );
 			} );
 		}
 		// Handle events on all links that potentially open the new section interface,
@@ -270,9 +268,9 @@ ReplyLinksController.prototype.setActiveLink = function ( $linkSet ) {
 	}
 
 	$( document.body ).addClass( 'ext-discussiontools-init-replylink-open' );
-	this.$replyLinkSets.each( function () {
-		var replyButton = tryInfuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
-		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
+	this.$replyLinkSets.each( ( i, replyLinkContainer ) => {
+		var replyButton = tryInfuse( $( replyLinkContainer ).find( '.ext-discussiontools-init-replybutton' ) );
+		var $replyLink = $( replyLinkContainer ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.attr( 'tabindex', -1 );
 		if ( !replyButton ) {
 			return;
@@ -309,10 +307,10 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 	}
 
 	$( document.body ).removeClass( 'ext-discussiontools-init-replylink-open' );
-	this.$replyLinkSets.each( function () {
-		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
+	this.$replyLinkSets.each( ( i, replyLinkContainer ) => {
+		var $replyLink = $( replyLinkContainer ).find( '.ext-discussiontools-init-replylink-reply' );
 		$replyLink.attr( 'tabindex', 0 );
-		var replyButton = tryInfuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+		var replyButton = tryInfuse( $( replyLinkContainer ).find( '.ext-discussiontools-init-replybutton' ) );
 		if ( !replyButton ) {
 			return;
 		}
@@ -333,19 +331,17 @@ ReplyLinksController.prototype.clearActiveLink = function () {
 };
 
 ReplyLinksController.prototype.teardown = function () {
-	var controller = this;
-
 	if ( this.$activeLink ) {
 		this.clearActiveLink();
 	}
 
-	this.$replyLinkSets.each( function () {
-		var replyButton = tryInfuse( $( this ).find( '.ext-discussiontools-init-replybutton' ) );
+	this.$replyLinkSets.each( ( i, replyLinkContainer ) => {
+		var replyButton = tryInfuse( $( replyLinkContainer ).find( '.ext-discussiontools-init-replybutton' ) );
 		if ( replyButton ) {
-			replyButton.off( 'click', controller.onReplyButtonClickHandler );
+			replyButton.off( 'click', this.onReplyButtonClickHandler );
 		}
 		var $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
-		$replyLink.off( 'click keypress', controller.onReplyLinkClickHandler );
+		$replyLink.off( 'click keypress', this.onReplyLinkClickHandler );
 	} );
 
 	if ( featuresEnabled.newtopictool ) {

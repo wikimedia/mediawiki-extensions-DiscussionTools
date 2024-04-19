@@ -51,8 +51,8 @@ function init( $container ) {
 		}
 
 		// Lede section popup
-		OO.ui.infuse( $ledeButton ).on( 'click', function () {
-			mw.loader.using( 'oojs-ui-windows' ).then( function () {
+		OO.ui.infuse( $ledeButton ).on( 'click', () => {
+			mw.loader.using( 'oojs-ui-windows' ).then( () => {
 				windowManager.openWindow( 'ledeSection', { $content: $ledeContent } );
 				mw.track( 'webuiactions_log.click', 'lede-button' );
 			} );
@@ -78,7 +78,7 @@ function init( $container ) {
 		var wasScrollDown = null;
 		var $body = $( document.body );
 		// This block of code is only run once, so we don't need to remove this listener ever
-		$scrollListener[ 0 ].addEventListener( 'scroll', OO.ui.throttle( function () {
+		$scrollListener[ 0 ].addEventListener( 'scroll', OO.ui.throttle( () => {
 			// Round negative values up to 0 to ignore iOS scroll bouncing (T323400)
 			var scrollTop = Math.max( $scrollContainer.scrollTop(), 0 );
 			var isScrollDown = scrollTop > lastScrollTop;
@@ -87,10 +87,10 @@ function init( $container ) {
 					$newTopicWrapper.css( 'transition', 'none' );
 				}
 				$body.removeClass( [ 'ext-discussiontools-init-new-topic-closed', 'ext-discussiontools-init-new-topic-opened' ] );
-				requestAnimationFrame( function () {
+				requestAnimationFrame( () => {
 					$newTopicWrapper.css( 'transition', '' );
 					$body.addClass( isScrollDown ? 'ext-discussiontools-init-new-topic-close' : 'ext-discussiontools-init-new-topic-open' );
-					setTimeout( function () {
+					setTimeout( () => {
 						$body.removeClass( [ 'ext-discussiontools-init-new-topic-close', 'ext-discussiontools-init-new-topic-open' ] );
 						$body.addClass( isScrollDown ? 'ext-discussiontools-init-new-topic-closed' : 'ext-discussiontools-init-new-topic-opened' );
 					}, 250 );
@@ -98,9 +98,9 @@ function init( $container ) {
 			}
 
 			var observer = new IntersectionObserver(
-				function ( entries ) {
+				( ( entries ) => {
 					$newTopicWrapper.toggleClass( 'ext-discussiontools-init-new-topic-pinned', entries[ 0 ].intersectionRatio === 1 );
-				},
+				} ),
 				{ threshold: [ 1 ] }
 			);
 
@@ -127,7 +127,7 @@ function init( $container ) {
 }
 
 // Handler for "edit" link in overflow menu, only setup once as the hook is global
-mw.hook( 'discussionToolsOverflowMenuOnChoose' ).add( function ( id, menuItem, threadItem ) {
+mw.hook( 'discussionToolsOverflowMenuOnChoose' ).add( ( id, menuItem, threadItem ) => {
 	if ( id === 'edit' ) {
 		// Click the hidden section-edit link
 		$( threadItem.getRange().commonAncestorContainer )
