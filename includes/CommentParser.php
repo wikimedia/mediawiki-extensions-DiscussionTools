@@ -910,11 +910,9 @@ class CommentParser {
 		);
 		while ( $node = $treeWalker->nextNode() ) {
 			if ( $node instanceof Element && preg_match( '/^h([1-6])$/i', $node->tagName, $match ) ) {
-				$headingNodeAndOffset = CommentUtils::getHeadlineNodeAndOffset( $node );
-				$headingNode = $headingNodeAndOffset['node'];
-				$startOffset = $headingNodeAndOffset['offset'];
+				$headingNode = CommentUtils::getHeadlineNode( $node );
 				$range = new ImmutableRange(
-					$headingNode, $startOffset, $headingNode, $headingNode->childNodes->length
+					$headingNode, 0, $headingNode, $headingNode->childNodes->length
 				);
 				$transcludedFrom = $this->computeTranscludedFrom( $range );
 				$curComment = new ContentHeadingItem( $range, $transcludedFrom, (int)( $match[ 1 ] ) );

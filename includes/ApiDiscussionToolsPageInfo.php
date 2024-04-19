@@ -152,7 +152,7 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		// This function assumes that the start of the ranges associated with
 		// HeadingItems are going to be at the start of their associated
 		// heading node (`<h2>^heading</h2>`), i.e. in the position generated
-		// by getHeadlineNodeAndOffset.
+		// by getHeadlineNode.
 		$threads = $threadItemSet->getThreads();
 		if ( count( $threads ) > 0 && !$threads[0]->isPlaceholderHeading() ) {
 			$firstHeading = $threads[0];

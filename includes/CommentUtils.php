@@ -315,15 +315,12 @@ class CommentUtils {
 	/**
 	 * Given a heading node, return the node on which the ID attribute is set.
 	 *
-	 * Also returns the offset within that node where the heading text starts.
-	 *
 	 * @param Element $heading Heading node (`<h1>`-`<h6>`)
-	 * @return array Array containing a 'node' (Element) and offset (int)
+	 * @return Element
 	 */
-	public static function getHeadlineNodeAndOffset( Element $heading ): array {
+	public static function getHeadlineNode( Element $heading ): Element {
 		// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
 		$headline = $heading;
-		$offset = 0;
 
 		if ( $headline->hasAttribute( 'data-mw-comment-start' ) ) {
 			$headline = $headline->parentNode;
@@ -338,10 +335,7 @@ class CommentUtils {
 			}
 		}
 
-		return [
-			'node' => $headline,
-			'offset' => $offset,
-		];
+		return $headline;
 	}
 
 	/**
