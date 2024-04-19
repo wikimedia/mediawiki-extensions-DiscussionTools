@@ -6,9 +6,7 @@ function sortAuthors( a, b ) {
 }
 
 function hasUser( authors, username ) {
-	return authors.some( ( author ) => {
-		return author.username === username;
-	} );
+	return authors.some( ( author ) => author.username === username );
 }
 
 /**
@@ -85,9 +83,8 @@ MWUsernameCompletionAction.prototype.insertAndOpen = function () {
 	// if we already have the sequence inserted at the
 	// current offset.
 	if ( fragment.getSelection().isCollapsed() ) {
-		inserted = this.surface.getView().findMatchingSequences().some( ( item ) => {
-			return item.sequence === sequence;
-		} );
+		inserted = this.surface.getView().findMatchingSequences()
+			.some( ( item ) => item.sequence === sequence );
 	}
 
 	if ( !inserted ) {
@@ -126,21 +123,19 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			// blocked users and still probably have some suggestions left
 			aulimit: this.constructor.static.defaultLimit * 2
 		} ).then( ( response ) => {
-			var suggestions = response.query.allusers.filter( ( user ) => {
+			var suggestions = response.query.allusers.filter(
 				// API doesn't return IPs
-				return !hasUser( action.localUsers, user.name ) &&
+				( user ) => !hasUser( action.localUsers, user.name ) &&
 					!hasUser( action.remoteUsers, user.name ) &&
 					// Exclude users with indefinite sitewide blocks:
 					// The only place such users could reply is on their
 					// own user talk page, and in that case the user
 					// will be included in localUsers.
-					!( user.blockexpiry === 'infinite' && !user.blockpartial );
-			} ).map( ( user ) => {
-				return {
-					username: user.name,
-					displayNames: []
-				};
-			} );
+					!( user.blockexpiry === 'infinite' && !user.blockpartial )
+			).map( ( user ) => ( {
+				username: user.name,
+				displayNames: []
+			} ) );
 
 			action.remoteUsers.push.apply( action.remoteUsers, suggestions );
 			action.remoteUsers.sort( sortAuthors );
@@ -151,11 +146,11 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 		apiPromise = ve.createDeferred().resolve().promise();
 	}
 
-	return apiPromise.then( () => {
+	return apiPromise.then(
 		// By concatenating on-thread authors and remote-fetched authors, both
 		// sorted alphabetically, we'll get our suggestion popup sorted so all
 		// on-thread matches come first.
-		return action.filterSuggestionsForInput(
+		() => action.filterSuggestionsForInput(
 			action.localUsers
 				// Show no remote users if no input provided
 				.concat( input.length > 0 ? action.remoteUsers : [] ),
@@ -164,8 +159,8 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			// * Let users know that mentioning an IP will not create a notification?
 			// .concat( this.ipUsers )
 			validatedInput
-		);
-	} );
+		)
+	);
 };
 
 /**
@@ -174,9 +169,8 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 MWUsernameCompletionAction.prototype.compareSuggestionToInput = function ( suggestion, normalizedInput ) {
 	var normalizedSuggestion = suggestion.username.toLowerCase(),
 		normalizedSearchIndex = normalizedSuggestion + ' ' +
-		suggestion.displayNames.map( ( displayName ) => {
-			return displayName.toLowerCase();
-		} ).join( ' ' );
+		suggestion.displayNames
+			.map( ( displayName ) => displayName.toLowerCase() ).join( ' ' );
 
 	return {
 		isMatch: normalizedSearchIndex.indexOf( normalizedInput ) !== -1,

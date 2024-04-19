@@ -72,17 +72,13 @@ function getPageData( pageName, oldId, apiParams ) {
 			lntcategories: 'fostered',
 			lntlimit: 1,
 			lnttitle: pageName
-		} ).then( ( response ) => {
-			return OO.getProp( response, 'query', 'linterrors' ) || [];
-		} );
+		} ).then( ( response ) => OO.getProp( response, 'query', 'linterrors' ) || [] );
 
 		transcludedFromPromise = api.get( {
 			action: 'discussiontoolspageinfo',
 			page: pageName,
 			oldid: oldId
-		} ).then( ( response ) => {
-			return OO.getProp( response, 'discussiontoolspageinfo', 'transcludedfrom' ) || {};
-		} );
+		} ).then( ( response ) => OO.getProp( response, 'discussiontoolspageinfo', 'transcludedfrom' ) || {} );
 	} else {
 		lintPromise = $.Deferred().resolve( [] ).promise();
 		transcludedFromPromise = $.Deferred().resolve( {} ).promise();
@@ -92,9 +88,7 @@ function getPageData( pageName, oldId, apiParams ) {
 		action: 'visualeditor',
 		paction: 'metadata',
 		page: pageName
-	}, apiParams ) ).then( ( response ) => {
-		return OO.getProp( response, 'visualeditor' ) || [];
-	} );
+	}, apiParams ) ).then( ( response ) => OO.getProp( response, 'visualeditor' ) || [] );
 
 	var promise = $.when( lintPromise, transcludedFromPromise, veMetadataPromise )
 		.then( ( linterrors, transcludedfrom, metadata ) => ( {
@@ -244,9 +238,8 @@ function getCheckboxesPromise( pageName, oldId ) {
 			// Override the label with a more verbose one to distinguish this from topic subscriptions (T290712)
 			checkboxesDef.wpWatchthis[ 'label-message' ] = 'discussiontools-replywidget-watchthis';
 		}
-		return mw.loader.using( 'ext.visualEditor.targetLoader' ).then( () => {
-			return mw.libs.ve.targetLoader.createCheckboxFields( checkboxesDef );
-		} );
+		return mw.loader.using( 'ext.visualEditor.targetLoader' )
+			.then( () => mw.libs.ve.targetLoader.createCheckboxFields( checkboxesDef ) );
 		// TODO: createCheckboxField doesn't make links in the label open in a new
 		// window as that method currently lives in ve.utils
 	} );
@@ -389,9 +382,7 @@ function init( $container, state ) {
 			}
 		} );
 		commentController.on( 'reloadPage', () => {
-			mw.dt.initState.newCommentIds = commentController.newComments.map( ( cmt ) => {
-				return cmt.id;
-			} );
+			mw.dt.initState.newCommentIds = commentController.newComments.map( ( cmt ) => cmt.id );
 			// Teardown active reply widget(s)
 			commentController.replyWidgetPromise.then( ( replyWidget ) => {
 				lastControllerScrollOffset = $( commentController.newListItem ).offset().top;
@@ -448,9 +439,7 @@ function init( $container, state ) {
 		}
 
 		if ( mobile ) {
-			teardownPromise = teardownPromise.then( () => {
-				return mobile.closeLedeSectionDialog();
-			} );
+			teardownPromise = teardownPromise.then( () => mobile.closeLedeSectionDialog() );
 		}
 
 		teardownPromise.then( () => {
@@ -607,9 +596,7 @@ function init( $container, state ) {
 					// Gadget: RedWarn
 					/^noticeApplied-/
 				];
-				if ( ignorePatterns.every( ( pattern ) => {
-					return !pattern.test( fragment );
-				} ) ) {
+				if ( ignorePatterns.every( ( pattern ) => !pattern.test( fragment ) ) ) {
 					findCommentQuery = {
 						heading: mw.util.percentDecodeFragment( fragment ).replace( / /g, '_' ),
 						page: mw.config.get( 'wgRelevantPageName' )
@@ -648,9 +635,7 @@ function init( $container, state ) {
 								return title;
 							}
 							return null;
-						} ).filter( ( url ) => {
-							return url;
-						} );
+						} ).filter( ( url ) => url );
 					}
 					if ( titles.length ) {
 						var $list = $( '<ul>' );
@@ -688,12 +673,10 @@ function init( $container, state ) {
 				} );
 			}
 			if ( highlightResult.highlighted.length === 0 && ( highlightResult.requested.length > 1 || highlightResult.requestedSince ) ) {
-				dismissableNotificationPromise = mw.loader.using( 'mediawiki.notification' ).then( () => {
-					return mw.notification.notify(
-						mw.message( 'discussiontools-target-comments-missing' ).text(),
-						{ type: 'warn', autoHide: false }
-					);
-				} );
+				dismissableNotificationPromise = mw.loader.using( 'mediawiki.notification' ).then( () => mw.notification.notify(
+					mw.message( 'discussiontools-target-comments-missing' ).text(),
+					{ type: 'warn', autoHide: false }
+				) );
 			}
 		} );
 	}
@@ -875,9 +858,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 		api.post( {
 			action: 'purge',
 			titles: mw.config.get( 'wgRelevantPageName' )
-		} ).then( () => {
-			return refreshPageContents();
-		} ).then( () => {
+		} ).then( () => refreshPageContents() ).then( () => {
 			pageUpdated.resolve();
 		} ).catch( () => {
 			// We saved the reply, but couldn't purge or fetch the updated page. Seems difficult to

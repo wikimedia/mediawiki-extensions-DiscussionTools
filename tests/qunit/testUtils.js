@@ -77,14 +77,10 @@ module.exports.serializeComments = function ( parent, root ) {
 	// instead use their offsets within their parent nodes
 	parent.range = getPathsFromRange( root, parent.range );
 	if ( parent.signatureRanges ) {
-		parent.signatureRanges = parent.signatureRanges.map( ( range ) => {
-			return getPathsFromRange( root, range );
-		} );
+		parent.signatureRanges = parent.signatureRanges.map( ( range ) => getPathsFromRange( root, range ) );
 	}
 	if ( parent.timestampRanges ) {
-		parent.timestampRanges = parent.timestampRanges.map( ( range ) => {
-			return getPathsFromRange( root, range );
-		} );
+		parent.timestampRanges = parent.timestampRanges.map( ( range ) => getPathsFromRange( root, range ) );
 	}
 	if ( parent.timestamp ) {
 		parent.timestamp = parent.getTimestampString();

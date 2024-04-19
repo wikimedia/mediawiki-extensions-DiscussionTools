@@ -62,9 +62,7 @@ OO.initClass( Parser );
  * @return {string[]} Message values
  */
 Parser.prototype.getMessages = function ( contLangVariant, messages ) {
-	return messages.map( ( code ) => {
-		return this.data.contLangMessages[ contLangVariant ][ code ];
-	} );
+	return messages.map( ( code ) => this.data.contLangMessages[ contLangVariant ][ code ] );
 };
 
 /**
@@ -432,14 +430,12 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
  * @return {string[]} Regular expressions
  */
 Parser.prototype.getLocalTimestampRegexps = function () {
-	return Object.keys( this.data.dateFormat ).map( ( contLangVariant ) => {
-		return this.getTimestampRegexp(
-			contLangVariant,
-			this.data.dateFormat[ contLangVariant ],
-			'[' + this.data.digits[ contLangVariant ].join( '' ) + ']',
-			this.data.timezones[ contLangVariant ]
-		);
-	} );
+	return Object.keys( this.data.dateFormat ).map( ( contLangVariant ) => this.getTimestampRegexp(
+		contLangVariant,
+		this.data.dateFormat[ contLangVariant ],
+		'[' + this.data.digits[ contLangVariant ].join( '' ) + ']',
+		this.data.timezones[ contLangVariant ]
+	) );
 };
 
 /**
@@ -452,15 +448,13 @@ Parser.prototype.getLocalTimestampRegexps = function () {
  * @return {TimestampParser[]} Timestamp parser functions
  */
 Parser.prototype.getLocalTimestampParsers = function () {
-	return Object.keys( this.data.dateFormat ).map( ( contLangVariant ) => {
-		return this.getTimestampParser(
-			contLangVariant,
-			this.data.dateFormat[ contLangVariant ],
-			this.data.digits[ contLangVariant ],
-			this.data.localTimezone,
-			this.data.timezones[ contLangVariant ]
-		);
-	} );
+	return Object.keys( this.data.dateFormat ).map( ( contLangVariant ) => this.getTimestampParser(
+		contLangVariant,
+		this.data.dateFormat[ contLangVariant ],
+		this.data.digits[ contLangVariant ],
+		this.data.localTimezone,
+		this.data.timezones[ contLangVariant ]
+	) );
 };
 
 /**
