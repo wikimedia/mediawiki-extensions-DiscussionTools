@@ -21,7 +21,6 @@ use MediaWiki\Utils\MWTimestamp;
 use MWExceptionHandler;
 use ParserOutput;
 use Throwable;
-use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -319,11 +318,10 @@ class CommentFormatter {
 			// Start marker is added after reply link to keep reverse DOM order
 
 			if ( $threadItem instanceof ContentHeadingItem ) {
-				// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
-				$headline = $threadItem->getRange()->endContainer;
-				Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
+				$headline = $threadItem->getHeadlineNode();
 				$headline->setAttribute( 'data-mw-thread-id', $threadItem->getId() );
 				if ( $threadItem->getHeadingLevel() === 2 ) {
+					// Hack for tests (T363031), $headline should already be a <h2>
 					$headingElement = CommentUtils::closestElement( $headline, [ 'h2' ] );
 
 					if ( $headingElement ) {

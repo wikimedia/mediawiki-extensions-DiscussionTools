@@ -316,19 +316,21 @@ class CommentUtils {
 	 * Given a heading node, return the node on which the ID attribute is set.
 	 *
 	 * @param Element $heading Heading node (`<h1>`-`<h6>`)
-	 * @return Element
+	 * @return Element Headline node, normally also a `<h1>`-`<h6>` element.
+	 *   In integration tests and in JS, it can be a `<span class="mw-headline">` (see T363031).
 	 */
 	public static function getHeadlineNode( Element $heading ): Element {
 		// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
 		$headline = $heading;
 
 		if ( $headline->hasAttribute( 'data-mw-comment-start' ) ) {
+			// HACK: For contaminated integration tests only (see T363031)
 			$headline = $headline->parentNode;
 			Assert::precondition( $headline !== null, 'data-mw-comment-start was attached to a heading' );
 		}
 
 		if ( !$headline->getAttribute( 'id' ) && !$headline->getAttribute( 'data-mw-anchor' ) ) {
-			// PHP HTML: Find the child with .mw-headline
+			// HACK: For outdated integration tests only (see T363031)
 			$headline = DOMCompat::querySelector( $headline, '.mw-headline' );
 			if ( !$headline ) {
 				$headline = $heading;

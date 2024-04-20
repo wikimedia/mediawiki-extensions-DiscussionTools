@@ -25,7 +25,6 @@ HeadingItem.prototype.getLinkableTitle = function () {
 	var title = '';
 	// If this comment is in 0th section, there's no section title for the edit summary
 	if ( !this.placeholderHeading ) {
-		// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
 		var headline = this.range.startContainer;
 		var id = headline.getAttribute( 'id' );
 		if ( id ) {
