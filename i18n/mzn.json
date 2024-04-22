@@ -4,6 +4,21 @@
 			"محک"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "جواب",
 	"discussiontools-preference-replytool-help": "اینجه اتا کلیک هاکنین، لینکی دیار وونه که تونی گپ صفحه دله پغوم بی‌یلین",
-	"discussiontools-preference-topicsubscription-help": "اینتا شما ره اجازه دنه که هر گدر شمه بخاستی موضوعات وسر تازه پغوم برسی‌یه، سرساب بوین"
+	"discussiontools-preference-topicsubscription-help": "اینتا شما ره اجازه دنه که هر گدر شمه بخاستی موضوعات وسر تازه پغوم برسی‌یه، سرساب بوین",
+	"discussiontools-replywidget-advanced": "پیشرفته",
+	"discussiontools-replywidget-cancel": "ول هاکردن",
+	"discussiontools-replywidget-mode-source": "منبع",
+	"discussiontools-replywidget-mode-visual": "هارشی‌ینی",
+	"discussiontools-replywidget-preview": "پیش‌نمایش",
+	"discussiontools-replywidget-summary": "گزارش",
+	"discussiontools-replywidget-watchthis": "این صفحه ره شمه [[Special:Watchlist|دمبال هاکردون]] دله بشتن",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|نفر}} گپ دله",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|نظر}}",
+	"discussiontools-topicheader-latestcomment": "آخرین نظر: $1",
+	"discussiontools-topicsubscription-button-subscribe": "ممل بین",
+	"discussiontools-topicsubscription-button-subscribe-label": "ممل بین",
+	"discussiontools-topicsubscription-button-unsubscribe": "ممل نین",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "ممل نین"
 }
