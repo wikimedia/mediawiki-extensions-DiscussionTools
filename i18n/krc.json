@@ -152,7 +152,7 @@
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Джаздырылыуну кери ал",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Бу темагъа джаздырылыу кери алынсынмы?",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt-newtopics": "Бу бетдеги джангы темаланы юсюнден билдириу алыугъа джаздырылыу кери алынсынмы?",
-	"discussiontools-topicsubscription-button-subscribe": "абонент бол",
+	"discussiontools-topicsubscription-button-subscribe": "джаздырыл",
 	"discussiontools-topicsubscription-button-subscribe-label": "Джаздырыл",
 	"discussiontools-topicsubscription-button-subscribe-tooltip": "Джангы оюмланы юсюнден билдириу алыр ючюн {{GENDER:|джаздырыл}}.",
 	"discussiontools-topicsubscription-button-unsubscribe": "абонентликден чыкъ",
