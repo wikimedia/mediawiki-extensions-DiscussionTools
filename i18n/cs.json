@@ -54,6 +54,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(není v aktuální revizi)",
 	"discussiontools-findcomment-results-transcluded": "(transkludován z jiné stránky)",
 	"discussiontools-findcomment-title": "Najít komentář",
+	"discussiontools-ledesection-button": "Více informací o této stránce",
+	"discussiontools-ledesection-title": "O této diskusní stránce",
 	"discussiontools-limitreport-errorreqid": "ID chyby Diskusních nástrojů",
 	"discussiontools-limitreport-timeusage": "Využití času Diskusních nástrojů",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundy|sekund}}",
