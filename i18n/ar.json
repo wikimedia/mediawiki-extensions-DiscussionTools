@@ -69,7 +69,7 @@
 	"discussiontools-limitreport-errorreqid": "آي دي (ID) طلب خاطئ لـ أدوات_نقاش",
 	"discussiontools-limitreport-timeusage": "وقت استخدام أدوات_نقاش",
 	"discussiontools-limitreport-timeusage-value": "{{PLURAL:$1|أقل من ثانية|ثانية واحدة|ثانيتان|$1 ثوان|$1 ثانية}}",
-	"discussiontools-newtopic-missing-title": "رجاءً، {{GENDER:|ضع|ضعي}} عنوانًا لتعليقك. لو ضغطت مجدّدا على «{{int:discussiontools-replywidget-newtopic}}»، سيُنشر التعليق من غير عنوان.",
+	"discussiontools-newtopic-missing-title": "رجاءً، {{GENDER:|ضع|ضعي}} عنوانًا لتعليقك. لو ضغطت مجدّدًا على «{{int:discussiontools-replywidget-newtopic}}»، سيُنشر التعليق دون عنوان.",
 	"discussiontools-newtopic-placeholder-title": "الموضوع",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "اشتراك",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "اشترك لتلقي إشعاراتٍ عند بدء مواضيع جديدة في هذه الصفحة.",
