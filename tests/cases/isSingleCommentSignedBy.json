@@ -42,6 +42,13 @@
 		"expected": true
 	},
 	{
+		"msg": "Already signed [with heading, prefixed by unsigned text]",
+		"title": "Talk:A",
+		"user": "X",
+		"html": "<p>foo\n</p><h2><span class=\"mw-headline\" id=\"Foo\">Foo</span></h2>\n<p>bar <a href=\"/wiki/User:X\" title=\"User:X\">X</a> (<a href=\"/wiki/User_talk:X\" title=\"User talk:X\">talk</a>) 00:01, 1 January 2020 (UTC)\n</p>",
+		"expected": true
+	},
+	{
 		"msg": "Already signed [indented]",
 		"title": "Talk:A",
 		"user": "X",

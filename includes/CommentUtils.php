@@ -727,8 +727,7 @@ class CommentUtils {
 	}
 
 	/**
-	 * Assuming that the thread item set contains exactly one comment (or multiple comments with
-	 * identical signatures, plus optional heading), check whether that comment is properly signed by
+	 * Check whether the last item in the thread item set is a properly signed comment by
 	 * the expected author (that is: there is a signature, and either there's nothing following the
 	 * signature, or there's some text within the same paragraph that was detected as part of the same
 	 * comment).
@@ -747,19 +746,20 @@ class CommentUtils {
 				return false;
 			}
 
-			// Range covering all of the detected items (to account for a heading, and for multiple
-			// signatures resulting in multiple comments)
-			$commentsRange = new ImmutableRange(
-				$items[0]->getRange()->startContainer,
-				$items[0]->getRange()->startOffset,
-				$lastItem->getRange()->endContainer,
-				$lastItem->getRange()->endOffset
-			);
+			$commentRange = $lastItem->getRange();
 			$bodyRange = new ImmutableRange(
 				$rootNode, 0, $rootNode, count( $rootNode->childNodes )
 			);
 
-			if ( static::compareRanges( $commentsRange, $bodyRange ) === 'equal' ) {
+			// Only check that the end of the comment range is at the end of the body range.
+			// We don't care about preceding headings, comments, or other content (T363285).
+			// This is a simplified fragment of static::compareRanges().
+			$cmp = $commentRange->compareBoundaryPoints( ImmutableRange::END_TO_END, $bodyRange );
+			if (
+				$cmp === 0 ||
+				( $cmp < 0 && static::compareRangesAlmostEqualBoundaries( $commentRange, $bodyRange, 'end' ) ) ||
+				( $cmp > 0 && static::compareRangesAlmostEqualBoundaries( $bodyRange, $commentRange, 'end' ) )
+			) {
 				// New comment includes a signature in the proper place
 				return true;
 			}
