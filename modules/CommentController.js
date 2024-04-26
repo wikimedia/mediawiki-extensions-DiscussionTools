@@ -228,7 +228,9 @@ CommentController.prototype.onVisibilityChange = function () {
 	}
 };
 
-CommentController.prototype.startPoll = function () {
+CommentController.prototype.startPoll = function ( nextDelay ) {
+	nextDelay = nextDelay || 5000;
+
 	var threadItemId = this.threadItem.id;
 	var subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
 
@@ -268,11 +270,18 @@ CommentController.prototype.startPoll = function () {
 		}
 
 		this.oldId = result.torevid;
+		nextDelay = 5000;
+	}, () => {
+		// Wait longer next time in case of error
+		nextDelay = nextDelay * 1.5;
 	} ).always( () => {
 		if ( this.isTornDown ) {
 			return;
 		}
-		this.pollTimeout = setTimeout( this.startPoll.bind( this ), 5000 );
+		// Stop polling after too many errors
+		if ( nextDelay < 1000 * 60 * 60 ) {
+			this.pollTimeout = setTimeout( this.startPoll.bind( this, nextDelay ), nextDelay );
+		}
 	} );
 };
 
