@@ -160,7 +160,7 @@
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Джангы оюмланы юсюнден билдириу алыр ючюн {{GENDER:|джаздырылыуну кери ал}}.",
 	"discussiontools-topicsubscription-error-not-found-body": "URL-адресде белгиленнген джаздырылыу табылмады.",
 	"discussiontools-topicsubscription-error-not-found-title": "Джаздырылыу табылмады",
-	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Сиз}} бу темада джангы комментарийлени билдириулерин аллыкъсыз.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Сиз}} бу темада джангы комментарийлени хапарландырыуларын аллыкъсыз.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Сиз}} абонент болдугъуз!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Сиз}} бу темада джангы комментарийлени билдириулерин энди аллыкъ тюлсюз.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Сиз}} абонентликден чыкъдыгъыз.",
