@@ -55,6 +55,11 @@ class ApiDiscussionToolsCompare extends ApiBase {
 				);
 			}
 		}
+		// To keep things simple, don't allow viewing deleted revisions through this API
+		// (even if the current user could view them if we checked with userCan()).
+		if ( !$rev->audienceCan( RevisionRecord::DELETED_TEXT, RevisionRecord::FOR_PUBLIC ) ) {
+			$this->dieWithError( [ 'apierror-missingcontent-revid', $rev->getId() ], 'missingcontent' );
+		}
 		return $rev;
 	}
 
