@@ -367,9 +367,10 @@ class CommentFormatter {
 						CommentUtils::closestElement( $lastTimestamp->endContainer, [ 'a' ] );
 
 					if ( !$existingLink ) {
-						$link = $doc->createElement( 'a' );
+						$link = $doc->createElement( 'mw:dt-timestamplink' );
 						$link->setAttribute( 'href', $url . '#' . Sanitizer::escapeIdForLink( $threadItem->getId() ) );
 						$link->setAttribute( 'class', 'ext-discussiontools-init-timestamplink' );
+						$link->setAttribute( 'title', $threadItem->getTimestampString() );
 						$lastTimestamp->surroundContents( $link );
 					}
 				}
@@ -710,6 +711,21 @@ class CommentFormatter {
 			'/<!--__DTREPLYBUTTONSCONTENT__-->/',
 			$replaceButtons,
 			$text
+		);
+
+		$user = $contextSource->getUser();
+		$batchModifyElements->add(
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-timestamplink',
+			static function ( SerializerNode $node ) use ( $lang, $user ): SerializerNode {
+				$node->name = 'a';
+				$relativeTime = static::getSignatureRelativeTime(
+					new MWTimestamp( $node->attrs['title'] ),
+					$lang,
+					$user
+				);
+				$node->attrs['title'] = $relativeTime;
+				return $node;
+			}
 		);
 
 		return $text;
