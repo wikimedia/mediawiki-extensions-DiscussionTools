@@ -99,7 +99,7 @@
 	"discussiontools-notification-removed-topic-disabled-body": "これは[[Special:Preferences#mw-prefsection-echo-echosubscriptions|個人設定]]で変更できます。",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 さんが「<strong>$4</strong>」で{{GENDER:$2|返信しました}}。",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "「<strong>$3</strong>」に{{PLURAL:$1|1件の新しい返信があります|$1件の新しい返信があります|100=99件以上の新しい返信があります}}。",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>。",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "コメントを見る",
 	"discussiontools-pageframe-latestcomment": "最新のコメント：$1 ｜ トピック：$3 | 投稿者：$2",
 	"discussiontools-pageframe-latestcomment-notopic": "最新のコメント：$1 | 投稿者：$2",
