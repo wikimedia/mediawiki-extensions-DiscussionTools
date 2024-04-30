@@ -30,9 +30,7 @@ function init( $container, pageThreads ) {
 					buttonMenu.toggle( false );
 					return;
 				}
-				var overflowMenuItemWidgets = itemConfigs.map( ( itemConfig ) => {
-					return new OO.ui.MenuOptionWidget( itemConfig );
-				} );
+				var overflowMenuItemWidgets = itemConfigs.map( ( itemConfig ) => new OO.ui.MenuOptionWidget( itemConfig ) );
 				buttonMenu.getMenu().addItems( overflowMenuItemWidgets );
 				buttonMenu.getMenu().items.forEach( ( menuItem ) => {
 					mw.hook( 'discussionToolsOverflowMenuOnAddItem' ).fire( menuItem.getData().id, menuItem, threadItem );

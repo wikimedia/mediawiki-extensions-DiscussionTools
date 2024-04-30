@@ -346,11 +346,9 @@ function highlightNewComments( threadItemSet, noScroll, newCommentIds, options )
 
 	var comments;
 	if ( newCommentIds.length ) {
-		comments = newCommentIds.map( ( id ) => {
-			return threadItemSet.findCommentById( id );
-		} ).filter( ( cmt ) => {
-			return !!cmt;
-		} );
+		comments = newCommentIds
+			.map( ( id ) => threadItemSet.findCommentById( id ) )
+			.filter( ( cmt ) => !!cmt );
 		if ( comments.length ) {
 			highlightedTarget = new Highlight( comments );
 			highlightedTarget.$element.addClass( 'ext-discussiontools-init-targetcomment' );

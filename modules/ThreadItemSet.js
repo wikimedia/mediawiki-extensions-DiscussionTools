@@ -33,9 +33,7 @@ ThreadItemSet.static.newFromJSON = function ( threads, rootNode, parser ) {
 
 		result.addThreadItem( item );
 
-		item.replies = itemHash.replies.map( ( replyHash ) => {
-			return infuse( replyHash, item );
-		} );
+		item.replies = itemHash.replies.map( ( replyHash ) => infuse( replyHash, item ) );
 		item.parent = parent;
 
 		return item;

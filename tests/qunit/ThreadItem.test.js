@@ -32,9 +32,7 @@ QUnit.test( '#getAuthorsBelow/#getThreadItemsBelow', ( assert ) => {
 		);
 
 		assert.deepEqual(
-			threadItem.getThreadItemsBelow().map( ( item ) => {
-				return item.id;
-			} ),
+			threadItem.getThreadItemsBelow().map( ( item ) => item.id ),
 			caseItem.expectedThreadItemIdsBelow
 		);
 	} );

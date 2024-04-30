@@ -13,7 +13,9 @@
 		"no-implicit-globals": "off",
 		"no-var": "off",
 		"max-len": "off",
-		"prefer-arrow-callback": "error"
+		"prefer-arrow-callback": "error",
+		"implicit-arrow-linebreak": "error",
+		"arrow-body-style": "error"
 	},
 	"settings": {
 		"polyfills": [

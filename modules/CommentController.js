@@ -54,9 +54,7 @@ function getLatestRevId( pageName ) {
 		rvprop: 'ids',
 		rvlimit: 1,
 		titles: pageName
-	} ).then( ( resp ) => {
-		return resp.query.pages[ 0 ].revisions[ 0 ].revid;
-	} );
+	} ).then( ( resp ) => resp.query.pages[ 0 ].revisions[ 0 ].revid );
 }
 
 /**
@@ -75,11 +73,11 @@ CommentController.prototype.getTranscludedFromSource = function () {
 		if ( recursionLimit > 0 && code === 'comment-is-transcluded' ) {
 			errorData = data.errors[ 0 ].data;
 			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
-				return getLatestRevId( errorData.transcludedFrom ).then( ( latestRevId ) => {
+				return getLatestRevId( errorData.transcludedFrom ).then(
 					// Fetch the transcluded page, until we cross the recursion limit
-					return controller.checkThreadItemOnPage( errorData.transcludedFrom, latestRevId, threadItem )
-						.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
-				} );
+					( latestRevId ) => controller.checkThreadItemOnPage( errorData.transcludedFrom, latestRevId, threadItem )
+						.catch( followTransclusion.bind( null, recursionLimit - 1 ) )
+				);
 			}
 		}
 		return $.Deferred().reject( code, data );
@@ -134,28 +132,29 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 	} );
 
 	if ( !this.replyWidgetPromise ) {
-		this.replyWidgetPromise = this.getTranscludedFromSource().then( ( commentDetails ) => {
-			return this.createReplyWidget( commentDetails, { mode: mode } );
-		}, ( code, data ) => {
-			this.onReplyWidgetTeardown();
+		this.replyWidgetPromise = this.getTranscludedFromSource().then(
+			( commentDetails ) => this.createReplyWidget( commentDetails, { mode: mode } ),
+			( code, data ) => {
+				this.onReplyWidgetTeardown();
 
-			if ( !hideErrors ) {
-				OO.ui.alert(
-					code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
-					{ size: 'medium' }
-				);
-				mw.track( 'dt.commentSetupError', code );
+				if ( !hideErrors ) {
+					OO.ui.alert(
+						code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
+						{ size: 'medium' }
+					);
+					mw.track( 'dt.commentSetupError', code );
+				}
+
+				mw.track( 'editAttemptStep', {
+					action: 'abort',
+					type: 'preinit'
+				} );
+
+				this.replyWidgetPromise = null;
+
+				return $.Deferred().reject();
 			}
-
-			mw.track( 'editAttemptStep', {
-				action: 'abort',
-				type: 'preinit'
-			} );
-
-			this.replyWidgetPromise = null;
-
-			return $.Deferred().reject();
-		} );
+		);
 
 		// On first load, add a placeholder list item
 		this.newListItem = modifier.addListItem( threadItem, dtConf.replyIndentation );
@@ -253,13 +252,9 @@ CommentController.prototype.startPoll = function () {
 		}
 
 		// Parent comment was deleted
-		var isParentRemoved = result.removedcomments.some( ( cmt ) => {
-			return cmt.id === threadItemId;
-		} );
+		var isParentRemoved = result.removedcomments.some( ( cmt ) => cmt.id === threadItemId );
 		// Parent comment was deleted then added back (e.g. reverted vandalism)
-		var isParentAdded = result.addedcomments.some( ( cmt ) => {
-			return cmt.id === threadItemId;
-		} );
+		var isParentAdded = result.addedcomments.some( ( cmt ) => cmt.id === threadItemId );
 
 		if ( isParentAdded ) {
 			this.setParentRemoved( false );
@@ -306,9 +301,8 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
 	// If 2017WTE mode is enabled, always use ReplyWidgetVisual.
 	visual = visual || enable2017Wikitext;
 
-	return mw.loader.using( controller.getReplyWidgetModules() ).then( () => {
-		return require( 'ext.discussionTools.ReplyWidget' )[ visual ? 'ReplyWidgetVisual' : 'ReplyWidgetPlain' ];
-	} );
+	return mw.loader.using( controller.getReplyWidgetModules() )
+		.then( () => require( 'ext.discussionTools.ReplyWidget' )[ visual ? 'ReplyWidgetVisual' : 'ReplyWidgetPlain' ] );
 };
 
 /**
@@ -319,9 +313,8 @@ CommentController.prototype.getReplyWidgetClass = function ( visual ) {
  * @return {jQuery.Promise} Promise resolved with a ReplyWidget
  */
 CommentController.prototype.createReplyWidget = function ( commentDetails, config ) {
-	return this.getReplyWidgetClass( config.mode === 'visual' ).then( ( ReplyWidget ) => {
-		return new ReplyWidget( this, commentDetails, config );
-	} );
+	return this.getReplyWidgetClass( config.mode === 'visual' )
+		.then( ( ReplyWidget ) => new ReplyWidget( this, commentDetails, config ) );
 };
 
 CommentController.prototype.setupReplyWidget = function ( replyWidget, data, suppressNotifications ) {
@@ -371,9 +364,7 @@ CommentController.prototype.showAndFocus = function () {
  */
 CommentController.prototype.tryTeardown = function () {
 	if ( this.replyWidgetPromise ) {
-		return this.replyWidgetPromise.then( ( replyWidget ) => {
-			return replyWidget.tryTeardown();
-		} );
+		return this.replyWidgetPromise.then( ( replyWidget ) => replyWidget.tryTeardown() );
 	}
 	return $.Deferred().resolve().promise();
 };
@@ -541,13 +532,11 @@ CommentController.prototype.updateNewCommentsWarning = function ( addedComments,
 	this.newComments.push.apply( this.newComments, addedComments );
 
 	// Delete any comments which have since been deleted (e.g. posted then reverted)
-	var removedCommentIds = removedComments.filter( ( cmt ) => {
-		return cmt.id;
-	} );
-	this.newComments = this.newComments.filter( ( cmt ) => {
+	var removedCommentIds = removedComments.filter( ( cmt ) => cmt.id );
+	this.newComments = this.newComments.filter(
 		// If comment ID is not in removedCommentIds, keep it
-		return removedCommentIds.indexOf( cmt.id ) === -1;
-	} );
+		( cmt ) => removedCommentIds.indexOf( cmt.id ) === -1
+	);
 
 	this.replyWidgetPromise.then( ( replyWidget ) => {
 		replyWidget.updateNewCommentsWarning( this.newComments );
@@ -623,9 +612,7 @@ CommentController.prototype.switchToWikitext = function () {
 CommentController.prototype.doIndentReplacements = function ( wikitext, indent ) {
 	wikitext = modifier.sanitizeWikitextLinebreaks( wikitext );
 
-	wikitext = wikitext.split( '\n' ).map( ( line ) => {
-		return indent + line;
-	} ).join( '\n' );
+	wikitext = wikitext.split( '\n' ).map( ( line ) => indent + line ).join( '\n' );
 
 	return wikitext;
 };
@@ -699,9 +686,7 @@ CommentController.prototype.switchToVisual = function () {
 			page: oldWidget.pageName,
 			wikitext: wikitext,
 			pst: true
-		} ).then( ( response ) => {
-			return response && response.visualeditor.content;
-		} );
+		} ).then( ( response ) => response && response.visualeditor.content );
 	} else {
 		parsePromise = $.Deferred().resolve( '' ).promise();
 	}

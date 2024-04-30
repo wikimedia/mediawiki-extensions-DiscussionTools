@@ -79,9 +79,7 @@ function changeSubscription( title, commentName, subscribe, isNewTopics ) {
 		page: title,
 		commentname: commentName,
 		subscribe: subscribe
-	} ).then( ( response ) => {
-		return OO.getProp( response, 'discussiontoolssubscribe' ) || {};
-	} );
+	} ).then( ( response ) => OO.getProp( response, 'discussiontoolssubscribe' ) || {} );
 
 	promise.then( ( result ) => {
 		mw.notify(
@@ -462,12 +460,10 @@ function updateSubscriptionStates( $container, headingsToUpdate ) {
 			// least long-polling or something. But this is the simplest one!)
 			var wait = $.Deferred();
 			setTimeout( wait.resolve, 5000 );
-			return wait.then( () => {
-				return api.get( {
-					action: 'discussiontoolsgetsubscriptions',
-					commentname: topicsToCheck
-				} );
-			} );
+			return wait.then( () => api.get( {
+				action: 'discussiontoolsgetsubscriptions',
+				commentname: topicsToCheck
+			} ) );
 		}
 		return response;
 	} ).then( ( response ) => {

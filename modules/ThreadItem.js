@@ -160,9 +160,7 @@ ThreadItem.prototype.calculateThreadSummary = function () {
 	}
 	this.replies.forEach( threadScan );
 
-	this.authors = Object.keys( authors ).sort().map( ( author ) => {
-		return authors[ author ];
-	} );
+	this.authors = Object.keys( authors ).sort().map( ( author ) => authors[ author ] );
 	this.commentCount = commentCount;
 	this.oldestReply = oldestReply;
 	this.latestReply = latestReply;
