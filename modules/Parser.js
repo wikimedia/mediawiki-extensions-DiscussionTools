@@ -874,12 +874,10 @@ Parser.prototype.buildThreadItems = function () {
 	while ( ( node = treeWalker.nextNode() ) ) {
 		var match;
 		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
-			var headingNodeAndOffset = utils.getHeadlineNodeAndOffset( node );
-			var headingNode = headingNodeAndOffset.node;
-			var startOffset = headingNodeAndOffset.offset;
+			var headingNode = utils.getHeadlineNode( node );
 			range = {
 				startContainer: headingNode,
-				startOffset: startOffset,
+				startOffset: 0,
 				endContainer: headingNode,
 				endOffset: headingNode.childNodes.length
 			};

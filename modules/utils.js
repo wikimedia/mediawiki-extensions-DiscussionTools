@@ -247,15 +247,12 @@ function getTranscludedFromElement( node ) {
 /**
  * Given a heading node, return the node on which the ID attribute is set.
  *
- * Also returns the offset within that node where the heading text starts.
- *
  * @param {HTMLElement} heading Heading node (`<h1>`-`<h6>`)
- * @return {Array} Array containing a 'node' (HTMLElement) and offset (number)
+ * @return {HTMLElement}
  */
-function getHeadlineNodeAndOffset( heading ) {
+function getHeadlineNode( heading ) {
 	// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
-	var headline = heading,
-		offset = 0;
+	var headline = heading;
 
 	if ( headline.hasAttribute( 'data-mw-comment-start' ) ) {
 		headline = headline.parentNode;
@@ -269,10 +266,7 @@ function getHeadlineNodeAndOffset( heading ) {
 		}
 	}
 
-	return {
-		node: headline,
-		offset: offset
-	};
+	return headline;
 }
 
 /**
@@ -661,7 +655,7 @@ module.exports = {
 	getCoveredSiblings: getCoveredSiblings,
 	getFullyCoveredSiblings: getFullyCoveredSiblings,
 	getTranscludedFromElement: getTranscludedFromElement,
-	getHeadlineNodeAndOffset: getHeadlineNodeAndOffset,
+	getHeadlineNode: getHeadlineNode,
 	htmlTrim: htmlTrim,
 	getTitleFromUrl: getTitleFromUrl,
 	linearWalk: linearWalk,
