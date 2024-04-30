@@ -1293,11 +1293,7 @@ class CommentParser {
 			// The range points to the root note, using it like below results in silly values
 			$id = 'h-';
 		} elseif ( $threadItem instanceof ContentHeadingItem ) {
-			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
-			$headline = $threadItem->getRange()->startContainer;
-			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
-			$id = 'h-' . $this->truncateForId( $headline->getAttribute( 'id' )
-				 ?: $headline->getAttribute( 'data-mw-anchor' ) ?? '' );
+			$id = 'h-' . $this->truncateForId( $threadItem->getLinkableId() );
 		} elseif ( $threadItem instanceof ContentCommentItem ) {
 			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
 				'-' . $threadItem->getTimestampString();
@@ -1309,11 +1305,7 @@ class CommentParser {
 		// in one edit, or within a minute), add the parent ID to disambiguate them.
 		$threadItemParent = $threadItem->getParent();
 		if ( $threadItemParent instanceof ContentHeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
-			// <span class="mw-headline" …>, or <hN …> in Parsoid HTML
-			$headline = $threadItemParent->getRange()->startContainer;
-			Assert::precondition( $headline instanceof Element, 'HeadingItem refers to an element node' );
-			$id .= '-' . $this->truncateForId( $headline->getAttribute( 'id' )
-				 ?: $headline->getAttribute( 'data-mw-anchor' ) ?? '' );
+			$id .= '-' . $this->truncateForId( $threadItemParent->getLinkableId() );
 		} elseif ( $threadItemParent instanceof ContentCommentItem ) {
 			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ) ) .
 				'-' . $threadItemParent->getTimestampString();

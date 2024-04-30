@@ -255,11 +255,12 @@ function getHeadlineNode( heading ) {
 	var headline = heading;
 
 	if ( headline.hasAttribute( 'data-mw-comment-start' ) ) {
+		// JS only: Support output from the PHP CommentFormatter
 		headline = headline.parentNode;
 	}
 
 	if ( !headline.getAttribute( 'id' ) ) {
-		// PHP HTML: Find the child with .mw-headline
+		// JS only: Support output after HandleSectionLinks OutputTransform has been applied
 		headline = headline.querySelector( '.mw-headline' );
 		if ( !headline ) {
 			headline = heading;
