@@ -90,7 +90,7 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Вы}} отписались.",
 	"discussiontools-notification-added-topic-header": "$2 создал(а) новую тему «<strong>$4</strong>» на странице <strong>$3</strong>.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|$1 новая тема|$1 новых тем|100=99+ новых тем}} на <strong>$2</strong>",
-	"discussiontools-notification-added-topic-view": "Смотреть тему",
+	"discussiontools-notification-added-topic-view": "Просмотр темы",
 	"discussiontools-notification-removed-topic-body": "Возможно, {{GENDER:|вы}} больше не будете получать уведомления об {{PLURAL:$1|этой теме|этих темах}}.",
 	"discussiontools-notification-removed-topic-header": "Тема «<strong>$4</strong>» была заархивирована или удалена со страницы $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|Одна тема была|$1 темы было|$1 тем было|100=99+ тем было}} {{PLURAL:$1|заархивирована или удалена|заархивировано или удалено}} со страницы $2.",
