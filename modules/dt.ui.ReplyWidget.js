@@ -592,7 +592,7 @@ ReplyWidget.prototype.switch = function ( mode ) {
  * Setup the widget
  *
  * @param {Object} [data] Initial data
- * @param {Mixed} [data.value] Initial value
+ * @param {any} [data.value] Initial value
  * @param {string} [data.showAdvanced] Whether the "Advanced" menu is initially visible
  * @param {string} [data.editSummary] Initial edit summary
  * @chainable

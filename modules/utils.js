@@ -417,7 +417,7 @@ function getTitleFromUrl( url ) {
  * @param {Node} node Node to start at
  * @param {Function} callback Function accepting two arguments: `event` ('enter' or 'leave') and
  *     `node` (DOMNode)
- * @return {Mixed} Final return value of the callback
+ * @return {any} Final return value of the callback
  */
 function linearWalk( node, callback ) {
 	var

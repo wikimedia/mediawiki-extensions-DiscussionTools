@@ -182,7 +182,7 @@ MWUsernameCompletionAction.prototype.compareSuggestionToInput = function ( sugge
  * Create a suggestion from an input
  *
  * @param {string} input User input
- * @return {Mixed} Suggestion data, string by default
+ * @return {any} Suggestion data, string by default
  */
 MWUsernameCompletionAction.prototype.createSuggestion = function ( input ) {
 	return {

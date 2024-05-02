@@ -274,7 +274,7 @@ function getReplyWidgetModules() {
  * Initialize Discussion Tools features
  *
  * @param {jQuery} $container Page container
- * @param {Object<string,Mixed>} [state] Page state data object
+ * @param {Object<string,any>} [state] Page state data object
  * @param {string} [state.repliedTo] The comment ID that was just replied to
  * @param {boolean} [state.tempUserCreated] Whether a temp user was just created
  */
