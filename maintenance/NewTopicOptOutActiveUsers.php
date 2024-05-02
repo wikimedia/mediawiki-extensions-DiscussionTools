@@ -102,7 +102,7 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 			->where( [
 				'up_user' => $userId,
 				'up_property' => 'discussiontools-betaenable',
-				'up_value' => 1,
+				'up_value' => '1',
 			] )
 			->field( '1' )
 			->fetchField();
@@ -134,7 +134,7 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 			->row( [
 				'up_user' => $userId,
 				'up_property' => 'discussiontools-' . HookUtils::NEWTOPICTOOL,
-				'up_value' => 0,
+				'up_value' => '0',
 			] )
 			->caller( __METHOD__ )
 			->execute();
