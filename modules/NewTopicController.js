@@ -102,7 +102,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 			// This should never happen
 			throw new Error( 'Preload content was loaded for wrong mode' );
 		}
-		data = $.extend( {}, data, {
+		data = Object.assign( {}, data, {
 			value: replyWidget.commentDetails.preloadContent
 		} );
 	}
@@ -255,7 +255,7 @@ NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 	// Add the newtopic tag
 	tags.push( 'discussiontools-newtopic' );
 
-	data = $.extend( {}, data, {
+	data = Object.assign( {}, data, {
 		paction: 'addtopic',
 		sectiontitle: this.sectionTitle.getValue(),
 		// TODO: Make the user somehow confirm that they really want to post a topic with no subject

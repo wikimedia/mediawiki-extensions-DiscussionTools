@@ -84,7 +84,7 @@ function getPageData( pageName, oldId, apiParams ) {
 		transcludedFromPromise = $.Deferred().resolve( {} ).promise();
 	}
 
-	var veMetadataPromise = api.get( $.extend( {
+	var veMetadataPromise = api.get( Object.assign( {
 		action: 'visualeditor',
 		paction: 'metadata',
 		page: pageName
@@ -407,7 +407,7 @@ function init( $container, state ) {
 		var comment = new HeadingItem( {}, 2 );
 		comment.id = utils.NEW_TOPIC_COMMENT_ID;
 		comment.isNewTopic = true;
-		$.extend( comment, data );
+		Object.assign( comment, data );
 		return comment;
 	}
 
@@ -613,7 +613,7 @@ function init( $container, state ) {
 				// TODO: Support multiple commentIds being requested and not all being found
 				var dtConf = require( './config.json' );
 				var findCommentRequest = dtConf.enablePermalinksFrontend ?
-					getApi().get( $.extend( {
+					getApi().get( Object.assign( {
 						action: 'discussiontoolsfindcomment'
 					}, findCommentQuery ) ) :
 					$.Deferred().resolve( [ {} ] ).promise();

@@ -56,7 +56,7 @@ OO.inheritClass( ReplyWidgetPlain, require( './dt.ui.ReplyWidget.js' ) );
  * @inheritdoc
  */
 ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
-	var textInput = new OO.ui.MultilineTextInputWidget( $.extend( {
+	var textInput = new OO.ui.MultilineTextInputWidget( Object.assign( {
 		rows: 3,
 		// TODO: Fix upstream to support a value meaning no max limit (e.g. Infinity)
 		maxRows: 999,

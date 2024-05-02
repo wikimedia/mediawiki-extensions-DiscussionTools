@@ -51,7 +51,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.$window = $( this.getElementWindow() );
 	this.onWindowScrollThrottled = OO.ui.throttle( this.onWindowScroll.bind( this ), 100 );
 
-	var inputConfig = $.extend(
+	var inputConfig = Object.assign(
 		{
 			placeholder: this.isNewTopic ?
 				mw.msg( 'discussiontools-replywidget-placeholder-newtopic' ) :

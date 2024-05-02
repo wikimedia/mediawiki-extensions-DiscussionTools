@@ -9,7 +9,7 @@ module.exports = {};
  * @param {Object} config
  */
 module.exports.overrideMwConfig = function ( config ) {
-	$.extend(
+	Object.assign(
 		mw.config.values,
 		config
 	);

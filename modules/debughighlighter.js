@@ -95,7 +95,7 @@ function markComment( comment ) {
 			parentRect = fixFakeFirstHeadingRect( parentRect, comment.parent );
 			if ( comment.parent.level === 0 ) {
 				// Twiddle so that it looks nice
-				parentRect = $.extend( {}, parentRect );
+				parentRect = Object.assign( {}, parentRect );
 				parentRect.height -= 10;
 			}
 
