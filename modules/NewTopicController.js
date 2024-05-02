@@ -243,8 +243,8 @@ NewTopicController.prototype.getUnsupportedNodeSelectors = function () {
 /**
  * @inheritdoc
  */
-NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes ) {
-	let data = NewTopicController.super.prototype.getApiQuery.call( this, pageName, checkboxes );
+NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes, extraParams ) {
+	let data = NewTopicController.super.prototype.getApiQuery.call( this, pageName, checkboxes, extraParams );
 
 	// Rebuild the tags array and remove the reply tag
 	const tags = ( data.dttags || '' ).split( ',' );
@@ -258,9 +258,6 @@ NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 	data = Object.assign( {}, data, {
 		paction: 'addtopic',
 		sectiontitle: this.sectionTitle.getValue(),
-		// TODO: Make the user somehow confirm that they really want to post a topic with no subject
-		// before sending this parameter (T334163)
-		allownosectiontitle: true,
 		dttags: tags.join( ',' )
 	} );
 
@@ -272,6 +269,24 @@ NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 	}
 
 	return data;
+};
+
+/**
+ * @inheritdoc
+ */
+NewTopicController.prototype.saveFail = function ( code ) {
+	if ( code === 'discussiontools-newtopic-missing-title' ) {
+		OO.ui.confirm( mw.msg( 'discussiontools-newtopic-missing-title-prompt' ) ).then( ( confirmed ) => {
+			if ( confirmed ) {
+				this.onReplySubmit( { allownosectiontitle: true } );
+			} else {
+				this.sectionTitle.focus();
+			}
+		} );
+		return;
+	}
+
+	NewTopicController.super.prototype.saveFail.apply( this, arguments );
 };
 
 /**

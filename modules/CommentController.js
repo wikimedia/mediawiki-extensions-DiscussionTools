@@ -408,9 +408,10 @@ CommentController.prototype.onReplyWidgetTeardown = function ( mode ) {
  *
  * @param {string} pageName Title of the page to post on
  * @param {Object} checkboxes Value of the promise returned by controller#getCheckboxesPromise
+ * @param {Object} extraParams Extra params to pass to the API
  * @return {Object.<string,string>} API query data
  */
-CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
+CommentController.prototype.getApiQuery = function ( pageName, checkboxes, extraParams ) {
 	const threadItem = this.getThreadItem();
 	const replyWidget = this.replyWidget;
 	const sameNameComments = this.threadItemSet.findCommentsByName( threadItem.name );
@@ -426,7 +427,7 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 		tags.push( 'discussiontools-source-enhanced' );
 	}
 
-	const data = {
+	const data = Object.assign( {
 		action: 'discussiontoolsedit',
 		paction: 'addcomment',
 		page: pageName,
@@ -441,7 +442,7 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 		// Pass through dtenable query string param from original request
 		dtenable: new URLSearchParams( location.search ).get( 'dtenable' ) ? '1' : undefined,
 		dttags: tags.join( ',' )
-	};
+	}, extraParams );
 
 	if ( replyWidget.getMode() === 'source' ) {
 		data.wikitext = replyWidget.getValue();
@@ -466,8 +467,10 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 
 /**
  * Handle the reply widget being submitted
+ *
+ * @param {Object} extraParams Extra params to pass to the API
  */
-CommentController.prototype.onReplySubmit = function () {
+CommentController.prototype.onReplySubmit = function ( extraParams ) {
 	if ( !this.replyWidget ) {
 		return;
 	}
@@ -481,7 +484,7 @@ CommentController.prototype.onReplySubmit = function () {
 	mw.track( 'editAttemptStep', { action: 'saveAttempt' } );
 
 	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
-	this.save( this.replyWidget.pageName )
+	this.save( this.replyWidget.pageName, extraParams )
 		.then( null, this.saveFail.bind( this ) )
 		.always( () => {
 			this.replyWidget.setPending( false );
@@ -543,14 +546,15 @@ CommentController.prototype.saveFail = function ( code, data ) {
  * Save the comment in the comment controller
  *
  * @param {string} pageName Page title
+ * @param {Object} extraParams Extra params to pass to the API
  * @return {jQuery.Promise} Promise which resolves when the save is complete
  */
-CommentController.prototype.save = function ( pageName ) {
+CommentController.prototype.save = function ( pageName, extraParams ) {
 	const replyWidget = this.replyWidget,
 		threadItem = this.getThreadItem();
 
 	return this.replyWidget.checkboxesPromise.then( ( checkboxes ) => {
-		const data = this.getApiQuery( pageName, checkboxes );
+		const data = this.getApiQuery( pageName, checkboxes, extraParams );
 
 		if (
 			// We're saving the first comment on a page that previously didn't exist.
