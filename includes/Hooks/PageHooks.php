@@ -95,8 +95,6 @@ class PageHooks implements
 				// * ext-discussiontools-topicsubscription-enabled
 				// * ext-discussiontools-autotopicsub-enabled
 				// * ext-discussiontools-visualenhancements-enabled
-				// * ext-discussiontools-visualenhancements_reply-enabled
-				// * ext-discussiontools-visualenhancements_pageframe-enabled
 				$output->addBodyClasses( "ext-discussiontools-$feature-enabled" );
 			}
 		}
@@ -260,8 +258,6 @@ class PageHooks implements
 		$isMobile = $this->isMobile();
 		$visualEnhancementsEnabled =
 			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS );
-		$visualEnhancementsReplyEnabled =
-			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS_REPLY );
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			// Just enable OOUI PHP - the OOUI subscribe button isn't infused unless VISUALENHANCEMENTS are enabled
@@ -276,7 +272,7 @@ class PageHooks implements
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
 			$output->enableOOUI();
 			CommentFormatter::postprocessReplyTool(
-				$text, $batchModifyElements, $output, $isMobile, $visualEnhancementsReplyEnabled
+				$text, $batchModifyElements, $output, $isMobile, $visualEnhancementsEnabled
 			);
 		} else {
 			CommentFormatter::removeReplyTool( $batchModifyElements );
@@ -290,10 +286,7 @@ class PageHooks implements
 			}
 			if (
 				$isMobile ||
-				(
-					$visualEnhancementsReplyEnabled &&
-					CommentFormatter::isLanguageRequiringReplyIcon( $output->getLanguage() )
-				)
+				CommentFormatter::isLanguageRequiringReplyIcon( $output->getLanguage() )
 			) {
 				// Reply button: share
 				$output->addModuleStyles( 'oojs-ui.styles.icons-content' );

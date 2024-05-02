@@ -579,14 +579,6 @@
 			"value": "default",
 			"description": "Override availability of DiscussionTools visual enhancements. 'default', 'available', or 'unavailable'."
 		},
-		"DiscussionTools_visualenhancements_pageframe": {
-			"value": "default",
-			"description": "Override availability of DiscussionTools visual enhancements's page frame sub-feature. 'default', 'available', or 'unavailable'."
-		},
-		"DiscussionTools_visualenhancements_reply": {
-			"value": "default",
-			"description": "Override availability of DiscussionTools visual enhancements's reply buttons sub-feature. 'default', 'available', or 'unavailable'."
-		},
 		"DiscussionTools_visualenhancements_reply_icon_languages": {
 			"value": {
 				"ar": true,

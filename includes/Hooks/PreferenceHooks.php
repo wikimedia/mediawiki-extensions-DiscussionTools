@@ -64,13 +64,6 @@ class PreferenceHooks implements
 			];
 		}
 		foreach ( HookUtils::FEATURES as $feature ) {
-			if (
-				$feature === HookUtils::VISUALENHANCEMENTS_REPLY ||
-				$feature === HookUtils::VISUALENHANCEMENTS_PAGEFRAME
-			) {
-				// Feature is never user-configurable
-				continue;
-			}
 			if ( HookUtils::isFeatureAvailableToUser( $user, $feature ) ) {
 				$preferences["discussiontools-$feature"] = [
 					'type' => 'toggle',
