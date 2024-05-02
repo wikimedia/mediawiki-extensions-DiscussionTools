@@ -348,6 +348,12 @@ OO.inheritClass( ReplyWidget, OO.ui.Widget );
  * @event reloadPage
  */
 
+/**
+ * The reply widget is submitted
+ *
+ * @event submit
+ */
+
 /* Methods */
 
 /**
@@ -394,6 +400,16 @@ ReplyWidget.prototype.isEmpty = null;
 ReplyWidget.prototype.getMode = null;
 
 /**
+ * Clear the save error message
+ */
+ReplyWidget.prototype.clearSaveErrorMessage = function () {
+	if ( this.saveErrorMessage ) {
+		this.saveErrorMessage.$element.remove();
+		this.saveErrorMessage = null;
+	}
+};
+
+/**
  * Restore the widget to its original state
  *
  * Clear any widget values, reset UI states, and clear
@@ -402,10 +418,8 @@ ReplyWidget.prototype.getMode = null;
  * @param {boolean} [preserveStorage] Preserve auto-save storage
  */
 ReplyWidget.prototype.clear = function ( preserveStorage ) {
-	if ( this.saveErrorMessage ) {
-		this.saveErrorMessage.$element.remove();
-		this.saveErrorMessage = null;
-	}
+	this.clearSaveErrorMessage();
+
 	if ( this.previewRequest ) {
 		this.previewRequest.abort();
 		this.previewRequest = null;
@@ -1041,100 +1055,65 @@ ReplyWidget.prototype.createErrorMessage = function ( message ) {
 
 /**
  * Handle clicks on the reply button
+ *
+ * @fires submit
  */
 ReplyWidget.prototype.onReplyClick = function () {
 	if ( this.pending || this.isEmpty() ) {
 		return;
 	}
 
-	if ( this.saveErrorMessage ) {
-		this.saveErrorMessage.$element.remove();
-		this.saveErrorMessage = null;
+	this.emit( 'submit' );
+};
+
+/**
+ * Set the save error message
+ *
+ * @param {string} code Error code
+ * @param {Object} data Error data
+ */
+ReplyWidget.setSaveErrorMessage = function ( code, data ) {
+	if ( !(
+		// Don't duplicate the parentRemovedErrorMessage
+		code === 'discussiontools-commentname-notfound' && this.parentRemovedErrorMessage
+	) ) {
+		this.saveErrorMessage = this.createErrorMessage(
+			code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data )
+		);
 	}
+};
 
-	this.saveInitiated = mw.now();
-	this.setPending( true );
+/**
+ * Clear the captcha input
+ */
+ReplyWidget.prototype.clearCaptcha = function () {
+	if ( this.captchaMessage ) {
+		this.captchaMessage.$element.detach();
+	}
+	this.captchaInput = undefined;
+};
 
-	mw.track( 'editAttemptStep', { action: 'saveIntent' } );
-
-	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
-	const pageName = this.pageName;
-
-	mw.track( 'editAttemptStep', { action: 'saveAttempt' } );
-	this.commentController.save( pageName ).fail( ( code, data ) => {
-		// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
-		const typeMap = {
-			badtoken: 'userBadToken',
-			assertanonfailed: 'userNewUser',
-			assertuserfailed: 'userNewUser',
-			assertnameduserfailed: 'userNewUser',
-			'abusefilter-disallowed': 'extensionAbuseFilter',
-			'abusefilter-warning': 'extensionAbuseFilter',
-			captcha: 'extensionCaptcha',
-			spamblacklist: 'extensionSpamBlacklist',
-			'titleblacklist-forbidden': 'extensionTitleBlacklist',
-			pagedeleted: 'editPageDeleted',
-			editconflict: 'editConflict'
-		};
-
-		if ( this.captchaMessage ) {
-			this.captchaMessage.$element.detach();
-		}
-		this.captchaInput = undefined;
-
-		if ( OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' ) ) {
-			code = 'captcha';
-
-			this.captchaInput = new mw.libs.confirmEdit.CaptchaInputWidget(
-				OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' )
-			);
-			// Save when pressing 'Enter' in captcha field as it is single line.
-			this.captchaInput.on( 'enter', () => {
-				this.onReplyClick();
-			} );
-
-			this.captchaMessage = new OO.ui.MessageWidget( {
-				type: 'notice',
-				label: this.captchaInput.$element,
-				classes: [ 'ext-discussiontools-ui-replyWidget-captcha' ]
-			} );
-			this.captchaMessage.$element.insertAfter( this.$preview );
-
-			this.captchaInput.focus();
-			this.captchaInput.scrollElementIntoView();
-
-		} else {
-			if ( !(
-				// Don't duplicate the parentRemovedErrorMessage
-				code === 'discussiontools-commentname-notfound' && this.parentRemovedErrorMessage
-			) ) {
-				this.saveErrorMessage = this.createErrorMessage(
-					code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data )
-				);
-			}
-		}
-
-		if ( code instanceof Error ) {
-			code = 'exception';
-		}
-		// Log more precise error codes, mw.Api just gives us 'http' in all of these cases
-		if ( data ) {
-			if ( data.textStatus === 'timeout' || data.textStatus === 'abort' || data.textStatus === 'parsererror' ) {
-				code = data.textStatus;
-			} else if ( data.xhr ) {
-				code = 'http-' + ( data.xhr.status || 0 );
-			}
-		}
-
-		mw.track( 'editAttemptStep', {
-			action: 'saveFailure',
-			timing: mw.now() - this.saveInitiated,
-			message: code,
-			type: typeMap[ code ] || 'responseUnknown'
-		} );
-	} ).always( () => {
-		this.setPending( false );
+/**
+ * Set the captcha input
+ *
+ * @param {Object} captchaData Captcha data
+ */
+ReplyWidget.prototype.setCaptcha = function ( captchaData ) {
+	this.captchaInput = new mw.libs.confirmEdit.CaptchaInputWidget( captchaData );
+	// Save when pressing 'Enter' in captcha field as it is single line.
+	this.captchaInput.on( 'enter', () => {
+		this.emit( 'reply' );
 	} );
+
+	this.captchaMessage = new OO.ui.MessageWidget( {
+		type: 'notice',
+		label: this.captchaInput.$element,
+		classes: [ 'ext-discussiontools-ui-replyWidget-captcha' ]
+	} );
+	this.captchaMessage.$element.insertAfter( this.$preview );
+
+	this.captchaInput.focus();
+	this.captchaInput.scrollElementIntoView();
 };
 
 /**

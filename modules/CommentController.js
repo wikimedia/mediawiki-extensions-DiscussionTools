@@ -335,6 +335,7 @@ CommentController.prototype.setupReplyWidget = function ( replyWidget, data, sup
 	replyWidget.setup( data, suppressNotifications );
 	replyWidget.updateNewCommentsWarning( this.newComments );
 	replyWidget.updateParentRemovedError( this.parentRemoved );
+	replyWidget.connect( this, { submit: 'onReplySubmit' } );
 
 	this.replyWidget = replyWidget;
 };
@@ -461,6 +462,81 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 	}
 
 	return data;
+};
+
+/**
+ * Handle the reply widget being submitted
+ */
+CommentController.prototype.onReplySubmit = function () {
+	if ( !this.replyWidget ) {
+		return;
+	}
+
+	this.replyWidget.clearSaveErrorMessage();
+
+	this.saveInitiated = mw.now();
+	this.replyWidget.setPending( true );
+
+	mw.track( 'editAttemptStep', { action: 'saveIntent' } );
+	mw.track( 'editAttemptStep', { action: 'saveAttempt' } );
+
+	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
+	this.save( this.replyWidget.pageName )
+		.then( null, this.saveFail.bind( this ) )
+		.always( () => {
+			this.replyWidget.setPending( false );
+		} );
+};
+
+/**
+ * Handle save failures from the API
+ *
+ * @param {string} code Error code
+ * @param {Object} data Error data
+ */
+CommentController.prototype.saveFail = function ( code, data ) {
+	this.replyWidget.clearCaptcha();
+	const captchaData = OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' );
+
+	if ( captchaData ) {
+		code = 'captcha';
+		this.replyWidget.setCaptcha( captchaData );
+	} else {
+		this.setSaveErrorMessage( code, data );
+	}
+
+	if ( code instanceof Error ) {
+		code = 'exception';
+	}
+	// Log more precise error codes, mw.Api just gives us 'http' in all of these cases
+	if ( data ) {
+		if ( data.textStatus === 'timeout' || data.textStatus === 'abort' || data.textStatus === 'parsererror' ) {
+			code = data.textStatus;
+		} else if ( data.xhr ) {
+			code = 'http-' + ( data.xhr.status || 0 );
+		}
+	}
+
+	// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
+	const typeMap = {
+		badtoken: 'userBadToken',
+		assertanonfailed: 'userNewUser',
+		assertuserfailed: 'userNewUser',
+		assertnameduserfailed: 'userNewUser',
+		'abusefilter-disallowed': 'extensionAbuseFilter',
+		'abusefilter-warning': 'extensionAbuseFilter',
+		captcha: 'extensionCaptcha',
+		spamblacklist: 'extensionSpamBlacklist',
+		'titleblacklist-forbidden': 'extensionTitleBlacklist',
+		pagedeleted: 'editPageDeleted',
+		editconflict: 'editConflict'
+	};
+	mw.track( 'editAttemptStep', {
+		action: 'saveFailure',
+		timing: mw.now() - this.saveInitiated,
+		message: code,
+		type: typeMap[ code ] || 'responseUnknown'
+	} );
 };
 
 /**

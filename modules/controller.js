@@ -796,7 +796,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 	function logSaveSuccess() {
 		mw.track( 'editAttemptStep', {
 			action: 'saveSuccess',
-			timing: mw.now() - replyWidget.saveInitiated,
+			timing: mw.now() - replyWidget.commentController.saveInitiated,
 			// eslint-disable-next-line camelcase
 			revision_id: data.newrevid
 		} );
