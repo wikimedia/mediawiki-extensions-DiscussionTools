@@ -39,7 +39,7 @@ OO.inheritClass( ReplyWidgetVisual, require( './dt.ui.ReplyWidget.js' ) );
  * @inheritdoc
  */
 ReplyWidgetVisual.prototype.createReplyBodyWidget = function ( config ) {
-	return new CommentTargetWidget( this, $.extend( {
+	return new CommentTargetWidget( this, Object.assign( {
 		defaultMode: this.defaultMode
 	}, config ) );
 };

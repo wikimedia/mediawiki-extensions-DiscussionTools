@@ -40,7 +40,7 @@ function CommentTargetWidget( replyWidget, config ) {
 		] );
 	}
 
-	config = $.extend( {}, {
+	config = Object.assign( {}, {
 		excludeCommands: excludeCommands
 	}, config );
 
