@@ -4,7 +4,8 @@
 			"Matma Rex",
 			"NMW03",
 			"Serkanland",
-			"Toghrul Rahimli"
+			"Toghrul Rahimli",
+			"Nemoralis"
 		]
 	},
 	"discussiontools": "Müzakirə alətləri",
@@ -122,7 +123,7 @@
 	"discussiontools-replywidget-abandontopic-keep": "Yazmağa davam et",
 	"discussiontools-replywidget-advanced": "Daha çox",
 	"discussiontools-replywidget-anon-warning": "<strong>Siz daxil olmamısınız.</strong> Kimsə cavab verdikdə və IP-ünvanınız əvəzinə istifadəçi adınızla cavab aldıqda bundan xəbərdar olmaq üçün [$1 daxil ola] və ya [$2 hesab yarada] bilərsiniz.",
-	"discussiontools-replywidget-autocreate-warning": "<strong>Siz daxil olmamısınız.</strong> Kimsə cavab verdikdə və [[$3|avtomatik yaradılan ad]] əvəzinə seçdiyiniz adla cavab aldıqda xəbərdar olmaq üçün [ $1 daxil ola] və ya [$2 hesab yarada] bilərsiniz.",
+	"discussiontools-replywidget-autocreate-warning": "<strong>Siz daxil olmamısınız.</strong> Redaktə etdikdən sonra sizin üçün müvəqqəti hesab yaradılacaq. [[$3|Ətraflı məlumat]]. Bu hesabın müddəti bitdikdən sonra kimsə cavab verdikdə xəbərdar olmaq və digər funksiyaları əldə etmək üçün [$1 daxil olun] və ya [$2 hesab yaradın].",
 	"discussiontools-replywidget-cancel": "İmtina",
 	"discussiontools-replywidget-feedback": "Bu funksiya haqqında rəyinizi bildirin",
 	"discussiontools-replywidget-feedback-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/Replying",
