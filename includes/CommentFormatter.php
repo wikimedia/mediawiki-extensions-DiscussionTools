@@ -72,8 +72,10 @@ class CommentFormatter {
 
 		$duration = microtime( true ) - $start;
 
-		$stats = MediaWikiServices::getInstance()->getStatsdDataFactory();
-		$stats->timing( 'discussiontools.addReplyLinks', $duration * 1000 );
+		MediaWikiServices::getInstance()->getStatsFactory()
+			->getTiming( 'discussiontools_addreplylinks_seconds' )
+			->copyToStatsdAt( 'discussiontools.addReplyLinks' )
+			->observe( $duration * 1000 );
 
 		// How long this method took, in seconds
 		$pout->setLimitReportData(
