@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Castellum",
 			"Cumbril",
 			"Matma Rex",
 			"Pikne"
@@ -13,6 +14,7 @@
 	"discussiontools-defaultsummary-reply": "Vastus",
 	"discussiontoolsdebug-title": "Arutelutööriistade andmestruktuur",
 	"discussiontoolsdebug-pagetitle": "Lehekülje pealkiri",
+	"discussiontoolsdebug-intro": "See lehekülg näitab, kuidas [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools laiendus] tuvastab teemad ja kommentaarid leheküljel '''[[:$1]]'''. See võib olla kasulik laiendusega seotud probleemide silumisel või selle toimimise mõistmisel. Sama teave on saadaval [[$2|discussiontoolspageinfo API]]-s.",
 	"discussiontools-desc": "Tööriistad arutelulehekülgede täiustamiseks",
 	"discussiontools-emptystate-button": "Alusta arutelu",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Arutelulehekülgi]] kasutatakse pidamaks nõu selle üle, kuidas {{GRAMMAR:genitive|{{SITENAME}}}} sisu võimalikult heaks teha. Siin leheküljel saad alustada arutelu lehekülje [[:{{SUBJECTPAGENAME}}]] parandamise üle.",
@@ -52,6 +54,7 @@
 	"discussiontools-findcomment-title": "Kommentaari leidmine",
 	"discussiontools-ledesection-button": "Lisateave selle lehekülje kohta",
 	"discussiontools-ledesection-title": "Selle lehekülje kohta",
+	"discussiontools-limitreport-errorreqid": "DiscussionToolsi veapäringu ID",
 	"discussiontools-limitreport-timeusage": "DiscussionToolsi ajakasutus",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekundit}}",
 	"discussiontools-newtopic-missing-title": "Palun pealkirjasta aruteluteema. Kui klõpsad nuppu \"{{int:discussiontools-replywidget-newtopic}}\", lisatakse teema ilma pealkirjata.",
@@ -88,6 +91,7 @@
 	"discussiontools-preference-autotopicsub": "Telli teemad automaatselt",
 	"discussiontools-preference-autotopicsub-help": "Kui alustad uut arutelu või postitad kommentaari olemasolevasse arutelusse, siis saad hiljem automaatselt teavituse, kui keegi teine kommenteerib seda teemat.",
 	"discussiontools-preference-description": "Kasuta arutelulehekülgedel katselisi funktsioone:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Näita metaandmeid] iga arutelu kohta ja kasuta uut lehekülje paigutust.\n\nSaad [[Special:Preferences#mw-prefsection-editing-discussion|eelistustes]] neid funktsioone kohandada.\n\nUuendused postitatakse [https://www.mediawiki.org/wiki/Talk_pages_project/Updates arutelulehekülgede projekti uuenduste leheküljele].\n\nPane tähele:\n* Ajapikku lisatakse uusi katselisi funktsioone.\n* Mõni eespool mainitud funktsioon ei pruugi olla sinu vikis veel saadaval.",
+	"discussiontools-preference-gadget-conflict": "Kiire vastamise lubamiseks pead esmalt enda eelistustes [[$1|keelama tööriista Convenient Discussions]].",
 	"discussiontools-preference-label": "Arutelutööriistad",
 	"discussiontools-preference-newtopictool": "Kasuta kiiret teema lisamist",
 	"discussiontools-preference-newtopictool-createpage": "Kui lähen aruteluleheküljele, mida pole veel alustatud, siis",
@@ -116,6 +120,7 @@
 	"discussiontools-replywidget-autocreate-warning": "<strong>Sa pole sisse logitud.</strong> Kui teed muudatuse, luuakse sulle ajutine konto. [[$3|Loe veel]]. <strong>[$1 Logi sisse]</strong> või <strong>[$2 loo konto]</strong>, et saada teavitusi ka pärast selle konto aegumist ja et pääseda juurde teistele funktsioonidele.",
 	"discussiontools-replywidget-cancel": "Loobu",
 	"discussiontools-replywidget-feedback": "Jaga selle funktsiooni kohta tagasisidet",
+	"discussiontools-replywidget-keyboard-shortcut-submit": "Kommentaari saatmiseks saad vajutada klahve $1",
 	"discussiontools-replywidget-loading": "Laadimine…",
 	"discussiontools-replywidget-mention-tool-header": "Leia kasutaja: $1",
 	"discussiontools-replywidget-mention-tool-title": "Maini kasutajat",
@@ -156,6 +161,8 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "tühista tellimus",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Tühista tellimus",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Tühista tellimus, et loobuda teavitustest uute kommentaaride kohta.",
+	"discussiontools-topicsubscription-error-not-found-body": "URL-is määratud tellimust ei leitud.",
+	"discussiontools-topicsubscription-error-not-found-title": "Tellimust ei leitud",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Saad teavitusi uute kommentaaride kohta sellel leheküljel.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Oled tellimuse esitanud!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Saa ei saa enam teavitusi uute kommentaaride kohta sellel leheküljel.",

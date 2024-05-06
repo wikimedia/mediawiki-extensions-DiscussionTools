@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"BlackShadowG",
 			"Colathewikian",
 			"Cosine02",
 			"Dianliang233",
@@ -94,10 +95,10 @@
 	"discussiontools-newtopicssubscription-button-subscribe-label": "订阅",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "订阅以在此页面上开始新话题时收到通知。",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "取消订阅",
-	"discussiontools-newtopicssubscription-button-unsubscribe-tooltip": "取消订阅以停止在此页面上开始新话题时收到通知。",
-	"discussiontools-newtopicssubscription-notify-subscribed-body": "{{GENDER:|您}}会在此页面上开始新话题时收到通知。",
+	"discussiontools-newtopicssubscription-button-unsubscribe-tooltip": "取消订阅以停止在此页面上出现新话题时收到通知。",
+	"discussiontools-newtopicssubscription-notify-subscribed-body": "{{GENDER:|您}}会在此页面上出现新话题时收到通知。",
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|您}}已订阅！",
-	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|您}}不再会在此页面上开始新话题时收到通知。",
+	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|您}}不再会在此页面上出现新话题时收到通知。",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|您}}已取消订阅。",
 	"discussiontools-notification-added-topic-header": "$2在<strong>$3</strong>上创建了新话题“<strong>$4</strong>”。",
 	"discussiontools-notification-added-topic-header-bundled": "“<strong>$2</strong>”上有{{PLURAL:$1|$1个新话题|100=超过99个新话题}}。",

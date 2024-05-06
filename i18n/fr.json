@@ -171,7 +171,7 @@
 	"discussiontools-target-comments-missing": "Les nouvelles réponses sont introuvables. Elles ont peut-être été supprimées ou déplacées.",
 	"discussiontools-target-heading-missing": "Ce sujet est introuvable. Il a peut-être été supprimé ou déplacé.",
 	"discussiontools-target-comment-found-moved": "Ce message est introuvable sur cette page, mais il existe sur {{PLURAL:$1|la page suivante|les pages suivantes}} :",
-	"discussiontools-target-heading-found-moved": "Ce sujet est introuvable sur cette page, mais il existe sur la {{PLURAL:$1| page|pages}} :",
+	"discussiontools-target-heading-found-moved": "Ce sujet est introuvable sur cette page, mais il existe sur la {{PLURAL:$1| page suivante|pages suivantes}} :",
 	"discussiontools-topicheader-authorcount": "$1 participant{{PLURAL:$1||s}} à la discussion",
 	"discussiontools-topicheader-commentcount": "$1 commentaire{{PLURAL:$1||s}}",
 	"discussiontools-topicheader-latestcomment": "Dernier commentaire : $1",
