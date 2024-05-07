@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Pikne"
+			"Pikne",
+			"Castellum",
+			"Cumbril"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Saad teavituse, kui keegi postitab sellesse arutelusse kommentaari. Saad eelistustes enda teavituste sätteid muuta.",
@@ -45,6 +47,7 @@
 	"discussiontools-findcomment-title": "Kommentaari leidmine",
 	"discussiontools-ledesection-button": "Lisateave selle lehekülje kohta",
 	"discussiontools-ledesection-title": "Selle lehekülje kohta",
+	"discussiontools-limitreport-errorreqid": "DiscussionToolsi veapäringu ID",
 	"discussiontools-limitreport-timeusage": "DiscussionToolsi ajakasutus",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekund|sekundit}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>See siin on uus vahend teema lisamiseks.</strong> Selle uuendusega saad lisada teema reasisese vormi kaudu ning saad teisi mainida uue otsetee abil. Samuti saad [$1 lülituda tagasi vanale vahendile].",
@@ -71,6 +74,7 @@
 	"discussiontools-preference-autotopicsub": "Telli teemad automaatselt",
 	"discussiontools-preference-autotopicsub-help": "Kui alustad uut arutelu või postitad kommentaari olemasolevasse arutelusse, siis saad hiljem automaatselt teavituse, kui keegi teine kommenteerib seda teemat.",
 	"discussiontools-preference-description": "Kasuta arutelulehekülgedel katselisi funktsioone:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Replying Vasta] arutelukommentaarile ühe klõpsuga.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/New_discussion Lisa uus teema], kasutades reasisest vormi.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Notifications Saa teavitus], kui sinu tellitud alaosasse lisatakse uus kommentaar.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Näita metaandmeid] iga arutelu kohta ja kasuta uut lehekülje paigutust.\n\nSaad [[Special:Preferences#mw-prefsection-editing-discussion|eelistustes]] neid funktsioone kohandada.\n\nUuendused postitatakse [https://www.mediawiki.org/wiki/Talk_pages_project/Updates arutelulehekülgede projekti uuenduste leheküljele].\n\nPane tähele:\n* Ajapikku lisatakse uusi katselisi funktsioone.\n* Mõni eespool mainitud funktsioon ei pruugi olla sinu vikis veel saadaval.",
+	"discussiontools-preference-gadget-conflict": "Kiire vastamise lubamiseks pead esmalt enda eelistustes [[$1|keelama tööriista Convenient Discussions]].",
 	"discussiontools-preference-label": "Arutelutööriistad",
 	"discussiontools-preference-newtopictool": "Kasuta kiiret teema lisamist",
 	"discussiontools-preference-newtopictool-createpage": "Kui lähen aruteluleheküljele, mida pole veel alustatud, siis",
@@ -131,6 +135,8 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "tühista tellimus",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Tühista tellimus",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Tühista tellimus, et loobuda teavitustest.",
+	"discussiontools-topicsubscription-error-not-found-body": "URL-is määratud tellimust ei leitud.",
+	"discussiontools-topicsubscription-error-not-found-title": "Tellimust ei leitud",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Saad teavitusi uute kommentaaride kohta sellel leheküljel.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Oled tellimuse esitanud!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Saa ei saa enam teavitusi uute kommentaaride kohta sellel leheküljel.",
