@@ -20,7 +20,9 @@
 			"Verdy p",
 			"Wladek92",
 			"SleaY",
-			"MacOS Weed"
+			"MacOS Weed",
+			"Alien333",
+			"Rayquachu"
 		]
 	},
 	"discussiontools": "Outils de discussion",
@@ -165,8 +167,8 @@
 	"discussiontools-replywidget-transcluded": "Votre commentaire sera enregistré dans [[$1]].",
 	"discussiontools-replywidget-watchthis": "Ajouter cette page à votre [[Special:Watchlist|liste de suivi]]",
 	"discussiontools-signature-prefix": "&#32;",
-	"discussiontools-target-comment-missing": "Ce commentaire est introuvable. Il peut avoir été supprimé ou déplacé.",
-	"discussiontools-target-comments-missing": "Les nouveaux commentaires sont introuvables. Ils peuvent avoir été supprimés ou déplacés.",
+	"discussiontools-target-comment-missing": "Ce message est introuvable. Il a peut-être été supprimé ou déplacé.",
+	"discussiontools-target-comments-missing": "Les nouvelles réponses sont introuvables. Elles ont peut-être été supprimées ou déplacées.",
 	"discussiontools-topicheader-authorcount": "$1 participant{{PLURAL:$1||s}} à la discussion",
 	"discussiontools-topicheader-commentcount": "$1 commentaire{{PLURAL:$1||s}}",
 	"discussiontools-topicheader-latestcomment": "Dernier commentaire : $1",
