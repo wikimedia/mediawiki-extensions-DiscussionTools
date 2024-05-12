@@ -92,18 +92,22 @@ class HookUtils {
 	 */
 	public static function hasPagePropCached( Title $title, string $prop ): bool {
 		Assert::parameter(
-			in_array( $prop, static::CACHED_PAGE_PROPS, true ),
+			in_array( $prop, self::CACHED_PAGE_PROPS, true ),
 			'$prop',
 			'must be one of the cached properties'
 		);
 		$id = $title->getArticleId();
-		if ( !isset( static::$propCache[ $id ] ) ) {
+		if ( !isset( self::$propCache[ $id ] ) ) {
 			$services = MediaWikiServices::getInstance();
 			// Always fetch all of our properties, we need to check several of them on most requests
-			static::$propCache +=
-				$services->getPageProps()->getProperties( $title, static::CACHED_PAGE_PROPS );
+			$pagePropsPerId = $services->getPageProps()->getProperties( $title, self::CACHED_PAGE_PROPS );
+			if ( $pagePropsPerId ) {
+				self::$propCache += $pagePropsPerId;
+			} else {
+				self::$propCache[ $id ] = [];
+			}
 		}
-		return isset( static::$propCache[ $id ][ $prop ] );
+		return isset( self::$propCache[ $id ][ $prop ] );
 	}
 
 	/**
