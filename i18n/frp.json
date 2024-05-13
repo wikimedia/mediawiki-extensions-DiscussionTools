@@ -4,10 +4,22 @@
 			"ChrisPtDe"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Rèponsa",
 	"discussiontools-replylink": "rèpondre",
+	"discussiontools-replywidget-advanced": "Avanciê",
 	"discussiontools-replywidget-cancel": "Anular",
 	"discussiontools-replywidget-mode-source": "Sôrsa",
 	"discussiontools-replywidget-mode-visual": "Visuâl",
 	"discussiontools-replywidget-placeholder-reply": "Rèpondre a {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Rèpondre"
+	"discussiontools-replywidget-preview": "Apèrçu",
+	"discussiontools-replywidget-reply": "Rèpondre",
+	"discussiontools-replywidget-summary": "Rèsumâ",
+	"discussiontools-replywidget-watchthis": "Apondre cela pâge a voutra [[Special:Watchlist|lista de gouârda]]",
+	"discussiontools-topicheader-authorcount": "$1 participent{{PLURAL:$1||s}} a la discussion",
+	"discussiontools-topicheader-commentcount": "$1 comentèro{{PLURAL:$1||s}}",
+	"discussiontools-topicheader-latestcomment": "Dèrriér comentèro : $1",
+	"discussiontools-topicsubscription-button-subscribe": "s’abonar",
+	"discussiontools-topicsubscription-button-subscribe-label": "S’abonar",
+	"discussiontools-topicsubscription-button-unsubscribe": "anular l’abonament",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Anular l’abonament"
 }

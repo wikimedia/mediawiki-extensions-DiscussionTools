@@ -34,7 +34,9 @@
 			"魔琴",
 			"Hehua",
 			"LittlePaw365",
-			"Xyb"
+			"Xyb",
+			"BlackShadowG",
+			"星海"
 		]
 	},
 	"discussiontools": "讨论工具",
@@ -111,8 +113,8 @@
 	"discussiontools-preference-newtopictool-help": "该功能会显示用于添加新话题的内联表单。",
 	"discussiontools-preference-replytool": "启用快速回复",
 	"discussiontools-preference-replytool-help": "该功能会显示一次点击即可回复讨论页留言的链接。",
-	"discussiontools-preference-sourcemodetoolbar": "在源代码模式内启用编辑工具",
-	"discussiontools-preference-sourcemodetoolbar-help": "该功能会给快速回复和快速添加话题功能的源代码模式添加工具栏，其中包含提及他人和添加链接的快捷方式。",
+	"discussiontools-preference-sourcemodetoolbar": "在源代码模式下启用编辑工具",
+	"discussiontools-preference-sourcemodetoolbar-help": "该功能将在快速回复和快速添加话题功能的源代码模式中添加工具栏，包含提及他人和添加链接的快捷方式。",
 	"discussiontools-preference-summary": "您可以阅读[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary 功能摘要]了解更多有关这些功能的信息。",
 	"discussiontools-preference-topicsubscription": "启用话题订阅",
 	"discussiontools-preference-topicsubscription-help": "该功能允许您订阅单个话题以收到话题新留言的通知。",
