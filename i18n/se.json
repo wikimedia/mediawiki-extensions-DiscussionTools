@@ -46,7 +46,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Ođđaseamos kommentára čálii $1 geavaheaddji $2",
 	"discussiontools-pagetitle-newtopic": "Álggaheame ođđa fáttá $1'as/is",
 	"discussiontools-pagetitle-reply": "Vástideame $1",
-	"discussiontools-postedit-confirmation-published": "Du kommentára almmuhuvvui ",
+	"discussiontools-postedit-confirmation-published": "Du kommentára almmuhuvvui",
 	"discussiontools-postedit-confirmation-topicadded": "Du fáddá lasihuvvui",
 	"discussiontools-preference-autotopicsub": "Diŋgo fáttáid automáhtalaččat",
 	"discussiontools-preference-label": "Ságastallanreaiddut",
@@ -59,8 +59,8 @@
 	"discussiontools-preference-replytool-help": "Dát čájeha dutnje liŋkka, mainna sáhtát vástidit kommentáraide ságastallansiiddus go deaddilat dan oktii.",
 	"discussiontools-preference-sourcemodetoolbar": "Váldde rievdadanreaidduid atnui gáldomodusis",
 	"discussiontools-preference-topicsubscription": "Váldde fáttáid diŋgojumi atnui",
-	"discussiontools-preference-topicsubscription-help": "Dat dikta du diŋgot vai oaččut almmuhusaid kommentáraid birra individuála fáttáin. ",
-	"discussiontools-preference-visualenhancements": "Čájet aktivitehta ságastallansiidduin ",
+	"discussiontools-preference-topicsubscription-help": "Dat dikta du diŋgot vai oaččut almmuhusaid kommentáraid birra individuála fáttáin.",
+	"discussiontools-preference-visualenhancements": "Čájet aktivitehta ságastallansiidduin",
 	"discussiontools-replybutton": "Vástit",
 	"discussiontools-replylink": "vástit",
 	"discussiontools-replywidget-abandon-discard": "Healbat kommentára",
@@ -115,5 +115,5 @@
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vástádus]",
 	"tag-discussiontools-reply-description": "Geavaheaddji vástidii kommentárii DiscussionTools'ain",
 	"tag-discussiontools-source-description": "DiscussionTools lei gáldomodusis",
-	"tag-discussiontools-source-enhanced-description": "DiscussionTools lei viiddiduvvon gáldomodusis reaidolinnjás "
+	"tag-discussiontools-source-enhanced-description": "DiscussionTools lei viiddiduvvon gáldomodusis reaidolinnjás"
 }

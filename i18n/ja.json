@@ -30,7 +30,8 @@
 			"LaMagiaaa",
 			"Whym",
 			"Yushu-kasai",
-			"Waki285"
+			"Waki285",
+			"Amayus"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -125,7 +126,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "トピックを破棄",
 	"discussiontools-replywidget-abandontopic-keep": "編集を続行",
 	"discussiontools-replywidget-advanced": "高度",
-	"discussiontools-replywidget-anon-warning": "<strong>あなたはログインしていません。</strong>誰かが変身したときに通知を受け取り、帰属としてIPアドレスではなくご自分の名前を表示させるには、[$1 ログイン]または[$2 アカウントを作成]してください。",
+	"discussiontools-replywidget-anon-warning": "<strong>あなたはログインしていません。</strong> 誰かが返信した際に通知を受け取り、IPアドレスではなくあなた自身の名前で帰属表示する場合、[$1 ログイン]するか[$2 アカウントを作成]してください。",
 	"discussiontools-replywidget-cancel": "中止",
 	"discussiontools-replywidget-feedback": "この機能についてフィードバックする",
 	"discussiontools-replywidget-feedback-link": "https://www.mediawiki.org/wiki/Talk:Talk_pages_project/Replying",
