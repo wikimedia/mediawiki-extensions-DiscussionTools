@@ -167,6 +167,7 @@
 	"discussiontools-target-comment-missing": "No se pudo encontrar este comentario. Podría haber sido eliminado o movido.",
 	"discussiontools-target-comments-missing": "No se pudieron encontrar nuevos comentarios. Podrían haber sido eliminados o movidos.",
 	"discussiontools-target-heading-missing": "No se pudo encontrar este tema. Puede que se haya eliminado o movido.",
+	"discussiontools-target-heading-found-moved": "Este tema no se pudo encontrar en esta página, pero existe en l{{plural:$1|a siguiente página|as siguientes páginas}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|usuario|usuarios}} en la discusión",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comentario|comentarios}}",
 	"discussiontools-topicheader-latestcomment": "Último comentario: $1",
