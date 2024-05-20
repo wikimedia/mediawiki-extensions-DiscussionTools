@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"BivutiChakma"
+		]
+	},
+	"discussiontools-autotopicsubpopup-dismiss": "𑄃𑄨𑄀, 𑄟𑄪𑄭 𑄝𑄪𑄏𑄨 𑄛𑄌𑄴𑄮𑄋𑄴𑅁",
+	"discussiontools-autotopicsubpopup-preferences": "𑄢𑄬𑄜𑄢𑄬𑄚𑄴𑄥𑄴 𑄥𑄮𑄢𑄴𑄉𑄧𑄢𑄚",
+	"discussiontools-autotopicsubpopup-title": "{{GENDER:|𑄖𑄧𑄢𑄴}} 𑄥𑄝𑄴𑄥𑄴𑄇𑄳𑄢𑄭𑄝𑄴 𑄉𑄧𑄢 𑄦𑄮𑄠𑄬",
+	"discussiontools-defaultsummary-reply": "𑄡𑄮𑄛𑄴 𑄘𑄬𑄚",
+	"discussiontoolsdebug-title": "𑄑𑄬𑄟𑄴𑄟𑄋𑄴 𑄥𑄮𑄣𑄴𑄪𑄇𑄴 𑄦𑄌𑄴𑄖𑄬𑄠𑄢𑄴 𑄓𑄑 𑄃𑄬𑄥𑄴𑄑𑄳𑄢𑄇𑄴𑄌𑄢𑄴",
+	"discussiontoolsdebug-pagetitle": "𑄛𑄘 𑄑𑄭𑄑𑄧𑄣𑄴",
+	"discussiontools-replylink": "{{GENDER:|𑄡𑄮𑄛𑄴 𑄘𑄬𑄚}}",
+	"discussiontools-replywidget-advanced": "𑄃𑄇𑄴𑄮𑄃𑄨𑄗𑄚",
+	"discussiontools-replywidget-cancel": "𑄝𑄖𑄴 𑄘𑄬𑄚",
+	"discussiontools-replywidget-mode-source": "𑄥𑄮𑄢𑄴𑄥𑄴",
+	"discussiontools-replywidget-mode-visual": "𑄞𑄨𑄡𑄪𑄠𑄣𑄴",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|𑄡𑄮𑄛𑄴 𑄘𑄬𑄚}} 𑄃𑄨𑄚𑄴𑄘𑄨 {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "𑄛𑄳𑄢𑄨𑄞𑄨𑄅",
+	"discussiontools-replywidget-reply": "{{GENDER:|𑄡𑄮𑄛𑄴 𑄘𑄬𑄚}}",
+	"discussiontools-replywidget-summary": "𑄥𑄟𑄢𑄨",
+	"discussiontools-replywidget-watchthis": "𑄃𑄬𑄭 𑄛𑄘𑄊𑄚𑄴 𑄡𑄮𑄇𑄴 𑄉𑄧𑄢𑄴 𑄖𑄧 𑄃𑄨𑄠𑄮𑄖𑄴 [[Special:Watchlist|watchlist]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|𑄟𑄚𑄪𑄌𑄴|𑄟𑄚𑄬𑄭𑄣𑄧𑄇𑄴}} 𑄖𑄬𑄟𑄴𑄟𑄋𑄴 𑄥𑄮𑄣𑄴𑄪𑄇𑄮𑄖𑄴",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|𑄇𑄧𑄟𑄬𑄚𑄴𑄑𑄴|𑄇𑄧𑄟𑄬𑄚𑄴𑄑𑄚𑄨}}",
+	"discussiontools-topicheader-latestcomment": "𑄝𑄬𑄊𑄧 𑄡𑄬𑄢𑄬 𑄇𑄧𑄟𑄬𑄚𑄴𑄑𑄴: $1",
+	"discussiontools-topicsubscription-button-subscribe": "𑄥𑄝𑄴𑄇𑄳𑄢𑄭𑄛𑄴",
+	"discussiontools-topicsubscription-button-subscribe-label": "𑄃𑄚𑄴-𑄥𑄝𑄴𑄇𑄳𑄢𑄭𑄛𑄴",
+	"discussiontools-topicsubscription-button-unsubscribe": "𑄃𑄚𑄴-𑄥𑄝𑄴𑄇𑄳𑄢𑄭𑄝𑄴",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "𑄃𑄚𑄴-𑄥𑄝𑄴𑄇𑄳𑄢𑄭𑄝𑄴",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|𑄖𑄪𑄭}} 𑄃𑄬𑄭 𑄑𑄮𑄛𑄨𑄉𑄮𑄖𑄴 𑄚𑄱 𑄇𑄧𑄟𑄬𑄚𑄴𑄑𑄧𑄢𑄴 𑄚𑄮𑄑𑄨𑄜𑄨𑄇𑄬𑄥𑄧𑄚𑄴 𑄛𑄬𑄝𑄬𑅁",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|𑄖𑄪𑄭}} 𑄥𑄝𑄴𑄇𑄳𑄢𑄭𑄛𑄴𑄓𑄴 𑄉𑄮𑄌𑄴𑄮𑄌𑄴!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|𑄖𑄪𑄭}} 𑄃𑄬𑄭 𑄑𑄮𑄛𑄨𑄉𑄮𑄖𑄴 𑄚𑄱 𑄇𑄧𑄟𑄬𑄚𑄴𑄑𑄧 𑄅𑄉𑄪𑄢𑄬 𑄇𑄧𑄚𑄧 𑄚𑄮𑄑𑄨𑄜𑄨𑄇𑄬𑄥𑄧𑄚𑄴 𑄛𑄬𑄘𑄬 𑄚𑄧𑄠𑄴𑅁",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|𑄖𑄪𑄭}} 𑄃𑄚𑄴-𑄥𑄝𑄴𑄇𑄳𑄢𑄭𑄝𑄴𑄓𑄴 𑄦𑄮𑄠𑄮𑄌𑄴𑅁"
+}
