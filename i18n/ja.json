@@ -31,7 +31,8 @@
 			"春春眠眠",
 			"青子守歌",
 			"Waki285",
-			"Amayus"
+			"Amayus",
+			"Ant176"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -72,7 +73,7 @@
 	"discussiontools-findcomment-results-notcurrent": "（現在の版になし）",
 	"discussiontools-findcomment-results-transcluded": "（他のページから参照読み込み）",
 	"discussiontools-findcomment-title": "コメントを探す",
-	"discussiontools-ledesection-button": "このページについて詳細を知るには",
+	"discussiontools-ledesection-button": "このページについての詳細",
 	"discussiontools-ledesection-title": "このトークページについて",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools エラー問い合わせ ID",
 	"discussiontools-limitreport-timeusage": "DiscussionTools 使用時間",
