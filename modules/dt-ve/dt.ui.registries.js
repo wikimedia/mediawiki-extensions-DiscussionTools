@@ -1,6 +1,6 @@
 // Adapted from ve.ui.MWWikitextDataTransferHandlerFactory
 function importRegistry( parent, child ) {
-	var name;
+	let name;
 	// Copy existing items
 	for ( name in parent.registry ) {
 		child.register( parent.registry[ name ] );

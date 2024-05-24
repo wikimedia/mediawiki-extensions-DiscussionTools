@@ -4,6 +4,7 @@
 # Build
 /vendor/
 /coverage/
+/docs/
 
 # Language files written automatically by TranslateWiki
 /i18n/**/*.json

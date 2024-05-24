@@ -67,12 +67,12 @@ NewTopicController.static.suppressedEditNotices = [
  * @inheritdoc
  */
 NewTopicController.prototype.setup = function ( mode ) {
-	var rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
+	const rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
 
 	// Insert directly after the page content on already existing pages
 	// (.mw-parser-output is missing on non-existent pages)
-	var $parserOutput = this.$pageContainer.find( '.mw-parser-output' ).first();
-	var $mobileAddTopicWrapper = this.$pageContainer.find( '.ext-discussiontools-init-new-topic' );
+	const $parserOutput = this.$pageContainer.find( '.mw-parser-output' ).first();
+	const $mobileAddTopicWrapper = this.$pageContainer.find( '.ext-discussiontools-init-new-topic' );
 	if ( $parserOutput.length ) {
 		$parserOutput.after( this.container.$element );
 	} else if ( $mobileAddTopicWrapper.length ) {
@@ -109,19 +109,19 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 	NewTopicController.super.prototype.setupReplyWidget.apply( this, arguments );
 
 	this.$notices.empty();
-	for ( var noticeName in this.replyWidget.commentDetails.notices ) {
+	for ( const noticeName in this.replyWidget.commentDetails.notices ) {
 		if ( this.constructor.static.suppressedEditNotices.indexOf( noticeName ) !== -1 ) {
 			continue;
 		}
-		var noticeItem = this.replyWidget.commentDetails.notices[ noticeName ];
-		var $noticeElement = $( '<div>' )
+		const noticeItem = this.replyWidget.commentDetails.notices[ noticeName ];
+		const $noticeElement = $( '<div>' )
 			.addClass( 'ext-discussiontools-ui-replyWidget-notice' )
 			.html( typeof noticeItem === 'string' ? noticeItem : noticeItem.message );
 		this.$notices.append( $noticeElement );
 	}
 	mw.hook( 'wikipage.content' ).fire( this.$notices );
 
-	var title = this.replyWidget.storage.get( 'title' );
+	const title = this.replyWidget.storage.get( 'title' );
 	if ( title && !this.sectionTitle.getValue() ) {
 		// Don't overwrite if the user has already typed something in while the widget was loading.
 		// TODO This should happen immediately rather than waiting for the reply widget to load,
@@ -130,7 +130,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 		this.prevTitleText = title;
 
 		if ( this.replyWidget.storage.get( 'summary' ) === null ) {
-			var generatedSummary = this.generateSummary( title );
+			const generatedSummary = this.generateSummary( title );
 			this.replyWidget.editSummaryInput.setValue( generatedSummary );
 		}
 	}
@@ -180,8 +180,8 @@ NewTopicController.prototype.onReplyWidgetClearStorage = function () {
 
 NewTopicController.prototype.storeEditSummary = function () {
 	if ( this.replyWidget ) {
-		var currentSummary = this.replyWidget.editSummaryInput.getValue();
-		var generatedSummary = this.generateSummary( this.sectionTitle.getValue() );
+		const currentSummary = this.replyWidget.editSummaryInput.getValue();
+		const generatedSummary = this.generateSummary( this.sectionTitle.getValue() );
 		if ( currentSummary === generatedSummary ) {
 			// Do not store generated summaries (T315730)
 			this.replyWidget.storage.remove( 'summary' );
@@ -202,7 +202,7 @@ NewTopicController.prototype.onReplyWidgetTeardown = function ( abandoned ) {
 	this.container.$element.detach();
 
 	if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
-		var url = new URL( location.href );
+		const url = new URL( location.href );
 		url.searchParams.delete( 'action' );
 		url.searchParams.delete( 'veaction' );
 		url.searchParams.delete( 'section' );
@@ -244,11 +244,11 @@ NewTopicController.prototype.getUnsupportedNodeSelectors = function () {
  * @inheritdoc
  */
 NewTopicController.prototype.getApiQuery = function ( pageName, checkboxes ) {
-	var data = NewTopicController.super.prototype.getApiQuery.call( this, pageName, checkboxes );
+	let data = NewTopicController.super.prototype.getApiQuery.call( this, pageName, checkboxes );
 
 	// Rebuild the tags array and remove the reply tag
-	var tags = ( data.dttags || '' ).split( ',' );
-	var replyTag = tags.indexOf( 'discussiontools-reply' );
+	const tags = ( data.dttags || '' ).split( ',' );
+	const replyTag = tags.indexOf( 'discussiontools-reply' );
 	if ( replyTag !== -1 ) {
 		tags.splice( replyTag, 1 );
 	}
@@ -290,16 +290,16 @@ NewTopicController.prototype.generateSummary = function ( titleText ) {
  * @private
  */
 NewTopicController.prototype.onSectionTitleChange = function () {
-	var titleText = this.sectionTitle.getValue();
-	var prevTitleText = this.prevTitleText;
+	const titleText = this.sectionTitle.getValue();
+	const prevTitleText = this.prevTitleText;
 
 	if ( prevTitleText !== titleText ) {
 		this.replyWidget.storage.set( 'title', titleText );
 
-		var generatedSummary = this.generateSummary( titleText );
-		var generatedPrevSummary = this.generateSummary( prevTitleText );
+		const generatedSummary = this.generateSummary( titleText );
+		const generatedPrevSummary = this.generateSummary( prevTitleText );
 
-		var currentSummary = this.replyWidget.editSummaryInput.getValue();
+		const currentSummary = this.replyWidget.editSummaryInput.getValue();
 
 		// Fill in edit summary if it was not modified by the user yet
 		if ( currentSummary === generatedPrevSummary ) {
@@ -318,13 +318,13 @@ NewTopicController.prototype.onSectionTitleChange = function () {
  * @private
  */
 NewTopicController.prototype.onBodyFocus = function () {
-	var offsetBefore = this.replyWidget.$element.offset().top;
-	var rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
-	var scrollBefore = rootScrollable.scrollTop;
+	const offsetBefore = this.replyWidget.$element.offset().top;
+	const rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
+	const scrollBefore = rootScrollable.scrollTop;
 
 	this.checkSectionTitleValidity();
 
-	var offsetChange = this.replyWidget.$element.offset().top - offsetBefore;
+	const offsetChange = this.replyWidget.$element.offset().top - offsetBefore;
 	// Ensure the rest of the widget doesn't move when the validation
 	// message is triggered by a focus. (T275923)
 	// Browsers sometimes also scroll in response to focus events,

@@ -8,14 +8,14 @@ function init( $container, pageThreads ) {
 	mw.loader.using( [ 'oojs-ui-widgets', 'oojs-ui.styles.icons-editing-core' ] ).then( () => {
 		$container.find( '.ext-discussiontools-init-section-overflowMenuButton' ).each( ( i, button ) => {
 			// Comment ellipsis
-			var $threadMarker = $( button ).closest( '[data-mw-thread-id]' );
+			let $threadMarker = $( button ).closest( '[data-mw-thread-id]' );
 			if ( !$threadMarker.length ) {
 				// Heading ellipsis
 				$threadMarker = $( button ).closest( '.ext-discussiontools-init-section' ).find( '[data-mw-thread-id]' );
 			}
-			var threadItem = pageThreads.findCommentById( $threadMarker.data( 'mw-thread-id' ) );
+			const threadItem = pageThreads.findCommentById( $threadMarker.data( 'mw-thread-id' ) );
 
-			var buttonMenu = OO.ui.infuse( button, {
+			const buttonMenu = OO.ui.infuse( button, {
 				$overlay: true,
 				menu: {
 					classes: [ 'ext-discussiontools-init-section-overflowMenu' ],
@@ -24,13 +24,13 @@ function init( $container, pageThreads ) {
 			} );
 
 			mw.loader.using( buttonMenu.getData().resourceLoaderModules || [] ).then( () => {
-				var itemConfigs = buttonMenu.getData().itemConfigs;
+				const itemConfigs = buttonMenu.getData().itemConfigs;
 				if ( !itemConfigs ) {
 					// We should never have missing itemConfigs, but if this happens, hide the empty menu
 					buttonMenu.toggle( false );
 					return;
 				}
-				var overflowMenuItemWidgets = itemConfigs.map( ( itemConfig ) => new OO.ui.MenuOptionWidget( itemConfig ) );
+				const overflowMenuItemWidgets = itemConfigs.map( ( itemConfig ) => new OO.ui.MenuOptionWidget( itemConfig ) );
 				buttonMenu.getMenu().addItems( overflowMenuItemWidgets );
 				buttonMenu.getMenu().items.forEach( ( menuItem ) => {
 					mw.hook( 'discussionToolsOverflowMenuOnAddItem' ).fire( menuItem.getData().id, menuItem, threadItem );

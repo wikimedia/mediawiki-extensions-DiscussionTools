@@ -61,9 +61,9 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 	// by an older version of our PHP code. Code below must be able to handle that.
 	// See ThreadItem::jsonSerialize() in PHP.
 
-	var hash = typeof json === 'string' ? JSON.parse( json ) : json;
+	const hash = typeof json === 'string' ? JSON.parse( json ) : json;
 
-	var item;
+	let item;
 	switch ( hash.type ) {
 		case 'comment':
 			// Late require to avoid circular dependency
@@ -102,9 +102,9 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 
 	item.rootNode = rootNode;
 
-	var idEscaped = $.escapeSelector( item.id );
-	var startMarker = document.getElementById( item.id );
-	var endMarker = document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' );
+	const idEscaped = $.escapeSelector( item.id );
+	const startMarker = document.getElementById( item.id );
+	const endMarker = document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' );
 
 	item.range = {
 		// Start range after startMarker, because it produces funny results from getBoundingClientRect
@@ -125,10 +125,10 @@ ThreadItem.prototype.calculateThreadSummary = function () {
 	if ( this.authors ) {
 		return;
 	}
-	var authors = {};
-	var commentCount = 0;
-	var oldestReply = null;
-	var latestReply = null;
+	const authors = {};
+	let commentCount = 0;
+	let oldestReply = null;
+	let latestReply = null;
 	function threadScan( comment ) {
 		if ( comment.type === 'comment' ) {
 			authors[ comment.author ] = authors[ comment.author ] || {
@@ -214,7 +214,7 @@ ThreadItem.prototype.getOldestReply = function () {
  * @return {ThreadItem[]} Thread items
  */
 ThreadItem.prototype.getThreadItemsBelow = function () {
-	var threadItems = [];
+	const threadItems = [];
 	function getReplies( comment ) {
 		threadItems.push( comment );
 		comment.replies.forEach( getReplies );
@@ -231,8 +231,8 @@ ThreadItem.prototype.getThreadItemsBelow = function () {
  * @return {Range}
  */
 ThreadItem.prototype.getRange = function () {
-	var doc = this.range.startContainer.ownerDocument;
-	var nativeRange = doc.createRange();
+	const doc = this.range.startContainer.ownerDocument;
+	const nativeRange = doc.createRange();
 	nativeRange.setStart( this.range.startContainer, this.range.startOffset );
 	nativeRange.setEnd( this.range.endContainer, this.range.endOffset );
 	return nativeRange;

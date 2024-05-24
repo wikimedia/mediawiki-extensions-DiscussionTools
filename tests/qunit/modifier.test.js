@@ -6,36 +6,36 @@ var
 QUnit.module( 'mw.dt.modifier', QUnit.newMwEnvironment() );
 
 require( '../cases/modified.json' ).forEach( ( caseItem ) => {
-	var testName = '#addListItem/#removeAddedListItem (' + caseItem.name + ')';
+	const testName = '#addListItem/#removeAddedListItem (' + caseItem.name + ')';
 	// This should be one test with many cases, rather than multiple tests, but the cases are large
 	// enough that processing all of them at once causes timeouts in Karma test runner.
-	var skipTests = require( '../skip.json' )[ 'cases/modified.json' ];
+	const skipTests = require( '../skip.json' )[ 'cases/modified.json' ];
 	if ( skipTests.indexOf( caseItem.name ) !== -1 ) {
 		QUnit.skip( testName );
 		return;
 	}
 	QUnit.test( testName, ( assert ) => {
-		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
+		const dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data );
 
 		testUtils.overrideMwConfig( config );
 
-		var expectedHtml = testUtils.getThreadContainer( expected ).innerHTML;
-		var reverseExpectedHtml = testUtils.getThreadContainer( dom ).innerHTML;
+		const expectedHtml = testUtils.getThreadContainer( expected ).innerHTML;
+		const reverseExpectedHtml = testUtils.getThreadContainer( dom ).innerHTML;
 
-		var container = testUtils.getThreadContainer( dom );
-		var title = mw.Title.newFromText( caseItem.title );
-		var threadItemSet = new Parser( data ).parse( container, title );
-		var comments = threadItemSet.getCommentItems();
+		const container = testUtils.getThreadContainer( dom );
+		const title = mw.Title.newFromText( caseItem.title );
+		const threadItemSet = new Parser( data ).parse( container, title );
+		const comments = threadItemSet.getCommentItems();
 
 		// Add a reply to every comment. Note that this inserts *all* of the replies, unlike the real
 		// thing, which only deals with one at a time. This isn't ideal but resetting everything after
 		// every reply would be super slow.
-		var nodes = [];
+		const nodes = [];
 		comments.forEach( ( comment ) => {
-			var node = modifier.addListItem( comment, caseItem.replyIndentation || 'invisible' );
+			const node = modifier.addListItem( comment, caseItem.replyIndentation || 'invisible' );
 			node.textContent = 'Reply to ' + comment.id;
 			nodes.push( node );
 		} );
@@ -43,7 +43,7 @@ require( '../cases/modified.json' ).forEach( ( caseItem ) => {
 		// Uncomment this to get updated content for the "modified HTML" files, for copy/paste:
 		// console.log( container.innerHTML );
 
-		var actualHtml = container.innerHTML;
+		const actualHtml = container.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,
@@ -56,7 +56,7 @@ require( '../cases/modified.json' ).forEach( ( caseItem ) => {
 			modifier.removeAddedListItem( node );
 		} );
 
-		var reverseActualHtml = container.innerHTML;
+		const reverseActualHtml = container.innerHTML;
 		assert.strictEqual(
 			reverseActualHtml,
 			reverseExpectedHtml,
@@ -66,26 +66,26 @@ require( '../cases/modified.json' ).forEach( ( caseItem ) => {
 } );
 
 QUnit.test( '#addReplyLink', ( assert ) => {
-	var cases = require( '../cases/reply.json' );
+	const cases = require( '../cases/reply.json' );
 
 	cases.forEach( ( caseItem ) => {
-		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
+		const dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = ve.createDocumentFromHtml( require( '../' + caseItem.expected ) ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data );
 
 		testUtils.overrideMwConfig( config );
 
-		var expectedHtml = testUtils.getThreadContainer( expected ).innerHTML;
+		const expectedHtml = testUtils.getThreadContainer( expected ).innerHTML;
 
-		var container = testUtils.getThreadContainer( dom );
-		var title = mw.Title.newFromText( caseItem.title );
-		var threadItemSet = new Parser( data ).parse( container, title );
-		var comments = threadItemSet.getCommentItems();
+		const container = testUtils.getThreadContainer( dom );
+		const title = mw.Title.newFromText( caseItem.title );
+		const threadItemSet = new Parser( data ).parse( container, title );
+		const comments = threadItemSet.getCommentItems();
 
 		// Add a reply link to every comment.
 		comments.forEach( ( comment ) => {
-			var linkNode = document.createElement( 'a' );
+			const linkNode = document.createElement( 'a' );
 			linkNode.textContent = 'Reply';
 			linkNode.href = '#';
 			modifier.addReplyLink( comment, linkNode );
@@ -94,7 +94,7 @@ QUnit.test( '#addReplyLink', ( assert ) => {
 		// Uncomment this to get updated content for the "reply HTML" files, for copy/paste:
 		// console.log( container.innerHTML );
 
-		var actualHtml = container.innerHTML;
+		const actualHtml = container.innerHTML;
 
 		assert.strictEqual(
 			actualHtml,
@@ -105,10 +105,10 @@ QUnit.test( '#addReplyLink', ( assert ) => {
 } );
 
 QUnit.test( '#unwrapList', ( assert ) => {
-	var cases = require( '../cases/unwrap.json' );
+	const cases = require( '../cases/unwrap.json' );
 
 	cases.forEach( ( caseItem ) => {
-		var container = document.createElement( 'div' );
+		const container = document.createElement( 'div' );
 
 		container.innerHTML = caseItem.html;
 		modifier.unwrapList( container.childNodes[ caseItem.index || 0 ] );
@@ -122,7 +122,7 @@ QUnit.test( '#unwrapList', ( assert ) => {
 } );
 
 QUnit.test( 'sanitizeWikitextLinebreaks', ( assert ) => {
-	var cases = require( '../cases/sanitize-wikitext-linebreaks.json' );
+	const cases = require( '../cases/sanitize-wikitext-linebreaks.json' );
 
 	cases.forEach( ( caseItem ) => {
 		assert.strictEqual(

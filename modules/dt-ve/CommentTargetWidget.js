@@ -11,7 +11,7 @@ require( './CommentTarget.js' );
  * @param {Object} [config] Configuration options
  */
 function CommentTargetWidget( replyWidget, config ) {
-	var excludeCommands = [
+	let excludeCommands = [
 		'blockquoteWrap', // T258194
 		// Disable to allow Tab/Shift+Tab to move focus out of the widget (T172694)
 		'indent',
@@ -75,7 +75,7 @@ CommentTargetWidget.prototype.createTarget = function () {
  * @inheritdoc
  */
 CommentTargetWidget.prototype.setDocument = function ( docOrHtml ) {
-	var mode = this.target.getDefaultMode(),
+	const mode = this.target.getDefaultMode(),
 		doc = ( mode === 'visual' && typeof docOrHtml === 'string' ) ?
 			this.target.parseDocument( docOrHtml ) :
 			docOrHtml,

@@ -40,7 +40,7 @@ DmMWPingNode.static.matchFunction = function () {
 DmMWPingNode.static.disallowedAnnotationTypes = [ 'link' ];
 
 DmMWPingNode.static.toDomElements = function ( dataElement, doc, converter ) {
-	var domElements,
+	let domElements,
 		prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
 		suffix = mw.msg( 'discussiontools-replywidget-mention-suffix' ),
 		title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, dataElement.attributes.user );

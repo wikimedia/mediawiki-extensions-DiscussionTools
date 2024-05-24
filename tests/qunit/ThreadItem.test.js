@@ -5,10 +5,10 @@ var
 QUnit.module( 'mw.dt.ThreadItem', QUnit.newMwEnvironment() );
 
 QUnit.test( '#getAuthorsBelow/#getThreadItemsBelow', ( assert ) => {
-	var cases = require( '../cases/authors.json' );
+	const cases = require( '../cases/authors.json' );
 
 	function newFromJSON( json ) {
-		var item;
+		let item;
 		if ( json.type === 'heading' ) {
 			item = new HeadingItem();
 		} else {
@@ -22,7 +22,7 @@ QUnit.test( '#getAuthorsBelow/#getThreadItemsBelow', ( assert ) => {
 	}
 
 	cases.forEach( ( caseItem ) => {
-		var threadItem = newFromJSON( caseItem.thread ),
+		const threadItem = newFromJSON( caseItem.thread ),
 			authors = threadItem.getAuthorsBelow();
 
 		assert.deepEqual(

@@ -63,7 +63,7 @@ mw.dt.init = function ( $container ) {
 	// If it's a full page live preview, (re)initialize to support highlighting comments (T309423)
 	// FIXME This really should not depend on implementation details of 2 different live previews
 	// FIXME VisualEditor (2017WTE) preview can't be supported, because it messes with `id` attributes
-	var livePreviewSelectors = '#wikiPreview, .ext-WikiEditor-realtimepreview-preview';
+	const livePreviewSelectors = '#wikiPreview, .ext-WikiEditor-realtimepreview-preview';
 	if ( $container.parent().is( livePreviewSelectors ) ) {
 		reallyInit( $container );
 		return;
@@ -94,7 +94,7 @@ if ( mw.config.get( 'wgAction' ) === 'history' ) {
 // TODO: Remove this code after a few weeks.
 mw.requestIdleCallback( () => {
 	try {
-		for ( var key in localStorage ) {
+		for ( const key in localStorage ) {
 			if ( key.startsWith( 'reply/' ) ) {
 				localStorage.removeItem( key );
 				localStorage.removeItem( '_EXPIRY_' + key );

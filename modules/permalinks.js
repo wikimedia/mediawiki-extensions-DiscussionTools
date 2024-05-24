@@ -5,10 +5,10 @@ function init( $pageContainer ) {
 }
 
 function copyLink( link ) {
-	var $win = $( window );
-	var scrollTop = $win.scrollTop();
+	const $win = $( window );
+	const scrollTop = $win.scrollTop();
 
-	var $tmpInput = $( '<input>' )
+	const $tmpInput = $( '<input>' )
 		.val( link )
 		.addClass( 'noime' )
 		.css( {
@@ -18,7 +18,7 @@ function copyLink( link ) {
 		.appendTo( 'body' )
 		.trigger( 'focus' );
 	$tmpInput[ 0 ].setSelectionRange( 0, link.length );
-	var copied;
+	let copied;
 	try {
 		copied = document.execCommand( 'copy' );
 	} catch ( err ) {

@@ -31,7 +31,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.pending = false;
 	this.isTornDown = false;
 	this.commentController = commentController;
-	var threadItem = commentController.getThreadItem();
+	const threadItem = commentController.getThreadItem();
 	this.commentDetails = commentDetails;
 	this.isNewTopic = !!threadItem.isNewTopic;
 	this.pageName = commentDetails.pageName;
@@ -39,7 +39,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	// pageExists can only be false for the new comment tool, so we
 	// don't need to worry about transcluded replies.
 	this.pageExists = mw.config.get( 'wgRelevantArticleId', 0 ) !== 0;
-	var contextNode = utils.closestElement( threadItem.range.endContainer, [ 'dl', 'ul', 'ol' ] );
+	const contextNode = utils.closestElement( threadItem.range.endContainer, [ 'dl', 'ul', 'ol' ] );
 	this.context = contextNode ? contextNode.tagName.toLowerCase() : 'dl';
 	this.storage = commentController.storage;
 	// eslint-disable-next-line no-jquery/no-global-selector
@@ -51,7 +51,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.$window = $( this.getElementWindow() );
 	this.onWindowScrollThrottled = OO.ui.throttle( this.onWindowScroll.bind( this ), 100 );
 
-	var inputConfig = Object.assign(
+	const inputConfig = Object.assign(
 		{
 			placeholder: this.isNewTopic ?
 				mw.msg( 'discussiontools-replywidget-placeholder-newtopic' ) :
@@ -172,7 +172,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 			mw.message( 'discussiontools-replywidget-transcluded', this.pageName ).parseDom()
 		) );
 	}
-	var $footerLinks = $( '<ul>' ).addClass( 'ext-discussiontools-ui-replyWidget-footer-links' );
+	const $footerLinks = $( '<ul>' ).addClass( 'ext-discussiontools-ui-replyWidget-footer-links' );
 	if ( mw.user.isNamed() ) {
 		$footerLinks.append(
 			$( '<li>' ).append(
@@ -268,10 +268,10 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	}
 
 	if ( mw.user.isAnon() ) {
-		var msg = this.commentDetails.wouldAutoCreate ?
+		const msg = this.commentDetails.wouldAutoCreate ?
 			'discussiontools-replywidget-autocreate-warning' :
 			'discussiontools-replywidget-anon-warning';
-		var returnTo = {
+		const returnTo = {
 			returntoquery: window.location.search.slice( 1 ),
 			returnto: mw.config.get( 'wgPageName' )
 		};
@@ -310,7 +310,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 			this.editSummaryField.$body.append( this.$checkboxes );
 
 			// bind logging:
-			for ( var name in checkboxes.checkboxesByName ) {
+			for ( const name in checkboxes.checkboxesByName ) {
 				checkboxes.checkboxesByName[ name ].$element.off( '.dtReply' ).on( 'click.dtReply', trackCheckbox.bind( this, name ) );
 			}
 		}
@@ -436,9 +436,9 @@ ReplyWidget.prototype.clearStorage = function () {
  * Handle window scroll events
  */
 ReplyWidget.prototype.onWindowScroll = function () {
-	var rect = this.$element[ 0 ].getBoundingClientRect();
-	var viewportHeight = window.visualViewport ? visualViewport.height : this.viewportScrollContainer.clientHeight;
-	var floating = rect.bottom < 0 ? 'top' :
+	const rect = this.$element[ 0 ].getBoundingClientRect();
+	const viewportHeight = window.visualViewport ? visualViewport.height : this.viewportScrollContainer.clientHeight;
+	const floating = rect.bottom < 0 ? 'top' :
 		( rect.top > viewportHeight ? 'bottom' : null );
 
 	if ( floating !== this.floating ) {
@@ -479,7 +479,7 @@ ReplyWidget.prototype.saveEditMode = function ( mode ) {
 };
 
 ReplyWidget.prototype.onAdvancedToggleClick = function () {
-	var showAdvanced = !this.showAdvanced;
+	const showAdvanced = !this.showAdvanced;
 	mw.track( 'visualEditorFeatureUse', {
 		feature: 'dtReply',
 		action: 'advanced-' + ( showAdvanced ? 'show' : 'hide' )
@@ -490,20 +490,20 @@ ReplyWidget.prototype.onAdvancedToggleClick = function () {
 	this.toggleAdvanced( showAdvanced );
 
 	if ( showAdvanced ) {
-		var summary = this.editSummaryInput.getValue();
+		const summary = this.editSummaryInput.getValue();
 
 		// If the current summary has not been edited yet, select the text following the autocomment to
 		// make it easier to change. Otherwise, move cursor to end.
-		var selectFromIndex = summary.length;
+		let selectFromIndex = summary.length;
 		if ( this.isNewTopic ) {
-			var titleText = this.commentController.sectionTitle.getValue();
+			const titleText = this.commentController.sectionTitle.getValue();
 			if ( summary === this.commentController.generateSummary( titleText ) ) {
 				selectFromIndex = titleText.length + '/* '.length + ' */ '.length;
 			}
 		} else {
 			// Same as summary.endsWith( defaultReplyTrail )
-			var defaultReplyTrail = '*/ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
-			var endCommentIndex = summary.indexOf( defaultReplyTrail );
+			const defaultReplyTrail = '*/ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
+			const endCommentIndex = summary.indexOf( defaultReplyTrail );
 			if ( endCommentIndex + defaultReplyTrail.length === summary.length ) {
 				selectFromIndex = endCommentIndex + 3;
 			}
@@ -537,7 +537,7 @@ ReplyWidget.prototype.getEditSummary = function () {
 };
 
 ReplyWidget.prototype.onModeTabSelectChoose = function ( option ) {
-	var mode = option.getData();
+	const mode = option.getData();
 
 	if ( mode === this.getMode() ) {
 		return;
@@ -560,7 +560,7 @@ ReplyWidget.prototype.switch = function ( mode ) {
 		return $.Deferred().reject().promise();
 	}
 
-	var promise;
+	let promise;
 	this.setPending( true );
 	switch ( mode ) {
 		case 'source':
@@ -609,7 +609,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 	}
 	this.saveEditMode( this.getMode() );
 
-	var summary = this.storage.get( 'summary' ) || data.editSummary;
+	let summary = this.storage.get( 'summary' ) || data.editSummary;
 
 	if ( !summary ) {
 		if ( this.isNewTopic ) {
@@ -617,7 +617,7 @@ ReplyWidget.prototype.setup = function ( data ) {
 			// in NewTopicController#onSectionTitleChange
 			summary = '';
 		} else {
-			var title = this.commentController.getThreadItem().getHeading().getLinkableTitle();
+			const title = this.commentController.getThreadItem().getHeading().getLinkableTitle();
 			summary = ( title ? '/* ' + title + ' */ ' : '' ) +
 				mw.msg( 'discussiontools-defaultsummary-reply' );
 		}
@@ -663,10 +663,10 @@ ReplyWidget.prototype.afterSetup = function () {
  * @return {string} Form token
  */
 ReplyWidget.prototype.getFormToken = function () {
-	var formToken = this.storage.get( 'formToken' );
+	let formToken = this.storage.get( 'formToken' );
 	if ( !formToken ) {
 		// See ApiBase::PARAM_MAX_CHARS in ApiDiscussionToolsEdit.php
-		var maxLength = 16;
+		const maxLength = 16;
 		formToken = Math.random().toString( 36 ).slice( 2, maxLength + 2 );
 		this.storage.set( 'formToken', formToken );
 	}
@@ -680,7 +680,7 @@ ReplyWidget.prototype.getFormToken = function () {
  * @return {jQuery.Promise} Resolves if widget was torn down, rejects if it wasn't
  */
 ReplyWidget.prototype.tryTeardown = function () {
-	var promise;
+	let promise;
 
 	if ( !this.isEmpty() || ( this.isNewTopic && this.commentController.sectionTitle.getValue() ) ) {
 		promise = OO.ui.getWindowManager().openWindow( this.isNewTopic ? 'abandontopic' : 'abandoncomment' )
@@ -815,7 +815,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 
 	wikitext = wikitext !== undefined ? wikitext : this.getValue();
 	wikitext = utils.htmlTrim( wikitext );
-	var title = this.isNewTopic && this.commentController.sectionTitle.getValue();
+	const title = this.isNewTopic && this.commentController.sectionTitle.getValue();
 
 	if ( this.previewWikitext === wikitext && this.previewTitle === title ) {
 		return $.Deferred().resolve().promise();
@@ -828,7 +828,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
 		this.previewRequest = null;
 	}
 
-	var parsePromise;
+	let parsePromise;
 	if ( !wikitext ) {
 		parsePromise = $.Deferred().resolve( null ).promise();
 	} else {
@@ -1029,7 +1029,7 @@ ReplyWidget.prototype.onNewCommentsCloseClick = function () {
  * @return {OO.ui.MessageWidget} Message widget
  */
 ReplyWidget.prototype.createErrorMessage = function ( message ) {
-	var errorMessage = new OO.ui.MessageWidget( {
+	const errorMessage = new OO.ui.MessageWidget( {
 		type: 'error',
 		label: message,
 		classes: [ 'ext-discussiontools-ui-replyWidget-error' ]
@@ -1058,12 +1058,12 @@ ReplyWidget.prototype.onReplyClick = function () {
 	mw.track( 'editAttemptStep', { action: 'saveIntent' } );
 
 	// TODO: When editing a transcluded page, VE API returning the page HTML is a waste, since we won't use it
-	var pageName = this.pageName;
+	const pageName = this.pageName;
 
 	mw.track( 'editAttemptStep', { action: 'saveAttempt' } );
 	this.commentController.save( pageName ).fail( ( code, data ) => {
 		// Compare to ve.init.mw.ArticleTargetEvents.js in VisualEditor.
-		var typeMap = {
+		const typeMap = {
 			badtoken: 'userBadToken',
 			assertanonfailed: 'userNewUser',
 			assertuserfailed: 'userNewUser',

@@ -6,7 +6,7 @@ var
 QUnit.module( 'mw.dt.Parser', QUnit.newMwEnvironment() );
 
 QUnit.test( '#getTimestampRegexp', ( assert ) => {
-	var cases = require( '../cases/timestamp-regex.json' ),
+	const cases = require( '../cases/timestamp-regex.json' ),
 		parser = new Parser( require( '../data-en.json' ) );
 
 	cases.forEach( ( caseItem ) => {
@@ -19,11 +19,11 @@ QUnit.test( '#getTimestampRegexp', ( assert ) => {
 } );
 
 QUnit.test( '#getTimestampParser', ( assert ) => {
-	var cases = require( '../cases/timestamp-parser.json' ),
+	const cases = require( '../cases/timestamp-parser.json' ),
 		parser = new Parser( require( '../data-en.json' ) );
 
 	cases.forEach( ( caseItem ) => {
-		var tsParser = parser.getTimestampParser( 'en', caseItem.format, caseItem.digits, 'UTC', { UTC: 'UTC' } ),
+		const tsParser = parser.getTimestampParser( 'en', caseItem.format, caseItem.digits, 'UTC', { UTC: 'UTC' } ),
 			expectedDate = moment( caseItem.expected );
 
 		assert.true(
@@ -34,11 +34,11 @@ QUnit.test( '#getTimestampParser', ( assert ) => {
 } );
 
 QUnit.test( '#getTimestampParser (at DST change)', ( assert ) => {
-	var cases = require( '../cases/timestamp-parser-dst.json' ),
+	const cases = require( '../cases/timestamp-parser-dst.json' ),
 		parser = new Parser( require( '../data-en.json' ) );
 
 	cases.forEach( ( caseItem ) => {
-		var regexp = parser.getTimestampRegexp( 'en', caseItem.format, '\\d', caseItem.timezoneAbbrs ),
+		const regexp = parser.getTimestampRegexp( 'en', caseItem.format, '\\d', caseItem.timezoneAbbrs ),
 			tsParser = parser.getTimestampParser( 'en', caseItem.format, null, caseItem.timezone, caseItem.timezoneAbbrs ),
 			date = tsParser( caseItem.sample.match( regexp ) ).date;
 
@@ -55,19 +55,19 @@ QUnit.test( '#getTimestampParser (at DST change)', ( assert ) => {
 
 require( '../cases/comments.json' ).forEach( ( caseItem ) => {
 
-	var testName = '#getThreads (' + caseItem.name + ')';
+	const testName = '#getThreads (' + caseItem.name + ')';
 	QUnit.test( testName, ( assert ) => {
-		var dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
+		const dom = ve.createDocumentFromHtml( require( '../' + caseItem.dom ) ),
 			expected = require( caseItem.expected ),
 			config = require( caseItem.config ),
 			data = require( caseItem.data );
 
 		testUtils.overrideMwConfig( config );
 
-		var container = testUtils.getThreadContainer( dom );
-		var title = mw.Title.newFromText( caseItem.title );
-		var threadItemSet = new Parser( data ).parse( container, title );
-		var threads = threadItemSet.getThreads();
+		const container = testUtils.getThreadContainer( dom );
+		const title = mw.Title.newFromText( caseItem.title );
+		const threadItemSet = new Parser( data ).parse( container, title );
+		const threads = threadItemSet.getThreads();
 
 		threads.forEach( ( thread, i ) => {
 			testUtils.serializeComments( thread, container );

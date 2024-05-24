@@ -37,7 +37,7 @@ function MWUsernameCompletionAction() {
 		}
 	} );
 	// On user talk pages, always list the "owner" of the talk page
-	var relevantUserName = mw.config.get( 'wgRelevantUserName' );
+	const relevantUserName = mw.config.get( 'wgRelevantUserName' );
 	if (
 		relevantUserName &&
 		relevantUserName !== mw.user.getName() &&
@@ -67,7 +67,7 @@ MWUsernameCompletionAction.static.methods.push( 'insertAndOpen' );
 /* Methods */
 
 MWUsernameCompletionAction.prototype.insertAndOpen = function () {
-	var inserted = false,
+	let inserted = false,
 		surfaceModel = this.surface.getModel(),
 		fragment = surfaceModel.getFragment();
 
@@ -106,12 +106,12 @@ MWUsernameCompletionAction.prototype.getSequenceLength = function () {
 };
 
 MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
-	var title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, input ),
+	const title = mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).user, input ),
 		validatedInput = title ? input : '',
 		action = this;
 
 	this.api.abort(); // Abort all unfinished API requests
-	var apiPromise;
+	let apiPromise;
 	if ( input.length > 0 && !this.searchedPrefixes[ input ] ) {
 		apiPromise = this.api.get( {
 			action: 'query',
@@ -123,7 +123,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
 			// blocked users and still probably have some suggestions left
 			aulimit: this.constructor.static.defaultLimit * 2
 		} ).then( ( response ) => {
-			var suggestions = response.query.allusers.filter(
+			const suggestions = response.query.allusers.filter(
 				// API doesn't return IPs
 				( user ) => !hasUser( action.localUsers, user.name ) &&
 					!hasUser( action.remoteUsers, user.name ) &&
@@ -167,7 +167,7 @@ MWUsernameCompletionAction.prototype.getSuggestions = function ( input ) {
  * @inheritdoc
  */
 MWUsernameCompletionAction.prototype.compareSuggestionToInput = function ( suggestion, normalizedInput ) {
-	var normalizedSuggestion = suggestion.username.toLowerCase(),
+	const normalizedSuggestion = suggestion.username.toLowerCase(),
 		normalizedSearchIndex = normalizedSuggestion + ' ' +
 		suggestion.displayNames
 			.map( ( displayName ) => displayName.toLowerCase() ).join( ' ' );
@@ -197,13 +197,13 @@ MWUsernameCompletionAction.prototype.getMenuItemForSuggestion = function ( sugge
 
 MWUsernameCompletionAction.prototype.getHeaderLabel = function ( input, suggestions ) {
 	if ( suggestions === undefined ) {
-		var $query = $( '<span>' ).text( input );
+		const $query = $( '<span>' ).text( input );
 		return mw.message( 'discussiontools-replywidget-mention-tool-header', $query ).parseDom();
 	}
 };
 
 MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range ) {
-	var prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
+	const prefix = mw.msg( 'discussiontools-replywidget-mention-prefix' ),
 		suffix = mw.msg( 'discussiontools-replywidget-mention-suffix' ),
 		title = mw.Title.newFromText( word, mw.config.get( 'wgNamespaceIds' ).user );
 
@@ -213,7 +213,7 @@ MWUsernameCompletionAction.prototype.insertCompletion = function ( word, range )
 		return MWUsernameCompletionAction.super.prototype.insertCompletion.call( this, word, range );
 	}
 
-	var fragment = this.surface.getModel().getLinearFragment( range, true );
+	const fragment = this.surface.getModel().getLinearFragment( range, true );
 	fragment.removeContent().insertContent( [
 		{ type: 'mwPing', attributes: { user: word } },
 		{ type: '/mwPing' }

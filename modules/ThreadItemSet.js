@@ -26,10 +26,10 @@ OO.initClass( ThreadItemSet );
  * @return {ThreadItemSet}
  */
 ThreadItemSet.static.newFromJSON = function ( threads, rootNode, parser ) {
-	var result = new ThreadItemSet();
+	const result = new ThreadItemSet();
 
 	function infuse( itemHash, parent ) {
-		var item = ThreadItem.static.newFromJSON( itemHash, rootNode );
+		const item = ThreadItem.static.newFromJSON( itemHash, rootNode );
 
 		result.addThreadItem( item );
 

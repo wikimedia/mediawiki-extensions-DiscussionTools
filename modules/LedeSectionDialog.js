@@ -40,7 +40,7 @@ LedeSectionDialog.prototype.getSetupProcess = function ( data ) {
 			// Enable collapsible content (T323639), which is normally not handled on mobile (T111565).
 			// It's safe to do this twice if that changes (makeCollapsible() checks if each element was
 			// already handled). Using the same approach as in 'mediawiki.page.ready' in MediaWiki core.
-			var $collapsible = this.contentLayout.$element.find( '.mw-collapsible' );
+			const $collapsible = this.contentLayout.$element.find( '.mw-collapsible' );
 			if ( $collapsible.length ) {
 				// This module is also preloaded in PageHooks to avoid visual jumps when things collapse.
 				mw.loader.using( 'jquery.makeCollapsible' ).then( () => {

@@ -73,7 +73,7 @@ ReplyWidgetVisual.prototype.clear = function ( preserveStorage ) {
  * @inheritdoc
  */
 ReplyWidgetVisual.prototype.isEmpty = function () {
-	var surface = this.replyBodyWidget.target.getSurface();
+	const surface = this.replyBodyWidget.target.getSurface();
 	return !( surface && surface.getModel().getDocument().data.hasContent() );
 };
 
@@ -90,11 +90,11 @@ ReplyWidgetVisual.prototype.getMode = function () {
  * @inheritdoc
  */
 ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
-	var target = this.replyBodyWidget.target;
+	const target = this.replyBodyWidget.target;
 
 	data = data || {};
 
-	var htmlOrDoc;
+	let htmlOrDoc;
 	if ( this.storage.get( 'saveable' ) ) {
 		htmlOrDoc = this.storage.get( 've-dochtml' );
 		target.recovered = true;
@@ -152,7 +152,7 @@ ReplyWidgetVisual.prototype.teardown = function () {
  * @inheritdoc
  */
 ReplyWidgetVisual.prototype.focus = function () {
-	var targetWidget = this.replyBodyWidget;
+	const targetWidget = this.replyBodyWidget;
 	setTimeout( () => {
 		// Check surface still exists after timeout
 		if ( targetWidget.getSurface() ) {

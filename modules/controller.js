@@ -56,7 +56,7 @@ function getApi() {
  * @return {jQuery.Promise}
  */
 function getPageData( pageName, oldId, apiParams ) {
-	var api = getApi();
+	const api = getApi();
 	apiParams = apiParams || {};
 
 	pageDataCache[ pageName ] = pageDataCache[ pageName ] || {};
@@ -64,7 +64,7 @@ function getPageData( pageName, oldId, apiParams ) {
 		return pageDataCache[ pageName ][ oldId ];
 	}
 
-	var lintPromise, transcludedFromPromise;
+	let lintPromise, transcludedFromPromise;
 	if ( oldId ) {
 		lintPromise = api.get( {
 			action: 'query',
@@ -84,13 +84,13 @@ function getPageData( pageName, oldId, apiParams ) {
 		transcludedFromPromise = $.Deferred().resolve( {} ).promise();
 	}
 
-	var veMetadataPromise = api.get( Object.assign( {
+	const veMetadataPromise = api.get( Object.assign( {
 		action: 'visualeditor',
 		paction: 'metadata',
 		page: pageName
 	}, apiParams ) ).then( ( response ) => OO.getProp( response, 'visualeditor' ) || [] );
 
-	var promise = $.when( lintPromise, transcludedFromPromise, veMetadataPromise )
+	const promise = $.when( lintPromise, transcludedFromPromise, veMetadataPromise )
 		.then( ( linterrors, transcludedfrom, metadata ) => ( {
 			linterrors: linterrors,
 			transcludedfrom: transcludedfrom,
@@ -119,9 +119,9 @@ function getPageData( pageName, oldId, apiParams ) {
  *  Rejects with error data if the comment is transcluded, or there are lint errors on the page.
  */
 function checkThreadItemOnPage( pageName, oldId, threadItem ) {
-	var isNewTopic = threadItem.id === utils.NEW_TOPIC_COMMENT_ID;
-	var defaultMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' );
-	var apiParams = null;
+	const isNewTopic = threadItem.id === utils.NEW_TOPIC_COMMENT_ID;
+	const defaultMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' );
+	let apiParams = null;
 	if ( isNewTopic ) {
 		apiParams = {
 			section: 'new',
@@ -134,7 +134,7 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 
 	return getPageData( pageName, oldId, apiParams )
 		.then( ( response ) => {
-			var metadata = response.metadata,
+			const metadata = response.metadata,
 				lintErrors = response.linterrors,
 				transcludedFrom = response.transcludedfrom;
 
@@ -144,7 +144,7 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 				// or if a thread item's parent changes.
 				// Data by name might be combined from two or more thread items, which would only allow us to
 				// treat them both as transcluded from unknown source, unless we check ID first.
-				var isTranscludedFrom = transcludedFrom[ threadItem.id ];
+				let isTranscludedFrom = transcludedFrom[ threadItem.id ];
 				if ( isTranscludedFrom === undefined ) {
 					isTranscludedFrom = transcludedFrom[ threadItem.name ];
 				}
@@ -158,11 +158,11 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 							mw.message( 'discussiontools-error-comment-disappeared-reload' ).parse()
 					} ] } ).promise();
 				} else if ( isTranscludedFrom ) {
-					var mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
+					const mwTitle = isTranscludedFrom === true ? null : mw.Title.newFromText( isTranscludedFrom );
 					// If this refers to a template rather than a subpage, we never want to edit it
-					var follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
+					const follow = mwTitle && mwTitle.getNamespaceId() !== mw.config.get( 'wgNamespaceIds' ).template;
 
-					var transcludedErrMsg;
+					let transcludedErrMsg;
 					if ( follow ) {
 						transcludedErrMsg = mw.message(
 							'discussiontools-error-comment-is-transcluded-title',
@@ -192,7 +192,7 @@ function checkThreadItemOnPage( pageName, oldId, threadItem ) {
 
 				if ( lintErrors.length ) {
 					// We currently only request the first error
-					var lintType = lintErrors[ 0 ].category;
+					const lintType = lintErrors[ 0 ].category;
 
 					return $.Deferred().reject( 'lint', { errors: [ {
 						code: 'lint',
@@ -227,7 +227,7 @@ function getCheckboxesPromise( pageName, oldId ) {
 		pageName,
 		oldId
 	).then( ( pageData ) => {
-		var data = pageData.metadata,
+		const data = pageData.metadata,
 			checkboxesDef = {};
 
 		mw.messages.set( data.checkboxesMessages );
@@ -251,7 +251,7 @@ function getCheckboxesPromise( pageName, oldId ) {
  * @return {string[]}
  */
 function getReplyWidgetModules() {
-	var veConf = mw.config.get( 'wgVisualEditorConfig' ),
+	let veConf = mw.config.get( 'wgVisualEditorConfig' ),
 		modules = [ 'ext.discussionTools.ReplyWidget' ]
 			.concat( veConf.pluginModules.filter( mw.loader.getState ) );
 
@@ -279,7 +279,7 @@ function getReplyWidgetModules() {
  * @param {boolean} [state.tempUserCreated] Whether a temp user was just created
  */
 function init( $container, state ) {
-	var
+	let
 		activeCommentId = null,
 		activeController = null,
 		// Loads later to avoid circular dependency
@@ -315,9 +315,9 @@ function init( $container, state ) {
 		);
 	} );
 
-	var parser = new Parser( require( './parser/data.json' ) );
+	const parser = new Parser( require( './parser/data.json' ) );
 
-	var commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-thread-id]' );
+	const commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-thread-id]' );
 	pageThreads = ThreadItemSet.static.newFromJSON( mw.config.get( 'wgDiscussionToolsPageThreads' ) || [], $pageContainer[ 0 ], parser );
 
 	if ( featuresEnabled.topicsubscription ) {
@@ -350,7 +350,7 @@ function init( $container, state ) {
 	 * @param {MemoryStorage} [storage] Storage object for autosave
 	 */
 	function setupController( comment, $link, mode, hideErrors, suppressNotifications, storage ) {
-		var commentController, $addSectionLink;
+		let commentController, $addSectionLink;
 
 		if ( !storage ) {
 			storage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + comment.id, STORAGE_EXPIRY );
@@ -404,7 +404,7 @@ function init( $container, state ) {
 	}
 
 	function newTopicComment( data ) {
-		var comment = new HeadingItem( {}, 2 );
+		const comment = new HeadingItem( {}, 2 );
 		comment.id = utils.NEW_TOPIC_COMMENT_ID;
 		comment.isNewTopic = true;
 		Object.assign( comment, data );
@@ -424,7 +424,7 @@ function init( $container, state ) {
 			return;
 		}
 
-		var teardownPromise = $.Deferred().resolve();
+		let teardownPromise = $.Deferred().resolve();
 		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
 			// If this is a new topic link, and a reply widget is open, attempt to close it first.
 			if ( activeController ) {
@@ -447,7 +447,7 @@ function init( $container, state ) {
 			if ( activeController ) {
 				return;
 			}
-			var comment;
+			let comment;
 			if ( commentId !== utils.NEW_TOPIC_COMMENT_ID ) {
 				comment = pageThreads.findCommentById( commentId );
 			} else {
@@ -462,7 +462,7 @@ function init( $container, state ) {
 		} );
 	} );
 
-	var mobilePromise = OO.ui.isMobile() && mw.loader.getState( 'mobile.init' ) ?
+	const mobilePromise = OO.ui.isMobile() && mw.loader.getState( 'mobile.init' ) ?
 		mw.loader.using( 'mobile.init' ) :
 		$.Deferred().resolve().promise();
 
@@ -529,7 +529,7 @@ function init( $container, state ) {
 		}
 	} );
 
-	var dismissableNotificationPromise = null;
+	let dismissableNotificationPromise = null;
 	// Page-level handlers only need to be setup once
 	if ( !pageHandlersSetup ) {
 		$( window ).on( 'popstate', () => {
@@ -556,9 +556,9 @@ function init( $container, state ) {
 	}
 	if ( state.firstLoad ) {
 		mobilePromise.then( () => {
-			var findCommentQuery;
-			var isHeading = false;
-			var highlightResult = highlighter.highlightTargetComment( pageThreads );
+			let findCommentQuery;
+			let isHeading = false;
+			const highlightResult = highlighter.highlightTargetComment( pageThreads );
 
 			// Hash contains a non-replaced space (should be underscore), maybe due to
 			// manual creation or a broken third party tool. Just replace the spaces
@@ -568,7 +568,7 @@ function init( $container, state ) {
 			// element, but the fixed hash does, to avoid affects on other apps which
 			// may use fragments with spaces.
 			if ( location.hash && !mw.util.getTargetFromFragment() && location.hash.indexOf( '%20' ) !== -1 ) {
-				var fixedHash = location.hash.slice( 1 ).replace( /%20/g, '_' );
+				const fixedHash = location.hash.slice( 1 ).replace( /%20/g, '_' );
 				if ( mw.util.getTargetFromFragment( fixedHash ) ) {
 					location.hash = fixedHash;
 				}
@@ -580,8 +580,8 @@ function init( $container, state ) {
 				// Not a DT comment
 				highlightResult.highlighted.length === 0 && highlightResult.requested.length === 0
 			) {
-				var fragment = location.hash.slice( 1 );
-				var ignorePatterns = [
+				const fragment = location.hash.slice( 1 );
+				const ignorePatterns = [
 					// A leading '/' or '!/' usually means a application route, e.g. /media, or /editor.
 					// We can't rule out a heading title (T349498), but they are unlikely
 					/^!?\//,
@@ -611,8 +611,8 @@ function init( $container, state ) {
 			}
 			if ( findCommentQuery ) {
 				// TODO: Support multiple commentIds being requested and not all being found
-				var dtConf = require( './config.json' );
-				var findCommentRequest = dtConf.enablePermalinksFrontend ?
+				const dtConf = require( './config.json' );
+				const findCommentRequest = dtConf.enablePermalinksFrontend ?
 					getApi().get( Object.assign( {
 						action: 'discussiontoolsfindcomment'
 					}, findCommentQuery ) ) :
@@ -621,14 +621,14 @@ function init( $container, state ) {
 					findCommentRequest,
 					mw.loader.using( 'mediawiki.notification' )
 				).then( ( results ) => {
-					var result = results[ 0 ];
-					var titles = [];
+					const result = results[ 0 ];
+					let titles = [];
 					if ( result.discussiontoolsfindcomment ) {
 						titles = result.discussiontoolsfindcomment.map( ( threadItemData ) => {
 							// Only show items that appear on the current revision of their page
 							// and are not transcluded from another page
 							if ( threadItemData.couldredirect ) {
-								var title = mw.Title.newFromText(
+								const title = mw.Title.newFromText(
 									threadItemData.title + '#' +
 									mw.util.escapeIdForLink( threadItemData.id )
 								);
@@ -638,8 +638,8 @@ function init( $container, state ) {
 						} ).filter( ( url ) => url );
 					}
 					if ( titles.length ) {
-						var $list = $( '<ul>' );
-						var $notification = $( '<div>' ).append(
+						const $list = $( '<ul>' );
+						const $notification = $( '<div>' ).append(
 							$( '<p>' ).text( mw.message(
 								isHeading ?
 									'discussiontools-target-heading-found-moved' :
@@ -696,7 +696,7 @@ function updatePageContents( $container, data ) {
 
 	// eslint-disable-next-line no-jquery/no-global-selector
 	if ( $( '#catlinks' ).length ) {
-		var $categories = $( $.parseHTML( data.parse.categorieshtml ) );
+		const $categories = $( $.parseHTML( data.parse.categorieshtml ) );
 		mw.hook( 'wikipage.categories' ).fire( $categories );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#catlinks' ).replaceWith( $categories );
@@ -732,23 +732,23 @@ function updatePageContents( $container, data ) {
 	// TODO: Upstream this to core/skins, triggered by a hook (wikipage.content?)
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '#t-permalink' ).add( '#coll-download-as-rl' ).find( 'a' ).each( ( i, link ) => {
-		var permalinkUrl = new URL( link.href );
+		const permalinkUrl = new URL( link.href );
 		permalinkUrl.searchParams.set( 'oldid', data.parse.revid );
 		$( link ).attr( 'href', permalinkUrl.toString() );
 	} );
 
-	var url = new URL( location.href );
+	const url = new URL( location.href );
 	url.searchParams.delete( 'oldid' );
 
 	// If there are any other query parameters left, re-use that URL object.
 	// Otherwise use the canonical style view url (T44553, T102363).
-	var keys = [];
+	const keys = [];
 	url.searchParams.forEach( ( val, key ) => {
 		keys.push( key );
 	} );
 
 	if ( !keys.length || ( keys.length === 1 && keys[ 0 ] === 'title' ) ) {
-		var viewUrl = new URL( mw.util.getUrl( mw.config.get( 'wgRelevantPageName' ) ), document.baseURI );
+		const viewUrl = new URL( mw.util.getUrl( mw.config.get( 'wgRelevantPageName' ) ), document.baseURI );
 		viewUrl.hash = location.hash;
 		history.pushState( null, '', viewUrl );
 	} else {
@@ -809,7 +809,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 		replyWidget.unbindBeforeUnloadHandler();
 		replyWidget.clearStorage();
 		replyWidget.setPending( true );
-		var params = { dtrepliedto: threadItem.id };
+		const params = { dtrepliedto: threadItem.id };
 		if ( data.tempusercreated ) {
 			params.dttempusercreated = '1';
 		}
@@ -826,7 +826,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 	mw.dt.initState.tempUserCreated = data.tempusercreated;
 
 	// Update page state
-	var pageUpdated = $.Deferred();
+	const pageUpdated = $.Deferred();
 	if ( pageName === mw.config.get( 'wgRelevantPageName' ) ) {
 		// We can use the result from the VisualEditor API
 		updatePageContents( $pageContainer, {
@@ -854,7 +854,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 
 	} else {
 		// We saved to another page, we must purge and then fetch the current page
-		var api = getApi();
+		const api = getApi();
 		api.post( {
 			action: 'purge',
 			titles: mw.config.get( 'wgRelevantPageName' )
@@ -871,7 +871,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 
 	// User logged in if module loaded.
 	if ( mw.loader.getState( 'mediawiki.page.watch.ajax' ) === 'ready' ) {
-		var watch = require( 'mediawiki.page.watch.ajax' );
+		const watch = require( 'mediawiki.page.watch.ajax' );
 
 		watch.updateWatchLink(
 			mw.Title.newFromText( pageName ),

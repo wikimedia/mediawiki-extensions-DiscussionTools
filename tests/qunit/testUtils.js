@@ -24,8 +24,8 @@ module.exports.overrideMwConfig = function ( config ) {
 module.exports.getThreadContainer = function ( doc ) {
 	// In tests created from Parsoid output, comments are contained directly in <body>.
 	// In tests created from old parser output, comments are contained in <div class="mw-parser-output">.
-	var body = doc.body;
-	var wrapper = body.querySelector( 'div.mw-parser-output' );
+	const body = doc.body;
+	const wrapper = body.querySelector( 'div.mw-parser-output' );
 	return wrapper || body;
 };
 
@@ -38,7 +38,7 @@ module.exports.getThreadContainer = function ( doc ) {
  * @return {string} The offset path
  */
 function getOffsetPath( ancestor, node, nodeOffset ) {
-	var path = [ nodeOffset ];
+	const path = [ nodeOffset ];
 	while ( node !== ancestor ) {
 		if ( node.parentNode === null ) {
 			// eslint-disable-next-line no-console

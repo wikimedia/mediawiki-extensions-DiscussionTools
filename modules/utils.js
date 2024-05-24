@@ -21,7 +21,7 @@ var solTransparentLinkRegexp = /(?:^|\s)mw:PageProp\/(?:Category|redirect|Langua
  * @return {boolean} Node is considered a rendering-transparent node in Parsoid
  */
 function isRenderingTransparentNode( node ) {
-	var nextSibling = node.nextSibling;
+	const nextSibling = node.nextSibling;
 	return (
 		node.nodeType === Node.COMMENT_NODE ||
 		node.nodeType === Node.ELEMENT_NODE && (
@@ -117,7 +117,7 @@ function isCommentSeparator( node ) {
 		return false;
 	}
 
-	var tagName = node.tagName.toLowerCase();
+	const tagName = node.tagName.toLowerCase();
 	if ( tagName === 'br' || tagName === 'hr' ) {
 		return true;
 	}
@@ -130,7 +130,7 @@ function isCommentSeparator( node ) {
 		return true;
 	}
 
-	var classList = node.classList;
+	const classList = node.classList;
 	if (
 		// Anything marked as not containing comments
 		classList.contains( 'mw-notalk' ) ||
@@ -174,7 +174,7 @@ function isCommentContent( node ) {
  * @return {number} Index in parentNode's childNode list
  */
 function childIndexOf( child ) {
-	var i = 0;
+	let i = 0;
 	while ( ( child = child.previousSibling ) ) {
 		i++;
 	}
@@ -219,7 +219,7 @@ function getTranscludedFromElement( node ) {
 			node.getAttribute( 'about' ) &&
 			/^#mwt\d+$/.test( node.getAttribute( 'about' ) )
 		) {
-			var about = node.getAttribute( 'about' );
+			const about = node.getAttribute( 'about' );
 
 			// 2.
 			while (
@@ -252,7 +252,7 @@ function getTranscludedFromElement( node ) {
  */
 function getHeadlineNode( heading ) {
 	// This code assumes that $wgFragmentMode is [ 'html5', 'legacy' ] or [ 'html5' ]
-	var headline = heading;
+	let headline = heading;
 
 	if ( headline.hasAttribute( 'data-mw-comment-start' ) ) {
 		// JS only: Support output from the PHP CommentFormatter
@@ -292,12 +292,12 @@ function htmlTrim( str ) {
  * @return {number}
  */
 function getIndentLevel( node, rootNode ) {
-	var indent = 0;
+	let indent = 0;
 	while ( node ) {
 		if ( node === rootNode ) {
 			break;
 		}
-		var tagName = node instanceof HTMLElement ? node.tagName.toLowerCase() : null;
+		const tagName = node instanceof HTMLElement ? node.tagName.toLowerCase() : null;
 		if ( tagName === 'li' || tagName === 'dd' ) {
 			indent++;
 		}
@@ -313,11 +313,11 @@ function getIndentLevel( node, rootNode ) {
  * @return {Node[]}
  */
 function getCoveredSiblings( range ) {
-	var ancestor = range.commonAncestorContainer;
+	const ancestor = range.commonAncestorContainer;
 
-	var siblings = ancestor.childNodes;
-	var start = 0;
-	var end = siblings.length - 1;
+	const siblings = ancestor.childNodes;
+	let start = 0;
+	let end = siblings.length - 1;
 
 	// Find first of the siblings that contains the item
 	if ( ancestor === range.startContainer ) {
@@ -350,20 +350,20 @@ function getCoveredSiblings( range ) {
  * @return {Node[]|null}
  */
 function getFullyCoveredSiblings( item, excludedAncestorNode ) {
-	var siblings = getCoveredSiblings( item.getRange() );
+	let siblings = getCoveredSiblings( item.getRange() );
 
 	function makeRange( sibs ) {
-		var range = sibs[ 0 ].ownerDocument.createRange();
+		const range = sibs[ 0 ].ownerDocument.createRange();
 		range.setStartBefore( sibs[ 0 ] );
 		range.setEndAfter( sibs[ sibs.length - 1 ] );
 		return range;
 	}
 
-	var matches = compareRanges( makeRange( siblings ), item.getRange() ) === 'equal';
+	const matches = compareRanges( makeRange( siblings ), item.getRange() ) === 'equal';
 
 	if ( matches ) {
 		// If these are all of the children (or the only child), go up one more level
-		var parent;
+		let parent;
 		while (
 			( parent = siblings[ 0 ].parentNode ) &&
 			parent !== excludedAncestorNode &&
@@ -387,18 +387,18 @@ function getTitleFromUrl( url ) {
 	if ( !url ) {
 		return null;
 	}
-	var parsedUrl = new URL( url );
+	const parsedUrl = new URL( url );
 	if ( parsedUrl.searchParams.get( 'title' ) ) {
 		return parsedUrl.searchParams.get( 'title' );
 	}
 
 	// wgArticlePath is site config so is trusted
 	// eslint-disable-next-line security/detect-non-literal-regexp
-	var articlePathRegexp = new RegExp(
+	const articlePathRegexp = new RegExp(
 		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
 			.replace( '\\$1', '(.*)' )
 	);
-	var match;
+	let match;
 	if ( ( match = parsedUrl.pathname.match( articlePathRegexp ) ) ) {
 		return decodeURIComponent( match[ 1 ] );
 	}
@@ -420,7 +420,7 @@ function getTitleFromUrl( url ) {
  * @return {any} Final return value of the callback
  */
 function linearWalk( node, callback ) {
-	var
+	let
 		result = null,
 		withinNode = node.parentNode,
 		beforeNode = node;
@@ -449,7 +449,7 @@ function linearWalk( node, callback ) {
  * @inheritdoc #linearWalk
  */
 function linearWalkBackwards( node, callback ) {
-	var
+	let
 		result = null,
 		withinNode = node.parentNode,
 		beforeNode = node;
@@ -521,10 +521,10 @@ function getRangeLastNode( range ) {
 function compareRanges( a, b ) {
 	// Compare the positions of: start of A to start of B, start of A to end of B, and so on.
 	// Watch out, the constant names are the opposite of what they should be.
-	var startToStart = a.compareBoundaryPoints( Range.START_TO_START, b );
-	var startToEnd = a.compareBoundaryPoints( Range.END_TO_START, b );
-	var endToStart = a.compareBoundaryPoints( Range.START_TO_END, b );
-	var endToEnd = a.compareBoundaryPoints( Range.END_TO_END, b );
+	let startToStart = a.compareBoundaryPoints( Range.START_TO_START, b );
+	const startToEnd = a.compareBoundaryPoints( Range.END_TO_START, b );
+	const endToStart = a.compareBoundaryPoints( Range.START_TO_END, b );
+	let endToEnd = a.compareBoundaryPoints( Range.END_TO_END, b );
 
 	// Check for almost equal ranges (boundary points only differing by uninteresting nodes)
 	if (
@@ -580,15 +580,15 @@ function compareRangesAlmostEqualBoundaries( a, b, boundary ) {
 	// This code is awful, but several attempts to rewrite it made it even worse.
 	// You're welcome to give it a try.
 
-	var from = boundary === 'end' ? getRangeLastNode( a ) : getRangeFirstNode( a );
-	var to = boundary === 'end' ? getRangeLastNode( b ) : getRangeFirstNode( b );
+	const from = boundary === 'end' ? getRangeLastNode( a ) : getRangeFirstNode( a );
+	const to = boundary === 'end' ? getRangeLastNode( b ) : getRangeFirstNode( b );
 
-	var skipNode = null;
+	let skipNode = null;
 	if ( boundary === 'end' ) {
 		skipNode = from;
 	}
 
-	var foundContent = false;
+	let foundContent = false;
 	linearWalk(
 		from,
 		( event, n ) => {

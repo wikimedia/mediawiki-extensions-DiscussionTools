@@ -64,12 +64,12 @@ function getLatestRevId( pageName ) {
  * @return {jQuery.Promise} Promise which resolves with a CommentDetails object, or rejects with an error
  */
 CommentController.prototype.getTranscludedFromSource = function () {
-	var pageName = mw.config.get( 'wgRelevantPageName' ),
+	const pageName = mw.config.get( 'wgRelevantPageName' ),
 		oldId = mw.config.get( 'wgCurRevisionId' ),
 		threadItem = this.getThreadItem();
 
 	function followTransclusion( recursionLimit, code, data ) {
-		var errorData;
+		let errorData;
 		if ( recursionLimit > 0 && code === 'comment-is-transcluded' ) {
 			errorData = data.errors[ 0 ].data;
 			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
@@ -85,7 +85,7 @@ CommentController.prototype.getTranscludedFromSource = function () {
 
 	// Arbitrary limit of 10 steps, which should be more than anyone could ever need
 	// (there are reasonable use cases for at least 2)
-	var promise = controller.checkThreadItemOnPage( pageName, oldId, threadItem )
+	const promise = controller.checkThreadItemOnPage( pageName, oldId, threadItem )
 		.catch( followTransclusion.bind( null, 10 ) );
 
 	return promise;
@@ -114,7 +114,7 @@ CommentController.static.initType = 'page';
  * @param {boolean} [suppressNotifications] Don't notify the user if recovering auto-save
  */
 CommentController.prototype.setup = function ( mode, hideErrors, suppressNotifications ) {
-	var threadItem = this.getThreadItem();
+	const threadItem = this.getThreadItem();
 
 	if ( mode === undefined ) {
 		mode = mw.user.options.get( 'discussiontools-editmode' ) ||
@@ -168,7 +168,7 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 			// we wrap this loading message in another element.
 			$( '<span>' ).text( mw.msg( 'discussiontools-replywidget-loading' ) )
 		);
-		var scrollPaddingCollapsed = OO.copy( scrollPadding );
+		const scrollPaddingCollapsed = OO.copy( scrollPadding );
 		// We don't know exactly how tall the widge will be, but leave room for one line
 		// of preview in source mode (~270px). Visual mode is ~250px.
 		scrollPaddingCollapsed.bottom += 270;
@@ -230,8 +230,8 @@ CommentController.prototype.onVisibilityChange = function () {
 CommentController.prototype.startPoll = function ( nextDelay ) {
 	nextDelay = nextDelay || 5000;
 
-	var threadItemId = this.threadItem.id;
-	var subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
+	const threadItemId = this.threadItem.id;
+	const subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
 
 	this.pollApiRequest = controller.getApi().get( {
 		action: 'discussiontoolscompare',
@@ -245,18 +245,18 @@ CommentController.prototype.startPoll = function ( nextDelay ) {
 				cmt.author !== mw.user.getName();
 		}
 
-		var result = OO.getProp( response, 'discussiontoolscompare' ) || {};
-		var addedComments = result.addedcomments.filter( relevantCommentFilter );
-		var removedComments = result.removedcomments.filter( relevantCommentFilter );
+		const result = OO.getProp( response, 'discussiontoolscompare' ) || {};
+		const addedComments = result.addedcomments.filter( relevantCommentFilter );
+		const removedComments = result.removedcomments.filter( relevantCommentFilter );
 
 		if ( addedComments.length || removedComments.length ) {
 			this.updateNewCommentsWarning( addedComments, removedComments );
 		}
 
 		// Parent comment was deleted
-		var isParentRemoved = result.removedcomments.some( ( cmt ) => cmt.id === threadItemId );
+		const isParentRemoved = result.removedcomments.some( ( cmt ) => cmt.id === threadItemId );
 		// Parent comment was deleted then added back (e.g. reverted vandalism)
-		var isParentAdded = result.addedcomments.some( ( cmt ) => cmt.id === threadItemId );
+		const isParentAdded = result.addedcomments.some( ( cmt ) => cmt.id === threadItemId );
 
 		if ( isParentAdded ) {
 			this.setParentRemoved( false );
@@ -410,12 +410,12 @@ CommentController.prototype.onReplyWidgetTeardown = function ( mode ) {
  * @return {Object.<string,string>} API query data
  */
 CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
-	var threadItem = this.getThreadItem();
-	var replyWidget = this.replyWidget;
-	var sameNameComments = this.threadItemSet.findCommentsByName( threadItem.name );
+	const threadItem = this.getThreadItem();
+	const replyWidget = this.replyWidget;
+	const sameNameComments = this.threadItemSet.findCommentsByName( threadItem.name );
 
-	var mode = replyWidget.getMode();
-	var tags = [
+	const mode = replyWidget.getMode();
+	const tags = [
 		'discussiontools',
 		'discussiontools-reply',
 		'discussiontools-' + mode
@@ -425,7 +425,7 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 		tags.push( 'discussiontools-source-enhanced' );
 	}
 
-	var data = {
+	const data = {
 		action: 'discussiontoolsedit',
 		paction: 'addcomment',
 		page: pageName,
@@ -448,7 +448,7 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
 		data.html = replyWidget.getValue();
 	}
 
-	var captchaInput = replyWidget.captchaInput;
+	const captchaInput = replyWidget.captchaInput;
 	if ( captchaInput ) {
 		data.captchaid = captchaInput.getCaptchaId();
 		data.captchaword = captchaInput.getCaptchaWord();
@@ -470,11 +470,11 @@ CommentController.prototype.getApiQuery = function ( pageName, checkboxes ) {
  * @return {jQuery.Promise} Promise which resolves when the save is complete
  */
 CommentController.prototype.save = function ( pageName ) {
-	var replyWidget = this.replyWidget,
+	const replyWidget = this.replyWidget,
 		threadItem = this.getThreadItem();
 
 	return this.replyWidget.checkboxesPromise.then( ( checkboxes ) => {
-		var data = this.getApiQuery( pageName, checkboxes );
+		const data = this.getApiQuery( pageName, checkboxes );
 
 		if (
 			// We're saving the first comment on a page that previously didn't exist.
@@ -491,7 +491,7 @@ CommentController.prototype.save = function ( pageName ) {
 			// This means that we might need to redirect to an opaque URL,
 			// so we must set up query parameters we want ahead of time.
 			data.returnto = pageName;
-			var params = new URLSearchParams();
+			const params = new URLSearchParams();
 			params.set( 'dtrepliedto', this.getThreadItem().id );
 			params.set( 'dttempusercreated', '1' );
 			data.returntoquery = params.toString();
@@ -499,9 +499,9 @@ CommentController.prototype.save = function ( pageName ) {
 
 		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
 		// could result in duplicate messages if the user retries. (T249071)
-		var defaults = OO.copy( controller.getApi().defaults );
+		const defaults = OO.copy( controller.getApi().defaults );
 		defaults.ajax.timeout = 0;
-		var noTimeoutApi = new mw.Api( defaults );
+		const noTimeoutApi = new mw.Api( defaults );
 
 		return mw.libs.ve.targetSaver.postContent(
 			data, { api: noTimeoutApi }
@@ -541,7 +541,7 @@ CommentController.prototype.updateNewCommentsWarning = function ( addedComments,
 	this.newComments.push.apply( this.newComments, addedComments );
 
 	// Delete any comments which have since been deleted (e.g. posted then reverted)
-	var removedCommentIds = removedComments.filter( ( cmt ) => cmt.id );
+	const removedCommentIds = removedComments.filter( ( cmt ) => cmt.id );
 	this.newComments = this.newComments.filter(
 		// If comment ID is not in removedCommentIds, keep it
 		( cmt ) => removedCommentIds.indexOf( cmt.id ) === -1
@@ -571,14 +571,14 @@ CommentController.prototype.setParentRemoved = function ( parentRemoved ) {
  * @return {jQuery.Promise} Promise which resolves when switch is complete
  */
 CommentController.prototype.switchToWikitext = function () {
-	var oldWidget = this.replyWidget,
+	const oldWidget = this.replyWidget,
 		target = oldWidget.replyBodyWidget.target,
 		oldShowAdvanced = oldWidget.showAdvanced,
 		oldEditSummary = oldWidget.getEditSummary(),
 		previewDeferred = $.Deferred();
 
 	// TODO: We may need to pass oldid/etag when editing is supported
-	var wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
+	const wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
 	this.replyWidgetPromise = this.createReplyWidget(
 		oldWidget.commentDetails,
 		{ mode: 'source' }
@@ -633,7 +633,7 @@ CommentController.prototype.doIndentReplacements = function ( wikitext, indent )
  * @param {Node} rootNode Node potentially containing definition lists (modified in-place)
  */
 CommentController.prototype.undoIndentReplacements = function ( rootNode ) {
-	var children = Array.prototype.slice.call( rootNode.childNodes );
+	const children = Array.prototype.slice.call( rootNode.childNodes );
 	// There may be multiple lists when some lines are template generated
 	children.forEach( ( child ) => {
 		if ( child.nodeType === Node.ELEMENT_NODE ) {
@@ -671,7 +671,7 @@ CommentController.prototype.getUnsupportedNodeSelectors = function () {
  * @return {jQuery.Promise} Promise which resolves when switch is complete
  */
 CommentController.prototype.switchToVisual = function () {
-	var oldWidget = this.replyWidget,
+	let oldWidget = this.replyWidget,
 		oldShowAdvanced = oldWidget.showAdvanced,
 		oldEditSummary = oldWidget.getEditSummary(),
 		wikitext = oldWidget.getValue();
@@ -684,7 +684,7 @@ CommentController.prototype.switchToVisual = function () {
 		'$1<span data-dtsignatureforswitching="1"></span>$2'
 	);
 
-	var parsePromise;
+	let parsePromise;
 	if ( wikitext ) {
 		wikitext = this.doIndentReplacements( wikitext, dtConf.replyIndentation === 'invisible' ? ':' : '*' );
 
@@ -705,17 +705,17 @@ CommentController.prototype.switchToVisual = function () {
 	);
 
 	return $.when( parsePromise, this.replyWidgetPromise ).then( ( html, replyWidget ) => {
-		var unsupportedSelectors = this.getUnsupportedNodeSelectors();
+		const unsupportedSelectors = this.getUnsupportedNodeSelectors();
 
-		var doc;
+		let doc;
 		if ( html ) {
 			doc = replyWidget.replyBodyWidget.target.parseDocument( html );
 			// Remove RESTBase IDs (T253584)
 			mw.libs.ve.stripRestbaseIds( doc );
 			// Check for tables, headings, images, templates
-			for ( var type in unsupportedSelectors ) {
+			for ( const type in unsupportedSelectors ) {
 				if ( doc.querySelector( unsupportedSelectors[ type ] ) ) {
-					var $msg = $( '<div>' ).html(
+					const $msg = $( '<div>' ).html(
 						mw.message(
 							'discussiontools-error-noswitchtove',
 							// The following messages are used here:

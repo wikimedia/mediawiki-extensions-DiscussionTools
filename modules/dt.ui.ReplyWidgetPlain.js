@@ -15,7 +15,7 @@ function ReplyWidgetPlain() {
 	ReplyWidgetPlain.super.apply( this, arguments );
 
 	if ( OO.ui.isMobile() ) {
-		var toolFactory = new OO.ui.ToolFactory(),
+		const toolFactory = new OO.ui.ToolFactory(),
 			toolGroupFactory = new OO.ui.ToolGroupFactory();
 
 		toolFactory.register( mw.libs.ve.MWEditModeVisualTool );
@@ -56,7 +56,7 @@ OO.inheritClass( ReplyWidgetPlain, require( './dt.ui.ReplyWidget.js' ) );
  * @inheritdoc
  */
 ReplyWidgetPlain.prototype.createReplyBodyWidget = function ( config ) {
-	var textInput = new OO.ui.MultilineTextInputWidget( Object.assign( {
+	const textInput = new OO.ui.MultilineTextInputWidget( Object.assign( {
 		rows: 3,
 		// TODO: Fix upstream to support a value meaning no max limit (e.g. Infinity)
 		maxRows: 999,
@@ -123,7 +123,7 @@ ReplyWidgetPlain.prototype.onInputChange = function () {
 	// Parent method
 	ReplyWidgetPlain.super.prototype.onInputChange.apply( this, arguments );
 
-	var wikitext = this.getValue();
+	const wikitext = this.getValue();
 	this.storage.set( 'body', wikitext );
 };
 
@@ -131,7 +131,7 @@ ReplyWidgetPlain.prototype.onInputChange = function () {
  * @inheritdoc
  */
 ReplyWidgetPlain.prototype.setup = function ( data ) {
-	var autosaveValue = this.storage.get( 'body' );
+	const autosaveValue = this.storage.get( 'body' );
 
 	data = data || {};
 

@@ -8,7 +8,7 @@ var isIos = /ipad|iphone|ipod/i.test( navigator.userAgent );
 $( document.body ).toggleClass( 'ext-discussiontools-init-ios', isIos );
 
 function onViewportChange() {
-	var isKeyboardOpen;
+	let isKeyboardOpen;
 
 	if ( isIos ) {
 		isKeyboardOpen = visualViewport.height < viewportScrollContainer.clientHeight;
@@ -32,20 +32,20 @@ function init( $container ) {
 	if ( !viewportScrollContainer && window.visualViewport ) {
 		viewportScrollContainer = OO.ui.Element.static.getClosestScrollableContainer( document.body );
 		initialClientHeight = viewportScrollContainer.clientHeight;
-		var onViewportChangeThrottled = OO.ui.throttle( onViewportChange, 100 );
+		const onViewportChangeThrottled = OO.ui.throttle( onViewportChange, 100 );
 		$( visualViewport ).on( 'resize', onViewportChangeThrottled );
 	}
 
 	// Mobile overflow menu
 
-	var $ledeContent = $container.find( '.mf-section-0' ).children( ':not( .ext-discussiontools-emptystate )' )
+	const $ledeContent = $container.find( '.mf-section-0' ).children( ':not( .ext-discussiontools-emptystate )' )
 		// On non-existent pages MobileFrontend wrapping isn't there
 		.add( $container.find( '.mw-talkpageheader' ) );
-	var $ledeButton = $container.find( '.ext-discussiontools-init-lede-button' );
+	const $ledeButton = $container.find( '.ext-discussiontools-init-lede-button' );
 	if ( $ledeButton.length ) {
-		var windowManager = OO.ui.getWindowManager();
+		const windowManager = OO.ui.getWindowManager();
 		if ( !ledeSectionDialog ) {
-			var LedeSectionDialog = require( './LedeSectionDialog.js' );
+			const LedeSectionDialog = require( './LedeSectionDialog.js' );
 			ledeSectionDialog = new LedeSectionDialog();
 			windowManager.addWindows( [ ledeSectionDialog ] );
 		}
@@ -61,7 +61,7 @@ function init( $container ) {
 	}
 
 	// eslint-disable-next-line no-jquery/no-global-selector
-	var $newTopicWrapper = $( '.ext-discussiontools-init-new-topic' );
+	const $newTopicWrapper = $( '.ext-discussiontools-init-new-topic' );
 
 	if (
 		!newTopicButton &&
@@ -72,16 +72,16 @@ function init( $container ) {
 		newTopicButton = OO.ui.infuse( $( '.ext-discussiontools-init-new-topic-button' ) );
 		// For compatibility with MobileWebUIActionsTracking logging (T295490)
 		newTopicButton.$element.attr( 'data-event-name', 'talkpage.add-topic' );
-		var $scrollContainer = $( OO.ui.Element.static.getClosestScrollableContainer( document.body ) );
-		var $scrollListener = $scrollContainer.is( 'html, body' ) ? $( OO.ui.Element.static.getWindow( $scrollContainer[ 0 ] ) ) : $scrollContainer;
-		var lastScrollTop = $scrollContainer.scrollTop();
-		var wasScrollDown = null;
-		var $body = $( document.body );
+		const $scrollContainer = $( OO.ui.Element.static.getClosestScrollableContainer( document.body ) );
+		const $scrollListener = $scrollContainer.is( 'html, body' ) ? $( OO.ui.Element.static.getWindow( $scrollContainer[ 0 ] ) ) : $scrollContainer;
+		let lastScrollTop = $scrollContainer.scrollTop();
+		let wasScrollDown = null;
+		const $body = $( document.body );
 		// This block of code is only run once, so we don't need to remove this listener ever
 		$scrollListener[ 0 ].addEventListener( 'scroll', OO.ui.throttle( () => {
 			// Round negative values up to 0 to ignore iOS scroll bouncing (T323400)
-			var scrollTop = Math.max( $scrollContainer.scrollTop(), 0 );
-			var isScrollDown = scrollTop > lastScrollTop;
+			const scrollTop = Math.max( $scrollContainer.scrollTop(), 0 );
+			const isScrollDown = scrollTop > lastScrollTop;
 			if ( isScrollDown !== wasScrollDown ) {
 				if ( !isScrollDown ) {
 					$newTopicWrapper.css( 'transition', 'none' );
@@ -97,7 +97,7 @@ function init( $container ) {
 				} );
 			}
 
-			var observer = new IntersectionObserver(
+			const observer = new IntersectionObserver(
 				( ( entries ) => {
 					$newTopicWrapper.toggleClass( 'ext-discussiontools-init-new-topic-pinned', entries[ 0 ].intersectionRatio === 1 );
 				} ),
