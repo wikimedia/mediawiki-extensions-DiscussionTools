@@ -1105,9 +1105,8 @@ Parser.prototype.buildThreads = function ( result ) {
 	let lastHeading = null;
 	const replies = [];
 
-	let i, threadItem;
-	for ( i = 0; i < result.threadItems.length; i++ ) {
-		threadItem = result.threadItems[ i ];
+	for ( let i = 0; i < result.threadItems.length; i++ ) {
+		const threadItem = result.threadItems[ i ];
 
 		if ( replies.length < threadItem.level ) {
 			// Someone skipped an indentation level (or several). Pretend that the previous reply

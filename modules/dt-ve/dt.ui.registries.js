@@ -1,8 +1,7 @@
 // Adapted from ve.ui.MWWikitextDataTransferHandlerFactory
 function importRegistry( parent, child ) {
-	let name;
 	// Copy existing items
-	for ( name in parent.registry ) {
+	for ( const name in parent.registry ) {
 		child.register( parent.registry[ name ] );
 	}
 	// Copy any new items when they're added
