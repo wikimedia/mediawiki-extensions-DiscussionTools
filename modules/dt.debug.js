@@ -1,4 +1,4 @@
-var
+const
 	Parser = require( 'ext.discussionTools.init' ).Parser,
 	modifier = require( 'ext.discussionTools.init' ).modifier,
 	utils = require( 'ext.discussionTools.init' ).utils,

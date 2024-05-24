@@ -1,4 +1,4 @@
-var controller = require( 'ext.discussionTools.init' ).controller,
+const controller = require( 'ext.discussionTools.init' ).controller,
 	utils = require( 'ext.discussionTools.init' ).utils,
 	ModeTabSelectWidget = require( './ModeTabSelectWidget.js' ),
 	ModeTabOptionWidget = require( './ModeTabOptionWidget.js' ),

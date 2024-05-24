@@ -1,7 +1,7 @@
 'use strict';
 /* global $:off */
 
-var
+const
 	utils = require( './utils.js' );
 
 /**
@@ -270,7 +270,7 @@ function addListItem( comment, replyIndentation ) {
  */
 function removeAddedListItem( node ) {
 	while ( node && node.discussionToolsModified ) {
-		var nextNode;
+		let nextNode;
 		if ( node.discussionToolsModified === 'new' ) {
 			nextNode = node.previousSibling || node.parentNode;
 

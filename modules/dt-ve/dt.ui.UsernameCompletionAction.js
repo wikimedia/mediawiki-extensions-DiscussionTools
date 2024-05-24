@@ -1,5 +1,5 @@
-var sequence,
-	controller = require( 'ext.discussionTools.init' ).controller;
+const controller = require( 'ext.discussionTools.init' ).controller;
+let sequence;
 
 function sortAuthors( a, b ) {
 	return a.username < b.username ? -1 : ( a.username === b.username ? 0 : 1 );
@@ -238,11 +238,11 @@ MWUsernameCompletionAction.prototype.shouldAbandon = function ( input ) {
 
 ve.ui.actionFactory.register( MWUsernameCompletionAction );
 
-var openCommand = new ve.ui.Command(
+const openCommand = new ve.ui.Command(
 	'openMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'open',
 	{ supportedSelections: [ 'linear' ] }
 );
-var insertAndOpenCommand = new ve.ui.Command(
+const insertAndOpenCommand = new ve.ui.Command(
 	'insertAndOpenMWUsernameCompletions', MWUsernameCompletionAction.static.name, 'insertAndOpen',
 	{ supportedSelections: [ 'linear' ] }
 );

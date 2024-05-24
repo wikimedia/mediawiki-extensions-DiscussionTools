@@ -1,4 +1,4 @@
-var utils = require( 'ext.discussionTools.init' ).utils;
+const utils = require( 'ext.discussionTools.init' ).utils;
 
 /**
  * DiscussionTools ReplyWidgetPlain class

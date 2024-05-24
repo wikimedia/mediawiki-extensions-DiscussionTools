@@ -1,9 +1,9 @@
 'use strict';
 
-var initialOffset, indentWidth, firstMarker;
-var updaters = [];
+let initialOffset, indentWidth, firstMarker;
+const updaters = [];
 // eslint-disable-next-line no-jquery/no-global-selector
-var isRtl = $( 'html' ).attr( 'dir' ) === 'rtl';
+const isRtl = $( 'html' ).attr( 'dir' ) === 'rtl';
 
 function markTimestamp( parser, node, match ) {
 	const dfParsers = parser.getLocalTimestampParsers();

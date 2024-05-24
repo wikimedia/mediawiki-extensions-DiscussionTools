@@ -1,4 +1,4 @@
-var ThreadItem = require( './ThreadItem.js' ),
+const ThreadItem = require( './ThreadItem.js' ),
 	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
 /**

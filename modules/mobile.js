@@ -1,9 +1,9 @@
-var newTopicButton, ledeSectionDialog;
-var viewportScrollContainer = null;
-var wasKeyboardOpen = null;
-var initialClientHeight = null;
+let newTopicButton, ledeSectionDialog;
+let viewportScrollContainer = null;
+let wasKeyboardOpen = null;
+let initialClientHeight = null;
 // Copied from ve.init.Platform.static.isIos
-var isIos = /ipad|iphone|ipod/i.test( navigator.userAgent );
+const isIos = /ipad|iphone|ipod/i.test( navigator.userAgent );
 
 $( document.body ).toggleClass( 'ext-discussiontools-init-ios', isIos );
 

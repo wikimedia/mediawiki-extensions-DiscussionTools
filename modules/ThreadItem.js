@@ -1,6 +1,6 @@
 /* global moment */
 
-var utils = require( './utils.js' );
+const utils = require( './utils.js' );
 
 /**
  * A thread item, either a heading or a comment
@@ -65,9 +65,9 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 
 	let item;
 	switch ( hash.type ) {
-		case 'comment':
+		case 'comment': {
 			// Late require to avoid circular dependency
-			var CommentItem = require( './CommentItem.js' );
+			const CommentItem = require( './CommentItem.js' );
 			item = new CommentItem(
 				hash.level,
 				hash.range,
@@ -82,8 +82,9 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 				hash.displayName
 			);
 			break;
-		case 'heading':
-			var HeadingItem = require( './HeadingItem.js' );
+		}
+		case 'heading': {
+			const HeadingItem = require( './HeadingItem.js' );
 			// Cached HTML may still have the placeholder heading constant in it.
 			// This code can be removed a few weeks after being deployed.
 			if ( hash.headingLevel === 99 ) {
@@ -94,6 +95,7 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 				hash.headingLevel
 			);
 			break;
+		}
 		default:
 			throw new Error( 'Unknown ThreadItem type ' + hash.name );
 	}

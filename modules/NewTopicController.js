@@ -1,4 +1,4 @@
-var
+const
 	CommentController = require( './CommentController.js' ),
 	HeadingItem = require( './HeadingItem.js' );
 

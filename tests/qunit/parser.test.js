@@ -1,5 +1,5 @@
 /* global moment */
-var
+const
 	testUtils = require( './testUtils.js' ),
 	Parser = require( 'ext.discussionTools.init' ).Parser;
 

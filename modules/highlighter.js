@@ -1,9 +1,9 @@
-var
-	lastHighlightedPublishedComment = null,
+const
 	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	CommentItem = require( './CommentItem.js' ),
 	HeadingItem = require( './HeadingItem.js' ),
 	utils = require( './utils.js' );
+let lastHighlightedPublishedComment = null;
 
 /**
  * Draw a semi-transparent rectangle on the page to highlight the given thread item.
@@ -165,7 +165,7 @@ Highlight.prototype.destroy = function () {
 	window.removeEventListener( 'resize', this.updateDebounced );
 };
 
-var highlightedTarget = null;
+let highlightedTarget = null;
 /**
  * Highlight the thread item(s) on the page associated with the URL hash or query string
  *

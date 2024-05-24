@@ -1,7 +1,7 @@
 'use strict';
 /* global $:off */
 
-var
+const
 	utils = require( './utils.js' ),
 	charAt = require( 'mediawiki.String' ).charAt,
 	codePointLength = require( 'mediawiki.String' ).codePointLength,
@@ -30,7 +30,7 @@ function Parser( data ) {
  *
  * @constant {number}
  */
-var SIGNATURE_SCAN_LIMIT = 100;
+const SIGNATURE_SCAN_LIMIT = 100;
 
 /**
  * Parse a discussion page.
@@ -195,11 +195,12 @@ Parser.prototype.getTimestampRegexp = function ( contLangVariant, format, digits
 					s += '"';
 				}
 				break;
-			default:
+			default: {
 				// Copy whole characters together, instead of single UTF-16 surrogates
-				var char = charAt( format, p );
+				const char = charAt( format, p );
 				s += mw.util.escapeRegExp( char );
 				p += char.length - 1;
+			}
 		}
 		if ( num !== false ) {
 			if ( raw ) {
@@ -560,17 +561,16 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
 		// have links), so we only concern ourselves with the first match.
 		matchData = nodeText.match( timestampRegexps[ i ] );
 		if ( matchData ) {
-			var timestampLength = matchData[ 0 ].length;
+			const timestampLength = matchData[ 0 ].length;
 			// Bytes at the end of the last node which aren't part of the match
 			const tailLength = nodeText.length - timestampLength - matchData.index;
 			// We are moving right to left, but we start to the right of the end of
 			// the timestamp if there is trailing garbage, so that is a negative offset.
-			var count = -tailLength;
+			let count = -tailLength;
 			const endContainer = nodes[ 0 ];
 			const endOffset = endContainer.nodeValue.length - tailLength;
 
-			var startContainer, startOffset;
-			// eslint-disable-next-line no-loop-func
+			let startContainer, startOffset;
 			nodes.some( ( n ) => {
 				count += n.nodeValue.length;
 				// If we have counted to beyond the start of the timestamp, we are in the
@@ -866,7 +866,7 @@ Parser.prototype.buildThreadItems = function () {
 
 	let node;
 	while ( ( node = treeWalker.nextNode() ) ) {
-		var match;
+		let match;
 		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
 			const headingNode = utils.getHeadlineNode( node );
 			range = {
@@ -890,15 +890,15 @@ Parser.prototype.buildThreadItems = function () {
 				continue;
 			}
 
-			var sigRanges = [];
-			var timestampRanges = [];
+			const sigRanges = [];
+			const timestampRanges = [];
 
 			sigRanges.push( adjustSigRange( foundSignature.nodes, match, node ) );
 			timestampRanges.push( match.range );
 
 			// Everything from the last comment up to here is the next comment
 			const startNode = this.nextInterestingLeafNode( curCommentEnd );
-			var endNode = foundSignature.nodes[ 0 ];
+			let endNode = foundSignature.nodes[ 0 ];
 
 			// Skip to the end of the "paragraph". This only looks at tag names and can be fooled by CSS, but
 			// avoiding that would be more difficult and slower.

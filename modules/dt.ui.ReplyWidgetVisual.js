@@ -1,4 +1,4 @@
-var CommentTargetWidget = require( './dt-ve/CommentTargetWidget.js' );
+const CommentTargetWidget = require( './dt-ve/CommentTargetWidget.js' );
 
 require( './dt-ve/dt.ui.MWSignatureContextItem.js' );
 require( './dt-ve/dt.dm.MWSignatureNode.js' );

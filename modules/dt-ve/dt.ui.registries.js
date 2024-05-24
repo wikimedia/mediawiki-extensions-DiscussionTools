@@ -13,14 +13,14 @@ function importRegistry( parent, child ) {
 
 // Create new registries so that we can override the behavior for signatures
 // without affecting normal VisualEditor.
-var commandRegistry = new ve.ui.CommandRegistry();
+const commandRegistry = new ve.ui.CommandRegistry();
 importRegistry( ve.ui.commandRegistry, commandRegistry );
-var sequenceRegistry = new ve.ui.SequenceRegistry();
+const sequenceRegistry = new ve.ui.SequenceRegistry();
 importRegistry( ve.ui.sequenceRegistry, sequenceRegistry );
 
-var wikitextCommandRegistry = new ve.ui.MWWikitextCommandRegistry( commandRegistry );
+const wikitextCommandRegistry = new ve.ui.MWWikitextCommandRegistry( commandRegistry );
 importRegistry( ve.ui.wikitextCommandRegistry, wikitextCommandRegistry );
-var wikitextSequenceRegistry = new ve.ui.SequenceRegistry();
+const wikitextSequenceRegistry = new ve.ui.SequenceRegistry();
 importRegistry( ve.ui.wikitextSequenceRegistry, wikitextSequenceRegistry );
 
 // Disable find-and-replace (T263570)
@@ -58,7 +58,7 @@ sequenceRegistry.register(
 // TODO: Show a warning when typing ~~~~ in wikitext mode?
 
 // Show wikitext warnings for disabled sequences (disabled via excludeCommands):
-var sequenceRegistryForReplyTool = new ve.ui.SequenceRegistry();
+const sequenceRegistryForReplyTool = new ve.ui.SequenceRegistry();
 importRegistry( sequenceRegistry, sequenceRegistryForReplyTool );
 
 // insertTable

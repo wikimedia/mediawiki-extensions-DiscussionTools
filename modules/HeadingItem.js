@@ -1,6 +1,6 @@
-var ThreadItem = require( './ThreadItem.js' );
+const ThreadItem = require( './ThreadItem.js' );
 // Placeholder headings must have a level higher than real headings (1-6)
-var PLACEHOLDER_HEADING_LEVEL = 99;
+const PLACEHOLDER_HEADING_LEVEL = 99;
 
 /**
  * A heading item

@@ -4,7 +4,7 @@
 /**
  * @constant
  */
-var NEW_TOPIC_COMMENT_ID = 'new|' + mw.config.get( 'wgRelevantPageName' );
+const NEW_TOPIC_COMMENT_ID = 'new|' + mw.config.get( 'wgRelevantPageName' );
 
 /**
  * @param {Node} node
@@ -14,7 +14,7 @@ function isBlockElement( node ) {
 	return node instanceof HTMLElement && ve.isBlockElement( node );
 }
 
-var solTransparentLinkRegexp = /(?:^|\s)mw:PageProp\/(?:Category|redirect|Language)(?=$|\s)/;
+const solTransparentLinkRegexp = /(?:^|\s)mw:PageProp\/(?:Category|redirect|Language)(?=$|\s)/;
 
 /**
  * @param {Node} node
@@ -59,7 +59,7 @@ function isOurGeneratedNode( node ) {
 }
 
 // Elements which can't have element children (but some may have text content).
-var noElementChildrenElementTypes = [
+const noElementChildrenElementTypes = [
 	// https://html.spec.whatwg.org/multipage/syntax.html#elements-2
 	// Void elements
 	'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',

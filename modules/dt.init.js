@@ -1,4 +1,4 @@
-var controller = require( './controller.js' ),
+const controller = require( './controller.js' ),
 	url = new URL( location.href );
 
 /**
@@ -13,7 +13,7 @@ mw.dt.initState = {
 
 // A/B test for logged out users:
 if ( mw.user.isAnon() && mw.config.get( 'wgDiscussionToolsABTest' ) && mw.config.get( 'wgDiscussionToolsABTestBucket' ) ) {
-	var token = mw.cookie.get( 'DTABid', '', mw.user.generateRandomSessionId() );
+	const token = mw.cookie.get( 'DTABid', '', mw.user.generateRandomSessionId() );
 	mw.cookie.set( 'DTAB', mw.config.get( 'wgDiscussionToolsABTestBucket' ), { path: '/', expires: 90 * 86400, prefix: '' } );
 	mw.cookie.set( 'DTABid', token, { path: '/', expires: 90 * 86400, prefix: '' } );
 }
@@ -77,15 +77,13 @@ if ( url.searchParams.get( 'dtdebug' ) ) {
 	mw.hook( 'wikipage.content' ).add( mw.dt.init );
 }
 
-var topicSubscriptions;
-
 if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'TopicSubscriptions' ) {
-	topicSubscriptions = require( './topicsubscriptions.js' );
+	const topicSubscriptions = require( './topicsubscriptions.js' );
 	topicSubscriptions.initSpecialTopicSubscriptions();
 }
 
 if ( mw.config.get( 'wgAction' ) === 'history' ) {
-	topicSubscriptions = require( './topicsubscriptions.js' );
+	const topicSubscriptions = require( './topicsubscriptions.js' );
 	topicSubscriptions.initNewTopicsSubscription();
 }
 

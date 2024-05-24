@@ -1,4 +1,4 @@
-var
+const
 	CommentItem = require( 'ext.discussionTools.init' ).CommentItem,
 	HeadingItem = require( 'ext.discussionTools.init' ).HeadingItem;
 

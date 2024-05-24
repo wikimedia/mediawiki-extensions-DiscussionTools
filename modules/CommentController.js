@@ -1,4 +1,4 @@
-var
+const
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
 	dtConf = require( './config.json' ),

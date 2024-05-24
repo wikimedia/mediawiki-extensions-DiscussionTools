@@ -1,4 +1,4 @@
-var
+const
 	testUtils = require( './testUtils.js' ),
 	Parser = require( 'ext.discussionTools.init' ).Parser,
 	modifier = require( 'ext.discussionTools.init' ).modifier;

@@ -1,10 +1,6 @@
 'use strict';
 
-var
-	$pageContainer, linksController,
-	pageThreads,
-	lastControllerScrollOffset,
-	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
+const featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	MemoryStorage = require( './MemoryStorage.js' ),
 	STORAGE_EXPIRY = 60 * 60 * 24 * 30,
 	Parser = require( './Parser.js' ),
@@ -16,14 +12,18 @@ var
 	highlighter = require( './highlighter.js' ),
 	topicSubscriptions = require( './topicsubscriptions.js' ),
 	permalinks = require( './permalinks.js' ),
-	pageHandlersSetup = false,
-	pageDataCache = {},
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
 	enable2017Wikitext = featuresEnabled.sourcemodetoolbar,
 	overflowMenu = require( './overflowMenu.js' );
+let
+	$pageContainer, linksController,
+	pageThreads,
+	lastControllerScrollOffset,
+	pageDataCache = {},
+	pageHandlersSetup = false;
 
-var mobile = null;
+let mobile = null;
 if ( OO.ui.isMobile() && mw.config.get( 'skin' ) === 'minerva' ) {
 	mobile = require( './mobile.js' );
 }

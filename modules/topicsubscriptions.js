@@ -1,13 +1,13 @@
 /* global moment */
-var
-	api,
-	seenAutoTopicSubPopup = !!+mw.user.options.get( 'discussiontools-seenautotopicsubpopup' ),
+const
 	STATE_UNSUBSCRIBED = 0,
 	STATE_SUBSCRIBED = 1,
 	STATE_AUTOSUBSCRIBED = 2,
 	utils = require( './utils.js' ),
 	CommentItem = require( './CommentItem.js' ),
-	HeadingItem = require( './HeadingItem.js' ),
+	HeadingItem = require( './HeadingItem.js' );
+let api,
+	seenAutoTopicSubPopup = !!+mw.user.options.get( 'discussiontools-seenautotopicsubpopup' ),
 	linksByName = {},
 	buttonsByName = {};
 

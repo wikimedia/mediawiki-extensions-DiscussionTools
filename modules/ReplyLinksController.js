@@ -1,9 +1,9 @@
-var
+const
 	// LanguageData::getLocalData()
 	parserData = require( './parser/data.json' ),
 	utils = require( './utils.js' );
 
-var featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
+const featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
 function tryInfuse( $element ) {
 	if ( $element.length ) {
