@@ -251,22 +251,24 @@ function getCheckboxesPromise( pageName, oldId ) {
  * @return {string[]}
  */
 function getReplyWidgetModules() {
-	const veConf = mw.config.get( 'wgVisualEditorConfig' );
-	let modules = [ 'ext.discussionTools.ReplyWidget' ]
-		.concat( veConf.pluginModules.filter( mw.loader.getState ) );
-
+	const modules = [];
 	if ( OO.ui.isMobile() ) {
-		modules = [
+		modules.push(
 			'ext.visualEditor.core.mobile',
 			'ext.visualEditor.mwextensions'
-		].concat( modules );
+		);
 	} else {
-		modules = [
+		modules.push(
 			'ext.visualEditor.core.desktop',
 			'ext.visualEditor.desktopTarget',
 			'ext.visualEditor.mwextensions.desktop'
-		].concat( modules );
+		);
 	}
+	modules.push( 'ext.discussionTools.ReplyWidget' );
+
+	const veConf = mw.config.get( 'wgVisualEditorConfig' );
+	modules.push( ...veConf.pluginModules.filter( mw.loader.getState ) );
+
 	return modules;
 }
 
