@@ -368,10 +368,6 @@ class CommentModifier {
 	 * @param DocumentFragment|null $fragment Containing document fragment if list has no parent
 	 */
 	public static function unwrapList( Node $list, ?DocumentFragment $fragment = null ): void {
-		$doc = $list->ownerDocument;
-		$container = $fragment ?: $list->parentNode;
-		$referenceNode = $list;
-
 		if ( !(
 			$list instanceof Element && (
 				strtolower( $list->tagName ) === 'dl' ||
@@ -388,6 +384,9 @@ class CommentModifier {
 			return;
 		}
 
+		$doc = $list->ownerDocument;
+		$container = $fragment ?: $list->parentNode;
+		$referenceNode = $list;
 		while ( $list->firstChild ) {
 			if ( $list->firstChild instanceof Element ) {
 				// Move <dd> contents to <p>

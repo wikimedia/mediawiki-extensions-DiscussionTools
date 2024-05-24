@@ -310,10 +310,6 @@ function removeAddedListItem( node ) {
  * @param {DocumentFragment|null} fragment Containing document fragment if list has no parent
  */
 function unwrapList( list, fragment ) {
-	let doc = list.ownerDocument,
-		container = fragment || list.parentNode,
-		referenceNode = list;
-
 	if ( !(
 		list.nodeType === Node.ELEMENT_NODE && (
 			list.tagName.toLowerCase() === 'dl' ||
@@ -330,7 +326,9 @@ function unwrapList( list, fragment ) {
 		return;
 	}
 
-	let insertBefore;
+	const doc = list.ownerDocument;
+	const container = fragment || list.parentNode;
+	let referenceNode = list;
 	while ( list.firstChild ) {
 		if ( list.firstChild.nodeType === Node.ELEMENT_NODE ) {
 			// Move <dd> contents to <p>
@@ -340,11 +338,11 @@ function unwrapList( list, fragment ) {
 				// and start a new paragraph after
 				if ( utils.isBlockElement( list.firstChild.firstChild ) ) {
 					if ( p.firstChild ) {
-						insertBefore = referenceNode.nextSibling;
+						const insertBefore2 = referenceNode.nextSibling;
 						referenceNode = p;
-						container.insertBefore( p, insertBefore );
+						container.insertBefore( p, insertBefore2 );
 					}
-					insertBefore = referenceNode.nextSibling;
+					const insertBefore = referenceNode.nextSibling;
 					referenceNode = list.firstChild.firstChild;
 					container.insertBefore( list.firstChild.firstChild, insertBefore );
 					p = doc.createElement( 'p' );
@@ -353,14 +351,14 @@ function unwrapList( list, fragment ) {
 				}
 			}
 			if ( p.firstChild ) {
-				insertBefore = referenceNode.nextSibling;
+				const insertBefore = referenceNode.nextSibling;
 				referenceNode = p;
 				container.insertBefore( p, insertBefore );
 			}
 			list.removeChild( list.firstChild );
 		} else {
 			// Text node / comment node, probably empty
-			insertBefore = referenceNode.nextSibling;
+			const insertBefore = referenceNode.nextSibling;
 			referenceNode = list.firstChild;
 			container.insertBefore( list.firstChild, insertBefore );
 		}

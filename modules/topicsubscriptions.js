@@ -321,7 +321,7 @@ function maybeShowFirstTimeAutoTopicSubPopup() {
 	mw.user.options.set( 'discussiontools-seenautotopicsubpopup', '1' );
 	api.saveOption( 'discussiontools-seenautotopicsubpopup', '1' );
 
-	let $popupContent, popup;
+	let popup = null;
 
 	function close() {
 		popup.$element.removeClass( 'ext-discussiontools-autotopicsubpopup-fadein' );
@@ -330,7 +330,7 @@ function maybeShowFirstTimeAutoTopicSubPopup() {
 		}, 1000 );
 	}
 
-	$popupContent = $( '<div>' )
+	const $popupContent = $( '<div>' )
 		.append(
 			$( '<strong>' )
 				.addClass( 'ext-discussiontools-autotopicsubpopup-title' )

@@ -251,9 +251,9 @@ function getCheckboxesPromise( pageName, oldId ) {
  * @return {string[]}
  */
 function getReplyWidgetModules() {
-	let veConf = mw.config.get( 'wgVisualEditorConfig' ),
-		modules = [ 'ext.discussionTools.ReplyWidget' ]
-			.concat( veConf.pluginModules.filter( mw.loader.getState ) );
+	const veConf = mw.config.get( 'wgVisualEditorConfig' );
+	let modules = [ 'ext.discussionTools.ReplyWidget' ]
+		.concat( veConf.pluginModules.filter( mw.loader.getState ) );
 
 	if ( OO.ui.isMobile() ) {
 		modules = [
@@ -281,9 +281,9 @@ function getReplyWidgetModules() {
 function init( $container, state ) {
 	let
 		activeCommentId = null,
-		activeController = null,
-		// Loads later to avoid circular dependency
-		CommentController = require( './CommentController.js' ),
+		activeController = null;
+	// Loads later to avoid circular dependency
+	const CommentController = require( './CommentController.js' ),
 		NewTopicController = require( './NewTopicController.js' );
 
 	// We may be re-initializing after posting a new comment, so clear the cache, because

@@ -1,5 +1,5 @@
 const controller = require( 'ext.discussionTools.init' ).controller;
-let sequence;
+let sequence = null;
 
 function sortAuthors( a, b ) {
 	return a.username < b.username ? -1 : ( a.username === b.username ? 0 : 1 );
@@ -67,8 +67,8 @@ MWUsernameCompletionAction.static.methods.push( 'insertAndOpen' );
 /* Methods */
 
 MWUsernameCompletionAction.prototype.insertAndOpen = function () {
-	let inserted = false,
-		surfaceModel = this.surface.getModel(),
+	let inserted = false;
+	const surfaceModel = this.surface.getModel(),
 		fragment = surfaceModel.getFragment();
 
 	// This is opening a window in a slightly weird way, so the normal logging

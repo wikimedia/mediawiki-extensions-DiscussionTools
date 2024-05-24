@@ -671,10 +671,10 @@ CommentController.prototype.getUnsupportedNodeSelectors = function () {
  * @return {jQuery.Promise} Promise which resolves when switch is complete
  */
 CommentController.prototype.switchToVisual = function () {
-	let oldWidget = this.replyWidget,
+	const oldWidget = this.replyWidget,
 		oldShowAdvanced = oldWidget.showAdvanced,
-		oldEditSummary = oldWidget.getEditSummary(),
-		wikitext = oldWidget.getValue();
+		oldEditSummary = oldWidget.getEditSummary();
+	let wikitext = oldWidget.getValue();
 
 	// Replace wikitext signatures with a special marker recognized by DtDmMWSignatureNode
 	// to render them as signature nodes in visual mode.

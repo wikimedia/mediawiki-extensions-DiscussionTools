@@ -516,11 +516,10 @@ function acceptOnlyNodesAllowingComments( node ) {
  *   - {Object} range Range-like object covering the timestamp
  */
 Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
-	let matchData, i,
-		nodeText = '',
-		offset = 0,
-		// Searched nodes (reverse order)
-		nodes = [];
+	let nodeText = '';
+	let offset = 0;
+	// Searched nodes (reverse order)
+	const nodes = [];
 
 	while ( node ) {
 		nodeText = node.nodeValue + nodeText;
@@ -554,12 +553,12 @@ Parser.prototype.findTimestamp = function ( node, timestampRegexps ) {
 		}
 	}
 
-	for ( i = 0; i < timestampRegexps.length; i++ ) {
+	for ( let i = 0; i < timestampRegexps.length; i++ ) {
 		// Technically, there could be multiple matches in a single text node. However, the ultimate
 		// point of this is to find the signatures which precede the timestamps, and any later
 		// timestamps in the text node can't be directly preceded by a signature (as we require them to
 		// have links), so we only concern ourselves with the first match.
-		matchData = nodeText.match( timestampRegexps[ i ] );
+		const matchData = nodeText.match( timestampRegexps[ i ] );
 		if ( matchData ) {
 			const timestampLength = matchData[ 0 ].length;
 			// Bytes at the end of the last node which aren't part of the match

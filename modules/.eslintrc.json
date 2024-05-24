@@ -11,7 +11,6 @@
 	},
 	"rules": {
 		"no-implicit-globals": "off",
-		"prefer-const": "off",
 		"max-len": "off",
 		"prefer-arrow-callback": "error",
 		"implicit-arrow-linebreak": "error",
