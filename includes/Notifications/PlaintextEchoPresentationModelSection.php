@@ -9,7 +9,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
-use EchoDiscussionParser;
+use MediaWiki\Extension\Notifications\DiscussionParser;
 use MediaWiki\Extension\Notifications\Formatters\EchoPresentationModelSection;
 use RuntimeException;
 
@@ -31,7 +31,7 @@ class PlaintextEchoPresentationModelSection extends EchoPresentationModelSection
 			return false;
 		}
 		$plaintext = trim( $plaintext );
-		return $this->language->truncateForVisual( $plaintext, EchoDiscussionParser::DEFAULT_SNIPPET_LENGTH );
+		return $this->language->truncateForVisual( $plaintext, DiscussionParser::DEFAULT_SNIPPET_LENGTH );
 	}
 
 	/**

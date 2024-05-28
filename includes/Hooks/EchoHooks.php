@@ -9,7 +9,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use EchoUserLocator;
 use MediaWiki\Extension\DiscussionTools\Notifications\AddedTopicPresentationModel;
 use MediaWiki\Extension\DiscussionTools\Notifications\EnhancedEchoEditUserTalkPresentationModel;
 use MediaWiki\Extension\DiscussionTools\Notifications\EnhancedEchoMentionPresentationModel;
@@ -20,6 +19,7 @@ use MediaWiki\Extension\Notifications\Hooks\BeforeCreateEchoEventHook;
 use MediaWiki\Extension\Notifications\Hooks\EchoGetBundleRulesHook;
 use MediaWiki\Extension\Notifications\Hooks\EchoGetEventsForRevisionHook;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Extension\Notifications\UserLocator;
 use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 
@@ -53,10 +53,10 @@ class EchoHooks implements
 			// duplicate notifications for a single comment
 			'user-filters' => [
 				[
-					[ EchoUserLocator::class, 'locateFromEventExtra' ],
+					[ UserLocator::class, 'locateFromEventExtra' ],
 					[ 'mentioned-users' ]
 				],
-				[ [ EchoUserLocator::class, 'locateTalkPageOwner' ] ],
+				[ [ UserLocator::class, 'locateTalkPageOwner' ] ],
 			],
 			'presentation-model' => SubscribedNewCommentPresentationModel::class,
 			'bundle' => [

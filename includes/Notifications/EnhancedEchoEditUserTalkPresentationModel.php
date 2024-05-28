@@ -9,7 +9,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
-use EchoEditUserTalkPresentationModel;
+use MediaWiki\Extension\Notifications\Formatters\EchoEditUserTalkPresentationModel;
 use MediaWiki\Language\RawMessage;
 use Message;
 use Wikimedia\Timestamp\TimestampException;
