@@ -50,6 +50,7 @@
 	"discussiontools-findcomment-results-notcurrent": "(az aktuális lapváltozatban nem szerepel)",
 	"discussiontools-findcomment-results-transcluded": "(egy másik lapról beillesztve)",
 	"discussiontools-findcomment-title": "Hozzászólás keresése",
+	"discussiontools-ledesection-button": "További információk erről a lapról",
 	"discussiontools-ledesection-title": "Erről a vitalapról",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|másodperc}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Itt az új megbeszélések indításának új módja.</strong> Ez a frissítés lehetővé teszi új megbeszélések indítását a lap újratöltése nélkül és más szerkesztők megpingelését egy új gyorsbillentyűvel. Lehetőség van [$1 a régi verzióhoz való visszatérésre] is.",
