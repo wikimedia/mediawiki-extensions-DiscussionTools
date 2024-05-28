@@ -1,6 +1,17 @@
 function init( $pageContainer ) {
 	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', ( e ) => {
-		copyLink( e.target.href );
+		// Try to percent-decode the URL, so that non-Latin characters don't look so ugly (T357021)
+		let link = e.target.href;
+		try {
+			// decodeURI() may throw
+			const decodedLink = decodeURI( e.target.href );
+			// Check that the decoded URL is parsed to the same canonical URL
+			// new URL() may throw
+			if ( new URL( decodedLink ).toString() === link ) {
+				link = decodedLink;
+			}
+		} catch ( err ) {}
+		copyLink( link );
 	} ).attr( 'data-event-name', 'discussiontools.permalink-copied' );
 }
 
