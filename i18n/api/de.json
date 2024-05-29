@@ -38,5 +38,7 @@
 	"apihelp-discussiontoolssubscribe-param-commentname": "Name des Themas, das abonniert (oder abbestellt) werden soll",
 	"apihelp-discussiontoolssubscribe-param-page": "Eine Seite, auf der das Thema erscheint",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true zum Abonnieren, false zum Abbestellen",
-	"apihelp-discussiontoolssubscribe-summary": "Abonnieren (oder abbestellen), um Benachrichtigungen über ein Thema zu erhalten."
+	"apihelp-discussiontoolssubscribe-summary": "Abonnieren (oder abbestellen), um Benachrichtigungen über ein Thema zu erhalten.",
+	"apihelp-discussiontoolsthank-param-commentid": "ID des Kommentars, für den gedankt werden soll.",
+	"apihelp-discussiontoolsthank-summary": "Senden einer öffentliche Dankesbenachrichtigung für einen Kommentar."
 }
