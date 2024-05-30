@@ -421,8 +421,8 @@ class ThreadItemStore {
 			return new DatabaseThreadItemSet();
 		}
 
-		$queryBuilder = $this->getIdsNamesBuilder();
-		$queryBuilder
+		$queryBuilder = $this->getIdsNamesBuilder()
+			->caller( __METHOD__ )
 			->where( [ 'itr_revision_id' => $revId ] )
 			// We must process parents before their children in the loop later
 			->orderBy( 'itr_id', SelectQueryBuilder::SORT_ASC );
@@ -617,6 +617,7 @@ class ThreadItemStore {
 						'itp_items_id' => $itemsIds[ $item->getId() ],
 						'itp_page_id' => $rev->getPageId(),
 					] )
+					->caller( $method )
 					->fetchRow();
 				if ( $itemPagesRow === false ) {
 					$dbw->newInsertQueryBuilder()
