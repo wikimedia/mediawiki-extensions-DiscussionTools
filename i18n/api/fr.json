@@ -4,6 +4,7 @@
 			"Amire80",
 			"DreZhsh",
 			"Gomoko",
+			"Graineahumus",
 			"Lofhi",
 			"Thibaut120094",
 			"Urhixidur",
@@ -47,5 +48,7 @@
 	"apihelp-discussiontoolssubscribe-param-commentname": "Nom du sujet auquel s’abonner (ou duquel se désabonner)",
 	"apihelp-discussiontoolssubscribe-param-page": "Une page sur laquelle le sujet apparaît",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Vrai pour s’abonner, faux pour se désinscrire",
-	"apihelp-discussiontoolssubscribe-summary": "S’abonner (ou se désinscrire) pour recevoir des notifications sur un sujet."
+	"apihelp-discussiontoolssubscribe-summary": "S’abonner (ou se désinscrire) pour recevoir des notifications sur un sujet.",
+	"apihelp-discussiontoolsthank-param-commentid": "ID du commentaire à remercier.",
+	"apihelp-discussiontoolsthank-summary": "Envoyer publiquement une notification de remerciement pour un commentaire."
 }
