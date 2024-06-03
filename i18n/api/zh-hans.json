@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"Anterdc99",
 			"GuoPC",
 			"Lakejason0",
 			"LittlePaw365",
@@ -48,5 +49,7 @@
 	"apihelp-discussiontoolssubscribe-param-commentname": "要订阅（或取消订阅）的话题的名称",
 	"apihelp-discussiontoolssubscribe-param-page": "该话题出现的页面",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true为订阅，false为取消订阅",
-	"apihelp-discussiontoolssubscribe-summary": "订阅（或取消订阅）来接收有关话题的通知。"
+	"apihelp-discussiontoolssubscribe-summary": "订阅（或取消订阅）来接收有关话题的通知。",
+	"apihelp-discussiontoolsthank-param-commentid": "要感谢的留言ID。",
+	"apihelp-discussiontoolsthank-summary": "发送公开的感谢留言通知。"
 }
