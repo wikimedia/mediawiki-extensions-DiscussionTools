@@ -294,7 +294,6 @@ Parser.prototype.getTimestampParser = function ( contLangVariant, format, digits
 	function untransformDigits( text ) {
 		return Number( digits ? text.replace(
 			// digits list comes from site config so is trusted
-			// eslint-disable-next-line security/detect-non-literal-regexp
 			new RegExp( '[' + digits.join( '' ) + ']', 'g' ),
 			( m ) => digits.indexOf( m )
 		) : text );

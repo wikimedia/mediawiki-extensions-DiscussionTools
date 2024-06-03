@@ -393,7 +393,6 @@ function getTitleFromUrl( url ) {
 	}
 
 	// wgArticlePath is site config so is trusted
-	// eslint-disable-next-line security/detect-non-literal-regexp
 	const articlePathRegexp = new RegExp(
 		mw.util.escapeRegExp( mw.config.get( 'wgArticlePath' ) )
 			.replace( '\\$1', '(.*)' )
