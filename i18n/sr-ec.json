@@ -18,6 +18,7 @@
 	"discussiontools-defaultsummary-reply": "одговор",
 	"discussiontoolsdebug-title": "Структура података алатке за дискусију",
 	"discussiontoolsdebug-pagetitle": "Наслов странице",
+	"discussiontoolsdebug-intro": "Ова страница демонстрира како како екстензија [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools] препознаје теме и коментаре на присутне на страници '''[[:$1]]'''. Може бити од помоћи за дебаговање или разумевање како екстензија ради. Исте информације су доступне и у [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Алатке за олакшавање комуникације на страницама за разговор.",
 	"discussiontools-emptystate-button": "Започни разговор",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Странице за разговор]] су места где уредници дискутују о садржају на Википедији. Можете користити ову страницу за покретање дискусије о садржају странице [[:{{SUBJECTPAGENAME}}]] и како је унапредити.",

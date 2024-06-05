@@ -19,7 +19,7 @@
 	"discussiontools-defaultsummary-reply": "Odpowiedź",
 	"discussiontoolsdebug-title": "Struktura danych narzędzi dyskusji",
 	"discussiontoolsdebug-pagetitle": "Tytuł strony",
-	"discussiontoolsdebug-intro": "Ta strona pokazuje, w jaki sposób  [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools rozszerzenie Narzędzia dyskusji] postrzega wątki i komentarze na stronie '''[[:$1]]'''. Może to być przydatne do rozwiązywania problemów z rozszerzeniem albo do celów edukacyjnych. Te same informacje są dostępne w [[$2|API discussiontoolspageinfo]]",
+	"discussiontoolsdebug-intro": "Ta strona pokazuje, w jaki sposób  [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools rozszerzenie Narzędzia dyskusji] postrzega wątki i komentarze na stronie '''[[:$1]]'''. Może to być przydatne do rozwiązywania problemów z rozszerzeniem albo do celów edukacyjnych. Te same informacje są dostępne w [[$2|API discussiontoolspageinfo]].",
 	"discussiontools-desc": "Narzędzia ułatwiające korzystanie ze stron dyskusji.",
 	"discussiontools-emptystate-button": "Rozpocznij dyskusję",
 	"discussiontools-emptystate-desc": "Na [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|stronach dyskusji]]  rozmawiamy o tym, jak sprawić, aby artykuły {{GRAMMAR:D.lp|{{SITENAME}}}} były jak najlepsze. Tutaj możesz rozpocząć dyskusję na temat tego, jak udoskonalić stronę „[[:{{SUBJECTPAGENAME}}]]”.",

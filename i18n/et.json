@@ -14,7 +14,7 @@
 	"discussiontools-defaultsummary-reply": "Vastus",
 	"discussiontoolsdebug-title": "Arutelutööriistade andmestruktuur",
 	"discussiontoolsdebug-pagetitle": "Lehekülje pealkiri",
-	"discussiontoolsdebug-intro": "See lehekülg näitab, kuidas [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools laiendus] tuvastab teemad ja kommentaarid leheküljel '''[[:$1]]'''. See võib olla kasulik laiendusega seotud probleemide silumisel või selle toimimise mõistmisel. Sama teave on saadaval [[$2|discussiontoolspageinfo API]]-s.",
+	"discussiontoolsdebug-intro": "See lehekülg näitab, kuidas [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools laiendus DiscussionTools] tuvastab teemad ja kommentaarid leheküljel '''[[:$1]]'''. See võib olla kasulik laiendusega seotud probleemide silumisel või selle toimimise mõistmisel. Sama teave on saadaval [[$2|discussiontoolspageinfo API]]-s.",
 	"discussiontools-desc": "Tööriistad arutelulehekülgede täiustamiseks",
 	"discussiontools-emptystate-button": "Alusta arutelu",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Arutelulehekülgi]] kasutatakse pidamaks nõu selle üle, kuidas {{GRAMMAR:genitive|{{SITENAME}}}} sisu võimalikult heaks teha. Siin leheküljel saad alustada arutelu lehekülje [[:{{SUBJECTPAGENAME}}]] parandamise üle.",
