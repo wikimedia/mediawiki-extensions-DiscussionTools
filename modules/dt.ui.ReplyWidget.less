@@ -27,6 +27,7 @@
 		// (in particular, `overflow: hidden` cuts off VE inspectors), so we must use this relatively
 		// recent property, and only apply this fix on supporting browsers, notably excluding Safari <13
 		// (https://caniuse.com/?search=flow-root)
+		/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 		display: flow-root;
 		min-width: 20em;
 		clear: none;
@@ -295,6 +296,7 @@
 		// ... and expand sections
 		.collapsible-block[ hidden ] { /* stylelint-disable-line selector-class-pattern */
 			// If hidden=until-found is supported, this will set content-visibility: hidden;
+			/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 			content-visibility: visible;
 			// otherwise it will set display: none;
 			display: block;

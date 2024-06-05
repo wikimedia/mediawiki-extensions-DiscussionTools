@@ -9,7 +9,7 @@ span[ data-mw-comment-start ] {
 	margin-top: -1em;
 }
 
-// stylelint-disable-next-line stylistic/selector-list-comma-newline-after
+// stylelint-disable-next-line @stylistic/selector-list-comma-newline-after
 h1, h2, h3, h4, h5, h6 {
 	span[ data-mw-comment-end ] {
 		// Support: Safari
@@ -457,6 +457,7 @@ h1, h2, h3, h4, h5, h6 {
 	// This needs to be a separate rule, because the :has() selector is not yet supported by all browsers
 	// Support: Firefox <= 120, Chrome <= 105, Safari <= 15.3 (https://caniuse.com/css-has)
 	/* Our section heading is the first element on the page, except for invisible TOC placeholder */
+	/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 	.mw-parser-output > section:first-child:has( > meta:only-child ) + section > .ext-discussiontools-init-section {
 		border-top: 0;
 		margin-top: 0;
