@@ -147,6 +147,7 @@
 	"discussiontools-signature-prefix": ",&#32;",
 	"discussiontools-target-comment-missing": "Хаам цакарий, Иза дӀабаьккхина йа кхечухьабаьккхина хила мега.",
 	"discussiontools-target-comments-missing": "Керла хаамаш цакарий, Уьш дӀабаьхна йа кхечухьабаьхна хила мега.",
+	"discussiontools-target-heading-missing": "Тема каро йиш йац. Иза хила мега дӀайаьккхина йа кхечухьайаьккхина.",
 	"discussiontools-topicheader-authorcount": "Дийцарехь дакъалоцуш бу — $1 {{PLURAL:$1|декъашхо}}",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|хаам}}",
 	"discussiontools-topicheader-latestcomment": "ТӀаьххьара хаам: $1",
