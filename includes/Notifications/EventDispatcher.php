@@ -14,6 +14,7 @@ use DateTimeImmutable;
 use ExtensionRegistry;
 use IDBAccessObject;
 use Iterator;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
@@ -26,13 +27,13 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\HeadingItem;
 use MediaWiki\Extension\EventLogging\EventLogging;
+use MediaWiki\Extension\EventLogging\Libs\UserBucketProvider\UserBucketProvider;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
-use RequestContext;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -453,7 +454,7 @@ class EventDispatcher {
 				// Retention-safe values:
 				'user_is_anonymous' => !$identity->isRegistered(),
 				'user_is_temp' => $userIdentityUtils->isTemp( $identity ),
-				'user_edit_count_bucket' => \UserBucketProvider::getUserEditCountBucket( $identity ) ?: 'N/A',
+				'user_edit_count_bucket' => UserBucketProvider::getUserEditCountBucket( $identity ) ?: 'N/A',
 			],
 			'database' => $wgDBname,
 			// This is unreliable, but sufficient for our purposes; we

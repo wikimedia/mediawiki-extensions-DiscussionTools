@@ -13,8 +13,8 @@ use MediaWiki\Extension\Thanks\Storage\LogStore;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
-use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 

@@ -3,14 +3,14 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use FormatJson;
-use GenderCache;
+use MediaWiki\Cache\GenderCache;
 use MediaWiki\Config\Config;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use ParserOutput;
 use Skin;
 use Wikimedia\TestingAccessWrapper;
 

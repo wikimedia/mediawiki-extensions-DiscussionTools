@@ -10,9 +10,10 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ExtensionRegistry;
-use IContextSource;
 use IDBAccessObject;
 use LqtDispatch;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
@@ -26,7 +27,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
 use ParserOptions;
-use RequestContext;
 use RuntimeException;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Core\ResourceLimitExceededException;

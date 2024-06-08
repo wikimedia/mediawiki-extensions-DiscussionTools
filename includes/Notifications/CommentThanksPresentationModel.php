@@ -13,10 +13,10 @@ use Language;
 use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 use MediaWiki\Extension\Notifications\Formatters\EchoPresentationModelSection;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Language\RawMessage;
+use MediaWiki\Message\Message;
 use MediaWiki\Revision\RevisionRecord;
-use Message;
-use RawMessage;
-use User;
+use MediaWiki\User\User;
 
 class CommentThanksPresentationModel extends EchoEventPresentationModel {
 

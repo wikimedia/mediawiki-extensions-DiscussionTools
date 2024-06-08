@@ -11,7 +11,7 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use MediaWiki\Extension\Notifications\Formatters\EchoEditUserTalkPresentationModel;
 use MediaWiki\Language\RawMessage;
-use Message;
+use MediaWiki\Message\Message;
 use Wikimedia\Timestamp\TimestampException;
 
 class EnhancedEchoEditUserTalkPresentationModel extends EchoEditUserTalkPresentationModel {

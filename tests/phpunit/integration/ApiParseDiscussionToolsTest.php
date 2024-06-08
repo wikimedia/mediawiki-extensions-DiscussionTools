@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use ApiTestCase;
 use ExtensionRegistry;
+use MediaWiki\Tests\Api\ApiTestCase;
 
 /**
  * @group medium

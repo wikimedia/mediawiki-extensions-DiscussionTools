@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use ApiMain;
 use ApiResult;
-use DerivativeContext;
-use IContextSource;
+use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\VisualEditor\ParsoidClient;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Request\DerivativeRequest;

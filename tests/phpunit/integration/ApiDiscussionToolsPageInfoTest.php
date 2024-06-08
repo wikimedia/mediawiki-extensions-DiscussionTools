@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use ApiTestCase;
 use MediaWiki\Extension\DiscussionTools\ApiDiscussionToolsPageInfo;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Tests\Api\ApiTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**

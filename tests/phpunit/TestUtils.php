@@ -3,18 +3,18 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use FormatJson;
-use GenderCache;
-use HashConfig;
+use MediaWiki\Cache\GenderCache;
+use MediaWiki\Config\HashConfig;
+use MediaWiki\Config\MultiConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Interwiki\NullInterwikiLookup;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\StaticUserOptionsLookup;
-use MediaWikiTitleCodec;
-use MultiConfig;
-use NamespaceInfo;
+use MediaWiki\Title\MediaWikiTitleCodec;
+use MediaWiki\Title\NamespaceInfo;
+use MediaWiki\User\Options\StaticUserOptionsLookup;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;

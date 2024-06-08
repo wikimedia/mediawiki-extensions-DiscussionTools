@@ -15,8 +15,8 @@ use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Message\Message;
 use MediaWiki\User\User;
-use Message;
 use Wikimedia\Timestamp\TimestampException;
 
 class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {

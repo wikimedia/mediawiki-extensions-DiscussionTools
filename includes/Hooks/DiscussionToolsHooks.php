@@ -10,7 +10,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ExtensionRegistry;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\DiscussionTools\OverflowMenuItem;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserNameUtils;
