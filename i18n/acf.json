@@ -5,6 +5,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Wépons",
+	"discussiontools-replylink": "{{GENDER:|wéponn}}",
 	"discussiontools-replywidget-advanced": "Avansé",
 	"discussiontools-replywidget-cancel": "Abandonnen",
 	"discussiontools-replywidget-mode-source": "Sous",
@@ -16,6 +17,7 @@
 	"discussiontools-replywidget-watchthis": "Ajouté paj sala asou [[Special:Watchlist|watchlist'w]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|moun}} ka diskité",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komèntè}}",
+	"discussiontools-topicheader-latestcomment": "Dènyé kòmantè: $1",
 	"discussiontools-topicsubscription-button-subscribe": "subscribe",
 	"discussiontools-topicsubscription-button-subscribe-label": "Subscribe",
 	"discussiontools-topicsubscription-button-unsubscribe": "unsubscribe",
