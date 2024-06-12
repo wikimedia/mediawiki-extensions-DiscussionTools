@@ -918,15 +918,6 @@ class CommentFormatter {
 	}
 
 	/**
-	 * Append content to an empty talk page
-	 */
-	public static function appendToEmptyTalkPage( ParserOutput $pout, string $content ): void {
-		$text = $pout->getRawText();
-		$text .= $content;
-		$pout->setText( $text );
-	}
-
-	/**
 	 * Check if the talk page has content above the first heading, in the lede section.
 	 */
 	public static function hasLedeContent( ParserOutput $pout ): bool {

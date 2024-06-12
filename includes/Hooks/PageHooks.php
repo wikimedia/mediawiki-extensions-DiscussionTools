@@ -298,6 +298,19 @@ class PageHooks implements
 			}
 			$text = CommentFormatter::postprocessVisualEnhancements( $text, $output, $isMobile );
 		}
+
+		// Append empty state if the OutputPageParserOutput hook decided that we should.
+		// This depends on the order in which the hooks run. Hopefully it doesn't change.
+		if ( $output->getProperty( 'DiscussionTools-emptyStateHtml' ) ) {
+			// Insert before the last </div> tag, which should belong to <div class="mw-parser-output">
+			$idx = strrpos( $text, '</div>' );
+			$text = substr_replace(
+				$text,
+				$output->getProperty( 'DiscussionTools-emptyStateHtml' ),
+				$idx === false ? strlen( $text ) : $idx,
+				0
+			);
+		}
 	}
 
 	/**
@@ -325,9 +338,11 @@ class PageHooks implements
 			HookUtils::shouldDisplayEmptyState( $output->getContext() )
 		) {
 			$output->enableOOUI();
-			CommentFormatter::appendToEmptyTalkPage(
-				$pout, $this->getEmptyStateHtml( $output->getContext() )
-			);
+			// This must be appended after the content of the page, which wasn't added to OutputPage yet.
+			// Pass it to the OutputPageBeforeHTML hook, so that it may add it at the right time.
+			// This depends on the order in which the hooks run. Hopefully it doesn't change.
+			$output->setProperty( 'DiscussionTools-emptyStateHtml',
+				$this->getEmptyStateHtml( $output->getContext() ) );
 			$output->addBodyClasses( 'ext-discussiontools-emptystate-shown' );
 		}
 
