@@ -75,6 +75,7 @@
 	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Vis emne",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|takket}} {{GENDER:$4|deg}} for kommentaren din i «<strong>$3</strong>».",
+	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Én person|$1 personer|100=99+ personer}} takket {{GENDER:$3|deg}} for kommentaren din på «<strong>$2</strong>».",
 	"discussiontools-notification-comment-thank-header-compact": "$1 {{GENDER:$2|takket}} {{GENDER:$3|deg}}.",
 	"discussiontools-notification-removed-topic-body": "{{GENDER:|Du}} vil ikke lenger få varsler om {{PLURAL:$1|dette emnet|disse emnene}}.",
 	"discussiontools-notification-removed-topic-header": "Emnet «<strong>$4</strong>» ble arkivert eller fjernet fra $3.",
