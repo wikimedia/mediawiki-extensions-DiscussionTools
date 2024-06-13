@@ -9,8 +9,10 @@
 		"ve": "readonly",
 		"RangeFix": "readonly"
 	},
+	"parserOptions": {
+		"sourceType": "commonjs"
+	},
 	"rules": {
-		"no-implicit-globals": "off",
 		"max-len": "off"
 	},
 	"settings": {
