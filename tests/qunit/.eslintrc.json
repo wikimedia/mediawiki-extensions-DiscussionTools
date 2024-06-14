@@ -4,8 +4,10 @@
 		"../../modules/.eslintrc.json",
 		"wikimedia/qunit"
 	],
+	"parserOptions": {
+		"sourceType": "commonjs"
+	},
 	"rules": {
-		"no-implicit-globals": "off",
 		"max-len": "off",
 		"security/detect-non-literal-require": "off"
 	}
