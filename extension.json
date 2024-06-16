@@ -437,7 +437,6 @@
 		"ResourceLoaderGetConfigVars": "resourceloader",
 		"GetBetaFeaturePreferences": "betapreferences",
 		"GetPreferences": "preferences",
-		"LocalUserCreated": "preferences",
 		"DiscussionToolsAddOverflowMenuItems": "discussiontools",
 		"ChangeTagsListActive": "tags",
 		"ListDefinedTags": "tags",
