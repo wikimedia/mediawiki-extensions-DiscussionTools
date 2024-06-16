@@ -531,6 +531,14 @@
 		"discussiontools-autotopicsub": 1,
 		"discussiontools-visualenhancements": 1
 	},
+	"ConditionalUserOptions": {
+		"echo-subscriptions-email-dt-subscription": [
+			[
+				true,
+				[ "registered-after", "20240617000000" ]
+			]
+		]
+	},
 	"config": {
 		"DiscussionToolsBeta": {
 			"value": false,
