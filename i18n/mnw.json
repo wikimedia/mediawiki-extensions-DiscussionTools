@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"咽頭べさ"
+			"咽頭べさ",
+			"Htawmonzel"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ကလေၚ်",
@@ -22,10 +23,12 @@
 	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|ပူဂဵု|မၞိဟ်}} $1 ပ္ဍဲသဳကၠဳချပ်ဗ္စာရဏာ",
 	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|တၚ်လညာတ်|တၚ်လညာတ်မဆေၚ်စပ်ကဵု}} $1",
 	"discussiontools-topicheader-latestcomment": "တၚ်လညာတ်လဇုဲအိုတ်: $1",
+	"discussiontools-topicsubscription-action-unsubscribe-button": "ပါဲထောံနူစရၚ်စုတ်လဝ်",
 	"discussiontools-topicsubscription-button-subscribe": "စုတ်စရၚ်တုပ်စိုတ်",
 	"discussiontools-topicsubscription-button-subscribe-label": "စုတ်စရၚ်တုပ်စိုတ်",
 	"discussiontools-topicsubscription-button-unsubscribe": "ပါဲထောံနူစရၚ်စုတ်လဝ်",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "ပါဲထောံနူစရၚ်စုတ်လဝ်",
 	"discussiontools-topicsubscription-notify-subscribed-body": "ဇကုမဒုၚ်ကေတ်ကဵုသတိဗလမဆေၚ်စပ်ကဵုတၚ်လညာတ်တၟိပ္ဍဲပရောပရာပုစ္ဆာဏအ်။",
-	"discussiontools-topicsubscription-notify-subscribed-title": "ဇကုမဒုၚ်ကေတ်စုတ်လဝ်စရၚ်တုဲယျ!"
+	"discussiontools-topicsubscription-notify-subscribed-title": "ဇကုမဒုၚ်ကေတ်စုတ်လဝ်စရၚ်တုဲယျ!",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "ပါဲထောံနူစရၚ်စုတ်လဝ်"
 }
