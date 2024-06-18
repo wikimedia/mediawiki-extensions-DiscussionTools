@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Song GK"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Saut",
+	"discussiontools-replywidget-cancel": "Kinsil",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Saut}} ngagai {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Prapeda",
+	"discussiontools-replywidget-reply": "{{GENDER:|Saut}}",
+	"discussiontools-replywidget-watchthis": "Tambah lambar tu ngagai [[Special:Watchlist|ripih ibun]] nuan"
+}
