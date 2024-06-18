@@ -9,6 +9,7 @@
 	"discussiontools-defaultsummary-reply": "𑄡𑄮𑄛𑄴 𑄘𑄬𑄚",
 	"discussiontools-desc": "𑄓𑄨𑄥𑄴𑄇𑄥𑄧𑄚𑄴 𑄛𑄘𑄊𑄚𑄨𑄢𑄴 𑄓𑄋𑄧𑄢𑄴 𑄘𑄨𑄊𑄮𑄣𑄴 𑄉𑄧𑄢𑄨𑄝𑄖𑄴𑄬 𑄦𑄌𑄴𑄖𑄬𑄢𑄚𑄨𑅁",
 	"discussiontools-emptystate-button": "𑄃𑄬𑄇𑄴𑄳𑄦𑄚𑄴 𑄖𑄬𑄟𑄴𑄟𑄋𑄴 𑄥𑄮𑄣𑄴𑄪𑄇𑄴 𑄃𑄢𑄴𑄉𑄚𑄨 𑄉𑄧𑄢𑄴",
+	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} 𑄚𑄨𑄚𑄬𑄭 𑄃𑄬𑄇𑄴𑄳𑄦𑄚𑄴 𑄖𑄬𑄟𑄴𑄟𑄋𑄴 𑄥𑄮𑄣𑄴𑄪𑄇𑄴 𑄉𑄧𑄢𑄧𑅁",
 	"discussiontools-emptystate-title-user": "{{PAGENAME}}-𑄃𑄨𑄠𑄚𑄧𑄢𑄴 {{GENDER:{{PAGENAME}}|𑄥𑄧𑄟𑄢𑄬}} 𑄃𑄬𑄇𑄴𑄳𑄦𑄚𑄴 𑄖𑄮𑄟𑄴𑄟𑄋𑄴 𑄥𑄮𑄣𑄴𑄪𑄇𑄴 𑄃𑄢𑄴𑄉𑄚𑄨 𑄉𑄧𑄢𑄴",
 	"discussiontools-error-noswitchtove-extension": "𑄝𑄢𑄬𑄝𑄖𑄴𑄬 𑄃𑅅 𑄛𑄳𑄢𑄨𑄜𑄢𑄬𑄚𑄴𑄥𑄴 𑄥𑄨𑄚𑄴𑄑𑄬𑄇𑄴",
 	"discussiontools-error-noswitchtove-table": "𑄑𑄬𑄝𑄨𑄣𑄴 𑄥𑄨𑄚𑄴𑄑𑄬𑄇𑄴𑄥𑄴",

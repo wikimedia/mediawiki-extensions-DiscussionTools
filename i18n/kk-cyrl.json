@@ -5,7 +5,8 @@
 			"Arystanbek",
 			"Hedeyohu22",
 			"СеніңШешең",
-			"Batyrbek.kz"
+			"Batyrbek.kz",
+			"Casserium"
 		]
 	},
 	"discussiontools": "Талқылау құралдары",
@@ -47,6 +48,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(қазіргі нұсқасыда жоқ)",
 	"discussiontools-findcomment-results-transcluded": "(басқа беттен кірістірілген)",
 	"discussiontools-findcomment-title": "Пікірді табу",
+	"discussiontools-ledesection-button": "Бұл бет туралы көбірек білу",
+	"discussiontools-ledesection-title": "Бұл талқылау беті туралы",
 	"discussiontools-limitreport-errorreqid": "DiscussionTools қате сұрау идентификаторы",
 	"discussiontools-limitreport-timeusage": "Талқылау құралдары уақыт қолданылуы",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунд}}",
