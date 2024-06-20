@@ -182,7 +182,8 @@ class ThreadItemStore {
 		}
 
 		$language = MediaWikiServices::getInstance()->getContentLanguage();
-		$heading = $language->truncateForDatabase( $heading, 80, '' );
+		// Mirrors CommentParser::truncateForId
+		$heading = trim( $language->truncateForDatabase( $heading, 80, '' ), '_' );
 
 		$dbw = $this->dbProvider->getPrimaryDatabase();
 
@@ -526,10 +527,21 @@ class ThreadItemStore {
 		foreach ( $threadItemSet->getThreadItems() as $item ) {
 			$itemIdsId = $this->findOrInsertId(
 				static function ( IReadableDatabase $dbw ) use ( $item, $method ) {
+					$ids = [ $item->getId() ];
+					if ( $item->getLegacyId() !== null ) {
+						// Avoid duplicates if the item exists under the legacy ID
+						// (i.e. with trailing underscores in the title part).
+						// The actual fixing of IDs is done by a maintenance script
+						// FixTrailingWhitespaceIds, as archived talk pages are unlikely
+						// to be edited again in the future.
+						// Once FixTrailingWhitespaceIds has run on and enough time has
+						// passed, we can remove all legacy ID code (again).
+						$ids[] = $item->getLegacyId();
+					}
 					return $dbw->newSelectQueryBuilder()
 						->from( 'discussiontools_item_ids' )
 						->field( 'itid_id' )
-						->where( [ 'itid_itemid' => $item->getId() ] )
+						->where( [ 'itid_itemid' => $ids ] )
 						->caller( $method )
 						->fetchField();
 				},

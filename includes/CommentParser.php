@@ -1276,26 +1276,40 @@ class CommentParser {
 	/**
 	 * Truncate user generated parts of IDs so full ID always fits within a database field of length 255
 	 *
+	 * nb: Text should already have had spaces replaced with underscores by this point.
+	 *
 	 * @param string $text Text
+	 * @param bool $legacy Generate legacy ID, not needed in JS implementation
 	 * @return string Truncated text
 	 */
-	private function truncateForId( string $text ): string {
-		return $this->language->truncateForDatabase( $text, 80, '' );
+	private function truncateForId( string $text, bool $legacy = false ): string {
+		$truncated = $this->language->truncateForDatabase( $text, 80, '' );
+		if ( !$legacy ) {
+			$truncated = trim( $truncated, '_' );
+		}
+		return $truncated;
 	}
 
 	/**
 	 * Given a thread item, return an identifier for it that is unique within the page.
+	 *
+	 * @param ContentThreadItem $threadItem
+	 * @param ContentThreadItemSet $previousItems
+	 * @param bool $legacy Generate legacy ID, not needed in JS implementation
+	 * @return string
 	 */
-	private function computeId( ContentThreadItem $threadItem, ContentThreadItemSet $previousItems ): string {
+	private function computeId(
+		ContentThreadItem $threadItem, ContentThreadItemSet $previousItems, bool $legacy = false
+	): string {
 		$id = null;
 
 		if ( $threadItem instanceof ContentHeadingItem && $threadItem->isPlaceholderHeading() ) {
 			// The range points to the root note, using it like below results in silly values
 			$id = 'h-';
 		} elseif ( $threadItem instanceof ContentHeadingItem ) {
-			$id = 'h-' . $this->truncateForId( $threadItem->getLinkableId() );
+			$id = 'h-' . $this->truncateForId( $threadItem->getLinkableId(), $legacy );
 		} elseif ( $threadItem instanceof ContentCommentItem ) {
-			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ) ) .
+			$id = 'c-' . $this->truncateForId( str_replace( ' ', '_', $threadItem->getAuthor() ), $legacy ) .
 				'-' . $threadItem->getTimestampString();
 		} else {
 			throw new InvalidArgumentException( 'Unknown ThreadItem type' );
@@ -1305,9 +1319,9 @@ class CommentParser {
 		// in one edit, or within a minute), add the parent ID to disambiguate them.
 		$threadItemParent = $threadItem->getParent();
 		if ( $threadItemParent instanceof ContentHeadingItem && !$threadItemParent->isPlaceholderHeading() ) {
-			$id .= '-' . $this->truncateForId( $threadItemParent->getLinkableId() );
+			$id .= '-' . $this->truncateForId( $threadItemParent->getLinkableId(), $legacy );
 		} elseif ( $threadItemParent instanceof ContentCommentItem ) {
-			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ) ) .
+			$id .= '-' . $this->truncateForId( str_replace( ' ', '_', $threadItemParent->getAuthor() ), $legacy ) .
 				'-' . $threadItemParent->getTimestampString();
 		}
 
@@ -1324,7 +1338,9 @@ class CommentParser {
 
 		if ( $previousItems->findCommentById( $id ) ) {
 			// Well, that's tough
-			$threadItem->addWarning( 'Duplicate comment ID' );
+			if ( !$legacy ) {
+				$threadItem->addWarning( 'Duplicate comment ID' );
+			}
 			// Finally, disambiguate by adding sequential numbers, to allow replying to both comments
 			$number = 1;
 			while ( $previousItems->findCommentById( "$id-$number" ) ) {
@@ -1416,6 +1432,10 @@ class CommentParser {
 
 			$id = $this->computeId( $threadItem, $result );
 			$threadItem->setId( $id );
+			$legacyId = $this->computeId( $threadItem, $result, true );
+			if ( $legacyId !== $id ) {
+				$threadItem->setLegacyId( $legacyId );
+			}
 
 			$result->updateIdAndNameMaps( $threadItem );
 		}
