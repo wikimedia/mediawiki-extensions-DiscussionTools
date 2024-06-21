@@ -499,7 +499,7 @@ class CommentUtils {
 		) . '/';
 		$matches = null;
 		if ( preg_match( $articlePathRegexp, $path, $matches ) ) {
-			return urldecode( $matches[1] );
+			return rawurldecode( $matches[1] );
 		}
 		return null;
 	}

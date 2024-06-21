@@ -36,6 +36,7 @@ class CommentUtilsTest extends IntegrationTestCase {
 	/**
 	 * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils::getTitleFromUrl
 	 * @dataProvider provideGetTitleFromUrl_ShortUrl
+	 * @dataProvider provideGetTitleFromUrl_Decoding
 	 * @dataProvider provideGetTitleFromUrl_ConfusingShortUrl
 	 * @dataProvider provideGetTitleFromUrl_NoShortUrl
 	 */
@@ -44,6 +45,23 @@ class CommentUtilsTest extends IntegrationTestCase {
 			$expected,
 			CommentUtils::getTitleFromUrl( $input, $config )
 		);
+	}
+
+	public static function provideGetTitleFromUrl_Decoding() {
+		// Standard short URL configuration like on Wikimedia wikis
+		$config = new HashConfig( [ 'ArticlePath' => '/wiki/$1' ] );
+
+		// In URL paths, non-percent-encoded `+` represents itself
+		yield [ 'A+B', '/wiki/A+B', $config ];
+		yield [ 'A B', '/wiki/A B', $config ];
+		yield [ 'A+B', '/wiki/A%2BB', $config ];
+		yield [ 'A B', '/wiki/A%20B', $config ];
+
+		// In URL query parameters, non-percent-encoded `+` represents ` `
+		yield [ 'A B', '/w/index.php?title=A+B', $config ];
+		yield [ 'A B', '/w/index.php?title=A B', $config ];
+		yield [ 'A+B', '/w/index.php?title=A%2BB', $config ];
+		yield [ 'A B', '/w/index.php?title=A%20B', $config ];
 	}
 
 	public static function provideGetTitleFromUrl_ShortUrl() {
