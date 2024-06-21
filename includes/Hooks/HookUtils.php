@@ -253,15 +253,6 @@ class HookUtils {
 			return true;
 		}
 
-		// Being in the "test" group for this feature means it's enabled. This
-		// overrules the wiki's beta feature setting. (However, a user who's
-		// in the control group can still bypass this and enable the feature
-		// normally.)
-		$abtest = static::determineUserABTestBucket( $user, $feature );
-		if ( $abtest === 'test' ) {
-			return true;
-		}
-
 		// No feature-specific override found.
 
 		if ( $dtConfig->get( 'DiscussionToolsBeta' ) ) {
@@ -303,36 +294,6 @@ class HookUtils {
 			}
 			return false;
 		}
-	}
-
-	/**
-	 * Work out the A/B test bucket for the current user
-	 *
-	 * Currently this just checks whether the user is logged in, and assigns
-	 * them to a consistent bucket based on their ID.
-	 *
-	 * @param UserIdentity $user
-	 * @param string|null $feature Feature to check for (one of static::FEATURES)
-	 *  Null will check for any DT feature.
-	 * @return string 'test' if in the test group, 'control' if in the control group, or '' if
-	 * 	they're not in the test
-	 */
-	public static function determineUserABTestBucket( UserIdentity $user, ?string $feature = null ): string {
-		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-
-		$abtest = $dtConfig->get( 'DiscussionToolsABTest' );
-		if ( !$abtest ) {
-			return '';
-		}
-
-		if (
-			( $feature ? in_array( $feature, (array)$abtest, true ) : (bool)$abtest ) &&
-			$user->isRegistered()
-		) {
-			return $user->getId() % 2 === 0 ? 'test' : 'control';
-		}
-		return '';
 	}
 
 	/**
