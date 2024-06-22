@@ -346,7 +346,13 @@ class CommentModifier {
 		while (
 			static::allOfType( $fragment->childNodes, 'dl' ) ||
 			static::allOfType( $fragment->childNodes, 'ul' ) ||
-			static::allOfType( $fragment->childNodes, 'ol' )
+			static::allOfType( $fragment->childNodes, 'ol' ) ||
+			(
+				// Or if the comment starts with a bullet followed by indents
+				count( $fragment->childNodes ) > 1 &&
+				static::allOfType( [ $fragment->childNodes[0] ], 'ul' ) &&
+				static::allOfType( array_slice( iterator_to_array( $fragment->childNodes ), 1 ), 'dl' )
+			)
 		) {
 			// Do not iterate over childNodes while we're modifying it
 			$childNodeList = iterator_to_array( $fragment->childNodes );
