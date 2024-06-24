@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Song GK"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Saut",
+	"discussiontools-replywidget-advanced": "Pemansang",
+	"discussiontools-replywidget-cancel": "Kinsil",
+	"discussiontools-replywidget-mode-source": "Bunsu",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-preview": "Prapeda",
+	"discussiontools-replywidget-summary": "Penerang pandak:",
+	"discussiontools-replywidget-watchthis": "Tambah lambar tu ngagai [[Special:Watchlist|ripih ibun]] nuan",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|orang}} dalam randau",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komen}}",
+	"discussiontools-topicheader-latestcomment": "Komen ke baru: $1",
+	"discussiontools-topicsubscription-button-subscribe": "langgan",
+	"discussiontools-topicsubscription-button-subscribe-label": "langgan",
+	"discussiontools-topicsubscription-button-unsubscribe": "badu langgan",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "badu langgan"
+}

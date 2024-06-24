@@ -85,7 +85,7 @@
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|ひとつのトピック|$1個のトピック|100=99+個のトピック}} が$2から過去ログ化または除去されました。",
 	"discussiontools-notification-removed-topic-header-compact": "トピック「<strong>$4</strong>」は過去ログ化または除去されました。",
 	"discussiontools-notification-removed-topic-view": "ページを閲覧",
-	"discussiontools-notification-removed-topic-disable": "このような通知の受信を停止する",
+	"discussiontools-notification-removed-topic-disable": "このような通知の受信を停止",
 	"discussiontools-notification-removed-topic-disabled-title": "トピックがアーカイブまたは削除されたときに、通知が届かなくなりました。",
 	"discussiontools-notification-removed-topic-disabled-body": "これは[[Special:Preferences#mw-prefsection-echo-echosubscriptions|個人設定]]で変更できます。",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 さんが「<strong>$4</strong>」で{{GENDER:$2|返信しました}}。",
