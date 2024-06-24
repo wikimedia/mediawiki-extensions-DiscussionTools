@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
 use LoggedUpdateMaintenance;
+use Wikimedia\Rdbms\DBQueryError;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LikeValue;
@@ -73,6 +74,7 @@ class FixTrailingWhitespaceIds extends LoggedUpdateMaintenance {
 			if ( !$itemIds ) {
 				break;
 			}
+
 			foreach ( $itemIds as $itemId ) {
 				$fixedItemId = preg_replace(
 					'/^([hc]\-.*)_(\-([0-9]{14}|[0-9-]{10}T[0-9:]{6}00.000Z))?$/',
@@ -83,16 +85,26 @@ class FixTrailingWhitespaceIds extends LoggedUpdateMaintenance {
 					// In the rare case we got a false positive from the LIKE, add this to a list of skipped IDs
 					// so we don't keep selecting it, and end up in an infinite loop
 					$skippedIds[] = $itemId;
+					continue;
 				}
-				$dbw->newUpdateQueryBuilder()
-					->update( 'discussiontools_item_ids' )
-					->set( [ 'itid_itemid' => $fixedItemId ] )
-					->where( [ 'itid_itemid' => $itemId ] )
-					->caller( __METHOD__ )->execute();
-				$this->waitForReplication();
+				try {
+					$dbw->newUpdateQueryBuilder()
+						->update( 'discussiontools_item_ids' )
+						->set( [ 'itid_itemid' => $fixedItemId ] )
+						->where( [ 'itid_itemid' => $itemId ] )
+						->caller( __METHOD__ )->execute();
+				} catch ( DBQueryError $err ) {
+					// Give up on updating in case of complex conflicts (T356196#9913698)
+					$this->output( "Failed to update $itemId\n" );
+					$skippedIds[] = $itemId;
+					continue;
+				}
+
 				$total += $dbw->affectedRows();
-				$this->output( "$total\n" );
 			}
+
+			$this->waitForReplication();
+			$this->output( "$total\n" );
 		} while ( true );
 
 		$this->output( "Fixing DiscussionTools IDs with trailing whitespace: done.\n" );
