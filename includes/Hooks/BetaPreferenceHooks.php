@@ -6,6 +6,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Extension\BetaFeatures\Hooks\GetBetaFeaturePreferencesHook;
 use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 
 /**
@@ -30,6 +31,20 @@ class BetaPreferenceHooks implements GetBetaFeaturePreferencesHook {
 	 */
 	public function onGetBetaFeaturePreferences( User $user, array &$preferences ) {
 		if ( $this->config->get( 'DiscussionToolsBeta' ) ) {
+			// If all configurable features are marked as 'available', the
+			// beta fetaure enables nothing, so don't show it.
+			$services = MediaWikiServices::getInstance();
+			$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+			$allAvailable = true;
+			foreach ( HookUtils::CONFIGS as $feature ) {
+				if ( $dtConfig->get( 'DiscussionTools_' . $feature ) !== 'available' ) {
+					$allAvailable = false;
+					break;
+				}
+			}
+			if ( $allAvailable ) {
+				return;
+			}
 			$iconpath = $this->coreConfig->get( MainConfigNames::ExtensionAssetsPath ) . '/DiscussionTools/images';
 			$preferences['discussiontools-betaenable'] = [
 				'version' => '1.0',
