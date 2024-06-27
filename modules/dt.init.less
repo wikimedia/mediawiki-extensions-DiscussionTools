@@ -132,6 +132,16 @@ h1, h2, h3, h4, h5, h6 {
 	// Support: Safari
 	// Safari doesn't blend this overlay with the text unless GPU rendering is forced.
 	transform: translateZ( 0 );
+
+	html.skin-theme-clientpref-night & {
+		mix-blend-mode: lighten;
+	}
+
+	@media ( prefers-color-scheme: dark ) {
+		html.skin-theme-clientpref-os & {
+			mix-blend-mode: lighten;
+		}
+	}
 }
 
 .ext-discussiontools-init-highlight-fadein {
@@ -145,12 +155,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .ext-discussiontools-init-publishedcomment {
 	background-color: #ffe29e;
+
+	html.skin-theme-clientpref-night & {
+		background-color: @background-color-success-subtle;
+	}
+
+	@media ( prefers-color-scheme: dark ) {
+		html.skin-theme-clientpref-os & {
+			background-color: @background-color-success-subtle;
+		}
+	}
 }
 
 .ext-discussiontools-init-targetcomment {
-	// Same color as the :target selector for references (from Cite).
-	// Not sure if that's a good idea, but it should be different from -publishedcomment.
-	background-color: #eaf3ff;
+	// T368086
+	background-color: @background-color-progressive-subtle;
 }
 
 // Topic subscriptions (both kinds)
