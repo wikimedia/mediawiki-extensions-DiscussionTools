@@ -154,17 +154,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ext-discussiontools-init-publishedcomment {
-	background-color: #ffe29e;
-
-	html.skin-theme-clientpref-night & {
-		background-color: @background-color-success-subtle;
-	}
-
-	@media ( prefers-color-scheme: dark ) {
-		html.skin-theme-clientpref-os & {
-			background-color: @background-color-success-subtle;
-		}
-	}
+	// T368086
+	background-color: @background-color-success-subtle;
 }
 
 .ext-discussiontools-init-targetcomment {
