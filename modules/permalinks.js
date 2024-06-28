@@ -6,7 +6,7 @@ function init( $pageContainer ) {
 		let link = e.currentTarget.href;
 		try {
 			// decodeURI() may throw
-			const decodedLink = decodeURI( e.target.href );
+			const decodedLink = decodeURI( link );
 			// Check that the decoded URL is parsed to the same canonical URL
 			// new URL() may throw
 			if ( new URL( decodedLink ).toString() === link ) {
