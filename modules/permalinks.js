@@ -1,7 +1,9 @@
 function init( $pageContainer ) {
 	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', ( e ) => {
 		// Try to percent-decode the URL, so that non-Latin characters don't look so ugly (T357021)
-		let link = e.target.href;
+		// Use currentTarget rather than target to avoid conflicts with userscripts that do their
+		// own timestamp-wrapping. (T368701)
+		let link = e.currentTarget.href;
 		try {
 			// decodeURI() may throw
 			const decodedLink = decodeURI( e.target.href );
