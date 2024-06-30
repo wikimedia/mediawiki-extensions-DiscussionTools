@@ -17,7 +17,6 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
-use MediaWiki\Extension\Gadgets\GadgetRepo;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
@@ -199,7 +198,7 @@ class HookUtils {
 
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		if ( $extensionRegistry->isLoaded( 'Gadgets' ) ) {
-			$gadgetsRepo = GadgetRepo::singleton();
+			$gadgetsRepo = MediaWikiServices::getInstance()->getService( 'GadgetsRepo' );
 			$match = array_search( $gadgetName, $gadgetsRepo->getGadgetIds(), true );
 			if ( $match !== false ) {
 				try {
