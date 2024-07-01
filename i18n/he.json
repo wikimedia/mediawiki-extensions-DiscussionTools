@@ -151,7 +151,7 @@
 	"discussiontools-replywidget-watchthis": "הוספת הדף הזה ל[[Special:Watchlist|רשימת המעקב]] שלך",
 	"discussiontools-target-comment-missing": "לא היה אפשר למצוא את ההערה. ייתכן שהיא נמחקה או הועברה.",
 	"discussiontools-target-comments-missing": "לא היה אפשר למצוא הערות חדשות. ייתכן שהן נמחקה או הועברה.",
-	"discussiontools-target-heading-missing": "לא היה אפשר למצוא את הנושא הזה. ייתכן שהוא נמחק או הועבר.",
+	"discussiontools-target-heading-missing": "לא היה אפשר למצוא את הנושא הזה. ייתכן שהוא נמחק או הועבר, ששמו שוּנה.",
 	"discussiontools-target-comment-found-moved": "ההערה הזאת לא נמצאה בדף הזה, אבל היא כן קיימת {{PLURAL:$1|בדף הבא|בדפים הבאים}}:",
 	"discussiontools-target-heading-found-moved": "הנושא הזה לא נמצא בדף הזה, אבל הוא כן קיים {{PLURAL:$1|בדף הבא|בדפים הבאים}}:",
 	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|אדם אחד|$1 אנשים}} בשיחה",

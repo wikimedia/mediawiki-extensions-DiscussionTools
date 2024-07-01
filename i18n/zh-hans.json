@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"Anterdc99",
 			"BlackShadowG",
 			"Colathewikian",
 			"Cosine02",
@@ -183,7 +184,7 @@
 	"discussiontools-replywidget-watchthis": "添加该页面到您的[[Special:Watchlist|监视列表]]",
 	"discussiontools-target-comment-missing": "未找到该留言。它可能已被删除或移动。",
 	"discussiontools-target-comments-missing": "未找到新留言。它们可能已被删除或移动。",
-	"discussiontools-target-heading-missing": "未找到该话题。它可能已被删除或移动。",
+	"discussiontools-target-heading-missing": "未找到该话题。它可能已被删除、移动或重命名。",
 	"discussiontools-target-comment-found-moved": "无法在此页面上找到该留言，但其存在于以下{{PLURAL:$1|页面}}：",
 	"discussiontools-target-heading-found-moved": "无法在此页面上找到该话题，但其存在于以下{{PLURAL:$1|页面}}：",
 	"discussiontools-topicheader-authorcount": "$1{{PLURAL:$1|人}}参与讨论",

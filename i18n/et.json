@@ -146,7 +146,7 @@
 	"discussiontools-replywidget-watchthis": "Lisa see lehekülg [[Special:Watchlist|jälgimisloendisse]]",
 	"discussiontools-target-comment-missing": "Seda kommentaari ei õnnestunud leida. See võib olla kustutatud või teise kohta tõstetud.",
 	"discussiontools-target-comments-missing": "Uusi kommentaare ei õnnestunud leida. Need võivad olla kustutatud või teise kohta tõstetud.",
-	"discussiontools-target-heading-missing": "Teemat ei leitud. See võib olla kustutatud või mujale viidud.",
+	"discussiontools-target-heading-missing": "Teemat ei leitud. See võib olla kustutatud, mujale viidud või ümber nimetatud.",
 	"discussiontools-target-comment-found-moved": "Kommentaari ei leitud sellelt leheküljelt, aga see on olemas {{PLURAL:$1|järgmisel leheküljel|järgmistel lehekülgedel}}:",
 	"discussiontools-target-heading-found-moved": "Teemat ei leitud sellelt leheküljelt, aga see on olemas {{PLURAL:$1|järgmisel leheküljel|järgmistel lehekülgedel}}:",
 	"discussiontools-topicheader-authorcount": "$1 arutelus {{PLURAL:$1|osaleja|osalejat}}",
