@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"BadDog"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Odgovori",
 	"discussiontools-emptystate-button": "Započni razgovor",
-	"discussiontools-emptystate-title": "Započnite raspravu o stranici {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title": "Započnite razgovor o stranici {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user": "Započnite razgovor sa {{GENDER:{{PAGENAME}}|suradnikom|suradnicom|suradnikom/suradnicom}} {{PAGENAME}}",
 	"discussiontools-error-noswitchtove-extension": "proširenje ili referenca sintakse",
 	"discussiontools-error-noswitchtove-table": "sintaksa tablice",
@@ -39,7 +40,7 @@
 	"discussiontools-replywidget-mode-visual": "Vizualno",
 	"discussiontools-replywidget-preview": "Pregled",
 	"discussiontools-replywidget-summary": "Sažetak",
-	"discussiontools-replywidget-watchthis": "Dodajte ovu stranicu na [[Special:Watchlist|spisak praćenja]]",
+	"discussiontools-replywidget-watchthis": "Dodaj stranicu na [[Special:Watchlist|listu praćenja]]",
 	"discussiontools-topicheader-authorcount": "U raspravi {{PLURAL:$1|prisutan $1 suradnik|prisutnih $1 suradnika}}",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentara}}",
 	"discussiontools-topicheader-latestcomment": "Posljednji komentar: $1",

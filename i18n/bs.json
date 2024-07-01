@@ -88,7 +88,8 @@
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Otkazali ste pretplatu.",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Izmijeni praćenja",
 	"echo-category-title-dt-subscription": "Praćene {{PLURAL:$1|stranice}} za razgovor",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]",
+	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} nova tema]",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odgovor]",
 	"tag-discussiontools-source": "izvorno",
 	"tag-discussiontools-visual": "vizualno"
 }
