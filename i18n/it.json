@@ -152,7 +152,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Il commento non è stato trovato. Potrebbe essere stato cancellato o spostato.",
 	"discussiontools-target-comments-missing": "I nuovi commenti non sono stati trovati. Potrebbero essere stati cancellati o spostati.",
-	"discussiontools-target-heading-missing": "L'argomento non è stato trovato. Potrebbe essere stato cancellato o spostato.",
+	"discussiontools-target-heading-missing": "L'argomento non è stato trovato. Potrebbe essere stato cancellato, spostato o rinominato.",
 	"discussiontools-target-comment-found-moved": "Questo commento non è stato trovato in questa pagina, ma esiste {{PLURAL:$1|nella seguente pagina|nelle seguenti pagine}}:",
 	"discussiontools-target-heading-found-moved": "Questo argomento non è stato trovato in questa pagina, ma esiste {{PLURAL:$1|nella seguente pagina|nelle seguenti pagine}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|partecipante|partecipanti}} alla discussione",

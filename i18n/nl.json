@@ -160,7 +160,7 @@
 	"discussiontools-replywidget-watchthis": "Deze pagina toevoegen aan uw [[Special:Watchlist|volglijst]]",
 	"discussiontools-target-comment-missing": "Deze reactie kon niet gevonden worden. Die is mogelijk verwijderd of verplaatst.",
 	"discussiontools-target-comments-missing": "Er zijn geen nieuwe reacties gevonden. Mogelijk zijn ze verwijderd of verplaatst.",
-	"discussiontools-target-heading-missing": "Dit onderwerp kon niet worden gevonden. Het is mogelijk verwijderd of verplaatst.",
+	"discussiontools-target-heading-missing": "Dit onderwerp kon niet worden gevonden. Het is mogelijk verwijderd, verplaatst of hernoemd.",
 	"discussiontools-target-comment-found-moved": "Deze opmerking kon niet op deze pagina worden gevonden, maar is wel aanwezig op de volgende {{PLURAL:$1|pagina|pagina's}}:",
 	"discussiontools-target-heading-found-moved": "Dit onderwerp kon niet op deze pagina worden gevonden, maar bestaat wel op de volgende {{PLURAL:$1|pagina|pagina's}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|persoon|personen}} in overleg",
