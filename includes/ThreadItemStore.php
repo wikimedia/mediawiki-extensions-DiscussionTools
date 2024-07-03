@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use Exception;
+use Language;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
@@ -10,7 +11,6 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\HeadingItem;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageStore;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
@@ -44,6 +44,7 @@ class ThreadItemStore {
 	private RevisionStore $revStore;
 	private TitleFormatter $titleFormatter;
 	private ActorStore $actorStore;
+	private Language $language;
 
 	public function __construct(
 		ConfigFactory $configFactory,
@@ -52,7 +53,8 @@ class ThreadItemStore {
 		PageStore $pageStore,
 		RevisionStore $revStore,
 		TitleFormatter $titleFormatter,
-		ActorStore $actorStore
+		ActorStore $actorStore,
+		Language $language
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->dbProvider = $dbProvider;
@@ -61,6 +63,7 @@ class ThreadItemStore {
 		$this->revStore = $revStore;
 		$this->titleFormatter = $titleFormatter;
 		$this->actorStore = $actorStore;
+		$this->language = $language;
 	}
 
 	/**
@@ -181,9 +184,8 @@ class ThreadItemStore {
 			return [];
 		}
 
-		$language = MediaWikiServices::getInstance()->getContentLanguage();
 		// Mirrors CommentParser::truncateForId
-		$heading = trim( $language->truncateForDatabase( $heading, 80, '' ), '_' );
+		$heading = trim( $this->language->truncateForDatabase( $heading, 80, '' ), '_' );
 
 		$dbw = $this->dbProvider->getPrimaryDatabase();
 
