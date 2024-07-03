@@ -484,7 +484,11 @@
 			]
 		},
 		"discussiontools": {
-			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\DiscussionToolsHooks"
+			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\DiscussionToolsHooks",
+			"services": [
+				"ConfigFactory",
+				"UserNameUtils"
+			]
 		},
 		"tags": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\TagHooks"

@@ -10,14 +10,25 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use ExtensionRegistry;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\DiscussionTools\OverflowMenuItem;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserNameUtils;
 
 class DiscussionToolsHooks implements
 	DiscussionToolsAddOverflowMenuItemsHook
 {
+	private Config $config;
+	private UserNameUtils $userNameUtils;
+
+	public function __construct(
+		ConfigFactory $configFactory,
+		UserNameUtils $userNameUtils
+	) {
+		$this->config = $configFactory->makeConfig( 'discussiontools' );
+		$this->userNameUtils = $userNameUtils;
+	}
 
 	/**
 	 * @param OverflowMenuItem[] &$overflowMenuItems
@@ -45,17 +56,15 @@ class DiscussionToolsHooks implements
 			);
 		}
 
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
-		if ( $dtConfig->get( 'DiscussionToolsEnableThanks' ) ) {
+		if ( $this->config->get( 'DiscussionToolsEnableThanks' ) ) {
 			$user = $contextSource->getUser();
 			$showThanks = ExtensionRegistry::getInstance()->isLoaded( 'Thanks' );
 			if ( $showThanks && ( $threadItemData['type'] ?? null ) === 'comment' && $user->isNamed() ) {
-				$userNameUtils = MediaWikiServices::getInstance()->getUserNameUtils();
-				$recipient = $userNameUtils->getCanonical( $threadItemData['author'], UserNameUtils::RIGOR_NONE );
+				$recipient = $this->userNameUtils->getCanonical( $threadItemData['author'], UserNameUtils::RIGOR_NONE );
 
 				if (
 					$recipient !== $user->getName() &&
-					!$userNameUtils->isIP( $recipient )
+					!$this->userNameUtils->isIP( $recipient )
 				) {
 					$overflowMenuItems[] = new OverflowMenuItem(
 						'thank',
