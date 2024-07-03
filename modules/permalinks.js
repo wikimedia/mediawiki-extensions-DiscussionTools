@@ -1,5 +1,11 @@
+const utils = require( './utils.js' );
+
 function init( $pageContainer ) {
 	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', ( e ) => {
+		if ( !utils.isUnmodifiedLeftClick( e ) ) {
+			// Only handle unmodified left clicks
+			return;
+		}
 		// Try to percent-decode the URL, so that non-Latin characters don't look so ugly (T357021)
 		// Use currentTarget rather than target to avoid conflicts with userscripts that do their
 		// own timestamp-wrapping. (T368701)
