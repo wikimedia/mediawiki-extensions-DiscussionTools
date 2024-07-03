@@ -6,7 +6,6 @@ use FormatJson;
 use MediaWiki\Cache\GenderCache;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
@@ -26,7 +25,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 	public function testIsLanguageRequiringReplyIcon(
 		string $langCode, bool $expected, ?array $config = null
 	): void {
-		$lang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( $langCode );
+		$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( $langCode );
 		if ( $config ) {
 			$this->overrideConfigValues( [
 				'DiscussionTools_visualenhancements_reply_icon_languages' => $config
@@ -74,7 +73,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$title = Title::newFromText( $titleText );
 		$subscriptionStore = new MockSubscriptionStore();
 		$user = $this->createMock( User::class );
-		$qqxLang = MediaWikiServices::getInstance()->getLanguageFactory()->getLanguage( 'qqx' );
+		$qqxLang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'qqx' );
 		$skin = $this->createMock( Skin::class );
 		$skin->method( 'getSkinName' )->willReturn( 'minerva' );
 		$outputPage = $this->createMock( IContextSource::class );

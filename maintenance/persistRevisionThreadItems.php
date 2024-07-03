@@ -6,7 +6,6 @@ use Language;
 use Maintenance;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Shell\Shell;
 use MediaWiki\Title\Title;
@@ -45,7 +44,7 @@ class PersistRevisionThreadItems extends Maintenance {
 	}
 
 	public function execute() {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 
 		$this->dbr = $dbr = $this->getDB( DB_REPLICA );
 		$this->itemStore = $services->getService( 'DiscussionTools.ThreadItemStore' );

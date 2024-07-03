@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
 use Maintenance;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -36,7 +35,7 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 		}
 
 		$this->dbw = $this->getDB( DB_PRIMARY );
-		$this->userFactory = MediaWikiServices::getInstance()->getUserFactory();
+		$this->userFactory = $this->getServiceContainer()->getUserFactory();
 
 		$userRows = $this->dbw->newSelectQueryBuilder()
 			->caller( __METHOD__ )

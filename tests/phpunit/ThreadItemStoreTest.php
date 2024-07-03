@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 use ExtensionRegistry;
 use ImportStringSource;
 use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\TitleValue;
 use TestUser;
 
@@ -40,7 +39,7 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 
 		// Import revisions
 		$source = new ImportStringSource( static::getText( "$dir/dump.xml" ) );
-		$importer = MediaWikiServices::getInstance()
+		$importer = $this->getServiceContainer()
 			->getWikiImporterFactory()
 			->getWikiImporter( $source, $this->getTestSysop()->getAuthority() );
 		// `true` means to assign edits to the users we created above
