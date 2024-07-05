@@ -19,8 +19,8 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 		parent::setUp();
 
 		if (
-			$this->db->getType() === 'mysql' &&
-			strpos( $this->db->getSoftwareLink(), 'MySQL' ) &&
+			$this->getDb()->getType() === 'mysql' &&
+			strpos( $this->getDb()->getSoftwareLink(), 'MySQL' ) &&
 			!$this->getCliArg( 'use-normal-tables' )
 		) {
 			$this->markTestSkipped( 'Set PHPUNIT_USE_NORMAL_TABLES=1 env variable to run these tests, ' .
