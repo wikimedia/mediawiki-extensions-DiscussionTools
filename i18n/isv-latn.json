@@ -4,7 +4,13 @@
 			"IJzeren Jan"
 		]
 	},
+	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Vy}} dostanete uvědomljenje, kogda někto napiše novy komentar v tutoj diskusiji. Parametry tyh uvědomjenij možete izměniti v svojih nastavjenjah.",
+	"discussiontools-autotopicsubpopup-dismiss": "Dobro, razuměju",
+	"discussiontools-autotopicsubpopup-preferences": "Izměniti nastavjenja",
+	"discussiontools-autotopicsubpopup-title": "Vy jeste se podpisali",
 	"discussiontools-defaultsummary-reply": "Odgovor",
+	"discussiontoolsdebug-title": "Struktura danyh orudij za diskusije",
+	"discussiontoolsdebug-pagetitle": "Zaglavje stranice",
 	"discussiontools-replylink": "{{GENDER:|odgovoriti}}",
 	"discussiontools-replywidget-advanced": "Razširjene",
 	"discussiontools-replywidget-cancel": "Anulovati",

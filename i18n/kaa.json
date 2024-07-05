@@ -77,6 +77,7 @@
 	"discussiontools-replywidget-mention-tool-header": "Paydalanıwshını tabıw: $1",
 	"discussiontools-replywidget-mode-source": "Derek",
 	"discussiontools-replywidget-mode-visual": "Vizual",
+	"discussiontools-replywidget-newcomments-button": "$1 dana jańa {{PLURAL:$1|pikirdi}} kórsetiw",
 	"discussiontools-replywidget-newtopic": "Tema qosıw",
 	"discussiontools-replywidget-placeholder-newtopic": "Sıpatlama",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ǵa {{GENDER:|juwap beriw}}",
