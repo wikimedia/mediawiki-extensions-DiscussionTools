@@ -14,7 +14,7 @@
 	"discussiontools-autotopicsubpopup-title": "Koumanantet oc’h bet",
 	"discussiontools-defaultsummary-reply": "Respont",
 	"discussiontools-desc": "Benvegoù da wellaat pajennoù kaozeal.",
-	"discussiontools-emptystate-button": "Digeriñ ur gaoz nevez",
+	"discussiontools-emptystate-button": "Boulc’hañ ur gaozeadenn",
 	"discussiontools-emptystate-desc": "E [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|pajennoù kaozeal]] e komzer diwar-benn an tu gwellañ da aozañ endalc’h war {{SITENAME}}. Krogit gant ur gaozeadenn nevez evit divizout gant re all penoas gwellaat [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-desc-self": "Gallout a ra tud e {{SITENAME}} ober gant ar [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|bajenn gaozeal]]-mañ evit embann ur gemennadenn evitoc’h ha kemennet e vioc’h pa rint.",
 	"discussiontools-emptystate-desc-self-anon": "Gant ar [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|bajenn gaozeal]]-mañ e c’hell tud {{SITENAME}} skrivañ ur gemennadenn foran a-zivout kemmoù graet eus ar chomlec’h IP emaoc’h oc’h ober gantañ.\n\nLod eus ar chomlec’hioù IP a cheñch bep ar mare, hag alies e ra meur a zen ganto. Gallout a rit [$1 krouiñ ur gont] pe [$2 kevreañ] kuit da vezañ drougvesket gant implijerien digevreet all. Kuzhat a raio ho chomlec’h IP ivez.",
