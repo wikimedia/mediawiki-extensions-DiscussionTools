@@ -11,6 +11,7 @@ use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Interwiki\NullInterwikiLookup;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Languages\LanguageFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\MediaWikiTitleCodec;
 use MediaWiki\Title\NamespaceInfo;
@@ -127,20 +128,19 @@ trait TestUtils {
 
 	private static function prepareConfig( array $config, array $data ): array {
 		return [
-			'LanguageCode' => $config['wgContentLanguage'],
-			'ArticlePath' => $config['wgArticlePath'],
+			MainConfigNames::LanguageCode => $config['wgContentLanguage'],
+			MainConfigNames::ArticlePath => $config['wgArticlePath'],
 			// TODO: Move this to $config
-			'Localtimezone' => $data['localTimezone'],
+			MainConfigNames::Localtimezone => $data['localTimezone'],
 
 			// Defaults for NamespaceInfo
-			'CanonicalNamespaceNames' => NamespaceInfo::CANONICAL_NAMES,
-			'CapitalLinkOverrides' => [],
-			'CapitalLinks' => true,
-			'ContentNamespaces' => [ NS_MAIN ],
-			'ExtraNamespaces' => [],
-			'ExtraSignatureNamespaces' => [],
-			'NamespaceContentModels' => [],
-			'NamespacesWithSubpages' => [
+			MainConfigNames::CanonicalNamespaceNames => NamespaceInfo::CANONICAL_NAMES,
+			MainConfigNames::CapitalLinkOverrides => [],
+			MainConfigNames::CapitalLinks => true,
+			MainConfigNames::ContentNamespaces => [ NS_MAIN ],
+			MainConfigNames::ExtraSignatureNamespaces => [],
+			MainConfigNames::NamespaceContentModels => [],
+			MainConfigNames::NamespacesWithSubpages => [
 				NS_TALK => true,
 				NS_USER => true,
 				NS_USER_TALK => true,
@@ -155,24 +155,25 @@ trait TestUtils {
 				NS_HELP_TALK => true,
 				NS_CATEGORY_TALK => true
 			],
-			'NonincludableNamespaces' => [],
+			MainConfigNames::NonincludableNamespaces => [],
 
 			// Defaults for LanguageFactory
-			'DummyLanguageCodes' => [],
+			MainConfigNames::DummyLanguageCodes => [],
 
 			// Defaults for LanguageConverterFactory
-			'UsePigLatinVariant' => false,
-			'DisableLangConversion' => false,
-			'DisableTitleConversion' => false,
+			MainConfigNames::UsePigLatinVariant => false,
+			MainConfigNames::DisableLangConversion => false,
+			MainConfigNames::DisableTitleConversion => false,
 
 			// Defaults for Language
-			'ExtraGenderNamespaces' => [],
+			MainConfigNames::ExtraGenderNamespaces => [],
 
 			// Overrides
-			'ExtraNamespaces' => array_diff_key( $config['wgFormattedNamespaces'], NamespaceInfo::CANONICAL_NAMES ),
-			'MetaNamespace' => strtr( $config['wgFormattedNamespaces'][NS_PROJECT], ' ', '_' ),
-			'MetaNamespaceTalk' => strtr( $config['wgFormattedNamespaces'][NS_PROJECT_TALK], ' ', '_' ),
-			'NamespaceAliases' => $config['wgNamespaceIds'],
+			MainConfigNames::ExtraNamespaces => array_diff_key(
+				$config['wgFormattedNamespaces'], NamespaceInfo::CANONICAL_NAMES ),
+			MainConfigNames::MetaNamespace => strtr( $config['wgFormattedNamespaces'][NS_PROJECT], ' ', '_' ),
+			MainConfigNames::MetaNamespaceTalk => strtr( $config['wgFormattedNamespaces'][NS_PROJECT_TALK], ' ', '_' ),
+			MainConfigNames::NamespaceAliases => $config['wgNamespaceIds'],
 		];
 	}
 
