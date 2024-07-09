@@ -16,7 +16,7 @@ class ApiParseDiscussionToolsTest extends ApiTestCase {
 	 */
 	public function testApiParseSections() {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Liquid Threads' ) ) {
-			$this->setMwGlobals( 'wgLqtTalkPages', false );
+			$this->overrideConfigValue( 'LqtTalkPages', false );
 		}
 
 		$params = [

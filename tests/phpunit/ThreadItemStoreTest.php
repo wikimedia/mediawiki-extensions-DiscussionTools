@@ -27,7 +27,7 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 				'otherwise they would fail due to a MySQL bug with temporary tables (T256006)' );
 		}
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Liquid Threads' ) ) {
-			$this->setMwGlobals( 'wgLqtTalkPages', false );
+			$this->overrideConfigValue( 'LqtTalkPages', false );
 		}
 	}
 
