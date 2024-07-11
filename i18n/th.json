@@ -65,7 +65,7 @@
 	"discussiontools-notification-added-topic-header": "หัวข้อใหม่ \"<strong>$4</strong>\" สร้างบน <strong>$3</strong> โดย $2",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|หนึ่งหัวข้อใหม่|$1 หัวข้อใหม่|100=99+ หัวข้อใหม่}} บน \"<strong>$2</strong>\"",
 	"discussiontools-notification-added-topic-view": "ดูหัวข้อ",
-	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|ขอบคุณ}} {{GENDER:$4|คุณ}}สำหรับความเห็นของคุณใน \"<strong>$3</strong>\"",
+	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|ขอบคุณ}}{{GENDER:$4|คุณ}}สำหรับความเห็นของคุณใน \"<strong>$3</strong>\"",
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|หนึ่งคน|$1 คน|100=99+ คน}}ได้กล่าวขอบคุณ{{GENDER:$3|คุณ}}สำหรับความเห็นของคุณใน \"<strong>$2</strong>\"",
 	"discussiontools-notification-comment-thank-header-compact": "$1 ได้{{GENDER:$2|กล่าวขอบคุณ}}{{GENDER:$3|คุณ}}",
 	"discussiontools-notification-removed-topic-body": "{{GENDER:|คุณ}}อาจไม่ได้รับการแจ้งเตือนเกี่ยวกับ{{PLURAL:$1|หัวข้อนี้|หัวข้อเหล่านี้}}อีก",
