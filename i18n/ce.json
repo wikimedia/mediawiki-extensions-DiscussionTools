@@ -27,7 +27,7 @@
 	"discussiontools-emptystate-title": "Доладе {{SUBJECTPAGENAME}} агӀонан дийцар",
 	"discussiontools-emptystate-title-self": "Марша догӀийла дийцарийн агӀонга",
 	"discussiontools-emptystate-title-self-anon": "Марша догӀийла хӀокху дийцарийн агӀонга",
-	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Марша догӀийла}} хӀокху дийцаран агӀонга",
+	"discussiontools-emptystate-title-self-temp": "{{GENDER:|Марша догӀийла}} хьан ханна йолу дийцарийн агӀоне",
 	"discussiontools-emptystate-title-user": "Доладе {{GENDER:{{PAGENAME}}|дийцар}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "{{GENDER:|Марша догӀийла}} хӀокху дийцарийн агӀонга",
 	"discussiontools-emptystate-title-user-temp": "Доладе {{GENDER:{{PAGENAME}}|дийцар}} {{PAGENAME}}",
