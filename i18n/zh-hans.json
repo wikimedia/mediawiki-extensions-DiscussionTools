@@ -38,7 +38,8 @@
 			"BlackShadowG",
 			"星海",
 			"Anterdc99",
-			"NekoCharm"
+			"NekoCharm",
+			"Huajing"
 		]
 	},
 	"discussiontools": "讨论工具",
@@ -96,7 +97,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "“<strong>$3</strong>”内有{{PLURAL:$1|$1个新回复|100=99+个新回复}}。",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1：<em>$3</em>。",
 	"discussiontools-notification-subscribed-new-comment-view": "查看留言",
-	"discussiontools-pageframe-latestcomment": "最新留言：$2$1发布于话题“$3”",
+	"discussiontools-pageframe-latestcomment": "$2在话题“$3”中的最新留言：$1",
 	"discussiontools-pageframe-latestcomment-notopic": "最新留言：$2在$1发布",
 	"discussiontools-pagetitle-newtopic": "在$1上发起新话题",
 	"discussiontools-pagetitle-reply": "在$1上回复",

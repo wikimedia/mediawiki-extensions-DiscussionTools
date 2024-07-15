@@ -8,7 +8,8 @@
 			"Steenth",
 			"SiGNOUT",
 			"Sarrus",
-			"Weblars"
+			"Weblars",
+			"Zakawer2"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -71,6 +72,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Nævn en bruger",
 	"discussiontools-replywidget-mode-source": "Kilde",
 	"discussiontools-replywidget-mode-visual": "Visuelt",
+	"discussiontools-replywidget-newcomments-button": "Vis $1 {{PLURAL:$1|nyt indlæg|nye indlæg}}",
 	"discussiontools-replywidget-newtopic": "tilføj emne",
 	"discussiontools-replywidget-placeholder-newtopic": "Beskrivelse",
 	"discussiontools-replywidget-placeholder-reply": "Svar til {{BIDI:$1}}",
