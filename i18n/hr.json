@@ -6,7 +6,8 @@
 			"MaGa",
 			"Matma Rex",
 			"Neptune, the Mystic",
-			"Ponor"
+			"Ponor",
+			"Hijerovit"
 		]
 	},
 	"discussiontools": "Alati za raspravu",
@@ -116,7 +117,7 @@
 	"discussiontools-replywidget-newcomments-button": "Prikaži $1 {{PLURAL:$1|novi komentar|nova komentara|novih komentara}}",
 	"discussiontools-replywidget-newtopic": "Dodaj temu",
 	"discussiontools-replywidget-placeholder-newtopic": "Opis",
-	"discussiontools-replywidget-placeholder-reply": "Odgovor suradniku/ci {{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "Odgovor {{GENDER:|suradniku|suradnici|suradniku/suradnici}} {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Postavke",
 	"discussiontools-replywidget-preview": "Pregled",
 	"discussiontools-replywidget-reply": "Odgovori",
