@@ -6,15 +6,15 @@
 			"Zolgoyo"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Cevap berüv",
+	"discussiontools-defaultsummary-reply": "Cevap",
 	"discussiontoolsdebug-pagetitle": "Saife adı",
 	"discussiontools-emptystate-title-self": "Muzakere saifeñizge {{GENDER:|hoş keldiñiz}}",
 	"discussiontools-emptystate-title-user-anon": "Muzakere saifesine {{GENDER:|hoş keldiñiz}}",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abune ol",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Abunelikten çıq",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Abunelikten çıqtıñız.",
-	"discussiontools-replybutton": "{{GENDER:|Cevap berüv}}",
-	"discussiontools-replylink": "{{GENDER:|cevap berüv}}",
+	"discussiontools-replybutton": "{{GENDER:|Cevap ber}}",
+	"discussiontools-replylink": "{{GENDER:|cevap ber}}",
 	"discussiontools-replywidget-advanced": "Daa çoq",
 	"discussiontools-replywidget-cancel": "Lâğu",
 	"discussiontools-replywidget-mode-source": "Menba",

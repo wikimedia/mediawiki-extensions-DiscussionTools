@@ -104,7 +104,7 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "berhenti melanggan",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Berhenti melanggan",
 	"discussiontools-topicsubscription-error-not-found-title": "Langganan tidak dijumpai",
-	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Anda}} akan menerima pemberitahuan mengenai komen terbaru di topik ini.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Anda}} akan menerima pemberitahuan mengenai komen baru di topik ini.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Anda}} sudah melangganinya!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Anda}} tidak akan menerima pemberitahuan lagi berkenaan ulasan-ulasan baharu di topik ini.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Anda}} sudah berhenti melanggan.",
