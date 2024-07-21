@@ -45,7 +45,7 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 				'qcc_namespace' => NS_USER,
 			] )
 			->join( 'user', null, 'qcc_title=user_name' )
-			->where( [ 'user_editcount >= 100' ] )
+			->where( $this->dbw->expr( 'user_editcount', '>=', 100 ) )
 			->fields( [ 'user_id', 'user_name' ] )
 			->fetchResultSet();
 
