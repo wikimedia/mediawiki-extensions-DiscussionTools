@@ -4,7 +4,8 @@
 			"Kimberli Mäkäräinen (WMNO)",
 			"Yupik",
 			"Lea-Christine Sara",
-			"Ante75"
+			"Ante75",
+			"Matma Rex"
 		]
 	},
 	"discussiontools": "Ságastallanreaiddut",
@@ -36,9 +37,10 @@
 	"discussiontools-notification-removed-topic-header-compact": "Fáddá \"<strong>$4</strong>\" vurkejuvvui dahje sihkkojuvvui.",
 	"discussiontools-notification-removed-topic-view": "Čájet siiddu",
 	"discussiontools-notification-removed-topic-disable": "Heaitte oažžumis dakkár dieđuid",
-	"discussiontools-notification-removed-topic-disabled-body": "Don sáhtát dán divodit  [[Special:Preferences#mw-prefsection-echo-echosubscriptions|du ásahusain]].",
+	"discussiontools-notification-removed-topic-disabled-body": "Sáhtát dán divodit [[Special:Preferences#mw-prefsection-echo-echosubscriptions|du ásahusain]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|vástidii}}  \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Okta ođđa vástádus|$1 ođđa vástádusa|100=99+ ođđa vástádusa}} \"<strong>$3</strong>\".",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Čájet kommentára",
 	"discussiontools-pageframe-latestcomment": "Ođđaseamos kommentára: $1, $2'is, fáttás $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Ođđaseamos kommentára čálii $1 geavaheaddji $2",

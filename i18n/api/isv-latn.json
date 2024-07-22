@@ -19,5 +19,19 @@
 	"apihelp-discussiontoolsedit-param-wikitext": "Sodržanje za publikaciju v formě vikiteksta. Ne može byti upotrěbjeno zajedno s <var>html</var>.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addcomment": "Dodati novy komentar kako odgovor na jestvujuči komentar.",
 	"apihelp-discussiontoolsedit-paramvalue-paction-addtopic": "Dodati novy razděl diskusije i prvo soobčenje v njim.",
-	"apihelp-discussiontoolsedit-summary": "Odpraviti soobčenje na stranicu diskusije."
+	"apihelp-discussiontoolsedit-summary": "Odpraviti soobčenje na stranicu diskusije.",
+	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Nazvy tem za prověrku",
+	"apihelp-discussiontoolsgetsubscriptions-summary": "Dobyti status podpisky na ukazane temy.",
+	"apihelp-discussiontoolspageinfo-param-oldid": "Nomer versije za upotrěbjenje (standardno: najnovějša versija).",
+	"apihelp-discussiontoolspageinfo-param-prop": "Koje svojstva dobyti:",
+	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "Prědstavjenje nitij komentarev, parsovanyh s stranice",
+	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "S kojih stranic byli vključene komentare",
+	"apihelp-discussiontoolspageinfo-summary": "Vrati metadane potrěbne za inicializaciju orudij diskusije.",
+	"apihelp-discussiontoolspreview-param-type": "Tip soobčenja za prědgleděnje",
+	"apihelp-discussiontoolspreview-param-wikitext": "Sodržanje za prědgleděnje v formě vikiteksta.",
+	"apihelp-discussiontoolspreview-summary": "Prědgled soobčenja na stranici diskusije.",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Nazva temy, na ktoru hočete podpisati se (ili s ktoroj hočete odpisati se)",
+	"apihelp-discussiontoolssubscribe-param-page": "Stranica, na ktoroj javi se tema",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "«True» za podpisanje se, «false» za odpisanje se",
+	"apihelp-discussiontoolssubscribe-summary": "Podpisati se (ili odpisati se) za dobyvanje uvědomjenij o temě."
 }
