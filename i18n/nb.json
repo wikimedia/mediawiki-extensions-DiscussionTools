@@ -156,7 +156,7 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Denne kommentaren ble ikke funnet. Den kan ha blitt slettet eller flyttet.",
 	"discussiontools-target-comments-missing": "Nye kommentarer ble ikke funnet. De kan ha blitt slettet eller flyttet.",
-	"discussiontools-target-heading-missing": "Dette emnet ble ikke funnet. Det kan ha blitt slettet eller flyttet.",
+	"discussiontools-target-heading-missing": "Dette emnet ble ikke funnet. Det kan ha blitt slettet, flyttet eller døpt om.",
 	"discussiontools-target-comment-found-moved": "Denne kommentaren ble ikke funnet på denne siden, men den finnes på følgende {{PLURAL:$1|side|sider}}:",
 	"discussiontools-target-heading-found-moved": "Dette emnet ble ikke funnet på denne siden, men det finnes på følgende {{PLURAL:$1|side|sider}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|personer}} deltar i diskusjonen",

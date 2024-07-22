@@ -41,5 +41,7 @@
 	"apihelp-discussiontoolssubscribe-param-commentname": "Navnet på emnet det skal abonneres på (eller abonnement skal fjernes fra)",
 	"apihelp-discussiontoolssubscribe-param-page": "En side emnet vises på",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True for å abonnere, false for å avslutte abonnement.",
-	"apihelp-discussiontoolssubscribe-summary": "Abonner (eller avslutt abonnement) for å motta varsler om et emne."
+	"apihelp-discussiontoolssubscribe-summary": "Abonner (eller avslutt abonnement) for å motta varsler om et emne.",
+	"apihelp-discussiontoolsthank-param-commentid": "ID-en til kommentaren det skal takkes for.",
+	"apihelp-discussiontoolsthank-summary": "Send et offentlig takkevarsel for en kommentar."
 }
