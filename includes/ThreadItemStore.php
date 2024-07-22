@@ -87,6 +87,7 @@ class ThreadItemStore {
 			return [];
 		}
 
+		$dbr = $this->dbProvider->getReplicaDatabase();
 		$queryBuilder = $this->getIdsNamesBuilder()
 			->caller( __METHOD__ )
 			->where( [
@@ -94,7 +95,7 @@ class ThreadItemStore {
 				// Disallow querying for headings of sections that contain no comments.
 				// They all share the same name, so this would return a huge useless list on most wikis.
 				// (But we still store them, as we might need this data elsewhere.)
-				"it_itemname != 'h-'",
+				$dbr->expr( 'it_itemname', '!=', 'h-' ),
 			] );
 
 		if ( $limit !== null ) {
@@ -141,10 +142,11 @@ class ThreadItemStore {
 			// It might scan a bunch of rows...
 			// ->limit( 1 );
 
+		$dbr = $this->dbProvider->getReplicaDatabase();
 		$queryBuilder
 			->where( [
 				'it_itemname IN (' . $itemNameQueryBuilder->getSQL() . ')',
-				"it_itemname != 'h-'",
+				$dbr->expr( 'it_itemname', '!=', 'h-' ),
 			] );
 
 		if ( $limit !== null ) {

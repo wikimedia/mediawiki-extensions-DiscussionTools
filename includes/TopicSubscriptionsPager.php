@@ -264,7 +264,7 @@ class TopicSubscriptionsPager extends TablePager {
 			],
 			'conds' => [
 				'sub_user' => $this->getUser()->getId(),
-				'sub_state != ' . SubscriptionStore::STATE_UNSUBSCRIBED,
+				$this->getDatabase()->expr( 'sub_state', '!=', SubscriptionStore::STATE_UNSUBSCRIBED ),
 			],
 		];
 	}

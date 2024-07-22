@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
 use LoggedUpdateMaintenance;
 use Wikimedia\Rdbms\DBQueryError;
-use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LikeValue;
 
@@ -54,19 +53,17 @@ class FixTrailingWhitespaceIds extends LoggedUpdateMaintenance {
 				->from( 'discussiontools_item_ids' )
 				->field( 'itid_itemid' )
 				->where(
-					$dbw->makeList( [
+					$dbw->orExpr( [
 						$dbw->expr( 'itid_itemid', IExpression::LIKE, $like1 ),
 						$dbw->expr( 'itid_itemid', IExpression::LIKE, $like2 ),
 						$dbw->expr( 'itid_itemid', IExpression::LIKE, $like3 ),
-					], IDatabase::LIST_OR )
+					] )
 				)
 				->caller( __METHOD__ )
 				->limit( $this->getBatchSize() );
 
 			if ( $skippedIds ) {
-				$itemIdQueryBuilder->where(
-					'itid_itemid NOT IN (' . $dbw->makeList( $skippedIds ) . ')'
-				);
+				$itemIdQueryBuilder->where( $dbw->expr( 'itid_itemid', '!=', $skippedIds ) );
 			}
 
 			$itemIds = $itemIdQueryBuilder->fetchFieldValues();
