@@ -75,6 +75,10 @@ class ThreadItemStoreTest extends IntegrationTestCase {
 				->fetchResultSet();
 			foreach ( $res as $i => $row ) {
 				foreach ( $row as $key => $val ) {
+					if ( $key === 'it_timestamp' ) {
+						// Normalize timestamp values returned by different database engines (T370671)
+						$val = wfTimestampOrNull( TS_MW, $val );
+					}
 					$actual[$table][$i][$key] = $val;
 				}
 			}
