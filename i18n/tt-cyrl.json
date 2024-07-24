@@ -5,7 +5,8 @@
 			"Run Li",
 			"Ерней",
 			"З. ӘЙЛЕ",
-			"Ильгиз"
+			"Ильгиз",
+			"Don Alessandro"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Бу фикер алышуда кемдер яңа хәбәр бастырса, {{GENDER:|сез}} хәбәрнамә алырсыз. Сез көйләүләрдә хәбәрнамәләрнең параметрларын көйли аласыз.",
@@ -109,7 +110,7 @@
 	"discussiontools-preference-visualenhancements": "Фикер алышуның активлыгын күрсәтү",
 	"discussiontools-preference-visualenhancements-help": "Бу опция һәр фикер алышу кысаларында активлык турында мәгълүматны үз эченә алган фикер алышу битенең яңа төре барлыкка килүен активлаштыра.",
 	"discussiontools-replybutton": "{{GENDER:|Җавап бирергә}}",
-	"discussiontools-replylink": "{{GENDER:|җавап бирергә}}",
+	"discussiontools-replylink": "{{GENDER:|җавап бирү}}",
 	"discussiontools-replywidget-abandon": "{{GENDER:|Сез}} язган хатыныгызны чыннан да юкка чыгарырга телисезме?",
 	"discussiontools-replywidget-abandon-discard": "Хәбәрне кире алырга",
 	"discussiontools-replywidget-abandon-keep": "Язуны дәвам итәргә",
