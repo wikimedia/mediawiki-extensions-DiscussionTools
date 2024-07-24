@@ -21,7 +21,7 @@
 	"discussiontools-replywidget-mode-visual": "Vizual",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} {{GENDER:|qullanıcısına}} cevap ber",
 	"discussiontools-replywidget-preview": "Baqıp çıquv",
-	"discussiontools-replywidget-reply": "{{GENDER:|Cevap berüv}}",
+	"discussiontools-replywidget-reply": "{{GENDER:|Cevap ber}}",
 	"discussiontools-replywidget-summary": "Qısqa tarif",
 	"discussiontools-topicheader-authorcount": "Muzakerede {{PLURAL:$1|kişi}}",
 	"discussiontools-topicsubscription-button-subscribe": "abune ol",
