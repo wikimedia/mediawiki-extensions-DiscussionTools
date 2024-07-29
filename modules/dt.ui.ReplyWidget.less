@@ -303,11 +303,13 @@
 		}
 		// TODO: Consider doing this via's Toggler.js's APIs, rather than CSS overrides.
 
-		html.skin-theme-clientpref-night & {
-			background: @background-color-interactive-subtle;
+		@media screen {
+			html.skin-theme-clientpref-night & {
+				background: @background-color-interactive-subtle;
+			}
 		}
 
-		@media ( prefers-color-scheme: dark ) {
+		@media screen and ( prefers-color-scheme: dark ) {
 			html.skin-theme-clientpref-os & {
 				background: @background-color-interactive-subtle;
 			}
