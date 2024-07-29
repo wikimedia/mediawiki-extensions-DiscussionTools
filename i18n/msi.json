@@ -4,6 +4,8 @@
 			"Tofeiku"
 		]
 	},
+	"discussiontools-replywidget-advanced": "Dapan",
 	"discussiontools-replywidget-cancel": "Kinsil",
-	"discussiontools-replywidget-mode-source": "Sumber"
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komen}}"
 }
