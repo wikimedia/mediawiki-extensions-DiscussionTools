@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Ella Lachow"
+			"Ella Lachow",
+			"Malaalaa"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Ha tobbiyaan asi ba qofaa wottiyoode {{GENDER:|neeyyo}} erissoy gelees. Ne doorotun erissota giigissotun giigissana danddayaasa.",
@@ -12,6 +13,7 @@
 	"discussiontools-defaultsummary-reply": "Zaara",
 	"discussiontoolsdebug-title": "Tobbiyaa buquratu daataa qottaa",
 	"discussiontoolsdebug-pagetitle": "Sinttaa huuphe yohuwaa",
+	"discussiontoolsdebug-intro": "Ha sinttay [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools_DiscussionTools_extension Tobbiyobati] '''[[:$1]]'''n imettida qafaassi anttuwa waani immiyakko bessees. I waani oottiyakko akeekanawu harumettiyabatun demmanawu danddayaasa. Malatiya naqaashay [[$2|discussiontoolspageinfo API]]n de'ees.",
 	"discussiontools-desc": "Tobbiyaa sinttata lo'issa buqurata.",
 	"discussiontools-emptystate-button": "Tobbiyaa doomma",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}| haasayaa sinttati]] asay oyqettaa medhiyoogaa tobbiyoode {{SITENAME}}an gidikko keehi lo'iyaaba. {{GENDER:|Neeni}} [[:{{SUBJECTPAGENAME}}]]ya sinttaa haraatuuraa waati lo'issiyaakko tobbiyaa doomiyoode Go'ettanawu danddayaasa.",
@@ -69,7 +71,7 @@
 	"discussiontools-notification-removed-topic-header": "Huuphe yohoy \"<strong>$4</strong>\" issippe uttiis woykko $3 hagaappe xayiis.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|issi huuphe yohoy|$1 cora huuphe yohoti|100=99+ huuphe yohoti}} issippe uttidosona woykko $2 hagaappe xayidosona.",
 	"discussiontools-notification-removed-topic-header-compact": "Huuphe yohoy \"<strong>$4</strong>\" issippe uttiis woykko xayiis.",
-	"discussiontools-notification-removed-topic-view": "Sinttaa xeella",
+	"discussiontools-notification-removed-topic-view": "Sinttaa be'a",
 	"discussiontools-notification-removed-topic-disable": "Ha erissota malatiyaageeta ekkiyoogaa essa",
 	"discussiontools-notification-removed-topic-disabled-title": "Hagaappe sinttan huuphe yohoy issippe uttiyoode woykko xayiyoode {{GENDER:|neeyyoo}} erissoti gelokkona.",
 	"discussiontools-notification-removed-topic-disabled-body": "Neeni hagaa [[Special:Preferences#mw-prefsection-echo-echosubscriptions|your preferences]] laammanawu danddayaasa.",
@@ -80,11 +82,12 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Mata wode qofaa: $1 $2 aani",
 	"discussiontools-pagetitle-newtopic": "Hagaa bollan $1 ooratta huuphe yohuwaa doomiyoogaa",
 	"discussiontools-pagetitle-reply": "Hagaa bollan $1 zaariyoogaa",
+	"discussiontools-permalink-comment-copied": "Qofaakko gattiyagee duuqettiis.",
 	"discussiontools-postedit-confirmation-published": "Ne qofay attamettiis.",
 	"discussiontools-postedit-confirmation-topicadded": "Ne huuphe yohoy gujettis.",
 	"discussiontools-preference-autotopicsub": "Huuphe yohotussi eesuwaan xaafetta",
 	"discussiontools-preference-autotopicsub-help": "{{GENDER:|Neeni}} ooratta tobbiyaa doomiyoode woykko de'iya tobbiyan qofaa immiyoode, haraati ooratta qofaa a bollan wottiyoode neeni eesuwaan eraasa.",
-	"discussiontools-preference-description": "Mali be'uwaa eeshshata ootissees:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/  Zaaruwaa] haasayaa sinttan qofaa bochiyoosaara wotta.\n* [https://www.mediawiki.org/wiki/Talk_pages_project/  Ooratta tobbiyaa Ooratta huuphe yohota gujja] garssa yafaraa go'ettiyoogan.\n* Ooratta qofati ne xaafettido kifiliya gujettiyoode [https://www.mediawiki.org/wiki/Talk_pages_project/  erissota ekka].\n* Issi issi tobbiyaabaanne ooratta sinttaa utettaa ootissanawu [https://www.mediawiki.org/wiki/Talk_pages_project/  Go'ettana danddayettiyaagaa meetaa daatan bessa].\n{{GENDER:|Ne}} [[Special:Preferences#mw-prefsection-editing-discussion|doorota]] meeziyan go'ettanawu danddayaasa.\n\nOoraxissoti [https://www.mediawiki.org/wiki/Talk_pages_project/  Haasayaa sinttata ooraxissa proojektiyaa oraxissuwaa sinttaa] wodhoosona. \n\nHayyanaa hassaya:\n* Wodiyaappe guyyiyan ooratta mali be'o eeshshati gujettoosona.\n* Qommon de'iya amarida eeshshati ne wikkiiyan hanno gaakkanawu waayi daana.",
+	"discussiontools-preference-description": "Tobbiyo sinttaa mali be'uwaa eeshshata ootissees:\n* [https\n://www.mediawiki.org/wiki/Talk_pages_project/Usability Show metadata meetaa daataa] ooratta tobbetanne ooratta sinttaa utettaa ootissees.\n*[https://www.mediawiki.org/wiki/Talk_pages_project/  Ooratta tobbiyaa Ooratta huuphe yohota gujja] garssa yafaraa go'ettiyoogan.\n* Ooratta qofati ne xaafettido kifiliya gujettiyoode [https://www.mediawiki.org/wiki/Talk_pages_project/  erissota ekka].\n* Issi issi tobbiyaabaanne ooratta sinttaa utettaa ootissanawu [https://www.mediawiki.org/wiki/Talk_pages_project/  Go'ettana danddayettiyaagaa meetaa daatan bessa].\n{{GENDER:|Ne}} [[Special:Preferences#mw-prefsection-editing-discussion|doorota]] meeziyan go'ettanawu danddayaasa.\n\nOoraxissoti [https://www.mediawiki.org/wiki/Talk_pages_project/ proojektiyaa oraxissuwaa sinttan] wodhoosona. \n\nHayyanaa hassaya:\n* Wodiyaappe guyyiyan ooratta mali be'o eeshshati gujettoosona.\n* Qommon de'iya amarida eeshshati ne wikkiiyan hanno gaakkanawu waayi de'ana.",
 	"discussiontools-preference-gadget-conflict": "Eesuwaan zaariyoogaa ootissanawu, neeni koyrottada ne mishshaa doorotun [[$1|injjetiyaa tobbetu miishshata ootissoppa]].",
 	"discussiontools-preference-label": "Tobbiyaa miishshata",
 	"discussiontools-preference-newtopictool": "Eesuwaan huuphe yohuwaa gujjiyoogaa ootissa.",
@@ -114,6 +117,7 @@
 	"discussiontools-replywidget-autocreate-warning": "<strong>Neeni gelabaakka.</strong> Issi asi niyo zaariyoode woykko ne haraayyoo kiitaa yeddiyoode [[$3|bawu merettida suntta]] gidennan ne doorido sunttan uttana mala [$1  gelenawu] woykko [$2 \n akkawunttiyaa medhanawu] danddayaasa.",
 	"discussiontools-replywidget-cancel": "Qucca",
 	"discussiontools-replywidget-feedback": "Ha hanuwaabaa {{GENDER:|oosuwaa zaaruwaa}} shaakka",
+	"discussiontools-replywidget-keyboard-shortcut-submit": "Ne qofaa shiishshanawu $1 bochchana danddayaasa",
 	"discussiontools-replywidget-loading": "Ehiiddi de'ees...",
 	"discussiontools-replywidget-mention-tool-header": "Go'ettiyaagaa demma: $1",
 	"discussiontools-replywidget-mention-tool-title": "Go'ettiyaagaa gelissa",
@@ -173,6 +177,7 @@
 	"echo-pref-tooltip-dt-subscription": "Hara asi taani {{GENDER:|xaafettido}} huuphe yohuwan ooratta qofaa wottiyoode tana erissa.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Taani {{GENDER:|xaafettido}} huuphe yohoy issippe uttiyoode woykko xayiyoode, woykko hara gaasuwan ooratta qofati he huuphe yohuwan wodhidaageti yedettenan attikko tana erissa.",
 	"minerva-talk-full-page": "Wiikkiyaadan nabbaba",
+	"discussiontools-comments-before-first-heading-category-desc": "Zoretaa sinttay koyro huuphe yohuwappe sinttaara qofata oyqqiis. Hagee qofati maara uttenna mala oottanawu danddayees, daroppe moobaaliya birshshettaaninne a appilikeeshiniyan.",
 	"tag-discussiontools-added-comment-description": "Ha haruman haasaya sinttan qofay gujettis",
 	"tag-discussiontools-description": "DiscussionTools go'ettidi harummidoogaa",
 	"tag-discussiontools-edit": "Harummettuda qofaa",
