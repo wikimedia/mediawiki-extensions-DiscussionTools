@@ -20,6 +20,7 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ᨤᩫ᩠ᨶ}}ᨶᩲᨠᩣ᩠ᩁ​ᨸᩮᩥᩢ᩠ᨠᩇᩣᨠᩢ᩠ᨶ",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ᨣᩤᩴᨣᩧ᩠ᨯᩉᩢ᩠ᨶ}}",
 	"discussiontools-topicheader-latestcomment": "ᨣᩤᩴᨣᩧ᩠ᨯᩉᩢ᩠ᨶᩃᩪᩁᩈᩩᨯ: $1",
+	"discussiontools-topicsubscription-action-subscribe-button": "ᩈ᩠ᨾ᩻ᩢᨣᩕ᩼ᩁᩢ᩠ᨷ",
 	"discussiontools-topicsubscription-button-subscribe": "ᨲᩥ᩠ᨯᨲᩣ᩠ᨾ",
 	"discussiontools-topicsubscription-button-subscribe-label": "ᩈ᩠ᨾ᩻ᩢᨣᩕ᩼ᩁᩢ᩠ᨷ",
 	"discussiontools-topicsubscription-button-unsubscribe": "ᨿᩢ᩠᩶ᨦᨲᩥ᩠ᨯᨲᩣ᩠ᨾ",
