@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mbee-wiki"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Balasan",
+	"discussiontools-replylink": "{{GENDER:|kase balas}}",
+	"discussiontools-replywidget-cancel": "Kase batal",
+	"discussiontools-replywidget-reply": "{{GENDER:|Kase balas}}",
+	"discussiontools-replywidget-watchthis": "Kase tamba akang ini halaman pa ngana pe [[Special:Watchlist|daftar pantauan]]"
+}

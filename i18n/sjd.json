@@ -4,6 +4,7 @@
 			"Merrahtar"
 		]
 	},
+	"discussiontools-autotopicsubpopup-preferences": "Воа̄йхэ оа̄ссмужэтҍ",
 	"discussiontools-defaultsummary-reply": "Вуэсстлэгк",
 	"discussiontools-emptystate-button": "Оа̄лкхэ са̄ррнмуж",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Кырьйхуввэ",
@@ -17,6 +18,7 @@
 	"discussiontools-replywidget-mode-source": "Ко̄дт",
 	"discussiontools-replywidget-mode-visual": "Визуальнэ",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Вуэсстлэ}} оаннҍе {{BIDI:$1}}",
+	"discussiontools-replywidget-preferences": "Оа̄ссмуж",
 	"discussiontools-replywidget-preview": "Э̄ввткӣһчмушш",
 	"discussiontools-replywidget-reply": "{{GENDER:|Вуэсстлэ}}",
 	"discussiontools-replywidget-return-to-reply": "Ма̄һце вуэсстлэгка",
