@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"ColumbaBush"
+			"ColumbaBush",
+			"ܐܢܐ"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ܦܘܢܝܐ",
 	"discussiontools-findcomment-label-search": "ܐܫܟܚ",
 	"discussiontools-newtopic-placeholder-title": "ܥܠܬܐ",
 	"discussiontools-topicsubscription-button-subscribe": "ܐܬܟܬܒ",

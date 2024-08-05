@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Ella Lachow"
+			"Ella Lachow",
+			"Malaalaa"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Ha tobbiyaan asi ba qofaa wottiyoode neeyyo erissoy gelees. Ne doorotun erissota giigissotun giigissana danddayaasa.",
@@ -54,7 +55,7 @@
 	"discussiontools-notification-removed-topic-header": "Huuphe yohoy \"<strong>$4</strong>\" issippe uttiis woykko $3 hagaappe xayiis.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|issi huuphe yohoy|$1 cora huuphe yohoti|100=99+ huuphe yohoti}} issippe uttidosona woykko $2 hagaappe xayidosona.",
 	"discussiontools-notification-removed-topic-header-compact": "Huuphe yohoy \"<strong>$4</strong>\" issippe uttiis woykko xayiis.",
-	"discussiontools-notification-removed-topic-view": "Sinttaa xeella",
+	"discussiontools-notification-removed-topic-view": "Sinttaa be'a",
 	"discussiontools-notification-removed-topic-disable": "Ha erissota malatiyaageeta ekkiyoogaa essa",
 	"discussiontools-notification-removed-topic-disabled-title": "Huuphe yohoy issippe uttiyoode woykko xayiyoode neeyyoo erissoti gelokkona.",
 	"discussiontools-notification-removed-topic-disabled-body": "Neeni hagaa [[Special:Preferences#mw-prefsection-echo-echosubscriptions|your preferences]] laammanawu danddayaasa.",

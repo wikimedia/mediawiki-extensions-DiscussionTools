@@ -42,7 +42,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Okta ođđa vástádus|$1 ođđa vástádusa|100=99+ ođđa vástádusa}} \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Čájet kommentára",
-	"discussiontools-pageframe-latestcomment": "Ođđaseamos kommentára: $1, $2'is, fáttás $3",
+	"discussiontools-pageframe-latestcomment": "Ođđaseamos kommentára fáttás $3 čálii geavaheaddji $2 $1",
 	"discussiontools-pageframe-latestcomment-notopic": "Ođđaseamos kommentára čálii $1 geavaheaddji $2",
 	"discussiontools-pagetitle-newtopic": "Álggaheame ođđa fáttá $1'as/is",
 	"discussiontools-pagetitle-reply": "Vástideame $1",
