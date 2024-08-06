@@ -170,7 +170,7 @@ class ThreadItemStore {
 	 * Find heading items matching some text which:
 	 *
 	 *  1. appeared at some point in the history of the targetpage, or if this returns no results:
-	 *  2. currently appear on a sub-page of the target page, or if this returns no results:
+	 *  2. currently appear on a subpage of the target page, or if this returns no results:
 	 *  3. currently appears on any page, but only if it is a unique match
 	 *
 	 * @param string|string[] $heading Heading text to match
@@ -213,7 +213,7 @@ class ThreadItemStore {
 
 		// 2. If the thread item's database hasn't been back-filled with historical revisions
 		//    then approach (1) may not work, instead look for matching headings the currently
-		//    appear on sub-pages, which matches the archiving convention on most wikis.
+		//    appear on subpages, which matches the archiving convention on most wikis.
 		$itemIdInSubPageQueryBuilder = $this->getIdsNamesBuilder()
 			->caller( __METHOD__ . ' case 2' )
 			->join( 'page', null, [ 'page_id = itp_page_id' ] )
