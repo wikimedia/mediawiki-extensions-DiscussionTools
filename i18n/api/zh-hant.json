@@ -42,5 +42,7 @@
 	"apihelp-discussiontoolssubscribe-param-commentname": "要訂閱（或取消訂閱）的話題名稱",
 	"apihelp-discussiontoolssubscribe-param-page": "出現該話題的頁面",
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True 為訂閱，false 為取消訂閱",
-	"apihelp-discussiontoolssubscribe-summary": "訂閱（或取消訂閱）來接收有關話題的通知。"
+	"apihelp-discussiontoolssubscribe-summary": "訂閱（或取消訂閱）來接收有關話題的通知。",
+	"apihelp-discussiontoolsthank-param-commentid": "要感謝的留言 ID。",
+	"apihelp-discussiontoolsthank-summary": "傳送對留言的公開感謝通知。"
 }
