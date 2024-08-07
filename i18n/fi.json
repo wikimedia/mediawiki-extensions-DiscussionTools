@@ -198,13 +198,13 @@
 	"echo-pref-tooltip-dt-subscription-archiving": "Ilmoita, kun {{GENDER:|tilaamani}} aihe arkistoidaan tai poistetaan sivulta, tai jos ilmoituksia uusista kommenteista kyseisessä aiheessa ei voida lähettää jostain muusta syystä.",
 	"discussiontools-comments-before-first-heading-category-desc": "Keskustelusivu sisältää kommentteja johdanto-osiossa (ennen ensimmäistä väliotsikkoa). Tämä saattaa aiheuttaa sen, että johdanto tai kommentit näytetään väärällä tavalla, erityisesti mobiilisivustossa ja mobiilisovelluksissa.",
 	"tag-discussiontools-added-comment-description": "Tässä muokkauksessa lisättiin viesti keskustelusivulle",
-	"tag-discussiontools-description": "Muokkaus tehty DiscussionTools-työkalulla",
+	"tag-discussiontools-description": "Keskustelutyökaluilla tehty muokkaus",
 	"tag-discussiontools-edit": "Kommenttia muokattu",
-	"tag-discussiontools-edit-description": "Käyttäjä muokkasi olemassa olevaa kommenttia DiscussionTools-työkalulla",
+	"tag-discussiontools-edit-description": "Käyttäjä muokkasi olemassa olevaa kommenttia Keskustelutyökaluilla",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Uusi aihe lisätty]",
-	"tag-discussiontools-newtopic-description": "Käyttäjä lisäsi uuden aiheen sivulle DiscussionTools-työkalulla",
+	"tag-discussiontools-newtopic-description": "Käyttäjä lisäsi uuden aiheen sivulle Keskustelutyökaluilla",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vastaus]",
-	"tag-discussiontools-reply-description": "Käyttäjä vastasi kommenttiin DiscussionTools-työkalulla",
+	"tag-discussiontools-reply-description": "Käyttäjä vastasi kommenttiin Keskustelutyökaluilla",
 	"tag-discussiontools-source-description": "Keskustelutyökalut olivat lähdekooditilassa",
 	"tag-discussiontools-visual-description": "Keskustelutyökalut olivat visuaalisessa tilassa"
 }
