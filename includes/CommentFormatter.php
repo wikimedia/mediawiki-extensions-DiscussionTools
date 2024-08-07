@@ -116,9 +116,13 @@ class CommentFormatter {
 		) ) {
 			// Do not add the wrapper if the heading has attributes generated from wikitext (T353489).
 			// Only allow reserved attributes (e.g. 'data-mw', which can't be used in wikitext, but which
-			// are used internally by our own code and by Parsoid) and the 'id' attribute used by Parsoid.
+			// are used internally by our own code and by Parsoid) and the 'id', 'about', and 'typeof'
+			// attributes used by Parsoid.
 			foreach ( $headingElement->attributes as $attr ) {
-				if ( $attr->name !== 'id' && !Sanitizer::isReservedDataAttribute( $attr->name ) ) {
+				if (
+					!in_array( $attr->name, [ 'id', 'about', 'typeof' ], true ) &&
+					!Sanitizer::isReservedDataAttribute( $attr->name )
+				) {
 					return $headingElement;
 				}
 			}
