@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gramo6"
+			"Gramo6",
+			"Constraque"
 		]
 	},
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Діскусна сторінка]] — суть сторінка, де люде ведуть діскусію, як вытворити обсяг {{GRAMMAR:genitive|{{SITENAME}}}} Вікіпедії як найлїпше. {{GENDER:|Вы}} можете поужыти тоту сторінку, жебы зачати діскусію з іншыма про те, як полїпшыти сітуацію з сторінков [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-replylink": "одповісти",
 	"discussiontools-replywidget-cancel": "Зрушыти",
 	"discussiontools-replywidget-mode-source": "Жерело",
