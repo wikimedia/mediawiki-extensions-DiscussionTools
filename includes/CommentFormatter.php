@@ -417,7 +417,7 @@ class CommentFormatter {
 		// Temporary hack to deal with T351461#9358034: this should be a
 		// call to `setJsConfigVar` but Parsoid is currently reprocessing
 		// content from extensions.
-		$pout->addJsConfigVars( 'wgDiscussionToolsPageThreads', $threadsJSON );
+		$pout->setJsConfigVar( 'wgDiscussionToolsPageThreads', $threadsJSON );
 
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
