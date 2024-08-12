@@ -6,5 +6,10 @@
 	},
 	"discussiontools-defaultsummary-reply": "Balasan",
 	"discussiontools-replywidget-cancel": "Kase batal",
-	"discussiontools-replywidget-watchthis": "Kase tamba akang ini halaman pa ngana pe [[Special:Watchlist|daftar pantauan]]"
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-watchthis": "Kase tamba akang ini halaman pa ngana pe [[Special:Watchlist|daftar pantauan]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|orang}} dalang ini diskusi",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komen}}",
+	"discussiontools-topicheader-latestcomment": "Komen yang paling baru: $1"
 }

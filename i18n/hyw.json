@@ -4,7 +4,22 @@
 			"Շահէն"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Պատասխանել",
 	"discussiontools-postedit-confirmation-published": "Ձեր խմբագրումը հրատարակուած է:",
 	"discussiontools-replywidget-abandontopic-keep": "Շարունակել գրել",
-	"discussiontools-replywidget-placeholder-newtopic": "Նկարագրութիւն"
+	"discussiontools-replywidget-advanced": "Յառաջացած",
+	"discussiontools-replywidget-cancel": "Չեղարկել",
+	"discussiontools-replywidget-mode-source": "Աղբիւր",
+	"discussiontools-replywidget-mode-visual": "Տեսողական",
+	"discussiontools-replywidget-placeholder-newtopic": "Նկարագրութիւն",
+	"discussiontools-replywidget-preview": "Նախադիտում",
+	"discussiontools-replywidget-summary": "Ամփոփում",
+	"discussiontools-replywidget-watchthis": "Աւելցնել այս էջը ձեր [[Special:Watchlist|դիտէջին]]:",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|մարդ|մարդիկ}} քննարկման մէջ",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|մեկնաբանութիւն|մեկնաբանութիւններ}}",
+	"discussiontools-topicheader-latestcomment": "Վերջին մեկնաբանութիւն՝ $1",
+	"discussiontools-topicsubscription-button-subscribe": "բաժանորդագրուիլ",
+	"discussiontools-topicsubscription-button-subscribe-label": "Բաժանորդագրուիլ",
+	"discussiontools-topicsubscription-button-unsubscribe": "ապաբաժանորդագրուիլ",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Ապաբաժանորդագրվել"
 }
