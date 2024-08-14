@@ -74,7 +74,7 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools hata isteği kimliği",
 	"discussiontools-limitreport-timeusage": "DiscussionTools zaman kullanımı",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|saniye}}",
-	"discussiontools-newtopic-missing-title": "Lütfen tartışma konunuz için bir başlık girin. \"{{int:discussiontools-replywidget-newtopic}}\" düğmesine {{GENDER:|tıklarsanız}}, konunuz başlık olmadan eklenecektir.",
+	"discussiontools-newtopic-missing-title": "Lütfen tartışma konunuz için bir başlık {{GENDER:|girin}}.",
 	"discussiontools-newtopic-placeholder-title": "Konu",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abone ol",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Bu sayfada yeni bir konu açıldığında bildirim almak için abone ol.",

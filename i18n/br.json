@@ -72,7 +72,7 @@
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Ur gaozeadenn nevez|$1 kaozeadenn nevez|100=99+ kaozeadenn nevez}} e \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-view": "Gwelout kaozeadenn",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|en|he}} deus trugarekaet {{GENDER:$4|ac’hanoc’h}} eus hoc’h evezhiadenn e \"<strong>$3</strong>\".",
-	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Un den en|$1 den o|100=99+ den o}} deus trugarekaet {{GENDER:$3|ac’hanac’h}} evit hoc’h evezhiadenn e \"<strong>$2</strong>\".",
+	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Un den en|$1 den o|100=99+ den o}} deus trugarekaet {{GENDER:$3|ac’hanac’h}} eus hoc’h evezhiadenn e \"<strong>$2</strong>\".",
 	"discussiontools-notification-comment-thank-header-compact": "$1 {{GENDER:$2|en|he}} deus trugarekaet {{GENDER:$3|ac’hanoc’h}}.",
 	"discussiontools-notification-removed-topic-body": "Marteze ne {{GENDER:|resevoc’h}} ken kemennadennoù a-zivout ar {{PLURAL:$1|gaozeadenn|c’haozeadennoù}}-mañ.",
 	"discussiontools-notification-removed-topic-header": "Diellet pe dilamet eo bet ar gaozeadenn \"<strong>$4</strong>\" eus $3.",
