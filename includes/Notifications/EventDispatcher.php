@@ -53,9 +53,6 @@ class EventDispatcher {
 	public static function generateEventsForRevision( array &$events, RevisionRecord $newRevRecord ): void {
 		$services = MediaWikiServices::getInstance();
 
-		$revisionStore = $services->getRevisionStore();
-		$oldRevRecord = $revisionStore->getPreviousRevision( $newRevRecord, IDBAccessObject::READ_LATEST );
-
 		$title = Title::newFromLinkTarget(
 			$newRevRecord->getPageAsLinkTarget()
 		);
@@ -70,6 +67,9 @@ class EventDispatcher {
 			// to be the case if the user just made an edit
 			return;
 		}
+
+		$revisionStore = $services->getRevisionStore();
+		$oldRevRecord = $revisionStore->getPreviousRevision( $newRevRecord, IDBAccessObject::READ_LATEST );
 
 		if ( $oldRevRecord !== null ) {
 			$oldItemSet = static::getParsedRevision( $oldRevRecord );
