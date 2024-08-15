@@ -410,8 +410,8 @@ class CommentFormatter {
 				->addTrackingCategory( $pout, 'discussiontools-comments-before-first-heading-category', $title );
 		}
 
-		if ( count( $threadItems ) === 0 ) {
-			$pout->setExtensionData( 'DiscussionTools-isEmptyTalkPage', true );
+		if ( count( $threadItems ) > 0 ) {
+			$pout->setExtensionData( 'DiscussionTools-isNotEmptyTalkPage', true );
 		}
 
 		$threadsJSON = array_map( static function ( ContentThreadItem $item ) {
@@ -918,7 +918,7 @@ class CommentFormatter {
 	 * Check if the talk page had no comments or headings.
 	 */
 	public static function isEmptyTalkPage( ParserOutput $pout ): bool {
-		return $pout->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) === true;
+		return $pout->getExtensionData( 'DiscussionTools-isNotEmptyTalkPage' ) !== true;
 	}
 
 	/**

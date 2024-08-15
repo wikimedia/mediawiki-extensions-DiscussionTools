@@ -95,8 +95,8 @@ class CommentFormatterTest extends IntegrationTestCase {
 			 "hasLedeContent\n" : '' ) .
 			( $pout->getExtensionData( 'DiscussionTools-hasCommentsInLedeContent' ) ?
 			 "hasCommentsInLedeContent\n" : '' ) .
-			( $pout->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) ?
-			 "isEmptyTalkPage\n" : '' ) .
+			( $pout->getExtensionData( 'DiscussionTools-isNotEmptyTalkPage' ) ?
+			 '' : "isEmptyTalkPage\n" ) .
 			FormatJson::encode( $pout->getJsConfigVars(), "\t", FormatJson::ALL_OK ) .
 			"\n</pre>";
 
