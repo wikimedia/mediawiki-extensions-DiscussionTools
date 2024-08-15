@@ -180,7 +180,7 @@
 	"echo-pref-tooltip-dt-subscription-archiving": "Uvědomite me, kogda tema, na ktoru ja jesm podpisan{{GENDER:|y|a}}, jest arhivovana ili udaljena iz stranice, ili kogda posylanje uvědomjenij o novyh komentarah dodanyh v toj temě jest nemožno iz drugyh pričin.",
 	"discussiontools-comments-before-first-heading-category-desc": "Besědna stranica sodrživaje komentare v vvodnom razdělu (prěd prvym zaglavjem). Vslěd togo vvodny razděl ili komentare mogut izobražati se nepravilno, osoblivo v mobilnoj versiji i v mobilnyh aplikacijah.",
 	"tag-discussiontools-added-comment-description": "V tutoj pravkě byl dodany komentar na besědnoj stranici",
-	"tag-discussiontools-description": "Pravda sdělana s pomočju DiscussionTools",
+	"tag-discussiontools-description": "Pravka sdělana s pomočju DiscussionTools",
 	"tag-discussiontools-edit": "Pravka komentara",
 	"tag-discussiontools-edit-description": "Koristnik izpravil jestvujuči komentar s pomočju DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]",
