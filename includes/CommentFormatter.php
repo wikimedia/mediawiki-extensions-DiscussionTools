@@ -917,6 +917,13 @@ class CommentFormatter {
 
 	/**
 	 * Check if the talk page had no comments or headings.
+	 *
+	 * Note that the implementation here is using a double negative which
+	 * doesn't guarantee a *talk page*, only that the page is not not an empty
+	 * talk page, which could be many other types of page.
+	 *
+	 * The current use of this method is paired with
+	 * HookUtils::shouldDisplayEmptyState which assures we have a talk page.
 	 */
 	public static function isEmptyTalkPage( ParserOutput $pout ): bool {
 		return $pout->getExtensionData( 'DiscussionTools-isNotEmptyTalkPage' ) !== true;
