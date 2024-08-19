@@ -54,7 +54,7 @@
 	"discussiontools-limitreport-errorreqid": "DiscussionTools халатлы излемни идентификатору",
 	"discussiontools-limitreport-timeusage": "DiscussionTools заман хайырланыу",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунд}}",
-	"discussiontools-newtopic-missing-title": "Тилейбиз, сюзюу темагъыз ючюн, башлыкъ салыгъыз. \"{{int:discussiontools-replywidget-newtopic}}\" тиекге {{GENDER:|бассагъыз}}, темагъыз башлыкъсыз къошуллукъду.",
+	"discussiontools-newtopic-missing-title": "Тилейбиз, сюзюу темагъыз ючюн, башлыкъ {{GENDER:|салыгъыз}}.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Джаздырыл",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Бу бетде джангы темала башлансала, билдириу алыр ючюн джаздырыл.",

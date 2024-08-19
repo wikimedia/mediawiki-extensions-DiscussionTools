@@ -63,7 +63,7 @@
 	"discussiontools-limitreport-errorreqid": "ID chyby Diskusních nástrojů",
 	"discussiontools-limitreport-timeusage": "Využití času Diskusních nástrojů",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundy|sekund}}",
-	"discussiontools-newtopic-missing-title": "Prosíme, vyplňte nadpis svého diskusního tématu. Kliknete-li na „{{int:discussiontools-replywidget-newtopic}}“, přidáte téma bez nadpisu.",
+	"discussiontools-newtopic-missing-title": "Prosíme, vyplňte nadpis {{GENDER:|svého}} diskusního tématu.",
 	"discussiontools-newtopic-placeholder-title": "Předmět",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Odebírat",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Jedno nové téma|$1 nová témata|$1 nových témat|100=Více než 99 nových témat}} na stránce „<strong>$2</strong>“.",
