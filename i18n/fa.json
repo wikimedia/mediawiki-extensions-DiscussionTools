@@ -13,7 +13,8 @@
 			"Mohammad ebz",
 			"Reza koulivand",
 			"Ebraminio",
-			"Rulebased"
+			"Rulebased",
+			"Ebrahim"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -76,7 +77,7 @@
 	"discussiontools-pageframe-latestcomment": "آخرین نظر: $1 توسط $2 در مبحث $3",
 	"discussiontools-pageframe-latestcomment-notopic": "آخرین نظر: $1 توسط $2",
 	"discussiontools-pagetitle-newtopic": "آغاز مبحث تازه در $1",
-	"discussiontools-pagetitle-reply": "پاسخ‌دادن در $1",
+	"discussiontools-pagetitle-reply": "پاسخ دادن در $1",
 	"discussiontools-postedit-confirmation-published": "نظر شما منتشر شد.",
 	"discussiontools-postedit-confirmation-topicadded": "مبحث شما افزوده شد.",
 	"discussiontools-preference-autotopicsub": "اشتراک خودکار در مباحث",

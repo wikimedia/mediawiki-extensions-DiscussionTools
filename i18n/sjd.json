@@ -7,6 +7,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Воа̄йхэ оа̄ссмужэтҍ",
 	"discussiontools-defaultsummary-reply": "Вуэсстлэгк",
 	"discussiontools-emptystate-button": "Оа̄лкхэ са̄ррнмуж",
+	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунда|секундэдтӭ}}",
 	"discussiontools-notification-removed-topic-view": "Кӣһче лыст",
 	"discussiontools-notification-removed-topic-disable": "Эль воа̄ллтлэ мугка тӣдҍхэмужэтҍ",
 	"discussiontools-pageframe-latestcomment": "Маӈьмусс коамментаррьй: $1 оаннҍесьт $2 те̄масьт $3",

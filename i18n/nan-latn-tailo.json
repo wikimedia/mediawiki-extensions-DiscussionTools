@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"SupaplexTW"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Huê-hok",
+	"discussiontools-replywidget-advanced": "tsìn-tsi̍t-pōo",
+	"discussiontools-replywidget-cancel": "Tshú-siau",
+	"discussiontools-replywidget-mode-source": "Tshut-tshù",
+	"discussiontools-replywidget-mode-visual": "視覺化",
+	"discussiontools-replywidget-preview": "Sing khuànn-māi",
+	"discussiontools-replywidget-summary": "Khài-iàu",
+	"discussiontools-replywidget-watchthis": "Kā tsi̍t ia̍h ka-thiam kàu lí ê [[Special:Watchlist|kàm-sī-tuann]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1| ê lâng}} ka-ji̍p thó-lūn",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1| ê lâu-uē}}",
+	"discussiontools-topicheader-latestcomment": "Siōng-sin lâu-uē: $1",
+	"discussiontools-topicsubscription-button-subscribe": "tīng-ua̍t",
+	"discussiontools-topicsubscription-button-subscribe-label": "Tīng-ua̍t",
+	"discussiontools-topicsubscription-button-unsubscribe": "Tshú-siau tīng-ua̍t",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Tshú-siau tīng-ua̍t"
+}

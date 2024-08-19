@@ -104,7 +104,7 @@
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Podpiska|Podpisky}} na besědne stranice",
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Arhivovanje}} besědnyh stranic",
 	"tag-discussiontools-added-comment-description": "V tutoj pravkě byl dodany komentar na besědnoj stranici",
-	"tag-discussiontools-description": "Pravda sdělana s pomočju DiscussionTools",
+	"tag-discussiontools-description": "Pravka sdělana s pomočju DiscussionTools",
 	"tag-discussiontools-edit": "Pravka komentara",
 	"tag-discussiontools-edit-description": "Koristnik izpravil jestvujuči komentar s pomočju DiscussionTools",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]",

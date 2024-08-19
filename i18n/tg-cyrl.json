@@ -1,8 +1,24 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dovud"
+			"Dovud",
+			"Farorud",
+			"ToJack"
 		]
 	},
-	"discussiontools-replywidget-mode-source": "Манбаъ"
+	"discussiontools-defaultsummary-reply": "Посух додан",
+	"discussiontools-replywidget-advanced": "Пешрафта",
+	"discussiontools-replywidget-cancel": "Лағв",
+	"discussiontools-replywidget-mode-source": "Манбаъ",
+	"discussiontools-replywidget-mode-visual": "Дидорӣ",
+	"discussiontools-replywidget-preview": "Пешнамоиш",
+	"discussiontools-replywidget-summary": "Хулоса",
+	"discussiontools-replywidget-watchthis": "Ин саҳифаро ба [[Special:Watchlist|феҳристи назарот]] ворид кардан",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|нафар}} дар баҳс",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|паём}}",
+	"discussiontools-topicheader-latestcomment": "Паёми охирин: $1",
+	"discussiontools-topicsubscription-button-subscribe": "обуна шудан",
+	"discussiontools-topicsubscription-button-subscribe-label": "Обунашавӣ",
+	"discussiontools-topicsubscription-button-unsubscribe": "лағви обуна",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Лағви обуна"
 }
