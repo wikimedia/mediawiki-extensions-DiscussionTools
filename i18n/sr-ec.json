@@ -58,7 +58,7 @@
 	"discussiontools-ledesection-title": "О овој страници за разговор",
 	"discussiontools-limitreport-timeusage": "Време коришћења алата за дискусију",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунд|секунда|секунди}}",
-	"discussiontools-newtopic-missing-title": "Молимо наведите наслов Ваше теме. Ако кликнете „{{int:discussiontools-replywidget-newtopic}}” тема ће бити додати без наслова.",
+	"discussiontools-newtopic-missing-title": "Молимо наведите наслов {{GENDER:|Ваше}} теме.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Прати",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Запратите страницу да би добијали обавештења када се покрену нове теме на истој.",

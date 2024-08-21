@@ -60,7 +60,7 @@
 	"discussiontools-ledesection-button": "Ulteriori informazioni su questa pagina",
 	"discussiontools-ledesection-title": "A proposito di questa pagina di discussione",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secondo|secondi}}",
-	"discussiontools-newtopic-missing-title": "Per favore, {{GENDER:|dai}} un titolo all'argomento di cui desideri discutere. Se clicchi ora su \"{{int:discussiontools-replywidget-newtopic}}\", la discussione sarà creata senza titolo.",
+	"discussiontools-newtopic-missing-title": "Per favore, {{GENDER:|dai}} un titolo all'argomento di cui desideri discutere.",
 	"discussiontools-newtopic-placeholder-title": "Oggetto",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Iscriviti",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Iscriviti per ricevere una notifica ogni volta che viene aggiunto un nuovo argomento in questa pagina.",
