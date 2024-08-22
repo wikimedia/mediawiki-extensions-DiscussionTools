@@ -5,6 +5,7 @@
 			"Cezar",
 			"Matma Rex",
 			"NGC 54",
+			"Strainu",
 			"Turbojet"
 		]
 	},
@@ -58,7 +59,8 @@
 	"discussiontools-limitreport-errorreqid": "Eroare DiscussionTools la cererea ID-ului",
 	"discussiontools-limitreport-timeusage": "Timpul de utilizare DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secundă|secunde}}",
-	"discussiontools-newtopic-missing-title": "Vă rugăm să oferiți un titlu pentru subiectul dvs. de discuție. Dacă apăsați „{{int:discussiontools-replywidget-newtopic}}”, {{GENDER:|subiectul}} dvs. va fi adăugat fără un titlu.",
+	"discussiontools-newtopic-missing-title": "Vă rugăm să oferiți un titlu pentru subiectul dvs. de discuție.",
+	"discussiontools-newtopic-missing-title-prompt": "Nu ați furnizat un titlu pentru subiectul de discuție. Sunteți {{GENDER:|sigur|sigură}} că doriți să adăugați acest subiect fără un titlu?",
 	"discussiontools-newtopic-placeholder-title": "Subiect",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abonare",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Abonați-vă pentru a primi notificări când se încep subiecte noi pe această pagină.",
@@ -147,7 +149,7 @@
 	"discussiontools-replywidget-watchthis": "Adăugați-vă această pagină la [[Special:Watchlist|pagini urmărite]]",
 	"discussiontools-target-comment-missing": "Acest comentariu nu a putut fi găsit. Se poate să fi fost șters sau mutat.",
 	"discussiontools-target-comments-missing": "Noile comentarii nu au putut fi găsite. Se poate să fi fost șterse sau mutate.",
-	"discussiontools-target-heading-missing": "Acest subiect nu a putut fi găsit. Se poate să fi fost șters sau mutat.",
+	"discussiontools-target-heading-missing": "Acest subiect nu a putut fi găsit. Se poate să fi fost șters, mutat sau redenumit.",
 	"discussiontools-target-comment-found-moved": "Acest comentariu nu a putut fi găsit pe această pagină, însă există în {{PLURAL:$1|următoarea pagină|următoarele pagini}}:",
 	"discussiontools-target-heading-found-moved": "Acest subiect nu a putut fi găsit pe această pagină, însă există în {{PLURAL:$1|următoarea pagină|următoarele pagini}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|persoană|persoane}} în discuție",
