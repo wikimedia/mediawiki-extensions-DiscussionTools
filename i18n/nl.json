@@ -71,6 +71,7 @@
 	"discussiontools-limitreport-timeusage": "Tijdgebruik DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|seconde|seconden}}",
 	"discussiontools-newtopic-missing-title": "Geef een titel op voor uw overleg.",
+	"discussiontools-newtopic-missing-title-prompt": "U hebt geen titel opgegeven voor uw discussieonderwerp. Weet u zeker dat u dit onderwerp zonder titel wilt toevoegen?",
 	"discussiontools-newtopic-placeholder-title": "Onderwerp",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abonneren",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Abonneer u om meldingen te ontvangen wanneer er nieuwe onderwerpen op deze pagina worden gestart.",
