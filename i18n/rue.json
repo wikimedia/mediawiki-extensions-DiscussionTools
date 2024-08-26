@@ -7,6 +7,8 @@
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Добре, зрозуміло",
 	"discussiontools-autotopicsubpopup-preferences": "Едітовати наставлїня",
+	"discussiontools-emptystate-button": "Зачати діскусію",
+	"discussiontools-emptystate-title": "Зачати діскусію о {{SUBJECTPAGENAME}}",
 	"discussiontools-findcomment-label-search": "Глядати",
 	"discussiontools-notification-subscribed-new-comment-view": "Зобразити повідомлїня",
 	"discussiontools-pageframe-latestcomment": "Послїдне повідомлїня: $1 од $2 в темі $3",

@@ -1,10 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Akbarali"
+			"Akbarali",
+			"Praveenp"
 		]
 	},
+	"discussiontools": "സംവാദ ഉപകരണങ്ങൾ",
+	"discussiontools-autotopicsubpopup-dismiss": "ശരി, മനസ്സിലായി",
+	"discussiontools-autotopicsubpopup-preferences": "ക്രമീകരണങ്ങൾ തിരുത്തുക",
 	"discussiontools-defaultsummary-reply": "മറുപടി",
+	"discussiontools-desc": "സംവാദത്താളുകൾ മെച്ചപ്പെടുത്തുവാനുള്ള ഉപകരണങ്ങൾ.",
+	"discussiontools-emptystate-button": "സം‌വാദം ആരംഭിക്കുക",
+	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} എന്ന വിഷയത്തിൽ ചർച്ച ആരംഭിക്കുക",
+	"discussiontools-notification-removed-topic-view": "താൾ കാണുക",
+	"discussiontools-preference-label": "ചർച്ചാ ഉപകരണങ്ങൾ",
 	"discussiontools-replylink": "മറുപടി",
 	"discussiontools-replywidget-advanced": "വിപുലമായ",
 	"discussiontools-replywidget-cancel": "റദ്ദാക്കുക",
