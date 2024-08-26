@@ -505,7 +505,7 @@ CommentController.prototype.saveFail = function ( code, data ) {
 		code = 'captcha';
 		this.replyWidget.setCaptcha( captchaData );
 	} else {
-		this.setSaveErrorMessage( code, data );
+		this.replyWidget.setSaveErrorMessage( code, data );
 	}
 
 	if ( code instanceof Error ) {
