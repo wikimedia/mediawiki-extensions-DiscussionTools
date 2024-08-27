@@ -1072,7 +1072,7 @@ ReplyWidget.prototype.onReplyClick = function () {
  * @param {string} code Error code
  * @param {Object} data Error data
  */
-ReplyWidget.setSaveErrorMessage = function ( code, data ) {
+ReplyWidget.prototype.setSaveErrorMessage = function ( code, data ) {
 	if ( !(
 		// Don't duplicate the parentRemovedErrorMessage
 		code === 'discussiontools-commentname-notfound' && this.parentRemovedErrorMessage
