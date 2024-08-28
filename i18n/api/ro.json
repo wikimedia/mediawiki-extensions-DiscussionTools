@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NGC 54"
+			"NGC 54",
+			"Paloi Sciurala"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Comentariul cu ID-ul „$1” nu a fost găsit.",
