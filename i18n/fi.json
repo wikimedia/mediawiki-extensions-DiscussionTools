@@ -57,7 +57,7 @@
 	"discussiontools-findcomment-results-notcurrent": "(ei nykyisessä versiossa)",
 	"discussiontools-findcomment-results-transcluded": "(sisällytetty toiselta sivulta)",
 	"discussiontools-findcomment-title": "Etsi kommentti",
-	"discussiontools-ledesection-button": "Lisätietoja tästä sivusta",
+	"discussiontools-ledesection-button": "Tietoja tästä sivusta",
 	"discussiontools-ledesection-title": "Tietoja tästä keskustelusivusta",
 	"discussiontools-limitreport-timeusage": "DiscussionToolsin ajankäyttö",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunti|sekuntia}}",
