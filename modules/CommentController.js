@@ -586,6 +586,25 @@ CommentController.prototype.save = function ( pageName, extraParams ) {
 		return mw.libs.ve.targetSaver.postContent(
 			data, { api: noTimeoutApi }
 		).catch( ( code, responseData ) => {
+			if ( code === 'assertanonfailed' ) {
+				// Reattempt the save when something already created a temporary account (T368263)
+				return controller.getApi().get( {
+					meta: 'userinfo'
+				} ).then( ( resp ) => {
+					if ( !resp.query.userinfo.temp ) {
+						// Return the original error response
+						return $.Deferred().reject( code, responseData ).promise();
+					}
+					// Set new parameters and retry
+					data.assert = 'user';
+					data.assertuser = resp.query.userinfo.name;
+					return mw.libs.ve.targetSaver.postContent(
+						data, { api: noTimeoutApi }
+					);
+				} );
+			}
+			return $.Deferred().reject( code, responseData ).promise();
+		} ).catch( ( code, responseData ) => {
 			// Better user-facing error messages
 			if ( code === 'editconflict' ) {
 				return $.Deferred().reject( code, { errors: [ {
