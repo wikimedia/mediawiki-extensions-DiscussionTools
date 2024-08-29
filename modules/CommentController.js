@@ -498,11 +498,11 @@ CommentController.prototype.onReplySubmit = function ( extraParams ) {
  * @param {Object} data Error data
  */
 CommentController.prototype.saveFail = function ( code, data ) {
-	this.replyWidget.clearCaptcha();
 	const captchaData = OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' );
 
 	if ( captchaData ) {
 		code = 'captcha';
+		this.replyWidget.clearCaptcha();
 		this.replyWidget.setCaptcha( captchaData );
 	} else {
 		this.replyWidget.setSaveErrorMessage( code, data );
