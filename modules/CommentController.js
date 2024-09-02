@@ -232,6 +232,7 @@ CommentController.prototype.startPoll = function ( nextDelay ) {
 
 	const threadItemId = this.threadItem.id;
 	const subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
+	let aborted = false;
 
 	this.pollApiRequest = controller.getApi().get( {
 		action: 'discussiontoolscompare',
@@ -266,11 +267,15 @@ CommentController.prototype.startPoll = function ( nextDelay ) {
 
 		this.oldId = result.torevid;
 		nextDelay = 5000;
-	}, () => {
-		// Wait longer next time in case of error
-		nextDelay = nextDelay * 1.5;
+	}, ( code, data ) => {
+		if ( code === 'http' && data.textStatus === 'abort' ) {
+			aborted = true;
+		} else {
+			// Wait longer next time in case of error
+			nextDelay = nextDelay * 1.5;
+		}
 	} ).always( () => {
-		if ( this.isTornDown ) {
+		if ( this.isTornDown || aborted ) {
 			return;
 		}
 		// Stop polling after too many errors
@@ -498,6 +503,8 @@ CommentController.prototype.onReplySubmit = function ( extraParams ) {
  * @param {Object} data Error data
  */
 CommentController.prototype.saveFail = function ( code, data ) {
+	this.startPoll();
+
 	const captchaData = OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' );
 
 	if ( captchaData ) {
@@ -550,6 +557,8 @@ CommentController.prototype.saveFail = function ( code, data ) {
  * @return {jQuery.Promise} Promise which resolves when the save is complete
  */
 CommentController.prototype.save = function ( pageName, extraParams ) {
+	this.stopPoll();
+
 	const replyWidget = this.replyWidget,
 		threadItem = this.getThreadItem();
 
