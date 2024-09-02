@@ -5,7 +5,12 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Diandamuna",
+	"discussiontools-replywidget-cancel": "Kwimakija",
+	"discussiontools-replywidget-mode-visual": "Tshidibu bamone",
 	"discussiontools-replywidget-preview": "Djimuna djakula",
 	"discussiontools-replywidget-summary": "Tshikondo tshia ndekelu",
-	"discussiontools-replywidget-watchthis": "Kufila dibeji edi mu dibeji diebe dia [[Special:Watchlist|Malu adibu balonde]]"
+	"discussiontools-replywidget-watchthis": "Kufila dibeji edi mu dibeji diebe dia [[Special:Watchlist|Malu adibu balonde]]",
+	"discussiontools-topicheader-latestcomment": "Diumvuija dia ndekelu: $1",
+	"discussiontools-topicsubscription-button-subscribe": "ku difila",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Kumbuka mu mukanda"
 }
