@@ -11,7 +11,8 @@
 			"Sonic Speedy",
 			"Veracious",
 			"WillsonEP09",
-			"Rex"
+			"Rex",
+			"Ezagren"
 		]
 	},
 	"discussiontools": "Perkakas diskusi",
@@ -91,6 +92,7 @@
 	"discussiontools-preference-topicsubscription": "Aktifkan langganan topik",
 	"discussiontools-preference-topicsubscription-help": "Ini akan memungkinkan Anda berlangganan untuk menerima pemberitahuan komentar tentang topik tunggal.",
 	"discussiontools-preference-visualenhancements": "Tampilkan aktivitas diskusi",
+	"discussiontools-preference-visualenhancements-help": "Ini akan memungkinkan tampilan halaman pembicaraan baru yang memuat informasi tentang aktivitas dalam setiap diskusi.",
 	"discussiontools-replybutton": "Balas",
 	"discussiontools-replylink": "balas",
 	"discussiontools-replywidget-abandon": "Apakah Anda yakin ingin membuang komentar yang Anda tulis?",

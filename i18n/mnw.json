@@ -5,6 +5,9 @@
 			"Htawmonzel"
 		]
 	},
+	"discussiontools": "ကရိယာသဳကၠဳမချပ်ဗ္စာရဏာဂမၠိုၚ်",
+	"discussiontools-autotopicsubpopup-dismiss": "အဝ်ခေ၊ ကၠိုဟ်ယျ",
+	"discussiontools-autotopicsubpopup-preferences": "မပလေဝ်ဒါန်သ္ဍိုက်မၠိုက်ဂမၠိုၚ်",
 	"discussiontools-defaultsummary-reply": "ကလေၚ်",
 	"discussiontools-emptystate-button": "စကၠောန်ဓရီုကျာချပ်ဗ္စာရဏာမွဲ",
 	"discussiontools-emptystate-desc": "ဓမံက်ထ္ၜးကဵုကသပ်ဗ္စာရဏာမဆေၚ်စပ်ကဵုမုက်လိက်ဓရီုကျာ၊ {{PAGENAME}} မဒှ်ယၟုမုက်လိက်။\nလ္ပကၠာဲမဆေၚ်စပ်ကဵုဝေါဟာမှဝ်ဏအ်နကဵုပ္ဍဲမာတ်သေတ်ဏံဂှ်:\n* {{SUBJECTPAGENAME}}\n* {{PAGENAME}}\n* {{MediaWiki:discussiontools-emptystate-link-talkpages}}",
