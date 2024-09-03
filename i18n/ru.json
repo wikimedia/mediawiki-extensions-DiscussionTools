@@ -81,7 +81,7 @@
 	"discussiontools-limitreport-errorreqid": "ID запроса с ошибкой в DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Время использования DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|секунда|секунды|секунд}}",
-	"discussiontools-newtopic-missing-title": "Пожалуйста, введите заголовок для {{GENDER:|своей}} темы обсуждения. Если вы нажмёте на «{{int:discussiontools-replywidget-newtopic}}», тема будет добавлена без заголовка.",
+	"discussiontools-newtopic-missing-title": "Пожалуйста, введите заголовок для {{GENDER:|своей}} темы обсуждения.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Подписаться",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Подпишитесь, чтобы получать уведомления о появлении новых тем на этой странице.",
