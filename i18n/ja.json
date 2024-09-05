@@ -149,7 +149,7 @@
 	"discussiontools-replywidget-abandontopic-discard": "トピックを破棄",
 	"discussiontools-replywidget-abandontopic-keep": "編集を続行",
 	"discussiontools-replywidget-advanced": "高度",
-	"discussiontools-replywidget-anon-warning": "<strong>あなたはログインしていません。</strong> 誰かが返信した際に通知を受け取り、IPアドレスではなくあなた自身の名前で帰属表示する場合、[$1 ログイン]するか[$2 アカウントを作成]してください。",
+	"discussiontools-replywidget-anon-warning": "<strong>あなたはログインしていません。</strong> 返信があったときに通知を受け取りたい場合や、IPアドレスではなく自分の名前で帰属表示をしてもらいたい場合は、[$1 ログイン]するか[$2 アカウントを作成]してください。",
 	"discussiontools-replywidget-autocreate-warning": "<strong>ログインしていません。</strong>編集を行うと、臨時アカウントが作成されます。[[$3|詳細]]。このアカウントの有効期限が切れた後に誰かが返信したときに通知を受け取ったり、他の機能にアクセスしたりするには、[$1 ログイン]または[$2 アカウントを作成]してください。",
 	"discussiontools-replywidget-cancel": "中止",
 	"discussiontools-replywidget-feedback": "この機能について{{GENDER:|フィードバックする}}",
