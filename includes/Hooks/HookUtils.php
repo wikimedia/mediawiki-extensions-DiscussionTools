@@ -320,12 +320,12 @@ class HookUtils {
 		}
 
 		// ARCHIVEDTALK/NOTALK magic words
-		if ( self::hasPagePropCached( $title, 'notalk' ) ) {
+		if ( static::hasPagePropCached( $title, 'notalk' ) ) {
 			return false;
 		}
 		if (
 			$feature === static::REPLYTOOL &&
-			self::hasPagePropCached( $title, 'archivedtalk' )
+			static::hasPagePropCached( $title, 'archivedtalk' )
 		) {
 			return false;
 		}
@@ -336,8 +336,11 @@ class HookUtils {
 			$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 			// Visual enhancements are only enabled on talk namespaces (T325417) ...
 			return $title->isTalkPage() || (
-				// ... or __NEWSECTIONLINK__ pages (T331635)
-				static::hasPagePropCached( $title, 'newsectionlink' ) &&
+				// ... or __NEWSECTIONLINK__ (T331635) or __ARCHIVEDTALK__ (T374198) pages
+				(
+					static::hasPagePropCached( $title, 'newsectionlink' ) ||
+					static::hasPagePropCached( $title, 'archivedtalk' )
+				) &&
 				// excluding the main namespace, unless it has been configured for signatures
 				(
 					!$title->inNamespace( NS_MAIN ) ||
