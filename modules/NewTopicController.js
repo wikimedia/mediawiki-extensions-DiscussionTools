@@ -28,6 +28,7 @@ function NewTopicController( $pageContainer, threadItem, threadItemSet, storage 
 	} );
 	this.sectionTitle.$input.attr( 'aria-label', mw.msg( 'discussiontools-newtopic-placeholder-title' ) );
 	this.sectionTitleField = new OO.ui.FieldLayout( this.sectionTitle, {
+		classes: [ 'ext-discussiontools-ui-newTopic-sectionTitle-field' ],
 		align: 'top'
 	} );
 	this.prevTitleText = '';
