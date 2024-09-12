@@ -254,6 +254,31 @@ class ThreadItemStore {
 			return $this->findNewestRevisionsByQuery( __METHOD__ . ' case 3', $itemIds[ 0 ] );
 		}
 
+		// 4. If there are no matches, check if the "talk" page has ever had any discussions
+		//    on it (comments, not just headings). If not then throw an error instead of
+		//    returning an empty list. This prevents the "topic could not be found" message
+		//    from showing in the frontend. (T374598)
+		$anyItemsInPageHistoryQueryBuilder = $this->getIdsNamesBuilder()
+			->caller( __METHOD__ . ' case 4' )
+			->join( 'revision', null, [ 'rev_id = itr_revision_id' ] )
+			// Only comments, as non-talk headings are recorded
+			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
+				'c-',
+				$dbw->anyString()
+			) ) )
+			// On the specified page ID
+			->where( [ 'rev_page' => $articleId ] )
+			->field( 'itid_itemid' );
+
+		// Check there is only one result in the sub-query
+		$itemIds = $anyItemsInPageHistoryQueryBuilder->fetchFieldValues();
+		if ( count( $itemIds ) === 0 ) {
+			throw new NormalizedException(
+				"Page {page} has never contained any discussions",
+				[ 'page' => $articleId ]
+			);
+		}
+
 		return [];
 	}
 
