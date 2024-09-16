@@ -20,5 +20,6 @@
 	"discussiontools-replywidget-mode-source": "Жерело",
 	"discussiontools-replywidget-mode-visual": "Візуал",
 	"discussiontools-replywidget-placeholder-reply": "Одповідь {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Одповісти"
+	"discussiontools-replywidget-reply": "Одповісти",
+	"discussiontools-topicheader-latestcomment": "Послїднє повідомлїня: $1"
 }

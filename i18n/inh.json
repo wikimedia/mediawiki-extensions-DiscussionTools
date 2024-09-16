@@ -6,6 +6,7 @@
 	},
 	"discussiontools-defaultsummary-reply": "Жоп",
 	"discussiontools-emptystate-button": "ДӀадоладе къамаьл",
+	"discussiontools-emptystate-title-user": "Доладе {{PAGENAME}} {{GENDER:{{PAGENAME}}|яхачунца}} къамаьл",
 	"discussiontools-replylink": "жоп",
 	"discussiontools-replywidget-advanced": "Кхы а",
 	"discussiontools-replywidget-cancel": "Эшац",
