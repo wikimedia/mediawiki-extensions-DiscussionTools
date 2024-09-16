@@ -7,6 +7,7 @@
 	"apierror-discussiontools-commentid-notfound": "Не пронајдов коментар со назнаката „$1“.",
 	"apierror-discussiontools-commentname-ambiguous": "Пронајдов повеќе коментари со називот „$1“; се бара <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "Не пронајдов коментар со назив „$1“.",
+	"apierror-discussiontools-findcomment-pagenevertalk": "Страницата никогаш не содржела разговори.",
 	"apierror-discussiontools-formtoken-used": "Коментарот е веќе објавен. Превчитајте ја страницата за да го видите.",
 	"apierror-discussiontools-subscription-failed-add": "Не можев да ве претплатам на темава.",
 	"apierror-discussiontools-subscription-failed-remove": "Не можев да ве отпишам од темава.",

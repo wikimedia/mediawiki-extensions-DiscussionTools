@@ -7,6 +7,7 @@
 	"apierror-discussiontools-commentid-notfound": "Non se atopou o comentario co identificador \"$1\".",
 	"apierror-discussiontools-commentname-ambiguous": "Atopáronse varios comentarios co nome \"$1\"; cómpre o parámetro <var>commentid</var>.",
 	"apierror-discussiontools-commentname-notfound": "Non se atopou o comentario co nome \"$1\".",
+	"apierror-discussiontools-findcomment-pagenevertalk": "A páxina nunca contivo ningunha conversa.",
 	"apierror-discussiontools-formtoken-used": "O comentario xa está publicado. Recarga a páxina para velo.",
 	"apierror-discussiontools-subscription-failed-add": "Non te puideches subscribir ao fío.",
 	"apierror-discussiontools-subscription-failed-remove": "Non puideches cancelar a subscrición ao fío.",
