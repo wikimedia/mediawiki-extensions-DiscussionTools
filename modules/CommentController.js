@@ -230,6 +230,13 @@ CommentController.prototype.onVisibilityChange = function () {
 CommentController.prototype.startPoll = function ( nextDelay ) {
 	nextDelay = nextDelay || 5000;
 
+	if ( !(
+		this.threadItem instanceof CommentItem &&
+		this.threadItem.getSubscribableHeading()
+	) ) {
+		return;
+	}
+
 	const threadItemId = this.threadItem.id;
 	const subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
 	let aborted = false;
