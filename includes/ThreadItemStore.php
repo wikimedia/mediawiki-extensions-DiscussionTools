@@ -268,12 +268,13 @@ class ThreadItemStore {
 			) ) )
 			// On the specified page ID
 			->where( [ 'rev_page' => $articleId ] )
-			->field( 'itid_itemid' );
+			->field( 'itid_itemid' )
+			->limit( 1 );
 
 		// Check there is only one result in the sub-query
 		$itemIds = $anyItemsInPageHistoryQueryBuilder->fetchFieldValues();
 		if ( count( $itemIds ) === 0 ) {
-			throw new NormalizedException(
+			throw new PageNeverHadThreadsException(
 				"Page {page} has never contained any discussions",
 				[ 'page' => $articleId ]
 			);

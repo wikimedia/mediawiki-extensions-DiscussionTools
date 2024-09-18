@@ -8,7 +8,6 @@ use ApiUsageException;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFormatter;
-use Wikimedia\NormalizedException\NormalizedException;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiDiscussionToolsFindComment extends ApiBase {
@@ -66,7 +65,7 @@ class ApiDiscussionToolsFindComment extends ApiBase {
 						$byHeading = $this->threadItemStore->findNewestRevisionsByHeading(
 							$heading, $articleId, $title->getTitleValue()
 						);
-					} catch ( NormalizedException $e ) {
+					} catch ( PageNeverHadThreadsException $e ) {
 						$this->dieWithError( [ 'apierror-discussiontools-findcomment-pagenevertalk' ] );
 					}
 					foreach ( $byHeading as $item ) {
