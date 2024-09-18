@@ -20,10 +20,12 @@
 	"discussiontools-pagetitle-newtopic": "Заложіня новой темы на $1",
 	"discussiontools-pagetitle-reply": "Одповідь на $1",
 	"discussiontools-permalink-comment-copied": "Одказы на повідомлїня копіровано в кліпборд.",
+	"discussiontools-replybutton": "{{GENDER:|Одповісти}}",
 	"discussiontools-replylink": "одповісти",
 	"discussiontools-replywidget-cancel": "Зрушыти",
 	"discussiontools-replywidget-mode-source": "Жерело",
 	"discussiontools-replywidget-mode-visual": "Візуал",
 	"discussiontools-replywidget-placeholder-reply": "Одповідь {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "{{GENDER:|Одповісти}}"
+	"discussiontools-replywidget-reply": "{{GENDER:|Одповісти}}",
+	"discussiontools-topicheader-latestcomment": "Послїднє повідомлїня: $1"
 }

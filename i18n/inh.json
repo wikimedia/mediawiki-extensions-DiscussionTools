@@ -24,6 +24,7 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|саг}} ва къамаьл дара юкъе",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|хоам}}",
 	"discussiontools-topicheader-latestcomment": "ТӀеххьара хоам: $1",
+	"discussiontools-topicsubscription-action-subscribe-button": "Язле",
 	"discussiontools-topicsubscription-button-subscribe": "дӀатӀаязле",
 	"discussiontools-topicsubscription-button-subscribe-label": "ДӀатӀаязле",
 	"discussiontools-topicsubscription-button-unsubscribe": "тӀерахьаязле",
