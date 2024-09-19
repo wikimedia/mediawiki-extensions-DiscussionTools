@@ -4,5 +4,9 @@
 			"Muisha wiki hke"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Xubitsa"
+	"discussiontools-defaultsummary-reply": "Xubitsa",
+	"discussiontools-replylink": "{{GENDER:|xubitsa}}",
+	"discussiontools-replywidget-mode-source": "Xoko",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Xubitsa}} {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "{{GENDER:|Xubitsa}}"
 }
