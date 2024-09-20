@@ -410,9 +410,12 @@ class CommentFormatter {
 				->addTrackingCategory( $pout, 'discussiontools-comments-before-first-heading-category', $title );
 		}
 
-		if ( count( $threadItems ) === 0 ) {
-			$pout->setExtensionData( 'DiscussionTools-isEmptyTalkPage', true );
-		}
+		// FIXME: Similar to `setJsConfigVar` below, this will eventually throw
+		// from Parsoid's calls to the legacy parser for extension content parsing
+		$pout->setExtensionData(
+			'DiscussionTools-isEmptyTalkPage',
+			count( $threadItems ) === 0
+		);
 
 		$threadsJSON = array_map( static function ( ContentThreadItem $item ) {
 			return $item->jsonSerialize( true );
