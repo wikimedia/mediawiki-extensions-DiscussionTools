@@ -28,5 +28,6 @@
 	"discussiontools-replywidget-mode-visual": "Візуал",
 	"discussiontools-replywidget-placeholder-reply": "Одповідь {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "{{GENDER:|Одповісти}}",
-	"discussiontools-topicheader-latestcomment": "Послїднє повідомлїня: $1"
+	"discussiontools-topicheader-latestcomment": "Послїднє повідомлїня: $1",
+	"discussiontools-topicsubscription-button-subscribe": "підписати ся"
 }

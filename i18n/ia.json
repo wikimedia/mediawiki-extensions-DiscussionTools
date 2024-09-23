@@ -55,6 +55,7 @@
 	"discussiontools-limitreport-timeusage": "Uso de tempore de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|secunda|secundas}}",
 	"discussiontools-newtopic-missing-title": "Per favor forni un titulo pro tu topico de discussion.",
+	"discussiontools-newtopic-missing-title-prompt": "Tu non ha fornite un titulo pro tu topico de discussion. Es tu secur de voler adder iste topico sin titulo?",
 	"discussiontools-newtopic-placeholder-title": "Subjecto",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Abonar me",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Abona te pro reciper notificationes quando nove topicos es comenciate sur iste pagina.",
