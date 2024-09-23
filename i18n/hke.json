@@ -4,5 +4,15 @@
 			"Muisha wiki hke"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Xubitsa"
+	"discussiontools-defaultsummary-reply": "Xubitsa",
+	"discussiontools-replywidget-advanced": "Ixondwere",
+	"discussiontools-replywidget-cancel": "Fuluka",
+	"discussiontools-replywidget-mode-source": "Xoko",
+	"discussiontools-replywidget-summary": "Kaleke",
+	"discussiontools-replywidget-watchthis": "Ongerera akashashali kano kwa [[Special:Watchlist|Mutondeko wa byonikakulikira]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|mundu yakubisa|bandu babakubisa}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|muanikire|mianikire}}",
+	"discussiontools-topicheader-latestcomment": "Mianikire yoyameletwa hake",
+	"discussiontools-topicsubscription-button-subscribe": "iandikise",
+	"discussiontools-topicsubscription-button-subscribe-label": "Iandikise"
 }
