@@ -655,12 +655,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ext-discussiontools-init-replylink-open {
+	/* stylelint-disable selector-class-pattern */
 	.ext-discussiontools-emptystate,
-	.mw-body-content > .mw-message-box-warning {
+	.mw-body-content > .cdx-message--warning {
 		// Top level warnings, such as "User account --- is not registered" will re-apppear
 		// in the new topic tool, so we can hide the original. (T289354#7312789)
 		display: none;
 	}
+	/* stylelint-enable selector-class-pattern */
 }
 
 .mw-mf.ext-discussiontools-emptystate-shown {
