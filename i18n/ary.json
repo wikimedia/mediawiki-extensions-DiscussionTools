@@ -14,10 +14,10 @@
 	"discussiontools-emptystate-title-user": "بدا لمداكرة {{GENDER:{{PAGENAME}}|معا}} {{PAGENAME}}",
 	"discussiontools-pageframe-latestcomment": "التعليق اللخراني: $1 ديال $2 ف لموضوع $3",
 	"discussiontools-pagetitle-newtopic": "بدو د موضوع جديد على $1",
-	"discussiontools-replylink": "{{GENDER:|ردّ|ردّي}}",
+	"discussiontools-replylink": "{{GENDER:|جاوب|جاوبي}}",
 	"discussiontools-replywidget-cancel": "لغي",
 	"discussiontools-replywidget-mode-source": "لمصدر",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|ردَّ|ردِّي}} على {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
+	"discussiontools-replywidget-reply": "{{GENDER:|جاوب|جاوبي}}",
 	"discussiontools-replywidget-watchthis": "زيد هاد الصفحة ل [[Special:Watchlist|الليستة د لحضيان]]"
 }

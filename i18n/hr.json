@@ -11,10 +11,10 @@
 		]
 	},
 	"discussiontools": "Alati za raspravu",
-	"discussiontools-autotopicsubpopup-body": "Primit ćete obavijest kada netko objavi novi komentar u ovoj raspravi. Postavke obavijesti možete prilagoditi u postavkama.",
+	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Primit ćete}} obavijest kada netko objavi novi komentar u ovoj raspravi. Postavke obavijesti možete prilagoditi u postavkama.",
 	"discussiontools-autotopicsubpopup-dismiss": "U redu, razumijem",
 	"discussiontools-autotopicsubpopup-preferences": "Uredi postavke",
-	"discussiontools-autotopicsubpopup-title": "Odsad pratite ovu temu!",
+	"discussiontools-autotopicsubpopup-title": "Odsad {{GENDER:|pratite}} ovu temu!",
 	"discussiontools-defaultsummary-reply": "Odgovor",
 	"discussiontools-desc": "Alati za poboljšanje stranica za razgovor.",
 	"discussiontools-emptystate-button": "Započnite novu raspravu",

@@ -14,6 +14,7 @@
 	"discussiontools-emptystate-title": "Зачати діскусію о {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Вітайте на діскусній сторінцї",
 	"discussiontools-findcomment-label-search": "Глядати",
+	"discussiontools-findcomment-noresults": "Нїт резултатів.",
 	"discussiontools-notification-subscribed-new-comment-view": "Зобразити повідомлїня",
 	"discussiontools-pageframe-latestcomment": "Послїдне повідомлїня: $1 од $2 в темі $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Послїдне повідомлїня: $1 од $2",
@@ -27,5 +28,6 @@
 	"discussiontools-replywidget-mode-visual": "Візуал",
 	"discussiontools-replywidget-placeholder-reply": "Одповідь {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "{{GENDER:|Одповісти}}",
-	"discussiontools-topicheader-latestcomment": "Послїднє повідомлїня: $1"
+	"discussiontools-topicheader-latestcomment": "Послїднє повідомлїня: $1",
+	"discussiontools-topicsubscription-button-subscribe": "підписати ся"
 }
