@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Constraque",
 			"Gramo6"
 		]
@@ -23,7 +24,7 @@
 	"discussiontools-pagetitle-reply": "Одповідь на $1",
 	"discussiontools-permalink-comment-copied": "Одказы на повідомлїня копіровано в кліпборд.",
 	"discussiontools-replybutton": "{{GENDER:|Одповісти}}",
-	"discussiontools-replylink": "одповісти",
+	"discussiontools-replylink": "{{GENDER:|одповісти}}",
 	"discussiontools-replywidget-cancel": "Зрушыти",
 	"discussiontools-replywidget-mode-source": "Жерело",
 	"discussiontools-replywidget-mode-visual": "Візуал",

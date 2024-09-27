@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Winston Sung"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "回复",
-	"discussiontools-replylink": "回复",
+	"discussiontools-replylink": "{{GENDER:|回复}}",
 	"discussiontools-replywidget-advanced": "高级",
 	"discussiontools-replywidget-cancel": "取消",
 	"discussiontools-replywidget-mode-source": "代码",

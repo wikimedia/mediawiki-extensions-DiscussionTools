@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Krol111"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ôdpowiydź",
-	"discussiontools-replylink": "ôdpowiydz",
+	"discussiontools-replylink": "{{GENDER:|ôdpowiydz}}",
 	"discussiontools-replywidget-advanced": "Rozszyrzōne",
 	"discussiontools-replywidget-cancel": "Ôdciep",
 	"discussiontools-replywidget-mode-source": "Zdrzōdło",

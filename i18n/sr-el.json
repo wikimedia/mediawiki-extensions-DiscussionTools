@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Kizule",
 			"Matma Rex"
 		]
@@ -63,8 +64,8 @@
 	"discussiontools-preference-sourcemodetoolbar": "Uređivački alati u izvornom režimu",
 	"discussiontools-preference-topicsubscription": "Praćenje tema",
 	"discussiontools-preference-visualenhancements": "Prikaži diskusionu aktivnost",
-	"discussiontools-replybutton": "Odgovori",
-	"discussiontools-replylink": "odgovori",
+	"discussiontools-replybutton": "{{GENDER:|Odgovori}}",
+	"discussiontools-replylink": "{{GENDER:|odgovori}}",
 	"discussiontools-replywidget-abandon": "Želite li zaista da odbacite komentar koji ste započeli pisati?",
 	"discussiontools-replywidget-abandon-discard": "Odbaci komentar",
 	"discussiontools-replywidget-abandon-keep": "Nastavi pisanje",

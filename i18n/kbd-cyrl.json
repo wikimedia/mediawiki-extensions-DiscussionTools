@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Rhdtranslate"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Жэуап",
-	"discussiontools-replylink": "жэуап етын",
+	"discussiontools-replylink": "{{GENDER:|жэуап етын}}",
 	"discussiontools-replywidget-advanced": "Нэхъыбэу",
 	"discussiontools-replywidget-cancel": "ЩӀегъэгъуэжын",
 	"discussiontools-replywidget-mode-source": "Код",

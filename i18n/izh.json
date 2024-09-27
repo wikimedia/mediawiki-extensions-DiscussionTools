@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Thadh"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Vassus",
-	"discussiontools-replylink": "vassata",
+	"discussiontools-replylink": "{{GENDER:|vassata}}",
 	"discussiontools-replywidget-preview": "Proveroittaa",
 	"discussiontools-replywidget-reply": "Vassata"
 }

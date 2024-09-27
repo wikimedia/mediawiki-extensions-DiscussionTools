@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"F Samaritani",
 			"Jaime Sulas",
 			"Samaritanif"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Arrespundi",
-	"discussiontools-replylink": "arrespundi",
+	"discussiontools-replylink": "{{GENDER:|arrespundi}}",
 	"discussiontools-replywidget-advanced": "Avantzadas",
 	"discussiontools-replywidget-cancel": "Annudda",
 	"discussiontools-replywidget-mode-source": "Mitza",

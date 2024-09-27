@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Awangba Mangang",
 			"Luwangcha"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ",
-	"discussiontools-replylink": "ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ",
+	"discussiontools-replylink": "{{GENDER:|ꯄꯥꯎꯈꯨꯝ ꯄꯤꯕ}}",
 	"discussiontools-replywidget-abandontopic-keep": "ꯃꯈꯥ ꯇꯥꯅ ꯢꯌꯨ",
 	"discussiontools-replywidget-advanced": "ꯈꯨꯃꯥꯡꯆꯥꯎꯁꯤꯜꯂꯕ",
 	"discussiontools-replywidget-cancel": "ꯇꯣꯛꯄ",

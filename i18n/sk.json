@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Dušan Kreheľ",
 			"Luky001",
 			"Matroxko",
@@ -38,7 +39,7 @@
 	"discussiontools-preference-summary": "Ďalšie informácie o týchto funkciách nájdete na [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary tejto stránke].",
 	"discussiontools-preference-topicsubscription": "Zapnúť funkciu sledovania tém",
 	"discussiontools-preference-topicsubscription-help": "Táto funkcia umožňuje prihlásiť sa na odber a dostávať upozornenia na komentáre k jednotlivým témam.",
-	"discussiontools-replylink": "odpovedať",
+	"discussiontools-replylink": "{{GENDER:|odpovedať}}",
 	"discussiontools-replywidget-abandon-discard": "Zahodiť komentár",
 	"discussiontools-replywidget-abandon-keep": "Pokračovať v písaní",
 	"discussiontools-replywidget-abandontopic-discard": "Zahodiť tému",
