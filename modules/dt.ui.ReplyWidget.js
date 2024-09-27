@@ -204,9 +204,11 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.$footer.append(
 		$( '<p>' ).addClass( 'plainlinks' ).html(
 			this.isNewTopic ? licenseMessages.newtopic : licenseMessages.reply
-		),
-		$footerLinks
+		)
 	);
+	if ( $footerLinks.children().length ) {
+		this.$footer.append( $footerLinks );
+	}
 	this.$actionsWrapper.append( this.$footer, this.$actions );
 
 	this.viewportScrollContainer = OO.ui.Element.static.getClosestScrollableContainer( document.body );
