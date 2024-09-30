@@ -15,9 +15,20 @@
 	"discussiontools-pageframe-latestcomment": "التعليق اللخراني: $1 ديال $2 ف لموضوع $3",
 	"discussiontools-pagetitle-newtopic": "بدو د موضوع جديد على $1",
 	"discussiontools-replylink": "{{GENDER:|ردّ|ردّي}}",
+	"discussiontools-replywidget-advanced": "ختيارات قافزين",
 	"discussiontools-replywidget-cancel": "لغي",
 	"discussiontools-replywidget-mode-source": "لمصدر",
+	"discussiontools-replywidget-mode-visual": "شوفان",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|ردَّ|ردِّي}} على {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "پريڤيو",
 	"discussiontools-replywidget-reply": "{{GENDER:|ردّ|ردّي}}",
-	"discussiontools-replywidget-watchthis": "زيد هاد الصفحة ل [[Special:Watchlist|الليستة د لحضيان]]"
+	"discussiontools-replywidget-summary": "ملخص",
+	"discussiontools-replywidget-watchthis": "زيد هاد الصفحة ل [[Special:Watchlist|الليستة د لحضيان]]",
+	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|كتاتبي واحد|$1 واحد}} ف لمداكرة",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|تعليق|تعليقات}}",
+	"discussiontools-topicheader-latestcomment": "التعليق اللخر: $1",
+	"discussiontools-topicsubscription-button-subscribe": "{{GENDER:|تأبونا|تأبوناي}}",
+	"discussiontools-topicsubscription-button-subscribe-label": "{{GENDER:|تأبونا|تأبوناي}}",
+	"discussiontools-topicsubscription-button-unsubscribe": "{{GENDER:|تديزابونا|تديزابوناي}}",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "{{GENDER:|تديزابونا|تديزابوناي}}"
 }
