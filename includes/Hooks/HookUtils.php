@@ -513,7 +513,7 @@ class HookUtils {
 				// When the new topic tool will be opened (usually when clicking the 'Add topic' tab)
 				static::shouldOpenNewTopicTool( $context ) ||
 				// In read mode (accessible for non-existent pages by clicking 'Cancel' in editor)
-				$req->getRawVal( 'action', 'view' ) === 'view'
+				( $req->getRawVal( 'action' ) ?? 'view' ) === 'view'
 			) &&
 			// Only in talk namespaces, not including other namespaces that isAvailableForTitle() allows
 			$title->isTalkPage() &&
