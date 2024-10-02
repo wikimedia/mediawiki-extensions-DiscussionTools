@@ -67,7 +67,7 @@ NewTopicController.static.suppressedEditNotices = [
 /**
  * @inheritdoc
  */
-NewTopicController.prototype.setup = function ( mode ) {
+NewTopicController.prototype.setup = function () {
 	const rootScrollable = OO.ui.Element.static.getRootScrollableElement( document.body );
 
 	// Insert directly after the page content on already existing pages
@@ -82,7 +82,7 @@ NewTopicController.prototype.setup = function ( mode ) {
 		this.$pageContainer.append( this.container.$element );
 	}
 
-	NewTopicController.super.prototype.setup.call( this, mode );
+	NewTopicController.super.prototype.setup.apply( this, arguments );
 
 	if ( this.threadItem.preloadtitle ) {
 		this.sectionTitle.setValue( this.threadItem.preloadtitle );

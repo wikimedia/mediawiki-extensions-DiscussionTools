@@ -109,15 +109,18 @@ CommentController.static.initType = 'page';
 /**
  * Create and setup the reply widget
  *
- * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
- * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
- * @param {boolean} [suppressNotifications] Don't notify the user if recovering auto-save
+ * @param {Object} [options]
+ * @param {string} [options.mode] Optionally force a mode, 'visual' or 'source'
+ * @param {boolean} [options.hideErrors] Suppress errors, e.g. when restoring auto-save
+ * @param {boolean} [options.suppressNotifications] Don't notify the user if recovering auto-save
  */
-CommentController.prototype.setup = function ( mode, hideErrors, suppressNotifications ) {
+CommentController.prototype.setup = function ( options ) {
 	const threadItem = this.getThreadItem();
 
-	if ( mode === undefined ) {
-		mode = mw.user.options.get( 'discussiontools-editmode' ) ||
+	options = options || {};
+
+	if ( options.mode === undefined ) {
+		options.mode = mw.user.options.get( 'discussiontools-editmode' ) ||
 			( defaultVisual ? 'visual' : 'source' );
 	}
 
@@ -127,17 +130,17 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 		mechanism: 'click',
 		integration: 'discussiontools',
 		// eslint-disable-next-line camelcase
-		editor_interface: mode === 'visual' ? 'visualeditor' :
+		editor_interface: options.mode === 'visual' ? 'visualeditor' :
 			( enable2017Wikitext ? 'wikitext-2017' : 'wikitext' )
 	} );
 
 	if ( !this.replyWidgetPromise ) {
 		this.replyWidgetPromise = this.getTranscludedFromSource().then(
-			( commentDetails ) => this.createReplyWidget( commentDetails, { mode: mode } ),
+			( commentDetails ) => this.createReplyWidget( commentDetails, { mode: options.mode } ),
 			( code, data ) => {
 				this.onReplyWidgetTeardown();
 
-				if ( !hideErrors ) {
+				if ( !options.hideErrors ) {
 					OO.ui.alert(
 						code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
 						{ size: 'medium' }
@@ -205,7 +208,7 @@ CommentController.prototype.setup = function ( mode, hideErrors, suppressNotific
 		}
 		$( this.newListItem ).empty().append( replyWidget.$element );
 
-		this.setupReplyWidget( replyWidget, {}, suppressNotifications );
+		this.setupReplyWidget( replyWidget, {}, options.suppressNotifications );
 
 		this.showAndFocus();
 
