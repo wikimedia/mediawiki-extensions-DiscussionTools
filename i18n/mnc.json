@@ -1,8 +1,30 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chulsu463"
+			"Chulsu463",
+			"MiiCii"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "jabumbi"
+	"discussiontools-defaultsummary-reply": "Jabun",
+	"discussiontools-replylink": "{{GENDER:|Jabumbi}}",
+	"discussiontools-replywidget-advanced": "Den jergi",
+	"discussiontools-replywidget-cancel": "Argiyambi",
+	"discussiontools-replywidget-mode-source": "Sekiyen kode",
+	"discussiontools-replywidget-mode-visual": "Tuwabume mutebure",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} de {{GENDER:|jabure}}",
+	"discussiontools-replywidget-preview": "Doigimšome tuwara",
+	"discussiontools-replywidget-reply": "{{GENDER:|Jabun}}",
+	"discussiontools-replywidget-summary": "Šošon",
+	"discussiontools-replywidget-watchthis": "Ere afaha be sini [[Special:Watchlist|tuwakiyara afaha -i iletun]] de nonggibure.",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|niyalma}} leolen de adanahabi",
+	"discussiontools-topicheader-commentcount": "$1{{PLURAL:$1|justan -i werihe medege}}",
+	"discussiontools-topicheader-latestcomment": "Hanciki werihe medege: $1 de selgiyehebi",
+	"discussiontools-topicsubscription-button-subscribe": "Toktobume hūlambi",
+	"discussiontools-topicsubscription-button-subscribe-label": "Toktobume hūlambi",
+	"discussiontools-topicsubscription-button-unsubscribe": "Toktobume hūlara be nakambi",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Toktobume hūlara be nakambi",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|You}} ereci amasi ere jorin de daljingga ice medege be bargiyambi.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Si}} emgeri toktobume hūlahabi!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|You}} ereci amasi ere jorin de daljingga ice medege be bargiyarakū.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|You}} emgeri toktobume hūlara be nakahabi."
 }

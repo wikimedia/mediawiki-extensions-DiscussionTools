@@ -3,11 +3,12 @@
 		"authors": [
 			"Af420",
 			"Ahmed-Najib-Biabani-Ibrahimkhel",
-			"Amjad Khan"
+			"Amjad Khan",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ځوابول",
-	"discussiontools-replylink": "ځوابول",
+	"discussiontools-replylink": "{{GENDER:|ځوابول}}",
 	"discussiontools-replywidget-advanced": "پرمختللی",
 	"discussiontools-replywidget-cancel": "ناگارل",
 	"discussiontools-replywidget-mode-source": "سرچينه",

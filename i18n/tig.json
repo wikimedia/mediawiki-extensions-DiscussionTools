@@ -1,19 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bbeshir"
+			"Bbeshir",
+			"IdrisSeid",
+			"Kassala"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "ሰኒ, ፋሃምኮ",
 	"discussiontools-defaultsummary-reply": "በሊስ",
+	"discussiontools-emptystate-button": "ህድግ ኣንብት",
+	"discussiontools-findcomment-label-search": "ሕዘው",
 	"discussiontools-replylink": "{{GENDER:|ብለስ}}",
 	"discussiontools-replywidget-advanced": "ለትቀደማ",
 	"discussiontools-replywidget-cancel": "ኣትርፍ",
 	"discussiontools-replywidget-mode-source": "መስደር",
+	"discussiontools-replywidget-mode-visual": "ለልትርኤ",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|ብለስ/ሲ}} ዲብ {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "{{GENDER:|ብለስ}}",
 	"discussiontools-replywidget-summary": "ሙለኸስ",
+	"discussiontools-replywidget-watchthis": "እላ ገጽ ዲብ [[Special:Watchlist|watchlist]] ናይኩም ወሱካ",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ነፈር|ኣዳም}} ዲብ ህድግ",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ታዕሊቅ|ታዕሊቃት}}",
 	"discussiontools-topicheader-latestcomment": "ላሓደሳ ታዕሊቅ: $1",
 	"discussiontools-topicsubscription-button-subscribe": "መዝገብ",
 	"discussiontools-topicsubscription-button-subscribe-label": "መዝገብ",
 	"discussiontools-topicsubscription-button-unsubscribe": "መዝገባ ወርከዮት",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "መዝገባ ወርከዮት"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "መዝገባ ወርከዮት",
+	"discussiontools-topicsubscription-pager-page": "ገጽ",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "መዝገባ ወርከዮት"
 }

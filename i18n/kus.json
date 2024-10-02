@@ -7,7 +7,8 @@
 			"Musahfm",
 			"WINDOL",
 			"Awinimi",
-			"Mozanky"
+			"Mozanky",
+			"Poasana Anabah"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|fʋ}} na paam tiɛnr labaar saŋa kanɛ ka sɔ' zaŋ labapaal niŋ sɔnsʋg kaŋa ni. Fʋ tʋn'e maali fʋ tiɛnr labaar la zi'esim fʋ bɔɔdim pʋʋgin",
@@ -108,7 +109,7 @@
 	"discussiontools-preference-visualenhancements": "Bigisim sɔsʋg tʋʋma",
 	"discussiontools-preference-visualenhancements-help": "Nwa na sʋŋ lakir pian'ad paal nɛɛnsim linɛ na paas labaar zaŋi tʋʋma sɔnsʋg wusa pʋʋgin",
 	"discussiontools-replybutton": "{{GENDER:|Reply}}",
-	"discussiontools-replylink": "lɛbsim",
+	"discussiontools-replylink": "{{GENDER:|lɛbsim}}",
 	"discussiontools-replywidget-abandon": "Fʋ {{GENDER:|you}} tis sida ye fʋ bɔɔd ye fʋ bas lɛbisʋg la ka fʋ gʋlisid la?",
 	"discussiontools-replywidget-abandon-discard": "Basim lɛbisʋg",
 	"discussiontools-replywidget-abandon-keep": "Kem tuoni gʋlisid",

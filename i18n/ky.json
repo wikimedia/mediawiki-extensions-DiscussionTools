@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bosogo"
+			"Bosogo",
+			"Amire80"
 		]
 	},
 	"discussiontools": "Талкуу куралдары",
@@ -22,7 +23,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Жазылдыңыз !",
 	"discussiontools-postedit-confirmation-topicadded": "Темаңыз кошулду.",
 	"discussiontools-replybutton": "{{GENDER:|Жооп берүү}}",
-	"discussiontools-replylink": "жооп берүү",
+	"discussiontools-replylink": "{{GENDER:|жооп берүү}}",
 	"discussiontools-replywidget-advanced": "Кеңейтүү",
 	"discussiontools-replywidget-cancel": "Жокко чыгаруу",
 	"discussiontools-replywidget-loading": "Жүктөлүүдө...",

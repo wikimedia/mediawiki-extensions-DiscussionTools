@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Samatics"
+			"Samatics",
+			"Amire80",
+			"Mel618"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ansa",
-	"discussiontools-replylink": "ansa-am",
+	"discussiontools-replylink": "{{GENDER:|ansa-am}}",
 	"discussiontools-replywidget-advanced": "Di one wey big pas",
 	"discussiontools-replywidget-cancel": "Kansu-am",
 	"discussiontools-replywidget-mode-source": "Orijin",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"JinJian"
+			"JinJian",
+			"Amire80"
 		]
 	},
-	"discussiontools-replylink": "igbaton",
+	"discussiontools-replylink": "{{GENDER:|igbaton}}",
 	"discussiontools-replywidget-cancel": "Igbaliwaray",
 	"discussiontools-replywidget-mode-source": "Tinikangan",
 	"discussiontools-replywidget-mode-visual": "Biswal",

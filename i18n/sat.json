@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"ᱥᱟᱹᱜᱩᱱ ᱗"
+			"ᱥᱟᱹᱜᱩᱱ ᱗",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ᱛᱮᱞᱟ",
-	"discussiontools-replylink": "ᱛᱮᱞᱟ"
+	"discussiontools-replylink": "{{GENDER:|ᱛᱮᱞᱟ}}"
 }

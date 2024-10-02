@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bgo eiu"
+			"Bgo eiu",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "جواب",
-	"discussiontools-replylink": "جواب دیو",
+	"discussiontools-replylink": "{{GENDER:|جواب دیو}}",
 	"discussiontools-replywidget-advanced": "اضافی",
 	"discussiontools-replywidget-cancel": "رد کرو",
 	"discussiontools-replywidget-mode-source": "ماخذ",

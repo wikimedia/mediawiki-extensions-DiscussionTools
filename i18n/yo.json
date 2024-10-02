@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Demmy"
+			"Demmy",
+			"Amire80"
 		]
 	},
-	"discussiontools-replylink": "ìdáhùn",
+	"discussiontools-replylink": "{{GENDER:|ìdáhùn}}",
 	"discussiontools-replywidget-cancel": "Fagilé",
 	"discussiontools-replywidget-mode-source": "Orísun",
 	"discussiontools-replywidget-placeholder-reply": "Ìdáhùn sí {{BIDI:$1}}",
