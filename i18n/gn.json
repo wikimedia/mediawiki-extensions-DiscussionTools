@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"P. S. F. Freitas"
+			"P. S. F. Freitas",
+			"Amire80"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Oĩ porã, aikuaáma",
@@ -11,7 +12,7 @@
 	"discussiontools-emptystate-button": "Eñepyrũ peteĩ ñemongeta",
 	"discussiontools-findcomment-label-search": "Eheka",
 	"discussiontools-findcomment-noresults": "Ndaipóri mba'e rehekáva.",
-	"discussiontools-replylink": "embohovái",
+	"discussiontools-replylink": "{{GENDER:|embohovái}}",
 	"discussiontools-replywidget-cancel": "Eheja",
 	"discussiontools-replywidget-mode-source": "Kuatia reñoiha",
 	"discussiontools-replywidget-placeholder-reply": "Embohovái {{BIDI:$1}}-pe",

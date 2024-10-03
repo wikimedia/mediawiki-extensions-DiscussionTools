@@ -13,7 +13,8 @@
 			"Phjtieudoc",
 			"Pisceskaze",
 			"Vinhtantran",
-			"SongNgu.xyz"
+			"SongNgu.xyz",
+			"Amire80"
 		]
 	},
 	"discussiontools": "Công cụ thảo luận",
@@ -99,8 +100,8 @@
 	"discussiontools-preference-topicsubscription-help": "Cho phép đăng ký nhận thông báo khi có bình luận trong một chủ đề cụ thể.",
 	"discussiontools-preference-visualenhancements": "Hiện các hoạt động thảo luận",
 	"discussiontools-preference-visualenhancements-help": "Nó sẽ bật giao diện trang thảo luận mới trong đó có thông tin về các hoạt động đã diễn ra tại mỗi thảo luận.",
-	"discussiontools-replybutton": "Trả lời",
-	"discussiontools-replylink": "trả lời",
+	"discussiontools-replybutton": "{{GENDER:|Trả lời}}",
+	"discussiontools-replylink": "{{GENDER:|trả lời}}",
 	"discussiontools-replywidget-abandon": "Bạn có chắc chắn muốn xóa bình luận bạn đang viết?",
 	"discussiontools-replywidget-abandon-discard": "Xóa bình luận",
 	"discussiontools-replywidget-abandon-keep": "Tiếp tục viết",

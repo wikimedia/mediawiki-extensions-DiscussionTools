@@ -4,7 +4,8 @@
 			"Les Meloures",
 			"Robby",
 			"Soued031",
-			"Volvox"
+			"Volvox",
+			"Amire80"
 		]
 	},
 	"discussiontools": "Diskussiouns-Geschier",
@@ -59,8 +60,8 @@
 	"discussiontools-preference-sourcemodetoolbar-help": "Dëst setzt am Quelltextmodus eng Läischt mat Geschier fir d'Funktiounen 'Séier äntweren' a 'Sujete séier derbäisetzen' derbäi an där och Tastekombinatioune fir d'Upingen an Derbäisetze vu Linke mat dra sinn.",
 	"discussiontools-preference-summary": "Dir kënnt méi iwwer dës Funktionalitéite gewuer gi wann Dir de [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary Resumé vun der Funktioun] liest.",
 	"discussiontools-preference-topicsubscription": "Abonnement fir Theemen aktivéieren",
-	"discussiontools-replybutton": "Äntweren",
-	"discussiontools-replylink": "äntweren",
+	"discussiontools-replybutton": "{{GENDER:|Äntweren}}",
+	"discussiontools-replylink": "{{GENDER:|äntweren}}",
 	"discussiontools-replywidget-abandon": "Sidd Dir sécher datt Dir d'Bemierkung déi Dir elo schreift verwerfe wëllt?",
 	"discussiontools-replywidget-abandon-discard": "Bemierkung opginn",
 	"discussiontools-replywidget-abandon-keep": "Virufuere mat Schreiwen",

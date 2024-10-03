@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Amire80"
 		]
 	},
-	"discussiontools-replylink": "wótegroniś",
+	"discussiontools-replylink": "{{GENDER:|wótegroniś}}",
 	"discussiontools-replywidget-cancel": "Pśetergnuś",
 	"discussiontools-replywidget-mode-source": "Žrědło",
 	"discussiontools-replywidget-reply": "Wótegroniś"

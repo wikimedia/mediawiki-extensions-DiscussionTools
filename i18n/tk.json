@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"TayfunEt.",
-			"Zolgoyo"
+			"Zolgoyo",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Jogap ber",
@@ -11,7 +12,7 @@
 	"discussiontools-newtopicssubscription-button-unsubscribe-tooltip": "Bu sahypada täze mowzuklar açylanda habarnamalary almakdan ýüz öwüriň.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Bu sahypada täze mowzuklar açylanda size habar berilmez.",
 	"discussiontools-notification-added-topic-view": "Mowzugy gör",
-	"discussiontools-replylink": "jogap ber",
+	"discussiontools-replylink": "{{GENDER:|jogap ber}}",
 	"discussiontools-replywidget-advanced": "Giňeldilen",
 	"discussiontools-replywidget-cancel": "Goýbolsun et",
 	"discussiontools-replywidget-mode-source": "Çeşme",

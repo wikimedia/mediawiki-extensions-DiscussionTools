@@ -12,7 +12,8 @@
 			"Mglaser",
 			"Tobi 406",
 			"TomatoCake",
-			"Umherirrender"
+			"Umherirrender",
+			"Amire80"
 		]
 	},
 	"discussiontools": "Diskussions-Werkzeuge",
@@ -116,8 +117,8 @@
 	"discussiontools-preference-topicsubscription-help": "Ermöglicht es dir, Benachrichtigungen über neue Kommentare zu einzelnen Abschnitten zu erhalten.",
 	"discussiontools-preference-visualenhancements": "Diskussionsaktivität anzeigen",
 	"discussiontools-preference-visualenhancements-help": "Aktiviert ein verändertes Aussehen von Diskussionsseiten inklusive zusätzlicher Informationen über die Aktivitäten in jedem Abschnitt.",
-	"discussiontools-replybutton": "Beantworten",
-	"discussiontools-replylink": "Beantworten",
+	"discussiontools-replybutton": "{{GENDER:|Beantworten}}",
+	"discussiontools-replylink": "{{GENDER:|Beantworten}}",
 	"discussiontools-replywidget-abandon": "Bist du sicher, dass du den Kommentar, den du schreibst, verwerfen willst?",
 	"discussiontools-replywidget-abandon-discard": "Kommentar verwerfen",
 	"discussiontools-replywidget-abandon-keep": "Weiter schreiben",

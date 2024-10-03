@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"GastonJeremiah"
+			"GastonJeremiah",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ledgm",
-	"discussiontools-replylink": "{{GENDER:|}}ledg",
+	"discussiontools-replylink": "{{GENDER:|ledg}}",
 	"discussiontools-replywidget-advanced": "bag̈b n nɔngan",
 	"discussiontools-replywidget-cancel": "Saa",
 	"discussiontools-replywidget-mode-source": "Gwɛɛt ka-n red ree",

@@ -7,7 +7,8 @@
 			"Matma Rex",
 			"Milicevic01",
 			"Vlad5250",
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Amire80"
 		]
 	},
 	"discussiontools": "Алатке за разговор",
@@ -102,8 +103,8 @@
 	"discussiontools-preference-topicsubscription": "Праћење тема",
 	"discussiontools-preference-topicsubscription-help": "Додаје опцију прати поред сваке теме.",
 	"discussiontools-preference-visualenhancements": "Прикажи дискусиону активност",
-	"discussiontools-replybutton": "Одговори",
-	"discussiontools-replylink": "одговори",
+	"discussiontools-replybutton": "{{GENDER:|Одговори}}",
+	"discussiontools-replylink": "{{GENDER:|одговори}}",
 	"discussiontools-replywidget-abandon": "Желите ли заиста да одбаците коментар који сте започели писати?",
 	"discussiontools-replywidget-abandon-discard": "Одбаци коментар",
 	"discussiontools-replywidget-abandon-keep": "Настави писање",

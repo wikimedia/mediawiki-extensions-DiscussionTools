@@ -3,11 +3,13 @@
 		"authors": [
 			"Aey Tai Nuea",
 			"咽頭べさ",
-			"AeyTaiNuea"
+			"AeyTaiNuea",
+			"Amire80",
+			"Dai Meng Mao Long"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ",
-	"discussiontools-replylink": "ᥖᥩᥙᥱ ᥑᥪᥢᥰ",
+	"discussiontools-replylink": "{{GENDER:|ᥖᥩᥙᥱ ᥑᥪᥢᥰ}}",
 	"discussiontools-replywidget-advanced": "ᥓᥢᥳ ᥔᥧᥒᥴ",
 	"discussiontools-replywidget-cancel": "ᥟᥛᥱ ᥞᥥᥖᥱ",
 	"discussiontools-replywidget-mode-source": "ᥒᥫᥢ ᥒᥝᥲ ᥖᥪᥢᥰ",

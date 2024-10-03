@@ -5,7 +5,7 @@
 			"Amire80"
 		]
 	},
-	"discussiontools-replylink": "donu",
+	"discussiontools-replylink": "{{GENDER:|donu}}",
 	"discussiontools-replywidget-cancel": "To",
 	"discussiontools-replywidget-mode-source": "Dzɔƒe",
 	"discussiontools-replywidget-reply": "Donu"

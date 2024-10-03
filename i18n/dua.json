@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"EbelleMarcel"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Jalabɛ",
+	"discussiontools-replylink": "{{GENDER:|}}alabɛ",
+	"discussiontools-replywidget-advanced": "pótísɛ Muwasó",
+	"discussiontools-replywidget-cancel": "Ɓáŋga",
+	"discussiontools-replywidget-mode-source": "Tongo",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|}}Alabɛ {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "sɛlɛ jɛnɛ",
+	"discussiontools-replywidget-reply": "{{GENDER:|}}Alabɛ",
+	"discussiontools-replywidget-summary": "O patápɛm",
+	"discussiontools-topicsubscription-button-subscribe": "Tidisɛ dina",
+	"discussiontools-topicsubscription-button-subscribe-label": "Tidisɛ dina",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Wa tidisɛ dina{{GENDER:||e}} !"
+}

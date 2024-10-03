@@ -6,7 +6,8 @@
 			"Batyrbek.kz",
 			"Hedeyohu22",
 			"СеніңШешең",
-			"Casserium"
+			"Casserium",
+			"Amire80"
 		]
 	},
 	"discussiontools": "Талқылау құралдары",
@@ -104,8 +105,8 @@
 	"discussiontools-preference-topicsubscription-help": "Бұл сізге жеке тақырыптардағы пікірлер туралы ескертпелер алуға жазылуға мүмкіндік береді.",
 	"discussiontools-preference-visualenhancements": "Талқылау белсенділіктерін көрсету",
 	"discussiontools-preference-visualenhancements-help": "Бұл жаңа әрбір талқылау белсенділіктері туралы ақпарат қамтылған талқылау беті көрінісін қосады.",
-	"discussiontools-replybutton": "Жауап беру",
-	"discussiontools-replylink": "жауап беру",
+	"discussiontools-replybutton": "{{GENDER:|Жауап беру}}",
+	"discussiontools-replylink": "{{GENDER:|жауап беру}}",
 	"discussiontools-replywidget-abandon": "Жазып жатқан пікіріңізді тастап кететініңізге сенімдісіз бе?",
 	"discussiontools-replywidget-abandon-discard": "Пікірді өшіру",
 	"discussiontools-replywidget-abandon-keep": "Жазуды жалғастыру",

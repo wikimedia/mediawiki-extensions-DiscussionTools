@@ -3,7 +3,8 @@
 		"authors": [
 			"H78c67c",
 			"Ktchankt",
-			"Winston Sung"
+			"Winston Sung",
+			"Amire80"
 		]
 	},
 	"discussiontools": "傾嘢工具",
@@ -33,7 +34,7 @@
 	"discussiontools-preference-label": "討論工具",
 	"discussiontools-preference-replytool": "開著快速回覆",
 	"discussiontools-preference-topicsubscription": "開着討論留名",
-	"discussiontools-replybutton": "回覆",
+	"discussiontools-replybutton": "{{GENDER:|回覆}}",
 	"discussiontools-replylink": "{{GENDER:|回覆}}",
 	"discussiontools-replywidget-abandon": "你係咪肯定想放棄你而家寫緊嘅留言？",
 	"discussiontools-replywidget-abandon-discard": "放棄留言",

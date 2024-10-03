@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ayour2002"
+			"Ayour2002",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Rar",
-	"discussiontools-replylink": "rar",
+	"discussiontools-replylink": "{{GENDER:|rar}}",
 	"discussiontools-replywidget-preview": "Timẓṛit",
 	"discussiontools-replywidget-reply": "Rar",
 	"discussiontools-replywidget-summary": "Azgzl",

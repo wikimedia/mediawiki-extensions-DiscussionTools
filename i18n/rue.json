@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gramo6",
-			"Constraque"
+			"Constraque",
+			"Amire80"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Вы}} будете ознамены, кедь хтось напише повідомлїня в той діскусії. Вы можете змінити параметры своїх ознамінь в наставлїнях.",
@@ -22,7 +23,7 @@
 	"discussiontools-pagetitle-reply": "Одповідь на $1",
 	"discussiontools-permalink-comment-copied": "Одказы на повідомлїня копіровано в кліпборд.",
 	"discussiontools-replybutton": "{{GENDER:|Одповісти}}",
-	"discussiontools-replylink": "одповісти",
+	"discussiontools-replylink": "{{GENDER:|одповісти}}",
 	"discussiontools-replywidget-cancel": "Зрушыти",
 	"discussiontools-replywidget-mode-source": "Жерело",
 	"discussiontools-replywidget-mode-visual": "Візуал",
