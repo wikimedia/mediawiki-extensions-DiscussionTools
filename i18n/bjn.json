@@ -6,7 +6,7 @@
 		]
 	},
 	"discussiontools": "Pakakas bacangkurah",
-	"discussiontools-autotopicsubpopup-body": "{{GENDER:|You}} pacangan manarima pamadahan wayah sasaurang mangirim kumintar hanyar di cangkurah ngini. Pian kawa marasukakan pangaturan pamadahan Pian di kakatujuan.",
+	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Pian}} pacangan manarima pamadahan wayah urang mangirim kumintar hanyar di cangkurah ngini. Pian kawa marasukakan pangaturan pamadahan Pian di kakatujuan.",
 	"discussiontools-autotopicsubpopup-dismiss": "Inggih, ulun paham",
 	"discussiontools-autotopicsubpopup-preferences": "Babak kakatujuan",
 	"discussiontools-autotopicsubpopup-title": "{{GENDER:|Pian}} sudah balangganan",
@@ -108,7 +108,7 @@
 	"discussiontools-topicsubscription-pager-topic": "Tupik",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Ampih balangganan",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Ubah langganan",
-	"discussiontools-topicsubscription-special-intro": "Balangganan pinanya kawa manjadiakan {{GENDER:|Pian}} maumpati suatu tupik di laman pamandiran. Wayah sasaurang mambalas di tupik itu, Pian pacangan manarima pamadahan.\n\nRasukakan nangkaya apa wan di mana Pian manarima pamadahan itu di [[Special:Preferences#mw-prefsection-echo|kakatujuan Pian]].",
+	"discussiontools-topicsubscription-special-intro": "Balangganan pinanya kawa manjadiakan {{GENDER:|Pian}} maumpati suatu tupik di laman pamandiran. Wayah urang mambalas di tupik itu, Pian pacangan manarima pamadahan.\n\nRasukakan nangkaya apa wan di mana Pian manarima pamadahan itu di [[Special:Preferences#mw-prefsection-echo|kakatujuan Pian]].",
 	"discussiontools-topicsubscription-special-title": "Langganan tupik",
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Langganan}} laman pamandiran",
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Paarsipan}} laman pamandiran",
