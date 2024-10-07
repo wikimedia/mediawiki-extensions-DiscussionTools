@@ -1,14 +1,28 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bbeshir"
+			"Bbeshir",
+			"IdrisSeid",
+			"Kassala"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "ሰኒ, ፋሃምኮ",
 	"discussiontools-defaultsummary-reply": "በሊስ",
+	"discussiontools-emptystate-button": "ህድግ ኣንብት",
+	"discussiontools-emptystate-title-user": "ህድግ ኣንብት {{GENDER:{{PAGENAME}}| ምስል }} {{PAGENAME}}",
+	"discussiontools-findcomment-label-search": "ሕዘው",
+	"discussiontools-findcomment-title": "ታዕሊቃት ሕዘ",
+	"discussiontools-notification-subscribed-new-comment-view": "ታዕሊቃት ረኤ",
+	"discussiontools-replywidget-abandontopic-keep": "ክታበት ዋስል",
 	"discussiontools-replywidget-advanced": "ለትቀደማ",
 	"discussiontools-replywidget-cancel": "ኣትርፍ",
+	"discussiontools-replywidget-loading": "ጸዕን ህላ...",
 	"discussiontools-replywidget-mode-source": "መስደር",
+	"discussiontools-replywidget-mode-visual": "ለልትርኤ",
 	"discussiontools-replywidget-summary": "ሙለኸስ",
+	"discussiontools-replywidget-watchthis": "እላ ገጽ ዲብ [[Special:Watchlist|watchlist]] ናይኩም ወሱካ",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ነፈር|ኣዳም}} ዲብ ህድግ",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ታዕሊቅ|ታዕሊቃት}}",
 	"discussiontools-topicheader-latestcomment": "ላሓደሳ ታዕሊቅ: $1",
 	"discussiontools-topicsubscription-button-subscribe": "መዝገብ",
 	"discussiontools-topicsubscription-button-subscribe-label": "መዝገብ",
