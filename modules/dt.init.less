@@ -1,4 +1,5 @@
 @import 'mediawiki.skin.variables.less';
+@import 'mediawiki.mixins.less';
 
 /* stylelint-disable no-descending-specificity */
 span[ data-mw-comment-start ] {
@@ -59,20 +60,12 @@ h1, h2, h3, h4, h5, h6 {
 		&-bracket {
 			color: @color-subtle;
 
-			.mw-content-ltr &:not( :last-child ),
-			.mw-content-rtl .mw-content-ltr &:not( :last-child ),
-			.mw-content-rtl &:last-child,
-			.mw-content-ltr .mw-content-rtl &:last-child {
-				/* @noflip */
-				margin-right: 0.25em;
+			&:not( :last-child ) {
+				.margin-inline( 0, 0.25em );
 			}
 
-			.mw-content-ltr &:last-child,
-			.mw-content-rtl .mw-content-ltr &:last-child,
-			.mw-content-rtl &:not( :last-child ),
-			.mw-content-ltr .mw-content-rtl &:not( :last-child ), {
-				/* @noflip */
-				margin-left: 0.25em;
+			&:last-child {
+				.margin-inline( 0.25em, 0 );
 			}
 		}
 	}
@@ -236,20 +229,12 @@ h1, h2, h3, h4, h5, h6 {
 	&-bracket {
 		color: @color-subtle;
 
-		.mw-content-ltr &:first-child,
-		.mw-content-rtl .mw-content-ltr &:first-child,
-		.mw-content-rtl &:last-child,
-		.mw-content-ltr .mw-content-rtl &:last-child {
-			/* @noflip */
-			margin-right: 0.25em;
+		&:first-child {
+			.margin-inline( 0, 0.25em );
 		}
 
-		.mw-content-ltr &:last-child,
-		.mw-content-rtl .mw-content-ltr &:last-child,
-		.mw-content-rtl &:first-child,
-		.mw-content-ltr .mw-content-rtl &:first-child {
-			/* @noflip */
-			margin-left: 0.25em;
+		&:last-child {
+			.margin-inline( 0.25em, 0 );
 		}
 	}
 
