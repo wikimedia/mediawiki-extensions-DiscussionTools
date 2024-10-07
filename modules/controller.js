@@ -347,17 +347,18 @@ function init( $container, state ) {
 	 *
 	 * @param {ThreadItem} comment
 	 * @param {jQuery} $link Add section link for new topic controller
-	 * @param {string} [mode] Optionally force a mode, 'visual' or 'source'
-	 * @param {boolean} [hideErrors] Suppress errors, e.g. when restoring auto-save
-	 * @param {boolean} [suppressNotifications] Don't notify the user if recovering auto-save
+	 * @param {Object} [options] Options, see CommentController
+	 * @param {string} [options.mode] Optionally force a mode, 'visual' or 'source'
+	 * @param {boolean} [options.hideErrors] Suppress errors, e.g. when restoring auto-save
+	 * @param {boolean} [options.suppressNotifications] Don't notify the user if recovering auto-save
 	 * @param {MemoryStorage} [storage] Storage object for autosave
 	 */
-	function setupController( comment, $link, mode, hideErrors, suppressNotifications, storage ) {
-		let commentController, $addSectionLink;
-
+	function setupController( comment, $link, options, storage ) {
 		if ( !storage ) {
 			storage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + comment.id, STORAGE_EXPIRY );
 		}
+
+		let commentController, $addSectionLink;
 		if ( comment.id === utils.NEW_TOPIC_COMMENT_ID ) {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$addSectionLink = $( '#ca-addsection' ).find( 'a' );
@@ -396,7 +397,7 @@ function init( $container, state ) {
 			} );
 		} );
 
-		commentController.setup( mode, hideErrors, suppressNotifications );
+		commentController.setup( options );
 		if ( lastControllerScrollOffset ) {
 			$( document.documentElement ).scrollTop(
 				$( document.documentElement ).scrollTop() +
@@ -486,7 +487,11 @@ function init( $container, state ) {
 					}
 					// Wait for the 'hashchange' event to be handled by the mobile code
 					setTimeout( () => {
-						setupController( comment, $link, mode, true, !state.firstLoad, replyStorage );
+						setupController( comment, $link, {
+							mode: mode,
+							hideErrors: true,
+							suppressNotifications: !state.firstLoad
+						}, replyStorage );
 					} );
 				} );
 				return false;
@@ -496,7 +501,11 @@ function init( $container, state ) {
 		const newTopicStorage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + utils.NEW_TOPIC_COMMENT_ID, STORAGE_EXPIRY );
 		if ( newTopicStorage.get( 'saveable' ) || newTopicStorage.get( 'title' ) ) {
 			const mode = newTopicStorage.get( 'mode' );
-			setupController( newTopicComment(), $( [] ), mode, true, !state.firstLoad, newTopicStorage );
+			setupController( newTopicComment(), $( [] ), {
+				mode: mode,
+				hideErrors: true,
+				suppressNotifications: !state.firstLoad
+			}, newTopicStorage );
 		} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {
 			const data = linksController.parseNewTopicLink( location.href );
 			setupController( newTopicComment( data ), $( [] ) );
