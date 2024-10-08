@@ -8,6 +8,7 @@
 	"apierror-discussiontools-commentid-notfound": "Kommentar med ID-en «$1» ikke funnet.",
 	"apierror-discussiontools-commentname-ambiguous": "Flere kommentarer med navnet «$1» funnet, bruk <var>commentid</var> i stedet.",
 	"apierror-discussiontools-commentname-notfound": "Kommentar med navnet «$1» ikke funnet.",
+	"apierror-discussiontools-findcomment-pagenevertalk": "Siden har aldri inneholdt noen diskusjoner.",
 	"apierror-discussiontools-formtoken-used": "Kommentaren er allerede publisert. Oppdater siden for å se den.",
 	"apierror-discussiontools-subscription-failed-add": "Kunne ikke abonnere på dette emnet.",
 	"apierror-discussiontools-subscription-failed-remove": "Kunne ikke fjerne abonnement på dette emnet.",
