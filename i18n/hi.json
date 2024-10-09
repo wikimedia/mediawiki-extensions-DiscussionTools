@@ -8,7 +8,8 @@
 			"पदाति",
 			"भारत्पराक्रमि",
 			"संजीव कुमार",
-			"Amire80"
+			"Amire80",
+			"Srishakatux"
 		]
 	},
 	"discussiontools": "चर्चा उपकरण",
@@ -45,6 +46,7 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "सदस्यता लें",
 	"discussiontools-topicsubscription-button-unsubscribe": "सदस्यता छोड़ें",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "सदस्यता रद्द करें",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|आपने}} सदस्यता ले ली है!",
 	"discussiontools-topicsubscription-pager-notified-never": "कभी नहीं",
 	"discussiontools-topicsubscription-pager-page": "पृष्ठ",
 	"discussiontools-topicsubscription-pager-topic": "विषय",
