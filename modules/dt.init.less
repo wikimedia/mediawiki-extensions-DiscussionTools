@@ -900,3 +900,14 @@ h1, h2, h3, h4, h5, h6 {
 	opacity: 0.8;
 	pointer-events: none;
 }
+
+// Add dark mode images (T369834)
+html.skin-theme-clientpref-night .ext-discussiontools-autotopicsubpopup-image {
+	background: url( autotopicsubpopup-image-dark.svg ) center center no-repeat;
+}
+
+@media screen and ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os .ext-discussiontools-autotopicsubpopup-image {
+		background: url( autotopicsubpopup-image-dark.svg ) center center no-repeat;
+	}
+}
