@@ -3,6 +3,7 @@
 	"name": "DiscussionTools",
 	"version": "0.0.0",
 	"scripts": {
+		"minify:svg": "svgo --config=.svgo.config.mjs --quiet --recursive --folder ./modules",
 		"test": "grunt test"
 	},
 	"devDependencies": {
@@ -12,6 +13,7 @@
 		"grunt-eslint": "24.3.0",
 		"grunt-stylelint": "0.20.1",
 		"grunt-tyops": "0.1.1",
+		"svgo": "3.3.2",
 		"stylelint-config-wikimedia": "0.17.2"
 	}
 }
