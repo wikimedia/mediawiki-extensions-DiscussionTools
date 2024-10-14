@@ -88,6 +88,7 @@
 	"discussiontools-limitreport-timeusage": "DiscussionTools 使用時間",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|秒}}",
 	"discussiontools-newtopic-missing-title": "{{GENDER:|}}話題に題名をつけてください。",
+	"discussiontools-newtopic-missing-title-prompt": "議論トピックにタイトルを指定していません。タイトルなしでトピックを追加してもよろしいですか？",
 	"discussiontools-newtopic-placeholder-title": "件名",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "購読",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "購読するとこのページに新しい話題が追加された際に通知を受け取れます。",

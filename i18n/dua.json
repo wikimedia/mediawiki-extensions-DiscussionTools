@@ -14,6 +14,8 @@
 	"discussiontools-replywidget-preview": "sɛlɛ jɛnɛ",
 	"discussiontools-replywidget-reply": "{{GENDER:|}}Alabɛ",
 	"discussiontools-replywidget-summary": "O patápɛm",
+	"discussiontools-replywidget-watchthis": "ɓatá di dippá o [[Special:Watchlist|liste de suivi]]",
+	"discussiontools-topicheader-authorcount": "$1 bató be{{PLURAL:$1||s}} ó ikwali",
 	"discussiontools-topicheader-commentcount": "$1 Jalabɛ{{PLURAL:$1||malabɛ}}",
 	"discussiontools-topicheader-latestcomment": "Jalabɛ disukan : $1",
 	"discussiontools-topicsubscription-button-subscribe": "Tidisɛ dina",
