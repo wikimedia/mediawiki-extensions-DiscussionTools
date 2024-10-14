@@ -2,11 +2,25 @@
 	"@metadata": {
 		"authors": [
 			"Jwale2",
-			"Amire80"
+			"Amire80",
+			"NanaYawBotar",
+			"Robertjamal12"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Hetoo",
+	"discussiontools-replywidget-advanced": "Nɔ ni yɛ hiɛ",
 	"discussiontools-replywidget-cancel": "Foo mli",
+	"discussiontools-replywidget-mode-source": "He ni ejɛ",
+	"discussiontools-replywidget-mode-visual": "Mfoniri",
 	"discussiontools-replywidget-preview": "Kwɛmɔ shi kome daŋ",
 	"discussiontools-replywidget-reply": "Hetoo",
-	"discussiontools-replywidget-summary": "Sanenaabuamɔ"
+	"discussiontools-replywidget-summary": "Sanenaabuamɔ",
+	"discussiontools-replywidget-watchthis": "Kɛ baafa nɛɛ afata o [[Special:Watchlist|kwɛmɔ gbɛi]] lɛ he.",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1| gbɔmɔ|mɛi}} yɛ sanegbaa mli",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comment|wiemɔi}}",
+	"discussiontools-topicheader-latestcomment": "Wiemɔ hee: $1",
+	"discussiontools-topicsubscription-button-subscribe": "kɛ ohe ewo mli!",
+	"discussiontools-topicsubscription-button-subscribe-label": "kɛ ohe ewo mli!",
+	"discussiontools-topicsubscription-button-unsubscribe": "jiemɔ ohe kɛjɛ mli",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "jiemɔ ohe kɛjɛ mli"
 }

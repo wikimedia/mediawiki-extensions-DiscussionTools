@@ -8,8 +8,13 @@
 	"discussiontools-replywidget-advanced": "pótísɛ Muwasó",
 	"discussiontools-replywidget-cancel": "Ɓáŋga",
 	"discussiontools-replywidget-mode-source": "Tongo",
+	"discussiontools-replywidget-mode-visual": "Jɛnɛ",
 	"discussiontools-replywidget-preview": "sɛlɛ jɛnɛ",
 	"discussiontools-replywidget-summary": "O patápɛm",
+	"discussiontools-topicheader-commentcount": "$1 Jalabɛ{{PLURAL:$1||malabɛ}}",
+	"discussiontools-topicheader-latestcomment": "Jalabɛ disukan : $1",
 	"discussiontools-topicsubscription-button-subscribe": "Tidisɛ dina",
-	"discussiontools-topicsubscription-button-subscribe-label": "Tidisɛ dina"
+	"discussiontools-topicsubscription-button-subscribe-label": "Tidisɛ dina",
+	"discussiontools-topicsubscription-button-unsubscribe": "Sumwá la diná",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Sumwa lá diná"
 }
