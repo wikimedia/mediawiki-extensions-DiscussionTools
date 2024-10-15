@@ -709,10 +709,22 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 	&-image {
-		/* @embed */
 		background: url( autotopicsubpopup-image.svg ) center center no-repeat;
 		width: 200px;
 		height: 200px;
+
+		// Add dark mode images (T369834)
+		@media screen {
+			html.skin-theme-clientpref-night & {
+				background-image: url( autotopicsubpopup-image-dark.svg );
+			}
+		}
+
+		@media screen and ( prefers-color-scheme: dark ) {
+			html.skin-theme-clientpref-os & {
+				background-image: url( autotopicsubpopup-image-dark.svg );
+			}
+		}
 	}
 
 	// Desktop
@@ -899,15 +911,4 @@ h1, h2, h3, h4, h5, h6 {
 	filter: saturate( 0 );
 	opacity: 0.8;
 	pointer-events: none;
-}
-
-// Add dark mode images (T369834)
-html.skin-theme-clientpref-night .ext-discussiontools-autotopicsubpopup-image {
-	background: url( autotopicsubpopup-image-dark.svg ) center center no-repeat;
-}
-
-@media screen and ( prefers-color-scheme: dark ) {
-	html.skin-theme-clientpref-os .ext-discussiontools-autotopicsubpopup-image {
-		background: url( autotopicsubpopup-image-dark.svg ) center center no-repeat;
-	}
 }
