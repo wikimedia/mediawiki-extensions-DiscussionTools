@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"EbelleMarcel"
 		]
 	},
@@ -11,7 +12,7 @@
 	"discussiontools-replywidget-mode-source": "Tongo",
 	"discussiontools-replywidget-mode-visual": "Jɛnɛ",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|}}Alabɛ {{BIDI:$1}}",
-	"discussiontools-replywidget-preview": "sɛlɛ jɛnɛ",
+	"discussiontools-replywidget-preview": "Sɛlɛ jɛnɛ",
 	"discussiontools-replywidget-reply": "{{GENDER:|}}Alabɛ",
 	"discussiontools-replywidget-summary": "O patápɛm",
 	"discussiontools-replywidget-watchthis": "ɓatá di dippá o [[Special:Watchlist|liste de suivi]]",
