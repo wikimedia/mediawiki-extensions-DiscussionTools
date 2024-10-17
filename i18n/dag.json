@@ -13,7 +13,8 @@
 			"Karimbaasani",
 			"Musahfm",
 			"Naporo",
-			"Ruky Wunpini"
+			"Ruky Wunpini",
+			"Kalakpagh"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|You}} ni nya buɣisigu so yi niŋ tɔɣino zaŋ chaŋ saawara ŋɔ polo. A ni tooi baŋsi a ni bɔri ni nyari buɣisigu ŋɔ shɛm.",
@@ -29,6 +30,8 @@
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|kɔmbo peegyi]] e la be noba naŋ maŋ di demmo lɛ ba naŋ maale yelzu kyaare {{SITENAME}} lɛ ona naŋ soma. {{GENDER:|fooŋ}} naŋ baŋ de la a peegyi ŋa a piili neŋ demmoneŋ fo taaba lɛnɛɛ fo naŋ na zɛge do  saa [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-desc-self": "Noba naŋ be  {{SITENAME}} naŋ baŋ toneŋ la [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|demmo di peegyi]] a toɔle a duori to neɛ zaa {{GENDER:|fooŋ}}, kyɛ fo naŋ nyɛ la leɛ teɛre ma ka ba naŋ e.",
 	"discussiontools-emptystate-desc-self-anon": "N IP adrɛɛsi maa taɣirila saha shɛli kam, ka di tooi zooi ka ninvuɣ' bɔbili mali ŋa. A ni [$1 nam akɔnti] bee [$2 kpubu[ din yɛn gu ka taɣi saha ŋan kanna nangbankpeeni zaŋ chaŋ ban yi polo. Akɔnti nambu gba nyɛla ŋan sɔŋdi sɔɣiri.",
+	"discussiontools-emptystate-desc-self-temp": "Ninvuɣ shɛba ban be{{SITENAME}} nyɛla ban ni tooi yunsi [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|talk page]] ŋɔ n-ti salo pam satarili {{GENDER:|you}}.\n\nBahigu, [[{{MediaWiki:tempuser-sɔŋsimyaɣili }}|yaɣili ŋɔ saha nyɛla din yɛn paai]]. A yi bori ni a nyari lahabaya, mini nahingbaŋ shɛŋa  , [$1 nammi akaunti] bee [$2 kpɛma].",
+	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Talk pages]] nyɛ luɣishɛli niriba ni gbaari saawara bɛ ni yɛn niŋ shɛm ka lahabaya din be{{SITENAME}} tooi gaŋdu. Piligimi saawara palli din yɛn che ka a mini niriba tooi laɣim gbaai saawara {{GENDER:{{PAGENAME}}|with}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Bɔ {{GENDER:|nyini}} yɛlimi li kpee din yɛn che ka shɛba gba tooi lihi li.",
 	"discussiontools-emptystate-title-self": "{{GENDER:|Welcome}} niŋdi a yɛltɔɣa peeji maraaba yaha",
 	"discussiontools-emptystate-title-self-anon": "{{PAƔA BEE DOO:|Maraba}} paaji ŋɔ zuɣu",
 	"discussiontools-emptystate-title-self-temp": "{{PAƔA BEE DOO:|maraba}} paaji shɛli din ku yuui ŋɔ zuɣu",
@@ -56,9 +59,13 @@
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|One topic was|$1 topics were|100=99+ topics were}} beni bee n-yi $2 ni.",
 	"discussiontools-notification-removed-topic-header-compact": "Yɛltɔɣ' kpani \"<strong>$4</strong>\" zaa beni bee n-yi.",
 	"discussiontools-notification-removed-topic-view": "Yulimi paaji",
+	"discussiontools-notification-removed-topic-disable": "Chɛli lahabaya deebu kaman ŋɔ",
+	"discussiontools-notification-removed-topic-disabled-title": "{{GENDER:|Nyini}} a ku lahi deei lahabaya di yi niŋ ka lala yɛltɔɣili yi soɣi bee yihi.",
+	"discussiontools-notification-removed-topic-disabled-body": "A ni tooi taɣi ŋɔ [[Special:Preferences#mw-prefsection-echo-echosubscriptions|a suhiyurim ni ]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|labisibu}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Labisiri palli yini|$1 new replies|100=99+ labisiri pala}} din be \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Lihimi tɔɣino",
+	"discussiontools-pageframe-latestcomment": "Bahigu sabbu: $1 by $2 din be yɛltɔɣili $3",
 	"discussiontools-pageframe-latestcomment-notopic": " Tɔɣino palli: $1 ni $2",
 	"discussiontools-pagetitle-newtopic": "Pilimi yɛlkkpani palli $1",
 	"discussiontools-pagetitle-reply": "Labisibu din be $1",
