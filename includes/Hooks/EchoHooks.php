@@ -9,7 +9,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use ExtensionRegistry;
 use MediaWiki\Extension\DiscussionTools\Notifications\AddedTopicPresentationModel;
 use MediaWiki\Extension\DiscussionTools\Notifications\CommentThanksPresentationModel;
 use MediaWiki\Extension\DiscussionTools\Notifications\EnhancedEchoEditUserTalkPresentationModel;
@@ -22,6 +21,7 @@ use MediaWiki\Extension\Notifications\Hooks\EchoGetBundleRulesHook;
 use MediaWiki\Extension\Notifications\Hooks\EchoGetEventsForRevisionHook;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\Notifications\UserLocator;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 

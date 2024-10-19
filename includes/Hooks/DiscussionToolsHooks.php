@@ -9,11 +9,11 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use ExtensionRegistry;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\DiscussionTools\OverflowMenuItem;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\User\UserNameUtils;
 
 class DiscussionToolsHooks implements

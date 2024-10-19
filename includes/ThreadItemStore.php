@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use Exception;
-use Language;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
@@ -11,6 +10,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\HeadingItem;
+use MediaWiki\Language\Language;
 use MediaWiki\Page\PageStore;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;

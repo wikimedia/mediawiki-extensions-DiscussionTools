@@ -9,10 +9,10 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use ApiModuleManager;
-use ExtensionRegistry;
+use MediaWiki\Api\ApiModuleManager;
 use MediaWiki\Api\Hook\ApiMain__moduleManagerHook;
 use MediaWiki\Extension\DiscussionTools\ApiDiscussionToolsThank;
+use MediaWiki\Registration\ExtensionRegistry;
 
 // phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
 

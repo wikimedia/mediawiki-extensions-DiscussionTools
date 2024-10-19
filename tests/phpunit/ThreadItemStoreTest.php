@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use ExtensionRegistry;
 use ImportStringSource;
 use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\TitleValue;
 use TestUser;
 

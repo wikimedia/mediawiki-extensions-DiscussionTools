@@ -9,10 +9,10 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
-use Language;
 use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 use MediaWiki\Extension\Notifications\Formatters\EchoPresentationModelSection;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Language\Language;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Message\Message;
 use MediaWiki\Revision\RevisionRecord;

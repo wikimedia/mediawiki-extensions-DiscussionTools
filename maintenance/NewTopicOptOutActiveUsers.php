@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
-use Maintenance;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\User\UserFactory;
 use Wikimedia\Rdbms\IDatabase;
 

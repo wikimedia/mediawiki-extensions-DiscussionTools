@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use ExtensionRegistry;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Tests\Api\ApiTestCase;
 
 /**

@@ -11,8 +11,6 @@ namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use DateInterval;
 use DateTimeImmutable;
-use ExtensionRegistry;
-use IDBAccessObject;
 use Iterator;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -31,6 +29,7 @@ use MediaWiki\Extension\EventLogging\Libs\UserBucketProvider\UserBucketProvider;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
@@ -38,6 +37,7 @@ use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class EventDispatcher {
 	/**

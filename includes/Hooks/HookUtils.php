@@ -9,8 +9,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use ExtensionRegistry;
-use IDBAccessObject;
 use LqtDispatch;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
@@ -21,16 +19,18 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\ParserOutputAccess;
+use MediaWiki\Parser\ParserOptions;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
-use ParserOptions;
 use RuntimeException;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 class HookUtils {
 

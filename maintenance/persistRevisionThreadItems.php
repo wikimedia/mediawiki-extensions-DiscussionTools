@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Maintenance;
 
-use Language;
-use Maintenance;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
+use MediaWiki\Language\Language;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Shell\Shell;
 use MediaWiki\Title\Title;

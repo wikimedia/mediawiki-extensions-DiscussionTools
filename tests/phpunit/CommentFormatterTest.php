@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use FormatJson;
 use MediaWiki\Cache\GenderCache;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Parser\ParserOutput;

@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
-use FormatJson;
 use MediaWiki\Cache\GenderCache;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Config\MultiConfig;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Interwiki\NullInterwikiLookup;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\MainConfigNames;
