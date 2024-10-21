@@ -13,7 +13,8 @@
 			"Issahiddris98",
 			"Musahfm",
 			"ANTHONY DERY",
-			"Attah Mohammed"
+			"Attah Mohammed",
+			"Kalakpagh"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Inn, n-nyɛli",
@@ -21,6 +22,7 @@
 	"discussiontools-defaultsummary-reply": "Labisigu",
 	"discussiontools-desc": "Tuman niɛma ŋan yɛn sɔŋ yɛligi sawara paajinima",
 	"discussiontools-emptystate-button": "Piligimi sawara",
+	"discussiontools-emptystate-title": "Pilimi saawara gbaabu zaŋ jandi {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user": "Pilimi saawara ni  {{PAƔA BEE DOO :{{PAAJI YULI}}|ni}} {{PAAJI YULI}}",
 	"discussiontools-error-noswitchtove-table": "Teebuli sintaɣisi",
 	"discussiontools-error-noswitchtove-template": "Sintaɣisi tɛmplɛɛti",
@@ -36,9 +38,12 @@
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|One topic was|$1 topics were|100=99+ topics were}} beni bee n-yi $2 ni.",
 	"discussiontools-notification-removed-topic-header-compact": "Yɛltɔɣ' kpani \"<strong>$4</strong>\" zaa beni bee n-yi.",
 	"discussiontools-notification-removed-topic-view": "Yulimi paaji",
+	"discussiontools-notification-removed-topic-disable": "Chɛli lahabaya deebu kaman ŋɔ",
+	"discussiontools-notification-removed-topic-disabled-body": "A ni tooi taɣi ŋɔ [[Special:Preferences#mw-prefsection-echo-echosubscriptions|a suhiyurim ni ]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|labisibu}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Labisiri palli yini|$1 new replies|100=99+ labisiri pala}} din be \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Lihimi tɔɣino",
+	"discussiontools-pageframe-latestcomment": "Bahigu sabbu: $1 by $2 din be yɛltɔɣili $3",
 	"discussiontools-pageframe-latestcomment-notopic": " Tɔɣino palli: $1 ni $2",
 	"discussiontools-pagetitle-newtopic": "Pilimi yɛlkkpani palli $1",
 	"discussiontools-pagetitle-reply": "Labisibu din be $1",

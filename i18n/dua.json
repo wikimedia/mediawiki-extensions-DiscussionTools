@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"EbelleMarcel"
+			"EbelleMarcel",
+			"Amire80"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Jalabɛ",
@@ -9,8 +10,10 @@
 	"discussiontools-replywidget-cancel": "Ɓáŋga",
 	"discussiontools-replywidget-mode-source": "Tongo",
 	"discussiontools-replywidget-mode-visual": "Jɛnɛ",
-	"discussiontools-replywidget-preview": "sɛlɛ jɛnɛ",
+	"discussiontools-replywidget-preview": "Sɛlɛ jɛnɛ",
 	"discussiontools-replywidget-summary": "O patápɛm",
+	"discussiontools-replywidget-watchthis": "ɓatá di dippá o [[Special:Watchlist|liste de suivi]]",
+	"discussiontools-topicheader-authorcount": "$1 bató be{{PLURAL:$1||s}} ó ikwali",
 	"discussiontools-topicheader-commentcount": "$1 Jalabɛ{{PLURAL:$1||malabɛ}}",
 	"discussiontools-topicheader-latestcomment": "Jalabɛ disukan : $1",
 	"discussiontools-topicsubscription-button-subscribe": "Tidisɛ dina",
