@@ -26,6 +26,7 @@
 	"discussiontools-replywidget-mode-source": "መስደር",
 	"discussiontools-replywidget-mode-visual": "ለልትርኤ",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|ብለስ/ሲ}} ዲብ {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "አትቃማት",
 	"discussiontools-replywidget-reply": "{{GENDER:|ብለስ}}",
 	"discussiontools-replywidget-summary": "ሙለኸስ",
 	"discussiontools-replywidget-watchthis": "እላ ገጽ ዲብ [[Special:Watchlist|watchlist]] ናይኩም ወሱካ",
@@ -37,7 +38,10 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "መዝገብ",
 	"discussiontools-topicsubscription-button-unsubscribe": "መዝገባ ወርከዮት",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "መዝገባ ወርከዮት",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|እንተ}} ረሰይል ግልትትከበትቱ ናይ ክቱብ በሊስ እብሊ ጋር.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|መዝገብ ህሌካ|መዝገብ ህሌኪ}}!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|እንተ}} ረሰይል ግልትትከበት ኢኮኒ' ናይ ክቱብ በሊስ እብሊ ጋር.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|እንተ}} እሽትረከ አብጠርከ.",
 	"discussiontools-topicsubscription-pager-page": "ገጽ",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "መዝገባ ወርከዮት"
 }
