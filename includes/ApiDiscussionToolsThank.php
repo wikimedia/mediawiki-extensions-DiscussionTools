@@ -33,12 +33,9 @@ class ApiDiscussionToolsThank extends ApiThank {
 	private RevisionLookup $revisionLookup;
 	private UserFactory $userFactory;
 
-	/**
-	 * @inheritDoc
-	 */
 	public function __construct(
 		ApiMain $main,
-		$action,
+		string $action,
 		PermissionManager $permissionManager,
 		LogStore $storage,
 		RevisionLookup $revisionLookup,
