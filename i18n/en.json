@@ -83,6 +83,7 @@
 	"discussiontools-notification-removed-topic-disable": "Stop receiving notifications like this",
 	"discussiontools-notification-removed-topic-disabled-title": "{{GENDER:|You}} will no longer receive notifications when a topic is archived or removed.",
 	"discussiontools-notification-removed-topic-disabled-body": "You can change this in [[Special:Preferences#mw-prefsection-echo-echosubscriptions|your preferences]].",
+	"discussiontools-notification-topic-hidden": "(topic removed)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|replied}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|One new reply|$1 new replies|100=99+ new replies}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
