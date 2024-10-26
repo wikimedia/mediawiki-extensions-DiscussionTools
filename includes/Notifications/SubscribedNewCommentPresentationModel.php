@@ -88,17 +88,20 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 		if ( $this->isBundled() ) {
 			$count = $this->getNotificationCountForOutput();
 			$msg = $this->msg( $this->getHeaderMessageKey() );
-
 			// Repeat is B/C until unused parameter is removed from translations
 			$msg->numParams( $count, $count );
-			$msg->plaintextParams( $this->section->getTruncatedSectionTitle() );
-			return $msg;
 		} else {
 			$msg = parent::getHeaderMessage();
 			$msg->params( $this->getTruncatedTitleText( $this->event->getTitle(), true ) );
-			$msg->plaintextParams( $this->section->getTruncatedSectionTitle() );
-			return $msg;
 		}
+
+		if ( $this->section->exists() ) {
+			$msg->plaintextParams( $this->section->getTruncatedSectionTitle() );
+		} else {
+			$msg->plaintextParams( $this->msg( 'discussiontools-notification-topic-hidden' )->text() );
+		}
+
+		return $msg;
 	}
 
 	/**
