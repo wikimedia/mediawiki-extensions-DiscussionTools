@@ -155,7 +155,7 @@ trait ApiDiscussionToolsTrait {
 	abstract protected function requestRestbasePageHtml( RevisionRecord $revision ): array;
 
 	abstract protected function transformHTML(
-		Title $title, string $html, int $oldid = null, string $etag = null
+		Title $title, string $html, ?int $oldid = null, ?string $etag = null
 	): array;
 
 	/**
