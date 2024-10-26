@@ -652,7 +652,7 @@ class CommentModifier {
 	 * @param string|null $signature
 	 */
 	public static function addWikitextReply(
-		ContentCommentItem $comment, string $wikitext, string $signature = null
+		ContentCommentItem $comment, string $wikitext, ?string $signature = null
 	): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = static::prepareWikitextReply( $doc, $wikitext );
@@ -670,7 +670,7 @@ class CommentModifier {
 	 * @param string|null $signature
 	 */
 	public static function addHtmlReply(
-		ContentCommentItem $comment, string $html, string $signature = null
+		ContentCommentItem $comment, string $html, ?string $signature = null
 	): void {
 		$doc = $comment->getRange()->endContainer->ownerDocument;
 		$container = static::prepareHtmlReply( $doc, $html );
