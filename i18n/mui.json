@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jawadywn"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Simbatan",
+	"discussiontools-replywidget-advanced": "Déwo",
+	"discussiontools-replywidget-cancel": "Urung",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Pisual",
+	"discussiontools-replywidget-preview": "Terawangan",
+	"discussiontools-replywidget-summary": "Ringkesan",
+	"discussiontools-replywidget-watchthis": "Tambake laman ni ke [[Special:Watchlist|lis seli'an]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|wong}} di rembu'an",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|tanggepan}}",
+	"discussiontools-topicheader-latestcomment": "Tanggepan buncitan: $1",
+	"discussiontools-topicsubscription-button-subscribe": "langganan",
+	"discussiontools-topicsubscription-button-subscribe-label": "Langganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "berenti belangganan",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Berenti belangganan"
+}

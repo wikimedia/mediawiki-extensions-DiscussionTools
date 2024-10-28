@@ -22,7 +22,8 @@
 			"Alien333",
 			"MacOS Weed",
 			"Rayquachu",
-			"SleaY"
+			"SleaY",
+			"Goombiis"
 		]
 	},
 	"discussiontools": "Outils de discussion",
@@ -147,8 +148,8 @@
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Ce message est introuvable. Il a peut-être été supprimé ou déplacé.",
 	"discussiontools-target-comments-missing": "Les nouvelles réponses sont introuvables. Elles ont peut-être été supprimées ou déplacées.",
-	"discussiontools-topicheader-authorcount": "$1 participant{{PLURAL:$1||s}} à la discussion",
-	"discussiontools-topicheader-commentcount": "$1 commentaire{{PLURAL:$1||s}}",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|participant|participants}} à la discussion",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|commentaire|commentaires}}",
 	"discussiontools-topicheader-latestcomment": "Dernier commentaire : $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Se désabonner",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Se désabonner de ce sujet ?",

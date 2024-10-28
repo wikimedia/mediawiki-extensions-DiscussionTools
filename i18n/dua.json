@@ -1,23 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"EbelleMarcel",
-			"Amire80"
+			"EbelleMarcel"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Jalabɛ",
-	"discussiontools-replywidget-advanced": "pótísɛ Muwasó",
+	"discussiontools-replywidget-advanced": "Pótísɛ muwasó",
 	"discussiontools-replywidget-cancel": "Ɓáŋga",
 	"discussiontools-replywidget-mode-source": "Tongo",
 	"discussiontools-replywidget-mode-visual": "Jɛnɛ",
 	"discussiontools-replywidget-preview": "Sɛlɛ jɛnɛ",
 	"discussiontools-replywidget-summary": "O patápɛm",
-	"discussiontools-replywidget-watchthis": "ɓatá di dippá o [[Special:Watchlist|liste de suivi]]",
-	"discussiontools-topicheader-authorcount": "$1 bató be{{PLURAL:$1||s}} ó ikwali",
-	"discussiontools-topicheader-commentcount": "$1 Jalabɛ{{PLURAL:$1||malabɛ}}",
+	"discussiontools-replywidget-watchthis": "Ɓatá di dipapá o [[Special:Watchlist|liste de suivi]]",
+	"discussiontools-topicheader-authorcount": "$1 bató be ó ikwali",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|jalabɛ|malabɛ}}",
 	"discussiontools-topicheader-latestcomment": "Jalabɛ disukan : $1",
-	"discussiontools-topicsubscription-button-subscribe": "Tidisɛ dina",
+	"discussiontools-topicsubscription-button-subscribe": "tidisɛ dina",
 	"discussiontools-topicsubscription-button-subscribe-label": "Tidisɛ dina",
-	"discussiontools-topicsubscription-button-unsubscribe": "Sumwá la diná",
+	"discussiontools-topicsubscription-button-unsubscribe": "sumwá la diná",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Sumwa lá diná"
 }
