@@ -95,6 +95,7 @@
 	"discussiontools-notification-removed-topic-disable": "Dit soort meldingen niet langer ontvangen",
 	"discussiontools-notification-removed-topic-disabled-title": "U ontvangt geen meldingen meer wanneer een onderwerp wordt gearchiveerd of verwijderd.",
 	"discussiontools-notification-removed-topic-disabled-body": "U kunt dit wijzigen in [[Special:Preferences#mw-prefsection-echo-echosubscriptions|uw voorkeuren]].",
+	"discussiontools-notification-topic-hidden": "(onderwerp verwijderd)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|heeft gereageerd}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Een nieuwe reactie|$1 nieuwe reacties|100=99+ nieuwe reacties}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Reactie bekijken",

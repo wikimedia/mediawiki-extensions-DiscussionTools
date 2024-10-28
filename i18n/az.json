@@ -85,6 +85,7 @@
 	"discussiontools-notification-removed-topic-disable": "Bu cür bildirişləri dayandır",
 	"discussiontools-notification-removed-topic-disabled-title": "{{GENDER:|Siz}} mövzu arxivləndikdə və ya silindikdə artıq bildirişlər almayacaqsınız.",
 	"discussiontools-notification-removed-topic-disabled-body": "Bunu [[Special:Preferences#mw-prefsection-echo-echosubscriptions|nizamlamalarınızda]] dəyişə bilərsiniz.",
+	"discussiontools-notification-topic-hidden": "(mövzu silinib)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 \"<strong>$4</strong>\" bölməsində {{GENDER:$2|cavab verdi}}",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "\"<strong>$3</strong>\" bölməsində {{PLURAL:$1|bir yeni cavab|$1 yeni cavab|100=99+ yeni cavab}}",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",

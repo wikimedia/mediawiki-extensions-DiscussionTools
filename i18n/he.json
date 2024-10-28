@@ -88,6 +88,7 @@
 	"discussiontools-notification-removed-topic-disable": "להפסיק לקבל התראות כאלו",
 	"discussiontools-notification-removed-topic-disabled-title": "לא {{GENDER:|תקבל|תקבלי|יתקבלו אצלך}} עוד התראות כשהנושא מאורכב או מוסר.",
 	"discussiontools-notification-removed-topic-disabled-body": "באפשרותך לשנות את זה ב[[Special:Preferences#mw-prefsection-echo-echosubscriptions|העדפות שלך]]",
+	"discussiontools-notification-topic-hidden": "(הנושא הוסר)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|הגיב|הגיבה}} בנושא \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|תגובה חדשה|$1 תגובות חדשות|100=99+ תגובות חדשות}} בנושא \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "צפייה בתגובה",

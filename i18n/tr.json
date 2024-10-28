@@ -99,6 +99,7 @@
 	"discussiontools-notification-removed-topic-disable": "Bunun gibi bildirimler almayı durdur",
 	"discussiontools-notification-removed-topic-disabled-title": "Artık bir konu arşivlendiğinde veya kaldırıldığında bildirim {{GENDER:|almayacaksınız}}.",
 	"discussiontools-notification-removed-topic-disabled-body": "Bunu [[Special:Preferences#mw-prefsection-echo-echosubscriptions|tercihleriniz]] üzerinden değiştirebilirsiniz.",
+	"discussiontools-notification-topic-hidden": "(konu kaldırıldı)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1, \"<strong>$4</strong>\" konusuna {{GENDER:$2|yanıt verdi}}.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "<strong>$3</strong> konusunda {{PLURAL:$1|bir yeni yanıt|$1 yeni yanıt|100=99+ yeni yanıt}}.",
 	"discussiontools-notification-subscribed-new-comment-view": "Yorumu görüntüle",
