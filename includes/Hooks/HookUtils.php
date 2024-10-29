@@ -518,7 +518,7 @@ class HookUtils {
 			// Only in talk namespaces, not including other namespaces that isAvailableForTitle() allows
 			$title->isTalkPage() &&
 			// Only if the subject page or the user exists (T288319, T312560)
-			static::pageSubjectExists( $title ) &&
+			( $title->exists() || static::pageSubjectExists( $title ) ) &&
 			// The default display will probably be more useful for links to old revisions of deleted
 			// pages (existing pages are already excluded in shouldShowNewSectionTab())
 			$req->getIntOrNull( 'oldid' ) === null &&
