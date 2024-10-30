@@ -7,8 +7,7 @@
 			"Matma Rex",
 			"Milicevic01",
 			"Vlad5250",
-			"Zoranzoki21",
-			"Amire80"
+			"Zoranzoki21"
 		]
 	},
 	"discussiontools": "Алатке за разговор",
@@ -90,7 +89,6 @@
 	"discussiontools-postedit-confirmation-topicadded": "Ваша тема је додата.",
 	"discussiontools-preference-autotopicsub": "Аутоматски прати теме",
 	"discussiontools-preference-autotopicsub-help": "Када {{GENDER:|покренете}} нову дискусију или додате коментар у постојећу, аутоматски ће те пратити исту.",
-	"discussiontools-preference-description": "Омогућава нови начин [https://www.mediawiki.org/wiki/Talk_pages_project/replying одговарања на коментаре] на страницама за разговор.\n\nИмајте на уму да ће се с временом увести још нових алатки за комуницирање на страницама за разговор.\n\nНовости о тим новим алаткама биће објављене  [https://www.mediawiki.org/wiki/Talk_pages_project/Updates овде].",
 	"discussiontools-preference-label": "Алатке за разговор",
 	"discussiontools-preference-newtopictool": "Брзо додавање тема",
 	"discussiontools-preference-newtopictool-createpage": "За странице за разговор којих још увек нема:",
@@ -173,6 +171,7 @@
 	"echo-category-title-dt-subscription": "Странице за разговор {{PLURAL:$1|које пратим}}",
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Архивирање}} страница за разговор",
 	"echo-pref-tooltip-dt-subscription": "Обавестим ме о новим коментарима у темама које {{GENDER:|ја}} пратим.",
+	"echo-pref-tooltip-dt-subscription-archiving": "Обавештава вас када тема коју пратите {{GENDER:|је}} архивирирана или уклоњена са странице, или обавештења о новим коментарима није могуће послати из неких других разлога.",
 	"minerva-talk-full-page": "Читајте као вики страницу",
 	"tag-discussiontools-added-comment-description": "Коментар на страници за разговор је додат у овој измени",
 	"tag-discussiontools-description": "Измене помоћу алатке за разговор",

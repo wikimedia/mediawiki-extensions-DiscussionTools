@@ -5,7 +5,6 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Reply",
-	"discussiontools-replylink": "{{GENDER:|reply}}",
 	"discussiontools-replywidget-cancel": "Guko",
 	"discussiontools-replywidget-mode-source": "Zalshe",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Reply}} to {{BIDI:$1}}",

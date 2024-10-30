@@ -2,7 +2,6 @@
 	"@metadata": {
 		"authors": [
 			"Akudugu",
-			"Amire80",
 			"Bugirbiig",
 			"Musahfm",
 			"WINDOL",
@@ -108,7 +107,6 @@
 	"discussiontools-preference-topicsubscription-help": "Nwa na tisif suor ka fʋ si'aki kpe' ye fʋ di'e tɛn'ɛsa zaŋi keŋ lɛbisa zaŋi keŋ nidid wusa yɛlzutin.",
 	"discussiontools-preference-visualenhancements": "Bigisim sɔsʋg tʋʋma",
 	"discussiontools-preference-visualenhancements-help": "Nwa na sʋŋ lakir pian'ad paal nɛɛnsim linɛ na paas labaar zaŋi tʋʋma sɔnsʋg wusa pʋʋgin",
-	"discussiontools-replybutton": "{{GENDER:|Reply}}",
 	"discussiontools-replylink": "{{GENDER:|lɛbsim}}",
 	"discussiontools-replywidget-abandon": "Fʋ {{GENDER:|you}} tis sida ye fʋ bɔɔd ye fʋ bas lɛbisʋg la ka fʋ gʋlisid la?",
 	"discussiontools-replywidget-abandon-discard": "Basim lɛbisʋg",
