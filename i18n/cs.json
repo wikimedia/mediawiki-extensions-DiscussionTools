@@ -76,6 +76,7 @@
 	"discussiontools-notification-removed-topic-disable": "Přestat dostávat takováto oznámení",
 	"discussiontools-notification-removed-topic-disabled-title": "Oznámení o archivaci nebo odstranění tématu již nebudete dostávat.",
 	"discussiontools-notification-removed-topic-disabled-body": "Můžete to změnit ve [[Special:Preferences#mw-prefsection-echo-echosubscriptions|svých nastaveních]].",
+	"discussiontools-notification-topic-hidden": "(téma odstraněno)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|odpověděl|odpověděla}} v „<strong>$4</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Jedna nová odpověď|$1 nové odpovědi|$1 nových odpovědí|100=Více než 99 nových odpovědí}} u „<strong>$3</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-view": "Zobrazit komentář",
