@@ -48,4 +48,18 @@ class PlaintextEchoPresentationModelSection extends EchoPresentationModelSection
 		}
 		return $title;
 	}
+
+	/**
+	 * Get truncated section title, according to user's language
+	 * or a placeholder text if the section title is not available.
+	 *
+	 * @return string
+	 */
+	public function getTruncatedSectionTitle() {
+		if ( $this->exists() ) {
+			return parent::getTruncatedSectionTitle();
+		}
+
+		return wfMessage( 'discussiontools-notification-topic-hidden' )->inLanguage( $this->language )->text();
+	}
 }
