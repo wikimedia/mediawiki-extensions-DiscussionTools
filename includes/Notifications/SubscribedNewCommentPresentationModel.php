@@ -90,15 +90,11 @@ class SubscribedNewCommentPresentationModel extends EchoEventPresentationModel {
 			$msg = $this->msg( $this->getHeaderMessageKey() );
 			// Repeat is B/C until unused parameter is removed from translations
 			$msg->numParams( $count, $count );
+			$msg->plaintextParams( $this->section->getTruncatedSectionTitle() );
 		} else {
 			$msg = parent::getHeaderMessage();
 			$msg->params( $this->getTruncatedTitleText( $this->event->getTitle(), true ) );
-		}
-
-		if ( $this->section->exists() ) {
 			$msg->plaintextParams( $this->section->getTruncatedSectionTitle() );
-		} else {
-			$msg->plaintextParams( $this->msg( 'discussiontools-notification-topic-hidden' )->text() );
 		}
 
 		return $msg;
