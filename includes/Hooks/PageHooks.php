@@ -500,7 +500,7 @@ class PageHooks implements
 				$context->msg( $titleMsg )->parse()
 			) .
 			Html::rawElement( 'div', [ 'class' => 'plainlinks' ],
-				$context->msg( $descMsg, $descParams )->parseAsBlock()
+				$context->msg( $descMsg, ...$descParams )->parseAsBlock()
 			);
 
 		if ( $buttonMsg ) {
