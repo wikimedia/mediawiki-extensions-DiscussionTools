@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Christian Yakubu"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Labsigu",
+	"discussiontools-replywidget-cancel": "Nyesima",
+	"discussiontools-replywidget-mode-source": "Din yi shela",
+	"discussiontools-replywidget-mode-visual": "Paalo ni",
+	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Labsigu]"
+}

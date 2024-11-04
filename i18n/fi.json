@@ -53,7 +53,8 @@
 	"discussiontools-findcomment-results-notcurrent": "(ei nykyisessä versiossa)",
 	"discussiontools-findcomment-results-transcluded": "(sisällytetty toiselta sivulta)",
 	"discussiontools-findcomment-title": "Etsi kommentti",
-	"discussiontools-limitreport-timeusage": "DiscussionToolsin ajankäyttö",
+	"discussiontools-limitreport-errorreqid": "Keskustelutyökalujen virhepyynnön tunnus",
+	"discussiontools-limitreport-timeusage": "Keskustelutyökalujen ajankäyttö",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunti|sekuntia}}",
 	"discussiontools-newtopic-legacy-hint": "<strong>Uusi tapa aloittaa aiheita on nyt täällä.</strong> Tämän päivityksen avulla voit lisätä uusia keskustelunaiheita lomaketta käyttämällä, ja voit samalla myös helpommin pingata muita käyttäjiä. Voit myös [$1 vaihtaa takaisin vanhaan toimintoon].",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Käytät nyt vanhaa toimintoa.</strong> Voit [$1 palata uuteen toimintoon] tai asettaa vanhan toiminnon [$2 oletukseksi omissa asetuksissasi].",
@@ -144,6 +145,7 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "peruuta tilaus",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Peruuta tilaus",
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Peruuta tilaus lopettaaksesi ilmoitusten vastaanottamisen.",
+	"discussiontools-topicsubscription-error-not-found-body": "URL-osoitteessa määritettyä tilausta ei löytynyt.",
 	"discussiontools-topicsubscription-error-not-found-title": "Tilausta ei löytynyt",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Saat ilmoitukset tähän aiheeseen jätetyistä uusista kommenteista.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Tilaus tehty!",
@@ -170,7 +172,8 @@
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Vastaus]",
 	"tag-discussiontools-reply-description": "Käyttäjä vastasi kommenttiin Keskustelutyökaluilla",
 	"tag-discussiontools-source": "Lähdekoodi",
-	"tag-discussiontools-source-description": "Keskustelutyökalut olivat lähdekooditilassa",
+	"tag-discussiontools-source-description": "Keskustelutyökalut olivat wikitekstitilassa",
+	"tag-discussiontools-source-enhanced-description": "Keskustelutyökalut olivat wikitekstitilassa työkalupalkin kera",
 	"tag-discussiontools-visual": "Visuaalinen",
 	"tag-discussiontools-visual-description": "Keskustelutyökalut olivat visuaalisessa tilassa"
 }

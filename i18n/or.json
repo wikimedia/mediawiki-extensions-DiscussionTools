@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Psubhashish"
+			"Psubhashish",
+			"Chinmayee Mishra"
 		]
 	},
+	"discussiontools-postedit-confirmation-published": "ଆପଣଙ୍କ ମତ ପ୍ରକାଶ ପାଇଲା ।",
 	"discussiontools-replywidget-mode-visual": "ଭିଜୁଆଲ",
 	"tag-discussiontools-visual": "ଭିଜୁଆଲ"
 }
