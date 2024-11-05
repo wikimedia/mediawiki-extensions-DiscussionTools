@@ -14,7 +14,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
-use MediaWiki\Extension\DiscussionTools\ContentThreadItemSet;
+use MediaWiki\Extension\DiscussionTools\ContentThreadItemSetStatus;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
@@ -22,12 +22,12 @@ use MediaWiki\Page\ParserOutputAccess;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
-use RuntimeException;
 use Wikimedia\Assert\Assert;
-use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
+use Wikimedia\NormalizedException\NormalizedException;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Rdbms\IDBAccessObject;
@@ -118,13 +118,12 @@ class HookUtils {
 	 *        Otherwise, it should be set to the name of the calling method (__METHOD__),
 	 *        so we can track what is causing parser cache writes.
 	 *
-	 * @return ContentThreadItemSet
-	 * @throws ResourceLimitExceededException
+	 * @return ContentThreadItemSetStatus
 	 */
 	public static function parseRevisionParsoidHtml(
 		RevisionRecord $revRecord,
 		$updateParserCacheFor
-	): ContentThreadItemSet {
+	): ContentThreadItemSetStatus {
 		$services = MediaWikiServices::getInstance();
 		$mainConfig = $services->getMainConfig();
 		$parserOutputAccess = $services->getParserOutputAccess();
@@ -152,14 +151,12 @@ class HookUtils {
 		);
 
 		if ( !$status->isOK() ) {
-			[ 'message' => $key, 'params' => $params ] = $status->getErrors()[0];
-			// XXX: HtmlOutputRendererHelper checks for a resource limit exceeded message as well,
-			// maybe we shouldn't be catching that so low down.  Re-throw for callers.
+			// This is currently the only expected failure, make the caller handle it
 			if ( $status->hasMessage( 'parsoid-resource-limit-exceeded' ) ) {
-				throw new ResourceLimitExceededException( $params[0] ?? '' );
+				return ContentThreadItemSetStatus::wrap( $status );
 			}
-			$message = wfMessage( $key, ...$params );
-			throw new RuntimeException( $message->inLanguage( 'en' )->useDatabase( false )->text() );
+			// Any other failures indicate a software bug, so throw an exception
+			throw new NormalizedException( ...Status::wrap( $status )->getPsr3MessageAndContext() );
 		}
 
 		$parserOutput = $status->getValue();
@@ -176,7 +173,7 @@ class HookUtils {
 		/** @var CommentParser $parser */
 		$parser = $services->getService( 'DiscussionTools.CommentParser' );
 		$title = TitleValue::newFromPage( $revRecord->getPage() );
-		return $parser->parse( $container, $title );
+		return ContentThreadItemSetStatus::newGood( $parser->parse( $container, $title ) );
 	}
 
 	/**

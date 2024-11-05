@@ -15,7 +15,6 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\Parsoid\Utils\DOMUtils;
@@ -117,11 +116,11 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			$this->dieWithError( [ 'apierror-missingcontent-revid', $revision->getId() ], 'missingcontent' );
 		}
 
-		try {
-			return HookUtils::parseRevisionParsoidHtml( $revision, __METHOD__ );
-		} catch ( ResourceLimitExceededException $e ) {
-			$this->dieWithException( $e );
+		$status = HookUtils::parseRevisionParsoidHtml( $revision, __METHOD__ );
+		if ( !$status->isOK() ) {
+			$this->dieStatus( $status );
 		}
+		return $status->getValueOrThrow();
 	}
 
 	/**

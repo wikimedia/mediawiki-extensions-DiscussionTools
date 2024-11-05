@@ -34,22 +34,15 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Assert\Assert;
-use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 class EventDispatcher {
-	/**
-	 * @throws ResourceLimitExceededException
-	 */
 	private static function getParsedRevision( RevisionRecord $revRecord ): ContentThreadItemSet {
-		return HookUtils::parseRevisionParsoidHtml( $revRecord, __METHOD__ );
+		return HookUtils::parseRevisionParsoidHtml( $revRecord, __METHOD__ )->getValueOrThrow();
 	}
 
-	/**
-	 * @throws ResourceLimitExceededException
-	 */
 	public static function generateEventsForRevision( array &$events, RevisionRecord $newRevRecord ): void {
 		$services = MediaWikiServices::getInstance();
 
