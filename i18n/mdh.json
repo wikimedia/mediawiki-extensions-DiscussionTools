@@ -5,11 +5,17 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Sawalan",
+	"discussiontools-replylink": "{{GENDER:|sawalan}}",
 	"discussiontools-replywidget-cancel": "Batal",
 	"discussiontools-replywidget-mode-source": "Ebpunan",
 	"discussiontools-replywidget-reply": "{{GENDER:|Sawalan}}",
+	"discussiontools-replywidget-watchthis": "Iuman inia a salekat sa [[Special:Watchlist|watchlist]] nengka",
+	"discussiontools-topicheader-latestcomment": "Sangat a bagu a bitiala: $1",
 	"discussiontools-topicsubscription-button-subscribe": "edsubskrayb",
 	"discussiontools-topicsubscription-button-subscribe-label": "Edsubskrayb",
 	"discussiontools-topicsubscription-button-unsubscribe": "Di edsubskrayb",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Di edsubskrayb"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Di edsubskrayb",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Seka}} na nakasubskrayb!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Seka}} na di den makatalima sa payagan pantag sa manga bagu a bitiala sa inia pembitialan.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Seka}} na kena den nakasubskrayb!"
 }
