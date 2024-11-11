@@ -1,10 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jjnzamah"
+			"Jjnzamah",
+			"Kuzayet"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Shim",
+	"discussiontools-replywidget-advanced": "Yaka̱son",
 	"discussiontools-replywidget-cancel": "Hywat",
 	"discussiontools-replywidget-mode-source": "Nyai ke",
-	"discussiontools-replywidget-mode-visual": "Nkyang ccang"
+	"discussiontools-replywidget-mode-visual": "Nkyang ccang",
+	"discussiontools-replywidget-preview": "Yen ccang",
+	"discussiontools-replywidget-summary": "Namaryat",
+	"discussiontools-replywidget-watchthis": "mbrang ka̱zzu ka ni an wwan[[Special:Watchlist|Ka̱zzu ndang]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|Ayin|Ba̱nyet}} a̱ sshi Ba̱ryat",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|shim|ka̱shim}}",
+	"discussiontools-topicheader-latestcomment": "A̱hwai shim: $1",
+	"discussiontools-topicsubscription-button-subscribe": "yyak a̱subscribe",
+	"discussiontools-topicsubscription-button-subscribe-label": "Yyak a̱subscribe",
+	"discussiontools-topicsubscription-button-unsubscribe": "Ryok a̱subscribe",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Ryok a̱subscribe"
 }

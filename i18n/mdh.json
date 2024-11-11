@@ -7,6 +7,8 @@
 	"discussiontools-defaultsummary-reply": "Sawalan",
 	"discussiontools-replywidget-cancel": "Batal",
 	"discussiontools-replywidget-mode-source": "Ebpunan",
+	"discussiontools-replywidget-watchthis": "Iuman inia a salekat sa [[Special:Watchlist|watchlist]] nengka",
+	"discussiontools-topicheader-latestcomment": "Sangat a bagu a bitiala: $1",
 	"discussiontools-topicsubscription-button-subscribe": "edsubskrayb",
 	"discussiontools-topicsubscription-button-subscribe-label": "Edsubskrayb",
 	"discussiontools-topicsubscription-button-unsubscribe": "Di edsubskrayb",

@@ -12,7 +12,7 @@
 	"discussiontools-replywidget-preview": "Terawangan",
 	"discussiontools-replywidget-summary": "Ringkesan",
 	"discussiontools-replywidget-watchthis": "Tambake laman ni ke [[Special:Watchlist|lis pasatan]]",
-	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|wong}} di rembu'an",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|wong}} bekelakar",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|tanggepan}}",
 	"discussiontools-topicheader-latestcomment": "Tanggepan buncitan: $1",
 	"discussiontools-topicsubscription-button-subscribe": "langganan",
