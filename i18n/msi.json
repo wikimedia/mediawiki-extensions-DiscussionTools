@@ -10,6 +10,7 @@
 	"discussiontools-replywidget-cancel": "Kinsil",
 	"discussiontools-replywidget-mode-source": "Sumber",
 	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Jawab}} {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Nampak dulu",
 	"discussiontools-replywidget-reply": "{{GENDER:|Jawab}}",
 	"discussiontools-replywidget-summary": "Singkatan",
