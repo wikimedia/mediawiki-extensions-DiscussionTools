@@ -6,7 +6,6 @@
 			"Akakiiri",
 			"Akandee1",
 			"Akoonaba",
-			"Amire80",
 			"Amoramah",
 			"Atalata Gumah",
 			"Sir Amugi"
@@ -55,7 +54,6 @@
 	"discussiontools-replywidget-placeholder-reply": "Lebese {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Loorɛ",
 	"discussiontools-replywidget-preview": "Pa’alɛ",
-	"discussiontools-replywidget-reply": "{{GENDER:|Reply}}",
 	"discussiontools-replywidget-summary": "Kilesego",
 	"discussiontools-replywidget-watchthis": "Dikɛ pɛgerɛ wa pa'asɛ fu [[Special:Watchlist|yeledaasi]] puan",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|people}} in discussion",

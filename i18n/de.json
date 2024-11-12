@@ -2,7 +2,6 @@
 	"@metadata": {
 		"authors": [
 			"1233qwer1234qwer4",
-			"Amire80",
 			"Brettchenweber",
 			"CennoxX",
 			"Doc Taxon",
@@ -92,6 +91,7 @@
 	"discussiontools-notification-removed-topic-disable": "Benachrichtigungen wie diese nicht mehr erhalten",
 	"discussiontools-notification-removed-topic-disabled-title": "Du erhältst keine Benachrichtigungen mehr, wenn ein Abschnitt archiviert oder entfernt wird.",
 	"discussiontools-notification-removed-topic-disabled-body": "Du kannst dies in [[Special:Preferences#mw-prefsection-echo-echosubscriptions|deinen Einstellungen]] ändern.",
+	"discussiontools-notification-topic-hidden": "(Thema entfernt)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|antwortete}} zu „<strong>$4</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Eine neue Antwort|$1 neue Antworten|100=Über 99 neue Antworten}} in „<strong>$3</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-view": "Kommentar anzeigen",

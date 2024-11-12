@@ -119,6 +119,7 @@
 	"discussiontools-notification-removed-topic-disable": "停止接收此类通知",
 	"discussiontools-notification-removed-topic-disabled-title": "{{GENDER:|您}}不再会在话题被存档或删除时收到通知。",
 	"discussiontools-notification-removed-topic-disabled-body": "您可以在[[Special:Preferences#mw-prefsection-echo-echosubscriptions|您的参数设置]]内更改此设置。",
+	"discussiontools-notification-topic-hidden": "（主题已删除）",
 	"discussiontools-notification-subscribed-new-comment-header": "$1在“<strong>$4</strong>”内{{GENDER:$2|回复}}。",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "“<strong>$3</strong>”内有{{PLURAL:$1|$1个新回复|100=99+个新回复}}。",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1：<em>$3</em>。",

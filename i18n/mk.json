@@ -82,6 +82,7 @@
 	"discussiontools-notification-removed-topic-disable": "Престани да ми праќаш вакви известувања",
 	"discussiontools-notification-removed-topic-disabled-title": "Повеќе нема да {{GENDER:|добивате}} известувања кога една тема ќе се архивира или отстрани.",
 	"discussiontools-notification-removed-topic-disabled-body": "Ова можете да го измените во [[Special:Preferences#mw-prefsection-echo-echosubscriptions|вашите нагодувања]].",
+	"discussiontools-notification-topic-hidden": "(темата е отстранета)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|одговори}} на „<strong>$4</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Еден нов одговор|$1 нови одговори|100=Преку 99 нови одговори}} на „<strong>$3</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-view": "Прегледај коментар",

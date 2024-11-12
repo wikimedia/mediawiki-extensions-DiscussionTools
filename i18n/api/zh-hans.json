@@ -16,6 +16,7 @@
 	"apierror-discussiontools-commentid-notfound": "未找到ID为“$1”的留言。",
 	"apierror-discussiontools-commentname-ambiguous": "找到多个名称为“$1”的留言，必须提供<var>commentid</var>。",
 	"apierror-discussiontools-commentname-notfound": "未找到名称为“$1”的留言。",
+	"apierror-discussiontools-findcomment-pagenevertalk": "页面从未包含任何讨论。",
 	"apierror-discussiontools-formtoken-used": "留言已发布。重新加载页面即可看到。",
 	"apierror-discussiontools-subscription-failed-add": "无法订阅此话题。",
 	"apierror-discussiontools-subscription-failed-remove": "无法取消订阅此话题。",

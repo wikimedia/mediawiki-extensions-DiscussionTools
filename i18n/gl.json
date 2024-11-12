@@ -79,6 +79,7 @@
 	"discussiontools-notification-removed-topic-disable": "Deixar de recibir notificacións como esta",
 	"discussiontools-notification-removed-topic-disabled-title": "Xa non {{GENDER:|recibirás}} notificacións cando se arquive ou elimine un fío.",
 	"discussiontools-notification-removed-topic-disabled-body": "Podes mudar isto [[Special:Preferences#mw-prefsection-echo-echosubscriptions|nas túas preferencias]].",
+	"discussiontools-notification-topic-hidden": "(fío eliminado)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|respondeu}} en \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Unha resposta nova|$1 respostas novas|100=Máis de 99 respostas novas}} en \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Amosar o comentario",

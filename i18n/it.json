@@ -84,6 +84,7 @@
 	"discussiontools-notification-removed-topic-disable": "Disattiva questo tipo di notifiche",
 	"discussiontools-notification-removed-topic-disabled-title": "Non {{GENDER:|riceverai}} più notifiche quando un argomento viene archiviato o rimosso.",
 	"discussiontools-notification-removed-topic-disabled-body": "Puoi cambiarlo nelle [[Special:Preferences#mw-prefsection-echo-echosubscriptions|tue preferenze]].",
+	"discussiontools-notification-topic-hidden": "(argomento rimosso)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|ha risposto}} in \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Una nuova risposta|$1 nuove risposte|100=Più di 99 nuove risposte}} in \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Vedi commento",

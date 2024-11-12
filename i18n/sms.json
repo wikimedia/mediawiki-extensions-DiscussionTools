@@ -38,7 +38,7 @@
 	"discussiontools-replywidget-reply": "{{GENDER:|Vaʹstted}}",
 	"discussiontools-replywidget-summary": "Õʹhtteǩeässmõš",
 	"discussiontools-replywidget-watchthis": "Lââʹzzet tän seeid tuu [[Special:Watchlist|valvvâmliʹstte]]",
-	"discussiontools-topicheader-authorcount": "Saǥstõõllmõõžžâst {{PLURAL:$1|lie $1 ooumžed|0=ij leäkku ni õhtt ooumaž|1=lij 1 ooumaž|2=lie 2 oummu|3=lie 3 oummu|4=lie 4 oummu|5=lie 5 oummu|6=lie 6 oummu}}.",
+	"discussiontools-topicheader-authorcount": "Saǥstõõllmõõžžâst {{PLURAL:$1|lie $1 ooumžed|0=ij leäkku ni õhtt ooumaž|1=lij õhtt ooumaž|2=lie 2 oummu|3=lie 3 oummu|4=lie 4 oummu|5=lie 5 oummu|6=lie 6 oummu}}.",
 	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|$1 kommeʹntted|1=Õhtt kommeʹntt|2=2 kommeeʹnt|3=3 kommeeʹnt|4=4 kommeeʹnt|5=5 kommeeʹnt|6=6 kommeeʹnt}}",
 	"discussiontools-topicheader-latestcomment": "Ođđsumus kommeʹntt: $1",
 	"discussiontools-topicsubscription-action-subscribe-button": "Tiʹlle",
