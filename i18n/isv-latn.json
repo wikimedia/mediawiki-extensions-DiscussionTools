@@ -79,6 +79,7 @@
 	"discussiontools-notification-removed-topic-disable": "Veče ne dostavati takove uvědomjenja",
 	"discussiontools-notification-removed-topic-disabled-title": "{{GENDER:|Vy}} veče ne budete dostavati uvědomjenja, kogdy tema jest arhivovana ili udaljena.",
 	"discussiontools-notification-removed-topic-disabled-body": "Vy možete to izměniti v [[Special:Preferences#mw-prefsection-echo-echosubscriptions|svojih nastavjenjah]].",
+	"discussiontools-notification-topic-hidden": "(tema udaljena)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 odgovoril{{GENDER:$2||a}} v temě «<strong>$4</strong>».",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Jedin novy odgovor|$1 nove odgovory|$1 novyh odgovorov|100=sto ili veče novyh odgovorov}} v temě «<strong>$3</strong>».",
 	"discussiontools-notification-subscribed-new-comment-view": "Pokazati komentar",
