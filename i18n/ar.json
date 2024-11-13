@@ -125,7 +125,7 @@
 	"discussiontools-preference-topicsubscription-help": "سيمكّنك تفعيل الأداة من المتابعة لتلقّي إخطارات حول تعليقات في مواضيع منفصلة.",
 	"discussiontools-preference-visualenhancements": "إظهار نشاط المناقشة",
 	"discussiontools-preference-visualenhancements-help": "سيمكّن هذا إلى إظهار صفحة نقاش جديدة تتضمن معلومات حول النشاط في كل مناقشة.",
-	"discussiontools-replybutton": "{{GENDER:|ردّ}}",
+	"discussiontools-replybutton": "{{GENDER:|ردّ|ردت}}",
 	"discussiontools-replylink": "{{GENDER:|ردّ|ردّي}}",
 	"discussiontools-replywidget-abandon": "هل أنت {{GENDER:|متأكّد|متاكّدة}} من إلغاء التعليق الذي كنت بصدد كتابته؟",
 	"discussiontools-replywidget-abandon-discard": "التخلُّص من التعليق",
