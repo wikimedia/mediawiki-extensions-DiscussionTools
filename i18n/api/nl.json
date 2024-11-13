@@ -8,6 +8,7 @@
 	"apierror-discussiontools-commentid-notfound": "Reactie met ID ‘$1’ niet gevonden.",
 	"apierror-discussiontools-commentname-ambiguous": "Meerdere reacties met de naam ‘$1’ gevonden, <var>commentid</var> is vereist.",
 	"apierror-discussiontools-commentname-notfound": "Reactie met de naam ‘$1’ niet gevonden.",
+	"apierror-discussiontools-findcomment-pagenevertalk": "Deze pagina heeft nooit overleg bevat.",
 	"apierror-discussiontools-formtoken-used": "Reactie al geplaatst. Laad de pagina opnieuw om deze te zien.",
 	"apierror-discussiontools-subscription-failed-add": "Kan zich niet abonneren op dit onderwerp.",
 	"apierror-discussiontools-subscription-failed-remove": "Kan zich niet afmelden voor dit onderwerp.",
