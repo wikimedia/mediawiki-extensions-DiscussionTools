@@ -605,7 +605,7 @@ class CommentParser {
 				$username = $userpage->getText();
 			}
 		}
-		if ( !$username ) {
+		if ( $username === null ) {
 			return null;
 		}
 		if ( IPUtils::isIPv6( $username ) ) {
@@ -924,7 +924,7 @@ class CommentParser {
 				$foundSignature = $this->findSignature( $node, $curCommentEnd );
 				$author = $foundSignature['username'];
 
-				if ( !$author ) {
+				if ( $author === null ) {
 					// Ignore timestamps for which we couldn't find a signature. It's probably not a real
 					// comment, but just a false match due to a copypasted timestamp.
 					continue;
@@ -969,7 +969,7 @@ class CommentParser {
 							$treeWalker->currentNode = $n;
 							// …and add it as another signature to this comment (regardless of the author and timestamp)
 							$foundSignature2 = $this->findSignature( $n, $node );
-							if ( $foundSignature2['username'] ) {
+							if ( $foundSignature2['username'] !== null ) {
 								$sigRanges[] = $this->adjustSigRange( $foundSignature2['nodes'], $match2, $n );
 								$timestampRanges[] = $match2['range'];
 							}
