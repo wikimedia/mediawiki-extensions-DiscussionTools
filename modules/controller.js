@@ -96,11 +96,11 @@ function getPageData( pageName, oldId, apiParams ) {
 			linterrors: linterrors,
 			transcludedfrom: transcludedfrom,
 			metadata: metadata
-		} ), () => {
+		} ), ( ...args ) => {
 			// Clear on failure
 			pageDataCache[ pageName ][ oldId ] = null;
 			// Let caller handle the error
-			return $.Deferred().rejectWith( this, arguments );
+			return $.Deferred().reject( ...args );
 		} );
 
 	if ( $.isEmptyObject( apiParams ) ) {
