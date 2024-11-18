@@ -79,6 +79,7 @@
 	"discussiontools-notification-removed-topic-disable": "Badu nerima pemadah baka tu",
 	"discussiontools-notification-removed-topic-disabled-title": "{{GENDER:|Nuan}} enda agi nerima pemadah enti topik udah diarkib tauka dikalih pansut.",
 	"discussiontools-notification-removed-topic-disabled-body": "Nuan ulih nukar atur tu ba [[Special:Preferences#mw-prefsection-echo-echosubscriptions|peneka nuan]].",
+	"discussiontools-notification-topic-hidden": "(topik dibuai)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|udah nyaut}} ba \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Siti saut baru|$1 saut baru|100=99+ saut baru}} ba \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Peda komen",
