@@ -94,6 +94,7 @@
 	"discussiontools-notification-removed-topic-disable": "التوقف عن تلقي إخطارات كهذه",
 	"discussiontools-notification-removed-topic-disabled-title": "لن تتلقى إشعاراتٍ بعد الآن عندما تتم أرشفة أو إزالة موضوع ما.",
 	"discussiontools-notification-removed-topic-disabled-body": "يمكنكم تغيير هذا في [[Special:Preferences#mw-prefsection-echo-echosubscriptions|تفضيلاتكم]].",
+	"discussiontools-notification-topic-hidden": "(تم إزالة الموضوع)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|ردّ|ردّت}} في \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|لا ردّ|ردّ واحد جديد|ردّان جديدان|$1 ردود جديدة|$1 ردّا جديدا}} في «<strong>$3</strong>».",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
