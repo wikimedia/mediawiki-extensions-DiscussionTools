@@ -12,6 +12,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Parsoid\Core\ResourceLimitExceededException;
@@ -110,6 +111,10 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		if ( !$title || !HookUtils::isAvailableForTitle( $title ) ) {
 			// T325477: don't parse non-discussion pages
 			return new ContentThreadItemSet;
+		}
+
+		if ( !$revision->audienceCan( RevisionRecord::DELETED_TEXT, RevisionRecord::FOR_PUBLIC ) ) {
+			$this->dieWithError( [ 'apierror-missingcontent-revid', $revision->getId() ], 'missingcontent' );
 		}
 
 		try {
