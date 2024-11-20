@@ -675,9 +675,7 @@ class CommentParser {
 						$user = $this->getUsernameFromLink( $node );
 						if ( $user ) {
 							// Accept the first link to the user namespace, then only accept links to that user
-							if ( $sigUsername === null ) {
-								$sigUsername = $user['username'];
-							}
+							$sigUsername ??= $user['username'];
 							if ( $user['username'] === $sigUsername ) {
 								$lastLinkNode = $node;
 								if ( $user['displayName'] ) {
