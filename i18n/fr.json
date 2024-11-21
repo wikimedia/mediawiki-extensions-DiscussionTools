@@ -24,7 +24,8 @@
 			"Alien333",
 			"Rayquachu",
 			"Goombiis",
-			"Mahabarata"
+			"Mahabarata",
+			"Od1n"
 		]
 	},
 	"discussiontools": "Outils de discussion",
@@ -173,7 +174,7 @@
 	"discussiontools-target-comments-missing": "Les nouvelles réponses sont introuvables. Elles ont peut-être été supprimées ou déplacées.",
 	"discussiontools-target-heading-missing": "Ce sujet est introuvable. Il a peut-être été supprimé ou déplacé.",
 	"discussiontools-target-comment-found-moved": "Ce message est introuvable sur cette page, mais il existe sur {{PLURAL:$1|la page suivante|les pages suivantes}} :",
-	"discussiontools-target-heading-found-moved": "Ce sujet est introuvable sur cette page, mais il existe sur la {{PLURAL:$1| page suivante|pages suivantes}} :",
+	"discussiontools-target-heading-found-moved": "Ce sujet est introuvable sur cette page, mais il existe sur {{PLURAL:$1|la page suivante|les pages suivantes}} :",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|participant|participants}} à la discussion",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|commentaire|commentaires}}",
 	"discussiontools-topicheader-latestcomment": "Dernier commentaire : $1",

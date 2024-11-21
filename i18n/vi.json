@@ -14,7 +14,8 @@
 			"Pisceskaze",
 			"Vinhtantran",
 			"SongNgu.xyz",
-			"NguyenHung"
+			"NguyenHung",
+			"FunnyYellowDog"
 		]
 	},
 	"discussiontools": "Công cụ thảo luận",
@@ -150,7 +151,7 @@
 	"discussiontools-replywidget-signature-body": "Chữ ký {{GENDER:|của bạn}} đã được đổi thành $1. Để hủy thay đổi, nhập $2. Chú ý rằng với công cụ này, bạn không cần phải ký tên vào bình luận. Chữ ký của bạn sẽ được tự động thêm vào.",
 	"discussiontools-replywidget-signature-title": "Đã phát hiện có mã định dạng trong chữ ký",
 	"discussiontools-replywidget-summary": "Tóm lược",
-	"discussiontools-replywidget-terms-click": "Với việc nhấn “$1”, {{GENDER:|bạn}} chấp nhận các điều khoản sử dụng của trang web này.",
+	"discussiontools-replywidget-terms-click": "Với việc nhấn “$1”, {{GENDER:|bạn}} chấp nhận các điều khoản sử dụng của wiki này.",
 	"discussiontools-replywidget-transcluded": "Bình luận của bạn sẽ được lưu tại [[$1]].",
 	"discussiontools-replywidget-watchthis": "Thêm trang này vào [[Special:Watchlist|danh sách theo dõi]]",
 	"discussiontools-signature-prefix": "&#32;–&nbsp;",
