@@ -112,7 +112,7 @@ class CommentFormatter {
 		$wrapperNode = $headingElement->parentNode;
 		if ( !(
 			$wrapperNode instanceof Element &&
-			DOMCompat::getClassList( $wrapperNode )->contains( 'mw-heading' )
+			DOMUtils::hasClass( $wrapperNode, 'mw-heading' )
 		) ) {
 			// Do not add the wrapper if the heading has attributes generated from wikitext (T353489).
 			// Only allow reserved attributes (e.g. 'data-mw', which can't be used in wikitext, but which
@@ -379,7 +379,7 @@ class CommentFormatter {
 		$headings = DOMCompat::querySelectorAll( $container, 'h2' );
 		foreach ( $headings as $headingElement ) {
 			$wrapper = $headingElement->parentNode;
-			if ( $wrapper instanceof Element && DOMCompat::getClassList( $wrapper )->contains( 'toctitle' ) ) {
+			if ( $wrapper instanceof Element && DOMUtils::hasClass( $wrapper, 'toctitle' ) ) {
 				continue;
 			}
 			$headingElement = static::handleHeading( $headingElement );
