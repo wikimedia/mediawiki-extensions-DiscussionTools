@@ -3,17 +3,18 @@
 		"authors": [
 			"Keenan Pepper",
 			"20kdc",
-			"Tamzin"
+			"Tamzin",
+			"Juwan"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "toki sin",
 	"discussiontools-replywidget-advanced": "namako",
-	"discussiontools-replywidget-cancel": "o ala",
+	"discussiontools-replywidget-cancel": "o toki ala",
 	"discussiontools-replywidget-mode-source": "toki ilo",
 	"discussiontools-replywidget-mode-visual": "toki lukin",
 	"discussiontools-replywidget-preview": "toki ken",
 	"discussiontools-replywidget-summary": "toki toki",
-	"discussiontools-replywidget-watchthis": "o pana e lipu ni tawa [[Special:Watchlist|lipu lukin mi]]",
+	"discussiontools-replywidget-watchthis": "o pana e lipu ni tawa [[Special:Watchlist|lipu lukin sina]]",
 	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|jan}} $1 li toki",
 	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|toki}} $1",
 	"discussiontools-topicheader-latestcomment": "toki sin poka: $1",

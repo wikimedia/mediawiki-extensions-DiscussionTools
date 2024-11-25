@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dinkawiki"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Jawí",
+	"discussiontools-replywidget-advanced": "Irikwaŋ",
+	"discussiontools-replywidget-cancel": "Báásjáa",
+	"discussiontools-replywidget-mode-source": "Ka̠rɨŋa",
+	"discussiontools-replywidget-preview": "Jalŋolawaarkwaŋ",
+	"discussiontools-replywidget-summary": "Bʉddejawí",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ʉdóŋja̠bɨ́|ʉdóŋja̠bɨ́ŋá}}",
+	"discussiontools-topicheader-latestcomment": "Naadákkin'íŋ ʉdóŋja̠bɨ́: $1",
+	"discussiontools-topicsubscription-button-subscribe": "daara-lé jeeŋ",
+	"discussiontools-topicsubscription-button-subscribe-label": "Daara-lé jeeŋ",
+	"discussiontools-topicsubscription-button-unsubscribe": "daara-lé juró",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Daara-lé juró"
+}

@@ -45,7 +45,7 @@
 	"discussiontools-notification-removed-topic-disable": "Ophalen Notifikatioune wéi dës ze kréien",
 	"discussiontools-notification-removed-topic-disabled-title": "Dir kritt keng Notifikatioune méi wann e Sujet archivéiert oder ewechgeholl gouf.",
 	"discussiontools-notification-removed-topic-disabled-body": "Dir kënnt dëst an [[Special:Preferences#mw-prefsection-echo-echosubscriptions|Ären Astellungen]] änneren.",
-	"discussiontools-notification-subscribed-new-comment-header": "{{GENDER:$2|De(n) |D'}}$1 huet op „<strong>$4</strong>“ geäntwert.",
+	"discussiontools-notification-subscribed-new-comment-header": "{{GENDER:$2|De(n) $1|D'$1}} huet op „<strong>$4</strong>“ geäntwert.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Eng nei Äntwert|$1 nei Äntwerten|100=Méi wéi 99 nei Äntwerten}} op „<strong>$3</strong>“.",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Kommentar weisen",

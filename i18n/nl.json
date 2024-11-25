@@ -16,7 +16,8 @@
 			"Romaine",
 			"HanV",
 			"Siebrand",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Jeroen N"
 		]
 	},
 	"discussiontools": "Overleghulpmiddelen",
@@ -104,7 +105,7 @@
 	"discussiontools-replybutton": "Reageren",
 	"discussiontools-replylink": "reageer",
 	"discussiontools-replywidget-abandon": "Weet u zeker dat u de reactie die u aan het schrijven bent, weg wil doen?",
-	"discussiontools-replywidget-abandon-discard": "Reactie negeren",
+	"discussiontools-replywidget-abandon-discard": "Reactie verwijderen",
 	"discussiontools-replywidget-abandon-keep": "Doorgaan met schrijven",
 	"discussiontools-replywidget-abandontopic": "Weet u zeker dat u het onderwerp dat u aan het schrijven bent, weg wil doen?",
 	"discussiontools-replywidget-abandontopic-discard": "Onderwerp negeren",
