@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"The Discoverer"
+			"The Discoverer",
+			"Woytecr"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "जबाब",
@@ -29,5 +30,5 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "कळोवण्यो बंद कर",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "कळोवण्यो बंद कर",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "कळोवण्यो बंद कर",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} जबाब दी]"
+	"tag-discussiontools-reply": "जबाब दी"
 }

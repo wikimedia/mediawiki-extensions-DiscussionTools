@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Woytecr",
 			"Къарачайлы"
 		]
 	},
@@ -184,9 +185,9 @@
 	"tag-discussiontools-description": "DiscussionTools хайырланыб этилген тюзетиу",
 	"tag-discussiontools-edit": "Тюзетилген оюм",
 	"tag-discussiontools-edit-description": "Хайырланыучу DiscussionTools бла болгъан оюмну тюзетди",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Джангы тема]",
+	"tag-discussiontools-newtopic": "Джангы тема",
 	"tag-discussiontools-newtopic-description": "Хайырланыучу, DiscussionTools бла бетге джангы тема къошду",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Джууаб]",
+	"tag-discussiontools-reply": "Джууаб",
 	"tag-discussiontools-reply-description": "Хайырланыучу DiscussionTools бла оюмгъа джууаб берди",
 	"tag-discussiontools-source-description": "DiscussionTools къайнакъ режимде эди",
 	"tag-discussiontools-source-enhanced-description": "TartışmaAraçları адыр панель бла кенгерилген къайнакъ режимде эди",

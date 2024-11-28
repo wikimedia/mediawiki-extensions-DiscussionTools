@@ -17,6 +17,7 @@
 			"Stanglavine",
 			"Stephanyb76",
 			"Wiiformii",
+			"Woytecr",
 			"YuriNikolai"
 		]
 	},
@@ -176,9 +177,9 @@
 	"tag-discussiontools-description": "Edição feita usando DiscussionTools",
 	"tag-discussiontools-edit": "Comentário editado",
 	"tag-discussiontools-edit-description": "O usuário editou um comentário existente com DiscussionTools",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Novo tópico]",
+	"tag-discussiontools-newtopic": "Novo tópico",
 	"tag-discussiontools-newtopic-description": "O usuário adicionou um novo tópico à página com DiscussionTools",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Resposta]",
+	"tag-discussiontools-reply": "Resposta",
 	"tag-discussiontools-reply-description": "O usuário respondeu a um comentário com DiscussionTools",
 	"tag-discussiontools-source-description": "DiscussionTools estava no modo de fonte",
 	"tag-discussiontools-source-enhanced-description": "O DiscussionTools estava em modo de código-fonte aprimorado com a barra de ferramentas",

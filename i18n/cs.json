@@ -12,7 +12,8 @@
 			"Mormegil",
 			"Patriccck",
 			"Patrik L.",
-			"Robins7"
+			"Robins7",
+			"Woytecr"
 		]
 	},
 	"discussiontools": "Diskusní nástroje",
@@ -185,9 +186,9 @@
 	"tag-discussiontools-description": "Editace provedená pomocí Diskusních nástrojů",
 	"tag-discussiontools-edit": "editace komentáře",
 	"tag-discussiontools-edit-description": "Uživatel editoval existující komentář pomocí Diskusních nástrojů",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nové téma]",
+	"tag-discussiontools-newtopic": "Nové téma",
 	"tag-discussiontools-newtopic-description": "Uživatel přidal nové téma pomocí Diskusních nástrojů",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Odpověď]",
+	"tag-discussiontools-reply": "Odpověď",
 	"tag-discussiontools-reply-description": "Uživatel odpověděl na komentář pomocí Diskusních nástrojů",
 	"tag-discussiontools-source-description": "Editace byla uložena pomocí Diskusních nástrojů v editoru zdrojového kódu",
 	"tag-discussiontools-source-enhanced-description": "Diskusní nástroje byly v rozšířeném editoru zdrojového kódu s panelem nástrojů",

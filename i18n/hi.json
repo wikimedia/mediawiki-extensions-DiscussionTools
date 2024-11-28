@@ -5,6 +5,7 @@
 			"Saurmandal",
 			"Shypoetess",
 			"Srishakatux",
+			"Woytecr",
 			"गोपाल",
 			"पदाति",
 			"भारत्पराक्रमि",
@@ -51,5 +52,5 @@
 	"discussiontools-topicsubscription-pager-topic": "विषय",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "सदस्यताएँ संपादित करें",
 	"echo-category-title-dt-subscription": "वार्ता पृष्ठ की {{PLURAL:$1|सदस्यता|सदस्यताएँ}}",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} उत्तर]"
+	"tag-discussiontools-reply": "उत्तर"
 }

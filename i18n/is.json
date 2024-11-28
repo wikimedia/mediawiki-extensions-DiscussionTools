@@ -6,6 +6,7 @@
 			"Snævar",
 			"Stefán Örvar Sigmundsson",
 			"Sveinn í Felli",
+			"Woytecr",
 			"Þjarkur"
 		]
 	},
@@ -79,6 +80,6 @@
 	"echo-category-title-dt-subscription": "{{PLURAL:$1|Áskrift|Áskriftir}} spjallsíðu",
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Geymsla}} spjallsíðu",
 	"discussiontools-comments-before-first-heading-category-desc": "Umræðusíðan inniheldur athugasemdir í aðalhlutanum (á undan fyrstu fyrirsögninni). Þetta getur valdið því að aðalhlutinn eða athugasemdirnar birtist rangt, sérstaklega í farsímaútgáfunni og í farsímaöppum.",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nýr hluti]",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Svar]"
+	"tag-discussiontools-newtopic": "Nýr hluti",
+	"tag-discussiontools-reply": "Svar"
 }

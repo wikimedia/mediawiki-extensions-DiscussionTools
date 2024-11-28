@@ -5,6 +5,7 @@
 			"Luky001",
 			"Matroxko",
 			"Teslaton",
+			"Woytecr",
 			"Yardom78"
 		]
 	},
@@ -131,9 +132,9 @@
 	"tag-discussiontools-description": "Úprava vykonaná pomocou Diskusných nástrojov",
 	"tag-discussiontools-edit": "Upravený príspevok",
 	"tag-discussiontools-edit-description": "Používateľ upravil existujúci príspevok pomocou Diskusných nástrojov",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nová téma]",
+	"tag-discussiontools-newtopic": "Nová téma",
 	"tag-discussiontools-newtopic-description": "Používateľ pridal novú tému pomocou Diskusných nástrojov",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odpoveď]",
+	"tag-discussiontools-reply": "odpoveď",
 	"tag-discussiontools-reply-description": "Používateľ odpovedal na príspevok pomocou Diskusných nástrojov",
 	"tag-discussiontools-source-description": "Úprava bola uložená pomocou Diskusných nástrojov v editore zdrojového kódu",
 	"tag-discussiontools-source-enhanced-description": "Diskusné nástroje boli v rozšírenom editore zdrojového kódu s panelom nástrojov",

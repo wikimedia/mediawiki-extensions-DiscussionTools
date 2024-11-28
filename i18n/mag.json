@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Woytecr",
 			"ऐक्टिवेटेड्"
 		]
 	},
@@ -90,9 +91,9 @@
 	"tag-discussiontools-description": "चर्चा उपकरणके प्रयोगसे सम्पादन कैल गेल",
 	"tag-discussiontools-edit": "सम्पादित टिप्पणी",
 	"tag-discussiontools-edit-description": "सदस्य चर्चा उपकरण द्वारा एगो बिद्यमान टिप्पणीके सम्पादन कैलन",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} नया बिषय]",
+	"tag-discussiontools-newtopic": "नया बिषय",
 	"tag-discussiontools-newtopic-description": "सदस्य चर्चा उपकरण द्वारा पन्नापर एगो नया बिषय जोड़लन",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} उत्तर]",
+	"tag-discussiontools-reply": "उत्तर",
 	"tag-discussiontools-reply-description": "सदस्य चर्चा उपकरण द्वारा टिप्पणीके उत्तर देलन",
 	"tag-discussiontools-source-description": "चर्चा उपकरण स्रोत योजनामे हलै",
 	"tag-discussiontools-source-enhanced-description": "उपकरणपट्टी सङ्गे चर्चा उपकरण उन्नत स्रोत योजनामे हल",

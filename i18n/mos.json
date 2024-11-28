@@ -5,7 +5,8 @@
 			"Azoure latif 2",
 			"Hasslaebetch",
 			"Raizkgh",
-			"Soumaya"
+			"Soumaya",
+			"Woytecr"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|yii}} y nan paama Kibay san maan t ned kõ gomd paalga sõs kada pʋge.Y toe malga y sõs-bãngra yãmb san rata",
@@ -188,9 +189,9 @@
 	"tag-discussiontools-description": "D sẽn maand n tũ DiscussionTools wã",
 	"tag-discussiontools-edit": "Gomde teke",
 	"tag-discussiontools-edit-description": "Tʋmtʋmda malga-gʋlsga ne goam sana ne sõs tʋʋm-teedo",
-	"tag-discussiontools-newtopic": "[{{int: discussiontools-replywidget-newtopic-link}} yɛl-wɛɛng paalga]",
+	"tag-discussiontools-newtopic": "yɛl-wɛɛng paalga",
 	"tag-discussiontools-newtopic-description": "Tʋmtɩmda paasa yɛl-wɛɛng paalga nenga pɩge ne sõs-teedo",
-	"tag-discussiontools-reply": "[{{int: discussiontools-replywidget-reply-link}} loki]",
+	"tag-discussiontools-reply": "loki",
 	"tag-discussiontools-reply-description": "Tɩmtɩmde loka gomda ne sõs-tʋʋm-teedo",
 	"tag-discussiontools-source-description": "Sõs-tʋʋm-teed ra be ne yĩgra mõde",
 	"tag-discussiontools-source-enhanced-description": "Sõs-tʋm-teed da be ne yĩgr mode la toolbar",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kizule",
-			"Matma Rex"
+			"Matma Rex",
+			"Woytecr"
 		]
 	},
 	"discussiontools": "Alatke za razgovor",
@@ -125,9 +126,9 @@
 	"tag-discussiontools-description": "Izmene pomoću alatka za razgovor",
 	"tag-discussiontools-edit": "komentar izmenjen",
 	"tag-discussiontools-edit-description": "Korisnik je uredio postojeći komentar pomoću alatka za razgovor",
-	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Nova tema]",
+	"tag-discussiontools-newtopic": "Nova tema",
 	"tag-discussiontools-newtopic-description": "Korisnik je dodao novu temu na stranicu pomoću alatka za razgovor",
-	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} odgovor]",
+	"tag-discussiontools-reply": "odgovor",
 	"tag-discussiontools-reply-description": "Korisnik je odgovorio na komentar pomoću alatka za razgovor",
 	"tag-discussiontools-source-description": "Alatke za razgovor bile su u izvornom režimu.",
 	"tag-discussiontools-visual-description": "Alatke za razgovor bile su u vizuelnom režimu."
