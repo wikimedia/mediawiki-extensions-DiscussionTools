@@ -45,7 +45,7 @@ class DataUpdatesHooks implements RevisionDataUpdatesHook {
 			$method = __METHOD__;
 			$updates[] = new MWCallableUpdate( function () use ( $rev, $method ) {
 				try {
-					$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev, $method );
+					$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev, $method )->getValueOrThrow();
 					if ( !$this->threadItemStore->isDisabled() ) {
 						$this->threadItemStore->insertThreadItems( $rev, $threadItemSet );
 					}
