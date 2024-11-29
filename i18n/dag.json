@@ -14,7 +14,8 @@
 			"Matma Rex",
 			"Musahfm",
 			"Naporo",
-			"Ruky Wunpini"
+			"Ruky Wunpini",
+			"Woytecr"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|You}} ni nya buɣisigu so yi niŋ tɔɣino zaŋ chaŋ saawara ŋɔ polo. A ni tooi baŋsi a ni bɔri ni nyari buɣisigu ŋɔ shɛm.",
@@ -119,8 +120,8 @@
 	"discussiontools-topicsubscription-button-unsubscribe": "yihimi a maŋa",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "yihimi a maŋa",
 	"discussiontools-topicsubscription-error-not-found-title": "Ti bi nya a toto",
-	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER\n:|You}} ni nya lahibali zaŋ chaŋ taha shɛɣa yɛltɔɣa zuɣu ŋɔ ni",
-	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER\n:|You}} zaŋ a maŋa m-pahi",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|You}} ni nya lahibali zaŋ chaŋ taha shɛɣa yɛltɔɣa zuɣu ŋɔ ni",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|You}} zaŋ a maŋa m-pahi",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "A ku lahi nya tibili zaŋ chaŋ tɔɣino pala yaha zaŋ kpa bɔhim yaɣili ŋɔ.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|You}} have unsubscribed\n yihi a maŋa",
 	"discussiontools-topicsubscription-pager-actions": "Tumbu",
