@@ -87,6 +87,7 @@
 	"discussiontools-notification-removed-topic-disable": "Wyłącz powiadomienia tego typu",
 	"discussiontools-notification-removed-topic-disabled-title": "Nie będziesz już otrzymywać powiadomień, gdy wątek zostanie zarchiwizowany lub usunięty.",
 	"discussiontools-notification-removed-topic-disabled-body": "Możesz to zmienić w [[Special:Preferences#mw-prefsection-echo-echosubscriptions|swoich preferencjach]].",
+	"discussiontools-notification-topic-hidden": "(ukryto temat)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|odpowiedział|odpowiedziała|odpowiedział(a)}} w wątku „<strong>$4</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Nowa odpowiedź|$1 nowe odpowiedzi|$1 nowych odpowiedzi|100=99+ nowych odpowiedzi}} w wątku „<strong>$3</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-view": "Zobacz komentarz",

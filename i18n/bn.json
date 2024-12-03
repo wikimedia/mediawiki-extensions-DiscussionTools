@@ -88,6 +88,7 @@
 	"discussiontools-notification-removed-topic-disable": "এই জাতীয় বিজ্ঞপ্তি দিবেন না",
 	"discussiontools-notification-removed-topic-disabled-title": "একটি আলোচনা সংগ্রহশালায় নেওয়া হলে কিংবা সরিয়ে ফেলা হলে সেই সম্পর্কে আপনি আর বিজ্ঞপ্তি পাবেন না।",
 	"discussiontools-notification-removed-topic-disabled-body": "আপনি [[Special:Preferences#mw-prefsection-echo-echosubscriptions|আপনার পছন্দসমূহে]] এটি পরিবর্তন করতে পারবেন।",
+	"discussiontools-notification-topic-hidden": "(আলোচনা সরিয়ে ফেলা হয়েছে)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 \"<strong>$4</strong>\" আলোচনায় {{GENDER:$2|উত্তর দিয়েছেন}}।",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "\"<strong>$3</strong>\" আলোচনায় {{PLURAL:$1|একটি নতুন উত্তর|$1টি নতুন উত্তর|100=৯৯টি+ নতুন উত্তর}} এসেছে।",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>।",
