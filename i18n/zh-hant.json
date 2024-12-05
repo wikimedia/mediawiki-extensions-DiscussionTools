@@ -14,6 +14,7 @@
 			"Winston Sung",
 			"Woytecr",
 			"Xiplus",
+			"列维劳德",
 			"捍粵者",
 			"沈澄心"
 		]
@@ -94,6 +95,7 @@
 	"discussiontools-notification-removed-topic-disable": "停止接收這類通知",
 	"discussiontools-notification-removed-topic-disabled-title": "當話題被存檔或移除時，{{GENDER:|您}}不會再收到通知。",
 	"discussiontools-notification-removed-topic-disabled-body": "您可以在[[Special:Preferences#mw-prefsection-echo-echosubscriptions|您的偏好設定]]中更改此設定。",
+	"discussiontools-notification-topic-hidden": "(話題已移除)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1{{GENDER:$2|回覆了}}「<strong>$4</strong>」。",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "「<strong>$3</strong>」有{{PLURAL:$1|一則新回覆|$1則新回覆|100=99+則新回覆}}。",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1：<em>$3</em>。",
