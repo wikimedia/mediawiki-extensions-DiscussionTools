@@ -136,7 +136,19 @@ class CommentFormatter {
 			return $wrapperNode;
 		}
 
-		$uneditable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) === null;
+		$uneditable = false;
+		$wrapperParent = $wrapperNode->parentNode;
+		if (
+			$wrapperParent instanceof Element &&
+			strtolower( $wrapperParent->tagName ) === 'section'
+		) {
+			// Parsoid
+			$uneditable = $wrapperParent->getAttribute( 'data-mw-section-id' ) < 0;
+		} else {
+			// Legacy parser
+			$uneditable = DOMCompat::querySelector( $wrapperNode, 'mw\\:editsection' ) === null;
+		}
+
 		$headingItem->setUneditableSection( $uneditable );
 		self::addOverflowMenuButton( $headingItem, $doc, $wrapperNode );
 
