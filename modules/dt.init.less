@@ -788,8 +788,11 @@ h1, h2, h3, h4, h5, h6 {
 		// .mw-body-content selector prevents this applying to content in the preview (T318758)
 		// On non-existent pages MobileFrontend wrapping isn't there
 		.mw-body-content > .mw-talkpageheader,
+		/* Legacy parser */
 		.mw-body-content > .mf-section-0,
-		.mw-body-content > .mw-parser-output > .mf-section-0 {
+		.mw-body-content > .mw-parser-output > .mf-section-0,
+		/* Parsoid */
+		.mw-body-content > .mw-parser-output > section[ data-mw-section-id='0' ] {
 			> *:not( .ext-discussiontools-emptystate ) {
 				display: none;
 			}
