@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bloomaround"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Ⲫⲃⲱϩⲉⲙ",
+	"discussiontools-replywidget-advanced": "Ⲛⲏ ⲉⲧϭⲟⲥⲓ",
+	"discussiontools-replywidget-cancel": "Ⲕⲱⲣϥ",
+	"discussiontools-replywidget-mode-source": "Ⲫⲁⲕⲱⲇⲓⲝ",
+	"discussiontools-replywidget-mode-visual": "Ⲫⲁⲛⲁⲩ",
+	"discussiontools-replywidget-preview": "Ⲫⲡⲣⲟⲛⲓⲁ",
+	"discussiontools-replywidget-summary": "Ⲧⲡⲁⲣⲁⲫⲣⲁⲥⲓⲥ",
+	"discussiontools-replywidget-watchthis": "Ⲧⲟⲩϩⲟ ⲙ̀ⲡⲁⲓϩⲟ ⲉ̀ⲡⲉⲧⲉⲛ[[Special:Watchlist|cϧⲓ ⲛ̀ϫⲓϫ ⲛ̀ⲣⲱⲓⲥ]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ⲛ̀ⲣⲱⲙⲓ}} ϧⲉⲛⲧϩⲟⲙⲓⲗⲓⲁ̀",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ⲙ̀ⲡⲁⲣⲁⲅⲣⲁⲫⲏ}}",
+	"discussiontools-topicheader-latestcomment": "Ⲧⲡⲁⲣⲁⲅⲣⲁⲫⲏ ⲛ̀ϧⲁⲓⲏ: $1",
+	"discussiontools-topicsubscription-button-subscribe": "ϩⲩⲡⲟⲅⲣⲁⲫⲓⲛ",
+	"discussiontools-topicsubscription-button-subscribe-label": "Ϩⲩⲡⲟⲅⲣⲁⲫⲓⲛ",
+	"discussiontools-topicsubscription-button-unsubscribe": "ⲕⲱⲣϥ ⲛ̀ϩⲩⲡⲟⲅⲣⲁⲫⲏ",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Ⲕⲱⲣϥ ⲛ̀ϩⲩⲡⲟⲅⲣⲁⲫⲏ"
+}
