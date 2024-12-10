@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chrisdanielkazadi",
-			"Shayi ngolu"
+			"Shayi ngolu",
+			"Matma Rex"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Diandamuna",
@@ -23,8 +24,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "ku difila",
 	"discussiontools-topicsubscription-button-unsubscribe": "Kumbuka mu mukanda",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Kumbuka mu mukanda",
-	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENRE:|wewa}}kuena upeta kabidi mamanisha pa malubu mapiamapia pa tshiena bualu etshi.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENRE:|wewa}} kuena kabidi wa emu.",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENRE:|wewa}}kuena upeta kabidi mamanisha pa malubu mapiamapia pa tshiena bualu etshi.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENRE:|wewa}} kuena kabidi wa emu."
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|wewa}}kuena upeta kabidi mamanisha pa malubu mapiamapia pa tshiena bualu etshi.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|wewa}} kuena kabidi wa emu.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|wewa}}kuena upeta kabidi mamanisha pa malubu mapiamapia pa tshiena bualu etshi.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|wewa}} kuena kabidi wa emu."
 }
