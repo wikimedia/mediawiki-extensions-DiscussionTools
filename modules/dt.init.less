@@ -483,6 +483,7 @@ h1, h2, h3, h4, h5, h6 {
 	// Mobile
 	&.mw-mf .ext-discussiontools-init-section {
 		flex-wrap: wrap;
+		/* Legacy parser */
 		// stylelint-disable-next-line declaration-no-important
 		align-items: flex-start !important;
 		// stylelint-disable-next-line declaration-no-important
@@ -503,6 +504,9 @@ h1, h2, h3, h4, h5, h6 {
 			flex-basis: 0;
 			/* T311612 */
 			font-size: 1.125em;
+			/* Parsoid */
+			// stylelint-disable-next-line declaration-no-important
+			align-items: flex-start !important;
 		}
 
 		&-bar,
@@ -516,8 +520,11 @@ h1, h2, h3, h4, h5, h6 {
 			margin-bottom: -6px;
 		}
 
+		/* Legacy parser */
 		// stylelint-disable-next-line selector-class-pattern
-		> .indicator {
+		> .indicator,
+		/* Parsoid */
+		.mf-collapsible-icon {
 			margin-top: 4px;
 		}
 
