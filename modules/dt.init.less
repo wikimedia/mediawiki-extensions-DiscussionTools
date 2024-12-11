@@ -573,6 +573,7 @@ h1, h2, h3, h4, h5, h6 {
 			display: none;
 		}
 
+		/* Legacy parser */
 		// stylelint-disable-next-line selector-class-pattern
 		&.section-heading .ext-discussiontools-init-section-actions {
 			// Hidden until expanded
@@ -586,6 +587,11 @@ h1, h2, h3, h4, h5, h6 {
 			.ext-discussiontools-init-section-actions {
 				display: block;
 			}
+		}
+
+		/* Parsoid */
+		&.mf-collapsible-heading:has( .mf-collapsible-icon.mf-icon-expand ) .ext-discussiontools-init-section-actions {
+			display: none;
 		}
 	}
 
