@@ -21,5 +21,8 @@
 	"discussiontools-topicsubscription-button-subscribe": "langgan",
 	"discussiontools-topicsubscription-button-subscribe-label": "Langgan",
 	"discussiontools-topicsubscription-button-unsubscribe": "buang langgan",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Buang langgan"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Buang langgan",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Kita}} akan dapat pemberitahuan tentang komen baru dalam tajuk ni.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Kita}} sudah langgan!",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Kita}} sudah buang langgan."
 }
