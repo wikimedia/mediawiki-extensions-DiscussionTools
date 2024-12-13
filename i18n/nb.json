@@ -87,6 +87,7 @@
 	"discussiontools-notification-removed-topic-disable": "Slutt å få varsler som dette",
 	"discussiontools-notification-removed-topic-disabled-title": "{{GENDER:|Du}} vil ikke lenger motta varsler når emner arkiveres eller fjernes.",
 	"discussiontools-notification-removed-topic-disabled-body": "Du kan endre dette i [[Special:Preferences#mw-prefsection-echo-echosubscriptions|innstillingene dine]].",
+	"discussiontools-notification-topic-hidden": "(emne fjernet)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarte}} i «<strong>$4</strong>».",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Ett nytt|$1 nye|100=99+ nye}} svar i «<strong>$3</strong>».",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
