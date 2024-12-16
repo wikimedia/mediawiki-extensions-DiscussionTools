@@ -2,9 +2,34 @@
 	"@metadata": {
 		"authors": [
 			"ᱥᱟᱹᱜᱩᱱ ᱗",
-			"San1joy23"
+			"San1joy23",
+			"ᱤᱧ ᱢᱟᱛᱟᱞ"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "ᱴᱷᱤᱠᱼᱟ, ᱧᱟᱢ ᱠᱮᱫᱟᱹᱧ",
+	"discussiontools-autotopicsubpopup-preferences": "ᱠᱩᱥᱤᱠᱚ ᱨᱩᱠᱷᱤᱭᱟᱹᱭᱢᱮ",
 	"discussiontools-defaultsummary-reply": "ᱛᱮᱞᱟ",
+	"discussiontools-desc": "ᱜᱟᱯᱟᱞᱢᱟᱨᱟᱣ ᱥᱟᱦᱴᱟ ᱵᱟᱹᱲᱛᱤ ᱞᱟᱹᱜᱤᱫ ᱥᱟᱯᱟᱵ ᱠᱚ",
+	"discussiontools-emptystate-button": "ᱢᱤᱫ ᱜᱟᱯᱟᱞᱢᱟᱨᱟᱣ ᱮᱦᱚᱵ ᱢᱮ",
+	"discussiontools-emptystate-title": "{{SUBJECT PAGE NAME}} ᱵᱟᱨᱮᱛᱮ ᱜᱟᱯᱟᱞᱢᱟᱨᱟᱣ ᱮᱦᱚᱵᱽ ᱢᱮ",
+	"discussiontools-emptystate-title-user": "ᱜᱟᱞᱢᱟᱨᱟᱣ ᱮᱦᱚᱵᱽ ᱢᱮ {{GENDER:{{PAGENAME}}|ᱥᱟᱶ}} {{PAGENAME}}",
+	"discussiontools-error-noswitchtove-title": "ᱧᱮᱞᱚᱜ ᱢᱚᱰ ᱵᱚᱸᱫᱽ ᱜᱮᱭᱟ",
+	"discussiontools-findcomment-label-idorname": "ᱟᱭᱰᱤ ᱵᱟᱝᱠᱷᱟᱱ ᱧᱩᱛᱩᱢ ᱠᱚᱢᱮᱱᱴ ᱢᱮ",
+	"discussiontools-findcomment-label-search": "ᱥᱮᱸᱫᱽᱨᱟ",
+	"discussiontools-findcomment-noresults": "ᱪᱮᱫ ᱚᱨᱡᱚ ᱦᱚᱸ ᱵᱟᱝ ᱧᱟᱢ ᱟᱠᱟᱱᱟ",
+	"discussiontools-findcomment-results-notcurrent": "(ᱱᱟᱦᱟᱜ ᱨᱤᱵᱤᱡᱚᱱ ᱨᱮ ᱵᱟᱝ)",
+	"discussiontools-findcomment-results-transcluded": "(ᱮᱴᱟᱜ ᱢᱤᱫᱴᱟᱝ ᱥᱟᱠᱟᱢ ᱠᱷᱚᱱ ᱚᱞ ᱟᱠᱟᱱ)",
+	"discussiontools-findcomment-title": "ᱠᱚᱢᱮᱱᱴ ᱯᱟᱱᱛᱮ ᱢᱮ",
+	"discussiontools-limitreport-errorreqid": "ᱰᱤᱥᱠᱟᱥᱚᱱᱴᱩᱞᱥ ᱟᱜ ᱮᱞᱟᱨᱠᱩᱭ ᱟᱭᱰᱤ ᱵᱟᱭ ᱜᱟᱱ ᱞᱮᱱᱟ ᱾",
+	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|ᱴᱤᱯᱤᱡ|ᱴᱤᱯᱤᱡ ᱠᱚ}}",
+	"discussiontools-notification-removed-topic-disable": "ᱱᱚᱶᱟ ᱞᱮᱠᱟᱱ ᱱᱳᱴᱷᱤᱠᱮᱥᱚᱱ ᱧᱟᱢ ᱵᱚᱸᱫᱽ ᱢᱮ ᱾",
+	"discussiontools-notification-subscribed-new-comment-view": "ᱠᱚᱢᱮᱱᱴ ᱧᱮᱞ ᱢᱮ",
+	"discussiontools-pageframe-latestcomment-notopic": "ᱢᱩᱪᱟᱹᱫ ᱨᱮᱱᱟᱜ ᱠᱚᱢᱮᱱᱴ ᱠᱚ $᱑ ᱠᱷᱚᱱ $᱒",
+	"discussiontools-pagetitle-newtopic": "ᱮᱦᱚᱵᱽ ᱨᱮᱱᱟᱜ ᱠᱚᱢᱮᱱᱴ ᱠᱚ $1",
+	"discussiontools-pagetitle-reply": "ᱛᱮᱞᱟ ᱨᱩᱣᱟᱹᱲ ᱮᱫᱟᱢ $1",
+	"discussiontools-postedit-confirmation-published": "ᱟᱢᱟᱜ ᱠᱚᱢᱮᱱᱴ ᱫᱚ ᱯᱟᱨᱥᱟᱞᱮᱱᱟ ᱾",
+	"discussiontools-postedit-confirmation-topicadded": "ᱟᱢᱟᱜ ᱥᱟᱛᱟᱢ ᱥᱮᱞᱮᱫ ᱦᱩᱭ ᱟᱠᱟᱱᱟ ᱾",
+	"discussiontools-preference-autotopicsub": "ᱥᱟᱛᱟᱢ ᱠᱚ ᱟᱡᱛᱮ ᱥᱟᱵᱽᱥᱠᱨᱟᱭᱤᱵᱽ ᱢᱮ",
+	"discussiontools-preference-label": "ᱜᱟᱞᱢᱟᱨᱟᱣ ᱥᱟᱯᱟᱯ ᱠᱚ",
 	"discussiontools-replylink": "ᱛᱮᱞᱟ"
 }

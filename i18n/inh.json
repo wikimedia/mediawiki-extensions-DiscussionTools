@@ -7,6 +7,8 @@
 	"discussiontools-defaultsummary-reply": "Жоп",
 	"discussiontools-emptystate-button": "ДӀадоладе къамаьл",
 	"discussiontools-emptystate-title-user": "Доладе {{PAGENAME}} {{GENDER:{{PAGENAME}}|яхачунца}} къамаьл",
+	"discussiontools-pageframe-latestcomment": "ТӀеххьара хоам: $1 язбаьб $2 яхачо укх тема чу «$3»",
+	"discussiontools-pageframe-latestcomment-notopic": "ТӀеххьара хоам: $1 $2 яхачунгара",
 	"discussiontools-replylink": "жоп",
 	"discussiontools-replywidget-advanced": "Кхы а",
 	"discussiontools-replywidget-cancel": "Эшац",
