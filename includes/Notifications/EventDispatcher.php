@@ -493,10 +493,10 @@ class EventDispatcher {
 		global $wgDTSchemaEditAttemptStepSamplingRate, $wgWMESchemaEditAttemptStepSamplingRate;
 		// Sample 6.25%
 		$samplingRate = 0.0625;
-		if ( isset( $wgDTSchemaEditAttemptStepSamplingRate ) ) {
+		if ( $wgDTSchemaEditAttemptStepSamplingRate !== null ) {
 			$samplingRate = $wgDTSchemaEditAttemptStepSamplingRate;
 		}
-		if ( isset( $wgWMESchemaEditAttemptStepSamplingRate ) ) {
+		if ( $wgWMESchemaEditAttemptStepSamplingRate !== null ) {
 			$samplingRate = $wgWMESchemaEditAttemptStepSamplingRate;
 		}
 		if ( $samplingRate === 0 ) {
