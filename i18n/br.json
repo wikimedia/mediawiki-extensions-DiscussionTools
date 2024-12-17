@@ -84,6 +84,7 @@
 	"discussiontools-notification-removed-topic-disable": "Paouez da resev kemennadennoù evel homañ",
 	"discussiontools-notification-removed-topic-disabled-title": "Ne {{GENDER:|resevoc’h}} ken kemennadenn ebet pa vo diellet pe dilamet ur gaozeadenn.",
 	"discussiontools-notification-removed-topic-disabled-body": "Gallout a rit cheñch an dra-se en [[Special:Preferences#mw-prefsection-echo-echosubscriptions|ho penndibaboù]].",
+	"discussiontools-notification-topic-hidden": "(titl kuzhet)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|en|he}} deus respontet e \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Ur|$1|100=99+}} respont nevez e \"<strong>$3</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Diskouez an evezhiadenn",
