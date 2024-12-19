@@ -789,15 +789,22 @@ ReplyWidget.prototype.onKeyDown = function ( e ) {
 		return false;
 	}
 
-	// VE surfaces already handle CTRL+Enter, but this will catch
-	// the plain surface, and the edit summary input.
-	// Require CTRL+Enter even on single line inputs per T326500.
 	if ( e.which === OO.ui.Keys.ENTER ) {
 		if ( e.ctrlKey || e.metaKey ) {
-			this.onReplyClick();
-			return false;
-		} else if ( e.target.tagName === 'INPUT' && !this.$bodyWrapper[ 0 ].contains( e.target ) && !this.replyButton.isDisabled() ) {
-			// The body wrapper can contain VE UI widgets that you may need to press enter within
+			// VE surfaces already handle CTRL+Enter, but this will catch
+			// the plain surface, and the edit summary input.
+			// Check we are in one of the form inputs, as the user can focus a link and
+			// press CTRL+Enter to open it in a new tab (T382401)
+			if ( this.$bodyWrapper[ 0 ].contains( e.target ) || e.target.tagName === 'INPUT' ) {
+				this.onReplyClick();
+				return false;
+			}
+		} else if (
+			// Require CTRL+Enter even on single line inputs per T326500.
+			e.target.tagName === 'INPUT' && !this.replyButton.isDisabled() &&
+			// Ignore the body wrapper as it can contain VE UI widgets that you may need to press enter within
+			!this.$bodyWrapper[ 0 ].contains( e.target )
+		) {
 			this.showEnterWarning();
 			return false;
 		}
