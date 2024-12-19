@@ -29,6 +29,7 @@ function CommentController( $pageContainer, threadItem, threadItemSet, storage )
 	this.storage = storage;
 	this.newListItem = null;
 	this.replyWidgetPromise = null;
+	this.oldReplyWidgetPromise = null;
 	this.newComments = [];
 	this.parentRemoved = false;
 	this.oldId = mw.config.get( 'wgRevisionId' );
@@ -690,6 +691,7 @@ CommentController.prototype.switchToWikitext = function () {
 
 		// TODO: We may need to pass oldid/etag when editing is supported
 		const wikitextPromise = target.getWikitextFragment( target.getSurface().getModel().getDocument() );
+		this.oldReplyWidgetPromise = this.replyWidgetPromise;
 		this.replyWidgetPromise = this.createReplyWidget(
 			oldWidget.commentDetails,
 			{ mode: 'source' }
@@ -718,7 +720,7 @@ CommentController.prototype.switchToWikitext = function () {
 				// Focus the editor
 				newWidget.focus();
 			} );
-		} );
+		} ).then( null, this.switchFailed.bind( this ) );
 	} );
 };
 
@@ -811,6 +813,7 @@ CommentController.prototype.switchToVisual = function () {
 		} else {
 			parsePromise = $.Deferred().resolve( '' ).promise();
 		}
+		this.oldReplyWidgetPromise = this.replyWidgetPromise;
 		this.replyWidgetPromise = this.createReplyWidget(
 			oldWidget.commentDetails,
 			{ mode: 'visual' }
@@ -874,7 +877,25 @@ CommentController.prototype.switchToVisual = function () {
 
 			// Focus the editor
 			newWidget.focus();
-		} );
+		} ).then( null, this.switchFailed.bind( this ) );
+	} );
+};
+
+/**
+ * Switching mode failed. Restore some state variables and UI.
+ */
+CommentController.prototype.switchFailed = function () {
+	this.oldReplyWidgetPromise.then( ( oldWidget ) => {
+		// Restore the ve.init.target global if the oldWidget was a ReplyWidgetVisual
+		if ( oldWidget.replyBodyWidget.target ) {
+			ve.init.target = oldWidget.replyBodyWidget.target;
+		}
+	} );
+	// Restore the replyWidgetPromise
+	this.replyWidgetPromise = this.oldReplyWidgetPromise;
+	this.replyWidgetPromise.then( ( replyWidget ) => {
+		// Reset the appearance of the modeTabSelect
+		replyWidget.modeTabSelect.selectItemByData( replyWidget.getMode() ).highlightItem( null );
 	} );
 };
 
