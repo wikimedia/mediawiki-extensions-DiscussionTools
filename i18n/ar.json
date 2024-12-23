@@ -87,6 +87,7 @@
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|موضوع جديد|$1 مواضيع جديدة|100=99+ مواضيع جديدة}} في \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "اعرض الموضوع",
+	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|شكر}}{{GENDER:$4|ك|كِ}} على تعليقك في \"<strong>$3</strong>\".",
 	"discussiontools-notification-comment-thank-header-compact": "$1 {{GENDER:$2|شكر|شكرت}}{{GENDER:$3|ك}}.",
 	"discussiontools-notification-removed-topic-body": "قد لا تتلقى إشعاراتٍ بعد الآن حول {{PLURAL:$1|هذا الموضوع|هذه المواضيع}}.",
 	"discussiontools-notification-removed-topic-header": "تمت أرشفة الموضوع «<strong>$4</strong>» أو تمت إزالته من $3.",
