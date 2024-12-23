@@ -35,6 +35,7 @@
 	"discussiontools-error-noswitchtove-table": "пронађена табела",
 	"discussiontools-error-noswitchtove-template": "пронађен шаблон",
 	"discussiontools-error-noswitchtove-title": "Визуелнии режим је онемогућен",
+	"discussiontools-findcomment-results-id": "Коментар са наведеним ID-ем се појављује на {{PLURAL:$1|следећој страници|следећим страницама}}:",
 	"discussiontools-findcomment-results-name": "Коментар са наведеним именом се појављује на {{PLURAL:$1|следећој страници|следећим страницама}}:",
 	"discussiontools-findcomment-label-idorname": "ID коментара или име",
 	"discussiontools-findcomment-label-search": "Претрага",
