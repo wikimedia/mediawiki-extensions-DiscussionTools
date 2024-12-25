@@ -86,6 +86,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Последњи коментар: $2, $1",
 	"discussiontools-pagetitle-newtopic": "Нова тема на $1",
 	"discussiontools-pagetitle-reply": "Одговор на $1",
+	"discussiontools-permalink-comment-copied": "Линк до коментара копиран.",
 	"discussiontools-postedit-confirmation-published": "Ваш коментар је објављен.",
 	"discussiontools-postedit-confirmation-topicadded": "Ваша тема је додата.",
 	"discussiontools-preference-autotopicsub": "Аутоматски прати теме",
