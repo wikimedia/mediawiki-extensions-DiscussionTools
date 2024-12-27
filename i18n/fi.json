@@ -15,7 +15,7 @@
 		]
 	},
 	"discussiontools": "Keskustelutyökalut",
-	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Saat}} ilmoituksen, kun joku kirjoittaa uuden kommentin tähän keskusteluun. Voit säätää ilmoitusasetuksia omissa asetuksissasi.",
+	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Saat}} ilmoituksen, kun joku kirjoittaa uuden kommentin tähän keskusteluun. Voit tarvittaessa säätää ilmoitusasetuksia.",
 	"discussiontools-autotopicsubpopup-dismiss": "Selvä",
 	"discussiontools-autotopicsubpopup-preferences": "Muokkaa asetuksia",
 	"discussiontools-autotopicsubpopup-title": "{{GENDER:|Olet}} tehnyt tilauksen",
