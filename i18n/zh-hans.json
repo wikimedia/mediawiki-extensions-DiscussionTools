@@ -125,7 +125,7 @@
 	"discussiontools-pagetitle-reply": "在$1上回复",
 	"discussiontools-permalink-comment-copied": "留言的链接已复制到剪贴板。",
 	"discussiontools-postedit-confirmation-published": "您的留言已发布。",
-	"discussiontools-postedit-confirmation-topicadded": "您的话题已添加。",
+	"discussiontools-postedit-confirmation-topicadded": "已添加您的话题。",
 	"discussiontools-preference-autotopicsub": "自动订阅话题",
 	"discussiontools-preference-autotopicsub-help": "当{{GENDER:|您}}发起新讨论或在已有讨论内留言后，他人于该讨论中发布新留言时，您将会自动收到通知。",
 	"discussiontools-preference-description": "启用实验性讨论页功能：\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability 展示各讨论的元数据]并启用新页面布局。\n\n您可以在您的[[Special:Preferences#mw-prefsection-editing-discussion|参数设置]]内自定义这些功能。\n\n更新信息会发布在[https://www.mediawiki.org/wiki/Talk_pages_project/Updates 讨论页项目的更新页面]中。\n\n请注意：\n* 随着时间推移，会添加更多实验性功能。\n* 以上部分功能可能尚未在您的wiki提供。",

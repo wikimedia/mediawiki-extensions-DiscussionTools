@@ -4,5 +4,9 @@
 			"Ewithu"
 		]
 	},
-	"discussiontools-replywidget-cancel": "Иӈыт"
+	"discussiontools-defaultsummary-reply": "Ювле ла̄вим ла̄тыӈ",
+	"discussiontools-replywidget-cancel": "Иӈыт",
+	"discussiontools-replywidget-mode-source": "Ко̄д",
+	"discussiontools-replywidget-mode-visual": "Визуально",
+	"discussiontools-replywidget-summary": "Ва̄ти торгамтаптуп"
 }
