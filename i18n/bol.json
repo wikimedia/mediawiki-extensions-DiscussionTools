@@ -5,8 +5,14 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Reply",
+	"discussiontools-replywidget-advanced": "Intima dom",
 	"discussiontools-replywidget-cancel": "Guko",
 	"discussiontools-replywidget-mode-source": "Zalshe",
+	"discussiontools-replywidget-mode-visual": "I inne",
+	"discussiontools-replywidget-preview": "Kaya enne",
 	"discussiontools-replywidget-summary": "Taƙaito",
-	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comment|comments}}"
+	"discussiontools-replywidget-watchthis": "Zawi shafi eme gaga [[Special:Watchlist|shafilla aji doffa shake]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|memu|me'eyah}} ga mosalla",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comment|comments}}",
+	"discussiontools-topicheader-latestcomment": "Mosa foyo: $1"
 }
