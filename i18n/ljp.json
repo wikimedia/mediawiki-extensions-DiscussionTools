@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"DedeKurnn"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Balos",
+	"discussiontools-replywidget-advanced": "Lanjutan",
+	"discussiontools-replywidget-cancel": "Ughung",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Pisuwal",
+	"discussiontools-replywidget-preview": "Pratayang",
+	"discussiontools-replywidget-summary": "Ghingkosan",
+	"discussiontools-replywidget-watchthis": "Tambahko halaman sinji mit [[Special:Watchlist|daptar awasan]] mu",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|jamma}} dilom pubalahan",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar}}",
+	"discussiontools-topicheader-latestcomment": "Koméntar ampay: $1",
+	"discussiontools-topicsubscription-button-subscribe": "langganan",
+	"discussiontools-topicsubscription-button-subscribe-label": "Langganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "taghu bulangganan",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Taghu Bulangganan"
+}
