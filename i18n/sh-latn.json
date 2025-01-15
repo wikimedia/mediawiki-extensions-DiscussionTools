@@ -5,7 +5,7 @@
 			"Winston Sung"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Odgovori",
+	"discussiontools-defaultsummary-reply": "odgovor",
 	"discussiontools-emptystate-button": "Započni razgovor",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Stranice za razgovor]] služe kao mjesto za diskusiju o tome kako stvoriti najbolju moguću sadržinu na projektu {{SITENAME}}. Ovdje {{GENDER:|možete}} započeti razgovor o poboljšanjima stranice [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-desc-self": "Osobe na projektu {{SITENAME}} mogu rabiti ovu [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|stranicu za razgovor]] da objave javnu poruku za {{GENDER:|vas}}, o kojoj bit ćete obaviješteni.",
@@ -73,5 +73,6 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "Dobivat {{GENDER:|ćete}} obavijesti o novim komentarima na ovoj temi.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Odsad {{GENDER:|pratite}}!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Više više {{GENDER:|nećete}} dobivati obavijesti o novim komentarima na ovoj temi.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Prestali {{GENDER:|ste}} pratiti."
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Prestali {{GENDER:|ste}} pratiti.",
+	"tag-discussiontools-reply": "odgovor"
 }
