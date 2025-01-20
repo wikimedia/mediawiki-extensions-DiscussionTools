@@ -5,7 +5,7 @@
 			"BadDog"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Odgovori",
+	"discussiontools-defaultsummary-reply": "odgovor",
 	"discussiontools-emptystate-button": "Započni razgovor",
 	"discussiontools-emptystate-title": "Započnite razgovor o stranici {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user": "Započnite razgovor sa {{GENDER:{{PAGENAME}}|suradnikom|suradnicom|suradnikom/suradnicom}} {{PAGENAME}}",

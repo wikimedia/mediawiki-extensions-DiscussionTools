@@ -5,14 +5,20 @@
 			"Wangombe",
 			"Jon Harald Søby",
 			"Matma Rex",
-			"Sheilawangari"
+			"Sheilawangari",
+			"Kisare"
 		]
 	},
+	"discussiontools": "Zana za majadiliano",
+	"discussiontools-autotopicsubpopup-dismiss": "Sawa, naelewa",
 	"discussiontools-defaultsummary-reply": "Jibu",
+	"discussiontools-emptystate-button": "Anzisha majadiliano",
 	"discussiontools-findcomment-label-search": "Tafuta",
+	"discussiontools-notification-removed-topic-view": "Angalia ukurasa",
 	"discussiontools-preference-replytool": "Washa kujibu haraka",
 	"discussiontools-preference-replytool-help": "Hii itakuonyesha kiunga cha kujibu maoni ya ukurasa wa mazungumzo kwa kubofya moja. Unaweza kupata maelezo zaidi kuhusu huduma hii kwa kusoma [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary feature muhtasari].",
 	"discussiontools-replylink": "jibu",
+	"discussiontools-replywidget-abandon-discard": "Tupa maoni",
 	"discussiontools-replywidget-advanced": "Imesonga mbele",
 	"discussiontools-replywidget-cancel": "Batilisha",
 	"discussiontools-replywidget-mode-source": "Chanzo",
