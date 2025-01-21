@@ -20,7 +20,8 @@
 			"Sezgin İbiş",
 			"ToprakM",
 			"Victor Trevor",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Leo"
 		]
 	},
 	"discussiontools": "Tartışma araçları",
@@ -208,7 +209,7 @@
 	"tag-discussiontools-added-comment-description": "Bu düzenlemeye, bir tartışma sayfası yorumu eklendi",
 	"tag-discussiontools-description": "DiscussionTools kullanılarak yapılan düzenleme",
 	"tag-discussiontools-edit": "Düzenlenmiş yorum",
-	"tag-discussiontools-edit-description": "Kullanıcı DiscussionTools ile mevcut bir yorumu düzenledi",
+	"tag-discussiontools-edit-description": "Kullanıcı, DiscussionTools ile mevcut bir yorumu düzenledi",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Yeni konu]",
 	"tag-discussiontools-newtopic-description": "Kullanıcı, DiscussionTools ile sayfaya yeni bir konu ekledi",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Yanıt]",
