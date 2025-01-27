@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anand.orkhon"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "ᠬᠠᠷᠢᠭᠤᠯᠬᠤ",
+	"discussiontools-replywidget-advanced": "ᠢᠯᠡᠭᠦᠦ",
+	"discussiontools-replywidget-cancel": "ᠴᠤᠴᠠᠯᠠᠬᠤ",
+	"discussiontools-replywidget-mode-source": "ᠡᠬᠡ ᠰᠤᠷᠪᠤᠯᠵᠢ",
+	"discussiontools-replywidget-mode-visual": "ᠬᠠᠷᠠᠭᠳᠠᠴᠠ ᠲᠠᠢ",
+	"discussiontools-replywidget-preview": "ᠤᠷᠤᠳᠢᠴᠢᠯᠠᠨ ᠬᠠᠷᠠᠭᠳᠠᠴᠠ",
+	"discussiontools-replywidget-summary": "ᠲᠤᠪᠴᠢ",
+	"discussiontools-replywidget-watchthis": "ᠡᠨᠡ ᠬᠠᠭᠤᠳᠠᠰᠤ ‍ᠢᠢ ᠦᠪᠡᠷ ‍ᠦᠨ [[Special:Watchlist|watchlist]] ‍ᠳᠠᠭᠠᠨ ᠨᠡᠮᠡᠬᠦ",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ᠬᠦᠮᠦᠨ|ᠬᠦᠮᠦᠰ}} ᠬᠡᠯᠡᠯᠴᠡᠭᠦᠯᠭᠡ ‍ᠳᠦ ᠪᠠᠢᠨᠠ",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ᠰᠡᠳᠬᠢᠭᠳᠡᠯ|ᠰᠡᠳᠬᠢᠭᠳᠡᠯ ‍ᠦᠳ}}",
+	"discussiontools-topicheader-latestcomment": "ᠰᠡᠭᠦᠯ ‍ᠦᠨ ᠰᠡᠳᠬᠢᠭᠳᠡᠯ᠄ $1",
+	"discussiontools-topicsubscription-button-subscribe": "ᠳᠠᠭᠠᠬᠤ",
+	"discussiontools-topicsubscription-button-subscribe-label": "ᠳᠠᠭᠠᠬᠤ",
+	"discussiontools-topicsubscription-button-unsubscribe": "ᠳᠠᠭᠠᠬᠤ ᠪᠠᠨ ᠪᠤᠯᠢᠬᠤ",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "ᠳᠠᠭᠠᠬᠤ ᠪᠠᠨ ᠪᠤᠯᠢᠬᠤ"
+}
