@@ -29,6 +29,7 @@
 	"discussiontools-notification-topic-hidden": "(тема алынып салынды)",
 	"discussiontools-postedit-confirmation-published": "Жообуңуз жарыяланды.",
 	"discussiontools-postedit-confirmation-topicadded": "Темаңыз кошулду.",
+	"discussiontools-preference-autotopicsub": "Темаларга автоматтуу түрдө жазылуу",
 	"discussiontools-replybutton": "{{GENDER:|Жооп берүү}}",
 	"discussiontools-replylink": "{{GENDER:|жооп берүү}}",
 	"discussiontools-replywidget-abandon-keep": "Түзөтүүнү улантуу",
