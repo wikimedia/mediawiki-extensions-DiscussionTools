@@ -199,7 +199,7 @@
 	"echo-pref-tooltip-dt-subscription-archiving": "Abone olduğum konu arşivlendiğinde, silindiğinde veya başka nedenlerden dolayı yeni yanıtlarla alakalı bildirim gönderilemeyeceği durumlarda {{GENDER:|bana}} haber ver.",
 	"minerva-talk-full-page": "Viki sayfası olarak oku",
 	"discussiontools-comments-before-first-heading-category-desc": "Tartışma sayfası, lede bölümünde (ilk başlıktan önce) yorumlar içerir. Bu durum özellikle taşınabilir sürümde ve taşınabilir uygulamalarda, lede ya da yorumların hatalı görüntülenmesine neden olabilir.",
-	"tag-discussiontools-added-comment-description": "Bu düzenlemeye, bir tartışma sayfası yorumu eklendi",
+	"tag-discussiontools-added-comment-description": "Bu düzenlemede bir tartışma sayfası yorumu eklendi",
 	"tag-discussiontools-description": "DiscussionTools kullanılarak yapılan düzenleme",
 	"tag-discussiontools-edit": "Düzenlenmiş yorum",
 	"tag-discussiontools-edit-description": "Kullanıcı, DiscussionTools ile mevcut bir yorumu düzenledi",
