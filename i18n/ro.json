@@ -9,7 +9,8 @@
 			"Firilacroco",
 			"Paloi Sciurala",
 			"Strainu",
-			"Woytecr"
+			"Woytecr",
+			"Andrei Stroe"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Veți primi o notificare când cineva publică un nou comentariu în această discuție. Vă puteți ajusta setările de notificări în preferințe.",
@@ -24,7 +25,7 @@
 	"discussiontools-emptystate-desc-self-anon": "Oamenii de la {{SITENAME}} pot utiliza această [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|pagină de discuție]] pentru a publica un mesaj public despre editările făcute de la adresa IP pe care o folosiți în acest moment.\n\nMulte adrese IP se schimbă periodic și sunt adesea folosite de mai multe persoane. Puteți [$1 crea un cont] sau [$2 să vă autentificați] pentru a evita confuzie ulterioară cu alți utilizatori neautentificați. Crearea unui cont vă și ascunde adresa IP.",
 	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Paginile de discuție]] sunt locul unde oamenii discută despre cum să facă conținutul de pe {{SITENAME}} să fie cât se poate de bun. Începeți o nouă discuție pentru a vă conecta și colabora {{GENDER:{{PAGENAME}}|cu}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Ceea ce spuneți aici va fi public pentru alții ca să poată vedea.",
 	"discussiontools-emptystate-desc-user-anon": "[[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|Paginile de discuție]] sunt locul unde oamenii discută despre cum să facă conținutul de pe {{SITENAME}} să fie cât se poate de bun. Utilizați această pagină de discuție pentru a începe o discuție despre editările făcute de la această adresă IP. Ceea ce spuneți aici va fi public pentru alții ca să poată vedea. Multe adrese IP se schimbă periodic și sunt adesea folosite de mai multe persoane.",
-	"discussiontools-emptystate-title": "Începeți o discuție despre {{SUBJECTPAGENAME}}",
+	"discussiontools-emptystate-title": "Începeți o discuție despre conținutul paginii {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bun venit la pagina dvs. de discuție",
 	"discussiontools-emptystate-title-self-anon": "Bun venit la această pagină de discuție",
 	"discussiontools-emptystate-title-user": "Începeți o discuție {{GENDER:{{PAGENAME}}|cu}} {{PAGENAME}}",

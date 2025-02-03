@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Borichèt",
+			"Dragonòt"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Rësponde",
+	"discussiontools-replywidget-advanced": "Avansà",
+	"discussiontools-replywidget-cancel": "Anulé",
+	"discussiontools-replywidget-mode-source": "Sorgiss",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-preview": "Preuva",
+	"discussiontools-replywidget-summary": "Resumé",
+	"discussiontools-replywidget-watchthis": "Gionté costa pàgina-sì a soa [[Special:Watchlist|lista ëd lòn ch'as ten sot euj]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|përson-a|përson-e}} ant la discussion",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|coment}}",
+	"discussiontools-topicheader-latestcomment": "Ùltim coment: $1",
+	"discussiontools-topicsubscription-button-subscribe": "abonesse",
+	"discussiontools-topicsubscription-button-subscribe-label": "Abonesse",
+	"discussiontools-topicsubscription-button-unsubscribe": "disabonesse",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Anulé l'abonament"
+}

@@ -6,7 +6,7 @@
 	},
 	"discussiontools-defaultsummary-reply": "Bâles",
 	"discussiontools-replywidget-advanced": "Terrosan",
-	"discussiontools-replywidget-cancel": "Bhâttalaghi",
+	"discussiontools-replywidget-cancel": "Paburung",
 	"discussiontools-replywidget-mode-source": "Sombher",
 	"discussiontools-replywidget-mode-visual": "Robâ",
 	"discussiontools-replywidget-preview": "Tèngghu kaḍâ'",
@@ -15,8 +15,8 @@
 	"discussiontools-topicheader-authorcount": "$1{{PLURAL:$1|orèng}} è ḍâlem parembhâghân rèya",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komèntar}}",
 	"discussiontools-topicheader-latestcomment": "Komèntar palèng akhèr: $1",
-	"discussiontools-topicsubscription-button-subscribe": "langghânan",
-	"discussiontools-topicsubscription-button-subscribe-label": "Langghânan",
+	"discussiontools-topicsubscription-button-subscribe": "laghânan",
+	"discussiontools-topicsubscription-button-subscribe-label": "Laghânan",
 	"discussiontools-topicsubscription-button-unsubscribe": "ambu alangghânan",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Ambu alangghânan"
 }
