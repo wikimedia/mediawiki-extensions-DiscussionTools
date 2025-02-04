@@ -209,12 +209,12 @@
 	"tag-discussiontools-added-comment-description": "Bu düzenlemede bir tartışma sayfası yorumu eklendi",
 	"tag-discussiontools-description": "DiscussionTools kullanılarak yapılan düzenleme",
 	"tag-discussiontools-edit": "Düzenlenmiş yorum",
-	"tag-discussiontools-edit-description": "Kullanıcı, DiscussionTools ile mevcut bir yorumu düzenledi",
+	"tag-discussiontools-edit-description": "Kullanıcı, TartışmaAraçları ile mevcut bir yorumu düzenledi",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Yeni konu]",
-	"tag-discussiontools-newtopic-description": "Kullanıcı, DiscussionTools ile sayfaya yeni bir konu ekledi",
+	"tag-discussiontools-newtopic-description": "Kullanıcı, TartışmaAraçları ile sayfaya yeni bir konu ekledi",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Yanıt]",
-	"tag-discussiontools-reply-description": "Kullanıcı DiscussionTools ile bir yorumu yanıtladı",
-	"tag-discussiontools-source-description": "DiscussionTools kaynak modundaydı",
-	"tag-discussiontools-source-enhanced-description": "TartışmaAraçları araç çubuğu ile gelişmiş kaynak modunda",
-	"tag-discussiontools-visual-description": "DiscussionTools görsel modundaydı"
+	"tag-discussiontools-reply-description": "Kullanıcı TartışmaAraçları ile bir yorumu yanıtladı",
+	"tag-discussiontools-source-description": "TartışmaAraçları kaynak modundaydı",
+	"tag-discussiontools-source-enhanced-description": "TartışmaAraçları, araç çubuğu ile gelişmiş kaynak modundaydı",
+	"tag-discussiontools-visual-description": "TartışmaAraçları görsel modundaydı"
 }
