@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Danniel07"
+			"Danniel07",
+			"MysticVoyager"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ᑭᐅᓂᖅ",
+	"discussiontools-replylink": "{{GENDER:|ᑭᐅᓂᖅ}}",
+	"discussiontools-replywidget-reply": "{{GENDER:|ᑭᐅᓂᖅ}}",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|ᖃᓄᐃᒃ}} ᑐᑭᕋᕐᑐᑎᒋᐊᕆᒃᑯᑦ.",
 	"discussiontools-topicsubscription-pager-actions": "ᖃᓄᐃᓕᐅᕐᓃᑦ"
 }

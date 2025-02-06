@@ -12,14 +12,20 @@
 	"discussiontools-replywidget-cancel": "ناگارل",
 	"discussiontools-replywidget-mode-source": "سرچينه",
 	"discussiontools-replywidget-mode-visual": "ليد",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} ته {{GENDER:|ځواب وييل}}",
 	"discussiontools-replywidget-preview": "مخليدنه",
-	"discussiontools-replywidget-reply": "ځوابول",
+	"discussiontools-replywidget-reply": "{{GENDER:|ځوابول}}",
 	"discussiontools-replywidget-summary": "لنډيز",
-	"discussiontools-replywidget-watchthis": "دا مخ په خپل [[Special:Watchlist|څار لیسټ]] کې ورګډ کړئ",
+	"discussiontools-replywidget-watchthis": "دا مخ په خپل [[Special:Watchlist|کتنلړ]] کې ورگډ کړئ",
+	"discussiontools-topicheader-authorcount": "په خبرو اترو کې $1 {{PLURAL:$1|کس|کسان}}",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1| تبصره|تبصرې}}",
 	"discussiontools-topicheader-latestcomment": "وروستۍ تبصره: $1",
 	"discussiontools-topicsubscription-button-subscribe": "ونډه کښل",
 	"discussiontools-topicsubscription-button-subscribe-label": "ونډه کښل",
 	"discussiontools-topicsubscription-button-unsubscribe": "له ونډې وتل",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "له ونډې وتل"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "له ونډې وتل",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|تاسو}} به په دې موضوع کې د نوو تبصرو په اړه خبرتیاوې ترلاسه کړی.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|تاسو}} نومليکنه وکړله!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|تاسو}} به نور پدې موضوع کې د نویو تبصرو په اړه خبرتیاوې ترلاسه نکړئ.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|تاسو}} نومليکنې څخه ليرې شوی."
 }
