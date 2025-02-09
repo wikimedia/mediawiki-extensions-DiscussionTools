@@ -93,7 +93,9 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 		}
 
 		$parserOutput = $status->getValue();
-		$html = $parserOutput->getText();
+		$html = $parserOutput->getText( [
+			'enableSectionEditLinks' => false,
+		] );
 
 		$doc = DOMUtils::parseHTML( $html );
 		$container = DOMCompat::getBody( $doc );
