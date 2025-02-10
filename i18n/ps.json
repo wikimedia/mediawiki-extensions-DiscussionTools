@@ -7,19 +7,25 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ځوابول",
+	"discussiontools-findcomment-label-search": "پلټل",
+	"discussiontools-findcomment-noresults": "بې پايلو.",
 	"discussiontools-replylink": "ځوابول",
 	"discussiontools-replywidget-advanced": "پرمختللی",
 	"discussiontools-replywidget-cancel": "ناگارل",
+	"discussiontools-replywidget-loading": "رابرسېرېږي...",
 	"discussiontools-replywidget-mode-source": "سرچينه",
 	"discussiontools-replywidget-mode-visual": "ليد",
+	"discussiontools-replywidget-preferences": "غوره توبونه",
 	"discussiontools-replywidget-preview": "مخليدنه",
 	"discussiontools-replywidget-reply": "ځوابول",
 	"discussiontools-replywidget-summary": "لنډيز",
-	"discussiontools-replywidget-watchthis": "دا مخ په خپل [[Special:Watchlist|څار لیسټ]] کې ورګډ کړئ",
+	"discussiontools-replywidget-watchthis": "دا مخ په خپل [[Special:Watchlist|کتنلړ]] کې ورگډ کړئ",
+	"discussiontools-topicheader-authorcount": "په خبرو اترو کې $1 {{PLURAL:$1|کس|کسان}}",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1| تبصره|تبصرې}}",
 	"discussiontools-topicheader-latestcomment": "وروستۍ تبصره: $1",
 	"discussiontools-topicsubscription-button-subscribe": "ونډه کښل",
 	"discussiontools-topicsubscription-button-subscribe-label": "ونډه کښل",
 	"discussiontools-topicsubscription-button-unsubscribe": "له ونډې وتل",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "له ونډې وتل"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "له ونډې وتل",
+	"discussiontools-topicsubscription-pager-page": "مخ"
 }

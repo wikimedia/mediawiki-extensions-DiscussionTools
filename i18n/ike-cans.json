@@ -1,8 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"Danniel07"
+			"Danniel07",
+			"MysticVoyager"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "ᑭᐅᓂᖅ",
+	"discussiontools-replywidget-advanced": "ᓯᕗᕙᓯᒃᑐᖅ",
+	"discussiontools-replywidget-cancel": "ᐃᓂᖅᑎᐹ",
+	"discussiontools-replywidget-mode-source": "ᓇᑭᙶᕐᕕᒃ",
+	"discussiontools-replywidget-preview": "ᐅᕝᕙ ᖃᖓᓵᖑᓕᖅᑐᖅ",
+	"discussiontools-replywidget-summary": "ᓇᐃᓈᖅᓯᒪᔪᖅ",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ᐃᓄᒃ|ᐃᓄᐃᑦ}} ᐅᖃᖃᑎᒌᒍᑕᐅᔪᑦ",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ᐅᖃᐅᓯᒃᓴᖅ|ᐅᖃᐅᓯᒃᓴᑦ}}",
+	"discussiontools-topicheader-latestcomment": "ᑭᖑᓪᓕᖅᐹᖅ ᐅᖃᐅᓯᒃᓴᖅ: $1",
+	"discussiontools-topicsubscription-button-subscribe": "ᐊᑎᓕᐅᖃᑕᐅᓗᑎᑦ",
+	"discussiontools-topicsubscription-button-subscribe-label": "ᐊᑎᓕᐅᖃᑕᐅᓗᑎᑦ",
+	"discussiontools-topicsubscription-button-unsubscribe": "ᓱᖅᑑᓕᐊᕐᓂᖓ",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "ᓱᖅᑑᓕᐊᕐᓂᖓ",
 	"discussiontools-topicsubscription-pager-actions": "ᖃᓄᐃᓕᐅᕐᓃᑦ"
 }
