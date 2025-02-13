@@ -48,7 +48,7 @@
 	"discussiontools-emptystate-title-user-anon": "مرحبًا بك في صفحة النقاش هذه",
 	"discussiontools-emptystate-title-user-temp": "البَدْء في نقاش {{GENDER:{{PAGENAME}}|مع}} {{PAGENAME}}",
 	"discussiontools-error-comment-conflict": "لا يمكن حفظ تعديلك، لأن شخصا آخر قام بالتعليق في الوقت نفسه. من فضلك {{GENDER:|حاول|حاولي}} مرّة أخرى، أو {{GENDER:|أعد|أعيدي}} تحميل الصفحة لمشاهدة آخر التعليقات.",
-	"discussiontools-error-comment-disappeared": "لا نستطيع العثور على التعليق الذي {{GENDER:|تريد|تريدين}} الردّ عليه في الصفحة. من المرجّح أنه قد حذف أو تم نقله إلى صفحة أخرى.",
+	"discussiontools-error-comment-disappeared": "لا نستطيع العثور على التعليق الذي {{GENDER:|تريد|تريدين}} الردّ عليه في الصفحة. من المرجح أنه حُذف أو نُقل إلى صفحة أخرى.",
 	"discussiontools-error-comment-disappeared-reload": "رجاءً {{GENDER:|أعد|أعيدي}} تحميل الصفحة ثم {{GENDER:|كرّر|كرّري}} المحاولة.",
 	"discussiontools-error-comment-is-transcluded": "لا يمكن استعمال وصلة «{{int:discussiontools-replylink}}» للردّ على هذا التعليق. عوضًا عن ذلك، للردّ، من فضلك {{GENDER:|استخدم|استخدمي}} المحرر الكامل للصفحة عبر الضغط على «$1».",
 	"discussiontools-error-comment-is-transcluded-title": "\nلا يمكن استخدام «{{int:discussiontools-replylink}}» للرد على هذا التعليق لأنه تم تحميله من صفحة أخرى. من فضلك {{GENDER:|انتقل|انتقلي}} إلى هنا: [[$1]].",
