@@ -7,12 +7,17 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ځوابول",
+	"discussiontoolsdebug-pagetitle": "مخ سرليک",
+	"discussiontools-findcomment-label-search": "پلټل",
+	"discussiontools-findcomment-noresults": "بې پايلو.",
 	"discussiontools-replylink": "{{GENDER:|ځوابول}}",
 	"discussiontools-replywidget-advanced": "پرمختللی",
 	"discussiontools-replywidget-cancel": "ناگارل",
+	"discussiontools-replywidget-loading": "رابرسېرېږي...",
 	"discussiontools-replywidget-mode-source": "سرچينه",
 	"discussiontools-replywidget-mode-visual": "ليد",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} ته {{GENDER:|ځواب وييل}}",
+	"discussiontools-replywidget-preferences": "غوره توبونه",
 	"discussiontools-replywidget-preview": "مخليدنه",
 	"discussiontools-replywidget-reply": "{{GENDER:|ځوابول}}",
 	"discussiontools-replywidget-summary": "لنډيز",
@@ -27,5 +32,6 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|تاسو}} به په دې موضوع کې د نوو تبصرو په اړه خبرتیاوې ترلاسه کړی.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|تاسو}} نومليکنه وکړله!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|تاسو}} به نور پدې موضوع کې د نویو تبصرو په اړه خبرتیاوې ترلاسه نکړئ.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|تاسو}} نومليکنې څخه ليرې شوی."
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|تاسو}} نومليکنې څخه ليرې شوی.",
+	"discussiontools-topicsubscription-pager-page": "مخ"
 }

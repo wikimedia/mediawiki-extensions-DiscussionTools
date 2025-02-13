@@ -4,7 +4,9 @@
 			"Aristorkle"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Contestacion",
+	"discussiontools-defaultsummary-reply": "Responde",
+	"discussiontoolsdebug-pagetitle": "Titulo del pagina",
+	"discussiontools-emptystate-button": "Escribi un mensaje",
 	"discussiontools-replylink": "{{GENDER:|responde}}",
 	"discussiontools-replywidget-cancel": "Cancela",
 	"discussiontools-replywidget-mode-source": "Codigo",
