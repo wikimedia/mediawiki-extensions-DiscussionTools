@@ -11,6 +11,7 @@
 	"discussiontools-replywidget-cancel": "ᐃᓂᖅᑎᐹ",
 	"discussiontools-replywidget-mode-source": "ᓇᑭᙶᕐᕕᒃ",
 	"discussiontools-replywidget-mode-visual": "ᑕᑯᑦᓴᐃᑦ",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|ᐃᓚᓕᐅᑎᓗᒍ}} ᐅᖃᐅᓯᒃᓴᖅ",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|ᑭᐅᔾᔪᑎ}} ᐅᕗᖓ {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "ᐅᕝᕙ ᖃᖓᓵᖑᓕᖅᑐᖅ",
 	"discussiontools-replywidget-reply": "{{GENDER:|ᑭᐅᓂᖅ}}",

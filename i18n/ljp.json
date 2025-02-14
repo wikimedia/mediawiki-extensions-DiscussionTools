@@ -5,11 +5,15 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Balos",
+	"discussiontools-newtopic-missing-title": "Payu keni judul pakai topik pubalahan {{GENDER:|mu}}.",
+	"discussiontools-newtopic-placeholder-title": "Subjék",
 	"discussiontools-replylink": "{{GENDER:|balos}}",
 	"discussiontools-replywidget-advanced": "Lanjutan",
 	"discussiontools-replywidget-cancel": "Urung",
 	"discussiontools-replywidget-mode-source": "Sumber",
 	"discussiontools-replywidget-mode-visual": "Keliyakan",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|Tambah}} topik",
+	"discussiontools-replywidget-placeholder-newtopic": "Jabaran",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Balos}} mit {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Pratayang",
 	"discussiontools-replywidget-reply": "{{GENDER:|Balos}}",
@@ -25,5 +29,7 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Niku}} bakal neghima penginjukpandayan tentang koméntar ampay di topik sinji.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Niku}} radu bulangganan!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Niku}} mak bakal lagi nerima pengenipandayan tentang koméntar ampai kak topik hinji.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Niku}} radu taru bulangganan."
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Niku}} radu taru bulangganan.",
+	"tag-discussiontools-newtopic": "Topik ampai",
+	"tag-discussiontools-reply": "Balos"
 }
