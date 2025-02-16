@@ -701,7 +701,8 @@ function init( $container, state ) {
  * @param {Object} data Data from action=parse API
  */
 function updatePageContents( $container, data ) {
-	$container.find( '.mw-parser-output' ).first().replaceWith( data.parse.text );
+	// T386078: Use a more specified selector to prevent selecting the wrong element
+	$container.find( '> .mw-parser-output' ).first().replaceWith( data.parse.text );
 
 	mw.util.clearSubtitle();
 	mw.util.addSubtitle( data.parse.subtitle );

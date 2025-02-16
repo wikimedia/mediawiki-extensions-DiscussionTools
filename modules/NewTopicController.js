@@ -72,7 +72,8 @@ NewTopicController.prototype.setup = function () {
 
 	// Insert directly after the page content on already existing pages
 	// (.mw-parser-output is missing on non-existent pages)
-	const $parserOutput = this.$pageContainer.find( '.mw-parser-output' ).first();
+	// T386078: Use a more specified selector to prevent selecting the wrong element
+	const $parserOutput = this.$pageContainer.find( '> .mw-parser-output' ).first();
 	const $mobileAddTopicWrapper = this.$pageContainer.find( '.ext-discussiontools-init-new-topic' );
 	if ( $parserOutput.length ) {
 		$parserOutput.after( this.container.$element );
