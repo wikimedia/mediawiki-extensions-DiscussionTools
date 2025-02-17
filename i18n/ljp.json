@@ -5,18 +5,20 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Balos",
+	"discussiontools-newtopic-placeholder-title": "Subjék",
 	"discussiontools-replywidget-advanced": "Lanjutan",
-	"discussiontools-replywidget-cancel": "Ughung",
+	"discussiontools-replywidget-cancel": "Urung",
 	"discussiontools-replywidget-mode-source": "Sumber",
-	"discussiontools-replywidget-mode-visual": "Pisuwal",
+	"discussiontools-replywidget-mode-visual": "Keliyakan",
+	"discussiontools-replywidget-placeholder-newtopic": "Jabaran",
 	"discussiontools-replywidget-preview": "Pratayang",
-	"discussiontools-replywidget-summary": "Ghingkosan",
-	"discussiontools-replywidget-watchthis": "Tambahko halaman sinji mit [[Special:Watchlist|daptar awasan]] mu",
+	"discussiontools-replywidget-summary": "Ringkosan",
+	"discussiontools-replywidget-watchthis": "Tambahko halaman hinji mit [[Special:Watchlist|daptar awasan]] mu",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|jamma}} dilom pubalahan",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar}}",
-	"discussiontools-topicheader-latestcomment": "Koméntar ampay: $1",
+	"discussiontools-topicheader-latestcomment": "Koméntar ampai: $1",
 	"discussiontools-topicsubscription-button-subscribe": "langganan",
 	"discussiontools-topicsubscription-button-subscribe-label": "Langganan",
-	"discussiontools-topicsubscription-button-unsubscribe": "taghu bulangganan",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Taghu Bulangganan"
+	"discussiontools-topicsubscription-button-unsubscribe": "taru bulangganan",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Taru Bulangganan"
 }

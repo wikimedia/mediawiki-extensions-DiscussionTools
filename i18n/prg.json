@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tīgelika"
+			"Tīgelika",
+			"Nērtiks Jōrgesuns"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Etrāsenis",
@@ -11,6 +12,7 @@
 	"discussiontools-notification-removed-topic-view": "Wīdais pāusan",
 	"discussiontools-replybutton": "Etrātwei",
 	"discussiontools-replylink": "etrātwei",
+	"discussiontools-replywidget-advanced": "Ēmpirsin treppun",
 	"discussiontools-replywidget-cancel": "Naikinnais",
 	"discussiontools-replywidget-mode-source": "Aps",
 	"discussiontools-replywidget-mode-visual": "Wizuāls",
@@ -21,6 +23,14 @@
 	"discussiontools-replywidget-preview": "Pirmādira",
 	"discussiontools-replywidget-reply": "Etrātwei",
 	"discussiontools-replywidget-summary": "Ebpeisāsenis",
+	"discussiontools-replywidget-watchthis": "Preidāis šan pāusan prei swajjan [[Special:Watchlist|listin stēisan nadirītan]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|zmūi|zmūnei}} en diskusiōnei",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kumentāran|kumentārai}}",
+	"discussiontools-topicheader-latestcomment": "Ukanawwaisis kumentārs: $1",
+	"discussiontools-topicsubscription-button-subscribe": "preidāis subskripciōnin",
+	"discussiontools-topicsubscription-button-subscribe-label": "Preidāis subskripciōnin",
+	"discussiontools-topicsubscription-button-unsubscribe": "āupausinais subskripciōnin",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Āupausinais subskripciōnin",
 	"discussiontools-topicsubscription-pager-actions": "Dīlasenei",
 	"discussiontools-topicsubscription-pager-notified-never": "nikwēigi",
 	"discussiontools-topicsubscription-pager-page": "Pāusan",

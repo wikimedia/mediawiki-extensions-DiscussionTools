@@ -5,10 +5,12 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Bâles",
+	"discussiontools-newtopic-placeholder-title": "Subjèk",
 	"discussiontools-replywidget-advanced": "Terrosan",
 	"discussiontools-replywidget-cancel": "Paburung",
 	"discussiontools-replywidget-mode-source": "Sombher",
 	"discussiontools-replywidget-mode-visual": "Robâ",
+	"discussiontools-replywidget-placeholder-newtopic": "Jhâjhârbâ'ân",
 	"discussiontools-replywidget-preview": "Tèngghu kaḍâ'",
 	"discussiontools-replywidget-summary": "Rèngkessan",
 	"discussiontools-replywidget-watchthis": "Tambâ'aghi kaca rèya ka [[Special:Watchlist|watchlist]]",
@@ -17,6 +19,6 @@
 	"discussiontools-topicheader-latestcomment": "Komèntar palèng akhèr: $1",
 	"discussiontools-topicsubscription-button-subscribe": "laghânan",
 	"discussiontools-topicsubscription-button-subscribe-label": "Laghânan",
-	"discussiontools-topicsubscription-button-unsubscribe": "ambu alangghânan",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Ambu alangghânan"
+	"discussiontools-topicsubscription-button-unsubscribe": "ambu alaghânan",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Ambu alaghânan"
 }

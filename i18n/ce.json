@@ -42,7 +42,7 @@
 	"discussiontools-findcomment-results-name": "Комментари хӀокху цӀарца йукъайаьлль {{PLURAL:$1|тӀехьара агӀонгахь|тӀехьара агӀонашкахь}}:",
 	"discussiontools-findcomment-label-idorname": "Идентификатор йа комментарин цӀе",
 	"discussiontools-findcomment-label-search": "Лаха",
-	"discussiontools-findcomment-noresults": "ХӀума ца карийна.",
+	"discussiontools-findcomment-noresults": "ХӀумма а ца карийна.",
 	"discussiontools-findcomment-results-notcurrent": "(карара версехь дац)",
 	"discussiontools-findcomment-results-transcluded": "(кхечу агӀонгара латина)",
 	"discussiontools-findcomment-title": "Лаха коммент",
