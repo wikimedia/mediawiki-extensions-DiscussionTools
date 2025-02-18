@@ -72,6 +72,7 @@ class HookUtils {
 
 	public const FEATURES_CONFLICT_WITH_GADGET = [
 		self::REPLYTOOL,
+		self::TOPICSUBSCRIPTION,
 	];
 
 	private const CACHED_PAGE_PROPS = [
