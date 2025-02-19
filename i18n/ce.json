@@ -50,7 +50,7 @@
 	"discussiontools-findcomment-label-idorname": "Идентификатор йа комментарин цӀе",
 	"discussiontools-findcomment-gotocomment": "Нагахь иза гучуйалахь карарчу версин цхьаьна агӀор, {{GENDER:|шу}} довлалур ду [[Special:GoToComment/$1|дехьа и комментари йолчче хьажоргца]]. Кхечу агӀор иза дӀасахьажийна оцу жамӀашка.",
 	"discussiontools-findcomment-label-search": "Лаха",
-	"discussiontools-findcomment-noresults": "ХӀума ца карийна.",
+	"discussiontools-findcomment-noresults": "ХӀумма а ца карийна.",
 	"discussiontools-findcomment-results-notcurrent": "(карара версехь дац)",
 	"discussiontools-findcomment-results-transcluded": "(кхечу агӀонгара латина)",
 	"discussiontools-findcomment-title": "Лаха коммент",
