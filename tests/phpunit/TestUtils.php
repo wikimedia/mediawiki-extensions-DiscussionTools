@@ -15,6 +15,7 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\MediaWikiTitleCodec;
 use MediaWiki\Title\NamespaceInfo;
+use MediaWiki\Title\TitleParser;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
@@ -200,7 +201,7 @@ trait TestUtils {
 		);
 	}
 
-	public function createTitleParser( array $config ): MediaWikiTitleCodec {
+	public function createTitleParser( array $config ): TitleParser {
 		// TODO: Derive everything from $config and $data without using global services
 		$services = MediaWikiServices::getInstance();
 
@@ -228,7 +229,7 @@ trait TestUtils {
 
 		$contLang = $langFactory->getLanguage( $config['LanguageCode'] );
 
-		return new MediaWikiTitleCodec(
+		return MediaWikiTitleCodec::createParser(
 			$contLang,
 			new GenderCache( $nsInfo, null, new StaticUserOptionsLookup( [] ) ),
 			[],
