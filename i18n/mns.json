@@ -8,5 +8,9 @@
 	"discussiontools-replywidget-cancel": "Иӈыт",
 	"discussiontools-replywidget-mode-source": "Ко̄д",
 	"discussiontools-replywidget-mode-visual": "Визуально",
-	"discussiontools-replywidget-summary": "Ва̄ти торгамтаптуп"
+	"discussiontools-replywidget-summary": "Ва̄ти торгамтаптуп",
+	"discussiontools-topicsubscription-button-subscribe": "хасхатыл",
+	"discussiontools-topicsubscription-button-subscribe-label": "Хасхатыл",
+	"discussiontools-topicsubscription-button-unsubscribe": "ёл-хасхатыл",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Ёл-хасхатыл"
 }

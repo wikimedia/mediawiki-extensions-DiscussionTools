@@ -3,19 +3,23 @@
 		"authors": [
 			"Af420",
 			"Ahmed-Najib-Biabani-Ibrahimkhel",
-			"Amjad Khan"
+			"Amjad Khan",
+			"شاه زمان پټان"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ځوابول",
 	"discussiontoolsdebug-pagetitle": "مخ سرليک",
 	"discussiontools-findcomment-label-search": "پلټل",
 	"discussiontools-findcomment-noresults": "بې پايلو.",
+	"discussiontools-newtopic-placeholder-title": "سکالو",
 	"discussiontools-replylink": "{{GENDER:|ځوابول}}",
 	"discussiontools-replywidget-advanced": "پرمختللی",
 	"discussiontools-replywidget-cancel": "ناگارل",
 	"discussiontools-replywidget-loading": "رابرسېرېږي...",
 	"discussiontools-replywidget-mode-source": "سرچينه",
 	"discussiontools-replywidget-mode-visual": "ليد",
+	"discussiontools-replywidget-newtopic": "{{جنس:|ورزياتول}} سکالو",
+	"discussiontools-replywidget-placeholder-newtopic": "څرگندونه",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} ته {{GENDER:|ځواب وييل}}",
 	"discussiontools-replywidget-preferences": "غوره توبونه",
 	"discussiontools-replywidget-preview": "مخليدنه",
