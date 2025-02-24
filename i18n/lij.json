@@ -5,11 +5,13 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Rispòsta",
+	"discussiontools-newtopic-placeholder-title": "Ògètto",
 	"discussiontools-replylink": "rispóndi",
 	"discussiontools-replywidget-advanced": "Avansæ",
 	"discussiontools-replywidget-cancel": "Anùlla",
 	"discussiontools-replywidget-mode-source": "Vivàgna",
 	"discussiontools-replywidget-mode-visual": "Vizoâle",
+	"discussiontools-replywidget-placeholder-newtopic": "Descriçión",
 	"discussiontools-replywidget-placeholder-reply": "Rispóndi a {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Anteprìmma",
 	"discussiontools-replywidget-reply": "Rispóndi",

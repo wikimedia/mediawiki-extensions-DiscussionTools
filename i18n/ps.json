@@ -3,18 +3,21 @@
 		"authors": [
 			"Af420",
 			"Amjad Khan",
-			"Ahmed-Najib-Biabani-Ibrahimkhel"
+			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"شاه زمان پټان"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ځوابول",
 	"discussiontools-findcomment-label-search": "پلټل",
 	"discussiontools-findcomment-noresults": "بې پايلو.",
+	"discussiontools-newtopic-placeholder-title": "سکالو",
 	"discussiontools-replylink": "ځوابول",
 	"discussiontools-replywidget-advanced": "پرمختللی",
 	"discussiontools-replywidget-cancel": "ناگارل",
 	"discussiontools-replywidget-loading": "رابرسېرېږي...",
 	"discussiontools-replywidget-mode-source": "سرچينه",
 	"discussiontools-replywidget-mode-visual": "ليد",
+	"discussiontools-replywidget-placeholder-newtopic": "څرگندونه",
 	"discussiontools-replywidget-preferences": "غوره توبونه",
 	"discussiontools-replywidget-preview": "مخليدنه",
 	"discussiontools-replywidget-reply": "ځوابول",

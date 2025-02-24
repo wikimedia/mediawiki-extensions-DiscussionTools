@@ -6,11 +6,13 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Magbalos",
+	"discussiontools-newtopic-placeholder-title": "Topiko",
 	"discussiontools-replylink": "sabat",
 	"discussiontools-replywidget-advanced": "Nauna",
 	"discussiontools-replywidget-cancel": "Kanselahon",
 	"discussiontools-replywidget-mode-source": "Ginhalinan",
 	"discussiontools-replywidget-mode-visual": "Biswal",
+	"discussiontools-replywidget-placeholder-newtopic": "Paglaragway",
 	"discussiontools-replywidget-placeholder-reply": "Magsabat kay {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Ipakita subong",
 	"discussiontools-replywidget-reply": "Sabat",
