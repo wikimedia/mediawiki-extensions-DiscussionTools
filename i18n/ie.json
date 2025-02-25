@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Ed g2s",
+			"Lisyeng",
 			"Matma Rex",
 			"OIS",
 			"Woytecr"
 		]
 	},
+	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-preview": "Previder",
 	"tag-discussiontools-newtopic": "Tema adjuntet",
 	"tag-discussiontools-reply": "Respondet"
