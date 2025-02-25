@@ -28,7 +28,8 @@
 			"Themasterriot",
 			"ZealousBlaze",
 			"ZebaX2010",
-			"Woytecr"
+			"Woytecr",
+			"PoLuX124"
 		]
 	},
 	"discussiontools": "Herramientas de discusión",
@@ -82,7 +83,7 @@
 	"discussiontools-limitreport-errorreqid": "Identificador de solicitud de error de DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Tiempo de uso de DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|segundo|segundos}}",
-	"discussiontools-newtopic-missing-title": "Por favor indica un título para la conversación. Si haces clic en «{{int:discussiontools-replywidget-newtopic}}» se publicará sin este.",
+	"discussiontools-newtopic-missing-title": "Por favor indica un título para la conversación.",
 	"discussiontools-newtopic-placeholder-title": "Asunto",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Suscribirse",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Suscríbete para recibir una notificación cada vez que se añada un nuevo tema en esta página.",
