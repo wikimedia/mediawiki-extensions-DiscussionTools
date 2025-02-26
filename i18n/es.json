@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"-jem-",
 			"Avengium",
 			"Bruno44101",
 			"Canaan9801",
@@ -173,7 +174,7 @@
 	"discussiontools-target-heading-missing": "No se pudo encontrar este tema. Puede que se haya eliminado, trasladado, o renombrado.",
 	"discussiontools-target-heading-found-moved": "Este tema no se pudo encontrar en esta página, pero existe en l{{plural:$1|a siguiente página|as siguientes páginas}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|usuario|usuarios}} en la discusión",
-	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comentario|comentarios}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|mensaje|mensajes}}",
 	"discussiontools-topicheader-latestcomment": "Último comentario: $1",
 	"discussiontools-topicsubscription-action-subscribe-button": "Suscribirse",
 	"discussiontools-topicsubscription-action-subscribe-prompt": "¿Suscribirse a este tema?",
