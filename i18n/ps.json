@@ -3,7 +3,8 @@
 		"authors": [
 			"Af420",
 			"Ahmed-Najib-Biabani-Ibrahimkhel",
-			"Amjad Khan"
+			"Amjad Khan",
+			"شاه زمان پټان"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ځوابول",
@@ -17,6 +18,7 @@
 	"discussiontools-replywidget-loading": "رابرسېرېږي...",
 	"discussiontools-replywidget-mode-source": "سرچينه",
 	"discussiontools-replywidget-mode-visual": "ليد",
+	"discussiontools-replywidget-newtopic": "سکالو {{GENDER:|ورگډ‌ول}}",
 	"discussiontools-replywidget-placeholder-newtopic": "څرگندونه",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} ته {{GENDER:|ځواب وييل}}",
 	"discussiontools-replywidget-preferences": "غوره توبونه",
