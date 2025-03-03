@@ -28,7 +28,9 @@
 			"Nelthal",
 			"No se",
 			"Qwrop",
-			"Woytecr"
+			"Woytecr",
+			"-jem-",
+			"PoLuX124"
 		]
 	},
 	"discussiontools": "Herramientas de discusión",
@@ -148,7 +150,7 @@
 	"discussiontools-target-comment-missing": "No se pudo encontrar este comentario. Podría haber sido eliminado o movido.",
 	"discussiontools-target-comments-missing": "No se pudieron encontrar nuevos comentarios. Podrían haber sido eliminados o movidos.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|usuario|usuarios}} en la discusión",
-	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comentario|comentarios}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|mensaje|mensajes}}",
 	"discussiontools-topicheader-latestcomment": "Último comentario: $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Cancelar la suscripción",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "¿Cancelar la suscripción a este tema?",

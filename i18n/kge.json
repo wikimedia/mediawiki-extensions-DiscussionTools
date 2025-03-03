@@ -6,10 +6,12 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Balos",
+	"discussiontools-newtopic-placeholder-title": "Subjek",
 	"discussiontools-replywidget-advanced": "Lanjutan",
 	"discussiontools-replywidget-cancel": "Urung",
 	"discussiontools-replywidget-mode-source": "Sumbor",
 	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-newtopic": "Jabaran",
 	"discussiontools-replywidget-preview": "Pratayang",
 	"discussiontools-replywidget-summary": "Ringkasan",
 	"discussiontools-replywidget-watchthis": "Tambahko halaman hasa guk [[Special:Watchlist|daftar awasan]] mu",

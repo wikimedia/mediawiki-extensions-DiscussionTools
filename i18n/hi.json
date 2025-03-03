@@ -9,7 +9,8 @@
 			"संजीव कुमार",
 			"भारत्पराक्रमि",
 			"Srishakatux",
-			"Woytecr"
+			"Woytecr",
+			"Mithun 477"
 		]
 	},
 	"discussiontools": "चर्चा उपकरण",
@@ -32,11 +33,15 @@
 	"discussiontools-replywidget-feedback": "इस सुविधा के बारे में प्रतिक्रिया साझा करें",
 	"discussiontools-replywidget-mode-source": "स्रोत",
 	"discussiontools-replywidget-mode-visual": "यथादृश्य",
+	"discussiontools-replywidget-placeholder-newtopic": "विवरण",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} को उत्तर दें",
 	"discussiontools-replywidget-preferences": "पसंद",
 	"discussiontools-replywidget-preview": "झलक",
 	"discussiontools-replywidget-reply": "उत्तर दें",
 	"discussiontools-replywidget-summary": "सारांश",
+	"discussiontools-replywidget-watchthis": "इस पृष्ठ को अपनी [[Special:Watchlist|वॉचलिस्ट]] में जोड़ें",
+	"discussiontools-topicheader-authorcount": "चर्चा में $1 {{PLURAL:$1|व्यक्ति|लोग}}",
+	"discussiontools-topicheader-commentcount": "$1 {{plural:$1|टिप्पणी|टिप्पणियाँ}}",
 	"discussiontools-topicheader-latestcomment": "नवीनतम टिप्पणी: $1",
 	"discussiontools-topicsubscription-button-subscribe": "सदस्यता लें",
 	"discussiontools-topicsubscription-button-subscribe-label": "सदस्यता लें",

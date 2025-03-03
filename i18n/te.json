@@ -6,7 +6,8 @@
 			"Matma Rex",
 			"Veeven",
 			"V Bhavya",
-			"Woytecr"
+			"Woytecr",
+			"SaiPhani02"
 		]
 	},
 	"discussiontools": "చర్చ ఉపకరణాలు",
@@ -33,11 +34,14 @@
 	"discussiontools-error-noswitchtove-table": "పట్టిక సింటాక్స్",
 	"discussiontools-error-noswitchtove-template": "మూస సింటాక్స్",
 	"discussiontools-error-noswitchtove-title": "విజువల్ విధం అచేతనం",
+	"discussiontools-findcomment-label-search": "వెతుకు",
 	"discussiontools-newtopic-missing-title": "మీ చర్చాంశానికి ఒక పేరు ఇవ్వండి. \"{{int:discussiontools-replywidget-newtopic}}\" నొక్కితే, ఈ అంశం శీర్షిక పేరేమీ లేకుండానే ప్రచురితమౌతుంది.",
 	"discussiontools-newtopic-placeholder-title": "శీర్షిక",
 	"discussiontools-notification-subscribed-new-comment-view": "వ్యాఖ్యను చూడండి",
 	"discussiontools-pageframe-latestcomment": "తాజా వ్యాఖ్య: $3 టాపిక్‌లో $1. రాసినది: $2",
 	"discussiontools-pageframe-latestcomment-notopic": "తాజా వ్యాఖ్య: $1. రాసినది: $2",
+	"discussiontools-pagetitle-newtopic": "$1 పై కొత్త అంశం",
+	"discussiontools-pagetitle-reply": "$1 కి ప్రత్యుత్తరం ఇస్తున్నారు",
 	"discussiontools-postedit-confirmation-published": "మీ వ్యాఖ్యను ప్రచురించాం.",
 	"discussiontools-postedit-confirmation-topicadded": "మీ విషయాన్ని చేర్చాం.",
 	"discussiontools-preference-autotopicsub": "విషయాలకు ఆటోమాటిగ్గా చందా వెయ్యి",

@@ -4,9 +4,11 @@
 			"Ed g2s",
 			"Matma Rex",
 			"OIS",
-			"Woytecr"
+			"Woytecr",
+			"Lisyeng"
 		]
 	},
+	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-preview": "Previder",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Tema adjuntet]",
 	"tag-discussiontools-reply": "[{{int:discussiontools-replywidget-reply-link}} Respondet]"
