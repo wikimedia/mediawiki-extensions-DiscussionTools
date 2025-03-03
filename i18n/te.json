@@ -37,6 +37,7 @@
 	"discussiontools-error-noswitchtove-template": "మూస సింటాక్స్",
 	"discussiontools-error-noswitchtove-title": "విజువల్ విధం అచేతనం",
 	"discussiontools-findcomment-label-search": "వెతుకు",
+	"discussiontools-ledesection-button": "ఈ పేజీ గురించి మరింత తెలుసుకోండి",
 	"discussiontools-newtopic-missing-title": "మీ చర్చాంశానికి ఒక పేరు ఇవ్వండి. \"{{int:discussiontools-replywidget-newtopic}}\" నొక్కితే, ఈ అంశం శీర్షిక పేరేమీ లేకుండానే ప్రచురితమౌతుంది.",
 	"discussiontools-newtopic-placeholder-title": "శీర్షిక",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "సభ్యత్వం",
