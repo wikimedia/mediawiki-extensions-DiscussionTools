@@ -29,7 +29,8 @@
 			"ZebaX2010",
 			"Qwrop",
 			"Woytecr",
-			"PoLuX124"
+			"PoLuX124",
+			"-jem-"
 		]
 	},
 	"discussiontools": "Herramientas de discusión",
@@ -170,7 +171,7 @@
 	"discussiontools-target-comment-missing": "No se pudo encontrar este comentario. Podría haber sido eliminado o movido.",
 	"discussiontools-target-comments-missing": "No se pudieron encontrar nuevos comentarios. Podrían haber sido eliminados o movidos.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|usuario|usuarios}} en la discusión",
-	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comentario|comentarios}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|mensaje|mensajes}}",
 	"discussiontools-topicheader-latestcomment": "Último comentario: $1",
 	"discussiontools-topicsubscription-action-subscribe-button": "Suscribirse",
 	"discussiontools-topicsubscription-action-subscribe-prompt": "¿Suscribirse a este tema?",
