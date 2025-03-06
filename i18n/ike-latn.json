@@ -6,5 +6,6 @@
 	},
 	"discussiontools-defaultsummary-reply": "kiujjuti",
 	"discussiontools-replylink": "{{GENDER:|kiujjuti}}",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|kiujjuti}} ikunga {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "{{GENDER:|kiujjuti}}"
 }
