@@ -75,6 +75,16 @@ class HookUtils {
 		self::TOPICSUBSCRIPTION,
 	];
 
+	public const FEATURES_DEPENDENCIES = [
+		self::SOURCEMODETOOLBAR => [
+			self::REPLYTOOL,
+			self::NEWTOPICTOOL,
+		],
+		self::AUTOTOPICSUB => [
+			self::TOPICSUBSCRIPTION,
+		]
+	];
+
 	private const CACHED_PAGE_PROPS = [
 		'newsectionlink',
 		'nonewsectionlink',
