@@ -7,7 +7,11 @@
 			"شاه زمان پټان"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "سمه ده، زه پوه شوم",
+	"discussiontools-autotopicsubpopup-preferences": "غوره توبونه سمول",
 	"discussiontools-defaultsummary-reply": "ځوابول",
+	"discussiontools-desc": "د شننپاڼو ښه کولو توکي.",
+	"discussiontools-emptystate-button": "شننه پيلول",
 	"discussiontools-findcomment-label-search": "پلټل",
 	"discussiontools-findcomment-noresults": "بې پايلو.",
 	"discussiontools-newtopic-placeholder-title": "سکالو",
