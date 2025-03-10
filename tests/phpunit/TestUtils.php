@@ -8,6 +8,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\DiscussionTools\CommentParser;
 use MediaWiki\Interwiki\NullInterwikiLookup;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Language\ILanguageConverter;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Languages\LanguageFactory;
 use MediaWiki\MainConfigNames;
@@ -181,13 +182,17 @@ trait TestUtils {
 
 		$config = self::prepareConfig( $config, $data );
 
-		$langConvFactory = new LanguageConverterFactory(
-			new ServiceOptions( LanguageConverterFactory::CONSTRUCTOR_OPTIONS, $config ),
-			$services->getObjectFactory(),
-			static function () use ( $services ) {
-				return $services->getLanguageFactory()->getLanguage( $config['LanguageCode'] );
-			}
-		);
+		$langConv = $this->getMockBuilder( ILanguageConverter::class )
+			->onlyMethods( [ 'getVariants' ] )
+			->getMockForAbstractClass();
+		$langConv->method( 'getVariants' )
+			->willReturn( array_keys( $data['contLangMessages'] ) );
+		$langConvFactory = $this->getMockBuilder( LanguageConverterFactory::class )
+			->disableOriginalConstructor()
+			->onlyMethods( [ 'getLanguageConverter' ] )
+			->getMock();
+		$langConvFactory->method( 'getLanguageConverter' )
+			->willReturn( $langConv );
 
 		return new CommentParser(
 			new HashConfig( $config ),
