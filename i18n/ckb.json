@@ -98,7 +98,7 @@
 	"discussiontools-replywidget-mention-tool-title": "بانگکردنی بەکارھێنەرێک",
 	"discussiontools-replywidget-mode-source": "سەرچاوە",
 	"discussiontools-replywidget-mode-visual": "دیداری",
-	"discussiontools-replywidget-newcomments-button": "$1 لێدوانی نوێ پیشان بدە",
+	"discussiontools-replywidget-newcomments-button": "$1 {{PLURAL:$1|لێدوان}}ی نوێ پیشان بدە",
 	"discussiontools-replywidget-newtopic": "بابەت زیاد بکە",
 	"discussiontools-replywidget-placeholder-newtopic": "باسکردن",
 	"discussiontools-replywidget-placeholder-reply": "وەڵام بۆ {{BIDI:$1}}",
