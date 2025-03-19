@@ -7,7 +7,7 @@
 			"شاه زمان پټان"
 		]
 	},
-	"discussiontools-autotopicsubpopup-body": "که په دې خبرو اترو کې يو څوک نوې څرگندونه وکړي، نو {GENDER:|تاسو}} به خبرتيا ترلاسه کړئ. تاسو کولی شئ، چې خپل د خبرتياوو اوڼنې په غوره توبونو کې سمې کړئ.",
+	"discussiontools-autotopicsubpopup-body": "که په دې خبرو اترو کې کوم څوک نوې څرگندونه وکړي؛ نو {{GENDER:|You}} به خبرتيا ترلاسه کړئ. تاسو کولی شئ خپل د خبرتياوو اوڼنې په غوره توبونو کې سمې کړئ.",
 	"discussiontools-autotopicsubpopup-dismiss": "سمه ده، زه پوه شوم",
 	"discussiontools-autotopicsubpopup-preferences": "غوره توبونه سمول",
 	"discussiontools-autotopicsubpopup-title": "{{GENDER:|تاسو}}گډون کړی دی",
@@ -19,6 +19,12 @@
 	"discussiontools-emptystate-button": "شننه پيلول",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|خبرو اترو مخونه]] هغه ځايونه دي چې خلک پکې د {{SITENAME}} منځپانگې ښه کولو لپاره شننه کوي.{{GENDER:|تاسو}} کولی شئ دا مخ د نورو سره د [[:{{SUBJECTPAGENAME}}]] د ښه کولو په اړه د شننې لپاره وکاروئ.",
 	"discussiontools-emptystate-desc-self": "خلک په{{SITENAME}} کې کولی شي [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|خبرې اترې مخ]] له {{GENDER:|تاسو}} سره د عامه پيغام لپاره وکاروي، او تاسو ته به د دوی د پيغام خبر درکړل شي.",
+	"discussiontools-emptystate-desc-self-anon": "هغه وگړي چې {{SITENAME}} کې دي کولی شي دا [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}} وکاروي؛ ترڅو د هغه وېب‌‌پتې څخه شوي سمونونو په اړه ټوليز پيغام خپور کړي چې تاسو يې اوسمهال کاروئ.\n\nډېری وېب‌پتې په دوره يي ډول بدليږي او ډېری وختونه د څو تنو له خوا وېشل کيږي. تاسو کولی شئ [$1 گڼون جوړ کړئ] يا [$2 غونډال ته ننوځئ]، ترڅو د نورو غونډال نه وتليو کارنانو سره په راتلونکي کې د گډوډۍ مخنيوی وشي. گڼون جوړول ستاسو وېب‌‌پته هم پټوي.",
+	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} په اړه شننه پيل کړئ",
+	"discussiontools-emptystate-title-self": "خپل د خبرو اترو مخ ته {{GENDER:|ښه راغلاست}}",
+	"discussiontools-emptystate-title-self-anon": "د خبرو اترو دې مخ ته {{GENDER:|ښه راغلاست}}",
+	"discussiontools-emptystate-title-user": "له {{PAGENAME}} {{GENDER:{{PAGENAME}}|سره}} خبرې اترې پيل کړئ",
+	"discussiontools-emptystate-title-user-anon": "د خبرو اترو دې مخ ته {{GENDER:|ښه راغلاست}}",
 	"discussiontools-findcomment-label-search": "پلټل",
 	"discussiontools-findcomment-noresults": "بې پايلو.",
 	"discussiontools-newtopic-placeholder-title": "سکالو",
