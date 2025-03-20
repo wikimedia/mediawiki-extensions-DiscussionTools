@@ -124,7 +124,7 @@
 	"discussiontools-replywidget-mode-source": "Fonte",
 	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-newcomments-button": "Mostrar $1 novo {{PLURAL:$1|comentário|comentários}}",
-	"discussiontools-replywidget-newtopic": "Adicionar tópico",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|Adicionar}} tópico",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrição",
 	"discussiontools-replywidget-placeholder-reply": "Responder a {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Preferências",
