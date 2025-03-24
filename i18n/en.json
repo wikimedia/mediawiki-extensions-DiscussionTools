@@ -68,7 +68,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|You}} have subscribed!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|You}} will no longer receive notifications when new topics are started on this page.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|You}} have unsubscribed.",
-	"discussiontools-notification-added-topic-header": "New topic \"<strong>$4</strong>\" created on <strong>$3</strong> by $2.",
+	"discussiontools-notification-added-topic-header": "New topic \"<strong>$4</strong>\" {{GENDER:$2|created}} on <strong>$3</strong> by $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|One new topic|$1 new topics|100=99+ new topics}} on \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "View topic",
