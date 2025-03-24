@@ -9,9 +9,18 @@
 	},
 	"discussiontools": "Aisinas de discussion",
 	"discussiontools-defaultsummary-reply": "Respònsa",
+	"discussiontools-emptystate-button": "Començar una nòva discussion",
+	"discussiontools-emptystate-title": "Començatz una discussion sus {{SUBJECTPAGENAME}}",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 vos a {{GENDER:$2|respòst}} a «<strong>$4</strong>».",
 	"discussiontools-pageframe-latestcomment": "Comentari darrièr: $1 per $2 dins lo tèma $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Darrièr comentari: $1 per $2",
+	"discussiontools-preference-newtopictool-createpage": "Quand visitaretz una pagina de discussion que non s'es encara creada:",
+	"discussiontools-preference-newtopictool-createpage-editor": "Obrir l'editor de wikitext",
+	"discussiontools-preference-newtopictool-createpage-newtopictool": "Ofrir d'afichar un tèma nòu",
+	"discussiontools-preference-newtopictool-help": "Aiçò vos mostrarà un formulari integrat per afichar de tèmas nòus.",
+	"discussiontools-preference-replytool-help": "Aiçò vos mostrarà un ligam per respondre amb un sol clic als comentaris d'una pagina de discussion.",
+	"discussiontools-preference-sourcemodetoolbar": "Activar las aisinas experimentalas en mòde còdi.",
+	"discussiontools-preference-summary": "Podètz obténer mai d'informacions relativas a aquestas foncions se legissètz lo [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary resumit de caracteristicas].",
 	"discussiontools-replywidget-advanced": "Avançat",
 	"discussiontools-replywidget-cancel": "Annular",
 	"discussiontools-replywidget-mode-source": "Fònt",
@@ -26,5 +35,6 @@
 	"discussiontools-topicsubscription-button-subscribe": "S'abonar",
 	"discussiontools-topicsubscription-button-subscribe-label": "M'inscriure",
 	"discussiontools-topicsubscription-button-unsubscribe": "Se desabonar",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Se desabonar"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Se desabonar",
+	"discussiontools-topicsubscription-special-title": "Subscripcions de tèmas"
 }

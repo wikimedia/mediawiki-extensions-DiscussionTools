@@ -2,14 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Jjnzamah",
-			"Kuzayet"
+			"Kuzayet",
+			"Kambai Akau"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Shim",
+	"discussiontools-newtopic-placeholder-title": "Du̱ccu ba̱ryat",
 	"discussiontools-replywidget-advanced": "Yaka̱son",
 	"discussiontools-replywidget-cancel": "Hywat",
 	"discussiontools-replywidget-mode-source": "Nyai ke",
 	"discussiontools-replywidget-mode-visual": "Nkyang ccang",
+	"discussiontools-replywidget-placeholder-newtopic": "Ka̱tyyei",
 	"discussiontools-replywidget-preview": "Yen ccang",
 	"discussiontools-replywidget-summary": "Namaryat",
 	"discussiontools-replywidget-watchthis": "mbrang ka̱zzu ka ni an wwan[[Special:Watchlist|Ka̱zzu ndang]]",

@@ -53,7 +53,7 @@
 	"discussiontools-newtopic-legacy-hint": "<strong>Un doare nevez zo bremañ da voulc’hañ ar c’haozeadennoù.</strong> Gant an doare nevez-mañ e c’hellit ouzhpennañ rannbennadoù gant ur furmskrid enlinenn ha menegiñ re all gant ur berrdroc’h nevez. Gallout a rit [$1 mont en-dro d’an doare kozh] ivez.",
 	"discussiontools-newtopic-legacy-hint-return": "<strong>Emaoc’h oc’h ober gant an doare kozh.</strong> Gallout a rit [$1 mont en-dro d’an doare nevez] pe mont d’ho penndibaboù ha [$2 dibab an doare kozh dre ziouer].",
 	"discussiontools-newtopic-missing-title": "Roit un titl d’ho rannbennad mar plij. Ma klikit \"{{int:discussiontools-replywidget-newtopic}}\" e vo ouzhpennet ho rannbennad hep titl.",
-	"discussiontools-newtopic-placeholder-title": "Danvez",
+	"discussiontools-newtopic-placeholder-title": "Titl",
 	"discussiontools-notification-removed-topic-body": "Marteze ne resevoc’h ken kemennadennoù a-zivout ar {{PLURAL:$1|gaozeadenn|c’haozeadennoù}}-mañ.",
 	"discussiontools-notification-removed-topic-header": "Diellet pe dilamet eo bet ar gaozeadenn \"<strong>$4</strong>\" eus $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "Diellet pe dilamet eo bet {{PLURAL:$1|ur gaozeadenn|$1 kaozeadenn|100=99+ kaozeadenn}} eus $2.",
