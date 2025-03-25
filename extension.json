@@ -2,6 +2,11 @@
 	"name": "DiscussionTools",
 	"license-name": "MIT",
 	"version": "0.0.0",
+	"author": [
+		"Bartosz Dziewoński",
+		"Ed Sanders",
+		"David Lynch"
+	],
 	"url": "https://www.mediawiki.org/wiki/Extension:DiscussionTools",
 	"namemsg": "discussiontools",
 	"descriptionmsg": "discussiontools-desc",
