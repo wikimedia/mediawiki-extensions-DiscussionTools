@@ -61,7 +61,7 @@
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|eilenn}}",
 	"discussiontools-newtopic-missing-title": "Roit un titl {{GENDER:|d’ho}} kaozeadenn mar plij.",
 	"discussiontools-newtopic-missing-title-prompt": "{{GENDER:|N'hoc'h}} eus roet titl ebet evit {{GENDER:|ho}} pennad kaozeal. Ha sur oc'h e fell {{GENDER:|deoc’h}} ouzhpennañ ar pennad-mañ hep titl ?",
-	"discussiontools-newtopic-placeholder-title": "Danvez",
+	"discussiontools-newtopic-placeholder-title": "Titl",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Koumanantiñ",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Koumanantiñ evit kaout evezhiadennoù pa vez boulc’het kaozeadennoù nevez er bajenn-mañ.",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Digoumanantiñ",

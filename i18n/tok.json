@@ -4,15 +4,20 @@
 			"20kdc",
 			"Keenan Pepper",
 			"Juwan",
-			"Tamzin"
+			"Tamzin",
+			"物灵"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "toki sin",
+	"discussiontools-newtopic-missing-title": "toki sina o jo e toki suli.",
+	"discussiontools-newtopic-placeholder-title": "toki suli",
 	"discussiontools-replylink": "{{GENDER:|o toki}}",
 	"discussiontools-replywidget-advanced": "namako",
 	"discussiontools-replywidget-cancel": "o toki ala",
 	"discussiontools-replywidget-mode-source": "toki ilo",
 	"discussiontools-replywidget-mode-visual": "toki lukin",
+	"discussiontools-replywidget-newtopic": "toki sin",
+	"discussiontools-replywidget-placeholder-newtopic": "sona",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|o toki}} tawa jan {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "lukin taso",
 	"discussiontools-replywidget-reply": "{{GENDER:|o toki}}",
