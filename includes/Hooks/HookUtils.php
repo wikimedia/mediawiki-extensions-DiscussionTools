@@ -143,7 +143,15 @@ class HookUtils {
 		// ParserOutputAccess would look it up by namespace+title in replica.
 		$pageRecord = $services->getPageStore()->getPageById( $revRecord->getPageId() ) ?:
 			$services->getPageStore()->getPageById( $revRecord->getPageId(), IDBAccessObject::READ_LATEST );
-		Assert::postcondition( $pageRecord !== null, 'Revision had no page' );
+		if ( !$pageRecord ) {
+			throw new NormalizedException(
+				"PageRecord for page {page} revision {revision} not found",
+				[
+					'page' => $revRecord->getPageId(),
+					'revision' => $revRecord->getId(),
+				]
+			);
+		}
 
 		$parserOptions = ParserOptions::newFromAnon();
 		$parserOptions->setUseParsoid();
