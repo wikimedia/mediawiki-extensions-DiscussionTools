@@ -86,7 +86,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Abone oldun!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Bu sayfada yeni bir konu açıldığında artık bildirim almayacaksın.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Abonelikten çıktın.",
-	"discussiontools-notification-added-topic-header": "$2 adlı kullanıcı tarafından <strong>$3</strong> sayfasında \"<strong>$4</strong>\" konusu oluşturuldu.",
+	"discussiontools-notification-added-topic-header": "Yeni konu \"<strong>$4</strong>\", $1 tarafından <strong>$3</strong> sayfasında {{GENDER:$2|oluşturuldu}}.",
 	"discussiontools-notification-added-topic-header-bundled": "\"<strong>$2</strong>\" sayfasında {{PLURAL:$1|Bir|$1|100=99+}} yeni konu.",
 	"discussiontools-notification-added-topic-view": "Konuyu görüntüle",
 	"discussiontools-notification-comment-thank-header": "$1, \"<strong>$3</strong>\" yorumunuza {{GENDER:$2|teşekkür}} {{GENDER:$4|etti}}.",

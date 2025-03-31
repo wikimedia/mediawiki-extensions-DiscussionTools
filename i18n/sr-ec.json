@@ -70,7 +70,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Одсад пратите овај разговор.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|Више}} нећете добијати обавештења о новим темама на овој страници.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Више не пратите овај разговор.",
-	"discussiontools-notification-added-topic-header": "Нова тема „<strong>$4</strong>” на <strong>$3</strong>. Аутор: $2.",
+	"discussiontools-notification-added-topic-header": "Нова тема „<strong>$4</strong>” на <strong>$3</strong>. {{GENDER:$2|Аутор|Ауторка}}: $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Једна нова тема|$1 нових тема|100=99+ нових тема}} на „<strong>$2</strong>”.",
 	"discussiontools-notification-added-topic-view": "Прикажи тему",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|Вам}} се {{GENDER:$4|захваљује}} на коментару у теми „<strong>$3</strong>”.",

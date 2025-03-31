@@ -66,7 +66,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Tu te ha abonate!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Tu non plus recipera notificationes quando nove topicos es comenciate sur iste pagina.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Tu te ha disabonate.",
-	"discussiontools-notification-added-topic-header": "Nove topico \"<strong>$4</strong>\" create sur <strong>$3</strong> per $2.",
+	"discussiontools-notification-added-topic-header": "Nove topico “<strong>$4</strong>” {{GENDER:$2|create}} sur <strong>$3</strong> per $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Un nove topico|$1 nove topicos|100=99+ nove topicos}} sur \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-view": "Vider topico",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$4|te}} {{GENDER:$2|ha regratiate}} pro tu commento in “<strong>$3</strong>”.",

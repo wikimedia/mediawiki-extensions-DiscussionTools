@@ -71,7 +71,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Abunə oldunuz!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Bu səhifədə yeni mövzular açıldıqda daha bildiriş almayacaqsınız.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Abunəlikdən çıxdınız.",
-	"discussiontools-notification-added-topic-header": "<strong>$3</strong> səhifəsində $2 tərəfindən yeni \"<strong>$4</strong>\" mövzusu yaradıldı",
+	"discussiontools-notification-added-topic-header": "<strong>$3</strong> səhifəsində $1 tərəfindən yeni \"<strong>$4</strong>\" mövzusu {{GENDER:$2|yaradıldı}}",
 	"discussiontools-notification-added-topic-header-bundled": "\"<strong>$2</strong>\" səhifəsində {{PLURAL:$1|bir yeni mövzu|$1 yeni mövzu|100=99+ yeni mövzu}}",
 	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Mövzuya bax",

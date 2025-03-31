@@ -82,7 +82,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "U bent nu geabonneerd!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "U ontvangt geen melding meer wanneer er een nieuw overleg op deze pagina wordt begonnen.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Uw abonnement is opgezegd.",
-	"discussiontools-notification-added-topic-header": "Nieuw onderwerp \"<strong>$4</strong>\" aangemaakt door $2 op <strong>$3</strong>.",
+	"discussiontools-notification-added-topic-header": "Nieuw onderwerp “<strong>$4</strong>” {{GENDER:$2|aangemaakt}} door $1 op <strong>$3</strong>.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Eén nieuw onderwerp|$1 nieuwe onderwerpen|100=99+ nieuwe onderwerpen}} op \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-view": "Onderwerp bekijken",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|heeft}} {{GENDER:$4|je}} bedankt voor je reactie op \"<strong>$3</strong>\".",
