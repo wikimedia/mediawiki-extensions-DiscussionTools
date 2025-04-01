@@ -6,7 +6,8 @@
 			"Sheilawangari",
 			"Wangombe",
 			"Jon Harald Søby",
-			"Kisare"
+			"Kisare",
+			"Joeamj"
 		]
 	},
 	"discussiontools": "Zana za majadiliano",
@@ -17,6 +18,8 @@
 	"discussiontools-emptystate-title-self": "Karibu kwenye ukurasa wako wa majadiliano",
 	"discussiontools-emptystate-title-self-anon": "Karibu kwenye ukurasa huu wa majadiliano",
 	"discussiontools-findcomment-label-search": "Tafuta",
+	"discussiontools-newtopic-missing-title": "Tafadhali toa kichwa cha mada ya mjadala wa {{GENDER:|yako}}.",
+	"discussiontools-newtopic-placeholder-title": "Mada",
 	"discussiontools-notification-added-topic-view": "Angalia mada",
 	"discussiontools-notification-removed-topic-view": "Angalia ukurasa",
 	"discussiontools-preference-replytool": "Washa kujibu haraka",
@@ -28,6 +31,8 @@
 	"discussiontools-replywidget-cancel": "Batilisha",
 	"discussiontools-replywidget-mode-source": "Chanzo",
 	"discussiontools-replywidget-mode-visual": "Kuona",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|Ongeza}} mada",
+	"discussiontools-replywidget-placeholder-newtopic": "Maelezo",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Jibu}} kwa {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Hakiki",
 	"discussiontools-replywidget-reply": "Jibu",
