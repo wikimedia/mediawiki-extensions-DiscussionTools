@@ -70,7 +70,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Ti sei {{GENDER:|iscritto|iscritta}}!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Non {{GENDER:|riceverai}} più notifiche quando vengono iniziati nuovi argomenti in questa pagina.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Hai {{GENDER:|annullato}} l'iscrizione.",
-	"discussiontools-notification-added-topic-header": "Nuovo argomento \"<strong>$4</strong>\" creato su <strong>$3</strong> da $2.",
+	"discussiontools-notification-added-topic-header": "Nuovo argomento \"<strong>$4</strong>\" {{GENDER:$2|creato}} su <strong>$3</strong> da $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Un nuovo argomento|$1 nuovi argomenti|100=Più di 99 nuovi argomenti}} su \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-view": "Vedi argomento",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$4|ti}} {{GENDER:$2|ha ringraziato}} per il tuo commento in \"<strong>$3</strong>\".",
