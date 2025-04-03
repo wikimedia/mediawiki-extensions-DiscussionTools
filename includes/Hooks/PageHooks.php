@@ -437,7 +437,6 @@ class PageHooks implements
 	 */
 	private function getEmptyStateHtml( IContextSource $context ): string {
 		$coreConfig = RequestContext::getMain()->getConfig();
-		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . '/DiscussionTools/images';
 
 		$descParams = [];
 		$buttonMsg = 'discussiontools-emptystate-button';
@@ -514,12 +513,7 @@ class PageHooks implements
 		$wrapped =
 			Html::rawElement( 'div', [ 'class' => 'ext-discussiontools-emptystate' ],
 				Html::rawElement( 'div', [ 'class' => 'ext-discussiontools-emptystate-text' ], $text ) .
-				Html::element( 'img', [
-					'src' => $iconpath . '/emptystate.svg',
-					'class' => 'ext-discussiontools-emptystate-logo',
-					// This is a purely decorative element
-					'alt' => '',
-				] )
+				Html::element( 'div', [ 'class' => 'ext-discussiontools-emptystate-logo' ] )
 			);
 
 		return $wrapped;

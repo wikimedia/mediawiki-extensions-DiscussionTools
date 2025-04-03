@@ -620,8 +620,14 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 1em;
 	clear: both;
 
-	> img {
+	&-logo {
+		flex-shrink: 0;
 		width: 250px;
+		min-height: 166px;
+		background: url( emptystate.svg ) no-repeat;
+		background-size: contain;
+		// Align with top of h2 text in -text (0.25em margin + 0.5em padding * 1.2em font scaling)
+		margin-top: 0.9em;
 	}
 
 	&:not( :first-child ) {
@@ -646,7 +652,7 @@ h1, h2, h3, h4, h5, h6 {
 			}
 		}
 
-		> img {
+		&-logo {
 			display: none;
 		}
 	}
