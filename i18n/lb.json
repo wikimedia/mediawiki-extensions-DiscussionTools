@@ -55,7 +55,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Dir hutt Iech abonéiert!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Dir kritt keng Notifikatioune méi, wann nei Sujeten op dëser Säit ugefaange ginn.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Dir hutt Iech desabonéiert.",
-	"discussiontools-notification-added-topic-header": "Neie Sujet „<strong>$4</strong>“ op <strong>$3</strong> ugeluecht vum $2.",
+	"discussiontools-notification-added-topic-header": "Neie Sujet „<strong>$4</strong>“ op <strong>$3</strong> {{GENDER:$2|ugeluecht}} vum $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Een neie Sujet|$1 nei Sujeten|100=Méi wéi 99 nei Sujeten}} op „<strong>$2</strong>“.",
 	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Sujet weisen",

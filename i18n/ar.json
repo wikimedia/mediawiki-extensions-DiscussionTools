@@ -84,7 +84,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "لقد اشتركت!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "لن تتلقى إشعاراتٍ بعد الآن عند بدء مواضيع جديدة في هذه الصفحة.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "لقد ألغيت الاشتراك.",
-	"discussiontools-notification-added-topic-header": "موضوعٌ جديد \"<strong>$4</strong>\" أنشأ في <strong>$3</strong> بواسطة $2.",
+	"discussiontools-notification-added-topic-header": "موضوع جديد \"<strong>$4</strong>\" {{GENDER:$2|تم إنشاؤه}} في <strong>$3</strong> بواسطة $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|موضوع جديد|$1 مواضيع جديدة|100=99+ مواضيع جديدة}} في \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "اعرض الموضوع",
