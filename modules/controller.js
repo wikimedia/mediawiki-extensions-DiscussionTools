@@ -349,7 +349,8 @@ function init( $container, state ) {
 	 * @param {jQuery} $link Add section link for new topic controller
 	 * @param {Object} [options] Options, see CommentController
 	 * @param {string} [options.mode] Optionally force a mode, 'visual' or 'source'
-	 * @param {boolean} [options.hideErrors] Suppress errors, e.g. when restoring auto-save
+	 * @param {boolean} [options.fromAutoSave] The comment has been restored from auto-save. Open the
+	 *   reply widget even if there are loading errors, to allow user to backup or discard it (T345986).
 	 * @param {boolean} [options.suppressNotifications] Don't notify the user if recovering auto-save
 	 * @param {MemoryStorage} [storage] Storage object for autosave
 	 */
@@ -489,7 +490,7 @@ function init( $container, state ) {
 					setTimeout( () => {
 						setupController( comment, $link, {
 							mode: mode,
-							hideErrors: true,
+							fromAutoSave: true,
 							suppressNotifications: !state.firstLoad
 						}, replyStorage );
 					} );
@@ -503,7 +504,7 @@ function init( $container, state ) {
 			const mode = newTopicStorage.get( 'mode' );
 			setupController( newTopicComment(), $( [] ), {
 				mode: mode,
-				hideErrors: true,
+				fromAutoSave: true,
 				suppressNotifications: !state.firstLoad
 			}, newTopicStorage );
 		} else if ( mw.config.get( 'wgDiscussionToolsStartNewTopicTool' ) ) {

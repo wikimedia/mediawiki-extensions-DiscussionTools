@@ -2,6 +2,7 @@ const
 	controller = require( './controller.js' ),
 	modifier = require( './modifier.js' ),
 	dtConf = require( './config.json' ),
+	CommentDetails = require( './CommentDetails.js' ),
 	CommentItem = require( './CommentItem.js' ),
 	scrollPadding = {
 		// eslint-disable-next-line no-jquery/no-class-state
@@ -112,7 +113,8 @@ CommentController.static.initType = 'page';
  *
  * @param {Object} [options]
  * @param {string} [options.mode] Optionally force a mode, 'visual' or 'source'
- * @param {boolean} [options.hideErrors] Suppress errors, e.g. when restoring auto-save
+ * @param {boolean} [options.fromAutoSave] The comment has been restored from auto-save. Open the
+ *   reply widget even if there are loading errors, to allow user to backup or discard it (T345986).
  * @param {boolean} [options.suppressNotifications] Don't notify the user if recovering auto-save
  */
 CommentController.prototype.setup = function ( options ) {
@@ -139,15 +141,29 @@ CommentController.prototype.setup = function ( options ) {
 		this.replyWidgetPromise = this.getTranscludedFromSource().then(
 			( commentDetails ) => this.createReplyWidget( commentDetails, { mode: options.mode } ),
 			( code, data ) => {
-				this.onReplyWidgetTeardown();
-
-				if ( !options.hideErrors ) {
-					OO.ui.alert(
-						code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
-						{ size: 'medium' }
+				if ( options.fromAutoSave ) {
+					// There was an error that would normally prevent this reply widget from being opened, but
+					// the user has an autosaved draft comment that we must restore. Make up a CommentDetails
+					// object to allow the reply widget to open. Using setLoadingError() will prevent it from
+					// being saved (otherwise it could go to the wrong page or cause content corruption).
+					const commentDetails = new CommentDetails(
+						mw.config.get( 'wgRelevantPageName' ),
+						mw.config.get( 'wgCurRevisionId' ),
+						{}, false, '', options.mode
 					);
-					mw.track( 'dt.commentSetupError', code );
+					const replyWidgetPromise = this.createReplyWidget( commentDetails, { mode: options.mode } );
+					replyWidgetPromise.then( ( replyWidget ) => {
+						replyWidget.setLoadingError( code, data );
+					} );
+					return $.Deferred().resolve( replyWidgetPromise );
 				}
+
+				this.onReplyWidgetTeardown();
+				OO.ui.alert(
+					code instanceof Error ? code.toString() : controller.getApi().getErrorMessage( data ),
+					{ size: 'medium' }
+				);
+				mw.track( 'dt.commentSetupError', code );
 
 				mw.track( 'editAttemptStep', {
 					action: 'abort',

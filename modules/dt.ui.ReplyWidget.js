@@ -475,17 +475,29 @@ ReplyWidget.prototype.onWindowScroll = function () {
 ReplyWidget.prototype.setPending = function ( pending ) {
 	this.pending = pending;
 	if ( pending ) {
-		this.replyButton.setDisabled( true );
 		this.cancelButton.setDisabled( true );
 		this.replyBodyWidget.setReadOnly( true );
 		this.replyBodyWidget.pushPending();
 	} else {
-		this.replyButton.setDisabled( false );
 		this.cancelButton.setDisabled( false );
 		this.replyBodyWidget.setReadOnly( false );
 		this.replyBodyWidget.popPending();
-		this.updateButtons();
 	}
+	this.updateButtons();
+};
+
+/**
+ * Display an error and prevent this reply from being saved.
+ *
+ * @param {string} code Error code
+ * @param {Object} data Error data
+ */
+ReplyWidget.prototype.setLoadingError = function ( code, data ) {
+	this.setSaveErrorMessage( code, data );
+	this.loadingFailed = true;
+	this.updateButtons();
+	// Hide mode switcher - not using setDisabled() because it has weird styles that make both buttons look selected
+	this.modeTabSelect.toggle( false );
 };
 
 ReplyWidget.prototype.saveEditMode = function ( mode ) {
@@ -888,7 +900,7 @@ ReplyWidget.prototype.preparePreview = function ( wikitext ) {
  * Update buttons when widget state has changed
  */
 ReplyWidget.prototype.updateButtons = function () {
-	this.replyButton.setDisabled( this.isEmpty() );
+	this.replyButton.setDisabled( this.pending || this.isEmpty() || this.loadingFailed );
 };
 
 /**
@@ -1068,7 +1080,7 @@ ReplyWidget.prototype.createErrorMessage = function ( message ) {
  * @fires submit
  */
 ReplyWidget.prototype.onReplyClick = function () {
-	if ( this.pending || this.isEmpty() ) {
+	if ( this.pending || this.isEmpty() || this.loadingFailed ) {
 		return;
 	}
 
