@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"David Wadie Fisher-Freberg"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Baleh",
+	"discussiontools-newtopic-placeholder-title": "Subjek",
+	"discussiontools-replywidget-advanced": "Tingkek lanjuik",
+	"discussiontools-replywidget-cancel": "Batal",
+	"discussiontools-replywidget-mode-source": "Sumber",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-newtopic": "Katarangan",
+	"discussiontools-replywidget-preview": "Pratinjau",
+	"discussiontools-replywidget-summary": "Ikhtisar",
+	"discussiontools-replywidget-watchthis": "Tambahkan laman ko ka [[Special:Watchlist|daftar pantuauan]] Sanak.",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|urang}} dalam diskusi",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar}}",
+	"discussiontools-topicheader-latestcomment": "Komentar nan paliang baru: $1",
+	"discussiontools-topicsubscription-button-subscribe": "langganan",
+	"discussiontools-topicsubscription-button-subscribe-label": "Langganan",
+	"discussiontools-topicsubscription-button-unsubscribe": "batal langganan",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Batal langganan"
+}

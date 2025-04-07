@@ -5,11 +5,13 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Tema li",
+	"discussiontools-newtopic-placeholder-title": "Subjek",
 	"discussiontools-replylink": "tema",
 	"discussiontools-replywidget-advanced": "Amatohula",
 	"discussiontools-replywidget-cancel": "Böi tohugö",
 	"discussiontools-replywidget-mode-source": "Kode",
 	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-newtopic": "Famotokhi",
 	"discussiontools-replywidget-placeholder-reply": "Tema li {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Khala-khala",
 	"discussiontools-replywidget-reply": "Tema",

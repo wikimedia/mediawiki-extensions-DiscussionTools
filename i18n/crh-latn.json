@@ -6,13 +6,27 @@
 			"Zolgoyo"
 		]
 	},
+	"discussiontools-autotopicsubpopup-dismiss": "Yahşı, añlaşıldı",
+	"discussiontools-autotopicsubpopup-preferences": "Sazlamlarnı deñiştir",
 	"discussiontools-defaultsummary-reply": "Cevap",
+	"discussiontools-emptystate-button": "Muzakere başlat",
+	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} aqqında bir muzakere başlatıñız",
+	"discussiontools-emptystate-title-user": "{{PAGENAME}} ile bir yazışma başlatıñız.",
+	"discussiontools-findcomment-label-search": "Qıdır",
+	"discussiontools-findcomment-noresults": "İç netice yoq",
+	"discussiontools-findcomment-results-notcurrent": "(bu versiyada degil)",
+	"discussiontools-findcomment-results-transcluded": "(başqa bir saifeden kirsetildi)",
+	"discussiontools-findcomment-title": "Tefsir tap",
+	"discussiontools-pagetitle-newtopic": "$1 saifesinde yañı bir mevzu başlatıla",
+	"discussiontools-postedit-confirmation-topicadded": "Mevzuñız qoşuldı.",
+	"discussiontools-preference-autotopicsub": "Mevzularğa avtomatik olaraq abune ol",
 	"discussiontools-replylink": "cevap berüv",
 	"discussiontools-replywidget-advanced": "Daa çoq",
 	"discussiontools-replywidget-cancel": "Lâğu",
 	"discussiontools-replywidget-mode-source": "Menba",
 	"discussiontools-replywidget-mode-visual": "Vizual",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} cavap berüv",
+	"discussiontools-replywidget-preferences": "Sazlamalar",
 	"discussiontools-replywidget-preview": "Baqıp çıquv",
 	"discussiontools-replywidget-reply": "Cevap berüv",
 	"discussiontools-replywidget-summary": "Qısqa tarif",
@@ -23,5 +37,7 @@
 	"discussiontools-topicsubscription-button-subscribe": "abune ol",
 	"discussiontools-topicsubscription-button-subscribe-label": "Abune ol",
 	"discussiontools-topicsubscription-button-unsubscribe": "abunelikten çıq",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Abunelikten çıq"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Abunelikten çıq",
+	"discussiontools-topicsubscription-pager-topic": "Mevzu",
+	"discussiontools-topicsubscription-pager-unsubscribe-button": "Abunelikten çıq"
 }
