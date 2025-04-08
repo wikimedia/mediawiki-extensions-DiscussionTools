@@ -147,7 +147,7 @@
 	"discussiontools-replywidget-summary": "Povzetek",
 	"discussiontools-replywidget-terms-click": "S klikom »$1« {{GENDER:|izražate}} strinjanje s pogoji uporabe tega vikija.",
 	"discussiontools-replywidget-transcluded": "Vaš komentar bo shranjen na strani [[$1]].",
-	"discussiontools-replywidget-watchthis": "Dodaj to stran na moj [[Special:Watchlist|spisek nadzorov]]",
+	"discussiontools-replywidget-watchthis": "Dodaj to stran na moj [[Special:Watchlist|nadzorni seznam]]",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Tega komentarja ni bilo mogoče najti. Morda je bil izbrisan ali prestavljen.",
 	"discussiontools-target-comments-missing": "Novih komentarjev ni bilo mogoče najti. Morda so bili izbrisani ali prestavljeni.",
