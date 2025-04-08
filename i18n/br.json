@@ -70,7 +70,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|Koumanantet}} oc’h bet!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "N’ho {{GENDER:|po}} ken evezhiadennoù pa vo boulc’het kaozeadennoù nevez er bajenn-mañ.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Digoumanantet {{GENDER:|oc’h}} bet.",
-	"discussiontools-notification-added-topic-header": "Kaozeadenn nevez \"<strong>$4</strong>\" krouet e <strong>$3</strong> gant $2.",
+	"discussiontools-notification-added-topic-header": "Kaozeadenn nevez \"<strong>$4</strong>\"  {{GENDER:$2|krouet}} e <strong>$3</strong> gant $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Ur gaozeadenn nevez|$1 kaozeadenn nevez|100=99+ kaozeadenn nevez}} e \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-view": "Gwelout kaozeadenn",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|en|he}} deus trugarekaet {{GENDER:$4|ac’hanoc’h}} eus hoc’h evezhiadenn e \"<strong>$3</strong>\".",
