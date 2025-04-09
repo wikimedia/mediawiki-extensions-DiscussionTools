@@ -10,7 +10,8 @@
 			"Timzy D'Great",
 			"Goodymeraj",
 			"Matma Rex",
-			"Woytecr"
+			"Woytecr",
+			"Sayvhior"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Ị ga-anata ozi mgbe mmadụ tinyere okwu ọhụụ n'ebe akpamnkata. Ị nwere ike idozi ebe ọkwa nnata ozi gi ebe mmasị gị.",
@@ -92,7 +93,7 @@
 	"discussiontools-replywidget-mention-tool-title": "Kwupụta otu aha onye ọrụ",
 	"discussiontools-replywidget-mode-source": "Ebe m si nweta",
 	"discussiontools-replywidget-mode-visual": "Nhụrụ anya",
-	"discussiontools-replywidget-newtopic": "Tinye isiokwu",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|Tinye}} isiokwu",
 	"discussiontools-replywidget-placeholder-newtopic": "Nkọwa",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Zaghachi}} nye {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "mmasi",
