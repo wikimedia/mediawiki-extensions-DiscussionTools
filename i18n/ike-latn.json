@@ -4,5 +4,21 @@
 			"MysticVoyager"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "kiujjuti"
+	"discussiontools-defaultsummary-reply": "kiujjuti",
+	"discussiontools-newtopic-placeholder-title": "pijjutinga",
+	"discussiontools-replywidget-advanced": "sivuvasiktuq",
+	"discussiontools-replywidget-cancel": "iniqtipaa",
+	"discussiontools-replywidget-mode-source": "nakinngaarvik",
+	"discussiontools-replywidget-mode-visual": "takutsait",
+	"discussiontools-replywidget-placeholder-newtopic": "ilulingit",
+	"discussiontools-replywidget-preview": "tavva uattiarukallauliqtuq",
+	"discussiontools-replywidget-summary": "nainaaqsimajuq",
+	"discussiontools-replywidget-watchthis": "pijittiraqtaujuq taimaittumik atuqtuq [[Special:Watchlist|ujjirijaujut titiraqsimajut]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|inuk|inuit}} uqaqatigiingniq",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|uqausiksaq|uqausiksait}}",
+	"discussiontools-topicheader-latestcomment": "kingulliqpaaq uqausiksaq: $1",
+	"discussiontools-topicsubscription-button-subscribe": "atiliuqataugit",
+	"discussiontools-topicsubscription-button-subscribe-label": "atiliuqataugit",
+	"discussiontools-topicsubscription-button-unsubscribe": "nuttiqpallianiq",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "nuttiqpallianiq"
 }
