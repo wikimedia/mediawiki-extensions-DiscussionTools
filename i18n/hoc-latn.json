@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Singkiring57"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Kajigoṅ",
+	"discussiontools-newtopic-placeholder-title": "Subject",
+	"discussiontools-replywidget-advanced": "Tersaniṅaḱ",
+	"discussiontools-replywidget-cancel": "Hokasit́e",
+	"discussiontools-replywidget-mode-source": "Namsaṅ",
+	"discussiontools-replywidget-mode-visual": "Nelsamaṅ",
+	"discussiontools-replywidget-placeholder-newtopic": "Kajisartal",
+	"discussiontools-replywidget-preview": "Nelsinida",
+	"discussiontools-replywidget-summary": "Tenḍaḱnam",
+	"discussiontools-replywidget-watchthis": "Nen Sakam amaḱ [[Special:Watchlist|Nelhopor Olbonor]] re tukamè",
+	"discussiontools-topicheader-authorcount": "Japagar re $1 {{PLURAL:$1|Hovać|Hov koa|2=Hov kina}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|Olkaji|Olkaji ko|2=Olkaji kin}}",
+	"discussiontools-topicheader-latestcomment": "Namautar Comment: $1",
+	"discussiontools-topicsubscription-button-subscribe": "subscribe è",
+	"discussiontools-topicsubscription-button-subscribe-label": "Subscribe è",
+	"discussiontools-topicsubscription-button-unsubscribe": "subscribe bageè",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Subscribe bageè"
+}

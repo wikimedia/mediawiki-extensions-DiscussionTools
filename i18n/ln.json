@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lydie maliki"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Kopesa eyano",
+	"discussiontools-newtopic-placeholder-title": "Moto ya likambo",
+	"discussiontools-replywidget-advanced": "Kokende liboso",
+	"discussiontools-replywidget-cancel": "Kolongola",
+	"discussiontools-replywidget-mode-source": "Esika",
+	"discussiontools-replywidget-mode-visual": "Ya komona",
+	"discussiontools-replywidget-placeholder-newtopic": "Ndimbola",
+	"discussiontools-replywidget-preview": "Botali liboso",
+	"discussiontools-replywidget-summary": "Na mokuse",
+	"discussiontools-replywidget-watchthis": "Bakisa lokasa oyo na [[Special:Liste ya bokengeli|liste ya bokengeli]] na yo.",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1| moto|bato}} na masolo",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1| commentaire|ba commentaires}}",
+	"discussiontools-topicheader-latestcomment": "Likanisi ya sika: $1",
+	"discussiontools-topicsubscription-button-subscribe": "bosala abonnément",
+	"discussiontools-topicsubscription-button-subscribe-label": "Mokomi ya abonema",
+	"discussiontools-topicsubscription-button-unsubscribe": "kolongolaka abonnément",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Longola abonnément"
+}

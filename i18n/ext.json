@@ -4,5 +4,8 @@
 			"HackerPunki"
 		]
 	},
-	"discussiontools-replywidget-watchthis": "Añidil esta página a la tu [[Special:Watchlist|lista de seguimientu]]"
+	"discussiontools-defaultsummary-reply": "Contiesta",
+	"discussiontools-replywidget-cancel": "Suspendel",
+	"discussiontools-replywidget-placeholder-newtopic": "Descrición",
+	"discussiontools-replywidget-watchthis": "Añidil esta página ala tu [[Special:Watchlist|lista de seguimientu]]"
 }

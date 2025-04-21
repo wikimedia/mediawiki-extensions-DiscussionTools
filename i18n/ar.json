@@ -69,7 +69,7 @@
 	"discussiontools-newtopic-missing-title": "رجاءً، {{GENDER:|ضع|ضعي}} عنوانًا لتعليقك. لو ضغطت مجدّدا على «{{int:discussiontools-replywidget-newtopic}}»، سيُنشر التعليق من غير عنوان.",
 	"discussiontools-newtopic-placeholder-title": "الموضوع",
 	"discussiontools-notification-removed-topic-body": "قد لا تتلقوا إخطارات بعد الآن حول {{PLURAL:$1|هذا الموضوع|هذه المواضيع}}.",
-	"discussiontools-notification-removed-topic-header": "تمت أرشفة الموضوع «<strong>$4</strong>» أو تمت إزالته من $3.",
+	"discussiontools-notification-removed-topic-header": "أُرشف الموضوع «<strong>$4</strong>» أو أزيل من $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "تمت أرشفة أو إزالة {{PLURAL:$1|موضوع واحد|$1 من المواضيع|100=99+ موضوعًا}}  من $2.",
 	"discussiontools-notification-removed-topic-header-compact": "تمت أرشفة أو إزالة الموضوع «<strong>$4</strong>».",
 	"discussiontools-notification-removed-topic-view": "عرض الصفحة",
