@@ -5,7 +5,13 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Contiesta",
+	"discussiontools-newtopic-missing-title": "Has el favol de dal un títalu pala tu tema de conversa.",
+	"discussiontools-newtopic-placeholder-title": "Assuntu",
 	"discussiontools-replywidget-cancel": "Suspendel",
+	"discussiontools-replywidget-mode-source": "Huenti",
+	"discussiontools-replywidget-newtopic": "Añidil tema",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrición",
+	"discussiontools-replywidget-reply": "{{GENDER:|Contiestal}}",
+	"discussiontools-replywidget-summary": "Ressumi",
 	"discussiontools-replywidget-watchthis": "Añidil esta página ala tu [[Special:Watchlist|lista de seguimientu]]"
 }
