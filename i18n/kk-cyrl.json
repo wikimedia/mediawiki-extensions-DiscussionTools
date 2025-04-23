@@ -7,7 +7,8 @@
 			"Hedeyohu22",
 			"СеніңШешең",
 			"Casserium",
-			"Woytecr"
+			"Woytecr",
+			"Amankel'dy"
 		]
 	},
 	"discussiontools": "Талқылау құралдары",
@@ -127,7 +128,7 @@
 	"discussiontools-replywidget-newcomments-button": "$1 жаңа {{PLURAL:$1|пікірді}} көрсету",
 	"discussiontools-replywidget-newtopic": "Тақырып қосу",
 	"discussiontools-replywidget-placeholder-newtopic": "Сипаттамасы",
-	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} қатысушысына жауап беру",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} деген қатысушыға жауап беру",
 	"discussiontools-replywidget-preferences": "Баптаулар",
 	"discussiontools-replywidget-preview": "Қарап шығу",
 	"discussiontools-replywidget-reply": "Жауап беру",
@@ -154,10 +155,10 @@
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Ескетпелер алуды тоқтату үшін жазылымнан бас тарту.",
 	"discussiontools-topicsubscription-error-not-found-body": "URL мекенжайында көрсетілген жазылым табылмады.",
 	"discussiontools-topicsubscription-error-not-found-title": "Жазылым табылмады",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Бұл тақырыптағы жаңа пікірлер туралы ескертпелер аласыз.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Осы тақырыпқа қатысты жаңа пікір болса, мәлімдеме аласыз.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Сіз жазылдыңыз!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "Бұл тақырыптағы жаңа пікірлер туралы ескертпелерді ендігәрі алмайсыз.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Сіз жазылымнан бас тартыңыз.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Ендігі осы тақырыпқа қатысты жаңа пікір болса да, сізге мәлімедеме келмейді.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Жазылымнан бас тарттыңыз.",
 	"discussiontools-topicsubscription-pager-actions": "Әрекеттер",
 	"discussiontools-topicsubscription-pager-created": "Бірінші жазылған",
 	"discussiontools-topicsubscription-pager-newtopics-label": "Жаңа тақырыптар",
