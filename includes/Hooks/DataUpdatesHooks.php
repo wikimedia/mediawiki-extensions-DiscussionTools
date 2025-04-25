@@ -11,11 +11,11 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use MediaWiki\Deferred\DeferrableUpdate;
 use MediaWiki\Deferred\MWCallableUpdate;
+use MediaWiki\Exception\MWExceptionHandler;
 use MediaWiki\Extension\DiscussionTools\ThreadItemStore;
 use MediaWiki\Revision\RenderedRevision;
 use MediaWiki\Storage\Hook\RevisionDataUpdatesHook;
 use MediaWiki\Title\Title;
-use MWExceptionHandler;
 use Throwable;
 
 class DataUpdatesHooks implements RevisionDataUpdatesHook {

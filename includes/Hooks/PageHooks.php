@@ -9,7 +9,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use Article;
 use MediaWiki\Actions\Hook\GetActionNameHook;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
@@ -25,17 +24,18 @@ use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Output\Hook\OutputPageParserOutputHook;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Page\Article;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Skin\Skin;
+use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserNameUtils;
 use OOUI\ButtonWidget;
-use Skin;
-use SkinTemplate;
 
 class PageHooks implements
 	BeforeDisplayNoArticleTextHook,

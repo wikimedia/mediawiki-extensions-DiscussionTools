@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use ErrorPageError;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\SpecialPage\SpecialPage;

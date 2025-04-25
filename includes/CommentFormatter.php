@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DiscussionTools;
 
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Exception\MWExceptionHandler;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookRunner;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
@@ -19,7 +20,6 @@ use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
-use MWExceptionHandler;
 use Throwable;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
