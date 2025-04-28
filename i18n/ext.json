@@ -7,11 +7,16 @@
 	"discussiontools-defaultsummary-reply": "Contiesta",
 	"discussiontools-newtopic-missing-title": "Has el favol de dal un títalu pala tu tema de conversa.",
 	"discussiontools-newtopic-placeholder-title": "Assuntu",
+	"discussiontools-replylink": "{{GENDER:|contiestal}}",
 	"discussiontools-replywidget-cancel": "Suspendel",
 	"discussiontools-replywidget-mode-source": "Huenti",
+	"discussiontools-replywidget-mode-visual": "Visual",
 	"discussiontools-replywidget-newtopic": "Añidil tema",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrición",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Contiesta}} a {{BIDI:$1}}",
 	"discussiontools-replywidget-reply": "{{GENDER:|Contiestal}}",
 	"discussiontools-replywidget-summary": "Ressumi",
-	"discussiontools-replywidget-watchthis": "Añidil esta página ala tu [[Special:Watchlist|lista de seguimientu]]"
+	"discussiontools-replywidget-watchthis": "Añidil esta página ala tu [[Special:Watchlist|lista de seguimientu]]",
+	"discussiontools-topicheader-latestcomment": "Comentación cabera: $1",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Tú}} recebirás enteracionis sobri comentacionis nueas al tentu dessi tema."
 }
