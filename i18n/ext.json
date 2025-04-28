@@ -5,7 +5,10 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Contiesta",
+	"discussiontools-newtopic-placeholder-title": "Assuntu",
 	"discussiontools-replywidget-cancel": "Suspendel",
+	"discussiontools-replywidget-mode-source": "Huenti",
 	"discussiontools-replywidget-placeholder-newtopic": "Descrición",
+	"discussiontools-replywidget-summary": "Ressumi",
 	"discussiontools-replywidget-watchthis": "Añidil esta página ala tu [[Special:Watchlist|lista de seguimientu]]"
 }
