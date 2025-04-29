@@ -520,7 +520,7 @@ class CommentFormatter {
 				$href = $title->getLinkURL( [
 					'action' => $isSubscribed ? 'dtunsubscribe' : 'dtsubscribe',
 					'commentname' => $itemName,
-					'section' => $itemData['linkableTitle'],
+					'section' => $isSubscribed ? null : $itemData['linkableTitle'],
 				] );
 
 				if ( $buttonIsMobile !== $isMobile ) {
