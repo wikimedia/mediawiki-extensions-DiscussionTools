@@ -78,7 +78,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|Ви}} підписалися!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|Ви}} більше не отримуватимете сповіщення, коли на цій сторінці розпочинаються нові теми.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Ви}} відписалися.",
-	"discussiontools-notification-added-topic-header": "Нова тема «<strong>$4</strong>» з'явилася на <strong>$3</strong> (автор — $2).",
+	"discussiontools-notification-added-topic-header": "Нова тема «<strong>$4</strong>» {{GENDER:$2|була створена}} на <strong>$3</strong> (автор — $1).",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Одна нова тема|$1 нові теми|$1 нових тем|100=99+ нових тем}} на «<strong>$2</strong>».",
 	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>.",
 	"discussiontools-notification-added-topic-view": "Переглянути тему",
