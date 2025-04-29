@@ -81,5 +81,6 @@
 	"discussiontools-topicsubscription-pager-topic": "Mevzu",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Abunelikten çıq",
 	"echo-category-title-dt-subscription": "Muzakere saifesi {{PLURAL:$1|abuneligi|abunelikleri}}",
-	"echo-category-title-dt-subscription-archiving": "Muzakere saifesi {{PLURAL:$1|arhivlenüvi}}"
+	"echo-category-title-dt-subscription-archiving": "Muzakere saifesi {{PLURAL:$1|arhivlenüvi}}",
+	"echo-pref-tooltip-dt-subscription": "Abune olğan bir mevzuma biri yañı bir cevap yazğanda {{GENDER:|maña}} bildir."
 }
