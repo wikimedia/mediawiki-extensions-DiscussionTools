@@ -9,17 +9,10 @@
 		"ve": "readonly",
 		"RangeFix": "readonly"
 	},
-	"parserOptions": {
-		"sourceType": "commonjs"
-	},
 	"rules": {
 		"max-len": "off"
 	},
 	"settings": {
-		"polyfills": [
-			"URL",
-			"URLSearchParams"
-		],
 		"jsdoc": {
 			"preferredTypes": {
 				"CommentController": "CommentController",

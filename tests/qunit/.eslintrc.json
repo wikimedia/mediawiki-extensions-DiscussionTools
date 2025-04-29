@@ -4,9 +4,6 @@
 		"../../modules/.eslintrc.json",
 		"wikimedia/qunit"
 	],
-	"parserOptions": {
-		"sourceType": "commonjs"
-	},
 	"rules": {
 		"max-len": "off",
 		"security/detect-non-literal-require": "off"
