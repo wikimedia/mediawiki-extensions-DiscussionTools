@@ -18,7 +18,7 @@
 	"discussiontools-findcomment-label-search": "Издөө",
 	"discussiontools-findcomment-noresults": "Натыйжа жок.",
 	"discussiontools-ledesection-title": "Бул талкуу барагы тууралуу",
-	"discussiontools-newtopic-missing-title": "{{GENDER:|Талкууңуздун}} темасын белгилеңиз. Болбосо, «‎{{int:discussiontools-replywidget-newtopic}}» баскычын чакылдатканыңызда, жазганыңыз темасыз кошулат.",
+	"discussiontools-newtopic-missing-title": "{{GENDER:|Талкууңуздун}} темасын белгилеңиз.",
 	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Жазылуу",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Жазылуудан баш тартуу",
