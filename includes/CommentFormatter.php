@@ -98,6 +98,33 @@ class CommentFormatter {
 	}
 
 	/**
+	 * Check if the heading has attributes that can only be added using HTML syntax.
+	 *
+	 * In the Parsoid default future, we might prefer checking for stx=html.
+	 */
+	private static function isHtmlHeading( Element $h ): bool {
+		foreach ( $h->attributes as $attr ) {
+			// Condition matches core HandleSectionLinks / HandleParsoidSectionLinks::isHtmlHeading
+			if (
+				!in_array( $attr->name, [ 'id', 'data-object-id', 'about', 'typeof' ], true ) &&
+				!Sanitizer::isReservedDataAttribute( $attr->name )
+			) {
+				return true;
+			}
+		}
+		// FIXME(T100856): stx info probably shouldn't be in data-parsoid
+		// FIXME(T394005): onParserOutputPostCacheTransform is called from a
+		// ContentTextTransformStage, so data-parsoid isn't available
+		//
+		// Id is ignored above since it's a special case, make use of metadata
+		// to determine if it came from wikitext
+		// if ( DOMDataUtils::getDataParsoid( $h )->reusedId ?? false ) {
+		// 	return true;
+		// }
+		return false;
+	}
+
+	/**
 	 * Add a wrapper, topic container, and subscribe link around a heading element
 	 *
 	 * @param Element $headingElement Heading element
@@ -117,16 +144,8 @@ class CommentFormatter {
 			DOMUtils::hasClass( $wrapperNode, 'mw-heading' )
 		) ) {
 			// Do not add the wrapper if the heading has attributes generated from wikitext (T353489).
-			// Only allow reserved attributes (e.g. 'data-mw', which can't be used in wikitext, but which
-			// are used internally by our own code and by Parsoid) and the 'id', 'about', and 'typeof'
-			// attributes used by Parsoid.
-			foreach ( $headingElement->attributes as $attr ) {
-				if (
-					!in_array( $attr->name, [ 'id', 'about', 'typeof' ], true ) &&
-					!Sanitizer::isReservedDataAttribute( $attr->name )
-				) {
-					return $headingElement;
-				}
+			if ( self::isHtmlHeading( $headingElement ) ) {
+				return $headingElement;
 			}
 
 			$wrapperNode = $doc->createElement( 'div' );
