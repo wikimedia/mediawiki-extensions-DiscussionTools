@@ -5,6 +5,7 @@
 	],
 	"rules": {
 		"selector-class-pattern": "^(ext|ve|mw|oo-ui|client|skin|mf|vector)-",
+		"declaration-no-important": null,
 		"unit-disallowed-list": null
 	}
 }
