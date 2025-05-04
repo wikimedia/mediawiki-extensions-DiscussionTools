@@ -112,7 +112,7 @@ NewTopicController.prototype.setupReplyWidget = function ( replyWidget, data ) {
 
 	this.$notices.empty();
 	for ( const noticeName in replyWidget.commentDetails.notices ) {
-		if ( this.constructor.static.suppressedEditNotices.indexOf( noticeName ) !== -1 ) {
+		if ( this.constructor.static.suppressedEditNotices.includes( noticeName ) ) {
 			continue;
 		}
 		const noticeItem = replyWidget.commentDetails.notices[ noticeName ];

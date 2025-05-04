@@ -172,7 +172,7 @@ MWUsernameCompletionAction.prototype.compareSuggestionToInput = function ( sugge
 			.map( ( displayName ) => displayName.toLowerCase() ).join( ' ' );
 
 	return {
-		isMatch: normalizedSearchIndex.indexOf( normalizedInput ) !== -1,
+		isMatch: normalizedSearchIndex.includes( normalizedInput ),
 		isExact: normalizedSuggestion === normalizedInput
 	};
 };

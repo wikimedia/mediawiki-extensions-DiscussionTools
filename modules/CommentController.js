@@ -672,7 +672,7 @@ CommentController.prototype.updateNewCommentsWarning = function ( addedComments,
 	const removedCommentIds = removedComments.filter( ( cmt ) => cmt.id );
 	this.newComments = this.newComments.filter(
 		// If comment ID is not in removedCommentIds, keep it
-		( cmt ) => removedCommentIds.indexOf( cmt.id ) === -1
+		( cmt ) => !removedCommentIds.includes( cmt.id )
 	);
 
 	this.replyWidgetPromise.then( ( replyWidget ) => {

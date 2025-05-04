@@ -580,7 +580,7 @@ function init( $container, state ) {
 			// Only do the replacement if the original hash doesn't correspond to a target
 			// element, but the fixed hash does, to avoid affects on other apps which
 			// may use fragments with spaces.
-			if ( location.hash && !mw.util.getTargetFromFragment() && location.hash.indexOf( '%20' ) !== -1 ) {
+			if ( location.hash && !mw.util.getTargetFromFragment() && location.hash.includes( '%20' ) ) {
 				const fixedHash = location.hash.slice( 1 ).replace( /%20/g, '_' );
 				if ( mw.util.getTargetFromFragment( fixedHash ) ) {
 					location.hash = fixedHash;
