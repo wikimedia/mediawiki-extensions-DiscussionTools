@@ -6,7 +6,9 @@
 	],
 	"overrides": [
 		{
-			"files": [ ".svgo.config.mjs" ],
+			"files": [
+				".svgo.config.mjs"
+			],
 			"parserOptions": {
 				"sourceType": "module"
 			}
