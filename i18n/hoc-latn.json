@@ -5,6 +5,10 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Kajigoṅ",
+	"discussiontools-emptystate-button": "Japagar eṭeće",
+	"discussiontools-findcomment-label-search": "Nelsangarè",
+	"discussiontools-findcomment-noresults": "Jahnaḱ ká nam yana.",
+	"discussiontools-findcomment-results-notcurrent": "(nahḱaḱ Nelrunuaa re banoḱa)",
 	"discussiontools-newtopic-placeholder-title": "Subject",
 	"discussiontools-replywidget-advanced": "Tersaniṅaḱ",
 	"discussiontools-replywidget-cancel": "Hokasit́e",
@@ -20,5 +24,11 @@
 	"discussiontools-topicsubscription-button-subscribe": "subscribe è",
 	"discussiontools-topicsubscription-button-subscribe-label": "Subscribe è",
 	"discussiontools-topicsubscription-button-unsubscribe": "subscribe bageè",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Subscribe bageè"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Subscribe bageè",
+	"discussiontools-topicsubscription-pager-actions": "Ànarika",
+	"discussiontools-topicsubscription-pager-notified-never": "jahìmitaó ká",
+	"discussiontools-topicsubscription-pager-page": "Sakam",
+	"discussiontools-topicsubscription-pager-topic": "Topic",
+	"echo-category-title-dt-subscription": "Japagarsakam {{PLURAL:$1|Subscription}}",
+	"tag-discussiontools-edit": "Olruaa akan Comment"
 }

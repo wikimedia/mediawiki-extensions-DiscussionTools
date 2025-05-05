@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mirlim"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Jawak",
+	"discussiontools-newtopic-placeholder-title": "Pekaro",
+	"discussiontools-replywidget-advanced": "Lanjókte",
+	"discussiontools-replywidget-cancel": "Tok jadi",
+	"discussiontools-replywidget-mode-source": "Sumbo",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-newtopic": "Keterenge",
+	"discussiontools-replywidget-preview": "Keléh awa-awa",
+	"discussiontools-replywidget-summary": "Ppendek crito",
+	"discussiontools-replywidget-watchthis": "Tamboh halame ni kak [[Special:Watchlist|snara prati]] mung",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ore}} dale bbice",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ulase}}",
+	"discussiontools-topicheader-latestcomment": "Ulase lloni: $1",
+	"discussiontools-topicsubscription-button-subscribe": "langge",
+	"discussiontools-topicsubscription-button-subscribe-label": "Langge",
+	"discussiontools-topicsubscription-button-unsubscribe": "tok sé langge",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Tok sé langge"
+}
