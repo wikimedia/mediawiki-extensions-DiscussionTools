@@ -43,6 +43,7 @@
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Einn notandi þakkaði|$1 notendur þökkuðu|100=99+ notendur þökkuðu}} {{GENDER:$3|þér}} fyrir breytingu þína á <strong>$2</strong>.",
 	"discussiontools-notification-comment-thank-header-compact": "$1 {{GENDER:$2|þakkaði}} {{GENDER:$3|þér}}.",
 	"discussiontools-pagetitle-newtopic": "Hefja nýja umræðu á $1",
+	"discussiontools-pagetitle-reply": "Svara á $1",
 	"discussiontools-preference-newtopictool": "Virkja flýtiviðbót umræðuefna",
 	"discussiontools-preference-replytool": "Virkja snöggan svarmöguleika",
 	"discussiontools-preference-replytool-help": "Þetta gerir þér kleift að svara umræðum á spjallsíðum með einum smelli.",

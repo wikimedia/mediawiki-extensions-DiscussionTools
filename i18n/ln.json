@@ -14,7 +14,7 @@
 	"discussiontools-replywidget-mode-visual": "Ya komona",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|Bakisa}} motó ya likambo",
 	"discussiontools-replywidget-placeholder-newtopic": "Ndimbola",
-	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Koyanola}} na {{BIDI: $1 }}",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Koyanola}} na {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Botali liboso",
 	"discussiontools-replywidget-reply": "{{GENDER:|Koyanola}}",
 	"discussiontools-replywidget-summary": "Na mokuse",
