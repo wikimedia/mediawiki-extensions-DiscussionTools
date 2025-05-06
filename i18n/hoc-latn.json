@@ -5,8 +5,15 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Kajigoṅ",
+	"discussiontoolsdebug-pagetitle": "Sakam Olbohḱ",
+	"discussiontools-emptystate-button": "Japagar eṭeće",
+	"discussiontools-emptystate-title-user-anon": "Nen Kulijagarsakam re {{GENDER:|daromjohr}}",
+	"discussiontools-findcomment-label-search": "Nelsangarè",
+	"discussiontools-findcomment-noresults": "Jahnaḱ ká nam yana.",
+	"discussiontools-findcomment-results-notcurrent": "(nahḱaḱ Nelrunuaa re banoḱa)",
 	"discussiontools-newtopic-missing-title": "{{GENDER:|Amaḱ}} Japagar Topic olbohḱe.",
 	"discussiontools-newtopic-placeholder-title": "Subject",
+	"discussiontools-notification-added-topic-view": "Topic nelè",
 	"discussiontools-replylink": "{{GENDER:|kajigoṅe}}",
 	"discussiontools-replywidget-advanced": "Tersaniṅaḱ",
 	"discussiontools-replywidget-cancel": "Hokasit́e",
@@ -29,5 +36,12 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "Nen Topic reaḱ nama Comment ko reaḱ Àtachirgal{{GENDER:|emm}} namèa.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Subscribe ket́a{{GENDER:|mm}}!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Nen Topic chetan nama Olkaji ko reaḱ Anachirgal onḍoḱ ká beṭana {{GENDER:|am}}  taḱ.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "Subscribe bage ket́a{{GENDER:|mm}}."
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "Subscribe bage ket́a{{GENDER:|mm}}.",
+	"discussiontools-topicsubscription-pager-actions": "Ànarika",
+	"discussiontools-topicsubscription-pager-newtopics-label": "Nama Topic",
+	"discussiontools-topicsubscription-pager-notified-never": "jahìmitaó ká",
+	"discussiontools-topicsubscription-pager-page": "Sakam",
+	"discussiontools-topicsubscription-pager-topic": "Topic",
+	"echo-category-title-dt-subscription": "Japagarsakam {{PLURAL:$1|Subscription}}",
+	"tag-discussiontools-edit": "Olruaa akan Comment"
 }
