@@ -55,7 +55,7 @@
 	"discussiontools-replywidget-mode-source": "સ્રોત",
 	"discussiontools-replywidget-mode-visual": "વિઝ્યુલ",
 	"discussiontools-replywidget-newcomments-button": "નવી $1 {{PLURAL:$1|ટીપ્પણી|ટીપ્પણીઓ}} દર્શાવો",
-	"discussiontools-replywidget-newtopic": "વિષય ઉમેરો",
+	"discussiontools-replywidget-newtopic": "વિષય {{GENDER:|ઉમેરો}}",
 	"discussiontools-replywidget-placeholder-newtopic": "વર્ણન",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}ને {{GENDER:|ઉત્તર}}",
 	"discussiontools-replywidget-preferences": "પસંદગીઓ",

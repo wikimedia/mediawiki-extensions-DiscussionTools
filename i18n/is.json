@@ -39,6 +39,7 @@
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Eitt nýtt umræðuefni|$1 ný umræðuefni|100=99+ ný umræðuefni}} á „<strong>$2</strong>2“.",
 	"discussiontools-notification-added-topic-view": "Sjá umræðu",
 	"discussiontools-pagetitle-newtopic": "Hefja nýja umræðu á $1",
+	"discussiontools-pagetitle-reply": "Svara á $1",
 	"discussiontools-preference-newtopictool": "Virkja flýtiviðbót umræðuefna",
 	"discussiontools-preference-replytool": "Virkja snöggan svarmöguleika",
 	"discussiontools-preference-replytool-help": "Þetta gerir þér kleift að svara umræðum á spjallsíðum með einum smelli.",
