@@ -28,6 +28,7 @@
 	"discussiontools-newtopic-missing-title": "Vinsamlegast tilgreindu titil fyrir umræðuefnið. Ef þú smellir á \"{{int:discussiontools-replywidget-newtopic}}\", þá verður umræðuefninu þínu bætt við án titils.",
 	"discussiontools-newtopic-placeholder-title": "Fyrirsögn",
 	"discussiontools-pagetitle-newtopic": "Hefja nýja umræðu á $1",
+	"discussiontools-pagetitle-reply": "Svara á $1",
 	"discussiontools-preference-newtopictool": "Virkja flýtiviðbót umræðuefna",
 	"discussiontools-preference-replytool": "Virkja snöggan svarmöguleika",
 	"discussiontools-preference-replytool-help": "Þetta gerir þér kleift að svara umræðum á spjallsíðum með einum smelli.",

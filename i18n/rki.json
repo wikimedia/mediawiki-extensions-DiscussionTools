@@ -5,15 +5,18 @@
 			"Cakkaparla",
 			"Nay Thu Rin",
 			"YaThaWinTha",
-			"Aggasena"
+			"Aggasena",
+			"Tejoebāsa"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "ပြန်ပြောပါ",
+	"discussiontools-newtopic-placeholder-title": "အကြောင်းအရာ",
 	"discussiontools-replylink": "ပြန်ပြောပါ",
 	"discussiontools-replywidget-advanced": "အဆင့်မြင့်",
 	"discussiontools-replywidget-cancel": "မလုပ်ယာ",
 	"discussiontools-replywidget-mode-source": "နဂိုမူလအရင်းအမြစ်",
 	"discussiontools-replywidget-mode-visual": "မြင်ကွင်း",
+	"discussiontools-replywidget-placeholder-newtopic": "ဖော်ပြစွာ",
 	"discussiontools-replywidget-placeholder-reply": "BIDI:$1Repiyကိုစာပြန်ရွီးပါ",
 	"discussiontools-replywidget-preview": "စမ်းလို့လုပ်ကြေ့ပါ",
 	"discussiontools-replywidget-reply": "ပြန်ပြောပါ",

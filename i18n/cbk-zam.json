@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aristorkle"
+			"Aristorkle",
+			"Noooote"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Responde",
 	"discussiontools-emptystate-button": "Escribi un mensaje",
 	"discussiontools-replywidget-cancel": "Cancela",
-	"discussiontools-replywidget-mode-source": "Codigo",
-	"discussiontools-topicsubscription-button-subscribe": "subscribi",
-	"discussiontools-topicsubscription-button-subscribe-label": "Subscribi"
+	"discussiontools-replywidget-mode-source": "Source",
+	"discussiontools-topicsubscription-button-subscribe": "suscribi",
+	"discussiontools-topicsubscription-button-subscribe-label": "Suscribi"
 }
