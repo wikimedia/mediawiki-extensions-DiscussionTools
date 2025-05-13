@@ -25,7 +25,7 @@ use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
-use Wikimedia\Parsoid\Wt2Html\XMLSerializer;
+use Wikimedia\Parsoid\Wt2Html\XHtmlSerializer;
 use Wikimedia\Timestamp\TimestampException;
 
 class CommentFormatter {
@@ -441,7 +441,7 @@ class CommentFormatter {
 
 		// Like DOMCompat::getInnerHTML(), but disable 'smartQuote' for compatibility with
 		// ParserOutput::EDITSECTION_REGEX matching 'mw:editsection' tags (T274709)
-		$html = XMLSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
+		$html = XHtmlSerializer::serialize( $container, [ 'innerXML' => true, 'smartQuote' => false ] )['html'];
 
 		return $html;
 	}
