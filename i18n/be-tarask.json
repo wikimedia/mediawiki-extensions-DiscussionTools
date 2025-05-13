@@ -15,6 +15,7 @@
 	"discussiontools-autotopicsubpopup-preferences": "Рэдагаваць налады",
 	"discussiontools-autotopicsubpopup-title": "Вы {{GENDER:|падпісаны|падпісаная|падпісаныя}}",
 	"discussiontools-defaultsummary-reply": "Адказ",
+	"discussiontoolsdebug-title": "Структура зьвестак інструмэнтаў для абмеркаваньняў",
 	"discussiontools-desc": "Інструмэнты для паляпшэньня старонак абмеркаваньняў.",
 	"discussiontools-emptystate-button": "Пачаць абмеркаваньне",
 	"discussiontools-emptystate-title": "Пачаць абмеркаваньне пра старонку «{{SUBJECTPAGENAME}}»",
