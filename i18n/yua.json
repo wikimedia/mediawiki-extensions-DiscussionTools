@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abby95",
+			"Patoasado97"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Jeel áale",
+	"discussiontools-newtopic-placeholder-title": "Máaxil",
+	"discussiontools-replylink": "{{GENER:|núukik}}",
+	"discussiontools-replywidget-cancel": "káanselar",
+	"discussiontools-replywidget-mode-source": "Chíikul",
+	"discussiontools-replywidget-mode-visual": "Bisual",
+	"discussiontools-replywidget-placeholder-newtopic": "Bixil",
+	"discussiontools-replywidget-reply": "{{GENER:|Núukik}}",
+	"discussiontools-replywidget-summary": "Kóomts'íib",
+	"discussiontools-replywidget-watchthis": "Ts'áa le linki abas kaambal ti' a [[Special:Watchlist|watchlist]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|máak|wíiniko'ob}} ti' tsikbal",
+	"discussiontools-topicheader-latestcomment": "U ts'ook t'aan: $1",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Tech}} yaan u k'amik notificaciones yóok'ol túumben comentarios ti' le chun tuukulo'.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|You}} ts'o'ok u suscribirkuba.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Tech}} ma' ken a k'amik túumben t'aano'ob yóok'ol le chun tuukulo'.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|You}} ts'o'ok u p'atik u ts'íibta'al."
+}
