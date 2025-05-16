@@ -620,7 +620,7 @@ function init( $container, state ) {
 				findCommentQuery = {
 					idorname: mw.util.percentDecodeFragment( highlightResult.requested[ 0 ] )
 				};
-				isHeading = highlightResult.requested[ 0 ].slice( 0, 1 ) === 'h';
+				isHeading = highlightResult.requested[ 0 ].startsWith( 'h' );
 			}
 			if ( findCommentQuery ) {
 				// TODO: Support multiple commentIds being requested and not all being found

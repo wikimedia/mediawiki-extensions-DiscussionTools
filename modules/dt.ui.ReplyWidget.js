@@ -529,11 +529,10 @@ ReplyWidget.prototype.onAdvancedToggleClick = function () {
 				selectFromIndex = titleText.length + '/* '.length + ' */ '.length;
 			}
 		} else {
-			// Same as summary.endsWith( defaultReplyTrail )
-			const defaultReplyTrail = '*/ ' + mw.msg( 'discussiontools-defaultsummary-reply' );
-			const endCommentIndex = summary.indexOf( defaultReplyTrail );
-			if ( endCommentIndex + defaultReplyTrail.length === summary.length ) {
-				selectFromIndex = endCommentIndex + 3;
+			const defaultReply = mw.msg( 'discussiontools-defaultsummary-reply' );
+			const defaultReplyTrail = '*/ ' + defaultReply;
+			if ( summary.endsWith( defaultReplyTrail ) ) {
+				selectFromIndex = summary.length - defaultReply.length;
 			}
 		}
 
