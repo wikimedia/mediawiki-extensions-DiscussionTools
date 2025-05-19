@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abby95",
+			"Juanchuy0",
+			"Patoasado97"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Jeel áale",
+	"discussiontools-newtopic-placeholder-title": "Máaxil",
+	"discussiontools-replywidget-advanced": "Áabansado",
+	"discussiontools-replywidget-cancel": "káanselar",
+	"discussiontools-replywidget-mode-source": "Chíikul",
+	"discussiontools-replywidget-mode-visual": "Bisual",
+	"discussiontools-replywidget-placeholder-newtopic": "Bixil",
+	"discussiontools-replywidget-summary": "Kóomts'íib",
+	"discussiontools-replywidget-watchthis": "Ts'áa le linki abas kaambal ti' a [[Special:Watchlist|watchlist]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|máak|wíiniko'ob}} ti' tsikbal",
+	"discussiontools-topicheader-latestcomment": "U ts'ook t'aan: $1"
+}

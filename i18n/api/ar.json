@@ -9,7 +9,8 @@
 			"Alshamiri1",
 			"FShbib",
 			"أيوب",
-			"Meno25"
+			"Meno25",
+			"بدر"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "لم يُعثَر على التعليق ذي المُعرِّف '$1'.",
@@ -32,11 +33,11 @@
 	"apihelp-discussiontoolsgetsubscriptions-summary": "الحصول على وضعيّة الاشتراك للمواضيع المقدّمة.",
 	"apihelp-discussiontoolspageinfo-param-oldid": "رقم المراجعة للاستخدام (الافتراض إلى المراجعة الأخيرة).",
 	"apihelp-discussiontoolspageinfo-param-prop": "أي الخصائص تريد الحصول عليها:",
-	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "تمثيل سلاسل التعليق التي تم تحليلها من الصفحة",
-	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "الصفحات الأخرى التي تم حذف التعليقات منها",
+	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "تمثيل سلاسل التعليق التي حُلِّلت من الصفحة",
+	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "الصفحات الأخرى التي حُذِفَت التعليقات منها",
 	"apihelp-discussiontoolspageinfo-summary": "إرجاع البيانات الوصفية المَطلُوبة لتهيئة أدوات النقاش.",
 	"apihelp-discussiontoolspreview-param-type": "نوع الرسالة المراد معاينتها",
-	"apihelp-discussiontoolspreview-param-wikitext": "المحتوى للمعاينة، كنص الويكي.",
+	"apihelp-discussiontoolspreview-param-wikitext": "المحتوى للمعاينة، بصورة نص الويكي.",
 	"apihelp-discussiontoolspreview-summary": "معاينة رسالة على صفحة نقاش.",
 	"apihelp-discussiontoolssubscribe-param-commentname": "عنوان الموضوع الذي تريدون الاشتراك فيه (أو إلغاء الاشتراك منه)",
 	"apihelp-discussiontoolssubscribe-param-page": "صفحة يظهر عليها الموضوع",

@@ -2,15 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Samatics",
-			"Mel618"
+			"Mel618",
+			"Pingponging"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ansa",
+	"discussiontools-newtopic-placeholder-title": "Wetin to tok abaut",
 	"discussiontools-replylink": "ansa-am",
 	"discussiontools-replywidget-advanced": "Di one wey big pas",
 	"discussiontools-replywidget-cancel": "Kansu-am",
 	"discussiontools-replywidget-mode-source": "Orijin",
 	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-newtopic": "Hau e dey",
 	"discussiontools-replywidget-placeholder-reply": "Ansa {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "See as e go dey",
 	"discussiontools-replywidget-reply": "Ansa-am",

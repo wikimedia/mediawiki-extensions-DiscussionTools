@@ -34,7 +34,8 @@
 			"Amayus",
 			"Ant176",
 			"Dragoniez",
-			"Woytecr"
+			"Woytecr",
+			"Foomin10"
 		]
 	},
 	"discussiontools": "議論ツール",
@@ -158,9 +159,9 @@
 	"discussiontools-signature-prefix": "--",
 	"discussiontools-target-comment-missing": "このコメントは見つかりませんでした。既に除去もしくは他の場所へ転記されているかもしれません。",
 	"discussiontools-target-comments-missing": "新しいコメントは見つかりませんでした。既に除去もしくは他の場所へ転記されているかもしれません。",
-	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|人}}が協議に参加",
-	"discussiontools-topicheader-commentcount": "$1件の {{PLURAL:$1|コメント}}",
-	"discussiontools-topicheader-latestcomment": "最新のコメント：$1",
+	"discussiontools-topicheader-authorcount": "$1{{PLURAL:$1|人}}が議論に参加",
+	"discussiontools-topicheader-commentcount": "$1件の{{PLURAL:$1|コメント}}",
+	"discussiontools-topicheader-latestcomment": "最新のコメント: $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "通知を解除",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "この話題に関する更新の通知を受け取らないようにしますか？",
 	"discussiontools-topicsubscription-button-subscribe": "更新を通知",
