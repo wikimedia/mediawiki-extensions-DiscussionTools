@@ -799,12 +799,7 @@ class CommentFormatter {
 			static function ( $matches ) use ( $contextSource, $isMobile ) {
 				$overflowMenuData = json_decode( htmlspecialchars_decode( $matches[1] ), true ) ?? [];
 
-				// TODO: Remove the fallback to empty array after the parser cache is updated.
-				$threadItem = $overflowMenuData['threadItem'] ?? [];
-				// TODO: Remove $overflowMenuData['editable'] after caches clear
-				if ( isset( $overflowMenuData['editable'] ) ) {
-					$threadItem['uneditableSection'] = !$overflowMenuData['editable'];
-				}
+				$threadItem = $overflowMenuData['threadItem'];
 				$threadItemType = $threadItem['type'] ?? null;
 				if ( !$isMobile && $threadItemType === 'heading' ) {
 					// Displaying the overflow menu next to a topic heading is a bit more
