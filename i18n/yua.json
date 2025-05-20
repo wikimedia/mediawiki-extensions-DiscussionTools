@@ -2,13 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Abby95",
-			"Patoasado97"
+			"Patoasado97",
+			"Juanchuy0"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Jeel áale",
 	"discussiontools-newtopic-missing-title": "Béet ts'áa jump'éel k'aaba' uti'al {{GENDER:|a}} chun tuukulo' tsikbal.",
 	"discussiontools-newtopic-placeholder-title": "Máaxil",
 	"discussiontools-replylink": "{{GENER:|núukik}}",
+	"discussiontools-replywidget-advanced": "Áabansado",
 	"discussiontools-replywidget-cancel": "káanselar",
 	"discussiontools-replywidget-mode-source": "Chíikul",
 	"discussiontools-replywidget-mode-visual": "Bisual",
