@@ -11,6 +11,8 @@ use Wikimedia\TestingAccessWrapper;
  */
 class CommentFormatterTest extends IntegrationTestCase {
 
+	use TestUtils;
+
 	/**
 	 * @dataProvider provideAddDiscussionToolsInternal
 	 * @covers ::addDiscussionToolsInternal
@@ -24,7 +26,7 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$this->setupEnv( $config, $data );
 		$title = Title::newFromText( $title );
-		MockCommentFormatter::$parser = TestUtils::createParser( $data );
+		MockCommentFormatter::$parser = self::createParser( $data );
 
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
