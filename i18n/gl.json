@@ -4,6 +4,7 @@
 			"Toliño"
 		]
 	},
+	"discussiontools": "Ferramentas de conversa",
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Recibirás}} unha notificación cando alguén publique un novo comentario nesta conversa. Podes axustar a túa configuración de notificacións nas preferencias.",
 	"discussiontools-autotopicsubpopup-dismiss": "Entendido",
 	"discussiontools-autotopicsubpopup-preferences": "Editar as preferencias",
@@ -65,7 +66,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|Subscribícheste!}}",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Xa non {{GENDER:|recibirás}} notificacións cando se inicien novos fíos nesta páxina.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Cancelaches}} a subscrición.",
-	"discussiontools-notification-added-topic-header": "$2 iniciou o fío \"<strong>$4</strong>\" en \"<strong>$3</strong>\".",
+	"discussiontools-notification-added-topic-header": "$1 {{GENDER:$2|iniciou}} o fío \"<strong>$4</strong>\" en \"<strong>$3</strong>\".",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Un fío novo|$1 fíos novos|100=Máis de 99 fíos novos}} en \"<strong>$2</strong>\".",
 	"discussiontools-notification-added-topic-view": "Ver o fío",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|agradeceu}} {{GENDER:$4|o teu comentario}} en \"<strong>$3</strong>\".",
