@@ -12,6 +12,7 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 use MediaWiki\Actions\Hook\GetActionNameHook;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\DiscussionTools\BatchModifyElements;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
 use MediaWiki\Extension\DiscussionTools\SubscriptionStore;
@@ -249,6 +250,8 @@ class PageHooks implements
 		// This hook can be executed more than once per page view if the page content is composed from
 		// multiple sources!
 
+		$batchModifyElements = new BatchModifyElements();
+
 		$isMobile = $this->isMobile();
 		$visualEnhancementsEnabled =
 			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS );
@@ -259,14 +262,14 @@ class PageHooks implements
 			// Just enable OOUI PHP - the OOUI subscribe button isn't infused unless VISUALENHANCEMENTS are enabled
 			$output->setupOOUI();
 			$text = CommentFormatter::postprocessTopicSubscription(
-				$text, $output, $this->subscriptionStore, $isMobile, $visualEnhancementsEnabled
+				$text, $batchModifyElements, $output, $this->subscriptionStore, $isMobile, $visualEnhancementsEnabled
 			);
 		}
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
 			$output->enableOOUI();
 			$text = CommentFormatter::postprocessReplyTool(
-				$text, $output, $isMobile, $visualEnhancementsReplyEnabled
+				$text, $batchModifyElements, $output, $isMobile, $visualEnhancementsReplyEnabled
 			);
 		}
 
@@ -296,8 +299,10 @@ class PageHooks implements
 					'oojs-ui.styles.icons-editing-core',
 				] );
 			}
-			$text = CommentFormatter::postprocessVisualEnhancements( $text, $output, $isMobile );
+			$text = CommentFormatter::postprocessVisualEnhancements( $text, $batchModifyElements, $output, $isMobile );
 		}
+
+		$text = $batchModifyElements->apply( $text );
 
 		// Append empty state if the OutputPageParserOutput hook decided that we should.
 		// This depends on the order in which the hooks run. Hopefully it doesn't change.
