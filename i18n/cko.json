@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Hasslaebetch",
-			"Salifu Ramatu"
+			"Salifu Ramatu",
+			"Avenger"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Bonu",
 	"discussiontools-newtopic-placeholder-title": "jɔrɛ tii",
 	"discussiontools-replywidget-cancel": "Kpiɛnu",
+	"discussiontools-replywidget-preview": "Kaaki niɛ nu",
 	"discussiontools-topicheader-commentcount": "Jôlêm {{PLURAL:$1||.}}",
 	"discussiontools-topicheader-latestcomment": "Jôlê bé  i ba kassiein: $1",
 	"discussiontools-topicsubscription-button-subscribe": "klè ô douman na a sou yê su",
