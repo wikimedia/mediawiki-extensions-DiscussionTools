@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Abby95",
-			"Patoasado97"
+			"Patoasado97",
+			"Juanchuy0"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Jeel áale",
 	"discussiontools-newtopic-placeholder-title": "Máaxil",
 	"discussiontools-replylink": "{{GENER:|núukik}}",
+	"discussiontools-replywidget-advanced": "Áabansado",
 	"discussiontools-replywidget-cancel": "káanselar",
 	"discussiontools-replywidget-mode-source": "Chíikul",
 	"discussiontools-replywidget-mode-visual": "Bisual",
