@@ -5,6 +5,7 @@
 			"Matma Rex",
 			"Snævar",
 			"Stefán Örvar Sigmundsson",
+			"Sveinki",
 			"Sveinn í Felli",
 			"Woytecr",
 			"Þjarkur"
@@ -26,7 +27,7 @@
 	"discussiontools-emptystate-title-self-anon": "{{GENDER:|Velkominn|Velkomin|Velkomin/n}} á þessa spjallsíðu",
 	"discussiontools-findcomment-results-transcluded": "(innifalið frá öðrum síðum)",
 	"discussiontools-findcomment-title": "Finna athugasemd",
-	"discussiontools-newtopic-missing-title": "Vinsamlegast tilgreindu titil fyrir umræðuefnið. Ef þú smellir á \"{{int:discussiontools-replywidget-newtopic}}\", þá verður umræðuefninu þínu bætt við án titils.",
+	"discussiontools-newtopic-missing-title": "Tilgreindu titil fyrir umræðuefnið.",
 	"discussiontools-newtopic-placeholder-title": "Fyrirsögn",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Fylgjast með",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Fá tilkynningu þegar ný umræða er stofnuð á þessari síðu.",
