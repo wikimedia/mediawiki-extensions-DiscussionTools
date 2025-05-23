@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"787IYO",
 			"Misbahu umar",
 			"Umar Ahmad2345"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Kudan dozhi",
 	"discussiontools-replylink": "{{GENDER:|zhegan}}",
-	"discussiontools-replywidget-advanced": "Kpeye/lo nin",
+	"discussiontools-replywidget-advanced": "Kpeye",
 	"discussiontools-replywidget-cancel": "Nuya",
 	"discussiontools-replywidget-mode-source": "Gbere",
 	"discussiontools-replywidget-mode-visual": "Lileye",
