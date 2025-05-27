@@ -3,7 +3,8 @@
 		"authors": [
 			"Abby95",
 			"Juanchuy0",
-			"Patoasado97"
+			"Patoasado97",
+			"VicenteCancheM"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Jeel áale",
@@ -14,12 +15,20 @@
 	"discussiontools-replywidget-cancel": "káanselar",
 	"discussiontools-replywidget-mode-source": "Chíikul",
 	"discussiontools-replywidget-mode-visual": "Bisual",
+	"discussiontools-replywidget-newtopic": "Ts'áaj uláak' ba'ax",
 	"discussiontools-replywidget-placeholder-newtopic": "Bixil",
+	"discussiontools-replywidget-placeholder-reply": "Núuk ti' {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Yáax e'esajil",
 	"discussiontools-replywidget-reply": "{{GENER:|Núukik}}",
 	"discussiontools-replywidget-summary": "Kóomts'íib",
 	"discussiontools-replywidget-watchthis": "Ts'áa le linki abas kaambal ti' a [[Special:Watchlist|watchlist]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|máak|wíiniko'ob}} ti' tsikbal",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ts'aaj t'aan|ts'aaj t'aano'ob}}",
 	"discussiontools-topicheader-latestcomment": "U ts'ook t'aan: $1",
+	"discussiontools-topicsubscription-button-subscribe": "Ts'íibtabáaj",
+	"discussiontools-topicsubscription-button-subscribe-label": "Ts'íibtabáaj",
+	"discussiontools-topicsubscription-button-unsubscribe": "Lu'us a ts'íibtmilabáaj",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Lu'us a ts'íibtmilabáaj",
 	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Tech}} yaan u k'amik notificaciones yóok'ol túumben comentarios ti' le chun tuukulo'.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|You}} ts'o'ok u suscribirkuba.",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Tech}} ma' ken a k'amik túumben t'aano'ob yóok'ol le chun tuukulo'.",
