@@ -107,7 +107,7 @@ class ParserHooks implements
 	 */
 	public function onParserAfterTidy( $parser, &$text ) {
 		$pOpts = $parser->getOptions();
-		if ( $pOpts->getInterfaceMessage() ) {
+		if ( $pOpts->isMessage() ) {
 			return;
 		}
 
