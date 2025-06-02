@@ -4,7 +4,8 @@
 			"Salifu Ramatu",
 			"Hasslaebetch",
 			"Avenger",
-			"Yaw-kan"
+			"Yaw-kan",
+			"Biema"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Bonu",
@@ -13,8 +14,10 @@
 	"discussiontools-replywidget-cancel": "Kpiɛnu",
 	"discussiontools-replywidget-mode-source": "Fiteeri biri",
 	"discussiontools-replywidget-mode-visual": "Niɛ ŋuuwa",
+	"discussiontools-replywidget-placeholder-newtopic": "Kekerenu",
 	"discussiontools-replywidget-preview": "Kaaki niɛ nu",
 	"discussiontools-replywidget-summary": "Nyanyawa",
+	"discussiontools-replywidget-watchthis": "Fa ahin bue n buka u [[Special:Watchlist|watchlist]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|sɔnɔ|minɛm}} bu wo anzama su",
 	"discussiontools-topicheader-commentcount": "Jôlêm {{PLURAL:$1||.}}",
 	"discussiontools-topicheader-latestcomment": "Jôlê bé  i ba kassiein: $1",

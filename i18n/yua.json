@@ -3,7 +3,8 @@
 		"authors": [
 			"Abby95",
 			"Juanchuy0",
-			"Patoasado97"
+			"Patoasado97",
+			"VicenteCancheM"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Jeel áale",
@@ -13,8 +14,14 @@
 	"discussiontools-replywidget-mode-source": "Chíikul",
 	"discussiontools-replywidget-mode-visual": "Bisual",
 	"discussiontools-replywidget-placeholder-newtopic": "Bixil",
+	"discussiontools-replywidget-preview": "Yáax e'esajil",
 	"discussiontools-replywidget-summary": "Kóomts'íib",
 	"discussiontools-replywidget-watchthis": "Ts'áa le linki abas kaambal ti' a [[Special:Watchlist|watchlist]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|máak|wíiniko'ob}} ti' tsikbal",
-	"discussiontools-topicheader-latestcomment": "U ts'ook t'aan: $1"
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|ts'aaj t'aan|ts'aaj t'aano'ob}}",
+	"discussiontools-topicheader-latestcomment": "U ts'ook t'aan: $1",
+	"discussiontools-topicsubscription-button-subscribe": "Ts'íibtabáaj",
+	"discussiontools-topicsubscription-button-subscribe-label": "Ts'íibtabáaj",
+	"discussiontools-topicsubscription-button-unsubscribe": "Lu'us a ts'íibtmilabáaj",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Lu'us a ts'íibtmilabáaj"
 }
