@@ -30,5 +30,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Fa u ŋu buka su",
 	"discussiontools-topicsubscription-button-unsubscribe": "Yi u ŋu fite nu",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Yi u ŋu fite nu",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|a}} nya l su fa kɔ jɔrɛ fɔfɔrɛ ahin jɔrɛ ti n su",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|A }} tɔɔ kaari dada !",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|a}} nya l su fa kɔ jɔrɛ fɔfɔrɛ ahin jɔrɛ ti n su",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|a}} nounnouka wua fètê yɛ sou."
 }
