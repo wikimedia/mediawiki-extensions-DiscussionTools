@@ -52,6 +52,7 @@
 	"discussiontools-postedit-confirmation-topicadded": "Vaša téma bola pridaná.",
 	"discussiontools-preference-autotopicsub": "Automatické sledovanie tém",
 	"discussiontools-preference-autotopicsub-help": "Keď začnete novú diskusiu alebo pridáte príspevok do už existujúcej diskusie, budete automaticky upozornení, keď ostatní pridajú nový príspevok.",
+	"discussiontools-preference-description": "Zapne tieto experimentálne funkcie pre diskusné stránky:\n\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Zobrazenie metadát] o každej diskusii a nové rozloženie stránky.\n\nTieto funkcie si môžete prispôsobiť vo svojich [[Special:Preferences#mw-prefsection-editing-discussion|nastaveniach]].\n\nAktualizácie týchto funkcií budú zverejnené na [https://www.mediawiki.org/wiki/Talk_pages_project/Updates stránke s aktualizáciami projektu Diskusné stránky].\n\nPoznámky:\n* Postupom času budú pridané nové experimentálne funkcie.\n* Niektoré z vyššie uvedených funkcií ešte nemusia byť dostupné na všetkých wiki.",
 	"discussiontools-preference-label": "Nástroje diskusie",
 	"discussiontools-preference-newtopictool": "Zapnúť rýchle pridávanie tém",
 	"discussiontools-preference-newtopictool-createpage": "Pri návšteve diskusnej stránky, ktorá zatiaľ nebola vytvorená:",
