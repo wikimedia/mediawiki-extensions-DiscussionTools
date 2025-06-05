@@ -566,6 +566,14 @@ class PageHooks implements
 
 			$output->addModules( [ 'ext.discussionTools.init' ] );
 		}
+
+		if (
+			$sktemplate->getSkinName() === 'minerva' &&
+			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL )
+		) {
+			// Remove duplicate add topic button from page actions (T395980)
+			unset( $links[ 'views' ][ 'addsection' ] );
+		}
 	}
 
 	/**
