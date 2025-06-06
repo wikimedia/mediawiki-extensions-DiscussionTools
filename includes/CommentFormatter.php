@@ -508,13 +508,6 @@ class CommentFormatter {
 			] ),
 			static fn () => ''
 		);
-		// Legacy HTML - can be removed after caches have cleared
-		$text = strtr( $text, [
-			'<!--__DTREPLYBUTTONSCONTENT__-->' => '',
-		] );
-		$text = preg_replace( '/<!--__DTELLIPSISBUTTON__(.*?)-->/', '', $text );
-		$text = preg_replace( '/<!--__DTSUBSCRIBEBUTTON(DESKTOP|MOBILE)__(.*?)-->/', '', $text );
-
 		return $text;
 	}
 
@@ -524,7 +517,7 @@ class CommentFormatter {
 	public static function postprocessTopicSubscription(
 		string $text, BatchModifyElements &$batchModifyElements, IContextSource $contextSource,
 		SubscriptionStore $subscriptionStore, bool $isMobile, bool $useButtons
-	): string {
+	): void {
 		$doc = DOMCompat::newDocument( true );
 
 		$itemDataByName = [];
@@ -541,12 +534,6 @@ class CommentFormatter {
 			},
 			static fn ( $n ) => $n
 		);
-		// Legacy HTML - can be removed after caches have cleared
-		$matches = [];
-		preg_match_all( '/<!--__DTSUBSCRIBEBUTTONDESKTOP__(.*?)-->/', $text, $matches );
-		foreach ( $matches[1] as $itemData ) {
-			$itemDataByName[ $itemData ] = json_decode( htmlspecialchars_decode( $itemData ), true );
-		}
 
 		$itemNames = array_column( $itemDataByName, 'name' );
 
@@ -562,132 +549,106 @@ class CommentFormatter {
 
 		$lang = $contextSource->getLanguage();
 		$title = $contextSource->getTitle();
-		$replaceSubscribeButton = static function ( $matchesOrNode ) use (
-			$doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile, $useButtons
-		) {
-			if ( $matchesOrNode instanceof SerializerNode ) {
-				$buttonIsMobile = $matchesOrNode->attrs->offsetExists( 'mobile' );
-				$itemData = $itemDataByName[ $matchesOrNode->attrs['data'] ];
-
-			} else {
-				$buttonIsMobile = $matchesOrNode[1] === 'DTSUBSCRIBEBUTTONMOBILE';
-				$itemData = $itemDataByName[ $matchesOrNode[2] ];
-			}
-			'@phan-var array $itemData';
-			$itemName = $itemData['name'];
-
-			$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
-			$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
-
-			$href = $title->getLinkURL( [
-				'action' => $isSubscribed ? 'dtunsubscribe' : 'dtsubscribe',
-				'commentname' => $itemName,
-				'section' => $isSubscribed ? null : $itemData['linkableTitle'],
-			] );
-
-			if ( $buttonIsMobile !== $isMobile ) {
-				return '';
-			}
-
-			if ( !$useButtons ) {
-				$subscribe = $doc->createElement( 'span' );
-				$subscribe->setAttribute(
-					'class',
-					'ext-discussiontools-init-section-subscribe mw-editsection-like'
-				);
-
-				$subscribeLink = $doc->createElement( 'a' );
-				$subscribeLink->setAttribute( 'href', $href );
-				$subscribeLink->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-link' );
-				$subscribeLink->setAttribute( 'role', 'button' );
-				$subscribeLink->setAttribute( 'tabindex', '0' );
-				$subscribeLink->setAttribute( 'title', wfMessage(
-					$isSubscribed ?
-						'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
-						'discussiontools-topicsubscription-button-subscribe-tooltip'
-				)->inLanguage( $lang )->text() );
-				$subscribeLink->nodeValue = wfMessage(
-					$isSubscribed ?
-						'discussiontools-topicsubscription-button-unsubscribe' :
-						'discussiontools-topicsubscription-button-subscribe'
-				)->inLanguage( $lang )->text();
-
-				if ( $subscribedState !== null ) {
-					$subscribeLink->setAttribute( 'data-mw-subscribed', (string)$subscribedState );
-				}
-
-				$bracket = $doc->createElement( 'span' );
-				$bracket->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-bracket' );
-				$bracketOpen = $bracket->cloneNode( false );
-				$bracketOpen->nodeValue = '[';
-				$bracketClose = $bracket->cloneNode( false );
-				$bracketClose->nodeValue = ']';
-
-				$subscribe->appendChild( $bracketOpen );
-				$subscribe->appendChild( $subscribeLink );
-				$subscribe->appendChild( $bracketClose );
-
-				return DOMCompat::getOuterHTML( $subscribe );
-			} else {
-				$subscribe = new \OOUI\ButtonWidget( [
-					'classes' => [ 'ext-discussiontools-init-section-subscribeButton' ],
-					'framed' => false,
-					'icon' => $isSubscribed ? 'bell' : 'bellOutline',
-					'flags' => [ 'progressive' ],
-					'href' => $href,
-					'label' => wfMessage( $isSubscribed ?
-						'discussiontools-topicsubscription-button-unsubscribe-label' :
-						'discussiontools-topicsubscription-button-subscribe-label'
-					)->inLanguage( $lang )->text(),
-					'title' => wfMessage( $isSubscribed ?
-						'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
-						'discussiontools-topicsubscription-button-subscribe-tooltip'
-					)->inLanguage( $lang )->text(),
-					'infusable' => true,
-				] );
-
-				if ( $subscribedState !== null ) {
-					$subscribe->setAttributes( [ 'data-mw-subscribed' => (string)$subscribedState ] );
-				}
-
-				return $subscribe->toString();
-			}
-		};
-
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton' ||
 				$node->name === 'dt-subscribebutton',
-			$replaceSubscribeButton
-		);
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace_callback(
-			'/<!--__(DTSUBSCRIBEBUTTON(?:DESKTOP|MOBILE))__(.*?)-->/',
-			$replaceSubscribeButton,
-			$text
-		);
+			static function ( SerializerNode $node ) use (
+				$doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile, $useButtons
+			) {
+				$buttonIsMobile = $node->attrs->offsetExists( 'mobile' );
+				$itemData = $itemDataByName[ $node->attrs['data'] ];
+				'@phan-var array $itemData';
+				$itemName = $itemData['name'];
 
-		return $text;
+				$isSubscribed = isset( $itemsByName[ $itemName ] ) && !$itemsByName[ $itemName ]->isMuted();
+				$subscribedState = isset( $itemsByName[ $itemName ] ) ? $itemsByName[ $itemName ]->getState() : null;
+
+				$href = $title->getLinkURL( [
+					'action' => $isSubscribed ? 'dtunsubscribe' : 'dtsubscribe',
+					'commentname' => $itemName,
+					'section' => $isSubscribed ? null : $itemData['linkableTitle'],
+				] );
+
+				if ( $buttonIsMobile !== $isMobile ) {
+					return '';
+				}
+
+				if ( !$useButtons ) {
+					$subscribe = $doc->createElement( 'span' );
+					$subscribe->setAttribute(
+						'class',
+						'ext-discussiontools-init-section-subscribe mw-editsection-like'
+					);
+
+					$subscribeLink = $doc->createElement( 'a' );
+					$subscribeLink->setAttribute( 'href', $href );
+					$subscribeLink->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-link' );
+					$subscribeLink->setAttribute( 'role', 'button' );
+					$subscribeLink->setAttribute( 'tabindex', '0' );
+					$subscribeLink->setAttribute( 'title', wfMessage(
+						$isSubscribed ?
+							'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
+							'discussiontools-topicsubscription-button-subscribe-tooltip'
+					)->inLanguage( $lang )->text() );
+					$subscribeLink->nodeValue = wfMessage(
+						$isSubscribed ?
+							'discussiontools-topicsubscription-button-unsubscribe' :
+							'discussiontools-topicsubscription-button-subscribe'
+					)->inLanguage( $lang )->text();
+
+					if ( $subscribedState !== null ) {
+						$subscribeLink->setAttribute( 'data-mw-subscribed', (string)$subscribedState );
+					}
+
+					$bracket = $doc->createElement( 'span' );
+					$bracket->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-bracket' );
+					$bracketOpen = $bracket->cloneNode( false );
+					$bracketOpen->nodeValue = '[';
+					$bracketClose = $bracket->cloneNode( false );
+					$bracketClose->nodeValue = ']';
+
+					$subscribe->appendChild( $bracketOpen );
+					$subscribe->appendChild( $subscribeLink );
+					$subscribe->appendChild( $bracketClose );
+
+					return DOMCompat::getOuterHTML( $subscribe );
+				} else {
+					$subscribe = new \OOUI\ButtonWidget( [
+						'classes' => [ 'ext-discussiontools-init-section-subscribeButton' ],
+						'framed' => false,
+						'icon' => $isSubscribed ? 'bell' : 'bellOutline',
+						'flags' => [ 'progressive' ],
+						'href' => $href,
+						'label' => wfMessage( $isSubscribed ?
+							'discussiontools-topicsubscription-button-unsubscribe-label' :
+							'discussiontools-topicsubscription-button-subscribe-label'
+						)->inLanguage( $lang )->text(),
+						'title' => wfMessage( $isSubscribed ?
+							'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
+							'discussiontools-topicsubscription-button-subscribe-tooltip'
+						)->inLanguage( $lang )->text(),
+						'infusable' => true,
+					] );
+
+					if ( $subscribedState !== null ) {
+						$subscribe->setAttributes( [ 'data-mw-subscribed' => (string)$subscribedState ] );
+					}
+
+					return $subscribe->toString();
+				}
+			}
+		);
 	}
 
 	/**
 	 * Remove placeholders for topic subscription buttons (e.g. if the feature is disabled)
 	 */
-	public static function removeTopicSubscription(
-		string $text, BatchModifyElements &$batchModifyElements
-	): string {
+	public static function removeTopicSubscription( BatchModifyElements &$batchModifyElements ): void {
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton' ||
 				$node->name === 'dt-subscribebutton',
 			static fn () => ''
 		);
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace(
-			'/<!--__(DTSUBSCRIBEBUTTON(?:DESKTOP|MOBILE))__(.*?)-->/',
-			'',
-			$text
-		);
-
-		return $text;
 	}
 
 	/**
@@ -696,92 +657,70 @@ class CommentFormatter {
 	public static function postprocessReplyTool(
 		string $text, BatchModifyElements &$batchModifyElements,
 		IContextSource $contextSource, bool $isMobile, bool $useButtons
-	): string {
+	): void {
 		$doc = DOMCompat::newDocument( true );
 
 		$lang = $contextSource->getLanguage();
 		$replyLinkText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
 		$replyButtonText = wfMessage( 'discussiontools-replybutton' )->inLanguage( $lang )->escaped();
 
-		$replaceButtons = static function ( $node ) use(
-			$doc, $replyLinkText, $replyButtonText, $isMobile, $useButtons, $lang
-		) {
-			$replyLinkButtons = $doc->createElement( 'span' );
-
-			if ( $useButtons ) {
-				// Visual enhancements button
-				$useIcon = $isMobile || static::isLanguageRequiringReplyIcon( $lang );
-				$replyLinkButton = new \OOUI\ButtonWidget( [
-					'classes' => [ 'ext-discussiontools-init-replybutton' ],
-					'framed' => false,
-					'label' => $replyButtonText,
-					'icon' => $useIcon ? 'share' : null,
-					'flags' => [ 'progressive' ],
-					'infusable' => true,
-				] );
-
-				DOMCompat::setInnerHTML( $replyLinkButtons, $replyLinkButton->toString() );
-			} else {
-				// Reply link
-				$replyLink = $doc->createElement( 'a' );
-				$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
-				$replyLink->setAttribute( 'role', 'button' );
-				$replyLink->setAttribute( 'tabindex', '0' );
-				// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
-				$replyLink->setAttribute( 'href', '' );
-				$replyLink->textContent = $replyLinkText;
-
-				$bracket = $doc->createElement( 'span' );
-				$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
-				$bracketOpen = $bracket->cloneNode( false );
-				$bracketClose = $bracket->cloneNode( false );
-				$bracketOpen->textContent = '[';
-				$bracketClose->textContent = ']';
-
-				$replyLinkButtons->appendChild( $bracketOpen );
-				$replyLinkButtons->appendChild( $replyLink );
-				$replyLinkButtons->appendChild( $bracketClose );
-			}
-
-			return DOMCompat::getInnerHTML( $replyLinkButtons );
-		};
-
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent' ||
 				$node->name === 'dt-replybuttonscontent',
-			$replaceButtons
-		);
+			static function ( SerializerNode $node ) use(
+				$doc, $replyLinkText, $replyButtonText, $isMobile, $useButtons, $lang
+			) {
+				$replyLinkButtons = $doc->createElement( 'span' );
 
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace_callback(
-			'/<!--__DTREPLYBUTTONSCONTENT__-->/',
-			$replaceButtons,
-			$text
-		);
+				if ( $useButtons ) {
+					// Visual enhancements button
+					$useIcon = $isMobile || static::isLanguageRequiringReplyIcon( $lang );
+					$replyLinkButton = new \OOUI\ButtonWidget( [
+						'classes' => [ 'ext-discussiontools-init-replybutton' ],
+						'framed' => false,
+						'label' => $replyButtonText,
+						'icon' => $useIcon ? 'share' : null,
+						'flags' => [ 'progressive' ],
+						'infusable' => true,
+					] );
 
-		return $text;
+					DOMCompat::setInnerHTML( $replyLinkButtons, $replyLinkButton->toString() );
+				} else {
+					// Reply link
+					$replyLink = $doc->createElement( 'a' );
+					$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
+					$replyLink->setAttribute( 'role', 'button' );
+					$replyLink->setAttribute( 'tabindex', '0' );
+					// Set empty 'href' to avoid a:not([href]) selector in MobileFrontend
+					$replyLink->setAttribute( 'href', '' );
+					$replyLink->textContent = $replyLinkText;
+
+					$bracket = $doc->createElement( 'span' );
+					$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
+					$bracketOpen = $bracket->cloneNode( false );
+					$bracketClose = $bracket->cloneNode( false );
+					$bracketOpen->textContent = '[';
+					$bracketClose->textContent = ']';
+
+					$replyLinkButtons->appendChild( $bracketOpen );
+					$replyLinkButtons->appendChild( $replyLink );
+					$replyLinkButtons->appendChild( $bracketClose );
+				}
+
+				return DOMCompat::getInnerHTML( $replyLinkButtons );
+			}
+		);
 	}
 
 	/**
 	 * Remove placeholders for reply links (e.g. if the feature is disabled)
 	 */
-	public static function removeReplyTool(
-		string $text, BatchModifyElements &$batchModifyElements,
-	): string {
+	public static function removeReplyTool( BatchModifyElements &$batchModifyElements ): void {
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent' ||
 				$node->name === 'dt-replybuttonscontent',
 			static fn () => ''
 		);
-
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace(
-			'/<!--__DTREPLYBUTTONSCONTENT__-->/',
-			'',
-			$text
-		);
-
-		return $text;
 	}
 
 	/**
@@ -882,173 +821,121 @@ class CommentFormatter {
 	public static function postprocessVisualEnhancements(
 		string $text, BatchModifyElements &$batchModifyElements,
 		IContextSource $contextSource, bool $isMobile
-	): string {
+	): void {
 		$lang = $contextSource->getLanguage();
 		$user = $contextSource->getUser();
-		$replaceLatestCommentThread = static function ( $matchesOrNode ) use ( $lang, $user ) {
-			if ( $matchesOrNode instanceof SerializerNode ) {
-				$itemData = json_decode( $matchesOrNode->attrs['data'], true );
-			} else {
-				// Legacy HTML - can be removed after caches have cleared
-				$itemData = json_decode( htmlspecialchars_decode( $matchesOrNode[1] ), true );
-			}
-			if ( $itemData && $itemData['timestamp'] && $itemData['id'] ) {
-				$relativeTime = static::getSignatureRelativeTime(
-					new MWTimestamp( $itemData['timestamp'] ),
-					$lang,
-					$user
-				);
-				$commentLink = Html::element( 'a', [
-					'href' => '#' . Sanitizer::escapeIdForLink( $itemData['id'] )
-				], $relativeTime );
-
-				$label = wfMessage( 'discussiontools-topicheader-latestcomment' )
-					->rawParams( $commentLink )
-					->inLanguage( $lang )->escaped();
-
-				return CommentFormatter::metaLabel(
-					'ext-discussiontools-init-section-timestampLabel',
-					new \OOUI\HtmlSnippet( $label )
-				)->toString();
-			}
-		};
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-latestcommentthread' ||
 				$node->name === 'dt-latestcommentthread',
-			$replaceLatestCommentThread
+			static function ( SerializerNode $node ) use ( $lang, $user ) {
+				$itemData = json_decode( $node->attrs['data'], true );
+				if ( $itemData && $itemData['timestamp'] && $itemData['id'] ) {
+					$relativeTime = static::getSignatureRelativeTime(
+						new MWTimestamp( $itemData['timestamp'] ),
+						$lang,
+						$user
+					);
+					$commentLink = Html::element( 'a', [
+						'href' => '#' . Sanitizer::escapeIdForLink( $itemData['id'] )
+					], $relativeTime );
+
+					$label = wfMessage( 'discussiontools-topicheader-latestcomment' )
+						->rawParams( $commentLink )
+						->inLanguage( $lang )->escaped();
+
+					return CommentFormatter::metaLabel(
+						'ext-discussiontools-init-section-timestampLabel',
+						new \OOUI\HtmlSnippet( $label )
+					)->toString();
+				}
+			}
 		);
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace_callback(
-			'/<!--__DTLATESTCOMMENTTHREAD__(.*?)__-->/',
-			$replaceLatestCommentThread,
-			$text
-		);
-		$replaceCommentCount = static function ( $matchesOrNode ) use ( $lang, $user ) {
-			$count = $lang->formatNum(
-				$matchesOrNode instanceof SerializerNode ?
-					$matchesOrNode->attrs['data'] :
-					// Legacy HTML - can be removed after caches have cleared
-					$matchesOrNode[1]
-			);
-			$label = wfMessage(
-				'discussiontools-topicheader-commentcount',
-				$count
-			)->inLanguage( $lang )->text();
-			return CommentFormatter::metaLabel(
-				'ext-discussiontools-init-section-commentCountLabel',
-				$label
-			)->toString();
-		};
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-commentcount' ||
 				$node->name === 'dt-commentcount',
-			$replaceCommentCount
+			static function ( SerializerNode $node ) use ( $lang, $user ) {
+				$count = $lang->formatNum( $node->attrs['data'] );
+				$label = wfMessage(
+					'discussiontools-topicheader-commentcount',
+					$count
+				)->inLanguage( $lang )->text();
+				return CommentFormatter::metaLabel(
+					'ext-discussiontools-init-section-commentCountLabel',
+					$label
+				)->toString();
+			}
 		);
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace_callback(
-			'/<!--__DTCOMMENTCOUNT__([0-9]+)__-->/',
-			$replaceCommentCount,
-			$text
-		);
-		$replaceAuthorCount = static function ( $matchesOrNode ) use ( $lang, $user ) {
-			$count = $lang->formatNum(
-				$matchesOrNode instanceof SerializerNode ?
-					$matchesOrNode->attrs['data'] :
-					// Legacy HTML - can be removed after caches have cleared
-					$matchesOrNode[1]
-			);
-			$label = wfMessage(
-				'discussiontools-topicheader-authorcount',
-				$count
-			)->inLanguage( $lang )->text();
-			return CommentFormatter::metaLabel(
-				'ext-discussiontools-init-section-authorCountLabel',
-				$label
-			)->toString();
-		};
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-authorcount' ||
 				$node->name === 'dt-authorcount',
-			$replaceAuthorCount
+			static function ( SerializerNode $node ) use ( $lang, $user ) {
+				$count = $lang->formatNum( $node->attrs['data'] );
+				$label = wfMessage(
+					'discussiontools-topicheader-authorcount',
+					$count
+				)->inLanguage( $lang )->text();
+				return CommentFormatter::metaLabel(
+					'ext-discussiontools-init-section-authorCountLabel',
+					$label
+				)->toString();
+			}
 		);
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace_callback(
-			'/<!--__DTAUTHORCOUNT__([0-9]+)__-->/',
-			$replaceAuthorCount,
-			$text
-		);
-		$replaceEllipsis = static function ( $matchesOrNode ) use ( $contextSource, $isMobile ) {
-			if ( $matchesOrNode instanceof SerializerNode ) {
-				$overflowMenuData = json_decode( $matchesOrNode->attrs['data'], true );
-			} else {
-				// Legacy HTML - can be removed after caches have cleared
-				$overflowMenuData = json_decode( htmlspecialchars_decode( $matchesOrNode[1] ), true ) ?? [];
-			}
-
-			'@phan-var array $overflowMenuData';
-			$threadItem = $overflowMenuData['threadItem'];
-			$threadItemType = $threadItem['type'] ?? null;
-			if ( !$isMobile && $threadItemType === 'heading' ) {
-				// Displaying the overflow menu next to a topic heading is a bit more
-				// complicated on desktop, so leaving it out for now.
-				return '';
-			}
-			$overflowMenuItems = [];
-			$resourceLoaderModules = [];
-
-			self::getHookRunner()->onDiscussionToolsAddOverflowMenuItems(
-				$overflowMenuItems,
-				$resourceLoaderModules,
-				$threadItem,
-				$contextSource
-			);
-
-			if ( $overflowMenuItems ) {
-				usort(
-					$overflowMenuItems,
-					static function ( OverflowMenuItem $itemA, OverflowMenuItem $itemB ): int {
-						return $itemB->getWeight() - $itemA->getWeight();
-					}
-				);
-
-				$overflowButton = new ButtonMenuSelectWidget( [
-					'classes' => [
-						'ext-discussiontools-init-section-overflowMenuButton'
-					],
-					'framed' => false,
-					'icon' => 'ellipsis',
-					'infusable' => true,
-					'data' => [
-						'itemConfigs' => $overflowMenuItems,
-						'resourceLoaderModules' => $resourceLoaderModules
-					]
-				] );
-				return $overflowButton->toString();
-			} else {
-				return '';
-			}
-		};
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-ellipsisbutton' ||
 				$node->name === 'dt-ellipsisbutton',
-			$replaceEllipsis
-		);
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace_callback(
-			'/<!--__DTELLIPSISBUTTON__(.*?)-->/',
-			$replaceEllipsis,
-			$text
-		);
+			static function ( SerializerNode $node ) use ( $contextSource, $isMobile ) {
+				$overflowMenuData = json_decode( $node->attrs['data'], true );
 
-		return $text;
+				'@phan-var array $overflowMenuData';
+				$threadItem = $overflowMenuData['threadItem'];
+				$threadItemType = $threadItem['type'] ?? null;
+				if ( !$isMobile && $threadItemType === 'heading' ) {
+					// Displaying the overflow menu next to a topic heading is a bit more
+					// complicated on desktop, so leaving it out for now.
+					return '';
+				}
+				$overflowMenuItems = [];
+				$resourceLoaderModules = [];
+
+				self::getHookRunner()->onDiscussionToolsAddOverflowMenuItems(
+					$overflowMenuItems,
+					$resourceLoaderModules,
+					$threadItem,
+					$contextSource
+				);
+
+				if ( $overflowMenuItems ) {
+					usort(
+						$overflowMenuItems,
+						static function ( OverflowMenuItem $itemA, OverflowMenuItem $itemB ): int {
+							return $itemB->getWeight() - $itemA->getWeight();
+						}
+					);
+
+					$overflowButton = new ButtonMenuSelectWidget( [
+						'classes' => [
+							'ext-discussiontools-init-section-overflowMenuButton'
+						],
+						'framed' => false,
+						'icon' => 'ellipsis',
+						'infusable' => true,
+						'data' => [
+							'itemConfigs' => $overflowMenuItems,
+							'resourceLoaderModules' => $resourceLoaderModules
+						]
+					] );
+					return $overflowButton->toString();
+				} else {
+					return '';
+				}
+			}
+		);
 	}
 
 	/**
 	 * Remove visual enhancements features (e.g. if the feature is disabled)
 	 */
-	public static function removeVisualEnhancements(
-		string $text, BatchModifyElements &$batchModifyElements
-	): string {
+	public static function removeVisualEnhancements( BatchModifyElements &$batchModifyElements ): void {
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => in_array( $node->name, [
 				'mw:dt-latestcommentthread',
@@ -1063,13 +950,6 @@ class CommentFormatter {
 			] ),
 			static fn () => ''
 		);
-		// Legacy HTML - can be removed after caches have cleared
-		$text = preg_replace(
-			'/<!--__(DTLATESTCOMMENTTHREAD|DTCOMMENTCOUNT|DTAUTHORCOUNT|DTELLIPSISBUTTON)__(.*?)(__)?-->/',
-			'',
-			$text
-		);
-		return $text;
 	}
 
 	/**
