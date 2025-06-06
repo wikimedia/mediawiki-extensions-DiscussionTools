@@ -105,25 +105,23 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$batchModifyElements = new BatchModifyElements();
 
-		$actual = $preprocessed;
-
 		MockCommentFormatter::postprocessTimestampLinks(
-			$actual, $batchModifyElements, $outputPage
+			$preprocessed, $batchModifyElements, $outputPage
 		);
 
-		$actual = MockCommentFormatter::postprocessTopicSubscription(
-			$actual, $batchModifyElements, $outputPage, $subscriptionStore, $isMobile, $useButtons
+		MockCommentFormatter::postprocessTopicSubscription(
+			$preprocessed, $batchModifyElements, $outputPage, $subscriptionStore, $isMobile, $useButtons
 		);
 
-		$actual = MockCommentFormatter::postprocessVisualEnhancements(
-			$actual, $batchModifyElements, $outputPage, $isMobile
+		MockCommentFormatter::postprocessVisualEnhancements(
+			$preprocessed, $batchModifyElements, $outputPage, $isMobile
 		);
 
-		$actual = MockCommentFormatter::postprocessReplyTool(
-			$actual, $batchModifyElements, $outputPage, $isMobile, $useButtons
+		MockCommentFormatter::postprocessReplyTool(
+			$preprocessed, $batchModifyElements, $outputPage, $isMobile, $useButtons
 		);
 
-		$actual = $batchModifyElements->apply( $actual );
+		$actual = $batchModifyElements->apply( $preprocessed );
 
 		// OOUI ID's are non-deterministic, so strip them from test output
 		$actual = preg_replace( '/ id=[\'"]ooui-php-[0-9]+[\'"]/', '', $actual );

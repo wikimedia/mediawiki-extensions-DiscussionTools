@@ -266,20 +266,20 @@ class PageHooks implements
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
 			// Just enable OOUI PHP - the OOUI subscribe button isn't infused unless VISUALENHANCEMENTS are enabled
 			$output->setupOOUI();
-			$text = CommentFormatter::postprocessTopicSubscription(
+			CommentFormatter::postprocessTopicSubscription(
 				$text, $batchModifyElements, $output, $this->subscriptionStore, $isMobile, $visualEnhancementsEnabled
 			);
 		} else {
-			$text = CommentFormatter::removeTopicSubscription( $text, $batchModifyElements );
+			CommentFormatter::removeTopicSubscription( $batchModifyElements );
 		}
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
 			$output->enableOOUI();
-			$text = CommentFormatter::postprocessReplyTool(
+			CommentFormatter::postprocessReplyTool(
 				$text, $batchModifyElements, $output, $isMobile, $visualEnhancementsReplyEnabled
 			);
 		} else {
-			$text = CommentFormatter::removeReplyTool( $text, $batchModifyElements );
+			CommentFormatter::removeReplyTool( $batchModifyElements );
 		}
 
 		if ( $visualEnhancementsEnabled ) {
@@ -308,9 +308,9 @@ class PageHooks implements
 					'oojs-ui.styles.icons-editing-core',
 				] );
 			}
-			$text = CommentFormatter::postprocessVisualEnhancements( $text, $batchModifyElements, $output, $isMobile );
+			CommentFormatter::postprocessVisualEnhancements( $text, $batchModifyElements, $output, $isMobile );
 		} else {
-			$text = CommentFormatter::removeVisualEnhancements( $text, $batchModifyElements );
+			CommentFormatter::removeVisualEnhancements( $batchModifyElements );
 		}
 
 		$text = $batchModifyElements->apply( $text );
