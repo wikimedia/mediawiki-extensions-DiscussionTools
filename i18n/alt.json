@@ -5,10 +5,12 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Куруузы",
+	"discussiontools-newtopic-placeholder-title": "Тема",
 	"discussiontools-replywidget-advanced": "Элбедилген",
 	"discussiontools-replywidget-cancel": "Токтодыш",
 	"discussiontools-replywidget-mode-source": "Алынган јери",
 	"discussiontools-replywidget-mode-visual": "Визуально",
+	"discussiontools-replywidget-placeholder-newtopic": "Јартамалы",
 	"discussiontools-replywidget-preview": "Озолодо кӧрӧри",
 	"discussiontools-replywidget-summary": "Кыска јартамалы",
 	"discussiontools-replywidget-watchthis": "Бу бӱкти слердиҥ [[Special:Watchlist|ширтеениҥ тизимине]] кожуп салар",
