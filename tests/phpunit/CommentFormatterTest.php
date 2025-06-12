@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use ExtMobileFrontend;
 use MediaWiki\Cache\GenderCache;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\DiscussionTools\BatchModifyElements;
@@ -72,6 +73,11 @@ class CommentFormatterTest extends IntegrationTestCase {
 		] );
 
 		$title = Title::newFromText( $titleText );
+		$wrappedTitle = TestingAccessWrapper::newFromObject( $title );
+		// Mock values which would otherwise trigger a DB lookup
+		$wrappedTitle->mContentModel = CONTENT_MODEL_WIKITEXT;
+		$wrappedTitle->mLatestID = 1;
+
 		$subscriptionStore = new MockSubscriptionStore();
 		$user = $this->createMock( User::class );
 		$qqxLang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'qqx' );
@@ -100,6 +106,12 @@ class CommentFormatterTest extends IntegrationTestCase {
 			 "isEmptyTalkPage\n" : '' ) .
 			FormatJson::encode( $pout->getJsConfigVars(), "\t", FormatJson::ALL_OK ) .
 			"\n</pre>";
+
+		if ( $isMobile ) {
+			$preprocessed = ExtMobileFrontend::domParseMobile( $outputPage, $preprocessed );
+			// MobileFormatter render time is non-deterministic, so strip from test output
+			$preprocessed = preg_replace( '/<!-- MobileFormatter took [^-]*-->/', '', $preprocessed );
+		}
 
 		OutputPage::setupOOUI();
 
