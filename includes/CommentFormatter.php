@@ -480,7 +480,11 @@ class CommentFormatter {
 			static fn ( SerializerNode $node ): bool => in_array( $node->name, [
 				'mw:dt-replybuttonscontent',
 				'mw:dt-ellipsisbutton',
-				'mw:dt-subscribebutton'
+				'mw:dt-subscribebutton',
+				// HACK: MobileFrontend's HtmlFormatter strips the mw: namespace
+				'dt-replybuttonscontent',
+				'dt-ellipsisbutton',
+				'dt-subscribebutton'
 			] ),
 			static fn () => ''
 		);
@@ -507,7 +511,7 @@ class CommentFormatter {
 		HtmlHelper::modifyElements(
 			$text,
 			static function ( SerializerNode $node ) use ( &$itemDataByName ): bool {
-				if ( $node->name === 'mw:dt-subscribebutton' ) {
+				if ( $node->name === 'mw:dt-subscribebutton' || $node->name === 'dt-subscribebutton' ) {
 					$data = $node->attrs['data'];
 					$itemDataByName[ $data ] = json_decode( $data, true );
 				}
@@ -631,7 +635,8 @@ class CommentFormatter {
 		};
 
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton' ||
+				$node->name === 'dt-subscribebutton',
 			$replaceSubscribeButton
 		);
 		// Legacy HTML - can be removed after caches have cleared
@@ -722,7 +727,8 @@ class CommentFormatter {
 		};
 
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent' ||
+				$node->name === 'dt-replybuttonscontent',
 			$replaceButtons
 		);
 
@@ -887,7 +893,8 @@ class CommentFormatter {
 			}
 		};
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-latestcommentthread',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-latestcommentthread' ||
+				$node->name === 'dt-latestcommentthread',
 			$replaceLatestCommentThread
 		);
 		// Legacy HTML - can be removed after caches have cleared
@@ -913,7 +920,8 @@ class CommentFormatter {
 			)->toString();
 		};
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-commentcount',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-commentcount' ||
+				$node->name === 'dt-commentcount',
 			$replaceCommentCount
 		);
 		// Legacy HTML - can be removed after caches have cleared
@@ -939,7 +947,8 @@ class CommentFormatter {
 			)->toString();
 		};
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-authorcount',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-authorcount' ||
+				$node->name === 'dt-authorcount',
 			$replaceAuthorCount
 		);
 		// Legacy HTML - can be removed after caches have cleared
@@ -1000,7 +1009,8 @@ class CommentFormatter {
 			}
 		};
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-ellipsisbutton',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-ellipsisbutton' ||
+				$node->name === 'dt-ellipsisbutton',
 			$replaceEllipsis
 		);
 		// Legacy HTML - can be removed after caches have cleared
