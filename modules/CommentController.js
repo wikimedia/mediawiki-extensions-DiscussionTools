@@ -666,7 +666,7 @@ CommentController.prototype.save = function ( replyWidget, pageName, extraParams
  */
 CommentController.prototype.updateNewCommentsWarning = function ( addedComments, removedComments ) {
 	// Add new comments
-	this.newComments.push.apply( this.newComments, addedComments );
+	this.newComments.push( ...addedComments );
 
 	// Delete any comments which have since been deleted (e.g. posted then reverted)
 	const removedCommentIds = removedComments.filter( ( cmt ) => cmt.id );
