@@ -3,14 +3,18 @@
 		"authors": [
 			"20kdc",
 			"Juwan",
+			"Juwan~backup",
 			"Keenan Pepper",
 			"Tamzin",
 			"物灵"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "toki sin",
+	"discussiontoolsdebug-pagetitle": "nimi lipu",
 	"discussiontools-newtopic-missing-title": "toki sina o jo e toki suli.",
 	"discussiontools-newtopic-placeholder-title": "toki suli",
+	"discussiontools-pagetitle-newtopic": "mi open e toki sin lon lipu \"$1\"",
+	"discussiontools-pagetitle-reply": "mi toki lon lipu \"$1\"",
 	"discussiontools-replylink": "{{GENDER:|o toki}}",
 	"discussiontools-replywidget-advanced": "namako",
 	"discussiontools-replywidget-cancel": "o toki ala",
