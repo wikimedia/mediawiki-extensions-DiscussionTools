@@ -494,9 +494,8 @@ class CommentFormatter {
 	 * Replace placeholders for all interactive tools with nothing. This is intended for cases where
 	 * interaction is unexpected, e.g. reply links while previewing an edit.
 	 */
-	public static function removeInteractiveTools( string $text ): string {
-		$text = HtmlHelper::modifyElements(
-			$text,
+	public static function removeInteractiveTools( BatchModifyElements &$batchModifyElements ): void {
+		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => in_array( $node->name, [
 				'mw:dt-replybuttonscontent',
 				'mw:dt-ellipsisbutton',
@@ -508,7 +507,6 @@ class CommentFormatter {
 			] ),
 			static fn () => ''
 		);
-		return $text;
 	}
 
 	/**
