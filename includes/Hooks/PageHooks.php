@@ -269,6 +269,8 @@ class PageHooks implements
 			$text = CommentFormatter::postprocessTopicSubscription(
 				$text, $batchModifyElements, $output, $this->subscriptionStore, $isMobile, $visualEnhancementsEnabled
 			);
+		} else {
+			$text = CommentFormatter::removeTopicSubscription( $text, $batchModifyElements );
 		}
 
 		if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::REPLYTOOL ) ) {
@@ -276,6 +278,8 @@ class PageHooks implements
 			$text = CommentFormatter::postprocessReplyTool(
 				$text, $batchModifyElements, $output, $isMobile, $visualEnhancementsReplyEnabled
 			);
+		} else {
+			$text = CommentFormatter::removeReplyTool( $text, $batchModifyElements );
 		}
 
 		if ( $visualEnhancementsEnabled ) {
@@ -305,6 +309,8 @@ class PageHooks implements
 				] );
 			}
 			$text = CommentFormatter::postprocessVisualEnhancements( $text, $batchModifyElements, $output, $isMobile );
+		} else {
+			$text = CommentFormatter::removeVisualEnhancements( $text, $batchModifyElements );
 		}
 
 		$text = $batchModifyElements->apply( $text );
