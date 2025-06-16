@@ -633,6 +633,27 @@ class CommentFormatter {
 	}
 
 	/**
+	 * Remove placeholders for topic subscription buttons (e.g. if the feature is disabled)
+	 */
+	public static function removeTopicSubscription(
+		string $text, BatchModifyElements &$batchModifyElements
+	): string {
+		$batchModifyElements->add(
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton' ||
+				$node->name === 'dt-subscribebutton',
+			static fn () => ''
+		);
+		// Legacy HTML - can be removed after caches have cleared
+		$text = preg_replace(
+			'/<!--__(DTSUBSCRIBEBUTTON(?:DESKTOP|MOBILE))__(.*?)-->/',
+			'',
+			$text
+		);
+
+		return $text;
+	}
+
+	/**
 	 * Replace placeholders for reply links with the real thing.
 	 */
 	public static function postprocessReplyTool(
@@ -697,6 +718,28 @@ class CommentFormatter {
 		$text = preg_replace_callback(
 			'/<!--__DTREPLYBUTTONSCONTENT__-->/',
 			$replaceButtons,
+			$text
+		);
+
+		return $text;
+	}
+
+	/**
+	 * Remove placeholders for reply links (e.g. if the feature is disabled)
+	 */
+	public static function removeReplyTool(
+		string $text, BatchModifyElements &$batchModifyElements,
+	): string {
+		$batchModifyElements->add(
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent' ||
+				$node->name === 'dt-replybuttonscontent',
+			static fn () => ''
+		);
+
+		// Legacy HTML - can be removed after caches have cleared
+		$text = preg_replace(
+			'/<!--__DTREPLYBUTTONSCONTENT__-->/',
+			'',
 			$text
 		);
 
@@ -959,7 +1002,38 @@ class CommentFormatter {
 	}
 
 	/**
+	 * Remove visual enhancements features (e.g. if the feature is disabled)
+	 */
+	public static function removeVisualEnhancements(
+		string $text, BatchModifyElements &$batchModifyElements
+	): string {
+		$batchModifyElements->add(
+			static fn ( SerializerNode $node ): bool => in_array( $node->name, [
+				'mw:dt-latestcommentthread',
+				'mw:dt-commentcount',
+				'mw:dt-authorcount',
+				'mw:dt-ellipsisbutton',
+				// HACK: MobileFrontend's HtmlFormatter strips the mw: namespace
+				'dt-latestcommentthread',
+				'dt-commentcount',
+				'dt-authorcount',
+				'dt-ellipsisbutton',
+			] ),
+			static fn () => ''
+		);
+		// Legacy HTML - can be removed after caches have cleared
+		$text = preg_replace(
+			'/<!--__(DTLATESTCOMMENTTHREAD|DTCOMMENTCOUNT|DTAUTHORCOUNT|DTELLIPSISBUTTON)__(.*?)(__)?-->/',
+			'',
+			$text
+		);
+		return $text;
+	}
+
+	/**
 	 * Post-process visual enhancements features for page subtitle
+	 *
+	 * @return string|null HTML for page subtitle, null if nothing to show
 	 */
 	public static function postprocessVisualEnhancementsSubtitle(
 		ParserOutput $pout, IContextSource $contextSource
