@@ -119,6 +119,10 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		$actual = $preprocessed;
 
+		MockCommentFormatter::postprocessTimestampLinks(
+			$actual, $batchModifyElements, $outputPage
+		);
+
 		$actual = MockCommentFormatter::postprocessTopicSubscription(
 			$actual, $batchModifyElements, $outputPage, $subscriptionStore, $isMobile, $useButtons
 		);
