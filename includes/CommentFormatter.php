@@ -704,6 +704,31 @@ class CommentFormatter {
 	}
 
 	/**
+	 * Replace placeholders for timestamp links.
+	 */
+	public static function postprocessTimestampLinks(
+		string $text, BatchModifyElements &$batchModifyElements, IContextSource $contextSource
+	): void {
+		$lang = $contextSource->getLanguage();
+		$user = $contextSource->getUser();
+
+		$batchModifyElements->add(
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-timestamplink' ||
+				$node->name === 'dt-timestamplink',
+			static function ( SerializerNode $node ) use ( $lang, $user ): SerializerNode {
+				$node->name = 'a';
+				$relativeTime = static::getSignatureRelativeTime(
+					new MWTimestamp( $node->attrs['title'] ),
+					$lang,
+					$user
+				);
+				$node->attrs['title'] = $relativeTime;
+				return $node;
+			}
+		);
+	}
+
+	/**
 	 * Create a meta item label
 	 *
 	 * @param string $className

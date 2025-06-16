@@ -252,6 +252,11 @@ class PageHooks implements
 
 		$batchModifyElements = new BatchModifyElements();
 
+		// Match the check in ParserHooks::transformHtml which adds the timestamp link placeholders
+		if ( HookUtils::isAvailableForTitle( $output->getTitle() ) ) {
+			CommentFormatter::postprocessTimestampLinks( $text, $batchModifyElements, $output );
+		}
+
 		$isMobile = $this->isMobile();
 		$visualEnhancementsEnabled =
 			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::VISUALENHANCEMENTS );
