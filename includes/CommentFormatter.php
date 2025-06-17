@@ -740,22 +740,6 @@ class CommentFormatter {
 			$text
 		);
 
-		$user = $contextSource->getUser();
-		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-timestamplink' ||
-				$node->name === 'dt-timestamplink',
-			static function ( SerializerNode $node ) use ( $lang, $user ): SerializerNode {
-				$node->name = 'a';
-				$relativeTime = static::getSignatureRelativeTime(
-					new MWTimestamp( $node->attrs['title'] ),
-					$lang,
-					$user
-				);
-				$node->attrs['title'] = $relativeTime;
-				return $node;
-			}
-		);
-
 		return $text;
 	}
 
