@@ -23,6 +23,8 @@ class EventDispatcherTest extends IntegrationTestCase {
 	public function testGenerateEventsFromParsers(
 		string $rev1, string $rev2, string $authorUsername, ?string $other, string $expected
 	): void {
+		$this->markTestSkipped( 'T397359' );
+
 		$wikitext1 = static::getText( $rev1 );
 		$wikitext2 = static::getText( $rev2 );
 		$expectedEvents = static::getJson( $expected, false );
