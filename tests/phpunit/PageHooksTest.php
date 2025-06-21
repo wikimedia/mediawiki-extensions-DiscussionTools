@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools\Tests;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Page\Article;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
 
@@ -19,6 +20,9 @@ class PageHooksTest extends MediaWikiIntegrationTestCase {
 		$talkTitle = Title::newFromText( 'Talk:' . __METHOD__ );
 
 		// Fulfill conditions of HookUtils::shouldDisplayEmptyState
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Liquid Threads' ) ) {
+			$this->overrideConfigValue( 'LqtTalkPages', false );
+		}
 		$this->editPage( $subjectTitle, "" );
 
 		// Sanity check, to avoid confusing error messages later if the test fails
