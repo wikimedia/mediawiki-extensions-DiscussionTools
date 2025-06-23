@@ -5,11 +5,14 @@
 			"20kdc",
 			"Tamzin",
 			"Juwan",
-			"物灵"
+			"物灵",
+			"Juwan~backup"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "toki sin",
 	"discussiontools-newtopic-placeholder-title": "toki suli",
+	"discussiontools-pagetitle-newtopic": "mi open e toki sin lon lipu \"$1\"",
+	"discussiontools-pagetitle-reply": "mi toki lon lipu \"$1\"",
 	"discussiontools-replywidget-advanced": "namako",
 	"discussiontools-replywidget-cancel": "o toki ala",
 	"discussiontools-replywidget-mode-source": "toki ilo",
