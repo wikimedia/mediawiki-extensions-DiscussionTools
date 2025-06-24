@@ -219,7 +219,7 @@
 	"discussiontools-topicsubscription-pager-topic": "話題",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "登録解除",
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "通知登録を編集",
-	"discussiontools-topicsubscription-special-intro": "登録するとトークページの話題を追従することができます。誰かから話題に返事が投稿されると、通知が届きます。\n\nその通知をどこでどんな頻度で受信するか、[[Special:Preferences#mw-prefsection-echo|ご自分の個人設定]]で指定してください。",
+	"discussiontools-topicsubscription-special-intro": "登録するとトークページの話題をフォローでき、誰かがその話題に返信すると通知が届きます。\n\n通知の受け取り方法や場所は、[[Special:Preferences#mw-prefsection-echo|個人設定]]で調整できます。",
 	"discussiontools-topicsubscription-special-title": "話題の通知登録",
 	"echo-category-title-dt-subscription": "トークページの{{PLURAL:$1|通知登録}}",
 	"echo-category-title-dt-subscription-archiving": "トークページの{{PLURAL:$1|過去ログ化}}",
