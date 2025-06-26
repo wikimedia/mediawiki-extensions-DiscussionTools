@@ -60,6 +60,7 @@ if ( OO.ui.isMobile() ) {
 		},
 		{
 			name: 'editMode',
+			excludeFromTargetWidget: true,
 			type: 'list',
 			icon: 'edit',
 			title: OO.ui.deferMsg( 'visualeditor-mweditmode-tooltip' ),
