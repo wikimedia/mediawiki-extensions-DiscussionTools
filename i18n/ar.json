@@ -146,7 +146,7 @@
 	"discussiontools-target-comment-missing": "لا يمكن العثور على هذا التعليق. ربما تم حذفه أو نقله.",
 	"discussiontools-target-comments-missing": "لا يمكن العثور على تعليقات جديدة. ربما تم حذفها أو نقلها.",
 	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|لا أحد|شخص واحد|شخصان|$1 أشخاص|$1 شخصا|$1 شخص}} في النقاش",
-	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|تعليق|تعليقات}}",
+	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|تعليق واحد|تعليقان|$1 تعليقات|$1 تعليقًا|$1 تعليق}}",
 	"discussiontools-topicheader-latestcomment": "التعليق الأخير: $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "إلفاء الإشتراك",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "إلغاء الاشتراك في هذا الموضوع؟",
