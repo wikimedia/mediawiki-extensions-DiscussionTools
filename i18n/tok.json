@@ -6,6 +6,7 @@
 			"Juwan~backup",
 			"Keenan Pepper",
 			"Tamzin",
+			"Tbodt",
 			"物灵"
 		]
 	},
@@ -15,7 +16,8 @@
 	"discussiontools-newtopic-placeholder-title": "toki suli",
 	"discussiontools-pagetitle-newtopic": "mi open e toki sin lon lipu \"$1\"",
 	"discussiontools-pagetitle-reply": "mi toki lon lipu \"$1\"",
-	"discussiontools-replylink": "{{GENDER:|o toki}}",
+	"discussiontools-replybutton": "{{GENDER:|o toki tawa ni}}",
+	"discussiontools-replylink": "{{GENDER:|o toki tawa ni}}",
 	"discussiontools-replywidget-advanced": "namako",
 	"discussiontools-replywidget-cancel": "o toki ala",
 	"discussiontools-replywidget-mode-source": "toki ilo",
