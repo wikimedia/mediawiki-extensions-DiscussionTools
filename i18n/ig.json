@@ -11,7 +11,8 @@
 			"Goodymeraj",
 			"Matma Rex",
 			"Woytecr",
-			"Sayvhior"
+			"Sayvhior",
+			"King ChristLike"
 		]
 	},
 	"discussiontools-autotopicsubpopup-body": "Ị ga-anata ozi mgbe mmadụ tinyere okwu ọhụụ n'ebe akpamnkata. Ị nwere ike idozi ebe ọkwa nnata ozi gi ebe mmasị gị.",
@@ -29,7 +30,7 @@
 	"discussiontools-emptystate-title": "Bido mkparitaụka maka {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Nnọọ n'ihu akwụkwọ gị maka ị gwa gị okwu",
 	"discussiontools-emptystate-title-self-anon": "Nnọọ n'ihu akwụkwụ nke ịgwa mmadụ okwu",
-	"discussiontools-emptystate-title-user": "Bido mkparịtaụka {{GENDER:{{PAGENAME}}|with}} {{PAGENAME}}",
+	"discussiontools-emptystate-title-user": "Bido mkparịta ụka {{GENDER:{{PAGENAME}}|ya na}} {{PAGENAME}}",
 	"discussiontools-emptystate-title-user-anon": "Nnọọ n'ihu akwụkwọ agwam mmadụ okwu",
 	"discussiontools-error-comment-conflict": " E nweghị ike ịchekwa ihe ị kwuru makana onye ọzọ ekwuola oge ị chọrọ i kwu nke gị. Biko kwuo ọzọ, maọbụ buputagharịa ihu akwụkwọ ije hụ okwu ikpeazu e kwuru",
 	"discussiontools-error-comment-disappeared": "Ị hụghị okwu ị na-azaghachị n'ihu akwụkwọ a. Ọ nwere ike ọ bụrụ na ehichala ya maọbụ wega ya n'ihu akwụkwọ ọzọ.",
@@ -59,7 +60,7 @@
 	"discussiontools-notification-removed-topic-view": "Lee ịhụ a",
 	"discussiontools-notification-removed-topic-disable": "Kwụsị ịnata amamọkwa dị ka nke a",
 	"discussiontools-notification-removed-topic-disabled-title": "Ị gaghị enweta ọkwa ọzọ mgbe edokwara ma ọ bụ wepụ isiokwu.",
-	"discussiontools-notification-subscribed-new-comment-header": "{{int:discussiontools-replywidget-newtopic}}\"",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{Okike:$2|zara ya}} na \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-view": "Lee ihe ndị e kwuru/dere",
 	"discussiontools-pagetitle-reply": "Na-azaghachi na $1",
 	"discussiontools-postedit-confirmation-published": "Ebipụtala ihe ị dere",
@@ -131,7 +132,7 @@
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "Dezie ndenye aha gị",
 	"discussiontools-topicsubscription-special-intro": "Ị denye aha ga-ekwe ka ị soro n'isiokwu a na-akpa maka ya n'ihu akwụkwọ akpamnkata. Mgbe ọbụla mmadụ zaghachiri isiokwu, ị ga-enweta ozi.\n\nDozie otu na ebe ị ga-enweta ozi ndị a na [[Special:Preferences#mw-prefsection-echo|your preferences]].",
 	"discussiontools-topicsubscription-special-title": "Ndenye aha maka Isiokwu",
-	"echo-category-title-dt-subscription": "Ihu akwụkwọ i kwu okwu/mmarịta ụka {{PLURAL:$1|subscription|subscriptions}}",
+	"echo-category-title-dt-subscription": "Peeji Ṅkàtá {{PLURAL:$1| ndenye aha|ndenye aha}}",
 	"echo-pref-tooltip-dt-subscription": "Mee ka m mara mgbe mmadụ zitere okwu ọhụụ n'isiokwu m tinyere aha m",
 	"tag-discussiontools-added-comment-description": "E tinyere okwu na ndezi a",
 	"tag-discussiontools-description": "Ndezi eji akọrọngwa mkparịta ụka mee",
