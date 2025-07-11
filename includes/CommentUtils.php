@@ -685,7 +685,7 @@ class CommentUtils {
 		static::linearWalk(
 			$from,
 			static function ( string $event, Node $n ) use (
-				$from, $to, $boundary, &$skipNode, &$foundContent
+				$to, $boundary, &$skipNode, &$foundContent
 			) {
 				if ( $n === $to && $event === ( $boundary === 'end' ? 'leave' : 'enter' ) ) {
 					return true;

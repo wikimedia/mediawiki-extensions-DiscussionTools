@@ -65,7 +65,7 @@ class ApiDiscussionToolsFindComment extends ApiBase {
 						$byHeading = $this->threadItemStore->findNewestRevisionsByHeading(
 							$heading, $articleId, $title->getTitleValue()
 						);
-					} catch ( PageNeverHadThreadsException $e ) {
+					} catch ( PageNeverHadThreadsException ) {
 						$this->dieWithError( [ 'apierror-discussiontools-findcomment-pagenevertalk' ] );
 					}
 					foreach ( $byHeading as $item ) {

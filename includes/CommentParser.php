@@ -120,7 +120,7 @@ class CommentParser {
 		$treeWalker = new TreeWalker(
 			$rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
-			static function ( $n ) use ( $node, $rootNode ) {
+			static function ( $n ) use ( $node ) {
 				// Skip past the starting node and its descendants
 				if ( $n === $node || $n->parentNode === $node ) {
 					return NodeFilter::FILTER_REJECT;
@@ -503,7 +503,7 @@ class CommentParser {
 			try {
 				// @phan-suppress-next-line PhanNoopNew
 				new MWTimestamp( $date->format( 'c' ) );
-			} catch ( TimestampException $ex ) {
+			} catch ( TimestampException ) {
 				return null;
 			}
 
@@ -1205,7 +1205,7 @@ class CommentParser {
 	private function parseTitle( string $titleString ): ?TitleValue {
 		try {
 			return $this->titleParser->parseTitle( $titleString );
-		} catch ( MalformedTitleException $err ) {
+		} catch ( MalformedTitleException ) {
 			return null;
 		}
 	}

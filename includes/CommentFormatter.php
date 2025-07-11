@@ -805,7 +805,7 @@ class CommentFormatter {
 	): string {
 		try {
 			$diff = time() - intval( $timestamp->getTimestamp() );
-		} catch ( TimestampException $ex ) {
+		} catch ( TimestampException ) {
 			// Can't happen
 			$diff = 0;
 		}
@@ -853,7 +853,7 @@ class CommentFormatter {
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-commentcount' ||
 				$node->name === 'dt-commentcount',
-			static function ( SerializerNode $node ) use ( $lang, $user ) {
+			static function ( SerializerNode $node ) use ( $lang ) {
 				$count = $lang->formatNum( $node->attrs['data'] );
 				$label = wfMessage(
 					'discussiontools-topicheader-commentcount',
@@ -868,7 +868,7 @@ class CommentFormatter {
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-authorcount' ||
 				$node->name === 'dt-authorcount',
-			static function ( SerializerNode $node ) use ( $lang, $user ) {
+			static function ( SerializerNode $node ) use ( $lang ) {
 				$count = $lang->formatNum( $node->attrs['data'] );
 				$label = wfMessage(
 					'discussiontools-topicheader-authorcount',
