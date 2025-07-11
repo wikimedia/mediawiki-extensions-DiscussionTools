@@ -81,6 +81,14 @@ $specialPageAliases['ur'] = [
 	'DiscussionToolsDebug' => [ 'آلات_گفتگو_کی_خرابی_کا_ازالہ' ],
 ];
 
+/** Chinese (中文) */
+$specialPageAliases['zh'] = [
+	'TopicSubscriptions' => [ 'TopicSubscriptions' ],
+	'FindComment' => [ 'FindComment' ],
+	'GoToComment' => [ 'GoToComment' ],
+	'DiscussionToolsDebug' => [ 'DiscussionToolsDebug' ],
+];
+
 /** Simplified Chinese (中文（简体）) */
 $specialPageAliases['zh-hans'] = [
 	'TopicSubscriptions' => [ '话题订阅' ],
