@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"CROIX2"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Taak bak",
+	"discussiontools-newtopic-placeholder-title": "Subjek",
+	"discussiontools-replywidget-advanced": "Advaans",
+	"discussiontools-replywidget-cancel": "Kans'l",
+	"discussiontools-replywidget-mode-source": "Sarce",
+	"discussiontools-replywidget-mode-visual": "Vizyuual",
+	"discussiontools-replywidget-placeholder-newtopic": "Diskripshan",
+	"discussiontools-replywidget-preview": "Pree-luk",
+	"discussiontools-replywidget-summary": "Sumari",
+	"discussiontools-replywidget-watchthis": "Aad dis piej fu yu [[Special:Watchlist|wachlis]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|(uu)man|peepl}} eena big taak",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kament|kament dem}}",
+	"discussiontools-topicheader-latestcomment": "Nyuuis kament: $1",
+	"discussiontools-topicsubscription-button-subscribe": "subskraib",
+	"discussiontools-topicsubscription-button-subscribe-label": "Subskraib",
+	"discussiontools-topicsubscription-button-unsubscribe": "staap-subskraib",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Staap-subskraib"
+}
