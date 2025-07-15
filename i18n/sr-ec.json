@@ -183,7 +183,7 @@
 	"discussiontools-topicsubscription-special-title": "Праћење тема",
 	"echo-category-title-dt-subscription": "Странице за разговор {{PLURAL:$1|које пратим}}",
 	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Архивирање}} страница за разговор",
-	"echo-pref-tooltip-dt-subscription": "Обавестим ме о новим коментарима у темама које {{GENDER:|ја}} пратим.",
+	"echo-pref-tooltip-dt-subscription": "Обавештења о новим коментарима у темама {{GENDER:|које}} пратим.",
 	"echo-pref-tooltip-dt-subscription-archiving": "Обавештава вас када тема коју пратите {{GENDER:|је}} архивирирана или уклоњена са странице, или обавештења о новим коментарима није могуће послати из неких других разлога.",
 	"tag-discussiontools-added-comment-description": "Коментар на страници за разговор је додат у овој измени",
 	"tag-discussiontools-description": "Измене помоћу алатке за разговор",

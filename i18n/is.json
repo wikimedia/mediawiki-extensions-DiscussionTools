@@ -49,6 +49,7 @@
 	"discussiontools-preference-replytool-help": "Þetta gerir þér kleift að svara umræðum á spjallsíðum með einum smelli.",
 	"discussiontools-preference-summary": "Þú getur lært meira um þessa eiginleika með því að lesa [https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary eiginleikasamantektina].",
 	"discussiontools-preference-topicsubscription": "Virkja áskrift að umfjöllunarefni",
+	"discussiontools-replybutton": "{{GENDER:|Svara}}",
 	"discussiontools-replylink": "{{GENDER:|svara}}",
 	"discussiontools-replywidget-abandon": "Ertu viss um að þú viljir hætta við þetta svar?",
 	"discussiontools-replywidget-abandon-discard": "Hætta við",
