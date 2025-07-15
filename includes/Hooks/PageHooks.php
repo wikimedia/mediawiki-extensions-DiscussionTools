@@ -314,7 +314,7 @@ class PageHooks implements
 		}
 
 		// Optimization: Only parse and process the HTML if it seems to contain our tags (T400115)
-		if ( str_contains( $text, '<mw:dt-' ) || str_contains( $text, '<dt-' ) ) {
+		if ( str_contains( $text, '<mw:dt-' ) ) {
 			$text = $batchModifyElements->apply( $text );
 		}
 

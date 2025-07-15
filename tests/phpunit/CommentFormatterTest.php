@@ -111,8 +111,6 @@ class CommentFormatterTest extends IntegrationTestCase {
 			$preprocessed = ExtMobileFrontend::domParseMobile( $outputPage, $preprocessed );
 			// MobileFormatter render time is non-deterministic, so strip from test output
 			$preprocessed = preg_replace( '/<!-- MobileFormatter took [^-]*-->/', '', $preprocessed );
-			// Temporarily disable while MF is updated
-			return;
 		}
 
 		OutputPage::setupOOUI();

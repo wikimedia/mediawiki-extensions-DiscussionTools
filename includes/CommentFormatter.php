@@ -500,10 +500,6 @@ class CommentFormatter {
 				'mw:dt-replybuttonscontent',
 				'mw:dt-ellipsisbutton',
 				'mw:dt-subscribebutton',
-				// HACK: MobileFrontend's HtmlFormatter strips the mw: namespace
-				'dt-replybuttonscontent',
-				'dt-ellipsisbutton',
-				'dt-subscribebutton'
 			] ),
 			static fn () => ''
 		);
@@ -522,7 +518,7 @@ class CommentFormatter {
 		HtmlHelper::modifyElements(
 			$text,
 			static function ( SerializerNode $node ) use ( &$itemDataByName ): bool {
-				if ( $node->name === 'mw:dt-subscribebutton' || $node->name === 'dt-subscribebutton' ) {
+				if ( $node->name === 'mw:dt-subscribebutton' ) {
 					$data = $node->attrs['data'];
 					$itemDataByName[ $data ] = json_decode( $data, true );
 				}
@@ -548,8 +544,7 @@ class CommentFormatter {
 		$lang = $contextSource->getLanguage();
 		$title = $contextSource->getTitle();
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton' ||
-				$node->name === 'dt-subscribebutton',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton',
 			static function ( SerializerNode $node ) use (
 				$doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile, $useButtons
 			) {
@@ -643,8 +638,7 @@ class CommentFormatter {
 	 */
 	public static function removeTopicSubscription( BatchModifyElements &$batchModifyElements ): void {
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton' ||
-				$node->name === 'dt-subscribebutton',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton',
 			static fn () => ''
 		);
 	}
@@ -663,8 +657,7 @@ class CommentFormatter {
 		$replyButtonText = wfMessage( 'discussiontools-replybutton' )->inLanguage( $lang )->escaped();
 
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent' ||
-				$node->name === 'dt-replybuttonscontent',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent',
 			static function ( SerializerNode $node ) use(
 				$doc, $replyLinkText, $replyButtonText, $isMobile, $useButtons, $lang
 			) {
@@ -715,8 +708,7 @@ class CommentFormatter {
 	 */
 	public static function removeReplyTool( BatchModifyElements &$batchModifyElements ): void {
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent' ||
-				$node->name === 'dt-replybuttonscontent',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent',
 			static fn () => ''
 		);
 	}
@@ -731,8 +723,7 @@ class CommentFormatter {
 		$user = $contextSource->getUser();
 
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-timestamplink' ||
-				$node->name === 'dt-timestamplink',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-timestamplink',
 			static function ( SerializerNode $node ) use ( $lang, $user ): SerializerNode {
 				$node->name = 'a';
 				$relativeTime = static::getSignatureRelativeTime(
@@ -823,8 +814,7 @@ class CommentFormatter {
 		$lang = $contextSource->getLanguage();
 		$user = $contextSource->getUser();
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-latestcommentthread' ||
-				$node->name === 'dt-latestcommentthread',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-latestcommentthread',
 			static function ( SerializerNode $node ) use ( $lang, $user ) {
 				$itemData = json_decode( $node->attrs['data'], true );
 				if ( $itemData && $itemData['timestamp'] && $itemData['id'] ) {
@@ -849,8 +839,7 @@ class CommentFormatter {
 			}
 		);
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-commentcount' ||
-				$node->name === 'dt-commentcount',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-commentcount',
 			static function ( SerializerNode $node ) use ( $lang ) {
 				$count = $lang->formatNum( $node->attrs['data'] );
 				$label = wfMessage(
@@ -864,8 +853,7 @@ class CommentFormatter {
 			}
 		);
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-authorcount' ||
-				$node->name === 'dt-authorcount',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-authorcount',
 			static function ( SerializerNode $node ) use ( $lang ) {
 				$count = $lang->formatNum( $node->attrs['data'] );
 				$label = wfMessage(
@@ -879,8 +867,7 @@ class CommentFormatter {
 			}
 		);
 		$batchModifyElements->add(
-			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-ellipsisbutton' ||
-				$node->name === 'dt-ellipsisbutton',
+			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-ellipsisbutton',
 			static function ( SerializerNode $node ) use ( $contextSource, $isMobile ) {
 				$overflowMenuData = json_decode( $node->attrs['data'], true );
 
@@ -940,11 +927,6 @@ class CommentFormatter {
 				'mw:dt-commentcount',
 				'mw:dt-authorcount',
 				'mw:dt-ellipsisbutton',
-				// HACK: MobileFrontend's HtmlFormatter strips the mw: namespace
-				'dt-latestcommentthread',
-				'dt-commentcount',
-				'dt-authorcount',
-				'dt-ellipsisbutton',
 			] ),
 			static fn () => ''
 		);
