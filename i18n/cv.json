@@ -80,7 +80,7 @@
 	"discussiontools-notification-removed-topic-disabled-body": "Эсир ҫакна [[Special:Preferences#mw-prefsection-echo-echosubscriptions|хӑвӑрӑн ӗнерлевсенче]] улӑштарма пултаратӑр.",
 	"discussiontools-notification-subscribed-new-comment-header": "«<strong>$4</strong>» темӑра $1 {{GENDER:$2|хуравларӗ}}.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "«<strong>$3</strong>» темӑра {{PLURAL:$1|1=Пӗр ҫӗнӗ хурав|$1 ҫӗнӗ хурав|100=99+ ҫӗнӗ хурав}}.",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "Сообщенине пӑх",
 	"discussiontools-pageframe-latestcomment": "Юлашки сообщени: $1 «$3» темӑра $2 ҫырнӑ",
 	"discussiontools-pageframe-latestcomment-notopic": "Юлашки сообщени: $1 $2 ҫырнӑ",

@@ -87,7 +87,7 @@
 	"discussiontools-notification-topic-hidden": "(тема дӀайаьккхина)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|жоп делла}} \"<strong>$4</strong>\" чохь.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|1=Цхьаъ керла жоп|$1 керла жоп|100=99+ керла жом}} «<strong>$3</strong>» чохь.",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "Хьажа коммент",
 	"discussiontools-pageframe-latestcomment": "ТӀаьхьара коммент йу: $1 йазйина $2 декъашхочо «$3» темехь",
 	"discussiontools-pageframe-latestcomment-notopic": "ТӀаьхьара коммент: $1 - $2",

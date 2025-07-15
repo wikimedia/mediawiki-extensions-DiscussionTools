@@ -103,7 +103,7 @@
 	"discussiontools-notification-topic-hidden": "(tópico removido)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|respondeu}} em “<strong>$4</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Nova resposta|$1 novas respostas|100=99+ novas respostas}} em “<strong>$3</strong>”.",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "Ver comentário",
 	"discussiontools-pageframe-latestcomment": "Último comentário: $1 por $2 no tópico $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Último comentário: $1 por $2",

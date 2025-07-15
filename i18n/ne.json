@@ -69,7 +69,7 @@
 	"discussiontools-notification-removed-topic-disabled-body": "तपाईं यसलाई [[Special:Preferences#mw-prefsection-echo-echosubscriptions|आफ्नो अभिरुचिहरूमा]] परिवर्तन गर्न सक्नुहुन्छ।",
 	"discussiontools-notification-subscribed-new-comment-header": "$1ले \"<strong>$4</strong>\"मा {{GENDER:$2|जवाफ}} दिनुभयो।",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "\"$3\"मा $1 {{PLURAL:$1|एउटा नयाँ टिप्पणी|$1 नयाँ टिप्पणीहरू|100=९९+ नयाँ जवाफहरू}}।",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "सामग्री हेर्नुहोस्",
 	"discussiontools-pageframe-latestcomment": "पछिल्लो टिप्पणी: $1 $2द्वारा विषय $3मा",
 	"discussiontools-pageframe-latestcomment-notopic": "पछिल्लो टिप्पणी: \"$1\" $2द्वारा लेखिएको थियो",

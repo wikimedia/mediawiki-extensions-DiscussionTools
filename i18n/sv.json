@@ -95,7 +95,7 @@
 	"discussiontools-notification-removed-topic-disabled-body": "Du kan ändra detta i [[Special:Preferences#mw-prefsection-echo-echosubscriptions|dina inställningar]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarade}} på \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Ett nytt svar|$1 nya svar|100=99+ nya svar}} på \"<strong>$3</strong>\".",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "Visa kommentar",
 	"discussiontools-pageframe-latestcomment": "Senaste kommentaren: $1 av $2 i ämnet $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Senaste kommentaren: $1 av $2",

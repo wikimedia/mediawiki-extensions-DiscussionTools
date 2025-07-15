@@ -90,7 +90,7 @@
 	"discussiontools-notification-topic-hidden": "(emne fjernet)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|svarte}} i «<strong>$4</strong>».",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Ett nytt|$1 nye|100=99+ nye}} svar i «<strong>$3</strong>».",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "Vis kommentar",
 	"discussiontools-pageframe-latestcomment": "Siste kommentar: $1 av $2 i emnet $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Siste kommentar: $1 av $2",
