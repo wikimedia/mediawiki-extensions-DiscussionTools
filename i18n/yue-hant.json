@@ -5,7 +5,8 @@
 			"H78c67c",
 			"Ktchankt",
 			"SCP-2000",
-			"Woytecr"
+			"Woytecr",
+			"JeffreyKim"
 		]
 	},
 	"discussiontools": "傾嘢工具",
@@ -18,7 +19,7 @@
 	"discussiontools-error-noswitchtove-table": "表句法",
 	"discussiontools-error-noswitchtove-template": "模句法",
 	"discussiontools-error-noswitchtove-title": "即見模式停用咗",
-	"discussiontools-newtopic-placeholder-title": "標題",
+	"discussiontools-newtopic-placeholder-title": "主題",
 	"discussiontools-notification-subscribed-new-comment-view": "睇留言",
 	"discussiontools-pageframe-latestcomment": "最新留言：$1由$2喺主題$3度留言",
 	"discussiontools-postedit-confirmation-published": "你嘅留言發佈咗。",

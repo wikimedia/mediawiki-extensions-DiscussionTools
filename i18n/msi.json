@@ -5,10 +5,12 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Jawab",
+	"discussiontools-newtopic-placeholder-title": "Tajuk",
 	"discussiontools-replywidget-advanced": "Dapan",
 	"discussiontools-replywidget-cancel": "Kinsil",
 	"discussiontools-replywidget-mode-source": "Sumber",
 	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-placeholder-newtopic": "Katarangan",
 	"discussiontools-replywidget-preview": "Nampak dulu",
 	"discussiontools-replywidget-summary": "Singkatan",
 	"discussiontools-replywidget-watchthis": "Tambah laman ni ke [[Special:Watchlist|sanarai pantau]]",

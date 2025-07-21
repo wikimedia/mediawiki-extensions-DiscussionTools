@@ -4,6 +4,8 @@
 			"Умар"
 		]
 	},
+	"apierror-discussiontools-commentid-notfound": "ID '$1' йолу хаам ца карийна.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Темин цӀераш толлархьама",
-	"apihelp-discussiontoolspageinfo-param-prop": "Муьлха билгалонаш схьаоьцу:"
+	"apihelp-discussiontoolspageinfo-param-prop": "Муьлха билгалонаш схьаоьцу:",
+	"apihelp-discussiontoolspreview-param-type": "Хьалххе хьажаран хааман тайпа"
 }

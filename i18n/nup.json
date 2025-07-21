@@ -7,10 +7,12 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Kudan dozhi",
+	"discussiontools-newtopic-placeholder-title": "Tidan",
 	"discussiontools-replywidget-advanced": "Kpeye",
 	"discussiontools-replywidget-cancel": "Nuya",
 	"discussiontools-replywidget-mode-source": "Gbere",
 	"discussiontools-replywidget-mode-visual": "Lileye",
+	"discussiontools-replywidget-placeholder-newtopic": "Yeji",
 	"discussiontools-replywidget-preview": "Cincinle",
 	"discussiontools-replywidget-summary": "Kukeba",
 	"discussiontools-replywidget-watchthis": "La Kperegi nana be [[Special:Watchlist|watchlist]]",
