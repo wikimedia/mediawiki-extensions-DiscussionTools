@@ -313,7 +313,10 @@ class PageHooks implements
 			CommentFormatter::removeVisualEnhancements( $batchModifyElements );
 		}
 
-		$text = $batchModifyElements->apply( $text );
+		// Optimization: Only parse and process the HTML if it seems to contain our tags (T400115)
+		if ( str_contains( $text, '<mw:dt-' ) || str_contains( $text, '<dt-' ) ) {
+			$text = $batchModifyElements->apply( $text );
+		}
 
 		// Append empty state if the OutputPageParserOutput hook decided that we should.
 		// This depends on the order in which the hooks run. Hopefully it doesn't change.
