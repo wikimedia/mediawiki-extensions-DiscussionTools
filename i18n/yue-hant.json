@@ -5,7 +5,8 @@
 			"Ktchankt",
 			"SCP-2000",
 			"Winston Sung",
-			"Woytecr"
+			"Woytecr",
+			"JeffreyKim"
 		]
 	},
 	"discussiontools": "傾嘢工具",
@@ -25,8 +26,8 @@
 	"discussiontools-error-noswitchtove-table": "表句法",
 	"discussiontools-error-noswitchtove-template": "模句法",
 	"discussiontools-error-noswitchtove-title": "即見模式停用咗",
-	"discussiontools-newtopic-missing-title": "請為你嘅討論話題畀個標題。如果你撳「{{int:discussiontools-replywidget-newtopic}}」，將會加你無標題嘅話題。",
-	"discussiontools-newtopic-placeholder-title": "標題",
+	"discussiontools-newtopic-missing-title": "請提供{{GENDER:|你嘅}} 討論主題嘅標題。",
+	"discussiontools-newtopic-placeholder-title": "主題",
 	"discussiontools-notification-subscribed-new-comment-view": "睇留言",
 	"discussiontools-pageframe-latestcomment": "最新留言：$1由$2喺主題$3度留言",
 	"discussiontools-postedit-confirmation-published": "你嘅留言發佈咗。",
@@ -52,7 +53,7 @@
 	"discussiontools-replywidget-mention-tool-title": "提及一位用戶",
 	"discussiontools-replywidget-mode-source": "源碼編輯",
 	"discussiontools-replywidget-mode-visual": "即見編輯",
-	"discussiontools-replywidget-newtopic": "加主題",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|加入}}主題",
 	"discussiontools-replywidget-placeholder-newtopic": "描述",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|答}}{{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "喜好設定",
