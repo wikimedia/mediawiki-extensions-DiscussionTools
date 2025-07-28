@@ -28,6 +28,7 @@
 	"discussiontools-findcomment-title": "Finna athugasemd",
 	"discussiontools-newtopic-missing-title": "Vinsamlegast tilgreindu titil fyrir umræðuefnið. Ef þú smellir á \"{{int:discussiontools-replywidget-newtopic}}\", þá verður umræðuefninu þínu bætt við án titils.",
 	"discussiontools-newtopic-placeholder-title": "Fyrirsögn",
+	"discussiontools-pageframe-latestcomment": "Síðasta athugasemd: $1 eftir $2 í umræðunni $3",
 	"discussiontools-pagetitle-newtopic": "Hefja nýja umræðu á $1",
 	"discussiontools-pagetitle-reply": "Svara á $1",
 	"discussiontools-preference-newtopictool": "Virkja flýtiviðbót umræðuefna",
