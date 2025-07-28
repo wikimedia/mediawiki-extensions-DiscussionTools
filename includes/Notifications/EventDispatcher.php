@@ -46,9 +46,7 @@ class EventDispatcher {
 	public static function generateEventsForRevision( array &$events, RevisionRecord $newRevRecord ): void {
 		$services = MediaWikiServices::getInstance();
 
-		$title = Title::newFromLinkTarget(
-			$newRevRecord->getPageAsLinkTarget()
-		);
+		$title = Title::newFromPageIdentity( $newRevRecord->getPage() );
 		if ( !HookUtils::isAvailableForTitle( $title ) ) {
 			// Not a talk page
 			return;

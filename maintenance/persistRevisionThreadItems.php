@@ -195,9 +195,7 @@ class PersistRevisionThreadItems extends Maintenance {
 		$changed = false;
 		try {
 			$rev = $this->revStore->newRevisionFromRow( $row );
-			$title = Title::newFromLinkTarget(
-				$rev->getPageAsLinkTarget()
-			);
+			$title = Title::newFromPageIdentity( $rev->getPage() );
 			if ( HookUtils::isAvailableForTitle( $title ) ) {
 				$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev, false )->getValueOrThrow();
 
