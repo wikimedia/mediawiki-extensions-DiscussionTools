@@ -1231,7 +1231,7 @@ class CommentParser {
 				isset( $part['template']['target']['href'] )
 			) {
 				$parsoidHref = $part['template']['target']['href'];
-				Assert::precondition( substr( $parsoidHref, 0, 2 ) === './', "href has valid format" );
+				Assert::precondition( str_starts_with( $parsoidHref, './' ), 'href has valid format' );
 				$out[] = rawurldecode( substr( $parsoidHref, 2 ) );
 			} else {
 				$out[] = null;
