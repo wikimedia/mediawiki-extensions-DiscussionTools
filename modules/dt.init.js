@@ -68,6 +68,17 @@ if ( url.searchParams.get( 'dtdebug' ) ) {
 } else {
 	// Don't use an anonymous function, because ReplyWidget needs to be able to remove this handler
 	mw.hook( 'wikipage.content' ).add( mw.dt.init );
+	// wikipage.content can't be counted on for initial setup, because gadgets
+	// can potentially have fired it with not-the-main-content before we added
+	// our hook, and the hook system only remembers the last call for us.
+	$( () => {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		const $content = $( '#mw-content-text' );
+		if ( $content.length && mw.dt.initState.firstLoad ) {
+			// We're on a page with main page content and DT hasn't initialized yet
+			mw.dt.init( $content );
+		}
+	} );
 }
 
 if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'TopicSubscriptions' ) {
