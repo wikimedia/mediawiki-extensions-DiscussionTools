@@ -92,6 +92,8 @@
 	"discussiontools-replywidget-summary": "Juwmaq",
 	"discussiontools-replywidget-terms-click": "«$1» túymesin basıw arqalı siz usı wikidiń paydalanıw shártlerine kelisim bergen bolasız.",
 	"discussiontools-replywidget-watchthis": "Bul betti [[Special:Watchlist|baqlaw dizimi]]ńizge qosıń",
+	"discussiontools-target-comment-missing": "Bul pikir tabılmadı. Ol óshirilgen yamasa basqa betken kóshirilgen bolıwı múmkin.",
+	"discussiontools-target-comments-missing": "Jańa pikirler tabılmadı. Olar óshirilgen yamasa basqa betken kóshirilgen bolıwı múmkin.",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|adam}} dodalamaqta",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|pikir}}",
 	"discussiontools-topicheader-latestcomment": "Eń sońǵı pikir: $1",
