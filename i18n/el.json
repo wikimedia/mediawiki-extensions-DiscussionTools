@@ -8,6 +8,7 @@
 			"MnLsVt",
 			"Norhorn",
 			"UnchartedViolator",
+			"Warudo",
 			"Woytecr"
 		]
 	},
@@ -72,7 +73,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Έχετε {{GENDER:|εγγραφεί}}!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Δεν θα {{GENDER:|λαμβάνετε}} πλέον ειδοποιήσεις όταν ένα θέμα αρχειοθετείται ή αφαιρείται.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Έχετε}} καταργήσει την εγγραφή σας.",
-	"discussiontools-notification-added-topic-header": "Νέο θέμα «<strong>$4</strong>» δημιουργήθηκε στις <strong>$3</strong> από  {{GENDRER:$2|τον|την}} $2.",
+	"discussiontools-notification-added-topic-header": "Νέο θέμα «<strong>$4</strong>» δημιουργήθηκε στις <strong>$3</strong> από  {{GENDRER:$2|τον|την}} $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Μια νέα απάντηση|$1 νέες απαντήσεις|100=99+ νέες απαντήσεις}} στη «<strong>$2</strong>».",
 	"discussiontools-notification-added-topic-view": "Εμφάνιση θέματος",
 	"discussiontools-notification-removed-topic-body": "{{GENDER:|Εσείς}} ενδέχεται να μην λαμβάνετε πλέον ειδοποιήσεις σχετικά με το {{PLURAL:$1| αυτό το θέμα|αυτά τα θέματα}}.",

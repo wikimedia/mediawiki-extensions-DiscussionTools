@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Owobusingye"
+		]
+	},
+	"discussiontools-newtopic-missing-title": "Nyabura we heereza engyenderwaho yo {{GENDER:|your}} omutwe gw'okuhanuura",
+	"discussiontools-newtopic-placeholder-title": "Ekintu",
+	"discussiontools-replylink": "{{GENDER:|kugarukamu}}",
+	"discussiontools-replywidget-cancel": "Shazamu",
+	"discussiontools-replywidget-mode-source": "Oburugo",
+	"discussiontools-replywidget-mode-visual": "Ebyokureeba",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|Kwongyera}} omutwe",
+	"discussiontools-replywidget-reply": "{{GENDER:|Kugarukamu}}"
+}

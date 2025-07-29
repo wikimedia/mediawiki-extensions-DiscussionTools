@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Aafi",
+			"BukhariSaeed",
 			"Matma Rex",
 			"Muhammad Shuaib",
 			"TheAafi"
@@ -17,6 +18,7 @@
 	"discussiontools-desc": "بحث کے صفحات کو بہتر کرنے کے آلات",
 	"discussiontools-emptystate-button": "گفتگو شروع کریں",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|تبادلۂ خیال صفحات]] پر ویکی صارفین اس امر پر گفتگو کرتے ہیں کہ کس طرح {{SITENAME}} کے مندرجات و مشمولات کو حتی الامکان خوب سے خوب تر بنایا جائے۔ چنانچہ {{GENDER:|آپ}} بھی زیر نظر صفحہ پر [[:{{SUBJECTPAGENAME}}]] کو مزید بہتر بنانے کے لیے اپنے خیالات پیش کر سکتے ہیں۔",
+	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|تبادلۂ خیال کے صفحات]] وہ مراکز ہوتے ہیں جہاں صارفین {{SITENAME}} پر مواد کو بہتر بنانے کے لیے بات چیت کرتے ہیں۔ نئی گفتگو کا آغاز کریں تاکہ [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] کے ساتھ رابطہ قائم کرنے اور مل کر مضمون کی بہتری کے لیے گفتگو کا آغاز کیجیے۔ آپ کی یہاں کی گئی گفتگو سب کے لیے قابلِ مشاہدہ ہوگی۔",
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} سے متعلق گفتگو کا آغاز کریں",
 	"discussiontools-emptystate-title-self": "آپ کے تبادلۂ خیال صفحہ پر {{GENDER:|خوش آمدید}}",
 	"discussiontools-emptystate-title-self-anon": "اس تبادلۂ خیال صفحہ پر {{GENDER:|خوش آمدید}}",
