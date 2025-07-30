@@ -70,7 +70,7 @@
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Un fío novo|$1 fíos novos|100=Máis de 99 fíos novos}} en «<strong>$2</strong>».",
 	"discussiontools-notification-added-topic-view": "Ver o fío",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|agradeceu}} {{GENDER:$4|o teu comentario}} en «<strong>$3</strong>».",
-	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Unha persoa|$1 persoas|100=Máis de 99 persoas}} {{GENDER:$3|agradeceron}} o teu comentario en «<strong>$2</strong>».",
+	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Unha persoa|$1 persoas|100=Máis de 99 persoas}} {{GENDER:$3|{{PLURAL:$1|agradeceu|agradeceron}}}} o teu comentario en «<strong>$2</strong>».",
 	"discussiontools-notification-comment-thank-header-compact": "$1 {{GENDER:$2|agradeceu}}{{GENDER:$3|che}}.",
 	"discussiontools-notification-removed-topic-body": "Poida que xa non {{GENDER:|recibas}} máis notificacións sobre {{PLURAL:$1|este fío|estes fíos}}.",
 	"discussiontools-notification-removed-topic-header": "O fío «<strong>$4</strong>» arquivouse ou eliminouse de «$3».",
