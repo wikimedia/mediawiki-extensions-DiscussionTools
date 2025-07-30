@@ -14,6 +14,7 @@ use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\DiscussionTools\OverflowMenuItem;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserNameUtils;
 
 class DiscussionToolsHooks implements
@@ -21,13 +22,16 @@ class DiscussionToolsHooks implements
 {
 	private Config $config;
 	private UserNameUtils $userNameUtils;
+	private UserOptionsLookup $userOptionsLookup;
 
 	public function __construct(
 		ConfigFactory $configFactory,
-		UserNameUtils $userNameUtils
+		UserNameUtils $userNameUtils,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->userNameUtils = $userNameUtils;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -56,8 +60,11 @@ class DiscussionToolsHooks implements
 			);
 		}
 
-		if ( $this->config->get( 'DiscussionToolsEnableThanks' ) ) {
-			$user = $contextSource->getUser();
+		$user = $contextSource->getUser();
+		if (
+			$this->config->get( 'DiscussionToolsEnableThanks' ) ||
+			$this->userOptionsLookup->getOption( $user, 'discussiontools-betaenable', 0 )
+		) {
 			$showThanks = ExtensionRegistry::getInstance()->isLoaded( 'Thanks' );
 			if ( $showThanks && ( $threadItemData['type'] ?? null ) === 'comment' && $user->isNamed() ) {
 				$recipient = $this->userNameUtils->getCanonical( $threadItemData['author'], UserNameUtils::RIGOR_NONE );

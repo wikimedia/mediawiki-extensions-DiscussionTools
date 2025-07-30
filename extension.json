@@ -493,7 +493,8 @@
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\DiscussionToolsHooks",
 			"services": [
 				"ConfigFactory",
-				"UserNameUtils"
+				"UserNameUtils",
+				"UserOptionsLookup"
 			]
 		},
 		"tags": {
