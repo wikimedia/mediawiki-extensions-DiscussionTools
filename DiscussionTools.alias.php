@@ -8,20 +8,20 @@
 
 $specialPageAliases = [];
 
-/** Azerbaijani (Azərbaycanca) */
-$specialPageAliases['az'] = [
-	'TopicSubscriptions' => [ 'MövzuAbunəlikləri' ],
-	'FindComment' => [ 'ŞərhiTap' ],
-	'GoToComment' => [ 'ŞərhəGet' ],
-	'DiscussionToolsDebug' => [ 'MüzakirəAlətlərininSazlanması' ],
-];
-
 /** English (English) */
 $specialPageAliases['en'] = [
 	'TopicSubscriptions' => [ 'TopicSubscriptions' ],
 	'FindComment' => [ 'FindComment' ],
 	'GoToComment' => [ 'GoToComment' ],
 	'DiscussionToolsDebug' => [ 'DiscussionToolsDebug' ],
+];
+
+/** Azerbaijani (Azərbaycanca) */
+$specialPageAliases['az'] = [
+	'TopicSubscriptions' => [ 'MövzuAbunəlikləri' ],
+	'FindComment' => [ 'ŞərhiTap' ],
+	'GoToComment' => [ 'ŞərhəGet' ],
+	'DiscussionToolsDebug' => [ 'MüzakirəAlətlərininSazlanması' ],
 ];
 
 /** Bengali (বাংলা) */
@@ -64,6 +64,20 @@ $specialPageAliases['ko'] = [
 	'TopicSubscriptions' => [ '구독하는주제' ],
 	'FindComment' => [ '댓글찾기' ],
 	'GoToComment' => [ '댓글로가기' ],
+];
+
+/** Norwegian Bokmål (norsk bokmål) */
+$specialPageAliases['nb'] = [
+	'TopicSubscriptions' => [ 'Emneabonnementer' ],
+	'FindComment' => [ 'Finn_kommentar' ],
+	'GoToComment' => [ 'Gå_til_kommentar' ],
+];
+
+/** Norwegian Nynorsk (norsk nynorsk) */
+$specialPageAliases['nn'] = [
+	'TopicSubscriptions' => [ 'Emneabonnement' ],
+	'FindComment' => [ 'Finn_kommentar' ],
+	'GoToComment' => [ 'Gå_til_kommentar' ],
 ];
 
 /** Polish (polski) */
