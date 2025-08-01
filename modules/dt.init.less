@@ -514,8 +514,7 @@ h6 {
 		}
 
 		/* Legacy parser */
-		// stylelint-disable-next-line selector-class-pattern
-		> .indicator,
+		> .indicator, /* stylelint-disable-line selector-class-pattern */
 		/* Parsoid */
 		.mf-collapsible-icon {
 			margin-top: 4px;
@@ -562,7 +561,7 @@ h6 {
 			/* Legacy parser */
 			&.section-heading:not( .open-block ),
 			/* Parsoid */
-			&:has( .mf-collapsible-icon.mf-icon-expand ) {
+			&[ aria-expanded='false' ] {
 				.ext-discussiontools-init-section-actions {
 					// Hidden until expanded
 					display: none;
@@ -572,7 +571,7 @@ h6 {
 			/* Legacy parser */
 			&.section-heading.open-block,
 			/* Parsoid */
-			&:has( .mf-collapsible-icon.mf-icon-collapse ) {
+			&[ aria-expanded='true' ] {
 				margin-bottom: 12px !important;
 			}
 			/* stylelint-enable selector-class-pattern */
