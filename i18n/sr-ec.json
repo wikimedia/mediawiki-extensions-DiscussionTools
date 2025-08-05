@@ -133,7 +133,7 @@
 	"discussiontools-replywidget-newcomments-button": "Прикажи $1 {{PLURAL:$1|нови коментар|нових коментара}}",
 	"discussiontools-replywidget-newtopic": "Додај тему",
 	"discussiontools-replywidget-placeholder-newtopic": "Укратко треба ....",
-	"discussiontools-replywidget-placeholder-reply": "Овде напишите одговор кориснику {{BIDI:$1}}",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Одговор}} кориснику {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Подешавања",
 	"discussiontools-replywidget-preview": "Преглед",
 	"discussiontools-replywidget-reply": "Одговори",

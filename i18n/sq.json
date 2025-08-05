@@ -5,7 +5,8 @@
 			"Klein Muçi",
 			"Liridon",
 			"Пан Хаунд",
-			"INNERLMNT"
+			"INNERLMNT",
+			"Xhulianoo"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Përgjigje",
@@ -25,7 +26,7 @@
 	"discussiontools-replywidget-preview": "Paraparje",
 	"discussiontools-replywidget-reply": "{{GENDER:|Përgjigje}}",
 	"discussiontools-replywidget-summary": "Përmbledhje",
-	"discussiontools-replywidget-watchthis": "Shtojeni këtë faqe te [[Special:Watchlist|lista juaj e vëzhgimeve]]",
+	"discussiontools-replywidget-watchthis": "Shto këtë faqe në [[Special:Watchlist|listën tënde mbikëqyrëse]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person|vetë}} në diskutim",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|koment|komente}}",
 	"discussiontools-topicheader-latestcomment": "Komenti i fundit: $1",

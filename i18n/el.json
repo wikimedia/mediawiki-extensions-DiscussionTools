@@ -8,14 +8,15 @@
 			"MnLsVt",
 			"Norhorn",
 			"UnchartedViolator",
-			"Woytecr"
+			"Woytecr",
+			"Warudo"
 		]
 	},
 	"discussiontools": "Εργαλεία συζήτησης",
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Εσείς}} θα λάβετε μια ειδοποίηση όταν κάποιος δημοσιεύσει ένα νέο σχόλιο σε αυτήν τη συζήτηση. Μπορείτε να προσαρμόσετε τις ρυθμίσεις ειδοποιήσεων στις προτιμήσεις.",
 	"discussiontools-autotopicsubpopup-dismiss": "Εντάξει, το 'πιασα",
 	"discussiontools-autotopicsubpopup-preferences": "Επεξεργασία προτιμήσεων",
-	"discussiontools-autotopicsubpopup-title": "{{GENDER:|Εσείς}} έχετε εγγραφεί",
+	"discussiontools-autotopicsubpopup-title": "{{GENDER:|}}Έχετε εγγραφεί",
 	"discussiontools-defaultsummary-reply": "Απάντηση",
 	"discussiontoolsdebug-title": "Δομή δεδομένων εργαλείων συζήτησης",
 	"discussiontoolsdebug-pagetitle": "Τίτλος σελίδας",
