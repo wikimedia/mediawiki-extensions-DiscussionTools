@@ -134,8 +134,6 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 	/**
 	 * Format a thread item with replies.
 	 *
-	 * @param ContentThreadItem $comment
-	 * @param array $pageLangAttribs
 	 * @return string HTML
 	 */
 	private function formatComments( ContentThreadItem $comment, array $pageLangAttribs ) {

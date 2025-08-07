@@ -60,8 +60,6 @@ class ResourceLoaderData {
 	/**
 	 * Return information about terms-of-use messages.
 	 *
-	 * @param MessageLocalizer $context
-	 * @param Config $config
 	 * @return array[] Map from internal name to array of parameters for MessageLocalizer::msg()
 	 * @phan-return non-empty-array[]
 	 */

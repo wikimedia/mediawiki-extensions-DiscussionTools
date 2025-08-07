@@ -189,7 +189,6 @@ class PersistRevisionThreadItems extends Maintenance {
 
 	/**
 	 * @param stdClass $row Database table row
-	 * @return bool
 	 */
 	private function processRow( stdClass $row ): bool {
 		$changed = false;

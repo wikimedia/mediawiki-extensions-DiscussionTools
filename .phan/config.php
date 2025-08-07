@@ -35,6 +35,10 @@ $cfg['exception_classes_with_optional_throws_phpdoc'] = [
 ];
 $cfg['warn_about_undocumented_exceptions_thrown_by_invoked_functions'] = true;
 
+$cfg['plugins'] = array_merge( $cfg['plugins'], [
+	'PHPDocRedundantPlugin',
+] );
+
 /**
  * Quick implementation of a recursive directory list.
  * @param string $dir The directory to list

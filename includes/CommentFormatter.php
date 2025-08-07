@@ -478,7 +478,6 @@ class CommentFormatter {
 	 * @param ThreadItem $threadItem The heading or comment item
 	 * @param Document $document Retrieved by parsing page HTML
 	 * @param Element $element The element to add the overflow menu button to
-	 * @return void
 	 */
 	protected static function addOverflowMenuButton(
 		ThreadItem $threadItem, Document $document, Element $element
@@ -742,7 +741,6 @@ class CommentFormatter {
 	 *
 	 * @param string $className
 	 * @param string|\OOUI\HtmlSnippet $label Label
-	 * @return \OOUI\Tag
 	 */
 	private static function metaLabel( string $className, $label ): \OOUI\Tag {
 		return ( new \OOUI\Tag( 'span' ) )
@@ -755,7 +753,6 @@ class CommentFormatter {
 	 *
 	 * @param ContentCommentItem $commentItem Comment item
 	 * @param bool $includeTopicAndAuthor Include metadata about topic and author
-	 * @return array
 	 */
 	private static function getJsonArrayForCommentMarker(
 		ContentCommentItem $commentItem,
@@ -1037,7 +1034,6 @@ class CommentFormatter {
 	 * Check if the language requires an icon for the reply button
 	 *
 	 * @param Language $userLang Language
-	 * @return bool
 	 */
 	public static function isLanguageRequiringReplyIcon( Language $userLang ): bool {
 		$services = MediaWikiServices::getInstance();

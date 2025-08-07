@@ -90,7 +90,6 @@ class CommentParser {
 	 *
 	 * @param Element $rootNode Root node of content to parse
 	 * @param TitleValue $title Title of the page being parsed
-	 * @return ContentThreadItemSet
 	 */
 	public function parse( Element $rootNode, TitleValue $title ): ContentThreadItemSet {
 		$this->rootNode = $rootNode;
@@ -113,7 +112,6 @@ class CommentParser {
 	 *
 	 * @param ?Node $node Node after which to start searching
 	 *   (if null, start at the beginning of the document).
-	 * @return Node
 	 */
 	private function nextInterestingLeafNode( ?Node $node ): Node {
 		$rootNode = $this->rootNode;
@@ -557,7 +555,6 @@ class CommentParser {
 	/**
 	 * Given a link node (`<a>`), if it's a link to a user-related page, return their username.
 	 *
-	 * @param Element $link
 	 * @return array|null Array, or null:
 	 * - string 'username' Username
 	 * - string|null 'displayName' Display name (link text if link target was in the user namespace)
@@ -720,7 +717,6 @@ class CommentParser {
 	 * Callback for TreeWalker that will skip over nodes where we don't want to detect
 	 * comments (or section headings).
 	 *
-	 * @param Node $node
 	 * @return int Appropriate NodeFilter constant
 	 */
 	public static function acceptOnlyNodesAllowingComments( Node $node ): int {
@@ -871,7 +867,6 @@ class CommentParser {
 	 * @param Node[] $sigNodes
 	 * @param array $match
 	 * @param Text $node
-	 * @return ImmutableRange
 	 */
 	private function adjustSigRange( array $sigNodes, array $match, Text $node ): ImmutableRange {
 		$firstSigNode = end( $sigNodes );
@@ -1217,7 +1212,6 @@ class CommentParser {
 	 * If the node represents a single-page transclusion, this will return an array containing a
 	 * single string.
 	 *
-	 * @param Element $node
 	 * @return array<string|null>
 	 */
 	private function getTransclusionTitles( Element $node ): array {
@@ -1244,9 +1238,6 @@ class CommentParser {
 	/**
 	 * Given a transclusion's first node (e.g. returned by CommentUtils::getTranscludedFromElement()),
 	 * return a range starting before the node and ending after the transclusion's last node.
-	 *
-	 * @param Element $startNode
-	 * @return ImmutableRange
 	 */
 	private function getTransclusionRange( Element $startNode ): ImmutableRange {
 		$endNode = $startNode;
@@ -1294,7 +1285,6 @@ class CommentParser {
 	 * @param ContentThreadItem $threadItem
 	 * @param ContentThreadItemSet $previousItems
 	 * @param bool $legacy Generate legacy ID, not needed in JS implementation
-	 * @return string
 	 */
 	private function computeId(
 		ContentThreadItem $threadItem, ContentThreadItemSet $previousItems, bool $legacy = false

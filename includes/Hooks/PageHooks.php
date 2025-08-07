@@ -451,7 +451,6 @@ class PageHooks implements
 	 * Generate HTML markup for the new topic tool's empty state, shown on talk pages that don't exist
 	 * or have no topics.
 	 *
-	 * @param IContextSource $context
 	 * @return string HTML
 	 */
 	private function getEmptyStateHtml( IContextSource $context ): string {
@@ -564,7 +563,6 @@ class PageHooks implements
 	/**
 	 * @param SkinTemplate $sktemplate
 	 * @param array &$links
-	 * @return void
 	 * @phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
 	 */
 	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
