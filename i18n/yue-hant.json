@@ -38,7 +38,7 @@
 	"discussiontools-error-comment-conflict": "{{GENDER:|你}}嘅留言記唔低，因為有第個人同你同時留言。麻煩再試過，或者重新載入呢版嚟睇下新留言。",
 	"discussiontools-error-comment-disappeared": "搵唔返{{GENDER:|你}}覆緊嗰條留言，可能鏟咗或者搬咗去第版喇。",
 	"discussiontools-error-comment-disappeared-reload": "請{{GENDER:|重新載入}}呢版然後再試過。",
-	"discussiontools-error-comment-is-transcluded": "「{{int:discussiontools-replylink}}」條拎唔可以用嚟回覆呢個留言。如果要回覆，請{{GENDER:|使用}}個全頁編輯器，撳一下「$1」。",
+	"discussiontools-error-comment-is-transcluded": "「{{int:discussiontools-replylink}}」條拎唔可以用嚟回覆呢個留言。如果要回覆，請{{GENDER:|用}}個全頁編輯器，撳一下「$1」。",
 	"discussiontools-error-comment-is-transcluded-title": "「{{int:discussiontools-replylink}}」條拎唔可以用嚟回覆呢個留言，因為呢個連結係由另一個頁面載入。如果要回覆，請喺呢度{{GENDER:|去}}：[[$1]]。",
 	"discussiontools-error-comment-not-saved": "{{GENDER:|你嘅}}留言發佈唔到去頁面嘅最新版本。如果要睇最新嘅變動，請複製你啲草稿嘅留言，然後用你嘅瀏覽器重新載入返個頁面。",
 	"discussiontools-error-lint": "由於維基文字入面嘅錯誤，所以我哋唔可以回覆呢頁嘅留言。{{GENDER:|你}}可以透過[$1睇文件]嚟了解呢個錯誤，透過[$2 喺呢度發佈]搵幫助，或者透過[$3 打開全頁編輯器]嚟修正錯誤。",
