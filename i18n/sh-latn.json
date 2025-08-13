@@ -8,7 +8,7 @@
 	},
 	"discussiontools-defaultsummary-reply": "odgovor",
 	"discussiontools-emptystate-button": "Započni razgovor",
-	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Stranice za razgovor]] služe kao mjesto za diskusiju o tome kako stvoriti najbolju moguću sadržinu na projektu {{SITENAME}}. Ovdje {{GENDER:|možete}} započeti razgovor o poboljšanjima stranice [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Stranice za razgovor]] služe kao mjesto za diskusiju o tome kako stvoriti najbolji mogući sadržaj na projektu {{SITENAME}}. Ovdje {{GENDER:|možete}} započeti razgovor o poboljšanjima stranice [[:{{SUBJECTPAGENAME}}]].",
 	"discussiontools-emptystate-desc-self": "Osobe na projektu {{SITENAME}} mogu rabiti ovu [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|stranicu za razgovor]] da objave javnu poruku za {{GENDER:|vas}}, o kojoj bit ćete obaviješteni.",
 	"discussiontools-emptystate-desc-self-anon": "Osobe na projektu {{SITENAME}} mogu rabiti ovu [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|stranicu za razgovor]] za objavu javne poruke o uređivanjima učinjenim s IP-adrese koju trenutačno {{GENDER:|koristite}}.\n\nMnoge se IP-adrese povremeno mijenjaju, i često više ljudi koristi istu adresu. Da biste izbjegli buduće zabune s drugim odjavljenim suradnicima možete [$1 izraditi korisnički račun] ili [$2 se prijaviti]. Također, ako imate račun, vaša IP-adresa neće biti vidljiva.",
 	"discussiontools-emptystate-title": "Započnite razgovor o stranici {{SUBJECTPAGENAME}}",

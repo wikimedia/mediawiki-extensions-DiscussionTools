@@ -12,6 +12,7 @@
 	"discussiontools-replywidget-placeholder-newtopic": "Déskripsi",
 	"discussiontools-replywidget-preview": "Pragitaq",
 	"discussiontools-replywidget-reply": "{{GENDER:|Bales}}",
+	"discussiontools-replywidget-summary": "Ringkesan",
 	"discussiontools-replywidget-watchthis": "Romboq halaman ni juq [[Special:Watchlist|daptar lingoqanm]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|dengan}} léq gundeman ni",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar}}"

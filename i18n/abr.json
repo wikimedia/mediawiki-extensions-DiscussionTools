@@ -5,6 +5,7 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ma mmuaeɛ",
+	"discussiontools-newtopic-missing-title": "Yɛsrɛ sɛ fa asɛmti bi ma {{GENDER:wo}} nkɔmmɔbɔ asɛmti he.",
 	"discussiontools-newtopic-placeholder-title": "Subject",
 	"discussiontools-replylink": "{{GENDER:|ma mmuaeɛ}}",
 	"discussiontools-replywidget-advanced": "Nea ɛwɔ n'anim",
@@ -25,6 +26,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Di akyi",
 	"discussiontools-topicsubscription-button-unsubscribe": "nni akyire",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Nni akyire",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:Wo}} bɛnya amanneɛbɔ a ɛfa nsɛm foforɔ a bɛka wɔ saa asɛmti yi mu ho.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Wo}} akyerɛw wo dini!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Wo}} rennya amanneɛbɔ a ɛfa nsɛm foforɔ a bɛ ka wɔ asɛmti yi mu ho bio.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Wo}} eyi wo dini!"
 }

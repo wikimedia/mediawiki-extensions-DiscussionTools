@@ -19,7 +19,7 @@
 	"discussiontools-replywidget-reply": "{{GENDER:|Эппиэттээ}}",
 	"discussiontools-replywidget-summary": "Быһаарыы",
 	"discussiontools-replywidget-watchthis": "Бу һырайы бэйэн [[Special:Watchlist|кэтиир испииһэккэр]] эп",
-	"discussiontools-topicheader-authorcount": "$1 Ырыытыыга {{PLURAL:$1|киһи}} баар",
+	"discussiontools-topicheader-authorcount": "Ырыытыыга $1 {{PLURAL:$1|киһи}} баар",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|һуруйуу}}",
 	"discussiontools-topicheader-latestcomment": "Кэнники һуруйуу: $1",
 	"discussiontools-topicsubscription-button-subscribe": "һурутуу",
