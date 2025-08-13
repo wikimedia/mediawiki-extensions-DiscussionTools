@@ -561,7 +561,9 @@ h6 {
 			/* Legacy parser */
 			&.section-heading:not( .open-block ),
 			/* Parsoid */
-			&[ aria-expanded='false' ] {
+			&[ aria-expanded='false' ],
+			/* Parsoid - Section toggle code hasn't loaded yet, but sections are always collapsed by default */
+			&:not( [ aria-expanded ] ) {
 				.ext-discussiontools-init-section-actions {
 					// Hidden until expanded
 					display: none;
