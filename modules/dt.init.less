@@ -557,31 +557,29 @@ h6 {
 				// Replaced by the overflow menu
 				display: none !important;
 			}
+
+			/* stylelint-disable selector-class-pattern */
+			/* Legacy parser */
+			&.section-heading:not( .open-block ),
+			/* Parsoid */
+			&:has( .mf-collapsible-icon.mf-icon-expand ) {
+				.ext-discussiontools-init-section-actions {
+					// Hidden until expanded
+					display: none;
+				}
+			}
+
+			/* Legacy parser */
+			&.section-heading.open-block,
+			/* Parsoid */
+			&:has( .mf-collapsible-icon.mf-icon-collapse ) {
+				margin-bottom: 12px !important;
+			}
+			/* stylelint-enable selector-class-pattern */
 		}
 
 		&-authorCountLabel,
 		&-commentCountLabel {
-			display: none;
-		}
-
-		/* Legacy parser */
-		// stylelint-disable-next-line selector-class-pattern
-		&.section-heading .ext-discussiontools-init-section-actions {
-			// Hidden until expanded
-			display: none;
-		}
-
-		// stylelint-disable-next-line selector-class-pattern
-		&.open-block {
-			margin-bottom: 12px;
-
-			.ext-discussiontools-init-section-actions {
-				display: block;
-			}
-		}
-
-		/* Parsoid */
-		&.mf-collapsible-heading:has( .mf-collapsible-icon.mf-icon-expand ) .ext-discussiontools-init-section-actions {
 			display: none;
 		}
 	}
