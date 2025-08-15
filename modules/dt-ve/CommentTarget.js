@@ -145,8 +145,14 @@ CommentTarget.prototype.getSurfaceConfig = function ( config ) {
 	}, config ) );
 };
 
-CommentTarget.prototype.editSource = function () {
+CommentTarget.prototype.switchToWikitextEditor = function () {
 	this.replyWidget.switch( 'source' );
+};
+
+// Deprecated alias
+CommentTarget.prototype.editSource = function () {
+	OO.ui.warnDeprecation( 'CommentTarget#editSource: Use #switchToWikitextEditor instead.' );
+	this.switchToWikitextEditor( ...arguments );
 };
 
 CommentTarget.prototype.switchToVisualEditor = function () {
