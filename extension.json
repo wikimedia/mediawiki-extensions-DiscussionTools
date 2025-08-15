@@ -612,7 +612,7 @@
 		}
 	},
 	"ConfigRegistry": {
-		"discussiontools": "GlobalVarConfig::newInstance"
+		"discussiontools": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"type": "other"
 }
