@@ -11,7 +11,7 @@
 	"discussiontoolsdebug-pagetitle": "Барактын аталышы",
 	"discussiontools-emptystate-button": "Талкууну баштоо",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Талкуу барактарында]], тийиштүү барактын мазмуну кеп кылынат. «[[:{{SUBJECTPAGENAME}}]]‎» барагын башкалар менен {{GENDER:|талкууласаңыз}} болот.",
-	"discussiontools-emptystate-title": "«‎{{SUBJECTPAGENAME}}» жөнүндө талкууну баштоо",
+	"discussiontools-emptystate-title": "\"{{SUBJECTPAGENAME}}\" жөнүндө талкууну баштоо",
 	"discussiontools-emptystate-title-self": "Баарлашуу барагыңызга {{GENDER:|кош келиңиз}}",
 	"discussiontools-emptystate-title-self-temp": "Баарлашуу барагыңызга {{GENDER:|кош келиңиз}}",
 	"discussiontools-error-noswitchtove-template": "калыптын синтаксиси",
