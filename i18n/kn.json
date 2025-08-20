@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Anzx",
+			"ChiK",
 			"~aanzx",
 			"ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ"
 		]
@@ -10,6 +11,7 @@
 	"discussiontools-defaultsummary-reply": "ಪ್ರತಿಕ್ರಿಯೆ",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|ಸೆಕೆಂಡ್|ಸೆಕೆಂಡ್‌ಗಳು}}",
 	"discussiontools-newtopic-placeholder-title": "ವಿಷಯ",
+	"discussiontools-replylink": "{{GENDER:|ಪ್ರತ್ಯುತ್ತರ}}",
 	"discussiontools-replywidget-advanced": "ಮುಂದುವರೆದ",
 	"discussiontools-replywidget-cancel": "ರದ್ದುಮಾಡಿ",
 	"discussiontools-replywidget-mode-source": "ಮೂಲ",
