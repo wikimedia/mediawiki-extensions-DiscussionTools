@@ -70,5 +70,6 @@
 	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Do}} të merrni njoftime rreth komentesh të reja në këtë temë.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|U}} pajtuat!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|S’do}} të merrni më njoftime rreth komentesh të reja në këtë temë.",
-	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|U}} shpajtuat."
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|U}} shpajtuat.",
+	"tag-discussiontools-added-comment-description": "Një koment në faqen e diskutimit u shtua në këtë redaktim"
 }
