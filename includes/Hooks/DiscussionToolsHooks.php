@@ -63,7 +63,10 @@ class DiscussionToolsHooks implements
 		$user = $contextSource->getUser();
 		if (
 			$this->config->get( 'DiscussionToolsEnableThanks' ) ||
-			$this->userOptionsLookup->getOption( $user, 'discussiontools-betaenable', 0 )
+			(
+				$this->config->get( 'DiscussionToolsBeta' ) &&
+				$this->userOptionsLookup->getOption( $user, 'discussiontools-betaenable', 0 )
+			)
 		) {
 			$showThanks = ExtensionRegistry::getInstance()->isLoaded( 'Thanks' );
 			if ( $showThanks && ( $threadItemData['type'] ?? null ) === 'comment' && $user->isNamed() ) {
