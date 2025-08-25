@@ -3,7 +3,8 @@
 		"authors": [
 			"Matma Rex",
 			"פוילישער",
-			"וויקיפּעדלער"
+			"וויקיפּעדלער",
+			"Shvermer"
 		]
 	},
 	"discussiontools": "שמועס־געצייג",
@@ -39,6 +40,7 @@
 	"discussiontools-replywidget-mode-source": "מקור",
 	"discussiontools-replywidget-mode-visual": "וויזועל",
 	"discussiontools-replywidget-newtopic": "צושטעלן טעמע",
+	"discussiontools-replywidget-placeholder-newtopic": "באַשרײבונג",
 	"discussiontools-replywidget-placeholder-reply": "ענטפֿער צו  {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "פרעפֿערענצן",
 	"discussiontools-replywidget-preview": "פֿאראויסקוק",

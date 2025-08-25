@@ -15,6 +15,7 @@
 	"discussiontools-desc": "بحث کے صفحات کو بہتر کرنے کے آلات",
 	"discussiontools-emptystate-button": "گفتگو شروع کریں",
 	"discussiontools-emptystate-title": "{{SUBJECTPAGENAME}} سے متعلق گفتگو کا آغاز کریں",
+	"discussiontools-emptystate-title-user": "{{PAGENAME}} کے {{GENDER:{{PAGENAME}}|ساتھ}} گفتگو کا آغاز کیجیے",
 	"discussiontools-error-noswitchtove-title": "بصری موڈ غیر فعال کیا گیا۔",
 	"discussiontools-findcomment-label-idorname": "تبصرہ آئی ڈی یا نام",
 	"discussiontools-findcomment-label-search": "تلاش کریں",
