@@ -358,8 +358,7 @@
 		"discussiontoolsgetsubscriptions": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsGetSubscriptions",
 			"services": [
-				"DiscussionTools.SubscriptionStore",
-				"ConfigFactory"
+				"DiscussionTools.SubscriptionStore"
 			]
 		},
 		"discussiontoolspageinfo": {
@@ -383,8 +382,7 @@
 		"discussiontoolssubscribe": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsSubscribe",
 			"services": [
-				"DiscussionTools.SubscriptionStore",
-				"ConfigFactory"
+				"DiscussionTools.SubscriptionStore"
 			]
 		}
 	},
