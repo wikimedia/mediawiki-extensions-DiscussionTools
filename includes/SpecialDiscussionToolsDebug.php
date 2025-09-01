@@ -115,7 +115,9 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 			)->getFullText()
 		)->parseAsBlock() );
 
-		$pageLang = $this->languageFactory->getLanguage( $parserOutput->getLanguage() );
+		$parsedLanguage = $parserOutput->getLanguage();
+		$pageLang = $parsedLanguage !== null ?
+			$this->languageFactory->getLanguage( $parsedLanguage ) : $this->getLanguage();
 		$pageLangAttribs = [
 			'lang' => $pageLang->getHtmlCode(),
 			'dir' => $pageLang->getDir(),
