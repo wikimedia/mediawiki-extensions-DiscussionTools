@@ -9,5 +9,8 @@
 	"discussiontools-replywidget-mode-source": "Aɣbalu",
 	"discussiontools-replywidget-placeholder-newtopic": "Aglam",
 	"discussiontools-replywidget-preview": "Taskant",
-	"discussiontools-replywidget-summary": "Agzul"
+	"discussiontools-replywidget-summary": "Agzul",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|n wemdan|n yemdanen}} deg udiwenni",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|awennit|iwenniten}}",
+	"discussiontools-topicheader-latestcomment": "Awennit aneggaru: $1"
 }

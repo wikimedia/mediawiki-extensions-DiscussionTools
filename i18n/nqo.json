@@ -50,6 +50,7 @@
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|ߓߘߊ߫}} ߖߋ߬ߓߌ߬ߟߌ ߞߍ߫ <strong>$4</strong> ߟߊ߫",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:|ߞߐߖߋߓߌ߫ ߞߎߘߊ ߘߏ߫ $1|ߞߐߖߋߓߌ߫ ߞߎߘߊ߫ $1 ߟߎ߬|100=ߦߋ߫ ߞߐߖߋߓߌ߫ ߉߉+ ߞߎߘߊ ߟߎ߬}} ߟߋ߬ ߘߌ߫ \"<strong>$3</strong>\" ߘߐ߫.",
 	"discussiontools-notification-subscribed-new-comment-view": "ߡߙߌߣߊ߲ ߦߌ߬ߘߊ߬",
+	"discussiontools-pageframe-latestcomment": "ߞߊ߲߬ߞߎߡߊ߫ ߞߐ߯߫ߟߕߊ: $1, $2 ߓߟߏ߫ ߢߌߣߌ߲ߞߏ߫ $3 ߘߐ߫",
 	"discussiontools-pageframe-latestcomment-notopic": "ߞߐ߯ߟߊ߫ ߞߊ߲ߞߎߡߊ: $1߸ $2 ߓߟߏ߫",
 	"discussiontools-pagetitle-newtopic": "ߝߐߒߡߊ߫ ߞߎߘߊ߫ ߘߊߡߌ߬ߣߊ߫ ߦߴߌ ߘߐ߫ $1 ߘߐ߫",
 	"discussiontools-pagetitle-reply": "ߞߐߖߋߓߟߌ ߦߴߌ ߘߐ߫ $1 ߞߊ߲߬",

@@ -5,10 +5,12 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Okugarukamu",
+	"discussiontools-newtopic-placeholder-title": "Ekintu",
 	"discussiontools-replywidget-advanced": "Ekikiraho",
 	"discussiontools-replywidget-cancel": "Leka",
 	"discussiontools-replywidget-mode-source": "Oburugo",
 	"discussiontools-replywidget-mode-visual": "Okwolekwa",
+	"discussiontools-replywidget-placeholder-newtopic": "Ensoborra",
 	"discussiontools-replywidget-preview": "Eby'omumaiso",
 	"discussiontools-replywidget-summary": "Omubugufu",
 	"discussiontools-replywidget-watchthis": "Teera orupapura runu [[Special:Watchlist|eby'okulindwa]] byawe",
