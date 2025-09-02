@@ -87,7 +87,7 @@
 	"discussiontools-notification-removed-topic-disable": "Deixa d'enviar notificacions com aquesta",
 	"discussiontools-notification-removed-topic-disabled-title": "No {{GENDER:|rebreu}} més notificacions quan un tema s'arxivi o s'elimini.",
 	"discussiontools-notification-removed-topic-disabled-body": "Podeu canviar-ho a [[Special:Preferences#mw-prefsection-echo-echosubscriptions|les vostres preferències]].",
-	"discussiontools-notification-subscribed-new-comment-header": "$1 us ha {{GENDER:$2|respost}} a «<strong>$4</strong>».",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 ha {{GENDER:$2|respost}} a «<strong>$4</strong>».",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Una nova resposta|$1 noves respostes|100=99+ noves respostes}} a «<strong>$3</strong>».",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Mostra el comentari",
