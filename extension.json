@@ -159,8 +159,7 @@
 				"discussiontools-topicsubscription-notify-subscribed-title",
 				"discussiontools-topicsubscription-notify-unsubscribed-body",
 				"discussiontools-topicsubscription-notify-unsubscribed-title",
-				"pagetitle",
-				"skin-view-edit"
+				"pagetitle"
 			],
 			"optional": {
 				"Thanks": {
