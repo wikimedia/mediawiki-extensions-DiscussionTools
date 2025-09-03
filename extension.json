@@ -44,7 +44,6 @@
 				"topicsubscriptions.js",
 				"mobile.js",
 				"overflowMenu.js",
-				"thanks.js",
 				"LedeSectionDialog.js",
 				{
 					"name": "controller/contLangMessages.json",
@@ -156,13 +155,23 @@
 				"discussiontools-topicsubscription-notify-unsubscribed-body",
 				"discussiontools-topicsubscription-notify-unsubscribed-title",
 				"pagetitle",
-				"skin-view-edit",
-				"cancel",
-				"thanks-button-thank",
-				"thanks-button-thanked",
-				"thanks-confirmation2",
-				"thanks-thanked-notice"
-			]
+				"skin-view-edit"
+			],
+			"optional": {
+				"Thanks": {
+					"packageFiles": [
+						"thanks.js"
+					],
+					"messages": [
+						"cancel",
+						"thanks-button-thank",
+						"thanks-button-thanked",
+						"thanks-confirmation2",
+						"thanks-thanked-notice"
+					]
+				}
+			},
+			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::addOptional"
 		},
 		"ext.discussionTools.minervaicons": {
 			"selectorWithoutVariant": ".minerva-icon--{name}",
@@ -273,10 +282,12 @@
 				"oojs-ui-widgets",
 				"oojs-ui.styles.indicators"
 			],
-			"optionalDependencies": {
-				"ConfirmEdit": "ext.confirmEdit.CaptchaInputWidget"
+			"optional": {
+				"ConfirmEdit": {
+					"dependencies": "ext.confirmEdit.CaptchaInputWidget"
+				}
 			},
-			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::addOptionalDependencies"
+			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::addOptional"
 		}
 	},
 	"ForeignResourcesDir": "modules/lib",

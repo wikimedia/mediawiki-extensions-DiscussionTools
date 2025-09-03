@@ -27,7 +27,9 @@ let mobile = null;
 if ( OO.ui.isMobile() && mw.config.get( 'skin' ) === 'minerva' ) {
 	mobile = require( './mobile.js' );
 }
-require( './thanks.js' );
+if ( mw.loader.getState( 'ext.thanks' ) ) {
+	require( './thanks.js' );
+}
 
 mw.messages.set( require( './controller/contLangMessages.json' ) );
 
