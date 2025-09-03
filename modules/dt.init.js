@@ -1,5 +1,6 @@
 const controller = require( './controller.js' ),
-	url = new URL( location.href );
+	url = new URL( location.href ),
+	featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
 /**
  * @class mw.dt
@@ -81,14 +82,16 @@ if ( url.searchParams.get( 'dtdebug' ) ) {
 	} );
 }
 
-if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'TopicSubscriptions' ) {
-	const topicSubscriptions = require( './topicsubscriptions.js' );
-	topicSubscriptions.initSpecialTopicSubscriptions();
-}
+if ( featuresEnabled.topicsubscription ) {
+	if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'TopicSubscriptions' ) {
+		const topicSubscriptions = require( './topicsubscriptions.js' );
+		topicSubscriptions.initSpecialTopicSubscriptions();
+	}
 
-if ( mw.config.get( 'wgAction' ) === 'history' ) {
-	const topicSubscriptions = require( './topicsubscriptions.js' );
-	topicSubscriptions.initNewTopicsSubscription();
+	if ( mw.config.get( 'wgAction' ) === 'history' ) {
+		const topicSubscriptions = require( './topicsubscriptions.js' );
+		topicSubscriptions.initNewTopicsSubscription();
+	}
 }
 
 module.exports = {

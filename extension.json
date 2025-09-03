@@ -46,8 +46,6 @@
 				"controller.js",
 				"highlighter.js",
 				"permalinks.js",
-				"topicsubscriptions.js",
-				"mobile.js",
 				"overflowMenu.js",
 				"LedeSectionDialog.js",
 				{
@@ -110,10 +108,6 @@
 			"messages": [
 				"discussiontools-postedit-confirmation-published",
 				"discussiontools-postedit-confirmation-topicadded",
-				"discussiontools-autotopicsubpopup-title",
-				"discussiontools-autotopicsubpopup-body",
-				"discussiontools-autotopicsubpopup-dismiss",
-				"discussiontools-autotopicsubpopup-preferences",
 				"discussiontools-error-comment-conflict",
 				"discussiontools-error-comment-disappeared",
 				"discussiontools-error-comment-disappeared-reload",
@@ -129,14 +123,6 @@
 				"discussiontools-newtopic-placeholder-title",
 				"discussiontools-newtopic-missing-title",
 				"discussiontools-newtopic-missing-title-prompt",
-				"discussiontools-newtopicssubscription-button-subscribe-label",
-				"discussiontools-newtopicssubscription-button-subscribe-tooltip",
-				"discussiontools-newtopicssubscription-button-unsubscribe-label",
-				"discussiontools-newtopicssubscription-button-unsubscribe-tooltip",
-				"discussiontools-newtopicssubscription-notify-subscribed-body",
-				"discussiontools-newtopicssubscription-notify-subscribed-title",
-				"discussiontools-newtopicssubscription-notify-unsubscribed-body",
-				"discussiontools-newtopicssubscription-notify-unsubscribed-title",
 				"discussiontools-pagetitle-newtopic",
 				"discussiontools-pagetitle-reply",
 				"discussiontools-permalink-comment-copied",
@@ -147,16 +133,6 @@
 				"discussiontools-target-comments-missing",
 				"discussiontools-target-comment-found-moved",
 				"discussiontools-target-heading-found-moved",
-				"discussiontools-topicsubscription-button-subscribe",
-				"discussiontools-topicsubscription-button-subscribe-label",
-				"discussiontools-topicsubscription-button-subscribe-tooltip",
-				"discussiontools-topicsubscription-button-unsubscribe",
-				"discussiontools-topicsubscription-button-unsubscribe-label",
-				"discussiontools-topicsubscription-button-unsubscribe-tooltip",
-				"discussiontools-topicsubscription-notify-subscribed-body",
-				"discussiontools-topicsubscription-notify-subscribed-title",
-				"discussiontools-topicsubscription-notify-unsubscribed-body",
-				"discussiontools-topicsubscription-notify-unsubscribed-title",
 				"pagetitle"
 			],
 			"optional": {
@@ -170,6 +146,40 @@
 						"thanks-button-thanked",
 						"thanks-confirmation2",
 						"thanks-thanked-notice"
+					]
+				},
+				"Echo": {
+					"packageFiles": [
+						"topicsubscriptions.js"
+					],
+					"messages": [
+						"discussiontools-autotopicsubpopup-title",
+						"discussiontools-autotopicsubpopup-body",
+						"discussiontools-autotopicsubpopup-dismiss",
+						"discussiontools-autotopicsubpopup-preferences",
+						"discussiontools-newtopicssubscription-button-subscribe-label",
+						"discussiontools-newtopicssubscription-button-subscribe-tooltip",
+						"discussiontools-newtopicssubscription-button-unsubscribe-label",
+						"discussiontools-newtopicssubscription-button-unsubscribe-tooltip",
+						"discussiontools-newtopicssubscription-notify-subscribed-body",
+						"discussiontools-newtopicssubscription-notify-subscribed-title",
+						"discussiontools-newtopicssubscription-notify-unsubscribed-body",
+						"discussiontools-newtopicssubscription-notify-unsubscribed-title",
+						"discussiontools-topicsubscription-button-subscribe",
+						"discussiontools-topicsubscription-button-subscribe-label",
+						"discussiontools-topicsubscription-button-subscribe-tooltip",
+						"discussiontools-topicsubscription-button-unsubscribe",
+						"discussiontools-topicsubscription-button-unsubscribe-label",
+						"discussiontools-topicsubscription-button-unsubscribe-tooltip",
+						"discussiontools-topicsubscription-notify-subscribed-body",
+						"discussiontools-topicsubscription-notify-subscribed-title",
+						"discussiontools-topicsubscription-notify-unsubscribed-body",
+						"discussiontools-topicsubscription-notify-unsubscribed-title"
+					]
+				},
+				"MobileFrontend": {
+					"packageFiles": [
+						"mobile.js"
 					]
 				}
 			},

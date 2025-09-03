@@ -449,8 +449,13 @@ class HookUtils {
 				$feature === static::NEWTOPICTOOL ||
 				$feature === static::SOURCEMODETOOLBAR ||
 				// Even though mobile ignores user preferences, TOPICSUBSCRIPTION must
-				// still be disabled if the user isn't registered.
-				( $feature === static::TOPICSUBSCRIPTION && $output->getUser()->isNamed() ) ||
+				// still be disabled if the user isn't registered, or
+				// if Echo is disabled
+				(
+					$feature === static::TOPICSUBSCRIPTION &&
+					$output->getUser()->isNamed() &&
+					ExtensionRegistry::getInstance()->isLoaded( 'Echo' )
+				) ||
 				$feature === static::VISUALENHANCEMENTS ||
 				$feature === static::VISUALENHANCEMENTS_REPLY ||
 				$feature === static::VISUALENHANCEMENTS_PAGEFRAME;

@@ -10,7 +10,6 @@ const featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {
 	ReplyLinksController = require( './ReplyLinksController.js' ),
 	utils = require( './utils.js' ),
 	highlighter = require( './highlighter.js' ),
-	topicSubscriptions = require( './topicsubscriptions.js' ),
 	permalinks = require( './permalinks.js' ),
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
 	defaultVisual = defaultEditMode === 'visual',
@@ -20,6 +19,7 @@ let
 	$pageContainer, linksController,
 	pageThreads,
 	lastControllerScrollOffset,
+	topicSubscriptions,
 	pageDataCache = {},
 	pageHandlersSetup = false;
 
@@ -326,6 +326,7 @@ function init( $container, state ) {
 	pageThreads = ThreadItemSet.static.newFromJSON( mw.config.get( 'wgDiscussionToolsPageThreads' ) || [], $pageContainer[ 0 ], parser );
 
 	if ( featuresEnabled.topicsubscription ) {
+		topicSubscriptions = require( './topicsubscriptions.js' );
 		topicSubscriptions.initTopicSubscriptions( $container, pageThreads );
 	}
 
@@ -539,7 +540,7 @@ function init( $container, state ) {
 
 		// Check topic subscription states if the user has automatic subscriptions enabled
 		// and has recently edited this page.
-		if ( featuresEnabled.autotopicsub && mw.user.options.get( 'discussiontools-autotopicsub' ) ) {
+		if ( topicSubscriptions && featuresEnabled.autotopicsub && mw.user.options.get( 'discussiontools-autotopicsub' ) ) {
 			topicSubscriptions.updateAutoSubscriptionStates( $container, pageThreads, state.repliedTo );
 		}
 	} );
