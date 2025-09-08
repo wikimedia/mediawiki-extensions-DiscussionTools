@@ -164,7 +164,7 @@
 	"discussiontools-replywidget-mode-source": "Source",
 	"discussiontools-replywidget-mode-visual": "Visuel",
 	"discussiontools-replywidget-newcomments-button": "Afficher $1 nouveau{{PLURAL:$1||x}} commentaire{{PLURAL:$1||s}}",
-	"discussiontools-replywidget-newtopic": "{{GENDER:|}}Ajouter un sujet",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|Ajouter}} un sujet",
 	"discussiontools-replywidget-placeholder-newtopic": "Description",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Répondre}} à {{BIDI:$1}}",
 	"discussiontools-replywidget-preferences": "Préférences",
