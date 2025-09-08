@@ -14,6 +14,7 @@
 	"discussiontools-defaultsummary-reply": "Përgjigje",
 	"discussiontools-emptystate-button": "Nis një diskutim",
 	"discussiontools-emptystate-desc-user": "Faqet e diskutimit janë hapësirat ku njerëzit diskutojnë si të përmirësojnë përmbajtjen në {{SITENAME}} në mënyrën më të mirë të mundshme. Fillo një diskutim të ri tani për të bashkëpunuar me [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Kini parasysh se çfarë shkruani këtu do të jetë publike dhe për të tjerët.\n\n[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Mëso më shumë]]",
+	"discussiontools-emptystate-title": "Nis një diskutim rreth {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-user": "Nis një diskutim {{GENDER:{{PAGENAME}}|me}} {{PAGENAME}}",
 	"discussiontools-findcomment-label-search": "Kërko",
 	"discussiontools-findcomment-noresults": "Nuk ka rezultate.",

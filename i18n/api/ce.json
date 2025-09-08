@@ -5,6 +5,7 @@
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "ID '$1' йолу хаам ца карийна.",
+	"apierror-discussiontools-commentname-ambiguous": "Карийна масех хаам '$1' цӀе йолуш, <var>commentid</var> оьшу.",
 	"apihelp-discussiontoolsgetsubscriptions-param-commentname": "Темин цӀераш толлархьама",
 	"apihelp-discussiontoolspageinfo-param-prop": "Муьлха билгалонаш схьаоьцу:",
 	"apihelp-discussiontoolspreview-param-type": "Хьалххе хьажаран хааман тайпа"
