@@ -117,7 +117,6 @@
 				"discussiontools-error-comment-conflict",
 				"discussiontools-error-comment-disappeared",
 				"discussiontools-error-comment-disappeared-reload",
-				"discussiontools-error-comment-not-saved",
 				"discussiontools-error-comment-is-transcluded",
 				"discussiontools-error-comment-is-transcluded-title",
 				"discussiontools-error-lint",
@@ -141,7 +140,6 @@
 				"discussiontools-pagetitle-newtopic",
 				"discussiontools-pagetitle-reply",
 				"discussiontools-permalink-comment-copied",
-				"discussiontools-replylink",
 				"discussiontools-replywidget-loading",
 				"discussiontools-replywidget-watchthis",
 				"discussiontools-target-comment-missing",
@@ -235,6 +233,7 @@
 				"dt-ve/CommentTargetWidget.less"
 			],
 			"messages": [
+				"discussiontools-error-comment-disappeared",
 				"discussiontools-replywidget-abandon",
 				"discussiontools-replywidget-abandon-discard",
 				"discussiontools-replywidget-abandon-keep",
@@ -266,9 +265,6 @@
 				"discussiontools-replywidget-summary",
 				"discussiontools-replywidget-transcluded",
 				"ooui-popup-widget-close-button-aria-label",
-				"visualeditor-key-ctrl",
-				"visualeditor-key-enter",
-				"visualeditor-key-escape",
 				"visualeditor-mweditmode-tooltip"
 			],
 			"dependencies": [
