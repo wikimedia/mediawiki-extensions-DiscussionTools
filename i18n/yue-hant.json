@@ -59,7 +59,7 @@
 	"discussiontools-ledesection-button": "瞭解多啲有關呢個頁面嘅資訊",
 	"discussiontools-ledesection-title": "關於呢個傾偈版",
 	"discussiontools-limitreport-errorreqid": "傾嘢工具錯誤請求ID",
-	"discussiontools-limitreport-timeusage": "傾嘢工具時間使用情況",
+	"discussiontools-limitreport-timeusage": "DiscussionTools 時間使用情況",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|秒}}",
 	"discussiontools-newtopic-missing-title": "請畀{{GENDER:|你嘅}}討論主題嘅標題。",
 	"discussiontools-newtopic-missing-title-prompt": "{{GENDER:|你}}冇為{{GENDER:|你嘅}}討論主題畀標題。{{GENDER:|你}}肯定你想加呢個冇標題嘅主題？",
