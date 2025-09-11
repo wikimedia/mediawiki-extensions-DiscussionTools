@@ -49,15 +49,10 @@
 				"overflowMenu.js",
 				"LedeSectionDialog.js",
 				{
-					"name": "controller/contLangMessages.json",
+					"name": "contLangMessages.json",
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getContentLanguageMessages",
 					"callbackParam": [
-						"discussiontools-defaultsummary-reply",
-						"newsectionsummary",
-						"discussiontools-replywidget-feedback-link",
-						"discussiontools-replywidget-feedback-link-newtopic",
-						"discussiontools-replywidget-mention-prefix",
-						"discussiontools-replywidget-mention-suffix"
+						"newsectionsummary"
 					]
 				},
 				{
@@ -219,6 +214,11 @@
 					"name": "contLangMessages.json",
 					"callback": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::getContentLanguageMessages",
 					"callbackParam": [
+						"discussiontools-defaultsummary-reply",
+						"discussiontools-replywidget-feedback-link",
+						"discussiontools-replywidget-feedback-link-newtopic",
+						"discussiontools-replywidget-mention-prefix",
+						"discussiontools-replywidget-mention-suffix",
 						"tempuser-helppage"
 					]
 				},

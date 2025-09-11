@@ -31,7 +31,7 @@ if ( mw.loader.getState( 'ext.thanks' ) ) {
 	require( './thanks.js' );
 }
 
-mw.messages.set( require( './controller/contLangMessages.json' ) );
+mw.messages.set( require( './contLangMessages.json' ) );
 
 /**
  * Get an MW API instance
