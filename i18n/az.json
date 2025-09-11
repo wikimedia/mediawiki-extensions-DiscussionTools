@@ -34,7 +34,7 @@
 	"discussiontools-emptystate-title-user": "{{PAGENAME}} {{GENDER:{{PAGENAME}}|ilə}} müzakirə başlat",
 	"discussiontools-emptystate-title-user-anon": "Bu müzakirə səhifəsinə xoş gəlmisiniz",
 	"discussiontools-emptystate-title-user-temp": "{{PAGENAME}} {{GENDER:{{PAGENAME}}|ilə}} müzakirə başladın",
-	"discussiontools-error-comment-conflict": "Şərhiniz saxlanıla bilmədi, çünki sizinlə eyni vaxtda başqa istifadəçi şərh yazdı. Yenidən cəhd edin və ya son şərhləri görmək üçün səhifəni yenidən yükləyin.",
+	"discussiontools-error-comment-conflict": "{{GENDER:|Şərhiniz}} saxlanıla bilmədi, çünki sizinlə eyni vaxtda başqa istifadəçi şərh yazdı. Yenidən cəhd edin və ya son şərhləri görmək üçün səhifəni yenidən yükləyin.",
 	"discussiontools-error-comment-disappeared": "Səhifədə cavablandırdığınız şərh tapılmadı. Silinmiş və ya başqa bir səhifəyə köçürülmüş ola bilər. Zəhmət olmasa, səhifəni yenidən yükləyin və yenidən cəhd edin.",
 	"discussiontools-error-comment-disappeared-reload": "Səhifəni {{GENDER:|yenidən yükləyin}} və yenidən cəhd edin.",
 	"discussiontools-error-comment-is-transcluded": "\"{{int:discussiontools-replylink}}\" keçidi bu şərhə cavab vermək üçün istifadə edilə bilməz. Zəhmət olmasa, cavab vermək üçün \"$1\" düyməsinə klikləyib redaktora keçin.",
