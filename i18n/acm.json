@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"MRidhaAJ"
+			"MRidhaAJ",
+			"Mohammdaon"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "اي، إفتهمت",
@@ -21,10 +22,12 @@
 	"discussiontools-findcomment-results-notcurrent": "(مو بالمراجعة الحالية)",
 	"discussiontools-findcomment-results-transcluded": "(محولة من صفحة ثانية)",
 	"discussiontools-findcomment-title": "دور على تعليق",
+	"discussiontools-newtopic-placeholder-title": "الموضوع",
 	"discussiontools-replywidget-advanced": "خيارات متقدمة",
 	"discussiontools-replywidget-cancel": "الغي",
 	"discussiontools-replywidget-mode-source": "مصدر",
 	"discussiontools-replywidget-mode-visual": "مرئي",
+	"discussiontools-replywidget-placeholder-newtopic": "الوصف",
 	"discussiontools-replywidget-preview": "معاينة",
 	"discussiontools-replywidget-summary": "ملخص",
 	"discussiontools-replywidget-watchthis": "حط الصفحة بـ[[Special:Watchlist|قائمة المراقبة]]",

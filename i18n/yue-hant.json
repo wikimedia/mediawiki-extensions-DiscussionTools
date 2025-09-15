@@ -31,7 +31,7 @@
 	"discussiontools-findcomment-results-transcluded": "（喺另一頁轉錄咗）",
 	"discussiontools-findcomment-title": "搵留言",
 	"discussiontools-limitreport-errorreqid": "傾嘢工具錯誤請求ID",
-	"discussiontools-limitreport-timeusage": "傾嘢工具時間使用情況",
+	"discussiontools-limitreport-timeusage": "DiscussionTools 時間使用情況",
 	"discussiontools-limitreport-timeusage-value": "$1{{PLURAL:$1|秒}}",
 	"discussiontools-newtopic-placeholder-title": "主題",
 	"discussiontools-notification-removed-topic-header": "主題「<strong>$4</strong>」已經歸檔咗或者喺$3入面剷走咗。",
