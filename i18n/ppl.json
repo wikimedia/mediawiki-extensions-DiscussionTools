@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"AliciaMarroquín",
+			"Jose Antonio Guillen Landaverde"
+		]
+	},
+	"discussiontools-newtopic-missing-title": "Shikmaka se itukey pal {{GENDER:|taja}} taketzalis.",
+	"discussiontools-replywidget-cancel": "Tea nikneki",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|TUKNEW|TUIJIKNIWAN}} PAL NE TASUMALIS"
+}
