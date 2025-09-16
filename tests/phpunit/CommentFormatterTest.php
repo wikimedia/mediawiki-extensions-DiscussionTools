@@ -55,7 +55,12 @@ class CommentFormatterTest extends IntegrationTestCase {
 		string $name, string $titleText, string $dom, string $expected, string $config, string $data,
 		bool $isMobile, bool $useButtons
 	): void {
+		if ( $isMobile ) {
+			$this->markTestSkippedIfExtensionNotLoaded( 'MobileFrontend' );
+		}
+
 		$this->setService( 'GenderCache', $this->createNoOpMock( GenderCache::class ) );
+
 		$dom = static::getHtml( $dom );
 		$expectedPath = $expected;
 		$expected = static::getText( $expectedPath );
