@@ -563,7 +563,6 @@ class PageHooks implements
 	/**
 	 * @param SkinTemplate $sktemplate
 	 * @param array &$links
-	 * @phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
 	 */
 	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
 		$output = $sktemplate->getOutput();
