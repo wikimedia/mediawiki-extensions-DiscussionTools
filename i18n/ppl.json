@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"AliciaMarroquín",
+			"Jose Antonio Guillen Landaverde"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "tanankilis",
+	"discussiontools-newtopic-missing-title": "Shikmaka se itukey pal {{GENDER:|taja}} taketzalis.",
+	"discussiontools-newtopic-placeholder-title": "Ipanpa",
+	"discussiontools-replywidget-advanced": "Yankwik",
+	"discussiontools-replywidget-cancel": "Tea nikneki",
+	"discussiontools-replywidget-mode-visual": "tachialis",
+	"discussiontools-replywidget-newtopic": "shikajshitili  itukey",
+	"discussiontools-replywidget-placeholder-newtopic": "itachiska",
+	"discussiontools-replywidget-placeholder-reply": "{{shiknankili:|Reply}} to {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Achtutachialis",
+	"discussiontools-replywidget-summary": "Taneshtilis kutu:",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|TUKNEW|TUIJIKNIWAN}} PAL NE TASUMALIS",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|Yultaketzalis|Yultajtaketzalis}}",
+	"discussiontools-topicheader-latestcomment": " Yultajtaketzalis ka talchi :$1",
+	"discussiontools-topicsubscription-button-subscribe": "shikwawasu",
+	"discussiontools-topicsubscription-button-subscribe-label": "shikwawasu",
+	"discussiontools-topicsubscription-button-unsubscribe": "tea  nikneki ninemi kalijtik",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "shikwawasu"
+}
