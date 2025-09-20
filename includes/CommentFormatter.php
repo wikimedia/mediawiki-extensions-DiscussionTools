@@ -547,10 +547,24 @@ class CommentFormatter {
 
 		$lang = $contextSource->getLanguage();
 		$title = $contextSource->getTitle();
+
+		// Only parse each message once per pageview (T405135)
+		$messages = [];
+		foreach ( [
+			'discussiontools-topicsubscription-button-unsubscribe-tooltip',
+			'discussiontools-topicsubscription-button-subscribe-tooltip',
+			'discussiontools-topicsubscription-button-unsubscribe',
+			'discussiontools-topicsubscription-button-subscribe',
+			'discussiontools-topicsubscription-button-unsubscribe-label',
+			'discussiontools-topicsubscription-button-subscribe-label',
+		] as $msg ) {
+			$messages[$msg] = wfMessage( $msg )->inLanguage( $lang )->text();
+		}
+
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-subscribebutton',
 			static function ( SerializerNode $node ) use (
-				$doc, $itemsByName, $itemDataByName, $lang, $title, $isMobile, $useButtons
+				$doc, $itemsByName, $itemDataByName, $messages, $title, $isMobile, $useButtons
 			) {
 				$buttonIsMobile = $node->attrs->offsetExists( 'mobile' );
 				$itemData = $itemDataByName[ $node->attrs['data'] ];
@@ -582,16 +596,16 @@ class CommentFormatter {
 					$subscribeLink->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-link' );
 					$subscribeLink->setAttribute( 'role', 'button' );
 					$subscribeLink->setAttribute( 'tabindex', '0' );
-					$subscribeLink->setAttribute( 'title', wfMessage(
+					$subscribeLink->setAttribute( 'title', $messages[
 						$isSubscribed ?
 							'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
 							'discussiontools-topicsubscription-button-subscribe-tooltip'
-					)->inLanguage( $lang )->text() );
-					$subscribeLink->nodeValue = wfMessage(
+					] );
+					$subscribeLink->nodeValue = $messages[
 						$isSubscribed ?
 							'discussiontools-topicsubscription-button-unsubscribe' :
 							'discussiontools-topicsubscription-button-subscribe'
-					)->inLanguage( $lang )->text();
+					];
 
 					if ( $subscribedState !== null ) {
 						$subscribeLink->setAttribute( 'data-mw-subscribed', (string)$subscribedState );
@@ -616,14 +630,14 @@ class CommentFormatter {
 						'icon' => $isSubscribed ? 'bell' : 'bellOutline',
 						'flags' => [ 'progressive' ],
 						'href' => $href,
-						'label' => wfMessage( $isSubscribed ?
+						'label' => $messages[ $isSubscribed ?
 							'discussiontools-topicsubscription-button-unsubscribe-label' :
 							'discussiontools-topicsubscription-button-subscribe-label'
-						)->inLanguage( $lang )->text(),
-						'title' => wfMessage( $isSubscribed ?
+						],
+						'title' => $messages[ $isSubscribed ?
 							'discussiontools-topicsubscription-button-unsubscribe-tooltip' :
 							'discussiontools-topicsubscription-button-subscribe-tooltip'
-						)->inLanguage( $lang )->text(),
+						],
 						'infusable' => true,
 					] );
 
@@ -657,8 +671,9 @@ class CommentFormatter {
 		$doc = DOMCompat::newDocument( true );
 
 		$lang = $contextSource->getLanguage();
-		$replyLinkText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->escaped();
-		$replyButtonText = wfMessage( 'discussiontools-replybutton' )->inLanguage( $lang )->escaped();
+		// Only parse each message once per pageview (T405135)
+		$replyLinkText = wfMessage( 'discussiontools-replylink' )->inLanguage( $lang )->text();
+		$replyButtonText = wfMessage( 'discussiontools-replybutton' )->inLanguage( $lang )->text();
 
 		$batchModifyElements->add(
 			static fn ( SerializerNode $node ): bool => $node->name === 'mw:dt-replybuttonscontent',
