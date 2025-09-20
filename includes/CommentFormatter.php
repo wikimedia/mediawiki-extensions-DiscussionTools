@@ -516,16 +516,16 @@ class CommentFormatter {
 		$itemDataByName = [];
 		HtmlHelper::modifyElements(
 			$text,
-			static function ( SerializerNode $node ) use ( &$itemDataByName ): bool {
+			static fn ( $n ) => true,
+			static function ( SerializerNode $node ) use ( &$itemDataByName ): string {
 				if ( $node->name === 'mw:dt-subscribebutton' ) {
 					$data = $node->attrs['data'];
 					$itemDataByName[ $data ] = json_decode( $data, true );
 				}
-				// This is non-replacing - we are just using this as
-				// a convenient way to traverse the DOM tree.
-				return false;
-			},
-			static fn ( $n ) => $n
+				// We ignore the result - we are just using this as a convenient way to traverse the DOM tree.
+				// Match all nodes and return a string to skip the HTML serialization and reduce overhead.
+				return '';
+			}
 		);
 
 		$itemNames = array_column( $itemDataByName, 'name' );
