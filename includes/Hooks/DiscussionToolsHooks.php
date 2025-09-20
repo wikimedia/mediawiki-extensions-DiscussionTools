@@ -55,7 +55,7 @@ class DiscussionToolsHooks implements
 			$overflowMenuItems[] = new OverflowMenuItem(
 				'edit',
 				'edit',
-				$contextSource->msg( 'skin-view-edit' ),
+				'skin-view-edit',
 				2
 			);
 		}
@@ -79,7 +79,7 @@ class DiscussionToolsHooks implements
 					$overflowMenuItems[] = new OverflowMenuItem(
 						'thank',
 						'heart',
-						$contextSource->msg( 'thanks-button-thank' ),
+						'thanks-button-thank'
 					);
 				}
 			}
