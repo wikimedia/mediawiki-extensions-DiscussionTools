@@ -12,14 +12,17 @@
 			"Matma Rex",
 			"Woytecr",
 			"Sayvhior",
-			"King ChristLike"
+			"King ChristLike",
+			"Iwuala Lucy"
 		]
 	},
-	"discussiontools-autotopicsubpopup-body": "Ị ga-anata ozi mgbe mmadụ tinyere okwu ọhụụ n'ebe akpamnkata. Ị nwere ike idozi ebe ọkwa nnata ozi gi ebe mmasị gị.",
+	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Ị}} ga-anata ozi mgbe mmadụ tinyere okwu ọhụụ n'ebe akpamnkata. Ị nwere ike idozi ebe ọkwa nnata ozi gi ebe mmasị gị.",
 	"discussiontools-autotopicsubpopup-dismiss": "Ọdịmma, Aghọtara m ya.",
 	"discussiontools-autotopicsubpopup-preferences": "Dezie ebe mmasị dị iche iche",
-	"discussiontools-autotopicsubpopup-title": "Edebanyela aha gị",
+	"discussiontools-autotopicsubpopup-title": "Edebanyela aha {{GENDER:|gị}}",
 	"discussiontools-defaultsummary-reply": "Zaghachi",
+	"discussiontoolsdebug-pagetitle": "Aha ibe",
+	"discussiontoolsdebug-intro": "Ibe a gosipụtara ka [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:DiscussionTools DiscussionTools extension] si amata njikọ na nkọwa dị na ibe '''[[:$1]]'''. I nwere ike ịhụ na ọ bara uru na nwepụ nsogbu site na ndọtị ma ọ bụ ịghọta ka o si arụ ọrụ. Otu ozi dị na [[$2|discussiontoolspageinfo API]].",
 	"discussiontools-desc": "Ngwa iji kwalite ibe mkparịta ụka.",
 	"discussiontools-emptystate-button": "Bido ị kpa nkata",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Ibe nkata]] bụ ebe ndị mmadụ na-akpa nkata otu ihe dị na {{SITENAME}} ga-esi bụrụ ọkacha mma. Ị nwere ike gị na ndị ọzọ ebido ịkpa nkata otu a ga-esi kwalite [[:{{SUBJECTPAGENAME}}]].",
