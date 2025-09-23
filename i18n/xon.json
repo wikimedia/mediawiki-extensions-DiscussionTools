@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alidu Yakubu",
 			"Hasslaebetch"
 		]
 	},
-	"discussiontools-replywidget-cancel": "N-bubu"
+	"discussiontools-replylink": "Nyɛ bɔŋ-bɔŋ",
+	"discussiontools-replywidget-cancel": "N-bubu",
+	"discussiontools-replywidget-summary": "N-naat kpɛla",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Kpihiŋ kpɛla"
 }
