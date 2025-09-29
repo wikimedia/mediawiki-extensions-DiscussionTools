@@ -5,7 +5,8 @@
 			"Theklan",
 			"Atzerritik",
 			"Izendegi",
-			"Woytecr"
+			"Woytecr",
+			"Xabier Armendaritz"
 		]
 	},
 	"discussiontools": "Eztabaida tresnak",
@@ -72,7 +73,7 @@
 	"discussiontools-replywidget-watchthis": "Gehitu orri hau zure [[Special:Watchlist|jarraipen zerrendan]]",
 	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|Pertsona bat|$1 pertsona}} eztabaida honetan",
-	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|Iruzkin 1|$1 iruzkin}}",
+	"discussiontools-topicheader-commentcount": "{{PLURAL:$1|Iruzkin bat|$1 iruzkin}}",
 	"discussiontools-topicheader-latestcomment": "Azken iruzkina: $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Harpidetza kendu",
 	"discussiontools-topicsubscription-action-unsubscribe-prompt": "Gai honetatik harpidetza kendu?",

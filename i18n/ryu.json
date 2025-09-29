@@ -1,13 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"ChoiChong"
+			"ChoiChong",
+			"さきじょーぐー"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "返信",
+	"discussiontools-newtopic-placeholder-title": "件名",
 	"discussiontools-replylink": "応(いれー)いん",
 	"discussiontools-replywidget-cancel": "とぅりちゃーすん",
 	"discussiontools-replywidget-mode-source": "原典",
 	"discussiontools-replywidget-mode-visual": "ビジュアル",
+	"discussiontools-replywidget-placeholder-newtopic": "説明",
 	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}}んかい応(いれー)いん",
-	"discussiontools-replywidget-reply": "応(いれー)いん"
+	"discussiontools-replywidget-preview": "プレビュー",
+	"discussiontools-replywidget-reply": "応(いれー)いん",
+	"discussiontools-replywidget-summary": "要約欄",
+	"discussiontools-replywidget-watchthis": "自分の[[Special:Watchlist|ウォッチリスト]]んかいくぬページ入りーん",
+	"discussiontools-topicheader-authorcount": "$1{{PLURAL:$1|たい}}ぬあらがーんかい参加そーん",
+	"discussiontools-topicheader-commentcount": "$1件ぬ{{PLURAL:$1|コメント}}",
+	"discussiontools-topicheader-latestcomment": "いっちんみーさるコメント:$1",
+	"discussiontools-topicsubscription-button-subscribe": "更新ぬ通知受き取いん",
+	"discussiontools-topicsubscription-button-subscribe-label": "通知受き取いん",
+	"discussiontools-topicsubscription-button-unsubscribe": "通知受け取らん",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "通知受き取らん"
 }

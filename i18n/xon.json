@@ -1,8 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hasslaebetch"
+			"Hasslaebetch",
+			"Alidu Yakubu",
+			"Yakubu Hami"
 		]
 	},
-	"discussiontools-replywidget-cancel": "N-bubu"
+	"discussiontools-replywidget-advanced": "N-tiŋmɔ kpahiŋ kpahiŋ",
+	"discussiontools-replywidget-cancel": "N-bubu",
+	"discussiontools-replywidget-mode-source": "Dɛɛr kpɛɛli",
+	"discussiontools-replywidget-preview": "Nyɛ bɔŋ-bɔŋ",
+	"discussiontools-replywidget-summary": "N-naat kpɛla",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person people}} Ŋɔ kpɛɛli ŋunŋmɛ",
+	"discussiontools-topicsubscription-button-subscribe": "Dɛɛr kpɛɛli",
+	"discussiontools-topicsubscription-button-subscribe-label": "Dɛɛr kpɛɛli",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Kpihiŋ kpɛla"
 }
