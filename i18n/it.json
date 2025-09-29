@@ -14,7 +14,8 @@
 			"Sakretsu",
 			"Scompo",
 			"Superpes15",
-			"Titore"
+			"Titore",
+			"ZioNicco"
 		]
 	},
 	"discussiontools": "Strumenti di discussione",
@@ -32,6 +33,7 @@
 	"discussiontools-emptystate-desc-self-temp": "Gli utenti di {{SITENAME}} possono usare questa [[{{Mediawiki:discussiontools-emptystate-link-userpage}}|pagina di discussione]] per inviarti un messaggio pubblico.\n\nCon il tempo [[{{MediaWiki:tempuser-helppage}}|questa pagina scadrà]]. Per continuare a ricevere le notifiche e per accedere alle altre funzionalità, [$1 crea un account] o [$2 fai il log in].",
 	"discussiontools-emptystate-desc-user": "Le [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|pagine di discussione]] sono spazi dove le persone discutono su come migliorare i contenuti di {{SITENAME}}. {{GENDER:|Inizia}} una nuova discussione per collaborare con [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Il tuo messaggio sarà pubblico.",
 	"discussiontools-emptystate-desc-user-anon": "Le [[{{MediaWiki:discussiontools-emptystate-link-userpage-anon}}|pagine di discussione]] sono spazi dove le persone discutono su come migliorare i contenuti di {{SITENAME}}. {{GENDER:|Inizia}} una nuova discussione per discutere delle modifiche fatte da questo indirizzo IP. Il tuo messaggio sarà pubblico. Ricorda inoltre che molti indirizzi IP sono usati solo temporaneamente e sono spesso condivisi da più persone.",
+	"discussiontools-emptystate-desc-user-temp": "Utilizza questa [[{{MediaWiki:discussiontools-emptystate-link-userpage-temp}}|pagina di discussione]] per avviare una discussione {{GENDER:{{PAGENAME}}| con}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] su come migliorare {{SITENAME}}. Ciò che {{GENDER:|tu}} dici sarà visibile pubblicamente agli altri. Poiché [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] è un [[{{MediaWiki:tempuser-helppage}}|account temporaneo]], questa pagina di discussione scadrà. [[{{MediaWiki:tempuser-helppage}}|Scopri di più]].",
 	"discussiontools-emptystate-title": "Inizia una discussione su {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "{{GENDER:|Benvenuto|Benvenuta}} nella tua pagina di discussione",
 	"discussiontools-emptystate-title-self-anon": "{{GENDER:|Benvenuto|Benvenuta}} in questa pagina di discussione",
