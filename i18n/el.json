@@ -63,7 +63,7 @@
 	"discussiontools-limitreport-errorreqid": "Αναγνωριστικό αιτήματος σφάλματος DiscussionTools",
 	"discussiontools-limitreport-timeusage": "Χρήση χρόνου DiscussionTools",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|δευτερόλεπτο|δευτερόλεπτα}}",
-	"discussiontools-newtopic-missing-title": "Δώστε έναν τίτλο για το θέμα της συζήτησης {{GENDER:|}} σας. Εάν κάνετε κλικ στο \"{{int:discussiontools-replywidget-newtopic}}\", το θέμα σας θα προστεθεί χωρίς τίτλο.",
+	"discussiontools-newtopic-missing-title": "Δώστε έναν τίτλο για το θέμα της συζήτησης {{GENDER:|}} σας.",
 	"discussiontools-newtopic-placeholder-title": "Θέμα",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Εγγραφή",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Εγγραφείτε για να λαμβάνετε ειδοποιήσεις όταν ξεκινούν νέα θέματα σε αυτήν τη σελίδα.",
