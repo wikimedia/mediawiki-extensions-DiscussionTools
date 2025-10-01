@@ -4,13 +4,9 @@ const
 	dtConf = require( './config.json' ),
 	CommentDetails = require( './CommentDetails.js' ),
 	CommentItem = require( './CommentItem.js' ),
-	scrollPadding = {
-		// eslint-disable-next-line no-jquery/no-class-state
-		top: 10 + ( $( document.documentElement ).hasClass( 'vector-feature-sticky-header-enabled' ) ? 50 : 0 ),
-		bottom: 10
-	},
 	defaultVisual = controller.defaultVisual,
 	enable2017Wikitext = controller.enable2017Wikitext;
+
 /**
  * Handles setup, save and teardown of commenting widgets
  *
@@ -57,6 +53,24 @@ function getLatestRevId( pageName ) {
 		rvlimit: 1,
 		titles: pageName
 	} ).then( ( resp ) => resp.query.pages[ 0 ].revisions[ 0 ].revid );
+}
+
+/**
+ * Get scroll padding
+ *
+ * As scroll-padding-top can change, we need to compute
+ * this every time we scroll.
+ *
+ * @return {Object} Scroll padding
+ */
+function getScrollPadding() {
+	const scrollPaddingTopString = getComputedStyle( document.documentElement ).getPropertyValue( 'scroll-padding-top' ) || '';
+	const scrollPaddingTopValue = scrollPaddingTopString !== 'auto' && scrollPaddingTopString !== '' ?
+		parseFloat( scrollPaddingTopString ) : 0;
+	return {
+		top: 50 + scrollPaddingTopValue,
+		bottom: 10
+	};
 }
 
 /**
@@ -186,8 +200,8 @@ CommentController.prototype.setup = function ( options ) {
 			// we wrap this loading message in another element.
 			$( '<span>' ).text( mw.msg( 'discussiontools-replywidget-loading' ) )
 		);
-		const scrollPaddingCollapsed = OO.copy( scrollPadding );
-		// We don't know exactly how tall the widge will be, but leave room for one line
+		const scrollPaddingCollapsed = getScrollPadding();
+		// We don't know exactly how tall the widget will be, but leave room for one line
 		// of preview in source mode (~270px). Visual mode is ~250px.
 		scrollPaddingCollapsed.bottom += 270;
 		OO.ui.Element.static.scrollIntoView( this.newListItem, {
@@ -388,7 +402,7 @@ CommentController.prototype.focus = function () {
  */
 CommentController.prototype.showAndFocus = function () {
 	this.replyWidgetPromise.then( ( replyWidget ) => {
-		replyWidget.scrollElementIntoView( { padding: scrollPadding } )
+		replyWidget.scrollElementIntoView( { padding: getScrollPadding() } )
 			.then( () => {
 				this.focus();
 			} );
@@ -715,7 +729,7 @@ CommentController.prototype.switchToWikitext = function () {
 
 		return $.when( wikitextPromise, this.replyWidgetPromise ).then( ( wikitext, newWidget ) => {
 			// To prevent the "Reply" / "Cancel" buttons from shifting when the preview loads,
-			// wait for the preview (but no longer than 500 ms) before swithing the editors.
+			// wait for the preview (but no longer than 500 ms) before switching the editors.
 			newWidget.preparePreview( wikitext ).then( previewDeferred.resolve );
 			setTimeout( previewDeferred.resolve, 500 );
 
