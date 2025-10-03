@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"ITZQing"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Odgovor",
+	"discussiontools-newtopic-placeholder-title": "Tema",
+	"discussiontools-replywidget-advanced": "Napredno",
+	"discussiontools-replywidget-cancel": "Otkaži",
+	"discussiontools-replywidget-mode-source": "Izvor",
+	"discussiontools-replywidget-mode-visual": "Vizualno",
+	"discussiontools-replywidget-placeholder-newtopic": "Opis",
+	"discussiontools-replywidget-preview": "Pregled",
+	"discussiontools-replywidget-summary": "Sažetak",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentara}}",
+	"discussiontools-topicheader-latestcomment": "Posljednji komentar: $1",
+	"discussiontools-topicsubscription-button-subscribe": "prati",
+	"discussiontools-topicsubscription-button-subscribe-label": "Pretplati se",
+	"discussiontools-topicsubscription-button-unsubscribe": "prestani pratiti",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Otkaži pretplatu"
+}
