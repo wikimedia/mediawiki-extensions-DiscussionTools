@@ -6,13 +6,21 @@
 			"Yakubu Hami"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Nɔnyi",
+	"discussiontools-newtopic-placeholder-title": "Nɔniŋ",
 	"discussiontools-replywidget-advanced": "N-tiŋmɔ kpahiŋ kpahiŋ",
 	"discussiontools-replywidget-cancel": "N-bubu",
 	"discussiontools-replywidget-mode-source": "Dɛɛr kpɛɛli",
+	"discussiontools-replywidget-mode-visual": "Nyingmɔŋ",
+	"discussiontools-replywidget-placeholder-newtopic": "Wuɔm na",
 	"discussiontools-replywidget-preview": "Nyɛ bɔŋ-bɔŋ",
 	"discussiontools-replywidget-summary": "N-naat kpɛla",
+	"discussiontools-replywidget-watchthis": "Ŋɔ labi kpɛɛli na a kpɛɛli na[[Special:Watchlist|watchlist]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|person people}} Ŋɔ kpɛɛli ŋunŋmɛ",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|kɔmɛɛntii|kɔmɛɛntii}}",
+	"discussiontools-topicheader-latestcomment": "Biɛ nyabaal kpamaa: $1",
 	"discussiontools-topicsubscription-button-subscribe": "Dɛɛr kpɛɛli",
 	"discussiontools-topicsubscription-button-subscribe-label": "Dɛɛr kpɛɛli",
+	"discussiontools-topicsubscription-button-unsubscribe": "Tiŋ buu",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Kpihiŋ kpɛla"
 }
