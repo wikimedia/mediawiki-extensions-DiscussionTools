@@ -27,7 +27,7 @@ function ReplyLinksController( $pageContainer ) {
 	this.$body = $( document.body );
 	this.onReplyLinkClickHandler = this.onReplyLinkClick.bind( this );
 	this.onReplyButtonClickHandler = this.onReplyButtonClick.bind( this );
-	this.onAddSectionLinkClickHandler = this.onAddSectionLinkClick.bind( this );
+	this.onAddSectionLinkMouseDownHandler = this.onAddSectionLinkMouseDown.bind( this );
 	this.onAnyLinkClickHandler = this.onAnyLinkClick.bind( this );
 
 	// Reply links
@@ -49,10 +49,10 @@ function ReplyLinksController( $pageContainer ) {
 	// "Add topic" link in the skin interface
 	if ( featuresEnabled.newtopictool ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
-		const $addSectionTab = $( '#ca-addsection' );
-		if ( $addSectionTab.length ) {
-			this.$addSectionLink = $addSectionTab.find( 'a' );
-			this.$addSectionLink.on( 'click keypress', this.onAddSectionLinkClickHandler );
+		const $addSectionLink = $( '#ca-addsection a, a#ca-addsection' );
+		if ( $addSectionLink.length ) {
+			this.$addSectionLink = $addSectionLink;
+			this.$addSectionLink.on( 'mousedown keydown', this.onAddSectionLinkMouseDownHandler );
 
 			this.$addSectionLink.on( 'focusin mouseover touchstart', () => {
 				this.emit( 'link-interact' );
@@ -97,12 +97,12 @@ ReplyLinksController.prototype.onReplyButtonClick = function ( button ) {
 	this.emit( 'link-click', $linkSet.data( 'mw-thread-id' ), $linkSet );
 };
 
-ReplyLinksController.prototype.onAddSectionLinkClick = function ( e ) {
+ReplyLinksController.prototype.onAddSectionLinkMouseDown = function ( e ) {
 	if ( !this.isActivationEvent( e ) ) {
 		return;
 	}
 	// Disable VisualEditor's new section editor (in wikitext mode / NWE), to allow our own.
-	// We do this on first click, because we don't control the order in which our code and NWE code
+	// We do this on first mousedown, because we don't control the order in which our code and NWE code
 	// runs, so its event handlers may not be registered yet.
 	$( e.target ).closest( '#ca-addsection' ).off( '.ve-target' );
 
@@ -346,7 +346,7 @@ ReplyLinksController.prototype.teardown = function () {
 
 	if ( featuresEnabled.newtopictool ) {
 		if ( this.$addSectionLink ) {
-			this.$addSectionLink.off( 'click keypress', this.onAddSectionLinkClickHandler );
+			this.$addSectionLink.off( 'mousedown keydown', this.onAddSectionLinkMouseDownHandler );
 		}
 		this.$body.off( 'click keypress', 'a', this.onAnyLinkClickHandler );
 	}
