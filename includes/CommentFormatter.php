@@ -680,8 +680,6 @@ class CommentFormatter {
 			static function ( SerializerNode $node ) use(
 				$doc, $replyLinkText, $replyButtonText, $isMobile, $useButtons, $lang
 			) {
-				$replyLinkButtons = $doc->createElement( 'span' );
-
 				if ( $useButtons ) {
 					// Visual enhancements button
 					$useIcon = $isMobile || static::isLanguageRequiringReplyIcon( $lang );
@@ -694,8 +692,10 @@ class CommentFormatter {
 						'infusable' => true,
 					] );
 
-					DOMCompat::setInnerHTML( $replyLinkButtons, $replyLinkButton->toString() );
+					return $replyLinkButton->toString();
 				} else {
+					$replyLinkButtons = $doc->createElement( 'span' );
+
 					// Reply link
 					$replyLink = $doc->createElement( 'a' );
 					$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
@@ -715,9 +715,9 @@ class CommentFormatter {
 					$replyLinkButtons->appendChild( $bracketOpen );
 					$replyLinkButtons->appendChild( $replyLink );
 					$replyLinkButtons->appendChild( $bracketClose );
-				}
 
-				return DOMCompat::getInnerHTML( $replyLinkButtons );
+					return DOMCompat::getInnerHTML( $replyLinkButtons );
+				}
 			}
 		);
 	}
