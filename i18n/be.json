@@ -10,7 +10,8 @@
 			"Tomato Cream",
 			"Tīgelika",
 			"ZlyiLev",
-			"Woytecr"
+			"Woytecr",
+			"Jhnrvr"
 		]
 	},
 	"discussiontools": "Інструменты абмеркаванняў",
@@ -77,7 +78,7 @@
 	"discussiontools-notification-added-topic-view": "Глядзець тэму",
 	"discussiontools-notification-removed-topic-body": "Вы можаце больш не атрымліваць апавяшчэнні пра {{PLURAL:$1|гэтую тэму|гэтыя тэмы}}.",
 	"discussiontools-notification-removed-topic-header": "Тэма «<strong>$4</strong>» была заархівавана або выдалена з $3.",
-	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|$1 тэма была архівавана ці выдалена|$1 тэмы былі архіваваны ці аыдалены|$1 тэмаў былі архіваваны ці выдалены|1=Тэма была архівавана ці выдалена|100=больш за 99 тэмаў былі архіваваны ці выдалены}} з $2.",
+	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|$1 тэма была архівавана ці выдалена|$1 тэмы былі архіваваны ці выдалены|$1 тэмаў былі архіваваны ці выдалены|1=Тэма была архівавана ці выдалена|100=больш за 99 тэмаў былі архіваваны ці выдалены}} з $2.",
 	"discussiontools-notification-removed-topic-header-compact": "Тэма «<strong>$4</strong>» была архівавана ці выдалена.",
 	"discussiontools-notification-removed-topic-view": "Прагляд старонкі",
 	"discussiontools-notification-removed-topic-disable": "Больш не атрымліваць такія апавяшчэнні",
