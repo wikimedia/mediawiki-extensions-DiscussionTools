@@ -34,7 +34,7 @@
 	"discussiontools-findcomment-results-transcluded": "(transkludirano s druge stranice)",
 	"discussiontools-ledesection-button": "Više o ovoj stranici",
 	"discussiontools-ledesection-title": "O ovoj stranici za razgovor",
-	"discussiontools-newtopic-missing-title": "Navedite naslov teme.",
+	"discussiontools-newtopic-missing-title": "{{GENDER:|Navedite}} naslov teme.",
 	"discussiontools-newtopic-placeholder-title": "Naslov",
 	"discussiontools-pageframe-latestcomment": "Posljednji komentar: $2, $1 u temi $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Posljednji komentar: $2, $1",

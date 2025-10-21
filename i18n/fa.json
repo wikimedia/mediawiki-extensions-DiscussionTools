@@ -14,7 +14,8 @@
 			"Matma Rex",
 			"Mohammad ebz",
 			"Reza koulivand",
-			"Rulebased"
+			"Rulebased",
+			"LordProfo"
 		]
 	},
 	"discussiontools": "Discussion tools",
@@ -152,7 +153,7 @@
 	"discussiontools-replywidget-reply": "{{GENDER:|پاسخ}}",
 	"discussiontools-replywidget-return-to-newtopic": "بازگشت به مبحث تازه",
 	"discussiontools-replywidget-return-to-reply": "بازگشت به پاسخ",
-	"discussiontools-replywidget-signature-body": "$1 به امضای {{GENDER:|شما}} تبدیل شد. برای برگرداندن این عمل، $2 را تایپ کنید. دقت کنید که در زمان استفاده از این ابزار نیازی به امضا کردن نظرات ندارید. امضای شما به‌طور خودکار اضافه خواهد شد.",
+	"discussiontools-replywidget-signature-body": "$1 به امضای {{GENDER:|شما}} تبدیل شد. برای برگرداندن این عمل، $2 را تایپ کنید. توجه کنید که در زمان استفاده از این ابزار نیازی به امضا کردن دیدگاه‌ها ندارید. امضای شما به‌طور خودکار افزوده خواهد شد.",
 	"discussiontools-replywidget-signature-title": "نشانه‌گذاری امضا شناسایی شد",
 	"discussiontools-replywidget-summary": "خلاصه",
 	"discussiontools-replywidget-terms-click": "با کلیک کردن روی «$1» {{GENDER:|شما}} می‌پذیرید که از شرایط استفادهٔ این ویکی پیروی کنید.",
