@@ -13,6 +13,7 @@
 	"discussiontools-replywidget-mode-visual": "Vizualno",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|Dodaj}} temu",
 	"discussiontools-replywidget-placeholder-newtopic": "Opis",
+	"discussiontools-replywidget-placeholder-reply": "Odgovor {{GENDER:|korisniku|korisnici|osobi}} {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Pregled",
 	"discussiontools-replywidget-reply": "{{GENDER:|Odgovori}}",
 	"discussiontools-replywidget-summary": "Sažetak",
@@ -24,6 +25,7 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Pretplati se",
 	"discussiontools-topicsubscription-button-unsubscribe": "prestani pratiti",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Otkaži pretplatu",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Dobivat {{GENDER:|ćete}} obavijesti o novim komentarima na ovoj temi.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Odsad {{GENDER:|pratite}} ovaj razgovor!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Više {{GENDER:|nećete}} dobijati obavještenja o novim komentarima u ovoj temi.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Odjavili {{GENDER:|ste}} se."

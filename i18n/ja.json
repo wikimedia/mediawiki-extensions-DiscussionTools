@@ -141,7 +141,7 @@
 	"discussiontools-preference-replytool": "クイック返信を有効にする",
 	"discussiontools-preference-replytool-help": "これにより、リンクが表示されワンクリックでトークページのコメントに返信できます。",
 	"discussiontools-preference-sourcemodetoolbar": "ソース編集モードで編集ツールバーを有効にする",
-	"discussiontools-preference-sourcemodetoolbar-help": "この機能でツールバーを追加するとすばやく返信したり話題を追加したりするソース編集モードに切り替わり、pingの送信やリンク追加などのショートカットが使えます。",
+	"discussiontools-preference-sourcemodetoolbar-help": "この機能でツールバーを追加すると、すばやく返信したり話題を追加したりするソース編集モードに切り替わり、pingの送信やリンク追加などのショートカットが使えます。",
 	"discussiontools-preference-summary": "この機能に関する情報は[https://www.mediawiki.org/wiki/Special:MyLanguage/Talk_pages_project/Feature_summary 機能の概要]のページをご覧ください。",
 	"discussiontools-preference-topicsubscription": "トピックの更新通知機能を有効にする",
 	"discussiontools-preference-topicsubscription-help": "この機能を使うと個別のトピックに関する更新の通知を受け取ることができます。",
