@@ -85,7 +85,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Bạn}} đã ngừng theo dõi.",
 	"discussiontools-notification-added-topic-header": "Chủ đề mới \"<strong>$4</strong>\" {{GENDER:$2|đã được tạo}} trên trang <strong>$3</strong> bởi $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Một đề tài|$1 đề tài|100=99+ đề tài}} mới trên \"<strong>$2</strong>\".",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Xem đề tài",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|đã cảm ơn}} {{GENDER:$4|bạn}} vì bình luận của bạn trong \"<strong>$3</strong>\".",
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Một người|$1 người|100=99+ người}} đã cảm ơn {{GENDER:$3}}bạn vì lời bình luận của bạn trong “<strong>$2</strong>”.",

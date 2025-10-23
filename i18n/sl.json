@@ -82,7 +82,6 @@
 	"discussiontools-notification-removed-topic-disabled-body": "To lahko spremenite v [[Special:Preferences#mw-prefsection-echo-echosubscriptions|svojih nastavitvah]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 je {{GENDER:$2|odgovoril|odgovorila|odgovoril_a}} v temi »<strong>$4</strong>«.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|En nov odgovor|$1 nova odgovora|$1 novi odgovori|$1 novih odgovorov|100=99+ novih odgovorov}} v »<strong>$3</strong>«.",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "Ogled komentarja",
 	"discussiontools-pageframe-latestcomment": "Zadnji komentar: $1 uporabnika $2 v temi $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Zadnji komentar: $1 uporabnika $2",

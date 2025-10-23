@@ -92,7 +92,6 @@
 	"discussiontools-notification-removed-topic-disabled-body": "Ви можете змінити це у [[Special:Preferences#mw-prefsection-echo-echosubscriptions|своїх налаштуваннях]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|відповів}} у \"<strong>$4</strong>\".",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Одна нова відповідь|$1 нових відповідей|100=99+ нових відповідей}} у \"<strong>$3</strong>\".",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "Переглянути коментар",
 	"discussiontools-pageframe-latestcomment": "Найсвіжіший коментар: $2 у темі «$3» $1",
 	"discussiontools-pageframe-latestcomment-notopic": "Найсвіжіший коментар: $2 $1",

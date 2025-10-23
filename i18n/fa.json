@@ -82,7 +82,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "اشتراک {{GENDER:|شما}} لغو شد.",
 	"discussiontools-notification-added-topic-header": "مبحث جدید «<strong>$4</strong>» توسط $2 در <strong>$3</strong> ایجاد شده است.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|یک مبحث جدید|$1 مبحث جدید|100=+۹۹ مبحث جدید}} در «<strong>$2</strong>» ایجاد شده است.",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "نمایش مبحث",
 	"discussiontools-notification-removed-topic-body": "ممکن است دیگر آگاه‌سازی‌های مربوط به {{PLURAL:$1|این مبحث|این مباحث}} را دریافت {{GENDER:|نکنید}}.",
 	"discussiontools-notification-removed-topic-header": "مبحث «<strong>$4</strong>» بایگانی شده یا از $3 حذف شده است.",

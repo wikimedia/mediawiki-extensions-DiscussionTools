@@ -108,7 +108,6 @@
 	"discussiontools-notification-removed-topic-disabled-body": "Вы можете изменить это в [[Special:Preferences#mw-prefsection-echo-echosubscriptions|своих настройках]].",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 ответил{{GENDER:$2||а}} в «<strong>$4</strong>».",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|1=Один новый ответ|$1 новый ответ|$1 новых ответа|$1 новых ответов|100=99+ новых ответов}} в «<strong>$3</strong>».",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "Посмотреть сообщение",
 	"discussiontools-pageframe-latestcomment": "Последнее сообщение: $1 от $2 в теме «$3»",
 	"discussiontools-pageframe-latestcomment-notopic": "Последнее сообщение: $1 от $2",
