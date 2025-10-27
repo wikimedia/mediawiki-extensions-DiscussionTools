@@ -6,7 +6,8 @@
 			"Robin van der Vliet",
 			"Wierzbowski",
 			"Agloforto",
-			"Ziko"
+			"Ziko",
+			"Tymewalk"
 		]
 	},
 	"discussiontools-autotopicsubpopup-dismiss": "Bone, komprenite",
@@ -18,7 +19,7 @@
 	"discussiontools-emptystate-title": "Komencu diskuton pri {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "Bonvenon sur via diskutpaĝo",
 	"discussiontools-emptystate-title-user": "Komencu diskuton {{GENDER:{{PAGENAME}}|kun}} {{PAGENAME}}",
-	"discussiontools-newtopic-placeholder-title": "Titolo",
+	"discussiontools-newtopic-placeholder-title": "Temo",
 	"discussiontools-postedit-confirmation-published": "Via komento estis publikigita.",
 	"discussiontools-replylink": "respondi",
 	"discussiontools-replywidget-advanced": "Altnivela",
