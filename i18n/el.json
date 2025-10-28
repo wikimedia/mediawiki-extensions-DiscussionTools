@@ -74,7 +74,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "Έχετε {{GENDER:|εγγραφεί}}!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Δεν θα {{GENDER:|λαμβάνετε}} πλέον ειδοποιήσεις όταν ένα θέμα αρχειοθετείται ή αφαιρείται.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Έχετε}} καταργήσει την εγγραφή σας.",
-	"discussiontools-notification-added-topic-header": "Νέο θέμα «<strong>$4</strong>» δημιουργήθηκε στις <strong>$3</strong> από  {{GENDRER:$2|τον|την}} $1.",
+	"discussiontools-notification-added-topic-header": "Νέο θέμα «<strong>$4</strong>» δημιουργήθηκε στις <strong>$3</strong> από  {{GENDER:$2|τον|την}} $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Μια νέα απάντηση|$1 νέες απαντήσεις|100=99+ νέες απαντήσεις}} στη «<strong>$2</strong>».",
 	"discussiontools-notification-added-topic-view": "Εμφάνιση θέματος",
 	"discussiontools-notification-comment-thank-header": "{{GENDER:$2|Ο|Η}} $1 {{GENDER:$4|σας}} ευχαρίστησε για το σχόλιό σας στο «<strong>$3</strong>».",
