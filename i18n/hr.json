@@ -66,7 +66,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Otkazali ste pretplatu.",
 	"discussiontools-notification-added-topic-header": "$2 je započeo/la je novu temu \"<strong>$4</strong>\" na <strong>$3</strong>.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Jedna nova tema|$1 nove teme|$1 novih tema|100=Preko 99 novih tema}} na \"<strong>$2</strong>\".",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Vidi temu",
 	"discussiontools-notification-comment-thank-header": "$1 se {{GENDER:$2|zahvalio|zahvalila}} za {{GENDER:$4|Vaš}} komentar u temi \"<strong>$3</strong>\".",
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Jedna osoba zahvalila se|$1 osobe zahvalile su se|$1 osoba zahvalilo se|100=99+ osoba zahvalilo se}} za {{GENDER:$3|Vaš}} komentar u temi \"<strong>$2</strong>\".",

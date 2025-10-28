@@ -86,7 +86,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|Você}} não receberá mais notificações sobre novos tópicos iniciados nessa página.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Você}} se desinscreveu.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Novo tópico|$1 novos tópicos|100=Mais de 99 novos tópicos}} em “<strong>$2</strong>”.",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Ver tópico",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|agradeceu}}-{{GENDER:$4|lhe}} por seu comentário em “<strong>$3</strong>”.",
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Uma pessoa agradeceu|$1 pessoas agradeceram|100=Mais de 99 pessoas agradeceram}}-{{GENDER:$3|lhe}} por seu comentário em “<strong>$2</strong>”.",

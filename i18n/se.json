@@ -73,7 +73,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Don}} leat heaitán diŋgomis.",
 	"discussiontools-notification-added-topic-header": "Geavaheaddji $2 álggahii ođđa fáttá \"<strong>$4</strong>\" siiddus <strong>$3</strong>.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Ođđa fáddá|$1 ođđa fáttá|100=99+ ođđa fáttá}} «<strong>$2</strong>»'as/is.",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Čájet fáttá",
 	"discussiontools-notification-comment-thank-header": "Geavaheaddji $1 {{GENDER:$2|giittii}} {{GENDER:$4|du}} du kommentára ovddas fáttás \"<strong>$3</strong>\".",
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|1=Okta olmmoš giittii|2=2 olbmo giittiiga|$1 olbmo giite|100=99+ olbmo giite}} {{GENDER:$3|du}} du kommentára ovddas fáttás \"<strong>$2</strong>\".",

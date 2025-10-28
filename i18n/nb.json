@@ -74,7 +74,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Du}} har avsluttet abonnementet.",
 	"discussiontools-notification-added-topic-header": "$2 opprettet emnet «<strong>$4</strong>» på <strong>$3</strong>.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Ett nytt emne|$1 nye emner|100=99+ nye emner}} på «<strong>$2</strong>».",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Vis emne",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|takket}} {{GENDER:$4|deg}} for kommentaren din i «<strong>$3</strong>».",
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Én person|$1 personer|100=99+ personer}} takket {{GENDER:$3|deg}} for kommentaren din på «<strong>$2</strong>».",

@@ -58,7 +58,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Dir hutt Iech desabonéiert.",
 	"discussiontools-notification-added-topic-header": "Neie Sujet „<strong>$4</strong>“ op <strong>$3</strong> ugeluecht vum $2.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Een neie Sujet|$1 nei Sujeten|100=Méi wéi 99 nei Sujeten}} op „<strong>$2</strong>“.",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Sujet weisen",
 	"discussiontools-notification-comment-thank-header": "{{GENDER:$2|De(n) $1|D'$1}} huet {{GENDER:$4|Iech}} fir Äre Kommentar op „<strong>$3</strong>“ Merci gesot.",
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Eng Persoun huet|$1 Persounen hunn|100=Méi wéi 99 Persounen hunn}} {{GENDER:$3|Iech}} fir Äre Kommentar op „<strong>$2</strong>“ Merci gesot.",

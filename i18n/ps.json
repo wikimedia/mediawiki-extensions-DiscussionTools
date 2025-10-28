@@ -70,7 +70,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|تاسو}} به نور په دې مخ کې د نوو سکالوگانو پيلېدو پرمهال خبرتياوې ترلاسه نه کړئ.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|تاسو}} خپل گډون لرې کړ.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|يو نوې سکالو|$1 نوې سکالوگانې|100=+۹۹ نوې سکالو}} په «<strong>$2</strong>» کې جوړه شوې.",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "سکالو کتل",
 	"discussiontools-notification-comment-thank-header": "$1 په <strong>$3</strong>\" کې  {{GENDER:$4|ستاسو}} د څرگندونې له کبله له تاسو {{GENDER:$2|مننه وکړه}}.",
 	"discussiontools-notification-comment-thank-header-bundled": "\"<strong>$2</strong>\" کې ستاسو د څرگندونې له کبله {{PLURAL:$1|يو چا|$1 وگړي|100=+۹۹ وگړو}} له {{GENDER:$3|تاسو}} مننه وکړه.",

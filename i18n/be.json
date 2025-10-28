@@ -74,7 +74,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Вы адпісаліся",
 	"discussiontools-notification-added-topic-header": "$2 стварыў(ла) новую тэму «<strong>$4</strong>» на старонцы <strong>$3</strong>.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|$1 новая тэма|$1 новых тэм|100=99+ новых тэм}} на <strong>$2</strong>.",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Глядзець тэму",
 	"discussiontools-notification-removed-topic-body": "Вы можаце больш не атрымліваць апавяшчэнні пра {{PLURAL:$1|гэтую тэму|гэтыя тэмы}}.",
 	"discussiontools-notification-removed-topic-header": "Тэма «<strong>$4</strong>» была заархівавана або выдалена з $3.",
