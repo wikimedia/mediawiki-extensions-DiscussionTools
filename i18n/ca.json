@@ -77,7 +77,6 @@
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Heu}} cancel·lat la subscripció.",
 	"discussiontools-notification-added-topic-header": "Nou tema «<strong>$4</strong>» creat a <strong>$3</strong> per $2.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Un nou tema|$1 nous temes|100=Més de 100 temes nous}} a «<strong>$2</strong>».",
-	"discussiontools-notification-added-topic-header-compact": "$3: <em>$4</em>",
 	"discussiontools-notification-added-topic-view": "Mostra el tema",
 	"discussiontools-notification-removed-topic-body": "{{GENDER:|Podríeu}} no rebre més notificacions sobre {{PLURAL:$1|aquest tema|aquests temes}}.",
 	"discussiontools-notification-removed-topic-header": "El tema «<strong>$4</strong>» ha estat arxivat o eliminat de $3.",
