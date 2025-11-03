@@ -13,7 +13,7 @@
 	"discussiontools-autotopicsubpopup-dismiss": "V redu, razumem",
 	"discussiontools-autotopicsubpopup-preferences": "Nastavitve urejanja",
 	"discussiontools-autotopicsubpopup-title": "Naročeni ste",
-	"discussiontools-defaultsummary-reply": "Odgovor",
+	"discussiontools-defaultsummary-reply": "odgovor",
 	"discussiontools-desc": "Orodja za izboljšanje razpravne strani.",
 	"discussiontools-emptystate-button": "Začnite razpravo",
 	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Pogovorne strani]] so mesto za pogovor o tem, kako v projektu {{SITENAME}} ustvariti najboljšo mogočo vsebino. To stran lahko uporabite za začetek razprave o tem, kako izboljšati stran [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]].",

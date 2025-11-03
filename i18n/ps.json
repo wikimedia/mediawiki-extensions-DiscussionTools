@@ -46,7 +46,7 @@
 	"discussiontools-pagetitle-newtopic": "په $1 کې نوې شننه پيلول",
 	"discussiontools-pagetitle-reply": "$1 ته ځواب ورکول",
 	"discussiontools-postedit-confirmation-published": "ستاسو څرگندونه خپره شوه.",
-	"discussiontools-postedit-confirmation-topicadded": "ستاسو شننه ورگډه شوه.",
+	"discussiontools-postedit-confirmation-topicadded": "ستاسو سکالو ورگډه شوه.",
 	"discussiontools-preference-autotopicsub": "په خپلکاره ډول شننو کې ونډه اخيستل",
 	"discussiontools-preference-gadget-conflict": "د چټک ځواب ورکولو د چارنولو لپاره، تاسو بايد لومړی د خپل الې غوره‌توبونو کې [[$1|بې ربړه شننو اله ناچارنه کړئ]] .",
 	"discussiontools-preference-label": "شنن‌توکي",
