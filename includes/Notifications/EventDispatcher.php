@@ -349,11 +349,6 @@ class EventDispatcher {
 	 * enabled.
 	 */
 	protected static function addAutoSubscription( UserIdentity $user, Title $title, string $itemName ): void {
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
-		if ( $dtConfig->get( 'DiscussionToolsAutoTopicSubEditor' ) !== 'any' ) {
-			return;
-		}
-
 		if (
 			( self::$autosubscribe === 'preferences' && HookUtils::shouldAddAutoSubscription( $user, $title ) ) ||
 			self::$autosubscribe === 'yes'

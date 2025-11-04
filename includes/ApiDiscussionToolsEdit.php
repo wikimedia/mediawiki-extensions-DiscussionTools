@@ -10,7 +10,6 @@ use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ConfirmEdit\Services\CaptchaFactory;
-use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
@@ -66,10 +65,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
 		}
 
-		$autoSubscribe = $params['autosubscribe'] === 'yes' ||
-			( $this->config->get( 'DiscussionToolsAutoTopicSubEditor' ) === 'discussiontoolsapi' &&
-			HookUtils::shouldAddAutoSubscription( $this->getUser(), $title ) &&
-			$params['autosubscribe'] === 'default' );
+		$autoSubscribe = $params['autosubscribe'] === 'yes';
 		$subscribableHeadingName = null;
 		$subscribableSectionTitle = '';
 
@@ -447,10 +443,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			'autosubscribe' => [
 				ParamValidator::PARAM_TYPE => [
 					'yes',
-					'no',
-					'default'
+					'no'
 				],
-				ParamValidator::PARAM_DEFAULT => 'default',
+				ParamValidator::PARAM_DEFAULT => 'no',
 			],
 			'page' => [
 				ParamValidator::PARAM_REQUIRED => true,
