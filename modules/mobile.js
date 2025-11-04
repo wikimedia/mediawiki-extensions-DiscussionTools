@@ -118,7 +118,9 @@ function init( $container ) {
 	// helpful way, and moving them around tends to break the stickiness of the "Add topic" button.
 	/* eslint-disable no-jquery/no-global-selector */
 	if (
-		$( '.catlinks' ).filter( '[data-mw="interface"]' ).length ||
+		// T409187: data-mw="interface" can be removed 2 weeks after
+		// If257ebb7c38841f0145e924d4e756929722f4477 is deployed
+		$( '.catlinks' ).filter( '[data-mw-interface], [data-mw="interface"]' ).length ||
 		$( '#page-secondary-actions' ).children().length ||
 		$( '.return-link' ).length
 	) {
