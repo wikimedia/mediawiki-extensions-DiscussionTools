@@ -90,7 +90,8 @@
 				}
 			],
 			"styles": [
-				"dt.ui.NewTopicController.less"
+				"dt.ui.NewTopicController.less",
+				"dt.highlighter.less"
 			],
 			"dependencies": [
 				"ext.discussionTools.init.styles",

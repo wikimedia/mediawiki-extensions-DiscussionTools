@@ -1,0 +1,43 @@
+@import 'mediawiki.skin.variables.less';
+@import 'mediawiki.mixins.less';
+
+.ext-discussiontools-init-highlight {
+	position: absolute;
+	pointer-events: none;
+	opacity: 0;
+	mix-blend-mode: darken;
+	// Support: Safari
+	// Safari doesn't blend this overlay with the text unless GPU rendering is forced.
+	transform: translateZ( 0 );
+
+	@media screen {
+		html.skin-theme-clientpref-night & {
+			mix-blend-mode: lighten;
+		}
+	}
+
+	@media screen and ( prefers-color-scheme: dark ) {
+		html.skin-theme-clientpref-os & {
+			mix-blend-mode: lighten;
+		}
+	}
+
+	&-fadein {
+		opacity: 1;
+	}
+
+	&-fadeout {
+		opacity: 0;
+		transition: opacity 250ms ease-out;
+	}
+}
+
+.ext-discussiontools-init-publishedcomment {
+	// T368086
+	background-color: @background-color-success-subtle;
+}
+
+.ext-discussiontools-init-targetcomment {
+	// T368086
+	background-color: @background-color-progressive-subtle;
+}
