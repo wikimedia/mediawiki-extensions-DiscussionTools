@@ -1,7 +1,6 @@
 @import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins.less';
 
-/* stylelint-disable no-descending-specificity */
 span[ data-mw-comment-start ] {
 	// Give comment anchors a negative offset so we don't position
 	// them right at the edge of the page when jumping to them.
@@ -37,13 +36,14 @@ h6 {
 
 	&,
 	&:hover,
+	&:active,
 	&:visited,
-	&:visited:hover,
-	&:active {
+	&:visited:hover {
 		color: @color-placeholder;
 	}
 }
 
+// When using bullet syntax, hide the marker. (T259864#7634107)
 .ext-discussiontools-init-noMarker {
 	list-style: none;
 }
