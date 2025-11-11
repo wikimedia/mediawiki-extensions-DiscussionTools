@@ -39,6 +39,7 @@
 				"dt.init.less",
 				"init.styles/dt.init.mobilelede.less",
 				"init.styles/dt.init.newtopic.less",
+				"init.styles/dt.init.pageframe.less",
 				"init.styles/dt.init.replybuttons.less",
 				"init.styles/dt.init.topiccontainers.less",
 				"init.styles/dt.init.topicsubscriptions.less"
