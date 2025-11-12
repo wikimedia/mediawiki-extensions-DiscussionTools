@@ -3,7 +3,8 @@
 		"authors": [
 			"Matma Rex",
 			"Sumbukompor",
-			"Woytecr"
+			"Woytecr",
+			"Bennylin"
 		]
 	},
 	"discussiontools": "Piranti parembugan",
@@ -79,7 +80,7 @@
 	"discussiontools-replywidget-transcluded": "Tanggepanmu bakal kasimpen ing [[$1]].",
 	"discussiontools-replywidget-watchthis": "Tambah kaca iki menyang [[Special:Watchlist|pratélan pawawanganmu]]",
 	"discussiontools-signature-prefix": "&#32;",
-	"discussiontools-topicheader-authorcount": "{{PLURAL:$1|wong}} $1 ana ing parembugan",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|wong}} ana ing parembugan",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|tanggepan}}",
 	"discussiontools-topicheader-latestcomment": "Tanggepan paling anyar: $1",
 	"discussiontools-topicsubscription-action-unsubscribe-button": "Wurung langganan",

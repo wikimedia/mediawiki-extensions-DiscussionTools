@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bennylin"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "ꦩꦁꦱꦸꦭ꧀ꦭꦶ",
+	"discussiontools-newtopic-placeholder-title": "ꦲꦶꦫꦃ​ꦲꦶꦫꦃꦲꦤ꧀",
+	"discussiontools-replywidget-advanced": "ꦭꦸꦔꦶꦢ꧀ꦢꦤ꧀",
+	"discussiontools-replywidget-cancel": "ꦮꦸꦫꦸꦁ",
+	"discussiontools-replywidget-mode-source": "ꦱꦸꦩ꧀ꦧꦼꦂ",
+	"discussiontools-replywidget-mode-visual": "ꦥ꦳ꦶꦱꦸꦲꦭ꧀",
+	"discussiontools-replywidget-placeholder-newtopic": "ꦮꦼꦝꦂꦫꦤ꧀",
+	"discussiontools-replywidget-preview": "ꦥꦿꦠꦸꦢꦸꦃ",
+	"discussiontools-replywidget-summary": "ꦫꦶꦁꦏꦼꦱ꧀ꦱꦤ꧀",
+	"discussiontools-replywidget-watchthis": "ꦠꦩ꧀ꦧꦃ​ꦏꦕ​ꦲꦶꦏꦶ​ꦩꦼꦚꦁ​[[Special:Watchlist|ꦥꦿꦠꦺꦭ꧀ꦭꦤ꧀ꦥꦮꦮꦁꦔꦤ꧀ꦩꦸ]]",
+	"discussiontools-topicheader-authorcount": "$1{{PLURAL:$1|ꦮꦺꦴꦁ}}ꦲꦤ​ꦲꦶꦁ​ꦥꦉꦩ꧀ꦧꦸꦒ꧀ꦒꦤ꧀",
+	"discussiontools-topicheader-commentcount": "$1{{PLURAL:$1|ꦠꦁꦒꦼꦥ꧀ꦥꦤ꧀}}",
+	"discussiontools-topicheader-latestcomment": "ꦠꦁꦒꦼꦥ꧀ꦥꦤ꧀ꦥꦭꦶꦁ​ꦲꦚꦂ꧇$1",
+	"discussiontools-topicsubscription-button-subscribe": "ꦭꦁꦒꦤ꧀ꦤꦤ꧀",
+	"discussiontools-topicsubscription-button-subscribe-label": "ꦭꦁꦒꦤ꧀ꦤꦤ꧀",
+	"discussiontools-topicsubscription-button-unsubscribe": "ꦮꦸꦫꦸꦁ​ꦭꦁꦒꦤ꧀ꦤꦤ꧀",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "ꦮꦸꦫꦸꦁ​ꦭꦁꦒꦤ꧀ꦤꦤ꧀"
+}
