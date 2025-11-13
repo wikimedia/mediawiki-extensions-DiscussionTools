@@ -164,7 +164,7 @@ class HookUtils {
 			$parserOptions,
 			$revRecord,
 			// Don't flood the parser cache
-			$updateParserCacheFor ? 0 : ParserOutputAccess::OPT_NO_UPDATE_CACHE
+			[ ParserOutputAccess::OPT_NO_UPDATE_CACHE => !$updateParserCacheFor ],
 		);
 
 		if ( !$status->isOK() ) {
