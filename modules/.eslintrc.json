@@ -10,7 +10,8 @@
 		"RangeFix": "readonly"
 	},
 	"rules": {
-		"max-len": "off"
+		"max-len": "off",
+		"mediawiki/no-unlabeled-buttonwidget": "warn"
 	},
 	"settings": {
 		"jsdoc": {
