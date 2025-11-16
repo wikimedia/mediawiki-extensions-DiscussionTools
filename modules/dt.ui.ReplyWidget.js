@@ -993,6 +993,7 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
 	}
 	if ( !this.newCommentsWarning ) {
 		this.newCommentsShow = new OO.ui.ButtonWidget( {
+			label: mw.msg( 'discussiontools-replywidget-newcomments-button', mw.language.convertNumber( comments.length ) ),
 			flags: [ 'progressive' ]
 		} );
 		this.newCommentsClose = new OO.ui.ButtonWidget( {
@@ -1012,9 +1013,6 @@ ReplyWidget.prototype.updateNewCommentsWarning = function ( comments ) {
 		this.$bodyWrapper.append( this.newCommentsWarning.$element );
 	}
 
-	this.newCommentsShow.setLabel(
-		mw.msg( 'discussiontools-replywidget-newcomments-button', mw.language.convertNumber( comments.length ) )
-	);
 	if ( !this.hideNewCommentsWarning ) {
 		this.newCommentsWarning.toggle( true );
 		setTimeout( () => {
