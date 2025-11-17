@@ -5,11 +5,13 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Ôdpowiydź",
+	"discussiontools-newtopic-placeholder-title": "Tymat",
 	"discussiontools-replylink": "ôdpowiydz",
 	"discussiontools-replywidget-advanced": "Rozszyrzōne",
 	"discussiontools-replywidget-cancel": "Ôdciep",
 	"discussiontools-replywidget-mode-source": "Zdrzōdło",
 	"discussiontools-replywidget-mode-visual": "Wizuelnie",
+	"discussiontools-replywidget-placeholder-newtopic": "Ôpis",
 	"discussiontools-replywidget-placeholder-reply": "Ôdpowiydz na kōmyntŏrz {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Podglōnd",
 	"discussiontools-replywidget-reply": "Ôdpowiydz",

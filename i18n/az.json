@@ -62,7 +62,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "\"<strong>$3</strong>\" bölməsində {{PLURAL:$1|bir yeni cavab|$1 yeni cavab|100=99+ yeni cavab}}",
 	"discussiontools-notification-subscribed-new-comment-header-compact": "$1: <em>$3</em>.",
 	"discussiontools-notification-subscribed-new-comment-view": "Şərhə bax",
-	"discussiontools-pageframe-latestcomment": "Ən son rəy:$1, $2 tərəfindən \"$3\" mövzusunda",
+	"discussiontools-pageframe-latestcomment": "Ən son rəy: $1, $2 tərəfindən \"$3\" adlı mövzuda",
 	"discussiontools-pageframe-latestcomment-notopic": "Ən son rəy: $1, $2 tərəfindən",
 	"discussiontools-pagetitle-newtopic": "Yeni mövzu əlavə edilir: $1 səhifəsi",
 	"discussiontools-pagetitle-reply": "Cavab verilir: $1 səhifəsində",

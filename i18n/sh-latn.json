@@ -19,6 +19,7 @@
 	"discussiontools-findcomment-results-notcurrent": "(nije u trenutačnoj izmjeni)",
 	"discussiontools-findcomment-results-transcluded": "(transkludirano s druge stranice)",
 	"discussiontools-newtopic-placeholder-title": "Naslov",
+	"discussiontools-notification-subscribed-new-comment-header": "$1 {{GENDER:$2|odgovara}} u raspravi \"<strong>$4</strong>\".",
 	"discussiontools-pageframe-latestcomment": "Posljednji komentar: $2, $1 u temi $3",
 	"discussiontools-pageframe-latestcomment-notopic": "Posljednji komentar: $2, $1",
 	"discussiontools-pagetitle-newtopic": "Započinjanje nove teme na $1",
@@ -50,5 +51,5 @@
 	"discussiontools-topicsubscription-button-subscribe": "prati",
 	"discussiontools-topicsubscription-button-subscribe-label": "Pretplati se",
 	"discussiontools-topicsubscription-button-unsubscribe": "prestani pratiti",
-	"discussiontools-topicsubscription-button-unsubscribe-label": "Otkaži pretplatu"
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Prekini praćenje"
 }
