@@ -598,10 +598,6 @@
 			"value": true,
 			"description": "Enable permalinks frontend features: 1. Convert signature timestamps to comment links. 2. Show notification when the target comment is found on another page."
 		},
-		"DiscussionToolsEnableThanks": {
-			"value": true,
-			"description": "Show a button to thank individual comments. Requires the 'Thanks' extension."
-		},
 		"DiscussionToolsAutoTopicSubEditor": {
 			"value": "any",
 			"description": "Editor which triggers automatic topic subscriptions. Either 'discussiontoolsapi' for edits made using DiscussionTools' API (e.g. reply and new topic tools), or 'any' for any editor."

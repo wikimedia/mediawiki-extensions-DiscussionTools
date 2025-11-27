@@ -61,27 +61,19 @@ class DiscussionToolsHooks implements
 		}
 
 		$user = $contextSource->getUser();
-		if (
-			$this->config->get( 'DiscussionToolsEnableThanks' ) ||
-			(
-				$this->config->get( 'DiscussionToolsBeta' ) &&
-				$this->userOptionsLookup->getOption( $user, 'discussiontools-betaenable', 0 )
-			)
-		) {
-			$showThanks = ExtensionRegistry::getInstance()->isLoaded( 'Thanks' );
-			if ( $showThanks && ( $threadItemData['type'] ?? null ) === 'comment' && $user->isNamed() ) {
-				$recipient = $this->userNameUtils->getCanonical( $threadItemData['author'], UserNameUtils::RIGOR_NONE );
+		$showThanks = ExtensionRegistry::getInstance()->isLoaded( 'Thanks' );
+		if ( $showThanks && ( $threadItemData['type'] ?? null ) === 'comment' && $user->isNamed() ) {
+			$recipient = $this->userNameUtils->getCanonical( $threadItemData['author'], UserNameUtils::RIGOR_NONE );
 
-				if (
-					$recipient !== $user->getName() &&
-					!$this->userNameUtils->isIP( $recipient )
-				) {
-					$overflowMenuItems[] = new OverflowMenuItem(
-						'thank',
-						'heart',
-						'thanks-button-thank'
-					);
-				}
+			if (
+				$recipient !== $user->getName() &&
+				!$this->userNameUtils->isIP( $recipient )
+			) {
+				$overflowMenuItems[] = new OverflowMenuItem(
+					'thank',
+					'heart',
+					'thanks-button-thank'
+				);
 			}
 		}
 	}
