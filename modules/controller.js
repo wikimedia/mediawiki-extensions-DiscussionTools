@@ -627,12 +627,10 @@ function init( $container, state ) {
 			}
 			if ( findCommentQuery ) {
 				// TODO: Support multiple commentIds being requested and not all being found
-				const dtConf = require( './config.json' );
-				const findCommentRequest = dtConf.enablePermalinksFrontend ?
-					getApi().get( Object.assign( {
-						action: 'discussiontoolsfindcomment'
-					}, findCommentQuery ) ) :
-					$.Deferred().resolve( [ {} ] ).promise();
+				const findCommentRequest = getApi().get( Object.assign( {
+					action: 'discussiontoolsfindcomment'
+				}, findCommentQuery ) );
+
 				dismissableNotificationPromise = $.when(
 					findCommentRequest,
 					mw.loader.using( 'mediawiki.notification' )

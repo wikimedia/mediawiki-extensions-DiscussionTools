@@ -315,7 +315,6 @@ class CommentFormatter {
 
 		$url = $title->getCanonicalURL();
 		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
-		$enablePermalinksFrontend = $dtConfig->get( 'DiscussionToolsEnablePermalinksFrontend' );
 
 		// Iterate in reverse order, because adding the range markers for a thread item
 		// can invalidate the ranges of subsequent thread items (T298096)
@@ -379,19 +378,17 @@ class CommentFormatter {
 
 				CommentModifier::addReplyLink( $threadItem, $replyButtons );
 
-				if ( $enablePermalinksFrontend ) {
-					$timestampRanges = $threadItem->getTimestampRanges();
-					$lastTimestamp = end( $timestampRanges );
-					$existingLink = CommentUtils::closestElement( $lastTimestamp->startContainer, [ 'a' ] ) ??
-						CommentUtils::closestElement( $lastTimestamp->endContainer, [ 'a' ] );
+				$timestampRanges = $threadItem->getTimestampRanges();
+				$lastTimestamp = end( $timestampRanges );
+				$existingLink = CommentUtils::closestElement( $lastTimestamp->startContainer, [ 'a' ] ) ??
+					CommentUtils::closestElement( $lastTimestamp->endContainer, [ 'a' ] );
 
-					if ( !$existingLink ) {
-						$link = $doc->createElement( 'mw:dt-timestamplink' );
-						$link->setAttribute( 'href', $url . '#' . Sanitizer::escapeIdForLink( $threadItem->getId() ) );
-						$link->setAttribute( 'class', 'ext-discussiontools-init-timestamplink' );
-						$link->setAttribute( 'title', $threadItem->getTimestampString() );
-						$lastTimestamp->surroundContents( $link );
-					}
+				if ( !$existingLink ) {
+					$link = $doc->createElement( 'mw:dt-timestamplink' );
+					$link->setAttribute( 'href', $url . '#' . Sanitizer::escapeIdForLink( $threadItem->getId() ) );
+					$link->setAttribute( 'class', 'ext-discussiontools-init-timestamplink' );
+					$link->setAttribute( 'title', $threadItem->getTimestampString() );
+					$lastTimestamp->surroundContents( $link );
 				}
 				self::addOverflowMenuButton( $threadItem, $doc, $replyButtons );
 

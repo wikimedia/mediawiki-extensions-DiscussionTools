@@ -71,7 +71,7 @@ class ThreadItemStore {
 	 * to allow failing softly in that case.
 	 */
 	public function isDisabled(): bool {
-		return !$this->config->get( 'DiscussionToolsEnablePermalinksBackend' );
+		return false;
 	}
 
 	/**

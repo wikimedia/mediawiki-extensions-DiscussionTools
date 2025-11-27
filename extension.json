@@ -68,8 +68,7 @@
 					"config": {
 						"replyIndentation": "DiscussionToolsReplyIndentation",
 						"switchTime": "DiscussionToolsTimestampFormatSwitchTime",
-						"showFeedbackLinks": "DiscussionToolsShowFeedbackLinks",
-						"enablePermalinksFrontend": "DiscussionToolsEnablePermalinksFrontend"
+						"showFeedbackLinks": "DiscussionToolsShowFeedbackLinks"
 					}
 				},
 				"ReplyLinksController.js",
@@ -589,14 +588,6 @@
 			},
 			"description": "A dictionary of language codes which will receive an icon in their enhanced reply-button treatment, due to translation being very short (T323537). Language fallbacks will be checked unless a language is explicitly set to `false` (T352289). Normalized language codes are lower case.",
 			"merge_strategy": "provide_default"
-		},
-		"DiscussionToolsEnablePermalinksBackend": {
-			"value": true,
-			"description": "Enable the permalinks backend. Do not enable this unless the database tables exist."
-		},
-		"DiscussionToolsEnablePermalinksFrontend": {
-			"value": true,
-			"description": "Enable permalinks frontend features: 1. Convert signature timestamps to comment links. 2. Show notification when the target comment is found on another page."
 		},
 		"DiscussionToolsAutoTopicSubEditor": {
 			"value": "any",
