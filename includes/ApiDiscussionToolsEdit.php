@@ -65,10 +65,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
 		}
 
-		$autoSubscribe = $params['autosubscribe'] === 'yes';
-		$subscribableHeadingName = null;
-		$subscribableSectionTitle = '';
-
 		$this->getErrorFormatter()->setContextTitle( $title );
 
 		$session = null;
@@ -187,8 +183,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'starttimestamp' => wfTimestampNow(),
 							'useskin' => $params['useskin'],
 							'watchlist' => $params['watchlist'],
-							// Always fetch content if auto-subscribing, it's needed below (T359751)
-							'nocontent' => $autoSubscribe ? null : $params['nocontent'],
+							'nocontent' => $params['nocontent'],
 							// NOTE: Must use getText() to work; PHP array from $params['tags'] is not understood
 							// by the visualeditoredit API.
 							'tags' => $this->getRequest()->getText( 'tags' ),
@@ -205,25 +200,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 
 				$data = $api->getResult()->getResultData();
 				$result = $data['visualeditoredit'];
-
-				if ( $autoSubscribe && isset( $result['content'] ) ) {
-					// Determining the added topic's name directly is hard (we'd have to ensure we have the
-					// same timestamp, and replicate some CommentParser stuff). Just pull it out of the response.
-					$doc = DOMUtils::parseHTML( $result['content'] );
-					$container = DOMCompat::getBody( $doc );
-					$threadItemSet = $this->commentParser->parse( $container, $title->getTitleValue() );
-					$threads = $threadItemSet->getThreads();
-					if ( count( $threads ) ) {
-						$lastHeading = end( $threads );
-						$subscribableHeadingName = $lastHeading->getName();
-						$subscribableSectionTitle = $lastHeading->getLinkableTitle();
-					}
-					if ( $params['nocontent'] ) {
-						// We had to fetch content even if not requested by the caller (T359751), but pretend we didn't
-						unset( $result['content'] );
-						$result['nocontent'] = true;
-					}
-				}
 
 				break;
 
@@ -324,14 +300,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 						$this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
 				}
 
-				if ( $autoSubscribe ) {
-					$heading = $comment->getSubscribableHeading();
-					if ( $heading ) {
-						$subscribableHeadingName = $heading->getName();
-						$subscribableSectionTitle = $heading->getLinkableTitle();
-					}
-				}
-
 				$context = new DerivativeContext( $this->getContext() );
 				$context->setRequest(
 					new DerivativeRequest(
@@ -378,12 +346,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 			// Comment was not actually saved, so for this API, that's an error.
 			// This should not be possible after T313100.
 			$this->dieWithError( 'discussiontools-error-comment-not-saved', 'comment-comment-not-saved' );
-		}
-
-		if ( $autoSubscribe && $subscribableHeadingName ) {
-			$subsTitle = $title->createFragmentTarget( $subscribableSectionTitle );
-			$this->subscriptionStore
-				->addAutoSubscriptionForUser( $this->getUser(), $subsTitle, $subscribableHeadingName );
 		}
 
 		// Check the post was successful (could have been blocked by ConfirmEdit) before
@@ -439,13 +401,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				],
 				ApiBase::PARAM_HELP_MSG => 'apihelp-visualeditoredit-param-paction',
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
-			],
-			'autosubscribe' => [
-				ParamValidator::PARAM_TYPE => [
-					'yes',
-					'no'
-				],
-				ParamValidator::PARAM_DEFAULT => 'no',
 			],
 			'page' => [
 				ParamValidator::PARAM_REQUIRED => true,
