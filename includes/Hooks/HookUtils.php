@@ -60,9 +60,7 @@ class HookUtils {
 	 * @var string[] List of configurable sub-features, used to generate:
 	 *  - Feature override global: $wgDiscussionTools_FEATURE
 	 */
-	public const CONFIGS = [
-		self::VISUALENHANCEMENTS
-	];
+	public const CONFIGS = [];
 
 	public const FEATURES_CONFLICT_WITH_GADGET = [
 		self::REPLYTOOL,

@@ -31,6 +31,8 @@ class BetaPreferenceHooks implements GetBetaFeaturePreferencesHook {
 			// If all configurable features are marked as 'available', the
 			// beta feature enables nothing, so don't show it.
 			$allAvailable = true;
+			// HookUtils::CONFIGS is currently empty
+			// @phan-suppress-next-line PhanEmptyForeach
 			foreach ( HookUtils::CONFIGS as $feature ) {
 				if ( $this->config->get( 'DiscussionTools_' . $feature ) !== 'available' ) {
 					$allAvailable = false;

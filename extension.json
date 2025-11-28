@@ -587,10 +587,6 @@
 			"value": false,
 			"description": "Make DiscussionTools a BetaFeature."
 		},
-		"DiscussionTools_visualenhancements": {
-			"value": "default",
-			"description": "Override availability of DiscussionTools visual enhancements. 'default', 'available', or 'unavailable'."
-		},
 		"DiscussionTools_visualenhancements_reply_icon_languages": {
 			"value": {
 				"ar": true,
