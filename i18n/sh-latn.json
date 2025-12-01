@@ -84,5 +84,10 @@
 	"discussiontools-topicsubscription-notify-subscribed-title": "Odsad {{GENDER:|pratite}}!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Više više {{GENDER:|nećete}} dobivati obavijesti o novim komentarima na ovoj temi.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Prestali {{GENDER:|ste}} pratiti.",
+	"discussiontools-topicsubscription-preferences-editsubscriptions": "Uredi praćenja",
+	"echo-category-title-dt-subscription": "Praćene {{PLURAL:$1|stranice}} za razgovor",
+	"echo-category-title-dt-subscription-archiving": "{{PLURAL:$1|Arhiviranje}} stranica za razgovor",
+	"echo-pref-tooltip-dt-subscription": "Obavještava vas kad netko odgovori na temu koju {{GENDER:|pratite}}.",
+	"echo-pref-tooltip-dt-subscription-archiving": "Obavještava vas kad se tema koju {{GENDER:|pratite}} arhivira ili ukloni sa stranice ili ako se obavijesti o novim komentarima objavljenim u toj temi ne mogu poslati iz drugih razloga.",
 	"tag-discussiontools-reply": "odgovor"
 }
