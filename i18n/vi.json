@@ -171,7 +171,7 @@
 	"echo-pref-tooltip-dt-subscription-archiving": "Thông báo cho tôi khi một chủ đề tôi theo dõi được lưu trữ hoặc xóa khỏi trang, hoặc nếu thông báo về bình luận mới được đăng tại chủ đề đó không thể gửi được vì lý do nào khác.",
 	"tag-discussiontools-added-comment-description": "Sửa đổi này thêm một lời bình luận vào trang thảo luận",
 	"tag-discussiontools-description": "Sửa đổi bằng Công cụ Thảo luận",
-	"tag-discussiontools-edit": "Đã sửa bình luận",
+	"tag-discussiontools-edit": "Sửa bình luận",
 	"tag-discussiontools-edit-description": "Người dùng sửa một bình luận có sẵn bằng Công cụ Thảo luận",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Đề tài mới]",
 	"tag-discussiontools-newtopic-description": "Người dùng thêm chủ đề mới vào trang bằng Công cụ Thảo luận",
