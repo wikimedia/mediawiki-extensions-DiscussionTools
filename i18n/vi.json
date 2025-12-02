@@ -206,7 +206,7 @@
 	"discussiontools-comments-before-first-heading-category-desc": "Trang thảo luận có chứa bình luận ở phần mở đầu (trước đề mục đầu tiên). Điều này có thể khiến cho phần mở đầu hoặc bình luận không được hiển thị chính xác, đặc biệt trên phiên bản di động và ứng dụng di động.",
 	"tag-discussiontools-added-comment-description": "Sửa đổi này thêm một lời bình luận vào trang thảo luận",
 	"tag-discussiontools-description": "Sửa đổi bằng Công cụ Thảo luận",
-	"tag-discussiontools-edit": "Đã sửa bình luận",
+	"tag-discussiontools-edit": "Sửa bình luận",
 	"tag-discussiontools-edit-description": "Người dùng sửa một bình luận có sẵn bằng Công cụ Thảo luận",
 	"tag-discussiontools-newtopic": "[{{int:discussiontools-replywidget-newtopic-link}} Đề tài mới]",
 	"tag-discussiontools-newtopic-description": "Người dùng thêm chủ đề mới vào trang bằng Công cụ Thảo luận",
