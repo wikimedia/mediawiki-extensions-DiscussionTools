@@ -165,21 +165,12 @@
 
 	&-image {
 		background: url( images/autotopicsubpopup-image.svg ) center center no-repeat;
+		// Dark mode images (T369834)
+		.darkmode-custom-fix( {
+			background-image: url( images/autotopicsubpopup-image-dark.svg );
+		} );
 		width: 200px;
 		height: 200px;
-
-		// Add dark mode images (T369834)
-		@media screen {
-			html.skin-theme-clientpref-night & {
-				background-image: url( images/autotopicsubpopup-image-dark.svg );
-			}
-		}
-
-		@media screen and ( prefers-color-scheme: dark ) {
-			html.skin-theme-clientpref-os & {
-				background-image: url( images/autotopicsubpopup-image-dark.svg );
-			}
-		}
 	}
 
 	// Desktop
