@@ -5,6 +5,9 @@
 	position: absolute;
 	pointer-events: none;
 	opacity: 0;
+	// Use 'darken' instead of 'multiply' so that when highlights overlap
+	// (e.g. when using newcommentssince=) the overlapping parts are not
+	// darker.
 	mix-blend-mode: darken;
 	// Support: Safari
 	// Safari doesn't blend this overlay with the text unless GPU rendering is forced.
