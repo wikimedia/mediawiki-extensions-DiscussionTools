@@ -40,7 +40,7 @@
 	"discussiontools-error-noswitchtove-title": "విజువల్ విధం అచేతనం",
 	"discussiontools-findcomment-label-search": "వెతుకు",
 	"discussiontools-ledesection-button": "ఈ పేజీ గురించి మరింత తెలుసుకోండి",
-	"discussiontools-newtopic-missing-title": "మీ చర్చాంశానికి ఒక పేరు ఇవ్వండి. \"{{ లింగం : | మీది }}",
+	"discussiontools-newtopic-missing-title": "{{GENDER:|మీ}} చర్చాంశానికి ఒక పేరు ఇవ్వండి.",
 	"discussiontools-newtopic-placeholder-title": "శీర్షిక",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "సభ్యత్వం",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "సభ్యత్వం తీసివేయు",
