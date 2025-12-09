@@ -12,12 +12,9 @@ use MessageLocalizer;
  */
 class ThreadItemFormatter {
 
-	private LinkRenderer $linkRenderer;
-
 	public function __construct(
-		LinkRenderer $linkRenderer
+		private readonly LinkRenderer $linkRenderer,
 	) {
-		$this->linkRenderer = $linkRenderer;
 	}
 
 	/**

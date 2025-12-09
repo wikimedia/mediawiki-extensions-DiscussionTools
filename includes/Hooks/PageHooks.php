@@ -48,18 +48,11 @@ class PageHooks implements
 	SkinTemplateNavigation__UniversalHook
 {
 
-	private SubscriptionStore $subscriptionStore;
-	private UserNameUtils $userNameUtils;
-	private UserOptionsLookup $userOptionsLookup;
-
 	public function __construct(
-		SubscriptionStore $subscriptionStore,
-		UserNameUtils $userNameUtils,
-		UserOptionsLookup $userOptionsLookup
+		private readonly SubscriptionStore $subscriptionStore,
+		private readonly UserNameUtils $userNameUtils,
+		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
-		$this->subscriptionStore = $subscriptionStore;
-		$this->userNameUtils = $userNameUtils;
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	private function isMobile(): bool {

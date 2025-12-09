@@ -37,33 +37,19 @@ use Wikimedia\Timestamp\TimestampException;
  */
 class ThreadItemStore {
 
-	private Config $config;
-	private ILBFactory $dbProvider;
-	private ReadOnlyMode $readOnlyMode;
-	private PageStore $pageStore;
-	private RevisionStore $revStore;
-	private TitleFormatter $titleFormatter;
-	private ActorStore $actorStore;
-	private Language $language;
+	private readonly Config $config;
 
 	public function __construct(
 		ConfigFactory $configFactory,
-		ILBFactory $dbProvider,
-		ReadOnlyMode $readOnlyMode,
-		PageStore $pageStore,
-		RevisionStore $revStore,
-		TitleFormatter $titleFormatter,
-		ActorStore $actorStore,
-		Language $language
+		private readonly ILBFactory $dbProvider,
+		private readonly ReadOnlyMode $readOnlyMode,
+		private readonly PageStore $pageStore,
+		private readonly RevisionStore $revStore,
+		private readonly TitleFormatter $titleFormatter,
+		private readonly ActorStore $actorStore,
+		private readonly Language $language,
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
-		$this->dbProvider = $dbProvider;
-		$this->readOnlyMode = $readOnlyMode;
-		$this->pageStore = $pageStore;
-		$this->revStore = $revStore;
-		$this->titleFormatter = $titleFormatter;
-		$this->actorStore = $actorStore;
-		$this->language = $language;
 	}
 
 	/**

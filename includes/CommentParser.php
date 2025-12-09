@@ -38,11 +38,6 @@ class CommentParser {
 	 */
 	private const SIGNATURE_SCAN_LIMIT = 100;
 
-	private Config $config;
-	private Language $language;
-	private LanguageConverterFactory $languageConverterFactory;
-	private TitleParser $titleParser;
-
 	/** @var string[] */
 	private array $dateFormat;
 	/** @var string[][] */
@@ -57,25 +52,13 @@ class CommentParser {
 	private Element $rootNode;
 	private TitleValue $title;
 
-	/**
-	 * @param Config $config
-	 * @param Language $language Content language
-	 * @param LanguageConverterFactory $languageConverterFactory
-	 * @param LanguageData $languageData
-	 * @param TitleParser $titleParser
-	 */
 	public function __construct(
-		Config $config,
-		Language $language,
-		LanguageConverterFactory $languageConverterFactory,
+		private readonly Config $config,
+		private readonly Language $language,
+		private readonly LanguageConverterFactory $languageConverterFactory,
 		LanguageData $languageData,
-		TitleParser $titleParser
+		private readonly TitleParser $titleParser,
 	) {
-		$this->config = $config;
-		$this->language = $language;
-		$this->languageConverterFactory = $languageConverterFactory;
-		$this->titleParser = $titleParser;
-
 		$data = $languageData->getLocalData();
 		$this->dateFormat = $data['dateFormat'];
 		$this->digits = $data['digits'];

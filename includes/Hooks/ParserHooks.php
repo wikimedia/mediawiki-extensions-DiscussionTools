@@ -29,7 +29,7 @@ class ParserHooks implements
 	ParserAfterTidyHook
 {
 
-	private Config $config;
+	private readonly Config $config;
 
 	public function __construct(
 		ConfigFactory $configFactory

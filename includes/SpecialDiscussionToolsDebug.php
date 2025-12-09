@@ -20,19 +20,12 @@ use Wikimedia\Parsoid\Utils\DOMUtils;
 
 class SpecialDiscussionToolsDebug extends FormSpecialPage {
 
-	private LanguageFactory $languageFactory;
-	private ParserOutputAccess $parserOutputAccess;
-	private CommentParser $commentParser;
-
 	public function __construct(
-		LanguageFactory $languageFactory,
-		ParserOutputAccess $parserOutputAccess,
-		CommentParser $commentParser
+		private readonly LanguageFactory $languageFactory,
+		private readonly ParserOutputAccess $parserOutputAccess,
+		private readonly CommentParser $commentParser,
 	) {
 		parent::__construct( 'DiscussionToolsDebug' );
-		$this->languageFactory = $languageFactory;
-		$this->parserOutputAccess = $parserOutputAccess;
-		$this->commentParser = $commentParser;
 	}
 
 	/**

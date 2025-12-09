@@ -21,15 +21,13 @@ class PreferenceHooks implements
 	GetPreferencesHook
 {
 
-	private Config $config;
-	private LinkRenderer $linkRenderer;
+	private readonly Config $config;
 
 	public function __construct(
 		ConfigFactory $configFactory,
-		LinkRenderer $linkRenderer
+		private readonly LinkRenderer $linkRenderer,
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
-		$this->linkRenderer = $linkRenderer;
 	}
 
 	/**

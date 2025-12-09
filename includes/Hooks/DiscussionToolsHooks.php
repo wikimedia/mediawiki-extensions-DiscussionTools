@@ -20,18 +20,14 @@ use MediaWiki\User\UserNameUtils;
 class DiscussionToolsHooks implements
 	DiscussionToolsAddOverflowMenuItemsHook
 {
-	private Config $config;
-	private UserNameUtils $userNameUtils;
-	private UserOptionsLookup $userOptionsLookup;
+	private readonly Config $config;
 
 	public function __construct(
 		ConfigFactory $configFactory,
-		UserNameUtils $userNameUtils,
-		UserOptionsLookup $userOptionsLookup
+		private readonly UserNameUtils $userNameUtils,
+		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
-		$this->userNameUtils = $userNameUtils;
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**

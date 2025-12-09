@@ -31,24 +31,17 @@ class TopicSubscriptionsPager extends TablePager {
 		// 'sub_notified' => [ 'sub_notified', 'sub_item' ],
 	];
 
-	private LinkBatchFactory $linkBatchFactory;
-	private ThreadItemStore $threadItemStore;
-	private ThreadItemFormatter $threadItemFormatter;
-
 	/** @var array<string,DatabaseThreadItem[]> */
 	private array $threadItemsByName = [];
 
 	public function __construct(
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
-		LinkBatchFactory $linkBatchFactory,
-		ThreadItemStore $threadItemStore,
-		ThreadItemFormatter $threadItemFormatter
+		private readonly LinkBatchFactory $linkBatchFactory,
+		private readonly ThreadItemStore $threadItemStore,
+		private readonly ThreadItemFormatter $threadItemFormatter,
 	) {
 		parent::__construct( $context, $linkRenderer );
-		$this->linkBatchFactory = $linkBatchFactory;
-		$this->threadItemStore = $threadItemStore;
-		$this->threadItemFormatter = $threadItemFormatter;
 	}
 
 	/**
