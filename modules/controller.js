@@ -8,7 +8,8 @@ const featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {
 	CommentDetails = require( './CommentDetails.js' ),
 	HeadingItem = require( './commentparser/HeadingItem.js' ),
 	ReplyLinksController = require( './ReplyLinksController.js' ),
-	utils = require( './commentparser/utils.js' ),
+	clientUtils = require( './clientUtils.js' ),
+	commentUtils = require( './commentparser/commentUtils.js' ),
 	highlighter = require( './highlighter.js' ),
 	permalinks = require( './permalinks.js' ),
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
@@ -122,7 +123,7 @@ function getPageData( pageName, oldId, apiParams ) {
  *  Rejects with error data if the comment is transcluded, or there are lint errors on the page.
  */
 function checkThreadItemOnPage( pageName, oldId, threadItem ) {
-	const isNewTopic = threadItem.id === utils.NEW_TOPIC_COMMENT_ID;
+	const isNewTopic = threadItem.id === commentUtils.NEW_TOPIC_COMMENT_ID;
 	const defaultMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' );
 	let apiParams = null;
 	if ( isNewTopic ) {
@@ -363,7 +364,7 @@ function init( $container, state ) {
 		}
 
 		let commentController, $addSectionLink;
-		if ( comment.id === utils.NEW_TOPIC_COMMENT_ID ) {
+		if ( comment.id === commentUtils.NEW_TOPIC_COMMENT_ID ) {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$addSectionLink = $( '#ca-addsection' ).find( 'a' );
 			// When opening new topic tool using any link, always activate the link in page tabs too
@@ -413,7 +414,7 @@ function init( $container, state ) {
 
 	function newTopicComment( data ) {
 		const comment = new HeadingItem( {}, 2 );
-		comment.id = utils.NEW_TOPIC_COMMENT_ID;
+		comment.id = commentUtils.NEW_TOPIC_COMMENT_ID;
 		comment.isNewTopic = true;
 		Object.assign( comment, data );
 		return comment;
@@ -433,7 +434,7 @@ function init( $container, state ) {
 		}
 
 		let teardownPromise = $.Deferred().resolve();
-		if ( commentId === utils.NEW_TOPIC_COMMENT_ID ) {
+		if ( commentId === commentUtils.NEW_TOPIC_COMMENT_ID ) {
 			// If this is a new topic link, and a reply widget is open, attempt to close it first.
 			if ( activeController ) {
 				teardownPromise = activeController.tryTeardown();
@@ -456,7 +457,7 @@ function init( $container, state ) {
 				return;
 			}
 			let comment;
-			if ( commentId !== utils.NEW_TOPIC_COMMENT_ID ) {
+			if ( commentId !== commentUtils.NEW_TOPIC_COMMENT_ID ) {
 				comment = pageThreads.findCommentById( commentId );
 			} else {
 				comment = newTopicComment( data );
@@ -502,7 +503,7 @@ function init( $container, state ) {
 			}
 			return true;
 		} );
-		const newTopicStorage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + utils.NEW_TOPIC_COMMENT_ID, STORAGE_EXPIRY );
+		const newTopicStorage = new MemoryStorage( mw.storage, 'mw-ext-DiscussionTools-reply/' + commentUtils.NEW_TOPIC_COMMENT_ID, STORAGE_EXPIRY );
 		if ( newTopicStorage.get( 'saveable' ) || newTopicStorage.get( 'title' ) ) {
 			const mode = newTopicStorage.get( 'mode' );
 			setupController( newTopicComment(), $( [] ), {
@@ -523,7 +524,7 @@ function init( $container, state ) {
 		if ( state.repliedTo ) {
 			highlighter.highlightPublishedComment( pageThreads, state.repliedTo );
 
-			if ( state.repliedTo === utils.NEW_TOPIC_COMMENT_ID ) {
+			if ( state.repliedTo === commentUtils.NEW_TOPIC_COMMENT_ID ) {
 				mw.hook( 'postEdit' ).fire( {
 					tempUserCreated: state.tempUserCreated,
 					message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
@@ -557,7 +558,7 @@ function init( $container, state ) {
 		} );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'body' ).on( 'click', ( e ) => {
-			if ( utils.isUnmodifiedLeftClick( e ) && !e.target.closest( 'a' ) ) {
+			if ( clientUtils.isUnmodifiedLeftClick( e ) && !e.target.closest( 'a' ) ) {
 				// Remove the highlight and the hash from the URL, unless clicking on another link
 				highlighter.clearHighlightTargetComment( pageThreads );
 			}

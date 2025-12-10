@@ -2,7 +2,7 @@
 /* global $:off */
 
 const
-	utils = require( './utils.js' );
+	commentUtils = require( './commentUtils.js' );
 
 /**
  * Remove extra linebreaks from a wikitext string
@@ -11,7 +11,7 @@ const
  * @return {string}
  */
 function sanitizeWikitextLinebreaks( wikitext ) {
-	return utils.htmlTrim( wikitext )
+	return commentUtils.htmlTrim( wikitext )
 		.replace( /\r/g, '\n' )
 		.replace( /\n+/g, '\n' );
 }
@@ -85,7 +85,7 @@ function addListItem( comment, replyIndentation ) {
 	// First, we need to find a block-level parent that we can mess with.
 	// If we can't find a surrounding list item or paragraph (e.g. maybe we're inside a table cell
 	// or something), take the parent node and hope for the best.
-	let parent = utils.closestElement( target, [ 'li', 'dd', 'p' ] ) || target.parentNode;
+	let parent = commentUtils.closestElement( target, [ 'li', 'dd', 'p' ] ) || target.parentNode;
 	while ( target.parentNode !== parent ) {
 		target = target.parentNode;
 	}
@@ -95,9 +95,9 @@ function addListItem( comment, replyIndentation ) {
 	// If the comment is fully covered by some wrapper element, insert replies outside that wrapper.
 	// This will often just be a paragraph node (<p>), but it can be a <div> or <table> that serves
 	// as some kind of a fancy frame, which are often used for barnstars and announcements.
-	const excludedWrapper = utils.closestElement( target, [ 'section' ] ) ||
+	const excludedWrapper = commentUtils.closestElement( target, [ 'section' ] ) ||
 		curComment.rootNode;
-	const covered = utils.getFullyCoveredSiblings( curComment, excludedWrapper );
+	const covered = commentUtils.getFullyCoveredSiblings( curComment, excludedWrapper );
 	if ( curComment.level === 1 && covered ) {
 		target = covered[ covered.length - 1 ];
 		parent = target.parentNode;
@@ -105,7 +105,7 @@ function addListItem( comment, replyIndentation ) {
 
 	// If the comment is in a transclusion, insert replies after the transclusion. (T313100)
 	// This method should never be called in cases where that would be a bad idea.
-	let transclusionNode = utils.getTranscludedFromElement( target );
+	let transclusionNode = commentUtils.getTranscludedFromElement( target );
 	if ( transclusionNode ) {
 		while (
 			transclusionNode.nextSibling &&
@@ -142,7 +142,7 @@ function addListItem( comment, replyIndentation ) {
 
 	// Instead of just using curComment.level, consider indentation of lists within the
 	// comment (T252702)
-	let curLevel = utils.getIndentLevel( target, curComment.rootNode ) + 1;
+	let curLevel = commentUtils.getIndentLevel( target, curComment.rootNode ) + 1;
 
 	let item, list;
 	if ( desiredLevel === 1 ) {
@@ -163,10 +163,10 @@ function addListItem( comment, replyIndentation ) {
 		let pointer = target;
 		while (
 			pointer.nextSibling && (
-				utils.isRenderingTransparentNode( pointer.nextSibling ) ||
+				commentUtils.isRenderingTransparentNode( pointer.nextSibling ) ||
 				(
 					pointer.nextSibling.nodeType === Node.TEXT_NODE &&
-					utils.htmlTrim( pointer.nextSibling.textContent ) === '' &&
+					commentUtils.htmlTrim( pointer.nextSibling.textContent ) === '' &&
 					// If at least two lines of whitespace are detected, the following HTML
 					// comments are not considered to be part of the reply (T264026, T301214)
 					!/\n[^\n]*\n/.test( pointer.nextSibling.textContent )
@@ -174,7 +174,7 @@ function addListItem( comment, replyIndentation ) {
 			)
 		) {
 			pointer = pointer.nextSibling;
-			if ( utils.isRenderingTransparentNode( pointer ) ) {
+			if ( commentUtils.isRenderingTransparentNode( pointer ) ) {
 				target = pointer;
 			}
 		}
@@ -322,7 +322,7 @@ function unwrapList( list, fragment ) {
 	}
 
 	// If the whole list is a template return it unmodified (T253150)
-	if ( utils.getTranscludedFromElement( list ) ) {
+	if ( commentUtils.getTranscludedFromElement( list ) ) {
 		return;
 	}
 
@@ -336,7 +336,7 @@ function unwrapList( list, fragment ) {
 			while ( list.firstChild.firstChild ) {
 				// If contents is a block element, place outside the paragraph
 				// and start a new paragraph after
-				if ( utils.isBlockElement( list.firstChild.firstChild ) ) {
+				if ( commentUtils.isBlockElement( list.firstChild.firstChild ) ) {
 					if ( p.firstChild ) {
 						const insertBefore2 = referenceNode.nextSibling;
 						referenceNode = p;

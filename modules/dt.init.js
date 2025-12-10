@@ -102,6 +102,6 @@ module.exports = {
 	ThreadItem: require( './commentparser/ThreadItem.js' ),
 	HeadingItem: require( './commentparser/HeadingItem.js' ),
 	CommentItem: require( './commentparser/CommentItem.js' ),
-	utils: require( './commentparser/utils.js' ),
+	utils: require( './commentparser/commentUtils.js' ),
 	config: require( './config.json' )
 };

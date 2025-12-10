@@ -1,6 +1,6 @@
 /* global moment */
 
-const utils = require( './utils.js' );
+const commentUtils = require( './commentUtils.js' );
 
 /**
  * A thread item, either a heading or a comment
@@ -111,7 +111,7 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 	item.range = {
 		// Start range after startMarker, because it produces funny results from getBoundingClientRect
 		startContainer: startMarker.parentNode,
-		startOffset: utils.childIndexOf( startMarker ) + 1,
+		startOffset: commentUtils.childIndexOf( startMarker ) + 1,
 		// End range inside endMarker, because modifier crashes if endContainer is a <p>/<dd>/<li> node
 		endContainer: endMarker,
 		endOffset: 0
@@ -122,7 +122,7 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 		if ( sigMarker ) {
 			item.signatureRanges = [ {
 				startContainer: sigMarker.parentNode,
-				startOffset: utils.childIndexOf( sigMarker ) + 1,
+				startOffset: commentUtils.childIndexOf( sigMarker ) + 1,
 				endContainer: item.range.endContainer,
 				endOffset: item.range.endOffset
 			} ];

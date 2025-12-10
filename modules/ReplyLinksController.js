@@ -1,7 +1,8 @@
 const
+	clientUtils = require( './clientUtils.js' ),
 	// LanguageData::getLocalData()
 	parserData = require( './commentparser/data.json' ),
-	utils = require( './commentparser/utils.js' );
+	commentUtils = require( './commentparser/commentUtils.js' );
 
 const featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
@@ -132,7 +133,7 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 	}
 	e.preventDefault();
 
-	this.emit( 'link-click', utils.NEW_TOPIC_COMMENT_ID, $( e.currentTarget ), data );
+	this.emit( 'link-click', commentUtils.NEW_TOPIC_COMMENT_ID, $( e.currentTarget ), data );
 };
 
 /**
@@ -144,7 +145,7 @@ ReplyLinksController.prototype.onAnyLinkClick = function ( e ) {
 ReplyLinksController.prototype.parseNewTopicLink = function ( href ) {
 	const searchParams = new URL( href ).searchParams;
 
-	let title = mw.Title.newFromText( utils.getTitleFromUrl( href ) || '' );
+	let title = mw.Title.newFromText( commentUtils.getTitleFromUrl( href ) || '' );
 	if ( !title ) {
 		return null;
 	}
@@ -212,7 +213,7 @@ ReplyLinksController.prototype.isActivationEvent = function ( e ) {
 		// Only handle keypresses on the "Enter" or "Space" keys
 		return false;
 	}
-	if ( e.type === 'click' && !utils.isUnmodifiedLeftClick( e ) ) {
+	if ( e.type === 'click' && !clientUtils.isUnmodifiedLeftClick( e ) ) {
 		// Only handle unmodified left clicks
 		return false;
 	}

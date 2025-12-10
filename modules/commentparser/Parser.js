@@ -2,7 +2,7 @@
 /* global $:off */
 
 const
-	utils = require( './utils.js' ),
+	commentUtils = require( './commentUtils.js' ),
 	charAt = require( 'mediawiki.String' ).charAt,
 	codePointLength = require( 'mediawiki.String' ).codePointLength,
 	trimByteLength = require( 'mediawiki.String' ).trimByteLength,
@@ -616,7 +616,7 @@ Parser.prototype.getUsernameFromLink = function ( link ) {
 	if ( link.classList.contains( 'mw-selflink' ) ) {
 		title = this.title;
 	} else {
-		const titleString = utils.getTitleFromUrl( link.href ) || '';
+		const titleString = commentUtils.getTitleFromUrl( link.href ) || '';
 		// Performance optimization, skip strings that obviously don't contain a namespace
 		if ( !titleString || !titleString.includes( ':' ) ) {
 			return null;
@@ -695,7 +695,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 	let length = 0;
 	let lastLinkNode = timestampNode;
 
-	utils.linearWalkBackwards(
+	commentUtils.linearWalkBackwards(
 		timestampNode,
 		( event, node ) => {
 			if ( event === 'enter' && node === until ) {
@@ -704,14 +704,14 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 			if ( length >= SIGNATURE_SCAN_LIMIT ) {
 				return true;
 			}
-			if ( utils.isBlockElement( node ) ) {
+			if ( commentUtils.isBlockElement( node ) ) {
 				// Don't allow reaching into preceding paragraphs
 				return true;
 			}
 
 			if ( event === 'leave' && node !== timestampNode ) {
 				length += node.nodeType === Node.TEXT_NODE ?
-					codePointLength( utils.htmlTrim( node.textContent ) ) : 0;
+					codePointLength( commentUtils.htmlTrim( node.textContent ) ) : 0;
 			}
 
 			// Find the closest link before timestamp that links to the user's user page.
@@ -744,9 +744,9 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 
 	const range = {
 		startContainer: lastLinkNode.parentNode,
-		startOffset: utils.childIndexOf( lastLinkNode ),
+		startOffset: commentUtils.childIndexOf( lastLinkNode ),
 		endContainer: timestampNode.parentNode,
-		endOffset: utils.childIndexOf( timestampNode ) + 1
+		endOffset: commentUtils.childIndexOf( timestampNode ) + 1
 	};
 	const nativeRange = ThreadItem.prototype.getRange.call( { range: range } );
 
@@ -759,7 +759,7 @@ Parser.prototype.findSignature = function ( timestampNode, until ) {
 	// "« Saper // dyskusja »"
 	//
 	// TODO Not sure if this is actually good, might be better to just use the range...
-	const sigNodes = utils.getCoveredSiblings( nativeRange ).reverse();
+	const sigNodes = commentUtils.getCoveredSiblings( nativeRange ).reverse();
 
 	return {
 		nodes: sigNodes,
@@ -794,14 +794,14 @@ Parser.prototype.nextInterestingLeafNode = function ( node ) {
 				return NodeFilter.FILTER_REJECT;
 			}
 			// Ignore some elements usually used as separators or headers (and their descendants)
-			if ( utils.isCommentSeparator( n ) ) {
+			if ( commentUtils.isCommentSeparator( n ) ) {
 				return NodeFilter.FILTER_REJECT;
 			}
 			// Ignore nodes with no rendering that mess up our indentation detection
-			if ( utils.isRenderingTransparentNode( n ) ) {
+			if ( commentUtils.isRenderingTransparentNode( n ) ) {
 				return NodeFilter.FILTER_REJECT;
 			}
-			if ( utils.isCommentContent( n ) ) {
+			if ( commentUtils.isCommentContent( n ) ) {
 				return NodeFilter.FILTER_ACCEPT;
 			}
 			return NodeFilter.FILTER_SKIP;
@@ -831,10 +831,10 @@ function adjustSigRange( sigNodes, match, node ) {
 	// TODO Document why this needs to be so complicated
 	const lastSigNodeOffset = lastSigNode === node ?
 		match.matchData.index + match.matchData[ 0 ].length - match.offset :
-		utils.childIndexOf( lastSigNode ) + 1;
+		commentUtils.childIndexOf( lastSigNode ) + 1;
 	const sigRange = {
 		startContainer: firstSigNode.parentNode,
-		startOffset: utils.childIndexOf( firstSigNode ),
+		startOffset: commentUtils.childIndexOf( firstSigNode ),
 		endContainer: lastSigNode === node ? node : lastSigNode.parentNode,
 		endOffset: lastSigNodeOffset
 	};
@@ -866,7 +866,7 @@ Parser.prototype.buildThreadItems = function () {
 	while ( ( node = treeWalker.nextNode() ) ) {
 		let match;
 		if ( node.tagName && ( match = node.tagName.match( /^h([1-6])$/i ) ) ) {
-			const headingNode = utils.getHeadlineNode( node );
+			const headingNode = commentUtils.getHeadlineNode( node );
 			range = {
 				startContainer: headingNode,
 				startOffset: 0,
@@ -908,12 +908,12 @@ Parser.prototype.buildThreadItems = function () {
 			// within one paragraph/list-item result in a confusing double "Reply" button, and we also have
 			// no way to indicate which one you're replying to (this might matter in the future for
 			// notifications or something).
-			utils.linearWalk(
+			commentUtils.linearWalk(
 				endNode,
 				// eslint-disable-next-line no-loop-func
 				( event, n ) => {
 					let match2, foundSignature2;
-					if ( utils.isBlockElement( n ) || utils.isCommentSeparator( n ) ) {
+					if ( commentUtils.isBlockElement( n ) || commentUtils.isCommentSeparator( n ) ) {
 						// Stop when entering or leaving a block node
 						return true;
 					}
@@ -943,13 +943,13 @@ Parser.prototype.buildThreadItems = function () {
 				endNode.childNodes.length;
 			range = {
 				startContainer: startNode.parentNode,
-				startOffset: utils.childIndexOf( startNode ),
+				startOffset: commentUtils.childIndexOf( startNode ),
 				endContainer: endNode,
 				endOffset: length
 			};
 
-			const startLevel = utils.getIndentLevel( startNode, this.rootNode ) + 1;
-			const endLevel = utils.getIndentLevel( node, this.rootNode ) + 1;
+			const startLevel = commentUtils.getIndentLevel( startNode, this.rootNode ) + 1;
+			const endLevel = commentUtils.getIndentLevel( node, this.rootNode ) + 1;
 			if ( startLevel !== endLevel ) {
 				warnings.push( 'Comment starts and ends with different indentation' );
 			}
