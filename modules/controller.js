@@ -3,12 +3,12 @@
 const featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {},
 	MemoryStorage = require( './MemoryStorage.js' ),
 	STORAGE_EXPIRY = 60 * 60 * 24 * 30,
-	Parser = require( './Parser.js' ),
-	ThreadItemSet = require( './ThreadItemSet.js' ),
+	Parser = require( './commentparser/Parser.js' ),
+	ThreadItemSet = require( './commentparser/ThreadItemSet.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
-	HeadingItem = require( './HeadingItem.js' ),
+	HeadingItem = require( './commentparser/HeadingItem.js' ),
 	ReplyLinksController = require( './ReplyLinksController.js' ),
-	utils = require( './utils.js' ),
+	utils = require( './commentparser/utils.js' ),
 	highlighter = require( './highlighter.js' ),
 	permalinks = require( './permalinks.js' ),
 	defaultEditMode = mw.user.options.get( 'discussiontools-editmode' ) || mw.config.get( 'wgDiscussionToolsFallbackEditMode' ),
@@ -320,7 +320,7 @@ function init( $container, state ) {
 		);
 	} );
 
-	const parser = new Parser( require( './parser/data.json' ) );
+	const parser = new Parser( require( './commentparser/data.json' ) );
 
 	const commentNodes = $pageContainer[ 0 ].querySelectorAll( '[data-mw-thread-id]' );
 	pageThreads = ThreadItemSet.static.newFromJSON( mw.config.get( 'wgDiscussionToolsPageThreads' ) || [], $pageContainer[ 0 ], parser );

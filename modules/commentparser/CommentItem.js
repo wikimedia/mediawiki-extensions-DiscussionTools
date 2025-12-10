@@ -1,5 +1,5 @@
 const ThreadItem = require( './ThreadItem.js' ),
-	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
+	moment = require( '../lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
 /**
  * A comment item
@@ -51,7 +51,7 @@ OO.inheritClass( CommentItem, ThreadItem );
  * @return {string} Comment timestamp in standard format
  */
 CommentItem.prototype.getTimestampString = function () {
-	const dtConfig = require( './config.json' );
+	const dtConfig = require( '../config.json' );
 	const switchTime = moment.utc( dtConfig.switchTime );
 	if ( this.timestamp < switchTime ) {
 		return this.timestamp.utc().toISOString();

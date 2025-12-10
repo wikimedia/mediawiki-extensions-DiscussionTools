@@ -1,4 +1,4 @@
-const utils = require( './utils.js' );
+const utils = require( './commentparser/utils.js' );
 
 function init( $pageContainer ) {
 	$pageContainer.find( '.ext-discussiontools-init-timestamplink' ).on( 'click', ( e ) => {

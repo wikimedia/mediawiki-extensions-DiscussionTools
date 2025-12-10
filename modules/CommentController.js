@@ -1,9 +1,9 @@
 const
 	controller = require( './controller.js' ),
-	modifier = require( './modifier.js' ),
+	modifier = require( './commentparser/modifier.js' ),
 	dtConf = require( './config.json' ),
 	CommentDetails = require( './CommentDetails.js' ),
-	CommentItem = require( './CommentItem.js' ),
+	CommentItem = require( './commentparser/CommentItem.js' ),
 	defaultVisual = controller.defaultVisual,
 	enable2017Wikitext = controller.enable2017Wikitext;
 

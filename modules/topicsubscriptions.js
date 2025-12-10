@@ -3,9 +3,9 @@ const
 	STATE_UNSUBSCRIBED = 0,
 	STATE_SUBSCRIBED = 1,
 	STATE_AUTOSUBSCRIBED = 2,
-	utils = require( './utils.js' ),
-	CommentItem = require( './CommentItem.js' ),
-	HeadingItem = require( './HeadingItem.js' );
+	utils = require( './commentparser/utils.js' ),
+	CommentItem = require( './commentparser/CommentItem.js' ),
+	HeadingItem = require( './commentparser/HeadingItem.js' );
 let api,
 	seenAutoTopicSubPopup = !!+mw.user.options.get( 'discussiontools-seenautotopicsubpopup' ),
 	linksByName = {},

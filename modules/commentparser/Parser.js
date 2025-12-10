@@ -10,7 +10,7 @@ const
 	HeadingItem = require( './HeadingItem.js' ),
 	ThreadItem = require( './ThreadItem.js' ),
 	ThreadItemSet = require( './ThreadItemSet.js' ),
-	moment = require( './lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
+	moment = require( '../lib/moment-timezone/moment-timezone-with-data-1970-2030.js' );
 
 /**
  * Utilities for detecting and parsing components of discussion pages: signatures, timestamps,

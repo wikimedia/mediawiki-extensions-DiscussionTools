@@ -1,7 +1,7 @@
 const
 	// LanguageData::getLocalData()
-	parserData = require( './parser/data.json' ),
-	utils = require( './utils.js' );
+	parserData = require( './commentparser/data.json' ),
+	utils = require( './commentparser/utils.js' );
 
 const featuresEnabled = mw.config.get( 'wgDiscussionToolsFeaturesEnabled' ) || {};
 
