@@ -41,5 +41,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True to subscribe, false to unsubscribe",
 	"apihelp-discussiontoolssubscribe-summary": "Subscribe (or unsubscribe) to receive notifications about a topic.",
 	"apihelp-discussiontoolsthank-param-commentid": "ID of the comment to thank.",
-	"apihelp-discussiontoolsthank-summary": "Send a public thank-you notification for a comment."
+	"apihelp-discussiontoolsthank-summary": "Send a public thank-you notification for a comment.",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "Automatically subscribe the user to any new talk page threads created by the edit. Use 'yes' or 'no' to override a user's preference (the default)."
 }

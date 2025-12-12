@@ -455,6 +455,8 @@
 		"LoadExtensionSchemaUpdates": "installer",
 		"GetDoubleUnderscoreIDs": "parser",
 		"ApiMain::moduleManager": "api",
+		"APIGetAllowedParams": "api",
+		"APIAfterExecute": "api",
 		"ParserAfterTidy": "parser",
 		"ParserOutputPostCacheTransform": "parser",
 		"BeforeDisplayNoArticleText": "page",

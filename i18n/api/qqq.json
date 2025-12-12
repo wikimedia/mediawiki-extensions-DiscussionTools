@@ -43,5 +43,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "{{doc-apihelp-param|discussiontoolssubscribe|subscribe}}",
 	"apihelp-discussiontoolssubscribe-summary": "{{doc-apihelp-summary|discussiontoolssubscribe}}",
 	"apihelp-discussiontoolsthank-param-commentid": "{{doc-apihelp-summary|discussiontoolsthank|commentid}}",
-	"apihelp-discussiontoolsthank-summary": "{{doc-apihelp-summary|discussiontoolsthank}}"
+	"apihelp-discussiontoolsthank-summary": "{{doc-apihelp-summary|discussiontoolsthank}}",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "{{doc-apihelp-param|edit|discussiontoolsautosubscribe}}"
 }
