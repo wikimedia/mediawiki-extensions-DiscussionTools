@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"MacTire02"
+		]
+	},
+	"discussiontools": "Greienyn resoonaght",
+	"discussiontools-autotopicsubpopup-dismiss": "OK, ta mee toiggal",
+	"discussiontools-defaultsummary-reply": "Freggyrt",
+	"discussiontools-newtopic-placeholder-title": "Bun-chooish",
+	"discussiontools-replywidget-advanced": "Cast",
+	"discussiontools-replywidget-cancel": "Cur ass",
+	"discussiontools-replywidget-mode-source": "Bun",
+	"discussiontools-replywidget-mode-visual": "Reayrtagh",
+	"discussiontools-replywidget-placeholder-newtopic": "Cur-sheese",
+	"discussiontools-replywidget-preview": "Roie-haishbynys",
+	"discussiontools-replywidget-summary": "Giare-choontys",
+	"discussiontools-replywidget-watchthis": "Cur y duillag shoh rish dty [[Special:Watchlist|rolley arrey]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|ymmydeyr|ymmydeyryn}} ‘sy resoonaght",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|çhaghteraght|çhaghteraghtyn}}",
+	"discussiontools-topicheader-latestcomment": "Çhaghteraght s’jerree: $1",
+	"discussiontools-topicsubscription-button-subscribe": "fo-screeu",
+	"discussiontools-topicsubscription-button-subscribe-label": "Fo-screeu",
+	"discussiontools-topicsubscription-button-unsubscribe": "cur stap er fo-screeu",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Cur stap er fo-screeu"
+}

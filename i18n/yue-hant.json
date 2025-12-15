@@ -44,7 +44,7 @@
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "「<strong>$3</strong>」有{{PLURAL:$1|$1個新回覆|100=99+個新回覆}}。",
 	"discussiontools-notification-subscribed-new-comment-view": "睇留言",
 	"discussiontools-pageframe-latestcomment": "最新留言：$1由$2喺主題$3度留言",
-	"discussiontools-pageframe-latestcomment-notopic": "最新嘅評論：$1乘$2",
+	"discussiontools-pageframe-latestcomment-notopic": "最新留言：$1由$2留言",
 	"discussiontools-pagetitle-newtopic": "用$1開始新主題",
 	"discussiontools-pagetitle-reply": "回覆緊$1",
 	"discussiontools-postedit-confirmation-published": "你嘅留言發佈咗。",
