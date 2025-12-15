@@ -41,5 +41,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true zum Abonnieren, false zum Abbestellen",
 	"apihelp-discussiontoolssubscribe-summary": "Abonnieren (oder abbestellen), um Benachrichtigungen über ein Thema zu erhalten.",
 	"apihelp-discussiontoolsthank-param-commentid": "ID des Kommentars, für den gedankt werden soll.",
-	"apihelp-discussiontoolsthank-summary": "Senden einer öffentliche Dankesbenachrichtigung für einen Kommentar."
+	"apihelp-discussiontoolsthank-summary": "Senden einer öffentliche Dankesbenachrichtigung für einen Kommentar.",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "Der Benutzer wird automatisch für alle neuen Diskussionsthemen abonniert, die durch die Bearbeitung erstellt werden. Mit „Ja“ oder „Nein“ kann die Benutzereinstellung (Standard) überschrieben werden."
 }

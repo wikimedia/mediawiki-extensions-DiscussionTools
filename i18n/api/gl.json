@@ -43,5 +43,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Verdadeiro para subscribirse, falso para cancelar a subscrición",
 	"apihelp-discussiontoolssubscribe-summary": "Subscribirse (ou cancelar a subscrición) para recibir notificacións dun fío.",
 	"apihelp-discussiontoolsthank-param-commentid": "Identificador do comentario que agradecer.",
-	"apihelp-discussiontoolsthank-summary": "Enviar unha notificación pública de agradecemento por un comentario."
+	"apihelp-discussiontoolsthank-summary": "Enviar unha notificación pública de agradecemento por un comentario.",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "Subscribir automaticamente o usuario a calquera novo fío de conversa creado pola edición. Utiliza \"yes\" ou \"no\" para anular a preferencia dun usuario (a opción predeterminada)."
 }
