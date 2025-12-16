@@ -52,5 +52,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "true为订阅，false为取消订阅",
 	"apihelp-discussiontoolssubscribe-summary": "订阅（或取消订阅）来接收有关话题的通知。",
 	"apihelp-discussiontoolsthank-param-commentid": "要感谢的留言ID。",
-	"apihelp-discussiontoolsthank-summary": "发送公开的感谢留言通知。"
+	"apihelp-discussiontoolsthank-summary": "发送公开的感谢留言通知。",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "自动将用户订阅至由编辑创建的任何讨论页新主题。使用“yes”或“no”来覆盖用户的参数参数设置（默认值）。"
 }
