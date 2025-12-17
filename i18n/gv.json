@@ -4,6 +4,9 @@
 			"MacTire02"
 		]
 	},
+	"discussiontools": "Greienyn resoonaght",
+	"discussiontools-autotopicsubpopup-body": "Bee fogrey currit dhyt tra vees çhaghteraght noa er ny phostal ‘sy resoonaght shoh. Foddee oo soiaghyn dt’ograghyn y chochiartaghey ayns tosheeaghtyn.",
+	"discussiontools-autotopicsubpopup-dismiss": "OK, ta mee toiggal",
 	"discussiontools-defaultsummary-reply": "Freggyrt",
 	"discussiontools-newtopic-missing-title": "Kiarail enmys da {{GENDER:|dty}} vun-chooish resoonaght, my sailt.",
 	"discussiontools-newtopic-placeholder-title": "Bun-chooish",
@@ -11,7 +14,7 @@
 	"discussiontools-replywidget-advanced": "Cast",
 	"discussiontools-replywidget-cancel": "Cur ass",
 	"discussiontools-replywidget-mode-source": "Bun",
-	"discussiontools-replywidget-mode-visual": "Shilleydagh",
+	"discussiontools-replywidget-mode-visual": "Reayrtagh",
 	"discussiontools-replywidget-newtopic": "{{GENDER:|Cur}} bun-chooish rish",
 	"discussiontools-replywidget-placeholder-newtopic": "Cur-sheese",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Freggyr}} da {{BIDI:$1}}",
