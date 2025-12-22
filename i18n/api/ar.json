@@ -52,5 +52,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "صح للاشتراك، خطأ لإلغاء الاشتراك",
 	"apihelp-discussiontoolssubscribe-summary": "اشتراك (أو إلغاء الاشتراك) لتلقّي إخطارات حول موضوع.",
 	"apihelp-discussiontoolsthank-param-commentid": "معرف التعليق المراد شكره.",
-	"apihelp-discussiontoolsthank-summary": "إرسال إشعار شكر عام على تعليق."
+	"apihelp-discussiontoolsthank-summary": "إرسال إشعار شكر عام على تعليق.",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "قم بإضافة المستخدم تلقائيًا إلى أي سلاسل نقاش جديدة يتم إنشاؤها بواسطة التعديل. استخدم \"نعم\" أو \"لا\" لتجاوز تفضيل المستخدم (الإعداد الافتراضي)."
 }

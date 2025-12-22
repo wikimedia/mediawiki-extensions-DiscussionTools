@@ -43,5 +43,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True за претплата, false за отпис",
 	"apihelp-discussiontoolssubscribe-summary": "Претплатете се (или отпишете се) за да добивате известувања на тема.",
 	"apihelp-discussiontoolsthank-param-commentid": "Назнака на коментарот на кој се заблагодарувате.",
-	"apihelp-discussiontoolsthank-summary": "Испратете јавна благодарница за коментар."
+	"apihelp-discussiontoolsthank-summary": "Испратете јавна благодарница за коментар.",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "Автоматски претплаќај го корисникот на сите нови разговорни нишки создадени од уредувањето. Послужете се со „yes“ или „no“ за да го смените изборот на корисникот (по основно)."
 }
