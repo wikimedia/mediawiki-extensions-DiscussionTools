@@ -11,7 +11,7 @@
 	"discussiontools-replywidget-advanced": "Yankwik",
 	"discussiontools-replywidget-cancel": "Tea nikneki",
 	"discussiontools-replywidget-mode-source": "Tajtapual",
-	"discussiontools-replywidget-mode-visual": "tachialis",
+	"discussiontools-replywidget-mode-visual": "Itachishka",
 	"discussiontools-replywidget-placeholder-newtopic": "itachiska",
 	"discussiontools-replywidget-preview": "Achtutachialis",
 	"discussiontools-replywidget-summary": "Taneshtilis kutu:",
@@ -19,8 +19,8 @@
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|TUKNEW|TUIJIKNIWAN}} PAL NE TASUMALIS",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|Yultaketzalis|Yultajtaketzalis}}",
 	"discussiontools-topicheader-latestcomment": " Yultajtaketzalis ka talchi :$1",
-	"discussiontools-topicsubscription-button-subscribe": "shikwawasu",
-	"discussiontools-topicsubscription-button-subscribe-label": "shikwawasu",
+	"discussiontools-topicsubscription-button-subscribe": "shimuwawasu",
+	"discussiontools-topicsubscription-button-subscribe-label": "shimuwawasu",
 	"discussiontools-topicsubscription-button-unsubscribe": "tea  nikneki ninemi kalijtik",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "shikwawasu"
 }

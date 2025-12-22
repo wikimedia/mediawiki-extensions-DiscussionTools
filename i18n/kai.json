@@ -5,10 +5,12 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Reply",
+	"discussiontools-newtopic-placeholder-title": "Men",
 	"discussiontools-replywidget-advanced": "Mâiwàa",
 	"discussiontools-replywidget-cancel": "Daanam",
 	"discussiontools-replywidget-mode-source": "Aroo",
 	"discussiontools-replywidget-mode-visual": "Men ma naa",
+	"discussiontools-replywidget-placeholder-newtopic": "Bayaani",
 	"discussiontools-replywidget-preview": "Preview",
 	"discussiontools-replywidget-summary": "Wàalài ma Chàchà",
 	"discussiontools-replywidget-watchthis": "Ara shafi ayam ka dika [[Special:Watchlist|watchlist]]",
