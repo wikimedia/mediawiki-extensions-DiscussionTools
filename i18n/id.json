@@ -89,7 +89,7 @@
 	"discussiontools-preference-autotopicsub": "Secara otomatis berlangganan ke topik",
 	"discussiontools-preference-autotopicsub-help": "Ketika Anda membuat diskusi baru atau komentar baru di diskusi yang sudah ada, Anda akan secara otomatis diberi tahu saat ada yang mengirim komentar baru di sana.",
 	"discussiontools-preference-description": "Menyalakan fitur halaman diskusi uji coba:\n* [https://www.mediawiki.org/wiki/Talk_pages_project/Usability Tampilkan metadata] tentang setiap diskusi dan menyalakan tata letak halaman baru.\n\nAnda dapat menyesuaikan fitur-fitur ini di [[Special:Preferences#mw-prefsection-editing-discussion|preferensi]].\n\nPembaruan akan diposting di [https://www.mediawiki.org/wiki/Talk_pages_project/Updates halaman pembaruan proyek halaman diskusi].\n\nHarap diperhatikan:\n* Seiring waktu, fitur uji coba baru akan ditambahkan.\n\n* Beberapa fitur di atas mungkin belum tersedia di wiki Anda.",
-	"discussiontools-preference-gadget-conflict": "Untuk mengaktifkan balasan cepat, Anda harus terlebih dahulu [[$1|menonaktifkan perkakas Convenient Discussions]] di preferensi Perkakas Anda.",
+	"discussiontools-preference-gadget-conflict": "Untuk menyalakan balasan cepat, Anda harus terlebih dahulu [[$1|mematikan perkakas Convenient Discussions]] di preferensi Perkakas Anda.",
 	"discussiontools-preference-label": "Perkakas diskusi",
 	"discussiontools-preference-newtopictool": "Nyalakan penambahan topik dengan cepat",
 	"discussiontools-preference-newtopictool-createpage": "Ketika saya mengunjungi halaman diskusi yang belum dibuat:",
