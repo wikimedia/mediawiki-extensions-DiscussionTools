@@ -388,12 +388,12 @@ class ThreadItemStore {
 			$parent = null;
 		}
 
-		$transcludedFrom = $row->itr_transcludedfrom === null ? false : (
-			$row->itr_transcludedfrom === '0' ? true :
-				$this->titleFormatter->getPrefixedText(
-					$this->pageStore->newPageRecordFromRow( $row )
-				)
-		);
+		if ( $row->itr_transcludedfrom && $row->page_id ) {
+			$transcludedFrom = $this->titleFormatter->getPrefixedText(
+				$this->pageStore->newPageRecordFromRow( $row ) );
+		} else {
+			$transcludedFrom = $row->itr_transcludedfrom === '0';
+		}
 
 		if ( $row->it_timestamp !== null && $row->it_actor !== null ) {
 			$author = $this->actorStore->newActorFromRow( $row )->getName();
