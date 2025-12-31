@@ -74,7 +74,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|Zasubskrybowałeś|Zasubskrybowałaś|Zasubskrybowałeś(-aś)}}!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "Nie będziesz już otrzymywać powiadomień o rozpoczęciu nowych tematów na tej stronie.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "Usunięto subskrypcję.",
-	"discussiontools-notification-added-topic-header": "Nowy temat „<strong>$4</strong>” rozpoczęty na stronie <strong>$3</strong> przez $2.",
+	"discussiontools-notification-added-topic-header": "Nowy temat „<strong>$4</strong>” rozpoczęty na stronie <strong>$3</strong> {{GENDER:$2|przez}} $1.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Jeden nowy wątek|$1 nowe wątki|$1 nowych wątków|100=Ponad 99 nowych wątków}} na stronie <strong>$2</strong>.",
 	"discussiontools-notification-added-topic-view": "Pokaż wątek",
 	"discussiontools-notification-comment-thank-header": "$1 {{GENDER:$2|poziękował|podziękowała|podziękował(-a)}} {{GENDER:$4|ci}} za komentarz w „<strong>$3</strong>”.",
