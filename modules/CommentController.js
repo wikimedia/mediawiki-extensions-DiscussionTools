@@ -40,19 +40,27 @@ OO.mixinClass( CommentController, OO.EventEmitter );
 /* CommentController private utilities */
 
 /**
- * Get the latest revision ID of the page.
+ * Get the latest revision ID of the page as well as the
+ * canonical page name if we encounter variant-conversion.
  *
  * @param {string} pageName
  * @return {jQuery.Promise}
  */
-function getLatestRevId( pageName ) {
+function getLatestPageInfo( pageName ) {
 	return controller.getApi().get( {
 		action: 'query',
 		prop: 'revisions',
 		rvprop: 'ids',
 		rvlimit: 1,
-		titles: pageName
-	} ).then( ( resp ) => resp.query.pages[ 0 ].revisions[ 0 ].revid );
+		titles: pageName,
+		converttitles: true
+	} ).then( ( resp ) => {
+		const q = resp.query,
+			revid = q.pages[ 0 ].revisions[ 0 ].revid,
+			resolvedTitle = q.converted && q.converted[ 0 ] && q.converted[ 0 ].to;
+
+		return { revid, resolvedTitle };
+	} );
 }
 
 /**
@@ -89,11 +97,14 @@ CommentController.prototype.getTranscludedFromSource = function () {
 		if ( recursionLimit > 0 && code === 'comment-is-transcluded' ) {
 			errorData = data.errors[ 0 ].data;
 			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
-				return getLatestRevId( errorData.transcludedFrom ).then(
+				return getLatestPageInfo( errorData.transcludedFrom ).then(
 					// Fetch the transcluded page, until we cross the recursion limit
-					( latestRevId ) => controller.checkThreadItemOnPage( errorData.transcludedFrom, latestRevId, threadItem )
-						.catch( followTransclusion.bind( null, recursionLimit - 1 ) )
-				);
+					( { revid, resolvedTitle } ) => {
+						const pageName2 = resolvedTitle || errorData.transcludedFrom;
+
+						return controller.checkThreadItemOnPage( pageName2, revid, threadItem )
+							.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
+					} );
 			}
 		}
 		return $.Deferred().reject( code, data );
