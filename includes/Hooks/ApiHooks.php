@@ -58,6 +58,7 @@ class ApiHooks implements
 					'preferences',
 				],
 				ParamValidator::PARAM_DEFAULT => 'preferences',
+				ApiBase::PARAM_HELP_MSG => 'apihelp-edit-param-discussiontoolsautosubscribe',
 			];
 		}
 		return true;
