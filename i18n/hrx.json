@@ -5,11 +5,13 @@
 		]
 	},
 	"discussiontools-defaultsummary-reply": "Antwort",
+	"discussiontools-newtopic-placeholder-title": "Bedreff",
 	"discussiontools-replylink": "antworte",
 	"discussiontools-replywidget-advanced": "Erweiderd",
 	"discussiontools-replywidget-cancel": "Abbreche",
 	"discussiontools-replywidget-mode-source": "Quell",
 	"discussiontools-replywidget-mode-visual": "Visuell",
+	"discussiontools-replywidget-placeholder-newtopic": "Beschreivung",
 	"discussiontools-replywidget-placeholder-reply": "Antwort aan {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "Forguck",
 	"discussiontools-replywidget-reply": "Antworte",
