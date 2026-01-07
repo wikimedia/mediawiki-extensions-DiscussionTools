@@ -44,7 +44,7 @@
 	"discussiontools-postedit-confirmation-published": "Komentar je objavljen.",
 	"discussiontools-postedit-confirmation-topicadded": "Vaša je tema dodana.",
 	"discussiontools-preference-autotopicsub": "Automatski prati teme",
-	"discussiontools-preference-autotopicsub-help": "Kad {{GENDER:|započnete}} novu raspravu ili komentirate postojeću, bit ćete automatski obaviješteni kada netko odgovori.",
+	"discussiontools-preference-autotopicsub-help": "Pošto {{GENDER:|započnete}} novu raspravu ili komentirate postojeću, bit ćete automatski obaviješteni pri svakom novom komentaru.",
 	"discussiontools-preference-gadget-conflict": "Da biste omogućili brzo odgovaranje, prvo ćete morati [[$1|onemogućiti spravicu \"Praktične rasprave\"]] u svojim postavkama za spravice.",
 	"discussiontools-preference-label": "Alati za razgovor",
 	"discussiontools-preference-newtopictool": "Brzo započinjanje tema",
