@@ -40,8 +40,10 @@ OO.mixinClass( CommentController, OO.EventEmitter );
 /* CommentController private utilities */
 
 /**
- * Get the latest revision ID of the page as well as the
- * canonical page name if we encounter variant-conversion.
+ * Get the latest revision ID of the page.
+ * Also get the canonical page name if we encounter
+ * variant-conversion or a redirect target if there's
+ * a redirection.
  *
  * @param {string} pageName
  * @return {jQuery.Promise}
@@ -53,13 +55,15 @@ function getLatestPageInfo( pageName ) {
 		rvprop: 'ids',
 		rvlimit: 1,
 		titles: pageName,
-		converttitles: true
+		converttitles: true,
+		redirects: true
 	} ).then( ( resp ) => {
 		const q = resp.query,
-			revid = q.pages[ 0 ].revisions[ 0 ].revid,
-			resolvedTitle = q.converted && q.converted[ 0 ] && q.converted[ 0 ].to;
+			revId = q.pages[ 0 ].revisions[ 0 ].revid,
+			variantTitle = q.converted && q.converted[ 0 ] && q.converted[ 0 ].to,
+			redirectTitle = q.redirects && q.redirects[ 0 ] && q.redirects[ 0 ].to;
 
-		return { revid, resolvedTitle };
+		return { revId, variantTitle, redirectTitle };
 	} );
 }
 
@@ -93,20 +97,26 @@ CommentController.prototype.getTranscludedFromSource = function () {
 		threadItem = this.getThreadItem();
 
 	function followTransclusion( recursionLimit, code, data ) {
-		let errorData;
+		let errorData, transclusionTitle;
+
 		if ( recursionLimit > 0 && code === 'comment-is-transcluded' ) {
 			errorData = data.errors[ 0 ].data;
-			if ( errorData.follow && typeof errorData.transcludedFrom === 'string' ) {
-				return getLatestPageInfo( errorData.transcludedFrom ).then(
-					// Fetch the transcluded page, until we cross the recursion limit
-					( { revid, resolvedTitle } ) => {
-						const pageName2 = resolvedTitle || errorData.transcludedFrom;
+			transclusionTitle = errorData.transcludedFrom;
 
-						return controller.checkThreadItemOnPage( pageName2, revid, threadItem )
+			if ( errorData.follow && typeof transclusionTitle === 'string' ) {
+				return getLatestPageInfo( transclusionTitle ).then(
+					// Fetch the transcluded page, until we cross the recursion limit
+					( { revId, variantTitle, redirectTitle } ) => {
+						// Prefer variant title first, redirect target if any, and then the
+						// title text as used in the transclusion wikitext. (T408324, T413968)
+						const pageName2 = variantTitle || redirectTitle || transclusionTitle;
+
+						return controller.checkThreadItemOnPage( pageName2, revId, threadItem )
 							.catch( followTransclusion.bind( null, recursionLimit - 1 ) );
 					} );
 			}
 		}
+
 		return $.Deferred().reject( code, data );
 	}
 
