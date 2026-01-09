@@ -448,6 +448,7 @@
 		"discussiontools-comments-before-first-heading-category"
 	],
 	"Hooks": {
+		"ArticleParserOptions": "page",
 		"BeforeCreateEchoEvent": "echo",
 		"EchoGetBundleRules": "echo",
 		"EchoGetEventsForRevision": "echo",
