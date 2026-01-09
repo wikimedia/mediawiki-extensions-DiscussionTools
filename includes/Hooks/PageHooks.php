@@ -25,7 +25,9 @@ use MediaWiki\Output\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Output\Hook\OutputPageParserOutputHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Article;
+use MediaWiki\Page\Hook\ArticleParserOptionsHook;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
+use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Skin\Skin;
 use MediaWiki\Skin\SkinTemplate;
@@ -38,6 +40,7 @@ use MobileContext;
 use OOUI\ButtonWidget;
 
 class PageHooks implements
+	ArticleParserOptionsHook,
 	BeforeDisplayNoArticleTextHook,
 	BeforePageDisplayHook,
 	GetActionNameHook,
@@ -57,6 +60,10 @@ class PageHooks implements
 
 	private function isMobile(): bool {
 		return $this->mobileContext && $this->mobileContext->shouldDisplayMobileView();
+	}
+
+	public function onArticleParserOptions( Article $article, ParserOptions $popts ) {
+		$article->setUseLegacyPostprocCache();
 	}
 
 	/**

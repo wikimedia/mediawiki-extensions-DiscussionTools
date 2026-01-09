@@ -16,11 +16,12 @@ use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\ParserAfterTidyHook;
 use MediaWiki\Hook\ParserOutputPostCacheTransformHook;
+use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Parser\ParserOutputFlags;
-use MediaWiki\Parser\Parsoid\PageBundleParserOutputConverter;
-use MediaWiki\Parser\Parsoid\ParsoidParser;
 use MediaWiki\Title\Title;
 
 class ParserHooks implements
@@ -90,16 +91,26 @@ class ParserHooks implements
 	 * @inheritDoc
 	 */
 	public function onParserOutputPostCacheTransform( $parserOutput, &$text, &$options ): void {
-		$isPreview = $parserOutput->getOutputFlag( ParserOutputFlags::IS_PREVIEW );
-
-		// We want to run this hook only on Parsoid HTML for now.
-		// (and leave the onParserAfterTidy handler for legacy HTML).
-		if ( PageBundleParserOutputConverter::hasPageBundle( $parserOutput ) ) {
-			$titleDbKey = $parserOutput->getExtensionData( ParsoidParser::PARSOID_TITLE_KEY );
-			$title = Title::newFromDBkey( $titleDbKey );
-			'@phan-var Title $title';
-			$this->transformHtml( $parserOutput, $text, $title, $isPreview );
+		$popts = $options[ 'parserOptions' ] ?? null;
+		if ( $popts instanceof ParserOptions && $popts->isMessage() ) {
+			return;
 		}
+
+		// as per Id73a1b5751cfc055e84188bcb19583c72b84032f, this is always set when transforming HTML
+		// in DiscussionTools, so it's a reasonable way to not execute it twice for legacy content coming
+		// from the ParserCache
+		if ( $parserOutput->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) !== null ) {
+			return;
+		}
+
+		$linkTarget = $parserOutput->getTitle();
+		if ( !$linkTarget ) {
+			return;
+		}
+
+		$isPreview = $parserOutput->getOutputFlag( ParserOutputFlags::IS_PREVIEW );
+		$title = Title::newFromLinkTarget( $linkTarget );
+		$this->transformHtml( $parserOutput, $text, $title, $isPreview );
 	}
 
 	/**
@@ -114,8 +125,18 @@ class ParserHooks implements
 			return;
 		}
 
+		$output = $parser->getOutput();
+		// if we have a post-processing cache for legacy parses, we use the post-processing pipeline instead
+		// (and cache it there)
+		// we also don't want to try to do the post-processing if we're getting a page from the cache that
+		// doesn't yet hold its title.
+		if ( $output->getTitle() !== null &&
+			MediaWikiServices::getInstance()->getMainConfig()->get( MainConfigNames::UsePostprocCacheLegacy ) ) {
+			return;
+		}
+
 		$this->transformHtml(
-			$parser->getOutput(), $text, $parser->getTitle(), $pOpts->getIsPreview()
+			$output, $text, $parser->getTitle(), $pOpts->getIsPreview()
 		);
 	}
 
