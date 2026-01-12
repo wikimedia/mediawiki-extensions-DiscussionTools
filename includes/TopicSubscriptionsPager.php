@@ -3,12 +3,12 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use InvalidArgumentException;
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseThreadItem;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\Title\Title;
 use OOUI;

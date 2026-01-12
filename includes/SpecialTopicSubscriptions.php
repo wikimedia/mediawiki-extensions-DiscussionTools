@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\SpecialPage\SpecialPage;
 
