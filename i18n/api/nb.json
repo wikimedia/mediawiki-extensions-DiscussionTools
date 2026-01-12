@@ -44,5 +44,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "True for å abonnere, false for å avslutte abonnement.",
 	"apihelp-discussiontoolssubscribe-summary": "Abonner (eller avslutt abonnement) for å motta varsler om et emne.",
 	"apihelp-discussiontoolsthank-param-commentid": "ID-en til kommentaren det skal takkes for.",
-	"apihelp-discussiontoolsthank-summary": "Send et offentlig takkevarsel for en kommentar."
+	"apihelp-discussiontoolsthank-summary": "Send et offentlig takkevarsel for en kommentar.",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "Gjør at brukeren automatisk abonnerer på nye diskusjonstråder som opprettes med redigeringen. Bruk «yes» eller «no» for å overstyre brukerens innstilling (som er standardvalget)."
 }
