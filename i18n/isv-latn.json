@@ -66,7 +66,7 @@
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|Vy}} jeste se podpisali!",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-body": "{{GENDER:|Vy}} veče ne budete dostavati uvědomjenja, kogda na tutoj stranici započnet se nove temy.",
 	"discussiontools-newtopicssubscription-notify-unsubscribed-title": "{{GENDER:|Vy}} jeste se odpisali.",
-	"discussiontools-notification-added-topic-header": "Nova tema «<strong>$4</strong> stvorjena na stranici <strong>$3</strong> koristnikom $2.",
+	"discussiontools-notification-added-topic-header": "Nova tema «<strong>$4</strong> stvorjena {{GENDER:$2|koristnikom|koristniceju}} $1 na stranici <strong>$3</strong>.",
 	"discussiontools-notification-added-topic-header-bundled": "{{PLURAL:$1|Jedna nova tema|$1 nove temy|$1 novyh tem|100=sto ili veče novyh tem}} na stranici «<strong>$2</strong>».",
 	"discussiontools-notification-added-topic-view": "Pokazati temu",
 	"discussiontools-notification-comment-thank-header": "$1 poblagodaril{{GENDER:$2||a}} {{GENDER:$4|vas}} za vaš komentar k temě «<strong>$3</strong>».",
