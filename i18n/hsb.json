@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"J budissin",
+			"Michawiki",
 			"WTM"
 		]
 	},
@@ -40,12 +41,13 @@
 	"discussiontools-replywidget-mention-tool-header": "Wužiwarja namakać: $1",
 	"discussiontools-replywidget-mention-tool-title": "Wužiwarja naspomnić",
 	"discussiontools-replywidget-mode-source": "Žórło",
+	"discussiontools-replywidget-mode-visual": "Wizuelny",
 	"discussiontools-replywidget-newcomments-button": "Pokaž $1 {{PLURAL:$1|nowy komentar|nowej komentaraj|nowe komentary|nowych komentarow}}",
-	"discussiontools-replywidget-newtopic": "Temu dodać",
+	"discussiontools-replywidget-newtopic": "Temu {{GENDER:|přidać}}",
 	"discussiontools-replywidget-placeholder-newtopic": "Wopisanje",
 	"discussiontools-replywidget-preferences": "Nastajenja",
 	"discussiontools-replywidget-preview": "Přehlad",
-	"discussiontools-replywidget-reply": "Wotmołwić",
+	"discussiontools-replywidget-reply": "{{GENDER:|Wotmołwić}}",
 	"discussiontools-replywidget-return-to-newtopic": "Wróćo k nowej temje",
 	"discussiontools-replywidget-return-to-reply": "Wróćo k wotmołwje",
 	"discussiontools-replywidget-summary": "Zjeće",
