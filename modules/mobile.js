@@ -106,6 +106,8 @@ function init( $container ) {
 			);
 
 			observer.observe( $newTopicWrapper[ 0 ] );
+			// We only need to check once, since this is inside a scroll handler
+			setTimeout( () => observer.disconnect() );
 
 			lastScrollTop = scrollTop;
 			wasScrollDown = isScrollDown;
