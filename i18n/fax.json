@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Caro de Segeda"
+		]
+	},
+	"discussiontools-newtopic-placeholder-title": "Assuntu",
+	"discussiontools-replywidget-advanced": "Avanzau",
+	"discussiontools-replywidget-mode-source": "Fónti",
+	"discussiontools-replywidget-mode-visual": "Vissual",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|Añadil}} téma",
+	"discussiontools-replywidget-placeholder-newtopic": "Descripción",
+	"discussiontools-replywidget-preview": "Previsualización",
+	"discussiontools-replywidget-summary": "Ressumin",
+	"discussiontools-topicsubscription-button-subscribe": "suscribilsi",
+	"discussiontools-topicsubscription-button-subscribe-label": "Suscribilsi",
+	"discussiontools-topicsubscription-button-unsubscribe": "cancelal a suscripción",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Cancelal a suscripción"
+}
