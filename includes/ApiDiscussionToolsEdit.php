@@ -22,8 +22,8 @@ use MediaWiki\User\UserFactory;
 use Wikimedia\Assert\Assert;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\StringDef;
-use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Parsoid\Core\DOMCompat;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 
 class ApiDiscussionToolsEdit extends ApiBase {
 	use ApiDiscussionToolsTrait;

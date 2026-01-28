@@ -9,10 +9,10 @@ use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Title\Title;
+use Wikimedia\Parsoid\Core\DOMCompat;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
 use Wikimedia\Parsoid\DOM\Text;
-use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 
 class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	use CommentItemTrait {

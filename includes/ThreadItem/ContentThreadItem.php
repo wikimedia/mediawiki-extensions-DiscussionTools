@@ -6,9 +6,9 @@ use JsonSerializable;
 use MediaWiki\Extension\DiscussionTools\CommentModifier;
 use MediaWiki\Extension\DiscussionTools\ImmutableRange;
 use MediaWiki\Parser\Sanitizer;
+use Wikimedia\Parsoid\Core\DOMCompat;
 use Wikimedia\Parsoid\DOM\Element;
-use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 
 /**
  * A thread item, either a heading or a comment

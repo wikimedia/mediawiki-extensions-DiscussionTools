@@ -12,8 +12,8 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\TempUser\TempUserCreator;
 use MediaWiki\User\UserFactory;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Parsoid\Core\DOMCompat;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 
 class ApiDiscussionToolsPreview extends ApiBase {
 	use ApiDiscussionToolsTrait;

@@ -17,7 +17,7 @@ use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Text;
-use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 
 class ApiDiscussionToolsPageInfo extends ApiBase {
 
