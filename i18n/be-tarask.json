@@ -6,7 +6,8 @@
 			"Red Winged Duck",
 			"Renessaince",
 			"Vlad5250",
-			"Woytecr"
+			"Woytecr",
+			"Ucukor"
 		]
 	},
 	"discussiontools": "Інструмэнты абмеркаваньня",
@@ -76,5 +77,6 @@
 	"tag-discussiontools-edit": "Адрэдагаваны камэнтар",
 	"tag-discussiontools-edit-description": "Карыстальнік адрэдагаваў існы камэнтар праз DiscussionTools",
 	"tag-discussiontools-newtopic": "Новая тэма",
-	"tag-discussiontools-newtopic-description": "Карыстальнік дадаў на старонку новую тэму праз DiscussionTools"
+	"tag-discussiontools-newtopic-description": "Карыстальнік дадаў на старонку новую тэму праз DiscussionTools",
+	"tag-discussiontools-source-description": "DiscussionTools быў у рэжыму праўкі коду"
 }
