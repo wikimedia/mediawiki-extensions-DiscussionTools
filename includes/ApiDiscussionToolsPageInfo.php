@@ -52,6 +52,10 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 			$result['threaditemshtml'] = static::getThreadItemsHtml( $threadItemSet, $excludeSignatures );
 		}
 
+		if ( isset( $prop['overview'] ) ) {
+			$result['overview'] = static::getThreadsOverview( $threadItemSet );
+		}
+
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
@@ -279,6 +283,42 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	}
 
 	/**
+	 * Get an overview of the structure of the threads
+	 */
+	private static function getThreadsOverview( ContentThreadItemSet $threadItemSet ): array {
+		$threads = $threadItemSet->getThreads();
+		$output = array_map( static function ( ContentThreadItem $item ) {
+			return $item->jsonSerialize( false, static function ( array &$array, ContentThreadItem $item ) {
+				if ( $item instanceof ContentHeadingItem ) {
+					$array['title'] = $item->getText();
+					$array['commentCount'] = $item->getCommentCount();
+					$array['authorCount'] = count( $item->getAuthorsBelow() );
+					$latestReply = $item->getLatestReply();
+					if ( $latestReply ) {
+						$array['latestReply'] = $latestReply->jsonSerialize( false );
+						$array['latestReply']['timestamp'] = wfTimestamp( TS_ISO_8601,
+							$latestReply->getTimestamp()->getTimestamp() );
+						unset( $array['latestReply']['replies'] );
+					} else {
+						$array['latestReply'] = null;
+					}
+					// Technically a heading doesn't have a timestamp, but as
+					// in its ID we see that any thread with replies will
+					// treat the timestamp of the initial reply as the heading's timestamp:
+					$replies = $item->getReplies();
+					if ( $replies && $replies[0] instanceof ContentCommentItem ) {
+						// We want timestamps to be consistently formatted in API
+						// output instead of varying based on comment time
+						// (T315400). The format used here is equivalent to 'Y-m-d\TH:i:s\Z'
+						$array['timestamp'] = wfTimestamp( TS_ISO_8601, $replies[0]->getTimestamp()->getTimestamp() );
+					}
+				}
+			} );
+		}, $threads );
+		return $output;
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
@@ -294,7 +334,8 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => [
 					'transcludedfrom',
-					'threaditemshtml'
+					'threaditemshtml',
+					'overview'
 				],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
