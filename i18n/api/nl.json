@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"McDutchie",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Reactie met ID ‘$1’ niet gevonden.",
@@ -44,5 +45,6 @@
 	"apihelp-discussiontoolssubscribe-param-subscribe": "Waar om u te abonneren, onwaar om u af te melden",
 	"apihelp-discussiontoolssubscribe-summary": "Abonneer u (of meld u af) om meldingen over een onderwerp te ontvangen.",
 	"apihelp-discussiontoolsthank-param-commentid": "ID van de reactie waarvoor moet worden bedankt.",
-	"apihelp-discussiontoolsthank-summary": "Een openbaar bedankje sturen voor een reactie."
+	"apihelp-discussiontoolsthank-summary": "Een openbaar bedankje sturen voor een reactie.",
+	"apihelp-edit-param-discussiontoolsautosubscribe": "De gebruiker automatisch abonneren op al het nieuwe overleg dat door de bewerking worden aangemaakt. Gebruik 'yes' of 'no' om de voorkeur van de gebruiker (de standaardinstelling) te overschrijven."
 }
