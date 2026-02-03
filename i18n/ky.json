@@ -72,5 +72,6 @@
 	"discussiontools-topicsubscription-pager-page": "Барак",
 	"discussiontools-topicsubscription-pager-topic": "Тема",
 	"discussiontools-topicsubscription-pager-unsubscribe-button": "Жазылуудан баш тартуу",
-	"echo-category-title-dt-subscription-archiving": "Талкуу барагын {{PLURAL:$1|архивдөө}}"
+	"echo-category-title-dt-subscription-archiving": "Талкуу барагын {{PLURAL:$1|архивдөө}}",
+	"tag-discussiontools-newtopic": "Жаңы тема"
 }
