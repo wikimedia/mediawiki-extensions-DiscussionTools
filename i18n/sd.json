@@ -51,7 +51,7 @@
 	"discussiontools-limitreport-errorreqid": "گفتگوجااوزار چڪ رڪئيسٽ آئڊي",
 	"discussiontools-limitreport-timeusage": "گفتگوجااوزار وقت جو استعمال",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|سيڪنڊ|سيڪنڊَ}}",
-	"discussiontools-newtopic-missing-title": "{{GENDER:|پنھنجي}} گفتگو لاءِ لازمي ڪو عنوان ڏيو. جيڪڏهن توھان {{int:discussiontools-replywidget-newtopic}}\" کي ڪلڪ ڪندئو، تہ توھان جو موضوع بغير عنوان جي وڌو ويندو.",
+	"discussiontools-newtopic-missing-title": "{{GENDER:|پنھنجي}} گفتگو لاءِ لازمي ڪو عنوان ڏيو.",
 	"discussiontools-newtopic-placeholder-title": "موضوع",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "سبسڪرائب ڪريو",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "اڻسبسڪرائب ڪريو",
