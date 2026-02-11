@@ -20,7 +20,6 @@ use MediaWiki\Extension\VisualEditor\Hooks as VisualEditorHooks;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Html\Html;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\Hook\OutputPageBeforeHTMLHook;
 use MediaWiki\Output\Hook\OutputPageParserOutputHook;
@@ -28,7 +27,6 @@ use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Article;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\Parser\ParserOutput;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Skin\Skin;
 use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -36,6 +34,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserNameUtils;
+use MobileContext;
 use OOUI\ButtonWidget;
 
 class PageHooks implements
@@ -52,16 +51,12 @@ class PageHooks implements
 		private readonly SubscriptionStore $subscriptionStore,
 		private readonly UserNameUtils $userNameUtils,
 		private readonly UserOptionsLookup $userOptionsLookup,
+		private readonly ?MobileContext $mobileContext,
 	) {
 	}
 
 	private function isMobile(): bool {
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'MobileFrontend' ) ) {
-			/** @var \MobileContext $mobFrontContext */
-			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
-			return $mobFrontContext->shouldDisplayMobileView();
-		}
-		return false;
+		return $this->mobileContext && $this->mobileContext->shouldDisplayMobileView();
 	}
 
 	/**

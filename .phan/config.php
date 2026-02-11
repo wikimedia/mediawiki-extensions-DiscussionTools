@@ -5,24 +5,26 @@ $cfg = require __DIR__ . '/../vendor/mediawiki/mediawiki-phan-config/src/config.
 $cfg['directory_list'] = array_merge(
 	$cfg['directory_list'],
 	[
-		'../../extensions/VisualEditor',
+		'../../extensions/BetaFeatures',
 		'../../extensions/Echo',
 		'../../extensions/EventLogging',
 		'../../extensions/Gadgets',
-		'../../extensions/BetaFeatures',
+		'../../extensions/MobileFrontend',
 		'../../extensions/Thanks',
+		'../../extensions/VisualEditor',
 	]
 );
 
 $cfg['exclude_analysis_directory_list'] = array_merge(
 	$cfg['exclude_analysis_directory_list'],
 	[
-		'../../extensions/VisualEditor',
+		'../../extensions/BetaFeatures',
 		'../../extensions/Echo',
 		'../../extensions/EventLogging',
 		'../../extensions/Gadgets',
-		'../../extensions/BetaFeatures',
+		'../../extensions/MobileFrontend',
 		'../../extensions/Thanks',
+		'../../extensions/VisualEditor',
 	]
 );
 

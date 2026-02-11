@@ -493,6 +493,9 @@
 				"DiscussionTools.SubscriptionStore",
 				"UserNameUtils",
 				"UserOptionsLookup"
+			],
+			"optional_services": [
+				"MobileFrontend.Context"
 			]
 		},
 		"parser": {
