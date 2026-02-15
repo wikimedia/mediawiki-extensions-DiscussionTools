@@ -19,21 +19,12 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 
 class LanguageData {
 
-	private Config $config;
-	private Language $language;
-	private LanguageConverterFactory $languageConverterFactory;
-	private SpecialPageFactory $specialPageFactory;
-
 	public function __construct(
-		Config $config,
-		Language $language,
-		LanguageConverterFactory $languageConverterFactory,
-		SpecialPageFactory $specialPageFactory
+		private readonly Config $config,
+		private readonly Language $language,
+		private readonly LanguageConverterFactory $languageConverterFactory,
+		private readonly SpecialPageFactory $specialPageFactory,
 	) {
-		$this->config = $config;
-		$this->language = $language;
-		$this->languageConverterFactory = $languageConverterFactory;
-		$this->specialPageFactory = $specialPageFactory;
 	}
 
 	/**

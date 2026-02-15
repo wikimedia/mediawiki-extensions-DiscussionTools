@@ -16,10 +16,7 @@ use Wikimedia\Parsoid\Ext\DOMUtils;
 abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	use ThreadItemTrait;
 
-	protected string $type;
-	protected ImmutableRange $range;
 	protected Element $rootNode;
-	protected int $level;
 	protected ?ContentThreadItem $parent = null;
 	/** @var string[] */
 	protected array $warnings = [];
@@ -29,8 +26,6 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	protected ?string $legacyId = null;
 	/** @var ContentThreadItem[] */
 	protected array $replies = [];
-	/** @var string|bool */
-	private $transcludedFrom;
 
 	/** @var ?array[] */
 	protected ?array $authors = null;
@@ -46,12 +41,11 @@ abstract class ContentThreadItem implements JsonSerializable, ThreadItem {
 	 * @param bool|string $transcludedFrom
 	 */
 	public function __construct(
-		string $type, int $level, ImmutableRange $range, $transcludedFrom
+		protected readonly string $type,
+		protected int $level,
+		protected ImmutableRange $range,
+		protected readonly bool|string $transcludedFrom
 	) {
-		$this->type = $type;
-		$this->level = $level;
-		$this->range = $range;
-		$this->transcludedFrom = $transcludedFrom;
 	}
 
 	/**

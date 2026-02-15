@@ -21,14 +21,6 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 		jsonSerialize as protected traitJsonSerialize;
 	}
 
-	/** @var ImmutableRange[] */
-	private array $signatureRanges;
-	/** @var ImmutableRange[] */
-	private array $timestampRanges;
-	private DateTimeImmutable $timestamp;
-	private string $author;
-	private ?string $displayName;
-
 	/**
 	 * @param int $level
 	 * @param ImmutableRange $range
@@ -44,16 +36,13 @@ class ContentCommentItem extends ContentThreadItem implements CommentItem {
 	 */
 	public function __construct(
 		int $level, ImmutableRange $range, $transcludedFrom,
-		array $signatureRanges, array $timestampRanges,
-		DateTimeImmutable $timestamp,
-		string $author, ?string $displayName = null
+		private array $signatureRanges,
+		private readonly array $timestampRanges,
+		private DateTimeImmutable $timestamp,
+		private string $author,
+		private readonly ?string $displayName = null,
 	) {
 		parent::__construct( 'comment', $level, $range, $transcludedFrom );
-		$this->signatureRanges = $signatureRanges;
-		$this->timestampRanges = $timestampRanges;
-		$this->timestamp = $timestamp;
-		$this->author = $author;
-		$this->displayName = $displayName;
 	}
 
 	/**
