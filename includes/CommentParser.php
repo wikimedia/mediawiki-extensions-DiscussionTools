@@ -135,9 +135,10 @@ class CommentParser {
 	 * @return string Regular expression
 	 */
 	private static function regexpAlternateGroup( array $values ): string {
-		return '(' . implode( '|', array_map( static function ( string $x ) {
-			return preg_quote( $x, '/' );
-		}, $values ) ) . ')';
+		return '(' . implode( '|', array_map(
+			static fn ( string $val ) => preg_quote( $val, '/' ),
+			$values
+		) ) . ')';
 	}
 
 	/**
@@ -148,9 +149,10 @@ class CommentParser {
 	 * @return string[] Message values
 	 */
 	private function getMessages( string $contLangVariant, array $messages ): array {
-		return array_map( function ( string $key ) use ( $contLangVariant ) {
-			return $this->contLangMessages[$contLangVariant][$key];
-		}, $messages );
+		return array_map(
+			fn ( string $key ) => $this->contLangMessages[$contLangVariant][$key],
+			$messages
+		);
 	}
 
 	/**
@@ -372,11 +374,8 @@ class CommentParser {
 			$matchingGroups, $untransformDigits, $localTimezone, $tzAbbrs, $contLangVariant
 		) {
 			if ( is_array( $match[0] ) ) {
-				// Strip PREG_OFFSET_CAPTURE data
-				unset( $match['offset'] );
-				$match = array_map( static function ( array $tuple ) {
-					return $tuple[0];
-				}, $match );
+				/** Undo the effect of PREG_OFFSET_CAPTURE from {@link findTimestamp} */
+				$match = array_column( $match, 0 );
 			}
 			$year = 0;
 			$monthIdx = 0;
@@ -504,14 +503,15 @@ class CommentParser {
 	 */
 	public function getLocalTimestampRegexps(): array {
 		$langConv = $this->languageConverterFactory->getLanguageConverter( $this->language );
-		return array_map( function ( $contLangVariant ) {
-			return $this->getTimestampRegexp(
+		return array_map(
+			fn ( $contLangVariant ) => $this->getTimestampRegexp(
 				$contLangVariant,
 				$this->dateFormat[$contLangVariant],
 				'[' . implode( '', $this->digits[$contLangVariant] ) . ']',
 				$this->timezones[$contLangVariant]
-			);
-		}, $langConv->getVariants() );
+			),
+			$langConv->getVariants()
+		);
 	}
 
 	/**
@@ -524,15 +524,16 @@ class CommentParser {
 	 */
 	private function getLocalTimestampParsers(): array {
 		$langConv = $this->languageConverterFactory->getLanguageConverter( $this->language );
-		return array_map( function ( $contLangVariant ) {
-			return $this->getTimestampParser(
+		return array_map(
+			fn ( $contLangVariant ) => $this->getTimestampParser(
 				$contLangVariant,
 				$this->dateFormat[$contLangVariant],
 				$this->digits[$contLangVariant],
 				$this->localTimezone,
 				$this->timezones[$contLangVariant]
-			);
-		}, $langConv->getVariants() );
+			),
+			$langConv->getVariants()
+		);
 	}
 
 	/**
@@ -786,10 +787,7 @@ class CommentParser {
 				$nodes[] = $previousSibling->firstChild;
 
 				// If the entity is preceded by more text, do this again
-				if (
-					$previousSibling->previousSibling &&
-					$previousSibling->previousSibling instanceof Text
-				) {
+				if ( $previousSibling->previousSibling instanceof Text ) {
 					$offset += strlen( $previousSibling->previousSibling->nodeValue ?? '' );
 					$node = $previousSibling->previousSibling;
 				} else {
