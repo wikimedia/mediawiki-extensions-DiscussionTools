@@ -882,7 +882,7 @@ class CommentParser {
 		$treeWalker = new TreeWalker(
 			$this->rootNode,
 			NodeFilter::SHOW_ELEMENT | NodeFilter::SHOW_TEXT,
-			[ static::class, 'acceptOnlyNodesAllowingComments' ]
+			static::acceptOnlyNodesAllowingComments( ... )
 		);
 		while ( $node = $treeWalker->nextNode() ) {
 			if ( $node instanceof Element && preg_match( '/^h([1-6])$/i', $node->tagName, $match ) ) {
