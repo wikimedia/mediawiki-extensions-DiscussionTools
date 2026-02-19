@@ -48,12 +48,13 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 		}
 
 		if ( isset( $prop['threaditemshtml'] ) ) {
-			$excludeSignatures = $params['excludesignatures'];
-			$result['threaditemshtml'] = static::getThreadItemsHtml( $threadItemSet, $excludeSignatures );
-		}
-
-		if ( isset( $prop['overview'] ) ) {
-			$result['overview'] = static::getThreadsOverview( $threadItemSet );
+			$flags = $params['threaditemsflags'] ?? [];
+			$excludeSignatures = $params['excludesignatures'] || in_array( 'excludesignatures', $flags );
+			$noReplies = in_array( 'noreplies', $flags );
+			$extraActivity = in_array( 'activity', $flags );
+			$result['threaditemshtml'] = static::getThreadItemsHtml(
+				$threadItemSet, $excludeSignatures, $noReplies, $extraActivity
+			);
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
@@ -151,7 +152,10 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	/**
 	 * Get thread items HTML for a ContentThreadItemSet
 	 */
-	private static function getThreadItemsHtml( ContentThreadItemSet $threadItemSet, bool $excludeSignatures ): array {
+	private static function getThreadItemsHtml(
+		ContentThreadItemSet $threadItemSet,
+		bool $excludeSignatures, bool $noReplies, bool $extraActivity
+	): array {
 		// This function assumes that the start of the ranges associated with
 		// HeadingItems are going to be at the start of their associated
 		// heading node (`<h2>^heading</h2>`), i.e. in the position generated
@@ -176,9 +180,10 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 				array_unshift( $threads, $fakeHeading );
 			}
 		}
-		$output = array_map( static function ( ContentThreadItem $item ) use ( $excludeSignatures ) {
-			return $item->jsonSerialize( true, static function ( array &$array, ContentThreadItem $item ) use (
-				$excludeSignatures
+		$output = array_map( static function ( ContentThreadItem $item )
+			use ( $excludeSignatures, $noReplies, $extraActivity ) {
+			return $item->jsonSerialize( !$noReplies, static function ( array &$array, ContentThreadItem $item ) use (
+				$excludeSignatures, $noReplies, $extraActivity
 			) {
 				if ( $item instanceof ContentCommentItem && $excludeSignatures ) {
 					$array['html'] = $item->getBodyHTML( true );
@@ -189,20 +194,38 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 				if ( $item instanceof ContentHeadingItem ) {
 					$array['commentCount'] = $item->getCommentCount();
 					$array['authorCount'] = count( $item->getAuthorsBelow() );
-					$lastestReply = $item->getLatestReply();
-					if ( $lastestReply ) {
-						$array['latestReplyTimestamp'] =
-							wfTimestamp( TS_ISO_8601, $lastestReply->getTimestamp()->getTimestamp() );
+					$latestReply = $item->getLatestReply();
+					if ( $latestReply ) {
+						$array['latestReplyTimestamp'] = static::formatItemTimestamp( $latestReply );
+						if ( $extraActivity ) {
+							$array['latestReply'] = $latestReply->jsonSerialize( false );
+							$array['latestReply']['timestamp'] = $array['latestReplyTimestamp'];
+							unset( $array['latestReply']['replies'] );
+						}
 					} else {
 						$array['latestReplyTimestamp'] = null;
+						if ( $extraActivity ) {
+							$array['latestReply'] = null;
+						}
+					}
+					if ( $extraActivity ) {
+						$oldestReply = $item->getOldestReply();
+						if ( $oldestReply ) {
+							$array['oldestReply'] = $oldestReply->jsonSerialize( false );
+							$array['oldestReply']['timestamp'] = static::formatItemTimestamp( $oldestReply );
+							unset( $array['oldestReply']['replies'] );
+						} else {
+							$array['oldestReply'] = null;
+						}
 					}
 				}
 
 				if ( $item instanceof CommentItem ) {
-					// We want timestamps to be consistently formatted in API
-					// output instead of varying based on comment time
-					// (T315400). The format used here is equivalent to 'Y-m-d\TH:i:s\Z'
-					$array['timestamp'] = wfTimestamp( TS_ISO_8601, $item->getTimestamp()->getTimestamp() );
+					$array['timestamp'] = static::formatItemTimestamp( $item );
+				}
+
+				if ( $noReplies ) {
+					unset( $array['replies'] );
 				}
 			} );
 		}, $threads );
@@ -283,39 +306,12 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	}
 
 	/**
-	 * Get an overview of the structure of the threads
+	 * We want timestamps to be consistently formatted in API output instead
+	 * of varying based on comment time(T315400). The format used here is
+	 * equivalent to 'Y-m-d\TH:i:s\Z'
 	 */
-	private static function getThreadsOverview( ContentThreadItemSet $threadItemSet ): array {
-		$threads = $threadItemSet->getThreads();
-		$output = array_map( static function ( ContentThreadItem $item ) {
-			return $item->jsonSerialize( false, static function ( array &$array, ContentThreadItem $item ) {
-				if ( $item instanceof ContentHeadingItem ) {
-					$array['title'] = $item->getText();
-					$array['commentCount'] = $item->getCommentCount();
-					$array['authorCount'] = count( $item->getAuthorsBelow() );
-					$latestReply = $item->getLatestReply();
-					if ( $latestReply ) {
-						$array['latestReply'] = $latestReply->jsonSerialize( false );
-						$array['latestReply']['timestamp'] = wfTimestamp( TS_ISO_8601,
-							$latestReply->getTimestamp()->getTimestamp() );
-						unset( $array['latestReply']['replies'] );
-					} else {
-						$array['latestReply'] = null;
-					}
-					// Technically a heading doesn't have a timestamp, but as
-					// in its ID we see that any thread with replies will
-					// treat the timestamp of the initial reply as the heading's timestamp:
-					$replies = $item->getReplies();
-					if ( $replies && $replies[0] instanceof ContentCommentItem ) {
-						// We want timestamps to be consistently formatted in API
-						// output instead of varying based on comment time
-						// (T315400). The format used here is equivalent to 'Y-m-d\TH:i:s\Z'
-						$array['timestamp'] = wfTimestamp( TS_ISO_8601, $replies[0]->getTimestamp()->getTimestamp() );
-					}
-				}
-			} );
-		}, $threads );
-		return $output;
+	private static function formatItemTimestamp( CommentItem $item ): string {
+		return wfTimestamp( TS_ISO_8601, $item->getTimestamp()->getTimestamp() );
 	}
 
 	/**
@@ -334,12 +330,23 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => [
 					'transcludedfrom',
-					'threaditemshtml',
-					'overview'
+					'threaditemshtml'
 				],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
-			'excludesignatures' => false,
+			'threaditemsflags' => [
+				ParamValidator::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => [
+					'noreplies',
+					'activity',
+					'excludesignatures'
+				],
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
+			],
+			'excludesignatures' => [
+				ParamValidator::PARAM_DEPRECATED => true
+			],
 		];
 	}
 

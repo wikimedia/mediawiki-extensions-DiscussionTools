@@ -103,7 +103,7 @@ class SpecialDiscussionToolsDebug extends FormSpecialPage {
 			SpecialPage::getTitleFor(
 				'ApiSandbox',
 				false,
-				'action=discussiontoolspageinfo&prop=threaditemshtml&excludesignatures=1&page='
+				'action=discussiontoolspageinfo&prop=threaditemshtml&threaditemsflags=excludesignatures&page='
 					. urlencode( $title->getPrefixedText() )
 			)->getFullText()
 		)->parseAsBlock() );
