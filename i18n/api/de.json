@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Brettchenweber"
+		]
 	},
 	"apierror-discussiontools-commentid-notfound": "Kommentar mit der ID „$1“ nicht gefunden.",
 	"apierror-discussiontools-commentname-ambiguous": "Mehrere Kommentare mit dem Namen „$1“ gefunden, <var>commentid</var> ist erforderlich.",
@@ -33,9 +35,9 @@
 	"apihelp-discussiontoolspageinfo-param-threaditemsflags": "Flags zur Änderung der Ausgabe bei Verwendung <var>von prop=threaditemshtml</var>.",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-threaditemshtml": "Darstellung der von der Seite geparsten Kommentar-Threads",
 	"apihelp-discussiontoolspageinfo-paramvalue-prop-transcludedfrom": "Von welchen anderen Seiten die Kommentare übernommen wurden",
-	"apihelp-discussiontoolspageinfo-paramvalue-threaditemsflags-activity": "Füget zusätzliche Aktivitätsdaten über die ältesten und neuesten Antworten hinzu (bei Verwendung von <var>prop=threaditemshtml</var>).",
+	"apihelp-discussiontoolspageinfo-paramvalue-threaditemsflags-activity": "Fügt zusätzliche Aktivitätsdaten über die ältesten und neuesten Antworten hinzu (bei Verwendung von <var>prop=threaditemshtml</var>).",
 	"apihelp-discussiontoolspageinfo-paramvalue-threaditemsflags-excludesignatures": "Ausschluss von Benutzer-Signaturen aus den Kommentaren (bei Verwendung von <var>prop=threaditemshtml</var>).",
-	"apihelp-discussiontoolspageinfo-paramvalue-threaditemsflags-noreplies": "Füget nicht den gesamten Antwortbaum ein, sondern nur die Überschriften der obersten Ebene (bei Verwendung <var>von prop=threaditemshtml</var>).",
+	"apihelp-discussiontoolspageinfo-paramvalue-threaditemsflags-noreplies": "Fügt nicht den gesamten Antwortbaum ein, sondern nur die Überschriften der obersten Ebene (bei Verwendung <var>von prop=threaditemshtml</var>).",
 	"apihelp-discussiontoolspageinfo-summary": "Gibt Metadaten zurück, die zur Initialisierung der Diskussionswerkzeuge erforderlich sind.",
 	"apihelp-discussiontoolspreview-param-type": "Art der Nachricht zur Vorschau",
 	"apihelp-discussiontoolspreview-param-wikitext": "Inhalt zur Vorschau, als Wikitext.",
