@@ -17,7 +17,8 @@
 			"列维劳德",
 			"捍粵者",
 			"沈澄心",
-			"Peterxy12"
+			"Peterxy12",
+			"LowensteinYang"
 		]
 	},
 	"discussiontools": "討論工具（Discussion tools）",
@@ -99,7 +100,7 @@
 	"discussiontools-notification-topic-hidden": "(話題已移除)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1{{GENDER:$2|回覆了}}「<strong>$4</strong>」。",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "「<strong>$3</strong>」有{{PLURAL:$1|一則新回覆|$1則新回覆|100=99+則新回覆}}。",
-	"discussiontools-notification-subscribed-new-comment-header-compact": "$1：<em>$3</em>。",
+	"discussiontools-notification-subscribed-new-comment-header-compact": "$1：<em>$3</em>",
 	"discussiontools-notification-subscribed-new-comment-view": "查看留言",
 	"discussiontools-pageframe-latestcomment": "由$2在話題$3上作出的最新留言：$1",
 	"discussiontools-pageframe-latestcomment-notopic": "$2的最新留言：$1",
