@@ -590,6 +590,19 @@ function init( $container, state ) {
 					location.hash = fixedHash;
 				}
 			}
+			// It's very common for automatic linking elsewhere (Slack!) to
+			// strip trailing punctuation, so do a very simple check on
+			// missing fragments for whether a version of them with common
+			// trailing punctuation exists.
+			if ( location.hash && !mw.util.getTargetFromFragment() ) {
+				for ( const punctuation of [ '?', '!' ] ) {
+					const fixedHash = location.hash.slice( 1 ) + punctuation;
+					if ( mw.util.getTargetFromFragment( fixedHash ) ) {
+						location.hash = fixedHash;
+						break;
+					}
+				}
+			}
 			if (
 				// Fragment doesn't correspond to an element on the page
 				location.hash &&
