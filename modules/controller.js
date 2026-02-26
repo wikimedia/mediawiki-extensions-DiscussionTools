@@ -595,7 +595,7 @@ function init( $container, state ) {
 			// missing fragments for whether a version of them with common
 			// trailing punctuation exists.
 			if ( location.hash && !mw.util.getTargetFromFragment() ) {
-				for ( const punctuation of [ '?', '!' ] ) {
+				for ( const punctuation of [ '?', '!', ':', '.', '"', '\'' ] ) {
 					const fixedHash = location.hash.slice( 1 ) + punctuation;
 					if ( mw.util.getTargetFromFragment( fixedHash ) ) {
 						location.hash = fixedHash;
