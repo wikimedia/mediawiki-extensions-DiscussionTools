@@ -28,13 +28,6 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 	]
 );
 
-$cfg['warn_about_undocumented_throw_statements'] = true;
-$cfg['exception_classes_with_optional_throws_phpdoc'] = [
-	LogicException::class,
-	RuntimeException::class,
-	DOMException::class,
-	Wikimedia\NormalizedException\NormalizedException::class,
-];
 $cfg['warn_about_undocumented_exceptions_thrown_by_invoked_functions'] = true;
 
 $cfg['plugins'] = array_merge( $cfg['plugins'], [
