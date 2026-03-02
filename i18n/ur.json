@@ -43,6 +43,7 @@
 	"discussiontools-ledesection-title": "اس تبادلۂ خیال صفحہ کا تعارف",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|سیکنڈ}}",
 	"discussiontools-newtopic-missing-title": "براہ مہربانی {{GENDER:|اپنے}} موضوع بحث کے لیے عنوان فراہم کریں۔",
+	"discussiontools-newtopic-missing-title-prompt": "{{GENDER:|آپ}} نے {{GENDER:|اپنے}} موضوعِ گفتگو کے لیے کوئی عنوان فراہم نہیں کیا۔ کیا {{GENDER:|آپ}} واقعی بغیر عنوان کے یہ موضوع شامل کرنا چاہتے ہیں؟",
 	"discussiontools-newtopic-placeholder-title": "عنوان",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "شریک ہوں",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "شرکت ختم کریں",
