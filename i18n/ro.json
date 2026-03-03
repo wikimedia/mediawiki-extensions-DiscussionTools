@@ -88,6 +88,7 @@
 	"discussiontools-notification-removed-topic-disable": "Opriți primirea notificărilor de acest tip",
 	"discussiontools-notification-removed-topic-disabled-title": "Nu veți mai primi notificări atunci {{GENDER:|când}} un subiect este arhivat sau eliminat.",
 	"discussiontools-notification-removed-topic-disabled-body": "Puteți schimba asta în [[Special:Preferences#mw-prefsection-echo-echosubscriptions|preferințele dvs.]].",
+	"discussiontools-notification-topic-hidden": "(subiect eliminat)",
 	"discussiontools-notification-subscribed-new-comment-header": "$1 a {{GENDER:$2|răspuns}} în cadrul secțiunii „<strong>$4</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-header-bundled": "{{PLURAL:$1|Un răspuns nou|$1 răspunsuri noi|100=99+ de răspunsuri noi}} în „<strong>$3</strong>”.",
 	"discussiontools-notification-subscribed-new-comment-view": "Vezi comentariul",
