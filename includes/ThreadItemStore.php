@@ -175,16 +175,16 @@ class ThreadItemStore {
 		// Mirrors CommentParser::truncateForId
 		$heading = trim( $this->language->truncateForDatabase( $heading, 80, '' ), '_' );
 
-		$dbw = $this->dbProvider->getPrimaryDatabase();
+		$dbr = $this->dbProvider->getReplicaDatabase();
 
 		// 1. Try to find items which have appeared on the page at some point
 		//    in its history.
 		$itemIdInPageHistoryQueryBuilder = $this->getIdsNamesBuilder()
 			->caller( __METHOD__ . ' case 1' )
 			->join( 'revision', null, [ 'rev_id = itr_revision_id' ] )
-			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
+			->where( $dbr->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'h-' . $heading . '-',
-				$dbw->anyString()
+				$dbr->anyString()
 			) ) )
 			// Has once appered on the specified page ID
 			->where( [ 'rev_page' => $articleId ] )
@@ -203,13 +203,13 @@ class ThreadItemStore {
 		$itemIdInSubPageQueryBuilder = $this->getIdsNamesBuilder()
 			->caller( __METHOD__ . ' case 2' )
 			->join( 'page', null, [ 'page_id = itp_page_id' ] )
-			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
+			->where( $dbr->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'h-' . $heading . '-',
-				$dbw->anyString()
+				$dbr->anyString()
 			) ) )
-			->where( $dbw->expr( 'page_title', IExpression::LIKE, new LikeValue(
+			->where( $dbr->expr( 'page_title', IExpression::LIKE, new LikeValue(
 				$title->getText() . '/',
-				$dbw->anyString()
+				$dbr->anyString()
 			) ) )
 			->where( [ 'page_namespace' => $title->getNamespace() ] )
 			->field( 'itid_itemid' );
@@ -226,9 +226,9 @@ class ThreadItemStore {
 		$itemIdInAnyPageQueryBuilder = $this->getIdsNamesBuilder()
 			->caller( __METHOD__ . ' case 3' )
 			->join( 'page', null, [ 'page_id = itp_page_id', 'page_latest = itr_revision_id' ] )
-			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
+			->where( $dbr->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'h-' . $heading . '-',
-				$dbw->anyString()
+				$dbr->anyString()
 			) ) )
 			->field( 'itid_itemid' )
 			// We only care if there is one, or more than one result
@@ -248,9 +248,9 @@ class ThreadItemStore {
 			->caller( __METHOD__ . ' case 4' )
 			->join( 'revision', null, [ 'rev_id = itr_revision_id' ] )
 			// Only comments, as non-talk headings are recorded
-			->where( $dbw->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
+			->where( $dbr->expr( 'itid_itemid', IExpression::LIKE, new LikeValue(
 				'c-',
-				$dbw->anyString()
+				$dbr->anyString()
 			) ) )
 			// On the specified page ID
 			->where( [ 'rev_page' => $articleId ] )
