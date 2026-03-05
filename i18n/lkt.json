@@ -4,5 +4,9 @@
 			"Tuwewanzi"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Wóayúpte"
+	"discussiontools-defaultsummary-reply": "Wóayúpte",
+	"discussiontools-replywidget-advanced": "Ektáwapȟaya",
+	"discussiontools-replywidget-cancel": "Yužúžu {{GENDER:|wo|we|wo/we}}",
+	"discussiontools-replywidget-mode-source": "Óhiyu kiŋ",
+	"discussiontools-replywidget-reply": "{{GENDER:|Wóayúpte}}"
 }
