@@ -4,5 +4,17 @@
 			"Tuwewanzi"
 		]
 	},
-	"discussiontools-defaultsummary-reply": "Wóayúpte"
+	"discussiontools-defaultsummary-reply": "Wóayúpte",
+	"discussiontools-replylink": "{{GENDER:|ayúpta yo|ayúpta ye|ayúpta yo/ye}}",
+	"discussiontools-replywidget-advanced": "Ektáwapȟaya",
+	"discussiontools-replywidget-cancel": "Yužúžu {{GENDER:|wo|we|wo/we}}",
+	"discussiontools-replywidget-mode-source": "Óhiyu kiŋ",
+	"discussiontools-replywidget-placeholder-newtopic": "Iwóglakapi-oyákapi",
+	"discussiontools-replywidget-placeholder-reply": "{{BIDI:$1}} ektá {{GENDER:|Ayúpta yo|Ayúpta ye|Ayúpta yo/ye}}",
+	"discussiontools-replywidget-reply": "{{GENDER:|Wóayúpte}}",
+	"discussiontools-replywidget-summary": "Oȟ’áƞ-oyákapi",
+	"discussiontools-replywidget-watchthis": "Oyúblaye kiƞ le [[Special:Watchlist|watchlist]] nitȟáwa ognáka {{GENDER:|yo|ye|yo/ye}}",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|tuwá uƞ kiƞ}} iwóglakapi mahél {{PLURAL:$1|yaƞké|yaƞkápi}}",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|wóeye}}",
+	"discussiontools-topicheader-latestcomment": "Wóeye iyótaƞ théča: $1"
 }
