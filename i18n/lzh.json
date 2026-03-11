@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Dream Star.cn",
-			"Ouclie"
+			"Ouclie",
+			"Davidzdh"
 		]
 	},
 	"discussiontools-defaultsummary-reply": "答",
@@ -13,7 +14,7 @@
 	"discussiontools-replywidget-cancel": "捨",
 	"discussiontools-replywidget-mode-source": "源碼",
 	"discussiontools-replywidget-mode-visual": "視化",
-	"discussiontools-replywidget-newtopic": "{{GENDER:|新}}题",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|發}}議",
 	"discussiontools-replywidget-placeholder-newtopic": "述",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|答}}$1",
 	"discussiontools-replywidget-preview": "草覽",
@@ -29,6 +30,6 @@
 	"discussiontools-topicsubscription-button-unsubscribe-label": "撤訂",
 	"discussiontools-topicsubscription-notify-subscribed-body": "若此新言，{{GENDER:|爾}}将知矣。",
 	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|爾}}訂矣！",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "此题若有新言，{{GENDER:|爾}}弗再知矣。",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "此議縱有新論，亦不復見告。",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|爾}}撤訂矣。"
 }
