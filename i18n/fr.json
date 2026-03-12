@@ -178,7 +178,6 @@
 	"discussiontools-replywidget-terms-click": "En cliquant sur « $1 », {{GENDER:|}}vous acceptez les conditions d’utilisation de ce wiki.",
 	"discussiontools-replywidget-transcluded": "Votre commentaire sera enregistré dans [[$1]].",
 	"discussiontools-replywidget-watchthis": "Ajouter cette page à votre [[Special:Watchlist|liste de suivi]]",
-	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Ce message est introuvable. Il a peut-être été supprimé ou déplacé.",
 	"discussiontools-target-comments-missing": "Les nouvelles réponses sont introuvables. Elles ont peut-être été supprimées ou déplacées.",
 	"discussiontools-target-heading-missing": "Ce sujet est introuvable. Il a peut-être été supprimé, déplacé ou renommé.",
