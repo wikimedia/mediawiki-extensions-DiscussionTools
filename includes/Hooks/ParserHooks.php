@@ -22,6 +22,7 @@ use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Parser\ParserOutputFlags;
+use MediaWiki\Parser\Parsoid\PageBundleParserOutputConverter;
 use MediaWiki\Title\Title;
 
 class ParserHooks implements
@@ -99,7 +100,12 @@ class ParserHooks implements
 		// as per Id73a1b5751cfc055e84188bcb19583c72b84032f, this is always set when transforming HTML
 		// in DiscussionTools, so it's a reasonable way to not execute it twice for legacy content coming
 		// from the ParserCache
-		if ( $parserOutput->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) !== null ) {
+		if ( $parserOutput->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) !== null &&
+			 // T419830: sometimes parsoid recursive processes a small
+			 // component of the page?  But we should always run this pass
+			 // if we're using Parsoid.
+			 !PageBundleParserOutputConverter::hasPageBundle( $parserOutput )
+		) {
 			return;
 		}
 
