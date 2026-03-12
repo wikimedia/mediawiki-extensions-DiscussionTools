@@ -22,7 +22,6 @@ use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Parser\ParserOutputFlags;
-use MediaWiki\Parser\Parsoid\PageBundleParserOutputConverter;
 use MediaWiki\Title\Title;
 
 class ParserHooks implements
@@ -112,7 +111,7 @@ class ParserHooks implements
 			 // T419830: sometimes parsoid recursive processes a small
 			 // component of the page?  But we should always run this pass
 			 // if we're using Parsoid.
-			 !PageBundleParserOutputConverter::hasPageBundle( $parserOutput )
+			 !( $popts instanceof ParserOptions && $popts->getUseParsoid() )
 		) {
 			return;
 		}
@@ -146,6 +145,11 @@ class ParserHooks implements
 		// doesn't yet hold its title.
 		if ( $output->getTitle() !== null &&
 			MediaWikiServices::getInstance()->getMainConfig()->get( MainConfigNames::UsePostprocCacheLegacy ) ) {
+			return;
+		}
+		// Don't invoke this hook from the ::parseExtensionTagAsTopLevelDoc()
+		// method in Parsoid, either.
+		if ( $pOpts->getUseParsoid() ) {
 			return;
 		}
 
