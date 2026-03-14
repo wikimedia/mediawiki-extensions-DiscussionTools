@@ -422,7 +422,9 @@ class CommentModifier {
 				// Text node / comment node, probably empty
 				$insertBefore = $referenceNode->nextSibling;
 				$referenceNode = $list->firstChild;
-				$container->insertBefore( $list->firstChild, $insertBefore );
+				if ( $referenceNode ) {
+					$container->insertBefore( $referenceNode, $insertBefore );
+				}
 			}
 		}
 		$container->removeChild( $list );

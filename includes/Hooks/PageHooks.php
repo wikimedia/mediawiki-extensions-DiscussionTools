@@ -179,7 +179,7 @@ class PageHooks implements
 				$output->prependHTML(
 					Html::rawElement( 'div',
 						[ 'class' => 'ext-discussiontools-init-lede-button-container' ],
-						( new ButtonWidget( [
+						(string)( new ButtonWidget( [
 							'label' => $output->getContext()->msg( 'discussiontools-ledesection-button' )->text(),
 							'classes' => [ 'ext-discussiontools-init-lede-button' ],
 							'framed' => false,
@@ -206,7 +206,7 @@ class PageHooks implements
 				// Minerva doesn't show a new topic button.
 				$output->addHTML( Html::rawElement( 'div',
 					[ 'class' => 'ext-discussiontools-init-new-topic' ],
-					( new ButtonWidget( [
+					(string)( new ButtonWidget( [
 						'classes' => [ 'ext-discussiontools-init-new-topic-button' ],
 						'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
 						'icon' => 'speechBubbleAdd',
