@@ -387,7 +387,7 @@ class CommentFormatter {
 					$link = $doc->createElement( 'mw:dt-timestamplink' );
 					$link->setAttribute( 'href', $url . '#' . Sanitizer::escapeIdForLink( $threadItem->getId() ) );
 					$link->setAttribute( 'class', 'ext-discussiontools-init-timestamplink' );
-					$link->setAttribute( 'title', $threadItem->getTimestampString() );
+					$link->setAttribute( 'data-mw-timestamp', $threadItem->getTimestampString() );
 					$lastTimestamp->surroundContents( $link );
 				}
 				self::addOverflowMenuButton( $threadItem, $doc, $replyButtons );
@@ -743,11 +743,13 @@ class CommentFormatter {
 			static function ( SerializerNode $node ) use ( $lang, $user ): SerializerNode {
 				$node->name = 'a';
 				$relativeTime = static::getSignatureRelativeTime(
-					new MWTimestamp( $node->attrs['title'] ),
+					// Check 'title' for back-compat (T419262)
+					new MWTimestamp( $node->attrs['data-mw-timestamp'] ?? $node->attrs['title'] ),
 					$lang,
 					$user
 				);
 				$node->attrs['title'] = $relativeTime;
+				unset( $node->attrs['data-mw-timestamp'] );
 				return $node;
 			}
 		);
