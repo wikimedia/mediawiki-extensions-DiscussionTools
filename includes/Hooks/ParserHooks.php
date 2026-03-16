@@ -78,6 +78,7 @@ class ParserHooks implements
 				$html = $batchModifyElements->apply( $html );
 				// Suppress the empty state
 				$pout->setExtensionData( 'DiscussionTools-isEmptyTalkPage', null );
+				$pout->setExtensionData( 'DiscussionTools-isPreview', true );
 			}
 
 			$pout->addModuleStyles( [ 'ext.discussionTools.init.styles' ] );
@@ -100,7 +101,14 @@ class ParserHooks implements
 		// as per Id73a1b5751cfc055e84188bcb19583c72b84032f, this is always set when transforming HTML
 		// in DiscussionTools, so it's a reasonable way to not execute it twice for legacy content coming
 		// from the ParserCache
-		if ( $parserOutput->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) !== null &&
+		if ( ( $parserOutput->getExtensionData( 'DiscussionTools-isEmptyTalkPage' ) !== null ||
+				// well, there is an exception to that rule: if we're in preview mode, AND we're previewing in legacy
+				// mode, we reset DiscussionTools-isEmptyTalkPage to null - so in that case we also set isPreview, so
+				// that we can catch this case here. By definition this can't come from the cache; so there's no risk
+				// that the newly introduced flag isn't set if it is needed.
+				// TODO this MUST disappear once ParserAfterTidy is removed - this is only a temporary fix that won't
+				// be necessary once that happens.
+				$parserOutput->getExtensionData( 'DiscussionTools-isPreview' ) ) &&
 			 // T419830: sometimes parsoid recursive processes a small
 			 // component of the page?  But we should always run this pass
 			 // if we're using Parsoid.
