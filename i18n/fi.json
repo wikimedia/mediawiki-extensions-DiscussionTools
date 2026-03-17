@@ -159,7 +159,6 @@
 	"discussiontools-replywidget-terms-click": "Klikkaamalla ”$1” {{GENDER:|hyväksyt}} tämän wikin käyttöehdot.",
 	"discussiontools-replywidget-transcluded": "Kommenttisi tallennetaan sivulle [[$1]].",
 	"discussiontools-replywidget-watchthis": "Lisää tämä sivu [[Special:Watchlist|tarkkailulistallesi]]",
-	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Tätä kommentia ei löytynyt. Se on voitu poistaa tai siirtää.",
 	"discussiontools-target-comments-missing": "Uusia kommentteja ei löytynyt. Ne on saatettu poistaa tai siirtää.",
 	"discussiontools-target-heading-missing": "Tätä aihetta ei löytynyt. Se on saatettu poistaa, siirtää tai uudelleennimetä.",
