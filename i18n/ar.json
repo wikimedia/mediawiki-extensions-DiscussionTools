@@ -169,7 +169,6 @@
 	"discussiontools-replywidget-terms-click": "عند ضغطك على «$1»، فإنك {{GENDER:|توافق|توافقين}} على شروط استخدام هذه الويكي.",
 	"discussiontools-replywidget-transcluded": "سيحفظ تعليقك في [[$1]].",
 	"discussiontools-replywidget-watchthis": "إضافة هذه الصفحة إلى [[Special:Watchlist|قائمة المراقبة]]",
-	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "لا يمكن العثور على هذا التعليق. ربما تم حذفه أو نقله.",
 	"discussiontools-target-comments-missing": "لا يمكن العثور على تعليقات جديدة. ربما تم حذفها أو نقلها.",
 	"discussiontools-target-heading-missing": "لا يمكن العثور على هذا التعليق. ربما تم حذفه أو نقله.",
