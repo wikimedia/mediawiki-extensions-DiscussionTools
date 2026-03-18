@@ -63,7 +63,9 @@ class PageHooks implements
 	}
 
 	public function onArticleParserOptions( Article $article, ParserOptions $popts ) {
-		$article->setUseLegacyPostprocCache();
+		if ( !$popts->getUseParsoid() && HookUtils::isAvailableForTitle( $article->getTitle() ) ) {
+			$article->setUseLegacyPostprocCache();
+		}
 	}
 
 	/**
