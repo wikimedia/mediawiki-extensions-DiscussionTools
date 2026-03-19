@@ -155,7 +155,6 @@
 	"discussiontools-replywidget-terms-click": "Cliccando su \"$1\", {{GENDER:|accetti}} le condizioni d'uso per questo wiki.",
 	"discussiontools-replywidget-transcluded": "Il tuo commento sarà salvato su [[$1]].",
 	"discussiontools-replywidget-watchthis": "Aggiungi questa pagina alla tua [[Special:Watchlist|lista di osservati speciali]]",
-	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Il commento non è stato trovato. Potrebbe essere stato cancellato o spostato.",
 	"discussiontools-target-comments-missing": "I nuovi commenti non sono stati trovati. Potrebbero essere stati cancellati o spostati.",
 	"discussiontools-target-heading-missing": "L'argomento non è stato trovato. Potrebbe essere stato cancellato, spostato o rinominato.",

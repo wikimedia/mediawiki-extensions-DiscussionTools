@@ -160,7 +160,6 @@
 	"discussiontools-replywidget-terms-click": "Натискаючи «$1», {{GENDER:|ви}} погоджуєтесь із умовами використання цієї вікі.",
 	"discussiontools-replywidget-transcluded": "Ваш коментар буде збережено на сторінці [[$1]].",
 	"discussiontools-replywidget-watchthis": "Додати цю сторінку до свого [[Special:Watchlist|списку спостереження]]",
-	"discussiontools-signature-prefix": "&#32;",
 	"discussiontools-target-comment-missing": "Не вдалося знайти цей коментар. Можливо, його вилучили або кудись перенесли.",
 	"discussiontools-target-comments-missing": "Не вдалося знайти нові коментарі. Можливо, їх вилучили або кудись перенесли.",
 	"discussiontools-target-heading-missing": "Не вдалося знайти цю тему. Можливо, її можливо вилучили або кудись перенесли.",
