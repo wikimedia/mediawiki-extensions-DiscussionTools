@@ -24,6 +24,7 @@
 	"discussiontools-replywidget-watchthis": "Aumenta con este pagina na de tuyo [[Special:Watchlist|viciada]]",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|persona|gente}} na discusion",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|comento|maga comento}}",
+	"discussiontools-topicheader-latestcomment": "Ultimo comento: $1",
 	"discussiontools-topicsubscription-button-subscribe": "suscribi",
 	"discussiontools-topicsubscription-button-subscribe-label": "Suscribi",
 	"discussiontools-topicsubscription-button-unsubscribe": "cancela subscripcion",
