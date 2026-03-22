@@ -87,33 +87,26 @@ class HookUtils {
 		'notalk',
 		'archivedtalk',
 	];
-	private static array $propCache = [];
 
 	/**
-	 * Check if a title has a page prop, and use an in-memory cache to avoid extra queries
+	 * Check if a title has a page prop.
 	 *
 	 * @param Title $title Title
 	 * @param string $prop Page property
 	 * @return bool Title has page property
 	 */
-	public static function hasPagePropCached( Title $title, string $prop ): bool {
+	private static function hasPageProp( Title $title, string $prop ): bool {
 		Assert::parameter(
 			in_array( $prop, self::CACHED_PAGE_PROPS, true ),
 			'$prop',
 			'must be one of the cached properties'
 		);
 		$id = $title->getArticleId();
-		if ( !isset( self::$propCache[ $id ] ) ) {
-			$services = MediaWikiServices::getInstance();
-			// Always fetch all of our properties, we need to check several of them on most requests
-			$pagePropsPerId = $services->getPageProps()->getProperties( $title, self::CACHED_PAGE_PROPS );
-			if ( $pagePropsPerId ) {
-				self::$propCache += $pagePropsPerId;
-			} else {
-				self::$propCache[ $id ] = [];
-			}
-		}
-		return isset( self::$propCache[ $id ][ $prop ] );
+
+		// Optimization: Always load our props together to warm their cache at once (T347123)
+		$services = MediaWikiServices::getInstance();
+		$pagePropsPerId = $services->getPageProps()->getProperties( $title, self::CACHED_PAGE_PROPS );
+		return isset( $pagePropsPerId[ $id ][ $prop ] );
 	}
 
 	/**
@@ -327,12 +320,12 @@ class HookUtils {
 		}
 
 		// ARCHIVEDTALK/NOTALK magic words
-		if ( static::hasPagePropCached( $title, 'notalk' ) ) {
+		if ( static::hasPageProp( $title, 'notalk' ) ) {
 			return false;
 		}
 		if (
 			$feature === static::REPLYTOOL &&
-			static::hasPagePropCached( $title, 'archivedtalk' )
+			static::hasPageProp( $title, 'archivedtalk' )
 		) {
 			return false;
 		}
@@ -345,8 +338,8 @@ class HookUtils {
 			return $title->isTalkPage() || (
 				// ... or __NEWSECTIONLINK__ (T331635) or __ARCHIVEDTALK__ (T374198) pages
 				(
-					static::hasPagePropCached( $title, 'newsectionlink' ) ||
-					static::hasPagePropCached( $title, 'archivedtalk' )
+					static::hasPageProp( $title, 'newsectionlink' ) ||
+					static::hasPageProp( $title, 'archivedtalk' )
 				) &&
 				// excluding the main namespace, unless it has been configured for signatures
 				(
@@ -362,7 +355,7 @@ class HookUtils {
 			// editor using $wgExtraSignatureNamespaces (T249036)
 			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
 			// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
-			static::hasPagePropCached( $title, 'newsectionlink' )
+			static::hasPageProp( $title, 'newsectionlink' )
 		);
 	}
 
@@ -463,9 +456,9 @@ class HookUtils {
 		//   - This is the current revision of a non-redirect in a talk namespace or...
 		//   - __NEWSECTIONLINK__ is present (OutputPage::showNewSectionLink)
 		return (
-			!static::hasPagePropCached( $title, 'nonewsectionlink' ) &&
+			!static::hasPageProp( $title, 'nonewsectionlink' ) &&
 			( ( $title->isTalkPage() && !$title->isRedirect() && $output->isRevisionCurrent() ) ||
-				static::hasPagePropCached( $title, 'newsectionlink' ) )
+				static::hasPageProp( $title, 'newsectionlink' ) )
 		);
 	}
 
