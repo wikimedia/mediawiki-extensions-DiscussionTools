@@ -15,7 +15,7 @@ class CommentUtilsTest extends IntegrationTestCase {
 	 * @dataProvider provideIsSingleCommentSignedBy
 	 */
 	public function testIsSingleCommentSignedBy(
-		string $msg, string $title, string $username, string $html, bool $expected
+		string $msg, string $title, string $user, string $html, bool $expected
 	) {
 		$doc = static::createDocument( $html );
 		$container = static::getThreadContainer( $doc );
@@ -26,7 +26,7 @@ class CommentUtilsTest extends IntegrationTestCase {
 		$parser = $this->createParser( $config, $data );
 
 		$threadItemSet = $parser->parse( $container, $title );
-		$isSigned = CommentUtils::isSingleCommentSignedBy( $threadItemSet, $username, $container );
+		$isSigned = CommentUtils::isSingleCommentSignedBy( $threadItemSet, $user, $container );
 		static::assertEquals( $expected, $isSigned, $msg );
 	}
 

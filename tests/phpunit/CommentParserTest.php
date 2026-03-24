@@ -136,19 +136,19 @@ class CommentParserTest extends IntegrationTestCase {
 	 * @dataProvider provideTimestampParser
 	 */
 	public function testGetTimestampParser(
-		string $format, ?array $digits, array $matchData, string $expected, string $message
+		string $format, ?array $digits, array $data, string $expected, string $message
 	): void {
 		$config = static::getJson( "../data/enwiki-config.json" );
-		$data = static::getJson( "../data/enwiki-data.json" );
+		$testData = static::getJson( "../data/enwiki-data.json" );
 		/** @var CommentParser $parser */
 		$parser = TestingAccessWrapper::newFromObject(
-			$this->createParser( $config, $data )
+			$this->createParser( $config, $testData )
 		);
 
 		$expected = new DateTimeImmutable( $expected );
 
 		$tsParser = $parser->getTimestampParser( 'en', $format, $digits, 'UTC', [ 'UTC' => 'UTC' ] );
-		static::assertEquals( $expected, $tsParser( $matchData )['date'], $message );
+		static::assertEquals( $expected, $tsParser( $data )['date'], $message );
 	}
 
 	public static function provideTimestampParser(): array {
