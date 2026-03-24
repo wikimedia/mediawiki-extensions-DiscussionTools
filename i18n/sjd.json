@@ -30,6 +30,8 @@
 	"discussiontools-replywidget-preview": "Э̄ввткӣһчмушш",
 	"discussiontools-replywidget-reply": "{{GENDER:|Вуэсстлэ}}",
 	"discussiontools-replywidget-return-to-reply": "Ма̄һце вуэсстлэгка",
+	"discussiontools-target-heading-missing": "Эйй вуэй тэнн те̄ма коа̄ввнэ. Со̄нн вуайй вэ̄цкса вай мудта сайя выгкма лӣйе, вай со̄нн нэ̄мм воа̄йхувэ.",
+	"discussiontools-target-heading-found-moved": "Эйй вуэй тэнн те̄ма тэнн лыстэсьт коа̄ввнэ, ноа со̄нн пуэдтӭй {{PLURAL:$1| лыстэсьт|лыстэнҍ}} лӣ:",
 	"discussiontools-topicheader-authorcount": "Са̄ррнмужэсьт {{PLURAL:$1|лӣ $1 олма|0=элля ни э̄ххт олма|1=лӣ 1 олма|2=ле̄в 2 о̄ллмэ|3=ле̄в 3 о̄ллмэ|4=ле̄в 4 о̄ллмэ|5=ле̄в 5 о̄ллмэ}}.",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|соа̄гк|соа̄г|соа̄гкэ}}",
 	"discussiontools-topicheader-latestcomment": "Маӈьмусс коамментаррьй: $1",
