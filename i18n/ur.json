@@ -116,6 +116,8 @@
 	"discussiontools-topicsubscription-preferences-editsubscriptions": "شرکتوں میں ترمیم",
 	"discussiontools-topicsubscription-special-intro": "گفتگو میں شامل ہونے سے {{GENDER:|آپ}} تبادلۂ خیال صفحات پر ہونے والی گفتگو سے باخبر رہیں گے۔ جب کوئی ساتھی کسی تبصرے کا جواب دے گا تو اسی کی اطلاع آپ کو موصول ہوگی۔ \n\n\nآپ [[Special:Preferences#mw-prefsection-echo|اپنی ترجیحات]] سے اطلاع ناموں کو وصول کرنے کا طریقہ متعین کر سکتے ہیں۔",
 	"discussiontools-topicsubscription-special-title": "گفتگو میں شرکتیں",
+	"echo-category-title-dt-subscription": "تبادلۂ خیال صفحہ میں {{PLURAL:$1|شرکت}}",
+	"echo-category-title-dt-subscription-archiving": "تبادلۂ خیال صفحہ کی {{PLURAL:$1|آرکائیو سازی}}",
 	"tag-discussiontools-description": "آلات گفتگو کی مدد سے ترمیم کی گئی",
 	"tag-discussiontools-edit": "ترمیم شدہ تبصرہ",
 	"tag-discussiontools-newtopic": "نیا موضوع",
