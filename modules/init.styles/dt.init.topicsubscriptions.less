@@ -125,7 +125,8 @@
 		// 3D transform is needed to work around a Safari bug, which causes shadows to remain when the
 		// popup is removed (T297266, T226872). Otherwise this should just use 2D translate().
 		transform: translate3d( 0, -20px, 0 );
-		transition: opacity 0.2s, transform 0.2s;
+		transition-property: opacity, transform;
+		transition-duration: @transition-duration-medium;
 
 		&-fadein {
 			opacity: 1;

@@ -85,10 +85,11 @@
 	&-scrollback-bottom {
 		position: fixed;
 		opacity: 0;
-		transition: transform 250ms, opacity 250ms;
+		transition-property: transform, opacity;
+		transition-duration: @transition-duration-medium;
 		z-index: 1;
 		margin: 1em 0;
-		box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
+		box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.2 );
 
 		// OOUI Apex theme
 		.skin-monobook & {
@@ -337,7 +338,8 @@
 		position: absolute;
 		bottom: -1em;
 		left: 50%;
-		transition: transform 250ms ease-in, opacity 250ms ease-in;
+		transition-property: transform, opacity;
+		transition-duration: @transition-duration-medium;
 		transform: translate( -50%, 30px );
 		opacity: 0;
 		white-space: nowrap;

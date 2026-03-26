@@ -4,7 +4,7 @@
 /* stylelint-disable no-descending-specificity */
 
 // Empty state
-.ext-discussiontools-emptystate {
+.ext-discussiontools-emptystate { /* stylelint-disable-line plugin/no-unsupported-browser-features */
 	display: flex;
 	justify-content: space-between;
 	gap: 1em;
@@ -105,7 +105,8 @@
 	position: sticky;
 	// Required for IntersectionObserver trick
 	bottom: -1px;
-	transition: transform 250ms, opacity 250ms;
+	transition-property: transform, opacity;
+	transition-duration: @transition-duration-medium;
 	transform: translateY( 100% );
 	opacity: 0;
 
