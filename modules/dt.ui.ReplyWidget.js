@@ -49,8 +49,17 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	// Floating position for scroll back buttons: 'top', 'bottom', or null
 	this.floating = null;
 
-	this.$window = $( this.getElementWindow() );
-	this.onWindowScrollThrottled = OO.ui.throttle( this.onWindowScroll.bind( this ), 100 );
+	if ( window.IntersectionObserver ) {
+		const scrollPaddingTop = parseInt( $( document.documentElement ).css( 'scrollPaddingTop' ), 10 ) || 0;
+		const intersectionObserver = new IntersectionObserver(
+			this.onIntersection.bind( this ),
+			{
+				threshold: [ 0 ],
+				rootMargin: ( -scrollPaddingTop - 5 ) + 'px 0px -10px 0px'
+			}
+		);
+		intersectionObserver.observe( this.$element[ 0 ] );
+	}
 
 	const inputConfig = Object.assign(
 		{
@@ -450,13 +459,16 @@ ReplyWidget.prototype.clearStorage = function () {
 };
 
 /**
- * Handle window scroll events
+ * Handle change in intersection with viewport
+ *
+ * @param {IntersectionObserverEntry[]} entries
+ * @param {IntersectionObserver} observer
  */
-ReplyWidget.prototype.onWindowScroll = function () {
-	const rect = this.$element[ 0 ].getBoundingClientRect();
-	const viewportHeight = window.visualViewport ? visualViewport.height : this.viewportScrollContainer.clientHeight;
-	const floating = rect.bottom < 0 ? 'top' :
-		( rect.top > viewportHeight ? 'bottom' : null );
+ReplyWidget.prototype.onIntersection = function ( entries ) {
+	const entry = entries[ 0 ];
+
+	const rect = entry.boundingClientRect;
+	const floating = !entry.isIntersecting ? ( rect.top < 0 ? 'top' : 'bottom' ) : null;
 
 	if ( floating !== this.floating ) {
 		this.floating = floating;
@@ -670,8 +682,6 @@ ReplyWidget.prototype.setup = function ( data ) {
 
 	mw.hook( 'wikipage.watchlistChange' ).add( this.onWatchToggleHandler );
 
-	this.$window[ 0 ].addEventListener( 'scroll', this.onWindowScrollThrottled, { passive: true } );
-
 	return this;
 };
 
@@ -759,7 +769,6 @@ ReplyWidget.prototype.teardown = function ( mode ) {
 		this.modeTabSelect.blur();
 	}
 	this.unbindBeforeUnloadHandler();
-	this.$window[ 0 ].removeEventListener( 'scroll', this.onWindowScrollThrottled );
 	mw.hook( 'wikipage.watchlistChange' ).remove( this.onWatchToggleHandler );
 
 	this.isTornDown = true;
