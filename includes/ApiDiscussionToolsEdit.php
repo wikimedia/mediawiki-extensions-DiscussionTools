@@ -318,8 +318,13 @@ class ApiDiscussionToolsEdit extends ApiBase {
 				if ( isset( $params['summary'] ) ) {
 					$summary = $params['summary'];
 				} else {
-					$sectionTitle = $comment->getHeading()->getLinkableTitle();
-					$summary = ( $sectionTitle ? '/* ' . $sectionTitle . ' */ ' : '' ) .
+					$prefix = '';
+					if ( $comment->getHeading()->isPlaceholderHeading() ) {
+						$prefix = '/* */ ';
+					} elseif ( $comment->getHeading()->getLinkableTitle() !== '' ) {
+						$prefix = '/* ' . $comment->getHeading()->getLinkableTitle() . ' */ ';
+					}
+					$summary = $prefix .
 						$this->msg( 'discussiontools-defaultsummary-reply' )->inContentLanguage()->text();
 				}
 

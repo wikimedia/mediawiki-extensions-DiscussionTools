@@ -657,8 +657,13 @@ ReplyWidget.prototype.setup = function ( data ) {
 			// in NewTopicController#onSectionTitleChange
 			summary = '';
 		} else {
-			const title = this.commentController.getThreadItem().getHeading().getLinkableTitle();
-			summary = ( title ? '/* ' + title + ' */ ' : '' ) +
+			let prefix = '';
+			if ( this.commentController.getThreadItem().getHeading().placeholderHeading ) {
+				prefix = '/* */ ';
+			} else if ( this.commentController.getThreadItem().getHeading().getLinkableTitle() !== '' ) {
+				prefix = '/* ' + this.commentController.getThreadItem().getHeading().getLinkableTitle() + ' */ ';
+			}
+			summary = prefix +
 				mw.msg( 'discussiontools-defaultsummary-reply' );
 		}
 	}
