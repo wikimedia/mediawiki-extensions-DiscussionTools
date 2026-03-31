@@ -4,6 +4,16 @@
 			"Jmgurey"
 		]
 	},
+	"discussiontools-newtopic-missing-title": "ku beezza ishi zatehi magaroh migac akah {{GENDER:|eyyec}}.",
+	"discussiontools-newtopic-placeholder-title": "Naba magaro",
+	"discussiontools-replylink": "{{GENDER:|gaxish}}",
+	"discussiontools-replywidget-advanced": "Yefeedede",
 	"discussiontools-replywidget-cancel": "Xishii",
-	"discussiontools-replywidget-mode-source": "Raxeena"
+	"discussiontools-replywidget-mode-source": "Raxeena",
+	"discussiontools-replywidget-mode-visual": "Intih yabliinim",
+	"discussiontools-replywidget-newtopic": "Magaro {{GENDER:|os}}",
+	"discussiontools-replywidget-placeholder-newtopic": "Caddos",
+	"discussiontools-replywidget-preview": "Mamballaytina",
+	"discussiontools-replywidget-reply": "{{GENDER:|Gaxish}}",
+	"discussiontools-replywidget-summary": "Arure"
 }
