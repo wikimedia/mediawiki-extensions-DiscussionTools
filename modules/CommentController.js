@@ -2,6 +2,7 @@ const
 	controller = require( './controller.js' ),
 	modifier = require( './commentparser/modifier.js' ),
 	dtConf = require( './config.json' ),
+	Poller = require( './Poller.js' ),
 	CommentDetails = require( './CommentDetails.js' ),
 	CommentItem = require( './commentparser/CommentItem.js' ),
 	defaultVisual = controller.defaultVisual,
@@ -30,8 +31,14 @@ function CommentController( $pageContainer, threadItem, threadItemSet, storage )
 	this.newComments = [];
 	this.parentRemoved = false;
 	this.oldId = mw.config.get( 'wgRevisionId' );
-	this.pollTimeout = null;
-	this.onVisibilityChangeHandler = this.onVisibilityChange.bind( this );
+	this.poller = null;
+	if ( threadItem instanceof CommentItem && threadItem.getSubscribableHeading() ) {
+		this.poller = new Poller(
+			this.getPollRequest.bind( this ),
+			this.onPollSuccess.bind( this ),
+			{ interval: 5000 }
+		);
+	}
 }
 
 OO.initClass( CommentController );
@@ -236,12 +243,8 @@ CommentController.prototype.setup = function ( options ) {
 		$( this.newListItem ).parents( '.collapsible-block' ).prev().addClass( 'collapsible-heading-disabled' );
 	}
 
-	if (
-		this.threadItem instanceof CommentItem &&
-		this.threadItem.getSubscribableHeading()
-	) {
-		this.startPoll();
-		$( document ).on( 'visibilitychange', this.onVisibilityChangeHandler );
+	if ( this.poller ) {
+		this.poller.start();
 	}
 
 	this.replyWidgetPromise.then( ( replyWidget ) => {
@@ -265,33 +268,12 @@ CommentController.prototype.setup = function ( options ) {
 };
 
 /**
- * Handle document visibilitychange events
+ * Get an API request to poll for new comments
  *
- * This allows us to pause polling when the user switches to another tab
+ * @return {jQuery.Promise} API request promise
  */
-CommentController.prototype.onVisibilityChange = function () {
-	if ( document.hidden ) {
-		this.stopPoll();
-	} else if ( !this.pollTimeout ) {
-		this.pollTimeout = setTimeout( this.startPoll.bind( this ), 5000 );
-	}
-};
-
-CommentController.prototype.startPoll = function ( nextDelay ) {
-	nextDelay = nextDelay || 5000;
-
-	if ( !(
-		this.threadItem instanceof CommentItem &&
-		this.threadItem.getSubscribableHeading()
-	) ) {
-		return;
-	}
-
-	const threadItemId = this.threadItem.id;
-	const subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
-	let aborted = false;
-
-	this.pollApiRequest = controller.getApi().get( {
+CommentController.prototype.getPollRequest = function () {
+	return controller.getApi().get( {
 		action: 'discussiontoolscompare',
 		// Use the revision ID of the content on the page, not wgCurRevisionId
 		// This means you will more likely get a refresh warning when deliberately
@@ -299,61 +281,43 @@ CommentController.prototype.startPoll = function ( nextDelay ) {
 		fromrev: this.oldId,
 		totitle: mw.config.get( 'wgRelevantPageName' )
 	} );
-	this.pollApiRequest.then( ( response ) => {
-		function relevantCommentFilter( cmt ) {
-			return cmt.subscribableHeadingId === subscribableHeadingId &&
-				// Ignore posts by yourself, if logged in
-				cmt.author !== mw.user.getName();
-		}
-
-		const result = OO.getProp( response, 'discussiontoolscompare' ) || {};
-		const addedComments = result.addedcomments.filter( relevantCommentFilter );
-		const removedComments = result.removedcomments.filter( relevantCommentFilter );
-
-		if ( addedComments.length || removedComments.length ) {
-			this.updateNewCommentsWarning( addedComments, removedComments );
-		}
-
-		// Parent comment was deleted
-		const isParentRemoved = result.removedcomments.some( ( cmt ) => cmt.id === threadItemId );
-		// Parent comment was deleted then added back (e.g. reverted vandalism)
-		const isParentAdded = result.addedcomments.some( ( cmt ) => cmt.id === threadItemId );
-
-		if ( isParentAdded ) {
-			this.setParentRemoved( false );
-		} else if ( isParentRemoved ) {
-			this.setParentRemoved( true );
-		}
-
-		this.oldId = result.torevid;
-		nextDelay = 5000;
-	}, ( code, data ) => {
-		if ( code === 'http' && data.textStatus === 'abort' ) {
-			aborted = true;
-		} else {
-			// Wait longer next time in case of error
-			nextDelay = nextDelay * 1.5;
-		}
-	} ).always( () => {
-		if ( this.isTornDown || aborted ) {
-			return;
-		}
-		// Stop polling after too many errors
-		if ( nextDelay < 1000 * 60 * 60 ) {
-			this.pollTimeout = setTimeout( this.startPoll.bind( this, nextDelay ), nextDelay );
-		}
-	} );
 };
 
-CommentController.prototype.stopPoll = function () {
-	if ( this.pollTimeout ) {
-		clearTimeout( this.pollTimeout );
-		this.pollTimeout = null;
+/**
+ * Handle successful poll responses
+ *
+ * @param {Object} response API response
+ */
+CommentController.prototype.onPollSuccess = function ( response ) {
+	const threadItemId = this.threadItem.id;
+	const subscribableHeadingId = this.threadItem.getSubscribableHeading().id;
+
+	function relevantCommentFilter( cmt ) {
+		return cmt.subscribableHeadingId === subscribableHeadingId &&
+			// Ignore posts by yourself, if logged in
+			cmt.author !== mw.user.getName();
 	}
-	if ( this.pollApiRequest ) {
-		this.pollApiRequest.abort();
-		this.pollApiRequest = null;
+
+	const result = OO.getProp( response, 'discussiontoolscompare' ) || {};
+	const addedComments = result.addedcomments.filter( relevantCommentFilter );
+	const removedComments = result.removedcomments.filter( relevantCommentFilter );
+
+	if ( addedComments.length || removedComments.length ) {
+		this.updateNewCommentsWarning( addedComments, removedComments );
 	}
+
+	// Parent comment was deleted
+	const isParentRemoved = result.removedcomments.some( ( cmt ) => cmt.id === threadItemId );
+	// Parent comment was deleted then added back (e.g. reverted vandalism)
+	const isParentAdded = result.addedcomments.some( ( cmt ) => cmt.id === threadItemId );
+
+	if ( isParentAdded ) {
+		this.setParentRemoved( false );
+	} else if ( isParentRemoved ) {
+		this.setParentRemoved( true );
+	}
+
+	this.oldId = result.torevid;
 };
 
 /**
@@ -456,8 +420,9 @@ CommentController.prototype.onReplyWidgetTeardown = function ( mode ) {
 		this.newListItem = null;
 	}
 
-	this.stopPoll();
-	$( document ).off( 'visibilitychange', this.onVisibilityChangeHandler );
+	if ( this.poller ) {
+		this.poller.stop();
+	}
 
 	this.isTornDown = true;
 	this.emit( 'teardown', mode );
@@ -564,7 +529,9 @@ CommentController.prototype.onReplySubmit = function ( replyWidget, extraParams 
  * @param {Object} data Error data
  */
 CommentController.prototype.saveFail = function ( replyWidget, code, data ) {
-	this.startPoll();
+	if ( this.poller ) {
+		this.poller.start();
+	}
 
 	const captchaData = OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' );
 
@@ -619,7 +586,9 @@ CommentController.prototype.saveFail = function ( replyWidget, code, data ) {
  * @return {jQuery.Promise} Promise which resolves when the save is complete
  */
 CommentController.prototype.save = function ( replyWidget, pageName, extraParams ) {
-	this.stopPoll();
+	if ( this.poller ) {
+		this.poller.stop();
+	}
 
 	const threadItem = this.getThreadItem();
 

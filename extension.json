@@ -70,6 +70,7 @@
 					}
 				},
 				"ReplyLinksController.js",
+				"Poller.js",
 				"CommentController.js",
 				"NewTopicController.js",
 				"CommentDetails.js",
