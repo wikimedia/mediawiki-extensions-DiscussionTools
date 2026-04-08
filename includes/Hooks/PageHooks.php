@@ -11,7 +11,6 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use MediaWiki\Actions\Hook\GetActionNameHook;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\DiscussionTools\BatchModifyElements;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Extension\DiscussionTools\CommentUtils;
@@ -444,7 +443,7 @@ class PageHooks implements
 	 * @return string HTML
 	 */
 	private function getEmptyStateHtml( IContextSource $context ): string {
-		$coreConfig = RequestContext::getMain()->getConfig();
+		$coreConfig = $context->getConfig();
 
 		$descParams = [];
 		$buttonMsg = 'discussiontools-emptystate-button';
