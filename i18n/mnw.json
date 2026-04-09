@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aue Nai",
 			"Htawmonzel",
 			"咽頭べさ"
 		]
@@ -17,6 +18,8 @@
 	"discussiontools-emptystate-title": "စကၠောန်ဓရီုကျာချပ်ဗ္စာရဏာပရောဟိုတ် {{SUBJECTPAGENAME}}",
 	"discussiontools-emptystate-title-self": "{{GENDER:|ဒုၚ်တၠုၚ်ဏာ}} နူကဵုမုက်လိက် ဓရီုကျာနကဵုဇကုရအဴ",
 	"discussiontools-emptystate-title-user": "က္ဍိုပ်လိက်ပရောဟိုတ်လ္တူထ္ၜးလဝ်နကဵုမုက်လိက်ဓရီုကျာညးမသုၚ်စောဲမသၠးမံၚ်။ {{PAGENAME}} မဒှ်ယၟုညးမသုၚ်စောဲ။\nလ္ပကၠာဲမဆေၚ်စပ်ကဵုဝေါဟာမှဝ်ဏအ်နကဵုပ္ဍဲမာတ်သေတ်ဏံဂှ်:\n* {{PAGENAME}}",
+	"discussiontools-newtopic-missing-title": "သ္ပဂုဏ်တုဲ ဗၟံက်ထ္ၜး က္ဍိုပ်လိက် သွက် {{GENDER:|မၞး}} ပရူပရာ သဳကၠဳ",
+	"discussiontools-newtopic-placeholder-title": "ပရူပရာ",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "ပၠုပ်စရင်",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "ပ္တိတ်စရင်",
 	"discussiontools-replylink": "{{GENDER:|ကလေင်လိက်}}",
@@ -24,6 +27,8 @@
 	"discussiontools-replywidget-cancel": "တးပဲါ",
 	"discussiontools-replywidget-mode-source": "တမ်ရိုဟ်",
 	"discussiontools-replywidget-mode-visual": "ဗီုဆဵုညာတ်",
+	"discussiontools-replywidget-newtopic": "{{GENDER:|ထပ်}} က္ဍိုပ်လိက်",
+	"discussiontools-replywidget-placeholder-newtopic": "မဗမံက်ထ္ၜး",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|ကလေင်လိက်}} ကု {{BIDI:$1}}",
 	"discussiontools-replywidget-preview": "စမ်ရံၚ်ပဏာမ",
 	"discussiontools-replywidget-reply": "{{GENDER:|ကလေင်လိက်}}",
