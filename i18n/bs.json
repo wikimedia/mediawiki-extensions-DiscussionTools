@@ -77,6 +77,7 @@
 	"discussiontools-replywidget-abandontopic-keep": "Nastavi pisati",
 	"discussiontools-replywidget-advanced": "Napredno",
 	"discussiontools-replywidget-anon-warning": "<strong>Niste prijavljeni.</strong> Da biste bili obaviješteni kad neko odgovori i primili zasluge pod svojim imenom umjesto IP-adrese, možete se [$1 prijaviti] ili [$2 napraviti račun].",
+	"discussiontools-replywidget-autocreate-warning": "<strong>Niste prijavljeni.</strong> Nakon što objavite izmjenu, automatski će Vam biti napravljen privremeni račun. [[$3|Detaljnije]]. [$1 Prijavite se] ili [$2 napravite račun] da biste dobili obavještenje kad neko odgovori i imali pristup drugim mogućnostima nakon što ovaj račun istekne.",
 	"discussiontools-replywidget-cancel": "Otkaži",
 	"discussiontools-replywidget-feedback": "{{GENDER:|Dajte mišljenje}} o ovoj mogućnosti",
 	"discussiontools-replywidget-loading": "Učitavam…",
