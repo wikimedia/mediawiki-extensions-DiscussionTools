@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use JsonSerializable;
-use MessageLocalizer;
+use MediaWiki\Language\MessageLocalizer;
 use Wikimedia\Message\MessageSpecifier;
 
 /**

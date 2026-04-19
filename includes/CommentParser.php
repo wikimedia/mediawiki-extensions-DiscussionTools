@@ -13,7 +13,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Language\Language;
-use MediaWiki\Languages\LanguageConverterFactory;
+use MediaWiki\Language\LanguageConverterFactory;
 use MediaWiki\Title\MalformedTitleException;
 use MediaWiki\Title\TitleParser;
 use MediaWiki\Title\TitleValue;

@@ -6,7 +6,7 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
 use MediaWiki\Html\Html;
-use MediaWiki\Languages\LanguageFactory;
+use MediaWiki\Language\LanguageFactory;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Page\ParserOutputAccess;
 use MediaWiki\Parser\ParserOptions;

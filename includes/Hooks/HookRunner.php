@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\DiscussionTools\Hooks;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\HookContainer\HookContainer;
-use MessageLocalizer;
+use MediaWiki\Language\MessageLocalizer;
 
 /**
  * This is a hook runner class, see docs/Hooks.md in core.

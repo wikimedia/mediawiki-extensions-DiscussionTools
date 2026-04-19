@@ -13,7 +13,7 @@ use DateTimeZone;
 use MediaWiki\Config\Config;
 use MediaWiki\Language\ILanguageConverter;
 use MediaWiki\Language\Language;
-use MediaWiki\Languages\LanguageConverterFactory;
+use MediaWiki\Language\LanguageConverterFactory;
 use MediaWiki\MainConfigNames;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 
