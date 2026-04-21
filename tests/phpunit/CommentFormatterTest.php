@@ -17,6 +17,9 @@ use MediaWiki\User\User;
 use Wikimedia\TestingAccessWrapper;
 
 /**
+ * @group DiscussionTools
+ * @group Standalone
+ *
  * @covers \MediaWiki\Extension\DiscussionTools\CommentFormatter
  * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
  */

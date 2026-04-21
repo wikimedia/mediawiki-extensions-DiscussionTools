@@ -17,7 +17,9 @@ use Wikimedia\Parsoid\DOM\Text;
 use Wikimedia\TestingAccessWrapper;
 
 /**
+ * @group Standalone
  * @group DiscussionTools
+ *
  * @covers \MediaWiki\Extension\DiscussionTools\CommentParser
  * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
  */

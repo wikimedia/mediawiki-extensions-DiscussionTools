@@ -8,7 +8,9 @@ use Wikimedia\Parsoid\Ext\DOMUtils;
 use Wikimedia\Parsoid\Wt2Html\XHtmlSerializer;
 
 /**
+ * @group Standalone
  * @group DiscussionTools
+ *
  * @covers \MediaWiki\Extension\DiscussionTools\CommentModifier
  * @covers \MediaWiki\Extension\DiscussionTools\CommentUtils
  */
