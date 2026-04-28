@@ -304,7 +304,7 @@
 			],
 			"optional": {
 				"ConfirmEdit": {
-					"dependencies": "ext.confirmEdit.CaptchaInputWidget"
+					"dependencies": "ext.confirmEdit.CaptchaWidget"
 				}
 			},
 			"factory": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::addOptional"
@@ -325,7 +325,8 @@
 			"qunit/utils.test.js",
 			"qunit/modifier.test.js",
 			"qunit/parser.test.js",
-			"qunit/ThreadItem.test.js"
+			"qunit/ThreadItem.test.js",
+			"qunit/dt.ui.ReplyWidget.test.js"
 		],
 		"testData": [
 			"cases/authors.json",
@@ -341,7 +342,8 @@
 		],
 		"factory": "\\MediaWiki\\Extension\\DiscussionTools\\ResourceLoaderData::makeTestModule",
 		"dependencies": [
-			"ext.discussionTools.init"
+			"ext.discussionTools.init",
+			"ext.discussionTools.ReplyWidget"
 		]
 	},
 	"AutoloadNamespaces": {

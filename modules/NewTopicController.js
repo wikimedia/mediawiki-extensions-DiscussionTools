@@ -248,31 +248,31 @@ NewTopicController.prototype.getUnsupportedNodeSelectors = function () {
  */
 NewTopicController.prototype.getApiQuery = function () {
 	// Parent method
-	let data = NewTopicController.super.prototype.getApiQuery.apply( this, arguments );
+	return NewTopicController.super.prototype.getApiQuery.apply( this, arguments ).then( ( data ) => {
+		// Rebuild the tags array and remove the reply tag
+		const tags = ( data.dttags || '' ).split( ',' );
+		const replyTag = tags.indexOf( 'discussiontools-reply' );
+		if ( replyTag !== -1 ) {
+			tags.splice( replyTag, 1 );
+		}
+		// Add the newtopic tag
+		tags.push( 'discussiontools-newtopic' );
 
-	// Rebuild the tags array and remove the reply tag
-	const tags = ( data.dttags || '' ).split( ',' );
-	const replyTag = tags.indexOf( 'discussiontools-reply' );
-	if ( replyTag !== -1 ) {
-		tags.splice( replyTag, 1 );
-	}
-	// Add the newtopic tag
-	tags.push( 'discussiontools-newtopic' );
+		data = Object.assign( {}, data, {
+			paction: 'addtopic',
+			sectiontitle: this.sectionTitle.getValue(),
+			dttags: tags.join( ',' )
+		} );
 
-	data = Object.assign( {}, data, {
-		paction: 'addtopic',
-		sectiontitle: this.sectionTitle.getValue(),
-		dttags: tags.join( ',' )
+		// Allow MediaWiki to generate the summary if it wasn't modified by the user. This avoids
+		// inconsistencies in how wiki markup is stripped from section titles when they're used in
+		// automatic summaries. (T275178)
+		if ( data.summary === this.generateSummary( this.sectionTitle.getValue() ) ) {
+			delete data.summary;
+		}
+
+		return data;
 	} );
-
-	// Allow MediaWiki to generate the summary if it wasn't modified by the user. This avoids
-	// inconsistencies in how wiki markup is stripped from section titles when they're used in
-	// automatic summaries. (T275178)
-	if ( data.summary === this.generateSummary( this.sectionTitle.getValue() ) ) {
-		delete data.summary;
-	}
-
-	return data;
 };
 
 /**

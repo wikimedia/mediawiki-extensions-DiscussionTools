@@ -1123,7 +1123,7 @@ ReplyWidget.prototype.clearCaptcha = function () {
 	if ( this.captchaMessage ) {
 		this.captchaMessage.$element.detach();
 	}
-	this.captchaInput = undefined;
+	this.captchaWidget = undefined;
 };
 
 /**
@@ -1132,21 +1132,42 @@ ReplyWidget.prototype.clearCaptcha = function () {
  * @param {Object} captchaData Captcha data
  */
 ReplyWidget.prototype.setCaptcha = function ( captchaData ) {
-	this.captchaInput = new mw.libs.confirmEdit.CaptchaInputWidget( captchaData );
-	// Save when pressing 'Enter' in captcha field as it is single line.
-	this.captchaInput.on( 'enter', () => {
-		this.emit( 'reply' );
+	const $captchaContainer = $( '<div>' );
+
+	this.captchaWidget = new mw.libs.confirmEdit.CaptchaWidget( {
+		container: $captchaContainer[ 0 ], interfaceName: 'discussiontools'
 	} );
 
 	this.captchaMessage = new OO.ui.MessageWidget( {
 		type: 'notice',
-		label: this.captchaInput.$element,
+		label: $captchaContainer,
 		classes: [ 'ext-discussiontools-ui-replyWidget-captcha' ]
 	} );
+
+	// Hide initially to avoid a content flash if the type of CAPTCHA renders async
+	this.captchaMessage.toggle( false );
 	this.captchaMessage.$element.insertAfter( this.$preview );
 
-	this.captchaInput.focus();
-	this.captchaInput.scrollElementIntoView();
+	this.captchaWidget.updateForCaptchaFailure( captchaData );
+	this.captchaWidget.renderCaptcha().then( () => {
+		this.captchaMessage.toggle( true );
+
+		const captchaInputField = this.captchaWidget.getInputField();
+		if ( captchaInputField ) {
+			// Save when pressing 'Enter' in captcha field as it is single line.
+			const $captchaInputElement = $( captchaInputField ).find( 'input' );
+			$captchaInputElement.on( 'keydown', ( e ) => {
+				if ( e.which === OO.ui.Keys.ENTER ) {
+					this.onReplyClick();
+				}
+			} );
+
+			$captchaInputElement.find( 'input' ).trigger( 'focus' );
+			OO.ui.Element.static.scrollIntoView( captchaInputField );
+		} else {
+			OO.ui.Element.static.scrollIntoView( $captchaContainer[ 0 ] );
+		}
+	} );
 };
 
 /**

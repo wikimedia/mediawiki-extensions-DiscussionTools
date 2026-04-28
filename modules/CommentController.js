@@ -470,7 +470,7 @@ CommentController.prototype.onReplyWidgetTeardown = function ( mode ) {
  * @param {string} pageName Title of the page to post on
  * @param {Object} checkboxes Value of the promise returned by controller#getCheckboxesPromise
  * @param {Object} extraParams Extra params to pass to the API
- * @return {Object.<string,string>} API query data
+ * @return {Promise<Object.<string,string>>} API query data
  */
 CommentController.prototype.getApiQuery = function ( replyWidget, pageName, checkboxes, extraParams ) {
 	const threadItem = this.getThreadItem();
@@ -510,19 +510,21 @@ CommentController.prototype.getApiQuery = function ( replyWidget, pageName, chec
 		data.html = replyWidget.getValue();
 	}
 
-	const captchaInput = replyWidget.captchaInput;
-	if ( captchaInput ) {
-		data.captchaid = captchaInput.getCaptchaId();
-		data.captchaword = captchaInput.getCaptchaWord();
-	}
-
 	if ( checkboxes.checkboxesByName.wpWatchthis ) {
 		data.watchlist = checkboxes.checkboxesByName.wpWatchthis.isSelected() ?
 			'watch' :
 			'unwatch';
 	}
-
-	return data;
+	/**
+	 * @type {undefined|mw.libs.confirmEdit.CaptchaWidget}
+	 */
+	const captchaWidget = replyWidget.captchaWidget;
+	if ( captchaWidget ) {
+		return $.when( captchaWidget.getCaptchaDataForSubmission() )
+			.then( ( captchaData ) => Object.assign( data, captchaData ) );
+	} else {
+		return $.Deferred().resolve( data ).promise();
+	}
 };
 
 /**
@@ -617,80 +619,82 @@ CommentController.prototype.save = function ( replyWidget, pageName, extraParams
 
 	const threadItem = this.getThreadItem();
 
-	return replyWidget.checkboxesPromise.then( ( checkboxes ) => {
-		const data = this.getApiQuery( replyWidget, pageName, checkboxes, extraParams );
-
-		if (
-			// We're saving the first comment on a page that previously didn't exist.
-			// Don't fetch the new revision's HTML content, because we will reload the whole page.
-			!mw.config.get( 'wgRelevantArticleId' ) ||
-			// We're saving a comment on a different page than the one being viewed.
-			// Don't fetch the new revision's HTML content, because we can't use it anyway.
-			pageName !== mw.config.get( 'wgRelevantPageName' )
-		) {
-			data.nocontent = true;
-		}
-
-		if ( replyWidget.commentDetails.wouldAutoCreate ) {
-			// This means that we might need to redirect to an opaque URL,
-			// so we must set up query parameters we want ahead of time.
-			data.returnto = pageName;
-			const params = new URLSearchParams();
-			params.set( 'dtrepliedto', this.getThreadItem().id );
-			params.set( 'dttempusercreated', '1' );
-			data.returntoquery = params.toString();
-		}
-
-		// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
-		// could result in duplicate messages if the user retries. (T249071)
-		const defaults = OO.copy( controller.getApi().defaults );
-		defaults.ajax.timeout = 0;
-		const noTimeoutApi = new mw.Api( defaults );
-
-		return mw.libs.ve.targetSaver.postContent(
-			data, { api: noTimeoutApi }
-		).catch( ( code, responseData ) => {
-			if ( code === 'assertanonfailed' ) {
-				// Reattempt the save when something already created a temporary account (T368263)
-				return controller.getApi().get( {
-					meta: 'userinfo'
-				} ).then( ( resp ) => {
-					if ( !resp.query.userinfo.temp ) {
-						// Return the original error response
-						return $.Deferred().reject( code, responseData ).promise();
-					}
-					// Set new parameters and retry
-					data.assert = 'user';
-					data.assertuser = resp.query.userinfo.name;
-					return mw.libs.ve.targetSaver.postContent(
-						data, { api: noTimeoutApi }
-					);
-				} );
-			}
-			return $.Deferred().reject( code, responseData ).promise();
-		} ).catch( ( code, responseData ) => {
-			// Better user-facing error messages
-			if ( code === 'editconflict' ) {
-				return $.Deferred().reject( code, { errors: [ {
-					code: code,
-					html: mw.message( 'discussiontools-error-comment-conflict' ).parse()
-				} ] } ).promise();
-			}
+	return replyWidget.checkboxesPromise.then(
+		( checkboxes ) => this.getApiQuery(
+			replyWidget, pageName, checkboxes, extraParams
+		).then( ( data ) => {
 			if (
-				code === 'discussiontools-commentid-notfound' ||
-				code === 'discussiontools-commentname-ambiguous' ||
-				code === 'discussiontools-commentname-notfound'
+				// We're saving the first comment on a page that previously didn't exist.
+				// Don't fetch the new revision's HTML content, because we will reload the whole page.
+				!mw.config.get( 'wgRelevantArticleId' ) ||
+				// We're saving a comment on a different page than the one being viewed.
+				// Don't fetch the new revision's HTML content, because we can't use it anyway.
+				pageName !== mw.config.get( 'wgRelevantPageName' )
 			) {
-				return $.Deferred().reject( code, { errors: [ {
-					code: code,
-					html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
-				} ] } ).promise();
+				data.nocontent = true;
 			}
-			return $.Deferred().reject( code, responseData ).promise();
-		} ).then( ( responseData ) => {
-			controller.update( responseData, threadItem, pageName, replyWidget );
-		} );
-	} );
+
+			if ( replyWidget.commentDetails.wouldAutoCreate ) {
+				// This means that we might need to redirect to an opaque URL,
+				// so we must set up query parameters we want ahead of time.
+				data.returnto = pageName;
+				const params = new URLSearchParams();
+				params.set( 'dtrepliedto', this.getThreadItem().id );
+				params.set( 'dttempusercreated', '1' );
+				data.returntoquery = params.toString();
+			}
+
+			// No timeout. Huge talk pages can take a long time to save, and falsely reporting an error
+			// could result in duplicate messages if the user retries. (T249071)
+			const defaults = OO.copy( controller.getApi().defaults );
+			defaults.ajax.timeout = 0;
+			const noTimeoutApi = new mw.Api( defaults );
+
+			return mw.libs.ve.targetSaver.postContent(
+				data, { api: noTimeoutApi }
+			).catch( ( code, responseData ) => {
+				if ( code === 'assertanonfailed' ) {
+					// Reattempt the save when something already created a temporary account (T368263)
+					return controller.getApi().get( {
+						meta: 'userinfo'
+					} ).then( ( resp ) => {
+						if ( !resp.query.userinfo.temp ) {
+							// Return the original error response
+							return $.Deferred().reject( code, responseData ).promise();
+						}
+						// Set new parameters and retry
+						data.assert = 'user';
+						data.assertuser = resp.query.userinfo.name;
+						return mw.libs.ve.targetSaver.postContent(
+							data, { api: noTimeoutApi }
+						);
+					} );
+				}
+				return $.Deferred().reject( code, responseData ).promise();
+			} ).catch( ( code, responseData ) => {
+				// Better user-facing error messages
+				if ( code === 'editconflict' ) {
+					return $.Deferred().reject( code, { errors: [ {
+						code: code,
+						html: mw.message( 'discussiontools-error-comment-conflict' ).parse()
+					} ] } ).promise();
+				}
+				if (
+					code === 'discussiontools-commentid-notfound' ||
+					code === 'discussiontools-commentname-ambiguous' ||
+					code === 'discussiontools-commentname-notfound'
+				) {
+					return $.Deferred().reject( code, { errors: [ {
+						code: code,
+						html: mw.message( 'discussiontools-error-comment-disappeared' ).parse()
+					} ] } ).promise();
+				}
+				return $.Deferred().reject( code, responseData ).promise();
+			} ).then( ( responseData ) => {
+				controller.update( responseData, threadItem, pageName, replyWidget );
+			} );
+		} )
+	);
 };
 
 /**
