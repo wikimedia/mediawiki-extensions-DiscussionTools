@@ -6,19 +6,9 @@ function init( $pageContainer ) {
 			// Only handle unmodified left clicks
 			return;
 		}
-		// Try to percent-decode the URL, so that non-Latin characters don't look so ugly (T357021)
 		// Use currentTarget rather than target to avoid conflicts with userscripts that do their
 		// own timestamp-wrapping. (T368701)
-		let link = e.currentTarget.href;
-		try {
-			// decodeURI() may throw
-			const decodedLink = decodeURI( link );
-			// Check that the decoded URL is parsed to the same canonical URL
-			// new URL() may throw
-			if ( new URL( decodedLink ).toString() === link ) {
-				link = decodedLink;
-			}
-		} catch ( err ) {}
+		const link = safeDecode( e.currentTarget.href );
 		copyLink( link );
 		location.hash = new URL( link ).hash;
 		return false;
@@ -71,6 +61,44 @@ function copyLink( link ) {
 		$win.off( 'scroll', afterNextScroll );
 	}, 1000 );
 }
+
+function safeDecode( link ) {
+	// Try to percent-decode the URL, so that non-Latin characters don't look so ugly (T357021)
+	try {
+		// decodeURI() may throw
+		const decodedLink = decodeURI( link );
+		// Check that the decoded URL is parsed to the same canonical URL
+		// new URL() may throw
+		if ( new URL( decodedLink ).toString() === link ) {
+			link = decodedLink;
+		}
+	} catch ( err ) {}
+	return link;
+}
+
+mw.hook( 'discussionToolsOverflowMenuOnChoose' ).add( ( id, menuItem, threadItem ) => {
+	if ( id === 'permalink' ) {
+		// This is running inside a click event for the menu, and click events
+		// clear the comment highlight that setting the hash will show. So,
+		// setTimeout to get out of the click context.
+		setTimeout( () => {
+			// Work out a canonical URL for the current page:
+			let link;
+			const canonical = document.querySelector( 'link[rel="canonical"]' );
+			if ( canonical ) {
+				// This is only available if wgEnableCanonicalServerLink is set
+				link = new URL( canonical.href );
+			} else {
+				link = new URL( mw.util.getUrl( mw.config.get( 'wgRelevantPageName' ) ), location.href );
+			}
+			// Set the hash to make it the permalink for this comment:
+			link.hash = threadItem.id;
+			// Copy the link (and decode percent-encoded items in the ID because the URL does that)
+			copyLink( safeDecode( link.toString() ) );
+			location.hash = link.hash;
+		} );
+	}
+} );
 
 module.exports = {
 	init: init

@@ -72,5 +72,13 @@ class DiscussionToolsHooks implements
 				);
 			}
 		}
+
+		if ( $threadItemData['type'] ?? null ) {
+			$overflowMenuItems[] = new OverflowMenuItem(
+				'permalink',
+				'link',
+				$contextSource->msg( 'discussiontools-permalink-button' )
+			);
+		}
 	}
 }
