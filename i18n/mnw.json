@@ -22,6 +22,7 @@
 	"discussiontools-newtopic-placeholder-title": "ပရူပရာ",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "ပၠုပ်စရင်",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "ပ္တိတ်စရင်",
+	"discussiontools-replybutton": "{{GENDER:|မကလေၚ်သွဟ်}}",
 	"discussiontools-replylink": "{{GENDER:|ကလေင်လိက်}}",
 	"discussiontools-replywidget-advanced": "သၠုၚ်ဗွဲကိုပ်ကၠာ",
 	"discussiontools-replywidget-cancel": "တးပဲါ",
