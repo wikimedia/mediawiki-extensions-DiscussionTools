@@ -8,11 +8,13 @@ use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Extension\ConfirmEdit\Hooks as ConfirmEditHooks;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Request\DerivativeRequest;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Skin\SkinFactory;
@@ -42,6 +44,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		private readonly SkinFactory $skinFactory,
 		ConfigFactory $configFactory,
 		private readonly RevisionLookup $revisionLookup,
+		private readonly ExtensionRegistry $extensionRegistry,
 	) {
 		parent::__construct( $main, $name );
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
@@ -186,8 +189,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'starttimestamp' => wfTimestampNow(),
 							'useskin' => $params['useskin'],
 							'watchlist' => $params['watchlist'],
-							'captchaid' => $params['captchaid'],
-							'captchaword' => $params['captchaword'],
 							// Always fetch content if auto-subscribing, it's needed below (T359751)
 							'nocontent' => $autoSubscribe ? null : $params['nocontent'],
 							// NOTE: Must use getText() to work; PHP array from $params['tags'] is not understood
@@ -196,7 +197,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'returnto' => $params['returnto'],
 							'returntoquery' => $params['returntoquery'],
 							'returntoanchor' => $params['returntoanchor'],
-						] + $mobileFormatParams,
+						] + $mobileFormatParams + $this->getCaptchaParams( $params, $title ),
 						/* was posted? */ true
 					)
 				);
@@ -353,8 +354,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'etag' => $headers['etag'] ?? null,
 							'useskin' => $params['useskin'],
 							'watchlist' => $params['watchlist'],
-							'captchaid' => $params['captchaid'],
-							'captchaword' => $params['captchaword'],
 							'nocontent' => $params['nocontent'],
 							// NOTE: Must use getText() to work; PHP array from $params['tags'] is not understood
 							// by the visualeditoredit API.
@@ -362,7 +361,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'returnto' => $params['returnto'],
 							'returntoquery' => $params['returntoquery'],
 							'returntoanchor' => $params['returntoanchor'],
-						],
+						] + $this->getCaptchaParams( $params, $title ),
 						/* was posted? */ true
 					)
 				);
@@ -411,6 +410,27 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * Given the list of parsed discussiontoolsedit API parameters and relevant title,
+	 * returns a CAPTCHA API data to append to the edit API call.
+	 */
+	private function getCaptchaParams( array $params, Title $title ): array {
+		if ( !$this->extensionRegistry->isLoaded( 'ConfirmEdit' ) ) {
+			return [];
+		}
+
+		$captchaInstance = ConfirmEditHooks::getInstance(
+			ConfirmEditHooks::getCaptchaTriggerActionFromTitle( $title )
+		);
+		$returnArray = [];
+		foreach ( $captchaInstance->getApiParams() as $captchaApiParam ) {
+			if ( array_key_exists( $captchaApiParam, $params ) ) {
+				$returnArray[$captchaApiParam] = $params[$captchaApiParam];
+			}
+		}
+		return $returnArray;
 	}
 
 	/**

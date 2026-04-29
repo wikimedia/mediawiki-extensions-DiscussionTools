@@ -2,7 +2,10 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Extension\ConfirmEdit\SimpleCaptcha\SimpleCaptcha;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Title\Title;
@@ -87,4 +90,96 @@ class ApiDiscussionToolsEditTest extends ApiTestCase {
 		$this->assertStringContainsString( $performer->getUserPage()->getFullText(), $pageWikitext );
 	}
 
+	public function testExecuteApiDiscussionEditWhenCaptchaDataProvided(): void {
+		$this->markTestSkippedIfExtensionNotLoaded( 'ConfirmEdit' );
+		$this->overrideConfigValue( 'CaptchaClass', SimpleCaptcha::class );
+
+		$editApiModuleCalled = false;
+		$this->setTemporaryHook( 'APIAfterExecute', function ( ApiBase $module ) use ( &$editApiModuleCalled ) {
+			if ( $module->getModuleName() === 'edit' ) {
+				$editApiModuleCalled = true;
+				$this->assertArrayContains(
+					[
+						'captchaword' => 'test',
+						'captchaid' => 'captcha-id',
+					],
+					$module->extractRequestParams(),
+					'Captcha fields should have been passed to the edit API'
+				);
+			}
+		} );
+
+		$title = Title::newFromText( 'Talk:' . __METHOD__ );
+		$page = $this->getNonexistingTestPage( $title );
+		$performer = $this->getTestSysop()->getUser();
+
+		$params = [
+			'action' => 'discussiontoolsedit',
+			'paction' => 'addtopic',
+			'page' => $page->getTitle()->getFullText(),
+			'wikitext' => 'Testing',
+			'summary' => 'Test summary',
+			'sectiontitle' => 'Test',
+			'captchaword' => 'test',
+			'captchaid' => 'captcha-id',
+		];
+
+		[ $result ] = $this->doApiRequestWithToken( $params, null, $performer );
+
+		$this->assertNotEmpty( $result['discussiontoolsedit'] );
+		$this->assertArrayHasKey( 'result', $result['discussiontoolsedit'] );
+		$this->assertSame( 'success', $result['discussiontoolsedit']['result'] );
+		$this->assertArrayHasKey( 'newrevid', $result['discussiontoolsedit'] );
+
+		$this->assertTrue( $editApiModuleCalled );
+	}
+
+	public function testExecuteApiDiscussionEditWhenConfirmEditNotInstalled(): void {
+		$mockExtensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$mockExtensionRegistry->method( 'isLoaded' )
+			->willReturnCallback( static fn ( $name ) => match ( $name ) {
+				'ConfirmEdit' => false,
+				default => ExtensionRegistry::getInstance()->isLoaded( $name ),
+			} );
+		// ::getAttribute is used by code in other extensions during the execution of an API module
+		$mockExtensionRegistry->method( 'getAttribute' )
+			->willReturnCallback(
+				static fn ( $attribute ) => ExtensionRegistry::getInstance()->getAttribute( $attribute )
+			);
+		$this->setService( 'ExtensionRegistry', $mockExtensionRegistry );
+
+		$editApiModuleCalled = false;
+		$this->setTemporaryHook( 'APIAfterExecute', function ( ApiBase $module ) use ( &$editApiModuleCalled ) {
+			if ( $module->getModuleName() === 'visualeditoredit' ) {
+				$editApiModuleCalled = true;
+				$requestParams = $module->extractRequestParams();
+				$this->assertNull( $requestParams['captchaword'] );
+				$this->assertNull( $requestParams['captchaid'] );
+			}
+		} );
+
+		$title = Title::newFromText( 'Talk:' . __METHOD__ );
+		$page = $this->getNonexistingTestPage( $title );
+		$performer = $this->getTestSysop()->getUser();
+
+		$params = [
+			'action' => 'discussiontoolsedit',
+			'paction' => 'addtopic',
+			'page' => $page->getTitle()->getFullText(),
+			'wikitext' => 'Testing',
+			'summary' => 'Test summary',
+			'sectiontitle' => 'Test',
+			'captchaword' => 'test',
+			'captchaid' => 'captcha-id',
+		];
+
+		[ $result ] = $this->doApiRequestWithToken( $params, null, $performer );
+
+		$this->assertNotEmpty( $result['discussiontoolsedit'] );
+		$this->assertArrayHasKey( 'result', $result['discussiontoolsedit'] );
+		$this->assertSame( 'success', $result['discussiontoolsedit']['result'] );
+		$this->assertArrayHasKey( 'newrevid', $result['discussiontoolsedit'] );
+
+		$this->assertTrue( $editApiModuleCalled );
+	}
 }
