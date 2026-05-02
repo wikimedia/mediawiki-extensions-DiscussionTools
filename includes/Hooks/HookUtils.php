@@ -171,7 +171,7 @@ class HookUtils {
 		}
 
 		$parserOutput = $status->getValue();
-		$html = $parserOutput->getRawText();
+		$html = $parserOutput->getContentHolderText();
 
 		// Run the discussion parser on it
 		$doc = DOMUtils::parseHTML( $html );
