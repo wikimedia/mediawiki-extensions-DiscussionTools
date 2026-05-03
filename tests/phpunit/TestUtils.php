@@ -226,7 +226,8 @@ trait TestUtils {
 			$services->getLanguageFallback(),
 			$services->getLanguageConverterFactory(),
 			$services->getHookContainer(),
-			new MultiConfig( [ new HashConfig( $config ), $services->getMainConfig() ] )
+			new MultiConfig( [ new HashConfig( $config ), $services->getMainConfig() ] ),
+			$services->getLeximorphFactory()
 		);
 
 		$contLang = $langFactory->getLanguage( $config['LanguageCode'] );
