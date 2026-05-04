@@ -1,13 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kallmemel",
 			"ObaTango"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Rèspòns",
 	"discussiontools-replylink": "{{GENDER:|kontestá}}",
 	"discussiontools-replywidget-cancel": "Kanselá",
 	"discussiontools-replywidget-mode-source": "Fuente",
 	"discussiontools-replywidget-mode-visual": "Visual",
-	"discussiontools-replywidget-placeholder-reply": "Kontestá {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Kontestá"
+	"discussiontools-replywidget-placeholder-newtopic": "Diskripshon",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Respondé}} na {{BIDI:$1}}",
+	"discussiontools-replywidget-reply": "{{GENDER:|Respondé}}",
+	"discussiontools-replywidget-watchthis": "Vug e página aki na bo [[Special:Watchlist|lista di vigilansia]]"
 }

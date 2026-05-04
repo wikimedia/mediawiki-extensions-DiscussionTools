@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Iketsi",
 			"Orbitminis"
 		]
 	},
+	"discussiontools-newtopic-placeholder-title": "Téma",
 	"discussiontools-replylink": "{{GENDER:|òdpòwiedz}}",
 	"discussiontools-replywidget-cancel": "Anulëje",
 	"discussiontools-replywidget-mode-source": "Zdrój",
+	"discussiontools-replywidget-placeholder-newtopic": "Òpisënk",
 	"discussiontools-replywidget-reply": "Òdpòwiedz"
 }
