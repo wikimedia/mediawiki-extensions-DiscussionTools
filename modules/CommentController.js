@@ -231,7 +231,7 @@ CommentController.prototype.setup = function ( options ) {
 
 		// Disable section collapsing on mobile. If the section were collapsed it would be hard to
 		// find your comment again. The "Return to reply" tool is broken by section collapsing as
-		// the reply widget is hidden and therefore not measureable. It's also possible the page is
+		// the reply widget is hidden and therefore not measurable. It's also possible the page is
 		// not long enough to trigger the "Return to reply" tool.
 		$( this.newListItem ).parents( '.collapsible-block' ).prev().addClass( 'collapsible-heading-disabled' );
 	}

@@ -251,7 +251,7 @@ function initNewTopicsSubscription() {
 		$button = $( '.menu__item--page-actions-overflow-t-page-subscribe' );
 		$label = $button.find( '.toggle-list-item__label' );
 		$icon = $button.find( '.minerva-icon' );
-		// HACK: We can't set data-mw-subscribed intially in Minerva, so work it out from the icon
+		// HACK: We can't set data-mw-subscribed initially in Minerva, so work it out from the icon
 		// eslint-disable-next-line no-jquery/no-class-state
 		const initialState = $icon.hasClass( 'minerva-icon--bell' ) ? STATE_SUBSCRIBED : STATE_UNSUBSCRIBED;
 		$button.attr( 'data-mw-subscribed', String( initialState ) );

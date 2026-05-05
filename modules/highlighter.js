@@ -179,7 +179,7 @@ let highlightedTarget = null;
  *
  * @param {ThreadItemSet} threadItemSet
  * @param {boolean} [noScroll] Don't scroll to the topmost highlight, e.g. on popstate
- * @return {Object} Object containing 'requested' IDs, 'requestedSince' ID, and successfully 'highligted' IDs
+ * @return {Object} Object containing 'requested' IDs, 'requestedSince' ID, and successfully 'highlighted' IDs
  */
 function highlightTargetComment( threadItemSet, noScroll ) {
 	if ( highlightedTarget ) {
@@ -310,7 +310,7 @@ function highlightPublishedComment( threadItemSet, threadItemId ) {
  * @param {boolean} [options.inThread] When using newCommentsSinceId, only highlight comments in the same thread
  * @param {boolean} [options.sinceThread] When using newCommentsSinceId, only highlight comments in threads
  *  created since that comment was posted.
- * @return {Object} Object containing 'requested' comment IDs, 'requestedSince' ID, and successfully 'highligted' IDs
+ * @return {Object} Object containing 'requested' comment IDs, 'requestedSince' ID, and successfully 'highlighted' IDs
  */
 function highlightNewComments( threadItemSet, noScroll, newCommentIds, options ) {
 	if ( highlightedTarget ) {
