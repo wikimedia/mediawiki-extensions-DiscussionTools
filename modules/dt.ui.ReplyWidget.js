@@ -290,7 +290,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 		this.anonWarning = new OO.ui.MessageWidget( {
 			classes: [ 'ext-discussiontools-ui-replyWidget-anonWarning' ],
 			type: 'warning',
-			// eslint-disable-next-line mediawiki/msg-doc
+
 			label: mw.message( msg )
 				.params( [
 					mw.util.getUrl( 'Special:Userlogin', returnTo ),
