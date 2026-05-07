@@ -1,13 +1,34 @@
 {
 	"@metadata": {
 		"authors": [
-			"ObaTango"
+			"ObaTango",
+			"Kallmemel"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "Rèspòns",
+	"discussiontools-newtopic-missing-title": "Por fabor proveé un título pa {{GENDER:|bo}} tópiko diskushon.",
+	"discussiontools-newtopic-placeholder-title": "Suheto",
 	"discussiontools-replylink": "{{GENDER:|kontestá}}",
+	"discussiontools-replywidget-advanced": "Avansá",
 	"discussiontools-replywidget-cancel": "Kanselá",
 	"discussiontools-replywidget-mode-source": "Fuente",
 	"discussiontools-replywidget-mode-visual": "Visual",
-	"discussiontools-replywidget-placeholder-reply": "Kontestá {{BIDI:$1}}",
-	"discussiontools-replywidget-reply": "Kontestá"
+	"discussiontools-replywidget-newtopic": "{{GENERO:|Agregá}} tópiko",
+	"discussiontools-replywidget-placeholder-newtopic": "Diskripshon",
+	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|Respondé}} na {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Avanse",
+	"discussiontools-replywidget-reply": "{{GENDER:|Respondé}}",
+	"discussiontools-replywidget-summary": "Resúmen",
+	"discussiontools-replywidget-watchthis": "Vug e página aki na bo [[Special:Watchlist|lista di atenshon]]",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|persona}} den diskushon",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentario}}",
+	"discussiontools-topicheader-latestcomment": "Último komentario: $1",
+	"discussiontools-topicsubscription-button-subscribe": "aboná",
+	"discussiontools-topicsubscription-button-subscribe-label": "Aboná",
+	"discussiontools-topicsubscription-button-unsubscribe": "kanselá suskripshon",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Kanselá  suskripshon",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Bo}} lo risibí notifikashon tokante komentarionan nobo riba e tópiko aki.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Bo}} a suskribí!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{GENDER:|Bo}} no lo risibí notifikashon tokante komentarionnan nobo riba e tópiko aki.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Bo}} a kanselá bo suskripshon."
 }
