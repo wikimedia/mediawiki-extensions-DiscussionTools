@@ -687,6 +687,8 @@ ReplyWidget.prototype.setup = function ( data ) {
 
 	mw.hook( 'wikipage.watchlistChange' ).add( this.onWatchToggleHandler );
 
+	this.setInitialCaptcha();
+
 	return this;
 };
 
@@ -1117,7 +1119,7 @@ ReplyWidget.prototype.setSaveErrorMessage = function ( code, data ) {
 };
 
 /**
- * Clear the captcha input
+ * Clear the CAPTCHA shown in the reply widget
  */
 ReplyWidget.prototype.clearCaptcha = function () {
 	if ( this.captchaMessage ) {
@@ -1127,17 +1129,32 @@ ReplyWidget.prototype.clearCaptcha = function () {
 };
 
 /**
- * Set the captcha input
+ * Creates and displays a CAPTCHA after a save fails due to needing to complete a CAPTCHA
  *
  * @param {Object} captchaData Captcha data
  */
-ReplyWidget.prototype.setCaptcha = function ( captchaData ) {
+ReplyWidget.prototype.setSaveFailureCaptcha = function ( captchaData ) {
 	const $captchaContainer = $( '<div>' );
+
+	this.setUpCaptchaMessage( $captchaContainer );
 
 	this.captchaWidget = new mw.libs.confirmEdit.CaptchaWidget( {
 		container: $captchaContainer[ 0 ], interfaceName: 'discussiontools'
 	} );
 
+	this.captchaWidget.updateForCaptchaFailure( captchaData );
+	this.captchaWidget.renderCaptcha().then( () => {
+		this.showCaptchaMessage( $captchaContainer );
+	} );
+};
+
+/**
+ * Creates the CAPTCHA OOUI message widget which is initially hidden
+ *
+ * @internal
+ * @param {jQuery} $captchaContainer
+ */
+ReplyWidget.prototype.setUpCaptchaMessage = function ( $captchaContainer ) {
 	this.captchaMessage = new OO.ui.MessageWidget( {
 		type: 'notice',
 		label: $captchaContainer,
@@ -1147,26 +1164,62 @@ ReplyWidget.prototype.setCaptcha = function ( captchaData ) {
 	// Hide initially to avoid a content flash if the type of CAPTCHA renders async
 	this.captchaMessage.toggle( false );
 	this.captchaMessage.$element.insertAfter( this.$preview );
+};
 
-	this.captchaWidget.updateForCaptchaFailure( captchaData );
+/**
+ * Shows the CAPTCHA message widget and scrolls it into the view of the user
+ *
+ * @internal
+ * @param {jQuery} $captchaContainer
+ */
+ReplyWidget.prototype.showCaptchaMessage = function ( $captchaContainer ) {
+	this.captchaMessage.toggle( true );
+
+	const captchaInputField = this.captchaWidget.getInputField();
+	if ( captchaInputField ) {
+		// Save when pressing 'Enter' in captcha field as it is single line.
+		const $captchaInputElement = $( captchaInputField ).find( 'input' );
+		$captchaInputElement.on( 'keydown', ( e ) => {
+			if ( e.which === OO.ui.Keys.ENTER ) {
+				this.onReplyClick();
+			}
+		} );
+
+		$captchaInputElement.find( 'input' ).trigger( 'focus' );
+		OO.ui.Element.static.scrollIntoView( captchaInputField );
+	} else {
+		OO.ui.Element.static.scrollIntoView( $captchaContainer[ 0 ] );
+	}
+};
+
+/**
+ * Creates and displays a CAPTCHA when the widget is first loaded.
+ *
+ * This method is a no-op unless all the following apply:
+ * * The user needs to complete a CAPTCHA to make any edit to the current page
+ * * The type of CAPTCHA needed to be completed can be shown before the first edit attempt
+ */
+ReplyWidget.prototype.setInitialCaptcha = function () {
+	if ( !mw.libs || !mw.libs.confirmEdit || !mw.libs.confirmEdit.CaptchaWidget ) {
+		return;
+	}
+
+	// Only hCaptcha currently supports being rendered without a save failure first
+	const neededCaptcha = mw.libs.confirmEdit.CaptchaWidget.static.captchaNeededForEdit();
+	if ( neededCaptcha !== 'hcaptcha' ) {
+		return;
+	}
+
+	const $captchaContainer = $( '<div>' );
+
+	this.setUpCaptchaMessage( $captchaContainer );
+
+	this.captchaWidget = new mw.libs.confirmEdit.CaptchaWidget( {
+		container: $captchaContainer[ 0 ], interfaceName: 'discussiontools', type: neededCaptcha
+	} );
+
 	this.captchaWidget.renderCaptcha().then( () => {
-		this.captchaMessage.toggle( true );
-
-		const captchaInputField = this.captchaWidget.getInputField();
-		if ( captchaInputField ) {
-			// Save when pressing 'Enter' in captcha field as it is single line.
-			const $captchaInputElement = $( captchaInputField ).find( 'input' );
-			$captchaInputElement.on( 'keydown', ( e ) => {
-				if ( e.which === OO.ui.Keys.ENTER ) {
-					this.onReplyClick();
-				}
-			} );
-
-			$captchaInputElement.find( 'input' ).trigger( 'focus' );
-			OO.ui.Element.static.scrollIntoView( captchaInputField );
-		} else {
-			OO.ui.Element.static.scrollIntoView( $captchaContainer[ 0 ] );
-		}
+		this.showCaptchaMessage( $captchaContainer );
 	} );
 };
 

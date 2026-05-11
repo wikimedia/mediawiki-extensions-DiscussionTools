@@ -567,7 +567,7 @@ CommentController.prototype.saveFail = function ( replyWidget, code, data ) {
 	if ( captchaData ) {
 		code = 'captcha';
 		replyWidget.clearCaptcha();
-		replyWidget.setCaptcha( captchaData );
+		replyWidget.setSaveFailureCaptcha( captchaData );
 	} else {
 		replyWidget.setSaveErrorMessage( code, data );
 	}
