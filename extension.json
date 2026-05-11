@@ -295,6 +295,7 @@
 				"ext.visualEditor.mwsignature",
 				"ext.visualEditor.mwwikitext",
 				"ext.visualEditor.switching",
+				"mediawiki.base",
 				"mediawiki.editfont.styles",
 				"mediawiki.jqueryMsg",
 				"mediawiki.user",

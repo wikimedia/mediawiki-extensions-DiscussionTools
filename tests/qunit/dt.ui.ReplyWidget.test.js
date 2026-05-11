@@ -211,4 +211,59 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 			'Captcha widget is not created if hCaptcha is not required for all DT edits'
 		);
 	} );
+
+	QUnit.test( 'setInitialCaptcha shows error if CAPTCHA render fails', function ( assert ) {
+		const dtConfig = require( 'ext.discussionTools.init' ).config;
+		this.sandbox.stub( dtConfig, 'hCaptchaRequiredForAllEdits' ).value( true );
+
+		const logError = this.sandbox.stub( mw.errorLogger, 'logError' );
+
+		const replyWidget = makeReplyWidget();
+
+		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
+		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
+
+		const renderCaptcha = this.sandbox.stub().rejects( 'Test error' );
+		let actualCaptchaWidgetConfig;
+		mw.libs.confirmEdit.CaptchaWidget = function ( config ) {
+			actualCaptchaWidgetConfig = config;
+			this.renderCaptcha = renderCaptcha;
+		};
+		mw.libs.confirmEdit.CaptchaWidget.static = {
+			captchaNeededForEdit: () => 'hcaptcha'
+		};
+
+		replyWidget.setInitialCaptcha();
+
+		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
+
+		const done = assert.async();
+
+		setTimeout( () => {
+			assert.strictEqual(
+				replyWidget.captchaMessage.$element.find( actualCaptchaWidgetConfig.container ).length,
+				1,
+				'Captcha message contains the captcha widget container'
+			);
+			assert.true(
+				replyWidget.captchaMessage.$element.text().includes( 'Test error' ),
+				'Captcha message contains error message'
+			);
+
+			assert.strictEqual( logError.callCount, 1, 'should invoke mw.errorLogger.logError() once' );
+			const logErrorArguments = logError.getCall( 0 ).args;
+			assert.deepEqual(
+				logErrorArguments[ 0 ].message,
+				'Unable to show CAPTCHA in DiscussionTools',
+				'should use correct error message for CAPTCHA render failure'
+			);
+			assert.deepEqual(
+				logErrorArguments[ 1 ],
+				'error.discussiontools',
+				'should use correct channel for errors'
+			);
+
+			done();
+		} );
+	} );
 } );

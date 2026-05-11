@@ -1145,6 +1145,8 @@ ReplyWidget.prototype.setSaveFailureCaptcha = function ( captchaData ) {
 	this.captchaWidget.updateForCaptchaFailure( captchaData );
 	this.captchaWidget.renderCaptcha().then( () => {
 		this.showCaptchaMessage( $captchaContainer );
+	} ).catch( ( error ) => {
+		this.showCaptchaError( $captchaContainer, error );
 	} );
 };
 
@@ -1193,6 +1195,26 @@ ReplyWidget.prototype.showCaptchaMessage = function ( $captchaContainer ) {
 };
 
 /**
+ * Shows the CAPTCHA message widget with an error message indicating that the CAPTCHA widget
+ * did not render correctly
+ *
+ * @internal
+ * @param {jQuery} $captchaContainer
+ * @param {string} error The error to display (which is HTML escaped)
+ */
+ReplyWidget.prototype.showCaptchaError = function ( $captchaContainer, error ) {
+	$captchaContainer.append( $( '<span>' ).text( error ) );
+	this.captchaMessage.toggle( true );
+	OO.ui.Element.static.scrollIntoView( $captchaContainer[ 0 ] );
+
+	const loggedError = new Error( 'Unable to show CAPTCHA in DiscussionTools' );
+	/* eslint-disable camelcase */
+	loggedError.error_context = { error: error };
+	/* eslint-enable camelcase */
+	mw.errorLogger.logError( loggedError, 'error.discussiontools' );
+};
+
+/**
  * Creates and displays a CAPTCHA when the widget is first loaded.
  *
  * This method is a no-op unless all the following apply:
@@ -1220,6 +1242,8 @@ ReplyWidget.prototype.setInitialCaptcha = function () {
 
 	this.captchaWidget.renderCaptcha().then( () => {
 		this.showCaptchaMessage( $captchaContainer );
+	} ).catch( ( error ) => {
+		this.showCaptchaError( $captchaContainer, error );
 	} );
 };
 
