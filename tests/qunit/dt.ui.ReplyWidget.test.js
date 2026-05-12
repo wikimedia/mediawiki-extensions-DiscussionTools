@@ -99,6 +99,9 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 	} );
 
 	QUnit.test( 'setInitialCaptcha renders a captcha', function ( assert ) {
+		const dtConfig = require( 'ext.discussionTools.init' ).config;
+		this.sandbox.stub( dtConfig, 'hCaptchaRequiredForAllEdits' ).value( true );
+
 		const replyWidget = makeReplyWidget();
 
 		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
@@ -181,6 +184,31 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 			replyWidget.captchaWidget,
 			undefined,
 			'Captcha widget is not created if the CAPTCHA type does not support initial render'
+		);
+	} );
+
+	QUnit.test( 'setInitialCaptcha does nothing when hCaptchaRequiredForAllEdits is false', function ( assert ) {
+		const dtConfig = require( 'ext.discussionTools.init' ).config;
+		this.sandbox.stub( dtConfig, 'hCaptchaRequiredForAllEdits' ).value( false );
+
+		const replyWidget = makeReplyWidget();
+
+		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
+		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
+
+		mw.libs.confirmEdit.CaptchaWidget = function () {};
+		mw.libs.confirmEdit.CaptchaWidget.static = {
+			captchaNeededForEdit: () => 'hcaptcha'
+		};
+
+		replyWidget.setInitialCaptcha();
+
+		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
+
+		assert.strictEqual(
+			replyWidget.captchaWidget,
+			undefined,
+			'Captcha widget is not created if hCaptcha is not required for all DT edits'
 		);
 	} );
 } );
