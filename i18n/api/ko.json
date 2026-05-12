@@ -18,7 +18,7 @@
 	"apierror-discussiontools-subscription-failed-add": "이 주제를 구독하지 못했습니다.",
 	"apierror-discussiontools-subscription-failed-remove": "이 주제의 구독을 취소하지 못했습니다.",
 	"apihelp-discussiontoolscompare-summary": "두 페이지 판 사이의 의견 변경사항에 관한 정보를 가져옵니다.",
-	"apihelp-discussiontoolsedit-param-commentid": "답글을 달 댓글의 ID입니다. <var>paction</var>이 <var>addcomment</var> 일 때만 사용됩니다. <var>commentname</var>을 덮어씁니다.",
+	"apihelp-discussiontoolsedit-param-commentid": "답글을 달 댓글의 ID입니다. <var>paction</var>이 <var>addcomment</var> 일 때만 사용됩니다. <var>commentname</var>을 재정의합니다.",
 	"apihelp-discussiontoolsedit-param-commentname": "답글을 달 댓글의 이름입니다. <var>paction</var>이 <var>addcomment</var> 일 때만 사용됩니다.",
 	"apihelp-discussiontoolsedit-param-autosubscribe": "사용자를 토론 문서 스레드에 자동으로 구독시킬 것인지?",
 	"apihelp-discussiontoolsedit-param-formtoken": "중복 게시를 방지하기 위해 클라이언트에서 생성되는 선택적 고유 ID입니다.",
