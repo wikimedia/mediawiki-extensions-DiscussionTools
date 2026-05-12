@@ -1,6 +1,11 @@
 QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 	const ReplyWidgetPlain = require( 'ext.discussionTools.ReplyWidget' ).ReplyWidgetPlain;
 
+	// Handle the case where ext.confirmEdit.CaptchaWidget is not loaded so that the tests still work
+	mw.libs.confirmEdit = mw.libs.confirmEdit || { CaptchaWidget: function () {} };
+	mw.libs.confirmEdit.CaptchaWidget.static = mw.libs.confirmEdit.CaptchaWidget.static ||
+		{ captchaNeededForEdit: () => 'asddsaadsoijdsa' };
+
 	function makeReplyWidget() {
 		// The constructor of ReplyWidget needs these properties to construct, but are not used
 		// yet in any of the tests
@@ -36,26 +41,21 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		const replyWidget = makeReplyWidget();
 		const $captchaInputField = $( '<div>' ).append( '<input>' );
 
-		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
-		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
-
 		const updateForCaptchaFailure = this.sandbox.stub();
 		const renderCaptcha = this.sandbox.stub().resolves();
 		const getInputField = this.sandbox.stub().returns( $captchaInputField[ 0 ] );
 		let actualCaptchaWidgetConfig;
-		mw.libs.confirmEdit.CaptchaWidget = function ( config ) {
+		this.sandbox.stub( mw.libs.confirmEdit, 'CaptchaWidget' ).callsFake( function ( config ) {
 			actualCaptchaWidgetConfig = config;
 			this.updateForCaptchaFailure = updateForCaptchaFailure;
 			this.renderCaptcha = renderCaptcha;
 			this.getInputField = getInputField;
-		};
+		} );
 
 		const onReplyClick = this.sandbox.stub( replyWidget, 'onReplyClick' );
 
 		const captchaData = { type: 'simple' };
 		replyWidget.setSaveFailureCaptcha( captchaData );
-
-		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
 
 		assert.strictEqual(
 			actualCaptchaWidgetConfig.interfaceName,
@@ -104,24 +104,18 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 
 		const replyWidget = makeReplyWidget();
 
-		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
-		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
-
 		const renderCaptcha = this.sandbox.stub().resolves();
 		const getInputField = this.sandbox.stub().returns( null );
 		let actualCaptchaWidgetConfig;
-		mw.libs.confirmEdit.CaptchaWidget = function ( config ) {
-			actualCaptchaWidgetConfig = config;
-			this.renderCaptcha = renderCaptcha;
-			this.getInputField = getInputField;
-		};
-		mw.libs.confirmEdit.CaptchaWidget.static = {
-			captchaNeededForEdit: () => 'hcaptcha'
-		};
+		const captchaWidgetStub = this.sandbox.stub( mw.libs.confirmEdit, 'CaptchaWidget' )
+			.callsFake( function ( config ) {
+				actualCaptchaWidgetConfig = config;
+				this.renderCaptcha = renderCaptcha;
+				this.getInputField = getInputField;
+			} );
+		captchaWidgetStub.static = { captchaNeededForEdit: () => 'hcaptcha' };
 
 		replyWidget.setInitialCaptcha();
-
-		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
 
 		assert.strictEqual(
 			actualCaptchaWidgetConfig.interfaceName,
@@ -147,16 +141,12 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		} );
 	} );
 
-	QUnit.test( 'setInitialCaptcha does nothing if CaptchaWidget not defined', ( assert ) => {
+	QUnit.test( 'setInitialCaptcha does nothing if CaptchaWidget not defined', function ( assert ) {
 		const replyWidget = makeReplyWidget();
 
-		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
-		const oldCaptchaLibrary = mw.libs.confirmEdit;
-		mw.libs.confirmEdit = {};
+		this.sandbox.stub( mw.libs, 'confirmEdit' ).returns( {} );
 
 		replyWidget.setInitialCaptcha();
-
-		mw.libs.confirmEdit = oldCaptchaLibrary;
 
 		assert.strictEqual(
 			replyWidget.captchaWidget,
@@ -165,20 +155,13 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		);
 	} );
 
-	QUnit.test( 'setInitialCaptcha does nothing if CAPTCHA does not support initial render', ( assert ) => {
+	QUnit.test( 'setInitialCaptcha does nothing if CAPTCHA does not support initial render', function ( assert ) {
 		const replyWidget = makeReplyWidget();
 
-		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
-		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
-
-		mw.libs.confirmEdit.CaptchaWidget = function () {};
-		mw.libs.confirmEdit.CaptchaWidget.static = {
-			captchaNeededForEdit: () => 'simple'
-		};
+		this.sandbox.stub( mw.libs.confirmEdit.CaptchaWidget, 'static' )
+			.returns( { captchaNeededForEdit: () => 'simple' } );
 
 		replyWidget.setInitialCaptcha();
-
-		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
 
 		assert.strictEqual(
 			replyWidget.captchaWidget,
@@ -193,17 +176,10 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 
 		const replyWidget = makeReplyWidget();
 
-		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
-		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
-
-		mw.libs.confirmEdit.CaptchaWidget = function () {};
-		mw.libs.confirmEdit.CaptchaWidget.static = {
-			captchaNeededForEdit: () => 'hcaptcha'
-		};
+		this.sandbox.stub( mw.libs.confirmEdit.CaptchaWidget, 'static' )
+			.returns( { captchaNeededForEdit: () => 'hcaptcha' } );
 
 		replyWidget.setInitialCaptcha();
-
-		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
 
 		assert.strictEqual(
 			replyWidget.captchaWidget,
@@ -220,22 +196,16 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 
 		const replyWidget = makeReplyWidget();
 
-		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
-		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
-
 		const renderCaptcha = this.sandbox.stub().rejects( 'Test error' );
 		let actualCaptchaWidgetConfig;
-		mw.libs.confirmEdit.CaptchaWidget = function ( config ) {
-			actualCaptchaWidgetConfig = config;
-			this.renderCaptcha = renderCaptcha;
-		};
-		mw.libs.confirmEdit.CaptchaWidget.static = {
-			captchaNeededForEdit: () => 'hcaptcha'
-		};
+		const captchaWidgetStub = this.sandbox.stub( mw.libs.confirmEdit, 'CaptchaWidget' )
+			.callsFake( function ( config ) {
+				actualCaptchaWidgetConfig = config;
+				this.renderCaptcha = renderCaptcha;
+			} );
+		captchaWidgetStub.static = { captchaNeededForEdit: () => 'hcaptcha' };
 
 		replyWidget.setInitialCaptcha();
-
-		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
 
 		const done = assert.async();
 
