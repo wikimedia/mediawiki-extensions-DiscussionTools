@@ -1185,7 +1185,7 @@ ReplyWidget.prototype.showCaptchaMessage = function ( $captchaContainer ) {
 			}
 		} );
 
-		$captchaInputElement.find( 'input' ).trigger( 'focus' );
+		$captchaInputElement.trigger( 'focus' );
 		OO.ui.Element.static.scrollIntoView( captchaInputField );
 	} else {
 		OO.ui.Element.static.scrollIntoView( $captchaContainer[ 0 ] );
