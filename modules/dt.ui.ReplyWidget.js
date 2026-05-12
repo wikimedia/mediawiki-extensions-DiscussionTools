@@ -1206,7 +1206,7 @@ ReplyWidget.prototype.setInitialCaptcha = function () {
 
 	// Only hCaptcha currently supports being rendered without a save failure first
 	const neededCaptcha = mw.libs.confirmEdit.CaptchaWidget.static.captchaNeededForEdit();
-	if ( neededCaptcha !== 'hcaptcha' ) {
+	if ( neededCaptcha !== 'hcaptcha' || !dtConf.hCaptchaRequiredForAllEdits ) {
 		return;
 	}
 

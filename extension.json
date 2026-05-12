@@ -68,7 +68,8 @@
 					"config": {
 						"replyIndentation": "DiscussionToolsReplyIndentation",
 						"switchTime": "DiscussionToolsTimestampFormatSwitchTime",
-						"showFeedbackLinks": "DiscussionToolsShowFeedbackLinks"
+						"showFeedbackLinks": "DiscussionToolsShowFeedbackLinks",
+						"hCaptchaRequiredForAllEdits": "DiscussionToolsHCaptchaRequiredForAllEdits"
 					}
 				},
 				"ReplyLinksController.js",
@@ -622,6 +623,10 @@
 		"DiscussionToolsConflictingGadgetName": {
 			"value": "convenientDiscussions",
 			"description": "Internal name of the Convenient Discussions gadget, which conflicts with the reply tool. Reply tool will be unavailable when the user has this gadget enabled."
+		},
+		"DiscussionToolsHCaptchaRequiredForAllEdits": {
+			"value": false,
+			"description": "Whether hCaptcha is required for all DiscussionTools edits. Used as a temporary config for enabling hCaptcha in DiscussionTools progressively."
 		}
 	},
 	"ConfigRegistry": {
