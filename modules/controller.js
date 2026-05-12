@@ -397,7 +397,7 @@ function init( $container, state ) {
 				lastControllerScrollOffset = $( commentController.newListItem ).offset().top;
 				replyWidget.teardown( 'refresh' );
 				// Only fetch the last now "good" revision, on which we know the parent comment still exists.
-				// As we poll frequently, this will almost always be the lastet revision.
+				// As we poll frequently, this will almost always be the latest revision.
 				refreshPageContents( commentController.oldId );
 			} );
 		} );

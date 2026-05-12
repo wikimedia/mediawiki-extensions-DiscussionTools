@@ -186,7 +186,7 @@ class ThreadItemStore {
 				'h-' . $heading . '-',
 				$dbr->anyString()
 			) ) )
-			// Has once appered on the specified page ID
+			// Has once appeared on the specified page ID
 			->where( [ 'rev_page' => $articleId ] )
 			->field( 'itid_itemid' );
 

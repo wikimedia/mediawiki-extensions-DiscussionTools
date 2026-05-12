@@ -41,7 +41,7 @@ class ParserHooks implements
 	private function transformHtml(
 		ParserOutput $pout, string &$html, Title $title, bool $isPreview
 	): void {
-		// This condition must be unreliant on current enablement config or user preference.
+		// This condition must not be reliant on current enablement config or user preference.
 		// In other words, include parser output of talk pages with DT disabled.
 		//
 		// This is similar to HookUtils::isAvailableForTitle, but instead of querying the
@@ -87,7 +87,7 @@ class ParserHooks implements
 	/**
 	 * For now, this hook only runs on Parsoid HTML. Eventually, this is likely
 	 * to be run for legacy HTML but that requires ParserCache storage to be allocated
-	 * for DiscussionTools HTML which will be purused separately.
+	 * for DiscussionTools HTML which will be perused separately.
 	 *
 	 * @inheritDoc
 	 */

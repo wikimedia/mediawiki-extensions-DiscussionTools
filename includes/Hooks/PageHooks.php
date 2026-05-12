@@ -582,7 +582,7 @@ class PageHooks implements
 	}
 
 	/**
-	 * Get data from a new topics subcription button
+	 * Get data from a new topics subscription button
 	 *
 	 * @param UserIdentity $user User
 	 * @param Title $title Title

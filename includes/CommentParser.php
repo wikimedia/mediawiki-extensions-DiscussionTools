@@ -1020,7 +1020,7 @@ class CommentParser {
 	 * Get the name of the page from which this thread item is transcluded (if any). Replies to
 	 * transcluded items must be posted on that page, instead of the current one.
 	 *
-	 * This is tricky, because we don't want to mark items as trancluded when they're just using a
+	 * This is tricky, because we don't want to mark items as transcluded when they're just using a
 	 * template (e.g. {{ping|…}} or a non-substituted signature template). Sometimes the whole comment
 	 * can be template-generated (e.g. when using some wrapper templates), but as long as a reply can
 	 * be added outside of that template, we should not treat it as transcluded.

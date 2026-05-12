@@ -204,7 +204,7 @@ class CommentFormatter {
 	/**
 	 * Add a topic container around a heading element.
 	 *
-	 * A topic container is the information displayed when the "Show discusion activity" user
+	 * A topic container is the information displayed when the "Show discussion activity" user
 	 * preference is selected. This displays information such as the latest comment time, number
 	 * of comments, and number of editors in the discussion.
 	 */

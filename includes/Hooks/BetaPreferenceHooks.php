@@ -29,7 +29,7 @@ class BetaPreferenceHooks implements GetBetaFeaturePreferencesHook {
 	public function onGetBetaFeaturePreferences( User $user, array &$preferences ) {
 		if ( $this->config->get( 'DiscussionToolsBeta' ) ) {
 			// If all configurable features are marked as 'available', the
-			// beta fetaure enables nothing, so don't show it.
+			// beta feature enables nothing, so don't show it.
 			$allAvailable = true;
 			foreach ( HookUtils::CONFIGS as $feature ) {
 				if ( $this->config->get( 'DiscussionTools_' . $feature ) !== 'available' ) {

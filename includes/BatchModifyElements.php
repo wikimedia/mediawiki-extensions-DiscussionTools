@@ -42,8 +42,8 @@ class BatchModifyElements {
 						if ( !$modified ) {
 							$modified = $modify( $node );
 						} else {
-							// Ideally we would support matching mulitple modifiers, but as a modifier
-							// can return a string but has to be passed a SerizliazerNode, this is
+							// Ideally we would support matching multiple modifiers, but as a modifier
+							// can return a string but has to be passed a SerializerNode, this is
 							// not trivial.
 							throw new LogicException( 'Node matches multiple modifiers.' );
 						}
