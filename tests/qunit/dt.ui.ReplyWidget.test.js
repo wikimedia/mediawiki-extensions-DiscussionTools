@@ -103,7 +103,6 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 
 		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
 		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
-		const oldCaptchaWidgetStatic = mw.libs.confirmEdit.CaptchaWidget.static;
 
 		const renderCaptcha = this.sandbox.stub().resolves();
 		const getInputField = this.sandbox.stub().returns( null );
@@ -120,7 +119,6 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		replyWidget.setInitialCaptcha();
 
 		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
-		mw.libs.confirmEdit.CaptchaWidget.static = oldCaptchaWidgetStatic;
 
 		assert.strictEqual(
 			actualCaptchaWidgetConfig.interfaceName,
@@ -168,15 +166,16 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		const replyWidget = makeReplyWidget();
 
 		mw.libs.confirmEdit = mw.libs.confirmEdit || {};
-		const oldCaptchaWidgetStatic = mw.libs.confirmEdit.CaptchaWidget.static;
+		const oldCaptchaWidget = mw.libs.confirmEdit.CaptchaWidget;
 
+		mw.libs.confirmEdit.CaptchaWidget = function () {};
 		mw.libs.confirmEdit.CaptchaWidget.static = {
 			captchaNeededForEdit: () => 'simple'
 		};
 
 		replyWidget.setInitialCaptcha();
 
-		mw.libs.confirmEdit.CaptchaWidget.static = oldCaptchaWidgetStatic;
+		mw.libs.confirmEdit.CaptchaWidget = oldCaptchaWidget;
 
 		assert.strictEqual(
 			replyWidget.captchaWidget,
