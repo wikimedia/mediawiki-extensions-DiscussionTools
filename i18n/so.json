@@ -1,12 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Abshirdheere"
+			"Abshirdheere",
+			"AhmedG612"
 		]
 	},
+	"discussiontools-emptystate-desc": "[[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Bogaga dooda]] waa meel ay dadku kaga hadlaan sida loo hagaajin karo nuxurka {{SITENAME}} si uu u noqdo kan ugu wanaagsan ee uu noqon karo. {{GENDER:|Adiga}} waxaad isticmaali kartaa boggan si aad ula bilowdo dood dadka kale oo ku saabsan sida loo horumarin karo [[:{{SUBJECTPAGENAME}}]].",
+	"discussiontools-emptystate-desc-self": "Dadka ku jira {{SITENAME}} waxay isticmaali karaan [[{{MediaWiki:discussiontools-emptystate-link-userpage}}|boggan doodda]] si ay fariin dadweyne ugu soo diraan {{GENDER:|adiga}}, waxaana laguugu ogeysiin doonaa marka ay sidaas sameeyaan.",
+	"discussiontools-emptystate-desc-user": "[[{{MediaWiki:discussiontools-emptystate-link-userpage}}|Bogaga dooda]] waa meel ay dadku kaga hadlaan sida loo hagaajin karo nuxurka {{SITENAME}} si uu u noqdo kan ugu wanaagsan ee uu noqon karo. Bilow dood cusub si aad ula xiriirto oo aad ula shaqeyso {{GENDER:{{PAGENAME}}|la}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]]. Waxa aad halkan ku sheegto si guud ayay u muuqan doonaan si ay dadka kale u arkaan.",
+	"discussiontools-emptystate-desc-user-temp": "Isticmaal [[{{MediaWiki:discussiontools-emptystate-link-userpage-temp}}|boggan doodda]] si aad u bilowdo dood {{GENDER:{{PAGENAME}}|la}} [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] oo ku saabsan sida loo horumarin karo {{SITENAME}}. Waxa aad sheegto si guud ayaa loo arki doonaa si ay dadka kale u arkaan. Maadaama [[:{{SUBJECTPAGENAME}}|{{PAGENAME}}]] uu yahay [[{{MediaWiki:tempuser-helppage}}|xisaab ku-meel-gaar ah]], boggan doodda ayaa ugu dambayn dhacaya. [[{{MediaWiki:tempuser-helppage}}|Wax badan ka baro]].",
+	"discussiontools-emptystate-title-user-anon": "{{GENDER:|Ku soo dhawoow}} boggan wadahadalka",
+	"discussiontools-emptystate-title-user-temp": "Bilow dood {{GENDER:{{PAGENAME}}|la}} {{PAGENAME}}",
 	"discussiontools-pageframe-latestcomment": "Faalladii ugu dambaysay: $1 ee $2 qodobka $3",
 	"discussiontools-pageframe-latestcomment-notopic": "faalladii ugu dambaysay: $1 ee $2",
+	"discussiontools-preference-replytool-help": "Tani waxay ku tusi doontaa xiriir aad hal gujin ugu jawaabi karto faallooyinka boga doodda.",
+	"discussiontools-replywidget-newcomments-button": "Muuji $1 faallo {{PLURAL:$1|cusub|cusboon}}",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|qof|qofood}} baa ku jirta doodda",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|faallo|faallo}}",
-	"discussiontools-topicheader-latestcomment": "Faalladii ugu dambaysay: $1"
+	"discussiontools-topicheader-latestcomment": "Faalladii ugu dambaysay: $1",
+	"tag-discussiontools-newtopic": "Mowduuc cusub",
+	"tag-discussiontools-newtopic-description": "Isticmaale wuxuu ku daray mowduuc cusub bogga isagoo adeegsanaya Qalabka Wadahadalka",
+	"tag-discussiontools-reply": "Jawaab",
+	"tag-discussiontools-visual-description": "Qalabka Wadahadalka wuxuu ku jiray qaabka muuqaalka"
 }
