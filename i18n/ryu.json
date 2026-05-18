@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"ChoiChong",
+			"Smaugryu",
 			"さきじょーぐー"
 		]
 	},
@@ -9,6 +10,7 @@
 	"discussiontools-newtopic-missing-title": "御主ぬトピックんかいタイトルを付きてぃくぃみしぇーびれー。",
 	"discussiontools-newtopic-placeholder-title": "件名",
 	"discussiontools-replylink": "{{GENDER:|いれーいん}}",
+	"discussiontools-replywidget-advanced": "いしぇー",
 	"discussiontools-replywidget-cancel": "とぅりちゃーすん",
 	"discussiontools-replywidget-mode-source": "原典",
 	"discussiontools-replywidget-mode-visual": "ビジュアル",
