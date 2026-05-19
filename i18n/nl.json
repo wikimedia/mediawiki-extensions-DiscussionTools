@@ -105,6 +105,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Laatste reactie: $1 door $2",
 	"discussiontools-pagetitle-newtopic": "Nieuw onderwerp starten op $1",
 	"discussiontools-pagetitle-reply": "Reageren op $1",
+	"discussiontools-permalink-button": "Koppeling kopiëren",
 	"discussiontools-permalink-comment-copied": "Koppeling naar reactie gekopieerd naar klembord.",
 	"discussiontools-postedit-confirmation-published": "Uw reactie is gepubliceerd.",
 	"discussiontools-postedit-confirmation-topicadded": "Uw onderwerp is toegevoegd.",

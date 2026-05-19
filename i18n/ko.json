@@ -100,6 +100,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "마지막 댓글: $2님 ($1)",
 	"discussiontools-pagetitle-newtopic": "$1에서 새 주제 시작",
 	"discussiontools-pagetitle-reply": "$1에 답변",
+	"discussiontools-permalink-button": "링크 복사",
 	"discussiontools-permalink-comment-copied": "댓글의 링크가 클립보드에 복사되었습니다.",
 	"discussiontools-postedit-confirmation-published": "댓글이 게시되었습니다.",
 	"discussiontools-postedit-confirmation-topicadded": "주제가 추가되었습니다.",

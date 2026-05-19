@@ -101,6 +101,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Letzter Kommentar: $1 von $2",
 	"discussiontools-pagetitle-newtopic": "Beginne einen neuen Abschnitt auf $1",
 	"discussiontools-pagetitle-reply": "Antwort auf $1",
+	"discussiontools-permalink-button": "Link kopieren",
 	"discussiontools-permalink-comment-copied": "Link zum Kommentar in die Zwischenablage kopiert.",
 	"discussiontools-postedit-confirmation-published": "Dein Kommentar wurde veröffentlicht.",
 	"discussiontools-postedit-confirmation-topicadded": "Dein Thema wurde hinzugefügt.",

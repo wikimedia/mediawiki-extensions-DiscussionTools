@@ -94,6 +94,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Ən son rəy: $1, $2 tərəfindən",
 	"discussiontools-pagetitle-newtopic": "Yeni mövzu əlavə edilir: $1 səhifəsi",
 	"discussiontools-pagetitle-reply": "Cavab verilir: $1 səhifəsində",
+	"discussiontools-permalink-button": "Keçidi kopiyala",
 	"discussiontools-permalink-comment-copied": "Şərhin keçidi kopyalandı",
 	"discussiontools-postedit-confirmation-published": "Şərhiniz yayımlandı.",
 	"discussiontools-postedit-confirmation-topicadded": "Mövzunuz əlavə edildi.",
