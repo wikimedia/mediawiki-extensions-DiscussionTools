@@ -88,6 +88,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Último comentario: $2 $1",
 	"discussiontools-pagetitle-newtopic": "Iniciando un fío novo en «$1»",
 	"discussiontools-pagetitle-reply": "Respondendo en «$1»",
+	"discussiontools-permalink-button": "Copiar a ligazón",
 	"discussiontools-permalink-comment-copied": "Ligazón ao comentario copiada no portapapeis.",
 	"discussiontools-postedit-confirmation-published": "Publicouse o teu comentario.",
 	"discussiontools-postedit-confirmation-topicadded": "Engadiuse o teu fío.",
