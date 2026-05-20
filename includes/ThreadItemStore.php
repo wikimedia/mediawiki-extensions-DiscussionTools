@@ -55,15 +55,15 @@ class ThreadItemStore {
 	 * @return DatabaseThreadItem[]
 	 */
 	public function findNewestRevisionsByName( $itemName, ?int $limit = 50 ): array {
-		$dbr = $this->dbProvider->getReplicaDatabase();
-		$where = [
-			'it_itemname' => $itemName,
-			// Disallow querying for headings of sections that contain no comments.
-			// They all share the same name, so this would return a huge useless list on most wikis.
-			// (But we still store them, as we might need this data elsewhere.)
-			$dbr->expr( 'it_itemname', '!=', 'h-' ),
-		];
+		// Disallow querying for headings of sections that contain no comments.
+		// They all share the same name, so this would return a huge useless list on most wikis.
+		// (But we still store them, as we might need this data elsewhere.)
+		$itemName = array_diff( (array)$itemName, [ 'h-' ] );
+		if ( !$itemName ) {
+			return [];
+		}
 
+		$where = [ 'it_itemname' => $itemName ];
 		return $this->fetchItems( __METHOD__, $where, $limit );
 	}
 
@@ -76,10 +76,15 @@ class ThreadItemStore {
 	 * @return DatabaseThreadItem[]
 	 */
 	public function findNewestRevisionsById( $itemId, ?int $limit = 50 ): array {
+		$dbr = $this->dbProvider->getReplicaDatabase();
+
 		// First find the name associated with the ID; then find by name. Otherwise we wouldn't find the
 		// latest revision in case comment ID changed, e.g. the comment was moved elsewhere on the page.
 		$itemNameQueryBuilder = $this->getIdsNamesBuilder()
-			->where( [ 'itid_itemid' => $itemId ] )
+			->where( [
+				'itid_itemid' => $itemId,
+				$dbr->expr( 'it_itemname', '!=', 'h-' ),
+			] )
 			->field( 'it_itemname' );
 			// I think there may be more than 1 only in case of headings?
 			// For comments, any ID corresponds to just 1 name.
@@ -87,10 +92,8 @@ class ThreadItemStore {
 			// It might scan a bunch of rows...
 			// ->limit( 1 );
 
-		$dbr = $this->dbProvider->getReplicaDatabase();
 		$where = [
 			'it_itemname IN (' . $itemNameQueryBuilder->getSQL() . ')',
-			$dbr->expr( 'it_itemname', '!=', 'h-' ),
 		];
 
 		return $this->fetchItems( __METHOD__, $where, $limit );
