@@ -43,7 +43,6 @@ return [
 	},
 	'DiscussionTools.ThreadItemStore' => static function ( MediaWikiServices $services ): ThreadItemStore {
 		return new ThreadItemStore(
-			$services->getConfigFactory(),
 			$services->getDBLoadBalancerFactory(),
 			$services->getReadOnlyMode(),
 			$services->getPageStore(),

@@ -3,8 +3,6 @@
 namespace MediaWiki\Extension\DiscussionTools;
 
 use Exception;
-use MediaWiki\Config\Config;
-use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\DatabaseHeadingItem;
@@ -37,10 +35,7 @@ use Wikimedia\Timestamp\TimestampException;
  */
 class ThreadItemStore {
 
-	private readonly Config $config;
-
 	public function __construct(
-		ConfigFactory $configFactory,
 		private readonly ILBFactory $dbProvider,
 		private readonly ReadOnlyMode $readOnlyMode,
 		private readonly PageStore $pageStore,
@@ -49,15 +44,6 @@ class ThreadItemStore {
 		private readonly ActorStore $actorStore,
 		private readonly Language $language,
 	) {
-		$this->config = $configFactory->makeConfig( 'discussiontools' );
-	}
-
-	/**
-	 * Returns true if the tables necessary for this feature haven't been created yet,
-	 * to allow failing softly in that case.
-	 */
-	public function isDisabled(): bool {
-		return false;
 	}
 
 	/**
@@ -69,10 +55,6 @@ class ThreadItemStore {
 	 * @return DatabaseThreadItem[]
 	 */
 	public function findNewestRevisionsByName( $itemName, ?int $limit = 50 ): array {
-		if ( $this->isDisabled() ) {
-			return [];
-		}
-
 		$dbr = $this->dbProvider->getReplicaDatabase();
 		$queryBuilder = $this->getIdsNamesBuilder()
 			->caller( __METHOD__ )
@@ -110,10 +92,6 @@ class ThreadItemStore {
 	 * @return DatabaseThreadItem[]
 	 */
 	public function findNewestRevisionsById( $itemId, ?int $limit = 50 ): array {
-		if ( $this->isDisabled() ) {
-			return [];
-		}
-
 		$queryBuilder = $this->getIdsNamesBuilder()
 			->caller( __METHOD__ );
 
@@ -168,10 +146,6 @@ class ThreadItemStore {
 	public function findNewestRevisionsByHeading(
 		$heading, int $articleId, TitleValue $title, ?int $limit = 50
 	): array {
-		if ( $this->isDisabled() ) {
-			return [];
-		}
-
 		// Mirrors CommentParser::truncateForId
 		$heading = trim( $this->language->truncateForDatabase( $heading, 80, '' ), '_' );
 
@@ -433,10 +407,6 @@ class ThreadItemStore {
 	 * its page.
 	 */
 	public function findThreadItemsInCurrentRevision( int $revId ): DatabaseThreadItemSet {
-		if ( $this->isDisabled() ) {
-			return new DatabaseThreadItemSet();
-		}
-
 		$queryBuilder = $this->getIdsNamesBuilder()
 			->caller( __METHOD__ )
 			->where( [ 'itr_revision_id' => $revId ] )

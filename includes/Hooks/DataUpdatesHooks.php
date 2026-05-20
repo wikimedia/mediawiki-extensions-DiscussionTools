@@ -43,9 +43,7 @@ class DataUpdatesHooks implements RevisionDataUpdatesHook {
 			$updates[] = new MWCallableUpdate( function () use ( $rev, $method ) {
 				try {
 					$threadItemSet = HookUtils::parseRevisionParsoidHtml( $rev, $method )->getValueOrThrow();
-					if ( !$this->threadItemStore->isDisabled() ) {
-						$this->threadItemStore->insertThreadItems( $rev, $threadItemSet );
-					}
+					$this->threadItemStore->insertThreadItems( $rev, $threadItemSet );
 				} catch ( Throwable $e ) {
 					// Catch errors, so that they don't cause other updates to fail (T315383), but log them.
 					MWExceptionHandler::logException( $e );
