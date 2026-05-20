@@ -1,7 +1,5 @@
 {
 	"name": "DiscussionTools",
-	"license-name": "MIT",
-	"version": "0.0.0",
 	"author": [
 		"Bartosz Dziewoński",
 		"Ed Sanders",
@@ -10,7 +8,8 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:DiscussionTools",
 	"namemsg": "discussiontools",
 	"descriptionmsg": "discussiontools-desc",
-	"manifest_version": 2,
+	"license-name": "MIT",
+	"type": "other",
 	"requires": {
 		"MediaWiki": ">= 1.47.0",
 		"extensions": {
@@ -28,7 +27,6 @@
 		"DiscussionToolsAlias": "DiscussionTools.alias.php",
 		"DiscussionToolsMagic": "DiscussionTools.magic.php"
 	},
-	"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\RegistrationHooks::onRegistration",
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "DiscussionTools/modules"
@@ -453,6 +451,7 @@
 	"TrackingCategories": [
 		"discussiontools-comments-before-first-heading-category"
 	],
+	"callback": "\\MediaWiki\\Extension\\DiscussionTools\\Hooks\\RegistrationHooks::onRegistration",
 	"Hooks": {
 		"ArticleParserOptions": "page",
 		"BeforeCreateEchoEvent": "echo",
@@ -634,5 +633,5 @@
 	"ConfigRegistry": {
 		"discussiontools": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
-	"type": "other"
+	"manifest_version": 2
 }
