@@ -18,6 +18,7 @@ class SpecialGoToComment extends RedirectSpecialPage {
 	 * @inheritDoc
 	 */
 	public function getRedirect( $subpage ) {
+		$subpage = $this->getRequest()->getVal( 'idorname' ) ?? $subpage;
 		$results = [];
 
 		// Search for all thread items with the given ID or name, returning results from the latest
@@ -26,7 +27,7 @@ class SpecialGoToComment extends RedirectSpecialPage {
 		// If there is exactly one good result (see isCanonicalPermalink()), redirect to it.
 		// Otherwise, redirect to full search results on Special:FindComment.
 
-		if ( $subpage ) {
+		if ( $subpage !== null && $subpage !== '' ) {
 			$threadItems = $this->threadItemStore->findNewestRevisionsById( $subpage );
 			foreach ( $threadItems as $item ) {
 				if ( $item->isCanonicalPermalink() ) {
