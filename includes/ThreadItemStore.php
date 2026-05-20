@@ -56,31 +56,15 @@ class ThreadItemStore {
 	 */
 	public function findNewestRevisionsByName( $itemName, ?int $limit = 50 ): array {
 		$dbr = $this->dbProvider->getReplicaDatabase();
-		$queryBuilder = $this->getIdsNamesBuilder()
-			->caller( __METHOD__ )
-			->where( [
-				'it_itemname' => $itemName,
-				// Disallow querying for headings of sections that contain no comments.
-				// They all share the same name, so this would return a huge useless list on most wikis.
-				// (But we still store them, as we might need this data elsewhere.)
-				$dbr->expr( 'it_itemname', '!=', 'h-' ),
-			] );
+		$where = [
+			'it_itemname' => $itemName,
+			// Disallow querying for headings of sections that contain no comments.
+			// They all share the same name, so this would return a huge useless list on most wikis.
+			// (But we still store them, as we might need this data elsewhere.)
+			$dbr->expr( 'it_itemname', '!=', 'h-' ),
+		];
 
-		if ( $limit !== null ) {
-			$queryBuilder->limit( $limit );
-		}
-
-		$result = $this->fetchItemsResultSet( $queryBuilder );
-		$revs = $this->fetchRevisionAndPageForItems( $result );
-
-		$threadItems = [];
-		foreach ( $result as $row ) {
-			$threadItem = $this->getThreadItemFromRow( $row, null, $revs );
-			if ( $threadItem ) {
-				$threadItems[] = $threadItem;
-			}
-		}
-		return $threadItems;
+		return $this->fetchItems( __METHOD__, $where, $limit );
 	}
 
 	/**
@@ -92,9 +76,6 @@ class ThreadItemStore {
 	 * @return DatabaseThreadItem[]
 	 */
 	public function findNewestRevisionsById( $itemId, ?int $limit = 50 ): array {
-		$queryBuilder = $this->getIdsNamesBuilder()
-			->caller( __METHOD__ );
-
 		// First find the name associated with the ID; then find by name. Otherwise we wouldn't find the
 		// latest revision in case comment ID changed, e.g. the comment was moved elsewhere on the page.
 		$itemNameQueryBuilder = $this->getIdsNamesBuilder()
@@ -107,27 +88,12 @@ class ThreadItemStore {
 			// ->limit( 1 );
 
 		$dbr = $this->dbProvider->getReplicaDatabase();
-		$queryBuilder
-			->where( [
-				'it_itemname IN (' . $itemNameQueryBuilder->getSQL() . ')',
-				$dbr->expr( 'it_itemname', '!=', 'h-' ),
-			] );
+		$where = [
+			'it_itemname IN (' . $itemNameQueryBuilder->getSQL() . ')',
+			$dbr->expr( 'it_itemname', '!=', 'h-' ),
+		];
 
-		if ( $limit !== null ) {
-			$queryBuilder->limit( $limit );
-		}
-
-		$result = $this->fetchItemsResultSet( $queryBuilder );
-		$revs = $this->fetchRevisionAndPageForItems( $result );
-
-		$threadItems = [];
-		foreach ( $result as $row ) {
-			$threadItem = $this->getThreadItemFromRow( $row, null, $revs );
-			if ( $threadItem ) {
-				$threadItems[] = $threadItem;
-			}
-		}
-		return $threadItems;
+		return $this->fetchItems( __METHOD__, $where, $limit );
 	}
 
 	/**
@@ -249,16 +215,22 @@ class ThreadItemStore {
 	 * @param int|null $limit
 	 * @return DatabaseThreadItem[]
 	 */
-	private function findNewestRevisionsByQuery( $fname, $itemIdOrQueryBuilder, ?int $limit = 50 ): array {
-		$queryBuilder = $this->getIdsNamesBuilder()->caller( $fname . ' / ' . __METHOD__ );
+	private function findNewestRevisionsByQuery( string $fname, $itemIdOrQueryBuilder, ?int $limit = 50 ): array {
 		if ( $itemIdOrQueryBuilder instanceof SelectQueryBuilder ) {
-			$queryBuilder
-				->where( [
-					'itid_itemid IN (' . $itemIdOrQueryBuilder->getSQL() . ')'
-				] );
+			$where = [ 'itid_itemid IN (' . $itemIdOrQueryBuilder->getSQL() . ')' ];
 		} else {
-			$queryBuilder->where( [ 'itid_itemid' => $itemIdOrQueryBuilder ] );
+			$where = [ 'itid_itemid' => $itemIdOrQueryBuilder ];
 		}
+
+		return $this->fetchItems( $fname, $where, $limit );
+	}
+
+	/**
+	 * @return DatabaseThreadItem[]
+	 */
+	private function fetchItems( string $fname, array $where, ?int $limit ): array {
+		$queryBuilder = $this->getIdsNamesBuilder()->caller( $fname )
+			->where( $where );
 
 		if ( $limit !== null ) {
 			$queryBuilder->limit( $limit );
