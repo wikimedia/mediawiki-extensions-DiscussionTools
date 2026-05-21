@@ -103,6 +103,8 @@
 	"discussiontools-replywidget-watchthis": "Dodaj stranicu na [[Special:Watchlist|spisak praćenja]]",
 	"discussiontools-target-comment-missing": "Nije moguće pronaći komentar. Možda je izbrisan ili premješten.",
 	"discussiontools-target-comments-missing": "Nije moguće pronaći nove komentare. Možda su izbrisani ili premješteni.",
+	"discussiontools-target-heading-missing": "Tema nije pronađena. Moguće je da je izbrisana, premještena ili preimenovana.",
+	"discussiontools-target-heading-found-moved": "Tema nije pronađena na ovoj stranici ali postoji na {{PLURAL:$1|sljedećoj|sljedećima}}:",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|osoba|osobe}} u raspravi",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|komentar|komentara}}",
 	"discussiontools-topicheader-latestcomment": "Posljednji komentar: $1",
