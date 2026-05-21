@@ -376,6 +376,9 @@
 				"ConfigFactory",
 				"RevisionLookup",
 				"ExtensionRegistry"
+			],
+			"optional_services": [
+				"ConfirmEditCaptchaFactory"
 			]
 		},
 		"discussiontoolsfindcomment": {

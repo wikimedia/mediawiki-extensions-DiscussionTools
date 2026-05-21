@@ -8,7 +8,8 @@ use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Context\DerivativeContext;
-use MediaWiki\Extension\ConfirmEdit\Hooks as ConfirmEditHooks;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Extension\ConfirmEdit\Services\CaptchaFactory;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
@@ -45,6 +46,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		ConfigFactory $configFactory,
 		private readonly RevisionLookup $revisionLookup,
 		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly ?CaptchaFactory $captchaFactory,
 	) {
 		parent::__construct( $main, $name );
 		$this->config = $configFactory->makeConfig( 'discussiontools' );
@@ -197,7 +199,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'returnto' => $params['returnto'],
 							'returntoquery' => $params['returntoquery'],
 							'returntoanchor' => $params['returntoanchor'],
-						] + $mobileFormatParams + $this->getCaptchaParams( $params, $title ),
+						] + $mobileFormatParams + $this->getCaptchaParams( $params, $title, $context ),
 						/* was posted? */ true
 					)
 				);
@@ -361,7 +363,7 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'returnto' => $params['returnto'],
 							'returntoquery' => $params['returntoquery'],
 							'returntoanchor' => $params['returntoanchor'],
-						] + $this->getCaptchaParams( $params, $title ),
+						] + $this->getCaptchaParams( $params, $title, $context ),
 						/* was posted? */ true
 					)
 				);
@@ -416,14 +418,15 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	 * Given the list of parsed discussiontoolsedit API parameters and relevant title,
 	 * returns a CAPTCHA API data to append to the edit API call.
 	 */
-	private function getCaptchaParams( array $params, Title $title ): array {
+	private function getCaptchaParams( array $params, Title $title, IContextSource $context ): array {
 		if ( !$this->extensionRegistry->isLoaded( 'ConfirmEdit' ) ) {
 			return [];
 		}
 
-		$captchaInstance = ConfirmEditHooks::getInstance(
-			ConfirmEditHooks::getCaptchaTriggerActionFromTitle( $title )
-		);
+		$contextForCaptchaFactory = new DerivativeContext( $context );
+		$contextForCaptchaFactory->setTitle( $title );
+		$captchaInstance = $this->captchaFactory->getGlobalInstanceFromContext( $contextForCaptchaFactory );
+
 		$returnArray = [];
 		foreach ( $captchaInstance->getApiParams() as $captchaApiParam ) {
 			if ( array_key_exists( $captchaApiParam, $params ) ) {
