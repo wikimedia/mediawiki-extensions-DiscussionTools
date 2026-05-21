@@ -112,13 +112,10 @@ trait ApiDiscussionToolsTrait {
 			new DerivativeRequest(
 				$context->getRequest(),
 				$apiParams,
-				/* was posted? */ true
+				wasPosted: true
 			)
 		);
-		$api = new ApiMain(
-			$context,
-			/* enable write? */ false
-		);
+		$api = new ApiMain( $context, enableWrite: false );
 
 		$api->execute();
 		return $api->getResult();

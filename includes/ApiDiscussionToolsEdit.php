@@ -200,13 +200,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'returntoquery' => $params['returntoquery'],
 							'returntoanchor' => $params['returntoanchor'],
 						] + $mobileFormatParams + $this->getCaptchaParams( $params, $title, $context ),
-						/* was posted? */ true
+						wasPosted: true
 					)
 				);
-				$api = new ApiMain(
-					$context,
-					/* enable write? */ true
-				);
+				$api = new ApiMain( $context, enableWrite: true );
 
 				$api->execute();
 
@@ -364,13 +361,10 @@ class ApiDiscussionToolsEdit extends ApiBase {
 							'returntoquery' => $params['returntoquery'],
 							'returntoanchor' => $params['returntoanchor'],
 						] + $this->getCaptchaParams( $params, $title, $context ),
-						/* was posted? */ true
+						wasPosted: true
 					)
 				);
-				$api = new ApiMain(
-					$context,
-					/* enable write? */ true
-				);
+				$api = new ApiMain( $context, enableWrite: true );
 
 				$api->execute();
 
