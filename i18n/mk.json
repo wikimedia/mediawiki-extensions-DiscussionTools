@@ -91,6 +91,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Последен коментар: $1 од $2",
 	"discussiontools-pagetitle-newtopic": "Започнување нова тема на $1",
 	"discussiontools-pagetitle-reply": "Одговор на $1",
+	"discussiontools-permalink-button": "Копирај врска",
 	"discussiontools-permalink-comment-copied": "Врска до коментар копиран во меѓускладот.",
 	"discussiontools-postedit-confirmation-published": "Вашиот коментар е објавен.",
 	"discussiontools-postedit-confirmation-topicadded": "Вашата тема е додадена.",
