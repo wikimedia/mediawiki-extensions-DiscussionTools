@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\ThreadItem;
 
 use DateTimeImmutable;
+use DateTimeZone;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Revision\RevisionRecord;
 
@@ -43,7 +44,7 @@ class DatabaseCommentItem extends DatabaseThreadItem implements CommentItem {
 	 * @inheritDoc
 	 */
 	public function getTimestamp(): DateTimeImmutable {
-		return new DateTimeImmutable( $this->timestamp );
+		return new DateTimeImmutable( $this->timestamp, new DateTimeZone( 'UTC' ) );
 	}
 
 	/**
