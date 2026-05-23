@@ -137,6 +137,7 @@ trait TestUtils {
 			MainConfigNames::CapitalLinkOverrides => [],
 			MainConfigNames::CapitalLinks => true,
 			MainConfigNames::ContentNamespaces => [ NS_MAIN ],
+			MainConfigNames::ExemptFromUserRobotsControl => [ NS_MAIN ],
 			MainConfigNames::ExtraSignatureNamespaces => [],
 			MainConfigNames::NamespaceContentModels => [],
 			MainConfigNames::NamespacesWithSubpages => [
