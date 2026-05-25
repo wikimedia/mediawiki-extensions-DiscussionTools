@@ -96,6 +96,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Τελευταίο σχόλιο: $1 από {{GENDER:$2|τον|την}} $2",
 	"discussiontools-pagetitle-newtopic": "Έναρξη νέου θέματος στην $1",
 	"discussiontools-pagetitle-reply": "Απάντηση σε $1",
+	"discussiontools-permalink-button": "Αντιγραφή συνδέσμου",
 	"discussiontools-permalink-comment-copied": "Ο σύνδεσμος προς το σχόλιο αντιγράφηκε στο πρόχειρο.",
 	"discussiontools-postedit-confirmation-published": "Το σχόλιό σας δημοσιεύθηκε.",
 	"discussiontools-postedit-confirmation-topicadded": "Το θέμα σας προστέθηκε.",
