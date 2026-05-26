@@ -170,7 +170,9 @@ trait TestUtils {
 
 			// Overrides
 			MainConfigNames::ExtraNamespaces => array_diff_key(
-				$config['wgFormattedNamespaces'], NamespaceInfo::CANONICAL_NAMES ),
+				array_map( static fn ( $ns ) => strtr( $ns, ' ', '_' ), $config['wgFormattedNamespaces'] ),
+				NamespaceInfo::CANONICAL_NAMES
+			),
 			MainConfigNames::MetaNamespace => strtr( $config['wgFormattedNamespaces'][NS_PROJECT], ' ', '_' ),
 			MainConfigNames::MetaNamespaceTalk => strtr( $config['wgFormattedNamespaces'][NS_PROJECT_TALK], ' ', '_' ),
 			MainConfigNames::NamespaceAliases => $config['wgNamespaceIds'],
