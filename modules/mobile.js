@@ -78,7 +78,7 @@ function init( $container ) {
 		let lastScrollTop = $scrollContainer.scrollTop();
 		let wasScrollDown = null;
 		const $body = $( document.body );
-		// This block of code is only run once, so we don't need to remove this listener ever
+		// This listener is only added once so doesn't need to be unbound.
 		$scrollListener[ 0 ].addEventListener( 'scroll', OO.ui.throttle( () => {
 			// Round negative values up to 0 to ignore iOS scroll bouncing (T323400)
 			const scrollTop = Math.max( $scrollContainer.scrollTop(), 0 );
@@ -98,20 +98,18 @@ function init( $container ) {
 				} );
 			}
 
-			const observer = new IntersectionObserver(
-				( ( entries ) => {
-					$newTopicWrapper.toggleClass( 'ext-discussiontools-init-new-topic-pinned', entries[ 0 ].intersectionRatio === 1 );
-				} ),
-				{ threshold: [ 1 ] }
-			);
-
-			observer.observe( $newTopicWrapper[ 0 ] );
-			// We only need to check once, since this is inside a scroll handler
-			setTimeout( () => observer.disconnect() );
-
 			lastScrollTop = scrollTop;
 			wasScrollDown = isScrollDown;
 		}, 200 ), { passive: true } );
+
+		const observer = new IntersectionObserver(
+			( ( entries ) => {
+				$newTopicWrapper.toggleClass( 'ext-discussiontools-init-new-topic-pinned', entries[ 0 ].intersectionRatio === 1 );
+			} ),
+			{ threshold: [ 1 ] }
+		);
+
+		observer.observe( $newTopicWrapper[ 0 ] );
 	}
 
 	// Tweak to prevent our footer buttons from overlapping Minerva skin elements (T328452).
