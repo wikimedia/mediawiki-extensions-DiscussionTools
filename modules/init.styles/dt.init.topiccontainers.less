@@ -203,13 +203,20 @@
 				display: none !important;
 			}
 
-			/* stylelint-disable selector-class-pattern */
+			// no-unsupported-browser-features is disabled due to use of the :has() selector, which
+			// has limited support beyond baseline at the time of writing.
+			// Fallbacks are graceful: DT actions (e.g. "subscribe") will display for collapsed
+			// sections, and a margin will be lost between an open section's metadata and first
+			// comment.
+			/* stylelint-disable selector-class-pattern, plugin/no-unsupported-browser-features */
 			/* Legacy parser */
 			&.section-heading:not( .open-block ),
-			/* Parsoid */
+			/* Parsoid - backwards compatibility */
 			&[ aria-expanded='false' ],
-			/* Parsoid - Section toggle code hasn't loaded yet, but sections are always collapsed by default */
-			&:not( [ aria-expanded ] ) {
+			/* Parsoid - MobileFrontend keeps aria-expanded on button.mf-collapsible-toggle,
+			 * not on .mw-heading.
+			 * Section toggle code hasn't loaded yet, but sections are always collapsed by default */
+			&:has( > button.mf-collapsible-toggle:not( [ aria-expanded='true' ] ) ) {
 				.ext-discussiontools-init-section-actions {
 					// Hidden until expanded
 					display: none;
@@ -219,10 +226,10 @@
 			/* Legacy parser */
 			&.section-heading.open-block,
 			/* Parsoid */
-			&[ aria-expanded='true' ] {
+			&:has( > button.mf-collapsible-toggle[ aria-expanded='true' ] ) {
 				margin-bottom: 12px !important;
 			}
-			/* stylelint-enable selector-class-pattern */
+			/* stylelint-enable selector-class-pattern, plugin/no-unsupported-browser-features */
 		}
 
 		&-authorCountLabel,
