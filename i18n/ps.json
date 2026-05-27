@@ -91,6 +91,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "وروستۍ څرگندونه: $1 د $2 له خوا",
 	"discussiontools-pagetitle-newtopic": "په $1 کې نوې شننه پيلول",
 	"discussiontools-pagetitle-reply": "$1 ته ځواب ورکول",
+	"discussiontools-permalink-button": "تړونی لمېسل",
 	"discussiontools-permalink-comment-copied": "د څرگندونې وېبتړ ټينگدړې ته لمېسل شوی.",
 	"discussiontools-postedit-confirmation-published": "ستاسو څرگندونه خپره شوه.",
 	"discussiontools-postedit-confirmation-topicadded": "ستاسو سکالو ورگډه شوه.",

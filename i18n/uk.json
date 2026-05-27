@@ -103,6 +103,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Найсвіжіший коментар: $2 $1",
 	"discussiontools-pagetitle-newtopic": "Створення нової теми на $1",
 	"discussiontools-pagetitle-reply": "Відповідь на «$1»",
+	"discussiontools-permalink-button": "Копіювати посилання",
 	"discussiontools-permalink-comment-copied": "Посилання на коментар скопійовано в буфер обміну.",
 	"discussiontools-postedit-confirmation-published": "Ваш коментар опубліковано.",
 	"discussiontools-postedit-confirmation-topicadded": "Вашу тему було додано.",
