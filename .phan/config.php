@@ -59,5 +59,7 @@ function wfCollectPhpFiles( string $dir, ?array &$result = [] ) {
 
 // Exclude Parsoid's src/DOM in favour of .phan/stubs/DomImpl.php
 wfCollectPhpFiles( "{$VP}/vendor/wikimedia/parsoid/src/DOM", $cfg['exclude_file_list'] );
+// Exclude VisualEditor's stubs
+wfCollectPhpFiles( "../../extensions/VisualEditor/.phan", $cfg['exclude_file_list'] );
 
 return $cfg;
