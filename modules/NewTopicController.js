@@ -280,6 +280,8 @@ NewTopicController.prototype.getApiQuery = function () {
  */
 NewTopicController.prototype.saveFail = function ( replyWidget, code ) {
 	if ( code === 'discussiontools-newtopic-missing-title' ) {
+		replyWidget.updateCaptchaForFailure();
+
 		OO.ui.confirm( mw.msg( 'discussiontools-newtopic-missing-title-prompt' ) ).then( ( confirmed ) => {
 			if ( confirmed ) {
 				this.onReplySubmit( replyWidget, { allownosectiontitle: true } );

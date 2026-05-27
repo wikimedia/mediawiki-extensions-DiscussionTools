@@ -1120,6 +1120,8 @@ ReplyWidget.prototype.setSaveErrorMessage = function ( code, data ) {
 
 /**
  * Clear the CAPTCHA shown in the reply widget
+ *
+ * @internal
  */
 ReplyWidget.prototype.clearCaptcha = function () {
 	if ( this.captchaMessage ) {
@@ -1131,6 +1133,7 @@ ReplyWidget.prototype.clearCaptcha = function () {
 /**
  * Creates and displays a CAPTCHA after a save fails due to needing to complete a CAPTCHA
  *
+ * @internal
  * @param {Object} captchaData Captcha data
  */
 ReplyWidget.prototype.setSaveFailureCaptcha = function ( captchaData ) {
@@ -1142,12 +1145,33 @@ ReplyWidget.prototype.setSaveFailureCaptcha = function ( captchaData ) {
 		container: $captchaContainer[ 0 ], interfaceName: 'discussiontools'
 	} );
 
-	this.captchaWidget.updateForCaptchaFailure( captchaData );
-	this.captchaWidget.renderCaptcha().then( () => {
-		this.showCaptchaMessage( $captchaContainer );
-	} ).catch( ( error ) => {
-		this.showCaptchaError( $captchaContainer, error );
-	} );
+	this.captchaWidget.updateForFailure( captchaData )
+		.then( () => this.captchaWidget.renderCaptcha() )
+		.then( () => {
+			this.showCaptchaMessage( $captchaContainer );
+		} ).catch( ( error ) => {
+			this.showCaptchaError( $captchaContainer, error );
+		} );
+};
+
+/**
+ * Update or create a CAPTCHA for the provided DiscussionTools edit failure.
+ *
+ * This method should be called for every failed attempt to make an edit
+ * using DiscussionTools, even if the failure was not a related to the
+ * CAPTCHA
+ *
+ * @param {Object} [captchaData] If the failure was due to a CAPTCHA failure,
+ *   then this should be the value of the `captcha` key in the API response
+ * @return {void}
+ */
+ReplyWidget.prototype.updateCaptchaForFailure = function ( captchaData ) {
+	if ( captchaData ) {
+		this.clearCaptcha();
+		this.setSaveFailureCaptcha( captchaData );
+	} else if ( this.captchaWidget ) {
+		this.captchaWidget.updateForFailure();
+	}
 };
 
 /**

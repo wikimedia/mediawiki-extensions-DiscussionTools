@@ -41,13 +41,13 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		const replyWidget = makeReplyWidget();
 		const $captchaInputField = $( '<div>' ).append( '<input>' );
 
-		const updateForCaptchaFailure = this.sandbox.stub();
+		const updateForFailure = this.sandbox.stub().resolves();
 		const renderCaptcha = this.sandbox.stub().resolves();
 		const getInputField = this.sandbox.stub().returns( $captchaInputField[ 0 ] );
 		let actualCaptchaWidgetConfig;
 		this.sandbox.stub( mw.libs.confirmEdit, 'CaptchaWidget' ).callsFake( function ( config ) {
 			actualCaptchaWidgetConfig = config;
-			this.updateForCaptchaFailure = updateForCaptchaFailure;
+			this.updateForFailure = updateForFailure;
 			this.renderCaptcha = renderCaptcha;
 			this.getInputField = getInputField;
 		} );
@@ -76,26 +76,30 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 			'Captcha message contains the captcha widget container'
 		);
 
-		return renderCaptcha.firstCall.returnValue.then( () => {
-			assert.true(
-				updateForCaptchaFailure.calledOnceWithExactly( captchaData ),
-				'Captcha widget receives failure data before rendering'
-			);
-			assert.true(
-				renderCaptcha.calledOnce,
-				'Captcha widget render is requested once'
-			);
-			assert.true(
-				replyWidget.captchaMessage.isVisible(),
-				'Captcha message is shown after captcha rendering finishes'
-			);
+		return updateForFailure.firstCall.returnValue
+			.then( () => renderCaptcha.firstCall.returnValue )
+			.then( () => {
+				assert.true(
+					updateForFailure.calledOnceWithExactly( captchaData ),
+					'Captcha widget receives failure data before rendering'
+				);
+				assert.true(
+					renderCaptcha.calledOnce,
+					'Captcha widget render is requested once'
+				);
+				assert.true(
+					replyWidget.captchaMessage.isVisible(),
+					'Captcha message is shown after captcha rendering finishes'
+				);
 
-			$captchaInputField.find( 'input' ).trigger( $.Event( 'keydown', { which: OO.ui.Keys.ENTER } ) );
-			assert.true(
-				onReplyClick.calledOnce,
-				'Pressing Enter in captcha input triggers submit'
-			);
-		} );
+				$captchaInputField.find( 'input' ).trigger(
+					$.Event( 'keydown', { which: OO.ui.Keys.ENTER } )
+				);
+				assert.true(
+					onReplyClick.calledOnce,
+					'Pressing Enter in captcha input triggers submit'
+				);
+			} );
 	} );
 
 	QUnit.test( 'setInitialCaptcha renders a captcha', function ( assert ) {
@@ -235,5 +239,60 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 
 			done();
 		} );
+	} );
+
+	QUnit.test.each( 'updateCaptchaForFailure calls right methods', {
+		'CAPTCHA not rendered and CAPTCHA data not provided': {
+			captchaData: undefined,
+			captchaRendered: false,
+			shouldRenderHCaptcha: false,
+			shouldUpdateCaptcha: false
+		},
+		'CAPTCHA not rendered and CAPTCHA data provided': {
+			captchaData: { type: 'hcaptcha' },
+			captchaRendered: false,
+			shouldRenderHCaptcha: true,
+			shouldUpdateCaptcha: false
+		},
+		'CAPTCHA rendered and no CAPTCHA data provided': {
+			captchaData: undefined,
+			captchaRendered: true,
+			shouldRenderHCaptcha: false,
+			shouldUpdateCaptcha: true
+		},
+		'CAPTCHA rendered and CAPTCHA data provided': {
+			captchaData: { type: 'hcaptcha' },
+			captchaRendered: true,
+			shouldRenderHCaptcha: true,
+			shouldUpdateCaptcha: false
+		}
+	}, function ( assert, options ) {
+		const replyWidget = makeReplyWidget();
+
+		const clearCaptchaStub = this.sandbox.stub( replyWidget, 'clearCaptcha' );
+		const setSaveFailureCaptchaStub = this.sandbox.stub( replyWidget, 'setSaveFailureCaptcha' );
+
+		const updateForFailureStub = this.sandbox.stub().resolves();
+		if ( options.captchaRendered ) {
+			replyWidget.captchaWidget = { updateForFailure: updateForFailureStub };
+		}
+
+		replyWidget.updateCaptchaForFailure( options.captchaData );
+
+		assert.strictEqual(
+			clearCaptchaStub.callCount,
+			options.shouldRenderHCaptcha ? 1 : 0,
+			'Should only call clearCaptcha if (re-)rendering the CAPTCHA'
+		);
+		assert.strictEqual(
+			setSaveFailureCaptchaStub.callCount,
+			options.shouldRenderHCaptcha ? 1 : 0,
+			'Should only call setSaveFailureCaptcha if rendering the CAPTCHA'
+		);
+		assert.strictEqual(
+			updateForFailureStub.callCount,
+			options.shouldUpdateCaptcha ? 1 : 0,
+			'Should only call updateForFailure when CAPTCHA rendered but not being re-rendered'
+		);
 	} );
 } );

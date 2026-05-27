@@ -564,10 +564,10 @@ CommentController.prototype.saveFail = function ( replyWidget, code, data ) {
 
 	const captchaData = OO.getProp( data, 'discussiontoolsedit', 'edit', 'captcha' );
 
+	replyWidget.updateCaptchaForFailure( captchaData );
+
 	if ( captchaData ) {
 		code = 'captcha';
-		replyWidget.clearCaptcha();
-		replyWidget.setSaveFailureCaptcha( captchaData );
 	} else {
 		replyWidget.setSaveErrorMessage( code, data );
 	}
