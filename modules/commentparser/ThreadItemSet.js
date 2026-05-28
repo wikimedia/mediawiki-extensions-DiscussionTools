@@ -28,6 +28,11 @@ OO.initClass( ThreadItemSet );
 ThreadItemSet.static.newFromJSON = function ( threads, rootNode, parser ) {
 	const result = new ThreadItemSet();
 
+	// Drop any cached marker maps; the DOM may have changed since the last
+	// call (e.g. on partial page refresh). ThreadItem.static.newFromJSON will
+	// repopulate the cache on the first item it processes.
+	ThreadItem.static.clearMarkerCache();
+
 	function infuse( itemHash, parent ) {
 		const item = ThreadItem.static.newFromJSON( itemHash, rootNode );
 

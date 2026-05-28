@@ -49,6 +49,46 @@ function ThreadItem( type, level, range ) {
 OO.initClass( ThreadItem );
 
 /**
+ * Cached maps of comment-end and comment-sig marker elements in the page,
+ * keyed by item id. Populated lazily on first call to #getMarkers, invalidated
+ * with #clearMarkerCache when the underlying DOM may have changed.
+ *
+ * Caching avoids issuing O(DOM-size) attribute-selector querySelector calls
+ * per ThreadItem when parsing a page with many comments.
+ */
+let markerCache = null;
+
+/**
+ * Get maps of comment-end and comment-sig marker elements in the page, keyed
+ * by item id. Result is cached until #clearMarkerCache is called.
+ *
+ * @return {{ends: Object<string,Element>, sigs: Object<string,Element>}}
+ */
+ThreadItem.static.getMarkers = function () {
+	if ( !markerCache ) {
+		const ends = {}, sigs = {};
+		const endNodes = document.querySelectorAll( '[data-mw-comment-end]' );
+		for ( let i = 0; i < endNodes.length; i++ ) {
+			ends[ endNodes[ i ].getAttribute( 'data-mw-comment-end' ) ] = endNodes[ i ];
+		}
+		const sigNodes = document.querySelectorAll( '[data-mw-comment-sig]' );
+		for ( let i = 0; i < sigNodes.length; i++ ) {
+			sigs[ sigNodes[ i ].getAttribute( 'data-mw-comment-sig' ) ] = sigNodes[ i ];
+		}
+		markerCache = { ends: ends, sigs: sigs };
+	}
+	return markerCache;
+};
+
+/**
+ * Discard the marker cache. Call when the DOM may have changed since the
+ * previous #getMarkers call (e.g. after a partial page refresh).
+ */
+ThreadItem.static.clearMarkerCache = function () {
+	markerCache = null;
+};
+
+/**
  * Create a new ThreadItem from a JSON serialization
  *
  * @param {string|Object} json JSON serialization or hash object
@@ -104,9 +144,9 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 
 	item.rootNode = rootNode;
 
-	const idEscaped = $.escapeSelector( item.id );
+	const markers = ThreadItem.static.getMarkers();
 	const startMarker = document.getElementById( item.id );
-	const endMarker = document.querySelector( '[data-mw-comment-end="' + idEscaped + '"]' );
+	const endMarker = markers.ends[ item.id ];
 
 	item.range = {
 		// Start range after startMarker, because it produces funny results from getBoundingClientRect
@@ -118,7 +158,7 @@ ThreadItem.static.newFromJSON = function ( json, rootNode ) {
 	};
 
 	if ( item.type === 'comment' ) {
-		const sigMarker = document.querySelector( '[data-mw-comment-sig="' + idEscaped + '"]' );
+		const sigMarker = markers.sigs[ item.id ];
 		if ( sigMarker ) {
 			item.signatureRanges = [ {
 				startContainer: sigMarker.parentNode,
