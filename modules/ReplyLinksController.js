@@ -28,24 +28,30 @@ function ReplyLinksController( $pageContainer ) {
 	this.$body = $( document.body );
 	this.onReplyLinkClickHandler = this.onReplyLinkClick.bind( this );
 	this.onReplyButtonClickHandler = this.onReplyButtonClick.bind( this );
+	this.onReplyLinkInteractHandler = this.onReplyLinkInteract.bind( this );
 	this.onAddSectionLinkMouseDownHandler = this.onAddSectionLinkMouseDown.bind( this );
 	this.onAnyLinkClickHandler = this.onAnyLinkClick.bind( this );
 
-	// Reply links
+	// Reply links. We deliberately don't infuse the OOUI reply buttons here:
+	// on a long talk page that's hundreds of OO.ui.infuse() calls. Instead we
+	// use event delegation on the page container, and let setActiveLink /
+	// clearActiveLink lazily infuse via tryInfuse() when they need to toggle
+	// state. After the first reply is opened, OOUI's $.data cache keeps
+	// subsequent tryInfuse() calls cheap.
 	this.$replyLinkSets = $pageContainer.find( '.ext-discussiontools-init-replylink-buttons[ data-mw-thread-id ]:not( :empty )' );
 
-	this.$replyLinkSets.each( ( i, replyLinkContainer ) => {
-		const replyButton = tryInfuse( $( replyLinkContainer ).find( '.ext-discussiontools-init-replybutton' ) );
-		const $replyLink = $( replyLinkContainer ).find( '.ext-discussiontools-init-replylink-reply' );
-		$replyLink.on( 'click keypress', this.onReplyLinkClickHandler );
-		if ( replyButton ) {
-			replyButton.on( 'click', this.onReplyButtonClickHandler, [ replyButton ] );
-		}
-	} );
-
-	this.$replyLinkSets.on( 'focusin mouseover touchstart', () => {
-		this.emit( 'link-interact' );
-	} );
+	$pageContainer.on( 'click.dt-replylinks keypress.dt-replylinks',
+		'.ext-discussiontools-init-replylink-buttons[ data-mw-thread-id ] .ext-discussiontools-init-replylink-reply',
+		this.onReplyLinkClickHandler
+	);
+	$pageContainer.on( 'click.dt-replylinks keypress.dt-replylinks',
+		'.ext-discussiontools-init-replylink-buttons[ data-mw-thread-id ] .ext-discussiontools-init-replybutton',
+		this.onReplyButtonClickHandler
+	);
+	$pageContainer.on( 'focusin.dt-replylinks mouseover.dt-replylinks touchstart.dt-replylinks',
+		'.ext-discussiontools-init-replylink-buttons[ data-mw-thread-id ]:not( :empty )',
+		this.onReplyLinkInteractHandler
+	);
 
 	// "Add topic" link in the skin interface
 	if ( featuresEnabled.newtopictool ) {
@@ -93,9 +99,21 @@ ReplyLinksController.prototype.onReplyLinkClick = function ( e ) {
 	this.emit( 'link-click', $linkSet.data( 'mw-thread-id' ), $linkSet );
 };
 
-ReplyLinksController.prototype.onReplyButtonClick = function ( button ) {
-	const $linkSet = button.$element.closest( '[data-mw-thread-id]' );
+ReplyLinksController.prototype.onReplyButtonClick = function ( e ) {
+	if ( !this.isActivationEvent( e ) ) {
+		return;
+	}
+	e.preventDefault();
+
+	const $linkSet = $( e.target ).closest( '[data-mw-thread-id]' );
+	if ( !$linkSet.length ) {
+		return;
+	}
 	this.emit( 'link-click', $linkSet.data( 'mw-thread-id' ), $linkSet );
+};
+
+ReplyLinksController.prototype.onReplyLinkInteract = function () {
+	this.emit( 'link-interact' );
 };
 
 ReplyLinksController.prototype.onAddSectionLinkMouseDown = function ( e ) {
@@ -336,14 +354,7 @@ ReplyLinksController.prototype.teardown = function () {
 		this.clearActiveLink();
 	}
 
-	this.$replyLinkSets.each( ( i, replyLinkContainer ) => {
-		const replyButton = tryInfuse( $( replyLinkContainer ).find( '.ext-discussiontools-init-replybutton' ) );
-		if ( replyButton ) {
-			replyButton.off( 'click', this.onReplyButtonClickHandler );
-		}
-		const $replyLink = $( this ).find( '.ext-discussiontools-init-replylink-reply' );
-		$replyLink.off( 'click keypress', this.onReplyLinkClickHandler );
-	} );
+	this.$pageContainer.off( '.dt-replylinks' );
 
 	if ( featuresEnabled.newtopictool ) {
 		if ( this.$addSectionLink ) {
