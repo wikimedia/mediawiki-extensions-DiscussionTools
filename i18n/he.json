@@ -98,6 +98,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "תגובה אחרונה: $1 מאת $2",
 	"discussiontools-pagetitle-newtopic": "התחלת נושא חדש בדף $1",
 	"discussiontools-pagetitle-reply": "כתיבת תגובה בנושא $1",
+	"discussiontools-permalink-button": "העתקת קישור",
 	"discussiontools-permalink-comment-copied": "הקישור לתגובה הועתק ללוח.",
 	"discussiontools-postedit-confirmation-published": "התגובה שלך פורסמה.",
 	"discussiontools-postedit-confirmation-topicadded": "הנושא שלך נוסף.",
