@@ -1137,20 +1137,28 @@ ReplyWidget.prototype.clearCaptcha = function () {
  * @param {Object} captchaData Captcha data
  */
 ReplyWidget.prototype.setSaveFailureCaptcha = function ( captchaData ) {
-	const $captchaContainer = $( '<div>' );
+	if ( !this.captchaWidget ) {
+		const $captchaContainer = $( '<div>' );
 
-	this.setUpCaptchaMessage( $captchaContainer );
+		this.setUpCaptchaMessage( $captchaContainer );
 
-	this.captchaWidget = new mw.libs.confirmEdit.CaptchaWidget( {
-		container: $captchaContainer[ 0 ], interfaceName: 'discussiontools'
-	} );
+		this.captchaWidget = new mw.libs.confirmEdit.CaptchaWidget( {
+			container: $captchaContainer[ 0 ], interfaceName: 'discussiontools'
+		} );
+	}
 
 	this.captchaWidget.updateForFailure( captchaData )
-		.then( () => this.captchaWidget.renderCaptcha() )
-		.then( () => {
-			this.showCaptchaMessage( $captchaContainer );
+		.then(
+			( shouldAutomaticallyResubmit ) => this.captchaWidget.renderCaptcha()
+				.then( () => shouldAutomaticallyResubmit )
+		)
+		.then( ( shouldAutomaticallyResubmit ) => {
+			this.showCaptchaMessage();
+			if ( shouldAutomaticallyResubmit ) {
+				this.onReplyClick();
+			}
 		} ).catch( ( error ) => {
-			this.showCaptchaError( $captchaContainer, error );
+			this.showCaptchaError( error );
 		} );
 };
 
@@ -1167,7 +1175,6 @@ ReplyWidget.prototype.setSaveFailureCaptcha = function ( captchaData ) {
  */
 ReplyWidget.prototype.updateCaptchaForFailure = function ( captchaData ) {
 	if ( captchaData ) {
-		this.clearCaptcha();
 		this.setSaveFailureCaptcha( captchaData );
 	} else if ( this.captchaWidget ) {
 		this.captchaWidget.updateForFailure();
@@ -1196,9 +1203,8 @@ ReplyWidget.prototype.setUpCaptchaMessage = function ( $captchaContainer ) {
  * Shows the CAPTCHA message widget and scrolls it into the view of the user
  *
  * @internal
- * @param {jQuery} $captchaContainer
  */
-ReplyWidget.prototype.showCaptchaMessage = function ( $captchaContainer ) {
+ReplyWidget.prototype.showCaptchaMessage = function () {
 	this.captchaMessage.toggle( true );
 
 	const captchaInputField = this.captchaWidget.getInputField();
@@ -1214,22 +1220,22 @@ ReplyWidget.prototype.showCaptchaMessage = function ( $captchaContainer ) {
 		$captchaInputElement.trigger( 'focus' );
 		OO.ui.Element.static.scrollIntoView( captchaInputField );
 	} else {
-		OO.ui.Element.static.scrollIntoView( $captchaContainer[ 0 ] );
+		OO.ui.Element.static.scrollIntoView( this.captchaMessage.$element[ 0 ] );
 	}
 };
 
 /**
- * Shows the CAPTCHA message widget with an error message indicating that the CAPTCHA widget
- * did not render correctly
+ * Replaces the CAPTCHA with an error message indicating that the CAPTCHA widget
+ * did not render correctly. This also clears the CAPTCHA widget.
  *
  * @internal
- * @param {jQuery} $captchaContainer
  * @param {string} error The error to display (which is HTML escaped)
  */
-ReplyWidget.prototype.showCaptchaError = function ( $captchaContainer, error ) {
-	$captchaContainer.append( $( '<span>' ).text( error ) );
+ReplyWidget.prototype.showCaptchaError = function ( error ) {
+	this.captchaMessage.$label.html( $( '<span>' ).text( error ) );
+	this.captchaWidget = undefined;
 	this.captchaMessage.toggle( true );
-	OO.ui.Element.static.scrollIntoView( $captchaContainer[ 0 ] );
+	OO.ui.Element.static.scrollIntoView( this.captchaMessage.$element[ 0 ] );
 
 	const loggedError = new Error( 'Unable to show CAPTCHA in DiscussionTools' );
 	/* eslint-disable camelcase */
@@ -1265,9 +1271,9 @@ ReplyWidget.prototype.setInitialCaptcha = function () {
 	} );
 
 	this.captchaWidget.renderCaptcha().then( () => {
-		this.showCaptchaMessage( $captchaContainer );
+		this.showCaptchaMessage();
 	} ).catch( ( error ) => {
-		this.showCaptchaError( $captchaContainer, error );
+		this.showCaptchaError( error );
 	} );
 };
 

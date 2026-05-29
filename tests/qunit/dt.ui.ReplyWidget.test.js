@@ -41,7 +41,7 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		const replyWidget = makeReplyWidget();
 		const $captchaInputField = $( '<div>' ).append( '<input>' );
 
-		const updateForFailure = this.sandbox.stub().resolves();
+		const updateForFailure = this.sandbox.stub().resolves( false );
 		const renderCaptcha = this.sandbox.stub().resolves();
 		const getInputField = this.sandbox.stub().returns( $captchaInputField[ 0 ] );
 		let actualCaptchaWidgetConfig;
@@ -201,10 +201,8 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		const replyWidget = makeReplyWidget();
 
 		const renderCaptcha = this.sandbox.stub().rejects( 'Test error' );
-		let actualCaptchaWidgetConfig;
 		const captchaWidgetStub = this.sandbox.stub( mw.libs.confirmEdit, 'CaptchaWidget' )
-			.callsFake( function ( config ) {
-				actualCaptchaWidgetConfig = config;
+			.callsFake( function () {
 				this.renderCaptcha = renderCaptcha;
 			} );
 		captchaWidgetStub.static = { captchaNeededForEdit: () => 'hcaptcha' };
@@ -214,11 +212,6 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		const done = assert.async();
 
 		setTimeout( () => {
-			assert.strictEqual(
-				replyWidget.captchaMessage.$element.find( actualCaptchaWidgetConfig.container ).length,
-				1,
-				'Captcha message contains the captcha widget container'
-			);
 			assert.true(
 				replyWidget.captchaMessage.$element.text().includes( 'Test error' ),
 				'Captcha message contains error message'
@@ -239,6 +232,41 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 
 			done();
 		} );
+	} );
+
+	QUnit.test( 'setSaveFailureCaptcha automatically resubmits when recommended to do so', function ( assert ) {
+		const replyWidget = makeReplyWidget();
+
+		const updateForFailure = this.sandbox.stub().resolves( true );
+		const renderCaptcha = this.sandbox.stub().resolves();
+		const getInputField = this.sandbox.stub().returns( null );
+		this.sandbox.stub( mw.libs.confirmEdit, 'CaptchaWidget' ).callsFake( function () {
+			this.updateForFailure = updateForFailure;
+			this.renderCaptcha = renderCaptcha;
+			this.getInputField = getInputField;
+		} );
+
+		const onReplyClick = this.sandbox.stub( replyWidget, 'onReplyClick' );
+
+		const captchaData = { type: 'hcaptcha' };
+		replyWidget.setSaveFailureCaptcha( captchaData );
+
+		return updateForFailure.firstCall.returnValue
+			.then( () => renderCaptcha.firstCall.returnValue )
+			.then( () => {
+				assert.true(
+					updateForFailure.calledOnceWithExactly( captchaData ),
+					'Captcha widget receives failure data before rendering'
+				);
+				assert.true(
+					renderCaptcha.calledOnce,
+					'Captcha widget render is requested once'
+				);
+				assert.true(
+					onReplyClick.calledOnce,
+					'Should automatically resubmit after rendering if updateForFailure resolves to true'
+				);
+			} );
 	} );
 
 	QUnit.test.each( 'updateCaptchaForFailure calls right methods', {
@@ -269,21 +297,15 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 	}, function ( assert, options ) {
 		const replyWidget = makeReplyWidget();
 
-		const clearCaptchaStub = this.sandbox.stub( replyWidget, 'clearCaptcha' );
 		const setSaveFailureCaptchaStub = this.sandbox.stub( replyWidget, 'setSaveFailureCaptcha' );
 
-		const updateForFailureStub = this.sandbox.stub().resolves();
+		const updateForFailureStub = this.sandbox.stub().resolves( false );
 		if ( options.captchaRendered ) {
 			replyWidget.captchaWidget = { updateForFailure: updateForFailureStub };
 		}
 
 		replyWidget.updateCaptchaForFailure( options.captchaData );
 
-		assert.strictEqual(
-			clearCaptchaStub.callCount,
-			options.shouldRenderHCaptcha ? 1 : 0,
-			'Should only call clearCaptcha if (re-)rendering the CAPTCHA'
-		);
 		assert.strictEqual(
 			setSaveFailureCaptchaStub.callCount,
 			options.shouldRenderHCaptcha ? 1 : 0,
