@@ -87,6 +87,13 @@ $specialPageAliases['pl'] = [
 	'GoToComment' => [ 'Przejdź_do_komentarza' ],
 ];
 
+/** Ukrainian (Українська) */
+$specialPageAliases['uk'] = [
+	'TopicSubscriptions' => [ 'Підписки_на_теми' ],
+	'FindComment' => [ 'Знайти_коментар' ],
+	'DiscussionToolsDebug' => [ 'Структура_даних_інструментів_обговорення' ],
+];
+
 /** Urdu (اردو) */
 $specialPageAliases['ur'] = [
 	'TopicSubscriptions' => [ 'گفتگو_میں_شرکت' ],
