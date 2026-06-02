@@ -128,6 +128,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "$2的最新留言：$1",
 	"discussiontools-pagetitle-newtopic": "在$1上发起新话题",
 	"discussiontools-pagetitle-reply": "在$1上回复",
+	"discussiontools-permalink-button": "复制链接",
 	"discussiontools-permalink-comment-copied": "留言的链接已复制到剪贴板。",
 	"discussiontools-postedit-confirmation-published": "您的留言已发布。",
 	"discussiontools-postedit-confirmation-topicadded": "已添加您的话题。",

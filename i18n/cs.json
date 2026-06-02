@@ -98,6 +98,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Poslední komentář: $1 od {{GENDER:$2|uživatele|uživatelky}} $2",
 	"discussiontools-pagetitle-newtopic": "Zakládání nového tématu na stránce $1",
 	"discussiontools-pagetitle-reply": "Odpovídání na stránce $1",
+	"discussiontools-permalink-button": "Zkopírovat odkaz",
 	"discussiontools-permalink-comment-copied": "Odkaz na komentář zkopírován do schránky.",
 	"discussiontools-postedit-confirmation-published": "Váš komentář byl zveřejněn.",
 	"discussiontools-postedit-confirmation-topicadded": "Vaše téma bylo přidáno.",
