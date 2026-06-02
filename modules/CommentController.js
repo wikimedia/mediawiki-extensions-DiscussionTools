@@ -520,8 +520,12 @@ CommentController.prototype.getApiQuery = function ( replyWidget, pageName, chec
 	 */
 	const captchaWidget = replyWidget.captchaWidget;
 	if ( captchaWidget ) {
+		// Get the CAPTCHA data and append it to the API data to submit. If this fails, then
+		// change the error into a format that could be returned by the API and therefore
+		// understood by mw.Api.getErrorMessage
 		return $.when( captchaWidget.getCaptchaDataForSubmission() )
-			.then( ( captchaData ) => Object.assign( data, captchaData ) );
+			.then( ( captchaData ) => Object.assign( data, captchaData ) )
+			.catch( ( error ) => $.Deferred().reject( error, { error: { info: error } } ) );
 	} else {
 		return $.Deferred().resolve( data ).promise();
 	}
