@@ -107,6 +107,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "$2的最新留言：$1",
 	"discussiontools-pagetitle-newtopic": "在$1發起新話題",
 	"discussiontools-pagetitle-reply": "回覆$1",
+	"discussiontools-permalink-button": "複製連結",
 	"discussiontools-permalink-comment-copied": "留言連結已複製到剪貼簿。",
 	"discussiontools-postedit-confirmation-published": "您的留言已發布。",
 	"discussiontools-postedit-confirmation-topicadded": "已新增您的話題。",
