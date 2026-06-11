@@ -107,8 +107,9 @@ class SpecialFindComment extends FormSpecialPage {
 			// They can only be linked to using external links to Special:FindComment?idorname=…
 			// or wikilinks to the target page with a fragment identifier, for example Talk:Foo#….
 			// It's a pity we haven't realized this before deciding on this linking scheme. Oops.
+			// (T428762) IDs/names with '#' also don't work, since the resulting anchor is lost when redirecting.
 			$specialPageTitle = SpecialPage::getSafeTitleFor( 'GoToComment', $this->idOrName );
-			if ( $specialPageTitle !== null ) {
+			if ( $specialPageTitle !== null && !$specialPageTitle->hasFragment() ) {
 				$out->addHTML(
 					$this->msg( 'discussiontools-findcomment-gotocomment', $this->idOrName )->parseAsBlock() );
 			}
