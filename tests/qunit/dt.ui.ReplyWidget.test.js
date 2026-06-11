@@ -103,9 +103,6 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 	} );
 
 	QUnit.test( 'setInitialCaptcha renders a captcha', function ( assert ) {
-		const dtConfig = require( 'ext.discussionTools.init' ).config;
-		this.sandbox.stub( dtConfig, 'hCaptchaRequiredForAllEdits' ).value( true );
-
 		const replyWidget = makeReplyWidget();
 
 		const renderCaptcha = this.sandbox.stub().resolves();
@@ -174,28 +171,7 @@ QUnit.module( 'dt.ui.ReplyWidget', QUnit.newMwEnvironment(), () => {
 		);
 	} );
 
-	QUnit.test( 'setInitialCaptcha does nothing when hCaptchaRequiredForAllEdits is false', function ( assert ) {
-		const dtConfig = require( 'ext.discussionTools.init' ).config;
-		this.sandbox.stub( dtConfig, 'hCaptchaRequiredForAllEdits' ).value( false );
-
-		const replyWidget = makeReplyWidget();
-
-		this.sandbox.stub( mw.libs.confirmEdit.CaptchaWidget, 'static' )
-			.returns( { captchaNeededForEdit: () => 'hcaptcha' } );
-
-		replyWidget.setInitialCaptcha();
-
-		assert.strictEqual(
-			replyWidget.captchaWidget,
-			undefined,
-			'Captcha widget is not created if hCaptcha is not required for all DT edits'
-		);
-	} );
-
 	QUnit.test( 'setInitialCaptcha shows error if CAPTCHA render fails', function ( assert ) {
-		const dtConfig = require( 'ext.discussionTools.init' ).config;
-		this.sandbox.stub( dtConfig, 'hCaptchaRequiredForAllEdits' ).value( true );
-
 		const logError = this.sandbox.stub( mw.errorLogger, 'logError' );
 
 		const replyWidget = makeReplyWidget();
