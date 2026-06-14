@@ -11,12 +11,24 @@
 	// Keep all buttons on one line
 	white-space: nowrap;
 
-	// Add space before the buttons using actual spaces rather than margin, so that they may collapse
-	// when the buttons wrap to a new line (T325416).
 	&::before {
-		// Must use character escapes to avoid CSS minifier messing up the spaces
-		content: '\20\20';
 		white-space: pre-wrap;
+		// Add space before the buttons using actual spaces rather than margin, so that they may collapse
+		// when the buttons wrap to a new line (T325416). The spaces also allow line breaking here (T253601).
+		// Must use character escapes to avoid CSS minifier messing up the spaces.
+		content: '\20\20[';
+		// For browsers supporting alt text in 'content', make it empty
+		content: '\20\20[' / '';
+		color: @color-subtle;
+		.margin-inline( 0, 0.25em );
+	}
+
+	&::after {
+		content: ']';
+		// For browsers supporting alt text in 'content', make it empty
+		content: ']' / '';
+		color: @color-subtle;
+		.margin-inline( 0.25em, 0 );
 	}
 
 	.ext-discussiontools-replytool-enabled & {
@@ -38,16 +50,9 @@
 		}
 
 		// Similar to mw-editsection-bracket
+		// TODO: Remove these elements from the HTML. (T268900)
 		&-bracket {
-			color: @color-subtle;
-
-			&:not( :last-child ) {
-				.margin-inline( 0, 0.25em );
-			}
-
-			&:last-child {
-				.margin-inline( 0.25em, 0 );
-			}
+			display: none;
 		}
 	}
 
@@ -84,9 +89,23 @@
 // Visual enhancements enabled
 .ext-discussiontools-visualenhancements-enabled {
 	// Reply buttons
-	.ext-discussiontools-init-replylink-bracket,
 	.ext-discussiontools-init-replylink-reply {
 		display: none;
+	}
+
+	.ext-discussiontools-init-replylink-buttons {
+		&::before {
+			// Add space before the buttons using actual spaces rather than margin, so that they may collapse
+			// when the buttons wrap to a new line (T325416). The spaces also allow line breaking here (T253601).
+			// Must use character escapes to avoid CSS minifier messing up the spaces.
+			content: '\20\20';
+			margin: 0;
+		}
+
+		&::after {
+			content: '';
+			margin: 0;
+		}
 	}
 
 	.ext-discussiontools-init-replybutton {
