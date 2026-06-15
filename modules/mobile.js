@@ -79,7 +79,7 @@ function init( $container ) {
 		let wasScrollDown = null;
 		const $body = $( document.body );
 		// This listener is only added once so doesn't need to be unbound.
-		$scrollListener[ 0 ].addEventListener( 'scroll', OO.ui.throttle( () => {
+		$scrollListener.on( 'scroll', OO.ui.throttle( () => {
 			// Round negative values up to 0 to ignore iOS scroll bouncing (T323400)
 			const scrollTop = Math.max( $scrollContainer.scrollTop(), 0 );
 			const isScrollDown = scrollTop > lastScrollTop;
@@ -100,7 +100,7 @@ function init( $container ) {
 
 			lastScrollTop = scrollTop;
 			wasScrollDown = isScrollDown;
-		}, 200 ), { passive: true } );
+		}, 200 ) );
 
 		const observer = new IntersectionObserver(
 			( ( entries ) => {
