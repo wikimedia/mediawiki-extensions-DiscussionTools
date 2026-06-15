@@ -22,6 +22,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use Throwable;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Parsoid\Core\DOMCompat;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
@@ -102,25 +103,36 @@ class CommentFormatter {
 	 *
 	 * In the Parsoid default future, we might prefer checking for stx=html.
 	 */
-	private static function isHtmlHeading( Element $h ): bool {
+	private static function isHtmlHeading( Element $h, ParserOutput $pout ): bool {
+		$contentHolder = $pout->getContentHolder();
+		if ( $contentHolder->isParsoidContent() ) {
+			// FIXME(T394005): onParserOutputPostCacheTransform is called from a
+			// ContentTextTransformStage, so DOMDataUtils::getDataParsoid isn't
+			// available.  Since getBasePageBundle may result in a conversion,
+			// assert that the content holder isn't in domFormat, which preferDom
+			// is a proxy for at the moment
+			Assert::invariant( !$contentHolder->preferDom(), 'We should be in text format' );
+			$pb = $contentHolder->getBasePageBundle();
+			$dp = $pb->parsoid['ids'][$h->getAttribute( 'id' ) ?? ''] ?? null;
+			// FIXME(T100856): stx info probably shouldn't be in data-parsoid
+			return ( $dp['stx'] ?? '' ) === 'html';
+		} elseif ( $pout->getExtensionData( 'core:new-heading-attr' ) !== null ) {
+			return !$h->hasAttribute( 'data-mw-wikitext' );
+		}
+		// T428677: Temporary backward-compatibility fallback with old parser cache contents
 		foreach ( $h->attributes as $attr ) {
 			// Condition matches core HandleSectionLinks / HandleParsoidSectionLinks::isHtmlHeading
 			if (
+				// These Parsoid specific attributes shouldn't be needed
+				// anymore but test cases pass html that isn't true to
+				// when this pass runs.  Even ids aren't added to the legacy
+				// output until after the pass runs
 				!in_array( $attr->name, [ 'id', 'data-object-id', 'about', 'typeof' ], true ) &&
 				!Sanitizer::isReservedDataAttribute( $attr->name )
 			) {
 				return true;
 			}
 		}
-		// FIXME(T100856): stx info probably shouldn't be in data-parsoid
-		// FIXME(T394005): onParserOutputPostCacheTransform is called from a
-		// ContentTextTransformStage, so data-parsoid isn't available
-		//
-		// Id is ignored above since it's a special case, make use of metadata
-		// to determine if it came from wikitext
-		// if ( DOMDataUtils::getDataParsoid( $h )->reusedId ?? false ) {
-		// 	return true;
-		// }
 		return false;
 	}
 
@@ -128,12 +140,14 @@ class CommentFormatter {
 	 * Add a wrapper, topic container, and subscribe link around a heading element
 	 *
 	 * @param Element $headingElement Heading element
+	 * @param ParserOutput $pout
 	 * @param ContentHeadingItem|null $headingItem Heading item
 	 * @param array|null &$tocInfo TOC info
 	 * @return Element Wrapper element (either found or newly added)
 	 */
 	protected static function handleHeading(
 		Element $headingElement,
+		ParserOutput $pout,
 		?ContentHeadingItem $headingItem = null,
 		?array &$tocInfo = null
 	): Element {
@@ -144,7 +158,7 @@ class CommentFormatter {
 			DOMUtils::hasClass( $wrapperNode, 'mw-heading' )
 		) ) {
 			// Do not add the wrapper if the heading has attributes generated from wikitext (T353489).
-			if ( self::isHtmlHeading( $headingElement ) ) {
+			if ( self::isHtmlHeading( $headingElement, $pout ) ) {
 				return $headingElement;
 			}
 
@@ -361,7 +375,7 @@ class CommentFormatter {
 					$headingElement = CommentUtils::closestElement( $headline, [ 'h2' ] );
 
 					if ( $headingElement ) {
-						static::handleHeading( $headingElement, $threadItem, $tocInfo );
+						static::handleHeading( $headingElement, $pout, $threadItem, $tocInfo );
 					}
 				}
 			} elseif ( $threadItem instanceof ContentCommentItem ) {
@@ -417,7 +431,7 @@ class CommentFormatter {
 			if ( $wrapper instanceof Element && DOMUtils::hasClass( $wrapper, 'toctitle' ) ) {
 				continue;
 			}
-			$headingElement = static::handleHeading( $headingElement );
+			$headingElement = static::handleHeading( $headingElement, $pout );
 			if ( !$startOfSections ) {
 				$startOfSections = $headingElement;
 			}
