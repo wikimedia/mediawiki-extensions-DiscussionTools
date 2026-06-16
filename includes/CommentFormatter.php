@@ -623,16 +623,7 @@ class CommentFormatter {
 						$subscribeLink->setAttribute( 'data-mw-subscribed', (string)$subscribedState );
 					}
 
-					$bracket = $doc->createElement( 'span' );
-					$bracket->setAttribute( 'class', 'ext-discussiontools-init-section-subscribe-bracket' );
-					$bracketOpen = $bracket->cloneNode( false );
-					$bracketOpen->textContent = '[';
-					$bracketClose = $bracket->cloneNode( false );
-					$bracketClose->textContent = ']';
-
-					$subscribe->appendChild( $bracketOpen );
 					$subscribe->appendChild( $subscribeLink );
-					$subscribe->appendChild( $bracketClose );
 
 					return DOMCompat::getOuterHTML( $subscribe );
 				} else {
@@ -706,8 +697,6 @@ class CommentFormatter {
 
 					return $replyLinkButton->toString();
 				} else {
-					$replyLinkButtons = $doc->createElement( 'span' );
-
 					// Reply link
 					$replyLink = $doc->createElement( 'a' );
 					$replyLink->setAttribute( 'class', 'ext-discussiontools-init-replylink-reply' );
@@ -717,18 +706,7 @@ class CommentFormatter {
 					$replyLink->setAttribute( 'href', '' );
 					$replyLink->textContent = $replyLinkText;
 
-					$bracket = $doc->createElement( 'span' );
-					$bracket->setAttribute( 'class', 'ext-discussiontools-init-replylink-bracket' );
-					$bracketOpen = $bracket->cloneNode( false );
-					$bracketClose = $bracket->cloneNode( false );
-					$bracketOpen->textContent = '[';
-					$bracketClose->textContent = ']';
-
-					$replyLinkButtons->appendChild( $bracketOpen );
-					$replyLinkButtons->appendChild( $replyLink );
-					$replyLinkButtons->appendChild( $bracketClose );
-
-					return DOMCompat::getInnerHTML( $replyLinkButtons );
+					return DOMCompat::getOuterHTML( $replyLink );
 				}
 			}
 		);
