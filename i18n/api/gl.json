@@ -14,7 +14,6 @@
 	"apihelp-discussiontoolscompare-summary": "Obter información sobre os cambios no comentario entre dúas revisións da páxina.",
 	"apihelp-discussiontoolsedit-param-commentid": "Identificador do comentario ao que responder. Só se usa cando <var>paction</var> ten o valor <var>addcomment</var>. Ignora <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Nome do comentario ao que responder. Só se usa cando <var>paction</var> ten o valor <var>addcomment</var>.",
-	"apihelp-discussiontoolsedit-param-autosubscribe": "Queres subscribir automaticamente ao usuario ao fío da páxina de conversa?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Un identificador único opcional xerado no cliente para evitar as publicacións dobres.",
 	"apihelp-discussiontoolsedit-param-html": "Contido a publicar, en formato HTML. Non se pode utilizar xunto con <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Só se usa canto <var>paction</var> ten o valor <var>addtopic</var>.",

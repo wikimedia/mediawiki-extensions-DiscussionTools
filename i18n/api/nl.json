@@ -16,7 +16,6 @@
 	"apihelp-discussiontoolscompare-summary": "Informatie ontvangen over commentaarwijzigingen tussen twee paginaversies.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID van de reactie waarop moet worden gereageerd. Wordt alleen gebruikt als de waarde van <var>paction</var> <var>addcomment</var> luidt. Overschrijft <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Naam van de reactie waarop moet worden gereageerd. Wordt alleen gebruikt als de waarde van <var>action</var> <var>addcomment</var> luidt.",
-	"apihelp-discussiontoolsedit-param-autosubscribe": "De gebruiker automatisch abonneren op de overlegpaginadraad?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Een optionele unieke ID, in de cliënt gegenereerd om dubbelposten te voorkomen.",
 	"apihelp-discussiontoolsedit-param-html": "De te plaatsen inhoud als HTML. Kan niet samen met <var>wikitext</var> worden gebruikt.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Alleen gebruikt als de waarde van <var>paction</var> <var>addtopic</var> luidt.",

@@ -23,7 +23,6 @@
 	"apihelp-discussiontoolscompare-summary": "获取两个页面修订间留言更改的有关信息。",
 	"apihelp-discussiontoolsedit-param-commentid": "要回复的留言的ID。仅在<var>paction</var>为<var>addcomment</var>时使用。覆盖<var>commentname</var>。",
 	"apihelp-discussiontoolsedit-param-commentname": "要回复的留言的名称。仅在<var>paction</var>为<var>addcomment</var>时使用。",
-	"apihelp-discussiontoolsedit-param-autosubscribe": "自动把该用户订阅到讨论页面帖子？",
 	"apihelp-discussiontoolsedit-param-formtoken": "客户端生成的防止重复发布的可选唯一ID。",
 	"apihelp-discussiontoolsedit-param-html": "要以HTML发布的内容。不能与<var>wikitext</var>一起使用。",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}}仅在<var>paction</var>为<var>addtopic</var>时使用。",

@@ -14,7 +14,6 @@
 	"apihelp-discussiontoolscompare-summary": "Hel macluumaad ku saabsan isbeddellada faallooyinka ee u dhexeeya laba nuqul oo bog ah.",
 	"apihelp-discussiontoolsedit-param-commentid": "Aqoonsiga faallada lagu jawaabayo. Waxa kaliya la isticmaalaa marka <var>paction</var> uu yahay <var>addcomment</var>. Wuxuu ka hormaraa <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Magaca faallada lagu jawaabayo. Waxa kaliya la isticmaalaa marka <var>paction</var> uu yahay <var>addcomment</var>.",
-	"apihelp-discussiontoolsedit-param-autosubscribe": "Si toos ah ma u is-diiwaangeliyaa isticmaalaha mawduuca bogga wadahadalka?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Aqoonsi gaar ah oo ikhtiyaari ah oo laga soo saaro dhinaca macmiilka si looga hortago in laba jeer la soo dhajiyo.",
 	"apihelp-discussiontoolsedit-param-html": "Nuxurka la doonayo in la dhajiyo, oo ah HTML. Lama adeegsan karo isla mar ahaantaana <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Waxa kaliya la isticmaalaa marka <var>paction</var> uu yahay <var>ku dar mowduuc</var>.",

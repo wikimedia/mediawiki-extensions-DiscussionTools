@@ -14,7 +14,6 @@
 	"apihelp-discussiontoolscompare-summary": "د دوه مخونو د بياليدنو ترمنځ د څرگندونې بدلولونونو په اړه مالومات ترلاسه کړئ.",
 	"apihelp-discussiontoolsedit-param-commentid": "د هغه څرگندونې پېژند چې ځواب ورکول کېږي. يوازې هغه وخت کارول کېږي کله چې <var>paction</var> د <var>commentname</var> دپاسه ترتيب شوی وي. <var>commentname</var> له پامه غورځوي.",
 	"apihelp-discussiontoolsedit-param-commentname": "د هغه څرگندونې نوم چې ځواب ورکول کېږي. يوازې هغه وخت کارول کېږي کله چې <var>paction</var> د <var>commentname</var> دپاسه ترتيب شوی وي.",
-	"apihelp-discussiontoolsedit-param-autosubscribe": "کارن په خپلکاري ډول د خبرو اترو مخ شننلړ کې گډون وکړي؟",
 	"apihelp-discussiontoolsedit-param-formtoken": "يو اختياري بې‌ساری پېژند چې په مرجع کې رامنځته شوی دی؛ ترڅو د دوه ځلي خپراوي مخه ونيسي.",
 	"apihelp-discussiontoolsedit-param-html": "خپرولو لپاره د اېچ‌ټي‌اېم‌اېل په توگه منځپانگه. د <var>wikitext</var> سره يوځای نشي کارېدی.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} يوازې هغه وخت کارېږي کله چې <var>paction</var> <var>addtopic</var> وي.",

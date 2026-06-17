@@ -14,7 +14,6 @@
 	"apihelp-discussiontoolscompare-summary": "АгӀонан шина версина йукъахь комментарешкахь хийцамаш барх лаьцна информаци схьаэца.",
 	"apihelp-discussiontoolsedit-param-commentid": "Жоп дала дезачу хааман ID. <var>paction</var>-на <var>addcomment</var> хилча бен ца леладо. <var>commentname</var> маьӀна дӀадоккху.",
 	"apihelp-discussiontoolsedit-param-commentname": "Жоп дала дезачу комментарин цӀе. <var>paction</var>-на <var>addcomment</var> хилча бен ца леладо.",
-	"apihelp-discussiontoolsedit-param-autosubscribe": "Дийцарийн гаьнна авто тӀейазбе декъашхой?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Клиентехь генераци йина лаамехь шатайпа идентификатор, шалха публикаци ца хилийта.",
 	"apihelp-discussiontoolsedit-param-html": "Чулацам HTML кепехь дӀакхачо беза. <var>wikitext</var>-ца лело йиш йац.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} <var>paction</var>-на <var>addtopic</var> хилча бен ца леладо.",

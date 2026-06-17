@@ -14,7 +14,6 @@
 	"apihelp-discussiontoolscompare-summary": "Dostati informaciju o izměnah komentarev medžu dvoma versijami stranice.",
 	"apihelp-discussiontoolsedit-param-commentid": "Identifikator komentara, na ktory trěba odgovoriti. Parametr upotrěbjaje se samo, kogdy parametr <var>paction</var> imaje značenje <var>addcomment</var>. Prěpisyvaje značenje <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Nazva komentara, na ktory trěba odgovoriti. Upotrěbjaje se samo, kogdy parametr <var>paction</var> imaje značenje <var>addcomment</var>.",
-	"apihelp-discussiontoolsedit-param-autosubscribe": "Avtomatično podpisati koristnika na nit besědnoj stranice?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Neobvezny unikalny identifikator, generovany v klientu za izběganje dvojnoj publikacije.",
 	"apihelp-discussiontoolsedit-param-html": "Sodržanje za publikaciju v formě HTML. Ne može byti upotrěbjeno zajedno s <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Upotrěbjaje se samo, kogdy parametr <var>paction</var> imaje značenje <var>addtopic</var>.",

@@ -14,7 +14,6 @@
 	"apihelp-discussiontoolscompare-summary": "Ôbejrzij informacyje ô pōmianach we kōmyntarzach miyndzy dwōma wersyjōma zajty.",
 	"apihelp-discussiontoolsedit-param-commentid": "ID ôd kōmyntŏrza, na ftory mŏ być ôdpowiedziane. Używane ino, kedy wert <var>paction</var> je <var>addcomment</var>. Nadpisuje <var>commentname</var>.",
 	"apihelp-discussiontoolsedit-param-commentname": "Miano ôd kōmyntŏrza, na ftory mŏ być ôdpowiedziane. Używane ino, kedy wert <var>paction</var> je <var>addcomment</var>.",
-	"apihelp-discussiontoolsedit-param-autosubscribe": "Ze automatu przisubskrybować używacza do tymatu we dyskusyji?",
 	"apihelp-discussiontoolsedit-param-formtoken": "Ôpcjōnalne unikalne ID wygenerowane ôd klienta do unikaniŏ wciepowaniŏ zdublowanych kōmyntarzy.",
 	"apihelp-discussiontoolsedit-param-html": "Inhalt do ôpublikowaniŏ, jako HTML. Niy może być użyte cuzamyn ze <var>wikitext</var>.",
 	"apihelp-discussiontoolsedit-param-sectiontitle": "{{int:apihelp-edit-param-sectiontitle}} Paramyjter używany ino wônczas, kedy wert <var>paction</var> to je <var>addtopic</var>.",
