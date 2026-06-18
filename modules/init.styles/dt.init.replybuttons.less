@@ -11,7 +11,8 @@
 	// Keep all buttons on one line
 	white-space: nowrap;
 
-	&::before {
+	// This element is empty in preview, since we remove the reply buttons (T429647)
+	&:not( :empty )::before {
 		white-space: pre-wrap;
 		// Add space before the buttons using actual spaces rather than margin, so that they may collapse
 		// when the buttons wrap to a new line (T325416). The spaces also allow line breaking here (T253601).
@@ -23,7 +24,7 @@
 		.margin-inline( 0, 0.25em );
 	}
 
-	&::after {
+	&:not( :empty )::after {
 		content: ']';
 		// For browsers supporting alt text in 'content', make it empty
 		content: ']' / '';
@@ -94,7 +95,7 @@
 	}
 
 	.ext-discussiontools-init-replylink-buttons {
-		&::before {
+		&:not( :empty )::before {
 			// Add space before the buttons using actual spaces rather than margin, so that they may collapse
 			// when the buttons wrap to a new line (T325416). The spaces also allow line breaking here (T253601).
 			// Must use character escapes to avoid CSS minifier messing up the spaces.
@@ -102,7 +103,7 @@
 			margin: 0;
 		}
 
-		&::after {
+		&:not( :empty )::after {
 			content: '';
 			margin: 0;
 		}
@@ -140,7 +141,7 @@
 	&.mw-mf .ext-discussiontools-init-replylink-buttons {
 		display: block;
 
-		&::before {
+		&:not( :empty )::before {
 			// Remove the spaces that are used for inline placement (T325416), added at the top of this file.
 			content: '';
 		}
