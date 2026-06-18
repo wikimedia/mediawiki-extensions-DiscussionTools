@@ -115,7 +115,9 @@ class CommentFormatter {
 			$pb = $contentHolder->getBasePageBundle();
 			$dp = $pb->parsoid['ids'][$h->getAttribute( 'id' ) ?? ''] ?? null;
 			// FIXME(T100856): stx info probably shouldn't be in data-parsoid
-			return ( $dp['stx'] ?? '' ) === 'html';
+			// FIXME(T429582): $dp should always be an array, but when empty it can be a stdClass. Checking for this
+			// while we make a more general fix.
+			return ( is_array( $dp ) && ( ( $dp['stx'] ?? '' ) === 'html' ) );
 		} elseif ( $pout->getExtensionData( 'core:new-heading-attr' ) !== null ) {
 			return !$h->hasAttribute( 'data-mw-wikitext' );
 		}
