@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Iketsi",
-			"Orbitminis"
+			"Orbitminis",
+			"Terrus38"
 		]
 	},
 	"discussiontools-newtopic-placeholder-title": "Téma",
 	"discussiontools-replylink": "{{GENDER:|òdpòwiedz}}",
-	"discussiontools-replywidget-cancel": "Anulëje",
+	"discussiontools-replywidget-cancel": "Anuluj",
 	"discussiontools-replywidget-mode-source": "Zdrój",
 	"discussiontools-replywidget-placeholder-newtopic": "Òpisënk",
 	"discussiontools-replywidget-reply": "Òdpòwiedz"
