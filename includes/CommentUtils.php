@@ -526,7 +526,10 @@ class CommentUtils {
 	/**
 	 * Like #linearWalk, but it goes backwards.
 	 *
-	 * @inheritDoc ::linearWalk()
+	 * @param Node $node Node to start at
+	 * @param callable $callback Function accepting two arguments: $event ('enter' or 'leave') and
+	 *     $node (Node)
+	 * @return mixed Final return value of the callback
 	 */
 	public static function linearWalkBackwards( Node $node, callable $callback ) {
 		$result = null;
