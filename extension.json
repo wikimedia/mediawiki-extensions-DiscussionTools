@@ -195,8 +195,7 @@
 			"defaultColor": "#54595d",
 			"class": "MediaWiki\\ResourceLoader\\OOUIIconPackModule",
 			"icons": [
-				"bell",
-				"bellOutline"
+				"bell"
 			]
 		},
 		"ext.discussionTools.debug": {
