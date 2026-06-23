@@ -26,7 +26,6 @@ use MediaWiki\Page\Hook\ArticleParserOptionsHook;
 use MediaWiki\Page\Hook\BeforeDisplayNoArticleTextHook;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\ParserOutput;
-use MediaWiki\Skin\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Skin\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Skin\Skin;
 use MediaWiki\Skin\SkinTemplate;
@@ -45,7 +44,6 @@ class PageHooks implements
 	GetActionNameHook,
 	OutputPageBeforeHTMLHook,
 	OutputPageParserOutputHook,
-	SidebarBeforeOutputHook,
 	SkinTemplateNavigation__UniversalHook
 {
 
@@ -65,6 +63,15 @@ class PageHooks implements
 		if ( !$popts->getUseParsoid() && HookUtils::isAvailableForTitle( $article->getTitle() ) ) {
 			$article->setUseLegacyPostprocCache();
 		}
+	}
+
+	private static function isAddTopicEnabledOnOutput( OutputPage $output, string $skinName ): bool {
+		$req = $output->getRequest();
+		return $output->getSkin()->getSkinName() === $skinName &&
+			( $req->getRawVal( 'action' ) ?? 'view' ) === 'view' &&
+			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
+			// Only add the button if "New section" tab would be shown in a normal skin.
+			HookUtils::shouldShowNewSectionTab( $output->getContext() );
 	}
 
 	/**
@@ -192,37 +199,32 @@ class PageHooks implements
 			}
 		}
 
-		if ( $output->getSkin()->getSkinName() === 'minerva' ) {
-			if (
-				( $req->getRawVal( 'action' ) ?? 'view' ) === 'view' &&
-				HookUtils::isFeatureEnabledForOutput( $output, HookUtils::NEWTOPICTOOL ) &&
-				// Only add the button if "New section" tab would be shown in a normal skin.
-				HookUtils::shouldShowNewSectionTab( $output->getContext() )
-			) {
-				$output->enableOOUI();
-				// For speechBubbleAdd
-				$output->addModuleStyles( 'oojs-ui.styles.icons-alerts' );
-				$output->addBodyClasses( 'ext-discussiontools-init-new-topic-opened' );
+		if ( self::isAddTopicEnabledOnOutput( $output, 'minerva' ) ) {
+			$output->enableOOUI();
+			// For speechBubbleAdd
+			$output->addModuleStyles( 'oojs-ui.styles.icons-alerts' );
+			$output->addBodyClasses( 'ext-discussiontools-init-new-topic-opened' );
 
-				// Minerva doesn't show a new topic button.
-				$output->addHTML( Html::rawElement( 'div',
-					[ 'class' => 'ext-discussiontools-init-new-topic' ],
-					(string)( new ButtonWidget( [
-						'classes' => [ 'ext-discussiontools-init-new-topic-button' ],
-						'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
-						'icon' => 'speechBubbleAdd',
-						'label' => $output->getContext()->msg( 'skin-action-addsection' )->text(),
-						'flags' => [ 'progressive', 'primary' ],
-						'infusable' => true,
-					] ) )
-						// For compatibility with MobileWebUIActionsTracking logging (T295490)
-						->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
-				) );
-			}
+			// Minerva doesn't show a new topic button.
+			$output->addHTML( Html::rawElement( 'div',
+				[ 'class' => 'ext-discussiontools-init-new-topic' ],
+				(string)( new ButtonWidget( [
+					'classes' => [ 'ext-discussiontools-init-new-topic-button' ],
+					'href' => $title->getLinkURL( [ 'action' => 'edit', 'section' => 'new' ] ),
+					'icon' => 'speechBubbleAdd',
+					'label' => $output->getContext()->msg( 'skin-action-addsection' )->text(),
+					'flags' => [ 'progressive', 'primary' ],
+					'infusable' => true,
+				] ) )
+					// For compatibility with MobileWebUIActionsTracking logging (T295490)
+					->setAttributes( [ 'data-event-name' => 'talkpage.add-topic' ] )
+			) );
+		}
 
-			if ( HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION ) ) {
-				$output->addModuleStyles( 'ext.discussionTools.minervaicons' );
-			}
+		if ( $output->getSkin()->getSkinName() === 'minerva' &&
+			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION )
+		) {
+			$output->addModuleStyles( 'ext.discussionTools.minervaicons' );
 		}
 	}
 
@@ -527,29 +529,6 @@ class PageHooks implements
 	}
 
 	/**
-	 * @param Skin $skin
-	 * @param array &$sidebar
-	 */
-	public function onSidebarBeforeOutput( $skin, &$sidebar ): void {
-		$output = $skin->getOutput();
-		if (
-			$skin->getSkinName() === 'minerva' &&
-			HookUtils::isFeatureEnabledForOutput( $output, HookUtils::TOPICSUBSCRIPTION )
-		) {
-			$button = $this->getNewTopicsSubscriptionButton(
-				$skin->getUser(),
-				$skin->getTitle(),
-				$skin->getContext()
-			);
-			$sidebar['TOOLBOX']['t-page-subscribe'] = [
-				'icon' => $button['icon'],
-				'text' => $button['label'],
-				'href' => $button['href'],
-			];
-		}
-	}
-
-	/**
 	 * @param SkinTemplate $sktemplate
 	 * @param array &$links
 	 */
@@ -562,8 +541,10 @@ class PageHooks implements
 				$sktemplate->getContext()
 			);
 
-			$links['actions']['dt-page-subscribe'] = [
+			$menuName = self::isAddTopicEnabledOnOutput( $output, 'minerva' ) ? 'views' : 'actions';
+			$links[$menuName]['dt-page-subscribe'] = [
 				'text' => $button['label'],
+				'icon' => $button['icon'],
 				'title' => $button['tooltip'],
 				'data-mw-subscribed' => $button['isSubscribed'] ? '1' : '0',
 				'href' => $button['href'],

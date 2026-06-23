@@ -472,7 +472,6 @@
 		"GetActionName": "page",
 		"OutputPageBeforeHTML": "page",
 		"OutputPageParserOutput": "page",
-		"SidebarBeforeOutput": "page",
 		"SkinTemplateNavigation::Universal": "page",
 		"ResourceLoaderGetConfigVars": "resourceloader",
 		"GetBetaFeaturePreferences": "betapreferences",

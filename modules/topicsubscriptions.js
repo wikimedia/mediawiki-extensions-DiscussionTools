@@ -248,8 +248,8 @@ function initNewTopicsSubscription() {
 
 	if ( mw.config.get( 'skin' ) === 'minerva' ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
-		$button = $( '.menu__item--page-actions-overflow-t-page-subscribe' );
-		$label = $button.find( '.toggle-list-item__label' );
+		$button = $( '#ca-dt-page-subscribe' );
+		$label = $button.find( 'span:not( .minerva-icon )' );
 		$icon = $button.find( '.minerva-icon' );
 		// HACK: We can't set data-mw-subscribed initially in Minerva, so work it out from the icon
 		// eslint-disable-next-line no-jquery/no-class-state
