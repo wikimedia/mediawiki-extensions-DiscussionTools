@@ -289,8 +289,9 @@ function initSpecialTopicSubscriptions() {
 		const data = button.getData();
 		let subscribedState = STATE_SUBSCRIBED;
 
-		button.on( 'click', () => {
+		button.on( 'click', ( ev ) => {
 			button.setDisabled( true );
+			mw.hook( 'ext.wikimediaEvents.webUIClick.event' ).fire( ev );
 			changeSubscription( data.title, data.item, !subscribedState )
 				.then( ( result ) => {
 					button.setLabel( mw.msg(
