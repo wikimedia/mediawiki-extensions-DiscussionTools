@@ -88,6 +88,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Poslědnji komentar: $1 od {{GENDER:$2|koristnika|koristnice}} $2",
 	"discussiontools-pagetitle-newtopic": "Započinanje novoj temy na stranici $1",
 	"discussiontools-pagetitle-reply": "Odgovarjanje na stranici $1",
+	"discussiontools-permalink-button": "Kopirovati link",
 	"discussiontools-permalink-comment-copied": "Link na komentar kopirovany v bufer obměna.",
 	"discussiontools-postedit-confirmation-published": "Vaš komentar jest publikovany.",
 	"discussiontools-postedit-confirmation-topicadded": "Vaša tema jest dodana.",
