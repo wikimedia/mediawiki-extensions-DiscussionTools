@@ -21,6 +21,7 @@
 	"discussiontools-emptystate-button": "Пачаць абмеркаваньне",
 	"discussiontools-emptystate-title": "Пачаць абмеркаваньне пра старонку «{{SUBJECTPAGENAME}}»",
 	"discussiontools-emptystate-title-user": "Пачаць абмеркаваньне з {{GENDER:{{PAGENAME}}|удзельнікам|удзельніцай}} {{PAGENAME}}",
+	"discussiontools-findcomment-gotocomment": "Калі ён зьяўляецца толькі ў актуальнай вэрсіі старонкі, {{GENDER:|вы}} можаце [[Special:GoToComment/$1|перайсьці непасрэдна да камэнтара па гэтай спасылцы]]. У іншым выпадку яна перанакіруе на вынікі гэтага пошуку.",
 	"discussiontools-findcomment-label-search": "Пошук",
 	"discussiontools-findcomment-noresults": "Вынікаў няма.",
 	"discussiontools-findcomment-title": "Знайсьці камэнтар",

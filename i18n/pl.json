@@ -9,7 +9,8 @@
 			"Rail",
 			"The Polish",
 			"Woytecr",
-			"IOIOI"
+			"IOIOI",
+			"PanWor"
 		]
 	},
 	"discussiontools": "Narzędzia dyskusji",
@@ -175,7 +176,7 @@
 	"discussiontools-topicsubscription-error-not-found-body": "Nie znaleziono subskrypcji podanej w adresie URL.",
 	"discussiontools-topicsubscription-error-not-found-title": "Nie znaleziono subskrypcji",
 	"discussiontools-topicsubscription-notify-subscribed-body": "Będziesz otrzymywać powiadomienia o nowych komentarzach w tym temacie.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Dodałeś|Dodałaś|Dodano}} subskrypcję.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Zasubskrybowałeś|Zasubskrybowałaś|Zasubskrybowano}}!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Nie będziesz już otrzymywać powiadomień o nowych komentarzach w tym temacie.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Usunąłeś|Usunęłaś|Usunięto}} subskrypcję.",
 	"discussiontools-topicsubscription-pager-actions": "Działania",
