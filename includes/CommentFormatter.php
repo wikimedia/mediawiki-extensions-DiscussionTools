@@ -77,7 +77,6 @@ class CommentFormatter {
 
 		MediaWikiServices::getInstance()->getStatsFactory()
 			->getTiming( 'discussiontools_addreplylinks_seconds' )
-			->copyToStatsdAt( 'discussiontools.addReplyLinks' )
 			->observe( $duration * 1000 );
 
 		// How long this method took, in seconds
