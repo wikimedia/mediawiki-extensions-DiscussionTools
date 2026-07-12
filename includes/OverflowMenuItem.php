@@ -53,7 +53,6 @@ class OverflowMenuItem implements JsonSerializable {
 		// Add 'id' into the 'data' array, for easier access with OOUI's getData() method
 		$data['id'] = $this->id;
 		return [
-			'id' => $this->id,
 			'data' => $data,
 			'icon' => $this->icon,
 			'label' => $this->label,
