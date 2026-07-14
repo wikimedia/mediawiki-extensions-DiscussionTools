@@ -74,7 +74,7 @@
 	"discussiontools-notification-comment-thank-header": "$1 په <strong>$3</strong>\" کې  {{GENDER:$4|ستاسو}} د څرگندونې له کبله له تاسو {{GENDER:$2|مننه وکړه}}.",
 	"discussiontools-notification-comment-thank-header-bundled": "\"<strong>$2</strong>\" کې ستاسو د څرگندونې له کبله {{PLURAL:$1|يو چا|$1 وگړي|100=+۹۹ وگړو}} له {{GENDER:$3|تاسو}} مننه وکړه.",
 	"discussiontools-notification-comment-thank-header-compact": "$1 له {{GENDER:$3|تاسو}} {{GENDER:$2|مننه وکړه}}.",
-	"discussiontools-notification-removed-topic-body": "{{GENDER:|تاسو}} شايد د دې {{PLURAL:$1|شننې|شننو}} اړوند نور خبرتياوې ترلاسه نکړئ.",
+	"discussiontools-notification-removed-topic-body": "{{GENDER:|تاسو}} ښايي د دې {{PLURAL:$1|شننې|شننو}} اړوند نور خبرتياوې ترلاسه نکړئ.",
 	"discussiontools-notification-removed-topic-header": "\"<strong>$4</strong>\" شننه خونديځ شوې يا له $3 لرې شوې.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|يوه شننه|$1 شننې |100=+۹۹ شننې}} خونديځ شوې يا له $2 څخه لرې شوې.",
 	"discussiontools-notification-removed-topic-header-compact": "\"<strong>$4</strong>\" شننه خونديځ شوې يا لرې شوې ده.",
