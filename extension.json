@@ -585,7 +585,7 @@
 	"config": {
 		"DiscussionToolsBeta": {
 			"value": false,
-			"description": "Make DiscussionTools a BetaFeature."
+			"description": "Make any configurable sub-features marked as 'default' part of a beta feature. See HookUtils::CONFIGS."
 		},
 		"DiscussionTools_visualenhancements_reply_icon_languages": {
 			"value": {

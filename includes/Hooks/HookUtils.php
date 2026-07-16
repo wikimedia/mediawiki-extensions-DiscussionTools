@@ -59,6 +59,10 @@ class HookUtils {
 	/**
 	 * @var string[] List of configurable sub-features, used to generate:
 	 *  - Feature override global: $wgDiscussionTools_FEATURE
+	 *
+	 * Feature setting can be 'available', 'unavailable' or 'default'. If set
+	 * to 'default' and $wgDiscussionToolsBeta is true, the feature will be
+	 * available only to users who have enabled the beta feature.
 	 */
 	public const CONFIGS = [];
 
