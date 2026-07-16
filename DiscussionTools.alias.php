@@ -57,6 +57,7 @@ $specialPageAliases['he'] = [
 	'TopicSubscriptions' => [ 'מינויים_לנושאים' ],
 	'FindComment' => [ 'מציאת_תגובה' ],
 	'GoToComment' => [ 'מעבר_לתגובה' ],
+	'DiscussionToolsDebug' => [ 'נתונים_של_כלי_שיחה' ],
 ];
 
 /** Korean (한국어) */
