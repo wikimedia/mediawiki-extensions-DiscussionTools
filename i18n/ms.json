@@ -92,6 +92,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Ulasan terkini: $1 oleh $2",
 	"discussiontools-pagetitle-newtopic": "Memulakan topik baru di $1",
 	"discussiontools-pagetitle-reply": "Membalas di $1",
+	"discussiontools-permalink-button": "Salin pautan",
 	"discussiontools-permalink-comment-copied": "Pautan ke ulasan disalin ke papan keratan.",
 	"discussiontools-postedit-confirmation-published": "Ulasan anda telah diterbitkan.",
 	"discussiontools-postedit-confirmation-topicadded": "Topik anda telah ditambahkan.",
