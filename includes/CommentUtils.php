@@ -135,7 +135,10 @@ class CommentUtils {
 				) ||
 				// Do not insert anything inside figures when using wgParserEnableLegacyMediaDOM=false,
 				// because their CSS can't handle it (T320285).
-				strtolower( $node->tagName ) === 'figure'
+				strtolower( $node->tagName ) === 'figure' ||
+				//T408886
+				($node->hasAttribute( 'style' ) &&
+				 preg_match('/(^|;)\s*display\s*:\s*none\s*(\b|$)/i', $node->getAttribute( 'style' )))
 			) )
 		);
 	}
