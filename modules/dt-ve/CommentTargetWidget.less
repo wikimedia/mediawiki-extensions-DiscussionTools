@@ -1,3 +1,5 @@
+@import 'mediawiki.skin.variables.less';
+
 .ext-discussiontools-ui-targetWidget {
 	.oo-ui-toolGroup {
 		border: 0;
@@ -38,12 +40,10 @@
 			min-width: 15em;
 		}
 
-		.ve-ui-completionWidget-header > .oo-ui-labelElement-label {
-			color: #404244;
-
-			> span {
-				color: #72777d;
-			}
+		// In the completion widget header we insert an extra span containing
+		// the input, which should be recolored:
+		.ve-ui-completionWidget-header > .oo-ui-labelElement-label > span {
+			color: @color-subtle;
 		}
 	}
 }
