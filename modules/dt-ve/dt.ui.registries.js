@@ -8,6 +8,9 @@ function importRegistry( parent, child ) {
 	parent.on( 'register', ( n, data ) => {
 		child.register( data );
 	} );
+	parent.on( 'unregister', ( name ) => {
+		child.unregister( name );
+	} );
 }
 
 // Create new registries so that we can override the behavior for signatures
