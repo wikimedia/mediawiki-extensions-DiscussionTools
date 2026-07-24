@@ -98,6 +98,15 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 	if ( this.storage.get( 'saveable' ) ) {
 		htmlOrDoc = this.storage.get( 've-dochtml' );
 		target.recovered = true;
+
+		// Old-format (pre-cyrb64) sessions are migrated on restore rather than
+		// discarded (see ve.init.mw.Target#initAutosave). TEMPORARY (T433034).
+		let docState;
+		try {
+			docState = JSON.parse( this.storage.get( 've-docstate' ) );
+		} catch ( e ) {}
+		target.hashMigration = !docState ||
+			docState.formatVersion !== mw.libs.ve.autosaveDocStateVersion;
 	} else {
 		htmlOrDoc = data.value;
 	}
