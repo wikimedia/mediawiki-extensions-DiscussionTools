@@ -9,25 +9,17 @@
 
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
-use MediaWiki\Config\Config;
-use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\DiscussionTools\OverflowMenuItem;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserNameUtils;
 
 class DiscussionToolsHooks implements
 	DiscussionToolsAddOverflowMenuItemsHook
 {
-	private readonly Config $config;
-
 	public function __construct(
-		ConfigFactory $configFactory,
-		private readonly UserNameUtils $userNameUtils,
-		private readonly UserOptionsLookup $userOptionsLookup,
+		private readonly UserNameUtils $userNameUtils
 	) {
-		$this->config = $configFactory->makeConfig( 'discussiontools' );
 	}
 
 	/**

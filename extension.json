@@ -528,9 +528,7 @@
 		"discussiontools": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\DiscussionToolsHooks",
 			"services": [
-				"ConfigFactory",
-				"UserNameUtils",
-				"UserOptionsLookup"
+				"UserNameUtils"
 			]
 		},
 		"tags": {
