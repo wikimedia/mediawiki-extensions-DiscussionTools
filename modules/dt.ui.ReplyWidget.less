@@ -103,13 +103,11 @@
 		}
 	}
 
-	/* stylelint-disable no-descending-specificity */
 	&-floating-top &-scrollback-top,
 	&-floating-bottom &-scrollback-bottom {
 		opacity: 1;
 		transform: translate( -50%, 0 );
 	}
-	/* stylelint-enable no-descending-specificity */
 
 	.ve-ui-targetToolbar > .oo-ui-toolbar-bar {
 		background: none;
@@ -348,6 +346,7 @@
 			font-size: @font-size-small;
 		}
 
+		/* stylelint-disable no-descending-specificity */
 		&-open {
 			transform: translate( -50%, 0 );
 			opacity: 1;
