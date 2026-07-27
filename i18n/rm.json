@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Albinfo"
+		]
+	},
+	"discussiontools-defaultsummary-reply": "Resposta",
+	"discussiontools-newtopic-missing-title": "Per plaschair dar en in titel per il tema da discussiun.",
+	"discussiontools-newtopic-placeholder-title": "Object",
+	"discussiontools-replylink": "{{GENDER:|respunder}}",
+	"discussiontools-replywidget-advanced": "Avanzà",
+	"discussiontools-replywidget-cancel": "Interrumper",
+	"discussiontools-replywidget-mode-source": "Funtauna",
+	"discussiontools-replywidget-mode-visual": "Visual",
+	"discussiontools-replywidget-newtopic": "Agiuntar secziun",
+	"discussiontools-replywidget-placeholder-newtopic": "Descripziun",
+	"discussiontools-replywidget-placeholder-reply": "Resposta a {{BIDI:$1}}",
+	"discussiontools-replywidget-preview": "Prevista",
+	"discussiontools-replywidget-reply": "{{GENDER:|Respunder}}",
+	"discussiontools-replywidget-summary": "Resumaziun",
+	"discussiontools-replywidget-watchthis": "{{#FORMAL:Agiunta|Agiunta}} questa pagina a tia {{#FORMAL:tia|sia}} [[Special:Watchlist|glista d'observaziun]].",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|persuna è participada|persunas èn participadas}} a la discussiun",
+	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|Commentari|Commentaris}}",
+	"discussiontools-topicheader-latestcomment": "Davos commentari: $1",
+	"discussiontools-topicsubscription-button-subscribe": "abunar",
+	"discussiontools-topicsubscription-button-subscribe-label": "Abunar",
+	"discussiontools-topicsubscription-button-unsubscribe": "deconnectar",
+	"discussiontools-topicsubscription-button-unsubscribe-label": "Deconnectar",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{#FORMAL:Ti vegns|Vus vegnis}} avisà davart novs commentaris davart quest tema.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{#FORMAL:{{GENDER:|Ti}} has|Vus avais}} abonnà!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "{{#FORMAL:Ti na survegns|Vus na survegnis}} nagins avis pli davart novs commentaris tar quest tema.",
+	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{#FORMAL:{{GENDER:|Ti}} has|Vus avais}} annullà quest avis."
+}
