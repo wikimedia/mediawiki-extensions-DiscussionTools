@@ -123,8 +123,15 @@ ReplyWidgetVisual.prototype.setup = function ( data, suppressNotifications ) {
 			focus: [ 'emit', 'bodyFocus' ]
 		} );
 
+		// Don't announce a draft the VisualEditor takeover is about to cover. mw.hook
+		// replays past fires, so this is set synchronously if VE is already activating.
+		let veActivating = false;
+		mw.hook( 've.activationStart' ).add( () => {
+			veActivating = true;
+		} );
+
 		target.initAutosave( {
-			suppressNotifications: suppressNotifications,
+			suppressNotification: suppressNotifications || veActivating,
 			storage: this.storage
 		} );
 		this.afterSetup();
