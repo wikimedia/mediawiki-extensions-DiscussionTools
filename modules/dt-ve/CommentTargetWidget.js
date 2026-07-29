@@ -84,7 +84,6 @@ CommentTargetWidget.prototype.setDocument = function ( docOrHtml ) {
 
 	// Remove MW specific classes as the widget is already inside the content area
 	this.getSurface().getView().$element.removeClass( 'mw-body-content' );
-	this.getSurface().$placeholder.removeClass( 'mw-body-content' );
 
 	// Fix jquery.ime position (T255191)
 	this.getSurface().getView().getDocument().getDocumentNode().$element.addClass( 'ime-position-inside' );
