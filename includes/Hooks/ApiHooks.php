@@ -37,6 +37,7 @@ class ApiHooks implements
 						'ThanksLogStore',
 						'RevisionLookup',
 						'UserFactory',
+						'TempUserDetailsLookup',
 					]
 				]
 			);

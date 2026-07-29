@@ -14,6 +14,7 @@ use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\Title;
+use MediaWiki\User\TempUser\TempUserDetailsLookup;
 use MediaWiki\User\UserFactory;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -35,8 +36,9 @@ class ApiDiscussionToolsThank extends ApiThank {
 		LogStore $storage,
 		private readonly RevisionLookup $revisionLookup,
 		private readonly UserFactory $userFactory,
+		TempUserDetailsLookup $tempUserDetailsLookup,
 	) {
-		parent::__construct( $main, $action, $permissionManager, $storage );
+		parent::__construct( $main, $action, $permissionManager, $storage, $tempUserDetailsLookup );
 	}
 
 	/**
