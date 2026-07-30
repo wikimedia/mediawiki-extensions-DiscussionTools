@@ -154,7 +154,7 @@
 	"discussiontools-topicsubscription-button-unsubscribe-tooltip": "Ofbestelle fir keng Notifikatioune méi iwwer nei Kommentare ze kréien.",
 	"discussiontools-topicsubscription-error-not-found-body": "Den Abonnement, deen an der URL ugi gouf, gouf net fonnt.",
 	"discussiontools-topicsubscription-error-not-found-title": "Abonnement net fonnt",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Dir kritt Notifikatiounen iwwer nei Kommentaren zu dësem Sujet.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "{{GENDER:|Dir}} kritt Notifikatioune fir nei Kommentaren zu dësem Sujet.",
 	"discussiontools-topicsubscription-notify-subscribed-title": "Dir hutt Iech abonéiert!",
 	"discussiontools-topicsubscription-notify-unsubscribed-body": "Dir kritt keng Notifikatioune méi fir nei Kommentaren zu dësem Sujet.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Dir hutt Iech desabonéiert.",
