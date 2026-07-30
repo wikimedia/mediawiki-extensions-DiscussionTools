@@ -240,9 +240,6 @@ CommentController.prototype.setup = function ( options ) {
 		this.threadItem instanceof CommentItem &&
 		this.threadItem.getSubscribableHeading()
 	) {
-		// Use the revision ID of the content on the page, not wgCurRevisionId
-		// This means you will more likely get a refresh warning when deliberately
-		// viewing old revisions, which is helpful.
 		this.startPoll();
 		$( document ).on( 'visibilitychange', this.onVisibilityChangeHandler );
 	}
@@ -296,6 +293,9 @@ CommentController.prototype.startPoll = function ( nextDelay ) {
 
 	this.pollApiRequest = controller.getApi().get( {
 		action: 'discussiontoolscompare',
+		// Use the revision ID of the content on the page, not wgCurRevisionId
+		// This means you will more likely get a refresh warning when deliberately
+		// viewing old revisions, which is helpful.
 		fromrev: this.oldId,
 		totitle: mw.config.get( 'wgRelevantPageName' )
 	} );
