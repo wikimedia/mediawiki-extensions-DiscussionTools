@@ -102,6 +102,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "آخرین نظر: $1 توسط $2",
 	"discussiontools-pagetitle-newtopic": "آغاز مبحث تازه در $1",
 	"discussiontools-pagetitle-reply": "پاسخ دادن در $1",
+	"discussiontools-permalink-button": "رونویسی پیوند",
 	"discussiontools-permalink-comment-copied": "پیوند به نظر به بریده‌دان منتقل شد.",
 	"discussiontools-postedit-confirmation-published": "نظر شما منتشر شد.",
 	"discussiontools-postedit-confirmation-topicadded": "مبحث شما افزوده شد.",
