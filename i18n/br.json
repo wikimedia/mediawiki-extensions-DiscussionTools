@@ -5,7 +5,8 @@
 			"Fulup",
 			"Huñvreüs",
 			"Woytecr",
-			"Y-M D"
+			"Y-M D",
+			"Ar choler"
 		]
 	},
 	"discussiontools": "Benvegioù kaozeal",
@@ -153,9 +154,9 @@
 	"discussiontools-target-heading-missing": "N’eo ket bet kavet an evezhiadenn-mañ. Marteze eo bet diverket, dilec’hiet pe adanvet.",
 	"discussiontools-target-comment-found-moved": "N’eo ket bet kavet an evezhiadenn-mañ er bajenn-mañ, met emañ war ar {{PLURAL:$1|bajenn|pajennoù}} da heulː",
 	"discussiontools-target-heading-found-moved": "N’eo ket bet kavet ar gaozeadenn-mañ er bajenn-mañ, met emañ war ar {{PLURAL:$1|bajenn|pajennoù}} da heulː",
-	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|den}} er gaozeadenn",
+	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|implijer}} er gaozeadenn",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|evezhiadenn}}",
-	"discussiontools-topicheader-latestcomment": "Evezhiadenn diwezhañ: $1",
+	"discussiontools-topicheader-latestcomment": "Evezhiadenn diwezhañ : $1",
 	"discussiontools-topicsubscription-action-subscribe-button": "Koumanantiñ",
 	"discussiontools-topicsubscription-action-subscribe-prompt": "Koumanantiñ d’ar gaozeadenn-mañ?",
 	"discussiontools-topicsubscription-action-subscribe-prompt-newtopics": "Koumanantiñ da evezhiadennoù a-zivout kaozeadennoù nevez er bajenn-mañ?",
