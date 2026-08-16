@@ -46,7 +46,7 @@ class PersistRevisionThreadItems extends Maintenance {
 	public function execute() {
 		$services = $this->getServiceContainer();
 
-		$this->dbr = $dbr = $this->getDB( DB_REPLICA );
+		$this->dbr = $dbr = $this->getReplicaDB();
 		$this->itemStore = $services->getService( 'DiscussionTools.ThreadItemStore' );
 		$this->revStore = $services->getRevisionStore();
 		$this->lang = $services->getLanguageFactory()->getLanguage( 'en' );
