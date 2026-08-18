@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kluntjekniiper"
+		]
+	},
+	"apierror-discussiontools-subscription-failed-add": "Dit teemó kun näit abonnäärt worden.",
+	"apihelp-discussiontoolssubscribe-param-commentname": "Nóóm fan dat teemó, dat abonnäärt (of ofbestelt) worden sal",
+	"apihelp-discussiontoolssubscribe-param-subscribe": "true um t' abonnäären, false um of t' bestellen",
+	"apihelp-discussiontoolssubscribe-summary": "Abonnäären (of ofbestellen), um benóórichtigens oover 'n teemó t' erhollen."
+}
