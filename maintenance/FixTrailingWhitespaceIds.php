@@ -26,7 +26,7 @@ class FixTrailingWhitespaceIds extends LoggedUpdateMaintenance {
 	 * @inheritDoc
 	 */
 	public function doDBUpdates() {
-		$dbw = $this->getDB( DB_PRIMARY );
+		$dbw = $this->getPrimaryDB();
 
 		$this->output( "Fixing DiscussionTools IDs with trailing whitespace..\n" );
 		$total = 0;

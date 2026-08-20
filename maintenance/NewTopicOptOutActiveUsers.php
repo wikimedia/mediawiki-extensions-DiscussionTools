@@ -34,7 +34,7 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 			return;
 		}
 
-		$this->dbw = $this->getDB( DB_PRIMARY );
+		$this->dbw = $this->getPrimaryDB();
 		$this->userFactory = $this->getServiceContainer()->getUserFactory();
 
 		$userRows = $this->dbw->newSelectQueryBuilder()
