@@ -18,7 +18,7 @@
 	"discussiontools-replywidget-preview": "شوفه-قبلي",
 	"discussiontools-replywidget-reply": "{{GENDER:|رد}}",
 	"discussiontools-replywidget-summary": "ملخص",
-	"discussiontools-replywidget-watchthis": "زيد هاذ الصفحة ل[[Special:Watchlist|قايمت العسه نتاعك]].",
+	"discussiontools-replywidget-watchthis": "زيد هاذ الصفحه ل[[Special:Watchlist|قايمت العسه نتاعك]].",
 	"discussiontools-topicheader-authorcount": "$1 {{PLURAL:$1|عبد|عباد}} في النقاش",
 	"discussiontools-topicheader-commentcount": "$1 {{PLURAL:$1|تعليق|تعليقات}}",
 	"discussiontools-topicheader-latestcomment": "آخر تعليق: $1",
