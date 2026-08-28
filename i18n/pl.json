@@ -65,7 +65,7 @@
 	"discussiontools-limitreport-timeusage": "Czas pracy (DiscussionTools)",
 	"discussiontools-limitreport-timeusage-value": "$1 {{PLURAL:$1|sekunda|sekundy|sekund}}",
 	"discussiontools-newtopic-missing-title": "Podaj tytuł dla wątku w dyskusji.",
-	"discussiontools-newtopic-missing-title-prompt": "Nie {{GENDER:|podałeś|podałaś|podano}} tytułu dla tematu w dyskusji. Czy na pewno chcesz go dodać bez tytułu?",
+	"discussiontools-newtopic-missing-title-prompt": "Nie {{GENDER:|podałeś|podałaś|podano}} tytułu dla wątku w dyskusji. Czy na pewno chcesz go dodać bez tytułu?",
 	"discussiontools-newtopic-placeholder-title": "Tytuł",
 	"discussiontools-newtopicssubscription-button-subscribe-label": "Subskrybuj",
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Subskrybuj, aby otrzymywać powiadomienia o nowych tematach na tej stronie.",
