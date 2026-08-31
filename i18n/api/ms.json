@@ -8,5 +8,10 @@
 	"apierror-discussiontools-commentid-notfound": "Ulasan dengan ID '$1' tidak dijumpai.",
 	"apierror-discussiontools-commentname-ambiguous": "Komen berbilang dengan nama '$1' ditemui, <var>commentid</var> diperlukan.",
 	"apierror-discussiontools-commentname-notfound": "Ulasan dengan nama '$1' tidak dijumpai.",
+	"apierror-discussiontools-findcomment-pagenevertalk": "Laman tidak pernah mengandungi sebarang perbincangan.",
+	"apierror-discussiontools-formtoken-used": "Komen telah disiarkan. Muat semula laman tersebut untuk melihatnya.",
+	"apierror-discussiontools-subscription-failed-add": "Tidak dapat melanggan topik ini.",
+	"apierror-discussiontools-subscription-failed-remove": "Tidak dapat berhenti melanggan topik ini.",
+	"apihelp-discussiontoolscompare-summary": "Dapatkan maklumat tentang perubahan komen antara dua semakan laman.",
 	"apihelp-discussiontoolsedit-param-wikitext": "Wikiteks"
 }
