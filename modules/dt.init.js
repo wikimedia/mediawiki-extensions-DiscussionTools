@@ -99,6 +99,7 @@ module.exports = {
 	Parser: require( './commentparser/Parser.js' ),
 	parserData: require( './commentparser/data.json' ),
 	modifier: require( './commentparser/modifier.js' ),
+	Poller: require( './Poller.js' ),
 	ThreadItem: require( './commentparser/ThreadItem.js' ),
 	HeadingItem: require( './commentparser/HeadingItem.js' ),
 	CommentItem: require( './commentparser/CommentItem.js' ),

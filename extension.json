@@ -326,7 +326,8 @@
 			"qunit/modifier.test.js",
 			"qunit/parser.test.js",
 			"qunit/ThreadItem.test.js",
-			"qunit/dt.ui.ReplyWidget.test.js"
+			"qunit/dt.ui.ReplyWidget.test.js",
+			"qunit/Poller.test.js"
 		],
 		"testData": [
 			"cases/authors.json",

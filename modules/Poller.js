@@ -23,6 +23,7 @@ function Poller( getApiRequest, onSuccess, config ) {
 	this.started = false;
 	this.paused = false;
 	this.isInactive = false;
+	this.skippedPollInterval = null;
 
 	this.pollTimeoutId = null;
 	this.inactivityTimeoutId = null;
@@ -56,6 +57,7 @@ Poller.prototype.stop = function () {
 
 	this.clearInactivityTimer();
 	this.clearPollTimer();
+	this.skippedPollInterval = null;
 
 	if ( this.apiRequest ) {
 		this.apiRequest.abort();
@@ -67,7 +69,15 @@ Poller.prototype.stop = function () {
  * Update the paused state based on document visibility and inactivity.
  */
 Poller.prototype.updatePaused = function () {
+	const wasPaused = this.paused;
 	this.paused = document.hidden || this.isInactive;
+
+	// Do a poll that a pause skipped as soon as the user comes back. If we waited for
+	// the next scheduled poll, the user could miss new comments for a full interval,
+	// which is up to an hour after repeated failures.
+	if ( wasPaused && !this.paused && this.skippedPollInterval !== null ) {
+		this.poll( this.skippedPollInterval );
+	}
 };
 
 /**
@@ -157,9 +167,12 @@ Poller.prototype.poll = function ( nextInterval ) {
 	}
 
 	if ( this.paused ) {
+		this.skippedPollInterval = nextInterval;
 		this.schedule( nextInterval );
 		return;
 	}
+
+	this.skippedPollInterval = null;
 
 	let aborted = false;
 	this.apiRequest = this.getApiRequest();

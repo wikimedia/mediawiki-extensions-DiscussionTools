@@ -6,3 +6,4 @@ require( './parser.test.js' );
 require( './modifier.test.js' );
 require( './ThreadItem.test.js' );
 require( './dt.ui.ReplyWidget.test.js' );
+require( './Poller.test.js' );
