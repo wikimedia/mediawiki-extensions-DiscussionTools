@@ -35,6 +35,7 @@ class ApiHooks implements
 					'services' => [
 						'PermissionManager',
 						'ThanksLogStore',
+						'NotificationService',
 						'RevisionLookup',
 						'UserFactory',
 						'TempUserDetailsLookup',

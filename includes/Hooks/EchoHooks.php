@@ -107,12 +107,6 @@ class EchoHooks implements
 				'category' => 'edit-thank',
 				'group' => 'positive',
 				'section' => 'message',
-				'user-locators' => [
-					[
-						UserLocator::locateFromEventExtra( ... ),
-						[ 'thanked-user-id' ]
-					]
-				],
 				'presentation-model' => CommentThanksPresentationModel::class,
 				'bundle' => [
 					'web' => true,

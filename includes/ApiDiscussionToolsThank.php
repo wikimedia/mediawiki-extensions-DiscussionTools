@@ -7,10 +7,12 @@ use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
-use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Extension\Thanks\Api\ApiThank;
 use MediaWiki\Extension\Thanks\Storage\LogStore;
 use MediaWiki\Extension\VisualEditor\ApiParsoidTrait;
+use MediaWiki\Notification\NotificationService;
+use MediaWiki\Notification\RecipientSet;
+use MediaWiki\Notification\Types\WikiNotification;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\Title;
@@ -34,6 +36,7 @@ class ApiDiscussionToolsThank extends ApiThank {
 		string $action,
 		PermissionManager $permissionManager,
 		LogStore $storage,
+		private readonly NotificationService $notifications,
 		private readonly RevisionLookup $revisionLookup,
 		private readonly UserFactory $userFactory,
 		TempUserDetailsLookup $tempUserDetailsLookup,
@@ -118,20 +121,17 @@ class ApiDiscussionToolsThank extends ApiThank {
 			$heading = $comment->getHeading();
 		}
 
-		// Create the notification via Echo extension
-		Event::create( [
-			'type' => 'dt-thank',
-			'title' => $title,
-			'extra' => [
+		// Create the notification
+		$this->notifications->notify(
+			new WikiNotification( 'dt-thank', $title, $user, [
 				'comment-id' => $comment->getId(),
 				'comment-name' => $comment->getName(),
 				'content' => $comment->getBodyText( true ),
 				'section-title' => $heading->getLinkableTitle(),
-				'thanked-user-id' => $recipient->getId(),
 				'revid' => $revision->getId(),
-			],
-			'agent' => $user,
-		] );
+			] ),
+			new RecipientSet( $recipient )
+		);
 
 		// And mark the thank in session for a cheaper check to prevent duplicates (T48690).
 		$request->setSessionData( "discussiontools-thanked-{$comment->getName()}", true );
