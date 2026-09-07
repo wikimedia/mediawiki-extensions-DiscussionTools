@@ -45,7 +45,7 @@ class ApiDiscussionToolsEditTest extends ApiTestCase {
 		$this->assertTrue( $title->isSamePageAs( $newRevision->getPage() ) );
 		$this->assertSame( 'Test summary', $newRevision->getComment()->text );
 		$pageWikitext = $newRevision->getContent( SlotRecord::MAIN )->getWikitextForTransclusion();
-		$this->assertStringStartsWith( "== Test ==\n\nTesting", $pageWikitext );
+		$this->assertStringStartsWith( "== Test ==\nTesting", $pageWikitext );
 		$this->assertStringContainsString( $performer->getUserPage()->getFullText(), $pageWikitext );
 	}
 
