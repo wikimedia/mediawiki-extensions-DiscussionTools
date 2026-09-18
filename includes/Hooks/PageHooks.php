@@ -304,8 +304,13 @@ class PageHooks implements
 			CommentFormatter::removeVisualEnhancements( $batchModifyElements );
 		}
 
+		$hasSignatureMarkup = CommentFormatter::postprocessSignatureMarkup(
+			$text, $batchModifyElements, $output,
+			$output->getProperty( 'DiscussionTools-signatureAuthors' ) ?? []
+		);
+
 		// Optimization: Only parse and process the HTML if it seems to contain our tags (T400115)
-		if ( str_contains( $text, '<mw:dt-' ) ) {
+		if ( $hasSignatureMarkup || str_contains( $text, '<mw:dt-' ) ) {
 			$text = $batchModifyElements->apply( $text );
 		}
 
@@ -342,6 +347,16 @@ class PageHooks implements
 		// multiple sources!
 
 		CommentFormatter::postprocessTableOfContents( $pout, $output );
+
+		$signatureAuthors = $pout->getExtensionData( 'DiscussionTools-signatureAuthors' );
+		if ( $signatureAuthors !== null ) {
+			// Pass the data to the OutputPageBeforeHTML hook, which adds the markup.
+			// This depends on the order in which the hooks run.
+			$output->setProperty(
+				'DiscussionTools-signatureAuthors',
+				( $output->getProperty( 'DiscussionTools-signatureAuthors' ) ?? [] ) + $signatureAuthors
+			);
+		}
 
 		if (
 			CommentFormatter::isEmptyTalkPage( $pout ) &&

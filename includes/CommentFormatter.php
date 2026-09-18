@@ -323,6 +323,7 @@ class CommentFormatter {
 		$threadItems = $threadItemSet->getThreadItems();
 
 		$tocInfo = [];
+		$signatureAuthors = [];
 
 		$newestComment = null;
 		$newestCommentData = null;
@@ -410,12 +411,17 @@ class CommentFormatter {
 				$signatureRanges = $threadItem->getSignatureRanges();
 				$lastSignature = end( $signatureRanges );
 				$lastSignature->insertNode( $sigMarker );
+
+				$signatureAuthors[ $id ] = $threadItem->getAuthor();
 			}
 
 			$range->insertNode( $startMarker );
 		}
 
 		$pout->setExtensionData( 'DiscussionTools-tocInfo', $tocInfo );
+		// Keep the authors found by an earlier run, because Parsoid can process a part of the page again (T419830).
+		$prevAuthors = $pout->getExtensionData( 'DiscussionTools-signatureAuthors' ) ?? [];
+		$pout->setExtensionData( 'DiscussionTools-signatureAuthors', $signatureAuthors + $prevAuthors );
 
 		if ( $newestCommentData ) {
 			$pout->setExtensionData( 'DiscussionTools-newestComment', $newestCommentData );
@@ -512,6 +518,66 @@ class CommentFormatter {
 			] ),
 			static fn () => ''
 		);
+	}
+
+	/**
+	 * Add hook-provided markup to the comment signature markers.
+	 *
+	 * @param string $text Parser text output
+	 * @param BatchModifyElements $batchModifyElements
+	 * @param IContextSource $contextSource
+	 * @param string[] $authorsByItemId Comment authors keyed by thread item ID. If empty, the hook isn't called
+	 * @return bool Whether markup was added
+	 */
+	public static function postprocessSignatureMarkup(
+		string $text, BatchModifyElements $batchModifyElements, IContextSource $contextSource,
+		array $authorsByItemId
+	): bool {
+		if ( !MediaWikiServices::getInstance()->getHookContainer()
+			->isRegistered( 'DiscussionToolsAddSignatureUserInfoMarkup' )
+		) {
+			// Nothing can be added, so do no work at all
+			return false;
+		}
+
+		if ( !$authorsByItemId || !str_contains( $text, 'data-mw-comment-sig' ) ) {
+			return false;
+		}
+
+		// Collect the data for every comment first, so that the hook runs once per page view
+		// instead of once per comment, and handlers can batch their queries.
+		$threadItemsData = [];
+		foreach ( $authorsByItemId as $id => $author ) {
+			$threadItemsData[ $id ] = [ 'id' => $id, 'author' => $author ];
+		}
+
+		$markupByItemId = array_fill_keys( array_keys( $threadItemsData ), '' );
+		self::getHookRunner()->onDiscussionToolsAddSignatureUserInfoMarkup(
+			$markupByItemId,
+			$threadItemsData,
+			$contextSource
+		);
+
+		$markupByItemId = array_filter(
+			array_intersect_key( $markupByItemId, $authorsByItemId ),
+			static fn ( string $markup ): bool => $markup !== ''
+		);
+		if ( !$markupByItemId ) {
+			return false;
+		}
+
+		// This is the only matcher that does not use an 'mw:dt-' tag name. Keep it narrow:
+		// BatchModifyElements throws if two matchers accept the same node.
+		$batchModifyElements->add(
+			static fn ( SerializerNode $node ): bool => $node->name === 'span' &&
+				isset( $markupByItemId[ $node->attrs['data-mw-comment-sig'] ?? '' ] ),
+			static function ( SerializerNode $node ) use ( $markupByItemId ): string {
+				$id = $node->attrs['data-mw-comment-sig'];
+				return Html::rawElement( 'span', [ 'data-mw-comment-sig' => $id ], $markupByItemId[ $id ] );
+			}
+		);
+
+		return true;
 	}
 
 	/**

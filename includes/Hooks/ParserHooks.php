@@ -73,6 +73,8 @@ class ParserHooks implements
 				$html = $batchModifyElements->apply( $html );
 				// Suppress the empty state
 				$pout->setExtensionData( 'DiscussionTools-isEmptyTalkPage', null );
+				// Suppress the markup that extensions add to signatures
+				$pout->setExtensionData( 'DiscussionTools-signatureAuthors', [] );
 				$pout->setExtensionData( 'DiscussionTools-isPreview', true );
 			}
 

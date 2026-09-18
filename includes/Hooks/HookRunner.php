@@ -12,8 +12,9 @@ use MediaWiki\Language\MessageLocalizer;
  * @internal
  */
 class HookRunner implements
-	DiscussionToolsTermsOfUseMessagesHook,
-	DiscussionToolsAddOverflowMenuItemsHook
+	DiscussionToolsAddOverflowMenuItemsHook,
+	DiscussionToolsAddSignatureUserInfoMarkupHook,
+	DiscussionToolsTermsOfUseMessagesHook
 {
 	public function __construct( private readonly HookContainer $hookContainer ) {
 	}
@@ -25,6 +26,22 @@ class HookRunner implements
 		return $this->hookContainer->run(
 			'DiscussionToolsTermsOfUseMessages',
 			[ &$messages, $context, $config ]
+		);
+	}
+
+	/** @inheritDoc */
+	public function onDiscussionToolsAddSignatureUserInfoMarkup(
+		array &$markupByItemId,
+		array $threadItemsData,
+		IContextSource $contextSource
+	) {
+		return $this->hookContainer->run(
+			'DiscussionToolsAddSignatureUserInfoMarkup',
+			[
+				&$markupByItemId,
+				$threadItemsData,
+				$contextSource,
+			]
 		);
 	}
 

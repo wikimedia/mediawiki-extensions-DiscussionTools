@@ -85,7 +85,8 @@ class CommentUtils {
 		return $node instanceof Element && (
 			DOMUtils::hasClass( $node, 'ext-discussiontools-init-replylink-buttons' ) ||
 			$node->hasAttribute( 'data-mw-comment-start' ) ||
-			$node->hasAttribute( 'data-mw-comment-end' )
+			$node->hasAttribute( 'data-mw-comment-end' ) ||
+			$node->hasAttribute( 'data-mw-comment-sig' )
 		);
 	}
 

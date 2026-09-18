@@ -99,11 +99,22 @@ class CommentFormatterTest extends IntegrationTestCase {
 		$outputPage->method( 'getSkin' )->willReturn( $skin );
 		$outputPage->method( 'msg' )->willReturn( new RawMessage( 'a label' ) );
 
+		// Keep the expected output free of markup that another extension adds
+		$this->clearHook( 'DiscussionToolsAddSignatureUserInfoMarkup' );
+
 		MockCommentFormatter::$parser = $this->createParser( $config, $data );
 		$commentFormatter = TestingAccessWrapper::newFromClass( MockCommentFormatter::class );
 
 		$pout = new ParserOutput();
 		$preprocessed = $commentFormatter->addDiscussionToolsInternal( $dom, $pout, $titleObj );
+
+		// The authors must use the same IDs as the signature markers. The order is not important.
+		preg_match_all( '/data-mw-comment-sig="([^"]*)"/', $preprocessed, $matches );
+		$idsFromMarkers = array_map( 'htmlspecialchars_decode', $matches[1] );
+		$idsFromAuthors = array_keys( $pout->getExtensionData( 'DiscussionTools-signatureAuthors' ) );
+		sort( $idsFromMarkers );
+		sort( $idsFromAuthors );
+		static::assertSame( $idsFromMarkers, $idsFromAuthors, $name );
 		$preprocessed .= "\n<pre>\n" .
 			"newestComment: " . FormatJson::encode(
 				$pout->getExtensionData( 'DiscussionTools-newestComment' ), "\t", FormatJson::ALL_OK ) . "\n" .
@@ -140,6 +151,11 @@ class CommentFormatterTest extends IntegrationTestCase {
 
 		MockCommentFormatter::postprocessReplyTool(
 			$preprocessed, $batchModifyElements, $outputPage, $isMobile, $useButtons
+		);
+
+		MockCommentFormatter::postprocessSignatureMarkup(
+			$preprocessed, $batchModifyElements, $outputPage,
+			$pout->getExtensionData( 'DiscussionTools-signatureAuthors' )
 		);
 
 		$actual = $batchModifyElements->apply( $preprocessed );
