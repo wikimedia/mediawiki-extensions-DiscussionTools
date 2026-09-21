@@ -129,7 +129,7 @@
 	"discussiontools-replywidget-abandontopic-keep": "Kontynuuj pisanie",
 	"discussiontools-replywidget-advanced": "Zaawansowane",
 	"discussiontools-replywidget-anon-warning": "<strong>Nie jesteś zalogowany</strong>. Aby dostawać powiadomienia o odpowiedziach i być podpisanym nazwą użytkownika zamiast numeru IP, możesz [$1 zalogować się] albo [$2 utworzyć konto].",
-	"discussiontools-replywidget-autocreate-warning": "<strong>Nie jesteś zalogowany(a).</strong> Kiedy wykonasz pierwszą edycję, zostanie dla Ciebie utworzone konto tymczasowe ([[$3|dowiedz się więcej]]). [$1 Zaloguj się] lub [$2 zarejestruj], aby otrzymywać powiadomienia o odpowiedziach w tym wątku, nawet kiedy konto tymczasowe wygaśnie. Otrzymasz wtedy dostęp również do pozostałych funkcji konta.",
+	"discussiontools-replywidget-autocreate-warning": "<strong>Nie zalogowano się.</strong> Kiedy wykonasz pierwszą edycję, zostanie dla Ciebie utworzone konto tymczasowe ([[$3|dowiedz się więcej]]). [$1 Zaloguj się] lub [$2 zarejestruj], aby otrzymywać powiadomienia o odpowiedziach w tym wątku, nawet kiedy konto tymczasowe wygaśnie. Otrzymasz wtedy dostęp również do pozostałych funkcji konta.",
 	"discussiontools-replywidget-cancel": "Anuluj",
 	"discussiontools-replywidget-feedback": "Prześlij opinię na temat tego oprogramowania",
 	"discussiontools-replywidget-keyboard-shortcut-submit": "Możesz nacisnąć $1, aby przesłać komentarz",
