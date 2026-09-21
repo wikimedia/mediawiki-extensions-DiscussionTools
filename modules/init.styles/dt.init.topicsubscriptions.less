@@ -1,5 +1,6 @@
 @import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins.less';
+@import 'dt.init.variables.less';
 
 /* stylelint-disable no-descending-specificity */
 
@@ -18,12 +19,34 @@
 }
 /* stylelint-enable selector-max-id, selector-class-pattern */
 
+// Box as tall as one heading line, with the link or button centered in it, so no per-skin or
+// per-size offsets are needed (T316147). The caller sets `font-size` to the heading's, so that
+// `em` and `lh` match its line box.
+.dt-heading-line-box() {
+	display: flex;
+	align-items: center;
+	// Override OOUI's line-height on the button, and `.mw-editsection-like`'s on the link
+	line-height: inherit;
+	// Vector's heading line-height, fallback where `lh` is unsupported
+	height: 1.375em;
+	height: 1lh;
+}
+
 // Topic subscriptions (link)
 .ext-discussiontools-init-section-subscribe {
 	display: none;
 
 	.ext-discussiontools-topicsubscription-enabled:not( .ext-discussiontools-visualenhancements-enabled ) & {
-		display: block;
+		.dt-heading-line-box();
+		// The wrapper already has the heading's size (`.mw-editsection-like` would shrink it)
+		font-size: inherit;
+		.margin-inline( 0, 0 );
+
+		// Match the [edit] links, as `.mw-editsection-like` would on the wrapper
+		> a {
+			font-size: small;
+			.margin-inline( 1em, 0 );
+		}
 	}
 
 	// Directional properties must be based on content direction.
@@ -41,9 +64,6 @@
 
 	&.mw-editsection-like {
 		.user-select( none );
-		margin-top: 0.6em;
-		// Restore line height after Ie2ef68f3d0d
-		line-height: inherit;
 	}
 
 	.mw-mf & {
@@ -74,13 +94,26 @@
 		display: inline-block;
 	}
 
+	// Desktop only, the mobile action bar uses the same class
+	.ext-discussiontools-topicsubscription-enabled.ext-discussiontools-visualenhancements-enabled:not( .mw-mf ) & {
+		.dt-heading-line-box();
+		// The wrapper's size is reset in dt.init.topiccontainers.less
+		font-size: @dt-topic-heading-font-size;
+
+		> a {
+			font-size: @dt-button-font-size;
+		}
+	}
+
 	// Directional properties must be based on content direction.
+	// The margin was `1em` when the wrapper had the button's size; it's in rem now that the
+	// wrapper has the heading's size, so the gap to the heading doesn't grow with it.
 	body:not( .mw-mf ) .mw-content-ltr &,
 	body:not( .mw-mf ) .mw-content-rtl .mw-content-ltr & {
 		/* @noflip */
 		float: right;
 		/* @noflip */
-		margin: -2px 0 0 1em !important;
+		margin: 0 0 0 0.875rem !important;
 	}
 
 	body:not( .mw-mf ) .mw-content-rtl &,
@@ -88,7 +121,7 @@
 		/* @noflip */
 		float: left;
 		/* @noflip */
-		margin: -2px 1em 0 0 !important;
+		margin: 0 0.875rem 0 0 !important;
 	}
 
 	@media print {

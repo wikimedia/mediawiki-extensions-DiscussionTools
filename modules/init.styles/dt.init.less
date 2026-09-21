@@ -1,5 +1,6 @@
 @import 'mediawiki.skin.variables.less';
 @import 'mediawiki.mixins.less';
+@import 'dt.init.variables.less';
 
 span[ data-mw-comment-start ] {
 	// Give comment anchors a negative offset so we don't position
@@ -50,9 +51,7 @@ h6 {
 
 .skin-vector-2022 {
 	.ext-discussiontools-init-section-bar,
-	.ext-discussiontools-init-replybutton.oo-ui-buttonElement,
-	.ext-discussiontools-init-section-subscribe,
-	.ext-discussiontools-init-section-subscribeButton {
-		font-size: 0.875rem;
+	.ext-discussiontools-init-replybutton.oo-ui-buttonElement {
+		font-size: @dt-button-font-size;
 	}
 }
