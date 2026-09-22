@@ -97,6 +97,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Najnowszy komentarz {{GENDER:$2|napisał|napisała|napisany przez}} $2 $1",
 	"discussiontools-pagetitle-newtopic": "Nowy wątek na: $1",
 	"discussiontools-pagetitle-reply": "Nowy komentarz na: $1",
+	"discussiontools-permalink-button": "Kopiuj link",
 	"discussiontools-permalink-comment-copied": "Link do komentarza skopiowany do schowka.",
 	"discussiontools-postedit-confirmation-published": "Twój komentarz został opublikowany.",
 	"discussiontools-postedit-confirmation-topicadded": "Dodano wątek.",
