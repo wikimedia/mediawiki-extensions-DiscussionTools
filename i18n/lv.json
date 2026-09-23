@@ -63,6 +63,7 @@
 	"discussiontools-pageframe-latestcomment-notopic": "Jaunākais komentārs: $1 no $2",
 	"discussiontools-pagetitle-newtopic": "Jaunas tēmas sākšana par $1",
 	"discussiontools-pagetitle-reply": "Atbildot uz $1",
+	"discussiontools-permalink-button": "Kopēt saiti",
 	"discussiontools-permalink-comment-copied": "Saite uz komentāru ir kopēta starpliktuvē.",
 	"discussiontools-postedit-confirmation-published": "Tavs komentārs tika publicēts.",
 	"discussiontools-postedit-confirmation-topicadded": "Tavs temats tika pievienots",
