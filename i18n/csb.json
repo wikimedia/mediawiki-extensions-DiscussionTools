@@ -28,8 +28,8 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Subskribùj",
 	"discussiontools-topicsubscription-button-unsubscribe": "òdsubskribùj",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Òdsubskribùj",
-	"discussiontools-topicsubscription-notify-subscribed-body": "Të mdzesz dostawac òdkazë ò nowëch kòmentarzach w nym wątkù.",
-	"discussiontools-topicsubscription-notify-subscribed-title": "Të môsz zasubskribòwóné!",
-	"discussiontools-topicsubscription-notify-unsubscribed-body": "Të ju nie mdzesz dostawac òdkazów ò nowëch kòmentarzach w nym wątkù.",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Të mdzesz òtrzëmac òdkôzë ò nowëch kòmentarach w nym wątkù.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "Të môsz zasubskribòwóné.",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Të ju nie mdzesz òtrzëmac òdkazów ò nowëch kòmentarach w nym wątkù.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "Të môsz òdsubskribòwóné."
 }
