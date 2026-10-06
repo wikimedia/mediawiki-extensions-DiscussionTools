@@ -31,6 +31,7 @@
 	"discussiontools-replywidget-newtopic": "{{GENDER:|ထပ်}} က္ဍိုပ်လိက်",
 	"discussiontools-replywidget-placeholder-newtopic": "မဗမံက်ထ္ၜး",
 	"discussiontools-replywidget-placeholder-reply": "{{GENDER:|ကလေင်လိက်}} ကု {{BIDI:$1}}",
+	"discussiontools-replywidget-preferences": "မဒးဂၞပ်စိုတ်",
 	"discussiontools-replywidget-preview": "စမ်ရံၚ်ပဏာမ",
 	"discussiontools-replywidget-reply": "{{GENDER:|ကလေင်လိက်}}",
 	"discussiontools-replywidget-summary": "သရောပ်",
