@@ -22,6 +22,8 @@
 	"discussiontools-emptystate-title-user-anon": "ई वार्ता पन्नामे {{GENDER:|स्वागत}} हे",
 	"discussiontools-emptystate-title-user-temp": "{{PAGENAME}} {{GENDER:{{PAGENAME}}|साथे}} चर्चा आरम्भ करथिन",
 	"discussiontools-error-comment-disappeared-reload": "कृपया पन्नाके ताजा करके पुनः प्रयास करथिन ।",
+	"discussiontools-error-noswitchtove-title": "यथादृश्य मोड अक्षम",
+	"discussiontools-findcomment-label-idorname": "टिप्पणी आइडि अथवा नाम",
 	"discussiontools-findcomment-label-search": "खोजथिन",
 	"discussiontools-findcomment-noresults": "कौनो परिणाम नै ।",
 	"discussiontools-findcomment-results-notcurrent": "(वर्तमान संशोधनमे नै)",
