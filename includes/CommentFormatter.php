@@ -1022,7 +1022,7 @@ class CommentFormatter {
 					$summary = '';
 				}
 
-				// This also shows up in API action=parse&prop=sections output.
+				// This also shows up in API action=parse&prop=tocdata output.
 				$item->setExtensionData( 'DiscussionTools-html-summary', $summary );
 			}
 		}

@@ -26,14 +26,14 @@ class ApiParseDiscussionToolsTest extends ApiTestCase {
 			'useskin' => 'fallback',
 			'text' => "__FORCETOC__\n== foo ==\nbar ~~~~",
 			'pst' => 1,
-			'prop' => 'sections',
+			'prop' => 'tocdata|text',
 		];
 
 		[ $result, ] = $this->doApiRequest( $params );
 
 		$this->assertSame(
 			'<span class="ext-discussiontools-init-sidebar-meta">1 comment</span>',
-			$result['parse']['sections'][0]['extensionData']['DiscussionTools-html-summary']
+			$result['parse']['tocdata']['sections'][0]['extensionData']['DiscussionTools-html-summary']
 		);
 	}
 
