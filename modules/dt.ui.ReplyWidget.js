@@ -248,7 +248,7 @@ function ReplyWidget( commentController, commentDetails, config ) {
 	this.cancelButton.connect( this, { click: 'tryTeardown' } );
 	this.$element.on( 'keydown', this.onKeyDown.bind( this ) );
 	this.beforeUnloadHandler = this.onBeforeUnload.bind( this );
-	this.unloadHandler = this.onUnload.bind( this );
+	this.pageHideHandler = this.onPageHide.bind( this );
 	this.onWatchToggleHandler = this.onWatchToggle.bind( this );
 	this.advancedToggle.connect( this, { click: 'onAdvancedToggleClick' } );
 	this.editSummaryInput.connect( this, { change: 'onEditSummaryChange' } );
@@ -935,7 +935,7 @@ ReplyWidget.prototype.onFirstChange = function () {
  */
 ReplyWidget.prototype.bindBeforeUnloadHandler = function () {
 	$( window ).on( 'beforeunload', this.beforeUnloadHandler );
-	$( window ).on( 'unload', this.unloadHandler );
+	$( window ).on( 'pagehide', this.pageHideHandler );
 };
 
 /**
@@ -945,7 +945,7 @@ ReplyWidget.prototype.bindBeforeUnloadHandler = function () {
  */
 ReplyWidget.prototype.unbindBeforeUnloadHandler = function () {
 	$( window ).off( 'beforeunload', this.beforeUnloadHandler );
-	$( window ).off( 'unload', this.unloadHandler );
+	$( window ).off( 'pagehide', this.pageHideHandler );
 };
 
 /**
@@ -963,12 +963,14 @@ ReplyWidget.prototype.onBeforeUnload = function ( e ) {
 };
 
 /**
- * Respond to unload event.
+ * Respond to pagehide event.
+ *
+ * Use pagehide, not unload: browsers can skip unload handlers.
  *
  * @private
  * @param {jQuery.Event} e Event
  */
-ReplyWidget.prototype.onUnload = function () {
+ReplyWidget.prototype.onPageHide = function () {
 	mw.track( 'editAttemptStep', {
 		action: 'abort',
 		type: this.isEmpty() ? 'nochange' : 'abandon',
