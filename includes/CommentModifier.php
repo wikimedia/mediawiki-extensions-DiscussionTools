@@ -526,9 +526,8 @@ class CommentModifier {
 	 * @param DocumentFragment $container Container of comment DOM nodes
 	 */
 	public static function addReply( ContentThreadItem $comment, DocumentFragment $container ): void {
-		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-		$replyIndentation = $dtConfig->get( 'DiscussionToolsReplyIndentation' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$replyIndentation = $config->get( 'DiscussionToolsReplyIndentation' );
 
 		$newParsoidItem = null;
 		// Transfer comment DOM to Parsoid DOM
@@ -566,9 +565,8 @@ class CommentModifier {
 	 * @return Element $node List node
 	 */
 	public static function transferReply( DocumentFragment $container ): Element {
-		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-		$replyIndentation = $dtConfig->get( 'DiscussionToolsReplyIndentation' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$replyIndentation = $config->get( 'DiscussionToolsReplyIndentation' );
 
 		$doc = $container->ownerDocument;
 

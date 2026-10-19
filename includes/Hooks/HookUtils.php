@@ -123,7 +123,6 @@ class HookUtils {
 		$updateParserCacheFor
 	): ContentThreadItemSetStatus {
 		$services = MediaWikiServices::getInstance();
-		$mainConfig = $services->getMainConfig();
 		$parserOutputAccess = $services->getParserOutputAccess();
 
 		// Look up the page by ID in master. If we just used $revRecord->getPage(),
@@ -188,9 +187,8 @@ class HookUtils {
 	 * @return bool
 	 */
 	public static function featureConflictsWithGadget( UserIdentity $user, string $feature ) {
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'discussiontools' );
-		$gadgetName = $dtConfig->get( 'DiscussionToolsConflictingGadgetName' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$gadgetName = $config->get( 'DiscussionToolsConflictingGadgetName' );
 		if ( !$gadgetName ) {
 			return false;
 		}
@@ -224,7 +222,7 @@ class HookUtils {
 	 */
 	public static function isFeatureAvailableToUser( UserIdentity $user, ?string $feature = null ): bool {
 		$services = MediaWikiServices::getInstance();
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
+		$config = $services->getMainConfig();
 
 		$userIdentityUtils = $services->getUserIdentityUtils();
 		if (
@@ -244,9 +242,9 @@ class HookUtils {
 				// Feature is not configurable, always available
 				return true;
 			}
-			if ( $dtConfig->get( 'DiscussionTools_' . $feature ) !== 'default' ) {
+			if ( $config->get( 'DiscussionTools_' . $feature ) !== 'default' ) {
 				// Feature setting can be 'available' or 'unavailable', overriding any BetaFeatures settings
-				return $dtConfig->get( 'DiscussionTools_' . $feature ) === 'available';
+				return $config->get( 'DiscussionTools_' . $feature ) === 'available';
 			}
 		} else {
 			// Some features are always available, so if no feature is
@@ -256,7 +254,7 @@ class HookUtils {
 
 		// No feature-specific override found.
 
-		if ( $dtConfig->get( 'DiscussionToolsBeta' ) ) {
+		if ( $config->get( 'DiscussionToolsBeta' ) ) {
 			$betaenabled = $optionsLookup->getOption( $user, 'discussiontools-betaenable', 0 );
 			return (bool)$betaenabled;
 		}
@@ -333,7 +331,6 @@ class HookUtils {
 		$services = MediaWikiServices::getInstance();
 
 		if ( $feature === static::VISUALENHANCEMENTS ) {
-			$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 			// Visual enhancements are only enabled on talk namespaces (T325417) ...
 			return $title->isTalkPage() || (
 				// ... or __NEWSECTIONLINK__ (T331635) or __ARCHIVEDTALK__ (T374198) pages
@@ -422,7 +419,6 @@ class HookUtils {
 			$mobFrontContext = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
 			$isMobile = $mobFrontContext->shouldDisplayMobileView();
 		}
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		if ( $isMobile ) {
 			return $feature === null ||

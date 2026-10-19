@@ -57,11 +57,11 @@ trait CommentItemTrait {
 	 * @return string Comment timestamp in standard format
 	 */
 	public function getTimestampString(): string {
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$switchTime = new DateTimeImmutable(
-			$dtConfig->get( 'DiscussionToolsTimestampFormatSwitchTime' ),
+			$config->get( 'DiscussionToolsTimestampFormatSwitchTime' ),
 			// Oops, this probably should have been in UTC, but it's too late to change it now...
-			new DateTimeZone( MediaWikiServices::getInstance()->getMainConfig()->get( MainConfigNames::Localtimezone ) )
+			new DateTimeZone( $config->get( MainConfigNames::Localtimezone ) )
 		);
 		$timestamp = $this->getTimestamp();
 		if ( $timestamp < $switchTime ) {

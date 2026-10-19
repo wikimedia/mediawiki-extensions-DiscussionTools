@@ -329,7 +329,6 @@ class CommentFormatter {
 		$newestCommentData = null;
 
 		$url = $title->getCanonicalURL();
-		$dtConfig = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'discussiontools' );
 
 		// Iterate in reverse order, because adding the range markers for a thread item
 		// can invalidate the ranges of subsequent thread items (T298096)
@@ -1055,10 +1054,8 @@ class CommentFormatter {
 	 * @param Language $userLang Language
 	 */
 	public static function isLanguageRequiringReplyIcon( Language $userLang ): bool {
-		$services = MediaWikiServices::getInstance();
-
-		$dtConfig = $services->getConfigFactory()->makeConfig( 'discussiontools' );
-		$languages = $dtConfig->get( 'DiscussionTools_visualenhancements_reply_icon_languages' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$languages = $config->get( 'DiscussionTools_visualenhancements_reply_icon_languages' );
 
 		if ( array_is_list( $languages ) ) {
 			// Detect legacy list format

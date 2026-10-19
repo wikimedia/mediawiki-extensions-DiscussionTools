@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use MediaWiki\Config\Config;
-use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Extension\BetaFeatures\Hooks\GetBetaFeaturePreferencesHook;
 use MediaWiki\MainConfigNames;
 use MediaWiki\User\User;
@@ -14,13 +13,9 @@ use MediaWiki\User\User;
  */
 class BetaPreferenceHooks implements GetBetaFeaturePreferencesHook {
 
-	private readonly Config $config;
-
 	public function __construct(
-		private readonly Config $coreConfig,
-		ConfigFactory $configFactory
+		private readonly Config $config,
 	) {
-		$this->config = $configFactory->makeConfig( 'discussiontools' );
 	}
 
 	/**
@@ -42,7 +37,7 @@ class BetaPreferenceHooks implements GetBetaFeaturePreferencesHook {
 			if ( $allAvailable ) {
 				return;
 			}
-			$iconpath = $this->coreConfig->get( MainConfigNames::ExtensionAssetsPath ) . '/DiscussionTools/images';
+			$iconpath = $this->config->get( MainConfigNames::ExtensionAssetsPath ) . '/DiscussionTools/images';
 			$preferences['discussiontools-betaenable'] = [
 				'version' => '1.0',
 				'label-message' => 'discussiontools-preference-label',

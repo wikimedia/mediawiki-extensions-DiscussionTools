@@ -6,7 +6,6 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Config\Config;
-use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ConfirmEdit\Services\CaptchaFactory;
@@ -31,8 +30,6 @@ class ApiDiscussionToolsEdit extends ApiBase {
 	use ApiDiscussionToolsTrait;
 	use ApiParsoidTrait;
 
-	private readonly Config $config;
-
 	public function __construct(
 		ApiMain $main,
 		string $name,
@@ -42,13 +39,12 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		private readonly TempUserCreator $tempUserCreator,
 		private readonly UserFactory $userFactory,
 		private readonly SkinFactory $skinFactory,
-		ConfigFactory $configFactory,
+		private readonly Config $config,
 		private readonly RevisionLookup $revisionLookup,
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly ?CaptchaFactory $captchaFactory,
 	) {
 		parent::__construct( $main, $name );
-		$this->config = $configFactory->makeConfig( 'discussiontools' );
 		$this->setLogger( LoggerFactory::getInstance( 'DiscussionTools' ) );
 	}
 

@@ -445,8 +445,6 @@ class PageHooks implements
 	 * @return string HTML
 	 */
 	private function getEmptyStateHtml( IContextSource $context ): string {
-		$coreConfig = $context->getConfig();
-
 		$descParams = [];
 		$buttonMsg = 'discussiontools-emptystate-button';
 		$title = $context->getTitle();

@@ -10,7 +10,6 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use MediaWiki\Config\Config;
-use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Extension\DiscussionTools\BatchModifyElements;
 use MediaWiki\Extension\DiscussionTools\CommentFormatter;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
@@ -30,12 +29,9 @@ class ParserHooks implements
 	ParserAfterTidyHook
 {
 
-	private readonly Config $config;
-
 	public function __construct(
-		ConfigFactory $configFactory
+		private readonly Config $config
 	) {
-		$this->config = $configFactory->makeConfig( 'discussiontools' );
 	}
 
 	private function transformHtml(

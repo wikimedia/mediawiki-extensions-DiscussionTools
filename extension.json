@@ -373,7 +373,7 @@
 				"TempUserCreator",
 				"UserFactory",
 				"SkinFactory",
-				"ConfigFactory",
+				"MainConfig",
 				"RevisionLookup",
 				"ExtensionRegistry"
 			],
@@ -509,21 +509,20 @@
 		"parser": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\ParserHooks",
 			"services": [
-				"ConfigFactory"
+				"MainConfig"
 			]
 		},
 		"preferences": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\PreferenceHooks",
 			"services": [
-				"ConfigFactory",
+				"MainConfig",
 				"LinkRenderer"
 			]
 		},
 		"betapreferences": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\Hooks\\BetaPreferenceHooks",
 			"services": [
-				"MainConfig",
-				"ConfigFactory"
+				"MainConfig"
 			]
 		},
 		"discussiontools": {
@@ -617,9 +616,6 @@
 			"value": "convenientDiscussions",
 			"description": "Internal name of the Convenient Discussions gadget, which conflicts with the reply tool. Reply tool will be unavailable when the user has this gadget enabled."
 		}
-	},
-	"ConfigRegistry": {
-		"discussiontools": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"manifest_version": 2
 }

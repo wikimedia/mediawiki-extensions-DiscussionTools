@@ -2,8 +2,6 @@
 
 namespace MediaWiki\Extension\DiscussionTools;
 
-use MediaWiki\Config\Config;
-use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserFactory;
@@ -25,16 +23,12 @@ class SubscriptionStore {
 	public const STATE_SUBSCRIBED = 1;
 	public const STATE_AUTOSUBSCRIBED = 2;
 
-	private readonly Config $config;
-
 	public function __construct(
-		ConfigFactory $configFactory,
 		private readonly IConnectionProvider $dbProvider,
 		private readonly ReadOnlyMode $readOnlyMode,
 		private readonly UserFactory $userFactory,
 		private readonly UserIdentityUtils $userIdentityUtils,
 	) {
-		$this->config = $configFactory->makeConfig( 'discussiontools' );
 	}
 
 	/**

@@ -10,7 +10,6 @@
 namespace MediaWiki\Extension\DiscussionTools\Hooks;
 
 use MediaWiki\Config\Config;
-use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
@@ -21,13 +20,10 @@ class PreferenceHooks implements
 	GetPreferencesHook
 {
 
-	private readonly Config $config;
-
 	public function __construct(
-		ConfigFactory $configFactory,
+		private readonly Config $config,
 		private readonly LinkRenderer $linkRenderer,
 	) {
-		$this->config = $configFactory->makeConfig( 'discussiontools' );
 	}
 
 	/**
