@@ -30,8 +30,6 @@ class ApiDiscussionToolsSubscribe extends ApiBase {
 
 		$params = $this->extractRequestParams();
 		$title = Title::newFromText( $params['page'] );
-		$result = null;
-
 		if ( !$title ) {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['page'] ) ] );
 		}

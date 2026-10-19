@@ -577,8 +577,6 @@ class ImmutableRange {
 			throw new DOMException();
 		}
 
-		$referenceNode = null;
-
 		if ( $this->startNode instanceof Text ) {
 			$referenceNode = $this->startNode;
 		} else {
@@ -715,6 +713,8 @@ class ImmutableRange {
 		if ( $AFollowsB ) {
 			// Swap variables
 			[ $nodeB, $nodeA ] = [ $nodeA, $nodeB ];
+			// $offsetB is unused right now, but swap anyway to avoid future mistakes
+			// @phan-suppress-next-line PhanUnusedVariable
 			[ $offsetB, $offsetA ] = [ $offsetA, $offsetB ];
 		}
 

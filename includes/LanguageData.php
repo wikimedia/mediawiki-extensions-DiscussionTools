@@ -148,7 +148,6 @@ class LanguageData {
 		$s = '';
 		// The supported codes must match CommentParser::getTimestampRegexp()
 		for ( $p = 0; $p < $formatLength; $p++ ) {
-			$num = false;
 			$code = $format[ $p ];
 			if ( $code === 'x' && $p < $formatLength - 1 ) {
 				$code .= $format[++$p];

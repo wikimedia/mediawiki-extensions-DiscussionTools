@@ -28,7 +28,7 @@ class BatchModifyElements {
 		return HtmlHelper::modifyElements(
 			$htmlFragment,
 			function ( SerializerNode $node ) {
-				foreach ( $this->modifications as [ $shouldModify, $modify ] ) {
+				foreach ( $this->modifications as [ $shouldModify, ] ) {
 					if ( $shouldModify( $node ) ) {
 						return true;
 					}

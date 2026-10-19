@@ -100,8 +100,6 @@ class ApiDiscussionToolsFindComment extends ApiBase {
 	 * @param string $matchedBy How the thread item was matched (id, name or heading)
 	 */
 	private function getValue( DatabaseThreadItem $item, string $matchedBy ): array {
-		$title = Title::castFromPageReference( $item->getPage() );
-
 		return [
 			'id' => $item->getId(),
 			'name' => $item->getName(),

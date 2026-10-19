@@ -32,8 +32,11 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 
 $cfg['warn_about_undocumented_exceptions_thrown_by_invoked_functions'] = true;
 
-$cfg['plugins'] = array_merge( $cfg['plugins'], [
-	'PHPDocRedundantPlugin',
+$cfg['plugins'][] = 'PHPDocRedundantPlugin';
+
+// Re-enable some issues that are disabled by mediawiki-phan-config
+$cfg['suppress_issue_types'] = array_diff( $cfg['suppress_issue_types'], [
+	'PhanUnusedVariable'
 ] );
 
 /**

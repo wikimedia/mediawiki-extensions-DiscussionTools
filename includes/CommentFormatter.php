@@ -172,7 +172,6 @@ class CommentFormatter {
 			return $wrapperNode;
 		}
 
-		$uneditable = false;
 		$wrapperParent = $wrapperNode->parentNode;
 		if (
 			$wrapperParent instanceof Element &&

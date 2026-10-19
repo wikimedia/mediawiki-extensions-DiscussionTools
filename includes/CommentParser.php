@@ -1270,8 +1270,6 @@ class CommentParser {
 	private function computeId(
 		ContentThreadItem $threadItem, ContentThreadItemSet $previousItems, bool $legacy = false
 	): string {
-		$id = null;
-
 		if ( $threadItem instanceof ContentHeadingItem && $threadItem->isPlaceholderHeading() ) {
 			// The range points to the root note, using it like below results in silly values
 			$id = 'h-';
@@ -1328,8 +1326,6 @@ class CommentParser {
 	 * Multiple comments on a page can have the same name; use ID to distinguish them.
 	 */
 	private function computeName( ContentThreadItem $threadItem ): string {
-		$name = null;
-
 		if ( $threadItem instanceof ContentHeadingItem ) {
 			$name = 'h-';
 			$mainComment = $threadItem->getOldestReply();

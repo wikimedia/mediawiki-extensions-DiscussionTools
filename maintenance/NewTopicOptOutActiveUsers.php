@@ -53,7 +53,7 @@ class NewTopicOptOutActiveUsers extends Maintenance {
 		$countUpdated = 0;
 		$this->output( "Found $count active users with enough edits\n" );
 
-		foreach ( $userRows as $i => $row ) {
+		foreach ( $userRows as $row ) {
 			$skipReason = $this->skipReason( $row->user_id );
 			if ( $skipReason ) {
 				$this->output( "Won't update '$row->user_name' because: $skipReason\n" );
