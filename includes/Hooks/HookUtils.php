@@ -297,62 +297,53 @@ class HookUtils {
 	/**
 	 * Check if the tools are available for a given title
 	 *
-	 * Keep in sync with SQL conditions in persistRevisionThreadItems.php.
+	 * NOTE: Keep in sync with persistRevisionThreadItems.php.
 	 *
 	 * @param Title $title
-	 * @param string|null $feature Feature to check for (one of static::FEATURES)
-	 *  Null will check for any DT feature.
+	 * @param string|null $feature Feature to check for (one of static::FEATURES) or null for any DT feature
 	 */
 	public static function isAvailableForTitle( Title $title, ?string $feature = null ): bool {
-		// Only wikitext pages (e.g. not Flow boards, special pages)
-		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
-			return false;
-		}
-		// LiquidThreads needs a separate check, since it predates content models other than wikitext (T329423)
-		// @phan-suppress-next-line PhanUndeclaredClassMethod
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'Liquid Threads' ) && LqtDispatch::isLqtPage( $title ) ) {
-			return false;
-		}
-		if ( !$title->canExist() ) {
-			return false;
-		}
-
-		// ARCHIVEDTALK/NOTALK magic words
-		if ( static::hasPageProp( $title, 'notalk' ) ) {
-			return false;
-		}
-		if (
-			$feature === static::REPLYTOOL &&
-			static::hasPageProp( $title, 'archivedtalk' )
-		) {
-			return false;
-		}
-
 		$services = MediaWikiServices::getInstance();
+		return (
+			// Only wikitext pages (e.g. not Flow boards, special pages)
+			$title->getContentModel() === CONTENT_MODEL_WIKITEXT &&
+			// LiquidThreads needs a separate check, since it predates content models (T329423)
+			// @phan-suppress-next-line PhanUndeclaredClassMethod
+			( !ExtensionRegistry::getInstance()->isLoaded( 'Liquid Threads' ) || !LqtDispatch::isLqtPage( $title ) ) &&
 
-		if ( $feature === static::VISUALENHANCEMENTS ) {
-			// Visual enhancements are only enabled on talk namespaces (T325417) ...
-			return $title->isTalkPage() || (
+			$title->canExist() &&
+
+			// NOTALK magic word disables DT
+			!static::hasPageProp( $title, 'notalk' ) &&
+
+			// ARCHIVEDTALK magic word disables reply tool
+			!( $feature === static::REPLYTOOL && static::hasPageProp( $title, 'archivedtalk' ) ) &&
+
+			!( $feature === static::VISUALENHANCEMENTS && (
+				// Visual enhancements are only enabled on talk namespaces (T325417) ...
+				$title->isTalkPage() ||
 				// ... or __NEWSECTIONLINK__ (T331635) or __ARCHIVEDTALK__ (T374198) pages
 				(
-					static::hasPageProp( $title, 'newsectionlink' ) ||
-					static::hasPageProp( $title, 'archivedtalk' )
-				) &&
-				// excluding the main namespace, unless it has been configured for signatures
-				(
-					!$title->inNamespace( NS_MAIN ) ||
-					$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() )
+					(
+						static::hasPageProp( $title, 'newsectionlink' ) ||
+						static::hasPageProp( $title, 'archivedtalk' )
+					) &&
+					(
+						// ... except in the main namespace, unless it has been configured for signatures
+						!$title->inNamespace( NS_MAIN ) ||
+						$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() )
+					)
 				)
-			);
-		}
+			) ) &&
 
-		// Check that the page supports discussions.
-		return (
-			// Talk namespaces, and other namespaces where the signature button is shown in wikitext
-			// editor using $wgExtraSignatureNamespaces (T249036)
-			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
-			// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
-			static::hasPageProp( $title, 'newsectionlink' )
+			// The page supports discussions
+			(
+				// Talk namespaces, and other namespaces where the signature button is shown in wikitext
+				// editor using $wgExtraSignatureNamespaces (T249036)
+				$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
+				// Treat page with __NEWSECTIONLINK__ as discussion page (T245890)
+				static::hasPageProp( $title, 'newsectionlink' )
+			)
 		);
 	}
 
@@ -360,8 +351,7 @@ class HookUtils {
 	 * Check if the tool is available on a given page
 	 *
 	 * @param OutputPage $output
-	 * @param string|null $feature Feature to check for (one of static::FEATURES)
-	 *  Null will check for any DT feature.
+	 * @param string|null $feature Feature to check for (one of static::FEATURES) or null for any DT feature
 	 */
 	public static function isFeatureEnabledForOutput( OutputPage $output, ?string $feature = null ): bool {
 		// Only show on normal page views (not history etc.), and in edit mode for previews
