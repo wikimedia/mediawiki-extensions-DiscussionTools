@@ -21,10 +21,9 @@ use Wikimedia\Parsoid\Ext\DOMUtils;
 /**
  * Random methods we want to share between API modules.
  *
- * @property VisualEditorParsoidClientFactory $parsoidClientFactory
- * @property CommentParser $commentParser
- * @property TempUserCreator $tempUserCreator
- * @property UserFactory $userFactory
+ * @property-read VisualEditorParsoidClientFactory $parsoidClientFactory
+ * @property-read TempUserCreator $tempUserCreator
+ * @property-read UserFactory $userFactory
  */
 trait ApiDiscussionToolsTrait {
 

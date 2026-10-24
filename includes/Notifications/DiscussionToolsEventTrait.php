@@ -19,9 +19,9 @@ use MediaWiki\WikiMap\WikiMap;
 /**
  * This trait must be only used on EchoEventPresentationModel subclasses.
  *
- * @property Event $event
- * @property Language $language
- * @property EchoPresentationModelSection $section
+ * @property-read Event $event
+ * @property-read Language $language
+ * @property-read EchoPresentationModelSection $section
  */
 trait DiscussionToolsEventTrait {
 

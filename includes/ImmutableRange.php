@@ -22,11 +22,11 @@ use Wikimedia\Parsoid\DOM\Text;
  *
  * setStart and setEnd are still available but return a cloned range.
  *
- * @property bool $collapsed
- * @property Node $commonAncestorContainer
- * @property Node $endContainer
+ * @property-read bool $collapsed
+ * @property-read Node $commonAncestorContainer
+ * @property-read Node $endContainer
  * @property int $endOffset
- * @property Node $startContainer
+ * @property-read Node $startContainer
  * @property int $startOffset
  */
 class ImmutableRange {
