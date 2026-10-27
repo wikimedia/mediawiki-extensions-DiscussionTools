@@ -74,7 +74,7 @@
 	"discussiontools-notification-comment-thank-header-bundled": "{{PLURAL:$1|Jedna osoba zahvalila se|$1 osobe zahvalile su se|$1 osoba zahvalilo se|100=99+ osoba zahvalilo se}} za {{GENDER:$3|Vaš}} komentar u temi \"<strong>$2</strong>\".",
 	"discussiontools-notification-comment-thank-header-compact": "$1 {{GENDER:$3|Vam}} se {{GENDER:$2|zahvaljuje}}.",
 	"discussiontools-notification-removed-topic-body": "{{GENDER:|}}Možda više nećete primati obavijesti o {{PLURAL:$1|1=ovoj temi|ovim temama}}.",
-	"discussiontools-notification-removed-topic-header": "Tema \"<strong>$4</strong>\" je uklonjena ili arhivirana iz $3.",
+	"discussiontools-notification-removed-topic-header": "Tema \"<strong>$4</strong>\" je uklonjena ili arhivirana sa stranice $3.",
 	"discussiontools-notification-removed-topic-header-bundled": "{{PLURAL:$1|Jedna je tema arhivirana ili uklonjena|$1 su teme arhivirane ili uklonjene|$1 je tema arhivirano ili uklonjeno|100=99+ je tema arhivirano ili uklonjeno}} sa stranice $2.",
 	"discussiontools-notification-removed-topic-header-compact": "Tema \"<strong>$4</strong>\" je uklonjena ili arhivirana.",
 	"discussiontools-notification-removed-topic-view": "Vidi stranicu",
