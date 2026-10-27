@@ -317,43 +317,32 @@ class HookUtils {
 			return false;
 		}
 
-		// ARCHIVEDTALK/NOTALK magic words
-		if ( static::hasPageProp( $title, 'notalk' ) ) {
-			return false;
-		}
-		if (
-			$feature === static::REPLYTOOL &&
-			static::hasPageProp( $title, 'archivedtalk' )
-		) {
-			return false;
-		}
+		$noTalk = static::hasPageProp( $title, 'notalk' );
+		$archivedTalk = static::hasPageProp( $title, 'archivedtalk' );
+		$newSectionLink = static::hasPageProp( $title, 'newsectionlink' );
+		// Talk namespaces, and other namespaces where the signature button is shown in wikitext
+		// editor using $wgExtraSignatureNamespaces (T249036)
+		$wantSignatures = MediaWikiServices::getInstance()->getNamespaceInfo()
+			->wantSignatures( $title->getNamespace() );
 
-		$services = MediaWikiServices::getInstance();
+		// ARCHIVEDTALK/NOTALK magic words
+		if ( $noTalk || ( $feature === static::REPLYTOOL && $archivedTalk ) ) {
+			return false;
+		}
 
 		if ( $feature === static::VISUALENHANCEMENTS ) {
 			// Visual enhancements are only enabled on talk namespaces (T325417) ...
 			return $title->isTalkPage() || (
 				// ... or __NEWSECTIONLINK__ (T331635) or __ARCHIVEDTALK__ (T374198) pages
-				(
-					static::hasPageProp( $title, 'newsectionlink' ) ||
-					static::hasPageProp( $title, 'archivedtalk' )
-				) &&
+				( $newSectionLink || $archivedTalk ) &&
 				// excluding the main namespace, unless it has been configured for signatures
-				(
-					!$title->inNamespace( NS_MAIN ) ||
-					$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() )
-				)
+				( !$title->inNamespace( NS_MAIN ) || $wantSignatures )
 			);
 		}
 
 		// Check that the page supports discussions.
-		return (
-			// Talk namespaces, and other namespaces where the signature button is shown in wikitext
-			// editor using $wgExtraSignatureNamespaces (T249036)
-			$services->getNamespaceInfo()->wantSignatures( $title->getNamespace() ) ||
-			// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
-			static::hasPageProp( $title, 'newsectionlink' )
-		);
+		// Treat pages with __NEWSECTIONLINK__ as talk pages (T245890)
+		return $wantSignatures || $newSectionLink;
 	}
 
 	/**
