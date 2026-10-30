@@ -6,7 +6,6 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
-use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
@@ -17,8 +16,6 @@ class ApiDiscussionToolsCompare extends ApiBase {
 	public function __construct(
 		ApiMain $main,
 		string $name,
-		private readonly VisualEditorParsoidClientFactory $parsoidClientFactory,
-		private readonly CommentParser $commentParser,
 		private readonly RevisionLookup $revisionLookup,
 	) {
 		parent::__construct( $main, $name );

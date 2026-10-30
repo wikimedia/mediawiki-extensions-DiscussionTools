@@ -10,7 +10,6 @@ use MediaWiki\Extension\DiscussionTools\ThreadItem\CommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentCommentItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentHeadingItem;
 use MediaWiki\Extension\DiscussionTools\ThreadItem\ContentThreadItem;
-use MediaWiki\Extension\VisualEditor\VisualEditorParsoidClientFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
@@ -24,8 +23,6 @@ class ApiDiscussionToolsPageInfo extends ApiBase {
 	public function __construct(
 		ApiMain $main,
 		string $name,
-		private readonly VisualEditorParsoidClientFactory $parsoidClientFactory,
-		private readonly CommentParser $commentParser,
 		private readonly RevisionLookup $revisionLookup,
 	) {
 		parent::__construct( $main, $name );

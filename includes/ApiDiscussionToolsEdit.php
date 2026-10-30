@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\DiscussionTools;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiUsageException;
-use MediaWiki\Config\Config;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ConfirmEdit\Services\CaptchaFactory;
@@ -35,11 +34,9 @@ class ApiDiscussionToolsEdit extends ApiBase {
 		string $name,
 		private readonly VisualEditorParsoidClientFactory $parsoidClientFactory,
 		private readonly CommentParser $commentParser,
-		private readonly SubscriptionStore $subscriptionStore,
 		private readonly TempUserCreator $tempUserCreator,
 		private readonly UserFactory $userFactory,
 		private readonly SkinFactory $skinFactory,
-		private readonly Config $config,
 		private readonly RevisionLookup $revisionLookup,
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly ?CaptchaFactory $captchaFactory,

@@ -359,8 +359,6 @@
 		"discussiontoolscompare": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsCompare",
 			"services": [
-				"VisualEditor.ParsoidClientFactory",
-				"DiscussionTools.CommentParser",
 				"RevisionLookup"
 			]
 		},
@@ -369,11 +367,9 @@
 			"services": [
 				"VisualEditor.ParsoidClientFactory",
 				"DiscussionTools.CommentParser",
-				"DiscussionTools.SubscriptionStore",
 				"TempUserCreator",
 				"UserFactory",
 				"SkinFactory",
-				"MainConfig",
 				"RevisionLookup",
 				"ExtensionRegistry"
 			],
@@ -397,8 +393,6 @@
 		"discussiontoolspageinfo": {
 			"class": "MediaWiki\\Extension\\DiscussionTools\\ApiDiscussionToolsPageInfo",
 			"services": [
-				"VisualEditor.ParsoidClientFactory",
-				"DiscussionTools.CommentParser",
 				"RevisionLookup"
 			]
 		},
