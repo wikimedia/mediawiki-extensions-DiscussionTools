@@ -440,7 +440,15 @@ class PageHooks implements
 
 		$output = $context->getOutput();
 		$output->enableOOUI();
-		$output->disableClientCache();
+
+		$title = $context->getTitle();
+		if (
+			$title->inNamespace( NS_USER_TALK ) &&
+			!$title->isSubpage() &&
+			$this->userNameUtils->isIP( $title->getText() )
+		) {
+			$output->disableClientCache();
+		}
 
 		$html = $this->getEmptyStateHtml( $context );
 
