@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"NR Deblocked",
-			"Некто участник"
+			"Некто участник",
+			"Oujon"
 		]
 	},
+	"discussiontools-defaultsummary-reply": "отъвѣтъ",
 	"discussiontools-emptystate-desc": "​вы̀​ мо́жете использовать ​этꙋ​ страни́цꙋ ѻбсꙋжденїѧ что́бы ​начать​ ѻбсꙋжденїе съ дрꙋги́ми ​ѻ҆​ то́мъ ка́къ ᲂулꙋчшить [[:{{SUBJECTPAGENAME}}]]. [[{{MediaWiki:discussiontools-emptystate-link-talkpages}}|Learn more about how these pages are used]].",
 	"discussiontools-emptystate-title-user": "​Начать​ ѻбсꙋжденїе съ {{PAGENAME}}",
 	"discussiontools-preference-newtopictool-help": "Это пока́жетъ ва́мъ встроеннꙋю ​формꙋ​ ​длѧ​ добавленїѧ но́выхъ ​тє́мъ​.",
