@@ -10,41 +10,17 @@
 namespace MediaWiki\Extension\DiscussionTools\Notifications;
 
 use MediaWiki\Extension\Notifications\DiscussionParser;
+use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
 use MediaWiki\Extension\Notifications\Formatters\EchoPresentationModelSection;
-use MediaWiki\Extension\Notifications\Model\Event;
-use MediaWiki\Language\Language;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\WikiMap\WikiMap;
 
 /**
- * This trait must be only used on EchoEventPresentationModel subclasses.
+ * @extends EchoEventPresentationModel
  *
- * @property-read Event $event
- * @property-read Language $language
  * @property-read EchoPresentationModelSection $section
  */
 trait DiscussionToolsEventTrait {
-
-	/**
-	 * @param int $type RevisionRecord::DELETED_* constant
-	 * @return bool
-	 */
-	abstract protected function userCan( $type );
-
-	/**
-	 * @return bool
-	 */
-	abstract protected function isBundled();
-
-	/**
-	 * @return Event[]
-	 */
-	abstract protected function getBundledEvents();
-
-	/**
-	 * @return int[]|false
-	 */
-	abstract protected function getBundledIds();
 
 	/**
 	 * Get a link to the individual comment, if available.
