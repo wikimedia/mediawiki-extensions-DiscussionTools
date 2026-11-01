@@ -96,7 +96,6 @@
 			"dependencies": [
 				"ext.discussionTools.init.styles",
 				"ext.discussionTools.minervaicons",
-				"web2017-polyfills",
 				"moment",
 				"rangefix",
 				"oojs-ui-windows",
