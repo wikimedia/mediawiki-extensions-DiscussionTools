@@ -161,7 +161,7 @@
 		}
 
 		/* Legacy parser */
-		> .indicator, /* stylelint-disable-line selector-class-pattern */
+		> .indicator, /* stylelint-disable-line wikimedia/selector-class-prefix */
 		/* Parsoid */
 		.mf-collapsible-icon {
 			margin-top: 4px;
@@ -209,7 +209,7 @@
 			// Fallbacks are graceful: DT actions (e.g. "subscribe") will display for collapsed
 			// sections, and a margin will be lost between an open section's metadata and first
 			// comment.
-			/* stylelint-disable selector-class-pattern, plugin/no-unsupported-browser-features */
+			/* stylelint-disable wikimedia/selector-class-prefix, plugin/no-unsupported-browser-features */
 			/* Legacy parser */
 			&.section-heading:not( .open-block ),
 			/* Parsoid - backwards compatibility */
@@ -230,7 +230,7 @@
 			&:has( > button.mf-collapsible-toggle[ aria-expanded='true' ] ) {
 				margin-bottom: 12px !important;
 			}
-			/* stylelint-enable selector-class-pattern, plugin/no-unsupported-browser-features */
+			/* stylelint-enable wikimedia/selector-class-prefix, plugin/no-unsupported-browser-features */
 		}
 
 		&-authorCountLabel,

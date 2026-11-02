@@ -4,7 +4,7 @@
 		"stylelint-config-wikimedia/mediawiki"
 	],
 	"rules": {
-		"selector-class-pattern": "^(ext|ve|mw|oo-ui|client|skin|mf|vector)-",
+		"wikimedia/selector-class-prefix": [ true, { "additionalPrefixes": [ "ve", "mf", "vector" ] } ],
 		"declaration-no-important": null,
 		"unit-disallowed-list": null
 	}

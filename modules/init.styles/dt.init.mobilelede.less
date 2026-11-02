@@ -3,7 +3,7 @@
 
 // DiscussionTools automatically enables most features on mobile.
 // When we detect that it's enabled, hide the lede section.
-// stylelint-disable-next-line selector-class-pattern
+// stylelint-disable-next-line wikimedia/selector-class-prefix
 .mw-mf.ns-talk.ext-discussiontools-replytool-enabled {
 	&.ext-discussiontools-init-lede-hidden {
 		// .mw-body-content selector prevents this applying to content in the preview (T318758)
@@ -27,7 +27,7 @@
 
 	// Always hide the table of content. This is usually hidden by the mf-section-0 rules,
 	// but can sometimes appear elsewhere (e.g in the lede section overlay)
-	// stylelint-disable-next-line selector-class-pattern
+	// stylelint-disable-next-line wikimedia/selector-class-prefix
 	.toc {
 		display: none;
 	}
@@ -59,7 +59,7 @@
 }
 
 // Avoid double margin/padding caused by combining .oo-ui-panelLayout-padded and .content
-// stylelint-disable-next-line selector-class-pattern
+// stylelint-disable-next-line wikimedia/selector-class-prefix
 .ext-discussiontools-ui-ledeSectionDialog-content.oo-ui-panelLayout-padded.content {
 	margin: 0 auto;
 }

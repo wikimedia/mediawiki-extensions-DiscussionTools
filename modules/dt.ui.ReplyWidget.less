@@ -55,6 +55,7 @@
 	}
 }
 
+/* stylelint-disable-next-line no-duplicate-selectors */
 .ext-discussiontools-ui-replyWidget {
 	&-bodyWrapper > .oo-ui-textInputWidget {
 		max-width: none;
@@ -313,12 +314,12 @@
 		}
 
 		// Hide collapse icons on mobile
-		.section-heading .indicator { /* stylelint-disable-line selector-class-pattern */
+		.section-heading .indicator { /* stylelint-disable-line wikimedia/selector-class-prefix */
 			display: none;
 		}
 
 		// ... and expand sections
-		.collapsible-block[ hidden ] { /* stylelint-disable-line selector-class-pattern */
+		.collapsible-block[ hidden ] { /* stylelint-disable-line wikimedia/selector-class-prefix */
 			// If hidden=until-found is supported, this will set content-visibility: hidden;
 			/* stylelint-disable-next-line plugin/no-unsupported-browser-features */
 			content-visibility: visible;

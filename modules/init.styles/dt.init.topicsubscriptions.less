@@ -5,7 +5,7 @@
 /* stylelint-disable no-descending-specificity */
 
 // Disable all subscription buttons until JS ready
-/* stylelint-disable selector-max-id, selector-class-pattern */
+/* stylelint-disable selector-max-id, wikimedia/selector-class-prefix */
 #ca-dt-page-subscribe,
 .menu__item--page-actions-overflow-t-page-subscribe,
 .ext-discussiontools-init-section-subscribe,
@@ -17,7 +17,7 @@
 		pointer-events: none;
 	}
 }
-/* stylelint-enable selector-max-id, selector-class-pattern */
+/* stylelint-enable selector-max-id, wikimedia/selector-class-prefix */
 
 // Box as tall as one heading line, with the link or button centered in it, so no per-skin or
 // per-size offsets are needed (T316147). The caller sets `font-size` to the heading's, so that
@@ -184,6 +184,7 @@
 	&-image {
 		background: url( images/autotopicsubpopup-image.svg ) center center no-repeat;
 		// Dark mode images (T369834)
+		/* stylelint-disable-next-line wikimedia/no-darkmode-override */
 		.darkmode-override( {
 			background-image: url( images/autotopicsubpopup-image-dark.svg );
 		} );
