@@ -83,14 +83,24 @@ class ApiDiscussionToolsThank extends ApiThank {
 			$this->dieWithError( [ 'apierror-discussiontools-commentid-notfound', $commentId ] );
 		}
 
-		if ( $user->getRequest()->getSessionData( "discussiontools-thanked-{$comment->getId()}" ) ) {
+		// Thanks are stored by comment name, which stays the same when the heading is renamed
+		// or the comment is moved to another section, unlike the comment ID. Older thanks were
+		// stored by comment ID, so check both to prevent thanking the same comment twice.
+		$request = $user->getRequest();
+		if (
+			$request->getSessionData( "discussiontools-thanked-{$comment->getName()}" ) ||
+			$request->getSessionData( "discussiontools-thanked-{$comment->getId()}" )
+		) {
 			$this->markResultSuccess( $comment->getAuthor() );
 			return;
 		}
 
-		$uniqueId = "discussiontools-{$comment->getId()}";
+		$uniqueId = "discussiontools-{$comment->getName()}";
 		// Do one last check to make sure we haven't sent Thanks before
-		if ( $this->haveAlreadyThanked( $user, $uniqueId ) ) {
+		if (
+			$this->haveAlreadyThanked( $user, $uniqueId ) ||
+			$this->haveAlreadyThanked( $user, "discussiontools-{$comment->getId()}" )
+		) {
 			// Pretend the thanks were sent
 			$this->markResultSuccess( $comment->getAuthor() );
 			return;
@@ -124,7 +134,7 @@ class ApiDiscussionToolsThank extends ApiThank {
 		] );
 
 		// And mark the thank in session for a cheaper check to prevent duplicates (T48690).
-		$user->getRequest()->setSessionData( "discussiontools-thanked-{$comment->getId()}", true );
+		$request->setSessionData( "discussiontools-thanked-{$comment->getName()}", true );
 		// Set success message.
 		$this->markResultSuccess( $recipient->getName() );
 		$this->logThanks( $user, $recipient, $uniqueId );
