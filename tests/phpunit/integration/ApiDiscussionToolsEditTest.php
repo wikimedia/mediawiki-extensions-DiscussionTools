@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\DiscussionTools\Tests;
 
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Content\WikitextContent;
 use MediaWiki\Extension\ConfirmEdit\SimpleCaptcha\SimpleCaptcha;
 use MediaWiki\Extension\DiscussionTools\Hooks\HookUtils;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -45,7 +46,7 @@ class ApiDiscussionToolsEditTest extends ApiTestCase {
 		$this->assertTrue( $title->isSamePageAs( $newRevision->getPage() ) );
 		$this->assertSame( 'Test summary', $newRevision->getComment()->text );
 		$pageWikitext = $newRevision->getContent( SlotRecord::MAIN )->getWikitextForTransclusion();
-		$this->assertStringStartsWith( "== Test ==\nTesting", $pageWikitext );
+		$this->assertStringStartsWith( WikitextContent::getSectionHeader( 'Test' ) . 'Testing', $pageWikitext );
 		$this->assertStringContainsString( $performer->getUserPage()->getFullText(), $pageWikitext );
 	}
 
