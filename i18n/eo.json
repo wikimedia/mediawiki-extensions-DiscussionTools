@@ -6,6 +6,7 @@
 			"Javiero",
 			"NMaia",
 			"Robin van der Vliet",
+			"Tbodt",
 			"Tymewalk",
 			"Wierzbowski",
 			"Ziko"
@@ -14,7 +15,7 @@
 	"discussiontools-autotopicsubpopup-body": "{{GENDER:|Vi}} ricevos sciigon kiam iu afiŝas novan komenton en ĉi tiu diskuto. Vi povas ĝustigi viajn agordojn en preferojn pri sciigoj.",
 	"discussiontools-autotopicsubpopup-dismiss": "Bone, komprenite",
 	"discussiontools-autotopicsubpopup-preferences": "Redakti preferojn",
-	"discussiontools-autotopicsubpopup-title": "{{GENDER:|Vi}} malabonis.",
+	"discussiontools-autotopicsubpopup-title": "{{GENDER:|Vi}} abonis.",
 	"discussiontools-defaultsummary-reply": "Respondo",
 	"discussiontoolsdebug-title": "Strukturo de datumoj pri diskutiloj",
 	"discussiontoolsdebug-pagetitle": "Titolo de paĝo",
