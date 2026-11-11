@@ -298,7 +298,7 @@ function init( $container, state ) {
 	pageDataCache = {};
 
 	// Lazy-load postEdit module, may be required later (on desktop)
-	mw.loader.using( 'mediawiki.action.view.postEdit' );
+	const postEditLoaded = mw.loader.using( 'mediawiki.action.view.postEdit' );
 
 	if ( linksController ) {
 		linksController.teardown();
@@ -524,17 +524,22 @@ function init( $container, state ) {
 		if ( state.repliedTo ) {
 			highlighter.highlightPublishedComment( pageThreads, state.repliedTo );
 
-			if ( state.repliedTo === commentUtils.NEW_TOPIC_COMMENT_ID ) {
-				mw.hook( 'postEdit' ).fire( {
+			postEditLoaded.then( () => {
+				const { fireHook, SAVED } = require( 'mediawiki.action.view.postEdit' );
+
+				const context = {
 					tempUserCreated: state.tempUserCreated,
-					message: mw.msg( 'discussiontools-postedit-confirmation-topicadded', mw.user )
-				} );
-			} else {
-				mw.hook( 'postEdit' ).fire( {
-					tempUserCreated: state.tempUserCreated,
-					message: mw.msg( 'discussiontools-postedit-confirmation-published', mw.user )
-				} );
-			}
+					editorName: 'discussiontools'
+				};
+				if ( state.newRevId ) {
+					context.revisionId = state.newRevId;
+					context.curRevisionId = state.newRevId;
+				}
+				const msgKey = state.repliedTo === commentUtils.NEW_TOPIC_COMMENT_ID ?
+					'discussiontools-postedit-confirmation-topicadded' :
+					'discussiontools-postedit-confirmation-published';
+				fireHook( SAVED, Object.assign( { message: mw.msg( msgKey, mw.user ) }, context ) );
+			} );
 		} else if ( state.newCommentIds ) {
 			highlighter.highlightNewComments( pageThreads, true, state.newCommentIds );
 		}
@@ -853,6 +858,7 @@ function update( data, threadItem, pageName, replyWidget ) {
 	// Highlight the new reply after re-initializing
 	mw.dt.initState.repliedTo = threadItem.id;
 	mw.dt.initState.tempUserCreated = data.tempusercreated;
+	mw.dt.initState.newRevId = data.newrevid;
 
 	// Update page state
 	const pageUpdated = $.Deferred();
