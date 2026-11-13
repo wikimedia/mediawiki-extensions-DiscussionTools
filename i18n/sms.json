@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Miilehti",
 			"Woytecr",
 			"Yupik"
 		]
@@ -15,6 +16,7 @@
 	"discussiontools-ledesection-button": "Lââʹssteâđ tän seeidast",
 	"discussiontools-ledesection-title": "Lââʹssteâđ tän saǥstõõllâmsseeidast",
 	"discussiontools-limitreport-timeusage-value": "{{PLURAL:$1|$1 sekunttâd|1=sekuntt|2=2 sekuunt|3=3 sekuunt|4=4 sekuunt|5=5 sekuunt|6=6 sekuunt}}",
+	"discussiontools-newtopic-missing-title": "Uuʹd pâʹjjǩeeʹrjtõõzz saǥstõõllâmteemsad.",
 	"discussiontools-newtopic-placeholder-title": "Äʹšš",
 	"discussiontools-notification-added-topic-view": "Čuäʹjet ääʹšš",
 	"discussiontools-notification-removed-topic-view": "Čuäʹjet seeid",
@@ -49,6 +51,9 @@
 	"discussiontools-topicsubscription-button-subscribe-label": "Tiʹlle",
 	"discussiontools-topicsubscription-button-unsubscribe": "čåuddõõđ tiʹllʼjõõzz",
 	"discussiontools-topicsubscription-button-unsubscribe-label": "Čåuddõõđ tiʹllʼjõõzz",
+	"discussiontools-topicsubscription-notify-subscribed-body": "Vuäǯǯak iʹlmmtõõzzid tän teema kuõđđum ođđ kommeeʹntin.",
+	"discussiontools-topicsubscription-notify-subscribed-title": "{{GENDER:|Iʹlmmtõõzzi}} tiʹllʼjummuš oʹnnsti!",
+	"discussiontools-topicsubscription-notify-unsubscribed-body": "Tõn jiõk teänab vuäǯǯ iʹlmmtõõzzid tän teeʹm ođđ kommeeʹntin.",
 	"discussiontools-topicsubscription-notify-unsubscribed-title": "{{GENDER:|Leäk}} tiʹllʼjõõzz čåuddõõttâm.",
 	"discussiontools-topicsubscription-pager-newtopics-label": "Ođđ ääʹšš",
 	"discussiontools-topicsubscription-pager-notified-never": "ij ni kuäʹss",
