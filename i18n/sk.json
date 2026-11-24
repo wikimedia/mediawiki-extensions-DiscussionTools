@@ -47,6 +47,7 @@
 	"discussiontools-newtopicssubscription-button-subscribe-tooltip": "Prihlásiť sa na odber upozornení, keď sa na tejto stránke objavia nové témy.",
 	"discussiontools-newtopicssubscription-button-unsubscribe-label": "Neodoberať",
 	"discussiontools-newtopicssubscription-button-unsubscribe-tooltip": "Odhlásiť sa z odberu upozornení o založení nových tém na tejto stránke.",
+	"discussiontools-newtopicssubscription-notify-subscribed-body": "Akonáhle na tejto stránke pribudnú nové témy, dostanete upozornenie.",
 	"discussiontools-newtopicssubscription-notify-subscribed-title": "{{GENDER:|Začali ste}} sledovať!",
 	"discussiontools-notification-removed-topic-view": "Zobraziť stránku",
 	"discussiontools-notification-removed-topic-disable": "Prestať dostávať takéto oznámenia",

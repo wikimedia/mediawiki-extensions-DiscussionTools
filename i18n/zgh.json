@@ -11,6 +11,8 @@
 	"discussiontools-newtopic-missing-title": "ⵎⴽ ⴰⵙ ⵜⵓⴼⵉⴷ ⴼⴽ ⴰⵣⵡⵍ ⵉ ⵉⵎⵔⵙⵉ ⵏ ⵓⵎⵙⴰⵡⴰⵍ {{GENDER:|ⵏⵏⴽ|ⵏⵏⵎ}}.",
 	"discussiontools-newtopic-placeholder-title": "ⵉⵎⵔⵙⵉ",
 	"discussiontools-replylink": "{{GENDER:|ⵔⴰⵔ}}",
+	"discussiontools-replywidget-abandon-keep": "ⵣⴷⵉ ⴳ ⵜⵉⵔⵔⴰ",
+	"discussiontools-replywidget-abandontopic-keep": "ⵣⴷⵉ ⴳ ⵜⵉⵔⵔⴰ",
 	"discussiontools-replywidget-advanced": "ⵓⵜⵜⵉⵢ",
 	"discussiontools-replywidget-cancel": "ⴼⴼⵖ",
 	"discussiontools-replywidget-mode-source": "ⴰⵙⴰⴳⵎ",
