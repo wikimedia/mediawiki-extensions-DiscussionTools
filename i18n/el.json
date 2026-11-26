@@ -9,7 +9,8 @@
 			"Norhorn",
 			"UnchartedViolator",
 			"Warudo",
-			"Woytecr"
+			"Woytecr",
+			"Jimkats"
 		]
 	},
 	"discussiontools": "Εργαλεία συζήτησης",
@@ -132,7 +133,7 @@
 	"discussiontools-replywidget-cancel": "Ακύρωση",
 	"discussiontools-replywidget-feedback": "{{GENDER:|Αφήστε}} σχόλια σχετικά με αυτή τη λειτουργία",
 	"discussiontools-replywidget-keyboard-shortcut-submit": "Μπορείτε να πατήσετε $1 για να υποβάλετε το σχόλιό σας",
-	"discussiontools-replywidget-loading": "Φόρτωση…",
+	"discussiontools-replywidget-loading": "Φορτώνει…",
 	"discussiontools-replywidget-mention-tool-header": "Εύρεση χρήστη: $1",
 	"discussiontools-replywidget-mention-tool-title": "Μνημονεύστε έναν χρήστη",
 	"discussiontools-replywidget-mode-source": "Πηγή",
